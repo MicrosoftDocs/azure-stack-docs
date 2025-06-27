@@ -3,7 +3,7 @@ title:  Azure Local security book trusted launch
 description: Trusted launch for the Azure Local security book.
 author: alkohli
 ms.topic: conceptual
-ms.date: 06/16/2025
+ms.date: 06/27/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
@@ -21,4 +21,4 @@ With standard VMs, vTPM state is not preserved when a VM migrates or fails over 
 
 ## Related content
 
-- Microsoft Defender for Cloud
+- Continuous monitoring

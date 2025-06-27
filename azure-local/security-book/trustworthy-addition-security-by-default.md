@@ -1,6 +1,6 @@
 ---
-title:  Azure Local security book security baselines
-description: Security baselines for the Azure Local security book.
+title:  Azure Local security book security by default
+description: Security by default for the Azure Local security book.
 author: alkohli
 ms.topic: conceptual
 ms.date: 06/16/2025
@@ -8,7 +8,7 @@ ms.author: alkohli
 ms.reviewer: alkohli
 ---
 
-# Security baselines and protocols
+# Security by default
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 

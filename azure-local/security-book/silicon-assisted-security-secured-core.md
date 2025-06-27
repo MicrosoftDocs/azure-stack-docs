@@ -24,12 +24,12 @@ Given these factors, continuing to raise the security bar for critical infrastru
 
 Following Secured-core PC, we are introducing Secured-core Server which is built on three key pillars: simplified security, advanced protection, and preventative defense. Secured-core Servers come with the assurance that manufacturing partners have built hardware and firmware that satisfy the requirements of the operating system (OS) security features.
 
-## Windows Admin Center extension
+## Simplified security
 
 The security extension in Windows Admin Center makes it easy for you to configure the OS security features of Secured-core for 
 Azure Local. The extension enables advanced security with a click of the button from a web browser anywhere in the world. With Azure Local Integrated Systems, manufacturing partners have further simplified the configuration experience for you so that Microsoft’s best server security is available right out of the box.
 
-## Secured core servers
+## Advanced protection
 
 Secured-core Servers maximize hardware, firmware, and OS capabilities to help protect against current and future threats. These safeguards create a platform with added security for critical applications and data used on the hosts and VMs that run on them. Secured-core functionality spans the following areas:
 
@@ -48,3 +48,5 @@ Secured-core machines support VBS and hypervisor-based code integrity (HVCI). Th
 Enabling Secured-core functionality helps proactively defend against and disrupt many of the paths attackers may use to exploit a system. These defenses also enable IT and SecOps teams to better leverage their time across the many areas that need their attention.
 
 ## Related content
+
+- Azure Local solutions

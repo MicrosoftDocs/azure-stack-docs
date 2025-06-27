@@ -1,14 +1,14 @@
 ---
-title:  Azure Local security book Microsoft Defender for Cloud
-description: Microsoft Defender for Cloud for the Azure Local security book.
+title:  Azure Local security book continuous monitoring
+description: Continuous monitoring for the Azure Local security book.
 author: alkohli
 ms.topic: conceptual
-ms.date: 06/16/2025
+ms.date: 06/27/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
 
-# Microsoft Defender for Cloud
+# Continuous monitoring
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 

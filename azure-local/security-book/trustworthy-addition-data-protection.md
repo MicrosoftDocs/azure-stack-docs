@@ -33,3 +33,5 @@ For signing and encryption security, Azure Local now supports AES-256-GCM and AE
 Furthermore, Azure Local now supports granular control of encrypting intra-machine storage communications for Cluster Shared Volumes (CSV) and the storage bus layer (SBL). This means that when using Storage Spaces Direct, you can decide if you wish to use encryption or signing on remote file system, CSV, and the SBL traffic separately from each other. And finally, Azure Local supports the accelerated AES-128-GMAC signing option with lower latency and CPU usage. You can use Windows Admin Center (WAC) and PowerShell cmdlets for granular control of SMB signing and encryption. All of these combine to give the maximum flexibility for your threat model and performance requirements. For more information, see [SMB security enhancements](/windows-server/storage/file-server/smb-security).
 
 ## Related content
+
+- Security by default

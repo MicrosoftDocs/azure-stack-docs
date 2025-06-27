@@ -14,28 +14,55 @@ ms.reviewer: alkohli
 
 :::image type="content" source="./media/operational-security/operational-security-layer.png" alt-text="Diagram illustrating operational security layer." lightbox="./media/operational-security/operational-security-layer.png":::
 
-Azure Local contains many individual features and components, such as OS, agents and services, drivers, and firmware. Staying up to date with recent security fixes and feature improvements is important and essential for proper operation. The update feature in Azure Local uses an orchestrator (Lifecycle Manager) which centrally manages the deployment experience for the entire system.  
+## Windows Admin Center in Azure
 
-The update feature offers many benefits:
+Traditional server administration requires on-premises identities, roles, and groups to manage the server. With Azure Local, you can manage your system through Windows Admin Center in Azure using your Microsoft Entra identities. This allows you to use Azure capabilities such as [Microsoft Entra](https://www.microsoft.com/security/business/microsoft-entra) for additional security. Windows Admin Center in Azure has many capabilities that make your management platform more secure.
 
-- Provides a simplified, consolidated, single update management experience.
-- Provides a well-tested configuration.
-- Helps avoid downtime with health checks before and during an update.
-- Improves reliability with automatic retry and remediation of known issues.
-- Provides a common backend experience irrespective of whether the updates are managed locally or via Azure portal.
+### No inbound connectivity
 
-Azure Local solutions are designed to have a predictable update experience: 
+You can securely manage your system from anywhere without needing a VPN, public IP address, or other inbound connectivity to your machine. 
 
-- Microsoft releases monthly patch (quality and reliability) updates, quarterly baseline (features and improvements) updates, hotfixes (for critical or security issues) as needed, and solution builder extension updates (driver, firmware, and other partner content specific to the system solution used) as needed.
+With the Windows Admin Center extension in Azure, you get the management, configuration, troubleshooting, and maintenance functionality for managing your Azure Local instance in the Azure portal. Azure Local instance and workload management no longer requires you to establish line-of-sight or Remote Desktop Protocol (RDP) - this can all be done natively from the Azure portal. Windows Admin Center provides tools and experiences that you would normally find in Failover Cluster Manager, Device Manager, Task Manager, Hyper-V Manager, and most other Microsoft Management Console (MMC) tools.
 
-- To keep your Azure Local instance in a supported state, you must install updates regularly and stay current within six months of the most recent release. We recommend installing updates as and when they are released.
+### Azure Active Directory authentication
+
+Authentication to Windows Admin Center is provided via a single sign-on experience that uses your Microsoft Entra credentials to authenticate you to your system. You no longer need to manage or share credentials for your system to provide your system administrators with access to your system. Windows Admin Center can authenticate you to your system using your Azure AD credentials, regardless of whether the device is Azure AD joined or not.
+
+### Role-based access control
+
+Access to Windows Admin Center is controlled by an Azure role-based access control (RBAC) role named Windows Admin Center Administrator Login. Customers must be a part of this role to gain access to Windows Admin Center. To further enhance security, customers can leverage Azure AD Privileged Identity Management (PIM) to enable customers to get just-in-time (JIT) RBAC access to Windows Admin Center. 
+
+### Two-factor authentication
+
+With Windows Admin Center integrated in Azure portal, you can configure Azure AD multi-factor authentication (MFA) settings to control access to Windows Admin Center. To customize the end-user experience for Azure AD multi-factor authentication, you can configure options for settings like account lockout thresholds or fraud alerts and notifications. Some settings are available directly in the Azure portal for Microsoft Entra, and some are in a separate Azure AD Multi-Factor Authentication portal. 
+
+### Logging
+
+Windows Admin Center writes event logs to give you insight into management activities being performed on their machines, and to help you troubleshoot any Windows Admin Center issues.
+
+### Always up to date
+
+Windows Admin Center, just like any other Azure service, is always up to date with the latest and greatest management experiences. Unlike previous on-premises tools that had long release cycles, Windows Admin Center in Azure updates often and automatically.
+
+### Security tool
+
+The built-in security tool within Windows Admin Center gives you the ability to monitor and toggle Azure Local security settings. This tool lets you monitor and change your Secured-core, Windows Defender Application Control, and many other settings, all from within the Azure portal.
+
+### Lost Azure connectivity
+
+In the event you lose connectivity to Azure, you can use an on-premises deployment of Windows Admin Center to troubleshoot issues and continue to manage your system with a familiar experience, until connectivity to Azure has been restored.
+
+## Continuous monitoring with Microsoft Defender for Cloud
+
+[Microsoft Defender for Cloud](https://azure.microsoft.com/products/defender-for-cloud/) is a security posture management solution with advanced threat protection capabilities. It provides you with tools to assess the security status of your infrastructure, protect workloads, raise security alerts, and follow specific recommendations to remediate attacks and address future threats. It performs all these services at high speed in the cloud through auto-provisioning and protection with Azure services.
+
+You can use Microsoft Defender for Cloud to assess both the individual and overall security posture of all your hybrid resources across your entire fleet. Microsoft Defender for Cloud helps [improve the security posture](/azure/defender-for-cloud/defender-for-cloud-introduction#improve-your-security-posture) of your environment, and can protect against existing and evolving threats. You can use Microsoft Defender for Cloud to monitor the security posture of your Azure Local infrastructure. This requires connectivity to Azure.
+
+[Azure Arc](https://azure.microsoft.com/products/azure-arc/) simplifies governance and management by delivering a consistent multi-cloud and on-premises management platform. 
+It extends management to edge and multi-cloud and provides a single pane of glass management control plane. Azure Local is Arc-enabled by default and has Azure Monitor agent installed via Azure Arc on each machine in the system. This allows Azure Local to be monitored through Microsoft Defender for Cloud along with other resources. This enables you to manage and continuously monitor the security posture of your entire Azure Local fleet through Microsoft Defender for Cloud. 
  
-You can update your Azure Local instance either via Azure portal using Azure Update Manager or via PowerShell command line interface. For more information on how to keep your Azure Local instance up to date, read about [updates for Azure Local](../update/about-updates-23h2.md). The Cluster-Aware Updating feature orchestrates update install on each machine in the system so that your applications continue to run during the system upgrade.  
- 
-To regularly update virtual machines running on your Azure Local, you can use Windows Update, Windows Server Update Services, and Azure Update Management to update VMs. 
 
- 
 ## Related content
 
-- Ongoing operations
+- Software updates
 - Ongoing compliance
