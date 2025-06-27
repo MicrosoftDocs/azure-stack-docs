@@ -48,7 +48,7 @@ Upgrading the AKSArc cluster. This operation might take a while...
 
 ## Cause
 
-- The root cause is a recent change introduced in Azure Local version 2503. Under certain conditions, if there are transient or intermittent failures during the Kubernetes upgrade process, they're not correctly detected or recovered from. This can cause the cluster state to remain in the **Upgrading** state.
+- The issue is caused by a recent change introduced in Azure Local version 2503. Under certain conditions, if there are transient or intermittent failures during the Kubernetes upgrade process, they're not correctly detected or recovered from. This can cause the cluster state to remain in the **Upgrading** state.
 - You see this issue if the AKS Arc custom location extension `hybridaksextension` version is 2.1.211 or 2.1.223. You can run the following command to check the extension version on your cluster:
 
   ```azurecli
@@ -58,24 +58,24 @@ Upgrading the AKSArc cluster. This operation might take a while...
   az k8s-extension show -g $res.HybridaksExtension.resourceGroup -c $res.ResourceBridge.name --cluster-type appliances --name hybridaksextension
   ```
 
-```output
-{
-  "aksAssignedIdentity": null,
-  "autoUpgradeMinorVersion": false,
-  "configurationProtectedSettings": {},
-  "currentVersion": "2.1.211",
-  "customLocationSettings": null,
-  "errorInfo": null,
-  "extensionType": "microsoft.hybridaksoperator",
-  ...
-}
-```
+  ```output
+  {
+    "aksAssignedIdentity": null,
+    "autoUpgradeMinorVersion": false,
+    "configurationProtectedSettings": {},
+    "currentVersion": "2.1.211",
+    "customLocationSettings": null,
+    "errorInfo": null,
+    "extensionType": "microsoft.hybridaksoperator",
+    ...
+  }
+  ```
 
 ## Mitigation
 
-This issue was fixed in AKS on [Azure Local, version 2505](/azure/azure-local/whats-new?view=azloc-2505&preserve-view=true#features-and-improvements-in-2505). Upgrade your Azure Local deployment to the 2505 build. After you update, [verify](#verification) that the Kubernetes version was upgraded and the `currentState` property of the cluster shows as **Succeeded**.
+This issue was fixed in AKS on [Azure Local, version 2505](/azure/azure-local/whats-new?view=azloc-2505&preserve-view=true#features-and-improvements-in-2505). Upgrade your Azure Local deployment to the 2505 build. After you update, [verify that the Kubernetes version was upgraded](#verification) and the `currentState` property of the cluster shows as **Succeeded**.
 
-### Workaround for Azure Linux versions 2503 or 2504
+### Workaround for Azure Local versions 2503 or 2504
 
 This issue only affects clusters in Azure Local version 2503 or 2504, and on AKS Arc extension versions 2.1.211 or 2.1.223. The mitigation described here is applicable only when you are unable to upgrade to 2505.
 
