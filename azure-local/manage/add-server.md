@@ -4,7 +4,7 @@ description: Learn how to manage capacity on your Azure Local, version 23H2 syst
 ms.topic: how-to
 author: alkohli
 ms.author: alkohli
-ms.date: 05/28/2025
+ms.date: 06/26/2025
 ---
 
 # Add a node on Azure Local
@@ -110,25 +110,13 @@ On the new node that you plan to add, follow these steps.
 
 3. Assign the following permissions to the newly added nodes:
 
-    - Azure Local Device Management Role
+    - Azure Stack HCI Device Management Role
     - Key Vault Secrets User
     For more information, see [Assign permissions to the node](../deploy/deployment-arc-register-server-permissions.md).
 
 On a node that already exists on your system, follow these steps:
 
-1. Sign in with the domain user credentials (AzureStackLCMUser or another user with equivalent permissions) that you provided during the deployment of the system. 
-
-1. (Optional) Before you add the node, make sure to get an updated authentication token. Run the following command:
-
-    ```powershell
-    Update-AuthenticationToken 
-    ```
-
-1. If you are running a version prior to 2405.3, you must run the following command on the new node to clean up conflicting files:
-
-    ```powershell
-    Get-ChildItem -Path "$env:SystemDrive\NugetStore" -Exclude Microsoft.AzureStack.Solution.LCMControllerWinService*,Microsoft.AzureStack.Role.Deployment.Service* | Remove-Item -Recurse -Force
-    ```
+1. Sign in with the domain user credentials (AzureStackLCMUser or another user with equivalent permissions) that you provided during the deployment of the system.
 
 1. Run the following command to add the new incoming node using a local administrator credential for the new node:
 
