@@ -1,7 +1,7 @@
 ---
 title: Overview for Trusted launch for Azure Local VMs enabled by Azure Arc
 description: Learn about Trusted launch for Azure Local VMs enabled by Azure Arc.
-ms.topic: conceptual
+ms.topic: concept-article
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
@@ -41,8 +41,6 @@ Trusted launch is a security type that can be specified when you create Azure Lo
 - As part of Trusted launch for Azure Local VM creation, Hyper-V creates VM files at a default location on disk to store the VM state. By default, access to those VM files is restricted to host server administrators only. If you store those VM files in a different location, you must ensure that the location is access restricted to host server administrators only.
 
 - VM live migration network traffic isn't encrypted. We strongly recommend that you enable a network layer encryption technology such as IPsec to protect live migration network traffic.
-
-<!--- VM live migration network traffic is not encrypted. We strongly recommend that you enable IPsec to protect live migration network traffic. For more information, see [Network Recommendations for a Hyper-V Cluster](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn550728(v=ws.11)#How_to_isolate_the_network_traffic_on_a_Hyper-V_cluster).-->
 
 ## Guest operating system images
 

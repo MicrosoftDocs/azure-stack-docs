@@ -3,7 +3,7 @@ title: Collect diagnostic logs via the privileged endpoint (PEP)
 description: Learn how to collect diagnostic logs on demand in Azure Stack Hub by using the Administrator portal or a PowerShell script.
 author: sethmanheim
 ms.custom: conteperfq4
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: sethm
 ms.reviewer: shisab

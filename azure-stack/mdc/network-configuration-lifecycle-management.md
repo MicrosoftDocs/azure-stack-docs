@@ -4,7 +4,7 @@ description: Learn about network configuration lifecycle management for Azure Mo
 author: sethmanheim
 ms.author: sethm
 ms.service: azure-stack-hub
-ms.topic: conceptual
+ms.topic: article
 ms.date: 01/17/2025
 ms.lastreviewed: 01/02/2020
 ---

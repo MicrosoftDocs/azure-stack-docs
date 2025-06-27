@@ -1,10 +1,10 @@
 ---
 title: Repair a node on Azure Local, version 23H2
 description: Learn how to repair a node on your Azure Local, version 23H2 system.
-ms.topic: article
+ms.topic: how-to
 author: alkohli
 ms.author: alkohli
-ms.date: 05/08/2025
+ms.date: 06/25/2025
 ---
 
 # Repair a node on Azure Local
@@ -139,13 +139,6 @@ Follow these steps on the node you're trying to repair.
     For more information, see [Assign permissions to the node](../deploy/deployment-arc-register-server-permissions.md).
 
 Follow these steps on another node that is a member of the same Azure Local instance.
-
-
-1. If you are running a version prior to 2405.3, you must run the following command to clean up conflicting files:
-
-    ```powershell
-    Get-ChildItem -Path "$env:SystemDrive\NugetStore" -Exclude Microsoft.AzureStack.Solution.LCMControllerWinService*,Microsoft.AzureStack.Role.Deployment.Service* | Remove-Item -Recurse -Force
-    ```
 
 1. Sign into the node that is already a member of the system, with the domain user credentials that you provided during the deployment of the system. Run the following command to repair the incoming node:
 

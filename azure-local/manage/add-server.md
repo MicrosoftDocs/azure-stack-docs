@@ -1,10 +1,10 @@
 ---
 title: Manage Capacity by Adding a Node on Azure Local, Version 23H2
 description: Learn how to manage capacity on your Azure Local, version 23H2 system by adding a node.
-ms.topic: article
+ms.topic: how-to
 author: alkohli
 ms.author: alkohli
-ms.date: 05/28/2025
+ms.date: 06/25/2025
 ---
 
 # Add a node on Azure Local
@@ -122,12 +122,6 @@ On a node that already exists on your system, follow these steps:
 
     ```powershell
     Update-AuthenticationToken 
-    ```
-
-1. If you are running a version prior to 2405.3, you must run the following command on the new node to clean up conflicting files:
-
-    ```powershell
-    Get-ChildItem -Path "$env:SystemDrive\NugetStore" -Exclude Microsoft.AzureStack.Solution.LCMControllerWinService*,Microsoft.AzureStack.Role.Deployment.Service* | Remove-Item -Recurse -Force
     ```
 
 1. Run the following command to add the new incoming node using a local administrator credential for the new node:
