@@ -3,7 +3,7 @@ title: Troubleshoot common issues in AKS enabled by Azure Arc
 description: Learn about common issues and workarounds in AKS enabled by Arc.
 ms.topic: how-to
 author: sethmanheim
-ms.date: 06/18/2025
+ms.date: 06/27/2025
 ms.author: sethm 
 ms.lastreviewed: 04/01/2025
 ms.reviewer: abha
@@ -28,6 +28,7 @@ The following sections describe known issues for AKS enabled by Azure Arc:
 | AKS steady state       | [AKS Arc telemetry pod consumes too much memory and CPU](telemetry-pod-resources.md) | Active |
 | AKS steady state       | [Disk space exhaustion on control plane VMs due to accumulation of kube-apiserver audit logs](kube-apiserver-log-overflow.md) | Active |
 | AKS cluster delete     | [Deleted AKS Arc cluster still visible on Azure portal](deleted-cluster-visible.md) | Active |
+| AKS cluster upgrade    | [AKS Arc cluster stuck in "Upgrading" state](cluster-upgrade-status.md) | Fixed in 2505 release |
 | AKS cluster delete     | [Can't fully delete AKS Arc cluster with PodDisruptionBudget (PDB) resources](delete-cluster-pdb.md) | Fixed in 2503 release |
 | Azure portal           | [Can't see VM SKUs on Azure portal](check-vm-sku.md) | Fixed in 2411 release |
 | MetalLB Arc extension  | [Connectivity issues with MetalLB](load-balancer-issues.md) | Fixed in 2411 release |

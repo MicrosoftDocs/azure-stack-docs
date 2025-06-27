@@ -194,7 +194,7 @@
     - name: BGP with FRR not working
       href: connectivity-troubleshoot.md
     - name: Cluster status stuck during upgrade
-      href: tsg-upgrade-issues.md
+      href: cluster-upgrade-status.md
   - name: Reference
     items:
     - name: Azure CLI

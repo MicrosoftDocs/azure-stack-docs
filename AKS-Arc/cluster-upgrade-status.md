@@ -1,10 +1,10 @@
 ---
-title: Troubleshoot the issue where the cluster is stuck in Upgrading state
+title: Troubleshoot issue in which the cluster is stuck in Upgrading state
 description: Learn how to troubleshoot and mitigate the issue when an AKS enabled by Arc cluster is stuck in 'Upgrading' state.
 ms.topic: troubleshooting
 author: rcheeran
 ms.author: rcheeran
-ms.date: 06/26/2025
+ms.date: 06/27/2025
 ms.reviewer: abha
 
 ---
@@ -34,14 +34,14 @@ Upgrading the AKSArc cluster. This operation might take a while...
     "type": "CustomLocation"
   },
   "id": "/subscriptions/fbaf508b-cb61-4383-9cda-a42bfa0c7bc9/resourceGroups/Bellevue/providers/Microsoft.Kubernetes/ConnectedClusters/Bel-cluster/providers/Microsoft.HybridContainerService/ProvisionedClusterInstances/default",
-  "name": "default",
-  "properties": {
- "kubernetesVersion": "1.30.4",
- "provisioningState": "Succeeded",
- "currentState": "Upgrading",
-    "errorMessage": null,
-    "operationStatus": null
-    "agentPoolProfiles": [
+"name": "default",
+"properties": {
+"kubernetesVersion": "1.30.4",
+"provisioningState": "Succeeded",
+"currentState": "Upgrading",
+"errorMessage": null,
+"operationStatus": null
+"agentPoolProfiles": [
       {
         ...
 ```
@@ -58,9 +58,28 @@ Upgrading the AKSArc cluster. This operation might take a while...
   az k8s-extension show -g $res.HybridaksExtension.resourceGroup -c $res.ResourceBridge.name --cluster-type appliances --name hybridaksextension
   ```
 
+```output
+{
+  "aksAssignedIdentity": null,
+  "autoUpgradeMinorVersion": false,
+  "configurationProtectedSettings": {},
+  "currentVersion": "2.1.211",
+  "customLocationSettings": null,
+  "errorInfo": null,
+  "extensionType": "microsoft.hybridaksoperator",
+  ...
+}
+```
+
 ## Mitigation
 
-You can resolve this issue by running the AKS Arc `update` command. The `update` command restarts the upgrade flow. You can run the `aksarc update` command with placeholder parameters, which do not impact the state of the cluster. So in this case, you can run the `update` command to enable NFS or SMB drivers if those features aren't already enabled. First, check if any of the storage drivers are already enabled:
+This issue was fixed in AKS on [Azure Local, version 2505](/azure/azure-local/whats-new?view=azloc-2505&preserve-view=true#features-and-improvements-in-2505). Upgrade your Azure Local deployment to the 2505 build. After you update, [verify](#verification) that the Kubernetes version was upgraded and the `currentState` property of the cluster shows as **Succeeded**.
+
+### Workaround for Azure Linux versions 2503 or 2504
+
+This issue only affects clusters in Azure Local version 2503 or 2504, and on AKS Arc extension versions 2.1.211 or 2.1.223. The mitigation described here is applicable only when you are unable to upgrade to 2505.
+
+You can resolve the issue by running the AKS Arc `update` command. The `update` command restarts the upgrade flow. You can run the `aksarc update` command with placeholder parameters, which do not impact the state of the cluster. So in this case, you can run the `update` command to enable NFS or SMB drivers if those features aren't already enabled. First, check if any of the storage drivers are already enabled:
 
 ```azurecli
 az login --use-device-code --tenant <Azure tenant ID> 
@@ -100,10 +119,22 @@ If both drivers are already enabled on your cluster, you can disable the one tha
 
 ## Verification
 
-To confirm the K8s version upgrade is complete, run the following command and check that the `currentState` property in the JSON output is set to `Succeeded`.
+To confirm the K8s version upgrade is complete, run the following command and check that the `currentState` property in the JSON output is set to **Succeeded**.
 
 ```azurecli
 az aksarc show -g <resource_group> -n <cluster_name>
+```
+
+```output
+...
+...
+"provisioningState": "Succeeded",
+"status": {
+    "currentState": "Succeeded",
+    "errorMessage": null,
+    "operationStatus": null
+    "controlPlaneStatus": { ...
+...
 ```
 
 ## Contact Microsoft Support
