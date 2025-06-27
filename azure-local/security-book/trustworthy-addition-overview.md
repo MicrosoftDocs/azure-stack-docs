@@ -8,7 +8,7 @@ ms.author: alkohli
 ms.reviewer: alkohli
 ---
 
-# Overview
+# Trustworthy addition overview
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
