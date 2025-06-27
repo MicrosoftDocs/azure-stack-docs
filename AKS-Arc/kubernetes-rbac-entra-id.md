@@ -236,4 +236,4 @@ Error from server (Forbidden): pods is forbidden: User cannot list resource "pod
 ## Next steps
 
 - [Learn more about security in AKS Arc on Windows Server](concepts-security.md)
-- Help to protect your cluster in other ways by following the guidance in the [security book for AKS enabled by Azure Arc](/azure/azure-arc/kubernetes/conceptual-security.book.md).
+- Help to protect your cluster in other ways by following the guidance in the [security book for AKS enabled by Azure Arc](/azure/azure-arc/kubernetes/conceptual-security-book).

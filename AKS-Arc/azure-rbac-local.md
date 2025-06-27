@@ -222,4 +222,4 @@ az role definition delete -n "AKS Arc Deployment Reader"
 - [Access and identity options](concepts-security-access-identity.md) for AKS enabled by Azure Arc
 - [Create an Azure service principal with Azure CLI](/cli/azure/azure-cli-sp-tutorial-1)
 - Available Azure permissions for [Hybrid + Multicloud](/azure/role-based-access-control/resource-provider-operations#microsoftkubernetes)
-- Help to protect your cluster in other ways by following the guidance in the [security book for AKS enabled by Azure Arc](/azure/azure-arc/kubernetes/conceptual-security.book.md).
+- Help to protect your cluster in other ways by following the guidance in the [security book for AKS enabled by Azure Arc](/azure/azure-arc/kubernetes/conceptual-security-book).

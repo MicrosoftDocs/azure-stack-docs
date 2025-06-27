@@ -42,4 +42,4 @@ This command does two things: it limits the scope of the command, and it also li
 
 - [Restrict SSH access (AKS on Azure Local 22H2)](restrict-ssh-access-22h2.md)
 - [AKS enabled by Arc overview](aks-overview.md)
-- Help to protect your cluster in other ways by following the guidance in the [security book for AKS enabled by Azure Arc](/azure/azure-arc/kubernetes/conceptual-security.book.md).
+- Help to protect your cluster in other ways by following the guidance in the [security book for AKS enabled by Azure Arc](/azure/azure-arc/kubernetes/conceptual-security-book).

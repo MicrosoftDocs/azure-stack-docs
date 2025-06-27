@@ -75,4 +75,4 @@ Enable Microsoft Entra authentication on your existing Kubernetes cluster using 
 - [Access and identity options for AKS enabled by Azure Arc](concepts-security-access-identity.md)
 - [Microsoft Entra integration with Kubernetes RBAC](kubernetes-rbac-local.md)
 - [Use Azure role-based access control (RBAC) for Kubernetes authorization](azure-rbac-local.md)
-- Help to protect your cluster in other ways by following the guidance in the [security book for AKS enabled by Azure Arc](/azure/azure-arc/kubernetes/conceptual-security.book.md).
+- Help to protect your cluster in other ways by following the guidance in the [security book for AKS enabled by Azure Arc](/azure/azure-arc/kubernetes/conceptual-security-book).
