@@ -205,6 +205,8 @@
       href: /rest/api/hybridcontainer/operation-groups
   - name: Resources
     items:
+    - name: Get support
+      href: help-support.md
     - name: Azure Local
       href: /azure/azure-local
     - name: Azure adaptive cloud
@@ -607,8 +609,6 @@
       href: known-issues.yml
     - name: Support policies
       href: support-policies.md
-    - name: Get support
-      href: help-support.md
     - name: File bugs
       href: https://aka.ms/AKS-hybrid-issues
     - name: Release notes
