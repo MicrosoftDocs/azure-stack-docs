@@ -196,18 +196,18 @@
   - name: Security
     items:  
     - name: Security book - recommendations and best practices
-      href: /azure/azure-arc/kubernetes/conceptual-security-book?toc=/azure/aks/aksarc/toc.yml&bc=/azure/aks/aksarc/breadcrumb/toc.yml?toc=/azure/aks/aksarc/toc.yml&bc=/azure/aks/aksarc/breadcrumb/toc.yml
+      href: /azure/azure-arc/kubernetes/conceptual-security-book?toc=/azure/aks/aksarc/toc.json&bc=/azure/aks/aksarc/breadcrumb/toc.json?toc=/azure/aks/aksarc/toc.json&bc=/azure/aks/aksarc/breadcrumb/toc.json
       displayName: security, best practices, recommendations
     - name: Securing your platform
-      href: /azure/azure-arc/kubernetes/conceptual-secure-your-platform?toc=/azure/aks/aksarc/toc.yml&bc=/azure/aks/aksarc/breadcrumb/toc.yml
+      href: /azure/azure-arc/kubernetes/conceptual-secure-your-platform?toc=/azure/aks/aksarc/toc.json&bc=/azure/aks/aksarc/breadcrumb/toc.json
     - name: Securing your workloads
-      href: /azure/azure-arc/kubernetes/conceptual-secure-your-workloads?toc=/azure/aks/aksarc/toc.yml&bc=/azure/aks/aksarc/breadcrumb/toc.yml
+      href: /azure/azure-arc/kubernetes/conceptual-secure-your-workloads?toc=/azure/aks/aksarc/toc.json&bc=/azure/aks/aksarc/breadcrumb/toc.json
     - name: Securing your operations
-      href: /azure/azure-arc/kubernetes/conceptual-secure-your-operations?toc=/azure/aks/aksarc/toc.yml&bc=/azure/aks/aksarc/breadcrumb/toc.yml
+      href: /azure/azure-arc/kubernetes/conceptual-secure-your-operations?toc=/azure/aks/aksarc/toc.json&bc=/azure/aks/aksarc/breadcrumb/toc.json
     - name: Securing your data
-      href: /azure/azure-arc/kubernetes/conceptual-secure-your-data?toc=/azure/aks/aksarc/toc.yml&bc=/azure/aks/aksarc/breadcrumb/toc.yml
+      href: /azure/azure-arc/kubernetes/conceptual-secure-your-data?toc=/azure/aks/aksarc/toc.json&bc=/azure/aks/aksarc/breadcrumb/toc.json
     - name: Securing your network
-      href: /azure/azure-arc/kubernetes/conceptual-secure-your-network?toc=/azure/aks/aksarc/toc.yml&bc=/azure/aks/aksarc/breadcrumb/toc.yml
+      href: /azure/azure-arc/kubernetes/conceptual-secure-your-network?toc=/azure/aks/aksarc/toc.json&bc=/azure/aks/aksarc/breadcrumb/toc.json
   - name: Reference
     items:
     - name: Azure CLI
@@ -481,9 +481,9 @@
         - name: Deploy Azure Arc-enabled data services
           href: deploy-arc-data-services.md
         - name: Deploy configurations using GitOps
-          href: /azure/azure-arc/kubernetes/tutorial-use-gitops-flux2?toc=/azure/aks/hybrid/toc.yml&bc=/azure/aks/hybrid/breadcrumb/toc.yml
+          href: /azure/azure-arc/kubernetes/tutorial-use-gitops-flux2?toc=/azure/aks/hybrid/toc.json&bc=/azure/aks/hybrid/breadcrumb/toc.json
         - name: Implement CI/CD using GitOps
-          href: /azure/azure-arc/kubernetes/tutorial-gitops-flux2-ci-cd?toc=/azure/aks/hybrid/toc.yml&bc=/azure/aks/hybrid/breadcrumb/toc.yml
+          href: /azure/azure-arc/kubernetes/tutorial-gitops-flux2-ci-cd?toc=/azure/aks/hybrid/toc.json&bc=/azure/aks/hybrid/breadcrumb/toc.json
     - name: Scale
       items:    
           - name: Scale an AKS cluster

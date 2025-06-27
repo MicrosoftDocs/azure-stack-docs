@@ -105,7 +105,7 @@ If you encounter any errors with the KMS plugin, follow the procedure on the [Tr
 
 ## Next steps
 
-- Help to protect your cluster in other ways by following the guidance in the [security book for AKS enabled by Azure Arc](/azure/azure-arc/kubernetes/conceptual-security-book?toc=/azure/aks/aksarc/toc.yml&bc=/azure/aks/aksarc/breadcrumb/toc.yml).
+- Help to protect your cluster in other ways by following the guidance in the [security book for AKS enabled by Azure Arc](/azure/azure-arc/kubernetes/conceptual-security-book?toc=/azure/aks/aksarc/toc.json&bc=/azure/aks/aksarc/breadcrumb/toc.json).
 - [Create Kubernetes clusters](aks-create-clusters-cli.md#deploy-the-application-and-load-balancer)
 - [Deploy a Linux application on a Kubernetes cluster](deploy-linux-application.md)
 

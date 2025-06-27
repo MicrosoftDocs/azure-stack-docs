@@ -54,4 +54,4 @@ If you encounter SSH login issues, verify that your IP address is included in th
 
 - [Use SSH keys to get on-demand logs for troubleshooting](get-on-demand-logs.md)
 - [Configure SSH keys for an AKS Arc cluster](configure-ssh-keys.md)
-- Help to protect your cluster in other ways by following the guidance in the [security book for AKS enabled by Azure Arc](/azure/azure-arc/kubernetes/conceptual-security-book?toc=/azure/aks/aksarc/toc.yml&bc=/azure/aks/aksarc/breadcrumb/toc.yml).
+- Help to protect your cluster in other ways by following the guidance in the [security book for AKS enabled by Azure Arc](/azure/azure-arc/kubernetes/conceptual-security-book?toc=/azure/aks/aksarc/toc.json&bc=/azure/aks/aksarc/breadcrumb/toc.json).
