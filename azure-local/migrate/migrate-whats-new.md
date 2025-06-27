@@ -15,17 +15,17 @@ This article lists the various features and improvements that are available in V
 
 ## May 2025
 
-This release includes the following features and improvements:
+This release includes these features and improvements:
 
-- Improved service error messaging, recommended actions, and [troubleshooting guidance](./migrate-troubleshoot.md).
-- Fixed bug to surface `Not Found` errors for missing Azure Local resources.
+- Improved service error messages, recommended actions, and [troubleshooting guidance](./migrate-troubleshoot.md).
+- Fixed a bug that shows `Not Found` errors for missing Azure Local resources.
 - Updated appliance error messages to correctly identify which migrate appliance is unresponsive.
 - Enabled static IP migrations to support multiple IP pools on a single logical network.
 
 
 ## April 2025
 
-This release includes the following features and improvements:
+This release includes these features and improvements:
 
 - **Linux VM static IP migration support** – Azure Migrate to Azure Local migrations now support preserving static IP addresses during Linux virtual machine (VM) migrations.
 
@@ -47,7 +47,7 @@ This release includes the following features and improvements:
 
 ## March 2025
 
-This release includes the following features and improvements:
+This release includes these features and improvements:
 
 - **Critical bug fixes (released in version 2503)** – Azure Local version 2503 includes fixes for two major issues that previously affected migrated VMs:
 
