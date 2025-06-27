@@ -23,25 +23,26 @@ If you encounter an issue with AKS on Azure Local, this article describes how to
 1. Browse to the subscription you're using for AKS on Azure Local. Select the subscription to open its dashboard.
 1. From the **Help** menu in the left-hand navigation pane, select **Support + Troubleshooting**:
 
-    :::image type="content" source="media/help-support/help-left-menu.png" alt-text="Screenshot of the Azure portal Help and Support sidebar." lightbox="media/help-support/help-left-menu.png":::
+    :::image type="content" source="media/help-support/help-left-menu.png" alt-text="Screenshot of the Azure portal Help and Support sidebar.":::
 
 1. In the text box, briefly describe the issue type, then select **Go**:
 
     :::image type="content" source="media/help-support/issue-help.png" alt-text="Screenshot of service type selection." lightbox="media/help-support/issue-help.png":::
 
 1. If **Azure Kubernetes Service on Azure Local** doesn't appear in the list of predefined services, select **None of the above**.
-1. Begin typing **Kubernetes** in the **Select a service** field.
-1. Select **Compute/Azure Kubernetes Service on Azure Local** from the dropdown list.
+1. Begin typing **Kubernetes** in the search box of the **Select a service** dropdown.
+1. Select **Azure Kubernetes Service on Azure Local** from the dropdown list.
 
    :::image type="content" source="media/help-support/new-request.png" alt-text="Screenshot of service selection." lightbox="media/help-support/new-request.png":::
 
 1. Select **Next**.
 1. Your subscription name should auto-populate in the **Subscription** field. If it doesn't, select it from the dropdown. Then select **Next**.
-1. Select one of the predefined issues, or select **None of the above** if your issue doesn't relate to a specific predefined issue.
+1. Select one of the predefined issues, or select **None of the above** if your issue doesn't relate to a specific predefined issue. Then select **Next**:
 
-   :::image type="content" source="media/help-support/issue-select.png" alt-text="Screenshot of issue type selection." lightbox="media/help-support/issue-select.png":::
+    :::image type="content" source="media/help-support/issue-select.png" alt-text="Screenshot of issue type selection." lightbox="media/help-support/issue-select.png":::
 
-1. From the dropdown, select a problem type.
+    If you select **None of the above**, you're prompted to select a problem type from a dropdown menu. From the dropdown, select a problem type.
+
 1. Select **Next**.
 
 1. Review the proposed **Solutions** to determine if they address your issue:
