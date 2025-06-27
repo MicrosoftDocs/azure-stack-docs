@@ -47,7 +47,7 @@ If you encounter an issue with AKS on Azure Local, this article describes how to
 
 1. Select **Next**.
 
-1. Review the proposed **Solutions** to determine if they address your issue:
+1. Review the proposed solutions to determine if they address your issue:
 
     :::image type="content" source="media/help-support/solutions-page.png" alt-text="Screenshot of proposed solutions." lightbox="media/help-support/solutions-page.png":::
 
@@ -59,8 +59,7 @@ If you encounter an issue with AKS on Azure Local, this article describes how to
     :::image type="content" source="media/help-support/select-type.png" alt-text="Screenshot of problem type selection." lightbox="media/help-support/select-type.png":::
 
 1. Your subscription name should auto-populate in the **Subscription** field. If it doesn't, select it from the dropdown.
-
-1. Select the **All services** button, then select the **Service type** dropdown. Begin typing **Azure Kubernetes Service** in the search box to locate the **Azure Kubernetes Service on Azure Local** service.
+1. Your service name should auto-populate in the **Service** field. If it doesn't, select it from the dropdown. The **Summary**, **Problem type**, and **Problem subtype** fields should also auto-populate based on your previous selections. If they don't, select the appropriate values from the dropdown menus.
 
     :::image type="content" source="media/help-support/service-type.png" alt-text="Screenshot showing service selection." lightbox="media/help-support/service-type.png":::
 
