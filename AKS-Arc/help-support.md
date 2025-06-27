@@ -39,9 +39,11 @@ If you encounter an issue with AKS on Azure Local, this article describes how to
 1. Your subscription name should auto-populate in the **Subscription** field. If it doesn't, select it from the dropdown. Then select **Next**.
 1. Select one of the predefined issues, or select **None of the above** if your issue doesn't relate to a specific predefined issue. Then select **Next**:
 
-    :::image type="content" source="media/help-support/issue-select.png" alt-text="Screenshot of issue type selection." lightbox="media/help-support/issue-select.png":::
+   :::image type="content" source="media/help-support/issue-select.png" alt-text="Screenshot of issue type selection." lightbox="media/help-support/issue-select.png":::
 
-    If you select **None of the above**, you're prompted to select a problem type from a dropdown menu. From the dropdown, select a problem type.
+   If you select **None of the above**, you're prompted to select a problem type from a dropdown menu. From the dropdown, select a problem type.
+
+   :::image type="content" source="media/help-support/issues-none.png" alt-text="Screenshot of portal showing none of the above issues selected." lightbox="media/help-support/issues-none.png":::
 
 1. Select **Next**.
 
