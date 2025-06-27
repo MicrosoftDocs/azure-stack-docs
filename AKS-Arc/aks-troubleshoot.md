@@ -16,7 +16,7 @@ This section describes how to find solutions for issues you encounter when using
 
 ## Open a support request
 
-To open a support request, see the [Get support](/azure/aks/hybrid/help-support) article for information about how to use the Azure portal to get support or open a support request for AKS Arc.
+To open a support request, see the [Get support](help-support.md) article for information about how to use the Azure portal to get support or open a support request for AKS Arc.
 
 ## Known issues
 
