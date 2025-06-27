@@ -196,18 +196,18 @@
   - name: Security
     items:  
     - name: Security book - recommendations and best practices
-      href: /azure/azure-arc/kubernetes/conceptual-security-book.md?toc=/azure/aks/aksarc/toc.json&bc=/azure/aks/aksarc/breadcrumb/toc.json
+      href: /azure/azure-arc/kubernetes/conceptual-security-book?toc=/azure/aks/aksarc/toc.json&bc=/azure/aks/aksarc/breadcrumb/toc.json?toc=/azure/aks/aksarc/toc.json&bc=/azure/aks/aksarc/breadcrumb/toc.json
       displayName: security, best practices, recommendations
     - name: Securing your platform
-      href: /azure/azure-arc/kubernetes/conceptual-securing-your-platform.md?toc=/azure/aks/aksarc/toc.json&bc=/azure/aks/aksarc/breadcrumb/toc.json
+      href: /azure/azure-arc/kubernetes/conceptual-secure-your-platform?toc=/azure/aks/aksarc/toc.json&bc=/azure/aks/aksarc/breadcrumb/toc.json
     - name: Securing your workloads
-      href: /azure/azure-arc/kubernetes/conceptual-securing-your-workloads.md?toc=/azure/aks/aksarc/toc.json&bc=/azure/aks/aksarc/breadcrumb/toc.json
+      href: /azure/azure-arc/kubernetes/conceptual-secure-your-workloads?toc=/azure/aks/aksarc/toc.json&bc=/azure/aks/aksarc/breadcrumb/toc.json
     - name: Securing your operations
-      href: /azure/azure-arc/kubernetes/conceptual-securing-your-operations.md?toc=/azure/aks/aksarc/toc.json&bc=/azure/aks/aksarc/breadcrumb/toc.json
+      href: /azure/azure-arc/kubernetes/conceptual-secure-your-operations?toc=/azure/aks/aksarc/toc.json&bc=/azure/aks/aksarc/breadcrumb/toc.json
     - name: Securing your data
-      href: /azure/azure-arc/kubernetes/conceptual-securing-your-data.md?toc=/azure/aks/aksarc/toc.json&bc=/azure/aks/aksarc/breadcrumb/toc.json
+      href: /azure/azure-arc/kubernetes/conceptual-secure-your-data?toc=/azure/aks/aksarc/toc.json&bc=/azure/aks/aksarc/breadcrumb/toc.json
     - name: Securing your network
-      href: /azure/azure-arc/kubernetes/conceptual-securing-your-network.md?toc=/azure/aks/aksarc/toc.json&bc=/azure/aks/aksarc/breadcrumb/toc.json
+      href: /azure/azure-arc/kubernetes/conceptual-secure-your-network?toc=/azure/aks/aksarc/toc.json&bc=/azure/aks/aksarc/breadcrumb/toc.json
   - name: Reference
     items:
     - name: Azure CLI
