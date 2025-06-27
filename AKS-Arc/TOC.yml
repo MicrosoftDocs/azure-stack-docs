@@ -159,12 +159,12 @@
     items:
     - name: Troubleshoot and known issues
       href: aks-troubleshoot.md
+    - name: Use diagnostic checker
+      href: aks-arc-diagnostic-checker.md
     - name: Control plane configuration validation errors
       href: control-plane-validation-errors.md
     - name: K8sVersionValidation error
       href: cluster-k8s-version.md
-    - name: Use diagnostic checker
-      href: aks-arc-diagnostic-checker.md
     - name: KubeAPIServer unreachable error
       href: kube-api-server-unreachable.md
     - name: Can't create/scale AKS cluster due to image issues
