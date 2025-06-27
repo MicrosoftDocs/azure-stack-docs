@@ -193,6 +193,8 @@
       href: entra-prompts.md
     - name: BGP with FRR not working
       href: connectivity-troubleshoot.md
+    - name: Cluster status stuck during upgrade
+      href: cluster-upgrade-status.md
   - name: Security
     items:  
     - name: Security book - recommendations and best practices
