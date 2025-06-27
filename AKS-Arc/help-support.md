@@ -66,9 +66,7 @@ If you encounter an issue with AKS on Azure Local, this article describes how to
 
 1. Add a short description of your issue in the **Summary** field.
 
-1. Select the appropriate **Problem type** from the dropdown menu for your issue (for example, **Kubernetes**):
-
-    :::image type="content" source="media/help-support/problem-type.png" alt-text="Screenshot of completed problem type form." lightbox="media/help-support/problem-type.png":::
+1. Select the appropriate **Problem type** from the dropdown menu for your issue (for example, **Setup, deployment, and configuration**).
 
 1. Select **Next**.
 
@@ -89,8 +87,6 @@ If you encounter an issue with AKS on Azure Local, this article describes how to
     :::image type="content" source="media/help-support/service-request-support-method.png" alt-text="Screenshot showing support method preferences." lightbox="media/help-support/service-request-support-method.png":::
 
 1. Select **Next**. Review the information you submitted. If anything is incorrect, select **Previous** and correct it. When all looks correct, select **Create**.
-
-    :::image type="content" source="media/help-support/review-create.png" alt-text="Screenshot of confirmation screen to create support request." lightbox="media/help-support/review-create.png":::
 
 ## Next steps
 
