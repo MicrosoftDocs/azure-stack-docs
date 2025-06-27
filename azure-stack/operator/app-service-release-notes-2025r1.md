@@ -27,7 +27,7 @@ Azure App Service on Azure Stack Hub 25 R1 brings new updates to Azure Stack Hub
 - Resolution to [issues customers encountered with 24R1](## Issues fixed in this release).
 
 > [!IMPORTANT]
-> With Azure App Service on Azure Stack Hub 25R1 operators must deploy or update via the **Complete offline installation or upgrade** pathway.  Documentation has been updated to reflect this and download links are provided in the deploy or update documentation to the installer, helper scripts, and the offline package zip file.
+> With Azure App Service on Azure Stack Hub 25R1 operators must deploy or update via the **Complete offline installation or upgrade** pathway. Download links are provided in the [deploy](azure-stack-app-service-deploy.md) or [update](azure-stack-app-service-update.md) documentation to the installer, helper scripts, and the offline package zip file.
 
 ## Prerequisites
 
@@ -103,7 +103,7 @@ Azure App Service on Azure Stack Update 25R1 includes the following improvements
 
 Newly fixed issues in this release:
 
-- Application downtime should no longer be expected during Upgrade. In 24R1, an issue caused significant downtime due to a change in communication format within the Web Farm during upgrade. The handling of the communication change was modified in this update, and does not cause downtime in 25R1.
+- Application downtime should no longer be expected during Upgrade. In 24R1, an issue caused significant downtime due to a change in communication format within the Web Farm during upgrade. The handling of the communication change was modified in this update, and doesn't cause downtime in 25R1.
 
 - Resolution to issues faced with Role Based Access Control and Single Sign on to Kudu and SCM sites
 
@@ -259,7 +259,7 @@ Review the [known issues for update](#known-issues-update) and take any action p
 
 - Worker instances are unable to reach file server when App Service is deployed in an existing virtual network. The file server is only available on the private network, as called out in the Azure App Service on Azure Stack deployment documentation.
 
-  If you chose to deploy into an existing virtual network and use an internal IP address to connect to your file server. You must add an outbound security rule, enabling SMB (Server Message Block) traffic between the worker subnet, and the file server. Go to the WorkersNsg in the Admin Portal and add an outbound security rule with the following properties:
+  If, you chose to deploy into an existing virtual network and use an internal IP address to connect to your file server. You must add an outbound security rule, enabling SMB (Server Message Block) traffic between the worker subnet, and the file server. Go to the WorkersNsg in the Admin Portal and add an outbound security rule with the following properties:
   - Source: Any
   - Source port range: *
   - Destination: IP Addresses
