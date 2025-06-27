@@ -3,7 +3,7 @@ title: Release notes with fixed and known issues in Azure Local
 description: Read about the known issues and fixed issues in Azure Local.
 author: alkohli
 ms.topic: conceptual
-ms.date: 06/26/2025
+ms.date: 06/27/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
@@ -27,8 +27,8 @@ For the 2506 release of Azure Local, Microsoft released two security updates: on
 
 | Deployment type  | Solution version  | OS build  |
 |---------|---------|---------|
-| Existing deployments    | 11.2506.1001.22          | 25398.1665         |
-| New deployments    | 12.2506.1001.23         | 26100.4349        |
+| Existing deployments    | 11.2506.1001.26          | 25398.1665         |
+| New deployments    | 12.2506.1001.27         | 26100.4349        |
 
 > [!IMPORTANT]
 > The new deployments of this software use the **12.2506.1001.23** build. You can also update an existing deployment from 2504 using **11.2506.1001.22**.
@@ -66,7 +66,7 @@ The following table lists the known issues in this release:
 | Deployment <!--33390832--> | In rare instances, deployment fails with errors during validation that state that the mandatory Arc extensions are not yet installed. | If you face this issue, retry the deployment. |
 | Deployment <!--33392176--> |  Deployment fails with PSTerminatingError. | If you face this issue, retry the deployment. |
 | Update <!--33470082--> |  Solution update fails with the error: `Unable to install solution update "11.2506.1001.24" - Type 'UpdateFOD' of Role 'ComposedImageUpdate' raised an exception.` | For detailed steps on how to resolve this issue, see the [Troubleshooting guide](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/Update/SolutionUpdate-UpdateFOD.md). |
-| Deployment <!--33471589--> |  After Azure portal deployment, SConfig network settings shows the error: `Set-SCfNetworksetting : Cannot bind argument to parameter 'Value' because it is null.` |  |
+| Deployment <!--33471589--> |  After Azure portal deployment, SConfig network settings shows the error: `Set-SCfNetworksetting : Cannot bind argument to parameter 'Value' because it is null.` | There's no known workaround in this release. |
 | Update <!--33448368--> |  Cluster-Aware Updating runs might fail with the error:<br>`Type 'SBEPartnerConfirmCauDone' of Role 'SBE' raised an exception:<br>SBE_MsftCIOnlyCommon_CommonForTesting_4.2.2504.16: ErrorID: SBE-CAU-RUNNING-AFTER-DONE -- CAU run is still in progress when it should be done. See https://aka.ms/AzureLocal/SBE/CauHelp for help. Review full Get-CauRun output it identify if it is progressing or stuck. Wait for it to complete if progressing.` | Wait for CAU run to complete (wait for `Get-CauRun` to report `RunNotInProgress`) and resume the update. |
 
 ## Known issues from previous releases
