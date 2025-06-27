@@ -3,7 +3,7 @@ title: App Service on Azure Stack Hub 25R1 release notes
 description: Learn about what's new and updated in the App Service on Azure Stack Hub 25R1 release.
 author: apwestgarth
 ms.topic: article
-ms.date: 06/20/2025
+ms.date: 06/27/2025
 ms.author: anwestg
 ms.reviewer:
 ---
@@ -16,7 +16,7 @@ These release notes describe the improvements and fixes in Azure App Service on 
 
 ## Build reference
 
-The App Service on Azure Stack Hub 25R1 build number is **102.10.2.9**
+The App Service on Azure Stack Hub 25R1 build number is **102.10.2.11**
 
 ## What's new?
 
@@ -26,6 +26,8 @@ Azure App Service on Azure Stack Hub 25 R1 brings new updates to Azure Stack Hub
 - Updates to App Service on Azure Stack Hub Resource Provider.
 - Resolution to [issues customers encountered with 24R1](## Issues fixed in this release).
 
+> [!IMPORTANT]
+> With Azure App Service on Azure Stack Hub 25R1 operators must deploy or update via the **Complete offline installation or upgrade** pathway.  Documentation has been updated to reflect this and download links are provided in the deploy or update documentation to the installer, helper scripts, and the offline package zip file.
 
 ## Prerequisites
 
