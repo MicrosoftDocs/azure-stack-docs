@@ -4,7 +4,7 @@ description: Learn how to repair a node on your Azure Local, version 23H2 system
 ms.topic: how-to
 author: alkohli
 ms.author: alkohli
-ms.date: 06/25/2025
+ms.date: 06/26/2025
 ---
 
 # Repair a node on Azure Local
@@ -134,7 +134,7 @@ Follow these steps on the node you're trying to repair.
 
 1. Assign the following permissions to the repaired node:
 
-    - Azure Local Device Management Role
+    - Azure Stack HCI Device Management Role
     - Key Vault Secrets User
     For more information, see [Assign permissions to the node](../deploy/deployment-arc-register-server-permissions.md).
 
