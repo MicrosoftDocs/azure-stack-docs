@@ -4,7 +4,7 @@ description: Learn about technical support policies, limitations, shared respons
 author: sethmanheim
 contributors: sethm
 ms.topic: concept-article
-ms.date: 06/26/2025
+ms.date: 06/27/2025
 ms.author: sethm
 ms.reviewer: sumsmith
 ---
@@ -173,6 +173,8 @@ When a technical support issue is caused by one or more upstream bugs, AKS Arc s
   - The issue, including links to upstream bugs.
   - The workaround and details about an upgrade or another option for the solution.
   - Rough timelines for the issue's inclusion, based on the upstream release cadence.
+
+A troubleshooting guidance article is then published and linked to from [the general troubleshooting page](aks-troubleshoot.md).
 
 ## Next steps
 
