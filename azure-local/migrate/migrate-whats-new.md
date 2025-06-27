@@ -4,13 +4,24 @@ description: Learn about new features for Azure Migrate on Azure Local.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 05/15/2025
+ms.date: 06/27/2025
 ms.service: azure-local
 ---
 
 # What's new for VM migration on Azure Local
 
 This article lists the various features and improvements that are available in VM migration to Azure Local.
+
+
+## May 2025
+
+This release includes the following features and improvements:
+
+- Improved service error messaging, recommended actions, and [troubleshooting guidance](./migrate-troubleshoot.md).
+- Fixed bug to surface `Not Found` errors for missing Azure Local resources.
+- Updated appliance error messages to correctly identify which migrate appliance is unresponsive.
+- Enabled static IP migrations to support multiple IP pools on a single logical network.
+
 
 ## April 2025
 
