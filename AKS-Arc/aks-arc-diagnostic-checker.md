@@ -4,7 +4,7 @@ description: Learn how to diagnose common causes for failures in AKS Arc.
 ms.topic: troubleshooting
 author: sethmanheim
 ms.author: sethm
-ms.date: 01/30/2025
+ms.date: 06/27/2025
 ms.reviewer: abha
 
 #Customer intent: As an AKS user, I want to use the diagnostic checker to run diagnostic checks on my AKS cluster to find out common causes for AKS cluster create failure. 
@@ -13,14 +13,14 @@ ms.reviewer: abha
 
 # Use the diagnostic checker to diagnose and fix environment issues for AKS cluster creation failure (preview)
 
-It can be difficult to identify environment-related issues, such as networking configurations, that can result in an AKS cluster creation failure. The diagnostic checker is a PowerShell-based tool that can help you identify AKS cluster creation failures due to potential issues in the environment.
+It can be difficult to identify environment-related issues, such as networking configuration, that can result in an AKS cluster creation failure. The diagnostic checker is a PowerShell tool that can help you identify AKS cluster creation failures due to potential issues in the environment.
 
 > [!NOTE]
-> You can only use the diagnostic checker tool if an AKS cluster was created, but is in a failed state. You can't use the tool if you don't see an AKS cluster on the Azure portal. If the AKS cluster creation fails before an Azure Resource Manager resource is created, [file a support request](aks-troubleshoot.md#open-a-support-request).
+> You can only use the diagnostic checker tool if an AKS cluster was created, but is in a failed state. You can't use the tool if you don't see an AKS cluster on the Azure portal. If the AKS cluster creation fails before an Azure Resource Manager resource is created, [file a support request](help-support.md).
 
 ## Before you begin
 
-Before you begin, make sure you have the following prerequisites. If you don't meet the requirements for running the diagnostic checker tool, [file a support request](aks-troubleshoot.md#open-a-support-request):
+Before you begin, make sure you have the following prerequisites. If you don't meet the requirements for running the diagnostic checker tool, [file a support request](help-support.md):
 
 - Direct access to the Azure Local cluster where you created the AKS cluster. This access can be through remote desktop (RDP), or you can also sign in to one of the Azure Local physical nodes.
 - Review the [networking concepts for creating an AKS cluster](aks-hci-network-system-requirements.md) and the [AKS cluster architecture](cluster-architecture.md).
@@ -43,17 +43,17 @@ VMName                                                 IPAddresses
 <cluster-name>-XXXXXX-control-plane-XXXXXX {172.16.0.10, 172.16.0.4, fe80::ec:d3ff:fea0:1}
 ```
 
-If you don't see a control plane VM as shown in the previous output, [file a support request](aks-troubleshoot.md#open-a-support-request).
+If you don't see a control plane VM as shown in the previous output, [file a support request](help-support.md).
 
 If you see a control plane VM, and it has:
 
-- 0 IPv4 addresses: file a [support request](aks-troubleshoot.md#open-a-support-request).
+- 0 IPv4 addresses: file a [support request](help-support.md).
 - 1 IP address: use the IPv4 address as the input for `vmIP` parameter.
 - 2 IP addresses: use any one of the IPv4 address as an input for `vmIP` parameter in the diagnostic checker.
 
 ## Run the diagnostic checker script
 
-Copy the following PowerShell script `run_diagnostic.ps1` into any one node of your Azure Local cluster:
+Copy the following PowerShell script named `run_diagnostic.ps1` into any one node of your Azure Local cluster:
 
 ```powershell
 <#
@@ -288,4 +288,4 @@ The following table provides a summary of each test performed by the script, inc
 
 ## Next steps
 
-If the problem persists, collect [AKS cluster logs](get-on-demand-logs.md) before you [create a support request](aks-troubleshoot.md#open-a-support-request).
+If the problem persists, collect [AKS cluster logs](get-on-demand-logs.md) before you [create a support request](help-support.md).
