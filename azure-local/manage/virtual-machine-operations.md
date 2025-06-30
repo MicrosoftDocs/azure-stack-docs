@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: concept-article
 ms.service: azure-local
-ms.date: 06/19/2025
+ms.date: 06/30/2025
 ---
 
 # Supported operations for Azure Local VMs enabled by Azure Arc
@@ -50,15 +50,6 @@ Perform the following VM operations only via the Azure portal or the Azure CLI. 
 - Delete extensions
 - Enable guest management
 - Connect via Secure Shell (SSH)
-- Rename the computer name of your Azure Local VM.
-
-    > [!NOTE]
-    > This operation will automatically restart your Azure Local VM.
-
-- Change the IP address of a network interface (NIC) to match static IP NIC configuration on Azure Local control plane.
-
-    > [!NOTE]
-    > This manual change is allowed from within the guest operating system using local tools only when a static IP NIC was added post VM provisioning from Azure Local control plane. This ensures network configurations within the VM aligns with the configuration defined in the Azure control plane.
 
 ### Azure CLI
 
@@ -66,6 +57,11 @@ Perform the following VM operations only via the Azure CLI. Don't use the local 
 
 - Pause a VM
 - Save the VM state
+- Rename the computer name of your Azure Local VM.
+
+    > [!NOTE]
+    > This operation will automatically restart your Azure Local VM.
+
 - Attach a GPU
 - Detach a GPU
 - Expand a data disk
@@ -82,6 +78,9 @@ You perform these operations either on the VM itself or on the cluster/node. The
 - Change the MAC address of a network adapter
 - Enable/disable MAC address spoofing per network adapter
 - Configure processor compatibility mode
+- Change the IP address of a network interface (NIC) to match static IP NIC configuration on Azure Local control plane.
+    > [!NOTE]
+    > This manual change is allowed from within the guest operating system using local tools only when a static IP NIC was added post VM provisioning from Azure Local control plane. This ensures network configurations within the VM aligns with the configuration defined in the Azure control plane.
 - Configure processor Non-Uniform Memory Access (NUMA) topology
 - Configure processor VM reserve, limit, and weight
 - Enable Quality of Service (QoS) management per disk
