@@ -159,6 +159,8 @@
     items:
     - name: Troubleshoot and known issues
       href: aks-troubleshoot.md
+    - name: Get support
+      href: help-support.md
     - name: Use diagnostic checker
       href: aks-arc-diagnostic-checker.md
     - name: Control plane configuration validation errors
@@ -205,8 +207,6 @@
       href: /rest/api/hybridcontainer/operation-groups
   - name: Resources
     items:
-    - name: Get support
-      href: help-support.md
     - name: Azure Local
       href: /azure/azure-local
     - name: Azure adaptive cloud
