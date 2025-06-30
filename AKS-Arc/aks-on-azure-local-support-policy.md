@@ -4,9 +4,11 @@ description: Learn about technical support policies, limitations, shared respons
 author: sethmanheim
 contributors: sethm
 ms.topic: concept-article
-ms.date: 06/27/2025
+ms.date: 06/30/2025
 ms.author: sethm
 ms.reviewer: sumsmith
+ms.lastreviewed: 06/30/2025
+
 ---
 
 # Support policies for AKS on Azure Local
