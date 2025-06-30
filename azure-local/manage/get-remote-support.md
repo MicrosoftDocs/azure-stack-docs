@@ -25,7 +25,7 @@ After you enable remote support, Microsoft support gets just-in-time (JIT) limit
 
 ## Remote support terms and conditions
 
-The following are the data handling terms and conditions for remote access. Carefully read them before granting access.
+The following are the data handling terms and conditions for remote access. Carefully read them before granting access. Everything under this section should be remain as is without making any changes to the text.
 
 > By approving this request, the Microsoft support organization or the Azure engineering team supporting this feature ("Microsoft Support Engineer") will be given direct access to your device for troubleshooting purposes and/or resolving the technical issue described in the Microsoft support case.
 >
@@ -41,17 +41,10 @@ For more information about the personal data that Microsoft processes, how Micro
 
 The high-level workflow to enable remote support is as follows:
 
-- [Remote support extension](./remote-support-arc-extension.md)
 - [Configure proxy settings](#configure-proxy-settings)
 - [Enable remote support via PowerShell](#enable-remote-support-via-powershell)
 - [Submit a support request](#submit-a-support-request)
 - [Other remote support operations](#other-remote-support-operations)
-
-## Remote support extension
-
-The Remote Support Arc extension, listed as **AzureEdgeRemoteSupport** in the Azure portal, makes setup easier and boosts support efficiency. It comes preinstalled on all system nodes, so there's no action for you to take. This extension enables key capabilities like configuring scheduled tasks for [Just Enough Administration](/powershell/scripting/security/remoting/jea/overview?view=powershell-7.5&preserve-view=true) and it lays the groundwork for secure, streamlined support interactions.
-
-For more information about the Remote Support Arc extension, see [Azure Local remote support Arc extension](./remote-support-arc-extension.md).
 
 ## Configure proxy settings
 
@@ -68,6 +61,8 @@ If you use a proxy with Azure Local, add the following endpoints to your allowli
 - https\://edgesupprd.trafficmanager.net
 
 ## Enable remote support via PowerShell
+
+The Remote Support Arc extension, listed as **AzureEdgeRemoteSupport** in the Azure portal, makes setup easier and boosts support efficiency. It comes preinstalled on all system nodes, so there's no action for you to take. For more information about the Remote Support Arc extension, see [Azure Local remote support Arc extension](./remote-support-arc-extension.md).
 
 To enable remote support on your Azure Local, follow these steps:
 
@@ -99,7 +94,7 @@ To enable remote support on your Azure Local, follow these steps:
     Enable-RemoteSupport -AccessLevel <Diagnostics Or DiagnosticsRepair> -ExpireInMinutes <1440>
     ```
 
-    Here's a sample output:
+    Here's sample output:
 
     ```console
     PS C:\Users\Administrator> etsn -ComputerName v-host1 -Credential $cred
