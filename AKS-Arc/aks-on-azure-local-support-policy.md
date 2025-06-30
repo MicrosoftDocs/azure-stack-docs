@@ -27,7 +27,7 @@ For release information, see the [AKS on Azure Local release notes](/azure/aks/a
 
 ## Managed features in AKS Arc
 
-As an AKS on Azure Local user, you have limited customization and additional deployment options. However, you don't need to worry about or manage the Kubernetes cluster control plane and installation directly. Base infrastructure-as-a-service (IaaS) cloud components, such as compute or networking components, allow you access to low-level controls and customization options.
+As an AKS on Azure Local user, you have limited customization and deployment options. However, you don't need to worry about or manage the Kubernetes cluster control plane and installation directly. Base infrastructure-as-a-service (IaaS) cloud components, such as compute or networking components, allow you access to low-level controls and customization options.
 
 By contrast, AKS Arc provides a turnkey Kubernetes deployment that gives you the common set of configurations and capabilities you need for your cluster. With AKS Arc, you get a partially managed control plane. The control plane contains all of the components and services you need to operate and provide Kubernetes clusters to end users. Microsoft maintains all Kubernetes components.
 
