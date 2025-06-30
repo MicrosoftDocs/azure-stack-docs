@@ -2,7 +2,7 @@
 description: "Learn more about how to use the Health Service to monitor clusters"
 title: Monitor clusters with the Health Service
 ms.author: alkohli
-ms.topic: article
+ms.topic: how-to
 author: alkohli
 ms.date: 01/16/2025
 ---

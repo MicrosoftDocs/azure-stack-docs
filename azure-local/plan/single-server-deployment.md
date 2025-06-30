@@ -1,7 +1,7 @@
 ---
 title: Azure Local single node storage deployment network reference pattern
 description: Plan to deploy an Azure Local single-server storage network reference pattern.
-ms.topic: conceptual
+ms.topic: how-to
 author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
