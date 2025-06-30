@@ -21,7 +21,7 @@ AKS on Azure Local uses Azure Arc to create new Kubernetes clusters on Azure Loc
 
 The following Kubernetes cluster deployment and management capabilities are available:
 
-- **Pricing**: AKS is now included in Azure Local pricing, effective January 2025. This means that you only need to pay for Azure Local. There are no separate costs for running AKS clusters, including Linux and Windows node pools.
+- **Pricing**: AKS is now included in Azure Local pricing, effective January 2025. This means that you only need to pay for Azure Local.
 - **Simplified infrastructure deployment on Azure Local**. Infrastructure components of AKS Arc like Arc Resource Bridge, Custom Location and the Kubernetes Extension for the AKS Arc operator, are all deployed as part of the Azure Local. The whole lifecycle management of AKS Arc infrastructure follows the same approach as the other components on Azure Local.
 - **Cloud-based management**: Create and manage Kubernetes clusters on Azure Local with familiar tools such as the Azure portal, Azure CLI, Azure Resource Manager, and Bicep and Terraform templates.
 - **Arc Gateway integration**: Deploy AKS Arc clusters with pod-level Arc Proxy and communicate with the Arc gateway, reducing the list of outbound URLs to configure in an isolated network environment.

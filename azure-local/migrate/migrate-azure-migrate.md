@@ -3,7 +3,7 @@ title: Migrate Hyper V VMs to Azure Local using Azure Migrate (preview)
 description: Learn about how to to migrate Windows and Linux VMs to your Azure Local instance using Azure Migrate  (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 10/31/2024
+ms.date: 06/12/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.custom: linux-related-content
@@ -21,8 +21,8 @@ This article describes how to migrate Hyper-V virtual machines (VMs) to Azure Lo
 
 Before you migrate your VMs:
 
-- Make sure that you have replicated the VM on your Azure Local instance. To replicate a VM, use the instructions in [Replicate Hyper-V VMs to Azure Local using Azure Migrate](migrate-hyperv-replicate.md).
-- Make sure the replication has completed and the migration status is **Ready to migrate**.
+- Make sure that you replicate the VM on your Azure Local instance. To replicate a VM, use the instructions in [Replicate Hyper-V VMs to Azure Local using Azure Migrate](migrate-hyperv-replicate.md).
+- Make sure the replication is completed and that the migration status is **Ready to migrate**.
 
 
 ## Migrate VMs
@@ -69,7 +69,7 @@ Once the migration is complete, the VMs are running on your Azure Local instance
 ## Verify and complete migration
 
 > [!IMPORTANT]
-> After verifying the status of the migrated VM, be sure to **complete migration** as detailed below. Failing to do so may lead to unexpected behavior.
+> After verifying the status of the migrated VM, be sure to **complete migration** as follows. Failing to do so may lead to unexpected behavior.
 
 1. In the Azure portal, go to your Azure Local resource, then select **Virtual machines**.
 1. In the list of VMs in the right-pane, verify that the VMs that you migrated are present.
@@ -98,19 +98,19 @@ Once the migration is complete, the VMs are running on your Azure Local instance
 
     :::image type="content" source="./media/migrate-azure-migrate/complete-migration-virtual-machine-3.png" alt-text="Screenshot of confirmation to complete migration in Azure portal."lightbox="./media/migrate-azure-migrate/complete-migration-virtual-machine-3.png":::
 
-    The **Complete migrate** action starts the **Delete protected item** job that you can track from the  **Jobs**  page. This job will only clean up the replication by deleting the delete protected item job - this will not affect your migrated VM.  
+    The **Complete migrate** action starts the **Delete protected item** job that you can track from the  **Jobs**  page. This job only cleans up the replication by deleting the delete protected item job - this won't affect your migrated VM.  
     
     :::image type="content" source="./media/migrate-azure-migrate/complete-migration-virtual-machine-4.png" alt-text="Screenshot of Jobs page with deletion job selected in Azure portal."lightbox="./media/migrate-azure-migrate/complete-migration-virtual-machine-4.png":::
 
-    Completing the migration or deleting the protected item will automatically remove any leftover seed files, such as the seed.iso file attached to the migrated VM and seed disks used during replication. These files can occupy significant space on the target Azure Local system, so it's important to finalize the migration after verifying the VMs. If migrations are not completed, these files will continue to occupy space on the target system.
+    Completing the migration or deleting the protected item will automatically remove any leftover seed files, such as the seed.iso file attached to the migrated VM and seed disks used during replication. These files can occupy significant space on the target Azure Local system, so it's important to finalize the migration after verifying the VMs. If migrations aren't completed, these files continue to occupy space on the target system.
 
-    After the migrate resource is deleted, it is also removed from the **Replications** view. You'll also see the migrated VM job disappear from the **Replications** view.
+    After the migrate resource is deleted, it's also removed from the **Replications** view. You also see the migrated VM job disappear from the **Replications** view.
 
     :::image type="content" source="./media/migrate-azure-migrate/complete-migration-virtual-machine-5.png" alt-text="Screenshot of Replications page with VM not showing in the list in Azure portal."lightbox="./media/migrate-azure-migrate/complete-migration-virtual-machine-5.png":::
 
 ## Clean up
 
-Once you have verified that migration is complete and no more machines need to be migrated, the last step is to clean up. Cleanup requires deletion of the following resources created during migration:
+Once you verify that migration is complete and no more machines need to be migrated, the last step is to clean up. Cleanup requires deletion of the following resources created during migration:
 
 - Source VMs and the associated VM disks from the Hyper-V server and the Failover Cluster Manager.
 - Source and target appliance VMs.

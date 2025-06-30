@@ -3,7 +3,7 @@ title: Add scale unit nodes in Azure Stack Hub Ruggedized
 description: Learn how to add scale unit nodes to scale units in Azure Stack Hub Ruggedized.
 author: sethmanheim
 
-ms.topic: article
+ms.topic: how-to
 ms.date: 5/06/2021
 ms.author: sethm
 ms.reviewer: thoroet

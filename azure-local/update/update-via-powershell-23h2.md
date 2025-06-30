@@ -4,7 +4,7 @@ description: Learn how to use PowerShell to apply operating system, service, and
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 04/24/2025
+ms.date: 06/06/2025
 ---
 
 # Update Azure Local via PowerShell
@@ -34,6 +34,7 @@ When you apply a solution update, here are the high-level steps that you take:
 1. (Recommended) Predownload the updates and assess the update readiness of your system.
 1. Install the updates and track the progress of the updates. Monitor the detailed progress as needed.
 1. Verify the version of the updates installed.
+1. Install hardware updates.
 
 The time taken to install the updates varies based on the following factors:
 
@@ -578,6 +579,10 @@ After the updates are installed, verify the solution version of the environment 
     ```
 
     </details>
+
+## Step 9: Install hardware updates
+
+[!INCLUDE [azure-local-install-harware-updates](../includes/azure-local-install-harware-updates.md)]
 
 ## Next step
 

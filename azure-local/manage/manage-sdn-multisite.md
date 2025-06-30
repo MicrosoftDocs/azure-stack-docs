@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.subservice: 
 zone_pivot_groups: windows-os
-ms.date: 05/28/2025
+ms.date: 06/03/2025
 ---
 
 # Manage SDN Multisite for Azure Local and Windows Server
@@ -49,7 +49,7 @@ Before you can enable SDN Multisite, ensure the following prerequisites are met:
 
 - There must be an underlying [physical network connectivity](../concepts/plan-software-defined-networking-infrastructure.md#physical-and-logical-network-configuration) between the sites. Additionally, the provider network name must be the same on both sites.
 
-- SDN must be installed on both sites separately, using [Windows Admin Center](../deploy/sdn-wizard.md) or SDN Express scripts. Separate sites are required so that the SDN components, such as Network Controller VMs, Software Load Balancer Multiplexor VMs, and SDN Gateway VMs are unique to each site.
+- SDN must be installed on both sites separately, using [Windows Admin Center](../deploy/sdn-wizard.md) or [SDN Express scripts](./sdn-express.md). Separate sites are required so that the SDN components, such as Network Controller VMs, Software Load Balancer Multiplexor VMs, and SDN Gateway VMs are unique to each site.
 
 ::: zone-end
 
@@ -59,7 +59,7 @@ Before you can enable SDN Multisite, ensure the following prerequisites are met:
 
 - There must be an underlying [physical network connectivity](../concepts/plan-software-defined-networking-infrastructure.md?pivots=windows-server&context=/windows-server/context/windows-server-edge-networking#physical-and-logical-network-configuration) between the sites. Additionally, the provider network name must be the same on both sites.
 
-- SDN must be installed on both sites separately, using [Windows Admin Center](../deploy/sdn-wizard.md?pivots=windows-server&context=/windows-server/context/windows-server-edge-networking) or SDN Express scripts. Separate sites are required so that the SDN components, such as Network Controller VMs, Software Load Balancer Multiplexor VMs, and SDN Gateway VMs are unique to each site.
+- SDN must be installed on both sites separately, using [Windows Admin Center](../deploy/sdn-wizard.md?pivots=windows-server&context=/windows-server/context/windows-server-edge-networking) or [SDN Express scripts](./sdn-express.md?pivots=windows-server&context=/windows-server/context/windows-server-edge-networking). Separate sites are required so that the SDN components, such as Network Controller VMs, Software Load Balancer Multiplexor VMs, and SDN Gateway VMs are unique to each site.
 
 ::: zone-end
 

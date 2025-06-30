@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 03/18/2025
+ms.date: 06/06/2025
 ---
 
 # Manage resources for Azure Local VMs enabled by Azure Arc
@@ -78,6 +78,7 @@ You can expand an existing data disk to your desired size using Azure CLI.
 
 >[!NOTE]
 >
+>- This feature is available only in Azure Local version 2504 and later.
 >- The size you're changing the data disk to can't be the same or less than the original size of the data disk.
 >- The maximum size the disk can expand to depends on the storage capacity of the cluster. Hyper-V also imposes a VHD max of 2TB and VHDx max of 64TB.
 

@@ -3,7 +3,7 @@ title: Upgrade Azure Stack HCI OS, version 22H2 to version 23H2 via Windows Admi
 description: Learn how to upgrade Azure Stack HCI OS, version 22H2 to version 23H2 using Windows Admin Center.
 author: alkohli
 ms.topic: how-to
-ms.date: 05/21/2025
+ms.date: 06/06/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -98,6 +98,8 @@ To ensure Resilient File System (ReFS) and live migrations function properly dur
 
 1. Restart the machine for the changes to take effect. On machine restart, if the `RefsEnableMetadataValidation` key gets overridden and ReFS volumes fail to come online, toggle the key by first setting `RefsEnableMetadataValidation` to `1` and then back to `0` again.
 
+1. Update and verify that the registry keys have been applied on each machine in the system before moving to the next step.
+
 ## Step 1: Connect to Azure Local via Windows Admin Center
 
 Follow these steps to add and connect to an Azure Local machine via Windows Admin Center.
@@ -167,7 +169,6 @@ Follow these steps to install updates:
     - On the **Overview** page, select **Disable CredSSP**, and then, on the **Disable CredSSP** pop-up window, select **Yes**.
 
 You're now ready to perform the post-upgrade steps for your system.
-
 
 
 ## Next steps

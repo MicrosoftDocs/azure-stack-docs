@@ -4,7 +4,7 @@ titleSuffix: Azure Stack Hub
 description: Learn how to register Azure Stack Hub integrated systems with Azure so you can download Azure Marketplace items and set up data reporting.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 03/06/2025
+ms.date: 06/06/2025
 ms.author: sethm
 ms.custom:
   - devx-track-azurepowershell
@@ -227,7 +227,8 @@ Connected environments can access the internet and Azure. For these environments
       -BillingModel PayAsYouUse `
       -RegistrationName $RegistrationName
    ```
-   For more information on the Set-AzsRegistration cmdlet, see [Registration reference](#registration-reference).
+
+   For more information about the `Set-AzsRegistration` cmdlet, see the [Registration reference](#registration-reference).
 
 ---
 
@@ -237,7 +238,7 @@ Connected environments can access the internet and Azure. For these environments
 
 Use these steps to register Azure Stack Hub with Azure using the capacity billing model.
 
-> [!Note]
+> [!NOTE]
 > All these steps must be run from a computer that has access to the privileged endpoint (PEP). For details about the PEP, see [Using the privileged endpoint in Azure Stack Hub](azure-stack-privileged-endpoint.md).
 
 Connected environments can access the internet and Azure. For these environments, you need to register the Azure Stack Hub resource provider with Azure and then configure your billing model.
@@ -532,7 +533,10 @@ Set-AzsRegistration -PrivilegedEndpointCredential $YourCloudAdminCredential -Pri
 
 ### Change billing model, how features are offered, or re-register your instance
 
-This section applies if you want to change the billing model, how features are offered, or you want to re-register your instance. For all of these cases, you call the registration function to set the new values. You don't need to first remove the current registration. Sign in to the subscription ID shown in the [administrator portal](#verify-azure-stack-hub-registration), and then rerun registration with a new `BillingModel` value while keeping the `RegistrationName` and `ResourceGroupName` parameters values same as shown in the [administrator portal](#verify-azure-stack-hub-registration):
+This section applies if you want to change the billing model, how features are offered, or you want to re-register your instance. For all of these cases, you call the registration function to set the new values. You don't need to first remove the current registration. Sign in to the subscription ID shown in the [administrator portal](#verify-azure-stack-hub-registration), and then rerun registration with a new `BillingModel` value while keeping the `RegistrationName` and `ResourceGroupName` parameters values same as shown in the [administrator portal](#verify-azure-stack-hub-registration).
+
+> [!NOTE]
+> When changing to a capacity model, you need additional parameters to run the `Set-AzsRegistration` command. For more information, see [Register with capacity billing](#register-with-capacity-billing).
 
 ### [Az modules](#tab/az4)
 
