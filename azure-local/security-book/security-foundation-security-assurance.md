@@ -34,5 +34,5 @@ Comprehensive product security assessments will be done as new features are incl
 
 ## Related content
 
-- Certifications
-- Secure supply chain
+- [Certifications](security-foundation-certifications.md)
+- [Secure supply chain](security-foundation-secure-supply-chain.md)

@@ -64,5 +64,5 @@ It extends management to edge and multi-cloud and provides a single pane of glas
 
 ## Related content
 
-- Software updates
-- Ongoing compliance
+- [Ongoing compliance](operational-security-compliance.md)
+- [Updates](operational-security-updates.md)

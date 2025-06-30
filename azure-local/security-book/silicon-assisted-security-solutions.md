@@ -1,6 +1,6 @@
 ---
-title:  Azure Local hardware solutions
-description: Azure local hardware solutions for the Azure Local security book.
+title:  Azure Local solutions
+description: Azure local solutions for the Azure Local security book.
 author: alkohli
 ms.topic: conceptual
 ms.date: 06/16/2025
@@ -8,7 +8,7 @@ ms.author: alkohli
 ms.reviewer: alkohli
 ---
 
-# Azure Local hardware solutions
+# Azure Local solutions
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
@@ -20,4 +20,4 @@ Microsoft Hardware Solution Partners provide [Azure Local solution categories](h
 
 ## Related content
 
-- Secured core hardware
+- [Secured core hardware](silicon-assisted-security-secured-core.md)

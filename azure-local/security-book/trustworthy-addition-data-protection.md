@@ -34,4 +34,4 @@ Furthermore, Azure Local now supports granular control of encrypting intra-machi
 
 ## Related content
 
-- Security by default
+- [Trustworthy addition overview](trustworthy-addition-overview.md)

@@ -28,4 +28,3 @@ Microsoft, Azure, and Windows are either registered trademarks or trademarks of 
  
 © 2025 Microsoft Corporation. All rights reserved.
 
-## Related content

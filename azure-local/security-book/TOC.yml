@@ -21,7 +21,7 @@ items:
           href: trustworthy-addition-network-security.md
         - name: Malware protection
           href: trustworthy-addition-malware-protection.md
-        - name: Privacy controls
+        - name: Privacy
           href: trustworthy-addition-privacy.md
       - name: Operational security
         items:
@@ -29,7 +29,7 @@ items:
           href: operational-security-operations.md
         - name: Ongoing compliance
           href: operational-security-compliance.md
-        - name: Software updates
+        - name: Updates
           href: operational-security-updates.md
       - name: Workload security
         items:

@@ -37,5 +37,5 @@ To regularly update virtual machines running on your Azure Local, you can use Wi
  
 ## Related content
 
-- Ongoing operations
-- Ongoing compliance
+- [Ongoing operations](operational-security-operations.md)
+- [Ongoing compliance](operational-security-compliance.md)

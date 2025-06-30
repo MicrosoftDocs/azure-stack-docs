@@ -22,3 +22,5 @@ WDAC is enabled by default on Azure Local, and out of the box it includes a set 
 
 
 ## Related content
+
+- [Trustworthy addition overview](trustworthy-addition-overview.md)

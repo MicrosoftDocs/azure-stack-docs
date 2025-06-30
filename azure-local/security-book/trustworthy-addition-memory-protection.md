@@ -20,3 +20,5 @@ Memory integrity also restricts kernel memory allocations that could be used to 
 
 
 ## Related content
+
+- [Trustworthy addition overview](trustworthy-addition-overview.md)

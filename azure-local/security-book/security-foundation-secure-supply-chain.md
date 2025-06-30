@@ -20,5 +20,5 @@ Work started with the development of Software Bill of Materials (SBOM) from whic
 
 ## Related content
 
-- Security assurance
-- Certifications
+- [Security assurance](security-foundation-security-assurance.md)
+- [Certifications](security-foundation-certifications.md)

@@ -24,4 +24,4 @@ You can also use Microsoft Defender for Cloud to protect your workloads such as 
  
 ## Related content
 
-- Trusted launch for Azure Local VMs enabled by Azure Arc
+- [Trusted launch for Azure Local VMs enabled by Azure Arc](workload-security-trusted-launch.md)

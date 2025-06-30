@@ -34,11 +34,11 @@ Security compliance requires strict logging and auditing of security events. In 
   
 The integrated syslog forwarder, once configured, emits syslog messages as defined in RFC 3164, with the payload in Common Event Format (CEF).  All audits and security events are collected on each host and exported via syslog with CEF payload to a Syslog Server endpoint.  
 
-## Microsoft Defender for Cloud
+## Microsoft Defender for Cloud regulatory compliance
 
 Microsoft Defender for Cloud streamlines the process for meeting [regulatory compliance requirements](/azure/defender-for-cloud/update-regulatory-compliance-packages#what-regulatory-compliance-standards-are-available-in-defender-for-cloud), using the regulatory compliance dashboard. Defender for Cloud continuously assesses your hybrid cloud environment to analyze the risk factors according to the controls and best practices in the regulatory standards that you have applied to your subscriptions. The dashboard reflects the status of your compliance with those standards. The regulatory compliance dashboard provides insights into your compliance posture based on how you are meeting specific compliance requirements such as ISO 27001:2013, PCI DSS v4, and NIST SP 800-53 R5. 
 
 ## Related content
 
-- Ongoing operations
-- Security updates
+- [Ongoing operations](operational-security-operations.md)
+- [Updates](operational-security-updates.md)

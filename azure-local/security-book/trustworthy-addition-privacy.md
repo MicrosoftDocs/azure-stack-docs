@@ -1,6 +1,6 @@
 ---
-title:  Azure Local security book privacy controls
-description: Privacy controls for the Azure Local security book.
+title:  Azure Local security book privacy
+description: Privacy for the Azure Local security book.
 author: alkohli
 ms.topic: conceptual
 ms.date: 06/16/2025
@@ -8,7 +8,7 @@ ms.author: alkohli
 ms.reviewer: alkohli
 ---
 
-# Privacy controls
+# Privacy
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
@@ -18,3 +18,5 @@ Azure Local collects the minimum data required to keep the system current, secur
 
 
 ## Related content
+
+- [Trustworthy addition overview](trustworthy-addition-overview.md)

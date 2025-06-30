@@ -21,4 +21,4 @@ With standard VMs, vTPM state is not preserved when a VM migrates or fails over 
 
 ## Related content
 
-- Continuous monitoring
+- [Continuous monitoring](workload-security-monitoring.md)

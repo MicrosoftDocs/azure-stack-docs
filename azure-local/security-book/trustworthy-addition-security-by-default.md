@@ -14,7 +14,7 @@ ms.reviewer: alkohli
 
 :::image type="content" source="./media/trustworthy/security-diagram-trustworthy.png" alt-text="Diagram illustrating system security layer." lightbox="./media/trustworthy/security-diagram-trustworthy.png":::
 
-## Security baselines
+## Security baselines and best practices enabled by default
 
 By default, Azure Local enables [security baseline settings](/azure/azure-local/manage/manage-secure-baseline) and security best practices based on Microsoft recommended security baselines and industry best practices. A tailored security baseline with over 300 security settings is enforced with a drift control mechanism which ensures that the system starts and remains in a known good security state.
 
@@ -24,11 +24,11 @@ This security baseline enables you to closely meet the Center for Internet Secur
 
 Insecure protocols such as TLS versions less than 1.2, DTLS versions less than 1.2, SMB 1.0, and WDigest which have inherent vulnerabilities are disabled by default in Azure Local.  
 
-## Secure protocols and standards
+## Use of secure protocols and cryptographic standards
 
 Azure Local uses secure protocols such as Transport Layer Security (TLS) versions 1.2 or higher, Datagram Transport Layer Security (DTLS) versions 1.2 or higher, and Server Messaging Blok (SMB) 2.0 or higher. It supports National Institute of Standards and Technology (NIST) [guidelines for cryptographic standards](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-175Br1.pdf).
 
-## Speculative side-channel vulnerabilities
+## Mitigations for speculative side-channel hardware vulnerabilities
 
 Modern CPUs achieve performance by using idle CPU cycles to perform speculative and out of order execution of instructions. For instance, the CPU may predict the target of a branch instruction and speculatively execute the instructions at the predicted branch target.
 
@@ -36,3 +36,5 @@ If the CPU later discovers that the branch prediction was incorrect, all the mac
 
 
 ## Related content
+
+- [Trustworthy addition overview](trustworthy-addition-overview.md)

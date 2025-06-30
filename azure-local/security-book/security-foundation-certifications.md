@@ -32,5 +32,5 @@ Microsoft provides Azure Local as a commercial-off-the-shelf hybrid infrastructu
 
 ## Related content
 
-- Security assurance
-- Secure supply chain
+- [Security assurance](security-foundation-security-assurance.md)
+- [Secure supply chain](security-foundation-secure-supply-chain.md)

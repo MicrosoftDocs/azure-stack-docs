@@ -21,5 +21,6 @@ Our goal is to empower customers to achieve their security requirements, regardl
 With this change, customers do not have to burden themselves with the mechanics of enabling the various security capabilities, at least not for most of the well-known security requirements. From a customer standpoint, security "just works". 
 
 
-
 ## Related content
+
+- [Security by default](trustworthy-addition-security-by-default.md)

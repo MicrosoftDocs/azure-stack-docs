@@ -49,4 +49,4 @@ Enabling Secured-core functionality helps proactively defend against and disrupt
 
 ## Related content
 
-- Azure Local solutions
+- [Azure Local solutions](silicon-assisted-security-solutions.md)

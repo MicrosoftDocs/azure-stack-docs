@@ -38,4 +38,4 @@ Azure Local is designed to help defend against modern threats and was built to m
 
 ## Related content
 
-
+- [Trustworthy addition](trustworthy-addition-overview.md)
