@@ -81,13 +81,6 @@ To enable remote support on your Azure Local, follow these steps:
     PS C:\Users\Administrator> etsn -ComputerName v-host1 -Credential $cred
     ```
 
-    > [!NOTE]
-    > First time users, if you enable Remote Support through a remote PowerShell session, you might receive the following error:
-    >
-    > `Processing data from remote server NodeName failed with the following error message: The I/O operation has been aborted because of either a thread exit or an application request.`
-    >
-    > For more information, see [Error handling](#error-handling).
-
 3. To enable remote support, run this command:
 
     ```powershell
@@ -123,6 +116,13 @@ To enable remote support on your Azure Local, follow these steps:
     ExpiresAt              : 9/7/2023 10:05:50 PM +00:00
     SasCredential          :
     ```
+
+> [!NOTE]
+    > First time users, if you enable Remote Support through a remote PowerShell session, you might receive the following error:
+    >
+    > `Processing data from remote server NodeName failed with the following error message: The I/O operation has been aborted because of either a thread exit or an application request.`
+    >
+    > For more information, see [Error handling](#error-handling).
 
 There are various operations that you can perform to grant remote access for Microsoft support, after you enable remote support. The next sections detail some examples of those operations.
 
