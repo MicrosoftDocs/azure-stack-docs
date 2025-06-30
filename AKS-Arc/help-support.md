@@ -1,13 +1,13 @@
 ---
 title: Get support for AKS on Azure Local
 description: Learn about how to get support and open a support request for AKS on Azure Local.
+author: sethmanheim
 ms.topic: how-to
-ms.date: 06/27/2025
+ms.date: 06/30/2025
 ms.custom: fasttrack-edit
 ms.author: sethm 
 ms.reviewer: abha
-ms.lastreviewed: 1/14/2022
-author: sethmanheim
+ms.lastreviewed: 06/30/2025
 
 # Intent: As an IT Pro, I want to find out what options are available to get help and support, such as creating a ticket.
 # Keyword: AKS support AKS help support requests
@@ -51,7 +51,7 @@ If you encounter an issue with AKS on Azure Local, this article describes how to
 
     :::image type="content" source="media/help-support/solutions-page.png" alt-text="Screenshot of proposed solutions." lightbox="media/help-support/solutions-page.png":::
 
-1. If the solutions are not applicable, select **Create a support request** at the top of the page.
+1. If you made a mistake or want to choose a different problem type, select **Start again** at the top of the page. If the issues and solutions are not applicable, select **Create a support request** at the top of the page.
 
 1. Select **Next**.
 1. From the dropdown, select the **Technical** issue type:
