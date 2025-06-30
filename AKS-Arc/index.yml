@@ -6,7 +6,6 @@ summary: Azure Kubernetes Service (AKS), enabled by Arc, extends Azure Kubernete
 metadata:
   title: Azure Kubernetes Service (AKS) enabled by Azure Arc documentation
   description: Azure Kubernetes Service (AKS), enabled by Arc, extends Azure Kubernetes Service to your on-premises environment. AKS is available on Azure Local, Windows Server, Windows IoT, and Windows 11 Enterprise/Pro.
-  ms.service: azure-local
   ms.topic: landing-page
   author: sethmanheim
   ms.author: sethm 
