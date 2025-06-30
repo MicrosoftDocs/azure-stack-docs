@@ -26,7 +26,7 @@ This issue is caused by [a GitHub bug](https://github.com/Azure/kubelogin/issues
 
 To mitigate this issue, you can use one of the following two methods:
 
-- Downgrade **kubelogin** to version 1.9.0. This stable version does not have the bug that causes repeated authentication prompts. You can [download this version from the GitHub repository](https://github.com/int128/kubelogin/releases/tag/v1.9.0). Select the appropriate asset for your OS or architecture, extract it, and replace your existing **kubelogin** binary.
+- Downgrade **kubelogin** to version 0.1.9. This stable version does not have the bug that causes repeated authentication prompts. You can [download this version from the GitHub repository](https://github.com/Azure/kubelogin/releases/tag/v0.1.9). Select the appropriate asset for your OS or architecture, extract it, and replace your existing **kubelogin** binary.
 - Alternatively, if you have administrator permissions, you can use the `--admin` flag with the `az aksarc get-credentials` command. This method bypasses **kubelogin** authentication by retrieving admin credentials directly:
 
   ```azurecli

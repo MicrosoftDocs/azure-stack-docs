@@ -161,12 +161,14 @@
       href: aks-troubleshoot.md
     - name: AKS on Azure Local support policy
       href: aks-on-azure-local-support-policy.md
+    - name: Get support
+      href: help-support.md
+    - name: Use diagnostic checker
+      href: aks-arc-diagnostic-checker.md
     - name: Control plane configuration validation errors
       href: control-plane-validation-errors.md
     - name: K8sVersionValidation error
       href: cluster-k8s-version.md
-    - name: Use diagnostic checker
-      href: aks-arc-diagnostic-checker.md
     - name: KubeAPIServer unreachable error
       href: kube-api-server-unreachable.md
     - name: Can't create/scale AKS cluster due to image issues
@@ -195,6 +197,8 @@
       href: entra-prompts.md
     - name: BGP with FRR not working
       href: connectivity-troubleshoot.md
+    - name: Cluster status stuck during upgrade
+      href: cluster-upgrade-status.md
   - name: Reference
     items:
     - name: Azure CLI
@@ -607,8 +611,6 @@
       href: known-issues.yml
     - name: Support policies
       href: support-policies.md
-    - name: Get support
-      href: help-support.md
     - name: File bugs
       href: https://aka.ms/AKS-hybrid-issues
     - name: Release notes
