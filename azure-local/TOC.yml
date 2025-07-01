@@ -102,7 +102,7 @@ items:
     - name: About security features
       href: concepts/security-features.md
     - name: Azure Local security book
-      href: security-book/TOC.yml
+      href: security-book/overview.md
   - name: Assess environment readiness
     href: manage/use-environment-checker.md
   - name: Configure advanced Active Directory settings

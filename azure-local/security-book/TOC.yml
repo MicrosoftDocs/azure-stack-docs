@@ -1,57 +1,55 @@
 items:
-    - name: Azure Local security book
-      items:
-      - name: Overview
-        href: overview.md
-      - name: Trustworthy addition
-        items:
-        - name: Overview
-          href: trustworthy-addition-overview.md
-        - name: Security by default
-          href: trustworthy-addition-security-by-default.md
-        - name: Application control
-          href: trustworthy-addition-application-control.md
-        - name: Credential protection
-          href: trustworthy-addition-credential-protection.md
-        - name: Memory protection
-          href: trustworthy-addition-memory-protection.md
-        - name: Data protection
-          href: trustworthy-addition-data-protection.md
-        - name: Network security
-          href: trustworthy-addition-network-security.md
-        - name: Malware protection
-          href: trustworthy-addition-malware-protection.md
-        - name: Privacy
-          href: trustworthy-addition-privacy.md
-      - name: Operational security
-        items:
-        - name: Ongoing operations
-          href: operational-security-operations.md
-        - name: Ongoing compliance
-          href: operational-security-compliance.md
-        - name: Updates
-          href: operational-security-updates.md
-      - name: Workload security
-        items:
-        - name: Trusted launch for Azure Local VMs
-          href: workload-security-trusted-launch.md
-        - name: Continuous monitoring
-          href: workload-security-monitoring.md
-      - name: Silicon assisted security
-        items:
-        - name: Secured core hardware
-          href: silicon-assisted-security-secured-core.md
-        - name: Azure Local solutions
-          href: silicon-assisted-security-solutions.md
-      - name: Security foundation
-        items:
-        - name: Security assurance
-          href: security-foundation-security-assurance.md
-        - name: Certifications
-          href: security-foundation-certifications.md
-        - name: Secure supply chain
-          href: security-foundation-secure-supply-chain.md
-      - name: Conclusion
-        href: conclusion.md
+- name: Overview
+  href: overview.md
+- name: Trustworthy addition
+  items:
+  - name: Overview
+    href: trustworthy-addition-overview.md
+  - name: Security by default
+    href: trustworthy-addition-security-by-default.md
+  - name: Application control
+    href: trustworthy-addition-application-control.md
+  - name: Credential protection
+    href: trustworthy-addition-credential-protection.md
+  - name: Memory protection
+    href: trustworthy-addition-memory-protection.md
+  - name: Data protection
+    href: trustworthy-addition-data-protection.md
+  - name: Network security
+    href: trustworthy-addition-network-security.md
+  - name: Malware protection
+    href: trustworthy-addition-malware-protection.md
+  - name: Privacy
+    href: trustworthy-addition-privacy.md
+- name: Operational security
+  items:
+  - name: Ongoing operations
+    href: operational-security-operations.md
+  - name: Ongoing compliance
+    href: operational-security-compliance.md
+  - name: Updates
+    href: operational-security-updates.md
+- name: Workload security
+  items:
+  - name: Trusted launch for Azure Local VMs
+    href: workload-security-trusted-launch.md
+  - name: Continuous monitoring
+    href: workload-security-monitoring.md
+- name: Silicon assisted security
+  items:
+  - name: Secured core hardware
+    href: silicon-assisted-security-secured-core.md
+  - name: Azure Local solutions
+    href: silicon-assisted-security-solutions.md
+- name: Security foundation
+  items:
+  - name: Security assurance
+    href: security-foundation-security-assurance.md
+  - name: Certifications
+    href: security-foundation-certifications.md
+  - name: Secure supply chain
+    href: security-foundation-secure-supply-chain.md
+- name: Conclusion
+  href: conclusion.md
 
 
