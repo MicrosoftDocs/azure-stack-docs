@@ -159,6 +159,8 @@
     items:
     - name: Troubleshoot and known issues
       href: aks-troubleshoot.md
+    - name: AKS on Azure Local support policy
+      href: aks-on-azure-local-support-policy.md
     - name: Get support
       href: help-support.md
     - name: Use diagnostic checker
