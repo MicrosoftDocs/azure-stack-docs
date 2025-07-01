@@ -17,6 +17,27 @@ During your AKS Arc cluster's lifecycle, you might need to directly access clust
 
 This article explains how to use SSH to connect to both Windows and Linux nodes.
 
+## Prerequisite
+### **Install the Kubernetes CLI**
+
+You will use the Kubernetes CLI, [`kubectl`][kubectl], to connect to your Kubernetes cluster. If you use the Azure Cloud Shell, `kubectl` is already installed. If you're running the commands locally, you can use the Azure CLI or Azure PowerShell to install `kubectl`.
+
+### [Azure CLI](#tab/azure-cli)
+
+* Install `kubectl` locally using the [`az aks install-cli`][/cli/azure/aks?view=azure-cli-latest#az-aks-install-cli] command.
+
+    ```azurecli-interactive
+    az aks install-cli
+    ```
+
+### [Azure PowerShell](#tab/azure-powershell)
+
+* Install `kubectl` locally using the [`Install-AzAksCliTool`][/powershell/module/az.aks/install-azaksclitool?view=azps-14.2.0] cmdlet.
+
+    ```azurepowershell-interactive
+    Install-AzAksCliTool
+    ```
+
 ## Use SSH to connect to worker nodes
 
 1. To access the Kubernetes cluster with the specified permissions, you must retrieve the certificate-based admin **kubeconfig** file using the [az aksarc get-credentials](/cli/azure/aksarc#az-aksarc-get-credentials) command. For more information, see [Retrieve certificate-based admin kubeconfig](retrieve-admin-kubeconfig.md):
