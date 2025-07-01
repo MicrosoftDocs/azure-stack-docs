@@ -177,7 +177,7 @@ To resolve this issue, follow these steps:
 1. Select **OK** on the warning popup. Or, go to **System Properties** > **Advanced** > **Performance** > **Settings** to open the **Performance Options** window.
 1. In the **Performance Options** window, select **Change** under the **Virtual memory** section.
 
-    :::image type="content" source="./media/troubleshoot-arc-enabled-vms/temporary-paging-file-1.png" alt-text="Screenshot of the Performance Options window highlighing the Change button." lightbox="./media/troubleshoot-arc-enabled-vms/temporary-paging-file-1.png":::
+    :::image type="content" source="./media/troubleshoot-arc-enabled-vms/temporary-paging-file-1.png" alt-text="Screenshot of the Performance Options window highlighting the Change button." lightbox="./media/troubleshoot-arc-enabled-vms/temporary-paging-file-1.png":::
 
 1. In the **Virtual Memory** window, select **System managed size**.  Also ensure that the **Automatically manage paging file size for all drives** checkbox is cleared.
 
