@@ -47,7 +47,7 @@
   - name: Quickstarts
     items:
     - name: Jumpstart HCIBox (external link)
-      href: https://arcjumpstart.com/azure_jumpstart_hcibox/getting_started
+      href: https://jumpstart.azure.com/azure_arc_jumpstart
   - name: How-to
     items:
     - name: Create Kubernetes clusters
@@ -159,12 +159,16 @@
     items:
     - name: Troubleshoot and known issues
       href: aks-troubleshoot.md
+    - name: AKS on Azure Local support policy
+      href: aks-on-azure-local-support-policy.md
+    - name: Get support
+      href: help-support.md
+    - name: Use diagnostic checker
+      href: aks-arc-diagnostic-checker.md
     - name: Control plane configuration validation errors
       href: control-plane-validation-errors.md
     - name: K8sVersionValidation error
       href: cluster-k8s-version.md
-    - name: Use diagnostic checker
-      href: aks-arc-diagnostic-checker.md
     - name: KubeAPIServer unreachable error
       href: kube-api-server-unreachable.md
     - name: Can't create/scale AKS cluster due to image issues
@@ -189,8 +193,12 @@
       href: network-validation-errors.md
     - name: Network validation error due to .local domain
       href: network-validation-error-local.md
+    - name: Entra authentication prompts when running kubectl
+      href: entra-prompts.md
     - name: BGP with FRR not working
       href: connectivity-troubleshoot.md
+    - name: Cluster status stuck during upgrade
+      href: cluster-upgrade-status.md
   - name: Reference
     items:
     - name: Azure CLI
@@ -603,8 +611,6 @@
       href: known-issues.yml
     - name: Support policies
       href: support-policies.md
-    - name: Get support
-      href: help-support.md
     - name: File bugs
       href: https://aka.ms/AKS-hybrid-issues
     - name: Release notes
