@@ -4,7 +4,7 @@ description: Troubleshoot and resolve common Azure Local SDN network controller 
 author: alkohli
 contributors:
 ms.topic: concept-article
-ms.date: 06/16/2025
+ms.date: 07/02/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
