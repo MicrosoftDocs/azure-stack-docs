@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 02/03/2025
+ms.date: 06/23/2025
 ---
 
 # Manage security defaults for Azure Local
@@ -46,7 +46,7 @@ The following table explains the rules that aren't compliant and the rationale o
 
 ### Fixing the compliance for the rules
 
-To fix the compliance for the rules, run the following commands or use any other tool you prefer: 
+To fix the compliance for the rules, run the following commands or use any other tool you prefer:
 
 1. **Legal notice**: Create a custom value for legal notice depending on your organization's needs and policies. Run the following commands:
 
@@ -55,7 +55,7 @@ To fix the compliance for the rules, run the following commands or use any other
     Set-ItemProperty -Path "HKLM:\Software\Microsoft\Windows\CurrentVersion\Policies\System" -Name "LegalNoticeText" -Value "LegalNoticeText"
     ```
 
-1. **Minimum password length**: Set the minimum password length policy to 14 characthers on the Azure Local machine. The default value is 7, and any value below 14 is still flagged by the monitoring baseline policy. Run the following commands:
+1. **Minimum password length**: Set the minimum password length policy to 14 characters on the Azure Local machine. The default value is 7, and any value below 14 is still flagged by the monitoring baseline policy. Run the following commands:
 
     ```PowerShell
     net accounts /minpwlen:14
@@ -63,7 +63,17 @@ To fix the compliance for the rules, run the following commands or use any other
 
 ## Manage security defaults with PowerShell
 
-With drift protection enabled, you can only modify nonprotected security settings. To modify protected security settings that form the baseline, you must first disable drift protection. To view and download the complete list of security settings, see [Security Baseline](https://aka.ms/hci-securitybase).
+With drift protection enabled, you can only modify nonprotected security settings. To modify protected security settings that form the baseline, you must first disable drift protection.
+
+### View and download security settings
+
+Use the following table to view and download the complete list of security settings based on the software version you are running.
+
+| Azure Local solution version             | Running Azure Local OS version                       | Download link for settings csv file |
+|------------------------------------------|-------------------------------------------|-------------------------------------|
+| 2505 existing deployments                | Running OS build 25398.xxxx and domain-joined                      | [Download security baseline](https://aka.ms/SecBase) |
+| 2506 new deployments                     | Running OS build 26100.xxxx and domain-joined     | [Download security baseline](https://aka.ms/SecBaseDomJoin) |
+| 2506 existing deployments                | Running OS build 26100.xxxx and not domain-joined (also known as AD-less)    | [Download security baseline](https://aka.ms/SecBaseAdless) |
 
 ## Modify security defaults
 
