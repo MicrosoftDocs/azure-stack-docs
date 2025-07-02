@@ -198,7 +198,7 @@ On the **Configuration** tab, choose whether to create a new configuration for t
     This domain user account was created when the domain was prepared for deployment.
 1. Enter the **Local administrator** credentials for the machines.
 
-    The credentials must be identical on all machines in the system.  If the current password doesn't meet the complexity requirements (12+ characters long, a lowercase and uppercase character, a numeral, and a special character), you must change it on all machines before proceeding.
+    The credentials must be identical on all machines in the system.  If the current password doesn't meet the complexity requirements (14+ characters long, a lowercase and uppercase character, a numeral, and a special character), you must change it on all machines before proceeding.
 
     :::image type="content" source="./media/deploy-via-portal/management-tab-1.png" alt-text="Screenshot of the Management tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/management-tab-1.png":::
 

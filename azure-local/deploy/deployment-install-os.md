@@ -21,7 +21,7 @@ Before you begin, make sure you do the following steps:
 
 - Satisfy the [prerequisites](./deployment-prerequisites.md).
 - Prepare your [Active Directory](./deployment-prep-active-directory.md) environment.
-- Make sure to keep a password handy to use to sign in to the operating system. This password must conform to the length and complexity requirements. Use a password that is at least 12 characters long and contains a lowercase character, an uppercase character, a numeral, and a special character.
+- Make sure to keep a password handy to use to sign in to the operating system. This password must conform to the length and complexity requirements. Use a password that is at least 14 characters long and contains a lowercase character, an uppercase character, a numeral, and a special character.
 
 ## Boot and install the operating system
 
@@ -65,7 +65,7 @@ To install the operating system, follow these steps:
 1. At the **Enter new credential** for Administrator prompt, enter a new password.
 
     > [!IMPORTANT]
-    > Make sure that the local administrator password follows Azure password length and complexity requirements. Use a password that is at least 12 characters long and contains a lowercase character, an uppercase character, a numeral, and a special character.
+    > Make sure that the local administrator password follows Azure password length and complexity requirements. Use a password that is at least 14 characters long and contains a lowercase character, an uppercase character, a numeral, and a special character.
 
     Enter the password again to confirm it, then press **Enter**.
 
@@ -143,7 +143,7 @@ Follow these steps to configure the operating system using SConfig:
 7. Set the local administrator credentials to be identical across all machines.
 
     > [!NOTE]
-    > - Make sure that the local administrator password follows Azure password length and complexity requirements. Use a password that is at least 12 characters long and contains a lowercase character, an uppercase character, a numeral, and a special character.
+    > - Make sure that the local administrator password follows Azure password length and complexity requirements. Use a password that is at least 14 characters long and contains a lowercase character, an uppercase character, a numeral, and a special character.
     > - Do not join the machines with the Azure Stack HCI operating system installed, to the Active Directory domain prior to cloud deployment. The machines are automatically joined to a domain during the [Deployment via Azure portal](./deploy-via-portal.md).
 
 ## Install required Windows roles
