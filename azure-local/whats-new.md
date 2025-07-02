@@ -1,6 +1,6 @@
 ---
 title: What's new in Azure Local latest release
-description: Find out what are the new features and enhancements in the latest Azure Local release.
+description: Find out what the new features and enhancements are in the latest Azure Local release.
 ms.topic: overview
 author: alkohli
 ms.author: alkohli
