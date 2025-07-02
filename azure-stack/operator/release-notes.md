@@ -111,7 +111,7 @@ When you update to a new major version (for example, 1.2108.x to 1.2206.x), the 
 
 After the installation of 2501, if any hotfixes for 2501 are subsequently released, you should install them:
 
-- [Azure Stack Hub hotfix 1.2501.1.40](hotfix-1-2501-1-40.md)
+- [Azure Stack Hub hotfix 1.2501.1.47](hotfix-1-2501-1-47.md)
 ::: moniker-end
 
 ::: moniker range="azs-2408"
