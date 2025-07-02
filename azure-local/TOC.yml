@@ -167,7 +167,7 @@ items:
 
 - name: Enable
   items:
-  - name: SDN enabled by Azure Arc (Preview)
+  - name: SDN enabled by Azure Arc
     items:
     - name: Overview
       href: concepts/sdn-overview.md
