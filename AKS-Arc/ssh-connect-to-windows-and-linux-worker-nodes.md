@@ -21,7 +21,7 @@ This article explains how to use SSH to connect to both Windows and Linux nodes.
 
 ### **Install the Kubernetes CLI**
 
-You can use the Kubernetes CLI, [**kubectl**][kubectl], to connect to your Kubernetes cluster. If you use Azure Cloud Shell, **kubectl** is already installed. If you run the commands locally, you can use the Azure CLI or Azure PowerShell to install **kubectl**.
+You can use the Kubernetes CLI, [**kubectl**](https://kubernetes.io/docs/reference/kubectl/), to connect to your Kubernetes cluster. If you use Azure Cloud Shell, **kubectl** is already installed. If you run the commands locally, you can use the Azure CLI or Azure PowerShell to install **kubectl**.
 
 ### [Azure CLI](#tab/azure-cli)
 
