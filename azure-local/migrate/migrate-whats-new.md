@@ -4,7 +4,7 @@ description: Learn about new features for Azure Migrate on Azure Local.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 06/27/2025
+ms.date: 07/02/2025
 ms.service: azure-local
 ---
 
@@ -17,10 +17,10 @@ This article lists the various features and improvements that are available in V
 
 This release includes these features and improvements:
 
-- Improved service error messages, recommended actions, and [troubleshooting guidance](./migrate-troubleshoot.md).
-- Fixed a bug that shows `Not Found` errors for missing Azure Local resources.
-- Updated appliance error messages to correctly identify which migrate appliance is unresponsive.
-- Enabled static IP migrations to support multiple IP pools on a single logical network.
+- **Improved error messaging** - Improved service error messaging, recommended actions, and [troubleshooting guidance](./migrate-troubleshoot.md).
+- **Bug fix for missing resources** – Fixed bug to surface `NotFound` errors for missing Azure Local resources.
+- **Appliance error improvements** – Updated appliance error messages to correctly identify which migrate appliance is unresponsive.
+- **Static IP support enhancements** – Enabled static IP migrations to support multiple IP pools on a single logical network.
 
 
 ## April 2025
