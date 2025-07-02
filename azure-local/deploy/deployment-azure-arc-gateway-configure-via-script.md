@@ -10,9 +10,9 @@ ms.service: azure-local
 
 # Configure Arc proxy via registration script for Azure gateway on Azure Local (preview)
 
-::: moniker range=">=azloc-24111"
+::: moniker range=">=azloc-2505"
 
-Applies to: Azure Local 2411.1 and later
+Applies to: Azure Local 2505 and later
 
 After creating the Arc gateway resource in your Azure subscription, you can enable the new Arc gateway preview features. This article details how to configure the Arc proxy before Arc registration using a registration script for the Arc gateway on Azure Local.
 
@@ -24,7 +24,7 @@ Using this method, you don't need to configure the Arc proxy across WinInet, Win
 
 Make sure the following prerequisites are met before proceeding:
 
-- You've access to an Azure Local instance running release 2411.1 or later. Prior versions do not support this scenario.
+- You've access to an Azure Local instance running release 2505 or later. Prior versions do not support this scenario.
 
 - An Arc gateway resource created in the same subscription as used to deploy Azure Local. For more information, see [Create the Arc gateway resource in Azure](deployment-azure-arc-gateway-overview.md#create-the-arc-gateway-resource-in-azure).
 
@@ -34,8 +34,7 @@ You need the proxy and the ArcGatewayID from Azure to run the registration scrip
 
 ## Step 2: Register new machines in Azure Arc
 
-To register new version 2408 or version 2411 machines in Azure Arc, you run
-the initialization script by passing the `ArcGatewayID`, `Proxy server`, and `Proxy bypass list` parameters.
+To register version 2505 or later Azure Local machines in Azure Arc, you run the initialization script by passing the `ArcGatewayID`, `Proxy server`, and `Proxy bypass list` parameters. During the bootstrap configuration you will be required to authenticate with your credentials using the device code.
 
 Here's an example of how you should change these parameters for the `Invoke-AzStackHciArcInitialization` initialization script. Once registration is completed, the Azure Local machines are registered in Azure Arc using the Arc gateway:
 
@@ -45,9 +44,6 @@ $Subscription = "yoursubscription"
 
 #Define the resource group where you want to register your server as Arc device.
 $RG = "yourresourcegroupname" 
-
-#Define the tenant to use to register your server as Arc device. 
-$Tenant = "yourtenant" 
 
 #Define Proxy Server if necessary 
 $ProxyServer = "http://x.x.x.x:port" 
@@ -64,17 +60,8 @@ $ArcgwId = "/subscriptions/yourarcgatewayid/resourceGroups/yourresourcegroupname
 
 $ProxyBypassList = "localhost,127.0.0.1,*.contoso.com,machine1,machine2,machine3,machine4,machine5,192.168.*.*,AzureLocal-1" 
 
-#Connect to your Azure account and Subscription 
-Connect-AzAccount -SubscriptionId $Subscription -TenantId $Tenant -DeviceCode 
-
-#Get the Access Token and Account ID for the registration 
-$ARMtoken = (Get-AzAccessToken).Token 
-
-#Get the Account ID for the registration 
-$id = (Get-AzContext).Account.Id 
-
 #Invoke the registration script with Proxy and ArcgatewayID 
-Invoke-AzStackHciArcInitialization -SubscriptionID $Subscription -ResourceGroup $RG -TenantID $Tenant -Region australiaeast -Cloud "AzureCloud" -ArmAccessToken $ARMtoken -AccountID $id -Proxy $ProxyServer -ArcGatewayID $ArcgwId -ProxyBypass $ProxyBypassList 
+Invoke-AzStackHciArcInitialization -SubscriptionID $Subscription -ResourceGroup $RG -Region australiaeast -Cloud "AzureCloud" -Proxy $ProxyServer -ArcGatewayID $ArcgwId -ProxyBypass $ProxyBypassList 
 ```
 
 ## Step 3: Verify that the setup succeeded
