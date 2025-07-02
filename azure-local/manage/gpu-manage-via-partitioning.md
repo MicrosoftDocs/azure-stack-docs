@@ -39,7 +39,7 @@ Consider the following limitations when using the GPU-P feature:
 
 ## Prerequisites
 
-- See [Prepare GPUs for Azure Local](./gpu-manage-via-partitioning.md) for requirements and to prepare your Azure Local VMs, and to ensure that your GPUs are prepared and partitioned.
+- See [Prepare GPUs for Azure Local](gpu-preparation.md) for requirements and to prepare your Azure Local VMs, and to ensure that your GPUs are prepared and partitioned.
 
 ## Attach a GPU during Azure Local VM creation
 
