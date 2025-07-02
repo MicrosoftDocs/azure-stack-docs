@@ -45,9 +45,6 @@ $Subscription = "yoursubscription"
 #Define the resource group where you want to register your server as Arc device.
 $RG = "yourresourcegroupname" 
 
-#Define the tenant to use to register your server as Arc device. 
-$Tenant = "yourtenant" 
-
 #Define Proxy Server if necessary 
 $ProxyServer = "http://x.x.x.x:port" 
 

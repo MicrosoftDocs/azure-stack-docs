@@ -44,9 +44,6 @@ $Subscription = "yoursubscription"
 #Define the resource group where you want to register your server as Arc device.
 $RG = "yourresourcegroupname"
 
-#Define the tenant you will use to register your server as Arc device.
-$Tenant = "yourtenant"
- 
 #Define the Arc gateway resource ID from Azure
 $ArcgwId = "/subscriptions/yourarcgatewayid/resourceGroups/yourresourcegroupname/providers/Microsoft.HybridCompute/gateways/yourarcgatewayname"
 
