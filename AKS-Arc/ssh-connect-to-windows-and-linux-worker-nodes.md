@@ -25,7 +25,7 @@ You can use the Kubernetes CLI, [**kubectl**](https://kubernetes.io/docs/referen
 
 ### [Azure CLI](#tab/azure-cli)
 
-* Install **kubectl** locally using the [`az aks install-cli`](/cli/azure/aks?view=azure-cli-latest#az-aks-install-cli) command:
+* Install **kubectl** locally using the [`az aks install-cli`](/cli/azure/aks?view=azure-cli-latest&preserve-view=true#az-aks-install-cli) command:
 
   ```azurecli-interactive
   az aks install-cli
@@ -33,7 +33,7 @@ You can use the Kubernetes CLI, [**kubectl**](https://kubernetes.io/docs/referen
 
 ### [Azure PowerShell](#tab/azure-powershell)
 
-* Install **kubectl** locally using the [`Install-AzAksCliTool`](/powershell/module/az.aks/install-azaksclitool?view=azps-14.2.0) cmdlet:
+* Install **kubectl** locally using the [`Install-AzAksCliTool`](/powershell/module/az.aks/install-azaksclitool?view=azps-14.2.0&preserve-view=true) cmdlet:
 
   ```azurepowershell-interactive
   Install-AzAksCliTool
