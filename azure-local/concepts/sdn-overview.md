@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: conceptual
 ms.service: azure-local
-ms.date: 06/24/2025
+ms.date: 07/02/2025
 ---
 
 # Software Defined Networking enabled by Azure Arc on Azure Local (Preview)

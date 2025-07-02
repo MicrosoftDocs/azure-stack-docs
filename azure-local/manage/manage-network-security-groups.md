@@ -4,7 +4,7 @@ description: Learn how to manage network security groups and network security ru
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 06/24/2025
+ms.date: 07/02/2025
 ms.service: azure-local
 ---
 

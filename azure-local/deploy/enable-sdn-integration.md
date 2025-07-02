@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.topic: how-to
-ms.date: 06/24/2025
+ms.date: 07/02/2025
 ---
 
 # Enable SDN integration on Azure Local using PowerShell (Preview)
