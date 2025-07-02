@@ -12,8 +12,6 @@ ms.reviewer: alkohli
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
-:::image type="content" source="./media/hardware-security/security-diagram-hardware-security.png" alt-text="Diagram illustrating hardware security layer." lightbox="./media/hardware-security/security-diagram-hardware-security.png":::
-
 ## Introduction
 
 There are two clear trends emerging in the server space today. First, organizations around the world are embracing digital transformation using technologies across cloud and edge to better serve their customers and thrive in fast-paced environments. Second, attackers are constantly evolving their attack strategies and targeting these organizations' high-value infrastructure with advanced technical capabilities connected to both cybercrime and espionage.

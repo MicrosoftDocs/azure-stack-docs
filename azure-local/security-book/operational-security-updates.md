@@ -12,7 +12,6 @@ ms.reviewer: alkohli
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
-:::image type="content" source="./media/operational-security/operational-security-layer.png" alt-text="Diagram illustrating operational security layer." lightbox="./media/operational-security/operational-security-layer.png":::
 
 Azure Local contains many individual features and components, such as OS, agents and services, drivers, and firmware. Staying up to date with recent security fixes and feature improvements is important and essential for proper operation. The update feature in Azure Local uses an orchestrator (Lifecycle Manager) which centrally manages the deployment experience for the entire system.  
 

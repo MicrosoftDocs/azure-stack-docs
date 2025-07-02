@@ -12,8 +12,6 @@ ms.reviewer: alkohli
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
-:::image type="content" source="./media/trustworthy/security-diagram-trustworthy.png" alt-text="Diagram illustrating system security layer." lightbox="./media/trustworthy/security-diagram-trustworthy.png":::
-
 Our customers face the significant burden of getting their infrastructure to meet a wide variety of security standards and be compliant with industry specific compliance requirements. They may spend several millions of dollars on external tools to get their infrastructure to meet those requirements. This is a tall order for many customers as they need to identify and enable various security capabilities. Even when they do, how those various security capabilities work together is yet another challenge to deal with. 
  
 Our goal is to empower customers to achieve their security requirements, regardless of industry regulations or compliance, more easily and in a flexible manner. Azure Local builds on industry-leading security features such as Windows Defender Application Control and BitLocker. With Azure Local, we have enabled security right from the start, where the system is by default deployed in a known good state in accordance with the [Microsoft Cloud Security Benchmark](/security/benchmark/azure/overview). 

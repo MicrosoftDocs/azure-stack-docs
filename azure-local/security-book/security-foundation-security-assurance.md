@@ -12,8 +12,6 @@ ms.reviewer: alkohli
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
-:::image type="content" source="./media/security-foundation/security-foundation-security-diagram.png" alt-text="Diagram illustrating Security Foundation layer." lightbox="./media/security-foundation/security-foundation-security-diagram.png":::
-
 Microsoft is committed to continuously investing in improving our software development process, building highly secure-by-design software, and addressing security compliance requirements. We build in security from the ground up for powerful defense in today’s threat environment. Every component of Azure Local, from machine core to cloud, is purposefully designed to help ensure ultimate security. 
  
 ## Microsoft Security Development Lifecycle (SDL)

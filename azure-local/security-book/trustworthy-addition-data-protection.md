@@ -12,8 +12,6 @@ ms.reviewer: alkohli
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
-:::image type="content" source="./media/trustworthy/security-diagram-trustworthy.png" alt-text="Diagram illustrating system security layer." lightbox="./media/trustworthy/security-diagram-trustworthy.png":::
-
 ## Data at rest protection
 
 [BitLocker Drive Encryption](/windows/security/operating-system-security/data-protection/bitlocker/) is a data protection feature that addresses the threats of data theft or exposure from lost, stolen, or inappropriately decommissioned computers or storage components. With Azure Local, all infrastructure and tenant data is encrypted at rest using BitLocker. Both OS volumes (or system volumes containing the OS VHDX in boot from VHDX scenarios) and Cluster Shared Volumes are by default encrypted with BitLocker using XTS-AES 256-bit encryption algorithm. In situations where BitLocker is unable to unlock a local OS volume or data volume, it will deny access to the encrypted data. To learn more about BitLocker protection, see [BitLocker encryption on Azure Local](../manage/manage-bitlocker.md).

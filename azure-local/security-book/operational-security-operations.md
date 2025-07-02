@@ -12,7 +12,6 @@ ms.reviewer: alkohli
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
-:::image type="content" source="./media/operational-security/operational-security-layer.png" alt-text="Diagram illustrating operational security layer." lightbox="./media/operational-security/operational-security-layer.png":::
 
 ## Windows Admin Center in Azure
 

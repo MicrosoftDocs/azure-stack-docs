@@ -12,8 +12,6 @@ ms.reviewer: alkohli
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
-:::image type="content" source="./media/trustworthy/security-diagram-trustworthy.png" alt-text="Diagram illustrating system security layer." lightbox="./media/trustworthy/security-diagram-trustworthy.png":::
-
 ## Security baselines and best practices enabled by default
 
 By default, Azure Local enables [security baseline settings](/azure/azure-local/manage/manage-secure-baseline) and security best practices based on Microsoft recommended security baselines and industry best practices. A tailored security baseline with over 300 security settings is enforced with a drift control mechanism which ensures that the system starts and remains in a known good security state.

@@ -12,7 +12,6 @@ ms.reviewer: alkohli
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
-:::image type="content" source="./media/trustworthy/security-diagram-trustworthy.png" alt-text="Diagram illustrating system security layer." lightbox="./media/trustworthy/security-diagram-trustworthy.png":::
 
 Preventing unwanted or malicious applications from running is an important part of an effective security strategy. Application control is one of the most effective means for addressing the threat of executable file-based malware. Application control helps mitigate security threats by restricting the applications that users are allowed to run.  
 

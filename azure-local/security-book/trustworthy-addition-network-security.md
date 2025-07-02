@@ -12,8 +12,6 @@ ms.reviewer: alkohli
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
-:::image type="content" source="./media/trustworthy/security-diagram-trustworthy.png" alt-text="Diagram illustrating system security layer." lightbox="./media/trustworthy/security-diagram-trustworthy.png":::
-
 ## Software defined networking (SDN) and micro-segmentation
 
 With Azure Local, you can take steps towards ensuring that your applications and workloads are protected from external as well as internal attacks. Through micro-segmentation, you can create granular network policies between applications and services. This essentially reduces the security perimeter to a fence around each application or VM. This fence permits only necessary communication between application tiers or other logical boundaries, thus making it exceedingly difficult for cyberthreats to spread laterally from one system to another. Micro-segmentation securely isolates networks from each other and reduces the total attack surface of a network security incident.

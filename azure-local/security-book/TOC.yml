@@ -1,5 +1,5 @@
 items:
-- name: Overview
+- name: Azure Local Security Book
   href: overview.md
 - name: Trustworthy addition
   items:
