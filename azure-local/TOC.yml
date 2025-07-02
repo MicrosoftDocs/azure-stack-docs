@@ -165,6 +165,106 @@ items:
     - name: Run SQL Server
       href: deploy/sql-server-23h2.md
 
+- name: Enable
+  items:
+  - name: SDN enabled by Azure Arc
+    items:
+    - name: Overview
+      href: concepts/sdn-overview.md
+    - name: Enable SDN integration
+      href: deploy/enable-sdn-integration.md
+    - name: Create Network Security Groups
+      href: manage/create-network-security-groups.md
+    - name: Manage Network Security Groups
+      href: manage/manage-network-security-groups.md
+    - name: Troubleshoot SDN
+      href: manage/sdn-troubleshooting.md
+    - name: SDN FAQ
+      href: concepts/sdn-frequently-asked-questions.yml
+
+  - name: SDN managed by on-premises tools
+    items:
+    - name: Overview
+      items:
+      - name: Software-defined networking overview
+        href: concepts/software-defined-networking-23h2.md
+      - name: Network Controller overview
+        href: concepts/network-controller-overview.md
+      - name: RAS Gateway overview
+        href: concepts/gateway-overview.md
+      - name: Load balancer overview
+        href: concepts/software-load-balancer.md
+      - name: Datacenter Firewall overview
+        href: concepts/datacenter-firewall-overview.md
+      - name: Route reflector overview
+        href: concepts/route-reflector-overview.md
+      - name: SDN Multisite overview
+        href: concepts/sdn-multisite-overview.md
+    - name: Plan 
+      items:
+      - name: Network Controller
+        href: concepts/plan-network-controller-deployment.md
+      - name: SDN infrastructure
+        href: concepts/plan-software-defined-networking-infrastructure-23h2.md
+    - name: Deploy
+      items:    
+      - name: Using Express scripts
+        href: deploy/sdn-express-23h2.md
+      - name: Using Windows Admin Center
+        href: deploy/sdn-wizard-23h2.md
+    - name: Manage
+      items:
+      - name: Update SDN infrastructure
+        href: manage/update-sdn.md
+      - name: Manage tenant logical networks
+        href: manage/tenant-logical-networks.md
+      - name: Manage tenant virtual networks
+        href: manage/tenant-virtual-networks.md
+      - name: Manage software load balancers
+        href: manage/load-balancers.md
+      - name: Manage gateway connections
+        href: manage/gateway-connections.md
+      - name: Manage default network access policies
+        href: manage/manage-default-network-access-policies-virtual-machines-23h2.md
+      - name: Configure network security groups with Windows Admin Center
+        href: manage/use-datacenter-firewall-windows-admin-center.md
+      - name: Configure network security groups with PowerShell
+        href: manage/use-datacenter-firewall-powershell.md
+      - name: Configure network security groups with tags
+        href: manage/configure-network-security-groups-with-tags.md
+      - name: Manage SDN Multisite
+        href: manage/manage-sdn-multisite.md
+      - name: Assign public IP address to a VM
+        href: manage/assign-public-ip-to-vm.md
+      - name: Configure load balancer for high availability ports
+        href: manage/configure-software-load-balancer.md
+      - name: Load balance multiple logical networks
+        href: manage/load-balance-multiple-networks.md
+      - name: Manage SDN security
+        items:
+        - name: Manage certificates for SDN
+          href: manage/sdn-manage-certs.md
+        - name: Update Network Controller certificates
+          href: manage/update-network-controller-certificates.md
+        - name: Update SDN infrastructure certificates
+          href: manage/update-sdn-infrastructure-certificates.md
+        - name: Secure the Network Controller
+          href: manage/nc-security.md
+        - name: Authenticate with Kerberos
+          href: manage/kerberos-with-spn.md
+        - name: SDN technical reference
+          href: manage/sdn-technical-reference.md
+    - name: Troubleshoot
+      items:
+      - name: Troubleshoot SDN deployment
+        href: manage/troubleshoot-sdn-deployment.md
+      - name: Collect SDN logs
+        href: manage/sdn-log-collection.md
+      - name: Troubleshoot common SDN issues
+        href: manage/troubleshoot-common-sdn-issues.md
+      - name: Troubleshoot Software Load Balancer for SDN
+        href: manage/troubleshoot-software-load-balancer.md
+
 - name: Update 
   items:
   - name: About Updates
@@ -376,46 +476,6 @@ items:
     - name: Repair a node
       href: manage/repair-server.md
 
-  - name: SDN
-    items:
-    - name: Update SDN infrastructure
-      href: manage/update-sdn.md
-    - name: Manage tenant logical networks
-      href: manage/tenant-logical-networks.md
-    - name: Manage tenant virtual networks
-      href: manage/tenant-virtual-networks.md
-    - name: Manage software load balancers
-      href: manage/load-balancers.md
-    - name: Manage gateway connections
-      href: manage/gateway-connections.md
-    - name: Manage default network access policies
-      href: manage/manage-default-network-access-policies-virtual-machines-23h2.md
-    - name: Configure network security groups with Windows Admin Center
-      href: manage/use-datacenter-firewall-windows-admin-center.md
-    - name: Configure network security groups with PowerShell
-      href: manage/use-datacenter-firewall-powershell.md
-    - name: Configure network security groups with tags
-      href: manage/configure-network-security-groups-with-tags.md
-    - name: Manage SDN Multisite
-      href: manage/manage-sdn-multisite.md
-    - name: Assign public IP address to a VM
-      href: manage/assign-public-ip-to-vm.md
-    - name: Configure load balancer for high availability ports
-      href: manage/configure-software-load-balancer.md
-    - name: Load balance multiple logical networks
-      href: manage/load-balance-multiple-networks.md
-    - name: Manage SDN security
-      items:
-      - name: Manage certificates for SDN
-        href: manage/sdn-manage-certs.md
-      - name: Update Network Controller certificates
-        href: manage/update-network-controller-certificates.md
-      - name: Update SDN infrastructure certificates
-        href: manage/update-sdn-infrastructure-certificates.md
-      - name: Secure the Network Controller
-        href: manage/nc-security.md
-      - name: Authenticate with Kerberos
-        href: manage/kerberos-with-spn.md
   - name: Billing
     items:
     - name: Azure Hybrid Benefit
@@ -477,16 +537,7 @@ items:
     href: manage/get-support.md
   - name: Get remote support
     href: manage/get-remote-support.md
-  - name: Troubleshoot SDN
-    items:
-    - name: Troubleshoot SDN deployment
-      href: manage/troubleshoot-sdn-deployment.md
-    - name: Collect SDN logs
-      href: manage/sdn-log-collection.md
-    - name: Troubleshoot common SDN issues
-      href: manage/troubleshoot-common-sdn-issues.md
-    - name: Troubleshoot Software Load Balancer for SDN
-      href: manage/troubleshoot-software-load-balancer.md
+
 
 - name: Migrate
   items:
@@ -553,28 +604,9 @@ items:
     items:
     - name: Network ATC overview
       href: concepts/network-atc-overview.md?pivots=azure-local
-  - name: SDN
-    items:
-    - name: SDN technical reference
-      href: manage/sdn-technical-reference.md
-    - name: SDN overview
-      href: concepts/software-defined-networking-23h2.md
-    - name: Plan an SDN infrastructure
-      href: concepts/plan-software-defined-networking-infrastructure-23h2.md
-    - name: Network Controller overview
-      href: concepts/network-controller-overview.md
-    - name: Plan Network Controller
-      href: concepts/plan-network-controller-deployment.md
-    - name: Software Load Balancer overview
-      href: concepts/software-load-balancer.md
-    - name: Datacenter Firewall overview
-      href: concepts/datacenter-firewall-overview.md
-    - name: RAS Gateway overview
-      href: concepts/gateway-overview.md
-    - name: Route Reflector overview
-      href: concepts/route-reflector-overview.md
-    - name: SDN Multisite overview
-      href: concepts/sdn-multisite-overview.md
+
+
+
 - name: Reference
   items:
   - name: For Azure Local VM management

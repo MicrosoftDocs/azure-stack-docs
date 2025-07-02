@@ -2,9 +2,6 @@
   "build": {
     "content": [
       {
-        "group": "version-ash",
-        "src" : "operator",
-        "dest" : "operator",
         "files": [
           "**/*.md",
           "**/*.yml"
@@ -18,12 +15,12 @@
           "LICENSE",
           "LICENSE-CODE",
           "ThirdPartyNotices"
-        ]
+        ],
+        "src": "operator",
+        "dest": "operator",
+        "group": "version-ash"
       },
       {
-        "group": "version-ash",
-        "src" : "partner",
-        "dest" : "partner",
         "files": [
           "**/*.md",
           "**/*.yml"
@@ -37,12 +34,12 @@
           "LICENSE",
           "LICENSE-CODE",
           "ThirdPartyNotices"
-        ]
+        ],
+        "src": "partner",
+        "dest": "partner",
+        "group": "version-ash"
       },
       {
-        "group": "version-ash",
-        "src" : "user",
-        "dest" : "user",
         "files": [
           "**/*.md",
           "**/*.yml"
@@ -56,11 +53,12 @@
           "LICENSE",
           "LICENSE-CODE",
           "ThirdPartyNotices"
-        ]
+        ],
+        "src": "user",
+        "dest": "user",
+        "group": "version-ash"
       },
       {
-        "src": ".",
-        "dest": ".",
         "files": [
           "**/*.md",
           "**/*.yml"
@@ -77,7 +75,9 @@
           "LICENSE",
           "LICENSE-CODE",
           "ThirdPartyNotices"
-        ]
+        ],
+        "src": ".",
+        "dest": "."
       }
     ],
     "resource": [
@@ -88,14 +88,14 @@
           "**/*.svg",
           "**/*.gif"
         ],
-        "src": "operator",
-        "dest": "operator",
-        "group": "version-ash",
         "exclude": [
           "**/obj/**",
           "_themes/**",
           "_themes.pdf/**"
-        ]
+        ],
+        "src": "operator",
+        "dest": "operator",
+        "group": "version-ash"
       },
       {
         "files": [
@@ -103,15 +103,15 @@
           "**/*.jpg",
           "**/*.svg",
           "**/*.gif"
+        ],
+        "exclude": [
+          "**/obj/**",
+          "_themes/**",
+          "_themes.pdf/**"
         ],
         "src": "partner",
         "dest": "partner",
-        "group": "version-ash",
-        "exclude": [
-          "**/obj/**",
-          "_themes/**",
-          "_themes.pdf/**"
-        ]
+        "group": "version-ash"
       },
       {
         "files": [
@@ -120,18 +120,16 @@
           "**/*.svg",
           "**/*.gif"
         ],
-        "src": "user",
-        "dest": "user",
-        "group": "version-ash",
         "exclude": [
           "**/obj/**",
           "_themes/**",
           "_themes.pdf/**"
-        ]
+        ],
+        "src": "user",
+        "dest": "user",
+        "group": "version-ash"
       },
       {
-        "src": ".",
-        "dest": ".",
         "files": [
           "**/*.png",
           "**/*.jpg",
@@ -146,7 +144,9 @@
           "**/obj/**",
           "_themes/**",
           "_themes.pdf/**"
-        ]
+        ],
+        "src": ".",
+        "dest": "."
       }
     ],
     "overwrite": [],
@@ -164,7 +164,7 @@
           "folder_relative_path_in_docset": "articles/azure-stack/"
         }
       },
-      "manager":"lizross",
+      "manager": "lizross",
       "recommendations": true
     },
     "fileMetadata": {
@@ -188,16 +188,21 @@
       },
       "ms.subservice": {
         "mdc/**/*.md": "azure-stack-hub-mdc"
+      },
+      "exclude_monikers": {
+        "partner/**/*.{md,yml,yaml}": [
+          "azs-2501"
+        ]
       }
     },
     "template": [],
-    "dest": "AzureStack",
     "markdownEngineName": "markdig",
     "groups": {
       "version-ash": {
-        "moniker_range": ">=azs-1802",
-        "dest": "version-ash"
+        "dest": "version-ash",
+        "moniker_range": ">=azs-1802"
       }
-    }
+    },
+    "dest": "AzureStack"
   }
 }
