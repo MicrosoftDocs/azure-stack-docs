@@ -1,6 +1,142 @@
 {
   "redirections": [
     {
+      "source_path": "azure-stack/partner/azure-stack-vaas-automate-with-powershell.md",
+      "redirect_url": "/previous-versions/azure/partner/azure-stack-vaas-automate-with-powershell",
+      "redirect_document_id": false,
+      "monikers": [
+        "azs-2501"
+      ]
+    },
+    {
+      "source_path": "azure-stack/partner/azure-stack-vaas-best-practice.md",
+      "redirect_url": "/previous-versions/azure/partner/azure-stack-vaas-best-practice",
+      "redirect_document_id": false,
+      "monikers": [
+        "azs-2501"
+      ]
+    },
+    {
+      "source_path": "azure-stack/partner/azure-stack-vaas-create-oem-package.md",
+      "redirect_url": "/previous-versions/azure/partner/azure-stack-vaas-create-oem-package",
+      "redirect_document_id": false,
+      "monikers": [
+        "azs-2501"
+      ]
+    },
+    {
+      "source_path": "azure-stack/partner/azure-stack-vaas-interactive-feature-verification.md",
+      "redirect_url": "/previous-versions/azure/partner/azure-stack-vaas-interactive-feature-verification",
+      "redirect_document_id": false,
+      "monikers": [
+        "azs-2501"
+      ]
+    },
+    {
+      "source_path": "azure-stack/partner/azure-stack-vaas-key-concepts.md",
+      "redirect_url": "/previous-versions/azure/partner/azure-stack-vaas-key-concepts",
+      "redirect_document_id": false,
+      "monikers": [
+        "azs-2501"
+      ]
+    },
+    {
+      "source_path": "azure-stack/partner/azure-stack-vaas-local-agent.md",
+      "redirect_url": "/previous-versions/azure/partner/azure-stack-vaas-local-agent",
+      "redirect_document_id": false,
+      "monikers": [
+        "azs-2501"
+      ]
+    },
+    {
+      "source_path": "azure-stack/partner/azure-stack-vaas-monitor-test.md",
+      "redirect_url": "/previous-versions/azure/partner/azure-stack-vaas-monitor-test",
+      "redirect_document_id": false,
+      "monikers": [
+        "azs-2501"
+      ]
+    },
+    {
+      "source_path": "azure-stack/partner/azure-stack-vaas-overview.md",
+      "redirect_url": "/previous-versions/azure/partner/azure-stack-vaas-overview",
+      "redirect_document_id": false,
+      "monikers": [
+        "azs-2501"
+      ]
+    },
+    {
+      "source_path": "azure-stack/partner/azure-stack-vaas-parameters.md",
+      "redirect_url": "/previous-versions/azure/partner/azure-stack-vaas-parameters",
+      "redirect_document_id": false,
+      "monikers": [
+        "azs-2501"
+      ]
+    },
+    {
+      "source_path": "azure-stack/partner/azure-stack-vaas-release-notes.md",
+      "redirect_url": "/previous-versions/azure/partner/azure-stack-vaas-release-notes",
+      "redirect_document_id": false,
+      "monikers": [
+        "azs-2501"
+      ]
+    },
+    {
+      "source_path": "azure-stack/partner/azure-stack-vaas-schedule-test-pass.md",
+      "redirect_url": "/previous-versions/azure/partner/azure-stack-vaas-schedule-test-pass",
+      "redirect_document_id": false,
+      "monikers": [
+        "azs-2501"
+      ]
+    },
+    {
+      "source_path": "azure-stack/partner/azure-stack-vaas-set-up-resources.md",
+      "redirect_url": "/previous-versions/azure/partner/azure-stack-vaas-set-up-resources",
+      "redirect_document_id": false,
+      "monikers": [
+        "azs-2501"
+      ]
+    },
+    {
+      "source_path": "azure-stack/partner/azure-stack-vaas-troubleshoot.md",
+      "redirect_url": "/previous-versions/azure/partner/azure-stack-vaas-troubleshoot",
+      "redirect_document_id": false,
+      "monikers": [
+        "azs-2501"
+      ]
+    },
+    {
+      "source_path": "azure-stack/partner/azure-stack-vaas-validate-microsoft-updates.md",
+      "redirect_url": "/previous-versions/azure/partner/azure-stack-vaas-validate-microsoft-updates",
+      "redirect_document_id": false,
+      "monikers": [
+        "azs-2501"
+      ]
+    },
+    {
+      "source_path": "azure-stack/partner/azure-stack-vaas-validate-oem-package.md",
+      "redirect_url": "/previous-versions/azure/partner/azure-stack-vaas-validate-oem-package",
+      "redirect_document_id": false,
+      "monikers": [
+        "azs-2501"
+      ]
+    },
+    {
+      "source_path": "azure-stack/partner/azure-stack-vaas-validate-solution-new.md",
+      "redirect_url": "/previous-versions/azure/partner/azure-stack-vaas-validate-solution-new",
+      "redirect_document_id": false,
+      "monikers": [
+        "azs-2501"
+      ]
+    },
+    {
+      "source_path": "azure-stack/partner/index.yml",
+      "redirect_url": "/previous-versions/azure/partner/index",
+      "redirect_document_id": false,
+      "monikers": [
+        "azs-2501"
+      ]
+    },
+    {
       "source_path": "azure-stack/mdc/azure-stack-capacity-planner.md",
       "redirect_url": "/previous-versions/azure/mdc/azure-stack-capacity-planner",
       "redirect_document_id": false
