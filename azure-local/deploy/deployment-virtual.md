@@ -233,7 +233,7 @@ Complete the following steps to install and configure the Azure Stack HCI OS on 
 
 1. [Download version 23H2 operating system for Azure Local deployment](./download-23h2-software.md) and [Install the Azure Stack HCI operating system](deployment-install-os.md).
 
-1. Update the password since this is the first VM startup. Make sure the password meets the Azure complexity requirements. The password is at least 12 characters and includes 1 uppercase character, 1 lowercase character, 1 number, and 1 special character.
+1. Update the password since this is the first VM startup. Make sure the password meets the Azure complexity requirements. The password is at least 14 characters and includes 1 uppercase character, 1 lowercase character, 1 number, and 1 special character.
 
 1. After the password is changed, the Server Configuration Tool (SConfig) is automatically loaded. Select option `15` to exit to the command line and run the next steps from there.
 
