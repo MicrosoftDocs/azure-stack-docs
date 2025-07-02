@@ -1,12 +1,12 @@
 ---
 title: Connect to Windows or Linux worker nodes with SSH
 description: Learn how to use SSH to connect to Windows or Linux worker nodes in an AKS Arc cluster.
-ms.date: 01/10/2025
+ms.date: 07/02/2025
 ms.topic: how-to
 author: sethmanheim
 ms.author: sethm
 ms.reviewer: leslielin
-ms.lastreviewed: 01/10/2025
+ms.lastreviewed: 07/02/2025
 ---
 
 # Connect to Windows or Linux worker nodes with SSH
@@ -17,26 +17,27 @@ During your AKS Arc cluster's lifecycle, you might need to directly access clust
 
 This article explains how to use SSH to connect to both Windows and Linux nodes.
 
-## Prerequisite
+## Prerequisites
+
 ### **Install the Kubernetes CLI**
 
-You will use the Kubernetes CLI, [`kubectl`][kubectl], to connect to your Kubernetes cluster. If you use the Azure Cloud Shell, `kubectl` is already installed. If you're running the commands locally, you can use the Azure CLI or Azure PowerShell to install `kubectl`.
+You can use the Kubernetes CLI, [**kubectl**][kubectl], to connect to your Kubernetes cluster. If you use Azure Cloud Shell, **kubectl** is already installed. If you run the commands locally, you can use the Azure CLI or Azure PowerShell to install **kubectl**.
 
 ### [Azure CLI](#tab/azure-cli)
 
-* Install `kubectl` locally using the [`az aks install-cli`][/cli/azure/aks?view=azure-cli-latest#az-aks-install-cli] command.
+* Install **kubectl** locally using the [`az aks install-cli`][/cli/azure/aks?view=azure-cli-latest#az-aks-install-cli] command:
 
-    ```azurecli-interactive
-    az aks install-cli
-    ```
+  ```azurecli-interactive
+  az aks install-cli
+  ```
 
 ### [Azure PowerShell](#tab/azure-powershell)
 
-* Install `kubectl` locally using the [`Install-AzAksCliTool`][/powershell/module/az.aks/install-azaksclitool?view=azps-14.2.0] cmdlet.
+* Install **kubectl** locally using the [`Install-AzAksCliTool`][/powershell/module/az.aks/install-azaksclitool?view=azps-14.2.0] cmdlet:
 
-    ```azurepowershell-interactive
-    Install-AzAksCliTool
-    ```
+  ```azurepowershell-interactive
+  Install-AzAksCliTool
+  ```
 
 ## Use SSH to connect to worker nodes
 
