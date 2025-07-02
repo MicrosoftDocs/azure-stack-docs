@@ -12,7 +12,7 @@ ms.service: azure-local
 
 ::: moniker range=">=azloc-24111"
 
-Applies to: Azure Local 2411.1 and later
+Applies to: Azure Local 2411, 2503 and 2504 new deployments. Starting with 2505, there is no need to configure the proxy manually anymore. Please refer to [Deploy with Arc gateway via Arc script](/azure-local/deploy/deployment-azure-arc-gateway-configure-via-script.md) if you are using an enterprise proxy, or refer to [Deploy with Arc gateway without proxy](/azure-local/deploy/deployment-azure-arc-gateway-use-without-proxy.md) if you don't use an enterprise proxy.
 
 After creating the Arc gateway resource in your Azure subscription, you can enable the new Arc gateway preview features. This article details how to manually configure the Arc proxy before Arc registration.
 
