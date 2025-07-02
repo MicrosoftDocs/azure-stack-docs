@@ -28,7 +28,7 @@ This article explains how to use SSH to connect to both Windows and Linux nodes.
 1. Run **kubectl get** to obtain the node's IP address and capture its IP value in order to sign in to a Windows or Linux worker node using SSH:
 
    ```azurecli
-   kubectl --kubeconfig /path/to/aks-cluster-kubeconfig get nodes -o wide |
+   kubectl --kubeconfig /path/to/aks-cluster-kubeconfig get nodes -o wide
    ```
 
 1. Run `ssh` to connect to a worker node:
