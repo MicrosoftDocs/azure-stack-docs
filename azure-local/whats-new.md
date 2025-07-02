@@ -23,8 +23,8 @@ There are two 2506 releases for June. Here are the details of each release:
 
 |Solution version  |OS version |Deployment  |
 |---------|---------|---------|
-|12.2506.1001.25 |  26100.4349        | New deployments only.        |
-|11.2506.1001.24  | 25398.1665        | Existing deployments only.        |
+|12.2506.1001.29 |  26100.4349        | New deployments only.        |
+|11.2506.1001.28  | 25398.1665        | Existing deployments only.        |
 
 For more information, see [Release information summary](./release-information-23h2.md).
 
