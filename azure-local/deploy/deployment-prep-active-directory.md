@@ -19,7 +19,7 @@ Active Directory requirements for Azure Local include:
 
 - A dedicated Organization Unit (OU).
 - Group policy inheritance that is blocked for the applicable Group Policy Object (GPO).
-- A user account that has all rights to the OU in the Active Directory.
+- A Lifecycle Manager (LCM) user account that has all rights to the OU in the Active Directory.
 - Machines must not be joined to Active Directory before deployment.
 
 > [!NOTE]
@@ -51,7 +51,7 @@ The `New-HciAdObjectsPreCreation` cmdlet of the AsHciADArtifactsPreCreationTool 
 
 |Parameter|Description|
 |--|--|
-|`-AzureStackLCMUserCredential`|A new user object that is created with the appropriate permissions for deployment. This account is the same as the user account used by the Azure Local deployment.<br> Make sure that only the username is provided. The name shouldn't include the domain name, for example, `contoso\username`.<br>The password must conform to the length and complexity requirements. Use a password that is at least 12 characters long. The password must also contain three out of the four requirements: a lowercase character, an uppercase character, a numeral, and  a special character.<br>For more information, see [password complexity requirements](/azure/active-directory-b2c/password-complexity?pivots=b2c-user-flow).<br> The name can't be exactly the same as the local admin user. <br> The name can use *admin* as the username.|
+|`-AzureStackLCMUserCredential`|A new user object that is created with the appropriate permissions for deployment and lifecycle management. This account is the same as the user account used by the Azure Local deployment.<br> Make sure that only the username is provided. The name shouldn't include the domain name, for example, `contoso\username`.<br>The password must conform to the length and complexity requirements. Use a password that is at least 12 characters long. The password must also contain three out of the four requirements: a lowercase character, an uppercase character, a numeral, and  a special character.<br>For more information, see [password complexity requirements](/azure/active-directory-b2c/password-complexity?pivots=b2c-user-flow).<br> The name can't be exactly the same as the local admin user. <br> The name can use *admin* as the username.|
 |`-AsHciOUName`|A new Organizational Unit (OU) to store all the objects for the Azure Local deployment. Existing group policies and inheritance are blocked in this OU to ensure there's no conflict of settings. The OU must be specified as the distinguished name (DN). For more information, see the format of [Distinguished Names](/previous-versions/windows/desktop/ldap/distinguished-names).|
 
 > [!NOTE]
@@ -88,7 +88,7 @@ To create a dedicated OU, follow these steps:
 
 1. Verify that the OU is created. If using a Windows Server client, go to **Server Manager > Tools > Active Directory Users and Computers**.
 
-1. An OU with the specified name is created. This OU contains the new Lifecycle Manager (LCM) deployment user account.
+1. An OU with the specified name is created. This OU contains the new LCM deployment user account.
 
     :::image type="content" source="media/deployment-prep-active-directory/active-directory-11.png" alt-text="Screenshot of Active Directory Computers and Users window." lightbox="media/deployment-prep-active-directory/active-directory-11.png":::
 
