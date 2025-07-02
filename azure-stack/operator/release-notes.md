@@ -160,7 +160,7 @@ For more information, see our [servicing policy](azure-stack-servicing-policy.md
 
 The 2408 release of Azure Stack Hub must be applied on the 2406 release with the following hotfix installed:
 
-- [Azure Stack Hub hotfix 1.2406.1.19](hotfix-1-2406-1-19.md)
+- [Azure Stack Hub hotfix 1.2406.1.20](hotfix-1-2406-1-20.md)
 
 ### After successfully applying the 2408 update
 
