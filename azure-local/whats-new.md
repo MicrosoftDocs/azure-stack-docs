@@ -26,9 +26,6 @@ There are two 2506 releases for June. Here are the details of each release:
 |12.2506.1001.29 |  26100.4349  |
 |11.2506.1001.28  | 25398.1665  |
 
-> [!IMPORTANT]
-> The new deployments of this software use the **12.2506.1001.29** build. You can also update an existing deployment from 2505 using **11.2506.1001.28**.
-
 For more information, see [Release information summary](./release-information-23h2.md).
 
 ## Features and improvements in 2506
