@@ -21,10 +21,13 @@ This article lists the various features and improvements that are available in A
 
 There are two 2506 releases for June. Here are the details of each release:
 
-|Solution version  |OS version |Deployment  |
-|---------|---------|---------|
-|12.2506.1001.29 |  26100.4349        | New deployments only.        |
-|11.2506.1001.28  | 25398.1665        | Existing deployments only.        |
+|Solution version  | OS version |
+|---------|---------|
+|12.2506.1001.29 |  26100.4349  |
+|11.2506.1001.28  | 25398.1665  |
+
+> [!IMPORTANT]
+> The new deployments of this software use the **12.2506.1001.29** build. You can also update an existing deployment from 2505 using **11.2506.1001.28**.
 
 For more information, see [Release information summary](./release-information-23h2.md).
 
@@ -41,8 +44,6 @@ This release has the following features and improvements:
         Existing deployments of Azure Local continue to use OS version **25398.1665**. For more information, see [Release information summary](./release-information-23h2.md).
 
     - If you purchased Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) through your preferred Microsoft hardware partner, the OS should be preinstalled. Work with your Original Equipment Manufacturer (OEM) to get the OS image compatible with **12.2506** and driver compatible with OS version **26100.4349** or Windows Server 2025.
-
-    - The new OS media uses consistent device naming (CDN) if the hardware supports it and ensures consistent network adapter naming.
     
 - **.NET updates**: This build uses .NET version **8.0.17** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
 
