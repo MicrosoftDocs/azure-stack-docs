@@ -147,13 +147,6 @@ items:
         href: deploy/deployment-azure-arc-gateway-use-without-proxy.md
   - name: Deploy using local identity with Key Vault
     href: deploy/deployment-local-identity-with-key-vault.md
-  - name: Deploy SDN
-    items:
-    - name: Using Express scripts
-      href: deploy/sdn-express-23h2.md
-    - name: Using Windows Admin Center
-      href: deploy/sdn-wizard-23h2.md  
-  
   - name: Deploy workloads
     items:
     - name: Run AKS on Azure Local
