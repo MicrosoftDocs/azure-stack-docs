@@ -3,7 +3,7 @@ title: Access and identity options for Azure Kubernetes Service (AKS) Arc
 description: Learn about options in access and identity management on a Kubernetes cluster in AKS on Azure Local.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 07/30/2024
+ms.date: 07/03/2025
 ms.author: sethm
 ms.lastreviewed: 07/30/2024
 ms.reviewer: leslielin
@@ -41,7 +41,7 @@ For more information, see [Using Kubernetes RBAC authorization](https://kubernet
 
 #### Roles
 
-Before assigning permissions to users with Kubernetes RBAC, you define user permissions as a *role*. Grant permissions within a Kubernetes namespace using roles.
+Before assigning permissions to users with Kubernetes RBAC, you define user permissions as a role. Grant permissions within a Kubernetes namespace using roles.
 
 Kubernetes roles grant permissions; they don't deny permissions. To grant permissions across the entire cluster or to cluster resources outside a given namespace, you can use *ClusterRoles*.
 
@@ -51,7 +51,7 @@ A ClusterRole grants and applies permissions to resources across the entire clus
 
 ### RoleBindings and ClusterRoleBindings
 
-Once you define roles to grant permissions to resources, you assign those Kubernetes RBAC permissions with a *RoleBinding*. If your AKS cluster [integrates with Microsoft Entra ID](#microsoft-entra-integration), RoleBindings grant permissions to Microsoft Entra users to perform actions within the cluster. See [Control access using Microsoft Entra ID and Kubernetes RBAC](kubernetes-rbac-local.md)
+Once you define roles to grant permissions to resources, you assign those Kubernetes RBAC permissions with a *RoleBinding*. If your AKS cluster [integrates with Microsoft Entra ID](#microsoft-entra-integration), RoleBindings grant permissions to Microsoft Entra users to perform actions within the cluster. See [Control access using Microsoft Entra ID and Kubernetes RBAC](kubernetes-rbac-local.md).
 
 #### RoleBindings
 
@@ -82,7 +82,7 @@ Azure Role-based Access Control (RBAC) is an authorization system built on [Azur
 
 With Azure RBAC, you create a *role definition* that outlines the permissions to be applied. You then assign a user or group this role definition via a *role assignment* for a particular *scope*. The scope can be an individual resource, a resource group, or across the subscription.
 
-For more information, see [What is Azure role-based access control (Azure RBAC)?](/azure/role-based-access-control/overview)
+For more information, see [What is Azure role-based access control (Azure RBAC)?](/azure/role-based-access-control/overview).
 
 There are two required levels of access to fully operate an AKS Arc cluster:
 
@@ -113,7 +113,7 @@ In this scenario, you use Azure RBAC mechanisms and APIs to assign users built-i
 With this feature, you not only give users permissions to the AKS resource across subscriptions, but you also configure the role and permissions for inside each of those clusters controlling Kubernetes API access. There are four built-in roles available for this data plane action, each with its own scope of permissions, [as described in the built-in roles](#built-in-roles) section.
 
 > [!IMPORTANT]
-> You must enable Azure RBAC for Kubernetes authorization before doing role assignment. For more details and step by step guidance, see [Use Azure RBAC for Kubernetes authorization](azure-rbac-local.md).
+> You must enable Azure RBAC for Kubernetes authorization before doing role assignment. For more details and step-by-step guidance, see [Use Azure RBAC for Kubernetes authorization](azure-rbac-local.md).
 
 ### Built-in roles
 
