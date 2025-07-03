@@ -27,6 +27,9 @@ Before you begin, make sure you complete the following prerequisites:
 
 [!INCLUDE [hci-registration-azure-prerequisites](../includes/hci-registration-azure-prerequisites.md)]
 
+> [!IMPORTANT]
+> Azure Express Route and Azure Private Link are not supported for Azure Local or any of its components as it is not possible to access the public endpoints required for Azure Local.
+
 ## Register machines with Azure Arc
 
 > [!IMPORTANT]
