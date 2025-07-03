@@ -62,37 +62,37 @@ If you don't have [Graph permission Application.Read.All](/graph/permissions-ref
 
 1. Register the `Microsoft.KubernetesRuntime RP` if you haven't already done so. Note that you only need to register once per Azure subscription. You can also register resource providers using the Azure portal. For more information about how to register resource providers and required permissions, see [how to register a resource provider](/azure/azure-resource-manager/management/resource-providers-and-types#register-resource-provider).
 
-```azurecli
-az provider register -n Microsoft.KubernetesRuntime
-```
+   ```azurecli
+   az provider register -n Microsoft.KubernetesRuntime
+   ```
 
-You can check if the resource provider has been registered successfully by running the following command.
+   You can check if the resource provider has been registered successfully by running the following command.
 
-```azurecli
-az provider show -n Microsoft.KubernetesRuntime -o table
-```
+   ```azurecli
+   az provider show -n Microsoft.KubernetesRuntime -o table
+   ```
 
-Expected output:
+   Expected output:
 
-```output
-Namespace                    RegistrationPolicy    RegistrationState
----------------------------  --------------------  -------------------
-Microsoft.KubernetesRuntime  RegistrationRequired  Registered
-```
+   ```output
+   Namespace                    RegistrationPolicy    RegistrationState
+   ---------------------------  --------------------  -------------------
+   Microsoft.KubernetesRuntime  RegistrationRequired  Registered
+   ```
 
 1. To install the Arc extension for MetalLB, obtain the AppID of the MetalLB extension resource provider, and then run the extension create command. You must run the following commands once per Arc Kubernetes cluster.
 
-Obtain the Application ID of the Arc extension by running [az ad sp list](/cli/azure/ad/sp#az-ad-sp-list). In order to run the following command, you must be a `user` member of your Azure tenant. For more information about user and guest membership, see [default user permissions in Microsoft Entra ID](/entra/fundamentals/users-default-permissions).
+   Obtain the Application ID of the Arc extension by running [az ad sp list](/cli/azure/ad/sp#az-ad-sp-list). In order to run the following command, you must be a `user` member of your Azure tenant. For more information about user and guest membership, see [default user permissions in Microsoft Entra ID](/entra/fundamentals/users-default-permissions).
 
-```azurecli
-$objID = az ad sp list --filter "appId eq '00001111-aaaa-2222-bbbb-3333cccc4444'" --query "[].id" --output tsv
-```
+   ```azurecli
+   $objID = az ad sp list --filter "appId eq '00001111-aaaa-2222-bbbb-3333cccc4444'" --query "[].id" --output tsv
+   ```
 
-Once you have the `objID`, you can install the MetalLB Arc extension on your Kubernetes cluster. To run the following command, you must have the [**Kubernetes extension contributor**](/azure/role-based-access-control/built-in-roles/containers#kubernetes-extension-contributor) role.
+   Once you have the `objID`, you can install the MetalLB Arc extension on your Kubernetes cluster. To run the following command, you must have the [**Kubernetes extension contributor**](/azure/role-based-access-control/built-in-roles/containers#kubernetes-extension-contributor) role.
 
-```azurecli
-az k8s-extension create --cluster-name $clusterName -g $rgName --cluster-type connectedClusters --extension-type microsoft.arcnetworking --config k8sRuntimeFpaObjectId=$objID -n arcnetworking
-```
+   ```azurecli
+   az k8s-extension create --cluster-name $clusterName -g $rgName --cluster-type connectedClusters --extension-type microsoft.arcnetworking --config k8sRuntimeFpaObjectId=$objID -n arcnetworking
+   ```
 
 ## Deploy MetalLB load balancer on your Kubernetes cluster
 

@@ -65,5 +65,5 @@ After you use SSH to connect to the node, you can run `net user administrator *`
 
 ## Next steps
 
-- [Known issues](known-issues.yml).
-- [Windows Admin Center known issues](/azure-stack/aks-hci/known-issues-windows-admin-center).
+- [Known issues](known-issues.yml)
+- [Windows Admin Center known issues](/azure-stack/aks-hci/known-issues-windows-admin-center)
