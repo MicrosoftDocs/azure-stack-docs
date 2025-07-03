@@ -4,7 +4,7 @@ description: Learn how to use Secure Shell Protocol (SSH) to connect to worker n
 author: sethmanheim
 ms.topic: how-to
 ms.custom: linux-related-content
-ms.date: 06/27/2024
+ms.date: 07/03/2025
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: abha

@@ -57,4 +57,4 @@ No, MetalLB can't be reused across AKS Arc clusters. MetalLB lives as pods in a 
 
 ## Next steps
 
-- [Deploy MetalLB using Azure portal](deploy-load-balancer-portal.md)
+[Deploy MetalLB using Azure portal](deploy-load-balancer-portal.md)

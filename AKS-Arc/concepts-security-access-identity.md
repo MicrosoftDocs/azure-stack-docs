@@ -121,7 +121,7 @@ With this feature, you not only give users permissions to the AKS resource acros
 
 ## Microsoft Entra integration
 
-Enhance your AKS cluster security with Microsoft Entra integration. Built on enterprise identity management experience, Microsoft Entra ID is a multitenant, cloud-based directory and identity management service that combines core directory services, application access management, and identity protection. With Microsoft Entra ID, you can integrate on-premises identities into AKS clusters to provide a single source for account management and security.
+Microsoft Entra integration can help to enhance your AKS cluster security. Built on enterprise identity management experience, Microsoft Entra ID is a multitenant, cloud-based directory and identity management service that combines core directory services, application access management, and identity protection. With Microsoft Entra ID, you can integrate on-premises identities into AKS clusters to provide a single source for account management and security.
 
 :::image type="content" source="media/concepts-security-access-identity/entra-integration.png" alt-text="Flowchart showing Entra integration." lightbox="media/concepts-security-access-identity/entra-integration.png":::
 
@@ -142,7 +142,6 @@ The following table contains a summary of how users can authenticate to Kubernet
 2. Run `az aksarc get-credentials` to download credentials for the Kubernetes cluster into `.kube/config`.
 3. Run `kubectl` commands.
    - The first command can trigger browser-based authentication to authenticate to the Kubernetes cluster, as described in the following table.
-
 
 | Description                                                  | Role grant required                                          | Cluster admin Microsoft Entra groups                       | When to use                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
