@@ -3,7 +3,7 @@ title: Manage node pools for an AKS cluster
 description: Learn how to manage multiple node pools in AKS on Azure Local.
 ms.topic: how-to
 ms.custom: devx-track-azurecli
-ms.date: 06/03/2024
+ms.date: 07/03/2025
 author: sethmanheim
 ms.author: sethm 
 ms.reviewer: rbaziwane
@@ -16,9 +16,9 @@ ms.lastreviewed: 06/03/2024
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
 > [!NOTE]
-> For information about managing node pools in AKS on Azure Local 22H2, see [Manage node pools](manage-node-pools-22h2.md).
+> For information about managing node pools in AKS on Windows Server, see [Manage node pools](manage-node-pools-22h2.md).
 
-In AKS enabled by Azure Arc, nodes of the same configuration are grouped together into *node pools*. These node pools contain the underlying VMs that run your applications. This article shows you how to create and manage node pools for an AKS cluster.
+In AKS on Azure Local, nodes of the same configuration are grouped together into *node pools*. These node pools contain the underlying VMs that run your applications. This article shows you how to create and manage node pools for an AKS cluster.
 
 ## Create a Kubernetes cluster
 
