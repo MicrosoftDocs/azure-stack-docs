@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: conceptual
 ms.service: azure-local
-ms.date: 07/02/2025
+ms.date: 07/07/2025
 ---
 
 # Software Defined Networking enabled by Azure Arc on Azure Local (preview)
@@ -57,7 +57,6 @@ Here's a summary of unsupported scenarios for SDN enabled by Arc on Azure Local:
 |SDN resources     | The following resources aren't supported:<br><br> - Virtual networks <br><br> - Software Load Balancers <br><br> - Gateways (VPN, L3, GRE)         |
 |Hybrid scenarios     | Deployment and management method must be consistent. <br><br> - If SDN is enabled by Arc, manage it only using Azure portal, Azure CLI, and Azure Resource Manager templates. <br><br> - Don't manage via on-premises tools such as Windows Admin Center and SDN Express scripts.         |
 |Multiple NICs     | Scenarios that require multiple NICs simultaneously aren't supported.        |
-|DHCP-based networks     | DHCP-based logical networks and network interfaces aren't supported.         |
 |AKS workloads     | AKS workloads aren't supported.      |
 |Disaster recovery     | Disaster recovery support isn't available.      |
 
