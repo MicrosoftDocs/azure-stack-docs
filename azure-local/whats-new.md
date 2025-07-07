@@ -48,7 +48,7 @@ This release has the following features and improvements:
 
 - **Deployment changes**: To ensure consistent validation before you deploy Azure Local, deployment validators for Microsoft On-premises Cloud and Azure resource bridge are now a part of environment checker.
 
-- **Overprovisioning alert**: An alert is added to indicate if a cluster is overprovisioned. Make sure to acknowledge the alert warning before you update as VM workloads are paused during the update run.
+- **Overprovisioning alert**: A warning appears if an Azure Local instance is overprovisioned, specifically that it has insufficient compute capacity (memory) to live migrate workloads during an update. You must acknowledge this alert before proceeding with an update, as VM workloads will be paused during the update due to the lack of available compute or memory capacity.
 
 - **Security improvements**:
     - **New security baseline**: The 2506 release introduces a security baseline with 407 evaluated rules, a 25% increase from the previous 324. Key improvements include:
