@@ -4,7 +4,7 @@ description: Learn about clusters and nodes running on AKS Edge Essentials.
 author: sethmanheim
 ms.author: sethm
 ms.topic: concept-article
-ms.date: 07/11/2024
+ms.date: 07/03/2025
 ms.custom: template-concept
 ---
 
@@ -18,7 +18,7 @@ When you create an AKS Edge Essentials deployment, AKS Edge Essentials creates a
 
 ![Screenshot showing the the VMs in AKS Edge.](./media/aks-edge/aks-edge-vm.png)
 
-Deployments can only create one Linux VM on a given host machine. This Linux VM can act as both the control plane node and as a worker node based on your deployment needs. This curated VM is based on [CBL-Mariner](https://github.com/microsoft/CBL-Mariner). CBL-Mariner is an internal Linux distribution for Microsoft's cloud infrastructure and edge products and services. CBL-Mariner is designed to provide a consistent platform for these devices and services and enhances Microsoft's ability to stay current on Linux updates. For more information, see [CBL-Mariner security](https://github.com/microsoft/CBL-Mariner/blob/2.0/SECURITY.md). The Linux virtual machine is built on four-point comprehensive premises:
+Deployments can only create one Linux VM on a given host machine. This Linux VM can act as both the control plane node and as a worker node based on your deployment needs. This curated VM is based on [CBL-Mariner](https://github.com/microsoft/CBL-Mariner). CBL-Mariner is an internal Linux distribution for Microsoft's cloud infrastructure and edge products and services. CBL-Mariner is designed to provide a consistent platform for these devices and services and enhances Microsoft's ability to stay current on Linux updates. For more information, see [CBL-Mariner security](https://github.com/microsoft/CBL-Mariner/blob/2.0/SECURITY.md). The Linux virtual machine is built on a four-point comprehensive premise:
 
 - Servicing updates
 - Read-only root filesystem
@@ -27,7 +27,7 @@ Deployments can only create one Linux VM on a given host machine. This Linux VM 
 
 Running a Windows node is optional and you can create a Windows node if you need to deploy Windows containers. This node runs as a Windows virtual machine based on [Windows 10 IoT Enterprise LTSC 2019](/lifecycle/products/windows-10-iot-enterprise-ltsc-2019). The Windows VM brings all the security features and capabilities of Windows 10.
 
-You can define the amount of CPU and memory resources that you'd like to allocate for each of the VMs. This static allocation enables you to control how resources are used and ensures that applications running on the host have the required resources.
+You can define the amount of CPU and memory resources that you want to allocate for each of the VMs. This static allocation enables you to control how resources are used and ensures that applications running on the host have the required resources.
 
 Finally, AKS Edge Essentials doesn't offer dynamic creation of virtual machines. If a node VM goes down, you have to recreate it. That said, if you have a full deployment with multiple control plane nodes and worker nodes, if a VM goes down, Kubernetes moves workloads to an active node.
 
@@ -47,7 +47,7 @@ After you set up your machines, you can deploy AKS Edge Essentials in the follow
 
 ![Diagram showing AKS Edge Essentials deployment scenarios.](./media/aks-edge/aks-edge-deployment-options.jpg)
   
-Once you've created your cluster, you can deploy your applications and connect your cluster to Arc, to enable Arc extensions such as Azure Monitor and Azure Policy. You can also choose to use GitOps to manage your deployments.
+Once you create your cluster, you can deploy your applications and connect your cluster to Arc, to enable Arc extensions such as Azure Monitor and Azure Policy. You can also choose to use GitOps to manage your deployments.
 
 ## Next steps
 
