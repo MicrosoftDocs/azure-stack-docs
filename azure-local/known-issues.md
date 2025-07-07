@@ -23,7 +23,7 @@ For more information about new features in this release, see [What's new for Azu
 
 ## Known issues for version 2506
 
-For the 2506 release of Azure Local, Microsoft released two security updates: one for existing deployments and another for new deployments. The following table provides information about different deployment types, their corresponding security updates, and OS builds:
+For the 2506 release of Azure Local, Microsoft released two security updates, each aligned with a specific OS build. The following table provides the specific versions and their OS builds:
 
 | Solution version  | OS build  |
 |---------|---------|---------|
