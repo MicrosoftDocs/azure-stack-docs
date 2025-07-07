@@ -4,7 +4,7 @@ description: Learn more about Health Service faults
 ms.author: alkohli
 ms.topic: how-to
 author: alkohli
-ms.date: 07/03/2025
+ms.date: 07/07/2025
 ---
 
 # View Health Service faults
@@ -337,9 +337,9 @@ For a detailed overview of health faults, including fault severity mappings, hea
 
 Considerations for Health Service faults:
 
-- Some faults are disabled by default. To enable a fault, set the corresponding health setting to true. 
+- Some faults are disabled by default. To enable a fault, set the corresponding health setting to true.
 For example, fault type `Microsoft.Health.FaultType.PhysicalDisk.HighLatency.AverageIO` is disabled by default. To enable it, set the health setting `System.Storage.PhysicalDisk.HighLatency.Threshold.Tail.Enabled` to true.
-- The health of storage enclosure components, such as fans, power supplies, and sensors is derived from SCSI Enclosure Services (SES). If your vendor does not provide this information, the Health Service cannot display it.
+- The health of storage enclosure components, such as fans, power supplies, and sensors is derived from SCSI Enclosure Services (SES). If your vendor doesn't provide this information, the Health Service cannot display it.
 
 ## Additional references
 - [Health Service](health-service-overview.md)
