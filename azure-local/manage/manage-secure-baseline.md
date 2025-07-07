@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 06/23/2025
+ms.date: 07/03/2025
 ---
 
 # Manage security defaults for Azure Local
@@ -118,7 +118,7 @@ The following table describes security settings that can be configured on your A
 
 | Feature area | Feature     |Description           | Supports drift control? |
 |--------------|-------------|----------------------|---------------------------------|
-| Governance                 | [Security baseline](.././concepts/secure-baseline.md)            | Maintains the security defaults on each node. Helps protect against changes.  | Yes                             |
+| Governance                 | [Security baseline](#view-and-download-security-settings)            | Maintains the security defaults on each node. Helps protect against changes.  | Yes                             |
 | Credential protection      | [Windows Defender Credential Guard](/windows/security/identity-protection/credential-guard/credential-guard)     | Uses virtualization-based security to isolate secrets from credential-theft attacks. | Yes                             |
 | Application control        | [Windows Defender Application control](/windows/security/threat-protection/windows-defender-application-control/wdac-and-applocker-overview#windows-defender-application-control)           | Controls which drivers and apps are allowed to run directly on each node.           | No                              |
 | Data at-rest encryption    | [BitLocker for OS boot volume](/windows/security/information-protection/bitlocker/bitlocker-overview)          | Encrypts the OS startup volume on each node.                                        | No                              |
