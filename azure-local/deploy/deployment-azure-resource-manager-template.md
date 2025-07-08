@@ -221,7 +221,7 @@ You can also check out this community sourced template to [Deploy an Azure Local
 
 ## ARM template parameters reference
 
-The following table describes the parameters in the JSON file used for ARM template deployment:
+The following table describes the parameters defined in the ARM template's parameters file:
 
 | Parameter | Description |
 |--|--|
