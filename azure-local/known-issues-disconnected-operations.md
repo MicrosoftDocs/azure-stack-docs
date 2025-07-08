@@ -29,4 +29,7 @@ Use only lower cases for cloud names for az cloud sub-commands (such as register
 ### AKS on Azure Local
 
 
+### Azure Resource Manager 
+#### Templatespecs
+Templatespecs is not supported for the preview release. A deployment using ARM templates that contains templateSpecs will fail. 
 
