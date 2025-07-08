@@ -376,14 +376,14 @@ function Test-SslCertificateCrypto {
         if ($SslCertificate.PublicKey.Key.KeySize -lt 2048) {
             throw "Weak RSA Key: Upgrade to at least 2048-bit"
         } else {
-            Trace-Execution "RSA Key is secure ($($SslCertificate.PublicKey.Key.KeySize) bits)"
+            Write-Verbose "RSA Key is secure ($($SslCertificate.PublicKey.Key.KeySize) bits)"
         }
     }
 
     if ($SslCertificate.PublicKey.Oid.FriendlyName -match "ECDSA") {
         $validCurves = @("ECDSA_P256", "ECDSA_P384", "ECDSA_P521")
         if ($validCurves -contains $SslCertificate.PublicKey.Oid.FriendlyName) {
-            Trace-Execution "ECDSA with $($SslCertificate.PublicKey.Oid.FriendlyName) curve is secure"
+            Write-Verbose "ECDSA with $($SslCertificate.PublicKey.Oid.FriendlyName) curve is secure"
         } else {
             throw "Weak ECDSA Curve: Use P-256, P-384, or P-521"
         }
@@ -394,7 +394,12 @@ function Test-SslCertificateCrypto {
     }
 }
 
-$SslCertificate = # load SSL certificate
+# Test SSL Certificate for Management cert
+$HostName = $ManagementNetworkConfiguration.ManagementIpAddress
+$SslCertificate = [System.Security.Cryptography.X509Certificates.X509Certificate2]::new(`
+            $ManagementNetworkConfiguration.TlsCertificatePath,
+            $ManagementNetworkConfiguration.TlsCertificatePassword)
+
 $currentDate = Get-Date
 if ($currentDate -lt $SslCertificate.NotBefore) {
     throw "Certificate is not yet valid (future start date). Please correct the certificate and try again."
@@ -406,6 +411,8 @@ Test-SSLCertificateSAN -HostName $HostName -SslCertificate $SslCertificate | Out
 Test-SSLCertificateChain -SslCertificate $SslCertificate | Out-Null
 Test-SslCertificateEnhancedKeyUsage -SslCertificate $SslCertificate | Out-Null
 Test-SslCertificateCrypto -SslCertificate $SslCertificate | Out-Null
+
+
 ```
 
 ## Install and configure the appliance  
