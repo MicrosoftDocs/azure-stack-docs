@@ -231,7 +231,7 @@ The following table describes the parameters that you define in the ARM template
 | diagnosticStorageAccountName | Name of the Azure Storage Account used to store key vault audit logs. This account is a locally redundant storage (LRS) account with a lock. <br/>For more information, see [Azure Storage Account](/azure/storage/common/storage-account-create?tabs=azure-portal). For naming conventions, see [Azure Storage account names](/azure/storage/common/storage-account-overview#storage-account-name).|
 | logsRetentionInDays | Number of days that logs are retained. <br/> If you don't want to apply any retention policy and retain data forever, specify 0. |
 | storageAccountType | Type of the Azure Storage Account to be used in the deployment. For example, Standard_LRS. |
-| clusterName | Name of the Azure Local instance being deployed. This name must be different from any of the node names. |
+| clusterName | Name of the Azure Local instance being deployed.<br/> This name must be different from any of the node names. |
 | location | Deployment location, typically derived from the resource group.  <br/>For a list of supported Azure regions, see [Azure requirements](../concepts/system-requirements-23h2.md?tabs=azure-public#azure-requirements). |
 | tenantId | Azure subscription tenant ID. <br/>For more information, see [Find your Microsoft Entra tenant](/azure/azure-portal/get-subscription-tenant-id#find-your-microsoft-entra-tenant).|
 | witnessType | Witness type for your Azure Local cluster. </br>Witness type must be Cloud for a two-node cluster. It can  be empty for other cluster sizes.<br/>For more information on cloud witness, see [Deploy a quorum witness](/windows-server/failover-clustering/deploy-quorum-witness?tabs=domain-joined-witness%2Cfailovercluster%2Cfailovercluster1&pivots=cloud-witness). |
@@ -251,7 +251,7 @@ The following table describes the parameters that you define in the ARM template
 | smbSigningEnforced | Setting for signing SMB traffic between this Azure Local cluster and others to help prevent relay attacks.<br/>For more information, see [Overview of Server Message Block signing](/troubleshoot/windows-server/networking/overview-server-message-block-signing). |
 | smbClusterEncryption | SMB cluster traffic setting for encrypting traffic between servers in the cluster on your storage network.<br/>For more information, see [SMB encryption](/windows-server/storage/file-server/smb-security#smb-encryption). |
 | bitlockerBootVolume | BitLocker encyrption setting for encrypting OS volume on each server.<br/>For more information, see [Manage BitLocker encryption on Azure Local](../manage/manage-bitlocker.md). |
-| bitlockerDataVolumes | BitLocker encryption setting for encrypting cluster shared volumes (CSVs) created on this system during deployment.<br/> <br/>For more information, see [Manage BitLocker encryption on Azure Local](../manage/manage-bitlocker.md). |
+| bitlockerDataVolumes | BitLocker encryption setting for encrypting cluster shared volumes (CSVs) created on this system during deployment.<br/>For more information, see [Manage BitLocker encryption on Azure Local](../manage/manage-bitlocker.md). |
 | wdacEnforced | Application Control setting to control which drivers and apps are allowed to run directly on each server.<br/>For more information, see [Manage Application Control for Azure Local](../manage/manage-wdac.md). |
 | streamingDataClient | Specifies whether telemetry data streaming from the Azure Local cluster to Microsoft is enabled. |
 | euLocation | Specifies whether to send and store telemetry and diagnostic data within the European Union (EU). |
@@ -262,7 +262,7 @@ The following table describes the parameters that you define in the ARM template
 | startingIPAddress | The first IP address in a contiguous block of at least six static IP addresses on your management network's subnet, omitting addresses already used by the machines.<br/>These IPs are used by Azure Local and internal infrastructure (Arc Resource Bridge) that's required for Arc VM management and AKS Hybrid. |
 | endingIPAddress | The last IP address in a contiguous block of at least six static IP addresses on your management network's subnet, omitting addresses already used by the machines.<br/>These IPs are used by Azure Local and internal infrastructure (Arc Resource Bridge) that's required for Arc VM management and AKS Hybrid. |
 | dnsServers | List of DNS server IPs. |
-| useDhcp | Indicates whether to use Dynamic Host Configuration Protocol (DHCP) for hosts and cluster IPs. If not declared, the deployment will default to static IPs. If TRUE, gateway and DNS servers are not required. |
+| useDhcp | Indicates whether to use Dynamic Host Configuration Protocol (DHCP) for hosts and cluster IPs. <br/>If not declared, the deployment will default to static IPs. If TRUE, gateway and DNS servers are not required. |
 | physicalNodesSettings | Array of physical nodes with their IP addresses. |
 | networkingType | Type of networking. For example, switchedMultiServerDeployment.<br/>For more information, see [Specify network settings](../deploy/deploy-via-portal.md#specify-network-settings). |
 | networkingPattern | Pattern used for networking. For example, hyperConverged. |
