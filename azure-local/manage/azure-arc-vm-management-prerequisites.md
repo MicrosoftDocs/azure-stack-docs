@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 03/21/2025
+ms.date: 07/08/2025
 
 ---
 
@@ -34,13 +34,13 @@ The Azure requirements include:
     
       :::image type="content" source="./media/azure-arc-vm-management-prerequisites/azure-arc-connected.png" alt-text="Screenshot of the Overview page in the Azure Local resource showing Azure Arc as connected." lightbox="./media/azure-arc-vm-management-prerequisites/azure-arc-connected.png":::
 
-## Arc VM image requirements
+## Azure Local VM image requirements
 
-For Arc VM images to be used on Azure Local, make sure to satisfy the following requirements:
+For Azure Local VM images to be used on Azure Local, make sure to satisfy the following requirements:
 
 - Use only the English (en-us) language VHDs to create VM images.
-- Do not use Azure Virtual machine VHD disk to create VM images.
-- If using Windows Server 2012 and Windows Server 2012 R2 images, you can only create Arc VMs using the Azure CLI. For more information, see [Additional parameters required to provision Arc VM via the Azure CLI using Windows Server 2012 and Windows Server 2012 R2 images](./create-arc-virtual-machines.md#additional-parameters-for-windows-server-2012-and-windows-server-2012-r2-images).
+- Don't use VHD disks to create VM images.
+- If using Windows Server 2012 and Windows Server 2012 R2 images, you can only create Azure Local VMs using the Azure CLI. For more information, see [Additional parameters required to provision Azure Local VMs via the Azure CLI using Windows Server 2012 and Windows Server 2012 R2 images](./create-arc-virtual-machines.md#additional-parameters-for-windows-server-2012-and-windows-server-2012-r2-images).
 
 ## Firewall requirements
 
