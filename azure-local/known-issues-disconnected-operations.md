@@ -14,7 +14,11 @@ ms.reviewer: hafianba
 This article identifies critical known issues and their workarounds in disconnected operations for Azure Local.
 
 These release notes are continuously updated, and as critical issues requiring a workaround are discovered, they're added. Before you deploy disconnected operations with Azure Local, carefully review the information contained here.
+
 ## Known issues for 2506
+### Portal failures / resources missing or deployments failing (after restarting/or starting node/control plane VM)
+
+It will take up to 1 hour after a reboot until system becomes fully ready. If you try using the local Portal or Azure CLI and are experiencing failures - please verify (using the OperationsModule to get appliance health) that all services are fully converged.
 ### Azure CLI
 
 'az cloud show' vs 'az cloud register' treats case sensitivity different - leading to potential issues. 
