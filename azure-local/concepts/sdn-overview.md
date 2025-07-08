@@ -59,7 +59,7 @@ Here's a summary of unsupported scenarios for SDN enabled by Arc on Azure Local:
 |Multiple NICs     | Scenarios that require multiple NICs simultaneously aren't supported.        |
 |AKS workloads     | AKS workloads aren't supported.      |
 |Disaster recovery     | Disaster recovery support isn't available.      |
-
+|Multi-cast workloads     | Multi-cast workloads aren't supported.      |
 
 ## Supported networking patterns for SDN enabled by Arc
 
