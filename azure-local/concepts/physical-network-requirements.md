@@ -194,9 +194,9 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 |-----  |---| :-:  | :-:  | :-:   | :-:   |
 | [QFX5220 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5220-switch-datasheet.pdf)<br>(100, 400 GbE) |Junos 20.2R3-S2 or later|&check;| &check;| &check;| &check; |
 | [QFX5210 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5210-switch-datasheet.pdf) <br>(25, 100 GbE) |Junos 23.4R2-S4.11 or later|&check;| &check;| &check;| &check; |
-| [QFX5200 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5200-switch-datasheet.pdf) <br>(10, 25, 100 GbE) |Junos 23.4R2.13 or later|&check;| &check;| &check;| &check; |
+| [QFX5200 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5200-switch-datasheet.pdf) <br>(10, 25, 100 GbE) |Junos 23.4R2-S4.11 or later	|&check;| &check;| &check;| &check; |
 | [QFX5130 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5130-switch.pdf) <br>(400 GbE)|Junos 20.2R3-S2 or later|&check;| &check;| &check;| &check; |
-| [QFX5120 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5120-ethernet-switch-datasheet.pdf) <br>(10, 25, 100 GbE) |Junos 23.4R2.13 or later|&check;| &check;| &check;| &check; |
+| [QFX5120 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5120-ethernet-switch-datasheet.pdf) <br>(10, 25, 100 GbE) |Junos 23.4R2-S4.11 or later	|&check;| &check;| &check;| &check; |
 | [QFX5110 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5110-ethernet-switch-datasheet.pdf) <br>(10 GbE) |Junos 23.4R2-S4.11 or later|&check;| &check;| &check;| &check; |
 
 > [!NOTE]
