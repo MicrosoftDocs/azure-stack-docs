@@ -119,7 +119,7 @@ With all the prerequisite and preparation steps complete, you're ready to deploy
 For an example of a parameter JSON file, see [azuredeploy.parameters.json](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.azurestackhci/create-cluster/azuredeploy.parameters.json). For detailed descriptions of the parameters defined in this file, see [ARM template parameters reference](#arm-template-parameters-reference).
 
 > [!IMPORTANT]
-> In this release, make sure that all the parameters contained in the JSON value are filled out including the ones that have a null value. If there are null values, then those parameters need to be populated or the validation fails.
+> Ensure that all parameters in the JSON file are filled out, including placeholders that appear as `[“”]`, which indicate that the parameter expects an array structure. Replace these with actual values based on your deployment environment, or validation will fail.
 
 1. In the Azure portal, go to **Home** and select **+ Create a resource**.
 
