@@ -3,7 +3,7 @@ title: Use Container Storage Interface (CSI) disk drivers in AKS enabled by Azur
 description: Learn how to use Container Storage Interface (CSI) drivers to manage disks in AKS enabled by Arc.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 03/14/2024
+ms.date: 07/03/2025
 ms.author: sethm
 ms.lastreviewed: 01/14/2022
 ms.reviewer: abha
@@ -23,11 +23,11 @@ This article describes how to use Container Storage Interface (CSI) built-in sto
 
 ## Dynamically create disk persistent volumes using built-in storage class
 
-A *storage class* is used to define how a unit of storage is dynamically created with a persistent volume. For more information on how to use storage classes, see [Kubernetes storage classes](https://kubernetes.io/docs/concepts/storage/storage-classes/). 
+A *storage class* is used to define how a unit of storage is dynamically created with a persistent volume. For more information about how to use storage classes, see [Kubernetes storage classes](https://kubernetes.io/docs/concepts/storage/storage-classes/).
 
-In AKS Arc, the **default** storage class is created by default and uses CSI to create VHDX-backed volumes. The reclaim policy ensures that the underlying VHDX is deleted when the persistent volume that used it is deleted. The storage class also configures the persistent volumes to be expandable; you just need to edit the persistent volume claim with the new size.
+In AKS Arc, the default storage class uses CSI to create VHDX-backed volumes. The reclaim policy ensures that the underlying VHDX is deleted when the persistent volume that used it is deleted. The storage class also configures the persistent volumes to be expandable; you just need to edit the persistent volume claim with the new size.
 
-To leverage this storage class, create a [PVC](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) and a respective pod that references and uses it. A PVC is used to automatically provision storage based on a storage class. A PVC can use one of the pre-created storage classes or a user-defined storage class to create a VHDX of the desired size. When you create a pod definition, the PVC is specified to request the desired storage.
+To use this storage class, create a [Persistent Volume Claim (PVC)](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) and a respective pod that references and uses it. A PVC is used to automatically provision storage based on a storage class. A PVC can use one of the pre-created storage classes or a user-defined storage class to create a VHDX of the desired size. When you create a pod definition, the PVC is specified to request the desired storage.
 
 ## Create custom storage class for disks
 
@@ -35,7 +35,7 @@ The default storage class is suitable for most common scenarios. However, in som
 
 If you have Linux workloads (pods), you must create a custom storage class with the parameter `fsType: ext4`. This requirement applies to Kubernetes versions 1.19 and 1.20 or later. The following example shows a custom storage class definition with `fsType` parameter defined:
 
-```YAML
+```yaml
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
@@ -56,7 +56,7 @@ volumeBindingMode: Immediate
 allowVolumeExpansion: true  
 ```
 
-If you create a custom storage class, you can specify the location where you want to store PVs. If the underlying infrastructure is Azure Local, this new location could be a volume that's backed by high-performing SSDs/NVMe or a cost-optimized volume backed by HDDs.
+If you create a custom storage class, you can specify the location in which you want to store PVs. If the underlying infrastructure is Azure Local, this new location could be a volume that's backed by high-performing SSDs/NVMe, or a cost-optimized volume backed by HDDs.
 
 Creating a custom storage class is a two-step process:
 
@@ -75,7 +75,8 @@ Creating a custom storage class is a two-step process:
    ```azurecli
    $storagepathID = az stack-hci-vm storagepath show --name $storagepathname --resource-group $resource_group --query "id" -o tsv 
    ```
-2. Create a new custom storage class using the new storage path.
+
+1. Create a new custom storage class using the new storage path.
 
    1. Create a file named **sc-aks-hci-disk-custom.yaml**, and then copy the manifest from the following YAML file. The storage class is the same as the default storage class except with the new `container`. Use the `storage path ID` created in the previous step for `container`. For `group` and `hostname`, query the default storage class by running `kubectl get storageclass default -o yaml`, and then use the values that are specified:
 
@@ -100,9 +101,9 @@ Creating a custom storage class is a two-step process:
       volumeBindingMode: Immediate
       ```
 
-   2. Create the storage class with the [kubectl apply](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply/) command and specify your **sc-aks-hci-disk-custom.yaml** file: 
+   1. Create the storage class with the [kubectl apply](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply/) command and specify your **sc-aks-hci-disk-custom.yaml** file:
   
-      ```console
+      ```azurecli
        $ kubectl apply -f sc-aks-hci-disk-custom.yaml
        storageclass.storage.k8s.io/aks-hci-disk-custom created
       ```
@@ -121,7 +122,7 @@ Creating a custom storage class is a two-step process:
    Get-AksHciStorageContainer -Name "customStorageContainer"
    ```
 
-2. Create a new custom storage class using the new storage path.
+1. Create a new custom storage class using the new storage path.
 
    1. Create a file named **sc-aks-hci-disk-custom.yaml**, and then copy the manifest from the following YAML file. The storage class is the same as the default storage class except with the new `container`. Use the `storage container name` created in the previous step for `container`. For `group` and `hostname`, query the default storage class by running `kubectl get storageclass default -o yaml`, and then use the values that are specified:
 
@@ -146,15 +147,15 @@ Creating a custom storage class is a two-step process:
       volumeBindingMode: Immediate
       ```
 
-   2. Create the storage class with the [kubectl apply](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply/) command and specify your **sc-aks-hci-disk-custom.yaml** file: 
-  
-      ```console
-       $ kubectl apply -f sc-aks-hci-disk-custom.yaml
-       storageclass.storage.k8s.io/aks-hci-disk-custom created
+   1. Create the storage class with the [kubectl apply](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply/) command and specify your **sc-aks-hci-disk-custom.yaml** file:
+
+      ```azurecli
+      $ kubectl apply -f sc-aks-hci-disk-custom.yaml
+      storageclass.storage.k8s.io/aks-hci-disk-custom created
       ```
 
    ---
 
 ## Next steps
 
-- [Use the file Container Storage Interface drivers](container-storage-interface-files.md)
+[Use the Container Storage Interface file drivers](container-storage-interface-files.md)
