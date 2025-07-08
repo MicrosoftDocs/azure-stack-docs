@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
 ms.custom: devx-track-azurecli
-ms.date: 07/02/2025
+ms.date: 07/08/2025
 ---
 
 # Create Azure Local VM image using existing Azure Local VMs enabled by Azure Arc
@@ -21,7 +21,7 @@ Before you begin, make sure that:
 
 - You've reviewed and completed the [Azure Local VM management prerequisites](./azure-arc-vm-management-prerequisites.md).
 - You've connected to your Azure Local using the instructions in [Connect to Azure Local via Azure CLI client](./azure-arc-vm-management-prerequisites.md#azure-command-line-interface-cli-requirements).
-- The VHDX image must be prepared using `sysprep /generalize /shutdown /oobe`. For more information, see [Sysprep command-line options](/windows-hardware/manufacture/desktop/sysprep-command-line-options#oobe). This is true for both Windows and Linux VMs.
+- The VHDX image must be prepared using `sysprep /generalize /shutdown /oobe`. For more information, see [Sysprep command-line options](/windows-hardware/manufacture/desktop/sysprep-command-line-options#oobe). This is true for both Windows and Linux VM images.
 - The source VM must be powered off before attempting to create the VM image.
 
 
