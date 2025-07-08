@@ -140,7 +140,7 @@ Follow these steps to verify that the upgrade was successful:
 
     :::image type="content" source="./media/install-solution-upgrade/verify-solution-version.png" alt-text="Screenshot of Azure Local overview page and solution version." lightbox="./media/install-solution-upgrade/verify-solution-version.png":::
 
-    > [NOTE!]
+    > [!NOTE]
     > After a solution upgrade, you might see a 10.x version, this is expected and supported. For more information, see [Azure Local release information summary](../release-information-23h2.md#azure-local-release-information-summary).
 
 ## Post solution upgrade tasks
