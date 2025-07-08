@@ -635,6 +635,7 @@ To initialize each node, follow these steps. Modify where necessary to match you
   
     > [!NOTE]  
     > These nodes appear in the local portal shortly after you run the steps, and the extensions appear on the nodes a few minutes after installation.  
+    
 ### For Air-gapped/disconnected deployments 
 You  need to do the following on each node, to enable Azure Local to be deployed fully disconnected. 
 
