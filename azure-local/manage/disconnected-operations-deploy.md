@@ -524,7 +524,7 @@ Use the operator account to create an SPN for Arc initialization of each Azure L
     ```azurecli  
     $resourcegroup = ‘azurelocal-disconnected-operations’  
     $appname = ‘azlocalclusapp’  
-    az cloud set -n ‘Azure.Local’  
+    az cloud set -n 'azure.local'
     az login  
     $g = (az group create -n $resourcegroup -l autonomous)|ConvertFrom-Json  
     az ad sp create-for-rbac -n $appname --role Owner --scopes $g.id  
@@ -559,7 +559,7 @@ To initialize each node, follow these steps. Modify where necessary to match you
 
     ```azurecli
     $resourcegroup = 'azurelocal-disconnected-operations' # Needs to match the cloud name your configured CLI with.
-    $applianceCloudName = "Azure.local"
+    $applianceCloudName = "azure.local"
     $applianceConfigBasePath = "C:\AzureLocalDisconnectedOperations\"
     $appId = 'guid'
     $clientSecret = 'retracted'
@@ -605,13 +605,13 @@ To initialize each node, follow these steps. Modify where necessary to match you
     ContainerRegistryEndpointSuffix           = $cloudConfig.suffixes.acrLoginServerEndpoint
     }
     Add-AzEnvironment @applianceEnvironmentParams -ErrorAction Stop | Out-Null
-    Write-Host "Added Azure.local Environment"
+    Write-Host "Added azure.local Environment"
     ```
 
 7. Set the configuration hash.
 
     ```azurecli
-    Write-Host "Setting Azure.local configurations"
+    Write-Host "Setting azure.local configurations"
     $hash = @{
     AccountID        = $applianceAccountId
     ArmAccessToken   = $applianceAccessToken
@@ -635,7 +635,21 @@ To initialize each node, follow these steps. Modify where necessary to match you
   
     > [!NOTE]  
     > These nodes appear in the local portal shortly after you run the steps, and the extensions appear on the nodes a few minutes after installation.  
-
+### For Air-gapped/disconnected deployments 
+You also need to do the following (on each node)
+- Add the following environment variable, by running the following:
+```powershell
+ [Environment]::SetEnvironmentVariable("NUGET_CERT_REVOCATION_MODE", "offline", [System.EnvironmentVariableTarget]::Machine)
+```
+- Configure the timeserver to use e.g. your domain controller. Modify the script below and run from Powershell:
+```powershell
+w32tm /config /manualpeerlist:"dc.contoso.com" /syncfromflags:manual /reliable:yes /update
+net stop w32time
+net start w32time
+w32tm /resync /rediscover
+# Check your NTP settings
+w32tm /query /peers
+```
 ### Create the Azure Local instance (cluster)
 
 Congratulations! You've completed all the prerequisites to deploy Azure Local with a fully air-gapped local control plane.
