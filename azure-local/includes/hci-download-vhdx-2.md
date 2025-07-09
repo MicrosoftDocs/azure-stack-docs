@@ -14,5 +14,5 @@ SDN uses a VHDX file containing either the Azure Stack HCI or Windows Server ope
 Depending on the OS version, download one of the following VHDX files::
 
 - OS version 25398.xxxx: [Download an English-language version of the VHDX file](https://aka.ms/PVvxVBVCVVC).
-- OS version 26100.xxxx: [Download an English-language version of the VHDX file](../deploy/download-23h2-software.md?view=azloc-2506&preserve-view=true#download-the-software-from-the-azure-portal).
+- OS version 26100.xxxx: [Download an English-language version of the VHDX file](https://aka.ms/AAvqy3y).
 
