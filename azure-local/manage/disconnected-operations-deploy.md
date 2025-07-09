@@ -641,14 +641,17 @@ To initialize each node, follow these steps. Modify where necessary to match you
     > [!NOTE]  
     > These nodes appear in the local portal shortly after you run the steps, and the extensions appear on the nodes a few minutes after installation.  
     
-### For Air-gapped/disconnected deployments 
-You  need to do the following on each node, to enable Azure Local to be deployed fully disconnected. 
+### For air-gapped or disconnected deployments
 
-- Add the following environment variable, by running the following:
+To enable Azure Local to be air-gapped or deployed fully disconnected, you must do the following on each node:
+
+- Add the environment variable. Run this command:
+
 ```powershell
  [Environment]::SetEnvironmentVariable("NUGET_CERT_REVOCATION_MODE", "offline", [System.EnvironmentVariableTarget]::Machine)
 ```
-- Configure the timeserver to use e.g. your domain controller. Modify the script below and run from Powershell:
+- Configure the timeserver to use your domain controller,for example. Modify the script and run it from PowerShell:
+
 ```powershell
 w32tm /config /manualpeerlist:"dc.contoso.com" /syncfromflags:manual /reliable:yes /update
 net stop w32time
@@ -657,6 +660,7 @@ w32tm /resync /rediscover
 # Check your NTP settings
 w32tm /query /peers
 ```
+
 ### Create the Azure Local instance (cluster)
 
 With the prerequisites completed, you can deploy Azure Local with a fully air-gapped local control plane.
