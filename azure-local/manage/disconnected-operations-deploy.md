@@ -250,6 +250,9 @@ Populate the required parameters based on your deployment planning. Modify the e
 1. Populate the identity configuration object.
 
     ```powershell  
+    $oidcCertChain = Get-CertChainInfo -endpoint 'https://adfs.azurestack.local'
+    $ldapsCertChain = Get-CertChainInfo -endpoint 'https://dc01.azurestack.local'
+
     $identityParams = @{  
         Authority = "https://adfs.azurestack.local/adfs"  
         ClientId = "7e7655c5-9bc4-45af-8345-afdf6bbe2ec1"  
@@ -257,14 +260,14 @@ Populate the required parameters based on your deployment planning. Modify the e
         LdapServer = "adfs.azurestack.local"  
         LdapCredential = New-Object PSCredential -ArgumentList @("ldap", $ldapPassword)  
         SyncGroupIdentifier = "7d67fcd5-c2f4-4948-916c-b77ea7c2712f"  
-        LdapsCertChainInfo="MIIF......"  
-        OidcCertChainInfo="MIID......"  
+        LdapsCertChainInfo=$ldapsCertChainInfo  
+        OidcCertChainInfo=$oidcCertChainInfo
     }  
     $identityConfiguration = New-ApplianceExternalIdentityConfiguration @identityParams  
     ```  
 
     > [!NOTE]  
-    > `LdapsCertChainInfo` and `OidcCertChain` can be omitted completely for debugging/demo purposes.
+    > `LdapsCertChainInfo` and `OidcCertChain` can be omitted completely for debugging/demo purposes. For information on how to get LdapsCertChainInfo and oidcCertChain info - see [PKI for disconnected operations](disconnected-operations-pki.md)
 
     For more information, see [Identity for disconnected operations](disconnected-operations-identity.md).  
 

@@ -218,61 +218,21 @@ Here is an an example on how to create certificates for securing the management 
 
 1. Copy the management certificates to the directory structure represented in ManagementEndpointCerts
 
-## Obtain certificate thumbprints for identity integration (oidc / ldap)
+## Obtain certificate information for identity integration 
 
-Here's an example script to get the certificate chain your ADFS endpoint:
+In order to secure your identity integration  - we recommend that you pass the two parameters :
 
+- LdapsCertChainInfo 
+- OidcCertChainInfo 
+
+These will validate that the certificates and chain used for these endpoints have not been manipulated or tampered with. 
+
+You have a helper method in the OperationsModule that you can use to get help populate these parameters.
+
+Here is an example on how to populate the required parameters: 
 ```powershell
-# Resolve certificates from endpoint
-# https://gist.github.com/keystroke/643bcbc449b3081544c7e6db7db0bba8
-
-
-# This script uses endpoints that needs to be modified
-$oidcCertChain = Get-CertificateChainFromEndpoint https://adfs.contoso.com 
-$ldapCertchain =  Get-CertificateChainFromEndpoint https://adfs2.contoso.com 
-
-# Save certificates to specified folder 
-$targetDirectory = 'C:\WinfieldExternalIdentityCertificates1' #Please modify 
-foreach ($certificate in $oidcCertChain) 
-{ 
-    $bytes = $certificate.Export([System.Security.Cryptography.X509Certificates.X509ContentType]::Cert) 
-    $bytes | Set-Content -Path "$targetDirectory\$($certificate.Thumbprint).cer" -Encoding Byte 
-} 
-
-# Read certificate information for external identity configuration 
-$targetDirectory = 'C:\WinfieldExternalIdentityCertificates1' 
-$oidcCertChainInfo = @() 
-foreach ($file in (Get-ChildItem $targetDirectory)) 
-{ 
-    $certificate = [System.Security.Cryptography.X509Certificates.X509Certificate2]::new($file.FullName) 
-    $bytes = $certificate.Export([System.Security.Cryptography.X509Certificates.X509ContentType]::Cert) 
-    $b64 = [system.convert]::ToBase64String($bytes) 
-    $oidcCertChainInfo += $b64 
-} 
-# Save certificates to specified folder 
-$targetDirectory = 'C:\WinfieldExternalIdentityCertificates2' 
-foreach ($certificate in $ldapCertchain) 
-{ 
-    $bytes = $certificate.Export([System.Security.Cryptography.X509Certificates.X509ContentType]::Cert) 
-    $bytes | Set-Content -Path "$targetDirectory\$($certificate.Thumbprint).cer" -Encoding Byte 
-} 
-
-# Read certificate information for external identity configuration 
-$targetDirectory = 'C:\WinfieldExternalIdentityCertificates2' 
-$ldapCertchainInfo = @() 
-foreach ($file in (Get-ChildItem $targetDirectory)) 
-{ 
-    $certificate = [System.Security.Cryptography.X509Certificates.X509Certificate2]::new($file.FullName) 
-    $bytes = $certificate.Export([System.Security.Cryptography.X509Certificates.X509ContentType]::Cert) 
-    $b64 = [system.convert]::ToBase64String($bytes) 
-    $ldapCertchainInfo += $b64 
-} 
-
-Write-Host "LdapcertChainInfo"
-$ldapCertChainInfo
-
-Write-Host "oidcCertChainInfo"
-$oidcCertChainInfo
+$oidcCertChain = Get-CertChainInfo -endpoint 'https://adfs.azurestack.local'
+$ldapsCertChain = Get-CertChainInfo -endpoint 'https://dc01.azurestack.local'
 ```
 
 ## Related content
