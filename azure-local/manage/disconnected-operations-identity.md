@@ -212,7 +212,7 @@ Use PowerShell on Windows Server 2022 or newer for these commands.
 
 ```powershell
 # Modify to fit your domain/installation
-$GSMAAccount = 'Local.contoso\gmsa_adfs'
+$GSMAAccount = 'Local-contoso\gmsa_adfs'
 
 Install-WindowsFeature -Name AD-Domain-Services -IncludeManagementTools
 
@@ -247,6 +247,7 @@ Install-AdfsFarm `
 ### Create AD FS client app, sample users, and groups
 
 ```powershell
+# ClientID can be any unique id in your organization - hardcoded GUID here just as example
 Add-AdfsClient `
     -Name "Azure Local Disconnected operations Sign In Service" `
     -ClientId "7e7655c5-9bc4-45af-8345-afdf6bbe2ec1" `
