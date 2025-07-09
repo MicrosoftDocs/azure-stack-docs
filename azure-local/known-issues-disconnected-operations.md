@@ -32,16 +32,22 @@ The `az cloud show` and `az cloud register` commands treat case sensitivity diff
 
 Use only lowercase letters for cloud names in `az cloud` subcommands, such as `register`, `show`, or `set`.
 
-### Deployment
+<!--### Deployment
 
 ### Azure Local VMs
 
-### AKS on Azure Local
+### AKS on Azure Local-->
 
 ### Azure Resource Manager
 
 #### Template specs
 
 Template specs aren't supported in the preview release. Deployments that use ARM templates with template specs fail.
+
+::: moniker-end
+
+::: moniker range="<=azloc-2506"
+
+This feature is available only in Azure Local 2506.
 
 ::: moniker-end
