@@ -211,6 +211,9 @@ Use PowerShell on Windows Server 2022 or newer for these commands.
 ### Set up Active Directory/Active Directory Domain Services (ADDS) for demo purposes
 
 ```powershell
+# Modify to fit your domain/installation
+$GSMAAccount = 'Local.contoso\gmsa_adfs'
+
 Install-WindowsFeature -Name AD-Domain-Services -IncludeManagementTools
 
 # Import the ADDSDeployement module
@@ -238,7 +241,7 @@ Install-AdfsFarm `
     -CertificateThumbprint "$($cert.Thumbprint)" `
     -FederationServiceName "adfs.local.contoso.com" `
     -FederationServiceDisplayName "Local Contoso ADFS" `
-    -GroupServiceAccountIdentifier "Local.contoso\gmsa_adfs$"
+    -GroupServiceAccountIdentifier $GSMAAccount
 ```
 
 ### Create AD FS client app, sample users, and groups
@@ -304,7 +307,7 @@ $group = Get-ADGroup -Identity $groupName | Select-Object Name, ObjectGUID
 $group
 ```
 
-### Grant LDAP user read on Users with inherit
+### Grant LDAP user read on Users with inheritence
 
 ```powershell
 $domain = Get-ADDomain
@@ -315,6 +318,31 @@ $acl.AddAccessRule($accessRule)
 Set-ACL -Path "AD:\$($domain.DistinguishedName)" -AclObject $acl
 Write-Verbose "Granted 'GenericRead' permissions to ldap account."
 ```
+
+### Grant GSMA account permission to read user properties (from sync group):
+```powershell
+# GropuName and GSMAccount defined earlier
+
+# Get group details
+$Group = Get-ADGroup -Identity $GroupName
+$GroupDN = $Group.DistinguishedName
+ 
+# Build the access rule
+$Identity = New-Object System.Security.Principal.NTAccount($GSMAAccount)
+$ActiveDirectoryRights = [System.DirectoryServices.ActiveDirectoryRights]::ReadProperty
+$AccessControlType = [System.Security.AccessControl.AccessControlType]::Allow
+$InheritanceType = [System.DirectoryServices.ActiveDirectorySecurityInheritance]::All
+ 
+# Create the access rule and apply it to the group
+$Rule = New-Object System.DirectoryServices.ActiveDirectoryAccessRule $Identity, $ActiveDirectoryRights, $AccessControlType, $null, $InheritanceType
+$GroupEntry = [ADSI]"LDAP://$GroupDN"
+$Security = $GroupEntry.ObjectSecurity
+$Security.AddAccessRule($Rule)
+$GroupEntry.CommitChanges()
+```
+> [!NOTE]
+> If the GSMA account used for your ADFS farm fails to read user properties - the login will fail - even if the username/password is correct on the ADFS login page.
+
 
 ::: moniker-end
 
