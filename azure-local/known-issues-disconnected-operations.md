@@ -1,7 +1,7 @@
 ---
 title: Release notes for disconnected operations for Azure Local
 description: Read about the known issues and fixed issues for disconnected operations for Azure Local.
-author: hafianba
+author: haraldfianbakken
 ms.topic: conceptual
 ms.date: 06/27/2025
 ms.author: hafianba
