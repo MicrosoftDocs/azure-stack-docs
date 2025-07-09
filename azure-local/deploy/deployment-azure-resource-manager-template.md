@@ -231,7 +231,7 @@ The following table describes the parameters that you define in the ARM template
 | diagnosticStorageAccountName | Name of the Azure Storage Account used to store key vault audit logs. This account is a locally redundant storage (LRS) account with a lock. <br/>For more information, see [Azure Storage Account](/azure/storage/common/storage-account-create?tabs=azure-portal). For naming conventions, see [Azure Storage account names](/azure/storage/common/storage-account-overview#storage-account-name).|
 | logsRetentionInDays | Number of days that logs are retained. <br/> If you don't want to apply any retention policy and retain data forever, specify 0. |
 | storageAccountType | Type of the Azure Storage Account to be used in the deployment. For example, Standard_LRS. |
-| clusterName | Name of the Azure Local instance being deployed.<br/> This name must be different from any of the node names. |
+| clusterName | Name of the Azure Local instance being deployed.<br/> This is the name that represents your cluster on cloud. It must be different from any of the node names. |
 | location | Deployment location, typically derived from the resource group.  <br/>For a list of supported Azure regions, see [Azure requirements](../concepts/system-requirements-23h2.md?tabs=azure-public#azure-requirements). |
 | tenantId | Azure subscription tenant ID. <br/>For more information, see [Find your Microsoft Entra tenant](/azure/azure-portal/get-subscription-tenant-id#find-your-microsoft-entra-tenant).|
 | witnessType | Witness type for your Azure Local cluster. </br>Witness type must be Cloud for a two-node cluster. It can  be empty for other cluster sizes.<br/>For more information on cloud witness, see [Deploy a quorum witness](/windows-server/failover-clustering/deploy-quorum-witness?tabs=domain-joined-witness%2Cfailovercluster%2Cfailovercluster1&pivots=cloud-witness). |
@@ -241,7 +241,7 @@ The following table describes the parameters that you define in the ARM template
 | AzureStackLCMAdminUsername | Username for the LCM admin.<br/> For more information, see [Review deployment prerequisites for Azure Local](../deploy/deployment-prerequisites.md).|
 | AzureStackLCMAdminPasssword | Password for the LCM admin. <br/> For more information, see [Review deployment prerequisites for Azure Local](../deploy/deployment-prerequisites.md).|
 | hciResourceProviderObjectID | Object ID of the Azure Local Resource Provider. <br/> For more information, see [Get the object ID for Azure Local Resource Provider](#get-the-object-id-for-azure-local-resource-provider).|
-| arcNodeResourceIds | Array of resource IDs of the Azure Arc-enabled servers that are part of the Azure Local cluster. |
+| arcNodeResourceIds | Array of resource IDs of the Azure Arc-enabled servers that are part of this Azure Local cluster. |
 | domainFqdn | Fully-qualified domain name (FQDN) for the Active Directory Domain Services prepared for deployment. |
 | namingPrefix | Prefix used for all objects created for the Azure Local deployment. |
 | adouPath | Path of the Organizational Unit (OU) created for this deployment. The OU can't be at the top level of the domain. For example: OU=Local001,DC=contoso,DC=com. |
@@ -256,7 +256,7 @@ The following table describes the parameters that you define in the ARM template
 | streamingDataClient | Specifies whether telemetry data streaming from the Azure Local cluster to Microsoft is enabled. |
 | euLocation | Specifies whether to send and store telemetry and diagnostic data within the European Union (EU). |
 | episodicDataUpload | Episodic diagnostic data setting to specify whether to collect log data and upload to Microsoft to assist with troubleshooting and support.<br/>For more information, see [Crash dump collection](../concepts/observability.md#crash-dump-collection). |
-| configurationMode | Storage volume configuration mode. For example, Express.<br/> |
+| configurationMode | Storage volume configuration mode. <br/>Supported values are:<br/>- **Express**: Creates one thinly provisioned volume and storage path per machine for workloads to use. This is in addition to the required one infrastructure volume per cluster. <br/>- **InfraOnly**: Creates only the required one infrastructure volume per cluster. You need to create workload volumes and storage paths later..<br/>- **KeepStorage**: Preserves existing data drives that contain a Storage Spaces pool and volumes.  |
 | subnetMask | The subnet mask for the management network used by the Azure Local deployment. |
 | defaultGateway | The default gateway for deploying an Azure Local cluster. |
 | startingIPAddress | The first IP address in a contiguous block of at least six static IP addresses on your management network's subnet, omitting addresses already used by the machines.<br/>These IPs are used by Azure Local and internal infrastructure (Arc Resource Bridge) that's required for Arc VM management and AKS Hybrid. |
