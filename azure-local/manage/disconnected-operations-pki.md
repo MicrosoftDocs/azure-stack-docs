@@ -94,7 +94,7 @@ You need these certificates to deploy the disconnected operations appliance. You
 
 1. Connect to the CA.
 1. Create a folder named **IngressEndpointsCerts**. Use this folder to store all certificates.
-1. Modify the variables and run the script to create the ingress certificates and export them to the configured folder.
+1. Create the 26 certs in the table above and export them into the IngressEndpointCerts folder. Here is an example script you can modify and run the script (this will create the ingress certificates and export them to the configured folder - by creating CSRs and issuing them to your CA)
 
   ```PowerShell    
   $fqdn = "autonomous.cloud.private" 

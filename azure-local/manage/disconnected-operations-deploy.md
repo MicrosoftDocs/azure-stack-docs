@@ -436,7 +436,10 @@ $installAzureLocalParams = @{
     DisableCheckSum = $false  
     AutoScaleVMToHostHW = $false  
 }  
-Install-Appliance @installAzureLocalParams -Verbose  
+
+Install-Appliance @installAzureLocalParams -disconnectMachineDeploy -Verbose  
+
+# Note - if you are deploying the appliance with limited connectivity you can ommit the flag -disconnectMachineDeploy. 
 ```
 
 > [!NOTE]
@@ -466,8 +469,8 @@ To configure observability, follow these steps:
 1. On a computer with Azure CLI (or using the Azure Cloud Shell in Azure portal) create the SPN. Run the following script:
 
     ```powershell
-    $resourcegroup = ‘azure-disconnectedoperations’
-    $appname = ‘azlocalobsapp’
+    $resourcegroup = 'azure-disconnectedoperations'
+    $appname = 'azlocalobsapp'
     az login
     $g = (az group create -n $resourcegroup -l eastus)|ConvertFrom-Json
     az ad sp create-for-rbac -n $appname --role Owner --scopes $g.id
@@ -527,8 +530,8 @@ Use the operator account to create an SPN for Arc initialization of each Azure L
 1. Configure CLI on your client machine and run this command:
 
     ```azurecli  
-    $resourcegroup = ‘azurelocal-disconnected-operations’  
-    $appname = ‘azlocalclusapp’  
+    $resourcegroup = 'azurelocal-disconnected-operations'
+    $appname = 'azlocalclusapp'  
     az cloud set -n 'azure.local'
     az login  
     $g = (az group create -n $resourcegroup -l autonomous)|ConvertFrom-Json  
@@ -573,10 +576,16 @@ To initialize each node, follow these steps. Modify where necessary to match you
 
 1. Initialize each node.
 
-    ```azurecli
-    Write-Host "az login to Disconnected operations cloud"
+
+    ```azurecli    
+    Write-Host "az login to Disconnected operations cloud"    
     az cloud set -n $applianceCloudName --only-show-errors
-    az login --service-principal --username $appId --password $clientSecret --tenant 98b8267d-e97f-426e-8b3f-7956511fd63f    
+    Write-host "There is a known issue in this preview release where using the  service principal does not work"
+    # Following is commented out  due to this issue
+    # az login --service-principal --username $appId --password $clientSecret --tenant 98b8267d-e97f-426e-8b3f-7956511fd63f    
+    Write-Host "Using device code login for now - please complete the login from your browser: "
+    az login --use-device-code
+
     Write-Host "Connected to Disconnected operations Cloud through az cli"
     ```
 
