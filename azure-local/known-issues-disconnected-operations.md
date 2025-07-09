@@ -1,6 +1,6 @@
 ---
-title: Release notes with fixed and known issues in Azure Local
-description: Read about the known issues and fixed issues in Azure Local.
+title: Release notes for disconnected operations for Azure Local
+description: Read about the known issues and fixed issues for disconnected operations for Azure Local.
 author: hafianba
 ms.topic: conceptual
 ms.date: 06/27/2025
@@ -9,22 +9,28 @@ ms.reviewer: hafianba
 ---
 
 # Known issues for disconnected operations for Azure Local
+
 ::: moniker range="=azloc-2506"
 
-This article identifies critical known issues and their workarounds in disconnected operations for Azure Local.
+[!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
 
-These release notes are continuously updated, and as critical issues requiring a workaround are discovered, they're added. Before you deploy disconnected operations with Azure Local, carefully review the information contained here.
+This article lists critical known issues and their workarounds in disconnected operations for Azure Local.
+
+These release notes update continuously, and we add critical issues that require a workaround as we find them. Before you deploy disconnected operations with Azure Local, review the information here.
 
 ## Known issues for 2506
-### Portal failures / resources missing or deployments failing (after restarting/or starting node/control plane VM)
 
-It will take up to 1 hour after a reboot until system becomes fully ready. If you try using the local Portal or Azure CLI and are experiencing failures - please verify (using the OperationsModule to get appliance health) that all services are fully converged.
+### Issues after restart or start of a node or control plane VM
+
+If you experience issues with the local portal, resources missing, or deployments failing when you start or restart a node or control plane VM, it might be due to the system not being fully ready.
+
+It can take up to an hour after a reboot for the system to become fully ready. If you use the local portal or Azure CLI and experience failures, check appliance health with the OperationsModule to make sure all services are fully converged.
+
 ### Azure CLI
 
-'az cloud show' vs 'az cloud register' treats case sensitivity different - leading to potential issues. 
+The `az cloud show` and `az cloud register` commands treat case sensitivity differently, which can cause issues.
 
-Use only lower cases for cloud names for az cloud sub-commands (such as register/show/set).
-
+Use only lowercase letters for cloud names in `az cloud` subcommands, such as `register`, `show`, or `set`.
 
 ### Deployment
 
@@ -32,8 +38,10 @@ Use only lower cases for cloud names for az cloud sub-commands (such as register
 
 ### AKS on Azure Local
 
+### Azure Resource Manager
 
-### Azure Resource Manager 
-#### Templatespecs
-Templatespecs is not supported for the preview release. A deployment using ARM templates that contains templateSpecs will fail. 
+#### Template specs
 
+Template specs aren't supported in the preview release. Deployments that use ARM templates with template specs fail.
+
+::: moniker-end
