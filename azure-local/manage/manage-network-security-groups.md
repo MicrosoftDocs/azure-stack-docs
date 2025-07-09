@@ -43,7 +43,7 @@ This article describes how to manage network security groups (NSGs) on your Azur
     
 ---
 
-*## Manage network securi*ty groups and network security rules
+## Manage network security groups and network security rules
 
 # [Azure CLI](#tab/azurecli)
 
@@ -140,7 +140,7 @@ Follow these steps to show details of a network security group:
     az stack-hci-vm network nsg show -g $resource_group --name $nsgname 
     ```
 
-2. The command outputs the details of a specified network security group (NSG).
+1. The command outputs the details of a specified network security group (NSG).
 
     - In this example, the NSG has no network interface attached.
 
@@ -233,7 +233,7 @@ Follow these steps to delete a network security group:
     $nsgname = "examplensg"
     ```
 
-2. Run the following command to delete a network security group (NSG) on your Azure Local instance.
+1. Run the following command to delete a network security group (NSG) on your Azure Local instance.
 
     ```azurecli
     az stack-hci-vm network nsg delete -g $resource_group --name $nsgname --yes
@@ -257,7 +257,7 @@ In this example, we create a network interface with an existing network security
     $nicname="examplenic" 
     ```
 
-2. Run the following command to create a network interface (NIC) on your Azure Local instance.
+1. Run the following command to create a network interface (NIC) on your Azure Local instance.
 
     ```azurecli
     az stack-hci-vm network nic create --resource-group $resource_group --custom-location $customLocationId --location $location --subnet-id $lnetname --ip-address $ipaddress --name $nicname --network-security-group $nsgname 
@@ -469,6 +469,7 @@ In this example,  we associate a static logical network with an existing network
 You can dissociate a network security group from a logical network. This dissociation allows you to remove the network security rules applied to the logical network.
 
 Follow these steps to dissociate a network security group from logical network:
+
 1. Set the following parameters in your Azure CLI session. Make sure to pass the NSG name as an empty string encased in double quotes followed by single quotes ('""').
 
     ```azurecli
@@ -478,6 +479,7 @@ Follow these steps to dissociate a network security group from logical network:
     $nsgname = '""'
     $lnetname="static-lnet3" 
     ```
+
 2. To dissociate a network security group from a logical network, run the following command:
 
     ```azurecli
@@ -575,7 +577,8 @@ Follow these steps to dissociate a network security group from logical network:
       "tags": {},
       "type": "microsoft.azurestackhci/logicalnetworks"
     }
-    ``` 
+    ```
+
     </details>
 
 ## Dissociate network security group from network interface
@@ -594,7 +597,7 @@ Follow these steps to dissociate a network security group from a network interfa
     $nicname ="examplenic" 
     ```
 
-2. To dissociate a network security group from a network interface, run the following command:
+1. To dissociate a network security group from a network interface, run the following command:
 
     ```azurecli
     az stack-hci-vm network nic update -g $resource_group --name $nicname --network-security-group '""'
@@ -676,8 +679,7 @@ This section describes the manage operations supported for network security rule
     $nsgname = "examplensg"
     ```
 
-2. Run this command to show details of a network security rule:
-
+1. Run this command to show details of a network security rule:
 
     ```azurecli
     az stack-hci-vm network nsg rule show -g $resource_group -n $securityrulename --nsg-name $nsgname
@@ -732,7 +734,6 @@ This section describes the manage operations supported for network security rule
     </details>
 
 ### Update a network security rule
-
 
 1. Set the following parameters in your Azure CLI session.
 
@@ -967,7 +968,7 @@ To dissociate a network security group from a network interface, follow these st
 
 1. Go to **Azure Local resource page > Resources > Network interfaces**.
 
-    :::image type="content" source="./media/manage-network-security-groups/associate-network-security-group-network-interface-1.png" alt-text="Screenshot of selecting network interface to dissociate from the network security group." lightbox="./media/manage-network-security-groups/associate-network-security-group-network-interface-1.png"::: 
+    :::image type="content" source="./media/manage-network-security-groups/associate-network-security-group-network-interface-1.png" alt-text="Screenshot of selecting network interface to dissociate from the network security group." lightbox="./media/manage-network-security-groups/associate-network-security-group-network-interface-1.png":::
 
 1. In the right pane, from the list of network interfaces, select an interface that has a network security group attached to it.
 1. Go to **Settings > Network security groups**.
@@ -981,7 +982,6 @@ To dissociate a network security group from a network interface, follow these st
 
 The operation takes a few minutes to complete. You can see the status of the operation in the **Notifications** pane.
 After the network security group is dissociated from the network interface, the page refreshes to indicate the dissociation.
-
 
 ## List network security rules in a network security group
 
@@ -1004,11 +1004,9 @@ To update a network security rule, follow these steps:
 
 ---
 
-
 ## Next steps
 
 - [Troubleshoot SDN enabled by Arc](../index.yml).
-
 
 ::: moniker-end
 
