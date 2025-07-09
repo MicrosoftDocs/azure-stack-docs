@@ -39,7 +39,7 @@ To install the 32-bit version of CLI, follow these steps:
 
 
 > [!NOTE]  
-    > 64-bit Azure CLI can be used on client machines - but for Azure Local (nodes) - please ensure that 32-bits is installed. 64-bit CLI will cause Azure Local deployment to fail.
+> 64-bit Azure CLI can be used on client machines - but for Azure Local (nodes) - please ensure that 32-bits is installed. 64-bit CLI will cause Azure Local deployment to fail.
     
 ## Configure certificates for Azure CLI
 
@@ -248,9 +248,7 @@ The following table lists the CLI extensions supported on Azure Local disconnect
 
 ::: moniker-end
 
-
 ::: moniker range="<=azloc-2506"
-
 
 This feature is available only in Azure Local 2506.
 
