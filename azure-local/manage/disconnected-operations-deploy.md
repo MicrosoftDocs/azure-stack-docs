@@ -676,8 +676,7 @@ Follow these steps to create an Azure Local instance (cluster):
 
 ## Post-deployment tasks
 
-Here are some tasks you can perform after deploying Azure Local with disconnected operations:
-
+Here are some tasks you should perform after deploying Azure Local with disconnected operations:
 1. Back up the BitLocker keys. This encrypts your volumes and lets you recover the appliance if you ever need to restore the VM. For more information, see [Understand security controls with disconnected operations on Azure Local](disconnected-operations-security.md).
 1. Assign extra operators. You can assign one or many operators by navigating to **Operator subscriptions**. Assign the **contributor** role at the subscription level.  
 <!--1. Create more subscriptions. You can create more subscriptions by navigating to **Subscriptions** in the portal and selecting **Create**. You can also use the CLI to automate subscription creation.
