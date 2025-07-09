@@ -117,7 +117,7 @@ To enable remote support on your Azure Local, follow these steps:
     SasCredential          :
     ```
 
-> [!NOTE]
+    > [!NOTE]
     > First time users, if you enable Remote Support through a remote PowerShell session, you might receive the following error:
     >
     > `Processing data from remote server NodeName failed with the following error message: The I/O operation has been aborted because of either a thread exit or an application request.`
