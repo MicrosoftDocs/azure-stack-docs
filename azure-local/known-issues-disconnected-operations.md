@@ -22,9 +22,9 @@ These release notes update continuously, and we add critical issues that require
 
 ### Issues after restart or start of a node or control plane VM
 
-If you experience issues with the local portal, resources missing, or deployments failing when you start or restart a node or control plane VM, it might be due to the system not being fully ready.
+If you experience issues with the local portal, missing resources, or failed deployments after you start or restart a node or control plane VM, the system might not be fully ready.
 
-It can take up to an hour after a reboot for the system to become fully ready. If you use the local portal or Azure CLI and experience failures, check appliance health with the OperationsModule to make sure all services are fully converged.
+The system can take an hour after a reboot to become fully ready. If you use the local portal or Azure CLI and experience failures, check the appliance health using the **OperationsModule** to make sure all services are fully converged.
 
 ### Azure CLI
 
