@@ -125,10 +125,16 @@ To prepare each machine for the disconnected operations appliance, follow these 
     > [!NOTE]
     > If you use a different root for the management certificate, repeat the process and import the key on each node.
 
+1. [Install and configure the CLI](disconnected-operations-cli.md) with your local endpoint on each node. 
+1. Set environment variable to support disconnected operations
+    ```powershell
+    [Environment]::SetEnvironmentVariable("DISCONNECTED_OPS_SUPPORT", $true, [System.EnvironmentVariableTarget]::Machine)
+    ```
+
 1. Find the first machine from the list of node names and specify it as the `seednode` you want to use in the cluster.
 
     ```powershell
-    $seednode = @(‘azlocal-1, ‘azlocal-2,’ azlocal-3’)|Sort|select –first 1
+    $seednode = @('azlocal-1', 'azlocal-2','azlocal-3')|Sort|select –first 1
     $seednode
     ```
 
@@ -203,6 +209,8 @@ To prepare the first machine for the disconnected operations appliance:
     $mgmntCertFolderPath = "$certspath\ManagementEndpointCerts"  
     $ingressCertFolderPath = "$certspath\IngressEndpointCerts"  
     ```
+
+
 
 ## Initialize the parameters
 
@@ -560,11 +568,9 @@ Use the operator account to create an SPN for Arc initialization of each Azure L
     >
     > Don't place the cluster resource in the operator subscription, unless you plan to restrict this to only operators with full access to other operations. You can create more subscriptions or place it in the starter subscription.
 
+
 ### Initialize each node  
-
 To initialize each node, follow these steps. Modify where necessary to match your environment details:
-
-1. [Install and configure the CLI](disconnected-operations-cli.md) with your local endpoint on each node. Ensure that you run initialization on the first machine before moving on to other nodes.
 
 1. Set the configuration variable. Define the resource group, cloud name, configuration path, application ID, client secret, and appliance FQDN.
 
@@ -575,12 +581,11 @@ To initialize each node, follow these steps. Modify where necessary to match you
     $appId = 'guid'
     $clientSecret = 'retracted'
     $applianceFQDN = "autonomous.cloud.private"
-    ```
 
 1. Initialize each node.
 
 
-    ```azurecli    
+    ```powershell
     Write-Host "az login to Disconnected operations cloud"    
     az cloud set -n $applianceCloudName --only-show-errors
     Write-host "There is a known issue in this preview release where using the  service principal does not work"
@@ -594,7 +599,7 @@ To initialize each node, follow these steps. Modify where necessary to match you
 
 1. Get the access token, account ID, subscription ID, and tenant ID.
 
-    ```azurecli
+    ```powershell
     $applianceAccessToken = ((az account get-access-token) | ConvertFrom-Json).accessToken
     $applianceAccountId = $(New-Guid).Guid
     $applianceSubscriptionId = ((az account show) | ConvertFrom-Json).id
@@ -603,13 +608,13 @@ To initialize each node, follow these steps. Modify where necessary to match you
 
 1. Get the cloud configuration details.
 
-    ```azurecli
+    ```powershell
     $cloudConfig = (az cloud show --n $applianceCloudName | ConvertFrom-Json)
     ```
 
 1. Set the environment parameters. Define the environment parameters using the retrieved cloud configuration.
 
-    ```azurecli
+    ```powershell
     $applianceEnvironmentParams = @{
     Name                                      = $applianceCloudName
     ActiveDirectoryAuthority                  = $cloudConfig.endpoints.activeDirectory
@@ -627,7 +632,7 @@ To initialize each node, follow these steps. Modify where necessary to match you
 
 1. Set the configuration hash.
 
-    ```azurecli
+    ```powershell
     Write-Host "Setting azure.local configurations"
     $hash = @{
     AccountID        = $applianceAccountId
@@ -645,19 +650,23 @@ To initialize each node, follow these steps. Modify where necessary to match you
 
 1. Arc-enable each node and install extensions to prepare for cloud deployment and cluster creation.
 
-    ```azurecli
+    ```powershell
     Invoke-AzStackHciArcInitialization @hash
     Write-Host -Subject 'ARC node configuration completed'
     ```
   
     > [!NOTE]  
-    > These nodes appear in the local portal shortly after you run the steps, and the extensions appear on the nodes a few minutes after installation.  
+    > Ensure that you run initialization on the first machine (seed node) before moving on to other nodes.
+    > Nodes appear in the local portal shortly after you run the steps, and the extensions appear on the nodes a few minutes after installation.  
+    
+    > [!NOTE]  
+    > You can also use the [Configurator App](https://learn.microsoft.com/en-us/azure/azure-local/deploy/deployment-arc-register-configurator-app?view=azloc-2505) to initialize each node
     
 ### For air-gapped or disconnected deployments
 
 To enable Azure Local to be air-gapped or deployed fully disconnected, you must do the following on each node:
 
-- Add the environment variable. Run this command:
+- Run this command to add the required environment variable:
 
 ```powershell
  [Environment]::SetEnvironmentVariable("NUGET_CERT_REVOCATION_MODE", "offline", [System.EnvironmentVariableTarget]::Machine)
