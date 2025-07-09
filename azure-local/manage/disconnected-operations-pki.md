@@ -84,6 +84,7 @@ The management endpoint requires two certificates, and you must put them in the 
 ## Create certificates to secure endpoints
 
 ### Ingress endpoints
+
 On the host machine or Active Directory virtual machine (VM), follow the steps in this section to create certificates for the ingress traffic and external endpoints of the disconnected operations appliance. Make sure you modify for each of the 26 certificates.
 
 You need these certificates to deploy the disconnected operations appliance. You also need the public key for your local infrastructure to provide a secure trust chain.
@@ -91,122 +92,121 @@ You need these certificates to deploy the disconnected operations appliance. You
 > [!NOTE]
 > **IngressEndpointCerts** is the folder where you store all 26 certificate files. **IngressEndpointPassword** is a secure string with the certificate password.
 
-
 1. Connect to the CA.
 1. Create a folder named **IngressEndpointsCerts**. Use this folder to store all certificates.
-1. Modify the variables and run the script below (this will create the ingress certificates and export them to the configured folder)
+1. Modify the variables and run the script to create the ingress certificates and export them to the configured folder.
 
-```PowerShell    
-$fqdn = "autonomous.cloud.private" 
-$caName = "<CA Computer Name>\<CA Name>" # Replace with your CA server and CA name (Run certutil -config - -ping to find the names)
-$extCertFilePath = "<Your Preferred Path\IngressEndpointsCerts"
-$certPassword = Read-Host -AsSecureString -Message 'CertPass' -Force  
-# Alternative
-# $certPassword = "REPLACEME"|ConvertTo-SecureString -AsPlainText -Force
+  ```PowerShell    
+  $fqdn = "autonomous.cloud.private" 
+  $caName = "<CA Computer Name>\<CA Name>" # Replace with your CA server and CA name (Run certutil -config - -ping to find the names)
+  $extCertFilePath = "<Your Preferred Path\IngressEndpointsCerts"
+  $certPassword = Read-Host -AsSecureString -Message 'CertPass' -Force  
+  # Alternative
+  # $certPassword = "REPLACEME"|ConvertTo-SecureString -AsPlainText -Force
 
-$AzLCerts = @(
-    "*.blob.$fqdn"
-    "*.edgeacr.$fqdn"
-    "*.hosting.$fqdn"
-    "*.k8sconnect.$fqdn"
-    "*.queue.$fqdn"
-    "*.servicebus.$fqdn"
-    "*.table.$fqdn"
-    "*.vault.$fqdn"
-    "agentserviceapi.$fqdn"
-    "amcs.monitoring.$fqdn"
-    "armmanagement.$fqdn"
-    "autonomous.dp.kubernetesconfiguration.$fqdn"
-    "data.policy.$fqdn"
-    "dp.appliances.$fqdn"
-    "dp.kubernetesconfiguration.$fqdn"
-    "frontend.appliances.$fqdn"
-    "graph.$fqdn"
-    "guestnotificationservice.$fqdn"
-    "his.$fqdn"
-    "login.$fqdn"
-    "metricsingestiongateway.monitoring.$fqdn"
-    # Here's the multi-SAN certificates
-    "portal.$fqdn,hosting.$fqdn,portalcontroller.$fqdn,catalogapi.$fqdn"
-    "licensing.aszrp.$fqdn,dp.aszrp.$fqdn,lbc.$fqdn"
-    "dp.appliances.$fqdn,adminmanagement.$fqdn"
-)
-
-$AzLCerts | ForEach-Object {
-    # Check if there is a comma in the string
-    if ($_.Contains(',')) {
-        $certSubject = "CN=$($_.Split(',')[0])"
-        $dns = $_.Replace(',', '&DNS=').Replace(' ', '')
-        $filePrefix = $_.Split(',')[0].Replace('*.', '')
-    }
-    else {
-        $certSubject = "CN=$_"
-        $dns = $certSubject.Split('=')[1]
-        $filePrefix = $dns.Replace('*.', '')
-    }
-    $certFilePath = "$extCertFilePath\INF"
-    New-Item -ItemType Directory -Path $certFilePath -Force | Out-Null
-    Remove-Item "$certFilePath\$filePrefix.*" -Force -ErrorAction SilentlyContinue
-    $csrPath = Join-Path -Path $certFilePath -ChildPath "$filePrefix.csr"
-    $infPath = Join-Path -Path $certFilePath -ChildPath "$filePrefix.inf"
-
-    # Create the INF file for the CSR
-    @"
-[NewRequest]
-Subject = "$certSubject"
-KeySpec = 1
-KeyLength = 2048
-Exportable = TRUE
-MachineKeySet = TRUE
-SMIME = FALSE
-PrivateKeyArchive = FALSE
-UserProtected = FALSE
-UseExistingKeySet = FALSE
-ProviderName = "Microsoft RSA SChannel Cryptographic Provider"
-ProviderType = 12
-RequestType = PKCS10
-KeyUsage = 0xa0
-HashAlgorithm = sha256
-
-[Extensions]
-2.5.29.17 = "{text}"
-_continue_ = "DNS=$dns"
-"@ | Out-File -FilePath $infPath
-
-    # Generate the CSR
-    certreq -new $infPath $csrPath
-    # Define parameters to submit the CSR
-    $certPath = Join-Path $certFilePath -ChildPath "$filePrefix.cer"
-
-    # Submit the CSR to the CA
-    certreq -submit -attrib "CertificateTemplate:WebServer" -config $caName $csrPath $certPath
-    Write-Verbose "Certificate request submitted. Certificate saved to $certPath" -Verbose
-
-    # Accept the certificate and install it.
-    $certReqOutput = certreq.exe -accept $certPath
-
-    # Parse the thumbprint and export the certificate
-    $match = $certReqOutput -match 'Thumbprint:\s*([a-fA-F0-9]+)'
-    if ($null -ne $match) {
-        $thumbprint = (($match[0]).Split(':')[1]).Trim()
-        Write-Verbose "Thumbprint: $thumbprint" -Verbose
-    }
-    else {
-        Write-Verbose "Thumbprint not found" -Verbose
-        #return;
-    }
-
-    # Export the certificate to a PFX file
-    $cert = Get-Item -Path "Cert:\LocalMachine\My\$thumbprint"
-    $cert | Export-PfxCertificate -FilePath "$extCertFilePath\$filePrefix.pfx" -Password $certPassword -Force
-    Write-Verbose "Certificate for $certSubject and private key exported to $extCertFilePath" -Verbose
-}
-``` 
-
+  $AzLCerts = @(
+      "*.blob.$fqdn"
+      "*.edgeacr.$fqdn"
+      "*.hosting.$fqdn"
+      "*.k8sconnect.$fqdn"
+      "*.queue.$fqdn"
+      "*.servicebus.$fqdn"
+      "*.table.$fqdn"
+      "*.vault.$fqdn"
+      "agentserviceapi.$fqdn"
+      "amcs.monitoring.$fqdn"
+      "armmanagement.$fqdn"
+      "autonomous.dp.kubernetesconfiguration.$fqdn"
+      "data.policy.$fqdn"
+      "dp.appliances.$fqdn"
+      "dp.kubernetesconfiguration.$fqdn"
+      "frontend.appliances.$fqdn"
+      "graph.$fqdn"
+      "guestnotificationservice.$fqdn"
+      "his.$fqdn"
+      "login.$fqdn"
+      "metricsingestiongateway.monitoring.$fqdn"
+      # Here's the multi-SAN certificates
+      "portal.$fqdn,hosting.$fqdn,portalcontroller.$fqdn,catalogapi.$fqdn"
+      "licensing.aszrp.$fqdn,dp.aszrp.$fqdn,lbc.$fqdn"
+      "dp.appliances.$fqdn,adminmanagement.$fqdn"
+  )
+  
+  $AzLCerts | ForEach-Object {
+      # Check if there is a comma in the string
+      if ($_.Contains(',')) {
+          $certSubject = "CN=$($_.Split(',')[0])"
+          $dns = $_.Replace(',', '&DNS=').Replace(' ', '')
+          $filePrefix = $_.Split(',')[0].Replace('*.', '')
+      }
+      else {
+          $certSubject = "CN=$_"
+          $dns = $certSubject.Split('=')[1]
+          $filePrefix = $dns.Replace('*.', '')
+      }
+      $certFilePath = "$extCertFilePath\INF"
+      New-Item -ItemType Directory -Path $certFilePath -Force | Out-Null
+      Remove-Item "$certFilePath\$filePrefix.*" -Force -ErrorAction SilentlyContinue
+      $csrPath = Join-Path -Path $certFilePath -ChildPath "$filePrefix.csr"
+      $infPath = Join-Path -Path $certFilePath -ChildPath "$filePrefix.inf"
+  
+      # Create the INF file for the CSR
+      @"
+  [NewRequest]
+  Subject = "$certSubject"
+  KeySpec = 1
+  KeyLength = 2048
+  Exportable = TRUE
+  MachineKeySet = TRUE
+  SMIME = FALSE
+  PrivateKeyArchive = FALSE
+  UserProtected = FALSE
+  UseExistingKeySet = FALSE
+  ProviderName = "Microsoft RSA SChannel Cryptographic Provider"
+  ProviderType = 12
+  RequestType = PKCS10
+  KeyUsage = 0xa0
+  HashAlgorithm = sha256
+  
+  [Extensions]
+  2.5.29.17 = "{text}"
+  _continue_ = "DNS=$dns"
+  "@ | Out-File -FilePath $infPath
+  
+      # Generate the CSR
+      certreq -new $infPath $csrPath
+      # Define parameters to submit the CSR
+      $certPath = Join-Path $certFilePath -ChildPath "$filePrefix.cer"
+  
+      # Submit the CSR to the CA
+      certreq -submit -attrib "CertificateTemplate:WebServer" -config $caName $csrPath $certPath
+      Write-Verbose "Certificate request submitted. Certificate saved to $certPath" -Verbose
+  
+      # Accept the certificate and install it.
+      $certReqOutput = certreq.exe -accept $certPath
+  
+      # Parse the thumbprint and export the certificate
+      $match = $certReqOutput -match 'Thumbprint:\s*([a-fA-F0-9]+)'
+      if ($null -ne $match) {
+          $thumbprint = (($match[0]).Split(':')[1]).Trim()
+          Write-Verbose "Thumbprint: $thumbprint" -Verbose
+      }
+      else {
+          Write-Verbose "Thumbprint not found" -Verbose
+          #return;
+      }
+  
+      # Export the certificate to a PFX file
+      $cert = Get-Item -Path "Cert:\LocalMachine\My\$thumbprint"
+      $cert | Export-PfxCertificate -FilePath "$extCertFilePath\$filePrefix.pfx" -Password $certPassword -Force
+      Write-Verbose "Certificate for $certSubject and private key exported to $extCertFilePath" -Verbose
+  }
+  ``` 
 
 1. Copy the original certificates (26 .pfx files) obtained from your CA to the directory structure represented in IngressEndpointCerts.
 
 ### Management endpoint
+
 Here is an an example on how to create certificates for securing the management endpoint :
 
 ```powershell
@@ -215,6 +215,7 @@ Here is an an example on how to create certificates for securing the management 
 ## Client cert
 
 ```
+
 1. Copy the management certificates to the directory structure represented in ManagementEndpointCerts
 
 ## Obtain certificate thumbprints for identity integration (oidc / ldap)
@@ -226,7 +227,7 @@ Here's an example script to get the certificate chain your ADFS endpoint:
 # https://gist.github.com/keystroke/643bcbc449b3081544c7e6db7db0bba8
 
 
-#This script uses endpoints that needs to be modified
+# This script uses endpoints that needs to be modified
 $oidcCertChain = Get-CertificateChainFromEndpoint https://adfs.contoso.com 
 $ldapCertchain =  Get-CertificateChainFromEndpoint https://adfs2.contoso.com 
 
@@ -282,7 +283,6 @@ $oidcCertChainInfo
 - [Set up disconnected operations](disconnected-operations-set-up.md)
 
 ::: moniker-end
-
 
 ::: moniker range="<=azloc-2506"
 
