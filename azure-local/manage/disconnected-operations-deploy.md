@@ -1,31 +1,32 @@
 ---
-title: Deploy disconnected operations for Azure Local (Preview)
+title: Deploy Disconnected Operations for Azure Local (preview)
 description: Learn how to deploy disconnected operations for Azure Local in your datacenter (preview).
 ms.topic: how-to
 author: ronmiab
 ms.author: robess
-ms.date: 04/22/2025
+ms.date: 06/20/2025
+ai-usage: ai-assisted
 ---
 
 # Deploy disconnected operations for Azure Local (preview)
 
-::: moniker range=">=azloc-24112"
+::: moniker range=">=azloc-2506"
 
-[!INCLUDE [applies-to:](../includes/release-2411-1-later.md)]
+This article explains how to deploy disconnected operations for Azure Local in your datacenter. You'll learn how to determine the Azure Local topology, prepare the first machine, install the appliance, and create the Azure Local instance for improved resilience and control.
 
-This article provides you with steps to deploy Azure Local with disconnected operations in your datacenter. You can determine the Azure Local topology, prepare the first machine for the disconnected operations appliance, install the appliance, and create the Azure Local instance.
+[!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
 
 ## Key considerations
 
 When deploying Azure Local with disconnected operations, consider the following key points:
 
-- Ensure that your network configuration and the names entered in the portal are consistent with your setup and the previously created switches.
+- The network configuration and names entered in the portal should be consistent with your setup and the previously created switches.
 - Virtual deployments aren't supported. Physical machines are required.
 - A minimum of three machines is required to support disconnected operations. Up to 8 machines are supported.
-- The deployment of the Azure Local cluster may take several hours.
-- The local control plane may experience periods of downtime during node reboots and updates.
-- During the creation of the cluster, a thinly provisioned 2-TB infrastructure volume is created for disconnected operations. Do not tamper with or delete the infrastructure volumes created during the deployment process.
-- Upon the creation of the Azure Local cluster, the disconnected operations VM appliance is moved to cluster storage and converted to a clustered VM.
+- The deployment of the Azure Local cluster can take several hours.
+- The local control plane can experience periods of downtime during node reboots and updates.
+- During the creation of the cluster, a thinly provisioned 2-TB infrastructure volume is created for disconnected operations. Don't tamper with or delete the infrastructure volumes created during the deployment process.
+- When you create the Azure Local instance, the disconnected operations VM appliance is moved to cluster storage and converted to a clustered VM.
 
 ## Prerequisites
 
@@ -39,7 +40,7 @@ When deploying Azure Local with disconnected operations, consider the following 
 
 For more information, see [Azure Local disconnected operations overview](disconnected-operations-overview.md).
 
-## Deployment checklist
+## Checklist for deploying disconnected operations
 
 Here's a checklist of things you need before you deploy Azure Local with disconnected operations:
 
@@ -63,14 +64,14 @@ In this preview, you can deploy Azure Local with disconnected operations on non-
 
 You deploy and configure Azure Local with disconnected operations in multiple steps. The following image shows the overall journey, including post-deployment.
 
-:::image type="content" source="./media/disconnected-operations/deployment/deployment-journey.png" alt-text="Screenshot of the deployment flow." lightbox=" ./media/disconnected-operations/deployment/deployment-journey.png":::
+:::image type="content" source="./media/disconnected-operations/deployment/deployment-journey.png" alt-text="Screenshot of the deployment flow for disconnected operations in Azure Local." lightbox=" ./media/disconnected-operations/deployment/deployment-journey.png":::
 
 Here's a brief overview of the tools and processes used during the deployment. Access to Azure Local nodes (OS/host) might be required.
 
-1. Use the existing tools and processes to install and configure the OS. You'll need Local admin access on all Azure Local nodes.
-2. Run PowerShell and the Operations module on the first node (sorted by node name like `seed node`). You'll need Local admin access.
-3. Use the local Azure portal or Azure CLI. You don't need physical node access, but you do need Azure Role-Based Access Control (RBAC) with the **Owner role**.
-4. Use the local Azure portal or Azure CLI. You don't need physical node access, but you do need Azure RBAC with the **Operator role**.
+1. Use the existing tools and processes to install and configure the OS. Local admin access is required on all Azure Local nodes.
+1. Run PowerShell and the Operations module on the first node (sorted by node name like `seed node`). Local admin access is required.
+1. Use the local Azure portal or Azure CLI. You don't need physical node access, but you do need Azure Role-Based Access Control (RBAC) with the **Owner role**.
+1. Use the local Azure portal or Azure CLI. You don't need physical node access, but you do need Azure RBAC with the **Operator role**.
 
 ## Prepare Azure Local machines  
 
@@ -78,11 +79,11 @@ To prepare each machine for the disconnected operations appliance, follow these 
 
 1. Download the preview ISO (2411.2 and later).  
 
-2. Install the OS and configure the node networking for each Azure Local machine you intend to use to form an instance. For more information, see [Install the Azure Stack HCI operating system](../deploy/deployment-install-os.md).  
+1. Install the OS and configure the node networking for each Azure Local machine you intend to use to form an instance. For more information, see [Install the Azure Stack HCI operating system](../deploy/deployment-install-os.md).  
 
-3. On physical hardware, install firmware and drivers as instructed by your OEM.
+1. On physical hardware, install firmware and drivers as instructed by your OEM.
 
-4. Set up the virtual switches according to your planned network:  
+1. Set up the virtual switches according to your planned network:  
    - [Network considerations for cloud deployments of Azure Local](../plan/cloud-deployment-network-considerations.md).
    - If your network plan groups all traffic (management, compute, and storage), create a virtual switch called `ConvergedSwitch(ManagementComputeStorage)` on each node.  
 
@@ -91,16 +92,16 @@ To prepare each machine for the disconnected operations appliance, follow these 
       $networkIntentName = 'ManagementComputeStorage'
       New-VMSwitch -Name "ConvergedSwitch($networkIntentName)" -NetAdapterName "ethernet","ethernet 2"  
      ```
-   
-   - If you use VLANs make sure you set the network adapter VLAN
-   
+
+   - If you use VLANs, make sure you set the network adapter VLAN.
+
      ```powershell
      Set-NetAdapter -Name "ethernet 1" -VlanID 10
      ```
 
-5. [Rename each node](/powershell/module/microsoft.powershell.management/rename-computer?view=powershell-7.4&preserve-view=true) according to your naming conventions. For example, azlocal-n1, azlocal-n2, and azlocal-n3.  
+1. [Rename each node](/powershell/module/microsoft.powershell.management/rename-computer?view=powershell-7.4&preserve-view=true) according to your environments naming conventions. For example, azlocal-n1, azlocal-n2, and azlocal-n3.  
 
-6. On each node, copy the root certificate public key. For more information, see [PKI for disconnected operations](disconnected-operations-pki.md). Modify the paths according to the location and method you use to export your public key for creating certificates.  
+1. On each node, copy the root certificate public key. For more information, see [PKI for disconnected operations](disconnected-operations-pki.md). Modify the paths according to the location and method you use to export your public key for creating certificates.  
 
     ```powershell
     $applianceConfigBasePath = "C:\AzureLocalDisconnectedOperations\"
@@ -109,22 +110,22 @@ To prepare each machine for the disconnected operations appliance, follow these 
     New-Item -ItemType Directory $applianceConfigBasePath
     Copy-Item \\fileserver\share\azurelocalcerts\publicroot.cer $applianceRootCertFile
  
-7. Copy to the **APPData/Azure** Local folder and name it **azureLocalRootCert**. Use this information during the Arc appliance deployment.  
+1. Copy to the **APPData/Azure** Local folder and name it **azureLocalRootCert**. Use this information during the Arc appliance deployment.  
 
     ```powershell
     Copy-Item \\fileserver\share\azurelocalcerts\publicroot.cer $($env:APPDATA)\AzureLocal\AzureLocalRootCert.cer
     ```
 
-8. On each node, import the public key into the local store:
+1. On each node, import the public key into the local store:
 
     ```powershell
     Import-Certificate -FilePath $applianceRootCertFile -CertStoreLocation Cert:\LocalMachine\Root -Confirm:$false
     ```
 
     > [!NOTE]
-    > If you use a different root for the management certificate, repeat the process and import this key on each node.
+    > If you use a different root for the management certificate, repeat the process and import the key on each node.
 
-9. Find the first machine from the list of node names and specify it as the `seednode` you want to use in the cluster.
+1. Find the first machine from the list of node names and specify it as the `seednode` you want to use in the cluster.
 
     ```powershell
     $seednode = @(‘azlocal-1, ‘azlocal-2,’ azlocal-3’)|Sort|select –first 1
@@ -132,11 +133,11 @@ To prepare each machine for the disconnected operations appliance, follow these 
     ```
 
     > [!NOTE]
-    > Make sure you deploy disconnected operations on this node.
-   
-## Deploy disconnected operations
+    > Be sure to deploy disconnected operations on this node.
 
-Disconnected operations must be deployed on the seed node (first machine). To ensure the following steps are done on the first machine, see [Prepare Azure Local machines](#prepare-azure-local-machines).
+## Deploy disconnected operations on the seed node
+
+Disconnected operations must be deployed on the seed node (first machine). To make sure you do the following steps on the first machine, see [Prepare Azure Local machines](#prepare-azure-local-machines).
 
 To prepare the first machine for the disconnected operations appliance:
 
@@ -147,7 +148,7 @@ To prepare the first machine for the disconnected operations appliance:
     Copy-Item \\fileserver\share\azurelocalfiles\AzureLocal.DisconnectedOperations.Appliance.manifest  $applianceConfigBasePath  
     ```  
 
-2. Verify that you have these two files in your base folder using the following command:
+1. Verify that you have these two files in your base folder using the following command:
 
     - AzureLocal.DisconnectedOperations.zip
     - AzureLocal.DisconnectedOperations.Appliance.manifest
@@ -156,13 +157,13 @@ To prepare the first machine for the disconnected operations appliance:
       Get-ChildItem $applianceConfigBasePath  
       ```  
 
-3. Extract the zip file in the same folder:  
+1. Extract the zip file in the same folder:  
 
     ```powershell  
     Expand-Archive "$($applianceConfigBasePath)\AzureLocal.DisconnectedOperations.zip" -DestinationPath $applianceConfigBasePath  
     ```  
 
-4. Verify that you have these three files using the following command:
+1. Verify that you have these three files using the following command:
 
     - OperationsModule (PowerShell module for installation)
     - IRVM01.zip
@@ -173,29 +174,29 @@ To prepare the first machine for the disconnected operations appliance:
       ```  
 
       > [!NOTE]  
-      > At this point, you can remove the `AzureLocal.DisconnectedOperations.zip` file to save some space.
+      > At this point, remove the `AzureLocal.DisconnectedOperations.zip` file to save some space.
 
-5. Copy the certificates root directory. Save these files into the base folder you created earlier.  
+1. Copy the certificates root directory. Save these files into the base folder you created earlier.  
 
     ```powershell  
     $certsPath = "$($applianceConfigBasePath)\certs"  
     Copy-Item \\fileserver\share\azurelocalcerts $certspath -recurse  
     ```
 
-6. Verify the certificates, public key, and management endpoint. You should have two folders: `ManagementEndpointCerts` and `IngressEndpointCerts` and at least 26 certificates.
+1. Verify the certificates, public key, and management endpoint. You should have two folders: `ManagementEndpointCerts` and `IngressEndpointCerts` and at least 26 certificates.
 
     ```powershell  
     Get-ChildItem $certsPath 
     Get-Item $certsPath -recurse -filter *.cer  
     ```  
 
-7. Install the BitLocker feature including the management tool.
+1. Install the BitLocker feature including the management tool.
 
     ```powershell
     Install-WindowsFeature BitLocker -IncludeAllSubFeature -IncludeManagementTools
     ```
 
-8. Import the **Operations module**. Run the command as an administrator using PowerShell. Modify the path to match your folder structure:
+1. Import the **Operations module**. Run the command as an administrator using PowerShell. Modify the path to match your folder structure:
 
     ```powershell  
     Import-Module "$applianceConfigBasePath \OperationsModule\Azure.Local.DisconnectedOperations.psd1" -Force
@@ -227,7 +228,7 @@ Populate the required parameters based on your deployment planning. Modify the e
     > [!NOTE]  
     > The password for the certificates must be in the secure string format. For certificates pertaining to the management endpoint, see [PKI for disconnected operations](disconnected-operations-pki.md).
 
-2. Populate the ingress network configuration object.
+1. Populate the ingress network configuration object.
 
     ```powershell  
     $azureLocalDns = "192.168.0.150"  
@@ -246,7 +247,7 @@ Populate the required parameters based on your deployment planning. Modify the e
 
     For network configuration details, see [Networking for disconnected operations](disconnected-operations-network.md).
 
-3. Populate the identity configuration object.
+1. Populate the identity configuration object.
 
     ```powershell  
     $identityParams = @{  
@@ -267,7 +268,7 @@ Populate the required parameters based on your deployment planning. Modify the e
 
     For more information, see [Identity for disconnected operations](disconnected-operations-identity.md).  
 
-4. Populate the external certificates configuration object.
+1. Populate the external certificates configuration object.
 
     ```powershell  
     $ingressCertPassword = "retracted"|ConvertTo-Securestring -AsPlainText -Force  
@@ -280,7 +281,7 @@ Populate the required parameters based on your deployment planning. Modify the e
 
     For more information, see [PKI for disconnected operations](disconnected-operations-pki.md).
 
-5. Generate the appliance manifest file:
+1. Generate the appliance manifest file:
 
     ```powershell
     $stampId = (New-Guid).Guid
@@ -439,20 +440,17 @@ Install-Appliance @installAzureLocalParams -Verbose
 ```
 
 > [!NOTE]
-> Install the appliance on the first machine (seed node) to ensure Azure Local deploys correctly. The setup takes a few hours and must finish successfully before you move on. Once it’s complete, you’ll have a local control plane running in your datacenter.
+> Install the appliance on the first machine (seed node) to ensure Azure Local deploys correctly. The setup takes a few hours and must finish successfully before you move on. Once it’s complete, you have a local control plane running in your datacenter.
 
-If the installation fails due to incorrect network, identity, or observability settings, update the configuration object and re-run the `Install-appliance` command
-
-Here's an example via a configuration object:
+If the installation fails because of incorrect network, identity, or observability settings, update the configuration object and run the `Install-appliance` command again.
 
 1. Modify the configuration object.
 
-  ```powershell
-  $ingressNetworkConfiguration.IngressIpAddress = '192.168.200.115'
-  ```
+    ```powershell
+    $ingressNetworkConfiguration.IngressIpAddress = '192.168.200.115'
+    ```
 
-2. Set `$installAzureLocalParams` and Re-run the `Install-appliance` as shown in [Install and configure the appliance](#install-and-configure-the-appliance).
-
+1. Set `$installAzureLocalParams` and rerun the `Install-appliance` as shown in [Install and configure the appliance](#install-and-configure-the-appliance).
 
 ## Configure observability for diagnostics and support
 
@@ -493,7 +491,7 @@ To configure observability, follow these steps:
     <subscriptionID>
     ```
 
-2. Set the observability configuration. Modify to match your environment details:
+1. Set the observability configuration. Modify to match your environment details:
 
     ```powershell
     $observabilityConfiguration = New-ApplianceObservabilityConfiguration -ResourceGroupName "azure-disconnectedoperations" `
@@ -506,7 +504,7 @@ To configure observability, follow these steps:
     Set-ApplianceObservabilityConfiguration -ObservabilityConfiguration $observabilityConfiguration
     ```
 
-3. Verify that observability is configured:
+1. Verify that observability is configured:
 
     ```powershell
     Get-ApplianceObservabilityConfiguration
@@ -517,9 +515,9 @@ To configure observability, follow these steps:
 In this section, verify the installation and create local Azure resources.
 
 1. Sign in with the root operator you defined during the deployment.
-2. From a client with network access to your Ingress IP, open your browser and go to `https://portal.FQDN` (replace FQDN with your domain name)
+1. From a client with network access to your Ingress IP, open your browser and go to `https://portal.FQDN` (replace FQDN with your domain name)
     - You should be redirected to your identity provider to sign in.
-3. Sign in to your identity provider using the credentials you configured during the deployment.
+1. Sign in to your identity provider using the credentials you configured during the deployment.
     - You should see a familiar Azure portal running in your network.
 
 ### Create resource group SPN for cluster  
@@ -547,7 +545,7 @@ Use the operator account to create an SPN for Arc initialization of each Azure L
       "tenant": "<RETRACTED>"  
     }  
 
-2. Copy out the AppID and password for use in the next step.
+1. Copy out the AppID and password for use in the next step.
 
     > [!NOTE]
     > Plan the subscription and resource group where you want to place your nodes and cluster. The resource move action isn't supported.
@@ -562,7 +560,7 @@ To initialize each node, follow these steps. Modify where necessary to match you
 
 1. [Install and configure the CLI](disconnected-operations-cli.md) with your local endpoint on each node. Ensure that you run initialization on the first machine before moving on to other nodes.
 
-2. Set the configuration variable. Define the resource group, cloud name, configuration path, application ID, client secret, and appliance FQDN.
+1. Set the configuration variable. Define the resource group, cloud name, configuration path, application ID, client secret, and appliance FQDN.
 
     ```azurecli
     $resourcegroup = 'azurelocal-disconnected-operations' # Needs to match the cloud name your configured CLI with.
@@ -573,7 +571,7 @@ To initialize each node, follow these steps. Modify where necessary to match you
     $applianceFQDN = "autonomous.cloud.private"
     ```
 
-3. Initialize each node.
+1. Initialize each node.
 
     ```azurecli
     Write-Host "az login to Disconnected operations cloud"
@@ -582,7 +580,7 @@ To initialize each node, follow these steps. Modify where necessary to match you
     Write-Host "Connected to Disconnected operations Cloud through az cli"
     ```
 
-4. Get the access token, account ID, subscription ID, and tenant ID.
+1. Get the access token, account ID, subscription ID, and tenant ID.
 
     ```azurecli
     $applianceAccessToken = ((az account get-access-token) | ConvertFrom-Json).accessToken
@@ -591,13 +589,13 @@ To initialize each node, follow these steps. Modify where necessary to match you
     $applianceTenantId = ((az account show) | ConvertFrom-Json).tenantId
     ```
 
-5. Get the cloud configuration details.
+1. Get the cloud configuration details.
 
     ```azurecli
     $cloudConfig = (az cloud show --n $applianceCloudName | ConvertFrom-Json)
     ```
 
-6. Set the environment parameters. Define the environment parameters using the retrieved cloud configuration.
+1. Set the environment parameters. Define the environment parameters using the retrieved cloud configuration.
 
     ```azurecli
     $applianceEnvironmentParams = @{
@@ -615,7 +613,7 @@ To initialize each node, follow these steps. Modify where necessary to match you
     Write-Host "Added azure.local Environment"
     ```
 
-7. Set the configuration hash.
+1. Set the configuration hash.
 
     ```azurecli
     Write-Host "Setting azure.local configurations"
@@ -633,7 +631,7 @@ To initialize each node, follow these steps. Modify where necessary to match you
     }
     ```
 
-8. Arc-enable each node and install extensions to prepare for cloud deployment and cluster creation.
+1. Arc-enable each node and install extensions to prepare for cloud deployment and cluster creation.
 
     ```azurecli
     Invoke-AzStackHciArcInitialization @hash
@@ -661,20 +659,20 @@ w32tm /query /peers
 ```
 ### Create the Azure Local instance (cluster)
 
-Congratulations! You've completed all the prerequisites to deploy Azure Local with a fully air-gapped local control plane.
+With the prerequisites completed, you can deploy Azure Local with a fully air-gapped local control plane.
 
 Follow these steps to create an Azure Local instance (cluster):
 
 1. Access the local portal from a browser of your choice.
-2. Navigate to `portal.FQDN`. For example, `https://portal.autonomous.cloud.private`
-3. Select your nodes and complete the deployment steps outlined in [Deploy Azure Local using the Azure portal](../deploy/deploy-via-portal.md).  
+1. Navigate to `portal.FQDN`. For example, `https://portal.autonomous.cloud.private`
+1. Select your nodes and complete the deployment steps outlined in [Deploy Azure Local using the Azure portal](../deploy/deploy-via-portal.md).  
 
   > [!NOTE]
   > If you create Azure Key Vault during deployment, wait about 20 minutes for RBAC permissions to take effect.
   > 
-  > If you see a validation error, it’s a known issue. Permissions may still be propagating. Wait a bit, refresh your browser, and redeploy the cluster.
+  > If you see a validation error, it’s a known issue. Permissions might still be propagating. Wait a bit, refresh your browser, and redeploy the cluster.
 
-## Post-deployment tasks
+## Tasks after deploying disconnected operations
 
 Here are some tasks you should perform after deploying Azure Local with disconnected operations:
 1. Back up the BitLocker keys. This encrypts your volumes and lets you recover the appliance if you ever need to restore the VM. For more information, see [Understand security controls with disconnected operations on Azure Local](disconnected-operations-security.md).
@@ -714,18 +712,18 @@ To get a full list of cmdlets provided, use the PowerShell `Get-Command -Module 
 
 ### Troubleshoot: System not configured
 
-After you install the appliance, you might see this screen for a while. Let the configuration take 2-3 hours. After you wait an adequate time (2-3 hours), the screen should go away, and you should see the regular Azure portal. If the screen doesn't go away and you can't access the local Azure portal, you need to do some troubleshooting.
+After you install the appliance, you might see this screen for a while. Let the configuration run for 2-3 hours. After you wait 2-3 hours, the screen goes away, and you see the regular Azure portal. If the screen doesn't go away and you can't access the local Azure portal, troubleshoot the issue.
 
 :::image type="content" source="./media/disconnected-operations/deployment/system-not-configured.png" alt-text="Screenshot showing the system isn't configured page." lightbox=" ./media/disconnected-operations/deployment/system-not-configured.png":::
 
 - To find logs from the **OperationsModule** on the first machine, go to `C:\ProgramData\Microsoft\AzureLocalDisconnectedOperations\Logs`.
 
-- To view the health state of your appliance, use the management endpoint `Get-ApplianceHealthState` cmdlet. If you see this screen and the cmdlet reports no errors and all services report 100, you need to open a support ticket from the Azure portal.
+- To view the health state of your appliance, use the management endpoint `Get-ApplianceHealthState` cmdlet. If you see this screen and the cmdlet reports no errors and all services report 100, open a support ticket from the Azure portal.
 
 ::: moniker-end
 
-::: moniker range="<=azloc-24111"
+::: moniker range="<=azloc-2505"
 
-This feature is available only in Azure Local 2411.2.
+This feature is available only in Azure Local 2506.
 
 ::: moniker-end

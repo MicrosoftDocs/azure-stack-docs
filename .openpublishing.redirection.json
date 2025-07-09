@@ -1,6 +1,327 @@
 {
   "redirections": [
     {
+      "source_path": "azure-stack/partner/azure-stack-vaas-automate-with-powershell.md",
+      "redirect_url": "/previous-versions/azure/partner/azure-stack-vaas-automate-with-powershell",
+      "redirect_document_id": false,
+      "monikers": [
+        "azs-2501"
+      ]
+    },
+    {
+      "source_path": "azure-stack/partner/azure-stack-vaas-best-practice.md",
+      "redirect_url": "/previous-versions/azure/partner/azure-stack-vaas-best-practice",
+      "redirect_document_id": false,
+      "monikers": [
+        "azs-2501"
+      ]
+    },
+    {
+      "source_path": "azure-stack/partner/azure-stack-vaas-create-oem-package.md",
+      "redirect_url": "/previous-versions/azure/partner/azure-stack-vaas-create-oem-package",
+      "redirect_document_id": false,
+      "monikers": [
+        "azs-2501"
+      ]
+    },
+    {
+      "source_path": "azure-stack/partner/azure-stack-vaas-interactive-feature-verification.md",
+      "redirect_url": "/previous-versions/azure/partner/azure-stack-vaas-interactive-feature-verification",
+      "redirect_document_id": false,
+      "monikers": [
+        "azs-2501"
+      ]
+    },
+    {
+      "source_path": "azure-stack/partner/azure-stack-vaas-key-concepts.md",
+      "redirect_url": "/previous-versions/azure/partner/azure-stack-vaas-key-concepts",
+      "redirect_document_id": false,
+      "monikers": [
+        "azs-2501"
+      ]
+    },
+    {
+      "source_path": "azure-stack/partner/azure-stack-vaas-local-agent.md",
+      "redirect_url": "/previous-versions/azure/partner/azure-stack-vaas-local-agent",
+      "redirect_document_id": false,
+      "monikers": [
+        "azs-2501"
+      ]
+    },
+    {
+      "source_path": "azure-stack/partner/azure-stack-vaas-monitor-test.md",
+      "redirect_url": "/previous-versions/azure/partner/azure-stack-vaas-monitor-test",
+      "redirect_document_id": false,
+      "monikers": [
+        "azs-2501"
+      ]
+    },
+    {
+      "source_path": "azure-stack/partner/azure-stack-vaas-overview.md",
+      "redirect_url": "/previous-versions/azure/partner/azure-stack-vaas-overview",
+      "redirect_document_id": false,
+      "monikers": [
+        "azs-2501"
+      ]
+    },
+    {
+      "source_path": "azure-stack/partner/azure-stack-vaas-parameters.md",
+      "redirect_url": "/previous-versions/azure/partner/azure-stack-vaas-parameters",
+      "redirect_document_id": false,
+      "monikers": [
+        "azs-2501"
+      ]
+    },
+    {
+      "source_path": "azure-stack/partner/azure-stack-vaas-release-notes.md",
+      "redirect_url": "/previous-versions/azure/partner/azure-stack-vaas-release-notes",
+      "redirect_document_id": false,
+      "monikers": [
+        "azs-2501"
+      ]
+    },
+    {
+      "source_path": "azure-stack/partner/azure-stack-vaas-schedule-test-pass.md",
+      "redirect_url": "/previous-versions/azure/partner/azure-stack-vaas-schedule-test-pass",
+      "redirect_document_id": false,
+      "monikers": [
+        "azs-2501"
+      ]
+    },
+    {
+      "source_path": "azure-stack/partner/azure-stack-vaas-set-up-resources.md",
+      "redirect_url": "/previous-versions/azure/partner/azure-stack-vaas-set-up-resources",
+      "redirect_document_id": false,
+      "monikers": [
+        "azs-2501"
+      ]
+    },
+    {
+      "source_path": "azure-stack/partner/azure-stack-vaas-troubleshoot.md",
+      "redirect_url": "/previous-versions/azure/partner/azure-stack-vaas-troubleshoot",
+      "redirect_document_id": false,
+      "monikers": [
+        "azs-2501"
+      ]
+    },
+    {
+      "source_path": "azure-stack/partner/azure-stack-vaas-validate-microsoft-updates.md",
+      "redirect_url": "/previous-versions/azure/partner/azure-stack-vaas-validate-microsoft-updates",
+      "redirect_document_id": false,
+      "monikers": [
+        "azs-2501"
+      ]
+    },
+    {
+      "source_path": "azure-stack/partner/azure-stack-vaas-validate-oem-package.md",
+      "redirect_url": "/previous-versions/azure/partner/azure-stack-vaas-validate-oem-package",
+      "redirect_document_id": false,
+      "monikers": [
+        "azs-2501"
+      ]
+    },
+    {
+      "source_path": "azure-stack/partner/azure-stack-vaas-validate-solution-new.md",
+      "redirect_url": "/previous-versions/azure/partner/azure-stack-vaas-validate-solution-new",
+      "redirect_document_id": false,
+      "monikers": [
+        "azs-2501"
+      ]
+    },
+    {
+      "source_path": "azure-stack/partner/index.yml",
+      "redirect_url": "/previous-versions/azure/partner/index",
+      "redirect_document_id": false,
+      "monikers": [
+        "azs-2501"
+      ]
+    },
+    {
+      "source_path": "azure-stack/mdc/azure-stack-capacity-planner.md",
+      "redirect_url": "/previous-versions/azure/mdc/azure-stack-capacity-planner",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/mdc/azure-stack-capacity-planning-overview.md",
+      "redirect_url": "/previous-versions/azure/mdc/azure-stack-capacity-planning-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/mdc/azure-stack-gpu.md",
+      "redirect_url": "/previous-versions/azure/mdc/azure-stack-gpu",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/mdc/azure-stack-kubernetes-aks-engine-deploy-windows-tzl.md",
+      "redirect_url": "/previous-versions/azure/mdc/azure-stack-kubernetes-aks-engine-deploy-windows-tzl",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/mdc/azure-stack-manage-vm-protect-tzl.md",
+      "redirect_url": "/previous-versions/azure/mdc/azure-stack-manage-vm-protect-tzl",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/mdc/azure-stack-version-profiles-azurecli-2-tzl.md",
+      "redirect_url": "/previous-versions/azure/mdc/azure-stack-version-profiles-azurecli-2-tzl",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/mdc/azure-stack-vm-considerations.md",
+      "redirect_url": "/previous-versions/azure/mdc/azure-stack-vm-considerations",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/mdc/azure-stack-vm-sizes.md",
+      "redirect_url": "/previous-versions/azure/mdc/azure-stack-vm-sizes",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/mdc/deployment-overview.md",
+      "redirect_url": "/previous-versions/azure/mdc/deployment-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/mdc/extended-storage-health-checks.md",
+      "redirect_url": "/previous-versions/azure/mdc/extended-storage-health-checks",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/mdc/index.yml",
+      "redirect_url": "/previous-versions/azure/mdc/index",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/mdc/integration-overview.md",
+      "redirect_url": "/previous-versions/azure/mdc/integration-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/mdc/mdc-overview.md",
+      "redirect_url": "/previous-versions/azure/mdc/mdc-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/mdc/network-appendix.md",
+      "redirect_url": "/previous-versions/azure/mdc/network-appendix",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/mdc/network-configuration-lifecycle-management.md",
+      "redirect_url": "/previous-versions/azure/mdc/network-configuration-lifecycle-management",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/mdc/network-deployment.md",
+      "redirect_url": "/previous-versions/azure/mdc/network-deployment",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/mdc/network-integration.md",
+      "redirect_url": "/previous-versions/azure/mdc/network-integration",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/mdc/network-introduction.md",
+      "redirect_url": "/previous-versions/azure/mdc/network-introduction",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/mdc/oem-release-notes-mdc.md",
+      "redirect_url": "/previous-versions/azure/mdc/oem-release-notes-mdc",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/mdc/operator/aks-refer-table-tzl.md",
+      "redirect_url": "/previous-versions/azure/mdc/operator/aks-refer-table-tzl",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/mdc/operator/analyze-usage-tzl.md",
+      "redirect_url": "/previous-versions/azure/mdc/operator/analyze-usage-tzl",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/mdc/operator/azure-stack-backup-back-up-azure-stack-tzl.md",
+      "redirect_url": "/previous-versions/azure/mdc/operator/azure-stack-backup-back-up-azure-stack-tzl",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/mdc/operator/azure-stack-backup-best-practices-tzl.md",
+      "redirect_url": "/previous-versions/azure/mdc/operator/azure-stack-backup-best-practices-tzl",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/mdc/operator/azure-stack-backup-enable-backup-console-tzl.md",
+      "redirect_url": "/previous-versions/azure/mdc/operator/azure-stack-backup-enable-backup-console-tzl",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/mdc/operator/azure-stack-backup-enable-backup-powershell-tzl.md",
+      "redirect_url": "/previous-versions/azure/mdc/operator/azure-stack-backup-enable-backup-powershell-tzl",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/mdc/operator/azure-stack-backup-infrastructure-backup-tzl.md",
+      "redirect_url": "/previous-versions/azure/mdc/operator/azure-stack-backup-infrastructure-backup-tzl",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/mdc/operator/azure-stack-commvault-offer-tzl.md",
+      "redirect_url": "/previous-versions/azure/mdc/operator/azure-stack-commvault-offer-tzl",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/mdc/operator/azure-stack-download-azure-marketplace-item-tca.md",
+      "redirect_url": "/previous-versions/azure/mdc/operator/azure-stack-download-azure-marketplace-item-tca",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/mdc/operator/azure-stack-integrate-endpoints-tzl.md",
+      "redirect_url": "/previous-versions/azure/mdc/operator/azure-stack-integrate-endpoints-tzl",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/mdc/operator/azure-stack-manage-basics-tzl.md",
+      "redirect_url": "/previous-versions/azure/mdc/operator/azure-stack-manage-basics-tzl",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/mdc/operator/azure-stack-monitor-health-tzl.md",
+      "redirect_url": "/previous-versions/azure/mdc/operator/azure-stack-monitor-health-tzl",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/mdc/operator/azure-stack-node-actions-tzl.md",
+      "redirect_url": "/previous-versions/azure/mdc/operator/azure-stack-node-actions-tzl",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/mdc/operator/azure-stack-windows-server-faq-tzl.yml",
+      "redirect_url": "/previous-versions/azure/mdc/operator/azure-stack-windows-server-faq-tzl",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/mdc/operator/billing-local-meters-tzl.md",
+      "redirect_url": "/previous-versions/azure/mdc/operator/billing-local-meters-tzl",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/mdc/operator/billing-model-overview-tzl.md",
+      "redirect_url": "/previous-versions/azure/mdc/operator/billing-model-overview-tzl",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/mdc/operator/integrated-dell-remote-access-controller-credentials.md",
+      "redirect_url": "/previous-versions/azure/mdc/operator/integrated-dell-remote-access-controller-credentials",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/mdc/operator/registration-tzl.md",
+      "redirect_url": "/previous-versions/azure/mdc/operator/registration-tzl",
+      "redirect_document_id": false
+    },
+    {
       "source_path": "azure-local/release-information.md",
       "redirect_url": "/previous-versions/azure/azure-local/release-information",
       "redirect_document_id": false    

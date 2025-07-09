@@ -1,43 +1,42 @@
 ---
 title: Use Azure Policy in a disconnected Azure Local environment (preview)
-description: Learn how to use Azure Policy in a disconnected Azure Local environment (preview).
+description: Learn how to use Azure Policy to enforce compliance and manage resources in a disconnected Azure Local environment (preview).
 ms.topic: concept-article
 author: ronmiab
 ms.author: robess
-ms.date: 04/22/2025
+ms.date: 06/20/2025
+ai-usage: ai-assisted
 ---
 
 # Use Azure Policy in a disconnected Azure Local environment
 
-::: moniker range=">=azloc-24112"
+::: moniker range=">=azloc-2506"
 
-[!INCLUDE [applies-to:](../includes/release-2411-1-later.md)]
-
-This article describes how to use Azure Policy in a disconnected Azure Local environment.
+This article explains how to use Azure Policy in a disconnected Azure Local environment to enforce compliance and manage resources at scale. Azure Policy helps organizations meet standards by checking resource properties against business rules, even when disconnected from Azure cloud.
 
 [!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
 
 ## About using Azure Policy in Azure Local disconnected
 
-Azure Policy ensures compliance with organizational standards by comparing resource properties to business rules. These rules, described in JSON format, are known as policy definitions. You can assign these rules to various scopes, such as subscriptions or individual resources within the Resource Manager scope. For more information, see [Overview of Azure Policy](/azure/governance/policy/overview).
+Azure Policy helps you meet organizational standards by checking resource properties against business rules. These rules, described in JSON format, are called policy definitions. Assign these rules to scopes like subscriptions or individual resources in the Resource Manager scope. For more information, see [Overview of Azure Policy](/azure/governance/policy/overview).
 
-For Azure Local disconnected operations, policy enforcement supports Arc-enabled Kubernetes and Arc-enabled servers. Selected built-in policy definitions are included in the Azure Local disconnected operations deployment. Operators can enable these policies by creating policy assignments on the target scope using the disconnected operations portal or CLI. Enforcement varies based on the policy type.
+In Azure Local disconnected operations, policy enforcement supports Arc-enabled Kubernetes and Arc-enabled servers. Some built-in policy definitions are included in the Azure Local disconnected operations deployment. Operators turn on these policies by creating policy assignments on the target scope using the disconnected operations portal or CLI. Enforcement depends on the policy type.
 
 ## Benefits
 
-Azure Policy for Azure Local disconnected operations lets you consistently enforce policies across all supported Azure services, allowing you to manage and configure resources at scale.
+Azure Policy for Azure Local disconnected operations lets you enforce policies across all supported Azure services, so you manage and set up resources at scale.
 
-With Azure Policy in a disconnected Azure Local environment, you can:
+With Azure Policy in a disconnected Azure Local environment, you:
 
 - Ensure resource creation is consistent and compliant.
-- Focus on high-sensitivity tasks, making Azure Local disconnected operations ideal for industries with strict regulations. Azure Policy is essential for the success of the disconnected operations feature offering.
-- Provide policy enforcement across all supported Arc services on disconnected operations.
+- Focus on high-sensitivity tasks. Azure Local disconnected operations are ideal for industries with strict regulations, and Azure Policy is essential for the success of the disconnected operations feature.
+- Enforce policies across all supported Arc services on disconnected operations.
 
 ## Prerequisites
 
-- You've access to an Azure Local instance with Azure Local disconnected operations deployed.
-- Review the built-in policies.
-- Identify a policy definition you want to assign.
+- You have access to an Azure Local instance with Azure Local disconnected operations deployed.
+- Review built-in policies.
+- Identify the policy definition you want to assign.
 
 For more information, see [Supported built-in policies](#supported-built-in-policies).
 
@@ -45,11 +44,11 @@ For more information, see [Supported built-in policies](#supported-built-in-poli
 
 You can use Azure Policy to enforce tags on various resources. In this example, we've used a built-in policy that enforces tags on resource groups. This prevents the creation of resource groups without the required tag. To enable an Azure Policy, follow these steps:
 
-### Set up the Basics
+### Set up the basics
 
 1. Sign in to the Azure Local portal and navigate to **Policy**.
 
-    :::image type="content" source="media/disconnected-operations/azure-policy/policy-main.png" alt-text="Screenshot of the Assign policy page." lightbox="media/disconnected-operations/azure-policy/policy-main.png":::
+    :::image type="content" source="media/disconnected-operations/azure-policy/policy-main.png" alt-text="Screenshot of the Assign policy page in Azure Local portal showing policy assignment options." lightbox="media/disconnected-operations/azure-policy/policy-main.png":::
 
 2. Under the **Authoring** section, choose **Assignments**, and then select **+ Assign policy**.
 
@@ -112,12 +111,12 @@ The following table summarizes the built-in policies supported for Azure Local d
 
 ## Unsupported features
 
-In this preview, compliance dashboard, remediation actions, and policy exemptions aren't supported.
+In this preview, the compliance dashboard, remediation actions, and policy exemptions aren't supported.
 
 ::: moniker-end
 
-::: moniker range="<=azloc-24111"
+::: moniker range="<=azloc-2505"
 
-This feature is available only in Azure Local 2411.2.
+This feature is available only in Azure Local 2506.
 
 ::: moniker-end

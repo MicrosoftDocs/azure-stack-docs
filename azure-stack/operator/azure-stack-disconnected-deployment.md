@@ -2,7 +2,7 @@
 title: Azure disconnected deployment decisions for Azure Stack Hub integrated systems 
 description: Learn about Azure disconnected deployment of Azure Stack Hub integrated systems and the planning decisions to consider.
 author: sethmanheim
-ms.topic: conceptual
+ms.topic: article
 ms.date: 01/22/2025
 ms.author: sethm
 ms.lastreviewed: 11/01/2019
@@ -54,6 +54,5 @@ Azure Stack Hub was designed to work best when connected to Azure, so it's impor
 ## Next steps
 
 - For information about use cases, purchasing, partners, and OEM hardware vendors, see the [Azure Stack Hub product page](https://azure.microsoft.com/overview/azure-stack/).
-- For information about the roadmap and geo-availability for Azure Stack Hub integrated systems, see [Azure Stack Hub: An extension of Azure](https://azure.microsoft.com/resources/videos/azure-friday-azure-stack-an-extension-of-azure/).
 - For information about Microsoft Azure Stack Hub packaging and pricing, [download the .pdf pricing guide](https://azure.microsoft.com/resources/azure-stack-hub-licensing-packaging-pricing-guide/).
 - [Datacenter network integration](azure-stack-network.md)

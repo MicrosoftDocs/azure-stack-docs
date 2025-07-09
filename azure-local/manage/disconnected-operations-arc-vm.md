@@ -4,22 +4,21 @@ description: Learn how to manage Azure Local VMs running disconnected (preview).
 ms.topic: concept-article
 author: ronmiab
 ms.author: robess
-ms.date: 04/22/2025
+ms.date: 06/20/2025
+ai-usage: ai-assisted
 ---
 
 # Disconnected operations with Azure Local VMs enabled by Azure Arc (preview)
 
-::: moniker range=">=azloc-24112"
+::: moniker range=">=azloc-2506"
 
-[!INCLUDE [applies-to:](../includes/release-2411-1-later.md)]
-
-This article provides you with a brief overview of the Azure Local virtual machine (VM) management features for disconnected operations on Azure Local. It includes the benefits, components, and high-level workflow. This feature closely mirrors Azure Local VM capabilities and references many Azure Local VM articles. You'll learn about key differences and limitations of disconnected operations.
+This article gives a brief overview of Azure Local virtual machine (VM) management features for disconnected operations on Azure Local. It covers the benefits, components, and high-level workflow. This feature closely mirrors Azure Local VM capabilities and references many Azure Local VM articles. You learn about key differences and limitations of disconnected operations.
 
 [!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
 
 ## Overview
 
-Azure Local VM management lets you set up and manage VMs in your on-premises Azure Local environment. IT admins can use Azure management tools to enable self-service VM management and automate deployment.
+Azure Local VM management lets you set up and manage VMs in your on-premises Azure Local environment. IT admins can use Azure management tools to let users manage VMs and automate deployment.
 
 For more information, see [What is Azure Local VM management?](../manage/azure-arc-vm-management-overview.md)
 
@@ -37,36 +36,37 @@ Azure Local VMs running disconnected operations have the following limitations:
 
 ### VM images
 
-- You can only create VM images from a local share.
-- You can only create VM images using Azure Command Line (CLI). This release doesn't support image creation via Azure portal.
+- Create VM images only from a local share.
+- Create VM images only using Azure Command Line (CLI). This release doesn't support image creation in the Azure portal.
 - Marketplace, Azure storage account, and images from an existing Azure Local VM aren't supported.
 
 ### Network interfaces
 
-You can only create network interfaces in CLI. This release doesn't support network interface creation via Azure portal.
+Create network interfaces only in CLI. This release doesn't support network interface creation in the Azure portal.
 
 ### Storage paths
 
-- You can only create storage paths in CLI. This release doesn't support storage path creation via Azure portal.
-- You can't delete storage paths using CLI or the portal if they're connected to an Azure Local VM or VM image. First, delete the Azure Local VM and image using that storage path.
+- Create storage paths only in CLI. This release doesn't support storage path creation in the Azure portal.
+- Don't delete storage paths using CLI or the portal if they're connected to an Azure Local VM or VM image. First, delete the Azure Local VM and image using that storage path.
 
 ### Logical networks
 
-- You can only create logical networks in CLI; the portal isn't supported.
-- You can see and use logical networks; however, they may not be fully loaded in the portal.
+- Create logical networks only in CLI; the portal isn't supported.
+- You can see and use logical networks, but they might not fully load in the portal.
 - Deleting a logical network used by a network interface doesn't fail as expected. It deletes the network and results in a **Failed** state. To recover, recreate the logical network.
 
 ### Proxy servers
 
-Proxy servers aren't supported for connecting to outbound internet.
+Proxy servers aren't supported for outbound internet connections.
 
 ### Machine creation
 
-- You can create a VM through the portal via **Azure Arc** > **Machines** > **Add/Create** > **Create a machine in a connected host environment**. For more information, see step 7 under the Create Azure Local VMs section.
+- Create a VM in the portal by selecting **Azure Arc** > **Machines** > **Add/Create** > **Create a machine in a connected host environment**. For more information, see step 7 under the Create Azure Local VMs section.
 
     :::image type="content" source="./media/disconnected-operations/arc-vms/create-arc-vms.png" alt-text="Screenshot showing how create an Azure Local VM from the portal." lightbox=" ./media/disconnected-operations/arc-vms/create-arc-vms.png":::
 
-- The **Create** button in the Virtual Machines section of the Azure Local resource on the portal can't be used to create a machine.
+    > [!NOTE]
+    > Don't use the **Create** button in the Virtual Machines section of the Azure Local resource on the portal to create a machine.
 
 ## Create Azure Local VMs with disconnected operations
 
@@ -74,7 +74,7 @@ Follow these steps to create Azure Local VMs running disconnected operations.
 
 1. [Review prerequisites](../manage/azure-arc-vm-management-prerequisites.md).
 
-    - [Install Azure CLI](disconnected-operations-cli.md#install-cli) version AzCLI 2.60.0.
+    - [Install the Azure CLI](disconnected-operations-cli.md#install-azure-cli) version AzCLI 2.60.0.
     - Install the Azure Local extension **stack-hci-vm** version v1.3.0.
     - [Sign into Azure interactively using the Azure CLI](/cli/azure/authenticate-azure-cli-interactively).
 
@@ -95,7 +95,7 @@ Follow these steps to create Azure Local VMs running disconnected operations.
 
     az login 
 
-    # Check and update variables according to your environment.
+    # Check and update variables for your environment.
 
     $subscriptionId  = "<SubscriptonId>"  # The starter subscription Id
     $resource_group = "disconnected-test-rg"
@@ -141,11 +141,11 @@ Follow these steps to create Azure Local VMs running disconnected operations.
     Here's an example script:
 
     ```azurecli
-    # Update vm-switch-name and IP addresses in address-prefixes/ip-pool-start/ip-pool-end/gate according to your environment.
+    # Update vm-switch-name and IP addresses in address-prefixes, ip-pool-start, ip-pool-end, and gate for your environment.
 
     # You can find them in: C:\CloudDeployment\FullEnvironment.json
 
-    # Find the “HostNetwork”, “Intents”, “Name” for the vm-switch-name. Take the name and put it in the parenthesis of the example script. For example "ConvergedSwitch(NameFromJSON)" 
+    # Find the “HostNetwork”, “Intents”, “Name” for the vm-switch-name. Take the vm-switch-name and put it in the parentheses of the example script. For example "ConvergedSwitch(NameFromJSON)" 
     # Find the "InfrastructureNetwork": section under “DeploymentData” to find the IP address details
 
     az stack-hci-vm network lnet create `
@@ -167,7 +167,7 @@ Follow these steps to create Azure Local VMs running disconnected operations.
     Here's an example script.
 
     ```azurecli
-    # Pick an ip-address between ip-pool-start and ip-pool-end from LNET.
+    # Pick an IP address between ip-pool-start and ip-pool-end from LNET.
 
     az stack-hci-vm network nic create `
         --resource-group $resource_group `
@@ -200,32 +200,32 @@ Follow these steps to create Azure Local VMs running disconnected operations.
 
 ## Manage Azure Local VMs and VM resources
 
-To manage Azure Local VMs using CLI, see [Azure Local VMs using the Azure CLI](/azure/azure-local/manage/manage-arc-virtual-machines?view=azloc-24112&tabs=windows&preserve-view=true). To verify the status of the VM, see [Status of the VM](../manage/manage-arc-virtual-machines.md#status-displayed-as-connecting).
+To manage Azure Local VMs using CLI, see [Azure Local VMs using the Azure CLI](/azure/azure-local/manage/manage-arc-virtual-machines?view=azloc-24112&tabs=windows&preserve-view=true). To check the status of the VM, see [Status of the VM](../manage/manage-arc-virtual-machines.md#status-displayed-as-connecting).
 
 For Azure Local VM resources:
 
-- If you remove a data disk interface used by a VM, the command doesn't fail as expected. Instead, it deletes the data disk interface and results in an incorrect provisioning state as **Failed**.
+- If you remove a data disk interface used by a VM, the command doesn't fail as expected. Instead, it deletes the data disk interface and sets the provisioning state as **Failed**.
 
-- To restore the provisioning state to **Succeeded**, you need to recreate the data disk.
+- To restore the provisioning state to **Succeeded**, recreate the data disk.
 
 ## Manage VM extensions
 
-The supported VM extensions are *Azure Monitor Agent* and *Custom Script*.
+Supported VM extensions are *Azure Monitor Agent* and *Custom Script*.
 
-To manage VM extensions, see [manage VM extensions](../manage/virtual-machine-manage-extension.md) on Arc-enabled VMs for Azure Local.
+To manage VM extensions, see [Manage VM extensions](../manage/virtual-machine-manage-extension.md) on Arc-enabled VMs for Azure Local.
 
 ## Related content
 
-- [Collect log files for Azure Local VMs](../manage/collect-log-files-arc-enabled-vms.md).
+- [Collect log files for Azure Local VMs](../manage/collect-log-files-arc-enabled-vms.md)
 
-- [Troubleshoot Azure Local VM management](../manage/troubleshoot-arc-enabled-vms.md).
+- [Troubleshoot Azure Local VM management](../manage/troubleshoot-arc-enabled-vms.md)
 
-- [Azure Local VM management FAQ](../manage/azure-arc-vms-faq.yml).
+- [Azure Local VM management FAQ](../manage/azure-arc-vms-faq.yml)
 
 ::: moniker-end
 
-::: moniker range="<=azloc-24111"
+::: moniker range="<=azloc-2505"
 
-This feature is available only in Azure Local 2411.2.
+This feature is available only in Azure Local 2506.
 
 ::: moniker-end

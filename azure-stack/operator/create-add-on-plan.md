@@ -3,7 +3,7 @@ title: Create add-on plans
 titleSuffix: Azure Stack Hub 
 description: Learn how to create add-on plans in Azure Stack Hub. 
 author: sethmanheim
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/16/2025
 ms.author: sethm
 ms.reviewer: efemmano

@@ -3,7 +3,7 @@ title: Use API version profiles with Java in Azure Stack Hub
 description: Learn how to use API version profiles with Java in Azure Stack Hub.
 author: sethmanheim
 
-ms.topic: article
+ms.topic: how-to
 ms.date: 1/13/2022
 ms.author: sethm
 ms.reviewer: weshi1

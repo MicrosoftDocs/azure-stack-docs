@@ -5,7 +5,7 @@ services: azure-stack
 author: patricka
 manager: lizross
 ms.service: azure-stack
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/02/2021
 ms.author: sethm
 ms.reviewer: asganesh

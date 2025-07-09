@@ -1,44 +1,43 @@
 ---
 title: Understand Public Key Infrastructure (PKI) requirements for disconnected operations on Azure Local (preview)
-description: Learn about the public key infrastructure (PKI) requirements for disconnected operations on Azure Local and how to create the necessary certificates to secure the endpoints provided by the disconnected operations appliance (preview).
+description: Learn about public key infrastructure (PKI) requirements for disconnected operations on Azure Local. Discover how to create certificates to secure endpoints and ensure a trusted deployment (preview).
 ms.topic: concept-article
 author: ronmiab
 ms.author: robess
-ms.date: 04/22/2025
+ms.date: 06/20/2025
+ai-usage: ai-assisted
 ---
 
-# Public Key Infrastructure (PKI) for disconnected operations on Azure Local (preview)
+# Public key infrastructure (PKI) for disconnected operations on Azure Local (preview)
 
-::: moniker range=">=azloc-24112"
+::: moniker range=">=azloc-2506"
 
-[!INCLUDE [applies-to](../includes/release-2411-1-later.md)]
-
-This document describes your local public key infrastructure (PKI) requirements and shows you how to create the necessary certificates to secure the endpoints provided by the disconnected operations appliance.
+This article explains the public key infrastructure (PKI) requirements for disconnected operations on Azure Local. You'll learn how to create certificates to secure appliance endpoints and ensure secure communication in your environment.
 
 [!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
 
-## About PKI
+## PKI overview for disconnected operations
 
-PKI for disconnected operations is essential for securing the endpoints provided by the disconnected operations appliance. You create and manage digital certificates to ensure secure communication and data transfer within your Azure Local environment.
+PKI for disconnected operations is essential for securing the endpoints provided by the disconnected operations appliance. Create and manage digital certificates to ensure secure communication and data transfer within your Azure Local environment.
 
 ## PKI requirements
 
-Public certificate authorities (CA) or enterprise certificate authorities must issue certificates. Ensure that your certificates are part of the Microsoft Trusted Root Program. For more information, see [List of Participants - Microsoft Trusted Root Program](/security/trusted-root/participants-list).  
+A public certificate authorities (CA) or enterprise certificate authorities must issue certificates. Make sure your certificates are part of the Microsoft Trusted Root Program. For more information, see [List of Participants - Microsoft Trusted Root Program](/security/trusted-root/participants-list).  
 
-Mandatory certificates are grouped by area with the appropriate subject alternate names (SAN). Before you create the certificates, make sure you understand the following requirements:
+Mandatory certificates are grouped by area with the appropriate subject alternate names (SAN). Before you create the certificates, review these requirements:
 
-- The use of self-signed certificates isn’t supported. We recommend you use certificates issued by an enterprise CA.
-- Disconnected operations requires 26 external certificates for the endpoints it exposes.
-- Individual certificates should be generated for each endpoint and copied into the corresponding directory/folder structure. These Certificates are mandatory for disconnected operations deployment.
-- All certificates must have Subject and SAN defined, as required by most browsers.
-- All certificates should share the same trust chain and should at least have a two-year expiration from the day of the deployment.
-- All root certificates should be exported in Base64 encoded format. The resulting file typically has a .cer, .crt, or .pem extension.
+- The use of self-signed certificates aren't supported. We recommend you use certificates issued by an enterprise CA.
+- Disconnected operations require 26 external certificates for the endpoints it exposes.
+- Generate individual certificates for each endpoint and copy them into the corresponding directory or folder structure. These certificates are required for disconnected operations deployment.
+- All certificates must have the subject and SAN defined, as required by most browsers.
+- All certificates should share the same trust chain and have at least a two-year expiration from the day of deployment.
+- Export all root certificates in Base64 encoded format. The resulting file typically has a .cer, .crt, or .pem extension.
 - For fully disconnected deployments:
-  - Use a private or internal Certificate Authority (CA).
-  - Only internal network access to the Certificate Revocation List (CRL) endpoint is required.
-  - Internet connectivity is not required.
-  - Ensure your disconnected operations infrastructure can reach the CRL endpoint specified in the certificates’ CRL Distribution Point (CDP) extension.
-  - Do not use a public or external CA. Deployments fail if certificates come from a public CA, because internet connectivity is required to access the CRL and Online Certificate Status Protocol (OCSP) services for HTTPS.  
+  - Use a private or internal certificate authority (CA).
+  - Only internal network access to the certificate revocation list (CRL) endpoint is required.
+  - Internet connectivity isn't required.
+  - Make sure your disconnected operations infrastructure can reach the CRL endpoint specified in the certificates' CRL distribution point (CDP) extension.
+  - Don't use a public or external CA. Deployments fail if certificates come from a public CA, because internet connectivity is required to access the CRL and online certificate status protocol (OCSP) services for HTTPS.  
 
 ### Ingress endpoints
 
@@ -64,7 +63,7 @@ This table lists the mandatory certificates required for disconnected operations
 | Azure Blob storage | *.blob.fqdn |
 | Front end appliances | frontend.appliances.fqdn |
 | Graph | graph.fqdn |
-| Azure Key Vault | *.vault.<'fqdn'> (wildcard Secure Sockets Layer (SSL) certificate) |
+| Azure Key Vault | *.vault.<'fqdn'> (wildcard SSL certificate) |
 | Kubernetes configuration | dp.kubernetesconfiguration.fqdn |
 | Licensing | licensing.aszrp.fqdn <br></br> dp.aszrp.fqdn <br></br> lbc.fqdn |
 | Managed Arc proxy services (MAPS) Azure Kubernetes Service (AKS) | *.k8sconnect.fqdn |
@@ -75,21 +74,22 @@ This table lists the mandatory certificates required for disconnected operations
 
 ### Management endpoints
 
-The management endpoint requires two certificates and they must be put in the same folder, *ManagementEndpointCerts*. The certificates are:
+The management endpoint requires two certificates, and you must put them in the same folder, *ManagementEndpointCerts*. The certificates are:
 
 | Management endpoint certificate  | Required certificate subject  |
 |----------------------|------------------|
-| Server  | Management endpoint IP address: $ManagementIngressIpAddress. <br></br> If the management endpoint IP is **192.168.100.25**, then the server certificate’s subject name must match exactly. For example, **Subject = 192.168.100.25**|
-| Client  | Use a certificate subject that helps you distinguish it from others. Any string is acceptable. <br></br> For example, **Subject = ManagementEndpointClientAuth**.  |
+| Server  | Management endpoint IP address: $ManagementIngressIpAddress. <br> If the management endpoint IP is **192.168.100.25**, then the server certificate's subject name must match exactly. For example, **Subject = 192.168.100.25**|
+| Client  | Use a certificate subject that helps you distinguish it from others. Any string is acceptable. <br> For example, **Subject = ManagementEndpointClientAuth**.  |
 
 ## Create certificates to secure endpoints
+
 ### Ingress endpoints
 On the host machine or Active Directory virtual machine (VM), follow the steps in this section to create certificates for the ingress traffic and external endpoints of the disconnected operations appliance. Make sure you modify for each of the 26 certificates.
 
-You need these certificates when deploying the disconnected operations appliance. Additionally, you need the public key for your local infrastructure to provide a secure trust chain.
+You need these certificates to deploy the disconnected operations appliance. You also need the public key for your local infrastructure to provide a secure trust chain.
 
 > [!NOTE]
-> **IngressEndpointCerts** is the folder where all 26 certificate files should be stored. **IngressEndpointPassword** is a secure string with the certificate password.
+> **IngressEndpointCerts** is the folder where you store all 26 certificate files. **IngressEndpointPassword** is a secure string with the certificate password.
 
 
 1. Connect to the CA.
@@ -175,7 +175,6 @@ _continue_ = "DNS=$dns"
 
     # Generate the CSR
     certreq -new $infPath $csrPath
-
     # Define parameters to submit the CSR
     $certPath = Join-Path $certFilePath -ChildPath "$filePrefix.cer"
 
@@ -204,6 +203,7 @@ _continue_ = "DNS=$dns"
 }
 ``` 
 
+
 1. Copy the original certificates (26 .pfx files) obtained from your CA to the directory structure represented in IngressEndpointCerts.
 
 ### Management endpoint
@@ -225,6 +225,7 @@ Here's an example script to get the certificate chain your ADFS endpoint:
 # Resolve certificates from endpoint
 # https://gist.github.com/keystroke/643bcbc449b3081544c7e6db7db0bba8
 
+
 #This script uses endpoints that needs to be modified
 $oidcCertChain = Get-CertificateChainFromEndpoint https://adfs.contoso.com 
 $ldapCertchain =  Get-CertificateChainFromEndpoint https://adfs2.contoso.com 
@@ -237,7 +238,6 @@ foreach ($certificate in $oidcCertChain)
     $bytes | Set-Content -Path "$targetDirectory\$($certificate.Thumbprint).cer" -Encoding Byte 
 } 
 
-
 # Read certificate information for external identity configuration 
 $targetDirectory = 'C:\WinfieldExternalIdentityCertificates1' 
 $oidcCertChainInfo = @() 
@@ -248,7 +248,6 @@ foreach ($file in (Get-ChildItem $targetDirectory))
     $b64 = [system.convert]::ToBase64String($bytes) 
     $oidcCertChainInfo += $b64 
 } 
-
 # Save certificates to specified folder 
 $targetDirectory = 'C:\WinfieldExternalIdentityCertificates2' 
 foreach ($certificate in $ldapCertchain) 
@@ -257,10 +256,9 @@ foreach ($certificate in $ldapCertchain)
     $bytes | Set-Content -Path "$targetDirectory\$($certificate.Thumbprint).cer" -Encoding Byte 
 } 
 
-
 # Read certificate information for external identity configuration 
 $targetDirectory = 'C:\WinfieldExternalIdentityCertificates2' 
-$ ldapCertchainInfo = @() 
+$ldapCertchainInfo = @() 
 foreach ($file in (Get-ChildItem $targetDirectory)) 
 { 
     $certificate = [System.Security.Cryptography.X509Certificates.X509Certificate2]::new($file.FullName) 
@@ -278,15 +276,13 @@ $oidcCertChainInfo
 
 ## Related content
 
-- [Plan hardware for Azure local with disconnected operations](disconnected-operations-overview.md#preview-participation-criteria).
-
-- [Plan and understand identity](disconnected-operations-identity.md).
-
-- [Plan and understand networking](disconnected-operations-network.md).
-
-- [Set up disconnected operations](disconnected-operations-set-up.md).
+- [Plan hardware for Azure local with disconnected operations](disconnected-operations-overview.md#preview-participation-criteria)
+- [Plan and understand identity](disconnected-operations-identity.md)
+- [Plan and understand networking](disconnected-operations-network.md)
+- [Set up disconnected operations](disconnected-operations-set-up.md)
 
 ::: moniker-end
+
 
 ::: moniker range="<=azloc-2506"
 

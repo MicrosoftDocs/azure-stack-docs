@@ -1,25 +1,24 @@
 ---
-title: Use Azure Command Line Interface (CLI) for disconnected operations on Azure Local (preview)
-description: Learn how to use the Azure Command-Line Interface (CLI) for Azure Local disconnected operations (preview).
+title: Use Azure Command-Line Interface (CLI) for disconnected operations on Azure Local (preview)
+description:  Learn how to use the Azure Command-Line Interface (CLI) for disconnected operations on Azure Local (preview).
 ms.topic: how-to
 author: ronmiab
 ms.author: robess
-ms.date: 04/22/2025
+ms.date: 06/20/2025
+ai-usage: ai-assisted
 ---
 
 # Use Azure Command-Line Interface for disconnected operations on Azure Local (preview)
 
-::: moniker range=">=azloc-24112"
+::: moniker range=">=azloc-2506"
 
-[!INCLUDE [applies-to:](../includes/release-2411-1-later.md)]
-
-This article covers how to install and configure the Azure Command-Line Interface (CLI) and install extensions for disconnected operations on Azure Local.
+This article explains how to install and configure the Azure Command-Line Interface (CLI) and its extensions for disconnected operations on Azure Local. It provides an overview of CLI, supported versions, installation steps, and how to set up the CLI for disconnected operations.
 
 [!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
 
-## About CLI
+## About Azure CLI
 
-**CLI** is a versatile, cross-platform command line interface that allows you to create and manage Azure resources for Azure Local disconnected operations. For more information, see [What is Azure CLI](/cli/azure/what-is-azure-cli).
+**CLI** is a versatile, cross-platform command line interface that lets you create and manage Azure resources for Azure Local disconnected operations. For more information, see [What is Azure CLI](/cli/azure/what-is-azure-cli).
 
 ## Supported versions for CLI and extension
 
@@ -31,21 +30,23 @@ az version
 
 For more information, see [Azure CLI commands](/cli/azure/reference-index?view=azure-cli-latest#az_version&preserve-view=true).
 
-## Install CLI
+## Install Azure CLI
 
 To install the 32-bit version of CLI, follow these steps:
 
 1. [Download version 2.71.0](https://azcliprod.blob.core.windows.net/msi/azure-cli-2.71.0.msi).
 2. [Install the CLI](/cli/azure/install-azure-cli) locally on Linux, macOS, or Windows computers.
 
+
 > [!NOTE]  
     > 64-bit Azure CLI can be used on client machines - but for Azure Local (nodes) - please ensure that 32-bits is installed. 64-bit CLI will cause Azure Local deployment to fail.
+    
+## Configure certificates for Azure CLI
 
-## Configure certificates for CLI
 
 To use CLI, you must trust the certificate authority (CA) root certificate on your machine.
 
-For disconnected operations, you must:
+For disconnected operations:
 
 1. Understand [public key infrastructure (PKI) for Azure Local with disconnected operations (preview)](disconnected-operations-pki.md)
 2. Set up and configure the certificate trusts for Azure CLI using PowerShell.
@@ -113,9 +114,9 @@ For disconnected operations, you must:
     UpdatePythonCertStore -ApplianceRootCertPath D:\applianceIngressRoot.cer
     ```
 
-## Configure Azure CLI  
+## Set up Azure CLI for disconnected operations
 
-To configure the Azure CLI to run disconnected operations on Azure Local, follow these steps:
+To set up Azure CLI for disconnected operations on Azure Local, follow these steps:
 
 1. Run the `Get-ApplianceAzCliCloudConfig` function to generate the JSON file that contains the required cloud endpoints.
 
@@ -177,7 +178,7 @@ To configure the Azure CLI to run disconnected operations on Azure Local, follow
     }
     ```
 
-    Now, use this helper method to get the endpoints and create a cloudConfig file for CLI:
+    Use this helper method to get the endpoints and create a cloudConfig file for CLI:
 
     ```azurecli
     az config set core.enable_broker_on_windows=false
@@ -208,15 +209,15 @@ To configure the Azure CLI to run disconnected operations on Azure Local, follow
     }
     ```
 
-3. Register the cloud configuration with the CLI using the cloudConfig.json file.
+3. Register the cloud configuration with CLI using the cloudConfig.json file.
     ```azurecli
     az cloud register -n 'azure.local' --cloud-config '@cloudconfig.json'
     az cloud set -n azure.local
     ```
 
-## Extensions for CLI
+## Extensions for Azure CLI
 
-CLI extensions are Python wheels that aren't shipped with the CLI but run as CLI commands. With extensions, you can access experimental and prerelease commands and write your own CLI interfaces. The first time you use an extension, you should receive a prompt to install it.
+CLI extensions are Python wheels that aren't shipped with CLI but run as CLI commands. Extensions let you access experimental and prerelease commands and create your own CLI interfaces. The first time you use an extension, you get a prompt to install it.
 
 To get a list of available extensions, run this command:
 
@@ -224,15 +225,15 @@ To get a list of available extensions, run this command:
 az extension list-available --output table  
 ```  
 
-For more information, see [How to install and manage Azure CLI extensions](/cli/azure/azure-cli-extensions-overview).
+Learn more in [How to install and manage Azure CLI extensions](/cli/azure/azure-cli-extensions-overview).
 
-To install specific versions of extensions, run this command:
+To install a specific version of an extension, run this command:
 
 ```azurecli
 az extension add --name anextension --version 1.0.0
 ```
 
-The following table lists the CLI extensions supported on Azure Local disconnected operations, along with the maximum extension version supported and installation information.
+The following table lists the CLI extensions supported on Azure Local disconnected operations, the maximum extension version supported, and installation information.
 
 | Disconnected operations services | Extensions | Maximum extension version supported | Installation information |  
 |----------------------------------|------------|------------------------------------|--------------------------|  
@@ -242,13 +243,16 @@ The following table lists the CLI extensions supported on Azure Local disconnect
 | AKS Arc on Azure Local | az arcappliance <br></br> az k8s-extension <br></br> az customlocation <br></br> az stack-hci-vm <br></br> az aksarc | arcappliance: 1.4.1 <br></br> PreviewSource: https://winfieldstable.z13.web.core.windows.net/arcappliance-1.4.1-py2.py3-none-any.whl <br></br> k8s-extension: 1.6.1 <br></br> customlocation: 0.1.4 <br></br> stack-hci-vm: 1.9.0 <br></br> aksarc: 1.2.23 | [Create Kubernetes clusters using Azure CLI](/azure/aks/aksarc/aks-create-clusters-cli) |
 | Azure Local Resource Provider          | Arcappliance <br></br> k8s-extension <br></br> customlocation <br></br> stack-hci-vm <br></br> connectedk8s <br></br> stack-hci | arcappliance: 1.4.1 <br></br> PreviewSource: https://winfieldstable.z13.web.core.windows.net/arcappliance-1.4.1-py2.py3-none-any.whl <br></br> k8s-extension: 1.6.1 <br></br> customlocation: 0.1.4 <br></br> stack-hci-vm: 1.9.0 <br></br> connectedk8s: 1.6.2 <br></br> stack-hci: 1.1.0 | [How to install and manage Azure CLI extensions](/cli/azure/azure-cli-extensions-overview) |
 | Azure Container Registry | Built-in      |    |  |
-| Azure Policy | Built-in      |    | [Quickstart: Create a policy assignment to identify non-compliant resources using Azure CLI](/azure/governance/policy/assign-policy-azurecli) |
+| Azure Policy | Built-in      |    | [Quickstart: Create a policy assignment to identify noncompliant resources using Azure CLI](/azure/governance/policy/assign-policy-azurecli) |
 | Azure Key Vault | Built-in      |    | [Quickstart: Create a key vault using Azure CLI](/azure/key-vault/general/quick-create-cli) |
 
 ::: moniker-end
 
+
 ::: moniker range="<=azloc-2506"
+
 
 This feature is available only in Azure Local 2506.
 
 ::: moniker-end
+
