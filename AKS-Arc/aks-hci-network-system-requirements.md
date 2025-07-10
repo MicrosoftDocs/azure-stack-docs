@@ -2,11 +2,11 @@
 title: AKS enabled by Azure Arc network requirements
 description: Learn about AKS network prerequisites.
 ms.topic: overview
-ms.date: 04/23/2025
+ms.date: 07/02/2025
 author: sethmanheim
 ms.author: sethm
-ms.reviewer: abha
-ms.lastreviewed: 04/02/2024
+ms.reviewer: srikantsarwa
+ms.lastreviewed: 07/10/2025
 ---
 
 # AKS enabled by Azure Arc network requirements
@@ -42,7 +42,7 @@ The following parameters are required in order to use a logical network for AKS 
 
 ### Control plane IP
 
-Kubernetes uses a control plane to ensure every component in the Kubernetes cluster is kept in the desired state. The control plane also manages and maintains the worker nodes that hold the containerized applications. AKS enabled by Arc deploys the KubeVIP load balancer to ensure that the API server IP address of the Kubernetes control plane is available at all times. This KubeVIP instance requires a single immutable "control plane IP address" to function correctly. AKS Arc automatically chooses a control plane IP for you from the logical network passed during the Kubernetes cluster create operation.
+Kubernetes uses a control plane to ensure every component in the Kubernetes cluster is kept in the desired state. The control plane also manages and maintains the worker nodes that hold the containerized applications. AKS enabled by Arc deploys the KubeVIP load balancer to ensure that the API server IP address of the Kubernetes control plane is always available. This KubeVIP instance requires a single immutable "control plane IP address" to function correctly. AKS Arc automatically chooses a control plane IP for you from the logical network passed during the Kubernetes cluster create operation.
 
 You also have the option of passing a control plane IP. In such cases, the control plane IP must be within the scope of the address prefix of the logical network. You must ensure that the control plane IP address does not overlap with anything else, including Arc VM logical networks, infrastructure network IPs, load balancers, etc. Overlapping IP addresses can lead to unexpected failures for both the AKS cluster and any other place the IP address is being used. You must plan to reserve one IP address per Kubernetes cluster in your environment.
 
@@ -73,7 +73,7 @@ Firewall requirements for AKS have been consolidated with Azure Local firewall r
 
 ## DNS server settings
 
-You need to ensure that the DNS server of the logical network can resolve the FQDN of the Azure Local cluster. DNS name resolution is required for all Azure Local nodes to be able to communicate with the AKS VM nodes. 
+You need to ensure that the DNS server of the logical network can resolve the FQDN of the Azure Local cluster. DNS name resolution is required for all Azure Local nodes to be able to communicate with the AKS VM nodes.
 
 ## Network port and cross-VLAN requirements
 
