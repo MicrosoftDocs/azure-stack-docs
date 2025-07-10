@@ -5,8 +5,8 @@ ms.topic: overview
 ms.date: 07/10/2025
 author: sethmanheim
 ms.author: sethm
-ms.reviewer: abha
-ms.lastreviewed: 04/02/2024
+ms.reviewer: srikantsarwa
+ms.lastreviewed: 07/10/2025
 ---
 
 # AKS enabled by Azure Arc network requirements
