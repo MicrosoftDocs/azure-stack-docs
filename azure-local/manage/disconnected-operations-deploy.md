@@ -101,9 +101,9 @@ To prepare each machine for the disconnected operations appliance, follow these 
 
 1. [Rename each node](/powershell/module/microsoft.powershell.management/rename-computer?view=powershell-7.4&preserve-view=true) according to your environments naming conventions. For example, azlocal-n1, azlocal-n2, and azlocal-n3.  
 
- 1. Ensure there is sufficient disk capacity for disconnected operations 
+ 1. Ensure there is sufficient disk capacity if will be deploying disconnected operations on this cluster
  
-    Make sure you have at least 600 GB of free space on the drive you intend to use for deployment. If your drive has less available space, you must use a data disk on each node and initialize so that each node has the same available data disks for deployment later. 
+    Make sure you have at least 600 GB of free space on the drive you intend to use for deployment if you intend to use this instance (cluster) for the disconnected operations appliance. If your drive has less available space, you must use a data disk on each node and initialize so that each node has the same available data disks for deployment later. 
 
     Here is an example for how to initialize a disk on the nodes and format it for a D partition : 
 
