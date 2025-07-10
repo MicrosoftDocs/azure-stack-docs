@@ -660,7 +660,7 @@ To initialize each node, follow these steps. Modify where necessary to match you
     > Nodes appear in the local portal shortly after you run the steps, and the extensions appear on the nodes a few minutes after installation.  
     
     > [!NOTE]  
-    > You can also use the [Configurator App](../deploy/deployment-arc-register-configurator-app.md) to initialize each node
+    > You can also use the [Configurator App](../deploy/deployment-arc-register-configurator-app.md?view=azloc-2505&preserve-view=true) to initialize each node
     
 ### For air-gapped or disconnected deployments
 
