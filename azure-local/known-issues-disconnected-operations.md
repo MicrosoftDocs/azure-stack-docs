@@ -30,6 +30,17 @@ RBAC permissions on a newly created Azure Keyvault takes 20 minutes to propagate
 
 - ***Resolution***: Wait 20 minutes after creating Azure Keyvault to finalize the cluster deployment. 
 
+### Azure Local VMs (Arc VMs)
+
+#### Add/Edits tags shows ARG error
+When hitting add or editing a tag on an Arc VM - you hit an Azure Resource graph error. 
+
+Mitigation: Use Azure CLI to add/edit tags for the resource
+
+
+
+
+
 ### Issues after restarting node or the control plane VM
 
 If you experience issues with the local portal, missing resources, or failed deployments after you restart a node or the control plane VM, the system might not be fully ready.
