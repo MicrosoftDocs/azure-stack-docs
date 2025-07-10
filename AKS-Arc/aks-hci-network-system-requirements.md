@@ -2,7 +2,7 @@
 title: AKS enabled by Azure Arc network requirements
 description: Learn about AKS network prerequisites.
 ms.topic: overview
-ms.date: 07/10/2025
+ms.date: 07/02/2025
 author: sethmanheim
 ms.author: sethm
 ms.reviewer: srikantsarwa
@@ -73,7 +73,7 @@ Firewall requirements for AKS have been consolidated with Azure Local firewall r
 
 ## DNS server settings
 
-You need to ensure that the DNS server of the logical network can resolve the FQDN of the Azure Local cluster. DNS name resolution is required for all Azure Local nodes to be able to communicate with the AKS VM nodes. 
+You need to ensure that the DNS server of the logical network can resolve the FQDN of the Azure Local cluster. DNS name resolution is required for all Azure Local nodes to be able to communicate with the AKS VM nodes.
 
 ## Network port and cross-VLAN requirements
 
@@ -85,7 +85,6 @@ When you deploy Azure Local, you allocate a contiguous block of at least [six st
 | 6443 | Logical network used for AKS Arc VMs | IP addresses in management network | Required to communicate with Kubernetes APIs. | If you use separate VLANs, IP addresses in management network used for Azure Local and Arc Resource Bridge need to access the AKS Arc cluster VMs on this port and vice-versa.|
 | 55000 | IP addresses in management network | Logical network used for AKS Arc VMs | Cloud Agent gRPC server | If you use separate VLANs, the AKS Arc VMs need to access the IP addresses in management network used for cloud agent IP and cluster IP on this port and vice-versa. |
 | 65000 | IP addresses in management network | Logical network used for AKS Arc VMs | Cloud Agent gRPC authentication | If you use separate VLANs, the AKS Arc VMs need to access the IP addresses in management network used for cloud agent IP and cluster IP on this port and vice-versa. |
-| 40343 | Cluster IP address. Use the following PowerShell commands to get the Azure Local cluster IP address:<br>`get-clusterresource -name "cluster ip  address"`<br><br>`get-clusterparameter -name Address`<br><br>`select -Property Value` | Logical network used for AKS Arc VMs. | This port requires that the Azure Local cluster is configured with the Arc gateway for outbound connectivity. | If you use separate VLANs or subnets, the AKS Arc VMs need to access the IP addresses in the management network, including the Azure Local cluster IP on this port, and vice-versa. |
 
 ## Next steps
 
