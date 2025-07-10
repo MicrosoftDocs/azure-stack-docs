@@ -101,6 +101,22 @@ To prepare each machine for the disconnected operations appliance, follow these 
 
 1. [Rename each node](/powershell/module/microsoft.powershell.management/rename-computer?view=powershell-7.4&preserve-view=true) according to your environments naming conventions. For example, azlocal-n1, azlocal-n2, and azlocal-n3.  
 
+ 1. Ensure there is sufficient disk capacity for disconnected operations 
+ 
+    Make sure you have at least 600 GB of free space on the drive you intend to use for deployment. If your drive has less available space, you must use a data disk on each node and initialize so that each node has the same available data disks for deployment later. 
+
+    Here is an example for how to initialize a disk on the nodes and format it for a D partition : 
+
+```powershell
+$availableDrives = Get-PhysicalDisk | Where-Object { $_.MediaType -eq "SSD" -or $_.MediaType -eq "NVMe" } | where -Property CanPool -Match "True" | Sort-Object Size -Descending
+$driveGroup = $availableDrives | Group-Object Size | select -First 1
+$biggestDataDrives = $availableDrives | select -First $($driveGroup.Count)
+$firstDataDrive= ($biggestDataDrives | Sort-Object DeviceId | select -First 1).DeviceId
+Initialize-Disk -Number $firstDataDrive
+New-partition -disknumber $firstDataDrive -usemaximumsize | format-volume -filesystem NTFS -newfilesystemlabel Data
+Get-partition -disknumber $firstDataDrive -PartitionNumber 2 | Set-Partition -NewDriveLetter D
+```
+
 1. On each node, copy the root certificate public key. For more information, see [PKI for disconnected operations](disconnected-operations-pki.md). Modify the paths according to the location and method you use to export your public key for creating certificates.  
 
     ```powershell
@@ -147,6 +163,14 @@ To prepare each machine for the disconnected operations appliance, follow these 
 Disconnected operations must be deployed on the seed node (first machine). To make sure you do the following steps on the first machine, see [Prepare Azure Local machines](#prepare-azure-local-machines).
 
 To prepare the first machine for the disconnected operations appliance:
+1. Modify path to correct location
+
+If you initialized a data disk or are using a different path than C: please modify the $applianceConfigBasePath
+
+Here is an example
+```powershell
+$applianceConfigBasePath = 'D:\AzureLocalDisconnectedOperations\'
+```
 
 1. Copy the disconnected operations installation files (appliance and manifest) to the first machine. Save these files into the base folder you created earlier.  
 
@@ -698,7 +722,7 @@ Import-Certificate -FilePath C:\AzureLocalDisconnectedOperations\Certs\DigiCertG
 ```
 ### Create the Azure Local instance (cluster)
 
-With the prerequisites completed, you can deploy Azure Local with a fully air-gapped local control plane.
+With the pre-requisites completed, you can deploy Azure Local with a fully air-gapped local control plane.
 
 Follow these steps to create an Azure Local instance (cluster):
 
