@@ -30,7 +30,7 @@ RBAC permissions on a newly created Azure Keyvault takes 20 minutes to propagate
 
 - ***Resolution***: Wait 20 minutes after creating Azure Keyvault to finalize the cluster deployment or pre-create the keyvault and assign the MSI (for each node) Key vault administrator + the user doing the cloud deployment explicit roles on the keyvault (Key Vault Secrets officer and Key vault Data access administrator). 
 
-Here is an example script you can use to pre-create the keyvault:
+Here is an example script you can modify and use to pre-create the keyvault:
 ```powershell
 param($resourceGroupName = "aldo-disconnected", $keyVaultName = "aldo-kv", $subscriptionName = "Starter Subscription")
 
@@ -156,6 +156,8 @@ Mitigation: Use cli to delete cluster and clean up
 ```azurecli
 az aksarc delete
 ```
+## Export Host guardian service certificates
+Currently not supported. 
 
 ## Issues after restarting node or the control plane VM
 

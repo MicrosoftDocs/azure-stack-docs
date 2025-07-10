@@ -756,6 +756,7 @@ Here are some tasks you should perform after deploying Azure Local with disconne
     ```azurecli  
     az account subscription list -o table 
     ```-->
+1. [Export the host guardian service certificates](disconnected-operations-security.md) and backup the folder you export them to on an external share/drive.
 
 ## Troubleshoot and reconfigure using management endpoint
 
