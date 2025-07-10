@@ -144,7 +144,7 @@ Follow these steps to copy the VM guest state protection key from the local key 
 
 1. On the Azure Local system with the backup key vault, run the following steps on the Azure Local system:
 
-    1. Copy the <VM ID> and <VM ID>.json file to the Azure Local system.
+    1. Copy the `VM ID` and `VM ID`.json file to the Azure Local system.
 
     1. Import the VM guest state protection key to the backup key vault:
 
@@ -168,7 +168,7 @@ Follow these steps to copy the VM guest state protection key from the backup key
 
     1. Copy the PEM file to the Azure Local system. 
 
-    1. Get the <VM ID> from the VM files stored on disk (wherever this is located). There will be a VM config file (.xml) that has the <VM ID> as its name. You can also use the following command to obtain the <VM ID> if you know the VM name. You need to do this step on a Hyper-V host that has the VM files.
+    1. Get the `VM ID` from the VM files stored on disk (wherever this is located). There will be a VM config file (.xml) that has the `VM ID` as its name. You can also use the following command to obtain the `VM ID` if you know the VM name. You need to do this step on a Hyper-V host that has the VM files.
 
         `(Get-VM -Name <VM name>).vmid`
 
@@ -178,7 +178,7 @@ Follow these steps to copy the VM guest state protection key from the backup key
 
 1. On the Azure Local system where the VM needs to be restored, run the following commands from the target Azure Local system:
 
-    1. Copy the <VM ID> and <VM ID>.json file to the Azure Local system.
+    1. Copy the `VM ID` and `VM ID`.json file to the Azure Local system.
 
     1. Import the VM guest state protection key:
 
