@@ -3,7 +3,7 @@ title: Deploy an Azure Local instance using the Azure portal
 description: Learn how to deploy an Azure Local instance from the Azure portal
 author: alkohli
 ms.topic: how-to
-ms.date: 03/24/2025
+ms.date: 06/24/2025
 ms.author: alkohli
 ms.service: azure-local
 #CustomerIntent: As an IT Pro, I want to deploy an Azure Local instance of 1-16 machines via the Azure portal so that I can host VM and container-based workloads on it.
@@ -11,18 +11,22 @@ ms.service: azure-local
 
 # Deploy Azure Local using the Azure portal
 
-[!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
-
 This article helps you deploy an Azure Local instance using the Azure portal.
 
 ## Prerequisites
 
-* Completion of [Register your machines with Azure Arc and assign deployment permissions](./deployment-arc-register-server-permissions.md).
+- Completion of [Register your machines with Azure Arc and assign deployment permissions](./deployment-arc-register-server-permissions.md).
 <!-- Cristian to confirm * For three-node systems, the network adapters that carry the in-cluster storage traffic must be connected to a network switch. Deploying three-node systems with storage network adapters that are directly connected to each machine without a switch isn't supported in this preview.-->
+
+::: moniker range="<=azloc-24113"
+
+- To deply Azure Local 2411.3 and earlier, use the alternative version of the [Azure portal](https://aka.ms/dfc-2411deploycluster). Use this version only for deployment, don't use it for any other purpose.
+
+::: moniker-end
 
 ## Start the wizard and fill out the basics
 
-1. Open a web browser and navigate to [**Azure portal**](https://portal.azure.com). Search for and select **Azure Local**. On the **Azure Arc|Azure Local**, go to the **Get started** tab. On the **Deploy Azure Local** tile, select **Create instance**.
+1. Go to the Azure portal. Search for and select **Azure Local**. On the **Azure Arc|Azure Local**, go to the **Get started** tab. On the **Deploy Azure Local** tile, select **Create instance**.
 
    :::image type="content" source="./media/deploy-via-portal/get-started-1.png" alt-text="Screenshot of the Get started tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/get-started-1.png":::
 
@@ -194,7 +198,7 @@ On the **Configuration** tab, choose whether to create a new configuration for t
     This domain user account was created when the domain was prepared for deployment.
 1. Enter the **Local administrator** credentials for the machines.
 
-    The credentials must be identical on all machines in the system.  If the current password doesn't meet the complexity requirements (12+ characters long, a lowercase and uppercase character, a numeral, and a special character), you must change it on all machines before proceeding.
+    The credentials must be identical on all machines in the system.  If the current password doesn't meet the complexity requirements (14+ characters long, a lowercase and uppercase character, a numeral, and a special character), you must change it on all machines before proceeding.
 
     :::image type="content" source="./media/deploy-via-portal/management-tab-1.png" alt-text="Screenshot of the Management tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/management-tab-1.png":::
 
@@ -305,7 +309,7 @@ To monitor storage pool consumption, use the steps in [Enable health alerts](../
 
 ### Enable RDP
 
-For security reasons, Remote Desktop Protocol (RDP) is disabled and the local administrator renamed after the deployment completes on Azure Local instances. For more information on the renamed administrator, go to [Local builtin user accounts](../concepts/other-security-features.md#about-local-built-in-user-accounts).
+For security reasons, Remote Desktop Protocol (RDP) is disabled and the local administrator renamed after the deployment completes on Azure Local instances. For more information on the renamed administrator, go to [Local builtin user accounts](../concepts/security-features.md#local-built-in-user-accounts).
 
 You might need to connect to the system via RDP to deploy workloads. Follow these steps to connect to your system via the Remote PowerShell and then enable RDP:
 

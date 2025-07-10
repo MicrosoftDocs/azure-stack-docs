@@ -2,11 +2,11 @@
 title: Overview of certificate management in AKS on Windows Server
 description: Learn how to manage certificates for secure communication between in-cluster components in AKS by provisioning and managing certificates in AKS on Windows Server.
 author: sethmanheim
-ms.topic: conceptual
-ms.date: 01/10/2024
+ms.topic: concept-article
+ms.date: 07/03/2025
 ms.author: sethm 
 ms.lastreviewed: 04/01/2023
-ms.reviewer: sulahiri
+ms.reviewer: leslielin
 
 # Intent: As an IT Pro, I want to learn how to use certificates to secure communication between in-cluster components on my AKS deployment.
 # Keyword: control plane nodes secure communication certificate revocation
@@ -105,9 +105,9 @@ A `notBefore` time can be specified to revoke only certificates that are issued 
 > [!NOTE]
 > Revocation of `kubelet` server certificates is currently not available.
 
-If you use a serial number when you perform a revocation, you can use the `Repair-AksHciClusterCerts` PowerShell command, described below, to get your cluster into a working state. If you use any of the other fields listed earlier, make sure to specify a `notBefore` time.
+If you use a serial number when you perform a revocation, you can use the `Repair-AksHciClusterCerts` PowerShell command, described as follows, to get your cluster into a working state. If you use any of the other fields listed earlier, make sure to specify a `notBefore` time.
 
-```console
+```yaml
 apiVersion: certificates.microsoft.com/v1 
 kind: RenewRevocation 
 metadata: 

@@ -3,16 +3,16 @@ title: Use Azure gateway without a proxy on Azure Local, version 2408 (preview)
 description: Learn how to use Azure gateway without a proxy, on Azure Local instance running version 2408 (preview). 
 author: alkohli
 ms.topic: how-to
-ms.date: 02/20/2025
+ms.date: 04/22/2025
 ms.author: alkohli
 ms.service: azure-local
 ---
 
 # Use Azure Arc gateway without a proxy on Azure Local (preview)
 
-::: moniker range=">=azloc-24111"
+::: moniker range=">=azloc-2505"
 
-> Applies to: Azure Local 2411.1 and later
+> Applies to: Azure Local 2505 and later
 
 After creating the Arc gateway resource in your Azure subscription, you can enable the new Arc gateway preview features on your Azure Local. This article details how to use Azure gateway for Azure Local instances without a proxy.
 
@@ -44,23 +44,11 @@ $Subscription = "yoursubscription"
 #Define the resource group where you want to register your server as Arc device.
 $RG = "yourresourcegroupname"
 
-#Define the tenant you will use to register your server as Arc device.
-$Tenant = "yourtenant"
- 
 #Define the Arc gateway resource ID from Azure
 $ArcgwId = "/subscriptions/yourarcgatewayid/resourceGroups/yourresourcegroupname/providers/Microsoft.HybridCompute/gateways/yourarcgatewayname"
 
-#Connect to your Azure account and Subscription
-Connect-AzAccount -SubscriptionId $Subscription -TenantId $Tenant -DeviceCode
-
-#Get the Access Token and Account ID for the registration
-$ARMtoken = (Get-AzAccessToken).Token
-
-#Get the Account ID for the registration
-$id = (Get-AzContext).Account.Id
-
 #Invoke the registration script with Proxy and ArcgatewayID
-Invoke-AzStackHciArcInitialization -SubscriptionID $Subscription -ResourceGroup $RG -TenantID $Tenant -Region australiaeast -Cloud "AzureCloud" -ArmAccessToken $ARMtoken -AccountID $id -ArcGatewayID $ArcgwId
+Invoke-AzStackHciArcInitialization -SubscriptionID $Subscription -ResourceGroup $RG -Region australiaeast -Cloud "AzureCloud" -ArcGatewayID $ArcgwId
 ```
 
 ## Step 3: Start Azure Local cloud deployment

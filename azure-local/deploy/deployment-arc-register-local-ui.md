@@ -1,7 +1,7 @@
 ---
 title: Use local web UI to register Azure Local machines with Azure Arc (preview).
 description: Learn how to use the web UI to bootstrap and Arc register the Azure Local machines (preview).
-ms.topic: article
+ms.topic: how-to
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local

@@ -3,7 +3,7 @@ title: Options for migrating virtual machines to Azure Local (preview)
 description: Learn about how to choose a migration option to migrate VM workloads to your Azure Local (preview).
 author: alkohli
 ms.topic: overview
-ms.date: 04/02/2025
+ms.date: 05/15/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
@@ -38,7 +38,7 @@ First party migration options are provided by Microsoft. These options are built
 
 ## Third party migration options
 
-Third party migration options are provided by Microsoft partners. These options are available to you at an additional cost. The following third party migration options are available:
+The following third-party migration options are offered by Microsoft partners.
 
 - [Carbonite](https://www.carbonite.com/business/products/migration/)  
 - [Commvault](https://www.commvault.com/)  

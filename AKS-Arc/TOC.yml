@@ -5,6 +5,8 @@
   items:
   - name: What is AKS enabled by Azure Arc?
     href: aks-overview.md
+  - name: Compare AKS across platforms
+    href: aks-platforms-compare.md 
   - name: Supported Kubernetes versions
     href: supported-kubernetes-versions.md  
   - name: Data collection
@@ -45,7 +47,7 @@
   - name: Quickstarts
     items:
     - name: Jumpstart HCIBox (external link)
-      href: https://arcjumpstart.com/azure_jumpstart_hcibox/getting_started
+      href: https://jumpstart.azure.com/azure_arc_jumpstart
   - name: How-to
     items:
     - name: Create Kubernetes clusters
@@ -60,6 +62,8 @@
         href: create-clusters-terraform.md
       - name: Azure Resource Manager template
         href: resource-manager-quickstart.md
+      - name: REST API
+        href: aks-create-clusters-api.md
     - name: Networking
       items:
       - name: Create logical networks
@@ -125,7 +129,7 @@
         href: cluster-labels.md
       - name: Taints
         href: aks-arc-use-node-taints.md
-    - name: Use auto-scaler
+    - name: Use autoscaler
       href: auto-scale-aks-arc.md
     - name: Upgrade Kubernetes clusters
       href: cluster-upgrade.md
@@ -155,12 +159,16 @@
     items:
     - name: Troubleshoot and known issues
       href: aks-troubleshoot.md
+    - name: AKS on Azure Local support policy
+      href: aks-on-azure-local-support-policy.md
+    - name: Get support
+      href: help-support.md
+    - name: Use diagnostic checker
+      href: aks-arc-diagnostic-checker.md
     - name: Control plane configuration validation errors
       href: control-plane-validation-errors.md
     - name: K8sVersionValidation error
       href: cluster-k8s-version.md
-    - name: Use diagnostic checker
-      href: aks-arc-diagnostic-checker.md
     - name: KubeAPIServer unreachable error
       href: kube-api-server-unreachable.md
     - name: Can't create/scale AKS cluster due to image issues
@@ -180,12 +188,23 @@
     - name: Can't see VM SKUs on Azure portal
       href: check-vm-sku.md
     - name: Connectivity issues with MetalLB
-      href: load-balancer-issues.md 
-
+      href: load-balancer-issues.md
+    - name: Troubleshoot general network validation errors
+      href: network-validation-errors.md
+    - name: Network validation error due to .local domain
+      href: network-validation-error-local.md
+    - name: Entra authentication prompts when running kubectl
+      href: entra-prompts.md
+    - name: BGP with FRR not working
+      href: connectivity-troubleshoot.md
+    - name: Cluster status stuck during upgrade
+      href: cluster-upgrade-status.md
   - name: Reference
     items:
     - name: Azure CLI
       href: /cli/azure/aksarc
+    - name: Azure PowerShell
+      href: /powershell/module/az.aksarc/
     - name: REST API reference
       href: /rest/api/hybridcontainer/operation-groups
   - name: Resources
@@ -592,8 +611,6 @@
       href: known-issues.yml
     - name: Support policies
       href: support-policies.md
-    - name: Get support
-      href: help-support.md
     - name: File bugs
       href: https://aka.ms/AKS-hybrid-issues
     - name: Release notes

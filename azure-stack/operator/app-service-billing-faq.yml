@@ -2,6 +2,7 @@
 metadata:
   title: Azure App Service on Azure Stack Hub billing overview and FAQ 
   description: Learn about billing for Azure App Service on Azure Stack Hub.
+  ms.service: azure-stack-hub
   author: sethmanheim
   ms.topic: faq
   ms.date: 08/08/2024

@@ -5,7 +5,7 @@ ms.topic: how-to
 author: pauljewellmsft
 ms.author: pauljewell
 ms.reviewer: dsundarraj
-ms.date: 01/10/2025
+ms.date: 04/29/2025
 
 ---
 
@@ -59,7 +59,7 @@ If your client machine uses an older version of Lustre, you can upgrade the Lust
 
     If the output shows an old version of the Lustre kernel module, we recommend that you restart (`sudo reboot`) the system.
 
-### [Ubuntu](#tab/ubuntu)
+### [Ubuntu 20.04/22.04](#tab/ubuntu)
 
 1. Unmount any containers or mount points that are mounting the Lustre client by using the following command:
 
@@ -97,6 +97,43 @@ If your client machine uses an older version of Lustre, you can upgrade the Lust
 
     If the output shows an old version of the Lustre kernel module, we recommend that you restart (`sudo reboot`) the system.
 
+### [Ubuntu 24.04](#tab/ubuntu24)
+
+1. Unmount any containers or mount points that are mounting the Lustre client by using the following command:
+
+    ```bash
+    sudo umount <all Lustre mounts>
+    ```
+
+1. Uninstall the existing Lustre client version by using the following command:
+
+    ```bash
+    sudo apt autoremove *lustre* -y
+    ```
+
+1. Install the current version of the Lustre client by using the following command:
+
+    [!INCLUDE [client-upgrade-version-ubuntu](./includes/client-upgrade-version-ubuntu-24.md)]
+
+1. Unload the Lustre and Lustre Networking (LNet) kernel modules by using the following command:
+
+    ```bash
+    sudo lustre_rmmod
+    ```
+
+1. Verify that old kernel modules are removed by using the following command:
+
+    ```bash
+    cat /sys/module/lustre/version; lsmod | grep -E 'lustre|lnet'
+    ```
+
+    The output should look similar to the following example:
+
+    ```bash
+    cat: /sys/module/lustre/version: No such file or directory
+    ```
+
+    If the output shows an old version of the Lustre kernel module, we recommend that you restart (`sudo reboot`) the system.
 ---
 
 After you perform this procedure, you can [mount the client](connect-clients.md#start-the-lustre-client-by-using-the-mount-command) to your Azure Managed Lustre file system.

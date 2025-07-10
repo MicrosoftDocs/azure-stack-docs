@@ -3,6 +3,7 @@
 metadata:
   title: Deploy C# ASP.NET web app to a VM in Azure Stack Hub
   description: Deploy a C# ASP.NET web app to a VM in Azure Stack Hub.
+  ms.service: azure-stack-hub
   author: sethmanheim
   ms.author: sethm
   ms.reviewer: thoroet

@@ -1,8 +1,8 @@
 ---
 title: Scale requirements for AKS on Azure Local
 description: Learn about scale requirements for AKS on Azure Local.
-ms.topic: conceptual
-ms.date: 03/25/2025
+ms.topic: article
+ms.date: 05/02/2025
 author: sethmanheim
 ms.author: sethm 
 ms.reviewer: abha
@@ -25,17 +25,34 @@ This article describes the maximum and minimum supported scale count for AKS on 
 | Number of nodes in default node pool created during cluster create  | 1 | 200 |
 | Number of node pools in an AKS cluster  | 1  | 16  |
 | Number of nodes in a node pool (empty node pools not supported)  | 1 | 64 |
-| Total number of nodes in an AKS cluster across nodepools | 1 | 200 |
-| Number of AKS clusters per Azure Local cluster | 0| 32 |
+| Total number of nodes in an AKS cluster across node pools | 1 | 200 |
+| Number of AKS clusters per Azure Local cluster | 0 | 32 |
 
-## Concurrency for AKS enabled by Arc
+## Concurrency for AKS on Azure Local
 
 | Scale item  | Count  |
 |-------------|--------|
 | Number of concurrent AKS cluster creations on an ARB  | 8 |
 | Number of concurrent node pool creations on an ARB  | 8  |
-| Number of concurrent operations across all different AKS clusters such as upgrade/scaling, etc., excluding creating node pool or clusters per ARB  | 32  |
-| Number of long running operations that can be run simultaneously on an AKS cluster  | 1 per cluster.  |
+| Number of concurrent operations across all different AKS clusters such as upgrade/scaling, etc., excluding creating node pools or clusters  | 32 |
+| Number of long running operations that can be run simultaneously on an AKS cluster  | 1 per cluster |
+
+## Scale requirements when using autoscaler with AKS on Azure Local
+
+> [!NOTE]
+> When the autoscaler is enabled, AKS on Azure Local currently supports a maximum of 12 clusters per Azure Local environment. If this limit is exceeded, operations such as creating additional clusters or node pools might not succeed. To manage capacity, we recommend deleting unused clusters using the [az aksarc delete](/cli/azure/aksarc#az-aksarc-delete) command.
+>
+> If the autoscaler is enabled in an environment that already exceeds the supported cluster count, performance might be impacted. Managing within supported limits is recommended.
+
+| Scale item  | Count  |
+|-------------|--------|
+| Maximum number of AKS clusters with autoscaler enabled | 12 |
+| Number of concurrent AKS cluster creations | 4 |
+| Number of concurrent node pool creations | 4 |
+
+For more information, see [autoscaling with AKS on Azure Local](/azure/aks/aksarc/auto-scale-aks-arc).
+
+If you operate at enterprise scale and have scenarios that require higher cluster counts with the autoscaler enabled, contact your Microsoft account team or support to discuss potential options.
 
 ## Default values for virtual machine sizes
 

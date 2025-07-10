@@ -3,7 +3,7 @@ title: Configure multi-tenancy in Azure Stack Hub
 description: Learn how to configure multi-tenancy for guest Microsoft Entra tenants in Azure Stack Hub.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 01/24/2025
+ms.date: 05/08/2025
 ms.author: sethm
 ms.reviewer: bryanr
 ms.lastreviewed: 11/05/2021
@@ -42,14 +42,14 @@ Before you register or unregister a guest directory, you and Mary must complete 
 
 ## Register a guest directory
 
-To register a guest directory for multi-tenancy, you need to configure both the home Azure Stack Hub directory and the guest directory.
+To register a guest directory for multi-tenancy, you must configure both the home Azure Stack Hub directory and the guest directory.
 
-#### Configure Azure Stack Hub directory
+### Configure Azure Stack Hub directory
 
 As the service administrator of contoso.onmicrosoft.com, you must first onboard the Adatum's guest directory tenant to Azure Stack Hub. The following script configures Azure Resource Manager to accept sign-ins from users and service principals in the adatum.onmicrosoft.com tenant:
 
 ```powershell  
-## The following Azure Resource Manager endpoint is for the ASDK. If you're in a multinode environment, contact your operator or service provider to get the endpoint, formatted as adminmanagement.<region>.<FQDN>.
+## Contact your operator or service provider to get the endpoint, formatted as adminmanagement.<region>.<FQDN>.
 $adminARMEndpoint = "https://adminmanagement.local.azurestack.external"
 
 ## Replace the value below with the Azure Stack Hub directory
@@ -75,12 +75,12 @@ Register-AzSGuestDirectoryTenant -AdminResourceManagerEndpoint $adminARMEndpoint
  -SubscriptionName $SubscriptionName
 ```
 
-#### Configure guest directory
+### Configure guest directory
 
 Next, Mary (directory admin of Adatum) must register Azure Stack Hub with the adatum.onmicrosoft.com guest directory by running the following script:
 
 ```powershell
-## The following Azure Resource Manager endpoint is for the ASDK. If you're in a multinode environment, contact your operator or service provider to get the endpoint, formatted as management.<region>.<FQDN>.
+## Contact your operator or service provider to get the endpoint, formatted as management.<region>.<FQDN>.
 $tenantARMEndpoint = "https://management.local.azurestack.external"
     
 ## Replace the value below with the guest directory tenant.
@@ -93,11 +93,9 @@ Register-AzSWithMyDirectoryTenant `
 ```
 
 > [!IMPORTANT]
-> If your Azure Stack Hub administrator installs new services or updates in the future, you might need to run this script again.
+> If your Azure Stack Hub administrator installs new services or updates in the future, you might need to run this script again. Run this script again at any time to check the status of the Azure Stack Hub apps in your directory.
 >
-> Run this script again at any time to check the status of the Azure Stack Hub apps in your directory.
->
-> If you notice issues with creating VMs in Managed Disks (introduced in the 1808 update), a new disk resource provider was added, which requires this script to be run again.
+> If you encounter issues with creating VMs in Managed Disks (introduced in the 1808 update), a new disk resource provider was added, which requires this script to be run again.
 
 ### Direct users to sign in
 
@@ -111,42 +109,42 @@ If you no longer want to allow sign-ins to Azure Stack Hub services from a guest
 
 1. As the administrator of the guest directory (Mary in this scenario), run `Unregister-AzsWithMyDirectoryTenant`. The cmdlet uninstalls all the Azure Stack Hub apps from the new directory.
 
-    ``` powershell
-    ## The following Azure Resource Manager endpoint is for the ASDK. If you're in a multinode environment, contact your operator or service provider to get the endpoint, formatted as management.<region>.<FQDN>.
-    $tenantARMEndpoint = "https://management.local.azurestack.external"
+   ``` powershell
+   ## The following Azure Resource Manager endpoint is for the ASDK. If you're in a multinode environment, contact your operator or service provider to get the endpoint, formatted as management.<region>.<FQDN>.
+   $tenantARMEndpoint = "https://management.local.azurestack.external"
         
-    ## Replace the value below with the guest directory tenant.
-    $guestDirectoryTenantName = "adatum.onmicrosoft.com"
+   ## Replace the value below with the guest directory tenant.
+   $guestDirectoryTenantName = "adatum.onmicrosoft.com"
     
-    Unregister-AzsWithMyDirectoryTenant `
-     -TenantResourceManagerEndpoint $tenantARMEndpoint `
-     -DirectoryTenantName $guestDirectoryTenantName `
-     -Verbose 
-    ```
+   Unregister-AzsWithMyDirectoryTenant `
+    -TenantResourceManagerEndpoint $tenantARMEndpoint `
+    -DirectoryTenantName $guestDirectoryTenantName `
+    -Verbose 
+   ```
 
 1. As the service administrator of Azure Stack Hub (you in this scenario), run the `Unregister-AzSGuestDirectoryTenant` cmdlet:
 
-    ``` powershell
-    ## The following Azure Resource Manager endpoint is for the ASDK. If you're in a multinode environment, contact your operator or service provider to get the endpoint, formatted as adminmanagement.<region>.<FQDN>.
-    $adminARMEndpoint = "https://adminmanagement.local.azurestack.external"
+   ``` powershell
+   ## The following Azure Resource Manager endpoint is for the ASDK. If you're in a multinode environment, contact your operator or service provider to get the endpoint, formatted as adminmanagement.<region>.<FQDN>.
+   $adminARMEndpoint = "https://adminmanagement.local.azurestack.external"
     
-    ## Replace the value below with the Azure Stack Hub directory
-    $azureStackDirectoryTenant = "contoso.onmicrosoft.com"
+   ## Replace the value below with the Azure Stack Hub directory
+   $azureStackDirectoryTenant = "contoso.onmicrosoft.com"
     
-    ## Replace the value below with the guest directory tenant. 
-    $guestDirectoryTenantToBeDecommissioned = "adatum.onmicrosoft.com"
+   ## Replace the value below with the guest directory tenant. 
+   $guestDirectoryTenantToBeDecommissioned = "adatum.onmicrosoft.com"
     
-    ## Replace the value below with the name of the resource group in which the directory tenant resource was created (resource group must already exist).
-    $ResourceGroupName = "system.local"
+   ## Replace the value below with the name of the resource group in which the directory tenant resource was created (resource group must already exist).
+   $ResourceGroupName = "system.local"
     
-    Unregister-AzSGuestDirectoryTenant -AdminResourceManagerEndpoint $adminARMEndpoint `
-     -DirectoryTenantName $azureStackDirectoryTenant `
-     -GuestDirectoryTenantName $guestDirectoryTenantToBeDecommissioned `
-     -ResourceGroupName $ResourceGroupName
-    ```
+   Unregister-AzSGuestDirectoryTenant -AdminResourceManagerEndpoint $adminARMEndpoint `
+    -DirectoryTenantName $azureStackDirectoryTenant `
+    -GuestDirectoryTenantName $guestDirectoryTenantToBeDecommissioned `
+    -ResourceGroupName $ResourceGroupName
+   ```
 
-    > [!WARNING]
-    > The steps to disable multi-tenancy must be performed in order. Step #1 fails if step #2 is completed first.
+   > [!WARNING]
+   > The steps to disable multi-tenancy must be performed in order. Step #1 fails if step #2 is completed first.
 
 ## Retrieve Azure Stack Hub identity health report
 
@@ -164,11 +162,9 @@ Write-Host "Unhealthy directories: "
 $healthReport.directoryTenants | Where status -NE 'Healthy' | Select -Property tenantName,tenantId,status | ft
 ```
 
-<a name='update-azure-ad-tenant-permissions'></a>
-
 ## Update Microsoft Entra tenant permissions
 
-This action clears an alert in Azure Stack Hub, indicating that a directory requires an update. Run the following command from the *Azurestack-tools-master/identity* folder:
+This action clears an alert in Azure Stack Hub, indicating that a directory requires an update. Run the following command from the **Azurestack-tools-master/identity** folder:
 
 ```powershell
 Import-Module ..\Identity\AzureStack.Identity.psm1
@@ -196,7 +192,7 @@ Multi-tenancy management using the administrator portal is only available for ve
 
 To register a guest directory for multi-tenancy, you must configure both the home Azure Stack Hub directory and the guest directory.
 
-#### Configure Azure Stack Hub directory
+### Configure Azure Stack Hub directory
 
 The first step is to make your Azure Stack Hub system aware of the guest directory. In this example, the directory from Mary's company, Adatum, is called **adatum.onmicrosoft.com**.
 
@@ -222,7 +218,7 @@ The first step is to make your Azure Stack Hub system aware of the guest directo
 
    [![Screenshot that shows selecting sign in.](./media/enable-multitenancy/sign-in.png)](./media/enable-multitenancy/sign-in-expanded.png#lightbox)
 
-#### Configure guest directory
+### Configure guest directory
 
 Mary received the email with the link to register the directory. She opens the link in a browser and confirms the Microsoft Entra ID and the Azure Resource Manager endpoint of your Azure Stack Hub system.
 
@@ -259,7 +255,7 @@ Mary must also direct any foreign principals (users in the Adatum directory with
 
 If you no longer want to allow sign-ins to Azure Stack Hub services from a guest directory tenant, you can unregister the directory. Again, both the home Azure Stack Hub directory and guest directory need to be configured:
 
-#### Configure guest directory
+### Configure guest directory
 
 Mary no longer uses services on Azure Stack Hub and must remove the objects. She opens the URL again that she received via email to unregister the directory. Before starting this process, Mary removes all the resources from the Azure Stack Hub subscription.
 
@@ -287,7 +283,7 @@ Mary no longer uses services on Azure Stack Hub and must remove the objects. She
    > [!NOTE]
    > It can take up to one hour to show the directory as not registered in the Azure Stack administrator portal.
 
-#### Configure Azure Stack Hub directory
+### Configure Azure Stack Hub directory
 
 As an Azure Stack Hub operator, you can remove the guest directory at any point, even if Mary didn't previously unregister the directory.
 
@@ -305,13 +301,13 @@ As an Azure Stack Hub operator, you can remove the guest directory at any point,
 
    You've now successfully removed the directory.
 
-## Managing required updates
+## Manage required updates
 
 Azure Stack Hub updates can introduce support for new tools or services that might require an update of the home or guest directory.
 
 As an Azure Stack Hub operator, you get an alert in the administrator portal that informs you about a required directory update. You can also determine whether an update is required for home or guest directories by viewing the directories pane in the admin portal. Each directory listing shows the type of directory. The type can be a home or guest directory, and its status is shown.
 
-#### Update the Azure Stack Hub directories
+### Update the Azure Stack Hub directories
 
 When an Azure Stack Hub directory update is required, a status of **Update Required** is shown. For example:
 
@@ -319,7 +315,7 @@ When an Azure Stack Hub directory update is required, a status of **Update Requi
 
 To update the directory, select the **Directory name** checkbox, and then select **Update**.
 
-#### Update the guest directory
+### Update the guest directory
 
 An Azure Stack Hub operator should also inform the guest directory owner that they need to update their directory by using the URL shared for registration. The operator can resend the URL, but it doesn't change.
 
@@ -333,7 +329,7 @@ Mary, the owner of the guest directory, opens the URL that she received via emai
 
 1. The **Update** action is available for Mary to update the guest directory. It can take up to one hour to show the directory as registered in the Azure Stack administrator portal.
 
-## Additional capabilities
+## Other capabilities
 
 An Azure Stack Hub operator can view the subscriptions associated with a directory. In addition, each directory has an action to manage the directory directly in the Azure portal. To manage, the target directory must have manage permissions in the Azure portal.
 ::: zone-end

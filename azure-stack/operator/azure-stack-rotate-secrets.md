@@ -1,9 +1,9 @@
 ---
-title: Rotate secrets in Azure Stack Hub
+title: Rotate Secrets in Azure Stack Hub
 description: Learn how to rotate your secrets in Azure Stack Hub.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 01/22/2025
+ms.date: 05/08/2025
 ms.author: sethm
 ms.lastreviewed: 10/20/2022
 monikerRange: '>=azs-1803'
@@ -38,7 +38,7 @@ For more information about alert monitoring and remediation, see [Monitor health
 
 ## Prerequisites
 
-1. It's recommended that you run a supported version of Azure Stack Hub and that you apply the latest available hotfix for the Azure Stack Hub version your instance is running. For example, if you're running 2408, make sure you've installed the [latest hotfix available](azure-stack-servicing-policy.md#hotfixes) for 2408.
+1. It's recommended that you run a supported version of Azure Stack Hub and that you apply the latest available hotfix for the Azure Stack Hub version your instance is running. For example, if you're running 2501, make sure you've installed the [latest hotfix available](azure-stack-servicing-policy.md#hotfixes) for 2501.
 1. Notify your users of planned maintenance operations. Schedule normal maintenance windows, as much as possible, during non-business hours. Maintenance operations can affect both user workloads and portal operations.
 1. [Generate certificate signing requests for Azure Stack Hub](../operator/azure-stack-get-pki-certs.md?view=azs-2206&tabs=omit-cn&pivots=csr-type-renewal&preserve-view=true).
 1. [Prepare Azure Stack Hub PKI certificates](../operator/azure-stack-prepare-pki-certs.md).

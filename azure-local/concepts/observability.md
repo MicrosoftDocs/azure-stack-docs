@@ -3,8 +3,8 @@ title: Azure Local observability
 description: Learn about observability in Azure Local.
 author: alkohli
 ms.author: alkohli
-ms.date: 10/18/2024
-ms.topic: conceptual
+ms.date: 04/25/2025
+ms.topic: how-to
 ms.service: azure-local
 ---
 
@@ -108,6 +108,36 @@ The following table describes the types of data, their storage location, default
 | Diagnostics | Diagnostics data helps Microsoft detect, diagnose, and fix problems to restore service health and improve products. | Diagnostics data is stored either globally or in the EU, based on the customer’s deployment choice. | Various methods exist to transmit diagnostic data. For details, see [Diagnostics](#diagnostics)| Typically retained for 30 days, potentially longer for ongoing support issues. | You can view data in the `C:\observability` folder of every machine. |
 | Metrics | Metrics are numerical values collected at regular intervals, describing aspects of a system. | Metrics data is sent to the respective region in which resource is deployed. | Enabled by default and can be disabled anytime. | Platform metrics are stored for 93 days, however, you can only query (in the Metrics tile) for a maximum of 30 days' worth of data on any single chart. | You can use metrics explorer to interactively analyze the data in your metric database. |
 | Billing and census | Billing data includes the system ID and the number of physical cores and hours used. Census data is required to enable basic management from Azure and includes system information (system name and ID, system connection status, storage pool ID, trial days remaining and billing model), machine information (number of machines, machine name, OS version, machine manufacturer, model and serial number, number of physical cores and memory size), and basic configuration such as, enablement of Azure verification for VMs, Azure managed identity and diagnostics level setting. | Billing and census data is sent to the respective resource region where the customer registered the device. | Billing is always enabled as it is required to charge for Azure Local usage. Census data is also always enabled, as it includes the minimal information required to manage Azure Local from Azure. | Data is deleted when the resource is deleted, except for billing data, which is retained. | To view billing data, navigate to the Azure Local system resource page in Azure portal, select **Overview** in the left pane, in the Essentials section select the **Billing status** link, followed by **View Cost Management**. To view census data, select **JSON View** located in the top right corner of the Essentials section. |
+
+## Crash dump collection
+
+Crash dump collection is a feature in Azure Local that allows for the automatic collection, analysis, and debugging of crashes. The data collected from a crash, referred to as the crash dump, is used for analysis and debugging.
+
+### Key features
+
+Here are the key features of crash dump collection for Azure Local:
+
+- **Automatic collection and analysis.** Automatically gathers data from Azure Local crashes and analyzes it to pinpoint the root causes of failures, aiding in quick diagnosis and resolution. This minimizes downtime and enhances service reliability.
+- **Compliance and security.** Ensures crash data is handled securely and in compliance with data protection regulations across all Azure regions and national clouds.
+- **Customizable settings.** Enabled by default for optimal performance and reliability, but can be disabled using specific commands if necessary. However, we recommend to keep it enabled to benefit from its diagnostic capabilities.
+
+### Prerequisites
+
+To use the crash dump collection feature, install the `AzureEdgeTelemetryAndDiagnostics` extension, version 2.0.18 or later. For information about the extension, see [Azure Local telemetry and diagnostics extension overview](./telemetry-and-diagnostics-overview.md).
+
+### Disable crash dump collection
+
+To disable the crash dump collection capability, use the following command:
+
+```powershell
+Set-EdgeCrashDumpCollection -SetState Disable
+```
+
+To re-enable it, use the following command:
+
+```powershell
+Set-EdgeCrashDumpCollection -SetState Enable
+```
 
 ## Next steps
 

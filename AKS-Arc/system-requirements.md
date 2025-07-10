@@ -2,7 +2,7 @@
 title: System requirements for AKS on Windows Server
 description: Learn about system requirements for Azure Kubernetes Service (AKS) on Windows Server.
 ms.date: 04/04/2025
-ms.topic: conceptual
+ms.topic: concept-article
 author: sethmanheim
 ms.author: sethm 
 

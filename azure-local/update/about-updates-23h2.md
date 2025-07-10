@@ -5,7 +5,7 @@ author: ronmiab
 ms.author: robess
 ms.topic: overview
 ms.reviewer: thoroet
-ms.date: 04/08/2025
+ms.date: 05/19/2025
 ---
 
 # About updates for Azure Local
@@ -14,9 +14,9 @@ ms.date: 04/08/2025
 
 [!INCLUDE [azure-local-banner-23h2](../includes/azure-local-banner-23h2.md)]
 
-This article describes the new update feature for this release of Azure Local, the benefits of the feature, and how to keep various components of your solution up to date.
+[!INCLUDE [azure-local-end-of-support-banner-23h2](../includes/azure-local-end-of-support-banner-23h2.md)]
 
-[!INCLUDE [end-of-service-22H2](../includes/end-of-service-22h2.md)]
+This article describes the new update feature for this release of Azure Local, the benefits of the feature, and how to keep various components of your solution up to date.
 
 ## About the updates
 
@@ -48,22 +48,24 @@ This new approach:
 
 ## Lifecycle cadence
 
-The Azure Local follows the [Modern Lifecycle policy](/lifecycle/policies/modern). The Modern Lifecycle policy defines the products and services that are continuously serviced and supported. To stay current with this policy, you must stay within six months of the most recent release. To learn more about the support windows, see [Azure Local release information](/azure-stack/hci/release-information-23h2).
+[!INCLUDE [azure-local-banner-resource-bridge](../includes/azure-local-banner-resource-bridge.md)]
 
-Microsoft might release the following types of updates for the Azure Local:
+Azure Local follows the [Modern Lifecycle policy](/lifecycle/policies/modern), which defines products and services that are continuously serviced and supported. To remain compliant with this policy, you must stay within six months of the most recent release. For more information on support windows, see [Azure Local release information](../release-information-23h2.md).
+
+Microsoft might release the following types of updates for Azure Local:
 
 |Update Type |Typical Cadence  |Description |
 |------------|-----------------|------------|
-|Monthly Updates | Monthly |Monthly updates primarily contain quality and reliability improvements. They might include OS Latest Cumulative Updates ¹. Some updates require host system reboots, while others don't. |
-|Baseline Updates |Quarterly |Baseline updates include new features and improvements. They typically require host system reboots and might take longer. |
-|Hotfixes | As needed | Hotfixes address blocking issues that could prevent regular monthly or baseline updates. To fix critical or security issues, hotfixes might be released sooner than monthly.  |
-|Solution Builder Extension | As needed | Solution Builder Extension² provides driver, firmware, and other partner content specific to the system solution used. They might require host system reboots. |
+|Cumulative Updates | Monthly | Cumulative updates primarily include quality and reliability improvements. They might also include OS Latest Cumulative Updates ¹. Some updates require host system reboots, while others do not. |
+|Feature Updates |Semi-annually|Feature updates introduce new features and improvements. They typically require host system reboots and might take longer to apply. |
+|Hotfixes | As needed | Hotfixes address critical issues that could block regular monthly or semi-annual updates. These updates might be released sooner than the monthly cadence to resolve urgent security or functionality issues. |
+|Solution Builder Extension | As needed | Solution Builder Extension² provides drivers, firmware, and other partner-specific content. These updates might require host system reboots. |
 
-¹ Quality updates released based on packages that contain monthly updates. These updates supersede the previous month's updates and contain both security and non-security changes.
+¹ Quality updates released based on packages that contain monthly updates. These updates supersede the previous month's updates and include both security and non-security changes.
 
-² The Original Equipment Manufacturer determines the frequency of Solution Builder Extension updates.
+² The Original Equipment Manufacturer determines the frequency of Solution Builder Extension updates. These updates often align with Azure Local feature releases, allowing customers to install a combined update.
 
-Sometimes you might see updates to the latest patch level of your current baseline. If a new baseline is available, you might see the baseline update itself or the latest patch level of the baseline. Your system must stay within six months of the most recent baseline to consider it supported. For more information and a visualization of supported releases, see [About Azure Local releases](../release-information-23h2.md#about-azure-local-releases).
+Sometimes you might see updates to the latest patch level of your current feature. If a new feature is available, you might see the feature update itself or the latest patch level of the feature. Your system must stay within six months of the most recent feature to consider it supported. For more information and a visualization of supported releases, see [About Azure Local releases](../release-information-23h2.md#about-azure-local-releases).
 
 The next sections provide an overview of components, along with methods and interfaces for updating your solution.
 

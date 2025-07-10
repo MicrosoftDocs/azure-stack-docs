@@ -3,7 +3,7 @@ title: Footfall detection pattern using Azure and Azure Stack Hub
 description: Learn how to use Azure and Azure Stack Hub to implement an AI-based footfall detection solution for analyzing retail store traffic.
 author: ronmiab 
 ms.topic: article
-ms.date: 10/31/2019
+ms.date: 05/09/2025
 ms.author: robess
 ms.reviewer: anajod
 ms.lastreviewed: 10/31/2019
@@ -25,7 +25,7 @@ Contoso would like to find an unobtrusive, privacy-friendly way to determine the
 
 ## Solution
 
-This retail analytics pattern uses a tiered approach to inferencing at the edge. By using the Custom Vision AI Dev Kit, only images with human faces are sent for analysis to a private Azure Stack Hub that runs Azure Cognitive Services. Anonymized, aggregated data is sent to Azure for aggregation across all stores and visualization in Power BI. Combining the edge and public cloud lets Contoso take advantage of modern AI technology while also remaining in compliance with their corporate policies and respecting their customers' privacy.
+This retail analytics pattern uses a tiered approach to inferencing at the edge. When you use the Custom Vision AI Dev Kit, only images with human faces are sent for analysis to a private Azure Stack Hub that runs Azure Cognitive Services. Anonymized, aggregated data is sent to Azure for aggregation across all stores and visualization in Power BI. Combining the edge and public cloud lets Contoso take advantage of modern AI technology while also remaining in compliance with their corporate policies and respecting their customers' privacy.
 
 [![Footfall detection pattern solution](media/pattern-retail-footfall-detection/solution-architecture.png)](media/pattern-retail-footfall-detection/solution-architecture.png)
 
@@ -61,7 +61,7 @@ Consider the following points when deciding how to implement this solution:
 
 ### Scalability
 
-To enable this solution to scale across multiple cameras and locations, you'll need to make sure that all of the components can handle the increased load. You may need to take actions like:
+To enable this solution to scale across multiple cameras and locations, you must make sure that all of the components can handle the increased load. You may need to take actions like:
 
 - Increase the number of Stream Analytics streaming units.
 - Scale out the Face API deployment.
@@ -84,7 +84,7 @@ This solution captures customer images, making security a paramount consideratio
 
 To learn more about the topics introduced in this article:
 
-- See the [Tiered Data pattern](https://aka.ms/tiereddatadeploy), which is leveraged by the footfall detection pattern.
-- See the [Custom Vision AI Dev Kit](https://azure.github.io/Vision-AI-DevKit-Pages/) to learn more about using custom vision. 
+- See the [Tiered Data pattern](https://aka.ms/tiereddatadeploy), which is used by the footfall detection pattern.
+- See the [Custom Vision AI Dev Kit](https://azure.github.io/Vision-AI-DevKit-Pages/) to learn more about using custom vision.
 
 When you're ready to test the solution example, continue with the [Footfall detection deployment guide](/azure/architecture/hybrid/deployments/solution-deployment-guide-retail-footfall-detection?toc=/hybrid/app-solutions/toc.json&bc=/hybrid/breadcrumb/toc.json). The deployment guide provides step-by-step instructions for deploying and testing its components.

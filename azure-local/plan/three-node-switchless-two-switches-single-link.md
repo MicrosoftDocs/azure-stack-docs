@@ -1,13 +1,13 @@
 ---
 title: Azure Local three-node storage switchless, dual TOR, single link deployment network reference pattern
 description: Plan to deploy an Azure Local three-node storage switchless, dual TOR, single link network reference pattern.
-ms.topic: conceptual
+ms.topic: article
 author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
 ms.custom: devx-track-arm-template
-ms.date: 02/14/2025
+ms.date: 05/15/2025
 ---
 
 # Review three-node storage switchless, dual TOR, single link deployment network reference pattern for Azure Local
@@ -17,7 +17,7 @@ ms.date: 02/14/2025
 In this article, learn about the three-node storage switchless with two TOR L3 switches and full-mesh single link network reference pattern that you can use to deploy your Azure Local solution.
 
 > [!NOTE]
-> The 3-node switchless network reference patterns described in this article were tested and validated by Microsoft. For information on two-node switchless network patterns, see [Azure Local network deployment patterns](choose-network-pattern.md).
+> The three-node switchless network reference patterns described in this article were tested and validated by Microsoft. For information on two-node switchless network patterns, see [Azure Local network deployment patterns](choose-network-pattern.md).
 
 ## Scenarios
 
@@ -25,17 +25,19 @@ Scenarios for this network pattern include laboratories, factories, retail store
 
 Consider implementing this pattern when looking for a cost-efficient solution that has fault tolerance across all the network components. Software Defined Network (SDN) L3 services are fully supported on this pattern. Routing services such as Border Gateway Protocol (BGP) can be configured directly on the TOR switches if they support L3 services. Network security features such as micro segmentation or Quality of Service (QoS) don't require extra configuration of the firewall device, as they're implemented at virtual network adapter layer.
 
+[!INCLUDE [includes](../includes/switchless-scale-out.md)]
+
 ## Physical connectivity components
 
 :::image type="content" source="media/three-node-switchless-two-switches-single-link/physical-components-layout.png" alt-text="Diagram showing three-node switchless, two TOR, single link physical connectivity layout." lightbox="media/three-node-switchless-two-switches-single-link/physical-components-layout.png":::
 
-As illustrated in the diagram above, this pattern has the following physical network components:
+As illustrated in the diagram, this pattern has the following physical network components:
 
 - For northbound and southbound communication, the Azure Local instance requires two TOR switches in multi-chassis link aggregation group (MLAG) configuration.
 - Two network cards using SET virtual switch to handle management and compute traffic, connected to the TOR switches. Each NIC is connected to a different TOR.
 - Two RDMA NICs on each node in a full-mesh single link configuration for East-West traffic for the storage.
     > [!NOTE]
-    > For this configuration, there is no redundant network connection between the nodes.
+    > For this configuration, there's no redundant network connection between the nodes.
 
 |Networks|Management and compute|Storage|
 |--|--|--|
@@ -45,7 +47,7 @@ As illustrated in the diagram above, this pattern has the following physical net
 
 ## Logical networks
 
-As illustrated in the diagram below, this pattern has the following logical network components:
+As illustrated in the diagram, this pattern has the following logical network components:
 
 :::image type="content" source="media/three-node-switchless-two-switches-single-link/logical-components-layout.png" alt-text="Diagram showing three-node switchless, two TOR, single link logical connectivity layout." lightbox="media/three-node-switchless-two-switches-single-link/logical-components-layout.png":::
 
@@ -59,7 +61,7 @@ When deploying a three-node switchless configuration, Network ATC has the follow
 
 - Only supports a single VLAN for all the IP subnets used for storage connectivity.
 
-- `StorageAutoIP` parameter must be set to false, `Switchless` parameter must be set to true,  and you are responsible to specify the IPs on the ARM template used to deploy the Azure Local instance from Azure.
+- `StorageAutoIP` parameter must be set to false, `Switchless` parameter must be set to true,  and your'e responsible to specify the IPs on the ARM template used to deploy the Azure Local instance from Azure.
 
 - For Azure Local cloud deployments:
 
@@ -132,7 +134,7 @@ For more information, see [Deploy host networking with Network ATC](../deploy/ne
 
 ## ARM template Storage intent network configuration example
 
-You can use the [ARM template for 3-node storage switchless, dual TOR and single link](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.azurestackhci/create-cluster-3Nodes-Switchless-SingleLink).
+You can use the [ARM template for three-node storage switchless, dual TOR and single link](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.azurestackhci/create-cluster-3Nodes-Switchless-SingleLink).
 
 Here's a snippet from the template:
 

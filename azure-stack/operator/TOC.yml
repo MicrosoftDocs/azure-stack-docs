@@ -16,8 +16,16 @@
       items:
       - name: Currently supported versions
         items:
+        - name: 2501
+          items:
+          - name: Hotfix 1.2501.1.47
+            href: hotfix-1-2501-1-47.md
+          - name: Hotfix 1.2501.1.40
+            href: hotfix-1-2501-1-40.md
         - name: 2408
           items:
+          - name: Hotfix 1.2408.1.46
+            href: hotfix-1-2408-1-46.md
           - name: Hotfix 1.2408.1.44
             href: hotfix-1-2408-1-44.md            
           - name: Hotfix 1.2408.1.39
@@ -26,6 +34,8 @@
             href: hotfix-1-2408-1-38.md            
         - name: 2406
           items:
+          - name: Hotfix 1.2406.1.20
+            href: hotfix-1-2406-1-20.md      
           - name: Hotfix 1.2406.1.19
             href: hotfix-1-2406-1-19.md      
           - name: Hotfix 1.2406.1.18
@@ -378,16 +388,10 @@
           href: app-service-migrate-sql-server.md
       - name: Release notes
         items:
+        - name: 25R1 release notes [June 2025]
+          href: app-service-release-notes-2025R1.md
         - name: 24R1 release notes [December 2024]
           href: app-service-release-notes-2024R1.md
-        - name: 2302 release notes [February 2023]
-          href: app-service-release-notes-2302.md
-        - name: 2022 H1 release notes [October 2022]
-          href: app-service-release-notes-2022-h1.md
-        - name: 2021 Q3 release notes [December 2021]
-          href: app-service-release-notes-2021-Q3.md
-        - name: 2021 Q1 release notes [June 2021]
-          href: app-service-release-notes-2021-Q1.md
     - name: Azure Container Registry
       items:
       - name: Overview

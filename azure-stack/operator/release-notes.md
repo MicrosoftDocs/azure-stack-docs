@@ -2,8 +2,8 @@
 title: Azure Stack Hub release notes
 description: Release notes for Azure Stack Hub integrated systems, including updates and bug fixes.
 author: sethmanheim
-ms.topic: article
-ms.date: 02/27/2025
+ms.topic: release-notes
+ms.date: 07/02/2025
 ms.author: sethm
 ms.reviewer: rtiberiu
 ms.lastreviewed: 04/22/2024
@@ -103,7 +103,7 @@ For more information, see our [servicing policy](azure-stack-servicing-policy.md
 
 The 2501 release of Azure Stack Hub must be applied on the 2408 release with the following hotfix installed:
 
-- [Azure Stack Hub hotfix 1.2408.1.44](hotfix-1-2408-1-44.md)
+- [Azure Stack Hub hotfix 1.2408.1.46](hotfix-1-2408-1-46.md)
 
 ### After successfully applying the 2501 update
 
@@ -111,7 +111,7 @@ When you update to a new major version (for example, 1.2108.x to 1.2206.x), the 
 
 After the installation of 2501, if any hotfixes for 2501 are subsequently released, you should install them:
 
-- No Azure Stack Hub hotfixes are currently available for the 2501 release.
+- [Azure Stack Hub hotfix 1.2501.1.47](hotfix-1-2501-1-47.md)
 ::: moniker-end
 
 ::: moniker range="azs-2408"
@@ -160,7 +160,7 @@ For more information, see our [servicing policy](azure-stack-servicing-policy.md
 
 The 2408 release of Azure Stack Hub must be applied on the 2406 release with the following hotfix installed:
 
-- [Azure Stack Hub hotfix 1.2406.1.19](hotfix-1-2406-1-19.md)
+- [Azure Stack Hub hotfix 1.2406.1.20](hotfix-1-2406-1-20.md)
 
 ### After successfully applying the 2408 update
 
@@ -168,7 +168,7 @@ When you update to a new major version (for example, 1.2108.x to 1.2206.x), the 
 
 After the installation of 2408, if any hotfixes for 2408 are subsequently released, you should install them:
 
-- [Azure Stack Hub hotfix 1.2408.1.44](hotfix-1-2408-1-44.md)
+- [Azure Stack Hub hotfix 1.2408.1.46](hotfix-1-2408-1-46.md)
 ::: moniker-end
 
 ::: moniker range="azs-2406"
@@ -228,7 +228,7 @@ When you update to a new major version (for example, 1.2108.x to 1.2206.x), the 
 
 After the installation of 2406, if any hotfixes for 2406 are subsequently released, you should install them:
 
-- [Azure Stack Hub hotfix 1.2406.1.19](hotfix-1-2406-1-19.md)
+- [Azure Stack Hub hotfix 1.2406.1.20](hotfix-1-2406-1-20.md)
 ::: moniker-end
 
 <!------------------------------------------------------------>

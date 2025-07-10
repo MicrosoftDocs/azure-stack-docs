@@ -6,8 +6,8 @@ ms.custom: devx-track-azurecli
 author: sethmanheim
 ms.author: sethm
 ms.reviewer: leslielin
-ms.date: 02/21/2025
-ms.lastreviewed: 02/21/2025
+ms.date: 05/21/2025
+ms.lastreviewed: 05/21/2025
 
 # Intent: As an IT Pro, I want to use Azure RBAC to authenticate connections to my AKS clusters over the Internet or on a private network.
 # Keyword: Kubernetes role-based access control AKS Azure RBAC AD
@@ -31,7 +31,7 @@ For a conceptual overview, see [Azure RBAC for Kubernetes Authorization](concept
 Before you begin, make sure you have the following prerequisites:
 
 - AKS on Azure Local currently supports enabling Azure RBAC only during Kubernetes cluster creation. You can't enable Azure RBAC after the Kubernetes cluster is created.
-- Install the latest version of the **aksarc** and **connectedk8s** Azure CLI extensions. Note that you need to run the **aksarc** extension version 1.1.1 or later to enable Azure RBAC. Run `az --version` to find the current version. If you need to install or upgrade Azure CLI, see [Install Azure CLI](/cli/azure/install-azure-cli).
+- You can enable Azure RBAC using either Azure CLI or the Azure portal. To use Azure CLI, you must install the latest versions of the **aksarc** and **connectedk8s** Azure CLI extensions. Note that you need the **aksarc** extension version 1.1.1 or later to enable Azure RBAC. Run `az --version` to find the current version. If you need to install or upgrade Azure CLI, see [Install Azure CLI](/cli/azure/install-azure-cli).
 
   ```azurecli
   az extension add --name aksarc
@@ -67,17 +67,29 @@ Before you begin, make sure you have the following prerequisites:
 
 You can create an Azure RBAC-enabled Kubernetes cluster for authorization and a Microsoft Entra ID for authentication.
 
+### [Azure CLI](#tab/azurecli)
+
 ```azurecli
 az aksarc create -n $aks_cluster_name -g $resource_group_name --custom-location $customlocation_ID --vnet-ids $logicnet_Id --generate-ssh-keys --enable-azure-rbac
 ```
 
 After a few minutes, the command completes and returns JSON-formatted information about the cluster.
 
+### [Azure portal](#tab/azureportal)
+
+1. Go to **Kubernetes - Azure Arc**, select the **Add** icon, and then select **Create a Kubernetes cluster with Azure Arc**.
+1. Under the **Access** tab, locate the authentication and authorization settings. Select **Microsoft Entra Authentication with Azure RBAC**.
+1. Complete all other desired configurations for your cluster.
+1. Select **Review + create** to create the cluster.
+---
+
 ## Step 2: Create role assignments for users to access the cluster
 
 [!INCLUDE [built-in-roles](includes/built-in-roles.md)]
 
 You can use the [`az role assignment create`](/cli/azure/role/assignment#az-role-assignment-create) command to create role assignments.
+
+### [Azure CLI](#tab/azurecli)
 
 First, get the `$ARM-ID` for the target cluster to which you want to assign a role.
 
@@ -94,6 +106,13 @@ az role assignment create --role "Azure Arc Kubernetes Viewer" --assignee <assig
 ```
 
 In this example, the scope is the Azure Resource Manager ID of the cluster. It can also be the resource group containing the Kubernetes cluster.
+
+### [Azure portal](#tab/azureportal)
+
+1. Go to **Azure Arc | Kubernetes clusters** and locate your Azure RBAC-enabled cluster for which you want to assign roles.
+1. Navigate to **Access control (IAM)**, select the **Add** icon, and then select **Add role assignment**. If the **Add role assignment** option is disabled, verify that Azure RBAC is enabled by checking **Settings > Properties > AAD profile > Enable Azure RBAC**.
+1. Follow the instructions to complete the role assignment. 
+---
 
 ### Create custom role definitions
 

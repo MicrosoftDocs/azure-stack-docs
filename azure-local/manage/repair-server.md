@@ -1,10 +1,10 @@
 ---
 title: Repair a node on Azure Local, version 23H2
 description: Learn how to repair a node on your Azure Local, version 23H2 system.
-ms.topic: article
+ms.topic: how-to
 author: alkohli
 ms.author: alkohli
-ms.date: 03/25/2025
+ms.date: 06/26/2025
 ---
 
 # Repair a node on Azure Local
@@ -71,11 +71,9 @@ The following scenarios are supported during node replacement:
 |--|--|--|
 | New node | New disks | Yes |
 | New node | Current disks | Yes |
-| Current node (reimaged) | Current disks reformatted ** | No |
 | Current node (reimaged) | New disks | Yes |
 | Current node (reimaged) | Current disks | Yes |
-
-**Disks that have been used by Storage Spaces Direct require proper cleaning. Reformatting isn't sufficient. See how to [Clean drives](/windows-server/storage/storage-spaces/deploy-storage-spaces-direct#step-31-clean-drives).
+| Current node (reimaged) | Current data disks reformatted | No |
 
 > [!IMPORTANT]
 > If you replace a component during node repair, you don't need to replace or reset data drives. If you replace a drive or reset it, then the drive won't be recognized once the node joins the system.
@@ -111,7 +109,7 @@ Make sure that you have reviewed the [prerequisites](#prerequisites).
 
 Follow these steps on the node you're trying to repair.
 
-1. Sign into the Azure portal with [Azure Stack HCI Administrator role permissions](./assign-vm-rbac-roles.md#about-builtin-rbac-roles).
+1. Sign into the Azure portal with [Azure Stack HCI Administrator role permissions](./assign-vm-rbac-roles.md#about-built-in-rbac-roles).
     1. Go to the resource group used to deploy your Azure Local instance. In the resource group, identify the Azure Arc machine resource for the faulty node that you wish to repair.
     1. In the Azure Arc machine resource, go to **Settings > Locks**. In the right-pane, you see a resource lock.
     1. Select the lock and then select the trash can icon to delete the lock.
@@ -123,10 +121,11 @@ Follow these steps on the node you're trying to repair.
         :::image type="content" source="./media/repair-server/delete-machine-node-resource-1.png" alt-text="Screenshot of deletion of faulty Azure Arc machine node." lightbox="./media/repair-server/delete-machine-node-resource-1.png":::
 
 1. Install the operating system and required drivers on the node you wish to repair. Follow the steps in [Install the Azure Stack HCI Operating System, version 23H2](../deploy/deployment-install-os.md).
- 
-    > [!NOTE]
-    > - For versions 2503 and later, you'll need to use the OS image of the same solution as that running on the existing cluster. To get the OS image, contact Microsoft Support or OEM Support.
-    > - If you deployed your Azure Local instance using custom storage IPs, you must manually assign IPs to the storage network adapters after the node is repaired.
+
+    >[!NOTE]
+    > - For versions 2503 and later, you'll need to use the OS image of the same solution as that running on the existing cluster. 
+    > - Use the [Get solution version](../update/azure-update-manager-23h2.md#get-solution-version) to identify the solution version that you are running on the cluster.
+    > - Use the [OS image](https://github.com/Azure-Samples/AzureLocal/blob/main/os-image/os-image-tracking-table.md) table to identify and download the appropriate OS image version.
 
 1. Register the node with Arc. Follow the steps in [Register with Arc and set up permissions](../deploy/deployment-arc-register-server-permissions.md).
 
@@ -135,18 +134,11 @@ Follow these steps on the node you're trying to repair.
 
 1. Assign the following permissions to the repaired node:
 
-    - Azure Local Device Management Role
+    - Azure Stack HCI Device Management Role
     - Key Vault Secrets User
     For more information, see [Assign permissions to the node](../deploy/deployment-arc-register-server-permissions.md).
 
 Follow these steps on another node that is a member of the same Azure Local instance.
-
-
-1. If you are running a version prior to 2405.3, you must run the following command to clean up conflicting files:
-
-    ```powershell
-    Get-ChildItem -Path "$env:SystemDrive\NugetStore" -Exclude Microsoft.AzureStack.Solution.LCMControllerWinService*,Microsoft.AzureStack.Role.Deployment.Service* | Remove-Item -Recurse -Force
-    ```
 
 1. Sign into the node that is already a member of the system, with the domain user credentials that you provided during the deployment of the system. Run the following command to repair the incoming node:
 

@@ -5,7 +5,7 @@ services: azure-stack
 author: sethmanheim
 manager: lizross
 ms.service: azure-stack
-ms.topic: article
+ms.topic: install-set-up-deploy
 ms.date: 08/19/2024
 ms.author: sethm
 ms.custom: devx-track-azurecli, linux-related-content

@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 03/26/2025
+ms.date: 04/29/2025
 ---
 
 # Manage GPUs using partitioning (preview)
@@ -33,17 +33,17 @@ Consider the following limitations when using the GPU-P feature:
 
 - Partitions are autoassigned to the VMs. You can't choose a specific partition for a specific VM.
 
-- Currently, GPU partitioning on Azure Local doesn't support live migration of VMs. But VMs can be automatically restarted and placed where GPU resources are available if there's a failure.
+- GPU partitioning on Azure Local supports live migration. However, the host and VMs must be on NVIDIA virtual GPU software version 18 and later. For more information, see [Microsoft Azure Local - NVIDIA Docs](https://docs.nvidia.com/vgpu/18.0/grid-vgpu-release-notes-microsoft-azure-stack-hci/index.html).
 
 - You can partition your GPU using Azure Command-Line Interface (CLI). We recommend that you use Azure CLI to configure and assign GPU partitions. You must manually ensure that the homogeneous configuration is maintained for GPUs across all the machines in your system.
 
 ## Prerequisites
 
-- See [Prepare GPUs for Azure Local](./gpu-manage-via-partitioning.md) for requirements and to prepare your Azure Local VMs, and to ensure that your GPUs are prepared and partitioned.
+- See [Prepare GPUs for Azure Local](gpu-preparation.md) for requirements and to prepare your Azure Local VMs, and to ensure that your GPUs are prepared and partitioned.
 
 ## Attach a GPU during Azure Local VM creation
 
-Follow the steps outlined in [Create Azure Local virtual machines](create-arc-virtual-machines.md?tabs=azurecli) and utilize the additional hardware profile details to add GPU to your create process. Run the following:
+Follow the steps outlined in [Create Azure Local virtual machines](create-arc-virtual-machines.md?tabs=azurecli) and utilize the extra hardware profile details to add GPU to your create process. Run the following:
 
 ```azurecli
 az stack-hci-vm create --name $vmName --resource-group $resource_group --admin-username $userName --admin-password $password --computer-name $computerName --image $imageName --location $location --authentication-type all --nics $nicName --custom-location $customLocationID --hardware-profile memory-mb="8192" processors="4" --storage-path-id $storagePathId --gpus GpuP
@@ -65,7 +65,7 @@ You can specify the partition size in the command, as shown below. Partition siz
 az stack-hci-vm gpu attach --resource-group "test-rg" --custom-location "test-location" --vm-name "test-vm" --gpus GpuP
 ```
 
-After attaching the GPU partition, the output will show the full VM details. You can confirm the GPUs were attached by reviewing the hardware profile `virtualMachineGPUs` section. The output will look as follows:
+After attaching the GPU partition, the output shows the full VM details. You can confirm the GPUs were attached by reviewing the hardware profile `virtualMachineGPUs` section. The output looks as follows:
 
 ```azurecli
 "properties":{
@@ -89,7 +89,7 @@ Use the following CLI command to detach the GPU:
 az stack-hci-vm gpu detach --resource-group "test-rg" --custom-location "test-location" --vm-name "test-vm" --gpus GpuP
 ```
 
-After detaching the GPU partition, the output will show the full VM details. You can confirm the GPUs were detached by reviewing the hardware profile `virtualMachineGPUs`. The output will look as follows:
+After detaching the GPU partition, the output shows the full VM details. You can confirm the GPUs were detached by reviewing the hardware profile `virtualMachineGPUs`. The output looks as follows:
 
 ```azurecli
 "properties":{

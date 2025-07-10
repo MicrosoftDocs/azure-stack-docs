@@ -3,7 +3,7 @@ title: Enable guest management for migrated VMs (preview)
 description: Learn how to enable guest management for migrated VMs (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 03/08/2025
+ms.date: 05/27/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
@@ -28,38 +28,7 @@ Before you begin, complete the following:
 
 - Your system is running Azure Local release 2405 or later.
 
-- Azure CLI is installed on the Azure Local instance. For instructions, see [Install the Azure CLI for Windows](/cli/azure/install-azure-cli-windows?tabs=azure-cli).
-
-- Add the **stack-hci-vm** Azure extension by running PowerShell as administrator:
-
-    - To add the **stack-hci-vm** extension, run the following cmdlet:
-
-        ```azurecli
-        az extension add --name stack-hci-vm --upgrade 
-        ```
-
-    - To verify the installation and check that the **stack-hci-vm** version is 1.1.5 or later:
-
-        ```azurecli
-        PS C:\Users\AzureStackAdminD> az -version
-        {
-            "azure-cli": "2.68.0",
-            "azure-cli-core": "2.68.0",
-            "azure-cli-telemetry": "1.1.0",
-            "extensions": {
-                "aksarc": "1.2.23",
-                "arcappliance": "1.3.1", 
-                "connectedk8s": "1.10.5",
-                "customlocation": "0.1.3",
-                "k8s-extension": "1.6.3",
-                "stack-hci-vm": "1.5.0",
-                            },
-            "dependencies": {
-                "msal": "1.31.1",
-                "azure-mgmt-resource": "23.1.1",
-                            },
-        }
-        ```
+- You are able to [connect to the target Azure Local instance remotely](../manage/azure-arc-vm-management-prerequisites.md#connect-to-the-system-remotely).
 
 - Familiarize yourself with Azure Local VMs and guest management features and considerations - see [Enable guest management](../manage/manage-arc-virtual-machines.md#enable-guest-management).
 

@@ -2,7 +2,7 @@
 title: Connect to Azure Stack Hub with PowerShell 
 description: Learn how to connect to Azure Stack Hub with PowerShell.
 author: sethmanheim
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/06/2025
 ms.author: sethm
 ms.reviewer: thoroet
