@@ -113,7 +113,7 @@ To prepare each machine for the disconnected operations appliance, follow these 
 1. Copy to the **APPData/Azure** Local folder and name it **azureLocalRootCert**. Use this information during the Arc appliance deployment.  
 
     ```powershell
-    Copy-Item \\fileserver\share\azurelocalcerts\publicroot.cer $($env:APPDATA)\AzureLocal\AzureLocalRootCert.cer
+    Copy-Item $applianceRootCertFile $($env:APPDATA)\AzureLocal\AzureLocalRootCert.cer
     ```
 
 1. On each node, import the public key into the local store:
@@ -124,6 +124,7 @@ To prepare each machine for the disconnected operations appliance, follow these 
 
     > [!NOTE]
     > If you use a different root for the management certificate, repeat the process and import the key on each node.
+
 
 1. [Install and configure the CLI](disconnected-operations-cli.md) with your local endpoint on each node. 
 1. Set environment variable to support disconnected operations
@@ -662,7 +663,7 @@ To initialize each node, follow these steps. Modify where necessary to match you
     > [!NOTE]  
     > You can also use the [Configurator App](../deploy/deployment-arc-register-configurator-app.md?view=azloc-2506&preserve-view=true) to initialize each node
     
-### For air-gapped or disconnected deployments
+### For fully air-gapped or disconnected deployments (where nodes have no line of sight to internet connection)
 
 To enable Azure Local to be air-gapped or deployed fully disconnected, you must do the following on each node:
 
@@ -682,6 +683,19 @@ w32tm /resync /rediscover
 w32tm /query /peers
 ```
 
+1. Download (or copy) the following certificates and import them into the local trust store: 
+- [MicCodSigPCA2011](https://www.microsoft.com/pkiops/certs/MicCodSigPCA2011_2011-07-08.crt)
+- [DigiCertGlobalRootCA](https://cacerts.digicert.com/DigiCertGlobalRootCA.crt?utm_medium=organic&utm_source=msazure-visualstudio&referrer=https://msazure.visualstudio.com/&_gl=1*1c6vxin*_gcl_au*MTE2OTcyNDYyMy4xNzUyMTg0NDU5)
+- [DigiCertGlobalRootG2](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt?utm_medium=organic&utm_source=msazure-visualstudio&referrer=https://msazure.visualstudio.com/&_gl=1*1c6vxin*_gcl_au*MTE2OTcyNDYyMy4xNzUyMTg0NDU5)
+
+Place them in a folder, e.g.C:\AzureLocalDisconnectedOperations\Certs\ 
+
+Import the certs by running the following:
+```powershell
+Import-Certificate -FilePath C:\AzureLocalDisconnectedOperations\Certs\MicCodSigPCA2011_2011-07-08.cer -CertStoreLocation Cert:\LocalMachine\Root -Confirm:$false
+Import-Certificate -FilePath C:\AzureLocalDisconnectedOperations\Certs\DigiCertGlobalRootCA.cer Cert:\LocalMachine\Root -Confirm:$false
+Import-Certificate -FilePath C:\AzureLocalDisconnectedOperations\Certs\DigiCertGlobalRootG2.cer -CertStoreLocation Cert:\LocalMachine\Root -Confirm:$false
+```
 ### Create the Azure Local instance (cluster)
 
 With the prerequisites completed, you can deploy Azure Local with a fully air-gapped local control plane.

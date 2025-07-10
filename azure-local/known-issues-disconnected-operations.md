@@ -28,7 +28,63 @@ These release notes update continuously, and we add critical issues that require
 ### Azure Local deployment - Azure Keyvault (permission issues)
 RBAC permissions on a newly created Azure Keyvault takes 20 minutes to propagate. If you navigate through the local portal, creating the Azure Keyvault and trying to finalize the cloud deployment - you might hit permission issues when validating the cluster before deployment. 
 
-- ***Resolution***: Wait 20 minutes after creating Azure Keyvault to finalize the cluster deployment. 
+- ***Resolution***: Wait 20 minutes after creating Azure Keyvault to finalize the cluster deployment or pre-create the keyvault and assign the MSI (for each node) Key vault administrator + the user doing the cloud deployment explicit roles on the keyvault (Key Vault Secrets officer and Key vault Data access administrator). 
+
+Here is an example script you can use to pre-create the keyvault:
+```powershell
+param($resourceGroupName = "aldo-disconnected", $keyVaultName = "aldo-kv", $subscriptionName = "Starter Subscription")
+
+$location = "autonomous"
+
+Write-Verbose "Login interactive with user that will do cloud deployment"
+# Login to Azure CLI (use the user you will run the portal deployment flow)"
+az login 
+az account set --subscription $subscriptionName
+$accountInfo = (az account show)|convertfrom-json
+# Create the Resource Group
+$rg = (az group create --name $resourceGroupName --location $location)|Convertfrom-json
+
+# Create a Key Vault
+$kv = (az keyvault create --name $keyVaultName --resource-group $resourceGroupName --location $location --enable-rbac-authorization $true)|Convertfrom-json
+
+Write-Verbose "Assigning permissions to $($accountInfo.user.name) on the Key Vault"
+# Assign the secrets officer role to the resource group (could use KV explicit).
+az role assignment create --assignee $accountInfo.user.name --role "Key Vault Secrets Officer" --scope $kv.Id
+az role assignment create --assignee $accountInfo.user.name --role "Key Vault Data Access Administrator" --scope $kv.Id
+
+
+$machines = (az connectedmachine list -g $resourceGroupName)|ConvertFrom-Json
+
+# For now only supporting minimum 3 machines for ALDO
+if($machines.Count -lt 3){
+    Write-Error "No machines found in the resource group $resourceGroupName. Please check the resource group and try again. Please use the same resource group as where your Azure Local nodes are"
+    return 1
+}
+
+Write-Verbose "Assigning permissions to MSIs $($machines.count) on the Key Vault"
+
+$apps =(az ad sp list)|ConvertFrom-Json
+$managedIds=$machines.displayname | foreach-object {
+    $name = $_
+    $apps|Where-Object {$_.ServicePrincipalType -eq 'ManagedIdentity' -and $_.displayname -match $name}
+}
+
+
+# Assign role to each of the managed IDs (Arc-VMs) in the RG 
+$managedIds|foreach-object {    
+    az role assignment create --role "Key Vault Administrator" --assignee $_.Id --scope $kv.id
+}
+
+
+## 
+Write-Verbose "Please wait 30 min before running cloud deployment from portal"
+```
+
+### Arc-initialization (node) fails with error code 42
+There is an issue with logging in with a SPN, that yields in the arc-initialization failing. 
+
+Mitigatino: Until the underlying issue has been fixed – log in to each Azure Local node by using 'az login –use-device-code' instead of using a SPN.
+
 
 ### Azure Local VMs (Arc VMs)
 
@@ -106,12 +162,35 @@ az aksarc delete
 If you experience issues with the local portal, missing resources, or failed deployments after you restart a node or the control plane VM, the system might not be fully ready.
 
 The system can take an hour after a reboot to become fully ready. If you use the local portal or Azure CLI and experience failures, check the appliance health using the **OperationsModule** to make sure all services are fully converged.
+### Subscriptions
+
+### Operator - create subscription
+When you create a new subscription as an operator – when subscription shows up in list – it will show as a non-clickable subscription, and say ‘no access’ on owner. 
+
+Mitigation: Refresh browser window.
+
+### Operator - subscriptions view (Timeout) with broken view
+Logged in as an Operator – in some conditions you might experience this screen (timeout) and being unable to view/list/create subscriptions. This is a known bug and is due to a subscription that has an owner that is deleted or no longer synced from the source identity system to the local control plane. This causes the operator, when trying to view subscriptions to fail since the identity is no longer there. 
+
+Mitigation: Use Azure CLI or REST API to create and list subscriptions if portal is not working. If you need a different owner than the operator - you will need to use the REST API and pass subscriptionOwnerId as a parameter when creating subscriptions 
 
 ### Azure CLI
-
+#### Manage clouds
 The `az cloud show` and `az cloud register` commands treat case sensitivity differently, which can cause issues.
 
 Use only lowercase letters for cloud names in `az cloud` subcommands, such as `register`, `show`, or `set`.
+
+#### Create subscriptions
+Azure cli does not yet support providing subscriptionOwnerId for new subscriptions. This makes the operator the default owner of newly created subscriptions without a way of changing the owner currently.
+
+Mitigation: Use az rest to create subscriptions with a different owner if required to automate directly with different owner
+
+### Azure Portal
+
+#### Signout failing
+When clicking sign-out – the request will fail. This is a known issue. 
+
+Mitigation: Close your browser and access the portal URL as normally next time. 
 
 <!--### Deployment
 
