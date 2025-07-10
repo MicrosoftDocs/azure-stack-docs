@@ -37,11 +37,71 @@ When hitting add or editing a tag on an Arc VM - you hit an Azure Resource graph
 
 Mitigation: Use Azure CLI to add/edit tags for the resource
 
+#### Start/Restart/delete button disabled after stopping VM
+After hitting stop on a VM, the mentioned actions becomes disabled.
 
+Mitigation: Refresh browser and the page to resolve.
+#### Viewing Network interface (NIC) on Arc VM fails - cannot read properties of undefined 
+Network interface view in portal is not supported in this release
 
+#### After updating VM size - portal still show unsaved change notification
+If notification in top right says save operation completed, ignore the unsaved message and continue navigating away. The VM size should be updated.
 
+#### Deleting VM - failing to delete associated resources (Network interface)
 
-### Issues after restarting node or the control plane VM
+When deleting a VM from the portal - you get 'Delete associated resource failed' with the message 'failed to delete the associated resource 'name' of type 'Network interface'. 
+
+Mitigation: Use CLI to clean up and delete the associated NIC after the delete operation - by using : 
+```azurecli
+az stack-hci-vm network nic delete
+```` 
+### AKS on Azure Local
+#### Only able to use existing public key when creating AKS cluster
+Currently this is the only supported option. 
+
+Mitigation: Create ssh key using commandline tool and paste the public key in UX
+
+```powershell
+ssh-keygen -t rsa 
+(cat ~\.ssh\id_rsa.pub)|set-clipboard
+```
+
+#### Updating and scaling node pool from portal is disabled
+Currently not supported through portal.
+
+Mitigation: use azure cli to update/scale nodepool
+
+```azurecli
+az aksarc nodepool update
+az aksarc nodepool scale
+```
+
+#### Kubernetes cluster does not show under Azure Local (Kubernetes clusters)
+The list of clusters is empty when navigating to Azure Local and clicking Kubernetes clusters.
+
+Mitigation: Navigate to 'Kubernetes - Azure Arc' on the left menu or using the search bar. Your clusters will appear in this list.
+#### Save Kubernetes service notification stuck on saving even after k8s version updated
+The top right notification shows 'Save Kubernetes service' running and never completes. 
+
+Migitation: Ignore the notification being stuck. Verify that the state is still upgrading or have completed by navigating to the cluster/refreshing the cluster view page.
+
+#### Activity log shows authentication issue
+Known issue. Ignore the portal warning for this release.
+
+#### Using Microsoft Entra authentication with Kubernetes RBAC fails
+You hit an error when trying to create a Kubernetes cluster with Entra authentication. Only local accounts with Kubernetes RBAC is supported in this preview and Entra option will be removed from portal options in future release.
+
+#### Arc exensions is not supported
+When navigating to extensions on an AKS cluster - add button is disabled and there are no extensions. In this release extensions is not supported.
+#### AKS resource still show on portal after deletion 
+After successfully deleting cluster from portal, resource still persists and is present. 
+
+Mitigation: Use cli to delete cluster and clean up
+```azurecli
+az aksarc delete
+```
+
+## Issues after restarting node or the control plane VM
 
 If you experience issues with the local portal, missing resources, or failed deployments after you restart a node or the control plane VM, the system might not be fully ready.
 
