@@ -94,12 +94,19 @@ You need these certificates to deploy the disconnected operations appliance. You
 
 1. Connect to the CA.
 1. Create a folder named **IngressEndpointsCerts**. Use this folder to store all certificates.
-1. Create the 26 certs in the table above and export them into the IngressEndpointCerts folder. Here is an example script you can modify and run the script (this will create the ingress certificates and export them to the configured folder - by creating CSRs and issuing them to your CA)
+1. Create the 26 certs in the table above and export them into the IngressEndpointCerts folder. 
+
+Here is an example script you can modify and run (this will create the ingress certificates and export them to the configured folder - by creating CSRs and issuing them to your CA). 
+>[!NOTE] This script would need to on a domain joined machine - and the account you run this with needs Domain administrator access in order to issue certificates.
 
   ```PowerShell    
   $fqdn = "autonomous.cloud.private" 
   $caName = "<CA Computer Name>\<CA Name>" # Replace with your CA server and CA name (Run certutil -config - -ping to find the names)
-  $extCertFilePath = "<Your Preferred Path\IngressEndpointsCerts"
+  
+  $extCertFilePath = "C:\AzureLocalDisconnectedOperations\Certs\IngressEndpointsCerts"
+  # Making sure to create this directory if it does not exist
+[void](New-Item -ItemType Directory -path $extCertFilePath -force)
+
   $certPassword = Read-Host -AsSecureString -Message 'CertPass' -Force  
   # Alternative
   # $certPassword = "REPLACEME"|ConvertTo-SecureString -AsPlainText -Force
@@ -203,20 +210,87 @@ You need these certificates to deploy the disconnected operations appliance. You
   }
   ``` 
 
-1. Copy the original certificates (26 .pfx files) obtained from your CA to the directory structure represented in IngressEndpointCerts.
+1. Copy the original certificates (26 .pfx files / *.pfx) obtained from your CA to the directory structure represented in IngressEndpointCerts.
 
 ### Management endpoint
 
 Here is an an example on how to create certificates for securing the management endpoint :
 
-```powershell
-## Endpoint cert (SSL)
+>[!NOTE] This script would need to on a domain joined machine - and the account you run this with needs Domain administrator access in order to issue certificates.
 
-## Client cert
+```powershell
+$caName = "<CA Computer Name>\<CA Name>" # Replace with your CA server and CA name 
+# For more info on how to find your CA: https://learn.microsoft.com/en-us/troubleshoot/windows-server/certificates-and-public-key-infrastructure-pki/find-name-enterprise-root-ca-server 
+$certPassword = Read-Host -AsSecureString -Message 'ManagementCertPass' -Force 
+# Alternative
+# $certPassword = "REPLACEME"|ConvertTo-SecureString -AsPlainText -Force
+
+$managementendpointPath = "C:\AzureLocalDisconnectedOperations\Certs\ManagementEndpointCerts"
+[void](New-Item -ItemType Directory -path $managementendpointPath -force)
+$managementEndpointIPAddress = '192.168.100.25'
+$fileNames = @('ManagementEndpointSsl', 'ManagementEndpointClientAuth')
+$subjects = @($managementEndpointIPAddress,'ManagementEndpointClientAuth')  
+
+$subjects|Foreach-Object {
+    $subject=$_    
+    $filename = $fileNames[$subjects.IndexOf($_)] 
+    $infFilename = "$($managementendpointPath)\$($filename).inf"
+    $csrPath = "$($managementendpointPath)\$($filename).csr"
+    $certPath = "$($managementendpointPath)\$($filename).cer"
+    $pfxPathPath = "$($managementendpointPath)\$($filename).pfx"
+@"
+[NewRequest]
+Subject = "CN=$subject"
+KeySpec = 1
+KeyLength = 2048
+Exportable = TRUE
+MachineKeySet = TRUE
+SMIME = FALSE
+PrivateKeyArchive = FALSE
+UserProtected = FALSE
+UseExistingKeySet = FALSE
+ProviderName = "Microsoft RSA SChannel Cryptographic Provider"
+ProviderType = 12
+RequestType = PKCS10
+KeyUsage = 0xa0
+HashAlgorithm = sha256
+
+[Extensions]
+2.5.29.17 = "{text}"
+_continue_ = "DNS=$subject"
+"@ | Out-File -FilePath $infFilename
+
+    # Generate the CSR
+    certreq -new $infFilename $csrPath
+    
+    # Submit the CSR to the CA
+    certreq -submit -attrib "CertificateTemplate:WebServer" -config $caName $csrPath $certPath
+    Write-Verbose "Certificate request submitted. Certificate saved to $certPath" -Verbose
+
+    # Accept the certificate and install it.
+    $certReqOutput = certreq.exe -accept $certPath
+
+    # Parse the thumbprint and export the certificate
+    $match = $certReqOutput -match 'Thumbprint:\s*([a-fA-F0-9]+)'
+    if ($null -ne $match) {
+        $thumbprint = (($match[0]).Split(':')[1]).Trim()
+        Write-Verbose "Thumbprint: $thumbprint" -Verbose
+    }
+    else {
+        Write-Verbose "Thumbprint not found" -Verbose
+        #return;
+    }
+
+    # Export the certificate to a PFX file
+    $cert = Get-Item -Path "Cert:\LocalMachine\My\$thumbprint"
+    $cert | Export-PfxCertificate -FilePath $pfxPath -Password $certPassword -Force
+    Write-Verbose "Certificate for $subject and private key exported to $certPath" -Verbose
+}
+
 
 ```
 
-1. Copy the management certificates to the directory structure represented in ManagementEndpointCerts
+1. Copy the management certificates (*.pfx) to the directory structure represented in ManagementEndpointCerts
 
 ## Obtain certificate information for identity integration 
 
@@ -233,6 +307,18 @@ Here is an example on how to populate the required parameters:
 ```powershell
 $oidcCertChain = Get-CertChainInfo -endpoint 'https://adfs.azurestack.local'
 $ldapsCertChain = Get-CertChainInfo -endpoint 'https://dc01.azurestack.local'
+```
+
+Here is an example of the output from Get-CertChainInfo
+```powershell
+# Returns: System.Security.Cryptography.X509Certificates.X509Certificate2[]
+>> Get-CertChainInfo
+>>
+Thumbprint                                Subject                                                                                                
+----------                                -------                                                                                                
+TESTING580E20618EA15357FC1028622518DDC4D  CN=www.website.com, O=Contoso Corporation, L=Redmond, S=WA, C=US                                   
+TESTINGDAA2345B48E507320B695D386080E5B25  CN=www.website.com, O=Contoso Corporation, L=Redmond, S=WA, C=US                                
+TESTING9BFD666761B268073FE06D1CC8D4F82A4  CN=www.website.com, O=Contoso Corporation, L=Redmond, S=WA, C=US       
 ```
 
 ## Related content
