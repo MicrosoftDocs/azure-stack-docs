@@ -2,13 +2,13 @@
 title: Validate Signed Container Images for AKS on Azure Local
 description: Learn how to validate signed container images for AKS on Azure Local deployments to ensure image integrity and prevent supply chain attacks.
 author: sethmanheim
-ms.topic: concept-article
+ms.topic: how-to
 ms.date: 07/11/2025
 ms.author: sethm
 ms.reviewer: leslielin
 ---
 
-# How-to: validate signed container images for AKS on Azure Local deployments
+# Validate signed container images for AKS on Azure Local deployments
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
