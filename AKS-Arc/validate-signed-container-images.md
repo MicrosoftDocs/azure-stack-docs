@@ -138,7 +138,7 @@ Sample output:
 |-------------------|--------|--------------|-------|---------|-----------------|-------------|---------------------------|------------------------|-----------------------------|
 | moc-lsbe393il9d   | Ready  | control-plane| 3h14m | 1.30.4  | 100.72.248.133  | None        | CBL-Mariner/Linux         | 5.15.173.1-2.cm2       | containerd://1.6.26         |
 | moc-lzwagtkjah5   | Ready  | None         | 3h12m | 1.30.4  | 100.72.248.134  | None        | CBL-Mariner/Linux         | 5.15.173.1-2.cm2       | containerd://1.6.26         |
-| moc-wlcjnwn5n02   | Ready  | None         | 14m   | 1.30.4  | 100.72.248.135  | None        | Windows Server 2022 Datacenter | 10.0.20348.2700   | containerd://1.6.21+azure    |
+| moc-wlcjnwn5n02   | Ready  | None         | 14m   | 1.30.4  | 100.72.248.135  | None        | Windows Server 2022 Datacenter | 10.0.20348.2700   | containerd://1.6.21+Azure    |
 
 From this sample output:
 
