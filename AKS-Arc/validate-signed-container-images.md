@@ -26,11 +26,11 @@ Before you begin, ensure you have the following prerequisites:
    - At least one Linux node.
    - (Optional) Add a Windows node pool if you need to validate Windows container images.
 
-1. **A Windows machine Jump Box** is required to run the image validation script. The machine must meet these prerequisites:
+1. **A Windows machine jump box** is required to run the image validation script. The machine must meet these prerequisites:
 
-   - **Network access**: The Jump Box must be able to communicate with the Azure Local physical boxes where the AKS Arc cluster is deployed and route traffic to the IP addresses assigned to the AKS Arc cluster, including all control plane and worker nodes.
-   - **Required tools installed**: Install these tools on the Jump Box: **curl**, **ssh**, and **scp**. These tools enable secure remote access, file transfers, and HTTP-based interactions with your cluster or management endpoints.
-   - **SSH access**: The private SSH key used during cluster creation must be present on the Jump Box.
+   - **Network access**: The jump box must be able to communicate with the Azure Local physical boxes where the AKS Arc cluster is deployed and route traffic to the IP addresses assigned to the AKS Arc cluster, including all control plane and worker nodes.
+   - **Required tools installed**: Install these tools on the jump box: **curl**, **ssh**, and **scp**. These tools enable secure remote access, file transfers, and HTTP-based interactions with your cluster or management endpoints.
+   - **SSH access**: The private SSH key used during cluster creation must be present on the jump box.
      - This key enables connections to individual nodes (Linux or Windows).
      - For details on generating or retrieving the key, see [Configure SSH keys for a cluster](/azure/aks/aksarc/configure-ssh-keys).
 
@@ -50,14 +50,14 @@ Before you begin, ensure you have the following prerequisites:
 
 ## Step 1: download the image validation script
 
-1. Open an administrative PowerShell window and create a temporary folder at **c:\imagesign**:
+1. Open a PowerShell window as an administrator and create a temporary folder at **c:\imagesign**:
 
    ```powershell
    mkdir c:\imagesign
    cd c:\imagesign
    ```
 
-1. Run the following commands to download the [prerequisite.ps1](https://raw.githubusercontent.com/Azure/aksArc/refs/heads/main/scripts/ImageSignValidation/prerequisite.ps1) script to the Jump Box and save it in **c:\imagesign**:
+1. Run the following commands to download the [prerequisite.ps1](https://raw.githubusercontent.com/Azure/aksArc/refs/heads/main/scripts/ImageSignValidation/prerequisite.ps1) script to the jump box and save it in **c:\imagesign**:
 
    ```powershell
    $giturl = "https://raw.githubusercontent.com/Azure/aksArc/refs/heads/main/scripts/ImageSignValidation/prerequisite.ps1"
@@ -120,7 +120,7 @@ Before you begin, ensure you have the following prerequisites:
 
    ---
 
-## Step 2: Get the control plane and worker node IP addresses
+## Step 2: get the control plane and worker node IP addresses
 
 Follow steps 1 and 2 in the [Use SSH to connect to worker nodes](ssh-connect-to-windows-and-linux-worker-nodes.md#use-ssh-to-connect-to-worker-nodes) section to obtain IP addresses.
 
@@ -133,10 +133,11 @@ kubectl --kubeconfig /path/to/aks-cluster-kubeconfig get nodes -o wide
 Sample output:
 
 ```output
-NAME STATUS ROLES AGE VERSION INTERNAL-IP EXTERNAL-IP OS-IMAGE KERNEL-VERSION CONTAINER-RUNTIME
-moc-lsbe393il9d Ready control-plane 3h14m v1.30.4 100.72.248.133 <none> CBL-Mariner/Linux 5.15.173.1-2.cm2 containerd://1.6.26
-moc-lzwagtkjah5 Ready <none> 3h12m v1.30.4 100.72.248.134 <none> CBL-Mariner/Linux 5.15.173.1-2.cm2 containerd://1.6.26
-moc-wlcjnwn5n02 Ready <none> 14m v1.30.4 100.72.248.135 <none> Windows Server 2022 Datacenter 10.0.20348.2700 containerd://1.6.21+azure
+| NAME              | STATUS | ROLES         | AGE   | VERSION | INTERNAL-IP     | EXTERNAL-IP | OS-IMAGE                  | KERNEL-VERSION         | CONTAINER-RUNTIME           |
+|-------------------|--------|--------------|-------|---------|-----------------|-------------|---------------------------|------------------------|-----------------------------|
+| moc-lsbe393il9d   | Ready  | control-plane| 3h14m | 1.30.4  | 100.72.248.133  | None        | CBL-Mariner/Linux         | 5.15.173.1-2.cm2       | containerd://1.6.26         |
+| moc-lzwagtkjah5   | Ready  | None         | 3h12m | 1.30.4  | 100.72.248.134  | None        | CBL-Mariner/Linux         | 5.15.173.1-2.cm2       | containerd://1.6.26         |
+| moc-wlcjnwn5n02   | Ready  | None         | 14m   | 1.30.4  | 100.72.248.135  | None        | Windows Server 2022 Datacenter | 10.0.20348.2700   | containerd://1.6.21+azure    |
 ```
 
 From this sample output:
