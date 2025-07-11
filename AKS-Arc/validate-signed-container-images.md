@@ -6,13 +6,15 @@ ms.topic: how-to
 ms.date: 07/11/2025
 ms.author: sethm
 ms.reviewer: leslielin
+ms.lastreviewed: 07/11/2025
+
 ---
 
 # Validate signed container images for AKS on Azure Local deployments
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
-Container image signing verifies the integrity and authenticity of images before deployment, ensuring a trusted infrastructure. This verification is vital in production environments, regulated industries, and automated CI/CD pipelines, where validating image sources helps prevent supply chain attacks and maintain compliance.
+Container image signing verifies the integrity and authenticity of images before deployment, ensuring a trusted infrastructure. This verification is vital in production environments, regulated industries, and automated CI/CD pipelines, where validating image sources helps to both prevent supply chain attacks and maintain compliance.
 
 This article describes how to validate signed container images for AKS on Azure Local deployments.
 
