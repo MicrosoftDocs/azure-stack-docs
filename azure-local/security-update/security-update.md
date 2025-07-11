@@ -3,7 +3,7 @@ title:  Security updates for Azure Local
 description: Security updates for Azure Local.
 author: alkohli
 ms.topic: conceptual
-ms.date: 07/08/2025
+ms.date: 07/11/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
@@ -42,7 +42,9 @@ This security update includes quality improvements. Below is a summary of the ke
 
 - **[Performance]** Fixed: This update addresses an issue that prevented the complete removal of unused language packs and Feature on Demand packages, which previously led to unnecessary storage use and longer Windows Update installation times. 
 
-- **[Security]** Fixed: This update upgrades the curl tool in Windows to version 8.13.0 to help protect against potential security risks, including unauthorized access to data or service disruptions. 
+- **[Security]** Fixed: This update upgrades the curl tool in Windows to version 8.13.0 to help protect against potential security risks, including unauthorized access to data or service disruptions.
+
+- **[Microsoft RPC Netlogon protocol]** Fixed: This update includes a security hardening change to the Microsoft RPC Netlogon protocol. This change improves security by tightening access checks for a set of remote procedure call (RPC) requests. After this update is installed, Active Directory domain controllers will no longer allow anonymous clients to invoke some RPC requests through the Netlogon RPC server. These requests are typically related to domain controller location. Certain file and print service software can be affected, including Samba. If your organization uses Samba, please refer to the [Samba release notes](https://www.samba.org/samba/history/samba-4.22.3.html).
 
 For more information about security vulnerabilities, see the [Security Update Guide](https://portal.msrc.microsoft.com/security-guidance) and the [July 2025 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2025-July).
 
@@ -79,13 +81,35 @@ For more information about security vulnerabilities, see the [Security Update Gu
 
 ## Known issues
 
-The following is a known issue with this update.
+The following are known issues with this update:
 
-### Symptom
+### Azure Local VM with Trusted Launch disabled
+
+**Symptom**
+
+A small subset of Generation 2 Azure Virtual Machines (VMs) with Trusted Launch disabled and Virtualization-Based Security (VBS) enforced via registry key might be unable to boot after installing this update.
+
+To check if your virtual machine might be impacted:
+
+1. Check if your VM is created as "Standard".
+
+1. Check the VM version by checking the registry key **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Virtualization**, and confirming the **CurrentVmVersion** value is listed as **8.0**.
+
+1. Check if VBS is enabled. Open **System Information** (msinfo32.exe) and confirm that Virtualization-based security is running and that the Hyper-V role is not installed in the VM.
+
+**Workaround**
+
+To mitigate this issue, enable Trusted Launch. Trusted Launch is [required for VMs running Windows 11](/windows/whats-new/windows-11-requirements).
+
+Microsoft is working to release an out-of-band update via the [Microsoft Update Catalog](https://catalog.update.microsoft.com/home.aspx) to resolve this issue in the coming days. If your VM configuration is impacted by this issue, we recommend installing the upcoming out-of-band update instead of this update. More information will be provided when it is available.
+
+### Windows Secure Boot certificate expiration and CA updates
+
+**Symptom**
 
 Secure Boot certificates used by most Windows devices are set to expire starting in June 2026. This might affect the ability of certain personal and business devices to boot securely if not updated in time.
 
-### Workaround
+**Workaround**
 
 To avoid disruption, we recommend reviewing the guidance and taking action to update certificates in advance. For details and preparation steps, see [Windows Secure Boot certificate expiration and CA updates](https://support.microsoft.com/en-us/topic/windows-secure-boot-certificate-expiration-and-ca-updates-7ff40d33-95dc-4c3c-8725-a9b95457578e).
 
