@@ -4,7 +4,7 @@ description: Learn more about Health Service faults
 ms.author: alkohli
 ms.topic: how-to
 author: alkohli
-ms.date: 07/07/2025
+ms.date: 07/11/2025
 ---
 
 # View Health Service faults
@@ -314,24 +314,7 @@ ChangeType = { 0, 1, 2 } = { "Create", "Remove", "Update" }.
 
 ## Coverage
 
-The Health Service in Azure Local and Windows Server can detect faults across the following categories:
-
-- Physical disk
-- Virtual disk
-- Storage enclosure
-- Volume
-- Storage pool
-- Server
-- Storage subsystem
-- Cluster quorum witness
-- Cluster
-- Network interface
-- Network adapter
-- Storage Quality of Service (QoS)
-- Fault domain
-- Node
-- Virtual machine
-- Virtual hard disk
+The Health Service in Azure Local and Windows Server can detect faults accross various system components, including storage, networking, and compute resources.
 
 For a detailed overview of health faults, including fault severity mappings, health settings (data types, fault associations, default values, and descriptions), and the list of collected metrics, download the [Health Service faults](https://github.com/Azure-Samples/AzureLocal/blob/main/health-service-faults/health-service-faults.xlsx) spreadsheet.
 
