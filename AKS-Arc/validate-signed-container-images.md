@@ -40,11 +40,11 @@ Before you begin, ensure you have the following prerequisites:
 
    # [Azure CLI](#tab/cli)
 
-   Install kubectl locally using the [az aks install-cli](/cli/azure/aks?view=azure-cli-latest#az-aks-install-cli) command.
+   Install kubectl locally using the [az aks install-cli](/cli/azure/aks?view=azure-cli-latest#az-aks-install-cli&preserve-view=true) command.
 
    # [PowerShell](#tab/powershell)
 
-   Install kubectl locally using the [Install-AzAksCliTool](/powershell/module/az.aks/install-azaksclitool?view=azps-14.2.0) cmdlet.
+   Install kubectl locally using the [Install-AzAksCliTool](/powershell/module/az.aks/install-azaksclitool?view=azps-14.2.0&preserve-view=true) cmdlet.
 
    ---
 
@@ -297,6 +297,4 @@ These steps work on all supported Windows OS worker nodes.
 
 For more information about AKS on Azure Local, see the following articles:
 
-- [AKS on Azure Local overview](/azure/aks/overview)
-- [Deploying AKS on Azure Local](/azure/aks/cluster-configuration)
-- [Managing AKS on Azure Local](/azure/aks/cluster-management)
+- [AKS on Azure Local overview](overview.md)
