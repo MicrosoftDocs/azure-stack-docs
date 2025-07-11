@@ -65,11 +65,6 @@ For a list of the files that are provided in this update, download the file info
 
 This section provides the 2507 security updates associated with OS build **26100.4652**.
 
-## Windows Secure Boot certificate expiration
- 
-> [!IMPORTANT]
-> Secure Boot certificates used by most Windows devices are set to expire starting in June 2026. This might affect the ability of certain personal and business devices to boot securely if not updated in time. To avoid disruption, we recommend reviewing the guidance and taking action to update certificates in advance. For details and preparation steps, see [Windows Secure Boot certificate expiration and CA updates](https://support.microsoft.com/en-us/topic/windows-secure-boot-certificate-expiration-and-ca-updates-7ff40d33-95dc-4c3c-8725-a9b95457578e?preview=true).
-
 ## Improvements
 
 This security update includes quality improvements. Here is a summary of the key issues that this update addresses when you install this KB. If there are new features, it lists them as well. The bold text within the brackets indicates the item or area of the change.
@@ -84,7 +79,15 @@ For more information about security vulnerabilities, see the [Security Update Gu
 
 ## Known issues
 
-Microsoft is not currently aware of any issues with this update.
+The following is a known issue with this update.
+
+### Symptom
+
+Secure Boot certificates used by most Windows devices are set to expire starting in June 2026. This might affect the ability of certain personal and business devices to boot securely if not updated in time.
+
+### Workaround
+
+To avoid disruption, we recommend reviewing the guidance and taking action to update certificates in advance. For details and preparation steps, see [Windows Secure Boot certificate expiration and CA updates](https://support.microsoft.com/en-us/topic/windows-secure-boot-certificate-expiration-and-ca-updates-7ff40d33-95dc-4c3c-8725-a9b95457578e).
 
 ## To install
 
