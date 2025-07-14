@@ -57,7 +57,7 @@ directCommands:
       Only show errors, suppressing warnings.
   - name: --output -o
     defaultValue: "json"
-    parameterValueGroup: "json, jsonc, none, table, tsv, yaml, yamlc"
+    acceptedValues: "json, jsonc, none, table, tsv, yaml, yamlc"
     summary: |-
       Output format.
   - name: --query
