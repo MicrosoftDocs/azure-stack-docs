@@ -122,7 +122,6 @@ Follow these steps to verify that the upgrade was successful:
 1. In Azure portal, go to the resource group where you deployed the Azure Local instance.
 1. On the **Overview > Resources** page, you should see the following resources:
 
-    
     | Resource type | Number of resources   |
     |---------|---------|
     | Machine - Azure Arc     | 1 per machine         |
@@ -131,9 +130,18 @@ Follow these steps to verify that the upgrade was successful:
     | Custom location         | 1, *-cl* suffix by default       |
     | Key Vault               | 1       |
 
-    Here is a screenshot of the resources in the resource group:
+    Here's a screenshot of the resources in the resource group:
 
     :::image type="content" source="./media/install-solution-upgrade/verify-upgrade-portal.png" alt-text="Screenshot of Upgrade Azure Local resource health." lightbox="./media/install-solution-upgrade/verify-upgrade-portal.png":::
+
+1. Verify your solution version.
+
+    Here's a screenshot of the **Overview** page of the Azure Local resource, showing the solution version:
+
+    :::image type="content" source="./media/install-solution-upgrade/verify-solution-version.png" alt-text="Screenshot of Azure Local overview page and solution version." lightbox="./media/install-solution-upgrade/verify-solution-version.png":::
+
+    > [!NOTE]
+    > After a solution upgrade, you might see a 10.x version, this is expected and supported. For more information, see [Azure Local release information summary](../release-information-23h2.md#azure-local-release-information-summary).
 
 ## Post solution upgrade tasks
 
