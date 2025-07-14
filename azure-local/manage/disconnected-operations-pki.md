@@ -288,22 +288,24 @@ _continue_ = "DNS=$subject"
 
 ## Obtain certificate information for identity integration 
 
-In order to secure your identity integration  - we recommend that you pass the two parameters :
+To secure your identity integration, we recommend that you pass these two parameters:
 
 - LdapsCertChainInfo 
 - OidcCertChainInfo 
 
 These will validate that the certificates and chain used for these endpoints have not been manipulated or tampered with. 
 
-You have a helper method in the OperationsModule that you can use to get help populate these parameters.
+You have a helper method in the **OperationsModule** that can help you populate these parameters.
 
-Here is an example on how to populate the required parameters: 
+Here's an example on how to populate the required parameters:
+
 ```powershell
 $oidcCertChain = Get-CertChainInfo -endpoint 'https://adfs.azurestack.local'
 $ldapsCertChain = Get-CertChainInfo -endpoint 'https://dc01.azurestack.local'
 ```
 
-Here is an example of the output from Get-CertChainInfo
+Here's an example of the output from Get-CertChainInfo
+
 ```powershell
 # Returns: System.Security.Cryptography.X509Certificates.X509Certificate2[]
 >> Get-CertChainInfo
