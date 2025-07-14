@@ -320,20 +320,22 @@ Set-ACL -Path "AD:\$($domain.DistinguishedName)" -AclObject $acl
 Write-Verbose "Granted 'GenericRead' permissions to ldap account."
 ```
 
-### Grant GSMA account permission to read user properties (from sync group):
-```powershell
-# GropuName and GSMAccount defined earlier
+### Grant GSMA account permission to read user properties
 
+Use the following PowerShell script to let the GSMA account read user properties from the sync group:
+
+```PowerShell
+# GroupName and GSMAAccount defined earlier
 # Get group details
 $Group = Get-ADGroup -Identity $GroupName
 $GroupDN = $Group.DistinguishedName
- 
+
 # Build the access rule
 $Identity = New-Object System.Security.Principal.NTAccount($GSMAAccount)
 $ActiveDirectoryRights = [System.DirectoryServices.ActiveDirectoryRights]::ReadProperty
 $AccessControlType = [System.Security.AccessControl.AccessControlType]::Allow
 $InheritanceType = [System.DirectoryServices.ActiveDirectorySecurityInheritance]::All
- 
+
 # Create the access rule and apply it to the group
 $Rule = New-Object System.DirectoryServices.ActiveDirectoryAccessRule $Identity, $ActiveDirectoryRights, $AccessControlType, $null, $InheritanceType
 $GroupEntry = [ADSI]"LDAP://$GroupDN"
@@ -341,8 +343,9 @@ $Security = $GroupEntry.ObjectSecurity
 $Security.AddAccessRule($Rule)
 $GroupEntry.CommitChanges()
 ```
+
 > [!NOTE]
-> If the GSMA account used for your ADFS farm fails to read user properties - the login will fail - even if the username/password is correct on the ADFS login page.
+> If the GSMA account for your ADFS farm can't read user properties the sign-in fails. This occurs even if the username and password are correct on the ADFS sign-in page.
 
 
 ::: moniker-end
