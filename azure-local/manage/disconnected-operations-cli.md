@@ -39,8 +39,8 @@ To install the 32-bit version of CLI, follow these steps:
 
 
 > [!NOTE]  
-> 64-bit Azure CLI can be used on client machines - but for Azure Local (nodes) - please ensure that 32-bits is installed. 64-bit CLI will cause Azure Local deployment to fail.
-    
+> Use the 64-bit Azure CLI on client machines. For Azure Local nodes, install the 32-bit CLI to avoid deployment failures.
+
 ## Configure certificates for Azure CLI
 
 
