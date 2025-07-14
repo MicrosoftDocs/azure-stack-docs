@@ -278,8 +278,8 @@ The following table describes the parameters that you define in the ARM template
 | sbeManifestCreationDate | Creation date of the SBE manifest. |
 | partnerProperties | List of partner-specific properties. |
 | partnerCredentiallist | List of partner credentials. |
-| clusterPattern | Supported storage type for the Azure Local cluster: <br/>- **Standard**<br/>- **RackAware** |
-| localAvailabilityZones | Local Availability Zone information for the Azure Local cluster. |
+<!--| clusterPattern | Supported storage type for the Azure Local cluster: <br/>- **Standard**<br/>- **RackAware** |
+| localAvailabilityZones | Local Availability Zone information for the Azure Local cluster. |-->
 
 ## Troubleshoot deployment issues
 
