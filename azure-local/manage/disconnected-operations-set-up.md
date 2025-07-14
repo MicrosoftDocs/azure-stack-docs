@@ -35,10 +35,11 @@ When you finish these steps, you get:
 To create a virtual appliance and download the required files for your on-premises installation, follow these steps:
 
 1. Sign in to [the portal](https://portal.azure.com) and navigate to **Azure Local**. 
-1. From the same browser session - click this [link](https://aka.ms/azurelocaldisconnectedoperationspreview)
+1. From the same browser session, click this [link](https://aka.ms/azurelocaldisconnectedoperationspreview)
 
-> [!NOTE] If your subscription is not approved for disconnected operations **Disconnected operations** any action (such as create will fail).
-> 
+> [!NOTE]
+> If your subscription isn't approved for **Disconnected operations** any action (such as create) fails.
+
 1. From the **Disconnected operations** tab, select the **Create** button.
 
     :::image type="content" source="media/disconnected-operations/set-up/azure-local-page.png" alt-text="Screenshot of Azure Local for Disconnected operations page." lightbox="media/disconnected-operations/set-up/azure-local-page.png":::
@@ -86,7 +87,7 @@ To create a virtual appliance and download the required files for your on-premis
     - Storage.json
 
     > [!NOTE]
-    > As an alternative to download each file individually, you can download and run the script provided from on the portal - to speed up the download or if you prefer a script based download.
+    > To download files faster, select and run the script from the portal instead of downloading each file individually.
 
 1. When the steps are complete, put all the files in a share or on portable media. You need these files during deployment.
 
