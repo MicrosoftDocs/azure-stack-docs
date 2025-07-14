@@ -17,7 +17,40 @@ ms.date: 07/02/2025
 This article lists the various features and improvements that are available in Azure Local. The latest version of Azure Local solution focuses on cloud-based deployment and updates, cloud-based monitoring, new and simplified experience for Azure Local virtual machine (VM) management, security, and more.
 
 
-::: moniker range="=azloc-2506"
+::: moniker range="=azloc-2507"
+
+## Features and improvements in 2507
+
+There are two 2507 releases for July. Here are the details of each release:
+
+|Solution version  | OS version |
+|---------|---------|
+|12.2507.1001.6 |  26100.xxxx  |
+|11.2507.1001.5  | 25398.xxxx  |
+
+For more information, see [Release information summary](./release-information-23h2.md).
+
+This release has the following features and improvements:
+
+- **OS changes**:
+
+    - In 2504 release, a new operating system was introduced for Azure Local deployments. For 2507, all the new deployments of Azure Local run the new OS version **26100.xxxx**. You can download the 2507 OS image from the Azure portal.
+    
+        You also need to get the driver compatible with OS version **26100.xxxx** or Windows Server 2025. If a compatible driver isn't available, you can use the 2503 image.
+
+        Existing deployments of Azure Local continue to use OS version **25398.xxxx**. For more information, see [Release information summary](./release-information-23h2.md).
+
+    - If you purchased Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) through your preferred Microsoft hardware partner, the OS should be preinstalled. Work with your Original Equipment Manufacturer (OEM) to get the OS image compatible with **12.2506** and driver compatible with OS version **26100.xxxx** or Windows Server 2025.
+    
+- **.NET updates**: This build uses .NET version **8.0.xx** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
+ 
+
+ 
+ 
+::: moniker-end
+
+
+## Features and improvements in 2506
 
 There are two 2506 releases for June. Here are the details of each release:
 
@@ -27,8 +60,6 @@ There are two 2506 releases for June. Here are the details of each release:
 |11.2506.1001.28  | 25398.1665  |
 
 For more information, see [Release information summary](./release-information-23h2.md).
-
-## Features and improvements in 2506
 
 This release has the following features and improvements:
 
@@ -210,7 +241,7 @@ This release has the following features and improvements:
 
 ::: moniker-end
 
-::: moniker range="=azloc-24113"
+moniker range="=azloc-previous"
 
 ## Features and improvements in 2411.3
 
