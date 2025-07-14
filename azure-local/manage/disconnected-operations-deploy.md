@@ -101,21 +101,22 @@ To prepare each machine for the disconnected operations appliance, follow these 
 
 1. [Rename each node](/powershell/module/microsoft.powershell.management/rename-computer?view=powershell-7.4&preserve-view=true) according to your environments naming conventions. For example, azlocal-n1, azlocal-n2, and azlocal-n3.  
 
- 1. Ensure there is sufficient disk capacity if will be deploying disconnected operations on this cluster
+ 1. Check and make sure you have sufficient disk space for disconnected operations deployment.
  
-    Make sure you have at least 600 GB of free space on the drive you intend to use for deployment if you intend to use this instance (cluster) for the disconnected operations appliance. If your drive has less available space, you must use a data disk on each node and initialize so that each node has the same available data disks for deployment later. 
+    Make sure you have at least 600 GB of free space on the drive you plan to use for deployment. If your drive has less space, use a data disk on each node and initialize it so each node has the same available data disks for     deployment.
 
-    Here is an example for how to initialize a disk on the nodes and format it for a D partition : 
 
-```powershell
-$availableDrives = Get-PhysicalDisk | Where-Object { $_.MediaType -eq "SSD" -or $_.MediaType -eq "NVMe" } | where -Property CanPool -Match "True" | Sort-Object Size -Descending
-$driveGroup = $availableDrives | Group-Object Size | select -First 1
-$biggestDataDrives = $availableDrives | select -First $($driveGroup.Count)
-$firstDataDrive= ($biggestDataDrives | Sort-Object DeviceId | select -First 1).DeviceId
-Initialize-Disk -Number $firstDataDrive
-New-partition -disknumber $firstDataDrive -usemaximumsize | format-volume -filesystem NTFS -newfilesystemlabel Data
-Get-partition -disknumber $firstDataDrive -PartitionNumber 2 | Set-Partition -NewDriveLetter D
-```
+    Here’s how to initialize a disk on the nodes and format it for a D partition: 
+
+  ```powershell
+  $availableDrives = Get-PhysicalDisk | Where-Object { $_.MediaType -eq "SSD" -or $_.MediaType -eq "NVMe" } | where -Property CanPool -Match "True" | Sort-Object Size -Descending
+  $driveGroup = $availableDrives | Group-Object Size | select -First 1
+  $biggestDataDrives = $availableDrives | select -First $($driveGroup.Count)
+  $firstDataDrive= ($biggestDataDrives | Sort-Object DeviceId | select -First 1).DeviceId
+  Initialize-Disk -Number $firstDataDrive
+  New-partition -disknumber $firstDataDrive -usemaximumsize | format-volume -filesystem NTFS -newfilesystemlabel Data
+  Get-partition -disknumber $firstDataDrive -PartitionNumber 2 | Set-Partition -NewDriveLetter D
+  ```
 
 1. On each node, copy the root certificate public key. For more information, see [PKI for disconnected operations](disconnected-operations-pki.md). Modify the paths according to the location and method you use to export your public key for creating certificates.  
 
@@ -142,8 +143,10 @@ Get-partition -disknumber $firstDataDrive -PartitionNumber 2 | Set-Partition -Ne
     > If you use a different root for the management certificate, repeat the process and import the key on each node.
 
 
-1. [Install and configure the CLI](disconnected-operations-cli.md) with your local endpoint on each node. 
-1. Set environment variable to support disconnected operations
+1. [Install and configure the CLI](disconnected-operations-cli.md) with your local endpoint on each node.
+   
+1. Set the environment variable to support disconnected operations
+   
     ```powershell
     [Environment]::SetEnvironmentVariable("DISCONNECTED_OPS_SUPPORT", $true, [System.EnvironmentVariableTarget]::Machine)
     ```
@@ -163,14 +166,16 @@ Get-partition -disknumber $firstDataDrive -PartitionNumber 2 | Set-Partition -Ne
 Disconnected operations must be deployed on the seed node (first machine). To make sure you do the following steps on the first machine, see [Prepare Azure Local machines](#prepare-azure-local-machines).
 
 To prepare the first machine for the disconnected operations appliance:
-1. Modify path to correct location
 
-If you initialized a data disk or are using a different path than C: please modify the $applianceConfigBasePath
+1. Modify your path to correct location
 
-Here is an example
-```powershell
-$applianceConfigBasePath = 'D:\AzureLocalDisconnectedOperations\'
-```
+  If you initialized a data disk or are using a different path than C: modify the `$applianceConfigBasePath`
+  
+  Here's an example
+  
+  ```powershell
+  $applianceConfigBasePath = 'D:\AzureLocalDisconnectedOperations\'
+  ```
 
 1. Copy the disconnected operations installation files (appliance and manifest) to the first machine. Save these files into the base folder you created earlier.  
 
@@ -300,7 +305,7 @@ Populate the required parameters based on your deployment planning. Modify the e
     ```  
 
     > [!NOTE]  
-    > `LdapsCertChainInfo` and `OidcCertChain` can be omitted completely for debugging/demo purposes. For information on how to get LdapsCertChainInfo and oidcCertChain info - see [PKI for disconnected operations](disconnected-operations-pki.md)
+    > `LdapsCertChainInfo` and `OidcCertChain` can be omitted completely for debugging or demo purposes. For information on how to get LdapsCertChainInfo and OidcCertChainInfo, see [PKI for disconnected operations](disconnected-operations-pki.md).
 
     For more information, see [Identity for disconnected operations](disconnected-operations-identity.md).  
 
@@ -357,14 +362,14 @@ function Test-SSLCertificateSAN {
     $sanExtension = $SslCertificate.Extensions | Where-Object { $_.Oid.FriendlyName -ieq "Subject Alternative Name" }
 
     if (-not $sanExtension) {
-        throw "Subject Alternative Name is not specified in the certificate. Please correct the certifcate and try again."
+        throw "Subject Alternative Name is not specified in the certificate. Correct the certifcate and try again."
     }
 
     $sanExtensionContent = $sanExtension.Format(0)
     $sanList = $sanExtensionContent.Split(",") | ForEach-Object { $_.Trim() }
     
     if ($sanList -inotcontains "DNS Name=$HostName") {
-        throw "Subject Alternative Name does not contain the hostname $HostName. It only has Subject Alternative Name: $sanExtensionContent. Please correct the certificate and try again."
+        throw "Subject Alternative Name does not contain the hostname $HostName. It only has Subject Alternative Name: $sanExtensionContent. Correct the certificate and try again."
     }
 }
 
@@ -382,7 +387,7 @@ function Test-SSLCertificateChain {
     $chain.Build($SslCertificate) | Out-Null
 
     if ($chain.ChainStatus.Count -ne 0) {
-        throw "Certificate chain validation failed with error message: `r`n$(($chain.ChainStatus).StatusInformation -Join "`r`n")Please correct the certificate chain and try again."
+        throw "Certificate chain validation failed with error message: `r`n$(($chain.ChainStatus).StatusInformation -Join "`r`n"). Correct the certificate chain and try again."
     }
 }
 
@@ -398,7 +403,7 @@ function Test-SslCertificateEnhancedKeyUsage {
     $serverAuth = $extensions.EnhancedKeyUsages | Where-Object { $_.Value -ieq $serverAuthenticationValue }
 
     if (-not $serverAuth) {
-        throw "Certificate does not have Server Authentication Enhanced Key Usage. Please correct the certificate and try again."
+        throw "Certificate does not have Server Authentication Enhanced Key Usage. Correct the certificate and try again."
     }
 }
 
@@ -439,9 +444,9 @@ $SslCertificate = [System.Security.Cryptography.X509Certificates.X509Certificate
 
 $currentDate = Get-Date
 if ($currentDate -lt $SslCertificate.NotBefore) {
-    throw "Certificate is not yet valid (future start date). Please correct the certificate and try again."
+    throw "Certificate is not yet valid (future start date). Correct the certificate and try again."
 } elseif ($currentDate -gt $SslCertificate.NotAfter) {
-    throw "Certificate has expired. Please correct the certificate and try again."
+    throw "Certificate has expired. Correct the certificate and try again."
 }
 
 Test-SSLCertificateSAN -HostName $HostName -SslCertificate $SslCertificate | Out-Null
@@ -475,7 +480,7 @@ $installAzureLocalParams = @{
 
 Install-Appliance @installAzureLocalParams -disconnectMachineDeploy -Verbose  
 
-# Note - if you are deploying the appliance with limited connectivity you can ommit the flag -disconnectMachineDeploy. 
+# Note: If you're deploying the appliance with limited connectivity you can ommit the flag -disconnectMachineDeploy. 
 ```
 
 > [!NOTE]
@@ -613,10 +618,10 @@ To initialize each node, follow these steps. Modify where necessary to match you
     ```powershell
     Write-Host "az login to Disconnected operations cloud"    
     az cloud set -n $applianceCloudName --only-show-errors
-    Write-host "There is a known issue in this preview release where using the  service principal does not work"
+    Write-host "There's a known issue in this preview release where using the service principal doesn't work"
     # Following is commented out  due to this issue
     # az login --service-principal --username $appId --password $clientSecret --tenant 98b8267d-e97f-426e-8b3f-7956511fd63f    
-    Write-Host "Using device code login for now - please complete the login from your browser: "
+    Write-Host "Using device code login - complete the login from your browser: "
     az login --use-device-code
 
     Write-Host "Connected to Disconnected operations Cloud through az cli"
@@ -722,7 +727,7 @@ Import-Certificate -FilePath C:\AzureLocalDisconnectedOperations\Certs\DigiCertG
 ```
 ### Create the Azure Local instance (cluster)
 
-With the pre-requisites completed, you can deploy Azure Local with a fully air-gapped local control plane.
+With the prerequisites completed, you can deploy Azure Local with a fully air-gapped local control plane.
 
 Follow these steps to create an Azure Local instance (cluster):
 
