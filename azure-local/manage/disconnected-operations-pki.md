@@ -27,7 +27,7 @@ A public certificate authorities (CA) or enterprise certificate authorities must
 Mandatory certificates are grouped by area with the appropriate subject alternate names (SAN). Before you create the certificates, review these requirements:
 
 - The use of self-signed certificates aren't supported. We recommend you use certificates issued by an enterprise CA.
-- Disconnected operations require 26 external certificates for the endpoints it exposes.
+- Disconnected operations require 24 external certificates for the endpoints it exposes.
 - Generate individual certificates for each endpoint and copy them into the corresponding directory or folder structure. These certificates are required for disconnected operations deployment.
 - All certificates must have the subject and SAN defined, as required by most browsers.
 - All certificates should share the same trust chain and have at least a two-year expiration from the day of deployment.
@@ -46,9 +46,12 @@ This table lists the mandatory certificates required for disconnected operations
 | Service | Required certificate subject and subject alternative names (SAN) |
 |-------------------|----------------------|  
 | Azure Container Registry | *.edgeacr.fqdn |
-| Appliances | dp.appliances.fqdn <br></br> adminmanagement.fqdn |
+| Azure Key Vault | *.vault.fqdn  |
+| Azure queue storage | *.queue.fqdn |
+| Azure Table storage | *.table.fqdn |
+| Azure Blob storage | *.blob.fqdn |
 | Azure Data Policy | data.policy.fqdn |
-| Arc configuration data plane | autonomous.dp.kubernetesconfiguration.fqdn |
+| Arc configuration data plane <br/>Azure Arc-enabled Kubernetes | autonomous.dp.kubernetesconfiguration.fqdn |
 | Arc for Server Agent data service | agentserviceapi.fqdn |
 | Arc for server | his.fqdn |
 | Arc guest notification service | guestnotificationservice.fqdn |
@@ -56,21 +59,13 @@ This table lists the mandatory certificates required for disconnected operations
 | Arc monitor agent | amcs.monitoring.fqdn |
 | Azure Arc resource bridge data plane | dp.appliances.fqdn |
 | Azure Resource Manager | armmanagement.fqdn |
-| Azure Arc-enabled Kubernetes | autonomous.dp.kubernetesconfiguration.fqdn |
-| Azure queue storage | *.queue.fqdn |
-| Azure Resource Manager Public | armmanagement.fqdn |
-| Azure Table storage | *.table.fqdn |
-| Azure Blob storage | *.blob.fqdn |
+| Appliances | adminmanagement.fqdn |
 | Front end appliances | frontend.appliances.fqdn |
 | Graph | graph.fqdn |
-| Azure Key Vault | *.vault.<'fqdn'> (wildcard SSL certificate) |
-| Kubernetes configuration | dp.kubernetesconfiguration.fqdn |
-| Licensing | licensing.aszrp.fqdn <br></br> dp.aszrp.fqdn <br></br> lbc.fqdn |
-| Managed Arc proxy services (MAPS) Azure Kubernetes Service (AKS) | *.k8sconnect.fqdn |
-| Public extension host | *.hosting.fqdn (wildcard SSL certificate) |
+| Licensing | dp.aszrp.fqdn <br></br> ibc.fqdn |
 | Public portal     | portal.fqdn <br></br> hosting.fqdn <br></br> portalcontroller.fqdn <br></br> catalogapi.fqdn |
 | Secure token service | login.fqdn |
-| Service bus | *.servicebus.fqdn |
+
 
 ### Management endpoints
 
@@ -85,16 +80,16 @@ The management endpoint requires two certificates, and you must put them in the 
 
 ### Ingress endpoints
 
-On the host machine or Active Directory virtual machine (VM), follow the steps in this section to create certificates for the ingress traffic and external endpoints of the disconnected operations appliance. Make sure you modify for each of the 26 certificates.
+On the host machine or Active Directory virtual machine (VM), follow the steps in this section to create certificates for the ingress traffic and external endpoints of the disconnected operations appliance. Make sure you modify for each of the 24 certificates.
 
 You need these certificates to deploy the disconnected operations appliance. You also need the public key for your local infrastructure to provide a secure trust chain.
 
 > [!NOTE]
-> **IngressEndpointCerts** is the folder where you store all 26 certificate files. **IngressEndpointPassword** is a secure string with the certificate password.
+> **IngressEndpointCerts** is the folder where you store all 24 certificate files. **IngressEndpointPassword** is a secure string with the certificate password.
 
 1. Connect to the CA.
 1. Create a folder named **IngressEndpointsCerts**. Use this folder to store all certificates.
-1. Create the 26 certs in the table above and export them into the IngressEndpointCerts folder. 
+1. Create the 24 certs in the table above and export them into the IngressEndpointCerts folder. 
 
 Here is an example script you can modify and run (this will create the ingress certificates and export them to the configured folder - by creating CSRs and issuing them to your CA). 
 >[!NOTE] This script would need to on a domain joined machine - and the account you run this with needs Domain administrator access in order to issue certificates.
@@ -110,37 +105,36 @@ Here is an example script you can modify and run (this will create the ingress c
   $certPassword = Read-Host -AsSecureString -Message 'CertPass' -Force  
   # Alternative
   # $certPassword = "REPLACEME"|ConvertTo-SecureString -AsPlainText -Force
-
-  $AzLCerts = @(
-      "*.blob.$fqdn"
-      "*.edgeacr.$fqdn"
-      "*.hosting.$fqdn"
-      "*.k8sconnect.$fqdn"
-      "*.queue.$fqdn"
-      "*.servicebus.$fqdn"
-      "*.table.$fqdn"
-      "*.vault.$fqdn"
-      "agentserviceapi.$fqdn"
-      "amcs.monitoring.$fqdn"
-      "armmanagement.$fqdn"
-      "autonomous.dp.kubernetesconfiguration.$fqdn"
-      "data.policy.$fqdn"
-      "dp.appliances.$fqdn"
-      "dp.kubernetesconfiguration.$fqdn"
-      "frontend.appliances.$fqdn"
-      "graph.$fqdn"
-      "guestnotificationservice.$fqdn"
-      "his.$fqdn"
-      "login.$fqdn"
-      "metricsingestiongateway.monitoring.$fqdn"
-      # Here's the multi-SAN certificates
-      "portal.$fqdn,hosting.$fqdn,portalcontroller.$fqdn,catalogapi.$fqdn"
-      "licensing.aszrp.$fqdn,dp.aszrp.$fqdn,lbc.$fqdn"
-      "dp.appliances.$fqdn,adminmanagement.$fqdn"
-  )
+$AzLCerts = @(    
+    "*.edgeacr.$fqdn"      
+    "*.vault.$fqdn"
+    "*.queue.$fqdn"    
+    "*.table.$fqdn"
+    "*.blob.$fqdn"    
+    "data.policy.$fqdn"
+    "autonomous.dp.kubernetesconfiguration.$fqdn"
+    "agentserviceapi.$fqdn"
+    "his.$fqdn"
+    "guestnotificationservice.$fqdn"
+    "metricsingestiongateway.monitoring.$fqdn"
+    "amcs.monitoring.$fqdn"
+    "dp.appliances.$fqdn"
+    "armmanagement.$fqdn"
+    "adminmanagement.$fqdn"
+    "frontend.appliances.$fqdn"
+    "graph.$fqdn"
+    "dp.aszrp.$fqdn"
+    "ibc.$fqdn"
+    "portal.$fqdn"
+    "hosting.$fqdn"
+    "portalcontroller.$fqdn"    
+    "catalogapi.$fqdn"    
+    "login.$fqdn"    
+    # Multi-San could be added with comma seperated list x.$fqdn,y.$fqdn    
+)
   
   $AzLCerts | ForEach-Object {
-      # Check if there is a comma in the string
+      # Check if this is a multi SAN certificate
       if ($_.Contains(',')) {
           $certSubject = "CN=$($_.Split(',')[0])"
           $dns = $_.Replace(',', '&DNS=').Replace(' ', '')
@@ -210,7 +204,7 @@ Here is an example script you can modify and run (this will create the ingress c
   }
   ``` 
 
-1. Copy the original certificates (26 .pfx files / *.pfx) obtained from your CA to the directory structure represented in IngressEndpointCerts.
+1. Copy the original certificates (24 .pfx files / *.pfx) obtained from your CA to the directory structure represented in IngressEndpointCerts.
 
 ### Management endpoint
 
