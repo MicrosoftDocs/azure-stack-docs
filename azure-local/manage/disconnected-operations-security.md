@@ -95,7 +95,7 @@ To back up Host Guardian Service certificates from your cluster, run these comma
     $context = Set-DisconnectedOperationsClientContext -ManagementEndpointClientCertificatePath "${env:localappdata}\AzureLocalOpModuleDev\certs\ManagementEndpoint\ManagementEndpointClientAuth.pfx" -ManagementEndpointClientCertificatePassword $password -ManagementEndpointIpAddress "169.254.53.25" 
     ```
 
-1. Run `Export-ApplianceHGSCertificates` to export the Host Guardian Service certificates to a given path.
+1. To export the Host Guardian Service certificates to a specific path, run `Export-ApplianceHGSCertificates`.
 
     ```powershell
     Export-ApplianceHGSCertificates -Path D:\AzureLocal\HGSBackup    
