@@ -116,6 +116,30 @@ directCommands:
   - name: --vnet-ids
     summary: |-
       Azure Resource Manager resource ID(s) of the VNets.
+  globalParameters:
+  - name: --debug
+    summary: |-
+      Increase logging verbosity to show all debug logs.
+  - name: --help -h
+    summary: |-
+      Show this help message and exit.
+  - name: --only-show-errors
+    summary: |-
+      Only show errors, suppressing warnings.
+  - name: --output -o
+    defaultValue: "json"
+    acceptedValues: "json, jsonc, none, table, tsv, yaml, yamlc"
+    summary: |-
+      Output format.
+  - name: --query
+    summary: |-
+      JMESPath query string. See <a href="http://jmespath.org/">http://jmespath.org/</a> for more information and examples.
+  - name: --subscription
+    summary: |-
+      Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.
+  - name: --verbose
+    summary: |-
+      Increase logging verbosity. Use --debug for full debug logs.
 - uid: az_aksarc_delete
   name: az aksarc delete
   summary: |-
@@ -151,6 +175,30 @@ directCommands:
     defaultValue: "False"
     summary: |-
       Do not prompt for confirmation.
+  globalParameters:
+  - name: --debug
+    summary: |-
+      Increase logging verbosity to show all debug logs.
+  - name: --help -h
+    summary: |-
+      Show this help message and exit.
+  - name: --only-show-errors
+    summary: |-
+      Only show errors, suppressing warnings.
+  - name: --output -o
+    defaultValue: "json"
+    acceptedValues: "json, jsonc, none, table, tsv, yaml, yamlc"
+    summary: |-
+      Output format.
+  - name: --query
+    summary: |-
+      JMESPath query string. See <a href="http://jmespath.org/">http://jmespath.org/</a> for more information and examples.
+  - name: --subscription
+    summary: |-
+      Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.
+  - name: --verbose
+    summary: |-
+      Increase logging verbosity. Use --debug for full debug logs.
 - uid: az_aksarc_get-credentials
   name: az aksarc get-credentials
   summary: |-
@@ -198,6 +246,30 @@ directCommands:
     defaultValue: "False"
     summary: |-
       Overwrites any existing cluster entry with the same name.
+  globalParameters:
+  - name: --debug
+    summary: |-
+      Increase logging verbosity to show all debug logs.
+  - name: --help -h
+    summary: |-
+      Show this help message and exit.
+  - name: --only-show-errors
+    summary: |-
+      Only show errors, suppressing warnings.
+  - name: --output -o
+    defaultValue: "json"
+    acceptedValues: "json, jsonc, none, table, tsv, yaml, yamlc"
+    summary: |-
+      Output format.
+  - name: --query
+    summary: |-
+      JMESPath query string. See <a href="http://jmespath.org/">http://jmespath.org/</a> for more information and examples.
+  - name: --subscription
+    summary: |-
+      Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.
+  - name: --verbose
+    summary: |-
+      Increase logging verbosity. Use --debug for full debug logs.
 - uid: az_aksarc_list
   name: az aksarc list
   summary: |-
@@ -218,6 +290,30 @@ directCommands:
   - name: --resource-group -g
     summary: |-
       Name of the resource group. You can configure the default group using `az configure --defaults group=<name>`.
+  globalParameters:
+  - name: --debug
+    summary: |-
+      Increase logging verbosity to show all debug logs.
+  - name: --help -h
+    summary: |-
+      Show this help message and exit.
+  - name: --only-show-errors
+    summary: |-
+      Only show errors, suppressing warnings.
+  - name: --output -o
+    defaultValue: "json"
+    acceptedValues: "json, jsonc, none, table, tsv, yaml, yamlc"
+    summary: |-
+      Output format.
+  - name: --query
+    summary: |-
+      JMESPath query string. See <a href="http://jmespath.org/">http://jmespath.org/</a> for more information and examples.
+  - name: --subscription
+    summary: |-
+      Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.
+  - name: --verbose
+    summary: |-
+      Increase logging verbosity. Use --debug for full debug logs.
 - uid: az_aksarc_notice
   name: az aksarc notice
   summary: |-
@@ -236,6 +332,30 @@ directCommands:
     name: --output-filepath
     summary: |-
       Outputs filepath for NOTICE file.
+  globalParameters:
+  - name: --debug
+    summary: |-
+      Increase logging verbosity to show all debug logs.
+  - name: --help -h
+    summary: |-
+      Show this help message and exit.
+  - name: --only-show-errors
+    summary: |-
+      Only show errors, suppressing warnings.
+  - name: --output -o
+    defaultValue: "json"
+    acceptedValues: "json, jsonc, none, table, tsv, yaml, yamlc"
+    summary: |-
+      Output format.
+  - name: --query
+    summary: |-
+      JMESPath query string. See <a href="http://jmespath.org/">http://jmespath.org/</a> for more information and examples.
+  - name: --subscription
+    summary: |-
+      Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.
+  - name: --verbose
+    summary: |-
+      Increase logging verbosity. Use --debug for full debug logs.
 - uid: az_aksarc_show
   name: az aksarc show
   summary: |-
@@ -260,6 +380,30 @@ directCommands:
     name: --resource-group -g
     summary: |-
       Name of the resource group. You can configure the default group using `az configure --defaults group=<name>`.
+  globalParameters:
+  - name: --debug
+    summary: |-
+      Increase logging verbosity to show all debug logs.
+  - name: --help -h
+    summary: |-
+      Show this help message and exit.
+  - name: --only-show-errors
+    summary: |-
+      Only show errors, suppressing warnings.
+  - name: --output -o
+    defaultValue: "json"
+    acceptedValues: "json, jsonc, none, table, tsv, yaml, yamlc"
+    summary: |-
+      Output format.
+  - name: --query
+    summary: |-
+      JMESPath query string. See <a href="http://jmespath.org/">http://jmespath.org/</a> for more information and examples.
+  - name: --subscription
+    summary: |-
+      Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.
+  - name: --verbose
+    summary: |-
+      Increase logging verbosity. Use --debug for full debug logs.
 - uid: az_aksarc_update
   name: az aksarc update
   summary: |-
@@ -316,6 +460,30 @@ directCommands:
   - name: --tags
     summary: |-
       Space-separated tags: key[=value] [key[=value] ...]. Use "" to clear existing tags.commands:
+  globalParameters:
+  - name: --debug
+    summary: |-
+      Increase logging verbosity to show all debug logs.
+  - name: --help -h
+    summary: |-
+      Show this help message and exit.
+  - name: --only-show-errors
+    summary: |-
+      Only show errors, suppressing warnings.
+  - name: --output -o
+    defaultValue: "json"
+    acceptedValues: "json, jsonc, none, table, tsv, yaml, yamlc"
+    summary: |-
+      Output format.
+  - name: --query
+    summary: |-
+      JMESPath query string. See <a href="http://jmespath.org/">http://jmespath.org/</a> for more information and examples.
+  - name: --subscription
+    summary: |-
+      Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.
+  - name: --verbose
+    summary: |-
+      Increase logging verbosity. Use --debug for full debug logs.
 commands:
 - az_aksarc_create
 - az_aksarc_delete
@@ -339,29 +507,5 @@ commands:
 - az_aksarc_vnet_delete
 - az_aksarc_vnet_list
 - az_aksarc_vnet_show
-globalParameters:
-- name: --debug
-  summary: |-
-    Increase logging verbosity to show all debug logs.
-- name: --help -h
-  summary: |-
-    Show this help message and exit.
-- name: --only-show-errors
-  summary: |-
-    Only show errors, suppressing warnings.
-- name: --output -o
-  defaultValue: "json"
-  parameterValueGroup: "json, jsonc, none, table, tsv, yaml, yamlc"
-  summary: |-
-    Output format.
-- name: --query
-  summary: |-
-    JMESPath query string. See <a href="http://jmespath.org/">http://jmespath.org/</a> for more information and examples.
-- name: --subscription
-  summary: |-
-    Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.
-- name: --verbose
-  summary: |-
-    Increase logging verbosity. Use --debug for full debug logs.
 metadata:
   description: Manage provisioned clusters.
