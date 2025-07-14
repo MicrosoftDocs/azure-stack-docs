@@ -3,7 +3,7 @@ title:  Security updates for Azure Local
 description: Security updates for Azure Local.
 author: alkohli
 ms.topic: conceptual
-ms.date: 07/11/2025
+ms.date: 07/14/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
@@ -26,11 +26,6 @@ For the 2507 release of Azure Local, Microsoft released two security updates, ea
 # [OS build 25398.xxxx](#tab/os-build-25398-xxxx)
 
 This section provides the 2507 security updates associated with OS build **25398.1732**.
-
-## Windows Secure Boot certificate expiration
- 
-> [!IMPORTANT]
-> Secure Boot certificates used by most Windows devices are set to expire starting in June 2026. This might affect the ability of certain personal and business devices to boot securely if not updated in time. To avoid disruption, we recommend reviewing the guidance and taking action to update certificates in advance. For details and preparation steps, see [Windows Secure Boot certificate expiration and CA updates](https://support.microsoft.com/en-us/topic/windows-secure-boot-certificate-expiration-and-ca-updates-7ff40d33-95dc-4c3c-8725-a9b95457578e?preview=true).
 
 ## Improvements
 
@@ -99,19 +94,7 @@ To check if your virtual machine might be impacted:
 
 **Workaround**
 
-To mitigate this issue, enable Trusted Launch. Trusted Launch is [required for VMs running Windows 11](/windows/whats-new/windows-11-requirements).
-
-Microsoft is working to release an out-of-band update via the [Microsoft Update Catalog](https://catalog.update.microsoft.com/home.aspx) to resolve this issue in the coming days. If your VM configuration is impacted by this issue, we recommend installing the upcoming out-of-band update instead of this update. More information will be provided when it is available.
-
-### Windows Secure Boot certificate expiration and CA updates
-
-**Symptom**
-
-Secure Boot certificates used by most Windows devices are set to expire starting in June 2026. This might affect the ability of certain personal and business devices to boot securely if not updated in time.
-
-**Workaround**
-
-To avoid disruption, we recommend reviewing the guidance and taking action to update certificates in advance. For details and preparation steps, see [Windows Secure Boot certificate expiration and CA updates](https://support.microsoft.com/en-us/topic/windows-secure-boot-certificate-expiration-and-ca-updates-7ff40d33-95dc-4c3c-8725-a9b95457578e).
+The workaround is addressed in [KB5064489](https://support.microsoft.com/topic/july-13-2025-kb5064489-os-build-26100-4656-out-of-band-14a82ab2-100f-4dd4-8141-f490ec90c8f4).
 
 ## To install
 
