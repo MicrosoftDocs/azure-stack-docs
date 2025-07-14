@@ -5,7 +5,7 @@ ms.topic: concept-article
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 07/10/2025
+ms.date: 07/14/2025
 ---
 
 # Introduction to Trusted launch for Azure Local VMs enabled by Azure Arc
@@ -55,23 +55,23 @@ When working with Trusted launch Azure Local VMs, make sure to understand the fo
 
 ### VM backup
 
-Backup all VM files. You can use any backup solution or tool to backup all VM files as long as they follow standard [Hyper-V Backup Approaches](/virtualization/hyper-v-on-windows/reference/hypervbackupapproaches).  
+- Backup all VM files. You can use any backup solution or tool to backup all VM files as long as they follow standard [Hyper-V Backup Approaches](/virtualization/hyper-v-on-windows/reference/hypervbackupapproaches).  
 
-Backup VM guest state protection key. Unlike standard Azure Local VMs, Trusted launch Azure Local VMs use a VM guest state protection key to protect the VM guest state, including the virtual TPM (vTPM) state, while at rest. The VM guest state protection key is stored in a local key vault in the Azure Local instance where the VM resides. You must manually backup the VM guest state protection key as soon as you create a Trusted launch VM as described in [Manual backup and recovery of VM guest state protection key](trusted-launch-vm-import-key.md) Without the guest state protection key, you cannot start the VM.
+- Backup VM guest state protection key. Unlike standard Azure Local VMs, Trusted launch Azure Local VMs use a VM guest state protection key to protect the VM guest state, including the virtual TPM (vTPM) state, while at rest. The VM guest state protection key is stored in a local key vault in the Azure Local instance where the VM resides. You must manually backup the VM guest state protection key as soon as you create a Trusted launch VM as described in [Manual backup and recovery of VM guest state protection key](trusted-launch-vm-import-key.md) Without the guest state protection key, you cannot start the VM.
 
 ### VM recovery
 
-Restore all VM files. You can use any backup solution or tool to restore all VM files as long as the backup solution or tool follows standard [Hyper-V Backup Approaches](/virtualization/hyper-v-on-windows/reference/hypervbackupapproaches).
+- Restore all VM files. You can use any backup solution or tool to restore all VM files as long as the backup solution or tool follows standard [Hyper-V Backup Approaches](/virtualization/hyper-v-on-windows/reference/hypervbackupapproaches).
 
-Restore VM guest state protection key. You must restore the VM guest state protection key to the local key vault of the Azure Local instance as described in [Manual backup and recovery of VM guest state protection key](trusted-launch-vm-import-key.md).
+- Restore VM guest state protection key. You must restore the VM guest state protection key to the local key vault of the Azure Local instance as described in [Manual backup and recovery of VM guest state protection key](trusted-launch-vm-import-key.md).
 
-### Restoring to same Azure Local instance
+**Restoring to same Azure Local instance**
 
-In some situations, the VM may be restored to the same Azure Local instance, the same as the Azure Local instance where the VM resided before failure. For example, restoring an affected VM to the same Azure Local instance after recovery from a physical disk failure or partial data loss. When a Trusted launch VM is successfully restored to the same Azure Local instance, the VM can be managed via Azure Local control plane as it was before.
+- In some situations, the VM may be restored to the same Azure Local instance, the same as the Azure Local instance where the VM resided before failure. For example, restoring an affected VM to the same Azure Local instance after recovery from a physical disk failure or partial data loss. When a Trusted launch VM is successfully restored to the same Azure Local instance, the VM can be managed via Azure Local control plane as it was before.
 
-### Restoring to different Azure Local instance
+**Restoring to different Azure Local instance**
 
-In some situations, the VM may be restored to a different Azure Local instance, different from the Azure Local instance where the VM resided before failure. For example, restoring an affected VM to a different Azure Local instance upon loss of an entire Azure Local instance. When a Trusted launch VM is successfully restored to a different Azure Local instance, the VM can no longer be managed via the Azure Local control plane, but it can be managed via traditional Hyper-V VM management tools just like any other Hyper-V VM.
+- In some situations, the VM may be restored to a different Azure Local instance, different from the Azure Local instance where the VM resided before failure. When a Trusted launch VM is successfully restored to a different Azure Local instance, the VM can no longer be managed via the Azure Arc control plane, but it can be managed using local VM management tools.
 
 ## Next steps
 
