@@ -293,7 +293,7 @@ To secure your identity integration, we recommend that you pass these two parame
 - LdapsCertChainInfo 
 - OidcCertChainInfo 
 
-These will validate that the certificates and chain used for these endpoints have not been manipulated or tampered with. 
+These checks confirm that the certificates and chain for these endpoints haven’t been changed or tampered with.
 
 You have a helper method in the **OperationsModule** that can help you populate these parameters.
 
