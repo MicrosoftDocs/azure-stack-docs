@@ -88,9 +88,7 @@ To check if your virtual machine might be impacted:
 
 1. Check if your VM is created as "Standard".
 
-1. Check the VM version by checking the registry key **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Virtualization**, and confirming the **CurrentVmVersion** value is listed as **8.0**.
-
-1. Check if VBS is enabled. Open **System Information** (msinfo32.exe) and confirm that Virtualization-based security is running and that the Hyper-V role is not installed in the VM.
+1. Check if VBS is enabled. Open **System Information** (msinfo32.exe) and confirm that Virtualization-based security is running and that the Hyper-V role is not installed on the VM.
 
 **Workaround**
 
