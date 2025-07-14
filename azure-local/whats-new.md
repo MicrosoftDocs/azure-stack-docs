@@ -5,7 +5,7 @@ ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 07/02/2025
+ms.date: 07/14/2025
 ---
 
 # What's new in Azure Local?
@@ -224,7 +224,7 @@ For more information on improvements in this release, see the [Fixed issues in 2
 
 ::: moniker-end
 
-::: moniker range="=azloc-24112"
+::: moniker range="=azloc-previous"
 
 ## Features and improvements in 2411.2
 
@@ -236,11 +236,7 @@ This is a baseline release with the following features and improvements:
 
 - **4-node switchless support documentation** - Documentation for 4-node switchless is now available. For more information, see [4-node switchless support](./plan/four-node-switchless-two-switches-two-links.md).
 
-For more information on improvements in this release, see the [Fixed issues in 2411.2](./known-issues.md?view=azloc-24112&preserve-view=true#fixed-issues).
-
-::: moniker-end
-
-::: moniker range="=azloc-previous"
+For more information on improvements in this release, see the [Fixed issues in 2411.2](./known-issues.md?view=azloc-previous&preserve-view=true#fixed-issues).
 
 ## Features and improvements in 2411.1
 
@@ -252,7 +248,7 @@ This release has the following features and improvements:
 
 - **4-node switchless support** - Starting this release, 4-node switchless is supported for Azure Local.
 
-For more information on improvements in this release, see the [Fixed issues in 2411.1](./known-issues.md?view=azloc-24111&preserve-view=true#fixed-issues-1).
+For more information on improvements in this release, see the [Fixed issues in 2411.1](./known-issues.md?view=azloc-previous&preserve-view=true#fixed-issues-1).
 
 ## Features and improvements in 2411
 
