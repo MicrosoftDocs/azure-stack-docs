@@ -308,7 +308,9 @@ $group = Get-ADGroup -Identity $groupName | Select-Object Name, ObjectGUID
 $group
 ```
 
-### Grant the LDAP User read access on Users with ActiveDirectorySecurityInheritance "All"
+### Grant read access to the LDAP user on Users
+
+The following example grants read access to the LDAP user on the Users container using the `ActiveDirectorySecurityInheritance "All"` setting. Assigning an access rule with "All" makes the rule apply to the entire subtree of the target object.
 
 ```powershell
 $domain = Get-ADDomain
@@ -321,6 +323,9 @@ Write-Verbose "Granted 'GenericRead' permissions to ldap account."
 ```
 
 ### Grant the GSMA account permission to read user properties (from the sync group)
+
+The following example shows how to let the GSMA account read user properties in Active Directory from the sync group.
+
 ```powershell
 # GropuName and GSMAccount defined earlier
 
