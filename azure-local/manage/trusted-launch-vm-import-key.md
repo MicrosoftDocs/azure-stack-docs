@@ -47,7 +47,7 @@ The steps below involve copying VM guest state protection keys from the local ke
 
 1. Copy VM guest state protection keys from the local key vault of your Azure Local instance to a folder that is backed up periodically:
 
-    1. Download `TvmBackupUtils.psm1` script at <add hyperlink> to your Azure Local instance.
+    1. Download `TvmBackupUtils.psm1` script at (add hyperlink) to your Azure Local instance.
 
     1. Run `import-module .\TvmBackupUtils.psm1 -force`.
 
