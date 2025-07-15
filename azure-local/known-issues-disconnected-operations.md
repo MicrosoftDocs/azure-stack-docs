@@ -243,11 +243,9 @@ The following scenarios are unsupported in the preview release.
 
 If you test these scenarios, these systems must trust your custom CA and you need to pass `-custom-ca-cert` when Arc-enabling them.
 
-::: moniker range="=azloc-2505"
-
 ::: moniker-end
 
-::: moniker range="<=azloc-2506"
+::: moniker range="<=azloc-2505"
 
 This feature is available only in Azure Local 2506.
 
