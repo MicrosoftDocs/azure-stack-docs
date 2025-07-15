@@ -308,7 +308,7 @@ $group = Get-ADGroup -Identity $groupName | Select-Object Name, ObjectGUID
 $group
 ```
 
-### Grant LDAP user read on Users with inheritence
+### Grant the LDAP User read access on Users with ActiveDirectorySecurityInheritance "All"
 
 ```powershell
 $domain = Get-ADDomain
@@ -320,12 +320,10 @@ Set-ACL -Path "AD:\$($domain.DistinguishedName)" -AclObject $acl
 Write-Verbose "Granted 'GenericRead' permissions to ldap account."
 ```
 
-### Grant GSMA account permission to read user properties
+### Grant the GSMA account permission to read user properties (from the sync group)
+```powershell
+# GropuName and GSMAccount defined earlier
 
-Use the following PowerShell script to let the GSMA account read user properties from the sync group:
-
-```PowerShell
-# GroupName and GSMAAccount defined earlier
 # Get group details
 $Group = Get-ADGroup -Identity $GroupName
 $GroupDN = $Group.DistinguishedName
