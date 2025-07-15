@@ -105,7 +105,6 @@ To prepare each machine for the disconnected operations appliance, follow these 
  
     Make sure you have at least 600 GB of free space on the drive you plan to use for deployment. If your drive has less space, use a data disk on each node and initialize it so each node has the same available data disks for deployment.
 
-
     Here’s how to initialize a disk on the nodes and format it for a D partition: 
 
     ```powershell
