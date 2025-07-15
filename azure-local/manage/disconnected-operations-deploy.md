@@ -682,10 +682,10 @@ To initialize each node, follow these steps. Modify where necessary to match you
   
     > [!NOTE]  
     > Ensure that you run initialization on the first machine (seed node) before moving on to other nodes.
+    > 
     > Nodes appear in the local portal shortly after you run the steps, and the extensions appear on the nodes a few minutes after installation.  
-    
-    > [!NOTE]  
-    > You can also use the [Configurator App](../deploy/deployment-arc-register-configurator-app.md?view=azloc-2506&preserve-view=true) to initialize each node
+    >
+    > You can also use the [Configurator App](../deploy/deployment-arc-register-configurator-app.md?view=azloc-2506&preserve-view=true) to initialize each node.
     
 ### For fully air-gapped or disconnected deployments (where nodes have no line of sight to internet connection)
 
