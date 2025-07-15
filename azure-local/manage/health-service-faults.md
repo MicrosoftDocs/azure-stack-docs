@@ -138,7 +138,7 @@ foreach (CimInstance Node in Nodes)
 
 Invoke **Diagnose** to get any current faults scoped to the target **CimInstance**, which can be either the cluster or any volume.
 
-The complete list of faults available at each scope in Windows Server 2019 is documented later in the [Coverage](#coverage) section.
+For reference information about faults, see [Health Service faults reference](#health-service-faults-reference).
 
 ```
 public void GetFaults(CimSession Session, CimInstance Target)
