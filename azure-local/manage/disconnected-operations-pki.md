@@ -287,7 +287,7 @@ _continue_ = "DNS=$subject"
 
 ```
 
-- Copy the management certificates (*.pfx) to the directory structure represented in ManagementEndpointCerts
+- Copy the management certificates (*.pfx) to the directory structure represented in ManagementEndpointCerts.
 
 ## Obtain certificate information for identity integration 
 
