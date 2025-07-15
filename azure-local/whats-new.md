@@ -5,7 +5,7 @@ ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 07/02/2025
+ms.date: 07/15/2025
 ---
 
 # What's new in Azure Local?
@@ -25,8 +25,8 @@ There are two 2507 releases for July. Here are the details of each release:
 
 |Solution version  | OS version |
 |---------|---------|
-|12.2507.1001.6 |  26100.xxxx  |
-|11.2507.1001.5  | 25398.xxxx  |
+|12.2507.1001.6 |  26100.4652 |
+|11.2507.1001.5  | 25398.1732  |
 
 For more information, see [Release information summary](./release-information-23h2.md).
 
@@ -34,18 +34,16 @@ This release has the following features and improvements:
 
 - **OS changes**:
 
-    - In 2504 release, a new operating system was introduced for Azure Local deployments. For 2507, all the new deployments of Azure Local run the new OS version **26100.xxxx**. You can download the 2507 OS image from the Azure portal.
+    - In 2504 release, a new operating system was introduced for Azure Local deployments. For 2507, all the new deployments of Azure Local run the new OS version **26100.4652**. You can download the 2507 OS image from the Azure portal.
     
-        You also need to get the driver compatible with OS version **26100.xxxx** or Windows Server 2025. If a compatible driver isn't available, you can use the 2503 image.
+        You also need to get the driver compatible with OS version **26100.4652** or Windows Server 2025. If a compatible driver isn't available, you can use the 2503 image.
 
-        Existing deployments of Azure Local continue to use OS version **25398.xxxx**. For more information, see [Release information summary](./release-information-23h2.md).
+        Existing deployments of Azure Local continue to use OS version **25398.1732**. For more information, see [Release information summary](./release-information-23h2.md).
 
-    - If you purchased Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) through your preferred Microsoft hardware partner, the OS should be preinstalled. Work with your Original Equipment Manufacturer (OEM) to get the OS image compatible with **12.2506** and driver compatible with OS version **26100.xxxx** or Windows Server 2025.
+    - If you purchased Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) through your preferred Microsoft hardware partner, the OS should be preinstalled. Work with your Original Equipment Manufacturer (OEM) to get the OS image compatible with **12.2506** and driver compatible with OS version **26100.4652** or Windows Server 2025.
     
-- **.NET updates**: This build uses .NET version **8.0.xx** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
- 
+- **.NET updates**: This build uses .NET version **8.0.18** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
 
- 
  
 ::: moniker-end
 
@@ -79,7 +77,7 @@ This release has the following features and improvements:
 
 - **Deployment changes**: To ensure consistent validation before you deploy Azure Local, deployment validators for Microsoft On-premises Cloud and Azure resource bridge are now a part of environment checker.
 
-- **Overprovisioning alert**: A warning is shown prior to starting an update if an Azure Local instance is overprovisioned. This alert indicates there is insufficient compute capacity (memory) to live migrate workloads during an update. You must acknowledge this alert before proceeding with an update, as VM workloads will be paused due to the lack of available compute or memory capacity.
+- **Overprovisioning alert**: A warning is shown prior to starting an update if an Azure Local instance is overprovisioned. This alert indicates there is insufficient compute capacity (memory) to live migrate workloads during an update. You must acknowledge this alert before proceeding with an update, as VM workloads are paused due to the lack of available compute or memory capacity.
 
 - **Security improvements**:
     - **New security baseline**: The 2506 release introduces a security baseline with 407 evaluated rules, a 25% increase from the previous 324. Key improvements include:
