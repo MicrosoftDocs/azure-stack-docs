@@ -220,7 +220,7 @@ This issue likely affects a limited number of organizations as version 2411 of t
 **Workaround**
 
 The issue has been resolved in Citrix Session Recording Agent version 2503, released on April 28, 2025, and newer versions.
-For details, see the documentation provided by Citrix at [Microsoft's January Security Update Fails/Reverts on a machine with 2411 Session Recording Agent](https://support.citrix.com/s/article/CTX692505-microsofts-january-security-update-failsreverts-on-a-machine-with-2411-session-recording-agent?language=en_US).
+
 
 ## To install
 
@@ -262,8 +262,7 @@ This issue likely affects a limited number of organizations as version 2411 of t
 
 **Workaround**
 
-Citrix has documented this issue, including a workaround, which can be performed prior to installing the January 2025 Windows security update. For details, see the [Citrix documentation](https://support.citrix.com/s/article/CTX692505-microsofts-january-security-update-failsreverts-on-a-machine-with-2411-session-recording-agent?language=en_US).
-
+Citrix has documented this issue, including a workaround, which can be performed prior to installing the January 2025 Windows security update. 
 Microsoft is working with Citrix to address this issue and will update this documentation once a resolution is available.
 
 ## To install
@@ -322,7 +321,7 @@ This issue likely affects a limited number of organizations as version 2411 of t
 **Workaround**
 
 The issue has been resolved in Citrix Session Recording Agent version 2503, released on April 28, 2025, and newer versions.
-For details, see the documentation provided by Citrix at [Microsoft's January Security Update Fails/Reverts on a machine with 2411 Session Recording Agent](https://support.citrix.com/s/article/CTX692505-microsofts-january-security-update-failsreverts-on-a-machine-with-2411-session-recording-agent?language=en_US).​​​​​​​ 
+
 
 ## To install
 
