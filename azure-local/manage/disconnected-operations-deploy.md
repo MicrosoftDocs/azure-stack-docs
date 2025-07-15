@@ -699,7 +699,7 @@ To enable Azure Local to be air-gapped or deployed fully disconnected, you must 
  [Environment]::SetEnvironmentVariable("NUGET_CERT_REVOCATION_MODE", "offline", [System.EnvironmentVariableTarget]::Machine)
 ```
 
-- Configure the timeserver to use your domain controller,for example. Modify the script and run it from PowerShell:
+- Configure the timeserver to use your domain controller, for example. Modify the script and run it from PowerShell:
 
 ```powershell
 w32tm /config /manualpeerlist:"dc.contoso.com" /syncfromflags:manual /reliable:yes /update
