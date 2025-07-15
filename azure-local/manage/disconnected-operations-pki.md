@@ -91,7 +91,8 @@ You need these certificates to deploy the disconnected operations appliance. You
 1. Create a folder named **IngressEndpointsCerts**. Use this folder to store all certificates.
 1. Create the 24 certs in the table above and export them into the IngressEndpointCerts folder. 
 
-Here is an example script you can modify and run (this will create the ingress certificates and export them to the configured folder - by creating CSRs and issuing them to your CA). 
+Here's an example script you can modify and run. It creates ingress certificates and exports them to the configured folder by creating CSRs and issuing them to your CA.
+
 > [!NOTE]
 > Run this script on a domain-joined machine using an account with Domain Administrator access to issue certificates.
 
@@ -209,7 +210,7 @@ $AzLCerts = @(
 
 ### Management endpoint
 
-Here is an an example on how to create certificates for securing the management endpoint :
+Here's an an example on how to create certificates for securing the management endpoint:
 
 > [!NOTE]
 > Run this script on a domain-joined machine using an account with Domain Administrator access to issue certificates.
