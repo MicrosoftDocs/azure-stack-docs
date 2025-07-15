@@ -665,7 +665,8 @@ items:
     - name: To same hardware
       href: migrate/migrate-cluster-same-hardware.md
     - name: To new hardware
-      href: migrate/migrate-cluster-new-hardware.md   
+      href: migrate/migrate-cluster-new-hardware.md 
+        
 - name: Disconnected operations
   items:
   - name: Overview
