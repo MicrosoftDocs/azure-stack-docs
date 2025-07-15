@@ -80,7 +80,7 @@ When attempting to initialize an Arc-enabled node, you may encounter error code 
 
 **Cause**: Signing in with a service principal name (SPN) causes arc initialization to fail.
 
-**Mitigation**: Until the underlying issue is fixed, sign in to each Azure Local node by running `az login –use-device-code` instead of using a SPN.
+**Mitigation**: Until the underlying issue is fixed, sign in to each Azure Local node by running `az login –use-device-code` instead of using an SPN.
 
 ### Azure Local VMs (Arc VMs)
 

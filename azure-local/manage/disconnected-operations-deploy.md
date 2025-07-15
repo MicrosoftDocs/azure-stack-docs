@@ -698,6 +698,7 @@ To enable Azure Local to be air-gapped or deployed fully disconnected, you must 
 ```powershell
  [Environment]::SetEnvironmentVariable("NUGET_CERT_REVOCATION_MODE", "offline", [System.EnvironmentVariableTarget]::Machine)
 ```
+
 - Configure the timeserver to use your domain controller,for example. Modify the script and run it from PowerShell:
 
 ```powershell
@@ -709,12 +710,15 @@ w32tm /resync /rediscover
 w32tm /query /peers
 ```
 
-Download (or copy) the following certificates and import them into the local trust store: 
+Download (or copy) the following certificates and import them into the local trust store:
+
 - [MicCodSigPCA2011](https://www.microsoft.com/pkiops/certs/MicCodSigPCA2011_2011-07-08.crt)
+
 - [DigiCertGlobalRootCA](https://cacerts.digicert.com/DigiCertGlobalRootCA.crt?utm_medium=organic&utm_source=msazure-visualstudio&referrer=https://msazure.visualstudio.com/&_gl=1*1c6vxin*_gcl_au*MTE2OTcyNDYyMy4xNzUyMTg0NDU5)
+
 - [DigiCertGlobalRootG2](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt?utm_medium=organic&utm_source=msazure-visualstudio&referrer=https://msazure.visualstudio.com/&_gl=1*1c6vxin*_gcl_au*MTE2OTcyNDYyMy4xNzUyMTg0NDU5)
 
-Place them in a folder, e.g.C:\AzureLocalDisconnectedOperations\Certs\ 
+Place them in a folder, for example, C:\AzureLocalDisconnectedOperations\Certs\
 
 Import the certs by running the following:
 
