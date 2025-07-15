@@ -358,6 +358,7 @@ This issue likely affects a limited number of organizations as version 2411 of t
 
 The issue has been resolved in Citrix Session Recording Agent version 2503, released on April 28, 2025, and newer versions.
 
+
 ## To install
 
 Microsoft now combines the latest servicing stack update (SSU) for your operating system with the latest cumulative update (LCU). For general information about SSUs, see [Servicing stack updates](/windows/deployment/update/servicing-stack-updates) and [Servicing Stack Updates (SSU): Frequently Asked Questions](https://support.microsoft.com/topic/servicing-stack-updates-ssu-frequently-asked-questions-06b62771-1cb0-368c-09cf-87c4efc4f2fe).
@@ -495,7 +496,7 @@ For a list of the files that are provided in this update, download the file info
 
 ::: moniker-end
 
-::: moniker range="=azloc-24112"
+::: moniker range="=azloc-previous"
 
 ## January OS security update (KB5049984) for Azure Local
 
@@ -529,10 +530,6 @@ To install the LCU on your Azure Local instance, see [Update Azure Stack Local i
 ## File list
 
 For a list of the files that are provided in this update, download the file information for [Cumulative update KB5049984](https://go.microsoft.com/fwlink/?linkid=2300815).
-
-::: moniker-end
-
-::: moniker range="azloc-previous"
 
 ## December OS security update (KB5048653) for Azure Local
 
