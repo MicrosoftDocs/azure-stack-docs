@@ -37,8 +37,8 @@ To create a virtual appliance and download the required files for your on-premis
 1. Sign in to [the portal](https://portal.azure.com) and navigate to **Azure Local**. 
 1. From the same browser session, click this [link](https://aka.ms/azurelocaldisconnectedoperationspreview)
 
-> [!NOTE]
-> If your subscription isn't approved for **Disconnected operations** any action (such as create) fails.
+    > [!NOTE]
+    > If your subscription isn't approved for **Disconnected operations** any action (such as create) fails.
 
 1. From the **Disconnected operations** tab, select the **Create** button.
 
