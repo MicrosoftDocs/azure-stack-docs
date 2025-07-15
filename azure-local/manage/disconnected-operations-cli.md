@@ -248,7 +248,7 @@ The following table lists the CLI extensions supported on Azure Local disconnect
 
 ::: moniker-end
 
-::: moniker range="<=azloc-2506"
+::: moniker range="<=azloc-2505"
 
 This feature is available only in Azure Local 2506.
 
