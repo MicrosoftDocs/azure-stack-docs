@@ -92,7 +92,8 @@ You need these certificates to deploy the disconnected operations appliance. You
 1. Create the 24 certs in the table above and export them into the IngressEndpointCerts folder. 
 
 Here is an example script you can modify and run (this will create the ingress certificates and export them to the configured folder - by creating CSRs and issuing them to your CA). 
->[!NOTE] This script would need to on a domain joined machine - and the account you run this with needs Domain administrator access in order to issue certificates.
+> [!NOTE]
+> Run this script on a domain-joined machine using an account with Domain Administrator access to issue certificates.
 
   ```PowerShell    
   $fqdn = "autonomous.cloud.private" 
@@ -210,7 +211,8 @@ $AzLCerts = @(
 
 Here is an an example on how to create certificates for securing the management endpoint :
 
->[!NOTE] This script would need to on a domain joined machine - and the account you run this with needs Domain administrator access in order to issue certificates.
+> [!NOTE]
+> Run this script on a domain-joined machine using an account with Domain Administrator access to issue certificates.
 
 ```powershell
 $caName = "<CA Computer Name>\<CA Name>" # Replace with your CA server and CA name 
