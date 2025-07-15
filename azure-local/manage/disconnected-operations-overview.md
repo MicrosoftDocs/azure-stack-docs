@@ -30,7 +30,7 @@ Here are some scenarios for running Azure Local with disconnected operations:
 
 - **Data sovereignty and compliance**: In sectors like government, healthcare, and finance, there's a necessity to meet data residency or compliance requirements. When you run disconnected, data and control remain within your organization's boundaries.
 
-- **Remote or isolated locations**: In areas with limited network infrastructure, like remote or protected regions, disconnected operations lets you to use Azure Arc services and run workloads without relying on internet connectivity. For example, oil rigs and manufacturing sites.
+- **Remote or isolated locations**: In areas with limited network infrastructure, like remote or protected regions, disconnected operations lets you use Azure Arc services and run workloads without relying on internet connectivity. For example, oil rigs and manufacturing sites.
 
 - **Security**: For industries with strict security requirements, disconnected operations help reduce the attack surface by not exposing systems to external networks.
 
@@ -85,6 +85,7 @@ Here's the flow to deploy and manage Azure Local with disconnected operations:
 
 | Step | Description |
 |------------|------------------|
+| Review [Known issues for disconnected operations](disconnected-operations-known-issues.md). | Check known issues with disconnected operations for Azure Local. |
 | Review the [Preview participation criteria](#preview-participation-criteria) | Check the preview participation criteria before you get started. |
 | **Plan** |        |
 | Review [Network requirements for disconnected operations](disconnected-operations-network.md). | Configure the required network settings. |

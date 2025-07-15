@@ -12,7 +12,7 @@ ms.reviewer: hafianba
 
 ::: moniker range=">=azloc-2506"
 
-<!--[!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]-->
+[!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
 
 This article lists critical known issues and their workarounds in disconnected operations for Azure Local.
 
@@ -80,7 +80,7 @@ When attempting to initialize an Arc-enabled node, you may encounter error code 
 
 **Cause**: Signing in with a service principal name (SPN) causes arc initialization to fail.
 
-**Mitigation**: Until the underlying issue is fixed, sign in to each Azure Local node by running `az login –use-device-code` instead of using a SPN.
+**Mitigation**: Until the underlying issue is fixed, sign in to each Azure Local node by running `az login –use-device-code` instead of using an SPN.
 
 ### Azure Local VMs (Arc VMs)
 
