@@ -103,20 +103,20 @@ To prepare each machine for the disconnected operations appliance, follow these 
 
  1. Check and make sure you have sufficient disk space for disconnected operations deployment.
  
-    Make sure you have at least 600 GB of free space on the drive you plan to use for deployment. If your drive has less space, use a data disk on each node and initialize it so each node has the same available data disks for     deployment.
+    Make sure you have at least 600 GB of free space on the drive you plan to use for deployment. If your drive has less space, use a data disk on each node and initialize it so each node has the same available data disks for deployment.
 
 
     Here’s how to initialize a disk on the nodes and format it for a D partition: 
 
-  ```powershell
-  $availableDrives = Get-PhysicalDisk | Where-Object { $_.MediaType -eq "SSD" -or $_.MediaType -eq "NVMe" } | where -Property CanPool -Match "True" | Sort-Object Size -Descending
-  $driveGroup = $availableDrives | Group-Object Size | select -First 1
-  $biggestDataDrives = $availableDrives | select -First $($driveGroup.Count)
-  $firstDataDrive= ($biggestDataDrives | Sort-Object DeviceId | select -First 1).DeviceId
-  Initialize-Disk -Number $firstDataDrive
-  New-partition -disknumber $firstDataDrive -usemaximumsize | format-volume -filesystem NTFS -newfilesystemlabel Data
-  Get-partition -disknumber $firstDataDrive -PartitionNumber 2 | Set-Partition -NewDriveLetter D
-  ```
+    ```powershell
+    $availableDrives = Get-PhysicalDisk | Where-Object { $_.MediaType -eq "SSD" -or $_.MediaType -eq "NVMe" } | where -Property CanPool -Match "True" | Sort-Object Size -Descending
+    $driveGroup = $availableDrives | Group-Object Size | select -First 1
+    $biggestDataDrives = $availableDrives | select -First $($driveGroup.Count)
+    $firstDataDrive= ($biggestDataDrives | Sort-Object DeviceId | select -First 1).DeviceId
+    Initialize-Disk -Number $firstDataDrive
+    New-partition -disknumber $firstDataDrive -usemaximumsize | format-volume -filesystem NTFS -newfilesystemlabel Data
+    Get-partition -disknumber $firstDataDrive -PartitionNumber 2 | Set-Partition -NewDriveLetter D
+    ```
 
 1. On each node, copy the root certificate public key. For more information, see [PKI for disconnected operations](disconnected-operations-pki.md). Modify the paths according to the location and method you use to export your public key for creating certificates.  
 
@@ -239,8 +239,6 @@ To prepare the first machine for the disconnected operations appliance:
     $mgmntCertFolderPath = "$certspath\ManagementEndpointCerts"  
     $ingressCertFolderPath = "$certspath\IngressEndpointCerts"  
     ```
-
-
 
 ## Initialize the parameters
 
@@ -453,8 +451,6 @@ Test-SSLCertificateSAN -HostName $HostName -SslCertificate $SslCertificate | Out
 Test-SSLCertificateChain -SslCertificate $SslCertificate | Out-Null
 Test-SslCertificateEnhancedKeyUsage -SslCertificate $SslCertificate | Out-Null
 Test-SslCertificateCrypto -SslCertificate $SslCertificate | Out-Null
-
-
 ```
 
 ## Install and configure the appliance  
@@ -599,7 +595,8 @@ Use the operator account to create an SPN for Arc initialization of each Azure L
     > Don't place the cluster resource in the operator subscription, unless you plan to restrict this to only operators with full access to other operations. You can create more subscriptions or place it in the starter subscription.
 
 
-### Initialize each node  
+### Initialize each node
+
 To initialize each node, follow these steps. Modify where necessary to match your environment details:
 
 1. Set the configuration variable. Define the resource group, cloud name, configuration path, application ID, client secret, and appliance FQDN.
@@ -613,7 +610,6 @@ To initialize each node, follow these steps. Modify where necessary to match you
     $applianceFQDN = "autonomous.cloud.private"
 
 1. Initialize each node.
-
 
     ```powershell
     Write-Host "az login to Disconnected operations cloud"    
@@ -720,11 +716,13 @@ w32tm /query /peers
 Place them in a folder, e.g.C:\AzureLocalDisconnectedOperations\Certs\ 
 
 Import the certs by running the following:
+
 ```powershell
 Import-Certificate -FilePath C:\AzureLocalDisconnectedOperations\Certs\MicCodSigPCA2011_2011-07-08.cer -CertStoreLocation Cert:\LocalMachine\Root -Confirm:$false
 Import-Certificate -FilePath C:\AzureLocalDisconnectedOperations\Certs\DigiCertGlobalRootCA.cer Cert:\LocalMachine\Root -Confirm:$false
 Import-Certificate -FilePath C:\AzureLocalDisconnectedOperations\Certs\DigiCertGlobalRootG2.cer -CertStoreLocation Cert:\LocalMachine\Root -Confirm:$false
 ```
+
 ### Create the Azure Local instance (cluster)
 
 With the prerequisites completed, you can deploy Azure Local with a fully air-gapped local control plane.
