@@ -671,8 +671,8 @@ items:
   items:
   - name: Overview
     href: manage/disconnected-operations-overview.md
-  - name: Known issues  
-    href: known-issues-disconnected-operations.md
+  - name: Known issues
+    href: disconnected-operations-known-issues.md
   - name: Plan
     items:
     - name: Network
