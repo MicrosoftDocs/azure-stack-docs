@@ -790,7 +790,7 @@ After you install the appliance, you might see this screen for a while. Let the 
 
 ::: moniker-end
 
-::: moniker range="<=azloc-2506"
+::: moniker range="<=azloc-2505"
 
 This feature is available only in Azure Local 2506.
 
