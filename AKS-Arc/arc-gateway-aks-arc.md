@@ -62,25 +62,25 @@ Ensure your Arc gateway URL and all of the URLs below are allowed through your e
 | `gbl.his.arc.azure.com`, `<region>.his.arc.azure.com`       | The cloud service endpoint for communicating with Arc Agents. Uses short names; for example `eus` for East US. |
 | `mcr.microsoft.com`, `*.data.mcr.microsoft.com`             | Required to pull container images for Azure Arc agents.                                                        |
 
-## Create an AKS Arc cluster with AKS gateway enabled
+## Create an AKS Arc cluster with AKS Arc gateway enabled
 
-Run the following command to create an AKS Arc cluster with the AKS gateway enabled:
+Run the following command to create an AKS Arc cluster with the AKS Arc gateway enabled:
 
 ```azurecli
 az aksarc create -n $clusterName -g $resourceGroup --custom-location $customlocationID --vnet-ids $arcVmLogNetId --aad-admin-group-object-ids $aadGroupID --gateway-id $gatewayId --generate-ssh-keys
 ```
 
-## Update an AKS Arc cluster and enable Arc gateway
+## Update an AKS Arc cluster and enable the AKS Arc gateway
 
-Run the following command to update an AKS Arc cluster to enable AKS gateway:
+Run the following command to update an AKS Arc cluster to enable the AKS Arc gateway:
 
 ```azurecli
 az aksarc update -n $clusterName -g $resourceGroup --gateway-id $gatewayId
 ```
 
-## Disable Arc gateway on an AKS Arc cluster
+## Disable the AKS Arc gateway on an AKS Arc cluster
 
-Run the following command to disable AKS gateway:
+Run the following command to disable the AKS Arc gateway:
 
 ```azurecli
 az aksarc update -n $clusterName -g $resourceGroup --disable-gateway
