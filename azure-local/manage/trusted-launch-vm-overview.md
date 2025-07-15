@@ -5,7 +5,7 @@ ms.topic: concept-article
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 07/14/2025
+ms.date: 07/15/2025
 ---
 
 # Introduction to Trusted launch for Azure Local VMs enabled by Azure Arc
@@ -67,7 +67,7 @@ When working with Trusted launch Azure Local VMs, make sure to understand the fo
 
 **Restoring to same Azure Local instance**
 
-- In some situations, the VM may be restored to the same Azure Local instance, the same as the Azure Local instance where the VM resided before failure. For example, restoring an affected VM to the same Azure Local instance after recovery from a physical disk failure or partial data loss. When a Trusted launch VM is successfully restored to the same Azure Local instance, the VM can be managed via Azure Local control plane as it was before.
+- In some situations, the VM may be restored to the same Azure Local instance, the same as the Azure Local instance where the VM resided before failure. When a Trusted launch VM is successfully restored to the same Azure Local instance, the VM can be managed via Azure Local control plane as it was before.
 
 **Restoring to different Azure Local instance**
 
