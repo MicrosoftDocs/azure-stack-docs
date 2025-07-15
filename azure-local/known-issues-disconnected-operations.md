@@ -12,7 +12,7 @@ ms.reviewer: hafianba
 
 ::: moniker range=">=azloc-2506"
 
-<!--[!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]-->
+[!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
 
 This article lists critical known issues and their workarounds in disconnected operations for Azure Local.
 
