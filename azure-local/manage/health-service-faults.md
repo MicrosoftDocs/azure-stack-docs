@@ -4,7 +4,7 @@ description: Learn more about Health Service faults
 ms.author: alkohli
 ms.topic: how-to
 author: alkohli
-ms.date: 07/11/2025
+ms.date: 07/15/2025
 ---
 
 # View Health Service faults
@@ -312,7 +312,7 @@ Note the **ChangeType** that indicates whether a fault is being created, removed
 **ChangeType**
 ChangeType = { 0, 1, 2 } = { "Create", "Remove", "Update" }.
 
-## Coverage
+## Health Service faults reference
 
 The Health Service in Azure Local and Windows Server can detect faults accross various system components, including storage, networking, and compute resources.
 
