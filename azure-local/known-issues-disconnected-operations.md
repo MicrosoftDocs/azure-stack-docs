@@ -102,7 +102,7 @@ Viewing the network interface or properties on an Arc VM in the portal isn't sup
 
 If the notification in the top right shows that the save operation is complete, you can ignore the unsaved message and continue navigating away. The VM size is updated.
 
-#### Deleting a VM resource
+#### Delete a VM resource
 
 When you delete a VM from the portal, you might see the message ***Delete associated resource failed*** and ***Failed to delete the associated resource 'name' of type 'Network interface***.
 
@@ -174,11 +174,11 @@ After successfully deleting an AKS cluster from portal the resource continues to
 az aksarc delete
 ```
 
-## Export Host guardian service certificates
+### Export Host Guardian Service certificates
 
 This feature isn't supported in this release.
 
-## Restart a node or the control plane VM
+### Restart a node or the control plane VM
 
 After you restart a node or the control plane VM, the system might take up to an hour to become fully ready. If you notice issues with the local portal, missing resources, or failed deployments, check the appliance health using the **OperationsModule** to confirm that all services are fully converged.
 
