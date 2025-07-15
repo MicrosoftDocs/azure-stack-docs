@@ -166,17 +166,17 @@ To prepare each machine for the disconnected operations appliance, follow these 
 
 Disconnected operations must be deployed on the seed node (first machine). To make sure you do the following steps on the first machine, see [Prepare Azure Local machines](#prepare-azure-local-machines).
 
-To prepare the first machine for the disconnected operations appliance:
+To prepare the first machine for the disconnected operations appliance, follow these steps:
 
-1. Modify your path to correct location
+1. Modify your path to correct location. 
 
-  If you initialized a data disk or are using a different path than C: modify the `$applianceConfigBasePath`
-  
-  Here's an example
-  
-  ```powershell
-  $applianceConfigBasePath = 'D:\AzureLocalDisconnectedOperations\'
-  ```
+    If you initialized a data disk or are using a different path than C: modify the `$applianceConfigBasePath`.
+    
+    Here's an example:
+    
+    ```powershell
+    $applianceConfigBasePath = 'D:\AzureLocalDisconnectedOperations\'
+    ```
 
 1. Copy the disconnected operations installation files (appliance and manifest) to the first machine. Save these files into the base folder you created earlier.  
 
@@ -742,24 +742,11 @@ Follow these steps to create an Azure Local instance (cluster):
 ## Tasks after deploying disconnected operations
 
 Here are some tasks you should perform after deploying Azure Local with disconnected operations:
+
 1. Back up the BitLocker keys. This encrypts your volumes and lets you recover the appliance if you ever need to restore the VM. For more information, see [Understand security controls with disconnected operations on Azure Local](disconnected-operations-security.md).
-1. Assign extra operators. You can assign one or many operators by navigating to **Operator subscriptions**. Assign the **contributor** role at the subscription level.  
-<!--1. Create more subscriptions. You can create more subscriptions by navigating to **Subscriptions** in the portal and selecting **Create**. You can also use the CLI to automate subscription creation.
 
-    To create subscriptions using the CLI, use these commands:  
+1. Assign extra operators. You can assign one or many operators by navigating to **Operator subscriptions**. Assign the **contributor** role at the subscription level.
 
-    ```azurecli  
-    az config set core.instance_discovery=false  
-    az extension add --name account  
-    az account alias create --name "azlocalnewsub" --billing-scope null --display-name "Azure Local subscription 2" --workload "Production"  
-    az account alias show --name "azlocalnewsub"  
-    ```  
-
-    To list subscriptions using the CLI, use this command:  
-
-    ```azurecli  
-    az account subscription list -o table 
-    ```-->
 1. [Export the host guardian service certificates](disconnected-operations-security.md) and backup the folder you export them to on an external share/drive.
 
 ## Troubleshoot and reconfigure using management endpoint
