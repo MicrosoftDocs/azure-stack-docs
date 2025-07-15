@@ -40,6 +40,8 @@ When deploying Azure Local with disconnected operations, consider the following 
 
 For more information, see [Azure Local disconnected operations overview](disconnected-operations-overview.md).
 
+For information on known issues identified with disconnected operations for Azure Local, see [Known issues for disconnected operations](known-issues-disconnected-operations.md)
+
 ## Checklist for deploying disconnected operations
 
 Here's a checklist of things you need before you deploy Azure Local with disconnected operations:
