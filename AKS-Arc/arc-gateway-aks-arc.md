@@ -51,7 +51,7 @@ For more information, see [how the Azure Arc gateway works](/azure/azure-arc/kub
 
 ## Confirm access to required URLs
 
-Ensure your Arc gateway URL and all of the URLs below are allowed through your enterprise firewall:
+Ensure your Arc gateway URL and all of the following URLs are allowed through your enterprise firewall:
 
 | URL                                                         | Purpose                                                                                                        |
 | ----------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
@@ -59,7 +59,7 @@ Ensure your Arc gateway URL and all of the URLs below are allowed through your e
 | `management.azure.com`                                      | Azure Resource Manager endpoint, required for the Azure Resource Manager control channel.                      |
 | `<region>.obo.arc.azure.com`                                | Required when `az connectedk8s proxy` is used.                                                                 |
 | `login.microsoftonline.com`, `<region>.login.microsoft.com` | Microsoft Entra ID endpoint, used for acquiring identity access tokens.                                        |
-| `gbl.his.arc.azure.com`, `<region>.his.arc.azure.com`       | The cloud service endpoint for communicating with Arc Agents. Uses short names; for example `eus` for East US. |
+| `gbl.his.arc.azure.com`, `<region>.his.arc.azure.com`       | The cloud service endpoint for communicating with Arc Agents. Uses short names; for example, `eus` for East US. |
 | `mcr.microsoft.com`, `*.data.mcr.microsoft.com`             | Required to pull container images for Azure Arc agents.                                                        |
 
 ## Create an AKS Arc cluster with AKS Arc gateway enabled
@@ -91,7 +91,7 @@ az aksarc update -n $clusterName -g $resourceGroup --disable-gateway
 To audit your gateway traffic, view the gateway router logs:
 
 1. Run `kubectl get pods -n azure-arc`.
-1. Identify the Arc Proxy pod (its name will begin with `arc-proxy-`).
+1. Identify the Arc Proxy pod (its name begins with `arc-proxy-`).
 1. Run `kubectl logs -n azure-arc <Arc Proxy pod name>`.
 
 ## Other scenarios
