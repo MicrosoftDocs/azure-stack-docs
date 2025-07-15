@@ -206,7 +206,7 @@ $AzLCerts = @(
   }
   ``` 
 
-1. Copy the original certificates (24 .pfx files / *.pfx) obtained from your CA to the directory structure represented in IngressEndpointCerts.
+- Copy the original certificates (24 .pfx files / *.pfx) obtained from your CA to the directory structure represented in IngressEndpointCerts.
 
 ### Management endpoint
 
@@ -287,7 +287,7 @@ _continue_ = "DNS=$subject"
 
 ```
 
-1. Copy the management certificates (*.pfx) to the directory structure represented in ManagementEndpointCerts
+- Copy the management certificates (*.pfx) to the directory structure represented in ManagementEndpointCerts
 
 ## Obtain certificate information for identity integration 
 
