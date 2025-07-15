@@ -10,6 +10,8 @@ ms.reviewer: hafianba
 
 # Known issues for disconnected operations for Azure Local
 
+::: moniker range=">=azloc-2506"
+
 <!--[!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]-->
 
 This article lists critical known issues and their workarounds in disconnected operations for Azure Local.
@@ -241,7 +243,7 @@ The following scenarios are unsupported in the preview release.
 
 If you test these scenarios, these systems must trust your custom CA and you need to pass `-custom-ca-cert` when Arc-enabling them.
 
-::: moniker range="=azloc-2506"
+::: moniker range="=azloc-2505"
 
 ::: moniker-end
 
