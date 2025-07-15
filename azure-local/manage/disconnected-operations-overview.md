@@ -73,7 +73,7 @@ To participate in the preview, you must meet the following criteria:
     | Memory per node              | 64 GB                            |
     | Cores per node               | 24 physical cores                |
     | Storage per node             | 2 TB SSD/NVME                    |
-    | Boot disk drive storage      | 480 GB SSD/NVME                  |
+    | Boot disk drive storage      | 960 GB SSD/NVME                  |
 
 ## Get started
 

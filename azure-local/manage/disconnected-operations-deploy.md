@@ -40,6 +40,8 @@ When deploying Azure Local with disconnected operations, consider the following 
 
 For more information, see [Azure Local disconnected operations overview](disconnected-operations-overview.md).
 
+<!--For information on known issues identified with disconnected operations for Azure Local, see [Known issues for disconnected operations](known-issues-disconnected-operations.md)-->
+
 ## Checklist for deploying disconnected operations
 
 Here's a checklist of things you need before you deploy Azure Local with disconnected operations:
@@ -101,6 +103,22 @@ To prepare each machine for the disconnected operations appliance, follow these 
 
 1. [Rename each node](/powershell/module/microsoft.powershell.management/rename-computer?view=powershell-7.4&preserve-view=true) according to your environments naming conventions. For example, azlocal-n1, azlocal-n2, and azlocal-n3.  
 
+ 1. Check and make sure you have sufficient disk space for disconnected operations deployment.
+ 
+    Make sure you have at least 600 GB of free space on the drive you plan to use for deployment. If your drive has less space, use a data disk on each node and initialize it so each node has the same available data disks for deployment.
+
+    Here’s how to initialize a disk on the nodes and format it for a D partition: 
+
+    ```powershell
+    $availableDrives = Get-PhysicalDisk | Where-Object { $_.MediaType -eq "SSD" -or $_.MediaType -eq "NVMe" } | where -Property CanPool -Match "True" | Sort-Object Size -Descending
+    $driveGroup = $availableDrives | Group-Object Size | select -First 1
+    $biggestDataDrives = $availableDrives | select -First $($driveGroup.Count)
+    $firstDataDrive= ($biggestDataDrives | Sort-Object DeviceId | select -First 1).DeviceId
+    Initialize-Disk -Number $firstDataDrive
+    New-partition -disknumber $firstDataDrive -usemaximumsize | format-volume -filesystem NTFS -newfilesystemlabel Data
+    Get-partition -disknumber $firstDataDrive -PartitionNumber 2 | Set-Partition -NewDriveLetter D
+    ```
+
 1. On each node, copy the root certificate public key. For more information, see [PKI for disconnected operations](disconnected-operations-pki.md). Modify the paths according to the location and method you use to export your public key for creating certificates.  
 
     ```powershell
@@ -113,7 +131,7 @@ To prepare each machine for the disconnected operations appliance, follow these 
 1. Copy to the **APPData/Azure** Local folder and name it **azureLocalRootCert**. Use this information during the Arc appliance deployment.  
 
     ```powershell
-    Copy-Item \\fileserver\share\azurelocalcerts\publicroot.cer $($env:APPDATA)\AzureLocal\AzureLocalRootCert.cer
+    Copy-Item $applianceRootCertFile $($env:APPDATA)\AzureLocal\AzureLocalRootCert.cer
     ```
 
 1. On each node, import the public key into the local store:
@@ -125,10 +143,19 @@ To prepare each machine for the disconnected operations appliance, follow these 
     > [!NOTE]
     > If you use a different root for the management certificate, repeat the process and import the key on each node.
 
+
+1. [Install and configure the CLI](disconnected-operations-cli.md) with your local endpoint on each node.
+   
+1. Set the environment variable to support disconnected operations
+   
+    ```powershell
+    [Environment]::SetEnvironmentVariable("DISCONNECTED_OPS_SUPPORT", $true, [System.EnvironmentVariableTarget]::Machine)
+    ```
+
 1. Find the first machine from the list of node names and specify it as the `seednode` you want to use in the cluster.
 
     ```powershell
-    $seednode = @(‘azlocal-1, ‘azlocal-2,’ azlocal-3’)|Sort|select –first 1
+    $seednode = @('azlocal-1', 'azlocal-2','azlocal-3')|Sort|select –first 1
     $seednode
     ```
 
@@ -139,7 +166,17 @@ To prepare each machine for the disconnected operations appliance, follow these 
 
 Disconnected operations must be deployed on the seed node (first machine). To make sure you do the following steps on the first machine, see [Prepare Azure Local machines](#prepare-azure-local-machines).
 
-To prepare the first machine for the disconnected operations appliance:
+To prepare the first machine for the disconnected operations appliance, follow these steps:
+
+1. Modify your path to correct location. 
+
+    If you initialized a data disk or are using a different path than C: modify the `$applianceConfigBasePath`.
+    
+    Here's an example:
+    
+    ```powershell
+    $applianceConfigBasePath = 'D:\AzureLocalDisconnectedOperations\'
+    ```
 
 1. Copy the disconnected operations installation files (appliance and manifest) to the first machine. Save these files into the base folder you created earlier.  
 
@@ -196,7 +233,7 @@ To prepare the first machine for the disconnected operations appliance:
     Install-WindowsFeature BitLocker -IncludeAllSubFeature -IncludeManagementTools
     ```
 
-1. Import the **Operations module**. Run the command as an administrator using PowerShell. Modify the path to match your folder structure:
+1. Import the **Operations module**. Run the command as an administrator using PowerShell. Modify the path to match your folder structure.
 
     ```powershell  
     Import-Module "$applianceConfigBasePath \OperationsModule\Azure.Local.DisconnectedOperations.psd1" -Force
@@ -250,6 +287,9 @@ Populate the required parameters based on your deployment planning. Modify the e
 1. Populate the identity configuration object.
 
     ```powershell  
+    $oidcCertChain = Get-CertChainInfo -endpoint 'https://adfs.azurestack.local'
+    $ldapsCertChain = Get-CertChainInfo -endpoint 'https://dc01.azurestack.local'
+
     $identityParams = @{  
         Authority = "https://adfs.azurestack.local/adfs"  
         ClientId = "7e7655c5-9bc4-45af-8345-afdf6bbe2ec1"  
@@ -257,14 +297,14 @@ Populate the required parameters based on your deployment planning. Modify the e
         LdapServer = "adfs.azurestack.local"  
         LdapCredential = New-Object PSCredential -ArgumentList @("ldap", $ldapPassword)  
         SyncGroupIdentifier = "7d67fcd5-c2f4-4948-916c-b77ea7c2712f"  
-        LdapsCertChainInfo="MIIF......"  
-        OidcCertChainInfo="MIID......"  
+        LdapsCertChainInfo=$ldapsCertChainInfo  
+        OidcCertChainInfo=$oidcCertChainInfo
     }  
     $identityConfiguration = New-ApplianceExternalIdentityConfiguration @identityParams  
     ```  
 
     > [!NOTE]  
-    > `LdapsCertChainInfo` and `OidcCertChain` can be omitted completely for debugging/demo purposes.
+    > `LdapsCertChainInfo` and `OidcCertChain` can be omitted completely for debugging or demo purposes. For information on how to get LdapsCertChainInfo and OidcCertChainInfo, see [PKI for disconnected operations](disconnected-operations-pki.md).
 
     For more information, see [Identity for disconnected operations](disconnected-operations-identity.md).  
 
@@ -321,14 +361,14 @@ function Test-SSLCertificateSAN {
     $sanExtension = $SslCertificate.Extensions | Where-Object { $_.Oid.FriendlyName -ieq "Subject Alternative Name" }
 
     if (-not $sanExtension) {
-        throw "Subject Alternative Name is not specified in the certificate. Please correct the certifcate and try again."
+        throw "Subject Alternative Name is not specified in the certificate. Correct the certifcate and try again."
     }
 
     $sanExtensionContent = $sanExtension.Format(0)
     $sanList = $sanExtensionContent.Split(",") | ForEach-Object { $_.Trim() }
     
     if ($sanList -inotcontains "DNS Name=$HostName") {
-        throw "Subject Alternative Name does not contain the hostname $HostName. It only has Subject Alternative Name: $sanExtensionContent. Please correct the certificate and try again."
+        throw "Subject Alternative Name does not contain the hostname $HostName. It only has Subject Alternative Name: $sanExtensionContent. Correct the certificate and try again."
     }
 }
 
@@ -346,7 +386,7 @@ function Test-SSLCertificateChain {
     $chain.Build($SslCertificate) | Out-Null
 
     if ($chain.ChainStatus.Count -ne 0) {
-        throw "Certificate chain validation failed with error message: `r`n$(($chain.ChainStatus).StatusInformation -Join "`r`n")Please correct the certificate chain and try again."
+        throw "Certificate chain validation failed with error message: `r`n$(($chain.ChainStatus).StatusInformation -Join "`r`n"). Correct the certificate chain and try again."
     }
 }
 
@@ -362,7 +402,7 @@ function Test-SslCertificateEnhancedKeyUsage {
     $serverAuth = $extensions.EnhancedKeyUsages | Where-Object { $_.Value -ieq $serverAuthenticationValue }
 
     if (-not $serverAuth) {
-        throw "Certificate does not have Server Authentication Enhanced Key Usage. Please correct the certificate and try again."
+        throw "Certificate does not have Server Authentication Enhanced Key Usage. Correct the certificate and try again."
     }
 }
 
@@ -377,14 +417,14 @@ function Test-SslCertificateCrypto {
         if ($SslCertificate.PublicKey.Key.KeySize -lt 2048) {
             throw "Weak RSA Key: Upgrade to at least 2048-bit"
         } else {
-            Trace-Execution "RSA Key is secure ($($SslCertificate.PublicKey.Key.KeySize) bits)"
+            Write-Verbose "RSA Key is secure ($($SslCertificate.PublicKey.Key.KeySize) bits)"
         }
     }
 
     if ($SslCertificate.PublicKey.Oid.FriendlyName -match "ECDSA") {
         $validCurves = @("ECDSA_P256", "ECDSA_P384", "ECDSA_P521")
         if ($validCurves -contains $SslCertificate.PublicKey.Oid.FriendlyName) {
-            Trace-Execution "ECDSA with $($SslCertificate.PublicKey.Oid.FriendlyName) curve is secure"
+            Write-Verbose "ECDSA with $($SslCertificate.PublicKey.Oid.FriendlyName) curve is secure"
         } else {
             throw "Weak ECDSA Curve: Use P-256, P-384, or P-521"
         }
@@ -395,12 +435,17 @@ function Test-SslCertificateCrypto {
     }
 }
 
-$SslCertificate = # load SSL certificate
+# Test SSL Certificate for Management cert
+$HostName = $ManagementNetworkConfiguration.ManagementIpAddress
+$SslCertificate = [System.Security.Cryptography.X509Certificates.X509Certificate2]::new(`
+            $ManagementNetworkConfiguration.TlsCertificatePath,
+            $ManagementNetworkConfiguration.TlsCertificatePassword)
+
 $currentDate = Get-Date
 if ($currentDate -lt $SslCertificate.NotBefore) {
-    throw "Certificate is not yet valid (future start date). Please correct the certificate and try again."
+    throw "Certificate is not yet valid (future start date). Correct the certificate and try again."
 } elseif ($currentDate -gt $SslCertificate.NotAfter) {
-    throw "Certificate has expired. Please correct the certificate and try again."
+    throw "Certificate has expired. Correct the certificate and try again."
 }
 
 Test-SSLCertificateSAN -HostName $HostName -SslCertificate $SslCertificate | Out-Null
@@ -429,7 +474,10 @@ $installAzureLocalParams = @{
     DisableCheckSum = $false  
     AutoScaleVMToHostHW = $false  
 }  
-Install-Appliance @installAzureLocalParams -Verbose  
+
+Install-Appliance @installAzureLocalParams -disconnectMachineDeploy -Verbose  
+
+# Note: If you're deploying the appliance with limited connectivity you can ommit the flag -disconnectMachineDeploy. 
 ```
 
 > [!NOTE]
@@ -459,8 +507,8 @@ To configure observability, follow these steps:
 1. On a computer with Azure CLI (or using the Azure Cloud Shell in Azure portal) create the SPN. Run the following script:
 
     ```powershell
-    $resourcegroup = ‘azure-disconnectedoperations’
-    $appname = ‘azlocalobsapp’
+    $resourcegroup = 'azure-disconnectedoperations'
+    $appname = 'azlocalobsapp'
     az login
     $g = (az group create -n $resourcegroup -l eastus)|ConvertFrom-Json
     az ad sp create-for-rbac -n $appname --role Owner --scopes $g.id
@@ -520,9 +568,9 @@ Use the operator account to create an SPN for Arc initialization of each Azure L
 1. Configure CLI on your client machine and run this command:
 
     ```azurecli  
-    $resourcegroup = ‘azurelocal-disconnected-operations’  
-    $appname = ‘azlocalclusapp’  
-    az cloud set -n ‘Azure.Local’  
+    $resourcegroup = 'azurelocal-disconnected-operations'
+    $appname = 'azlocalclusapp'  
+    az cloud set -n 'azure.local'
     az login  
     $g = (az group create -n $resourcegroup -l autonomous)|ConvertFrom-Json  
     az ad sp create-for-rbac -n $appname --role Owner --scopes $g.id  
@@ -547,35 +595,38 @@ Use the operator account to create an SPN for Arc initialization of each Azure L
     >
     > Don't place the cluster resource in the operator subscription, unless you plan to restrict this to only operators with full access to other operations. You can create more subscriptions or place it in the starter subscription.
 
-### Initialize each node  
+
+### Initialize each node
 
 To initialize each node, follow these steps. Modify where necessary to match your environment details:
-
-1. [Install and configure the CLI](disconnected-operations-cli.md) with your local endpoint on each node. Ensure that you run initialization on the first machine before moving on to other nodes.
 
 1. Set the configuration variable. Define the resource group, cloud name, configuration path, application ID, client secret, and appliance FQDN.
 
     ```azurecli
     $resourcegroup = 'azurelocal-disconnected-operations' # Needs to match the cloud name your configured CLI with.
-    $applianceCloudName = "Azure.local"
+    $applianceCloudName = "azure.local"
     $applianceConfigBasePath = "C:\AzureLocalDisconnectedOperations\"
     $appId = 'guid'
     $clientSecret = 'retracted'
     $applianceFQDN = "autonomous.cloud.private"
-    ```
 
 1. Initialize each node.
 
-    ```azurecli
-    Write-Host "az login to Disconnected operations cloud"
+    ```powershell
+    Write-Host "az login to Disconnected operations cloud"    
     az cloud set -n $applianceCloudName --only-show-errors
-    az login --service-principal --username $appId --password $clientSecret --tenant 98b8267d-e97f-426e-8b3f-7956511fd63f    
+    Write-host "There's a known issue in this preview release where using the service principal doesn't work"
+    # Following is commented out  due to this issue
+    # az login --service-principal --username $appId --password $clientSecret --tenant 98b8267d-e97f-426e-8b3f-7956511fd63f    
+    Write-Host "Using device code login - complete the login from your browser: "
+    az login --use-device-code
+
     Write-Host "Connected to Disconnected operations Cloud through az cli"
     ```
 
 1. Get the access token, account ID, subscription ID, and tenant ID.
 
-    ```azurecli
+    ```powershell
     $applianceAccessToken = ((az account get-access-token) | ConvertFrom-Json).accessToken
     $applianceAccountId = $(New-Guid).Guid
     $applianceSubscriptionId = ((az account show) | ConvertFrom-Json).id
@@ -584,13 +635,13 @@ To initialize each node, follow these steps. Modify where necessary to match you
 
 1. Get the cloud configuration details.
 
-    ```azurecli
+    ```powershell
     $cloudConfig = (az cloud show --n $applianceCloudName | ConvertFrom-Json)
     ```
 
 1. Set the environment parameters. Define the environment parameters using the retrieved cloud configuration.
 
-    ```azurecli
+    ```powershell
     $applianceEnvironmentParams = @{
     Name                                      = $applianceCloudName
     ActiveDirectoryAuthority                  = $cloudConfig.endpoints.activeDirectory
@@ -603,13 +654,13 @@ To initialize each node, follow these steps. Modify where necessary to match you
     ContainerRegistryEndpointSuffix           = $cloudConfig.suffixes.acrLoginServerEndpoint
     }
     Add-AzEnvironment @applianceEnvironmentParams -ErrorAction Stop | Out-Null
-    Write-Host "Added Azure.local Environment"
+    Write-Host "Added azure.local Environment"
     ```
 
 1. Set the configuration hash.
 
-    ```azurecli
-    Write-Host "Setting Azure.local configurations"
+    ```powershell
+    Write-Host "Setting azure.local configurations"
     $hash = @{
     AccountID        = $applianceAccountId
     ArmAccessToken   = $applianceAccessToken
@@ -626,13 +677,52 @@ To initialize each node, follow these steps. Modify where necessary to match you
 
 1. Arc-enable each node and install extensions to prepare for cloud deployment and cluster creation.
 
-    ```azurecli
+    ```powershell
     Invoke-AzStackHciArcInitialization @hash
     Write-Host -Subject 'ARC node configuration completed'
     ```
   
     > [!NOTE]  
-    > These nodes appear in the local portal shortly after you run the steps, and the extensions appear on the nodes a few minutes after installation.  
+    > Ensure that you run initialization on the first machine (seed node) before moving on to other nodes.
+    > 
+    > Nodes appear in the local portal shortly after you run the steps, and the extensions appear on the nodes a few minutes after installation.  
+    >
+    > You can also use the [Configurator App](../deploy/deployment-arc-register-configurator-app.md?view=azloc-2506&preserve-view=true) to initialize each node.
+    
+### For fully air-gapped or disconnected deployments (where nodes have no line of sight to internet connection)
+
+To enable Azure Local to be air-gapped or deployed fully disconnected, you must do the following on each node:
+
+- Run this command to add the required environment variable:
+
+```powershell
+ [Environment]::SetEnvironmentVariable("NUGET_CERT_REVOCATION_MODE", "offline", [System.EnvironmentVariableTarget]::Machine)
+```
+- Configure the timeserver to use your domain controller,for example. Modify the script and run it from PowerShell:
+
+```powershell
+w32tm /config /manualpeerlist:"dc.contoso.com" /syncfromflags:manual /reliable:yes /update
+net stop w32time
+net start w32time
+w32tm /resync /rediscover
+# Check your NTP settings
+w32tm /query /peers
+```
+
+Download (or copy) the following certificates and import them into the local trust store: 
+- [MicCodSigPCA2011](https://www.microsoft.com/pkiops/certs/MicCodSigPCA2011_2011-07-08.crt)
+- [DigiCertGlobalRootCA](https://cacerts.digicert.com/DigiCertGlobalRootCA.crt?utm_medium=organic&utm_source=msazure-visualstudio&referrer=https://msazure.visualstudio.com/&_gl=1*1c6vxin*_gcl_au*MTE2OTcyNDYyMy4xNzUyMTg0NDU5)
+- [DigiCertGlobalRootG2](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt?utm_medium=organic&utm_source=msazure-visualstudio&referrer=https://msazure.visualstudio.com/&_gl=1*1c6vxin*_gcl_au*MTE2OTcyNDYyMy4xNzUyMTg0NDU5)
+
+Place them in a folder, e.g.C:\AzureLocalDisconnectedOperations\Certs\ 
+
+Import the certs by running the following:
+
+```powershell
+Import-Certificate -FilePath C:\AzureLocalDisconnectedOperations\Certs\MicCodSigPCA2011_2011-07-08.cer -CertStoreLocation Cert:\LocalMachine\Root -Confirm:$false
+Import-Certificate -FilePath C:\AzureLocalDisconnectedOperations\Certs\DigiCertGlobalRootCA.cer Cert:\LocalMachine\Root -Confirm:$false
+Import-Certificate -FilePath C:\AzureLocalDisconnectedOperations\Certs\DigiCertGlobalRootG2.cer -CertStoreLocation Cert:\LocalMachine\Root -Confirm:$false
+```
 
 ### Create the Azure Local instance (cluster)
 
@@ -651,26 +741,13 @@ Follow these steps to create an Azure Local instance (cluster):
 
 ## Tasks after deploying disconnected operations
 
-Here are some tasks you can perform after deploying Azure Local with disconnected operations:
+Here are some tasks you should perform after deploying Azure Local with disconnected operations:
 
 1. Back up the BitLocker keys. This encrypts your volumes and lets you recover the appliance if you ever need to restore the VM. For more information, see [Understand security controls with disconnected operations on Azure Local](disconnected-operations-security.md).
-1. Assign extra operators. You can assign one or many operators by navigating to **Operator subscriptions**. Assign the **contributor** role at the subscription level.  
-<!--1. Create more subscriptions. You can create more subscriptions by navigating to **Subscriptions** in the portal and selecting **Create**. You can also use the CLI to automate subscription creation.
 
-    To create subscriptions using the CLI, use these commands:  
+1. Assign extra operators. You can assign one or many operators by navigating to **Operator subscriptions**. Assign the **contributor** role at the subscription level.
 
-    ```azurecli  
-    az config set core.instance_discovery=false  
-    az extension add --name account  
-    az account alias create --name "azlocalnewsub" --billing-scope null --display-name "Azure Local subscription 2" --workload "Production"  
-    az account alias show --name "azlocalnewsub"  
-    ```  
-
-    To list subscriptions using the CLI, use this command:  
-
-    ```azurecli  
-    az account subscription list -o table 
-    ```-->
+1. [Export the host guardian service certificates](disconnected-operations-security.md) and backup the folder you export them to on an external share/drive.
 
 ## Troubleshoot and reconfigure using management endpoint
 

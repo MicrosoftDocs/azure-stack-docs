@@ -211,6 +211,9 @@ Use PowerShell on Windows Server 2022 or newer for these commands.
 ### Set up Active Directory/Active Directory Domain Services (ADDS) for demo purposes
 
 ```powershell
+# Modify to fit your domain/installation
+$GSMAAccount = 'Local-contoso\gmsa_adfs'
+
 Install-WindowsFeature -Name AD-Domain-Services -IncludeManagementTools
 
 # Import the ADDSDeployement module
@@ -238,12 +241,13 @@ Install-AdfsFarm `
     -CertificateThumbprint "$($cert.Thumbprint)" `
     -FederationServiceName "adfs.local.contoso.com" `
     -FederationServiceDisplayName "Local Contoso ADFS" `
-    -GroupServiceAccountIdentifier "Local.contoso\gmsa_adfs$"
+    -GroupServiceAccountIdentifier $GSMAAccount
 ```
 
 ### Create AD FS client app, sample users, and groups
 
 ```powershell
+# ClientID can be any unique id in your organization - hardcoded GUID here just as example
 Add-AdfsClient `
     -Name "Azure Local Disconnected operations Sign In Service" `
     -ClientId "7e7655c5-9bc4-45af-8345-afdf6bbe2ec1" `
@@ -304,7 +308,9 @@ $group = Get-ADGroup -Identity $groupName | Select-Object Name, ObjectGUID
 $group
 ```
 
-### Grant LDAP user read on Users with inherit
+### Grant LDAP User read access on Users with inherit option
+
+The following example grants read access to the LDAP user on the Users container using the `ActiveDirectorySecurityInheritance "All"` setting. Assigning an access rule with "All" makes the rule apply to the entire subtree of the target object.
 
 ```powershell
 $domain = Get-ADDomain
@@ -315,6 +321,35 @@ $acl.AddAccessRule($accessRule)
 Set-ACL -Path "AD:\$($domain.DistinguishedName)" -AclObject $acl
 Write-Verbose "Granted 'GenericRead' permissions to ldap account."
 ```
+
+### Grant the GSMA account permission to read user properties
+
+The following example shows how to let the GSMA account read user properties in Active Directory from the sync group.
+
+```powershell
+# GropuName and GSMAccount defined earlier
+
+# Get group details
+$Group = Get-ADGroup -Identity $GroupName
+$GroupDN = $Group.DistinguishedName
+
+# Build the access rule
+$Identity = New-Object System.Security.Principal.NTAccount($GSMAAccount)
+$ActiveDirectoryRights = [System.DirectoryServices.ActiveDirectoryRights]::ReadProperty
+$AccessControlType = [System.Security.AccessControl.AccessControlType]::Allow
+$InheritanceType = [System.DirectoryServices.ActiveDirectorySecurityInheritance]::All
+
+# Create the access rule and apply it to the group
+$Rule = New-Object System.DirectoryServices.ActiveDirectoryAccessRule $Identity, $ActiveDirectoryRights, $AccessControlType, $null, $InheritanceType
+$GroupEntry = [ADSI]"LDAP://$GroupDN"
+$Security = $GroupEntry.ObjectSecurity
+$Security.AddAccessRule($Rule)
+$GroupEntry.CommitChanges()
+```
+
+> [!NOTE]
+> If the GSMA account for your ADFS farm can't read user properties the sign-in fails. This occurs even if the username and password are correct on the ADFS sign-in page.
+
 
 ::: moniker-end
 

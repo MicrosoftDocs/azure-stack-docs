@@ -22,7 +22,7 @@ This article explains how to install and configure the Azure Command-Line Interf
 
 ## Supported versions for CLI and extension
 
-In this preview, the supported version of Azure CLI for Azure Local disconnected operations is 2.60.0. For more information, see [Azure CLI release notes](/cli/azure/release-notes-azure-cli). To find your installed version and see if you need to update, run `az version`:  
+In this preview, the supported version of Azure CLI for Azure Local disconnected operations is 2.71.0. For more information, see [Azure CLI release notes](/cli/azure/release-notes-azure-cli). To find your installed version and see if you need to update, run `az version`:  
 
 ```azurecli  
 az version  
@@ -32,12 +32,17 @@ For more information, see [Azure CLI commands](/cli/azure/reference-index?view=a
 
 ## Install Azure CLI
 
-To install the CLI, follow these steps:
+To install the 32-bit version of CLI, follow these steps:
 
-1. [Download version 2.60.0](https://azcliprod.blob.core.windows.net/msi/azure-cli-2.60.0-x64.msi).
+1. [Download version 2.71.0](https://azcliprod.blob.core.windows.net/msi/azure-cli-2.71.0.msi).
 2. [Install the CLI](/cli/azure/install-azure-cli) locally on Linux, macOS, or Windows computers.
 
+
+> [!NOTE]  
+> Use the 64-bit Azure CLI on client machines. For Azure Local nodes, install the 32-bit CLI to avoid deployment failures.
+
 ## Configure certificates for Azure CLI
+
 
 To use CLI, you must trust the certificate authority (CA) root certificate on your machine.
 
@@ -232,11 +237,11 @@ The following table lists the CLI extensions supported on Azure Local disconnect
 
 | Disconnected operations services | Extensions | Maximum extension version supported | Installation information |  
 |----------------------------------|------------|------------------------------------|--------------------------|  
-| Arc-enabled servers              | az connectedmachine | 0.7.0 and 1.1.0 | [az connectedmachine](/cli/azure/connectedmachine?view=azure-cli-latest&preserve-view=true)  |
-| Azure Arc-enabled Kubernetes clusters  | az connectedk8s <br></br> az k8s-extension <br></br> az k8s-configuration <br></br> az customlocation | connectedk8s: 1.10.6 <br></br> k8s-extension: 1.6.1 <br></br> k8sconfiguration: 2.0.0 <br></br> customlocation: 0.1.3 | [az connectedk8s](/cli/azure/connectedk8s?view=azure-cli-latest&preserve-view=true) <br></br> [az k8s-extension](/cli/azure/k8s-extension?view=azure-cli-latest&preserve-view=true) <br></br> [az k8s-configuration flux](/cli/azure/k8s-configuration/flux?view=azure-cli-latest&preserve-view=true) <br></br> [az customlocation](/cli/azure/customlocation?view=azure-cli-latest&preserve-view=true)  |
-| Azure Local VMs enabled by Azure Arc    | az arcappliance <br></br> az k8s-extension <br></br> az customlocation <br></br> az stack-hci-vm | arcappliance: 1.3.0 <br></br> PreviewSource: https://winfieldstable.z13.web.core.windows.net/arcappliance-1.3.0-py2.py3-none-any.whl <br></br> k8s-extension: 1.6.1  <br></br> customlocation: 0.1.3 <br></br> stack-hci-vm: 1.3.0 | [Enable Azure VM extensions using CLI](/azure/azure-arc/servers/manage-vm-extensions-cli) <br></br> [Troubleshoot Arc-enabled servers VM extension issues](/azure/azure-arc/servers/troubleshoot-vm-extensions)  |
-| AKS Arc on Azure Local | az arcappliance <br></br> az k8s-extension <br></br> az customlocation <br></br> az stack-hci-vm <br></br> az aksarc | arcappliance: 1.3.0 <br></br> PreviewSource: https://winfieldstable.z13.web.core.windows.net/arcappliance-1.3.0-py2.py3-none-any.whl <br></br> k8s-extension: 1.6.1 <br></br> customlocation: 0.1.3 <br></br> stack-hci-vm: 1.3.0 <br></br> aksarc: 1.2.23 | [Create Kubernetes clusters using Azure CLI](/azure/aks/aksarc/aks-create-clusters-cli) |
-| Azure Local Resource Provider          | Arcappliance <br></br> k8s-extension <br></br> customlocation <br></br> stack-hci-vm <br></br> connectedk8s <br></br> stack-hci | arcappliance: 1.3.0 <br></br> PreviewSource: https://winfieldstable.z13.web.core.windows.net/arcappliance-1.3.0-py2.py3-none-any.whl <br></br> k8s-extension: 1.6.1 <br></br> customlocation: 0.1.3 <br></br> stack-hci-vm: 1.3.0 <br></br> connectedk8s: 1.6.2 <br></br> stack-hci: 1.1.0 | [How to install and manage Azure CLI extensions](/cli/azure/azure-cli-extensions-overview) |
+| Arc-enabled servers              | az connectedmachine | 1.1.0 | [az connectedmachine](/cli/azure/connectedmachine?view=azure-cli-latest&preserve-view=true)  |
+| Azure Arc-enabled Kubernetes clusters  | az connectedk8s <br></br> az k8s-extension <br></br> az k8s-configuration <br></br> az customlocation | connectedk8s: 1.6.2 <br></br> k8s-extension: 1.4.5 <br></br> k8sconfiguration: 2.0.0 <br></br> customlocation: 0.1.4 | [az connectedk8s](/cli/azure/connectedk8s?view=azure-cli-latest&preserve-view=true) <br></br> [az k8s-extension](/cli/azure/k8s-extension?view=azure-cli-latest&preserve-view=true) <br></br> [az k8s-configuration flux](/cli/azure/k8s-configuration/flux?view=azure-cli-latest&preserve-view=true) <br></br> [az customlocation](/cli/azure/customlocation?view=azure-cli-latest&preserve-view=true)  |
+| Azure Local VMs enabled by Azure Arc    | az arcappliance <br></br> az k8s-extension <br></br> az customlocation <br></br> az stack-hci-vm | arcappliance: 1.4.1 <br> k8s-extension: 1.4.5  <br></br> customlocation: 0.1.4 <br></br> stack-hci-vm: 1.9.1 | [Enable Azure VM extensions using CLI](/azure/azure-arc/servers/manage-vm-extensions-cli) <br></br> [Troubleshoot Arc-enabled servers VM extension issues](/azure/azure-arc/servers/troubleshoot-vm-extensions)  |
+| AKS Arc on Azure Local | az arcappliance <br></br> az k8s-extension <br></br> az customlocation <br></br> az stack-hci-vm <br></br> az aksarc | arcappliance: 1.4.1 <br></br>  <br></br> k8s-extension: 1.4.5 <br></br> customlocation: 0.1.4 <br></br> stack-hci-vm: 1.9.1 <br></br> aksarc: 1.2.23 | [Create Kubernetes clusters using Azure CLI](/azure/aks/aksarc/aks-create-clusters-cli) |
+| Azure Local Resource Provider          | Arcappliance <br></br> k8s-extension <br></br> customlocation <br></br> stack-hci-vm <br></br> connectedk8s <br></br> stack-hci | arcappliance: 1.4.1 <br></br>  <br></br> k8s-extension: 1.4.5 <br></br> customlocation: 0.1.4 <br></br> stack-hci-vm: 1.9.1 <br></br> connectedk8s: 1.6.2 <br></br> stack-hci: 1.1.0 | [How to install and manage Azure CLI extensions](/cli/azure/azure-cli-extensions-overview) |
 | Azure Container Registry | Built-in      |    |  |
 | Azure Policy | Built-in      |    | [Quickstart: Create a policy assignment to identify noncompliant resources using Azure CLI](/azure/governance/policy/assign-policy-azurecli) |
 | Azure Key Vault | Built-in      |    | [Quickstart: Create a key vault using Azure CLI](/azure/key-vault/general/quick-create-cli) |

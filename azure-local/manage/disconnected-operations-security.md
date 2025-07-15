@@ -82,6 +82,25 @@ If your system is experiencing BitLocker issues, like Azure Local with disconnec
 
 Manually unlock the virtual hard drive or virtual storage disk using BitLocker recovery passwords. If BitLocker recovery keys aren't available, you need to redeploy the disconnected operations VM appliance.
 
+## Export Host Guardian Service certificates
+
+This procedure isn’t supported in the preview release.
+
+To back up Host Guardian Service certificates from your cluster, run these commands from your seed node:
+
+1. Set the context. The command requires a `DisconnectedOperationsClientContext` object as a parameter.
+
+    ```powershell
+    $password = ConvertTo-SecureString "RETRACTED" -AsPlainText -Force 
+    $context = Set-DisconnectedOperationsClientContext -ManagementEndpointClientCertificatePath "${env:localappdata}\AzureLocalOpModuleDev\certs\ManagementEndpoint\ManagementEndpointClientAuth.pfx" -ManagementEndpointClientCertificatePassword $password -ManagementEndpointIpAddress "169.254.53.25" 
+    ```
+
+1. To export the Host Guardian Service certificates to a specific path, run `Export-ApplianceHGSCertificates`.
+
+    ```powershell
+    Export-ApplianceHGSCertificates -Path D:\AzureLocal\HGSBackup    
+    ```
+    
 ## Configure syslog forwarding
 
 You can use the syslog protocol for Azure Local with disconnected operations VM appliance to forward security events to a customer-managed security information and event management (SIEM) system.
