@@ -106,7 +106,7 @@ If the notification in the top right shows that the save operation is complete, 
 
 #### Delete a VM resource
 
-When you delete a VM from the portal, you might see the message ***Delete associated resource failed*** and ***Failed to delete the associated resource 'name' of type 'Network interface***.
+When you delete a VM from the portal, you might see the message ***Delete associated resource failed*** and ***Failed to delete the associated resource 'name' of type 'Network interface'***.
 
 **Mitigation**: After you delete the VM, use the CLI to delete the associated network interface. Run this command:
 
@@ -214,7 +214,7 @@ Azure CLI doesn't support providing `subscriptionOwnerId` for new subscriptions.
 
 **Mitigation**: Use `az rest` to create subscriptions with a different owner if required to automate directly with different owner
 
-### Azure Portal
+### Azure portal
 
 #### Signout fails
 
