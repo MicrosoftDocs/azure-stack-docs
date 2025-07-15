@@ -233,7 +233,7 @@ To prepare the first machine for the disconnected operations appliance, follow t
     Install-WindowsFeature BitLocker -IncludeAllSubFeature -IncludeManagementTools
     ```
 
-1. Import the **Operations module**. Run the command as an administrator using PowerShell. Modify the path to match your folder structure:
+1. Import the **Operations module**. Run the command as an administrator using PowerShell. Modify the path to match your folder structure.
 
     ```powershell  
     Import-Module "$applianceConfigBasePath \OperationsModule\Azure.Local.DisconnectedOperations.psd1" -Force
