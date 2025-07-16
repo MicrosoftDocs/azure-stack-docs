@@ -117,7 +117,7 @@ To resolve this error, you can take the following steps:
 - Confirm that proxy settings (if used) are correct and that the proxy can forward requests to `https://mcr.microsoft.com`.  
 - Test connectivity to `https://mcr.microsoft.com` from the control plane VM, either directly or via the configured proxy.
 
-For more information, see [Using AKS Arc in Arc Gateway Setup](aks-hci-network-system-requirements.md#use-azure-arc-gateway-preview-with-azure-local).
+For more information, see [Use Azure Arc Gateway with Azure Local](aks-hci-network-system-requirements.md#use-azure-arc-gateway-preview-with-azure-local).
 
 ## Contact Microsoft Support
 
