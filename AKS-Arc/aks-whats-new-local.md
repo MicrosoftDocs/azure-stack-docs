@@ -27,8 +27,8 @@ This section lists the new features and improvements in AKS Arc in each release 
 
 > [!IMPORTANT]
 > Azure Linux 2.0 (formerly CBL-Mariner) will reach its official end of life (EOL) on July 31, 2025. After this date, Azure Linux will no longer receive updates, security patches, or support from the Azure Linux team. Starting with the [Azure Local 2507 release](/azure/azure-local/whats-new), AKS on Azure Local will release Azure Linux 3.0 images for all supported Kubernetes versions. To maintain security compliance and ensure continued support, you should migrate to [Azure Linux 3.0](https://eng.ms/docs/products/azure-linux/overview/20eol) as soon as possible, by upgrading Azure Local instances to the 2507 release.
-
-Support for Kubernetes minor version 1.28 will end on August 31, 2025. We will introduce Kubernetes 1.31 in the next Azure Local release.
+>
+> Support for Kubernetes minor version 1.28 will end on August 31, 2025. We will introduce Kubernetes 1.31 in the next Azure Local release.
 
 The following Kubernetes cluster deployment and management capabilities are available:
 
