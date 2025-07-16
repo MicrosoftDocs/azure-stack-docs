@@ -52,12 +52,12 @@ Here's a checklist of things you need before you deploy Azure Local with disconn
 - Local credentials for Azure Local machines.
 - Active directory credentials for Azure Local deployment.
 - [Active directory prepared for Azure Local deployment](../deploy/deployment-prep-active-directory.md).
-- Certificates to secure ingress endpoints (26 certificates) and the public key (root) used to create these certificates.
+- Certificates to secure ingress endpoints (24 certificates) and the public key (root) used to create these certificates.
 - Certificates to secure the management endpoint (2 certificates).
 - Credentials and parameters to integrate with identity provider:
   - Active Directory Federations Services (ADFS) application, credentials, server details, and certificate chain details for certificates used in identity configuration.
 - Disconnected operations deployment files (manifest and appliance).
-- The preview ISO (accompanying release 2411.2 or later).
+- The Azure Local composite ISO (accompanying release 2506 or later).
 - Firmware/device drivers from OEM.
 
 ## Deployment sequence  
@@ -220,7 +220,7 @@ To prepare the first machine for the disconnected operations appliance, follow t
     Copy-Item \\fileserver\share\azurelocalcerts $certspath -recurse  
     ```
 
-1. Verify the certificates, public key, and management endpoint. You should have two folders: `ManagementEndpointCerts` and `IngressEndpointCerts` and at least 26 certificates.
+1. Verify the certificates, public key, and management endpoint. You should have two folders: `ManagementEndpointCerts` and `IngressEndpointCerts` and at least 24 certificates.
 
     ```powershell  
     Get-ChildItem $certsPath 
