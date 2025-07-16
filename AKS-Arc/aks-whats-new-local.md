@@ -32,8 +32,8 @@ This section lists the new features and improvements in AKS Arc in each release 
 
 The following Kubernetes cluster deployment and management capabilities are available:
 
-- **Disk space exhaustion**: Fixed issues due to disk space exhaustion on control plane VMs due to accumulation of kube-apiserver audit logs.  
-- **Cluster upgrade**: Fixed AKS Arc cluster and node pool create, scale, and upgrade issues due to unavailability of AKS Arc VM images.
+- **Disk space exhaustion**: Fixed [issues due to disk space exhaustion on control plane VMs due to accumulation of kube-apiserver audit logs](kube-apiserver-log-overflow.md).  
+- **Cluster upgrade**: Fixed AKS Arc cluster and node pool create, scale, and [upgrade issues due to unavailability of AKS Arc VM images](gallery-image-not-usable.md).
 - **New checks**: Added new checks during cluster and node pool operations. These improvements allow the system to proactively detect and handle scenarios where there are insufficient IP addresses in the IP pool.
 - **GPU resource allocation**: Additional pre-checks for resource allocation for GPUs during Kubernetes cluster create operation.
 - **Node pool improvements**: Accurate representation of node pool count and status on the Azure portal. This release also includes improvements to node pool creation and update flows to ensure that the Kubernetes cluster status accounts for corresponding node pool status.
