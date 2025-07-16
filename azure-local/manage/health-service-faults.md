@@ -63,7 +63,7 @@ This section shows how to connect to the Health Service, use discover objects, a
 
 ### Connect
 
-In order to query the Health Service, you establish a **CimSession** with the cluster. To do so, you will need some things that are only available in full Microsoft .NET, meaning you cannot readily do this directly from a web or mobile app. The code samples in this section use C\#, the most straightforward choice for this data access layer.
+In order to query the Health Service, you establish a **CimSession** with the cluster. To do so, you will need some things that are only available in full Microsoft .NET, meaning you can't readily do this directly from a web or mobile app. The code samples in this section use C\#, the most straightforward choice for this data access layer.
 
 ```
 using System.Security;
@@ -309,22 +309,20 @@ Note the **ChangeType** that indicates whether a fault is being created, removed
 | FaultingObjectLocation | Rack A06, RU 25, Slot 11 |
 | RecommendedActions | {"Expand the volume.", "Migrate workloads to other volumes."} |
 
-**ChangeType**
-ChangeType = { 0, 1, 2 } = { "Create", "Remove", "Update" }.
+**ChangeType**: ChangeType = { 0, 1, 2 } = { "Create", "Remove", "Update" }.
 
 ## Health Service faults reference
 
-The Health Service in Azure Local and Windows Server can detect faults accross various system components, including storage, networking, and compute resources.
+The Health Service in Azure Local and Windows Server can detect faults across various system components, including storage, networking, and compute resources.
 
 For a detailed overview of health faults, including fault severity mappings, health settings (data types, fault associations, default values, and descriptions), and the list of collected metrics, download the [Health Service faults](https://github.com/Azure-Samples/AzureLocal/blob/main/health-service-faults/health-service-faults.xlsx) spreadsheet.
 
 Considerations for Health Service faults:
 
 - Some faults are disabled by default. To enable a fault, set the corresponding health setting to true.
-
-    For example, fault type `Microsoft.Health.FaultType.PhysicalDisk.HighLatency.AverageIO` is disabled by default. To enable it, set the health setting `System.Storage.PhysicalDisk.HighLatency.Threshold.Tail.Enabled` to true.
-
-- The health of storage enclosure components, such as fans, power supplies, and sensors is derived from SCSI Enclosure Services (SES). If your vendor doesn't provide this information, the Health Service cannot display it.
+ - For example, fault type `Microsoft.Health.FaultType.PhysicalDisk.HighLatency.AverageIO` is disabled by default. To enable it, set the health setting `System.Storage.PhysicalDisk.HighLatency.Threshold.Tail.Enabled` to true.
+- The health of storage enclosure components, such as fans, power supplies, and sensors are derived from SCSI Enclosure Services (SES). If your vendor doesn't provide this information, the Health Service cannot display it.
 
 ## Additional references
+
 - [Health Service](health-service-overview.md)
