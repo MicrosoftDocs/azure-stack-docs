@@ -2,11 +2,11 @@
 title: What's new in AKS on Azure Local
 description: Learn about what's new in AKS on Azure Local.
 ms.topic: overview
-ms.date: 04/01/2025
+ms.date: 07/16/2025
 author: sethmanheim
 ms.author: sethm 
-ms.reviewer: guanghu
-ms.lastreviewed: 04/01/2025
+ms.reviewer: rcheeran
+ms.lastreviewed: 07/16/2025
 
 ---
 
@@ -44,6 +44,28 @@ By integrating these components, Azure Arc offers a unified and efficient Kubern
 ## Features and improvements
 
 This section lists the new features and improvements in AKS Arc in each release of Azure Local.
+
+### Release 2507
+
+- Azure Linux 2.0 (formerly CBL-Mariner) will reach its official end of life (EOL) on July 31, 2025. After this date, Azure Linux will no longer receive updates, security patches, or support from the Azure Linux team. Starting with the Azure Local 2507 release, AKS on Azure Local will release Azure Linux 3.0 images for all supported Kubernetes versions. To maintain security compliance and ensure continued support, you should migrate to Azure Linux 3.0 as soon as possible, by upgrading Azure Local instances to the 2507 release.
+- Support for Kubernetes minor version 1.28 will end on August 31, 2025. We will introduce Kubernetes 1.31 in the next Azure Local release.
+
+The following Kubernetes cluster deployment and management capabilities are available:
+
+- **Disk space exhaustion**: Fixed issues due to disk space exhaustion on control plane VMs due to accumulation of kube-apiserver audit logs.  
+- **Cluster upgrade**: Fixed AKS cluster and node pool create, scale and upgrade issues due to unavailability of AKS Arc VM images.
+- **New checks**: Added new checks during cluster and node pool operations. These improvements allow the system to proactively detect and handle scenarios where there are insufficient IP addresses in the IP pool.
+- **GPU resource allocation**: Additional pre-checks for resource allocation for GPUs during Kubernetes cluster create operation.
+- **Node pool improvements**: Accurate representation of node pool count and status on the Azure portal. This release also includes improvements to node pool creation and update flows to ensure that the Kubernetes cluster status accounts for corresponding node pool status.
+- **Improvements to autoscaler capabilities**:
+  - Fixed an issue in which secrets were updated repeatedly when the autoscaler was enabled. The fix ensures that the provider checks for an existing secret and only creates it if it's missing.
+  - Fixed an issue in which users were unable to disable the autoscaler at the Kubernetes cluster level.
+  - Improved conflict handling logic during cluster delete operations when the autoscaler or cluster controller tried to update or remove resources that were being changed simultaneously by another process.
+  - Fixed an issue in which the node pools' minimum and maximum counts did not get updated when the autoscaler was enabled.
+
+#### Supported Kubernetes versions for 2507
+
+The Kubernetes versions supported in the 2507 release are: 1.28.12, 1.28.14, 1.29.7, 1.29.9, 1.30.3, and 1.30.4.  
 
 ### Release 2503
 
@@ -126,7 +148,7 @@ The following Kubernetes cluster deployment and management capabilities are avai
 - **Certificate expiration**. You can now shut down Kubernetes clusters for up to 7 days without any certificate expiration issues.
 - **Update status**. You can now view the status of ongoing Kubernetes cluster upgrades.
 
-### Release 2311.2
+<!-- ### Release 2311.2
 
 AKS enabled by Azure Arc on Azure Local is generally available starting with this release.
 
@@ -152,7 +174,7 @@ The following Kubernetes cluster deployment and management capabilities are avai
 - **Cloud-based management**. You can now create and manage Kubernetes clusters on Azure Local with familiar tools such as the Azure portal and Azure CLI. For more information, see [Create Kubernetes clusters using Azure CLI](aks-create-clusters-cli.md).
 - **Support for Azure Container Registry to deploy container images**. In this release, you can deploy container images from a private container registry using Azure Container Registry to your Kubernetes clusters running on Azure Local. For more information, see [Deploy from private container registry to on-premises Kubernetes](deploy-container-registry.md).
 - **Support for managing and scaling the node pools**. For more information, see [Manage multiple node pools in AKS Arc](manage-node-pools.md).
-- **Support for Linux and Windows Server containers**. For more information, see [Create Windows Server containers](aks-create-containers.md).
+- **Support for Linux and Windows Server containers**. For more information, see [Create Windows Server containers](aks-create-containers.md). -->
 
 ## Next steps
 
