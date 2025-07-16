@@ -6,6 +6,7 @@ ms.topic: conceptual
 ms.date: 07/14/2025
 ms.author: hafianba
 ms.reviewer: hafianba
+ai-usage: ai-assisted
 ---
 
 # Known issues for disconnected operations for Azure Local
