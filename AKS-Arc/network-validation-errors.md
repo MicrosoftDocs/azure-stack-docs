@@ -4,9 +4,9 @@ description: Learn how to troubleshoot general network validation errors in AKS 
 author: sethmanheim
 ms.author: sethm
 ms.topic: troubleshooting
-ms.date: 05/07/2025
-ms.reviewer: pradwivedi
-ms.lastreviewed: 05/06/2025
+ms.date: 07/16/2025
+ms.reviewer: srikantsarwa
+ms.lastreviewed: 07/16/2025
 
 ---
 
@@ -92,6 +92,32 @@ DNS servers specified in a logical network can't resolve the MOC cloud FQDN or t
 ### Mitigation
 
 To resolve this error, check the DNS servers specified in the logical network so that they can resolve the MOC cloud FQDN or the required URLs.
+
+## InternetConnectivityError (in Arc Gateway scenario)
+
+Error: Network validation failed during cluster creation.
+
+### Description
+
+Detailed message: `Not able to connect to https://mcr.microsoft.com. Error returned: action failed after 5 attempts: Get "https://mcr.microsoft.com": proxyconnect tcp: dial tcp 192.168.2.100:40343: connect: connection refused`.
+
+### Causes of failure
+
+- The control plane VM can't reach the Azure Local cluster IP on port **40343**, which is required when Arc Gateway is enabled.
+- The firewall or network security rules block traffic between the AKS subnet and the cluster IP.
+- Proxy settings are incorrect, or the proxy does not allow connections to `mcr.microsoft.com`.
+
+### Mitigation
+
+To resolve this error, you can take the following steps:
+
+- Ensure that the **AKS subnet has connectivity to the Azure Local Cluster IP on port `40343`**.  
+- Verify that the Arc Gateway service on the Azure Local Cluster is running and listening on port `40343`.  
+- Check firewall or NSG rules to ensure that traffic between the AKS VMs and the Cluster IP on `40343` is allowed.  
+- Confirm that proxy settings (if used) are correct and that the proxy can forward requests to `https://mcr.microsoft.com`.  
+- Test connectivity to `https://mcr.microsoft.com` from the control plane VM, either directly or via the configured proxy.
+
+For more information, see [Using AKS Arc in Arc Gateway Setup](aks-hci-network-system-requirements.md#use-azure-arc-gateway-preview-with-azure-local).
 
 ## Contact Microsoft Support
 

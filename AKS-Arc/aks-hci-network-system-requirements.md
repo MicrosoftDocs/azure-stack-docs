@@ -2,7 +2,7 @@
 title: AKS enabled by Azure Arc network requirements
 description: Learn about AKS network prerequisites.
 ms.topic: overview
-ms.date: 07/10/2025
+ms.date: 07/16/2025
 author: sethmanheim
 ms.author: sethm
 ms.reviewer: srikantsarwa
@@ -89,6 +89,8 @@ When you deploy Azure Local, you allocate a contiguous block of at least [six st
 ## Use Azure Arc Gateway (preview) with Azure Local
 
 If you plan to use the [Azure Local Arc Gateway preview](/azure/azure-local/deploy/deployment-azure-arc-gateway-overview?view=azloc-2506&preserve-view=true) for AKS Arc clusters, you must ensure that an additional port is opened in your environment:
+
+If you use Arc gateway to deploy your Azure Local Cluster infrastructure make sure that connectivity between the AKS subnet and the Cluster IP is allowed on port 40343 as follows:
 
 | Port     | Direction       | Source/Destination                           | Notes |
 |----------|-----------------|-----------------------------------------------|-------|
