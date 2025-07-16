@@ -38,6 +38,8 @@ Location: Seattle DC, Rack B07, Node 4, Slot 11
  >[!NOTE]
  > The physical location is derived from your fault domain configuration. For more information about fault domains, see [Fault domain awareness](/windows-server/failover-clustering/fault-domains). If you do not provide this information, the location field is less helpful. For example, it may only show the slot number.
 
+For reference information about faults, see [Health Service faults reference](#health-service-faults-reference).
+
 ## Root cause analysis
 
 The Health Service can assess the potential causality among faulting entities to identify and combine faults that are consequences of the same underlying problem. By recognizing chains of effect, this makes for less chatty reporting. For example, if a server is down, it is expected that any drives within the server are also without connectivity. Therefore, only one fault will be raised for the root cause - in this case, the server.
@@ -137,8 +139,6 @@ foreach (CimInstance Node in Nodes)
 ### Query faults
 
 Invoke **Diagnose** to get any current faults scoped to the target **CimInstance**, which can be either the cluster or any volume.
-
-For reference information about faults, see [Health Service faults reference](#health-service-faults-reference).
 
 ```
 public void GetFaults(CimSession Session, CimInstance Target)
