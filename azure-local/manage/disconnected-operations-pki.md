@@ -291,7 +291,7 @@ _continue_ = "DNS=$subject"
 
 ## Export Root CA certificate
 
-You will need the root certificate public key as part of the deployment. Here is an example of how to export your root certificate public key:
+You need the root certificate public key for deployment. The following example shows how to export your root certificate public key:
 
 ```azurecli
 certutil -ca.cert applianceRootCA.cer
