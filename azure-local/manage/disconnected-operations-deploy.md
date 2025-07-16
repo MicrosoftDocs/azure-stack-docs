@@ -57,7 +57,7 @@ Here's a checklist of things you need before you deploy Azure Local with disconn
 - Credentials and parameters to integrate with identity provider:
   - Active Directory Federations Services (ADFS) application, credentials, server details, and certificate chain details for certificates used in identity configuration.
 - Disconnected operations deployment files (manifest and appliance).
-- The Azure Local composite ISO (accompanying release 2506 or later).
+- The Azure Local composite ISO (follows release 2506 or later).
 - Firmware/device drivers from OEM.
 
 ## Deployment sequence  
