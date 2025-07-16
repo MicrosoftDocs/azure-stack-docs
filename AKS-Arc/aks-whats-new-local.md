@@ -33,7 +33,7 @@ Support for Kubernetes minor version 1.28 will end on August 31, 2025. We will i
 The following Kubernetes cluster deployment and management capabilities are available:
 
 - **Disk space exhaustion**: Fixed issues due to disk space exhaustion on control plane VMs due to accumulation of kube-apiserver audit logs.  
-- **Cluster upgrade**: Fixed AKS Arc cluster and node pool create, scale and upgrade issues due to unavailability of AKS Arc VM images.
+- **Cluster upgrade**: Fixed AKS Arc cluster and node pool create, scale, and upgrade issues due to unavailability of AKS Arc VM images.
 - **New checks**: Added new checks during cluster and node pool operations. These improvements allow the system to proactively detect and handle scenarios where there are insufficient IP addresses in the IP pool.
 - **GPU resource allocation**: Additional pre-checks for resource allocation for GPUs during Kubernetes cluster create operation.
 - **Node pool improvements**: Accurate representation of node pool count and status on the Azure portal. This release also includes improvements to node pool creation and update flows to ensure that the Kubernetes cluster status accounts for corresponding node pool status.
@@ -41,7 +41,7 @@ The following Kubernetes cluster deployment and management capabilities are avai
   - Fixed an issue in which secrets were updated repeatedly when the autoscaler was enabled. The fix ensures that the provider checks for an existing secret and only creates it if it's missing.
   - Fixed an issue in which users were unable to disable the autoscaler at the Kubernetes cluster level.
   - Improved conflict handling logic during cluster delete operations when the autoscaler or cluster controller tried to update or remove resources that were being changed simultaneously by another process.
-  - Fixed an issue in which the node pools' minimum and maximum counts did not get updated when the autoscaler was enabled.
+  - Fixed an issue in which the node pools' minimum and maximum counts didn't get updated when the autoscaler was enabled.
 
 #### Supported Kubernetes versions for 2507
 
@@ -51,12 +51,12 @@ The Kubernetes versions supported in the 2507 release are: 1.28.12, 1.28.14, 1.2
 
 The following Kubernetes cluster deployment and management capabilities are available:
 
-- **Large VM SKUs for Kubernetes nodepools**: Added two new VM SKUs - `Standard_D32s_v3`: 32 vCPU, 128 GiB and `Standard_D16s_v3`: 16 vCPU, 64 GiB - to support larger nodepools on an AKS cluster. For more information about supported VM sizes, see [supported scale options](scale-requirements.md).
-- **Improved log collection experience**: Improved log collection for AKS control plane node VMs and nodepool VMs, with support for passing multiple IP addresses and SSH key or directory path. For more information, see [on-demand log collection](get-on-demand-logs.md) and [az aksarc get-logs CLI](/cli/azure/aksarc#az-aksarc-get-logs).
-- **Improved diagnosability**: The [Diagnostic Checker tool](aks-arc-diagnostic-checker.md) is automatically run in case of Kubernetes cluster create failure, and added new test cases.
+- **Large VM SKUs for Kubernetes node pools**: Added two new VM SKUs - `Standard_D32s_v3`: 32 vCPU, 128 GiB and `Standard_D16s_v3`: 16 vCPU, 64 GiB - to support larger node pools on an AKS cluster. For more information about supported VM sizes, see [supported scale options](scale-requirements.md).
+- **Improved log collection experience**: Improved log collection for AKS control plane node VMs and node pool VMs, with support for passing multiple IP addresses and SSH key or directory path. For more information, see [on-demand log collection](get-on-demand-logs.md) and [az aksarc get-logs CLI](/cli/azure/aksarc#az-aksarc-get-logs).
+- **Improved diagnosability**: The [Diagnostic Checker tool](aks-arc-diagnostic-checker.md) is automatically run if the Kubernetes cluster creation fails, and added new test cases.
 - **Improved Kubernetes cluster delete**: Fixed deletion issues; for example, due to [pod disruption budgets](delete-cluster-pdb.md?tabs=aks-on-azure-local).
 - **Improved AKS Arc image download**: Fixed issues with AKS Arc image downloads.
-- **Improved GPU support**: Improved error handling for Kubernetes cluster creation with GPU enabled nodepools. Fixed known issues with attaching persistent volumes on GPU enabled nodepools.
+- **Improved GPU support**: Improved error handling for Kubernetes cluster creation with GPU enabled node pools. Fixed known issues with attaching persistent volumes on GPU enabled node pools.
 
 To get started with these features in the 2503 release, make sure to update your [AKSArc CLI extension](/cli/azure/aksarc) to version 1.5.37 or higher.
 
@@ -89,7 +89,7 @@ The following Kubernetes cluster deployment and management capabilities are avai
 - **PowerShell**. You can now use PowerShell cmdlets to manage your AKS Arc clusters on Azure Local with CRUD support. For more information, see the [PowerShell reference documentation](/powershell/module/az.aksarc/?view=azps-12.1.0&preserve-view=true).
 - **Error report improvements**. You can now get improved error case reporting with prechecks; for example, a check for incorrect Kubernetes versions and available GPU capacity.
 - **Support for NVIDIA T4**. You can now create node pools in new VM sizes with GPU NVIDIA T4. For more information, see [Use GPUs](deploy-gpu-node-pool.md).
-- **Arc Gateway**. You can now use the Arc Gateway to configure very few of the outbound URLs to use AKS clusters on Azure Local.
+- **Arc Gateway**. You can now use the Arc Gateway to configure a few of the outbound URLs to use AKS clusters on Azure Local.
 - **Support pod CIDR**. You can now create an AKS Arc cluster with a user-specified pod CIDR IP arrange.
 
 #### Supported component versions for 2408
@@ -107,7 +107,7 @@ The following Kubernetes cluster deployment and management capabilities are avai
 - **Taints and labels update**. You can now update taints and labels during an AKS Arc node pool update operation using Azure CLI and Azure Resource Manager templates.
 - **AKS Arc cluster platform metrics and alerts**. You can now view AKS Arc cluster metrics (platform metrics) and create metric-based alerts.
 - **Auto cert repair**. You can now automatically repair certificates, managed by cert-tattoo, that expired when the cluster was shut down.
-- **Download VHDs manually (offline download)**. This feature, now available only in private preview, enables you to download virtual machine images and upload them to the target center using a manual process. This can help in environments in which downloading large files is inconvenient. If you are interested in using it, contact your Microsoft Account representative.
+- **Download VHDs manually (offline download)**. This feature, now available only in private preview, enables you to download virtual machine images and upload them to the target center using a manual process. This feature can help in environments in which downloading large files is inconvenient. If you're interested in using it, contact your Microsoft Account representative.
 
 #### Supported component versions for 2405
 
