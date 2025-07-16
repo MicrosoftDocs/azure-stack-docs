@@ -88,15 +88,13 @@ When you deploy Azure Local, you allocate a contiguous block of at least [six st
 
 ## Use Azure Arc Gateway (preview) with Azure Local
 
-If you plan to use the [Azure Local Arc Gateway preview](/azure/azure-local/deploy/deployment-azure-arc-gateway-overview?view=azloc-2506&preserve-view=true) for AKS Arc clusters, you must ensure that an additional port is opened in your environment:
-
-If you use Arc gateway to deploy your Azure Local Cluster infrastructure make sure that connectivity between the AKS subnet and the Cluster IP is allowed on port 40343 as follows:
+If you use Arc gateway to deploy your Azure Local cluster infrastructure, make sure that connectivity between the AKS subnet and the cluster IP is allowed on port 40343, as follows:
 
 | Port     | Direction       | Source/Destination                           | Notes |
 |----------|-----------------|-----------------------------------------------|-------|
 | **40343** | Outbound/Inbound | Cluster IP address (logical network used for AKS Arc VMs) | Required only when the Azure Local cluster is configured with Arc Gateway for outbound connectivity. |
 
-This port is needed to enable communication between the AKS Arc VMs and the Azure Local cluster when Arc Gateway is used.
+This port is needed to enable communication between the AKS Arc VMs and the Azure Local cluster when Arc gateway is used.
 
 - If you use separate VLANs or subnets, ensure that the AKS Arc VMs can reach the Azure Local cluster IP address on port **40343**, and vice versa.
 - The AKS Arc VMs must have access to the management network where the Azure Local cluster resides.
