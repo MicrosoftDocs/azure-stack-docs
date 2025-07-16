@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: article
 ms.service: azure-local
-ms.date: 07/16/2025
+ms.date: 07/15/2025
 ---
 
 # Azure Local release information
