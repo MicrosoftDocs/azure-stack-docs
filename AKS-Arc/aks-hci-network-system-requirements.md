@@ -86,13 +86,13 @@ When you deploy Azure Local, you allocate a contiguous block of at least [six st
 | 55000 | IP addresses in management network | Logical network used for AKS Arc VMs | Cloud Agent gRPC server | If you use separate VLANs, the AKS Arc VMs need to access the IP addresses in management network used for cloud agent IP and cluster IP on this port and vice-versa. |
 | 65000 | IP addresses in management network | Logical network used for AKS Arc VMs | Cloud Agent gRPC authentication | If you use separate VLANs, the AKS Arc VMs need to access the IP addresses in management network used for cloud agent IP and cluster IP on this port and vice-versa. |
 
-## Use Azure Arc Gateway (preview) with Azure Local
+## Use Azure Arc gateway (preview) with Azure Local
 
 If you use Arc gateway to deploy your Azure Local cluster infrastructure, make sure that connectivity between the AKS subnet and the cluster IP is allowed on port 40343, as follows:
 
 | Port     | Direction       | Source/Destination                           | Notes |
 |----------|-----------------|-----------------------------------------------|-------|
-| **40343** | Outbound/Inbound | Cluster IP address (logical network used for AKS Arc VMs) | Required only when the Azure Local cluster is configured with Arc Gateway for outbound connectivity. |
+| **40343** | Outbound/Inbound | Cluster IP address (logical network used for AKS Arc VMs) | Required only when the Azure Local cluster is configured with Arc gateway for outbound connectivity. |
 
 This port is needed to enable communication between the AKS Arc VMs and the Azure Local cluster when Arc gateway is used.
 

@@ -10,7 +10,7 @@ ms.lastreviewed: 11/18/2024
 
 ---
 
-# Simplify network configuration requirements with Azure Arc Gateway (preview)
+# Simplify network configuration requirements with Azure Arc gateway (preview)
 
 If you use enterprise proxies to manage outbound traffic, Azure Arc gateway can help simplify the process of enabling connectivity.
 
