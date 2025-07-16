@@ -84,6 +84,11 @@ groups:
     title: Azure Local
   - id: windows-server
     title: Windows Server
+  pivots:
+  - id: os-23h2
+    title: Upgrade OS to 25398.xxxx 
+  - id: os-24h2
+    title: Upgrade OS to 261000.xxxx 
 # BELOW: entries inherited from github.com/microsoftdocs/azure-docs-pr/articles/zone-pivot-groups.yml for reuse.
 # For consistency across Docs. This includes: client OSes, languages, etc.
 
