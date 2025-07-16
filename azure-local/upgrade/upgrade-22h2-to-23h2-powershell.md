@@ -7,6 +7,7 @@ ms.date: 07/16/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
+zone_pivot_groups: upgrade-os
 ---
 
 # Upgrade Azure Stack HCI OS, version 22H2 to version 23H2 via PowerShell
