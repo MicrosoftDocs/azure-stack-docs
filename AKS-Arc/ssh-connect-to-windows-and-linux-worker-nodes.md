@@ -1,7 +1,7 @@
 ---
 title: Connect to Windows or Linux worker nodes with SSH
 description: Learn how to use SSH to connect to Windows or Linux worker nodes in an AKS Arc cluster.
-ms.date: 07/02/2025
+ms.date: 07/10/2025
 ms.topic: how-to
 author: sethmanheim
 ms.author: sethm
@@ -38,6 +38,8 @@ You can use the Kubernetes CLI, [**kubectl**](https://kubernetes.io/docs/referen
   ```azurepowershell-interactive
   Install-AzAksCliTool
   ```
+
+---
 
 ## Use SSH to connect to worker nodes
 
@@ -76,3 +78,4 @@ If you encounter SSH login issues, verify that your IP address is included in th
 
 - [Use SSH keys to get on-demand logs for troubleshooting](get-on-demand-logs.md)
 - [Configure SSH keys for an AKS Arc cluster](configure-ssh-keys.md)
+- Help to protect your cluster in other ways by following the guidance in the [security book for AKS enabled by Azure Arc](/azure/azure-arc/kubernetes/conceptual-security-book?toc=/azure/aks/aksarc/toc.json&bc=/azure/aks/aksarc/breadcrumb/toc.json).
