@@ -18,9 +18,7 @@ This article explains how to collect logs on demand for Azure Local disconnected
 
 ## Overview
 
-On-demand log collection lets you collect logs from Azure Local disconnected operations for troubleshooting. Use this feature to provide logs to Microsoft support.
-
-Log collection when the management endpoint is inaccessible
+On-demand log collection lets you collect logs from Azure Local disconnected operations for troubleshooting. Use this feature to provide logs to Microsoft support. The logs collected include information about the Azure Local disconnected operations environment, such as the management endpoint, integrated runtime, and other components.
 
 ## Supported scenarios
 
