@@ -25,7 +25,7 @@
     - name: Networking
       items:
       - name: Networking concepts and requirements
-        href: aks-hci-network-system-requirements.md
+        href: network-system-requirements.md
       - name: IP address planning
         href: aks-hci-ip-address-planning.md
       - name: Load balancer
@@ -201,6 +201,21 @@
       href: connectivity-troubleshoot.md
     - name: Cluster status stuck during upgrade
       href: cluster-upgrade-status.md
+  - name: Security
+    items:  
+    - name: Security book - recommendations and best practices
+      href: /azure/azure-arc/kubernetes/conceptual-security-book?toc=/azure/aks/aksarc/toc.json&bc=/azure/aks/aksarc/breadcrumb/toc.json?toc=/azure/aks/aksarc/toc.json&bc=/azure/aks/aksarc/breadcrumb/toc.json
+      displayName: security, best practices, recommendations
+    - name: Securing your platform
+      href: /azure/azure-arc/kubernetes/conceptual-secure-your-platform?toc=/azure/aks/aksarc/toc.json&bc=/azure/aks/aksarc/breadcrumb/toc.json
+    - name: Securing your workloads
+      href: /azure/azure-arc/kubernetes/conceptual-secure-your-workloads?toc=/azure/aks/aksarc/toc.json&bc=/azure/aks/aksarc/breadcrumb/toc.json
+    - name: Securing your operations
+      href: /azure/azure-arc/kubernetes/conceptual-secure-your-operations?toc=/azure/aks/aksarc/toc.json&bc=/azure/aks/aksarc/breadcrumb/toc.json
+    - name: Securing your data
+      href: /azure/azure-arc/kubernetes/conceptual-secure-your-data?toc=/azure/aks/aksarc/toc.json&bc=/azure/aks/aksarc/breadcrumb/toc.json
+    - name: Securing your network
+      href: /azure/azure-arc/kubernetes/conceptual-secure-your-network?toc=/azure/aks/aksarc/toc.json&bc=/azure/aks/aksarc/breadcrumb/toc.json
   - name: Reference
     items:
     - name: Azure CLI

@@ -345,6 +345,7 @@ Here are the summarized considerations for DNS servers addresses:
 |4     | It is not supported to change the DNS servers after deployment. Make sure you plan your DNS strategy before doing the Azure Local deployment.       |
 |5     | When defining an array of multiple DNS servers on an ARM template for the Infrastructure network, make sure each value is within quotes "" and separated by commas, as in the following example.  |
 |6     | It is not supported to run the DNS servers used by Azure Local infrastructure in virtual machines running inside the Azure Local instance. |
+|7     | All DNS servers configured must resolve on-premises domains required for the infrastructure. Public DNS Servers such as 8.8.8.8 are not supported.
 
 ```powershell
 "dnsServers": [
