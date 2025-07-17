@@ -1,16 +1,16 @@
 ---
-title: Install solution upgrade on Azure Local via Azure Resource Manager template
-description: Learn how to install the solution upgrade on your Azure Local instance via Azure Resource Manager template.
+title: Install solution upgrade on Azure Local using Azure Resource Manager template
+description: Learn how to install the solution upgrade on your Azure Local instance using Azure Resource Manager template.
 author: alkohli
 ms.topic: how-to
-ms.date: 07/14/2025
+ms.date: 07/16/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
 ---
 
 
-# Install solution upgrade on Azure Local via Azure Resource Manager template
+# Install solution upgrade on Azure Local using Azure Resource Manager template
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2-22h2.md)]
 
@@ -52,14 +52,14 @@ Before you install the solution upgrade, make sure that you:
 There are a few things to consider before you begin the solution upgrade process:
 
 - The solution upgrade isn't yet supported on OS version 26100.xxxx.
-- Microsoft only supports upgrade applied from Azure Local resource page. Use of third party tools to install upgrades isn't supported.
+<!--Confirm if this point is valid for ARM upgrade-- Microsoft only supports upgrade applied from Azure Local resource page. Use of third party tools to install upgrades isn't supported.-->
 - We recommend you perform the solution upgrade during a maintenance window. After the upgrade, host machine might reboot and the workloads will be live migrated, causing brief disconnections.
-- If you have Azure Kubernetes Service (AKS) workloads on Azure Local, wait for the solution upgrade banner to appear on the Azure Local resource page. Then, remove AKS and all AKS hybrid settings before you apply the solution upgrade.
+<!--Confirm if this point is valid for ARM upgrade- If you have Azure Kubernetes Service (AKS) workloads on Azure Local, wait for the solution upgrade banner to appear on the Azure Local resource page. Then, remove AKS and all AKS hybrid settings before you apply the solution upgrade.-->
 - By installing the solution upgrade, existing Hyper-V VMs won't automatically become Azure Arc VMs.
 
 ## Step 1: Prepare Azure resources
 
-Follow these steps to prepare the Azure resources you need for the deployment:
+Follow these steps to prepare the Azure resources you need for the upgrade:
 
 ::: moniker range="<=azloc-24113"
 
@@ -77,15 +77,15 @@ The steps are also summarized here:
 
 1. Provide a **Name** for the application, select a **Supported account type**, and then select **Register**.
 
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/create-service-principal-1a.png" alt-text="Screenshot showing Register an application for service principal creation." lightbox="./media/deployment-azure-resource-manager-template/create-service-principal-1a.png":::
+    :::image type="content" source="./media/install-solution-upgrade-azure-resource-manager-template/create-service-principal-1a.png" alt-text="Screenshot showing Register an application for service principal creation." lightbox="./media/install-solution-upgrade-azure-resource-manager-template/create-service-principal-1a.png":::
 
 1. Once the service principal is created, go to the **Enterprise applications** page. Search for and select the SPN you created.
 
-   :::image type="content" source="./media/deployment-azure-resource-manager-template/create-service-principal-2a.png" alt-text="Screenshot showing search results for the service principal created." lightbox="./media/deployment-azure-resource-manager-template/create-service-principal-2a.png":::
+   :::image type="content" source="./media/install-solution-upgrade-azure-resource-manager-template/create-service-principal-2a.png" alt-text="Screenshot showing search results for the service principal created." lightbox="./media/install-solution-upgrade-azure-resource-manager-template/create-service-principal-2a.png":::
 
 1. Under properties, copy the **Application (client) ID**  and the **Object ID** for this service principal.
 
-   :::image type="content" source="./media/deployment-azure-resource-manager-template/create-service-principal-2b.png" alt-text="Screenshot showing Application (client) ID and the object ID for the service principal created." lightbox="./media/deployment-azure-resource-manager-template/create-service-principal-2b.png":::
+   :::image type="content" source="./media/install-solution-upgrade-azure-resource-manager-template/create-service-principal-2b.png" alt-text="Screenshot showing Application (client) ID and the object ID for the service principal created." lightbox="./media/install-solution-upgrade-azure-resource-manager-template/create-service-principal-2b.png":::
 
     You use the **Application (client) ID** against the `arbDeploymentAppID` parameter and the **Object ID** against the `arbDeploymentSPNObjectID` parameter in the Resource Manager template.
 
@@ -94,18 +94,18 @@ The steps are also summarized here:
 1. Go to the application registration that you created and browse to **Certificates & secrets > Client secrets**.
 1. Select **+ New client** secret.
 
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/create-client-secret-1.png" alt-text="Screenshot showing creation of a new client secret." lightbox="./media/deployment-azure-resource-manager-template/create-client-secret-1.png":::
+    :::image type="content" source="./media/install-solution-upgrade-azure-resource-manager-template/create-client-secret-1.png" alt-text="Screenshot showing creation of a new client secret." lightbox="./media/install-solution-upgrade-azure-resource-manager-template/create-client-secret-1.png":::
 
 1. Add a **Description** for the client secret and provide a timeframe when it **Expires**. Select **Add**.
 
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/create-client-secret-2.png" alt-text="Screenshot showing Add a client secret blade." lightbox="./media/deployment-azure-resource-manager-template/create-client-secret-2.png":::
+    :::image type="content" source="./media/install-solution-upgrade-azure-resource-manager-template/create-client-secret-2.png" alt-text="Screenshot showing Add a client secret blade." lightbox="./media/install-solution-upgrade-azure-resource-manager-template/create-client-secret-2.png":::
 
 1. Copy the **client secret value** as you use it later.
 
     > [!Note]
     > For the application client ID, you will need it's secret value. Client secret values can't be viewed except for immediately after creation. Be sure to save this value when created before leaving the page.
 
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/create-client-secret-3.png" alt-text="Screenshot showing client secret value." lightbox="./media/deployment-azure-resource-manager-template/create-client-secret-3.png":::
+    :::image type="content" source="./media/install-solution-upgrade-azure-resource-manager-template/create-client-secret-3.png" alt-text="Screenshot showing client secret value." lightbox="./media/install-solution-upgrade-azure-resource-manager-template/create-client-secret-3.png":::
 
     You use the **client secret value** against the `arbDeploymentAppSecret` parameter in the Resource Manager template.
 
@@ -118,11 +118,11 @@ This object ID for the Azure Local Resource Provide (RP) is unique per Azure ten
 1. In the Azure portal, search for and go to Microsoft Entra ID.  
 1. Go to the **Overview** tab and search for *Microsoft.AzureStackHCI Resource Provider*.
 
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/search-azure-stackhci-resource-provider-1a.png" alt-text="Screenshot showing the search for the Azure Local Resource Provider service principal." lightbox="./media/deployment-azure-resource-manager-template/search-azure-stackhci-resource-provider-1a.png":::
+    :::image type="content" source="./media/install-solution-upgrade-azure-resource-manager-template/search-azure-stackhci-resource-provider-1a.png" alt-text="Screenshot showing the search for the Azure Local Resource Provider service principal." lightbox="./media/install-solution-upgrade-azure-resource-manager-template/search-azure-stackhci-resource-provider-1a.png":::
 
 1. Select the Service Principal Name that is listed and copy the **Object ID**.
 
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/get-azure-stackhci-object-id-1a.png" alt-text="Screenshot showing the object ID for the Azure Local Resource Provider service principal." lightbox="./media/deployment-azure-resource-manager-template/get-azure-stackhci-object-id-1a.png":::
+    :::image type="content" source="./media/install-solution-upgrade-azure-resource-manager-template/get-azure-stackhci-object-id-1a.png" alt-text="Screenshot showing the object ID for the Azure Local Resource Provider service principal." lightbox="./media/install-solution-upgrade-azure-resource-manager-template/get-azure-stackhci-object-id-1a.png":::
 
     Alternatively, you can use PowerShell to get the object ID of the Azure Local RP service principal. Run the following command in PowerShell:
 
@@ -152,11 +152,11 @@ Follow these steps to install the solution upgrade:
 
 5. When finished, select the **Select template** button.
 
-    :::image type="content" source="./media/install-solution-upgrade-azure-resource-manager-template/upgrade-arm-template.png" alt-text="Screenshot showing template selected for the solution upgrade." lightbox="./media/install-solution-upgrade-azure-resource-manager-template/upgrade-arm-template.png":::
+    :::image type="content" source="./media/install-solution-upgrade-azure-resource-manager-template/upgrade-cluster-24113-arm-template.png" alt-text="Screenshot showing the upgrade-cluster-2411.3 template selected for the solution upgrade." lightbox="./media/install-solution-upgrade-azure-resource-manager-template/upgrade-cluster-24113-arm-template.png":::
 
 6. On the **Basics** tab, you see the **Custom deployment** page. You can select the various parameters through the dropdown lists or select **Edit parameters**.
 
-    :::image type="content" source="./media/install-solution-upgrade-azure-resource-manager-template/upgrade-template-parameters.png" alt-text="Screenshot showing Custom deployment page on the Basics tab." lightbox="./media/install-solution-upgrade-azure-resource-manager-template/upgrade-template-parameters.png":::
+    :::image type="content" source="./media/install-solution-upgrade-azure-resource-manager-template/upgrade-cluster-24113-arm-template-parameters.png" alt-text="Screenshot showing Custom deployment page on the Basics tab for the upgrade-cluster-2411.3 template." lightbox="./media/install-solution-upgrade-azure-resource-manager-template/upgrade-cluster-24113-arm-template-parameters.png":::
 
     > [!NOTE]
     > For an example parameter file that shows the format of various inputs, such as `ArcNodeResourceId`, see [azuredeploy.parameters.json](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.azurestackhci/upgrade-cluster-2411.3/azuredeploy.parameters.json).
@@ -169,11 +169,11 @@ Follow these steps to install the solution upgrade:
 
 5. When finished, select the **Select template** button.
 
-    :::image type="content" source="./media/install-solution-upgrade-azure-resource-manager-template/upgrade-arm-template.png" alt-text="Screenshot showing template selected for the solution upgrade." lightbox="./media/install-solution-upgrade-azure-resource-manager-template/upgrade-arm-template.png":::
+    :::image type="content" source="./media/install-solution-upgrade-azure-resource-manager-template/upgrade-cluster-arm-template.png" alt-text="Screenshot showing template selected for the solution upgrade." lightbox="./media/install-solution-upgrade-azure-resource-manager-template/upgrade-cluster-arm-template.png":::
 
 6. On the **Basics** tab, you see the **Custom deployment** page. You can select the various parameters through the dropdown lists or select **Edit parameters**.
 
-    :::image type="content" source="./media/install-solution-upgrade-azure-resource-manager-template/upgrade-template-parameters.png" alt-text="Screenshot showing Custom deployment page on the Basics tab." lightbox="./media/install-solution-upgrade-azure-resource-manager-template/upgrade-template-parameters.png":::
+    :::image type="content" source="./media/install-solution-upgrade-azure-resource-manager-template/upgrade-cluster-template-parameters.png" alt-text="Screenshot showing Custom deployment page on the Basics tab." lightbox="./media/install-solution-upgrade-azure-resource-manager-template/upgrade-cluster-template-parameters.png":::
 
     > [!NOTE]
     > For an example parameter file that shows the format of various inputs, such as `ArcNodeResourceId`, see [azuredeploy.parameters.json](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.azurestackhci/upgrade-cluster/azuredeploy.parameters.json).
@@ -190,21 +190,21 @@ Follow these steps to install the solution upgrade:
 
 10. Select **Review + create**.
 
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-6.png" alt-text="Screenshot showing Review + Create selected on Basics tab." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-6.png":::
+    :::image type="content" source="./media/install-solution-upgrade-azure-resource-manager-template/deploy-arm-template-6.png" alt-text="Screenshot showing Review + Create selected on Basics tab." lightbox="./media/install-solution-upgrade-azure-resource-manager-template/deploy-arm-template-6.png":::
 
 11. On the **Review + Create** tab, select **Create**. This creates the remaining prerequisite resources and validates the deployment. Validation takes about 10 minutes to complete.
 
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-7.png" alt-text="Screenshot showing Create selected on Review + Create tab." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-7.png":::
+    :::image type="content" source="./media/install-solution-upgrade-azure-resource-manager-template/deploy-arm-template-7.png" alt-text="Screenshot showing Create selected on Review + Create tab." lightbox="./media/install-solution-upgrade-azure-resource-manager-template/deploy-arm-template-7.png":::
 
 12. Once validation is complete, select **Redeploy**.
 
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-7a.png" alt-text="Screenshot showing Redeploy selected." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-7a.png":::
+    :::image type="content" source="./media/install-solution-upgrade-azure-resource-manager-template/deploy-arm-template-7a.png" alt-text="Screenshot showing Redeploy selected." lightbox="./media/install-solution-upgrade-azure-resource-manager-template/deploy-arm-template-7a.png":::
 
 13. On the **Custom deployment** screen, select **Edit parameters**. Load up the previously saved parameters and select **Save**.
 
 14. At the bottom of the workspace, change the final value in the JSON from **Validate** to **Deploy**, where **Deployment Mode = Deploy**.
 
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-7b.png" alt-text="Screenshot showing deploy selected for deployment mode." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-7b.png":::
+    :::image type="content" source="./media/install-solution-upgrade-azure-resource-manager-template/deploy-arm-template-7b.png" alt-text="Screenshot showing deploy selected for deployment mode." lightbox="./media/install-solution-upgrade-azure-resource-manager-template/deploy-arm-template-7b.png":::
 
 15. Verify that all the fields for the Resource Manager deployment template are filled in by the Parameters JSON.
 
@@ -220,7 +220,7 @@ Follow these steps to install the solution upgrade:
 
     Once deployment initiates, there's a limited Environment Checker run, a full Environment Checker run, and cloud deployment starts. After a few minutes, you can monitor deployment in the portal.
 
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-9.png" alt-text="Screenshot showing the status of environment checker validation." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-9.png":::
+    :::image type="content" source="./media/install-solution-upgrade-azure-resource-manager-template/deploy-arm-template-9.png" alt-text="Screenshot showing the status of environment checker validation." lightbox="./media/install-solution-upgrade-azure-resource-manager-template/deploy-arm-template-9.png":::
 
 20. In a new browser window, navigate to the resource group for your environment. Select the cluster resource.
 
@@ -234,7 +234,7 @@ The following table describes the parameters that you define in the ARM template
 
 | Parameter | Description |
 |--|--|
-| deploymentMode | Determines if the deployment process should only validate or proceed with full deployment:<br/>- **Validate**: Creates Azure resources for this system and validates your system's readiness to deploy.<br/>- **Deploy**: Performs the actual deployment after successful validation. |
+| deploymentMode | Determines if the upgrade process should only validate or proceed with full upgrade:<br/>- **Validate**: Validates your system's readiness to upgrade.<br/>- **Deploy**: Performs the actual upgrade after successful validation. |
 | keyVaultName | Name of the Azure Key Vault to be used for storing secrets.<br/>For naming conventions, see [Microsoft.KeyVault](/azure/azure-resource-manager/management/resource-name-rules#microsoftkeyvault) in the Naming rules and restrictions for Azure resources article. |
 | softDeleteRetentionDays | Number of days that deleted items (such as secrets, keys, or certificates) are retained in an Azure Key Vault before they are permanently deleted.<br/>Specify a value between 7 and 90 days. You can’t change the retention period later. |
 | diagnosticStorageAccountName | Name of the Azure Storage Account used to store key vault audit logs. This account is a locally redundant storage (LRS) account with a lock. <br/>For more information, see [Azure Storage Account](/azure/storage/common/storage-account-create?tabs=azure-portal). For naming conventions, see [Azure Storage account names](/azure/storage/common/storage-account-overview#storage-account-name).|
@@ -249,8 +249,8 @@ The following table describes the parameters that you define in the ARM template
 | hciResourceProviderObjectID | |
 | arcNodeResourceIds | Array of resource IDs of the Azure Arc-enabled servers that are part of this Azure Local cluster. |
 | domainFqdn | Fully-qualified domain name (FQDN) for the Active Directory Domain Services prepared for deployment. |
-| adouPath | |
-| securityLevel | |
+| adouPath | Path of the Organizational Unit (OU) created for this deployment. The OU can't be at the top level of the domain. For example: OU=Local001,DC=contoso,DC=com. |
+| securityLevel | Security configuration profile to be applied to the Azure Local cluster during deployment. The default is **Recommended**. |
 | subnetMask | The subnet mask for the management network used by the Azure Local deployment. |
 | defaultGateway | The default gateway for deploying an Azure Local cluster. |
 | startingIPAddress | The first IP address in a contiguous block of at least six static IP addresses on your management network's subnet, omitting addresses already used by the machines.<br/>These IPs are used by Azure Local and internal infrastructure (Arc Resource Bridge) that's required for Arc VM management and AKS Hybrid. |
