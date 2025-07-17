@@ -24,8 +24,8 @@ The following sections describe known issues for AKS enabled by Azure Arc:
 
 | AKS Arc CRUD operation | Issue | Fix status |
 |------------------------|-------|------------|
-| AKS steady state       | [AKS Arc telemetry pod consumes too much memory and CPU](telemetry-pod-resources.md) | Active |
 | AKS cluster delete     | [Deleted AKS Arc cluster still visible on Azure portal](deleted-cluster-visible.md) | Active |
+| AKS steady state       | [AKS Arc telemetry pod consumes too much memory and CPU](telemetry-pod-resources.md) | Fixed in 2507 release  |
 | AKS cluster create     | [Can't create AKS cluster or scale node pool because of issues with AKS Arc images](gallery-image-not-usable.md) | Fixed in 2507 release |
 | AKS steady state       | [Disk space exhaustion on control plane VMs due to accumulation of kube-apiserver audit logs](kube-apiserver-log-overflow.md) | Fixed in 2507 release |
 | AKS cluster upgrade    | [AKS Arc cluster stuck in "Upgrading" state](cluster-upgrade-status.md) | Fixed in 2505 release |
@@ -43,7 +43,7 @@ The following sections describe known issues for AKS enabled by Azure Arc:
 | Create validation      | [KubeAPIServer unreachable error](kube-api-server-unreachable.md) |
 | Network configuration issues | [Use diagnostic checker](aks-arc-diagnostic-checker.md) |
 | Kubernetes steady state   | [Resolve issues due to out-of-band deletion of storage volumes](delete-storage-volume.md) |
-| Kubernetes steady state   | [Repeated Entra authentication prompts when running kubectl with Kubernetes RBAC](entra-prompts.md) | 
+| Kubernetes steady state   | [Repeated Entra authentication prompts when running kubectl with Kubernetes RBAC](entra-prompts.md) |
 | Release validation     | [Azure Advisor upgrade recommendation message](azure-advisor-upgrade.md) |
 | Network validation | [Network validation error due to .local domain](network-validation-error-local.md) |
 | Network validation | [Troubleshoot BGP with FRR in AKS Arc environments](connectivity-troubleshoot.md) |

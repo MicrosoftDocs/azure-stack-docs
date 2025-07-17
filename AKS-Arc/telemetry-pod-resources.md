@@ -9,8 +9,6 @@ ms.reviewer: abha
 
 ---
 
-# AKS Arc telemetry pod consumes too much memory and CPU
-
 ## Symptoms
 
 The **akshci-telemetry** pod in a AKS Arc cluster can over time consume a lot of CPU and memory resources. If metrics are enabled, you can verify the CPU and memory usage using the following `kubectl` command:
@@ -28,9 +26,13 @@ akshci-telemetry-5df56fd5-rjqk4   996m         152Mi
 
 ## Mitigation
 
+This issue was fixed in AKS on [Azure Local, version 2507](/azure/azure-local/whats-new?view=azloc-2507&preserve-view=true#features-and-improvements-in-2507). Upgrade your Azure Local deployment to the 2507 build.
+
+### Workaround for Azure Local versions 2506 and older
+
 To resolve this issue, set default **resource limits** for the pods in the `kube-system` namespace.
 
-### Important notes
+#### Important notes
 
 - Verify if you have any pods in the **kube-system** namespace that might require more memory than the default limit setting. If so, adjustments might be needed.
 - The **LimitRange** is applied to the **namespace**; in this case, the `kube-system` namespace. The default resource limits also apply to new pods that don't specify their own limits.
@@ -40,7 +42,7 @@ To resolve this issue, set default **resource limits** for the pods in the `kube
   
 To proceed with setting the resource limits, you can run the following script. While the script uses `az aksarc get-credentials`, you can also use `az connectedk8s proxy` to get the proxy kubeconfig and access the Kubernetes cluster.
 
-### Define the LimitRange YAML to set default CPU and memory limits
+#### Define the LimitRange YAML to set default CPU and memory limits
 
 ```powershell
 # Set the $cluster_name and $resource_group of the aksarc cluster
@@ -76,7 +78,7 @@ sleep 5
 kubectl get pods -l app=akshci-telemetry -n kube-system --kubeconfig "./kubeconfig-$cluster_name"
 ```
 
-### Validate if the resource limits were applied correctly
+#### Validate if the resource limits were applied correctly
 
 1. Check the resource limits in the pod's YAML configuration:
 
