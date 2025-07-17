@@ -27,7 +27,7 @@ To install the solution upgrade via the Azure portal, see [Install solution upgr
 
 Before you install the solution upgrade, make sure that you:
 
-- Validate the system using the Environment Checker as per the instructions in [Assess solution upgrade readiness](./validate-solution-upgrade-readiness.md#run-the-validation).
+<!--Confirm if this validate step is required. - Validate the system using the Environment Checker as per the instructions in [Assess solution upgrade readiness](./validate-solution-upgrade-readiness.md#run-the-validation).-->
 - Have failover cluster name between 3 to 15 characters.
 - Create an Active Directory Lifecycle Manager (LCM) user account that's a member of the local Administrator group. For instructions, see [Prepare Active Directory for Azure Local deployment](../deploy/deployment-prep-active-directory.md).
 - Have IPv4 network range that matches your host IP address subnet with six, contiguous IP addresses available for new Azure Arc services. Work with your network administrator to ensure that the IP addresses aren't in use and meet the outbound connectivity requirement.
@@ -118,11 +118,11 @@ This object ID for the Azure Local Resource Provide (RP) is unique per Azure ten
 1. In the Azure portal, search for and go to Microsoft Entra ID.  
 1. Go to the **Overview** tab and search for *Microsoft.AzureStackHCI Resource Provider*.
 
-    :::image type="content" source="./media/install-solution-upgrade-azure-resource-manager-template/search-azure-stackhci-resource-provider-overview.png" alt-text="Screenshot showing the search for the Azure Local Resource Provider service principal." lightbox="./media/install-solution-upgrade-azure-resource-manager-template/search-azure-stackhci-resource-provider-overview.png":::
+    :::image type="content" source="./media/install-solution-upgrade-azure-resource-manager-template/search-resource-provider-overview.png" alt-text="Screenshot showing the search for the Azure Local Resource Provider service principal." lightbox="./media/install-solution-upgrade-azure-resource-manager-template/search-resource-provider-overview.png":::
 
 1. Select the Service Principal Name that is listed and copy the **Object ID**.
 
-    :::image type="content" source="./media/install-solution-upgrade-azure-resource-manager-template/get-azure-stackhci-object-id.png" alt-text="Screenshot showing the object ID for the Azure Local Resource Provider service principal." lightbox="./media/install-solution-upgrade-azure-resource-manager-template/get-azure-stackhci-object-id.png":::
+    :::image type="content" source="./media/install-solution-upgrade-azure-resource-manager-template/get-object-id.png" alt-text="Screenshot showing the object ID for the Azure Local Resource Provider service principal." lightbox="./media/install-solution-upgrade-azure-resource-manager-template/get-object-id.png":::
 
     Alternatively, you can use PowerShell to get the object ID of the Azure Local RP service principal. Run the following command in PowerShell:
 
@@ -133,6 +133,12 @@ This object ID for the Azure Local Resource Provide (RP) is unique per Azure ten
     You use the **Object ID** against the `hciResourceProviderObjectID` parameter in the Resource Manager template.
 
 ## Install the solution upgrade using Azure Resource Manager template
+
+An ARM template creates and assigns all the resource permissions required for the upgrade.
+With all the prerequisite and preparation steps complete, you're ready to upgrade using a known good and tested ARM template and corresponding parameters JSON file. Use the parameters contained in the JSON file to fill out all values, including the values generated previously.
+For an example of a parameter JSON file, see [azuredeploy.parameters.json](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.azurestackhci/upgrade-cluster/azuredeploy.parameters.json). For detailed descriptions of the parameters defined in this file, see [ARM template parameters reference](#arm-template-parameters-reference).
+> [!IMPORTANT]
+> Ensure that all parameters in the JSON file are filled out, including placeholders that appear as `[“”]`, which indicate that the parameter expects an array structure. Replace these with actual values based on your deployment environment, or validation will fail.
 
 Follow these steps to install the solution upgrade:
 
@@ -180,7 +186,7 @@ Follow these steps to install the solution upgrade:
 
 ::: moniker-end
 
-7. Edit parameters such as network intent or storage network intent. Once the parameters are all filled out, **Save** the parameters file.
+7. Edit parameters. Once the parameters are all filled out, **Save** the parameters file.
 
     :::image type="content" source="./media/install-solution-upgrade-azure-resource-manager-template/edit-parameters-file.png" alt-text="Screenshot showing parameters filled out for the template." lightbox="./media/install-solution-upgrade-azure-resource-manager-template/edit-parameters-file.png":::
 
@@ -192,7 +198,7 @@ Follow these steps to install the solution upgrade:
 
     :::image type="content" source="./media/install-solution-upgrade-azure-resource-manager-template/deploy-arm-template-review-create.png" alt-text="Screenshot showing Review + Create selected on Basics tab." lightbox="./media/install-solution-upgrade-azure-resource-manager-template/deploy-arm-template-review-create.png":::
 
-11. On the **Review + Create** tab, select **Create**. This creates the remaining prerequisite resources and validates the deployment. Validation takes about 10 minutes to complete.
+11. On the **Review + Create** tab, select **Create**. This creates the remaining prerequisite resources and validates the upgrade. Validation takes about 10 minutes to complete.
 
     :::image type="content" source="./media/install-solution-upgrade-azure-resource-manager-template/deploy-arm-template-create.png" alt-text="Screenshot showing Create selected on Review + Create tab." lightbox="./media/install-solution-upgrade-azure-resource-manager-template/deploy-arm-template-create.png":::
 
@@ -202,15 +208,15 @@ Follow these steps to install the solution upgrade:
 
 13. On the **Custom deployment** screen, select **Edit parameters**. Load up the previously saved parameters and select **Save**.
 
-14. At the bottom of the workspace, change the final value in the JSON from **Validate** to **Deploy**, where **Deployment Mode = Deploy**.
+14. Change the final value in the JSON from **Validate** to **Deploy**, where **Deployment Mode = Deploy**.
 
     :::image type="content" source="./media/install-solution-upgrade-azure-resource-manager-template/deploy-arm-template-deploy.png" alt-text="Screenshot showing deploy selected for deployment mode." lightbox="./media/install-solution-upgrade-azure-resource-manager-template/deploy-arm-template-deploy.png":::
 
-15. Verify that all the fields for the Resource Manager deployment template are filled in by the Parameters JSON.
+15. Verify that all the fields for the ARM template are filled in by the parameters JSON.
 
 16. Select the appropriate resource group for your environment.
 
-17. Scroll to the bottom, and confirm that **Deployment Mode = Deploy**.
+17. Confirm that **Deployment Mode = Deploy**.
 
 18. Select **Review + create**.
 
