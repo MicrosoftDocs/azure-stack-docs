@@ -79,7 +79,7 @@ Here's a brief overview of the tools and processes used during the deployment. A
 
 To prepare each machine for the disconnected operations appliance, follow these steps:
 
-1. Download the preview ISO (2411.2 and later).  
+1. Download the preview ISO (2506 and later).  
 
 1. Install the OS and configure the node networking for each Azure Local machine you intend to use to form an instance. For more information, see [Install the Azure Stack HCI operating system](../deploy/deployment-install-os.md).  
 
