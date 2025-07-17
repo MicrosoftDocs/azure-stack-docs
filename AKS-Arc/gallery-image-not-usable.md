@@ -43,19 +43,12 @@ When you run `az aksarc get-versions`, you see the following errors:
 
 ## Mitigation
 
-<<<<<<< HEAD
-This issue was fixed in AKS on [Azure Local, version 2507](/azure/azure-local/whats-new?view=azloc-2507&preserve-view=true#features-and-improvements-in-2507). Upgrade your Azure Local deployment to the 2507 build.
-
-- Once updated, confirm that the images have been downloaded successfully by running the `az aksarc get-versions` command.
-- You should now be able to create new clusters and scale existing clusters using the available images.
-=======
 This issue was fixed in [AKS on Azure Local, version 2507](/azure/azure-local/whats-new?view=azloc-2507&preserve-view=true#features-and-improvements-in-2507). Upgrade your Azure Local deployment to the 2507 build. 
 
 - Upgrade your Azure Local deployment to the 2507 build.
 - Once updated, confirm that the images were downloaded successfully by running the `az aksarc get-versions` command.
 - For new AKS clusters: new AKS clusters should now be created successfully.
 - For scaling existing AKS clusters: scaling existing AKS clusters continues to encounter issues. Please file a support case.
->>>>>>> 6a79df26cbc5a659ea2fe8a14489ae896cf5d54a
 
 ## Next steps
 
