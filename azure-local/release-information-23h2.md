@@ -112,7 +112,6 @@ The following table summarizes the release information for Azure Local across ol
 | 10.2311.4.6 <br><br> Availability date: 2024-03-20 | 25398.762 | [March OS security update](security-update/security-update.md?view=azloc-previous&preserve-view=true)  | [Features and improvements](./whats-new.md?view=azloc-previous&preserve-view=true#features-and-improvements-in-23114) | [Known issues](./known-issues.md?view=azloc-previous&preserve-view=true) |
 | 10.2402.0.23 <br><br> Availability date: 2024-02-13 | 25398.709 | [Feb OS security update](security-update/security-update.md?view=azloc-previous&preserve-view=true)  | [Features and improvements](./whats-new.md?view=azloc-previous&preserve-view=true#features-and-improvements-in-2402) | [Known issues](./known-issues.md?view=azloc-previous&preserve-view=true) |
 | 10.2311.3.12 <br><br> Availability date: 2024-02-13 | 25398.709 | [Feb OS security update](security-update/security-update.md?view=azloc-previous&preserve-view=true)  |  [Features and improvements](./whats-new.md?view=azloc-previous&preserve-view=true#features-and-improvements-in-23113) | [Known issues](./known-issues.md?view=azloc-previous&preserve-view=true) |
-| 10.2311.2.7 <br><br> Availability date: 2024-01-09 | 25398.643 | [Jan OS security update](security-update/security-update.md?view=azloc-previous&preserve-view=true)  | [Features and improvements](./whats-new.md?view=azloc-previous&preserve-view=true#features-and-improvements-in-23112-ga) | [Known issues](./known-issues.md?view=azloc-previous&preserve-view=true) |
 
 ## Next steps
 
