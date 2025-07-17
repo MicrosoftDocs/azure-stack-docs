@@ -25,7 +25,7 @@
     - name: Networking
       items:
       - name: Networking concepts and requirements
-        href: aks-hci-network-system-requirements.md
+        href: network-system-requirements.md
       - name: IP address planning
         href: aks-hci-ip-address-planning.md
       - name: Load balancer
