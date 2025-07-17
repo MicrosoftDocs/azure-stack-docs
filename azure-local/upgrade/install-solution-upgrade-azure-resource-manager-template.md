@@ -77,15 +77,15 @@ The steps are also summarized here:
 
 1. Provide a **Name** for the application, select a **Supported account type**, and then select **Register**.
 
-    :::image type="content" source="./media/install-solution-upgrade-azure-resource-manager-template/create-service-principal-1a.png" alt-text="Screenshot showing Register an application for service principal creation." lightbox="./media/install-solution-upgrade-azure-resource-manager-template/create-service-principal-1a.png":::
+    :::image type="content" source="./media/install-solution-upgrade-azure-resource-manager-template/create-service-principal-register.png" alt-text="Screenshot showing Register an application for service principal creation." lightbox="./media/install-solution-upgrade-azure-resource-manager-template/create-service-principal-register.png":::
 
 1. Once the service principal is created, go to the **Enterprise applications** page. Search for and select the SPN you created.
 
-   :::image type="content" source="./media/install-solution-upgrade-azure-resource-manager-template/create-service-principal-2a.png" alt-text="Screenshot showing search results for the service principal created." lightbox="./media/install-solution-upgrade-azure-resource-manager-template/create-service-principal-2a.png":::
+   :::image type="content" source="./media/install-solution-upgrade-azure-resource-manager-template/create-service-principal-search.png" alt-text="Screenshot showing search results for the service principal created." lightbox="./media/install-solution-upgrade-azure-resource-manager-template/create-service-principal-search.png":::
 
 1. Under properties, copy the **Application (client) ID**  and the **Object ID** for this service principal.
 
-   :::image type="content" source="./media/install-solution-upgrade-azure-resource-manager-template/create-service-principal-2b.png" alt-text="Screenshot showing Application (client) ID and the object ID for the service principal created." lightbox="./media/install-solution-upgrade-azure-resource-manager-template/create-service-principal-2b.png":::
+   :::image type="content" source="./media/install-solution-upgrade-azure-resource-manager-template/create-service-principal-id.png" alt-text="Screenshot showing Application (client) ID and the object ID for the service principal created." lightbox="./media/install-solution-upgrade-azure-resource-manager-template/create-service-principal-id.png":::
 
     You use the **Application (client) ID** against the `arbDeploymentAppID` parameter and the **Object ID** against the `arbDeploymentSPNObjectID` parameter in the Resource Manager template.
 
@@ -94,18 +94,18 @@ The steps are also summarized here:
 1. Go to the application registration that you created and browse to **Certificates & secrets > Client secrets**.
 1. Select **+ New client** secret.
 
-    :::image type="content" source="./media/install-solution-upgrade-azure-resource-manager-template/create-client-secret-1.png" alt-text="Screenshot showing creation of a new client secret." lightbox="./media/install-solution-upgrade-azure-resource-manager-template/create-client-secret-1.png":::
+    :::image type="content" source="./media/install-solution-upgrade-azure-resource-manager-template/create-client-secret-new.png" alt-text="Screenshot showing creation of a new client secret." lightbox="./media/install-solution-upgrade-azure-resource-manager-template/create-client-secret-new.png":::
 
 1. Add a **Description** for the client secret and provide a timeframe when it **Expires**. Select **Add**.
 
-    :::image type="content" source="./media/install-solution-upgrade-azure-resource-manager-template/create-client-secret-2.png" alt-text="Screenshot showing Add a client secret blade." lightbox="./media/install-solution-upgrade-azure-resource-manager-template/create-client-secret-2.png":::
+    :::image type="content" source="./media/install-solution-upgrade-azure-resource-manager-template/create-client-secret-add.png" alt-text="Screenshot showing Add a client secret blade." lightbox="./media/install-solution-upgrade-azure-resource-manager-template/create-client-secret-add.png":::
 
 1. Copy the **client secret value** as you use it later.
 
     > [!Note]
     > For the application client ID, you will need it's secret value. Client secret values can't be viewed except for immediately after creation. Be sure to save this value when created before leaving the page.
 
-    :::image type="content" source="./media/install-solution-upgrade-azure-resource-manager-template/create-client-secret-3.png" alt-text="Screenshot showing client secret value." lightbox="./media/install-solution-upgrade-azure-resource-manager-template/create-client-secret-3.png":::
+    :::image type="content" source="./media/install-solution-upgrade-azure-resource-manager-template/create-client-secret-value.png" alt-text="Screenshot showing client secret value." lightbox="./media/install-solution-upgrade-azure-resource-manager-template/create-client-secret-value.png":::
 
     You use the **client secret value** against the `arbDeploymentAppSecret` parameter in the Resource Manager template.
 
@@ -118,11 +118,11 @@ This object ID for the Azure Local Resource Provide (RP) is unique per Azure ten
 1. In the Azure portal, search for and go to Microsoft Entra ID.  
 1. Go to the **Overview** tab and search for *Microsoft.AzureStackHCI Resource Provider*.
 
-    :::image type="content" source="./media/install-solution-upgrade-azure-resource-manager-template/search-azure-stackhci-resource-provider-1a.png" alt-text="Screenshot showing the search for the Azure Local Resource Provider service principal." lightbox="./media/install-solution-upgrade-azure-resource-manager-template/search-azure-stackhci-resource-provider-1a.png":::
+    :::image type="content" source="./media/install-solution-upgrade-azure-resource-manager-template/search-azure-stackhci-resource-provider-overview.png" alt-text="Screenshot showing the search for the Azure Local Resource Provider service principal." lightbox="./media/install-solution-upgrade-azure-resource-manager-template/search-azure-stackhci-resource-provider-overview.png":::
 
 1. Select the Service Principal Name that is listed and copy the **Object ID**.
 
-    :::image type="content" source="./media/install-solution-upgrade-azure-resource-manager-template/get-azure-stackhci-object-id-1a.png" alt-text="Screenshot showing the object ID for the Azure Local Resource Provider service principal." lightbox="./media/install-solution-upgrade-azure-resource-manager-template/get-azure-stackhci-object-id-1a.png":::
+    :::image type="content" source="./media/install-solution-upgrade-azure-resource-manager-template/get-azure-stackhci-object-id.png" alt-text="Screenshot showing the object ID for the Azure Local Resource Provider service principal." lightbox="./media/install-solution-upgrade-azure-resource-manager-template/get-azure-stackhci-object-id.png":::
 
     Alternatively, you can use PowerShell to get the object ID of the Azure Local RP service principal. Run the following command in PowerShell:
 
@@ -140,11 +140,11 @@ Follow these steps to install the solution upgrade:
 
 2. Select **Create** under **Template deployment (deploy using custom templates)**.
 
-    :::image type="content" source="./media/install-solution-upgrade-azure-resource-manager-template/deploy-arm-template-1.png" alt-text="Screenshot showing the template deployment (deploy using custom template)." lightbox="./media/install-solution-upgrade-azure-resource-manager-template/deploy-arm-template-1.png":::
+    :::image type="content" source="./media/install-solution-upgrade-azure-resource-manager-template/deploy-arm-template.png" alt-text="Screenshot showing the template deployment (deploy using custom template)." lightbox="./media/install-solution-upgrade-azure-resource-manager-template/deploy-arm-template.png":::
 
 3. From the **Start with a quickstart template or template spec** section, select **Quickstart template** option.
 
-    :::image type="content" source="./media/install-solution-upgrade-azure-resource-manager-template/deploy-arm-template-2.png" alt-text="Screenshot showing the quickstart template selected." lightbox="./media/install-solution-upgrade-azure-resource-manager-template/deploy-arm-template-2.png":::
+    :::image type="content" source="./media/install-solution-upgrade-azure-resource-manager-template/deploy-arm-template-quickstart.png" alt-text="Screenshot showing the quickstart template selected." lightbox="./media/install-solution-upgrade-azure-resource-manager-template/deploy-arm-template-quickstart.png":::
 
 ::: moniker range="<=azloc-24113"
 
@@ -190,21 +190,21 @@ Follow these steps to install the solution upgrade:
 
 10. Select **Review + create**.
 
-    :::image type="content" source="./media/install-solution-upgrade-azure-resource-manager-template/deploy-arm-template-6.png" alt-text="Screenshot showing Review + Create selected on Basics tab." lightbox="./media/install-solution-upgrade-azure-resource-manager-template/deploy-arm-template-6.png":::
+    :::image type="content" source="./media/install-solution-upgrade-azure-resource-manager-template/deploy-arm-template-review-create.png" alt-text="Screenshot showing Review + Create selected on Basics tab." lightbox="./media/install-solution-upgrade-azure-resource-manager-template/deploy-arm-template-review-create.png":::
 
 11. On the **Review + Create** tab, select **Create**. This creates the remaining prerequisite resources and validates the deployment. Validation takes about 10 minutes to complete.
 
-    :::image type="content" source="./media/install-solution-upgrade-azure-resource-manager-template/deploy-arm-template-7.png" alt-text="Screenshot showing Create selected on Review + Create tab." lightbox="./media/install-solution-upgrade-azure-resource-manager-template/deploy-arm-template-7.png":::
+    :::image type="content" source="./media/install-solution-upgrade-azure-resource-manager-template/deploy-arm-template-create.png" alt-text="Screenshot showing Create selected on Review + Create tab." lightbox="./media/install-solution-upgrade-azure-resource-manager-template/deploy-arm-template-create.png":::
 
 12. Once validation is complete, select **Redeploy**.
 
-    :::image type="content" source="./media/install-solution-upgrade-azure-resource-manager-template/deploy-arm-template-7a.png" alt-text="Screenshot showing Redeploy selected." lightbox="./media/install-solution-upgrade-azure-resource-manager-template/deploy-arm-template-7a.png":::
+    :::image type="content" source="./media/install-solution-upgrade-azure-resource-manager-template/deploy-arm-template-redeploy.png" alt-text="Screenshot showing Redeploy selected." lightbox="./media/install-solution-upgrade-azure-resource-manager-template/deploy-arm-template-redeploy.png":::
 
 13. On the **Custom deployment** screen, select **Edit parameters**. Load up the previously saved parameters and select **Save**.
 
 14. At the bottom of the workspace, change the final value in the JSON from **Validate** to **Deploy**, where **Deployment Mode = Deploy**.
 
-    :::image type="content" source="./media/install-solution-upgrade-azure-resource-manager-template/deploy-arm-template-7b.png" alt-text="Screenshot showing deploy selected for deployment mode." lightbox="./media/install-solution-upgrade-azure-resource-manager-template/deploy-arm-template-7b.png":::
+    :::image type="content" source="./media/install-solution-upgrade-azure-resource-manager-template/deploy-arm-template-deploy.png" alt-text="Screenshot showing deploy selected for deployment mode." lightbox="./media/install-solution-upgrade-azure-resource-manager-template/deploy-arm-template-deploy.png":::
 
 15. Verify that all the fields for the Resource Manager deployment template are filled in by the Parameters JSON.
 
@@ -214,13 +214,13 @@ Follow these steps to install the solution upgrade:
 
 18. Select **Review + create**.
 
-19. Select **Create**. The deployment begins, using the existing prerequisite resources that were created during the **Validate** step.
+19. Select **Create**. The upgrade begins, using the existing prerequisite resources that were created during the **Validate** step.
 
-    The Deployment screen cycles on the cluster resource during deployment.
+    The Deployment screen cycles on the cluster resource during upgrade.
 
-    Once deployment initiates, there's a limited Environment Checker run, a full Environment Checker run, and cloud deployment starts. After a few minutes, you can monitor deployment in the portal.
+    Once the upgrade initiates, there's a limited Environment Checker run, a full Environment Checker run, and cloud upgrade starts. After a few minutes, you can monitor upgrade in the portal.
 
-    :::image type="content" source="./media/install-solution-upgrade-azure-resource-manager-template/deploy-arm-template-9.png" alt-text="Screenshot showing the status of environment checker validation." lightbox="./media/install-solution-upgrade-azure-resource-manager-template/deploy-arm-template-9.png":::
+    :::image type="content" source="./media/install-solution-upgrade-azure-resource-manager-template/deploy-arm-template-environment-checker.png" alt-text="Screenshot showing the status of environment checker validation." lightbox="./media/install-solution-upgrade-azure-resource-manager-template/deploy-arm-template-environment-checker.png":::
 
 20. In a new browser window, navigate to the resource group for your environment. Select the cluster resource.
 
