@@ -4,8 +4,8 @@ description: Learn about a known issue with Kubernetes cluster create or nodepoo
 ms.topic: troubleshooting
 author: sethmanheim
 ms.author: sethm
-ms.date: 04/01/2025
-ms.reviewer: abha
+ms.date: 07/17/2025
+ms.reviewer: rcheeran
 
 ---
 
@@ -43,7 +43,7 @@ When you run `az aksarc get-versions`, you see the following errors:
 
 ## Mitigation
 
-This issue was fixed in AKS on [Azure Local, version 2507](/azure/azure-local/whats-new?view=azloc-2507&preserve-view=true#features-and-improvements-in-2507). Upgrade your Azure Local deployment to the 2507 build. 
+This issue was fixed in [AKS on Azure Local, version 2507](/azure/azure-local/whats-new?view=azloc-2507&preserve-view=true#features-and-improvements-in-2507). Upgrade your Azure Local deployment to the 2507 build. 
 
 - Upgrade your Azure Local deployment to the 2507 build.
 - Once updated, confirm that the images have been downloaded successfully by running the `az aksarc get-versions` command.
