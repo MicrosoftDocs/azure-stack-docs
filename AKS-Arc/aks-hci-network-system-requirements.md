@@ -2,11 +2,11 @@
 title: AKS enabled by Azure Arc network requirements
 description: Learn about AKS network prerequisites.
 ms.topic: overview
-ms.date: 07/16/2025
+ms.date: 07/17/2025
 author: sethmanheim
 ms.author: sethm
 ms.reviewer: srikantsarwa
-ms.lastreviewed: 07/10/2025
+ms.lastreviewed: 07/17/2025
 ---
 
 # AKS enabled by Azure Arc network requirements
@@ -92,11 +92,11 @@ If you use [Arc gateway](/azure/azure-local/deploy/deployment-azure-arc-gateway-
 
 | Destination port | Destination                     | Source                          | Description                                                                 | Bi-directional cross-VLAN networking notes |
 |------------------|---------------------------------|---------------------------------|-----------------------------------------------------------------------------|--------------------------------------------|
-| **40343**        | Cluster IP address |  Logical network used for AKS Arc VMs | Required only when the Azure Local cluster is configured with Arc Gateway for outbound connectivity | If you use separate VLANs or subnets, ensure that the AKS Arc VMs can reach the Azure Local cluster IP address on port **40343**, and vice versa. |
+| **40343**        | Cluster IP address |  Logical network used for AKS Arc VMs | Required only when the Azure Local cluster is configured with Arc Gateway for outbound connectivity. | If you use separate VLANs or subnets, ensure that the AKS Arc VMs can reach the Azure Local cluster IP address on port **40343**, and vice versa. |
 
 ### Retrieve the Azure Local cluster IP address
 
-You can run the following PowerShell command on the cluster to get the IP address of the Azure Local cluster:
+You can run the following PowerShell commands on the cluster to get the IP address of the Azure Local cluster:
 
 ```powershell
 Get-ClusterResource -Name "Cluster IP Address" | Get-ClusterParameter -Name Address | Select-Object -Property Value
