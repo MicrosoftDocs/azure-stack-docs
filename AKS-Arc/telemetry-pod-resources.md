@@ -8,6 +8,7 @@ ms.date: 04/01/2025
 ms.reviewer: abha
 
 ---
+# Troubleshoot issue where AKS Arc telemetry pod consumes too much memory and CPU
 
 ## Symptoms
 
