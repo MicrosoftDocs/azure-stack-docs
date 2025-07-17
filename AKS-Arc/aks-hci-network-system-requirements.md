@@ -88,20 +88,18 @@ When you deploy Azure Local, you allocate a contiguous block of at least [six st
 
 ## Use Azure Arc gateway (preview) with Azure Local
 
-If you use Arc gateway to deploy your Azure Local cluster infrastructure, make sure that connectivity between the AKS subnet and the cluster IP is allowed on port 40343, as follows:
+If you use [Arc gateway](/azure/azure-local/deploy/deployment-azure-arc-gateway-overview) to deploy your Azure Local cluster infrastructure, make sure that connectivity between the AKS subnet and the cluster IP is allowed on port **40343**, as follows:
 
-| Port     | Direction       | Source/Destination                           | Notes |
-|----------|-----------------|-----------------------------------------------|-------|
-| **40343** | Outbound/Inbound | Cluster IP address (logical network used for AKS Arc VMs) | Required only when the Azure Local cluster is configured with Arc gateway for outbound connectivity. |
-
-This port is needed to enable communication between the AKS Arc VMs and the Azure Local cluster when Arc gateway is used.
+| Destination port | Destination                     | Source                          | Description                                                                 | Bi-directional cross-VLAN networking notes |
+|------------------|---------------------------------|---------------------------------|-----------------------------------------------------------------------------|--------------------------------------------|
+| **40343**        | Cluster IP address |  Logical network used for AKS Arc VMs | Required only when the Azure Local cluster is configured with Arc Gateway for outbound connectivity | If you use separate VLANs or subnets, ensure that the AKS Arc VMs can reach the Azure Local cluster IP address on port **40343**, and vice versa. |
 
 - If you use separate VLANs or subnets, ensure that the AKS Arc VMs can reach the Azure Local cluster IP address on port **40343**, and vice versa.
 - The AKS Arc VMs must have access to the management network where the Azure Local cluster resides.
 
 ### Retrieve the Azure Local cluster IP address
 
-You can run the following PowerShell command on the cluster to retrieve the IP address of the Azure Local cluster, which is used for communication between the AKS Arc VMs and the Azure Local cluster:
+You can run the following PowerShell command on the cluster to get the IP address of the Azure Local cluster:
 
 ```powershell
 Get-ClusterResource -Name "Cluster IP Address" | Get-ClusterParameter -Name Address | Select-Object -Property Value
