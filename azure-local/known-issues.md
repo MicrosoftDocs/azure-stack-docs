@@ -31,7 +31,7 @@ For the 2507 release of Azure Local, Microsoft released two security updates, ea
 | 12.2507.1001.8         | 26100.4652       |
 
 > [!IMPORTANT]
-> The new deployments of this software use the **12.2507.1001.8** build. You can also update an existing deployment from 2505 by using **11.2507.1001.7**.
+> The new deployments of this software use the **12.2507.1001.8** build. You can also update an existing deployment from 2506 by using **11.2507.1001.7**.
 
 Release notes for this version include the issues fixed in this release, known issues in this release, and release note issues carried over from previous versions.
 
