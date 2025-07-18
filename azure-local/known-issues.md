@@ -3,7 +3,7 @@ title: Release notes with fixed and known issues in Azure Local
 description: Read about the known issues and fixed issues in Azure Local.
 author: alkohli
 ms.topic: conceptual
-ms.date: 07/16/2025
+ms.date: 07/18/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
@@ -27,11 +27,11 @@ For the 2507 release of Azure Local, Microsoft released two security updates, ea
 
 | Solution version  | OS build  |
 |---------|---------|---------|
-| 11.2507.1001.5          | 25398.1732        |
-| 12.2507.1001.6         | 26100.4652       |
+| 11.2507.1001.7          | 25398.1732        |
+| 12.2507.1001.8         | 26100.4652       |
 
 > [!IMPORTANT]
-> The new deployments of this software use the **12.2507.1001.6** build. You can also update an existing deployment from 2505 by using **11.2507.1001.5**.
+> The new deployments of this software use the **12.2507.1001.8** build. You can also update an existing deployment from 2506 by using **11.2507.1001.7**.
 
 Release notes for this version include the issues fixed in this release, known issues in this release, and release note issues carried over from previous versions.
 
