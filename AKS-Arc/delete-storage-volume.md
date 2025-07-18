@@ -4,7 +4,9 @@ description: Learn how to mitigate issues after deleting storage volumes.
 author: sethmanheim
 ms.author: sethm
 ms.topic: troubleshooting
-ms.date: 02/28/2025
+ms.date: 07/18/2025
+ms.reviewer: guanghu
+ms.lastreviewed: 07/18/2025
 
 ---
 
@@ -18,10 +20,22 @@ AKS Arc workload data is stored on Azure Local storage volumes, including the AK
 
 ## Workaround
 
-To manage storage volumes on Azure Local, follow these steps:
+If the storage volume is accidentally deleted, you can mitigate the issue by recreating the storage path using the Azure CLI. For more information, see [Create storage path for Azure Local](/azure/azure-local/manage/create-storage-path). For example:
 
-- Ensure that you deleted all the storage path(s) that are created on that storage volume. Deleting storage paths raises an alert to indicate the workload that was stored on it. To delete the storage path, see [Delete a storage path](/azure/azure-local/manage/create-storage-path?view=azloc-24112&preserve-view=true&tabs=azurecli#delete-a-storage-path).
-- If you have an AKS Arc cluster that must be deleted, see [Delete the AKS Arc cluster](aks-create-clusters-cli.md#delete-the-cluster).
+```azurecli
+$storagepathname="<Storage path name>"
+$path="<Path on the disk to cluster shared volume>"
+$subscription="<Subscription ID>"
+$resource_group="<Resource group name>"
+$customLocName="<Custom location of your Azure Local>"
+$customLocationID="/subscriptions/<Subscription ID>/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customLocName"
+$location="<Azure region where the system is deployed>"
+
+az stack-hci-vm storagepath create --resource-group $resource_group --custom-location $customLocationID --name $storagepathname --path $path
+az stack-hci-vm storagepath update --resource-group $resource_group --custom-location $customLocationID --name $storagepathname --location $location
+```
+
+Once the storage path is recreated, the [MOC service](concepts-node-networking.md#microsoft-on-premises-cloud-service) automatically re-downloads the required **MocGalleryImages**.
 
 ## Next steps
 
