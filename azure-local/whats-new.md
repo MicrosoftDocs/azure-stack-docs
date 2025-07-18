@@ -5,7 +5,7 @@ ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 07/16/2025
+ms.date: 07/18/2025
 ---
 
 # What's new in Azure Local?
@@ -25,8 +25,8 @@ There are two 2507 releases for July. Here are the details of each release:
 
 |Solution version  | OS version |
 |---------|---------|
-|12.2507.1001.6 |  26100.4652 |
-|11.2507.1001.5  | 25398.1732  |
+|12.2507.1001.8 |  26100.4652 |
+|11.2507.1001.7  | 25398.1732  |
 
 For more information, see [Release information summary](./release-information-23h2.md).
 
