@@ -3,7 +3,7 @@ title: Azure Resource Manager template deployment for Azure Local, version 23H2
 description: Learn how to prepare and then deploy Azure Local instance, version 23H2 using the Azure Resource Manager template.
 author: alkohli
 ms.topic: how-to
-ms.date: 07/08/2025
+ms.date: 07/18/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -12,10 +12,10 @@ ms.custom: devx-track-arm-template
 
 # Deploy Azure Local via Azure Resource Manager deployment template
 
-This article details how to use an Azure Resource Manager template in the Azure portal to deploy an Azure Local in your environment. The article also contains the prerequisites and the preparation steps required to begin the deployment.
+This article details how to use an Azure Resource Manager (ARM) template in the Azure portal to deploy an Azure Local in your environment. The article also contains the prerequisites and the preparation steps required to begin the deployment.
 
 > [!IMPORTANT]
-> Azure Resource Manager template deployment of Azure Local systems is targeted for deployments-at-scale. The intended audience for this deployment is IT administrators who have experience deploying Azure Local instances. We recommend that you deploy a system via the Azure portal first, and then perform subsequent deployments via the Resource Manager template.
+> ARM template deployment of Azure Local systems is targeted for deployments-at-scale. The intended audience for this deployment is IT administrators who have experience deploying Azure Local instances. We recommend that you deploy a system via the Azure portal first, and then perform subsequent deployments via the ARM template.
 
 ## Prerequisites
 
@@ -65,7 +65,7 @@ The steps are also summarized here:
 
    :::image type="content" source="./media/deployment-azure-resource-manager-template/create-service-principal-2b.png" alt-text="Screenshot showing Application (client) ID and the object ID for the service principal created." lightbox="./media/deployment-azure-resource-manager-template/create-service-principal-2b.png":::
 
-    You use the **Application (client) ID** against the `arbDeploymentAppID` parameter and the **Object ID** against the `arbDeploymentSPNObjectID` parameter in the Resource Manager template.
+    You use the **Application (client) ID** against the `arbDeploymentAppID` parameter and the **Object ID** against the `arbDeploymentSPNObjectID` parameter in the ARM template.
 
 ### Create a client secret for ARB service principal
 
@@ -85,7 +85,7 @@ The steps are also summarized here:
 
     :::image type="content" source="./media/deployment-azure-resource-manager-template/create-client-secret-3.png" alt-text="Screenshot showing client secret value." lightbox="./media/deployment-azure-resource-manager-template/create-client-secret-3.png":::
 
-    You use the **client secret value** against the `arbDeploymentAppSecret` parameter in the Resource Manager template.
+    You use the **client secret value** against the `arbDeploymentAppSecret` parameter in the ARM.
 
 ::: moniker-end
 
@@ -108,13 +108,13 @@ This object ID for the Azure Local Resource Provide (RP) is unique per Azure ten
     Get-AzADServicePrincipal -DisplayName "Microsoft.AzureStackHCI Resource Provider"
     ```
 
-    You use the **Object ID** against the `hciResourceProviderObjectID` parameter in the Resource Manager template.
+    You use the **Object ID** against the `hciResourceProviderObjectID` parameter in the ARM template.
 
-## Step 2: Deploy using Azure Resource Manager template
+## Step 2: Deploy using ARM template
 
-An Azure Resource Manager (ARM) creates and assigns all the resource permissions required for deployment.
+An ARM template creates and assigns all the resource permissions required for deployment.
 
-With all the prerequisite and preparation steps complete, you're ready to deploy using a known good and tested Resource Manager deployment template and corresponding parameters JSON file. Use the parameters contained in the JSON file to fill out all values, including the values generated previously.
+With all the prerequisite and preparation steps complete, you're ready to deploy using a known good and tested ARM deployment template and corresponding parameters JSON file. Use the parameters contained in the JSON file to fill out all values, including the values generated previously.
 
 For an example of a parameter JSON file, see [azuredeploy.parameters.json](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.azurestackhci/create-cluster/azuredeploy.parameters.json). For detailed descriptions of the parameters defined in this file, see [ARM template parameters reference](#arm-template-parameters-reference).
 
@@ -191,7 +191,7 @@ For an example of a parameter JSON file, see [azuredeploy.parameters.json](https
 
     :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-7b.png" alt-text="Screenshot showing deploy selected for deployment mode." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-7b.png":::
 
-15. Verify that all the fields for the Resource Manager deployment template are filled in by the Parameters JSON.
+15. Verify that all the fields for the ARM deployment template are filled in by the Parameters JSON.
 
 16. Select the appropriate resource group for your environment.
 
