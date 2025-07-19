@@ -3,7 +3,7 @@ title: Troubleshoot Azure Local Virtual Machines enabled by Azure Arc
 description: Learn how to troubleshoot issues you experience with Azure Local Virtual Machines (VMs).
 author: alkohli
 ms.topic: how-to
-ms.date: 06/16/2025
+ms.date: 07/18/2025
 ms.author: alkohli
 ms.reviewer: vlakshmanan
 ms.service: azure-local
@@ -14,7 +14,6 @@ ms.service: azure-local
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
 This article describes how to collect logs and troubleshoot issues with Azure Local Virtual Machines (VMs) enabled by Azure Arc. It also lists the current limitations and known issues with Azure Local VM management, along with recommended resolutions.
-
 
 ## Property isn't supported for this operation
 
@@ -186,6 +185,63 @@ To resolve this issue, follow these steps:
 1. Select **Set**, then select **OK** to apply the changes.
 
 1. Restart the VM. After the restart, the warning message should no longer appear.
+
+## VMs and VHDs deployed without a specified storage path landing only on the first storage path in the cluster
+
+**Error:**
+
+The system failed to create `[REDACTED]`: There is not enough space on the disk.
+
+**Cause:**
+
+This error can occur due to a known issue in Azure Local 2506 where VMs and VHDs with no storage path specified during deployment are landing only on the first storage path of the cluster. Over time, this can lead to that path becoming full, preventing new deployments and potentially causing existing VMs to enter a paused-critical state due to disk I/O failures.
+
+**Resolution:**
+
+When creating a VM or VHD, choose a storage path manually:
+
+# [Azure portal](#tab/azure-portal)
+
+When creating a VM in the Azure portal, select the **Choose manually** option for storage path and then select a storage path from the available list.
+
+When attaching data disks to the VM, select the **Choose manually** option for storage path allocation method and then select a storage path from the available list.
+
+# [CLI](#tab/cli)
+
+To specify a storage path when creating a VM or VHD, use the `--storage-path-id` parameter with the `az stack-hci-vm create` or `az stack-hci-vm disk create` command.
+
+# [ARM template](#tab/arm-template)
+
+To define a storage path for a VM configuration, add `vmConfigStoragePathId` to the `storageProfile` section of the VM resource:
+
+```json
+"storageProfile": {
+ "vmConfigStoragePathId": "Insert ARM ID of specified storage path"
+}
+```
+
+If using an ARM template that creates multiple VMs in one deployment:
+
+1. Define a parameter for the storage path IDs:
+
+    ```json
+    "parameters": {
+     "storagePathIds": {
+       "type": "array",
+       "metadata": {
+         "description": "List of storage path resource IDs to cycle through for VM placement."
+       }
+     }
+    }
+    ```
+
+1. Add `vmConfigStoragePathId` to the `storageProfile`section of the VM resource:
+
+    ```json
+    "storageProfile": {
+     "vmConfigStoragePathId": "[parameters('storagePathIds')[mod(copyIndex(), length(parameters('storagePathIds')))]]"
+    }
+    ```
 
 ## Next steps
 
