@@ -243,6 +243,8 @@ If using an ARM template that creates multiple VMs in one deployment:
     }
     ```
 
+---
+
 ## Next steps
 
 - [Azure Local VM management FAQs](./azure-arc-vms-faq.yml)
