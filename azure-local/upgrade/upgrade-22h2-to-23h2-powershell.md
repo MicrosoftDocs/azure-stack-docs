@@ -16,9 +16,9 @@ zone_pivot_groups: upgrade-os
 
 ::: zone pivot="os-23h2"
 
-This article describes how to upgrade the operating system (OS) for Azure Local from version 22H2 to version 23H2 via PowerShell, which is the recommended method to upgrade the OS. This is the first step in the upgrade process, which upgrades only the OS.
+This article describes how to upgrade the operating system (OS) for Azure Local from version 22H2 to PowerShell, which is the recommended method to upgrade the OS. This is the first step in the upgrade process, which upgrades only the OS.
 
-There are other methods to upgrade the OS that include using Windows Admin Center and the Server Configuration tool (SConfig). For more information about these methods, see [Upgrade the Azure Stack HCI OS, version 22H2 OS via Windows Admin Center](./upgrade-22h2-to-23h2-windows-admin-center.md) and [Upgrade Azure Local to new OS using other methods](./upgrade-22h2-to-23h2-other-methods.md).
+There are other methods to upgrade the OS to version 25398.xxxx (23H2) that include using Windows Admin Center and the Server Configuration tool (SConfig). For more information about these methods, see [Upgrade the Azure Stack HCI OS, version 22H2 OS via Windows Admin Center](./upgrade-22h2-to-23h2-windows-admin-center.md) and [Upgrade Azure Local to new OS using other methods](./upgrade-22h2-to-23h2-other-methods.md).
 
 Throughout this article, we refer to OS version 23H2 as the *new* version and version 22H2 as the *old* version.
 
@@ -42,19 +42,6 @@ This article describes how to upgrade the Azure Stack HCI operating system (OS) 
 
 ::: zone-end
 
-## Choose upgrade path
-
-Based on the OS version you are currently running, choose the appropriate upgrade path:
-
-- **Upgrade to OS version 25398.xxxx**: You can upgrade your OS version to 25398.xxxx (23H2) and then apply solution upgrade. This is our *recommended* option.
-- **Upgrade OS version 26100.xxxx** (Preview): With the 2505 release, a direct upgrade path from version 20349.xxxx (23H2) to 26100.xxxx (24H2) is available. Skipping the upgrade to the version 23H2 OS will be one less upgrade hop and will help reduce reboots and maintenance planning prior to the solution upgrade.
-
-    After the OS upgrade, you can wait for the solution upgrade and the drivers to become available. This option is currently in preview and is not recommended for production workloads.
-
-    - An exception to the above recommendation is if you are using stretch clusters. Stretch clusters should directly move to version 24H2 in 2508 which also contains critical bug fixes.
-    - Make sure to consult with your hardware vendor to determine if version 26100.xxxx (24H2) OS is supported before performing the upgrade.
-
-For more information about the various upgrade paths, see the blog post on [Upgrade Azure Local to new OS version](https://techcommunity.microsoft.com/blog/azurearcblog/upgrade-azure-local-operating-system-to-new-version/4423827).
 
 ## High-level workflow for the OS upgrade
 
@@ -87,6 +74,21 @@ To upgrade the OS on your system, follow these high-level steps:
 1. [After the OS is upgraded, perform post-OS upgrade steps.](#next-steps)
 
 ::: zone-end
+
+## Choose upgrade path
+
+Choose one of the upgrade path if you intend to upgrade your OS from version 20349.xxxx (22H2):
+
+- **Upgrade to OS version 25398.xxxx**: You can upgrade your OS version to 25398.xxxx (23H2) and then apply solution upgrade. This is our *recommended* option.
+
+- **Upgrade OS version 26100.xxxx** (Preview): With the 2505 release, a direct upgrade path from version 20349.xxxx (23H2) to 26100.xxxx (24H2) is available. Skipping the upgrade to the version 23H2 OS will be one less upgrade hop and will help reduce reboots and maintenance planning prior to the solution upgrade.
+
+    After the OS upgrade, you can wait for the solution upgrade and the drivers to become available. This option is currently in preview and is not recommended for production workloads.
+
+    - An exception to the above recommendation is if you are using stretch clusters. Stretch clusters should directly move to version 24H2 in 2508 which also contains critical bug fixes.
+    - Make sure to consult with your hardware vendor to determine if version 26100.xxxx (24H2) OS is supported before performing the upgrade.
+
+For more information about the various upgrade paths, see the blog post on [Upgrade Azure Local to new OS version](https://techcommunity.microsoft.com/blog/azurearcblog/upgrade-azure-local-operating-system-to-new-version/4423827).
 
 
 ## Complete prerequisites
