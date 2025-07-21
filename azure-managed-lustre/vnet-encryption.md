@@ -95,5 +95,5 @@ To confirm that traffic between AMLFS and client VMs is encrypted:
 
 To learn more about Azure encryption, see the following articles:
 
-- [Azure Virtual Network encryption](azure/virtual-network/virtual-network-encryption-overview)
+- [Azure Virtual Network encryption](/azure/virtual-network/virtual-network-encryption-overview)
 - [Azure encryption of data in transit](/azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit)
