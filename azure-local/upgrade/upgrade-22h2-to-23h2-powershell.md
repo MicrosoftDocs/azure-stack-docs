@@ -26,7 +26,7 @@ Throughout this article, we refer to OS version 23H2 as the *new* version and ve
 
 ::: zone-end
 
-[!INCLUDE [end-of-service-22H2](../includes/end-of-service-22h2.md)]
+
 
 ::: zone pivot="os-24h2"
 
@@ -43,6 +43,9 @@ This article describes how to upgrade the Azure Stack HCI operating system (OS) 
 
 ::: zone-end
 
+## About End of support for version 22H2
+
+[!INCLUDE [end-of-service-22H2](../includes/end-of-service-22h2.md)]
 
 ## High-level workflow for the OS upgrade
 
