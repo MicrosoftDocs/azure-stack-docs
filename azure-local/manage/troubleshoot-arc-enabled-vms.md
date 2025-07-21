@@ -190,7 +190,7 @@ To resolve this issue, follow these steps:
 
 **Error:**
 
-The system failed to create <Azure resource name>: There is not enough space on the disk.
+`The system failed to create <Azure resource name>: There is not enough space on the disk.`
 
 **Cause:**
 
