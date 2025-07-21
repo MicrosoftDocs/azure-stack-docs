@@ -11,7 +11,7 @@ ms.lastreviewed: 07/21/2023
 
 # Enable and Validate VNet Encryption with Azure Managed Lustre
 
-Azure Managed Lustre (AMLFS) supports Virtual Network (VNet) Encryption, enabling encryption of data in transit between AMLFS and client virtual machines (VMs). This feature is  valuable for customers in regulated industries such as finance, healthcare, and government, where data confidentiality is paramount.
+Azure Managed Lustre (AMLFS) supports [Virtual Network (VNet) Encryption](/azure/virtual-network/virtual-network-encryption-overview), enabling encryption of data in transit between AMLFS and client virtual machines (VMs). This feature is  valuable for customers in regulated industries such as finance, healthcare, and government, where data confidentiality is paramount.
 
 ## How VNet Encryption Works
 
@@ -35,14 +35,9 @@ To enable VNet Encryption with AMLFS:
 
 1. Ensure Client VM Compatibility
 
-   Only specific VM series support VNet Encryption:
+   Azure only supports specific VM series for VNet Encryption. Unsupported VMs do not encrypt traffic, even if the VNet is encrypted. See [Azure Virtual Network encryption requirements](/azure/virtual-network/virtual-network-encryption-overview#requirements) for requirements and a list of VM SKUs that support encryption.
 
-   - Dsv6-series  
-   - Ebsv5-series  
-
-   > [!IMPORTANT]  
-   > Unsupported VMs do not encrypt traffic, even if the VNet is encrypted.  
-   > Existing VMs must be rebooted for encryption to be enabled.
+   Existing VMs must be rebooted for encryption to be enabled.
 
 1. Deploy AMLFS into an Encrypted VNet
 
@@ -58,7 +53,7 @@ To enable VNet Encryption with AMLFS:
 
 ## Enforcement Mode
 
-Azure currently supports only the `AllowUnencrypted` enforcement mode:
+Azure currently supports only the [`AllowUnencrypted`](/azure/virtual-network/virtual-network-encryption-overview#limitations) enforcement mode:
 
 - Unencrypted traffic is still allowed, even when VNet Encryption is enabled.
 - The stricter `DropUnencrypted` mode isn't generally available and requires special feature registration.
@@ -74,7 +69,7 @@ To confirm that traffic between AMLFS and client VMs is encrypted:
 
 1. **Run Diagnostic Reports**  
    - Use Azure Monitor or custom scripts to validate encrypted traffic paths.  
-   - Check VM metrics and logs for encryption status indicators.
+   - Check VM metrics and logs for [encryption status](/azure/network-watcher/vnet-flow-logs-overview?tabs=Americas#log-format) indicators.
 
 1. **Check VM Capabilities**  
    Use the following command to verify if a VM supports VNet Encryption:
