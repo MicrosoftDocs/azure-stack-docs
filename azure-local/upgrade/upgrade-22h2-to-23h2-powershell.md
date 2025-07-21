@@ -42,6 +42,20 @@ This article describes how to upgrade the Azure Stack HCI operating system (OS) 
 
 ::: zone-end
 
+## Choose upgrade path
+
+Based on the OS version you are currently running, choose the appropriate upgrade path:
+
+- **Upgrade to OS version 25398.xxxx**: You can upgrade your OS version to 25398.xxxx (23H2) and then apply solution upgrade. This is our *recommended* option.
+- **Upgrade OS version 26100.xxxx** (Preview): With the 2505 release, a direct upgrade path from version 20349.xxxx (23H2) to 26100.xxxx (24H2) is available. Skipping the upgrade to the version 23H2 OS will be one less upgrade hop and will help reduce reboots and maintenance planning prior to the solution upgrade.
+
+    After the OS upgrade, you can wait for the solution upgrade and the drivers to become available. This option is currently in preview and is not recommended for production workloads.
+
+    - An exception to the above recommendation is if you are using stretch clusters. Stretch clusters should directly move to version 24H2 in 2508 which also contains critical bug fixes.
+    - Make sure to consult with your hardware vendor to determine if version 26100.xxxx (24H2) OS is supported before performing the upgrade.
+
+For more information about the various upgrade paths, see the blog post on [Upgrade Azure Local to new OS version](https://techcommunity.microsoft.com/blog/azurearcblog/upgrade-azure-local-operating-system-to-new-version/4423827).
+
 ## High-level workflow for the OS upgrade
 
 ::: zone pivot="os-23h2"
