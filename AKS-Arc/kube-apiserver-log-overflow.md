@@ -4,7 +4,7 @@ description: Learn about a known issue with disk space exhaustion on the control
 ms.topic: troubleshooting
 author: sethmanheim
 ms.author: sethm
-ms.date: 04/01/2025
+ms.date: 07/17/2025
 ms.reviewer: abha
 
 ---
@@ -43,6 +43,10 @@ clouduser@moc-laiwyj6tly6 [ /var/log/kube-apiserver ]$ sudo du -h /var/log/kube-
 The issue occurs because the `--audit-log-maxbackup` value is set to 0. This setting allows the audit logs to accumulate without any limit, eventually filling up the disk. 
 
 ## Mitigation
+
+This issue was fixed in [AKS on Azure Local, version 2507](/azure/azure-local/whats-new?view=azloc-2507&preserve-view=true#features-and-improvements-in-2507). Upgrade your Azure Local deployment to the 2507 build. 
+
+### Workaround for Azure Local versions 2503 or 2504
 
 To resolve the issue temporarily, you must manually clean up the old audit logs. Follow these steps:
 
