@@ -615,11 +615,11 @@ To initialize each node, follow these steps. Modify where necessary to match you
     ```powershell
     Write-Host "az login to Disconnected operations cloud"    
     az cloud set -n $applianceCloudName --only-show-errors
-    Write-host "There's a known issue in this preview release where using the service principal doesn't work"
-    # Following is commented out  due to this issue
-    # az login --service-principal --username $appId --password $clientSecret --tenant 98b8267d-e97f-426e-8b3f-7956511fd63f    
-    Write-Host "Using device code login - complete the login from your browser: "
-    az login --use-device-code
+    Write-Host "Login using service principal"    
+    az login --service-principal --username $appId --password $clientSecret --tenant 98b8267d-e97f-426e-8b3f-7956511fd63f    
+    # If you prefer interactive login..
+    # Write-Host "Using device code login - complete the login from your browser: "
+    # az login --use-device-code
 
     Write-Host "Connected to Disconnected operations Cloud through az cli"
     ```

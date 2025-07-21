@@ -74,14 +74,6 @@ $managedIds|foreach-object {
 Write-Verbose "Wait 30 min before running cloud deployment from portal"
 ```
 
-### Arc-initialization (node) fails with error code 42
-
-When attempting to initialize an Arc-enabled node, you may encounter error code 42.
-
-**Cause**: Signing in with a service principal name (SPN) causes arc initialization to fail.
-
-**Mitigation**: Until the underlying issue is fixed, sign in to each Azure Local node by running `az login –use-device-code` instead of using an SPN.
-
 ### Azure Local VMs (Arc VMs)
 
 #### Azure Resource Graph add or edit tags error
