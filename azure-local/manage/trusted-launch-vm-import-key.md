@@ -27,7 +27,7 @@ For back up, VM guest state protection keys are copied from the on-premises key 
 
 For restore, VM guest state protection keys are restored from a folder containing the backup copy to the key vault of an Azure Local instance where the VMs need to be restored.  
 
-### Back up
+### Back up keys
 
 The steps below involve copying VM guest state protection keys from the local key vault of your Azure Local instance to a folder that is backed up periodically.
 
@@ -64,7 +64,7 @@ The steps below involve copying VM guest state protection keys from the local ke
 
 1. Anytime you create a new VM on Azure Local instance, run the script and back up the keys in the key vault.
 
-### Restore
+### Restore keys
 
 The steps below involve restoring VM guest state protection keys from a folder containing the backup copy to the key vault of an Azure Local instance where the VMs need to be restored.
 
@@ -121,7 +121,7 @@ For back up, the VM guest state protection keys are copied from the on-premises 
 
 For restore, the VM guest state protection keys are restored from the local backup key vault of the Azure Local instance to the key vault of an Azure Local instance where the VMs need to be restored.
 
-### Back up
+### Back up keys
 
 Follow these steps to copy the VM guest state protection key from the local key vault of the Azure Local instance where the VM resides to a backup key vault on another Azure Local instance:
 
@@ -171,7 +171,7 @@ Follow these steps to copy the VM guest state protection key from the local key 
         Import-MocKey -name <VM ID> -importKeyFile <VM ID>.json -group AzureStackHostAttestation -keyvaultName AzureStackTvmKeyVault -type AES -size 256
         ```
 
-### Restore
+### Restore keys
 
 Follow these steps to copy the VM guest state protection key. The key is copied from the backup key vault of the Azure Local instance to the key vault of the target Azure Local system where the VM needs to be restored:
 
