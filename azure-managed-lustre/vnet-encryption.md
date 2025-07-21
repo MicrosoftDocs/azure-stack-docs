@@ -11,7 +11,7 @@ ms.lastreviewed: 07/21/2023
 
 # Enable and Validate VNet Encryption with Azure Managed Lustre
 
-Azure Managed Lustre (AMLFS) supports Virtual Network (VNet) Encryption, enabling encryption of data in transit between AMLFS and client virtual machines (VMs). This feature is particularly valuable for customers in regulated industries such as finance, healthcare, and government, where data confidentiality is paramount.
+Azure Managed Lustre (AMLFS) supports Virtual Network (VNet) Encryption, enabling encryption of data in transit between AMLFS and client virtual machines (VMs). This feature is  valuable for customers in regulated industries such as finance, healthcare, and government, where data confidentiality is paramount.
 
 ## How VNet Encryption Works
 
@@ -40,7 +40,7 @@ To enable VNet Encryption with AMLFS:
    - Ebsv5-series  
 
    > [!IMPORTANT]  
-   > Unsupported VMs will not encrypt traffic, even if the VNet is encrypted.  
+   > Unsupported VMs do not encrypt traffic, even if the VNet is encrypted.  
    > Existing VMs must be rebooted for encryption to be enabled.
 
 1. Deploy AMLFS into an Encrypted VNet
@@ -50,7 +50,7 @@ To enable VNet Encryption with AMLFS:
    - A peered VNet that also has encryption enabled  
 
    > [!NOTE]  
-   > If you enable VNet Encryption on a VNet after deploying AMLFS, the cluster will not immediately support encrypted traffic.  
+   > If you enable VNet Encryption on a VNet after deploying AMLFS, the cluster won't immediately support encrypted traffic.
    > Encryption capability is activated only after a maintenance event and cluster reboot.  
    > Refer to the AMLFS maintenance window documentation for guidance on scheduling and managing updates.
 
@@ -59,7 +59,7 @@ To enable VNet Encryption with AMLFS:
 Azure currently supports only the `AllowUnencrypted` enforcement mode:
 
 - Unencrypted traffic is still allowed, even when VNet Encryption is enabled.
-- The stricter `DropUnencrypted` mode is not generally available and requires special feature registration.
+- The stricter `DropUnencrypted` mode isn't generally available and requires special feature registration.
 
 ## Validate Encrypted Traffic
 
@@ -67,8 +67,8 @@ To confirm that traffic between AMLFS and client VMs is encrypted:
 
 1. **Use Azure Network Watcher**  
    - Enable Network Watcher in the region.  
-   - Use packet capture on the client VM to inspect traffic headers.  
-   - Encrypted traffic will show DTLS encapsulation.
+   - To inspect traffic headers, use packet capture on the client VM.  
+   - Encrypted traffic shows DTLS encapsulation.
 
 1. **Run Diagnostic Reports**  
    - Use Azure Monitor or custom scripts to validate encrypted traffic paths.  
@@ -86,7 +86,7 @@ To confirm that traffic between AMLFS and client VMs is encrypted:
 
 ## Caveats and Limitations
 
-- **Encryption enforcement**: AMLFS does not enforce encryption; it relies on the configuration of the VNet and VM.
+- **Encryption enforcement**: AMLFS doesn't enforce encryption; it relies on the configuration of the VNet and VM.
 - **Unsupported VMs**: Traffic from unsupported VM series remains unencrypted, even if VNet Encryption is enabled.
-- **Firewall visibility**: Azure Firewall cannot inspect traffic encrypted at the network layer.
-- **Enforcement mode**: The `DropUnencrypted` mode is not generally available (GA) and must be explicitly enabled via feature registration.
+- **Firewall visibility**: Azure Firewall can't inspect traffic encrypted at the network layer.
+- **Enforcement mode**: The `DropUnencrypted` mode isn't generally available (GA) and must be explicitly enabled via feature registration.
