@@ -90,3 +90,10 @@ To confirm that traffic between AMLFS and client VMs is encrypted:
 - **Unsupported VMs**: Traffic from unsupported VM series remains unencrypted, even if VNet Encryption is enabled.
 - **Firewall visibility**: Azure Firewall can't inspect traffic encrypted at the network layer.
 - **Enforcement mode**: The `DropUnencrypted` mode isn't generally available (GA) and must be explicitly enabled via feature registration.
+
+## Next steps
+
+To learn more about Azure encryption, see the following articles:
+
+- [Azure Virtual Network encryption](azure/virtual-network/virtual-network-encryption-overview)
+- [Azure encryption of data in transit](/azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit)
