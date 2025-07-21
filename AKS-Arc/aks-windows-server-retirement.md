@@ -1,6 +1,6 @@
 ---
-title: Retirement of AKS architecture on Windows Server 2019 and Windows Server 2022
-description: Learn about retirement of AKS on Windows Server 2019 and Windows Server 2022.
+title: Retirement of AKS architecture on Windows Server SKUs
+description: Learn about retirement of AKS on Windows Server SKUs - Windows Server 2019 and Windows Server 2022.
 ms.topic: how-to
 ms.custom: linux-related-content
 author: sethmanheim
@@ -37,7 +37,7 @@ The following Kubernetes cluster deployment and management capabilities are avai
 
 ## If you're using Azure Kubernetes Service on Windows Server 2019 or Windows Server 2022
 
-The AKS Arc current architecture on Windows Server 2019 and Windows Server 2022 will be retired on March 27, 2028. Starting on March 27 2028, you no longer get support, security and quality updates for your existing AKS Arc clusters. You also won't be able to deploy, upgrade or scale the current architecture of Azure Kubernetes Service on Windows Server 2019 and Windows Server 2022.
+The AKS Arc current architecture on Windows Server 2019 and Windows Server 2022 will be retired on March 27, 2028. Starting on March 27 2028, you no longer get support, security and quality updates for your existing AKS Arc clusters. You also won't be able to deploy, upgrade or scale the current architecture of Azure Kubernetes Service on Windows Server 2019 and Windows Server 2022. Between now and March 2028, we will not be adding support for any new Windows Server SKUs, for eg. Windows Server 2025 is not supported on AKS Arc.
 
 ## If you're using Azure Kubernetes Service on Azure Local, version 22H2
 
