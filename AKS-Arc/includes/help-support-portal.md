@@ -7,6 +7,7 @@ ms.reviewer: sumsmith
 ms.lastreviewed: 07/21/2025
 
 ---
+## Select issue type and solution
 
 1. Select **Next**.
 1. Your subscription name should auto-populate in the **Subscription** field. If it doesn't, select it from the dropdown. Then select **Next**.
