@@ -7,7 +7,6 @@ ms.author: pauljewell
 ms.reviewer: brianl
 ms.date: 07/18/2025
 ms.lastreviewed: 07/21/2023
-zone_pivot_groups: select-os
 ---
 
 # Enable and Validate VNet Encryption with Azure Managed Lustre
@@ -35,27 +34,25 @@ To enable VNet Encryption with AMLFS:
    ```
 
 1. Ensure Client VM Compatibility
+   Only specific VM series support VNet Encryption:
 
-Only specific VM series support VNet Encryption:
+   - Dsv6-series  
+   - Ebsv5-series  
 
-- Dsv6-series  
-- Ebsv5-series  
+   > [!IMPORTANT]  
+   > Unsupported VMs will not encrypt traffic, even if the VNet is encrypted.  
+   > Existing VMs must be rebooted for encryption to be enabled.
 
-> [!IMPORTANT]  
-> Unsupported VMs will not encrypt traffic, even if the VNet is encrypted.  
-> Existing VMs must be rebooted for encryption to be enabled.
+1. Deploy AMLFS into an Encrypted VNet
+   You can deploy Azure Managed Lustre (AMLFS) into:
 
-3. Deploy AMLFS into an Encrypted VNet
+   - An encrypted VNet  
+   - A peered VNet that also has encryption enabled  
 
-You can deploy Azure Managed Lustre (AMLFS) into:
-
-- An encrypted VNet  
-- A peered VNet that also has encryption enabled  
-
-> [!NOTE]  
-> If you enable VNet Encryption on a VNet after deploying AMLFS, the cluster will not immediately support encrypted traffic.  
-> Encryption capability is activated only after a maintenance event and cluster reboot.  
-> Refer to the AMLFS maintenance window documentation for guidance on scheduling and managing updates.
+   > [!NOTE]  
+   > If you enable VNet Encryption on a VNet after deploying AMLFS, the cluster will not immediately support encrypted traffic.  
+   > Encryption capability is activated only after a maintenance event and cluster reboot.  
+   > Refer to the AMLFS maintenance window documentation for guidance on scheduling and managing updates.
 
 ## Enforcement Mode
 
@@ -84,8 +81,8 @@ To confirm that traffic between AMLFS and client VMs is encrypted:
    az vm show --name <vm-name> --resource-group <rg-name> --query "storageProfile.osDisk.managedDisk.encryptionSettingsCollection"
    ```
 
-> [!TIP]
-> For more information on verifying encryption, understanding performance impact, and managing certificate handling, see the #.
+     [!TIP]
+    > For more information on verifying encryption, understanding performance impact, and managing certificate handling, see the #.
 
 ## Caveats and Limitations
 
