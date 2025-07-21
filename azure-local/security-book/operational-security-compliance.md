@@ -3,7 +3,7 @@ title:  Azure Local security book ongoing compliance
 description: Ongoing compliance for the Azure Local security book.
 author: alkohli
 ms.topic: conceptual
-ms.date: 06/16/2025
+ms.date: 07/21/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
@@ -25,7 +25,7 @@ For those who need to adjust or update security settings based on their own busi
 
 [Azure Policy](/azure/governance/policy/overview) helps to enforce organizational standards and to assess compliance at-scale. Through its compliance dashboard, it provides an aggregated view to evaluate the overall state of the environment, with the ability to drill down to the per-resource, perpolicy granularity.
 
-During run-time, you can use Azure Policy to audit Azure Local host machine configuration and perform compliance assessments based on Azure security baseline policies. In the future, we will also have the capability to remediate the security settings via Azure Policy and [Azure Automanage](https://azure.microsoft.com/products/azure-automanage/). 
+During run-time, you can use Azure Policy to audit Azure Local host machine configuration and perform compliance assessments based on Azure security baseline policies. In the future, we will also have the capability to remediate the security settings via Azure Policy. 
 
 ## SIEM integration
 

@@ -3,7 +3,7 @@ title:  Azure Local security book ongoing operations
 description: Ongoing operations for the Azure Local security book.
 author: alkohli
 ms.topic: conceptual
-ms.date: 06/16/2025
+ms.date: 07/21/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
@@ -45,7 +45,7 @@ Windows Admin Center, just like any other Azure service, is always up to date wi
 
 ### Security tool
 
-The built-in security tool within Windows Admin Center gives you the ability to monitor and toggle Azure Local security settings. This tool lets you monitor and change your Secured-core, Windows Defender Application Control, and many other settings, all from within the Azure portal.
+The built-in security tool within Windows Admin Center gives you the ability to monitor and toggle Azure Local security settings. This tool lets you monitor and change your Secured-core, Application Control for Windows, and many other settings, all from within the Azure portal.
 
 ### Lost Azure connectivity
 
