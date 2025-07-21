@@ -1,29 +1,29 @@
 ---
-title: Manual backup and recovery of VM guest state protection key
-description: Learn how to perform a manual backup and recovery of a VM guest state protection key.
+title: Manual backup and recovery of guest state protection key for Trusted launch Azure Local VMs
+description: Learn how to perform a manual backup and recovery of guest state protection key for Trusted launch Azure Local VMs.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
 ms.reviewer: alkohli
-ms.date: 07/15/2025
+ms.date: 07/21/2025
 ---
 
-# Manual backup and recovery of VM guest state protection key
+# Manual backup and recovery of guest state protection key for Trusted launch Azure Local VMs
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
-You can backup and restore the virtual machine (VM) guest state protection key of each Trusted launch VM on an Azure Local instance using one of the following methods.
+This article describes how to manually back up and restore a Trusted launch for Azure Local VM enabled by Azure Arc.
 
-- **Azure Local release 2505 and later**: Backup/restore VM guest state protection keys to/from a file system folder.  
+- **For Azure Local release 2505 and later**: Backup/restore VM guest state protection keys to/from a file system folder.  
 
-- **Azure Local releases prior to 2505**: Backup/restore VM guest state protection keys to/from a key vault in another Azure Local instance.  
+- **For Azure Local releases prior to 2505**: Backup/restore VM guest state protection keys to/from a key vault in another Azure Local instance.
 
-## For Azure Local release 2505 and later
+# [Azure Local release 2505 and later](#tab/azure-local-release-2505-and-later)
 
-To backup, this approach copies VM guest state protection keys from the local key vault of your Azure Local instance to a folder that is backed up periodically. The VM guest state protection keys stored inside that folder are in an encrypted form.
+For back up, this method copies VM guest state protection keys from the on-premises key vault of your Azure Local instance to a folder that is backed up periodically. The VM guest state protection keys stored inside that folder are in an encrypted form.
 
-To restore, this approach restores VM guest state protection keys from a folder (containing the backup copy) to the local key vault of an Azure Local instance where the VMs need to be restored.  
+For restore, this method restores VM guest state protection keys from a folder (containing the backup copy) to the local key vault of an Azure Local instance where the VMs need to be restored.  
 
 ### Backup
 
@@ -31,7 +31,7 @@ The steps below involve copying VM guest state protection keys from the local ke
 
 1. On a secure computer using PowerShell 7, generate a wrapping key of size 2048:
 
-    ```azurepowershell
+    ```powershell
     $rsa = [System.Security.Cryptography.RSA]::Create(2048) 
 
     $privateKeyPem = $rsa.ExportPkcs8PrivateKeyPem() 
@@ -42,6 +42,7 @@ The steps below involve copying VM guest state protection keys from the local ke
 
     $publicKeyPem | Out-File -FilePath .\public.pem 
     ```
+1. Make a note of the wrapping key as you'll need it later.
 
 1. Copy the `.\public.pem` file to your Azure Local instance.
 
@@ -49,35 +50,40 @@ The steps below involve copying VM guest state protection keys from the local ke
 
     1. Download the [TvmBackupUtils.psm1 script](https://github.com/Azure-Samples/AzureLocal/blob/main/trusted-launch-vms/TvmBackupUtils.psm1) on GitHub to your Azure Local instance.
 
-    1. Run `import-module .\TvmBackupUtils.psm1 -force`.
+    1. Run the following:
 
-    1. Run `Backup-TVMKeys -WrappingKeyPath <path to public.pem> -BackupRootPath <path to backup root folder where the timestamped backup folder is stored>`.
+        ```powershell
+        import-module .\TvmBackupUtils.psm1 -force
+
+        Backup-TVMKeys -WrappingKeyPath <path to public.pem> -BackupRootPath <path to backup root folder where the timestamped backup folder is stored>
+        ```
 
 1. Make note of the timestamped backup folder created under the backup root folder. You will need this later during recovery.  For example, backup folder named "20250612205355" with the format "yyyyMMddHHmmss".
 
-1. Periodically backup the backup root folder.
+1. Any time you create a new VM on Azure Local instance, run the script and back up the keys in the key vault.
 
 ### Restore
 
-The steps below involve restoring VM guest state protection keys from a folder containing the backup copy to the local key vault of an Azure Local instance where the VMs need to be restored.
+The steps below involve restoring VM guest state protection keys from a folder containing the backup copy to the key vault of an Azure Local instance where the VMs need to be restored.
 
-1. Copy both private and public key files for the wrapping key that you created during Backup step 1 to the Azure Local instance.  
+1. Copy both private and public key files for the wrapping key that you created previously to the Azure Local instance.  
 
 1. Copy the timestamped backup folder to the Azure Local instance. Pick the folder under the backup root folder with the latest timestamp as that folder will have the most recent copy.
 
     > [!NOTE]
     > Don't modify the backup folder.
 
-1. Import the wrapping key that you created during Backup step 1 to the Azure Local instance:
+1. Import the wrapping key that you created previously to the Azure Local instance:
 
     1. Download the [TvmBackupUtils.psm1 script](https://github.com/Azure-Samples/AzureLocal/blob/main/trusted-launch-vms/TvmBackupUtils.psm1) on GitHub to your Azure Local instance.
 
-    1. Run `Import-Module .\TvmBackupUtils.psm1 -force`.
+    1. Run the following commands. Make sure to create a unique name for the WrappingKeyName. Otherwise, this will cause a failure during import:
 
-        > [!NOTE]
-        > Make sure the WrappingKeyName you specify doesn't match the name of a key already existing in the timestamped backup folder. Otherwise, this will cause a failure during import (see Restore step 5).
+        ```powershell
+        Import-Module .\TvmBackupUtils.psm1 -force 
 
-    1. Run `Import-TvmWrappingKeyFromPem -KeyName <WrappingKeyName> -PublicKeyPath <path to public.pem> -PrivateKeyPath <path to private.pem> -KeySize 2048`
+        Import-TvmWrappingKeyFromPem -KeyName <WrappingKeyName> -PublicKeyPath <path to public.pem> -PrivateKeyPath <path to private.pem> -KeySize 2048
+        ```
     
 1. Delete `AzureStackTvmAKRootKey` as follows:
 
@@ -90,10 +96,9 @@ The steps below involve restoring VM guest state protection keys from a folder c
 
     `Import-TVMKeys -WrappingKeyName <WrappingKeyName> -BackupPath <path to timestamped backup folder>`
 
-    > [!NOTE]
-    > If the local key vault of the Azure Local instance already has a VM guest state protection key with the same name or already has an `AzureStackTvmAKRootKey`, you will receive an `InvalidVersion` error for that key. You can ignore this, as the key is already in the key vault.
+    If the local key vault of the Azure Local instance already has a VM guest state protection key with the same name or already has an `AzureStackTvmAKRootKey`, you will receive an `InvalidVersion` error for that key. You can ignore this, as the key is already in the key vault.
 
-1. Cleanup files and keys:
+1. Clean up files and keys:
 
     1. Delete both `public.pem` and `private.pem` files from the Azure Local instance.
 
@@ -103,13 +108,13 @@ The steps below involve restoring VM guest state protection keys from a folder c
     1. Run `Remove-MocKey -name WrappingKeyName -group AzureStackHostAttestation -keyvaultName AzureStackTvmKeyVault`
 
 
-## For Azure Local releases prior to 2505
+# [Azure Local releases prior to 2505](#tab/azure-local-releases-prior-to-2505)
 
-To backup, this approach copies VM guest state protection keys from the local key vault of your Azure Local instance to the local key vault of another Azure Local instance that is used for key backup purposes.
+To back up, this method copies VM guest state protection keys from the local key vault of your Azure Local instance to the local key vault of another Azure Local instance that is used for key backup purposes.
 
 To restore, this method restores VM guest state protection keys from the local key vault (backup key vault) of the Azure Local instance that is used for key backup purposes to the local key vault of an Azure Local instance where the VMs need to be restored.
 
-### Backup
+### Back up
 
 Follow these steps to copy the VM guest state protection key from the local key vault of the Azure Local instance where the VM resides to a backup key vault on another Azure Local instance:
 
@@ -139,7 +144,7 @@ Follow these steps to copy the VM guest state protection key from the local key 
 
         `Export-MocKey -name <VM ID> -wrappingKeyName wrappingKey -wrappingPubKeyFile wrappingKey.pem -outFile <VM ID>.json -group AzureStackHostAttestation -keyvaultName AzureStackTvmKeyVault -size 256`
 
-1. On the Azure Local system with the backup key vault, run the following steps on the Azure Local system:
+1. On the Azure Local system with the backup key vault, run the following steps:
 
     1. Copy the `VM ID` and `VM ID`.json file to the Azure Local system.
 
@@ -149,9 +154,9 @@ Follow these steps to copy the VM guest state protection key from the local key 
 
 ### Restore
 
-Follow these steps to copy the VM guest state protection key from the backup key vault of the Azure Local instance that is used for key backup purposes to the local key vault of the target Azure Local system where the VM needs to be restored:
+Follow these steps to copy the VM guest state protection key. The key is copied from the backup key vault of the Azure Local instance to the key vault of the target Azure Local system (where the VM needs to be restored):
 
-1. On the source Azure Local system where the VM needs to be restored, run the following commands on the Azure Local system:
+1. On the source Azure Local system where the VM needs to be restored, run the following commands:
 
     1. Create a wrapping key in the key vault:
 
@@ -161,7 +166,7 @@ Follow these steps to copy the VM guest state protection key from the backup key
 
         `Get-MocKeyPublicKey -name wrappingKey -group AzureStackHostAttestation -keyvaultName AzureStackTvmKeyVault -outputFile wrappingKey.pem`
 
-1. On the Azure Local system with the backup key vault, run the following commands on the Azure Local system.
+1. On the Azure Local system with the backup key vault, run the following commands:
 
     1. Copy the PEM file to the Azure Local system.
 
@@ -182,9 +187,11 @@ Follow these steps to copy the VM guest state protection key from the backup key
         `Import-MocKey -name <VM ID> -importKeyFile <VM ID>.json -group AzureStackHostAttestation -keyvaultName AzureStackTvmKeyVault -type AES -size 256`
 
         > [!NOTE]
-        > Restore the VM guest state key (complete the steps above) before you start the VM on the Azure Local instance where the VM needs to be restored. This ensures that the VM uses the restored VM GSP key. Otherwise, the VM creation fails, and a new VM GSP key is created by the system. If this happens by mistake (human error), delete the VM GSP key and then repeat the steps to restore the VM GSP key.
+        > Restore the VM guest state key (complete the steps above) before you start the VM on the Azure Local instance where the VM needs to be restored. This ensures that the VM uses the restored VM guest state protection key. Otherwise, the VM creation fails, and a new VM guest state protection key is created by the system. If this happens by mistake (human error), delete the VM guest state protection key and then repeat the steps to restore the VM guest state protection key key.
 
         `Remove-MocKey -name <vm id> -group AzureStackHostAttestation -keyvaultName AzureStackTvmKeyVault`
+
+---
 
 ## Next steps
 
