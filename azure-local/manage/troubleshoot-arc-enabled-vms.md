@@ -3,7 +3,7 @@ title: Troubleshoot Azure Local Virtual Machines enabled by Azure Arc
 description: Learn how to troubleshoot issues you experience with Azure Local Virtual Machines (VMs).
 author: alkohli
 ms.topic: how-to
-ms.date: 07/18/2025
+ms.date: 07/21/2025
 ms.author: alkohli
 ms.reviewer: vlakshmanan
 ms.service: azure-local
@@ -186,7 +186,7 @@ To resolve this issue, follow these steps:
 
 1. Restart the VM. After the restart, the warning message should no longer appear.
 
-## VMs and VHDs deployed without a specified storage path placed only on the first storage path
+## Deployment failure due to insufficient disk space on the first storage path
 
 **Error:**
 
@@ -194,11 +194,11 @@ The system failed to create <Azure resource name>: There is not enough space on 
 
 **Cause:**
 
-In Azure Local 2506, VMs and VHDs that are deployed without a specified storage path are automatically placed on the first available storage path, even when other storage paths are available on the cluster. Over time, this can lead to that path becoming full, preventing new deployments and potentially causing existing VMs to enter a paused-critical state due to disk I/O failures.
+If no storage path is specified during deployment, resources are automatically placed on the first storage path, even when additional storage paths are available on the cluster. This can lead to insufficient disk space on the first storage path, even when other storage paths still have available capacity.
 
 **Resolution:**
 
-When creating a VM or VHD, choose a storage path manually:
+When creating a VM or VHD, choose a storage path manually.
 
 # [Azure portal](#tab/azure-portal)
 
