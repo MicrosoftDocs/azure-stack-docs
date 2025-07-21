@@ -186,7 +186,7 @@ To resolve this issue, follow these steps:
 
 1. Restart the VM. After the restart, the warning message should no longer appear.
 
-## Deployment failure due to insufficient disk space on the first storage path
+## Resource deployment failure due to insufficient disk space on the first storage path
 
 **Error:**
 
@@ -198,17 +198,15 @@ If no storage path is specified during deployment, resources are automatically p
 
 **Resolution:**
 
-When creating a VM or VHD, choose a storage path manually.
+When creating a VM, data disk, or image, choose a storage path manually.
 
 # [Azure portal](#tab/azure-portal)
 
-When creating a VM in the Azure portal, select the **Choose manually** option for storage path and then select a storage path from the available list.
-
-When attaching data disks to the VM, select the **Choose manually** option for storage path allocation method and then select a storage path from the available list.
+When creating an image, select the **Choose manually** option for storage path and then select a storage path from the available list.
 
 # [CLI](#tab/cli)
 
-To specify a storage path when creating a VM or VHD, use the `--storage-path-id` parameter with the `az stack-hci-vm create` or `az stack-hci-vm disk create` command.
+To specify a storage path when creating a VM, data disk, or image, use the `--storage-path-id` parameter with the `az stack-hci-vm create`, `az stack-hci-vm disk create`, or `az stack-hci-vm image create` command.
 
 # [ARM template](#tab/arm-template)
 
