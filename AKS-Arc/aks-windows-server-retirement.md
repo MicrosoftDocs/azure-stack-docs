@@ -6,6 +6,8 @@ ms.custom: linux-related-content
 author: sethmanheim
 ms.author: sethm
 ms.date: 07/21/2025
+ms.reviewer: rcheeran
+ms.lastreviewed: 07/21/2025
 
 # Intent: As an IT Pro, I want to move my workloads from AKS on Windows Server to the latest version of AKS on Azure Local.
 # Keyword: retirement
