@@ -43,7 +43,7 @@ This article describes how to upgrade the Azure Stack HCI operating system (OS) 
 
 ::: zone-end
 
-## About End of support for version 22H2
+## About End of Support (EOS) for version 22H2
 
 [!INCLUDE [end-of-service-22H2](../includes/end-of-service-22h2.md)]
 
