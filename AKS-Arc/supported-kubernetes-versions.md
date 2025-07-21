@@ -99,7 +99,7 @@ New Supported Version List
 1.29.*9*, 1.29.*8*, 1.28.*11*, 1.28.*10*
 ```
 
-AKS Arc reserves the right to deprecate patches if a critical CVE or security vulnerability is detected. For awareness on patch availability and any ad-hoc deprecation, refer to version release notes.  
+AKS Arc reserves the right to deprecate patches if a critical CVE or security vulnerability is detected. For awareness on patch availability and any ad-hoc deprecation, see the version release notes.  
 
 AKS Arc might also support preview versions, which are explicitly labeled as previews.
 

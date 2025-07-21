@@ -4,7 +4,7 @@ description: Learn how to troubleshoot when AKS Arc telemetry pod consumes too m
 ms.topic: troubleshooting
 author: sethmanheim
 ms.author: sethm
-ms.date: 04/01/2025
+ms.date: 07/21/2025
 ms.reviewer: abha
 
 ---
@@ -27,7 +27,7 @@ akshci-telemetry-5df56fd5-rjqk4   996m         152Mi
 
 ## Mitigation
 
-This issue was fixed in AKS on [Azure Local, version 2507](/azure/azure-local/whats-new?view=azloc-2507&preserve-view=true#features-and-improvements-in-2507). Upgrade your Azure Local deployment to the 2507 build.
+This issue was fixed in [AKS on Azure Local, version 2507](/azure/azure-local/whats-new?view=azloc-2507&preserve-view=true#features-and-improvements-in-2507). Upgrade your Azure Local deployment to the 2507 build.
 
 ### Workaround for Azure Local versions 2506 and older
 

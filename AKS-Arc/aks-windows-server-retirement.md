@@ -35,7 +35,7 @@ The following Kubernetes cluster deployment and management capabilities are avai
 - **K8s Audit Logs**: Export audit logs and other control plane logs to one or more destinations.
 - **Improved certificate management**: Shut down AKS Arc clusters for up to 7 days without any certificate expiration issues. Automatically repair certificates, managed by cert-tattoo, that expired when the cluster was shut down.
 
-### If you're using Azure Kubernetes Service on Windows Server 2019 or Windows Server 2022
+## If you're using Azure Kubernetes Service on Windows Server 2019 or Windows Server 2022
 
 The AKS Arc current architecture on Windows Server 2019 and Windows Server 2022 will be retired on March 27, 2028. Starting on March 27 2028, you no longer get support, security and quality updates for your existing AKS Arc clusters. You also won't be able to deploy, upgrade or scale the current architecture of Azure Kubernetes Service on Windows Server 2019 and Windows Server 2022.
 
