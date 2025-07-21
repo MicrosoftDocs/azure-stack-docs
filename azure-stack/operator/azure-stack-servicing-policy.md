@@ -4,9 +4,8 @@ titleSuffix: Azure Stack Hub
 description: Learn about the Azure Stack Hub servicing policy and how to keep an integrated system in a supported state.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 02/11/2025
+ms.date: 07/18/2025
 ms.author: sethm
-ms.lastreviewed: 03/18/2020
 
 # Intent: As an Azure Stack operator, I want to learn about servicing policy and how to keep an integrated system supported.
 # Keyword: servicing policy azure stack
@@ -25,8 +24,6 @@ Microsoft releases both full update packages and hotfix packages to address spec
 Full update packages are hosted in a secure Azure endpoint. You can download them manually using the [Azure Stack Hub Updates downloader tool](https://aka.ms/azurestackupdatedownload). If your scale unit is connected, the update appears automatically in the administrator portal as **Update available**. For more information about each release, you can click any release from the [Update package release cadence](#update-package-release-cadence) section of this article.
 
 Hotfix update packages are hosted in the same secure Azure endpoint. You can download them using the embedded links in each of the respective hotfix KB articles; for example, [Azure Stack Hub Hotfix 1.1809.12.114](https://support.microsoft.com/help/4481548/azure-stack-hotfix-1-1809-12-114). Similar to the full, monthly update packages, Azure Stack Hub operators can download the .xml and .zip files and import them using the procedure in [Apply updates in Azure Stack Hub](azure-stack-apply-updates.md). Azure Stack Hub operators with connected scale units will see the hotfixes automatically appear in the administrator portal with the message **Update available**.
-
-If your scale unit isn't connected and you want to be notified about each hotfix release, subscribe to the [RSS feed](https://azurestackhubdocs.azurewebsites.net/xml/hotfixes.rss) to be notified about each hotfix release.
 
 ## Update package types
 
@@ -85,6 +82,8 @@ For example, if the most recent update version available is 2506 (N), the two pr
 - [Azure Stack Hub 2408](./release-notes.md?view=azs-2408&preserve-view=true)
 
 Microsoft software update packages are non-cumulative and require the previous update package and latest hotfix to be installed as a prerequisite. If you decide to defer one or more updates, consider the overall runtime required to update to the latest version.
+
+:::image type="content" source="media/azure-stack-servicing-policy/servicing-policy-workflow.svg" alt-text="Diagram showing Azure Stack Hub servicing policy workflow." lightbox="media/azure-stack-servicing-policy/servicing-policy-workflow.svg":::
 
 ### Resource provider version support
 
