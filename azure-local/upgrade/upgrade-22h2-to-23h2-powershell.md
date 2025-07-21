@@ -12,8 +12,6 @@ zone_pivot_groups: upgrade-os
 
 # Upgrade Azure Stack HCI OS, version 22H2 to version 23H2 via PowerShell
 
-[!INCLUDE [end-of-service-22H2](../includes/end-of-service-22h2.md)]
-
 ::: zone pivot="os-23h2"
 
 This article describes how to upgrade the operating system (OS) for Azure Local from version 22H2 to PowerShell, which is the recommended method to upgrade the OS. This is the first step in the upgrade process, which upgrades only the OS.
@@ -25,7 +23,10 @@ Throughout this article, we refer to OS version 23H2 as the *new* version and ve
 > [!IMPORTANT]
 > To keep your Azure Local service in a supported state, you have up to six months to install this new OS version. The update is applicable to all Azure Local instances running version 22H2. We strongly recommend that you install this version as soon as it becomes available.
 
+
 ::: zone-end
+
+[!INCLUDE [end-of-service-22H2](../includes/end-of-service-22h2.md)]
 
 ::: zone pivot="os-24h2"
 
