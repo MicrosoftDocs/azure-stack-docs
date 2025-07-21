@@ -186,15 +186,15 @@ To resolve this issue, follow these steps:
 
 1. Restart the VM. After the restart, the warning message should no longer appear.
 
-## VMs and VHDs deployed without a specified storage path landing only on the first storage path in the cluster
+## VMs and VHDs deployed without a specified storage path placed only on the first storage path
 
 **Error:**
 
-The system failed to create `[REDACTED]`: There is not enough space on the disk.
+The system failed to create <Azure resource name>: There is not enough space on the disk.
 
 **Cause:**
 
-This error can occur due to a known issue in Azure Local 2506 where VMs and VHDs with no storage path specified during deployment are landing only on the first storage path of the cluster. Over time, this can lead to that path becoming full, preventing new deployments and potentially causing existing VMs to enter a paused-critical state due to disk I/O failures.
+In Azure Local 2506, VMs and VHDs that are deployed without a specified storage path are automatically placed on the first available storage path, even when other storage paths are available on the cluster. Over time, this can lead to that path becoming full, preventing new deployments and potentially causing existing VMs to enter a paused-critical state due to disk I/O failures.
 
 **Resolution:**
 
