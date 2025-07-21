@@ -3,7 +3,7 @@ title: Release notes with fixed and known issues in Azure Local
 description: Read about the known issues and fixed issues in Azure Local.
 author: alkohli
 ms.topic: conceptual
-ms.date: 07/18/2025
+ms.date: 07/21/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
@@ -134,6 +134,7 @@ The following table lists the known issues in this release:
 | Update <!--33470082--> |  Solution update fails with the error: `Unable to install solution update "11.2506.1001.24" - Type 'UpdateFOD' of Role 'ComposedImageUpdate' raised an exception.` | For detailed steps on how to resolve this issue, see the [Troubleshooting guide](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/Update/SolutionUpdate-UpdateFOD.md). |
 | Deployment <!--33471589--> |  After Azure portal deployment, SConfig network settings shows the error: `Set-SCfNetworksetting : Cannot bind argument to parameter 'Value' because it is null.` | There's no known workaround in this release. |
 | Update <!--33448368--> |  Cluster-Aware Updating runs might fail with the error:<br>`Type 'SBEPartnerConfirmCauDone' of Role 'SBE' raised an exception:<br>SBE_MsftCIOnlyCommon_CommonForTesting_4.2.2504.16: ErrorID: SBE-CAU-RUNNING-AFTER-DONE -- CAU run is still in progress when it should be done. See https://aka.ms/AzureLocal/SBE/CauHelp for help. Review full Get-CauRun output it identify if it is progressing or stuck. Wait for it to complete if progressing.` | Wait for CAU run to complete (wait for `Get-CauRun` to report `RunNotInProgress`) and resume the update. |
+|Azure Local VMs <!--33811472-->| When no storage path is specified during deployment, resources (VMs, data disks, and images) are automatically placed on the first storage path of the cluster, even when other storage paths are also available. Over time, this might cause insufficient disk space on that path, potentially resulting in deployment failures. | Create resources with a specified storage path. For more information, see [Troubleshoot Azure Local Virtual Machines enabled by Azure Arc](../azure-local/manage/troubleshoot-arc-enabled-vms.md#resource-deployment-failure-due-to-insufficient-disk-space-on-the-first-storage-path). |
 
 ## Known issues from previous releases
 
