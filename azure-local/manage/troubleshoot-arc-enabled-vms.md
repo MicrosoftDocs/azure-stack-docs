@@ -202,7 +202,7 @@ When creating a VM, data disk, or image, choose a storage path manually.
 
 # [Azure portal](#tab/azure-portal)
 
-When creating an image, select the **Choose manually** option for storage path and then select a storage path from the available list.
+In the Azure portal, when creating a VM, attaching data disks, or creating an image, select the **Choose manually** option for the storage path. Then, select a storage path from the available list to avoid automatic placement on the first storage path.
 
 # [CLI](#tab/cli)
 
