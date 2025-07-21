@@ -5,7 +5,9 @@ ms.topic: how-to
 ms.custom: linux-related-content
 author: sethmanheim
 ms.author: sethm
-ms.date: 03/26/2025
+ms.date: 07/21/2025
+ms.reviewer: rcheeran
+ms.lastreviewed: 07/21/2025
 
 # Intent: As an IT Pro, I want to move my workloads from AKS on Windows Server to the latest version of AKS on Azure Local.
 # Keyword: retirement
@@ -13,10 +15,10 @@ ms.date: 03/26/2025
 
 # Announcing the 3-year retirement of AKS enabled by Azure Arc on Windows Server based platforms
 
-Azure Kubernetes Service enabled by Azure Arc (AKS Arc) is a managed Kubernetes service that you can use to deploy and manage containerized applications on-premises, in datacenters, or at edge locations. It enables you to use familiar tools such as the Azure portal, Azure CLI, Azure Resource Manager, and Bicep and Terraform templates to create and manage your Kubernetes clusters running on different infrastructure platforms. Microsoft continues to focus on delivering consistent user experience for all your AKS Arc clusters. To continue ensuring Azure remains the best possible experience with the highest standards of safety and reliability, **we are retiring the current architecture of AKS enabled by Azure Arc on all versions of Windows Server - that includes AKS Arc on Windows Server 2019 and on Windows Server 2022, in 3 years, on March 27, 2028**.
+Azure Kubernetes Service enabled by Azure Arc (AKS Arc) is a managed Kubernetes service that you can use to deploy and manage containerized applications on-premises, in datacenters, or at edge locations. It enables you to use familiar tools such as the Azure portal, Azure CLI, Azure Resource Manager, and Bicep and Terraform templates to create and manage your Kubernetes clusters running on different infrastructure platforms. Microsoft continues to focus on delivering consistent user experience for all your AKS Arc clusters. To continue ensuring Azure remains the best possible experience with the highest standards of safety and reliability, **we are retiring the current architecture of AKS enabled by Azure Arc on all versions of Windows Server, including AKS Arc on Windows Server 2019 and on Windows Server 2022, in 3 years, on March 27, 2028**.
 
 > [!IMPORTANT]
-> This implies that AKS enabled by Azure Arc will **not be available on Windows Server 2025** as well. Plan your migration to AKS Arc on Azure Local to ensure continued support and updates.
+> This also implies that AKS enabled by Azure Arc will not be available on Windows Server 2025. Plan your migration to AKS Arc on Azure Local to ensure continued support and updates.
 
 ## What is AKS enabled by Azure Arc on Azure Local?
 
@@ -35,19 +37,19 @@ The following Kubernetes cluster deployment and management capabilities are avai
 
 ### If you're using Azure Kubernetes Service on Windows Server 2019 or Windows Server 2022
 
-The AKS Arc current architecture on Windows Server 2019 and Windows Server 2022 will be retired on 27 March 2028. Starting on March 27 2028, you no longer get support, security and quality updates for your existing AKS Arc clusters. Additionally, you won't be able to deploy, upgrade or scale the current architecture of Azure Kubernetes Service on Windows Server 2019 and Windows Server 2022.
+The AKS Arc current architecture on Windows Server 2019 and Windows Server 2022 will be retired on March 27, 2028. Starting on March 27 2028, you no longer get support, security and quality updates for your existing AKS Arc clusters. You also won't be able to deploy, upgrade or scale the current architecture of Azure Kubernetes Service on Windows Server 2019 and Windows Server 2022.
 
 ## If you're using Azure Kubernetes Service on Azure Local, version 22H2
 
-If you're using AKS Arc on Azure Local, version 22H2, be aware that Azure Local, version 22H2 has reached end of service on May 31 2025. You won't receive monthly security and quality updates that provide protection from the latest security threats. To continue receiving updates, we recommend updating to the latest version of Azure Local.
+If you're using AKS Arc on Azure Local, version 22H2, be aware that Azure Local version 22H2 reached its end of service on May 31, 2025. As such, you won't receive monthly security and quality updates that provide protection from the latest security threats. To continue receiving updates, we recommend updating to the latest version of Azure Local.
 
 ## Deploy AKS Arc on Azure Local
 
 ### [From Windows Server 2019, 2022](#tab/ws)
 
-AKS Arc deployments on modern Azure Local are now managed entirely through Azure Resource Manager (ARM). This means administrators must use cloud-based tools such as the Azure CLI (az commands), the Azure portal web interface, or Azure Resource Manager templates to perform cluster operations. This architectural shift aligns AKS Arc management with Microsoft's broader cloud-first strategy and ensures consistency across different deployment scenarios, but it requires administrators to adapt their operational procedures and tooling to work with Azure-based management interfaces rather than local ones. This means that local, PowerShell, or Windows Admin Center commands such as `Update-AksHciCluster` that worked on Windows Server don't work on Azure Local.
+AKS Arc deployments on modern Azure Local are now managed entirely through Azure Resource Manager (ARM). This means administrators must use cloud-based tools such as the Azure CLI (az commands), the Azure portal web interface, or Azure Resource Manager templates to perform cluster operations. This architectural shift aligns AKS Arc management with Microsoft's broader cloud-first strategy and ensures consistency across different deployment scenarios, but it requires administrators to adapt their operational procedures and tooling to work with Azure-based management interfaces rather than local ones. This means that local, PowerShell, or Windows Admin Center commands such as `Update-AksHciCluster` that worked on Windows Server, don't work on Azure Local.
 
-Additionally, AKS Arc functionality is tightly coupled with having a current, supported version of Azure Local as the underlying infrastructure. This dependency means that organizations cannot simply upgrade AKS Arc independently - they must ensure their Azure Local platform itself is running a supported version to enable proper AKS Arc functionality.
+Also, AKS Arc functionality is tightly coupled with having a current, supported version of Azure Local as the underlying infrastructure. This dependency means that organizations cannot simply upgrade AKS Arc independently. They must ensure their Azure Local platform itself is running a supported version to enable proper AKS Arc functionality.
 
 #### Evaluate if Azure Local is right for you
 
@@ -71,7 +73,7 @@ Before you move to Azure Local, follow these steps to disconnect AKS Arc workloa
 
 ### [From Azure Local, version 22H2](#tab/22H2)
 
-AKS Arc deployments on modern Azure Local are now managed entirely through Azure Resource Manager (ARM). This means administrators must use cloud-based tools such as the Azure CLI (az commands), the Azure portal web interface, or Azure Resource Manager templates to perform cluster operations. This architectural shift aligns AKS Arc management with Microsoft's broader cloud-first strategy and ensures consistency across different deployment scenarios, but it requires administrators to adapt their operational procedures and tooling to work with Azure-based management interfaces rather than local ones. This means that local, PowerShell, or Windows Admin Center commands such as `Update-AksHciCluster` that worked on Windows Server don't work on Azure Local.
+AKS Arc deployments on modern Azure Local are now managed entirely through Azure Resource Manager (ARM). This means administrators must use cloud-based tools such as the Azure CLI (az commands), the Azure portal web interface, or Azure Resource Manager templates to perform cluster operations. This architectural shift aligns AKS Arc management with Microsoft's broader cloud-first strategy and ensures consistency across different deployment scenarios, but it requires administrators to adapt their operational procedures and tooling to work with Azure-based management interfaces rather than local ones. This means that local, PowerShell, or Windows Admin Center commands such as `Update-AksHciCluster` that worked on Windows Server, don't work on Azure Local.
 
 Additionally, AKS Arc functionality is tightly coupled with having a current, supported version of Azure Local as the underlying infrastructure. This dependency means that organizations cannot simply upgrade AKS Arc independently - they must ensure their Azure Local platform itself is running a supported version to enable proper AKS Arc functionality.
 
