@@ -82,7 +82,7 @@ To confirm that traffic between AMLFS and client VMs is encrypted:
    ```
 
     > [!TIP]
-    > For more information on verifying encryption, understanding performance impact, and managing certificate handling, see the #.
+    > For more information on verifying encryption, understanding performance impact, and managing certificate handling, see the [FAQ for Azure Virtual Network encryption](/azure/virtual-network/virtual-network-encryption-faq).
 
 ## Caveats and Limitations
 
