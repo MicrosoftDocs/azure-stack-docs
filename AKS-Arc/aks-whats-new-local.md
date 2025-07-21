@@ -2,7 +2,7 @@
 title: What's new in AKS on Azure Local
 description: Learn about what's new in AKS on Azure Local.
 ms.topic: overview
-ms.date: 07/16/2025
+ms.date: 07/21/2025
 author: sethmanheim
 ms.author: sethm 
 ms.reviewer: rcheeran
