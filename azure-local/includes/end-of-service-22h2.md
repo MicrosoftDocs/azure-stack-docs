@@ -8,11 +8,11 @@ ms.reviewer: alkohli
 ---
 
 
-Azure Stack HCI, version 22H2 is already out of support.
+Azure Stack HCI OS version 22H2 is already out of support.
 
 - Monthly security and quality updates have stopped.
-- Your system keeps working, including registration and repair.
-- Billing has continued for version 22H2 systems.
+- Your system continues to work, including registration and repair.
+- Billing has continued.
 - Microsoft Support is available only for upgrade assistance.
 
 To continue receiving updates, we recommend upgrading your operating system based on guidance starting with [Choose an upgrade path](#choose-an-upgrade-path).
