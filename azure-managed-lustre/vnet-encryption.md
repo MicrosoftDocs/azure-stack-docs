@@ -81,7 +81,7 @@ To confirm that traffic between AMLFS and client VMs is encrypted:
    az vm show --name <vm-name> --resource-group <rg-name> --query "storageProfile.osDisk.managedDisk.encryptionSettingsCollection"
    ```
 
-     [!TIP]
+    > [!TIP]
     > For more information on verifying encryption, understanding performance impact, and managing certificate handling, see the #.
 
 ## Caveats and Limitations
