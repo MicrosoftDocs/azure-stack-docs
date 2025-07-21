@@ -34,6 +34,7 @@ To enable VNet Encryption with AMLFS:
    ```
 
 1. Ensure Client VM Compatibility
+
    Only specific VM series support VNet Encryption:
 
    - Dsv6-series  
@@ -44,6 +45,7 @@ To enable VNet Encryption with AMLFS:
    > Existing VMs must be rebooted for encryption to be enabled.
 
 1. Deploy AMLFS into an Encrypted VNet
+
    You can deploy Azure Managed Lustre (AMLFS) into:
 
    - An encrypted VNet  
