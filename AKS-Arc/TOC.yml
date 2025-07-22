@@ -13,7 +13,7 @@
     href: data-collection.md
   - name: Blogs and announcements
     href: blogs-announcements.md
-- name: AKS on Azure Local
+- name: AKS Arc on Azure Local
   expanded: true
   items:
   - name: What's new in AKS on Azure Local
@@ -332,7 +332,7 @@
       href: aks-edge-licensing.md
     - name: Microsoft Software License Terms
       href: aks-edge-software-license-terms.md 
-- name: AKS on VMware
+- name: AKS Arc on VMware
   items:
   - name: Overview
     href: aks-vmware-overview.md
@@ -380,7 +380,7 @@
         href: vmsize.yml
       - name: vnet
         href: vnet.yml
-- name: AKS on Windows Server
+- name: AKS Arc on Windows Server
   items:
   - name: AKS on Windows Server retirement
     href: aks-windows-server-retirement.md
@@ -390,7 +390,7 @@
     href: system-requirements.md
   - name: Quickstarts 
     items:
-    - name: Deploy an AKS cluster
+    - name: Deploy an AKS Arc cluster
       items:
       - name: Use PowerShell
         href: kubernetes-walkthrough-powershell.md

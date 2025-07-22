@@ -2,7 +2,7 @@
 title: What's new in AKS on Azure Local
 description: Learn about what's new in AKS on Azure Local.
 ms.topic: overview
-ms.date: 07/21/2025
+ms.date: 07/22/2025
 author: sethmanheim
 ms.author: sethm 
 ms.reviewer: rcheeran
@@ -34,6 +34,7 @@ The following Kubernetes cluster deployment and management capabilities are avai
 
 - **Disk space exhaustion**: Fixed [issues due to disk space exhaustion on control plane VMs due to accumulation of kube-apiserver audit logs](kube-apiserver-log-overflow.md).  
 - **Cluster upgrade**: Fixed AKS Arc cluster and node pool create, scale, and [upgrade issues due to unavailability of AKS Arc VM images](gallery-image-not-usable.md).
+- **AKS Arc Telemetry pod issue**: Fixed an issue in which the [AKS Arc telemetry pod was consuming excessing CPU and memory](telemetry-pod-resources.md).
 - **New checks**: Added new checks during cluster and node pool operations. These improvements allow the system to proactively detect and handle scenarios where there are insufficient IP addresses in the IP pool.
 - **GPU resource allocation**: Additional pre-checks for resource allocation for GPUs during Kubernetes cluster create operation.
 - **Node pool improvements**: Accurate representation of node pool count and status on the Azure portal. This release also includes improvements to node pool creation and update flows to ensure that the Kubernetes cluster status accounts for corresponding node pool status.
