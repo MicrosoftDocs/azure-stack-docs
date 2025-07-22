@@ -18,7 +18,6 @@ This article describes how to upgrade the operating system (OS) for Azure Local 
 
 There are other methods to upgrade the OS to version 25398.xxxx (23H2) that include using Windows Admin Center and the Server Configuration tool (SConfig). For more information about these methods, see [Upgrade the Azure Stack HCI OS, version 22H2 OS via Windows Admin Center](./upgrade-22h2-to-23h2-windows-admin-center.md) and [Upgrade Azure Local to new OS using other methods](./upgrade-22h2-to-23h2-other-methods.md).
 
-
 <!-- [!IMPORTANT]
 To keep your Azure Local service in a supported state, you have up to six months to install this new OS version. The update is applicable to all Azure Local instances running version 22H2. We strongly recommend that you install this version as soon as it becomes available.-->
 
@@ -34,11 +33,11 @@ This article describes how to upgrade the Azure Stack HCI operating system (OS) 
 
 - From OS version 20349.xxxx to 26100.xxxx.
 
-- From OS version 25398.xxxx to 26100.xxxx.
+- From OS version 20349.xxxx to 25398.xxxx.
 
 > [!IMPORTANT]
 > - This article covers OS upgrades only. Do not proceed if solution upgrade is complete or Azure Local 2311.2 or later is deployed. To check if your system is already running the solution, run the `Get-StampInformation` cmdlet. If it returns output, your system is already running the solution, and you should skip these steps.
-<!-- - The solution upgrade isn't yet supported on OS version 26100.xxxx.-->
+> - The solution upgrade isn't yet supported on OS version 26100.xxxx.
 
 ::: zone-end
 
@@ -84,12 +83,12 @@ To upgrade your OS from version 20349.xxxx (22H2), choose one of the following u
 
 - **Upgrade to OS version 25398.xxxx**: You can upgrade your OS version to 25398.xxxx (23H2) and then apply solution upgrade. This is our *recommended* option.
 
-- **Upgrade OS version 26100.xxxx** (Preview): With the 2505 release, a direct upgrade path from version 20349.xxxx (23H2) to 26100.xxxx (24H2) is available. Skipping the upgrade to the version 23H2 OS will be one less upgrade hop and will help reduce reboots and maintenance planning prior to the solution upgrade.
+- **Upgrade OS version 26100.xxxx** (Preview): With the 2505 release, a direct upgrade path from version 20349.xxxx (23H2) to version 26100.xxxx (24H2) is available. Skipping the upgrade to the version 26100.xxxx will be one less upgrade hop and will help reduce reboots and maintenance planning prior to the solution upgrade.
 
     After the OS upgrade, you can wait for the solution upgrade and the drivers to become available. This option is currently in preview and is not recommended for production workloads.
 
     - An exception to the above recommendation is if you are using stretch clusters. Stretch clusters should directly move to version 24H2 in 2508 which also contains critical bug fixes.
-    - Make sure to consult with your hardware vendor to determine if version 26100.xxxx (24H2) OS is supported before performing the upgrade.
+    - Make sure to consult with your hardware vendor to determine if version 26100.xxxx OS is supported before performing the upgrade.
 
 For more information about the various upgrade paths, see the blog post on [Upgrade Azure Local to new OS version](https://techcommunity.microsoft.com/blog/azurearcblog/upgrade-azure-local-operating-system-to-new-version/4423827).
 
@@ -100,10 +99,9 @@ For more information about the various upgrade paths, see the blog post on [Upgr
 
 Before you begin, make sure that:
 
-- You have access to an Azure Local running version 22H2.
-- The system is registered in Azure.
+- You have access to an Azure Local running version 22H2. The system is registered in Azure.
 - All the machines  in your Azure Local, version 22H2 instance are healthy and show as **Online**.
-- You shut down virtual machines (VMs). We recommend shutting down VMs before performing the OS upgrade to prevent unexpected outages and damages to databases.
+- You have shut down virtual machines (VMs). We recommend that you shut down VMs before performing the OS upgrade to prevent unexpected outages and damages to databases.
 - You have access to the Azure Stack HCI, version 23H2 OS software update for Azure Local. This update is available via Windows Update or as a downloadable media. The media must be version **2503** ISO file that you can download from the [Azure portal](https://portal.azure.com/#view/Microsoft_Azure_HybridCompute/AzureArcCenterBlade/~/hciGetStarted).
 - You have access to a client that can connect to your Azure Local instance. This client should be running PowerShell 5.0 or later.
 - You run the `RepairRegistration` cmdlet only if both of the following conditions apply:
@@ -242,7 +240,6 @@ Follow these steps on your client to connect to one of the machines of your Azur
    PS C:\Users\Administrator> Enter-PSSession -ComputerName "100.100.100.10" -Credential $cred 
    [100.100.100.10]: PS C:\Users\Administrator\Documents>
    ```
-
 
 ## Install new OS using PowerShell
 
