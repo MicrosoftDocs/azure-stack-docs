@@ -79,7 +79,7 @@ Here's a brief overview of the tools and processes used during the deployment. A
 
 To prepare each machine for the disconnected operations appliance, follow these steps:
 
-1. Download the preview ISO (2506 and later).  
+1. Download the Azure Local ISO (2506 and later).  
 
 1. Install the OS and configure the node networking for each Azure Local machine you intend to use to form an instance. For more information, see [Install the Azure Stack HCI operating system](../deploy/deployment-install-os.md).  
 
@@ -615,11 +615,11 @@ To initialize each node, follow these steps. Modify where necessary to match you
     ```powershell
     Write-Host "az login to Disconnected operations cloud"    
     az cloud set -n $applianceCloudName --only-show-errors
-    Write-host "There's a known issue in this preview release where using the service principal doesn't work"
-    # Following is commented out  due to this issue
-    # az login --service-principal --username $appId --password $clientSecret --tenant 98b8267d-e97f-426e-8b3f-7956511fd63f    
-    Write-Host "Using device code login - complete the login from your browser: "
-    az login --use-device-code
+    Write-Host "Login using service principal"    
+    az login --service-principal --username $appId --password $clientSecret --tenant 98b8267d-e97f-426e-8b3f-7956511fd63f    
+    # If you prefer interactive login..
+    # Write-Host "Using device code login - complete the login from your browser"
+    # az login --use-device-code
 
     Write-Host "Connected to Disconnected operations Cloud through az cli"
     ```
