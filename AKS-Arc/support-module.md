@@ -58,7 +58,6 @@ Invoke-SupportAksArcRemediation
 
 The following example output from the `Test-SupportAksArcKnownIssues` command shows the results of a failed test::
 
-```output
 | Test Name                                                  | Status Message                                                                                       |
 |------------------------------------------------------------|------------------------------------------------------------------------------------------------------|
 | Validate Failover Cluster Service Responsiveness           | Passed Failover Cluster service is responsive.                                                       |
@@ -74,11 +73,9 @@ The following example output from the `Test-SupportAksArcKnownIssues` command sh
 | Validate Gallery Image Stuck In Deleting                   | Passed No gallery images are stuck in deleting state                                                 |
 | Validate Virtual Machine Stuck In Pending                  | Passed No virtual machines are stuck in pending state                                                |
 | Validate Virtual Machine Management Service Responsiveness | Passed Virtual Machine Management service is responsive                                              |
-```
 
 The following example output shows a successful result for all tests:
 
-```output
 | Test Name                                             | Status Message                                                                                   |
 |-------------------------------------------------------|--------------------------------------------------------------------------------------------------|
 | Validate Failover Cluster Service Responsiveness      | Passed  Failover Cluster service is responsive.                                                  |
@@ -96,9 +93,8 @@ The following example output shows a successful result for all tests:
 | Validate Gallery Image Stuck In Deleting              | Passed  No gallery images are stuck in deleting state.                                           |
 | Validate Virtual Machine Stuck In Pending             | Passed  No virtual machines are stuck in pending state.                                          |
 | Validate Virtual Machine Management Service Responsiveness | Passed  Virtual Machine Management service is responsive.                                   |
-```
 
 ## Next steps
 
 - [Use the diagnostic checker tool to identify common environment issues](aks-arc-diagnostic-checker.md)
-- [Review AKS on Azure Local architecture](cluster-architecture.md)
+
