@@ -100,5 +100,4 @@ Validate Virtual Machine Management Service Responsiveness Passed  Virtual Machi
 
 ## Next steps
 
-- [Use the diagnostic checker tool to identify common environment issues](aks-arc-diagnostic-checker.md)
-
+[Use the diagnostic checker tool to identify common environment issues](aks-arc-diagnostic-checker.md)
