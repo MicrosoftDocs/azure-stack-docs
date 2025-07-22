@@ -618,7 +618,7 @@ To initialize each node, follow these steps. Modify where necessary to match you
     Write-Host "Login using service principal"    
     az login --service-principal --username $appId --password $clientSecret --tenant 98b8267d-e97f-426e-8b3f-7956511fd63f    
     # If you prefer interactive login..
-    # Write-Host "Using device code login - complete the login from your browser: "
+    # Write-Host "Using device code login - complete the login from your browser"
     # az login --use-device-code
 
     Write-Host "Connected to Disconnected operations Cloud through az cli"
