@@ -289,6 +289,16 @@ _continue_ = "DNS=$subject"
 
 - Copy the management certificates (*.pfx) to the directory structure represented in ManagementEndpointCerts.
 
+## Export Root CA certificate
+
+You need the root certificate public key for deployment. The following example shows how to export your root certificate public key:
+
+```azurecli
+certutil -ca.cert applianceRootCA.cer
+```
+
+For more information, see [Active Directory Certificate Services](/troubleshoot/windows-server/certificates-and-public-key-infrastructure-pki/export-root-certification-authority-certificate).
+
 ## Obtain certificate information for identity integration 
 
 To secure your identity integration, we recommend that you pass these two parameters:

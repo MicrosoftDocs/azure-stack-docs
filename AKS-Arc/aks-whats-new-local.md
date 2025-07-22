@@ -2,11 +2,11 @@
 title: What's new in AKS on Azure Local
 description: Learn about what's new in AKS on Azure Local.
 ms.topic: overview
-ms.date: 04/01/2025
+ms.date: 07/22/2025
 author: sethmanheim
 ms.author: sethm 
-ms.reviewer: guanghu
-ms.lastreviewed: 04/01/2025
+ms.reviewer: rcheeran
+ms.lastreviewed: 07/16/2025
 
 ---
 
@@ -19,42 +19,45 @@ This article lists the various features and improvements that are available in A
 > [!NOTE]
 > AKS on Azure Local is only supported on Azure Local version 23H2 and later.
 
-## About AKS on Azure Local
-
-AKS on Azure Local uses [Azure Arc](/azure/azure-arc/overview) to create new Kubernetes clusters on Azure Local directly from Azure. It enables you to use familiar tools like the Azure portal, Azure CLI, and Azure Resource Manager templates to create and manage your Kubernetes clusters running on Azure Local. Since clusters are automatically connected to Arc when they are created, you can use your Microsoft Entra ID for connecting to your clusters from anywhere. This ensures your developers and application operators can provision and configure Kubernetes clusters in accordance with company policies.
-
-Microsoft continues to focus on delivering a consistent user experience for all your AKS clusters. If you have created and managed Kubernetes clusters using Azure, you'll feel right at home managing Kubernetes clusters running on Azure Local using Azure portal or Azure CLI management experiences.
-
-## Simplified AKS component management on Azure Local
-
-AKS on Azure Local includes several infrastructure components that provide Azure experiences, including the Arc Resource Bridge, Custom Location, and the Kubernetes Extension for the AKS Arc operator. These infrastructure components are now included in Azure Local:
-
-- **Arc Resource Bridge**: The Arc Resource Bridge is created automatically when you deploy Azure Local. This lightweight Kubernetes VM connects your Azure Local to Azure Cloud and enables on-premises resource management from Azure. Azure Arc Resource Bridge provides the line of sight to private clouds required to manage resources such as Kubernetes clusters on-premises through Azure.
-- **Custom Location**: Just like Azure Arc Resource Bridge, a custom location is created automatically when you deploy Azure Local. A custom location is the on-premises equivalent of an Azure region and is an extension of the Azure location construct. Custom locations provide a way for tenant administrators to use their data center with the right extensions installed, as target locations for deploying AKS.
-- **Kubernetes Extension for AKS Arc Operators**: The Kubernetes Extension for AKS Operators is automatically installed on Arc Resource Bridge when you deploy Azure Local. It's the on-premises equivalent of an Azure Resource Manager resource provider, to help manage AKS via Azure.
-
-By integrating these components, Azure Arc offers a unified and efficient Kubernetes provisioning and management solution, seamlessly bridging the gap between on-premises and cloud infrastructures.
-
-## Key personas
-
-**Infrastructure administrator**: The role of the infrastructure administrator is to set up Azure Local, which includes all the infrastructure component deployments previously mentioned. Administrators must also set up the platform configuration, such as the networking and storage configuration, so that Kubernetes operators can create and manage Kubernetes clusters.
-
-**Kubernetes operator**: Kubernetes operators can create and manage Kubernetes clusters on Azure Local so they can run applications without coordinating with infrastructure administrators. The operator is given access to the Azure subscription, Azure custom location, and virtual network by the infrastructure administrator. No access to the underlying on-premises infrastructure is necessary. Once the operator has the required access, they can create Kubernetes clusters according to application needs: Windows/Linux node pools, Kubernetes versions, etc.
-
 ## Features and improvements
 
 This section lists the new features and improvements in AKS Arc in each release of Azure Local.
+
+### Release 2507
+
+> [!IMPORTANT]
+> Azure Linux 2.0 (formerly CBL-Mariner) will reach its official end of life (EOL) on July 31, 2025. After this date, Azure Linux will no longer receive updates, security patches, or support from the Azure Linux team. Starting with the [Azure Local 2507 release](/azure/azure-local/whats-new), AKS on Azure Local will release Azure Linux 3.0 images for all supported Kubernetes versions. To maintain security compliance and ensure continued support, you should migrate to [Azure Linux 3.0](/azure/azure-linux/intro-azure-linux#whats-new-with-azure-linux-30) as soon as possible, by upgrading Azure Local instances to the 2507 release.
+>
+> Support for Kubernetes minor version 1.28 will end on August 31, 2025. We will introduce Kubernetes 1.31 in the next Azure Local release.
+
+The following Kubernetes cluster deployment and management capabilities are available:
+
+- **Disk space exhaustion**: Fixed [issues due to disk space exhaustion on control plane VMs due to accumulation of kube-apiserver audit logs](kube-apiserver-log-overflow.md).  
+- **Cluster upgrade**: Fixed AKS Arc cluster and node pool create, scale, and [upgrade issues due to unavailability of AKS Arc VM images](gallery-image-not-usable.md).
+- **AKS Arc Telemetry pod issue**: Fixed an issue in which the [AKS Arc telemetry pod was consuming excessing CPU and memory](telemetry-pod-resources.md).
+- **New checks**: Added new checks during cluster and node pool operations. These improvements allow the system to proactively detect and handle scenarios where there are insufficient IP addresses in the IP pool.
+- **GPU resource allocation**: Additional pre-checks for resource allocation for GPUs during Kubernetes cluster create operation.
+- **Node pool improvements**: Accurate representation of node pool count and status on the Azure portal. This release also includes improvements to node pool creation and update flows to ensure that the Kubernetes cluster status accounts for corresponding node pool status.
+- **Improvements to autoscaler capabilities**:
+  - Fixed an issue in which secrets were updated repeatedly when the autoscaler was enabled. The fix ensures that the provider checks for an existing secret and only creates it if it's missing.
+  - Fixed an issue in which users were unable to disable the autoscaler at the Kubernetes cluster level.
+  - Improved conflict handling logic during cluster delete operations when the autoscaler or cluster controller tried to update or remove resources that were being changed simultaneously by another process.
+  - Fixed an issue in which the node pools' minimum and maximum counts didn't get updated when the autoscaler was enabled.
+
+#### Supported Kubernetes versions for 2507
+
+The Kubernetes versions supported in the 2507 release are: 1.28.12, 1.28.14, 1.29.7, 1.29.9, 1.30.3, and 1.30.4.  
 
 ### Release 2503
 
 The following Kubernetes cluster deployment and management capabilities are available:
 
-- **Large VM SKUs for Kubernetes nodepools**: Added two new VM SKUs - `Standard_D32s_v3`: 32 vCPU, 128 GiB and `Standard_D16s_v3`: 16 vCPU, 64 GiB - to support larger nodepools on an AKS cluster. For more information about supported VM sizes, see [supported scale options](scale-requirements.md).
-- **Improved log collection experience**: Improved log collection for AKS control plane node VMs and nodepool VMs, with support for passing multiple IP addresses and SSH key or directory path. For more information, see [on-demand log collection](get-on-demand-logs.md) and [az aksarc get-logs CLI](/cli/azure/aksarc#az-aksarc-get-logs).
-- **Improved diagnosability**: The [Diagnostic Checker tool](aks-arc-diagnostic-checker.md) is automatically run in case of Kubernetes cluster create failure, and added new test cases.
+- **Large VM SKUs for Kubernetes node pools**: Added two new VM SKUs - `Standard_D32s_v3`: 32 vCPU, 128 GiB and `Standard_D16s_v3`: 16 vCPU, 64 GiB - to support larger node pools on an AKS cluster. For more information about supported VM sizes, see [supported scale options](scale-requirements.md).
+- **Improved log collection experience**: Improved log collection for AKS control plane node VMs and node pool VMs, with support for passing multiple IP addresses and SSH key or directory path. For more information, see [on-demand log collection](get-on-demand-logs.md) and [az aksarc get-logs CLI](/cli/azure/aksarc#az-aksarc-get-logs).
+- **Improved diagnosability**: The [Diagnostic Checker tool](aks-arc-diagnostic-checker.md) is automatically run if the Kubernetes cluster creation fails, and added new test cases.
 - **Improved Kubernetes cluster delete**: Fixed deletion issues; for example, due to [pod disruption budgets](delete-cluster-pdb.md?tabs=aks-on-azure-local).
 - **Improved AKS Arc image download**: Fixed issues with AKS Arc image downloads.
-- **Improved GPU support**: Improved error handling for Kubernetes cluster creation with GPU enabled nodepools. Fixed known issues with attaching persistent volumes on GPU enabled nodepools.
+- **Improved GPU support**: Improved error handling for Kubernetes cluster creation with GPU enabled node pools. Fixed known issues with attaching persistent volumes on GPU enabled node pools.
 
 To get started with these features in the 2503 release, make sure to update your [AKSArc CLI extension](/cli/azure/aksarc) to version 1.5.37 or higher.
 
@@ -87,7 +90,7 @@ The following Kubernetes cluster deployment and management capabilities are avai
 - **PowerShell**. You can now use PowerShell cmdlets to manage your AKS Arc clusters on Azure Local with CRUD support. For more information, see the [PowerShell reference documentation](/powershell/module/az.aksarc/?view=azps-12.1.0&preserve-view=true).
 - **Error report improvements**. You can now get improved error case reporting with prechecks; for example, a check for incorrect Kubernetes versions and available GPU capacity.
 - **Support for NVIDIA T4**. You can now create node pools in new VM sizes with GPU NVIDIA T4. For more information, see [Use GPUs](deploy-gpu-node-pool.md).
-- **Arc Gateway**. You can now use the Arc Gateway to configure very few of the outbound URLs to use AKS clusters on Azure Local.
+- **Arc Gateway**. You can now use the Arc Gateway to configure a few of the outbound URLs to use AKS clusters on Azure Local.
 - **Support pod CIDR**. You can now create an AKS Arc cluster with a user-specified pod CIDR IP arrange.
 
 #### Supported component versions for 2408
@@ -105,7 +108,7 @@ The following Kubernetes cluster deployment and management capabilities are avai
 - **Taints and labels update**. You can now update taints and labels during an AKS Arc node pool update operation using Azure CLI and Azure Resource Manager templates.
 - **AKS Arc cluster platform metrics and alerts**. You can now view AKS Arc cluster metrics (platform metrics) and create metric-based alerts.
 - **Auto cert repair**. You can now automatically repair certificates, managed by cert-tattoo, that expired when the cluster was shut down.
-- **Download VHDs manually (offline download)**. This feature, now available only in private preview, enables you to download virtual machine images and upload them to the target center using a manual process. This can help in environments in which downloading large files is inconvenient. If you are interested in using it, contact your Microsoft Account representative.
+- **Download VHDs manually (offline download)**. This feature, now available only in private preview, enables you to download virtual machine images and upload them to the target center using a manual process. This feature can help in environments in which downloading large files is inconvenient. If you're interested in using it, contact your Microsoft Account representative.
 
 #### Supported component versions for 2405
 
@@ -126,7 +129,7 @@ The following Kubernetes cluster deployment and management capabilities are avai
 - **Certificate expiration**. You can now shut down Kubernetes clusters for up to 7 days without any certificate expiration issues.
 - **Update status**. You can now view the status of ongoing Kubernetes cluster upgrades.
 
-### Release 2311.2
+<!-- ### Release 2311.2
 
 AKS enabled by Azure Arc on Azure Local is generally available starting with this release.
 
@@ -152,7 +155,7 @@ The following Kubernetes cluster deployment and management capabilities are avai
 - **Cloud-based management**. You can now create and manage Kubernetes clusters on Azure Local with familiar tools such as the Azure portal and Azure CLI. For more information, see [Create Kubernetes clusters using Azure CLI](aks-create-clusters-cli.md).
 - **Support for Azure Container Registry to deploy container images**. In this release, you can deploy container images from a private container registry using Azure Container Registry to your Kubernetes clusters running on Azure Local. For more information, see [Deploy from private container registry to on-premises Kubernetes](deploy-container-registry.md).
 - **Support for managing and scaling the node pools**. For more information, see [Manage multiple node pools in AKS Arc](manage-node-pools.md).
-- **Support for Linux and Windows Server containers**. For more information, see [Create Windows Server containers](aks-create-containers.md).
+- **Support for Linux and Windows Server containers**. For more information, see [Create Windows Server containers](aks-create-containers.md). -->
 
 ## Next steps
 
