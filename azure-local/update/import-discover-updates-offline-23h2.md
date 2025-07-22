@@ -43,7 +43,7 @@ For more information on the release cadence, see [Azure Local release informatio
 
 | OS Build | Download URI | SHA256 |
 |--|--|--|
-| 25398.1732 | [11.2507.0.3027](https://azurestackreleases.download.prss.microsoft.com/dbazure/AzureLocal/CombinedSolutionBundle/11.2507.1001.7/CombinedSolutionBundle.11.2507.1001.7.zip) <br><br> Availability date: <br><br> 2025-07-21 | F3E288E1854253E25AD063D3DA4B766CF634FE294BD6814F4A4A1551FB855773 |
+| 25398.1732 | [11.2507.1001.7](https://azurestackreleases.download.prss.microsoft.com/dbazure/AzureLocal/CombinedSolutionBundle/11.2507.1001.7/CombinedSolutionBundle.11.2507.1001.7.zip) <br><br> Availability date: <br><br> 2025-07-21 | F3E288E1854253E25AD063D3DA4B766CF634FE294BD6814F4A4A1551FB855773 |
 | 25398.1665 | [11.2506.1001.28](https://azurestackreleases.download.prss.microsoft.com/dbazure/AzureLocal/CombinedSolutionBundle/11.2506.1001.28/CombinedSolutionBundle.11.2506.1001.28.zip) <br><br> Availability date: <br><br> 2025-07-02 | 18975A06372192DD7249B5DCF8844EA0A68AD08B1C9F3C554FABF79EA74CB290 |
 | 25398.1611 | [11.2505.1001.22](https://azurestackreleases.download.prss.microsoft.com/dbazure/AzureLocal/CombinedSolutionBundle/11.2505.1001.22/CombinedSolutionBundle.11.2505.1001.22.zip) <br><br> Availability date: <br><br> 2025-05-28 | AB2C7CE74168BF9FD679E7CE644BC57A20A0A3A418C5E8663EBCF53FC0B45113 |
 | 25398.1551 | [11.2504.1001.19](https://azurestackreleases.download.prss.microsoft.com/dbazure/AzureLocal/CombinedSolutionBundle/11.2504.1001.19/CombinedSolutionBundle.11.2504.1001.19.zip) <br><br> Availability date: <br><br> 2025-04-21 | 7658C5CBAE241951C786D06D35E8B09A1160FDC5E9B8CAEDEB374ECC22A2CB68 |
