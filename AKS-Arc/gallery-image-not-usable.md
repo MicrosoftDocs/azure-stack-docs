@@ -49,7 +49,7 @@ This issue was fixed in [AKS on Azure Local, version 2507](/azure/azure-local/wh
 - Upgrade your Azure Local deployment to the 2507 build.
 - Once updated, confirm that the images were downloaded successfully by running the `az aksarc get-versions` command.
 - You can now use the specified Kubernetes versions while creating or updating your AKS Arc clusters.
-- If you continue to encounter issues, file a support ticket.
+- If you continue to encounter issues, please file a support ticket.
 
 ## Next steps
 
