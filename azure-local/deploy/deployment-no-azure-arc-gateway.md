@@ -1,6 +1,6 @@
 --- 
-title: Register Azure Local using arc gateway and with and without proxy setup.
-description: Learn how to register Azure Local using Azure Arc gateway Arc proxy. Both scenarios with and without proxy are configured. The proxy configuration can be done via an Arc script via registration script for Azure gateway on Azure Local, version 2408. 
+title: Register Azure Local with and without proxy setup.
+description: Learn how to register Azure Local with and without proxy. The proxy configuration can be done via an Arc script or via the Configurator app for Azure gateway on Azure Local. 
 author: alkohli
 ms.topic: how-to
 ms.date: 07/23/2025
@@ -9,19 +9,17 @@ ms.service: azure-local
 zone_pivot_groups: register-arc-options
 ---
 
-# Register Azure Local using Azure Arc gateway
+# Register Azure Local with and without proxy setup
 
 ::: moniker range=">=azloc-2505"
 
 ::: zone pivot="register-proxy"
 
-This article details how to register using Azure Arc gateway on Azure Local with the proxy configuration.
+This article details how to register an Azure Local with or without the proxy configuration. Configure the Arc proxy before you register and then register using a script or via the Configuration app.
 
-Once you create an Arc gateway resource in your Azure subscription, you can enable the Arc gateway features. Configure the Arc proxy before you register and then register using a script or via the Configuration app.
+- **Configure with a script**: You can use an Arc script to configure registration settings.
 
-- **Configure proxy with a script**: Using this method, you don't need to configure the Arc proxy across WinInet, WinHttp, or environment variables manually.
-
-- **Set up proxy via the Configurator app**: Using this method, you can configure the Arc proxy via a user interface. This method is useful if you prefer not to use scripts or if you want to configure the proxy settings interactively.
+- **Set up via the Configurator app**: Using this method, you can configure Azure Local registration via a user interface. This method is useful if you prefer not to use scripts or if you want to configure the settings interactively.
 
 # [Via Arc script](#tab/script)
 
@@ -136,7 +134,7 @@ Before you begin, make sure that you complete the following prerequisites:
 
 [!INCLUDE [hci-registration-azure-prerequisites](../includes/hci-registration-azure-prerequisites.md)]
 
-- **Get Arc gateway ID**. Skip this step if you didn't set up Azure Arc gateway. If you [Set up an Azure Arc gateway](../deploy/deployment-azure-arc-gateway-overview.md#create-the-arc-gateway-resource-in-azure), get the resource ID of the Arc gateway. This is also referred to as the `ArcGatewayID`.
+- **Get Arc gateway ID**. Follow the steps in [Set up an Azure Arc gateway](../deploy/deployment-azure-arc-gateway-overview.md#create-the-arc-gateway-resource-in-azure) and get the resource ID of the Arc gateway. This is also referred to as the `ArcGatewayID`.
 
    1. To get the `ArcGatewayID`, run the following command:  
 
