@@ -6,6 +6,7 @@ ms.topic: how-to
 ms.date: 07/23/2025
 ms.author: alkohli
 ms.service: azure-local
+zone_pivot_groups: register-arc-options
 ---
 
 # Register Azure Local using Azure Arc gateway
@@ -35,7 +36,6 @@ Make sure the following prerequisites are met before proceeding:
 ## Get the ArcGatewayID  
 
 You need the proxy and the ArcGatewayID from Azure to run the registration script on Azure Local machines. You can find the Arc gateway ID on the Azure portal overview page of the resource.
-
 
 ## Register new machines in Azure Arc
 
