@@ -125,9 +125,9 @@ items:
   - name: 5. Choose a registration method
     items:
     - name: Without Arc gateway
-      href: deploy/deployment-with-arc-gateway.md
+      href: deploy/deployment-with-azure-arc-gateway.md
     - name: With Arc gateway
-      href: deploy/deployment-without-arc-gateway.md  
+      href: deploy/deployment-without-azure-arc-gateway.md  
   - name: 6. Choose a deployment method
     items:
     - name: 6A. Deploy via Azure portal
