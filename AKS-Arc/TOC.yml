@@ -159,14 +159,16 @@
     items:
     - name: Troubleshoot and known issues
       href: aks-troubleshoot.md
-    - name: AKS on Azure Local support policy
-      href: aks-on-azure-local-support-policy.md
     - name: Get support
-      href: help-support.md
-    - name: Use the Support.AksArc remediation tool
-      href: support-module.md
-    - name: Use diagnostic checker
-      href: aks-arc-diagnostic-checker.md
+      items:
+      - name: AKS on Azure Local support policy
+        href: aks-on-azure-local-support-policy.md
+      - name: Get support
+        href: help-support.md
+      - name: Use the support remediation tool
+        href: support-module.md
+      - name: Use diagnostic checker
+        href: aks-arc-diagnostic-checker.md
     - name: Storage provisioning issue in cluster and node pool creation
       href: storage-provision-issue.md
     - name: Control plane configuration validation errors
