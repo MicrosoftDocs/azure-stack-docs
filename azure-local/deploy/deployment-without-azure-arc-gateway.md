@@ -46,7 +46,6 @@ Make sure the following prerequisites are met before proceeding:
     |`DeviceCode`        |The device code displayed in the console at `https://microsoft.com/devicelogin` and is used to sign in to the device.         |
 
     
-    # [PowerShell](#tab/powershell)
 
     ```powershell
     #Define the subscription where you want to register your machine as Arc device
@@ -66,7 +65,6 @@ Make sure the following prerequisites are met before proceeding:
     $ProxyServer = "http://proxyaddress:port"
     ```
  
-    # [Output](#tab/output)
 
     Here's a sample output of the parameters:
 
@@ -78,10 +76,9 @@ Make sure the following prerequisites are met before proceeding:
     PS C:\Users\SetupUser> $ProxyServer = "<http://proxyserver:tcpPort>"
     ```
 
-    ---
+  
 2. Connect to your Azure account and set the subscription. Open a browser on the client that you're using to connect to the machine and open this page: `https://microsoft.com/devicelogin` and enter the provided code in the Azure CLI output to authenticate. Get the access token and account ID for the registration.  
 
-    # [PowerShell](#tab/powershell)
 
     ```azurecli
     #Connect to your Azure account and Subscription
@@ -94,7 +91,6 @@ Make sure the following prerequisites are met before proceeding:
     $id = (Get-AzContext).Account.Id   
     ```
 
-    # [Output](#tab/output)
 
     Here's a sample output of setting the subscription and authentication:
 
@@ -111,11 +107,9 @@ Make sure the following prerequisites are met before proceeding:
     PS C:\Users\SetupUser> $id = (Get-AzContext).Account.Id
     ```
 
-    ---
 
 3. Finally run the Arc registration script. The script takes a few minutes to run.
 
-    # [PowerShell](#tab/powershell)
 
     ```powershell
     #Invoke the registration script. Use a supported region.
@@ -124,7 +118,6 @@ Make sure the following prerequisites are met before proceeding:
 
     For a list of supported Azure regions, see [Azure requirements](../concepts/system-requirements-23h2.md#azure-requirements).
 
-    # [Output](#tab/output)
 
     Here's a sample output of a successful registration of your machines:
 
@@ -148,7 +141,7 @@ Make sure the following prerequisites are met before proceeding:
 
     PS C:\Users\Administrator>
     ```
-    ---
+
 
 4. After the script completes successfully on all the machines, verify that:
 
@@ -422,7 +415,6 @@ Make sure the following prerequisites are met before proceeding:
     PS C:\Users\SetupUser> $id = (Get-AzContext).Account.Id
     ```
 
-    ---
 
 3. Finally run the Arc registration script. The script takes a few minutes to run.
 
@@ -457,7 +449,7 @@ Make sure the following prerequisites are met before proceeding:
 
     PS C:\Users\Administrator>
     ```
-    ---
+   
 
 4. After the script completes successfully on all the machines, verify that:
 
@@ -468,7 +460,6 @@ Make sure the following prerequisites are met before proceeding:
 > [!NOTE]
 > Once an Azure Local machine is registered with Azure Arc, the only way to undo the registration is to install the operating system again on the machine.
 
-```
 
 ## Step 3: Verify the setup is successful
 
