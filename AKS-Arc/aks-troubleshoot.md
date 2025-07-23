@@ -24,7 +24,7 @@ The following sections describe known issues for AKS enabled by Azure Arc:
 
 | AKS Arc CRUD operation | Issue | Fix status |
 |------------------------|-------|------------|
-| AKS steady state       | [Storage provisioning issue impacting cluster and node pool creation](issue-storage-provision.md)|Active|
+| AKS steady state       | [Storage provisioning issue impacting cluster and node pool creation](storage-provision-issue.md)|Active|
 | AKS cluster delete     | [Deleted AKS Arc cluster still visible on Azure portal](deleted-cluster-visible.md) | Active |
 | AKS steady state       | [AKS Arc telemetry pod consumes too much memory and CPU](telemetry-pod-resources.md) | Fixed in 2507 release  |
 | AKS cluster create     | [Can't create AKS cluster or scale node pool because of issues with AKS Arc images](gallery-image-not-usable.md) | Fixed in 2507 release |
