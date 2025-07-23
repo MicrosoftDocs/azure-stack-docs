@@ -21,7 +21,7 @@ highlightedContent:
     # Card
     - title: "Ignite 2024: Session catalog"
       itemType: video
-      url: https://ignite.microsoft.com/sessions      
+      url: https://ignite.microsoft.com/archives      
     - title: "Build 2024: post-event sessions"
       itemType: video
       url: https://build.microsoft.com/en-US/home
