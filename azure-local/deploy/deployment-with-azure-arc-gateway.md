@@ -9,7 +9,7 @@ ms.service: azure-local
 zone_pivot_groups: register-arc-options
 ---
 
-# Register Azure Local using Azure Arc gateway
+# Register Azure Local with Azure Arc using Arc gateway
 
 ::: moniker range=">=azloc-2505"
 
