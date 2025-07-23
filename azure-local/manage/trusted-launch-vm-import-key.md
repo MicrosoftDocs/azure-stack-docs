@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
 ms.reviewer: alkohli
-ms.date: 07/21/2025
+ms.date: 07/23/2025
 ---
 
 # Manual backup and recovery of guest state protection keys for Trusted launch Azure Local VMs enabled by Azure Arc
@@ -59,10 +59,16 @@ The steps below involve copying VM guest state protection keys from the local ke
 
         Backup-TVMKeys -WrappingKeyPath <path to public.pem> -BackupRootPath <path to backup root folder where the timestamped backup folder is stored>
         ```
+        Here is a sample output after running this command:
+
+        ```output
+        Backing up TVM Vault keys to .\<backup root folder>\20250722192116
+        Backing up key 11111111-1111-1111-1111-111111111111 to AES folder
+        Backing up key 7fb16fe7-00a0-476f-92b3-ccb98fd9525a to AES folder
+        Backing up key AzureStackTvmAKRootKey to RSA folder
+        ```
 
 1. Make note of the timestamped backup folder created under the backup root folder. You'll need this later during recovery.  For example, backup folder named "20250612205355" with the format "yyyyMMddHHmmss".
-
-1. Anytime you create a new VM on Azure Local instance, run the script and back up the keys in the key vault.
 
 ### Restore keys
 
@@ -70,23 +76,31 @@ The steps below involve restoring VM guest state protection keys from a folder c
 
 1. Copy both private and public key files for the wrapping key that you created previously to the Azure Local instance.  
 
-1. Copy the timestamped backup folder to the Azure Local instance. Pick the folder under the backup root folder with the latest timestamp as that folder will have the most recent copy.
-
-    > [!NOTE]
-    > Don't modify the backup folder.
+1. Copy the timestamped backup folder to the Azure Local instance. Pick the folder under the backup root folder with the latest timestamp as that folder will have the most recent copy. Don't modify the backup folder.
 
 1. Import the wrapping key that you created previously to the Azure Local instance:
 
     1. Download the [TvmBackupUtils.psm1 script](https://github.com/Azure-Samples/AzureLocal/blob/main/trusted-launch-vms/TvmBackupUtils.psm1) on GitHub to your Azure Local instance.
 
-    1. Run the following commands. Make sure to create a unique name for the WrappingKeyName. Otherwise, this will cause a failure during import:
+    1. Run the following commands.
+    
+        > [!NOTE]
+        > Make sure to create a unique name for the WrappingKeyName. Otherwise, this will cause a failure during import:
 
         ```powershell
         Import-Module .\TvmBackupUtils.psm1 -force 
 
         Import-TvmWrappingKeyFromPem -KeyName <WrappingKeyName> -PublicKeyPath <path to public.pem> -PrivateKeyPath <path to private.pem> -KeySize 2048
         ```
-    
+        Here is sample output:
+
+        ```output
+        Generating import JSON for key <WrappingKeyName> at temporary location C:\Users\HCIDeploymentUser\AppData\Local\Temp\tmpD383.tmp... 
+        Importing key <WrappingKeyName> into the vault...
+        Key <WrappingKeyName> successfully imported into the vault.
+        Temporary file C:\Users\HCIDeploymentUser\AppData\Local\Temp\tmpD383.tmp has been cleaned up.
+        ```
+
 1. Do this step only if you're restoring the VM to the same Azure Local instance where the VM resided before failure. Delete `AzureStackTvmAKRootKey` as follows:
 
     ```powershell
@@ -98,8 +112,56 @@ The steps below involve restoring VM guest state protection keys from a folder c
     ```powershell
     Import-TVMKeys -WrappingKeyName <WrappingKeyName> -BackupPath <path to timestamped backup folder>
     ```
+    Here is sample output:
+
+    ```output
+    Importing TVM  keys from .\tvm_keys_backup_root\20250722192116\
+
+    Importing key 11111111-1111-1111-1111-111111111111 with size 256 from AES folder path = .\tvm_keys_backup_root\20250722192116\AES\11111111-1111-1111-1111-111111111111_256.json
+
+    Importing key 7fb16fe7-00a0-476f-92b3-ccb98fd9525a with size 256 from AES folder path = .\tvm_keys_backup_root\20250722192116\AES\7fb16fe7-00a0-476f-92b3-ccb98fd9525a_256.json
+
+    Importing key AzureStackTvmAKRootKey with size 4096 from RSA folder path = .\tvm_keys_backup_root\20250722192116\RSA\AzureStackTvmAKRootKey_4096.json
+    ```
 
     If the local key vault of the Azure Local instance already has a VM guest state protection key with the same name or already has an `AzureStackTvmAKRootKey`, you'll receive an `InvalidVersion` error for that key. You can ignore this, as the key is already in the key vault.
+
+    Here is sample output showing this error:
+
+    ```output
+    Importing TVM  keys from .\tvm_keys_backup_root\20250722192116\
+    Importing key 11111111-1111-1111-1111-111111111111 with size 256 from AES folder path = .\tvm_keys_backup_root\20250722192116\AES\11111111-1111-1111-1111-111111111111_256.json
+    Import-TVMKeys : Error Importing Key: C:\Program Files\AksHci\mocctl.exe --cloudFqdn
+    s-cluster.v.masd.stbtest.microsoft.com  security keyvault key import --group "AzureStackHostAttestation" --key-size
+    "256" --vault-name "AzureStackTvmKeyVault" --key-type "AES" --key-file-path
+    ".\tvm_keys_backup_root\20250722192116\AES\11111111-1111-1111-1111-111111111111_256.json" --name
+    "11111111-1111-1111-1111-111111111111" --wrapping-key-name "WrappingKey" System.Collections.Hashtable.generic_non_zero
+    1 [Error: Keys Import failed:  Type[Key] Vault[AzureStackTvmKeyVault] Name[11111111-1111-1111-1111-111111111111]:
+    InvalidVersion]
+    + CategoryInfo          : NotSpecified: (:) [Write-Error], WriteErrorException
+    + FullyQualifiedErrorId : Microsoft.PowerShell.Commands.WriteErrorException,Import-TVMKeys
+
+    Importing key 7fb16fe7-00a0-476f-92b3-ccb98fd9525a with size 256 from AES folder path = .\tvm_keys_backup_root\20250722192116\AES\7fb16fe7-00a0-476f-92b3-ccb98fd9525a_256.json
+    Import-TVMKeys : Error Importing Key: C:\Program Files\AksHci\mocctl.exe --cloudFqdn
+    s-cluster.v.masd.stbtest.microsoft.com  security keyvault key import --group "AzureStackHostAttestation" --key-size
+    "256" --vault-name "AzureStackTvmKeyVault" --key-type "AES" --key-file-path
+    ".\tvm_keys_backup_root\20250722192116\AES\7fb16fe7-00a0-476f-92b3-ccb98fd9525a_256.json" --name
+    "7fb16fe7-00a0-476f-92b3-ccb98fd9525a" --wrapping-key-name "WrappingKey" System.Collections.Hashtable.generic_non_zero
+    1 [Error: Keys Import failed:  Type[Key] Vault[AzureStackTvmKeyVault] Name[7fb16fe7-00a0-476f-92b3-ccb98fd9525a]:
+    InvalidVersion]
+    + CategoryInfo          : NotSpecified: (:) [Write-Error], WriteErrorException
+    + FullyQualifiedErrorId : Microsoft.PowerShell.Commands.WriteErrorException,Import-TVMKeys
+
+    Importing key AzureStackTvmAKRootKey with size 4096 from RSA folder path = .\tvm_keys_backup_root\20250722192116\RSA\AzureStackTvmAKRootKey_4096.json
+    Import-TVMKeys : Error Importing Key: C:\Program Files\AksHci\mocctl.exe --cloudFqdn
+    s-cluster.v.masd.stbtest.microsoft.com  security keyvault key import --group "AzureStackHostAttestation" --key-size
+    "4096" --vault-name "AzureStackTvmKeyVault" --key-type "RSA" --key-file-path
+    ".\tvm_keys_backup_root\20250722192116\RSA\AzureStackTvmAKRootKey_4096.json" --name "AzureStackTvmAKRootKey"
+    --wrapping-key-name "WrappingKey" System.Collections.Hashtable.generic_non_zero 1 [Error: Keys Import failed:
+    Type[Key] Vault[AzureStackTvmKeyVault] Name[AzureStackTvmAKRootKey]: InvalidVersion]
+    + CategoryInfo          : NotSpecified: (:) [Write-Error], WriteErrorException
+    + FullyQualifiedErrorId : Microsoft.PowerShell.Commands.WriteErrorException,Import-TVMKeys
+    ```
 
 1. Clean up files and keys:
 
@@ -211,12 +273,14 @@ Follow these steps to copy the VM guest state protection key. The key is copied 
 
     1. Import the VM guest state protection key:
 
+        ```powershell
+        Import-MocKey -name <VM ID> -importKeyFile <VM ID>.json -group AzureStackHostAttestation -keyvaultName AzureStackTvmKeyVault -type AES -size 256
+        ```
+
         > [!NOTE]
         > Restore the VM guest state key (complete the preceding steps) before you start the VM on the Azure Local instance where the VM needs to be restored. This ensures that the VM uses the restored VM guest state protection key. Otherwise, the VM creation fails, and a new VM guest state protection key is created by the system. If this happens by mistake (human error), delete the VM guest state protection key and then repeat the steps to restore the VM guest state protection key.
 
         ```powershell
-        Import-MocKey -name <VM ID> -importKeyFile <VM ID>.json -group AzureStackHostAttestation -keyvaultName AzureStackTvmKeyVault -type AES -size 256
-
         Remove-MocKey -name <vm id> -group AzureStackHostAttestation -keyvaultName AzureStackTvmKeyVault
         ```
 
