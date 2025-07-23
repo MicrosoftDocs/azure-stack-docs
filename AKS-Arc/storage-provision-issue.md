@@ -52,7 +52,7 @@ Once the fix is done, you should be able to create your clusters and node pools.
 
 ## Contact Microsoft Support
 
-If the problem persists, collect the [AKS cluster logs](get-on-demand-logs.md) before you [create a support request](aks-troubleshoot.md#open-a-support-request).
+If the problem persists, collect the [AKS cluster logs](get-on-demand-logs.md) before you [create a support request](help-support.md).
 
 ## Next steps
 
