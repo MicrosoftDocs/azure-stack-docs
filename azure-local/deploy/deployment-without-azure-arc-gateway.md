@@ -64,7 +64,9 @@ Make sure the following prerequisites are met before proceeding:
     #Define the proxy address if your Azure Local deployment accesses the internet via proxy
     $ProxyServer = "http://proxyaddress:port"
     ```
- 
+
+    <details>
+    <summary>Expand this section to see an example output.</summary>
 
     Here's a sample output of the parameters:
 
@@ -75,7 +77,7 @@ Make sure the following prerequisites are met before proceeding:
     PS C:\Users\SetupUser> $Region = "eastus"
     PS C:\Users\SetupUser> $ProxyServer = "<http://proxyserver:tcpPort>"
     ```
-
+    </details>
   
 2. Connect to your Azure account and set the subscription. Open a browser on the client that you're using to connect to the machine and open this page: `https://microsoft.com/devicelogin` and enter the provided code in the Azure CLI output to authenticate. Get the access token and account ID for the registration.  
 
@@ -91,7 +93,9 @@ Make sure the following prerequisites are met before proceeding:
     $id = (Get-AzContext).Account.Id   
     ```
 
-
+    <details>
+    <summary>Expand this section to see an example output.</summary>
+    
     Here's a sample output of setting the subscription and authentication:
 
     ```output
@@ -106,7 +110,7 @@ Make sure the following prerequisites are met before proceeding:
     PS C:\Users\SetupUser> $ARMtoken = (Get-AzAccessToken).Token
     PS C:\Users\SetupUser> $id = (Get-AzContext).Account.Id
     ```
-
+    </details>
 
 3. Finally run the Arc registration script. The script takes a few minutes to run.
 
@@ -118,7 +122,9 @@ Make sure the following prerequisites are met before proceeding:
 
     For a list of supported Azure regions, see [Azure requirements](../concepts/system-requirements-23h2.md#azure-requirements).
 
-
+    <details>
+    <summary>Expand this section to see an example output.</summary>
+    
     Here's a sample output of a successful registration of your machines:
 
     ```output
@@ -141,7 +147,7 @@ Make sure the following prerequisites are met before proceeding:
 
     PS C:\Users\Administrator>
     ```
-
+    </details>
 
 4. After the script completes successfully on all the machines, verify that:
 
@@ -375,8 +381,8 @@ Make sure the following prerequisites are met before proceeding:
     
     ```
 
-
-    Here's a sample output of the parameters:
+    <details>
+    <summary>Expand this section to see an example output.</summary>
 
     ```output
     PS C:\Users\SetupUser> $Subscription = "<Subscription ID>"
@@ -384,7 +390,7 @@ Make sure the following prerequisites are met before proceeding:
     PS C:\Users\SetupUser> $Tenant = "<Tenant ID>"
     PS C:\Users\SetupUser> $Region = "eastus"
     ```
-
+    </details>
 
 2. Connect to your Azure account and set the subscription. Open a browser on the client that you're using to connect to the machine and open this page: `https://microsoft.com/devicelogin` and enter the provided code in the Azure CLI output to authenticate. Get the access token and account ID for the registration.  
 
@@ -399,8 +405,9 @@ Make sure the following prerequisites are met before proceeding:
     $id = (Get-AzContext).Account.Id   
     ```
 
+    <details>
+    <summary>Expand this section to see an example output.</summary>
 
-    Here's a sample output of setting the subscription and authentication:
 
     ```output
     PS C:\Users\SetupUser> Connect-AzAccount -SubscriptionId $Subscription -TenantId $Tenant -DeviceCode
@@ -414,7 +421,7 @@ Make sure the following prerequisites are met before proceeding:
     PS C:\Users\SetupUser> $ARMtoken = (Get-AzAccessToken).Token
     PS C:\Users\SetupUser> $id = (Get-AzContext).Account.Id
     ```
-
+    </details>
 
 3. Finally run the Arc registration script. The script takes a few minutes to run.
 
@@ -426,8 +433,9 @@ Make sure the following prerequisites are met before proceeding:
 
     For a list of supported Azure regions, see [Azure requirements](../concepts/system-requirements-23h2.md#azure-requirements).
 
+    <details>
+    <summary>Expand this section to see an example output.</summary>
 
-    Here's a sample output of a successful registration of your machines:
 
     ```output
     PS C:\Users\Administrator> Invoke-AzStackHciArcInitialization -SubscriptionID $Subscription -ResourceGroup $RG -TenantID $Tenant -Region $Region -Cloud "AzureCloud" -ArmAccessToken $ARMtoken -AccountID $id
@@ -449,7 +457,8 @@ Make sure the following prerequisites are met before proceeding:
 
     PS C:\Users\Administrator>
     ```
-   
+
+    </details>
 
 4. After the script completes successfully on all the machines, verify that:
 
