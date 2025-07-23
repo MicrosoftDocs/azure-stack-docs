@@ -13,7 +13,7 @@
     href: data-collection.md
   - name: Blogs and announcements
     href: blogs-announcements.md
-- name: AKS on Azure Local
+- name: AKS Arc on Azure Local
   expanded: true
   items:
   - name: What's new in AKS on Azure Local
@@ -25,7 +25,7 @@
     - name: Networking
       items:
       - name: Networking concepts and requirements
-        href: aks-hci-network-system-requirements.md
+        href: network-system-requirements.md
       - name: IP address planning
         href: aks-hci-ip-address-planning.md
       - name: Load balancer
@@ -159,12 +159,18 @@
     items:
     - name: Troubleshoot and known issues
       href: aks-troubleshoot.md
-    - name: AKS on Azure Local support policy
-      href: aks-on-azure-local-support-policy.md
     - name: Get support
-      href: help-support.md
-    - name: Use diagnostic checker
-      href: aks-arc-diagnostic-checker.md
+      items:
+      - name: AKS on Azure Local support policy
+        href: aks-on-azure-local-support-policy.md
+      - name: Get support
+        href: help-support.md
+      - name: Use the support remediation tool
+        href: support-module.md
+      - name: Use diagnostic checker
+        href: aks-arc-diagnostic-checker.md
+    - name: Storage provisioning issue in cluster and node pool creation
+      href: storage-provision-issue.md
     - name: Control plane configuration validation errors
       href: control-plane-validation-errors.md
     - name: K8sVersionValidation error
@@ -332,7 +338,7 @@
       href: aks-edge-licensing.md
     - name: Microsoft Software License Terms
       href: aks-edge-software-license-terms.md 
-- name: AKS on VMware
+- name: AKS Arc on VMware
   items:
   - name: Overview
     href: aks-vmware-overview.md
@@ -380,7 +386,7 @@
         href: vmsize.yml
       - name: vnet
         href: vnet.yml
-- name: AKS on Windows Server
+- name: AKS Arc on Windows Server
   items:
   - name: AKS on Windows Server retirement
     href: aks-windows-server-retirement.md
@@ -390,7 +396,7 @@
     href: system-requirements.md
   - name: Quickstarts 
     items:
-    - name: Deploy an AKS cluster
+    - name: Deploy an AKS Arc cluster
       items:
       - name: Use PowerShell
         href: kubernetes-walkthrough-powershell.md
