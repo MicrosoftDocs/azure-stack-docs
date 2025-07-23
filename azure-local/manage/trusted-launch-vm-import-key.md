@@ -44,7 +44,7 @@ The steps below involve copying VM guest state protection keys from the local ke
 
     $publicKeyPem | Out-File -FilePath .\public.pem 
     ```
-1. Make a note of the wrapping key as you'll need it later.
+1. Make a note of the wrapping key as you need it later.
 
 1. Copy the `.\public.pem` file to your Azure Local instance.
 
@@ -59,7 +59,7 @@ The steps below involve copying VM guest state protection keys from the local ke
 
         Backup-TVMKeys -WrappingKeyPath <path to public.pem> -BackupRootPath <path to backup root folder where the timestamped backup folder is stored>
         ```
-        Here is a sample output after running this command:
+        Here's a sample output after running this command:
 
         ```output
         Backing up TVM Vault keys to .\<backup root folder>\20250722192116
@@ -68,7 +68,7 @@ The steps below involve copying VM guest state protection keys from the local ke
         Backing up key AzureStackTvmAKRootKey to RSA folder
         ```
 
-1. Make note of the timestamped backup folder created under the backup root folder. You'll need this later during recovery.  For example, backup folder named "20250612205355" with the format "yyyyMMddHHmmss".
+1. Make note of the timestamped backup folder created under the backup root folder. You need this later during recovery. For example, backup folder named "2025-06-12-20-53-55" with the format "yyyy-MM-dd-HH-mm-ss".
 
 ### Restore keys
 
@@ -85,14 +85,14 @@ The steps below involve restoring VM guest state protection keys from a folder c
     1. Run the following commands.
     
         > [!NOTE]
-        > Make sure to create a unique name for the WrappingKeyName. Otherwise, this will cause a failure during import:
+        > Make sure to create a unique name for the WrappingKeyName. Otherwise, this causes a failure during import:
 
         ```powershell
         Import-Module .\TvmBackupUtils.psm1 -force 
 
         Import-TvmWrappingKeyFromPem -KeyName <WrappingKeyName> -PublicKeyPath <path to public.pem> -PrivateKeyPath <path to private.pem> -KeySize 2048
         ```
-        Here is sample output:
+        Here's sample output:
 
         ```output
         Generating import JSON for key <WrappingKeyName> at temporary location C:\Users\HCIDeploymentUser\AppData\Local\Temp\tmpD383.tmp... 
@@ -112,7 +112,7 @@ The steps below involve restoring VM guest state protection keys from a folder c
     ```powershell
     Import-TVMKeys -WrappingKeyName <WrappingKeyName> -BackupPath <path to timestamped backup folder>
     ```
-    Here is sample output:
+    Here's sample output:
 
     ```output
     Importing TVM  keys from .\tvm_keys_backup_root\20250722192116\
@@ -124,9 +124,9 @@ The steps below involve restoring VM guest state protection keys from a folder c
     Importing key AzureStackTvmAKRootKey with size 4096 from RSA folder path = .\tvm_keys_backup_root\20250722192116\RSA\AzureStackTvmAKRootKey_4096.json
     ```
 
-    If the local key vault of the Azure Local instance already has a VM guest state protection key with the same name or already has an `AzureStackTvmAKRootKey`, you'll receive an `InvalidVersion` error for that key. You can ignore this, as the key is already in the key vault.
+    If the local key vault of the Azure Local instance already has a VM guest state protection key with the same name or already has an `AzureStackTvmAKRootKey`, you receive an `InvalidVersion` error for that key. You can ignore this, as the key is already in the key vault.
 
-    Here is sample output showing this error:
+    Here's sample output showing this error:
 
     ```output
     Importing TVM  keys from .\tvm_keys_backup_root\20250722192116\
@@ -168,7 +168,7 @@ The steps below involve restoring VM guest state protection keys from a folder c
     1. Delete both `public.pem` and `private.pem` files from the Azure Local instance.
 
         > [!IMPORTANT]  
-        > Remove the wrapping key from the key vault of the Azure Local instance using `Remove-MocKey`. This will help avoid collisions later.
+        > Remove the wrapping key from the key vault of the Azure Local instance using `Remove-MocKey`. This helps avoid collisions later.
 
         ```powershell
         Remove-MocKey -name WrappingKeyName -group AzureStackHostAttestation -keyvaultName AzureStackTvmKeyVault
@@ -189,7 +189,7 @@ Follow these steps to copy the VM guest state protection key from the local key 
 
 1. On the Azure Local system with the backup key vault, run the following commands on the Azure Local system with the backup key vault:
 
-    1. Create a wrapping key in the backup key vault. Make note of the name as you'll need it later:
+    1. Create a wrapping key in the backup key vault. Make note of the name as you need it later:
 
         ```powershell
         New-MocKey -name wrappingKey -group AzureStackHostAttestation -keyvaultName AzureStackTvmKeyVault -type RSA -size 2048
@@ -255,7 +255,7 @@ Follow these steps to copy the VM guest state protection key. The key is copied 
 
     1. Copy the PEM file to the Azure Local system.
 
-    1. Get the `VM ID` from the VM files stored on disk. There is a VM config file (.xml) that has the `VM ID` as its name. You can also use the following command to obtain the `VM ID` if you know the VM name. Perform this step on a Hyper-V host that has the VM files:
+    1. Get the `VM ID` from the VM files stored on disk. There's a VM config file (.xml) that has the `VM ID` as its name. You can also use the following command to obtain the `VM ID` if you know the VM name. Perform this step on a Hyper-V host that has the VM files:
 
         ```powershell
         (Get-VM -Name <VM name>).vmid
