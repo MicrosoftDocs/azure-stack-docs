@@ -220,19 +220,19 @@ Follow these steps to configure network settings and connect the machines to Azu
 
    1. Select **Proxy server** as the connectivity method. Provide the proxy URL and the bypass list. The bypass list is required and can be provided in a comma separated format.
    
-    When defining your proxy bypass string, make sure you meet the following conditions:
+      When defining your proxy bypass string, make sure you meet the following conditions:
 
-    - At least the IP address of each Azure Local machine.
-    - At least the IP address of the Azure Local system.
-    - At least the IPs you defined for your infrastructure network. Arc resource bridge, Azure Kubernetes Service (AKS), and future infrastructure services using these IPs require outbound connectivity.
-    - Or you can bypass the entire infrastructure subnet.
-    - NetBIOS name of each machine.
-    - NetBIOS name of the Azure Local system.
-    - Domain name or domain name with asterisk * wildcard at the beginning to include any host or subdomain.  For example, `192.168.1.*` for subnets or `*.contoso.com` for domain names.
-    - Parameters must be separated with a comma `,`.
-    - Classless Inter-Domain Routing (CIDR) notation to bypass subnets isn't supported.
-    - The use of \<local\> strings isn't supported in the proxy bypass list.
-    
+      - At least the IP address of each Azure Local machine.
+      - At least the IP address of the Azure Local system.
+      - At least the IPs you defined for your infrastructure network. Arc resource bridge, Azure Kubernetes Service (AKS), and future infrastructure services using these IPs require outbound connectivity.
+      - Or you can bypass the entire infrastructure subnet.
+      - NetBIOS name of each machine.
+      - NetBIOS name of the Azure Local system.
+      - Domain name or domain name with asterisk * wildcard at the beginning to include any host or subdomain.  For example, `192.168.1.*` for subnets or `*.contoso.com` for domain names.
+      - Parameters must be separated with a comma `,`.
+      - Classless Inter-Domain Routing (CIDR) notation to bypass subnets isn't supported.
+      - The use of \<local\> strings isn't supported in the proxy bypass list.
+
    1. Select a time zone.
 
    1. Specify a preferred and an alternate NTP server to act as a time server or accept the **Default**. The default is `time.windows.com`.
