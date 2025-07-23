@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: article
 ms.service: azure-local
-ms.date: 07/21/2025
+ms.date: 07/22/2025
 ---
 
 # Azure Local release information
@@ -19,6 +19,9 @@ To enhance your Azure Local (formerly known as Azure Stack HCI) experience, we p
 This article provides the release information for Azure Local, including the release build and OS build information.
 
 ## About Azure Local releases
+
+> [!NOTE]
+> Azure Local previously followed an annual release cadence for OS and feature updates, with versions like 23H2 and 22H2. The versioning model has now changed to align with a monthly release train, like 2507, 2506. However, references to older versioning might still appear in some documentation.
 
 The Azure Local includes multiple release trains: 2411, 2503, 2504, 2505, and so forth. Each release train after 2411 is either a feature build or cumulative update.
 
