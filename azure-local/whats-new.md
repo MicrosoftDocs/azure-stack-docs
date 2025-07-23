@@ -47,6 +47,7 @@ This release has the following features and improvements:
  
 ::: moniker-end
 
+::: moniker range="=azloc-2506"
 
 ## Features and improvements in 2506
 
@@ -239,7 +240,7 @@ This release has the following features and improvements:
 
 ::: moniker-end
 
-moniker range="=azloc-previous"
+::: moniker range="=azloc-previous"
 
 ## Features and improvements in 2411.3
 
