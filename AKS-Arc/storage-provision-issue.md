@@ -32,7 +32,7 @@ This issue was fixed in AKS on [Azure Local, version 2507](/azure/azure-local/wh
 
 ### Workaround for Azure Local version 2506
 
-This issue only affects clusters in Azure Local version 2506. Install the [support module](support-module.md) and run the commands provided in this module:
+This issue only affects clusters in Azure Local version 2506. Install the [support module](support-module.md) and run the commands provided in this module.
 
 First, run the following command to check for known issues in your AKS Arc environment:
 
