@@ -205,12 +205,12 @@
         href: connectivity-troubleshoot.md
       - name: Connectivity issues with MetalLB load balancer
         href: load-balancer-issues.md
-      - name: Disk space exhaustion on control plane VMs
-        href: kube-apiserver-log-overflow.md
     - name: Storage
       items:
       - name: Issues after deleting storage volumes
         href: delete-storage-volume.md
+      - name: Disk space exhaustion on control plane VMs
+        href: kube-apiserver-log-overflow.md
     - name: Security
       items:
       - name: Entra authentication prompts when running kubectl
