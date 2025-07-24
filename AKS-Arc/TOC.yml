@@ -169,7 +169,7 @@
         href: support-module.md
       - name: Use diagnostic checker
         href: aks-arc-diagnostic-checker.md
-    - name: Create, upgrade, scale and delete operations (cluster or nodepool)
+    - name: Create, upgrade, scale and delete operations (cluster or node pool)
       items:
       - name: Create operations
         items:
