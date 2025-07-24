@@ -24,6 +24,7 @@ This release includes these features and improvements:
 - **Improved error resolution guidance** – Enhanced error messaging and added detailed resolution steps for common issues, including replication failures.
 - **Stricter static IP validation** – Added error handling to prevent Network Interface Card (NIC) creation if the specified static IP is outside the defined pool range.
 - **Generation 1 VM Guest Management Enablement Message** – Added a warning message in the portal to ensure that generation 1 VMs are powered off prior to enabling guest management.
+
     :::image type="content" source="./media/migrate-whats-new/guest-enablement-warning-message.png" alt-text="Screenshot showing the warning message in the portal when enabling guest management on generation 1 VMs." lightbox="./media/migrate-whats-new/guest-enablement-warning-message.png":::
 
 ## May 2025
