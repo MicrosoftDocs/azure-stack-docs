@@ -195,32 +195,32 @@
         items:
         - name: Cluster status stuck during upgrade
           href: cluster-upgrade-status.md
-      - name: Networking
-        items:
-        - name: General network validation errors
-          href: network-validation-errors.md
-        - name: Network validation error due to .local domain
-          href: network-validation-error-local.md
-        - name: BGP with FRR not working
-          href: connectivity-troubleshoot.md
-        - name: Connectivity issues with MetalLB load balancer
-          href: load-balancer-issues.md
-        - name: Disk space exhaustion on control plane VMs
-          href: kube-apiserver-log-overflow.md
-      - name: Storage
-        items:
-        - name: Issues after deleting storage volumes
-          href: delete-storage-volume.md
-      - name: Security
-        items:
-        - name: Entra authentication prompts when running kubectl
-          href: entra-prompts.md
-      - name: Common issues
-        items:
-        - name: Telemetry pod consumes too much memory and CPU  
-          href: telemetry-pod-resources.md
-        - name: Azure Advisor upgrade recommendation
-          href: azure-advisor-upgrade.md
+    - name: Networking
+      items:
+      - name: General network validation errors
+        href: network-validation-errors.md
+      - name: Network validation error due to .local domain
+        href: network-validation-error-local.md
+      - name: BGP with FRR not working
+        href: connectivity-troubleshoot.md
+      - name: Connectivity issues with MetalLB load balancer
+        href: load-balancer-issues.md
+      - name: Disk space exhaustion on control plane VMs
+        href: kube-apiserver-log-overflow.md
+    - name: Storage
+      items:
+      - name: Issues after deleting storage volumes
+        href: delete-storage-volume.md
+    - name: Security
+      items:
+      - name: Entra authentication prompts when running kubectl
+        href: entra-prompts.md
+    - name: Common issues
+      items:
+      - name: Telemetry pod consumes too much memory and CPU  
+        href: telemetry-pod-resources.md
+      - name: Azure Advisor upgrade recommendation
+        href: azure-advisor-upgrade.md
   - name: Security
     items:  
     - name: Security book - recommendations and best practices
