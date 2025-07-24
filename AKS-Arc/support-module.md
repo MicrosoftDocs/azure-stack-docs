@@ -56,7 +56,7 @@ Invoke-SupportAksArcRemediation
 
 ## Example output
 
-The following example output from the `Test-SupportAksArcKnownIssues` command shows the results of a failed test::
+The following example output from the `Test-SupportAksArcKnownIssues` command shows the results of a failed test:
 
 ```output
 Test Name                                                  Status Message
