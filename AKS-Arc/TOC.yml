@@ -221,10 +221,6 @@
           href: telemetry-pod-resources.md
         - name: Azure Advisor upgrade recommendation
           href: azure-advisor-upgrade.md
-      - name: Tools
-        items:
-        - name: Use aksarc CLI to manage AKS on Azure Local
-          href: aksarc-cli.md
   - name: Security
     items:  
     - name: Security book - recommendations and best practices
