@@ -169,42 +169,62 @@
         href: support-module.md
       - name: Use diagnostic checker
         href: aks-arc-diagnostic-checker.md
-    - name: Storage provisioning issue in cluster and node pool creation
-      href: storage-provision-issue.md
-    - name: Control plane configuration validation errors
-      href: control-plane-validation-errors.md
-    - name: K8sVersionValidation error
-      href: cluster-k8s-version.md
-    - name: KubeAPIServer unreachable error
-      href: kube-api-server-unreachable.md
-    - name: Can't create/scale AKS cluster due to image issues
-      href: gallery-image-not-usable.md
-    - name: Disk space exhaustion on control plane VMs
-      href: kube-apiserver-log-overflow.md
-    - name: Telemetry pod consumes too much memory and CPU  
-      href: telemetry-pod-resources.md
-    - name: Issues after deleting storage volumes
-      href: delete-storage-volume.md
-    - name: Can't fully delete AKS Arc cluster with PodDisruptionBudget (PDB) resources
-      href: delete-cluster-pdb.md
-    - name: Azure Advisor upgrade recommendation
-      href: azure-advisor-upgrade.md
-    - name: Deleted AKS Arc cluster still visible on Azure portal
-      href: deleted-cluster-visible.md
-    - name: Can't see VM SKUs on Azure portal
-      href: check-vm-sku.md
-    - name: Connectivity issues with MetalLB
-      href: load-balancer-issues.md
-    - name: Troubleshoot general network validation errors
-      href: network-validation-errors.md
-    - name: Network validation error due to .local domain
-      href: network-validation-error-local.md
-    - name: Entra authentication prompts when running kubectl
-      href: entra-prompts.md
-    - name: BGP with FRR not working
-      href: connectivity-troubleshoot.md
-    - name: Cluster status stuck during upgrade
-      href: cluster-upgrade-status.md
+    - name: Create, upgrade, scale and delete operations (cluster or nodepool)
+      items:
+      - name: Create operations
+        items:
+        - name: Control plane configuration validation errors
+          href: control-plane-validation-errors.md
+        - name: K8sVersionValidation error
+          href: cluster-k8s-version.md
+        - name: KubeAPIServer unreachable error
+          href: kube-api-server-unreachable.md
+        - name: Can't create/scale AKS cluster due to image issues
+          href: gallery-image-not-usable.md
+        - name: Can't see VM SKUs on Azure portal
+          href: check-vm-sku.md
+        - name: Storage provisioning issue in cluster and node pool creation
+          href: storage-provision-issue.md
+      - name: Delete operations
+        items:
+        - name: Can't fully delete AKS Arc cluster with PodDisruptionBudget (PDB) resources
+          href: delete-cluster-pdb.md
+        - name: Deleted AKS Arc cluster still visible on Azure portal
+          href: deleted-cluster-visible.md
+      - name: Upgrade operations
+        items:
+        - name: Cluster status stuck during upgrade
+          href: cluster-upgrade-status.md
+      - name: Networking
+        items:
+        - name: General network validation errors
+          href: network-validation-errors.md
+        - name: Network validation error due to .local domain
+          href: network-validation-error-local.md
+        - name: BGP with FRR not working
+          href: connectivity-troubleshoot.md
+        - name: Connectivity issues with MetalLB load balancer
+          href: load-balancer-issues.md
+        - name: Disk space exhaustion on control plane VMs
+          href: kube-apiserver-log-overflow.md
+      - name: Storage
+        items:
+        - name: Issues after deleting storage volumes
+          href: delete-storage-volume.md
+      - name: Security
+        items:
+        - name: Entra authentication prompts when running kubectl
+          href: entra-prompts.md
+      - name: Common issues
+        items:
+        - name: Telemetry pod consumes too much memory and CPU  
+          href: telemetry-pod-resources.md
+        - name: Azure Advisor upgrade recommendation
+          href: azure-advisor-upgrade.md
+      - name: Tools
+        items:
+        - name: Use aksarc CLI to manage AKS on Azure Local
+          href: aksarc-cli.md
   - name: Security
     items:  
     - name: Security book - recommendations and best practices
