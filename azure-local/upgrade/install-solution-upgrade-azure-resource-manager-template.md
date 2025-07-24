@@ -3,7 +3,7 @@ title: Install solution upgrade on Azure Local using Azure Resource Manager temp
 description: Learn how to install the solution upgrade on your Azure Local instance using Azure Resource Manager template.
 author: alkohli
 ms.topic: how-to
-ms.date: 07/16/2025
+ms.date: 07/23/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -16,7 +16,7 @@ ms.service: azure-local
 
 [!INCLUDE [end-of-service-22H2](../includes/end-of-service-22h2.md)]
 
-This article describes how to install the solution upgrade on your Azure Local instance using Azure Resource Manager (ARM) template after upgrading the operating system (OS) from version 22H2 to version 23H2.
+This article describes how to install the solution upgrade on your Azure Local instance using Azure Resource Manager (ARM) template, after upgrading the operating system (OS) build from 20349.xxxx (22H2) to 25398.xxxx (23H2).
 
 > [!IMPORTANT]
 > While the OS upgrade is generally available, the solution upgrade is rolled out in phases. Additionally, the solution upgrade isn't available to customers in Azure China.
@@ -55,7 +55,7 @@ There are a few things to consider before you begin the solution upgrade process
 <!--Confirm if this point is valid for ARM upgrade-- Microsoft only supports upgrade applied from Azure Local resource page. Use of third party tools to install upgrades isn't supported.-->
 - We recommend you perform the solution upgrade during a maintenance window. After the upgrade, host machine might reboot and the workloads will be live migrated, causing brief disconnections.
 <!--Confirm if this point is valid for ARM upgrade- If you have Azure Kubernetes Service (AKS) workloads on Azure Local, wait for the solution upgrade banner to appear on the Azure Local resource page. Then, remove AKS and all AKS hybrid settings before you apply the solution upgrade.-->
-- By installing the solution upgrade, existing Hyper-V VMs won't automatically become Azure Arc VMs.
+- By installing the solution upgrade, existing unmanaged VMs won't automatically become Azure Arc VMs. For more information about VMs on Azure Local, see [Types of VMs on Azure Local](../concepts/compare-vm-management-capabilities.md#types-of-vms-on-azure-local).
 
 ## Step 1: Prepare Azure resources
 
