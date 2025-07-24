@@ -41,7 +41,7 @@ This security update includes quality improvements. Below is a summary of the ke
 
 - **[Microsoft RPC Netlogon protocol]** Fixed: This update includes a security hardening change to the Microsoft RPC Netlogon protocol. This change improves security by tightening access checks for a set of remote procedure call (RPC) requests. After this update is installed, Active Directory domain controllers will no longer allow anonymous clients to invoke some RPC requests through the Netlogon RPC server. These requests are typically related to domain controller location. Certain file and print service software can be affected, including Samba. If your organization uses Samba, please refer to the [Samba release notes](https://www.samba.org/samba/history/samba-4.22.3.html).
 
-For more information about security vulnerabilities, see the [Security Update Guide](https://portal.msrc.microsoft.com/security-guidance) and the [July 2025 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2025-July).
+For more information about security vulnerabilities, see the [Security Update Guide](https://portal.msrc.microsoft.com/security-guidance) and the [July 2025 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2025-Jul).
 
 ## Known issues
 
@@ -72,7 +72,7 @@ This security update includes quality improvements. Here is a summary of the key
 
 - **[Windows Firewall]** Fixed: This update addresses an issue found in Event Viewer as Event 2042 for Windows Firewall with Advanced Security. The event appears as "Config Read Failed" with the message "More data is available." For more information about this issue, see "Error events are logged for Windows Firewall" in the Windows Health Dashboard.
 
-For more information about security vulnerabilities, see the [Security Update Guide](https://portal.msrc.microsoft.com/security-guidance) and the [July 2025 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2025-July).
+For more information about security vulnerabilities, see the [Security Update Guide](https://portal.msrc.microsoft.com/security-guidance) and the [July 2025 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2025-Jul).
 
 ## Known issues
 
@@ -131,7 +131,7 @@ This security update includes quality improvements. Below is a summary of the ke
 
 - **[Windows Hello]** Fixed: This update addresses an issue that prevents users from signing in with self-signed certificates when using Windows Hello for Business with the Key Trust model.​​​​​​​
 
-For more information about security vulnerabilities, see the [Security Update Guide](https://portal.msrc.microsoft.com/security-guidance) and the [June 2025 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2025-June).
+For more information about security vulnerabilities, see the [Security Update Guide](https://portal.msrc.microsoft.com/security-guidance) and the [June 2025 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2025-Jun).
 
 ## Known issues
 
@@ -158,6 +158,8 @@ This security update includes quality improvements. Here is a summary of the key
 - **[System Restore]** After installing the June 2025 Windows security update, Azure Local, version 24H2 retains system restore points for up to 60 days. To apply a restore point, select **Open System Restore**. Restore points older than 60 days aren't available. This 60-day limit also applies to later releases of Azure Local, version 24H2.
 
 - **[Windows Hello]** Fixed: This update addresses an issue that prevents users from signing in with self-signed certificates when using Windows Hello for Business with the Key Trust model.​​​​​​​
+
+For more information about security vulnerabilities, see the [Security Update Guide](https://portal.msrc.microsoft.com/security-guidance) and the [June 2025 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2025-Jun).
 
 ## Known issues
 
