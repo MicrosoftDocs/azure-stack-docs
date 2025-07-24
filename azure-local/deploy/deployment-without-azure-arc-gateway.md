@@ -149,21 +149,13 @@ Make sure the following prerequisites are met before proceeding:
     ```
     </details>
 
-4. After the script completes successfully on all the machines, verify that:
-
-    1. Your machines are registered with Arc. Go to the Azure portal and then go to the resource group associated with the registration. The machines appear within the specified resource group as **Machine - Azure Arc** type resources.
-
-        :::image type="content" source="media/deployment-arc-register-server-permissions/arc-servers-registered-1.png" alt-text="Screenshot of the Azure Local machines in the resource group after the successful registration." lightbox="./media/deployment-arc-register-server-permissions/arc-servers-registered-1.png":::
-
-> [!NOTE]
-> Once an Azure Local machine is registered with Azure Arc, the only way to undo the registration is to install the operating system again on the machine.
-
 
 ## Step 3: Verify the setup is successful
 
-After the script completes successfully on all the machines, verify that:
+After the script completes successfully on all the machines, verify that your machines are registered with Arc. 
 
-1. Your machines are registered with Arc. Go to the Azure portal and then go to the resource group associated with the registration. The machines appear within the specified resource group as **Machine - Azure Arc** type resources.
+1. Go to the Azure portal.
+2. Go to the resource group associated with the registration. The machines appear within the specified resource group as **Machine - Azure Arc** type resources.
 
    :::image type="content" source="media/deployment-arc-register-server-permissions/arc-servers-registered-1.png" alt-text="Screenshot of the Azure Local machines in the resource group after the successful registration." lightbox="./media/deployment-arc-register-server-permissions/arc-servers-registered-1.png":::
 
@@ -191,15 +183,6 @@ Before you begin, make sure that you complete the following prerequisites:
 
 [!INCLUDE [hci-registration-azure-prerequisites](../includes/hci-registration-azure-prerequisites.md)]
 
-- **Get Arc gateway ID**. Skip this step if you didn't set up Azure Arc gateway. If you [Set up an Azure Arc gateway](../deploy/deployment-azure-arc-gateway-overview.md#create-the-arc-gateway-resource-in-azure), get the resource ID of the Arc gateway. This is also referred to as the `ArcGatewayID`.
-
-   1. To get the `ArcGatewayID`, run the following command:  
-
-       ```powershell
-       az connectedmachine gateway list
-       ```
-
-   1. Make a note of the Arc gateway ID to use later.
    
 ## Step 1: Configure the network and connect to Azure
 
