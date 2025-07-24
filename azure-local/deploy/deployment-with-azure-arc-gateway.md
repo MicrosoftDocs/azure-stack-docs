@@ -15,11 +15,11 @@ zone_pivot_groups: register-arc-options
 
 ::: zone pivot="register-proxy"
 
-This article details how to register using Azure Arc gateway on Azure Local with the proxy configuration.
+This article details how to register Azure Local using Azure Arc gateway after the proxy configuration is enabled.
 
 Once you create an Arc gateway resource in your Azure subscription, you can enable the Arc gateway features. Configure the Arc proxy before you register and then register using a script or via the Configuration app.
 
-- **Configure proxy with a script**: Using this method, you don't need to configure the Arc proxy across WinInet, WinHttp, or environment variables manually.
+- **Configure proxy with a script**: Using this method, you can configure Arc proxy with a script. This method is useful as you don't need to configure the Arc proxy across WinInet, WinHttp, or environment variables manually.
 
 - **Set up proxy via the Configurator app**: Using this method, you can configure the Arc proxy via a user interface. This method is useful if you prefer not to use scripts or if you want to configure the proxy settings interactively.
 
@@ -27,34 +27,34 @@ Once you create an Arc gateway resource in your Azure subscription, you can enab
 
 ## Prerequisites
 
-Make sure the following prerequisites are met before proceeding:
+Make sure the following prerequisites are met before you proceed:
 
 - You've access to an Azure Local instance running release 2505 or later. Prior versions do not support this scenario.
 
 - An Arc gateway resource created in the same subscription as used to deploy Azure Local. For more information, see [Create the Arc gateway resource in Azure](deployment-azure-arc-gateway-overview.md#create-the-arc-gateway-resource-in-azure).
 
-## Step 1: Get the Arc Gateway ID  
+## Step 1: Get the Arc gateway ID  
 
 You need the proxy and the Arc gateway ID from Azure to run the registration script on Azure Local machines. You can find the Arc gateway ID on the Azure portal **Overview** page of the resource.
 
 ## Step 2: Register new Azure Local machines with Arc
 
-To register Azure Local machines in Azure Arc, run the initialization script by passing the `ArcGatewayID`, `Proxy server`, and `Proxy bypass list` parameters. During the bootstrap configuration you will be required to authenticate with your credentials using the device code.
+To register Azure Local machines in Azure Arc, run the initialization script by passing the `ArcGatewayID`, `Proxy server`, and `Proxy bypass list` parameters. During the bootstrap configuration, you are required to authenticate with your credentials using the device code.
 
-Here's an example of how you should change these parameters for the `Invoke-AzStackHciArcInitialization` initialization script. Once registration is completed, the Azure Local machines are registered in Azure Arc using the Arc gateway:
+Here's an example of how you should change these parameters for the `Invoke-AzStackHciArcInitialization` initialization script. Once the registration is complete, the Azure Local machines are registered in Azure Arc using the Arc gateway:
 
 ```azurecli
 #Define the subscription where you want to register your Azure Local machine with Arc.
-$Subscription = "yoursubscriptionID" 
+$Subscription = "yourSubscriptionID" 
 
 #Define the resource group where you want to register your Azure Local machine with Arc.
-$RG = "yourresourcegroupname" 
+$RG = "yourResourceGroupName" 
 
 #Define proxy server if necessary 
 $ProxyServer = "http://x.x.x.x:port" 
 
 #Define the Arc gateway resource ID from Azure 
-$ArcgwId = "/subscriptions/yourarcgatewayid/resourceGroups/yourresourcegroupname/providers/Microsoft.HybridCompute/gateways/yourarcgatewayname" 
+$ArcgwId = "/subscriptions/yourarcgatewayid/resourceGroups/yourResourceGroupName/providers/Microsoft.HybridCompute/gateways/yourArcGatewayName" 
 
 #Define the bypass list for the proxy. Use comma to separate each item from the list.  
 # Use "localhost" instead of <local> 
@@ -84,7 +84,7 @@ Invoke-AzStackHciArcInitialization -SubscriptionID $Subscription -ResourceGroup 
 
 ## Step 3: Verify the setup is successful
 
-Once the deployment validation starts, connect to the first Azure Local machine from your system. 
+Once the deployment validation starts, connect to the first Azure Local machine from your system.
 
 1. Open the Arc gateway log to monitor which endpoints are being redirected to the Arc gateway and which ones continue using your firewall or proxy. You can find the Arc gateway log at: *c:\programdata\AzureConnectedMAchineAgent\Log\arcproxy.log*.
 
@@ -108,15 +108,16 @@ Once the deployment validation starts, connect to the first Azure Local machine 
     
    - **Azure Arc Proxy** shows as stopped when Arc gateway isn't in use. Running when the Arc gateway is enabled.
 
-   The Arc agent without the Arc gateway:
+   Here is an example of the Arc agent without the Arc gateway:
     
+<!-- Cristian - Do we need this one -->
    :::image type="content" source="./media/deployment-connect-nodes-to-arc-gateway/arc-agent-without-gateway.png" alt-text="Screenshot that shows the Arc agent without gateway using script." lightbox="./media/deployment-connect-nodes-to-arc-gateway/arc-agent-with-gateway-2.png":::
     
    The Arc agent using the Arc gateway:
     
    :::image type="content" source="./media/deployment-connect-nodes-to-arc-gateway/arc-agent-with-gateway.png" alt-text="Screenshot that shows the Arc agent with gateway using script." lightbox="./media/deployment-connect-nodes-to-arc-gateway/arc-agent-with-gateway-2.png":::
     
-3. Additionally, to verify that the setup was done successfully, run the following command: 
+3. Additionally, to verify that the setup was done successfully, run the following command:
 
    ```
    C:\program files\AzureConnectedMachineAgent>.\azcmagent check
@@ -124,11 +125,12 @@ Once the deployment validation starts, connect to the first Azure Local machine 
     
    The response should indicate that the **connection.type** is set to **gateway**, and the **Reachable** column should indicate **true** for all URLs.
     
-   The Arc agent without the Arc gateway:
-    
+   Here's an example of the Arc agent without the Arc gateway:
+<!-- Cristian - Do we need this one -->
+   
    :::image type="content" source="./media/deployment-connect-nodes-to-arc-gateway/arc-agent-without-gateway-2.png" alt-text="Screenshot that shows the Arc agent without Arc gateway using script." lightbox="./media/deployment-connect-nodes-to-arc-gateway/arc-agent-without-gateway-2.png":::
     
-   The Arc agent using the Arc gateway:
+   Here's an example of the Arc agent using the Arc gateway:
     
    :::image type="content" source="./media/deployment-connect-nodes-to-arc-gateway/arc-agent-with-gateway-2.png" alt-text="Screenshot that shows the Arc agent with Arc gateway using script." lightbox="./media/deployment-connect-nodes-to-arc-gateway/arc-agent-with-gateway-2.png":::
     
@@ -136,11 +138,16 @@ Once the deployment validation starts, connect to the first Azure Local machine 
     
    To view gateway router logs on Windows, run the `azcmagent logs` command in PowerShell. In the resulting .zip file, the logs are located in the *C:\ProgramData\Microsoft\ArcGatewayRouter* folder.
 
-# [Via Configurator app](#tab/app)
+# [Via Configurator app (Preview)](#tab/app)
+
+
+If you plan to deploy a few machines per site, use the Configurator app to register your Azure Local machines with Azure Arc.
+
+[!INCLUDE [important](../includes/hci-preview.md)]
 
 ## Prerequisites
 
-Before you begin, make sure that you complete the following prerequisites:
+Before you begin, make sure to complete the following prerequisites:
 
 ### Azure Local machine prerequisites
 
@@ -315,15 +322,15 @@ Make sure the following prerequisites are met before proceeding:
 
 - An Arc gateway resource created in the same subscription as used to deploy Azure Local. For more information, see [Create the Arc gateway resource in Azure](deployment-azure-arc-gateway-overview.md#create-the-arc-gateway-resource-in-azure).
 
-## Step 1: Get the Arc Gateway ID  
+## Step 1: Get the Arc gateway ID  
 
 You need the proxy and the Arc gateway ID from Azure to run the registration script on Azure Local machines. You can find the Arc gateway ID on the Azure portal **Overview** page of the resource.
 
 ## Step 2: Register new Azure Local machines with Arc
 
-To register Azure Local machines with Azure Arc, run the initialization script by passing the `ArcGatewayID` parameters. During the bootstrap configuration you will be required to authenticate with your credentials using the device code.
+To use the Arc gateway feature for Azure Local systems without a proxy, only use the `ArcGatewayID` parameter.
 
-Here's an example of how you should change these parameters for the `Invoke-AzStackHciArcInitialization` initialization script. Once registration is completed, the Azure Local machines are registered in Azure Arc using the Arc gateway:
+Run the initialization script as follows.
 
 ```azurecli
 #Define the subscription where you want to register your Azure Local machine with Arc.
@@ -339,6 +346,15 @@ $ArcgwId = "/subscriptions/yourarcgatewayid/resourceGroups/yourresourcegroupname
 #Invoke the registration script with ArcgatewayID 
 Invoke-AzStackHciArcInitialization -SubscriptionID $Subscription -ResourceGroup $RG -Region australiaeast -Cloud "AzureCloud" -ArcGatewayID $ArcgwId
 ```
+
+## Step 3: Start Azure Local cloud deployment
+
+Once the Azure Local machines are registered in Azure Arc and all the extensions are installed, you can start deployment from Azure portal or using the ARM templates that are documented in these articles:
+
+- [Deploy an Azure Local instance using the Azure portal](deploy-via-portal.md).
+
+- [Azure Resource Manager template deployment for Azure Local](deployment-azure-resource-manager-template.md).
+
 
 ## Step 3: Verify the setup is successful
 

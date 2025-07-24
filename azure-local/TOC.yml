@@ -121,13 +121,13 @@ items:
   - name: 3. Install the OS
     href: deploy/deployment-install-os.md
   - name: 4. Set up subscription permissions
-    href: deploy/deployment-azure-arc-gateway-overview.md
+    href: deploy/deployment-arc-register-server-permissions.md
   - name: 5. Choose a registration method
     items:
     - name: Without Arc gateway
-      href: deploy/deployment-with-azure-arc-gateway.md
+      href: deploy/deployment-without-azure-arc-gateway.md
     - name: With Arc gateway
-      href: deploy/deployment-without-azure-arc-gateway.md  
+      href: deploy/deployment-with-azure-arc-gateway.md  
   - name: 6. Choose a deployment method
     items:
     - name: 6A. Deploy via Azure portal
