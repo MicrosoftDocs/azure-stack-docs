@@ -45,7 +45,17 @@ Before you begin, make sure you have the following prerequisites:
   az extension update --name connectedk8s
   ```
   
-- To interact with Kubernetes clusters, you must install [**kubectl**](https://kubernetes.io/docs/tasks/tools/) and [**kubelogin**](https://azure.github.io/kubelogin/install.html).
+- To interact with Kubernetes clusters, you must install [**kubectl**](https://kubernetes.io/docs/tasks/tools/) and [**kubelogin**](https://azure.github.io/kubelogin/install.html). The following Azure CLI or Azure PowerShell commands can be used to install both **kubectl** and **kubelogin**
+
+   # [Azure CLI](#tab/cli)
+
+   Install kubectl locally using the [az aks install-cli](/cli/azure/aks?view=azure-cli-latest#az-aks-install-cli&preserve-view=true) command.
+
+   # [PowerShell](#tab/powershell)
+
+   Install kubectl locally using the [Install-AzAksCliTool](/powershell/module/az.aks/install-azaksclitool?view=azps-14.2.0&preserve-view=true) cmdlet.
+
+   ---
 - The following permissions are required to enable Azure RBAC when creating a Kubernetes cluster:
   - To create a Kubernetes cluster, the [**Azure Kubernetes Service Arc Contributor**](/azure/role-based-access-control/built-in-roles/containers#azure-kubernetes-service-arc-contributor-role) role is required.
   - To use the `--enable-azure-rbac` parameter, the [**Role Based Access Control Administrator**](/azure/role-based-access-control/built-in-roles/privileged#role-based-access-control-administrator) role is required for access to the **Microsoft.Authorization/roleAssignments/write** permission.
