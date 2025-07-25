@@ -654,18 +654,6 @@ items:
       href: migrate/migrate-faq.yml
     - name: Troubleshoot
       href: migrate/migrate-troubleshoot.md
-  - name: Migrate using SCVMM
-    items:
-    - name: For Hyper-V VMs
-      href: /system-center/vmm/manage-azure-stack-hci#migrate-vms-from-windows-server-to-azure-local-instance
-    - name: For VMware VMs
-      href: /system-center/vmm/vm-convert-vmware
-  - name: Migrate manually (v22H2 only)
-    items:
-    - name: To same hardware
-      href: migrate/migrate-cluster-same-hardware.md
-    - name: To new hardware
-      href: migrate/migrate-cluster-new-hardware.md 
 
 - name: Disconnected operations
   items:
