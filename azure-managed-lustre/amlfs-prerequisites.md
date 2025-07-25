@@ -49,7 +49,7 @@ If you plan to use another resource to host your compute VMs in the same virtual
 
 ### Subnet access and permissions
 
-By default, no specific changes need to be made to enable Azure Managed Lustre. If your environment includes restricted network or security policies, the following guidance should be considered:
+The following network settings must be in place to enable Azure Managed Lustre.
 
 | Access type | Required network settings |
 |-------------|---------------------------|
