@@ -55,7 +55,7 @@ This step applies only if you are deploying the source VMware appliance using an
 
 #### Install using a .zip file
 
-This step applies only if you downloaded the .zip file. You use the `AzureMigrateInstaller.ps1` PowerShell script to install the source appliance. For specific information, see [Set up an appliance with a script](../deploy-appliance-script.md).
+This step applies only if you downloaded the .zip file. You use the `AzureMigrateInstaller.ps1` PowerShell script to install the source appliance. For specific information, see [Set up an appliance with a script](/azure/migrate/deploy-appliance-script).
 
 1. Create a VM in the VMware vCenter with the following configuration:
 
