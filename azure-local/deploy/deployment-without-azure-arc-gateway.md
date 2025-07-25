@@ -186,33 +186,11 @@ Before you begin, make sure that you complete the following prerequisites:
    
 ## Step 1: Configure the network and connect to Azure
 
-Follow these steps to configure network settings and connect the machines to Azure. Start this action a few minutes after you turn on the machine.
-
-1. Open the Configurator app. Right-click the Configurator app exe and run as administrator. Wait a few minutes for the app to open up.
-
-   :::image type="content" source="media/deployment-arc-register-configurator-app/open-app-1.png" alt-text="Screenshot of opening the Configurator app for Azure Local." lightbox="media/deployment-arc-register-configurator-app/open-app-1.png":::
-
-1. Enter the machine serial number and select **Next**.
-
-   :::image type="content" source="media/deployment-arc-register-configurator-app/access-the-device-1.png" alt-text="Screenshot of the machine serial number dialog in the Configurator app for Azure Local." lightbox="media/deployment-arc-register-configurator-app/access-the-device-1.png":::
-
-1. Sign in to the machine with local administrator credentials.
-
-   :::image type="content" source="media/deployment-arc-register-configurator-app/access-the-device-2.png" alt-text="Screenshot of the password in the Configurator app for Azure Local." lightbox="media/deployment-arc-register-configurator-app/access-the-device-2.png":::
-
-1. On the **Azure Arc agent setup** page, select **Start**.
-
-   :::image type="content" source="media/deployment-arc-register-configurator-app/start-setup-1.png" alt-text="Screenshot of the Azure Arc agent setup page with Start selected in the Configurator app for Azure Local." lightbox="media/deployment-arc-register-configurator-app/start-setup-1.png":::
+[!INCLUDE [azure-local-start-configurator](../includes/azure-local-start-configurator.md)]
 
 ### Prerequisites tab
 
-1. On the **Prerequisites** tab, verify that the minimum requirements are met and then select **Next**.
-
-   :::image type="content" source="media/deployment-arc-register-configurator-app/prerequisites-1.png" alt-text="Screenshot of the Prerequisites tab in the Configurator app for Azure Local when all the prerequisites are met." lightbox="media/deployment-arc-register-configurator-app/prerequisites-1.png":::
-
-   If a requirement isn't met, the app displays a warning or errors. You can't proceed if there are errors though warnings are ignored. Resolve the errors before you proceed. For more information, see [Troubleshooting](#troubleshooting).
-
-   :::image type="content" source="media/deployment-arc-register-configurator-app/prerequisites-2.png" alt-text="Screenshot of the Prerequisites tab in the Configurator app for Azure Local when one of the prerequisites isn't met." lightbox="media/deployment-arc-register-configurator-app/prerequisites-2.png":::
+[!INCLUDE [azure-local-prerequisites-tab-configurator-app](../includes/azure-local-prerequisites-tab-configurator-app.md)]
 
 ### Basics tab
 
@@ -286,9 +264,7 @@ Follow these steps to configure network settings and connect the machines to Azu
 
 ### Review and apply tab
 
-1. On the **Review and apply** tab, verify machine details. To modify any settings, go back. If satisfied with the current settings, select **Finish**. If you changed the hostname, your machines boot up automatically at this point and you must sign in again.
-
-   :::image type="content" source="media/deployment-arc-register-configurator-app/review-apply-tab-1.png" alt-text="Screenshot of the Review and apply tab in the Configurator app for Azure Local." lightbox="media/deployment-arc-register-configurator-app/review-apply-tab-1.png":::
+[!INCLUDE [azure-local-review-apply-tab-configurator-app](../includes/azure-local-review-apply-tab-configurator-app.md)]
 
 ## Step 2: Complete registration of machines to Azure
 
@@ -304,11 +280,7 @@ Follow these steps to configure network settings and connect the machines to Azu
 
 ## Step 3: Verify machines are connected to Arc
 
-1. In the Azure portal, go to the resource group that you used for bootstrapping.
-
-1. On the resource group used to bootstrap, you should see your Arc-enabled machines. In this example, you see a single machine.
-
-   :::image type="content" source="media/deployment-arc-register-configurator-app/setup-arc-enabled-servers.png" alt-text="Screenshot that shows the Azure Arc agent Arc-enabled servers in Azure portal for Azure Local." lightbox="media/deployment-arc-register-configurator-app/setup-arc-enabled-servers.png":::
+[!INCLUDE [azure-local-verify-machines](../includes/azure-local-verify-machines.md)]
 
 ---
 
@@ -562,11 +534,7 @@ Before you begin, make sure that you complete the following prerequisites:
 
 ## Step 3: Verify machines are connected to Arc
 
-1. In the Azure portal, go to the resource group that you used for bootstrapping.
-
-1. On the resource group used to bootstrap, you should see your Arc-enabled machines. In this example, you see a single machine.
-
-   :::image type="content" source="media/deployment-arc-register-configurator-app/setup-arc-enabled-servers.png" alt-text="Screenshot that shows the Azure Arc agent Arc-enabled servers in Azure portal for Azure Local." lightbox="media/deployment-arc-register-configurator-app/setup-arc-enabled-servers.png":::
+[!INCLUDE [azure-local-verify-machines](../includes/azure-local-verify-machines.md)]
 
 ---
 
