@@ -3,7 +3,7 @@ title: Troubleshoot issues when migrating VMs to Azure Local using Azure Migrate
 description: Learn about how to troubleshoot issues when migrating Windows VMs to your Azure Local instance using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 06/04/2025
+ms.date: 07/25/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.custom: linux-related-content
@@ -283,17 +283,33 @@ The component fails to fetch the disk properties from the source Hyper-V host. T
 
 **Root cause**
 
-The disks on the migrated Windows VMs may not come online.
+The disks on the migrated Windows VMs and Linux VMs may not come online. 
 
-Migration creates a new VHD/VHDX, which results in a new disk for the Windows OS on the migrated VM. The OS sees this as a new drive and applies SAN policy. The OS will then not make the disk online as it is considered a shared disk.
+Migration creates a new VHD/VHDX, which results in a new disk for the OS on the migrated VM.  
+
+For Windows VMs, the OS sees this as a new drive and applies storage area network (SAN) policy. The OS will then not make the disk online as it is considered a shared disk. 
 
 **Recommended resolution** 
 
-To work around this issue, choose one of the following options: 
+**For Windows VMs**
 
-- Set SAN policy as `OnlineAll` for migrated Windows VMs. Reboot the VMs. This should bring all the disks online. For detailed instructions, see how to [Configure a SAN policy to bring disks online](/azure/migrate/prepare-for-migration#configure-san-policy).
+To ensure that all migrated disks come online, set the SAN policy to **OnlineAll**. 
 
-- Manually bring the drives online on migrated VMs.
+Configure this setting manually as follows: 
+
+1. On the on-premises virtual machine (not the host server) prior to migration, open an elevated command prompt. 
+
+1. Enter **diskpart**. 
+
+1. Enter **SAN**. If the drive letter of the guest operating system isn't maintained,  **Offline All**  or  **Offline Shared**  is returned. 
+
+1. At the **DISKPART** prompt, enter  **SAN Policy=OnlineAll**. This setting ensures that disks are brought online, and it ensures that you can read and write to both disks. 
+
+1. During migration, you can verify that the disks are brought online. 
+
+**For Linux VMs**
+
+Update **fstab** entries to use persistent volume identifiers prior to migration.  
 
 ### Migration fails with unable to delete snapshot error
 
