@@ -38,15 +38,15 @@ Before you begin, ensure you have the following prerequisites:
 
 1. **Install the Kubernetes CLI**
 
-   You can use the Kubernetes CLI, [kubectl](https://kubernetes.io/docs/reference/kubectl/), to connect to your Kubernetes cluster.  The following Azure CLI or Azure PowerShell commands can be used to install kubectl.
+   You can use the Kubernetes CLI, [kubectl](https://kubernetes.io/docs/reference/kubectl/), to connect to your Kubernetes cluster.  Use the following Azure CLI or Azure PowerShell commands to install **kubectl**:
 
    # [Azure CLI](#tab/cli)
 
-   Install kubectl locally using the [az aks install-cli](/cli/azure/aks?view=azure-cli-latest#az-aks-install-cli&preserve-view=true) command.
+   Install **kubectl** locally using the [az aks install-cli](/cli/azure/aks?view=azure-cli-latest#az-aks-install-cli&preserve-view=true) command.
 
    # [PowerShell](#tab/powershell)
 
-   Install kubectl locally using the [Install-AzAksCliTool](/powershell/module/az.aks/install-azaksclitool?view=azps-14.2.0&preserve-view=true) cmdlet.
+   Install **kubectl** locally using the [Install-AzAksCliTool](/powershell/module/az.aks/install-azaksclitool?view=azps-14.2.0&preserve-view=true) cmdlet.
 
    ---
 
