@@ -18,8 +18,6 @@ This article lists critical known issues and their workarounds in disconnected o
 
 These release notes update continuously, and we add critical issues that require a workaround as we find them. Before you deploy disconnected operations with Azure Local, review the information here.
 
-## Known issues for version 2506
-
 ### Azure Local deployment with Azure Keyvault
 
 Role-Based Access Control (RBAC) permissions on a newly created Azure Key Vault take up to 20 minutes to propagate. If you create the Azure Key Vault in the local portal and try to finish the cloud deployment, you might encounter permission issues when validating the cluster before deployment.

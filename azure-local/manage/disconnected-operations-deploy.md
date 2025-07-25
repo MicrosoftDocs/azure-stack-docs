@@ -51,6 +51,8 @@ Here's a checklist of things you need before you deploy Azure Local with disconn
 - DNS server to resolve IP to FQDN names.
 - Local credentials for Azure Local machines.
 - Active directory credentials for Azure Local deployment.
+- Active directory OU and networking requirements documented [here](../deploy/deployment-prerequisites.md)
+- Local credentials and AD credentials meets minimum password complexity defined [here](../deploy/deployment-prerequisites.md)
 - [Active directory prepared for Azure Local deployment](../deploy/deployment-prep-active-directory.md).
 - Certificates to secure ingress endpoints (24 certificates) and the public key (root) used to create these certificates.
 - Certificates to secure the management endpoint (2 certificates).
