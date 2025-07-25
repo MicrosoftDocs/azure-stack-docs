@@ -136,15 +136,15 @@ Sample output:
 
 | NAME              | STATUS | ROLES         | AGE   | VERSION | INTERNAL-IP     | EXTERNAL-IP | OS-IMAGE                  | KERNEL-VERSION         | CONTAINER-RUNTIME           |
 |-------------------|--------|--------------|-------|---------|-----------------|-------------|---------------------------|------------------------|-----------------------------|
-| moc-lsbe393il9d   | Ready  | control-plane| 3h14m | 1.30.4  | 100.72.248.133  | None        | CBL-Mariner/Linux         | 5.15.173.1-2.cm2       | containerd://1.6.26         |
-| moc-lzwagtkjah5   | Ready  | None         | 3h12m | 1.30.4  | 100.72.248.134  | None        | CBL-Mariner/Linux         | 5.15.173.1-2.cm2       | containerd://1.6.26         |
-| moc-wlcjnwn5n02   | Ready  | None         | 14m   | 1.30.4  | 100.72.248.135  | None        | Windows Server 2022 Datacenter | 10.0.20348.2700   | containerd://1.6.21+Azure    |
+| moc-lsbe393il9d   | Ready  | control-plane| 3h14m | 1.30.4  | 100.0.12.133  | None        | CBL-Mariner/Linux         | 5.15.173.1-2.cm2       | containerd://1.6.26         |
+| moc-lzwagtkjah5   | Ready  | None         | 3h12m | 1.30.4  | 100.0.12.134  | None        | CBL-Mariner/Linux         | 5.15.173.1-2.cm2       | containerd://1.6.26         |
+| moc-wlcjnwn5n02   | Ready  | None         | 14m   | 1.30.4  | 100.0.12.135  | None        | Windows Server 2022 Datacenter | 10.0.20348.2700   | containerd://1.6.21+Azure    |
 
 From this sample output:
 
-- Control plane IP is 100.72.248.133 (where the ROLES value is `control-plane` and OS image is `CBL-Mariner/Linux`).
-- Linux node IP is 100.72.248.134 (where the ROLES value is `none` and OS image is `CBL-Mariner/Linux`).
-- Windows node IP is 100.72.248.135 (where the OS image is `Windows Server 2022`).
+- Control plane IP is 100.0.12.133 (where the ROLES value is `control-plane` and OS image is `CBL-Mariner/Linux`).
+- Linux node IP is 100.0.12.134 (where the ROLES value is `none` and OS image is `CBL-Mariner/Linux`).
+- Windows node IP is 100.0.12.135 (where the OS image is `Windows Server 2022`).
 
 ## Step 3: run the image validation script on the control plane and worker nodes
 
@@ -155,43 +155,43 @@ These steps work for both the control plane node and Linux worker node since the
 1. Check if the commands can be run on the Linux VM (assuming the private key is in **C:\Users\Administrator\.ssh**):
 
    ```bash
-   ssh -i "C:\Users\Administrator\.ssh\id_rsa" -o StrictHostKeyChecking=no clouduser@100.72.248.133 "sudo crictl images --no-trunc"
+   ssh -i "C:\Users\Administrator\.ssh\id_rsa" -o StrictHostKeyChecking=no clouduser@100.0.12.133 "sudo crictl images --no-trunc"
    ```
 
 1. Copy the Linux-specific files to the Linux VM:
 
    ```bash
-   scp -i "C:\Users\Administrator\.ssh\id_rsa" C:\imagesign\linux\* clouduser@100.72.248.133:.
+   scp -i "C:\Users\Administrator\.ssh\id_rsa" C:\imagesign\linux\* clouduser@100.0.12.133:.
    ```
 
 1. Mark the notation binary file as executable:
 
    ```bash
-   ssh -i "C:\Users\Administrator\.ssh\id_rsa" -o StrictHostKeyChecking=no clouduser@100.72.248.133 "sudo chmod +x notation"
+   ssh -i "C:\Users\Administrator\.ssh\id_rsa" -o StrictHostKeyChecking=no clouduser@100.0.12.133 "sudo chmod +x notation"
    ```
 
 1. Execute commands to validate image signature verification. This step can take around 2-5 minutes:
 
    ```bash
-   ssh -i "C:\Users\Administrator\.ssh\id_rsa" -o StrictHostKeyChecking=no clouduser@100.72.248.133 "sudo python3 LinuxImageValidate.py"
+   ssh -i "C:\Users\Administrator\.ssh\id_rsa" -o StrictHostKeyChecking=no clouduser@100.0.12.133 "sudo python3 LinuxImageValidate.py"
    ```
 
 1. Copy the output file to the local directory:
 
    ```bash
-   ssh -i "C:\Users\Administrator\.ssh\id_rsa" -o StrictHostKeyChecking=no clouduser@100.72.248.133 "sudo cat imagevalidation_results_linux.json" > imagevalidation_results_controlplane.json
+   ssh -i "C:\Users\Administrator\.ssh\id_rsa" -o StrictHostKeyChecking=no clouduser@100.0.12.133 "sudo cat imagevalidation_results_linux.json" > imagevalidation_results_controlplane.json
    ```
 
 1. Clean up all files copied to the VM:
 
    ```bash
-   ssh -i "C:\Users\Administrator\.ssh\id_rsa" -o StrictHostKeyChecking=no clouduser@100.72.248.133 rm LinuxImageValidate.py notation tsa.crt ca.crt LICENSE imagevalidation_results_linux.json results.yaml
+   ssh -i "C:\Users\Administrator\.ssh\id_rsa" -o StrictHostKeyChecking=no clouduser@100.0.12.133 rm LinuxImageValidate.py notation tsa.crt ca.crt LICENSE imagevalidation_results_linux.json results.yaml
    ```
 
 1. Clean up the IP reference from the SSH cache:
 
    ```bash
-   ssh-keygen -R 100.72.248.133
+   ssh-keygen -R 100.0.12.133
    ```
 
    Sample output:
@@ -236,41 +236,41 @@ These steps work on all supported Windows OS worker nodes.
 1. Check if the commands can be run on the Windows VM (assuming the private key is in folder **C:\Users\Administrator\.ssh**):
 
    ```bash
-   ssh -i "C:\Users\Administrator\.ssh\id_rsa" -o StrictHostKeyChecking=no Administrator@100.72.248.135 "crictl images --no-trunc"
+   ssh -i "C:\Users\Administrator\.ssh\id_rsa" -o StrictHostKeyChecking=no Administrator@100.0.12.135 "crictl images --no-trunc"
    ```
 
 1. Copy the Windows-specific files inside the Windows VM:
 
    ```bash
-   ssh -i "C:\Users\Administrator\.ssh\id_rsa" Administrator@100.72.248.135 "powershell -ExecutionPolicy Bypass mkdir c:\win"
-   scp -i "C:\Users\Administrator\.ssh\id_rsa" C:\imagesign\win\ca.crt Administrator@100.72.248.135:c:\win\ca.crt
-   scp -i "C:\Users\Administrator\.ssh\id_rsa" C:\imagesign\win\notation.exe Administrator@100.72.248.135:c:\win\notation.exe
-   scp -i "C:\Users\Administrator\.ssh\id_rsa" C:\imagesign\win\tsa.crt Administrator@100.72.248.135:c:\win\tsa.crt
-   scp -i "C:\Users\Administrator\.ssh\id_rsa" C:\imagesign\win\WindowsImageValidate.ps1 Administrator@100.72.248.135:c:\win\WindowsImageValidate.ps1
+   ssh -i "C:\Users\Administrator\.ssh\id_rsa" Administrator@100.0.12.135 "powershell -ExecutionPolicy Bypass mkdir c:\win"
+   scp -i "C:\Users\Administrator\.ssh\id_rsa" C:\imagesign\win\ca.crt Administrator@100.0.12.135:c:\win\ca.crt
+   scp -i "C:\Users\Administrator\.ssh\id_rsa" C:\imagesign\win\notation.exe Administrator@100.0.12.135:c:\win\notation.exe
+   scp -i "C:\Users\Administrator\.ssh\id_rsa" C:\imagesign\win\tsa.crt Administrator@100.0.12.135:c:\win\tsa.crt
+   scp -i "C:\Users\Administrator\.ssh\id_rsa" C:\imagesign\win\WindowsImageValidate.ps1 Administrator@100.0.12.135:c:\win\WindowsImageValidate.ps1
    ```
 
 1. Execute commands to validate image signature verification. This step can take around 2-5 minutes:
 
    ```bash
-   ssh -i "C:\Users\Administrator\.ssh\id_rsa" Administrator@100.72.248.135 "powershell -ExecutionPolicy Bypass -File c:\win\WindowsImageValidate.ps1"
+   ssh -i "C:\Users\Administrator\.ssh\id_rsa" Administrator@100.0.12.135 "powershell -ExecutionPolicy Bypass -File c:\win\WindowsImageValidate.ps1"
    ```
 
 1. Copy the output file to the local directory:
 
    ```bash
-   scp -i "C:\Users\Administrator\.ssh\id_rsa" Administrator@100.72.248.135:c:\win\imagevalidation_results_windows.json C:\imagesign\imagevalidation_results_windows.json
+   scp -i "C:\Users\Administrator\.ssh\id_rsa" Administrator@100.0.12.135:c:\win\imagevalidation_results_windows.json C:\imagesign\imagevalidation_results_windows.json
    ```
 
 1. Clean up all files copied to the VM:
 
    ```bash
-   ssh -i "C:\Users\Administrator\.ssh\id_rsa" Administrator@100.72.248.135 "powershell -ExecutionPolicy Bypass remove-item -force c:\win"
+   ssh -i "C:\Users\Administrator\.ssh\id_rsa" Administrator@100.0.12.135 "powershell -ExecutionPolicy Bypass remove-item -force c:\win"
    ```
 
 1. Clean up IP reference from the SSH cache:
 
    ```bash
-   ssh-keygen -R 100.72.248.135
+   ssh-keygen -R 100.0.12.135
    ```
 
    Sample output:
