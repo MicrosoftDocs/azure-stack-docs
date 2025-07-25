@@ -296,5 +296,5 @@ These steps work on all supported Windows OS worker nodes.
 
 ## Next steps
 
-[AKS on Azure Local overview](overview.md)
-[Use Azure role-based access control (RBAC) for Kubernetes authorization](azure-rbac-local.md)
+- [AKS on Azure Local overview](overview.md)
+- [Use Azure role-based access control (RBAC) for Kubernetes authorization](azure-rbac-local.md)
