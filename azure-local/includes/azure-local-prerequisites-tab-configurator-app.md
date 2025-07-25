@@ -1,0 +1,17 @@
+---
+author: alkohli
+ms.author: alkohli
+ms.service: azure-local
+ms.topic: include
+ms.date: 07/23/2025
+ms.reviewer: alkohli
+ms.lastreviewed: 07/23/2025
+---
+
+1. On the **Prerequisites** tab, verify that the minimum requirements are met and then select **Next**.
+
+   :::image type="content" source="media/deployment-arc-register-configurator-app/prerequisites-1.png" alt-text="Screenshot of the Prerequisites tab in the Configurator app for Azure Local when all the prerequisites are met." lightbox="media/deployment-arc-register-configurator-app/prerequisites-1.png":::
+
+   If a requirement isn't met, the app displays a warning or errors. You can't proceed if there are errors though warnings are ignored. Resolve the errors before you proceed. For more information, see [Troubleshooting](#troubleshooting).
+
+   :::image type="content" source="media/deployment-arc-register-configurator-app/prerequisites-2.png" alt-text="Screenshot of the Prerequisites tab in the Configurator app for Azure Local when one of the prerequisites isn't met." lightbox="media/deployment-arc-register-configurator-app/prerequisites-2.png":::

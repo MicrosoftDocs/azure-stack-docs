@@ -501,13 +501,7 @@ Follow these steps to configure network settings and connect the machines to Azu
 
 ### Prerequisites tab
 
-1. On the **Prerequisites** tab, verify that the minimum requirements are met and then select **Next**.
-
-   :::image type="content" source="media/deployment-arc-register-configurator-app/prerequisites-1.png" alt-text="Screenshot of the Prerequisites tab in the Configurator app for Azure Local when all the prerequisites are met." lightbox="media/deployment-arc-register-configurator-app/prerequisites-1.png":::
-
-   If a requirement isn't met, the app displays a warning or errors. You can't proceed if there are errors though warnings are ignored. Resolve the errors before you proceed. For more information, see [Troubleshooting](#troubleshooting).
-
-   :::image type="content" source="media/deployment-arc-register-configurator-app/prerequisites-2.png" alt-text="Screenshot of the Prerequisites tab in the Configurator app for Azure Local when one of the prerequisites isn't met." lightbox="media/deployment-arc-register-configurator-app/prerequisites-2.png":::
+[!INCLUDE [azure-local-prerequisites-tab-configurator-app](../includes/azure-local-prerequisites-tab-configurator-app.md)]
 
 ### Basics tab
 
@@ -568,9 +562,7 @@ Follow these steps to configure network settings and connect the machines to Azu
 
 ### Review and apply tab
 
-1. On the **Review and apply** tab, verify machine details. To modify any settings, go back. If satisfied with the current settings, select **Finish**. If you changed the hostname, your machines boot up automatically at this point and you must sign in again.
-
-   :::image type="content" source="media/deployment-arc-register-configurator-app/review-apply-tab-1.png" alt-text="Screenshot of the Review and apply tab in the Configurator app for Azure Local." lightbox="media/deployment-arc-register-configurator-app/review-apply-tab-1.png":::
+[!INCLUDE [azure-local-review-apply-tab-configurator-app](../includes/azure-local-review-apply-tab-configurator-app.md)]
 
 ## Step 2: Complete registration of machines to Azure
 
