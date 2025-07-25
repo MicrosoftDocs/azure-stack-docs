@@ -296,6 +296,4 @@ These steps work on all supported Windows OS worker nodes.
 
 ## Next steps
 
-For more information about AKS on Azure Local, see the following articles:
-
-- [AKS on Azure Local overview](overview.md)
+[AKS on Azure Local overview](overview.md)
