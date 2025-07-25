@@ -19,7 +19,7 @@ This article details how to register an Azure Local with Arc and with proxy conf
 
 - **Configure with a script**: You can use an Arc script to configure registration settings.
 
-- **Set up via the Configurator app**: Using this method, you can configure Azure Local registration via a user interface. This method is useful if you prefer not to use scripts or if you want to configure the settings interactively.
+- **Set up via the Configurator app (Preview)**: Using this method, you can configure Azure Local registration via a user interface. This method is useful if you prefer not to use scripts or if you want to configure the settings interactively.
 
 # [Via Arc script](#tab/script)
 
@@ -162,7 +162,7 @@ After the script completes successfully on all the machines, verify that your ma
 > [!NOTE]
 > Once an Azure Local machine is registered with Azure Arc, the only way to undo the registration is to install the operating system again on the machine.
 
-# [Via Configurator app](#tab/app)
+# [Via Configurator app (Preview)](#tab/app)
 
 ## Prerequisites
 
