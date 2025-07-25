@@ -6,8 +6,8 @@ ms.custom: devx-track-azurecli
 author: sethmanheim
 ms.author: sethm
 ms.reviewer: leslielin
-ms.date: 05/21/2025
-ms.lastreviewed: 05/21/2025
+ms.date: 07/25/2025
+ms.lastreviewed: 07/25/2025
 
 # Intent: As an IT Pro, I want to use Azure RBAC to authenticate connections to my AKS clusters over the Internet or on a private network.
 # Keyword: Kubernetes role-based access control AKS Azure RBAC AD
@@ -45,7 +45,7 @@ Before you begin, make sure you have the following prerequisites:
   az extension update --name connectedk8s
   ```
   
-- To interact with Kubernetes clusters, you must install [**kubectl**](https://kubernetes.io/docs/tasks/tools/) and [**kubelogin**](https://azure.github.io/kubelogin/install.html). The following Azure CLI or Azure PowerShell commands can be used to install both **kubectl** and **kubelogin**
+- To interact with Kubernetes clusters, you must install [**kubectl**](https://kubernetes.io/docs/tasks/tools/) and [**kubelogin**](https://azure.github.io/kubelogin/install.html). You can use the following Azure CLI or Azure PowerShell commands to install both **kubectl** and **kubelogin**:
 
    # [Azure CLI](#tab/cli)
 
