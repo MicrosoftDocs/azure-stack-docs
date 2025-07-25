@@ -49,7 +49,7 @@ If you plan to use another resource to host your compute VMs in the same virtual
 
 ### Subnet access and permissions
 
-The following network settings must be in place to enable Azure Managed Lustre.
+[Default outbound access for VMs](https://azure.microsoft.com/en-us/updates?id=default-outbound-access-for-vms-in-azure-will-be-retired-transition-to-a-new-method-of-internet-access) will retire on September 30, 2025. After September 30, 2025, the following network settings must be in place to enable Azure Managed Lustre.
 
 | Access type | Required network settings |
 |-------------|---------------------------|
