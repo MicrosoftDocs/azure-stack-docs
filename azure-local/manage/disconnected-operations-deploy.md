@@ -561,6 +561,27 @@ In this section, verify the installation and create local Azure resources.
 1. Sign in to your identity provider using the credentials you configured during the deployment.
     - You should see a familiar Azure portal running in your network.
 
+### Register required resource providers
+Make sure you register the required resource providers prior to deployment. Here is an example for how to automate resource provider registration from Azure Cli. 
+```azurecli  
+    az cloud set -n 'azure.local'
+    az login  
+    az provider register --namespace Microsoft.AzureStackHCI
+    az provider register --namespace Microsoft.ExtendedLocation
+    az provider register --namespace Microsoft.ResourceConnector
+    az provider register --namespace Microsoft.EdgeArtifact
+```
+
+Wait until all resource providers are in the state registered. Here is an example you can use with Azure CLI to get a list of all resource providers with their status:
+
+```azurecli  
+    az provider list -o table
+``` 
+
+> [!NOTE] 
+> You can also use the local portal to register or view resource providers status by navigating to the subscription and clicking resource providers. 
+
+
 ### Create resource group SPN for cluster  
 
 Use the operator account to create an SPN for Arc initialization of each Azure Local node. To create the SPN, follow these steps:
@@ -670,7 +691,6 @@ To initialize each node, follow these steps. Modify where necessary to match you
     ResourceGroup    = $resourcegroup
     SubscriptionID   = $applianceSubscriptionId
     TenantID         = $applianceTenantId
-    Force            = $true
     CloudFqdn        = $applianceFQDN
     }
     ```
@@ -692,12 +712,6 @@ To initialize each node, follow these steps. Modify where necessary to match you
 ### For fully air-gapped or disconnected deployments (where nodes have no line of sight to internet connection)
 
 To enable Azure Local to be air-gapped or deployed fully disconnected, you must do the following on each node:
-
-- Run this command to add the required environment variable:
-
-```powershell
- [Environment]::SetEnvironmentVariable("NUGET_CERT_REVOCATION_MODE", "offline", [System.EnvironmentVariableTarget]::Machine)
-```
 
 - Configure the timeserver to use your domain controller, for example. Modify the script and run it from PowerShell:
 
@@ -761,7 +775,7 @@ From a client with network access to the management endpoint, import the **Opera
 
 ```powershell  
 Import-Module "C:\azurelocal\OperationsModule\Azure.Local.DisconnectedOperations.psd1" -Force  
-$password = ConvertTo-SecureString “RETRACTED” -AsPlainText -Force  
+$password = ConvertTo-SecureString 'RETRACTED' -AsPlainText -Force  
 $context = Set-DisconnectedOperationsClientContext -ManagementEndpointClientCertificatePath "${env:localappdata}\AzureLocalOpModuleDev\certs\ManagementEndpoint\ManagementEndpointClientAuth.pfx" -ManagementEndpointClientCertificatePassword $password -ManagementEndpointIpAddress "169.254.53.25"  
 ```  
 
