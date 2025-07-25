@@ -51,11 +51,10 @@ For disconnected operations:
 1. Understand [public key infrastructure (PKI) for Azure Local with disconnected operations (preview)](disconnected-operations-pki.md)
 2. Set up and configure the certificate trusts for Azure CLI using PowerShell.
 
-    Here's an example script:
+    Here's an example script you can run in Powershell:
 
-    ```console
-    First, import the helper method as defined in this section:
-
+    ```powershell    
+        # Define the helper method
         function UpdatePythonCertStore
         {
             [CmdletBinding()]
@@ -109,8 +108,7 @@ For disconnected operations:
             Write-Verbose "[END] Updating CLI cert store"
         }
 
-    Next, run the helper method in PowerShell:
-
+    # Run the helper method in PowerShell:
     UpdatePythonCertStore -ApplianceRootCertPath D:\applianceIngressRoot.cer
     ```
 
