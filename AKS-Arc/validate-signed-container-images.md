@@ -38,7 +38,7 @@ Before you begin, ensure you have the following prerequisites:
 
 1. **Install the Kubernetes CLI**
 
-   You can use the Kubernetes CLI, [kubectl](https://kubernetes.io/docs/reference/kubectl/), to connect to your Kubernetes cluster. If you use Azure Cloud Shell, kubectl is already installed. If you run the commands locally, you can use the Azure CLI or Azure PowerShell to install kubectl.
+   You can use the Kubernetes CLI, [kubectl](https://kubernetes.io/docs/reference/kubectl/), to connect to your Kubernetes cluster.  The following Azure CLI or Azure PowerShell commands can be used to install kubectl.
 
    # [Azure CLI](#tab/cli)
 
