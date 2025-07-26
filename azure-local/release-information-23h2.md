@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: article
 ms.service: azure-local
-ms.date: 07/22/2025
+ms.date: 07/24/2025
 ---
 
 # Azure Local release information
@@ -66,13 +66,13 @@ If your cluster supports [Solution Builder Extension software updates](./update/
 The following tables summarize the release information for Azure Local across all supported versions. All dates are listed in ISO 8601 format: *YYYY-MM-DD*. After you upgrade your solution, you might see 10.x versions; these versions are supported.
 
 > [!IMPORTANT]
-> The new deployments of this software use the **12.2507.1001.8** build. You can also update an existing deployment from 2506 using **11.2507.1001.7**.
+> The new deployments of this software use the **12.2507.1001.10** build. You can also update an existing deployment from 2506 using **11.2507.1001.9**.
 
 #### [OS build 25398.xxxx](#tab/OS-build-25398-xxxx)
 
 | Solution version | OS build | Security update | What's new | Known issues |
 |------|-------|---------------|------------|--------------|
-| 11.2507.1001.7 <br><br> 10.2507.0.6 <br></br> Availability date: 2505-07-21 | 25398.1732 | [July OS security update](security-update/security-update.md?view=azloc-2507&preserve-view=true) | [Features and improvements](./whats-new.md?view=azloc-2507&preserve-view=true#features-and-improvements-in-2507) | [Known issues](./known-issues.md?view=azloc-2507&preserve-view=true) |
+| 11.2507.1001.9 <br><br> 10.2507.0.6 <br></br> Availability date: 2025-07-24 | 25398.1732 | [July OS security update](security-update/security-update.md?view=azloc-2507&preserve-view=true) | [Features and improvements](./whats-new.md?view=azloc-2507&preserve-view=true#features-and-improvements-in-2507) | [Known issues](./known-issues.md?view=azloc-2507&preserve-view=true) |
 | 11.2506.1001.28 <br><br> 10.2506.0.15 <br></br> Availability date: 2025-07-02 | 25398.1665 | [June OS security update](security-update/security-update.md?view=azloc-2506&preserve-view=true) | [Features and improvements](./whats-new.md?view=azloc-2506&preserve-view=true#features-and-improvements-in-2506) | [Known issues](./known-issues.md?view=azloc-2506&preserve-view=true) |
 | 11.2505.1001.22 <br><br> 10.2505.0.16 <br></br> Availability date: 2025-05-28 | 25398.1611 | [May OS security update](security-update/security-update.md?view=azloc-2505&preserve-view=true) | [Features and improvements](./whats-new.md?view=azloc-2505&preserve-view=true#features-and-improvements-in-2505) | [Known issues](./known-issues.md?view=azloc-2505&preserve-view=true) |
 | 11.2504.1001.19 <br><br> Availability date: 2025-04-21 | 25398.1551 | [April OS security update](security-update/security-update.md?view=azloc-2504&preserve-view=true) | [Features and improvements](./whats-new.md?view=azloc-2504&preserve-view=true#features-and-improvements-in-2504) | [Known issues](./known-issues.md?view=azloc-2504&preserve-view=true) |
@@ -83,7 +83,7 @@ The following tables summarize the release information for Azure Local across al
 
 | Solution version | OS build | Security update | What's new | Known issues |
 |------|-------|---------------|------------|--------------|
-| 12.2507.1001.8 <br><br> Availability date: 2025-07-21 | 26100.4652 | [July OS security update](security-update/security-update.md?view=azloc-2507&preserve-view=true&tabs=new-deployments) | [Features and improvements](./whats-new.md?view=azloc-2507&preserve-view=true#features-and-improvements-in-2507) | [Known issues](./known-issues.md?view=azloc-2507&preserve-view=true) |
+| 12.2507.1001.10 <br><br> Availability date: 2025-07-24 | 26100.4652 | [July OS security update](security-update/security-update.md?view=azloc-2507&preserve-view=true&tabs=new-deployments) | [Features and improvements](./whats-new.md?view=azloc-2507&preserve-view=true#features-and-improvements-in-2507) | [Known issues](./known-issues.md?view=azloc-2507&preserve-view=true) |
 | 12.2506.1001.29 <br><br> Availability date: 2025-07-02 | 26100.4349 | [June OS security update](security-update/security-update.md?view=azloc-2506&preserve-view=true&tabs=new-deployments) | [Features and improvements](./whats-new.md?view=azloc-2506&preserve-view=true#features-and-improvements-in-2506) | [Known issues](./known-issues.md?view=azloc-2506&preserve-view=true) |
 | 12.2505.1001.23 <br><br> Availability date: 2025-05-28 | 26100.4061 | [May OS security update](security-update/security-update.md?view=azloc-2505&preserve-view=true&tabs=new-deployments) | [Features and improvements](./whats-new.md?view=azloc-2505&preserve-view=true#features-and-improvements-in-2505) | [Known issues](./known-issues.md?view=azloc-2505&preserve-view=true) |
 | 12.2504.1001.20 <br><br> Availability date: 2025-04-29 | 26100.3775 | [April OS security update](security-update/security-update.md?view=azloc-2504&preserve-view=true&tabs=new-deployments) | [Features and improvements](./whats-new.md?view=azloc-2504&preserve-view=true#features-and-improvements-in-2504) | [Known issues](./known-issues.md?view=azloc-2504&preserve-view=true) |
