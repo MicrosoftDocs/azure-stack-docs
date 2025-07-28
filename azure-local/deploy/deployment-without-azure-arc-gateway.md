@@ -3,7 +3,7 @@ title: Register Azure Local with Arc.
 description: Learn how to register Azure Local with Azure Arc with and without proxy setup. The proxy configuration can be done via an Arc script or via the Configurator app for Azure gateway on Azure Local. 
 author: alkohli
 ms.topic: how-to
-ms.date: 07/23/2025
+ms.date: 07/28/2025
 ms.author: alkohli
 ms.service: azure-local
 zone_pivot_groups: register-arc-options
@@ -15,7 +15,7 @@ zone_pivot_groups: register-arc-options
 
 ::: zone pivot="register-proxy"
 
-This article details how to register an Azure Local with Arc and with proxy configuration. Configure the Arc proxy before you register and then register using a script or via the Configuration app.
+This article details how to register an Azure Local with Arc and with proxy configuration. The proxy configuration can be done via an Arc script or via the Configurator app for Azure gateway on Azure Local.
 
 - **Configure with a script**: You can use an Arc script to configure registration settings.
 
@@ -60,7 +60,7 @@ Make sure the following prerequisites are met before proceeding:
     
     #Define the tenant you will use to register your machine as Arc device
     $Tenant = "YourTenantID"
-    
+
     #Define the proxy address if your Azure Local deployment accesses the internet via proxy
     $ProxyServer = "http://proxyaddress:port"
     ```
@@ -73,7 +73,6 @@ Make sure the following prerequisites are met before proceeding:
     ```output
     PS C:\Users\SetupUser> $Subscription = "<Subscription ID>"
     PS C:\Users\SetupUser> $RG = "myashcirg"
-    PS C:\Users\SetupUser> $Tenant = "<Tenant ID>"
     PS C:\Users\SetupUser> $Region = "eastus"
     PS C:\Users\SetupUser> $ProxyServer = "<http://proxyserver:tcpPort>"
     ```

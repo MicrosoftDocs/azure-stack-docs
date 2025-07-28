@@ -3,7 +3,7 @@ title: Register Azure Local using arc gateway and with and without proxy setup.
 description: Learn how to register Azure Local using Azure Arc gateway Arc proxy. Both scenarios with and without proxy are configured. The proxy configuration can be done via an Arc script via registration script for Azure gateway on Azure Local, version 2408. 
 author: alkohli
 ms.topic: how-to
-ms.date: 07/23/2025
+ms.date: 07/28/2025
 ms.author: alkohli
 ms.service: azure-local
 zone_pivot_groups: register-arc-options
@@ -57,24 +57,17 @@ $ProxyServer = "http://x.x.x.x:port"
 $ArcgwId = "/subscriptions/yourarcgatewayid/resourceGroups/yourResourceGroupName/providers/Microsoft.HybridCompute/gateways/yourArcGatewayName" 
 
 #Define the bypass list for the proxy. Use comma to separate each item from the list.  
+# Parameters must be separated with a comma `,`.
 # Use "localhost" instead of <local> 
 # Use specific IPs such as 127.0.0.1 without mask 
 # Use * for subnets allowlisting. 192.168.1.* for /24 exclusions. Use 192.168.*.* for /16 exclusions. 
 # Append * for domain names exclusions like *.contoso.com 
 # DO NOT INCLUDE .svc on the list. The registration script takes care of Environment Variables configuration. 
-# Cristian - When defining your proxy bypass string, make sure you meet the following conditions:
-
-   # At least the IP address of each Azure Local machine.
-   # At least the IP address of the Azure Local system.
-   # At least the IPs you defined for your infrastructure network. Arc resource bridge, Azure Kubernetes Service (AKS), and future infrastructure services using these IPs require outbound connectivity.
-   # Or you can bypass the entire infrastructure subnet.
-   # NetBIOS name of each machine.
-   # NetBIOS name of the Azure Local system.
-   # Domain name or domain name with asterisk * wildcard at the beginning to include any host or subdomain.  For example, `192.168.1.*` for subnets or `*.contoso.com` for domain names.
-   # Parameters must be separated with a comma `,`.
-   # Classless Inter-Domain Routing (CIDR) notation to bypass subnets isn't supported.
-   # The use of \<local\> strings isn't supported in the proxy bypass list.
-
+# At least the IP address of each Azure Local machine.
+# At least the IP address of the Azure Local cluster.
+# At least the IPs you defined for your infrastructure network. Arc resource bridge, Azure Kubernetes Service (AKS), and future infrastructure services using these IPs require outbound connectivity.
+# NetBIOS name of each machine.
+# NetBIOS name of the Azure Local cluster.
 
 $ProxyBypassList = "localhost,127.0.0.1,*.contoso.com,machine1,machine2,machine3,machine4,machine5,192.168.*.*,AzureLocal-1" 
 
@@ -108,10 +101,11 @@ Once the deployment validation starts, connect to the first Azure Local machine 
     
    - **Azure Arc Proxy** shows as stopped when Arc gateway isn't in use. Running when the Arc gateway is enabled.
 
-   Here is an example of the Arc agent without the Arc gateway:
+   <!--Here is an example of the Arc agent without the Arc gateway:
     
-<!-- Cristian - Do we need this one -->
+
    :::image type="content" source="./media/deployment-connect-nodes-to-arc-gateway/arc-agent-without-gateway.png" alt-text="Screenshot that shows the Arc agent without gateway using script." lightbox="./media/deployment-connect-nodes-to-arc-gateway/arc-agent-with-gateway-2.png":::
+   -->
     
    The Arc agent using the Arc gateway:
     
@@ -125,10 +119,12 @@ Once the deployment validation starts, connect to the first Azure Local machine 
     
    The response should indicate that the **connection.type** is set to **gateway**, and the **Reachable** column should indicate **true** for all URLs.
     
-   Here's an example of the Arc agent without the Arc gateway:
-<!-- Cristian - Do we need this one -->
+  <!--Here's an example of the Arc agent without the Arc gateway:
+
    
    :::image type="content" source="./media/deployment-connect-nodes-to-arc-gateway/arc-agent-without-gateway-2.png" alt-text="Screenshot that shows the Arc agent without Arc gateway using script." lightbox="./media/deployment-connect-nodes-to-arc-gateway/arc-agent-without-gateway-2.png":::
+   -->
+
     
    Here's an example of the Arc agent using the Arc gateway:
     
@@ -328,11 +324,11 @@ Once the Azure Local machines are registered in Azure Arc and all the extensions
 - [Azure Resource Manager template deployment for Azure Local](deployment-azure-resource-manager-template.md).
 
 
-## Step 3: Verify the setup is successful
+## Step 4: Verify the setup is successful
 
 Once the deployment validation starts, connect to the first Azure Local machine from your system.
 
-1. Open the Arc gateway log to monitor the endpoints that are being redirected to the Arc gateway and which ones continue using your firewall. You can find the Arc gateway log at: *c:\programdata\AzureConnectedMAchineAgent\Log\arcproxy.log*. <!-- Cristian - Which log if proxy is not configured?-->
+1. Open the Arc gateway log to monitor the endpoints that are being redirected to the Arc gateway and which ones continue using your firewall. You can find the Arc gateway log at: *c:\programdata\AzureConnectedMAchineAgent\Log\arcproxy.log*.
 
     :::image type="content" source="./media/deployment-connect-nodes-to-arc-gateway/arc-gateway-log.png" alt-text="Screenshot that shows the Arc gateway log using script." lightbox="./media/deployment-connect-nodes-to-arc-gateway/arc-gateway-log.png":::
 
