@@ -15,9 +15,7 @@ zone_pivot_groups: register-arc-options
 
 ::: zone pivot="register-proxy"
 
-This article details how to register Azure Local using Azure Arc gateway after the proxy configuration is enabled.
-
-Once you create an Arc gateway resource in your Azure subscription, you can enable the Arc gateway features. Configure the Arc proxy before you register and then register using a script or via the Configuration app.
+This article details how to register Azure Local using Azure Arc gateway and with the proxy configuration enabled. Once you create an Arc gateway resource in your Azure subscription, you can enable the Arc gateway features. 
 
 - **Configure proxy with a script**: Using this method, you can configure Arc proxy with a script. This method is useful as you don't need to configure the Arc proxy across WinInet, WinHttp, or environment variables manually.
 
