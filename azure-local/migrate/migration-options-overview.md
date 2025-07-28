@@ -3,7 +3,7 @@ title: Options for migrating virtual machines to Azure Local (preview)
 description: Learn about how to choose a migration option to migrate VM workloads to your Azure Local (preview).
 author: alkohli
 ms.topic: overview
-ms.date: 05/15/2025
+ms.date: 07/28/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
@@ -30,6 +30,12 @@ First party migration options are provided by Microsoft. These options are built
 - [Azure Migrate](./migration-azure-migrate-overview.md). This option is only available on systems running Azure Local.
     - [For Hyper-V VMs](./migration-azure-migrate-overview.md).
     - [For VMware VMs](./migration-azure-migrate-vmware-overview.md).
+
+    **Considerations for Azure Migrate**
+
+    - Azure Migrate requires both a source appliance in your on-premises environment and a target appliance in your Azure Local instance. This setup is necessary for every Azure Migrate project. For more information, see [Source VMware requirements](migrate-vmware-requirements.md#source-vmware-server-requirements) and [Source Hyper-V requirements](migrate-hyperv-requirements.md#source-hyper-v-requirements).  
+
+    - By default, Azure Migrate provisions all migrated VMs as Azure Local VMs enabled by Azure Arc. For more information on VM types for Azure Local, see [Types of VMs on Azure Local](../concepts/compare-vm-management-capabilities.md#types-of-vms-on-azure-local). 
 
 - System Center Virtual Machine Manager (SCVMM). These options are only available on systems running Azure Stack HCI, version 22H2.
     - [For Hyper-V VMs](/system-center/vmm/deploy-manage-azure-stack-hci?view=sc-vmm-2022&preserve-view=true#step-8-migrate-vms-from-windows-server-to-azure-stack-hci-cluster)
