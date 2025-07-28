@@ -26,7 +26,7 @@ To migrate VM workloads and their data to your Azure Local instance, several opt
 
 First-party migration options are provided by Microsoft. These options are built into the Azure Local platform and are available to you at no additional cost.
 
-The primary first-party migration option is [Azure Migrate](./migration-azure-migrate-overview.md), which is available only on systems running Azure Local. Azure Migrate is a central hub for tools to discover, assess, and migrate on-premises servers, apps, and data to the Microsoft Azure cloud.
+The primary first-party migration option is [Azure Migrate](./migration-azure-migrate-overview.md), which is available on systems running Azure Local. Azure Migrate is a central hub for tools to discover, assess, and migrate on-premises servers, apps, and data to the Microsoft Azure cloud.
 
 You can use Azure Migrate to migrate the following types of VMs to Azure Local:
 
