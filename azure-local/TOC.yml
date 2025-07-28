@@ -13,90 +13,10 @@ items:
     items:
     - name: Release information
       href: release-information-23h2.md
-    - name: Known issues 
-      items:
-      - name: Known issues 2411
-        items:
-        - name: 2411.1 - Current
-          href: known-issues-2411-1.md
-        - name: 2411 
-          href: known-issues-2411.md
-      - name: Known issues 2408
-        items:
-        - name: 2408.2 - Current 
-          href: known-issues-2408-2.md
-        - name: 2408.1
-          href: known-issues-2408-1.md
-        - name: 2408
-          href: known-issues-2408.md
-      - name: Archived known issues 
-        items:
-        - name: Known issues 2405 
-          items:
-          - name: 2405.3 - Current
-            href: known-issues-2405-3.md
-          - name: 2405.2
-            href: known-issues-2405-2.md      
-          - name: 2405.1
-            href: known-issues-2405-1.md
-          - name: 2405.0
-            href: known-issues-2405.md
-        - name: Known issues 2402 
-          items:
-          - name: 2402.4 - Current
-            href: known-issues-2402-4.md
-          - name: 2402.3
-            href: known-issues-2402-3.md
-          - name: 2402.2
-            href: known-issues-2402-2.md
-          - name: 2402.1
-            href: known-issues-2402-1.md
-          - name: 2402.0 
-            href: known-issues-2402.md
-        - name: Known issues 2311
-          items:
-          - name: 2311.5 - Current
-            href: known-issues-2311-5.md
-          - name: 2311.4 
-            href: known-issues-2311-4.md
-          - name: 2311.3 
-            href: known-issues-2311-3.md
-          - name: 2311.2 - GA
-            href: known-issues-2311-2.md
-          - name: 2311
-            href: known-issues-2311.md
+    - name: Known issues
+      href: known-issues.md
     - name: Security updates
-      items:
-      - name: December 2024 - Current
-        href: security-update/security-update-dec-2024.md
-      - name: November 2024
-        href: security-update/security-update-nov-2024.md
-      - name: October 2024
-        href: security-update/security-update-oct-2024.md
-      - name: September 2024
-        href: security-update/security-update-sep-2024.md
-      - name: August 2024
-        href: security-update/security-update-aug-2024.md
-      - name: July 2024
-        href: security-update/security-update-jul-2024.md
-      - name: June 2024 
-        href: security-update/security-update-jun-2024.md
-      - name: Archived security updates 
-        items:  
-        - name: May 2024
-          href: security-update/security-update-may-2024.md
-        - name: April 2024
-          href: security-update/security-update-apr-2024.md
-        - name: March 2024 
-          href: security-update/security-update-mar-2024.md
-        - name: February 2024 
-          href: security-update/security-update-feb-2024.md      
-        - name: January 2024 
-          href: security-update/security-update-jan-2024.md
-        - name: December 2023 
-          href: security-update/security-update-dec-2023.md
-        - name: November 2023 
-          href: security-update/security-update-nov-2023.md
+      href: security-update/security-update.md
   - name: OEM License
     items: 
     - name: OEM license information
@@ -654,18 +574,6 @@ items:
       href: migrate/migrate-faq.yml
     - name: Troubleshoot
       href: migrate/migrate-troubleshoot.md
-  - name: Migrate using SCVMM
-    items:
-    - name: For Hyper-V VMs
-      href: /system-center/vmm/manage-azure-stack-hci#migrate-vms-from-windows-server-to-azure-local-instance
-    - name: For VMware VMs
-      href: /system-center/vmm/vm-convert-vmware
-  - name: Migrate manually (v22H2 only)
-    items:
-    - name: To same hardware
-      href: migrate/migrate-cluster-same-hardware.md
-    - name: To new hardware
-      href: migrate/migrate-cluster-new-hardware.md 
 
 - name: Disconnected operations
   items:
