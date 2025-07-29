@@ -36,9 +36,10 @@ Azure Local VMs running disconnected operations have the following limitations:
 
 ### VM images
 
-- Create VM images only from a local share.
-- Create VM images only using Azure Command Line (CLI). This release doesn't support image creation in the Azure portal.
 - Marketplace, Azure storage account, and images from an existing Azure Local VM aren't supported.
+- Create VM images from a local share.
+- Create VM images using Azure Command Line (CLI).
+- Create image in the Azure portal.
 
 ### Network interfaces
 
@@ -46,12 +47,14 @@ Create network interfaces only in CLI. This release doesn't support network inte
 
 ### Storage paths
 
-- Create storage paths only in CLI. This release doesn't support storage path creation in the Azure portal.
-- Don't delete storage paths using CLI or the portal if they're connected to an Azure Local VM or VM image. First, delete the Azure Local VM and image using that storage path.
+- Create storage paths in CLI.
+- Create storage paths in the Azure portal.
+- To delete storage paths from CLI or Portal, first delete any resources (VMs, images, disks) that are on the storage path.
 
 ### Logical networks
 
-- Create logical networks only in CLI; the portal isn't supported.
+- Create logical networks in CLI.
+- Create logical networks in the Azure portal.
 - You can see and use logical networks, but they might not fully load in the portal.
 - Deleting a logical network used by a network interface doesn't fail as expected. It deletes the network and results in a **Failed** state. To recover, recreate the logical network.
 
@@ -59,7 +62,7 @@ Create network interfaces only in CLI. This release doesn't support network inte
 
 Proxy servers aren't supported for outbound internet connections.
 
-### Machine creation
+### VM creation
 
 - Create a VM in the portal by selecting **Azure Arc** > **Machines** > **Add/Create** > **Create a machine in a connected host environment**. For more information, see step 7 under the Create Azure Local VMs section.
 
@@ -75,7 +78,7 @@ Follow these steps to create Azure Local VMs running disconnected operations.
 1. [Review prerequisites](../manage/azure-arc-vm-management-prerequisites.md).
 
     - [Install the Azure CLI](disconnected-operations-cli.md#install-azure-cli) version AzCLI 2.60.0.
-    - Install the Azure Local extension **stack-hci-vm** version v1.3.0.
+    - Install the latest Azure Local extension **stack-hci-vm** version.
     - [Sign into Azure interactively using the Azure CLI](/cli/azure/authenticate-azure-cli-interactively).
 
 2. [Assign role-based access control (RBAC) roles](../manage/assign-vm-rbac-roles.md).
@@ -202,11 +205,11 @@ Follow these steps to create Azure Local VMs running disconnected operations.
 
 To manage Azure Local VMs using CLI, see [Azure Local VMs using the Azure CLI](/azure/azure-local/manage/manage-arc-virtual-machines?view=azloc-24112&tabs=windows&preserve-view=true). To check the status of the VM, see [Status of the VM](../manage/manage-arc-virtual-machines.md#status-displayed-as-connecting).
 
-For Azure Local VM resources:
+<!--For Azure Local VM resources:
 
 - If you remove a data disk interface used by a VM, the command doesn't fail as expected. Instead, it deletes the data disk interface and sets the provisioning state as **Failed**.
 
-- To restore the provisioning state to **Succeeded**, recreate the data disk.
+- To restore the provisioning state to **Succeeded**, recreate the data disk.-->
 
 ## Manage VM extensions
 
