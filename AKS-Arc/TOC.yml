@@ -160,7 +160,7 @@
     - name: Troubleshoot
       href: aks-troubleshoot.md
     - name: Known issues
-      href: aks-known-issues.md
+      href: aks-arc-known-issues.md
     - name: Get support
       items:
       - name: AKS on Azure Local support policy
