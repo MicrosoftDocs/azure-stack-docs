@@ -468,6 +468,7 @@ Before you begin, make sure that you complete the following prerequisites:
 
 ## Next steps
 
+- [Troubleshoot registration issues with Configurator app](../manage/troubleshoot-deployment-configurator-app.md)
 - [Get support for deployment issues](../manage/get-support-for-deployment-issues.md)
 - [Get support for Azure Local](../manage/get-support.md)
 
