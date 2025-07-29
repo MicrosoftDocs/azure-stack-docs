@@ -18,7 +18,7 @@ This article lists critical known issues and their workarounds in disconnected o
 
 These release notes update continuously, and we add critical issues that require a workaround as we find them. Before you deploy disconnected operations with Azure Local, review the information here.
 
-## Known issues for the preview release
+## Known issues in the preview release
 
 ### Azure Local deployment with Azure Keyvault
 
