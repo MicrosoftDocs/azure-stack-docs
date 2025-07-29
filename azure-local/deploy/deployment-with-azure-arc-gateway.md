@@ -15,7 +15,7 @@ zone_pivot_groups: register-arc-options
 
 ::: zone pivot="register-proxy"
 
-This article details how to register Azure Local using Azure Arc gateway and with the proxy configuration enabled. Once you create an Arc gateway resource in your Azure subscription, you can enable the Arc gateway features. 
+This article details how to register Azure Local using Azure Arc gateway and with the proxy configuration enabled. Once you create an Arc gateway resource in your Azure subscription, you can enable the Arc gateway features.
 
 - **Configure proxy with a script**: Using this method, you can configure Arc proxy with a script. This method is useful as you don't need to configure the Arc proxy across WinInet, WinHttp, or environment variables manually.
 
@@ -93,7 +93,7 @@ Once the deployment validation starts, connect to the first Azure Local machine 
     
    - **Agent Status** should show as **Connected**.
     
-   - **Using HTTPS Proxy**  empty when Arc gateway isn't in use. It should show as `http://localhost:40343` when the Arc gateway is enabled.
+   - **Using HTTPS Proxy**  empty when Arc gateway isn't in use. It should show as `http://localhost:40343`<!--Cristian 443--> when the Arc gateway is enabled.
     
    - **Upstream Proxy** shows your enterprise proxy server and port.
     
