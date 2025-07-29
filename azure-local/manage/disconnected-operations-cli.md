@@ -108,8 +108,8 @@ For disconnected operations:
             Write-Verbose "[END] Updating CLI cert store"
         }
 
-    # Run the helper method in PowerShell:
-    UpdatePythonCertStore -ApplianceRootCertPath D:\applianceIngressRoot.cer
+        # Run the helper method in PowerShell:
+        UpdatePythonCertStore -ApplianceRootCertPath D:\applianceIngressRoot.cer
     ```
 
 ## Set up Azure CLI for disconnected operations
