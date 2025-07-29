@@ -51,8 +51,8 @@ Here's a checklist of things you need before you deploy Azure Local with disconn
 - DNS server to resolve IP to FQDN names.
 - Local credentials for Azure Local machines.
 - Active directory credentials for Azure Local deployment.
-- Active directory OU and networking requirements documented [here](../deploy/deployment-prerequisites.md)
-- Local credentials and AD credentials meets minimum password complexity defined [here](../deploy/deployment-prerequisites.md)
+- [Active directory OU and networking requirements](../deploy/deployment-prerequisites.md).
+- [Local credentials and AD credentials to meet minimum password complexity](../deploy/deployment-prerequisites.md).
 - [Active directory prepared for Azure Local deployment](../deploy/deployment-prep-active-directory.md).
 - Certificates to secure ingress endpoints (24 certificates) and the public key (root) used to create these certificates.
 - Certificates to secure the management endpoint (2 certificates).
@@ -564,7 +564,9 @@ In this section, verify the installation and create local Azure resources.
     - You should see a familiar Azure portal running in your network.
 
 ### Register required resource providers
-Make sure you register the required resource providers prior to deployment. Here is an example for how to automate resource provider registration from Azure Cli. 
+
+Make sure you register the required resource providers before deployment. Here's an example of how to automate the resource providers registration from Azure CLI.
+
 ```azurecli  
     az cloud set -n 'azure.local'
     az login  
@@ -574,15 +576,14 @@ Make sure you register the required resource providers prior to deployment. Here
     az provider register --namespace Microsoft.EdgeArtifact
 ```
 
-Wait until all resource providers are in the state registered. Here is an example you can use with Azure CLI to get a list of all resource providers with their status:
+Wait until all resource providers are in the state **Registered**. Here's a sample Azure CLI command to list all resource providers and their statuses.
 
 ```azurecli  
     az provider list -o table
 ``` 
 
 > [!NOTE] 
-> You can also use the local portal to register or view resource providers status by navigating to the subscription and clicking resource providers. 
-
+> You can also register or view resource provider statuses in the local portal. To do this, go to your **Subscription**, click the dropdown arrow for **Settings**, and select **Resource providers**. 
 
 ### Create resource group SPN for cluster  
 
@@ -715,7 +716,7 @@ To initialize each node, follow these steps. Modify where necessary to match you
 
 To enable Azure Local to be air-gapped or deployed fully disconnected, you must do the following on each node:
 
-- Configure the timeserver to use your domain controller, for example. Modify the script and run it from PowerShell:
+- Configure the timeserver to use your domain controller. Modify the script and run it from PowerShell:
 
 ```powershell
 w32tm /config /manualpeerlist:"dc.contoso.com" /syncfromflags:manual /reliable:yes /update
