@@ -436,7 +436,7 @@ Before you begin, make sure that you complete the following prerequisites:
 
    1. Select **ON** to enable **Remote desktop** protocol. Remote desktop protocol is disabled by default.
 
-   1. Select **Public endpoint** as the connectivity method. 
+   1. Select **Public endpoint** as the connectivity method.
 
    1. Select a time zone.
 
@@ -450,7 +450,7 @@ Before you begin, make sure that you complete the following prerequisites:
 
 1. On the **Arc agent setup** tab, provide the following inputs:
 
-   :::image type="content" source="media/deployment-arc-register-configurator-app/arc-agent-setup-tab-1.png" alt-text="Screenshot of the Arc agent setup tab in the Configurator app for Azure Local." lightbox="media/deployment-arc-register-configurator-app/arc-agent-setup-tab-1.png":::
+   :::image type="content" source="media/deployment-arc-register-configurator-app/arc-agent-setup-tab-no-proxy.png" alt-text="Screenshot of the Arc agent setup tab in the Configurator app for Azure Local." lightbox="media/deployment-arc-register-configurator-app/arc-agent-setup-tab-1.png":::
 
    1. The **Cloud type** is populated automatically as `Azure`.
    
