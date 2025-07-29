@@ -37,11 +37,11 @@ To diagnose and troubleshoot any machine issues related to hardware, time server
 
 1. Select **Run tests**. The diagnostic tests check the health of the machine hardware, time server, and the network connectivity. The tests also check the status of the Azure Arc agent.
 
-   :::image type="content" source="media/deployment-arc-register-configurator-app/run-diagnostics-tests-1.png" alt-text="Screenshot that shows the Support and troubleshooting pane with Run diagnostic tests selected."lightbox="media/deployment-arc-register-configurator-app/run-diagnostics-tests-1.png":::
+   :::image type="content" source="media/troubleshoot-deployment-configurator-app/run-diagnostics-tests-1.png" alt-text="Screenshot that shows the Support and troubleshooting pane with Run diagnostic tests selected."lightbox="media/troubleshoot-deployment-configurator-app/run-diagnostics-tests-1.png":::
 
 1. After the tests are completed, the results are displayed. Here's a sample output of the diagnostic tests when there's a machine issue:
 
-   :::image type="content" source="media/deployment-arc-register-configurator-app/run-diagnostics-tests-2.png" alt-text="Screenshot that shows the error output after the diagnostic tests were run."lightbox="media/deployment-arc-register-configurator-app/run-diagnostics-tests-2.png":::
+   :::image type="content" source="media/troubleshoot-deployment-configurator-app/run-diagnostics-tests-2.png" alt-text="Screenshot that shows the error output after the diagnostic tests were run."lightbox="media/troubleshoot-deployment-configurator-app/run-diagnostics-tests-2.png":::
 
 Here's a table that describes the diagnostic tests:
 
@@ -63,7 +63,7 @@ Follow these steps to collect and download a Support package:
 
 1. Select the help icon in the top-right corner of the app to open the **Support + troubleshooting** pane. Select **Create** to begin support package collection. The package collection could take several minutes.
 
-   :::image type="content" source="media/deployment-arc-register-configurator-app/collect-support-package-1.png" alt-text="Screenshot that shows the Support and troubleshooting pane with Create selected." lightbox="media/deployment-arc-register-configurator-app/collect-support-package-1.png":::
+   :::image type="content" source="media/troubleshoot-deployment-configurator-app/collect-support-package-1.png" alt-text="Screenshot that shows the Support and troubleshooting pane with Create selected." lightbox="media/troubleshoot-deployment-configurator-app/collect-support-package-1.png":::
 
 1. After the Support package is created, select **Download**. This action downloads two zipped packages corresponding to Support logs and Configurator logs on your local system. You can unzip the package and view the system log files.
 
@@ -77,18 +77,18 @@ Follow these steps to upload the Support package to Microsoft:
 
 1. Select the help icon in the top-right corner of the app to open the **Support + troubleshooting** pane. Select **Upload** to upload the Support package to Microsoft.
 
-   :::image type="content" source="media/deployment-arc-register-configurator-app/upload-support-package-1.png" alt-text="Screenshot that shows the Support and troubleshooting pane with Upload package selected." lightbox="media/deployment-arc-register-configurator-app/upload-support-package-1.png":::
+   :::image type="content" source="media/troubleshoot-deployment-configurator-app/upload-support-package-1.png" alt-text="Screenshot that shows the Support and troubleshooting pane with Upload package selected." lightbox="media/troubleshoot-deployment-configurator-app/upload-support-package-1.png":::
 
 1. Provide the required information in the **Upload Support package to Microsoft** dialog:
 
-   :::image type="content" source="media/deployment-arc-register-configurator-app/upload-support-package-2.png" alt-text="Screenshot that shows the Upload Support Package dialog filled out." lightbox="media/deployment-arc-register-configurator-app/upload-support-package-2.png":::
+   :::image type="content" source="media/troubleshoot-deployment-configurator-app/upload-support-package-2.png" alt-text="Screenshot that shows the Upload Support Package dialog filled out." lightbox="media/troubleshoot-deployment-configurator-app/upload-support-package-2.png":::
 
     The fields in the dialog are prepopulated with the information you provided during [Step 1: Configure the network and connect to Azure](#step-1-configure-the-network-and-connect-to-azure). You can modify the fields as needed.
 
 1. Select **Begin upload** to upload the Support log package.
 1. Authenticate in the browser with the same account that you used to sign in to register with Azure Arc. The upload process might take several minutes. Leave the app open and running until the upload is complete.
 
-   :::image type="content" source="media/deployment-arc-register-configurator-app/upload-support-package-3.png" alt-text="Screenshot that shows the Support and troubleshooting pane with Upload selected and authentication guidance." lightbox="media/deployment-arc-register-configurator-app/upload-support-package-3.png":::
+   :::image type="content" source="media/troubleshoot-deployment-configurator-app/upload-support-package-3.png" alt-text="Screenshot that shows the Support and troubleshooting pane with Upload selected and authentication guidance." lightbox="media/troubleshoot-deployment-configurator-app/upload-support-package-3.png":::
 
 1. After the upload is complete, you receive a confirmation message. You can also view the upload status in the app.
 
