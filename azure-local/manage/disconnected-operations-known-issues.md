@@ -16,13 +16,13 @@ ms.reviewer: hafianba
 
 This article lists critical known issues and their workarounds in disconnected operations for Azure Local.
 
-These release notes update continuously, and we add critical issues that require a workaround as we find them. Before you deploy disconnected operations with Azure Local, review the information here.
+These release notes update continuously, and we add critical issues that need a workaround as we find them. Before you deploy disconnected operations with Azure Local, review the information here.
 
 ## Known issues in the preview release
 
 ### Azure Local deployment with Azure Keyvault
 
-Role-Based Access Control (RBAC) permissions on a newly created Azure Key Vault take up to 20 minutes to propagate. If you create the Azure Key Vault in the local portal and try to finish the cloud deployment, you might encounter permission issues when validating the cluster before deployment.
+Role-Based Access Control (RBAC) permissions on a newly created Azure Key Vault can take up to 20 minutes to propagate. If you create the Azure Key Vault in the local portal and try to finish the cloud deployment, you might run into permission issues when validating the cluster before deployment.
 
 **Mitigation**: Wait 20 minutes after you create the Azure Key Vault to finish deploying the cluster, or create the key vault ahead of time. Assign the managed identity for each node, the key vault admin, and the user deploying to the cloud explicit roles on the key vault: **Key Vault Secrets Officer** and **Key Vault Data Access Administrator**.
 
@@ -33,8 +33,8 @@ param($resourceGroupName = "aldo-disconnected", $keyVaultName = "aldo-kv", $subs
 
 $location = "autonomous"
 
-Write-Verbose "Login interactive with user that will do cloud deployment"
-# Login to Azure CLI (use the user you will run the portal deployment flow)"
+Write-Verbose "Sign in interactive with the user who does cloud deployment"
+# Sign in to Azure CLI (se the user you run the portal deployment flow with)"
 az login 
 az account set --subscription $subscriptionName
 $accountInfo = (az account show)|convertfrom-json
@@ -45,13 +45,13 @@ $rg = (az group create --name $resourceGroupName --location $location)|Convertfr
 $kv = (az keyvault create --name $keyVaultName --resource-group $resourceGroupName --location $location --enable-rbac-authorization $true)|Convertfrom-json
 
 Write-Verbose "Assigning permissions to $($accountInfo.user.name) on the Key Vault"
-# Assign the secrets officer role to the resource group (could use KV explicit).
+# Assign the secrets officer role to the resource group (you can use KV explicit).
 az role assignment create --assignee $accountInfo.user.name --role "Key Vault Secrets Officer" --scope $kv.Id
 az role assignment create --assignee $accountInfo.user.name --role "Key Vault Data Access Administrator" --scope $kv.Id
 
 $machines = (az connectedmachine list -g $resourceGroupName)|ConvertFrom-Json
 
-# For now only supporting minimum 3 machines for ALDO
+# For now, only support a minimum of 3 machines for Azure Local disconnected operations
 if($machines.Count -lt 3){
     Write-Error "No machines found in the resource group $resourceGroupName. Please check the resource group and try again. Please use the same resource group as where your Azure Local nodes are"
     return 1
