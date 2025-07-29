@@ -145,7 +145,7 @@ After updating to a newer version of Kubernetes, you might encounter a stuck not
 
 #### Activity log shows authentication issue
 
-Ignore the portal warning for this release.
+Ignore the portal warning in this release.
 
 #### Microsoft Entra authentication with Kubernetes RBAC fails
 
