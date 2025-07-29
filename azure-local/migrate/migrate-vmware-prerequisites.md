@@ -1,19 +1,17 @@
 --- 
-title: Prerequisites for VMware VM migration to Azure Local using Azure Migrate (preview)
-description: Learn prerequisites for VMware migration to Azure Local using Azure Migrate (preview).
+title: Prerequisites for VMware VM migration to Azure Local using Azure Migrate
+description: Learn prerequisites for VMware migration to Azure Local using Azure Migrate.
 author: alkohli
 ms.topic: how-to
 ms.date: 05/14/2025
 ms.author: alkohli
 ---
 
-# Prerequisites for VMware migration to Azure Local using Azure Migrate (preview)
+# Prerequisites for VMware migration to Azure Local using Azure Migrate
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
 This article describes the prerequisite tasks you need to complete before you begin the process to migrate VMware virtual machines (VMs) to Azure Local. Make sure to [review the requirements](migrate-vmware-requirements.md) for migration if you haven't already.
-
-[!INCLUDE [important](../includes/hci-preview.md)]
 
 ## Prerequisites
 

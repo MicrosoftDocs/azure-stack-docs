@@ -1,19 +1,17 @@
 --- 
-title: Discover and replicate VMware VMs for migration to Azure Local using Azure Migrate (preview) 
-description: Learn the discovery and replication process for VMware VMs to Azure Local using Azure Migrate (preview).
+title: Discover and replicate VMware VMs for migration to Azure Local using Azure Migrate 
+description: Learn the discovery and replication process for VMware VMs to Azure Local using Azure Migrate.
 author: alkohli
 ms.topic: how-to
 ms.date: 05/15/2025
 ms.author: alkohli
 ---
 
-# Discover and replicate VMware VMs for migration to Azure Local using Azure Migrate (preview)
+# Discover and replicate VMware VMs for migration to Azure Local using Azure Migrate
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
 This article describes the discovery and replication phase for VMware virtual machine (VM) migration to Azure Local using Azure Migrate.
-
-[!INCLUDE [important](../includes/hci-preview.md)]
 
 For more information on appliances for Azure Migrate and how to manage them, see [Azure Migrate appliance](/azure/migrate/migrate-appliance).
 
