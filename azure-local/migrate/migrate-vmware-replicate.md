@@ -340,11 +340,11 @@ This step applies to using a .zip file.
 
     1. Select a resource group to associate with your migrated VMs. This resource group can be different than the resource group associated with your storage account.
    
-	1. Select the logical network that you created as a [prerequisite](./migrate-vmware-prerequisites.md#prerequisites-for-vmware-migration-to-azure-local-using-azure-migrate-preview). The VMs are connected to this network. 
+	1. Select the logical network that you created as a [prerequisite](./migrate-vmware-prerequisites.md#prerequisites-for-vmware-migration-to-azure-local-using-azure-migrate). The VMs are connected to this network. 
 
         If you don't see a logical network in the dropdown list, [Create a logical network](../manage/create-logical-networks.md) and select **Reload logical network**.
 
-	1. Select the storage path that you created as a [prerequisite](./migrate-vmware-prerequisites.md#prerequisites-for-vmware-migration-to-azure-local-using-azure-migrate-preview). The VMs are created at this storage path.
+	1. Select the storage path that you created as a [prerequisite](./migrate-vmware-prerequisites.md#prerequisites-for-vmware-migration-to-azure-local-using-azure-migrate). The VMs are created at this storage path.
 
         If you don't see a storage path in the dropdown list, [Create a storage path](../manage/create-storage-path.md) and select **Reload storage path**.
 
