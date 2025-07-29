@@ -83,7 +83,7 @@ Follow these steps to upload the Support package to Microsoft:
 
    :::image type="content" source="media/troubleshoot-deployment-configurator-app/upload-support-package-2.png" alt-text="Screenshot that shows the Upload Support Package dialog filled out." lightbox="media/troubleshoot-deployment-configurator-app/upload-support-package-2.png":::
 
-    The fields in the dialog are prepopulated with the information you provided during [Step 1: Configure the network and connect to Azure](#step-1-configure-the-network-and-connect-to-azure). You can modify the fields as needed.
+    The fields in the dialog are prepopulated with the information you provided during [Step 1: Configure the network and connect to Azure](../deploy/deployment-without-azure-arc-gateway.md#basics-tab). You can modify the fields as needed.
 
 1. Select **Begin upload** to upload the Support log package.
 1. Authenticate in the browser with the same account that you used to sign in to register with Azure Arc. The upload process might take several minutes. Leave the app open and running until the upload is complete.
