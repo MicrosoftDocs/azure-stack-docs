@@ -38,8 +38,6 @@ Azure Local VMs running disconnected operations have the following limitations:
 
 - Marketplace, Azure storage account, and images from an existing Azure Local VM aren't supported.
 - Create VM images from a local share.
-- Create VM images using Azure Command Line (CLI).
-- Create image in the Azure portal.
 
 ### Network interfaces
 
@@ -47,14 +45,10 @@ Create network interfaces only in CLI. This release doesn't support network inte
 
 ### Storage paths
 
-- Create storage paths in CLI.
-- Create storage paths in the Azure portal.
-- To delete storage paths from CLI or Portal, first delete any resources (VMs, images, disks) that are on the storage path.
+To delete storage paths from CLI or Portal, first delete any resources (VMs, images, disks) that are on the storage path.
 
 ### Logical networks
 
-- Create logical networks in CLI.
-- Create logical networks in the Azure portal.
 - You can see and use logical networks, but they might not fully load in the portal.
 - Deleting a logical network used by a network interface doesn't fail as expected. It deletes the network and results in a **Failed** state. To recover, recreate the logical network.
 
