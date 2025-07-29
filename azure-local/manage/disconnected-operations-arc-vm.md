@@ -37,7 +37,7 @@ Azure Local VMs running disconnected operations have the following limitations:
 ### VM images
 
 - Marketplace, Azure storage account, and images from an existing Azure Local VM aren't supported.
-- Create VM images from a local share.
+- Create VM images only from a local share.
 
 ### Network interfaces
 
