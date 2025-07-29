@@ -155,10 +155,12 @@
             href: get-on-demand-logs.md
           - name: Monitoring data reference
             href: kubernetes-monitor-metrics.md
-  - name: Troubleshooting
+  - name: Troubleshooting and known issues
     items:
-    - name: Troubleshoot and known issues
+    - name: Troubleshoot
       href: aks-troubleshoot.md
+    - name: Known issues
+      href: aks-known-issues.md
     - name: Get support
       items:
       - name: AKS on Azure Local support policy
