@@ -342,7 +342,7 @@ Trigger log collection for your disconnected environment with the `Invoke-Applia
       
     Mode                LastWriteTime         Length Name  
     ----                -------------         ------ ----  
-    d----               4/10/2025  3:05 PM           LO_06ec98de-c1c4-406f-a5a9-89f2b803c70f_IRVM01  
+    ----                4/10/2025  3:05 PM           LO_06ec98de-c1c4-406f-a5a9-89f2b803c70f_IRVM01  
     ```
 
 1. Send diagnostic data to Microsoft.

@@ -173,9 +173,9 @@ To prepare the first machine for the disconnected operations appliance, follow t
 1. Modify your path to correct location. 
 
     If you initialized a data disk or are using a different path than C: modify the `$applianceConfigBasePath`.
-    
+
     Here's an example:
-    
+
     ```powershell
     $applianceConfigBasePath = 'D:\AzureLocalDisconnectedOperations\'
     ```
@@ -711,7 +711,7 @@ To initialize each node, follow these steps. Modify where necessary to match you
     > Nodes appear in the local portal shortly after you run the steps, and the extensions appear on the nodes a few minutes after installation.  
     >
     > You can also use the [Configurator App](../deploy/deployment-arc-register-configurator-app.md?view=azloc-2506&preserve-view=true) to initialize each node.
-    
+
 ### For fully air-gapped or disconnected deployments (where nodes have no line of sight to internet connection)
 
 To enable Azure Local to be air-gapped or deployed fully disconnected, you must do the following on each node:
@@ -757,7 +757,7 @@ Follow these steps to create an Azure Local instance (cluster):
 
   > [!NOTE]
   > If you create Azure Key Vault during deployment, wait about 20 minutes for RBAC permissions to take effect.
-  > 
+  >
   > If you see a validation error, it’s a known issue. Permissions might still be propagating. Wait a bit, refresh your browser, and redeploy the cluster.
 
 ## Tasks after deploying disconnected operations

@@ -71,7 +71,7 @@ You can use Azure Policy to enforce tags on various resources. In this example, 
     :::image type="content" source="media/disconnected-operations/azure-policy/tag-name.png" alt-text="Screenshot of the parameters page to set a tag name." lightbox="media/disconnected-operations/azure-policy/tag-name.png":::
 
     After the policy is created, you can't create resource groups without the required tag.
-    
+
     :::image type="content" source="media/disconnected-operations/azure-policy/created-tag.png" alt-text="Screenshot of the tag created and required for resource groups." lightbox="media/disconnected-operations/azure-policy/created-tag.png":::
 
 ## Supported built-in policies

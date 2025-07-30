@@ -118,6 +118,7 @@ Add-DnsServerPrimaryZone -Name $ExternalFqdn -ReplicationScope Domain
 
 Add-DnsServerResourceRecordA -Name "*" -IPv4Address $IngressIpAddress -ZoneName $ExternalFqdn 
 ```
+
 #### Verify your DNS setup
 
 Here's an example:

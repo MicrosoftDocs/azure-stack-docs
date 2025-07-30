@@ -348,8 +348,7 @@ $GroupEntry.CommitChanges()
 ```
 
 > [!NOTE]
-> If the GSMA account for your ADFS farm can't read user properties the sign-in fails. This occurs even if the username and password are correct on the ADFS sign-in page.
-
+> If the GSMA account for your ADFS farm can't read user properties, the sign in fails even if the credentials entered on the ADFS sign in page are correct.
 
 ::: moniker-end
 

@@ -39,7 +39,7 @@ Mandatory certificates are grouped by area with the appropriate subject alternat
   - Make sure your disconnected operations infrastructure can reach the CRL endpoint specified in the certificates' CRL distribution point (CDP) extension.
   - Don't use a public or external CA. Deployments fail if certificates come from a public CA, because internet connectivity is required to access the CRL and online certificate status protocol (OCSP) services for HTTPS.  
 
-### Ingress endpoints
+### Ingress endpoint certificate requirements
 
 This table lists the mandatory certificates required for disconnected operations on Azure Local.
 
@@ -51,7 +51,7 @@ This table lists the mandatory certificates required for disconnected operations
 | Azure Table storage | *.table.fqdn |
 | Azure Blob storage | *.blob.fqdn |
 | Azure Data Policy | data.policy.fqdn |
-| Arc configuration data plane <br/>Azure Arc-enabled Kubernetes | autonomous.dp.kubernetesconfiguration.fqdn |
+| Arc configuration data plane <br/br> Azure Arc-enabled Kubernetes | autonomous.dp.kubernetesconfiguration.fqdn |
 | Arc for Server Agent data service | agentserviceapi.fqdn |
 | Arc for server | his.fqdn |
 | Arc guest notification service | guestnotificationservice.fqdn |
@@ -65,7 +65,6 @@ This table lists the mandatory certificates required for disconnected operations
 | Licensing | dp.aszrp.fqdn <br></br> ibc.fqdn |
 | Public portal     | portal.fqdn <br></br> hosting.fqdn <br></br> portalcontroller.fqdn <br></br> catalogapi.fqdn |
 | Secure token service | login.fqdn |
-
 
 ### Management endpoints
 
@@ -204,7 +203,7 @@ $AzLCerts = @(
       $cert | Export-PfxCertificate -FilePath "$extCertFilePath\$filePrefix.pfx" -Password $certPassword -Force
       Write-Verbose "Certificate for $certSubject and private key exported to $extCertFilePath" -Verbose
   }
-  ``` 
+  ```
 
 - Copy the original certificates (24 .pfx files / *.pfx) obtained from your CA to the directory structure represented in IngressEndpointCerts.
 
@@ -287,7 +286,7 @@ _continue_ = "DNS=$subject"
 
 ```
 
-- Copy the management certificates (*.pfx) to the directory structure represented in ManagementEndpointCerts.
+Copy the management certificates (*.pfx) to the directory structure represented in ManagementEndpointCerts.
 
 ## Export Root CA certificate
 
@@ -303,14 +302,47 @@ For more information, see [Active Directory Certificate Services](/troubleshoot/
 
 To secure your identity integration, we recommend that you pass these two parameters:
 
-- LdapsCertChainInfo 
-- OidcCertChainInfo 
+- LdapsCertChainInfo
+- OidcCertChainInfo
 
 These checks confirm that the certificates and chain for these endpoints haven’t been changed or tampered with.
 
 You have a helper method in the **OperationsModule** that can help you populate these parameters.
 
 Here's an example on how to populate the required parameters:
+
+```powershell
+$oidcCertChain = Get-CertChainInfo -endpoint 'https://adfs.azurestack.local'
+$ldapsCertChain = Get-CertChainInfo -endpoint 'https://dc01.azurestack.local'
+```
+
+Here's an example of the output from Get-CertChainInfo
+
+```powershell
+# Returns: System.Security.Cryptography.X509Certificates.X509Certificate2[]
+>> Get-CertChainInfo
+>>
+Thumbprint                                Subject
+----------                                -------
+TESTING580E20618EA15357FC1028622518DDC4D  CN=www.website.com, O=Contoso Corporation, L=Redmond, S=WA, C=US
+TESTINGDAA2345B48E507320B695D386080E5B25  CN=www.website.com, O=Contoso Corporation, L=Redmond, S=WA, C=US
+TESTING9BFD666761B268073FE06D1CC8D4F82A4  CN=www.website.com, O=Contoso Corporation, L=Redmond, S=WA, C=US
+```
+
+## Related content
+
+- [Plan hardware for Azure local with disconnected operations](disconnected-operations-overview.md#preview-participation-criteria)
+- [Plan and understand identity](disconnected-operations-identity.md)
+- [Plan and understand networking](disconnected-operations-network.md)
+- [Set up disconnected operations](disconnected-operations-set-up.md)
+
+::: moniker-end
+
+::: moniker range="<=azloc-2505"
+
+This feature is available only in Azure Local 2506
+
+::: moniker-end
 
 ```powershell
 $oidcCertChain = Get-CertChainInfo -endpoint 'https://adfs.azurestack.local'
