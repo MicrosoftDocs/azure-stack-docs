@@ -50,7 +50,6 @@ To delete storage paths from CLI or Portal, first delete any resources (VMs, ima
 ### Logical networks
 
 - You can see and use logical networks, but they might not fully load in the portal.
-- Deleting a logical network used by a network interface doesn't fail as expected. It deletes the network and results in a **Failed** state. To recover, recreate the logical network.
 
 ### Proxy servers
 
@@ -62,9 +61,6 @@ Proxy servers aren't supported for outbound internet connections.
 
     :::image type="content" source="./media/disconnected-operations/arc-vms/create-arc-vms.png" alt-text="Screenshot showing how create an Azure Local VM from the portal." lightbox=" ./media/disconnected-operations/arc-vms/create-arc-vms.png":::
 
-    > [!NOTE]
-    > Don't use the **Create** button in the Virtual Machines section of the Azure Local resource on the portal to create a machine.
-
 ## Create Azure Local VMs with disconnected operations
 
 Follow these steps to create Azure Local VMs running disconnected operations.
@@ -72,7 +68,7 @@ Follow these steps to create Azure Local VMs running disconnected operations.
 1. [Review prerequisites](../manage/azure-arc-vm-management-prerequisites.md).
 
     - [Install the Azure CLI](disconnected-operations-cli.md#install-azure-cli) version AzCLI 2.60.0.
-    - Install the latest Azure Local extension **stack-hci-vm** version.
+    - [Install the latest Azure Local extension **stack-hci-vm** version](disconnected-operations-cli.md#extensions-for-azure-cli).
     - [Sign into Azure interactively using the Azure CLI](/cli/azure/authenticate-azure-cli-interactively).
 
 2. [Assign role-based access control (RBAC) roles](../manage/assign-vm-rbac-roles.md).
