@@ -3,7 +3,7 @@ title: Register your Azure Local machines with Azure Arc and assign permissions 
 description: Learn how to register your Azure Local machines with Azure Arc and assign permissions for deployment. 
 author: alkohli
 ms.topic: how-to
-ms.date: 06/09/2025
+ms.date: 07/30/2025
 ms.author: alkohli
 ms.service: azure-local
 ms.custom: devx-track-azurepowershell
@@ -192,7 +192,11 @@ This section describes how to assign Azure permissions for deployment from the A
     :::image type="content" source="media/deployment-arc-register-server-permissions/cloud-application-administrator-role-at-tenant.png" alt-text="Screenshot of the Cloud Application Administrator permission at the tenant level." lightbox="./media/deployment-arc-register-server-permissions/cloud-application-administrator-role-at-tenant.png":::
 
     > [!NOTE]
-    > The Cloud Application Administrator permission is temporarily needed to create the service principal. After deployment, this permission can be removed. 
+    > The Cloud Application Administrator permission is temporarily needed to create the service principal. After deployment, this permission can be removed.
+
+## Troubleshooting
+
+When registering a new Azure Local machine with Arc, you might encounter error code 42. For details on the potential causes and resolution steps, see the [Troubleshooting guide](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/ArcRegistration/TSG-Arc-registration-failing-with-error-42.md).
 
 ## Next steps
 
