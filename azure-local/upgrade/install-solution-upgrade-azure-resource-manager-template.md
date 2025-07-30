@@ -3,7 +3,7 @@ title: Install solution upgrade on Azure Local using Azure Resource Manager temp
 description: Learn how to install the solution upgrade on your Azure Local instance using Azure Resource Manager template.
 author: alkohli
 ms.topic: how-to
-ms.date: 07/23/2025
+ms.date: 07/30/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -19,15 +19,14 @@ ms.service: azure-local
 This article describes how to install the solution upgrade on your Azure Local instance using Azure Resource Manager (ARM) template, after upgrading the operating system (OS) build from 20349.xxxx (22H2) to 25398.xxxx (23H2).
 
 > [!IMPORTANT]
-> While the OS upgrade is generally available, the solution upgrade is rolled out in phases. Additionally, the solution upgrade isn't available to customers in Azure China.
-
-To install the solution upgrade via the Azure portal, see [Install solution upgrade on Azure Local](./install-solution-upgrade.md).
+> - While the OS upgrade is generally available, the solution upgrade is rolled out in phases. Additionally, the solution upgrade isn't available to customers in Azure China.
+> - Installing solution upgrade using ARM template is targeted for at-scale upgrades. This method is intended for IT administrators who have experience managing Azure Local instances. We recommend that you upgrade a system via the Azure portal first, and then use ARM template for subsequent upgrades. To install the solution upgrade via the Azure portal, see [Install solution upgrade on Azure Local](./install-solution-upgrade.md).
 
 ## Prerequisites
 
 Before you install the solution upgrade, make sure that you:
 
-<!--Confirm if this validate step is required. - Validate the system using the Environment Checker as per the instructions in [Assess solution upgrade readiness](./validate-solution-upgrade-readiness.md#run-the-validation).-->
+- Validate the system using the Environment Checker as per the instructions in [Assess solution upgrade readiness](./validate-solution-upgrade-readiness.md#run-the-validation).
 - Have failover cluster name between 3 to 15 characters.
 - Create an Active Directory Lifecycle Manager (LCM) user account that's a member of the local Administrator group. For instructions, see [Prepare Active Directory for Azure Local deployment](../deploy/deployment-prep-active-directory.md).
 - Have IPv4 network range that matches your host IP address subnet with six, contiguous IP addresses available for new Azure Arc services. Work with your network administrator to ensure that the IP addresses aren't in use and meet the outbound connectivity requirement.
@@ -52,7 +51,7 @@ Before you install the solution upgrade, make sure that you:
 There are a few things to consider before you begin the solution upgrade process:
 
 - The solution upgrade isn't yet supported on OS version 26100.xxxx.
-<!--Confirm if this point is valid for ARM upgrade-- Microsoft only supports upgrade applied from Azure Local resource page. Use of third party tools to install upgrades isn't supported.-->
+- Microsoft supports upgrade applied from Azure Local resource page or by using an ARM template. Use of third-party tools to install upgrades isn't supported.
 - We recommend you perform the solution upgrade during a maintenance window. After the upgrade, host machine might reboot and the workloads will be live migrated, causing brief disconnections.
 <!--Confirm if this point is valid for ARM upgrade- If you have Azure Kubernetes Service (AKS) workloads on Azure Local, wait for the solution upgrade banner to appear on the Azure Local resource page. Then, remove AKS and all AKS hybrid settings before you apply the solution upgrade.-->
 - By installing the solution upgrade, existing unmanaged VMs won't automatically become Azure Arc VMs. For more information about VMs on Azure Local, see [Types of VMs on Azure Local](../concepts/compare-vm-management-capabilities.md#types-of-vms-on-azure-local).
@@ -242,6 +241,7 @@ The following table describes the parameters that you define in the ARM template
 |--|--|
 | deploymentMode | Determines if the upgrade process should only validate or proceed with full upgrade:<br/>- **Validate**: Validates your system's readiness to upgrade.<br/>- **Deploy**: Performs the actual upgrade after successful validation. |
 | keyVaultName | Name of the Azure Key Vault to be used for storing secrets.<br/>For naming conventions, see [Microsoft.KeyVault](/azure/azure-resource-manager/management/resource-name-rules#microsoftkeyvault) in the Naming rules and restrictions for Azure resources article. |
+| createNewKeyVault | Specifies whether the template should create a new Key Vault or use an existing one. Set this value as false if you are reusing an existing Key Vault. |
 | softDeleteRetentionDays | Number of days that deleted items (such as secrets, keys, or certificates) are retained in an Azure Key Vault before they are permanently deleted.<br/>Specify a value between 7 and 90 days. You can’t change the retention period later. |
 | diagnosticStorageAccountName | Name of the Azure Storage Account used to store key vault audit logs. This account is a locally redundant storage (LRS) account with a lock. <br/>For more information, see [Azure Storage Account](/azure/storage/common/storage-account-create?tabs=azure-portal). For naming conventions, see [Azure Storage account names](/azure/storage/common/storage-account-overview#storage-account-name).|
 | logsRetentionInDays | Number of days that logs are retained. <br/> If you don't want to apply any retention policy and retain data forever, specify 0. |
