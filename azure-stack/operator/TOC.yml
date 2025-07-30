@@ -18,14 +18,16 @@
         items:
         - name: 2501
           items:
+          - name: Hotfix 1.2501.1.49
+            href: hotfix-1-2501-1-49.md
           - name: Hotfix 1.2501.1.47
             href: hotfix-1-2501-1-47.md
           - name: Hotfix 1.2501.1.40
             href: hotfix-1-2501-1-40.md
         - name: 2408
           items:
-          - name: Hotfix 1.2408.1.49
-            href: hotfix-1-2408-1-49.md
+          - name: Hotfix 1.2408.1.50
+            href: hotfix-1-2408-1-50.md
           - name: Hotfix 1.2408.1.46
             href: hotfix-1-2408-1-46.md
           - name: Hotfix 1.2408.1.44
