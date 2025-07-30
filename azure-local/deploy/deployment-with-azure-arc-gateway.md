@@ -27,7 +27,7 @@ This article details how to register Azure Local using Azure Arc gateway and wit
 
 Make sure the following prerequisites are met before you proceed:
 
-- You've access to an Azure Local instance running release 2505 or later. Prior versions do not support this scenario.
+- You have access to an Azure Local instance running release 2505 or later. Prior versions don't support this scenario.
 
 - An Arc gateway resource created in the same subscription as used to deploy Azure Local. For more information, see [Create the Arc gateway resource in Azure](deployment-azure-arc-gateway-overview.md#create-the-arc-gateway-resource-in-azure).
 
@@ -37,7 +37,7 @@ You need the proxy and the Arc gateway ID from Azure to run the registration scr
 
 ## Step 2: Register new Azure Local machines with Arc
 
-To register Azure Local machines in Azure Arc, run the initialization script by passing the `ArcGatewayID`, `Proxy server`, and `Proxy bypass list` parameters. During the bootstrap configuration, you are required to authenticate with your credentials using the device code.
+To register Azure Local machines in Azure Arc, run the initialization script by passing the `ArcGatewayID`, `Proxy server`, and `Proxy bypass list` parameters. During the bootstrap configuration, you're required to authenticate with your credentials using the device code.
 
 Here's an example of how you should change these parameters for the `Invoke-AzStackHciArcInitialization` initialization script. Once the registration is complete, the Azure Local machines are registered in Azure Arc using the Arc gateway:
 
@@ -81,7 +81,7 @@ Once the deployment validation starts, connect to the first Azure Local machine 
 
     :::image type="content" source="./media/deployment-connect-nodes-to-arc-gateway/arc-gateway-log.png" alt-text="Screenshot that shows the Arc gateway log using script." lightbox="./media/deployment-connect-nodes-to-arc-gateway/arc-gateway-log.png":::
 
-2. To check the Arc agent configuration and verify that it is using the gateway, run the following command:
+2. To check the Arc agent configuration and verify that it's using the gateway, run the following command:
 
    ```
    C:\program files\AzureConnectedMachineAgent>.\azcmagent show
@@ -89,7 +89,7 @@ Once the deployment validation starts, connect to the first Azure Local machine 
 
    The values displayed should be as follows:
     
-   - **Agent version** is **1.45** or above.
+   - **Agent version** is **1.45** or later.
     
    - **Agent Status** should show as **Connected**.
     
@@ -182,7 +182,7 @@ Before you begin, make sure to complete the following prerequisites:
 
    :::image type="content" source="media/deployment-arc-register-configurator-app/basics-tab-1.png" alt-text="Screenshot of the Basics tab in the Configurator app for Azure Local." lightbox="media/deployment-arc-register-configurator-app/basics-tab-2.png":::
 
-1. Provide the interface name, IP allocation as static or DHCP, IP address, subnet, gateway, and preferred DNS servers. Optionally, enter an alternate DNS server.
+1. Provide the interface name, IP allocation as static or Dynamic Host Configuration Protocol (DHCP), IP address, subnet, gateway, and preferred DNS servers. Optionally, enter an alternate DNS server.
 
    :::image type="content" source="media/deployment-arc-register-configurator-app/basics-tab-2.png" alt-text="Screenshot of the Basics tab with Network settings configured in the Configurator app for Azure Local." lightbox="media/deployment-arc-register-configurator-app/basics-tab-1.png":::
 
@@ -201,13 +201,13 @@ Before you begin, make sure to complete the following prerequisites:
    
       When defining your proxy bypass string, make sure you meet the following conditions:
 
-      - At least the IP address of each Azure Local machine.
-      - At least the IP address of the Azure Local system.
-      - At least the IPs you defined for your infrastructure network. Arc resource bridge, Azure Kubernetes Service (AKS), and future infrastructure services using these IPs require outbound connectivity.
+      - Include at least the IP address of each Azure Local machine.
+      - Include at least the IP address of the Azure Local cluster.
+      - Include at least the IPs you defined for your infrastructure network. Arc resource bridge, Azure Kubernetes Service (AKS), and future infrastructure services using these IPs require outbound connectivity.
       - Or you can bypass the entire infrastructure subnet.
-      - NetBIOS name of each machine.
-      - NetBIOS name of the Azure Local system.
-      - Domain name or domain name with asterisk * wildcard at the beginning to include any host or subdomain.  For example, `192.168.1.*` for subnets or `*.contoso.com` for domain names.
+      - Provide the NetBIOS name of each machine.
+      - Provide the NetBIOS name of the Azure Local cluster.
+      - Domain name or domain name with asterisk * wildcard at the beginning to include any host or subdomain. For example, `192.168.1.*` for subnets or `*.contoso.com` for domain names.
       - Parameters must be separated with a comma `,`.
       - Classless Inter-Domain Routing (CIDR) notation to bypass subnets isn't supported.
       - The use of \<local\> strings isn't supported in the proxy bypass list.
@@ -284,7 +284,7 @@ This article details how to register using Azure Arc gateway on Azure Local with
 
 Make sure the following prerequisites are met before proceeding:
 
-- You've access to an Azure Local instance running release 2505 or later. Prior versions do not support this scenario.
+- You have access to an Azure Local instance running release 2505 or later. Prior versions don't support this scenario.
 
 - An Arc gateway resource created in the same subscription as used to deploy Azure Local. For more information, see [Create the Arc gateway resource in Azure](deployment-azure-arc-gateway-overview.md#create-the-arc-gateway-resource-in-azure).
 
@@ -315,7 +315,7 @@ Invoke-AzStackHciArcInitialization -SubscriptionID $Subscription -ResourceGroup 
 
 ## Step 3: Start Azure Local cloud deployment
 
-Once the Azure Local machines are registered in Azure Arc and all the extensions are installed, you can start deployment from Azure portal or using the ARM templates that are documented in these articles:
+Once the Azure Local machines are registered in Azure Arc and all the extensions are installed, start the deployment from Azure portal or using the ARM templates that are documented in these articles:
 
 - [Deploy an Azure Local instance using the Azure portal](deploy-via-portal.md).
 
@@ -330,7 +330,7 @@ Once the deployment validation starts, connect to the first Azure Local machine 
 
     :::image type="content" source="./media/deployment-connect-nodes-to-arc-gateway/arc-gateway-log.png" alt-text="Screenshot that shows the Arc gateway log using script." lightbox="./media/deployment-connect-nodes-to-arc-gateway/arc-gateway-log.png":::
 
-2. To check the Arc agent configuration and verify that it is using the gateway, run the following command:
+2. To check the Arc agent configuration and verify that it's using the gateway, run the following command:
 
    ```
    C:\program files\AzureConnectedMachineAgent>.\azcmagent show
@@ -338,7 +338,7 @@ Once the deployment validation starts, connect to the first Azure Local machine 
 
    The values displayed should be as follows:
     
-   - **Agent version** is **1.45** or above.
+   - **Agent version** is **1.45** or later.
     
    - **Agent Status** should show as **Connected**.
     
