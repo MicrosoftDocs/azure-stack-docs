@@ -428,7 +428,7 @@ This is a display issue only and doesn't affect the actual functionality or size
 
 **Recommended resolution**
 
-To correct the display issue in Azure portal and reflect the true data disk size, follow the steps at [Expand a data disk](/manage/manage-arc-virtual-machine-resources.md?&tabs=azurecli#expand-a-data-disk) to reapply the same size as the current data disk (no actual size increase is required).
+To correct the display issue in Azure portal and reflect the true data disk size, follow the steps at [Expand a data disk](/manage/manage-arc-virtual-machine-resources?&tabs=azurecli#expand-a-data-disk) to reapply the same size as the current data disk (no actual size increase is required).
 
 This triggers a portal refresh and updates the UX to reflect the correct data disk size.
 
