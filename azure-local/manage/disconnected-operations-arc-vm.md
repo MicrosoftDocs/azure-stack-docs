@@ -209,6 +209,8 @@ To manage VM extensions, see [Manage VM extensions](../manage/virtual-machine-ma
 
 ## Related content
 
+- [Manage Azure Local VMs enabled by Azure Arc](../manage/manage-arc-virtual-machines.md)
+
 - [Collect log files for Azure Local VMs](../manage/collect-log-files-arc-enabled-vms.md)
 
 - [Troubleshoot Azure Local VM management](../manage/troubleshoot-arc-enabled-vms.md)
