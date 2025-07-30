@@ -79,7 +79,7 @@ Write-Verbose "Wait 30 min before running cloud deployment from portal"
 
 #### Azure Resource Graph add or edit tags error
 
-After you start, restart, or stop the Azure Local VM, the power action button is disabled and the status isn't reflected properly.
+After you start, restart, or stop the Azure Local VM, the power action buttons are disabled and the status isn't reflected properly.
 
 **Mitigation**: Use Azure Command-Line Interface (CLI) to add or edit tags for the resource.
 
