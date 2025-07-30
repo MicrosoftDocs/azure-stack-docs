@@ -4,7 +4,7 @@ title: Cluster performance history
 ms.author: alkohli
 ms.topic: how-to
 author: alkohli
-ms.date: 01/16/2025
+ms.date: 07/30/2025
 ---
 
 # Get cluster performance history
@@ -12,6 +12,8 @@ ms.date: 01/16/2025
 > Applies to: Azure Local 2311.2 and later; Windows Server 2022, Windows Server 2019
 
 The Health Service reduces the work required to get live performance and capacity information from your Storage Spaces Direct cluster. One cmdlet provides a curated list of essential metrics, which are collected efficiently and aggregated dynamically across nodes, with built-in logic to detect cluster membership. All values are real-time and point-in-time only.
+
+For additional information, see [Performance history for Storage Spaces Direct](/windows-server/storage/storage-spaces/performance-history).
 
 ## Usage in PowerShell
 Use the following cmdlet to get metrics for the entire Storage Spaces Direct cluster:
@@ -30,6 +32,8 @@ Get-Volume -FileSystemLabel <Label> | Get-ClusterPerformanceHistory
 
 Get-StorageNode -Name <Name> | Get-ClusterPerformanceHistory
 ```
+
+<br>For additional information on how to access performance history data using PowerShell, see [Scripting with PowerShell and Storage Spaces Direct performance history](/windows-server/storage/storage-spaces/performance-history-scripting).
 
 ## Usage in .NET and C#
 This sections shows how to connect to the Health Service, use discover objects, and implement an Observer to begin streaming metrics.
@@ -107,8 +111,6 @@ foreach (CimInstance Node in Nodes)
 ```
 
 Invoke **GetMetric** to begin streaming samples of an expert-curated list of essential metrics based on provided metric names from **MetricName** parameter, which are collected efficiently and aggregated dynamically across nodes, with built-in logic to detect cluster membership. Samples arrive based on the provided timeframe from the **StreamName** parameter.
-
-For the complete list of available metrics, see [Performance history for Storage Spaces Direct](/windows-server/storage/storage-spaces/performance-history).
 
 ### IObserver.OnNext()
 This sample code uses the [Observer Design Pattern](/dotnet/standard/events/observer-design-pattern) to implement an Observer whose **OnNext()** method is invoked when each new sample of metrics arrives. Its **OnCompleted()** method is called if/when streaming ends. For example, you might use it to reinitiate streaming, so that it continues indefinitely.
