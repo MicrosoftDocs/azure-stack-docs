@@ -298,7 +298,7 @@ certutil -ca.cert applianceRootCA.cer
 
 For more information, see [Active Directory Certificate Services](/troubleshoot/windows-server/certificates-and-public-key-infrastructure-pki/export-root-certification-authority-certificate).
 
-## Obtain certificate information for identity integration 
+## Obtain certificate information for identity integration
 
 To secure your identity integration, we recommend that you pass these two parameters:
 
