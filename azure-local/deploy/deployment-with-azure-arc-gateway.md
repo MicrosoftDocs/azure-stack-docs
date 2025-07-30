@@ -193,7 +193,7 @@ Before you begin, make sure to complete the following prerequisites:
 
 1. On the **Additional details** page, provide the following inputs and then select **Apply**.
 
-   :::image type="content" source="media/deployment-with-azure-arc-gateway/basics-tab-additional-details-proxy.png" alt-text="Screenshot of the Basics tab with additional details configured in the Configurator app for Azure Local." lightbox="mmedia/deployment-with-azure-arc-gateway/basics-tab-additional-details-proxy.png":::
+   :::image type="content" source="media/deployment-with-azure-arc-gateway/basics-tab-additional-details-proxy.png" alt-text="Screenshot of the Basics tab with additional details configured in the Configurator app for Azure Local." lightbox="media/deployment-with-azure-arc-gateway/basics-tab-additional-details-proxy.png":::
 
    1. Select **ON** to enable **Remote desktop** protocol. Remote desktop protocol is disabled by default.
 
