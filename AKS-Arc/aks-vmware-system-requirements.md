@@ -2,7 +2,7 @@
 title: System requirements and support matrix for AKS enabled by Azure Arc on VMware (preview)
 description: Learn about system requirements and the support matrix for AKS enabled by Azure Arc on VMware.
 ms.date: 06/13/2025
-ms.topic: conceptual
+ms.topic: concept-article
 author: sethmanheim
 ms.author: sethm
 ms.reviewer: leslielin
