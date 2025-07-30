@@ -80,12 +80,12 @@
           href: deploy-load-balancer-cli.md
         - name: Azure portal
           href: deploy-load-balancer-portal.md
-        # - name: Troubleshoot issues
-        #   href: load-balancer-troubleshoot.md
     - name: Security
       items:
       - name: Encrypt etcd secrets
         href: encrypt-etcd-secrets.md
+      - name: Validate signed container images
+        href: validate-signed-container-images.md
     - name: AI and Machine Learning
       items:
       - name: Deploy an AI model with the AI toolchain operator
@@ -107,7 +107,7 @@
       - name: Restrict SSH access
         href: restrict-ssh-access.md
       - name: Deploy and configure Workload Identity
-        href: workload-identity.md     
+        href: workload-identity.md
     - name: Storage
       href: concepts-storage.md
       items:
