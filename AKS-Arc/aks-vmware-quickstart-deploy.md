@@ -5,7 +5,7 @@ author: sethmanheim
 ms.author: sethm
 ms.topic: quickstart
 ms.custom: devx-track-azurecli
-ms.date: 03/19/2025
+ms.date: 06/13/2025
 ms.lastreviewed: 03/19/2025
 ms.reviewer: leslielin
 ---
@@ -94,8 +94,8 @@ Run the following command to create the cluster.
 az aksarc create -n '<name of your cluster>' -g $resource_group --kubernetes-version '<Kubernetes version from the Arc Resource Bridge>' --custom-location $custom_location --aad-admin-group-object-ids $aad_group_id --vnet-ids $vnet_id --control-plane-ip $control_plane_ip --generate-ssh-keys --debug
 ```
 
-   > [!NOTE]
-   > In this preview release, you can only deploy the same Kubernetes version that the Arc Resource Bridge supports. The Kubernetes version you provide in the command must align with the Arc Resource Bridge version. You can find the Arc Resource Bridge version in the Azure portal under **Azure Arc > Management > Resource Bridge**. To determine the corresponding Kubernetes version, see [What's new with Azure Arc resource bridge](/azure/azure-arc/resource-bridge/release-notes).
+> [!NOTE]
+> In this preview release, you can only deploy the same Kubernetes version that the Arc Resource Bridge supports. Currently, this preview only supports Arc Resource Bridge version 1.2.0 and earlier. The Kubernetes version you provide in the command must align with the Arc Resource Bridge version. You can find the Arc Resource Bridge version in the Azure portal under **Azure Arc > Management > Resource Bridge**. To determine the corresponding Kubernetes version, see [What's new with Azure Arc resource bridge](/azure/azure-arc/resource-bridge/release-notes#version-120-july-2024).
 
 ## Delete the cluster
 
