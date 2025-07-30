@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 04/29/2025
+ms.date: 07/22/2025
 ---
 
 # Manage GPUs using partitioning (preview)
@@ -33,13 +33,13 @@ Consider the following limitations when using the GPU-P feature:
 
 - Partitions are autoassigned to the VMs. You can't choose a specific partition for a specific VM.
 
-- GPU partitioning on Azure Local supports live migration. However, the host and VMs must be on NVIDIA virtual GPU software version 18 and later. For more information, see [Microsoft Azure Local - NVIDIA Docs](https://docs.nvidia.com/vgpu/18.0/grid-vgpu-release-notes-microsoft-azure-stack-hci/index.html).
+- GPU partitioning on Azure Local supports live migration. The OS build must be 26100.xxxx or later. The host and VMs must be on NVIDIA virtual GPU software version 18 and later. For more information, see [Microsoft Azure Local - NVIDIA Docs](https://docs.nvidia.com/vgpu/18.0/grid-vgpu-release-notes-microsoft-azure-stack-hci/index.html).
 
 - You can partition your GPU using Azure Command-Line Interface (CLI). We recommend that you use Azure CLI to configure and assign GPU partitions. You must manually ensure that the homogeneous configuration is maintained for GPUs across all the machines in your system.
 
 ## Prerequisites
 
-- See [Prepare GPUs for Azure Local](./gpu-manage-via-partitioning.md) for requirements and to prepare your Azure Local VMs, and to ensure that your GPUs are prepared and partitioned.
+- See [Prepare GPUs for Azure Local](gpu-preparation.md) for requirements and to prepare your Azure Local VMs, and to ensure that your GPUs are prepared and partitioned.
 
 ## Attach a GPU during Azure Local VM creation
 

@@ -1,9 +1,9 @@
 ---
-title:  Security updates for Azure Local, version 23H2
-description: Security updates for Azure Local, version 23H2.
+title:  Security updates for Azure Local
+description: Security updates for Azure Local.
 author: alkohli
 ms.topic: conceptual
-ms.date: 05/30/2025
+ms.date: 07/14/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
@@ -11,6 +11,182 @@ ms.reviewer: alkohli
 # Security updates for Azure Local
 
 This article lists the various security updates that are available for Azure Local.
+
+::: moniker range="=azloc-2507"
+
+## July OS security updates (KB5062570 and KB5062553) for Azure Local
+
+For the 2507 release of Azure Local, Microsoft released two security updates, each corresponding to a specific OS build. The following table provides the details of these security updates, including their associated OS builds and release dates.
+
+| Security update | OS build | Release date |
+|--|--|--|
+| KB5058384 | 25398.1732 | July 8, 2025 |
+| KB5058411 | 26100.4652 | July 8, 2025 |
+
+# [OS build 25398.xxxx](#tab/os-build-25398-xxxx)
+
+This section provides the 2507 security updates associated with OS build **25398.1732**.
+
+## Improvements
+
+This security update includes quality improvements. Below is a summary of the key issues that this update addresses when you install this KB. If there are new features, it lists them as well. The bold text within the brackets indicates the item or area of the change.
+
+- **[DNS Server]** Fixed: This update addresses an issue where a full zone transfer can't be completed from a Windows DNS server to another DNS server when Extension Mechanisms for DNS is enabled. 
+
+- **[Language and character support]** Fixed: An issue that affected some Chinese characters and experienced compliance issues with GB18030. These characters didn't display correctly or weren't accepted when using extended Unicode. A modern ICU-based solution now properly supports GB18030-2022 requirements. 
+
+- **[Performance]** Fixed: This update addresses an issue that prevented the complete removal of unused language packs and Feature on Demand packages, which previously led to unnecessary storage use and longer Windows Update installation times. 
+
+- **[Security]** Fixed: This update upgrades the curl tool in Windows to version 8.13.0 to help protect against potential security risks, including unauthorized access to data or service disruptions.
+
+- **[Microsoft RPC Netlogon protocol]** Fixed: This update includes a security hardening change to the Microsoft RPC Netlogon protocol. This change improves security by tightening access checks for a set of remote procedure call (RPC) requests. After this update is installed, Active Directory domain controllers will no longer allow anonymous clients to invoke some RPC requests through the Netlogon RPC server. These requests are typically related to domain controller location. Certain file and print service software can be affected, including Samba. If your organization uses Samba, please refer to the [Samba release notes](https://www.samba.org/samba/history/samba-4.22.3.html).
+
+For more information about security vulnerabilities, see the [Security Update Guide](https://portal.msrc.microsoft.com/security-guidance) and the [July 2025 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2025-Jul).
+
+## Known issues
+
+Microsoft is not currently aware of any issues with this update.​​​​​ 
+
+## To install
+
+Microsoft now combines the latest servicing stack update (SSU) for your operating system with the latest cumulative update (LCU). For general information about SSUs, see [Servicing stack updates](/windows/deployment/update/servicing-stack-updates) and [Servicing Stack Updates (SSU): Frequently Asked Questions](https://support.microsoft.com/topic/servicing-stack-updates-ssu-frequently-asked-questions-06b62771-1cb0-368c-09cf-87c4efc4f2fe).
+
+To install the LCU on your Azure Local instance, see [Update Azure Stack Local instances](../update/about-updates-23h2.md).
+
+## File list
+
+For a list of the files that are provided in this update, download the file information for [Cumulative update KB5062570.](https://go.microsoft.com/fwlink/?linkid=2326815).
+
+
+# [OS build 26100.xxxx](#tab/os-build-26100-xxxx)
+
+This section provides the 2507 security updates associated with OS build **26100.4652**.
+
+## Improvements
+
+This security update includes quality improvements. Here is a summary of the key issues that this update addresses when you install this KB. If there are new features, it lists them as well. The bold text within the brackets indicates the item or area of the change.
+
+- **[Graphics]** Fixed: This issue occurs only if the June 2025 non-security update (KB5060829) is installed. The cursor might shift out of place after pressing **ALT+Tab** to switch away from certain games running in full screen exclusive mode, when the game resolution doesn't match the desktop resolution. 
+
+- **[Multimedia]** Fixed: This update addresses an issue where notification sounds didn't play. Affected sounds included those for on-screen alerts, volume adjustments, and sign-in.
+
+- **[Windows Firewall]** Fixed: This update addresses an issue found in Event Viewer as Event 2042 for Windows Firewall with Advanced Security. The event appears as "Config Read Failed" with the message "More data is available." For more information about this issue, see "Error events are logged for Windows Firewall" in the Windows Health Dashboard.
+
+For more information about security vulnerabilities, see the [Security Update Guide](https://portal.msrc.microsoft.com/security-guidance) and the [July 2025 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2025-Jul).
+
+## Known issues
+
+The following are known issues with this update:
+
+### Azure Local VM with Trusted Launch disabled
+
+**Symptom**
+
+A small subset of Generation 2 Azure Virtual Machines (VMs) with Trusted Launch disabled and Virtualization-Based Security (VBS) enforced via registry key might be unable to boot after installing this update.
+
+To check if your virtual machine might be impacted:
+
+1. Check if your VM is created as "Standard".
+
+1. Check if VBS is enabled. Open **System Information** (msinfo32.exe) and confirm that Virtualization-based security is running and that the Hyper-V role is not installed on the VM.
+
+**Workaround**
+
+The workaround is addressed in [KB5064489](https://support.microsoft.com/topic/july-13-2025-kb5064489-os-build-26100-4656-out-of-band-14a82ab2-100f-4dd4-8141-f490ec90c8f4).
+
+## To install
+
+Microsoft now combines the latest servicing stack update (SSU) for your operating system with the latest cumulative update (LCU). For general information about SSUs, see [Servicing stack updates](/windows/deployment/update/servicing-stack-updates) and [Servicing Stack Updates (SSU): Frequently Asked Questions](https://support.microsoft.com/topic/servicing-stack-updates-ssu-frequently-asked-questions-06b62771-1cb0-368c-09cf-87c4efc4f2fe).
+
+To install the LCU on your Azure Local instance, see [Update Azure Stack Local instances](../update/about-updates-23h2.md).
+
+## File list
+
+For a list of the files that are provided in this update, download the file information for [Cumulative update KB5062553.](https://go.microsoft.com/fwlink/?linkid=2326816).
+
+::: moniker-end
+
+::: moniker range="=azloc-2506"
+
+## June OS security updates (KB5060118 and KB5060842) for Azure Local
+
+For the 2506 release of Azure Local, Microsoft released two security updates, each corresponding to a specific OS build. The following table provides the details of these security updates, including their associated OS builds and release dates.
+
+| Security update | OS build | Release date |
+|--|--|--|
+| KB5060118 | 25398.1665 | June 10, 2025 |
+| KB5060842 | 26100.4349 | June 10, 2025 |
+
+# [OS build 25398.xxxx](#tab/os-build-25398-xxxx)
+
+This section provides the 2506 security updates associated with OS build **25398.1665**.
+
+## Improvements
+
+This security update includes quality improvements. Below is a summary of the key issues that this update addresses when you install this KB. If there are new features, it lists them as well. The bold text within the brackets indicates the item or area of the change.
+
+- **[Graphics]** Fixed: An issue where some characters appear wider than standard characters, and the sample paragraph in the font preview section doesn’t display correctly.
+
+- **[Memory leak]** Fixed: This update addresses an issue in the Input Service that causes increased memory usage, potentially impacting performance in multi-user, multilingual, and remote desktop environments.
+
+- **[Windows Hello]** Fixed: This update addresses an issue that prevents users from signing in with self-signed certificates when using Windows Hello for Business with the Key Trust model.​​​​​​​
+
+For more information about security vulnerabilities, see the [Security Update Guide](https://portal.msrc.microsoft.com/security-guidance) and the [June 2025 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2025-Jun).
+
+## Known issues
+
+Microsoft is not currently aware of any issues with this update.​​​​​
+
+## To install
+
+Microsoft now combines the latest servicing stack update (SSU) for your operating system with the latest cumulative update (LCU). For general information about SSUs, see [Servicing stack updates](/windows/deployment/update/servicing-stack-updates) and [Servicing Stack Updates (SSU): Frequently Asked Questions](https://support.microsoft.com/topic/servicing-stack-updates-ssu-frequently-asked-questions-06b62771-1cb0-368c-09cf-87c4efc4f2fe).
+
+To install the LCU on your Azure Local instance, see [Update Azure Stack Local instances](../update/about-updates-23h2.md).
+
+## File list
+
+For a list of the files that are provided in this update, download the file information for [Cumulative update KB5060118.](https://go.microsoft.com/fwlink/?linkid=2323858).
+
+# [OS build 26100.xxxx](#tab/os-build-26100-xxxx)
+
+This section provides the 2506 security updates associated with OS build **26100.4349**.
+
+## Improvements
+
+This security update includes quality improvements. Here is a summary of the key issues that this update addresses when you install this KB. If there are new features, it lists them as well. The bold text within the brackets indicates the item or area of the change.
+
+- **[System Restore]** After installing the June 2025 Windows security update, Azure Local, version 24H2 retains system restore points for up to 60 days. To apply a restore point, select **Open System Restore**. Restore points older than 60 days aren't available. This 60-day limit also applies to later releases of Azure Local, version 24H2.
+
+- **[Windows Hello]** Fixed: This update addresses an issue that prevents users from signing in with self-signed certificates when using Windows Hello for Business with the Key Trust model.​​​​​​​
+
+For more information about security vulnerabilities, see the [Security Update Guide](https://portal.msrc.microsoft.com/security-guidance) and the [June 2025 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2025-Jun).
+
+## Known issues
+
+### Noto fonts
+
+**Symptoms**
+
+There are reports of blurry or unclear CJK (Chinese, Japanese, Korean) text when displayed at 96 DPI (100% scaling) in Chromium-based browsers such as Microsoft Edge and Google Chrome. The March 2025 Preview Update introduced Noto fonts in collaboration with Google, for CJK languages as fallbacks to improve text rendering when websites or apps don’t specify appropriate fonts. The issue is due to limited pixel density at 96 DPI, which can reduce the clarity and alignment of CJK characters. Increasing the display scaling improves clarity by enhancing text rendering.
+
+**Resolution**
+
+As a temporary workaround, increase your display scaling to 125% or 150% to improve text clarity. For more information, see Change your screen resolution and layout in Windows.
+
+We're investigating this issue and will provide more information when it's available.
+
+## To install
+
+Microsoft now combines the latest servicing stack update (SSU) for your operating system with the latest cumulative update (LCU). For general information about SSUs, see [Servicing stack updates](/windows/deployment/update/servicing-stack-updates) and [Servicing Stack Updates (SSU): Frequently Asked Questions](https://support.microsoft.com/topic/servicing-stack-updates-ssu-frequently-asked-questions-06b62771-1cb0-368c-09cf-87c4efc4f2fe).
+
+To install the LCU on your Azure Local instance, see [Update Azure Stack Local instances](../update/about-updates-23h2.md).
+
+## File list
+
+For a list of the files that are provided in this update, download the file information for [Cumulative update KB5060842.](https://go.microsoft.com/fwlink/?linkid=2323769).
+
+::: moniker-end
+
 
 ::: moniker range="=azloc-2505"
 
@@ -33,7 +209,7 @@ This security update includes quality improvements. Below is a summary of the ke
 
 - **[Graphics]** Fixed: This update addresses an issue where users are unable to export or generate PDF or XLSX format reports with charts. 
 
-- **[Graphics kernel]** Fixed: This update addresses an issue that affects users trying to start a new console session after closing the previous one, where the new session doesn’t start successfully. 
+- **[Graphics kernel]** Fixed: This update addresses an issue that affects users trying to start a new console session after closing the previous one, where the new session doesn't start successfully. 
 
 - **[Windows Kernel Vulnerable Driver Blocklist file (DriverSiPolicy.p7b)]** This update adds to the list of drivers that are at risk for Bring Your Own Vulnerable Driver (BYOVD) attacks. 
 
@@ -72,7 +248,7 @@ This security update includes quality improvements. Here is a summary of the key
 
 - **[Audio]** Fixed: This update addresses an issue where the audio from your microphone might mute unexpectedly.
 
-- **[Eye controller]** Fixed: The eye controller app doesn’t launch.
+- **[Eye controller]** Fixed: The eye controller app doesn't launch.
 
 For more information about security vulnerabilities, see the [Security Update Guide](https://portal.msrc.microsoft.com/security-guidance) and the [May 2025 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2025-May).
 
@@ -133,14 +309,14 @@ The following is a known issue with this update.
 
 Devices that have certain Citrix components installed might be unable to complete installation of the January 2025 Windows security update. This issue was observed on devices with [Citrix Session Recording Agent (SRA)](https://docs.citrix.com/en-us/session-recording/current-release/install-upgrade-uninstall.html), version 2411. The 2411 version of this application was released in December 2024.
   
-Affected devices might initially download and apply the January 2025 Windows security update correctly, such as via the Windows Update page in Settings. However, when restarting the device to complete the update installation, an error message with text similar to "*Something didn’t go as planned. No need to worry – undoing changes*" appears. The device then reverts to the Windows updates previously present on the device.  
+Affected devices might initially download and apply the January 2025 Windows security update correctly, such as via the Windows Update page in Settings. However, when restarting the device to complete the update installation, an error message with text similar to "*Something didn't go as planned. No need to worry – undoing changes*" appears. The device then reverts to the Windows updates previously present on the device.  
   
 This issue likely affects a limited number of organizations as version 2411 of the SRA application is a new version. Home users aren't expected to be affected by this issue.
 
 **Workaround**
 
 The issue has been resolved in Citrix Session Recording Agent version 2503, released on April 28, 2025, and newer versions.
-For details, see the documentation provided by Citrix at [Microsoft's January Security Update Fails/Reverts on a machine with 2411 Session Recording Agent](https://support.citrix.com/s/article/CTX692505-microsofts-january-security-update-failsreverts-on-a-machine-with-2411-session-recording-agent?language=en_US).
+
 
 ## To install
 
@@ -176,15 +352,14 @@ This update has the following known issues:
 
 Devices that have certain Citrix components installed might be unable to complete installation of the January 2025 Windows security update. This issue was observed on devices with [Citrix Session Recording Agent (SRA) version 2411](https://docs.citrix.com/en-us/session-recording/current-release/install-upgrade-uninstall.html). The version 2411 version of this application was released in December 2024.
   
-Affected devices might initially download and apply the January 2025 Windows security update correctly, such as via the Windows Update page in Settings. However, when restarting the device to complete the update installation, an error message with text similar to *"Something didn’t go as planned. No need to worry – undoing changes"* appears. The device will then revert to the Windows updates previously present on the device.  
+Affected devices might initially download and apply the January 2025 Windows security update correctly, such as via the Windows Update page in Settings. However, when restarting the device to complete the update installation, an error message with text similar to *"Something didn't go as planned. No need to worry – undoing changes"* appears. The device will then revert to the Windows updates previously present on the device.  
   
 This issue likely affects a limited number of organizations as version 2411 of the SRA application is a new version. Home users aren't expected to be affected by this issue.  
 
 **Workaround**
 
-Citrix has documented this issue, including a workaround, which can be performed prior to installing the January 2025 Windows security update. For details, see the [Citrix documentation](https://support.citrix.com/s/article/CTX692505-microsofts-january-security-update-failsreverts-on-a-machine-with-2411-session-recording-agent?language=en_US).
+The issue has been resolved in Citrix Session Recording Agent version 2503, released on April 28, 2025, and newer versions.
 
-Microsoft is working with Citrix to address this issue and will update this documentation once a resolution is available.
 
 ## To install
 
@@ -235,14 +410,13 @@ The following is a known issue with this update.
 
 Devices that have certain Citrix components installed might be unable to complete installation of the January 2025 Windows security update. This issue was observed on devices with [Citrix Session Recording Agent (SRA)](https://docs.citrix.com/en-us/session-recording/current-release/install-upgrade-uninstall.html), version 2411. The 2411 version of this application was released in December 2024.
   
-Affected devices might initially download and apply the January 2025 Windows security update correctly, such as via the Windows Update page in Settings. However, when restarting the device to complete the update installation, an error message with text similar to "*Something didn’t go as planned. No need to worry – undoing changes*" appears. The device will then revert to the Windows updates previously present on the device.  
+Affected devices might initially download and apply the January 2025 Windows security update correctly, such as via the Windows Update page in Settings. However, when restarting the device to complete the update installation, an error message with text similar to "*Something didn't go as planned. No need to worry – undoing changes*" appears. The device will then revert to the Windows updates previously present on the device.  
   
 This issue likely affects a limited number of organizations as version 2411 of the SRA application is a new version. Home users are not expected to be affected by this issue.  
 
 **Workaround**
 
 The issue has been resolved in Citrix Session Recording Agent version 2503, released on April 28, 2025, and newer versions.
-For details, see the documentation provided by Citrix at [Microsoft's January Security Update Fails/Reverts on a machine with 2411 Session Recording Agent](https://support.citrix.com/s/article/CTX692505-microsofts-january-security-update-failsreverts-on-a-machine-with-2411-session-recording-agent?language=en_US).​​​​​​​ 
 
 ## To install
 
@@ -324,7 +498,7 @@ For a list of the files that are provided in this update, download the file info
 
 ::: moniker-end
 
-::: moniker range="=azloc-24112"
+::: moniker range="=azloc-previous"
 
 ## January OS security update (KB5049984) for Azure Local
 
@@ -359,10 +533,6 @@ To install the LCU on your Azure Local instance, see [Update Azure Stack Local i
 
 For a list of the files that are provided in this update, download the file information for [Cumulative update KB5049984](https://go.microsoft.com/fwlink/?linkid=2300815).
 
-::: moniker-end
-
-::: moniker range="azloc-24111"
-
 ## December OS security update (KB5048653) for Azure Local
 
 This section describes the OS security update for Azure Local that was released on December 17, 2024 and applies to OS build 25398.1308.
@@ -388,10 +558,6 @@ To install the LCU on your Azure Local instance, see [Update Azure Stack Local i
 ### File list
 
 For a list of the files that are provided in this update, download the file information for [Cumulative update KB 5048653](https://go.microsoft.com/fwlink/?linkid=2299751).
-
-::: moniker-end
-
-::: moniker range="azloc-2411"
 
 ## November OS security update (KB) for Azure Local
 
@@ -429,10 +595,6 @@ To install the LCU on your Azure Local instance, see [Update Azure Stack Local i
 
 For a list of the files that are provided in this update, download the file information for [Cumulative update KB 5046618](https://go.microsoft.com/fwlink/?linkid=2296832).
 
-::: moniker-end
-
-::: moniker range="azloc-previous"
-
 ## October OS security update (KB 5044288) for Azure Local
 
 <!-- [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)] -->
@@ -449,7 +611,7 @@ This security update includes quality improvements. The following key issues and
 
 - **Input Method Editor (IME)** When a combo box has input focus, a memory leak might occur when you close that window.
 
-- **AppLocker** The rule collection enforcement mode is not overwritten when rules merge with a collection that has no rules. This occurs when the enforcement mode is set to “Not Configured”.
+- **AppLocker** The rule collection enforcement mode is not overwritten when rules merge with a collection that has no rules. This occurs when the enforcement mode is set to "Not Configured".
 
 - **Remote Desktop Gateway Service** The service stops responding. This occurs when a service uses remote procedure calls (RPC) over HTTP. Because of this, the clients that are using the service disconnect.
 
@@ -507,10 +669,6 @@ To install the LCU on your Azure Local instance, see [Update Azure Local instanc
 
 For a list of the files that are provided in this update, download the file information for [Cumulative update 5043055](https://go.microsoft.com/fwlink/?linkid=2278952).
 
-::: moniker-end
-
-::: moniker range="azloc-previous"
-
 ## August 2024 OS security update (KB 5041573) for Azure Local
 
 <!-- [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)] -->
@@ -560,10 +718,6 @@ To install the LCU on your Azure Local instance, see [Update Azure Local instanc
 ### File list
 
 For a list of the files that are provided in this update, download the file information for [Cumulative update 5041573](https://go.microsoft.com/fwlink/?linkid=2282056).
-
-::: moniker-end
-
-::: moniker range="azloc-previous"
 
 ## July 2024 OS security update (KB 5040438) for Azure Local
 

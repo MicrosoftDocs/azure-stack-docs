@@ -44,7 +44,7 @@ sections:
           
       - question: Are there bandwidth or latency requirements between Azure Local and the cloud?
         answer: |
-          No. Limited-bandwidth connections like rural T1 lines or satellite/cellular connections are adequate for Azure Local to sync. The minimum required connectivity is several kilobytes per day. More services might require extra bandwidth, especially to replicate or back up whole VMs, download large software updates, or upload verbose logs for analysis and monitoring in the cloud.
+          Yes. Limited-bandwidth connections like rural T1 lines or satellite/cellular connections are adequate for Azure Local to sync. The minimum required connectivity is 10 Mbit. More services might require extra bandwidth, especially to replicate or back up whole VMs, download large software updates, or upload verbose logs for analysis and monitoring in the cloud.
 
       - question: Does Azure Local require continuous connectivity to the cloud?
         answer: |

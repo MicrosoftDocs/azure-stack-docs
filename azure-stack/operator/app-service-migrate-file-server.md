@@ -2,7 +2,7 @@
 title: Migrate file share  
 description: Document detailing how to migrate the Azure App Service on Azure Stack Hub tenant content file share.
 author: sethmanheim
-ms.topic: article
+ms.topic: upgrade-and-migration-article
 ms.date: 08/08/2024
 ms.author: sethm
 ms.reviewer: anwestg

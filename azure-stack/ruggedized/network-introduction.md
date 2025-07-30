@@ -4,7 +4,7 @@ description: Learn about networking for the Azure Stack Hub ruggedized device.
 author: sethmanheim
 ms.author: sethm
 ms.service: azure-stack
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/14/2020
 ms.lastreviewed: 10/14/2020
 ---
