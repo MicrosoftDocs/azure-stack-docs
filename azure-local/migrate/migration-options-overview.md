@@ -31,7 +31,7 @@ First party migration options are provided by Microsoft. These options are built
     - [For Hyper-V VMs](./migration-azure-migrate-overview.md).
     - [For VMware VMs](./migration-azure-migrate-vmware-overview.md).
 
-    **Considerations for Azure Migrate**
+        **Considerations for Azure Migrate**
 
     - Azure Migrate requires both a source appliance in your on-premises environment and a target appliance in your Azure Local instance. This setup is necessary for every Azure Migrate project. For more information, see [Source VMware requirements](migrate-vmware-requirements.md#source-vmware-server-requirements) and [Source Hyper-V requirements](migrate-hyperv-requirements.md#source-hyper-v-requirements).  
 
