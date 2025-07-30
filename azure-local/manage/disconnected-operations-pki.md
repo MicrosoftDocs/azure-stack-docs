@@ -343,36 +343,3 @@ TESTING9BFD666761B268073FE06D1CC8D4F82A4  CN=www.website.com, O=Contoso Corporat
 This feature is available only in Azure Local 2506
 
 ::: moniker-end
-
-```powershell
-$oidcCertChain = Get-CertChainInfo -endpoint 'https://adfs.azurestack.local'
-$ldapsCertChain = Get-CertChainInfo -endpoint 'https://dc01.azurestack.local'
-```
-
-Here's an example of the output from Get-CertChainInfo
-
-```powershell
-# Returns: System.Security.Cryptography.X509Certificates.X509Certificate2[]
->> Get-CertChainInfo
->>
-Thumbprint                                Subject                                                                                                
-----------                                -------                                                                                                
-TESTING580E20618EA15357FC1028622518DDC4D  CN=www.website.com, O=Contoso Corporation, L=Redmond, S=WA, C=US                                   
-TESTINGDAA2345B48E507320B695D386080E5B25  CN=www.website.com, O=Contoso Corporation, L=Redmond, S=WA, C=US                                
-TESTING9BFD666761B268073FE06D1CC8D4F82A4  CN=www.website.com, O=Contoso Corporation, L=Redmond, S=WA, C=US       
-```
-
-## Related content
-
-- [Plan hardware for Azure local with disconnected operations](disconnected-operations-overview.md#preview-participation-criteria)
-- [Plan and understand identity](disconnected-operations-identity.md)
-- [Plan and understand networking](disconnected-operations-network.md)
-- [Set up disconnected operations](disconnected-operations-set-up.md)
-
-::: moniker-end
-
-::: moniker range="<=azloc-2505"
-
-This feature is available only in Azure Local 2506
-
-::: moniker-end
