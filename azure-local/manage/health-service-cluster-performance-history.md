@@ -112,6 +112,8 @@ foreach (CimInstance Node in Nodes)
 
 Invoke **GetMetric** to begin streaming samples of an expert-curated list of essential metrics based on provided metric names from **MetricName** parameter, which are collected efficiently and aggregated dynamically across nodes, with built-in logic to detect cluster membership. Samples arrive based on the provided timeframe from the **StreamName** parameter.
 
+For the complete list of available metrics, see [Performance history for Storage Spaces Direct](/windows-server/storage/storage-spaces/performance-history).
+
 ### IObserver.OnNext()
 This sample code uses the [Observer Design Pattern](/dotnet/standard/events/observer-design-pattern) to implement an Observer whose **OnNext()** method is invoked when each new sample of metrics arrives. Its **OnCompleted()** method is called if/when streaming ends. For example, you might use it to reinitiate streaming, so that it continues indefinitely.
 
