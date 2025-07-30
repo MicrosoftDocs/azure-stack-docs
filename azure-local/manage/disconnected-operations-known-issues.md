@@ -75,7 +75,7 @@ $managedIds|foreach-object {
 Write-Verbose "Wait 30 min before running cloud deployment from portal"
 ```
 
-### Azure Local VMs (Arc VMs)
+### Azure Local VMs
 
 #### Azure Resource Graph add or edit tags error
 
@@ -85,7 +85,7 @@ After you start, restart, or stop the Azure Local VM, the power action buttons a
 
 #### Start, restart, or delete buttons disabled after stopping VM
 
-After you stop an Arc VM, the start, restart, and delete buttons in the Azure portal are disabled.
+After you stop an Azure Local VM, the start, restart, and delete buttons in the Azure portal are disabled.
 
 **Mitigation**: Refresh your browser and the page.
 
