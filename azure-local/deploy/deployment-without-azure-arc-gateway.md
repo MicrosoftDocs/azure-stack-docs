@@ -27,11 +27,12 @@ This article details how to register an Azure Local with Arc and with proxy conf
 
 Make sure the following prerequisites are met before proceeding:
 
-- You've access to an Azure Local instance running release 2505 or later. Prior versions do not support this scenario.
+- You've access to an Azure Local instance running release 2508 or later. Prior versions do not support this scenario.
 
 > [!IMPORTANT]
 > Run these steps as a local administrator on every Azure Local machine that you intend to cluster.
 
+## Step 1: Review script parameters
 
 1. Set the parameters. The script takes in the following parameters:
 
@@ -40,22 +41,27 @@ Make sure the following prerequisites are met before proceeding:
     |`SubscriptionID`    |The ID of the subscription used to register your machines with Azure Arc.         |
     |`ResourceGroup`     |The resource group precreated for Arc registration of the machines. A resource group is created if one doesn't exist.         |
     |`Region`            |The Azure region used for registration. See the [Supported regions](../concepts/system-requirements-23h2.md#azure-requirements) that can be used.          |
-    |`ProxyServer`       |Optional parameter. Proxy Server address when is required for outbound connectivity. |
+    |`ProxyServer`       |Optional parameter. Proxy Server address when required for outbound connectivity. |
 
     
+## Step 2: Set parameters
+
+1. Set the parameters required for the registration script.
+
+    Here's an example of how you should change these parameters for the `Invoke-AzStackHciArcInitialization` initialization script. Once the registration is complete, the Azure Local machines are registered in Azure Arc using the Arc gateway:
 
     ```powershell
-    #Define the subscription where you want to register your machine as Arc device
+    #Define the subscription where you want to register your Azure Local machine with Arc.
     $Subscription = "YourSubscriptionID"
     
-    #Define the resource group where you want to register your machine as Arc device
+    #Define the resource group where you want to register your Azure Local machine with Arc.
     $RG = "YourResourceGroupName"
 
     #Define the region to use to register your server as Arc device
     #Do not use spaces or capital letters when defining region
     $Region = "eastus"
     
-    #Define the proxy address if your Azure Local deployment accesses the internet via proxy
+    #Define the proxy address for your Azure Local deployment to access the internet via proxy.
     $ProxyServer = "http://proxyaddress:port"
 
     #Define the bypass list for the proxy. Use comma to separate each item from the list.  
@@ -88,7 +94,8 @@ Make sure the following prerequisites are met before proceeding:
     PS C:\Users\SetupUser> $ProxyBypassList = "localhost,127.0.0.1,*.contoso.com,machine1,machine2,machine3,machine4,machine5,192.168.*.*,AzureLocal-1"
     ```
     </details>
-  
+
+## Step 3: Run registration script
 
 1. Run the Arc registration script. The script takes a few minutes to run.
 
@@ -128,9 +135,11 @@ Make sure the following prerequisites are met before proceeding:
     </details>
 
 
-## Step 3: Verify the setup is successful
+1. Once the registration is complete, the Azure Local machines are registered in Azure Arc. During the bootstrap configuration, you're required to authenticate with your credentials using the device code.
 
-After the script completes successfully on all the machines, verify that your machines are registered with Arc. 
+## Step 4: Verify the setup is successful
+
+After the script completes successfully on all the machines, verify that your machines are registered with Arc.
 
 1. Go to the Azure portal.
 2. Go to the resource group associated with the registration. The machines appear within the specified resource group as **Machine - Azure Arc** type resources.
@@ -218,7 +227,7 @@ Before you begin, make sure that you complete the following prerequisites:
 
 1. On the **Arc agent setup** tab, provide the following inputs:
 
-   :::image type="content" source="media/deployment-without-azure-arc-gateway/arc-agent-setup-tab-1.png" alt-text="Screenshot of the Arc agent setup tab in the Configurator app for Azure Local." lightbox="media/deployment-without-azure-arc-gateway/arc-agent-setup-tab-1.png":::
+   :::image type="content" source="media/deployment-without-azure-arc-gateway/arc-agent--gateway.png" alt-text="Screenshot of the Arc agent setup tab in the Configurator app for Azure Local." lightbox="media/deployment-without-azure-arc-gateway/arc-agent-setup-tab-1.png":::
 
    1. The **Cloud type** is populated automatically as `Azure`.
    
@@ -231,9 +240,9 @@ Before you begin, make sure that you complete the following prerequisites:
       > [!IMPORTANT]
       > Specify the region with spaces removed. For example, specify the East US region as `EastUS`.
 
-   1. Provide a **Tenant ID**. The tenant ID is the directory ID of your Microsoft Entra tenant. To get the tenant ID, see [Find your Microsoft Entra tenant](/azure/azure-portal/get-subscription-tenant-id).
+   1. Skip the **Tenant ID**.
 
-   1. If you set up an Azure Arc gateway, specify the Arc gateway ID. This is the resource ID of the Arc gateway that you set up. For more information, see [About Azure Arc gateways](./deployment-azure-arc-gateway-overview.md).
+   1. Skip the Arc gateway ID.
 
    > [!IMPORTANT]
    > Make sure to verify all the inputs before you proceed. Any incorrect inputs here might result in a setup failure.
@@ -433,7 +442,7 @@ Before you begin, make sure that you complete the following prerequisites:
 
 1. On the **Arc agent setup** tab, provide the following inputs:
 
-   :::image type="content" source="media/deployment-without-azure-arc-gateway/arc-agent-setup-tab-no-gateway.png" alt-text="Screenshot of the Arc agent setup tab in the Configurator app for Azure Local." lightbox="media/deployment-arc-register-configurator-app/arc-agent-setup-tab-no-gateway.png":::
+   :::image type="content" source="media/deployment-with-azure-arc-gateway/arc-agent-setup-tab-no-gateway.png" alt-text="Screenshot of the Arc agent setup tab in the Configurator app for Azure Local." lightbox="media/deployment-with-azure-arc-gateway/arc-agent-setup-tab-no-gateway.png":::
 
 
    1. The **Cloud type** is populated automatically as `Azure`.
@@ -447,7 +456,7 @@ Before you begin, make sure that you complete the following prerequisites:
       > [!IMPORTANT]
       > Specify the region with spaces removed. For example, specify the East US region as `EastUS`.
 
-   1. Provide a **Tenant ID**. The tenant ID is the directory ID of your Microsoft Entra tenant. To get the tenant ID, see [Find your Microsoft Entra tenant](/azure/azure-portal/get-subscription-tenant-id).
+   1. Skip the **Tenant ID**.
 
    1. Skip the Arc gateway ID.
 
