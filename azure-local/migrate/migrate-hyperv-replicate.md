@@ -95,7 +95,7 @@ This step applies only if you downloaded the .VHD zipped file.
 
 1. Check that the zipped file is secure, before you deploy it. 
 
-1. On the machine where you downloaded the file, open an administrator command window. 
+1. On the machine where you downloaded the file, open an administrator PowerShell window. 
 
 1. Run the following command to generate the hash for the VHD. 
 
