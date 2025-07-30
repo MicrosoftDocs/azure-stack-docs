@@ -57,6 +57,22 @@ Make sure the following prerequisites are met before proceeding:
     
     #Define the proxy address if your Azure Local deployment accesses the internet via proxy
     $ProxyServer = "http://proxyaddress:port"
+
+    #Define the bypass list for the proxy. Use comma to separate each item from the list.  
+    # Parameters must be separated with a comma `,`.
+    # Use "localhost" instead of <local> 
+    # Use specific IPs such as 127.0.0.1 without mask 
+    # Use * for subnets allowlisting. 192.168.1.* for /24 exclusions. Use 192.168.*.* for /16 exclusions. 
+    # Append * for domain names exclusions like *.contoso.com 
+    # DO NOT INCLUDE .svc on the list. The registration script takes care of Environment Variables configuration. 
+    # At least the IP address of each Azure Local machine.
+    # At least the IP address of the Azure Local cluster.
+    # At least the IPs you defined for your infrastructure network. Arc resource bridge, Azure Kubernetes Service (AKS), and future infrastructure services using these IPs require outbound connectivity.
+    # NetBIOS name of each machine.
+    # NetBIOS name of the Azure Local cluster.
+    
+    $ProxyBypassList = "localhost,127.0.0.1,*.contoso.com,machine1,machine2,machine3,machine4,machine5,192.168.*.*,AzureLocal-1"
+
     ```
 
     <details>
@@ -65,10 +81,11 @@ Make sure the following prerequisites are met before proceeding:
     Here's a sample output of the parameters:
 
     ```output
-    PS C:\Users\SetupUser> $Subscription = "<Subscription ID>"
+    PS C:\Users\SetupUser> $Subscription = "Subscription ID"
     PS C:\Users\SetupUser> $RG = "myashcirg"
     PS C:\Users\SetupUser> $Region = "eastus"
-    PS C:\Users\SetupUser> $ProxyServer = "<http://proxyserver:tcpPort>"
+    PS C:\Users\SetupUser> $ProxyServer = "http://192.168.10.10:8080"
+    PS C:\Users\SetupUser> $ProxyBypassList = "localhost,127.0.0.1,*.contoso.com,machine1,machine2,machine3,machine4,machine5,192.168.*.*,AzureLocal-1"
     ```
     </details>
   
@@ -78,7 +95,7 @@ Make sure the following prerequisites are met before proceeding:
 
     ```powershell
     #Invoke the registration script. Use a supported region.
-    Invoke-AzStackHciArcInitialization -SubscriptionID $Subscription -ResourceGroup $RG -Region $Region -Cloud "AzureCloud" -Proxy $ProxyServer
+    Invoke-AzStackHciArcInitialization -SubscriptionID $Subscription -ResourceGroup $RG -Region $Region -Cloud "AzureCloud" -Proxy $ProxyServer -ProxyBypass $ProxyBypassList 
     ```
 
     For a list of supported Azure regions, see [Azure requirements](../concepts/system-requirements-23h2.md#azure-requirements).
@@ -178,13 +195,13 @@ Before you begin, make sure that you complete the following prerequisites:
    
       When defining your proxy bypass string, make sure you meet the following conditions:
 
-      - At least the IP address of each Azure Local machine.
-      - At least the IP address of the Azure Local system.
-      - At least the IPs you defined for your infrastructure network. Arc resource bridge, Azure Kubernetes Service (AKS), and future infrastructure services using these IPs require outbound connectivity.
+      - Include at least the IP address of each Azure Local machine.
+      - Include at least the IP address of the Azure Local cluster.
+      - Include at least the IPs you defined for your infrastructure network. Arc resource bridge, Azure Kubernetes Service (AKS), and future infrastructure services using these IPs require outbound connectivity.
       - Or you can bypass the entire infrastructure subnet.
-      - NetBIOS name of each machine.
-      - NetBIOS name of the Azure Local system.
-      - Domain name or domain name with asterisk * wildcard at the beginning to include any host or subdomain.  For example, `192.168.1.*` for subnets or `*.contoso.com` for domain names.
+      - Provide the NetBIOS name of each machine.
+      - Provide the NetBIOS name of the Azure Local cluster.
+      - Domain name or domain name with asterisk * wildcard at the beginning to include any host or subdomain. For example, `192.168.1.*` for subnets or `*.contoso.com` for domain names.
       - Parameters must be separated with a comma `,`.
       - Classless Inter-Domain Routing (CIDR) notation to bypass subnets isn't supported.
       - The use of \<local\> strings isn't supported in the proxy bypass list.
@@ -201,7 +218,7 @@ Before you begin, make sure that you complete the following prerequisites:
 
 1. On the **Arc agent setup** tab, provide the following inputs:
 
-   :::image type="content" source="media/deployment-arc-register-configurator-app/arc-agent-setup-tab-1.png" alt-text="Screenshot of the Arc agent setup tab in the Configurator app for Azure Local." lightbox="media/deployment-arc-register-configurator-app/arc-agent-setup-tab-1.png":::
+   :::image type="content" source="media/deployment-without-azure-arc-gateway/arc-agent-setup-tab-1.png" alt-text="Screenshot of the Arc agent setup tab in the Configurator app for Azure Local." lightbox="media/deployment-without-azure-arc-gateway/arc-agent-setup-tab-1.png":::
 
    1. The **Cloud type** is populated automatically as `Azure`.
    
@@ -289,16 +306,13 @@ Make sure the following prerequisites are met before proceeding:
     #Do not use spaces or capital letters when defining region
     $Region = "eastus"
     
-    #Define the tenant you will use to register your machine as Arc device
-    $Tenant = "YourTenantID"
-    
     ```
 
     <details>
     <summary>Expand this section to see an example output.</summary>
 
     ```output
-    PS C:\Users\SetupUser> $Subscription = "<Subscription ID>"
+    PS C:\Users\SetupUser> $Subscription = "Subscription ID"
     PS C:\Users\SetupUser> $RG = "myashcirg"
     PS C:\Users\SetupUser> $Region = "eastus"
     ```
@@ -340,7 +354,7 @@ Make sure the following prerequisites are met before proceeding:
 
     </details>
 
-4. After the script completes successfully on all the machines, verify that:
+1. After the script completes successfully on all the machines, verify that:
 
     1. Your machines are registered with Arc. Go to the Azure portal and then go to the resource group associated with the registration. The machines appear within the specified resource group as **Machine - Azure Arc** type resources.
 
@@ -355,7 +369,7 @@ Make sure the following prerequisites are met before proceeding:
 Once the deployment validation starts, connect to the first Azure Local machine from your system.
 
 
-# [Via Configurator app](#tab/app)
+# [Via Configurator app (Preview)](#tab/app)
 
 ## Prerequisites
 
@@ -420,7 +434,7 @@ Before you begin, make sure that you complete the following prerequisites:
 1. On the **Arc agent setup** tab, provide the following inputs:
 
    :::image type="content" source="media/deployment-without-azure-arc-gateway/arc-agent-setup-tab-no-gateway.png" alt-text="Screenshot of the Arc agent setup tab in the Configurator app for Azure Local." lightbox="media/deployment-arc-register-configurator-app/arc-agent-setup-tab-no-gateway.png":::
-   
+
 
    1. The **Cloud type** is populated automatically as `Azure`.
    
