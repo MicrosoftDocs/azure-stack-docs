@@ -433,6 +433,21 @@ Task failures listed below the red line (**Preparing protected entities** task a
 
     These resources will be reused automatically by Azure Migrate during subsequent migration attempts.
 
+### Migrated VM data disks show as 1GB in Azure Portal
+
+When you migrate a VM with one or more data disks attached, Azure Portal may incorrectly display the total data disk size as **1 GB**.
+
+**Root cause**
+
+This is a display issue only and doesn't affect the actual functionality or size of the VM's data disks.
+
+
+**Recommended resolution**
+
+To correct the display issue in Azure portal and reflect the true data disk size, follow the steps at [Expand a data disk](../manage/manage-arc-virtual-machine-resources.md?&tabs=azurecli#expand-a-data-disk) to reapply the same size as the current data disk (no actual size increase is required).
+
+This triggers a portal refresh and updates the UX to reflect the correct data disk size.
+
 
 ## Next steps
 
