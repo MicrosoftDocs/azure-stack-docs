@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 07/29/2025
+ms.date: 07/30/2025
 ---
 
 # Manage Azure Local VMs enabled by Azure Arc
@@ -210,7 +210,7 @@ To start a VM, follow these steps in the Azure portal for your Azure Local insta
 
    :::image type="content" source="./media/manage-arc-virtual-machines/start-virtual-machine.png" alt-text="Screenshot of the button for starting a virtual machine on the overview page." lightbox="./media/manage-arc-virtual-machines/start-virtual-machine.png":::
 
-1. Select **Yes**.
+1. On the confirmation dialog, select **Yes**.
 
 1. Verify that the VM started.
 
@@ -226,7 +226,7 @@ To restart a VM, follow these steps in the Azure portal for your Azure Local ins
 
    :::image type="content" source="./media/manage-arc-virtual-machines/restart-virtual-machine.png" alt-text="Screenshot of the button for restarting a virtual machine on the overview page." lightbox="./media/manage-arc-virtual-machines/restart-virtual-machine.png":::
 
-1. Select **Yes**.
+1. On the confirmation dialog, select **Yes**.
 
 1. Verify that the VM restarted.
 
@@ -242,7 +242,7 @@ To stop a VM, follow these steps in the Azure portal for your Azure Local instan
 
    :::image type="content" source="./media/manage-arc-virtual-machines/stop-virtual-machine.png" alt-text="Screenshot of the button for stopping a virtual machine on the overview page." lightbox="./media/manage-arc-virtual-machines/stop-virtual-machine.png":::
 
-1. Select **Yes**.
+1. On the confirmation dialog, select **Yes**.
 
 1. Verify that the VM stopped.
 
@@ -869,7 +869,7 @@ To delete a VM, follow these steps in the Azure portal for your Azure Local inst
 
 1. On the **Overview** page for the VM, on the command bar, select **Delete**.
 
-1. You're prompted to confirm the deletion. Select **Yes**.
+1. On the confirmation dialog, select **Yes**.
 
    :::image type="content" source="./media/manage-arc-virtual-machines/delete-virtual-machine-warning.png" alt-text="Screenshot of the warning for deleting a virtual machine." lightbox="./media/manage-arc-virtual-machines/delete-virtual-machine-warning.png":::
 
