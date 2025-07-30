@@ -45,7 +45,7 @@ Key features of Azure Container Registry on disconnected operations include:
 - Make sure that the disconnected operations virtual machine is deployed.
 - Check that you can access the disconnected operations portal.
 - Register the *Microsoft.ContainerRegistry* resource provider with disconnected operations.
-- [Install the Azure CLI](disconnected-operations-cli.md#install-azure-cli) (supported up to version 2.54.0.).
+- [Install the Azure CLI](disconnected-operations-cli.md#install-azure-cli) (supported up to version 2.54.0).
 - (Optional) [Install Docker Desktop](https://www.docker.com/get-started/) on your disconnected operations host or client machine for testing.
 
 ## Deploy Azure Container Registry for disconnected operations
