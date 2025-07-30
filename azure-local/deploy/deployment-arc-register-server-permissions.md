@@ -30,8 +30,9 @@ Before you begin, make sure you complete the following prerequisites:
 ## Register machines with Azure Arc
 
 > [!IMPORTANT]
-> Run these steps as a local administrator on every Azure Local machine that you intend to cluster.
-
+> - Run these steps as a local administrator on every Azure Local machine that you intend to cluster.
+> - Once an Azure Local machine is registered with Azure Arc, the only way to undo the registration is to install the operating system again on the machine.
+> - If you encounter error code 42 when registering a new Azure Local machine with Azure Arc, see the [Troubleshooting guide](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/ArcRegistration/TSG-Arc-registration-failing-with-error-42.md).
 
 1. Set the parameters. The script takes in the following parameters:
 
@@ -158,9 +159,6 @@ Before you begin, make sure you complete the following prerequisites:
 
         :::image type="content" source="media/deployment-arc-register-server-permissions/arc-servers-registered-1.png" alt-text="Screenshot of the Azure Local machines in the resource group after the successful registration." lightbox="./media/deployment-arc-register-server-permissions/arc-servers-registered-1.png":::
 
-> [!NOTE]
-> Once an Azure Local machine is registered with Azure Arc, the only way to undo the registration is to install the operating system again on the machine.
-
 ## Assign required permissions for deployment
 
 This section describes how to assign Azure permissions for deployment from the Azure portal.
@@ -193,10 +191,6 @@ This section describes how to assign Azure permissions for deployment from the A
 
     > [!NOTE]
     > The Cloud Application Administrator permission is temporarily needed to create the service principal. After deployment, this permission can be removed.
-
-## Troubleshooting
-
-When registering a new Azure Local machine with Arc, you might encounter error code 42. For details on the potential causes and resolution steps, see the [Troubleshooting guide](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/ArcRegistration/TSG-Arc-registration-failing-with-error-42.md).
 
 ## Next steps
 
