@@ -3,7 +3,7 @@ title: Troubleshoot Azure Local upgrade
 description: Learn how to troubleshoot upgrades on your Azure Local. 
 author: alkohli
 ms.topic: how-to
-ms.date: 02/28/2025
+ms.date: 05/28/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -153,9 +153,10 @@ When you [Install the solution upgrade](./install-solution-upgrade.md), you may 
 
 ## Next steps
 
-For detailed remediation for common known issues, check out:
-> [!div class="nextstepaction"]
-> [Azure Local Supportability repository](https://github.com/Azure/AzureStackHCI-Supportability)
+- For detailed remediation for common known issues, check out:
+    > [!div class="nextstepaction"]
+    > [Azure Local Supportability repository](https://github.com/Azure/AzureStackHCI-Supportability)
 
-Alternatively, you can:
-- [Open a Support ticket](../manage/get-support.md)
+- For a detailed overview of health faults, including fault severity mappings, health settings (data types, fault associations, default values, and descriptions), and the list of collected metrics, download the [Health Service faults](https://github.com/Azure-Samples/AzureLocal/blob/main/health-service-faults/health-service-faults.xlsx) spreadsheet.
+
+- [Open a Support ticket](../manage/get-support.md) if you need more help.
