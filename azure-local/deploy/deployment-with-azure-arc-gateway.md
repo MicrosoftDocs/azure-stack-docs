@@ -1,6 +1,6 @@
 --- 
-title: Register Azure Local using arc gateway and with and without proxy setup.
-description: Learn how to register Azure Local using Azure Arc gateway Arc proxy. Both scenarios with and without proxy are configured. The proxy configuration can be done via an Arc script via registration script for Azure gateway on Azure Local, version 2408. 
+title: Register Azure Local using Arc gateway and with and without proxy setup (Preview).
+description: Learn how to register Azure Local using Azure Arc gateway Arc proxy. Both scenarios with and without proxy are configured (Preview). 
 author: alkohli
 ms.topic: how-to
 ms.date: 07/28/2025
@@ -9,7 +9,7 @@ ms.service: azure-local
 zone_pivot_groups: register-arc-options
 ---
 
-# Register Azure Local with Azure Arc using Arc gateway
+# Register Azure Local with Azure Arc using Arc gateway (Preview)
 
 ::: moniker range=">=azloc-2505"
 
@@ -21,13 +21,15 @@ This article details how to register Azure Local using Azure Arc gateway and wit
 
 - **Set up proxy via the Configurator app**: Using this method, you can configure the Arc proxy via a user interface. This method is useful if you prefer not to use scripts or if you want to configure the proxy settings interactively.
 
+[!INCLUDE [hci-preview](../includes/hci-preview.md)]
+
 # [Via Arc script](#tab/script)
 
 ## Prerequisites
 
 Make sure the following prerequisites are met before you proceed:
 
-- You have access to an Azure Local instance running release 2508 or later. Prior versions don't support this scenario.
+- You have access to an Azure Local instance running release 2505 or later. Prior versions don't support this scenario.
 
 - You have assigned the appropriate permissions to the subscription used for registration. For more information, see [Assign required permissions for Azure Local deployment](deployment-arc-register-server-permissions.md).
 
@@ -385,6 +387,11 @@ Once the registration is complete, follow these steps to verify that Azure Arc g
    To view gateway router logs on Windows, run the `azcmagent logs` command in PowerShell. In the resulting .zip file, the logs are located in the *C:\ProgramData\Microsoft\ArcGatewayRouter* folder.
 
 # [Via Configurator app (Preview)](#tab/app)
+
+If you plan to deploy a few machines per site, use the Configurator app to register your Azure Local machines with Azure Arc gateway.
+
+[!INCLUDE [important](../includes/hci-preview.md)]
+
 
 ## Prerequisites
 

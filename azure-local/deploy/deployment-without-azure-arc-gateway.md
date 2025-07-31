@@ -27,7 +27,7 @@ This article details how to register Azure Local machines with Azure Arc and wit
 
 Make sure the following prerequisites are met before proceeding:
 
-- You've access to an Azure Local instance running release 2508 or later. Prior versions do not support this scenario.
+- You've access to an Azure Local instance running release 2505 or later. Prior versions do not support this scenario.
 - You have assigned the appropriate permissions to the subscription used for registration. For more information, see [Assign required permissions for Azure Local deployment](deployment-arc-register-server-permissions.md).
 
 
@@ -156,6 +156,10 @@ After the script completes successfully on all the machines, verify that your ma
 > Once an Azure Local machine is registered with Azure Arc, the only way to undo the registration is to install the operating system again on the machine.
 
 # [Via Configurator app (Preview)](#tab/app)
+
+If you plan to deploy a few machines per site, use the Configurator app to register your Azure Local machines with Azure Arc.
+
+[!INCLUDE [important](../includes/hci-preview.md)]
 
 ## Prerequisites
 
@@ -387,6 +391,10 @@ Make sure the following prerequisites are met before proceeding:
 
 
 # [Via Configurator app (Preview)](#tab/app)
+
+If you plan to deploy a few machines per site, use the Configurator app to register your Azure Local machines with Azure Arc.
+
+[!INCLUDE [important](../includes/hci-preview.md)]
 
 ## Prerequisites
 
