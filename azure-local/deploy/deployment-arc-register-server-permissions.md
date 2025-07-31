@@ -13,25 +13,12 @@ ms.custom: devx-track-azurepowershell
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
-This article describes how to set up the required permissions to deploy Azure Local.
-
-## Prerequisites
-
-Before you begin, make sure you complete the following prerequisites:
-
-### Azure Local machine prerequisites
-
-- Make sure that your Azure Local machines are registered with Azure Arc.
-
-### Azure prerequisites
-
-[!INCLUDE [hci-registration-azure-prerequisites](../includes/hci-registration-azure-prerequisites.md)]
+This article describes how to set up the required permissions on your subscription to deploy Azure Local.
 
 
+## Assign Azure permissions for deployment
 
-## Assign required permissions for deployment
-
-This section describes how to assign Azure permissions for deployment from the Azure portal.
+Follow these steps to assign Azure permissions for deployment from the Azure portal.
 
 1. In [the Azure portal](https://portal.azure.com/), go to the subscription used to register the machines. In the left pane, select **Access control (IAM)**. In the right pane, select **+ Add** and from the dropdown list, select **Add role assignment**.
 
@@ -64,6 +51,7 @@ This section describes how to assign Azure permissions for deployment from the A
 
 ## Next steps
 
-After setting up the first machine in your instance, you're ready to deploy using Azure portal:
+After setting up the subscription permissions, you can register your Azure Local machines with Azure Arc.
 
-- [Deploy using Azure portal](./deploy-via-portal.md).
+- [Register using Azure Arc gateway](./deployment-with-azure-arc-gateway.md).
+- [Register using Azure Arc](./deployment-without-azure-arc-gateway.md).

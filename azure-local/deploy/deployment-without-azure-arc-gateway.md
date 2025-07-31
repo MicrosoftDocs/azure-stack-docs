@@ -1,6 +1,6 @@
 --- 
 title: Register Azure Local with Arc.
-description: Learn how to register Azure Local with Azure Arc with and without proxy setup. The proxy configuration can be done via an Arc script or via the Configurator app for Azure gateway on Azure Local. 
+description: Learn how to register Azure Local with Azure Arc with and without proxy setup. The proxy configuration can be done via an Arc script or via the Configurator app on Azure Local. 
 author: alkohli
 ms.topic: how-to
 ms.date: 07/28/2025
@@ -15,7 +15,7 @@ zone_pivot_groups: register-arc-options
 
 ::: zone pivot="register-proxy"
 
-This article details how to register an Azure Local with Arc and with proxy configuration. The proxy configuration can be done via an Arc script or via the Configurator app for Azure gateway on Azure Local.
+This article details how to register Azure Local machines with Azure Arc and with proxy configuration. The proxy configuration can be done via an Arc script or via the Configurator app for Azure Local.
 
 - **Configure with a script**: You can use an Arc script to configure registration settings.
 
@@ -28,6 +28,8 @@ This article details how to register an Azure Local with Arc and with proxy conf
 Make sure the following prerequisites are met before proceeding:
 
 - You've access to an Azure Local instance running release 2508 or later. Prior versions do not support this scenario.
+- You have assigned the appropriate permissions to the subscription used for registration. For more information, see [Assign required permissions for Azure Local deployment](deployment-arc-register-server-permissions.md).
+
 
 > [!IMPORTANT]
 > Run these steps as a local administrator on every Azure Local machine that you intend to cluster.
@@ -137,7 +139,7 @@ Make sure the following prerequisites are met before proceeding:
 
 1. During the Arc registration process, you must authenticate with your Azure account. The console window displays a code that you must enter in the URL, displayed in the app, in order to authenticate. Follow the instructions to complete the authentication process.
 
- :::image type="content" source="media/deployment-without-azure-arc-gateway/authentication-device-code.png" alt-text="Screenshot of the console window with device code and URL for authentication." lightbox="media/deployment-without-azure-arc-gateway/authentication-device-code.png":::
+    :::image type="content" source="media/deployment-without-azure-arc-gateway/authentication-device-code.png" alt-text="Screenshot of the console window with device code and URL for authentication." lightbox="media/deployment-without-azure-arc-gateway/authentication-device-code.png":::
 
 Once the registration is complete, the Azure Local machines are registered in Azure Arc.
 
@@ -292,6 +294,8 @@ This article details how to register using Azure Arc gateway on Azure Local with
 Make sure the following prerequisites are met before proceeding:
 
 - You've access to an Azure Local instance running release 2505 or later. Prior versions do not support this scenario.
+- You have assigned the appropriate permissions to the subscription used for registration. For more information, see [Assign required permissions for Azure Local deployment](deployment-arc-register-server-permissions.md).
+
 
 > [!IMPORTANT]
 > Run these steps as a local administrator on every Azure Local machine that you intend to cluster.

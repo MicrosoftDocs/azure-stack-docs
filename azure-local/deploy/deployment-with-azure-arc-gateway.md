@@ -29,6 +29,8 @@ Make sure the following prerequisites are met before you proceed:
 
 - You have access to an Azure Local instance running release 2508 or later. Prior versions don't support this scenario.
 
+- You have assigned the appropriate permissions to the subscription used for registration. For more information, see [Assign required permissions for Azure Local deployment](deployment-arc-register-server-permissions.md).
+
 - An Arc gateway resource created in the same subscription as used to deploy Azure Local. For more information, see [Create the Arc gateway resource in Azure](deployment-azure-arc-gateway-overview.md#create-the-arc-gateway-resource-in-azure).
 
 ## Step 1: Get the Arc gateway ID  
@@ -53,11 +55,8 @@ You need the proxy and the Arc gateway ID from Azure to run the registration scr
     $Region = "eastus"
     
     #Define the proxy address for your Azure Local deployment to access the internet via proxy.
-    $ProxyServer = "http://proxyaddress:port"
-    
-    #Define the Arc gateway resource ID from Azure 
-    $ArcgwId = "/subscriptions/yourarcgatewayid/resourceGroups/yourResourceGroupName/providers/Microsoft.HybridCompute/gateways/yourArcGatewayName" 
-    
+    $ProxyServer = "http://proxyaddress:port"    
+   
     #Define the bypass list for the proxy. Use comma to separate each item from the list.  
     # Parameters must be separated with a comma `,`.
     # Use "localhost" instead of <local> 
@@ -72,6 +71,9 @@ You need the proxy and the Arc gateway ID from Azure to run the registration scr
     # NetBIOS name of the Azure Local cluster.
     
     $ProxyBypassList = "localhost,127.0.0.1,*.contoso.com,machine1,machine2,machine3,machine4,machine5,192.168.*.*,AzureLocal-1" 
+
+    #Define the Arc gateway resource ID from Azure 
+    $ArcgwId = "/subscriptions/yourarcgatewayid/resourceGroups/yourResourceGroupName/providers/Microsoft.HybridCompute/gateways/yourArcGatewayName" 
     ```
 
 ## Step 3: Run registration script
@@ -86,11 +88,13 @@ You need the proxy and the Arc gateway ID from Azure to run the registration scr
 
 1. During the Arc registration process, you must authenticate with your Azure account. The console window displays a code that you must enter in the URL, displayed in the app, in order to authenticate. Follow the instructions to complete the authentication process.
 
- :::image type="content" source="media/deployment-with-azure-arc-gateway/authentication-device-code.png" alt-text="Screenshot of the console window with the device code and the URL to open." lightbox="media/deployment-with-azure-arc-gateway/authentication-device-code.png":::
+    :::image type="content" source="media/deployment-with-azure-arc-gateway/authentication-device-code.png" alt-text="Screenshot of the console window with the device code and the URL to open." lightbox="media/deployment-with-azure-arc-gateway/authentication-device-code.png":::
 
-## Step 4: Verify the setup is successful
+## Step 4: Verify the Azure Arc gateway setup is successful
 
-Once the deployment validation starts, connect to the first Azure Local machine from your system.
+Once the registration is complete, follow these steps to verify that Azure Arc gateway setup is successful.
+
+1. connect to the first Azure Local machine from your system.
 
 1. Open the Arc gateway log to monitor which endpoints are being redirected to the Arc gateway and which ones continue using your firewall or proxy. You can find the Arc gateway log at: *c:\programdata\AzureConnectedMAchineAgent\Log\arcproxy.log*.
 
@@ -104,19 +108,17 @@ Once the deployment validation starts, connect to the first Azure Local machine 
 
    The values displayed should be as follows:
     
-   - **Agent version** is **1.45** or later.
+   1. **Agent version** is **1.45** or later.
     
-   - **Agent Status** should show as **Connected**.
+   2. **Agent Status** should show as **Connected**.
     
-   - **Using HTTPS Proxy**  shows as `http://localhost:40343`when the Arc gateway is enabled.
+   3. **Using HTTPS Proxy**  shows as `http://localhost:40343`when the Arc gateway is enabled.
     
-   - **Upstream Proxy** shows your enterprise proxy server and port.
+   4. **Upstream Proxy** shows your enterprise proxy server and port.
     
-   - **Azure Arc Proxy** shows as **Running** when the Arc gateway is enabled.
-
+   5. **Azure Arc Proxy** shows as **running** when the Arc gateway is enabled.
     
-   The Arc agent using the Arc gateway:
-    
+      
    :::image type="content" source="./media/deployment-with-azure-arc-gateway/arc-agent-with-gateway.png" alt-text="Screenshot that shows the Arc agent with gateway using script." lightbox="./media/deployment-with-azure-arc-gateway/arc-agent-with-gateway.png":::
     
 3. Additionally, to verify that the setup was done successfully, run the following command:
@@ -150,6 +152,8 @@ Before you begin, make sure to complete the following prerequisites:
 ### Azure Local machine prerequisites
 
 [!INCLUDE [hci-registration-azure-local-machine-prerequisites](../includes/hci-registration-azure-local-machine-prerequisites.md)]
+
+
 
 - Download the [Configurator App for Azure Local](https://aka.ms/ConfiguratorAppForHCI).
 
@@ -289,8 +293,8 @@ This article details how to register using Azure Arc gateway on Azure Local with
 Make sure the following prerequisites are met before proceeding:
 
 - You have access to an Azure Local instance running release 2505 or later. Prior versions don't support this scenario.
+- You have assigned the appropriate permissions to the subscription used for registration. For more information, see [Assign required permissions for Azure Local deployment](deployment-arc-register-server-permissions.md).
 
-- An Arc gateway resource created in the same subscription as used to deploy Azure Local. For more information, see [Create the Arc gateway resource in Azure](deployment-azure-arc-gateway-overview.md#create-the-arc-gateway-resource-in-azure).
 
 ## Step 1: Get the Arc gateway ID  
 
@@ -332,7 +336,9 @@ Once the Azure Local machines are registered in Azure Arc and all the extensions
 
 ## Step 4: Verify the setup is successful
 
-Once the deployment validation starts, connect to the first Azure Local machine from your system.
+Once the registration is complete, follow these steps to verify that Azure Arc gateway setup is successful.
+
+1. Connect to the first Azure Local machine from your system.
 
 1. Open the Arc gateway log to monitor the endpoints that are being redirected to the Arc gateway and which ones continue using your firewall. You can find the Arc gateway log at: *c:\programdata\AzureConnectedMAchineAgent\Log\arcproxy.log*.
 
@@ -346,11 +352,15 @@ Once the deployment validation starts, connect to the first Azure Local machine 
 
    The values displayed should be as follows:
     
-   - **Agent version** is **1.45** or later.
+   1. **Agent version** is **1.45** or later.
     
-   - **Agent Status** should show as **Connected**.
-        
-   - **Azure Arc Proxy** shows as **Running** when the Arc gateway is enabled.
+   2. **Agent Status** should show as **Connected**.
+    
+   3. **Using HTTPS Proxy**  shows as `http://localhost:40343`when the Arc gateway is enabled.
+    
+   4. **Upstream Proxy** shows your enterprise proxy server and port.
+    
+   5. **Azure Arc Proxy** shows as **running** when the Arc gateway is enabled.
 
    
    The Arc agent using the Arc gateway:
@@ -395,7 +405,7 @@ Before you begin, make sure that you complete the following prerequisites:
 
 [!INCLUDE [hci-registration-azure-prerequisites](../includes/hci-registration-azure-prerequisites.md)]
 
-- **Get Arc gateway ID**. Skip this step if you didn't set up Azure Arc gateway. If you [Set up an Azure Arc gateway](../deploy/deployment-azure-arc-gateway-overview.md#create-the-arc-gateway-resource-in-azure), get the resource ID of the Arc gateway. This is also referred to as the `ArcGatewayID`.
+- **Get Arc gateway ID**. Get the resource ID of the Arc gateway that you created using [Set up an Azure Arc gateway](../deploy/deployment-azure-arc-gateway-overview.md#create-the-arc-gateway-resource-in-azure). This is also referred to as the `ArcGatewayID`.
 
    1. To get the `ArcGatewayID`, run the following command:  
 
