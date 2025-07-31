@@ -6,7 +6,7 @@ ms.author: robess
 ms.topic: how-to
 ms.service: azure-local
 ms.reviewer: shisab
-ms.date: 06/18/2025
+ms.date: 07/31/2025
 ---
 # Azure Local telemetry and diagnostics extension
 

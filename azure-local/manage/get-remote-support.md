@@ -5,7 +5,7 @@ author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.date: 06/18/2025
+ms.date: 07/31/2025
 ---
 
 # Get remote support for Azure Local
