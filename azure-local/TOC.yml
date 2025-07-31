@@ -98,7 +98,7 @@ items:
   - name: Review cloud deployment network considerations
     href: plan/cloud-deployment-network-considerations.md
   - name: Review Azure Arc gateway
-    href: deploy/deployment-azure-arc-gat
+    href: deploy/deployment-azure-arc-gateway-overview.md
   - name: Review security
     items:
     - name: About security features
