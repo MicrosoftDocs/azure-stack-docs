@@ -137,6 +137,8 @@ Make sure the following prerequisites are met before proceeding:
 
 1. Once the registration is complete, the Azure Local machines are registered in Azure Arc. During the bootstrap configuration, you're required to authenticate with your credentials using the device code.
 
+ :::image type="content" source="media/deployment-with-azure-arc-gateway/authentication-device-code.png" alt-text="Screenshot of the Azure Local machines in the resource group after the successful registration." lightbox="media/deployment-with-azure-arc-gateway/authentication-device-code.png":::
+
 ## Step 4: Verify the setup is successful
 
 After the script completes successfully on all the machines, verify that your machines are registered with Arc.
@@ -364,6 +366,8 @@ Make sure the following prerequisites are met before proceeding:
     </details>
 
 1. After the script completes successfully on all the machines, verify that:
+
+     :::image type="content" source="media/deployment-with-azure-arc-gateway/authentication-device-code.png" alt-text="Screenshot of the Azure Local machines in the resource group after the successful registration." lightbox="media/deployment-with-azure-arc-gateway/authentication-device-code.png":::
 
     1. Your machines are registered with Arc. Go to the Azure portal and then go to the resource group associated with the registration. The machines appear within the specified resource group as **Machine - Azure Arc** type resources.
 
