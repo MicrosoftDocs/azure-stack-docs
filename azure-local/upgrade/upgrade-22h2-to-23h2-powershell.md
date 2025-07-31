@@ -3,18 +3,18 @@ title: Upgrade Azure Stack HCI OS, version 22H2 to version 23H2 via PowerShell
 description: Learn how to use PowerShell to upgrade Azure Stack HCI OS, version 22H2 to version 23H2.
 author: alkohli
 ms.topic: how-to
-ms.date: 07/21/2025
+ms.date: 07/31/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
 zone_pivot_groups: upgrade-os
 ---
 
-# Upgrade Azure Stack HCI OS 20349.xxxx (22H2) via PowerShell
+# Upgrade Azure Stack HCI OS via PowerShell
 
 ::: zone pivot="os-23h2"
 
-This article describes how to upgrade the operating system (OS) for Azure Local from version 20349.xxxx (22H2) to version 25398.xxxx (23H2), via PowerShell. This is the first step in the upgrade process, which upgrades only the OS.
+This article describes how to upgrade the Azure Stack HCI operating system (OS) from version 20349.xxxx (22H2) to version 25398.xxxx (23H2), via PowerShell. This is the first step in the upgrade process, which upgrades only the OS.
 
 Upgrade via PowerShell is the recommended method. There are other methods to upgrade the OS to version 25398.xxxx (23H2) that include using Windows Admin Center and the Server Configuration tool (SConfig). For more information about these methods, see [Upgrade the Azure Stack HCI OS, version 22H2 OS via Windows Admin Center](./upgrade-22h2-to-23h2-windows-admin-center.md) and [Upgrade Azure Local to new OS using other methods](./upgrade-22h2-to-23h2-other-methods.md).
 
@@ -25,13 +25,16 @@ To keep your Azure Local service in a supported state, you have up to six months
 
 ::: zone pivot="os-24h2"
 
-This article describes how to upgrade the operating system (OS) for Azure Local from version 20349.xxxx (22H2) to version 26100.xxxx (24H2), via PowerShell.
+This article describes how to upgrade the Azure Stack HCI operating system (OS) to version 26100.xxxx (24H2), via PowerShell. There are two upgrade paths available:
+
+- Upgrade from version 20349.xxxx (22H2) to version 26100.xxxx (24H2).
+- Upgrade from version 25398.xxxx (23H2) to version 26100.xxxx (24H2). This includes the 25398.xxxx (23H2) clusters that were upgraded from version 20349.xxxx (22H2) and the solution upgrade is not yet applied.
 
 With the 2505 release, a direct upgrade path from version 20349.xxxx (22H2) to version 26100.xxxx (24H2) is available. Skipping the upgrade to the version 26100.xxxx is one less upgrade hop and helps reduce reboots and maintenance planning prior to the solution upgrade.
 
 - Make sure to consult with your hardware vendor to determine if version 26100.xxxx OS is supported before performing the upgrade.
-- After the OS upgrade, you can wait for the solution upgrade and the drivers to become available. This option is currently in preview and is not recommended for production workloads.
-- There is an exception to the preceding recommendation if you are using stretch clusters. Stretch clusters should directly move to version 26100.xxxx (24H2) in 2508. This version contains critical bug fixes.
+- After the OS upgrade, you can wait for the solution upgrade and the drivers to become available.
+- There is an exception to the preceding recommendation if you are using stretch clusters. Stretch clusters should wait to directly move to version 26100.xxxx (24H2). <!--2508 - This version contains critical bug fixes.-->
 
 For more information about the various upgrade paths, see the blog post on [Upgrade Azure Local to new OS version](https://techcommunity.microsoft.com/blog/azurearcblog/upgrade-azure-local-operating-system-to-new-version/4423827).
 
@@ -55,8 +58,7 @@ To upgrade the OS on your system, follow these high-level steps:
 
 1. [Complete the prerequisites.](#complete-prerequisites)
 1. [Update registry keys.](#update-registry-keys)
-1. [Connect to Azure Local, version 22H2.](#connect-to-azure-local)
-1. [Check for the available updates using PowerShell.](#connect-to-azure-local)
+1. [Connect to Azure Local, version 22H2.](#connect-to-azure-local)Check for the available updates using PowerShell.
 1. [Install new OS using PowerShell.](#install-new-os-using-powershell)
 1. [Check the status of the updates.](#check-the-status-of-an-update)
 1. [After the OS is upgraded, perform post-OS upgrade steps.](#next-steps)
