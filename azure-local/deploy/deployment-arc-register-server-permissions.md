@@ -3,7 +3,7 @@ title: Register your Azure Local machines with Azure Arc and assign permissions 
 description: Learn how to register your Azure Local machines with Azure Arc and assign permissions for deployment. 
 author: alkohli
 ms.topic: how-to
-ms.date: 07/25/2025
+ms.date: 07/30/2025
 ms.author: alkohli
 ms.service: azure-local
 ms.custom: devx-track-azurepowershell
@@ -23,7 +23,13 @@ Before you begin, make sure you complete the following prerequisites:
 
 - Make sure that your Azure Local machines are registered with Azure Arc.
 
-## Assign required permissions
+### Azure prerequisites
+
+[!INCLUDE [hci-registration-azure-prerequisites](../includes/hci-registration-azure-prerequisites.md)]
+
+
+
+## Assign required permissions for deployment
 
 This section describes how to assign Azure permissions for deployment from the Azure portal.
 

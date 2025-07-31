@@ -38,7 +38,7 @@ You can deploy Commvault on an external machine and protect resources on Azure S
 
 ## Deploy from Azure Stack Hub Marketplace
 
-Commvault publishes a BYOL image in the Azure Marketplace and enables the image for syndication to Azure Stack Hub. The minimum version required to back up VMs on Azure Stack is SP16. If you plan to use a virtual appliance, make sure to update to at SP16 (the latest [long-term supported release](https://documentation.commvault.com/2023e/essential/platform_release_schedule_and_lifecycles.html)) or SP17 (the latest mainstream release available).
+Commvault publishes a BYOL image in the Azure Marketplace and enables the image for syndication to Azure Stack Hub. The minimum version required to back up VMs on Azure Stack is SP16. If you plan to use a virtual appliance, make sure to update to at SP16 (the latest [long-term supported release](https://www.cdw.com/content/cdw/en/brand/commvault.html)) or SP17 (the latest mainstream release available).
 
 | Cloud        | Version | Available for syndication | Next update |
 |--------------|---------|---------------------------|-------------|
