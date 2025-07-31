@@ -39,7 +39,6 @@ The Azure requirements include:
 For Azure Local VM images to be used on Azure Local, make sure to satisfy the following requirements:
 
 - Use only the English (en-us) language VHDs to create VM images.
-- Don't use VHD disks to create VM images.
 - If using Windows Server 2012 and Windows Server 2012 R2 images, you can only create Azure Local VMs using the Azure CLI. For more information, see [Additional parameters required to provision Azure Local VMs via the Azure CLI using Windows Server 2012 and Windows Server 2012 R2 images](./create-arc-virtual-machines.md#additional-parameters-for-windows-server-2012-and-windows-server-2012-r2-images).
 
 ## Firewall requirements
