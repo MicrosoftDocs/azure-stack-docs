@@ -135,9 +135,11 @@ Make sure the following prerequisites are met before proceeding:
     </details>
 
 
-1. Once the registration is complete, the Azure Local machines are registered in Azure Arc. During the bootstrap configuration, you're required to authenticate with your credentials using the device code.
+1. During the Arc registration process, you must authenticate with your Azure account. The console window displays a code that you must enter in the URL, displayed in the app, in order to authenticate. Follow the instructions to complete the authentication process.
 
  :::image type="content" source="media/deployment-with-azure-arc-gateway/authentication-device-code.png" alt-text="Screenshot of the Azure Local machines in the resource group after the successful registration." lightbox="media/deployment-with-azure-arc-gateway/authentication-device-code.png":::
+
+Once the registration is complete, the Azure Local machines are registered in Azure Arc.
 
 ## Step 4: Verify the setup is successful
 
@@ -365,13 +367,13 @@ Make sure the following prerequisites are met before proceeding:
 
     </details>
 
-1. After the script completes successfully on all the machines, verify that:
+1. During the Arc registration process, you must authenticate with your Azure account. The console window displays a code that you must enter in the URL, displayed in the app, in order to authenticate. Follow the instructions to complete the authentication process.
 
      :::image type="content" source="media/deployment-with-azure-arc-gateway/authentication-device-code.png" alt-text="Screenshot of the Azure Local machines in the resource group after the successful registration." lightbox="media/deployment-with-azure-arc-gateway/authentication-device-code.png":::
 
-    1. Your machines are registered with Arc. Go to the Azure portal and then go to the resource group associated with the registration. The machines appear within the specified resource group as **Machine - Azure Arc** type resources.
+1. After the script completes successfully on all the machines, verify that your machines are registered with Arc. Go to the Azure portal and then go to the resource group associated with the registration. The machines appear within the specified resource group as **Machine - Azure Arc** type resources.
 
-        :::image type="content" source="media/deployment-arc-register-server-permissions/arc-servers-registered-1.png" alt-text="Screenshot of the Azure Local machines in the resource group after the successful registration." lightbox="./media/deployment-arc-register-server-permissions/arc-servers-registered-1.png":::
+   :::image type="content" source="media/deployment-arc-register-server-permissions/arc-servers-registered-1.png" alt-text="Screenshot of the Azure Local machines in the resource group after the successful registration." lightbox="./media/deployment-arc-register-server-permissions/arc-servers-registered-1.png":::
 
 > [!NOTE]
 > Once an Azure Local machine is registered with Azure Arc, the only way to undo the registration is to install the operating system again on the machine.

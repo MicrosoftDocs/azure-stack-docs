@@ -84,7 +84,7 @@ You need the proxy and the Arc gateway ID from Azure to run the registration scr
     Invoke-AzStackHciArcInitialization -SubscriptionID $Subscription -ResourceGroup $RG -Region australiaeast -Cloud "AzureCloud" -Proxy $ProxyServer -ArcGatewayID $ArcgwId -ProxyBypass $ProxyBypassList 
     ```
 
-1. Once the registration is complete, the Azure Local machines are registered in Azure Arc using the Arc gateway. During the bootstrap configuration, you're required to authenticate with your credentials using the device code.
+1. During the Arc registration process, you must authenticate with your Azure account. The console window displays a code that you must enter in the URL, displayed in the app, in order to authenticate. Follow the instructions to complete the authentication process.
 
  :::image type="content" source="media/deployment-with-azure-arc-gateway/authentication-device-code.png" alt-text="Screenshot of the Azure Local machines in the resource group after the successful registration." lightbox="media/deployment-with-azure-arc-gateway/authentication-device-code.png":::
 
@@ -331,6 +331,8 @@ Invoke-AzStackHciArcInitialization -SubscriptionID $Subscription -ResourceGroup 
 ## Step 3: Start Azure Local cloud deployment
 
 Once the Azure Local machines are registered in Azure Arc and all the extensions are installed, start the deployment from Azure portal or using the ARM templates that are documented in these articles:
+
+<!--1. During the Arc registration process, you must authenticate with your Azure account. The console window displays a code that you must enter in the URL, displayed in the app, in order to authenticate. Follow the instructions to complete the authentication process.-->
 
  :::image type="content" source="media/deployment-with-azure-arc-gateway/authentication-device-code.png" alt-text="Screenshot of the Azure Local machines in the resource group after the successful registration." lightbox="media/deployment-with-azure-arc-gateway/authentication-device-code.png":::
 
