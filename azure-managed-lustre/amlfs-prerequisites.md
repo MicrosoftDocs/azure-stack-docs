@@ -2,7 +2,7 @@
 title: Prerequisites for Azure Managed Lustre file systems
 description: Learn about network and storage prerequisites to complete before you create an Azure Managed Lustre file system.
 ms.topic: overview
-ms.date: 01/17/2025
+ms.date: 07/31/2025
 author: pauljewellmsft
 ms.author: pauljewell
 ms.reviewer: mayabishop
@@ -21,7 +21,7 @@ This article explains prerequisites that you must configure before creating an A
 
 ## Network prerequisites
 
-Azure Managed Lustre file systems exist in a virtual network subnet. The subnet contains the Lustre Management Service (MGS) and handles all client interactions with the virtual Lustre cluster.
+You supply the virtual network and subnet for Azure Managed Lustre networking.  This gives you full control of which network security measures you wish to apply, including which compute and other services can access Azure Managed Lustre. Ensure you follow the networking and security guidelines provided for Azure Managed Lustre, allowing required connections for essential services such as the Lustre protocol, engineering and diagnostic support, Azure Blob storage, and security monitoring. If your network settings disable one of the essential services it will lead to a degraded product experience or reduce Microsoft’s support abilities.
 
 You can't move a file system from one network or subnet to another after you create the file system.
 
@@ -49,7 +49,7 @@ If you plan to use another resource to host your compute VMs in the same virtual
 
 ### Subnet access and permissions
 
-[Default outbound access for VMs](https://azure.microsoft.com/updates?id=default-outbound-access-for-vms-in-azure-will-be-retired-transition-to-a-new-method-of-internet-access) will retire on September 30, 2025. After September 30, 2025, the following network settings must be in place to enable Azure Managed Lustre.
+By default, no specific changes need to be made to enable Azure Managed Lustre. If your environment includes restricted network or security policies, the following guidance should be considered:
 
 | Access type | Required network settings |
 |-------------|---------------------------|
