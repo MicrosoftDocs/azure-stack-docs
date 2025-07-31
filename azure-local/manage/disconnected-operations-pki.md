@@ -313,15 +313,15 @@ You have a helper method in the **OperationsModule** that can help you populate 
 Here's an example on how to populate the required parameters:
 
 ```powershell
-$oidcCertChain = Get-CertChainInfo -endpoint 'https://adfs.azurestack.local'
-$ldapsCertChain = Get-CertChainInfo -endpoint 'https://dc01.azurestack.local'
+$oidcCertChain = Get-CertificateChainFromEndpoint -endpoint 'https://adfs.azurestack.local'
+$ldapsCertChain = Get-CertificateChainFromEndpoint -endpoint 'https://dc01.azurestack.local'
 ```
 
-Here's an example of the output from Get-CertChainInfo
+Here's an example of the output from Get-CertificateChainFromEndpoint
 
 ```powershell
 # Returns: System.Security.Cryptography.X509Certificates.X509Certificate2[]
->> Get-CertChainInfo
+>> Get-CertificateChainFromEndpoint
 >>
 Thumbprint                                Subject                                                                                                
 ----------                                -------                                                                                                
