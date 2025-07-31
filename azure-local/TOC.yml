@@ -97,6 +97,8 @@ items:
       href: plan/network-patterns-sdn-considerations.md
   - name: Review cloud deployment network considerations
     href: plan/cloud-deployment-network-considerations.md
+  - name: Review Azure Arc gateway
+    href: deploy/deployment-azure-arc-gat
   - name: Review security
     items:
     - name: About security features
@@ -135,18 +137,7 @@ items:
     - name: 6B. Deploy via ARM template
       href: deploy/deployment-azure-resource-manager-template.md
 
-  - name: Deploy with Arc gateway
-    items:
-    - name: About Arc gateway
-      href: deploy/deployment-azure-arc-gateway-overview.md
-    - name: Choose a proxy option
-      items:
-      - name: Configure proxy manually
-        href: deploy/deployment-azure-arc-gateway-configure-manually.md
-      - name: Configure proxy via Arc script
-        href: deploy/deployment-azure-arc-gateway-configure-via-script.md
-      - name: Configure without a proxy
-        href: deploy/deployment-azure-arc-gateway-use-without-proxy.md
+
   - name: Deploy using local identity with Key Vault
     href: deploy/deployment-local-identity-with-key-vault.md
   - name: Deploy workloads
