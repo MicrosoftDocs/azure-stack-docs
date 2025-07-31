@@ -66,9 +66,7 @@ Some of the advantages of the telemetry and diagnostics extension include:
 
 ## Prerequisites
 
-To use the telemetry and diagnostics extension, you must have:
-
-- An Azure Local instance deployed and running.
+To use the telemetry and diagnostics extension, you must have an Azure Local instance deployed and running.
 
 ## Data collection consent
 

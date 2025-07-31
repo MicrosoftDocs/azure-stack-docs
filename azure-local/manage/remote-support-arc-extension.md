@@ -13,24 +13,24 @@ ms.date: 07/31/2025
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
-This article provides a brief overview of the Remote Support Arc extension and remote support in Azure Local. It describes the benefits, scenarios, and commands available for Microsoft support during a remote support session.
+This article gives an overview of the Remote Support Arc extension and remote support in Azure Local. Learn about the benefits, scenarios, and commands that Microsoft support uses during a remote support session.
 
 ## About the Remote Support Arc extension
 
-The Remote Support Arc extension, listed as **AzureEdgeRemoteSupport** in the Azure portal, simplifies setup and improves support efficiency. It comes preinstalled on all system nodes and enables key capabilities like configuring scheduled tasks for [Just Enough Administration](/powershell/scripting/security/remoting/jea/overview?view=powershell-7.5&preserve-view=true). This extension lays the groundwork for secure, streamlined support interactions.
+The Remote Support Arc extension, listed as **AzureEdgeRemoteSupport** in the Azure portal, simplifies setup and improves support efficiency. It's preinstalled on all system nodes and lets you set up scheduled tasks for [Just Enough Administration](/powershell/scripting/security/remoting/jea/overview?view=powershell-7.5&preserve-view=true). This extension sets the foundation for secure, streamlined support interactions.
 
-Remote support, on the other hand, is the actual process where a Microsoft support professional connects to your device to help resolve issues. With the extension in place, support personnel can securely access your system, perform limited troubleshooting or repair tasks, and resolve your case faster.
+Remote support is the process where a Microsoft support professional connects to your device to help fix issues. With the extension, support personnel can securely access your system, do limited troubleshooting or repair tasks, and fix your case faster.
 
-For more information on remote support and how to enable it, see [Get remote support](./get-remote-support.md).
+For more information about remote support and how to turn it on, see [Get remote support](./get-remote-support.md).
 
 ## Benefits
 
-Remote support and using the extension gives you the ability to:
+Remote support and using the extension lets you:
 
-- **Resolve issues faster**: No need to wait for scheduled meetings. Microsoft support can address your problems right away.
-- **Stay informed**: You can access and view detailed records of all actions whenever you want.
-- **Manage access**: Grant just-in-time authenticated access for each incident, specifying the level and duration of access.
-- **Revoke access anytime**: You can withdraw consent anytime to end the remote session. Access is automatically disabled once the consent period ends.
+- **Resolve issues faster**: Don't wait for scheduled meetings. Microsoft support fixes your problems right away.
+- **Stay informed**: View detailed records of all actions anytime.
+- **Manage access**: Grant just-in-time authenticated access for each incident, and specify the level and duration of access.
+- **Revoke access anytime**: Withdraw consent anytime to end the remote session. Access automatically ends when the consent period ends.
 
 ## Scenarios for remote support
 
