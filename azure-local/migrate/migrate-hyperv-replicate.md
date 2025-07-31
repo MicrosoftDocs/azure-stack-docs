@@ -5,6 +5,7 @@ author: alkohli
 ms.topic: how-to
 ms.date: 04/08/2025
 ms.author: alkohli
+ms.custom: sfi-image-nochange
 ---
 
 # Discover and replicate Hyper-V VMs for migration to Azure Local using Azure Migrate (preview)

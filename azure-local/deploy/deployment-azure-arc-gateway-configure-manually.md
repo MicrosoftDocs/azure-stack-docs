@@ -6,6 +6,7 @@ ms.topic: how-to
 ms.date: 04/22/2025
 ms.author: alkohli
 ms.service: azure-local
+ms.custom: sfi-image-nochange
 ---
 
 # Configure Arc proxy manually for Azure gateway on Azure Local (preview)

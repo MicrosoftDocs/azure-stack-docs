@@ -4,9 +4,12 @@ description: This article describes how to manage Azure Arc extensions on Azure 
 author: ronmiab
 ms.author: robess
 ms.topic: how-to
-ms.custom: devx-track-azurecli, devx-track-azurepowershell
 ms.reviewer: arduppal
 ms.date: 06/12/2025
+ms.custom:
+  - devx-track-azurecli
+  - devx-track-azurepowershell
+  - sfi-image-nochange
 ---
 
 # Azure Arc extension management on Azure Local

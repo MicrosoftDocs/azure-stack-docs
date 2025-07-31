@@ -6,6 +6,7 @@ author: pauljewellmsft
 ms.author: pauljewell
 ms.date: 04/30/2025
 ms.reviewer: dsundarraj
+ms.custom: sfi-image-nochange
 
 # Intent: As an IT Pro, XXX.
 # Keyword: 

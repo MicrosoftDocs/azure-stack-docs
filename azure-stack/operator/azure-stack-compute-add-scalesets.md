@@ -7,6 +7,7 @@ ms.date: 07/22/2021
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 10/22/2019
+ms.custom: sfi-image-nochange
 
 # Intent: As an Azure Stack operator, I want to make virtual machine scale sets available in Azure Stack so I can deploy and manage a set of identical VMs.
 # Keyword: virtual machine scale sets azure stack

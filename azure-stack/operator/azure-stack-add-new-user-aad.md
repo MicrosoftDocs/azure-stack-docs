@@ -3,12 +3,13 @@ title: Add a new Azure Stack Hub user account in Microsoft Entra ID
 description: Learn how to create a user account in Microsoft Entra ID, so you can explore the user portal.
 author: sethmanheim
 ms.topic: how-to
-ms.custom:
-  - no-azure-ad-ps-ref
 ms.date: 08/15/2024
 ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 06/17/2021
+ms.custom:
+  - no-azure-ad-ps-ref
+  - sfi-image-nochange
 
 # Intent: As an Azure Stack Hub operator, I want to add a new user account in Microsoft Entra ID so I can explore the user portal and test offers and plans.
 # Keyword: user account azure stack hub

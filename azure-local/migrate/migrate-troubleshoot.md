@@ -6,7 +6,9 @@ ms.topic: how-to
 ms.date: 07/10/2025
 ms.author: alkohli
 ms.reviewer: alkohli
-ms.custom: linux-related-content
+ms.custom:
+  - linux-related-content
+  - sfi-image-nochange
 ---
 
 # Troubleshoot issues migrating VMs to Azure Local via Azure Migrate (preview)

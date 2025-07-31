@@ -7,6 +7,7 @@ ms.date: 06/13/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
+ms.custom: sfi-image-nochange
 ---
 
 

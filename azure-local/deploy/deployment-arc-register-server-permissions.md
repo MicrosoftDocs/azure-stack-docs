@@ -6,7 +6,9 @@ ms.topic: how-to
 ms.date: 07/30/2025
 ms.author: alkohli
 ms.service: azure-local
-ms.custom: devx-track-azurepowershell
+ms.custom:
+  - devx-track-azurepowershell
+  - sfi-image-nochange
 ---
 
 # Register your machines and assign permissions for Azure Local deployment

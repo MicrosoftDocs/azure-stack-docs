@@ -6,6 +6,7 @@ ms.topic: how-to
 ms.date: 01/30/2025
 ms.author: sethm
 ms.lastreviewed: 10/19/2020
+ms.custom: sfi-image-nochange
 
 # Intent: As an Azure Stack operator, I want to prepare my PKI certificates for Azure Stack deployment.
 # Keyword: prepare PKI certificates azure stack

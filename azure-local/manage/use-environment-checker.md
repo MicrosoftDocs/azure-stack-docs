@@ -6,6 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
 ms.date: 12/27/2024
+ms.custom: sfi-image-nochange
 ---
 
 # Evaluate the deployment readiness of your environment for Azure Local

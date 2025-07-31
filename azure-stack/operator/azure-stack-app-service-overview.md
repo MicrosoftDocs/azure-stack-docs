@@ -7,6 +7,7 @@ ms.date: 01/24/2025
 ms.author: sethm
 ms.reviewer: anwestg
 ms.lastreviewed: 01/13/2019
+ms.custom: sfi-image-nochange
 
 # Intent: As an Azure Stack operator, I want an overview of App Service on Azure Stack.
 # Keyword: app service overview azure stack

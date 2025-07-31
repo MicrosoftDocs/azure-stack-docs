@@ -6,6 +6,7 @@ ms.topic: how-to
 ms.date: 01/16/2025
 ms.author: sethm
 ms.lastreviewed: 10/08/2019
+ms.custom: sfi-image-nochange
 
 # Intent: As an Azure Stack Hub user, I want to find my Cloud ID.
 # Keywords: find cloud id

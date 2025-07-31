@@ -7,7 +7,9 @@ ms.date: 05/07/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
-ms.custom: devx-track-arm-template
+ms.custom:
+  - devx-track-arm-template
+  - sfi-image-nochange
 ---
 
 # Deploy Azure Local via Azure Resource Manager deployment template

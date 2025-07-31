@@ -6,6 +6,7 @@ author: alkohli
 ms.author: alkohli
 ms.service: azure-local
 ms.date: 03/03/2025
+ms.custom: sfi-image-nochange
 ---
 
 # Register your Azure Local machines via the local UI (preview)
