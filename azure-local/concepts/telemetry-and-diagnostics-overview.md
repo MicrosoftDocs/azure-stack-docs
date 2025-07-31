@@ -12,7 +12,7 @@ ms.date: 07/31/2025
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2-22h2.md)]
 
-This article provides a brief overview, benefits, and available options for the telemetry and diagnostics extension used for your Azure Local.
+This article gives an overview, lists benefits, and describes options for the telemetry and diagnostics extension in Azure Local.
 
 ## About the extension
 
@@ -54,19 +54,19 @@ Repair Description: N/A
 
 ## Benefits
 
-Some of the advantages of the telemetry and diagnostics extension include:
+Some advantages of the telemetry and diagnostics extension include:
 
-- **Improved compliance:** Enables the telemetry and diagnostics data to comply with regional service and data residency requirements during data uploads.
-  
-- **Simplified log gathering and faster case resolution:** Lets you easily collect diagnostics logs. These logs are used by Microsoft Support and engineering team to resolve any system issues quickly.
+- **Improved compliance:** Lets telemetry and diagnostics data comply with regional service and data residency requirements during data uploads.
 
-- **Reduced update impact:** Allows nondisruptive update of your Azure Local instance and doesn't require a reboot of the host machine.
+- **Simplified log gathering and faster case resolution:** Lets you easily collect diagnostics logs. Microsoft Support and the engineering team use these logs to fix system issues quickly.
 
-- **Resource consumption controls:** Ensures that no more than 5% CPU is consumed. Control of the process is enforced via the Azure Arc extension framework.
+- **Reduced update impact:** Lets you update your Azure Local instance without disruption and doesn't require a reboot of the host machine.
+
+- **Resource consumption controls:** Makes sure that no more than 5 percent CPU is used. The Azure Arc extension framework enforces control of the process.
 
 ## Prerequisites
 
-To use the telemetry and diagnostics extension, you must have an Azure Local instance deployed and running.
+To use the telemetry and diagnostics extension, make sure you have an Azure Local instance is deployed and running.
 
 ## Data collection consent
 
@@ -74,11 +74,11 @@ Microsoft collects data in accordance with its [standard privacy practices](http
 
 If you withdraw your consent for data collection, any data collected before withdrawal isn't affected. Microsoft continues to handle and use the data collected in accordance with the terms that were in place at the time of the data collection.
 
-Here are a couple of things to consider with data collection:
+Consider these points about data collection:
 
-- Understand how Microsoft handles and uses your data. Review Microsoft's privacy practices and policies.
+- Learn how Microsoft handles and uses your data. Review Microsoft's privacy practices and policies.
 
-- Understand the implications of consenting to data collection and the withdrawal of consent. Consult with legal or privacy professionals to ensure complete understanding.
+- Learn the implications of consenting to data collection and withdrawing consent. Consult legal or privacy professionals to make sure you understand.
 
 ### Data privacy considerations
 
@@ -103,13 +103,13 @@ To collect and send diagnostic logs to Microsoft using the Azure portal, follow 
 1. In the left pane, under **Settings**, select **Diagnostics and Remote Support**.
 1. Select **Send logs**.
 1. In the Diagnostics pane, set your **Log start time** and **Log end time**.
-1. Click the **Collect and upload logs** button.
+1. Select the **Collect and upload logs** button.
 
 :::image type="content" source="../concepts/media/telemetry-and-diagnostics-overview/send-logs-azure-portal.png" alt-text="Screenshot of the steps to collect and send diagnostics logs via the Azure portal." lightbox="../concepts/media/telemetry-and-diagnostics-overview/send-logs-azure-portal.png":::
 
 ## Support operations
 
-You can grant remote access to Microsoft support by using remote support operations. After enabling remote support, assign a specific access level to Microsoft support based on your requirements. For more information, see [Enable remote support diagnostics](../manage/get-remote-support.md#enable-remote-support-diagnostics) and the [List of Microsoft support operations](../manage/remote-support-arc-extension.md#list-of-microsoft-support-operations).
+You can grant remote access to Microsoft support by using remote support operations. After you enable remote support, assign a specific access level to Microsoft support based on your requirements. For more information, see [Enable remote support diagnostics](../manage/get-remote-support.md#enable-remote-support-diagnostics) and the [List of Microsoft support operations](../manage/remote-support-arc-extension.md#list-of-microsoft-support-operations).
 
 ## Next step
 

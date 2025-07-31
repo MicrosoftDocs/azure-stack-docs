@@ -13,19 +13,19 @@ ms.date: 07/31/2025
 [!INCLUDE [hci-applies-to-23h2-22h2](../includes/hci-applies-to-23h2-22h2.md)]
 
 This article explains how to get remote support for the Azure Stack HCI operating system for Azure Local.
-It provides an overview of remote support, the terms and conditions, and the steps to enable remote support on your Azure Local. It also includes information about configuring proxy settings, submitting a support request, and other remote support operations.
+It gives an overview of remote support, the terms and conditions, and the steps to enable remote support on your Azure Local. It also covers setting up proxy settings, submitting a support request, and other remote support tasks.
 
 ## Overview
 
-Remote support lets a Microsoft support professional resolve your support case faster by allowing access to your device for limited troubleshooting and repair. You can enable remote support by granting consent and choosing the access level and duration.
+Remote support lets a Microsoft support professional fix your support case faster by letting them access your device for limited troubleshooting and repair. You can enable remote support by granting consent and choosing the access level and duration.
 
-:::image type="content" source="media/get-remote-support/remote-support-workflow.png" alt-text="Process flow of authenticated access between customer and Microsoft support for diagnostics, troubleshooting, and remediation actions." lightbox="media/get-remote-support/remote-support-workflow.png" :::
+:::image type="content" source="media/get-remote-support/remote-support-workflow.png" alt-text="Diagram that shows authenticated access between the customer and Microsoft support for diagnostics, troubleshooting, and remediation actions." lightbox="media/get-remote-support/remote-support-workflow.png" :::
 
-After you enable remote support, Microsoft support gets just-in-time (JIT) limited time access to your device. Access is provided over a secure, audited, and compliant channel to ensure all activities are monitored. Microsoft support can only access your device after you submit a support request which ensures that your device remains secure and your privacy is maintained.
+After you enable remote support, Microsoft support gets just-in-time (JIT) limited time access to your device. Access is provided over a secure, audited, and compliant channel to ensure all activities are monitored. Microsoft support can only access your device after you submit a support request, which ensures that your device remains secure and your privacy is maintained.
 
 ## Remote support terms and conditions
 
-The following are the data handling terms and conditions for remote access. Carefully read them before granting access. Everything under this section should be remain as is without making any changes to the text.
+The following are the data handling terms and conditions for remote access. Carefully read them before granting access. Everything under this section should remain as is without making any changes to the text.
 
 > By approving this request, the Microsoft support organization or the Azure engineering team supporting this feature ("Microsoft Support Engineer") will be given direct access to your device for troubleshooting purposes and/or resolving the technical issue described in the Microsoft support case.
 >
@@ -35,11 +35,11 @@ The following are the data handling terms and conditions for remote access. Care
 >
 > Any data previously collected with your consent will not be affected by the revocation of your permission.
 
-For more information about the personal data that Microsoft processes, how Microsoft processes it, and for what purposes, review [Microsoft Privacy Statement](https://privacy.microsoft.com/privacystatement).
+For more information about the personal data that Microsoft processes, how Microsoft processes it, and for what purposes, see the [Microsoft Privacy Statement](https://privacy.microsoft.com/privacystatement).
 
 ## Workflow
 
-The high-level workflow to enable remote support is as follows:
+Here's the high-level workflow to enable remote support:
 
 - [Configure proxy settings](#configure-proxy-settings)
 - [Enable remote support via PowerShell](#enable-remote-support-via-powershell)
@@ -48,7 +48,7 @@ The high-level workflow to enable remote support is as follows:
 
 ## Configure proxy settings
 
-If you use a proxy with Azure Local, add the following endpoints to your allowlist:
+If you use a proxy with Azure Local, add these endpoints to your allowlist:
 
 - \*.servicebus.windows.net
 - \*.core.windows.net
@@ -68,7 +68,7 @@ To enable remote support on your Azure Local, follow these steps:
 
 1. On the client you use to connect to your system, run PowerShell as an admin.
 
-2. Open a remote PowerShell session to a node on your Azure Local. Run the following command and enter your node credentials when prompted:
+1. Open a remote PowerShell session to a node on your Azure Local. Run the following command, and enter your node credentials when prompted:
 
     ```powershell
     $cred = Get-credential
@@ -81,10 +81,10 @@ To enable remote support on your Azure Local, follow these steps:
     PS C:\Users\Administrator> etsn -ComputerName v-host1 -Credential $cred
     ```
 
-3. To enable remote support, run this command:
+1. To enable remote support, run this command:
 
     ```powershell
-    Enable-RemoteSupport -AccessLevel <Diagnostics Or DiagnosticsRepair> -ExpireInMinutes <1440>
+    Enable-RemoteSupport -AccessLevel <Diagnostics or DiagnosticsRepair> -ExpireInMinutes <1440>
     ```
 
     Here's sample output:
@@ -124,7 +124,7 @@ To enable remote support on your Azure Local, follow these steps:
     >
     > For more information, see [Error handling](#error-handling).
 
-There are various operations that you can perform to grant remote access for Microsoft support, after you enable remote support. The next sections detail some examples of those operations.
+After you enable remote support, you can perform different operations to grant remote access for Microsoft Support. The next sections show some examples.
 
 ## Enable remote support diagnostics
 
@@ -140,7 +140,7 @@ Use the `ExpireInMinutes` parameter to set the duration of the session. In the e
 
 You can set `ExpireInMinutes` a minimum duration of 60 minutes (one hour) and a maximum of 20,160 minutes (14 days).
 
-If duration isn't defined, the remote session expires in 480 (8 hours) by default.
+If you don't define a duration, the remote session expires in 480 minutes (8 hours) by default.
 
 ### Enable remote support for diagnostics and repair
 
@@ -150,13 +150,13 @@ In this example, you grant remote support access for diagnostic and repair relat
 Enable-RemoteSupport -AccessLevel DiagnosticsRepair
 ```
 
-For information on access levels, see [List of Microsoft support operations](./remote-support-arc-extension.md#list-of-microsoft-support-operations).
+For information about access levels, see [List of Microsoft support operations](./remote-support-arc-extension.md#list-of-microsoft-support-operations).
 
-For information on other available operations you can use, see [Other remote support operations](#other-remote-support-operations).
+For information on other available operations, see [Other remote support operations](#other-remote-support-operations).
 
 ## Submit a support request
 
-Microsoft support can access your device only after a support request is submitted. For information about how to create and manage support requests, see [Create an Azure support request](/azure/azure-portal/supportability/how-to-create-azure-support-request).
+Microsoft support can access your device only after you submit a support request. To learn how to create and manage support requests, see [Create an Azure support request](/azure/azure-portal/supportability/how-to-create-azure-support-request).
 
 ## Other remote support operations
 
@@ -164,7 +164,7 @@ There are other operations you can perform to get information about access or a 
 
 ### Retrieve existing consent grants
 
-In this example, you retrieve any previously granted consent. The result includes expired consent in the last 30 days.
+In this example, you retrieve any previously granted consent. The result includes expired consent from the last 30 days.
 
 ```powershell
 Get-RemoteSupportAccess -IncludeExpired
@@ -180,7 +180,7 @@ Disable-RemoteSupport
 
 ### List existing remote sessions
 
-In this example, you list all the remote sessions that were made to the device since FromDate.
+In this example, you list all remote sessions made to the device since FromDate.
 
 ```powershell
 Get-RemoteSupportSessionHistory -FromDate <Date>
@@ -188,20 +188,20 @@ Get-RemoteSupportSessionHistory -FromDate <Date>
 
 ### Get details on a specific remote session
 
-In this example, you get the details for remote session with the ID SessionID.
+In this example, you get the details for the remote session with the ID SessionID.
 
 ```powershell
 Get-RemoteSupportSessionHistory -IncludeSessionTranscript -SessionId <SessionId>
 ```
 
 > [!NOTE]
-> Session transcript details are retained for 90 days. You can retrieve details for a remote session within 90 days after the session.
+> Session transcript details are kept for 90 days. You can retrieve details for a remote session within 90 days after the session.
 
 ## Error handling
 
-When you enable remote support on Azure Local, you may encounter an error. The following section describes the error message, its cause, and suggested resolutions.
+When you enable remote support on Azure Local, you might encounter an error. This section describes the error message, its cause, and suggested resolutions.
 
-When you run the enable remote support command for the first time, you may see the following error message:
+When you run the enable remote support command for the first time, you might see the following error message:
 
 ```console
 PS C:\Users\Administrator> etsn -ComputerName v-host1 -Credential $cred
@@ -220,7 +220,7 @@ Processing data from remote server NodeName failed with the following error mess
 
 **Error Message**: Processing data from remote server `NodeName` failed with the following error message: The I/O operation has been aborted because of either a thread exit or an application request.
 
-**Cause**: When you enable remote support, a Windows Remote Management (WinRM) service restart is required to active Just Enough Administration (JEA). During the remote support JEA configuration, the WinRM restarts twice, which might disrupt the PowerShell session to the node.
+**Cause**: When you enable remote support, a Windows Remote Management (WinRM) service restart is required to activate Just Enough Administration (JEA). During the remote support JEA configuration, WinRM restarts twice, which can disrupt the PowerShell session to the node.
 
 **Suggested resolutions**: You can choose one of the following options to resolve this error and enable remote support:
 

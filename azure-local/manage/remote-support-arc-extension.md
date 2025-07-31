@@ -38,31 +38,29 @@ The scenarios in this list highlight the critical role of remote support in effi
 
 |Scenario | Description|
 |---------|------------|
-|Log Collection Initiation | Use remote support to initiate log collection for diagnostic purposes. This includes the initiation of the command `Send-Diagnosticdata`. |
-|Azure Local Information Retrieval | Obtain details related to Azure Local, including node connections, Arc integration, billing, licensing, registration, subscription information, and test connections to Azure Local. |
-|Hyper-V Troubleshooting | Retrieve comprehensive information about Hyper-V issues, such as virtual hard disks, Hyper-V hosts, virtual switches, virtual hard disk sets, BIOS settings, VMConnect, firmware details, GPU configuration, virtual network adapters, CPU settings, security configurations, and virtual machine settings.<br></br> Additionally, address Access Control Lists (ACL) settings for network adapters.|
-|Observability Pipeline Testing | Verify the functionality of the observability pipeline to ensure the ability to send data to Microsoft.|
-|Cluster Information Retrieval | Retrieve relevant details about clusters, cluster groups, cluster nodes, cluster resources, shared volumes, and Cluster-Aware Updating (CAU) specifics. |
-| Network Adapter Details | Access basic properties of network adapters, configure Remote Direct Memory Access (RDMA) settings, examine path configurations, review network connection specifics, gather virtual port information, capture packet details, manage firewall settings, and explore NAT configuration details.<br></br> Additionally, retrieve information about VM Switches and IPsec settings. |
-|Storage, Clusters, and Networking Insights | Gather information related to storage enclosures, storage-related jobs, storage nodes, storage subsystems, virtual disks, volumes, Storage Spaces Direct (S2D) Clusters, fault domain details, cluster group sets, available disks, network specifics for clusters, server message block client information, and disk images. |
+|Log collection initiation | Use remote support to initiate log collection for diagnostic purposes. This includes the initiation of the command `Send-Diagnosticdata`. |
+|Azure Local information retrieval | Obtain details related to Azure Local, including node connections, Arc integration, billing, licensing, registration, subscription information, and test connections to Azure Local. |
+|Hyper-V troubleshooting | Get comprehensive information about Hyper-V issues, such as virtual hard disks, Hyper-V hosts, virtual switches, virtual hard disk sets, BIOS settings, VMConnect, firmware details, GPU configuration, virtual network adapters, CPU settings, security configurations, and virtual machine settings.<br></br> Additionally, address Access Control Lists (ACL) settings for network adapters.|
+|Observability pipeline testing | Check the functionality of the observability pipeline to ensure the ability to send data to Microsoft.|
+|Cluster information retrieval | Get relevant details about clusters, cluster groups, cluster nodes, cluster resources, shared volumes, and Cluster-Aware Updating (CAU) specifics. |
+| Network adapter details | Access basic properties of network adapters, configure Remote Direct Memory Access (RDMA) settings, examine path configurations, review network connection specifics, gather virtual port information, capture packet details, manage firewall settings, and explore NAT configuration details. <br></br> Additionally, get information about VM switches and IPsec settings. |
+|Storage, clusters, and networking insights | Gather information related to storage enclosures, storage jobs, storage nodes, storage subsystems, virtual disks, volumes, Storage Spaces Direct (S2D) Clusters, fault domain, cluster group sets, available disks, cluster network details, server message block client information, and disk images. |
 
 ## List of Microsoft support operations
 
-You can grant Microsoft support one of the following access levels for remote support:
+For remote support, you can grant Microsoft support one of the following access levels for remote support:
 
-- [**Diagnostics**](#access-level-diagnostics): To view diagnostic info and logs
-- [**Diagnostics and repair**](#access-level-diagnostics-and-repair): To view diagnostic info and logs plus perform software repairs
-
-The following section lists the allowed commands that Microsoft support can execute during a remote support session.
+- [**Diagnostics**](#access-level-diagnostics): View diagnostic info and logs
+- [**Diagnostics and repair**](#access-level-diagnostics-and-repair): View diagnostic info and logs plus perform software repairs.
 
 ### Access level: Diagnostics
 
-The **Diagnostics** access level includes the following commands that Microsoft support can execute during a remote support session. The commands are listed alphabetically and grouped by module or functionality.
+The **Diagnostics** access level includes commands that Microsoft support can run during a remote support session. The commands are listed alphabetically and grouped by module or functionality.
 
 #### Default
 
 <details>
-<summary>Expand this section to see commands.</summary>
+<summary>Expand this section to see the commands.</summary>
 
 ```powershell
     Clear-Host            
@@ -87,7 +85,7 @@ The **Diagnostics** access level includes the following commands that Microsoft 
 #### Azure Local
 
 <details>
-<summary>Expand this section to see commands.</summary>
+<summary>Expand this section to see the commands.</summary>
 
 ```powershell
     Get-AzureStackHCI
@@ -456,4 +454,4 @@ The **Diagnostics and Repair** access level includes the following commands in a
 ## Next step
 
 - Learn more about [Azure Arc extension management on Azure Local](../manage/arc-extension-management.md).
-- Learn more about and how to [Get remote support](../manage/get-remote-support.md).
+- Learn how to [Get remote support](../manage/get-remote-support.md).
