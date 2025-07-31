@@ -188,7 +188,7 @@ Before you begin, make sure to complete the following prerequisites:
 
 1. Provide the interface name, IP allocation as static or Dynamic Host Configuration Protocol (DHCP), IP address, subnet, gateway, and preferred DNS servers. Optionally, enter an alternate DNS server.
 
-   :::image type="content" source="media/deployment-with-azure-arc-gateway/basics-tab-2.png" alt-text="Screenshot of the Basics tab with Network settings configured in the Configurator app for Azure Local." lightbox="media/deployment-with-azure-arc-gateway/basics-tab-2.png/basics-tab-1.png":::
+   :::image type="content" source="media/deployment-with-azure-arc-gateway/basics-tab-2.png" alt-text="Screenshot of the Basics tab with Network settings configured in the Configurator app for Azure Local." lightbox="media/deployment-with-azure-arc-gateway/basics-tab-2.png":::
 
    > [!IMPORTANT]
    > Make sure that the IPs you assign are free and not in use.  

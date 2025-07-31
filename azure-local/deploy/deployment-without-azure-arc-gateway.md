@@ -137,7 +137,7 @@ Make sure the following prerequisites are met before proceeding:
 
 1. During the Arc registration process, you must authenticate with your Azure account. The console window displays a code that you must enter in the URL, displayed in the app, in order to authenticate. Follow the instructions to complete the authentication process.
 
- :::image type="content" source="media/deployment-without-azure-arc-gateway/authentication-device-code.png" alt-text="Screenshot of the Azure Local machines in the resource group after the successful registration." lightbox="media/deployment-without-azure-arc-gateway/authentication-device-code.png":::
+ :::image type="content" source="media/deployment-without-azure-arc-gateway/authentication-device-code.png" alt-text="Screenshot of the console window with device code and URL for authentication." lightbox="media/deployment-without-azure-arc-gateway/authentication-device-code.png":::
 
 Once the registration is complete, the Azure Local machines are registered in Azure Arc.
 
@@ -231,7 +231,7 @@ Before you begin, make sure that you complete the following prerequisites:
 
 1. On the **Arc agent setup** tab, provide the following inputs:
 
-   :::image type="content" source="media/deployment-without-azure-arc-gateway/arc-agent--gateway.png" alt-text="Screenshot of the Arc agent setup tab in the Configurator app for Azure Local." lightbox="media/deployment-without-azure-arc-gateway/arc-agent-setup-tab-1.png":::
+   :::image type="content" source="media/deployment-without-azure-arc-gateway/arc-agent-setup-tab-no-gateway.png" alt-text="Screenshot of the Arc agent setup tab in the Configurator app for Azure Local." lightbox="media/deployment-without-azure-arc-gateway/arc-agent-setup-tab-no-gateway.png":::
 
    1. The **Cloud type** is populated automatically as `Azure`.
    
@@ -369,7 +369,7 @@ Make sure the following prerequisites are met before proceeding:
 
 1. During the Arc registration process, you must authenticate with your Azure account. The console window displays a code that you must enter in the URL, displayed in the app, in order to authenticate. Follow the instructions to complete the authentication process.
 
-     :::image type="content" source="media/deployment-without-azure-arc-gateway/authentication-device-code.png" alt-text="Screenshot of the Azure Local machines in the resource group after the successful registration." lightbox="media/deployment-without-azure-arc-gateway/authentication-device-code.png":::
+     :::image type="content" source="media/deployment-without-azure-arc-gateway/authentication-device-code.png" alt-text="Screenshot of the console window with device code and URL for authentication." lightbox="media/deployment-without-azure-arc-gateway/authentication-device-code.png":::
 
 
 ## Step 3: Verify the setup is successful

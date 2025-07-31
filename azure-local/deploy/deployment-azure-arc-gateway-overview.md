@@ -173,7 +173,7 @@ This operation can take a couple of minutes.
 
 ## Next steps
 
-- [Register Azure Local machines with Azure Arc gateway](deployment-azure-arc-with-gateway.md)
+- [Register Azure Local machines with Azure Arc gateway](./deployment-with-azure-arc-gateway.md)
 
 
 ::: moniker-end
