@@ -137,7 +137,7 @@ Make sure the following prerequisites are met before proceeding:
 
 1. During the Arc registration process, you must authenticate with your Azure account. The console window displays a code that you must enter in the URL, displayed in the app, in order to authenticate. Follow the instructions to complete the authentication process.
 
- :::image type="content" source="media/deployment-with-azure-arc-gateway/authentication-device-code.png" alt-text="Screenshot of the Azure Local machines in the resource group after the successful registration." lightbox="media/deployment-with-azure-arc-gateway/authentication-device-code.png":::
+ :::image type="content" source="media/deployment-without-azure-arc-gateway/authentication-device-code.png" alt-text="Screenshot of the Azure Local machines in the resource group after the successful registration." lightbox="media/deployment-without-azure-arc-gateway/authentication-device-code.png":::
 
 Once the registration is complete, the Azure Local machines are registered in Azure Arc.
 
@@ -146,9 +146,9 @@ Once the registration is complete, the Azure Local machines are registered in Az
 After the script completes successfully on all the machines, verify that your machines are registered with Arc.
 
 1. Go to the Azure portal.
-2. Go to the resource group associated with the registration. The machines appear within the specified resource group as **Machine - Azure Arc** type resources.
+1. Go to the resource group associated with the registration. The machines appear within the specified resource group as **Machine - Azure Arc** type resources.
 
-   :::image type="content" source="media/deployment-arc-register-server-permissions/arc-servers-registered-1.png" alt-text="Screenshot of the Azure Local machines in the resource group after the successful registration." lightbox="./media/deployment-arc-register-server-permissions/arc-servers-registered-1.png":::
+   :::image type="content" source="media/deployment-without-azure-arc-gateway/arc-servers-registered-1.png" alt-text="Screenshot of the Azure Local machines in the resource group after the successful registration." lightbox="./media/deployment-without-azure-arc-gateway/arc-servers-registered-1.png":::
 
 > [!NOTE]
 > Once an Azure Local machine is registered with Azure Arc, the only way to undo the registration is to install the operating system again on the machine.
@@ -187,11 +187,11 @@ Before you begin, make sure that you complete the following prerequisites:
 
 1. On the **Basics** tab, configure one network interface that is connected to the internet. Select the **Pencil icon** to modify network interface settings.
 
-   :::image type="content" source="media/deployment-arc-register-configurator-app/basics-tab-1.png" alt-text="Screenshot of the Basics tab in the Configurator app for Azure Local." lightbox="media/deployment-arc-register-configurator-app/basics-tab-2.png":::
+   :::image type="content" source="media/deployment-without-azure-arc-gateway/basics-tab-1.png" alt-text="Screenshot of the Basics tab in the Configurator app for Azure Local." lightbox="media/deployment-without-azure-arc-gateway/basics-tab-2.png":::
 
 1. Provide the interface name, IP allocation as static or DHCP, IP address, subnet, gateway, and preferred DNS servers. Optionally, enter an alternate DNS server.
 
-   :::image type="content" source="media/deployment-arc-register-configurator-app/basics-tab-2.png" alt-text="Screenshot of the Basics tab with Network settings configured in the Configurator app for Azure Local." lightbox="media/deployment-arc-register-configurator-app/basics-tab-1.png":::
+   :::image type="content" source="media/deployment-without-azure-arc-gateway/basics-tab-2.png" alt-text="Screenshot of the Basics tab with Network settings configured in the Configurator app for Azure Local." lightbox="media/deployment-without-azure-arc-gateway/basics-tab-1.png":::
 
    > [!IMPORTANT]
    > Make sure that the IPs you assign are free and not in use.  
@@ -200,7 +200,7 @@ Before you begin, make sure that you complete the following prerequisites:
 
 1. On the **Additional details** page, provide the following inputs and then select **Apply**.
 
-   :::image type="content" source="media/deployment-with-azure-arc-gateway/basics-tab-additional-details-with-proxy.png" alt-text="Screenshot of the Basics tab with additional details configured in the Configurator app for Azure Local." lightbox="media/deployment-with-azure-arc-gateway/basics-tab-additional-details-with-proxy.png":::
+   :::image type="content" source="media/deployment-without-azure-arc-gateway/basics-tab-additional-details-with-proxy.png" alt-text="Screenshot of the Basics tab with additional details configured in the Configurator app for Azure Local." lightbox="media/deployment-without-azure-arc-gateway/basics-tab-additional-details-with-proxy.png":::
 
    1. Select **ON** to enable **Remote desktop** protocol. Remote desktop protocol is disabled by default.
 
@@ -263,7 +263,7 @@ Before you begin, make sure that you complete the following prerequisites:
 
 1. During the Arc registration process, you must authenticate with your Azure account. The app displays a code that you must enter in the URL, displayed in the app, in order to authenticate. Follow the instructions to complete the authentication process.
 
-   :::image type="content" source="media/deployment-arc-register-configurator-app/setup-configuration-authentication.png" alt-text="Screenshot of the Arc agent sign in and registration dialog in the Configurator app for Azure Local." lightbox="media/deployment-arc-register-configurator-app/setup-configuration-authentication.png":::
+   :::image type="content" source="media/deployment-without-azure-arc-gateway/setup-configuration-authentication.png" alt-text="Screenshot of the Arc agent sign in and registration dialog in the Configurator app for Azure Local." lightbox="media/deployment-without-azure-arc-gateway/setup-configuration-authentication.png":::
 
 1. Once the configuration is complete, status for Arc configuration should display **Success (Open in Azure portal)**.
 
@@ -369,19 +369,17 @@ Make sure the following prerequisites are met before proceeding:
 
 1. During the Arc registration process, you must authenticate with your Azure account. The console window displays a code that you must enter in the URL, displayed in the app, in order to authenticate. Follow the instructions to complete the authentication process.
 
-     :::image type="content" source="media/deployment-with-azure-arc-gateway/authentication-device-code.png" alt-text="Screenshot of the Azure Local machines in the resource group after the successful registration." lightbox="media/deployment-with-azure-arc-gateway/authentication-device-code.png":::
-
-1. After the script completes successfully on all the machines, verify that your machines are registered with Arc. Go to the Azure portal and then go to the resource group associated with the registration. The machines appear within the specified resource group as **Machine - Azure Arc** type resources.
-
-   :::image type="content" source="media/deployment-arc-register-server-permissions/arc-servers-registered-1.png" alt-text="Screenshot of the Azure Local machines in the resource group after the successful registration." lightbox="./media/deployment-arc-register-server-permissions/arc-servers-registered-1.png":::
-
-> [!NOTE]
-> Once an Azure Local machine is registered with Azure Arc, the only way to undo the registration is to install the operating system again on the machine.
+     :::image type="content" source="media/deployment-without-azure-arc-gateway/authentication-device-code.png" alt-text="Screenshot of the Azure Local machines in the resource group after the successful registration." lightbox="media/deployment-without-azure-arc-gateway/authentication-device-code.png":::
 
 
 ## Step 3: Verify the setup is successful
 
-Once the deployment validation starts, connect to the first Azure Local machine from your system.
+1. After the script completes successfully on all the machines, verify that your machines are registered with Arc. Go to the Azure portal and then go to the resource group associated with the registration. The machines appear within the specified resource group as **Machine - Azure Arc** type resources.
+
+   :::image type="content" source="media/deployment-without-azure-arc-gateway/arc-servers-registered-1.png" alt-text="Screenshot of the Azure Local machines in the resource group after the successful registration." lightbox="./media/deployment-without-azure-arc-gateway/arc-servers-registered-1.png":::
+
+> [!NOTE]
+> Once an Azure Local machine is registered with Azure Arc, the only way to undo the registration is to install the operating system again on the machine.
 
 
 # [Via Configurator app (Preview)](#tab/app)
@@ -417,11 +415,11 @@ Before you begin, make sure that you complete the following prerequisites:
 
 1. On the **Basics** tab, configure one network interface that is connected to the internet. Select the **Pencil icon** to modify network interface settings.
 
-   :::image type="content" source="media/deployment-arc-register-configurator-app/basics-tab-1.png" alt-text="Screenshot of the Basics tab in the Configurator app for Azure Local." lightbox="media/deployment-arc-register-configurator-app/basics-tab-2.png":::
+   :::image type="content" source="media/deployment-without-azure-arc-gateway/basics-tab-1.png" alt-text="Screenshot of the Basics tab in the Configurator app for Azure Local." lightbox="media/deployment-without-azure-arc-gateway/basics-tab-1.png":::
 
 1. Provide the interface name, IP allocation as static or DHCP, IP address, subnet, gateway, and preferred DNS servers. Optionally, enter an alternate DNS server.
 
-   :::image type="content" source="media/deployment-arc-register-configurator-app/basics-tab-2.png" alt-text="Screenshot of the Basics tab with Network settings configured in the Configurator app for Azure Local." lightbox="media/deployment-arc-register-configurator-app/basics-tab-1.png":::
+   :::image type="content" source="media/deployment-without-azure-arc-gateway/basics-tab-2.png" alt-text="Screenshot of the Basics tab with Network settings configured in the Configurator app for Azure Local." lightbox="media/deployment-without-azure-arc-gateway/basics-tab-2.png":::
 
    > [!IMPORTANT]
    > Make sure that the IPs you assign are free and not in use.  
@@ -430,7 +428,7 @@ Before you begin, make sure that you complete the following prerequisites:
 
 1. On the **Additional details** page, provide the following inputs and then select **Apply**.
 
-   :::image type="content" source="media/deployment-arc-register-configurator-app/basics-tab-additional-details-1.png" alt-text="Screenshot of the Basics tab with additional details configured in the Configurator app for Azure Local." lightbox="media/deployment-arc-register-configurator-app/basics-tab-additional-details-1.png":::
+   :::image type="content" source="media/deployment-without-azure-arc-gateway/basics-tab-additional-details-1.png" alt-text="Screenshot of the Basics tab with additional details configured in the Configurator app for Azure Local." lightbox="media/deployment-without-azure-arc-gateway/basics-tab-additional-details-1.png":::
 
    1. Select **ON** to enable **Remote desktop** protocol. Remote desktop protocol is disabled by default.
 
@@ -448,7 +446,7 @@ Before you begin, make sure that you complete the following prerequisites:
 
 1. On the **Arc agent setup** tab, provide the following inputs:
 
-   :::image type="content" source="media/deployment-with-azure-arc-gateway/arc-agent-setup-tab-no-gateway.png" alt-text="Screenshot of the Arc agent setup tab in the Configurator app for Azure Local." lightbox="media/deployment-with-azure-arc-gateway/arc-agent-setup-tab-no-gateway.png":::
+   :::image type="content" source="media/deployment-without-azure-arc-gateway/arc-agent-setup-tab-no-gateway.png" alt-text="Screenshot of the Arc agent setup tab in the Configurator app for Azure Local." lightbox="media/deployment-without-azure-arc-gateway/arc-agent-setup-tab-no-gateway.png":::
 
 
    1. The **Cloud type** is populated automatically as `Azure`.
