@@ -42,14 +42,6 @@ Azure Migrate requires both a source appliance in your on-premises environment a
 By default, Azure Migrate provisions all migrated VMs as Azure Local VMs enabled by Azure Arc. For more information on VM types for Azure Local, see [Types of VMs on Azure Local](../concepts/compare-vm-management-capabilities.md#types-of-vms-on-azure-local). 
 
 
-
-### System Center Virtual Machine Manager
-
-The secondary first-party migration option is System Center Virtual Machine Manager (SCVMM). This option is only available on systems running Azure Stack HCI, version 22H2.
-
-- [For Hyper-V VMs](/system-center/vmm/deploy-manage-azure-stack-hci?view=sc-vmm-2022&preserve-view=true#step-8-migrate-vms-from-windows-server-to-azure-stack-hci-cluster)
-- [For VMware VMs](/system-center/vmm/deploy-manage-azure-stack-hci?view=sc-vmm-2022&preserve-view=true#step-9-migrate-vmware-workloads-to-azure-stack-hci-cluster-using-scvmm)
-
 ## Third-party migration options
 
 The following third-party migration options are offered by Microsoft partners.
