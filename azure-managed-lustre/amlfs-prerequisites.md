@@ -21,7 +21,7 @@ This article explains prerequisites that you must configure before creating an A
 
 ## Network prerequisites
 
-Supply the virtual network and subnet for Azure Managed Lustre networking. You have full control of which network security measures you wish to apply, including which compute and other services can access Azure Managed Lustre. Ensure you follow the networking and security guidelines provided for Azure Managed Lustre. Include allowing required connections for essential services such as the Lustre protocol, engineering and diagnostic support, Azure Blob storage, and security monitoring. If your network settings disable one of the essential services, it leads to a degraded product experience or reduce Microsoft’s support abilities.
+Supply the virtual network and subnet for Azure Managed Lustre networking. You have full control of which network security measures you wish to apply, including which compute and other services can access Azure Managed Lustre. Ensure you follow the networking and security guidelines provided for Azure Managed Lustre. Include allowing required connections for essential services such as the Lustre protocol, engineering and diagnostic support, Azure Blob storage, and security monitoring. If your network settings disable one of the essential services, it leads to a degraded product experience or it reduces Microsoft’s support abilities.
 
 You can't move a file system from one network or subnet to another after you create the file system.
 
