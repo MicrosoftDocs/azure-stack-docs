@@ -162,7 +162,7 @@ Before you begin, make sure to complete the following prerequisites:
 
 ### Azure prerequisites
 
-- **Get Arc gateway ID**. To get the Azure Arc gateway, see [Set up an Azure Arc gateway](../deploy/deployment-azure-arc-gateway-overview.md#create-the-arc-gateway-resource-in-azure) and get the resource ID of the Arc gateway. This is also referred to as the `ArcGatewayID`.
+- **Get Arc gateway ID**. To create Azure Arc gateway, see [Set up an Azure Arc gateway](../deploy/deployment-azure-arc-gateway-overview.md#create-the-arc-gateway-resource-in-azure) and get the resource ID of the Arc gateway. This is also referred to as the `ArcGatewayID`.
 
    1. In the Azure portal, go to the Arc gateway resource that you created.
    1. On the **Overview** page, copy the **Resource ID**. You use this Arc gateway ID later.
@@ -247,7 +247,7 @@ Before you begin, make sure to complete the following prerequisites:
 
 ### Review and apply tab
 
-[!INCLUDE [azure-local-review-apply-tab-configurator-app](../includes/azure-local-review-apply-tab-configurator-app.md)]
+[!INCLUDE [azure-local-review-apply-tab-configurator-app-arc-gateway](../includes/azure-local-review-apply-tab-configurator-app-arc-gateway.md)]
 
 ## Step 2: Complete registration of machines to Azure
 
@@ -397,11 +397,12 @@ Before you begin, make sure that you complete the following prerequisites:
 
 ### Azure prerequisites
 
-- **Get Arc gateway ID**. To get the Azure Arc gateway, see [Set up an Azure Arc gateway](../deploy/deployment-azure-arc-gateway-overview.md#create-the-arc-gateway-resource-in-azure) and get the resource ID of the Arc gateway. This is also referred to as the `ArcGatewayID`.
+- **Get Arc gateway ID**. To create Azure Arc gateway, see [Set up an Azure Arc gateway](../deploy/deployment-azure-arc-gateway-overview.md#create-the-arc-gateway-resource-in-azure) and get the resource ID of the Arc gateway. This is also referred to as the `ArcGatewayID`.
 
    1. In the Azure portal, go to the Arc gateway resource that you created.
    1. On the **Overview** page, copy the **Resource ID**. You use this Arc gateway ID later.
-  
+ 
+   :::image type="content" source="media/deployment-with-azure-arc-gateway/arc-gateway-resource-id.png" alt-text="Screenshot of the Basics tab in the Configurator app for Azure Local." lightbox="media/deployment-with-azure-arc-gateway/arc-gateway-resource-id.png":::
  
 ## Step 1: Configure the network and connect to Azure
 
@@ -470,7 +471,7 @@ Before you begin, make sure that you complete the following prerequisites:
 
 ### Review and apply tab
 
-[!INCLUDE [azure-local-review-apply-tab-configurator-app](../includes/azure-local-review-apply-tab-configurator-app.md)]
+[!INCLUDE [azure-local-review-apply-tab-configurator-app-arc-gateway](../includes/azure-local-review-apply-tab-configurator-app-arc-gateway.md)]
 
 ## Step 2: Complete registration of machines to Azure
 
