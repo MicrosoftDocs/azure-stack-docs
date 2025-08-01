@@ -497,8 +497,8 @@ Before you begin, make sure that you complete the following prerequisites:
 ## Next steps
 
 - [Troubleshoot registration issues with Configurator app](../manage/troubleshoot-deployment-configurator-app.md)
-- [Get support for deployment issues](../manage/get-support-for-deployment-issues.md)
-- [Get support for Azure Local](../manage/get-support.md)
+- [Deploy via Azure portal](./deploy-via-portal.md)
+- [Deploy via Azure Resource Manager (ARM) template](./deployment-azure-resource-manager-template.md)
 
 ::: moniker-end
 
