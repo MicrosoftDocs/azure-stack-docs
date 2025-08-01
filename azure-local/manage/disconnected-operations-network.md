@@ -4,7 +4,7 @@ description: Plan and integrate your network for disconnected operations on Azur
 ms.topic: concept-article
 author: ronmiab
 ms.author: robess
-ms.date: 06/20/2025
+ms.date: 08/06/2025
 ai-usage: ai-assisted
 ---
 

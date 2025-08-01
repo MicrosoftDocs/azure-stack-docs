@@ -4,7 +4,7 @@ description: Learn how to manage Azure Local VMs running disconnected (preview).
 ms.topic: concept-article
 author: ronmiab
 ms.author: robess
-ms.date: 06/20/2025
+ms.date: 08/06/2025
 ai-usage: ai-assisted
 ---
 
