@@ -62,12 +62,12 @@ Once the network security group is created, you can associate it to the unique s
 
 ## Configure network security group rules
 
-It is important to follow the minimum provided guidelines when configuring your network security group so Azure Managed Lustre can operate essential services like the Lustre protocol, engineering and diagnostic support, Azure Blob storage, and security monitoring. Disabling any of these essential services may lead to a degraded product and support experience.
+It's important to follow the minimum provided guidelines when you configure your network security group. Proper network security group configuration enables Azure Managed Lustre to operate essential services like the Lustre protocol, engineering and diagnostic support, Azure Blob storage, and security monitoring. Disabling any of these essential services may lead to a degraded product and support experience.
 
-To configure network security group rules for Azure Managed Lustre file system support, you can add inbound and outbound security rules to the network security group associated to the subnet where your Azure Managed Lustre file system is deployed. The following sections describe how to create and configure the inbound and outbound security rules that allow Azure Managed Lustre file system support.
+To configure network security group rules for Azure Managed Lustre file system support, add inbound and outbound security rules to the network security group associated with the  Azure Managed Lustre subnet. The following sections describe how to create and configure the inbound and outbound security rules that allow Azure Managed Lustre file system support.
 
 > [!NOTE]
-> The security rules shown in this section are configured based on an Azure Managed Lustre file system test deployment in the East US region, with Blob Storage integration enabled. You'll need to adjust the rules based on your deployment region, virtual network subnet IP address, and other configuration settings for the Azure Managed Lustre file system.
+> The security rules shown in this section are configured based on an Azure Managed Lustre file system test deployment in the East US region, with Blob Storage integration enabled. You need to adjust the rules based on your deployment region, virtual network subnet IP address, and other configuration settings for the Azure Managed Lustre file system.
 
 ### Create inbound security rules
 
@@ -82,9 +82,9 @@ You can create inbound security rules in the Azure portal. The following example
 
 Add the following inbound rules to the network security group. A description of all Azure service tags can be found at [Azure Service Tags Overview](/azure/virtual-network/service-tags-overview).
 
-| Priority | Name | Port(s) | Protocol | Source | Destination | Action | Description |
+| Priority | Name | Ports | Protocol | Source | Destination | Action | Description |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| 110 | *rule-name* | Any | Any | *IP address/CIDR range for Azure Managed Lustre file system subnet* | *IP address/CIDR range for Azure Managed Lustre file system subnet* | Allow | Allow traffic flow between Azure Managed Lustre hosts for file system activities. Note that the system also requires TCP port 22 (SSH) for initial deployment and configuration. |
+| 110 | *rule-name* | Any | Any | *IP address/CIDR range for Azure Managed Lustre file system subnet* | *IP address/CIDR range for Azure Managed Lustre file system subnet* | Allow | Allow traffic flow between Azure Managed Lustre hosts for file system activities. The system also requires TCP port 22 (SSH) for initial deployment and configuration. |
 | 111 | *rule-name* | 988, 1019-1023 | TCP | *IP address/CIDR range for Lustre client subnet* | *IP address/CIDR range for Azure Managed Lustre file system subnet* | Allow | Allow your Lustre clients to interact with all Azure Managed Lustre storage nodes for file system activities. The Lustre file system protocol requires ports 988 and 1019-1023. |
 | 112 | *rule-name* | Any | TCP | `AzureMonitor` | `VirtualNetwork` | Allow | Allow the AzureMonitor service to detect health or security issues with the Azure Managed Lustre service hosts. |
 | 120 | *rule-name* | Any | Any | Any | Any | Deny | Deny all other inbound flows. |
@@ -106,7 +106,7 @@ You can create outbound security rules in the Azure portal. The following exampl
 
 Add the following outbound rules and network service tags to the network security group. A description of all Azure service tags can be found at [Azure Service Tags Overview](/azure/virtual-network/service-tags-overview).
 
-| Priority | Name | Port(s) | Protocol | Source | Destination | Action | Description |
+| Priority | Name | Ports | Protocol | Source | Destination | Action | Description |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | 100 | *rule-name* | 443 | TCP | `VirtualNetwork` | `AzureMonitor` | Allow | Allow the AzureMonitor service to report health or and security issues diagnosed with the Azure Managed Lustre service hosts. |
 | 101 | *rule-name* | 443 | TCP | `VirtualNetwork` | `AzureKeyVault.EastUS` | Allow | Allow access to AzureKeyVault, which the service uses to store essential security secrets needed for basic operation and storage access. |
