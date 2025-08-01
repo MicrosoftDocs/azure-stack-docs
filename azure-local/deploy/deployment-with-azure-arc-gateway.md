@@ -167,6 +167,8 @@ Before you begin, make sure to complete the following prerequisites:
    1. In the Azure portal, go to the Arc gateway resource that you created.
    1. On the **Overview** page, copy the **Resource ID**. You use this Arc gateway ID later.
    
+   :::image type="content" source="media/deployment-with-azure-arc-gateway/arc-gateway-resource-id.png" alt-text="Screenshot of the Resource ID in the Overview page for Azure Arc gateway." lightbox="media/deployment-with-azure-arc-gateway/arc-gateway-resource-id.png":::
+
 ## Step 1: Configure the network and connect to Azure
 
 [!INCLUDE [azure-local-start-configurator](../includes/azure-local-start-configurator.md)]
@@ -402,7 +404,7 @@ Before you begin, make sure that you complete the following prerequisites:
    1. In the Azure portal, go to the Arc gateway resource that you created.
    1. On the **Overview** page, copy the **Resource ID**. You use this Arc gateway ID later.
  
-   :::image type="content" source="media/deployment-with-azure-arc-gateway/arc-gateway-resource-id.png" alt-text="Screenshot of the Basics tab in the Configurator app for Azure Local." lightbox="media/deployment-with-azure-arc-gateway/arc-gateway-resource-id.png":::
+   :::image type="content" source="media/deployment-with-azure-arc-gateway/arc-gateway-resource-id.png" alt-text="Screenshot of the Resource ID in the Overview page for Azure Arc gateway." lightbox="media/deployment-with-azure-arc-gateway/arc-gateway-resource-id.png":::
  
 ## Step 1: Configure the network and connect to Azure
 
