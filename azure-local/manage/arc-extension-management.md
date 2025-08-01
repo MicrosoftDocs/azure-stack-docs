@@ -40,7 +40,7 @@ Azure-managed extensions include:
 
 ### [Azure portal](#tab/azureportal)
 
-You can use the **Capabilities** tab to install extensions for your Azure Local Arc-enabled servers, as shown in the screenshot. You can use the capabilities tab to install most extensions.
+You can use the **Capabilities** tab to install extensions for your Azure Local Arc-enabled servers, as shown in the screenshot. You can use this tab to install most extensions.
 
 :::image type="content" source="media/arc-extension-management/arc-extension-overview.png" alt-text="Screenshot of the Capabilities tab and options in the Azure portal." lightbox="media/arc-extension-management/arc-extension-overview.png":::
 
