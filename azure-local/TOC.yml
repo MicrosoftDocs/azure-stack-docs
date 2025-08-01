@@ -513,7 +513,7 @@ items:
   items:
   - name: Collect logs
     href: manage/collect-logs.md
-  - name: Troubleshoot registration issues for Configurator Application
+  - name: Troubleshoot registration issues for Configurator app
     href: manage/troubleshoot-deployment-configurator-app.md
   - name: Troubleshoot deployment validation issues
     href: manage/troubleshoot-deployment.md
