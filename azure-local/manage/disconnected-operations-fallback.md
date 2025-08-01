@@ -173,32 +173,7 @@ Azure Local VM running disconnected nested file structure:
 
 ### Send-DiagnosticData  
 
-The `Send-DiagnosticData` command is a diagnostic utility designed to collect and optionally transmit logs from Azure Local environments to Microsoft. It plays an important role in enabling supportability, especially in disconnected or air-gapped environments where standard protocols aren't present.
-
-The `Send-DiagnosticData` command:
-
-- Collects logs from the local system, including role-specific and supplementary logs
-- Supports filtering by role, date range, and log type.
-- Allows saving logs locally using the `-SaveToPath` parameter which is ideal for environments without direct internet access.
-- Supports secure, credentialed access when saving to a network share.
-
-### Security considerations
-
-There are a few security considerations for log sharing:
-
-- In air-gapped environments, use the `Send-DiagnosticData` method to extract and share diagnostic logs with Microsoft.
-- Logs aren't sent automatically unless you set them up to be transmitted. You can save logs locally and review them before sharing.
-- Microsoft only has access to logs if you choose to share them.
-
-If your organization restricts direct internet connectivity from affected nodes:
-
-- Use the `-SaveToPath` option to save logs locally.
-- Move the logs to a system or VM that can connect to the internet.
-- Upload the logs to Microsoft using secure support channels.
-
-### Send logs to Microsoft
-
-After you collect logs into a directory, either with the `Copy-DiagnosticData` cmdlet or by copying them manually, send them to Microsoft using the standalone pipeline. The pipeline Arc-enables the host (the machine running the cmdlet) to perform the operation, targets all the logs in the file location you specify, and sends them for ingestion. If log ingestion fails, the cmdlet tries up to three times and then shows the results of the send activity when it's complete.
+After you collect logs into a directory, either by using the `Copy-DiagnosticData` cmdlet or by copying them manually, send them to Microsoft with the standalone pipeline. This pipeline Arc-enables the host (the machine running the cmdlet) to perform the operation, targets all the logs in the file location you provide, and sends them for ingestion to Microsoft. If log ingestion fails, the cmdlet tries up to three times and then outputs the results of the send activity when it's complete.
 
 The **Send-DiagnosticData** cmdlet downloads and runs the standalone observability pipeline. You need to enter the credentials required to connect to Azure for the pipeline. There are two options for providing these credentials:
 
