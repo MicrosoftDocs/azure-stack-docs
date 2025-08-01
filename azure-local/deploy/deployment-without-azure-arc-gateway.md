@@ -505,9 +505,11 @@ Before you begin, make sure that you complete the following prerequisites:
 ## Next steps
 
 - [Troubleshoot registration issues with Configurator app](../manage/troubleshoot-deployment-configurator-app.md)
-- [Deploy via Azure portal](./deploy-via-portal.md)
-- [Deploy via Azure Resource Manager (ARM) template](./deployment-azure-resource-manager-template.md)
 
+- After your machines are registered with Azure Arc, proceed to deploy your Azure Local instance via one of the following options:
+    - [Deploy via Azure portal](./deploy-via-portal.md)
+    - [Deploy via Azure Resource Manager (ARM) template](./deployment-azure-resource-manager-template.md)
+    
 ::: moniker-end
 
 ::: moniker range="<=azloc-2504"
