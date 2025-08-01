@@ -15,6 +15,15 @@ ms.custom: devx-track-azurepowershell
 
 This article describes how to set up the required permissions on your subscription to deploy Azure Local.
 
+## Prerequisites
+
+### Azure Local machine prerequisites
+
+[!INCLUDE [hci-registration-azure-local-machine-prerequisites](../includes/hci-registration-azure-local-machine-prerequisites.md)]
+
+### Azure prerequisites
+
+[!INCLUDE [hci-registration-azure-prerequisites](../includes/hci-registration-azure-prerequisites.md)]
 
 ## Assign Azure permissions for deployment
 

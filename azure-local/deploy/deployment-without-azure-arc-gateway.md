@@ -27,7 +27,7 @@ This article details how to register Azure Local machines with Azure Arc and wit
 
 Make sure the following prerequisites are met before proceeding:
 
-- You've access to an Azure Local instance running release 2505 or later. Prior versions do not support this scenario.
+- You've access to Azure Local machines running release 2505 or later. Prior versions do not support this scenario.
 - You have assigned the appropriate permissions to the subscription used for registration. For more information, see [Assign required permissions for Azure Local deployment](deployment-arc-register-server-permissions.md).
 
 
@@ -167,8 +167,6 @@ Before you begin, make sure that you complete the following prerequisites:
 
 ### Azure Local machine prerequisites
 
-[!INCLUDE [hci-registration-azure-local-machine-prerequisites](../includes/hci-registration-azure-local-machine-prerequisites.md)]
-
 - Download the [Configurator App for Azure Local](https://aka.ms/ConfiguratorAppForHCI).
 
 - Note down:
@@ -178,7 +176,7 @@ Before you begin, make sure that you complete the following prerequisites:
 
 ### Azure prerequisites
 
-[!INCLUDE [hci-registration-azure-prerequisites](../includes/hci-registration-azure-prerequisites.md)]
+- Make sure you have the required permissions to register Azure Local machines with Azure Arc. For more information, see [Assign required permissions for Azure Local deployment](deployment-arc-register-server-permissions.md).
 
    
 ## Step 1: Configure the network and connect to Azure
@@ -297,7 +295,7 @@ This article details how to register using Azure Arc gateway on Azure Local with
 
 Make sure the following prerequisites are met before proceeding:
 
-- You've access to an Azure Local instance running release 2505 or later. Prior versions do not support this scenario.
+- You've access to Azure Local machines running release 2505 or later. Prior versions do not support this scenario.
 - You have assigned the appropriate permissions to the subscription used for registration. For more information, see [Assign required permissions for Azure Local deployment](deployment-arc-register-server-permissions.md).
 
 
@@ -402,8 +400,6 @@ Before you begin, make sure that you complete the following prerequisites:
 
 ### Azure Local machine prerequisites
 
-[!INCLUDE [hci-registration-azure-local-machine-prerequisites](../includes/hci-registration-azure-local-machine-prerequisites.md)]
-
 - Download the [Configurator App for Azure Local](https://aka.ms/ConfiguratorAppForHCI).
 
 - Note down:
@@ -413,7 +409,7 @@ Before you begin, make sure that you complete the following prerequisites:
 
 ### Azure prerequisites
 
-[!INCLUDE [hci-registration-azure-prerequisites](../includes/hci-registration-azure-prerequisites.md)]
+- Make sure you have the required permissions to register Azure Local machines with Azure Arc. For more information, see [Assign required permissions for Azure Local deployment](deployment-arc-register-server-permissions.md).
    
 ## Step 1: Configure the network and connect to Azure
 

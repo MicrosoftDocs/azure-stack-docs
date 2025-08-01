@@ -29,7 +29,7 @@ This article details how to register Azure Local using Azure Arc gateway and wit
 
 Make sure the following prerequisites are met before you proceed:
 
-- You have access to an Azure Local instance running release 2505 or later. Prior versions don't support this scenario.
+- You have access to Azure Local machines running release 2505 or later. Prior versions don't support this scenario.
 
 - You have assigned the appropriate permissions to the subscription used for registration. For more information, see [Assign required permissions for Azure Local deployment](deployment-arc-register-server-permissions.md).
 
@@ -153,10 +153,6 @@ Before you begin, make sure to complete the following prerequisites:
 
 ### Azure Local machine prerequisites
 
-[!INCLUDE [hci-registration-azure-local-machine-prerequisites](../includes/hci-registration-azure-local-machine-prerequisites.md)]
-
-
-
 - Download the [Configurator App for Azure Local](https://aka.ms/ConfiguratorAppForHCI).
 
 - Note down:
@@ -166,17 +162,10 @@ Before you begin, make sure to complete the following prerequisites:
 
 ### Azure prerequisites
 
-[!INCLUDE [hci-registration-azure-prerequisites](../includes/hci-registration-azure-prerequisites.md)]
+- **Get Arc gateway ID**. To get the Azure Arc gateway, see [Set up an Azure Arc gateway](../deploy/deployment-azure-arc-gateway-overview.md#create-the-arc-gateway-resource-in-azure) and get the resource ID of the Arc gateway. This is also referred to as the `ArcGatewayID`.
 
-- **Get Arc gateway ID**. Skip this step if you didn't set up Azure Arc gateway. If you [Set up an Azure Arc gateway](../deploy/deployment-azure-arc-gateway-overview.md#create-the-arc-gateway-resource-in-azure), get the resource ID of the Arc gateway. This is also referred to as the `ArcGatewayID`.
-
-   1. To get the `ArcGatewayID`, run the following command:  
-
-       ```powershell
-       az connectedmachine gateway list
-       ```
-
-   1. Make a note of the Arc gateway ID to use later.
+   1. In the Azure portal, go to the Arc gateway resource that you created.
+   1. On the **Overview** page, copy the **Resource ID**. You use this Arc gateway ID later.
    
 ## Step 1: Configure the network and connect to Azure
 
@@ -294,7 +283,7 @@ This article details how to register using Azure Arc gateway on Azure Local with
 
 Make sure the following prerequisites are met before proceeding:
 
-- You have access to an Azure Local instance running release 2505 or later. Prior versions don't support this scenario.
+- You have access to Azure Local machines running release 2505 or later. Prior versions don't support this scenario.
 - You have assigned the appropriate permissions to the subscription used for registration. For more information, see [Assign required permissions for Azure Local deployment](deployment-arc-register-server-permissions.md).
 
 
@@ -399,8 +388,6 @@ Before you begin, make sure that you complete the following prerequisites:
 
 ### Azure Local machine prerequisites
 
-[!INCLUDE [hci-registration-azure-local-machine-prerequisites](../includes/hci-registration-azure-local-machine-prerequisites.md)]
-
 - Download the [Configurator App for Azure Local](https://aka.ms/ConfiguratorAppForHCI).
 
 - Note down:
@@ -410,18 +397,12 @@ Before you begin, make sure that you complete the following prerequisites:
 
 ### Azure prerequisites
 
-[!INCLUDE [hci-registration-azure-prerequisites](../includes/hci-registration-azure-prerequisites.md)]
+- **Get Arc gateway ID**. To get the Azure Arc gateway, see [Set up an Azure Arc gateway](../deploy/deployment-azure-arc-gateway-overview.md#create-the-arc-gateway-resource-in-azure) and get the resource ID of the Arc gateway. This is also referred to as the `ArcGatewayID`.
 
-- **Get Arc gateway ID**. Get the resource ID of the Arc gateway that you created using [Set up an Azure Arc gateway](../deploy/deployment-azure-arc-gateway-overview.md#create-the-arc-gateway-resource-in-azure). This is also referred to as the `ArcGatewayID`.
-
-   1. To get the `ArcGatewayID`, run the following command:  
-
-       ```powershell
-       az connectedmachine gateway list
-       ```
-
-   1. Make a note of the Arc gateway ID to use later.
-   
+   1. In the Azure portal, go to the Arc gateway resource that you created.
+   1. On the **Overview** page, copy the **Resource ID**. You use this Arc gateway ID later.
+  
+ 
 ## Step 1: Configure the network and connect to Azure
 
 [!INCLUDE [azure-local-start-configurator](../includes/azure-local-start-configurator.md)]
