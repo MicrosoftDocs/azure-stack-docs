@@ -481,6 +481,40 @@ For more information, see [Use appliance fallback log collection](disconnected-o
 
 - `Invoke-ApplianceLogCollectionAndSaveToShareFolder`: you need to specify the account in the format: Domain\Username, if you omit the domain or use an incorrect username, the copy operation to the share will fail with an access-denied error.
 
+## When to use on-demand log collection
+
+Use on-demand direct log collection when an on-premises device running Azure Local temporarily has connectivity to Azure.
+
+- Improper Execution of Send-DiagnosticData.
+  - Log collection fails when customers attempt to run Send-DiagnosticData or copy diagnostic data from:
+    - Nodes that are not part of the Azure Local host infrastructure.
+    - External machines (e.g., personal laptops) that do not host the required appliance VMs (such as IRVM) on the same Hyper-V host.
+
+- Misuse of the Observability Tool.
+  - The Standalone Observability Tool must be:
+    - Run on a Windows Server.
+    - Configured with additional manual steps if executed in unsupported environments.
+
+### Indirect or Fallback Log Collection (Disconnected Mode)
+
+Use indirect log collection methods when direct upload is not possible:
+
+- Run the following commands on the seed node:
+  - `Invoke-ApplianceLogCollectionAndSaveToShareFolder`
+  - `Copy-DiagnosticData`
+
+- Ensure that:
+  - The share folder is accessible.
+  - Troubleshooting instructions are provided for common failures (e.g., permission issues, missing dependencies).
+
+### Uploading Logs to Microsoft Support
+
+To upload collected logs to Microsoft:
+
+- Use the Send-DiagnosticData command from the Azure Local Disconnected Operations PowerShell module.
+- Important: This command must not be run on Azure Local host nodes, as those are managed by the ALDO control plane.
+- Instead, run it from a Windows machine with Azure connectivity—ideally the customer’s laptop or desktop.
+
 ## Related content
 
 - Learn how and when to use [Use appliance fallback log collection](disconnected-operations-fallback.md).
