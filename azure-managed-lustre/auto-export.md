@@ -10,7 +10,7 @@ ms.reviewer: brianl
 # Intent: As an IT Pro, I need to be able to auto-export files from my Azure Managed Lustre file system to long-term Azure Blob Storage.
 # Keyword: 
 ---
-# Azure Managed Lustre Auto-Export (Preview)
+# Azure Managed Lustre auto-export (preview)
 
 The Auto-Export feature for Azure Managed Lustre is a capability that automatically synchronizes changes in your Azure Managed Lustre file system with a linked Azure Blob Storage Container. This feature ensures that new and modified files in the file system are reflected in the associated Blob Storage Container without manual intervention. This streamlines data management and improves synchronization for long-term storage.
 
