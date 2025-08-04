@@ -40,7 +40,7 @@ Azure-managed extensions include:
 
 ### [Azure portal](#tab/azureportal)
 
-You can install extensions from the **Capabilities** tab for your Azure Local Arc-enabled servers, as shown in the screenshot. You can use the capabilities tab to install most extensions.
+You can use the **Capabilities** tab to install extensions for your Azure Local Arc-enabled servers, as shown in the screenshot. You can use this tab to install most extensions.
 
 :::image type="content" source="media/arc-extension-management/arc-extension-overview.png" alt-text="Screenshot of the Capabilities tab and options in the Azure portal." lightbox="media/arc-extension-management/arc-extension-overview.png":::
 
@@ -149,7 +149,7 @@ Launch [Azure Cloud Shell](https://shell.azure.com/) and use Bash to install an 
 
 ### [Azure PowerShell](#tab/azurepowershell)
 
-Run Azure PowerShell in Azure Cloud Shell. This article details how to use PowerShell in Azure Cloud Shell. For more information, see [Quickstart for Azure Cloud Shell](/azure/cloud-shell/quickstart).
+Run Azure PowerShell in Azure Cloud Shell. For more information, see [Quickstart for Azure Cloud Shell](/azure/cloud-shell/quickstart).
 
 Launch [Azure Cloud Shell](https://shell.azure.com/) and use PowerShell to install an extension by following these steps:
 
@@ -308,7 +308,7 @@ Launch [Azure Cloud Shell](https://shell.azure.com/) and use Bash to check the s
 
 ### [Azure PowerShell](#tab/azurepowershell)
 
-Azure PowerShell can be run in Azure Cloud Shell. This document details how to use PowerShell in Azure Cloud Shell. For more information, refer [Quickstart for Azure Cloud Shell](/azure/cloud-shell/quickstart).
+Azure PowerShell can be run in Azure Cloud Shell. For more information, see [Quickstart for Azure Cloud Shell](/azure/cloud-shell/quickstart).
 
 Launch [Azure Cloud Shell](https://shell.azure.com/) and use PowerShell to check the status of an extension by following these steps:
 

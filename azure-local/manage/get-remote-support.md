@@ -25,7 +25,7 @@ After you enable remote support, Microsoft support gets just-in-time (JIT) limit
 
 ## Remote support terms and conditions
 
-The following are the data handling terms and conditions for remote access. Carefully read them before granting access. Everything under this section should remain as is without making any changes to the text.
+The following are the data handling terms and conditions for remote access. Carefully read them before granting access. <!--Everything under this section should remain as is without making any changes to the text.-->
 
 > By approving this request, the Microsoft support organization or the Azure engineering team supporting this feature ("Microsoft Support Engineer") will be given direct access to your device for troubleshooting purposes and/or resolving the technical issue described in the Microsoft support case.
 >

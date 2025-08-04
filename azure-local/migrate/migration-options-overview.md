@@ -26,12 +26,21 @@ To migrate VM workloads and their data to your Azure Local instance, several opt
 
 First-party migration options are provided by Microsoft. These options are built into the Azure Local platform and are available to you at no additional cost.
 
+### Azure Migrate
+
 The primary first-party migration option is [Azure Migrate](./migration-azure-migrate-overview.md), which is available on systems running Azure Local. Azure Migrate is a central hub for tools to discover, assess, and migrate on-premises servers, apps, and data to the Microsoft Azure cloud.
 
 You can use Azure Migrate to migrate the following types of VMs to Azure Local:
 
    - [Hyper-V VMs](./migration-azure-migrate-overview.md)
    - [VMware VMs](./migration-azure-migrate-vmware-overview.md)
+
+**Considerations for Azure Migrate**
+
+Azure Migrate requires both a source appliance in your on-premises environment and a target appliance in your Azure Local instance. This setup is necessary for every Azure Migrate project. For more information, see [Source VMware requirements](migrate-vmware-requirements.md#source-vmware-server-requirements) and [Source Hyper-V requirements](migrate-hyperv-requirements.md#source-hyper-v-requirements).  
+
+By default, Azure Migrate provisions all migrated VMs as Azure Local VMs enabled by Azure Arc. For more information on VM types for Azure Local, see [Types of VMs on Azure Local](../concepts/compare-vm-management-capabilities.md#types-of-vms-on-azure-local). 
+
 
 ## Third-party migration options
 
