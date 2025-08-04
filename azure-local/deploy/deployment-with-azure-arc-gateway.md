@@ -37,7 +37,12 @@ Make sure the following prerequisites are met before you proceed:
 
 ## Step 1: Get the Arc gateway ID  
 
-You need the proxy and the Arc gateway ID from Azure to run the registration script on Azure Local machines. You can find the Arc gateway ID on the Azure portal **Overview** page of the resource.
+- **Get Arc gateway ID**. To create Azure Arc gateway, see [Set up an Azure Arc gateway](../deploy/deployment-azure-arc-gateway-overview.md#create-the-arc-gateway-resource-in-azure) and get the resource ID of the Arc gateway. This is also referred to as the `ArcGatewayID`.
+
+   1. In the Azure portal, go to the Arc gateway resource that you created.
+   1. On the **Overview** page, copy the **Resource ID**. You use this Arc gateway ID later.
+   
+   :::image type="content" source="media/deployment-with-azure-arc-gateway/arc-gateway-resource-id.png" alt-text="Screenshot of the Resource ID in the Overview page for Azure Arc gateway." lightbox="media/deployment-with-azure-arc-gateway/arc-gateway-resource-id.png":::
 
 ## Step 2: Set parameters
 
@@ -291,7 +296,12 @@ Make sure the following prerequisites are met before proceeding:
 
 ## Step 1: Get the Arc gateway ID  
 
-You need the proxy and the Arc gateway ID from Azure to run the registration script on Azure Local machines. You can find the Arc gateway ID on the Azure portal **Overview** page of the resource.
+- **Get Arc gateway ID**. To create Azure Arc gateway, see [Set up an Azure Arc gateway](../deploy/deployment-azure-arc-gateway-overview.md#create-the-arc-gateway-resource-in-azure) and get the resource ID of the Arc gateway. This is also referred to as the `ArcGatewayID`.
+
+   1. In the Azure portal, go to the Arc gateway resource that you created.
+   1. On the **Overview** page, copy the **Resource ID**. You use this Arc gateway ID later.
+   
+   :::image type="content" source="media/deployment-with-azure-arc-gateway/arc-gateway-resource-id.png" alt-text="Screenshot of the Resource ID in the Overview page for Azure Arc gateway." lightbox="media/deployment-with-azure-arc-gateway/arc-gateway-resource-id.png":::
 
 ## Step 2: Register new Azure Local machines with Arc
 
@@ -316,18 +326,9 @@ Invoke-AzStackHciArcInitialization -SubscriptionID $Subscription -ResourceGroup 
 
 1. During the Arc registration process, you must authenticate with your Azure account. The console window displays a code that you must enter in the URL, in order to authenticate. Follow the instructions to complete the authentication process.
 
- :::image type="content" source="media/deployment-with-azure-arc-gateway/authentication-device-code.png" alt-text="Screenshot of the console window with the device code and the URL to open." lightbox="media/deployment-with-azure-arc-gateway/authentication-device-code.png":::
+    :::image type="content" source="media/deployment-with-azure-arc-gateway/authentication-device-code.png" alt-text="Screenshot of the console window with the device code and the URL to open." lightbox="media/deployment-with-azure-arc-gateway/authentication-device-code.png":::
 
-<!--Cristian - should we remove this section --> ## Step 3: Start Azure Local cloud deployment
-
-Once the Azure Local machines are registered in Azure Arc and all the extensions are installed, start the deployment from Azure portal or using the ARM templates that are documented in these articles:
-
-- [Deploy an Azure Local instance using the Azure portal](deploy-via-portal.md).
-
-- [Azure Resource Manager template deployment for Azure Local](deployment-azure-resource-manager-template.md).
-
-
-## Step 4: Verify the setup is successful
+## Step 3: Verify the setup is successful
 
 Once the registration is complete, follow these steps to verify that Azure Arc gateway setup is successful.
 
