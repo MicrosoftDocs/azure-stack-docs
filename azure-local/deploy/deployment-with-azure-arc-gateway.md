@@ -284,7 +284,6 @@ This article details how to register using Azure Arc gateway on Azure Local with
 
 - **Set up via the Configurator app**: Configure Azure Arc gateway via a user interface. This method is useful if you prefer not to use scripts or if you want to configure the registration settings interactively.
 
----
 
 # [Via Arc script](#tab/script)
 
@@ -504,7 +503,7 @@ Before you begin, make sure that you complete the following prerequisites:
 
 ## Next steps
 
-- [Troubleshoot registration issues with Configurator app](../manage/troubleshoot-deployment-configurator-app.md)
+- [Troubleshoot registration issues with Configurator app](../manage/troubleshoot-deployment-configurator-app.md).
 - After your machines are registered with Azure Arc, proceed to deploy your Azure Local instance via one of the following options:
     - [Deploy via Azure portal](./deploy-via-portal.md)
     - [Deploy via Azure Resource Manager (ARM) template](./deployment-azure-resource-manager-template.md)
