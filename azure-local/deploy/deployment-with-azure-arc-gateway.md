@@ -284,6 +284,8 @@ This article details how to register using Azure Arc gateway on Azure Local with
 
 - **Set up via the Configurator app**: Configure Azure Arc gateway via a user interface. This method is useful if you prefer not to use scripts or if you want to configure the registration settings interactively.
 
+---
+
 # [Via Arc script](#tab/script)
 
 ## Prerequisites
