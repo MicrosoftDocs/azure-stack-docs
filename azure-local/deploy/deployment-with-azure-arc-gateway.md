@@ -315,6 +315,7 @@ $RG = "yourresourcegroupname"
 
 #Define the Arc gateway resource ID from Azure 
 $ArcgwId = "/subscriptions/yourarcgatewayid/resourceGroups/yourresourcegroupname/providers/Microsoft.HybridCompute/gateways/yourarcgatewayname" 
+```
 
 ## Step 3: Run the registration script
 
@@ -342,7 +343,7 @@ Once the registration is complete, follow these steps to verify that Azure Arc g
 
     :::image type="content" source="./media/deployment-with-azure-arc-gateway/arc-gateway-log.png" alt-text="Screenshot that shows the Arc gateway log using script." lightbox="./media/deployment-with-azure-arc-gateway/arc-gateway-log.png":::
 
-2. To check the Arc agent configuration and verify that it's using the gateway, run the following command:
+1. To check the Arc agent configuration and verify that it's using the gateway, run the following command:
 
    ```
    C:\program files\AzureConnectedMachineAgent>.\azcmagent show
@@ -365,7 +366,7 @@ Once the registration is complete, follow these steps to verify that Azure Arc g
     
    :::image type="content" source="./media/deployment-with-azure-arc-gateway/arc-agent-with-gateway.png" alt-text="Screenshot that shows the Arc agent with gateway using script." lightbox="./media/deployment-with-azure-arc-gateway/arc-agent-with-gateway.png":::
     
-3. Additionally, to verify that the setup was done successfully, run the following command:
+1. Additionally, to verify that the setup was done successfully, run the following command:
 
    ```
    C:\program files\AzureConnectedMachineAgent>.\azcmagent check
