@@ -34,11 +34,10 @@ Import-Module "C:\azurelocal\OperationsModule\ApplianceFallbackLogging.psm1" -Fo
 
 ## Export logs for the fallback scenario
 
-To export logs for the fallback scenario, use three cmdlets:
+To export logs for the fallback scenario, use these cmdlets:
 
 - [**Copy-DiagnosticData**](#copy-diagnosticdata)
 - [**Send-DiagnosticData**](#send-diagnosticdata)
-- [**Get-ObservabilityStampId**](#get-observabilitystampid-optional)
 
 ### Copy-DiagnosticData
 
@@ -252,119 +251,9 @@ Here's an example of the file structure for the send logs:
 
 The send logs file structure has all the logs and installation files from the standalone observability pipeline, including the **GMACache logs** and pipeline install and uninstall logs.
 
-### Get-ObservabilityStampId (optional)
-
-> [!NOTE]
-> You don't need to use this cmdlet with `Copy-DiagnosticData`.
-
-The `Get-ObservabilityStampId` cmdlet is a heavy operation and is only needed in rare cases. This cmdlet also shuts down the Azure Local VM running disconnected and mounts the OS volume VHD to get the stamp ID. After the operation, the Azure Local VM running disconnected restarts.
-
-Use these parameters with the `Get-ObservabilityStampId` cmdlet:
-
-- **MountPath**: Optional. A valid drive or path to temporarily hold mounted VHDs used to retrieve the stamp ID. The file is removed on cleanup at the end of the cmdlet.
-- **Recoverykeyset**: Optional. The RecoveryKeySet containing relevant **ProtectorId** and **RecoveryPassword** pairs for BitLocker encrypted volumes used for log collection retrieval. If recovery keys aren't provided, manual entry of the keys is required during the mount process.
-
-> [!TIP]
-> You can provide a desired path for the mounted VHD. Otherwise, the default path `${env:USERPROFILE}\MountedVHDs` is used.
-
-Here's an example of the output with a custom path:
-
-```powershell  
-Get-ObservabilityStampId -MountPath "C:/temp/path"  
-```  
-
-```console
-StampId
--------
-<Stamp Id>
-```
-
-If the command doesn't return a `StampId`, the stamp ID isn't set and you need to pass it into [Send-DiagnosticData](#send-diagnosticdata) manually. If the stamp ID isn't set and you don't pass it manually, it defaults to the host **UUID**.
-
-Alternatively, you can use the `Get-ApplianceInstanceConfiguration` command to get the stamp ID.
-
-```powershell
-$stampId = (Get-ApplianceInstanceConfiguration).StampId
-```
-
-## Appendix  
-
-To view detailed information about each cmdlet, use these commands:
-
-<details>
-
-<summary>Get-Help Copy-DiagnosticData -Detailed</summary>
-
-```plaintext  
-EXAMPLE 1  
-PS C:\> Copy-DiagnosticData -DiagnosticLogPath "C:"
-
-EXAMPLE 2
-PS C:\>Copy-DiagnosticData -DiagnosticLogPath "C:/path/to/copied_logs_parent_directory"
-  
-EXAMPLE 3
-PS C:\>Copy-DiagnosticData -DiagnosticLogPath "C:" -Roles @("Agents", "Oplets", "ServiceFabric")
-  
-EXAMPLE 4
-PS C:\>$fromDate = [datetime]"03/13/2024 12:00:00"
-$toDate = [datetime]"03/13/2024 15:00:00"
-Copy-DiagnosticData -DiagnosticLogPath "C:" -FromDate
-$fromDate -ToDate $toDate
-```
-
-</details>
-
-<details>
-
-<summary>Get-Help Get-ObservabilityStampId -Detailed</summary>
-
-```plaintext  
-EXAMPLE 1 
-PS C:\>Get-ObservabilityStampId  
-  
-EXAMPLE 2 
-PS C:\>Get-ObservabilityStampId -MountPath "C:/temp/path” 
-```
-
-</details>
-
-<details>
-
-<summary>Get-Help Send-DiagnosticData -Detailed</summary>
-
-```plaintext  
-EXAMPLE 1 
-PS C:\># Interactive registration with device code (used by default)  
-
-Send-DiagnosticData -ResourceGroupName "Resource group" ` -SubscriptionId "Subscription Id" ` -TenantId "Tenant Id" ` -RegistrationRegion "eastus" ` -DiagnosticLogPath "C:\path\to\LogsToExport" ` -StampId "Stamp ID"  
-  
-EXAMPLE 2
-PS C:\># Interactive registration with device code (declared explicitly)  
-
-Send-DiagnosticData -ResourceGroupName "Resource group" `  
--SubscriptionId "Subscription Id" ` -TenantId "Tenant Id" ` -RegistrationWithDeviceCode ` -RegistrationRegion "eastus" ` -DiagnosticLogPath "C:\path\to\LogsToExport" ` -StampId "Stamp ID"  
-  
-EXAMPLE 3
-PS C:\># Registration with Service Principal Credential  
-
-Send-DiagnosticData -ResourceGroupName "Resource group" ` -SubscriptionId "Subscription Id" ` -TenantId "Tenant Id" ` -RegistrationWithCredential {$credential} ` -RegistrationRegion "eastus" ` -DiagnosticLogPath "C:\path\to\LogsToExport" ` -StampId "Stamp ID"  
-  
-EXAMPLE 4
-PS C:\># Get-ObservabilityStampId pipes the Observability Id as the 'StampId' if available.  
-
-Get-ObservabilityStampId | Send-DiagnosticData ` -ResourceGroupName "Resource group" ` -SubscriptionId "Subscription Id" ` -TenantId "Tenant Id" ` -RegstrationRegion “eastus” ` -DiagnosticLogPath "C:\path\to\LogsToExport"  
-  
-EXAMPLE 5
-PS C:\># Copy-DiagnosticData pipes the 'DiagnosticLogPath' (always) and the Observability Id
-# as the 'StampId' if available.
-
-Copy-DiagnosticData -DiagnosticLogPath "C:" -Roles @("ServiceFabric") `  | Send-DiagnosticData -ResourceGroupName "Resource group" `  -SubscriptionId "Subscription Id" ` -TenantId "Tenant Id" ` -RegstrationRegion “eastus”
-
-EXAMPLE 6
-PS C:\> $roles = @("Agents", "Oplets", "MASLogs")  
-
-PS C:\> Copy-DiagnosticData -DiagnosticLogPath "G:" -Roles $roles ` | Send-DiagnosticData ` -ResourceGroupName "Resource group" ` -RegistrationRegion "eastus" ` -SubscriptionId "Subscription Id" ` -TenantId "Tentant Id" ` -RegistrationWithCredential $sp
-```
+## Related content
+- [Collect logs on-demand with Azure Local disconnected operations (preview)](disconnected-operations-on-demand-logs.md)
+- [Disconnected operations with Azure Local Overview](disconnected-operations-overview.md)
 
 </details>
 
