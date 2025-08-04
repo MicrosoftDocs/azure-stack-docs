@@ -289,8 +289,8 @@ Populate the required parameters based on your deployment planning. Modify the e
 1. Populate the identity configuration object.
 
     ```powershell  
-    $oidcCertChain = Get-CertChainInfo -endpoint 'https://adfs.azurestack.local'
-    $ldapsCertChain = Get-CertChainInfo -endpoint 'https://dc01.azurestack.local'
+    $oidcCertChain = Get-CertificateChainFromEndpoint -endpoint 'https://adfs.azurestack.local'
+    $ldapsCertChain = Get-CertificateChainFromEndpoint -endpoint 'https://dc01.azurestack.local'
 
     $identityParams = @{  
         Authority = "https://adfs.azurestack.local/adfs"  
