@@ -303,11 +303,7 @@ Make sure the following prerequisites are met before proceeding:
    
    :::image type="content" source="media/deployment-with-azure-arc-gateway/arc-gateway-resource-id.png" alt-text="Screenshot of the Resource ID in the Overview page for Azure Arc gateway." lightbox="media/deployment-with-azure-arc-gateway/arc-gateway-resource-id.png":::
 
-## Step 2: Register new Azure Local machines with Arc
-
-To use the Arc gateway feature for Azure Local systems without a proxy, only use the `ArcGatewayID` parameter.
-
-Run the initialization script as follows.
+## Step 2: Set parameters
 
 ```azurecli
 #Define the subscription where you want to register your Azure Local machine with Arc.
@@ -319,16 +315,23 @@ $RG = "yourresourcegroupname"
 #Define the Arc gateway resource ID from Azure 
 $ArcgwId = "/subscriptions/yourarcgatewayid/resourceGroups/yourresourcegroupname/providers/Microsoft.HybridCompute/gateways/yourarcgatewayname" 
 
+## Step 3: Run the registration script
 
-#Invoke the registration script with ArcgatewayID 
-Invoke-AzStackHciArcInitialization -SubscriptionID $Subscription -ResourceGroup $RG -Region australiaeast -Cloud "AzureCloud" -ArcGatewayID $ArcgwId
-```
+To use the Arc gateway feature for Azure Local systems without a proxy, only use the `ArcGatewayID` parameter.
+
+1. Run the initialization script as follows.
+
+    ```azurecli
+    
+    #Invoke the registration script with ArcgatewayID 
+    Invoke-AzStackHciArcInitialization -SubscriptionID $Subscription -ResourceGroup $RG -Region australiaeast -Cloud "AzureCloud" -ArcGatewayID $ArcgwId
+    ```
 
 1. During the Arc registration process, you must authenticate with your Azure account. The console window displays a code that you must enter in the URL, in order to authenticate. Follow the instructions to complete the authentication process.
 
     :::image type="content" source="media/deployment-with-azure-arc-gateway/authentication-device-code.png" alt-text="Screenshot of the console window with the device code and the URL to open." lightbox="media/deployment-with-azure-arc-gateway/authentication-device-code.png":::
 
-## Step 3: Verify the setup is successful
+## Step 4: Verify the setup is successful
 
 Once the registration is complete, follow these steps to verify that Azure Arc gateway setup is successful.
 
