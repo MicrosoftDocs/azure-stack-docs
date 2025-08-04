@@ -20,7 +20,7 @@ You might need to collect logs or diagnose problems if you encounter any issues 
 
 - Get logs from a machine.
 - Run diagnostic tests.
-- Collect a Support package.
+- Download and upload a Support package.
 - Clean previous installation.
 
 ## Get logs if the app is inaccessible
