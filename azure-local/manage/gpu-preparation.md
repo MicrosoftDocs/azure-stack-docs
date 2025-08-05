@@ -4,7 +4,7 @@ description: Learn how to prepare GPUs for an Azure Local instance.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 03/28/2025
+ms.date: 08/05/2025
 ms.service: azure-local
 ---
 
@@ -41,18 +41,22 @@ NVIDIA supports their workloads separately with their virtual GPU software. For 
 
 For AKS workloads, see [GPUs for AKS for Arc](/azure/aks/hybrid/deploy-gpu-node-pool#supported-gpu-models).
 
-The following GPU models are supported using both DDA and GPU-P for Azure Local VM workloads:
 
-- NVIDIA A2
-- NVIDIA A16
+The following table shows which GPU model is supported by which GPU assignment type and by which VM workload type:
 
-These additional GPU models are supported using GPU-P (only) for VM workloads:
+| GPU Model | DDA | DDA | DDA | GPU-P |
+| -- |  -- | -- | -- | -- |
+| | **VMs**<br>(enabled by Azure Arc) | **VMs**<br> (unmanaged) | **AKS** | **VMs only** * |
+| NVIDIA T4 | Yes | Yes | Yes | No |
+| NVIDIA A2 |Yes |Yes |Yes |Yes |
+| NVIDIA A10 |No |Yes |No |Yes |
+| NVIDIA A16 |Yes |Yes |Yes |Yes |
+| NVIDIA A40 |No |Yes |No |Yes |
+| NVIDIA L4 |No |Yes |No |Yes |
+| VIDIA L40 |No |Yes |No |Yes |
+| NVIDIA L40S |No |Yes |No |Yes |
 
-- NVIDIA A10
-- NVIDIA A40
-- NVIDIA L4
-- NVIDIA L40
-- NVIDIA L40S
+*AKS Arc does not currently support GPU partitions.
 
 ## Host requirements
 
