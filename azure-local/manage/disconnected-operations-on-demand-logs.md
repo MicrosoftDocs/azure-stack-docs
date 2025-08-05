@@ -58,7 +58,7 @@ To collect logs from the control plane, follow these steps:
 
     For more information on the Send-DiagnosticData command, see [Fallback log collection](disconnected-operations-fallback.md).
 
-1. Upload logs using the **standalone observability tool**.
+1. Upload logs by using the **standalone observability tool**.
 
     After you save logs from both the appliance and host nodes to a shared location, upload them with the standalone observability tool:
 
@@ -87,7 +87,7 @@ Here's what you need to do log collection in a connected disconnected operations
     Import-Module "<disconnected operations module folder path>\Azure.Local.DisconnectedOperations.psd1" -Force
     ```
 
-    Here's an example output:
+    Example output:
 
     ```console
     PS C:\Users\administrator.s46r2004\Documents> Import-Module "Q:\AzureLocalVHD\OperationsModule\Azure.Local.DisconnectedOperations.psd1" -Force  
@@ -125,7 +125,7 @@ Here's what you need to do log collection in a connected disconnected operations
     $recoveryKeys
     ```
 
-    Here's the example output:
+    Example output:
 
     ```console
     PS C:\Users\administrator.s46r2004\Documents> $recoverykeySet = Get-ApplianceBitlockerRecoveryKeys  
@@ -175,7 +175,7 @@ Before you trigger a log collection, create a share and credentials for a share.
     New-SMBShare -Name <share-name> -Path <path-to-share> -FullAccess Users -ChangeAccess 'Server Operators'
     ```
 
-1. Create PSCredentials to the share. Run this command:
+1. Create PSCredential's to the share. Replace the placeholder `<share-name>` and `<path-to-share>` with your own values and run this command:
 
     ```PowerShell
     $user = "<username>"
@@ -184,9 +184,9 @@ Before you trigger a log collection, create a share and credentials for a share.
     $shareCredential = New-Object System.Management.Automation.PSCredential ($user, $sec)
     ```
 
-1. Trigger log collection with the `Invoke-ApplianceLogCollectionAndSaveToShareFolder`.
+1. Trigger log collection with the `Invoke-ApplianceLogCollectionAndSaveToShareFolder` cmdlet. Replace the placeholder text `<File Share Path>` and `<Share Folder Password>` with your own values.
 
-    Here's an example:
+    Example:
 
     ```azurecli
     $fromDate = (Get-Date).AddMinutes(-30)
@@ -195,9 +195,9 @@ Before you trigger a log collection, create a share and credentials for a share.
     -LogOutputShareFolderPath "<File Share Path>" -ShareFolderUsername "ShareFolderUser" -ShareFolderPassword (ConvertTo-SecureString "<Share Folder Password>" -AsPlainText -Force)
     ```
 
-1. Copy logs from your disconnected environment to the share folder.
+1. Copy logs from your disconnected environment to the share folder. Replace the placeholder text `<share folder path>` and `<share folder user name>` with your own values.
 
-    Here's an example:
+    Example:
 
     ```azurecli
     $fromDate = (Get-Date).ToUniversalTime().AddHours(-1)
@@ -219,9 +219,9 @@ Before you trigger a log collection, create a share and credentials for a share.
 
 1. Check the status of the log collection job.
 
-    Use the `Get-ApplianceLogCollectionJobStatus` or `Get-ApplianceLogCollectionHistory` cmdlet to retrieve the current log collection job status.
+    Use the `Get-ApplianceLogCollectionJobStatus` or `Get-ApplianceLogCollectionHistory` cmdlet to get the current log collection job status.
 
-    Here's an example:
+    Example:
 
     ```azurecli
     Get-ApplianceLogCollectionJobStatus -OperationId $OperationId
@@ -231,7 +231,7 @@ Before you trigger a log collection, create a share and credentials for a share.
     Get-ApplianceLogCollectionHistory -FromDate ((Get-Date).AddHours(-3))
     ```
 
-    Here's an example output:
+    Example output:
 
     ```console
     PS C:\Users\administrator.s46r2004\Documents> $operationId = Invoke-ApplianceLogCollectionAndSaveToShareFolder -FromDate $fromDate -ToDate $toDate -LogOutputShareFolderPath "\\<LogShareName>\$logShareName" -ShareFolderUsername "<Username>.masd.stbtest.microsoft.com\administrator" -ShareFolderPassword (ConvertTo-SecureString "<Password>" -AsPlainText -Force)  
@@ -319,7 +319,7 @@ Before you trigger a log collection, create a share and credentials for a share.
     }
     ```
 
-1. Get the stamp ID
+1. Get the stamp ID.
 
     ```azurecli
     $stampId = (Get-ApplianceInstanceConfiguration).StampId
@@ -327,11 +327,11 @@ Before you trigger a log collection, create a share and credentials for a share.
 
 ## Log collection for control plane when connected to Azure with an accessible management endpoint
 
-Before you can start log collection and get the Stamp ID, set up the observability configuration with Azure Local disconnected operations module.
+Before you can start log collection and get the Stamp ID, set up the observability configuration with the Azure Local disconnected operations module.
 
-1. To check that the observability configuration is set up. Use the Get-`ApplianceObservabilityConfiguration` or `Get-Appliancehealthstate` cmdlet:
+1. Check that the observability configuration is set up. Use the Get-`ApplianceObservabilityConfiguration` or `Get-ApplianceHealthState` cmdlet:
 
-    Here's an example output:
+    Example output:
 
     ```console
     PS C:\Users\administrator.s46r2004\Documents> Get-ApplianceHealthState  
@@ -347,7 +347,7 @@ Before you can start log collection and get the Stamp ID, set up the observabili
     > [!NOTE]
     > If the observability configuration is set up, skip step 2 and proceed to step 3.
 
-1. If the observability configuration isn't set up, run the following script:
+1. If the observability configuration isn't set up, run this script:
 
     ```azurecli
     $observabilityConfiguration = New-ApplianceObservabilityConfiguration `
@@ -388,7 +388,7 @@ Before you can start log collection and get the Stamp ID, set up the observabili
     False       @{Services=22; Diagnostics=0; Identity=100; Networking=100} @{Services=System.Object[]; Diagnostics=System.Object[]; Identity=System.Object[]; Networking=System.Object[]}  
     ```
 
-1. Trigger log collection. Run the `Invoke-applianceLogCollection` cmdlet.
+1. Trigger log collection. Run the `Invoke-ApplianceLogCollection` cmdlet.
 
     ```azurecli
     $fromDate = (Get-Date).AddMinutes(-30)
@@ -439,29 +439,29 @@ What Send-DiagnosticData does:
   - Date range
   - Log type
 
-- Can bypass observability agents to collect logs only on the node where the command is run.
+- Bypasses observability agents to collect logs only on the node where the command is run.
 
-- Allows saving logs locally using the `-SaveToPath` parameter.
+- Lets you save logs locally by using the `-SaveToPath` parameter.
 
 - Supports secure credentialed access when saving to a network share.
 
 ## Security considerations
 
-- In air-gapped environments, this is the only supported method to extract and provide diagnostic logs to Microsoft.
-- Logs are not automatically transmitted unless explicitly configured.
+- In air-gapped environments, this method is the only supported way to extract and give diagnostic logs to Microsoft.
+- Logs aren't automatically sent unless you explicitly set them to be sent.
 - Logs can be saved locally and reviewed before sharing.
-- Logs may contain sensitive operational metadata but do not include PII (Personally Identifiable Information) by default.
-- Microsoft does not retain access to logs unless they are explicitly shared by the customer.
+- Logs can contain sensitive operational metadata, but they don't include personal data by default.
+- Microsoft doesn't keep access to logs unless they're explicitly shared by the customer.
 
-If your organization does not allow direct internet connectivity from the affected node, follow these steps:
+If your organization doesn't let the affected node connect directly to the internet, follow these steps:
 
-1. Use the -SaveToPath option to store logs locally.
-2. Transfer the logs to a separate VM or system that is permitted to connect to the internet.
-3. Use that system to upload the logs to Microsoft via secure support channels.
+1. Use the `-SaveToPath` option to store logs locally.
+2. Move the logs to a separate VM or system that can connect to the internet.
+3. Use that system to upload the logs to Microsoft through secure support channels.
 
-This approach ensures that diagnostic data can still be shared for support purposes without compromising the integrity of your air-gapped environment.
+This approach lets you share diagnostic data for support purposes without affecting the integrity of your air-gapped environment.
 
-### Use Fallback log collection
+### Use fallback log collection
 
 Use fallback log collection to collect and send logs when the disconnected operations with Azure Local VM is down, the management endpoint isn't accessible, and you can't invoke standard log collection.
 
@@ -477,27 +477,27 @@ For more information, see [Use appliance fallback log collection](disconnected-o
 
 - `Copy-DiagnosticData`: this cmdlet must be run on the Hyper-V host that is hosting your Azure Local disconnected VM.
 
-- `Send-DiagnosticData`: this cmdlet must be run on a windows machine that has direct internet access to Azure and is not arc-enabled and does not use the appliance as its arc control plane.
+- `Send-DiagnosticData`: this cmdlet must be run on a windows machine that has direct internet access to Azure, isn't arc-enabled, and doesn't use the appliance as its arc control plane.
 
-- `Invoke-ApplianceLogCollectionAndSaveToShareFolder`: you need to specify the account in the format: Domain\Username, if you omit the domain or use an incorrect username, the copy operation to the share will fail with an access-denied error.
+- `Invoke-ApplianceLogCollectionAndSaveToShareFolder`: you need to specify the account in the format: Domain\Username. If you omit the domain or use an incorrect username, the copy operation to the share fails with an access-denied error.
 
 ## When to use on-demand log collection
 
-Use on-demand direct log collection when an on-premises device running Azure Local temporarily has connectivity to Azure.
+Use on-demand direct log collection when an on-premises device running Azure Local temporarily connects to Azure.
 
 - Improper Execution of `Send-DiagnosticData`.
   - Log collection fails when customers attempt to run `Send-DiagnosticData` or `Copy-DiagnosticData` from:
-    - Nodes that are not part of the Azure Local host infrastructure.
-    - External machines (e.g., personal laptops) that don't host the required appliance VMs on the same Hyper-V host.
+    - Nodes that aren't part of the Azure Local host infrastructure.
+    - External machines (for example, personal laptops) that don't host the required appliance VMs on the same Hyper-V host.
 
 - Misuse of the Observability Tool.
   - The Standalone Observability Tool must be:
     - Run on a Windows Server.
-    - Configured with additional manual steps if executed in unsupported environments.
+    - Configured with more manual steps if executed in unsupported environments.
 
 ### Indirect or fallback log collection (disconnected mode)
 
-Use indirect log collection methods when direct upload is not possible:
+Use indirect log collection methods when direct upload isn't possible:
 
 - Run the following commands on the seed node:
   - `Invoke-ApplianceLogCollectionAndSaveToShareFolder`
@@ -505,14 +505,14 @@ Use indirect log collection methods when direct upload is not possible:
 
 - Ensure that:
   - The share folder is accessible.
-  - Troubleshooting instructions are provided for common failures (e.g., permission issues, missing dependencies).
+  - Troubleshooting instructions are provided for common failures (for example, permission issues, missing dependencies).
 
 ### Uploading logs to Microsoft Support
 
 To upload collected logs to Microsoft:
 
 - Use the Send-DiagnosticData command from the Azure Local Disconnected Operations PowerShell module.
-- Important: This command must not be run on Azure Local host nodes, as those are managed by the ALDO control plane.
+- Important: This command must not be run on Azure Local host nodes, as those are managed by the Azure Local disconnected operations control plane.
 - Instead, run it from a Windows machine with Azure connectivity—ideally the customer’s laptop or desktop.
 
 ## Related content
