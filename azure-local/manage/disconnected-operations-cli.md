@@ -109,7 +109,7 @@ For disconnected operations:
         }
 
         # Run the helper method in PowerShell:
-        UpdatePythonCertStore -ApplianceRootCertPath D:\applianceIngressRoot.cer
+        UpdatePythonCertStore -ApplianceRootCertPath C:\AzureLocalDisconnectedOperations\applianceRoot.cer
     ```
 
 ## Set up Azure CLI for disconnected operations
