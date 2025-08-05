@@ -9,7 +9,7 @@ ms.author: alkohli
 
 # Migrate VMs to Azure Local with Azure Migrate using PowerShell
 
-This article describes how to migrate VMs to Azure Local with Azure Migrate using PowerShell.
+This article describes how to migrate virtual machines (VMs) to Azure Local with Azure Migrate using PowerShell.
 
 ## Prerequisites
 
@@ -22,7 +22,7 @@ Before you begin, you should complete the following tasks:
 2. Install the [Azure PowerShell Az module](/powershell/azure/install-azure-powershell).
 
 <!-- Update version to 2.X.X  in this paragraph-->
-3. Verify the Azure Migrate PowerShell module is installed **and version is 2.8.0 or later**. Azure Migrate PowerShell is available as part of the Azure PowerShell Az module. Run the following command to check if Azure Migrate PowerShell is installed on your computer and verify the version is 2.8.0 or later:  
+3. Verify the Azure Migrate PowerShell module is installed and **version is 2.8.0 or later**. Azure Migrate PowerShell is available as part of the Azure PowerShell `Az` module. Run the following command to check if Azure Migrate PowerShell is installed on your computer and verify the version is 2.8.0 or later:  
 
     ```powershell
     Get-InstalledModule -Name Az.Migrate
@@ -47,12 +47,16 @@ Use the `Get-AzSubscription` cmdlet to get the list of Azure subscriptions you h
     Set-AzContext -SubscriptionId "00000000-0000-0000-0000-000000000000"
     ```
 
-You can view the full list of Azure Migrate PowerShell cmdlets by visiting the [Azure Migrate PowerShell reference](/powershell/module/az.migrate) or by running command `Get-Command -Module Az.Migrate`.
+You can view the full list of Azure Migrate PowerShell cmdlets by visiting the [Azure Migrate PowerShell reference](/powershell/module/az.migrate) or by running the command:
+
+```powershell
+ `Get-Command -Module Az.Migrate`
+ ```
 
 ## Retrieve discovered VMs
 
-You can retrieve the discovered VMs in your Azure Migrate project using the `Get-AzMigrateDiscoveredServer` cmdlet. This cmdlet retrieves the list of VMs discovered by the source appliance in your Azure Migrate project. SourceMachineType can be either `HyperV` or `VMware`, depending on your source VM environment.
-For more information, see the `Get-AzMigrateDiscoveredServer`](/powershell/module/az.migrate/get-azmigratediscoveredserver).
+You can retrieve the discovered VMs in your Azure Migrate project using the `Get-AzMigrateDiscoveredServer` cmdlet. This cmdlet retrieves the list of VMs discovered by the source appliance in your Azure Migrate project. `SourceMachineType` can be either `HyperV` or `VMware`, depending on your source VM environment.
+For more information, see the [`Get-AzMigrateDiscoveredServer`](/powershell/module/az.migrate/get-azmigratediscoveredserver) cmdlet.
 
 **Example 1**: Get all VMs discovered by an Azure Migrate source appliance in an Azure Migrate project:
 
@@ -65,7 +69,7 @@ $DiscoveredServers = Get-AzMigrateDiscoveredServer `
 Write-Output $DiscoveredServers | Format-List *
 ```
 
-**Example 2**: List VMs and filter by source VM display names that contain a specific string (e.g., 'test'):
+**Example 2**: List VMs and filter by source VM display names that contain a specific string (like 'test'):
 
 ```powershell
 $DiscoveredServers = Get-AzMigrateDiscoveredServer `
@@ -80,7 +84,7 @@ Write-Output $DiscoveredServers | Format-List *
 ## Initialize VM replications
 
 You can initialize the replication infrastructure for your Azure Migrate project using the `Initialize-AzMigrateLocalReplicationInfrastructure` cmdlet. This cmdlet sets up the necessary infrastructure and metadata storage account needed to eventually replicate VMs from the source appliance to the target appliance. Running this cmdlet multiple times will not cause any issues, as it checks if the replication infrastructure is already initialized.
-For more information, see the `Initialize-AzMigrateLocalReplicationInfrastructure`](/powershell/module/az.migrate/initialize-azmigratelocalreplicationinfrastructure).
+For more information, see the [`Initialize-AzMigrateLocalReplicationInfrastructure`](/powershell/module/az.migrate/initialize-azmigratelocalreplicationinfrastructure) cmdlet.
 
 You can use a default created storage account or a custom-created storage account that will store the replication metadata. You will need the source and target appliance names from the Azure Portal by going to your Azure Migrate project, then navigating to **Appliances > Registered appliances**.
 
@@ -263,7 +267,7 @@ $NicMappings | Format-List *
 ```
 
 
-**Start Replication with Disk and NIC Mappings**
+**Start Replication with disk and NIC mappings**
 > [!NOTE]
 > If you use the `-DiskToInclude` and `-NicToInclude` parameters, you must create both local disk and NIC mapping objects as shown in the **Create a Local Disk Mapping** and **Create a local NIC mapping object** sections. You cannot use one without the other.
 > 
@@ -426,8 +430,6 @@ $RemoveJob = Remove-AzMigrateLocalServerReplication `
     -InputObject $ProtectedItem
 $RemoveJob.Property | Format-List *
 ```
-
-
 
 ## Next steps
 
