@@ -371,6 +371,18 @@ items:
    
     - name: Collect log files for Azure Local VM
       href: manage/collect-log-files-arc-enabled-vms.md 
+    - name: Disaster recovery
+      items:
+      - name: Disaster recovery overview
+        href: manage/disaster-recovery-overview.md
+      - name: Infrastructure resiliency
+        href: manage/disaster-recovery-infrastructure-resiliency.md
+      - name: Virtual machine resiliency
+        href: manage/disaster-recovery-vm-resiliency.md
+      - name: Use Azure Site Recovery
+        href: manage/azure-site-recovery.md
+      - name: Use Azure Backup
+        href: /azure/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines?toc=/azure/azure-local/toc.json&bc=/azure/azure-local/breadcrumb/toc.json
     - name: Troubleshoot
       href: manage/troubleshoot-arc-enabled-vms.md
     - name: FAQs
@@ -439,10 +451,6 @@ items:
       href: hybrid-capabilities-with-azure-services-23h2.md
     - name: Enhanced management from Azure
       href: manage/azure-enhanced-management-managed-identity.md
-    - name: Use Azure Site Recovery
-      href: manage/azure-site-recovery.md
-    - name: Use Azure Backup
-      href: /azure/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines?toc=/azure/azure-local/toc.json&bc=/azure/azure-local/breadcrumb/toc.json
 
   - name: Azure Arc extensions
     items:
