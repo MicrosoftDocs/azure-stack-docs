@@ -16,9 +16,9 @@ ms.date: 07/25/2025
 
 [!INCLUDE [azure-local-end-of-support-banner-23h2](../includes/azure-local-end-of-support-banner-23h2.md)]
 
-This article provides guidance on discovering and importing solution update packages for Azure Local, which is particularly beneficial for sites with limited bandwidth connections to Azure. Beginning with version 2503, Azure Local solution updates can be optionally downloaded as static payloads that can be imported in advance of performing an update, this removes the requirement to download the update at runtime.
+This article explains how to discover and import solution update packages for Azure Local deployed in sites with limited bandwidth connections to Azure. Beginning with version 2503, Azure Local solution updates can be optionally downloaded as static payloads. You can download the payload once, copy or transfer to multiple instances and import using PowerShell. Performing these actions prior to starting an update, reduces the amount of data that is downloaded during an update.
 
-The static payload for a solution update includes the OS security update, extensions, and core agents that are installed during the update process. Updated container images required for the Azure Resource Bridge component and AKS images are not included in the static payload; these images are downloaded automatically during the update process.
+The static payload for a solution update includes the OS security update, extensions, and core agents, all of which are installed during the update process. Updated container images required for the Azure Resource Bridge component and Azure Kubernetes Service on Azure Local are not included in the static payload. These images are downloaded automatically during the update process.
 
 <!--To install updates online via PowerShell, see [Update Azure Local via PowerShell](./update-via-powershell-23h2.md).-->
 
