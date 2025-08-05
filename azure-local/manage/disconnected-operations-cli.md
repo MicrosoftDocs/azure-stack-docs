@@ -109,7 +109,7 @@ For disconnected operations:
         }
 
         # Run the helper method in PowerShell:
-        UpdatePythonCertStore -ApplianceRootCertPath D:\applianceIngressRoot.cer
+        UpdatePythonCertStore -ApplianceRootCertPath C:\AzureLocalDisconnectedOperations\applianceRoot.cer
     ```
 
 ## Set up Azure CLI for disconnected operations
@@ -123,56 +123,39 @@ To set up Azure CLI for disconnected operations on Azure Local, follow these ste
     ```PowerShell
     function Get-ApplianceAzCliCloudConfig
     {
-    [CmdletBinding()]
-    [OutputType([String])]
-    param (
-    [Parameter(Position = 0, Mandatory = $true)]
-    [string]
-    $ArmEndpoint,
+        [CmdletBinding()]
+        [OutputType([String])]
+        param (
+        [Parameter(Position = 0, Mandatory = $true)]
+        [string]
+        $fqdn,
+        [Parameter(Position = 1, Mandatory = $false)]
+        [string]
+        $exportToFile
+        )
     
-    [Parameter(Position = 1, Mandatory = $false)]
-    [string]
-    $OutputFolder,
-    
-    [Parameter(Position = 2, Mandatory = $false)]
-    [string]
-    $ApiVersion = "2022-09-01" )
-    
-    $armMetadataUrl = "$($ArmEndpoint.TrimEnd('/'))/metadata/endpoints?api-version=${ApiVersion}"
-    try
+    $cloudConfig = @"
     {
-    $response = Invoke-WebRequest $armMetadataUrl `
-    -Method 'GET' `
-    -ContentType "application/json" `
-    -UseBasicParsing
+        "suffixes":  {
+                        "keyvaultDns":  ".vault.autonomous.cloud.private",
+                        "storageEndpoint":  "autonomous.cloud.private",
+                        "acrLoginServerEndpoint":  ".edgeacr.autonomous.cloud.private"
+                    },
+        "endpoints":  {
+                        "activeDirectory":  "https://login.autonomous.cloud.private/adfs",
+                        "activeDirectoryGraphResourceId":  "https://graph.autonomous.cloud.private",
+                        "resourceManager":  "https://armmanagement.autonomous.cloud.private",
+                        "microsoftGraphResourceId":  "https://graph.autonomous.cloud.private",
+                        "activeDirectoryResourceId":  "https://armmanagement.autonomous.cloud.private"
+                    }
     }
-    catch
+    "@ -replace "autonomous.cloud.private", $fqdn
+
+    if ($exportToFile)
     {
-    Write-Error "Failed to get ARM metadata endpoints at '$armMetadataUrl'."
-    throw $_
+        $cloudConfig | Set-Content -Path "$exportToFile"
     }
-    
-    $cloudEndpoints = $response.Content | ConvertFrom-Json
-    $cloudConfig = @{
-    endpoints = @{
-    activeDirectory = "$($cloudEndpoints.authentication.loginEndpoint.TrimEnd('/'))/adfs"
-    activeDirectoryGraphResourceId = $cloudEndpoints.graph
-    activeDirectoryResourceId = $cloudEndpoints.authentication.audiences[0]
-    resourceManager = $cloudEndpoints.resourceManager
-    microsoftGraphResourceId = $cloudEndpoints.graph
-    }
-    suffixes = @{
-    storageEndpoint = $cloudEndpoints.suffixes.storage
-    keyvaultDns = $cloudEndpoints.suffixes.keyvaultDns
-    acrLoginServerEndpoint = $cloudEndpoints.suffixes.acrLoginServer
-    }
-    }
-    $cloudConfigJson = $cloudConfig | ConvertTo-Json
-    if ($OutputFolder)
-    {
-    $cloudConfigJson | Set-Content -Path "$OutputFolder\cloudconfig.json"
-    }
-    return $cloudConfigJson
+    return $cloudConfig
     }
     ```
 
@@ -182,7 +165,7 @@ To set up Azure CLI for disconnected operations on Azure Local, follow these ste
     az config set core.enable_broker_on_windows=false
     az config set core.instance_discovery=false
     $fqdn = "autonomous.cloud.private"
-    $cloudConfigJson = Get-ApplianceAzCliCloudConfig -ArmEndpoint "https://armmanagement.$($fqdn)/"
+    $cloudConfigJson = Get-ApplianceAzCliCloudConfig -fqdn $fqdn
 
     # Write the content to a file cloudConfig.json
     $cloudConfigJson | Out-File -FilePath cloudConfig.json

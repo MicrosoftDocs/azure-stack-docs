@@ -84,11 +84,11 @@ On the host machine or Active Directory virtual machine (VM), follow the steps i
 You need these certificates to deploy the disconnected operations appliance. You also need the public key for your local infrastructure to provide a secure trust chain.
 
 > [!NOTE]
-> **IngressEndpointCerts** is the folder where you store all 24 certificate files. **IngressEndpointPassword** is a secure string with the certificate password.
+> **IngressEndpointsCerts** is the folder where you store all 24 certificate files. **IngressEndpointPassword** is a secure string with the certificate password.
 
 1. Connect to the CA.
 1. Create a folder named **IngressEndpointsCerts**. Use this folder to store all certificates.
-1. Create the 24 certs in the table above and export them into the IngressEndpointCerts folder. 
+1. Create the 24 certs in the table above and export them into the IngressEndpointsCerts folder. 
 
 Here's an example script you can modify and run. It creates ingress certificates and exports them to the configured folder by creating CSRs and issuing them to your CA.
 
@@ -205,7 +205,7 @@ $AzLCerts = @(
   }
   ```
 
-- Copy the original certificates (24 .pfx files / *.pfx) obtained from your CA to the directory structure represented in IngressEndpointCerts.
+- Copy the original certificates (24 .pfx files / *.pfx) obtained from your CA to the directory structure represented in IngressEndpointsCerts.
 
 ### Management endpoint
 
@@ -233,7 +233,7 @@ $subjects|Foreach-Object {
     $infFilename = "$($managementendpointPath)\$($filename).inf"
     $csrPath = "$($managementendpointPath)\$($filename).csr"
     $certPath = "$($managementendpointPath)\$($filename).cer"
-    $pfxPathPath = "$($managementendpointPath)\$($filename).pfx"
+    $pfxPath = "$($managementendpointPath)\$($filename).pfx"
 @"
 [NewRequest]
 Subject = "CN=$subject"
@@ -293,7 +293,7 @@ Copy the management certificates (*.pfx) to the directory structure represented 
 You need the root certificate public key for deployment. The following example shows how to export your root certificate public key:
 
 ```azurecli
-certutil -ca.cert applianceRootCA.cer
+certutil -ca.cert C:\AzureLocalDisconnectedOperations\applianceRoot.cer
 ```
 
 For more information, see [Active Directory Certificate Services](/troubleshoot/windows-server/certificates-and-public-key-infrastructure-pki/export-root-certification-authority-certificate).
@@ -312,15 +312,15 @@ You have a helper method in the **OperationsModule** that can help you populate 
 Here's an example on how to populate the required parameters:
 
 ```powershell
-$oidcCertChain = Get-CertChainInfo -endpoint 'https://adfs.azurestack.local'
-$ldapsCertChain = Get-CertChainInfo -endpoint 'https://dc01.azurestack.local'
+$oidcCertChain = Get-CertificateChainFromEndpoint -endpoint 'https://adfs.azurestack.local'
+$ldapsCertChain = Get-CertificateChainFromEndpoint -endpoint 'https://dc01.azurestack.local'
 ```
 
-Here's an example of the output from Get-CertChainInfo
+Here's an example of the output from Get-CertificateChainFromEndpoint
 
 ```powershell
 # Returns: System.Security.Cryptography.X509Certificates.X509Certificate2[]
->> Get-CertChainInfo
+>> Get-CertificateChainFromEndpoint
 >>
 Thumbprint                                Subject
 ----------                                -------
