@@ -573,7 +573,7 @@ items:
     - name: Maintain static IP addresses
       href: migrate/migrate-maintain-ip-addresses.md
     - name: Monitor Azure Local migrations
-      href: migrate/migrate-monitor.md
+      href: migrate/monitor-migration.md
     - name: FAQ
       href: migrate/migrate-faq.yml
     - name: Troubleshoot
