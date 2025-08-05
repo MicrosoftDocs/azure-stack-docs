@@ -60,7 +60,7 @@ Use these parameters with the `Copy-DiagnosticData` cmdlet.
     > [!NOTE]
     > The BitLocker recovery key set is required to unlock the mounted VHDs used for log collection. These keys should be retrieved and saved upon successful deployment of the appliance using the BitlockerRecoveryKeys endpoint.
 
-    Here's an example:
+    Example:
 
     ```console
     #ClientAuth certificate location and password may be for your environment
@@ -126,13 +126,13 @@ To copy diagnostic logs from the mounted VHDs to a folder location you specify i
     Copy-DiagnosticData [-DiagnosticLogPath] <String> [[-Roles] <String[]>] [[-FromDate] <Nullable`1>] [[-ToDate] <Nullable`1>] [[-RecoveryKeySet] <PSObject[]>] [<CommonParameters>]
     ```
 
-    Here's an example:
+    Example:
 
     ```powershell
     Copy-DiagnosticData -DiagnosticLogPath $diagnosticLogPath -Roles $role -FromDate $fromDate -ToDate $toDate -RecoveryKeySet $recoveryKeySet
     ```
 
-    Here's the example output:
+    Example output:
 
     ```PowerShell
     PS C:\Users\administrator.s46r2004\Documents> Copy-DiagnosticData -DiagnosticLogPath $diagnosticLogPath -RecoveryKeySet $recoveryKeySet  
@@ -144,7 +144,7 @@ To copy diagnostic logs from the mounted VHDs to a folder location you specify i
     VERBOSE: [2025-03-26 22:11:55Z] [Invoke-StopIRVMAndMountVHDs] Attempting to mount VHD 'C:\ClusterStorage\UserStorage_1\InfraVms\IRVM01\Virtual Hard Disks\OSAndDocker_A.vhdx'...      
     ```
 
-    Here's an example of the copy output with the StampId, if it exists:
+    Example of the copy output with the StampId, if it exists:
 
     ```output
     | DiagnosticLogPath                                       | StampId                                  |
@@ -189,7 +189,7 @@ Optional parameters:
 > [!NOTE]
 > The `RegistrationRegion` is equivalent to `Location` with reference to the ObservabilityConfiguration endpoint's $arcContext JSON.
 
-Here's an example using the **Interactive registration with device code**:
+Example using the **Interactive registration with device code**:
 
 ```powershell  
 Send-DiagnosticData 
@@ -203,7 +203,7 @@ Send-DiagnosticData
 
 The **-RegistrationWithDeviceCode** switch is optional. If you don't use **-RegistrationWithCredential**, interactive registration is used.
 
-Here's an example using **Registration with Service Principal Credential**:
+Example using **Registration with Service Principal Credential**:
 
 ```powershell  
 $spId = "{...}"
@@ -223,7 +223,7 @@ Send-DiagnosticData
 
 The cmdlet returns the stamp ID, also called the **AEOStampId**. It also shows any errors and the location of the send activity logs.
 
-Here's an example of the output:
+Example output:
 
 ```console
 AEOStampID '<Stamp ID>' used for log tracking.
