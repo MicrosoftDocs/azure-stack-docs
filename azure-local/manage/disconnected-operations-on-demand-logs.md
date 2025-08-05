@@ -42,21 +42,21 @@ To collect logs from the control plane, follow these steps:
 
 1. Collect control plane logs. Run this command on a system that can access the appliance VM (usually the same Hyper-V host):
 
-```powershell
-Invoke-ApplianceLogCollectionAndSaveToShareFolder
-```
+    ```powershell
+    Invoke-ApplianceLogCollectionAndSaveToShareFolder
+    ```
 
-This command gathers logs from the appliance VM and saves them to the specified shared folder.
+    This command gathers logs from the appliance VM and saves them to the specified shared folder.
 
 1. Collect host node logs. On each Azure Local host node, run this command:
 
-```powershell
-Send-DiagnosticData -SaveToPath <shared folder path>
-```
+    ```powershell
+    Send-DiagnosticData -SaveToPath <shared folder path>
+    ```
 
-This command collects logs specific to the node, including system and cluster level diagnostics.
+    This command collects logs specific to the node, including system and cluster level diagnostics.
 
-For more information on the Send-DiagnosticData command, see [Fallback log collection](disconnected-operations-fallback.md).
+    For more information on the Send-DiagnosticData command, see [Fallback log collection](disconnected-operations-fallback.md).
 
 1. Upload logs using the **standalone observability tool**.
 
@@ -71,7 +71,7 @@ When the appliance VM is connected to Azure, upload host node logs the same way 
 
 The following diagram shows the key components for log collection in Azure Local disconnected when the appliance VM is connected to Azure:
 
-:::image type="content" source="./media/disconnected-operations/on-demand-logs-2/on-demand-components.png" alt-text="Diagram that shows the key components for on-demand log collection in Azure Local disconnected operations." lightbox=" ./media/disconnected-operations/on-demand-logs/on-demand-components-2.png":::
+:::image type="content" source="./media/disconnected-operations/on-demand-logs/on-demand-components.png" alt-text="Diagram that shows the key components for on-demand log collection in Azure Local disconnected operations." lightbox=" ./media/disconnected-operations/on-demand-logs/on-demand-components.png":::
 
 Here's what you need to do log collection in a connected disconnected operations scenario.
 
