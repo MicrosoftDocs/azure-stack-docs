@@ -184,13 +184,13 @@ To prepare the first machine for the disconnected operations appliance, follow t
 
     ```powershell  
     Copy-Item \\fileserver\share\azurelocalfiles\AzureLocal.DisconnectedOperations.zip $applianceConfigBasePath  
-    Copy-Item \\fileserver\share\azurelocalfiles\AzureLocal.DisconnectedOperations.Appliance.manifest  $applianceConfigBasePath  
+    Copy-Item \\fileserver\share\azurelocalfiles\AzureLocal.DisconnectedOperations.manifest  $applianceConfigBasePath  
     ```  
 
 1. Verify that you have these two files in your base folder using the following command:
 
     - AzureLocal.DisconnectedOperations.zip
-    - AzureLocal.DisconnectedOperations.Appliance.manifest
+    - AzureLocal.DisconnectedOperations.manifest
 
       ```powershell  
       Get-ChildItem $applianceConfigBasePath  
@@ -206,7 +206,7 @@ To prepare the first machine for the disconnected operations appliance, follow t
 
     - OperationsModule (PowerShell module for installation)
     - IRVM01.zip
-    - AzureLocal.DisconnectedOperations.Appliance.manifest
+    - AzureLocal.DisconnectedOperations.manifest
 
       ```powershell  
       Get-ChildItem $applianceConfigBasePath   
@@ -327,7 +327,7 @@ Populate the required parameters based on your deployment planning. Modify the e
 
     ```powershell
     # Modify your source path accordingly 
-    copy-item AzureLocal.DisconnectedOperations.Manifest.json $applianceConfigBasePath\AzureLocal.DisconnectedOperations.Appliance.manifest.json
+    copy-item AzureLocal.DisconnectedOperations.Manifest.json $applianceConfigBasePath\AzureLocal.DisconnectedOperations.manifest.json
     ```  
 
 
@@ -337,6 +337,7 @@ To install and configure the appliance on the first machine (seed node), use the
 
 ```powershell
 $azureLocalInstallationFile = "$($applianceConfigBasePath)"  
+$applianceManifestJsonPath = Join-Path $applianceConfigBasePath AzureLocal.DisconnectedOperations.manifest.json
 
 $installAzureLocalParams = @{  
     Path = $azureLocalInstallationFile  
