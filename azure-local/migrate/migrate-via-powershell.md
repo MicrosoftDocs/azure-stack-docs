@@ -22,7 +22,7 @@ Before you begin, you should complete the following tasks:
 2. Install the [Azure PowerShell Az module](/powershell/azure/install-azure-powershell).
 
 <!-- Update version to 2.X.X  in this paragraph-->
-3. Verify the Azure Migrate PowerShell module is installed **and version is >=2.8.0**. Azure Migrate PowerShell is available as part of the Azure PowerShell Az module. Run the following command to check if Azure Migrate PowerShell is installed on your computer and verify the version is >=2.8.0:  
+3. Verify the Azure Migrate PowerShell module is installed **and version is 2.8.0 or later**. Azure Migrate PowerShell is available as part of the Azure PowerShell Az module. Run the following command to check if Azure Migrate PowerShell is installed on your computer and verify the version is 2.8.0 or later:  
 
     ```powershell
     Get-InstalledModule -Name Az.Migrate
@@ -52,7 +52,7 @@ You can view the full list of Azure Migrate PowerShell cmdlets by visiting the [
 ## Retrieve discovered VMs
 
 You can retrieve the discovered VMs in your Azure Migrate project using the `Get-AzMigrateDiscoveredServer` cmdlet. This cmdlet retrieves the list of VMs discovered by the source appliance in your Azure Migrate project. SourceMachineType can be either `HyperV` or `VMware`, depending on your source VM environment.
-Learn more about the `Get-AzMigrateDiscoveredServer` cmdlet [here](/powershell/module/az.migrate/get-azmigratediscoveredserver).
+For more information, see the `Get-AzMigrateDiscoveredServer`](/powershell/module/az.migrate/get-azmigratediscoveredserver).
 
 **Example 1**: Get all VMs discovered by an Azure Migrate source appliance in an Azure Migrate project:
 
@@ -80,9 +80,9 @@ Write-Output $DiscoveredServers | Format-List *
 ## Initialize VM replications
 
 You can initialize the replication infrastructure for your Azure Migrate project using the `Initialize-AzMigrateLocalReplicationInfrastructure` cmdlet. This cmdlet sets up the necessary infrastructure and metadata storage account needed to eventually replicate VMs from the source appliance to the target appliance. Running this cmdlet multiple times will not cause any issues, as it checks if the replication infrastructure is already initialized.
-Learn more about the `Initialize-AzMigrateLocalReplicationInfrastructure` cmdlet [here](/powershell/module/az.migrate/initialize-azmigratelocalreplicationinfrastructure).
+For more information, see the `Initialize-AzMigrateLocalReplicationInfrastructure`](/powershell/module/az.migrate/initialize-azmigratelocalreplicationinfrastructure).
 
-You can use a default created storage account or a custom-created storage account that will store the replication metadata. You will need the source and target appliance names from the Azure Portal by navigating to your Azure Migrate project -> Appliances -> Registered appliances.
+You can use a default created storage account or a custom-created storage account that will store the replication metadata. You will need the source and target appliance names from the Azure Portal by going to your Azure Migrate project, then navigating to **Appliances > Registered appliances**.
 
 :::image type="content" source="./media/migrate-via-powershell/migrate-appliances.png" alt-text="Screenshot showing Appliances in Azure Migrate project page." lightbox="./media/migrate-via-powershell/migrate-appliances.png":::
 
@@ -135,9 +135,9 @@ Get-AzStorageAccount `
 ## Replicate a VM
 
 You can replicate a VM using the `New-AzMigrateLocalServerReplication` cmdlet. This cmdlet allows you to create a replication job for a discovered VM.
-You can specify the target logical network, storage path, resource group, VM name, and target VM settings like OS disk, CPU, memory, and more. Learn more about the `New-AzMigrateLocalServerReplication` cmdlet [here](/powershell/module/az.migrate/new-azmigratelocalserverreplication).
+You can specify the target logical network, storage path, resource group, VM name, and target VM settings like OS disk, CPU, memory, and more. For more information, see the [`New-AzMigrateLocalServerReplication`](/powershell/module/az.migrate/new-azmigratelocalserverreplication) cmdlet.
 
-To further customize the replication job, you can define local disk and NIC mappings ahead of time using `New-AzMigrateLocalDiskMappingObject` and `New-AzMigrateLocalNicMappingObject` (see **Create a local disk mapping** and **Create a local NIC mapping object** below). These allow you to customize the disks and network interfaces are included during replication.
+To further customize the replication job, you can define local disk and NIC mappings ahead of time using `New-AzMigrateLocalDiskMappingObject` and `New-AzMigrateLocalNicMappingObject` (see **Create a local disk mapping** and **Create a local NIC mapping object** sections). These allow you to customize the disks and network interfaces are included during replication.
 
 
 ## (Option 1) Start Replication without disk and NIC mapping
@@ -197,7 +197,7 @@ foreach ($DiscoveredServer in $DiscoveredServers)
 
 Create a local disk mapping PS object using the `New-AzMigrateLocalDiskMappingObject` cmdlet. You can store multiple such objects in a list using `@()`.
 You can customize the disk mapping object with parameters like `DiskID`, `IsOSDisk`, `IsDynamic`, `Format`, and `PhysicalSectorSize`. 
-Learn more about the `New-AzMigrateLocalDiskMappingObject` cmdlet [here](/powershell/module/az.migrate/new-azmigratelocaldiskmappingobject).
+For more information, see the [`New-AzMigrateLocalDiskMappingObject`](/powershell/module/az.migrate/new-azmigratelocaldiskmappingobject) cmdlet.
 
 >[!NOTE]
 > If you are going to use the `-DiskToInclude` parameter in the `New-AzMigrateLocalServerReplication` cmdlet, you must create a local disk mapping object for **each** disk you want to include in the replication job.
@@ -234,7 +234,7 @@ $DiskMappings | Format-List *
 ### Create a local NIC mapping object
 
 Create a local NIC mapping PS object using the `New-AzMigrateLocalNicMappingObject`. You can store multiple such objects in a list using `@()`. 
-Learn more about the `New-AzMigrateLocalNicMappingObject` cmdlet [here](/powershell/module/az.migrate/new-azmigratelocalnicmappingobject).
+For more information, see the [`New-AzMigrateLocalNicMappingObject`](/powershell/module/az.migrate/new-azmigratelocalnicmappingobject) cmdlet.
 
 **Example**
 
@@ -265,7 +265,7 @@ $NicMappings | Format-List *
 
 **Start Replication with Disk and NIC Mappings**
 > [!NOTE]
-> If you use the `-DiskToInclude` and `-NicToInclude` parameters, you must create both local disk and NIC mapping objects as shown in the sections **Create a Local Disk Mapping** and **Create a local NIC mapping object** above. You cannot use one without the other.
+> If you use the `-DiskToInclude` and `-NicToInclude` parameters, you must create both local disk and NIC mapping objects as shown in the **Create a Local Disk Mapping** and **Create a local NIC mapping object** sections. You cannot use one without the other.
 > 
 ```powershell
 # Get VM(s) that match $SourceMachineDisplayNameToMatch. Could return multiple items.
@@ -330,7 +330,7 @@ foreach ($DiscoveredServer in $DiscoveredServers)
 
 ### Retrieve replication jobs
 
-Use the `Get-AzMigrateLocalJob` cmdlet to retrieve jobs about creating, updating, migrating, and removing replications. Learn more about the `Get-AzMigrateLocalJob` cmdlet [here](/powershell/module/az.migrate/get-azmigratelocaljob).
+Use the `Get-AzMigrateLocalJob` cmdlet to retrieve jobs about creating, updating, migrating, and removing replications. For more information, see the [`Get-AzMigrateLocalJob`](/powershell/module/az.migrate/get-azmigratelocaljob) cmdlet.
 
 **Example**
 
@@ -341,7 +341,7 @@ $ReplicationJob.Property | Format-List *
 ```
 
 
-To retrieve more information about any error messages or job details, you can examine the $ReplicationJob.Property output and specifically look for the `Error` property, which contains detailed error messages if any issues occurred during the replication job.
+To retrieve more information about any error messages or job details, you can examine the `$ReplicationJob.Property` output and specifically look for the `Error` property, which contains detailed error messages if any issues occurred during the replication job.
 
 ```powershell
 $ReplicationJob.Property | Format-List *
@@ -351,7 +351,7 @@ $ReplicationJob.Property.Error | Format-List *
 
 ### Retrieve (get) a replication protected item
 
-Use the `Get-AzMigrateLocalServerReplication` cmdlet to retrieve (get) protected item. Learn more about the `Get-AzMigrateLocalServerReplication` cmdlet [here](/powershell/module/az.migrate/get-azmigratelocalserverreplication).
+Use the `Get-AzMigrateLocalServerReplication` cmdlet to retrieve (get) protected item. For more information, see the [`Get-AzMigrateLocalServerReplication`](/powershell/module/az.migrate/get-azmigratelocalserverreplication) cmdlet.
 
 **Example**
 
@@ -365,7 +365,7 @@ $ProtectedItem.Property | Format-List *
 ### Update a replication protected item
 
 Use the `Set-AzMigrateLocalServerReplication` cmdlet to update a replication protected item.
-Learn more about the `Set-AzMigrateLocalServerReplication` cmdlet [here](/powershell/module/az.migrate/set-azmigratelocalserverreplication).
+For more information, see the [`Set-AzMigrateLocalServerReplication`](/powershell/module/az.migrate/set-azmigratelocalserverreplication) cmdlet.
 
 **Example**
 
@@ -378,7 +378,7 @@ $SerReplicationJob.Property | Format-List *
 
 ### (Optional) Delete a replicating protected item
 Use the `Remove-AzMigrateLocalServerReplication` cmdlet to delete a replicating protected item. This is useful if you want to stop a VM from replicating or if you want to start fresh with a new replication job if protected item became corrupted.
-Learn more about the `Remove-AzMigrateLocalServerReplication` cmdlet [here](/powershell/module/az.migrate/remove-azmigratelocalserverreplication).
+For more information, see the [`Remove-AzMigrateLocalServerReplication`](/powershell/module/az.migrate/remove-azmigratelocalserverreplication) cmdlet.
 
 **Example**
 ```powershell
@@ -391,7 +391,7 @@ Write-Output "Protected item removed successfully."
 
 Use the `Start-AzMigrateLocalServerMigration` cmdlet to migrate a replication as part of planned failover.
 You can use the `-TurnOffSourceServer` parameter to turn off the source VM after migration. This is useful for scenarios where you want to ensure that the source VM is no longer running after migration.
-Learn more about the `Start-AzMigrateLocalServerMigration` cmdlet [here](/powershell/module/az.migrate/start-azmigratelocalservermigration).
+For more information, see the [`Start-AzMigrateLocalServerMigration`](/powershell/module/az.migrate/start-azmigratelocalservermigration) cmdlet.
 
 > [!IMPORTANT]
 > Before starting migration, verify replication succeeded by checking `$ProtectedItem.Property.AllowedJob` and ensuring it contains `PlannedFailover`.
@@ -416,7 +416,7 @@ $MigrationJob.Property | Format-List *
 
 Use the `Remove-AzMigrateLocalServerReplication` cmdlet to remove a protected item to complete migration. 
 Do not use this cmdlet until you have verified that the migration is successful and you no longer need the protected item in Azure Migrate.
-Learn more about the `Remove-AzMigrateLocalServerReplication` cmdlet [here](/powershell/module/az.migrate/remove-azmigratelocalserverreplication).
+For more information, see the [`Remove-AzMigrateLocalServerReplication`](/powershell/module/az.migrate/remove-azmigratelocalserverreplication) cmdlet.
 
 **Example**
 
