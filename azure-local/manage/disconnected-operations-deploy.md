@@ -177,7 +177,7 @@ To prepare the first machine for the disconnected operations appliance, follow t
     Here's an example:
     
     ```powershell
-    $applianceConfigBasePath = 'D:\AzureLocalDisconnectedOperations\'
+    $applianceConfigBasePath = 'C:\AzureLocalDisconnectedOperations'
     ```
 
 1. Copy the disconnected operations installation files (appliance and manifest) to the first machine. Save these files into the base folder you created earlier.  
@@ -222,11 +222,11 @@ To prepare the first machine for the disconnected operations appliance, follow t
     Copy-Item \\fileserver\share\azurelocalcerts $certspath -recurse  
     ```
 
-1. Verify the certificates, public key, and management endpoint. You should have two folders: `ManagementEndpointCerts` and `IngressEndpointCerts` and at least 24 certificates.
+1. Verify the certificates, public key, and management endpoint. You should have two folders: `ManagementEndpointCerts` and `IngressEndpointsCerts` and at least 24 certificates.
 
     ```powershell  
     Get-ChildItem $certsPath 
-    Get-Item $certsPath -recurse -filter *.cer  
+    Get-ChildItem $certsPath -recurse -filter *.cer  
     ```  
 
 1. Install the BitLocker feature including the management tool.
@@ -238,9 +238,9 @@ To prepare the first machine for the disconnected operations appliance, follow t
 1. Import the **Operations module**. Run the command as an administrator using PowerShell. Modify the path to match your folder structure.
 
     ```powershell  
-    Import-Module "$applianceConfigBasePath \OperationsModule\Azure.Local.DisconnectedOperations.psd1" -Force
+    Import-Module "$applianceConfigBasePath\OperationsModule\Azure.Local.DisconnectedOperations.psd1" -Force
     $mgmntCertFolderPath = "$certspath\ManagementEndpointCerts"  
-    $ingressCertFolderPath = "$certspath\IngressEndpointCerts"  
+    $ingressCertFolderPath = "$certspath\IngressEndpointsCerts"  
     ```
 
 ## Initialize the parameters
@@ -323,138 +323,13 @@ Populate the required parameters based on your deployment planning. Modify the e
 
     For more information, see [PKI for disconnected operations](disconnected-operations-pki.md).
 
-1. Generate the appliance manifest file:
+1. Copy the appliance manifest file (Downloaded from Azure) to your configuration folder:
 
     ```powershell
-    $stampId = (New-Guid).Guid
-    $resourcename = "appliance1"
-    $resourcegroupname= "rg"
-    $subscriptionId= "subscriptionid"
-
-    $applianceManifest = @{  
-        resourceId = "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Edge/azurelocaldisconnected/$resourceName"  
-        resourceName = $resourceName  
-        stampId = $stampId  
-        location = "eastus"  
-        billingModel = "model"  
-        connectionIntent = "Disconnected"  
-    }  
-    $applianceManifestJsonPath = "$applianceConfigBasePath\AzureLocal.DisconnectedOperations.Appliance.manifest.json"  
-    $applianceManifest | ConvertTo-JSON | Out-File $ApplianceManifestJsonPath | Out-Null  
+    # Modify your source path accordingly 
+    copy-item AzureLocal.DisconnectedOperations.Manifest.json $applianceConfigBasePath\AzureLocal.DisconnectedOperations.Appliance.manifest.json
     ```  
 
-## Validate the management endpoint certificates
-
-Before you install the appliance, validate the management endpoint certificates. Ensure that the certificate has a validated certificate chain, isn't expired, has the correct subject, the appropriate enhanced key usage (EKUs), and the supported cryptography.
-
-Run the following script:
-
-```powershell
-function Test-SSLCertificateSAN {
-    [CmdletBinding()]
-    param(
-        [Parameter(Mandatory = $true)]
-        [string]$HostName,
-
-        [Parameter(Mandatory = $true)]
-        [System.Security.Cryptography.X509Certificates.X509Certificate2]$SslCertificate
-    )
-
-    $sanExtension = $SslCertificate.Extensions | Where-Object { $_.Oid.FriendlyName -ieq "Subject Alternative Name" }
-
-    if (-not $sanExtension) {
-        throw "Subject Alternative Name is not specified in the certificate. Correct the certifcate and try again."
-    }
-
-    $sanExtensionContent = $sanExtension.Format(0)
-    $sanList = $sanExtensionContent.Split(",") | ForEach-Object { $_.Trim() }
-    
-    if ($sanList -inotcontains "DNS Name=$HostName") {
-        throw "Subject Alternative Name does not contain the hostname $HostName. It only has Subject Alternative Name: $sanExtensionContent. Correct the certificate and try again."
-    }
-}
-
-function Test-SSLCertificateChain {
-    [CmdletBinding()]
-    param(
-        [Parameter(Mandatory = $true)]
-        [System.Security.Cryptography.X509Certificates.X509Certificate2]$SslCertificate
-    )
-
-    $chain = New-Object System.Security.Cryptography.X509Certificates.X509Chain
-    $chain.ChainPolicy.RevocationMode = [System.Security.Cryptography.X509Certificates.X509RevocationMode]::NoCheck
-    $chain.ChainPolicy.VerificationFlags = [System.Security.Cryptography.X509Certificates.X509VerificationFlags]::NoFlag
-
-    $chain.Build($SslCertificate) | Out-Null
-
-    if ($chain.ChainStatus.Count -ne 0) {
-        throw "Certificate chain validation failed with error message: `r`n$(($chain.ChainStatus).StatusInformation -Join "`r`n"). Correct the certificate chain and try again."
-    }
-}
-
-function Test-SslCertificateEnhancedKeyUsage {
-    [CmdletBinding()]
-    param(
-        [Parameter(Mandatory = $true)]
-        [System.Security.Cryptography.X509Certificates.X509Certificate2]$SslCertificate
-    )
-
-    $extensions = $SslCertificate.Extensions | Where-Object { $_ -is [System.Security.Cryptography.X509Certificates.X509EnhancedKeyUsageExtension] }
-    $serverAuthenticationValue = "1.3.6.1.5.5.7.3.1"
-    $serverAuth = $extensions.EnhancedKeyUsages | Where-Object { $_.Value -ieq $serverAuthenticationValue }
-
-    if (-not $serverAuth) {
-        throw "Certificate does not have Server Authentication Enhanced Key Usage. Correct the certificate and try again."
-    }
-}
-
-function Test-SslCertificateCrypto {
-    [CmdletBinding()]
-    param(
-        [Parameter(Mandatory = $true)]
-        [System.Security.Cryptography.X509Certificates.X509Certificate2]$SslCertificate
-    )
-
-    if ($SslCertificate.PublicKey.Oid.FriendlyName -eq "RSA") {
-        if ($SslCertificate.PublicKey.Key.KeySize -lt 2048) {
-            throw "Weak RSA Key: Upgrade to at least 2048-bit"
-        } else {
-            Write-Verbose "RSA Key is secure ($($SslCertificate.PublicKey.Key.KeySize) bits)"
-        }
-    }
-
-    if ($SslCertificate.PublicKey.Oid.FriendlyName -match "ECDSA") {
-        $validCurves = @("ECDSA_P256", "ECDSA_P384", "ECDSA_P521")
-        if ($validCurves -contains $SslCertificate.PublicKey.Oid.FriendlyName) {
-            Write-Verbose "ECDSA with $($SslCertificate.PublicKey.Oid.FriendlyName) curve is secure"
-        } else {
-            throw "Weak ECDSA Curve: Use P-256, P-384, or P-521"
-        }
-    }
-
-    if ($SslCertificate.SignatureAlgorithm.FriendlyName -match "sha1") {
-        throw "Weak Signature Algorithm: Upgrade to SHA-256 or higher"
-    }
-}
-
-# Test SSL Certificate for Management cert
-$HostName = $ManagementNetworkConfiguration.ManagementIpAddress
-$SslCertificate = [System.Security.Cryptography.X509Certificates.X509Certificate2]::new(`
-            $ManagementNetworkConfiguration.TlsCertificatePath,
-            $ManagementNetworkConfiguration.TlsCertificatePassword)
-
-$currentDate = Get-Date
-if ($currentDate -lt $SslCertificate.NotBefore) {
-    throw "Certificate is not yet valid (future start date). Correct the certificate and try again."
-} elseif ($currentDate -gt $SslCertificate.NotAfter) {
-    throw "Certificate has expired. Correct the certificate and try again."
-}
-
-Test-SSLCertificateSAN -HostName $HostName -SslCertificate $SslCertificate | Out-Null
-Test-SSLCertificateChain -SslCertificate $SslCertificate | Out-Null
-Test-SslCertificateEnhancedKeyUsage -SslCertificate $SslCertificate | Out-Null
-Test-SslCertificateCrypto -SslCertificate $SslCertificate | Out-Null
-```
 
 ## Install and configure the appliance  
 
