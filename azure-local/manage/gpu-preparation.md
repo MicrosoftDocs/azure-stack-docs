@@ -4,7 +4,7 @@ description: Learn how to prepare GPUs for an Azure Local instance.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 08/05git /2025
+ms.date: 08/05/2025
 ms.service: azure-local
 ---
 
@@ -46,7 +46,7 @@ The following table shows which GPU model is supported by which GPU assignment t
 
 | GPU Model | DDA | DDA | DDA | GPU-P |
 | -- |  -- | -- | -- | -- |
-| | **VMs**<br>(enabled by Azure Arc) | **VMs**<br> (unmanaged) | **AKS** | **VMs only** * |
+| | **VMs**<br>(Enabled by Azure Arc) | **VMs**<br> (Unmanaged) | **AKS** | **VMs only** * |
 | NVIDIA T4 | Yes | Yes | Yes | No |
 | NVIDIA A2 |Yes |Yes |Yes |Yes |
 | NVIDIA A10 |No |Yes |No |Yes |
@@ -56,7 +56,7 @@ The following table shows which GPU model is supported by which GPU assignment t
 | VIDIA L40 |No |Yes |No |Yes |
 | NVIDIA L40S |No |Yes |No |Yes |
 
-*AKS Arc does not currently support GPU partitions.
+*AKS Arc doesn't currently support GPU partitions.
 
 ## Host requirements
 
@@ -78,7 +78,7 @@ The process for preparing and installing GPU drivers for each machine differs so
 
 First ensure there is no driver installed for each machine. If there is a host driver installed, uninstall the host driver and restart the machine.  
 
-After you uninstalled the host driver or if you did not have any driver installed, run PowerShell as administrator with the following command:
+After you uninstalled the host driver or if you didn't have any driver installed, run PowerShell as administrator with the following command:
 
 ```powershell
 Get-PnpDevice -Status Error | fl FriendlyName, ClusterId
@@ -120,7 +120,7 @@ Disable-PnpDevice -ClusterId $id1 -Confirm:$false
 Dismount-VMHostAssignableDevice -ClusterPath $id1 -Force
 ```
 
-Confirm the GPUs were correctly dismounted from the host machine. The GPUs will now be in an `Unknown` state:
+Confirm the GPUs were correctly dismounted from the host machine. The GPUs is now in an `Unknown` state:
 
 ```powershell
 Get-PnpDevice -Status Unknown | fl FriendlyName, ClusterId
@@ -166,11 +166,11 @@ Follow this process if using GPU-P:
 
 ### Download and install the host driver
 
-GPU-P requires drivers on the host level that differ from DDA. For NVIDIA GPUs, you will need an NVIDIA vGPU software graphics driver on each host and on each VM that will use GPU-P. For more information, see the latest version of [NVIDIA vGPU Documentation](https://docs.nvidia.com/vgpu/17.0/grid-vgpu-release-notes-microsoft-azure-stack-hci/index.html) and details on licensing at [Client Licensing User Guide](https://docs.nvidia.com/vgpu/17.0/grid-licensing-user-guide/index.html).
+GPU-P requires drivers on the host level that differ from DDA. For NVIDIA GPUs, you need an NVIDIA vGPU software graphics driver on each host and on each VM that uses GPU-P. For more information, see the latest version of [NVIDIA vGPU Documentation](https://docs.nvidia.com/vgpu/17.0/grid-vgpu-release-notes-microsoft-azure-stack-hci/index.html) and details on licensing at [Client Licensing User Guide](https://docs.nvidia.com/vgpu/17.0/grid-licensing-user-guide/index.html).
 
 After identifying the GPUs as `3D Video Controller` on your host machine, download the host vGPU driver. Through your NVIDIA GRID license, you should be able to obtain the proper host driver .zip file.
 
-You will need to obtain and move the following folder to your host machine: *\vGPU_<Your_vGPU_version>_GA_Azure_Stack_HCI_Host_Drivers*
+You need to obtain and move the following folder to your host machine: *\vGPU_<Your_vGPU_version>_GA_Azure_Stack_HCI_Host_Drivers*
 
 Navigate to *\vGPU_<Your_vGPU_version>_GA_Azure_Stack_HCI_Host_Drivers\Display.Driver* and install the driver.  
 
@@ -195,7 +195,7 @@ You can also run the NVIDIA System Management Interface `nvidia-smi` to list
 nvidia-smi
 ```
 
-If the driver is correctly installed, you will see an output similar to the following sample:
+If the driver is correctly installed, you see an output similar to the following sample:
 
 ```output
 Wed Nov 30 15:22:36 2022
