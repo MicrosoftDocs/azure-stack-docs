@@ -71,7 +71,7 @@ When the appliance VM is connected to Azure, upload host node logs the same way 
 
 The following diagram shows the key components for log collection in Azure Local disconnected when the appliance VM is connected to Azure:
 
-:::image type="content" source="./media/disconnected-operations/on-demand-logs/on-demand-components.png" alt-text="Diagram that shows the key components for on-demand log collection in Azure Local disconnected operations." lightbox=" ./media/disconnected-operations/on-demand-logs/on-demand-components.png":::
+:::image type="content" source="./media/disconnected-operations/on-demand-logs/on-demand-components-2.png" alt-text="Diagram that shows the key components for on-demand log collection in Azure Local disconnected operations." lightbox=" ./media/disconnected-operations/on-demand-logs/on-demand-components-2.png":::
 
 Here's what you need to do log collection in a connected disconnected operations scenario.
 
