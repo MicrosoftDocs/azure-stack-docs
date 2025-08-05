@@ -9,27 +9,28 @@ ms.author: alkohli
 
 # Monitor Azure Local migrations using diagnostic settings in Azure Migrate
 
-This article describes how to enable diagnostic settings in Azure Migrate to monitor Azure Local migrations via the Azure portal. Diagnostic logs offer detailed, frequent data about resource operations, which are useful for monitoring, troubleshooting, and auditing. For more information, see [Diagnostic settings in Azure Monitor](/azure/azure-monitor/platform/diagnostic-settings).
+This article describes how to enable diagnostic settings in Azure Migrate via the Azure portal to help monitor Azure Local migrations. Diagnostic logs offer detailed, frequent data about resource operations, which are useful for monitoring, troubleshooting, and auditing. For more information, see [Diagnostic settings in Azure Monitor](/azure/azure-monitor/platform/diagnostic-settings).
 
-To configure diagnostic settings using PowerShell or the Azure CLI, see [Collect and consume log data from your Azure resources](/azure/azure-monitor/essentials/platform-logs-overview).
+To enable diagnostic settings in Azure Migrate via PowerShell or the Azure CLI, see [Collect and consume log data from your Azure resources](/azure/azure-monitor/essentials/platform-logs-overview).
 
 ## Prerequisites
 
-TO enable diagnostic settings to monitor Azure Local migrations using Azure Migrate, ensure the following prerequisites are met:
+To enable diagnostic settings to monitor Azure Local migrations using Azure Migrate, ensure the following prerequisites are met:
 
 - You have an Azure subscription with an Azure Migrate project.
 - You have a Data Replication Vault resource that exists in the same resource group as your Azure Migrate project. This resource is automatically created after you register the source appliance VM with the intent to migrate to Azure Local.
 - You have selected a destination for your diagnostic log data. For supported destinations, see [diagnostic settings destinations](/azure/azure-monitor/platform/diagnostic-settings#destinations).
 
-   This article uses Log Analytics workspace and Azure Storage account as destination examples. You can create these resources in the same resource group as your Migrate project.
+## Before you begin
+
+- Azure Migrate supports only logs in Azure Monitor diagnostic settings. Metrics aren't currently supported.
+
+- This article uses Log Analytics workspace and Azure Storage account as destination examples. You can create these resources in the same resource group as your Migrate project.
 
    - **Log Analytics workspace**: Enables querying and analyzing logs. For more information, see [Log Analytics workspace](/azure/azure-monitor/platform/resource-logs?tabs=log-analytics#send-to-log-analytics-workspace).
    - **Azure Storage account**: Stores logs for audit, backup, or static analysis. The storage account can be in a different subscription if the user has the required permissions. For more information, see [Azure Storage account](/azure/azure-monitor/platform/resource-logs?tabs=storage#send-to-log-analytics-workspace).
 
 ## Enable diagnostic log collection  
-
-> [!NOTE]
-> Azure Migrate supports only logs in Azure Monitor diagnostic settings. Metrics aren't currently supported.
 
 Follow these steps to enable diagnostic logging in the Azure portal.
 
