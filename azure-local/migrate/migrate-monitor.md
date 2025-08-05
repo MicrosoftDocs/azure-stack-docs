@@ -55,6 +55,7 @@ Follow these steps to explore log analytics data for your resource:
 
 ### Sample queries
 
+<!--Are there any more sample queries that we can add here?-->
 Run the following Kusto query to view the protected items diagnostic logs from Azure Migrate from the last 30 days:
 
 ```kusto
@@ -77,7 +78,4 @@ To learn more about what you can do with diagnostic data in Azure Storage, see [
 
 ## Next steps
 
-- Read these articles to learn about Azure Event Hubs:
-  - [What is Azure Event Hubs?](/azure/event-hubs/event-hubs-about)
-  - [Get started with Event Hubs](/azure/event-hubs/event-hubs-dotnet-standard-getstarted-send)
 - Read [Understand log searches in Azure Monitor logs](/azure/azure-monitor/logs/log-query-overview).
