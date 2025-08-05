@@ -20,13 +20,16 @@ This article explains how to collect logs on demand for Azure Local disconnected
 
 Log collection is essential for diagnosing and troubleshooting issues in Azure Local disconnected operations. Use this feature to give logs to Microsoft support. The logs include information about the Azure Local disconnected operations environment, like the management endpoint, integrated runtime, and other components. During log collection, you might see errors because of different environmental or tooling limitations.
 
+> [!IMPORTANT]
+> Complete the prerequisites and configure observability with the `Set-ApplianceObservabilityConfiguration` cmdlet before using on-demand indirect log collection. If you skip these steps, you might see an error.
+
 ## Supported scenarios
 
 The following on-demand scenarios are supported for log collection:
 
 | Scenarios for log collection             | How to collect logs                    |
 |------------------------------------------|----------------------------------------|
-| [Use on-demand direct log collection](#log-collection-for-a-disconnected-environment-with-an-accessible-management-endpoint) when an on-premises device with Azure Local disconnected operations is connected to Azure and the management endpoint for disconnected operations is accessible. | Trigger log collection with the `Invoke-ApplianceLogCollection` cmdlet.<br></br>**Prerequisite**: Set up observability configuration using the `Set-ApplianceObservabilityConfiguration` cmdlet. |
+| [Use on-demand direct log collection](#log-collection-for-a-disconnected-environment-with-an-accessible-management-endpoint) when an on-premises device with Azure Local disconnected operations is connected to Azure and the management endpoint for disconnected operations is accessible. | Trigger log collection with the `Invoke-ApplianceLogCollection` cmdlet. |
 | [Use on-demand indirect log collection](#log-collection-for-control-plane-when-connected-to-azure-with-an-accessible-management-endpoint) when an on-premises device using Azure Local disconnected operations doesn't have a connection to Azure, but the management endpoint for disconnected operations is accessible. | Trigger log collection with the `Invoke-ApplianceLogCollectionAndSaveToShareFolder` cmdlet.<br></br> After you run the `Invoke-ApplianceLogCollectionAndSaveToShareFolder` cmdlet, use the `Send-DiagnosticData` cmdlet to upload the copied data logs from the file share to Microsoft. |
 | [Use on-demand fallback log collection](#log-collection-when-the-management-endpoint-is-inaccessible) when the management endpoint for disconnected operations isn't accessible or the integrated runtime disconnected operations with Azure Local virtual machine (VM) is down. | Collect logs after you shut down the disconnected operations with the Azure Local VM, mount and unlock virtual hard disks (VHDs), and copy logs by using the `Copy-DiagnosticData` cmdlet from mounted VHDs into a local, user-defined location.<br></br> Use the `Send-DiagnosticData` cmdlet to manually send diagnostic data to Microsoft. |
 
@@ -56,7 +59,7 @@ To collect logs from the control plane, follow these steps:
 
     This command collects logs specific to the node, including system and cluster level diagnostics.
 
-    For more information on the Send-DiagnosticData command, see [Fallback log collection](disconnected-operations-fallback.md).
+    For more information on the Send-DiagnosticData command, see [Telemetry and diagnostics extension](../concepts/telemetry-and-diagnostics-overview.md).
 
 1. Upload logs by using the **standalone observability tool**.
 
@@ -206,7 +209,7 @@ Before you trigger a log collection, create a share and credentials for a share.
     $onDemandRequestBody = @{
         FromDate = $fromDate.ToString("o")
         ToDate = $toDate.ToString("o")
-        SaveToPath = "<share folder path>" # \\10.11.206.2\irvmlogs\winfieldlogs
+        SaveToPath = "<share folder path>" # \\10.11.206.2\irvmlogs\azurelocaldisconnectedoperations
         UserPassword = "****"
         UserName = "<share folder user name>" # 10.11.206.2\administrator
     } | ConvertTo-JSON
