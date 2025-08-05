@@ -226,7 +226,7 @@ To prepare the first machine for the disconnected operations appliance, follow t
 
     ```powershell  
     Get-ChildItem $certsPath 
-    Get-Item $certsPath -recurse -filter *.cer  
+    Get-ChildItem $certsPath -recurse -filter *.cer  
     ```  
 
 1. Install the BitLocker feature including the management tool.
