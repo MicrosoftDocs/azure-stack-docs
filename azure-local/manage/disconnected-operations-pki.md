@@ -85,11 +85,11 @@ On the host machine or Active Directory virtual machine (VM), follow the steps i
 You need these certificates to deploy the disconnected operations appliance. You also need the public key for your local infrastructure to provide a secure trust chain.
 
 > [!NOTE]
-> **IngressEndpointCerts** is the folder where you store all 24 certificate files. **IngressEndpointPassword** is a secure string with the certificate password.
+> **IngressEndpointsCerts** is the folder where you store all 24 certificate files. **IngressEndpointPassword** is a secure string with the certificate password.
 
 1. Connect to the CA.
 1. Create a folder named **IngressEndpointsCerts**. Use this folder to store all certificates.
-1. Create the 24 certs in the table above and export them into the IngressEndpointCerts folder. 
+1. Create the 24 certs in the table above and export them into the IngressEndpointsCerts folder. 
 
 Here's an example script you can modify and run. It creates ingress certificates and exports them to the configured folder by creating CSRs and issuing them to your CA.
 
@@ -206,7 +206,7 @@ $AzLCerts = @(
   }
   ``` 
 
-- Copy the original certificates (24 .pfx files / *.pfx) obtained from your CA to the directory structure represented in IngressEndpointCerts.
+- Copy the original certificates (24 .pfx files / *.pfx) obtained from your CA to the directory structure represented in IngressEndpointsCerts.
 
 ### Management endpoint
 

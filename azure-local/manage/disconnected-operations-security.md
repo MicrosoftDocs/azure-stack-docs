@@ -98,7 +98,7 @@ To back up Host Guardian Service certificates from your cluster, run these comma
 1. To export the Host Guardian Service certificates to a specific path, run `Export-ApplianceHGSCertificates`.
 
     ```powershell
-    Export-ApplianceHGSCertificates -Path D:\AzureLocal\HGSBackup    
+    Export-ApplianceHGSCertificates -Path C:\AzureLocalDisconnectedOperations\HGSBackup    
     ```
     
 ## Configure syslog forwarding
