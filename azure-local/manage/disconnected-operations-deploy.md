@@ -326,7 +326,7 @@ Populate the required parameters based on your deployment planning. Modify the e
 1. Copy the appliance manifest file (Downloaded from Azure) to your configuration folder:
 
     ```powershell
-    # Please modify your source path accordingly 
+    # Modify your source path accordingly 
     copy-item AzureLocal.DisconnectedOperations.Manifest.json $applianceConfigBasePath\AzureLocal.DisconnectedOperations.Appliance.manifest.json
     ```  
 
