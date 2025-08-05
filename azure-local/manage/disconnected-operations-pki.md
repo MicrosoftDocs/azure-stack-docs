@@ -234,7 +234,7 @@ $subjects|Foreach-Object {
     $infFilename = "$($managementendpointPath)\$($filename).inf"
     $csrPath = "$($managementendpointPath)\$($filename).csr"
     $certPath = "$($managementendpointPath)\$($filename).cer"
-    $pfxPathPath = "$($managementendpointPath)\$($filename).pfx"
+    $pfxPath = "$($managementendpointPath)\$($filename).pfx"
 @"
 [NewRequest]
 Subject = "CN=$subject"
