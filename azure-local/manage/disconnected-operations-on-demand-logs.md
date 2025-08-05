@@ -250,7 +250,7 @@ Before you trigger a log collection, create a share and credentials for a share.
        @{Instance Id=<Instance Id>; State=Running; StartTime=0001-01-01T00:00:00; EndTime=0001-01-01T00:00:00} 
     ```
 
-    Here's an example output:
+    Example output:
 
     ```console
 
@@ -284,7 +284,7 @@ Before you trigger a log collection, create a share and credentials for a share.
     RawContentLength  : 38  
     ```
 
-    Here's an example output:
+    Example output:
 
     ```console
     PS C:\Users\administrator.s46r2004\Documents> Get-ApplianceLogCollectionJobStatus -OperationId $operationId  
@@ -360,7 +360,7 @@ Before you can start log collection and get the Stamp ID, set up the observabili
     Set-ApplianceObservabilityConfiguration -ObservabilityConfiguration $observabilityConfiguration
     ```
 
-    Here's an example output:
+    Example output:
 
     ```console
     PS C:\Users\administrator.s46r2004\Documents> $observabilityConfiguration = New-ApplianceObservabilityConfiguration `  
@@ -412,7 +412,7 @@ Before you can start log collection and get the Stamp ID, set up the observabili
     $stampId = (Get-ApplianceInstanceConfiguration).StampId
     ```
 
-    Here's an example output:
+    Example output:
 
     ```console
     PS C:\Users\administrator.s46r2004\Documents> $stampId = (Get-ApplianceInstanceConfiguration).StampId  
@@ -441,9 +441,9 @@ What Send-DiagnosticData does:
 
 - Bypasses observability agents to collect logs only on the node where the command is run.
 
-- Lets you save logs locally by using the `-SaveToPath` parameter.
+- Let's you save logs locally by using the `-SaveToPath` parameter.
 
-- Supports secure credentialed access when saving to a network share.
+- Supports secure credential access when saving to a network share.
 
 ## Security considerations
 
