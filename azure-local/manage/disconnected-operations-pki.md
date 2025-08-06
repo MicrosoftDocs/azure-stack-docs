@@ -50,6 +50,7 @@ This table lists the mandatory certificates required for disconnected operations
 | Azure queue storage | *.queue.fqdn |
 | Azure Table storage | *.table.fqdn |
 | Azure Blob storage | *.blob.fqdn |
+| Azure Service Bus | *.servicebus.fqdn |
 | Azure Data Policy | data.policy.fqdn |
 | Arc configuration data plane <br/>Azure Arc-enabled Kubernetes | autonomous.dp.kubernetesconfiguration.fqdn |
 | Arc for Server Agent data service | agentserviceapi.fqdn |
@@ -63,7 +64,7 @@ This table lists the mandatory certificates required for disconnected operations
 | Front end appliances | frontend.appliances.fqdn |
 | Graph | graph.fqdn |
 | Licensing | dp.aszrp.fqdn <br></br> ibc.fqdn |
-| Public portal     | portal.fqdn <br></br> hosting.fqdn <br></br> portalcontroller.fqdn <br></br> catalogapi.fqdn |
+| Public portal     | portal.fqdn <br></br> hosting.fqdn <br></br> catalogapi.fqdn |
 | Secure token service | login.fqdn |
 
 
@@ -112,7 +113,8 @@ $AzLCerts = @(
     "*.vault.$fqdn"
     "*.queue.$fqdn"    
     "*.table.$fqdn"
-    "*.blob.$fqdn"    
+    "*.blob.$fqdn" 
+    "*.servicebus.$fqdn"   
     "data.policy.$fqdn"
     "autonomous.dp.kubernetesconfiguration.$fqdn"
     "agentserviceapi.$fqdn"
@@ -128,8 +130,7 @@ $AzLCerts = @(
     "dp.aszrp.$fqdn"
     "ibc.$fqdn"
     "portal.$fqdn"
-    "hosting.$fqdn"
-    "portalcontroller.$fqdn"    
+    "hosting.$fqdn"    
     "catalogapi.$fqdn"    
     "login.$fqdn"    
     # Multi-San could be added with comma seperated list x.$fqdn,y.$fqdn    
