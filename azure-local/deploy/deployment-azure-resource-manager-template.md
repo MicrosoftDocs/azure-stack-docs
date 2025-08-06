@@ -3,7 +3,7 @@ title: Azure Resource Manager template deployment for Azure Local, version 23H2
 description: Learn how to prepare and then deploy Azure Local instance, version 23H2 using the Azure Resource Manager template.
 author: alkohli
 ms.topic: how-to
-ms.date: 07/18/2025
+ms.date: 08/06/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -250,7 +250,7 @@ The following table describes the parameters that you define in the ARM template
 | credentialGuardEnforced | Credential Guard setting that uses virtualization-based security to isolate secrets from credential-theft attacks. <br/> For more information, see [Manage security defaults for Azure Local](../manage/manage-secure-baseline.md).|
 | smbSigningEnforced | Setting for signing SMB traffic between this Azure Local cluster and others to help prevent relay attacks.<br/>For more information, see [Overview of Server Message Block signing](/troubleshoot/windows-server/networking/overview-server-message-block-signing). |
 | smbClusterEncryption | SMB cluster traffic setting for encrypting traffic between servers in the cluster on your storage network.<br/>For more information, see [SMB encryption](/windows-server/storage/file-server/smb-security#smb-encryption). |
-| bitlockerBootVolume | BitLocker encyrption setting for encrypting OS volume on each server.<br/>For more information, see [Manage BitLocker encryption on Azure Local](../manage/manage-bitlocker.md). |
+| bitlockerBootVolume | BitLocker encryption setting for encrypting OS volume on each server.<br/>For more information, see [Manage BitLocker encryption on Azure Local](../manage/manage-bitlocker.md). |
 | bitlockerDataVolumes | BitLocker encryption setting for encrypting cluster shared volumes (CSVs) created on this system during deployment.<br/>For more information, see [Manage BitLocker encryption on Azure Local](../manage/manage-bitlocker.md). |
 | wdacEnforced | Application Control setting to control which drivers and apps are allowed to run directly on each server.<br/>For more information, see [Manage Application Control for Azure Local](../manage/manage-wdac.md). |
 | streamingDataClient | Specifies whether telemetry data streaming from the Azure Local cluster to Microsoft is enabled. |
