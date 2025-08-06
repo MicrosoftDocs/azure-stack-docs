@@ -3,7 +3,7 @@ title:  Security updates for Azure Local
 description: Security updates for Azure Local.
 author: alkohli
 ms.topic: conceptual
-ms.date: 07/14/2025
+ms.date: 08/06/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
@@ -186,7 +186,6 @@ To install the LCU on your Azure Local instance, see [Update Azure Stack Local i
 For a list of the files that are provided in this update, download the file information for [Cumulative update KB5060842.](https://go.microsoft.com/fwlink/?linkid=2323769).
 
 ::: moniker-end
-
 
 ::: moniker range="=azloc-2505"
 
@@ -373,7 +372,6 @@ For a list of the files that are provided in this update, download the file info
 
 ---
 
-
 ::: moniker-end
 
 ::: moniker range="=azloc-2503"
@@ -430,7 +428,7 @@ For a list of the files that are provided in this update, download the file info
 
 ::: moniker-end
 
-::: moniker range="=azloc-24113"
+::: moniker range="=azloc-previous"
 
 ## February OS security update (KB5051980) for Azure Local
 
@@ -495,10 +493,6 @@ To install the LCU on your Azure Local instance, see [Update Azure Stack Local i
 ## File list
 
 For a list of the files that are provided in this update, download the file information for [Cumulative update KB 5051980](https://go.microsoft.com/fwlink/?linkid=2303533).
-
-::: moniker-end
-
-::: moniker range="=azloc-previous"
 
 ## January OS security update (KB5049984) for Azure Local
 
