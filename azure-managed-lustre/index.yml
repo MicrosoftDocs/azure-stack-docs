@@ -74,6 +74,8 @@ landingContent:
             url: configure-network-security-group.md
           - text: Use customer-managed encryption keys
             url: customer-managed-encryption-keys.md
+          - text: Enable VNet encryption
+            url: vnet-encryption.md
   - title: Self-paced learning
     linkLists:
       - linkListType: learn

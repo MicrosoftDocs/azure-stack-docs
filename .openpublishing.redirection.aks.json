@@ -1489,6 +1489,11 @@
         "source_path": "AKS-Arc/tutorial-kubernetes-upgrade-cluster.md",
         "redirect_url": "/azure/aks/aksarc/overview",
         "redirect_document_id": false
+      },
+      {
+        "source_path": "AKS-Arc/aks-hci-network-system-requirements.md",
+        "redirect_url": "/azure/aks/aksarc/network-system-requirements",
+        "redirect_document_id": false
       }
     ]
   }
