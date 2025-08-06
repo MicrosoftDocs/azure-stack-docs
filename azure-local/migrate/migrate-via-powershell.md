@@ -3,7 +3,7 @@ title: Migrate VMs to Azure Local with Azure Migrate using PowerShell
 description: Learn how to migrate VMs to Azure Local with Azure Migrate using PowerShell.
 author: alkohli
 ms.topic: how-to
-ms.date: 08/05/2025
+ms.date: 08/06/2025
 ms.author: alkohli
 ---
 
@@ -24,7 +24,7 @@ Before you begin, you should complete the following tasks:
 2. Install the [Azure PowerShell Az module](/powershell/azure/install-azure-powershell).
 
 <!-- Update version to 2.X.X  in this paragraph-->
-3. Verify the Azure Migrate PowerShell module is installed and **version is 2.8.0 or later**. Azure Migrate PowerShell is available as part of the Azure PowerShell `Az` module. Run the following command to check if Azure Migrate PowerShell is installed on your computer and verify the version is 2.8.0 or later:  
+3. Verify the Azure Migrate PowerShell module is installed and **version is 2.9.0 or later**. Azure Migrate PowerShell is available as part of the Azure PowerShell `Az` module. Run the following command to check if Azure Migrate PowerShell is installed on your computer and verify the version is 2.9.0 or later:  
 
     ```powershell
     Get-InstalledModule -Name Az.Migrate
@@ -54,6 +54,10 @@ You can view the full list of Azure Migrate PowerShell cmdlets by visiting the [
 ```powershell
  `Get-Command -Module Az.Migrate`
  ```
+
+### Sample Azure Migrate PowerShell script
+
+You can view a sample script that demonstrates how to use Azure Migrate PowerShell cmdlets to migrate VMs to Azure Local in the [Migrate VMs to Azure Local with Azure Migrate using PowerShell sample script](https://aka.ms/azlocal-migrate-ps-script).
 
 ## Retrieve discovered VMs
 
