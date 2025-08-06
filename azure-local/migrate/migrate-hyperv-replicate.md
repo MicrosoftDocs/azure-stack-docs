@@ -3,7 +3,7 @@ title: Discover and replicate Hyper-V VMs for migration to Azure Local using Azu
 description: Learn the discovery and replication process for Hyper-V VMs to Azure Local using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 07/25/2025
+ms.date: 08/06/2025
 ms.author: alkohli
 ---
 
@@ -230,7 +230,7 @@ This step applies to using a .zip file.
     1. For your **Cache storage account**, select an existing storage account. You can also select **(New) Storage account** to create a new storage account with a randomly generated name.
 
         > [!NOTE]
-        > - We recommend that you create new a storage account to be used as your cache storage account. > > - Once created, the storage account location can't be changed.
+        > We recommend that you create new a storage account to be used as your cache storage account. Once created, the storage account location can't be changed.
 
     1. Select a resource group to associate with your migrated VMs.
    
