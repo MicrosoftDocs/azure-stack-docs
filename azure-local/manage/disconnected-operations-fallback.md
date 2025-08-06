@@ -12,233 +12,189 @@ ai-usage: ai-assisted
 
 ::: moniker range=">=azloc-2506"
 
-This article explains how to use appliance fallback logging to export and send logs to Microsoft when Azure Local VMs operates in disconnected mode. This process helps you troubleshoot issues when standard log collection is unavailable.
+This article explains how to use appliance fallback logging to export and send logs to Microsoft when Azure Local VMs operates in disconnected mode. This process helps you troubleshoot issues when standard log collection isn't available.
 
 [!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
 
 ## About fallback logging
 
-Use appliance fallback logging to collect and send logs to Microsoft when the Azure Local disconnected operations virtual machine (VM) is down. Use this method when standard log collection can't start and you need logs for troubleshooting.
+Use appliance fallback logging to collect and send logs to Microsoft when the Azure Local disconnected operations appliance virtual machine (VM) is down. Use this method if standard log collection can't start and you need logs for troubleshooting.
 
 ## Prerequisites
 
-- [Import the appliance logging](#import-appliance-logging).
+Import the appliance logging module to use the cmdlets in this article.
 
 ## Import appliance logging
 
-To import appliance logging, run the following command:
+Run the following command to import appliance logging.
 
 ```PowerShell
 Import-Module "C:\azurelocal\OperationsModule\ApplianceFallbackLogging.psm1" -Force
 ```
 
-## Export logs for the fallback scenario
+## Export logs using the Copy-DiagnosticData command
 
-To export logs for the fallback scenario, use these cmdlets:
+To export logs in the fallback scenario, use this cmdlet:
 
-- [**Copy-DiagnosticData**](#copy-diagnosticdata)
-- [**Send-DiagnosticData**](#send-diagnosticdata)
+- [**Copy-DiagnosticData**]
+<!--- [**Send-DiagnosticData**]-->
 
-### Copy-DiagnosticData
+### Copy-DiagnosticData command
 
-The **Copy-DiagnosticData** command is used to copy diagnostic logs from mounted virtual hard disks (VHDs) to a specified folder. This command is part of the operations module and helps you collect diagnostic data from a VHD for analysis.
+The **Copy-DiagnosticData** command is used to copy diagnostic logs from mounted virtual hard disks (VHDs) to a specified folder. This command is part of the operations module and helps you collect diagnostic data from a log volume VHD for analysis.
 
-Since the Azure Local VM running disconnected operations isn't expected to work in the appliance fallback logging scenario, shut it down to retrieve logs. To obtain the logs, mount and unlock the VHDs, then copy the logs from the mounted VHDs to a local `LogsToExport` folder nested in the user-defined folder location specified by `DiagnosticLogPath`. You can set the time window and roles to collect. If the `Observability Stamp ID` is set, the cmdlet includes it in the return values.
+The fallback logging scenario applies when the Azure Local VM running disconnected operations isn't working as expected or a management endpoint isn't functional. This cmdlet shuts down the VM. To get the logs, mount and unlock the VHDs, then copy the logs from the mounted VHDs to a local `LogsToExport` folder inside the folder you specify with `DiagnosticLogPath`. You can set the time window and roles to collect. If you set the `Observability Stamp ID`, the cmdlet includes it in the return values.
 
-Make sure this location has enough space for the logs, because the Azure Local VMs running disconnected VHDs are temporarily mounted there during the copy action.
+Make sure this location has enough space for the logs because the Azure Local VMs running disconnected VHDs are temporarily mounted there during the copy action.
 
 Use these parameters with the `Copy-DiagnosticData` cmdlet.
 
-- **DiagnosticLogPath**: Required. The destination path contains the copied logs and temporarily mounted VHDs. If the `DiagnosticLogPath` cmdlet is piped into the `Send-DiagnosticData` cmdlet, it also serves as the default location where the Standalone Observability pipeline is installed and logs activity.
+- **DiagnosticLogPath**: Required. The destination path contains copied logs and temporarily mounted VHDs.
 
-- **Roles**: Optional. Roles available: **Agents**, **Oplets**, **MASLogs**, **ServiceFabric**, **ArcADiagnostics**, **Observability**, **WindowsEventLogs**, **CosmosDB**, and **Storage**. By default, all roles except **CosmosDB** and **Storage** are included.
+- **Roles**: Optional. Available roles: **Agents**, **Oplets**, **MASLogs**, **ServiceFabric**, **ArcADiagnostics**, **Observability**, **WindowsEventLogs**, **CosmosDB**, and **Storage**. By default, all roles except **CosmosDB** and **Storage** are included.
 
-- **FromDate** and **ToDate**: Optional. Start and end times of logs included in the collection. Logs before the FromDate and after the ToDate are excluded. By default, logs from the **last four hours** of the current time are collected, if these parameters aren't provided.
+- **FromDate** and **ToDate**: Optional. Start and end times of logs included in the collection. Logs before the FromDate and after the ToDate are excluded. By default, logs from the **last four hours** of the current time are collected, if you don't provide these parameters.
 
-- **RecoveryKeySet** (BitLocker): Optional. The RecoveryKeySet containing relevant **ProtectorId** and **RecoveryPassword** pairs for BitLocker encrypted volumes used for log collection retrieval. If recovery keys aren't provided, manual entry of the keys is required during the mount process.
+- **RecoveryKeySet** (BitLocker): Optional. The RecoveryKeySet contains relevant **ProtectorId** and **RecoveryPassword** pairs for BitLocker encrypted volumes used for log collection retrieval. If recovery keys aren't provided, manual entry of the keys is required during the mount process.
 
     > [!NOTE]
     > The BitLocker recovery key set is required to unlock the mounted VHDs used for log collection. These keys should be retrieved and saved upon successful deployment of the appliance using the BitlockerRecoveryKeys endpoint.
 
     Example:
 
-    ```console
-    #ClientAuth certificate location and password may be for your environment
+    ```PowerShell
+    $certPasswordPlainText = "***"
+    $certPassword = ConvertTo-SecureString $certPasswordPlainText -AsPlainText -Force
+    $context = Set-DisconnectedOperationsClientContext -ManagementEndpointClientCertificatePath "<Management Endpoint Client Cert Path>" -ManagementEndpointClientCertificatePassword $certPassword -ManagementEndpointIpAddress "<Management Endpoint IP address>"
     
-    $clientAuthCertificatePath = "${env:localappdata}\AzureLocalOpModuleDev\certs\ManagementEndpoint\ManagementEndpointClientAuth.pfx"
-    
-    $passwordPlainText = Get-Content "${env:localappdata}\AzureLocalOpModuleDev\certificatePassword.txt"
-        
-    $clientAuth = [System.Security.Cryptography.X509Certificates.X509Certificate2]::new($clientAuthCertificatePath, $passwordPlainText)
-        
-    $bitlockerRecoveryKeys = (Invoke-WebRequest -Certificate $clientAuth https://169.254.53.25:9443/sysconfig/BitlockerRecoveryKeys -UseBasicParsing).Content | ConvertFrom-Json
-    
-    $bitlockerRecoveryKeys.recoverykeyset
-    <#
-    protectorid                            recoverypassword
-    -----------                            ----------------
-    {xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx} ######-######-######-######-######-######-######-######
-    
-    {xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx} ######-######-######-######-######-######-######-######
-    
-    {xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx} ######-######-######-######-######-######-######-######
-    
-    {xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx} ######-######-######-######-######-######-######-######
-    
-    {xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx} ######-######-######-######-######-######-######-######
-    
-    #>
-    ```
-
-    To manually construct a RecoveryKeySet parameter, use this template:
-
-    ```console
-    $bitLockerKeysPasswords = @(
-    [PSCustomObject]@{protectorid = "{<Protector Id>}"; recoverypassword = "<Recovery password>"})
-    ```
-
-    You can also retrieve BitLocker recovery keys using the `Get-ApplianceBitlockerRecoveryKeys` cmdlet. For more information, see [Collect logs on-demand with Azure Local disconnected operations (preview)](disconnected-operations-on-demand-logs.md).
-
-#### Copy from the Azure Local VMs running disconnected and mount VHDs
-
-To copy diagnostic logs from the mounted VHDs to a folder location you specify in `DiagnosticLogPath`, follow these steps:
-
-1. Enter a drive or path for the `-DiagnosticLogPath` where the logs are copied. Optionally, include specific roles and a log collection window.
-
-    - If you specify a new file destination in the `-DiagnosticLogPath`, that destination is used to store the LogsToExport file. Otherwise, a parent folder named **CopyLogs_{timestamp}** (with the timestamp reflecting the time the cmdlet was called) is created by default.
-
-    - The available roles are **Agents**, **Oplets**, **MASLogs**, **ServiceFabric**, **ArcADiagnostics**, **Observability**, **WindowsEventLogs**, **CosmosDB**, and **Storage**. By default, all roles except **Storage** and **CosmosDB** are included.
-
-    > [!TIP]
-    > The standalone pipeline used to send logs to Microsoft  is limited regarding the log volume it can handle. The more targeted the collection (the shorter the collection window and fewer the roles), the better the chance of avoiding errors during log ingestion.
-
-1. Specify a collection window using the `-FromDate` and `-ToDate` parameters. By default, the cmdlet collects logs from the **last four hours**.
-
-1. Run the `Copy-DiagnosticData` cmdlet:
-
-    ```console
-    $diagnosticLogPath = "C:\path\to\LogsToExport"
-    $roles = @("Agents", "Oplets", "ServiceFabric")
-    $fromDate = [datetime]"03/13/2024 12:00:00"
-    $toDate = [datetime]"03/13/2024 15:00:00"
-    $recoveryKeySet = @()
-     
-    Copy-DiagnosticData [-DiagnosticLogPath] <String> [[-Roles] <String[]>] [[-FromDate] <Nullable`1>] [[-ToDate] <Nullable`1>] [[-RecoveryKeySet] <PSObject[]>] [<CommonParameters>]
-    ```
-
-    Example:
-
-    ```powershell
-    Copy-DiagnosticData -DiagnosticLogPath $diagnosticLogPath -Roles $role -FromDate $fromDate -ToDate $toDate -RecoveryKeySet $recoveryKeySet
+    $recoveryKeys = Get-ApplianceBitlockerRecoveryKeys $context # context can be omitted if context is set.
+    $recoveryKeys
     ```
 
     Example output:
 
     ```PowerShell
-    PS C:\Users\administrator.s46r2004\Documents> Copy-DiagnosticData -DiagnosticLogPath $diagnosticLogPath -RecoveryKeySet $recoveryKeySet  
-    VERBOSE: [2025-03-26 22:10:58Z] [Get-ValidCollectionWindow] $ToDate not provided, set to: 03/26/2025 22:10:58 (current time)  
-    VERBOSE: [2025-03-26 22:10:58Z] [Get-ValidCollectionWindow] #FromDate not provided, set to: 03/26/2025 18:10:58 (4hr collection window)  
-    VERBOSE: [2025-03-26 22:10:58Z] [Copy-DiagnosticData] Collecting logs for range: '03/26/2025 18:10:58' - '03/26/2025 22:10:58'  
-    VERBOSE: [2025-03-26 22:10:58Z] [Copy-DiagnosticData] Collecting logs for roles: 'Agents', 'Oplets', 'MASLogs', 'ServiceFabric', 'ArcADiagnostics', 'Observability', 'WindowsEventLogs'  
-    VERBOSE: [2025-03-26 22:10:59Z] [Invoke-StopIRVMAndMountVHDs] Stopping the IRVM...  
-    VERBOSE: [2025-03-26 22:11:55Z] [Invoke-StopIRVMAndMountVHDs] Attempting to mount VHD 'C:\ClusterStorage\UserStorage_1\InfraVms\IRVM01\Virtual Hard Disks\OSAndDocker_A.vhdx'...      
+    PS G:\azurelocal> $recoveryKeys = Get-ApplianceBitlockerRecoveryKeys $context # context can be omitted if context is set.
+    >>
+    >> $recoverykeys.recoveryKeySet | ConvertTo-JSON > c:\recoveryKeySet.json
+    >>
+    >> Get-content c:\recoveryKeySet.json
+    >>
+    VERBOSE: [2025-08-05 23:10:58Z][Get-ApplianceBitlockerRecoveryKeys] [START] Get bitlocker recovery keys.
+    VERBOSE: [2025-08-05 23:10:58Z][Invoke-ScriptsWithRetry][Get-ApplianceBitlockerRecoveryKeys] Executing 'Script Block' with timeout 300 seconds ...
+    VERBOSE: [2025-08-05 23:10:58Z][Invoke-ScriptsWithRetry][Get-ApplianceBitlockerRecoveryKeys] [CHECK][Attempt 0] for task 'Script Block' ...
+    VERBOSE: [2025-08-05 23:10:58Z][Invoke-ScriptsWithRetry][Get-ApplianceBitlockerRecoveryKeys] Task 'Script Block' succeeded.
+    VERBOSE: [2025-08-05 23:10:58Z][Get-ApplianceBitlockerRecoveryKeys] [END] Get bitlocker recovery keys.
+    [
+        {
+            "protectorid":  "{xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}",
+            "recoverypassword":  "xxxxxx-xxxxxx-xxxxxx-xxxxxx-xxxxxx-xxxxxx-xxxxxx-xxxxxx"
+        },
+        {
+            "protectorid":  "{xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}",
+            "recoverypassword":  "xxxxxx-xxxxxx-xxxxxx-xxxxxx-xxxxxx-xxxxxx-xxxxxx-xxxxxx"
+        },
+        {
+            "protectorid":  "{xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}",
+            "recoverypassword":  "xxxxxx-xxxxxx-xxxxxx-xxxxxx-xxxxxx-xxxxxx-xxxxxx-xxxxxx"
+        },
+        {
+            "protectorid":  "{xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}",
+            "recoverypassword":  "xxxxxx-xxxxxx-xxxxxx-xxxxxx-xxxxxx-xxxxxx-xxxxxx-xxxxxx"
+        },
+        {
+            "protectorid":  "{xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}",
+            "recoverypassword":  "xxxxxx-xxxxxx-xxxxxx-xxxxxx-xxxxxx-xxxxxx-xxxxxx-xxxxxx"
+        },
+        {
+            "protectorid":  "{xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}",
+            "recoverypassword":  "xxxxxx-xxxxxx-xxxxxx-xxxxxx-xxxxxx-xxxxxx-xxxxxx-xxxxxx"
+        }
+    ]
     ```
 
-    Example of the copy output with the StampId, if it exists:
+    To manually create a RecoveryKeySet parameter, use this template:
 
-    ```output
-    | DiagnosticLogPath                                       | StampId                                  |
-    |---------------------------------------------------------|------------------------------------------|
-    | C:\CopyLogs_20240501T1525097418\LogsToExport            | <Stamp ID>                               |
+    ```powershell
+    $bitLockerKeysPasswords = @(
+    [PSCustomObject]@{protectorid = "{<Protector Id>}"; recoverypassword = "<Recovery password>"})
     ```
 
-    > [!NOTE]
-    > The Azure Local VM running disconnected is **restarted** after this operation is completed.
+### Copy from the Azure Local disconnected operations appliance VM
 
-The autogenerated output folder, **CopyLogs_20240501T1525097418**, has the copied logs in the **LogsToExport** folder. It also includes a **RobocopyLog.log** file and a **WEvtUtilLog.log** file, which show the status of the copy actions.
+Here are some examples of how to use the `Copy-DiagnosticData` cmdlet to get logs from the Azure Local disconnected operations appliance VM.
 
-- **RobocopyLog.log**: Records the copying of all file types except Windows Event files.
-- **wevtutil**: A tool used to copy Windows events. This activity is logged in the **WEvtUtilLog.log** file.
+#### Copy diagnostic data logs for specific roles
 
-### Send-DiagnosticData  
+To copy diagnostic data logs for specific roles, run these commands:
 
-After you collect logs into a directory, either by using the `Copy-DiagnosticData` cmdlet or by copying them manually, send them to Microsoft with the standalone pipeline. This pipeline Arc-enables the host (the machine running the cmdlet) to perform the operation, targets all the logs in the file location you provide, and sends them for ingestion to Microsoft. If log ingestion fails, the cmdlet tries up to three times and then outputs the results of the send activity when it's complete.
+```powershell
+Import-Module "C:\azurelocal\OperationsModule\ApplianceFallbackLogging.psm1" -Force
+```
 
-The **Send-DiagnosticData** cmdlet downloads and runs the standalone observability pipeline. You need to enter the credentials required to connect to Azure for the pipeline. There are two options for providing these credentials:
+```powershell
+Copy-DiagnosticData -DiagnosticLogPath "C:/path/to/copied_logs_parent_directory" -Roles @("Agents", "Oplets", "ServiceFabric")
+```
 
-- **Interactive registration with device code**. Prompts you to manually sign in to Azure once the cmdlet is invoked.
-- **Registration with Service Principal Credential**. Takes the required credentials upfront and uses them to run to completion. For more information, see [Collect logs on-demand with Azure Local disconnected operations (preview)](disconnected-operations-on-demand-logs.md).
+#### Copy diagnostic data logs for specific roles and time ranges
 
-Provide these required parameters for either option:
+To copy diagnostic data logs for specific roles with time ranges and recovery keys, if provided, run these commands:
 
-- **ResourceGroupName**  
-- **SubscriptionId**  
-- **TenantId**  
-- **RegistrationRegion**  
-- **DiagnosticLogPath**  
+```powershell
+Import-Module "C:\azurelocal\OperationsModule\ApplianceFallbackLogging.psm1" -Force
+```
 
-Optional parameters:
-
-- **ObsRootFolderPath**
-
-  - Where the observability pipeline is installed
-  - Defaults to the parent directory of **DiagnosticLogPath** and is nested in a folder **SendLogs_{timestamp}**
-  
-- **StampId** (If set it defaults to `$env:STAMP_GUID`. If not the host machine's **UUID** is used.)
-
-> [!NOTE]
-> The `RegistrationRegion` is equivalent to `Location` with reference to the ObservabilityConfiguration endpoint's $arcContext JSON.
-
-Example using the **Interactive registration with device code**:
+```powershell
+$diagnosticLogPath = "C:\path\to\LogsToExport"
+$roles = @("Agents", "Oplets", "ServiceFabric")
+$fromDate = [datetime]"03/13/2024 12:00:00"
+$toDate = [datetime]"03/13/2024 15:00:00"
+$recoveryKeySet = @()
+```
 
 ```powershell  
-Send-DiagnosticData 
--ResourceGroupName "Resource group" `  
--SubscriptionId "Subscription ID" `  
--TenantId "Tenant ID" `  
--RegistrationWithDeviceCode `
--RegistrationRegion "Region" `  
--DiagnosticLogPath "C:\path\to\LogsToExport"   
-```  
-
-The **-RegistrationWithDeviceCode** switch is optional. If you don't use **-RegistrationWithCredential**, interactive registration is used.
-
-Example using **Registration with Service Principal Credential**:
-
-```powershell  
-$spId = "{...}"
-$spSecret = "{...}"
-$ss = ConvertTo-SecureString -String $spSecret -AsPlainText -Force
-$spCred = New-Object System.Management.Automation.PSCredential($spId, $ss)  
-   
-Send-DiagnosticData 
--ResourceGroupName "Resource group" `  
--SubscriptionId "Subscription ID" `  
--TenantId "Tenant ID" `  
--RegistrationWithCredential {$spCred} `  
--RegistrationRegion "Region" `  
--DiagnosticLogPath "C:\path\to\LogsToExport" `  
--StampId "Stamp ID"  
-```  
-
-The cmdlet returns the stamp ID, also called the **AEOStampId**. It also shows any errors and the location of the send activity logs.
+Copy-DiagnosticData -DiagnosticLogPath $diagnosticLogPath -Roles $roles -FromDate $fromDate -ToDate $toDate -RecoveryKeySet $recoveryKeySet
+```
 
 Example output:
 
-```console
-AEOStampID '<Stamp ID>' used for log tracking.
+```PowerShell
+PS C:\Users\administrator.s46r2004\Documents> Copy-DiagnosticData -DiagnosticLogPath $diagnosticLogPath -RecoveryKeySet $recoveryKeySet  
+VERBOSE: [2025-03-26 22:10:58Z] [Get-ValidCollectionWindow] $ToDate not provided, set to: 03/26/2025 22:10:58 (current time)  
+VERBOSE: [2025-03-26 22:10:58Z] [Get-ValidCollectionWindow] #FromDate not provided, set to: 03/26/2025 18:10:58 (4hr collection window)  
+VERBOSE: [2025-03-26 22:10:58Z] [Copy-DiagnosticData] Collecting logs for range: '03/26/2025 18:10:58' - '03/26/2025 22:10:58'  
+VERBOSE: [2025-03-26 22:10:58Z] [Copy-DiagnosticData] Collecting logs for roles: 'Agents', 'Oplets', 'MASLogs', 'ServiceFabric', 'ArcADiagnostics', 'Observability', 'WindowsEventLogs'  
+VERBOSE: [2025-03-26 22:10:59Z] [Invoke-StopIRVMAndMountVHDs] Stopping the IRVM...  
+VERBOSE: [2025-03-26 22:11:55Z] [Invoke-StopIRVMAndMountVHDs] Attempting to mount VHD 'C:\ClusterStorage\UserStorage_1\InfraVms\IRVM01\Virtual Hard Disks\OSAndDocker_A.vhdx'...      
+```
 
-Logs and artifacts from send action can be found under:  
-G:\CopyLogs_20241218T1622391740\SendLogs_20241218T1625348996  
-  
-Log parsing engine results can be found under:  
-G:\CopyLogs_20241218T1622391740\SendLogs_20241218T1625348996\ObsScheduledTaskTranscripts  
+Example of the copy-diagnosticdata output:
+
+```output
+| DiagnosticLogPath                                       | StampId                                  |
+|---------------------------------------------------------|------------------------------------------|
+| C:\CopyLogs_20240501T1525097418\LogsToExport            | <Stamp ID>                               |
+```
+
+> [!NOTE]
+> The Azure Local disconnected operations appliance VM restarts after this operation finishes.
+
+#### Copy diagnostic data logs to a specific directory path
+
+To copy diagnostic data logs to a specific directory path, run these commands:
+
+```powershell
+Import-Module "C:\azurelocal\OperationsModule\ApplianceFallbackLogging.psm1" -Force
+```
+
+```powershell
+Copy-DiagnosticData -DiagnosticLogPath "C:/path/to/copied_logs_parent_directory"
 ```
 
 ## Related content
 
 - [Collect logs on-demand with Azure Local disconnected operations (preview)](disconnected-operations-on-demand-logs.md)
-- [Disconnected operations with Azure Local Overview](disconnected-operations-overview.md)
+- [Disconnected operations with Azure Local overview](disconnected-operations-overview.md)
 
 </details>
 

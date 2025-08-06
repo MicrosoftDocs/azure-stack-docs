@@ -21,7 +21,7 @@ This article explains how to collect logs on demand for Azure Local disconnected
 Log collection is essential for diagnosing and troubleshooting issues in Azure Local disconnected operations. Use this feature to give logs to Microsoft support. The logs include information about the Azure Local disconnected operations environment, like the management endpoint, integrated runtime, and other components. During log collection, you might see errors because of different environmental or tooling limitations.
 
 > [!IMPORTANT]
-> Complete the prerequisites and configure observability with the `Set-ApplianceObservabilityConfiguration` cmdlet before using on-demand indirect log collection. If you skip these steps, you might see an error.
+> Complete the prerequisites and configure observability with the `Set-ApplianceObservabilityConfiguration` cmdlet before using on-demand direct log collection. If you skip these steps, you might see an error.
 
 ## Supported scenarios
 
@@ -31,7 +31,7 @@ The following on-demand scenarios are supported for log collection:
 |------------------------------------------|----------------------------------------|
 | [Use on-demand direct log collection](#log-collection-for-a-disconnected-environment-with-an-accessible-management-endpoint) when an on-premises device with Azure Local disconnected operations is connected to Azure and the management endpoint for disconnected operations is accessible. | Trigger log collection with the `Invoke-ApplianceLogCollection` cmdlet. |
 | [Use on-demand indirect log collection](#log-collection-for-control-plane-when-connected-to-azure-with-an-accessible-management-endpoint) when an on-premises device using Azure Local disconnected operations doesn't have a connection to Azure, but the management endpoint for disconnected operations is accessible. | Trigger log collection with the `Invoke-ApplianceLogCollectionAndSaveToShareFolder` cmdlet.<br></br> After you run the `Invoke-ApplianceLogCollectionAndSaveToShareFolder` cmdlet, use the `Send-DiagnosticData` cmdlet to upload the copied data logs from the file share to Microsoft. |
-| [Use on-demand fallback log collection](#log-collection-when-the-management-endpoint-is-inaccessible) when the management endpoint for disconnected operations isn't accessible or the integrated runtime disconnected operations with Azure Local virtual machine (VM) is down. | Collect logs after you shut down the disconnected operations with the Azure Local VM, mount and unlock virtual hard disks (VHDs), and copy logs by using the `Copy-DiagnosticData` cmdlet from mounted VHDs into a local, user-defined location.<br></br> Use the `Send-DiagnosticData` cmdlet to manually send diagnostic data to Microsoft. |
+| [Use on-demand fallback log collection](#log-collection-when-the-management-endpoint-is-inaccessible) when the management endpoint for disconnected operations isn't accessible or the integrated runtime disconnected operations with Azure Local virtual machine (VM) is down. | Collect logs after you shut down the disconnected operations appliance VM, mount and unlock virtual hard disks (VHDs), and copy logs by using the `Copy-DiagnosticData` cmdlet from mounted VHDs into a local, user-defined location.<br></br> Use the `Send-DiagnosticData` cmdlet to manually send diagnostic data to Microsoft. |
 
 ## Azure Local disconnected when the appliance VM isn't connected to Azure
 
@@ -61,12 +61,257 @@ To collect logs from the control plane, follow these steps:
 
     For more information on the Send-DiagnosticData command, see [Telemetry and diagnostics extension](../concepts/telemetry-and-diagnostics-overview.md).
 
-1. Upload logs by using the **standalone observability tool**.
+1. Upload logs by using the **standalone observability tool**. <!--need to get exact link from Harald/team-->
 
-    After you save logs from both the appliance and host nodes to a shared location, upload them with the standalone observability tool:
+    After you save logs from both the appliance and host nodes to a shared location, upload them with the standalone observability tool. These are product specific wrappers around **Microsoft.AzureStack.Observability.Standalone**.
 
     - For appliance logs: Use the tool version that supports logs collected with `Send-DiagnosticData`.
     - For host node logs: Use the `Send-AzStackHciDiagnosticData` command to upload logs from the host node.
+
+## Relevant cmdlets documentation
+
+Use the `Invoke-ApplianceLogCollectionAndSaveToShareFolder` cmdlet to copy logs from disconnected operations appliance VM to a shared folder. You can review the logs locally or upload them to Microsoft with the Send-DiagnosticData cmdlet. You can use this when disconnected operations appliance VM management endpoint is accessible.
+
+Trigger log collection in your disconnected environment by running `Invoke-ApplianceLogCollectionAndSaveToShareFolder`.
+
+Before you trigger a log collection, create a share and credentials for a share.
+
+1. Create a share. Run this command:
+
+    ```PowerShell
+    New-SMBShare -Name `<share-name>` -Path `<path-to-share>` -FullAccess Users -ChangeAccess 'Server Operators'
+    ```
+
+1. Create PSCredential's to the share. Replace the placeholder `<share-name>` and `<path-to-share>` with your own values and run this command:
+
+    ```PowerShell
+    $user = "<username>"
+    $pass = "<password>"
+    $sec=ConvertTo-SecureString -String $pass -AsPlainText -Force
+    $shareCredential = New-Object System.Management.Automation.PSCredential ($user, $sec)
+    ```
+
+1. Trigger log collection with the `Invoke-ApplianceLogCollectionAndSaveToShareFolder` cmdlet. Replace the placeholder text `<File Share Path>` and `<Share Folder Password>` with your own values.
+
+    Example:
+
+    ```azurecli
+    $fromDate = (Get-Date).AddMinutes(-30)
+    $toDate = (Get-Date)
+    $operationId = Invoke-ApplianceLogCollectionAndSaveToShareFolder -FromDate $fromDate -ToDate $toDate `
+    -LogOutputShareFolderPath "<File Share Path>" -ShareFolderUsername "ShareFolderUser" -ShareFolderPassword (ConvertTo-SecureString "<Share Folder Password>" -AsPlainText -Force)
+    ```
+
+    Example output:
+
+    ```PowerShell
+    PS C:\Users\administrator.s46r2004\Documents> $operationId = Invoke-ApplianceLogCollectionAndSaveToShareFolder -FromDate $fromDate -ToDate $toDate -LogOutputShareFolderPath "\\<LogShareName>\$logShareName" -ShareFolderUsername "<Username>.masd.stbtest.microsoft.com\administrator" -ShareFolderPassword (ConvertTo-SecureString "<Password>" -AsPlainText -Force)  
+    
+    VERBOSE: [2023-04-09 22:34:28Z] [Invoke-ApplianceLogCollectionAndSaveToShareFolder] Trigger log collections with parameters:  
+    https://<IP address>/logs/logCollectionIndirectJob  
+    VERBOSE: [2023-04-09 22:34:28Z] [Invoke-ScriptsWithRetry] Executing 'Trigger log collection ...' with timeout 600 seconds ...  
+    VERBOSE: [2023-04-09 22:34:28Z] [Invoke-ScriptsWithRetry] [CHECK] [Attempt 0] for task 'Trigger log collection ...' ...  
+    VERBOSE: [2023-04-09 22:34:28Z] [Invoke-ScriptsWithRetry] Task 'Trigger log collection ...' succeeded.  
+    VERBOSE: [2023-04-09 22:34:28Z] [Invoke-ApplianceLogCollectionAndSaveToShareFolder] Log collections trigger result: "<Instance Id>"  
+
+    PS C:\Users\administrator.s46r2004\Documents> $onDemandRequestBody  
+    Name        Value  
+    ----        -----  
+    SaveToPath  \\<IP address>\Arc\LogsShare1  
+    FromDate    2025-04-09T21:26:51.8237434+00:00  
+    UserName    masd.stbtest.microsoft.com\administrator  
+    ToDate      2025-04-10T21:56:50.7453871+00:00  
+    UserPassword <Password>
+    ```
+
+### Get-ApplianceLogCollectionJobStatus
+
+Use this cmdlet to check the status of the log collection job.
+
+Example:
+
+```powershell
+Get-ApplianceLogCollectionJobStatus -OperationId $OperationId
+```
+
+Example output:
+
+```powershell
+   PS C:\Users\administrator.s46r2004\Documents> Get-ApplianceLogCollectionJobStatus -OperationId $operationId  
+   VERBOSE: [2023-04-09 22:35:29Z] [Invoke-ScriptsWithRetry] Executing 'Get log collection job status ...' with timeout 600 seconds ...  
+   VERBOSE: [2023-04-09 22:35:29Z] [Invoke-ScriptsWithRetry] [CHECK] [Attempt 0] for task 'Get log collection job status ...' ...  
+   VERBOSE: [2023-04-09 22:35:29Z] [Invoke-ScriptsWithRetry] Task 'Get log collection job status ...' succeeded.  
+      
+   StatusRecord                               
+   @{Instance Id=<Instance Id>; State=Running; StartTime=0001-01-01T00:00:00; EndTime=0001-01-01T00:00:00}
+```
+
+### Get-ApplianceLogCollectionHistory
+
+Use this cmdlet to get log collection history. The input parameter `FromDate` takes DateTime type, which is the start time of the history search window. When the `FromDate` isn't specified, the cmdlet searches the last 3 hours.
+
+Example:
+
+```powershell
+   Get-ApplianceLogCollectionHistory -FromDate ((Get-Date).AddHours(-6))
+```
+
+### Get-ApplianceInstanceConfiguration
+
+Use this cmdlet to get the appliance instance configuration that includes the stamp id, resource id (device ARM resource URI).
+
+```powershell
+   $stampId = (Get-ApplianceInstanceConfiguration).StampId
+```
+
+Example
+
+```powershell
+    PS G:\azurelocal\> Get-ApplianceInstanceConfiguration
+    VERBOSE: [2025-08-06 00:00:35Z][Invoke-ScriptsWithRetry][Get-ApplianceInstanceConfiguration] Executing 'Retrieving system configuration ...' with timeout 300 seconds ...
+    VERBOSE: [2025-08-06 00:00:35Z][Invoke-ScriptsWithRetry][Get-ApplianceInstanceConfiguration] [CHECK][Attempt 0] for task 'Retrieving system configuration ...' ...
+    VERBOSE: [2025-08-06 00:00:35Z][`ScriptBlock`] Getting system configuration from https://169.254.53.25:9443/sysconfig/SystemConfiguration
+    VERBOSE: [2025-08-06 00:00:35Z][Invoke-ScriptsWithRetry][Get-ApplianceInstanceConfiguration] Task 'Retrieving system configuration ...' succeeded.
+         
+         
+    IsAutomaticUpdatePreparation :
+    ExternalTimeServers          :
+    IsTelemetryOptOut            : False
+    ExternalDomainSuffix         : autonomous.cloud.private
+    ImageVersion                 : 7.1064750419.18210
+    IngressNICPrefixLength       : 24
+    DeviceARMResourceUri         : /subscriptions/5acadb2e-3867-4158-a581-cf7bd9569341/resourceGroups/arcaobs/providers/Microsoft.Edge/winfields/7dfd0b
+    ConnectionIntent             : Connected
+    StampId                      : 8801e7bf-846b-462d-a5c3-829514cf0b1b
+    IngressNICIPAddress          : 10.0.50.4
+    DnsForwarderIpAddress        : 10.10.240.23
+    IngressNICDefaultGateway     : 10.0.50.1
+```
+
+## Send-DiagnosticData
+
+After you collect logs into a directory, either by using the nvoke-ApplianceLogCollectionAndSaveToShareFolder or  Copy-DiagnosticData cmdlet or by copying them manually, send them to Microsoft with the standalone pipeline. This pipeline connects the host machine to Azure, targets all the logs in a user-provided folder location, and sends them to Microsoft Support. Log upload is attempted up to three times total in case of failure and the cmdlet outputs the results of the send activity on completion.
+
+The Send-DiagnosticData cmdlet requires subscription details, i.e. the ResourceGroupName, SubscriptionId, TenantId, and RegistrationRegion *. It also requires credentials, either via manual login or by providing the appropriate service principal with password. (See Observability Configuration setup section for steps to create resource group, service principal required to upload logs.)
+
+You will to need to run Send-DiagnosticData on Windows machine connected to internet. You will not be able to run this on Azure Local Hosts as they can’t use Azure as Arc Control Plane when disconnected operations already configured.  When this cmdlet runs, it will connect the machine to Azure using Arc Registration so the device can upload data to Microsoft support. Note: The RegistrationRegion is equivalent to Location within ObservabilityConfiguration.
+
+Intended for use in cases where direct log collection from appliance VM is unavailable. It could be either due to control plane appliance VM is having issues where management endpoint is not accessible or appliance VM is disconnected from Azure
+
+### Syntax
+
+This option triggers a manual login via device code for permissions:
+   Send-DiagnosticData -ResourceGroupName <String> -SubscriptionId <String> -TenantId <String> [-RegistrationWithDeviceCode] -RegistrationRegion <String> [-Cloud <String>] -DiagnosticLogPath <String> [-ObsRootFolderPath <String>] [-StampId <Guid>]
+    [<CommonParameters>]
+
+This option uses service principal credentials:
+   Send-DiagnosticData -ResourceGroupName <String> -SubscriptionId <String> -TenantId <String> -RegistrationWithCredential <PSCredential> -RegistrationRegion <String> [-Cloud <String>] -DiagnosticLogPath <String> [-ObsRootFolderPath <String>] [-StampId <Guid>]
+    [<CommonParameters>]
+
+### Parameters
+
+- ResourceGroupName <String>
+  - Azure Resource group name where temporary Arc resource will be created.
+
+- SubscriptionId <String>
+  - Azure SubscriptionID where temporary Arc resource will be created.
+
+- TenantId <String>
+  - Azure TenantID where temporary Arc resource will be created.
+
+- RegistrationWithDeviceCode [<SwitchParameter>]
+    - Switch to use device code for authentication. This is the default if Service Principal credentials (-RegistrationWithCredential {creds}) is not provided.
+- RegistrationWithCredential <PSCredential>
+  - Service Principal credentials used for authentication to register ArcAgent.
+- RegistrationRegion <String>
+  - Azure registration region where Arc resource will be created, e.g. 'eastus' or 'westeurope'.
+- Cloud <String>
+Optional. Default: AzureCloud
+- DiagnosticLogPath <String>
+Path to a directory containing the logs to be parsed and sent to Microsoft.
+- ObsRootFolderPath <String>
+    - Optional. Observability root folder path where the standalone pipeline is (temporarily) installed and activity logs related to sending diagnostic data are output.
+    - Default: {DiagnosticLogPath}\..\SendLogs_{yyyyMMddTHHmmssffff} (a new file created in the DiagnosticLogPath parent directory)
+- StampId <Guid>
+    - Optional. Unique id for disconnected operations deployment. This GUID is used for tracking collected logs on Microsoft support. Same can be retrieved using Get-ApplianceInstanceConfiguration when management endpoint is accessible for disconnected operations appliance VM. The default value applied will be based on the following setting:
+        - Provided StampId GUID
+        - $env:STAMP_GUID (when StampId GUID not provided)
+        - The host machine's UUID (when StampId GUID not provided and $env:STAMP_GUID not set)
+
+Example:
+```powershell
+Send-DiagnosticData with device code login (used by default if no credential is provided, even if -RegistrationWithDeviceCode is missing):
+
+Import-Module "C:\azurelocal\OperationsModule\ApplianceFallbackLogging.psm1" -Force
+```
+
+```PowerShell
+Send-DiagnosticData -ResourceGroupName "xxxxx" `
+    -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" `
+    -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" `
+    -RegistrationWithDeviceCode `
+    -RegistrationRegion "eastus" `
+    -DiagnosticLogPath "C:\path\to\LogsToExport" `
+    -StampId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+```
+
+```PowerShell
+Send-DiagnosticData using Service Principal Credential, sending to the eastus region of the Azure cloud:
+
+Import-Module "C:\azurelocal\OperationsModule\ApplianceFallbackLogging.psm1" -Force
+```
+
+```PowerShell
+$spId = "{...}"
+$spSecret = "{...}"
+$ss = ConvertTo-SecureString -String $spSecret -AsPlainText -Force
+$spCred = New-Object System.Management.Automation.PSCredential($spId, $ss)
+
+Send-DiagnosticData -ResourceGroupName "xxxxx" `
+    -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" `
+    -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" `
+    -RegistrationWithCredential $spCred `
+    -RegistrationRegion "eastus" `
+    -DiagnosticLogPath "C:\path\to\LogsToExport" `
+    -StampId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+```
+
+The cmdlet returns the Stamp ID used for log uploads to Microsoft Support, any errors encountered during the upload, and the location of the send activity logs. For example:
+
+Example output:
+
+```PowerShell
+AEOStampID 'e5182bb9-7c18-4dec-9def-0004d34f3e94' used for log tracking in Kusto.
+
+Logs and artifacts from send action can be found under:
+ G:\CopyLogs_20240501T1826317607\SendLogs_20240501T1827168699
+
+Log parsing engine results can be found under:
+ G:\CopyLogs_20240501T1826317607\SendLogs_20240501T1827168699\ObsScheduledTaskTranscripts
+```
+
+If the Stamp ID isn't set and isn't passed to the `Send-DiagnosticData` cmdlet manually, it defaults to using the host UUID. The Stamp ID is synonymous with the AEOStampId used to track logs in Azure Data Explorer.
+
+### Send-DiagnosticData –SaveToPath (applicable for Azure Local Host node logs)
+
+Add documentation or refer to existing documentation link from Azure Local connected
+The Send-DiagnosticData cmdlet collects logs and, if needed, securely sends them to Microsoft for analysis. It works with both Azure Stack HCI and Azure Local environments, helping troubleshoot issues by providing detailed telemetry and diagnostic data. This cmdlet is available when the Telemetry and Diagnostics extension is installed, ensuring all components needed for log collection and upload are in place.
+What Send-DiagnosticData does:
+•	Collects logs from the local system, including:
+o	Role-specific logs
+o	Supplementary logs
+o	Software Defined Data Center (SDDC) log (Optional)
+•	Supports filtering by:
+o	Role
+o	Date range
+o	Log type
+•	Bypasses observability agents to collect logs only on the node where the command is run.
+•	Let’s you save logs locally by using the -SaveToPath parameter.
+•	Supports secure credential access when saving to a network share.
+
+
+Send-AzStackHciDiagnosticData (Applicable for Azure Local Host node logs)
+Add documentation or refer to existing documentation link from Azure Local connected
 
 ## Azure Local disconnected when the appliance VM is connected to Azure
 
@@ -163,290 +408,6 @@ Use the following cmdlets and references to triage Azure Local issues.
 - `AzsSupportDataBundle`. For more information, see [Azure Local Support Diagnostic Tool](/azure/azure-local/manage/support-tools).
 - `Send-AzStackHciDiagnosticData`. For more information, see [Get support for Azure Local deployment issues](/azure/azure-local/manage/get-support-for-deployment-issues).
 - `Get-SDDCDiagnosticInfo` and upload it to customer service and support (CSS) data transfer manager (DTM) share. For more information, see [Collect diagnostic data for clusters](/azure/azure-local/manage/collect-diagnostic-data).-->
-
-## Log collection for a disconnected environment with an accessible management endpoint
-
-In this scenario, use the management application programming interface (API) to copy logs from disconnected operations to a shared folder. You can review the logs locally or upload them to Microsoft with the `Send-DiagnosticData` cmdlet.
-
-Trigger log collection in your disconnected environment by running `Invoke-ApplianceLogCollectionAndSaveToShareFolder`.
-
-Before you trigger a log collection, create a share and credentials for a share.
-
-1. Create a share. Run this command:
-
-    ```PowerShell
-    New-SMBShare -Name <share-name> -Path <path-to-share> -FullAccess Users -ChangeAccess 'Server Operators'
-    ```
-
-1. Create PSCredential's to the share. Replace the placeholder `<share-name>` and `<path-to-share>` with your own values and run this command:
-
-    ```PowerShell
-    $user = "<username>"
-    $pass = "<password>"
-    $sec=ConvertTo-SecureString -String $pass -AsPlainText -Force
-    $shareCredential = New-Object System.Management.Automation.PSCredential ($user, $sec)
-    ```
-
-1. Trigger log collection with the `Invoke-ApplianceLogCollectionAndSaveToShareFolder` cmdlet. Replace the placeholder text `<File Share Path>` and `<Share Folder Password>` with your own values.
-
-    Example:
-
-    ```azurecli
-    $fromDate = (Get-Date).AddMinutes(-30)
-    $toDate = (Get-Date)
-    $operationId = Invoke-ApplianceLogCollectionAndSaveToShareFolder -FromDate $fromDate -ToDate $toDate `
-    -LogOutputShareFolderPath "<File Share Path>" -ShareFolderUsername "ShareFolderUser" -ShareFolderPassword (ConvertTo-SecureString "<Share Folder Password>" -AsPlainText -Force)
-    ```
-
-1. Copy logs from your disconnected environment to the share folder. Replace the placeholder text `<share folder path>` and `<share folder user name>` with your own values.
-
-    Example:
-
-    ```azurecli
-    $fromDate = (Get-Date).ToUniversalTime().AddHours(-1)
-    $toDate = (Get-Date).ToUniversalTime()
-    
-    $onDemandRequestBody = @{
-        FromDate = $fromDate.ToString("o")
-        ToDate = $toDate.ToString("o")
-        SaveToPath = "<share folder path>" # \\10.11.206.2\irvmlogs\azurelocaldisconnectedoperations
-        UserPassword = "****"
-        UserName = "<share folder user name>" # 10.11.206.2\administrator
-    } | ConvertTo-JSON
-    
-    $mgmtClientCert = "***" # The client certificate to access management endpoint
-    $mgmtIpAddress = "***"
-    
-    $OperationId = Invoke-RestMethod -Certificate $mgmtClientCert -Method "PUT" -URI "https://$($mgmtIpAddress):9443/logs/logCollectionIndirectJob" -Content "application/json" -Body $onDemandRequestBody -Verbose
-    ```
-
-1. Check the status of the log collection job.
-
-    Use the `Get-ApplianceLogCollectionJobStatus` or `Get-ApplianceLogCollectionHistory` cmdlet to get the current log collection job status.
-
-    Example:
-
-    ```azurecli
-    Get-ApplianceLogCollectionJobStatus -OperationId $OperationId
-    ```
-
-    ```azurecli
-    Get-ApplianceLogCollectionHistory -FromDate ((Get-Date).AddHours(-3))
-    ```
-
-    Example output:
-
-    ```console
-    PS C:\Users\administrator.s46r2004\Documents> $operationId = Invoke-ApplianceLogCollectionAndSaveToShareFolder -FromDate $fromDate -ToDate $toDate -LogOutputShareFolderPath "\\<LogShareName>\$logShareName" -ShareFolderUsername "<Username>.masd.stbtest.microsoft.com\administrator" -ShareFolderPassword (ConvertTo-SecureString "<Password>" -AsPlainText -Force)  
-    VERBOSE: [2023-04-09 22:34:28Z] [Invoke-ApplianceLogCollectionAndSaveToShareFolder] Trigger log collections with parameters:  
-    https://<IP address>/logs/logCollectionIndirectJob  
-    VERBOSE: [2023-04-09 22:34:28Z] [Invoke-ScriptsWithRetry] Executing 'Trigger log collection ...' with timeout 600 seconds ...  
-    VERBOSE: [2023-04-09 22:34:28Z] [Invoke-ScriptsWithRetry] [CHECK] [Attempt 0] for task 'Trigger log collection ...' ...  
-    VERBOSE: [2023-04-09 22:34:28Z] [Invoke-ScriptsWithRetry] Task 'Trigger log collection ...' succeeded.  
-    VERBOSE: [2023-04-09 22:34:28Z] [Invoke-ApplianceLogCollectionAndSaveToShareFolder] Log collections trigger result: "<Instance Id>"  
-    PS C:\Users\administrator.s46r2004\Documents> Get-ApplianceLogCollectionJobStatus -OperationId $operationId  
-    VERBOSE: [2023-04-09 22:35:29Z] [Invoke-ScriptsWithRetry] Executing 'Get log collection job status ...' with timeout 600 seconds ...  
-    VERBOSE: [2023-04-09 22:35:29Z] [Invoke-ScriptsWithRetry] [CHECK] [Attempt 0] for task 'Get log collection job status ...' ...  
-    VERBOSE: [2023-04-09 22:35:29Z] [Invoke-ScriptsWithRetry] Task 'Get log collection job status ...' succeeded.  
-      
-    StatusRecord                               
-       @{Instance Id=<Instance Id>; State=Running; StartTime=0001-01-01T00:00:00; EndTime=0001-01-01T00:00:00} 
-    ```
-
-    Example output:
-
-    ```console
-
-    PS C:\Users\administrator.s46r2004\Documents> $onDemandRequestBody  
-    Name        Value  
-    ----        -----  
-    SaveToPath  \\<IP address>\Arc\LogsShare1  
-    FromDate    2025-04-09T21:26:51.8237434+00:00  
-    UserName    masd.stbtest.microsoft.com\administrator  
-    ToDate      2025-04-10T21:56:50.7453871+00:00  
-    UserPassword <Password>  
-      
-    PS C:\Users\administrator.s46r2004\Documents> $response = Invoke-WebRequest -Uri "http://<IP address>:7345/logCollectionIndirectJob" -Method Put -Body $onDemandRequestBody | ConvertTo-Json -ContentType 'application/json' -UseBasicParsing  
-    PS C:\Users\administrator.s46r2004\Documents> $response  
-      
-    StatusCode        : 200  
-    StatusDescription : OK 
-    Content           : 
-    RawContent        : HTTP/1.1 200 OK  
-                        x-ms-correlation-request-id: <Correlation Id>  
-                        Content-Length: 38  
-                        Content-Type: application/json; charset=utf-8  
-                        Date: Thu, 10 Apr 2025 14:59:27 GMT  
-                        Server: Micr...  
-    Forms  
-    Headers           : {[x-ms-correlation-request-id, <Correlation Id>], [Content-Length, 38], [Content-Type, application/json; charset=utf-8], [Date, Thu, 10 Apr 2025 14:59:27 GMT]...}  
-    Images            : {}
-    InputFields       : {} 
-    Links             : {} 
-    ParsedHtml        :   
-    RawContentLength  : 38  
-    ```
-
-    Example output:
-
-    ```console
-    PS C:\Users\administrator.s46r2004\Documents> Get-ApplianceLogCollectionJobStatus -OperationId $operationId  
-    VERBOSE: [2025-04-10 15:07:33Z] [Invoke-ScriptsWithRetry] Executing 'Get log collection job status ...' with timeout 600 seconds ...  
-    VERBOSE: [2025-04-10 15:07:33Z] [Invoke-ScriptsWithRetry] [CHECK] [Attempt 0] for task 'Get log collection job status ...' ...  
-    VERBOSE: [2025-04-10 15:07:33Z] [Invoke-ScriptsWithRetry] Task 'Get log collection job status ...' succeeded.  
-      
-    StatusRecord
-    -----------  
-    @{IntanceId=<Instance Id>; State=Succeeded; StartTime=2025-04-10T14:59:43.8936665Z; EndTime=2025-04-10T15:07:11.0920805Z}
-      
-    PS C:\Users\administrator.s46r2004\Documents> dir C:\Arc\Logs1  
-      
-        Directory: C:\Arc\Logs1  
-      
-    Mode                LastWriteTime         Length Name  
-    ----                -------------         ------ ----  
-    ----                4/10/2025  3:05 PM           LO_06ec98de-c1c4-406f-a5a9-89f2b803c70f_IRVM01  
-    ```
-
-1. Send diagnostic data to Microsoft.
-    1. Use the `Send-DiagnosticData` cmdlet to manually send diagnostics data to Microsoft. For more information, see [Send-DiagnosticData](disconnected-operations-fallback.md#send-diagnosticdata).
-
-    2. Unzip all files into the share folder.
-
-    ```azurecli
-    $logShareFolderPath = "***"
-    $unzipLogPath = "***"
-    $files = Get-ChildItem -Path $logShareFolderPath | Where-Object { $_.Extension -like "*.zip*" }
-    foreach ($file in $files) {
-        Expand-Achive -Path $file.FullName -Destination $unzipLogPath -Verbose
-    }
-    ```
-
-1. Get the stamp ID.
-
-    ```azurecli
-    $stampId = (Get-ApplianceInstanceConfiguration).StampId
-    ```
-
-## Log collection for control plane when connected to Azure with an accessible management endpoint
-
-Before you can start log collection and get the Stamp ID, set up the observability configuration with the Azure Local disconnected operations module.
-
-1. Check that the observability configuration is set up. Use the Get-`ApplianceObservabilityConfiguration` or `Get-ApplianceHealthState` cmdlet:
-
-    Example output:
-
-    ```console
-    PS C:\Users\administrator.s46r2004\Documents> Get-ApplianceHealthState  
-    VERBOSE: [2025-03-26 22:43:43Z][Invoke-ScriptsWithRetry] Executing 'Get health state ...' with timeout 300 seconds ...  
-    VERBOSE: [2025-03-26 22:43:43Z][Invoke-ScriptsWithRetry] [CHECK][Attempt 0] for task 'Get health state ...' ...  
-    VERBOSE: [2025-03-26 22:43:44Z][Invoke-ScriptsWithRetry] Task 'Get health state ...' succeeded.  
-      
-    SystemReady ReadinessStatusDetails ErrorMessages  
-    ----------- ---------------------- -------------  
-    False       @{Services=79; Diagnostics=100; Identity=100; Networking=100} @{Services=System.Object[]; Diagnostics=System.Object[]; Identity=System.Object[]; Networking=System.Object[]}  
-    ```
-
-    > [!NOTE]
-    > If the observability configuration is set up, skip step 2 and proceed to step 3.
-
-1. If the observability configuration isn't set up, run this script:
-
-    ```azurecli
-    $observabilityConfiguration = New-ApplianceObservabilityConfiguration `
-      -ResourceGroupName "WinfieldPreview" `
-      -TenantId "<Tenant Id>" `
-      -Location "eastus" `
-      -SubscriptionId "<Subscription Id>" `
-      -ServicePrincipalId "<Service Principal Id of the one you prepared for log collection>" `
-      -ServicePrincipalSecret (ConvertTO-SecureString "Service Principal secret of the one for log collection" -AsPlainText -Force")
-    Set-ApplianceObservabilityConfiguration -ObservabilityConfiguration $observabilityConfiguration
-    ```
-
-    Example output:
-
-    ```console
-    PS C:\Users\administrator.s46r2004\Documents> $observabilityConfiguration = New-ApplianceObservabilityConfiguration `  
-    >> -ResourceGroupName "WinfieldPreviewShip" `  
-    >> -ServerId "<Server Id>" `  
-    >> -Location "eastus" `  
-    >> -SubscriptionId "<Subscription Id>" `  
-    >> -ClientId "<Client ID>" `  
-    >> -ServicePrincipalSecret (ConvertTo-SecureString "SY5T0_9@_eFlLoSdB1uck_1v_0S0#Mf1O#A0o" -AsPlainText -Force)  
-    PS C:\Users\administrator.s46r2004\Documents> Set-ApplianceObservabilityConfiguration -ObservabilityConfiguration $observabilityConfiguration  
-    VERBOSE: [2025-03-26 22:34:56Z][ConfigureObservability] [START] Set observability configuration  
-    VERBOSE: [2025-03-26 22:34:56Z][Invoke-ScriptsWithRetry] Executing 'Setting up diagnostics ...' with timeout 300 seconds ...  
-    VERBOSE: [2025-03-26 22:34:56Z][Invoke-ScriptsWithRetry] [CHECK][Attempt 0] for task 'Setting up diagnostics ...' ...  
-    VERBOSE: [2025-03-26 22:34:56Z][ScriptBlock] [INFO] Result of observability configuration: ...  
-    VERBOSE: [2025-03-26 22:34:56Z][Invoke-ScriptsWithRetry] Task 'Setting up diagnostics ...' succeeded.  
-    VERBOSE: [2025-03-26 22:34:56Z][Invoke-ScriptsWithRetry] Executing 'Wait Diagnostics ready' with timeout 1200 seconds ...  
-    VERBOSE: [2025-03-26 22:34:56Z][Invoke-ScriptsWithRetry] [CHECK][Attempt 0] for task 'Wait Diagnostics ready' ...  
-    VERBOSE: [2025-03-26 22:34:56Z][Invoke-ScriptsWithRetry] Executing 'Get health state ...' with timeout 300 seconds ...  
-    VERBOSE: [2025-03-26 22:34:56Z][Invoke-ScriptsWithRetry] [CHECK][Attempt 0] for task 'Get health state ...' ...  
-    VERBOSE: [2025-03-26 22:34:56Z][Invoke-ScriptsWithRetry] Task 'Get health state ...' succeeded.  
-    VERBOSE: [2025-03-26 22:34:56Z][ScriptBlock] System Readiness information:  
-    
-    SystemReady ReadinessStatusDetails ErrorMessages  
-    ----------- ---------------------- -------------  
-    False       @{Services=22; Diagnostics=0; Identity=100; Networking=100} @{Services=System.Object[]; Diagnostics=System.Object[]; Identity=System.Object[]; Networking=System.Object[]}  
-    ```
-
-1. Trigger log collection. Run the `Invoke-ApplianceLogCollection` cmdlet.
-
-    ```azurecli
-    $fromDate = (Get-Date).AddMinutes(-30)
-    $toDate = (Get-Date)
-    $operationId = Invoke-ApplianceLogCollection -FromDate $fromDate -ToDate $toDate
-    ```
-
-1. Check the status of the log collection job. Use the `Get-ApplianceLogCollectionJobStatus` or `Get-ApplianceLogCollectionHistory` cmdlet.
-
-    ```azurecli
-    Get-ApplianceLogCollectionJobStatus -OperationId $OperationId
-    ```
-
-    ```azurecli
-    Get-ApplianceLogCollectionHistory -FromDate ((Get-Date).AddHours(-3))
-    ```
-
-1. Get the stamp ID
-
-    ```azurecli
-    $stampId = (Get-ApplianceInstanceConfiguration).StampId
-    ```
-
-    Example output:
-
-    ```console
-    PS C:\Users\administrator.s46r2004\Documents> $stampId = (Get-ApplianceInstanceConfiguration).StampId  
-    VERBOSE: [2025-03-27 19:56:41Z][Invoke-ScriptsWithRetry] Executing 'Retrieving system configuration ...' with timeout 300 seconds ...  
-    VERBOSE: [2025-03-27 19:56:41Z][Invoke-ScriptsWithRetry] [CHECK][Attempt 0] for task 'Retrieving system configuration ...' ...  
-    VERBOSE: [2025-03-27 19:56:41Z][ScriptBlock] Getting system configuration from https://100.69.172.253:9443/sysconfig/SystemConfiguration  
-    VERBOSE: [2025-03-27 19:56:42Z][Invoke-ScriptsWithRetry] Task 'Retrieving system configuration ...' succeeded.  
-    PS C:\Users\administrator.s46r2004\Documents> $stampId <Stamp ID>
-    ```
-
-## Log collection when the management endpoint is inaccessible
-
-The `Send-DiagnosticData` cmdlet collects logs and, if needed, securely sends them to Microsoft for analysis. It works with both Azure Stack HCI and Azure Local environments, helping troubleshoot issues by providing detailed telemetry and diagnostic data. This cmdlet is available when the [Telemetry and Diagnostics](../concepts/telemetry-and-diagnostics-overview.md) extension is installed, ensuring all components needed for log collection and upload are in place.
-
-What Send-DiagnosticData does:
-
-- Collects logs from the local system, including:
-  - Role-specific logs
-  - Supplementary logs
-  - Software Defined Data Center (SDDC) log (Optional)
-
-- Supports filtering by:
-  - Role
-  - Date range
-  - Log type
-
-- Bypasses observability agents to collect logs only on the node where the command is run.
-
-- Let's you save logs locally by using the `-SaveToPath` parameter.
-
-- Supports secure credential access when saving to a network share.
 
 ## Security considerations
 
