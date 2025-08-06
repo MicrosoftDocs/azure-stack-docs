@@ -1,5 +1,5 @@
 ---
-title: Monitor Azure Local migrations using diagnostic settings in Azure Migrate
+title: Monitor Azure Local Migrations Using Diagnostic Settings in Azure Migrate
 description: Learn how to monitor Azure Local migrations using diagnostic settings in Azure Migrate.
 author: alkohli
 ms.topic: how-to
