@@ -155,6 +155,22 @@ Before you begin, make sure that:
 
    Consult with your hardware vendor for assistance if required.
 
+- Run the following steps:
+
+    ```PowerShell
+    # Check to make sure the Cloud Management group is present and its online.
+    Get-ClusterGroup -Name "Cloud Management"
+     
+    # Stop the Cloud Management group
+    Stop-ClusterGroup -Name "Cloud Management"
+     
+    # Remove all resources in the Cloud Management group
+    Get-ClusterGroup -Name "Cloud Management" | Get-ClusterResource | Remove-ClusterResource -Force
+     
+    # Start the Cloud Management group
+    Start-ClusterGroup -Name "Cloud Management"
+
+
 ::: zone-end
 
 ## Update registry keys
