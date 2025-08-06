@@ -363,7 +363,7 @@ Install-Appliance @installAzureLocalParams -disconnectMachineDeploy -Verbose
 
 If the installation fails because of incorrect network, identity, or observability settings, update the configuration object and run the `Install-appliance` command again.
 
-You can also specify the -clean switch to start installation from scratch - this will wipe any existing installation state and start from beginning.
+You can also specify the -clean switch to start installation from scratch - this will reset any existing installation state and start from beginning.
 
 1. Modify the configuration object.
 
