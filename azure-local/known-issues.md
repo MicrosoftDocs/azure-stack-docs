@@ -3,7 +3,7 @@ title: Release notes with fixed and known issues in Azure Local
 description: Read about the known issues and fixed issues in Azure Local.
 author: alkohli
 ms.topic: conceptual
-ms.date: 07/30/2025
+ms.date: 08/01/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
@@ -51,7 +51,12 @@ The following table lists the fixed issues in this release:
 
 ## Known issues
 
-Microsoft isn't aware of any known issues in this release.
+The following is a known issue with this release.
+
+|Feature  |Issue  |Workaround  |
+|---------|---------|---------|
+| Update | When installing cumulative updates using Azure Update Manager, only the latest update for version 2507 is installed. If earlier update options (for versions 2505, 2506) are selected, they are not installed. | There's no workaround in this release. |
+
 
 ## Known issues from previous releases
 
