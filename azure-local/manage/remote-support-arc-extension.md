@@ -21,6 +21,10 @@ The Remote Support Arc extension, listed as **AzureEdgeRemoteSupport** in the Az
 
 Remote support is the process where a Microsoft support professional connects to your device to help fix issues. With the extension, support personnel can securely access your system, do limited troubleshooting or repair tasks, and fix your case faster.
 
+The following screenshot shows the Remote Support Arc extension in the Azure portal:
+
+:::image type="content" source="media/arc-extension-management/azure-edge-remote-support/azure-edge-remote-support.png" alt-text="Screenshot of the Remote Support Arc extension in the Azure portal." lightbox="media/arc-extension-management/azure-edge-remote-support/azure-edge-remote-support.png":::
+
 For more information about remote support and how to turn it on, see [Get remote support](./get-remote-support.md).
 
 ## Benefits
