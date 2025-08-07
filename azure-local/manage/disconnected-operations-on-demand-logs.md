@@ -194,7 +194,7 @@ After you collect logs into a directory, either by using the nvoke-ApplianceLogC
 
 The Send-DiagnosticData cmdlet requires subscription details, i.e. the ResourceGroupName, SubscriptionId, TenantId, and RegistrationRegion *. It also requires credentials, either via manual login or by providing the appropriate service principal with password. (See Observability Configuration setup section for steps to create resource group, service principal required to upload logs.)
 
-You will to need to run Send-DiagnosticData on Windows machine connected to internet. You will not be able to run this on Azure Local Hosts as they can’t use Azure as Arc Control Plane when disconnected operations already configured.  When this cmdlet runs, it will connect the machine to Azure using Arc Registration so the device can upload data to Microsoft support. Note: The RegistrationRegion is equivalent to Location within ObservabilityConfiguration.
+You will need to run Send-DiagnosticData on Windows machine connected to internet. You will not be able to run this on Azure Local Hosts as they can’t use Azure as Arc Control Plane when disconnected operations already configured.  When this cmdlet runs, it will connect the machine to Azure using Arc Registration so the device can upload data to Microsoft support. Note: The RegistrationRegion is equivalent to Location within ObservabilityConfiguration.
 
 Intended for use in cases where direct log collection from appliance VM is unavailable. It could be either due to control plane appliance VM is having issues where management endpoint is not accessible or appliance VM is disconnected from Azure
 
@@ -431,7 +431,7 @@ This approach lets you share diagnostic data for support purposes without affect
 
 ### Use fallback log collection
 
-Use fallback log collection to collect and send logs when the disconnected operations with Azure Local VM is down, the management endpoint isn't accessible, and you can't invoke standard log collection.
+Use fallback log collection to collect and send logs when the disconnected operations with Azure Local VM are down, the management endpoint isn't accessible, and you can't invoke standard log collection.
 
 There are three methods used in this scenario:
 

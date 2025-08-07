@@ -22,7 +22,7 @@ PKI for disconnected operations is essential for securing the endpoints provided
 
 ## PKI requirements
 
-A public certificate authorities (CA) or enterprise certificate authorities must issue certificates. Make sure your certificates are part of the Microsoft Trusted Root Program. For more information, see [List of Participants - Microsoft Trusted Root Program](/security/trusted-root/participants-list).  
+A public certificate authority (CA) or enterprise certificate authority must issue certificates. Make sure your certificates are part of the Microsoft Trusted Root Program. For more information, see [List of Participants - Microsoft Trusted Root Program](/security/trusted-root/participants-list).  
 
 Mandatory certificates are grouped by area with the appropriate subject alternate names (SAN). Before you create the certificates, review these requirements:
 
@@ -210,7 +210,7 @@ $AzLCerts = @(
 
 ### Management endpoint
 
-Here's an an example on how to create certificates for securing the management endpoint:
+Here's an example of how to create certificates for securing the management endpoint:
 
 > [!NOTE]
 > Run this script on a domain-joined machine using an account with Domain Administrator access to issue certificates.
@@ -310,7 +310,7 @@ These checks confirm that the certificates and chain for these endpoints havenâ€
 
 You have a helper method in the **OperationsModule** that can help you populate these parameters.
 
-Here's an example on how to populate the required parameters:
+Here's an example of how to populate the required parameters:
 
 ```powershell
 $oidcCertChain = Get-CertificateChainFromEndpoint -endpoint 'https://adfs.azurestack.local'

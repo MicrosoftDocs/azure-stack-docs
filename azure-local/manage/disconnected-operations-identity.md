@@ -142,7 +142,7 @@ $idpConfig = @{
 
 Consider these limitations when you plan your identity integration with disconnected operations:
 
-- **Users/Group removal after synchronization**: If you remove users and groups with memberships after the last sync, disconnected operations doesn't clean them up. This can cause errors when you query group memberships.
+- **Users/Group removal after synchronization**: If you remove users and groups with memberships after the last sync, disconnected operations don't clean them up. This can cause errors when you query group memberships.
 - **No force synchronization capability**: Sync runs every 6 hours.  
 - **No management groups or aggregate root level**: Not available for multiple subscriptions.  
 - **Supported validations**: Only Active Directory/AD FS are validated for support.

@@ -51,7 +51,7 @@ For disconnected operations:
 1. Understand [public key infrastructure (PKI) for Azure Local with disconnected operations (preview)](disconnected-operations-pki.md)
 2. Set up and configure the certificate trusts for Azure CLI using PowerShell.
 
-    Here's an example script you can run in Powershell:
+    Here's an example script you can run in PowerShell:
 
     ```powershell    
         # Define the helper method
