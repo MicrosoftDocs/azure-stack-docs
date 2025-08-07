@@ -3,7 +3,7 @@ title: Migrate VMs to Azure Local with Azure Migrate using PowerShell
 description: Learn how to migrate VMs to Azure Local with Azure Migrate using PowerShell.
 author: alkohli
 ms.topic: how-to
-ms.date: 08/06/2025
+ms.date: 08/07/2025
 ms.author: alkohli
 ---
 
@@ -14,8 +14,6 @@ ms.author: alkohli
 This article describes how to migrate virtual machines (VMs) to Azure Local with Azure Migrate using PowerShell.
 
 ## Prerequisites
-
-This is the latest guidance for prerequisites:
 
 1. Complete the following prerequisites for the Azure Migrate project:
     - For a Hyper-V source environment, complete the [Hyper-V prerequisites](migrate-hyperv-prerequisites.md) and [configure the source and target appliances](migrate-hyperv-replicate.md#step-1-create-and-configure-the-source-appliance).
