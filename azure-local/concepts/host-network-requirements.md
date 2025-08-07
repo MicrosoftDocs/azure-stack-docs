@@ -139,7 +139,7 @@ Guest RDMA is not supported on Azure Local.
 
 SET is a software-based teaming technology that has been included in the Windows Server operating system since Windows Server 2016. SET is the only teaming technology supported by Azure Local and well with compute, storage, and management traffic. SET supports up to eight adapters in a single team. Other NIC teaming methods, such as [Load Balancing/Failover (LBFO)](https://techcommunity.microsoft.com/t5/networking-blog/teaming-in-azure-stack-hci/ba-p/1070642), aren't supported.
 
-In Azure Local, Network ATC automatically configures both the SET and the vSwitch. You shouldn't manually deploy SET using PowerShell, such as with the [New-VMSwitch](powershell/module/hyper-v/new-vmswitch?view=windowsserver2025-ps) cmdlet. While this command enables Embedded Teaming by default when multiple adapters are listed, the recommended approach is to use Network ATC with intents.
+In Azure Local, Network ATC automatically configures both the SET and the vSwitch. You shouldn't manually deploy SET using PowerShell, such as with the [New-VMSwitch](/powershell/module/hyper-v/new-vmswitch) cmdlet. While this command enables Embedded Teaming by default when multiple adapters are listed, the recommended approach is to use Network ATC with intents.
 
 **Applicable traffic types:** compute, storage, and management
 
