@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 06/09/2025
+ms.date: 07/30/2025
 ---
 
 # Manage Azure Local VMs enabled by Azure Arc
@@ -210,25 +210,9 @@ To start a VM, follow these steps in the Azure portal for your Azure Local insta
 
    :::image type="content" source="./media/manage-arc-virtual-machines/start-virtual-machine.png" alt-text="Screenshot of the button for starting a virtual machine on the overview page." lightbox="./media/manage-arc-virtual-machines/start-virtual-machine.png":::
 
-1. Select **Yes**.
+1. On the confirmation dialog, select **Yes**.
 
 1. Verify that the VM started.
-
-## Stop a VM
-
-To stop a VM, follow these steps in the Azure portal for your Azure Local instance:
-
-1. Go to the Azure Local resource, and then go to **Virtual machines**.
-
-1. In the list of virtual machines, select a VM that's running and that you want to stop.
-
-1. On the **Overview** page for the VM, on the command bar, select **Stop**.
-
-   :::image type="content" source="./media/manage-arc-virtual-machines/stop-virtual-machine.png" alt-text="Screenshot of the button for stopping a virtual machine on the overview page." lightbox="./media/manage-arc-virtual-machines/stop-virtual-machine.png":::
-
-1. Select **Yes**.
-
-1. Verify that the VM stopped.
 
 ## Restart a VM
 
@@ -242,15 +226,51 @@ To restart a VM, follow these steps in the Azure portal for your Azure Local ins
 
    :::image type="content" source="./media/manage-arc-virtual-machines/restart-virtual-machine.png" alt-text="Screenshot of the button for restarting a virtual machine on the overview page." lightbox="./media/manage-arc-virtual-machines/restart-virtual-machine.png":::
 
-1. Select **Yes**.
+1. On the confirmation dialog, select **Yes**.
 
 1. Verify that the VM restarted.
+
+## Stop a VM
+
+To stop a VM, follow these steps in the Azure portal for your Azure Local instance:
+
+1. Go to the Azure Local resource, and then go to **Virtual machines**.
+
+1. In the list of virtual machines, select a VM that's running and that you want to stop.
+
+1. On the **Overview** page for the VM, on the command bar, select **Stop**.
+
+   :::image type="content" source="./media/manage-arc-virtual-machines/stop-virtual-machine.png" alt-text="Screenshot of the button for stopping a virtual machine on the overview page." lightbox="./media/manage-arc-virtual-machines/stop-virtual-machine.png":::
+
+1. On the confirmation dialog, select **Yes**.
+
+1. Verify that the VM stopped.
 
 ## Pause a VM
 
 Pausing a VM is useful to save compute resources when you're not using the VM. Pausing a VM stops any CPU activity.
 
 You can pause only running VMs. After you pause a VM, you can resume it later.
+
+### [Azure portal](#tab/azureportal)
+
+To pause a VM, follow these steps in the Azure portal for your Azure Local instance:
+
+1. Go to the Azure Local resource, and then go to **Virtual machines**.
+
+1. In the list of virtual machines, select a VM that's currently running and that you want to pause.
+
+1. On the **Overview** page for the VM, on the command bar, select **Pause**.
+
+   :::image type="content" source="./media/manage-arc-virtual-machines/pause-virtual-machine.png" alt-text="Screenshot of the button for pausing a virtual machine on the overview page." lightbox="./media/manage-arc-virtual-machines/pause-virtual-machine.png":::
+
+1. On the confirmation dialog, select **Yes**.
+
+1. Verify that the VM's status changed to **Paused**.
+
+### [Azure CLI](#tab/azurecli)
+
+To pause a VM, run the following commands in the Azure CLI on the computer that you're using to connect to Azure Local.
 
 1. [Connect to a machine on your system](./azure-arc-vm-management-prerequisites.md#connect-to-the-system-directly).
 
@@ -531,9 +551,31 @@ Inside _start_initial/subscriptions/<Subscription ID>/resourceGroups/<Resource g
 
 </details>
 
+---
+
 ## Save a VM
 
 Saving a VM stores its current state to the disk and stops the VM. Saving a VM frees up memory and CPU resources. You can save only running VMs.
+
+### [Azure portal](#tab/azureportal)
+
+To save a VM, follow these steps in the Azure portal for your Azure Local instance:
+
+1. Go to the Azure Local resource, and then go to **Virtual machines**.
+
+1. In the list of virtual machines, select a VM that's currently running and that you want to save.
+
+1. On the **Overview** page for the VM, on the command bar, select **Save**.
+
+   :::image type="content" source="./media/manage-arc-virtual-machines/save-virtual-machine.png" alt-text="Screenshot of the button for saving a virtual machine on the overview page." lightbox="./media/manage-arc-virtual-machines/save-virtual-machine.png":::
+
+1. On the confirmation dialog, select **Yes**.
+
+1. Verify that the VM's status changed to **Saved**.
+
+### [Azure CLI](#tab/azurecli)
+
+To save a VM, run the following commands in the Azure CLI on the computer that you're using to connect to Azure Local.
 
 1. [Connect to a machine on your system](./azure-arc-vm-management-prerequisites.md#connect-to-the-system-directly).
 
@@ -813,11 +855,35 @@ Inside _start_initial/subscriptions/<Subscription ID>/resourceGroups/<Resource g
 
 </details>
 
+---
+
+## Delete a VM
+
+Deleting a VM doesn't delete all the resources associated with the VM. For example, it doesn't delete the data disks and the network interfaces associated with the VM. You need to locate and delete these resources separately.
+
+To delete a VM, follow these steps in the Azure portal for your Azure Local instance:
+
+1. Go to the Azure Local resource, and then go to **Virtual machines**.
+
+1. In the list of virtual machines, select a VM that you want to remove from your system.
+
+1. On the **Overview** page for the VM, on the command bar, select **Delete**.
+
+1. On the confirmation dialog, select **Yes**.
+
+   :::image type="content" source="./media/manage-arc-virtual-machines/delete-virtual-machine-warning.png" alt-text="Screenshot of the warning for deleting a virtual machine." lightbox="./media/manage-arc-virtual-machines/delete-virtual-machine-warning.png":::
+
+1. Go to the resource group where this VM was deployed. Verify that the VM is removed from the list of resources in the resource group.
+
+1. Locate the associated resources, such as the network interfaces and data disks, and delete them. You might need to select **Show hidden types** to view the resources associated with this VM that weren't deleted.
+
+    :::image type="content" source="./media/manage-arc-virtual-machines/locate-network-interfaces-data-disks-deleted-virtual-machine.png" alt-text="Screenshot of hidden types of resources associated with a virtual machine." lightbox="./media/manage-arc-virtual-machines/locate-network-interfaces-data-disks-deleted-virtual-machine.png":::
+
 ## Change the local account password
 
 Follow these steps to change the local account passwords for an Azure Local VM deployed on your Azure Local instance. The steps are different for Windows and Linux VMs.
 
-### [Windows](#tab/windows)
+### Change the local account password for Windows VMs
 
 1. Sign in to the Azure Local VM.
 
@@ -849,7 +915,7 @@ Follow these steps to change the local account passwords for an Azure Local VM d
     }    
     ```
 
-### [Linux](#tab/linux)
+### Change the local account password for Linux VMs
 
 If Bash is in a different directory, be sure to change the `#!/bin/bash` line accordingly.
 
@@ -882,30 +948,6 @@ If Bash is in a different directory, be sure to change the `#!/bin/bash` line ac
         echo -e "\e[31mThe passwords do not match. Please try again.\e[0m"
     fi
     ```
-
----
-
-## Delete a VM
-
-Deleting a VM doesn't delete all the resources associated with the VM. For example, it doesn't delete the data disks and the network interfaces associated with the VM. You need to locate and delete these resources separately.
-
-To delete a VM, follow these steps in the Azure portal for your Azure Local instance:
-
-1. Go to the Azure Local resource, and then go to **Virtual machines**.
-
-1. In the list of virtual machines, select a VM that you want to remove from your system.
-
-1. On the **Overview** page for the VM, on the command bar, select **Delete**.
-
-1. You're prompted to confirm the deletion. Select **Yes**.
-
-   :::image type="content" source="./media/manage-arc-virtual-machines/delete-virtual-machine-warning.png" alt-text="Screenshot of the warning for deleting a virtual machine." lightbox="./media/manage-arc-virtual-machines/delete-virtual-machine-warning.png":::
-
-1. Go to the resource group where this VM was deployed. Verify that the VM is removed from the list of resources in the resource group.
-
-1. Locate the associated resources, such as the network interfaces and data disks, and delete them. You might need to select **Show hidden types** to view the resources associated with this VM that weren't deleted.
-
-    :::image type="content" source="./media/manage-arc-virtual-machines/locate-network-interfaces-data-disks-deleted-virtual-machine.png" alt-text="Screenshot of hidden types of resources associated with a virtual machine." lightbox="./media/manage-arc-virtual-machines/locate-network-interfaces-data-disks-deleted-virtual-machine.png":::
 
 ## Conduct live migration of Azure Local VMs
 
