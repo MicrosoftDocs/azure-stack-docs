@@ -148,7 +148,7 @@ You can specify the target logical network, storage path, resource group, VM nam
 To further customize the replication job, you can define local disk and NIC mappings ahead of time using `New-AzMigrateLocalDiskMappingObject` and `New-AzMigrateLocalNicMappingObject` (see **Create a local disk mapping** and **Create a local NIC mapping object** sections). These allow you to customize the disks and network interfaces are included during replication.
 
 
-## (Option 1) Start Replication without disk and NIC mapping
+### (Option 1) Start Replication without disk and NIC mapping
 
 ```powershell
 
@@ -199,7 +199,7 @@ foreach ($DiscoveredServer in $DiscoveredServers)
 }
 ```
 
-## (Option 2) Start Replication with disk and NIC mapping
+### (Option 2) Start Replication with disk and NIC mapping
 
 ### Create a local disk mapping object
 
@@ -271,7 +271,7 @@ $NicMappings | Format-List *
 ```
 
 
-**Start Replication with disk and NIC mappings**
+### Start Replication with disk and NIC mappings
 > [!NOTE]
 > If you use the `-DiskToInclude` and `-NicToInclude` parameters, you must create both local disk and NIC mapping objects as shown in the **Create a Local Disk Mapping** and **Create a local NIC mapping object** sections. You cannot use one without the other.
 > 
