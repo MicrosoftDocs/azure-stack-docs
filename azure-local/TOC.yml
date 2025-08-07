@@ -568,6 +568,8 @@ items:
         href: migrate/migrate-vmware-replicate.md
       - name: Migrate, verify
         href: migrate/migrate-vmware-migrate.md
+    - name: Migrate via PowerShell
+      href: migrate/migrate-via-powershell.md
     - name: Enable guest management
       href: migrate/migrate-enable-guest-management.md
     - name: Maintain static IP addresses
