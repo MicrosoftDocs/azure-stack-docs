@@ -155,7 +155,7 @@ Before you begin, make sure that:
 
    Consult with your hardware vendor for assistance if required.
 
-- To clean the Cloud Management group, run the following steps:
+- Clean the Cloud Management cluster group:
 
     ```PowerShell
     # Check to make sure the Cloud Management group is present and its online.
