@@ -29,9 +29,9 @@ The following on-demand scenarios are supported for log collection:
 
 | Scenarios for log collection             | How to collect logs                    |
 |------------------------------------------|----------------------------------------|
-| [Use on-demand direct log collection](#log-collection-for-a-disconnected-environment-with-an-accessible-management-endpoint) when an on-premises device with Azure Local disconnected operations is connected to Azure and the management endpoint for disconnected operations is accessible. | Trigger log collection with the `Invoke-ApplianceLogCollection` cmdlet. |
-| [Use on-demand indirect log collection](#log-collection-for-control-plane-when-connected-to-azure-with-an-accessible-management-endpoint) when an on-premises device using Azure Local disconnected operations doesn't have a connection to Azure, but the management endpoint for disconnected operations is accessible. | Trigger log collection with the `Invoke-ApplianceLogCollectionAndSaveToShareFolder` cmdlet.<br></br> After you run the `Invoke-ApplianceLogCollectionAndSaveToShareFolder` cmdlet, use the `Send-DiagnosticData` cmdlet to upload the copied data logs from the file share to Microsoft. |
-| [Use on-demand fallback log collection](#log-collection-when-the-management-endpoint-is-inaccessible) when the management endpoint for disconnected operations isn't accessible or the integrated runtime disconnected operations with Azure Local virtual machine (VM) is down. | Collect logs after you shut down the disconnected operations appliance VM, mount and unlock virtual hard disks (VHDs), and copy logs by using the `Copy-DiagnosticData` cmdlet from mounted VHDs into a local, user-defined location.<br></br> Use the `Send-DiagnosticData` cmdlet to manually send diagnostic data to Microsoft. |
+| [Use on-demand direct log collection](#collect-logs-on-demand-with-the-azure-local-disconnected-operations-powershell-module) when an on-premises device with Azure Local disconnected operations is connected to Azure and the management endpoint for disconnected operations is accessible. | Trigger log collection with the `Invoke-ApplianceLogCollection` cmdlet. |
+| [Use on-demand indirect log collection](#azure-local-disconnected-when-the-appliance-vm-isnt-connected-to-azure) when an on-premises device using Azure Local disconnected operations doesn't have a connection to Azure, but the management endpoint for disconnected operations is accessible. | Trigger log collection with the `Invoke-ApplianceLogCollectionAndSaveToShareFolder` cmdlet.<br></br> After you run the `Invoke-ApplianceLogCollectionAndSaveToShareFolder` cmdlet, use the `Send-DiagnosticData` cmdlet to upload the copied data logs from the file share to Microsoft. |
+| [Use on-demand fallback log collection](#indirect-or-fallback-log-collection-disconnected-mode) when the management endpoint for disconnected operations isn't accessible or the integrated runtime disconnected operations with Azure Local virtual machine (VM) is down. | Collect logs after you shut down the disconnected operations appliance VM, mount and unlock virtual hard disks (VHDs), and copy logs by using the `Copy-DiagnosticData` cmdlet from mounted VHDs into a local, user-defined location.<br></br> Use the `Send-DiagnosticData` cmdlet to manually send diagnostic data to Microsoft. |
 
 ## Azure Local disconnected when the appliance VM isn't connected to Azure
 
@@ -201,38 +201,42 @@ Intended for use in cases where direct log collection from appliance VM is unava
 ### Syntax
 
 This option triggers a manual login via device code for permissions:
-   Send-DiagnosticData -ResourceGroupName <String> -SubscriptionId <String> -TenantId <String> [-RegistrationWithDeviceCode] -RegistrationRegion <String> [-Cloud <String>] -DiagnosticLogPath <String> [-ObsRootFolderPath <String>] [-StampId <Guid>]
-    [<CommonParameters>]
+
+```
+Send-DiagnosticData -ResourceGroupName <String> -SubscriptionId <String> -TenantId <String> [-RegistrationWithDeviceCode] -RegistrationRegion <String> [-Cloud <String>] -DiagnosticLogPath <String> [-ObsRootFolderPath <String>] [-StampId <Guid>] [<CommonParameters>]
+```
 
 This option uses service principal credentials:
-   Send-DiagnosticData -ResourceGroupName <String> -SubscriptionId <String> -TenantId <String> -RegistrationWithCredential <PSCredential> -RegistrationRegion <String> [-Cloud <String>] -DiagnosticLogPath <String> [-ObsRootFolderPath <String>] [-StampId <Guid>]
-    [<CommonParameters>]
+
+```
+Send-DiagnosticData -ResourceGroupName <String> -SubscriptionId <String> -TenantId <String> -RegistrationWithCredential <PSCredential> -RegistrationRegion <String> [-Cloud <String>] -DiagnosticLogPath <String> [-ObsRootFolderPath <String>] [-StampId <Guid>] [<CommonParameters>]
+```
 
 ### Parameters
 
-- ResourceGroupName <String>
+- ResourceGroupName `<String>`
   - Azure Resource group name where temporary Arc resource will be created.
 
-- SubscriptionId <String>
+- SubscriptionId `<String>`
   - Azure SubscriptionID where temporary Arc resource will be created.
 
-- TenantId <String>
+- TenantId `<String>`
   - Azure TenantID where temporary Arc resource will be created.
 
-- RegistrationWithDeviceCode [<SwitchParameter>]
+- RegistrationWithDeviceCode `[<SwitchParameter>]`
     - Switch to use device code for authentication. This is the default if Service Principal credentials (-RegistrationWithCredential {creds}) is not provided.
-- RegistrationWithCredential <PSCredential>
+- RegistrationWithCredential `<PSCredential>`
   - Service Principal credentials used for authentication to register ArcAgent.
-- RegistrationRegion <String>
+- RegistrationRegion `<String>`
   - Azure registration region where Arc resource will be created, e.g. 'eastus' or 'westeurope'.
-- Cloud <String>
-Optional. Default: AzureCloud
-- DiagnosticLogPath <String>
-Path to a directory containing the logs to be parsed and sent to Microsoft.
-- ObsRootFolderPath <String>
-    - Optional. Observability root folder path where the standalone pipeline is (temporarily) installed and activity logs related to sending diagnostic data are output.
+- Cloud `<String>`
+  - Optional. Default: AzureCloud
+- DiagnosticLogPath `<String>`
+  - Path to a directory containing the logs to be parsed and sent to Microsoft.
+- ObsRootFolderPath `<String>`
+  - Optional. Observability root folder path where the standalone pipeline is (temporarily) installed and activity logs related to sending diagnostic data are output.
     - Default: {DiagnosticLogPath}\..\SendLogs_{yyyyMMddTHHmmssffff} (a new file created in the DiagnosticLogPath parent directory)
-- StampId <Guid>
+- StampId `<Guid>`
     - Optional. Unique id for disconnected operations deployment. This GUID is used for tracking collected logs on Microsoft support. Same can be retrieved using Get-ApplianceInstanceConfiguration when management endpoint is accessible for disconnected operations appliance VM. The default value applied will be based on the following setting:
         - Provided StampId GUID
         - $env:STAMP_GUID (when StampId GUID not provided)
