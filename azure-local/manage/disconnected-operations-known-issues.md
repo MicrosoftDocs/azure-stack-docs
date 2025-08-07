@@ -3,9 +3,10 @@ title: Release notes for disconnected operations for Azure Local
 description: Read about the known issues and fixed issues for disconnected operations for Azure Local.
 author: haraldfianbakken
 ms.topic: conceptual
-ms.date: 07/14/2025
+ms.date: 08/06/2025
 ms.author: hafianba
 ms.reviewer: hafianba
+ai-usage: ai-assisted
 ---
 
 # Known issues for disconnected operations for Azure Local
@@ -74,27 +75,19 @@ $managedIds|foreach-object {
 Write-Verbose "Wait 30 min before running cloud deployment from portal"
 ```
 
-### Azure Local VMs (Arc VMs)
+### Azure Local VMs
 
 #### Azure Resource Graph add or edit tags error
 
-When adding or editing a tag on an Arc VM, you might see an Azure Resource Graph error.
+After you start, restart, or stop the Azure Local VM, the power action buttons are disabled and the status isn't reflected properly.
 
 **Mitigation**: Use Azure Command-Line Interface (CLI) to add or edit tags for the resource.
 
 #### Start, restart, or delete buttons disabled after stopping VM
 
-After you stop an Arc VM, the start, restart, and delete buttons in the Azure portal are disabled.
+After you stop an Azure Local VM, the start, restart, and delete buttons in the Azure portal are disabled.
 
 **Mitigation**: Refresh your browser and the page.
-
-#### Unable to view the network interface or read properties on an Arc VM
-
-Viewing the network interface or properties on an Arc VM in the portal is unsupported in this preview release.
-
-#### Portal showing unsaved change notification after updating VM size
-
-If the notification in the top right shows that the save operation is complete, you can ignore the unsaved message and continue navigating away. The VM size is updated.
 
 #### Delete a VM resource
 
@@ -144,7 +137,7 @@ After updating to a newer version of Kubernetes, you might encounter a stuck not
 
 #### Activity log shows authentication issue
 
-Ignore the portal warning for this release.
+Ignore the portal warning in this release.
 
 #### Microsoft Entra authentication with Kubernetes RBAC fails
 

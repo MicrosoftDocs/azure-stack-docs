@@ -4,7 +4,7 @@ description: Manage Azure Kubernetes Service (AKS) Arc for Azure Local with disc
 ms.topic: how-to
 author: ronmiab
 ms.author: robess
-ms.date: 06/20/2025
+ms.date: 08/06/2025
 ai-usage: ai-assisted
 ---
 

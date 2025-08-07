@@ -4,7 +4,7 @@ description: Learn about the security considerations and compliance regulations 
 ms.topic: concept-article
 author: ronmiab
 ms.author: robess
-ms.date: 06/20/2025
+ms.date: 08/06/2025
 ai-usage: ai-assisted
 ---
 
@@ -100,7 +100,7 @@ To back up Host Guardian Service certificates from your cluster, run these comma
     ```powershell
     Export-ApplianceHGSCertificates -Path C:\AzureLocalDisconnectedOperations\HGSBackup    
     ```
-    
+
 ## Configure syslog forwarding
 
 You can use the syslog protocol for Azure Local with disconnected operations VM appliance to forward security events to a customer-managed security information and event management (SIEM) system.
