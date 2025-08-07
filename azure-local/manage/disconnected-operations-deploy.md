@@ -239,6 +239,8 @@ To prepare the first machine for the disconnected operations appliance, follow t
 
     ```powershell  
     Import-Module "$applianceConfigBasePath\OperationsModule\Azure.Local.DisconnectedOperations.psd1" -Force
+    Import-Module "$applianceConfigBasePath\OperationsModule\ExternalIdentityConfigurationModule.psm1" -Force
+
     $mgmntCertFolderPath = "$certspath\ManagementEndpointCerts"  
     $ingressCertFolderPath = "$certspath\IngressEndpointsCerts"  
     ```
@@ -289,8 +291,9 @@ Populate the required parameters based on your deployment planning. Modify the e
 1. Populate the identity configuration object.
 
     ```powershell  
-    $oidcCertChain = Get-CertificateChainFromEndpoint -endpoint 'https://adfs.azurestack.local'
-    $ldapsCertChain = Get-CertificateChainFromEndpoint -endpoint 'https://dc01.azurestack.local'
+    $oidcCertChain = Get-CertificateChainFromEndpoint -requestUri 'https://adfs.azurestack.local/adfs'
+    # Omit ldapsCertChain in this preview release
+#    $ldapsCertChain = Get-CertificateChainFromEndpoint -requestUri 'https://dc01.azurestack.local'
     $ldapPassword = 'RETRACTED'|ConvertTo-SecureString -AsPlainText -Force
 
     $identityParams = @{  
@@ -300,7 +303,6 @@ Populate the required parameters based on your deployment planning. Modify the e
         LdapServer = "adfs.azurestack.local"  
         LdapCredential = New-Object PSCredential -ArgumentList @("ldap", $ldapPassword)  
         SyncGroupIdentifier = "7d67fcd5-c2f4-4948-916c-b77ea7c2712f"  
-        LdapsCertChainInfo=$ldapsCertChainInfo  
         OidcCertChainInfo=$oidcCertChainInfo
     }  
     $identityConfiguration = New-ApplianceExternalIdentityConfiguration @identityParams  
@@ -350,7 +352,7 @@ $installAzureLocalParams = @{
     IdentityConfiguration = $identityConfiguration  
     CertificatesConfiguration = $CertificatesConfiguration  
     TimeoutSec = 7200  
-    DisableCheckSum = $false  
+    DisableCheckSum = $true  
     AutoScaleVMToHostHW = $false  
 }  
 
@@ -361,10 +363,12 @@ Install-Appliance @installAzureLocalParams -disconnectMachineDeploy -Verbose
 
 > [!NOTE]
 > Install the appliance on the first machine (seed node) to ensure Azure Local deploys correctly. The setup takes a few hours and must finish successfully before you move on. Once it’s complete, you have a local control plane running in your datacenter.
-
-If the installation fails because of incorrect network, identity, or observability settings, update the configuration object and run the `Install-appliance` command again.
-
-You can also specify the -clean switch to start installation from scratch. This switch resets any existing installation state and starts from the beginning
+>
+> If the installation fails because of incorrect network, identity, or observability settings, update the configuration object and run the `Install-appliance` command again.
+>
+> You can also specify the -clean switch to start installation from scratch. This switch resets any existing installation state and starts from the beginning
+>
+> DisableChecksum = $true will skip validating the signature of the Appliance. Use this when deploying an air-gapped environment in this release. If checksum validation is enabled - the node needs to be able to reach and validate the Microsoft cert signing certificates used for signing this build.  
 
 1. Modify the configuration object.
 
@@ -656,7 +660,9 @@ To use the management endpoint for troubleshooting and reconfiguration, you need
 From a client with network access to the management endpoint, import the **OperationsModule** and set the context (modify the script to match your configuration):
 
 ```powershell  
-Import-Module "C:\azurelocal\OperationsModule\Azure.Local.DisconnectedOperations.psd1" -Force  
+Import-Module "$applianceConfigBasePath\OperationsModule\Azure.Local.DisconnectedOperations.psd1" -Force
+Import-Module "$applianceConfigBasePath\OperationsModule\ExternalIdentityConfigurationModule.psm1" -Force
+
 $password = ConvertTo-SecureString 'RETRACTED' -AsPlainText -Force  
 $context = Set-DisconnectedOperationsClientContext -ManagementEndpointClientCertificatePath "${env:localappdata}\AzureLocalOpModuleDev\certs\ManagementEndpoint\ManagementEndpointClientAuth.pfx" -ManagementEndpointClientCertificatePassword $password -ManagementEndpointIpAddress "169.254.53.25"  
 ```  

@@ -20,6 +20,11 @@ These release notes update continuously, and we add critical issues that need a 
 
 ## Known issues in the preview release
 
+### Air-gapped deployment when local DNS forwards and resolves external domain requests
+There is a known issue if you try to deploy an air-gapped enviroment - in the rare condition you would have a local DNS server that is able to resolve public (Microsoft.com) endpoints. 
+
+Mitigation: Disable DNS forwarding for microsoft.com and azure.com zones. The appliance should not be able to resolve these DNS endpoint and will fail if it receives an IP address. 
+
 ### Azure Local deployment with Azure Keyvault
 
 Role-Based Access Control (RBAC) permissions on a newly created Azure Key Vault can take up to 20 minutes to propagate. If you create the Azure Key Vault in the local portal and try to finish the cloud deployment, you might run into permission issues when validating the cluster before deployment.
