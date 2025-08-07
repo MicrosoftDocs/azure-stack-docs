@@ -15,7 +15,7 @@ This article describes how to migrate virtual machines (VMs) to Azure Local with
 
 ## Prerequisites
 
-Before you begin, you should complete the following tasks:
+This is the latest guidance for prerequisites:
 
 1. Complete the following prerequisites for the Azure Migrate project:
     - For a Hyper-V source environment, complete the [Hyper-V prerequisites](migrate-hyperv-prerequisites.md) and [configure the source and target appliances](migrate-hyperv-replicate.md#step-1-create-and-configure-the-source-appliance).
@@ -92,7 +92,7 @@ Write-Output $DiscoveredServers | Format-List *
 You can initialize the replication infrastructure for your Azure Migrate project using the `Initialize-AzMigrateLocalReplicationInfrastructure` cmdlet. This cmdlet sets up the necessary infrastructure and metadata storage account needed to eventually replicate VMs from the source appliance to the target appliance. Running this cmdlet multiple times will not cause any issues, as it checks if the replication infrastructure is already initialized.
 For more information, see the [`Initialize-AzMigrateLocalReplicationInfrastructure`](/powershell/module/az.migrate/initialize-azmigratelocalreplicationinfrastructure) cmdlet.
 
-You can use a default created storage account or a custom-created storage account that will store the replication metadata. You will need the source and target appliance names from the Azure Portal by going to your Azure Migrate project, then navigating to **Appliances > Registered appliances**.
+You can use a default created storage account or a custom-created storage account that will store the replication metadata. You will need the source and target appliance names from the Azure portal by going to your Azure Migrate project, then navigating to **Appliances > Registered appliances**.
 
 :::image type="content" source="./media/migrate-via-powershell/migrate-appliances.png" alt-text="Screenshot showing Appliances in Azure Migrate project page." lightbox="./media/migrate-via-powershell/migrate-appliances.png":::
 
