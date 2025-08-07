@@ -4,7 +4,7 @@ description: Learn about public key infrastructure (PKI) requirements for discon
 ms.topic: concept-article
 author: ronmiab
 ms.author: robess
-ms.date: 06/20/2025
+ms.date: 08/06/2025
 ai-usage: ai-assisted
 ---
 
@@ -22,7 +22,7 @@ PKI for disconnected operations is essential for securing the endpoints provided
 
 ## PKI requirements
 
-A public certificate authorities (CA) or enterprise certificate authorities must issue certificates. Make sure your certificates are part of the Microsoft Trusted Root Program. For more information, see [List of Participants - Microsoft Trusted Root Program](/security/trusted-root/participants-list).  
+A public certificate authority (CA) or enterprise certificate authority must issue certificates. Make sure your certificates are part of the Microsoft Trusted Root Program. For more information, see [List of Participants - Microsoft Trusted Root Program](/security/trusted-root/participants-list).  
 
 Mandatory certificates are grouped by area with the appropriate subject alternate names (SAN). Before you create the certificates, review these requirements:
 
@@ -39,7 +39,7 @@ Mandatory certificates are grouped by area with the appropriate subject alternat
   - Make sure your disconnected operations infrastructure can reach the CRL endpoint specified in the certificates' CRL distribution point (CDP) extension.
   - Don't use a public or external CA. Deployments fail if certificates come from a public CA, because internet connectivity is required to access the CRL and online certificate status protocol (OCSP) services for HTTPS.  
 
-### Ingress endpoints
+### Ingress endpoint certificate requirements
 
 This table lists the mandatory certificates required for disconnected operations on Azure Local.
 
@@ -52,7 +52,7 @@ This table lists the mandatory certificates required for disconnected operations
 | Azure Blob storage | *.blob.fqdn |
 | Azure Service Bus | *.servicebus.fqdn |
 | Azure Data Policy | data.policy.fqdn |
-| Arc configuration data plane <br/>Azure Arc-enabled Kubernetes | autonomous.dp.kubernetesconfiguration.fqdn |
+| Arc configuration data plane <br/br> Azure Arc-enabled Kubernetes | autonomous.dp.kubernetesconfiguration.fqdn |
 | Arc for Server Agent data service | agentserviceapi.fqdn |
 | Arc for server | his.fqdn |
 | Arc guest notification service | guestnotificationservice.fqdn |
@@ -66,7 +66,6 @@ This table lists the mandatory certificates required for disconnected operations
 | Licensing | dp.aszrp.fqdn <br></br> ibc.fqdn |
 | Public portal     | portal.fqdn <br></br> hosting.fqdn <br></br> catalogapi.fqdn |
 | Secure token service | login.fqdn |
-
 
 ### Management endpoints
 
@@ -205,13 +204,13 @@ $AzLCerts = @(
       $cert | Export-PfxCertificate -FilePath "$extCertFilePath\$filePrefix.pfx" -Password $certPassword -Force
       Write-Verbose "Certificate for $certSubject and private key exported to $extCertFilePath" -Verbose
   }
-  ``` 
+  ```
 
 - Copy the original certificates (24 .pfx files / *.pfx) obtained from your CA to the directory structure represented in IngressEndpointsCerts.
 
 ### Management endpoint
 
-Here's an an example on how to create certificates for securing the management endpoint:
+Here's an example of how to create certificates for securing the management endpoint:
 
 > [!NOTE]
 > Run this script on a domain-joined machine using an account with Domain Administrator access to issue certificates.
@@ -288,7 +287,7 @@ _continue_ = "DNS=$subject"
 
 ```
 
-- Copy the management certificates (*.pfx) to the directory structure represented in ManagementEndpointCerts.
+Copy the management certificates (*.pfx) to the directory structure represented in ManagementEndpointCerts.
 
 ## Export Root CA certificate
 
@@ -300,18 +299,18 @@ certutil -ca.cert C:\AzureLocalDisconnectedOperations\applianceRoot.cer
 
 For more information, see [Active Directory Certificate Services](/troubleshoot/windows-server/certificates-and-public-key-infrastructure-pki/export-root-certification-authority-certificate).
 
-## Obtain certificate information for identity integration 
+## Obtain certificate information for identity integration
 
 To secure your identity integration, we recommend that you pass these two parameters:
 
-- LdapsCertChainInfo 
-- OidcCertChainInfo 
+- LdapsCertChainInfo
+- OidcCertChainInfo
 
 These checks confirm that the certificates and chain for these endpoints haven’t been changed or tampered with.
 
 You have a helper method in the **OperationsModule** that can help you populate these parameters.
 
-Here's an example on how to populate the required parameters:
+Here's an example of how to populate the required parameters:
 
 ```powershell
 Import-Module "$applianceConfigBasePath\OperationsModule\Azure.Local.DisconnectedOperations.psd1" -Force
@@ -328,11 +327,11 @@ Here's an example of the output from Get-CertificateChainFromEndpoint
 # Returns: System.Security.Cryptography.X509Certificates.X509Certificate2[]
 >> Get-CertificateChainFromEndpoint
 >>
-Thumbprint                                Subject                                                                                                
-----------                                -------                                                                                                
-TESTING580E20618EA15357FC1028622518DDC4D  CN=www.website.com, O=Contoso Corporation, L=Redmond, S=WA, C=US                                   
-TESTINGDAA2345B48E507320B695D386080E5B25  CN=www.website.com, O=Contoso Corporation, L=Redmond, S=WA, C=US                                
-TESTING9BFD666761B268073FE06D1CC8D4F82A4  CN=www.website.com, O=Contoso Corporation, L=Redmond, S=WA, C=US       
+Thumbprint                                Subject
+----------                                -------
+TESTING580E20618EA15357FC1028622518DDC4D  CN=www.website.com, O=Contoso Corporation, L=Redmond, S=WA, C=US
+TESTINGDAA2345B48E507320B695D386080E5B25  CN=www.website.com, O=Contoso Corporation, L=Redmond, S=WA, C=US
+TESTING9BFD666761B268073FE06D1CC8D4F82A4  CN=www.website.com, O=Contoso Corporation, L=Redmond, S=WA, C=US
 ```
 
 ## Related content

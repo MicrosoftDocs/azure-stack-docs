@@ -4,7 +4,7 @@ description: Plan and integrate your identity for disconnected operations on Azu
 ms.topic: concept-article
 author: ronmiab
 ms.author: robess
-ms.date: 06/20/2025
+ms.date: 08/06/2025
 ai-usage: ai-assisted
 ---
 
@@ -142,7 +142,7 @@ $idpConfig = @{
 
 Consider these limitations when you plan your identity integration with disconnected operations:
 
-- **Users/Group removal after synchronization**: If you remove users and groups with memberships after the last sync, disconnected operations doesn't clean them up. This can cause errors when you query group memberships.
+- **Users/Group removal after synchronization**: If you remove users and groups with memberships after the last sync, disconnected operations don't clean them up. This can cause errors when you query group memberships.
 - **No force synchronization capability**: Sync runs every 6 hours.  
 - **No management groups or aggregate root level**: Not available for multiple subscriptions.  
 - **Supported validations**: Only Active Directory/AD FS are validated for support.
@@ -348,8 +348,7 @@ $GroupEntry.CommitChanges()
 ```
 
 > [!NOTE]
-> If the GSMA account for your ADFS farm can't read user properties the sign-in fails. This occurs even if the username and password are correct on the ADFS sign-in page.
-
+> If the GSMA account for your ADFS farm can't read user properties, the sign in fails even if the credentials entered on the ADFS sign in page are correct.
 
 ::: moniker-end
 
