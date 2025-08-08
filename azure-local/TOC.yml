@@ -13,12 +13,10 @@ items:
     items:
     - name: Release information
       href: release-information-23h2.md
-    - name: Known issues 
+    - name: Known issues
       href: known-issues.md
     - name: Security updates
       href: security-update/security-update.md
-  - name: Disconnected operations
-    href: manage/disconnected-operations-overview.md
   - name: OEM License
     items: 
     - name: OEM license information
@@ -568,14 +566,61 @@ items:
         href: migrate/migrate-vmware-replicate.md
       - name: Migrate, verify
         href: migrate/migrate-vmware-migrate.md
+    - name: Migrate via PowerShell
+      href: migrate/migrate-via-powershell.md
     - name: Enable guest management
       href: migrate/migrate-enable-guest-management.md
     - name: Maintain static IP addresses
       href: migrate/migrate-maintain-ip-addresses.md
+    - name: Monitor Azure Local migrations
+      href: migrate/monitor-migration.md
     - name: FAQ
       href: migrate/migrate-faq.yml
     - name: Troubleshoot
       href: migrate/migrate-troubleshoot.md
+
+- name: Disconnected operations
+  items:
+  - name: Overview
+    href: manage/disconnected-operations-overview.md
+  - name: Known issues
+    href: manage/disconnected-operations-known-issues.md
+  - name: Plan
+    items:
+    - name: Network
+      href: manage/disconnected-operations-network.md
+    - name: Identity
+      href: manage/disconnected-operations-identity.md
+    - name: Security
+      href: manage/disconnected-operations-security.md
+    - name: Public key infrastructure
+      href: manage/disconnected-operations-pki.md
+  - name: Deploy
+    items:
+    - name: Set-up
+      href: manage/disconnected-operations-set-up.md
+    - name: Deployment
+      href: manage/disconnected-operations-deploy.md
+  - name: Manage
+    items:
+    - name: Azure CLI
+      href: manage/disconnected-operations-cli.md
+    - name: Azure Local VMs
+      href: manage/disconnected-operations-arc-vm.md
+    - name: Azure Kubernetes Service (AKS)
+      href: manage/disconnected-operations-aks.md
+    - name: Azure Container Registry
+      href: manage/disconnected-operations-azure-container-registry.md
+    - name: Azure Policy
+      href: manage/disconnected-operations-policy.md
+    - name: Azure monitor
+      href: manage/disconnected-operations-monitoring.md
+  - name: Troubleshoot
+    items:
+    - name: On-demand log collection
+      href: manage/disconnected-operations-on-demand-logs.md
+    - name: Fallback log collection
+      href: manage/disconnected-operations-fallback.md
 
 - name: Concepts
   items: 
@@ -585,9 +630,6 @@ items:
     items:
     - name: Network ATC overview
       href: concepts/network-atc-overview.md?pivots=azure-local
-
-
-
 - name: Reference
   items:
   - name: For Azure Local VM management
