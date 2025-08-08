@@ -3,10 +3,8 @@ title: Azure Stack Hub release notes
 description: Release notes for Azure Stack Hub integrated systems, including updates and bug fixes.
 author: sethmanheim
 ms.topic: release-notes
-ms.date: 07/02/2025
+ms.date: 08/05/2025
 ms.author: sethm
-ms.reviewer: rtiberiu
-ms.lastreviewed: 04/22/2024
 
 # Intent: As an Azure Stack Hub operator, I want to know what's new in the latest release so that I can plan my update.
 # Keyword: release notes what's new
@@ -161,7 +159,7 @@ For more information, see our [servicing policy](azure-stack-servicing-policy.md
 
 The 2501 release of Azure Stack Hub must be applied on the 2408 release with the following hotfix installed:
 
-- [Azure Stack Hub hotfix 1.2408.1.46](hotfix-1-2408-1-46.md)
+- [Azure Stack Hub hotfix 1.2408.1.50](hotfix-1-2408-1-50.md)
 
 ### After successfully applying the 2501 update
 
@@ -218,7 +216,7 @@ For more information, see our [servicing policy](azure-stack-servicing-policy.md
 
 The 2408 release of Azure Stack Hub must be applied on the 2406 release with the following hotfix installed:
 
-- [Azure Stack Hub hotfix 1.2406.1.20](hotfix-1-2406-1-20.md)
+- [Azure Stack Hub hotfix 1.2406.1.23](hotfix-1-2406-1-23.md)
 
 ### After successfully applying the 2408 update
 
@@ -226,7 +224,7 @@ When you update to a new major version (for example, 1.2108.x to 1.2206.x), the 
 
 After the installation of 2408, if any hotfixes for 2408 are subsequently released, you should install them:
 
-- [Azure Stack Hub hotfix 1.2408.1.46](hotfix-1-2408-1-46.md)
+- [Azure Stack Hub hotfix 1.2408.1.50](hotfix-1-2408-1-50.md)
 ::: moniker-end
 
 <!------------------------------------------------------------>
