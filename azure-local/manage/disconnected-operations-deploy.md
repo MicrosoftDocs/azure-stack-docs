@@ -292,7 +292,7 @@ Populate the required parameters based on your deployment planning. Modify the e
     ```powershell  
     $oidcCertChain = Get-CertificateChainFromEndpoint -requestUri 'https://adfs.azurestack.local/adfs'
     # Omit ldapsCertChain in this preview release
-#    $ldapsCertChain = Get-CertificateChainFromEndpoint -requestUri 'https://dc01.azurestack.local'
+    # $ldapsCertChain = Get-CertificateChainFromEndpoint -requestUri 'https://dc01.azurestack.local'
     $ldapPassword = 'RETRACTED'|ConvertTo-SecureString -AsPlainText -Force
 
     $identityParams = @{  
