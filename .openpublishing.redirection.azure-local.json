@@ -1937,22 +1937,22 @@
     },
     {
       "source_path": "azure-local/deploy/deployment-azure-arc-gateway-configure-manually.md", 
-      "redirect_url": "/azure-local/deploy/deployment-azure-arc-with-gateway", 
+      "redirect_url": "/azure/azure-local/deploy/deployment-azure-arc-with-gateway", 
       "redirect_document_id": false
     },
     {
       "source_path": "azure-local/deploy/deployment-azure-arc-gateway-configure-via-script.md", 
-      "redirect_url": "/azure-local/deploy/deployment-azure-arc-with-gateway", 
+      "redirect_url": "/azure/azure-local/deploy/deployment-azure-arc-with-gateway", 
       "redirect_document_id": false
     },
     {
       "source_path": "azure-local/deploy/deployment-azure-arc-gateway-use-without-proxy.md", 
-      "redirect_url": "/azure-local/deploy/deployment-azure-arc-with-gateway", 
+      "redirect_url": "/azure/azure-local/deploy/deployment-azure-arc-with-gateway", 
       "redirect_document_id": false
     },
     {
       "source_path": "azure-local/deploy/deployment-arc-register-local-ui.md", 
-      "redirect_url": "/azure-local/deploy/deployment-azure-arc-without-gateway", 
+      "redirect_url": "/azure/azure-local/deploy/deployment-azure-arc-without-gateway", 
       "redirect_document_id": false
     }
   ]

@@ -36,66 +36,66 @@ Make sure the following prerequisites are met before proceeding:
 
 ## Step 1: Review script parameters
 
-1. Set the parameters. The script takes in the following parameters:
+Review the parameters used in the script:
 
-    |Parameters  |Description  |
-    |------------|-------------|
-    |`SubscriptionID`    |The ID of the subscription used to register your machines with Azure Arc.         |
-    |`ResourceGroup`     |The resource group precreated for Arc registration of the machines. A resource group is created if one doesn't exist.         |
-    |`Region`            |The Azure region used for registration. See the [Supported regions](../concepts/system-requirements-23h2.md#azure-requirements) that can be used.          |
-    |`ProxyServer`       |Optional parameter. Proxy Server address when required for outbound connectivity. |
+|Parameters  |Description  |
+|------------|-------------|
+|`SubscriptionID`    |The ID of the subscription used to register your machines with Azure Arc.         |
+|`ResourceGroup`     |The resource group precreated for Arc registration of the machines. A resource group is created if one doesn't exist.         |
+|`Region`            |The Azure region used for registration. See the [Supported regions](../concepts/system-requirements-23h2.md#azure-requirements) that can be used.          |
+|`ProxyServer`       |Optional parameter. Proxy Server address when required for outbound connectivity. |
 
     
 ## Step 2: Set parameters
 
-1. Set the parameters required for the registration script.
+Set the parameters required for the registration script.
 
-    Here's an example of how you should change these parameters for the `Invoke-AzStackHciArcInitialization` initialization script. Once the registration is complete, the Azure Local machines are registered in Azure Arc using the Arc gateway:
+Here's an example of how you should change these parameters for the `Invoke-AzStackHciArcInitialization` initialization script. Once the registration is complete, the Azure Local machines are registered in Azure Arc using the Arc gateway:
 
-    ```powershell
-    #Define the subscription where you want to register your Azure Local machine with Arc.
-    $Subscription = "YourSubscriptionID"
-    
-    #Define the resource group where you want to register your Azure Local machine with Arc.
-    $RG = "YourResourceGroupName"
+```powershell
+#Define the subscription where you want to register your Azure Local machine with Arc.
+$Subscription = "YourSubscriptionID"
 
-    #Define the region to use to register your server as Arc device
-    #Do not use spaces or capital letters when defining region
-    $Region = "eastus"
-    
-    #Define the proxy address for your Azure Local deployment to access the internet via proxy.
-    $ProxyServer = "http://proxyaddress:port"
+#Define the resource group where you want to register your Azure Local machine with Arc.
+$RG = "YourResourceGroupName"
 
-    #Define the bypass list for the proxy. Use comma to separate each item from the list.  
-    # Parameters must be separated with a comma `,`.
-    # Use "localhost" instead of <local> 
-    # Use specific IPs such as 127.0.0.1 without mask 
-    # Use * for subnets allowlisting. 192.168.1.* for /24 exclusions. Use 192.168.*.* for /16 exclusions. 
-    # Append * for domain names exclusions like *.contoso.com 
-    # DO NOT INCLUDE .svc on the list. The registration script takes care of Environment Variables configuration. 
-    # At least the IP address of each Azure Local machine.
-    # At least the IP address of the Azure Local cluster.
-    # At least the IPs you defined for your infrastructure network. Arc resource bridge, Azure Kubernetes Service (AKS), and future infrastructure services using these IPs require outbound connectivity.
-    # NetBIOS name of each machine.
-    # NetBIOS name of the Azure Local cluster.
-    
-    $ProxyBypassList = "localhost,127.0.0.1,*.contoso.com,machine1,machine2,machine3,machine4,machine5,192.168.*.*,AzureLocal-1"
+#Define the region to use to register your server as Arc device
+#Do not use spaces or capital letters when defining region
+$Region = "eastus"
 
-    ```
+#Define the proxy address for your Azure Local deployment to access the internet via proxy.
+$ProxyServer = "http://proxyaddress:port"
 
-    <details>
-    <summary>Expand this section to see an example output.</summary>
+#Define the bypass list for the proxy. Use comma to separate each item from the list.  
+# Parameters must be separated with a comma `,`.
+# Use "localhost" instead of <local> 
+# Use specific IPs such as 127.0.0.1 without mask 
+# Use * for subnets allowlisting. 192.168.1.* for /24 exclusions. Use 192.168.*.* for /16 exclusions. 
+# Append * for domain names exclusions like *.contoso.com 
+# DO NOT INCLUDE .svc on the list. The registration script takes care of Environment Variables configuration. 
+# At least the IP address of each Azure Local machine.
+# At least the IP address of the Azure Local cluster.
+# At least the IPs you defined for your infrastructure network. Arc resource bridge, Azure Kubernetes Service (AKS), and future infrastructure services using these IPs require outbound connectivity.
+# NetBIOS name of each machine.
+# NetBIOS name of the Azure Local cluster.
 
-    Here's a sample output of the parameters:
+$ProxyBypassList = "localhost,127.0.0.1,*.contoso.com,machine1,machine2,machine3,machine4,machine5,192.168.*.*,AzureLocal-1"
 
-    ```output
-    PS C:\Users\SetupUser> $Subscription = "Subscription ID"
-    PS C:\Users\SetupUser> $RG = "myashcirg"
-    PS C:\Users\SetupUser> $Region = "eastus"
-    PS C:\Users\SetupUser> $ProxyServer = "http://192.168.10.10:8080"
-    PS C:\Users\SetupUser> $ProxyBypassList = "localhost,127.0.0.1,*.contoso.com,machine1,machine2,machine3,machine4,machine5,192.168.*.*,AzureLocal-1"
-    ```
-    </details>
+```
+
+<details>
+<summary>Expand this section to see an example output.</summary>
+
+Here's a sample output of the parameters:
+
+```output
+PS C:\Users\SetupUser> $Subscription = "Subscription ID"
+PS C:\Users\SetupUser> $RG = "myashcirg"
+PS C:\Users\SetupUser> $Region = "eastus"
+PS C:\Users\SetupUser> $ProxyServer = "http://192.168.10.10:8080"
+PS C:\Users\SetupUser> $ProxyBypassList = "localhost,127.0.0.1,*.contoso.com,machine1,machine2,machine3,machine4,machine5,192.168.*.*,AzureLocal-1"
+```
+</details>
 
 ## Step 3: Run registration script
 
