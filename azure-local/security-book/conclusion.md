@@ -20,7 +20,7 @@ The information contained in this document represents the current view of Micros
  
 This paper is for informational purposes only. Microsoft makes no warranties, express or implied, in this document.
 
-## Copyrighta
+## Copyrights
  
 Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in, or introduced into a retrieval system, or transmitted in any form or by any means electronic, mechanical, photocopying, recording, or otherwise, or for any purpose, without the express written permission of Microsoft Corporation.  
  
