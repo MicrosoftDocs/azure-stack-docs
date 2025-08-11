@@ -28,7 +28,7 @@ Approximately 80% of security decision makers say that software alone is not eno
 
 :::image type="content" source="./media/introduction/security-diagram.png" alt-text="Diagram illustrating process to add a node." lightbox="./media/introduction/security-diagram.png":::
 
-Azure Local is designed to help defend against modern threats and was built to meet the requirements of a wide variety of security standards (see [Certifications](security-foundation-certifications.md)). The security posture of the Azure Local infrastructure is built on the following pillars:
+Azure Local is designed to help defend against modern threats and was built to meet the requirements of a wide variety of security standards (see [Certifications](security-foundation.md#certifications)). The security posture of the Azure Local infrastructure is built on the following pillars:
 
 - **Security rooted in hardware** – Secured-core certified hardware enables strong security rooted in hardware.
 

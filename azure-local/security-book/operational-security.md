@@ -113,5 +113,5 @@ To regularly update virtual machines running on your Azure Local, you can use Wi
 
 ## Related content
 
-[Workload security](worload-security.md)
+[Workload security](workload-security.md)
 
