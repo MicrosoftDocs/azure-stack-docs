@@ -289,8 +289,7 @@ Populate the required parameters based on your deployment planning. Modify the e
 1. Populate the identity configuration object.
 
     ```powershell  
-    # Omit these in this preview release until cmdlet export of Get-CertificateChainFromEndpoint has been resolved. 
-    # $oidcCertChain = Get-CertificateChainFromEndpoint -requestUri 'https://adfs.azurestack.local/adfs'    
+    $oidcCertChain = Get-CertificateChainFromEndpoint -requestUri 'https://adfs.azurestack.local/adfs'    
     # $ldapsCertChain = Get-CertificateChainFromEndpoint -requestUri 'https://dc01.azurestack.local'
 
     $ldapPassword = 'RETRACTED'|ConvertTo-SecureString -AsPlainText -Force
@@ -301,13 +300,16 @@ Populate the required parameters based on your deployment planning. Modify the e
         RootOperatorUserPrincipalName = "operator@azurestack.local"  
         LdapServer = "adfs.azurestack.local"  
         LdapCredential = New-Object PSCredential -ArgumentList @("ldap", $ldapPassword)  
+        OidcCertChain = $oidcCertChain
         SyncGroupIdentifier = "7d67fcd5-c2f4-4948-916c-b77ea7c2712f"          
     }  
     $identityConfiguration = New-ApplianceExternalIdentityConfiguration @identityParams  
     ```  
 
     > [!NOTE]  
-    > `LdapsCertChainInfo` and `OidcCertChain` can be omitted completely for debugging or demo purposes. For information on how to get LdapsCertChainInfo and OidcCertChainInfo, see [PKI for disconnected operations](disconnected-operations-pki.md). Please note that in this preview release, there is an issue with the Get-CertificateChainFromEndpoint not being exported as intended.
+    > `LdapsCertChainInfo` and `OidcCertChain` can be omitted completely for debugging or demo purposes. For information on how to get LdapsCertChainInfo and OidcCertChainInfo, see [PKI for disconnected operations](disconnected-operations-pki.md). Please note that in this preview release, there is an issue with the Get-CertificateChainFromEndpoint not being exported as intended - please resolve using the mitigation [here](disconnected-operations-known-issues.md).
+
+    
 
     For more information, see [Identity for disconnected operations](disconnected-operations-identity.md).  
 

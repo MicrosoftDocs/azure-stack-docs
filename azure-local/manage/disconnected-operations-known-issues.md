@@ -21,6 +21,21 @@ These release notes update continuously, and we add critical issues that need a 
 
 ## Known issues in the preview release
 
+###  Get-CertificateChainFromEndpoint method not found 
+Known issue when running  Get-CertificateChainFromEndpoint in order to populate the OidcCertChainInfo object. 
+
+Mitigation: You need to make a modification in the OperationsModule. 
+Open the Azure.Local.DisconnectedOperations.psm1 file in notepad (or another text editor). Add the end of the file with the following
+```powershell
+Export-ModuleMember Get-CertificateChainFromEndpoint
+```
+Save the file and exit your editor. Restart your powershell session. Set the execution policy to unrestricted and import the modified OperationsModule module
+```powershell
+Set-ExeuctionPolicy Unrestricted
+Import-Module "$applianceConfigBasePath\OperationsModule\Azure.Local.DisconnectedOperations.psd1" -Force
+```
+
+
 ### Air-gapped deployment when local DNS forwards and resolves external domain requests
 There is a known issue if you try to deploy an air-gapped enviroment - in the rare condition you would have a local DNS server that is able to resolve public (Microsoft.com) endpoints. 
 
