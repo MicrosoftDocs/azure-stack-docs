@@ -1934,6 +1934,26 @@
       "source_path": "azure-local/migrate/migrate-cluster-new-hardware.md", 
       "redirect_url": "/azure-local/migrate/migration-azure-migrate-overview", 
       "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-local/deploy/deployment-azure-arc-gateway-configure-manually.md", 
+      "redirect_url": "/azure/azure-local/deploy/deployment-with-azure-arc-gateway", 
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-local/deploy/deployment-azure-arc-gateway-configure-via-script.md", 
+      "redirect_url": "/azure/azure-local/deploy/deployment-with-azure-arc-gateway", 
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-local/deploy/deployment-azure-arc-gateway-use-without-proxy.md", 
+      "redirect_url": "/azure/azure-local/deploy/deployment-with-azure-arc-gateway", 
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-local/deploy/deployment-arc-register-local-ui.md", 
+      "redirect_url": "/azure/azure-local/deploy/deployment-without-azure-arc-gateway", 
+      "redirect_document_id": false
     }
   ]
 }
