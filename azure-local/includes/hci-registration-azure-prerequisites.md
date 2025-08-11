@@ -39,7 +39,7 @@ ms.lastreviewed: 03/20/2025
    1. In the Azure portal, go to **Microsoft Entra ID** > **Properties**.
 
    1. Scroll down to the Tenant ID section and copy the **Tenant ID** value to use later.
-
+   
 - **Verify permissions**. As you register machines as Arc resources, make sure that you're either the resource group owner or have the following permissions on the resource group where the machines are provisioned:
 
    - `Azure Connected Machine Onboarding`.
