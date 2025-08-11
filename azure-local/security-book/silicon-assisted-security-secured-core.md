@@ -20,7 +20,7 @@ The [MagBo marketplace](https://www.zdnet.com/article/a-cybercrime-store-is-sell
 
 Given these factors, continuing to raise the security bar for critical infrastructure against attackers and making it easy for organizations to meet that higher bar is a clear priority for both customers and Microsoft. Using our learnings from the [Secured-core PC initiative](/windows-hardware/design/device-experiences/oem-highly-secure), Microsoft has teamed up with the ecosystem partners to expand Secured-core to Azure Local.
 
-Following Secured-core PC, we are introducing Secured-core Server which is built on three key pillars: simplified security, advanced protection, and preventative defense. Secured-core Servers come with the assurance that manufacturing partners have built hardware and firmware that satisfy the requirements of the operating system (OS) security features.
+Following Secured-core PC, we're introducing Secured-core Server, which is built on three key pillars: simplified security, advanced protection, and preventative defense. Secured-core Servers come with the assurance that manufacturing partners have built hardware and firmware that satisfy the requirements of the operating system (OS) security features.
 
 ## Simplified security
 
@@ -37,13 +37,13 @@ Trusted Platform Module 2.0 (TPM 2.0) comes standard with Secured-core Servers, 
 
 ### Firmware protection
 
-In the last few years, there has been a significant [uptick in firmware vulnerabilities](https://www.microsoft.com/security/blog/2019/10/21/microsoft-and-partners-design-new-device-security-requirements-to-protect-against-targeted-firmware-attacks/), in large part due to the inherently higher level of privileges with which firmware runs combined with the limited visibility into firmware by traditional antivirus solutions. Using processor support for Dynamic Root of Trust of Measurement (DRTM) technology, Secured-core systems put firmware in a hardware-based sandbox helping to limit the impact of vulnerabilities in millions of lines of highly privileged firmware code. Along with pre-boot DMA protection, Secured-core systems provide protection throughout the boot process.
+In the last few years, there has been a significant [uptick in firmware vulnerabilities](https://www.microsoft.com/security/blog/2019/10/21/microsoft-and-partners-design-new-device-security-requirements-to-protect-against-targeted-firmware-attacks/), in large part due to the inherently higher level of privileges with which firmware runs combined with the limited visibility into firmware by traditional antivirus solutions. Using processor support for Dynamic Root of Trust of Measurement (DRTM) technology, Secured-core systems put firmware in a hardware-based sandbox helping to limit the impact of vulnerabilities in millions of lines of highly privileged firmware code. Along with preboot DMA protection, Secured-core systems provide protection throughout the boot process.
 
 ### Virtualization-based security (VBS)
 
-Secured-core machines support VBS and hypervisor-based code integrity (HVCI). The cryptocurrency mining attack mentioned earlier leveraged the [EternalBlue exploit](https://www.cisecurity.org/wp-content/uploads/2019/01/Security-Primer-EternalBlue.pdf). VBS and HVCI help protect against this entire class of vulnerabilities by isolating privileged parts of the OS, like the kernel, from the rest of the system. This helps to ensure that machines remain devoted to running critical workloads and helps protect related applications and data from attack and exfiltration.
+Secured-core machines support VBS and hypervisor-based code integrity (HVCI). The cryptocurrency mining attack mentioned earlier used the [EternalBlue exploit](https://www.cisecurity.org/wp-content/uploads/2019/01/Security-Primer-EternalBlue.pdf). VBS and HVCI help protect against this entire class of vulnerabilities by isolating privileged parts of the OS, like the kernel, from the rest of the system. This helps to ensure that machines remain devoted to running critical workloads and helps protect related applications and data from attack and exfiltration.
  
-Enabling Secured-core functionality helps proactively defend against and disrupt many of the paths attackers may use to exploit a system. These defenses also enable IT and SecOps teams to better leverage their time across the many areas that need their attention.
+Enabling Secured-core functionality helps proactively defend against and disrupt many of the paths attackers may use to exploit a system. These defenses also enable IT and SecOps teams to better use their time across the many areas that need their attention.
 
 ## Related content
 
