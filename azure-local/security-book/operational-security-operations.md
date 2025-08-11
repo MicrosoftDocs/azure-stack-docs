@@ -33,7 +33,7 @@ Access to Windows Admin Center is controlled by an Azure role-based access contr
 
 ### Two-factor authentication
 
-With Windows Admin Center integrated in Azure portal, you can configure Azure AD multi-factor authentication (MFA) settings to control access to Windows Admin Center. To customize the end-user experience for Azure AD multi-factor authentication, you can configure options for settings like account lockout thresholds or fraud alerts and notifications. Some settings are available directly in the Azure portal for Microsoft Entra, and some are in a separate Azure AD Multi-Factor Authentication portal. 
+With Windows Admin Center integrated in Azure portal, you can configure Azure AD multifactor authentication (MFA) settings to control access to Windows Admin Center. To customize the end-user experience for Azure AD multifactor authentication, you can configure options for settings like account lockout thresholds or fraud alerts and notifications. Some settings are available directly in the Azure portal for Microsoft Entra, and some are in a separate Azure AD Multi-Factor Authentication portal. 
 
 ### Logging
 

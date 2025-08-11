@@ -1,6 +1,6 @@
 ---
 title:  Azure Local security book data protection
-description: Data protecton for the Azure Local security book.
+description: Data protection for the Azure Local security book.
 author: alkohli
 ms.topic: conceptual
 ms.date: 06/16/2025

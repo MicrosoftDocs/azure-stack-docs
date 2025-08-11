@@ -25,7 +25,7 @@ For those who need to adjust or update security settings based on their own busi
 
 [Azure Policy](/azure/governance/policy/overview) helps to enforce organizational standards and to assess compliance at-scale. Through its compliance dashboard, it provides an aggregated view to evaluate the overall state of the environment, with the ability to drill down to the per-resource, per-policy granularity.
 
-During run-time, you can use Azure Policy to audit Azure Local host machine configuration and perform compliance assessments based on Azure security baseline policies. In the future, we'll also have the capability to remediate the security settings via Azure Policy. 
+During run-time, you can use Azure Policy to audit Azure Local host machine configuration and perform compliance assessments based on Azure security baseline policies. 
 
 ## SIEM integration
 
