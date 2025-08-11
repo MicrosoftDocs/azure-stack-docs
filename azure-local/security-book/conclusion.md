@@ -3,12 +3,12 @@ title:  Azure Local security book conclusion
 description: Conclusion for the Azure Local security book.
 author: alkohli
 ms.topic: conceptual
-ms.date: 06/16/2025
+ms.date: 08/11/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
 
-# Conclusion
+# Azure Local security book conclusion
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
@@ -19,6 +19,8 @@ We designed Azure Local so it's secure right out of the box. Further, we provide
 The information contained in this document represents the current view of Microsoft Corporation on the issues discussed as of the date of publication. Because Microsoft must respond to changing market conditions, it shouldn't be interpreted to be a commitment on the part of Microsoft, and Microsoft can't guarantee the accuracy of any information presented after the date of publication.
  
 This paper is for informational purposes only. Microsoft makes no warranties, express or implied, in this document.
+
+## Copyrighta
  
 Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in, or introduced into a retrieval system, or transmitted in any form or by any means electronic, mechanical, photocopying, recording, or otherwise, or for any purpose, without the express written permission of Microsoft Corporation.  
  
@@ -26,4 +28,6 @@ Microsoft may have patents, patent applications, trademarks, copyrights, or othe
  
 Microsoft, Azure, and Windows are either registered trademarks or trademarks of Microsoft Corporation in the United States and/or other countries. The names of actual companies and products mentioned here may be the trademarks of their respective owners.  
 
+## Related content
 
+- [Overview](overview.md)

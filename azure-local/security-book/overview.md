@@ -1,14 +1,14 @@
 ---
 title:  Azure Local security book overview
-description: Overview for the Azure Local security book.
+description: Overview of the Azure Local security book.
 author: alkohli
 ms.topic: conceptual
-ms.date: 06/27/2025
+ms.date: 08/11/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
 
-# Overview
+# Azure Local security book overview
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
@@ -38,4 +38,4 @@ Azure Local is designed to help defend against modern threats and was built to m
 
 ## Related content
 
-- [Trustworthy addition](trustworthy-addition-overview.md)
+- [Trustworthy addition](trustworthy-addition.md)
