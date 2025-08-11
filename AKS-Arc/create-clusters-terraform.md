@@ -4,7 +4,7 @@ description: Learn how to create Kubernetes clusters using Terraform.
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
-ms.date: 02/26/2025
+ms.date: 08/11/2025
 
 ---
 
@@ -97,7 +97,7 @@ az login
    source = "Azure/avm-res-hybridcontainerservice-provisionedclusterinstance/azurerm" 
    version = "~>2.0"
 
-   # Make sure to provide all required parameters, e.g., location= = "eastus"
+   # Make sure to provide all required parameters; for example, location= = "eastus"
    resource_group_id = "<Resource_Group>" 
    location = "<Region>" 
    name = "<Cluster_Name>" 
