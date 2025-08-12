@@ -2,11 +2,11 @@
 title: AKS enabled by Azure Arc network requirements
 description: Learn about AKS network prerequisites.
 ms.topic: overview
-ms.date: 07/17/2025
+ms.date: 08/12/2025
 author: sethmanheim
 ms.author: sethm
 ms.reviewer: srikantsarwa
-ms.lastreviewed: 07/17/2025
+ms.lastreviewed: 08/12/2025
 ---
 
 # AKS enabled by Azure Arc network requirements
@@ -81,10 +81,10 @@ When you deploy Azure Local, you allocate a contiguous block of at least [six st
 
 | Destination Port | Destination | Source | Description | Bi-directional cross VLAN networking notes |
 |------------------|-------------|--------|-------------|----------------|
-| 22 | Logical network used for AKS Arc VMs | IP addresses in management network | Required to collect logs for troubleshooting. | If you use separate VLANs, IP addresses in management network used for Azure Local and Arc Resource Bridge need to access the AKS Arc cluster VMs on this port and vice-versa.|
-| 6443 | Logical network used for AKS Arc VMs | IP addresses in management network | Required to communicate with Kubernetes APIs. | If you use separate VLANs, IP addresses in management network used for Azure Local and Arc Resource Bridge need to access the AKS Arc cluster VMs on this port and vice-versa.|
-| 55000 | IP addresses in management network | Logical network used for AKS Arc VMs | Cloud Agent gRPC server | If you use separate VLANs, the AKS Arc VMs need to access the IP addresses in management network used for cloud agent IP and cluster IP on this port and vice-versa. |
-| 65000 | IP addresses in management network | Logical network used for AKS Arc VMs | Cloud Agent gRPC authentication | If you use separate VLANs, the AKS Arc VMs need to access the IP addresses in management network used for cloud agent IP and cluster IP on this port and vice-versa. |
+| 22 | Logical network used for AKS Arc VMs | IP addresses in management network | Required to collect logs for troubleshooting. | If you use separate VLANs, IP addresses in management network used for Azure Local and Arc Resource Bridge need to access the AKS Arc cluster VMs on this port, and vice-versa.|
+| 6443 | Logical network used for AKS Arc VMs | IP addresses in management network | Required to communicate with Kubernetes APIs. | If you use separate VLANs, IP addresses in management network used for Azure Local and Arc Resource Bridge need to access the AKS Arc cluster VMs on this port, and vice-versa.|
+| 55000 | Cluster IP address | Logical network used for AKS Arc VMs | Cloud Agent gRPC server | If you use separate VLANs, the AKS Arc VMs need to access the IP addresses in management network used for cloud agent IP and cluster IP on this port, and vice-versa. |
+| 65000 | Cluster IP address | Logical network used for AKS Arc VMs | Cloud Agent gRPC authentication | If you use separate VLANs, the AKS Arc VMs need to access the IP addresses in management network used for cloud agent IP and cluster IP on this port, and vice-versa. |
 
 ## Use Azure Arc gateway (preview) with Azure Local
 
