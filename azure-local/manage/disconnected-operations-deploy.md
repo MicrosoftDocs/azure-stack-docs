@@ -296,18 +296,18 @@ Populate the required parameters based on your deployment planning. Modify the e
 
     $identityParams = @{  
         Authority = "https://adfs.azurestack.local/adfs"  
-        ClientId = "7e7655c5-9bc4-45af-8345-afdf6bbe2ec1"  
+        ClientId = "<ClientId>"  
         RootOperatorUserPrincipalName = "operator@azurestack.local"  
         LdapServer = "adfs.azurestack.local"  
         LdapCredential = New-Object PSCredential -ArgumentList @("ldap", $ldapPassword)  
         OidcCertChain = $oidcCertChain
-        SyncGroupIdentifier = "7d67fcd5-c2f4-4948-916c-b77ea7c2712f"          
+        SyncGroupIdentifier = "<SynGroupIdentifier>"          
     }  
     $identityConfiguration = New-ApplianceExternalIdentityConfiguration @identityParams  
     ```  
 
     > [!NOTE]  
-    > `LdapsCertChainInfo` and `OidcCertChain` can be omitted completely for debugging or demo purposes. For information on how to get LdapsCertChainInfo and OidcCertChainInfo, see [PKI for disconnected operations](disconnected-operations-pki.md). Please note that in this preview release, there is an issue with the Get-CertificateChainFromEndpoint not being exported as intended - please resolve using the mitigation [here](disconnected-operations-known-issues.md).
+    > `LdapsCertChainInfo` and `OidcCertChain` can be omitted completely for debugging or demo purposes. For information on how to get LdapsCertChainInfo and OidcCertChainInfo, see [PKI for disconnected operations](disconnected-operations-pki.md). In this preview release, there's an issue with the `Get-CertificateChainFromEndpoint` not being exported as intended. Use the steps in [Known issues for disconnected operations for Azure Local](disconnected-operations-known-issues.md) to mitigate this issue.
 
     
 
@@ -408,7 +408,7 @@ To configure observability, follow these steps:
 
     ```json
     {
-      "appId": "f9c68c7b-0df2-4b3a-9833-3cfb41c6f829",
+      "appId": "<AppId>",
       "displayName": "azlocalobsapp",
       "password": "<RETRACTED>",
       "tenant": "<RETRACTED>"
@@ -422,7 +422,7 @@ To configure observability, follow these steps:
     $observabilityConfiguration = New-ApplianceObservabilityConfiguration -ResourceGroupName "azure-disconnectedoperations" `
       -TenantId "<TenantID>" `
       -Location "<Location>" `
-      -SubscriptionId "<subscriptionId>" `
+      -SubscriptionId "<SubscriptionId>" `
       -ServicePrincipalId "<AppId>" `
       -ServicePrincipalSecret ("<Password>"|ConvertTo-SecureString -AsPlainText -Force)
 
@@ -486,7 +486,7 @@ Use the operator account to create an SPN for Arc initialization of each Azure L
 
     ```json  
     {  
-      "appId": "f9c68c7b-0df2-4b3a-9833-3cfb41c6f829",  
+      "appId": "<AppId>",  
       "displayName": "azlocalclusapp",  
       "password": "<RETRACTED>",  
       "tenant": "<RETRACTED>"  
@@ -521,7 +521,7 @@ To initialize each node, follow these steps. Modify where necessary to match you
     Write-Host "az login to Disconnected operations cloud"    
     az cloud set -n $applianceCloudName --only-show-errors
     Write-Host "Login using service principal"    
-    az login --service-principal --username $appId --password $clientSecret --tenant 98b8267d-e97f-426e-8b3f-7956511fd63f    
+    az login --service-principal --username $appId --password $clientSecret --tenant <TenantId>    
     # If you prefer interactive login..
     # Write-Host "Using device code login - complete the login from your browser"
     # az login --use-device-code
