@@ -62,7 +62,7 @@ The following list describes the general certificate issuance, security, and for
 
 The table in this section describes the Azure Stack Hub public endpoint PKI certificates that are required for both Microsoft Entra ID and AD FS Azure Stack Hub deployments. Certificate requirements are grouped by area, and the namespaces used and the certificates that are required for each namespace. The table also describes the folder in which your solution provider copies the different certificates per public endpoint.
 
-Certificates with the appropriate DNS names for each Azure Stack Hub public infrastructure endpoint are required. Each endpoint's DNS name is expressed in the format: `<prefix>.<region>.<fqdn>`.
+Certificates with the appropriate DNS names for each Azure Stack Hub public infrastructure endpoint are required. Each endpoint's DNS name is expressed in the format `<prefix>.<region>.<fqdn>`.
 
 For your deployment, the `<region>` and `<fqdn>` values must match the region and external domain names that you chose for your Azure Stack Hub system. As an example, if the region is **Redmond** and the external domain name is **contoso.com**, the DNS names have the format `<prefix>.redmond.contoso.com`. The `<prefix>` values are reserved by Microsoft to describe the endpoint secured by the certificate. In addition, the `<prefix>` values of the external infrastructure endpoints depend on the Azure Stack Hub service that uses the specific endpoint.
 
