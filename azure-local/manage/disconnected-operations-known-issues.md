@@ -37,9 +37,9 @@ Import-Module "$applianceConfigBasePath\OperationsModule\Azure.Local.Disconnecte
 
 
 ### Air-gapped deployment when local DNS forwards and resolves external domain requests
-There's a known issue if you try to deploy an air-gapped enviroment - in the rare condition you would have a local DNS server that is able to resolve public (Microsoft.com) endpoints. 
+There's a known issue when deploying an air-gapped environment—this happens if you’ve got a local DNS server that can resolve public endpoints like Microsoft.com.
 
-Mitigation: Disable DNS forwarding for microsoft.com and azure.com zones. The appliance should not be able to resolve these DNS endpoint and will fail if it receives an IP address. 
+Mitigation: Disable DNS forwarding for microsoft.com and azure.com zones. The appliance can't resolve these DNS endpoint and fails if it receives an IP address. 
 
 ### Azure Local deployment with Azure Keyvault
 
