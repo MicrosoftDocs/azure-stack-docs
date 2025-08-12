@@ -12,6 +12,8 @@ ms.reviewer: alkohli
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
+Workload security for Azure Local means using Trusted launch for Azure Local VMs enabled by Azure Arc and Microsoft Defender for Cloud for continuous monitoring of your workloads.
+
 ## Trusted launch for Azure Local VMs enabled by Azure Arc
 
 Trusted launch for Azure Local VMs enabled by Azure Arc supports secure boot, virtual Trusted Platform Module (vTPM), and vTPM state transfer when a VM migrates or fails over within a system. You can choose Trusted launch as a security type when creating Azure Local VMs via Azure portal or Azure CLI. For more information, see [Trusted launch for Azure Local VMs enabled by Azure Arc](../manage/trusted-launch-vm-overview.md).

@@ -12,6 +12,8 @@ ms.reviewer: alkohli
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
+The Azure Local security book discusses in detail the built-in security layers found in Azure Local, from core to cloud.
+
 ## Layered, built-in security from core to cloud
 
 Security threats are evolving in new ways, new vulnerabilities are emerging for organizations all the time, making it imperative to choose an infrastructure that is protected from these threats. Azure Local, a Microsoft Azure Arc-enabled infrastructure, is designed and built to help secure workloads, data, and operations with built-in capabilities inspired by Azure hyper scaled security.

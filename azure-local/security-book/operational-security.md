@@ -15,6 +15,8 @@ ms.reviewer: alkohli
 
 ## Ongoing operations
 
+Operational security in Azure Local means ongoing operations using Windows Admin Center and ongoing compliance using Microsoft Defender for Cloud and other tools.
+
 ### Windows Admin Center in Azure
 
 Traditional server administration requires on-premises identities, roles, and groups to manage the server. With Azure Local, you can manage your system through Windows Admin Center in Azure using your Microsoft Entra identities. This allows you to use Azure capabilities such as [Microsoft Entra](https://www.microsoft.com/security/business/microsoft-entra) for additional security. Windows Admin Center in Azure has many capabilities that make your management platform more secure.

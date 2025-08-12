@@ -12,6 +12,8 @@ ms.reviewer: alkohli
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
+Trustworthy addition for Azure Local means using security by default, application control, credential protection, memory integrity protectionm, data protection, network security, malware protection, and privacy controls.
+
 
 ## Overview
 

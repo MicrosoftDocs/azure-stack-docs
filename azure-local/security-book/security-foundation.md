@@ -12,7 +12,7 @@ ms.reviewer: alkohli
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
-Azure Local is built on a strong security foundation.
+Azure Local is built on a strong security foundation, including the Microsoft Security Development Lifecycle (SDL), certifications, and a secure supply chain.
 
 ## Security assurance
 
