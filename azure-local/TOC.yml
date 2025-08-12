@@ -373,7 +373,7 @@ items:
       href: manage/collect-log-files-arc-enabled-vms.md 
     - name: Implement disaster recovery
       items:
-      - name: Disaster recovery overview
+      - name: Overview
         href: manage/disaster-recovery-overview.md
       - name: Infrastructure resiliency
         href: manage/disaster-recovery-infrastructure-resiliency.md
