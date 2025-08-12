@@ -659,7 +659,6 @@ From a client with network access to the management endpoint, import the **Opera
 
 ```powershell  
 Import-Module "$applianceConfigBasePath\OperationsModule\Azure.Local.DisconnectedOperations.psd1" -Force
-Import-Module "$applianceConfigBasePath\OperationsModule\ExternalIdentityConfigurationModule.psm1" -Force
 
 $password = ConvertTo-SecureString 'RETRACTED' -AsPlainText -Force  
 $context = Set-DisconnectedOperationsClientContext -ManagementEndpointClientCertificatePath "${env:localappdata}\AzureLocalOpModuleDev\certs\ManagementEndpoint\ManagementEndpointClientAuth.pfx" -ManagementEndpointClientCertificatePassword $password -ManagementEndpointIpAddress "169.254.53.25"  
