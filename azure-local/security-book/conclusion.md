@@ -26,8 +26,6 @@ Complying with all applicable copyright laws is the responsibility of the user. 
  
 Microsoft may have patents, patent applications, trademarks, copyrights, or other intellectual property rights covering subject matter in this document. Except as expressly provided in any written license agreement from Microsoft, the furnishing of this document doesn't give you any license to these patents, trademarks, copyrights, or other intellectual property. 
  
-Microsoft, Azure, and Windows are either registered trademarks or trademarks of Microsoft Corporation in the United States and/or other countries. The names of actual companies and products mentioned here may be the trademarks of their respective owners.  
-
 ## Related content
 
 - [Overview](overview.md)
