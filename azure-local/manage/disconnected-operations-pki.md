@@ -314,11 +314,10 @@ Here's an example of how to populate the required parameters:
 
 ```powershell
 Import-Module "$applianceConfigBasePath\OperationsModule\Azure.Local.DisconnectedOperations.psd1" -Force
-Import-Module "$applianceConfigBasePath\OperationsModule\ExternalIdentityConfigurationModule.psm1" -Force
+
 
 $oidcCertChain = Get-CertificateChainFromEndpoint -requestUri 'https://adfs.azurestack.local/adfs'
-# Omit LDAPSCertChain in this preview releases
-# $ldapsCertChain = Get-CertificateChainFromEndpoint -requestUri 'https://dc01.azurestack.local'
+$ldapsCertChain = Get-CertificateChainFromEndpoint -requestUri 'https://dc01.azurestack.local'
 ```
 
 Here's an example of the output from Get-CertificateChainFromEndpoint

@@ -1,0 +1,17 @@
+items:
+- name: Azure Local Security Book
+  href: overview.md
+- name: Trustworthy addition
+  href: trustworthy-addition.md
+- name: Operational security
+  href: operational-security.md
+- name: Workload security
+  href: workload-security.md
+- name: Silicon-assisted security
+  href: silicon-assisted-security.md
+- name: Security foundation
+  href: security-foundation.md
+- name: Conclusion
+  href: conclusion.md
+
+

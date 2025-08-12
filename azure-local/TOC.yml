@@ -101,13 +101,13 @@ items:
     items:
     - name: About security features
       href: concepts/security-features.md
-    - name: Download Azure Local security book
-      href: https://github.com/Azure-Samples/AzureLocal/blob/main/SecurityBook/Azure%20Local%20Security%20Book_04302025.pdf
+    - name: Azure Local security book
+      href: security-book/overview.md
   - name: Assess environment readiness
     href: manage/use-environment-checker.md
   - name: Configure advanced Active Directory settings
     href: plan/configure-custom-settings-active-directory.md 
-
+      
 - name: Deploy
   items:
   - name: Read overview
