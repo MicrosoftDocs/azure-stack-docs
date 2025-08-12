@@ -371,7 +371,7 @@ items:
    
     - name: Collect log files for Azure Local VM
       href: manage/collect-log-files-arc-enabled-vms.md 
-    - name: Disaster recovery
+    - name: Implement disaster recovery
       items:
       - name: Disaster recovery overview
         href: manage/disaster-recovery-overview.md
@@ -379,6 +379,8 @@ items:
         href: manage/disaster-recovery-infrastructure-resiliency.md
       - name: Virtual machine resiliency
         href: manage/disaster-recovery-vm-resiliency.md
+      - name: Workloads
+        href: manage/disaster-recovery-workloads.md
       - name: Use Azure Site Recovery
         href: manage/azure-site-recovery.md
       - name: Use Azure Backup
