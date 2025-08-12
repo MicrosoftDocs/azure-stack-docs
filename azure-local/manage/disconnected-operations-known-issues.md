@@ -22,7 +22,7 @@ These release notes update continuously, and we add critical issues that need a 
 ## Known issues in the preview release
 
 ###  Get-CertificateChainFromEndpoint method not found 
-Known issue when running  Get-CertificateChainFromEndpoint in order to populate the OidcCertChainInfo object. 
+There's a known issue when running `Get-CertificateChainFromEndpoint` in order to populate the OidcCertChainInfo object. 
 
 Mitigation: You need to make a modification in the OperationsModule. 
 Open the Azure.Local.DisconnectedOperations.psm1 file in notepad (or another text editor). Add the end of the file with the following
@@ -37,7 +37,7 @@ Import-Module "$applianceConfigBasePath\OperationsModule\Azure.Local.Disconnecte
 
 
 ### Air-gapped deployment when local DNS forwards and resolves external domain requests
-There is a known issue if you try to deploy an air-gapped enviroment - in the rare condition you would have a local DNS server that is able to resolve public (Microsoft.com) endpoints. 
+There's a known issue if you try to deploy an air-gapped enviroment - in the rare condition you would have a local DNS server that is able to resolve public (Microsoft.com) endpoints. 
 
 Mitigation: Disable DNS forwarding for microsoft.com and azure.com zones. The appliance should not be able to resolve these DNS endpoint and will fail if it receives an IP address. 
 
