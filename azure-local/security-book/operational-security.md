@@ -13,9 +13,12 @@ ms.reviewer: alkohli
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
-## Ongoing operations
 
 Operational security in Azure Local means ongoing operations using Windows Admin Center and ongoing compliance using Microsoft Defender for Cloud and other tools.
+
+## Ongoing operations
+
+Windows Admin Center in Azure plays a central in the daily operations of Azure Local.
 
 ### Windows Admin Center in Azure
 
