@@ -237,8 +237,7 @@ To prepare the first machine for the disconnected operations appliance, follow t
 1. Import the **Operations module**. Run the command as an administrator using PowerShell. Modify the path to match your folder structure.
 
     ```powershell  
-    Import-Module "$applianceConfigBasePath\OperationsModule\Azure.Local.DisconnectedOperations.psd1" -Force
-    Import-Module "$applianceConfigBasePath\OperationsModule\ExternalIdentityConfigurationModule.psm1" -Force
+    Import-Module "$applianceConfigBasePath\OperationsModule\Azure.Local.DisconnectedOperations.psd1" -Force    
 
     $mgmntCertFolderPath = "$certspath\ManagementEndpointCerts"  
     $ingressCertFolderPath = "$certspath\IngressEndpointsCerts"  
@@ -290,25 +289,27 @@ Populate the required parameters based on your deployment planning. Modify the e
 1. Populate the identity configuration object.
 
     ```powershell  
-    $oidcCertChain = Get-CertificateChainFromEndpoint -requestUri 'https://adfs.azurestack.local/adfs'
-    # Omit ldapsCertChain in this preview release
+    $oidcCertChain = Get-CertificateChainFromEndpoint -requestUri 'https://adfs.azurestack.local/adfs'    
     # $ldapsCertChain = Get-CertificateChainFromEndpoint -requestUri 'https://dc01.azurestack.local'
+
     $ldapPassword = 'RETRACTED'|ConvertTo-SecureString -AsPlainText -Force
 
     $identityParams = @{  
         Authority = "https://adfs.azurestack.local/adfs"  
-        ClientId = "7e7655c5-9bc4-45af-8345-afdf6bbe2ec1"  
+        ClientId = "<ClientId>"  
         RootOperatorUserPrincipalName = "operator@azurestack.local"  
         LdapServer = "adfs.azurestack.local"  
         LdapCredential = New-Object PSCredential -ArgumentList @("ldap", $ldapPassword)  
-        SyncGroupIdentifier = "7d67fcd5-c2f4-4948-916c-b77ea7c2712f"  
-        OidcCertChainInfo=$oidcCertChainInfo
+        OidcCertChain = $oidcCertChain
+        SyncGroupIdentifier = "<SynGroupIdentifier>"          
     }  
     $identityConfiguration = New-ApplianceExternalIdentityConfiguration @identityParams  
     ```  
 
     > [!NOTE]  
-    > `LdapsCertChainInfo` and `OidcCertChain` can be omitted completely for debugging or demo purposes. For information on how to get LdapsCertChainInfo and OidcCertChainInfo, see [PKI for disconnected operations](disconnected-operations-pki.md).
+    > `LdapsCertChainInfo` and `OidcCertChain` can be omitted completely for debugging or demo purposes. For information on how to get LdapsCertChainInfo and OidcCertChainInfo, see [PKI for disconnected operations](disconnected-operations-pki.md). In this preview release, there's an issue with the `Get-CertificateChainFromEndpoint` not being exported as intended. Use the steps in [Known issues for disconnected operations for Azure Local](disconnected-operations-known-issues.md) to mitigate this issue.
+
+    
 
     For more information, see [Identity for disconnected operations](disconnected-operations-identity.md).  
 
@@ -407,7 +408,7 @@ To configure observability, follow these steps:
 
     ```json
     {
-      "appId": "f9c68c7b-0df2-4b3a-9833-3cfb41c6f829",
+      "appId": "<AppId>",
       "displayName": "azlocalobsapp",
       "password": "<RETRACTED>",
       "tenant": "<RETRACTED>"
@@ -421,7 +422,7 @@ To configure observability, follow these steps:
     $observabilityConfiguration = New-ApplianceObservabilityConfiguration -ResourceGroupName "azure-disconnectedoperations" `
       -TenantId "<TenantID>" `
       -Location "<Location>" `
-      -SubscriptionId "<subscriptionId>" `
+      -SubscriptionId "<SubscriptionId>" `
       -ServicePrincipalId "<AppId>" `
       -ServicePrincipalSecret ("<Password>"|ConvertTo-SecureString -AsPlainText -Force)
 
@@ -485,7 +486,7 @@ Use the operator account to create an SPN for Arc initialization of each Azure L
 
     ```json  
     {  
-      "appId": "f9c68c7b-0df2-4b3a-9833-3cfb41c6f829",  
+      "appId": "<AppId>",  
       "displayName": "azlocalclusapp",  
       "password": "<RETRACTED>",  
       "tenant": "<RETRACTED>"  
@@ -520,7 +521,7 @@ To initialize each node, follow these steps. Modify where necessary to match you
     Write-Host "az login to Disconnected operations cloud"    
     az cloud set -n $applianceCloudName --only-show-errors
     Write-Host "Login using service principal"    
-    az login --service-principal --username $appId --password $clientSecret --tenant 98b8267d-e97f-426e-8b3f-7956511fd63f    
+    az login --service-principal --username $appId --password $clientSecret --tenant <TenantId>    
     # If you prefer interactive login..
     # Write-Host "Using device code login - complete the login from your browser"
     # az login --use-device-code
@@ -658,7 +659,6 @@ From a client with network access to the management endpoint, import the **Opera
 
 ```powershell  
 Import-Module "$applianceConfigBasePath\OperationsModule\Azure.Local.DisconnectedOperations.psd1" -Force
-Import-Module "$applianceConfigBasePath\OperationsModule\ExternalIdentityConfigurationModule.psm1" -Force
 
 $password = ConvertTo-SecureString 'RETRACTED' -AsPlainText -Force  
 $context = Set-DisconnectedOperationsClientContext -ManagementEndpointClientCertificatePath "${env:localappdata}\AzureLocalOpModuleDev\certs\ManagementEndpoint\ManagementEndpointClientAuth.pfx" -ManagementEndpointClientCertificatePassword $password -ManagementEndpointIpAddress "169.254.53.25"  
