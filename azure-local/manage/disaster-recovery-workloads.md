@@ -44,14 +44,14 @@ Key SQL Server disaster recovery features and best-practice recommendations for 
     - For more information, see [Database Mirroring](/sql/database-engine/database-mirroring/database-mirroring-sql-server?view=sql-server-ver17).
 
 - **Backup and Restore**:
-    - Regular database backups including full, differential, and transaction log backups are the foundation of any disaster recovery strategy. SQL Server supports backing up to a disk or to a URL such as Azure Blob Storage. Customers can use [Microsoft Azure Backup Server](https://docs.azure.cn/en-us/backup/backup-azure-sql-mabs) (MABS) or non-Microsoft partner tools to back up their whole VMs or applications to local disks and to cloud storage. SQL Server also offers [Managed Backup to Azure](/sql/relational-databases/backup-restore/sql-server-managed-backup-to-microsoft-azure?view=sql-server-ver16), which can automatically schedule backups to cloud storage without MABS or any non-Microsoft backup solution.
+    - Regular database backups including full, differential, and transaction log backups are the foundation of any disaster recovery strategy. SQL Server supports backing up to a disk or to a URL such as Azure Blob Storage. Customers can use [Microsoft Azure Backup Server](/azure/backup/backup-azure-sql-mabs) (MABS) or non-Microsoft partner tools to back up their whole VMs or applications to local disks and to cloud storage. SQL Server also offers [Managed Backup to Azure](/sql/relational-databases/backup-restore/sql-server-managed-backup-to-microsoft-azure?view=sql-server-ver16), which can automatically schedule backups to cloud storage without MABS or any non-Microsoft backup solution.
     - Best practice: Use whichever tool makes sense for your environment, take frequent backups to meet your RPO goals, and routinely test restoration. 
     - For more information, see [Back Up and Restore of SQL Server Databases](/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases?view=sql-server-ver17)
 
 - **Replication**: 
     - SQL Server replication (Transactional, Merge, or Snapshot) allows copying and distributing data from one database to others in near real-time. While typically used for distributing read-only copies or synchronizing data, replication can also serve as part of a DR strategy. On Azure Local, all forms of SQL Server replication are supported.
     - Caveat: Replication doesn't automatically fail over entire databases and might require manual reconfiguration in a disaster. 
-    - For more information, see [SQL Server Replication](/sql/relational-databases/replication/sql-server-replication?view=sql-server-ver17).  
+    - For more information, see [SQL Server Replication](/sql/relational-databases/replication/sql-server-replication).  
 
 
 All the above capabilities can be mixed to achieve a desired outcome. For example, use an Always on AG for zero-data-loss high availability within your primary site, and simultaneously use asynchronous replication to a secondary Azure Local instance off-site for disaster recovery. The choice should be guided by your application’s RPO/RTO requirements and whether the solution provides automatic failover or requires a manual process.
@@ -64,19 +64,19 @@ Key Azure Arc-enabled SQL Server features for disaster recovery include:
 
 - **Always On Availability Group Management**: 
     - View and manage Always-On AGs on Arc-enabled SQL Servers in the Azure portal. This includes seeing the list of availability groups, their replicas and synchronization state, and performing manual failover if needed. 
-    - For more information, see http://learn.microsoft.com/en-us/sql/sql-server/azure-arc/manage-availability-group?view=sql-server-ver17  
+    - For more information, see http://learn.microsoft.com/sql/sql-server/azure-arc/manage-availability-group  
 
 - **Failover Cluster Instance Visibility**: 
     - Azure Arc surfaces SQL Server FCIs in the portal, allowing you to identify and monitor FCI deployments across your hybrid environment. 
-    - For more information, see https://learn.microsoft.com/en-us/sql/sql-server/azure-arc/support-for-fci?view=sql-server-ver17  
+    - For more information, see https://learn.microsoft.com/sql/sql-server/azure-arc/support-for-fci 
 
 - **Automated Backup and Restore**:
     - Configure automated backups via Azure Policy or the portal. The Arc SQL Server extension can schedule and execute backups according to a defined policy. You can restore them from the portal as well. 
-    - For more information, see https://learn.microsoft.com/en-us/sql/sql-server/azure-arc/backup-local?view=sql-server-ver17&tabs=azure and https://learn.microsoft.com/en-us/sql/sql-server/azure-arc/point-in-time-restore?view=sql-server-ver17&tabs=azure  
+    - For more information, see https://learn.microsoft.com/sql/sql-server/azure-arc/backup-local?view=sql-server-ver17&tabs=azure and https://learn.microsoft.com/sql/sql-server/azure-arc/point-in-time-restore 
 
 - **Backup to URL with Managed Identity**:
     - Arc allows your on-premises SQL Server to use an Azure Managed Identity for authentication when backing up to Azure Blob Storage. This eliminates the need for SAS tokens or account keys. 
-    - For more information, see https://learn.microsoft.com/en-us/sql/sql-server/azure-arc/backup-to-url?view=sql-server-ver17  
+    - For more information, see https://learn.microsoft.com/sql/sql-server/azure-arc/backup-to-url
  
 ## Azure Virtual Desktop
 
