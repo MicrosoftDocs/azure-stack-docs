@@ -48,13 +48,13 @@ The following table shows which GPU model is supported by which GPU assignment t
 | -- |  -- | -- | -- | -- |
 | | **VMs**<br>(Enabled by Azure Arc) | **VMs**<br> (Unmanaged) | **AKS** | **VMs only** * |
 | NVIDIA T4 | &check; Yes | &check; Yes | &check; Yes | &cross; No |
-| NVIDIA A2 |Yes |Yes |Yes |Yes |
-| NVIDIA A10 |No |Yes |No |Yes |
-| NVIDIA A16 |Yes |Yes |Yes |Yes |
-| NVIDIA A40 |No |Yes |No |Yes |
-| NVIDIA L4 |No |Yes |No |Yes |
-| NVIDIA L40 |No |Yes |No |Yes |
-| NVIDIA L40S |No |Yes |No |Yes |
+| NVIDIA A2 |&check; Yes |&check; Yes |&check; Yes |&check; Yes |
+| NVIDIA A10 |&cross; No |&check; Yes |&cross; No |&check; Yes |
+| NVIDIA A16 |&check; Yes |&check; Yes |&check; Yes |&check; Yes |
+| NVIDIA A40 |&cross; No |&check; Yes |&cross; No |&check; Yes |
+| NVIDIA L4 |&cross; No |&check; Yes |&cross; No |&check; Yes |
+| NVIDIA L40 |&cross; No |&check; Yes |&cross; No |&check; Yes |
+| NVIDIA L40S |&cross; No |&check; Yes |&cross; No |&check; Yes |
 
 *AKS Arc doesn't currently support GPU partitions.
 
