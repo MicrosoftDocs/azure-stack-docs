@@ -3676,7 +3676,7 @@ This update includes the following improvements for Azure Stack.
 - Update to this version no longer resets the default owner of the default provider subscription to the built-in **CloudAdmin** user when deployed with AD FS.
 
 <!-- 2360715 |  ASDK, IS -->  
-- When you set up datacenter integration, you no longer access the AD FS metadata file from an Azure file share. For more information, see [Setting up AD FS integration by providing federation metadata file](../azure-stack-integrate-identity.md#setting-up-ad-fs-integration-by-providing-federation-metadata-file). 
+- When you set up datacenter integration, you no longer access the AD FS metadata file from an Azure file share. For more information, see [Setting up AD FS integration by providing federation metadata file](../azure-stack-integrate-identity.md#set-up-ad-fs-integration-by-providing-federation-metadata-file). 
 
 <!-- 2388980 | ASDK, IS --> 
 - We fixed an issue that prevented users from assigned an existing Public IP Address that had been previously assigned to a Network Interface or Load Balancer to a new Network Interface or Load Balancer.  
