@@ -270,18 +270,8 @@ items:
   items:
   - name: About Azure Local upgrades
     href: upgrade/about-upgrades-23h2.md
-  - name: 1. Select upgrade path
-    items: 
-    - name: Upgrade to 26100.xxxx
-      href: upgrade/upgrade-to-24h2-powershell.md
-    - name: Upgrade to 25398.xxxx
-      items: 
-      - name: Via PowerShell (recommended)
-        href: upgrade/upgrade-22h2-to-23h2-powershell.md
-      - name: Via Windows Admin Center
-        href: upgrade/upgrade-22h2-to-23h2-windows-admin-center.md
-      - name: Via other methods
-        href: upgrade/upgrade-22h2-to-23h2-other-methods.md
+  - name: 1. Upgrade OS via PowerShell
+    href: upgrade/upgrade-22h2-to-23h2-powershell.md
   - name: 2. Perform post-OS upgrade tasks
     href: upgrade/post-upgrade-steps.md
   - name: 3. Configure Network ATC
