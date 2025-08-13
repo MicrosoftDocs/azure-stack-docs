@@ -33,7 +33,7 @@ This article describes how to upgrade the Azure Stack HCI operating system (OS) 
 With the 2505 release, a direct upgrade path from version 20349.xxxx (22H2) to version 26100.xxxx (24H2) is available. Skipping the upgrade to the version 26100.xxxx is one less upgrade hop and helps reduce reboots and maintenance planning prior to the solution upgrade.
 
 - Make sure to consult with your hardware vendor to determine if version 26100.xxxx OS is supported before performing the upgrade.
-- After the OS upgrade, you can wait for the solution upgrade and the drivers to become available.
+- After the OS upgrade, you can wait for the solution upgrade to become available.
 - There is an exception to the preceding recommendation if you are using stretch clusters. Stretch clusters should wait to directly move to version 26100.xxxx (24H2). <!--2508 - This version contains critical bug fixes.-->
 
 For more information about the various upgrade paths, see the blog post on [Upgrade Azure Local to new OS version](https://techcommunity.microsoft.com/blog/azurearcblog/upgrade-azure-local-operating-system-to-new-version/4423827).
