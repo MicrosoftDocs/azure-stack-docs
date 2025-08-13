@@ -3,7 +3,7 @@ title: Prepare Azure Stack Hub PKI certificates for deployment or rotation
 description: Learn how to prepare PKI certificates for Azure Stack Hub deployment or for rotating secrets.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 01/30/2025
+ms.date: 08/13/2025
 ms.author: sethm
 ms.lastreviewed: 10/19/2020
 
@@ -29,7 +29,7 @@ In this article, you learn how to import, package, and validate external certifi
 
 Your system should meet the following prerequisites before packaging PKI certificates for an Azure Stack Hub deployment:
 
-- Certificates returned from Certificate Authority are stored in a single directory, in .cer format (other configurable formats such as .cert, .sst, or .pfx).
+- Certificates returned from the Certificate Authority are stored in a single directory, in .cer format (other configurable formats such as .cert, .sst, or .pfx).
 - Windows 10, or Windows Server 2016 or later.
 - Use the same system that generated the Certificate Signing Request (unless you're targeting a certificate prepackaged into PFXs).
 - Use elevated PowerShell sessions.
