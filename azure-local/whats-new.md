@@ -5,7 +5,7 @@ ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 07/02/2025
+ms.date: 07/24/2025
 ---
 
 # What's new in Azure Local?
@@ -17,7 +17,39 @@ ms.date: 07/02/2025
 This article lists the various features and improvements that are available in Azure Local. The latest version of Azure Local solution focuses on cloud-based deployment and updates, cloud-based monitoring, new and simplified experience for Azure Local virtual machine (VM) management, security, and more.
 
 
+::: moniker range="=azloc-2507"
+
+## Features and improvements in 2507
+
+There are two 2507 releases for July. Here are the details of each release:
+
+|Solution version  | OS version |
+|---------|---------|
+|12.2507.1001.10 |  26100.4652 |
+|11.2507.1001.9  | 25398.1732  |
+
+For more information, see [Release information summary](./release-information-23h2.md).
+
+This release has the following features and improvements:
+
+- **OS changes**:
+
+    - In the 2504 release, a new operating system was introduced for Azure Local deployments. For 2507, all the new deployments of Azure Local run the new OS version **26100.4652**. You can download the 2507 OS image from the Azure portal.
+    
+        - You also need to get the driver compatible with OS version **26100.4652** or Windows Server 2025. If a compatible driver isn't available, you can use the 2503 image.
+
+        - Existing deployments of Azure Local continue to use OS version **25398.1732**. For more information, see [Release information summary](./release-information-23h2.md).
+
+    - If you purchased Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) through your preferred Microsoft hardware partner, the OS should be preinstalled. Work with your Original Equipment Manufacturer (OEM) to get the OS image compatible with **12.2507** and driver compatible with OS version **26100.4652** or Windows Server 2025.
+    
+- **.NET updates**: This build uses .NET version **8.0.18** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
+
+ 
+::: moniker-end
+
 ::: moniker range="=azloc-2506"
+
+## Features and improvements in 2506
 
 There are two 2506 releases for June. Here are the details of each release:
 
@@ -27,8 +59,6 @@ There are two 2506 releases for June. Here are the details of each release:
 |11.2506.1001.28  | 25398.1665  |
 
 For more information, see [Release information summary](./release-information-23h2.md).
-
-## Features and improvements in 2506
 
 This release has the following features and improvements:
 
@@ -48,7 +78,7 @@ This release has the following features and improvements:
 
 - **Deployment changes**: To ensure consistent validation before you deploy Azure Local, deployment validators for Microsoft On-premises Cloud and Azure resource bridge are now a part of environment checker.
 
-- **Overprovisioning alert**: A warning is shown prior to starting an update if an Azure Local instance is overprovisioned. This alert indicates there is insufficient compute capacity (memory) to live migrate workloads during an update. You must acknowledge this alert before proceeding with an update, as VM workloads will be paused due to the lack of available compute or memory capacity.
+- **Overprovisioning alert**: A warning is shown prior to starting an update if an Azure Local instance is overprovisioned. This alert indicates there is insufficient compute capacity (memory) to live migrate workloads during an update. You must acknowledge this alert before proceeding with an update, as VM workloads are paused due to the lack of available compute or memory capacity.
 
 - **Security improvements**:
     - **New security baseline**: The 2506 release introduces a security baseline with 407 evaluated rules, a 25% increase from the previous 324. Key improvements include:
@@ -210,7 +240,7 @@ This release has the following features and improvements:
 
 ::: moniker-end
 
-::: moniker range="=azloc-24113"
+::: moniker range="=azloc-previous"
 
 ## Features and improvements in 2411.3
 
@@ -224,7 +254,7 @@ For more information on improvements in this release, see the [Fixed issues in 2
 
 ::: moniker-end
 
-::: moniker range="=azloc-24112"
+::: moniker range="=azloc-previous"
 
 ## Features and improvements in 2411.2
 
@@ -236,11 +266,7 @@ This is a baseline release with the following features and improvements:
 
 - **4-node switchless support documentation** - Documentation for 4-node switchless is now available. For more information, see [4-node switchless support](./plan/four-node-switchless-two-switches-two-links.md).
 
-For more information on improvements in this release, see the [Fixed issues in 2411.2](./known-issues.md?view=azloc-24112&preserve-view=true#fixed-issues).
-
-::: moniker-end
-
-::: moniker range="=azloc-previous"
+For more information on improvements in this release, see the [Fixed issues in 2411.2](./known-issues.md?view=azloc-previous&preserve-view=true#fixed-issues).
 
 ## Features and improvements in 2411.1
 
@@ -252,7 +278,7 @@ This release has the following features and improvements:
 
 - **4-node switchless support** - Starting this release, 4-node switchless is supported for Azure Local.
 
-For more information on improvements in this release, see the [Fixed issues in 2411.1](./known-issues.md?view=azloc-24111&preserve-view=true#fixed-issues-1).
+For more information on improvements in this release, see the [Fixed issues in 2411.1](./known-issues.md?view=azloc-previous&preserve-view=true#fixed-issues-1).
 
 ## Features and improvements in 2411
 
@@ -317,7 +343,7 @@ This release has the following features and improvements:
 This release has the following features and improvements:
 
 - **Environment checker improvements**: Starting in this release, a new validator was added in the environment checker that checks all storage adapters in each of the nodes.
-- **Install module version numbers**: Starting in this release, the install module version numbers for *Az.Accounts*, *Az. Resources*, and *Az.ConnectedMachine* were changed. For more information, see [Register machines with Azure Arc](./deploy/deployment-arc-register-server-permissions.md#register-machines-with-azure-arc).
+- **Install module version numbers**: Starting in this release, the install module version numbers for *Az.Accounts*, *Az. Resources*, and *Az.ConnectedMachine* were changed. For more information, see [Register machines with Azure Arc](./deploy/deployment-arc-register-server-permissions.md).
 - **Azure Local VM Management**: Starting in this release, you can attach or detach GPUs to an Azure Local VM via CLI for GPU-P (preview) and DDA (preview). For more information, see:
   - [Prepare GPUs for Azure Local (preview)](./manage/gpu-preparation.md)
   - [Manage GPUs using partitioning for Azure Local (preview)](./manage/gpu-manage-via-partitioning.md)

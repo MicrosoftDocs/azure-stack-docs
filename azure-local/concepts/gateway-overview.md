@@ -5,7 +5,7 @@ author: AnirbanPaul
 ms.author: anpaul
 ms.topic: overview
 ms.service: azure-local
-ms.date: 10/22/2024
+ms.date: 07/16/2025
 ms.custom: kr2b-contr-experiment
 ---
 # What is Remote Access Service (RAS) Gateway for Software Defined Networking?
@@ -71,6 +71,9 @@ If you plan to deploy L3 Gateway connections with BGP routing, make sure to conf
 
 - update-source: This specifies the source address for BGP updates, that is L3 VLAN. For example, VLAN 250.
 - ebgp multihop: This specifies more hops are required since the BGP neighbor is more than one hop away.
+
+> [!NOTE]
+> When using BGP with an L3 peer IP in a different subnet from the BGP router, you must configure a static /32 route in the L3 connection. For example, if the L3 peer is 15.0.0.1 and the BGP peer is 25.0.0.1, add a route with destination 25.0.0.1/32 and next hop 15.0.0.5 (L3 IP).
 
 ### Dynamic routing with BGP
 

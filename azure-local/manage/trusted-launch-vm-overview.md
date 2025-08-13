@@ -5,7 +5,7 @@ ms.topic: concept-article
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 03/20/2025
+ms.date: 07/18/2025
 ---
 
 # Introduction to Trusted launch for Azure Local VMs enabled by Azure Arc
@@ -51,14 +51,27 @@ All Windows 11 images (excluding 24H2 Windows 11 SKUs) and Windows Server 2022 i
 
 ## Backup and disaster recovery considerations
 
-When working with Trusted launch for Azure Local VMs, make sure to understand the following key considerations and limitations related to backup and recovery:
+When working with Trusted launch Azure Local VMs, make sure to understand the following key considerations and limitations related to VM backup and recovery. 
 
-- **Differences between Trusted launch for Azure Local VMs and standard Azure Local VMs**: Unlike standard Azure Local VMs, Trusted launch for Azure Local VMs uses a VM guest state protection key to protect the VM guest state, including the virtual TPM (vTPM) state, while at rest. The VM protection key is stored in a local key vault in the Azure Local system where the VM resides. Trusted launch for Azure Local VMs stores the VM guest state in two files: VM guest state and VM runtime state. To back up and restore a Trusted launch VM, a backup solution must back up and restore all the VM files, including guest state and the runtime state files, and additionally backup and restore the VM protection key.
+### VM backup
 
-- **Backup and disaster recovery tooling support**: Currently, Trusted launch for Azure Local VMs doesn't support any third-party or Microsoft-owned back up and disaster recovery tools, including but not limited to, Azure Backup, Azure Site Recovery, Veeam, and Commvault. If there arises a need to move a Trusted launch for Azure Local TVM to an alternate cluster, see the manual process [Manual backup and recovery of Trusted launch for Azure Local VMs](./trusted-launch-vm-import-key.md) to manage all the necessary files and VM protection key to ensure that the VM can be successfully restored.  
+- Backup all VM files. You can use any backup solution or tool to backup all VM files as long as they follow standard [Hyper-V Backup Approaches](/virtualization/hyper-v-on-windows/reference/hypervbackupapproaches).  
 
-> [!NOTE]
-> Trusted launch for Azure Local VMs restored on an alternate Azure Local system can't be managed from the Azure control plane.
+- Backup VM guest state protection key. Unlike standard Azure Local VMs, Trusted launch Azure Local VMs use a VM guest state protection key to protect the VM guest state, including the virtual TPM (vTPM) state, while at rest. The VM guest state protection key is stored in a local key vault in the Azure Local instance where the VM resides. You must manually backup the VM guest state protection key as soon as you create a Trusted launch VM as described in [Manual backup and recovery of VM guest state protection key](trusted-launch-vm-import-key.md). Without the guest state protection key, you cannot start the VM.
+
+### VM recovery
+
+- Restore all VM files. You can use any backup solution or tool to restore all VM files as long as the backup solution or tool follows standard [Hyper-V Backup Approaches](/virtualization/hyper-v-on-windows/reference/hypervbackupapproaches).
+
+- Restore VM guest state protection key. You must restore the VM guest state protection key to the local key vault of the Azure Local instance as described in [Manual backup and recovery of VM guest state protection key](trusted-launch-vm-import-key.md).
+
+**Restoring to same Azure Local instance**
+
+- In some situations, the VM may be restored to the same Azure Local instance, the same as the Azure Local instance where the VM resided before failure. When a Trusted launch VM is successfully restored to the same Azure Local instance, the VM can be managed via Azure Local control plane as it was before.
+
+**Restoring to different Azure Local instance**
+
+- In some situations, the VM may be restored to a different Azure Local instance, different from the Azure Local instance where the VM resided before failure. When a Trusted launch VM is successfully restored to a different Azure Local instance, the VM can no longer be managed via the Azure Arc control plane, but it can be managed using local VM management tools.
 
 ## Next steps
 

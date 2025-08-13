@@ -92,6 +92,14 @@ groups:
     title: To 25398.xxxx 
   - id: os-24h2
     title: To 26100.xxxx 
+- id: register-arc-options
+  title: Registration options
+  prompt: "Choose a registration option:"
+  pivots:
+  - id: register-proxy
+    title: With proxy
+  - id: register-without-proxy
+    title: Without proxy
 # BELOW: entries inherited from github.com/microsoftdocs/azure-docs-pr/articles/zone-pivot-groups.yml for reuse.
 # For consistency across Docs. This includes: client OSes, languages, etc.
 

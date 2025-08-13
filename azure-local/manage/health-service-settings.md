@@ -4,7 +4,7 @@ title: Modify Health Service settings
 ms.author: alkohli
 ms.topic: how-to
 author: alkohli
-ms.date: 01/16/2025
+ms.date: 07/28/2025
 ---
 
 # Modify Health Service settings
@@ -14,6 +14,8 @@ ms.date: 01/16/2025
 The Health Service, first released in Windows Server 2016, improves the day-to-day monitoring and operational experience for clusters running Storage Spaces Direct.
 
 Many of the parameters which govern the behavior of the Health Service are exposed as settings. You can modify these to tune the aggressiveness of faults or actions, turn certain behaviors on/off, and more.
+
+For a detailed overview of health faults, including fault severity mappings, health settings (data types, fault associations, default values, and descriptions), and the list of collected metrics, download the [Health Service faults](https://github.com/Azure-Samples/AzureLocal/blob/main/health-service-faults/health-service-faults.xlsx) spreadsheet.
 
 Use the following PowerShell cmdlet to set or modify settings.
 
