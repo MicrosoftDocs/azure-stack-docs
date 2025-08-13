@@ -47,7 +47,7 @@ The following table shows which GPU model is supported by which GPU assignment t
 | GPU Model | DDA | DDA | DDA | GPU-P |
 | -- |  -- | -- | -- | -- |
 | | **VMs**<br>(Enabled by Azure Arc) | **VMs**<br> (Unmanaged) | **AKS** | **VMs only** * |
-| NVIDIA T4 | Yes | Yes | Yes | No |
+| NVIDIA T4 | &check; Yes | &check; Yes | &check; Yes | &cross; No |
 | NVIDIA A2 |Yes |Yes |Yes |Yes |
 | NVIDIA A10 |No |Yes |No |Yes |
 | NVIDIA A16 |Yes |Yes |Yes |Yes |
