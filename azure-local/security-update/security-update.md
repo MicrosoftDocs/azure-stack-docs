@@ -3,7 +3,7 @@ title:  Security updates for Azure Local
 description: Security updates for Azure Local.
 author: alkohli
 ms.topic: conceptual
-ms.date: 07/28/2025
+ms.date: 08/13/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
@@ -20,18 +20,16 @@ For the 2508 release of Azure Local, Microsoft released two security updates, ea
 
 | Security update | OS build | Release date |
 |--|--|--|
-| KB5063899 | 25398.1786 | August 12, 2025 |
-| KB5063878 | 26100.4913 | August 12, 2025 |
+| KB5063899 | 25398.1791 | August 12, 2025 |
+| KB5063878 | 26100.4946 | August 12, 2025 |
 
 # [OS build 25398.xxxx](#tab/os-build-25398-xxxx)
 
-This section provides the 2508 security updates associated with OS build **25398.1786**.
+This section provides the 2508 security updates associated with OS build **25398.1791**.
 
 ## Improvements
 
 This security update includes quality improvements. Below is a summary of the key issues that this update addresses when you install this KB. If there are new features, it lists them as well. The bold text within the brackets indicates the item or area of the change.
-
-- This update makes miscellaneous security improvements to internal OS functionality. There are no additional issues documented in this release. 
 
 For more information about security vulnerabilities, see the [Security Update Guide](https://portal.msrc.microsoft.com/security-guidance) and the [August 2025 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2025-Aug).
 
@@ -52,13 +50,13 @@ For a list of the files that are provided in this update, download the file info
 
 # [OS build 26100.xxxx](#tab/os-build-26100-xxxx)
 
-This section provides the 2508 security updates associated with OS build **26100.4913**.
+This section provides the 2508 security updates associated with OS build **26100.4946**.
 
 ## Improvements
 
 This security update includes quality improvements. Below is a summary of the key issues that this update addresses when you install this KB. If there are new features, it lists them as well. The bold text within the brackets indicates the item or area of the change.
 
-- **[Authentication]** Fixed: This update addresses an issue that caused long delays up to 60 seconds during sign-in on new devices. The delay was due to certain pre-installed packages.  
+- **[Authentication]** Fixed: This update addresses an issue that caused delays during sign-in on new devices. The delay was due to certain pre-installed packages.  
 
 For more information about security vulnerabilities, see the [Security Update Guide](https://portal.msrc.microsoft.com/security-guidance) and the [August 2025 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2025-Aug).
 
