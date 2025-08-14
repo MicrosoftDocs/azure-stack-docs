@@ -152,7 +152,7 @@ Follow these steps to install updates:
    :::image type="content" source="media/upgrade-22h2-to-23h2-windows-admin-center/final-confirmation.png" alt-text="Screenshot of selecting Install to install operating system updates on each machine in the system." lightbox="media/upgrade-22h2-to-23h2-windows-admin-center/final-confirmation.png":::
 
    > [!NOTE]
-   > If the updates fail with a **Couldn't install updates** or **Couldn't check for updates** warning or if one or more machines indicate **couldn't get status** during the run, wait a few minutes, and refresh your browser. You can also use `Get-CauRun` to [check the status of the update run with PowerShell](./upgrade-22h2-to-23h2-powershell.md#step-3-check-the-status-of-an-update).
+   > If the updates fail with a **Couldn't install updates** or **Couldn't check for updates** warning or if one or more machines indicate **couldn't get status** during the run, wait a few minutes, and refresh your browser. You can also use `Get-CauRun` to [check the status of the update run with PowerShell](./upgrade-22h2-to-23h2-powershell.md#check-the-status-of-an-update).
 
 1. When operating system updates are complete, the update status changes to **Succeeded**. Select **Next: Hardware updates** to proceed to the hardware updates screen.
 
