@@ -84,6 +84,14 @@ groups:
     title: Azure Local
   - id: windows-server
     title: Windows Server
+- id: upgrade-os
+  title: Upgrade OS
+  prompt: Choose an upgrade path for OS
+  pivots:
+  - id: os-23h2
+    title: To 25398.xxxx 
+  - id: os-24h2
+    title: To 26100.xxxx 
 - id: register-arc-options
   title: Registration options
   prompt: "Choose a registration option:"
