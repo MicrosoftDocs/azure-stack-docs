@@ -5,7 +5,7 @@ author: ronmiab
 ms.author: robess
 ms.topic: how-to
 ms.reviewer: arduppal
-ms.date: 07/25/2025
+ms.date: 08/13/2025
 ---
 
 # Import and discover update packages with limited connectivity
@@ -13,8 +13,6 @@ ms.date: 07/25/2025
 ::: moniker range=">=azloc-24113"
 
 [!INCLUDE [azure-local-banner-23h2](../includes/azure-local-banner-23h2.md)]
-
-[!INCLUDE [azure-local-end-of-support-banner-23h2](../includes/azure-local-end-of-support-banner-23h2.md)]
 
 This article explains how to discover and import solution update packages for Azure Local deployed in sites with limited bandwidth connections to Azure. Beginning with version 2503, Azure Local solution updates can be optionally downloaded as static payloads. You can download the payload once, copy or transfer to multiple instances and import using PowerShell. Performing these actions prior to starting an update, reduces the amount of data that is downloaded during an update.
 
