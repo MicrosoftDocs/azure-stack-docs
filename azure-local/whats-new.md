@@ -5,14 +5,12 @@ ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 07/24/2025
+ms.date: 08/13/2025
 ---
 
 # What's new in Azure Local?
 
 [!INCLUDE [azure-local-banner-23h2](./includes/azure-local-banner-23h2.md)]
-
-[!INCLUDE [azure-local-end-of-support-banner-23h2](./includes/azure-local-end-of-support-banner-23h2.md)]
 
 This article lists the various features and improvements that are available in Azure Local. The latest version of Azure Local solution focuses on cloud-based deployment and updates, cloud-based monitoring, new and simplified experience for Azure Local virtual machine (VM) management, security, and more.
 
@@ -237,7 +235,6 @@ This release has the following features and improvements:
 
 - **What's new for migration**: Documentation for improvements and features for VM migration to Azure Local is now available. For more information, see [What's new in migration](./migrate/migrate-whats-new.md).
 
-
 ::: moniker-end
 
 ::: moniker range="=azloc-previous"
@@ -250,11 +247,7 @@ This release has the following features and improvements:
 - **Updated .NET version** - This build has an updated .NET version 8.0.13.
 - **New Lifecycle Manager version** - Lifecycle Manager version 30.2503.0.854 is released to deploy the 2411.3 build. This new version moves the content download from extension installation to a visible step in validation. This reduces the overall content download size from a per machine to a one-time download.
 
-For more information on improvements in this release, see the [Fixed issues in 2411.3](./known-issues.md?view=azloc-24113&preserve-view=true#fixed-issues).
-
-::: moniker-end
-
-::: moniker range="=azloc-previous"
+For more information on improvements in this release, see the [Fixed issues in 2411.3](./known-issues.md?view=azloc-previous&preserve-view=true#fixed-issues).
 
 ## Features and improvements in 2411.2
 
