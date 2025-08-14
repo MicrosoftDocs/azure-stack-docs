@@ -4,14 +4,12 @@ description: Learn how to use PowerShell to apply operating system, service, and
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 06/06/2025
+ms.date: 08/13/2025
 ---
 
 # Update Azure Local via PowerShell
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
-
-[!INCLUDE [azure-local-end-of-support-banner-23h2](../includes/azure-local-end-of-support-banner-23h2.md)]
 
 This article describes how to apply a solution update to your Azure Local via PowerShell.
 
