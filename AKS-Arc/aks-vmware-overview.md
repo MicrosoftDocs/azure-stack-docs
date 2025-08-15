@@ -10,6 +10,9 @@ ms.lastreviewed: 03/15/2024
 
 ---
 
+> [!IMPORTANT]
+> Microsoft is retiring AKS on VMware (preview) on March 16, 2026. We recommend deploying [AKS on Azure Local](aks-whats-new-23h2.md) to benefit from its enhanced capabilities. After March 16, 2026, you will no longer be able to deploy or receive support for Azure Kubernetes Service on VMware.
+
 # What is AKS enabled by Azure Arc on VMware (preview)?
 
 [!INCLUDE [aks-applies-to-vmware](includes/aks-hci-applies-to-skus/aks-applies-to-vmware.md)]
