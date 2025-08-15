@@ -3,7 +3,7 @@ title: Release notes with fixed and known issues in Azure Local
 description: Read about the known issues and fixed issues in Azure Local.
 author: alkohli
 ms.topic: conceptual
-ms.date: 08/06/2025
+ms.date: 08/14/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
@@ -44,9 +44,10 @@ The following table lists the fixed issues in this release:
 
 |Feature  |Issue  |Comments  |
 |---------|---------|---------|
-| Update <!--33470082--> |  Solution update fails with the error: `Unable to install solution update "11.2506.1001.24" - Type 'UpdateFOD' of Role 'ComposedImageUpdate' raised an exception.` |  |
-| Upgrade <!--33417006-->| The upgrade banner is currently available for users using the Azure Government cloud. However, the environment checker fails, suggesting that Azure Government clouds are not supported. | |
-|Azure Local VMs <!--33811472-->| When no storage path is specified during deployment, resources (VMs, data disks, and images) are automatically placed on the first storage path of the cluster, even when other storage paths are also available. Over time, this might cause insufficient disk space on that path, potentially resulting in deployment failures. |  |
+| Azure Local VMs <!--33528074--> | For Disconnected operations (preview) with Azure Local VMs, the Arc agent download will fail. | Corrected end point and now Arc agent download succeeds. |
+| <!--33478311--> | Fixed issue for importing paths with spaces. |  |
+| Update <!--32843674--> | Fixed issue where active CAU runs get cancelled prematurely. |  |
+| <!--33731727--> | Disk types not being determined correctly, resulting in false negative results on storage pool size determination. |  |
 
 
 ## Known issues
@@ -55,7 +56,7 @@ The following is a known issue with this release.
 
 |Feature  |Issue  |Workaround  |
 |---------|---------|---------|
-| Update | When installing cumulative updates using Azure Update Manager, only the latest update for version 2507 is installed. If earlier update options (for versions 2505, 2506) are selected, they are not installed. | There's no workaround in this release. |
+|  | | |
 
 
 ## Known issues from previous releases
