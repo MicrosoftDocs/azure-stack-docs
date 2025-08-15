@@ -379,7 +379,7 @@ items:
         href: manage/disaster-recovery-infrastructure-resiliency.md
       - name: Virtual machine resiliency
         href: manage/disaster-recovery-vm-resiliency.md
-      - name: Workloads
+      - name: Workloads resiliency
         href: manage/disaster-recovery-workloads.md
       - name: Use Azure Site Recovery
         href: manage/azure-site-recovery.md

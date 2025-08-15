@@ -4,11 +4,9 @@ description: Disaster recovery workloads for Azure Local.
 ms.topic: article
 author: sipastak
 ms.author: sipastak
-ms.date: 08/07/2025
+ms.date: 08/14/2025
 ---
-# Disaster recovery workloads for Azure Local
-
-This article explores best practices and supported configurations for protecting key workloads on Azure Local VMs, ensuring business continuity across hybrid environments.
+# Workloads resiliency for Azure Local
 
 Disaster recovery for workloads running on Azure Local virtual machines (VMs) requires a layered approach that aligns infrastructure-level protections with application-specific continuity strategies. Whether you're hosting SQL Server databases or delivering virtual desktops through Azure Virtual Desktop, each workload type has unique recovery requirements and dependencies. Azure Local supports a wide range of disaster recovery technologies allowing you to tailor recovery plans to meet business continuity goals and ensure rapid recovery from disruptions.
 
