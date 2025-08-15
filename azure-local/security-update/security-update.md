@@ -3,7 +3,7 @@ title:  Security updates for Azure Local
 description: Security updates for Azure Local.
 author: alkohli
 ms.topic: conceptual
-ms.date: 08/13/2025
+ms.date: 08/15/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
@@ -31,6 +31,8 @@ This section provides the 2508 security updates associated with OS build **25398
 
 This security update includes quality improvements. Below is a summary of the key issues that this update addresses when you install this KB. If there are new features, it lists them as well. The bold text within the brackets indicates the item or area of the change.
 
+- **[Input]** Fixed: An issue when using the Microsoft Changjie IME (input method editor) for Traditional Chinese might cause problems such as not being able to form or select words, unresponsive spacebar or blank key, incorrect word output, or a broken candidate window display. This can occur after installing KB5062570.
+
 For more information about security vulnerabilities, see the [Security Update Guide](https://portal.msrc.microsoft.com/security-guidance) and the [August 2025 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2025-Aug).
 
 ## Known issues
@@ -45,7 +47,7 @@ To install the LCU on your Azure Local instance, see [Update Azure Stack Local i
 
 ## File list
 
-For a list of the files that are provided in this update, download the file information for [Cumulative update KB5063899](https://go.microsoft.com/fwlink/?linkid=).
+For a list of the files that are provided in this update, download the file information for [Cumulative update KB5063899](https://go.microsoft.com/fwlink/?linkid=2331617).
 
 
 # [OS build 26100.xxxx](#tab/os-build-26100-xxxx)
@@ -72,7 +74,7 @@ To install the LCU on your Azure Local instance, see [Update Azure Stack Local i
 
 ## File list
 
-For a list of the files that are provided in this update, download the file information for [Cumulative update KB5063878](https://go.microsoft.com/fwlink/?linkid=).
+For a list of the files that are provided in this update, download the file information for [Cumulative update KB5063878](https://go.microsoft.com/fwlink/?linkid=2331814).
 
 ::: moniker-end
 
