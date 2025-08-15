@@ -1,6 +1,6 @@
 ---
 title: What's new in Azure Local latest release
-description: Find out what the new features and enhancements are in the latest Azure Local release.
+description: Find out about the new features and enhancements in the latest Azure Local release.
 ms.topic: overview
 author: alkohli
 ms.author: alkohli
@@ -45,12 +45,14 @@ This release has the following features and improvements:
 - **Trusted Virtual Machine (Trusted VM) guest attestation**: Azure Local 2508 release introduces guest attestation (also known as boot integrity verification) for Azure Local virtual machines with Trusted launch. This feature lets you verify that the virtual machine starts in a well known good state by checking the integrity of the entire boot chain. This helps detect any unexpected changes to the boot chain (firmware, OS boot loader, and drivers) and take action if it's compromised. For more information, see [Trusted VM guest attestation](./index.yml).
 
 - **Azure Local VM updates**:
+- **Disconnected operations (Preview)**: This release introduces support for disconnected operation in Azure Local. This allows Azure Local to function in environments with limited or no connectivity to the internet. For more information, see [Disconnected operations (Preview)](./index.yml).
+
 - **Documentation updates**: These changes include:
-    - **Azure Arc gateway documentation updates**: Improved guidance on registering with and without Azure Arc gateway and with and without proxy in an easy to use layout.
-    - **Upgrade documentation updates**: Clarified steps for upgrading from previous versions of Azure Local and easy to use layout.
+    - **Azure Arc gateway documentation updates**: Improved guidance on registering with and without Azure Arc gateway and with and without proxy in an easy to use layout. For more information, see [Register with Azure Arc gateway](./deploy/deployment-with-azure-arc-gateway.md) and [Register with Azure Arc](./deploy/deployment-without-azure-arc-gateway.md).
+    - **Upgrade documentation updates**: Clarified steps for upgrading from previous versions of Azure Local and easy to use layout. For more information, see [Upgrade OS for Azure Local](./upgrade/upgrade-22h2-to-23h2-powershell.md).
+    - **Azure Local Security book**: This book was previously available as a *pdf* and is now available on Learn. For more information, see [Azure Local Security book](./security-book/overview.md)
 
 
- 
 ::: moniker-end
 
 ::: moniker range="=azloc-2507"
