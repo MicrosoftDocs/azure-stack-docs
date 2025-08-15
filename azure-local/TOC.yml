@@ -279,7 +279,11 @@ items:
   - name: 4. Validate solution upgrade readiness
     href: upgrade/validate-solution-upgrade-readiness.md
   - name: 5. Apply solution upgrade
-    href: upgrade/install-solution-upgrade.md
+    items:
+    - name: Upgrade via Azure portal
+      href: upgrade/install-solution-upgrade.md
+    - name: Upgrade via ARM template
+      href: upgrade/install-solution-upgrade-azure-resource-manager-template.md
   - name: Troubleshoot upgrades
     href: upgrade/troubleshoot-upgrade-to-23h2.md
 
