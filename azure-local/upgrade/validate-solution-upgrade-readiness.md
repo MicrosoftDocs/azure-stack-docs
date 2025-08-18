@@ -143,7 +143,7 @@ Each validation check of Environment Checker includes remediation guidance with 
 
 Azure Local requires you to install specific Windows roles and features, and enable a set of required features (that are optional for Windows Server). Some features would require a restart after the installation. Hence, it's important that you put the machine into maintenance mode before you install the roles and features. Verify that all the active virtual machines (VMs) have migrated to other machines.
 
-Use the following commands for each machine to install the required Windows roles and features, and enable optional Windows features. If a feature is already present, the install automatically skips it.
+Use the following commands for each machine to install the required Windows roles and features. If a feature is already present, the install automatically skips it.
 
 ```powershell
 #Install required Windows roles and features
