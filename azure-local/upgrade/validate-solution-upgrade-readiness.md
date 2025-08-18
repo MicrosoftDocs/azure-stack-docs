@@ -3,7 +3,7 @@ title: Validate solution upgrade readiness for Azure Local, version 23H2
 description: Learn how to assess upgrade readiness for Azure Local, version 23H2 that already had its operating system upgraded from version 22H2.
 author: alkohli
 ms.topic: how-to
-ms.date: 05/29/2025
+ms.date: 08/18/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -139,14 +139,14 @@ Follow these steps to set up the Environment Checker on a machine of your Azure 
 
 Each validation check of Environment Checker includes remediation guidance with links that help you resolve the potential issues. For more information, see [Remediation guidance](../manage/use-environment-checker.md#).
 
-## Remediation 1: Install required and optional Windows features
+## Remediation 1: Install Windows features
 
-Azure Local 2311.2 requires a set of Windows roles and features to be installed. Some features would require a restart after the installation. Hence, it's important that you put the machine into maintenance mode before you install the roles and features. Verify that all the active virtual machines (VMs) have migrated to other machines.
+Azure Local requires you to install specific Windows roles and features, and enable a set of optional Windows features. Some features would require a restart after the installation. Hence, it's important that you put the machine into maintenance mode before you install the roles and features. Verify that all the active virtual machines (VMs) have migrated to other machines.
 
-Use the following commands for each machine to install the required features. If a feature is already present, the install automatically skips it.
+Use the following commands for each machine to install the required Windows roles and features, and enable optional Windows features. If a feature is already present, the install automatically skips it.
 
 ```powershell
-#Install Windows Roles & Features 
+#Install required Windows roles and features
 $windowsFeature =  @( 
 
                 "Failover-Clustering",
@@ -160,13 +160,13 @@ $windowsFeature =  @(
                 "Data-Center-Bridging", 
                 "NetworkVirtualization", 
                 "RSAT-AD-AdminCenter"
-                ) 
+                )
 foreach ($feature in $windowsFeature) 
 { 
 Install-WindowsFeature -Name $feature -IncludeAllSubFeature -IncludeManagementTools 
 } 
 
-#Install requires optional Windows features 
+#Enable a set of optional Windows features that are required for Azure Local
 $windowsOptionalFeature = @( 
 
                 "Server-Core", 
@@ -220,7 +220,7 @@ $windowsOptionalFeature = @(
                 "ServerCore-Drivers-General", 
                 "ServerCore-Drivers-General-WOW64", 
                 "NetworkATC" 
-            ) 
+            )
 foreach ($featureName in $windowsOptionalFeature) 
 { 
 Enable-WindowsOptionalFeature -FeatureName $featurename -All -Online 
