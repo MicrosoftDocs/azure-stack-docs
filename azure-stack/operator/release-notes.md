@@ -3,7 +3,7 @@ title: Azure Stack Hub release notes
 description: Release notes for Azure Stack Hub integrated systems, including updates and bug fixes.
 author: sethmanheim
 ms.topic: release-notes
-ms.date: 08/05/2025
+ms.date: 08/13/2025
 ms.author: sethm
 
 # Intent: As an Azure Stack Hub operator, I want to know what's new in the latest release so that I can plan my update.
@@ -109,7 +109,7 @@ When you update to a new major version (for example, 1.2108.x to 1.2206.x), the 
 
 After the installation of 2501, if any hotfixes for 2501 are subsequently released, you should install them:
 
-- [Azure Stack Hub hotfix 1.2501.1.49](hotfix-1-2501-1-49.md)
+- [Azure Stack Hub hotfix 1.2501.1.47](hotfix-1-2501-1-47.md)
 ::: moniker-end
 
 ::: moniker range="azs-2408"
