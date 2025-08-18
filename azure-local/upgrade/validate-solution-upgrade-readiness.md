@@ -19,11 +19,11 @@ Throughout this article, we refer to Azure Local 2311.2 as the *new* version and
 
 ## Assess solution upgrade readiness
 
-This *optional* but *recommended* step helps you assess the readiness of Azure Local for the upgrade. The following steps help you assess the upgrade readiness:
+This *recommended* step helps you assess the readiness of Azure Local for the upgrade. The following steps help you assess the upgrade readiness:
 
 - Install and use the Environment Checker to verify that Network ATC is installed and enabled on the machine. Verify that there are no Preview versions for Azure Arc Resource Bridge running on your system.
 - Ensure that sufficient storage space is available for the infrastructure volume.
-- Perform other checks like installation of required and optional Windows features, enablement of Application Control policies, BitLocker suspension, and OS language.
+- Perform other checks like installation of required Windows features, enablement of Application Control policies, BitLocker suspension, and OS language.
 - Review and remediate validation checks that block the upgrade.
 
 ## Use Environment Checker to validate upgrade readiness
