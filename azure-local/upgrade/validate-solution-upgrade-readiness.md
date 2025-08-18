@@ -166,7 +166,7 @@ foreach ($feature in $windowsFeature)
 Install-WindowsFeature -Name $feature -IncludeAllSubFeature -IncludeManagementTools 
 } 
 
-#Enable a set of optional Windows features that are required for Azure Local
+#Enable a set of Windows features that are required for Azure Local, but optional for Windows Server
 $windowsOptionalFeature = @( 
 
                 "Server-Core", 
