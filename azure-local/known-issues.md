@@ -46,7 +46,7 @@ The following table lists the fixed issues in this release:
 |---------|---------|---------|
 | Azure Local VMs <!--33528074--> | For Disconnected operations (preview) with Azure Local VMs, the Arc agent download will fail. | Corrected end point and now Arc agent download succeeds. |
 | <!--33478311--> | Fixed issue for importing paths with spaces. |  |
-| Update <!--32843674--> | Fixed issue where active CAU runs get cancelled prematurely. |  |
+| Update <!--32843674--> | Fixed issue where active CAU runs get canceled prematurely. |  |
 | <!--33731727--> | Disk types not being determined correctly, resulting in false negative results on storage pool size determination. |  |
 
 
@@ -56,7 +56,7 @@ The following is a known issue with this release.
 
 |Feature  |Issue  |Workaround  |
 |---------|---------|---------|
-|  | | |
+| Azure Local VMs | When enabling guest attestation (preview) on a Trusted launch Azure Local VM, you might see a delay in seeing the latest Azure portal changes, as the rollout typically takes about 5-7 days from release date to fully complete in all supported regions. | |
 
 
 ## Known issues from previous releases
