@@ -199,13 +199,13 @@ Before you update the DNS server configuration for a logical network, be aware o
 - The DNS server update only applies to new Azure Local VMs created on the logical network after you've updated the DNS server. For all the existing Azure Local VMs, manually update the DNS server entries within the VM.
 - You can't update the DNS server of a logical network associated with an AKS cluster.
 - You can only update the DNS server of the logical networks associated with the workloads.
+- The infrastructure logical network and Arc resource bridge DNS server updates are not supported.
 
->[!WARNING]
-> The infrastructure logical network and Arc resource bridge DNS server updates are not supported.
+### Update DNS server configuration
 
 Follow these steps to manage DNS server configuration for logical networks.
 
-### Set parameters
+#### Set parameters
 
 ```PowerShell
 $logicalNetwork = "your-logical-network"
@@ -213,13 +213,16 @@ $resourceGroup = "your-resource-group"
 $dnsServers = "IP-address1", "IP-address2"
 ```
 
-### Update DNS server configuration
+#### Update DNS server configuration
 
 ```azure cli
-az stack-hci-vm network lnet update --name $lnet --resource-group $resource_group --dns-servers $dns_servers
+az stack-hci-vm network lnet update --name $logicalNetwork --resource-group $resourceGroup --dns-servers $dnsServers
 ```
 
-Running a DNS server `update` command replaces the existing configuration. Your existing DNS server IP entries will be overridden with the input provided during DNS server update. Ensure to enter all relevant DNS server IP entries in your update command and not just the entry you want to change.
+Running a DNS server `update` command replaces the existing configuration. Your existing DNS server IP entries will be overridden with the input provided during DNS server update. 
+
+> [!IMPORTANT]
+> Ensure to enter all relevant DNS server IP entries in your update command and not just the entry you want to change.
 
 ## Related content
 
