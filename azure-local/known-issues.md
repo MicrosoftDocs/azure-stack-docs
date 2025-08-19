@@ -23,7 +23,7 @@ For more information about new features in this release, see [What's new for Azu
 
 ## Known issues for version 2508
 
-For the 2507 release of Azure Local, Microsoft released two security updates, each aligned with a specific OS build. The following table provides the specific versions and their OS builds:
+For the 2508 release of Azure Local, Microsoft released two security updates, each aligned with a specific OS build. The following table provides the specific versions and their OS builds:
 
 | Solution version  | OS build  |
 |---------|---------|---------|
@@ -52,11 +52,13 @@ The following table lists the fixed issues in this release:
 
 ## Known issues
 
-The following is a known issue with this release.
+Microsoft isn't aware of any known issues in this release.
+
+<!--The following is a known issue with this release.
 
 |Feature  |Issue  |Workaround  |
-|---------|---------|---------|
-| Azure Local VMs | When enabling guest attestation (preview) on a Trusted launch Azure Local VM, you might see a delay in seeing the latest Azure portal changes, as the rollout typically takes about 5-7 days from release date to fully complete in all supported regions. | |
+|---------|---------|---------|-->
+
 
 
 ## Known issues from previous releases
