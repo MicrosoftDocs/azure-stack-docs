@@ -64,7 +64,7 @@ The easiest way to configure VM load balancing is using Windows Admin Center.
 
 ## Configure VM load balancing using Windows PowerShell
 
-You can configure if and when load balancing occurs using the cluster common property `AutoBalancerMode`. To control when to balance the cluster, run the following in PowerShell, substituting a value from the table below:
+You can configure if and when load balancing occurs using the cluster common property `AutoBalancerMode`. To control when to balance the cluster, run the following in PowerShell, substituting a value from the table:
 
 ```PowerShell
 (Get-Cluster).AutoBalancerMode = <value>
@@ -76,7 +76,7 @@ You can configure if and when load balancing occurs using the cluster common pro
 | 1 | Load balance upon machine join |
 | 2 (default) | Load balance upon machine join and every 30 minutes |
 
-You can also configure the aggressiveness of balancing by using the cluster common property `AutoBalancerLevel`. To control the aggressiveness threshold, run the following in PowerShell, substituting a value from the table below:
+You can also configure the aggressiveness of balancing by using the cluster common property `AutoBalancerLevel`. To control the aggressiveness threshold, run the following in PowerShell, substituting a value from the table:
 
 ```PowerShell
 (Get-Cluster).AutoBalancerLevel = <value>
