@@ -3,7 +3,7 @@ title: Install solution upgrade on Azure Local using Azure Resource Manager temp
 description: Learn how to install the solution upgrade on your Azure Local instance using Azure Resource Manager template.
 author: alkohli
 ms.topic: how-to
-ms.date: 07/30/2025
+ms.date: 08/20/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -129,8 +129,6 @@ This object ID for the Azure Local Resource Provide (RP) is unique per Azure ten
     Get-AzADServicePrincipal -DisplayName "Microsoft.AzureStackHCI Resource Provider"
     ```
 
-    You use the **Object ID** against the `hciResourceProviderObjectID` parameter in the Resource Manager template.
-
 ## Install the solution upgrade using Azure Resource Manager template
 
 An ARM template creates and assigns all the resource permissions required for the upgrade.
@@ -252,11 +250,8 @@ The following table describes the parameters that you define in the ARM template
 | tenantId | Azure subscription tenant ID. <br/>For more information, see [Find your Microsoft Entra tenant](/azure/azure-portal/get-subscription-tenant-id#find-your-microsoft-entra-tenant).|
 | AzureStackLCMAdminUsername | Username for the LCM admin.<br/> For more information, see [Review deployment prerequisites for Azure Local](../deploy/deployment-prerequisites.md).|
 | AzureStackLCMAdminPasssword | Password for the LCM admin. <br/> For more information, see [Review deployment prerequisites for Azure Local](../deploy/deployment-prerequisites.md).|
-| hciResourceProviderObjectID | |
 | arcNodeResourceIds | Array of resource IDs of the Azure Arc-enabled servers that are part of this Azure Local cluster. |
 | domainFqdn | Fully-qualified domain name (FQDN) for the Active Directory Domain Services prepared for deployment. |
-| adouPath | Path of the Organizational Unit (OU) created for this deployment. The OU can't be at the top level of the domain. For example: OU=Local001,DC=contoso,DC=com. |
-| securityLevel | Security configuration profile to be applied to the Azure Local cluster during deployment. The default is **Recommended**. |
 | subnetMask | The subnet mask for the management network used by the Azure Local deployment. |
 | defaultGateway | The default gateway for deploying an Azure Local cluster. |
 | startingIPAddress | The first IP address in a contiguous block of at least six static IP addresses on your management network's subnet, omitting addresses already used by the machines.<br/>These IPs are used by Azure Local and internal infrastructure (Arc Resource Bridge) that's required for Arc VM management and AKS Hybrid. |
