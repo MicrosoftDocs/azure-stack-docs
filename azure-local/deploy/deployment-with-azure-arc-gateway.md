@@ -11,7 +11,7 @@ zone_pivot_groups: register-arc-options
 
 # Register Azure Local with Azure Arc using Arc gateway (Preview)
 
-::: moniker range=">=azloc-2411.3"
+::: moniker range=">=azloc-2503"
 
 ::: zone pivot="register-proxy"
 
@@ -511,8 +511,8 @@ Before you begin, make sure that you complete the following prerequisites:
     
 ::: moniker-end
 
-::: moniker range="<=azloc-2411.2"
+::: moniker range="<=azloc-2411.3"
 
-This feature is available only in Azure Local 2411.3 or later.
+This feature is available only in Azure Local 2503 or later.
 
 ::: moniker-end
