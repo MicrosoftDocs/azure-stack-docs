@@ -456,6 +456,8 @@ Make sure you register the required resource providers before deployment. Here's
     az provider register --namespace Microsoft.ExtendedLocation
     az provider register --namespace Microsoft.ResourceConnector
     az provider register --namespace Microsoft.EdgeArtifact
+    az provider register --namespace Microsoft.KubernetesConfiguration
+    az provider register --namespace Microsoft.HybridContainerService
 ```
 
 Wait until all resource providers are in the state **Registered**. Here's a sample Azure CLI command to list all resource providers and their statuses.
@@ -621,7 +623,7 @@ Place them in a folder, for example, C:\AzureLocalDisconnectedOperations\Certs\
 Import the certs by running the following:
 
 ```powershell
-Import-Certificate -FilePath C:\AzureLocalDisconnectedOperations\Certs\MicCodSigPCA2011_2011-07-08.cer -CertStoreLocation Cert:\LocalMachine\Root -Confirm:$false
+Import-Certificate -FilePath C:\AzureLocalDisconnectedOperations\Certs\MicCodSigPCA2011_2011-07-08.crt -CertStoreLocation Cert:\LocalMachine\Root -Confirm:$false
 Import-Certificate -FilePath C:\AzureLocalDisconnectedOperations\Certs\DigiCertGlobalRootCA.cer Cert:\LocalMachine\Root -Confirm:$false
 Import-Certificate -FilePath C:\AzureLocalDisconnectedOperations\Certs\DigiCertGlobalRootG2.cer -CertStoreLocation Cert:\LocalMachine\Root -Confirm:$false
 ```
