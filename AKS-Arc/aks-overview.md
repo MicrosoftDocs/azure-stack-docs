@@ -2,7 +2,7 @@
 title: What is AKS enabled by Azure Arc?
 description: Learn about AKS enabled by Azure Arc and available deployment options.
 ms.topic: overview
-ms.date: 08/14/2025
+ms.date: 08/20/2025
 author: sethmanheim
 ms.author: sethm 
 ms.reviewer: rcheeran
