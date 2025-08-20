@@ -3,7 +3,7 @@ title: App Service on Azure Stack Hub 25R1 release notes
 description: Learn about what's new and updated in the App Service on Azure Stack Hub 25R1 release.
 author: apwestgarth
 ms.topic: article
-ms.date: 06/27/2025
+ms.date: 08/20/2025
 ms.author: anwestg
 ms.reviewer:
 ---
@@ -16,7 +16,7 @@ These release notes describe the improvements and fixes in Azure App Service on 
 
 ## Build reference
 
-The App Service on Azure Stack Hub 25R1 build number is **102.10.2.11**
+The App Service on Azure Stack Hub 25R1 build number is **102.10.2.12**
 
 ## What's new?
 
@@ -100,6 +100,9 @@ Azure App Service on Azure Stack Update 25R1 includes the following improvements
 - Synchronization of Cipher Suites in place and preserves any modifications performed as result of customer intervention with support.
 
 ## Issues fixed in this release
+
+ > [!IMPORTANT]
+ > 25R1 has been updated to version number **102.10.2.12**, this is to resolve an issue experienced when TLS Handshakes are fail due to Kyber key_share extension in Chromium browsers.  If you have already updated to 25R1 (102.10.2.12) we recommend updating to this new build version to resolve this issue.
 
 Newly fixed issues in this release:
 
