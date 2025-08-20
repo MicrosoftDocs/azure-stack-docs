@@ -369,6 +369,9 @@ Install-Appliance @installAzureLocalParams -disconnectMachineDeploy -Verbose
 >
 > DisableChecksum = $true will skip validating the signature of the Appliance. Use this when deploying an air-gapped environment in this release. If checksum validation is enabled - the node needs to be able to reach and validate the Microsoft cert signing certificates used for signing this build.  
 
+### Update configuration and re-run installation (if failure)
+Here is an example on how to update the configuration and re-run the installation if it failed during installation. 
+
 1. Modify the configuration object.
 
     ```powershell
