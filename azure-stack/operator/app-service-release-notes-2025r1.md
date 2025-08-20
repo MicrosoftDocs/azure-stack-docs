@@ -102,7 +102,7 @@ Azure App Service on Azure Stack Update 25R1 includes the following improvements
 ## Issues fixed in this release
 
  > [!IMPORTANT]
- > 25R1 has been updated to version number **102.10.2.12**, this is to resolve an issue experienced when TLS Handshakes are fail due to Kyber key_share extension in Chromium browsers.  If you have already updated to 25R1 (102.10.2.11) we recommend updating to this new build version to resolve this issue.
+ > 25R1 has been updated to version number **102.10.2.12**, this is to resolve an issue experienced when TLS Handshakes are fail due to Kyber key_share extension in Chromium browsers.  If you have already updated to 25R1 (102.10.2.11), we recommend updating to this new build version to resolve this issue.
 
 Newly fixed issues in this release:
 
