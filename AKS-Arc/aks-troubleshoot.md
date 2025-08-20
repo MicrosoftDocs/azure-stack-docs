@@ -33,6 +33,7 @@ The following sections describe known issues for AKS enabled by Azure Arc:
 | AKS cluster delete     | [Can't fully delete AKS Arc cluster with PodDisruptionBudget (PDB) resources](delete-cluster-pdb.md) | Fixed in 2503 release |
 | Azure portal           | [Can't see VM SKUs on Azure portal](check-vm-sku.md) | Fixed in 2411 release |
 | MetalLB Arc extension  | [Connectivity issues with MetalLB](load-balancer-issues.md) | Fixed in 2411 release |
+| MetalLB Arc extension  | [MetalLB speaker pods don't run on nodes tainted with CriticalAddonsOnly=true:NoSchedule](troubleshoot-metallb-speaker-taint.md) | Active |
 
 ## Guides to diagnose and troubleshoot Kubernetes CRUD failures
 
