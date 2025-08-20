@@ -1,5 +1,6 @@
 ---
 title: MetalLB speaker pods don't run on nodes tainted with CriticalAddonsOnly=true:NoSchedule
+description: Learn how to troubleshoot MetalLB speaker pods that don't run on nodes tainted with CriticalAddonsOnly=true:NoSchedule.
 ms.topic: troubleshooting
 ms.date: 08/20/2025
 author: sethmanheim
