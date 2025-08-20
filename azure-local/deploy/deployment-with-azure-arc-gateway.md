@@ -3,7 +3,7 @@ title: Register Azure Local using Arc gateway and with and without proxy setup (
 description: Learn how to register Azure Local using Azure Arc gateway Arc proxy. Both scenarios with and without proxy are configured (Preview). 
 author: alkohli
 ms.topic: how-to
-ms.date: 07/28/2025
+ms.date: 08/20/2025
 ms.author: alkohli
 ms.service: azure-local
 zone_pivot_groups: register-arc-options
@@ -11,7 +11,7 @@ zone_pivot_groups: register-arc-options
 
 # Register Azure Local with Azure Arc using Arc gateway (Preview)
 
-::: moniker range=">=azloc-2505"
+::: moniker range=">=azloc-2411.3"
 
 ::: zone pivot="register-proxy"
 
@@ -511,8 +511,8 @@ Before you begin, make sure that you complete the following prerequisites:
     
 ::: moniker-end
 
-::: moniker range="<=azloc-2504"
+::: moniker range="<=azloc-2411.2"
 
-This feature is available only in Azure Local 2505 or later.
+This feature is available only in Azure Local 2411.3 or later.
 
 ::: moniker-end
