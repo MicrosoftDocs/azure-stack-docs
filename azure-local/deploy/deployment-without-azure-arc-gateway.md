@@ -512,7 +512,7 @@ Before you begin, make sure that you complete the following prerequisites:
     
 ::: moniker-end
 
-::: moniker range="<=azloc-2411.3"
+::: moniker range="<=azloc-24113"
 
 This feature is available only in Azure Local 2503 or later.
 
