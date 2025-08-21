@@ -369,13 +369,17 @@ Install-Appliance @installAzureLocalParams -disconnectMachineDeploy -Verbose
 >
 > DisableChecksum = $true will skip validating the signature of the Appliance. Use this when deploying an air-gapped environment in this release. If checksum validation is enabled - the node needs to be able to reach and validate the Microsoft cert signing certificates used for signing this build.  
 
+### Update configuration and re-run installation (if failure)
+
+To update the configuration and retry the installation after a failure, follow these steps:
+
 1. Modify the configuration object.
 
     ```powershell
     $ingressNetworkConfiguration.IngressIpAddress = '192.168.200.115'
     ```
 
-1. Set `$installAzureLocalParams` and rerun the `Install-appliance` as shown in [Install and configure the appliance](#install-and-configure-the-appliance).
+1. Set `$installAzureLocalParams` and rerun `Install-appliance` as described in [Install and configure the appliance](#install-and-configure-the-appliance).
 
 ## Configure observability for diagnostics and support
 
@@ -456,6 +460,8 @@ Make sure you register the required resource providers before deployment. Here's
     az provider register --namespace Microsoft.ExtendedLocation
     az provider register --namespace Microsoft.ResourceConnector
     az provider register --namespace Microsoft.EdgeArtifact
+    az provider register --namespace Microsoft.KubernetesConfiguration
+    az provider register --namespace Microsoft.HybridContainerService
 ```
 
 Wait until all resource providers are in the state **Registered**. Here's a sample Azure CLI command to list all resource providers and their statuses.
@@ -621,7 +627,7 @@ Place them in a folder, for example, C:\AzureLocalDisconnectedOperations\Certs\
 Import the certs by running the following:
 
 ```powershell
-Import-Certificate -FilePath C:\AzureLocalDisconnectedOperations\Certs\MicCodSigPCA2011_2011-07-08.cer -CertStoreLocation Cert:\LocalMachine\Root -Confirm:$false
+Import-Certificate -FilePath C:\AzureLocalDisconnectedOperations\Certs\MicCodSigPCA2011_2011-07-08.crt -CertStoreLocation Cert:\LocalMachine\Root -Confirm:$false
 Import-Certificate -FilePath C:\AzureLocalDisconnectedOperations\Certs\DigiCertGlobalRootCA.cer Cert:\LocalMachine\Root -Confirm:$false
 Import-Certificate -FilePath C:\AzureLocalDisconnectedOperations\Certs\DigiCertGlobalRootG2.cer -CertStoreLocation Cert:\LocalMachine\Root -Confirm:$false
 ```

@@ -120,7 +120,7 @@ To deploy the AI model, follow these steps:
    inference:
      preset:
        name: phi-3.5-mini-instruct # Update preset name as needed
-   config: "ds-inference-params"
+     config: "ds-inference-params"
    ---
    apiVersion: v1
    kind: ConfigMap
