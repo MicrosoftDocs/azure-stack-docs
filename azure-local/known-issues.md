@@ -52,7 +52,7 @@ The following table lists the fixed issues in this release:
 
 ## Known issues
 
-Microsoft isn't aware of any known issues in this release.
+<!--Microsoft isn't aware of any known issues in this release.-->
 
 The following table lists the known issues in this release:
 
