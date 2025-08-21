@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 08/19/2025
+ms.date: 08/21/2025
 ---
 
 # Manage resources for Azure Local VMs enabled by Azure Arc
@@ -198,7 +198,7 @@ Before you update the DNS server configuration for a logical network, be aware o
 - This feature is in preview and shouldn't be used on production logical networks.
 - The updated DNS server configuration only applies to new Azure Local VMs created on the logical network after the update. For all the existing Azure Local VMs, manually update the DNS server entries within the VM.
 - You can't update the DNS server of a logical network that has an AKS cluster deployed.
-- The infrastructure logical network and Arc resource bridge DNS server updates are not supported.
+- The infrastructure logical network (enveloping the 6 management IP address range provided during deployment) and Arc resource bridge DNS server updates are not supported.
 
 ### Update DNS server configuration
 
