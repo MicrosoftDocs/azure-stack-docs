@@ -363,10 +363,10 @@ To enable the IDPInitiated Signon test page follow these steps:
 
    Here's an example:
    
-   # Initial site link
+   Initial site link
    https://adfs.FDQN/adfs/ls/IdpInitiatedSignon.aspx
 
-   # Modified with your domain name
+   Modified with your domain name
    https://adfs.MYFQDN/adfs/ls/IdpInitiatedSignon.aspx
 
 1. Sign in with your operator account to confirm that ADFS functionality.  
