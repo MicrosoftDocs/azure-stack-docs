@@ -11,7 +11,7 @@ ms.lastreviewed: 08/21/2025
 
 # MetalLB speaker pods don't run on nodes tainted with CriticalAddonsOnly=true:NoSchedule
 
-MetalLB speaker pods don't run on nodes tainted with `CriticalAddonsOnly=true:NoSchedule`. This is expected behavior; such nodes are reserved for critical system pods. However, in some cases, you might require MetalLB speaker pods to be scheduled on these tainted nodes.
+MetalLB speaker pods don't run on nodes tainted with `CriticalAddonsOnly=true:NoSchedule`. This behavior is expected; such nodes are reserved for critical system pods. However, in some cases, you might require MetalLB speaker pods to be scheduled on these tainted nodes.
 
 ## Mitigation
 
