@@ -379,7 +379,7 @@ To update the configuration and retry the installation after a failure, follow t
     $ingressNetworkConfiguration.IngressIpAddress = '192.168.200.115'
     ```
 
-1. Set `$installAzureLocalParams` and rerun the `Install-appliance` as shown in [Install and configure the appliance](#install-and-configure-the-appliance).
+1. Set `$installAzureLocalParams` and rerun `Install-appliance` as described in [Install and configure the appliance](#install-and-configure-the-appliance).
 
 ## Configure observability for diagnostics and support
 
