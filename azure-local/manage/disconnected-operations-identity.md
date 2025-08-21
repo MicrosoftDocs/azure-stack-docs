@@ -350,12 +350,16 @@ $GroupEntry.CommitChanges()
 > [!NOTE]
 > If the GSMA account for your ADFS farm can't read user properties, the sign in fails even if the credentials entered on the ADFS sign in page are correct.
 
-### Verify and test that ADFS works
-Enable the IDPInitiated test page by doing the following:
-```powershell 
-  Set-AdfsProperties -EnableIdpInitiatedSignonPage $true
-```
-Access to https://adfs.FDQN/adfs/ls/IdpInitiatedSignon.aspx (replace FQDN with your actual domain name) and login using your operator account to verify that your ADFS setup works.
+### Verify and test ADFS functionality
+
+To enable the IDPInitiated Signon test page follow these steps:
+
+1. Enable the signon test page. Run this command:
+
+   ```powershell 
+    Set-AdfsProperties -EnableIdpInitiatedSignonPage $true
+   ```
+1. Go to [IdpInitiatedSignon](https://adfs.FDQN/adfs/ls/IdpInitiatedSignon.aspx). Replace FQDN with your actual domain name and sign in with your operator account to confirm that ADFS is working.
 
 ::: moniker-end
 
