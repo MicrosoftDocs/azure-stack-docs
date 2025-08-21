@@ -359,14 +359,10 @@ To enable the IDPInitiated Signon test page follow these steps:
    ```powershell 
     Set-AdfsProperties -EnableIdpInitiatedSignonPage $true
    ```
-1. Go to [IdpInitiatedSignon]((https://adfs.FDQN/adfs/ls/IdpInitiatedSignon.aspx) and replace FQDN with your actual domain name.
+1. Go to [IdpInitiatedSignon](https://adfs.FDQN/adfs/ls/IdpInitiatedSignon.aspx) and replace FQDN with your actual domain name.
 
-   Here's an example:
-   
-   Initial site link
-   https://adfs.FDQN/adfs/ls/IdpInitiatedSignon.aspx
+   Here's an example using your domain name:
 
-   Modified with your domain name
    https://adfs.MYFQDN/adfs/ls/IdpInitiatedSignon.aspx
 
 1. Sign in with your operator account to confirm that ADFS functionality.  
