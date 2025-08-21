@@ -2,11 +2,11 @@
 title: MetalLB speaker pods don't run on nodes tainted with CriticalAddonsOnly=true:NoSchedule
 description: Learn how to troubleshoot MetalLB speaker pods that don't run on nodes tainted with CriticalAddonsOnly=true:NoSchedule.
 ms.topic: troubleshooting
-ms.date: 08/20/2025
+ms.date: 08/21/2025
 author: sethmanheim
 ms.author: sethm
 ms.reviewer: srikantsarwa
-ms.lastreviewed: 08/20/2025
+ms.lastreviewed: 08/21/2025
 ---
 
 # MetalLB speaker pods don't run on nodes tainted with CriticalAddonsOnly=true:NoSchedule
@@ -20,7 +20,7 @@ Follow these steps to customize the MetalLB configuration by reinstalling the Ar
 1. Run Azure CLI to get the objectId:
 
    ```azurecli
-   $objID = az ad sp list --filter "appId eq '087fca6e-4606-4d41-b3f6-5ebdf75b8b4c'" --query "[].id" --output tsv
+   $objID = az ad sp list --filter "appId eq '<app_id>'" --query "[].id" --output tsv
    ```
 
 1. Create a new file named `config.json` and insert the following content:
