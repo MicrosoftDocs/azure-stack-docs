@@ -58,7 +58,7 @@ The following table lists the known issues in this release:
 
 |Feature  |Issue  |Workaround  |
 |---------|---------|---------|
-| Deployment, Add-Node, <br> Upgrade, and PreUpdate checks<!--34496563--> |The Link Layer Discovery Protocol (LLDP) tool produces false warnings in `StandardClusterSwitchConsistency` transiently due to test logic issues. All other tests also display false warnings caused by non-Ethernet network interface naming, for example, **Integrated NIC 1 Port 1-1/2-1**. You'll see messages such as`No physical ethernet adapters` even though networking (hardware, RDMA, intents, storage) is healthy and verified.  |Ignore all the LLDP tool warnings. This issue is with the test itself; the environment is healthy, and no action is required.  |
+| Deployment, Add-Node, <br> Upgrade, and PreUpdate checks<!--34496563--> |The Link Layer Discovery Protocol (LLDP) tool produces false warnings in `StandardClusterSwitchConsistency` transiently due to test logic issues. All other tests also display false warnings caused by non-Ethernet network interface naming. You'll see messages such as`No physical ethernet adapters` even though networking (hardware, RDMA, intents, storage) is healthy and verified.  |Ignore all the LLDP tool warnings. This issue is with the test itself; the environment is healthy, and no action is required.  |
 
 
 
