@@ -4,13 +4,21 @@ description: Learn about new features in Azure Migrate for Azure Local.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 07/24/2025
+ms.date: 08/21/2025
 ms.service: azure-local
 ---
 
 # What's new in Azure Migrate for Azure Local
 
-This article lists the various features and improvements that are available in VM migration to Azure Local.
+This article lists the various features and improvements that are available in virtual machine (VM) migration to Azure Local.
+
+## July 2025
+
+This release includes these features and improvements:
+
+- **PowerShell support for replication and migration** – You can now use the Azure Migrate PowerShell module to replicate and migrate VMs to Azure Local. This enables automation and scripting for streamlined migration workflows. For more information, see [Migrate VMs to Azure Local using PowerShell](migrate-via-powershell.md).
+
+- **Monitor migrations via diagnostic settings** – You can now enable diagnostic settings in Azure Migrate to monitor Azure Local migrations. This provides improved observability and troubleshooting capabilities. For more information, see [Monitor Azure Local migrations using diagnostic settings](monitor-migration.md).  
 
 ## June 2025
 
