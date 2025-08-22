@@ -8,7 +8,7 @@ ms.author: alkohli
 ms.reviewer: alkohli
 ---
 
-# Security foundation for the Azure Local security book
+# Security foundation in Azure Local
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
