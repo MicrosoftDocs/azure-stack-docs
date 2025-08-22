@@ -23,6 +23,25 @@ This article lists the various features and improvements that are available in A
 
 This section lists the new features and improvements in AKS Arc in each release of Azure Local.
 
+### Release 2508
+
+#### Announcements
+
+- Support for Kubernetes minor version 1.29 will end on October 31, 2025.
+- KMS v1 will be deprecated soon. We will be adding support for KMS v2 in Azure Local 2510 release. Please plan on upgrading your clusters once KMS v2 is available.
+
+#### Supported Kubernetes versions for 2508
+
+The Kubernetes versions supported in the 2508 release are: 1.29.12, 1.29.13, 1.30.8, 1.30.9, 1.31.4, 1.31.5.
+
+#### Features
+
+- Kubernetes version 1.31 is now available on AKS Arc.
+
+#### Bug fixes
+
+- Fixed an issue where cluster creation failed as kubeadm installation in default nodepool failed because of tdnf cache issue.
+
 ### Release 2507
 
 > [!IMPORTANT]
