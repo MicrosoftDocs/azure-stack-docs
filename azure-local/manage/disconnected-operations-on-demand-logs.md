@@ -298,24 +298,21 @@ If the Stamp ID isn't set and isn't passed to the `Send-DiagnosticData` cmdlet m
 
 ### Send-DiagnosticData –SaveToPath (applicable for Azure Local Host node logs)
 
-Add documentation or refer to existing documentation link from Azure Local connected
-The Send-DiagnosticData cmdlet collects logs and, if needed, securely sends them to Microsoft for analysis. It works with both Azure Stack HCI and Azure Local environments, helping troubleshoot issues by providing detailed telemetry and diagnostic data. This cmdlet is available when the Telemetry and Diagnostics extension is installed, ensuring all components needed for log collection and upload are in place.
-What Send-DiagnosticData does:
-•	Collects logs from the local system, including:
-o	Role-specific logs
-o	Supplementary logs
-o	Software Defined Data Center (SDDC) log (Optional)
-•	Supports filtering by:
-o	Role
-o	Date range
-o	Log type
-•	Bypasses observability agents to collect logs only on the node where the command is run.
-•	Let’s you save logs locally by using the -SaveToPath parameter.
-•	Supports secure credential access when saving to a network share.
+The `Send-DiagnosticData` cmdlet gathers logs and, when needed, securely uploads them to Microsoft for analysis. It supports both Azure Stack HCI and Azure Local environments, providing detailed telemetry and diagnostic data to help troubleshoot issues. This cmdlet is available when the Telemetry and Diagnostics extension is installed, ensuring all necessary components for log collection and upload are present.
 
+What `Send-DiagnosticData` does:
 
-Send-AzStackHciDiagnosticData (Applicable for Azure Local Host node logs)
-Add documentation or refer to existing documentation link from Azure Local connected
+- Collects logs from the local system, including:
+  - Role-specific logs
+  - Supplementary logs
+  - Software Defined Data Center (SDDC) log (Optional)
+- Supports filtering by:
+  - Role
+  - Date range
+  - Log type
+- Bypasses observability agents to collect logs only on the node where the command is run.
+- Let’s you save logs locally by using the `-SaveToPath` parameter.
+- Supports secure credential access when saving to a network share.
 
 ## Azure Local disconnected when the appliance VM is connected to Azure
 
