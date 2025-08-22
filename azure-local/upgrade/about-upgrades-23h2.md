@@ -44,7 +44,7 @@ Azure Local 2311.2 is the latest version of the solution, offering a multitude o
 
 To upgrade Azure Local from an older version, follow these high-level steps:
 
-1. Upgrade the *old* OS to the *new* OS [via PowerShell (recommended)](./upgrade-22h2-to-23h2-powershell.md).
+1. Upgrade the *old* OS to the *new* OS [via PowerShell](./upgrade-22h2-to-23h2-powershell.md).
 
 1. Perform post-OS upgrade tasks.
 
