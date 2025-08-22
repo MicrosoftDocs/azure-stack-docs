@@ -23,8 +23,8 @@ There are two 2508 releases for August. Here are the details of each release:
 
 |Solution version  | OS version |
 |---------|---------|
-|12.2508.1001.44 |  26100.4946 |
-|11.2508.1001.43  | 25398.1791  |
+|12.2508.1001.46 |  26100.4946 |
+|11.2508.1001.45  | 25398.1791  |
 
 For more information, see [Release information summary](./release-information-23h2.md).
 
