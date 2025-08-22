@@ -24,7 +24,7 @@ Azure App Service on Azure Stack Hub 25 R1 brings new updates to Azure Stack Hub
 
 - Updates to .NET 8 and 9.
 - Updates to App Service on Azure Stack Hub Resource Provider.
-- Resolution to [issues customers encountered with 24R1](## Issues fixed in this release).
+- Resolution to [issues customers encountered with 24R1](#issues-fixed-in-this-release).
 
 > [!IMPORTANT]
 > With Azure App Service on Azure Stack Hub 25R1 operators must deploy or update via the **Complete offline installation or upgrade** pathway. Download links are provided in the [deploy](azure-stack-app-service-deploy.md) or [update](azure-stack-app-service-update.md) documentation to the installer, helper scripts, and the offline package zip file.

@@ -9,10 +9,9 @@ ms.reviewer: alkohli
 ---
 
 
-# Operational security for the Azure Local security book
+# Operational security in Azure Local
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
-
 
 Operational security in Azure Local means ongoing operations using Windows Admin Center and ongoing compliance using Microsoft Defender for Cloud and other tools.
 

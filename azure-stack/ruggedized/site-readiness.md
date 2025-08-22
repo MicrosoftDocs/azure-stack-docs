@@ -7,8 +7,8 @@ manager: lizross
 ms.service: azure-stack
 ms.topic: article
 ms.date: 07/21/2021
-ms.author: wamota
-ms.reviewer: wamota
+ms.author: sethm
+ms.reviewer: sethm
 ms.lastreviewed: 10/14/2020
 ---
 
