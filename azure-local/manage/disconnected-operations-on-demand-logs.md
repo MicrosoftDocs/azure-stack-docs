@@ -299,7 +299,7 @@ If the Stamp ID isn't set and isn't passed to the `Send-DiagnosticData` cmdlet m
 
 ### Send-DiagnosticData –SaveToPath (applicable for Azure Local Host node logs)
 
-The `Send-DiagnosticData` cmdlet gathers logs and, when needed, securely uploads them to Microsoft for analysis. It supports both Azure Stack HCI and Azure Local environments, providing detailed telemetry and diagnostic data to help troubleshoot issues. This cmdlet is available when the Telemetry and Diagnostics extension is installed, ensuring all necessary components for log collection and upload are present.
+The `Send-DiagnosticData` cmdlet gathers logs and, when needed, securely uploads them to Microsoft for analysis. It supports both Azure Stack HCI and Azure Local environments, providing detailed telemetry and diagnostic data to help troubleshoot issues. This cmdlet is available when the telemetry and diagnostics extension is installed, ensuring all necessary components for log collection and upload are present.
 
 What `Send-DiagnosticData` does:
 
