@@ -224,7 +224,7 @@ Send-DiagnosticData -ResourceGroupName <String> -SubscriptionId <String> -Tenant
   - Azure TenantID where temporary Arc resource will be created.
 
 - RegistrationWithDeviceCode `[<SwitchParameter>]`
-    - Switch to use device code for authentication. This is the default if Service Principal credentials (-RegistrationWithCredential {creds}) is not provided.
+  - Switch to use device code for authentication. This is the default if Service Principal credentials (-RegistrationWithCredential {creds}) is not provided.
 - RegistrationWithCredential `<PSCredential>`
   - Service Principal credentials used for authentication to register ArcAgent.
 - RegistrationRegion `<String>`
@@ -237,12 +237,13 @@ Send-DiagnosticData -ResourceGroupName <String> -SubscriptionId <String> -Tenant
   - Optional. Observability root folder path where the standalone pipeline is (temporarily) installed and activity logs related to sending diagnostic data are output.
     - Default: {DiagnosticLogPath}\..\SendLogs_{yyyyMMddTHHmmssffff} (a new file created in the DiagnosticLogPath parent directory)
 - StampId `<Guid>`
-    - Optional. Unique id for disconnected operations deployment. This GUID is used for tracking collected logs on Microsoft support. Same can be retrieved using Get-ApplianceInstanceConfiguration when management endpoint is accessible for disconnected operations appliance VM. The default value applied will be based on the following setting:
-        - Provided StampId GUID
-        - $env:STAMP_GUID (when StampId GUID not provided)
-        - The host machine's UUID (when StampId GUID not provided and $env:STAMP_GUID not set)
+  - Optional. Unique id for disconnected operations deployment. This GUID is used for tracking collected logs on Microsoft support. Same can be retrieved using Get-ApplianceInstanceConfiguration when management endpoint is accessible for disconnected operations appliance VM. The default value applied will be based on the following setting:
+    - Provided StampId GUID
+    - $env:STAMP_GUID (when StampId GUID not provided)
+    - The host machine's UUID (when StampId GUID not provided and $env:STAMP_GUID not set)
 
 Example:
+
 ```powershell
 Send-DiagnosticData with device code login (used by default if no credential is provided, even if -RegistrationWithDeviceCode is missing):
 
@@ -389,26 +390,6 @@ Here's what you need to do log collection in a connected disconnected operations
 
 > [!NOTE]
 > For each deployment, the management IP address, management endpoint client certificate, and certificate password are different. Make sure you use the correct values for your deployment.
-
-<!--## Trigger on demand log collection
-
-To trigger on demand log collection in Azure Local disconnected operations, use the following cmdlets with the parameters FromDate and ToDate in PowerShell:
-
-- `Invoke-ApplianceLogCollection`
-- `Invoke-ApplianceLogCollectionAndSaveToShareFolder`
-- `Get-ApplianceLogCollectionHistory`
-- `Get-ApplianceLogCollectionJobStatus`
-
-> [!NOTE]
-> Run these commands on the host that can access the management endpoint.
-
-## Triage Azure Local issues
-
-Use the following cmdlets and references to triage Azure Local issues.
-
-- `AzsSupportDataBundle`. For more information, see [Azure Local Support Diagnostic Tool](/azure/azure-local/manage/support-tools).
-- `Send-AzStackHciDiagnosticData`. For more information, see [Get support for Azure Local deployment issues](/azure/azure-local/manage/get-support-for-deployment-issues).
-- `Get-SDDCDiagnosticInfo` and upload it to customer service and support (CSS) data transfer manager (DTM) share. For more information, see [Collect diagnostic data for clusters](/azure/azure-local/manage/collect-diagnostic-data).-->
 
 ## Security considerations
 
