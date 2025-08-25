@@ -58,7 +58,8 @@ The following table lists the known issues in this release:
 
 |Feature  |Issue  |Workaround  |
 |---------|---------|---------|
-| Environment checker<!--34496563--> |Environment Checker output doesn't include all the results in the JSON file used by update service when running the `Get-SolutionUpdateEnvironment` command.  | There is no known workaround for this issue in this release. |
+|Environment checker<!--34496563--> |Environment checker output doesn't include all the results in the JSON file used by update service when running the `Get-SolutionUpdateEnvironment` command.  | There is no known workaround for this issue in this release. |
+|Environment checker<!--34496563--> |`Test-ProxyBypass` in environment checker is incorrectly checking `WinHTTP` and `Winlnet` for values only present in the environment variables. | There is no known workaround for this issue in this release. |
 
 
 ## Known issues from previous releases
