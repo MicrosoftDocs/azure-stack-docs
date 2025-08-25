@@ -13,7 +13,7 @@ ms.date: 10/15/2024
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2-22h2.md)]
 
-This article describes how to set up log alerts for Azure Local systems: using Insights for Azure Local and using pre-existing sample log queries, such as average node CPU, available memory, available volume capacity, and more.
+This article describes how to set up log alerts for Azure Local systems: using Insights for Azure Local and using preexisting sample log queries, such as average node CPU, available memory, available volume capacity, and more.
 
 For information about how to set up metric alerts, see [Set up metric alerts for Azure Local](./setup-metric-alerts.md).
 
@@ -53,7 +53,7 @@ Follow these steps to set up log alerts using Insights. Ensure that you reviewed
 
 ## Set up alerts using sample log queries
 
-You can start monitoring your Azure Local system and setting up alerts for it by using pre-existing log queries available in the [Azure portal](https://portal.azure.com). These queries can help you check and monitor the health of your system.
+You can start monitoring your Azure Local system and setting up alerts for it by using preexisting log queries available in the [Azure portal](https://portal.azure.com). These queries can help you check and monitor the health of your system.
 
 Follow these steps to set up log alerts using sample log queries. Ensure that you reviewed and completed the [prerequisites](#prerequisites).
 
