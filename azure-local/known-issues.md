@@ -27,11 +27,11 @@ For the 2508 release of Azure Local, Microsoft released two security updates, ea
 
 | Solution version  | OS build  |
 |---------|---------|---------|
-| 11.2508.1001.45          | 25398.1791        |
-| 12.2508.1001.46         | 26100.4946       |
+| 11.2508.1001.47          | 25398.1791        |
+| 12.2508.1001.48         | 26100.4946       |
 
 > [!IMPORTANT]
-> The new deployments of this software use the **12.2508.1001.46** build. You can also update an existing deployment from 2506 by using **11.2508.1001.45**.
+> The new deployments of this software use the **12.2508.1001.48** build. You can also update an existing deployment from 2507 by using **11.2508.1001.47**.
 
 Release notes for this version include the issues fixed in this release, known issues in this release, and release note issues carried over from previous versions.
 
@@ -58,7 +58,7 @@ The following table lists the known issues in this release:
 
 |Feature  |Issue  |Workaround  |
 |---------|---------|---------|
-| Deployment, Add-Node, <br> Upgrade, and PreUpdate checks<!--34496563--> |The Link Layer Discovery Protocol (LLDP) tool produces false warnings in `StandardClusterSwitchConsistency` transiently due to test logic issues. All other tests also display false warnings caused by non-Ethernet network interface naming. You'll see messages such as`No physical ethernet adapters` even though networking (hardware, RDMA, intents, storage) is healthy and verified.  |Ignore all the LLDP tool warnings. This issue is with the test itself; the environment is healthy, and no action is required.  |
+| Environment checker<!--34496563--> |Some validators do not write their results to update json, for update service to print when running the `Get-SolutionUpdateEnvironment` command.  | There is no workaround for this issue in this release. |
 
 
 
