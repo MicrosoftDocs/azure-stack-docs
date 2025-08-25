@@ -10,8 +10,6 @@ ms.date: 08/26/2025
 
 # Azure Local release information
 
-<!--[!INCLUDE [azure-local-banner-resource-bridge](includes/azure-local-banner-resource-bridge.md)]-->
-
 To enhance your Azure Local (formerly known as Azure Stack HCI) experience, we periodically release feature updates that introduce new capabilities and improvements. Additionally, Azure Local provides cumulative updates that include monthly quality and security enhancements. These updates are listed for each instance, ensuring your devices remain protected and productive.
 
 This article provides the release information for Azure Local, including the release build and OS build information.
