@@ -224,7 +224,7 @@ Send-DiagnosticData -ResourceGroupName <String> -SubscriptionId <String> -Tenant
   - Azure TenantID where temporary Arc resource will be created.
 
 - RegistrationWithDeviceCode `[<SwitchParameter>]`
-    - Switch to use device code for authentication. This is the default if Service Principal credentials (-RegistrationWithCredential {creds}) is not provided.
+  - Switch to use device code for authentication. This is the default if Service Principal credentials (-RegistrationWithCredential {creds}) is not provided.
 - RegistrationWithCredential `<PSCredential>`
   - Service Principal credentials used for authentication to register ArcAgent.
 - RegistrationRegion `<String>`
@@ -237,12 +237,13 @@ Send-DiagnosticData -ResourceGroupName <String> -SubscriptionId <String> -Tenant
   - Optional. Observability root folder path where the standalone pipeline is (temporarily) installed and activity logs related to sending diagnostic data are output.
     - Default: {DiagnosticLogPath}\..\SendLogs_{yyyyMMddTHHmmssffff} (a new file created in the DiagnosticLogPath parent directory)
 - StampId `<Guid>`
-    - Optional. Unique id for disconnected operations deployment. This GUID is used for tracking collected logs on Microsoft support. Same can be retrieved using Get-ApplianceInstanceConfiguration when management endpoint is accessible for disconnected operations appliance VM. The default value applied will be based on the following setting:
-        - Provided StampId GUID
-        - $env:STAMP_GUID (when StampId GUID not provided)
-        - The host machine's UUID (when StampId GUID not provided and $env:STAMP_GUID not set)
+  - Optional. Unique id for disconnected operations deployment. This GUID is used for tracking collected logs on Microsoft support. Same can be retrieved using Get-ApplianceInstanceConfiguration when management endpoint is accessible for disconnected operations appliance VM. The default value applied will be based on the following setting:
+    - Provided StampId GUID
+    - $env:STAMP_GUID (when StampId GUID not provided)
+    - The host machine's UUID (when StampId GUID not provided and $env:STAMP_GUID not set)
 
 Example:
+
 ```powershell
 Send-DiagnosticData with device code login (used by default if no credential is provided, even if -RegistrationWithDeviceCode is missing):
 
@@ -298,24 +299,21 @@ If the Stamp ID isn't set and isn't passed to the `Send-DiagnosticData` cmdlet m
 
 ### Send-DiagnosticData –SaveToPath (applicable for Azure Local Host node logs)
 
-Add documentation or refer to existing documentation link from Azure Local connected
-The Send-DiagnosticData cmdlet collects logs and, if needed, securely sends them to Microsoft for analysis. It works with both Azure Stack HCI and Azure Local environments, helping troubleshoot issues by providing detailed telemetry and diagnostic data. This cmdlet is available when the Telemetry and Diagnostics extension is installed, ensuring all components needed for log collection and upload are in place.
-What Send-DiagnosticData does:
-•	Collects logs from the local system, including:
-o	Role-specific logs
-o	Supplementary logs
-o	Software Defined Data Center (SDDC) log (Optional)
-•	Supports filtering by:
-o	Role
-o	Date range
-o	Log type
-•	Bypasses observability agents to collect logs only on the node where the command is run.
-•	Let’s you save logs locally by using the -SaveToPath parameter.
-•	Supports secure credential access when saving to a network share.
+The `Send-DiagnosticData` cmdlet gathers logs and, when needed, securely uploads them to Microsoft for analysis. It supports both Azure Stack HCI and Azure Local environments, providing detailed telemetry and diagnostic data to help troubleshoot issues. This cmdlet is available when the telemetry and diagnostics extension is installed, ensuring all necessary components for log collection and upload are present.
 
+What `Send-DiagnosticData` does:
 
-Send-AzStackHciDiagnosticData (Applicable for Azure Local Host node logs)
-Add documentation or refer to existing documentation link from Azure Local connected
+- Collects logs from the local system, including:
+  - Role-specific logs
+  - Supplementary logs
+  - Software Defined Data Center (SDDC) log (Optional)
+- Supports filtering by:
+  - Role
+  - Date range
+  - Log type
+- Bypasses observability agents to collect logs only on the node where the command is run.
+- Let’s you save logs locally by using the `-SaveToPath` parameter.
+- Supports secure credential access when saving to a network share.
 
 ## Azure Local disconnected when the appliance VM is connected to Azure
 
@@ -392,26 +390,6 @@ Here's what you need to do log collection in a connected disconnected operations
 
 > [!NOTE]
 > For each deployment, the management IP address, management endpoint client certificate, and certificate password are different. Make sure you use the correct values for your deployment.
-
-<!--## Trigger on demand log collection
-
-To trigger on demand log collection in Azure Local disconnected operations, use the following cmdlets with the parameters FromDate and ToDate in PowerShell:
-
-- `Invoke-ApplianceLogCollection`
-- `Invoke-ApplianceLogCollectionAndSaveToShareFolder`
-- `Get-ApplianceLogCollectionHistory`
-- `Get-ApplianceLogCollectionJobStatus`
-
-> [!NOTE]
-> Run these commands on the host that can access the management endpoint.
-
-## Triage Azure Local issues
-
-Use the following cmdlets and references to triage Azure Local issues.
-
-- `AzsSupportDataBundle`. For more information, see [Azure Local Support Diagnostic Tool](/azure/azure-local/manage/support-tools).
-- `Send-AzStackHciDiagnosticData`. For more information, see [Get support for Azure Local deployment issues](/azure/azure-local/manage/get-support-for-deployment-issues).
-- `Get-SDDCDiagnosticInfo` and upload it to customer service and support (CSS) data transfer manager (DTM) share. For more information, see [Collect diagnostic data for clusters](/azure/azure-local/manage/collect-diagnostic-data).-->
 
 ## Security considerations
 
