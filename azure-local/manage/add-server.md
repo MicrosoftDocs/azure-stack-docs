@@ -4,7 +4,7 @@ description: Learn how to manage capacity on your Azure Local, version 23H2 syst
 ms.topic: how-to
 author: alkohli
 ms.author: alkohli
-ms.date: 06/26/2025
+ms.date: 08/26/2025
 ---
 
 # Add a node on Azure Local
@@ -99,20 +99,30 @@ On the new node that you plan to add, follow these steps.
 1. Install the operating system and required drivers on the new node that you plan to add. Follow the steps in [Install the Azure Stack HCI Operating System, version 23H2](../deploy/deployment-install-os.md).
 
     >[!NOTE]
-    > - For versions 2503 and later, you'll need to use the OS image of the same solution as that running on the existing cluster. 
-    > - Use the [Get solution version](../update/azure-update-manager-23h2.md#get-solution-version) to identify the solution version that you are running on the cluster. 
-    > - Use the [OS image](https://github.com/Azure-Samples/AzureLocal/blob/main/os-image/os-image-tracking-table.md) table to identify and download the appropriate OS image version. 
+    > - For versions 2503 and later, you'll need to use the OS image of the same solution as that running on the existing cluster.
+    > - Use the [Get solution version](../update/azure-update-manager-23h2.md#get-solution-version) to identify the solution version that you are running on the cluster.
+    > - Use the [OS image](https://github.com/Azure-Samples/AzureLocal/blob/main/os-image/os-image-tracking-table.md) table to identify and download the appropriate OS image version.
 
-2. Register the node with Arc. Follow the steps in [Register with Arc and set up permissions](../deploy/deployment-arc-register-server-permissions.md).
+1. Register the node with Arc. Follow the steps in [Register with Arc and set up permissions](../deploy/deployment-arc-register-server-permissions.md).
 
     > [!NOTE]
     > You must use the same parameters as the existing node to register with Arc. For example: Resource Group name, Region, Subscription, and Tenant.
 
-3. Assign the following permissions to the newly added nodes:
+1. Assign the following permissions to the newly added nodes:
 
     - Azure Stack HCI Device Management Role
     - Key Vault Secrets User
     For more information, see [Assign permissions to the node](../deploy/deployment-arc-register-server-permissions.md).
+
+If you're scaling out from a single-node scenario, follow these steps first:
+
+1. [Configure a quorum witness](/windows-server/failover-clustering/deploy-quorum-witness?tabs=domain-joined-witness%2Cpowershell%2Cfailovercluster1&pivots=cloud-witness) for the Azure Local instance.
+
+1. Configure a storage intent (if this wasn't done during the initial deployment of the Azure Local instance).
+
+    ```powershell
+    Set-StorageNetworkIntent -Name "StorageNet" -StorageIntentAdapters "Ethernet1, Ethernet2" -Switchless $false -VLANID "877, 888"
+    ```
 
 On a node that already exists on your system, follow these steps:
 
@@ -151,6 +161,12 @@ Following recovery scenarios and the recommended mitigation steps are tabulated 
 | Added a new node with orchestrator. <br>The operation succeeded partially but had to start with a fresh operating system install. | In this scenario, orchestrator has already updated its knowledge store with the new node. Use the repair node scenario. | Yes |
 
 ### Troubleshoot issues
+
+Starting with the 2508 release, validation runs after you execute the `Add-Server` command. If a test fails, the validator returns information to help you resolve the failure.
+
+Here's an example of a validation failure message:
+
+:::image type="content" source="./media/add-server/validation-error.png" alt-text="Screenshot of validation error message." lightbox="./media/add-server/validation-error.png":::
 
 If you experience failures or errors while adding a node, you can capture the output of the failures in a log file. On a node that already exists on your system, follow these steps:
 
