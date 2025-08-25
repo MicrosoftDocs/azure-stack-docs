@@ -5,11 +5,11 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 10/21/2024
+ms.date: 08/04/2025
 ---
 # Virtual machine load balancing
 
-> Applies to: Azure Local 2311.2 and later; Windows Server 2022, Windows Server 2019, Windows Server 2016
+> Applies to: Azure Local 2311.2 and later; Windows Server 2025, Windows Server 2022, Windows Server 2019, Windows Server 2016
 
 [!INCLUDE [hci-arc-vm](../includes/hci-arc-vm.md)]
 
@@ -72,9 +72,9 @@ You can configure if and when load balancing occurs using the cluster common pro
 
 |AutoBalancerMode |Behavior|
 |-----------------|-----------|
-| 0 | Disabled |
-| 1 | Load balance upon machine join |
-| 2 (default) | Load balance upon machine join and every 30 minutes |
+| 0 | Disabled (default for Azure Local) |
+| 1 | Load balance upon machine join (default for Windows Server) |
+| 2 | Load balance upon machine join and every 30 minutes |
 
 You can also configure the aggressiveness of balancing by using the cluster common property `AutoBalancerLevel`. To control the aggressiveness threshold, run the following in PowerShell, substituting a value from the table:
 
