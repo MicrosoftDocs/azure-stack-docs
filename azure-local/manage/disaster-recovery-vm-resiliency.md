@@ -143,10 +143,19 @@ During the replication process, the hardware and network you use affects the ser
 
 In choosing between Azure Site Recovery (ASR) and Hyper-V Replica for Azure Local VMs, review the differences between both solutions:
 
-| **Azure Site Recovery (ASR)** | **Hyper-V Replica** |
-|------------------------------|---------------------|
-| - Provides cloud-based failover using Azure as the disaster recovery site when no secondary datacenter is available.<br>- Supports multi-VM recovery plans that orchestrate failover sequences (for example, domain controllers before app servers).<br>- Easy configuration via Azure Portal using the Azure Local ASR extension wizard. | - Enables disaster recovery between on-premises locations such as branch offices or datacenters.<br>- Offers full control without requiring Azure, ideal for isolated environments or data sovereignty needs.<br>- No Azure usage costs beyond existing infrastructure. |
-| **Considerations:**<br>- Requires an Azure subscription and incurs costs for storage and compute during drills or failovers.<br>- Needs careful planning to ensure post-failover service accessibility (e.g., network, directory services, firewall rules).<br>- VM management from Azure Portal is seamless after failover.<br>- Failback to the primary site restores full Azure Portal management. | **Considerations:**<br>- May require more manual setup and management, especially for multi-VM failovers.<br>- Also requires planning for service accessibility in a different cluster/network (for example, network, directory services, firewall rules).<br>- VMs are unmanaged in Azure after failover unless hydrated at the new location (hydration is in preview as of July 2025).<br>- Treat disaster recovery site as temporary, fail back promptly to resume Azure Portal management. |
+
+| Feature |Azure Site Recovery |Hyper-V Replica |
+|---------|---------|---------|
+|Replication destinations      |  Azure Local to Azure         |   Azure Local to Azure  Local    |
+|Failed over VMs run as      |  Azure VMs        |  Azure Local VMs        |
+|Deployment      |    Automated on all nodes, initiated from Azure Portal , uses [Azure Site Recovery](azure-site-recovery.md) extension.     |  Manual, on each node, out-of-band, through local tools ([Hyper-V Manager](/windows-server/virtualization/hyper-v/manage/set-up-hyper-v-replica#deployment-steps)).     |
+|Requires Azure control plane      |      Yes   |    No     |
+|Provides recovery plans for orchestration of failover sequences      |    Yes     |    No     |
+|Requires network evaluation for the failed over VM to continue servicing      |    Yes     |    Yes     |
+|Incurs Azure usage cost      |    Yes. See [Pricing - Site Recovery](https://azure.microsoft.com/en-us/pricing/details/site-recovery).     |     No    |
+|Requires hydration (preview) if the VM is failed back to its original site after disaster is mitigated      |  No       |   No (the VM can be failed over to the disaster recovery site temporarily and failed back to its original site after disaster is mitigated).   |
+|Requires hydration (preview) if the failed over VM had to be permanently reside in the disaster recovery site      |   No (Azure VMs don’t require hydration).      |     Yes    |
+
 
 **Use ASR and Hyper-V Replica both**: Organizations with remote sites with single clusters and larger hubs with multiple clusters can extend Azure as a disaster recovery site, use ASR for remote sites and Hyper-V Replica for larger locations. This allows some VMs to replicate to Azure while others replicate to a secondary site, ensuring flexibility and tailored disaster recovery strategies for various operational needs.
 
