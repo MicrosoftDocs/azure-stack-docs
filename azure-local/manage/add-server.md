@@ -114,11 +114,11 @@ On the new node that you plan to add, follow these steps.
     - Key Vault Secrets User
     For more information, see [Assign permissions to the node](../deploy/deployment-arc-register-server-permissions.md).
 
-If you're scaling out from a single-node scenario, follow these steps first:
+If you're scaling out from a single-node, follow these steps first:
 
 1. [Configure a quorum witness](/windows-server/failover-clustering/deploy-quorum-witness?tabs=domain-joined-witness%2Cpowershell%2Cfailovercluster1&pivots=cloud-witness) for the Azure Local instance.
 
-1. Configure a storage intent (if this wasn't done during the initial deployment of the Azure Local instance).
+1. Configure a storage intent if you didn't do this during the initial deployment of your Azure Local instance. Modify the parameters to match your environment.
 
     ```powershell
     Set-StorageNetworkIntent -Name "StorageNet" -StorageIntentAdapters "Ethernet1, Ethernet2" -Switchless $false -VLANID "877, 888"
