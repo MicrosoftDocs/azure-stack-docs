@@ -44,6 +44,10 @@ This release has the following features and improvements:
 
 <!--- **Trusted Virtual Machine (Trusted VM) guest attestation**: Azure Local 2508 release introduces guest attestation (also known as boot integrity verification) for Azure Local virtual machines with Trusted launch. This feature lets you verify that the virtual machine starts in a well known good state by checking the integrity of the entire boot chain. This helps detect any unexpected changes to the boot chain (firmware, OS boot loader, and drivers) and take action if it's compromised. For more information, see [Trusted VM guest attestation](./index.yml).-->
 
+- **Deployment and upgrade changes**:
+    - Starting this release, ARM deployment templates are available for previous releases.
+    - With this release, Brownfield upgrade scenarios no longer require Service Principal Name (SPN) creation and have moved to managed-system identity (MSI).
+  
 - **Azure Local VM updates**:
     - **Edit DNS servers on logical networks via Azure CLI**: Starting with this release, DNS servers associated with the logical networks can be modified for Azure Local virtual machines. For more information, see [Manage DNS server configuration on logical networks](./manage/manage-arc-virtual-machine-resources.md).
     - **Save and Pause Azure Local VMs**: The ability to save and pause an Azure Local VM is available on the Azure portal. For more information, see [Save and Pause Azure Local VMs](./manage/manage-arc-virtual-machines.md#save-a-vm).
