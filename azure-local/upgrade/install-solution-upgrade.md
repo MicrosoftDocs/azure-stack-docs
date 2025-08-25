@@ -14,11 +14,14 @@ ms.service: azure-local
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2-22h2.md)]
 
-[!INCLUDE [end-of-service-22H2](../includes/end-of-service-22h2.md)]
+> [!IMPORTANT]
+> [!INCLUDE [end-of-service-22H2](../includes/end-of-service-22h2.md)]
 
-This article describes how to install the solution upgrade on your Azure Local instance after the operating system (OS) was upgraded from version 22H2 to version 23H2.
+This article describes how to install the solution upgrade on your Azure Local instance after upgrading the operating system (OS) from one of the following versions:
 
-Throughout this article, we refer to OS version 23H2 as the *new* version and version 22H2 as the *old* version.
+- 20349.xxxx (22H2) to 25398.xxxx (23H2)
+- 20349.xxxx (22H2) to 26100.xxxx (24H2)
+- 25398.xxxx (23H2) to 26100.xxxx (24H2)
 
 > [!IMPORTANT]
 > While the OS upgrade is generally available, the solution upgrade is rolled out in phases. Additionally, the solution upgrade isn't available to customers in Azure China.
@@ -39,7 +42,6 @@ Before you install the solution upgrade, make sure that you:
 
 There are a few things to consider before you begin the solution upgrade process:
 
-- The solution upgrade isn't yet supported on OS version 26100.xxxx.
 - Microsoft only supports upgrade applied from Azure Local resource page. Use of third party tools to install upgrades isn't supported.
 - We recommend you perform the solution upgrade during a maintenance window. After the upgrade, host machine might reboot and the workloads will be live migrated, causing brief disconnections.
 - If you have Azure Kubernetes Service (AKS) workloads on Azure Local, wait for the solution upgrade banner to appear on the Azure Local resource page. Then, remove AKS and all AKS hybrid settings before you apply the solution upgrade.
@@ -156,7 +158,6 @@ After the solution upgrade is complete, you may need to perform additional tasks
 - You may need to create workloads and storage paths for each volume. For details, see [Create volumes on Azure Local](/windows-server/storage/storage-spaces/create-volumes) and [Create storage path for Azure Local](../manage/create-storage-path.md).
 
 - If you haven't used Cluster-Aware Updating (CAU) for patching your system, you must ensure the permissions are set correctly. For more information, see [Cluster aware updating (CAU)](../plan/configure-custom-settings-active-directory.md#cluster-aware-updating-cau)
-
 
 ## Next steps
 
