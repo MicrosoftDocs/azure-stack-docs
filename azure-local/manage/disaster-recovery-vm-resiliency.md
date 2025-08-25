@@ -25,11 +25,28 @@ If you're using MABS, there are two approaches to protect VMs: **host-level VM b
 
 - **Host-level VM backup**: Install the backup agent on each Azure Local host (each cluster node) and back up entire VMs at the hypervisor level. This captures the whole VM (all virtual disks). It has the advantage of not requiring an agent inside each VM, and its agnostic to the guest OS. Host-level backups allow full VM restores, where you can recover an entire VM to the same or different cluster. However, host-level backups aren't application-aware. For example, they won't truncate SQL logs or guarantee application-consistent restores beyond what Volume Shadow Copy Service (VSS) provides.
 
+    > [!NOTE]
+    >- Restoring an Azure Local VM on a different cluster will restore the VM as an unmanaged VM. This means that all services inside the VM will start working, but the VM can’t be managed from Azure until it's registered (hydrated) on the new Azure Local cluster and rehomed to the resource that exists in Azure.
+    >- Rehoming ensures that the existing Azure resource is updated with the new resource group (optional, you can also keep it in the same resource group), custom location, storage path, and logical network of the VM. However, if the VM is restored on the same cluster, this isn't needed. After the VM is restored, it continues to be manageable from Azure. Hydration is currently in private preview, and will be available in future releases.
+
 - **Guest-level VM backup**: Install backup agents inside the guest OS of the VM. This allows application-consistent backups for VSS-aware applications running within the operating system, ensuring that application data is captured in a consistent state. For example, you can back up SQL databases with full fidelity and restore individual items like a single database or a specific file easily. The trade-off is manageability: you must manage agents on each VM, and the backup only covers what’s inside the VM, to restore the whole VM, you’d typically rebuild it and then restore data within.  
 
 - **Use both**: Many organizations use a combination, guest-level backups for critical applications that need point-in-time or item-level recovery like restoring a single database or a file without rolling back the whole VM, plus host-level backups for fast recovery of entire VMs or to recover from host failure scenarios.
 
 Setting up MABS involves deploying the MABS server software on a dedicated VM on the cluster, configuring its local storage, installing protection agents on the Azure Local hosts and/or guests, and then creating protection groups with the VMs you want to protect. Protection groups define what is backed up (for example, specific VMs), the backup schedule, short-term and long-term retention policies on local disk or Azure. For more information on installing MABS for Azure Local VMs, see [Back up Azure Local virtual machines with Azure Backup Server](/%20azure/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines).
+
+
+|Feature  |Host-level VM backup |Guest-level VM backup |
+|---------|---------|---------|
+|Requires agent in the guest OS    |  No     |  Yes    |
+|Requires agent in all nodes of the cluster      | Yes   |    No     |
+|Agnostic to guest OS     |   Yes      |     No    |
+|Application aware    |  No       |     Yes    |
+|Backup   |    The whole VM and disks     |   Applications and files (application-consistent backups that are VSS aware)       |
+|Restore   |   Whole VM      |   App data and individual files      |
+|Restore VM to the same cluster    |    Yes     |   Not applicable      |
+|Restore VM to an alternate cluster     |    Yes     |   Not applicable      |
+
 
 ### Partner backup solutions
 
@@ -59,7 +76,7 @@ Veeam backup and replication supports backup and replication of Azure Local VMs.
 - [Veeam Azure Local support](https://www.veeam.com/kb4047)
 - [Veeem Supported Platforms](https://helpcenter.veeam.com/docs/backup/hyperv/platform_support.html)
 
-## Backup frequency, retention, and restoration testing
+### Backup frequency, retention, and restoration testing
 
 Even with hardware fault tolerance and Storage Spaces Direct maintaining multiple copies of data, implementing and regularly testing data backup processes is essential. Storage redundancy protects against infrastructure failures, but it doesn't prevent data corruption, deletion, or site-wide disasters. Regular backups ensure you can restore data or entire VMs to a previous point in time if needed.
 
@@ -68,18 +85,18 @@ Even with hardware fault tolerance and Storage Spaces Direct maintaining multipl
 - **Testing restores**: A backup is only as good as your ability to restore it, so it's important to regularly test restoration of VMs and data from backups. Periodically perform a full VM recovery test to an isolated network or a lab cluster to ensure the process is smooth and timely. This practice is part of disaster recovery strategy to guarantee that backups serve their purpose in an actual emergency.
 
 
-## Continuous Replication of business-critical VMs 
+## Continuous replication of business-critical VMs 
 
-While backups protect data and enable point-in-time recovery, they don't offer immediate failover capabilities, restoring from a backup can be time-consuming, often taking hours. For business or mission-critical VMs where even minimal downtime or data loss is unacceptable, continuous replication technologies provide a mechanism to maintain an up-to-date copy of VMs at a secondary location, enabling rapid failover and minimal data loss in the event of a disaster.
+While backups protect data and enable point-in-time recovery, they don't offer immediate failover capabilities, restoring from a backup can be time-consuming, often taking hours. For business or mission-critical VMs where even minimal downtime or data loss is unacceptable, continuous replication technologies provide a mechanism to maintain an up-to-date copy of VMs at a secondary location, enabling rapid failover and minimal data loss in the event of a disaster. Two continuous replication technologies Azure Local supports are Azure Site Recovery and Hyper-V Replica.
 
-## Use Azure Site Recovery to replicate Azure Local VMs to Azure
+### Use Azure Site Recovery to replicate Azure Local VMs to Azure
 
-Azure Site Recovery (Azure Site Recovery) is Microsoft's cloud-based disaster recovery solution designed to replicate on-premises VMs to Azure. Azure Site Recovery facilitates the replication of Azure local VMs into Azure, ensuring the protection of business-critical workloads. This service continuously transmits changes from your on-premises VMs to Azure. As a result, in the event of a significant outage at your local site or cluster, the VM can be failed over to Azure to maintain operational continuity.
+Azure Site Recovery is Microsoft's cloud-based disaster recovery solution designed to replicate on-premises VMs to Azure. Azure Site Recovery facilitates the replication of Azure local VMs into Azure, ensuring the protection of business-critical workloads. This service continuously transmits changes from your on-premises VMs to Azure. As a result, in the event of a significant outage at your local site or cluster, the VM can be failed over to Azure to maintain operational continuity.
 
 Key points about Azure Site Recovery for Azure Local:
 
 - Deployment  
-    - Automated deployment: Azure Local created an extension to Azure Site Recovery for automated deployment. Azure Site Recovery extension can detect all the nodes of the cluster and deploy Azure Site Recovery on all nodes automatically and configure them with the replication policy. 
+    - Automated deployment: Azure Local created an extension to Azure Site Recovery for automated deployment. Azure Site Recovery extension can detect all the nodes of the cluster and deploy Azure Site Recovery on all nodes automatically and configure them with the replication policy. For more information, see [Protect VM workloads with Azure Site Recovery](azure-site-recovery.md#step-1-prepare-infrastructure-on-your-target-host).
     - Manual deployment: Azure Site Recovery extension for Azure Local is in preview and only applicable to test environments, for those customers that need a production ready solution, Azure Site Recovery can be configured manually on Azure Local cluster using the [Hyper-V to Azure disaster recovery](/azure/site-recovery/hyper-v-azure-architecture) option.  
 
 - Frequent replication: Azure Site Recovery can achieve Recovery Point Objectives (RPOs) as low as 30 seconds.
@@ -89,6 +106,9 @@ Key points about Azure Site Recovery for Azure Local:
     - During an actual disaster, if the primary site is down unexpectedly, you would do an Unplanned Failover even if the source VM isn't running. 
     - For scenarios such as hardware maintenance or replacement, you can initiate a Planned Failover. This will gracefully shut down the VM so that it can commit its memory to disk to ensure zero data loss. 
     - After failover, your VM runs in Azure.  
+    
+    > [!NOTE]
+    > If you failback an Azure Local VM on a different cluster, all the services inside the VM will continue working, but to continue managing the VM from Azure, it must be hydrated on the new cluster. However, hydration isn't needed if the VM failed back on the same cluster. The VM will still be manageable from Azure. Hydration, currently in private preview, will be available in future releases.
 
 - Failback: 
     - When the disaster is mitigated, and the cluster is operational, Azure Site Recovery can reverse the replication direction and replicate any changes made while operating in Azure back to your Azure Local cluster. After reverse replication you can failback the VM, allowing operations to switch back to on-premises. 
@@ -96,29 +116,30 @@ Key points about Azure Site Recovery for Azure Local:
 
 For more information and to install Azure Site Recovery, see [Protect VM workloads with Azure Site Recovery on Azure Local (preview)](azure-site-recovery.md).
 
-## Use Hyper-V Replica for continuous replication of business-critical VMs
-
-While backups protect data and enable point-in-time recovery, they don't offer immediate failover capabilities, restoring from a backup can be time-consuming, often taking hours. For business or mission-critical VMs where even minimal downtime or data loss is unacceptable, continuous replication technologies provide a mechanism to maintain an up-to-date copy of VMs at a secondary location, enabling rapid failover and minimal data loss in the event of a disaster.
+### Use Hyper-V Replica for continuous replication of business-critical VMs
 
 Hyper-V Replica is a feature built into Azure Stack HCI operating system that enables asynchronous replication of VMs between two Hyper-V hosts or failover clusters. This technology can be utilized to replicate VMs between two separate Azure Local clusters, providing an on-premises disaster recovery solution.
 
-### Functionality
+#### Functionality
 
 When Hyper-V Replica is enabled for a VM, an initial copy of the VM (including its configuration and VHDs) is created on a designated replica server or cluster. Subsequently, changes made to the primary VM are tracked and written to log files. These logs are then transmitted to the replica site and applied to the replica VM asynchronously, based on a configurable replication frequency (for example, every 30 seconds, 5 minutes, or 15 minutes).  
 
 Configuration involves enabling the Azure Local clusters to act as replica servers, setting up authentication methods (typically Kerberos within a domain, or certificate-based for nondomain joined or cross-domain scenarios), configuring firewall rules to allow replication traffic, and then enabling replication on a per-VM basis. Per-VM settings include specifying the replica server/cluster, selecting the VHDs to replicate, choosing the replication frequency, and defining how many recovery points (snapshots in time) to maintain on the replica side. Hyper-V Replica supports replication, test failover, failover, reverse replication, and failback for both planned and unplanned scenarios.
 
-### Configuration
+> [!NOTE]
+> For Azure Local cluster-to-cluster replication, you must configure the Hyper-V Replica Broker role on each cluster. This broker coordinates replication and provides the cluster-wide endpoint for receiving VM changes.
+
+#### Configuration
 
  Hyper-V Replica needs to be configured using PowerShell on Azure Local nodes, or it can be set up remotely via the Failover Cluster Manager user interface on any Windows Server machine within the same network (as the Azure Local instances). It requires appropriate permissions to connect and administer both Azure Local machines. There's no option to configure Hyper-V Replica from the Azure portal.
 
 For more information, see the deployment steps in [Set up Hyper-V Replica](/windows-server/virtualization/hyper-v/manage/set-up-hyper-v-replica).
   
-### Network and performance considerations
+#### Network and performance considerations
 
 During the replication process, the hardware and network you use affects the services that rely on them. Depending on the amount of data replicated between the source and target systems, this process consumes a large amount of system resources. Your device performance is impacted until this process completes. Adequate network bandwidth is required between the two Azure Local clusters for Hyper-V replica to function optimally, especially with lower replication intervals (for example, 30 seconds). Similarly, the target cluster needs sufficient storage IOPS to keep up with incoming replication traffic. For more information, see [Feature and performance optimization of Hyper-V Replica (HVR)](/troubleshoot/windows-server/virtualization/feature-performance-optimization-hyper-v-replica).
 
-## Compare Azure Site Recovery and Hyper-V Replica
+### Compare Azure Site Recovery and Hyper-V Replica
 
 In choosing between Azure Site Recovery (ASR) and Hyper-V Replica for Azure Local VMs, review the differences between both solutions:
 
@@ -129,7 +150,7 @@ In choosing between Azure Site Recovery (ASR) and Hyper-V Replica for Azure Loca
 
 **Use ASR and Hyper-V Replica both**: Organizations with remote sites with single clusters and larger hubs with multiple clusters can extend Azure as a disaster recovery site, use ASR for remote sites and Hyper-V Replica for larger locations. This allows some VMs to replicate to Azure while others replicate to a secondary site, ensuring flexibility and tailored disaster recovery strategies for various operational needs.
 
-## Recovery plans and testing
+### Recovery plans and testing
 
 It's essential to have a recovery plan where you document all the steps required to fail over workloads, including the sequence (for example, domain controllers should be activated before application servers), and any necessary network adjustments (such as DNS updates and user redirection). Hyper-V Replica enables the creation of recovery plans, allowing for the sequencing of VM groups and the inclusion of scripts as part of the failover process. These plans can be manual or scripted via PowerShell.  
 

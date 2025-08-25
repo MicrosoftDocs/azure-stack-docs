@@ -1,5 +1,5 @@
 ---
-title: Disaster recovery workloads for Azure Local
+title: Workloads resiliency for Azure Local
 description: Disaster recovery workloads for Azure Local.
 ms.topic: article
 author: sipastak
@@ -62,19 +62,19 @@ Key Azure Arc-enabled SQL Server features for disaster recovery include:
 
 - **Always On Availability Group Management**: 
     - View and manage Always-On AGs on Arc-enabled SQL Servers in the Azure portal. This includes seeing the list of availability groups, their replicas and synchronization state, and performing manual failover if needed. 
-    - For more information, see http://learn.microsoft.com/sql/sql-server/azure-arc/manage-availability-group  
+    - For more information, see [Manage Always On availability groups](/sql/sql-server/azure-arc/manage-availability-group).
 
 - **Failover Cluster Instance Visibility**: 
     - Azure Arc surfaces SQL Server FCIs in the portal, allowing you to identify and monitor FCI deployments across your hybrid environment. 
-    - For more information, see https://learn.microsoft.com/sql/sql-server/azure-arc/support-for-fci 
+    - For more information, see [View Always On failover cluster instances in Azure Arc](/sql/sql-server/azure-arc/support-for-fci).
 
 - **Automated Backup and Restore**:
     - Configure automated backups via Azure Policy or the portal. The Arc SQL Server extension can schedule and execute backups according to a defined policy. You can restore them from the portal as well. 
-    - For more information, see https://learn.microsoft.com/sql/sql-server/azure-arc/backup-local and https://learn.microsoft.com/sql/sql-server/azure-arc/point-in-time-restore 
+    - For more information, see [Manage](/sql/sql-server/azure-arc/backup-local) and [Restore to a point-in-time](/sql/sql-server/azure-arc/point-in-time-restore).
 
 - **Backup to URL with Managed Identity**:
-    - Arc allows your on-premises SQL Server to use an Azure Managed Identity for authentication when backing up to Azure Blob Storage. This eliminates the need for SAS tokens or account keys. 
-    - For more information, see https://learn.microsoft.com/sql/sql-server/azure-arc/backup-to-url
+    - Arc allows your on-premises SQL Server to use an Azure Managed Identity for authentication when backing up to Azure Blob Storage. This eliminates the need for SAS tokens or account keys.
+    - For more information, see [Back up to URL with managed identity (preview)](/sql/sql-server/azure-arc/backup-to-url).
  
 ## Azure Virtual Desktop
 
