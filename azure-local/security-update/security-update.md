@@ -3,7 +3,7 @@ title:  Security updates for Azure Local
 description: Security updates for Azure Local.
 author: alkohli
 ms.topic: conceptual
-ms.date: 08/15/2025
+ms.date: 08/22/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
