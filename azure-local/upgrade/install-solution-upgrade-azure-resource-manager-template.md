@@ -3,7 +3,7 @@ title: Install solution upgrade on Azure Local using Azure Resource Manager temp
 description: Learn how to install the solution upgrade on your Azure Local instance using Azure Resource Manager template.
 author: alkohli
 ms.topic: how-to
-ms.date: 08/20/2025
+ms.date: 08/25/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -50,7 +50,6 @@ Before you install the solution upgrade, make sure that you:
 
 There are a few things to consider before you begin the solution upgrade process:
 
-- The solution upgrade isn't yet supported on OS version 26100.xxxx.
 - Microsoft supports upgrade applied from Azure Local resource page or by using an ARM template. Use of third-party tools to install upgrades isn't supported.
 - We recommend you perform the solution upgrade during a maintenance window. After the upgrade, host machine might reboot and the workloads will be live migrated, causing brief disconnections.
 <!--Confirm if this point is valid for ARM upgrade- If you have Azure Kubernetes Service (AKS) workloads on Azure Local, wait for the solution upgrade banner to appear on the Azure Local resource page. Then, remove AKS and all AKS hybrid settings before you apply the solution upgrade.-->
