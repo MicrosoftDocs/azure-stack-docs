@@ -1,10 +1,10 @@
 ---
 title: Host network requirements for Azure Local
 description: Learn the host network requirements for Azure Local
-author: dcuomo
+author: alkohli
 ms.topic: how-to
-ms.date: 04/07/2025
-ms.author: dacuo
+ms.date: 08/25/2025
+ms.author: alkohli
 ---
 
 # Host network requirements for Azure Local
@@ -137,16 +137,13 @@ Guest RDMA is not supported on Azure Local.
 
 ### Switch Embedded Teaming (SET)
 
-SET is a software-based teaming technology that has been included in the Windows Server operating system since Windows Server 2016. SET is the only teaming technology supported by Azure Local. SET works well with compute, storage, and management traffic and is supported with up to eight adapters in the same team.
+SET is a software-based teaming technology that has been included in the Windows Server operating system since Windows Server 2016. SET is the only teaming technology supported by Azure Local and well with compute, storage, and management traffic. SET supports up to eight adapters in a single team. Other NIC teaming methods, such as [Load Balancing/Failover (LBFO)](https://techcommunity.microsoft.com/t5/networking-blog/teaming-in-azure-stack-hci/ba-p/1070642), aren't supported.
+
+In Azure Local, Network ATC automatically configures both the SET and the vSwitch. You shouldn't manually deploy SET using PowerShell, such as with the [New-VMSwitch](/powershell/module/hyper-v/new-vmswitch) cmdlet. While this command enables Embedded Teaming by default when multiple adapters are listed, the recommended approach is to use Network ATC with intents.
 
 **Applicable traffic types:** compute, storage, and management
 
 **Certifications required:** Compute (Standard) or Compute (Premium)
-
-SET is the only teaming technology supported by Azure Local. SET works well with compute, storage, and management traffic.
-
-> [!IMPORTANT]
-> Azure Local doesn't support NIC teaming with the older Load Balancing/Failover (LBFO). See the blog post [Teaming in Azure Local](https://techcommunity.microsoft.com/t5/networking-blog/teaming-in-azure-stack-hci/ba-p/1070642) for more information on LBFO in Azure Local.
 
 SET is important for Azure Local because it's the only teaming technology that enables:
 
