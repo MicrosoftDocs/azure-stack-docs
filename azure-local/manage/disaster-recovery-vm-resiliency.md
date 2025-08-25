@@ -152,7 +152,7 @@ In choosing between Azure Site Recovery (ASR) and Hyper-V Replica for Azure Loca
 |Requires Azure control plane      |      Yes   |    No     |
 |Provides recovery plans for orchestration of failover sequences      |    Yes     |    No     |
 |Requires network evaluation for the failed over VM to continue servicing      |    Yes     |    Yes     |
-|Incurs Azure usage cost      |    Yes. See [Pricing - Site Recovery](https://azure.microsoft.com/en-us/pricing/details/site-recovery).     |     No    |
+|Incurs Azure usage cost      |    Yes. See [Pricing - Site Recovery](https://azure.microsoft.com/pricing/details/site-recovery).     |     No    |
 |Requires hydration (preview) if the VM is failed back to its original site after disaster is mitigated      |  No       |   No (the VM can be failed over to the disaster recovery site temporarily and failed back to its original site after disaster is mitigated).   |
 |Requires hydration (preview) if the failed over VM had to be permanently reside in the disaster recovery site      |   No (Azure VMs don’t require hydration).      |     Yes    |
 
