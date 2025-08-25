@@ -3,7 +3,7 @@ title: Post-upgrade steps on Azure Local via PowerShell
 description: Learn how to perform the post-upgrade tasks for Azure Local using PowerShell.
 author: alkohli
 ms.topic: how-to
-ms.date: 03/10/2025
+ms.date: 08/22/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -15,7 +15,7 @@ ms.service: azure-local
 
 This article describes how to perform the post-OS upgrade tasks after you upgraded the operating system (OS) to the new version. The post-upgrade tasks described in this article are required for the stability of the Azure Local instance.
 
-Throughout this article, we refer to Azure Local 2311.2 as the *new* version and Azure Local, version 22H2 as the *old* version.
+Throughout this article, we refer to the newer version of Azure Local as the *new* version and the currently installed version as the *old* version.
 
 ## Complete prerequisites
 
