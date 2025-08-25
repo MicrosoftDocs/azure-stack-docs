@@ -19,7 +19,7 @@ Because Azure Local VMs are deployed and run on an Azure Local instance, we need
 
 - [Infrastructure resiliency](disaster-recovery-infrastructure-resiliency.md)
 - [Virtual machine resiliency](disaster-recovery-vm-resiliency.md)
-- [Workloads on Azure Local VMs](disaster-recovery-workloads.md)
+- [Workloads resiliency](disaster-recovery-workloads-resiliency.md)
 
 
 ## Next steps
