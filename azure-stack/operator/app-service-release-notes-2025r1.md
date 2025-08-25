@@ -3,7 +3,7 @@ title: App Service on Azure Stack Hub 25R1 release notes
 description: Learn about what's new and updated in the App Service on Azure Stack Hub 25R1 release.
 author: apwestgarth
 ms.topic: article
-ms.date: 06/27/2025
+ms.date: 08/20/2025
 ms.author: anwestg
 ms.reviewer:
 ---
@@ -16,7 +16,7 @@ These release notes describe the improvements and fixes in Azure App Service on 
 
 ## Build reference
 
-The App Service on Azure Stack Hub 25R1 build number is **102.10.2.11**
+The App Service on Azure Stack Hub 25R1 build number is **102.10.2.12**
 
 ## What's new?
 
@@ -24,7 +24,7 @@ Azure App Service on Azure Stack Hub 25 R1 brings new updates to Azure Stack Hub
 
 - Updates to .NET 8 and 9.
 - Updates to App Service on Azure Stack Hub Resource Provider.
-- Resolution to [issues customers encountered with 24R1](## Issues fixed in this release).
+- Resolution to [issues customers encountered with 24R1](#issues-fixed-in-this-release).
 
 > [!IMPORTANT]
 > With Azure App Service on Azure Stack Hub 25R1 operators must deploy or update via the **Complete offline installation or upgrade** pathway. Download links are provided in the [deploy](azure-stack-app-service-deploy.md) or [update](azure-stack-app-service-update.md) documentation to the installer, helper scripts, and the offline package zip file.
@@ -100,6 +100,9 @@ Azure App Service on Azure Stack Update 25R1 includes the following improvements
 - Synchronization of Cipher Suites in place and preserves any modifications performed as result of customer intervention with support.
 
 ## Issues fixed in this release
+
+> [!IMPORTANT]
+> 25R1 was updated to version **102.10.2.12**. This update resolves an issue in which TLS handshakes fail due to the Kyber key_share extension in Chromium browsers. If you already updated to 25R1 (102.10.2.11), we recommend updating to this new version to resolve this issue.
 
 Newly fixed issues in this release:
 
@@ -297,3 +300,5 @@ Review the [known issues for update](#known-issues-update) and take any action p
 
 - For an overview of Azure App Service, see [Azure App Service on Azure Stack overview](azure-stack-app-service-overview.md).
 - For more information about how to prepare to deploy App Service on Azure Stack, see [Before you get started with App Service on Azure Stack](azure-stack-app-service-before-you-get-started.md).
+
+
