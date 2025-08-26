@@ -59,7 +59,12 @@ Before you begin, you must have:
 
         Example output:
 
-        :::image type="content" source="media/virtual-machine-azure-marketplace-red-hat-enterprise/console-output-1.png" alt-text="Screenshot of cloud-init clean command output." lightbox="../manage/media/virtual-machine-azure-marketplace-red-hat-enterprise/console-output-1.png":::
+        ```console
+        [hcitest@localhost ~]$ sudo yum clean all
+        Updating Subscription Management repositories.
+        17 files removed
+        [hcitest@localhost ~]$ sudo cloud-init clean
+        ```
 
     1. Clean the `cloud-init` default configuration because it isn't relevant for Azure Local VMs.
 
@@ -76,7 +81,12 @@ Before you begin, you must have:
 
        Example output:
 
-       :::image type="content" source="media/virtual-machine-azure-marketplace-red-hat-enterprise/console-output-2.png" alt-text="Screenshot of the unregister subscription-manager output." lightbox="../manage/media/virtual-machine-azure-marketplace-red-hat-enterprise/console-output-2.png":::
+       ```console
+       [hcitest@localhost ~]$ sudo subscription-manager unregister
+       Unregistering from: subscription.rhsm.redhat.com:443/subscription
+       System has been unregistered.
+       [hcitest@localhost ~]$ sudo subscription-manager
+       ```
 
     1. Clean VM-specific details.
 
@@ -97,7 +107,10 @@ Before you begin, you must have:
 
    Example output:
 
-   :::image type="content" source="media/virtual-machine-azure-marketplace-red-hat-enterprise/data-source-file.png" alt-text="Screenshot of the data source file in the cloud.cfg.d directory." lightbox="../manage/media/virtual-machine-azure-marketplace-red-hat-enterprise/data-source-file.png":::
+   ```console
+   [root@rhelsysprep cloud.cfg.d]# ls 
+   05_logging.cfg  10-azure-kvp.cfg  91-azure_datasource.cfg  README
+   ```
 
 1. Open the `91-azure_datasource.cfg` file. Run this command:
 
@@ -107,7 +120,12 @@ Before you begin, you must have:
 
    Example output:
 
-   :::image type="content" source="media/virtual-machine-azure-marketplace-red-hat-enterprise/open-data-source-file.png" alt-text="Screenshot of the open data source file." lightbox="../manage/media/virtual-machine-azure-marketplace-red-hat-enterprise/open-data-source-file.png":::
+   ```console
+   datasource_list: [ Azure ]
+   datasource:
+     Azure:
+       apply network config: False
+   ```
 
 1. Open and update the *datasource_list* from **Azure** to **NoCloud**. Run this command:
 
@@ -121,7 +139,11 @@ Before you begin, you must have:
 
       Example output:
 
-      :::image type="content" source="media/virtual-machine-azure-marketplace-red-hat-enterprise/no-cloud.png" alt-text="Screenshot of the no-cloud configuration." lightbox="../manage/media/virtual-machine-azure-marketplace-red-hat-enterprise/no-cloud.png":::
+      ```console
+      datasource_list: [NoCloud]
+      ~ ??
+      ~
+      ```
 
 1. To check that the file was updated, run this command:
 
