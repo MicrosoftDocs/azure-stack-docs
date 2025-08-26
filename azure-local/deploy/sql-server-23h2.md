@@ -1,6 +1,6 @@
 ---
 title: Deploy SQL Server on Azure Local, version 23H2
-description: This topic provides guidance on how to deploy SQL Server on Azure Local, version 23H2.
+description: This article provides guidance on how to deploy SQL Server on Azure Local, version 23H2.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
@@ -11,7 +11,7 @@ ms.date: 10/17/2024
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
-This topic provides guidance on how to deploy SQL Server on Azure Local, version 23H2.
+This article provides guidance on how to deploy SQL Server on Azure Local, version 23H2.
 
 ## Solution overview
 
@@ -25,7 +25,7 @@ This section describes at a high level how to acquire hardware for SQL Server on
 
 ### Step 1: Acquire hardware from the Azure Local Catalog
 
-First, you'll need to procure hardware. The easiest way to do that is to locate your preferred Microsoft hardware partner in the [Azure Local Catalog](https://azurestackhcisolutions.azure.microsoft.com/) and purchase an integrated system or premium solution with the Azure Stack HCI operating system preinstalled. In the catalog, you can filter to see vendor hardware that is optimized for this type of workload.
+First, you need to procure hardware. The easiest way to do that is to locate your preferred Microsoft hardware partner in the [Azure Local Catalog](https://azurestackhcisolutions.azure.microsoft.com/) and purchase an integrated system or premium solution with the Azure Stack HCI operating system preinstalled. In the catalog, you can filter to see vendor hardware that is optimized for this type of workload.
 
 Otherwise, use a validated system from the catalog and deploy it on that hardware.
 

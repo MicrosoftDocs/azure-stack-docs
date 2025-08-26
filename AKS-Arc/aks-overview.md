@@ -2,7 +2,8 @@
 title: What is AKS enabled by Azure Arc?
 description: Learn about AKS enabled by Azure Arc and available deployment options.
 ms.topic: overview
-ms.date: 08/20/2025
+ms.date: 08/26/2025
+ai-usage: ai-assisted
 author: sethmanheim
 ms.author: sethm 
 ms.reviewer: rcheeran
@@ -66,6 +67,11 @@ Here are the available deployment options:
 - [**AKS Edge Essentials**](aks-edge-overview.md): AKS Edge Essentials includes a lightweight Kubernetes distribution with a small footprint and simple installation experience, making it easy for you to deploy Kubernetes on PC-class or "light" edge hardware.
 - [**AKS on VMWare (preview)**](aks-vmware-overview.md): AKS on VMware (preview) enables you to use Azure Arc to create new Kubernetes clusters on VMware vSphere. With AKS on VMware, you can manage your AKS clusters running on VMware vSphere using familiar tools like Azure CLI.
 - [**AKS on Windows Server**](overview.md): AKS on Windows Server is an on-premises Kubernetes implementation of AKS that automates running containerized applications at scale, using Windows PowerShell and Windows Admin Center. It simplifies deploying and managing AKS on Windows Server 2019 or 2022 Datacenter.
+
+## AKS enabled by Azure Arc and the adaptive cloud approach
+
+AKS enabled by Azure Arc is part of Microsoft’s [adaptive cloud](https://azure.microsoft.com/solutions/adaptive-cloud) approach. This approach helps organizations run and manage apps in many environments, including Azure, other cloud providers, on-premises systems, and edge locations. AKS supports this approach by making it easier to deploy and manage Kubernetes clusters wherever they are needed like on Azure Local. With Azure Arc, you can use the same tools and policies to manage clusters across all these environments, which helps you keep operations consistent and secure.
+
 
 ## Next steps
 
