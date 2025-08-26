@@ -43,9 +43,9 @@ Before you begin, you must have:
 
     1. Sign in to the VM as the root user:
 
-      ```bash
-      sudo su
-      ```
+       ```bash
+       sudo su
+       ```
 
     1. Clean the `cloud-init` default configuration because it isn't relevant for Azure Local VMs.
 
@@ -56,41 +56,41 @@ Before you begin, you must have:
 
         Example output:
 
-        :::image type="content" source="media/virtual-machine-azure-marketplace-red-hat-enterprise/console-1.png" alt-text="Screenshot of cloud-init clean command output.":::
+        :::image type="content" source="media/virtual-machine-azure-marketplace-red-hat-enterprise/console-output-1.png" alt-text="Screenshot of cloud-init clean command output." lightbox="../manage/media/virtual-machine-azure-marketplace-red-hat-enterprise/console-output-1.png":::
 
     1. Clean the `cloud-init` default configuration because it isn't relevant for Azure Local VMs.
 
-      ```bash
-      sudo rm -rf /var/lib/cloud/ /var/log/* /tmp/*
-      ```
+       ```bash
+       sudo rm -rf /var/lib/cloud/ /var/log/* /tmp/*
+       ```
 
     1. Unregister `subscription-manager` and clean it up.
 
-      ```bash
-      sudo subscription-manager unregister
-      sudo subscription-manager clean
-      ```
+       ```bash
+       sudo subscription-manager unregister
+       sudo subscription-manager clean
+       ```
 
       Example output
 
-      :::image type="content" source="media/virtual-machine-azure-marketplace-red-hat-enterprise/console-2.png" alt-text="Screenshot of the unregister subscription-manager output." lightbox="../manage/media/virtual-machine-azure-marketplace-red-hat-enterprise/console-2.png":::
+      :::image type="content" source="media/virtual-machine-azure-marketplace-red-hat-enterprise/console-output-2.png" alt-text="Screenshot of the unregister subscription-manager output." lightbox="../manage/media/virtual-machine-azure-marketplace-red-hat-enterprise/console-output-2.png":::
 
     1. Clean VM-specific details.
 
-      ```bash
-      sudo rm -f /etc/sysconfig/network-scripts/*
-      sudo rm -f /etc/ssh/ssh_host*
-      sudo rm /etc/lvm/devices/system.devices
-      ```
+       ```bash
+       sudo rm -f /etc/sysconfig/network-scripts/*
+       sudo rm -f /etc/ssh/ssh_host*
+       sudo rm /etc/lvm/devices/system.devices
+       ```
 
 ## Change the data source of the VM image
 
 1. Change the directory to the following path and list the files to locate the data source file **91-azure_datasource.cfg**
 
-    ```bash
-    cd /etc/cloud/cloud.cfg.d/
-    ls
-    ```
+   ```bash
+   cd /etc/cloud/cloud.cfg.d/
+   ls
+   ```
 
     :::image type="content" source="media/virtual-machine-azure-marketplace-red-hat-enterprise/data-source-file.png" alt-text="Screenshot of the data source file in the cloud.cfg.d directory." lightbox="../manage/media/virtual-machine-azure-marketplace-red-hat-enterprise/data-source-file.png":::
 
