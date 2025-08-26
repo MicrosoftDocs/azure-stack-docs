@@ -95,6 +95,8 @@ Before you begin, you must have:
    ls
    ```
 
+   Example output:
+
    :::image type="content" source="media/virtual-machine-azure-marketplace-red-hat-enterprise/data-source-file.png" alt-text="Screenshot of the data source file in the cloud.cfg.d directory." lightbox="../manage/media/virtual-machine-azure-marketplace-red-hat-enterprise/data-source-file.png":::
 
 1. Open the `91-azure_datasource.cfg` file. Run this command:
