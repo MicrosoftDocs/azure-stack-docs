@@ -5,7 +5,8 @@ ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 08/25/2025
+ms.date: 08/26/2025
+ai-usage: ai-assisted
 ms.custom: e2e-hybrid, linux-related-content
 ---
 
