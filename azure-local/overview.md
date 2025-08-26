@@ -133,7 +133,7 @@ Some Microsoft partners are developing software that extends the capabilities of
 
 ## Azure Local and the adaptive cloud approach
 
-Azure Local is part of Microsoft’s [adaptive cloud](https://azure.microsoft.com/solutions/adaptive-cloud) approach. This approach helps organizations run and manage apps and services in distributed locations, including their own datacenters, remote sites, and edge locations. By extending Azure to customer-owned infrastructure, Azure Local addresses requirements like data privacy, low latency, and local control, while allowing your organization to use familiar Azure tools and security features.
+Azure Local is part of Microsoft’s [adaptive cloud](https://azure.microsoft.com/solutions/adaptive-cloud) approach. This approach helps organizations run and manage apps and services in distributed locations, including their own datacenters, remote sites, and edge locations. By extending Azure to customer-owned infrastructure, Azure Local addresses requirements like data privacy, low latency, and local control, while allowing organizations to use familiar Azure tools and security features.
 
 ## Next steps
 
