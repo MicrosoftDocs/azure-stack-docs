@@ -141,7 +141,7 @@ Before you begin, you must have:
 
       ```console
       datasource_list: [NoCloud]
-      ~ ??
+      ~??
       ~
       ```
 
