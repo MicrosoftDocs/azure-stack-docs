@@ -147,7 +147,7 @@ Before you begin, you must have:
 
    :::image type="content" source="media/virtual-machine-azure-marketplace-red-hat-enterprise/disks-name.png" alt-text="Screenshot of the OS disk details page." lightbox="../manage/media/virtual-machine-azure-marketplace-red-hat-enterprise/disks-name.png":::
 
-1. Under **Settings**, select **Disk Export**, and generate a secure URL for the disk.
+1. Under **Settings**, select **Disk Export**, and then select **Generate URL** to generate a secure URL for the disk.
 
    :::image type="content" source="media/virtual-machine-azure-marketplace-red-hat-enterprise/disks-export.png" alt-text="Screenshot of the disk export option with secure URL generation." lightbox="../manage/media/virtual-machine-azure-marketplace-red-hat-enterprise/disks-export.png":::
 
@@ -160,7 +160,7 @@ To create an Azure Local image using the SAS token, run this command:
 ```bash
 $rg = "<resource-group>"
 $cl = "/subscriptions/<sub>/resourcegroups/$rg/providers/microsoft.extendedlocation/customlocations/<customlocation-name>"
-$sas = '"https://EXAMPLE.blob.storage.azure.net/EXAMPLE/abcd<sas-token>"' (DISK SAS MUST BE IN SINGLE AND DOUBLE QUOTES)
+$sas = "https://EXAMPLE.blob.storage.azure.net/EXAMPLE/abcd<sas-token>"
 
 az stack-hci-vm image create -g $rg --custom-location $cl --name "<IMAGE-NAME>" --os-type "Linux" --image-path $sas
 ```
