@@ -190,4 +190,3 @@ az stack-hci-vm image create -g $rg --custom-location $cl --name "<IMAGE-NAME>" 
 ## Create an Azure Local VM
 
 To create an Azure Local VM using the Azure Local VM image you created, follow the steps in [Create Azure Local virtual machines enabled by Azure Arc](../manage/create-arc-virtual-machines.md).
-
