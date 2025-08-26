@@ -1,6 +1,6 @@
 ---
 title: Overview of Network Controller in Azure Local and Windows Server
-description: Use this topic to learn about Network Controller for Software Defined Networking in Azure Local and Windows Server.
+description: Use this article to learn about Network Controller for Software Defined Networking in Azure Local and Windows Server.
 author: AnirbanPaul
 ms.author: anpaul
 ms.topic: overview
@@ -34,7 +34,7 @@ Network Controller allows you to manage SDN features such as virtual networks, f
 
 This Network Controller feature allows you to deploy and configure Hyper-V Network Virtualization, configure virtual network adapters on individual VMs, and store and distribute virtual network policies. With this feature, you can create virtual networks and subnets, attach virtual machines (VMs) to these networks, and enable communication between VMs in the same virtual network.
 
-Network Controller supports Virtual Local Area Network (VLAN) based networks, Network Virtualization Generic Routing Encapsulation (NVGRE) and Virtual Extensible Local Area Network (VXLAN).
+Network Controller supports Virtual Local Area Network (VLAN) based networks, Network Virtualization Generic Routing Encapsulation (NVGRE), and Virtual Extensible Local Area Network (VXLAN).
 
 ## Firewall management
 
@@ -66,7 +66,7 @@ To learn more about user-defined routes, see [Use Network Virtual Appliances on 
 
 - Don't deploy the Network Controller server role on physical hosts. The Network Controller should be deployed on its own dedicated VMs.
 
-- You can deploy Network Controller in both domain and non-domain environments. In domain environments, Network Controller authenticates users and network devices by using Kerberos; in non-domain environments, you must deploy certificates for authentication.
+- You can deploy Network Controller in both domain and nondomain environments. In domain environments, Network Controller authenticates users and network devices by using Kerberos; in nondomain environments, you must deploy certificates for authentication.
 
 - It’s critical for Network Controller deployments to provide high availability and the ability for you to easily scale up or down with your datacenter needs. Use at least three VMs in order to provide high availability for the Network Controller application.
 
