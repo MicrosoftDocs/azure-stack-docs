@@ -1,15 +1,15 @@
 ---
 title: Prepare RHEL Azure Marketplace Image for Azure Local VM Deployment
-description: Learn how to prepare, configure, and export an RHEL 9.4 Azure Marketplace VM image for use with Azure Local clusters.
+description: Learn how to prepare and export an RHEL 9.4 Azure Marketplace VM image for use with Azure Local clusters.
 ms.topic: how-to
 author: ronmiab
 ms.author: robess
-ms.date: 08/14/2025
+ms.date: 08/26/2025
 ai-usage: ai-assisted
 ms.custom:
   - ai-gen-docs-bap
   - ai-gen-title
-  - ai-seo-date:08/14/2025
+  - ai-seo-date:08/26/2025
   - ai-gen-description
 ---
 
