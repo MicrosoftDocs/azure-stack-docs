@@ -28,22 +28,17 @@ Before you begin, you must have:
 
 - An Azure Local cluster set up with a logical network and storage path for workloads.
 
-
-
-## Set up and prepare an Azure VM using an RHEL 9.4 LVM Azure Marketplace image
-
+## Set up and prepare an Azure VM using an RHEL 9.4 LVM
 
 1. Sign in to the **Azure portal**, go to **Virtual Machines** > **Create** > **Virtual Machine**.
 
 1. Browse the available images and choose your preferred RHEL LVM Gen2 version.
-
 
    :::image type="content" source="media/virtual-machine-azure-marketplace-red-hat-enterprise/vm-image-red-hat.png" alt-text="Screenshot of the Azure portal image selection page." lightbox="../manage/media/virtual-machine-azure-marketplace-red-hat-enterprise/vm-image-red-hat.png":::
 
 1. Enter the required details in the wizard and finish setting up the Azure VM.
 
 1. After the VM is deployed, go to the **VM overview** page, select the **Connect** option, and then select **Serial console**.
-
 
    :::image type="content" source="media/virtual-machine-azure-marketplace-red-hat-enterprise/connect-vm.png" alt-text="Screenshot of the Serial console sign in option in Azure portal." lightbox="../manage/media/virtual-machine-azure-marketplace-red-hat-enterprise/connect-vm.png":::
 
@@ -79,9 +74,9 @@ Before you begin, you must have:
        sudo subscription-manager clean
        ```
 
-      Example output
+       Example output:
 
-      :::image type="content" source="media/virtual-machine-azure-marketplace-red-hat-enterprise/console-output-2.png" alt-text="Screenshot of the unregister subscription-manager output." lightbox="../manage/media/virtual-machine-azure-marketplace-red-hat-enterprise/console-output-2.png":::
+       :::image type="content" source="media/virtual-machine-azure-marketplace-red-hat-enterprise/console-output-2.png" alt-text="Screenshot of the unregister subscription-manager output." lightbox="../manage/media/virtual-machine-azure-marketplace-red-hat-enterprise/console-output-2.png":::
 
     1. Clean VM-specific details.
 
@@ -91,10 +86,7 @@ Before you begin, you must have:
        sudo rm /etc/lvm/devices/system.devices
        ```
 
-
-
 ## Change the data source of the VM image
-
 
 1. Change the directory to the following path and list the files to locate the data source file **91-azure_datasource.cfg**
 
@@ -125,7 +117,9 @@ Before you begin, you must have:
    1. Remove the datasource and update the details from `datasource_list: [Azure]` to `datasource_list: [NoCloud]`
    1. Save the file by pressing the **Esc** key followed by `:x` and hit **Enter**.
 
-     :::image type="content" source="media/virtual-machine-azure-marketplace-red-hat-enterprise/no-cloud.png" alt-text="Screenshot of the no-cloud configuration." lightbox="../manage/media/virtual-machine-azure-marketplace-red-hat-enterprise/no-cloud.png":::
+      Example output:
+
+      :::image type="content" source="media/virtual-machine-azure-marketplace-red-hat-enterprise/no-cloud.png" alt-text="Screenshot of the no-cloud configuration." lightbox="../manage/media/virtual-machine-azure-marketplace-red-hat-enterprise/no-cloud.png":::
 
 1. To check that the file was updated, run this command:
 
@@ -143,10 +137,7 @@ Before you begin, you must have:
 
 1. Stop the Azure VM as the configuration changes are now complete.
 
-
-
 ## Export an Azure VM OS disk to a VHD on the Azure Local cluster
-
 
 1. Navigate to the **VM overview** \>, under the **Settings** option select **Disks**, and select the **Disks name** link.
 
@@ -160,21 +151,17 @@ Before you begin, you must have:
 
 1. Copy the generated secure URL link for the next step.
 
-
-
 ## Create an Azure Local image
 
-1. Create an Azure Local image using the SAS token. Run the following command:
+To create an Azure Local image using the SAS token, run this command:
 
-   ```bash
-   $rg = "<resource-group>"
-   $cl = "/subscriptions/<sub>/resourcegroups/$rg/providers/microsoft.extendedlocation/customlocations/<customlocation-name>"
-   $sas = '"https://EXAMPLE.blob.storage.azure.net/EXAMPLE/abcd<sas-token>"' (DISK SAS MUST BE IN SINGLE AND DOUBLE QUOTES)
+```bash
+$rg = "<resource-group>"
+$cl = "/subscriptions/<sub>/resourcegroups/$rg/providers/microsoft.extendedlocation/customlocations/<customlocation-name>"
+$sas = '"https://EXAMPLE.blob.storage.azure.net/EXAMPLE/abcd<sas-token>"' (DISK SAS MUST BE IN SINGLE AND DOUBLE QUOTES)
 
-   az stack-hci-vm image create -g $rg --custom-location $cl --name "<IMAGE-NAME>" --os-type "Linux" --image-path $sas
-   ```
-
-
+az stack-hci-vm image create -g $rg --custom-location $cl --name "<IMAGE-NAME>" --os-type "Linux" --image-path $sas
+```
 
 ## Create an Azure Local VM
 
