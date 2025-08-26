@@ -28,7 +28,7 @@ Before you begin, you must have:
 
 - An Azure Local cluster set up with a logical network and storage path for workloads.
 
-## Set up and prepare an Azure VM using an RHEL 9.4 LVM
+## Set up and prepare an Azure VM
 
 1. Sign in to the **Azure portal**, go to **Virtual Machines** > **Create** > **Virtual Machine**.
 
