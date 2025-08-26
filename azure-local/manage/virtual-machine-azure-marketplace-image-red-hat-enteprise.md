@@ -165,8 +165,6 @@ Before you begin, you must have:
 
 1. Navigate to the **VM overview** \>, under the **Settings** option select **Disks**, and select the **Disks name** link.
 
-   :::image type="content" source="media/virtual-machine-azure-marketplace-red-hat-enterprise/disks.png" alt-text="Screenshot of the disks option in the VM overview." lightbox="../manage/media/virtual-machine-azure-marketplace-red-hat-enterprise/disks.png":::
-
    :::image type="content" source="media/virtual-machine-azure-marketplace-red-hat-enterprise/disks-name.png" alt-text="Screenshot of the OS disk details page." lightbox="../manage/media/virtual-machine-azure-marketplace-red-hat-enterprise/disks-name.png":::
 
 1. Under **Settings**, select **Disk Export**, and then select **Generate URL** to generate a secure URL for the disk.
