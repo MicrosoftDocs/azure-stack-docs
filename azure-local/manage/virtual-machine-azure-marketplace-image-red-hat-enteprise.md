@@ -179,7 +179,7 @@ Before you begin, you must have:
 
 To create an Azure Local image using the SAS token, run this command:
 
-```bash
+```azurecli
 $rg = "<resource-group>"
 $cl = "/subscriptions/<sub>/resourcegroups/$rg/providers/microsoft.extendedlocation/customlocations/<customlocation-name>"
 $sas = "https://EXAMPLE.blob.storage.azure.net/EXAMPLE/abcd<sas-token>"
