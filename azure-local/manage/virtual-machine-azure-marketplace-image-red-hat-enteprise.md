@@ -19,7 +19,7 @@ This article explains how to prepare a Red Hat Enterprise Linux (RHEL) Azure Mar
 
 ## Prerequisites
 
-Before you begin, you need:
+Before you begin, you must have:
 
 - An active Azure subscription with permissions to set up and license an RHEL 9.4 (LVM) or later Azure VM.
 - Access to the Azure portal (*portal.azure.com*).
