@@ -11,7 +11,7 @@ ms.service: azure-local
 
 # Best practices for managing updates in Azure Local
 
-This article provides an overview of Azure Local update management and outlines the best practices and common pitfalls to help keep Azure Local secure, up to date, and compliant. This article is intended for IT decision-makers, infrastructure architects, and operations teams responsible for Azure Local deployments.
+This article provides an overview of Azure Local update management, including best practices and common pitfalls to help keep Azure Local secure, up to date, and compliant. It is intended for IT decision-makers, infrastructure architects, and operations teams responsible for Azure Local deployments.
 
 ## Understand Azure Local update management
 
@@ -31,14 +31,17 @@ Staying current with security fixes and feature improvements is important for al
 Follow these practices to ensure smooth, reliable updates for Azure Local instances deployed at scale.
 
 1. **Use Azure Update Manager.**
+
    AUM provides a centralized view to apply and manage updates across all Azure Local instances. In the Azure portal, go to **Azure Update Manager** > **Resources** > **Azure Local**.
 
 1. **Use filters to identify Azure Local resources ready for updates.**
+
    Use filters like:
    - Update Readiness = Healthy
    - Status = updates available
 
 1. **Batch updates for large environments.**
+
    Group clusters using:
    - Tags
    - Resource group
@@ -49,9 +52,11 @@ Follow these practices to ensure smooth, reliable updates for Azure Local instan
    Define a model where you are updating in chunks.  
 
 1. **Test environment strategy.**
+
    Select a few test clusters that mirror your Azure Loal resources in production. Run the update flow to validate before applying to production.
 
 1. **Production environment strategy.**
+
    - Create batches using filter parameters.
    - Start updating with the smallest batch during a maintenance window.
    - If successful, proceed to the next batch.
@@ -87,7 +92,7 @@ Avoid the following practices when managing Azure Local updates, as they can lea
       - Install updates on all nodes at once
       - Update nodes without draining roles
 
-   Best practice: Always initiate updates through AUM or the official Azure CLI or PowerShell methods that leverage the AUM workflow. These tools ensure compliance with the rolling update orchestration. Skipping AUM might also mean missing the readiness checks. In summary, don’t treat Azure Local like a standalone server. Use the recommended at-scale update mechanism to maintain high availability.
+   **Best practice:** Always initiate updates through AUM or the official Azure CLI or PowerShell methods that leverage the AUM workflow. These tools ensure compliance with the rolling update orchestration. Skipping AUM might also mean missing the readiness checks. In summary, don’t treat Azure Local like a standalone server. Use the recommended at-scale update mechanism to maintain high availability.
 
 1. **Don’t modify cluster nodes outside approved configurations.**
 
@@ -95,11 +100,11 @@ Avoid the following practices when managing Azure Local updates, as they can lea
       - Change system time zones or region settings
       - Preinstall software updates on the nodes
 
-   Such manual changes can cause template validation failures or inconsistent cluster state. A known issue is that certain updates applied out-of-band can cause deployment to error out.
+      Such manual changes can cause template validation failures or inconsistent cluster state. A known issue is that certain updates applied out-of-band can cause deployment to error out.
 
    - Don’t make manually change nodes unless explicitly instructed by Microsoft support or official documentation. This ensures that ARM templates and update workflows can execute without unforeseen interference.
 
-   Best practice: Always start updates with nodes in a baseline, unmodified state as per Azure’s prerequisites. In general, treat the Azure Local deployment process as authoritative.
+   **Best practice:** Always start updates with nodes in a baseline, unmodified state as per Azure’s prerequisites. In general, treat the Azure Local deployment process as authoritative.
 
 ## Next steps
 
