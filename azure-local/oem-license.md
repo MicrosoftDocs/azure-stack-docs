@@ -6,6 +6,7 @@ ms.topic: overview
 ms.date: 04/29/2025
 ms.author: robess
 ms.reviewer: alkohli
+ms.custom: sfi-image-nochange
 ---
 
 # OEM license for Azure Local overview

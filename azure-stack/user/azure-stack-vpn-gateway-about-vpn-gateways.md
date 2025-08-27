@@ -8,6 +8,7 @@ ms.date: 04/12/2021
 ms.author: sethm
 ms.reviewer: cedward
 ms.lastreviewed: 03/02/2022
+ms.custom: sfi-image-nochange
 
 # Intent: As an Azure Stack Hub user, I want to create a VPN Gateways so I can send traffic between my Azure virtual network and my on-premises site.
 # Keyword: azure stack hub VPN Gateways

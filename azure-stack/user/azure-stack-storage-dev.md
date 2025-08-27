@@ -7,6 +7,7 @@ ms.date: 03/12/2024
 ms.topic: get-started
 ms.reviewer: jiahan
 ms.lastreviewed: 08/12/2020
+ms.custom: sfi-ropc-nochange
 
 # Intent: As an Azure Stack user, I want to get started with Azure Stack storage dev tools.
 # Keyword: azure stack storage development

@@ -7,6 +7,7 @@ ms.date: 09/20/2021
 ms.author: sethm
 ms.reviewer: shisab
 ms.lastreviewed: 09/20/2021
+ms.custom: sfi-image-nochange
 
 #Intent: As an Azure Stack Hub operator, I want to learn about diagnostic log collection so I can share them with Microsoft Support when I need help addressing an issue.
 #Keyword: diagnostic log collection azure stack hub

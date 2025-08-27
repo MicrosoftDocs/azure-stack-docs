@@ -7,6 +7,7 @@ ms.topic: install-set-up-deploy
 ms.date: 11/20/2020
 ms.author: sethm
 ms.lastreviewed: 11/20/2020
+ms.custom: sfi-image-nochange
 
 # Intent: As an Azure Stack user, I want to deply a VM with a securely stored certificate so I can use it for authentication or encryption. 
 # Keyword: azure stack vm certificate 

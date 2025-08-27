@@ -9,6 +9,7 @@ ms.date: 10/25/2021
 ms.author: sethm
 ms.reviewer: comartin
 ms.lastreviewed: 09/30/2021
+ms.custom: sfi-ropc-nochange
 
 # Intent: As an Azure Stack operator, I want to configure telemetry settings using Powershell.
 # Keyword: configure telemetry azure stack
