@@ -5,8 +5,11 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.custom: linux-related-content
 ms.date: 03/28/2025
+ms.custom:
+  - linux-related-content
+  - sfi-image-nochange
+  - sfi-ropc-nochange
 ---
 
 # Attaching a GPU to an Ubuntu Linux VM on Azure Local

@@ -8,6 +8,7 @@ ms.date: 08/19/2021
 ms.author: sethm
 ms.reviewer: jiadu
 ms.lastreviewed: 08/20/2021
+ms.custom: sfi-image-nochange
 
 # Intent: As an Azure Stack operator, I want to learn about SQL resource provider maintainance operators.
 # Keyword: sql resource provider maintenance azure stack

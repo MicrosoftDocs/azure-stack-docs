@@ -6,6 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
 ms.date: 04/08/2025
+ms.custom: sfi-image-nochange
 ---
 
 # Collect diagnostic logs for Azure Local (preview)

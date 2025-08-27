@@ -6,6 +6,7 @@ ms.topic: how-to
 ms.date: 01/28/2025
 ms.author: sethm
 ms.lastreviewed: 09/10/2019
+ms.custom: sfi-image-nochange
 
 # Intent: As an Azure Stack operator, I want to install OEM updates to keep my system up to date.
 # Keyword: install oem updates azure stack

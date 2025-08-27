@@ -6,6 +6,7 @@ ms.topic: how-to
 ms.date: 06/24/2025
 ms.author: alkohli
 ms.service: azure-local
+ms.custom: sfi-image-nochange
 #CustomerIntent: As an IT Pro, I want to deploy an Azure Local instance of 1-16 machines via the Azure portal so that I can host VM and container-based workloads on it.
 ---
 

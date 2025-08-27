@@ -6,6 +6,7 @@ ms.topic: how-to
 ms.date: 01/30/2025
 ms.author: sethm
 ms.lastreviewed: 03/10/2021
+ms.custom: sfi-image-nochange
 
 # Intent: As an Azure Stack Hub operator, I want to prepare an update package so I can use it to update my Azure Stack Hub environment.
 # Keyword: prepare update package azure stack hub

@@ -6,6 +6,7 @@ ms.topic: upgrade-and-migration-article
 ms.date: 08/12/2024
 ms.author: sethm
 ms.reviewer: anwestg
+ms.custom: sfi-image-nochange
 
 ---
 

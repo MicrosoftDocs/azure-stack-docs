@@ -6,6 +6,7 @@ ms.topic: how-to
 ms.date: 05/27/2025
 ms.author: alkohli
 ms.reviewer: alkohli
+ms.custom: sfi-image-nochange
 ---
 
 # Enable guest management for migrated VMs (preview)

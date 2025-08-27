@@ -10,6 +10,7 @@ metadata:
   ms.date: 3/30/2021
   ms.topic: how-to
   ms.custom:
+    - sfi-image-nochange
     - ge-structured-content-pilot
 
 # Intent: As a developer using Azure Stack Hub, I want to deploy a VM to host my Web app using .Net.

@@ -6,6 +6,7 @@ ms.topic: how-to
 ms.date: 01/16/2025
 ms.author: sethm
 ms.lastreviewed: 10/23/2019
+ms.custom: sfi-image-nochange
 
 # Intent: As an Azure Stack operator, I want to learn how to create highly available MySQL databases
 # Keyword: create mysql database azure stack

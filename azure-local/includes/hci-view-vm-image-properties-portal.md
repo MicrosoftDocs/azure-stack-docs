@@ -4,6 +4,7 @@ ms.author: alkohli
 ms.service: azure-local
 ms.topic: include
 ms.date: 10/23/2024
+ms.custom: sfi-image-nochange
 ---
 
 In the Azure portal of your Azure Local resource, perform the following steps:

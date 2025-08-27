@@ -6,6 +6,7 @@ ms.author: anpaul
 ms.topic: overview
 ms.service: azure-local
 ms.date: 10/25/2024
+ms.custom: sfi-image-nochange
 ---
 
 # What is Software Load Balancer (SLB) for SDN?

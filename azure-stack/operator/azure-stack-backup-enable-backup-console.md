@@ -8,6 +8,7 @@ ms.date: 08/23/2021
 ms.author: sethm
 ms.reviewer: hectorl
 ms.lastreviewed: 08/21/2019
+ms.custom: sfi-image-nochange
 
 # Intent: As an Azure Stack operator, I want to enable backups from the admin portal so Azure Stack can generate infrastructure backups.
 # Keyword: enable backup admin portal

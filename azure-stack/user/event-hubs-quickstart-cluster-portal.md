@@ -8,7 +8,9 @@ ms.topic: quickstart
 ms.date: 07/07/2021
 ms.reviewer: sethm
 ms.lastreviewed: 07/07/2021
-ms.custom: mode-portal
+ms.custom:
+  - mode-portal
+  - sfi-image-nochange
 ---
 
 # Quickstart: Create an Event Hubs cluster using the Azure Stack Hub portal

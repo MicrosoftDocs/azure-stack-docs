@@ -5,9 +5,10 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
+ms.date: 05/27/2025
 ms.custom:
   - devx-track-azurecli
-ms.date: 05/27/2025
+  - sfi-image-nochange
 ---
 
 # Create Azure Local VM image using image in Azure Storage account

@@ -7,6 +7,7 @@ ms.date: 01/21/2025
 ms.author: sethm
 ms.reviewer: walterov
 ms.lastreviewed: 04/14/2022
+ms.custom: sfi-image-nochange
 
 # Intent: As an Azure Stack Hub user, I would like to deploy a Kubernetes cluster using AKS engine on a custom virtual network so that I can deliver my service in an environment that extends my data center or in a hybrid cloud solution with my cluster in Azure Stack Hub and Azure.
 # Keywords: virtual network ASK engine Azure Stack Hub

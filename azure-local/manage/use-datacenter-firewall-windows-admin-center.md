@@ -5,6 +5,7 @@ author: AnirbanPaul
 ms.author: anpaul
 ms.topic: how-to
 ms.date: 01/16/2025
+ms.custom: sfi-image-nochange
 ---
 
 # Configure network security groups with Windows Admin Center

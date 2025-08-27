@@ -6,6 +6,7 @@ ms.author: sethm
 ms.topic: tutorial
 ms.date: 01/16/2025
 ms.lastreviewed: 10/16/2019
+ms.custom: sfi-image-nochange
 
 # Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
 # Keyword: Notdone: keyword noun phrase

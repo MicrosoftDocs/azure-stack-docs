@@ -6,6 +6,7 @@ ms.topic: article
 ms.date: 08/13/2025
 ms.author: sethm
 ms.lastreviewed: 03/18/2022
+ms.custom: sfi-image-nochange
 
 # Intent: As an Azure Stack operator, I want to plan for my network integration so I'm prepared.
 # Keyword: azure stack network integration planning

@@ -8,6 +8,7 @@ ms.date: 11/20/2020
 ms.author: sethm
 ms.reviewer: shnatara
 ms.lastreviewed: 11/20/2020
+ms.custom: sfi-image-nochange
 
 # Intent: As an Azure Stack user, I want to deploy a secured Service Fabric cluster in Azure Stack.
 # Keyword: service fabric cluster

@@ -8,7 +8,10 @@ ms.service: azure-stack
 ms.topic: install-set-up-deploy
 ms.date: 08/19/2024
 ms.author: sethm
-ms.custom: devx-track-azurecli, linux-related-content
+ms.custom:
+  - devx-track-azurecli
+  - linux-related-content
+  - sfi-image-nochange
 ---
 # Manage and deploy resources to Azure Stack Hub with Azure CLI
 

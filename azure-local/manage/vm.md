@@ -5,6 +5,7 @@ author: alkohli
 ms.topic: how-to
 ms.date: 01/16/2025
 ms.author: alkohli
+ms.custom: sfi-image-nochange
 ---
 
 # Manage VMs with Windows Admin Center on Azure Local

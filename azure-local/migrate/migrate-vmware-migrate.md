@@ -6,6 +6,7 @@ ms.topic: how-to
 ms.date: 10/31/2024
 ms.author: alkohli
 ms.reviewer: alkohli
+ms.custom: sfi-image-nochange
 ---
 
 # Migrate VMware VMs to Azure Local using Azure Migrate (preview)

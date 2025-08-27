@@ -8,6 +8,7 @@ ms.date: 5/06/2021
 ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 5/06/2021
+ms.custom: sfi-image-nochange
 
 # Intent: As an Azure Stack operator, I want to add an additional scale unit node/physical computer to increase the overall capacity. 
 # Keyword: (add) scale unit node azure stack

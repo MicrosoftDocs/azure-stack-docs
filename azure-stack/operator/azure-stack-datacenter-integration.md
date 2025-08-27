@@ -7,6 +7,7 @@ ms.date: 11/02/2021
 ms.author: sethm
 ms.reviewer: wfayed
 ms.lastreviewed: 09/12/2019
+ms.custom: sfi-image-nochange
 
 # Intent: As an Azure Stack operator, I want to know the planning considerations for datacenter integration with Azure Stack integrated systems.
 # Keyword: azure stack datacenter integration planning

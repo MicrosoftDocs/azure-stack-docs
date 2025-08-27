@@ -6,8 +6,10 @@ ms.author: alkohli
 ms.reviewer: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.custom: devx-track-azurecli
 ms.date: 06/09/2025
+ms.custom:
+  - devx-track-azurecli
+  - sfi-image-nochange
 ---
 
 # Create Azure Local virtual machines enabled by Azure Arc

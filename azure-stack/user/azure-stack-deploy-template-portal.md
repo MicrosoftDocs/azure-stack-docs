@@ -8,6 +8,7 @@ ms.date: 12/2/2020
 ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 12/2/2020
+ms.custom: sfi-image-nochange
 
 # Intent: As an Azure Stack Hub user, I want to deploy a template using the portal in Azure Stack Hub so I can manage resources efficiently.
 # Keyword: deploy template portal

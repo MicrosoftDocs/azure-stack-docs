@@ -8,6 +8,7 @@ ms.date: 12/07/2020
 ms.author: sethm
 ms.reviewer: xiaofmao
 ms.lastreviewed: 12/07/2020
+ms.custom: sfi-image-nochange
 
 # Intent: As an Azure Stack operator, I want to add hosting servers to provision through SQL resource provider adapter.
 # Keyword: add hosting servers sql resource provider

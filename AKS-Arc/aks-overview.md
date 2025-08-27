@@ -70,8 +70,7 @@ Here are the available deployment options:
 
 ## AKS enabled by Azure Arc and the adaptive cloud approach
 
-AKS enabled by Azure Arc is part of Microsoft’s [adaptive cloud](https://azure.microsoft.com/solutions/adaptive-cloud) approach. This approach helps organizations run and manage apps in many environments, including Azure, other cloud providers, on-premises systems, and edge locations. AKS supports this approach by making it easier to deploy and manage Kubernetes clusters wherever they are needed like on Azure Local. With Azure Arc, you can use the same tools and policies to manage clusters across all these environments, which helps you keep operations consistent and secure.
-
+AKS enabled by Azure Arc is part of Microsoft’s [adaptive cloud](https://azure.microsoft.com/solutions/adaptive-cloud) approach. This approach helps organizations run and manage apps in many environments, including Azure, other cloud providers, on-premises systems, and edge locations. AKS supports this approach by making it easier to deploy and manage Kubernetes clusters wherever they are needed, like on Azure Local. With Azure Arc, you can use the same tools and policies to manage clusters across all these environments, which helps you keep operations consistent and secure.
 
 ## Next steps
 

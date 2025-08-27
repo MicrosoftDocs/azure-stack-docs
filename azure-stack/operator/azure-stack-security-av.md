@@ -7,6 +7,7 @@ ms.topic: how-to
 ms.date: 01/17/2025
 ms.author: sethm
 ms.lastreviewed: 12/04/2019
+ms.custom: sfi-image-nochange
 
 # Intent: As an Azure Stack operator, I want to update Microsoft Defender Antivurus on my Azure Stack so my security is up-to-date.
 # Keyword: update windows defender antivirus azure stack

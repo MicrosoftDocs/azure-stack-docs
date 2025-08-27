@@ -5,6 +5,7 @@ author: alkohli
 ms.topic: how-to
 ms.date: 07/25/2025
 ms.author: alkohli
+ms.custom: sfi-image-nochange
 ---
 
 # Discover and replicate VMware VMs for migration to Azure Local using Azure Migrate (preview)

@@ -6,6 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
 ms.date: 04/09/2025
+ms.custom: sfi-image-nochange
 ---
 
 # Create logical networks for Azure Local VMs enabled by Azure Arc

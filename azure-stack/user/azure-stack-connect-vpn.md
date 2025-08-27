@@ -8,6 +8,7 @@ ms.date: 07/27/2021
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 11/20/2020
+ms.custom: sfi-image-nochange
 
 # Intent: As an Azure Stack user, I want to connect Azure Stack to Azure using VPN so I can have a site-to-site connection.
 # Keyword: connect azure stack vpn

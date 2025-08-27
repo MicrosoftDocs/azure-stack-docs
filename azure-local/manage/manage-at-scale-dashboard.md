@@ -6,6 +6,7 @@ author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.date: 08/18/2025
+ms.custom: sfi-image-nochange
 ---
 
 # Use the dashboard to manage Azure Local

@@ -7,6 +7,7 @@ ms.date: 07/25/2024
 ms.author: sethm
 ms.reviewer: dgarrity
 ms.lastreviewed: 04/10/2024
+ms.custom: sfi-image-nochange
 
 # Intent: As an Azure Stack Hub user, I want to know how to troubleshoot common issues with Azure Container Registry on Azure Stack Hub so that I can resolve issues quickly and efficiently.
 

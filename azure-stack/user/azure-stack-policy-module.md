@@ -4,11 +4,12 @@ description: Learn how to constrain an Azure subscription to behave like an Azur
 author: sethmanheim
 
 ms.topic: how-to
-ms.custom:
-  - devx-track-azurepowershell
 ms.date: 06/06/2022
 ms.author: sethm
 ms.lastreviewed: 11/22/2020
+ms.custom:
+  - devx-track-azurepowershell
+  - sfi-image-nochange
 
 # Intent: As an Azure/Azure Stack user, I want to use the Azure Stack policy module to configure an Azure sub with the same versioning and service availability as my Azure Stack sub, allowing me to develop apps targeted for Azure Stack.
 # Keyword: azure stack policy module

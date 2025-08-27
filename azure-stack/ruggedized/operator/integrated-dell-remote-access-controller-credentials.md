@@ -8,7 +8,9 @@ ms.topic: how-to
 ms.date: 05/27/2022
 ms.reviewer: justinha
 ms.lastreviewed: 04/28/2020
-ms.custom: kr2b-contr-experiment
+ms.custom:
+  - kr2b-contr-experiment
+  - sfi-image-nochange
 ---
 
 # Update user credentials for the Integrated Dell Remote Access Controller

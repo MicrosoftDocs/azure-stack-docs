@@ -6,6 +6,7 @@ ms.topic: how-to
 ms.date: 01/23/2025
 ms.author: sethm
 ms.lastreviewed: 06/18/2019
+ms.custom: sfi-image-nochange
 
 # Intent: As an Azure Stack user, I want to access the Kubernetes dashboard from Azure Stack for basic management operations.
 # Keyword: azure stack kubernetes dashboard

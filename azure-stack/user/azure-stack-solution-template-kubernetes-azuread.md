@@ -8,6 +8,7 @@ ms.date: 2/1/2021
 ms.author: sethm
 ms.reviewer: waltero
 ms.lastreviewed: 3/12/2020
+ms.custom: sfi-image-nochange
 
 # Intent: As an Azure Stack user, I want to deploy Kubernetes using Microsoft Entra ID so I can use Kubernetes with the Microsoft Entra identity management system.
 # Keyword: deploy kubernetes Microsoft Entra ID

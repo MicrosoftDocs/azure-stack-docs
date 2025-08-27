@@ -8,6 +8,7 @@ ms.date: 08/19/2024
 ms.author: sethm
 ms.reviewer: rtiberiu
 ms.lastreviewed: 06/10/2019
+ms.custom: sfi-image-nochange
 
 # Intent: As an Azure Stack operator, I want to create a custom role for Azure Stack registration. 
 # Keyword: create custom role azure stack registration

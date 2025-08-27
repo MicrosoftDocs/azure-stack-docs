@@ -6,6 +6,7 @@ ms.topic: best-practice
 ms.date: 01/15/2025
 ms.author: sethm
 ms.lastreviewed: 02/08/2019
+ms.custom: sfi-image-nochange
 
 # Intent: As an Azure Stack operator, I want to know the Infrastructure Backup Services best practices.
 # Keyword: infrastructure backup service azure stack

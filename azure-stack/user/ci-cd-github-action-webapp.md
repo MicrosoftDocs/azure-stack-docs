@@ -7,6 +7,7 @@ ms.date: 03/16/2022
 ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 03/16/2022
+ms.custom: sfi-image-nochange
 
 # Intent: As a developer, I want to create a continuous integration, continuous deployment workflow on Azure Stack Hub so I can easily validate, integrate, and publish my solution on Azure Stack Hub.
 # Keyword: GitHub Actions Azure Stack Hub web app deploy

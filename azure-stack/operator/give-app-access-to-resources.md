@@ -7,6 +7,7 @@ ms.topic: how-to
 ms.date: 01/30/2025
 ms.lastreviewed: 03/18/2022
 zone_pivot_groups: state-connected-disconnected
+ms.custom: sfi-image-nochange
 
 # Intent: As an Azure Stack operator, I want to give an app to access Azure Stack Hub resources.
 # Keyword: azure stack hub app access resources

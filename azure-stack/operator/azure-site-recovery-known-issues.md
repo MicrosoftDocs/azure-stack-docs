@@ -4,10 +4,12 @@ description: Learn how to troubleshoot known issues for Azure Site Recovery.
 author: ronmiab
 ms.author: robess
 ms.topic: troubleshooting
-ms.custom: linux-related-content
 ms.date: 04/25/2025
 ms.reviewer: rtiberiu
 ms.lastreviewed: 04/25/2024
+ms.custom:
+  - linux-related-content
+  - sfi-image-nochange
 ---
 
 # Known issues - Azure Site Recovery on Azure Stack Hub

@@ -8,6 +8,7 @@ ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 12/09/2021
 zone_pivot_groups: 
+ms.custom: sfi-image-nochange
 # Intent: As an Azure Stack operator, I want to deploy App Service on Azure Stack.
 # Keyword: deploy app service azure stack
 

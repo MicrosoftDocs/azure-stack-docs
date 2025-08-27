@@ -8,7 +8,9 @@ ms.date: 12/2/2020
 ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 12/2/2020
-ms.custom: conteperfq4
+ms.custom:
+  - conteperfq4
+  - sfi-ropc-nochange
 
 # Intent: As a developer, I want to understanding how to create a Java web app so that I can build Java apps on Azure Stack Hub
 # Keyword: Java webapp Azure Stack Hub

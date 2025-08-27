@@ -5,7 +5,9 @@ author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
 ms.date: 11/17/2021
-ms.custom: template-how-to
+ms.custom:
+  - template-how-to
+  - sfi-image-nochange
 ---
 
 # Update solution templates to work with new CreateUiDefinition changes

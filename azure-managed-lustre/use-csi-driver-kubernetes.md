@@ -6,6 +6,7 @@ ms.date: 01/10/2025
 author: pauljewellmsft
 ms.author: pauljewell
 ms.reviewer: brianl
+ms.custom: sfi-image-nochange
 
 # Intent: As an IT pro, I want to be able to use a Lustre file system with the apps I've deployed on Kubernetes.
 # Keyword: 

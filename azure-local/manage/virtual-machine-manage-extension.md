@@ -6,6 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
 ms.date: 05/15/2025
+ms.custom: sfi-image-nochange
 ---
 
 # Manage VM extensions on Azure Local virtual machines 
