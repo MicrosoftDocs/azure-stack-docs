@@ -602,6 +602,8 @@ items:
       href: manage/disconnected-operations-azure-container-registry.md
     - name: Azure Policy
       href: manage/disconnected-operations-policy.md
+  - name: Monitor
+    items:
     - name: Monitoring
       href: manage/disconnected-operations-monitoring.md
   - name: Troubleshoot
