@@ -3,7 +3,7 @@ title: Network integration planning for Azure Stack Hub
 description: Learn how to plan for datacenter network integration with Azure Stack Hub integrated systems.
 author: sethmanheim
 ms.topic: article
-ms.date: 01/27/2025
+ms.date: 08/13/2025
 ms.author: sethm
 ms.lastreviewed: 03/18/2022
 ms.custom: sfi-image-nochange
@@ -23,7 +23,7 @@ This article provides Azure Stack Hub network infrastructure information to help
 
 ## Physical network design
 
-The Azure Stack Hub solution requires a resilient and highly available physical infrastructure to support its operation and services. To integrate Azure Stack Hub to the network, it requires uplinks from the Top-of-Rack switches (ToR) to the nearest switch or router, which in this article is referred as *Border*. The ToRs can be uplinked to a single or a pair of Borders. The ToR is pre-configured by our automation tool. It expects a minimum of one connection between ToR and Border when using BGP Routing and a minimum of two connections (one per ToR) between ToR and Border when using Static Routing, with a maximum of four connections on either routing option. These connections are limited to SFP+ or SFP28 media and a minimum of one GB speed. Check with your original equipment manufacturer (OEM) hardware vendor for availability. The following diagram presents the recommended design:
+The Azure Stack Hub solution requires a resilient and highly available physical infrastructure to support its operation and services. To integrate Azure Stack Hub to the network, it requires uplinks from the Top-of-Rack switches (ToR) to the nearest switch or router, which in this article is referred as the *Border*. The ToRs can be uplinked to a single or a pair of Borders. The ToR is pre-configured by our automation tool. It expects a minimum of one connection between ToR and Border when using BGP Routing and a minimum of two connections (one per ToR) between ToR and Border when using Static Routing, with a maximum of four connections on either routing option. These connections are limited to SFP+ or SFP28 media and a minimum of one GB speed. Check with your original equipment manufacturer (OEM) hardware vendor for availability. The following diagram presents the recommended design:
 
 ![Recommended Azure Stack network design](media/azure-stack-network/physical-network.svg)
 

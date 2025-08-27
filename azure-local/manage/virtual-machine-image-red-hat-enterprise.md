@@ -146,13 +146,13 @@ To configure the VM:
 1. Make sure that `cloud-init` wasn't installed.
 
     ```bash
-    Sudo yum list installed | grep cloud-init
+    sudo yum list installed | grep cloud-init
     ```
 
 1. Install the `cloud-init` tool and verify the version of `cloud-init` that was installed.
 
     ```bash
-    Sudo yum install -y cloud-init
+    sudo yum install -y cloud-init
     cloud-init --version
     ```
 

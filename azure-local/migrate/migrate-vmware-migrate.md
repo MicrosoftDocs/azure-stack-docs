@@ -69,7 +69,7 @@ Once the migration is complete, the VMs are running on your Azure Local instance
 ## Verify and complete migration
 
 > [!IMPORTANT]
-> After verifying the status of the migrated VM, be sure to **complete migration** as detailed below. Failing to do so may lead to unexpected behavior.
+> After verifying the status of the migrated VM, be sure to **complete migration** as detailed below. Failing to do so might lead to unexpected behavior.
 
 1. In the Azure portal, go to your Azure Local resource, then select **Virtual machines**.
 1. In the list of VMs in the right-pane, verify that the VMware VMs that you migrated are present.
@@ -102,13 +102,13 @@ Once the migration is complete, the VMs are running on your Azure Local instance
 
     :::image type="content" source="./media/migrate-vmware-migrate/complete-migration-virtual-machine-3-a.png" alt-text="Screenshot of multiple VMs completing migration in Azure portal."lightbox="./media/migrate-vmware-migrate/complete-migration-virtual-machine-3-a.png":::
 
-    The **Complete migration** action starts the **Delete protected item** job that you can track from the  **Jobs**  page. This job will only clean up the replication by deleting the delete protected item job - this will not affect your migrated VM.  
+    The **Complete migration** action starts the **Delete protected item** job that you can track from the  **Jobs**  page. This job will only clean up the replication by deleting the delete protected item job - this won't affect your migrated VM.  
     
    <!--:::image type="content" source="./media/migrate-vmware-migrate/complete-migration-virtual-machine-4.png" alt-text="Screenshot of Jobs page with deletion job selected in Azure portal."lightbox="./media/migrate-vmware-migrate/complete-migration-virtual-machine-4.png":::-- old one-->
 
-    Completing the migration or deleting the protected item will automatically remove any leftover seed files, such as the seed.iso file attached to the migrated VM and seed disks used during replication. These files can occupy significant space on the target Azure Local system, so it's important to finalize the migration after verifying the VMs. If migrations are not completed, these files will continue to occupy space on the target system.
+    Completing the migration or deleting the protected item will automatically remove any leftover seed files, such as the seed.iso file attached to the migrated VM and seed disks used during replication. These files can occupy significant space on the target Azure Local system, so it's important to finalize the migration after verifying the VMs. If migrations aren't completed, these files will continue to occupy space on the target system.
 
-    After the migrate resource is deleted, it is also removed from the **Replications** view. You'll also see the migrated VM job disappear from the **Replications** view.
+    After the migrated resource is deleted, it's also removed from the **Replications** view. You'll also see the migrated VM job disappear from the **Replications** view.
 
     :::image type="content" source="./media/migrate-vmware-migrate/complete-migration-virtual-machine-5.png" alt-text="Screenshot of Replications page with VM not showing in the list in Azure portal."lightbox="./media/migrate-vmware-migrate/complete-migration-virtual-machine-5.png":::
 

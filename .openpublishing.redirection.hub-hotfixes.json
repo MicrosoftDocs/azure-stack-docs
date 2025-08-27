@@ -324,6 +324,11 @@
       "source_path":"azure-stack/operator/hotfix-1-2306-4-101.md", 
       "redirect_url":"/azure-stack/operator/hotfix-1-2306-4-102", 
       "redirect_document_id":false
+    },
+    { 
+      "source_path":"azure-stack/operator/hotfix-1-2501-1-50.md", 
+      "redirect_url":"/azure-stack/operator/hotfix-1-2501-1-47", 
+      "redirect_document_id":false
     }
   ]
 }

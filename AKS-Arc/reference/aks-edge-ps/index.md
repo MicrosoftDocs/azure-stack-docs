@@ -4,10 +4,12 @@ description: PowerShell cmdlets for AKS Edge Essentials
 author: rcheeran
 ms.author: rcheeran
 ms.topic: reference
-ms.date: 03/10/2025
+ms.date: 08/11/2025
 ---
 
 # AKS Edge Essentials PowerShell module
+
+To get started, see [Prepare your machines for AKS Edge Essentials.](../../aks-edge-howto-setup-machine.md).
 
 ## PowerShell commands
 

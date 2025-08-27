@@ -14,7 +14,7 @@ ms.custom: sfi-image-nochange
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2-22h2.md)]
 
-This article describes how to set up log alerts for Azure Local systems: using Insights for Azure Local and using pre-existing sample log queries, such as average node CPU, available memory, available volume capacity, and more.
+This article describes how to set up log alerts for Azure Local systems: using Insights for Azure Local and using preexisting sample log queries, such as average node CPU, available memory, available volume capacity, and more.
 
 For information about how to set up metric alerts, see [Set up metric alerts for Azure Local](./setup-metric-alerts.md).
 
@@ -34,7 +34,7 @@ Before you begin, make sure that the following prerequisites are completed:
 > [!IMPORTANT]
 > Using Insights isn't recommended for high severity alerts. It could take 15 minutes to collect logs.
 
-Follow these steps to set up log alerts using Insights. Ensure that you have reviewed and completed the [prerequisites](#prerequisites).
+Follow these steps to set up log alerts using Insights. Ensure that you reviewed and completed the [prerequisites](#prerequisites).
 
 1. From the Azure portal, navigate to or search for **Monitor** and select **Azure Local**.
 
@@ -54,9 +54,9 @@ Follow these steps to set up log alerts using Insights. Ensure that you have rev
 
 ## Set up alerts using sample log queries
 
-You can start monitoring your Azure Local system and setting up alerts for it by using pre-existing log queries available in the [Azure portal](https://portal.azure.com). These queries can help you check and monitor the health of your system.
+You can start monitoring your Azure Local system and setting up alerts for it by using preexisting log queries available in the [Azure portal](https://portal.azure.com). These queries can help you check and monitor the health of your system.
 
-Follow these steps to set up log alerts using sample log queries. Ensure that you have reviewed and completed the [prerequisites](#prerequisites).
+Follow these steps to set up log alerts using sample log queries. Ensure that you reviewed and completed the [prerequisites](#prerequisites).
 
 1. In the Azure portal, browse to your Azure Local system resource page, then select the cluster you want to monitor using sample log queries.
 
@@ -146,7 +146,7 @@ get-clusterresource "sddc management" | set-clusterparameter -name "CacheDumpInt
 ```
 
 > [!NOTE]
-> To collect all logs don't lower the frequency to less than 15 minutes.
+> To collect all logs, don't lower the frequency to less than 15 minutes.
 
 ## Next steps
 

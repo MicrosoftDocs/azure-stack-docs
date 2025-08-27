@@ -3,7 +3,7 @@ title: Release notes with fixed and known issues in Azure Local
 description: Read about the known issues and fixed issues in Azure Local.
 author: alkohli
 ms.topic: conceptual
-ms.date: 07/30/2025
+ms.date: 08/06/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
@@ -51,7 +51,12 @@ The following table lists the fixed issues in this release:
 
 ## Known issues
 
-Microsoft isn't aware of any known issues in this release.
+The following is a known issue with this release.
+
+|Feature  |Issue  |Workaround  |
+|---------|---------|---------|
+| Update | When installing cumulative updates using Azure Update Manager, only the latest update for version 2507 is installed. If earlier update options (for versions 2505, 2506) are selected, they are not installed. | There's no workaround in this release. |
+
 
 ## Known issues from previous releases
 
@@ -383,6 +388,7 @@ The following table lists the fixed issues in this release:
 | Upgrade <!--30251075--> | Added a check to validate enough free memory to start an Azure Arc resource bridge VM.    |   |
 | Security <!--XXXX--> | Mitigation for security vulnerability CVE-2024-21302 was implemented. See the [Guidance for blocking rollback of Virtualization-based Security (VBS) related security updates](https://support.microsoft.com/topic/guidance-for-blocking-rollback-of-virtualization-based-security-vbs-related-security-updates-b2e7ebf4-f64d-4884-a390-38d63171b8d3)   |   |
 | Deployment  | During Azure Local deployment via portal, **Validate selected machines** fails with this error message: `Mandatory extension [Lcm controller] installed version [30.2503.0.907] is not equal to the required version [30.2411.2.789] for Arc machine [Name of the machine]. Please create EdgeDevice resource again for this machine to fix the issue.`   | Reinstall the correct version of `AzureEdgeLifecycleManager` extension. Follow these steps: <br> 1. Select the machine and then select **Install extensions**. <br> <br>![Screenshot of extension installation on Azure Local machines.](media/known-issues/select-machine-2.png)<br> <br> 2. Repeat this step for each machine you intend to cluster. It takes roughly 15 minutes for the installation to complete. <br> 3. Verify that the `AzureEdgeLifecycleManager` extension version is 30.2411.2.789. <br><br> ![Screenshot of extension version installed on Azure Local machines that can be validated.](media/known-issues/select-machine-1.png) <br><br> 4. After the extensions are installed on all the machines in the list, select **Add machines** to refresh the list. <br> 5. Select **Validate selected machines**. The validation should succeed. |
+| Deployment <!--31699269--> | During the Azure Local deployment and update on OEM-licensed devices, `ConfigureSecurityBaseline` fails at the **Apply security settings on servers** step. | This issue is now fixed. |
 
 ## Known issues in this release
 
@@ -415,7 +421,7 @@ The following table lists the known issues from previous releases:
 
 ::: moniker-end
 
-::: moniker range="=azloc-24113"
+::: moniker range="=azloc-previous"
 
 ## Known issues for version 2411.3
 
@@ -429,11 +435,11 @@ Release notes for this version include the issues fixed in this release, known i
 > [!NOTE]
 > For detailed remediation for common known issues, see the [Azure Local Supportability](https://github.com/Azure/AzureStackHCI-Supportability) GitHub repository.
 
-## Fixed issues
+### Fixed issues
 
 There are no fixed issues in this release.
 
-## Known issues in this release
+### Known issues in this release
 
 The following table lists the known issues in this release:
 
@@ -441,22 +447,19 @@ The following table lists the known issues in this release:
 |---------|---------|---------|
 | Deployment  | During Azure Local deployment via portal, **Validate selected machines** fails with this error message: `Mandatory extension [Lcm controller] installed version [30.2503.0.907] is not equal to the required version [30.2411.2.789] for Arc machine [Name of the machine]. Please create EdgeDevice resource again for this machine to fix the issue.`   | Reinstall the correct version of `AzureEdgeLifecycleManager` extension. Follow these steps: <br> 1. Select the machine and then select **Install extensions**. <br> <br>![Screenshot of extension installation on Azure Local machines.](media/known-issues/select-machine-2.png)<br> <br> 2. Repeat this step for each machine you intend to cluster. It takes roughly 15 minutes for the installation to complete. <br> 3. Verify that the `AzureEdgeLifecycleManager` extension version is 30.2411.2.789. <br><br> ![Screenshot of extension version installed on Azure Local machines that can be validated.](media/known-issues/select-machine-1.png) <br><br> 4. After the extensions are installed on all the machines in the list, select **Add machines** to refresh the list. <br> 5. Select **Validate selected machines**. The validation should succeed. |
 
-## Known issues from previous releases
+### Known issues from previous releases
 
 The following table lists the known issues from previous releases:
 
 |Feature  |Issue  |Workaround  |
 |---------|---------|---------|
+| Deployment <!--31699269-->| This issue affects deployment and update on OEM-licensed devices. During deployment, you might see this error at **Apply security settings on servers**: <br></br>`Type 'ConfigureSecurityBaseline' of Role 'AzureStackOSConfig' raised an exception: [ConfigureSecurityBaseline] ConfigureSecurityBaseline failed on <server name> with exception: -> Failed to apply OSConfiguration enforcement for ASHCIApplianceSecurityBaselineConfig on <server name>`. | If you haven’t started the update, see [Azure Local OEM license devices](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/Security/TSG-Azure-Local-HCI-OEM-license-devices.md) to apply the preventive steps before updating to Azure Local 2411.3. <br></br> If you’ve encountered the issue, use the same insructions to validate and apply the mitigation. |
 | Update | When viewing the readiness check results for an Azure Local instance via the Azure Update Manager, there might be multiple readiness checks with the same name.  |There's no known workaround in this release. Select **View details** to view specific information about the readiness check. |
 | Update | There is an intermittent issue in this release where the Azure portal may incorrectly display the update status as **Failed to update** or **In progress**, even though the update has actually completed successfully. This behavior is particularly observed when updating Azure Local instances via Azure Update Manager, where the update progress and results may not be visible in the portal.  | You might need to wait up to 30 minutes or more to see the updated status. If the status still isn't refreshed after that time, follow these steps: [Connect to your Azure Local instance](./update/update-via-powershell-23h2.md#connect-to-your-azure-local) via a remote PowerShell session. To confirm the update status, run the following PowerShell cmdlets: <br><br> `$Update = get-solutionupdate`\| `? version -eq "<version string>"`<br><br>Replace the version string with the version you're running. For example, "10.2405.0.23". <br><br>`$Update.state`<br><br>If the update status is **Installed**, no further action is required on your part. Azure portal refreshes the status correctly within 24 hours. <br> To refresh the status sooner, follow these steps on one of the nodes. <br>Restart the Cloud Management cluster group.<br>`Stop-ClusterGroup "Cloud Management"`<br>`Start-ClusterGroup "Cloud Management"`|
 | Add server <!--26852600--> |In this release and previous releases, when adding a machine to the system, isn't possible to update the proxy bypass list string to include the new machine. Updating environment variables proxy bypass list on the hosts won't update the proxy bypass list on Azure resource bridge or AKS. |There's no workaround in this release. If you encounter this issue, contact Microsoft Support to determine next steps.|
 | Azure portal <!--25741164--> |In some instances, the Azure portal might take a while to update and the view might not be current.| You might need to wait for 30 minutes or more to see the updated view. |
 | Azure Local VM management |In rare instances, deleting a network interface on an Azure Local VM from Azure portal doesn't work in this release.| Use the Azure CLI to first remove the network interface and then delete it. For more information, see [Remove the network interface](/cli/azure/stack-hci-vm/nic#az-stack-hci-vm-nic-remove) and see [Delete the network interface](/cli/azure/stack-hci-vm/network/nic#az-stack-hci-vm-network-nic-delete).|
 | Security <!-- 56969147 --> | When fixing the compliance for the minimum password length rule, even after you've changed the minimum password length on the Azure Local host to 14, you continue to see it as non-compliant in Azure policy.  | You can verify the length of the password using the `net accounts` cmdlet. In the output, find **Minimum password length** to see the value. |
-
-::: moniker-end
-
-::: moniker range="=azloc-24112"
 
 ## Known issues for version 2411.2
 
@@ -470,7 +473,7 @@ Release notes for this version include the issues fixed in this release, known i
 > [!NOTE]
 > For detailed remediation for common known issues, see the [Azure Local Supportability](https://github.com/Azure/AzureStackHCI-Supportability) GitHub repository.
 
-## Fixed issues
+### Fixed issues
 
 The following issues are fixed in this release:
 
@@ -481,19 +484,15 @@ The following issues are fixed in this release:
 | Deployment | Validation times out due to timestamp deserialization. | When deploying the operating system, select **English (United States)** as the installation language, as well as the time and currency format. <br> For detailed remediation steps, see the troubleshooting guide in the [Azure Local Supportability](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/Deployment/Triggering-deployment-settings-validation-call-results-in-OperationTimeout-2411-1-and-LCM-Extension-2411-1.md) GitHub repository.|
 | Update <!--304749733--> |A solution extension package was unintentionally applied into a solution update. ||
 
+### Known issues in this release
 
-## Known issues in this release
-
-There's no known issue in this release. Any previously known issues have been fixed in subsequent releases.
-
-<!--The following table lists the known issues in this release:
+The following table lists the known issues in this release:
 
 |Feature  |Issue  |Workaround  |
 |---------|---------|---------|
-| Deployment <!--31699269--| This issue affects deployment and update on OEM-licensed devices. During deployment, you might see this error at **Apply security settings on servers**: <br></br>`Type 'ConfigureSecurityBaseline' of Role 'AzureStackOSConfig' raised an exception: [ConfigureSecurityBaseline] ConfigureSecurityBaseline failed on <server name> with exception: -> Failed to apply OSConfiguration enforcement for ASHCIApplianceSecurityBaselineConfig on <server name>`. | If you haven’t started the update, see [Azure Local OEM license devices](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/Security/TSG-Azure-Local-HCI-OEM-license-devices.md) to apply the preventive steps before updating to Azure Local 2411.3. <br></br> If you’ve encountered the issue, use the same insructions to validate and apply the mitigation. |-->
+| Deployment <!--31699269-->| This issue affects deployment and update on OEM-licensed devices. During deployment, you might see this error at **Apply security settings on servers**: <br></br>`Type 'ConfigureSecurityBaseline' of Role 'AzureStackOSConfig' raised an exception: [ConfigureSecurityBaseline] ConfigureSecurityBaseline failed on <server name> with exception: -> Failed to apply OSConfiguration enforcement for ASHCIApplianceSecurityBaselineConfig on <server name>`. | If you haven’t started the update, see [Azure Local OEM license devices](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/Security/TSG-Azure-Local-HCI-OEM-license-devices.md) to apply the preventive steps before updating to Azure Local 2411.3. <br></br> If you’ve encountered the issue, use the same insructions to validate and apply the mitigation. |
 
-
-## Known issues from previous releases
+### Known issues from previous releases
 
 The following table lists the known issues from previous releases:
 
@@ -505,10 +504,6 @@ The following table lists the known issues from previous releases:
 | Azure portal <!--25741164--> |In some instances, the Azure portal might take a while to update and the view might not be current.| You might need to wait for 30 minutes or more to see the updated view. |
 | Azure Local VM management |In rare instances, deleting a network interface on an Azure Local VM from Azure portal doesn't work in this release.| Use the Azure CLI to first remove the network interface and then delete it. For more information, see [Remove the network interface](/cli/azure/stack-hci-vm/nic#az-stack-hci-vm-nic-remove) and see [Delete the network interface](/cli/azure/stack-hci-vm/network/nic#az-stack-hci-vm-network-nic-delete).|
 | Security <!-- 56969147 --> | When fixing the compliance for the minimum password length rule, even after you've changed the minimum password length on the Azure Local host to 14, you continue to see it as non-compliant in Azure policy.  | You can verify the length of the password using the `net accounts` cmdlet. In the output, find **Minimum password length** to see the value. |
-
-::: moniker-end
-
-::: moniker range="=azloc-previous"
 
 ## Known issues for version 2411.1
 
@@ -1078,7 +1073,7 @@ Here are the issues fixed in this release:
 | Deployment |The first deployment step: **Before Cloud Deployment** when [Deploying via Azure portal](./deploy/deploy-via-portal.md) can take from 45 minutes to an hour to complete.| |
 | Deployment <!--26039020 could not reproduce--> |There's a sporadic heartbeat reliability issue in this release due to which the registration encounters the error: HCI registration failed. Error: Arc integration failed. |This issue is intermittent. Try rerunning the deployment. For more information, see [Rerun the deployment](./deploy//deploy-via-portal.md#resume-deployment).   |
 | Deployment <!--26088401 could not reproduce--> |There's an intermittent issue in this release where the Arc integration validation fails with this error: ```Validator failed. Can't retrieve the dynamic parameters for the cmdlet. PowerShell Gallery is currently unavailable.  Please try again later.``` |This issue is intermittent. Try rerunning the deployment. For more information, see [Rerun the deployment](./deploy/deploy-via-portal.md#resume-deployment).   |
-| Deployment |In some instances, running the [Arc registration script](./deploy/deployment-arc-register-server-permissions.md#register-machines-with-azure-arc) doesn't install the mandatory extensions, Azure Edge device Management or Azure Edge Lifecycle Manager. |The issue was fixed in this release. The extensions remediate themselves and get into a successful deployment state. |
+| Deployment |In some instances, running the [Arc registration script](./deploy/deployment-arc-register-server-permissions.md) doesn't install the mandatory extensions, Azure Edge device Management or Azure Edge Lifecycle Manager. |The issue was fixed in this release. The extensions remediate themselves and get into a successful deployment state. |
 | Update <!--26176875--> | When you try to change your AzureStackLCMUserPassword using command: `Set-AzureStackLCMUserPassword`, you might encounter this error: </br></br> ```Can't find an object with identity: 'object id'*.```| There's no known workaround in this release. |
 | Security <!--26865704--> |For new deployments, Secured-core capable devices won't have Dynamic Root of Measurement (DRTM) enabled by default. If you try to enable (DRTM) using the Enable-AzSSecurity cmdlet, you see an error that DRTM setting isn't supported in the current release.<br> Microsoft recommends defense in depth, and UEFI Secure Boot still protects the components in the Static Root of Trust (SRT) boot chain by ensuring that they're loaded only when they're signed and verified.  | |
 | Networking <!--24524483--> |There's an infrequent DNS client issue in this release that causes the deployment to fail on a two-node cluster with a DNS resolution error: *A WebException occurred while sending a RestRequest. WebException.Status: NameResolutionFailure.* As a result of the bug, the DNS record of the second node is deleted soon after it's created resulting in a DNS error. |This issue is now fixed. |
@@ -1148,7 +1143,7 @@ Here are the known issues from previous releases:
 |Update <!----> |In this release, there's a health check issue preventing a single server running Azure Local from being updated via the Azure portal. | Use PowerShell to perform your update. For more information, see [Update your Azure Local via PowerShell](./update/update-via-powershell-23h2.md). |
 | Azure portal <!--25741164--> |In some instances, the Azure portal might take a while to update and the view might not be current.| You might need to wait for 30 minutes or more to see the updated view. |
 | Azure Local VM management |In rare instances, deleting a network interface on an Azure Local VM from Azure portal doesn't work in this release.| Use the Azure CLI to first remove the network interface and then delete it. For more information, see [Remove the network interface](/cli/azure/stack-hci-vm/nic#az-stack-hci-vm-nic-remove) and see [Delete the network interface](/cli/azure/stack-hci-vm/network/nic#az-stack-hci-vm-network-nic-delete).|
-| Deployment |In some instances, running the [Arc registration script](./deploy/deployment-arc-register-server-permissions.md#register-machines-with-azure-arc) doesn't install the mandatory extensions, Azure Edge device Management or Azure Edge Lifecycle Manager. |The workaround is to run the script again and make sure that all the mandatory extensions are installed before you [Deploy via Azure portal](./deploy/deploy-via-portal.md). |
+| Deployment |In some instances, running the [Arc registration script](./deploy/deployment-arc-register-server-permissions.md) doesn't install the mandatory extensions, Azure Edge device Management or Azure Edge Lifecycle Manager. |The workaround is to run the script again and make sure that all the mandatory extensions are installed before you [Deploy via Azure portal](./deploy/deploy-via-portal.md). |
 | Deployment |The first deployment step: **Before Cloud Deployment** when [Deploying via Azure portal](./deploy/deploy-via-portal.md) can take from 45 minutes to an hour to complete.| |
 
 ## Issues for version 2311.4
@@ -1187,7 +1182,7 @@ Here are the known issues from previous releases:
 |Update <!----> |In this release, there's a health check issue preventing a single server running Azure Local  from being updated via the Azure portal. | Use PowerShell to perform your update. For more information, see [Update your Azure Local via PowerShell](./update/update-via-powershell-23h2.md). |
 | Azure portal <!--25741164--> |In some instances, the Azure portal might take a while to update and the view might not be current.| You might need to wait for 30 minutes or more to see the updated view. |
 | Azure Local VM management |In rare instances, deleting a network interface on an Azure Local VM from Azure portal doesn't work in this release.| Use the Azure CLI to first remove the network interface and then delete it. For more information, see [Remove the network interface](/cli/azure/stack-hci-vm/nic#az-stack-hci-vm-nic-remove) and see [Delete the network interface](/cli/azure/stack-hci-vm/network/nic#az-stack-hci-vm-network-nic-delete).|
-| Deployment |In some instances, running the [Arc registration script](./deploy/deployment-arc-register-server-permissions.md#register-machines-with-azure-arc) doesn't install the mandatory extensions, Azure Edge device Management or Azure Edge Lifecycle Manager. |The workaround is to run the script again and make sure that all the mandatory extensions are installed before you [Deploy via Azure portal](./deploy/deploy-via-portal.md). |
+| Deployment |In some instances, running the [Arc registration script](./deploy/deployment-arc-register-server-permissions.md) doesn't install the mandatory extensions, Azure Edge device Management or Azure Edge Lifecycle Manager. |The workaround is to run the script again and make sure that all the mandatory extensions are installed before you [Deploy via Azure portal](./deploy/deploy-via-portal.md). |
 | Deployment |The first deployment step: **Before Cloud Deployment** when [Deploying via Azure portal](./deploy/deploy-via-portal.md) can take from 45 minutes to an hour to complete.| |
 
 ## Issues for version 2311.3
@@ -1222,7 +1217,7 @@ Here are the known issues from previous releases:
 | Azure portal <!--25741164--> |In some instances, the Azure portal might take a while to update and the view might not be current.| You might need to wait for 30 minutes or more to see the updated view. |
 | Azure Local VM management |In rare instances, deleting a network interface on an Azure Local VM from Azure portal doesn't work in this release.| Use the Azure CLI to first remove the network interface and then delete it. For more information, see [Remove the network interface](/cli/azure/stack-hci-vm/nic#az-stack-hci-vm-nic-remove) and see [Delete the network interface](/cli/azure/stack-hci-vm/network/nic#az-stack-hci-vm-network-nic-delete).|
 | Azure Local VM management| When you create a disk or a network interface in this release with underscore in the name, the operation fails.  |Make sure to not use underscore in the names for disks or network interfaces. |
-| Deployment |In some instances, running the [Arc registration script](./deploy/deployment-arc-register-server-permissions.md#register-machines-with-azure-arc) doesn't install the mandatory extensions, Azure Edge device Management or Azure Edge Lifecycle Manager. |The workaround is to run the script again and make sure that all the mandatory extensions are installed before you [Deploy via Azure portal](./deploy/deploy-via-portal.md). |
+| Deployment |In some instances, running the [Arc registration script](./deploy/deployment-arc-register-server-permissions.md#) doesn't install the mandatory extensions, Azure Edge device Management or Azure Edge Lifecycle Manager. |The workaround is to run the script again and make sure that all the mandatory extensions are installed before you [Deploy via Azure portal](./deploy/deploy-via-portal.md). |
 | Deployment |The first deployment step: **Before Cloud Deployment** when [Deploying via Azure portal](./deploy/deploy-via-portal.md) can take from 45 minutes to an hour to complete.| |
 | Azure Local VM management <!--26423941--> |If the resource group used to deploy an Azure Local VM has an underscore in the name, the guest agent installation fails. As a result, you won't be able to enable guest management. | Make sure that there are no underscores in the resource groups used to deploy Azure Local VMs.|
 
@@ -1273,7 +1268,7 @@ Here are the known issues from previous releases:
 | Azure portal <!--25741164--> |In some instances, the Azure portal might take a while to update and the view might not be current.| You might need to wait for 30 minutes or more to see the updated view. |
 | Azure Local VM management |In rare instances, deleting a network interface on an Azure Local VM from Azure portal doesn't work in this release.| Use the Azure CLI to first remove the network interface and then delete it. For more information, see [Remove the network interface](/cli/azure/stack-hci-vm/nic#az-stack-hci-vm-nic-remove) and see [Delete the network interface](/cli/azure/stack-hci-vm/network/nic#az-stack-hci-vm-network-nic-delete).|
 | Azure Local VM management| When you create a disk or a network interface in this release with underscore in the name, the operation fails.  |Make sure to not use underscore in the names for disks or network interfaces. |
-| Deployment |In some instances, running the [Arc registration script](./deploy/deployment-arc-register-server-permissions.md#register-machines-with-azure-arc) doesn't install the mandatory extensions, Azure Edge device Management or Azure Edge Lifecycle Manager. |Run the script again and make sure that all the mandatory extensions are installed before you [Deploy via Azure portal](./deploy/deploy-via-portal.md). |
+| Deployment |In some instances, running the [Arc registration script](./deploy/deployment-arc-register-server-permissions.md) doesn't install the mandatory extensions, Azure Edge device Management or Azure Edge Lifecycle Manager. |Run the script again and make sure that all the mandatory extensions are installed before you [Deploy via Azure portal](./deploy/deploy-via-portal.md). |
 | Deployment |The first deployment step: **Before Cloud Deployment** when [Deploying via Azure portal](./deploy/deploy-via-portal.md) can take from 45 minutes to an hour to complete.| |
 
 ## Issues for version 2311
@@ -1328,7 +1323,7 @@ Here are the known issues from previous releases:
 | Deployment <!--25717459-->|On server hardware, a USB network adapter is created to access the Baseboard Management Controller (BMC). This adapter can cause the cluster validation to fail during the deployment.| Make sure to disable the BMC network adapter before you begin cloud deployment.|
 | Deployment |A new storage account is created for each run of the deployment. Existing storage accounts aren't supported in this release.| |
 | Deployment |A new key vault is created for each run of the deployment. Existing key vaults aren't supported in this release.| |
-| Deployment |In some instances, running the [Arc registration script](./deploy/deployment-arc-register-server-permissions.md#register-machines-with-azure-arc) doesn't install the mandatory extensions, Azure Edge device Management or Azure Edge Lifecycle Manager. |The workaround is to run the script again and make sure that all the mandatory extensions are installed before you [Deploy via Azure portal](./deploy/deploy-via-portal.md). |
+| Deployment |In some instances, running the [Arc registration script](./deploy/deployment-arc-register-server-permissions.md) doesn't install the mandatory extensions, Azure Edge device Management or Azure Edge Lifecycle Manager. |The workaround is to run the script again and make sure that all the mandatory extensions are installed before you [Deploy via Azure portal](./deploy/deploy-via-portal.md). |
 | Deployment |The first deployment step: **Before Cloud Deployment** when [Deploying via Azure portal](./deploy/deploy-via-portal.md) can take from 45 minutes to an hour to complete.| |
 | Deployment |The network direct intent overrides defined on the template aren't working in this release.|Use the Azure Resource Manager template to override this parameter and disable RDMA for the intents. |
 | Deployment |If you select **Review + Create** and you haven't filled out all the tabs, the deployment begins and then eventually fails.|There's no known workaround in this release. |

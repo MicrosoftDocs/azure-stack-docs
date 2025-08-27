@@ -5,15 +5,13 @@ author: ronmiab
 ms.author: robess
 ms.topic: how-to
 ms.reviewer: mindydiep
-ms.date: 06/06/2025
+ms.date: 08/13/2025
 #customer intent: As a Senior Content Developer, I want provide customers with information and guidance on using Azure Update Manager to manage and keep their Azure Local instances up to date.
 ---
 
 # Use Azure Update Manager to update Azure Local
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
-
-[!INCLUDE [azure-local-end-of-support-banner-23h2](../includes/azure-local-end-of-support-banner-23h2.md)]
 
 [!INCLUDE [IMPORTANT](../includes/hci-applies-to-23h2-cluster-updates.md)]
 
