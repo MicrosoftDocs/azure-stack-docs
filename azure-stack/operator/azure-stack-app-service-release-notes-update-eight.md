@@ -9,6 +9,7 @@ ms.author: sethm
 ms.reviewer: anwestg
 ms.lastreviewed: 03/25/2019
 ROBOTS: NOINDEX
+ms.custom: sfi-ropc-nochange
 
 # Intent: As an Azure Stack Hub operator, I want the release notes for update 8 of App Service on Azure Stack Hub so I can know the new features, fixes, and known issues.
 # Keyword: app service azure stack hub update 8 release notes

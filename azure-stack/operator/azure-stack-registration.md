@@ -6,9 +6,10 @@ author: sethmanheim
 ms.topic: how-to
 ms.date: 06/06/2025
 ms.author: sethm
+zone_pivot_groups: state-connected-disconnected
 ms.custom:
   - devx-track-azurepowershell
-zone_pivot_groups: state-connected-disconnected
+  - sfi-image-nochange
 
 # Intent: As an Azure Stack operator, I want to register my Azure Stack with Azure so I can download marketplace items and set up data reporting.
 # Keyword: register azure stack (registration)

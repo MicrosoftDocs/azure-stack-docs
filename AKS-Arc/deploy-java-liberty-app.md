@@ -6,7 +6,14 @@ ms.author: sethm
 ms.topic: install-set-up-deploy
 ms.date: 06/27/2024
 ms.lastreviewed: 01/14/2022
-ms.custom:  devx-track-extended-java, devx-track-java, devx-track-javaee, devx-track-javaee-liberty, devx-track-javaee-liberty-aks, devx-track-azurecli
+ms.custom:
+  - devx-track-extended-java
+  - devx-track-java
+  - devx-track-javaee
+  - devx-track-javaee-liberty
+  - devx-track-javaee-liberty-aks
+  - devx-track-azurecli
+  - sfi-ropc-nochange
 
 # Intent: As an IT Pro, I want to learn how to use Open Liberty or WebSphere Liberty to deploy a Java application. 
 # Keyword: java jakartaee javaee microprofile open-liberty websphere-liberty aks-hci kubernetes

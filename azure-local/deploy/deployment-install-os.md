@@ -7,6 +7,7 @@ ms.date: 05/29/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
+ms.custom: sfi-image-nochange
 ---
 
 # Install the Azure Stack HCI operating system
