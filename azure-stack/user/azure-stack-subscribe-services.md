@@ -6,6 +6,7 @@ ms.topic: tutorial
 ms.date: 01/16/2025
 ms.author: sethm
 ms.lastreviewed: 11/13/2019
+ms.custom: sfi-image-nochange
 
 # Intent: As an Azure Stack user, I want an example showing me how to create a subscription with an offer and then test it.
 # Keyword: create subscription azure stack

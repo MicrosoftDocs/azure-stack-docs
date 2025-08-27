@@ -5,8 +5,10 @@ author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
 ms.service: azure-local
-ms.custom: devx-track-azurepowershell
 ms.date: 05/08/2025
+ms.custom:
+  - devx-track-azurepowershell
+  - sfi-image-nochange
 ---
 
 # Azure Hybrid Benefit for Azure Local

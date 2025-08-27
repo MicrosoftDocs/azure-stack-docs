@@ -6,6 +6,7 @@ ms.topic: how-to
 ms.date: 01/16/2025
 ms.author: sethm
 ms.lastreviewed: 06/11/2019
+ms.custom: sfi-image-nochange
 
 # Intent: As an Azure Stack operator, I want to create an offer that uses the plan I created so my users can buy it/subscribe to it.
 # Keyword: create offer azure stack
