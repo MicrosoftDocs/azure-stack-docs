@@ -66,9 +66,9 @@ Follow these practices to ensure smooth, reliable updates for Azure Local instan
 
    You can predownload update content using the following update workflows. However, container images for Azure Resource Bridge (ARB) and Azure Kubernetes Service (AKS)  aren't included in the static payload. They are downloaded automatically during the update process.
 
-   - Prepare only workflow. See [Predownloads and check update readiness](./update-via-powershell-23h2#step-4-recommended-predownload-and-check-update-readiness).
+   - Prepare only workflow. See [Predownloads and check update readiness](./update-via-powershell-23h2.md#step-4-recommended-predownload-and-check-update-readiness).
 
-   - Offline update workflow. See [Import and discover update packages with limited connectivity](./import-discover-updates-offline-23h2).
+   - Offline update workflow. See [Import and discover update packages with limited connectivity](./import-discover-updates-offline-23h2.md).
 
 1. **Review known issues, logs, and use troubleshooting guides.**
 
