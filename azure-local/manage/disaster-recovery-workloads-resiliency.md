@@ -14,13 +14,13 @@ Disaster recovery for workloads running on Azure Local virtual machines (VMs) re
 
 Azure Local VMs can host high performance SQL Server deployments, including those using Always-On Availability Groups for enhanced resilience. The primary objective of SQL Server disaster recovery is to meet the application's specific Recovery Time Objective (RTO) and Recovery Point Objective (RPO) in the event of a disruption. SQL Server provides a rich set of built-in features for both high availability (HA) within a single site/cluster and disaster recovery to a secondary site/cluster.  
 
-For SQL Server workloads running on Azure Local VMs, a comprehensive DR strategy must combine host-level protection mechanisms with SQL Server's own native HA/DR features. While host-level protection safeguards the entire server instance, including the operating system and SQL Server binaries, SQL-native solutions like Always-On Availability Groups and Log Shipping offer more granular control over database availability, provide application-consistent data protection, and can often achieve lower RPOs, especially for highly transactional databases. By using SQL Server’s own disaster recovery capabilities, in addition to Azure Local’s host-level protections, organizations can achieve more robust data protection and faster recovery times.
+For SQL Server workloads running on Azure Local VMs, a comprehensive disaster recovery strategy must combine host-level protection mechanisms with SQL Server's own native high availability/disaster recovery features. While host-level protection safeguards the entire server instance, including the operating system and SQL Server binaries, SQL-native solutions like Always-On Availability Groups and Log Shipping offer more granular control over database availability, provide application-consistent data protection, and can often achieve lower RPOs, especially for highly transactional databases. By using SQL Server’s own disaster recovery capabilities, in addition to Azure Local’s host-level protections, organizations can achieve more robust data protection and faster recovery times.
 
 ### Disaster recovery capabilities of SQL Server on Azure Local VMs
 
 SQL Server provides a range of proven disaster recovery technologies, all of which are fully supported on Azure Local deployments. You can choose one or combine several, depending on application requirements and your Recovery Point Objective (RPO) / Recovery Time Objective (RTO) targets. 
 
-Key SQL Server disaster recovery features and best-practice recommendations for using them on Azure Local:
+Key SQL Server disaster recovery features and best-practice recommendations for using them on Azure Local include:
 
 - **Always On Availability Groups (AG)**
     - An Always On AG is a premier high-availability/disaster recovery feature that protects a set of user databases by replicating transactions from a primary to one or more secondary replicas.
@@ -47,7 +47,7 @@ Key SQL Server disaster recovery features and best-practice recommendations for 
     - For more information, see [Back Up and Restore of SQL Server Databases](/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases)
 
 - **Replication**: 
-    - SQL Server replication (Transactional, Merge, or Snapshot) allows copying and distributing data from one database to others in near real-time. While typically used for distributing read-only copies or synchronizing data, replication can also serve as part of a DR strategy. On Azure Local, all forms of SQL Server replication are supported.
+    - SQL Server replication (Transactional, Merge, or Snapshot) allows copying and distributing data from one database to others in near real-time. While typically used for distributing read-only copies or synchronizing data, replication can also serve as part of a disaster recovery strategy. On Azure Local, all forms of SQL Server replication are supported.
     - Caveat: Replication doesn't automatically fail over entire databases and might require manual reconfiguration in a disaster. 
     - For more information, see [SQL Server Replication](/sql/relational-databases/replication/sql-server-replication).  
 
@@ -94,7 +94,7 @@ At failover time, if the hosts are dormant, they must be turned on and users rea
 
 ### Personal Host Pools
 
-With personal session hosts, each user is assigned to a specific, dedicated session host VM. These VMs are stateful, as users may install applications or store data directly on them. Consequently, DR for personal session hosts typically requires full VM-level backup and replication (using Hyper-V Replica) to preserve the unique state of each user's desktop.
+With personal session hosts, each user is assigned to a specific, dedicated session host VM. These VMs are stateful, as users may install applications or store data directly on them. Consequently, disaster recovery for personal session hosts typically requires full VM-level backup and replication (using Hyper-V Replica) to preserve the unique state of each user's desktop.
 
 ### Failover to another Azure Local cluster using Hyper-V Replica
 

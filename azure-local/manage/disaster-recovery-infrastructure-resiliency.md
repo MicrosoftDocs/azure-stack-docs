@@ -29,7 +29,7 @@ For more information, see the [cluster design choices for Azure Local](/azure/ar
 
 ## Storage
 
-When considering the storage underpinning your Azure Local deployment, the choice of disk technology plays a pivotal role in overall performance and resilience. Solid-state Drives (SSDs), especially enterprise-class models, are the preferred standard for modern Azure Local instances, offering rapid input/output operations and lower latency compared to traditional spinning disks. Their inherent speed accelerates both general workload responsiveness and the completion of backup and replication tasks integral to your disaster recovery strategy.
+When considering the storage underpinning your Azure Local deployment, the choice of disk technology plays a pivotal role in overall performance and resilience. Solid-state drives (SSDs), especially enterprise-class models, are the preferred standard for modern Azure Local instances, offering rapid input/output operations and lower latency compared to traditional spinning disks. Their inherent speed accelerates both general workload responsiveness and the completion of backup and replication tasks integral to your disaster recovery strategy.
 
 For organizations seeking even greater performance, Nonvolatile Memory Express (NVMe) drives represent an advanced option. NVMe disks connect directly via the PCIe bus, bypassing legacy storage protocols and delivering unparalleled throughput and reduced latency. This is valuable for workloads with intensive transactional requirements or high-frequency data access, as seen in SQL databases, virtual desktop infrastructure, and analytics operations. 
 

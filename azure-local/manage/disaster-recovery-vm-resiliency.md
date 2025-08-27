@@ -95,13 +95,13 @@ Azure Site Recovery is Microsoft's cloud-based disaster recovery solution design
 
 Key points about Azure Site Recovery for Azure Local:
 
-- Deployment  
+- **Deployment**:
     - Automated deployment: Azure Local created an extension to Azure Site Recovery for automated deployment. Azure Site Recovery extension can detect all the nodes of the cluster and deploy Azure Site Recovery on all nodes automatically and configure them with the replication policy. For more information, see [Protect VM workloads with Azure Site Recovery](azure-site-recovery.md#step-1-prepare-infrastructure-on-your-target-host).
     - Manual deployment: Azure Site Recovery extension for Azure Local is in preview and only applicable to test environments, for those customers that need a production ready solution, Azure Site Recovery can be configured manually on Azure Local cluster using the [Hyper-V to Azure disaster recovery](/azure/site-recovery/hyper-v-azure-architecture) option.  
 
-- Frequent replication: Azure Site Recovery can achieve Recovery Point Objectives (RPOs) as low as 30 seconds.
+- **Frequent replication**: Azure Site Recovery can achieve Recovery Point Objectives (RPOs) as low as 30 seconds.
 
-- Failover
+- **Failover**:
     - Once replication is in place, you can initiate a Failover to Azure. This essentially brings up the VM in Azure using the replicated data. You can test this with a Test Failover, which creates a copy in Azure on an isolated network for verification without shutting down on-premises VMs. 
     - During an actual disaster, if the primary site is down unexpectedly, you would do an Unplanned Failover even if the source VM isn't running. 
     - For scenarios such as hardware maintenance or replacement, you can initiate a Planned Failover. This will gracefully shut down the VM so that it can commit its memory to disk to ensure zero data loss. 
@@ -110,7 +110,7 @@ Key points about Azure Site Recovery for Azure Local:
     > [!NOTE]
     > If you failback an Azure Local VM on a different cluster, all the services inside the VM will continue working, but to continue managing the VM from Azure, it must be hydrated on the new cluster. However, hydration isn't needed if the VM failed back on the same cluster. The VM will still be manageable from Azure. Hydration, currently in private preview, will be available in future releases.
 
-- Failback: 
+- **Failback**: 
     - When the disaster is mitigated, and the cluster is operational, Azure Site Recovery can reverse the replication direction and replicate any changes made while operating in Azure back to your Azure Local cluster. After reverse replication you can failback the VM, allowing operations to switch back to on-premises. 
     - For successful failback, the on-premises environment must be healthy. If your cluster isn't available, you can register another Azure Local cluster to the Azure Site Recovery Hyper-V site and failback the VM to a node on an alternate cluster. 
 
@@ -144,7 +144,7 @@ During the replication process, the hardware and network you use affects the ser
 In choosing between Azure Site Recovery (ASR) and Hyper-V Replica for Azure Local VMs, review the differences between both solutions:
 
 
-| Feature |Azure Site Recovery |Hyper-V Replica |
+| Attribute |Azure Site Recovery |Hyper-V Replica |
 |---------|---------|---------|
 |Replication destinations      |  Azure Local to Azure         |   Azure Local to Azure  Local    |
 |Failed over VMs run as      |  Azure VMs        |  Azure Local VMs        |
