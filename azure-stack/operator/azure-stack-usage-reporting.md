@@ -8,6 +8,7 @@ ms.date: 11/10/2022
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 05/07/2019
+ms.custom: sfi-image-nochange
 
 # Intent: As an Azure Stack Hub operator, I want to report Azure Stack Hub usage data to Azure.
 # Keyword: azure stack hub report usage data

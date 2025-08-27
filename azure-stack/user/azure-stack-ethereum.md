@@ -7,6 +7,7 @@ ms.date: 12/15/2021
 ms.topic: tutorial
 ms.reviewer: seyadava
 ms.lastreviewed: 10/07/2020
+ms.custom: sfi-image-nochange
 
 # Intent: As an Azure Stack user, I want to deploy an Ethereum blockchain network ...
 # Keyword: azure stack ethereum blockchain network

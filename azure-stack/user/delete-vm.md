@@ -4,12 +4,13 @@ description: How to delete a VM (virtual machine) with dependencies on Azure Sta
 author: sethmanheim
 
 ms.topic: how-to
-ms.custom:
-  - devx-track-azurepowershell
 ms.date: 02/13/2023
 ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 5/20/2021
+ms.custom:
+  - devx-track-azurepowershell
+  - sfi-image-nochange
 
 # Intent: As an Azure Stack user, I want to delete a VM with dependencies in Azure Stack Hub.
 # Keyword: virtual machine delete

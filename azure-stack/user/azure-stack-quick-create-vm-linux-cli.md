@@ -5,7 +5,11 @@ author: sethmanheim
 ms.topic: quickstart
 ms.date: 04/06/2025
 ms.author: sethm
-ms.custom: mode-api, devx-track-azurecli, linux-related-content
+ms.custom:
+  - mode-api
+  - devx-track-azurecli
+  - linux-related-content
+  - sfi-image-nochange
 ---
 
 # Quickstart: Create a Linux server VM by using the Azure CLI in Azure Stack Hub

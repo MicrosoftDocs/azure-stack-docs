@@ -8,6 +8,7 @@ ms.author: sethm
 ms.reviewer: vrajasekaran
 ms.lastreviewed: 12/16/2020
 zone_pivot_groups: state-connected-disconnected
+ms.custom: sfi-image-nochange
 
 # Intent: As an Azure Stack operator, I want to download marketplace items from Azure Marketplace and publish them to my Azure Stack.
 # Keyword: download marketplace items azure stack
