@@ -147,7 +147,6 @@ Once the new OS is installed, you need to upgrade the cluster functional level a
 
 You're now ready to apply the solution upgrade.
 
-## Next steps
+## Next step
 
-- [Optional: Install and enable Network ATC on your Azure Local.](./install-enable-network-atc.md)
-- [Learn how to assess the solution upgrade readiness.](./validate-solution-upgrade-readiness.md)
+[Configure Network ATC on Azure Local](./install-enable-network-atc.md).
