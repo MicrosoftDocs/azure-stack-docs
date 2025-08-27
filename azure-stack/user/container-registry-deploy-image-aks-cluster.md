@@ -7,6 +7,7 @@ ms.date: 01/24/2025
 ms.author: sethm
 ms.reviewer: dgarrity
 ms.lastreviewed: 04/10/2024
+ms.custom: sfi-ropc-nochange
 
 # Intent: As an Azure Stack Hub user, I want to deploy an image to an AKS cluster on Azure Stack Hub so that I can run my containerized applications.
 ---

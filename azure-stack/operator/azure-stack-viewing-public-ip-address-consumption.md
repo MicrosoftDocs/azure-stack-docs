@@ -7,6 +7,7 @@ ms.topic: how-to
 ms.date: 1/17/2025
 ms.author: sethm
 ms.lastreviewed: 09/17/2019
+ms.custom: sfi-image-nochange
 
 # Intent: As an Azure Stack Hub operator, I want to manage network resources.
 # Keyword: manage network resources azure stack hub
