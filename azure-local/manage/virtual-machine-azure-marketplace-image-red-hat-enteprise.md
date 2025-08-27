@@ -17,7 +17,6 @@ ms.custom:
 
 This article explains how to prepare a Red Hat Enterprise Linux (RHEL) Azure Marketplace image for use with Azure Local virtual machines (VMs). By following these steps, you ensure your VM has the latest security updates, support, and integration features.
 
-
 ## Prerequisites
 
 Before you begin, you must have:
