@@ -5,7 +5,8 @@ ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 04/30/2025
+ms.date: 08/26/2025
+ai-usage: ai-assisted
 ms.custom: e2e-hybrid, linux-related-content
 ---
 
@@ -130,6 +131,10 @@ Microsoft recommends purchasing Premier Solutions offered in collaboration with 
 Browse the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) to view Azure Local solutions from Microsoft partners such as ASUS, Blue Chip, DataON, Dell EMC, Fujitsu, HPE, Hitachi, Lenovo, NEC, primeLine Solutions, QCT, and Supermicro.
 
 Some Microsoft partners are developing software that extends the capabilities of Azure Local while allowing IT admins to use familiar tools. To learn more, see [Utility applications for Azure Local](concepts/utility-applications.md).
+
+## Azure Local and the adaptive cloud approach
+
+Azure Local is part of Microsoft’s [adaptive cloud](https://azure.microsoft.com/solutions/adaptive-cloud) approach. This approach helps organizations run and manage apps and services in distributed locations, including their own datacenters, remote sites, and edge locations. By extending Azure to customer-owned infrastructure, Azure Local addresses requirements like data privacy, low latency, and local control, while allowing organizations to use familiar Azure tools and security features.
 
 ## Next steps
 
