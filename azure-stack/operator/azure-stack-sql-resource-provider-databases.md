@@ -6,6 +6,7 @@ ms.topic: how-to
 ms.date: 1/17/2025
 ms.author: sethm
 ms.lastreviewed: 10/16/2019
+ms.custom: sfi-image-nochange
 
 # Intent: As an Azure Stack operator, I want to create and manage SQL databases provisiuoned using the SQL resource provider adapter.
 # Keyword: create sql databases azure stack

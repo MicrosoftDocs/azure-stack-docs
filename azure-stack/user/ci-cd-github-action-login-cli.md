@@ -3,12 +3,13 @@ title: Use the Azure login action with Azure CLI and PowerShell on Azure Stack H
 description: Use the Azure login action with Azure CLI and PowerShell to create a continuous integration, continuous deployment (CI/CD) workflow on Azure Stack Hub
 author: sethmanheim
 ms.topic: how-to
-ms.custom:
-  - devx-track-azurecli
 ms.date: 1/11/2021
 ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 1/11/2021
+ms.custom:
+  - devx-track-azurecli
+  - sfi-image-nochange
 
 # Intent: As a developer, I want to create a continuous integration, continuous deployment workflow on Azure Stack Hub so I can easily validate, integrate, and publish my solution on Azure Stack Hub.
 # Keyword: GitHub Actions Azure Stack Hub login

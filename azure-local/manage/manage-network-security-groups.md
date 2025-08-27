@@ -1006,7 +1006,7 @@ To update a network security rule, follow these steps:
 
 ## Next steps
 
-- [Troubleshoot SDN enabled by Arc](../index.yml).
+- [Troubleshoot SDN enabled by Arc](sdn-troubleshooting.md).
 
 ::: moniker-end
 

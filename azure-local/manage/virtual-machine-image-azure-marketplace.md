@@ -5,9 +5,10 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
+ms.date: 03/04/2025
 ms.custom:
   - devx-track-azurecli
-ms.date: 03/04/2025
+  - sfi-image-nochange
 ---
 
 # Create Azure Local VM image using Azure Marketplace images

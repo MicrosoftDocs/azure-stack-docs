@@ -6,6 +6,7 @@ author: alkohli
 ms.author: alkohli
 ms.reviewer: anpaul
 ms.date: 01/16/2025
+ms.custom: sfi-image-nochange
 ---
 
 # Manage Azure Local gateway connections

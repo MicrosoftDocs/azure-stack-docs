@@ -6,6 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
 ms.date: 12/26/2024
+ms.custom: sfi-image-nochange
 ---
 
 # Respond to Azure Local health alerts using Azure Monitor alerts

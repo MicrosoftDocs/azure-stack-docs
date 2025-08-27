@@ -5,8 +5,11 @@ author: ronmiab
 ms.author: robess
 ms.topic: how-to
 ms.service: azure-local
-ms.custom: devx-track-azurecli, linux-related-content
 ms.date: 03/21/2025
+ms.custom:
+  - devx-track-azurecli
+  - linux-related-content
+  - sfi-image-nochange
 ---
 
 # Prepare a Red Hat Enterprise image for Azure Local VMs enabled by Azure Arc (preview)

@@ -6,7 +6,9 @@ ms.topic: how-to
 ms.date: 06/12/2025
 ms.author: alkohli
 ms.reviewer: alkohli
-ms.custom: linux-related-content
+ms.custom:
+  - linux-related-content
+  - sfi-image-nochange
 ---
 
 # Migrate Hyper-V VMs to Azure Local using Azure Migrate (preview)
