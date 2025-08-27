@@ -43,12 +43,12 @@ You should install the latest patch release of the minor version you're running.
 |  K8s minor version | Supported Azure Local versions | Current status | Last release with Kubernetes patch/CVE updates |
 |--------------|-------------------|--------------|------------|
 | 1.32 | TBD | TBD | TBD |
-| 1.31 | [2508](aks-whats-new-23h2.md#features-and-improvements) | Generally available | TBD |
-| 1.30 | [2508, 2507, 2503](aks-whats-new-23h2.md#features-and-improvements) | Generally available | TBD |
-| 1.29 | [2508, 2507, 2503](aks-whats-new-23h2.md#features-and-improvements), [2411](aks-whats-new-23h2.md#features-and-improvements), [2408](aks-whats-new-23h2.md#release-2408) | Generally available | 2509 |
-| 1.28 | [2507, 2503](aks-whats-new-23h2.md#features-and-improvements), [2411](aks-whats-new-23h2.md#features-and-improvements), [2408](aks-whats-new-23h2.md#release-2408), [2405](aks-whats-new-23h2.md#release-2405) | No more patch versions/CVE updates | 2507 release |
-| 1.27 | [2411](aks-whats-new-23h2.md#features-and-improvements), [2408](aks-whats-new-23h2.md#release-2408), [2405](aks-whats-new-23h2.md#release-2405), 2402 | No more patch versions/CVE updates | 2411 release |
-| 1.26 | [2405](aks-whats-new-23h2.md#release-2405), 2402 and older | No more patch versions/CVE updates | 2405 release |
+| 1.31 | [2508](aks-whats-new-local.md#features-and-improvements) | Generally available | TBD |
+| 1.30 | [2508, 2507, 2503](aks-whats-new-local.md#features-and-improvements) | Generally available | TBD |
+| 1.29 | [2508, 2507, 2503](aks-whats-new-local.md#features-and-improvements), [2411](aks-whats-new-local.md#features-and-improvements), [2408](aks-whats-new-local.md#release-2408) | Generally available | 2509 |
+| 1.28 | [2507, 2503](aks-whats-new-local.md#features-and-improvements), [2411](aks-whats-new-local.md#features-and-improvements), [2408](aks-whats-new-local.md#release-2408), [2405](aks-whats-new-local.md#release-2405) | No more patch versions/CVE updates | 2507 release |
+| 1.27 | [2411](aks-whats-new-local.md#features-and-improvements), [2408](aks-whats-new-local.md#release-2408), [2405](aks-whats-new-local.md#release-2405), 2402 | No more patch versions/CVE updates | 2411 release |
+| 1.26 | [2405](aks-whats-new-local.md#release-2405), 2402 and older | No more patch versions/CVE updates | 2405 release |
 
 > [!NOTE]
 > Kubernetes version 1.32 is planned for the next Azure Local release.

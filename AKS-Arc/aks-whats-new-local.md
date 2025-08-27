@@ -28,7 +28,7 @@ This section lists the new features and improvements in AKS Arc in each release 
 #### Announcements
 
 - Support for Kubernetes minor version 1.29 will end on October 31, 2025.
-- KMS v1 will be deprecated soon. We will be adding support for KMS v2 in the Azure Local 2510 release. Please plan on upgrading your clusters once KMS v2 is available.
+- KMS v1 will be deprecated soon. We will be adding support for KMS v2 in an upcoming Azure Local release. Please plan on upgrading your clusters once KMS v2 is available.
 
 #### Supported Kubernetes versions for 2508
 
