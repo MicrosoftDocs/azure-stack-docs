@@ -5,6 +5,7 @@ author: sethmanheim
 ms.topic: how-to
 ms.date: 07/27/2024
 ms.author: sethm
+ms.custom: sfi-image-nochange
 
 ---
 

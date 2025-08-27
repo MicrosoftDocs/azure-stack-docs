@@ -6,6 +6,7 @@ author: pauljewellmsft
 ms.author: pauljewell
 ms.date: 11/11/2024
 ms.reviewer: brianl
+ms.custom: sfi-image-nochange
 ---
 
 # Create an import job from Blob Storage to a file system

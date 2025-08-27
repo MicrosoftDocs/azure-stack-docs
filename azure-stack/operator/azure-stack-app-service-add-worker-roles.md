@@ -8,6 +8,7 @@ ms.date: 1/29/2020
 ms.author: sethm
 ms.reviewer: anwestg
 ms.lastreviewed: 1/29/2020
+ms.custom: sfi-image-nochange
 
 # Intent: As an Azure Stack operator, I want to scale infrastructure and worker roles in App Service on Azure Stack so I can deploy workloads onto them.
 # Keyword: add workers app service azure stack

@@ -6,7 +6,9 @@ ms.topic: quickstart
 ms.date: 01/27/2025
 ms.author: sethm
 ms.lastreviewed: 10/4/2021
-ms.custom: mode-portal
+ms.custom:
+  - mode-portal
+  - sfi-image-nochange
 
 # Intent: As an Azure Stack user, I want to quickly create a VM using the Azure Stack portal so I can begin using the VM.
 # Keyword: azure stack vm windows

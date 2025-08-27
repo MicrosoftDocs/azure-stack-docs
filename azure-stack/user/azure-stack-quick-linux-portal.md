@@ -8,10 +8,13 @@ ms.date: 10/06/2020
 ms.author: sethm
 ms.reviewer: kivenkat
 ms.lastreviewed: 10/06/2020
+ms.custom:
+  - mode-portal
+  - linux-related-content
+  - sfi-image-nochange
 
 # Intent: As an Azure Stack user, I want to create a Linux virtual machine in Azure Stack so that I can install an app.
 # Keyword: Azure Stack Linux Server
-ms.custom: mode-portal, linux-related-content
 ---
 
 

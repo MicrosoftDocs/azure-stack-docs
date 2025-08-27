@@ -7,6 +7,7 @@ ms.author: robess
 ms.service: azure-local
 ms.reviewer: kimlam
 ms.date: 10/15/2024
+ms.custom: sfi-image-nochange
 ---
 
 # Set up log alerts for Azure Local
