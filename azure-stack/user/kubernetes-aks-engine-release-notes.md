@@ -3,12 +3,12 @@ title: Release notes for Azure Kubernetes Service (AKS) engine on Azure Stack Hu
 description: Learn the steps you need to take with the update to AKS engine on Azure Stack Hub.
 author: sethmanheim
 ms.topic: release-notes
-ms.date: 02/10/2025
+ms.date: 08/27/2025
 ms.author: sethm
 ms.reviewer: sumsmith
-ms.lastreviewed: 09/23/2022
+ms.lastreviewed: 08/27/2025
 
-# Intent: As an Azure Stack Hub user, I would like to update a Kubernetes cluster using AKS engine on a custom virtual network so that I can deliver my service in an environment that extends my data center or in a hybrid cloud solution with my cluster in Azure Stack Hub and Azure.
+# Intent: As an Azure Stack Hub user, I want to update a Kubernetes cluster using AKS engine on a custom virtual network so that I can deliver my service in an environment that extends my data center or in a hybrid cloud solution with my cluster in Azure Stack Hub and Azure.
 # Keywords: update ASK engine Azure Stack Hub
 
 ---
@@ -146,7 +146,7 @@ The AKS engine `upgrade` command fully automates the upgrade process of your clu
 - AKS Engine release v0.82.1 on Azure Stack Hub offers Ubuntu 22.04 LTS as its Linux base image. Starting with this release, Ubuntu 20.04 is no longer supported.
 - You can find other features at [the v0.82.1 GitHub page](https://github.com/Azure/aks-engine-azurestack/releases/tag/release-v0.82.1).
 
-### What's new with AKSe 0.75.3 and above
+### What's new in AKSe 0.75.3 and above
 
 AKS Engine release v0.75.3, and all future AKS Engine releases on Azure Stack Hub, will be from the new [aks-engine-azurestack repo](https://github.com/Azure/aks-engine-azurestack). As such, all `aks-engine` commands should be replaced with `aks-engine-azurestack`. Commands to get the latest AKS Engine release on Azure Stack Hub have also changed. You can see the new commands in [Create Linux client](./azure-stack-kubernetes-aks-engine-deploy-linux.md) and [Create Windows client](./azure-stack-kubernetes-aks-engine-deploy-windows.md). Create an [issue in the new repo](https://github.com/Azure/aks-engine-azurestack/issues/new) if you find any issues.
 
