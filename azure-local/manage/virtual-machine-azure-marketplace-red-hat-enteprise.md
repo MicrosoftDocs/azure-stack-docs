@@ -29,6 +29,8 @@ Before you begin, you must have:
 
 ## Set up and prepare an Azure VM
 
+To set up and prepare an Azure VM, follow these steps:
+
 1. Sign in to the **Azure portal**, go to **Virtual Machines** > **Create** > **Virtual Machine**.
 
 1. Browse the available images and choose your preferred RHEL LVM Gen2 version.
@@ -97,6 +99,8 @@ Before you begin, you must have:
 
 ## Change the data source of the VM image
 
+To change the data source of the VM image, follow these steps
+
 1. Change the directory to the following path and list the files to locate the data source file **91-azure_datasource.cfg**
 
    ```bash
@@ -161,6 +165,8 @@ Before you begin, you must have:
 1. Stop the Azure VM as the configuration changes are now complete.
 
 ## Export an Azure VM OS disk to a VHD on the Azure Local cluster
+
+To export an Azure VM OS disk to a VHD on the Azure Local cluster, follow these steps:
 
 1. Navigate to the **VM overview** \>, under the **Settings** option select **Disks**, and select the **Disks name** link.
 
