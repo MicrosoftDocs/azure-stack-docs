@@ -96,8 +96,8 @@ For AKS Engine release v0.75.3, clusters with Windows nodes on Kubernetes v1.23 
 | 2306                                           | 0.78.0, 0.79.0, 0.80.2 |
 | 2311                                           | 0.80.2 |
 | 2406                                           | 0.80.2, 0.80.3, 0.81.1 |
-| 2408                                           | 0.80.2, 0.80.3, 0.81.1*, 0.82.1* |
-| 2501                                           | 0.81.1*, 0.82.1* |
+| 2408                                           | 0.80.2, 0.80.3, 0.81.1, 0.82.1*, 0.83.0* |
+| 2501                                           | 0.81.1, 0.82.1*, 0.83.0* |
 
 *Supported. See the [AKS Engine Version Support policy](azure-stack-kubernetes-aks-engine-support.md#version-support) for more information.
 
@@ -127,7 +127,8 @@ You can find the supported Kubernetes versions for AKS Engine on Azure Stack Hub
 | [v0.80.2](https://github.com/Azure/aks-engine-azurestack/releases/tag/v0.80.2)   | [AKS Base Ubuntu 20.04-LTS Image Distro (2024.032.1)](https://github.com/Azure/aks-engine-azurestack/blob/v0.80.2/vhd/release-notes/aks-engine-ubuntu-2004/aks-engine-azurestack-ubuntu-2004_2024.032.1.txt), [AKS Base Windows Server 2019 Image Containerd (17763.5329.20240321)](https://github.com/Azure/aks-engine-azurestack/blob/v0.80.2/vhd/release-notes/aks-windows-2019-containerd/2019-datacenter-core-azurestack-ctrd-17763.5329.20240321.txt) | 1.27.10**, 1.28.6** | API Model Samples ([Linux](https://github.com/Azure/aks-engine-azurestack/blob/96b45e116aef6ae2e5031561b0e10621ae86a068/examples/azure-stack/kubernetes-azurestack.json), [Windows](https://github.com/Azure/aks-engine-azurestack/blob/96b45e116aef6ae2e5031561b0e10621ae86a068/examples/azure-stack/kubernetes-windows.json)) |
 | [v0.80.3](https://github.com/Azure/aks-engine-azurestack/releases/tag/v0.80.3)   | [AKS Base Ubuntu 20.04-LTS Image Distro (2024.032.1)](https://github.com/Azure/aks-engine-azurestack/blob/v0.80.2/vhd/release-notes/aks-engine-ubuntu-2004/aks-engine-azurestack-ubuntu-2004_2024.032.1.txt), [AKS Base Windows Server 2019 Image Containerd (17763.5329.20240321)](https://github.com/Azure/aks-engine-azurestack/blob/v0.80.2/vhd/release-notes/aks-windows-2019-containerd/2019-datacenter-core-azurestack-ctrd-17763.5329.20240321.txt) | 1.27.10**, 1.28.6** | API Model Samples ([Linux](https://github.com/Azure/aks-engine-azurestack/blob/96b45e116aef6ae2e5031561b0e10621ae86a068/examples/azure-stack/kubernetes-azurestack.json), [Windows](https://github.com/Azure/aks-engine-azurestack/blob/96b45e116aef6ae2e5031561b0e10621ae86a068/examples/azure-stack/kubernetes-windows.json)) |
 | [v0.81.1](https://github.com/Azure/aks-engine-azurestack/releases/tag/v0.81.1)   | [AKS Base Ubuntu 20.04-LTS Image Distro (2024.311.1)](https://github.com/Azure/aks-engine-azurestack/blob/master/vhd/release-notes/aks-engine-ubuntu-2004/aks-engine-azurestack-ubuntu-2004_2024.311.1.txt), [AKS Base Windows Server 2019 Image Containerd (17763.6414.20243111)](https://github.com/Azure/aks-engine-azurestack/blob/master/vhd/release-notes/aks-windows-2019-containerd/2019-datacenter-core-azurestack-ctrd-17763.6414.20243111.txt) | 1.28.15**, 1.29.10** | API Model Samples ([Linux](https://github.com/Azure/aks-engine-azurestack/blob/0ea7973bb1826b7607086d4741b73313d72ce256/examples/azure-stack/kubernetes-azurestack.json), [Windows](https://github.com/Azure/aks-engine-azurestack/blob/0ea7973bb1826b7607086d4741b73313d72ce256/examples/azure-stack/kubernetes-windows.json)) |
-| [v0.82.1](https://github.com/Azure/aks-engine-azurestack/releases/tag/release-v0.82.1)   | [AKS Base Ubuntu 22.04-LTS Image Distro (2025.079.2)](https://github.com/Azure/aks-engine-azurestack/blob/master/vhd/release-notes/aks-engine-ubuntu-2204/aks-engine-azurestack-ubuntu-2204_2025.079.2.txt), [AKS Base Windows Server 2019 Image Containerd (17763.7009.20250792)](https://github.com/Azure/aks-engine-azurestack/blob/master/vhd/release-notes/aks-windows-2019-containerd/2019-datacenter-core-azurestack-ctrd-17763.7009.20250792.txt) | 1.29.15**, 1.30.10** | API Model Samples ([Linux](https://github.com/Azure/aks-engine-azurestack/blob/master/examples/azure-stack/kubernetes-azurestack.json), [Windows](https://github.com/Azure/aks-engine-azurestack/blob/master/examples/azure-stack/kubernetes-windows.json)) |
+| [v0.82.1](https://github.com/Azure/aks-engine-azurestack/releases/tag/v0.82.1)   | [AKS Base Ubuntu 22.04-LTS Image Distro (2025.079.2)](https://github.com/Azure/aks-engine-azurestack/blob/master/vhd/release-notes/aks-engine-ubuntu-2204/aks-engine-azurestack-ubuntu-2204_2025.079.2.txt), [AKS Base Windows Server 2019 Image Containerd (17763.7009.20250792)](https://github.com/Azure/aks-engine-azurestack/blob/master/vhd/release-notes/aks-windows-2019-containerd/2019-datacenter-core-azurestack-ctrd-17763.7009.20250792.txt) | 1.29.15**, 1.30.10** | API Model Samples ([Linux](https://github.com/Azure/aks-engine-azurestack/blob/7c8a47548867992ebe606b879e13c0472164dba0/examples/azure-stack/kubernetes-azurestack.json), [Windows](https://github.com/Azure/aks-engine-azurestack/blob/7c8a47548867992ebe606b879e13c0472164dba0/examples/azure-stack/kubernetes-windows.json)) |
+| [v0.83.0](https://github.com/Azure/aks-engine-azurestack/releases/tag/v0.83.0)   | [AKS Base Ubuntu 22.04-LTS Image Distro (2025.227.1)](https://github.com/Azure/aks-engine-azurestack/blob/master/vhd/release-notes/aks-engine-ubuntu-2204/aks-engine-azurestack-ubuntu-2204_2025.227.1.txt), [AKS Base Windows Server 2019 Image Containerd (17763.7678.20252271)](https://github.com/Azure/aks-engine-azurestack/blob/master/vhd/release-notes/aks-windows-2019-containerd/2019-datacenter-core-azurestack-ctrd-17763.7678.20252271.txt) | 1.29.15**, 1.30.10** | API Model Samples ([Linux](https://github.com/Azure/aks-engine-azurestack/blob/master/examples/azure-stack/kubernetes-azurestack.json), [Windows](https://github.com/Azure/aks-engine-azurestack/blob/master/examples/azure-stack/kubernetes-windows.json)) |
 
 > [!NOTE]  
 > *Starting from Kubernetes v1.21, only the [Cloud Provider for Azure](https://github.com/Azure/aks-engine-azurestack/blob/master/docs/topics/azure-stack.md#cloud-provider-for-azure) is supported on Azure Stack Hub.
@@ -144,11 +145,6 @@ The AKS engine `upgrade` command fully automates the upgrade process of your clu
 - Added support for Kubernetes 1.29.15 and 1.30.10.
 - AKS Engine release v0.82.1 on Azure Stack Hub offers Ubuntu 22.04 LTS as its Linux base image. Starting with this release, Ubuntu 20.04 is no longer supported.
 - You can find other features at [the v0.82.1 GitHub page](https://github.com/Azure/aks-engine-azurestack/releases/tag/release-v0.82.1).
-
-### What's new with AKSe 0.76.0
-
-- Added support for Kubernetes v1.24.11 and v1.25.7.
-- You can find other features at [the v0.76.0 GitHub page](https://github.com/Azure/aks-engine-azurestack/releases/tag/v0.76.0).
 
 ### What's new with AKSe 0.75.3 and above
 
@@ -206,6 +202,7 @@ The following list is the complete set of release notes for Azure and Azure Stac
 - https://github.com/Azure/aks-engine-azurestack/releases/tag/v0.80.3
 - https://github.com/Azure/aks-engine-azurestack/releases/tag/v0.81.1
 - https://github.com/Azure/aks-engine-azurestack/releases/tag/release-v0.82.1
+- https://github.com/Azure/aks-engine-azurestack/releases/tag/release-v0.83.0
 
 ::: moniker-end
 
