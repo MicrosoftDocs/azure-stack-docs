@@ -7,7 +7,7 @@ metadata:
   ms.service: azure-kubernetes-service-hybrid
   ms.custom: devx-track-azurepowershell
   ms.topic: faq
-  ms.date: 07/26/2024
+  ms.date: 07/03/2025
 title: Resolve issues and errors during an AKS Arc installation
 summary: |
   **Applies to: AKS on Windows Server**

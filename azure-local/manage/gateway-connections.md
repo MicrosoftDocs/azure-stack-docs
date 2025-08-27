@@ -6,6 +6,7 @@ author: alkohli
 ms.author: alkohli
 ms.reviewer: anpaul
 ms.date: 01/16/2025
+ms.custom: sfi-image-nochange
 ---
 
 # Manage Azure Local gateway connections
@@ -92,8 +93,8 @@ You can also create a gateway pool using `New-NetworkControllerGatewayPool` Powe
 1. Click **Create** to configure the connection.
 1. In the **Gateway Connections** list, verify the Configuration State of the connection is **Success**.
 
-    > [!NOTE]
-    > If you plan to deploy L3 [Gateway connections](../manage/gateway-connections.md) with BGP routing, ensure that you’ve configured the Top of Rack (ToR) switch BGP settings with the following:
+>[!NOTE]
+>If you plan to deploy L3 [Gateway connections](../manage/gateway-connections.md) with BGP routing, ensure that you’ve configured the Top of Rack (ToR) switch BGP settings with the following:
     > - update-source: This specifies the source address for BGP updates, that is L3 VLAN. For example, VLAN 250.
     > - ebgp multihop: This specifies additional hops required since the BGP neighbor is more than one hop away.
 

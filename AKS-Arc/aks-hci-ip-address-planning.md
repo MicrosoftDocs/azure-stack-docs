@@ -1,11 +1,11 @@
 ---
 title: IP address planning for AKS enabled by Azure Arc
 description: Learn about how to plan for IP addresses and reservation, to deploy AKS Arc in production. 
-ms.topic: conceptual
-ms.date: 11/19/2024
+ms.topic: article
+ms.date: 08/13/2025
 author: sethmanheim
 ms.author: sethm
-ms.reviewer: abha
+ms.reviewer: srikantsarwa
 ms.lastreviewed: 10/08/2024
 ---
 
@@ -17,7 +17,7 @@ IP address planning for AKS enabled by Azure Arc involves designing a network th
 
 ## Simple IP address planning for Kubernetes clusters and applications
 
-In the following scenario walk-through, you reserve IP addresses from a single network for your Kubernetes clusters and services. This example is the most straightforward and simple scenario for IP address assignment.
+In the following scenario walkthrough, you reserve IP addresses from a single network for your Kubernetes clusters and services. This example is the most straightforward and simple scenario for IP address assignment.
 
 | IP address requirement    | Minimum number of IP addresses | How and where to make this reservation |
 |------------------|---------|---------------|
@@ -52,7 +52,7 @@ Continuing with this example, and adding it to the following table, you get:
 
 #### Example CLI commands for IP address reservation for Kubernetes clusters and applications
 
-This section describes the set of commands Jane runs for her scenario. First, create a logical network with an IP pool that has at least 16 IP addresses. We created the IP pool with 20 IP addresses to provide the option to scale on day N. For detailed information about parameter options in logical networks, see [`az stack-hci-vm network lnet create`](/cli/azure/stack-hci-vm/network/lnet#az-stack-hci-vm-network-lnet-create):
+This section describes the set of commands Jane runs for her scenario. First, create a logical network with an IP pool that has at least 16 IP addresses. We created the IP pool with 20 IP addresses to provide the option to scale on day N. For detailed information about parameter options in logical networks, see [az stack-hci-vm network lnet create](/cli/azure/stack-hci-vm/network/lnet#az-stack-hci-vm-network-lnet-create):
 
 ```azurecli
 $ipPoolStart = "10.220.32.18"
@@ -72,7 +72,7 @@ Now you can enable MetalLB load balancer with an IP pool of 3 IP addresses, in t
 az k8s-runtime load-balancer create --load-balancer-name $lbName --resource-uri subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.Kubernetes/connectedClusters/metallb-demo --addresses 10.220.32.47-10.220.32.49 --advertise-mode ARP
 ```
 
-### LNETs considerations for AKS clusters and Arc VMs
+### LNET considerations for AKS clusters and Arc VMs
 
 Logical networks on Azure Local are used by both AKS clusters and Arc VMs. You can configure logical networks in one of the following 2 ways:
 
@@ -81,7 +81,7 @@ Logical networks on Azure Local are used by both AKS clusters and Arc VMs. You c
 
 Sharing a logical network between AKS and Arc VMs on Azure Local offers the benefit of streamlined communication, cost savings, and simplified network management. However, this approach also introduces potential challenges such as resource contention, security risks, and complexity in troubleshooting.
 
-| **Criteria**                              | **Sharing a logical network**                                  | **Defining separate logical networks**     |
+| Criteria                              | Sharing a logical network                                  | Defining separate logical networks     |
 |-------------------------------------------|----------------------------------------------------------------|----------------------------------------------------------------|
 | **Configuration complexity** | Simpler configuration with a single network, reducing setup complexity. | More complex setup, as you need to configure multiple logical networks for VMs and AKS clusters.
 | **Scalability**              | Potential scalability limitations as both Arc VMs and AKS clusters share network resources. | More scalable since network resources are separated and can scale independently. |
@@ -95,9 +95,9 @@ This section describes the IP address ranges used by Kubernetes for pod and serv
 
 ### Pod network CIDR
 
-Pod network CIDR is a range of IP addresses used by Kubernetes to assign unique IP addresses to the individual pods running within a Kubernetes cluster. Each pod gets its own IP address within this range, allowing pods to communicate with each other and with services within the cluster. In AKS, pod IP addresses are assigned via *Calico CNI in VXLAN mode*. Calico VXLAN helps create *Overlay networks*, where the IP addresses of pods (from the pod network CIDR) are virtualized and tunneled through the physical network. In this mode, each pod is assigned an IP address from the pod network CIDR, but this IP address is not directly routable on the physical network. Instead, it is encapsulated within the network packets and sent through the underlying physical network to reach its destination pod on another node.
+Pod network CIDR is a range of IP addresses used by Kubernetes to assign unique IP addresses to the individual pods running within a Kubernetes cluster. Each pod gets its own IP address within this range, allowing pods to communicate with each other and with services within the cluster. In AKS, pod IP addresses are assigned via *Calico CNI in VXLAN* mode. Calico VXLAN helps create *Overlay networks*, where the IP addresses of pods (from the pod network CIDR) are virtualized and tunneled through the physical network. In this mode, each pod is assigned an IP address from the pod network CIDR, but this IP address is not directly routable on the physical network. Instead, it is encapsulated within the network packets and sent through the underlying physical network to reach its destination pod on another node.
 
-AKS provides a **default value of 10.244.0.0/16** for the pod network CIDR. AKS does support customizations for the pod network CIDR. You can set your own value using the [`--pod-cidr`](/cli/azure/aksarc#az-aksarc-create) parameter when creating the AKS cluster. Ensure that the CIDR IP range is large enough to accommodate the maximum number of pods per node and across the Kubernetes cluster.
+AKS provides a default value of 10.244.0.0/16 for the pod network CIDR. AKS does support customizations for the pod network CIDR. You can set your own value using the [--pod-cidr](/cli/azure/aksarc#az-aksarc-create) parameter when creating the AKS cluster. Ensure that the CIDR IP range is large enough to accommodate the maximum number of pods per node and across the Kubernetes cluster.
 
 ### Service network CIDR
 
@@ -107,7 +107,7 @@ The Service network CIDR is the range of IP addresses reserved for Kubernetes se
 - NodePort: Exposes the service on a specific port on each node's IP address. The ClusterIP is still used internally, but external access is through the node IPs and a specific port.
 - LoadBalancer: This type creates a cloud-provider-managed load balancer and exposes the service externally. The cloud provider typically manages the external IP assignment, while the internal ClusterIP remains within the service network CIDR.
 
-AKS provides a **default value of 10.96.0.0/12** for the service network CIDR. AKS does not support customizations for the service network CIDR today.
+AKS provides a default value of 10.96.0.0/12 for the service network CIDR. AKS does not support customizations for the service network CIDR today.
 
 ## Next steps
 

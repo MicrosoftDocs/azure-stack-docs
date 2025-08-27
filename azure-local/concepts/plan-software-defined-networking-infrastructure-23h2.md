@@ -1,7 +1,7 @@
 ---
 title: Plan a Software Defined Network infrastructure for Azure Local, version 23H2
 description: This topic provides information on how to plan a Software Defined Network (SDN) infrastructure deployment for Azure Local, version 23H2.
-ms.topic: conceptual
+ms.topic: article
 ms.author: anpaul
 author: AnirbanPaul
 ms.date: 01/10/2025

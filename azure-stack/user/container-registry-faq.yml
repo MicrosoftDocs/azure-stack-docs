@@ -3,6 +3,7 @@ metadata:
   title: Frequently asked questions - Azure Container Registry on Azure Stack Hub
   titleSuffix: Azure Stack Hub
   description: List of Azure Stack Hub FAQs for  Azure Container Registry.
+  ms.service: azure-stack-hub
   author: sethmanheim
   ms.topic: faq
   ms.date: 07/25/2024

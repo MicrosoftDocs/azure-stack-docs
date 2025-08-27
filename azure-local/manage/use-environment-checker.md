@@ -5,7 +5,8 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 12/27/2024
+ms.date: 07/31/2025
+ms.custom: sfi-image-nochange
 ---
 
 # Evaluate the deployment readiness of your environment for Azure Local
@@ -413,17 +414,15 @@ Network validator also checks storage connection, adapter driver readiness, and 
 You provide the answer file JSON as the input for network validator cmdlet call. Or you can manually provide the individual parameters when running the validator cmdlet.
 
 > [!NOTE]
-> There is currently a limitation where the network validator can only be executed after the portal wizard has continued to the last step, just before the actual deployment starts.
-
-> [!NOTE]
-> You must run the network validator on the final hardware that you want to use for the Azure local instance deployment.
+> - There is currently a limitation where the network validator can only be executed after the portal wizard has continued to the last step, just before the actual deployment starts.
+>- You must run the network validator on the final hardware that you want to use for the Azure local instance deployment.
 
 ### Run the network validator
 
 To run the network validator locally on the Azure Local node with the answer file, use the following commands:
 
 ```powershell
-$allServers = "<ARRAY OF SERVERS' IP>" # you need to use IP for the connection 
+$allServers = @("<ServerIP1>", "<ServerIP2>")  # Replace with actual IP addresses 
 $userName = "<LOCALADMIN>" 
 $secPassWord = ConvertTo-SecureString "<LOCALADMINPASSWORD>" -AsPlainText -Force 
 $hostCred = New-Object System.Management.Automation.PSCredential($userName, $secPassWord) 

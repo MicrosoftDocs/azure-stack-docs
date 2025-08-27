@@ -6,7 +6,7 @@ ms.author: robess
 ms.topic: how-to
 ms.custom:
   - devx-track-azurecli
-ms.date: 10/08/2024
+ms.date: 04/23/2025
 #Customer intent: As a Senior Content Developer, I want to provide customers with content and steps to help them successfully suspend and resume their machines for planned maintenance.
 ---
 
@@ -59,7 +59,7 @@ To suspend a machine, follow these steps:
     ASRRlS3lRl5Ull      Paused       Node
     ```
 
-1. To ensure that no new VMs are placed on the node, remove the node from the active Arc VM Configuration. **This step can only be done using PowerShell**.
+1. To ensure that no new VMs are placed on the node, remove the node from the active Azure Local VM Configuration. **This step can only be done using PowerShell**.
 
     ```powershell
     Remove-MocPhysicalNode -nodeName “MachineName”
@@ -114,7 +114,7 @@ To resume a machine, follow these steps:
     ASRRlS3lRl5Ull      Up           Node
     ```
 
-1. Add the machine to the active Arc VM Configuration. **This step can only be done using PowerShell**.
+1. Add the machine to the active Azure Local VM Configuration. **This step can only be done using PowerShell**.
 
     ```powershell
     New-MocPhysicalNode -nodeName “MachineName”

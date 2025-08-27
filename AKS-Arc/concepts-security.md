@@ -2,7 +2,7 @@
 title: Security concepts in AKS on Windows Server
 description: Learn about securing the infrastructure and applications on a Kubernetes cluster in AKS on Windows Server.
 author: sethmanheim
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 03/31/2025
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022

@@ -3,10 +3,11 @@ title: Create highly available SQL databases
 titleSuffix: Azure Stack Hub
 description: Learn how to create a SQL Server resource provider host computer and highly available SQL AlwaysOn databases with Azure Stack Hub.
 author: sethmanheim
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/16/2025
 ms.author: sethm
 ms.lastreviewed: 10/23/2019
+ms.custom: sfi-image-nochange
 
 # Intent: As an Azure Stack operator, I want to learn how to create highly available SQL databases
 # Keyword: create sql database azure stack hub

@@ -3,11 +3,12 @@ title: Add workers and infrastructure in App Service on Azure Stack Hub
 description: Detailed guidance for scaling Azure App Service on Azure Stack Hub
 author: sethmanheim
 
-ms.topic: article
+ms.topic: install-set-up-deploy
 ms.date: 1/29/2020
 ms.author: sethm
 ms.reviewer: anwestg
 ms.lastreviewed: 1/29/2020
+ms.custom: sfi-image-nochange
 
 # Intent: As an Azure Stack operator, I want to scale infrastructure and worker roles in App Service on Azure Stack so I can deploy workloads onto them.
 # Keyword: add workers app service azure stack

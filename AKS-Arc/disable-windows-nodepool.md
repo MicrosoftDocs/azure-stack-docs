@@ -90,7 +90,7 @@ az k8s-extension update --resource-group $resourceGroup --cluster-name $clusterN
 If for some reason you're not able to use Azure CloudShell or a machine with connectivity to Azure in order to disable Windows nodepool, you can disable Windows nodepool after connecting to any one of the Azure Local physical nodes with Remote Desktop. You must first sign in to Azure.
 
 ```powershell
-az login --use-device-code --tenant-id <Azure tenant ID>
+az login --use-device-code --tenant <Azure tenant ID>
  
 az account set -s <subscription ID>
  

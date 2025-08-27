@@ -1,6 +1,6 @@
 ---
 title: Overview of Datacenter Firewall in Azure Local and Windows Server
-description: Use this topic to learn about Datacenter Firewall in Azure Local and Windows Server.
+description: Use this article to learn about Datacenter Firewall in Azure Local and Windows Server.
 author: AnirbanPaul
 ms.author: anpaul
 ms.topic: overview

@@ -2,7 +2,7 @@
 title: Azure Stack Hub administration basics 
 description: Learn the basics of Azure Stack Hub administration.
 author: sethmanheim
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/06/2025
 ms.author: sethm
 
@@ -46,7 +46,7 @@ These services require additional configuration before you can make them availab
 
 ### Service roadmap
 
-Azure Stack Hub continues to add support for Azure services. For the projected roadmap, see the [Azure Stack Hub: An extension of Azure](https://azure.microsoft.com/resources/videos/azure-friday-azure-stack-an-extension-of-azure/) whitepaper. You can also monitor the [Azure Stack Hub blog posts](https://techcommunity.microsoft.com/t5/azure-stack-blog/bg-p/AzureStackBlog) for new announcements.
+Azure Stack Hub continues to add support for Azure services. For the projected roadmap, see the [Azure Stack Hub: An extension of Azure](https://azure.microsoft.com/products/azure-stack/hub/) whitepaper. You can also monitor the [Azure Stack Hub blog posts](https://techcommunity.microsoft.com/t5/azure-stack-blog/bg-p/AzureStackBlog) for new announcements.
 
 ## What account should I use?
 

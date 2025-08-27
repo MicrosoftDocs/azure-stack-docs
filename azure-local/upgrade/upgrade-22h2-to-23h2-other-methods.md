@@ -3,7 +3,7 @@ title: Upgrade Azure Stack HCI OS, version 22H2 to version 23H2 via other method
 description: Learn how to upgrade from Azure Stack HCI OS, version 22H2 to version 23H2 using other manual methods on Azure Local.
 author: alkohli
 ms.topic: how-to
-ms.date: 04/25/2025
+ms.date: 06/06/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -15,7 +15,7 @@ ms.service: azure-local
 
 [!INCLUDE [end-of-service-22H2](../includes/end-of-service-22h2.md)]
 
-This article describes how to upgrade the operating system (OS) for Azure Local from version 22H2 to version 23H2 using manual methods, such as [SConfig](/windows-server/administration/server-core/server-core-sconfig) and performing an offline upgrade.
+This article describes how to upgrade the operating system (OS) for Azure Local from version 22H2 to version 23H2 using manual methods, such as [SConfig](/windows-server/administration/server-core/server-core-sconfig) and performing an offline upgrade. This is the first step in the upgrade process, which upgrades only the OS.
 
 While you can use these other methods, PowerShell is the recommended method to upgrade the OS. For more information, see [Upgrade the Azure Stack HCI OS, version 22H2 to version 23H2 via PowerShell](./upgrade-22h2-to-23h2-powershell.md).
 
@@ -47,8 +47,21 @@ Before you begin, make sure that:
 - The system is registered in Azure.
 - All the machines in your Azure Local are healthy and show as **Online**.
 - You shut down virtual machines (VMs). We recommend shutting down VMs before performing the OS upgrade to prevent unexpected outages and damages to databases.
-- You have access to the Azure Stack HCI OS, version 23H2 software update. This update is available via Windows Update or as a downloadable media. The media is an ISO file that you can download from the [Azure portal](https://portal.azure.com/#view/Microsoft_Azure_HybridCompute/AzureArcCenterBlade/~/hciGetStarted).
+- You have access to the Azure Stack HCI OS, version 23H2 software update. This update is available via Windows Update or as a downloadable media. The media must be version **2503** ISO that you can download from the [Azure portal](https://portal.azure.com/#view/Microsoft_Azure_HybridCompute/AzureArcCenterBlade/~/hciGetStarted).
 - You have access to a client that can connect to your Azure Local. This client should be running PowerShell 5.0 or later.
+- You run the `RepairRegistration` cmdlet only if both of the following conditions apply:
+
+   - The *identity* property is either missing or doesn’t contain `type = "SystemAssigned"`.
+      - Check this in the Resource JSON in the Azure portal
+      - Or run the `Get-AzResource -Name <cluster_name>` PowerShell cmdlet
+   - The **Cloud Management** cluster group is not present. Check it by running the `Get-ClusterGroup` PowerShell cmdlet.
+
+   If both these conditions are met, run the `RepairRegistration` cmdlet:
+
+   ```powershell
+   Register-AzStackHCI -TenantId "<tenant_ID>" -SubscriptionId "<subscription_ID>" -ComputerName "<computer_name>" -RepairRegistration
+   ```
+
 - (Recommended) You enable [Secure Boot](/windows-hardware/design/device-experiences/oem-secure-boot) on Azure Local machines before you upgrade the OS.
    To enable Secure Boot, follow these steps:
    1. Drain the cluster node.
@@ -83,6 +96,8 @@ To ensure Resilient File System (ReFS) and live migrations function properly dur
    ```
 
 1. Restart the machine for the changes to take effect. On machine restart, if the `RefsEnableMetadataValidation` key gets overridden and ReFS volumes fail to come online, toggle the key by first setting `RefsEnableMetadataValidation` to `1` and then back to `0` again.
+
+1. Update and verify that the registry keys have been applied on each machine in the system before moving to the next step.
 
 ## Step 1: Connect to your system
 
@@ -164,7 +179,9 @@ If there's a critical security update <!--ASK-->that you need to apply quickly o
 
 <!--ASK-->
 
-You're now ready to perform the post-upgrade steps for your system.
+## Step 3: Check the status of an update
+
+[!INCLUDE [verify-update](../includes/azure-local-verify-update.md)]
 
 ## Next steps
 

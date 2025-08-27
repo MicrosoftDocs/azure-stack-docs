@@ -4,8 +4,9 @@ description: Learn about a known issue with Kubernetes cluster create or nodepoo
 ms.topic: troubleshooting
 author: sethmanheim
 ms.author: sethm
-ms.date: 04/01/2025
-ms.reviewer: abha
+ms.date: 07/22/2025
+ms.reviewer: rcheeran
+ms.lastreviewed: 07/22/2025
 
 ---
 
@@ -43,11 +44,12 @@ When you run `az aksarc get-versions`, you see the following errors:
 
 ## Mitigation
 
-- This issue was fixed in [AKS on Azure Local, version 2503](aks-whats-new-23h2.md#release-2503).
-- Upgrade your Azure Local deployment to the 2503 build.
-- Once updated, confirm that the images have been downloaded successfully by running the `az aksarc get-versions` command.
-- For new AKS clusters: new AKS clusters should now be created successfully.
-- For scaling existing AKS clusters: scaling existing AKS clusters continues to encounter issues. Please file a support case.
+This issue was fixed in [AKS on Azure Local, version 2507](/azure/azure-local/whats-new?view=azloc-2507&preserve-view=true#features-and-improvements-in-2507). Upgrade your Azure Local deployment to the 2507 build. 
+
+- Upgrade your Azure Local deployment to the 2507 build.
+- Once updated, confirm that the images were downloaded successfully by running the `az aksarc get-versions` command.
+- You can now use the specified Kubernetes versions while creating or updating your AKS Arc clusters.
+- If you continue to encounter issues, please file a support ticket.
 
 ## Next steps
 

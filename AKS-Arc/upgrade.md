@@ -1,7 +1,7 @@
 ---
 title: Upgrade Kubernetes version of Azure Kubernetes Service (AKS) workload clusters in AKS on Windows Server using PowerShell
 description: Learn how to upgrade the Kubernetes version of Azure Kubernetes Service (AKS) workload clusters in AKS on Windows Server using PowerShell.
-ms.topic: article
+ms.topic: upgrade-and-migration-article
 ms.date: 04/02/2025
 author: sethmanheim
 ms.author: sethm 

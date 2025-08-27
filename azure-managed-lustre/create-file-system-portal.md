@@ -4,9 +4,10 @@ description: Learn how to create an Azure Managed Lustre file system from the Az
 ms.topic: how-to
 author: pauljewellmsft
 ms.author: pauljewell
-ms.date: 11/11/2024
+ms.date: 05/02/2025
 ms.lastreviewed: 06/06/2023
-ms.reviewer: mayabishop
+ms.reviewer: brlepore
+ms.custom: sfi-image-nochange
 
 #customer intent: As an IT pro, I want to use a Lustre file system to process files that involve a heavy computation load.
 
@@ -66,9 +67,9 @@ Currently, the following throughput configurations are available:
 
 | Throughput per TiB storage | Storage minimum | Storage maximum | Increment |
 |-----------|-----------|-----------|-----------|
-| 40 MBps | 48 TiB | 768 TiB | 48 TiB |
-| 125 MBps | 16 TiB | 128 TiB | 16 TiB |
-| 250 MBps | 8 TiB | 128 TiB | 8 TiB |
+| 40 MBps | 48 TiB | 1536 TiB | 48 TiB |
+| 125 MBps | 16 TiB | 512 TiB | 16 TiB |
+| 250 MBps | 8 TiB | 256 TiB | 8 TiB |
 | 500 MBps | 4 TiB | 128 TiB | 4 TiB |
 
 > [!NOTE]
