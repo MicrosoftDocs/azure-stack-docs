@@ -5,6 +5,7 @@ author: sethmanheim
 ms.topic: article
 ms.date: 08/19/2024
 ms.author: sethm
+ms.custom: sfi-image-nochange
 
 # Intent: As an Azure Stack operator, I want an overview for the identity provider options I have when deploying Azure Stack.
 # Keyword: azure stack identity providers

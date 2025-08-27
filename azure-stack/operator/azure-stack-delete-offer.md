@@ -6,6 +6,7 @@ ms.topic: article
 ms.date: 01/16/2025
 ms.author: sethm
 ms.lastreviewed: 04/25/2019
+ms.custom: sfi-image-nochange
 
 # Intent: As an Azure Stack Hub operator, I want to delete quotas, plans, offers, and subscriptions that I no longer need.
 # Keyword: delete quotas plans offers azure stack hub

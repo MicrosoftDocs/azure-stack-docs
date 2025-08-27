@@ -5,6 +5,7 @@ ms.topic: how-to
 ms.date: 10/11/2024
 ms.author: alkohli
 ms.service: azure-local
+ms.custom: sfi-image-nochange
 
 ---
 
