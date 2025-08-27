@@ -325,7 +325,7 @@ items:
             href: manage/virtual-machine-image-red-hat-enterprise.md
             items:
             - name: Prepare RHEL Azure Marketplace image for Azure Local VM
-              href: manage/virtual-machine-azure-marketplace-red-hat-enterprise.md
+              href: manage/virtual-machine-azure-marketplace-red-hat.md
           - name: Using SUSE VM image
             href: manage/virtual-machine-image-suse.md
       - name: 3. Create logical networks
