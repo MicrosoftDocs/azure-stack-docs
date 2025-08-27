@@ -149,4 +149,4 @@ You're now ready to apply the solution upgrade.
 
 ## Next step
 
-[Configure Network ATC on Azure Local](./install-enable-network-atc.md).
+[Learn how to configure Network ATC on Azure Local](./install-enable-network-atc.md).
