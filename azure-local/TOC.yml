@@ -383,7 +383,7 @@ items:
         href: manage/disaster-recovery-workloads-resiliency.md
       - name: Use Azure Site Recovery
         href: manage/azure-site-recovery.md
-      - name: Use Azure Backup
+      - name: Use Azure Backup Server
         href: /azure/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines?toc=/azure/azure-local/toc.json&bc=/azure/azure-local/breadcrumb/toc.json
     - name: Troubleshoot
       href: manage/troubleshoot-arc-enabled-vms.md

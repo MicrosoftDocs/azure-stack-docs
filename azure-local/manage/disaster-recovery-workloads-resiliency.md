@@ -127,3 +127,10 @@ To configure this approach:
 - Sessions will automatically load balance across clusters as needed. In this case, use a Scale-Out File Server to store FSLogix profiles to be accessible by both clusters.  
 
 To learn more, see [Azure Virtual Desktop for Azure Local](/azure/architecture/hybrid/azure-local-workload-virtual-desktop).
+
+## Next steps
+
+Learn more about:
+
+- [Azure Site Recovery](azure-site-recovery.md)
+- [Azure Backup Server](/azure/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines)

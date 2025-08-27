@@ -26,17 +26,17 @@ If you're using MABS, there are two approaches to protect VMs: **host-level VM b
 - **Host-level VM backup**: Install the backup agent on each Azure Local host (each cluster node) and back up entire VMs at the hypervisor level. This captures the whole VM (all virtual disks). It has the advantage of not requiring an agent inside each VM, and its agnostic to the guest OS. Host-level backups allow full VM restores, where you can recover an entire VM to the same or different cluster. However, host-level backups aren't application-aware. For example, they won't truncate SQL logs or guarantee application-consistent restores beyond what Volume Shadow Copy Service (VSS) provides.
 
     > [!NOTE]
-    >- Restoring an Azure Local VM on a different cluster will restore the VM as an unmanaged VM. This means that all services inside the VM will start working, but the VM can’t be managed from Azure until it's registered (hydrated) on the new Azure Local cluster and rehomed to the resource that exists in Azure.
+    >- Restoring an Azure Local VM on a different cluster will restore the VM as an unmanaged VM. This means that all services inside the VM will start working, but the VM can’t be managed from Azure until it's registered, or hydrated (preview), on the new Azure Local cluster and rehomed to the resource that exists in Azure.
     >- Rehoming ensures that the existing Azure resource is updated with the new resource group (optional, you can also keep it in the same resource group), custom location, storage path, and logical network of the VM. However, if the VM is restored on the same cluster, this isn't needed. After the VM is restored, it continues to be manageable from Azure. Hydration is currently in private preview, and will be available in future releases.
 
 - **Guest-level VM backup**: Install backup agents inside the guest OS of the VM. This allows application-consistent backups for VSS-aware applications running within the operating system, ensuring that application data is captured in a consistent state. For example, you can back up SQL databases with full fidelity and restore individual items like a single database or a specific file easily. The trade-off is manageability: you must manage agents on each VM, and the backup only covers what’s inside the VM, to restore the whole VM, you’d typically rebuild it and then restore data within.  
 
 - **Use both**: Many organizations use a combination, guest-level backups for critical applications that need point-in-time or item-level recovery like restoring a single database or a file without rolling back the whole VM, plus host-level backups for fast recovery of entire VMs or to recover from host failure scenarios.
 
-Setting up MABS involves deploying the MABS server software on a dedicated VM on the cluster, configuring its local storage, installing protection agents on the Azure Local hosts and/or guests, and then creating protection groups with the VMs you want to protect. Protection groups define what is backed up (for example, specific VMs), the backup schedule, short-term and long-term retention policies on local disk or Azure. For more information on installing MABS for Azure Local VMs, see [Back up Azure Local virtual machines with Azure Backup Server](/%20azure/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines).
+Setting up MABS involves deploying the MABS server software on a dedicated VM on the cluster, configuring its local storage, installing protection agents on the Azure Local hosts and/or guests, and then creating protection groups with the VMs you want to protect. Protection groups define what is backed up (for example, specific VMs), the backup schedule, short-term and long-term retention policies on local disk or Azure. For more information on installing MABS for Azure Local VMs, see [Back up Azure Local virtual machines with Azure Backup Server](/azure/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines).
 
 
-|Feature  |Host-level VM backup |Guest-level VM backup |
+|Attribute  |Host-level VM backup |Guest-level VM backup |
 |---------|---------|---------|
 |Requires agent in the guest OS    |  No     |  Yes    |
 |Requires agent in all nodes of the cluster      | Yes   |    No     |
@@ -164,3 +164,7 @@ In choosing between Azure Site Recovery (ASR) and Hyper-V Replica for Azure Loca
 It's essential to have a recovery plan where you document all the steps required to fail over workloads, including the sequence (for example, domain controllers should be activated before application servers), and any necessary network adjustments (such as DNS updates and user redirection). Hyper-V Replica enables the creation of recovery plans, allowing for the sequencing of VM groups and the inclusion of scripts as part of the failover process. These plans can be manual or scripted via PowerShell.  
 
 It's important to regularly test the disaster recovery plan through simulated drills. Conducting a test failover at least once a month is recommended to ensure functionality and maintain staff proficiency. Additionally, testing reveals if your RTOs are being met, such as the time required to spin up in Azure or on secondary hardware.
+
+## Next steps
+
+- Learn more about [Workloads resiliency](disaster-recovery-workloads-resiliency.md).
