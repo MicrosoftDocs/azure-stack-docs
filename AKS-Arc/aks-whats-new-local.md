@@ -2,11 +2,11 @@
 title: What's new in AKS on Azure Local
 description: Learn about what's new in AKS on Azure Local.
 ms.topic: overview
-ms.date: 07/22/2025
+ms.date: 08/27/2025
 author: sethmanheim
 ms.author: sethm 
 ms.reviewer: rcheeran
-ms.lastreviewed: 07/16/2025
+ms.lastreviewed: 08/27/2025
 
 ---
 
@@ -14,10 +14,10 @@ ms.lastreviewed: 07/16/2025
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
-This article lists the various features and improvements that are available in AKS enabled by Azure Arc on Azure Local.
+This article summarizes features, improvements, and important notices for AKS on Azure Local (AKS enabled by Azure Arc). It highlights release-specific updates—such as supported Kubernetes versions, platform and tooling changes, security advisories, and notable bug fixes—to help you plan upgrades and manage clusters. For details about a particular release, see the release sections that follow.
 
 > [!NOTE]
-> AKS on Azure Local is only supported on Azure Local version 23H2 and later.
+> AKS on Azure Local requires Azure Local version 23H2 or later.
 
 ## Features and improvements
 
@@ -28,7 +28,7 @@ This section lists the new features and improvements in AKS Arc in each release 
 #### Announcements
 
 - Support for Kubernetes minor version 1.29 will end on October 31, 2025.
-- KMS v1 will be deprecated soon. We will be adding support for KMS v2 in Azure Local 2510 release. Please plan on upgrading your clusters once KMS v2 is available.
+- KMS v1 will be deprecated soon. We will be adding support for KMS v2 in the Azure Local 2510 release. Please plan on upgrading your clusters once KMS v2 is available.
 
 #### Supported Kubernetes versions for 2508
 
@@ -40,7 +40,7 @@ The Kubernetes versions supported in the 2508 release are: 1.29.12, 1.29.13, 1.3
 
 #### Bug fixes
 
-- Fixed an issue where cluster creation failed as kubeadm installation in default nodepool failed because of tdnf cache issue.
+- Fixed an issue in which cluster creation failed after kubeadm installation in the default node pool failed, due to a tdnf cache issue.
 
 ### Release 2507
 
