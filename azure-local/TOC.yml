@@ -324,7 +324,7 @@ items:
           - name: Using Red Hat Enterprise VM image
             href: manage/virtual-machine-image-red-hat-enterprise.md
             items:
-            - name: Prepare RHEL Azure Marketplace image for Azure Local VM
+            - name: Using Red Hat Enterprise Azure Marketplace image
               href: manage/virtual-machine-azure-marketplace-red-hat.md
           - name: Using SUSE VM image
             href: manage/virtual-machine-image-suse.md
