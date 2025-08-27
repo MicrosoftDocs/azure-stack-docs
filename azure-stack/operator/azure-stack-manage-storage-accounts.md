@@ -8,6 +8,7 @@ ms.date: 03/04/2020
 ms.author: sethm
 ms.reviewer: xiaofmao
 ms.lastreviewed: 03/19/2019
+ms.custom: sfi-image-nochange
 
 # keyword: Azure Stack Hub storage acco
 

@@ -5,7 +5,8 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 03/27/2025
+ms.date: 05/15/2025
+ms.custom: sfi-image-nochange
 ---
 
 # Manage VM extensions on Azure Local virtual machines 
@@ -25,7 +26,7 @@ For a full list of supported VM extensions, see:
 
 ## Prerequisites
 
-- Access to a VM running on Azure Local with guest management enabled. Guest management is supported on Windows and Linux VMs. For information on how to create a VM, see [Create Azure Local VMs(./create-arc-virtual-machines.md).
+- Access to a VM running on Azure Local with guest management enabled. Guest management is supported on Windows and Linux VMs. For information on how to create a VM, see [Create Azure Local VMs](./create-arc-virtual-machines.md).
 
 ## Verify that guest management is enabled
 

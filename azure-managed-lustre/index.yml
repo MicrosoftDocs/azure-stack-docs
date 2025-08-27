@@ -42,8 +42,10 @@ landingContent:
         links:
           - text: Import data using import jobs
             url: create-import-job.md
-          - text: Export data using export jobs
+          - text: Export data using manual export jobs
             url: export-with-archive-jobs.md
+          - text: Export data using auto-export jobs
+            url: auto-export.md
   - title: Access a file system
     linkLists:
       - linkListType: how-to-guide
@@ -72,6 +74,8 @@ landingContent:
             url: configure-network-security-group.md
           - text: Use customer-managed encryption keys
             url: customer-managed-encryption-keys.md
+          - text: Enable VNet encryption
+            url: vnet-encryption.md
   - title: Self-paced learning
     linkLists:
       - linkListType: learn

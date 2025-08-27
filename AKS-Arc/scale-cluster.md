@@ -1,7 +1,7 @@
 ---
 title: Scale an Azure Kubernetes Service cluster
 description: Learn how to scale the number of nodes in a Kubernetes cluster in AKS on Windows Server.
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/25/2024
 author: sethmanheim
 ms.author: sethm 

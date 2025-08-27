@@ -3,8 +3,9 @@ title: Discover and replicate Hyper-V VMs for migration to Azure Local using Azu
 description: Learn the discovery and replication process for Hyper-V VMs to Azure Local using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 04/08/2025
+ms.date: 08/06/2025
 ms.author: alkohli
+ms.custom: sfi-image-nochange
 ---
 
 # Discover and replicate Hyper-V VMs for migration to Azure Local using Azure Migrate (preview)
@@ -85,7 +86,7 @@ Complete the following tasks to generate the target appliance key:
 
 You can download the appliance using either a .VHD file or a .zip file.
 
-Under **Step 2: Download Azure Migrate appliance**, select either **.VHD file** or **.zip file**, and then select **Download installer**.
+Under **Step 2: Download Azure Migrate appliance**, select either **.VHD** or **.zip**, and then select **Download installer**.
 
 :::image type="content" source="media/migrate-hyperv-replicate/download-target-appliance.png" alt-text="Screenshot of download target appliance step 2." lightbox="media/migrate-hyperv-replicate/download-target-appliance.png":::
 
@@ -93,75 +94,54 @@ Under **Step 2: Download Azure Migrate appliance**, select either **.VHD file** 
 
 This step applies only if you downloaded the .VHD zipped file. 
 
-Check that the zipped file is secure, before you deploy it.
+1. Check that the zipped file is secure, before you deploy it. 
 
-1. On the machine where you downloaded the file, open an administrator command window.
-1. Run the following command to generate the hash for the VHD.
-    
-    ```powershell    
-    C:\>Get-FileHash -Path <file_location> -Algorithm <Hashing Algorithm>
+1. On the machine where you downloaded the file, open an administrator PowerShell window. 
+
+1. Run the following command to generate the hash for the VHD. 
+
+    ```powershell
+    C:\>Get-FileHash -Path <Path to downloaded VHD zip>  -Algorithm SHA256
     ```
 
-    Here's an example output.
-
-    ```output
-    C:\>Get-FileHash -Path ./AzureMigrateAppliance_v3.20.09.25.zip -Algorithm SHA256
-    ```
-
-1. Verify the latest appliance versions and hash values for Azure public cloud:
-
+1. Verify the latest appliance versions and hash values: 
     
     |**Scenario**  |**Download**  |**SHA256**  |
     |---------|---------|---------|
     |Azure Local appliance     |Latest version: `https://go.microsoft.com/fwlink/?linkid=2246416`         |6ae1144b026efb2650f5e11c007a457c351a752f942c2db827dd2903f468dccb         |
 
-
-1. Extract the zip file to a folder.
+1. Extract the zipped file to a folder. 
 
 Now you can install the appliance using the .VHD file.
 
-1. On a Hyper-V server (this could be your source server), go to the Hyper-V Manager. Select **Hyper-V Manager > Connect to server**. 
+1. Using local tools, such as Hyper-V Manager or Failover Cluster, install the target appliance from the downloaded .VHD file on your Azure Local instance. 
 
-1. On the **Select Computer** dialog box, select **Another computer**. Browse to the Azure Local machine, and then select **OK**.
-
-1. Map the drive on your Azure Local machine where you downloaded the VHD. Connect to this drive using File Explorer. Verify that you can access the location where the VHD was downloaded on your Azure Local machine.
-
-1. On your Hyper-V server, from the **Actions** pane, select **Import Virtual Machine**. This starts a wizard. Go through the steps of the wizard. Accept the defaults except on the following:
-
-    1. On the **Locate Folder** page, point to the folder that has the VHD (folder name is AzureMigrateAppliance.zip) that you downloaded on your Azure Local machine.
-    1. On the **Connect Network** page, select a switch from the dropdown list for **Connection**. Create a VM using the VHD you downloaded, then start and sign into the VM. Make sure the VM has access to the internet.
-    1. Finally review the settings and select **Finish**.
-
-1. In the Hyper-V Manager, under **Virtual Machines**, you see the VM your created. Select and start the VM.
-
-1. Once the VM starts, accept the license terms and conditions. On the **Customize settings** page, provide and confirm a password for the administrator account and then select **Finish**.
-
-1. After the VM has started up, sign in to the VM as an administrator. Enter the password you provided in the previous step.
-
-1. Open **Azure Migrate Target Appliance Configuration Manager** shortcut from the desktop.
+1. Once the VM has finished provisioning and has booted, open the **Azure Migrate Target Appliance Configuration Manager** shortcut from the desktop. 
 
 #### Install using a script (.zip file)
 
-This step applies only if you downloaded the .zip file.
+This step applies to using a .zip file.
 
-1. Using **Hyper-V Manager**, create a standalone (non-HA) VM on the target Azure Local machine running on Windows Server 2022 with 80 GB (min) disk storage, 16 GB (min) memory, and 8 virtual processors. Make sure that the VM has access to the internet.
+1. Create a VM in Azure Local with the following configuration: 
+    - Operating system: Windows Server 2022 
+    - vCPU: 8 
+    - Disk: >80 GB 
+    - Memory: 16 GB 
 
-1. In  **Hyper-V Manager**, select the host.
+1. Once the VM is created, sign into the VM as an administrator. 
 
-1. Under **Hyper-V settings**, select **Enhanced Session Mode Policy** and ensure **Allow enhanced session mode** is enabled. For more information, see [Turn on enhanced session mode on a Hyper-V host](/windows-server/virtualization/hyper-v/learn-more/use-local-resources-on-hyper-v-virtual-machine-with-vmconnect#turn-on-enhanced-session-mode-on-a-hyper-v-host).
+1. You can download the appliance from a .zip file. Under  **Step 2: Download and install the target appliance**, select **.zip**, and then select  **Download**. 
 
-1. Sign into the VM as an administrator.
+1. Copy the downloaded zip file to the new VM that you created on the Azure Local instance. Extract the zip to a folder and go where the `AzureMigrateInstaller.ps1` PowerShell script resides in the extracted folder. 
 
-1. Copy and paste the downloaded .zip file to the VM virtual disk that you created and extract it as needed.
+1. Open a PowerShell window as an administrator and run the following:
 
-1. As an administrator, run the following PowerShell script from the folder of the extracted files to install the target appliance:
-
-    ```PowerShell
-    Set-ExecutionPolicy -ExecutionPolicy Unrestricted
+    ```powershell
+    Set-ExecutionPolicy -ExecutionPolicy Unrestricted 
     .\AzureMigrateInstaller.ps1 -Scenario AzureStackHCI -Cloud Public -PrivateEndpoint:$false
-    ```
+    ``` 
 
-1. Restart and sign into the VM.
+1. Restart the VM after the installation is complete. Sign in to the VM. 
 
 ### Register the target appliance
 
@@ -251,7 +231,7 @@ This step applies only if you downloaded the .zip file.
     1. For your **Cache storage account**, select an existing storage account. You can also select **(New) Storage account** to create a new storage account with a randomly generated name.
 
         > [!NOTE]
-        > - We recommend that you create new a storage account to be used as your cache storage account. > > - Once created, the storage account location can't be changed.
+        > We recommend that you create new a storage account to be used as your cache storage account. Once created, the storage account location can't be changed.
 
     1. Select a resource group to associate with your migrated VMs.
    
@@ -295,7 +275,7 @@ This step applies only if you downloaded the .zip file.
  
 1. As the replication continues, replication status shows progress. Continue refreshing periodically. After the initial replication is complete, hourly delta replications begin. The **Migration status** changes to **Ready to migrate**. The VMs can be migrated. 
  
-    :::image type="content" source="./media/migrate-hyperv-replicate/migrate-replicated-virtual-machine-1a.png" alt-text="Screenshot Azure Migrate: Migration and modernization > Replications in Azure portal with migration status Ready to migrate." lightbox="./media/migrate-hyperv-replicate/migrate-replicated-virtual-machine-1a.png":::
+    :::image type="content" source="./media/migrate-hyperv-replicate/migrate-replicated-virtual-machine-1-a.png" alt-text="Screenshot Azure Migrate: Migration and modernization > Replications in Azure portal with migration status Ready to migrate." lightbox="./media/migrate-hyperv-replicate/migrate-replicated-virtual-machine-1-a.png":::
 
 
 ## Next steps

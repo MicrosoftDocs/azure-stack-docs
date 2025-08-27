@@ -3,11 +3,12 @@ title: Enable Azure Stack Hub backup from the administrator portal
 description: Learn how to enable the Infrastructure Backup Service from the administrator portal so that Azure Stack Hub can be restored if there's a failure.
 author: sethmanheim
 
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/23/2021
 ms.author: sethm
 ms.reviewer: hectorl
 ms.lastreviewed: 08/21/2019
+ms.custom: sfi-image-nochange
 
 # Intent: As an Azure Stack operator, I want to enable backups from the admin portal so Azure Stack can generate infrastructure backups.
 # Keyword: enable backup admin portal

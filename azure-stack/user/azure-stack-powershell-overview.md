@@ -3,7 +3,7 @@ title: PowerShell in Azure Stack Hub
 description: PowerShell in Azure Stack Hub has a number of modules and contexts.
 author: sethmanheim
 
-ms.topic: article
+ms.topic: concept-article
 ms.date: 12/2/2020
 ms.author: sethm
 ms.reviewer: thoroet

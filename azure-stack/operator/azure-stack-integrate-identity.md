@@ -2,8 +2,8 @@
 title: Integrate AD FS identity with your Azure Stack Hub datacenter 
 description: Learn how to integrate Azure Stack Hub AD FS identity provider with your datacenter AD FS.
 author: sethmanheim
-ms.topic: article
-ms.date: 05/15/2023
+ms.topic: how-to
+ms.date: 08/12/2025
 ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 05/10/2019
@@ -48,25 +48,25 @@ Requirements:
 
 ## Setting up Graph integration
 
-Graph only supports integration with a single Active Directory forest. If multiple forests exist, only the forest specified in the configuration will be used to fetch users and groups.
+Graph only supports integration with a single Active Directory forest. If multiple forests exist, only the forest specified in the configuration is used to fetch users and groups.
 
 The following information is required as inputs for the automation parameters:
 
 |Parameter|Deployment Worksheet Parameter|Description|Example|
 |---------|---------|---------|---------|
-|`CustomADGlobalCatalog`|AD FS Forest FQDN|FQDN of the target Active Directory forest that you want to integrate with|Contoso.com|
-|`CustomADAdminCredentials`| |A user with LDAP Read permission|graphservice|
+|`CustomADGlobalCatalog`|AD FS Forest FQDN|FQDN of the target Active Directory forest that you want to integrate with.|Contoso.com|
+|`CustomADAdminCredentials`| |A user with LDAP **Read** permission.|graphservice|
 
-### Configure Active Directory Sites
+### Configure Active Directory sites
 
 For Active Directory deployments having multiple sites, configure the closest Active Directory Site to your Azure Stack Hub deployment. The configuration avoids having the Azure Stack Hub Graph service resolve queries using a Global Catalog Server from a remote site.
 
-Add the Azure Stack Hub [Public VIP network](azure-stack-network.md#public-vip-network) subnet to the Active Directory Site closest to Azure Stack Hub. For example, let's say your Active Directory has two sites: Seattle and Redmond. If Azure Stack Hub is deployed at the Seattle site, you would add the Azure Stack Hub Public VIP network subnet to the Active Directory site for Seattle.
+Add the Azure Stack Hub [Public VIP network](azure-stack-network.md#public-vip-network) subnet to the Active Directory Site closest to Azure Stack Hub. For example, your Active Directory has two sites: Seattle and Redmond. If Azure Stack Hub is deployed at the Seattle site, you add the Azure Stack Hub Public VIP network subnet to the Active Directory site for Seattle.
 
-For more information on Active Directory Sites, see [Designing the site topology](/windows-server/identity/ad-ds/plan/designing-the-site-topology).
+For more information about Active Directory sites, see [Designing the site topology](/windows-server/identity/ad-ds/plan/designing-the-site-topology).
 
 > [!NOTE]  
-> If your Active Directory consist of a single site, you can skip this step. If you have a catch-all subnet configured, validate that the Azure Stack Hub Public VIP network subnet isn't part of it.
+> If your Active Directory consists of a single site, you can skip this step. If you have a catch-all subnet configured, validate that the Azure Stack Hub public VIP network subnet isn't part of it.
 
 ### Create user account in the existing Active Directory (optional)
 
@@ -76,22 +76,20 @@ Optionally, you can create an account for the Graph service in the existing Acti
    - **Username**: graphservice
    - **Password**: Use a strong password and configure the password to never expire.
 
-   No special permissions or membership is required.
+   No special permissions or membership are required.
 
 #### Trigger automation to configure graph
 
 For this procedure, use a computer in your datacenter network that can communicate with the privileged endpoint in Azure Stack Hub.
 
-1. Open an elevated Windows PowerShell session (run as administrator), and connect to the IP address of the privileged endpoint. Use the credentials for **CloudAdmin** to authenticate.
+1. Open an elevated Windows PowerShell session (run as administrator), and connect to the IP address of the privileged endpoint. Use the **CloudAdmin** credentials to authenticate.
 
    ```powershell  
    $creds = Get-Credential
    $pep = New-PSSession -ComputerName <IP Address of ERCS> -ConfigurationName PrivilegedEndpoint -Credential $creds -SessionOption (New-PSSessionOption -Culture en-US -UICulture en-US)
    ```
 
-2. Now that you have a session with the privileged endpoint, run the following command: 
-
-   **Run the below script for Azure Stack Hub build 2008 and newer** <br>
+1. Now that you have a session with the privileged endpoint, run the following command:
 
    ```powershell  
     $i = @(
@@ -103,24 +101,14 @@ For this procedure, use a computer in your datacenter network that can communica
                    }) 
 
     Invoke-Command -Session $pep -ScriptBlock {Register-DirectoryService -customCatalog $using:i} 
-
-
    ```
 
-   **Run the below script for Azure Stack Hub build prior to 2008** <br>
-
-   ```powershell  
-   Invoke-Command -Session $pep -ScriptBlock {Register-DirectoryService -CustomADGlobalCatalog contoso.com} 
-   
-   
-    ```
-
-   When prompted, specify the credential for the user account that you want to use for the Graph service (such as graphservice). The input for the Register-DirectoryService cmdlet must be the forest name / root domain in the forest rather than any other domain in the forest.
+   When prompted, specify the credential for the user account that you want to use for the Graph service (such as graphservice). The input for the `Register-DirectoryService` cmdlet must be the forest name/root domain in the forest rather than any other domain in the forest.
 
    > [!IMPORTANT]
-   > Wait for the credentials pop-up (Get-Credential isn't supported in the privileged endpoint) and enter the Graph Service Account credentials.
+   > Wait for the credentials pop-up (`Get-Credential` isn't supported in the privileged endpoint) and enter the Graph Service account credentials.
 
-3. The **Register-DirectoryService** cmdlet has optional parameters that you can use in certain scenarios where the existing Active Directory validation fails. When this cmdlet is executed, it validates that the provided domain is the root domain, a global catalog server can be reached, and that the provided account is granted read access.
+1. The `Register-DirectoryService` cmdlet has optional parameters that you can use in certain scenarios where the existing Active Directory validation fails. When this cmdlet is executed, it validates that the provided domain is the root domain, a global catalog server can be reached, and that the provided account is granted read access.
 
    |Parameter|Description|
    |---------|---------|
@@ -129,9 +117,9 @@ For this procedure, use a computer in your datacenter network that can communica
 
 #### Graph protocols and ports
 
-Graph service in Azure Stack Hub uses the following protocols and ports to communicate with a writeable Global Catalog Server (GC) and Key Distribution Center (KDC) that can process login requests in the target Active Directory forest.
+The Graph service in Azure Stack Hub uses the following protocols and ports to communicate with a writeable Global Catalog Server (GC) and Key Distribution Center (KDC) that can process login requests in the target Active Directory forest.
 
-Graph service in Azure Stack Hub uses the following protocols and ports to communicate with the target Active Directory:
+The Graph service in Azure Stack Hub uses the following protocols and ports to communicate with the target Active Directory:
 
 |Type|Port|Protocol|
 |---------|---------|---------|
@@ -140,15 +128,15 @@ Graph service in Azure Stack Hub uses the following protocols and ports to commu
 |LDAP GC|3268|TCP|
 |LDAP GC SSL|3269|TCP|
 
-## Setting up AD FS integration by downloading federation metadata
+## Set up AD FS integration by downloading federation metadata
 
 The following information is required as input for the automation parameters:
 
-|Parameter|Deployment Worksheet Parameter|Description|Example|
+|Parameter|Deployment worksheet parameter|Description|Example|
 |---------|---------|---------|---------|
-|CustomAdfsName|AD FS Provider Name|Name of the claims provider.<br>It appears that way on the AD FS landing page.|Contoso|
-|CustomAD<br>FSFederationMetadataEndpointUri|AD FS Metadata URI|Federation metadata link.| https:\//ad01.contoso.com/federationmetadata/2007-06/federationmetadata.xml |
-|SigningCertificateRevocationCheck|NA|Optional Parameter to skip CRL checking.|None|
+|CustomAdfsName|AD FS provider name|Name of the claims provider.<br>It appears that way on the AD FS landing page.|Contoso|
+|CustomAD<br>FSFederationMetadataEndpointUri|AD FS metadata URI|Federation metadata link.| `https://ad01.contoso.com/federationmetadata/2007-06/federationmetadata.xml` |
+|SigningCertificateRevocationCheck|NA|Optional parameter to skip CRL checking.|None|
 
 ### Trigger automation to configure claims provider trust in Azure Stack Hub (by downloading federation metadata)
 
@@ -161,19 +149,19 @@ For this procedure, use a computer that can communicate with the privileged endp
    Enter-PSSession -ComputerName <IP Address of ERCS> -ConfigurationName PrivilegedEndpoint -Credential $creds
    ```
 
-2. Now that you're connected to the privileged endpoint, run the following command using the parameters appropriate for your environment:
+1. Now that you're connected to the privileged endpoint, run the following command using the parameters appropriate for your environment:
 
    ```powershell  
    Register-CustomAdfs -CustomAdfsName Contoso -CustomADFSFederationMetadataEndpointUri "https://ad01.contoso.com/federationmetadata/2007-06/federationmetadata.xml"
    ```
 
-3. Run the following command to update the owner of the default provider subscription using the parameters appropriate for your environment:
+1. Run the following command to update the owner of the default provider subscription using the parameters appropriate for your environment:
 
    ```powershell  
    Set-ServiceAdminOwner -ServiceAdminOwnerUpn "administrator@contoso.com"
    ```
 
-## Setting up AD FS integration by providing federation metadata file
+## Set up AD FS integration by providing federation metadata file
 
 Beginning with version 1807, use this method if the either of the following conditions are true:
 
@@ -194,20 +182,20 @@ For the following procedure, you must use a computer that has network connectivi
 1. Open an elevated Windows PowerShell session, and run the following command using the parameters appropriate for your environment:
 
    ```powershell  
-    $url = "https://win-SQOOJN70SGL.contoso.com/FederationMetadata/2007-06/FederationMetadata.xml"
-    $webclient = New-Object System.Net.WebClient
-    $webclient.Encoding = [System.Text.Encoding]::UTF8
-    $metadataAsString = $webclient.DownloadString($url)
-    Set-Content -Path c:\metadata.xml -Encoding UTF8 -Value $metadataAsString
+   $url = "https://win-SQOOJN70SGL.contoso.com/FederationMetadata/2007-06/FederationMetadata.xml"
+   $webclient = New-Object System.Net.WebClient
+   $webclient.Encoding = [System.Text.Encoding]::UTF8
+   $metadataAsString = $webclient.DownloadString($url)
+   Set-Content -Path c:\metadata.xml -Encoding UTF8 -Value $metadataAsString
    ```
 
-2. Copy the metadata file to a computer that can communicate with the privileged endpoint.
+1. Copy the metadata file to a computer that can communicate with the privileged endpoint.
 
 ### Trigger automation to configure claims provider trust in Azure Stack Hub (using federation metadata file)
 
 For this procedure, use a computer that can communicate with the privileged endpoint in Azure Stack Hub and has access to the metadata file you created in a previous step.
 
-1. Open an elevated Windows PowerShell session and connect to the privileged endpoint.
+1. Open an elevated Windows PowerShell session and connect to the privileged endpoint:
 
    ```powershell  
    $federationMetadataFileContent = get-content c:\metadata.xml
@@ -215,19 +203,19 @@ For this procedure, use a computer that can communicate with the privileged endp
    Enter-PSSession -ComputerName <IP Address of ERCS> -ConfigurationName PrivilegedEndpoint -Credential $creds
    ```
 
-2. Now that you're connected to the privileged endpoint, run the following command using the parameters appropriate for your environment:
+1. Now that you're connected to the privileged endpoint, run the following command using the appropriate parameters for your environment:
 
     ```powershell
     Register-CustomAdfs -CustomAdfsName Contoso -CustomADFSFederationMetadataFileContent $using:federationMetadataFileContent
     ```
 
-3. Run the following command to update the owner of the default provider subscription. Use the parameters appropriate for your environment.
+1. Run the following command to update the owner of the default provider subscription. Use the appropriate parameters for your environment:
 
    ```powershell  
    Set-ServiceAdminOwner -ServiceAdminOwnerUpn "administrator@contoso.com"
    ```
 
-   > [!Note]  
+   > [!NOTE]  
    > When you rotate the certificate on the existing AD FS (account STS), you must set up the AD FS integration again. You must set up the integration even if the metadata endpoint is reachable or it was configured by providing the metadata file.
 
 ## Configure relying party on existing AD FS deployment (account STS)
@@ -271,7 +259,7 @@ If you decide to manually run the commands, follow these steps:
    => issue(claim = c);
    ```
 
-2. Validate that Windows Forms-based authentication for extranet and intranet is enabled. You can check if its already enabled by running the following cmdlet:
+1. Validate that Windows Forms-based authentication for extranet and intranet is enabled. You can check if its already enabled by running the following cmdlet:
 
    ```powershell  
    Get-AdfsAuthenticationProvider | where-object { $_.name -eq "FormsAuthentication" } | select Name, AllowedForPrimaryExtranet, AllowedForPrimaryIntranet
@@ -280,7 +268,7 @@ If you decide to manually run the commands, follow these steps:
     > [!Note]  
     > The Windows Integrated Authentication (WIA) supported user agent strings may be outdated for your AD FS deployment and may require an update to support the latest clients. You can read more about updating the WIA supported user agent strings in the article [Configuring intranet forms-based authentication for devices that don't support WIA](/windows-server/identity/ad-fs/operations/configure-intranet-forms-based-authentication-for-devices-that-do-not-support-wia).<br><br>For steps to enable Form-based authentication policy, see [Configure Authentication Policies](/windows-server/identity/ad-fs/operations/configure-authentication-policies).
 
-3. To add the relying party trust, run the following Windows PowerShell command on your AD FS instance or a farm member. Make sure to update the AD FS endpoint and point to the file created in Step 1.
+1. To add the relying party trust, run the following Windows PowerShell command on your AD FS instance or a farm member. Make sure to update the AD FS endpoint and point to the file created in Step 1.
 
    > [!IMPORTANT]
    > For customers running Azure Stack Hub versions 2002 and later, TLS 1.2 is enforced on the Azure Stack Hub ADFS endpoint. As such, [TLS 1.2 must also be enabled](/mem/configmgr/core/plan-design/security/enable-tls-1-2-client) on the customer ADFS servers. Otherwise, the following error will occur when running `Add-ADFSRelyingPartyTrust` on the customer owned ADFS host/farm:
@@ -302,7 +290,7 @@ If you decide to manually run the commands, follow these steps:
    > [!IMPORTANT]  
    > You must use the AD FS MMC snap-in to configure the Issuance Authorization Rules when using Windows Server 2012 or 2012 R2 AD FS.
 
-4. When you use Internet Explorer or the Microsoft Edge browser to access Azure Stack Hub, you must ignore token bindings. Otherwise, the sign-in attempts fail. On your AD FS instance or a farm member, run the following command:
+1. When you use the Microsoft Edge browser to access Azure Stack Hub, you must ignore token bindings. Otherwise, the sign-in attempts fail. On your AD FS instance or a farm member, run the following command:
 
    > [!note]  
    > This step isn't applicable when using Windows Server 2012 or 2012 R2 AD FS. In that case, it's safe to skip this command and continue with the integration.
@@ -321,15 +309,14 @@ There are many scenarios that require the use of a service principal name (SPN) 
 - Various apps.
 - You require a non-interactive sign-in.
 
-> [!Important]  
+> [!IMPORTANT]  
 > AD FS only supports interactive sign-in sessions. If you require a non-interactive sign-in for an automated scenario, you must use a SPN.
 
 For more information on creating an SPN, see [Create service principal for AD FS](./give-app-access-to-resources.md).
 
-
 ## Troubleshooting
 
-### Configuration Rollback
+### Configuration rollback
 
 If an error occurs that leaves the environment in a state where you can no longer authenticate, a rollback option is available.
 
@@ -340,7 +327,7 @@ If an error occurs that leaves the environment in a state where you can no longe
    Enter-PSSession -ComputerName <IP Address of ERCS> -ConfigurationName PrivilegedEndpoint -Credential $creds
    ```
 
-2. Then run the following cmdlet:
+1. Then run the following cmdlet:
 
    ```powershell  
    Reset-DatacenterIntegrationConfiguration
@@ -357,16 +344,16 @@ If an error occurs that leaves the environment in a state where you can no longe
 
 ### Collecting additional logs
 
-If any of the cmdlets fail, you can collect additional logs by using the `Get-Azurestacklogs` cmdlet.
+If any of the cmdlets fail, you can collect additional logs by using the `Get-AzureStackLog` cmdlet.
 
 1. Open an elevated Windows PowerShell session and run the following commands:
 
    ```powershell  
    $creds = Get-Credential
-   Enter-pssession -ComputerName <IP Address of ERCS> -ConfigurationName PrivilegedEndpoint -Credential $creds
+   Enter-PSSession -ComputerName <IP Address of ERCS> -ConfigurationName PrivilegedEndpoint -Credential $creds
    ```
 
-2. Then run the following cmdlet:
+1. Then run the following cmdlet:
 
    ```powershell  
    Get-AzureStackLog -OutputPath \\myworkstation\AzureStackLogs -FilterByRole ECE

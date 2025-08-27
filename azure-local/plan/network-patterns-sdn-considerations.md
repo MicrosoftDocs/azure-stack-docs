@@ -1,7 +1,7 @@
 ---
 title: Review SDN considerations for network reference patterns
 description: Learn about SDN considerations for network reference patterns for Azure Local.
-ms.topic: conceptual
+ms.topic: article
 author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli

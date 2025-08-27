@@ -2,8 +2,8 @@
 title: Out of stock detection using Azure and Azure Stack Edge
 description: Learn how to use Azure and Azure Stack Edge services to implement out of stock detection.
 author: ronmiab 
-ms.topic: article
-ms.date: 04/03/2025
+ms.topic: how-to
+ms.date: 04/25/2025
 ms.author: robess
 ms.reviewer: anajod
 ms.lastreviewed: 05/24/2021

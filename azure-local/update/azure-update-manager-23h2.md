@@ -5,15 +5,13 @@ author: ronmiab
 ms.author: robess
 ms.topic: how-to
 ms.reviewer: mindydiep
-ms.date: 04/24/2025
+ms.date: 08/13/2025
 #customer intent: As a Senior Content Developer, I want provide customers with information and guidance on using Azure Update Manager to manage and keep their Azure Local instances up to date.
 ---
 
 # Use Azure Update Manager to update Azure Local
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
-
-[!INCLUDE [azure-local-end-of-support-banner-23h2](../includes/azure-local-end-of-support-banner-23h2.md)]
 
 [!INCLUDE [IMPORTANT](../includes/hci-applies-to-23h2-cluster-updates.md)]
 
@@ -40,7 +38,7 @@ Here are some benefits of the Azure Update Manager:
 ## Prerequisites
 
 - An Azure Local system deployed and registered with Azure.
-- Make sure to apply updates via supported navigation paths in Azure portal. Microsoft only supports updates applied from the **Azure Local** resource page or via the **Azure Update Manager > Resources > Azure Local**. Additionally, use of 3rd party tools to install updates is not supported. 
+- Make sure to apply updates via supported navigation paths in Azure portal. Microsoft only supports updates applied from the **Azure Local** resource page or via the **Azure Update Manager > Resources > Azure Local**. Additionally, use of 3rd party tools to install updates isn't supported. 
 
 For Azure Local, Azure Update Manager is supported only in the regions where Azure Local is supported. For more information, see [List of supported Azure Local regions](../concepts/system-requirements-23h2.md#azure-requirements).
 
@@ -64,7 +62,7 @@ To browse for available system updates using Azure Update Manager, follow these 
 
 > [!IMPORTANT]
 > - Microsoft only supports updates applied from the **Azure Local** resource page or via the **Azure Update Manager > Resources > Azure Local**.
-> - Use of 3rd party tools to install updates is not supported. 
+> - Use of 3rd party tools to install updates isn't supported. 
 
 You can install updates from the Azure Local resource page or via the **Azure Update Manager > Resources > Azure Local page**. Select the appropriate tab to view the detailed steps.
 
@@ -159,15 +157,18 @@ To view the progress of your update installation, and completion results, follow
 
 ## Install hardware updates
 
-Hardware updates for Azure Local may be available through Azure Update Manager if your Azure Local instance has a solution builder extension.
+[!INCLUDE [azure-local-install-harware-updates](../includes/azure-local-install-harware-updates.md)]
 
-For systems that support solution builder extensions:
-- Azure Update Manager automatically includes the appropriate solution builder extension updates when installing Azure Local Feature updates.
-- Azure Update Manager allows the installation of solution builder extension updates separately (hardware updates can be installed without a combined Azure Local update).
+## Get solution version
 
-Azure Update Manager only supports the installation of hardware updates via solution builder extensions. If your hardware doesn't support the solution builder extension update experience, the process for updating your hardware remains similar to the process used with Azure Local, version 22H2. This means that your hardware updates may be available using Windows Admin Center.
+Follow these steps to find the solution version of your Azure Local instance:
 
-To determine if your system supports solution builder extension and for details on installing hardware updates, see [About Solution Builder Extension software updates](./solution-builder-extension.md).
+1. In the Azure portal, go to your Azure Local resource page and then go to **Overview**.
+1. In the right pane, go to the **Properties** tab and then to **Updates**.
+1. Identify the solution version for your Azure Local instance.
+
+    :::image type="content" source="./media/azure-update-manager/get-solution-version-1.png" alt-text="Screenshot of the Overview page for your Azure Local resource in Azure portal." lightbox="./media/azure-update-manager/get-solution-version-1.png":::
+
 
 ## Next steps
 

@@ -5,9 +5,8 @@ ms.topic: how-to
 author: pauljewellmsft
 ms.author: pauljewell
 ms.reviewer: dsundarraj
-ms.date: 04/29/2025
+ms.date: 08/27/2025
 zone_pivot_groups: select-os
-
 ---
 
 # Install prebuilt Lustre client software
@@ -74,6 +73,14 @@ This article shows how to install the client package to set up client VMs runnin
 ## Install client software for Ubuntu 22.04
 
 This article shows how to install the client package to set up client VMs running Ubuntu 22.04.
+
+::: zone-end
+
+::: zone pivot="ubuntu-24"
+
+## Install client software for Ubuntu 24.04
+
+This article shows how to install the client package to set up client VMs running Ubuntu 24.04.
 
 ::: zone-end
 
@@ -410,9 +417,10 @@ This article shows how to install the client package to set up client VMs runnin
     #!/bin/bash
     set -ex
 
-    apt update && apt install -y ca-certificates curl apt-transport-https lsb-release gnupg
+    apt update && apt install -y ca-certificates curl apt-transport-https lsb-release gnupg dpkg-dev
     source /etc/lsb-release
-    echo "deb [arch=amd64] https://packages.microsoft.com/repos/amlfs-${DISTRIB_CODENAME}/ ${DISTRIB_CODENAME} main" | tee /etc/apt/sources.list.d/amlfs.list
+    ARCH=$(dpkg-architecture -q DEB_BUILD_ARCH)
+    echo "deb [arch=${ARCH}] https://packages.microsoft.com/repos/amlfs-${DISTRIB_CODENAME}/ ${DISTRIB_CODENAME} main" | tee /etc/apt/sources.list.d/amlfs.list
     curl -sL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | tee /etc/apt/trusted.gpg.d/microsoft.gpg > /dev/null
 
     apt update

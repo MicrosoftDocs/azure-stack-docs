@@ -2,7 +2,7 @@
 title: Azure Stack Hub VPN Fast Path for operators
 description: Learn about Azure Stack Hub VPN Fast Path for operators
 author: sethmanheim
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/23/2024
 ms.author: sethm
 ms.reviewer: iacarago

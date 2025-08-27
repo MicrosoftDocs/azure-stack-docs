@@ -2,11 +2,12 @@
 title: Azure Stack Hub VPN Fast Path 
 description: Learn about Azure Stack Hub VPN Fast Path for users
 author: sethmanheim
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/23/2024
 ms.author: sethm
 ms.reviewer: iacarago
 ms.lastreviewed: 03/09/2022
+ms.custom: sfi-image-nochange
 
 # Intent: As an Azure Stack Hub user, I want to create a VPN Gateways using the new SKUs with increased throughput
 # Keyword: azure stack hub VPN Gateways

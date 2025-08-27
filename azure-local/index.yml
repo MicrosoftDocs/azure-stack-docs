@@ -10,7 +10,7 @@ metadata:
   ms.topic: landing-page
   author: ronmiab
   ms.author: robess
-  ms.date: 10/31/2024
+  ms.date: 04/18/2025
 
 # linkListType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | sample | tutorial | video | whats-new
 
@@ -26,8 +26,6 @@ landingContent:
         links:
           - text: What's new in Azure Local?
             url: whats-new.md
-          - text: Small Form Factor (preview)
-            url: concepts/system-requirements-small-23h2.md
           - text: Azure Local disconnected operations (preview)
             url: manage/disconnected-operations-overview.md  
 
@@ -72,7 +70,7 @@ landingContent:
             url: /azure/aks/hybrid/aks-create-clusters-portal?toc=/azure-local/toc.json&bc=/azure-local/breadcrumb/toc.json
           - text: Run Azure Virtual Desktop
             url: /azure/virtual-desktop/azure-stack-hci-overview
-          - text: Run Azure Arc Virtual Machines
+          - text: Run Azure Local VMs enabled by Azure Arc
             url: /azure/azure-local/manage/create-arc-virtual-machines
 
   # Card
@@ -86,7 +84,7 @@ landingContent:
             url: manage/add-server.md
           - text: Repair node
             url: manage/repair-server.md
-          - text: Manage Arc VMs
+          - text: Manage Azure Local VMs enabled by Azure Arc
             url: manage/manage-arc-virtual-machines.md
           - text: Manage SDN Multisite
             url: manage/manage-sdn-multisite.md?pivots=azure-local
@@ -114,6 +112,10 @@ landingContent:
     linkLists:
       - linkListType: overview
         links:
+          - text: Plan your network for disconnected operations (preview)
+            url: manage/disconnected-operations-network.md
+          - text: Deploy disconnected operations (preview)
+            url: manage/disconnected-operations-deploy.md  
           - text: Deploy Arc gateway (preview)
             url: deploy/deployment-azure-arc-gateway-overview.md
           - text: Deploy using local identity with Key Vault (preview)

@@ -3,7 +3,7 @@ author: sethmanheim
 ms.author: sethm
 ms.service: azure-stack
 ms.topic: include
-ms.date: 02/29/2024
+ms.date: 07/03/2025
 ms.reviewer: abha
 ms.lastreviewed: 10/18/2022
 
@@ -11,7 +11,7 @@ ms.lastreviewed: 10/18/2022
 
 ---
 
-The Container Storage Interface (CSI) is a standard for exposing arbitrary block and file storage systems to containerized workloads on Kubernetes. By using CSI, AKS enabled by Arc can write, deploy, and iterate plug-ins to expose new storage systems. Using CSI can also improve existing ones in Kubernetes without having to touch the core Kubernetes code and then wait for its release cycles.
+The Container Storage Interface (CSI) is a standard for exposing arbitrary block and file storage systems to containerized workloads on Kubernetes. By using CSI, AKS enabled by Arc can write, deploy, and iterate plug-ins to expose new storage systems. CSI can also improve existing ones in Kubernetes without having to touch the core Kubernetes code and then wait for its release cycles.
 
 The disk and file CSI drivers used by AKS Arc are [CSI specification](https://github.com/container-storage-interface/spec/blob/master/spec.md)-compliant drivers.
 

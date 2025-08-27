@@ -1,10 +1,10 @@
 ---
-title: Configurator application for Azure Local (Preview)
-description: Learn how to use the Configurator application to bootstrap and Arc register the Azure Local machines. (Preview)
+title: Configurator App for Azure Local to Register Machines (Preview)
+description: Learn how to use the Configurator app to bootstrap and quickly register your Azure Local machines with Azure Arc. (Preview)
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 04/30/2025
+ms.date: 05/29/2025
 ms.service: azure-local
 #CustomerIntent: As an IT Pro, I want to bootstrap and Arc register Azure Local machines via the Arc registration script.
 ---
@@ -13,7 +13,7 @@ ms.service: azure-local
 
 > Applies to: Azure Local 2502 and later
 
-This article describes how to use the Configurator app to bootstrap and register the machines you plan to include in your Azure Local instance.
+This article explains how to use the Configurator app to quickly bootstrap and register machines in your Azure Local instance, enabling seamless Azure Arc integration.
 
 You can use the Configurator app or [Azure CLI](./deployment-arc-register-server-permissions.md) to register your machines. If you plan to deploy a few machines per site, use the Configurator app.
 
@@ -133,7 +133,7 @@ Follow these steps to configure network settings and connect the machines to Azu
 
    :::image type="content" source="media/deployment-arc-register-configurator-app/review-apply-tab-1.png" alt-text="Screenshot of the Review and apply tab in the Configurator app for Azure Local." lightbox="media/deployment-arc-register-configurator-app/review-apply-tab-1.png":::
 
-### Step 2: Complete registration of machines to Azure
+## Step 2: Complete registration of machines to Azure
 
 1. Wait for the configuration to complete. First, machine is configured with the basic details followed by registration of the machines to Azure.
 
@@ -151,7 +151,7 @@ Follow these steps to configure network settings and connect the machines to Azu
 
 1. On the resource group used to bootstrap, you should see your Arc-enabled machines. In this example, you see a single machine.
 
-   :::image type="content" source="media/deployment-arc-register-configurator-app/setup-arc-enabled-servers.png" alt-text="Screenshot that shows the Azure Arc agent Arc-enabled servers in Azure portal for Azure Local ." lightbox="media/deployment-arc-register-configurator-app/setup-arc-enabled-servers.png":::
+   :::image type="content" source="media/deployment-arc-register-configurator-app/setup-arc-enabled-servers.png" alt-text="Screenshot that shows the Azure Arc agent Arc-enabled servers in Azure portal for Azure Local." lightbox="media/deployment-arc-register-configurator-app/setup-arc-enabled-servers.png":::
 
 ## Troubleshooting
 
@@ -166,7 +166,7 @@ You might need to collect logs or diagnose problems if you encounter any issues 
 
 If you can't access the app, you can get the logs from a machine. Logs are stored in the following location: `C:\Windows\System32\Bootstrap\Logs`. You can access the logs by connecting to the machine via Remote Desktop Protocol (RDP).
 
-If you can access the app, follow the instructions in [Run diagnostic tests](#run-diagnostic-tests-from-the-app) to troubleshoot the issue and if needed, [Collect a support package](#collect-a-support-package-from-the-app).
+If you can access the app, follow the instructions in [Run diagnostic tests](#run-diagnostic-tests-from-the-app) to troubleshoot the issue and if needed, [Collect a support package](#collect-a-support-log-package-from-the-app).
 
 ### Run diagnostic tests from the app
 
@@ -192,15 +192,44 @@ Here's a table that describes the diagnostic tests:
 | Azure Arc agent                  | This test validates the Azure Arc agent is installed and running on the machine. |
 | Environment checker              | The Environment Checker tool runs a series of tests to evaluate the deployment readiness of your environment for Azure Local deployment including those for connectivity, hardware, Active Directory, network, and Arc integration. For more information, see [Evaluate the deployment readiness of your environment for Azure Local](../manage/use-environment-checker.md#about-the-environment-checker-tool). |
 
-### Collect a Support package from the app
+### Collect a Support log package from the app
 
-A Support package is composed of all the relevant logs that can help Microsoft Support troubleshoot any machine issues. You can generate a Support package via the app. Follow these steps to collect a Support package:
+A Support package is composed of all the relevant logs that can help Microsoft Support troubleshoot any machine issues. You can generate a Support package via the app.
+
+#### Download the Support log package
+
+Follow these steps to collect and download a Support package:
 
 1. Select the help icon in the top-right corner of the app to open the **Support + troubleshooting** pane. Select **Create** to begin support package collection. The package collection could take several minutes.
 
    :::image type="content" source="media/deployment-arc-register-configurator-app/collect-support-package-1.png" alt-text="Screenshot that shows the Support and troubleshooting pane with Create selected." lightbox="media/deployment-arc-register-configurator-app/collect-support-package-1.png":::
 
 1. After the Support package is created, select **Download**. This action downloads two zipped packages corresponding to Support logs and Configurator logs on your local system. You can unzip the package and view the system log files.
+
+#### Upload the Support log package
+
+> [!IMPORTANT]
+> - Make sure to run the Configurator app as an administrator to upload the Support log package.
+> - Uploading the Support log package to Microsoft can take up to 20 minutes. Make sure to leave the app open and running to complete this process.
+
+Follow these steps to upload the Support package to Microsoft:
+
+1. Select the help icon in the top-right corner of the app to open the **Support + troubleshooting** pane. Select **Upload** to upload the Support package to Microsoft.
+
+   :::image type="content" source="media/deployment-arc-register-configurator-app/upload-support-package-1.png" alt-text="Screenshot that shows the Support and troubleshooting pane with Upload package selected." lightbox="media/deployment-arc-register-configurator-app/upload-support-package-1.png":::
+
+1. Provide the required information in the **Upload Support package to Microsoft** dialog:
+
+   :::image type="content" source="media/deployment-arc-register-configurator-app/upload-support-package-2.png" alt-text="Screenshot that shows the Upload Support Package dialog filled out." lightbox="media/deployment-arc-register-configurator-app/upload-support-package-2.png":::
+
+    The fields in the dialog are prepopulated with the information you provided during [Step 1: Configure the network and connect to Azure](#step-1-configure-the-network-and-connect-to-azure). You can modify the fields as needed.
+
+1. Select **Begin upload** to upload the Support log package.
+1. Authenticate in the browser with the same account that you used to sign in to register with Azure Arc. The upload process might take several minutes. Leave the app open and running until the upload is complete.
+
+   :::image type="content" source="media/deployment-arc-register-configurator-app/upload-support-package-3.png" alt-text="Screenshot that shows the Support and troubleshooting pane with Upload selected and authentication guidance." lightbox="media/deployment-arc-register-configurator-app/upload-support-package-3.png":::
+
+1. After the upload is complete, you receive a confirmation message. You can also view the upload status in the app.
 
 ### Clean previous installation
 

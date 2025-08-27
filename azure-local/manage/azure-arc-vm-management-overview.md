@@ -56,6 +56,9 @@ Consider the following limitations when you're managing VMs on Azure Local:
   - VLAN ID
   - Virtual switch name
 
+> [!NOTE]
+> Taking a VM checkpoint locally is only supported for Azure Local 2504 and later.
+
 ## Components of Azure Local VM management
 
 Azure Local VM management has several components, including:
