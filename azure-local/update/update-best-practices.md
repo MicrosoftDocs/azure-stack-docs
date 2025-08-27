@@ -23,9 +23,6 @@ Staying current with security fixes and feature improvements is important for al
 
 :::image type="content" source="./media/update-best-practices/updates.png" alt-text="Diagram that describes the key features of Azure Local update management." lightbox="./media/update-best-practices/updates.png":::
 
-<!--Can we add a section listing risks or issues for not updating Azure Local. 
-### Risks of outdated Azure Local-->
-
 ## Do's for Azure Local updates
 
 Follow these practices to ensure smooth, reliable updates for Azure Local instances deployed at scale.
