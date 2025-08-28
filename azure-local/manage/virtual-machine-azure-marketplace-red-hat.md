@@ -21,11 +21,11 @@ This article explains how to prepare a Red Hat Enterprise Linux (RHEL) Azure Mar
 
 Before you begin, you must have:
 
-- An active Azure subscription with permissions to set up and license an RHEL (LVM) or later Azure VM.
+- An active Azure subscription with permissions to set up and license a RHEL VM using Logical Volume Management (LVM), such as RHEL 7.6 or later.
 
 - Access to the [Azure portal](https://portal.azure.com).
 
-- An Azure Local cluster set up with a logical network and storage path for workloads. For more information, see [Create logical networks](create-logical-networks) and [Create storage paths](create-storage-path.md.md).
+- An Azure Local cluster set up with a logical network and storage path for workloads. For more information, see [Create logical networks](../manage/create-logical-networks.md) and [Create storage paths](../manage/create-storage-path.md).
 
 ## Set up and prepare an Azure VM
 
