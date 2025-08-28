@@ -36,6 +36,8 @@ Make sure the following prerequisites are met before proceeding:
 
 ## Step 1: Review script parameters
 
+# [Versions 2505 and later](#tab/2505)
+
 Review the parameters used in the script:
 
 |Parameters  |Description  |
@@ -45,12 +47,29 @@ Review the parameters used in the script:
 |`Region`            |The Azure region used for registration. See the [Supported regions](../concepts/system-requirements-23h2.md#azure-requirements) that can be used.          |
 |`ProxyServer`       |Optional parameter. Proxy Server address when required for outbound connectivity. |
 
-    
+# [Versions 2504 and earlier](#tab/2504)
+
+Review the parameters used in the script:
+
+|Parameters  |Description  |
+|------------|-------------|
+|`SubscriptionID`    |The ID of the subscription used to register your machines with Azure Arc.         |
+|`TenantID`          |The tenant ID used to register your machines with Azure Arc. Go to your Microsoft Entra ID and copy the tenant ID property.         |
+|`ResourceGroup`     |The resource group precreated for Arc registration of the machines. A resource group is created if one doesn't exist.         |
+|`Region`            |The Azure region used for registration. See the [Supported regions](../concepts/system-requirements-23h2.md#azure-requirements) that can be used.          |
+|`ProxyServer`       |Optional parameter. Proxy Server address when required for outbound connectivity. |
+|`AccountID`        |The user who registers and deploys the instance.        |
+|`DeviceCode`       |The device code displayed in the console at `https://microsoft.com/devicelogin` and is used to sign in to the device.       |
+
+---
+
 ## Step 2: Set parameters
+
+# [Versions 2505 and later](#tab/2505)
 
 Set the parameters required for the registration script.
 
-Here's an example of how you should change these parameters for the `Invoke-AzStackHciArcInitialization` initialization script. Once the registration is complete, the Azure Local machines are registered in Azure Arc using the Arc gateway:
+Here's an example of how you should change these parameters for the `Invoke-AzStackHciArcInitialization` initialization script. Once the registration is complete, the Azure Local machines are registered in Azure Arc:
 
 ```powershell
 #Define the subscription where you want to register your Azure Local machine with Arc.
@@ -96,6 +115,92 @@ PS C:\Users\SetupUser> $ProxyServer = "http://192.168.10.10:8080"
 PS C:\Users\SetupUser> $ProxyBypassList = "localhost,127.0.0.1,*.contoso.com,machine1,machine2,machine3,machine4,machine5,192.168.*.*,AzureLocal-1"
 ```
 </details>
+
+# [Versions 2504 and earlier](#tab/2504)
+
+Set the parameters required for the registration script.
+
+Here's an example of how you should change these parameters for the `Invoke-AzStackHciArcInitialization` initialization script. Once the registration is complete, the Azure Local machines are registered in Azure Arc:
+
+```PowerShell
+
+#Define the subscription where you want to register your machine as Arc device
+$Subscription = "YourSubscriptionID"
+
+#Define the resource group where you want to register your machine as Arc device
+$RG = "YourResourceGroupName"
+
+#Define the region to use to register your server as Arc device
+#Do not use spaces or capital letters when defining region
+$Region = "eastus"
+
+#Define the tenant you will use to register your machine as Arc device
+$Tenant = "YourTenantID"
+
+#Define the proxy address if your Azure Local deployment accesses the internet via proxy
+$ProxyServer = "http://proxyaddress:port"
+```
+PS C:\Users\SetupUser> $Subscription = "<Subscription ID>"
+PS C:\Users\SetupUser> $RG = "myashcirg"
+PS C:\Users\SetupUser> $Tenant = "<Tenant ID>"
+PS C:\Users\SetupUser> $Region = "eastus"
+PS C:\Users\SetupUser> $ProxyServer = "<http://proxyserver:tcpPort>"
+
+Connect to your Azure account and set the subscription. Open a browser on the client that you're using to connect to the machine and open this page: https://microsoft.com/devicelogin and enter the provided code in the Azure CLI output to authenticate. Get the access token and account ID for the registration.
+
+#Connect to your Azure account and Subscription
+Connect-AzAccount -SubscriptionId $Subscription -TenantId $Tenant -DeviceCode
+
+#Get the Access Token for the registration
+$ARMtoken = (Get-AzAccessToken -WarningAction SilentlyContinue).Token
+
+#Get the Account ID for the registration
+$id = (Get-AzContext).Account.Id
+
+Here's a sample output of setting the subscription and authentication:
+
+PS C:\Users\SetupUser> Connect-AzAccount -SubscriptionId $Subscription -TenantId $Tenant -DeviceCode
+WARNING: To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code A44KHK5B5
+to authenticate.
+
+Account               SubscriptionName      TenantId                Environment
+-------               ----------------      --------                ----------- 
+guspinto@contoso.com AzureStackHCI_Content  <Tenant ID>             AzureCloud
+
+PS C:\Users\SetupUser> $ARMtoken = (Get-AzAccessToken).Token
+PS C:\Users\SetupUser> $id = (Get-AzContext).Account.Id
+
+Finally run the Arc registration script. The script takes a few minutes to run.
+
+#Invoke the registration script. Use a supported region.
+Invoke-AzStackHciArcInitialization -SubscriptionID $Subscription -ResourceGroup $RG -TenantID $Tenant -Region $Region -Cloud "AzureCloud" -ArmAccessToken $ARMtoken -AccountID $id
+
+If you're accessing the internet using a proxy server, you need to add the -Proxy parameter and provide the proxy server in the format http://<Proxy server FQDN or IP address>:Port when running the script.
+
+For a list of supported Azure regions, see Azure requirements.
+
+Here's a sample output of a successful registration of your machines:
+
+```output
+PS C:\Users\Administrator> Invoke-AzStackHciArcInitialization -SubscriptionID $Subscription -ResourceGroup $RG -TenantID $Tenant -Region $Region -Cloud "AzureCloud" -ArmAccessToken $ARMtoken -AccountID $id
+>>
+Configuration saved to: C:\Users\ADMINI~1\AppData\Local\Temp\bootstrap.json
+Triggering bootstrap on the device...
+Waiting for bootstrap to complete... Current Status: InProgress
+=========SNIPPED=========SNIPPED=============
+Waiting for bootstrap to complete... Current Status: InProgress
+Waiting for bootstrap to complete... Current Status: Succeeded
+Bootstrap succeeded.
+
+Triggering bootstrap log collection as a best effort.
+Version Response                                                    
+------- --------                                                    
+V1      Microsoft.Azure.Edge.Bootstrap.ServiceContract.Data.Response
+V1      Microsoft.Azure.Edge.Bootstrap.ServiceContract.Data.Response
+
+PS C:\Users\Administrator>
+```
+---
 
 ## Step 3: Run registration script
 
