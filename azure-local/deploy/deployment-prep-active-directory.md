@@ -8,7 +8,7 @@ ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
 ---
-
+test
 # Prepare Active Directory for Azure Local deployment
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
