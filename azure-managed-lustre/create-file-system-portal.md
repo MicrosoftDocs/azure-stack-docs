@@ -7,6 +7,7 @@ ms.author: pauljewell
 ms.date: 05/02/2025
 ms.lastreviewed: 06/06/2023
 ms.reviewer: brlepore
+ms.custom: sfi-image-nochange
 
 #customer intent: As an IT pro, I want to use a Lustre file system to process files that involve a heavy computation load.
 

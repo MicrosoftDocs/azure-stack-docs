@@ -7,6 +7,7 @@ ms.date: 07/21/2025
 ms.author: alkohli
 ms.reviewer: vlakshmanan
 ms.service: azure-local
+ms.custom: sfi-image-nochange
 ---
 
 # Troubleshoot Azure Local Virtual Machines enabled by Azure Arc

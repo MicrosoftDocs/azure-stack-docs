@@ -7,6 +7,7 @@ ms.date: 04/22/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
+ms.custom: sfi-image-nochange
 ---
 
 # Deploy Azure Local using local identity with Azure Key Vault (preview)
