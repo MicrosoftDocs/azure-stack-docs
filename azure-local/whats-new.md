@@ -5,7 +5,7 @@ ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 08/21/2025
+ms.date: 08/28/2025
 ---
 
 # What's new in Azure Local?
@@ -23,8 +23,8 @@ There are two 2508 releases for August. Here are the details of each release:
 
 |Solution version  | OS version |
 |---------|---------|
-|12.2508.1001.48 |  26100.4946 |
-|11.2508.1001.47  | 25398.1791  |
+|12.2508.1001.52 |  26100.4946 |
+|11.2508.1001.51  | 25398.1791  |
 
 For more information, see [Release information summary](./release-information-23h2.md).
 
@@ -51,6 +51,9 @@ This release has the following features and improvements:
 - **Azure Local VM updates**:
     - **Edit DNS servers on logical networks via Azure CLI**: Starting with this release, DNS servers associated with the logical networks can be modified for Azure Local virtual machines. For more information, see [Manage DNS server configuration on logical networks](./manage/manage-arc-virtual-machine-resources.md).
     - **Save and Pause Azure Local VMs**: The ability to save and pause an Azure Local VM is available on the Azure portal. For more information, see [Save and Pause Azure Local VMs](./manage/manage-arc-virtual-machines.md#save-a-vm).
+    - **Limit enforcement**: Azure portal now enforces:
+        - The correct memory and vCPU limits.
+        - The correct disk size limits.
 
 - **Disconnected operations (preview)**: Azure Local now supports disconnected operations, letting you work in environments with limited or no internet connectivity. Build, deploy, and manage virtual machines (VMs) and containerized applications with select Azure Arc-enabled services from a local control plane. You'll get the familiar Azure portal and Azure Command-Line Interface (CLI) experience.
 
