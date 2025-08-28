@@ -257,9 +257,9 @@ Once the registration is complete, the Azure Local machines are registered in Az
     ```
 
 
-    If you're accessing the internet using a proxy server, you need to add the -Proxy parameter and provide the proxy server in the format http://<Proxy server FQDN or IP address>:Port when running the script.
+    If you're accessing the internet using a proxy server, you need to add the `-Proxy` parameter and provide the proxy server in the format `http://<Proxy server FQDN or IP address>:Port` when running the script.
     
-    For a list of supported Azure regions, see Azure requirements.
+    For a list of supported Azure regions, see [Azure requirements](../concepts/system-requirements-23h2.md#azure-requirements).
 
     <details>
     <summary>Expand this section to see an example output.</summary>
