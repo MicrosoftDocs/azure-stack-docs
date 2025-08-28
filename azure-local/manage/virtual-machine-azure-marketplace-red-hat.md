@@ -13,7 +13,7 @@ ms.custom:
   - ai-gen-description
 ---
 
-# Prepare Red Hat Enterprise Azure Marketplace image for Azure Local VM
+# Prepare Red Hat Enterprise Azure Marketplace image
 
 This article explains how to prepare a Red Hat Enterprise Linux (RHEL) Azure Marketplace image for use with Azure Local virtual machines (VMs). By following these steps, you ensure your VM has the latest security updates, support, and integration features.
 
