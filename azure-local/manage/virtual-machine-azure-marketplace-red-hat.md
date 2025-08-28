@@ -1,6 +1,6 @@
 ---
-title: Prepare RHEL Azure Marketplace Image for Azure Local VM Deployment
-description: Learn how to prepare and export an RHEL 9.4 Azure Marketplace VM image for use with Azure Local clusters.
+title: Prepare Red Hat Enterprise Azure Marketplace Image for Azure Local VM Deployment
+description: Learn how to prepare and export an Red Hat Enterprise Azure Marketplace VM image for use with Azure Local clusters.
 ms.topic: how-to
 author: ronmiab
 ms.author: robess
@@ -13,7 +13,7 @@ ms.custom:
   - ai-gen-description
 ---
 
-# Prepare RHEL Azure Marketplace image for Azure Local VM
+# Prepare Red Hat Enterprise Azure Marketplace image for Azure Local VM
 
 This article explains how to prepare a Red Hat Enterprise Linux (RHEL) Azure Marketplace image for use with Azure Local virtual machines (VMs). By following these steps, you ensure your VM has the latest security updates, support, and integration features.
 
@@ -21,7 +21,7 @@ This article explains how to prepare a Red Hat Enterprise Linux (RHEL) Azure Mar
 
 Before you begin, you must have:
 
-- An active Azure subscription with permissions to set up and license an RHEL 9.4 (LVM) or later Azure VM.
+- An active Azure subscription with permissions to set up and license an RHEL (LVM) or later Azure VM.
 
 - Access to the Azure portal (*portal.azure.com*).
 
