@@ -1,6 +1,6 @@
 ---
 title: Prepare Red Hat Enterprise Azure Marketplace Image for Azure Local VM Deployment
-description: Learn how to prepare and export an Red Hat Enterprise Azure Marketplace VM image for use with Azure Local clusters.
+description: Learn how to prepare and export a Red Hat Enterprise Azure Marketplace VM image for use with Azure Local clusters.
 ms.topic: how-to
 author: ronmiab
 ms.author: robess
@@ -13,7 +13,7 @@ ms.custom:
   - ai-gen-description
 ---
 
-# Prepare Red Hat Enterprise Azure Marketplace image
+# Prepare Red Hat Enterprise Azure Marketplace image for Azure Local VMs
 
 This article explains how to prepare a Red Hat Enterprise Linux (RHEL) Azure Marketplace image for use with Azure Local virtual machines (VMs). By following these steps, you ensure your VM has the latest security updates, support, and integration features.
 
@@ -23,15 +23,17 @@ Before you begin, you must have:
 
 - An active Azure subscription with permissions to set up and license an RHEL (LVM) or later Azure VM.
 
-- Access to the Azure portal (*portal.azure.com*).
+- Access to the [Azure portal](https://portal.azure.com).
 
-- An Azure Local cluster set up with a logical network and storage path for workloads.
+- An Azure Local cluster set up with a logical network and storage path for workloads. For more information, see [Create logical networks](create-logical-networks) and [Create storage paths](create-storage-path.md.md).
 
 ## Set up and prepare an Azure VM
 
 To set up and prepare an Azure VM, follow these steps:
 
-1. Sign in to the **Azure portal**, go to **Virtual Machines** > **Create** > **Virtual Machine**.
+1. Sign in to the [Azure portal](https://portal.azure.com).
+
+1. In the left pane, select **Virtual Machines**, next select **Create**, and then select **Virtual Machine**.
 
 1. Browse the available images and choose your preferred RHEL LVM Gen2 version.
 
@@ -43,7 +45,7 @@ To set up and prepare an Azure VM, follow these steps:
 
    :::image type="content" source="media/virtual-machine-azure-marketplace-red-hat-enterprise/connect-vm.png" alt-text="Screenshot of the Serial console sign in option in Azure portal." lightbox="../manage/media/virtual-machine-azure-marketplace-red-hat-enterprise/connect-vm.png":::
 
-1. Sign in with your VM credentials and run these commands:
+1. Connect to the VM with your credentials and run these commands:
 
     1. Sign in to the VM as the root user:
 
@@ -61,10 +63,10 @@ To set up and prepare an Azure VM, follow these steps:
         Example output:
 
         ```console
-        [hcitest@localhost ~]$ sudo yum clean all
+        [contosotest@localhost ~]$ sudo yum clean all
         Updating Subscription Management repositories.
         17 files removed
-        [hcitest@localhost ~]$ sudo cloud-init clean
+        [contosotest@localhost ~]$ sudo cloud-init clean
         ```
 
     1. Clean the `cloud-init` default configuration because it isn't relevant for Azure Local VMs.
@@ -83,10 +85,10 @@ To set up and prepare an Azure VM, follow these steps:
        Example output:
 
        ```console
-       [hcitest@localhost ~]$ sudo subscription-manager unregister
+       [contosotest@localhost ~]$ sudo subscription-manager unregister
        Unregistering from: subscription.rhsm.redhat.com:443/subscription
        System has been unregistered.
-       [hcitest@localhost ~]$ sudo subscription-manager
+       [contosotest@localhost ~]$ sudo subscription-manager
        ```
 
     1. Clean VM-specific details.
