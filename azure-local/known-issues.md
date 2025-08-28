@@ -27,11 +27,11 @@ For the 2508 release of Azure Local, Microsoft released two security updates, ea
 
 | Solution version  | OS build  |
 |---------|---------|---------|
-| 11.2508.1001.47          | 25398.1791        |
-| 12.2508.1001.48         | 26100.4946       |
+| 11.2508.1001.51          | 25398.1791        |
+| 12.2508.1001.52         | 26100.4946       |
 
 > [!IMPORTANT]
-> The new deployments of this software use the **12.2508.1001.48** build. You can also update an existing deployment from 2507 by using **11.2508.1001.47**.
+> The new deployments of this software use the **12.2508.1001.52** build. You can also update an existing deployment from 2507 by using **11.2508.1001.51**.
 
 Release notes for this version include the issues fixed in this release, known issues in this release, and release note issues carried over from previous versions.
 
@@ -45,9 +45,9 @@ The following table lists the fixed issues in this release:
 |Feature  |Issue  |Comments  |
 |---------|---------|---------|
 | Azure Local VMs <!--33528074--> | For Disconnected operations (preview) with Azure Local VMs, the Arc agent download will fail. | Corrected end point and now Arc agent download succeeds. |
-| <!--33478311--> | Fixed issue for importing paths with spaces. |  |
+| Deployment <!--33478311--> | Fixed issue for importing paths with spaces. |  |
 | Update <!--32843674--> | Fixed issue where active CAU runs get canceled prematurely. |  |
-| <!--33731727--> | Disk types not being determined correctly, resulting in false negative results on storage pool size determination. |  |
+| Deployment <!--33731727--> | Disk types not being determined correctly, resulting in false negative results on storage pool size determination. |  |
 
 
 ## Known issues
@@ -59,7 +59,9 @@ The following table lists the known issues in this release:
 |Feature  |Issue  |Workaround  |
 |---------|---------|---------|
 |Environment checker<!--34496563--> |Environment checker output doesn't include all the results in the JSON file used by update service when running the `Get-SolutionUpdateEnvironment` command.  | There is no known workaround for this issue in this release. |
-|Environment checker<!--34496563--> |`Test-ProxyBypass` in environment checker is incorrectly checking `WinHTTP` and `Winlnet` for values only present in the environment variables. | There is no known workaround for this issue in this release. |
+|Environment checker<!--34571176--> |`Test-ProxyBypass` in environment checker is incorrectly checking `WinHTTP` and `Winlnet` for values only present in the environment variables. | There is no known workaround for this issue in this release. |
+|Registration, deployment, Add-server, Upgrade, Update<!--34559459--> |In this release, connectivity tests can take longer than 20 minutes in some environments. | There is no known workaround for this issue in this release. |
+
 
 
 ## Known issues from previous releases
@@ -80,8 +82,8 @@ The following table lists the known issues from previous releases:
 | Security <!-- 56969147 --> | When fixing the compliance for the minimum password length rule, even after you've changed the minimum password length on the Azure Local host to 14, you continue to see it as non-compliant in Azure policy.  | You can verify the length of the password using the `net accounts` cmdlet. In the output, find **Minimum password length** to see the value. |
 | Security <!--30348397--> |  Azure Local might face an issue during normal operations (for example, Update, Repair) while using Defender for Endpoint and when the **Restrict App Execution** setting is enabled for one or more servers in the deployment.  | Disable the **Restrict App Execution** setting in the Defender portal and reboot. If the issue persists, [open a support case](/azure/azure-portal/supportability/how-to-create-azure-support-request). |
 | Deployment <!--33471589--> |  After Azure portal deployment, SConfig network settings shows the error: `Set-SCfNetworksetting : Cannot bind argument to parameter 'Value' because it is null.` | There's no known workaround in this release. |
-| Update <!--33448368--> |  Cluster-Aware Updating runs might fail with the error:<br>`Type 'SBEPartnerConfirmCauDone' of Role 'SBE' raised an exception:<br>SBE_MsftCIOnlyCommon_CommonForTesting_4.2.2504.16: ErrorID: SBE-CAU-RUNNING-AFTER-DONE -- CAU run is still in progress when it should be done. See https://aka.ms/AzureLocal/SBE/CauHelp for help. Review full Get-CauRun output it identify if it is progressing or stuck. Wait for it to complete if progressing.` | For detailed steps on how to resolve this issue, see the [Troubleshooting guide](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/SolutionExtension/SBE-CAU-RUNNING-AFTER-DONE-Single-node-fail-SBE-Update.md).|
 | Deployment <!--33390832--> | In rare instances, deployment fails with errors during validation that state that the mandatory Arc extensions are not yet installed. | If you face this issue, retry the deployment. |
+| Update | When installing cumulative updates using Azure Update Manager, only the latest update for version 2507 is installed. If earlier update options (for versions 2505, 2506) are selected, they are not installed. | There's no workaround in this release. |
 
 ## Known and expected behaviors
 
@@ -122,6 +124,7 @@ The following table lists the fixed issues in this release:
 | Update <!--33470082--> |  Solution update fails with the error: `Unable to install solution update "11.2506.1001.24" - Type 'UpdateFOD' of Role 'ComposedImageUpdate' raised an exception.` |  |
 | Upgrade <!--33417006-->| The upgrade banner is currently available for users using the Azure Government cloud. However, the environment checker fails, suggesting that Azure Government clouds are not supported. | |
 |Azure Local VMs <!--33811472-->| When no storage path is specified during deployment, resources (VMs, data disks, and images) are automatically placed on the first storage path of the cluster, even when other storage paths are also available. Over time, this might cause insufficient disk space on that path, potentially resulting in deployment failures. |  |
+| Update <!--33448368--> |  Cluster-Aware Updating runs might fail with the error:<br>`Type 'SBEPartnerConfirmCauDone' of Role 'SBE' raised an exception:<br>SBE_MsftCIOnlyCommon_CommonForTesting_4.2.2504.16: ErrorID: SBE-CAU-RUNNING-AFTER-DONE -- CAU run is still in progress when it should be done. See https://aka.ms/AzureLocal/SBE/CauHelp for help. Review full Get-CauRun output it identify if it is progressing or stuck. Wait for it to complete if progressing.` | |
 
 
 ## Known issues
@@ -151,7 +154,6 @@ The following table lists the known issues from previous releases:
 | Security <!-- 56969147 --> | When fixing the compliance for the minimum password length rule, even after you've changed the minimum password length on the Azure Local host to 14, you continue to see it as non-compliant in Azure policy.  | You can verify the length of the password using the `net accounts` cmdlet. In the output, find **Minimum password length** to see the value. |
 | Security <!--30348397--> |  Azure Local might face an issue during normal operations (for example, Update, Repair) while using Defender for Endpoint and when the **Restrict App Execution** setting is enabled for one or more servers in the deployment.  | Disable the **Restrict App Execution** setting in the Defender portal and reboot. If the issue persists, [open a support case](/azure/azure-portal/supportability/how-to-create-azure-support-request). |
 | Deployment <!--33471589--> |  After Azure portal deployment, SConfig network settings shows the error: `Set-SCfNetworksetting : Cannot bind argument to parameter 'Value' because it is null.` | There's no known workaround in this release. |
-| Update <!--33448368--> |  Cluster-Aware Updating runs might fail with the error:<br>`Type 'SBEPartnerConfirmCauDone' of Role 'SBE' raised an exception:<br>SBE_MsftCIOnlyCommon_CommonForTesting_4.2.2504.16: ErrorID: SBE-CAU-RUNNING-AFTER-DONE -- CAU run is still in progress when it should be done. See https://aka.ms/AzureLocal/SBE/CauHelp for help. Review full Get-CauRun output it identify if it is progressing or stuck. Wait for it to complete if progressing.` | For detailed steps on how to resolve this issue, see the [Troubleshooting guide](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/SolutionExtension/SBE-CAU-RUNNING-AFTER-DONE-Single-node-fail-SBE-Update.md).|
 | Deployment <!--33390832--> | In rare instances, deployment fails with errors during validation that state that the mandatory Arc extensions are not yet installed. | If you face this issue, retry the deployment. |
 
 ## Known and expected behaviors
