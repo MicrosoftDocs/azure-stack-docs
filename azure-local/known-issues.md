@@ -27,11 +27,11 @@ For the 2508 release of Azure Local, Microsoft released two security updates, ea
 
 | Solution version  | OS build  |
 |---------|---------|---------|
-| 11.2508.1001.47          | 25398.1791        |
-| 12.2508.1001.48         | 26100.4946       |
+| 11.2508.1001.51          | 25398.1791        |
+| 12.2508.1001.52         | 26100.4946       |
 
 > [!IMPORTANT]
-> The new deployments of this software use the **12.2508.1001.48** build. You can also update an existing deployment from 2507 by using **11.2508.1001.47**.
+> The new deployments of this software use the **12.2508.1001.52** build. You can also update an existing deployment from 2507 by using **11.2508.1001.51**.
 
 Release notes for this version include the issues fixed in this release, known issues in this release, and release note issues carried over from previous versions.
 
@@ -60,6 +60,8 @@ The following table lists the known issues in this release:
 |---------|---------|---------|
 |Environment checker<!--34496563--> |Environment checker output doesn't include all the results in the JSON file used by update service when running the `Get-SolutionUpdateEnvironment` command.  | There is no known workaround for this issue in this release. |
 |Environment checker<!--34496563--> |`Test-ProxyBypass` in environment checker is incorrectly checking `WinHTTP` and `Winlnet` for values only present in the environment variables. | There is no known workaround for this issue in this release. |
+|Registration, deployment, Add-server, Upgrade, Update<!--34559459--> |In this release, connectivity tests can take longer than 20 minutes in some environments. | There is no known workaround for this issue in this release. |
+
 
 
 ## Known issues from previous releases
