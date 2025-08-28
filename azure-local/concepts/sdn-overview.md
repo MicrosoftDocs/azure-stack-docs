@@ -106,7 +106,14 @@ Before you deploy Azure Local and enable SDN, review these supported networking 
     - The second compute intent is only for VMs and workloads traffic.
     - The third storage intent is only for storage traffic.
 
+## Unsupported intent configurations
 
+The following network intent configurations are not supported for SDN enabled by Arc on Azure Local:
+
+- More than three intents on any deployment size.
+- Combined compute and storage intents without a management intent.
+- Standalone compute intent on a single-node deployment.
+- Three-intent configurations on two- or three-node switchless deployments.
 
 ## Next steps
 
