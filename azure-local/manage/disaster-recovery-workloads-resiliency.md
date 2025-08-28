@@ -90,7 +90,7 @@ In the pooled model, users are assigned to any available session host from a poo
 
 The recommended disaster recovery approach for pooled session hosts is to create a host pool on a secondary site, either Azure or another cluster, and configure it to match the primary host pool. These hosts can remain dormant and be turned on at failover time or can be always active. It's important to ensure that the secondary host pool has access to the same FSLogix profiles and are built from the same image at the primary hosts to provide the same experience to users. You can use OneDrive redirection to ensure FSLogix profiles stay in sync between the two sites.
  
-At failover time, if the hosts are dormant, they must be turned on and users reassigned to the secondary host pool. If they're always active, no admin intervention is needed at failover time. Failing back after the primary cluster’s health is restored is done similarly by reassigning users if needed.  
+At failover time, if the hosts are dormant, they must be turned on and users reassigned to the secondary host pool. If they're always active, no admin intervention is needed at failover time. Failing back after the primary cluster’s health is restored is done in a similar manner once the original hosts are back online.  
 
 ### Personal Host Pools
 
@@ -98,7 +98,9 @@ With personal session hosts, each user is assigned to a specific, dedicated sess
 
 ### Failover to another Azure Local cluster using Hyper-V Replica
 
-A secondary Azure Local cluster can be used as a failover site to keep session hosts on premises. The strategy largely follows the recommendations in the Hyper-V Replica section above, with special considerations for pooled and personal session hosts.
+A secondary Azure Local cluster can be used as a failover site to keep session hosts on premises. The strategy largely follows the recommendations for VM resiliency using [Hyper-V replica](disaster-recovery-vm-resiliency.md#use-hyper-v-replica-for-continuous-replication-of-business-critical-vms), with special considerations for personal session hosts.
+
+The strategy largely follows the recommendations in the Hyper-V Replica section above, with special considerations for pooled and personal session hosts.
 
 - **Prepare the cluster for failover**: Ensure that the secondary cluster has sufficient compute and storage capacity to support a failover, has matching network configuration and is routable to the primary cluster. Ensure that AD DC and DNS settings are configured the same on the secondary cluster so that the replicated VMs can authenticate smoothly.
 
@@ -123,7 +125,7 @@ Another approach to disaster resiliency for pooled host pools is to divide sessi
 To configure this approach:
 
 - Ensure that both clusters are configured in the same way and have matching AD and DNS settings. 
-- Deploy session hosts on both clusters, then manually add them to host pools using the Azure Virtual Desktop portal, PowerShell, or Azure CLI.
+- Deploy session hosts on both clusters, then [manually add them to host pools](/azure/virtual-desktop/add-session-hosts-host-pool) using the Azure Virtual Desktop portal, PowerShell, or Azure CLI.
 - Sessions will automatically load balance across clusters as needed. In this case, use a Scale-Out File Server to store FSLogix profiles to be accessible by both clusters.  
 
 To learn more, see [Azure Virtual Desktop for Azure Local](/azure/architecture/hybrid/azure-local-workload-virtual-desktop).
