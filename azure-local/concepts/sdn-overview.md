@@ -113,7 +113,7 @@ The following network intent configurations are not supported for SDN enabled by
 - More than three intents on any deployment size.
 - Combined compute and storage intents without a management intent.
 - Standalone compute intent on a single-node deployment.
-- Three-intent configurations on two- or three-node switchless deployments.
+- Three-intent configurations on two-node switchless or three-node switchless deployments.
 
 ## Next steps
 
