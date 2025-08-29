@@ -1342,7 +1342,7 @@
       },
       {
         "source_path": "AKS-Arc/aks-preview-overview.md",
-        "redirect_url": "/azure/aks/aksarc/aks-whatsnew-23h2",
+        "redirect_url": "/azure/aks/aksarc/aks-whats-new-local",
         "redirect_document_id": false
       },      
       {
@@ -1392,7 +1392,7 @@
       },
       {
         "source_path": "AKS-Arc/offline-download.md",
-        "redirect_url": "/azure/aks/aksarc/aks-whats-new-23h2",
+        "redirect_url": "/azure/aks/aksarc/aks-whats-new-local",
         "redirect_document_id": false
       },      
       {

@@ -5,20 +5,22 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 06/06/2025
+ms.date: 08/21/2025
 ---
 
 # Manage resources for Azure Local VMs enabled by Azure Arc
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
-After you deploy Azure Local virtual machines (VMs) enabled by Azure Arc, you might need to add or delete resources such as data disks and network interfaces. This article describes how to manage these VM resources for an Azure Local VM running on your Azure Local instance.
+After you deploy Azure Local virtual machines (VMs) enabled by Azure Arc, you need to add or delete resources like data disks and network interfaces.
+This article describes how to manage these VM resources for an Azure Local VM running on your Azure Local instance.
 
-You can add or delete the resources by using the Azure portal. For the task of adding a data disk, you can also use the Azure CLI.
+Add or delete resources using the Azure portal. To add a data disk, use the Azure CLI.
 
 ## Prerequisites
 
-- Access to an Azure Local instance that's deployed and registered. You should have one or more Azure Local VMs running on this system. For more information, see [Create an Azure Local VM enabled by Azure Arc](./create-arc-virtual-machines.md).
+- Access to a deployed and registered Azure Local instance with one or more running Azure Local VMs.
+  For more information, see [Create an Azure Local VM enabled by Azure Arc](./create-arc-virtual-machines.md).
 
 ## Add a data disk
 
@@ -186,6 +188,38 @@ Follow these steps in the Azure portal for your Azure Local instance.
 1. The list of network interfaces is updated with the deleted network interface.
 
    :::image type="content" source="./media/manage-arc-virtual-machine-resources/delete-network-interface-4.png" alt-text="Screenshot of an updated network interface list on the Networking pane for a VM." lightbox="./media/manage-arc-virtual-machine-resources/delete-network-interface-4.png":::
+
+## Manage DNS server configuration for logical networks (preview)
+
+### Key considerations
+
+Before you update the DNS server configuration for a logical network, be aware of the following caveats:
+
+- This feature is in preview and shouldn't be used on production logical networks.
+- The updated DNS server configuration only applies to new Azure Local VMs created on the logical network after the update. For all the existing Azure Local VMs, manually update the DNS server entries within the VM.
+- You can't update the DNS server of a logical network that has an AKS cluster deployed.
+- The infrastructure logical network (enveloping the 6 management IP address range provided during deployment) and Arc resource bridge DNS server updates are not supported.
+
+### Update DNS server configuration
+
+> [!IMPORTANT]
+> Make sure to enter all the relevant DNS server IP entries in your `update` command and not just the entry you want to change. Running a DNS server `update` command replaces the existing configuration.
+
+Follow these steps to manage DNS server configuration for logical networks.
+
+#### Set parameters
+
+```PowerShell
+$logicalNetwork = "your-logical-network"
+$resourceGroup = "your-resource-group"
+$dnsServers = "IP-address1", "IP-address2"
+```
+
+#### Update DNS server configuration
+
+```azure cli
+az stack-hci-vm network lnet update --name $logicalNetwork --resource-group $resourceGroup --dns-servers $dnsServers
+```
 
 ## Related content
 
