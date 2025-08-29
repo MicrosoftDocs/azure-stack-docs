@@ -610,7 +610,7 @@ Finally run the Arc registration script. The script takes a few minutes to run.
 Invoke-AzStackHciArcInitialization -SubscriptionID $Subscription -ResourceGroup $RG -TenantID $Tenant -Region $Region -Cloud "AzureCloud" -ArmAccessToken $ARMtoken -AccountID $id
 ```
 
-For a list of supported Azure regions, see [Azure requirements](../concepts/system-requirements-23h2?view=azloc-2508.md#azure-requirements).
+For a list of supported Azure regions, see [Azure requirements](../concepts/system-requirements-23h2.md?view=azloc-2507&preserve-view=true#azure-requirements).
 
 <details>
 <summary>Expand this section to see an example output.</summary>
