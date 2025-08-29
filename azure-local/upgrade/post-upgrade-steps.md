@@ -145,9 +145,6 @@ Once the new OS is installed, you need to upgrade the cluster functional level a
 
 1. Install the latest drivers from your hardware partner, as some drivers may revert to an older inbox driver version resulting in unexpected behaviors.  
 
-You're now ready to apply the solution upgrade.
+## Next step
 
-## Next steps
-
-- [Optional: Install and enable Network ATC on your Azure Local.](./install-enable-network-atc.md)
-- [Learn how to assess the solution upgrade readiness.](./validate-solution-upgrade-readiness.md)
+- Learn how to [configure Network ATC on Azure Local](./install-enable-network-atc.md).
