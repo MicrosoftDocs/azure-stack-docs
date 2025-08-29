@@ -27,7 +27,7 @@ This article details how to register Azure Local machines with Azure Arc and wit
 
 Make sure the following prerequisites are met before proceeding:
 
-- You've access to Azure Local machines running release 2505 or later. Prior versions do not support this scenario.
+- You have access to Azure Local machines running release 2505 or later. Prior versions don't support this scenario.
 - You have assigned the appropriate permissions to the subscription used for registration. For more information, see [Assign required permissions for Azure Local deployment](deployment-arc-register-server-permissions.md).
 
 
@@ -36,7 +36,7 @@ Make sure the following prerequisites are met before proceeding:
 
 ## Step 1: Review script parameters
 
-The steps are different depending on the solution version of Azure Local you are using.
+The steps are different depending on the solution version of Azure Local you're using.
 
 ### Versions 2505 and later
 
@@ -66,7 +66,7 @@ Review the parameters used in the script:
 
 ## Step 2: Set parameters
 
-The steps are different depending on the solution version of Azure Local you are using.
+The steps are different depending on the solution version of Azure Local you're using.
 
 ### Versions 2505 and later
 
@@ -189,7 +189,7 @@ PS C:\Users\SetupUser> $ProxyBypassList = "localhost,127.0.0.1,*.contoso.com,mac
 
 ## Step 3: Run registration script
 
-The steps are different depending on the solution version of Azure Local you are using.
+The steps are different depending on the solution version of Azure Local you're using.
 
 ### Versions 2505 and later
 
@@ -425,7 +425,7 @@ This article details how to register using Azure Arc gateway on Azure Local with
 
 Make sure the following prerequisites are met before proceeding:
 
-- You've access to Azure Local machines running release 2505 or later. Prior versions do not support this scenario.
+- You have access to Azure Local machines running release 2505 or later. Prior versions don't support this scenario.
 - You have assigned the appropriate permissions to the subscription used for registration. For more information, see [Assign required permissions for Azure Local deployment](deployment-arc-register-server-permissions.md).
 
 
@@ -434,7 +434,7 @@ Make sure the following prerequisites are met before proceeding:
 
 ## Step 1: Review script parameters
 
-The steps are different depending on the solution version of Azure Local you are using.
+The steps are different depending on the solution version of Azure Local you're using.
 
 ### Versions 2505 and later
 
@@ -461,7 +461,7 @@ Review the parameters used in the script:
 
 ## Step 2: Set parameters
 
-The steps are different depending on the solution version of Azure Local you are using.
+The steps are different depending on the solution version of Azure Local you're using.
 
 ### Versions 2505 and later
 
@@ -556,7 +556,7 @@ PS C:\Users\SetupUser> $Region = "eastus"
 
 ## Step 3: Run registration script
 
-The steps are different depending on the solution version of Azure Local you are using.
+The steps are different depending on the solution version of Azure Local you're using.
 
 ### Versions 2505 and later
 
