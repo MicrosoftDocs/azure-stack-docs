@@ -51,6 +51,9 @@ This release includes these features and improvements:
 
 - **Linux VM static IP migration support** – Azure Migrate to Azure Local migrations now support preserving static IP addresses during Linux virtual machine (VM) migrations.
 
+> [!NOTE]
+> Although Linux VM static IP migration support was introduced in April 2025, migration package scripts are still required to preserve static IP settings.
+
 - **Customizable physical sector size on migrated disks** – You can now select either 512B or 4KB physical sector sizes for migrated disks, enabling better alignment with your workload and storage configuration.
 
 - **Critical bug fixes** – Resolved several user-reported issues, including:
