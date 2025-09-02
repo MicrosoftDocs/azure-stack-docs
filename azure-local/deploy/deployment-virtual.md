@@ -1,5 +1,5 @@
 ---
-title: Deploy a virtual Azure Local, version 23H2 system
+title: Deploy a virtual Azure Local, version 23H2 / 24H2 system
 description: Describes how to perform an Azure Local, version 23H2 virtualized deployment.
 author: alkohli
 ms.author: alkohli
@@ -52,10 +52,10 @@ Before you begin, make sure that each virtual host system can dedicate the follo
 | ----------| ------- |
 | Virtual machine (VM) type | Secure Boot and Trusted Platform Module (TPM) enabled. |
 | vCPUs | Four cores. |
-| Memory | A minimum of 24 GB. |
+| Memory | A minimum of 32 GB. |
 | Networking | At least two network adapters connected to internal network. MAC spoofing must be enabled. |
-| Boot disk | One disk to install the Azure Stack HCI operating system from ISO. At least 200 GB. |
-| Hard disks for Storage Spaces Direct | Four dynamic expanding disks. Maximum disk size is 1024 GB. |
+| Boot disk | One disk to install the Azure Local operating system from ISO. At least 127 GB. |
+| Hard disks for Storage Spaces Direct | Two dynamic expanding disks. Maximum disk size is 1024 GB. |
 | Data disks | At least 127 GB each. The size must be the same for each disk. |
 | Time synchronization in integration  | Disabled. |
 
@@ -117,7 +117,7 @@ Follow these steps to create an example VM named `Node1` using PowerShell cmdlet
 
     ```PowerShell
     New-VHD -Path "your_VHDX_path" -SizeBytes 127GB
-    New-VM -Name Node1 -MemoryStartupBytes 20GB -VHDPath "your_VHDX_path" -Generation 2 -Path "VM_config_files_path"
+    New-VM -Name Node1 -MemoryStartupBytes 32GB -VHDPath "your_VHDX_path" -Generation 2 -Path "VM_config_files_path"
     ```
 
 1. Disable dynamic memory:
@@ -187,7 +187,7 @@ Follow these steps to create an example VM named `Node1` using PowerShell cmdlet
     Set-VmProcessor -VMName "Node1" -Count 8
     ```
 
-1. Create extra drives to be used as the boot disk and hard disks for Storage Spaces Direct. After these commands are executed, two new VHDXs will be created in the `C:\vms\Node1` directory as shown in this example:
+1. Create extra drives to be used as one for boot disk and two hard disks for Storage Spaces Direct. After these commands are executed, three new VHDXs will be created in the `C:\vms\Node1` directory as shown in this example:
 
    ```PowerShell
     new-VHD -Path "C:\vms\Node1\OS.vhdx" -SizeBytes 127GB
@@ -197,7 +197,7 @@ Follow these steps to create an example VM named `Node1` using PowerShell cmdlet
 
 1. Attach drives to the newly created VHDXs for the VM. In these commands, two VHDs located in the `C:\vms\Node1` directory and named `s2d1.vhdx` through `s2d2.vhdx` are added to `Node1`. Each `Add-VMHardDiskDrive` command adds one VHD to the VM, so the command is repeated six times with different `-Path` parameter values.
 
-    Afterwards, the `Node1` VM has two VHDs attached to it. These VHDXs are used to enable Storage Spaces Direct on the VM, which are required for Azure Stack HCI deployments:
+    Afterwards, the `Node1` VM has two VHDs attached to it. These VHDXs are used to enable Storage Spaces Direct on the VM, which are required for Azure Local deployments:
 
    ```PowerShell
     Add-VMHardDiskDrive -VMName "Node1" -Path "C:\vms\Node1\OS.vhdx"
@@ -225,7 +225,7 @@ Follow these steps to create an example VM named `Node1` using PowerShell cmdlet
 
 ## Install the OS on the virtual host VMs
 
-Complete the following steps to install and configure the Azure Stack HCI OS on the virtual host VMs:
+Complete the following steps to install and configure the Azure Local OS on the virtual host VMs:
 
 1. [Download version 23H2 operating system for Azure Local deployment](./download-23h2-software.md) and [Install the Azure Stack HCI operating system](deployment-install-os.md).
 
