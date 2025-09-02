@@ -120,14 +120,14 @@ The following table compares the management options for Azure Local and Windows 
 | Azure Backup and Azure Site Recovery support | Yes | Yes | Yes |
 | Azure portal | Yes (natively) | Yes (natively) | Requires Azure Arc agent |
 | Azure portal > Extensions and Arc-enabled host | Yes | Yes | Manual <sup>1</sup>|
-| Azure portal > Windows Admin Center integration (preview) | Yes | Yes | Azure Arc-enabled VMs only <sup>2</sup>|
+| Azure portal > Windows Admin Center integration (preview) | Yes | Yes | Yes <sup>2</sup>|
 | Azure portal > Multi-cluster monitoring for Azure Local | Yes | Yes | No |
 | Azure portal > Azure Resource Manager integration for clusters | Yes | Yes | No |
 | Azure portal > Management of Azure Local VMs enabled by Arc | Yes | Yes | No |
 | OS Desktop experience | No | No | Yes |
 
 <sup>1</sup> Microsoft System Center and System Center Virtual Machine Manager (SCVMM) are sold and licensed seperately. Please check which version of SCVMM supports which Azure Local solution version.
-<sup>2</sup> Requires manually installing the Arc-git status Connected Machine agent on every machine.
+<sup>2</sup> Requires manually installing the Arc Connected Machine agent on every machine, also known Azure Arc-enabled Servers.
 
 ## Compare product pricing
 
