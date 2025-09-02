@@ -77,7 +77,7 @@ The following table compares the workloads and benefits of Azure Local and Windo
 | Windows Server subscription add-on (Dec. 2021)| Yes | No |
 | Free Extended Security Updates (ESUs) for Windows Server and SQL 2008/R2 and 2012/R2 | Yes | No <sup>2</sup> |
 
- <sup>1</sup> [AKS on Windows Server End of Support 27th March 2027])(https://learn.microsoft.com/en-us/azure/aks/aksarc/aks-windows-server-retirement?tabs=ws).<br>
+ <sup>1</sup> [AKS on Windows Server End of Support 27th March 2027](https://learn.microsoft.com/en-us/azure/aks/aksarc/aks-windows-server-retirement?tabs=ws).<br>
  <sup>2</sup> Requires purchasing an Extended Security Updates (ESU) license key and manually applying it to every VM.
  
 ## Compare technical features
