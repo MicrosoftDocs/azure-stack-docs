@@ -51,7 +51,7 @@ Use Windows Server for:
 
 The following table shows the high-level product packaging for Azure Local and Windows Server.
 
-| Attribute    | Azure Local | Windows Server |
+| Attribute    | Azure Local 23H2 / 24H2 | Windows Server |
 | ---------------- | ------------------- | ----------------------- |
 | Product type     | Cloud service that includes an operating system and more | Operating system |
 | Legal            | Covered under your Microsoft customer agreement or online subscription agreement | Has its own end-user license agreement |
@@ -67,7 +67,7 @@ The following table shows the high-level product packaging for Azure Local and W
 
 The following table compares the workloads and benefits of Azure Local and Windows Server.
 
-| Attribute | Azure Local | Windows Server |
+| Attribute | Azure Local 23H2 / 24H2 | Windows Server |
 | ------------- | ------------------- | ----------------------- |
 | Azure Kubernetes Service (AKS)| Yes | Yes, but sunset <sup>1</sup> |
 | Azure Arc-Enabled PaaS Services | Yes | Yes |
@@ -133,7 +133,7 @@ The following table compares the management options for Azure Local and Windows 
 
 The table below compares the product pricing for Azure Local and Windows Server. For details, see [Azure Local pricing](https://azure.microsoft.com/pricing/details/azure-stack/hci/).
 
-| Attribute | Azure Local | Windows Server |
+| Attribute | Azure Local 23H2 / 24H2 | Windows Server |
 | ------------- | ------------------- | ----------------------- |
 | Price type | Subscription service | Varies: most often a one-time license |
 | Price structure | Per core, per month | Varies: usually per core |
