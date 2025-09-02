@@ -1,15 +1,15 @@
 ---
-title: Best Practices for Azure Local Update Management
-description: Learn the best practices for managing updates in Azure Local.
+title: Best Practices for managing Azure Local Update Management
+description: Learn the best practices for managing Azure Local environments.
 author: alkohli
 ms.topic: overview
-ms.date: 08/26/2025
+ms.date: 09/02/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
 ---
 
-# Best practices for managing updates in Azure Local
+# Best practices for managing Azure Local environments
 
 This article provides an overview of Azure Local update management, including best practices and common pitfalls to help keep Azure Local secure, up to date, and compliant. It is intended for IT decision-makers, infrastructure architects, and operations teams responsible for Azure Local deployments.
 
@@ -31,44 +31,46 @@ Follow these practices to ensure smooth, reliable updates for Azure Local instan
 
    AUM provides a centralized view to apply and manage updates across all Azure Local instances. In the Azure portal, go to **Azure Update Manager** > **Resources** > **Azure Local**.
 
-1. **Use filters to identify Azure Local resources ready for updates.**
+   :::image type="content" source="./media/update-best-practices/azure-update-manager.png" alt-text="Screenshot of the Azure Update Manager displaying the Azure Local systems ready for updates. ." lightbox="./media/update-best-practices/azure-update-manager.png":::
 
-   Use filters like:
-   - Update Readiness = Healthy
-   - Status = updates available
+   - **Use filters to identify Azure Local resources ready for updates.**
 
-1. **Batch updates for large environments.**
+      Use filters like:
+      - Update Readiness = Healthy
+      - Status = Updates available
 
-   Group clusters using:
-   - Tags
-   - Resource group
-   - Subscription
-   - Current version
-   - Location
+   - **Batch updates for large environments.**
+
+      Group clusters using:
+      - Tags
+      - Resource group
+      - Subscription
+      - Current version
+      - Location
    
-   Define a model where you are updating in chunks.  
+      Define a model where you are updating in chunks.  
 
-1. **Test environment strategy.**
+   - **Test environment strategy.**
 
-   Select a few test clusters that mirror your Azure Loal resources in production. Run the update flow to validate before applying to production.
+      Select a few test clusters that mirror your Azure Loal resources in production. Run the update flow to validate before applying to production.
 
-1. **Production environment strategy.**
+   - **Production environment strategy.**
 
-   - Create batches using filter parameters.
-   - Start updating with the smallest batch during a maintenance window.
-   - If successful, proceed to the next batch.
-   - If issues arise:
-      - Investigate root cause
-      - Contact Microsoft support if needed
-      - Apply learnings to the future batches
+      - Create batches using filter parameters.
+      - Start updating with the smallest batch during a maintenance window.
+      - If successful, proceed to the next batch.
+      - If issues arise:
+         - Investigate root cause
+         - Contact Microsoft support if needed
+         - Apply learnings to the future batches
 
 1. **Predownload update content to speed up update installation.**
 
-   You can predownload update content using the following update workflows. However, container images for Azure Resource Bridge (ARB) and Azure Kubernetes Service (AKS)  aren't included in the static payload. They are downloaded automatically during the update process.
+   You can predownload update content using the following update workflows. However, components required for Azure Resource Bridge (ARB) and Azure Kubernetes Service (AKS) aren't included in the static payload. They are downloaded automatically during the update process.
 
    - Prepare only workflow. See [Predownloads and check update readiness](./update-via-powershell-23h2.md#step-4-recommended-predownload-and-check-update-readiness).
 
-   - Offline update workflow. See [Import and discover update packages with limited connectivity](./import-discover-updates-offline-23h2.md).
+   - Limited connectivity update workflow. See [Import and discover update packages with limited connectivity](./import-discover-updates-offline-23h2.md).
 
 1. **Review known issues, logs, and use troubleshooting guides.**
 
@@ -76,32 +78,26 @@ Follow these practices to ensure smooth, reliable updates for Azure Local instan
    - If an update partially fails (for example, one node fails to update), Azure Update Manager will report the failure. Do not re-run the update blindly. Instead follow these steps:
       - Retrieve error logs. Use the **Update history** view in the Azure portal to check error details for each node.
       - Check offline logs. In disconnected scenarios, check event logs (for example, `ClusterAwareUpdating` log) on the affected node.
-      - Use troubleshooting guides. Microsoft publishes troubleshooting guides for Azure Local updates. For example, steps to retry an update that stuck at a certain phase. Follow those guides to reset any update run state or clear maintenance mode if needed. Ensure the cluster is stable before retrying the update.
+      - Use troubleshooting guides. Microsoft publishes troubleshooting guides for Azure Local updates. For example, steps to retry an update that stuck at a certain phase. Follow those guides to reset any update run state or clear maintenance mode if needed. Ensure the cluster is stable before retrying the update. For more information, see [Troubleshoot solution updates for Azure Local](./update-troubleshooting-23h2.md).
 
 ## Don’ts for Azure Local updates
 
 Avoid the following practices when managing Azure Local updates, as they can lead to errors, downtime, or unsupported states.
 
-1. **Don't update Azure Local machines individually.**
+1. **Avoid manual updates on Azure Local machines.**
 
-   Applying Windows updates manually, such as through Windows Admin Center or **Azure Update Manager** > **Resources** > **Machines** in an uncoordinated way can break cluster awareness and cause VM downtime. For example, you would violate the cluster-aware updating process and could bring down clustered VMs if you:
+   Updating Azure Local machines manually and outside of the coordinated update workflow can break cluster awareness and cause downtime. For example, applying updates to all nodes simultaneously or skipping role draining can violate cluster-aware updating process and bring down clustered VMs.
 
-      - Install updates on all nodes at once
-      - Update nodes without draining roles
-
-   **Best practice:** Always initiate updates through AUM or the official Azure CLI or PowerShell methods that leverage the AUM workflow. These tools ensure compliance with the rolling update orchestration. Skipping AUM might also mean missing the readiness checks. In summary, don’t treat Azure Local like a standalone server. Use the recommended at-scale update mechanism to maintain high availability.
+   **Best practice:** Always initiate updates through AUM, which ensures rolling updates, readiness checks, and high-availability. In summary, treat Azure Local as a clustered system and not as standalone servers.
 
 1. **Don’t modify cluster nodes outside approved configurations.**
 
-   - Avoid making configuration changes on cluster nodes immediately before deployment or update as these can interfere with the automated templates. For example, before running Azure Local deployment or update templates, don't:
+   Avoid making configuration changes on cluster nodes immediately before deployment or update as these can interfere with the automated templates. For example, before running Azure Local deployment or update templates, don't:
+
       - Change system time zones or region settings
       - Preinstall software updates on the nodes
 
-      Such manual changes can cause template validation failures or inconsistent cluster state. A known issue is that certain updates applied out-of-band can cause deployment to error out.
-
-   - Don’t make manually change nodes unless explicitly instructed by Microsoft support or official documentation. This ensures that ARM templates and update workflows can execute without unforeseen interference.
-
-   **Best practice:** Always start updates with nodes in a baseline, unmodified state as per Azure’s prerequisites. In general, treat the Azure Local deployment process as authoritative.
+   Such manual changes can cause template validation failures or inconsistent cluster state. A known issue is that certain updates applied out-of-band can cause deployment to error out.
 
 ## Next steps
 
