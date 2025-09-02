@@ -8,6 +8,7 @@ ms.date: 03/04/2020
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 10/23/2019
+ms.custom: sfi-image-nochange
 
 # Intent: As an Azure Stack Hub operator, I want to usethe Azure Stack Hub Readiness Checker tool to generate a validation report.
 # Keyword: azure stack hub validation report readiness checker

@@ -8,6 +8,7 @@ ms.date: 03/09/2022
 ms.topic: article
 ms.reviewer: cedward
 ms.lastreviewed: 03/10/2022
+ms.custom: sfi-image-nochange
 ---
 
 # Virtual Network peering

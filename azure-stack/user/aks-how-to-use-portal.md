@@ -7,6 +7,7 @@ ms.date: 1/3/2022
 ms.author: sethm
 ms.reviewer: waltero
 ms.lastreviewed: 1/3/2022
+ms.custom: sfi-image-nochange
 
 # Intent: As an Azure Stack operator, I want to install and offer Azure Kubernetes Service on Azure Stack Hub so my supported user can offer containerized solutions.
 # Keyword: Kubernetes AKS difference
