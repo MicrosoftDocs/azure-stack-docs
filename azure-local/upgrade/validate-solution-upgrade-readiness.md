@@ -15,7 +15,7 @@ ms.service: azure-local
 
 This article describes how to assess the upgrade readiness of your Azure Local after the operating system (OS) was upgraded.
 
-Throughout this article, we refer to the newer version of Azure Local as the *new* version and the currently installed version as the *old* version.
+Throughout this article, we refer to OS versions 24H2 and 23H2 as the *new* version, and version 22H2 as the *old* version.
 
 ## Assess solution upgrade readiness
 

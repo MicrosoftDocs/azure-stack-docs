@@ -7,6 +7,7 @@ ms.reviewer: saniyaislam
 ms.topic: how-to
 ms.service: azure-local
 ms.date: 04/09/2025
+ms.custom: sfi-image-nochange
 ---
 
 # Enable Insights for Azure Local at scale using Azure policies

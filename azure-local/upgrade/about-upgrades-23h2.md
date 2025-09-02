@@ -15,9 +15,9 @@ ms.service: azure-local
 
 [!INCLUDE [azure-local-banner-23h2](../includes/azure-local-banner-23h2.md)]
 
-This article provides an overview of upgrading Azure Local to a newer version.
+This article provides an overview of upgrading your cluster to Azure Local.
 
-Throughout this article, we refer to the newer version of Azure Local as the *new* version and the currently installed version as the *old* version.
+Throughout this article, we refer to Azure Local as the *new* version and Azure Local, version 22H2 as the *old* version.
 
 [!INCLUDE [end-of-service-22H2](../includes/end-of-service-22h2.md)]
 

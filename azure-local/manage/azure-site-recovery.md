@@ -5,6 +5,7 @@ ms.topic: how-to
 author: alkohli
 ms.author: alkohli
 ms.date: 05/20/2025
+ms.custom: sfi-image-nochange
 ---
 <!-- This article is used by the Windows Server Docs, all links must be site relative (except include files). For example, /azure-stack/hci/manage/azure-site-recovery -->
 

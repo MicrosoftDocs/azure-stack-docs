@@ -3,11 +3,13 @@ title: Azure Resource Manager template deployment for Azure Local, version 23H2
 description: Learn how to prepare and then deploy Azure Local instance, version 23H2 using the Azure Resource Manager template.
 author: alkohli
 ms.topic: how-to
-ms.date: 08/06/2025
+ms.date: 08/21/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
-ms.custom: devx-track-arm-template
+ms.custom:
+  - devx-track-arm-template
+  - sfi-image-nochange
 ---
 
 # Deploy Azure Local via Azure Resource Manager deployment template
@@ -216,8 +218,6 @@ For an example of a parameter JSON file, see [azuredeploy.parameters.json](https
 23. The step in deployment that takes the longest is **Deploy Moc and ARB Stack**. This step takes 40-45 minutes.
 
     Once complete, the task at the top updates with status and end time.
-
-You can also check out this community sourced template to [Deploy an Azure Local instance using Bicep](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.azurestackhci/create-cluster-with-prereqs/README.md).
 
 ## ARM template parameters reference
 

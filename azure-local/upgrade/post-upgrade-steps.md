@@ -15,7 +15,7 @@ ms.service: azure-local
 
 This article describes how to perform the post-OS upgrade tasks after you upgraded the operating system (OS) to the new version. The post-upgrade tasks described in this article are required for the stability of the Azure Local instance.
 
-Throughout this article, we refer to the newer version of Azure Local as the *new* version and the currently installed version as the *old* version.
+Throughout this article, we refer to OS versions 24H2 and 23H2 as the *new* version, and version 22H2 as the *old* version.
 
 ## Complete prerequisites
 
@@ -145,9 +145,6 @@ Once the new OS is installed, you need to upgrade the cluster functional level a
 
 1. Install the latest drivers from your hardware partner, as some drivers may revert to an older inbox driver version resulting in unexpected behaviors.  
 
-You're now ready to apply the solution upgrade.
+## Next step
 
-## Next steps
-
-- [Optional: Install and enable Network ATC on your Azure Local.](./install-enable-network-atc.md)
-- [Learn how to assess the solution upgrade readiness.](./validate-solution-upgrade-readiness.md)
+- Learn how to [configure Network ATC on Azure Local](./install-enable-network-atc.md).

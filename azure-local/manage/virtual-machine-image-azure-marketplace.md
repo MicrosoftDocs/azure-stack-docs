@@ -5,16 +5,21 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
+ms.date: 03/04/2025
 ms.custom:
   - devx-track-azurecli
-ms.date: 03/04/2025
+  - sfi-image-nochange
 ---
 
 # Create Azure Local VM image using Azure Marketplace images
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
-This article describes how to create virtual machine (VM) images for Azure Local using source images from Azure Marketplace. You can create VM images using the Azure portal or Azure CLI and then use these VM images to create Arc VMs on Azure Local.
+This article explains how to create Windows virtual machine (VM) images for Azure Local using source images from Azure Marketplace, either through the Azure portal or Azure CLI.
+
+To create Linux VM images from Azure Marketplace, choose:
+
+- [Prepare RHEL Azure Marketplace image for Azure Local VM deployment](../manage/virtual-machine-azure-marketplace-red-hat.md).
 
 ## Prerequisites
 
