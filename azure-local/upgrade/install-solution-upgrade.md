@@ -24,7 +24,7 @@ This article describes how to install the solution upgrade on your Azure Local i
 - 20349.xxxx (22H2) to 26100.xxxx (24H2)
 - 25398.xxxx (23H2) to 26100.xxxx (24H2)
 
-Throughout this article, we refer to OS versions 24H2 and 23H2 as the *new* version, and version 22H2 as the *old* version.
+Throughout this article, we refer to OS version 24H2 or 23H2 as the *new* version, and version 22H2 as the *old* version.
 
 > [!IMPORTANT]
 > While the OS upgrade is generally available, the solution upgrade is rolled out in phases. Additionally, the solution upgrade isn't available to customers in Azure China.

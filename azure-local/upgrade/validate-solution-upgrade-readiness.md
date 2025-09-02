@@ -3,7 +3,7 @@ title: Validate solution upgrade readiness for Azure Local, version 23H2
 description: Learn how to assess upgrade readiness for Azure Local, version 23H2 that already had its operating system upgraded from version 22H2.
 author: alkohli
 ms.topic: how-to
-ms.date: 08/22/2025
+ms.date: 09/02/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -15,7 +15,7 @@ ms.service: azure-local
 
 This article describes how to assess the upgrade readiness of your Azure Local after the operating system (OS) was upgraded.
 
-Throughout this article, we refer to OS versions 24H2 and 23H2 as the *new* version, and version 22H2 as the *old* version.
+Throughout this article, we refer to OS version 24H2 or 23H2 as the *new* version, and version 22H2 as the *old* version.
 
 ## Assess solution upgrade readiness
 

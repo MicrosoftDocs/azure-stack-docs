@@ -1,9 +1,9 @@
 ---
 title: About Azure Local upgrades
-description: This article provides an overview of upgrading Azure Local to a newer version.
+description: This article provides an overview of upgrading your cluster to Azure Local.
 author: alkohli
 ms.topic: upgrade-and-migration-article
-ms.date: 08/22/2025
+ms.date: 09/02/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
