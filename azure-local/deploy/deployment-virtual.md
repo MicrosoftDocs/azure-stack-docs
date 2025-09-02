@@ -187,26 +187,20 @@ Follow these steps to create an example VM named `Node1` using PowerShell cmdlet
     Set-VmProcessor -VMName "Node1" -Count 8
     ```
 
-1. Create extra drives to be used as the boot disk and hard disks for Storage Spaces Direct. After these commands are executed, six new VHDXs will be created in the `C:\vms\Node1` directory as shown in this example:
+1. Create extra drives to be used as the boot disk and hard disks for Storage Spaces Direct. After these commands are executed, two new VHDXs will be created in the `C:\vms\Node1` directory as shown in this example:
 
    ```PowerShell
     new-VHD -Path "C:\vms\Node1\s2d1.vhdx" -SizeBytes 1024GB
     new-VHD -Path "C:\vms\Node1\s2d2.vhdx" -SizeBytes 1024GB
-    new-VHD -Path "C:\vms\Node1\s2d3.vhdx" -SizeBytes 1024GB
-    new-VHD -Path "C:\vms\Node1\s2d4.vhdx" -SizeBytes 1024GB
-    new-VHD -Path "C:\vms\Node1\s2d5.vhdx" -SizeBytes 1024GB
-    new-VHD -Path "C:\vms\Node1\s2d6.vhdx" -SizeBytes 1024GB
-    ```
+   ```
 
-1. Attach drives to the newly created VHDXs for the VM. In these commands, six VHDs located in the `C:\vms\Node1` directory and named `s2d1.vhdx` through `s2d6.vhdx` are added to `Node1`. Each `Add-VMHardDiskDrive` command adds one VHD to the VM, so the command is repeated six times with different `-Path` parameter values.
+1. Attach drives to the newly created VHDXs for the VM. In these commands, two VHDs located in the `C:\vms\Node1` directory and named `s2d1.vhdx` through `s2d6.vhdx` are added to `Node1`. Each `Add-VMHardDiskDrive` command adds one VHD to the VM, so the command is repeated six times with different `-Path` parameter values.
 
     Afterwards, the `Node1` VM has four VHDs attached to it. These VHDXs are used to enable Storage Spaces Direct on the VM, which are required for Azure Stack HCI deployments:
 
    ```PowerShell
     Add-VMHardDiskDrive -VMName "Node1" -Path "C:\vms\Node1\s2d1.vhdx"
     Add-VMHardDiskDrive -VMName "Node1" -Path "C:\vms\Node1\s2d2.vhdx"
-    Add-VMHardDiskDrive -VMName "Node1" -Path "C:\vms\Node1\s2d3.vhdx"
-    Add-VMHardDiskDrive -VMName "Node1" -Path "C:\vms\Node1\s2d4.vhdx"
     ```
 
 1. Disable time synchronization:
