@@ -36,7 +36,7 @@ The following diagram illustrates the components of the new version of Azure Loc
 
 An Azure Local *upgrade* converts a version 22H2 cluster into an Azure Local cluster by installing a new version of software, introducing significant changes and major improvements. An Azure Local *update*, on the other hand, updates an existing Azure Local cluster to a newer version of Azure Local, by applying a set of changes to enhance performance, security, or stability.
 
-For example, to transition from version 22H2 to Azure Local, you must *upgrade*. On the other hand, to move from Azure Local 2503 to Azure Local 2508, you should *update* your system. For more details on updating Azure Local, see [About updates for Azure Local](../update/about-updates-23h2.md).
+For example, to transition from version 22H2 to Azure Local, you must *upgrade*. On the other hand, to move from Azure Local 2504 to Azure Local 2508, you should *update* your system. For more details on updating Azure Local, see [About updates for Azure Local](../update/about-updates-23h2.md).
 
 ## High-level steps for Azure Local upgrade
 
