@@ -3,7 +3,7 @@ title: About Azure Local upgrades
 description: This article provides an overview of upgrading your cluster to Azure Local.
 author: alkohli
 ms.topic: upgrade-and-migration-article
-ms.date: 09/02/2025
+ms.date: 09/03/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -16,8 +16,6 @@ ms.service: azure-local
 [!INCLUDE [azure-local-banner-23h2](../includes/azure-local-banner-23h2.md)]
 
 This article provides an overview of upgrading your cluster to Azure Local.
-
-Throughout this article, we refer to Azure Local as the *new* version and Azure Local, version 22H2 as the *old* version.
 
 [!INCLUDE [end-of-service-22H2](../includes/end-of-service-22h2.md)]
 
@@ -36,9 +34,9 @@ The following diagram illustrates the components of the new version of Azure Loc
 
 ## Azure Local upgrade versus update
 
-An upgrade is a whole new version of software that represents a significant change or major improvement. An update, on the other hand, is a process of applying a set of changes to the software to improve its performance, security, or stability.
+An *upgrade* is a transformational process that converts a cluster into an Azure Local cluster, introducing significant changes and major improvements. An *update*, on the other hand is a maintenance process that applies a set of changes to an existing Azure Local system to improve its performance, security, or stability.
 
-Azure Local 2311.2 is the latest version of the solution, offering a multitude of new capabilities. To transition from the *old* version of Azure Local to the *new* version, you need to upgrade your existing system. On the other hand, to ensure that you have the most recent features and security improvements for your current version of Azure Local, you would need to update your existing system.
+To transition from version 22H2 to Azure Local, you must *upgrade* your existing system. On the other hand, to ensure your current version of Azure Local includes the most recent features and security improvements, you should *update* your system. For more details on updating Azure Local, see [About updates for Azure Local](../update/about-updates-23h2.md).
 
 ## High-level steps for Azure Local upgrade
 
