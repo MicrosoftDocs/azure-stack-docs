@@ -1,9 +1,7 @@
 name: Create PRs to merge main into release branches
 
 on:
-  workflow_dispatch:
-  schedule:
-    - cron: '0 6 * * *' # Runs every day at 6:00 UTC
+  workflow_dispatch: # Manual trigger only
 
 permissions:
   contents: write
@@ -12,7 +10,7 @@ permissions:
 
 jobs:
   create-merge-prs:
-    name: Create PRs: main → release-*
+    name: Create PRs main → release-*
     runs-on: ubuntu-latest
 
     steps:
@@ -40,6 +38,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REPO: ${{ github.repository }}
+        shell: bash
         run: |
           SKIPPED_BRANCHES=""
           CONFLICT_BRANCHES=""
@@ -94,6 +93,3 @@ jobs:
             else
               gh issue comment $EXISTING --body "$MESSAGE"
             fi
-          fi
-        shell: bash
-        continue-on-error: false
