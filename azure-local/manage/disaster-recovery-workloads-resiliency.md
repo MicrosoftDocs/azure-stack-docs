@@ -118,7 +118,7 @@ It's important to note that after failover using Hyper-V Replica, VMs on the sec
 
 It's recommended to plan a maintenance window to fail VMs back to the primary site once it's healthy and functional. Reverse replication of VMs back to the primary site and verify that the hosts are accessible and DNS settings are as expected.  
 
-## Multi-cluster resiliency
+### Multi-cluster resiliency
 
 Another approach to disaster resiliency for pooled host pools is to divide session hosts within a host pool across multiple clusters. This offers seamless redirection in the case of a single cluster failure with limited redundancy.
 

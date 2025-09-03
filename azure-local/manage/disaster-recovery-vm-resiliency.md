@@ -9,7 +9,7 @@ ms.date: 07/24/2025
 
 # Virtual machine resiliency for Azure Local
 
-After establishing resilient hardware with optimal configuration at the operating system level, it's essential to focus on virtual machine (VM) resiliency, which is fundamental to maintaining continuous operations for business-critical applications.  
+After reviewing and implementing the design considerations for [infrastructure resiliency](disaster-recovery-infrastructure-resiliency.md) at the platform level, it's essential to understand how your virtual machines (VM) and applications will be resilient to failures, to enable them to detect, withstand, and recover from failures within an acceptable time period, which is fundamental to maintaining continuous operations for business-critical applications.
 
 All virtual machines deployed on Azure Local are highly available by default, ensuring that if any node in the cluster fails, the affected VMs will automatically restart and continue operating on the remaining nodes. However, even with these robust fault tolerance and resiliency measures in place, this alone isn't sufficient.
 

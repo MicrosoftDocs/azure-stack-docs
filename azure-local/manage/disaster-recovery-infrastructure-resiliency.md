@@ -51,8 +51,6 @@ For more information, see [Network design for Azure Local](/azure/architecture/h
 
 In Azure Local, logical networks are used to create and manage VLAN-based networks for virtual machines, allowing for effective network segmentation and policy application. Segmenting workloads by function and trust level helps enforce security boundaries and simplifies recovery planning. This structure allows critical systems to be isolated and prioritized during a disruption, improving continuity and reducing risk.
 
-The hub-and-spoke model supports disaster recovery by centralizing shared services like DNS and identity in the hub, while spokes represent isolated environments (development, staging, production). Routing traffic through the hub enables centralized control, policy enforcement, and recovery orchestration. Firewalls and NSGs help secure communication, ensuring recovery is orderly and secure during disruptions.This architecture not only supports operational efficiency but also ensures that in the event of a disruption, recovery can be executed in a controlled, secure, and prioritized manner. 
-
 For more information, see [Logical network topology for Azure Local](/azure/architecture/hybrid/azure-local-baseline#logical-network-topology).  
 
 ## Next steps
