@@ -17,7 +17,7 @@ This article provides an overview of Azure Local update management, including be
 
 Staying current with security fixes and feature improvements is important for all Azure Local components. For an overview of Azure Local updates, see [About updates for Azure Local](./about-updates-23h2.md).
 
-Azure Local supports update management through Azure Update Manager (AUM). AUM provides centralized lifecycle management to apply, view, and manage updates across all Azure Local instances.
+Azure Local supports update management through Azure Update Manager (AUM), which provides centralized lifecycle management. With AUM, you can apply, view, and manage updates across all Azure Local instances from a single interface.
 
 :::image type="content" source="./media/update-best-practices/updates.png" alt-text="Diagram that describes the key features of Azure Local update management." lightbox="./media/update-best-practices/updates.png":::
 
