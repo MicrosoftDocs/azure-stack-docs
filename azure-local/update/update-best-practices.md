@@ -3,7 +3,7 @@ title: Best Practices for managing Azure Local Update Management
 description: Learn the best practices for managing Azure Local environments.
 author: alkohli
 ms.topic: overview
-ms.date: 09/02/2025
+ms.date: 09/03/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -15,11 +15,9 @@ This article provides an overview of Azure Local update management, including be
 
 ## Understand Azure Local update management
 
-Azure Local supports update management through Azure Update Manager (AUM) and Azure Resource Manager (ARM) templates.
-
-AUM provides centralized lifecycle management to apply, view, and manage updates across all Azure Local instances. ARM templates enable infrastructure-as-code for automating and scaling update configurations.
-
 Staying current with security fixes and feature improvements is important for all Azure Local components. For an overview of Azure Local updates, see [About updates for Azure Local](./about-updates-23h2.md).
+
+Azure Local supports update management through Azure Update Manager (AUM). AUM provides centralized lifecycle management to apply, view, and manage updates across all Azure Local instances.
 
 :::image type="content" source="./media/update-best-practices/updates.png" alt-text="Diagram that describes the key features of Azure Local update management." lightbox="./media/update-best-practices/updates.png":::
 
