@@ -3,7 +3,7 @@ title: Upgrade Azure Stack HCI OS, version 22H2 to version 23H2 via PowerShell
 description: Learn how to use PowerShell to upgrade Azure Stack HCI OS, version 22H2 to version 23H2.
 author: alkohli
 ms.topic: how-to
-ms.date: 08/13/2025
+ms.date: 09/03/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -101,7 +101,7 @@ Before you begin, make sure that:
 - You have access to an Azure Local instance running version 22H2, and it's registered in Azure.
 - All the machines in your Azure Local, version 22H2 instance are healthy and show as **Online**.
 - You have shut down virtual machines (VMs). We recommend that you shut down VMs before performing the OS upgrade to prevent unexpected outages and damages to databases.
-- You have access to the Azure Stack HCI, version 23H2 OS software update for Azure Local. This update is available via Windows Update or as a downloadable media. The media must be version **2503** ISO file that you can download from the [Azure portal](https://portal.azure.com/#view/Microsoft_Azure_HybridCompute/AzureArcCenterBlade/~/hciGetStarted).
+- You have access to the Azure Stack HCI, version 23H2 OS software update for Azure Local. This update is available via Windows Update or as a downloadable media. The media must be the latest ISO file that you can [Download from the Azure portal](../deploy/download-23h2-software.md#download-the-software-from-the-azure-portal).
 - You have access to a client that can connect to your Azure Local instance. This client should be running PowerShell 5.0 or later.
 - You run the `RepairRegistration` cmdlet only if both of the following conditions apply:
 
@@ -138,7 +138,7 @@ Before you begin, make sure that:
 - Make sure your Azure Local system is running either OS version 20349.3692 or OS version greater than 25398.1611.
 - Make sure the system is registered in Azure and all the machines in the system are healthy and online.
 - Make sure to shut down virtual machines (VMs). We recommend shutting down VMs before performing the OS upgrade to prevent unexpected outages and damages to databases.
-- Confirm that you have access to the Azure Local **2505** ISO file, which you can download from the [Azure portal](https://portal.azure.com/#view/Microsoft_Azure_ArcCenterUX/ArcCenterMenuBlade/~/hciGetStarted).
+- Confirm that you have access to the latest Azure Local that you can [Download from the Azure portal](../deploy/download-23h2-software.md#download-the-software-from-the-azure-portal).
 - Consult your hardware OEM to verify driver compatibility. Confirm that all drivers compatible with Windows Server 2025 or Azure Stack HCI OS, 26100.xxxx are installed before the upgrade.
 - Make sure the Network Interface Card (NIC) driver currently installed on your system is newer than the version included by default (inbox) with Azure Stack HCI OS, version 26100.xxxx. The following table compares the current and recommended versions of NIC drivers for two manufacturers:
 
