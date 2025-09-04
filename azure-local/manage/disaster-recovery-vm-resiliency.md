@@ -200,7 +200,6 @@ In choosing between Azure Site Recovery and Hyper-V Replica for Azure Local VMs,
 |Requires hydration (preview) if the VM is failed back to its original site after disaster is mitigated      |  No       |   No (the VM can be failed over to the disaster recovery site temporarily and failed back to its original site after disaster is mitigated).   |
 |Requires hydration (preview) if the failed over VM had to be permanently reside in the disaster recovery site      |   No (Azure VMs don’t require hydration).      |     Yes    |
 
-
 **Use ASR and Hyper-V Replica both**: Organizations with remote sites with single clusters and larger hubs with multiple clusters can extend Azure as a disaster recovery site, use Azure Site Recovery for remote sites and Hyper-V Replica for larger locations. This allows some VMs to replicate to Azure while others replicate to a secondary site, ensuring flexibility and tailored disaster recovery strategies for various operational needs.
 
 ### Recovery plans and testing
