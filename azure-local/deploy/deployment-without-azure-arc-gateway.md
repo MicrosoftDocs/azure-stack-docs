@@ -407,7 +407,7 @@ If you plan to deploy a few machines per site, use the Configurator app to regis
 
 [!INCLUDE [important](../includes/hci-preview.md)]
 
-## Prerequisites
+## Prerequisites for registration without proxy configuration
 
 Before you begin, make sure that you complete the following prerequisites:
 
@@ -424,7 +424,7 @@ Before you begin, make sure that you complete the following prerequisites:
 
 - Make sure you have the required permissions to register Azure Local machines with Azure Arc. For more information, see [Assign required permissions for Azure Local deployment](deployment-arc-register-server-permissions.md).
    
-## Step 1: Configure the network and connect to Azure
+## Configure the network and connect to Azure
 
 [!INCLUDE [azure-local-start-configurator](../includes/azure-local-start-configurator.md)]
 
@@ -494,7 +494,7 @@ Before you begin, make sure that you complete the following prerequisites:
 
 [!INCLUDE [azure-local-review-apply-tab-configurator-app](../includes/azure-local-review-apply-tab-configurator-app.md)]
 
-## Step 2: Complete registration of machines to Azure
+## Complete registration of machines to Azure
 
 1. Wait for the configuration to complete. First, machine is configured with the basic details followed by registration of the machines to Azure.
 
@@ -506,7 +506,7 @@ Before you begin, make sure that you complete the following prerequisites:
 
 1. Repeat all steps on the other machines until the Arc configuration succeeds. Select the **Open in Azure portal** link.
 
-## Step 3: Verify machines are connected to Arc
+## Verify machines are connected to Arc
 
 [!INCLUDE [azure-local-verify-machines](../includes/azure-local-verify-machines.md)]
 
@@ -791,7 +791,7 @@ Before you begin, make sure that you complete the following prerequisites:
 
 [!INCLUDE [azure-local-review-apply-tab-configurator-app](../includes/azure-local-review-apply-tab-configurator-app.md)]
 
-## Step 2: Complete registration of machines to Azure
+## Complete registration of machines to Azure
 
 1. Wait for the configuration to complete. First, machine is configured with the basic details followed by registration of the machines to Azure.
 
@@ -964,7 +964,7 @@ If you plan to deploy a few machines per site, use the Configurator app to regis
 
 [!INCLUDE [important](../includes/hci-preview.md)]
 
-## Prerequisites
+## Prerequisites for registration without proxy configuration
 
 Before you begin, make sure that you complete the following prerequisites:
 
@@ -981,7 +981,7 @@ Before you begin, make sure that you complete the following prerequisites:
 
 - Make sure you have the required permissions to register Azure Local machines with Azure Arc. For more information, see [Assign required permissions for Azure Local deployment](deployment-arc-register-server-permissions.md).
    
-## Step 1: Configure the network and connect to Azure
+## Configure the network and connect to Azure
 
 [!INCLUDE [azure-local-start-configurator](../includes/azure-local-start-configurator.md)]
 
@@ -1051,7 +1051,7 @@ Before you begin, make sure that you complete the following prerequisites:
 
 [!INCLUDE [azure-local-review-apply-tab-configurator-app](../includes/azure-local-review-apply-tab-configurator-app.md)]
 
-## Step 2: Complete registration of machines to Azure
+## Complete registration of machines to Azure
 
 1. Wait for the configuration to complete. First, machine is configured with the basic details followed by registration of the machines to Azure.
 
@@ -1063,7 +1063,7 @@ Before you begin, make sure that you complete the following prerequisites:
 
 1. Repeat all steps on the other machines until the Arc configuration succeeds. Select the **Open in Azure portal** link.
 
-## Step 3: Verify machines are connected to Arc
+## Verify machines are connected to Arc
 
 [!INCLUDE [azure-local-verify-machines](../includes/azure-local-verify-machines.md)]
 
