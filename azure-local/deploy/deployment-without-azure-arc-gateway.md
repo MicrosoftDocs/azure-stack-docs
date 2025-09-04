@@ -525,7 +525,7 @@ Before you begin, make sure that you complete the following prerequisites:
     
 ::: moniker-end
 
-::: moniker range="<=azloc-2504||>=azloc-2503"
+::: moniker range="azloc-2504||azloc-2503"
 
 ::: zone pivot="register-proxy"
 
@@ -537,7 +537,7 @@ This article details how to register Azure Local machines with Azure Arc and wit
 
 # [Via Arc script](#tab/script)
 
-## Prerequisites
+## Prerequisites for registration with proxy configuration
 
 Make sure the following prerequisites are met before proceeding:
 
@@ -548,7 +548,7 @@ Make sure the following prerequisites are met before proceeding:
 > [!IMPORTANT]
 > Run these steps as a local administrator on every Azure Local machine that you intend to cluster.
 
-## Step 1: Review script parameters
+## Review script parameters
 
 
 Review the parameters used in the script:
@@ -564,7 +564,7 @@ Review the parameters used in the script:
 |`DeviceCode`       |The device code displayed in the console at `https://microsoft.com/devicelogin` and is used to sign in to the device.       |
 
 
-## Step 2: Set parameters
+## Set parameters
 
 
 1. Set the parameters required for the registration script.
@@ -635,7 +635,7 @@ Review the parameters used in the script:
    
 
 
-## Step 3: Run registration script
+## Run registration script
 
 
 1. Finally run the Arc registration script. The script takes a few minutes to run.
@@ -673,7 +673,7 @@ Review the parameters used in the script:
 
     </details>
 
-## Step 4: Verify the setup is successful
+## Verify the setup is successful
 
 After the script completes successfully on all the machines, verify that your machines are registered with Arc.
 
@@ -691,7 +691,7 @@ If you plan to deploy a few machines per site, use the Configurator app to regis
 
 [!INCLUDE [important](../includes/hci-preview.md)]
 
-## Prerequisites
+## Prerequisites for registration with proxy configuration
 
 Before you begin, make sure that you complete the following prerequisites:
 
@@ -709,7 +709,7 @@ Before you begin, make sure that you complete the following prerequisites:
 - Make sure you have the required permissions to register Azure Local machines with Azure Arc. For more information, see [Assign required permissions for Azure Local deployment](deployment-arc-register-server-permissions.md).
 
    
-## Step 1: Configure the network and connect to Azure
+## Configure the network and connect to Azure
 
 [!INCLUDE [azure-local-start-configurator](../includes/azure-local-start-configurator.md)]
 
@@ -803,7 +803,7 @@ Before you begin, make sure that you complete the following prerequisites:
 
 1. Repeat all steps on the other machines until the Arc configuration succeeds. Select the **Open in Azure portal** link.
 
-## Step 3: Verify machines are connected to Arc
+## Verify machines are connected to Arc
 
 [!INCLUDE [azure-local-verify-machines](../includes/azure-local-verify-machines.md)]
 
@@ -821,7 +821,7 @@ This article details how to register using Azure Arc gateway on Azure Local with
 
 # [Via Arc script](#tab/script)
 
-## Prerequisites
+## Prerequisites for registration without proxy configuration
 
 Make sure the following prerequisites are met before proceeding:
 
@@ -832,7 +832,7 @@ Make sure the following prerequisites are met before proceeding:
 > [!IMPORTANT]
 > Run these steps as a local administrator on every Azure Local machine that you intend to cluster.
 
-## Step 1: Review script parameters
+## Review script parameters
 
 
 Review the parameters used in the script:
@@ -846,7 +846,7 @@ Review the parameters used in the script:
 |`AccountID`        |The user who registers and deploys the instance.        |
 |`DeviceCode`       |The device code displayed in the console at `https://microsoft.com/devicelogin` and is used to sign in to the device.       |
 
-## Step 2: Set parameters
+## Set parameters
 
 
 1. Set the parameters.
@@ -911,7 +911,7 @@ Review the parameters used in the script:
     </details>
 
 
-## Step 3: Run registration script
+## Run registration script
 
 Finally run the Arc registration script. The script takes a few minutes to run.
 
@@ -947,7 +947,7 @@ PS C:\Users\Administrator>
 
 </details>
 
-## Step 4: Verify the setup is successful
+## Verify the setup is successful
 
 1. Go to the Azure portal.
 1. Go to the resource group associated with the registration. The machines appear within the specified resource group as **Machine - Azure Arc** type resources.
@@ -1072,7 +1072,7 @@ Before you begin, make sure that you complete the following prerequisites:
 ::: zone-end
 
 
-## Next steps
+## Related steps
 
 - [Troubleshoot registration issues with Configurator app](../manage/troubleshoot-deployment-configurator-app.md)
 
