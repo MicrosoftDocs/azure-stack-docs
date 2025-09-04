@@ -11,7 +11,7 @@ zone_pivot_groups: register-arc-options
 
 # Register Azure Local with Arc
 
-::: moniker range=">=azloc-2504"
+::: moniker range=">azloc-2504"
 
 ::: zone pivot="register-proxy"
 
