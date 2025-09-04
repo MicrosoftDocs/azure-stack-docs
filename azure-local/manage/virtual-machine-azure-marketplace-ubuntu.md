@@ -106,9 +106,9 @@ To change the data source of the VM image, follow these steps:
 
      :::image type="content" source="media/virtual-machine-azure-marketplace-ubuntu/no-cloud.png" alt-text="Screenshot of the NoCloud update." lightbox="../manage/media/virtual-machine-azure-marketplace-ubuntu/no-cloud.png":::
 
-     - Toggle the **(*)** by pressing spacebar to activate **NoCloud** and remove Azure.
+     1. Toggle the **(*)** by pressing spacebar to activate **NoCloud** and remove Azure.
 
-     - Save the file by pressing **Enter**.
+     1. Save the file by pressing **Enter**.
 
      Example output:
 
