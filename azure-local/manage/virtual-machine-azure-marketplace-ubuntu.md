@@ -45,18 +45,24 @@ To set up and prepare an Azure VM, follow these steps:
 
 1. Connect to the VM with your credentials and run these commands:
 
+   1. Sign in to the VM as the root user:
+
+        ```bash
+        sudo su
+        ```
+
    1. Clean the `cloud-init` default configuration because it isn't relevant for Azure Local VMs.
 
-```bash
-sudo cloud-init clean
-sudo rm -rf /var/lib/cloud/ /var/log/* /tmp/*
-```
+        ```bash
+        sudo cloud-init clean
+        sudo rm -rf /var/lib/cloud/ /var/log/* /tmp/*
+        ```
 
-   1. Clean VM-specific details.
+   1. Clean VM-specific SSH host keys.
 
-```bash
-sudo rm -f /etc/ssh/ssh_host*
-```
+        ```bash
+        sudo rm -f /etc/ssh/ssh_host*
+        ```
 
 ## Change the data source of the VM image
 
@@ -64,71 +70,71 @@ To change the data source of the VM image, follow these steps:
 
 1. Change the directory to the following path and list the files to locate the data source file `90_dpkg.cfg`.Run these commands:
 
-```bash
-cd /etc/cloud/cloud.cfg.d/
-ls
-```
+     ```bash
+     cd /etc/cloud/cloud.cfg.d/
+     ls
+     ```
 
-Example output:
+     Example output:
 
-```console
-azureuser@ubuntu-image:/etc/cloud/cloud.cfg.d$ ls
-05_logging.cfg  10-azure-kvp.cfg  90-azure.cfg  90_dpkg.cfg
-```
+     ```console
+     azureuser@ubuntu-image:/etc/cloud/cloud.cfg.d$ ls
+     05_logging.cfg  10-azure-kvp.cfg  90-azure.cfg  90_dpkg.cfg
+     ```
 
 1. Open the `90_dpkg.cfg` file. Run this command:
 
-```bash
-cat 90_dpkg.cfg
-```
+     ```bash
+     cat 90_dpkg.cfg
+     ```
 
-Example output:
+     Example output:
 
-```console
-azureuser@ubuntu-image:/etc/cloud/cloud.cfg.d$ cat 90_dpkg.cfg
-# to update this file, run dpkg-reconfigure cloud-init
-datasource_list: [ Azure ]
-```
+     ```console
+     azureuser@ubuntu-image:/etc/cloud/cloud.cfg.d$ cat 90_dpkg.cfg
+     # to update this file, run dpkg-reconfigure cloud-init
+     datasource_list: [ Azure ]
+     ```
 
 1. Open and update the *datasource_list* from **Azure** to **NoCloud**. Run this command:
 
-```bash
-sudo dpkg-reconfigure cloud-init
-```
+     ```bash
+     sudo dpkg-reconfigure cloud-init
+     ```
 
-Example output:
+     Example output:
 
-:::image type="content" source="media/virtual-machine-azure-marketplace-ubuntu/no-cloud.png" alt-text="Screenshot of the NoCloud update." lightbox="../manage/media/virtual-machine-azure-marketplace-ubuntu/no-cloud.png":::
+     :::image type="content" source="media/virtual-machine-azure-marketplace-ubuntu/no-cloud.png" alt-text="Screenshot of the NoCloud update." lightbox="../manage/media/virtual-machine-azure-marketplace-ubuntu/no-cloud.png":::
 
-- Toggle the **(*)** by pressing spacebar to activate **NoCloud** and remove Azure.
+     - Toggle the **(*)** by pressing spacebar to activate **NoCloud** and remove Azure.
 
-- Save the file by pressing **Enter**.
+     - Save the file by pressing **Enter**.
 
-Example output:
+     Example output:
 
-:::image type="content" source="media/virtual-machine-azure-marketplace-ubuntu/no-cloud-output.png" alt-text="Screenshot of the NoCloud update output." lightbox="../manage/media/virtual-machine-azure-marketplace-ubuntu/no-cloud-output.png":::
+     :::image type="content" source="media/virtual-machine-azure-marketplace-ubuntu/no-cloud-output.png" alt-text="Screenshot of the NoCloud update output." lightbox="../manage/media/virtual-machine-azure-marketplace-ubuntu/no-cloud-output.png":::
 
 1. To check that the file was updated, run this command:
 
-```bash
-cat 90_dpkg.cfg
-```
+     ```bash
+     cat 90_dpkg.cfg
+     ```
 
-Example output:
+     Example output:
 
-```console
-azureuser@ubuntu-image:/etc/cloud/cloud.cfg.d$ cat 90_dpkg.cfg
-# to update this file, run dpkg-reconfigure cloud-init
-datasource_list: [ NoCloud ]
-```
+     ```console
+     azureuser@ubuntu-image:/etc/cloud/cloud.cfg.d$ cat 90_dpkg.cfg
+     # to update this file, run dpkg-reconfigure cloud-init
+     datasource_list: [ NoCloud ]
+     ```
 
 1. Remove the bash history. Run these commands:
 
-```bash
-sudo rm -f ~/.bash_history
-export HISTSIZE=0
-exit
-```
+     ```bash
+     sudo rm -f ~/.bash_history
+     export HISTSIZE=0
+     exit
+     ```
 
 1. Stop the Azure VM as the configuration changes are now complete.
 
