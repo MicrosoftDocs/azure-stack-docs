@@ -62,11 +62,14 @@ Keep in mind the following information when you're comparing VM management capab
 | Stop |✅|❌|❌|
 | Delete |✅|✅|❌|
 | Save state (CLI) |✅|❌|❌|
+| Manage Snapshots |❌|❌|❌|
 | Pause (CLI) |✅|❌|❌|
-| GPU configuration (CLI) |✅|❌|❌|
+| GPU configuration (CLI / GUI in preview) |✅|❌|❌|
 | Add network interface |✅|❌|❌|
 | Connect with SSH |✅|✅|❌|
 | Add new data disk |✅|❌|❌|
+| Remove data disk |❌|❌|❌|
+| Resize data disk |❌|❌|❌|
 | Change vCPU count |✅|❌|❌|
 | Change memory amount |✅|❌|❌|
 | Change minimum memory |✅|❌|❌|
