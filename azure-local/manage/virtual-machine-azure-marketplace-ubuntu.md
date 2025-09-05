@@ -104,25 +104,21 @@ To change the data source of the VM image, follow these steps:
 
      Example output:
 
-    ┌───────────────────────────── Configuring cloud-init ──────────────────────────────┐
-    │ Cloud-init supports searching different "Data Sources" for information            │
-    │ that it uses to configure a cloud instance.                                      │
-    │                                                                                  │
-    │ Warning: Only select 'Ec2' if this system will be run on a system with           │
-    │ the EC2 metadata service present. Doing so incorrectly will result in a          │
-    │ substantial timeout on boot.                                                     │
-    │                                                                                  │
-    │ Which data sources should be searched?                                           │
-    │                                                                                  │
-    │ [ ] NoCloud: Reads info from /var/lib/cloud/seed only                            │
-    │ [ ] ConfigDrive: Reads data from Openstack Config Drive                          │
-    │ [ ] OpenNebula: read from OpenNebula context disk                                │
-    │ [ ] DigitalOcean: reads data from Droplet datasource                             │
-    │ [*] Azure: read from MS Azure cdrom. Requires walinux-agent                      │
-    │                                                                                  │
-    │                                     <Ok>                                         │
-    │                                                                                  │
-    └──────────────────────────────────────────────────────────────────────────────────┘
+     ```console
+     Cloud-init supports searching different "Data Sources" for information that it uses to configure a cloud instance.
+
+     Warning: Only select 'Ec2' if this system will be run on a system with the EC2 metadata service present. Doing so incorrectly will result in a substantial timeout on boot.
+
+     Which data sources should be searched?
+
+     [ ] NoCloud: Reads info from /var/lib/cloud/seed only  
+     [ ] ConfigDrive: Reads data from Openstack Config Drive  
+     [ ] OpenNebula: read from OpenNebula context disk  
+     [ ] DigitalOcean: reads data from Droplet datasource  
+     [*] Azure: read from MS Azure cdrom. Requires walinux-agent
+
+     <Ok>
+     ```
 
      1. Toggle the **(*)** by pressing spacebar to activate **NoCloud** and remove Azure.
 
@@ -130,7 +126,20 @@ To change the data source of the VM image, follow these steps:
 
      Example output:
 
-     :::image type="content" source="media/virtual-machine-azure-marketplace-ubuntu/no-cloud-output.png" alt-text="Screenshot of the NoCloud update output." lightbox="../manage/media/virtual-machine-azure-marketplace-ubuntu/no-cloud-output.png":::
+     ```console
+     Cloud-init supports searching different "Data Sources" for information that it uses to configure a cloud instance.
+
+     Warning: Only select 'Ec2' if this system will be run on a system with the EC2 metadata service present. Doing so incorrectly will result in a substantial timeout on boot.
+
+     Which data sources should be searched?
+
+     [*] NoCloud: Reads info from /var/lib/cloud/seed only  
+     [ ] ConfigDrive: Reads data from Openstack Config Drive  
+     [ ] OpenNebula: read from OpenNebula context disk  
+     [ ] DigitalOcean: reads data from Droplet datasource  
+     [ ] Azure: read from MS Azure cdrom. Requires walinux-agent
+     <Ok>
+     ```
 
 1. To check that the file was updated, run this command:
 
