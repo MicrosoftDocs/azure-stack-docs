@@ -4,12 +4,12 @@ description: Learn how to prepare and export a Ubuntu Azure Marketplace VM image
 ms.topic: how-to
 author: ronmiab
 ms.author: robess
-ms.date: 09/04/2025
+ms.date: 09/05/2025
 ai-usage: ai-assisted
 ms.custom:
   - ai-gen-docs-bap
   - ai-gen-title
-  - ai-seo-date:09/04/2025
+  - ai-seo-date:09/05/2025
   - ai-gen-description
 ---
 
