@@ -92,7 +92,7 @@ The moc-operator network security group service returned an error while reconcil
   
 ## Next steps
 
-- Review FAQ article about Azure Local SDN enabled by Azure Arc.
+- Review the [FAQs about Azure Local SDN enabled by Azure Arc](../concepts/sdn-frequently-asked-questions.yml).
 
 ::: moniker-end
 
