@@ -77,7 +77,7 @@ For information on activating AKS, see [AKS on Azure Local](/azure/aks/hybrid/ak
 
 When an Azure Local instance uses different hardware models, operating system versions, or billing models this is known as a mixed-node scenario. Specifically for OEM license, if your instance includes a mixed-node scenario where one or more of your machines don't have the OEM license, a notification in your monthly billing status details appears.
 
-***We have detected mixed nodes in your instance. You will be billed monthly for each node in your instance as one or more servers in your instannce do not have an OEM license. To see which servers do not have the OEM license, go to Overview > Nodes and check the OEM license column. Learn more.***
+***We have detected mixed nodes in your instance. You will be billed monthly for each node in your instance as one or more machines in your instannce do not have an OEM license. To see which machines do not have the OEM license, go to Overview > Nodes and check the OEM license column. Learn more.***
 
 > [!NOTE]
 > Using the OEM license for Azure Local in a mixed-node scenario may lead to inadvertent billing issues. All nodes in an Azure Local system require uniformity across the hardware, operating system, and billing treatment.
