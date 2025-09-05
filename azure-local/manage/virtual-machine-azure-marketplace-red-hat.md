@@ -170,7 +170,7 @@ To change the data source of the VM image, follow these steps
 
 To export an Azure VM OS disk to a VHD on the Azure Local cluster, follow these steps:
 
-1. Navigate to the **VM overview** \>, under the **Settings** option select **Disks**, and select the **Disks name** link.
+1. In the Azure portal for your Azure Local resource, go to the **VM overview**. Under the **Settings** option, select **Disks**, and select the **Disks name** link.
 
    :::image type="content" source="media/virtual-machine-azure-marketplace-red-hat-enterprise/disks-name.png" alt-text="Screenshot of the OS disk details page." lightbox="../manage/media/virtual-machine-azure-marketplace-red-hat-enterprise/disks-name.png":::
 
@@ -187,7 +187,7 @@ To create an Azure Local image using the SAS token, run this command:
 ```azurecli
 $rg = "<resource-group>"
 $cl = "/subscriptions/<sub>/resourcegroups/$rg/providers/microsoft.extendedlocation/customlocations/<customlocation-name>"
-$sas = "https://EXAMPLE.blob.storage.azure.net/EXAMPLE/abcd<sas-token>"
+$sas = '"https://EXAMPLE.blob.storage.azure.net/EXAMPLE/abcd<sas-token>"'
 
 az stack-hci-vm image create -g $rg --custom-location $cl --name "<IMAGE-NAME>" --os-type "Linux" --image-path $sas
 ```

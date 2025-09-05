@@ -104,7 +104,25 @@ To change the data source of the VM image, follow these steps:
 
      Example output:
 
-     :::image type="content" source="media/virtual-machine-azure-marketplace-ubuntu/no-cloud.png" alt-text="Screenshot of the NoCloud update." lightbox="../manage/media/virtual-machine-azure-marketplace-ubuntu/no-cloud.png":::
+    ┌───────────────────────────── Configuring cloud-init ──────────────────────────────┐
+    │ Cloud-init supports searching different "Data Sources" for information            │
+    │ that it uses to configure a cloud instance.                                      │
+    │                                                                                  │
+    │ Warning: Only select 'Ec2' if this system will be run on a system with           │
+    │ the EC2 metadata service present. Doing so incorrectly will result in a          │
+    │ substantial timeout on boot.                                                     │
+    │                                                                                  │
+    │ Which data sources should be searched?                                           │
+    │                                                                                  │
+    │ [ ] NoCloud: Reads info from /var/lib/cloud/seed only                            │
+    │ [ ] ConfigDrive: Reads data from Openstack Config Drive                          │
+    │ [ ] OpenNebula: read from OpenNebula context disk                                │
+    │ [ ] DigitalOcean: reads data from Droplet datasource                             │
+    │ [*] Azure: read from MS Azure cdrom. Requires walinux-agent                      │
+    │                                                                                  │
+    │                                     <Ok>                                         │
+    │                                                                                  │
+    └──────────────────────────────────────────────────────────────────────────────────┘
 
      1. Toggle the **(*)** by pressing spacebar to activate **NoCloud** and remove Azure.
 
@@ -142,9 +160,9 @@ To change the data source of the VM image, follow these steps:
 
 To export an Azure VM OS disk to a VHD on the Azure Local cluster, follow these steps:
 
-1. Navigate to the **VM overview**, under the **Settings** option select **Disks**, and select the **Disks name** link.
+1. In the Azure portal for your Azure Local resource, go to the **VM overview**. Under the **Settings** option, select **Disks**, and select the **Disks name** link.
 
-   :::image type="content" source="media/virtual-machine-azure-marketplace-ubuntu/disk-name.png" alt-text="SScreenshot of the OS disk details page." lightbox="../manage/media/virtual-machine-azure-marketplace-ubuntu/disk-name.png":::
+   :::image type="content" source="media/virtual-machine-azure-marketplace-ubuntu/disk-name.png" alt-text="Screenshot of the OS disk details page." lightbox="../manage/media/virtual-machine-azure-marketplace-ubuntu/disk-name.png":::
 
 1. Under **Settings**, select **Disk Export**, and then select **Generate URL** to generate a secure URL for the disk.
 
@@ -159,7 +177,7 @@ To create an Azure Local image using the SAS token, run this command:
 ```azurecli
 $rg = "<resource-group>"
 $cl = "/subscriptions/<sub>/resourcegroups/$rg/providers/microsoft.extendedlocation/customlocations/<customlocation-name>"
-$sas = "https://EXAMPLE.blob.storage.azure.net/EXAMPLE/abcd<sas-token>"
+$sas = '"https://EXAMPLE.blob.storage.azure.net/EXAMPLE/abcd<sas-token>"'
 
 az stack-hci-vm image create -g $rg --custom-location $cl --name "<IMAGE-NAME>" --os-type "Linux" --image-path $sas
 ```
