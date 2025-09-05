@@ -87,7 +87,7 @@ Here are some examples of mixed-mode scenarios that aren't supported:
 | Scenario                                | Description         |
 |-----------------------------------------|---------------------|
 |Different hardware models or generations. | Using different manufacturers or different generations of hardware within the same Azure Local instance isn't supported.|
-|Varying operating systems or versions.    | Running different operating systems or different versions of the same operating system across the nodes in an Azure Local Instance isn't supported.|
+|Varying operating systems or versions.    | Running different operating systems or different versions of the same operating system across the nodes in an Azure Local instance isn't supported.|
 |Different billing on machines.        | Mixing machine hardware sold with an OEM license for Azure Local and machine hardware purchased with a regular Azure subscription isn't supported.|
 
 For support with billing issues related to mixed node scenarios, file an Azure support request through [the Azure portal](https://portal.azure.com).
