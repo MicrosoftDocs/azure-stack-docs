@@ -4,7 +4,7 @@ description: Learn how to create network security groups, network security rules
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 07/02/2025
+ms.date: 09/05/2025
 ms.service: azure-local
 ---
 
@@ -411,6 +411,6 @@ You can apply a default network access policy to an existing VM.
 
 ::: moniker range="<=azloc-2505"
 
-This feature is available only in Azure Local 2506 or later.
+This feature is available in Azure Local 2506 or later with OS build 26100.xxxx.
 
 ::: moniker-end
