@@ -41,6 +41,7 @@ Review the parameters used in the script:
 |Parameters  |Description  |
 |------------|-------------|
 |`SubscriptionID`    |The ID of the subscription used to register your machines with Azure Arc.         |
+|`TenantID`          |The tenant ID used to register your machines with Azure Arc. Go to your Microsoft Entra ID and copy the tenant ID property.         |
 |`ResourceGroup`     |The resource group precreated for Arc registration of the machines. A resource group is created if one doesn't exist.         |
 |`Region`            |The Azure region used for registration. See the [Supported regions](../concepts/system-requirements-23h2.md#azure-requirements) that can be used.          |
 |`ProxyServer`       |Optional parameter. Proxy Server address when required for outbound connectivity. |
@@ -59,6 +60,9 @@ $Subscription = "YourSubscriptionID"
 
 #Define the resource group where you want to register your Azure Local machine with Arc.
 $RG = "YourResourceGroupName"
+
+#Define the tenant you will use to register your machine as Arc device
+$Tenant = "YourTenantID"
 
 #Define the region to use to register your server as Arc device
 #Do not use spaces or capital letters when defining region
@@ -90,6 +94,7 @@ $ProxyBypassList = "localhost,127.0.0.1,*.contoso.com,machine1,machine2,machine3
 PS C:\Users\SetupUser> $Subscription = "Subscription ID"
 PS C:\Users\SetupUser> $RG = "myashcirg"
 PS C:\Users\SetupUser> $Region = "eastus"
+PS C:\Users\SetupUser> $Tenant = "Your Tenant ID"
 PS C:\Users\SetupUser> $ProxyServer = "http://192.168.10.10:8080"
 PS C:\Users\SetupUser> $ProxyBypassList = "localhost,127.0.0.1,*.contoso.com,machine1,machine2,machine3,machine4,machine5,192.168.*.*,AzureLocal-1"
 ```
@@ -105,7 +110,7 @@ PS C:\Users\SetupUser> $ProxyBypassList = "localhost,127.0.0.1,*.contoso.com,mac
 
     ```powershell
     #Invoke the registration script. Use a supported region.
-    Invoke-AzStackHciArcInitialization -SubscriptionID $Subscription -ResourceGroup $RG -Region $Region -Cloud "AzureCloud" -Proxy $ProxyServer -ProxyBypass $ProxyBypassList 
+    Invoke-AzStackHciArcInitialization -SubscriptionID $Subscription -ResourceGroup $RG -Region $Region -TenantId $Tenant -Cloud "AzureCloud" -Proxy $ProxyServer -ProxyBypass $ProxyBypassList 
     ```
 
     For a list of supported Azure regions, see [Azure requirements](../concepts/system-requirements-23h2.md#azure-requirements).
@@ -313,6 +318,7 @@ Review the parameters used in the script:
 |`SubscriptionID`    |The ID of the subscription used to register your machines with Azure Arc.         |
 |`ResourceGroup`     |The resource group precreated for Arc registration of the machines. A resource group is created if one doesn't exist.         |
 |`Region`            |The Azure region used for registration. See the [Supported regions](../concepts/system-requirements-23h2.md#azure-requirements) that can be used.          |
+|`TenantID`          |The tenant ID used to register your machines with Azure Arc. Go to your Microsoft Entra ID and copy the tenant ID property.         |
 
 
 ## Step 2: Set parameters
@@ -327,6 +333,9 @@ $Subscription = "YourSubscriptionID"
 #Define the resource group where you want to register your machine as Arc device
 $RG = "YourResourceGroupName"
 
+#Define the tenant you will use to register your machine as Arc device
+$Tenant = "YourTenantID"
+
 #Define the region to use to register your server as Arc device
 #Do not use spaces or capital letters when defining region
 $Region = "eastus"
@@ -339,6 +348,7 @@ $Region = "eastus"
 ```output
 PS C:\Users\SetupUser> $Subscription = "Subscription ID"
 PS C:\Users\SetupUser> $RG = "myashcirg"
+PS C:\Users\SetupUser> $Tenant = "Your tenant ID"
 PS C:\Users\SetupUser> $Region = "eastus"
 ```
 </details>
@@ -352,7 +362,7 @@ PS C:\Users\SetupUser> $Region = "eastus"
 
     ```powershell
     #Invoke the registration script. Use a supported region.
-    Invoke-AzStackHciArcInitialization -SubscriptionID $Subscription -ResourceGroup $RG -Region $Region -Cloud "AzureCloud"
+    Invoke-AzStackHciArcInitialization -SubscriptionID $Subscription -ResourceGroup $RG -TenantId $Tenant -Region $Region -Cloud "AzureCloud"
     ```
 
     For a list of supported Azure regions, see [Azure requirements](../concepts/system-requirements-23h2.md#azure-requirements).
