@@ -27,6 +27,14 @@ Before you begin, you must have:
 
 - An Azure Local cluster set up with a logical network and storage path for workloads. For more information, see [Create logical networks](../manage/create-logical-networks.md) and [Create storage paths](../manage/create-storage-path.md).
 
+- Make sure to review and [complete the prerequisites](../manage/azure-arc-vm-management-prerequisites.md).
+
+- If using a client to connect to your Azure Local instance, see [Connect to Azure Local via Azure CLI client](../manage/azure-arc-vm-management-prerequisites.md#azure-command-line-interface-cli-requirements).
+
+## Sign in and set subscription
+
+[!INCLUDE [hci-vm-sign-in-set-subscription](../includes/hci-vm-sign-in-set-subscription.md)]
+
 ## Set up and prepare an Azure VM
 
 To set up and prepare an Azure VM, follow these steps:
