@@ -124,8 +124,7 @@ To change the data source of the VM image, follow these steps:
      [ ] OpenNebula: read from OpenNebula context disk  
      [ ] DigitalOcean: reads data from Droplet datasource  
      [*] Azure: read from MS Azure cdrom. Requires walinux-agent
-
-     `<Ok>`
+     <Ok>
      ```
 
      1. Toggle the **(*)** by pressing spacebar to activate **NoCloud** and remove Azure.
