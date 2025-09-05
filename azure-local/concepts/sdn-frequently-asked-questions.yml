@@ -7,18 +7,15 @@ metadata:
   ms.author: alkohli
   ms.service: azure-local
   ms.date: 09/05/2025
-
 title: FAQ - SDN enabled by Azure Arc on Azure Local 
-summary: This FAQ provides information about Software-Defined Networking (SDN) enabled by Azure Arc on your Azure Local VMs. This feature is available in Azure Local version 2506 and later.
-
-::: moniker range=">=azloc-2506"
+summary: This FAQ provides information about Software-Defined Networking (SDN) enabled by Azure Arc on your Azure Local VMs. This feature is available in Azure Local 2506 or later with OS build 26100.xxxx.
 
 sections:
   - name: Ignored
     questions:
       - question: Which version of Azure Local supports SDN enabled by Azure Arc?
         answer: |
-          SDN enabled by Azure Arc is available in Azure Local version 2506 running OS version 26100.xxxx and later. 
+          SDN enabled by Azure Arc is available in Azure Local version 2506 or later running OS version 26100.xxxx. 
 
       - question: Will I have downtime for my Azure Local VMs when I enable Network Controller via the PowerShell cmdlet?
         answer: |
@@ -28,7 +25,7 @@ sections:
 
       - question: Why am I experiencing network connectivity issues for my unmanaged VMs on Azure Local after I enabled SDN enabled by Azure Arc?
         answer: |
-          You can experience network connectivity issues if you enable Network Controller and create unmanaged VMs outside Azure interfaces like Azure CLI, Azure portal, Azure PowerShell, and Azure Resource Manager APIs. To fix these issues, see how to [unblock and configure the nullport profile for unmanaged VMs.  # TODO: Add link
+          You can experience network connectivity issues if you enable Network Controller and create unmanaged VMs outside Azure interfaces like Azure CLI, Azure portal, Azure PowerShell, and Azure Resource Manager APIs. To fix these issues, see how to [unblock and configure the null port profile for unmanaged VMs]().
 
       - question: Why can't I connect to my Azure Local VMs, if I associate an NSG with the VM network interface or its logical network?
         answer: |
@@ -41,17 +38,8 @@ sections:
       - question: Can I configure static network interfaces after the Azure Local VM is provisioned on an Azure Local instance with SDN enabled by Azure Arc?
         answer: |
           No. You can't add a secondary network interface to a VM after provisioning. This setup causes both interfaces to act as the default gateway, which leads to asymmetric networking, packet loss, and unpredictable networking. Set up all needed static network interfaces during VM provisioning when using SDN enabled by Azure Arc.
-
       - question: Why am I seeing unexpected traffic drop or blocks for my Azure Local VMs?
         answer: |
           If logical networks and VM network interfaces on your Azure Local VMs have NSGs with conflicting allow or deny rules, you can see unexpected traffic drops or blocks.
 
           When an inbound packet arrives, Azure Local checks the logical network NSG first, then the network interface NSG. For outbound traffic, Azure Local checks the network interface NSG first, then the logical network NSG. If the first NSG has a **Deny** rule and the next has an **Allow** rule, Azure Local drops the packet.
-
-::: moniker-end
-
-::: moniker range="<=azloc-2505"
-
-This feature is available in Azure Local 2506 or later with OS build 26100.xxxx.
-
-::: moniker-end
