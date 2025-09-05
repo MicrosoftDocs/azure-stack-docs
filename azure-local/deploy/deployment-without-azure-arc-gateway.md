@@ -27,7 +27,7 @@ This article details how to register Azure Local machines with Azure Arc and wit
 
 Make sure the following prerequisites are met before proceeding:
 
-- You have access to Azure Local machines running release 2505 or later. Prior versions don't support this scenario.
+- You have access to Azure Local machines running release 2505 or later. 
 - You have assigned the appropriate permissions to the subscription used for registration. For more information, see [Assign required permissions for Azure Local deployment](deployment-arc-register-server-permissions.md).
 
 
@@ -94,7 +94,7 @@ $ProxyBypassList = "localhost,127.0.0.1,*.contoso.com,machine1,machine2,machine3
 PS C:\Users\SetupUser> $Subscription = "Subscription ID"
 PS C:\Users\SetupUser> $RG = "myashcirg"
 PS C:\Users\SetupUser> $Region = "eastus"
-PS C:\Users\SetupUser> $Tenant = "Your Tenant ID"
+PS C:\Users\SetupUser> $Tenant = "Tenant ID"
 PS C:\Users\SetupUser> $ProxyServer = "http://192.168.10.10:8080"
 PS C:\Users\SetupUser> $ProxyBypassList = "localhost,127.0.0.1,*.contoso.com,machine1,machine2,machine3,machine4,machine5,192.168.*.*,AzureLocal-1"
 ```
@@ -301,7 +301,7 @@ This article details how to register using Azure Arc gateway on Azure Local with
 
 Make sure the following prerequisites are met before proceeding:
 
-- You have access to Azure Local machines running release 2505 or later. Prior versions don't support this scenario.
+- You have access to Azure Local machines running release 2505 or later. 
 - You have assigned the appropriate permissions to the subscription used for registration. For more information, see [Assign required permissions for Azure Local deployment](deployment-arc-register-server-permissions.md).
 
 
@@ -551,7 +551,7 @@ This article details how to register Azure Local machines with Azure Arc and wit
 
 Make sure the following prerequisites are met before proceeding:
 
-- You have access to Azure Local machines running release 2505 or later. Prior versions don't support this scenario.
+- You have access to Azure Local machines running release 2503 or 2504. 
 - You have assigned the appropriate permissions to the subscription used for registration. For more information, see [Assign required permissions for Azure Local deployment](deployment-arc-register-server-permissions.md).
 
 
@@ -835,7 +835,7 @@ This article details how to register using Azure Arc gateway on Azure Local with
 
 Make sure the following prerequisites are met before proceeding:
 
-- You have access to Azure Local machines running release 2505 or later. Prior versions don't support this scenario.
+- You have access to Azure Local machines running release 2503 or 2504.
 - You have assigned the appropriate permissions to the subscription used for registration. For more information, see [Assign required permissions for Azure Local deployment](deployment-arc-register-server-permissions.md).
 
 
