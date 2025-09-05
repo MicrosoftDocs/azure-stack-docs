@@ -4,13 +4,15 @@ description: Troubleshoot and resolve common Azure Local SDN network controller 
 author: alkohli
 contributors:
 ms.topic: concept-article
-ms.date: 07/02/2025
+ms.date: 09/05/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
 
 
 # Troubleshoot Software-Defined Networking enabled by Azure Arc on Azure Local Virtual Machines
+
+::: moniker range=">=azloc-2506"
 
 This article provides troubleshooting steps for common issues encountered when you deploy and manage Software-Defined Networking (SDN) enabled by Azure Arc on your Azure Local VMs. The article covers errors during the action plan deployment, VM connectivity issues, and network security group (NSG) configurations.
 
@@ -91,3 +93,11 @@ The moc-operator network security group service returned an error while reconcil
 ## Next steps
 
 - Review FAQ article about Azure Local SDN enabled by Azure Arc.
+
+::: moniker-end
+
+::: moniker range="<=azloc-2505"
+
+This feature is available in Azure Local 2506 or later with OS build 26100.xxxx.
+
+::: moniker-end
