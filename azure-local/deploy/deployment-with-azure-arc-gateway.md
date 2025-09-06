@@ -319,9 +319,6 @@ $RG = "yourresourcegroupname"
 #Define the tenant you will use to register your machine as Arc device
 $Tenant = "YourTenantID"
 
-#Define the tenant you will use to register your machine as Arc device
-$Tenant = "YourTenantID"
-
 #Define the Arc gateway resource ID from Azure 
 $ArcgwId = "/subscriptions/yourarcgatewayid/resourceGroups/yourresourcegroupname/providers/Microsoft.HybridCompute/gateways/yourarcgatewayname" 
 ```
