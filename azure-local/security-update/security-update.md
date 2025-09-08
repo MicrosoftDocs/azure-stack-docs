@@ -3,7 +3,7 @@ title:  Security updates for Azure Local
 description: Security updates for Azure Local.
 author: alkohli
 ms.topic: conceptual
-ms.date: 08/22/2025
+ms.date: 09/08/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
@@ -441,13 +441,13 @@ For a list of the files that are provided in this update, download the file info
 
 ::: moniker-end
 
-::: moniker range="=azloc-2503"
+::: moniker range="=azloc-previous"
 
 ## March OS security update (KB5053599) for Azure Local
 
 This article describes the OS security update for Azure Local that was released on March 11, 2025 and applies to OS build 25398.1486.
 
-## Improvements 
+### Improvements 
 
 This security update includes quality improvements. Below is a summary of the key issues that this update addresses when you install this KB. If there are new features, it lists them as well. The bold text within the brackets indicates the item or area of the change.
 
@@ -467,7 +467,7 @@ This security update includes quality improvements. Below is a summary of the ke
 
 For more information about security vulnerabilities, see the [Security Update Guide](https://portal.msrc.microsoft.com/security-guidance) and the [March 2025 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2025-Mar).
 
-## Known issues
+### Known issues
 
 The following is a known issue with this update.
 
@@ -489,13 +489,9 @@ Microsoft now combines the latest servicing stack update (SSU) for your operatin
 
 To install the LCU on your Azure Local instance, see [Update Azure Stack Local instances](../update/about-updates-23h2.md).
 
-## File list
+### File list
 
 For a list of the files that are provided in this update, download the file information for [Cumulative update KB 5053599](https://go.microsoft.com/fwlink/?linkid=2309855).
-
-::: moniker-end
-
-::: moniker range="=azloc-previous"
 
 ## February OS security update (KB5051980) for Azure Local
 
