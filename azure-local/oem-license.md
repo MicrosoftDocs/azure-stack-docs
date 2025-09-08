@@ -52,14 +52,14 @@ To verify if you have an active OEM license for Azure Local, use these steps:
 
 1. Go to [the Azure portal](https://portal.azure.com).
 2. Search for your Azure Local instance.
-3. Under your cluster, select **Overview** to check the **Billing status**.
+3. Under your Azure Local instance, select **Overview** to check the **Billing status**.
     - If you have an active OEM license for Azure Local, your billing status should be **OEM License**, and your OEM license status should be **Activated**.
 
-        :::image type="content" source="media/oem-license/active-oem-license.png" alt-text="Screenshot of a cluster with an active OEM license for Azure Local." lightbox="media/oem-license/active-oem-license.png":::
+        :::image type="content" source="media/oem-license/active-oem-license.png" alt-text="Screenshot of an instance with an active OEM license for Azure Local." lightbox="media/oem-license/active-oem-license.png":::
 
     - If you don't have an active OEM license for Azure Local, you should see a billing status of **Billed monthly**, and an OEM license status of **Not activated**.
 
-        :::image type="content" source="media/oem-license/no-active-oem-license.png" alt-text="Screenshot of a billed monthly cluster without an active OEM license for Azure Local." lightbox="media/oem-license/no-active-oem-license.png":::
+        :::image type="content" source="media/oem-license/no-active-oem-license.png" alt-text="Screenshot of a billed instance, in monthly terms, without an active OEM license for Azure Local." lightbox="media/oem-license/no-active-oem-license.png":::
 
 For support with your OEM license for Azure Local first contact your OEM vendor. If you're unable to obtain vendor support, file an Azure support request through [the Azure portal](https://portal.azure.com/).
 
@@ -75,9 +75,9 @@ For information on activating AKS, see [AKS on Azure Local](/azure/aks/hybrid/ak
 
 ## Mixed-node scenarios
 
-When a cluster or system uses different hardware models, operating system versions, or billing models this is known as a mixed-node scenario. Specifically for OEM license, if your cluster includes a mixed-node scenario where one or more of your machines don't have the OEM license, a notification in your monthly billing status details appears.
+When an Azure Local instance uses different hardware models, operating system versions, or billing models this is known as a mixed-node scenario. Specifically for OEM license, if your instance includes a mixed-node scenario where one or more of your machines don't have the OEM license, a notification in your monthly billing status details appears.
 
-***We have detected mixed nodes in your cluster. You will be billed monthly for each node in your cluster as one or more servers in your cluster do not have an OEM license. To see which servers do not have the OEM license, go to Overview > Nodes and check the OEM license column. Learn more.***
+***We have detected mixed nodes in your instance. You will be billed monthly for each node in your instance as one or more machines in your instannce do not have an OEM license. To see which machines do not have the OEM license, go to Overview > Nodes and check the OEM license column. Learn more.***
 
 > [!NOTE]
 > Using the OEM license for Azure Local in a mixed-node scenario may lead to inadvertent billing issues. All nodes in an Azure Local system require uniformity across the hardware, operating system, and billing treatment.
@@ -86,8 +86,8 @@ Here are some examples of mixed-mode scenarios that aren't supported:
 
 | Scenario                                | Description         |
 |-----------------------------------------|---------------------|
-|Different hardware models or generations. | Using different manufacturers or different generations of hardware within the same cluster isn't supported.|
-|Varying operating systems or versions.    | Running different operating systems or different versions of the same operating system across the nodes in a cluster isn't supported.|
+|Different hardware models or generations. | Using different manufacturers or different generations of hardware within the same Azure Local instance isn't supported.|
+|Varying operating systems or versions.    | Running different operating systems or different versions of the same operating system across the nodes in an Azure Local instance isn't supported.|
 |Different billing on machines.        | Mixing machine hardware sold with an OEM license for Azure Local and machine hardware purchased with a regular Azure subscription isn't supported.|
 
 For support with billing issues related to mixed node scenarios, file an Azure support request through [the Azure portal](https://portal.azure.com).

@@ -1,334 +1,354 @@
 {
   "redirections": [
-    { 
-      "source_path":"azure-stack/operator/hotfix-v0.md", 
-      "redirect_url":"/azure-stack/operator/hotfix-1-2206-1-25", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/hotfix-v0.md",
+      "redirect_url": "/azure-stack/operator/hotfix-1-2206-1-25",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/hotfix-1-2102-30-111.md", 
-      "redirect_url":"/azure-stack/operator", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/hotfix-1-2102-30-111.md",
+      "redirect_url": "/azure-stack/operator",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/hotfix-1-2102-30-122.md", 
-      "redirect_url":"/azure-stack/operator", 
-      "redirect_document_id":false
-    },             
-    { 
-      "source_path":"azure-stack/operator/hotfix-1-2108-2-71.md", 
-      "redirect_url":"/azure-stack/operator/hotfix-1-2108-2-83", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/hotfix-1-2102-30-122.md",
+      "redirect_url": "/azure-stack/operator",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/hotfix-1-2108-2-73.md", 
-      "redirect_url":"/azure-stack/operator/hotfix-1-2108-2-83", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/hotfix-1-2108-2-71.md",
+      "redirect_url": "/azure-stack/operator/hotfix-1-2108-2-83",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/hotfix-1-2108-2-81.md", 
-      "redirect_url":"/azure-stack/operator/hotfix-1-2108-2-83", 
-      "redirect_document_id":false
-    },        
-    { 
-      "source_path":"azure-stack/operator/hotfix-1-2008-41-163.md", 
-      "redirect_url":"/azure-stack/operator/hotfix-1-2008-41-161", 
-      "redirect_document_id":false
-    },            
-    { 
-      "source_path":"azure-stack/operator/hotfix-1-2301-2-58.md", 
-      "redirect_url":"/azure-stack/operator/hotfix-1-2301-2-64", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/hotfix-1-2108-2-73.md",
+      "redirect_url": "/azure-stack/operator/hotfix-1-2108-2-83",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/hotfix-1-2002-66-173.md", 
-      "redirect_url":"/azure-stack/operator/hotfix-1-2002-69-179", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/hotfix-1-2108-2-81.md",
+      "redirect_url": "/azure-stack/operator/hotfix-1-2108-2-83",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/hotfix-1-2002-67-175.md", 
-      "redirect_url":"/azure-stack/operator/hotfix-1-2002-69-179", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/hotfix-1-2008-41-163.md",
+      "redirect_url": "/azure-stack/operator/hotfix-1-2008-41-161",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/hotfix-1-2005-29-100.md", 
-      "redirect_url":"/azure-stack/operator/hotfix-1-2005-48-137", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/hotfix-1-2301-2-58.md",
+      "redirect_url": "/azure-stack/operator/hotfix-1-2301-2-64",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/hotfix-1-2005-30-102.md", 
-      "redirect_url":"/azure-stack/operator/hotfix-1-2005-48-137", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/hotfix-1-2002-66-173.md",
+      "redirect_url": "/azure-stack/operator/hotfix-1-2002-69-179",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/hotfix-1-2005-32-106.md", 
-      "redirect_url":"/azure-stack/operator/hotfix-1-2005-48-137", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/hotfix-1-2002-67-175.md",
+      "redirect_url": "/azure-stack/operator/hotfix-1-2002-69-179",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/hotfix-1-2005-33-108.md", 
-      "redirect_url":"/azure-stack/operator/hotfix-1-2005-48-137", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/hotfix-1-2005-29-100.md",
+      "redirect_url": "/azure-stack/operator/hotfix-1-2005-48-137",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/hotfix-1-2005-35-112.md", 
-      "redirect_url":"/azure-stack/operator/hotfix-1-2005-48-137", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/hotfix-1-2005-30-102.md",
+      "redirect_url": "/azure-stack/operator/hotfix-1-2005-48-137",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/hotfix-1-2005-41-124.md", 
-      "redirect_url":"/azure-stack/operator/hotfix-1-2005-48-137", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/hotfix-1-2005-32-106.md",
+      "redirect_url": "/azure-stack/operator/hotfix-1-2005-48-137",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/hotfix-1-2005-42-126.md", 
-      "redirect_url":"/azure-stack/operator/hotfix-1-2005-48-137", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/hotfix-1-2005-33-108.md",
+      "redirect_url": "/azure-stack/operator/hotfix-1-2005-48-137",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/hotfix-1-2005-46-133.md", 
-      "redirect_url":"/azure-stack/operator/hotfix-1-2005-48-137", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/hotfix-1-2005-35-112.md",
+      "redirect_url": "/azure-stack/operator/hotfix-1-2005-48-137",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/hotfix-1-2005-47-135.md", 
-      "redirect_url":"/azure-stack/operator/hotfix-1-2005-48-137", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/hotfix-1-2005-41-124.md",
+      "redirect_url": "/azure-stack/operator/hotfix-1-2005-48-137",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/hotfix-1-2008-25-114.md", 
-      "redirect_url":"/azure-stack/operator/hotfix-1-2008-41-161", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/hotfix-1-2005-42-126.md",
+      "redirect_url": "/azure-stack/operator/hotfix-1-2005-48-137",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/hotfix-1-2008-26-116.md", 
-      "redirect_url":"/azure-stack/operator/hotfix-1-2008-41-161", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/hotfix-1-2005-46-133.md",
+      "redirect_url": "/azure-stack/operator/hotfix-1-2005-48-137",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/hotfix-1-2008-27-118.md", 
-      "redirect_url":"/azure-stack/operator/hotfix-1-2008-41-161", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/hotfix-1-2005-47-135.md",
+      "redirect_url": "/azure-stack/operator/hotfix-1-2005-48-137",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/hotfix-1-2008-31-126.md", 
-      "redirect_url":"/azure-stack/operator/hotfix-1-2008-41-161", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/hotfix-1-2008-25-114.md",
+      "redirect_url": "/azure-stack/operator/hotfix-1-2008-41-161",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/hotfix-1-2008-33-131.md", 
-      "redirect_url":"/azure-stack/operator/hotfix-1-2008-41-161", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/hotfix-1-2008-26-116.md",
+      "redirect_url": "/azure-stack/operator/hotfix-1-2008-41-161",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/hotfix-1-2008-37-139.md", 
-      "redirect_url":"/azure-stack/operator/hotfix-1-2008-41-161", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/hotfix-1-2008-27-118.md",
+      "redirect_url": "/azure-stack/operator/hotfix-1-2008-41-161",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/hotfix-1-2008-40-148.md", 
-      "redirect_url":"/azure-stack/operator/hotfix-1-2008-41-161", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/hotfix-1-2008-31-126.md",
+      "redirect_url": "/azure-stack/operator/hotfix-1-2008-41-161",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/hotfix-1-2008-40-150.md", 
-      "redirect_url":"/azure-stack/operator/hotfix-1-2008-41-161", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/hotfix-1-2008-33-131.md",
+      "redirect_url": "/azure-stack/operator/hotfix-1-2008-41-161",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/hotfix-1-2008-40-151.md", 
-      "redirect_url":"/azure-stack/operator/hotfix-1-2008-41-161", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/hotfix-1-2008-37-139.md",
+      "redirect_url": "/azure-stack/operator/hotfix-1-2008-41-161",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/hotfix-1-2008-40-154.md", 
-      "redirect_url":"/azure-stack/operator/hotfix-1-2008-41-161", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/hotfix-1-2008-40-148.md",
+      "redirect_url": "/azure-stack/operator/hotfix-1-2008-41-161",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/hotfix-1-2008-40-156.md", 
-      "redirect_url":"/azure-stack/operator/hotfix-1-2008-41-161", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/hotfix-1-2008-40-150.md",
+      "redirect_url": "/azure-stack/operator/hotfix-1-2008-41-161",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/hotfix-1-2008-41-159.md", 
-      "redirect_url":"/azure-stack/operator/hotfix-1-2008-41-161", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/hotfix-1-2008-40-151.md",
+      "redirect_url": "/azure-stack/operator/hotfix-1-2008-41-161",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/hotfix-1-2102-28-87.md", 
-      "redirect_url":"/azure-stack/operator/hotfix-1-2102-31-153", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/hotfix-1-2008-40-154.md",
+      "redirect_url": "/azure-stack/operator/hotfix-1-2008-41-161",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/hotfix-1-2102-28-89.md", 
-      "redirect_url":"/azure-stack/operator/hotfix-1-2102-31-153", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/hotfix-1-2008-40-156.md",
+      "redirect_url": "/azure-stack/operator/hotfix-1-2008-41-161",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/hotfix-1-2102-30-101.md", 
-      "redirect_url":"/azure-stack/operator/hotfix-1-2102-31-153", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/hotfix-1-2008-41-159.md",
+      "redirect_url": "/azure-stack/operator/hotfix-1-2008-41-161",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/hotfix-1-2102-30-102.md", 
-      "redirect_url":"/azure-stack/operator/hotfix-1-2102-31-153", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/hotfix-1-2102-28-87.md",
+      "redirect_url": "/azure-stack/operator/hotfix-1-2102-31-153",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/hotfix-1-2102-30-104.md", 
-      "redirect_url":"/azure-stack/operator/hotfix-1-2102-31-153", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/hotfix-1-2102-28-89.md",
+      "redirect_url": "/azure-stack/operator/hotfix-1-2102-31-153",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/hotfix-1-2102-30-106.md", 
-      "redirect_url":"/azure-stack/operator/hotfix-1-2102-31-153", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/hotfix-1-2102-30-101.md",
+      "redirect_url": "/azure-stack/operator/hotfix-1-2102-31-153",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/hotfix-1-2102-30-109.md", 
-      "redirect_url":"/azure-stack/operator/hotfix-1-2102-31-153", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/hotfix-1-2102-30-102.md",
+      "redirect_url": "/azure-stack/operator/hotfix-1-2102-31-153",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/hotfix-1-2102-30-116.md", 
-      "redirect_url":"/azure-stack/operator/hotfix-1-2102-31-153", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/hotfix-1-2102-30-104.md",
+      "redirect_url": "/azure-stack/operator/hotfix-1-2102-31-153",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/hotfix-1-2102-30-118.md", 
-      "redirect_url":"/azure-stack/operator/hotfix-1-2102-31-153", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/hotfix-1-2102-30-106.md",
+      "redirect_url": "/azure-stack/operator/hotfix-1-2102-31-153",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/hotfix-1-2102-30-132.md", 
-      "redirect_url":"/azure-stack/operator/hotfix-1-2102-31-153", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/hotfix-1-2102-30-109.md",
+      "redirect_url": "/azure-stack/operator/hotfix-1-2102-31-153",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/hotfix-1-2102-30-146.md", 
-      "redirect_url":"/azure-stack/operator/hotfix-1-2102-31-153", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/hotfix-1-2102-30-116.md",
+      "redirect_url": "/azure-stack/operator/hotfix-1-2102-31-153",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/hotfix-1-2102-30-148.md", 
-      "redirect_url":"/azure-stack/operator/hotfix-1-2102-31-153", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/hotfix-1-2102-30-118.md",
+      "redirect_url": "/azure-stack/operator/hotfix-1-2102-31-153",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/hotfix-1-2102-31-152.md", 
-      "redirect_url":"/azure-stack/operator/hotfix-1-2102-31-153", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/hotfix-1-2102-30-132.md",
+      "redirect_url": "/azure-stack/operator/hotfix-1-2102-31-153",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/hotfix-1-2108-2-83.md", 
-      "redirect_url":"/azure-stack/operator/hotfix-1-2108-2-130", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/hotfix-1-2102-30-146.md",
+      "redirect_url": "/azure-stack/operator/hotfix-1-2102-31-153",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/hotfix-1-2108-2-102.md", 
-      "redirect_url":"/azure-stack/operator/hotfix-1-2108-2-130", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/hotfix-1-2102-30-148.md",
+      "redirect_url": "/azure-stack/operator/hotfix-1-2102-31-153",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/hotfix-1-2108-2-111.md", 
-      "redirect_url":"/azure-stack/operator/hotfix-1-2108-2-130", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/hotfix-1-2102-31-152.md",
+      "redirect_url": "/azure-stack/operator/hotfix-1-2102-31-153",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/hotfix-1-2108-2-113.md", 
-      "redirect_url":"/azure-stack/operator/hotfix-1-2108-2-130", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/hotfix-1-2108-2-83.md",
+      "redirect_url": "/azure-stack/operator/hotfix-1-2108-2-130",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/hotfix-1-2108-2-127.md", 
-      "redirect_url":"/azure-stack/operator/hotfix-1-2108-2-130", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/hotfix-1-2108-2-102.md",
+      "redirect_url": "/azure-stack/operator/hotfix-1-2108-2-130",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/hotfix-1-2206-1-24.md", 
-      "redirect_url":"/azure-stack/operator/hotfix-1-2206-2-77", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/hotfix-1-2108-2-111.md",
+      "redirect_url": "/azure-stack/operator/hotfix-1-2108-2-130",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/hotfix-1-2206-1-25.md", 
-      "redirect_url":"/azure-stack/operator/hotfix-1-2206-2-77", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/hotfix-1-2108-2-113.md",
+      "redirect_url": "/azure-stack/operator/hotfix-1-2108-2-130",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/hotfix-1-2206-2-38.md", 
-      "redirect_url":"/azure-stack/operator/hotfix-1-2206-2-77", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/hotfix-1-2108-2-127.md",
+      "redirect_url": "/azure-stack/operator/hotfix-1-2108-2-130",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/hotfix-1-2206-2-52.md", 
-      "redirect_url":"/azure-stack/operator/hotfix-1-2206-2-77", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/hotfix-1-2206-1-24.md",
+      "redirect_url": "/azure-stack/operator/hotfix-1-2206-2-77",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/hotfix-1-2206-2-66.md", 
-      "redirect_url":"/azure-stack/operator/hotfix-1-2206-2-77", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/hotfix-1-2206-1-25.md",
+      "redirect_url": "/azure-stack/operator/hotfix-1-2206-2-77",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/hotfix-1-2206-2-76.md", 
-      "redirect_url":"/azure-stack/operator/hotfix-1-2206-2-77", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/hotfix-1-2206-2-38.md",
+      "redirect_url": "/azure-stack/operator/hotfix-1-2206-2-77",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/hotfix-1-2301-2-60.md", 
-      "redirect_url":"/azure-stack/operator/hotfix-1-2301-3-97", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/hotfix-1-2206-2-52.md",
+      "redirect_url": "/azure-stack/operator/hotfix-1-2206-2-77",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/hotfix-1-2301-2-63.md", 
-      "redirect_url":"/azure-stack/operator/hotfix-1-2301-3-97", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/hotfix-1-2206-2-66.md",
+      "redirect_url": "/azure-stack/operator/hotfix-1-2206-2-77",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/hotfix-1-2301-2-64.md", 
-      "redirect_url":"/azure-stack/operator/hotfix-1-2301-3-97", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/hotfix-1-2206-2-76.md",
+      "redirect_url": "/azure-stack/operator/hotfix-1-2206-2-77",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/hotfix-1-2301-3-72.md", 
-      "redirect_url":"/azure-stack/operator/hotfix-1-2301-3-97", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/hotfix-1-2301-2-60.md",
+      "redirect_url": "/azure-stack/operator/hotfix-1-2301-3-97",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/hotfix-1-2301-3-96.md", 
-      "redirect_url":"/azure-stack/operator/hotfix-1-2301-3-97", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/hotfix-1-2301-2-63.md",
+      "redirect_url": "/azure-stack/operator/hotfix-1-2301-3-97",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/hotfix-1-2306-4-73.md", 
-      "redirect_url":"/azure-stack/operator/hotfix-1-2306-4-102", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/hotfix-1-2301-2-64.md",
+      "redirect_url": "/azure-stack/operator/hotfix-1-2301-3-97",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/hotfix-1-2306-4-74.md", 
-      "redirect_url":"/azure-stack/operator/hotfix-1-2306-4-102", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/hotfix-1-2301-3-72.md",
+      "redirect_url": "/azure-stack/operator/hotfix-1-2301-3-97",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/hotfix-1-2306-4-97.md", 
-      "redirect_url":"/azure-stack/operator/hotfix-1-2306-4-102", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/hotfix-1-2301-3-96.md",
+      "redirect_url": "/azure-stack/operator/hotfix-1-2301-3-97",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/hotfix-1-2306-4-98.md", 
-      "redirect_url":"/azure-stack/operator/hotfix-1-2306-4-102", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/hotfix-1-2306-4-73.md",
+      "redirect_url": "/azure-stack/operator/hotfix-1-2306-4-102",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/hotfix-1-2306-4-101.md", 
-      "redirect_url":"/azure-stack/operator/hotfix-1-2306-4-102", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/hotfix-1-2306-4-74.md",
+      "redirect_url": "/azure-stack/operator/hotfix-1-2306-4-102",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/hotfix-1-2501-1-50.md", 
-      "redirect_url":"/azure-stack/operator/hotfix-1-2501-1-47", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/hotfix-1-2306-4-97.md",
+      "redirect_url": "/azure-stack/operator/hotfix-1-2306-4-102",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/hotfix-1-2306-4-98.md",
+      "redirect_url": "/azure-stack/operator/hotfix-1-2306-4-102",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/hotfix-1-2306-4-101.md",
+      "redirect_url": "/azure-stack/operator/hotfix-1-2306-4-102",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/hotfix-1-2501-1-50.md",
+      "redirect_url": "/azure-stack/operator/hotfix-1-2501-1-47",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/hotfix-1-2311-2-23.md",
+      "redirect_url": "/azure-stack/operator/hotfix-1-2311-3-62",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/hotfix-1-2311-3-44.md",
+      "redirect_url": "/azure-stack/operator/hotfix-1-2311-3-62",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/hotfix-1-2311-3-50.md",
+      "redirect_url": "/azure-stack/operator/hotfix-1-2311-3-62",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/hotfix-1-2311-3-61.md",
+      "redirect_url": "/azure-stack/operator/hotfix-1-2311-3-62",
+      "redirect_document_id": false
     }
   ]
 }

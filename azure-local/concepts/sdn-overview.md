@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: conceptual
 ms.service: azure-local
-ms.date: 07/07/2025
+ms.date: 09/05/2025
 ---
 
 # Software Defined Networking enabled by Azure Arc on Azure Local (preview)
@@ -126,6 +126,6 @@ For related information, see:
 
 ::: moniker range="<=azloc-2505"
 
-This feature is available in Azure Local 2506 with OS build 26100.xxxx or later.
+This feature is available in Azure Local 2506 or later with OS build 26100.xxxx.
 
 ::: moniker-end
