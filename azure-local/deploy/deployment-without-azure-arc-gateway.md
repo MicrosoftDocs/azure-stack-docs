@@ -3,7 +3,7 @@ title: Register Azure Local with Arc.
 description: Learn how to register Azure Local with Azure Arc with and without proxy setup. The proxy configuration can be done via an Arc script or via the Configurator app on Azure Local. 
 author: alkohli
 ms.topic: how-to
-ms.date: 09/04/2025
+ms.date: 09/08/2025
 ms.author: alkohli
 ms.service: azure-local
 zone_pivot_groups: register-arc-options
@@ -40,8 +40,8 @@ Review the parameters used in the script:
 
 |Parameters  |Description  |
 |------------|-------------|
-|`SubscriptionID`    |The ID of the subscription used to register your machines with Azure Arc.         |
 |`TenantID`          |The tenant ID used to register your machines with Azure Arc. Go to your Microsoft Entra ID and copy the tenant ID property.         |
+|`SubscriptionID`    |The ID of the subscription used to register your machines with Azure Arc.         |
 |`ResourceGroup`     |The resource group precreated for Arc registration of the machines. A resource group is created if one doesn't exist.         |
 |`Region`            |The Azure region used for registration. See the [Supported regions](../concepts/system-requirements-23h2.md#azure-requirements) that can be used.          |
 |`ProxyServer`       |Optional parameter. Proxy Server address when required for outbound connectivity. |
@@ -55,14 +55,14 @@ Set the parameters required for the registration script.
 Here's an example of how you should change these parameters for the `Invoke-AzStackHciArcInitialization` initialization script. Once the registration is complete, the Azure Local machines are registered in Azure Arc:
 
 ```powershell
+#Define the tenant you will use to register your machine as Arc device
+$Tenant = "YourTenantID"
+
 #Define the subscription where you want to register your Azure Local machine with Arc.
 $Subscription = "YourSubscriptionID"
 
 #Define the resource group where you want to register your Azure Local machine with Arc.
 $RG = "YourResourceGroupName"
-
-#Define the tenant you will use to register your machine as Arc device
-$Tenant = "YourTenantID"
 
 #Define the region to use to register your server as Arc device
 #Do not use spaces or capital letters when defining region
@@ -110,7 +110,7 @@ PS C:\Users\SetupUser> $ProxyBypassList = "localhost,127.0.0.1,*.contoso.com,mac
 
     ```powershell
     #Invoke the registration script. Use a supported region.
-    Invoke-AzStackHciArcInitialization -SubscriptionID $Subscription -ResourceGroup $RG -Region $Region -TenantId $Tenant -Cloud "AzureCloud" -Proxy $ProxyServer -ProxyBypass $ProxyBypassList 
+    Invoke-AzStackHciArcInitialization -TenantId $Tenant -SubscriptionID $Subscription -ResourceGroup $RG -Region $Region -Cloud "AzureCloud" -Proxy $ProxyServer -ProxyBypass $ProxyBypassList 
     ```
 
     For a list of supported Azure regions, see [Azure requirements](../concepts/system-requirements-23h2.md#azure-requirements).
@@ -121,7 +121,7 @@ PS C:\Users\SetupUser> $ProxyBypassList = "localhost,127.0.0.1,*.contoso.com,mac
     Here's a sample output of a successful registration of your machines:
 
     ```output
-    PS C:\Users\Administrator> Invoke-AzStackHciArcInitialization -SubscriptionID $Subscription -ResourceGroup $RG -Region $Region -Cloud "AzureCloud" -Proxy $ProxyServer
+    PS C:\Users\Administrator> Invoke-AzStackHciArcInitialization -TenantId $Tenant -SubscriptionID $Subscription -ResourceGroup $RG -Region $Region -Cloud "AzureCloud" -Proxy $ProxyServer
     >>
     Configuration saved to: C:\Users\ADMINI~1\AppData\Local\Temp\bootstrap.json
     Triggering bootstrap on the device...
@@ -315,10 +315,11 @@ Review the parameters used in the script:
 
 |Parameters  |Description  |
 |------------|-------------|
+|`TenantID`          |The tenant ID used to register your machines with Azure Arc. Go to your Microsoft Entra ID and copy the tenant ID property.         |
 |`SubscriptionID`    |The ID of the subscription used to register your machines with Azure Arc.         |
 |`ResourceGroup`     |The resource group precreated for Arc registration of the machines. A resource group is created if one doesn't exist.         |
 |`Region`            |The Azure region used for registration. See the [Supported regions](../concepts/system-requirements-23h2.md#azure-requirements) that can be used.          |
-|`TenantID`          |The tenant ID used to register your machines with Azure Arc. Go to your Microsoft Entra ID and copy the tenant ID property.         |
+
 
 
 ## Step 2: Set parameters
@@ -327,14 +328,14 @@ Review the parameters used in the script:
 Set the parameters.
 
 ```powershell
+#Define the tenant you will use to register your machine as Arc device
+$Tenant = "YourTenantID"
+
 #Define the subscription where you want to register your machine as Arc device
 $Subscription = "YourSubscriptionID"
 
 #Define the resource group where you want to register your machine as Arc device
 $RG = "YourResourceGroupName"
-
-#Define the tenant you will use to register your machine as Arc device
-$Tenant = "YourTenantID"
 
 #Define the region to use to register your server as Arc device
 #Do not use spaces or capital letters when defining region
@@ -346,9 +347,9 @@ $Region = "eastus"
 <summary>Expand this section to see an example output.</summary>
 
 ```output
+PS C:\Users\SetupUser> $Tenant = "Your tenant ID"
 PS C:\Users\SetupUser> $Subscription = "Subscription ID"
 PS C:\Users\SetupUser> $RG = "myashcirg"
-PS C:\Users\SetupUser> $Tenant = "Your tenant ID"
 PS C:\Users\SetupUser> $Region = "eastus"
 ```
 </details>
@@ -362,7 +363,7 @@ PS C:\Users\SetupUser> $Region = "eastus"
 
     ```powershell
     #Invoke the registration script. Use a supported region.
-    Invoke-AzStackHciArcInitialization -SubscriptionID $Subscription -ResourceGroup $RG -TenantId $Tenant -Region $Region -Cloud "AzureCloud"
+    Invoke-AzStackHciArcInitialization -TenantId $Tenant -SubscriptionID $Subscription -ResourceGroup $RG -Region $Region -Cloud "AzureCloud"
     ```
 
     For a list of supported Azure regions, see [Azure requirements](../concepts/system-requirements-23h2.md#azure-requirements).
@@ -372,7 +373,7 @@ PS C:\Users\SetupUser> $Region = "eastus"
 
 
     ```output
-    PS C:\Users\Administrator> Invoke-AzStackHciArcInitialization -SubscriptionID $Subscription -ResourceGroup $RG -Region $Region -Cloud "AzureCloud"
+    PS C:\Users\Administrator> Invoke-AzStackHciArcInitialization -TenantId $Tenant -SubscriptionID $Subscription -ResourceGroup $RG -Region $Region -Cloud "AzureCloud"
     >>
     Configuration saved to: C:\Users\ADMINI~1\AppData\Local\Temp\bootstrap.json
     Triggering bootstrap on the device...
@@ -565,8 +566,8 @@ Review the parameters used in the script:
 
 |Parameters  |Description  |
 |------------|-------------|
-|`SubscriptionID`    |The ID of the subscription used to register your machines with Azure Arc.         |
 |`TenantID`          |The tenant ID used to register your machines with Azure Arc. Go to your Microsoft Entra ID and copy the tenant ID property.         |
+|`SubscriptionID`    |The ID of the subscription used to register your machines with Azure Arc.         |
 |`ResourceGroup`     |The resource group precreated for Arc registration of the machines. A resource group is created if one doesn't exist.         |
 |`Region`            |The Azure region used for registration. See the [Supported regions](../concepts/system-requirements-23h2.md#azure-requirements) that can be used.          |
 |`ProxyServer`       |Optional parameter. Proxy Server address when required for outbound connectivity. |
@@ -582,6 +583,9 @@ Review the parameters used in the script:
     Here's an example of how you should change these parameters for the `Invoke-AzStackHciArcInitialization` initialization script. Once the registration is complete, the Azure Local machines are registered in Azure Arc:
 
     ```PowerShell
+    #Define the tenant you will use to register your machine as Arc device
+    $Tenant = "YourTenantID"
+
     #Define the subscription where you want to register your machine as Arc device
     $Subscription = "YourSubscriptionID"
     
@@ -591,9 +595,6 @@ Review the parameters used in the script:
     #Define the region to use to register your server as Arc device, do not use spaces or capital letters when defining region
     $Region = "eastus"
     
-    #Define the tenant you will use to register your machine as Arc device
-    $Tenant = "YourTenantID"
-    
     #Define the proxy address if your Azure Local deployment accesses the internet via proxy
     $ProxyServer = "http://proxyaddress:port"
     ```
@@ -602,10 +603,9 @@ Review the parameters used in the script:
     <summary>Expand this section to see an example output.</summary>
     
     ```output
-    PS C:\Users\SetupUser> $Subscription = "<Subscription ID>"
-    PS C:\Users\SetupUser> $RG = "myashcirg"
     PS C:\Users\SetupUser> $Tenant = "<Tenant ID>"
-    PS C:\Users\SetupUser> $Region = "eastus"
+    PS C:\Users\SetupUser> $Subscription = "<Subscription ID>"
+    PS C:\Users\SetupUser> $RG = "myashcirg"   PS C:\Users\SetupUser> $Region = "eastus"
     PS C:\Users\SetupUser> $ProxyServer = "<http://proxyserver:tcpPort>"
     ```
     
@@ -615,7 +615,7 @@ Review the parameters used in the script:
 
     ```powershell
     #Connect to your Azure account and Subscription
-    Connect-AzAccount -SubscriptionId $Subscription -TenantId $Tenant -DeviceCode
+    Connect-AzAccount -TenantId $Tenant -SubscriptionId $Subscription -DeviceCode
     
     #Get the Access Token for the registration
     $ARMtoken = (Get-AzAccessToken -WarningAction SilentlyContinue).Token
@@ -628,7 +628,7 @@ Review the parameters used in the script:
     <summary>Expand this section to see an example output.</summary>
 
     ```output
-    PS C:\Users\SetupUser> Connect-AzAccount -SubscriptionId $Subscription -TenantId $Tenant -DeviceCode
+    PS C:\Users\SetupUser> Connect-AzAccount -TenantId $Tenant -SubscriptionId $Subscription -DeviceCode
     WARNING: To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code A44KHK5B5
     to authenticate.
     
@@ -652,7 +652,7 @@ Review the parameters used in the script:
 
     ```powershell
     #Invoke the registration script. Use a supported region.
-    Invoke-AzStackHciArcInitialization -SubscriptionID $Subscription -ResourceGroup $RG -TenantID $Tenant -Region $Region -Cloud "AzureCloud" -ArmAccessToken $ARMtoken -AccountID $id -Proxy $ProxyServer -ProxyBypass $ProxyBypassList
+    Invoke-AzStackHciArcInitialization -TenantID $Tenant -SubscriptionID $Subscription -ResourceGroup $RG -Region $Region -Cloud "AzureCloud" -ArmAccessToken $ARMtoken -AccountID $id -Proxy $ProxyServer -ProxyBypass $ProxyBypassList
     ```
     
     For a list of supported Azure regions, see [Azure requirements](../concepts/system-requirements-23h2.md#azure-requirements).
@@ -849,8 +849,8 @@ Review the parameters used in the script:
 
 |Parameters  |Description  |
 |------------|-------------|
-|`SubscriptionID`    |The ID of the subscription used to register your machines with Azure Arc.         |
 |`TenantID`          |The tenant ID used to register your machines with Azure Arc. Go to your Microsoft Entra ID and copy the tenant ID property.         |
+|`SubscriptionID`    |The ID of the subscription used to register your machines with Azure Arc.         |
 |`ResourceGroup`     |The resource group precreated for Arc registration of the machines. A resource group is created if one doesn't exist.         |
 |`Region`            |The Azure region used for registration. See the [Supported regions](../concepts/system-requirements-23h2.md#azure-requirements) that can be used.          |
 |`AccountID`        |The user who registers and deploys the instance.        |
@@ -862,6 +862,9 @@ Review the parameters used in the script:
 1. Set the parameters.
 
     ```PowerShell
+    #Define the tenant you will use to register your machine as Arc device
+    $Tenant = "YourTenantID"
+
     #Define the subscription where you want to register your machine as Arc device
     $Subscription = "YourSubscriptionID"
     
@@ -871,8 +874,6 @@ Review the parameters used in the script:
     #Define the region to use to register your server as Arc device, do not use spaces or capital letters when defining region
     $Region = "eastus"
     
-    #Define the tenant you will use to register your machine as Arc device
-    $Tenant = "YourTenantID"
     ```
 
 
@@ -880,9 +881,9 @@ Review the parameters used in the script:
     <summary>Expand this section to see an example output.</summary>
     
     ```output
+    PS C:\Users\SetupUser> $Tenant = "<Tenant ID>"
     PS C:\Users\SetupUser> $Subscription = "<Subscription ID>"
     PS C:\Users\SetupUser> $RG = "myashcirg"
-    PS C:\Users\SetupUser> $Tenant = "<Tenant ID>"
     PS C:\Users\SetupUser> $Region = "eastus"
     ```
     
@@ -892,7 +893,7 @@ Review the parameters used in the script:
 
     ```powershell
     #Connect to your Azure account and Subscription
-    Connect-AzAccount -SubscriptionId $Subscription -TenantId $Tenant -DeviceCode
+    Connect-AzAccount -TenantId $Tenant -SubscriptionId $Subscription -DeviceCode
     
     #Get the Access Token for the registration
     $ARMtoken = (Get-AzAccessToken -WarningAction SilentlyContinue).Token
@@ -905,7 +906,7 @@ Review the parameters used in the script:
     <summary>Expand this section to see an example output.</summary>
 
     ```output
-    PS C:\Users\SetupUser> Connect-AzAccount -SubscriptionId $Subscription -TenantId $Tenant -DeviceCode
+    PS C:\Users\SetupUser> Connect-AzAccount -TenantId $Tenant -SubscriptionId $Subscription -DeviceCode
     WARNING: To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code A44KHK5B5
     to authenticate.
     
@@ -927,7 +928,7 @@ Finally run the Arc registration script. The script takes a few minutes to run.
 
 ```powershell
 #Invoke the registration script. Use a supported region.
-Invoke-AzStackHciArcInitialization -SubscriptionID $Subscription -ResourceGroup $RG -TenantID $Tenant -Region $Region -Cloud "AzureCloud" -ArmAccessToken $ARMtoken -AccountID $id
+Invoke-AzStackHciArcInitialization -TenantID $Tenant -SubscriptionID $Subscription -ResourceGroup $RG -Region $Region -Cloud "AzureCloud" -ArmAccessToken $ARMtoken -AccountID $id
 ```
 
 For a list of supported Azure regions, see [Azure requirements](../concepts/system-requirements-23h2.md?view=azloc-2507&preserve-view=true#azure-requirements).
@@ -936,7 +937,7 @@ For a list of supported Azure regions, see [Azure requirements](../concepts/syst
 <summary>Expand this section to see an example output.</summary>
 
 ```output
-PS C:\Users\Administrator> Invoke-AzStackHciArcInitialization -SubscriptionID $Subscription -ResourceGroup $RG -TenantID $Tenant -Region $Region -Cloud "AzureCloud" -ArmAccessToken $ARMtoken -AccountID $id
+PS C:\Users\Administrator> Invoke-AzStackHciArcInitialization -TenantID $Tenant -SubscriptionID $Subscription -ResourceGroup $RG -Region $Region -Cloud "AzureCloud" -ArmAccessToken $ARMtoken -AccountID $id
 >>
 Configuration saved to: C:\Users\ADMINI~1\AppData\Local\Temp\bootstrap.json
 Triggering bootstrap on the device...
