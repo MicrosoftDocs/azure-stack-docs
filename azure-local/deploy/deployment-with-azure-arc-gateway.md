@@ -3,7 +3,7 @@ title: Register Azure Local using Arc gateway and with and without proxy setup (
 description: Learn how to register Azure Local using Azure Arc gateway Arc proxy. Both scenarios with and without proxy are configured (Preview). 
 author: alkohli
 ms.topic: how-to
-ms.date: 08/20/2025
+ms.date: 09/08/2025
 ms.author: alkohli
 ms.service: azure-local
 zone_pivot_groups: register-arc-options
@@ -50,13 +50,16 @@ Make sure the following prerequisites are met before you proceed:
 
     Here's an example of how you should change these parameters for the `Invoke-AzStackHciArcInitialization` initialization script. 
 
-    ```powershell
+    ```PowerShell
+    #Define the tenant you will use to register your machine as Arc device
+    $Tenant = "YourTenantID"
+
     #Define the subscription where you want to register your Azure Local machine with Arc.
     $Subscription = "yourSubscriptionID" 
     
     #Define the resource group where you want to register your Azure Local machine with Arc.
     $RG = "yourResourceGroupName" 
-    
+
     #Define the region to use to register your server as Arc device
     #Do not use spaces or capital letters when defining region
     $Region = "eastus"
@@ -90,7 +93,7 @@ Make sure the following prerequisites are met before you proceed:
 
     ```Powershell
     #Invoke the registration script with Proxy and ArcgatewayID 
-    Invoke-AzStackHciArcInitialization -SubscriptionID $Subscription -ResourceGroup $RG -Region australiaeast -Cloud "AzureCloud" -Proxy $ProxyServer -ArcGatewayID $ArcgwId -ProxyBypass $ProxyBypassList 
+    Invoke-AzStackHciArcInitialization -TenantID $Tenant -SubscriptionID $Subscription -ResourceGroup $RG -Region australiaeast -Cloud "AzureCloud" -Proxy $ProxyServer -ArcGatewayID $ArcgwId -ProxyBypass $ProxyBypassList 
     ```
 
 1. During the Arc registration process, you must authenticate with your Azure account. The console window displays a code that you must enter in the URL, displayed in the app, in order to authenticate. Follow the instructions to complete the authentication process.
@@ -306,7 +309,10 @@ Make sure the following prerequisites are met before proceeding:
 
 ## Step 2: Set parameters
 
-```azurecli
+```PowerShell
+#Define the tenant you will use to register your machine as Arc device
+$Tenant = "YourTenantID"
+
 #Define the subscription where you want to register your Azure Local machine with Arc.
 $Subscription = "yoursubscriptionID" 
 
@@ -326,7 +332,7 @@ To use the Arc gateway feature for Azure Local systems without a proxy, only use
     ```azurecli
     
     #Invoke the registration script with ArcgatewayID 
-    Invoke-AzStackHciArcInitialization -SubscriptionID $Subscription -ResourceGroup $RG -Region australiaeast -Cloud "AzureCloud" -ArcGatewayID $ArcgwId
+    Invoke-AzStackHciArcInitialization -TenantID $Tenant -SubscriptionID $Subscription -ResourceGroup $RG -Region australiaeast -Cloud "AzureCloud" -ArcGatewayID $ArcgwId
     ```
 
 1. During the Arc registration process, you must authenticate with your Azure account. The console window displays a code that you must enter in the URL, in order to authenticate. Follow the instructions to complete the authentication process.
