@@ -147,7 +147,7 @@ The following table compares select Arc management options of Azure Local and Wi
 | Azure operations<br>(Microsoft Defender for Cloud, security recommendations, Azure extension support, WAC extension support, resource locks, policies, automanage, and run command) | Yes | Yes<br>(except for automanage) |
 | Azure Update Manager | Yes<br>(included) | Yes<br>(free via Azure Hybrid Benefit for Windows Server)  |
 | Monitoring<br>(Azure Monitor, Insights, logs, alerts, and workbooks) | Yes | Yes<br>(except for alerts)  |
-| Automation<sup>2</sup><br>(Azure CLI, PowerShell, Azure tasks, and resource health) | Yes | Yes  |
+| Automation<br>(Azure CLI, PowerShell, Azure tasks, and resource health) | Yes<sup>2</sup> | Yes  |
 
 <sup>1</sup> Shutdown and manage snapshots aren't supported. For more information, see [Supported VM operations for Azure Local](../manage/virtual-machine-operations.md).
 
