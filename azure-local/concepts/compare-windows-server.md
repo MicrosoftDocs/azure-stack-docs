@@ -144,7 +144,7 @@ The following table compares select Arc management options of Azure Local and Wi
 | Connect via SSH | Yes | Yes |
 | Connect via RDP | Yes | Yes |
 | Configure operations<br>(Add/delete/expand data disks and change memory/vCPU)<sup>2</sup> | Yes | Yes |
-| Azure operations<br>(Microsoft Defender for Cloud, security recommendations, Azure extension support, WAC extension support, resource locks, policies, Automanage, and run command) | Yes | Yes<br>(Automanage not supported) |
+| Azure operations<br>(Microsoft Defender for Cloud, security recommendations, Azure extension support, Windows Admin Center extension support, resource locks, policies, Automanage, and run command) | Yes | Yes<br>(Automanage not supported) |
 | Azure Update Manager | Yes<br>(included) | Yes<br>(free via Azure Hybrid Benefit)  |
 | Monitoring<br>(Azure Monitor, Insights, logs, alerts, and workbooks) | Yes | Yes<br>(Alerts not supported)  |
 | Automation<br>(Azure CLI, PowerShell, Azure tasks, and resource health) | Yes<sup>2</sup> | Yes  |
