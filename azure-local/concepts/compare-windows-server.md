@@ -140,26 +140,18 @@ The following table compares select Arc management options of Azure Local and Wi
 
 | Attribute | Azure Local | Windows Server 2025 |
 | ------------- | ------------------- | ----------------------- |
-| Basic VM management<sup>1</sup> | Yes | Yes |
+| Basic VM management<br>(Start, restart, stop, save, pause, and delete)| Yes<sup>1</sup> | Yes |
 | Connect via SSH | Yes | Yes |
 | Connect via RDP | Yes | Yes |
-| Configure operations<sup>2</sup> | Yes | Yes |
-| Azure operations<sup>3</sup> | Yes | Yes |
-| Extended security updates | Yes | Yes  |
-| Azure Update Manager | Yes | Yes  |
-| Monitoring<sup>4</sup> | Yes | Yes  |
-| Automation<sup>5</sup> | Yes | Yes  |
+| Configure operations<br>(Add/delete/expand data disks and change memory/vCPU)<sup>2</sup> | Yes | Yes |
+| Azure operations<br>(Microsoft Defender for Cloud, security recommendations, Azure extension support, WAC extension support, resource locks, policies, automanage, and run command) | Yes | Yes<br>(except for automanage) |
+| Azure Update Manager | Yes<br>(included) | Yes<br>(free via Azure Hybrid Benefit for Windows Server)  |
+| Monitoring<br>(Azure Monitor, Insights, logs, alerts, and workbooks) | Yes | Yes<br>(except for alerts)  |
+| Automation<sup>2</sup><br>(Azure CLI, PowerShell, Azure tasks, and resource health) | Yes | Yes  |
 
-<sup>1</sup> Supported basic VM management operations include start, restart, stop, save, pause, and delete. Shutdown and manage snapshots aren't supported. For more information, see [Supported VM operations for Azure Local](../manage/virtual-machine-operations.md).
+<sup>1</sup> Shutdown and manage snapshots aren't supported. For more information, see [Supported VM operations for Azure Local](../manage/virtual-machine-operations.md).
 
-<sup>2</sup> Supported configure operations include add/delete/expand data disks and change memory/vCPU.
-
-<sup>3</sup> Supported Azure operations include Microsoft Defender for Cloud, security recommendations, Azure extension support, WAC extension support, resource locks, policies, and run command. Automanage isn't supported.
-
-<sup>4</sup> Supported monitoring operations include Azure Monitor, Insights, logs, and workbooks. Alerts isn't supported.
-
-<sup>5</sup> Export ARM template is not supported.
-
+<sup>2</sup> Export ARM template isn't supported.
 
 ## Next steps
 
