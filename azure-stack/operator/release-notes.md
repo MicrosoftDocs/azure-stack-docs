@@ -3,7 +3,7 @@ title: Azure Stack Hub release notes
 description: Release notes for Azure Stack Hub integrated systems, including updates and bug fixes.
 author: sethmanheim
 ms.topic: release-notes
-ms.date: 09/08/2025
+ms.date: 09/09/2025
 ms.author: sethm
 
 # Intent: As an Azure Stack Hub operator, I want to know what's new in the latest release so that I can plan my update.
@@ -57,7 +57,7 @@ You can download the Azure Stack Hub update package using [the Azure Stack Hub u
 ::: moniker range="azs-2506"
 ## 2506 build reference
 
-The Azure Stack Hub 2506 update build number is **1.2506.x.xx**.
+The Azure Stack Hub 2506 update build number is **1.2506.0.15**.
 
 ### Update type
 
