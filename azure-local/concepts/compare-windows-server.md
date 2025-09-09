@@ -149,7 +149,7 @@ The following table compares select Arc management options of Azure Local and Wi
 | Monitoring<br>(Azure Monitor, Insights, logs, alerts, and workbooks) | Yes | Yes<br>(Alerts not supported)  |
 | Automation<br>(Azure CLI, PowerShell, Azure tasks, and resource health) | Yes<sup>2</sup> | Yes  |
 
-<sup>1</sup> Shutdown and manage snapshots aren't supported. For more information, see [Supported VM operations for Azure Local](../manage/virtual-machine-operations.md).
+<sup>1</sup> Shutdown and manage snapshots aren't supported for Azure Local. For more information, see [Supported VM operations for Azure Local](../manage/virtual-machine-operations.md).
 
 <sup>2</sup> Export ARM template isn't supported.
 
