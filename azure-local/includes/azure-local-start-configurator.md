@@ -3,9 +3,9 @@ author: alkohli
 ms.author: alkohli
 ms.service: azure-local
 ms.topic: include
-ms.date: 07/23/2025
+ms.date: 09/08/2025
 ms.reviewer: alkohli
-ms.lastreviewed: 07/23/2025
+ms.lastreviewed: 09/08/2025
 ---
 
 Follow these steps to configure network settings and connect the machines to Azure. Start this action a few minutes after you turn on the machine.
@@ -22,6 +22,3 @@ Follow these steps to configure network settings and connect the machines to Azu
 
    :::image type="content" source="./media/azure-local-start-configurator/access-the-device-2.png" alt-text="Screenshot of the password in the Configurator app for Azure Local." lightbox="./media/azure-local-start-configurator/access-the-device-2.png":::
 
-1. On the **Azure Arc agent setup** page, select **Start**.
-
-   :::image type="content" source="./media/azure-local-start-configurator/start-setup-1.png" alt-text="Screenshot of the Azure Arc agent setup page with Start selected in the Configurator app for Azure Local." lightbox="./media/azure-local-start-configurator/start-setup-1.png":::
