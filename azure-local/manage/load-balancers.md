@@ -1,18 +1,18 @@
 ---
-title: Manage Software Load Balancer for SDN
-description: Learn how to manage Software Load Balancer for SDN
+title: Manage Software Load Balancer for SDN managed by on-premises tools
+description: Learn how to manage Software Load Balancer for SDN managed by on-premises tools
 ms.topic: how-to
 author: alkohli
 ms.author: alkohli
 ms.reviewer: anpaul
-ms.date: 01/16/2025
+ms.date: 09/05/2025
 ---
 
-# Manage Software Load Balancer for SDN
+# Manage Software Load Balancer for SDN managed by on-premises tools
 
 > Applies to: Azure Local 2311.2 and later; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
-In this topic, learn how to manage Software Load Balancer (SLB) policies using Windows Admin Center after you deploy Software Defined Networking (SDN). SLBs are used to evenly distribute network traffic among multiple resources. SLB enables multiple machines to host the same workload, providing high availability and scalability. You can create load balancers for your workloads hosted on traditional VLAN networks (SDN logical networks) as well as for workloads hosted on SDN virtual networks. To learn more about SLB, see [What is SLB for SDN?](../concepts/software-load-balancer.md)
+In this article, learn how to manage Software Load Balancer (SLB) policies using Windows Admin Center after you deploy Software Defined Networking (SDN). SLBs are used to evenly distribute network traffic among multiple resources. SLB enables multiple machines to host the same workload, providing high availability and scalability. You can create load balancers for your workloads hosted on traditional VLAN networks (SDN logical networks) as well as for workloads hosted on SDN virtual networks. To learn more about SLB, see [What is SLB for SDN?](../concepts/software-load-balancer.md)
 
 > [!NOTE]
 >You need to deploy the SDN Network Controller and SLB components before you can create load balancer policies.
