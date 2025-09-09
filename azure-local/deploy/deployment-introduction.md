@@ -63,6 +63,7 @@ Before starting the deployment, we recommend you check the following table that 
 |Two machines - with network switch for storage|Supported|Supported|
 |Three machines - with network switch for storage|Supported|Supported|
 |Three machines - with no network switch for storage|Not supported|Supported|
+|Four machines - with no network switch for storage|Not supported|Supported|
 |Four to 16 machines - with no network switch for storage|Not supported|Not supported|
 |Four to 16 machines - with network switch for storage|Supported|Supported|
 
