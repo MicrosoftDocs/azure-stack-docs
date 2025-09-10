@@ -1,18 +1,18 @@
 ---
-title: Hybrid capabilities with Azure services in Azure Local, version 23H2
-description: This article describes the cloud service components of Azure Local, version 23H2.
+title: Hybrid capabilities with Azure services in Azure Local
+description: This article describes the cloud service components of Azure Local.
 ms.topic: overview
 author: alkohli
 ms.author: alkohli
-ms.date: 04/16/2025
+ms.date: 09/09/2025
 ms.custom: e2e-hybrid
 ---
 
 # Hybrid capabilities with Azure services in Azure Local
 
-[!INCLUDE [applies-to](./includes/hci-applies-to-23h2.md)]
+Your on-premises Azure Local solution integrates with Azure via Azure Arc that extends the Azure control plane to your existing infrastructure. This article outlines three distinct ways Azure Arc integrates with Azure Local to enable hybrid cababilities in Azure Local.
 
-Your on-premises Azure Local solution integrates with Azure cloud via several cloud service components, such as Azure Local cloud service, Azure Arc, and other Azure hybrid services. This article describes the functionality provided by these cloud service components, and how they help provide hybrid capabilities to your Azure Local deployment.
+Your on-premises Azure Local solution integrates with Azure via several cloud service components, such as Azure Local cloud service, Azure Arc, and other Azure hybrid services. This article describes the functionality provided by these cloud service components, and how they help provide hybrid capabilities to your Azure Local deployment.
 
 :::image type="content" source="media/hybrid-capabilities-with-azure-services-23h2/azure-stack-hci-solution.png" alt-text="The architecture diagram of the Azure Local solution, which shows the integration points between the on-premises Azure Local solution and Azure cloud." border="false" lightbox="media/hybrid-capabilities-with-azure-services-23h2/azure-stack-hci-solution.png":::
 
