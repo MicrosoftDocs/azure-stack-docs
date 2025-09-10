@@ -61,15 +61,15 @@ Keep in mind the following information when you're comparing VM management capab
 | Restart |✅|❌|❌|
 | Stop |✅|❌|❌|
 | Delete |✅|✅|❌|
-| Save state (CLI) |✅|❌|❌|
+| Save state |✅|❌|❌|
 | Manage checkpoints |❌|❌|❌|
-| Pause (CLI) |✅|❌|❌|
+| Pause |✅|❌|❌|
 | GPU configuration (CLI, UI in preview) |✅|❌|❌|
 | Add network interface |✅|❌|❌|
 | Connect with SSH |✅|✅|❌|
 | Add new data disk |✅|❌|❌|
-| Detach and delete a data disk |❌|❌|❌|
-| Expand data disk |❌|❌|❌|
+| Detach and delete a data disk |✅|❌|❌|
+| Expand data disk |✅|❌|❌|
 | Change vCPU count |✅|❌|❌|
 | Change memory amount |✅|❌|❌|
 | Change minimum memory |✅|❌|❌|
