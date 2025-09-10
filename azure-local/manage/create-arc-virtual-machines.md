@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.reviewer: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 06/09/2025
+ms.date: 09/09/2025
 ms.custom:
   - devx-track-azurecli
   - sfi-image-nochange
@@ -239,9 +239,9 @@ Arc gateway for VMs is configured during the onboarding of the Azure connected m
 As such, you may need to specifically set the proxy configuration for your applications if they don't reference the environment variables set within the VM.
 
 > [!IMPORTANT]
-> Deploying Azure Connected Machines in Azure Local with Arc gateway requires additional endpoints to be allowed in your proxy and firewall devices
-> For Windows VMs you must allow the following endpoint: `"https://agentserviceapi.guestconfiguration.azure.com"`
-> For Linux VMs you must allow the following endpoints: `"https://agentserviceapi.guestconfiguration.azure.com"` and `"https://packages.microsoft.com"`
+> Deploying Azure connected machines in Azure Local with Arc gateway requires you to allow additional endpoints in your proxy and firewall devices.
+> For Windows VMs, you must allow the following endpoint: `https://agentserviceapi.guestconfiguration.azure.com`.
+> For Linux VMs, you must allow the following endpoints: `https://agentserviceapi.guestconfiguration.azure.com` and `https://packages.microsoft.com`.
 
 
 #### To create a VM with Arc gateway enabled behind a proxy server, run the following command
