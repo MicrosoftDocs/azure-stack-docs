@@ -5,7 +5,7 @@ ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 08/28/2025
+ms.date: 09/02/2025
 ---
 
 # What's new in Azure Local?
@@ -46,7 +46,7 @@ This release has the following features and improvements:
 
 - **Deployment and upgrade changes**:
     - Starting this release, ARM deployment templates are available for previous releases.
-    - With this release, Brownfield upgrade scenarios no longer require Service Principal Name (SPN) creation and have moved to managed-system identity (MSI).
+    - With this release, pre-existing cluster (Brownfield) upgrade scenarios no longer require Service Principal Name (SPN) creation and have moved to managed-system identity (MSI).
     - This release includes connectivity validators that ensure that external connectivity is available for Arc registration.
 
 - **Azure Local VM updates**:
