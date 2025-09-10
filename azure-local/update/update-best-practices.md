@@ -3,7 +3,7 @@ title: Best Practices for managing Azure Local Update Management
 description: Learn the best practices for managing Azure Local environments.
 author: alkohli
 ms.topic: overview
-ms.date: 09/03/2025
+ms.date: 09/10/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -11,7 +11,7 @@ ms.service: azure-local
 
 # Best practices for managing Azure Local environments
 
-This article provides an overview of Azure Local update management, including best practices and common pitfalls to help keep Azure Local secure, up to date, and compliant. It is intended for IT decision-makers, infrastructure architects, and operations teams responsible for Azure Local deployments.
+This article provides an overview of Azure Local update management, including best practices and common pitfalls to help keep Azure Local secure, up to date, and compliant. This article is intended for IT decision-makers, infrastructure architects, and operations teams responsible for Azure Local deployments.
 
 ## Understand Azure Local update management
 
@@ -25,11 +25,23 @@ Azure Local supports update management through Azure Update Manager (AUM), which
 
 Follow these practices to ensure smooth, reliable updates for Azure Local instances deployed at scale.
 
+1. **Review known issues, logs, and use troubleshooting guides.**
+
+   - Before applying updates review the known issues for the target version and apply any recommended mitigations. For more information, see [Known issues in Azure Local](../known-issues.md).
+   - If an update partially fails (for example, one node fails to update), Azure Update Manager will report the failure. Do not re-run the update blindly. Instead follow these steps:
+      - Retrieve error logs. Use the **Update history** view in the Azure portal to check error details for each node.
+      - Check offline logs. In disconnected scenarios, check event logs (for example, `ClusterAwareUpdating` log) on the affected node.
+      - Use troubleshooting guides. Microsoft publishes troubleshooting guides for Azure Local updates. For example, steps to retry an update that stuck at a certain phase. Follow those guides to reset any update run state or clear maintenance mode if needed. Ensure the cluster is stable before retrying the update. For more information, see [Troubleshoot solution updates for Azure Local](./update-troubleshooting-23h2.md).
+
 1. **Use Azure Update Manager.**
 
    AUM provides a centralized view to apply and manage updates across all Azure Local instances. In the Azure portal, go to **Azure Update Manager** > **Resources** > **Azure Local**.
 
    :::image type="content" source="./media/update-best-practices/azure-update-manager.png" alt-text="Screenshot of the Azure Update Manager displaying the Azure Local systems ready for updates. ." lightbox="./media/update-best-practices/azure-update-manager.png":::
+
+   - **Test environment strategy.**
+
+      Select a few test clusters that mirror your Azure Local resources in production. Run the update flow to validate before applying to production.
 
    - **Use filters to identify Azure Local resources ready for updates.**
 
@@ -48,10 +60,6 @@ Follow these practices to ensure smooth, reliable updates for Azure Local instan
    
       Define a model where you are updating in chunks.  
 
-   - **Test environment strategy.**
-
-      Select a few test clusters that mirror your Azure Loal resources in production. Run the update flow to validate before applying to production.
-
    - **Production environment strategy.**
 
       - Create batches using filter parameters.
@@ -69,14 +77,6 @@ Follow these practices to ensure smooth, reliable updates for Azure Local instan
    - Prepare only workflow. See [Predownloads and check update readiness](./update-via-powershell-23h2.md#step-4-recommended-predownload-and-check-update-readiness).
 
    - Limited connectivity update workflow. See [Import and discover update packages with limited connectivity](./import-discover-updates-offline-23h2.md).
-
-1. **Review known issues, logs, and use troubleshooting guides.**
-
-   - Before applying updates review the known issues for the target version and apply any recommended mitigations.
-   - If an update partially fails (for example, one node fails to update), Azure Update Manager will report the failure. Do not re-run the update blindly. Instead follow these steps:
-      - Retrieve error logs. Use the **Update history** view in the Azure portal to check error details for each node.
-      - Check offline logs. In disconnected scenarios, check event logs (for example, `ClusterAwareUpdating` log) on the affected node.
-      - Use troubleshooting guides. Microsoft publishes troubleshooting guides for Azure Local updates. For example, steps to retry an update that stuck at a certain phase. Follow those guides to reset any update run state or clear maintenance mode if needed. Ensure the cluster is stable before retrying the update. For more information, see [Troubleshoot solution updates for Azure Local](./update-troubleshooting-23h2.md).
 
 ## Don’ts for Azure Local updates
 
