@@ -3,14 +3,14 @@ title: Overview of Azure Arc gateway for Azure Local (Preview)
 description: Learn what is Azure Arc gateway for Azure Local (Preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 07/30/2025
+ms.date: 09/09/2025
 ms.author: alkohli
 ms.service: azure-local
 ---
 
 # About Azure Arc gateway for Azure Local (Preview)
 
-::: moniker range=">=azloc-2505"
+::: moniker range=">=azloc-2506"
 
 This article provides an overview of the Azure Arc gateway for Azure Local (formerly known as Azure Stack HCI) which can be enabled on new deployments of Azure Local running software version 2505 and later. This article also describes how to create and delete the Arc gateway resource in Azure.
 
@@ -59,7 +59,7 @@ Traffic flows are illustrated in the following diagram:
 
 You can use the Arc gateway in the following scenario for Azure Local:
 
-- Enable Arc gateway during deployment of new Azure Local instances running versions 2508 or later.
+- Enable Arc gateway during deployment of new Azure Local instances running versions 2506 or later.
 - The Arc gateway resource must be created on the same subscription where you're planning to deploy your Azure Local instance.
 
 Unsupported scenarios for Azure Local include:
@@ -178,8 +178,8 @@ This operation can take a couple of minutes.
 
 ::: moniker-end
 
-::: moniker range="<=azloc-2504"
+::: moniker range="<=azloc-2505"
 
-This feature is available only in Azure Local version 2505 or later.
+This feature is available only in Azure Local version 2506 or later.
 
 ::: moniker-end
