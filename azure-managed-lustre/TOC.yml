@@ -50,6 +50,8 @@
       href: customer-managed-encryption-keys.md
     - name: Enable VNet encryption
       href: vnet-encryption.md
+    - name: Configure a firewall with AMLFS
+      href: configure-firewall.md
 - name: Monitoring metrics and logs
   items:
     - name: Monitor a file system
