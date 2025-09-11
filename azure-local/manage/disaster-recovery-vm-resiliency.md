@@ -4,12 +4,12 @@ description: Virtual machine resiliency considerations for Azure Local.
 ms.topic: article
 author: sipastak
 ms.author: sipastak
-ms.date: 07/24/2025
+ms.date: 09/10/2025
 ---
 
 # Virtual machine resiliency for Azure Local
 
-After reviewing and implementing the design considerations for [infrastructure resiliency](disaster-recovery-infrastructure-resiliency.md) at the platform level, it's essential to understand how your virtual machines (VM) and applications will be resilient to failures, to enable them to detect, withstand, and recover from failures within an acceptable time period, which is fundamental to maintaining continuous operations for business-critical applications.
+After reviewing and implementing the design considerations for [infrastructure resiliency](disaster-recovery-infrastructure-resiliency.md) at the platform level, it's essential to understand how your virtual machines (VMs) and applications will be resilient to failures, to enable them to detect, withstand, and recover from failures within an acceptable time period, which is fundamental to maintaining continuous operations for business-critical applications.
 
 All virtual machines deployed on Azure Local are highly available by default, ensuring that if any node in the cluster fails, the affected VMs will automatically restart and continue operating on the remaining nodes. However, even with these robust fault tolerance and resiliency measures in place, this alone isn't sufficient.
 
@@ -24,12 +24,6 @@ To avoid service disruption or data loss that can’t be addressed by local redu
 If you're using MABS, there are two approaches to protect VMs: **host-level VM backup** and **guest-level VM backup**.
 
 - **Host-level VM backup**: Install the backup agent on each Azure Local host (each cluster node) and back up entire VMs at the hypervisor level. This captures the whole VM (all virtual disks). It has the advantage of not requiring an agent inside each VM, and its agnostic to the guest OS. Host-level backups allow full VM restores, where you can recover an entire VM to the same or different cluster. However, host-level backups aren't application-aware. For example, they won't truncate SQL logs or guarantee application-consistent restores beyond what Volume Shadow Copy Service (VSS) provides.
-
-    > [!NOTE]
-    >- Restoring an Azure Local VM on a different cluster restores the VM as an unmanaged VM. This means that all services inside the VM will start working, but the VM can’t be managed from Azure until it's registered, or hydrated (in preview), on the new Azure Local cluster and rehomed to the resource that exists in Azure.
-    >- Rehoming ensures that the existing Azure resource is updated with the new resource group (optional, you can also keep it in the same resource group), custom location, storage path, and logical network of the VM.
-    >- If the VM is restored in-place on the same cluster, hydration and rehoming aren't needed. VM’s Azure connection will be restored, and it continues to be managed from Azure as long as it is within [Azure Arc’s 45-day reconnection window](/azure/azure-arc/servers/overview#agent-status).
-    >- Hydration is currently in preview and rehoming is in development. They both will be available in future releases.
 
 - **Guest-level VM backup**: Install backup agents inside the guest OS of the VM. This allows application-consistent backups for VSS-aware applications running within the operating system, ensuring that application data is captured in a consistent state. For example, you can back up SQL databases with full fidelity and restore individual items like a single database or a specific file easily. The trade-off is manageability: you must manage agents on each VM, and the backup only covers what’s inside the VM, to restore the whole VM, you’d typically rebuild it and then restore data within.  
 
@@ -111,14 +105,7 @@ Key points about Azure Site Recovery for Azure Local:
 
 - **Failback**:
     - When the disaster is mitigated, and the cluster is operational, Azure Site Recovery can reverse the replication direction and replicate any changes made while operating in Azure back to your Azure Local cluster. After reverse replication you can failback the VM, allowing operations to switch back to on-premises. 
-    - For successful failback, the on-premises environment must be healthy. If your cluster isn't available, you can register another Azure Local cluster to the Azure Site Recovery Hyper-V site and failback the VM to a node on an alternate cluster.
-
-    > [!NOTE]
-    >- Failing back an Azure Local VM on an alternate cluster will failback the VM as an unmanaged VM. This means that all services inside the VM will start working, but the VM can’t be managed from Azure until it's registered, or hydrated (in preview), on the new Azure Local cluster and rehomed to the resource that exists in Azure.
-    >- Rehoming ensures that the existing Azure resource is updated with the new resource group (optional, you can also keep it in the same resource group), custom location, storage path, and logical network of the VM.
-    >- If the VM is restored in-place on the same cluster, hydration and rehoming aren't needed. VM’s Azure connection will be restored, and it continues to be managed from Azure as long as it is within [Azure Arc’s 45-day reconnection window](/azure/azure-arc/servers/overview#agent-status).
-    >- Hydration is currently in preview and rehoming is in development. They both will be available in future releases.
-    
+    - For successful failback, the on-premises environment must be healthy. If your cluster isn't available, you can register another Azure Local cluster to the Azure Site Recovery Hyper-V site and failback the VM to a node on an alternate cluster.    
 
 For more information and to install Azure Site Recovery, see [Protect VM workloads with Azure Site Recovery on Azure Local (preview)](azure-site-recovery.md).
 
@@ -148,19 +135,9 @@ Key points about using Hyper-V replica with Azure Local:
 
     - After failover, your VM runs on the replica server.
 
-    > [!NOTE]
-    >- Failing over an Azure Local VM to the replica cluster fails over the VM as an unmanaged VM. This means that all services inside the VM will start working, but the VM can’t be managed from Azure until it's hydrated (in preview) on the new Azure Local cluster and rehomed to its existing VM resource that exists in Azure.
-    >- Rehoming ensures that the existing Azure VM resource is updated with the new resource group (optional, you can also keep it in the same resource group), custom location, storage path, and logical network of the VM.
-    >- Hydration and rehoming may not be necessary if the failover is temporary and the VM is expected to be failed back to the original cluster once the disaster is mitigated. During this period, the VM won't be manageable from Azure, but its services will be operational.
-    >- Hydration is currently in private preview and rehoming is in development. They both will be available in future releases.
-
 - **Failback**:
     - Once the disaster is mitigated, and the cluster is operational, Hyper-V replica can reverse the replication direction and replicate any changes made while operating on replica server back to the original Azure Local cluster.
     - After the reverse replication, you can fail back the VM, allowing the VM to switch back to its originating cluster.
-
-    > [!NOTE]
-    >- After the VM is failed back to its originating cluster, Hydration and Rehoming aren't needed. VM’s Azure connection will be restored, and it continues to be managed from Azure as long as it is within [Azure Arc’s 45-day reconnection window](/azure/azure-arc/servers/overview#agent-status).
-    >- Hydration is currently in preview and rehoming is in development. They both will be available in future releases.
 
 For more information, see the deployment steps in [Set up Hyper-V Replica](/windows-server/virtualization/hyper-v/get-started/Install-Hyper-V).
 
@@ -192,15 +169,13 @@ In choosing between Azure Site Recovery and Hyper-V Replica for Azure Local VMs,
 |---------|---------|---------|
 |Replication destinations      |  Azure Local to Azure         |   Azure Local to Azure  Local    |
 |Failed over VMs run as      |  Azure VMs        |  Azure Local VMs        |
-|Deployment      |    Automated on all nodes, initiated from Azure portal , uses [Azure Site Recovery](azure-site-recovery.md) extension.     |  Manual, on each node, out-of-band, through local tools ([Hyper-V Manager](/windows-server/virtualization/hyper-v/manage/set-up-hyper-v-replica#deployment-steps)).     |
+|Deployment      |    Automated on all nodes, initiated from the Azure portal, and uses [Azure Site Recovery](azure-site-recovery.md) extension.     |  Manual, on each node, out-of-band, and through local tools ([Hyper-V Manager](/windows-server/virtualization/hyper-v/manage/set-up-hyper-v-replica#deployment-steps)).     |
 |Requires Azure control plane      |      Yes   |    No     |
 |Provides recovery plans for orchestration of failover sequences      |    Yes     |    No     |
 |Requires network evaluation for the failed over VM to continue servicing      |    Yes     |    Yes     |
 |Incurs Azure usage cost      |    Yes. See [Pricing - Site Recovery](https://azure.microsoft.com/pricing/details/site-recovery).     |     No    |
-|Requires hydration (preview) if the VM is failed back to its original site after disaster is mitigated      |  No       |   No (the VM can be failed over to the disaster recovery site temporarily and failed back to its original site after disaster is mitigated).   |
-|Requires hydration (preview) if the failed over VM had to be permanently reside in the disaster recovery site      |   No (Azure VMs don’t require hydration).      |     Yes    |
 
-**Use ASR and Hyper-V Replica both**: Organizations with remote sites with single clusters and larger hubs with multiple clusters can extend Azure as a disaster recovery site, use Azure Site Recovery for remote sites and Hyper-V Replica for larger locations. This allows some VMs to replicate to Azure while others replicate to a secondary site, ensuring flexibility and tailored disaster recovery strategies for various operational needs.
+**Use Azure Site Recovery and Hyper-V Replica both**: Organizations with remote sites with single clusters and larger hubs with multiple clusters can extend Azure as a disaster recovery site, use Azure Site Recovery for remote sites and Hyper-V Replica for larger locations. This allows some VMs to replicate to Azure while others replicate to a secondary site, ensuring flexibility and tailored disaster recovery strategies for various operational needs.
 
 ### Recovery plans and testing
 

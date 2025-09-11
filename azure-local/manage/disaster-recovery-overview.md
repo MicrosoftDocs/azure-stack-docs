@@ -4,7 +4,7 @@ description: Disaster recovery considerations for Azure Local virtual machines.
 ms.topic: article
 author: sipastak
 ms.author: sipastak
-ms.date: 08/14/2025
+ms.date: 09/10/2025
 ---
 
 # Disaster recovery for Azure Local virtual machines
@@ -15,7 +15,7 @@ For Azure Local instance deployments that blend edge infrastructure with Azure c
 
  Azure Local integrates familiar technologies (Hyper-V, Failover Clustering, Storage Spaces Direct) and Azure services (Backup, Site Recovery, etc.) that provide robust disaster recovery capabilities. In the context of Azure Local, a well-defined, documented, and tested disaster recovery strategy is critical for ensuring that workloads hosted on-premises remain online and available in the event of any planned or unplanned outage, such as hardware or power failures, network issues, or site-level disasters.
 
-Because Azure Local VMs are deployed and run on an Azure Local instance, we need to start from the ground up - covering physical infrastructure resiliency, strategies for VMs (backups, continuous replication), and cover workloads, such as Azure Virtual Desktop and Arc-Enabled SQL Server. To learn more about implementing strategies for each of these categories, see:
+Because Azure Local virtual machines (VMs) are deployed and run on an Azure Local instance, we need to start from the ground up - covering physical infrastructure resiliency, strategies for VMs (backups, continuous replication), and cover workloads, such as Azure Virtual Desktop and Arc-Enabled SQL Server. To learn more about implementing strategies for each of these categories, see:
 
 - [Infrastructure resiliency](disaster-recovery-infrastructure-resiliency.md)
 - [Virtual machine resiliency](disaster-recovery-vm-resiliency.md)

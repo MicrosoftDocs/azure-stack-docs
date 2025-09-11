@@ -380,6 +380,8 @@ items:
       - name: Virtual machine resiliency
         href: manage/disaster-recovery-vm-resiliency.md
         items:
+        - name: Overview
+          href: manage/disaster-recovery-vm-resiliency.md
         - name: Use Azure Site Recovery
           href: manage/azure-site-recovery.md
         - name: Use Azure Backup Server
