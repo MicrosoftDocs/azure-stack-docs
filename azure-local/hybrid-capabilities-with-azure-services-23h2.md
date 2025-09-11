@@ -56,17 +56,17 @@ The following table describes the workloads enabled by Azure Arc that are suppor
 
 | Service | Description | Learn More |
 |--|--|--|
-| **Azure Kubernetes Service (AKS)** | AKS on Azure Local uses Azure Arc to create new Kubernetes clusters on Azure Local directly from Azure. It enables you to use familiar tools like the Azure portal, Azure CLI, and Azure Resource Manager templates to create and manage your Kubernetes clusters running on Azure Local. | [What's new in AKS on Azure Local](/azure/aks/hybrid/aks-whats-new-23h2) |
-| **Azure Virtual Desktop (AVD)** | Azure Virtual Desktop for Azure Local lets you deploy Azure Virtual Desktop session hosts on your on-premises infrastructure. | [Deploy Azure Virtual Desktop](/azure/virtual-desktop/deploy-azure-virtual-desktop) |
 | **Azure Local VMs enabled by Azure Arc** | Windows and Linux VMs hosted outside Azure, on your corporate network, running on Azure Local. | [Create Azure Local virtual machines enabled by Azure Arc](./manage/create-arc-virtual-machines.md) |
-| **SQL Server** | Run SQL Server and Storage Spaces Direct on Azure Local for a highly available, cost-efficient, and flexible platform. | [Deploy SQL Server on Azure Local](./deploy/sql-server-23h2.md)|
-| **SQL Managed Instance** | Provide description. | Provide a Learn more link. |
-| **PostgreSQL** | Provide description. | Provide a Learn more link. |
-| **Video Indexer** | Provide description. | Provide a Learn more link. |
-| **Machine Learning** | Provide description. | Provide a Learn more link. |
-| **Azure IoT Operations** | Provide description. | Provide a Learn more link. |
-| **Container Apps** | Provide description. | Provide a Learn more link. |
-| **Logic Apps** | Provide description. | Provide a Learn more link. |
+| **Azure Kubernetes Service (AKS) enabled by Azure Arc** | AKS on Azure Local uses Azure Arc to create new Kubernetes clusters on Azure Local directly from Azure. It enables you to use familiar tools like the Azure portal, Azure CLI, and Azure Resource Manager templates to create and manage your Kubernetes clusters running on Azure Local. | [What's new in AKS on Azure Local](/azure/aks/hybrid/aks-whats-new-23h2) |
+| **Azure Virtual Desktop** | Azure Virtual Desktop for Azure Local lets you deploy Azure Virtual Desktop session hosts on your on-premises infrastructure. | [Deploy Azure Virtual Desktop](/azure/virtual-desktop/deploy-azure-virtual-desktop) |
+| **Azure IoT Operations (Preview)** | Provide description. | Provide a learn more link. |
+| **Container Apps (Preview)** | Provide description. | Provide a learn more link. |
+| **Logic Apps (Preview)** | Provide description. | Provide a learn more link. |
+| **SQL Server enabled by Azure Arc** | Run SQL Server and Storage Spaces Direct on Azure Local for a highly available, cost-efficient, and flexible platform. | [Deploy SQL Server on Azure Local](./deploy/sql-server-23h2.md)|
+| **SQL Managed Instance enabled by Azure Arc** | Provide description. | Provide a learn more link. |
+| **PostgreSQL enabled by Azure Arc** | Provide description. | Provide a learn more link. |
+| **Video Indexer** | Provide description. | Provide a learn more link. |
+| **Machine Learning** | Provide description. | Provide a learn more link. |
 
 ## Services enabled by Azure Arc to manage Azure Local infrastructure
 
@@ -80,19 +80,29 @@ The following table describes Azure services enabled by Azure Arc that are used 
 | **Azure Monitor** | Azure Local utilizes Azure Monitor tools, such as Insights, Metrics, Logs, Workbooks, and Alerts. These tools help collect data, analyze, and proactively respond to consistent or trending variances from your established baseline. |  [Overview of Azure Local monitoring](./concepts/monitoring-overview.md) |
 | **Microsoft Defender for Cloud (Preview)** | Protects Azure Local from cyber threats and vulnerabilities. The **Defender for Servers** plan offers enhanced security features, including alerts for individual machines and Azure Local VMs. | [Manage system security with Microsoft Defender for Cloud (preview)](./manage/manage-security-with-defender-for-cloud.md) |
 | **Microsoft Defender for Endpoints** | Provide description. | Provide a learn more link. |
-| **Azure Policy** | Enforces organizational standards and assesses compliance at scale. <br> - You can use Azure Policy in a disconnected Azure Local environment to enforce compliance and manage resources at scale. <br> - You can also enable Insights for monitoring Azure Local systems at scale using Azure policies.| - [Azure Policy](/azure/governance/policy/overview) <br> - [Use Azure Policy in a disconnected Azure Local environment](./manage/disconnected-operations-policy.md). <br> - [Enable Insights for Azure Local at scale using Azure policies](./manage/monitor-multi-azure-policies.md)|
+| **Azure Policy** | Enforces organizational standards and assesses compliance at scale. <br> - You can use Azure Policy in a disconnected Azure Local environment to enforce compliance and manage resources at scale. <br> - You can also use Azure Policy to enable Insights for monitoring Azure Local systems at scale.| - [Azure Policy](/azure/governance/policy/overview) <br> - [Use Azure Policy in a disconnected Azure Local environment](./manage/disconnected-operations-policy.md). <br> - [Enable Insights for Azure Local at scale using Azure policies](./manage/monitor-multi-azure-policies.md)|
 | **Azure Machine Configuration** | Enables auditing and configuring OS settings as code for machines and VMs. Provided by Azure Instance Metadata Service (IMDS) at no cost. | [Azure Machine configuration](/azure/governance/machine-configuration) |
 | **Configuration Management** | Adjust vCPU, memory, disks, NICs. Provide description. | Provide a learn more link. |
-| **Azure Backup** | <!--This service is in the original article but not in the spreadsheet. Confirm if it should be in the article.-->Use Microsoft Azure Backup Server (MABS) v3 UR2 to back up Azure Local host (System State/BMR) and VMs. | [Back up Azure Local virtual machines with MABS](/azure/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines) |
-| **Azure Site Recovery** | <!--This service is in the original article but not in the spreadsheet. Confirm if it should be in the article.-->Continuously replicate VMs from Azure Local to Azure, with failover and failback support. | [Protect your Hyper-V Virtual Machines with Azure Site Recovery and Windows Admin Center](manage/azure-site-recovery.md) |
-| **Azure Key Vault** | <!--This service shown in the diagram but not listed in the spreadsheet. Confirm if we should include it.-->Provide description.    | Provide a learn more link. |
-| **Azure File Sync** |<!--This service shown in the diagram but not listed in the spreadsheet. Confirm if we should include it.--> Provide description.   | Provide a learn more link. |
+| **Azure Key Vault** | This service appears in the diagram but not listed in the spreadsheet. Confirm if we should include it. If so, provide description.   | Provide a learn more link. |
+| **Azure File Sync** |This service appears in the diagram but not listed in the spreadsheet. Confirm if we should include it. If so, provide description.   | Provide a learn more link. |
 
 ## Services enabled by Azure Arc to manage Azure Local VMs
 
 Administrators can manage Azure Local VMs enabled by Azure Arc on their Azure Local instances by using Azure management tools, including the Azure portal, the Azure CLI, Azure PowerShell, and [Azure Resource Manager](/azure/azure-resource-manager/management/overview) templates. For more information, see [What is Azure Local VM management?](./manage/azure-arc-vm-management-overview.md)
 
 For a complete list of Azure services enabled by Azure Arc to manage Azure Local VMs, see the table under [Comparison of VM management capabilities](./concepts/compare-vm-management-capabilities.md#comparison-of-vm-management-capabilities).
+
+<!--The following services are not listed in the table in the "Compare management capabilities of VMs on Azure Local" article. Do we need to include them in the table?
+
+- Azure Backup. With Microsoft Azure Backup Server (MABS) v3 UR2, you can back up Azure Local host (System State/BMR) and virtual machines (VMs) running on your Azure Local. To learn more about Azure Backup, see [Back up Azure Local virtual machines with MABS](/azure/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines).
+
+- Azure Site Recovery. With Azure Site Recovery support, you can continuously replicate VMs from Azure Local to Azure, as well as fail over and fail back. To learn more about Azure Site Recovery, see [Protect your Hyper-V Virtual Machines with Azure Site Recovery and Windows Admin Center](manage/azure-site-recovery.md).
+- Defender for Servers
+- Defender for Endpoints
+- Microsoft Sentinel
+- Azure Migrate
+- Azure Policy
+- Domain Join-->
 
 ## Next steps
 
