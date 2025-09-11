@@ -4,7 +4,7 @@ description: Learn about the kinds of virtual machines (VMs) that can run on Azu
 ms.topic: article
 author: alkohli
 ms.author: alkohli
-ms.date: 03/18/2025
+ms.date: 09/10/2025
 ---
 
 # Compare management capabilities of VMs on Azure Local
@@ -61,12 +61,15 @@ Keep in mind the following information when you're comparing VM management capab
 | Restart |✅|❌|❌|
 | Stop |✅|❌|❌|
 | Delete |✅|✅|❌|
-| Save state (CLI) |✅|❌|❌|
-| Pause (CLI) |✅|❌|❌|
-| GPU configuration (CLI) |✅|❌|❌|
+| Save state |✅|❌|❌|
+| Manage checkpoints |❌|❌|❌|
+| Pause |✅|❌|❌|
+| GPU configuration (CLI, UI in preview) |✅|❌|❌|
 | Add network interface |✅|❌|❌|
 | Connect with SSH |✅|✅|❌|
 | Add new data disk |✅|❌|❌|
+| Detach and delete a data disk |✅|❌|❌|
+| Expand data disk |✅|❌|❌|
 | Change vCPU count |✅|❌|❌|
 | Change memory amount |✅|❌|❌|
 | Change minimum memory |✅|❌|❌|
