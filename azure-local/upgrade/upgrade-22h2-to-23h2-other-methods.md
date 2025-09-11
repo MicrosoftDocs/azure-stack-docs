@@ -46,6 +46,14 @@ Before you begin, make sure that:
 - You have access to an Azure Local running version 22H2.
 - The system is registered in Azure.
 - All the machines in your Azure Local are healthy and show as **Online**.
+- If you have AKS enabled by Azure Arc clusters running on your 22H2 instance, uninstall AKS Arc and all its settings using the [Uninstall-Aks-Hci command.](/azure/aks/hybrid/reference/ps/uninstall-akshci) Once you uninstall AKS Arc, you need to uninstall the `AksHci` Powershell module using this command, as this module will not work on 23H2 and beyond.
+
+```powershell
+Uninstall-Module -Name AksHci -Force
+```
+
+You can use this [helper script to delete old AKS-HCI PowerShell modules](https://github.com/Azure/aksArc/issues/130), to avoid any PowerShell version-related issues in your AKS deployment.
+
 - You shut down virtual machines (VMs). We recommend shutting down VMs before performing the OS upgrade to prevent unexpected outages and damages to databases.
 - You have access to the Azure Stack HCI OS, version 23H2 software update. This update is available via Windows Update or as a downloadable media. The media must be version **2503** ISO that you can download from the [Azure portal](https://portal.azure.com/#view/Microsoft_Azure_HybridCompute/AzureArcCenterBlade/~/hciGetStarted).
 - You have access to a client that can connect to your Azure Local. This client should be running PowerShell 5.0 or later.
