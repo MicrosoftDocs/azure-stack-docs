@@ -442,13 +442,13 @@ Follow these steps to apply solution upgrade if you're running AKS workloads on 
 
 For more information, see [Uninstall-Aks-Hci for AKS enabled by Azure Arc](/azure/aks/hybrid/reference/ps/uninstall-akshci).
 
-Once you uninstall AKS Arc, you need to uninstall the `AksHci` Powershell module using this command, as this module will not work on 23H2 and beyond.
+Once you uninstall AKS Arc, you must uninstall the **AksHci** Powershell module using the followng command, as this module does not work on 23H2 and later:
 
 ```powershell
 Uninstall-Module -Name AksHci -Force
 ```
 
-You can use this [helper script to delete old AKS-HCI PowerShell modules](https://github.com/Azure/aksArc/issues/130), to avoid any PowerShell version-related issues in your AKS deployment.
+To avoid any PowerShell version-related issues in your AKS deployment, you can use this [helper script to delete old AKS-HCI PowerShell modules](https://github.com/Azure/aksArc/issues/130).
 
 ## Next steps
 
