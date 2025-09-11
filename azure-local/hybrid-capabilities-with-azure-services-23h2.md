@@ -10,17 +10,21 @@ ms.custom: e2e-hybrid
 
 # Hybrid capabilities with Azure services in Azure Local
 
-Your on-premises Azure Local solution integrates with Azure via Azure Arc that extends the Azure control plane to your existing infrastructure. This article outlines three distinct ways Azure Arc integrates with Azure Local to enable hybrid cababilities in Azure Local.
+This article outlines the hybrid capabilties available in Azure Local and describes the distinct ways Azure Arc enables these cababilities.
 
-Your on-premises Azure Local solution integrates with Azure via several cloud service components, such as Azure Local cloud service, Azure Arc, and other Azure hybrid services. This article describes the functionality provided by these cloud service components, and how they help provide hybrid capabilities to your Azure Local deployment.
+## Hybrid integration of Azure services with Azure Local
+
+Azure Local allows you to take advantage of both cloud and on-premises resources working together. Through integration with Azure services, you can natively monitor, secure, and back up your local environment to Azure. [Azure Arc](/azure/azure-arc/overview) plays a cental role in this integration by extending the Azure control plane to your existing infrastructure. This integration allows you to run Azure-native workloads on Azure Local, and use Arc-enabled Azure services to manage both Azure Local infrastructure and VMs.
+
+The following diagram shows how Azure Arc provides hybrid integration between Azure services and Azure Local and extends Azure control pane to your Azure Local environment:
 
 :::image type="content" source="media/hybrid-capabilities-with-azure-services-23h2/azure-stack-hci-solution.png" alt-text="The architecture diagram of the Azure Local solution, which shows the integration points between the on-premises Azure Local solution and Azure cloud." border="false" lightbox="media/hybrid-capabilities-with-azure-services-23h2/azure-stack-hci-solution.png":::
 
-## Azure Local cloud service
+## Hybrid capabilities in Azure Local
 
-The Azure Local cloud service in Azure is a key part of the Azure Local product offering. It includes standard Azure components, such as a resource provider in Azure Resource Manager and a UI extension in the Azure portal. These components enable access to Azure Local functionality via familiar Azure tools and UX, such as [Azure portal](manage/azure-portal.md), [Azure PowerShell](/powershell/module/az.stackhci/?view=azps-7.2.0&preserve-view=true), and [Azure CLI](/cli/azure/stack-hci?view=azure-cli-latest&preserve-view=true). The Azure Local cloud service also enables contextual navigation from an Azure Local resource to its Arc-enabled servers and Azure Local virtual machines (VMs) enabled by Azure Arc.
+The hybrid capabilities in Azure Local help extend Azure’s control plane to your on-premises infrastructure. These capabilities are enabled by the Azure Local cloud service and Azure Arc, allowing you to manage, monitor, secure, and update your local environment using familiar Azure tools, such as the [Azure portal](manage/azure-portal.md), [Azure PowerShell](/powershell/module/az.stackhci/?view=azps-7.2.0&preserve-view=true), and [Azure CLI](/cli/azure/stack-hci?view=azure-cli-latest&preserve-view=true).
 
-The Azure Local cloud service extends the hybrid capabilities for Azure Local by enabling the following cloud-based functionalities:
+The hybrid integration supports the following capabilities:
 
 - **Registration.** To enable hybrid capabilities, you must register every Azure Local that you intend to connect with Azure Arc. For more information, see [Register your machines and assign permissions for Azure Local deployment](deploy/deployment-arc-register-server-permissions.md).
 
@@ -44,7 +48,68 @@ The Azure Local cloud service extends the hybrid capabilities for Azure Local by
 
 - **Enhanced management.** You can perform enhanced management of your Azure Local from Azure. This feature is enabled by the Managed Identity created for your Azure Local resource that serves as the identity for the various components of your system. For more information, see [Enhanced management of Azure Local from Azure](manage/azure-enhanced-management-managed-identity.md).
 
-## Azure Arc on Azure Local
+## Workloads enabled by Azure Arc that run on Azure Local
+
+Azure Arc enables you to deploy and run many Azure-native workloads directly within your Azure local environments.
+
+Here's a list of the workloads enabled by Azure Arc that are supported on Azure Local:
+
+- **Azure Kubernetes Service (AKS) on Azure Local.** AKS on Azure Local uses Azure Arc to create new Kubernetes clusters on Azure Local directly from Azure. It enables you to use familiar tools like the Azure portal, Azure CLI, and Azure Resource Manager templates to create and manage your Kubernetes clusters running on Azure Local. For more information, see [What's new in AKS on Azure Local](/azure/aks/hybrid/aks-whats-new-23h2).
+
+- **Azure Virtual Desktop (AVD) on Azure Local.** You can deploy Azure Virtual Desktop on Azure Local by using the Azure portal, the Azure CLI, or Azure PowerShell. For more information, see [Deploy Azure Virtual Desktop](/azure/virtual-desktop/deploy-azure-virtual-desktop).
+
+- **Azure Local VMs enabled by Azure Arc.** Azure Local VMs are Windows and Linux VMs hosted outside Azure, on your corporate network, running on Azure Local. For more information, see [Create Azure Local virtual machines enabled by Azure Arc](./manage/create-arc-virtual-machines.md).
+
+- **SQL Server enabled by Azure Arc.** Azure Local provides a highly available, cost efficient, flexible platform to run SQL Server and Storage Spaces Direct. For more information, see [Deploy SQL Server on Azure Local](./deploy/sql-server-23h2.md).
+
+- **SQL Managed Instance enabled by Azure Arc.** 
+- PostgreSQL enabled by Azure Arc
+- Video Indexer
+- Machine Learning
+- Azure IoT Operations
+- Container Apps
+- Logic Apps
+
+<!--I don't see Azure Site Recovery and Azure Backup in the list.-->
+
+For a complete list of Arc-enabled workloads supported on Azure Local, see [Azure Services support spreadsheet](link to the spreadsheet).
+
+## Services enabled by Azure Arc to manage Azure Local infrastructure
+
+Azure Arc simplifies governance and management of Azure Local infrastructure by delivering a consistent management plane from Azure. There are many Arc-enabled services that you can use to monitor system health, enforce policies, automate updates, secure workloads, and ensure compliance.
+
+Here's a list of Azure services for managing Azure Local infrastructure:
+
+- **Azure Update Manager.** Azure Update Manager is an Azure service that allows you to apply, view, and manage updates for each of your Azure Local instances. You can view each Azure Local across your entire infrastructure, or in remote or branch offices and update at scale. For more information, see [Use Azure Update Manager to update your Azure Local](update/azure-update-manager-23h2.md).
+
+- **Azure Monitor.** Azure Local utilizes Azure Monitor tools, such as Insights, Metrics, Logs, Workbooks, and Alerts. These tools help collect data, analyze, and proactively respond to consistent or trending variances from your established baseline. See [Overview of Azure Local monitoring](./concepts/monitoring-overview.md).
+
+- **Microsoft Defender for Cloud (Preview).** Microsoft Defender for Cloud protects Azure Local from various cyber threats and vulnerabilities. It helps improve the security posture of Azure Local, and can protect against existing and evolving threats. With the paid Defender for Servers plan, you get enhanced security features including security alerts for individual machines and Arc VMs. For more information, see [Manage system security with Microsoft Defender for Cloud (preview)](./manage/manage-security-with-defender-for-cloud.md).
+
+- Microsoft Defender for Endpoints <!--Couldn't find reference in docs.-->
+
+- **Azure Policy.** Azure Policy helps to enforce organizational standards and to assess compliance at-scale. For more information, see [Azure Policy](/azure/governance/policy/overview).
+
+- **Azure Machine Configuration.** [Azure Machine configuration](/azure/governance/machine-configuration) (formerly Azure Policy Guest Configuration) is provided by the Azure Instance Metadata Service (IMDS). It's available at no cost and enables auditing and configuring OS settings as code for machines and VMs.
+
+- **Configuration management.** Adjust vCPU, memory, disks, NICs <!--Couldn't find reference in docs.-->
+
+<!--The following two services are not listed in the spreadsheet-->
+
+- **Azure Backup.** With Microsoft Azure Backup Server (MABS) v3 UR2, you can back up Azure Local host (System State/BMR) and virtual machines (VMs) running on your Azure Local. To learn more about Azure Backup, see [Back up Azure Local virtual machines with MABS](/azure/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines).
+
+- **Azure Site Recovery.** With Azure Site Recovery support, you can continuously replicate VMs from Azure Local to Azure, as well as fail over and fail back. To learn more about Azure Site Recovery, see [Protect your Hyper-V Virtual Machines with Azure Site Recovery and Windows Admin Center](manage/azure-site-recovery.md).
+
+- Azure Key Vault
+- Azure File Sync
+- 
+## Services enabled by Azure Arc to manage Azure Local VMs
+
+Administrators can manage Azure Local VMs enabled by Azure Arc on their Azure Local instances by using Azure management tools, including the Azure portal, the Azure CLI, Azure PowerShell, and [Azure Resource Manager](/azure/azure-resource-manager/management/overview) templates. For more information, see [What is Azure Local VM management?](./manage/azure-arc-vm-management-overview.md)
+
+For a complete list of Arc-enabled services to manage Azure Local VMs, see the table under [Comparison of VM management capabilities](./concepts/compare-vm-management-capabilities.md#comparison-of-vm-management-capabilities).
+
+<!--## Azure Arc on Azure Local
 
 Azure Arc simplifies governance and management by delivering a consistent management plane from Azure. To learn more about Azure Arc, see [Azure Arc overview](/azure/azure-arc/overview). For additional guidance regarding the different services Azure Arc offers, see [Choosing the right Azure Arc service for machines](/azure/azure-arc/choose-service).
 
