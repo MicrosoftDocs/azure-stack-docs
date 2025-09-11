@@ -167,7 +167,7 @@ Following recovery scenarios and the recommended mitigation steps are tabulated 
 | Repair node operation failed. | To complete the operation, investigate the failure. <br>Rerun the failed operation using `Repair-Server -Rerun`. | Yes |
 | Repair node operation succeeded partially but had to start with a fresh operation system install. | In this scenario, the orchestrator (also known as Lifecycle Manager) has already updated its knowledge store with the new node. Use the repair node scenario. | Yes |
 
-### Troubleshooting
+### Troubleshoot issues
 
 Starting with the 2508 release, validation runs after you execute the `Repair-Server` command. If a test fails, the validator returns information to help you resolve the failure.
 
