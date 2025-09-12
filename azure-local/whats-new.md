@@ -5,7 +5,7 @@ ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 09/02/2025
+ms.date: 09/08/2025
 ---
 
 # What's new in Azure Local?
@@ -245,7 +245,7 @@ This release has the following features and improvements:
 
 ::: moniker-end
 
-::: moniker range="=azloc-2503"
+::: moniker range="=azloc-previous"
 
 ## Features and improvements in 2503
 
@@ -289,10 +289,6 @@ This release has the following features and improvements:
 - **Add and repair node changes**: Starting with this release, you must use the OS image of the same solution version as that running on the existing cluster. For more information on the OS image, see [Add a node](./manage/add-server.md) and [Repair a node](./manage/repair-server.md). 
 
 - **What's new for migration**: Documentation for improvements and features for VM migration to Azure Local is now available. For more information, see [What's new in migration](./migrate/migrate-whats-new.md).
-
-::: moniker-end
-
-::: moniker range="=azloc-previous"
 
 ## Features and improvements in 2411.3
 
