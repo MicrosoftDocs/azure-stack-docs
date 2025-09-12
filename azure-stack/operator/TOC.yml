@@ -533,11 +533,13 @@
         - name: SQL resource provider 2.0.00.0 release notes
           href: azure-stack-sql-resource-provider-20000.md 
   - name: Usage and billing
-    href: azure-stack-billing-and-chargeback.md
     items:
+    - name: Overview of usage and billing
+      href: azure-stack-billing-and-chargeback.md
     - name: Manage usage and billing as a CSP
-      href: azure-stack-add-manage-billing-as-a-csp.md
       items:
+      - name: Overview of CSP billing
+        href: azure-stack-add-manage-billing-as-a-csp.md
       - name: Add tenants for usage and billing 
         href: azure-stack-csp-howto-register-tenants.md
       - name: Manage tenant registration
@@ -614,8 +616,6 @@
   items:
   - name: Azure Stack Hub user documentation
     href: ../user/index.yml
-  - name: Azure hybrid cloud documentation
-    href: /hybrid    
 - name: Resources
   items:
     - name: Release notes archive
