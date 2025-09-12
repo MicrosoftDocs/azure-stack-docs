@@ -76,7 +76,7 @@ landingContent:
             url: customer-managed-encryption-keys.md
           - text: Enable VNet encryption
             url: vnet-encryption.md
-          - text: Configure a firewall with AMLFS
+          - text: Use Azure Firewall with Azure Managed Lustre
             url: configure-firewall.md
   - title: Self-paced learning
     linkLists:
