@@ -114,4 +114,4 @@ The following table summarizes the release information for Azure Local across ol
 
 ## Next steps
 
-- [What's new for Azure Local](./whats-new.md)
+- [What's new for Azure Local](./whats-new.md) 
