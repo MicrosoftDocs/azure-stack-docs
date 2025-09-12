@@ -147,9 +147,9 @@ Key points about using Hyper-V replica with Azure Local:
     - After failover, your VM runs on the replica server.
 
     > [!NOTE]
-    >- Failing back an Azure Local VM on an alternate cluster will failback the VM as an unmanaged VM. This means that all services inside the VM will start working, but the VM can’t be managed from Azure until it's registered on the new Azure Local cluster and reconnected to its resource that exists in Azure.
+    >- Failing over an Azure Local VM to the replica cluster fails over the VM as an unmanaged VM. This means that all services inside the VM will start working, but the VM can’t be managed from Azure until it's registered on the new Azure Local cluster and reconnected to its resource that exists in Azure.
     >- Reconnecting means the Azure resource will be updated with the new resource group (optional, you can also keep it in the same resource group), custom location, storage path, and logical network of the VM.
-    >- If the VM is failed back on the same cluster, registering and reconnecting aren't needed. The VM’s Azure connection will be restored, and it continues to be managed from Azure as long as it's within [Azure Arc’s 45-day reconnection window](/azure/azure-arc/servers/overview#agent-status).
+    >- Registering and reconnecting may not be necessary if the failover is temporary and the VM is expected to be failed back to the original cluster once the disaster is mitigated. During this period, the VM won't be manageable from Azure, but its services will be operational.
 
 - **Failback**:
     - Once the disaster is mitigated, and the cluster is operational, Hyper-V replica can reverse the replication direction and replicate any changes made while operating on replica server back to the original Azure Local cluster.
