@@ -3,7 +3,7 @@ title: Register Azure Local using Arc gateway and with and without proxy setup (
 description: Learn how to register Azure Local using Azure Arc gateway Arc proxy. Both scenarios with and without proxy are configured (Preview). 
 author: alkohli
 ms.topic: how-to
-ms.date: 08/20/2025
+ms.date: 09/09/2025
 ms.author: alkohli
 ms.service: azure-local
 zone_pivot_groups: register-arc-options
@@ -11,11 +11,11 @@ zone_pivot_groups: register-arc-options
 
 # Register Azure Local with Azure Arc using Arc gateway (Preview)
 
-::: moniker range=">=azloc-2503"
+::: moniker range=">=azloc-2506"
 
 ::: zone pivot="register-proxy"
 
-This article details how to register Azure Local using Azure Arc gateway and with the proxy configuration enabled. Once you create an Arc gateway resource in your Azure subscription, you can enable the Arc gateway features.
+This article details how to register Azure Local using Azure Arc gateway and with the proxy configuration enabled. Once you create an Arc gateway resource in your Azure subscription, you can enable the Arc gateway features. For an overview of the Arc gateway, see [About Azure Arc gateway for Azure Local](./deployment-azure-arc-gateway-overview.md).
 
 - **Configure proxy with a script**: Using this method, you can configure Arc proxy with a script. This method is useful as you don't need to configure the Arc proxy across WinInet, WinHttp, or environment variables manually.
 
@@ -27,13 +27,15 @@ This article details how to register Azure Local using Azure Arc gateway and wit
 
 ## Prerequisites
 
-Make sure the following prerequisites are met before you proceed:
-
-- You have access to Azure Local machines running release 2505 or later. Prior versions don't support this scenario.
+- You have access to Azure Local machines running release 2506 or later. Earlier versions don't support this scenario.
 
 - You have assigned the appropriate permissions to the subscription used for registration. For more information, see [Assign required permissions for Azure Local deployment](deployment-arc-register-server-permissions.md).
 
-- An Arc gateway resource created in the same subscription as used to deploy Azure Local. For more information, see [Create the Arc gateway resource in Azure](deployment-azure-arc-gateway-overview.md#create-the-arc-gateway-resource-in-azure).
+- An Arc gateway resource is created in the same subscription used to deploy Azure Local. For more information, see [Create the Arc gateway resource in Azure](deployment-azure-arc-gateway-overview.md#create-the-arc-gateway-resource-in-azure).
+
+- You have reviewed the supported and unsupported scenarios. For more information, see [Supported and unsupported scenarios](./deployment-azure-arc-gateway-overview.md#supported-and-unsupported-scenarios).
+
+- Required endpoints are open in your firewall. For more information, see [Azure Local endpoints not redirected](./deployment-azure-arc-gateway-overview.md#azure-local-endpoints-not-redirected).
 
 ## Step 1: Get the Arc gateway ID  
 
@@ -50,13 +52,16 @@ Make sure the following prerequisites are met before you proceed:
 
     Here's an example of how you should change these parameters for the `Invoke-AzStackHciArcInitialization` initialization script. 
 
-    ```powershell
+    ```PowerShell
+    #Define the tenant you will use to register your machine as Arc device
+    $Tenant = "YourTenantID"
+
     #Define the subscription where you want to register your Azure Local machine with Arc.
     $Subscription = "yourSubscriptionID" 
     
     #Define the resource group where you want to register your Azure Local machine with Arc.
     $RG = "yourResourceGroupName" 
-    
+
     #Define the region to use to register your server as Arc device
     #Do not use spaces or capital letters when defining region
     $Region = "eastus"
@@ -90,7 +95,7 @@ Make sure the following prerequisites are met before you proceed:
 
     ```Powershell
     #Invoke the registration script with Proxy and ArcgatewayID 
-    Invoke-AzStackHciArcInitialization -SubscriptionID $Subscription -ResourceGroup $RG -Region australiaeast -Cloud "AzureCloud" -Proxy $ProxyServer -ArcGatewayID $ArcgwId -ProxyBypass $ProxyBypassList 
+    Invoke-AzStackHciArcInitialization -TenantID $Tenant -SubscriptionID $Subscription -ResourceGroup $RG -Region $Region -Cloud "AzureCloud" -Proxy $ProxyServer -ArcGatewayID $ArcgwId -ProxyBypass $ProxyBypassList 
     ```
 
 1. During the Arc registration process, you must authenticate with your Azure account. The console window displays a code that you must enter in the URL, displayed in the app, in order to authenticate. Follow the instructions to complete the authentication process.
@@ -278,7 +283,7 @@ Before you begin, make sure to complete the following prerequisites:
 
 ::: zone pivot="register-without-proxy"
 
-This article details how to register using Azure Arc gateway on Azure Local without the proxy configuration. You can register via the Arc script or the Configurator app.
+This article details how to register using Azure Arc gateway on Azure Local without the proxy configuration. You can register via the Arc script or the Configurator app. For an overview of the Arc gateway, see [About Azure Arc gateway for Azure Local](./deployment-azure-arc-gateway-overview.md).
 
 - **Configure with a script**: Using this method, configure the registration settings via a script.
 
@@ -289,10 +294,15 @@ This article details how to register using Azure Arc gateway on Azure Local with
 
 ## Prerequisites
 
-Make sure the following prerequisites are met before proceeding:
+- You have access to Azure Local machines running release 2506 or later. Earlier versions don't support this scenario.
 
-- You have access to Azure Local machines running release 2505 or later. Prior versions don't support this scenario.
 - You have assigned the appropriate permissions to the subscription used for registration. For more information, see [Assign required permissions for Azure Local deployment](deployment-arc-register-server-permissions.md).
+
+- An Arc gateway resource is created in the same subscription used to deploy Azure Local. For more information, see [Create the Arc gateway resource in Azure](deployment-azure-arc-gateway-overview.md#create-the-arc-gateway-resource-in-azure).
+
+- You have reviewed the supported and unsupported scenarios. For more information, see [Supported and unsupported scenarios](./deployment-azure-arc-gateway-overview.md#supported-and-unsupported-scenarios).
+
+- Required endpoints are open in your firewall. For more information, see [Azure Local endpoints not redirected](./deployment-azure-arc-gateway-overview.md#azure-local-endpoints-not-redirected).
 
 
 ## Step 1: Get the Arc gateway ID  
@@ -306,7 +316,10 @@ Make sure the following prerequisites are met before proceeding:
 
 ## Step 2: Set parameters
 
-```azurecli
+```PowerShell
+#Define the tenant you will use to register your machine as Arc device
+$Tenant = "YourTenantID"
+
 #Define the subscription where you want to register your Azure Local machine with Arc.
 $Subscription = "yoursubscriptionID" 
 
@@ -326,7 +339,7 @@ To use the Arc gateway feature for Azure Local systems without a proxy, only use
     ```azurecli
     
     #Invoke the registration script with ArcgatewayID 
-    Invoke-AzStackHciArcInitialization -SubscriptionID $Subscription -ResourceGroup $RG -Region australiaeast -Cloud "AzureCloud" -ArcGatewayID $ArcgwId
+    Invoke-AzStackHciArcInitialization -TenantID $Tenant -SubscriptionID $Subscription -ResourceGroup $RG -Region $Region -Cloud "AzureCloud" -ArcGatewayID $ArcgwId
     ```
 
 1. During the Arc registration process, you must authenticate with your Azure account. The console window displays a code that you must enter in the URL, in order to authenticate. Follow the instructions to complete the authentication process.
@@ -511,8 +524,8 @@ Before you begin, make sure that you complete the following prerequisites:
     
 ::: moniker-end
 
-::: moniker range="<=azloc-24113"
+::: moniker range="<=azloc-2505"
 
-This feature is available only in Azure Local 2503 or later.
+This feature is available only in Azure Local 2506 or later.
 
 ::: moniker-end
