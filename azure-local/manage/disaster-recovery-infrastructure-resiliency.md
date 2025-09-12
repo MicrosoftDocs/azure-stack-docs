@@ -4,7 +4,7 @@ description: Infrastructure resiliency considerations for Azure Local.
 ms.topic: article
 author: sipastak
 ms.author: sipastak
-ms.date: 09/10/2025
+ms.date: 09/12/2025
 ---
 
 # Infrastructure resiliency for Azure Local
@@ -37,7 +37,7 @@ For more information, see [Physical disk drives for Azure Local](/azure/architec
 
 ## Storage Spaces Direct
 
-Azure Local uses Storage Spaces Direct (S2D) for software-defined storage, which is integrated with failover clustering. By using appropriate S2D resiliency (for example, three-way mirroring or dual parity), an Azure Local instance can sustain disk failures or node failures across two fault domains (nodes) without losing data or incurring downtime. Integrating SSD or NVMe drives within S2D not only boosts performance but also augments the fault tolerance of the storage subsystem. By combining the speed and reliability of these modern disk technologies with S2D’s mirroring or parity-based resiliency schemes, Azure Local deployments can sustain multiple drive or node failures while still delivering high availability and consistent performance for mission-critical workloads.
+Azure Local uses Storage Spaces Direct for software-defined storage, which is integrated with failover clustering. By using appropriate Storage Spaces Direct resiliency (for example, three-way mirroring or dual parity), an Azure Local instance can sustain disk failures or node failures across two fault domains (nodes) without losing data or incurring downtime. Integrating SSD or NVMe drives within Storage Spaces Direct not only boosts performance but also augments the fault tolerance of the storage subsystem. By combining the speed and reliability of these modern disk technologies with Storage Spaces Direct’s mirroring or parity-based resiliency schemes, Azure Local deployments can sustain multiple drive or node failures while still delivering high availability and consistent performance for mission-critical workloads.
 
 For more information, see [Storage Spaces Direct overview](/windows-server/storage/storage-spaces/storage-spaces-direct-overview).
 
