@@ -49,7 +49,7 @@ If you plan to use another resource to host your compute VMs in the same virtual
 
 ### Optional: Using Azure Firewall with AMLFS
 
-If you are currently using Azure Firewall and want to configure it for use with AMLFS, refer to [Optional: Using Azure Firewall with Azure Managed Lustre](configure-firewall).
+If you are currently using Azure Firewall and want to configure it for use with AMLFS, refer to [Optional: Using Azure Firewall with Azure Managed Lustre](/configure-firewall).
 
 ### Subnet access and permissions
 
