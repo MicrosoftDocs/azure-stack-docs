@@ -47,13 +47,17 @@ If you're using an Azure Kubernetes Service (AKS) cluster with your Azure Manage
 
 If you plan to use another resource to host your compute VMs in the same virtual network, check the requirements for that process before creating the virtual network and subnet for your Azure Managed Lustre system. When planning multiple clusters within the same subnet, it's necessary to use an address space large enough to accommodate the total requirements for all clusters.
 
+### Optional: Using Azure Firewall with AMLFS
+
+If you are currently using Azure Firewall and want to configure it for use with AMLFS, refer to [Optional: Using Azure Firewall with Azure Managed Lustre](configure-firewall).
+
 ### Subnet access and permissions
 
 By default, no specific changes need to be made to enable Azure Managed Lustre. If your environment includes restricted network or security policies, the following guidance should be considered:
 
 | Access type | Required network settings |
 |-------------|---------------------------|
-| DNS access  | Use the default Azure-based DNS server. |
+| DNS access  | Default: Use the Azure-based DNS server. <br>Advanced: [Guidelines for configuration with a custom DNS server](/azure/firewall/dns-settings). |
 | Access between hosts on the Azure Managed Lustre subnet | Allow inbound and outbound access between hosts within the Azure Managed Lustre subnet. As an example, access to TCP port 22 (SSH) is necessary for cluster deployment. |
 | Azure cloud service access | Configure your network security group to permit the Azure Managed Lustre file system to access Azure cloud services from within the Azure Managed Lustre subnet.<br><br>Add an outbound security rule with the following properties:<br>- **Port**: Any<br>- **Protocol**: Any<br>- **Source**: Virtual Network<br>- **Destination**: "AzureCloud" service tag<br>- **Action**: Allow<br><br>Note: Configuring the Azure cloud service also enables the necessary configuration of the Azure Queue service.<br><br>For more information, see [Virtual network service tags](/azure/virtual-network/service-tags-overview). |
 | Lustre access<br>(TCP ports 988, 1019-1023) | Your network security group must allow inbound and outbound traffic for TCP port 988 and TCP port range 1019-1023. These rules need to be allowed between hosts on the Azure Managed Lustre subnet, and between any client subnets and the Azure Managed Lustre subnet. No other services can reserve or use these ports on your Lustre clients. The default rules `65000 AllowVnetInBound` and `65000 AllowVnetOutBound` meet this requirement. |

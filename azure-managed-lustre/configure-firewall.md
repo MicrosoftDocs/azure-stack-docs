@@ -1,6 +1,6 @@
 ---
-title: Configuring Azure Firewall for Azure Managed Lustre
-description: How to configure Azure Firewall for use with Azure Managed Lustre file system.
+title: Using Azure Firewall with Azure Managed Lustre
+description: How to use Azure Firewall for use with Azure Managed Lustre file system.
 ms.topic: how-to
 ms.date: 09/05/2025
 author: ronhogue
@@ -11,15 +11,18 @@ ms.reviewer: rohogue
 
 ---
 
-# Configuring Azure Firewall for Azure Managed Lustre
+# Optional: Using Azure Firewall with Azure Managed Lustre
+
+This article provides guidelines if you are using Azure Firewall with Azure Managed Lustre filesystem (AMLFS). A common architecture is to use hub virtual networks (vnets) for the firewall and spoke vnets for services like AMLFS. In most scenarios, a spoke should only be peered to a single hub network and that hub network should be in the same region as the spoke. For more information about this architecture, see [Hub-spoke network topology in Azure](/azure/architecture/networking/architecture/hub-spoke).
 
 Azure Firewall is a cloud-native, intelligent network firewall security service that offers top-tier threat protection for your Azure cloud workloads. It is a fully stateful firewall as a service, featuring built-in high availability and unlimited cloud scalability. For more information, see [Azure Firewall](/azure/firewall).
 
 ## Prerequisites
 
-- An Azure subscription. If you don't have an Azure subscription, [create a free account](https://azure.microsoft.com/free/) before you begin.
-- A virtual network with a subnet configured to allow Azure Managed Lustre file system support. To learn more, see [Networking prerequisites](amlfs-prerequisites.md#network-prerequisites).
+- A virtual network with a subnet configured to allow AMLFS support. To learn more, see [Networking prerequisites](amlfs-prerequisites.md#network-prerequisites).
 - An Azure Firewall. If you don't have an Azure Firewall, see [Deploy and configure Azure Firewall Basic and policy using the Azure portal](/azure/firewall/deploy-firewall-basic-portal-policy).
+
+<!-- 
 
 ## Add the firewall as a DNS server
 
@@ -30,15 +33,13 @@ Add the Azure Firewall private IP address as a custom DNS server. If the firewal
 
 To add the firewall private IP address as a custom DNS server:
 
-:::image type="content" source="media/firewall/copy-firewall-ip-address.png" alt-text="Screenshot of the Azure Firewall page highlighting the firewall IP address." lightbox="media/firewall/copy-firewall-ip-address.png":::
+:::image type="content" source="media/firewall/copy-firewall-ip-address.png" alt-text="Screenshot of the Azure Firewall page highlighting the firewall private IP address." lightbox="media/firewall/copy-firewall-ip-address.png":::
 
-1. In the Azure portal, open the virtual network for your Azure Managed Lustre.
-1. Under the Settings option, click Firewall.
-1. Copy the IP address of the firewall.
+1. In the Azure portal, click on your Azure Firewall and copy the Private IP address of the firewall.
 :::image type="content" source="media/firewall/add-custom-dns-ip.png" alt-text="Screenshot of the Azure DNS page highlighting the Custom radio button, the IP address field, and the Save button." lightbox="media/firewall/add-custom-dns-ip.png":::
 1. Return to the virtual network for your Azure Managed Lustre.
 1. Under the Settings option, click DNS.
-1. In the IP address field, paste the firewall's IP address.
+1. In the IP address field, paste the firewall's private IP address.
 1. Click Save.
 1. Restart any virtual machines and/or application gateways.
 
@@ -48,7 +49,7 @@ To secure network traffic to and from your Azure Managed Lustre, add a route tab
 
 To add a route table to your Azure Managed Lustre subnet, follow these steps:
 
-<!-- >:::image type="content" source="media/firewall/create-route-table.png" alt-text="Screenshot of the Azure Route Tables page highlighting the Create button." lightbox="media/firewall/create-route-table.png"::: -->
+:::image type="content" source="media/firewall/create-route-table.png" alt-text="Screenshot of the Azure Route Tables page highlighting the Create button." lightbox="media/firewall/create-route-table.png":::
 
 1. Open **Route Tables** and click **Create**.
 :::image type="content" source="media/firewall/name-route-table.png" alt-text="Screenshot of the Azure Route Tables page highlighting the Create button." lightbox="media/firewall/name-route-table.png":::
@@ -71,6 +72,7 @@ To add a default system route to your route table:
 1. Choose **Virtual Appliance** for the Next hop type.
 1. Paste the firewall's private IP address for the Next hop address.
 1. Click **Add**.
+-->
 
 ## Add Azure Firewall Policy rule sets
 
@@ -81,6 +83,8 @@ Firewall Policy is a top-level resource that contains security and operational s
 If you don't have a rule collection group, you'll need to create one. For more information about Azure rule collection groups, see [Rule collection groups](/azure/firewall/policy-rule-sets#rule-collection-groups).
 
 ### Add application rules
+
+Application rules allow AMLFS to access essential services. For MicrosoftFQDNs, essential services include blob storage, metrics, diagnostics, and health monitoring. NonMicrosoftFQDNs allow access to OS security updates, security scanners, and Azure load balancer.
 
 To create an application rule collection:
 
@@ -101,6 +105,12 @@ To create an application rule collection:
 7. Click **Add**.
 
 ### Add network rules
+
+In this section, we'll add three rules.
+
+- LustreSubnetAllowAll allows all IP addresses within the AMLFS subnet to communicate with each other.
+- AllowLustreDependencies allows AMLFS to access essential services required for a secure environment, engineering diagnostic support, and storage account integration.
+- NTPAccess allows access to a Microsoft NTP server for time synchronization.
 
 To create a network rule collection:
 
