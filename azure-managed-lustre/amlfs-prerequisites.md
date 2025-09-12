@@ -47,10 +47,6 @@ If you're using an Azure Kubernetes Service (AKS) cluster with your Azure Manage
 
 If you plan to use another resource to host your compute VMs in the same virtual network, check the requirements for that process before creating the virtual network and subnet for your Azure Managed Lustre system. When planning multiple clusters within the same subnet, it's necessary to use an address space large enough to accommodate the total requirements for all clusters.
 
-### Optional: Using Azure Firewall with AMLFS
-
-If you are currently using Azure Firewall and want to configure it for use with AMLFS, refer to [Optional: Using Azure Firewall with Azure Managed Lustre](/configure-firewall.md).
-
 ### Subnet access and permissions
 
 By default, no specific changes need to be made to enable Azure Managed Lustre. If your environment includes restricted network or security policies, the following guidance should be considered:
