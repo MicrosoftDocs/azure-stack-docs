@@ -318,7 +318,7 @@ $identity = [System.Security.Principal.NTAccount]"$($domain.Name)\ldap"
 $accessRule = New-Object System.DirectoryServices.ActiveDirectoryAccessRule($identity,  [System.DirectoryServices.ActiveDirectoryRights] "GenericRead",    [System.Security.AccessControl.AccessControlType] "Allow",    [System.DirectoryServices.ActiveDirectorySecurityInheritance] "All")
 $acl = Get-Acl -Path "AD:\CN=Users,$($domain.DistinguishedName)"
 $acl.AddAccessRule($accessRule)
-Set-ACL -Path "AD:\$($domain.DistinguishedName)" -AclObject $acl
+Set-ACL -Path "AD:\CN=Users,$($domain.DistinguishedName)" -AclObject $acl
 Write-Verbose "Granted 'GenericRead' permissions to ldap account."
 ```
 
