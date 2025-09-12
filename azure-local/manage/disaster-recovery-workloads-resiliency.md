@@ -1,5 +1,5 @@
 ---
-title: Workloads resiliency for Azure Local
+title: Workloads Resiliency for Azure Local
 description: Disaster recovery workloads for Azure Local.
 ms.topic: article
 author: sipastak
@@ -96,7 +96,7 @@ At failover time, if the hosts are dormant, they must be turned on and users rea
 
 With personal session hosts, each user is assigned to a specific, dedicated session host VM. These VMs are stateful, as users may install applications or store data directly on them. Consequently, disaster recovery for personal session hosts typically requires full VM-level backup and replication (using Hyper-V Replica) to preserve the unique state of each user's desktop.
 
-### Failover to another Azure Local cluster using Hyper-V Replica
+### Fail over to another Azure Local cluster using Hyper-V Replica
 
 A secondary Azure Local cluster can be used as a failover site to keep session hosts on premises. The strategy largely follows the recommendations for VM resiliency using [Hyper-V replica](disaster-recovery-vm-resiliency.md#use-hyper-v-replica-for-continuous-replication-of-business-critical-vms), with special considerations for personal session hosts.
 

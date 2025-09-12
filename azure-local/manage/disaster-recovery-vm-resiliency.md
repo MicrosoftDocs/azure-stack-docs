@@ -1,5 +1,5 @@
 ---
-title: Virtual machine resiliency for Azure Local
+title: Virtual Machine Resiliency for Azure Local
 description: Virtual machine resiliency considerations for Azure Local.
 ms.topic: article
 author: sipastak
@@ -109,11 +109,11 @@ Key points about Azure Site Recovery for Azure Local:
     - After failover, your VM runs in Azure.  
 
 - **Failback**:
-    - When the disaster is mitigated, and the cluster is operational, Azure Site Recovery can reverse the replication direction and replicate any changes made while operating in Azure back to your Azure Local cluster. After reverse replication you can failback the VM, allowing operations to switch back to on-premises. 
+    - When the disaster is mitigated, and the cluster is operational, Azure Site Recovery can reverse the replication direction and replicate any changes made while operating in Azure back to your Azure Local cluster. After reverse replication you can fail back the VM, allowing operations to switch back to on-premises. 
     - For successful failback, the on-premises environment must be healthy. If your cluster isn't available, you can register another Azure Local cluster to the Azure Site Recovery Hyper-V site and failback the VM to a node on an alternate cluster.
 
     > [!NOTE]
-    >- Failing back an Azure Local VM on an alternate cluster will failback the VM as an unmanaged VM. This means that all services inside the VM will start working, but the VM can’t be managed from Azure until it's registered on the new Azure Local cluster and reconnected to its resource that exists in Azure.
+    >- Failing back an Azure Local VM on an alternate cluster will fail back the VM as an unmanaged VM. This means that all services inside the VM will start working, but the VM can’t be managed from Azure until it's registered on the new Azure Local cluster and reconnected to its resource that exists in Azure.
     >- Reconnecting means the Azure resource will be updated with the new resource group (optional, you can also keep it in the same resource group), custom location, storage path, and logical network of the VM.
     >- If the VM is failed back on the same cluster, registering and reconnecting aren't needed. The VM’s Azure connection will be restored, and it continues to be managed from Azure as long as it's within [Azure Arc’s 45-day reconnection window](/azure/azure-arc/servers/overview#agent-status).
 
@@ -194,8 +194,8 @@ In choosing between Azure Site Recovery and Hyper-V Replica for Azure Local VMs,
 |Provides recovery plans for orchestration of failover sequences      |    Yes     |    No     |
 |Requires network evaluation for the failed over VM to continue servicing      |    Yes     |    Yes     |
 |Incurs Azure usage cost      |    Yes. See [Pricing - Site Recovery](https://azure.microsoft.com/pricing/details/site-recovery).     |     No    |
-|Requires registration if the VM is failed back to its original site after disaster is mitigated | No | No (the VM can be failed over to the disaster recovery site temporarily and failed back to its original site after disaster is mitigated). |
-|Requires registration if the failed over VM had to be permanently reside in the disaster recovery site | No (Azure VMs don’t require registration). | Yes |
+|Requires registration if the VM is failed back to its original site after disaster is mitigated | No | No (the VM can be failed over to the disaster recovery site temporarily and failed back to its original site after disaster is mitigated) |
+|Requires registration if the failed over VM had to permanently reside in the disaster recovery site | No (Azure VMs don’t require registration) | Yes |
 
 
 

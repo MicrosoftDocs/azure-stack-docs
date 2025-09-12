@@ -1,5 +1,5 @@
 ---
-title: Infrastructure resiliency for Azure Local
+title: Infrastructure Resiliency for Azure Local
 description: Infrastructure resiliency considerations for Azure Local.
 ms.topic: article
 author: sipastak
@@ -21,7 +21,7 @@ You can choose from different hardware categories, including Validated Nodes, In
 
 ## Failover clustering  
 
-Windows Server failover clustering is a core component of the high-availability technology for Azure Local, providing the framework for resiliency and failover of VMs. Azure Local instances can consist of multiple physical nodes that are configured in a failover cluster. If one or more server nodes fail, their roles (VMs, storage, network, etc.) automatically failover to another node within the cluster. This means workloads continue to run on the surviving nodes, with minimal disruption to systems and end users. The number of nodes in the cluster directly impacts its resilience and the types of storage fault tolerance that can be implemented.  
+Windows Server failover clustering is a core component of the high-availability technology for Azure Local, providing the framework for resiliency and failover of VMs. Azure Local instances can consist of multiple physical nodes that are configured in a failover cluster. If one or more server nodes fail, their roles (VMs, storage, network, etc.) automatically fail over to another node within the cluster. This means workloads continue to run on the surviving nodes, with minimal disruption to systems and end users. The number of nodes in the cluster directly impacts its resilience and the types of storage fault tolerance that can be implemented.  
 
 When designing your storage architecture, it's crucial to select a storage fault tolerance configuration that aligns with your organization's specific space/business continuity needs and the number of nodes present in your cluster, ensuring optimal protection without unnecessary overhead. 
 
