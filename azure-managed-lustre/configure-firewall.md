@@ -109,7 +109,7 @@ To create an application rule collection:
 In this section, we'll add three rules.
 
 - LustreSubnetAllowAll allows all IP addresses within the AMLFS subnet to communicate with each other.
-- AllowLustreDependencies allows AMLFS to access essential services required for a secure environment, engineering diagnostic support, and storage account integration. For more information about each service, refer to the table under [Create outbound security rules](/configure-network-security-group#create-outbound-security-rules).
+- AllowLustreDependencies allows AMLFS to access essential services required for a secure environment, engineering diagnostic support, and storage account integration. For more information about each service, refer to the table under [Create outbound security rules](/azure/azure-managed-lustre/configure-network-security-group#create-outbound-security-rules).
 - NTPAccess allows access to a Microsoft NTP server for time synchronization.
 
 To create a network rule collection:
