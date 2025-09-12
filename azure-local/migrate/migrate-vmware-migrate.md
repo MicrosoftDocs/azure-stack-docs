@@ -41,7 +41,7 @@ Before you migrate your VMware VMs:
 
     :::image type="content" source="./media/migrate-vmware-migrate/migrate-replicated-virtual-machine-2.png" alt-text="Screenshot with Replications page in Azure portal with Migrate option selected." lightbox="./media/migrate-vmware-migrate/migrate-replicated-virtual-machine-2.png":::
 
-    Alternatively, you can select **Migrate** from the context menu for a single VM that is ready to migrate.
+    Alternatively, you can select **Migrate** from the context menu for a single VM that's ready to migrate.
 
     :::image type="content" source="./media/migrate-vmware-migrate/migrate-replicated-virtual-machine-3.png" alt-text="Screenshot of Migrate page in Azure portal with Migrate option selected from context menu." lightbox="./media/migrate-vmware-migrate/migrate-replicated-virtual-machine-3.png":::
 
