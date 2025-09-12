@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 07/31/2025
+ms.date: 09/11/2025
 ms.custom: sfi-image-nochange
 ---
 
@@ -504,11 +504,8 @@ You can use the Arc integration validator to verify the following:
 1. Run the following command to invoke the validator:
 
    ```powershell
-   Invoke-AzStackHciArcIntegrationValidation -SubscriptionID <Your_subscription_ID> -ArcResourceGroupName <ARC_resourcegroup_name> -NodeNames $nodes
+   Invoke-AzStackHciArcIntegrationValidation -SubscriptionID <Your subscription ID> -RegistrationResourceGroupName <Resource group to onboard your Azure Local system> -ArcResourceGroupName  <Resource group to onboard your Azure Local system> -NodeNames $nodes
    ```
-
-   where:
-   - `Arc_resourcegroup_name` represents the resource group that you plan to use to onboard your Azure Local system.
 
 ### Arc integration validator output
 

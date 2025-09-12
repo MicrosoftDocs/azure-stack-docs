@@ -3,7 +3,7 @@ title: Azure Local, version 23H2 deployment overview
 description: Learn about the deployment methods for Azure Local, version 23H2.
 author: alkohli
 ms.topic: overview
-ms.date: 02/20/2025
+ms.date: 09/08/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -36,13 +36,14 @@ Follow this sequence to deploy Azure Local in your environment:
 | [Select validated network topology](#validated-network-topologies) | Identify the network reference pattern that corresponds to the way your machines are cabled. You will define the network settings based on this topology. |
 | [Read the requirements and complete the prerequisites](./deployment-prerequisites.md) | Review the requirements and complete all the prerequisites and a deployment checklist before you begin the deployment. |
 | Step 1: [Prepare Active Directory](./deployment-prep-active-directory.md) | Prepare your Active Directory (AD) environment for Azure Local deployment. |
-| Step 2: [Download Azure Stack HCI OS, version 23H2](./download-23h2-software.md) | Download Azure Stack HCI Operating System, version 23H2 from Azure portal. |
+| Step 2: [Download the operating system](./download-23h2-software.md) | Download Azure Stack HCI Operating System from the Azure portal. |
 | Step 3: [Install OS](./deployment-install-os.md) | Install Azure Stack HCI OS locally on each machine in your system. |
 | (Optional) [Configure the proxy](../manage/configure-proxy-settings.md) | Optionally configure proxy settings for Azure Local if your network uses a proxy server for internet access. |
-| Step 4A: [Register machines with Arc and assign permissions via command line](./deployment-arc-register-server-permissions.md) | Install and run the Azure Arc registration script on each of the machines that you intend to cluster.<br> Assign required permissions for the deployment. |
-| Step 4B: [Register machines with Arc and assign permissions via local UI](./deployment-arc-register-server-permissions.md) | Configure via local UI and register with Arc the machines that you intend to cluster.<br> Assign required permissions for the deployment. |
-| Step 5A: [Deploy the system via Azure portal](./deploy-via-portal.md) | Use the Azure portal to select Arc servers to create Azure Local instance. |
-| Step 5B: [Deploy the system via Resource Manager template](deployment-azure-resource-manager-template.md) | Use the Resource Manager deployment template and the parameter file to deploy an Azure Local instance. |
+| Step 4: [Set up subscription permissions](./deployment-arc-register-server-permissions.md) | Assign required permissions for the deployment. |
+| Step 5A: [Register Azure Local machines with Azure Arc, without using the Arc gateway](./deployment-without-azure-arc-gateway.md) | Depending on whether your deployment environment uses a proxy or not, register your Azure Local machines directly with Azure Arc, without using the Arc gateway. |
+| Step 5B: [Register Azure Local machines with Azure Arc using Arc gateway (Preview)](./deployment-with-azure-arc-gateway.md) | Depending on whether your deployment environment uses a proxy or not, register your Azure Local machines with Azure Arc through the centralized Arc gateway. |
+| Step 6A: [Deploy the system via Azure portal](./deploy-via-portal.md) | Use the Azure portal to select Arc servers to deploy an Azure Local instance. |
+| Step 6B: [Deploy the system via Resource Manager template](deployment-azure-resource-manager-template.md) | Use the Azure Resource Manager deployment template and the parameter file to deploy an Azure Local instance. |
 
 > [!NOTE]
 > As part of Azure Local, an Arc resource bridge appliance VM is automatically deployed during setup. The resource bridge is what enables Azure Arc capabilities and hybrid connectivity to Azure.  
