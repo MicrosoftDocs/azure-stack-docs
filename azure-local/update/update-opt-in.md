@@ -30,7 +30,7 @@ Starting with Azure Local 2508, you can opt-in to update your Azure Local system
     CurrentVersion    : 11.2508.1001.51
     ```
 
-- You must install driver and firmware compatible with Azure Stack HCI OS, 26100.xxxx (24H2) before proceeding with the update. Depending on your solution's hardware vendor and model, a specific Solution Builder Extension (SBE) version might be required either before or with the 12.25xx update. Refer to the following table for minimum version requirements and installation timing:
+- You must install driver and firmware compatible with Azure Stack HCI OS, 26100.xxxx (24H2) before proceeding with the update. Depending on your hardware vendor and model, a specific Solution Builder Extension (SBE) version might be required either before or with the 12.25xx update. Refer to the following table for minimum version requirements and installation timing:
 
     | Hardware Vendor | SBE Family | Minimum Version Required | Required to be installed before or after 12.xx  |
     |--|--|--|--|
