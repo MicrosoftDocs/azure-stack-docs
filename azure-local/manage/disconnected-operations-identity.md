@@ -212,7 +212,7 @@ Use PowerShell on Windows Server 2022 or newer for these commands.
 
 ```powershell
 # Modify to fit your domain/installation
-$GSMAAccount = 'Local-contoso\gmsa_adfs$'
+$GSMAAccount = 'Local\gmsa_adfs$'
 
 Install-WindowsFeature -Name AD-Domain-Services -IncludeManagementTools
 
@@ -225,7 +225,7 @@ Install-WindowsFeature ADFS-Federation -IncludeManagementTools
 # Promote the server to a domain controller
 Install-ADDSForest `
     -DomainName "local.contoso.com" `
-    -DomainNetbiosName "local-contoso " ` #NETBIOS 15 char limit
+    -DomainNetbiosName "local " ` #NETBIOS 15 char limit
     -SafeModeAdministratorPassword (ConvertTo-SecureString "" -AsPlainText -Force) `
     -InstallDns
 
