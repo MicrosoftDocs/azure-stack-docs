@@ -259,6 +259,8 @@ items:
     href: update/update-phases-23h2.md
   - name: Update via PowerShell
     href: update/update-via-powershell-23h2.md
+  - name: Opt-in update
+    href: update/update-opt-in.md
   - name: Update via PowerShell with limited connectivity
     href: update/import-discover-updates-offline-23h2.md
   - name: Update via Azure portal
