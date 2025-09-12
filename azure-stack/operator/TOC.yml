@@ -616,8 +616,6 @@
   items:
   - name: Azure Stack Hub user documentation
     href: ../user/index.yml
-  - name: Azure hybrid cloud documentation
-    href: /hybrid    
 - name: Resources
   items:
     - name: Release notes archive
