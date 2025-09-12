@@ -68,10 +68,10 @@ Assign the service principal to the Azure resource group that has the machines t
 
 | Role | Needed to |
 |----------------------------------------------------------|----------------------------------------------- |
-| [Azure Connected Machine Resource Administrator](../role-based-access-control/built-in-roles.md#azure-connected-machine-resource-administrator)  or [Contributor](../role-based-access-control/built-in-roles.md#contributor) | Connect Arc-enabled Nexus Kubernetes cluster VM server in the resource group and install the Azure Monitoring Agent (AMA)|
-| [Monitoring Contributor](../role-based-access-control/built-in-roles.md#user-access-administrator) or [Contributor](../role-based-access-control/built-in-roles.md#contributor) | Create a [Data Collection Rule (DCR)](/azure/azure-monitor/agents/data-collection-rule-azure-monitor-agent) in the resource group and associate Arc-enabled servers to it |
-| [User Access Administrator](../role-based-access-control/built-in-roles.md#user-access-administrator), and [Resource Policy Contributor](../role-based-access-control/built-in-roles.md#resource-policy-contributor) or [Contributor](../role-based-access-control/built-in-roles.md#contributor) | Needed if you want to use Azure policy assignment(s) to ensure that a DCR is associated with [Arc-enabled machines](https://ms.portal.azure.com/#view/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fd5c37ce1-5f52-4523-b949-f19bf945b73a) |
-| [Kubernetes Extension Contributor](../role-based-access-control/built-in-roles.md#kubernetes-extension-contributor) | Needed to deploy the K8s extension for Container Insights |
+| [Azure Connected Machine Resource Administrator](/azure/role-based-access-control/built-in-roles#azure-connected-machine-resource-administrator)  or [Contributor](/azure/role-based-access-control/built-in-roles#contributor) | Connect Arc-enabled Nexus Kubernetes cluster VM server in the resource group and install the Azure Monitoring Agent (AMA)|
+| [Monitoring Contributor](/azure/role-based-access-control/built-in-roles#user-access-administrator) or [Contributor](/azure/role-based-access-control/built-in-roles#contributor) | Create a [Data Collection Rule (DCR)](/azure/azure-monitor/agents/data-collection-rule-azure-monitor-agent) in the resource group and associate Arc-enabled servers to it |
+| [User Access Administrator](/azure/role-based-access-control/built-in-roles#user-access-administrator), and [Resource Policy Contributor](/azure/role-based-access-control/built-in-roles#resource-policy-contributor) or [Contributor](/azure/role-based-access-control/built-in-roles#contributor) | Needed if you want to use Azure policy assignment(s) to ensure that a DCR is associated with [Arc-enabled machines](https://ms.portal.azure.com/#view/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fd5c37ce1-5f52-4523-b949-f19bf945b73a) |
+| [Kubernetes Extension Contributor](/azure/role-based-access-control/built-in-roles#kubernetes-extension-contributor) | Needed to deploy the K8s extension for Container Insights |
 
 ### Monitor Nexus Kubernetes cluster
 
@@ -103,14 +103,14 @@ az monitor log-analytics workspace show --workspace-name "<Log Analytics workspa
 To deploy
 Container Insights and view data in the applicable Log Analytics workspace requires certain role assignments in your account.
 For example, the "Contributor" role assignment.
-See the instructions for [assigning required roles](../role-based-access-control/role-assignments-steps.md#step-5-assign-role):
+See the instructions for [assigning required roles](/azure/role-based-access-control/role-assignments-steps#step-5-assign-role):
 
 - [Log Analytics Contributor](/azure/azure-monitor/logs/manage-access?tabs=portal#azure-rbac) role: necessary permissions to enable container monitoring on a CNF (provisioned) cluster.
 - [Log Analytics Reader](/azure/azure-monitor/logs/manage-access?tabs=portal#azure-rbac) role: non-members of the Log Analytics Contributor role, receive permissions to view data in the Log Analytics workspace once you enable container monitoring.
 
 #### Install the cluster extension
 
-Sign-in into the [Azure Cloud Shell](../cloud-shell/overview.md) to access the cluster:
+Sign-in into the [Azure Cloud Shell](/azure/cloud-shell/overview) to access the cluster:
 
 ```azurecli
 az login

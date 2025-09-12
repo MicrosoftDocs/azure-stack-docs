@@ -7,11 +7,11 @@ ms.service: azure-operator-nexus
 ms.custom: devx-track-azurecpowershell
 ---
 
-[!INCLUDE [quickstarts-free-trial-note](~/reusable-content/ce-skilling/azure/includes/quickstarts-free-trial-note.md)]
+[!INCLUDE [quickstarts-free-trial-note](~/../azure-stack/reusable-content/ce-skilling/azure/includes/quickstarts-free-trial-note.md)]
 
-* Use the Bash environment in [Azure PowerShell](../../../cloud-shell/overview.md). For more information, see [Quickstart for PowerShell in Azure Cloud Shell.](../../../cloud-shell/quickstart.md)
+* Use the Bash environment in [Azure PowerShell](/azure/cloud-shell/overview). For more information, see [Quickstart for PowerShell in Azure Cloud Shell.](/azure/cloud-shell/quickstart)
 
-[:::image type="icon" source="~/reusable-content/ce-skilling/azure/media/cloud-shell/launch-cloud-shell-button.png" alt-text="Launch Azure Cloud Shell." :::](https://shell.azure.com)
+[:::image type="icon" source="~/../azure-stack/reusable-content/ce-skilling/azure/media/cloud-shell/launch-cloud-shell-button.png" alt-text="Launch Azure Cloud Shell." :::](https://shell.azure.com)
 
 * If you are running PowerShell locally, install the Az PowerShell module and connect to your Azure account using the [Connect-AzAccount](/powershell/module/az.accounts/Connect-AzAccount) cmdlet. For more information about installing the Az PowerShell module, see [Install Azure PowerShell][install-azure-powershell].
 
@@ -46,4 +46,4 @@ ms.custom: devx-track-azurecpowershell
 [install-azure-powershell]: /powershell/azure/install-az-ps
 [new-azresourcegroup]: /powershell/module/az.resources/new-azresourcegroup
 [kubernetes-concepts]: /azure/aks/concepts-clusters-workloads
-[azure-resource-group]: ../../../azure-resource-manager/management/overview.md
+[azure-resource-group]: /azure/azure-resource-manager/management/overview

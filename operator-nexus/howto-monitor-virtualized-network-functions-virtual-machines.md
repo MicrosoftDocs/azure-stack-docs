@@ -139,12 +139,12 @@ The following prerequisites must be met prior to installing the Azure Monitor Ag
 
 | **Built-in role** | **Scopes** | **Reason** |
 | --- | --- | --- |
-|[Virtual Machine Contributor](../role-based-access-control/built-in-roles.md#virtual-machine-contributor) [Azure Connected Machine Resource Administrator](../role-based-access-control/built-in-roles.md#azure-connected-machine-resource-administrator)| Azure Arc-enabled servers | To deploy the agent |
+|[Virtual Machine Contributor](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) [Azure Connected Machine Resource Administrator](/azure/role-based-access-control/built-in-roles#azure-connected-machine-resource-administrator)| Azure Arc-enabled servers | To deploy the agent |
 | Any role that includes the action _Microsoft.Resources/deployments/_\* | Subscription and/orResource group and/or | To deploy Azure Resource Manager templates |
 
 ### Installing Azure Monitoring Agent
 
-Once, the Virtual Machines are Arc connected, ensure that you create a local file from your [Azure Cloud Shell](../cloud-shell/overview.md) with name "settings.json" to provide the proxy information:
+Once, the Virtual Machines are Arc connected, ensure that you create a local file from your [Azure Cloud Shell](/azure/cloud-shell/overview) with name "settings.json" to provide the proxy information:
 
 <!--- IMG ![Settings.json file](Docs/media/azure-monitor-agent-settings.png) IMG --->
 :::image type="content" source="media/azure-monitor-agent-settings.png" alt-text="Screenshot of Settings.json file.":::

@@ -28,7 +28,7 @@ Azure Operator Nexus includes the following benefits for operating secure carrie
 * **Integrated platform for compute, network, and storage**: Operators no longer need to provision compute, network, and storage separately. Azure Operator Nexus provides an end-to-end platform from the infrastructure to the tenant for applications. For example, the networks associated with the compute infrastructure can be provisioned automatically across the compute and network infrastructure without requiring more teams.
 * **Expanding network function (NF) ecosystem**: Azure Operator Nexus supports Microsoft and partner NFs via the Azure Operator Nexus Ready program. These NFs are tested for deployment and LCM on Azure Operator Nexus before they become available in Azure Marketplace.
 * **Access to key Azure services**: Because Azure Operator Nexus is connected to Azure, operators can access most Azure services through the same connection as the on-premises network. Operators can monitor logs and metrics via Azure Monitor. They can analyze telemetry data by using Log Analytics or the Azure Machine Learning framework.
-* **Unified governance and compliance**: Azure Operator Nexus extends Azure management and services to operators' premises. Operators can unify data governance and enforce security and compliance policies by using [Azure role-based access control](../role-based-access-control/overview.md) and [Azure Policy](../governance/policy/overview.md).
+* **Unified governance and compliance**: Azure Operator Nexus extends Azure management and services to operators' premises. Operators can unify data governance and enforce security and compliance policies by using [Azure role-based access control](/azure/role-based-access-control/overview) and [Azure Policy](/azure/governance/policy/overview).
 
 ## How Azure Operator Nexus works
 
@@ -92,7 +92,7 @@ As a platform, Azure Operator Nexus is designed for telco network functions and 
 
 ### Azure Operator Service Manager
 
-[Azure Operator Service Manager](../operator-service-manager/azure-operator-service-manager-overview.md) is a service that allows network equipment providers (NEPs) to publish their NFs in Azure Marketplace. Operators can deploy the NFs by using familiar Azure APIs.
+[Azure Operator Service Manager](/azure/operator-service-manager/azure-operator-service-manager-overview) is a service that allows network equipment providers (NEPs) to publish their NFs in Azure Marketplace. Operators can deploy the NFs by using familiar Azure APIs.
 
 Operator Service Manager provides a framework for NEPs and Microsoft to test and validate the basic functionality of the NFs. The validation includes lifecycle management of an NF on Azure Operator Nexus.
 

@@ -67,7 +67,7 @@ If you get a terminal provisioning state of `Failed` after finishing a resource 
 
 Before you enable isolation, it's necessary to create one or more internal or external networks.
 
-To access further details in the logs, see [Log Analytics workspace](../../articles/operator-nexus/concepts-observability.md#log-analytic-workspace).
+To access further details in the logs, see [Log Analytics workspace](/azure/articles/operator-nexus/concepts-observability#log-analytic-workspace).
 
 If you still have questions, [contact support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 For more information about Support plans, see [Azure Support plans](https://azure.microsoft.com/support/plans/response/).

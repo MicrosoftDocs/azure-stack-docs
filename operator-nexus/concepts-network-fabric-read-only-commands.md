@@ -42,12 +42,12 @@ To use Network Fabric read-only commands, complete the following steps:
 
 - Generate the storage URL.
 
-    Refer to [Create a container](../storage/blobs/blob-containers-portal.md#create-a-container) to create a container.  
+    Refer to [Create a container](/azure/storage/blobs/blob-containers-portal#create-a-container) to create a container.  
 
     > [!NOTE]
     > Enter the name of the container using only lowercase letters.
 
-    Refer to [Generate a shared access signature](../storage/blobs/blob-containers-portal.md#generate-a-shared-access-signature) to create the SAS URL of the container. Provide Write permission for SAS.
+    Refer to [Generate a shared access signature](/azure/storage/blobs/blob-containers-portal#generate-a-shared-access-signature) to create the SAS URL of the container. Provide Write permission for SAS.
 
     > [!NOTE]
     > SAS URLs are short lived. By default, it is set to expire in eight hours. If the SAS URL expires, then the fabric must be re-patched. 

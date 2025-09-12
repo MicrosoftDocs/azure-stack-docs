@@ -23,9 +23,9 @@ The Operator Nexus Cluster (or Instance) platform components include the infrast
 
 ### Network Fabric Controller
 
-Network Fabric Controller (NFC) is an Operator Nexus resource that runs in your subscription in your desired resource group and [Virtual Network](../virtual-network/virtual-networks-overview.md). The Network Fabric Controller acts as a bridge between the Azure control plane and your on-premises infrastructure to manage the lifecycle and configuration of the Network Devices in a Network Fabric instance.
+Network Fabric Controller (NFC) is an Operator Nexus resource that runs in your subscription in your desired resource group and [Virtual Network](/azure/virtual-network/virtual-networks-overview). The Network Fabric Controller acts as a bridge between the Azure control plane and your on-premises infrastructure to manage the lifecycle and configuration of the Network Devices in a Network Fabric instance.
 
-The Network Fabric Controller achieves this by establishing a private connectivity channel between your Azure environment and on-premises using [Azure ExpressRoute](../expressroute/expressroute-introduction.md) and other supporting resources which are deployed in a managed resource group. The NFC is typically the first resource that you would create to establish this connectivity to bootstrap and configure your management and workload networks.
+The Network Fabric Controller achieves this by establishing a private connectivity channel between your Azure environment and on-premises using [Azure ExpressRoute](/azure/expressroute/expressroute-introduction) and other supporting resources which are deployed in a managed resource group. The NFC is typically the first resource that you would create to establish this connectivity to bootstrap and configure your management and workload networks.
 
 The Network Fabric Controller enables you to manage all the Network resources within your Operator Nexus instance like Network Fabric, Network Racks, Network Devices, Isolation Domains, Route Policies, etc.
 

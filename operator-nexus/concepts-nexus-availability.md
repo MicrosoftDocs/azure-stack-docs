@@ -38,7 +38,7 @@ When it comes to availability, there are two areas to consider:
 
 ## Deploy and Configure Operator Nexus for High Availability
 
-[Reliability in Azure Operator Nexus \| Microsoft Learn](../reliability/reliability-operator-nexus.md) provides details of how to deploy the Operator Nexus services that run in Azure so as to maximize availability.
+[Reliability in Azure Operator Nexus \| Microsoft Learn](/azure/reliability/reliability-operator-nexus) provides details of how to deploy the Operator Nexus services that run in Azure so as to maximize availability.
 
 ### Capacity and Redundancy Planning
 

@@ -17,7 +17,7 @@ In this article, you can learn how to use Azure Policy to secure and validate th
 
 If you're new to Azure Policy, here are some helpful resources that you can use to become more familiar with Azure Policy.
 
-- [Azure Policy documentation](../governance/policy/overview.md)
+- [Azure Policy documentation](/azure/governance/policy/overview)
 - Interactive Learning Modules: [Azure Policy training on Microsoft Learn](/learn/browse/?terms=Azure%20Policy)
 
 ##### Understanding Policy Definitions and Assignments
@@ -35,8 +35,8 @@ If you're new to Azure Policy, here are some helpful resources that you can use 
 
 ##### Visual Guides and Examples
 
-- Step-by-Step Policy Assignment: [Assigning policies in Azure portal](../governance/policy/assign-policy-portal.md)
-- Troubleshooting Guide: [Common policy assignment issues](../governance/policy/troubleshoot/general.md)
+- Step-by-Step Policy Assignment: [Assigning policies in Azure portal](/azure/governance/policy/assign-policy-portal)
+- Troubleshooting Guide: [Common policy assignment issues](/azure/governance/policy/troubleshoot/general)
 
 ## Prerequisites
 
@@ -47,7 +47,7 @@ If you're new to Azure Policy, here are some helpful resources that you can use 
 
 - A user account in your subscription with the appropriate role:
 
-  - A [Resource Policy Contributor](../role-based-access-control/built-in-roles.md#resource-policy-contributor) or Owner can view, create, assign, and disable policies.
+  - A [Resource Policy Contributor](/azure/role-based-access-control/built-in-roles#resource-policy-contributor) or Owner can view, create, assign, and disable policies.
   - A Contributor or Reader can view policies and policy assignments.
 
   **Preparation Checklist:**
@@ -75,7 +75,7 @@ The Operator Nexus service offers a built-in initiative definition that is recom
 ### Customizing Policies
 
 - Customize policies considering the unique aspects of the specific resources.
-- Refer to [Custom policy definitions](../governance/policy/tutorials/create-custom-policy-definition.md) for guidance.
+- Refer to [Custom policy definitions](/azure/governance/policy/tutorials/create-custom-policy-definition) for guidance.
 
 ## Apply and validate Policies for Nexus resources
 
@@ -90,11 +90,11 @@ Whether you're securing Nexus BMM resources or Nexus Kubernetes Compute Clusters
 
    - Utilize the Azure portal to assign these policies to your Nexus resources.
    - Ensure the correct scope of assignment, which could be at the subscription, resource group, or individual resource level.
-   - For custom policies, follow the guidelines in [Creating custom policy definitions](../governance/policy/tutorials/create-custom-policy-definition.md).
+   - For custom policies, follow the guidelines in [Creating custom policy definitions](/azure/governance/policy/tutorials/create-custom-policy-definition).
 
 3. **Validate Policy Application**:
    - Post assignment, validate that the policies are correctly applied and are effectively monitoring compliance.
    - Utilize Azure compliance tools and dashboards for ongoing monitoring and reporting.
-   - For detailed steps on validation, refer to [Validating Azure Policy](../governance/policy/how-to/get-compliance-data.md).
+   - For detailed steps on validation, refer to [Validating Azure Policy](/azure/governance/policy/how-to/get-compliance-data).
 
 This approach ensures that all your Operator Nexus resources, regardless of their type, are secured and compliant with your organizational policies, utilizing the powerful capabilities of Azure Policy.

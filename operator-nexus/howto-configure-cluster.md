@@ -27,7 +27,7 @@ The metrics generated from the logging data are available in [Azure Monitor metr
 
 ## Limitations
 
-- **Naming** - Naming rules can be found [here](../azure-resource-manager/management/resource-name-rules.md#microsoftnetworkcloud).
+- **Naming** - Naming rules can be found [here](/azure/azure-resource-manager/management/resource-name-rules#microsoftnetworkcloud).
 
 ## Create a Cluster
 

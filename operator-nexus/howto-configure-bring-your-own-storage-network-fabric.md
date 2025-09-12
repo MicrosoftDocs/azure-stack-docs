@@ -44,13 +44,13 @@ For example, if your fabric name is nf-westus-prod-01 (18 characters), the UAMI 
 
 ### 2.1 Create or identify a storage account
 
-Create a new storage account or use an existing one. Refer to [Create an Azure storage account](../storage/common/storage-account-create.md).
+Create a new storage account or use an existing one. Refer to [Create an Azure storage account](/azure/storage/common/storage-account-create).
 
 ### 2.2 Assign the required role
 
 Assign the **Storage Blob Data Contributor** role to the users and UAMI needing access to the **runRO** and **cable validation command output**.
 
-For role assignment details, see [Assign an Azure role for access to blob data](../storage/blobs/assign-azure-role-data-access.md).
+For role assignment details, see [Assign an Azure role for access to blob data](/azure/storage/blobs/assign-azure-role-data-access).
 
 ### 2.3 Restrict storage account access (Optional)
 
@@ -58,7 +58,7 @@ To limit access, configure Storage Firewalls and Virtual Networks:
 
 - Add all required users' IP addresses to the **Virtual Networks** and/or **Firewall** lists.
 
-- Follow instructions from [Configure Azure Storage firewalls and virtual networks](../storage/common/storage-network-security.md).
+- Follow instructions from [Configure Azure Storage firewalls and virtual networks](/azure/storage/common/storage-network-security).
 
 ### 2.4 Enable Trusted Services
 

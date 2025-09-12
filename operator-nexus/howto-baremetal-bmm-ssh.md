@@ -52,8 +52,8 @@ When the command runs, it executes on each bare metal machine in the Cluster wit
 - The on-premises Cluster must have connectivity to Azure.
 - Get the Resource Group name for the `Cluster` resource.
 - The process applies keysets to all running bare metal machines.
-- The added users must be part of a Microsoft Entra group. For more information, see [How to Manage Groups](../active-directory/fundamentals/how-to-manage-groups.md).
-- To restrict access for managing keysets, create a custom role. For more information, see [Azure Custom Roles](../role-based-access-control/custom-roles.md). In this instance, add or exclude permissions for `Microsoft.NetworkCloud/clusters/bareMetalMachineKeySets`. The options are `/read`, `/write`, and `/delete`.
+- The added users must be part of a Microsoft Entra group. For more information, see [How to Manage Groups](/azure/active-directory/fundamentals/how-to-manage-groups).
+- To restrict access for managing keysets, create a custom role. For more information, see [Azure Custom Roles](/azure/role-based-access-control/custom-roles). In this instance, add or exclude permissions for `Microsoft.NetworkCloud/clusters/bareMetalMachineKeySets`. The options are `/read`, `/write`, and `/delete`.
 
 > [!NOTE]
 > When bare metal machine access is created, modified, or deleted via the commands described in this

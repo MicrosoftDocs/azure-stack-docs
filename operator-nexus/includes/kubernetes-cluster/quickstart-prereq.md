@@ -7,9 +7,9 @@ ms.service: azure-operator-nexus
 ms.custom: devx-track-azurecli
 ---
 
-[!INCLUDE [quickstarts-free-trial-note](~/reusable-content/ce-skilling/azure/includes/quickstarts-free-trial-note.md)]
+[!INCLUDE [quickstarts-free-trial-note](~/../azure-stack/reusable-content/ce-skilling/azure/includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](~/reusable-content/azure-cli/azure-cli-prepare-your-environment-no-header.md)]
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](~/../azure-stack/reusable-content/azure-cli/azure-cli-prepare-your-environment-no-header.md)]
 
 * Install the latest version of the [necessary Azure CLI extensions](../../howto-install-cli-extensions.md).
 * This article requires version 2.61.0 or later of the Azure CLI. If using Azure Cloud Shell, the latest version is already installed.
@@ -37,7 +37,7 @@ ms.custom: devx-track-azurecli
     }
     ```
 
-* To deploy a Bicep file or ARM template, you need write access on the resources you're deploying and access to all operations on the Microsoft.Resources/deployments resource type. For example, to deploy a cluster, you need Microsoft.NetworkCloud/kubernetesclusters/write and Microsoft.Resources/deployments/* permissions. For a list of roles and permissions, see [Azure built-in roles](../../../role-based-access-control/built-in-roles.md).
+* To deploy a Bicep file or ARM template, you need write access on the resources you're deploying and access to all operations on the Microsoft.Resources/deployments resource type. For example, to deploy a cluster, you need Microsoft.NetworkCloud/kubernetesclusters/write and Microsoft.Resources/deployments/* permissions. For a list of roles and permissions, see [Azure built-in roles](/azure/role-based-access-control/built-in-roles).
 * You need the `custom location` resource ID of your Azure Operator Nexus cluster.
 * You need to create [various networks](../../quickstarts-tenant-workload-prerequisites.md#create-networks-for-tenant-workloads) according to your specific workload requirements, and it's essential to have the appropriate IP addresses available for your workloads. To ensure a smooth implementation, it's advisable to consult the relevant support teams for assistance.
 * This quickstart assumes a basic understanding of Kubernetes concepts. For more information, see [Kubernetes core concepts for Azure Kubernetes Service (AKS)][kubernetes-concepts].
@@ -46,4 +46,4 @@ ms.custom: devx-track-azurecli
 [kubernetes-concepts]: /azure/aks/concepts-clusters-workloads
 [az-account]: /cli/azure/account
 [az-group-create]: /cli/azure/group#az-group-create
-[azure-resource-group]: ../../../azure-resource-manager/management/overview.md
+[azure-resource-group]: /azure/azure-resource-manager/management/overview
