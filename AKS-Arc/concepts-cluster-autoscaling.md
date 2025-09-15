@@ -1,23 +1,23 @@
 ---
-title: Cluster autoscaling in AKS enabled by Azure Arc
-description: Learn about automatically scaling node pools in AKS Arc on Azure Local
-ms.topic: conceptual
+title: Cluster autoscaling in AKS on Windows Server
+description: Learn about automatically scaling node pools in AKS on Windows Server.
+ms.topic: article
 author: sethmanheim
 ms.author: sethm 
-ms.date: 01/29/2024
+ms.date: 04/07/2025
 
 # Intent: As a Kubernetes user, I want to use cluster autoscaler to grow my nodes to keep up with application demand.
 # Keyword: cluster autoscaling
 
 ---
 
-# Cluster autoscaling in AKS enabled by Azure Arc
+# Cluster autoscaling in AKS on Windows Server
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
 You can adjust the number of nodes that run application workloads in AKS Arc by using Azure Kubernetes Service (AKS) to keep up with demand. You can use PowerShell to enable the autoscaler and to manage automatic scaling of node pools in your target clusters.
 
-This article describes the context of the autoscaler in AKS enabled by Arc, and how the autoscaler works. For cluster autoscaling to work effectively, you can also use the Kubernetes horizontal pod autoscaler, which is a standard Kubernetes component. For more information about the Kubernetes horizontal pod autoscaler, see [Horizontal pod autoscaling](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/).
+This article describes the context of the autoscaler in AKS on Windows Server, and how the autoscaler works. For cluster autoscaling to work effectively, you can also use the Kubernetes horizontal pod autoscaler, which is a standard Kubernetes component. For more information about the Kubernetes horizontal pod autoscaler, see [Horizontal pod autoscaling](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/).
 
 ## Cluster autoscaling
 

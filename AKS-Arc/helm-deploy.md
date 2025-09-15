@@ -1,6 +1,6 @@
 ---
 title: Deploy applications with Helm
-description: Learn how to use Helm to deploy applications on AKS enabled by Azure Arc.
+description: Learn how to use Helm to deploy applications in AKS on Windows Server.
 author: sethmanheim
 ms.topic: how-to
 ms.date: 07/03/2024
@@ -19,7 +19,7 @@ ms.reviewer: rbaziwane
 
 [Helm](https://helm.sh/) is an open-source packaging tool that helps you install and manage the lifecycle of Kubernetes applications. Similar to Linux package managers, such as **APT** and **Yum**, Helm manages Kubernetes charts, which are packages of pre-configured Kubernetes resources.
 
-This article describes how to use Helm to package and deploy applications on AKS when you're using Azure Kubernetes Service enabled by Azure Arc.
+This article describes how to use Helm to package and deploy applications on AKS when you're using AKS on Windows Server.
 
 ## Before you begin
 

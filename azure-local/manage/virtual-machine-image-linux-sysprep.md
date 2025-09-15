@@ -1,30 +1,28 @@
 ---
-title: Prepare Ubuntu image for Azure Local VM via Azure CLI 
-description: Learn how to prepare Ubuntu images to create an Azure Local VM image.
+title: Prepare Ubuntu image via Azure CLI for Azure Local VMs enabled by Azure Arc
+description: Learn how to prepare Ubuntu images to create an Azure Local VM image by using Azure CLI.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
 ms.custom: devx-track-azurecli, linux-related-content
-ms.date: 01/30/2025
+ms.date: 03/21/2025
 ---
 
-# Prepare an Ubuntu image for Azure Local virtual machines
+# Prepare an Ubuntu image for Azure Local VMs enabled by Azure Arc
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
-This article describes how to prepare an Ubuntu image to create a virtual machine (VM) on your Azure Local. You use the Azure CLI for the VM image creation.
+This article describes how to use Azure CLI to prepare an Ubuntu image and create an Azure Local virtual machine (VM).
 
 ## Prerequisites
 
-Before you begin, meet the following prerequisites:
-
 - Have access to an Azure Local instance. This system is deployed, registered, and connected to Azure Arc. Go to the **Overview** page in the Azure Local resource. On the **Server** tab on the right pane, **Azure Arc** should appear as **Connected**.
-- [Download the latest supported Ubuntu server image](https://ubuntu.com/download/server) on your Azure Local system. The supported OS versions are *Ubuntu 20.04*, *22.04*, and *24.04 LTS*. You prepare this image to create an Azure Local VM image.
+- [Download the latest supported Ubuntu server image](https://ubuntu.com/download/server) on your Azure Local system. The supported OS versions are *Ubuntu 20.04*, *22.04*, and *24.04 LTS*.
 
 ## Workflow
 
-To prepare an Ubuntu image and create a VM image from that image:
+To prepare an Ubuntu image and create an Azure Local VM image from it:
 
 1. [Create an Ubuntu VM](#step-1-create-an-ubuntu-vm)
 1. [Configure the VM](#step-2-configure-the-vm)
@@ -36,26 +34,25 @@ The following sections provide detailed instructions for each step in the workfl
 ## Create a VM image from an Ubuntu image
 
 > [!IMPORTANT]
-> - Do not use an Azure Virtual Machine VHD disk to prepare the VM image for Azure Local.
+>
+> - Do not use a virtual hard disk from an Azure VM to prepare the Azure Local VM image.
 > - We recommend that you prepare an Ubuntu image if you intend to enable guest management on the VMs.
-
-Follow these steps on your Azure Local to create a VM image by using the Azure CLI.
 
 ### Step 1: Create an Ubuntu VM
 
-To use the downloaded Ubuntu image to provision a VM:
+Follow these steps to provision a VM using the downloaded Ubuntu image.
 
-1. Use the downloaded image to create a VM with the following specifications:
+1. Set up the VM with the following specifications:
     1. Provide a friendly name for your VM.
-    
+
         :::image type="content" source="../manage/media/virtual-machine-image-linux-sysprep/ubuntu-virtual-machine-name.png" alt-text="Screenshot that shows the New Virtual Machine Wizard on the Specify Name and Location page." lightbox="../manage/media/virtual-machine-image-linux-sysprep/ubuntu-virtual-machine-name.png":::
 
-    1. Specify **Generation 2** for your VM as you're working with a VHDX image here.
+    1. Specify **Generation 2** for your VM as you're working with a virtual hard disk extended image here.
 
         :::image type="content" source="../manage/media/virtual-machine-image-linux-sysprep/ubuntu-virtual-machine-generation.png" alt-text="Screenshot that shows the New Virtual Machine Wizard on the Specify Generation page." lightbox="../manage/media/virtual-machine-image-linux-sysprep/ubuntu-virtual-machine-generation.png":::
-    
+
     1. Select **Install operating system from a bootable image**. Point to the ISO that you downloaded earlier.
-    
+
         :::image type="content" source="../manage/media/virtual-machine-image-linux-sysprep/ubuntu-virtual-machine-iso-option.png" alt-text="Screenshot that shows the New Virtual Machine Wizard on the Installation Options page." lightbox="../manage/media/virtual-machine-image-linux-sysprep/ubuntu-virtual-machine-iso-option.png":::
 
     For step-by-step instructions, see [Provision a VM by using Hyper-V Manager](/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v?tabs=hyper-v-manager#create-a-virtual-machine).
@@ -135,4 +132,4 @@ Delete machine-specific files and data from your VM so that you can create a cle
 
 ## Related content
 
-- [Create Azure Arc VMs](./manage-virtual-machines-in-azure-portal.md) on your Azure Local instance.
+- [Create Azure Local VMs](./manage-virtual-machines-in-azure-portal.md) on your Azure Local instance.

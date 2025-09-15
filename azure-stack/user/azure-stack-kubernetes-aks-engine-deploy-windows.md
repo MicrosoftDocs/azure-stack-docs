@@ -2,11 +2,11 @@
 title: Deploy AKS engine on Windows in Azure Stack Hub 
 description: Learn how to use a Windows machine in your Azure Stack Hub to host AKS engine in order to deploy and manage a Kubernetes cluster.
 author: sethmanheim
-ms.topic: article
-ms.date: 11/22/2024
+ms.topic: install-set-up-deploy
+ms.date: 03/06/2025
 ms.author: sethm
 ms.reviewer: sumsmith
-ms.lastreviewed: 3/4/2021
+ms.lastreviewed: 03/04/2021
 
 # Intent: As an Azure Stack Hub user, I want to learn how to host AKS engine on a Windows VM so that I can deploy AKS engine on Windows in Azure Stack Hub.
 # Keyword: host aks on windows vm in azure stack hub 
@@ -90,15 +90,6 @@ Once your client VM is set up, check that you have installed AKS engine.
     ```
 
 If you are unable to verify that you have installed AKS engine on your client VM, see [Troubleshoot AKS engine install](azure-stack-kubernetes-aks-engine-troubleshoot.md).
-
-## ASDK installation
-
-You need to add a certificate when running the client VM for the AKS engine on the ASDK on a machine outside of the ASDK. If you're using a Windows VM within the ASDK environment itself, the machine already trusts the ASDK certificate. If your client machine is outside of the ASDK, you need to extract the certificate from the ASDK and add it to your Windows machine.
-
-When you are using an ASDK your Azure Resource Manager endpoint is using a self-signed certificate, you need to explicitly add this certificate to the machine's trusted certificate store. You can find the ASDK root certificate in any VM you deploy in the ASDK.
-
-1. Export the CA root certificate. For instructions, see [Export the Azure Stack Hub CA root certificate](../asdk/asdk-cli.md#export-the-azure-stack-hub-ca-root-certificate).
-2. Trust the Azure Stack Hub CA root certificate. For instructions, see [Trust the Azure Stack Hub CA root certificate](../asdk/asdk-cli.md#trust-the-certificate).
 
 ## Next steps
 

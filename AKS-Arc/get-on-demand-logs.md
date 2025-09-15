@@ -3,9 +3,9 @@ title: Get on-demand logs for troubleshooting
 description: Learn how to get full on-demand logs in AKS enabled by Arc and send them to Microsoft.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 01/17/2024
+ms.date: 04/08/2025
 ms.author: sethm 
-ms.lastreviewed: 1/14/2024
+ms.lastreviewed: 04/08/2025
 ms.reviewer: guanghu
 
 # Intent: As an IT Pro, I need to learn how to obtain full on-demand logs in order to troubleshoot problems with my Azure Kubernetes Service in AKS enabled by Arc.  
@@ -25,16 +25,16 @@ Before log collection, you must have the SSH key you obtained when you created t
 
 ## Collect logs
 
-You can collect logs using IPs or the `kubeconfig` parameter. If an IP is used, it collects the log from a particular node. If `kubeconfig` is used, it collects logs from all cluster nodes. This command generates a .zip file on the local disk. For other parameters, see the [Az CLI reference](/cli/azure/aksarc/logs#az-aksarc-logs-hci).
+You can collect logs using IPs or the `kubeconfig` parameter. If an IP is used, it collects the log from a particular node. If `kubeconfig` is used, it collects logs from all cluster nodes. This command generates a .zip file on the local disk. For other parameters, see the [Az CLI reference](/cli/azure/aksarc#az-aksarc-get-logs). You can also use the [Get-AzAksArcLog](/powershell/module/az.aksarc/get-azaksarclog) PowerShell command to collect logs. For more information, [see the PowerShell reference](/powershell/module/az.aksarc/get-azaksarclog).
 
 ```azurecli
-az aksarc logs hci --ip 192.168.200.25 --credentials-dir ./.ssh --out-dir ./logs
+az aksarc get-logs --ip 192.168.200.25 --credentials-dir ./.ssh --out-dir ./logs
 ```
 
 Or
 
 ```azurecli
-az aksarc logs hci --kubeconfig ./.kube/config --credentials-dir ./.ssh --out-dir ./logs
+az aksarc get-logs --kubeconfig ./.kube/config --credentials-dir ./.ssh --out-dir ./logs
 ```
 
 ## Send logs to Microsoft Support

@@ -4,7 +4,7 @@ description: Learn how to deploy AKS Edge Essentials on a single machine.
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
-ms.date: 08/21/2024
+ms.date: 03/10/2025
 ms.custom: template-how-to
 ---
 
@@ -31,12 +31,18 @@ See [Deployment JSON configuration](aks-edge-deployment-config-json.md) for a de
 The key parameters for single machine deployment are:
 
 - `DeploymentType`: This parameter defines the deployment type and is specified as `SingleMachineCluster`.
+- `Arc`: This section is required. During the AKS Edge Essentials deployment, the Arc parameters are used to connect the AKS Edge Essentials cluster to Azure Arc. For more information about the required Arc parameters, see the [connect to Arc documentation](aks-edge-howto-connect-to-arc.md).
+  
 - The `Network.NetworkPlugin` by default is `flannel`. This is the default for a K3S cluster. If you're using a K8S cluster, change the CNI to `calico`.
 - You can set the following parameters according to your deployment configuration [as described here](aks-edge-deployment-config-json.md): `LinuxNode.CpuCount`, `LinuxNode.MemoryInMB`, `LinuxNode.DataSizeInGB`, `WindowsNode.CpuCount`, `WindowsNode.MemoryInMB`, `Init.ServiceIPRangeSize`, and `Network.InternetDisabled`.
+- To encrypt the Kubernetes secret store, you can enable the Key Management Service (KMS) plugin (preview) by setting the `Init.KmsPlugin enable` to **true**. For more information, see [Enable secret encryption on a cluster](aks-edge-howto-secret-encryption.md).
+
+> [!IMPORTANT]
+> Starting with the AKS Edge Essentials 1.10.868.0 release, the `Arc` section of the config file is required. The Azure Arc connection occurs automatically during the AKS Edge Essentials deployment.
 
 ## Step 2: create a single machine cluster
 
-1. You can now run the `New-AksEdgeDeployment` cmdlet to deploy a single-machine AKS Edge cluster with a single Linux control-plane node:
+You can now run the `New-AksEdgeDeployment` cmdlet to deploy a single-machine AKS Edge cluster with a single Linux control-plane node:
 
 ```powershell
 New-AksEdgeDeployment -JsonConfigFilePath .\aksedge-config.json

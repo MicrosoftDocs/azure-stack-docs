@@ -2,9 +2,6 @@
   "build": {
     "content": [
       {
-        "group": "version-ash",
-        "src" : "asdk",
-        "dest" : "asdk",
         "files": [
           "**/*.md",
           "**/*.yml"
@@ -18,12 +15,12 @@
           "LICENSE",
           "LICENSE-CODE",
           "ThirdPartyNotices"
-        ]
+        ],
+        "src": "operator",
+        "dest": "operator",
+        "group": "version-ash"
       },
       {
-        "group": "version-ash",
-        "src" : "operator",
-        "dest" : "operator",
         "files": [
           "**/*.md",
           "**/*.yml"
@@ -37,12 +34,12 @@
           "LICENSE",
           "LICENSE-CODE",
           "ThirdPartyNotices"
-        ]
+        ],
+        "src": "partner",
+        "dest": "partner",
+        "group": "version-ash"
       },
       {
-        "group": "version-ash",
-        "src" : "partner",
-        "dest" : "partner",
         "files": [
           "**/*.md",
           "**/*.yml"
@@ -56,36 +53,17 @@
           "LICENSE",
           "LICENSE-CODE",
           "ThirdPartyNotices"
-        ]
+        ],
+        "src": "user",
+        "dest": "user",
+        "group": "version-ash"
       },
       {
-        "group": "version-ash",
-        "src" : "user",
-        "dest" : "user",
         "files": [
           "**/*.md",
           "**/*.yml"
         ],
         "exclude": [
-          "**/obj/**",
-          "**/includes/**",
-          "_themes/**",
-          "_themes.pdf/**",
-          "README.md",
-          "LICENSE",
-          "LICENSE-CODE",
-          "ThirdPartyNotices"
-        ]
-      },
-      {
-        "src": ".",
-        "dest": ".",
-        "files": [
-          "**/*.md",
-          "**/*.yml"
-        ],
-        "exclude": [
-          "asdk/**",
           "operator/**",
           "partner/**",
           "user/**",
@@ -97,7 +75,9 @@
           "LICENSE",
           "LICENSE-CODE",
           "ThirdPartyNotices"
-        ]
+        ],
+        "src": ".",
+        "dest": "."
       }
     ],
     "resource": [
@@ -108,30 +88,14 @@
           "**/*.svg",
           "**/*.gif"
         ],
-        "src": "asdk",
-        "dest": "asdk",
-        "group": "version-ash",
         "exclude": [
           "**/obj/**",
           "_themes/**",
           "_themes.pdf/**"
-        ]
-      },
-      {
-        "files": [
-          "**/*.png",
-          "**/*.jpg",
-          "**/*.svg",
-          "**/*.gif"
         ],
         "src": "operator",
         "dest": "operator",
-        "group": "version-ash",
-        "exclude": [
-          "**/obj/**",
-          "_themes/**",
-          "_themes.pdf/**"
-        ]
+        "group": "version-ash"
       },
       {
         "files": [
@@ -139,15 +103,15 @@
           "**/*.jpg",
           "**/*.svg",
           "**/*.gif"
+        ],
+        "exclude": [
+          "**/obj/**",
+          "_themes/**",
+          "_themes.pdf/**"
         ],
         "src": "partner",
         "dest": "partner",
-        "group": "version-ash",
-        "exclude": [
-          "**/obj/**",
-          "_themes/**",
-          "_themes.pdf/**"
-        ]
+        "group": "version-ash"
       },
       {
         "files": [
@@ -156,18 +120,16 @@
           "**/*.svg",
           "**/*.gif"
         ],
-        "src": "user",
-        "dest": "user",
-        "group": "version-ash",
         "exclude": [
           "**/obj/**",
           "_themes/**",
           "_themes.pdf/**"
-        ]
+        ],
+        "src": "user",
+        "dest": "user",
+        "group": "version-ash"
       },
       {
-        "src": ".",
-        "dest": ".",
         "files": [
           "**/*.png",
           "**/*.jpg",
@@ -176,14 +138,15 @@
           "**/*.json"
         ],
         "exclude": [
-          "asdk/**",
           "operator/**",
           "partner/**",
           "user/**",
           "**/obj/**",
           "_themes/**",
           "_themes.pdf/**"
-        ]
+        ],
+        "src": ".",
+        "dest": "."
       }
     ],
     "overwrite": [],
@@ -201,45 +164,45 @@
           "folder_relative_path_in_docset": "articles/azure-stack/"
         }
       },
-      "manager":"femila",
-      "ms.service": "azure-stack",
+      "manager": "lizross",
       "recommendations": true
     },
     "fileMetadata": {
       "ms.service": {
-        "asdk/**/*.md": "azure-stack-hub",
         "mdc/**/*.md": "azure-stack-hub",
         "operator/**/*.md": "azure-stack-hub",
         "partner/**/*.md": "azure-stack-hub",
         "reference/**/*.md": "azure-stack-hub",
-        "user/**/*.md": "azure-stack-hub"
+        "user/**/*.md": "azure-stack-hub",
+        "ruggedized/**/*.md": "azure-stack-hub"
       },
       "titleSuffix": {
-        "**/*.md": "Azure Stack Hub",
-        "asdk/**/*.md": "Azure Stack Development Kit (ASDK)",
-        "hybrid/**/*.md": "Azure Stack"
+        "**/*.md": "Azure Stack Hub"
       },
       "feedback_help_link_url": {
         "operator/**/*.md": "https://learn.microsoft.com/answers/tags/205/azure-stack-hub",
         "user/**/*.md": "https://learn.microsoft.com/answers/tags/205/azure-stack-hub",
         "mdc/**/*.md": "https://learn.microsoft.com/answers/tags/205/azure-stack-hub",
-        "asdk/**/*.md": "https://learn.microsoft.com/answers/tags/205/azure-stack-hub",
         "partner/**/*.md": "https://learn.microsoft.com/answers/tags/205/azure-stack-hub",
         "reference/**/*.md": "https://learn.microsoft.com/answers/tags/205/azure-stack-hub"
       },
       "ms.subservice": {
-        "asdk/**/*.md": "azure-stack-hub-asdk",
         "mdc/**/*.md": "azure-stack-hub-mdc"
+      },
+      "exclude_monikers": {
+        "partner/**/*.{md,yml,yaml}": [
+          "azs-2501"
+        ]
       }
     },
     "template": [],
-    "dest": "AzureStack",
     "markdownEngineName": "markdig",
     "groups": {
       "version-ash": {
-        "moniker_range": ">=azs-1802",
-        "dest": "version-ash"
+        "dest": "version-ash",
+        "moniker_range": ">=azs-1802"
       }
-    }
+    },
+    "dest": "AzureStack"
   }
 }

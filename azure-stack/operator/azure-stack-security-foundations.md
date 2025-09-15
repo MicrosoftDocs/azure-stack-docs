@@ -4,11 +4,12 @@ titleSuffix: Azure Stack Hub
 description: Learn about the security posture and controls applied to Azure Stack Hub.
 author: sethmanheim
 
-ms.topic: article
+ms.topic: how-to
 ms.date: 04/25/2024
 ms.author: sethm
 ms.reviewer: fiseraci
 ms.lastreviewed: 04/01/2021
+ms.custom: sfi-image-nochange
 
 # Intent: As an Azure Stack operator, I want to learn about the security controls applied in Azure Stack.
 # Keyword: security controls azure stack

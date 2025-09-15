@@ -3,11 +3,11 @@ title: Enable and assign default network access policies on Azure Local, version
 description: Learn how to enable and assign default network access policies on VMs running on Azure Local, version 23H2 via the Windows Admin Center.
 ms.author: alkohli
 ms.reviewer: anpaul
-ms.topic: article
+ms.topic: how-to
 author: alkohli
 ms.service: azure-local
 zone_pivot_groups: windows-os
-ms.date: 01/28/2025
+ms.date: 05/28/2025
 ---
 
 # Use default network access policies on virtual machines on Azure Local
@@ -106,27 +106,27 @@ Here's an example that explains how you can attach your VM directly to a VLAN wh
 
 1. When creating a VM, attach it to the logical network and logical network subnet created earlier. For more information, see how to [Create a logical network](./tenant-logical-networks.md).
 
-    :::image type="content" source="./media/manage-default-network-access-policies-virtual-machines/attach-vm-logical-network-1.png" alt-text="Screenshot showing how to attach VM directly to VLAN." lightbox="./media/manage-default-network-access-policies-virtual-machines/attach-vm-logical-network-1.png":::
+    :::image type="content" source="./media/manage-default-network-access-policies-virtual-machines-23h2/attach-vm-logical-network-1.png" alt-text="Screenshot showing how to attach VM directly to VLAN." lightbox="./media/manage-default-network-access-policies-virtual-machines-23h2/attach-vm-logical-network-1.png":::
 
 ### Apply default network policies
 
 When you create a VM through Windows Admin Center, you see a **Security level** setting.
 
-:::image type="content" source="./media/manage-default-network-access-policies-virtual-machines/security-level-2.png" alt-text="Screenshot showing the three security level options for VMs in Windows Admin Center." lightbox="./media/manage-default-network-access-policies-virtual-machines/security-level-2.png":::
+:::image type="content" source="./media/manage-default-network-access-policies-virtual-machines-23h2/security-level-2.png" alt-text="Screenshot showing the three security level options for VMs in Windows Admin Center." lightbox="./media/manage-default-network-access-policies-virtual-machines-23h2/security-level-2.png":::
 
 You have three options:
 
 - **No protection** - Choose this option if you don't want to enforce any network access policies to your VM. When this option is selected, all ports on your VM are exposed to external networks posing a security risk. This option isn't recommended.
 
-    :::image type="content" source="./media/manage-default-network-access-policies-virtual-machines/no-protection-1.png" alt-text="Screenshot showing the No protection option selected for VMs in Windows Admin Center." lightbox="./media/manage-default-network-access-policies-virtual-machines/no-protection-1.png":::
+    :::image type="content" source="./media/manage-default-network-access-policies-virtual-machines-23h2/no-protection-1.png" alt-text="Screenshot showing the No protection option selected for VMs in Windows Admin Center." lightbox="./media/manage-default-network-access-policies-virtual-machines-23h2/no-protection-1.png":::
 
 - **Open some ports** - Choose this option to go with default policies. The default policies block all inbound access and allow all outbound access. You can optionally enable inbound access to one or more well defined ports, for example, HTTP, HTTPS, SSH, or RDP as per your requirements.
 
-    :::image type="content" source="./media/manage-default-network-access-policies-virtual-machines/ports-to-open-1.png" alt-text="Screenshot showing the ports that can be opened on VMs specified during VM creation in Windows Admin Center." lightbox="./media/manage-default-network-access-policies-virtual-machines/ports-to-open-1.png":::
+    :::image type="content" source="./media/manage-default-network-access-policies-virtual-machines-23h2/ports-to-open-1.png" alt-text="Screenshot showing the ports that can be opened on VMs specified during VM creation in Windows Admin Center." lightbox="./media/manage-default-network-access-policies-virtual-machines-23h2/ports-to-open-1.png":::
 
 - **Use existing NSG** - Choose this option to apply custom policies. You specify a Network Security Group (NSG) that you've already created.
 
-    :::image type="content" source="./media/manage-default-network-access-policies-virtual-machines/use-existing-nsg-1.png" alt-text="Screenshot showing the existing network security group selected during VM creation in Windows Admin Center." lightbox="./media/manage-default-network-access-policies-virtual-machines/use-existing-nsg-1.png":::
+    :::image type="content" source="./media/manage-default-network-access-policies-virtual-machines-23h2/use-existing-nsg-1.png" alt-text="Screenshot showing the existing network security group selected during VM creation in Windows Admin Center." lightbox="./media/manage-default-network-access-policies-virtual-machines-23h2/use-existing-nsg-1.png":::
 
 ## VMs created outside of Windows Admin Center
 
@@ -173,7 +173,7 @@ You might encounter issues when you create VMs outside of Windows Admin Center a
 
     [!INCLUDE [hci-display-correct-default-network-policies-windows](../includes/hci-display-correct-default-network-policies-windows.md)]
 
-    :::image type="content" source="./media/manage-default-network-access-policies-virtual-machines/enable-policies-other-vms-1.png" alt-text="Screenshot showing how to enable default network to VLAN." lightbox="./media/manage-default-network-access-policies-virtual-machines/enable-policies-other-vms-1.png":::
+    :::image type="content" source="./media/manage-default-network-access-policies-virtual-machines-23h2/enable-policies-other-vms-1.png" alt-text="Screenshot showing how to enable default network to VLAN." lightbox="./media/manage-default-network-access-policies-virtual-machines-23h2/enable-policies-other-vms-1.png":::
 
 ::: zone-end
 
@@ -185,7 +185,7 @@ You might encounter issues when you create VMs outside of Windows Admin Center a
 
     [!INCLUDE [hci-display-correct-default-network-policies-windows](../includes/hci-display-correct-default-network-policies-windows.md)]
 
-    :::image type="content" source="./media/manage-default-network-access-policies-virtual-machines/enable-policies-other-vms-1.png" alt-text="Screenshot showing how to enable default network to VLAN." lightbox="./media/manage-default-network-access-policies-virtual-machines/enable-policies-other-vms-1.png":::
+    :::image type="content" source="./media/manage-default-network-access-policies-virtual-machines-23h2/enable-policies-other-vms-1.png" alt-text="Screenshot showing how to enable default network to VLAN." lightbox="./media/manage-default-network-access-policies-virtual-machines-23h2/enable-policies-other-vms-1.png":::
 
 ::: zone-end
 

@@ -10,7 +10,7 @@ metadata:
   ms.topic: landing-page
   author: sethmanheim
   ms.author: sethm
-  ms.date: 03/19/2020
+  ms.date: 08/12/2025
 
 # linkListType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | sample | tutorial | video | whats-new
 
@@ -91,5 +91,5 @@ landingContent:
             url: azure-stack-solution-template-service-fabric-cluster.md
           - text: Deploy a container to Azure Stack Hub registry
             url: container-registry-overview.md
-          - text: Deploy an Azure Kubernetes Services (AKS) cluster
-            url: aks-overview.md
+          - text: AKS engine on Azure Stack Hub
+            url: azure-stack-kubernetes-aks-engine-overview.md

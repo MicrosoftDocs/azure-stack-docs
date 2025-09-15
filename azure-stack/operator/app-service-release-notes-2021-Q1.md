@@ -2,7 +2,7 @@
 title: App Service on Azure Stack Hub 2021 Q1 release notes 
 description: Learn about what's new in the 2021 Q1 release for App Service on Azure Stack Hub, the known issues, and where to download the update.
 author: sethmanheim
-ms.topic: article
+ms.topic: release-notes
 ms.date: 08/12/2024
 ms.author: sethm
 ms.reviewer: anwestg

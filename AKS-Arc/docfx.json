@@ -55,8 +55,7 @@
       "feedback_product_url": "https://feedback.azure.com/d365community/forum/a2f8da29-b853-ec11-8f8e-0022481f2fe7",
       "breadcrumb_path": "/azure/aks/aksarc/breadcrumb/toc.json",
       "extendBreadcrumb": false,
-      "manager":"femila",
-      "ms.service": "azure-stack",
+      "manager":"lizross",
       "recommendations": true,
       "zone_pivot_group_filename": "../azure-stack/zone-pivot-groups.json"
 

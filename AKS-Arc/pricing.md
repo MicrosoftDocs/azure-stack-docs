@@ -1,8 +1,8 @@
 ---
 
-title: Azure Kubernetes Service (AKS) enabled by Azure Arc pricing details
-description: Learn about detailed pricing information for AKS enabled by Azure Arc.
-ms.topic: conceptual
+title: Azure Kubernetes Service (AKS) on Windows Server pricing details
+description: Learn about detailed pricing information for AKS on Windows Server.
+ms.topic: concept-article
 author: sethmanheim
 ms.author: sethm 
 ms.date: 01/09/2025
@@ -15,18 +15,18 @@ ms.reviewer: rbaziwane
 ---
 
 
-# AKS enabled by Azure Arc pricing details
+# AKS on Windows Server pricing details
 
-> Applies to: AKS on Windows Server
+[!INCLUDE [aks-hybrid-applies-to-azure-stack-hci-windows-server-sku](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-Azure Kubernetes Service (AKS) enabled by Azure Arc is a subscription-based Kubernetes offering that can be run on Windows Server Hyper-V clusters. You can download and install AKS Arc on your existing hardware either in your own on-premises data center, or on the edge. The pricing is based on usage and requires an Azure subscription, which you can obtain for free. The billing unit is a virtual core or vCPU. All initial AKS deployments include a free 60-day evaluation period, at the end of which a pay-as-you-go rate per vCPU (of running worker nodes) per day is applied.
+Azure Kubernetes Service (AKS) on Windows Server is a subscription-based Kubernetes offering that can be run on Windows Server Hyper-V clusters. You can download and install AKS Arc on your existing hardware either in your own on-premises data center, or on the edge. The pricing is based on usage and requires an Azure subscription, which you can obtain for free. The billing unit is a virtual core or vCPU. All initial AKS deployments include a free 60-day evaluation period, at the end of which a pay-as-you-go rate per vCPU (of running worker nodes) per day is applied.
 
 > [!IMPORTANT]
-> Starting in June 2023, we have made revisions that solidify the 60-day evaluation period as a one-time benefit per subscription, at the end of which a pay-as-you-go rate per vCPU will apply. This modification means the evaluation period no longer resets when you reinstall AKS enabled by Azure Arc. This change is being made to better align with our existing pricing guidelines and to ensure the continued provision of high-quality services.
+> Starting in June 2023, we have made revisions that solidify the 60-day evaluation period as a one-time benefit per subscription, at the end of which a pay-as-you-go rate per vCPU will apply. This modification means the evaluation period no longer resets when you reinstall AKS on Windows Server. This change is being made to better align with our existing pricing guidelines and to ensure the continued provision of high-quality services.
 
 ## Pricing details
 
-Azure pricing for running workloads on AKS enabled by Arc is based on US currency list pricing with:
+Azure pricing for running workloads on AKS on Windows Server is based on US currency list pricing with:
 
 - Pay-as-you-go pricing
 - D-series general purpose VM sizes (D2s v4, D4s V4, and D8s V4)

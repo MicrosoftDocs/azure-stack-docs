@@ -1,6 +1,6 @@
 ---
-title: Use an ingress controller in AKS enabled by Azure Arc
-description: Learn how to deploy an ingress controller in Azure Kubernetes Service in AKS enabled by Arc.
+title: Use an ingress controller in AKS on Windows Server
+description: Learn how to deploy an ingress controller in Azure Kubernetes Service in AKS on Windows Server.
 author: sethmanheim
 ms.topic: how-to
 ms.date: 06/25/2024

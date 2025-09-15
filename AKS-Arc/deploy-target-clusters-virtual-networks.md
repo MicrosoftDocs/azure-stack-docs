@@ -17,7 +17,7 @@ ms.reviewer: kybisnet
 
 [!INCLUDE [aks-hybrid-applies-to-azure-stack-hci-windows-server-sku](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-Deploying AKS enabled by Azure Arc target clusters on different [software defined networking (SDN) virtual networks (VNets)](software-defined-networking.md) can offer a range of benefits, primarily focused on security, scalability, and organization of networks:
+Deploying AKS on Windows Server target clusters on different [software defined networking (SDN) virtual networks (VNets)](software-defined-networking.md) can offer a range of benefits, primarily focused on security, scalability, and organization of networks:
 
 - **Security and isolation**: Each isolated VNet acts as a separate entity, which can help to contain potential security threats. If one network is compromised, the threat is less likely to spread to other VNets.
 - **Scalability**: Deploying AKS target clusters on multiple networks can improve the scalability of your applications. As your requirements and/or compliance grows, you can add more AKS target clusters to new SDN VNets.
@@ -45,7 +45,7 @@ New-AksHciClusterNetwork -name "SDNVNet1" -vswitchName "ConvergedSwitch(hci)" `
 |     `ipAddressPrefix`                      |   Subnet prefix for creating the virtual network in the network controller. This prefix is a subnet prefix, not a virtual network prefix. Currently, MOC only supports a single subnet.                                           |
 |     `gateway`                              |   Default gateway for the subnet. Must be the first IP of the subnet. SDN doesn't support custom default gateways for virtual networks.                                                                                  |
 |     `dnsServers`                           |   DNS servers reachable from SDN VMs public IP or other (for example, an L3 connection), used for name resolutions.                                                                                                              |
-|     `K8sNodeIpPoolStart`, `K8sNodeIpPoolEnd`  |   A subset or full IP range from the `ipAddressPrefix`. Used by MOC IPAM to allocate IP addresses for nodes. Useful if deploying non-AKS on Azure Local VMs on the same subnet, but not recommended due to possible misconfiguration.  |
+|     `K8sNodeIpPoolStart`, `K8sNodeIpPoolEnd`  |   A subset or full IP range from the `ipAddressPrefix`. Used by MOC IPAM to allocate IP addresses for nodes. Useful if deploying non-AKS on Windows Server VMs on the same subnet, but not recommended due to possible misconfiguration.  |
 
 ## Create a Kubernetes cluster on your SDN virtual network
 

@@ -1,25 +1,24 @@
 ---
-title: Overview for Trusted launch for Azure Arc VMs on Azure Local, version 23H2
-description: Learn about Trusted launch for Azure Arc VMs on Azure Local, version 23H2.
-ms.topic: conceptual
+title: Overview for Trusted launch for Azure Local VMs enabled by Azure Arc
+description: Learn about Trusted launch for Azure Local VMs enabled by Azure Arc.
+ms.topic: concept-article
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 01/28/2025
+ms.date: 07/18/2025
 ---
 
-# Introduction to Trusted launch for Azure Arc VMs on Azure Local
+# Introduction to Trusted launch for Azure Local VMs enabled by Azure Arc
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
-This article introduces Trusted launch for Azure Arc virtual machines (VMs) on Azure Local. You can create a Trusted launch Arc VM using Azure portal or by using Azure Command-Line Interface (CLI).
-
+This article introduces Trusted launch for Azure Local virtual machines (VMs) enabled by Azure Arc. You can create a Trusted launch for an Azure Local VM using the Azure portal or by using Azure Command-Line Interface (CLI).
 
 ## Introduction
 
-Trusted launch for Azure Arc VMs supports secure boot, virtual Trusted Platform Module (vTPM), and vTPM state transfer when a VM migrates or fails over within a cluster.
+Trusted launch for Azure Local VMs enables secure boot, installs a virtual Trusted Platform Module (vTPM) device, automatically transfers the vTPM state when the VM migrates or fails over to another machine within the system, and supports the ability to attest whether the VM started in a known good state.
 
-Trusted launch is a security type that can be specified when creating Arc VMs on Azure Local. For more information, see [Trusted launch for Azure Arc VMs on Azure Local](https://techcommunity.microsoft.com/t5/security-compliance-and-identity/trusted-launch-for-azure-arc-vms-on-azure-stack-hci-version-23h2/ba-p/3978051).
+Trusted launch is a security type that can be specified when you create Azure Local VMs. For more information, see [Trusted launch for Azure Local VMs enabled by Azure Arc](https://techcommunity.microsoft.com/t5/security-compliance-and-identity/trusted-launch-for-azure-arc-vms-on-azure-stack-hci-version-23h2/ba-p/3978051).
 
 ## Capabilities and benefits
 
@@ -31,34 +30,49 @@ Trusted launch is a security type that can be specified when creating Arc VMs on
 | Virtualization-based security (VBS) | Guest in the VM can create isolated regions of memory using VBS support. |
 
 > [!NOTE]
-> VM guest boot integrity verification is not available.
+> VM guest boot integrity verification isn't available.
 
 ## Guidance
 
-- IgvmAgent is a component that is installed on all nodes in the Azure Local system. It enables support for isolated VMs such as Trusted launch Arc VMs for example.
+- IgvmAgent is a component that is installed on all machines in the Azure Local system. It enables support for isolated VMs like Trusted launch for Azure Local VMs, for example.
 
-- As part of Trusted launch Arc VM creation, Hyper-V creates VM files on disk to store the VM state. By default, access to those VM files is restricted to host server administrators. Host administrators must ensure that the location where those VM files are stored always remains appropriately access-restricted.
+- Trusted launch for Azure Local VMs currently supports only a select set of Azure Marketplace images. For a list of supported images, see [Guest operating system images](#guest-operating-system-images). When you create a Trusted launch VM in the Azure portal, the Image dropdown list shows only the images supported by Trusted launch. The Image dropdown appears blank if you select an unsupported image, including a custom image. The list also appears blank if none of the images available on your Azure Local system are supported by Trusted launch.
 
-- VM live migration network traffic is not encrypted. We strongly recommend that you enable a network layer encryption technology such as IPsec to protect live migration network traffic.
+- As part of Trusted launch for Azure Local VM creation, Hyper-V creates VM files at a default location on disk to store the VM state. By default, access to those VM files is restricted to host server administrators only. If you store those VM files in a different location, you must ensure that the location is access restricted to host server administrators only.
 
-<!--- VM live migration network traffic is not encrypted. We strongly recommend that you enable IPsec to protect live migration network traffic. For more information, see [Network Recommendations for a Hyper-V Cluster](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn550728(v=ws.11)#How_to_isolate_the_network_traffic_on_a_Hyper-V_cluster).-->
+- VM live migration network traffic isn't encrypted. We strongly recommend that you enable a network layer encryption technology such as IPsec to protect live migration network traffic.
 
 ## Guest operating system images
 
-The following VM guest OS images from Azure Marketplace are supported. The VM image can be created using Azure portal or Azure CLI.
-
-For more information, see [Create Azure Local VM image using Azure Marketplace](/azure-stack/hci/manage/virtual-machine-image-azure-marketplace?tabs=azurecli).
-
-| Name | Publisher | Offer | SKU | Version number |
-|---|---|---|---|---|
-| Windows 11 Enterprise multi-session, version 22H2 - Gen2 | microsoftwindowsdesktop | windows-11  | win11-22h2-avd | 22621.2428.231001 |
-| Windows 11 Enterprise multi-session, version 22H2 + Microsoft 365 Apps (preview) - Gen2 | microsoftwindowsdesktop | windows11preview | win11-22h2-avd-m365 | 22621.382.220810 |
-| Windows 11 Enterprise multi-session, version 21H2 - Gen2 | microsoftwindowsdesktop  | windows-11  | win11-21h2-avd | 22000.2538.231001 |
-| Windows 11 Enterprise multi-session, version 21H2 + Microsoft 365 Apps - Gen2 | microsoftwindowsdesktop | office-365 | win10-21h2-avd-m365-g2 | 19044.3570.231010 |
+All Windows 11 images (excluding 24H2 Windows 11 SKUs) and Windows Server 2022 images from Azure Marketplace supported by Azure Local VMs are supported. See [Create Azure Local VM image using Azure Marketplace images](/azure-stack/hci/manage/virtual-machine-image-azure-marketplace?tabs=azurecli) for a list of all supported Windows 11 images.
 
 > [!NOTE]
-> VM guest images obtained outside of Azure Marketplace are not supported.
+> VM guest images obtained outside of Azure Marketplace aren't supported.
+
+## Backup and disaster recovery considerations
+
+When working with Trusted launch Azure Local VMs, make sure to understand the following key considerations and limitations related to VM backup and recovery. 
+
+### VM backup
+
+- Backup all VM files. You can use any backup solution or tool to backup all VM files as long as they follow standard [Hyper-V Backup Approaches](/virtualization/hyper-v-on-windows/reference/hypervbackupapproaches).  
+
+- Backup VM guest state protection key. Unlike standard Azure Local VMs, Trusted launch Azure Local VMs use a VM guest state protection key to protect the VM guest state, including the virtual TPM (vTPM) state, while at rest. The VM guest state protection key is stored in a local key vault in the Azure Local instance where the VM resides. You must manually backup the VM guest state protection key as soon as you create a Trusted launch VM as described in [Manual backup and recovery of VM guest state protection key](trusted-launch-vm-import-key.md). Without the guest state protection key, you cannot start the VM.
+
+### VM recovery
+
+- Restore all VM files. You can use any backup solution or tool to restore all VM files as long as the backup solution or tool follows standard [Hyper-V Backup Approaches](/virtualization/hyper-v-on-windows/reference/hypervbackupapproaches).
+
+- Restore VM guest state protection key. You must restore the VM guest state protection key to the local key vault of the Azure Local instance as described in [Manual backup and recovery of VM guest state protection key](trusted-launch-vm-import-key.md).
+
+**Restoring to same Azure Local instance**
+
+- In some situations, the VM may be restored to the same Azure Local instance, the same as the Azure Local instance where the VM resided before failure. When a Trusted launch VM is successfully restored to the same Azure Local instance, the VM can be managed via Azure Local control plane as it was before.
+
+**Restoring to different Azure Local instance**
+
+- In some situations, the VM may be restored to a different Azure Local instance, different from the Azure Local instance where the VM resided before failure. When a Trusted launch VM is successfully restored to a different Azure Local instance, the VM can no longer be managed via the Azure Arc control plane, but it can be managed using local VM management tools.
 
 ## Next steps
 
-- [Deploy Trusted launch Arc VMs](trusted-launch-vm-deploy.md).
+- [Create Trusted launch for Azure Local VMs](create-arc-virtual-machines.md).

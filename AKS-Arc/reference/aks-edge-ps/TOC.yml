@@ -42,6 +42,8 @@
     href: remove-aksedgedeployment.md
   - name: Remove-AksEdgeNode
     href: remove-aksedgenode.md
+  - name: Repair-AksEdgeKms
+    href: repair-aksedgekms.md
   - name: Set-AksEdgeNodeToDrain
     href: set-aksedgenodetodrain.md
   - name: Set-AksEdgeUpgrade

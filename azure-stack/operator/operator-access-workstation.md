@@ -2,7 +2,7 @@
 title: Azure Stack Hub Operator Access Workstation
 description: Learn how to download and configure an Azure Stack Hub Operator Access Workstation.
 author: sethmanheim
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/29/2025
 ms.author: sethm
 ms.reviewer: thoroet
@@ -66,7 +66,7 @@ param(
     [string]
     $DownloadedOAWZipFilePath
 )
-$expectedHash = '4B5CE0EA6FA12C4A95EBDE4223BEED5B9D98D7D9FC7DA1D5C72D3620725E5119'
+$expectedHash = 'F5172B3A97248826C73A3D7ABC0440CFA1EC3B31CAC6A1BC1100B9E241099780'
 $actualHash = (Get-FileHash -Path $DownloadedOAWZipFilePath).Hash
 Write-Host "Expected hash: $expectedHash"
 if ($expectedHash -eq $actualHash)
@@ -90,7 +90,7 @@ Another way to copy this script to your environment is to use the Test-FileHash 
 2. After you import the Test-FileHash module, verify the hash of the OAW.zip file:
 
    ```powershell
-   Test-FileHash -ExpectedHash "4B5CE0EA6FA12C4A95EBDE4223BEED5B9D98D7D9FC7DA1D5C72D3620725E5119" -FilePath "<path to the OAW.zip file>"
+   Test-FileHash -ExpectedHash "F5172B3A97248826C73A3D7ABC0440CFA1EC3B31CAC6A1BC1100B9E241099780" -FilePath "<path to the OAW.zip file>"
    ```
 
 ## Check HLH version

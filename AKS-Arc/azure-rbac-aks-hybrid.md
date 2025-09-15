@@ -5,8 +5,8 @@ ms.topic: how-to
 ms.custom: devx-track-azurecli
 author: sethmanheim
 ms.author: sethm
-ms.date: 06/28/2024
-ms.reviewer: sulahiri
+ms.date: 04/02/2025
+ms.reviewer: leslielin
 ms.lastreviewed: 06/28/2024
 
 # Intent: As an IT Pro, I want to use Azure RBAC to authenticate connections to my AKS clusters over the Internet or on a private network.
@@ -20,8 +20,7 @@ ms.lastreviewed: 06/28/2024
 > [!WARNING]
 > This preview feature has been retired and is unsupported starting from 7/15/2024. Microsoft does not recommend using this Azure RBAC preview feature in a production environment.
 > - PREVIEWS ARE PROVIDED "AS-IS," "WITH ALL FAULTS," AND "AS AVAILABLE," as described herein. For more information about PREVIEW terms and conditions, see Online Services from [Universal License Terms](https://www.microsoft.com/licensing/terms/product/ForOnlineServices/EAEAS)
-> - If you want to use Azure RBAC for AKS on Azure Local, see [Use Azure role-based access control (RBAC) for Kubernetes authorization for AKS on Azure Local, version 23H2](azure-rbac-23h2.md).
-
+> - If you want to use Azure RBAC for AKS on Azure Local, see [Use Azure role-based access control (RBAC) for Kubernetes authorization for AKS on Azure Local](azure-rbac-local.md).
 
 This article describes how to set up Azure RBAC on an AKS cluster to use Microsoft Entra ID and Azure role assignments for authorization. The steps to create the cluster are covered in [Prerequisites](#prerequisites).
 
@@ -33,7 +32,7 @@ Before you deploy a Kubernetes cluster with Azure Arc enabled, you must complete
 
 ### Install the Azure CLI extension
 
-The preview version of the Azure Arc-enabled Kubernetes Azure CLI extension is the only compatible version for this preview setup of AKS on Azure Local 22H2. Using a higher version can cause incompatibility issues with Azure RBAC and AKS Arc. To install the extension, run the following command:
+The preview version of the Azure Arc-enabled Kubernetes Azure CLI extension is the only compatible version for this preview setup of AKS on Windows Server. Using a higher version can cause incompatibility issues with Azure RBAC and AKS Arc. To install the extension, run the following command:
 
 ```azurecli
 az extension add -n connectedk8s --version 1.5.4
@@ -146,7 +145,7 @@ To create an AKS target cluster with Azure RBAC enabled using an SPN:
 
 1. If you don't already have an SPN to use with the target cluster, [create the SPN](/cli/azure/azure-cli-sp-tutorial-1) now.
 1. Note that the new SPN is for one time use when creating the cluster and doesn't require managing passwords.
-1. Open a PowerShell window on the Azure Local node or Windows server where you deploy the cluster, and run the following command:
+1. Open a PowerShell window on the AKS node or Windows Server where you deploy the cluster, and run the following command:
 
    ```powershell
    New-AksHciCluster -name "<cluster name>"  -enableAzureRBAC -resourceGroup "<resource group name>" -subscriptionID "<subscription ID>" -tenantId "<tenant ID>" -credential $Credential -location "eastus" -appId $SERVER_APP_ID -appSecret $SERVER_APP_SECRET -aadClientId $CLIENT_APP_ID -nodePoolName <name of node pool> 
@@ -156,7 +155,7 @@ To create an AKS target cluster with Azure RBAC enabled using an SPN:
 
 If you prefer to create your Azure RBAC-enabled target cluster interactively, follow these steps:
 
-1. Open a PowerShell window on the Azure Local node or Windows server where you deploy the cluster.
+1. Open a PowerShell window on the AKS node or Windows server where you deploy the cluster.
 1. Sign in to Azure by running the following `connect-azaccount -deviceauth` command:
 
    ```powershell
@@ -215,7 +214,7 @@ To connect to an AKS cluster using the `connectedk8s` proxy method, perform the 
 
 When you connect to an AKS cluster over a private network, there's no limit the on number of groups you can use.
 
-To retrieve the Microsoft Entra kubeconfig log into and on-premises machine (for example, an Azure Local cluster), generate the Microsoft Entra kubeconfig using the following command. You can distribute the Microsoft Entra kubeconfig to users that connect from their client machine. The Microsoft Entra kubeconfig doesn't contain any secrets.
+To retrieve the Microsoft Entra kubeconfig log into and on-premises machine (for example, a Windows Server cluster), generate the Microsoft Entra kubeconfig using the following command. You can distribute the Microsoft Entra kubeconfig to users that connect from their client machine. The Microsoft Entra kubeconfig doesn't contain any secrets.
 
 To connect to an AKS cluster over a private network, perform the following steps:
 
@@ -246,7 +245,7 @@ This command also downloads the **kubelogin.exe** binary. To find the location o
 $workingdir = (Get-AksHciConfig).Akshci.installationPackageDir
 ```
 
-This command returns the path to where **kubelogin.exe** is downloaded. Copy the **kubelogin.exe** file to your Azure Local node or client machine. For Azure Local, copy the file to the path as described in the following example. For a client machine, copy the executable to your client machine and add it to your path. For example:
+This command returns the path to where **kubelogin.exe** is downloaded. Copy the **kubelogin.exe** file to your Windows Server node or client machine. For Windows Server, copy the file to the path as described in the following example. For a client machine, copy the executable to your client machine and add it to your path. For example:
 
 ```powershell
 cp $workingdir\kubelogin.exe "c:\program files\akshci"

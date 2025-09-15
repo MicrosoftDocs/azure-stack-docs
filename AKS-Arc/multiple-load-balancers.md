@@ -1,6 +1,6 @@
 ---
 title: Use multiple load balancers
-description: How to use multiple load balancer instances and scale the numbers of instances on your AKS deployment in AKS enabled by Azure Arc.
+description: How to use multiple load balancer instances and scale the numbers of instances on your AKS deployment in AKS on Windows Server.
 author: sethmanheim
 ms.author: sethm
 ms.date: 06/26/2024
@@ -17,9 +17,9 @@ ms.topic: how-to
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-This article describes how to deploy one or more instances of the **HAProxy** load balancer in AKS enabled by Azure Arc, and how to scale the load balancer configuration in the target cluster.
+This article describes how to deploy one or more instances of the **HAProxy** load balancer in AKS on Windows Server, and how to scale the load balancer configuration in the target cluster.
 
-In AKS enabled by Arc, the load balancer is deployed as a virtual machine (VM) running Linux and **HAProxy + KeepAlive** to provide load balanced services for the workload clusters. This VM is used to load balance requests to the Kubernetes API server and for handling traffic to application services.
+In AKS on Windows Server, the load balancer is deployed as a virtual machine (VM) running Linux and **HAProxy + KeepAlive** to provide load balanced services for the workload clusters. This VM is used to load balance requests to the Kubernetes API server and for handling traffic to application services.
 
 You can also use a custom load balancer with AKS Arc. For more information, see [Create and use a custom load balancer](configure-custom-load-balancer.md).
 

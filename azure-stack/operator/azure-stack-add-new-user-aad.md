@@ -2,13 +2,14 @@
 title: Add a new Azure Stack Hub user account in Microsoft Entra ID
 description: Learn how to create a user account in Microsoft Entra ID, so you can explore the user portal.
 author: sethmanheim
-ms.topic: article
-ms.custom:
-  - has-azure-ad-ps-ref
+ms.topic: how-to
 ms.date: 08/15/2024
 ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 06/17/2021
+ms.custom:
+  - no-azure-ad-ps-ref
+  - sfi-image-nochange
 
 # Intent: As an Azure Stack Hub operator, I want to add a new user account in Microsoft Entra ID so I can explore the user portal and test offers and plans.
 # Keyword: user account azure stack hub
@@ -46,41 +47,27 @@ You must have an Azure subscription to use the Azure portal.
 
 ## Create a user account using PowerShell
 
-If you don't have an Azure subscription, you can't use the Azure portal to add a tenant user account. In this case, you can use the Azure AD module for Windows PowerShell instead.
+If you don't have an Azure subscription, you can't use the Azure portal to add a tenant user account. In this case, you can use the Microsoft Graph module for Windows PowerShell instead.
 
-[!INCLUDE [Azure AD PowerShell deprecation note](~/../azure-stack/reusable-content/msgraph-powershell/includes/aad-powershell-deprecation-note.md)]
-
-1. Install the Microsoft Azure AD module for Windows PowerShell with these steps:
+1. Install the Microsoft Graph PowerShell SDK for Windows PowerShell with these steps:
 
    - Open an elevated Windows PowerShell command prompt (run Windows PowerShell as admin).
-   - Run the **Install-Module AzureAD** command.
+   - Run the **Install-Module Microsoft.Graph** command.
    - If you're prompted to install the NuGet provider, select **Y** and **Enter**.
    - If you're prompted to install the module from PSGallery, select **Y** and **Enter**.
 
-1. Run the following cmdlets to sign in and create the user account:
-
-   - If your directory **doesn't require** multi-factor authentication, use this sequence to authenticate:
+1. Run the following cmdlet to connect.
 
    ```powershell
-   # Wait for the prompt, then sign in using your Azure AD credentials
-   $aadcred = get-credential
-   Connect-AzureAD -credential $aadcred
+   Connect-MgGraph -Scopes 'User.ReadWrite.All'
    ```
 
-   - If your directory **requires** multi-factor authentication, use this sequence to authenticate:
-
-   ```powershell
-   # Wait for the prompt, then sign in using your Azure AD credentials and MFA code
-   Connect-AzureAD -Confirm
-   ```
-
-   - Now that you've authenticated, complete the sequence by adding the new user:
+1. After you connect, complete the sequence by adding the new user:
 
    ```powershell
    # Create the new user account (be sure to replace all <placeholder> values first)
-   $passwordProfile = New-Object -TypeName Microsoft.Open.AzureAD.Model.PasswordProfile
-   $passwordProfile.Password = "<Password>"
-   New-AzureADUser -DisplayName "<UserName>" -PasswordProfile $passwordProfile -UserPrincipalName "<username>@<yourdomainname>" -AccountEnabled $true -MailNickName "<MailNickName>"
+   $PasswordProfile = @{ Password = '<password>' }
+   New-MgUser -DisplayName "<UserName>" -PasswordProfile $passwordProfile -UserPrincipalName "<username>@<yourdomainname>" -MailNickName "<MailNickName>" -AccountEnabled 
    ```
 
 1. Sign in to the [Azure portal](https://portal.azure.com) with the new user account. Change the password when prompted.

@@ -3,7 +3,7 @@ title: Review requirements for Hyper-V VM migration to Azure Local using Azure M
 description: Learn the system requirements for Hyper-V migration to Azure Local using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 02/10/2025
+ms.date: 05/08/2025
 ms.author: alkohli
 ---
 
@@ -22,12 +22,12 @@ The following operating systems (OS) are supported for the source appliance, tar
 
 |Component  |Supported configurations |
 |---------|---------|
-|Source environment     |Hyper-V on Windows Server 2022<br>Hyper-V on Windows Server 2019<br>Hyper-V on Windows Server 2016<br>Hyper-V on Windows Server 2012 R2         |
+|Source environment     |Hyper-V on Windows Server 2025<br>Hyper-V on Windows Server 2022<br>Hyper-V on Windows Server 2019<br>Hyper-V on Windows Server 2016<br>Hyper-V on Windows Server 2012 R2         |
 |Source appliance     |Windows Server 2022        |
 |Target environment     |Azure Local 2311.2 or later         |
 |Target appliance     |Windows Server 2022         |
-|Guest VM (Windows)    |Windows Server 2022<br>Windows Server 2019<br>Windows Server 2016<br>Windows Server 2012 R2<br>Windows Server 2008 R2*       |
-|Guest VM (Linux) | Red Hat Linux 6.x, 7.x<br>Ubuntu Server and Pro. 18.x<br>CentOS 7.x <br>SUSE Linux Enterprise 12.x<br>Debian 9.x |
+|Guest VM (Windows)    |Windows Server 2025<br>Windows Server 2022<br>Windows Server 2019<br>Windows Server 2016<br>Windows Server 2012 R2<br>Windows Server 2008 R2*       |
+|Guest VM (Linux) | Red Hat Linux 6.x, 7.x, 8.x, 9.x<br>Ubuntu Server and Pro. 18.x, 20.x<br>CentOS 7.x, 8.x, 9.x<br>SUSE Linux Enterprise<br>Debian 9.x, 10.x, 11.x, 12.x |
 
 *To migrate Windows Server 2008 R2 VMs, see the [FAQ](migrate-faq.yml).
 
@@ -40,7 +40,7 @@ You can create an Azure Migrate project in many geographies in the Azure public 
 |-|-|
 |Asia-Pacific|South East Asia, East Asia|
 |Europe|North Europe, West Europe|
-|United States|East US, Central US, West Central US, West US2|
+|United States| Central US, West US2|
 
 Keep in mind the following information as you create a project:
 
@@ -80,11 +80,11 @@ For any subscriptions hosting resources used in migration, such as Azure Migrate
 
 - The target system must be running Azure Local.
 
-- An Arc Resource Bridge must exist on the Azure Local system for migration. The Arc Resource Bridge is automatically created during the deployment. To verify that an Arc Resource Bridge exists on your Azure Local system, see [Deploy using Azure portal](../deploy/deploy-via-portal.md).  
+- An Azure Arc resource bridge must exist on the Azure Local system for migration. The Azure Arc resource bridge is automatically created during the deployment. To verify that an Azure Arc resource bridge exists on your Azure Local system, see [Deploy using Azure portal](../deploy/deploy-via-portal.md).  
 
-- Ensure that a logical network is configured on your Arc Resource Bridge. For more information, see [Create a logical network](../manage/create-logical-networks.md).
+- Ensure that a logical network is configured on your Azure Arc resource bridge. For more information, see [Create a logical network](../manage/create-logical-networks.md).
 
-- Ensure that a custom storage path is configured on your Arc Resource Bridge for migration. For more information, see [Create a storage path](../manage/create-storage-path.md).
+- Ensure that a custom storage path is configured on your Azure Arc resource bridge for migration. For more information, see [Create a storage path](../manage/create-storage-path.md).
 
 ## Azure Migrate project requirements
 

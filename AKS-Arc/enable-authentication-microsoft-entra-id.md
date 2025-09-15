@@ -16,7 +16,7 @@ ms.date: 07/26/2024
 
 # Enable Microsoft Entra authentication for Kubernetes clusters
 
-Applies to: AKS on Azure Local, version 23H2
+[!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
 AKS enabled by Azure Arc simplifies the authentication process with Microsoft Entra ID integration. For authorization, cluster administrators can configure Kubernetes role-based access control (Kubernetes RBAC) or Azure role-based access control (Azure RBAC) based on the directory group membership of the Microsoft Entra ID integration.
 
@@ -73,5 +73,6 @@ Enable Microsoft Entra authentication on your existing Kubernetes cluster using 
 ## Next steps
 
 - [Access and identity options for AKS enabled by Azure Arc](concepts-security-access-identity.md)
-- [Microsoft Entra integration with Kubernetes RBAC](kubernetes-rbac-23h2.md)
-- [Use Azure role-based access control (RBAC) for Kubernetes authorization](azure-rbac-23h2.md)
+- [Microsoft Entra integration with Kubernetes RBAC](kubernetes-rbac-local.md)
+- [Use Azure role-based access control (RBAC) for Kubernetes authorization](azure-rbac-local.md)
+- Help to protect your cluster in other ways by following the guidance in the [security book for AKS enabled by Azure Arc](/azure/azure-arc/kubernetes/conceptual-security-book?toc=/azure/aks/aksarc/toc.json&bc=/azure/aks/aksarc/breadcrumb/toc.json).

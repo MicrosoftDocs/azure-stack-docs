@@ -1,12 +1,12 @@
 ---
 title: Azure Local two-node storage switchless, two switches deployment network reference pattern
 description: Plan to deploy an Azure Local two-node storage switchless, two switches network reference pattern.
-ms.topic: conceptual
+ms.topic: how-to
 author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
-ms.date: 02/14/2025
+ms.date: 05/15/2025
 ---
 
 # Review two-node storage switchless, two switches deployment network reference pattern for Azure Local
@@ -21,7 +21,9 @@ For information on other network patterns, see [Azure Local network deployment p
 
 Scenarios for this network pattern include laboratories, branch offices, and datacenter facilities.
 
-Consider implementing this pattern when looking for a cost-efficient solution that has fault tolerance across all the network components. It's possible to scale out the pattern, but requires workload downtime to reconfigure storage physical connectivity and storage network reconfiguration. SDN L3 services are fully supported on this pattern. Routing services such as BGP can be configured directly on the TOR switches if they support L3 services. Network security features such as micro-segmentation and QoS don't require extra configuration for the firewall device as they're implemented at the virtual network adapter layer.
+Consider implementing this pattern when looking for a cost-efficient solution that has fault tolerance across all the network components.
+
+[!INCLUDE [includes](../includes/switchless-scale-out.md)]
 
 ## Physical connectivity components
 

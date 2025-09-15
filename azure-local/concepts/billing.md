@@ -1,11 +1,11 @@
 ---
 title: Azure Local billing and payment
 description: How billing and payment works in Azure Local.
-author: jasongerend
-ms.author: jgerend
-ms.topic: conceptual
+author: alkohli
+ms.author: alkohli
+ms.topic: article
 ms.service: azure-local
-ms.date: 01/28/2025
+ms.date: 04/29/2025
 ---
 
 # Azure Local billing and payment
@@ -36,6 +36,14 @@ The pricing model is different from a usage-based or consumption-based billing t
 To determine how many cores are present in a system, Azure Local periodically checks the number of physical cores and reports them to Azure. If you're only occasionally connected or your connection is interrupted, don't worry; it can always try again later. Days or weeks of core data can be uploaded at once. Customers must connect to Azure at least once every 30 days to allow for billing.
 
 To manually upload core data to Azure, use the **`Sync-AzureStackHCI`** cmdlet.
+
+## Billing changes for 12.2504.1001.20 and later
+
+For deployments running solution version 12.2504.1001.20 and later, the usage record originates from the Azure Local resource in Azure directly.
+
+If you shut down or decommission your system without deleting the Azure Local resource in Azure, billing continues until the Azure Local resource in Azure is in a disconnected state for over 31 days.
+
+To avoid unexpected charges, you must delete the Azure Local resource in Azure when you decide to decommission the cluster. If you need to deploy the service again, you must go through the Azure Local deployment process. For more information, see [Deploy Azure Local](../deploy/deploy-via-portal.md).
 
 ## FAQ
 

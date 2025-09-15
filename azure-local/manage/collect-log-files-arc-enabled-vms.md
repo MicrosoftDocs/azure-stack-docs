@@ -1,19 +1,19 @@
 ---
-title: Collect log files for Azure Arc VMs on Azure Local
-description: Learn how to collect log files for an Azure Arc VMs on Azure Local. 
+title: Collect log files for Azure Local VMs enabled by Azure Arc
+description: Learn how to collect log files for an Azure Local VM enabled by Azure Arc. 
 author: alkohli
 ms.topic: how-to
-ms.date: 10/22/2024
+ms.date: 03/20/2025
 ms.author: alkohli
 ms.reviewer: vlakshmanan
 ms.service: azure-local
 ---
 
-# Collect log files for Azure Arc VMs on Azure Local
+# Collect log files for Azure Local VMs enabled by Azure Arc
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
-Collect logs and other files to identify and troubleshoot issues with Arc virtual machines (VMs) on your Azure Local instance.
+Collect logs and other files to identify and troubleshoot issues with Azure Local virtual machines (VMs) enabled by Azure Arc.
 
 ## Collect files when VM provisioning fails
 
@@ -44,7 +44,7 @@ Examine these log files to investigate a VM provisioning failure:
 
 ## Collect guest logs
 
-Collect guest logs to gather information on Arc VM issues before you contact Microsoft Support.
+Collect guest logs to gather information about issues with Azure Local VMs before you contact Microsoft Support.
 
 ### Logs inside the VM
 
@@ -59,7 +59,7 @@ For more information, see [Active Directory domain join troubleshooting guidance
 
 ### MOC guest agent logs
 
-MOC guest agent logs are useful when Arc VM provisioning fails with the following error:
+MOC guest agent logs are useful when provisioning on an Azure Local VM fails with the following error:
 
 `Could not establish HyperV connection for VM ID...`
 

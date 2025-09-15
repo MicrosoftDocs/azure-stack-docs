@@ -1,19 +1,19 @@
 ---
-title: Restrict SSH access to virtual machines in AKS enabled by Azure Arc (AKS on Azure Local 22H2)
-description: Learn how to restrict SSH access in AKS Arc on Azure Local 22H2.
+title: Restrict SSH access to virtual machines in AKS on Windows Server
+description: Learn how to restrict SSH access in AKS on Windows Server.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 02/14/2024
+ms.date: 04/02/2025
 ms.author: sethm 
 ms.lastreviewed: 04/27/2023
 ms.reviewer: oadeniji
 
 
-# Intent: As an IT Pro, I want to restrict access to some IP addresses and CIDRs in AKS enabled by Arc.
+# Intent: As an IT Pro, I want to restrict access to some IP addresses and CIDRs in AKS on Windows Server.
 
 ---
 
-# Restrict SSH access to virtual machines in AKS enabled by Azure Arc (AKS on Azure Local 22H2)
+# Restrict SSH access to virtual machines in AKS on Windows Server
 
 [!INCLUDE [aks-hybrid-applies-to-azure-stack-hci-windows-server-sku](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
@@ -21,7 +21,7 @@ This article describes a new security feature in AKS Arc that restricts Secure S
 
 ## Overview
 
-Currently, anyone with administrator access to AKS enabled by Arc has access to VMs through SSH on any machine. In some scenarios, you might want to limit that access, because unlimited access makes it difficult to pass compliance.
+Currently, anyone with administrator access to AKS on Windows Server has access to VMs through SSH on any machine. In some scenarios, you might want to limit that access, because unlimited access makes it difficult to pass compliance.
 
 > [!NOTE]
 > Currently, this capability is available only for a new installation of AKS Arc, and not for upgrades. Only a new installation of AKS Arc can pass the restricted IPs and restrict the commands that run over SSH.
@@ -93,5 +93,5 @@ Get-AksHciLogs –virtualMachineLogs
 
 ## Next steps
 
-- [Restrict SSH access (AKS on Azure Local 23H2)](restrict-ssh-access.md)
+- [Restrict SSH access in AKS on Azure Local](restrict-ssh-access.md)
 - [AKS on Windows Server overview](aks-overview.md)

@@ -4,8 +4,9 @@ description: Learn how to connect Linux clients with supported software versions
 ms.topic: overview
 author: pauljewellmsft
 ms.author: pauljewell
-ms.date: 01/10/2025
+ms.date: 04/30/2025
 ms.reviewer: dsundarraj
+ms.custom: sfi-image-nochange
 
 # Intent: As an IT Pro, XXX.
 # Keyword: 
@@ -49,6 +50,7 @@ Packages and kernel modules are available for the following Linux operating syst
 - [Ubuntu 18.04](install-ubuntu-18.md)
 - [Ubuntu 20.04](install-ubuntu-20.md)
 - [Ubuntu 22.04](install-ubuntu-22.md)
+- [Ubuntu 24.04](install-ubuntu-24.md)
 
 If you need to support a different distribution, contact the support team.
 

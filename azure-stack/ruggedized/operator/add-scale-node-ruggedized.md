@@ -3,11 +3,12 @@ title: Add scale unit nodes in Azure Stack Hub Ruggedized
 description: Learn how to add scale unit nodes to scale units in Azure Stack Hub Ruggedized.
 author: sethmanheim
 
-ms.topic: article
+ms.topic: how-to
 ms.date: 5/06/2021
 ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 5/06/2021
+ms.custom: sfi-image-nochange
 
 # Intent: As an Azure Stack operator, I want to add an additional scale unit node/physical computer to increase the overall capacity. 
 # Keyword: (add) scale unit node azure stack

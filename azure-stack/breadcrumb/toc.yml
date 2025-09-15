@@ -6,9 +6,6 @@
     tocHref: /azure-stack/
     topicHref: /azure-stack/index
     items:
-    - name: Hub ASDK
-      tocHref: /azure-stack/asdk/
-      topicHref: /azure-stack/asdk/index
     - name: Hub Operator
       tocHref: /azure-stack/operator/
       topicHref: /azure-stack/operator/index

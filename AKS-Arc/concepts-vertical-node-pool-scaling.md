@@ -1,11 +1,10 @@
 ---
-title: Vertical node scaling in AKS enabled by Azure Arc
-description: Learn about the vertical scaling of node pools in AKS enabled by Arc.
-ms.topic: conceptual
+title: Vertical node scaling in AKS on Windows Server
+description: Learn about the vertical scaling of node pools in AKS on Windows Server.
+ms.topic: article
 author: sethmanheim
 ms.author: sethm 
-ms.lastreviewed: 06/26/2024
-ms.reviewer: mikek
+ms.lastreviewed: 04/07/2025
 ms.date: 10/21/2022
 
 # Intent: As a Kubernetes user, I want to use increase my VM size in place to grow my nodes to keep up with application demand.
@@ -16,7 +15,7 @@ ms.date: 10/21/2022
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-You can change the size of the virtual machines in a given node pool, to increase the resources available to the node pool in AKS enabled by Azure Arc.
+You can change the size of the virtual machines in a given node pool, to increase the resources available to the node pool in AKS on Windows Server.
 
 To keep up with app demands in Azure Kubernetes Service (AKS), you might need to adjust the number of nodes that run your workloads. In some cases, scaling a cluster horizontally by adding nodes isn't sufficient to meet the demands from your app for more CPU cores or memory.
 

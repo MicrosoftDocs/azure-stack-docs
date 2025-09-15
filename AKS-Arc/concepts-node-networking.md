@@ -1,12 +1,11 @@
 ---
-title: Node virtual machine networking in AKS enabled by Azure Arc
+title: Node virtual machine networking in AKS on Windows Server
 description: Learn about virtual machine networking in AKS Arc, including static IP and DHCP networking and load balancers.
-ms.topic: conceptual
-ms.date: 06/24/2024
+author: sethmanheim
+ms.topic: article
+ms.date: 04/07/2025
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
-ms.reviewer: mikek
-author: sethmanheim
 
 # Intent: As an IT Pro, I want to learn about virtual machine networking in AKS Arc.
 # Keyword: virtual machine networking
@@ -16,7 +15,7 @@ author: sethmanheim
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-You can choose between two IP address assignment models for your networking architecture for AKS enabled by Arc. AKS supports [several deployment options](aks-overview.md) for Azure Kubernetes Service (AKS):
+You can choose between two IP address assignment models for your networking architecture for AKS on Windows Server. AKS supports [several deployment options](aks-overview.md) for Azure Kubernetes Service (AKS):
 
 - **Static IP networking**: the virtual network allocates static IP addresses to the Kubernetes cluster API server, Kubernetes nodes, underlying VMs, load balancers, and any Kubernetes services that run on top of the cluster.
 - **DHCP networking**: the virtual network allocates dynamic IP addresses to the Kubernetes nodes, underlying VMs, and load balancers using a DHCP server. The Kubernetes cluster API server, and any Kubernetes services you run on top of your cluster, are still allocated static IP addresses.
@@ -33,7 +32,7 @@ The number of IP addresses in the VIP pool depends on the number of workload clu
 Depending on your networking model, the VIP pool definition differs in the following ways:
 
 - Static IP: if you're using static IP, make sure your virtual IP addresses are from the same subnet provided.
-- DHCP: if your network is configured with DHCP, work with your network administrator to exclude the VIP pool IP range from the DHCP scope used for the AKS on Azure Local deployment.
+- DHCP: if your network is configured with DHCP, work with your network administrator to exclude the VIP pool IP range from the DHCP scope used for the AKS deployment.
 
 ## Kubernetes node VM IP pool
 
@@ -79,25 +78,25 @@ You must specify the following parameters while defining a virtual network with 
 
 ## Microsoft On-premises Cloud service
 
-Microsoft On-premises Cloud (MOC) is the management stack that enables the virtual machines on Azure Local and Windows Server-based SDDC to be managed in the cloud. MOC consists of:
+Microsoft On-premises Cloud (MOC) is the management stack that enables the virtual machines on Windows Server-based SDDC to be managed in the cloud. MOC consists of:
 
-- A single instance of a highly available `cloud agent` service deployed in the cluster. This agent runs on any one node in the Azure Local or Windows Server cluster and is configured to fail over to another node.
-- A `node agent` running on every Azure Local physical node.
+- A single instance of a highly available `cloud agent` service deployed in the cluster. This agent runs on any one node in the Windows Server cluster and is configured to fail over to another node.
+- A `node agent` running on every physical node.
 
 To enable communication with MOC, you must provide the IP address CIDR to be used for the service. The `-cloudserviceCIDR` is a parameter in the [`Set-AksHciConfig`](./reference/ps/set-akshciconfig.md) command that's used to assign the IP address to the cloud agent service and enable high availability of the cloud agent service.
 
-The choice of an IP address for the MOC service depends on the underlying networking model used by your cluster deployment on Azure Local or Windows Server.
+The choice of an IP address for the MOC service depends on the underlying networking model used by your cluster deployment on Windows Server.
 
 > [!NOTE]
-> The IP address allocation for the MOC service is independent of your Kubernetes virtual network model. The IP address allocation is dependent on the underlying physical network, and the IP addresses configured for the Azure Local or Windows Server cluster nodes in your data center.
+> The IP address allocation for the MOC service is independent of your Kubernetes virtual network model. The IP address allocation is dependent on the underlying physical network, and the IP addresses configured for the Windows Server cluster nodes in your data center.
 
-- **Azure Local and Windows Server cluster nodes with a DHCP-based IP address allocation mode**: If your Azure Local nodes are assigned an IP address from a DHCP server present on the physical network, then you don't need to explicitly provide an IP address to the MOC service, as the MOC service also receives an IP address from the DHCP server.
+- **Windows Server cluster nodes with a DHCP-based IP address allocation mode**: If your cluster nodes are assigned an IP address from a DHCP server present on the physical network, then you don't need to explicitly provide an IP address to the MOC service, as the MOC service also receives an IP address from the DHCP server.
 
-- **Azure Local and Windows Server cluster nodes with a static IP allocation model**: If your cluster nodes are assigned static IP addresses, then you must explicitly provide an IP address for the MOC cloud service. The IP address for the MOC service must be in the same subnet as the IP addresses of Azure Local and Windows Server cluster nodes. To explicitly assign an IP address for MOC service, use the `-cloudserviceCIDR` parameter in the `Set-AksHciConfig` command. Make sure you enter an IP address in the CIDR format, for example: "10.11.23.45/16".
+- **Windows Server cluster nodes with a static IP allocation model**: If your cluster nodes are assigned static IP addresses, then you must explicitly provide an IP address for the MOC cloud service. The IP address for the MOC service must be in the same subnet as the IP addresses of Windows Server cluster nodes. To explicitly assign an IP address for MOC service, use the `-cloudserviceCIDR` parameter in the `Set-AksHciConfig` command. Make sure you enter an IP address in the CIDR format, for example: `10.11.23.45/16`.
 
 ## Compare network models
 
-Both DHCP and Static IP provide network connectivity on your AKS on Azure Local and Windows Server deployment. However, there are advantages and disadvantages to each. At a high level, the following considerations apply:
+Both DHCP and static IP provide network connectivity on your AKS on Windows Server deployment. However, there are advantages and disadvantages to each. At a high level, the following considerations apply:
 
 **DHCP**
     - Does not guarantee long-lived IP addresses for some resource types in an AKS deployment.
@@ -115,9 +114,9 @@ The following table compares IP address allocation for resources between static 
 | Kubernetes nodes (on virtual machines) | Assigned using Kubernetes node IP pool. | Assigned dynamically. |
 | Kubernetes services | Assigned statically using VIP pool. | Assigned statically using VIP pool. |
 | HAProxy load balancer VM | Assigned using Kubernetes node IP pool. | Assigned dynamically. |
-| Microsoft On-Premises Cloud Service | Depends on the physical networking configuration for Azure Local and Windows Server cluster nodes. | Depends on the physical networking configuration for Azure Local and Windows Server cluster nodes. |
+| Microsoft On-Premises Cloud Service | Depends on the physical networking configuration for Windows Server cluster nodes. | Depends on the physical networking configuration for Windows Server cluster nodes. |
 | VIP pool | Mandatory | Mandatory |
-| Kubernetes node VM IP pool | Mandatory | Not Supported |
+| Kubernetes node VM IP pool | Mandatory | Not supported |
 
 ## Minimum IP address reservations for an AKS deployment
 
@@ -129,10 +128,10 @@ At a minimum, you should reserve the following number of IP addresses for your d
 
 | Cluster type  | Control plane node | Worker node | For update operations | Load balancer  |
 | ------------- | ------------------ | ---------- | ----------| -------------|
-| AKS host |  One IP |  NA  |  Two IP |  NA  |
+| AKS host |  One IP |  N/A  |  Two IP |  N/A  |
 | Workload cluster  |  One IP per node  | One IP per node |  5 IP  |  One IP |
 
-Additionally, you should reserve the following number of IP addresses for your VIP pool:
+You should also reserve the following number of IP addresses for your VIP pool:
 
 | Resource type  | Number of IP addresses |
 | ------------- | ------------------|
@@ -144,7 +143,7 @@ As you can see, the number of required IP addresses is variable depending on the
 
 ### Walk through an example deployment
 
-Jane is an IT administrator just starting with AKS enabled by Azure Arc. She wants to deploy two Kubernetes clusters: Kubernetes cluster A and Kubernetes cluster B on her Azure Local cluster. She also wants to run a voting application on top of her cluster. This application has three instances of the front-end UI running across the two clusters and one instance of the backend database.
+Jane is an IT administrator just starting with AKS on Windows Server. She wants to deploy two Kubernetes clusters: Kubernetes cluster A and Kubernetes cluster B on her Windows Server cluster. She also wants to run a voting application on top of her cluster. This application has three instances of the front-end UI running across the two clusters and one instance of the backend database.
 
 - Kubernetes cluster A has 3 control plane nodes and 5 worker nodes.
 - Kubernetes cluster B has 1 control plane node and 3 worker nodes.
@@ -194,11 +193,11 @@ During deployment of a target cluster, a `HAProxy`-based load balancer resource 
 
 Ingress controllers work at layer 7, and are able to use more intelligent rules to distribute application traffic. A common use of an ingress controller is to route HTTP traffic to different applications based on the inbound URL.
 
-:::image type="content" source="media/concepts-node-networking/aks-ingress.png" alt-text="Diagram showing ingress traffic flow in an AKS cluster on Azure Local." lightbox="media/concepts-node-networking/aks-ingress.png":::
+:::image type="content" source="media/concepts-node-networking/aks-ingress.png" alt-text="Diagram showing ingress traffic flow in an AKS cluster on Windows Server." lightbox="media/concepts-node-networking/aks-ingress.png":::
 
 ## Next steps
 
-This article covers some of the networking concepts for deploying AKS nodes on Azure Local. For more information, see the following articles:
+This article covers some of the networking concepts for deploying AKS nodes on Windows Server. For more information, see the following articles:
 
 - [Container networking concepts](./concepts-container-networking.md)
 - [Cluster and workloads](./kubernetes-concepts.md)

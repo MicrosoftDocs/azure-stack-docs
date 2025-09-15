@@ -3,8 +3,9 @@ title: Discover and replicate VMware VMs for migration to Azure Local using Azur
 description: Learn the discovery and replication process for VMware VMs to Azure Local using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 12/16/2024
+ms.date: 07/25/2025
 ms.author: alkohli
+ms.custom: sfi-image-nochange
 ---
 
 # Discover and replicate VMware VMs for migration to Azure Local using Azure Migrate (preview)
@@ -55,27 +56,31 @@ This step applies only if you are deploying the source VMware appliance using an
 
 #### Install using a .zip file
 
-This step applies only if you downloaded the .zip file. You use the *AzureMigrateInstaller.ps1* PowerShell script to install the source appliance.
-For specific information, see [Set up an appliance with a script](/azure/migrate/deploy-appliance-script).
+This step applies only if you downloaded the .zip file. You use the `AzureMigrateInstaller.ps1` PowerShell script to install the source appliance. For specific information, see [Set up an appliance with a script](/azure/migrate/deploy-appliance-script).
 
 1. Create a VM in the VMware vCenter with the following configuration:
+
     - Operating system: Windows Server 2022
     - vCPU: 8
     - Disk: >80 GB
     - Memory: 16 GB
-    <!--For detailed steps, see [Creating a VM in vSphere](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.html.hostclient.doc/GUID-FBEED81C-F9D9-4193-BDCC-CC4A60C20A4E.html?hWord=N4IghgNiBcIMICcCmYAuSAEA3Alg1ArpBgLZgDGAFjgHZIgC+QA).-->
+
 1. Once the VM is created, sign into the VM as an administrator.
-1. Copy the downloaded zip file to the new VM that you created in the vCenter. Extract the zip to a folder and go where the  *AzureMigrateInstaller.ps1* PowerShell script resides in the extracted folder.
+
+1. Copy the downloaded zip file to the new VM that you created in the vCenter. Extract the zip to a folder and go where the `AzureMigrateInstaller.ps1` PowerShell script resides in the extracted folder.
+
 1. Open a PowerShell window as an administrator and run the following command:
 
-    ```powershell
+    ```PowerShell
     Set-ExecutionPolicy -ExecutionPolicy Unrestricted
-    
-    .\AzureMigrateInstaller.ps1 -Scenario VMware -Cloud Public -PrivateEndpoint:$false -EnableAzureStackHCITarget
+
+    .\AzureMigrateInstaller.ps1 -Scenario VMware -Cloud Public -PrivateEndpoint:$false -EnableAzureStackHCITarget
     ```
 
 1. Select option 1 as the desired configuration: **Primary appliance to discover, assess and migrate servers**.
+
 1. Follow the rest of the onscreen instructions to install the source appliance and uninstall Internet Explorer.
+
 1. Restart the VM after the installation is complete. Sign in to the VM.
 
 ### Configure the source appliance and discover VMs
@@ -171,79 +176,60 @@ Complete the following tasks to generate the target appliance key:
 
 ### Create the target appliance
 
-You can download the appliance from a .zip file. Under **Step 2: Download Azure Migrate appliance**, select **Download installer**.
+:::image type="content" source="./media/migrate-vmware-replicate/deploy-target-appliance-zip.png" alt-text="Screenshot showing the Download using zip option." lightbox="./media/migrate-vmware-replicate/deploy-target-appliance-zip.png":::
 
-:::image type="content" source="media/migrate-vmware-replicate/download-target-appliance-1.png" alt-text="Screenshot of download target appliance step 2." lightbox="media/migrate-vmware-replicate/download-target-appliance-1.png":::
+#### Install using a template (.VHD file)
 
-<!--#### Install using a .VHD file
+This step applies only if you downloaded the .VHD zipped file. 
 
-This step applies only if you downloaded the *.VHD* file.
+1. Check that the zipped file is secure, before you deploy it. 
 
-1. On the machine where you downloaded the file, open an administrator command window.
-1. Run the following command to generate the hash for the VHD.
-    
+1. On the machine where you downloaded the file, open an administrator PowerShell window. 
+
+1. Run the following command to generate the hash for the VHD. 
+
     ```powershell
-    C:\>Get-FileHash -Path <file_location> -Algorithm <Hashing Algorithm>
+    C:\>Get-FileHash -Path <Path to downloaded VHD zip>  -Algorithm SHA256
     ```
 
-    Here's an example output.
-
-    ```output
-    C:\>Get-FileHash -Path ./AzureMigrateAppliance_v3.20.09.25.zip -Algorithm SHA256
-    ```
-
-1. Verify the latest appliance versions and hash values for Azure public cloud:
-
+1. Verify the latest appliance versions and hash values: 
     
     |**Scenario**  |**Download**  |**SHA256**  |
     |---------|---------|---------|
-    |Azure Local appliance     |Latest version: `https://go.microsoft.com/fwlink/?linkid=2191847`         |07783a31d1e66be963349b5553dc1f1e94c70aa149e11ac7d8914f4076480731         |
+    |Azure Local appliance     |Latest version: `https://go.microsoft.com/fwlink/?linkid=2246416`         |6ae1144b026efb2650f5e11c007a457c351a752f942c2db827dd2903f468dccb         |
 
-1. Extract the zip file to a folder.
+1. Extract the zipped file to a folder. 
 
 Now you can install the appliance using the .VHD file.
 
-1. On a Hyper-V server, go to the Hyper-V Manager. Select **Hyper-V Manager > Connect to server**.
+1. Using local tools, such as Hyper-V Manager or Failover Cluster, install the target appliance from the downloaded .VHD file on your Azure Local instance. 
 
-1. On the **Select Computer** dialog box, select **Another computer**. Browse to the Azure Local machine, and then select **OK**.
-
-1. Map the drive on your Azure Local machine where you downloaded the VHD. Connect to this drive using File Explorer. Verify that you can access the location where the VHD was downloaded on your Azure Local machine.
-
-1. On your Hyper-V server, from the **Actions** pane, select **Import Virtual Machine**. This starts a wizard. Go through the steps of the wizard. Accept the defaults except on the following:
-
-    1. On the **Locate Folder** page, point to the folder that has the VHD (folder name is AzureMigrateAppliance.zip) that you downloaded on your Azure Local machine.
-    1. On the **Connect Network** page, select a switch from the dropdown list for **Connection**. Create a VM using the VHD you downloaded, then start and sign into the VM. Make sure the VM has access to the internet.
-    1. Finally review the settings and select **Finish**.
-
-1. In the Hyper-V Manager, under **Virtual Machines**, you see the VM you created. Select and start the VM.
-
-1. Once the VM starts, accept the license terms and conditions. On the **Customize settings** page, provide and confirm a password for the administrator account and then select **Finish**.
-
-1. After the VM has started up, sign in to the VM as an administrator. Enter the password you provided in the previous step.-->
-
+1. Once the VM has finished provisioning and has booted, open the **Azure Migrate Target Appliance Configuration Manager** shortcut from the desktop.
 
 #### Install using a script (.zip file)
 
-This step applies to the downloaded .zip file.
+This step applies to using a .zip file.
 
-1. Using **Hyper-V Manager**, create a standalone (non-HA) VM on the target Azure Local machine running on Windows Server 2022 with 80 GB (min) disk storage, 16 GB (min) memory, and 8 virtual processors. Make sure that the VM has access to the internet.
+1. Create a VM in Azure Local with the following configuration: 
+    - Operating system: Windows Server 2022 
+    - vCPU: 8 
+    - Disk: >80 GB 
+    - Memory: 16 GB 
 
-1. In  **Hyper-V Manager**, select the host.
+1. Once the VM is created, sign into the VM as an administrator. 
 
-1. Under **Hyper-V settings**, select **Enhanced Session Mode Policy** and ensure **Allow enhanced session mode** is enabled. For more information, see [Turn on enhanced session mode on a Hyper-V host](/windows-server/virtualization/hyper-v/learn-more/use-local-resources-on-hyper-v-virtual-machine-with-vmconnect#turn-on-enhanced-session-mode-on-a-hyper-v-host).
+1. You can download the appliance from a .zip file. Under  **Step 2: Download and install the target appliance**, select **.zip**, and then select  **Download**. 
 
-1. Sign into the VM as an administrator.
+1. Copy the downloaded zip file to the new VM that you created on the Azure Local instance. Extract the zip to a folder and go where the `AzureMigrateInstaller.ps1` PowerShell script resides in the extracted folder. 
 
-1. Copy and paste the downloaded .zip file to the VM virtual disk that you created and extract it as needed.
+1. Open a PowerShell window as an administrator and run the following:
 
-1. As an administrator, run the following PowerShell script from the folder of the extracted files to install the target appliance:
-
-    ```PowerShell
-    Set-ExecutionPolicy -ExecutionPolicy Unrestricted
+    ```powershell
+    Set-ExecutionPolicy -ExecutionPolicy Unrestricted 
     .\AzureMigrateInstaller.ps1 -Scenario AzureStackHCI -Cloud Public -PrivateEndpoint:$false
-    ```
+    ``` 
 
-1. Restart and sign into the VM.
+1. Restart the VM after the installation is complete. Sign in to the VM.
 
 ### Register the target appliance
 
@@ -307,7 +293,7 @@ This step applies to the downloaded .zip file.
     1. The subscription field is automatically populated. If this isn't the subscription that has your target Azure Local instance, choose the Azure subscription that has the system.
     1. Select the resource group associated with your target system.
 	1. For **Target system**, select the Azure Local resource.
-	1. Verify there's a green check for the system. A green check indicates that all the prerequisites such as Arc Resource Bridge are configured on this system.
+	1. Verify there's a green check for the system. A green check indicates that all the prerequisites such as Azure Arc resource bridge are configured on this system.
     1. When finished, select **Next**.
     
     :::image type="content" source="./media/migrate-vmware-replicate/replicate-1-basics.png" alt-text="Screenshot showing the Basics tab." lightbox="./media/migrate-vmware-replicate/replicate-1-basics.png":::

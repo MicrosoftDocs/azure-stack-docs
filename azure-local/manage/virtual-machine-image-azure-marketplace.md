@@ -5,16 +5,21 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
+ms.date: 03/04/2025
 ms.custom:
   - devx-track-azurecli
-ms.date: 12/10/2024
+  - sfi-image-nochange
 ---
 
 # Create Azure Local VM image using Azure Marketplace images
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
-This article describes how to create virtual machine (VM) images for Azure Local using source images from Azure Marketplace. You can create VM images using the Azure portal or Azure CLI and then use these VM images to create Arc VMs on Azure Local.
+This article explains how to create Windows virtual machine (VM) images for Azure Local using source images from Azure Marketplace, either through the Azure portal or Azure CLI.
+
+To create Linux VM images from Azure Marketplace, choose:
+
+- [Prepare RHEL Azure Marketplace image for Azure Local VM deployment](../manage/virtual-machine-azure-marketplace-red-hat.md).
 
 ## Prerequisites
 
@@ -26,6 +31,8 @@ Before you begin, make sure that the following prerequisites are completed.
 
 - Make sure you have the **Azure Connected Machine Resource Manager** role. For more information, see [Assign Azure roles](/azure/role-based-access-control/role-assignments-portal).
 
+- Make sure that your subscription is registered with the `Microsoft.EdgeMarketplace` resource provider. For more information, see [Register resource provider](/azure/azure-resource-manager/management/resource-providers-and-types#register-resource-provider).
+
 - If using a client to connect to your Azure Local instance, see [Connect to the system remotely](./azure-arc-vm-management-prerequisites.md#connect-to-the-system-remotely).
 
 # [Azure portal](#tab/azureportal)
@@ -33,6 +40,8 @@ Before you begin, make sure that the following prerequisites are completed.
 - Make sure to review and [complete the prerequisites](./azure-arc-vm-management-prerequisites.md).
 
 - Make sure you have the **Azure Connected Machine Resource Manager** role. For more information, see [Assign Azure roles](/azure/role-based-access-control/role-assignments-portal).
+
+- Make sure that your subscription is registered with the `Microsoft.EdgeMarketplace` resource provider. For more information, see [Register resource provider](/azure/azure-resource-manager/management/resource-providers-and-types#register-resource-provider).
 ---
 
 ## Add VM image from Azure Marketplace
@@ -98,8 +107,8 @@ Follow these steps to create a VM image using the Azure CLI.
 
     | Name | Publisher | Offer | SKU |
     |------|-----------|-------|------|
-    | Windows 11 Enterprise multi-session + Microsoft 365 | microsoftwindowsdesktop | office-365 | win11-23h2-avd-m365 |
-    | Windows 10 Enterprise multi-session + Microsoft 365  | microsoftwindowsdesktop | office-365 | win10-21h2-avd-m365<br>win10-22h2-avd-m365 |
+    | Windows 11 Enterprise multi-session + Microsoft 365 | microsoftwindowsdesktop | office-365 | win11-23h2-avd-m365 <br> win11-24h2-avd-m365 |
+    | Windows 10 Enterprise multi-session + Microsoft 365  | microsoftwindowsdesktop | office-365 | win10-21h2-avd-m365 |
     | Windows 11 Pro | microsoftwindowsdesktop | windows-11 | win11-23h2-pro |
     | Windows 11 Enterprise | microsoftwindowsdesktop | windows-11 | win11-22h2-ent<br>win11-23h2-ent<br>win11-24h2-ent |
     | Windows 11 Enterprise multi-session | microsoftwindowsdesktop | windows-11 | win11-22h2-avd<br>win11-23h2-avd<br>win11-24h2-avd |

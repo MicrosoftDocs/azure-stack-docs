@@ -436,8 +436,6 @@
   items:
   - name: Azure Stack Hub operator documentation
     href: ../operator/index.yml
-  - name: ASDK Documentation
-    href: ../asdk/index.yml
   - name: Azure hybrid cloud documentation
     href: /hybrid    
 - name: Resources

@@ -1,6 +1,6 @@
 ---
 title: Update a certificate bundle on container hosts
-description: Learn how to add a certificate chain of trust (root, intermediate and lead certificates) with public key in AKS enabled by Arc.
+description: Learn how to add a certificate chain of trust (root, intermediate and lead certificates) with public key in AKS on Windows Server.
 author: sethmanheim
 ms.topic: how-to
 ms.date: 07/11/2024
@@ -20,7 +20,7 @@ This scenario uses a modified version of the [noProxy settings](proxy-change.md)
 
 ## Prerequisites and details
 
-- An AKS enabled by Azure Arc deployment running the October 2022 release or later.
+- An AKS on Windows Server deployment running the October 2022 release or later.
 - The certificates aren't immediately available upon running the command; they're deployed on the next update.
 - You can check if there's an update available using the PowerShell cmdlet [Get-AksHciClusterUpdates](reference/ps/get-akshciclusterupdates.md).
 - Currently there's no command to view, change, or delete scheduled update. Once the update is applied, it's possible to SSH into the container host and see the certs installed, then delete them.

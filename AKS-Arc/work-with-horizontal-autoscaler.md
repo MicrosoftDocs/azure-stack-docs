@@ -1,6 +1,6 @@
 ---
-title: Use PowerShell for cluster autoscaling in AKS enabled by Azure Arc
-description: Learn how to use PowerShell for cluster autoscaling in AKS enabled by Arc.
+title: Use PowerShell for cluster autoscaling in AKS on Windows Server
+description: Learn how to use PowerShell for cluster autoscaling in AKS on Windows Server.
 ms.topic: how-to
 author: sethmanheim
 ms.author: sethm
@@ -13,11 +13,11 @@ ms.date: 11/07/2022
 
 ---
 
-# Use PowerShell for cluster autoscaling in AKS enabled by Azure Arc
+# Use PowerShell for cluster autoscaling in AKS on Windows Server
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-You can use PowerShell to enable the autoscaler and to manage automatic scaling of node pools in your target clusters in AKS enabled by Arc. You can also use PowerShell to configure and manage cluster autoscaling.
+You can use PowerShell to enable the autoscaler and to manage automatic scaling of node pools in your target clusters in AKS on Windows Server. You can also use PowerShell to configure and manage cluster autoscaling.
 
 ## Create a new AksHciAutoScalerConfig object
 
@@ -86,7 +86,7 @@ This section contains some examples.
 
 Prerequisites:
 
-* AKS enabled by Arc is installed.
+* AKS on Windows Server is installed.
 * Target cluster is installed and connected to Azure.
 * One Linux node pool is deployed, with at least one active Linux worker node.
 * Horizontal node autoscaler is enabled on the target cluster and the Linux node pool, as described previously.

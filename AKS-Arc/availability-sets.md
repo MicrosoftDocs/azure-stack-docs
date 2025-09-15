@@ -24,7 +24,7 @@ Availability sets offer several benefits for AKS on Azure Local users, such as:
 
 ## Enable availability sets
 
-With AKS on Azure Local, version 23H2, the availability sets feature is enabled by default when you create a node pool. With AKS on Windows Server, you can enable availability sets feature by adding the `-enableAvailabilitySet` parameter when you create an AKS cluster; for example, `New-AksHciCluster -Name <name> -controlPlaneNodeCount 3 -osType Linux -kubernetesVersion $kubernetesVersion -enableAvailabilitySet`.
+With AKS on Azure Local, the availability sets feature is enabled by default when you create a node pool. With AKS on Windows Server, you can enable the availability sets feature by adding the `-enableAvailabilitySet` parameter when you create an AKS cluster; for example, `New-AksHciCluster -Name <name> -controlPlaneNodeCount 3 -osType Linux -kubernetesVersion $kubernetesVersion -enableAvailabilitySet`.
 
 ## How availability sets work in AKS enabled by Azure Arc
 
@@ -32,7 +32,7 @@ When you create a new AKS Arc cluster, AKS Arc automatically creates availabilit
 
 Once the availability sets are created and the VMs assigned, the system automatically places them on the appropriate physical nodes. If a node fails, the system also automatically fails over the VMs to other nodes and rebalances them when the node recovers. This way, you can achieve high availability and optimal distribution of your Kubernetes workloads without manual intervention.
 
-Consider an AKS on Azure Local, version 23H2 cluster with two physical host machines, **Host A** and **Host B**, three control plane VMs, and two worker node VMs, **Nodepool1VM1** and **Nodepool1VM2**. To ensure high availability of your Kubernetes applications, the node pool VMs must never share the same host, unless one of the hosts is temporarily unavailable for planned maintenance or capacity issue, which can cause the VM (virtual machine) to be temporarily placed on an alternative host.
+Consider an AKS on Azure Local cluster with two physical host machines, **Host A** and **Host B**, three control plane VMs, and two worker node VMs, **Nodepool1VM1** and **Nodepool1VM2**. To ensure high availability of your Kubernetes applications, the node pool VMs must never share the same host, unless one of the hosts is temporarily unavailable for planned maintenance or capacity issue, which can cause the VM (virtual machine) to be temporarily placed on an alternative host.
 
 In the following diagram, each color represents an anti-affinity group:  
 

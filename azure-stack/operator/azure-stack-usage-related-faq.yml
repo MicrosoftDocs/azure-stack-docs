@@ -3,6 +3,7 @@ metadata:
   title: Usage API FAQ
   titleSuffix: Azure Stack Hub
   description: List of frequently asked questions about Azure Stack Hub usage, including meters, comparison to Azure usage API, usage time vs reported time, and error codes.
+  ms.service: azure-stack-hub
   services: azure-stack
   documentationcenter: ''
   author: sethmanheim

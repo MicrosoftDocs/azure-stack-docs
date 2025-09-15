@@ -5,8 +5,11 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.custom: linux-related-content
-ms.date: 10/23/2024
+ms.date: 03/28/2025
+ms.custom:
+  - linux-related-content
+  - sfi-image-nochange
+  - sfi-ropc-nochange
 ---
 
 # Attaching a GPU to an Ubuntu Linux VM on Azure Local
@@ -24,7 +27,7 @@ This topic provides step-by-step instructions on how to install and configure an
 3. Sign in using an account with administrative privileges to the machine with the NVIDIA GPU installed.
 4. Open **Device Manager** and navigate to the *other devices* section. You should see a device listed as "3D Video Controller."
 5. Right-click on "3D Video Controller" to bring up the **Properties** page. Click **Details**. From the dropdown under **Property**, select "Location paths."
-6. Note the value with string PCIRoot as highlighted in the screenshot below. Right-click on **Value** and copy/save it.
+6. Note the value with string PCIRoot as highlighted in the screenshot. Right-click on **Value** and copy/save it.
 
     :::image type="content" source="media/attach-gpu-to-linux-vm/pciroot.png" alt-text="Location Path Screenshot." lightbox="media/attach-gpu-to-linux-vm/pciroot.png":::
 
@@ -41,9 +44,9 @@ This topic provides step-by-step instructions on how to install and configure an
 1. Download [Ubuntu desktop release 18.04.02 ISO](http://old-releases.ubuntu.com/releases/18.04.2/).
 2. Open **Hyper-V Manager** on the machine in your Azure local instance with the GPU installed.
    > [!NOTE]
-   > [DDA doesn't support failover](/windows-server/virtualization/hyper-v/plan/plan-for-deploying-devices-using-discrete-device-assignment). This is a VM limitation with DDA. Therefore, we recommend using **Hyper-V Manager** to deploy the VM on the machine instead of **Failover Cluster Manager**. Use of **Failover Cluster Manager** with DDA will fail with an error message indicating that the VM has a device that doesn't support high availability.
-3. Using the Ubuntu ISO downloaded in step 1, create a new VM using the **New Virtual Machine Wizard** in **Hyper-V Manager** to create an Ubuntu Generation 1 VM with 2GB of memory and a network card attached to it.
-4. In PowerShell, assign the Dismounted GPU device to the VM using the cmdlets below, replacing the *LocationPath* value with the value for your device.
+   > [DDA doesn't support failover](/windows-server/virtualization/hyper-v/plan/plan-for-deploying-devices-using-discrete-device-assignment). This is a VM limitation with DDA. Therefore, we recommend using **Hyper-V Manager** to deploy the VM on the machine instead of **Failover Cluster Manager**. Use of **Failover Cluster Manager** with DDA fails with an error message indicating that the VM has a device that doesn't support high availability.
+3. Using the Ubuntu ISO downloaded in step 1, create a new VM using the **New Virtual Machine Wizard** in **Hyper-V Manager** to create an Ubuntu Generation 1 VM with 2 GB of memory and a network card attached to it.
+4. In PowerShell, assign the Dismounted GPU device to the VM using the cmdlets, replacing the *LocationPath* value with the value for your device.
     ```PowerShell
     # Confirm that there are no DDA devices assigned to the VM
     Get-VMAssignableDevice -VMName Ubuntu
@@ -55,11 +58,11 @@ This topic provides step-by-step instructions on how to install and configure an
     Get-VMAssignableDevice -VMName Ubuntu
     ```
 
-    Successful assignment of the GPU to the VM will show the output below:
+    Here's an output from the successful assignment of the GPU to the VM:
 
     :::image type="content" source="media/attach-gpu-to-linux-vm/assign-gpu.png" alt-text="Assign GPU Screenshot." lightbox="media/attach-gpu-to-linux-vm/assign-gpu.png":::
 
-    Configure additional values following GPU documentation [here](/windows-server/virtualization/hyper-v/deploy/deploying-graphics-devices-using-dda):
+    Configure other values following GPU documentation [here](/windows-server/virtualization/hyper-v/deploy/deploying-graphics-devices-using-dda):
 
    ```PowerShell
     # Enable Write-Combining on the CPU
@@ -73,11 +76,11 @@ This topic provides step-by-step instructions on how to install and configure an
    ```
 
    > [!NOTE]
-   > The Value 33280Mb should suffice for most GPUs, but should be replaced with a value greater than your GPU memory.
+   > The value `33280Mb` should suffice for most GPUs, but should be replaced with a value greater than your GPU memory.
 
 5. Using Hyper-V Manager, connect to the VM and start the Ubuntu OS install. Choose the defaults to install the Ubuntu OS on the VM.
 
-6. After the installation is complete, use **Hyper-V Manager** to shut down the VM and configure the **Automatic Stop Action** for the VM to shut down the guest operating system as in the screenshot below:
+6. After the installation is complete, use **Hyper-V Manager** to shut down the VM and configure the **Automatic Stop Action** for the VM to shut down the guest operating system as in the screenshot:
 
     :::image type="content" source="media/attach-gpu-to-linux-vm/guest-shutdown.png" alt-text="Guest OS Shutdown Screenshot." lightbox="media/attach-gpu-to-linux-vm/guest-shutdown.png":::
 
@@ -94,13 +97,13 @@ This topic provides step-by-step instructions on how to install and configure an
 10. Upon login through the SSH client, issue the command **lspci** and validate that the NVIDIA GPU is listed as "3D controller."
 
     > [!IMPORTANT]
-    > If The NVIDIA GPU is not seen as "3D controller," please do not proceed further. Please ensure that the steps above are followed before proceeding.
+    > If The NVIDIA GPU is not seen as "3D controller," don't proceed further. Please ensure that the steps above are followed before proceeding.
 
 11. Within the VM, search for and open **Software & Updates**. Navigate to **Additional Drivers**, then choose the latest NVIDIA GPU drivers listed. Complete the driver install by clicking the **Apply Changes** button.
 
     :::image type="content" source="media/attach-gpu-to-linux-vm/driver-install.png" alt-text="Driver Install Screenshot." lightbox="media/attach-gpu-to-linux-vm/driver-install.png":::
 
-12. Restart the Ubuntu VM after the driver installation completes. Once the VM starts, connect through the SSH client and issue the command **nvidia-smi** to verify that the NVIDIA GPU driver installation completed successfully. The output should be similar to the screenshot below:
+12. Restart the Ubuntu VM after the driver installation completes. Once the VM starts, connect through the SSH client and issue the command **nvidia-smi** to verify that the NVIDIA GPU driver installation completed successfully. The output should be similar to the screenshot:
 
     :::image type="content" source="media/attach-gpu-to-linux-vm/nvidia-smi.png" alt-text="Screenshot that shows the output from the nvidia-smi command." lightbox="media/attach-gpu-to-linux-vm/nvidia-smi.png":::
 
@@ -160,7 +163,7 @@ This topic provides step-by-step instructions on how to install and configure an
 
 ## Configure Azure IoT Edge
 
-To prepare for this configuration, please review the FAQ contained in the [NVIDIA-Deepstream-Azure-IoT-Edge-on-a-NVIDIA-Jetson-Nano](https://github.com/Azure-Samples/NVIDIA-Deepstream-Azure-IoT-Edge-on-a-NVIDIA-Jetson-Nano) GitHub repo, which explains the need to install Docker instead of Moby. After reviewing, proceed to the steps below.
+To prepare for this configuration, please review the FAQ contained in the [NVIDIA-Deepstream-Azure-IoT-Edge-on-a-NVIDIA-Jetson-Nano](https://github.com/Azure-Samples/NVIDIA-Deepstream-Azure-IoT-Edge-on-a-NVIDIA-Jetson-Nano) GitHub repo, which explains the need to install Docker instead of Moby. After reviewing, proceed to the next steps.
 
 ### Install NVIDIA Docker
 
@@ -196,7 +199,7 @@ To prepare for this configuration, please review the FAQ contained in the [NVIDI
     sudo docker run --runtime=nvidia --rm nvidia/cuda:9.0-base nvidia-smi
     ```
 
-    Successful installation will look like the output in the screenshot below:
+    Here's an output from a successful installation:
 
     :::image type="content" source="media/attach-gpu-to-linux-vm/docker.png" alt-text="Successful Docker Install Screenshot." lightbox="media/attach-gpu-to-linux-vm/docker.png":::
 
@@ -263,13 +266,13 @@ To prepare for this configuration, please review the FAQ contained in the [NVIDI
     wget -O cars-streams.tar.gz --no-check-certificate https://onedrive.live.com/download?cid=0C0A4A69A0CDCB4C&resid=0C0A4A69A0CDCB4C%21588371&authkey=AAavgrxG95v9gu0
     ```
 
-    Un-compress the video files:
+    Uncompress the video files:
 
     ```shell
     tar -xzvf cars-streams.tar.gz
     ```
 
-    The contents of the directory /var/deepstream/custom_streams should be similar to the screenshot below:
+    The contents of the directory /var/deepstream/custom_streams should be similar to the screenshot:
 
     :::image type="content" source="media/attach-gpu-to-linux-vm/custom-streams.png" alt-text="Custom Streams Screenshot." lightbox="media/attach-gpu-to-linux-vm/custom-streams.png":::
 
@@ -332,7 +335,7 @@ To prepare for this configuration, please review the FAQ contained in the [NVIDI
     codec=1
     sync=0
     bitrate=4000000
-    # set below properties in case of RTSPStreaming
+    # set properties in case of RTSPStreaming
     rtsp-port=8554
     udp-port=5400
 
@@ -385,7 +388,7 @@ To prepare for this configuration, please review the FAQ contained in the [NVIDI
     live-source=0
     batch-size=4
     ##time out in usec, to wait after the first buffer is available
-    ##to push the batch even if the complete batch is not formed
+    ##to push the batch even if the complete batch isn't formed
     batched-push-timeout=40000
     ## Set muxer output width and height
     width=1920
@@ -432,7 +435,7 @@ To prepare for this configuration, please review the FAQ contained in the [NVIDI
 
     :::image type="content" source="media/attach-gpu-to-linux-vm/iot-edge.png" alt-text="Automatic Device Management Screenshot." lightbox="media/attach-gpu-to-linux-vm/iot-edge.png":::
 
-13. In the right-hand pane, select the device identity whose device connection string was used above. Click on set modules:
+13. In the right-hand pane, select the device identity whose device connection string was used. Click on set modules:
 
     :::image type="content" source="media/attach-gpu-to-linux-vm/set-modules.png" alt-text="Set Modules Screenshot." lightbox="media/attach-gpu-to-linux-vm/set-modules.png":::
 
@@ -464,7 +467,7 @@ To prepare for this configuration, please review the FAQ contained in the [NVIDI
 
     :::image type="content" source="media/attach-gpu-to-linux-vm/container-create-options.png" alt-text="Container Create Options Screenshot." lightbox="media/attach-gpu-to-linux-vm/container-create-options.png":::
 
-    Replace the configuration above with the configuration below:
+    Replace the configuration above with the configuration:
 
     ```shell
     {
@@ -498,7 +501,7 @@ To prepare for this configuration, please review the FAQ contained in the [NVIDI
     }
     ```
 
-18. Click **Review and Create**, and on the next page click **Create**. You should now see the three modules listed below for your IoT Edge device in the Azure portal:
+18. Select **Review and Create**, and on the next page click **Create**. You should now see the three modules listed for your IoT Edge device in the Azure portal:
 
     :::image type="content" source="media/attach-gpu-to-linux-vm/edge-hub-connections.png" alt-text="Modules and IoT Edge Hub Connections Screenshot." lightbox="media/attach-gpu-to-linux-vm/edge-hub-connections.png":::
 
@@ -517,9 +520,9 @@ To prepare for this configuration, please review the FAQ contained in the [NVIDI
     :::image type="content" source="media/attach-gpu-to-linux-vm/verify-modules-nvidia-smi.png" alt-text="nvidia-smi screenshot." lightbox="media/attach-gpu-to-linux-vm/verify-modules-nvidia-smi.png":::
  
     > [!NOTE]
-    > It will take a few minutes for the NvidiaDeepstream Container to be downloaded. You can validate the download using the command "journalctl -u iotedge --no-pager --no-full" to look at the iotedge daemon logs.
+    > It takes a few minutes for the NvidiaDeepstream Container to be downloaded. You can validate the download using the command `journalctl -u iotedge --no-pager --no-full` to look at the iotedge daemon logs.
 
-20. Confirm that the NvdiaDeepStreem Container is operational. The command output in the screenshots below indicates success.
+20. Confirm that the NvdiaDeepStreem Container is operational. The command output in the screenshots indicates success.
 
     ```shell
     sudo iotedge list

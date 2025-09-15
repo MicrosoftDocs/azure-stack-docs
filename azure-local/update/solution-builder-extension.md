@@ -5,7 +5,7 @@ author: ronmiab
 ms.author: robess
 ms.topic: overview
 ms.reviewer: dandefolo
-ms.date: 12/11/2024
+ms.date: 02/25/2025
 
 #customer intent: As a Senior Content Developer, I want provide customers with the highest level of content for the Solution Builder Extension so that customers gain knowledge and keep their Azure Local up to date in the most efficient way.
 
@@ -15,17 +15,17 @@ ms.date: 12/11/2024
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
-This article provides an overview of the Solution Builder Extension updates and explains how to identify and install them on your Azure Local, version 23H2 systems. Additionally, it offers insights into the extension’s advanced capabilities.
+This article provides an overview of the Solution Builder Extension updates and explains how to identify and install them on your Azure Local systems. Additionally, it offers insights into the extension’s advanced capabilities.
 
 ## About the extension
 
-The Solution Builder Extension (referred to as SBE in the Azure CLI) allows you to apply updates from your hardware vendor to your Azure Local, version 23H2 system. In addition to Microsoft Azure Local solution updates, many hardware vendors release regular updates for your Azure Local hardware. These updates may include driver and firmware updates, hardware monitoring enhancements, and diagnostic tools. Additionally, you can receive updates related to supplemental policies for Windows Defender Application Control (WDAC) and validation logic integrated into Azure Local pre-update health checks.
+The Solution Builder Extension (referred to as SBE in the Azure CLI) allows you to apply updates from your hardware vendor to your Azure Local system. In addition to Microsoft Azure Local solution updates, many hardware vendors release regular updates for your Azure Local hardware. These updates may include driver and firmware updates, hardware monitoring enhancements, and diagnostic tools. Additionally, you can receive updates related to supplemental policies for Windows Defender Application Control (WDAC) and validation logic integrated into Azure Local pre-update health checks.
 
-Starting with Azure Local, version 23H2, these types of updates are packaged into **Solution Builder Extension** or **Solution Builder Extension packages**.
+Starting with Azure Local 2311.2, all these updates are packaged into Solution Builder Extension or Solution Builder Extension packages.
 
 ## Solution Builder Extension package updates
 
-Solution Builder Extension package updates are integrated into the solution update process for Azure Local, version 23H2. You can install these updates as part of a combined (full solution) update with other Azure Local updates using orchestration within Azure Local. For example, if a Solution Builder Extension update that matches your system's hardware becomes available, it appears as an update option in the Azure portal or can be retrieved using the `Get-SolutionUpdate` PowerShell cmdlet. For more information, see [About updates for Azure Local, version 23H2](../update/about-updates-23h2.md#user-interfaces-for-updates).
+Solution Builder Extension package updates are integrated into the solution update process for Azure Local. You can install these updates as part of a combined (full solution) update with other Azure Local updates using orchestration within Azure Local. For example, if a Solution Builder Extension update that matches your system's hardware becomes available, it appears as an update option in the Azure portal or can be retrieved using the `Get-SolutionUpdate` PowerShell cmdlet. For more information, see [About updates for Azure Local](../update/about-updates-23h2.md#user-interfaces-for-updates).
 
 By installing such combined updates, you can keep your entire solution up to date with less impact and minimal effect on running workloads.
 
@@ -42,12 +42,12 @@ In addition to installing hardware updates, Solution Builder Extension may also 
 
 ## Identify a Solution Builder Extension update for your hardware
 
-Starting with Azure Local, version 23H2, any new Integrated Systems or Premier Solution hardware added to the Azure Local catalog must implement a Solution Builder Extension that supports firmware and driver updates. Microsoft recommends purchasing newer Integrated Systems and Premier Solutions to fully utilize the update-at-scale capabilities enabled by the Solution Builder Extension.
+Starting with Azure Local 2311.2, any new Integrated Systems or Premier Solution hardware added to the Azure Local catalog must implement a Solution Builder Extension that supports firmware and driver updates. Microsoft recommends purchasing newer Integrated Systems and Premier Solutions to fully utilize the update-at-scale capabilities enabled by the Solution Builder Extension.
 
 > [!NOTE]
-> A solution builder extension might not be implemented for your hardware if:
+> A Solution Builder Extension might not be implemented for your hardware if:
 >
-> - It was added to the Azure Local catalog before Azure Local, version 23H2.
+> - It was added to the Azure Local catalog before Azure Local 2311.2.
 >
 > - Your hardware was purchased as a Validated Node.
 >
@@ -55,7 +55,7 @@ Starting with Azure Local, version 23H2, any new Integrated Systems or Premier S
 
 If your hardware doesn't support a Solution Builder Extension update experience, the process for updating your hardware is like that of Azure Local, version 22H2. This means that your hardware updates may be available using Windows Admin Center. For more information, see  [Update Azure Local, version 22H2](../manage/update-cluster.md#install-operating-system-and-hardware-updates-using-windows-admin-center).
 
-Here's an example of the Windows Admin Center updates tool for systems running Azure Local, version 23H2.
+Here's an example of the Windows Admin Center updates tool for systems running Azure Local.
 
 [![Screenshot to install hardware updates in Windows Admin Center.](./media/solution-builder-extension/updates-os-windows-admin-center-23h2.png)](media/solution-builder-extension/updates-os-windows-admin-center-23h2.png#lightbox)
 
@@ -67,44 +67,62 @@ The following table provides the hardware update method for different hardware v
 |-----------------|------------------|---------------|-------------------|
 | DataON   | Models starting with S2D6, S2D7, AZS6, AZS7   | Solution Builder Extension | [Must Stay Up to Date - DataON](https://www.dataonstorage.com/dataon-must/must-stay-up-to-date/) |
 | DataON  | Other Integrated Systems and Validated Nodes (not previously listed)    | [Windows Admin Center Extension](https://dev.azure.com/WindowsAdminCenter/Windows%20Admin%20Center%20Feed/_artifacts/feed/WAC/NuGet/DataON.MUSTPro/overview/3.2.6) | [Enhancing the Windows Admin Center Experience with DataON MUST](https://www.dataonstorage.com/must/windows-admin-center/)                   |
-| Dell Technologies  | Premier Solutions: </br><br> MC-660, MC-760 | APEX Cloud Platform Hardware Updates (Solution Builder Extension) | [Support Matrix of Dell APEX Cloud Platform for Microsoft Azure](https://dl.dell.com/content/manual34666301-dell-apex-cloud-platform-for-microsoft-azure-support-matrix.pdf) |
-| Dell Technologies | **15G and 16G Integrated Systems - Instances running Azure Stack HCI OS, version 23H2**:</br><br> AX-650, AX-750, AX-6515, AX-7525, AX-4510c, AX-4520c, AX-760 | Solution Builder Extension (once available)  | [Dell Solution Builder Extensions for Azure Local Integrated System AX Server Release Notes](https://www.dell.com/support/kbdoc/en-us/000224407) |
+| Dell Technologies  | Premier Solutions: </br><br> MC-660, MC-760 | APEX Cloud Platform Hardware Updates (Solution Builder Extension) | [Support Matrix of Dell APEX Cloud Platform for Microsoft Azure](https://www.dell.com/support/product-details/en-us/product/apex-cloud-pf-ms-azure/docs) |
+| Dell Technologies | **15G and 16G Integrated Systems - Instances running Azure Stack HCI OS, version 23H2**:</br><br> AX-650, AX-750, AX-6515, AX-7525, AX-4510c, AX-4520c, AX-660, AX-760 | Solution Builder Extension (once available)  | [Dell Solution Builder Extensions for Azure Local Integrated System AX Server Release Notes](https://www.dell.com/support/kbdoc/en-us/000224407) |
 | Dell Technologies | **15G Integrated Systems - Instances running Azure Stack HCI OS, version 22H2**:</br><br> AX-650, AX-750, AX-6515, AX-7525, AX-4150c, AX-4520c | [Windows Admin Center Extension](https://dev.azure.com/WindowsAdminCenter/Windows%20Admin%20Center%20Feed/_artifacts/feed/WAC/NuGet/dell-emc.openmanage-integration/overview/3.2.0)  | [E2E Deployment and Operations Guide - Cluster Creation Using Windows Admin Center (WAC) \| Dell Technologies Info Hub](https://infohub.delltechnologies.com/en-us/t/e2e-deployment-and-operations-guide-cluster-creation-using-windows-admin-center-wac-1/) |
 | Dell Technologies | 14G Integrated Systems - Instances running Azure Stack HCI OS, version 22H2:</br><br> AX-740xd, AX-640 | [Windows Admin Center Extension](https://dev.azure.com/WindowsAdminCenter/Windows%20Admin%20Center%20Feed/_artifacts/feed/WAC/NuGet/dell-emc.openmanage-integration/overview/3.2.0) | [E2E Deployment and Operations Guide - Cluster Creation Using Windows Admin Center (WAC) \| Dell Technologies Info Hub](https://infohub.delltechnologies.com/en-us/t/e2e-deployment-and-operations-guide-cluster-creation-using-windows-admin-center-wac-1/) |
-| Hewlett Packard Enterprise | All | Solution Builder Extension and [Windows Admin Center Extension](https://dev.azure.com/WindowsAdminCenter/Windows%20Admin%20Center%20Feed/_artifacts/feed/WAC/NuGet/hpe.hci.snap-in/overview/1.3.0) | 1. Install [Solution Builder Extension](https://www.hpe.com/info/ASHCI-SBE) </br><br> 2. Install hardware updates via [Windows Admin Center](https://www.hpe.com/us/en/alliance/microsoft/ws-admin-center.html) |
-| Lenovo | Premier Solutions and specific Integrated Systems:</br><br> MX455 V3, MX450 | Solution Builder Extension | [Azure Local Solution Builder Extension Update - Lenovo](https://thinkagile.lenovo.com/MX/) |
+| Hewlett Packard Enterprise | Newer integrated systems:</br><br> DL380 Gen11 (only SKU P65984-B21)</br>DL145 Gen11 (only SKU P78955-B21)  | Solution Builder Extension | 1. Install [Standard Solution Builder Extension](https://myenterpriselicense.hpe.com/cwp-ui/product-details/SBE_UPDATES/-/sw_free) |
+| Hewlett Packard Enterprise | Other models | Solution Builder Extension and [Windows Admin Center Extension](https://dev.azure.com/WindowsAdminCenter/Windows%20Admin%20Center%20Feed/_artifacts/feed/WAC/NuGet/hpe.hci.snap-in/overview/1.3.0) | 1. Install [Minimal Solution Builder Extension](https://myenterpriselicense.hpe.com/cwp-ui/product-details/SBE_UPDATES/-/sw_free) </br><br> 2. Install hardware updates via [Windows Admin Center](https://www.hpe.com/us/en/alliance/microsoft/ws-admin-center.html) |
+| Lenovo | ThinkAgileMXPremier family servers:</br><br> ThinkAgile MX455 V3 Edge PR </br> ThinkAgile MX650 V3 PR | Solution Builder Extension | [ThinkAgileMXPremier Family SBE](https://pubs.lenovo.com/thinkagile-mx/mx_sbe) |
+| Lenovo | ThinkAgileMXStandard family servers:</br><br> ThinkAgile MX 455 V3 Edge IS </br> ThinkAgile MX 650 V3 IS </br> ThinkAgile MX 650 V3 CN </br> ThinkAgile MX 450 Edge IS </br> ThinkAgile MX 630 V3 IS </br> ThinkAgile MX 630 V3 CN  | Solution Builder Extension | [ThinkAgileMXStandard Family SBE](https://pubs.lenovo.com/thinkagile-mx/mx_sbe) |
 | Lenovo | Other Integrated Systems and Validated Nodes (not previously listed)  | [Windows Admin Center Extension](https://dev.azure.com/WindowsAdminCenter/Windows%20Admin%20Center%20Feed/_artifacts/feed/WAC/NuGet/lnvgy_sw_xclarity_integrator_for_wac/overview/4.5.1) | [Lenovo XClarity Integrator for Microsoft Windows Admin Center](https://dev.azure.com/WindowsAdminCenter/Windows%20Admin%20Center%20Feed/_artifacts/feed/WAC/NuGet/lnvgy_sw_xclarity_integrator_for_wac/overview/4.5.1) |
 
-## Discover Solution Builder Extension Updates
+## Check for SBE installation
 
-The Azure Local Lifecycle Management orchestration integrates Solution Builder Extension updates, which include both Solution Builder Extension (hardware-only) updates and full solution updates for Azure Local and Solution Builder Extension. These updates can be managed using the same update management tools for the Azure portal and PowerShell. This means that you can install an urgent Solution Builder Extension update by itself or a combined "Solution" update using the same process.
-
-Check to see if you have SBE installed on your registered Azure Local system by running the following command:
+To see if you have SBE installed on your registered Azure Local system, run the following command:
 
 ```powershell
 $Update = Get-SolutionUpdateEnvironment
-$Update | ft SbeFamily, HardwareModel, CurrentSbeVersion
+$Update | ft SbeFamily, HardwareModel, CurrentSbeVersion, State
 ```
 
 Here's a sample output
 
 ```console
 PS C:\Users\lcmuser> $Update = Get-SolutionUpdateEnvironment
-PS C:\Users\lcmuser> $Update | ft SbeFamily, HardwareModel, CurrentSbeVersion
+PS C:\Users\lcmuser> $Update | ft SbeFamily, HardwareModel, CurrentSbeVersion, State
 
-SbeFamily             HardwareModel       CurrentSbeVersion
----------             -------------       -----------------
-Gen A                 Contoso680          4.0.0.0
+SbeFamily             HardwareModel       CurrentSbeVersion        State
+---------             -------------       -----------------        -----
+Gen A                 Contoso680          4.0.0.0                  UpdateAvailable
 ```
 
 > [!NOTE]
 > If you don't have an SBE installed the CurrentSbeVersion default is shown as 2.1.0.0.
 
+The following table describes the possible states of the SBE on your Azure Local system. For states requiring action, follow the provided guidance.
+
+| State    | Description     | Action    |
+|-----------|----------------|-----------|
+| AppliedSuccessfully | The SBE is installed and up to date.| No action required.|
+| NeedsAttention | The SBE or Azure Local update requires attention.| [Troubleshoot solution updates for Azure Local](update-troubleshooting-23h2.md).|
+| PreparationFailed | The system failed to prepare for the SBE or Azure Local update.| [Troubleshoot solution updates for Azure Local](update-troubleshooting-23h2.md).|
+| PreparationInProgress | The system is preparing for an SBE or Azure Local update.| [Track system update progress and history](azure-update-manager-23h2.md#track-system-update-progress-and-history).|
+| UpdateAvailable | A new SBE or Azure Local update is available.| [Discover Solution Builder Extension updates](#discover-solution-builder-extension-updates).|
+| UpdateFailed | The SBE or Azure Local update failed.| [Troubleshoot solution updates for Azure Local](update-troubleshooting-23h2.md).|
+| UpdateInProgress | An SBE or Azure Local update is in progress.| [Track system update progress and history](azure-update-manager-23h2.md#track-system-update-progress-and-history).|
+
+## Discover Solution Builder Extension Updates
+
+The Azure Local Lifecycle Management orchestration queries an established online SBE manifest endpoint for each hardware vendor to determine if there are any new SBE updates for your Azure Local instance. The process of checking for new updates and determining if they're applicable to your Azure Local instance is called **discovering** updates.
+
+Microsoft and your hardware vendor work together to ensure only valid and supported update options are discovered. To determine if the extension updates match, the discovery process checks the current versions of your Azure Local instance against the validated versions recorded in the SBE manifest. If you see an SBE discovered as an option to install, it means your hardware vendor has validated and supports the new combination of SBE and Azure Local versions.
+
 To discover and install SBE or your SBE updates, use one of the methods in the next sections.
 
 ### Discover Solution Builder Extension updates via the Azure portal
 
-To discover and select updates via the Azure portal, see [Use Azure Update Manager to update your Azure Local, version 23H2](../update/azure-update-manager-23h2.md#browse-for-system-updates).
+To discover and select updates via the Azure portal, see [Use Azure Update Manager to update Azure Local](../update/azure-update-manager-23h2.md#browse-for-system-updates).
 
 ### Discover Solution Builder Extension updates via PowerShell
 
@@ -132,7 +150,7 @@ Azure Local 2311 bundle      Solution    10.2311.0.26 4.1.2312.5     Ready
 In the sample output, you can see that two updates are ready to be installed: the standalone **SBE_Contoso_Gen3_4.1.2312.5** update and the combined **Azure Local 2311 bundle** update, which includes the same Solution Builder Extension as identified by the SbeVersion number 4.1.2312.5.
 
 > [!NOTE]
-> Microsoft recommends installing the combined “Solution” update in most cases, to reduce the number of update operations needed to keep your system up to date. You can refer to the `SBEReleaseLink` and `SBENotifyMessage` properties, provided by your hardware vendor in the `AdditionalProperties` of the update, to determine if there's an urgent reason to install a Solution Builder Extension update before the combined solution update.
+> Microsoft recommends installing the combined "Solution" update in most cases, to reduce the number of update operations needed to keep your system up to date. You can refer to the `SBEReleaseLink` and `SBENotifyMessage` properties, provided by your hardware vendor in the `AdditionalProperties` of the update, to determine if there's an urgent reason to install a Solution Builder Extension update before the combined solution update.
 
 To determine which update to install, use the **ComponentVersions** and **AdditionalProperties** values from `Get-SolutionUpdate`.
 
@@ -207,4 +225,4 @@ For more information, see [Discover Solution Builder Extension updates](#discove
 ## Next steps
 
 - [Import and discover solution updates](../update/update-via-powershell-23h2.md#step-3-import-and-rediscover-updates).
-- [Understand update phases of Azure Local, version 23H2](../update/update-phases-23h2.md).
+- [Understand update phases of Azure Local](../update/update-phases-23h2.md).

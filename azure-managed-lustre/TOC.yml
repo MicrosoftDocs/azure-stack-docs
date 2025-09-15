@@ -20,8 +20,10 @@
       href: blob-integration.md
     - name: Import data using import jobs
       href: create-import-job.md
-    - name: Export data using export jobs
+    - name: Export data using manual export jobs
       href: export-with-archive-jobs.md
+    - name: Export data using auto-export jobs
+      href: auto-export.md
 - name: Access a file system
   items:
     - name: Install Lustre client
@@ -46,6 +48,10 @@
       href: configure-network-security-group.md
     - name: Use customer-managed encryption keys
       href: customer-managed-encryption-keys.md
+    - name: Enable VNet encryption
+      href: vnet-encryption.md
+    - name: Use Azure Firewall with Azure Managed Lustre
+      href: configure-firewall.md
 - name: Monitoring metrics and logs
   items:
     - name: Monitor a file system

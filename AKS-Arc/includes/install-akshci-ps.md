@@ -3,18 +3,18 @@ author: sethmanheim
 ms.author: sethm
 ms.service: azure-stack
 ms.topic: include
-ms.date: 12/21/2023
+ms.date: 04/07/2025
 ms.reviewer: abha
 ms.lastreviewed: 05/02/2022
 
 ---
 
-Follow these steps on all nodes in your Azure Local cluster or Windows Server cluster:
+Follow these steps on all nodes in your Windows Server cluster:
 
 > [!NOTE]
 > If you are using remote PowerShell, you must use CredSSP.
 
-1. Close all open PowerShell windows, open a new PowerShell session as administrator, and run the following command on all nodes in your Azure Local or Windows Server cluster:
+1. Close all open PowerShell windows, open a new PowerShell session as administrator, and run the following command on all nodes in your Windows Server cluster:
 
    ```powershell  
    Install-PackageProvider -Name NuGet -Force 
@@ -23,7 +23,7 @@ Follow these steps on all nodes in your Azure Local cluster or Windows Server cl
 
    You must close all existing PowerShell windows again to ensure that loaded modules are refreshed. Don't continue to the next step until you close all open PowerShell windows.
 
-1. Install the AKS-HCI PowerShell module by running the following command on all nodes in your Azure Local or Windows Server cluster:
+1. Install the **AksHci** PowerShell module by running the following command on all nodes in your Windows Server cluster:
 
    ```powershell
    Install-Module -Name AksHci -Repository PSGallery -Force -AcceptLicense
@@ -39,4 +39,4 @@ You can use a [helper script to delete old AKS-HCI PowerShell modules](https://g
 Get-Command -Module AksHci
 ```
 
-To view the complete list of AksHci PowerShell commands, see [AksHci PowerShell](../reference/ps/index.md).
+For the complete list of **AksHci** PowerShell commands, see [AksHci PowerShell](../reference/ps/index.md).

@@ -1,9 +1,9 @@
 ---
 title: Deploy Windows .NET applications
-description: Learn how to deploy a Windows.NET application to your Kubernetes cluster using a custom image stored in Azure Container Registry in AKS enabled by Azure Arc.
+description: Learn how to deploy a Windows.NET application to your Kubernetes cluster using a custom image stored in Azure Container Registry in AKS on Windows Server.
 author: sethmanheim
 ms.topic: tutorial
-ms.date: 06/26/2024
+ms.date: 07/03/2025
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: abha
@@ -17,9 +17,9 @@ ms.reviewer: abha
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-This tutorial describes how to deploy an ASP.NET sample application in a Windows Server container to the Azure Kubernetes Service (AKS) cluster in AKS enabled by Arc, then test and scale your application. You also learn how to join a Windows node to an Active Directory domain.
+This tutorial describes how to deploy an ASP.NET sample application in a Windows Server container to the Azure Kubernetes Service (AKS) cluster in AKS on Windows Server, then test and scale your application. You also learn how to join a Windows node to an Active Directory domain.
 
-This tutorial assumes a basic understanding of Kubernetes concepts. For more information, see [Kubernetes core concepts for AKS enabled by Azure Arc](kubernetes-concepts.md).
+This tutorial assumes a basic understanding of Kubernetes concepts. For more information, see [Kubernetes core concepts for AKS on Windows Server](kubernetes-concepts.md).
 
 ## Before you begin
 

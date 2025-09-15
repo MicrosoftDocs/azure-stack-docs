@@ -3,7 +3,7 @@ title: Validate solution upgrade readiness for Azure Local, version 23H2
 description: Learn how to assess upgrade readiness for Azure Local, version 23H2 that already had its operating system upgraded from version 22H2.
 author: alkohli
 ms.topic: how-to
-ms.date: 12/26/2024
+ms.date: 09/02/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -13,18 +13,18 @@ ms.service: azure-local
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2-22h2.md)]
 
-This article describes how to assess the upgrade readiness of your Azure Local after the operating system (OS) was upgraded from version 22H2 to version 23H2.
+This article describes how to assess the upgrade readiness of your Azure Local after the operating system (OS) was upgraded.
 
-Throughout this article, we refer to OS version 23H2 as the new version and version 22H2 as the old version.
+Throughout this article, we refer to OS version 24H2 or 23H2 as the *new* version, and version 22H2 as the *old* version.
 
 ## Assess solution upgrade readiness
 
-This *optional* but *recommended* step helps you assess the readiness of Azure Local for the upgrade. The following steps help you assess the upgrade readiness:
+This *recommended* step helps you assess the readiness of Azure Local for the upgrade. The following steps help you assess the upgrade readiness:
 
-- Install and use the Environment Checker to verify that Network ATC is installed and enabled on the machine. Verify that there are no Preview versions for Arc Resource Bridge running on your system.
+- Install and use the Environment Checker to verify that Network ATC is installed and enabled on the machine. Verify that there are no Preview versions for Azure Arc Resource Bridge running on your system.
 - Ensure that sufficient storage space is available for the infrastructure volume.
-- Perform other checks such as installation of required and optional Windows features, enablement of Application Control policies, BitLocker suspension, and OS language.
-- Review and remediate the validation checks that block the upgrade.
+- Perform other checks like installation of required Windows features, enablement of Application Control policies, BitLocker suspension, and OS language.
+- Review and remediate validation checks that block the upgrade.
 
 ## Use Environment Checker to validate upgrade readiness
 
@@ -57,7 +57,7 @@ The following table contains the validation tests with severity *Critical* that 
 
 ### Table: Non-blocking validation tests for upgrade
 
-The following table contains the validation tests with severity *Warning* that should be addressed after the upgrade to take advantage of the new capabilities introduced with Azure Local, version 23H2.
+The following table contains the validation tests with severity *Warning* that should be addressed after the upgrade to take advantage of the new capabilities introduced with Azure Local 2311.2.
 
 | Name                                           | Severity |
 |------------------------------------------------|----------|
@@ -95,7 +95,7 @@ Follow these steps to set up the Environment Checker on a machine of your Azure 
    Invoke-AzStackHciUpgradeValidation
    ```
 
-1. To validate other machines in the system, run the following PowerShell command:
+1. To remotely validate other machines in the system, run the following PowerShell command for each remote machine:
 
    ```powershell
    $PsSession=New-Pssession -ComputerName "MyRemoteMachine"
@@ -105,7 +105,7 @@ Follow these steps to set up the Environment Checker on a machine of your Azure 
    <details>
    <summary>Expand this section to see an example output.</summary>
 
-   :::image type="content" source="./media/upgrade-22h2-to-23h2/sample-output-from-23h2-upgrade-enviro-validator.png" alt-text="Diagram that illustrates sample output from the 23H2 upgrade environment validator." lightbox="./media/upgrade-22h2-to-23h2/sample-output-from-23h2-upgrade-enviro-validator.png":::
+   :::image type="content" source="./media/upgrade-22h2-to-23h2/sample-output-from-23h2-upgrade-enviro-validator.png" alt-text="Diagram that illustrates sample output from the upgrade environment validator." lightbox="./media/upgrade-22h2-to-23h2/sample-output-from-23h2-upgrade-enviro-validator.png":::
 
    </details>
 
@@ -139,31 +139,35 @@ Follow these steps to set up the Environment Checker on a machine of your Azure 
 
 Each validation check of Environment Checker includes remediation guidance with links that help you resolve the potential issues. For more information, see [Remediation guidance](../manage/use-environment-checker.md#).
 
-## Remediation 1: Install required and optional Windows features
+## Remediation 1: Install Windows features
 
-Azure Local, version 23H2 requires a set of Windows roles and features to be installed. Some features would require a restart after the installation. Hence, it's important that you put the machine into maintenance mode before you install the roles and features. Verify that all the active virtual machines (VMs) have migrated to other machines.
+Azure Local requires you to install specific Windows roles and features, and enable a set of required features (that are optional for Windows Server). Some features would require a restart after the installation. Hence, it's important that you put the machine into maintenance mode before you install the roles and features. Verify that all the active virtual machines (VMs) have migrated to other machines.
 
-Use the following commands for each machine to install the required features. If a feature is already present, the install automatically skips it.
+Use the following commands for each machine to install the required Windows roles and features. If a feature is already present, the install automatically skips it.
 
 ```powershell
-#Install Windows Roles & Features 
-$windowsFeature =  @( 
+#Install required Windows roles and features
+$windowsRoleFeature =  @( 
 
                 "Failover-Clustering",
+                "FS-VSS-Agent", 
+                "FS-Resource-Manager", 
+                "GPMC", 
                 "NetworkATC", 
+                "NetworkController",
                 "RSAT-AD-Powershell", 
                 "RSAT-Hyper-V-Tools", 
                 "Data-Center-Bridging", 
                 "NetworkVirtualization", 
                 "RSAT-AD-AdminCenter"
-                ) 
-foreach ($feature in $windowsFeature) 
+                )
+foreach ($feature in $windowsRoleFeature) 
 { 
 Install-WindowsFeature -Name $feature -IncludeAllSubFeature -IncludeManagementTools 
 } 
 
-#Install requires optional Windows features 
-$windowsOptionalFeature = @( 
+#Enable a set of Windows features that are required for Azure Local, but optional for Windows Server
+$windowsFeature = @( 
 
                 "Server-Core", 
                 "ServerManager-Core-RSAT", 
@@ -185,7 +189,6 @@ $windowsOptionalFeature = @(
                 "EnhancedStorage", 
                 "WCF-Services45", 
                 "WCF-TCP-PortSharing45", 
-                "NetworkController", 
                 "NetFx4ServerFeatures", 
                 "NetFx4", 
                 "MicrosoftWindowsPowerShellRoot", 
@@ -194,7 +197,6 @@ $windowsOptionalFeature = @(
                 "KeyDistributionService-PSH-Cmdlets", 
                 "TlsSessionTicketKey-PSH-Cmdlets", 
                 "Tpm-PSH-Cmdlets", 
-                "FSRM-Infrastructure", 
                 "ServerCore-WOW64", 
                 "SmbDirect", 
                 "FailoverCluster-AdminPak", 
@@ -202,11 +204,9 @@ $windowsOptionalFeature = @(
                 "SMBBW", 
                 "FailoverCluster-FullServer", 
                 "FailoverCluster-PowerShell", 
-                "Microsoft-Windows-GroupPolicy-ServerAdminTools-Update", 
                 "DataCenterBridging", 
                 "BitLocker", 
                 "Dedup-Core", 
-                "FileServerVSSAgent", 
                 "FileAndStorage-Services", 
                 "Storage-Services", 
                 "File-Services", 
@@ -220,8 +220,8 @@ $windowsOptionalFeature = @(
                 "ServerCore-Drivers-General", 
                 "ServerCore-Drivers-General-WOW64", 
                 "NetworkATC" 
-            ) 
-foreach ($featureName in $windowsOptionalFeature) 
+            )
+foreach ($featureName in $windowsFeature) 
 { 
 Enable-WindowsOptionalFeature -FeatureName $featurename -All -Online 
 } 
@@ -259,7 +259,7 @@ Resume-Bitlocker -MountPoint "C:"
 
 ## Remediation 4: Enable Application Control (WDAC) policies
 
-If your system is running WDAC policies, it could result in a conflict with the Arc enablement of the solution. Before you Arc enable your system, disable the policies. After the system is Arc enabled, you can enable WDAC using the new version 23H2 WDAC policies.
+If your system is running WDAC policies, it could result in a conflict with the Arc enablement of the solution. Before you Arc enable your system, disable the policies. After the system is Arc enabled, you can enable WDAC using the *new* version WDAC policies.
 
 To learn more about how to disable WDAC policies, see [Remove Windows Defender Application Control policies](/windows/security/application-security/application-control/windows-defender-application-control/deployment/disable-wdac-policies).
 
@@ -280,7 +280,7 @@ If you used the English ISO but configured a different language during setup, yo
 
 ## Remediation 6: Check storage pool space
 
-Azure Local, version 23H2 creates a dedicated volume. This volume is used solely for the new infrastructure capabilities - for example, to run the Arc Resource Bridge.
+Azure Local 2311.2 creates a dedicated volume. This volume is used solely for the new infrastructure capabilities - for example, to run the Azure Arc Resource Bridge.
 
 The required size for the infrastructure volume is 250 GB. Ensure that the storage pool has enough space to accommodate the new volume.
 
@@ -379,7 +379,7 @@ Follow these steps to confirm the storage pool configuration:
 
 ## Remediation 7: Check the storage volume name
 
-Azure Local, version 23H2 deployment creates a dedicated volume *Infrastructure_1* in the existing storage pool. This volume is dedicated for the new infrastructure capabilities.
+Azure Local 2311.2 deployment creates a dedicated volume *Infrastructure_1* in the existing storage pool. This volume is dedicated for the new infrastructure capabilities.
 
 Make sure to verify that there are no volumes that exist with the name *Infrastructure_1*. If there's an existing volume with the same name, this test fails.<!--ASK which test fails-->
 
@@ -418,13 +418,19 @@ Make sure that the cluster functional level and storage pool version are up to d
 
 ## Remediation 10: Check the MOC install state
 
-If you were running AKS workloads on your Azure Local, you must remove Azure Kubernetes Service and all the settings from AKS enabled by Azure Arc before you apply the solution upgrade. Kubernetes versions are incompatible between Azure Local, version 22H2, and version 23H2. Additionally, Preview versions of Arc VMs can't be updated.
+Follow these steps to apply solution upgrade if you're running Azure Kubernetes Service (AKS) workloads on your Azure Local:
+
+1. Wait for the solution upgrade banner to appear on your Azure Local resource page.
+1. Remove AKS and all the settings from AKS hybrid before you apply the solution upgrade. Kubernetes versions are incompatible between the *old* and *new* versions of Azure Local. Additionally, preview versions of Azure Local VMs enabled by Azure Arc can't be updated.
 
 For more information, see [Uninstall-Aks-Hci for AKS enabled by Azure Arc](/azure/aks/hybrid/reference/ps/uninstall-akshci).
 
 ## Remediation 11: Check the AKS install state
 
-If you were running AKS workloads on your Azure Local, you must remove Azure Kubernetes Service and all the settings from AKS hybrid before you apply the solution upgrade. Kubernetes versions are incompatible between Azure Local, version 22H2 and version 23H2.
+Follow these steps to apply solution upgrade if you're running AKS workloads on your Azure Local:
+
+1. Wait for the solution upgrade banner to appear on your Azure Local resource page.
+1. Remove AKS and all the settings from AKS hybrid before you apply the solution upgrade. Kubernetes versions are incompatible between the *old* and *new* versions of Azure Local.
 
 For more information, see [Uninstall-Aks-Hci for AKS enabled by Azure Arc](/azure/aks/hybrid/reference/ps/uninstall-akshci).
 

@@ -1,19 +1,22 @@
 ---
-title: Create logical networks for Azure Local 
-description: Learn how to create logical networks on Azure Local. The Arc virtual machine (VM) running on your system used this logical network.
+title: Create logical networks for Azure Local virtual machines enabled by Azure Arc
+description: Learn how to create logical networks on Azure Local. The Azure Local VMs enabled by Azure Arc running on your system use this logical network.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 01/06/2025
+ms.date: 04/09/2025
+ms.custom: sfi-image-nochange
 ---
 
-# Create logical networks for Azure Local
+# Create logical networks for Azure Local VMs enabled by Azure Arc
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
-This article describes how to create or add logical networks for your Azure Local instance.
+This article describes how to create or add logical networks for your Azure Local instance. Any Azure Local virtual machines (VMs) that you create use these logical networks.
 
+> [!NOTE]
+> Azure Local VMs only support IPv4 addresses. IPv6 addresses aren't supported.
 
 ## Prerequisites
 
@@ -73,6 +76,16 @@ The prerequisites for the Azure portal are the same as those for the Azure CLI. 
 
 You can create a logical network using either the Azure Command-Line Interface (CLI) or by using the Azure portal.
 
+> [!NOTE]
+> Once a logical network is created, you can't update the following:
+>
+> - DNS server
+> - Default gateway
+> - IP pools
+> - IP address space
+> - VLAN ID
+> - Virtual switch name
+
 # [Azure CLI](#tab/azurecli)
 
 Complete the following steps to create a logical network using Azure CLI.
@@ -92,9 +105,9 @@ You can use the `az stack-hci-vm network lnet create` cmdlet to create a logical
 
 #### Create a static logical network via CLI
 
-In this release, you can create virtual machines using a static IP only via the Azure CLI.
+In this release, you can create Azure Local VMs enabled by Azure Arc using a static IP only via the Azure CLI.
 
-Create a static logical network when you want to create virtual machines with network interfaces on these logical networks. Follow these steps in Azure CLI to configure a static logical network:
+Create a static logical network when you want to create Azure Local VMs with network interfaces on these logical networks. Follow these steps in Azure CLI to configure a static logical network:
 
 1. Set the parameters. Here's an example:
 
@@ -124,7 +137,7 @@ Create a static logical network when you want to create virtual machines with ne
     | **subscription** |Name or ID of the subscription where your Azure Local is deployed. This could be another subscription you use for logical network on your Azure Local. |
     | **custom-location** | Use this to provide the custom location associated with your Azure Local where you're creating this logical network. |
     | **location** | Azure regions as specified by `az locations`. |
-    | **vlan** |VLAN identifier for Arc VMs. Contact your network admin to get this value. A value of 0 implies that there's no VLAN ID. |
+    | **vlan** |VLAN identifier for Azure Local VMs. Contact your network admin to get this value. A value of 0 implies that there's no VLAN ID. |
     | **ip-allocation-method** | IP address allocation method and could be `Dynamic` or `Static`. If this parameter isn't specified, by default the logical network is created with a dynamic configuration. |
     | **address-prefixes** | Subnet address in CIDR notation. For example: "192.168.0.0/16". |
     | **dns-servers** | List of IPv4 addresses of DNS servers. Specify multiple DNS servers in a space separated format. For example: "10.0.0.5" "10.0.0.10" |
@@ -238,7 +251,7 @@ Follow these steps to configure a DHCP logical network:
     | **subscription** | Name or ID of the subscription where Azure Local is deployed. This could be another subscription you use for logical network on your Azure Local. |
     | **custom-location** | Use this to provide the custom location associated with your Azure Local where you're creating this logical network. |
     | **location** | Azure regions as specified by `az locations`. |
-    | **vlan** | VLAN identifier for Arc VMs. Contact your network admin to get this value. A value of 0 implies that there's no VLAN ID. |
+    | **vlan** | VLAN identifier for Azure Local VMs. Contact your network admin to get this value. A value of 0 implies that there's no VLAN ID. |
 
 
 1. Run the following cmdlet to create a DHCP logical network:
@@ -389,4 +402,4 @@ You can use the Azure Verified Module (AVM) that contains the Terraform template
 
 ## Next steps
 
-- [Create Arc virtual machines on Azure Local](create-arc-virtual-machines.md)
+- [Create Azure Local VMs enabled by Azure Arc](create-arc-virtual-machines.md)

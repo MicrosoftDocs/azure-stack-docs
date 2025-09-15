@@ -1,22 +1,23 @@
 ---
-title: Container security in AKS enabled by Azure Arc
-description: Learn ways to implement security on containers used to package and deploy applications in AKS enabled by Arc.
+title: Container security in AKS on Windows Server
+description: Learn ways to implement security on containers used to package and deploy applications in AKS on Windows Server.
 author: sethmanheim
 ms.topic: how-to
 ms.date: 01/10/2024
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: EkeleAsonye
+
 # Intent: As an IT Pro, I want to learn how to secure containers in AKS Arc.
 # Keyword: container security
 
 ---
 
-# Container security in AKS enabled by Azure Arc
+# Container security in AKS on Windows Server
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-This article describes various methods to secure the containers used to package and deploy applications and avoid introducing security vulnerabilities in AKS enabled by Azure Arc.
+This article describes various methods to secure the containers used to package and deploy applications and avoid introducing security vulnerabilities in AKS on Windows Server.
 
 Containers provide operational and security benefits because applications and services are separated within an environment. Containers also help to reduce the effects of system-wide failures because of their abstraction, which ensures uptime and prevents attacks that could compromise applications or services. Containers typically run on an abstracted layer on top of the host operating system, and the abstraction offers some barrier of separation and the opportunity to apply a layered defense model.
 

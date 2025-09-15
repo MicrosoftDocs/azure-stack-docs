@@ -1,8 +1,8 @@
 ---
-title: System requirements for AKS enabled by Azure Arc on Azure Local 22H2
-description: Learn about system requirements for Azure Kubernetes Service (AKS) enabled by Azure Arc on Azure Local 22H2.
-ms.date: 02/13/2024
-ms.topic: conceptual
+title: System requirements for AKS on Windows Server
+description: Learn about system requirements for Azure Kubernetes Service (AKS) on Windows Server.
+ms.date: 04/04/2025
+ms.topic: concept-article
 author: sethmanheim
 ms.author: sethm 
 
@@ -11,26 +11,26 @@ ms.author: sethm
 
 ---
 
-# System requirements for AKS enabled by Azure Arc on Azure Local 22H2
+# System requirements for AKS on Windows Server
 
-> Applies to: Azure Local, versions 22H2; Windows Server 2022, Windows Server 2019
+> Applies to: Windows Server 2022, Windows Server 2019
 
-This article describes the requirements for setting up Azure Kubernetes Service (AKS) enabled by Azure Arc. For an overview of AKS enabled by Arc, see the [AKS overview](overview.md).
+This article describes the requirements for setting up Azure Kubernetes Service (AKS) on Windows Server. For an overview of AKS on Windows Server, see the [AKS overview](overview.md).
 
 ## Hardware requirements
 
-Microsoft recommends purchasing a validated Azure Local hardware/software solution from our partners. These solutions are designed, assembled, and validated to run our reference architecture and to check compatibility and reliability so you get up and running quickly. You should check that the systems, components, devices, and drivers you're using are Windows Server Certified per the Windows Server Catalog. See the [Azure Local solutions](https://azure.microsoft.com/products/local/) website for validated solutions.
+Microsoft recommends purchasing a validated Windows Server hardware/software solution from our partners. These solutions are designed, assembled, and validated to run our reference architecture and to check compatibility and reliability so you get up and running quickly. You should check that the systems, components, devices, and drivers you're using are Windows Server Certified per the Windows Server Catalog.
 
 > [!IMPORTANT]
-> The host systems for production deployments must be physical hardware. Nested virtualization, characterized as deploying Azure Local or Windows Server in a virtual machine and installing AKS in that virtual machine, isn't supported.
+> The host systems for production deployments must be physical hardware. Nested virtualization, characterized as deploying Windows Server in a virtual machine and installing AKS in that virtual machine, isn't supported.
 
 ### Maximum supported hardware specifications
 
-AKS on Azure Local and Windows Server deployments that exceed the following specifications aren't supported:
+AKS on Windows Server deployments that exceed the following specifications aren't supported:
 
 | Resource                     | Maximum |
 | ---------------------------- | --------|
-| Physical servers per cluster | 8 (Azure Local version 22H2 and Windows Server)       |
+| Physical servers per cluster | 8 (Windows Server)       |
 | Total number of VMs          | 200     |
 
 ## Compute requirements
@@ -41,8 +41,8 @@ You can set up your AKS cluster in the following way, to run AKS on a single nod
 
 | Cluster type  | Control plane VM size | Worker node | For update operations | Load balancer  |
 | ------------- | ------------------ | ---------- | ----------| -------------|
-| AKS host | Standard_A4_v2 VM size = 8GB |  N/A - AKS host doesn't have worker nodes.  |  8GB |  N/A - AKS host uses kubevip for load balancing.  |
-| Workload cluster  |  Standard_A4_v2 VM size = 8GB | Standard_K8S3_v1 for 1 worker node = 6GB | Can re-use this reserved 8GB for workload cluster upgrade. | N/A if kubevip is used for load balancing (instead of the default HAProxy load balancer). |
+| AKS host | Standard_A4_v2 VM size = 8GB |  N/A - AKS host doesn't have worker nodes.  |  8GB |  N/A - AKS host uses **kubevip** for load balancing.  |
+| Workload cluster  |  Standard_A4_v2 VM size = 8GB | Standard_K8S3_v1 for 1 worker node = 6GB | Can re-use this reserved 8GB for workload cluster upgrade. | N/A if **kubevip** is used for load balancing (instead of the default **HAProxy** load balancer). |
 
 Total minimum requirement: **30 GB RAM**.
 
@@ -52,34 +52,28 @@ This minimum requirement is for an AKS deployment with one worker node for runni
 
 | Environment | CPU cores per server | RAM |
 | --- | --- | --- |
-| Azure Local | 32 | 256 GB |
 | Windows Server failover cluster | 32 | 256 GB |
-| Single node Windows Server | 16 | 128 GB
+| Single node Windows Server | 16 | 128 GB |
 
-For a production environment, final sizing depends on the application and number of worker nodes you're planning to deploy on the Azure Local or Windows Server cluster. If you choose to run AKS on a single-node Windows Server, you don't get features like high availability that come with running AKS on an Azure Local or Windows Server cluster or Windows Server failover cluster.
+For a production environment, final sizing depends on the application and number of worker nodes you're planning to deploy on the Windows Server cluster. If you choose to run AKS on a single-node Windows Server, you don't get features like high availability that come with running AKS on a Windows Server failover cluster.
 
-Other compute requirements for AKS on Azure Local and Windows Server are in line with Azure Local requirements. See [Azure Local system requirements](/azure/azure-local/concepts/system-requirements#server-requirements) for more information about Azure Local server requirements.
-
-You must install the same operating system on each server in the cluster. If you're using Azure Local, the same OS and version must be on same on each server in the cluster. If you're using Windows Server Datacenter, the same OS and version must be the same on each server in the cluster. Each OS must use the **en-us** region and language selections. You can't change these settings after installation.
+You must install the same operating system on each server in the cluster. In Windows Server Datacenter, the same OS and version must be the same on each server in the cluster. Each OS must use the **en-us** region and language selections. You can't change these settings after installation.
 
 ## Storage requirements
 
-AKS on Azure Local and Windows Server supports the following storage implementations:
+AKS on Windows Server supports the following storage implementations:
 
 |  Name                         | Storage type | Required capacity |
 | ---------------------------- | ------------ | ----------------- |
-| Azure Local cluster          | Cluster shared volumes          | 1 TB              |
 | Windows Server Datacenter failover cluster          | Cluster shared volumes          | 1 TB              |
 | Single-node Windows Server Datacenter | Direct attached storage | 500 GB|
 
-For an Azure Local or Windows Server cluster, there are two supported storage configurations for running virtual machine workloads:
+For a Windows Server cluster, there are two supported storage configurations for running virtual machine workloads:
 
 - **Hybrid storage** balances performance and capacity using flash storage and hard disk drives (HDDs).
 - **All-flash storage** maximizes performance using solid-state drives (SSDs) or NVMe.
 
-Systems that only have HDD-based storage aren't supported by Azure Local, and thus aren't recommended for running AKS on Azure Local and Windows Server. For more information about the recommended drive configurations, see the [Azure Local documentation](/azure/azure-local/concepts/choose-drives). All systems that are validated in the [Azure Local catalog](https://azurelocalsolutions.azure.microsoft.com/#/catalog/#/) fall into one of these two supported storage configurations.
-
-Kubernetes uses *etcd* to store the state of the clusters. Etcd stores the configuration, specifications, and status of running pods. In addition, Kubernetes uses the store for service discovery. As a coordinating component to the operation of Kubernetes and the workloads it supports, latency and throughput to etcd are critical. You must run AKS on an SSD. For more information, see [Performance](https://etcd.io/docs/v3.2/op-guide/performance/) at etcd.io.
+Kubernetes uses *etcd* to store the state of the clusters. Etcd stores the configuration, specifications, and status of running pods. In addition, Kubernetes uses the store for service discovery. As a coordinating component to the operation of Kubernetes and the workloads it supports, latency and throughput to etcd are critical. You must run AKS on an SSD. For more information, see [Performance](https://etcd.io/docs/v3.2/op-guide/performance/).
 
 For a Windows Server Datacenter-based cluster, you can either deploy with local storage or SAN-based storage. For local storage, it's recommended that you use the built-in [Storage Spaces Direct](/windows-server/storage/storage-spaces/storage-spaces-direct-overview), or an equivalent certified virtual SAN solution to create a hyperconverged infrastructure that presents Cluster Shared Volumes for use by workloads. For Storage Spaces Direct, it's required that your storage either be hybrid (flash + HDD) that balances performance and capacity, or all-flash (SSD, NVMe) that maximizes performance. If you choose to deploy with SAN-based storage, ensure that your SAN storage can deliver enough performance to run several virtual machine workloads. Older HDD-based SAN storage might not deliver the required levels of performance to run multiple virtual machine workloads, and you might see performance issues and timeouts.
 
@@ -87,19 +81,19 @@ For single-node Windows Server deployments using local storage, the use of all-f
 
 ## Network requirements
 
-The following requirements apply to an Azure Local 22H2 cluster and a Windows Server Datacenter cluster. For networking requirements on Azure Local 23H2, see [Networking requirements](aks-hci-network-system-requirements.md).
+The following requirements apply to a Windows Server Datacenter cluster.
 
-- For Azure Local 22H2 and Windows Server, verify that you have an existing, external virtual switch configured if you're using Windows Admin Center. For Azure Local or Windows Server clusters, this switch and its name must be the same across all cluster nodes. For Azure Local 23H2, see the [network system requirements](aks-hci-network-system-requirements.md).
-- Verify that you have disabled IPv6 on all network adapters.
-- For a successful deployment, the Azure Local or Windows Server cluster nodes and the Kubernetes cluster VMs must have external internet connectivity.
+- Verify that you have an existing, external virtual switch configured if you're using Windows Admin Center. For Windows Server clusters, this switch and its name must be the same across all cluster nodes.
+- Verify that you disabled IPv6 on all network adapters.
+- For a successful deployment, the Windows Server cluster nodes and the Kubernetes cluster VMs must have external internet connectivity.
 - Make sure all subnets you define for the cluster are routable between each other and to the internet.
-- Make sure that there's network connectivity between Azure Local hosts and the tenant VMs.
+- Make sure that there's network connectivity between Windows Server hosts and tenant VMs.
 - DNS name resolution is required for all nodes to be able to communicate with each other.
 - (Recommended) Enable dynamic DNS updates in your DNS environment to allow AKS to register the cloud agent generic cluster name in the DNS system for discovery.
 
 ### IP address assignment  
 
-In AKS enabled by Arc, virtual networks are used to allocate IP addresses to the Kubernetes resources that require them, as previously listed. There are two networking models to choose from, depending on your desired AKS networking architecture.
+In AKS on Windows Server, virtual networks are used to allocate IP addresses to the Kubernetes resources that require them, as previously listed. There are two networking models to choose from, depending on your desired AKS networking architecture.
 
 > [!NOTE]
 > The virtual networking architecture defined here for your AKS deployments is different from the underlying physical networking architecture in your data center.
@@ -113,10 +107,10 @@ At a minimum, you should reserve the following number of IP addresses for your d
 
 | Cluster type  | Control plane node | Worker node | For update operations | Load balancer  |
 | ------------- | ------------------ | ---------- | ----------| -------------|
-| AKS Host |  1 IP |  NA  |  2 IP |  NA  |
+| AKS host |  1 IP |  NA  |  2 IP |  NA  |
 | Workload cluster  |  1 IP per node  | 1 IP per node |  5 IP  |  1 IP |
 
-Additionally, you should reserve the following number of IP addresses for your VIP pool:
+You should also reserve the following number of IP addresses for your VIP pool:
 
 | Resource type  | Number of IP addresses |
 | ------------- | ------------------ |
@@ -129,11 +123,11 @@ For more information about networking requirements, see [node networking concept
 
 ### Network port and URL requirements
 
-#### AKS enabled by Arc requirements
+#### AKS on Windows Server requirements
 
-When creating a Kubernetes cluster on Azure Local, the following firewall ports are automatically opened on each server in the cluster.
+When creating a Kubernetes cluster, the following firewall ports are automatically opened on each server in the cluster.
 
-If the Azure Local physical cluster nodes and the Azure Kubernetes cluster VMs are on two isolated vlans, these ports must be opened at the firewall between them:
+If the physical cluster nodes and the Azure Kubernetes cluster VMs are on two isolated vlans, these ports must be opened at the firewall between them:
 
 | Port   | Source                               | Description                                        | Firewall Notes                                                                               |
 |-------|--------------------------------------|----------------------------------------------------|----------------------------------------------------------------------------------------------|
@@ -164,27 +158,25 @@ Download the [URL allowlist (json)](https://raw.githubusercontent.com/MicrosoftD
 ---
 
 > [!NOTE]
-> AKS enabled by Arc stores and processes customer data. By default, customer data stays within the region in which the customer deploys the service instance. This data is stored within regional Microsoft-operated datacenters. For regions with data residency requirements, customer data is always kept within the same region.
+> AKS on Windows Server stores and processes customer data. By default, customer data stays within the region in which the customer deploys the service instance. This data is stored within regional Microsoft-operated datacenters. For regions with data residency requirements, customer data is always kept within the same region.
 
 #### Additional URL requirements for Azure Arc features
 
 The previous URL list covers the minimum required URLs for you to connect your AKS service to Azure for billing. You must allow additional URLs if you want to use cluster connect, custom locations, Azure RBAC, and other Azure services like Azure Monitor, etc., on your AKS workload cluster. For a complete list of Arc URLs, see [Azure Arc-enabled Kubernetes network requirements](/azure/azure-arc/kubernetes/network-requirements).
 
-You should also review [Azure Local URLs](/azure/azure-local/concepts/firewall-requirements). Since Arc for server agents is now installed by default on Azure Local nodes from Azure Local 21H2 and above, you should also review the [Arc for server agents URLs](/azure/azure-arc/servers/network-requirements).
-
 #### Stretched clusters in AKS
 
-As outlined in the [Stretched clusters overview](/azure/azure-local/concepts/stretched-clusters), deploying AKS on Azure Local and Windows Server using Windows stretched clusters isn't supported. We recommend that you use a backup and disaster recovery approach for your datacenter operational continuity. For more information, see [Perform workload cluster backup or restore using Velero and Azure Blob storage on Azure Local and Windows Server](backup-workload-cluster.md), and [Deploy configurations on AksHci using GitOps with Flux v2](https://techcommunity.microsoft.com/t5/azure-stack-blog/deploy-configurations-on-akshci-using-gitops-with-flux-v2/ba-p/3610596) for application continuity.
+As outlined in the [Stretched clusters overview](/azure/azure-local/concepts/stretched-clusters), deploying AKS on Windows Server using Windows stretched clusters isn't supported. We recommend that you use a backup and disaster recovery approach for your datacenter operational continuity. For more information, see [Perform workload cluster backup or restore using Velero and Azure Blob storage on Windows Server](backup-workload-cluster.md), and [Deploy configurations on AksHci using GitOps with Flux v2](https://techcommunity.microsoft.com/t5/azure-stack-blog/deploy-configurations-on-akshci-using-gitops-with-flux-v2/ba-p/3610596) for application continuity.
 
 ## Windows Admin Center requirements
 
-Windows Admin Center is the user interface for creating and managing AKS enabled by Azure Arc. To use Windows Admin Center with AKS on Azure Local and Windows Server, you must meet all the criteria in the following list.
+Windows Admin Center is the user interface for creating and managing AKS on Windows Server. To use Windows Admin Center with AKS on Windows Server, you must meet all the criteria in the following list.
 
 These are the requirements for the machine running the Windows Admin Center gateway:
 
 - Windows 10 or Windows Server.
 - [Registered with Azure](/windows-server/manage/windows-admin-center/azure/azure-integration).
-- In the same domain as the Azure Local or Windows Server Datacenter cluster.
+- In the same domain as the Windows Server Datacenter cluster.
 - An Azure subscription on which you have Owner rights. You can check your access level by navigating to your subscription and selecting **Access control (IAM)** on the left-hand side of the Azure portal and then selecting **View my access**.
 
 ## Azure requirements
@@ -276,7 +268,7 @@ Create a service principal by running the [New-AzADServicePrincipal](/powershell
 $sp = New-AzADServicePrincipal -role "Owner" -scope /subscriptions/$subscriptionID
 ```
 
-Retrieve the password for the service principal by running the following command. Note that this command only works for Az.Accounts 2.6.0 or below. We automatically download Az.Accounts 2.6.0 module when you install the AksHci PowerShell module:
+Retrieve the password for the service principal by running the following command. Note that this command only works for Az.Accounts 2.6.0 or below. We automatically download Az.Accounts 2.6.0 module when you install the **AksHci** PowerShell module:
 
 ```powershell
 $secret = $sp.PasswordCredentials[0].SecretText
@@ -306,16 +298,16 @@ The AKS Arc service is used for registration, billing, and management. It is cur
 For an AKS failover cluster with 2 or more physical nodes to function optimally in an Active Directory environment, ensure the following requirements are met:
 
 > [!NOTE]
-> Active Directory is not required for single node Azure Local or Windows Server deployments.
+> Active Directory is not required for single node Windows Server deployments.
 
 - Set up time synchronization so that the divergence isn't greater than 2 minutes across all cluster nodes and the domain controller. For information about setting time synchronization, see [Windows time service](/windows-server/networking/windows-time-service/windows-time-service-top).
 - Make sure the user account(s) used to add update, and manage AKS or Windows Server Datacenter clusters has the correct permissions in Active Directory. If you're using Organizational Units (OUs) to manage group policies for servers and services, the user account(s) require list, read, modify, and delete permissions on all objects in the OU.
 - Use a separate organizational unit (OU) for the servers and services by your AKS or Windows Server Datacenter clusters. Using a separate OU allows you to control access and permissions with more granularity.
-- If you're using GPO templates on containers in Active Directory, ensure deploying AKS on Azure Local and Windows Server is exempt from the policy.
+- If you're using GPO templates on containers in Active Directory, ensure deploying AKS on Windows Server is exempt from the policy.
 
 ## Next steps
 
-After you satisfy all of the prerequisites above, you can set up an AKS host on Azure Local using:
+After you satisfy all of these prerequisites, you can set up an AKS host using:
 
 - [Windows Admin Center](setup.md)
 - [PowerShell](kubernetes-walkthrough-powershell.md)

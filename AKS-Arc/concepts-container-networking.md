@@ -1,12 +1,11 @@
 ---
 title: Container networking concepts
-description: Learn about container networking in AKS enabled by Azure Arc.
-ms.topic: conceptual
-ms.date: 10/21/2024
+description: Learn about container networking in AKS on Windows Server.
+author: sethmanheim
+ms.topic: concept-article
+ms.date: 04/07/2025
 ms.author: sethm 
 ms.lastreviewed: 05/31/2022
-ms.reviewer: mikek
-author: sethmanheim
 
 # Intent: As an IT Pro, I want to learn about the advantages of using conainer networking in AKS Arc.
 # Keyword: Container applications networking
@@ -21,7 +20,7 @@ Application components must work together to process their tasks in a container-
 
 More complex applications might require configuration of ingress traffic for SSL/TLS termination or routing of multiple components. You might also need to restrict the flow of network traffic into or between pods and nodes for security.
 
-This article introduces the core concepts that provide networking to your applications in AKS enabled by Arc:
+This article introduces the core concepts that provide networking to your applications in AKS on Windows Server:
 
 - Kubernetes services
 - Ingress controller
@@ -51,7 +50,7 @@ For other control and routing of the inbound traffic, you can use an ingress con
 
 **ExternalName**: creates a specific DNS entry for easier application access. The IP addresses for load balancers and services can be internal or external addresses depending on your overall network setup and can be dynamically assigned. Or, you can specify an existing static IP address to use. An existing static IP address is often tied to a DNS entry. Internal load balancers are only assigned a private IP address, so they can't be accessed from the Internet.
 
-## Kubernetes networking basics on Azure Local
+## Kubernetes networking basics
 
 To allow access to your applications, or for application components to communicate with each other, Kubernetes provides an abstraction layer to virtual networking. Kubernetes nodes are connected to the virtual network and can provide inbound and outbound connectivity for pods. The *kube-proxy* component running on each node provides these network features.
 
@@ -60,7 +59,6 @@ In Kubernetes, *Services* logically group pods to allow:
 - Direct access via a single IP address or DNS name and a specific port.
 - Distribute traffic using a *load balancer* between multiple pods hosting the same service or application.
 
-The Azure Local platform also helps to simplify virtual networking for AKS on Azure Local clusters by providing the "underlay" network in a highly available manner.
 When you create an AKS cluster, we also create and configure an underlying `HAProxy` load balancer resource. As you deploy applications in a Kubernetes cluster, IP addresses are configured for your pods and Kubernetes services as endpoints in this load balancer.
 
 ## IP address resources
@@ -68,14 +66,14 @@ When you create an AKS cluster, we also create and configure an underlying `HAPr
 To simplify the network configuration for application workloads, AKS Arc assigns IP addresses to the following objects in a deployment:
 
 - **Kubernetes cluster API server**: the API server is a component of the Kubernetes control plane that exposes the Kubernetes API. The API server is the front end for the Kubernetes control plane. Static IP addresses are always allocated to API servers irrespective of the underlying networking model.
-- **Kubernetes nodes (virtual machines)**: a Kubernetes cluster consists of a set of worker machines, called nodes, and the nodes host containerized applications. In addition to the control plane nodes, every cluster has at least one worker node. For an AKS cluster, Kubernetes nodes are configured as virtual machines. These virtual machines are created as highly available virtual machines in Azure Local, for more information, see [Node networking concepts](concepts-node-networking.md).
+- **Kubernetes nodes (virtual machines)**: a Kubernetes cluster consists of a set of worker machines, called nodes, and the nodes host containerized applications. In addition to the control plane nodes, every cluster has at least one worker node. For an AKS cluster, Kubernetes nodes are configured as virtual machines. These virtual machines are created as highly available virtual machines. For more information, see [Node networking concepts](concepts-node-networking.md).
 - **Kubernetes services**: in Kubernetes, *Services* logically group pod IP addresses to allow for direct access via a single IP address or DNS name on a specific port. Services can also distribute traffic using a *load balancer*. Static IP addresses are always allocated to Kubernetes services irrespective of the underlying networking model.
-- **HAProxy load balancers**: [HAProxy](https://www.haproxy.org/#desc) is a TCP/HTTP load balancer and proxy server that spreads incoming requests across multiple endpoints. Every workload cluster in an AKS on Azure Local deployment has a HAProxy load balancer deployed and configured as a specialized virtual machine.
-- **Microsoft On-premises Cloud Service**: This is the Azure Local cloud provider that enables the creation and management of the virtualized environment hosting Kubernetes on an on-premises Azure Local cluster or Windows Server cluster. The networking model followed by your Azure Local or Windows Server cluster determines the IP address allocation method used by the Microsoft On-Premises Cloud Service. To learn more about the networking concepts implemented by the Microsoft On-Premises Cloud Service, see [Node networking concepts](concepts-node-networking.md).
+- **HAProxy load balancers**: [HAProxy](https://www.haproxy.org/#desc) is a TCP/HTTP load balancer and proxy server that spreads incoming requests across multiple endpoints. Every workload cluster in an AKS on Windows Server deployment has a HAProxy load balancer deployed and configured as a specialized virtual machine.
+- **Microsoft On-premises Cloud Service**: This is the cloud provider that enables the creation and management of the virtualized environment hosting Kubernetes on an on-premises Windows Server cluster. The networking model followed by your Windows Server cluster determines the IP address allocation method used by the Microsoft On-Premises Cloud Service. To learn more about the networking concepts implemented by the Microsoft On-Premises Cloud Service, see [Node networking concepts](concepts-node-networking.md).
 
 ## Kubernetes networks
 
-In AKS on Azure Local, you can deploy a cluster that uses one of the following network models:
+In AKS on Windows Server, you can deploy a cluster that uses one of the following network models:
 
 - Flannel Overlay networking - The network resources are typically created and configured as the cluster is deployed.
 - Project Calico networking - This model offers additional networking features, such as network policies and flow control.
@@ -130,7 +128,7 @@ New-AksHciCluster -name MyCluster -primaryNetworkPlugin 'flannel'
 
 ## Next steps
 
-This article covers networking concepts for containers in AKS nodes on Azure Local. For more information about AKS on Azure Local concepts, see the following articles:
+This article covers networking concepts for containers in AKS nodes on Windows Server. For more information about AKS on Windows Server concepts, see the following articles:
 
 - [Network concepts for AKS nodes](./concepts-node-networking.md)
 - [Clusters and workloads](./kubernetes-concepts.md)

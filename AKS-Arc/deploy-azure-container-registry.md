@@ -1,14 +1,15 @@
 ---
-title: Deploy from a private container registry to on-premises Kubernetes using Azure Container Registry and AKS enabled by Azure Arc
-description: Learn how to deploy from a private container registry to on-premises Kubernetes using Azure Container Registry and AKS enabled by Arc.
+title: Deploy from a private container registry to on-premises Kubernetes using Azure Container Registry and AKS on Windows Server
+description: Learn how to deploy from a private container registry to on-premises Kubernetes using Azure Container Registry and AKS on Windows Server.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 06/26/2024
+ms.date: 04/04/2025
 ms.author: sethm
 ms.lastreviewed: 03/16/2022
 ms.reviewer: rbaziwane
+ms.custom: sfi-ropc-nochange
 
-# Intent: As a developer, I want to deploy a container image from a private container registry to AKS enabled by Arc.
+# Intent: As a developer, I want to deploy a container image from a private container registry to AKS on Windows Server.
 # Keyword: private container registry Kubernetes on-premises
 ---
 
@@ -16,9 +17,9 @@ ms.reviewer: rbaziwane
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-This article describes how to deploy container images from a private container registry using Azure Container Registry, which you can run in your own datacenter in AKS enabled by Azure Arc deployments. You deploy to your on-premises Kubernetes cluster hosted by AKS. Azure Container Registry allows you to build, store, and manage container images and artifacts in a private registry for all types of container deployments.
+This article describes how to deploy container images from a private container registry using Azure Container Registry, which you can run in your own datacenter in AKS on Windows Server deployments. You deploy to your on-premises Kubernetes cluster hosted by AKS. Azure Container Registry allows you to build, store, and manage container images and artifacts in a private registry for all types of container deployments.
 
-The article describes how to create a private container registry in Azure and push your container image to the private container registry. You can then deploy from the private registry to your on-premises Kubernetes cluster hosted in AKS enabled by Arc.
+The article describes how to create a private container registry in Azure and push your container image to the private container registry. You can then deploy from the private registry to your on-premises Kubernetes cluster hosted in AKS on Windows Server.
 
 For more information about Container Registry in Azure, see the [Azure Container Registry documentation](/azure/container-registry/).
 

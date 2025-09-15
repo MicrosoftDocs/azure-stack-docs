@@ -27,7 +27,7 @@ This article describes how to control access using Kubernetes RBAC in a Kubernet
 Before you set up Kubernetes RBAC using Microsoft Entra ID, you need the following prerequisites:
 
 - **A Kubernetes cluster created in AKS Arc**. If you need to set up your cluster, see the instructions for using [Windows Admin Center](setup.md) or [PowerShell](kubernetes-walkthrough-powershell.md) to deploy AKS.
-- **Azure Arc connection**. You must have an Azure Arc connection to your Kubernetes cluster. For information about enabling Azure Arc, see [Connect an Azure Kubernetes Service on Azure Local cluster to Azure Arc-enabled Kubernetes](connect-to-arc.md).
+- **Azure Arc connection**. You must have an Azure Arc connection to your Kubernetes cluster. For information about enabling Azure Arc, see [Connect an Azure Kubernetes Service on Windows Server cluster to Azure Arc-enabled Kubernetes](connect-to-arc.md).
 - You need access to the following command-line tools:
   - **Azure CLI and the connectedk8s extension**. Azure CLI is a set of commands used to create and manage Azure resources. To check whether you have the Azure CLI, open a command line tool, and type: `az -v`. Also, install the [connectedk8s extension](https://github.com/Azure/azure-cli-extensions/tree/main/src/connectedk8s) in order to open a channel to your Kubernetes cluster. For installation instructions, see [How to install Azure CLI](/cli/azure/install-azure-cli).
   - **Kubectl**. This Kubernetes command-line tool enables you to run commands targeting your Kubernetes clusters. To check whether you installed kubectl, open a command prompt and type: `kubectl version --client`. Make sure your kubectl client version is at least version v1.24.0. For installation instructions, see [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl).
@@ -236,3 +236,4 @@ Error from server (Forbidden): pods is forbidden: User cannot list resource "pod
 ## Next steps
 
 - [Learn more about security in AKS Arc on Windows Server](concepts-security.md)
+- Help to protect your cluster in other ways by following the guidance in the [security book for AKS enabled by Azure Arc](/azure/azure-arc/kubernetes/conceptual-security-book?toc=/azure/aks/aksarc/toc.json&bc=/azure/aks/aksarc/breadcrumb/toc.json).

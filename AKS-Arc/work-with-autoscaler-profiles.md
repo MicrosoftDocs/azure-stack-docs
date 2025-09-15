@@ -1,6 +1,6 @@
 ---
-title: Use the autoscaler profile to configure cluster autoscaling in AKS enabled by Arc
-description: Learn how to use the autoscaler profile to configure Cluster autoscaler in Azure Kubernetes Service (AKS) on Azure Local.
+title: Use the autoscaler profile to configure cluster autoscaling in AKS on Windows Server
+description: Learn how to use the autoscaler profile to configure Cluster autoscaler in Azure Kubernetes Service (AKS) on Windows Server.
 ms.topic: how-to
 author: sethmanheim
 ms.author: sethm 
@@ -13,11 +13,11 @@ ms.date: 11/07/2022
 
 ---
 
-# Use autoscaler profile to configure cluster autoscaling in AKS enabled by Arc
+# Use autoscaler profile to configure cluster autoscaling in AKS on Windows Server
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-You can use the parameters in the autoscaler profile object to define scale events in AKS enabled by Arc. The cluster autoscaler profile affects all node pools that use the cluster autoscaler; you can't set an autoscaler profile per node pool. This article explains how the autoscaler works, describes default autoscaler profile values, and describes how to configure and use a profile definition.
+You can use the parameters in the autoscaler profile object to define scale events in AKS on Windows Server. The cluster autoscaler profile affects all node pools that use the cluster autoscaler; you can't set an autoscaler profile per node pool. This article explains how the autoscaler works, describes default autoscaler profile values, and describes how to configure and use a profile definition.
 
 ## Using profiles
 

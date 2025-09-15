@@ -1,32 +1,36 @@
 ---
-title: Create Azure Local VM image from an existing Arc VM
-description: Learn how to create Azure Local VM images using an existing Arc VM via Azure CLI.
+title: Create Azure Local VM image from an existing Azure Local VM enabled by Azure Arc
+description: Learn how to create Azure Local VM images using an existing Azure Local VM enabled by Azure Arc via Azure CLI.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
 ms.custom: devx-track-azurecli
-ms.date: 11/06/2024
+ms.date: 07/08/2025
 ---
 
-# Create Azure Local VM image using existing Arc VMs
+# Create Azure Local VM image using existing Azure Local VMs enabled by Azure Arc
 
 [!INCLUDE [hci-applies-to-22h2-21h2](../includes/hci-applies-to-23h2.md)]
 
-This article describes how to create virtual machine (VM) images for your Azure Local using existing Arc VMs via the Azure CLI. The operating system (OS) disk of the Arc VM is used to create a gallery image on your Azure Local.
-
+This article describes how to use Azure Command-Line Interface (CLI) to create virtual machine (VM) images for your Azure Local using existing Azure Local VMs. You will use the operating system (OS) disk of the Azure Local VM to create a gallery image on your Azure Local.
 
 ## Prerequisites
 
 Before you begin, make sure that:
 
-- You've reviewed and completed the [Arc VM management prerequisites](./azure-arc-vm-management-prerequisites.md).
+- You've reviewed and completed the [Azure Local VM management prerequisites](./azure-arc-vm-management-prerequisites.md).
 - You've connected to your Azure Local using the instructions in [Connect to Azure Local via Azure CLI client](./azure-arc-vm-management-prerequisites.md#azure-command-line-interface-cli-requirements).
+- The VHDX image must be prepared using `sysprep /generalize /shutdown /oobe`. For more information, see [Sysprep command-line options](/windows-hardware/manufacture/desktop/sysprep-command-line-options#oobe). This is true for both Windows and Linux VM images.
+- The source VM must be powered off before attempting to create the VM image.
 
 
-## Create VM image from existing Arc VM
+## Create VM image from existing Azure Local VM
 
-You create a VM image starting from the OS disk of the Arc VM and then use this image to deploy VMs on your Azure Local.
+You create a VM image starting from the OS disk of the Azure Local VM and then use this image to deploy VMs on your Azure Local.
+
+> [!IMPORTANT]
+> Running Sysprep on an Azure Local VM will render the VM unusable. Sysprep resets system identity, removes user profiles, may invalidate Windows product activation, and can cause instability for applications that rely on machine-specific configuration. This action is irreversible.
 
 Follow these steps to create a VM image using the Azure CLI.
 
@@ -57,7 +61,7 @@ The parameters are described in the following table:
 | `location`       | Location for your Azure Local. For example, this could be `eastus`. |
 | `custom-location`| Custom location ID for your Azure Local.  |
 | `name`           | Name of the VM image created starting with the image in your local share. <br> **Note**: Azure rejects all the names that contain the keyword Windows. |
-| `source-vm`      | Name of an existing Arc VM that you'll use to create the VM image. |
+| `source-vm`      | Name of an existing Azure Local VM that you'll use to create the VM image. |
 | `os-type`        | Operating system associated with the source image. This can be Windows or Linux.           |
 
 Here's a sample output:
@@ -72,10 +76,10 @@ PS C:\Users\azcli> $imageName = "mylocal-image"
 PS C:\Users\azcli> $sourceVmName = "mysourcevm"
 ```
 
-### Create VM image from an Arc VM
+### Create VM image from an Azure Local VM
 
 
-Create the VM image from an existing Arc VM. Run the following command:
+Create the VM image from an existing VM. Run the following command:
 
 ```azurecli
 az stack-hci-vm image create -resource-group $resource_group --location $location --custom-location $custom_location --os-type $osType --source-vm $sourceVmName --name $imageName

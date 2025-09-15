@@ -5,18 +5,16 @@ author: ronmiab
 ms.author: robess
 ms.topic: overview
 ms.reviewer: thoroet
-ms.date: 11/13/2024
+ms.date: 08/13/2025
 ---
 
-# About updates for Azure Local, version 23H2
+# About updates for Azure Local
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
 [!INCLUDE [azure-local-banner-23h2](../includes/azure-local-banner-23h2.md)]
 
 This article describes the new update feature for this release of Azure Local, the benefits of the feature, and how to keep various components of your solution up to date.
-
-[!INCLUDE [end-of-service-22H2](../includes/end-of-service-22h2.md)]
 
 ## About the updates
 
@@ -48,22 +46,24 @@ This new approach:
 
 ## Lifecycle cadence
 
-The Azure Local follows the [Modern Lifecycle policy](/lifecycle/policies/modern). The Modern Lifecycle policy defines the products and services that are continuously serviced and supported. To stay current with this policy, you must stay within six months of the most recent release. To learn more about the support windows, see [Azure Local release information](/azure-stack/hci/release-information-23h2).
+[!INCLUDE [azure-local-banner-resource-bridge](../includes/azure-local-banner-resource-bridge.md)]
 
-Microsoft might release the following types of updates for the Azure Local:
+Azure Local follows the [Modern Lifecycle policy](/lifecycle/policies/modern), which defines products and services that are continuously serviced and supported. To remain compliant with this policy, you must stay within six months of the most recent release. For more information on support windows, see [Azure Local release information](../release-information-23h2.md).
+
+Microsoft might release the following types of updates for Azure Local:
 
 |Update Type |Typical Cadence  |Description |
 |------------|-----------------|------------|
-|Monthly Updates | Monthly |Monthly updates primarily contain quality and reliability improvements. They might include OS Latest Cumulative Updates ¹. Some updates require host system reboots, while others don't. |
-|Baseline Updates |Quarterly |Baseline updates include new features and improvements. They typically require host system reboots and might take longer. |
-|Hotfixes | As needed | Hotfixes address blocking issues that could prevent regular monthly or baseline updates. To fix critical or security issues, hotfixes might be released sooner than monthly.  |
-|Solution Builder Extension | As needed | Solution Builder Extension² provides driver, firmware, and other partner content specific to the system solution used. They might require host system reboots. |
+|Cumulative Updates | Monthly | Cumulative updates primarily include quality and reliability improvements. They might also include OS Latest Cumulative Updates ¹. Some updates require host system reboots, while others do not. |
+|Feature Updates |Semi-annually|Feature updates introduce new features and improvements. They typically require host system reboots and might take longer to apply. |
+|Hotfixes | As needed | Hotfixes address critical issues that could block regular monthly or semi-annual updates. These updates might be released sooner than the monthly cadence to resolve urgent security or functionality issues. |
+|Solution Builder Extension | As needed | Solution Builder Extension² provides drivers, firmware, and other partner-specific content. These updates might require host system reboots. |
 
-¹ Quality updates released based on packages that contain monthly updates. These updates supersede the previous month's updates and contain both security and non-security changes.
+¹ Quality updates released based on packages that contain monthly updates. These updates supersede the previous month's updates and include both security and non-security changes.
 
-² The Original Equipment Manufacturer determines the frequency of Solution Builder Extension updates.
+² The Original Equipment Manufacturer determines the frequency of Solution Builder Extension updates. These updates often align with Azure Local feature releases, allowing customers to install a combined update.
 
-Sometimes you might see updates to the latest patch level of your current baseline. If a new baseline is available, you might see the baseline update itself or the latest patch level of the baseline. Your system must stay within six months of the most recent baseline to consider it supported. For more information and a visualization of supported releases, see [About Azure Local, version 23H2 releases](../release-information-23h2.md#about-azure-local-releases).
+Sometimes you might see updates to the latest patch level of your current feature. If a new feature is available, you might see the feature update itself or the latest patch level of the feature. Your system must stay within six months of the most recent feature to consider it supported. For more information and a visualization of supported releases, see [About Azure Local releases](../release-information-23h2.md#about-azure-local-releases).
 
 The next sections provide an overview of components, along with methods and interfaces for updating your solution.
 
@@ -73,7 +73,7 @@ Solution updates managed by this feature contain new versions of the Azure Stack
 
 - Operating System: These updates help you stay productive and protected. They provide users and IT administrators with the security fixes they need and protect devices so that unpatched vulnerabilities can't be exploited.
 
-- Agents and services: The orchestrator updates its own agents to ensure it has the recent fixes corresponding to the update. Azure Connected Machine agent and Arc Resource Bridge and its dependencies, get updated automatically to the latest validated version when Azure Local is updated.
+- Agents and services: The orchestrator updates its own agents to ensure it has the recent fixes corresponding to the update. Azure Connected Machine agent and Arc resource bridge and its dependencies, get updated automatically to the latest validated version when Azure Local is updated.
 
 - Solution Builder Extension: Hardware vendors might choose to integrate with this feature to enhance the update management experience for their customers.
 
@@ -82,7 +82,9 @@ Solution updates managed by this feature contain new versions of the Azure Stack
 This solution is the recommended way to update your Azure Local.
 
 > [!NOTE]
-> Customer workloads aren't covered by this update solution.
+>
+> - Azure Local update includes updates for all components, including Azure CLI, PowerShell, and any extensions. Microsoft does not support out of band updates for individual components. The out of band updates could lead to incompatibility with Application Control for Windows.
+> - Customer workloads aren't covered by this update solution.
 
 ## User interfaces for updates
 
@@ -93,15 +95,15 @@ There are two interfaces you can use to apply available updates.
 
 ### PowerShell
 
-The PowerShell procedures apply to both single-node and multi-node systems that run with the orchestrator installed. For more information, see [Update your Azure Local, version 23H2 via PowerShell](update-via-powershell-23h2.md).
+The PowerShell procedures apply to both single-node and multi-node systems that run with the orchestrator installed. For more information, see [Update Azure Local via PowerShell](update-via-powershell-23h2.md).
 
 ### The Azure portal
 
-You can install Azure Local updates using the Azure Update Manager in the Azure portal. For more information, see [Use Azure Update Manager to update your Azure Local, version 23H2](./azure-update-manager-23h2.md).
+You can install Azure Local updates using the Azure Update Manager in the Azure portal. For more information, see [Use Azure Update Manager to update Azure Local](./azure-update-manager-23h2.md).
 
 ### Unsupported interfaces for updates
 
-When you install updates for Azure Local, version 23H2 don't use the following interfaces:
+When you install updates for Azure Local, don't use the following interfaces:
 
 - SConfig
 - Windows Admin Center

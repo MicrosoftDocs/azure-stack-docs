@@ -1,6 +1,6 @@
 ---
 title: Encrypt etcd secrets for Azure Kubernetes Service clusters
-description: Learn how to encrypt etcd secrets in AKS enabled by Azure Arc.
+description: Learn how to encrypt etcd secrets in AKS on Windows Server.
 author: sethmanheim
 ms.topic: how-to
 ms.date: 06/27/2024
@@ -8,7 +8,7 @@ ms.author: sethm
 ms.lastreviewed: 1/14/2022
 ms.reviewer: aathipsa
 # Intent: As an IT Pro, I want to learn about encrypted etcd secrets and how they are used in my AKS deployment. 
-# Keyword: etcd secrets AKS Azure Local 
+# Keyword: etcd secrets AKS Windows Server
 
 ---
 
@@ -16,7 +16,7 @@ ms.reviewer: aathipsa
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-This article describes how to monitor and troubleshoot the encryption of etcd secrets for Azure Kubernetes Service (AKS) management clusters and workload clusters in AKS enabled by Azure Arc.
+This article describes how to monitor and troubleshoot the encryption of etcd secrets for Azure Kubernetes Service (AKS) management clusters and workload clusters in AKS on Windows Server.
 
 A *secret* in Kubernetes is an object that contains a small amount of sensitive data, such as passwords and SSH keys. In the Kubernetes API server, secrets are stored in *etcd*, which is a highly available key values store used as the Kubernetes backing store for all cluster data. AKS Arc comes with encryption of etcd secrets and automates the management and rotation of encryption keys.
 

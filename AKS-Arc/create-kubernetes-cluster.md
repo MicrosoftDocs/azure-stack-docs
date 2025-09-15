@@ -3,7 +3,7 @@ title: Quickstart to create a local Kubernetes cluster using Windows Admin Cente
 description: Learn how to create a local Kubernetes cluster using Windows Admin Center
 author: sethmanheim
 ms.topic: quickstart
-ms.date: 12/27/2023
+ms.date: 07/03/2025
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: dawhite
@@ -13,7 +13,7 @@ ms.custom: mode-portal
 # Keyword: local Kubernetes cluster
 
 ---
-# Quickstart: Create a local Kubernetes cluster on AKS enabled by Azure Arc using Windows Admin Center
+# Quickstart: Create a local Kubernetes cluster on AKS on Windows Server using Windows Admin Center
 
 [!INCLUDE [aks-hybrid-applies-to-azure-stack-hci-windows-server-sku](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
@@ -65,7 +65,7 @@ This section describes how to use the Create Kubernetes cluster wizard through t
 
 ## Next steps
 
-In this quickstart, you deployed a Kubernetes cluster. For more information about AKS enabled by Azure Arc, and to learn how to deploy and manage Linux applications on AKS enabled by Arc, continue to the following tutorial:
+In this quickstart, you deployed a Kubernetes cluster. For more information about AKS on Windows Server, and to learn how to deploy and manage Linux applications on AKS on Windows Server, continue to the following tutorial:
 
 - [Tutorial: Deploy Linux applications](deploy-linux-application.md)
 - [Set up multiple administrators](./set-multiple-administrators.md)

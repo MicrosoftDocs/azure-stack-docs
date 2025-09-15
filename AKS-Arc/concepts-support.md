@@ -1,27 +1,27 @@
 ---
-title: Tested resource limits, VM sizes, and regions for AKS enabled by Azure Arc
-description: Resource limits, VM sizes, regions for Azure Kubernetes Service (AKS) enabled by Azure Arc.
+title: Tested resource limits, VM sizes, and regions for AKS on Windows Server
+description: Resource limits, VM sizes, regions for Azure Kubernetes Service (AKS) on Windows Server.
 author: sethmanheim
-ms.topic: conceptual
-ms.date: 12/21/2023
+ms.topic: article
+ms.date: 03/31/2025
 ms.author: sethm 
 ms.lastreviewed: 02/03/2022
 ms.reviewer: mamezgeb
 ms.custom: references_regions
-#intent: As an IT Pro, I need to understand and also leverage how resource limits, VM sizes, and regions work together for AKS on Azure Local or Windows Server.
+#intent: As an IT Pro, I need to understand and also leverage how resource limits, VM sizes, and regions work together for AKS on Windows Server.
 #keyword: Resource limits VM sizes
 
 ---
 
-# Resource limits, VM sizes, and regions for AKS enabled by Azure Arc
+# Resource limits, VM sizes, and regions for AKS on Windows Server
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-This article provides information about tested configurations, resource limits, VM sizes, and regions for Azure Kubernetes Service (AKS) enabled by Azure Arc. The tests used the latest release of AKS on Azure Local.
+This article provides information about tested configurations, resource limits, VM sizes, and regions for Azure Kubernetes Service (AKS) on Windows Server. The tests used the latest release of AKS on Windows Server.
 
 ## Maximum specifications
 
-AKS enabled by Arc deployments have been validated with the following configurations, including the specified maximums. Keep in mind that exceeding these maximums is at your own risk and might lead to unexpected behaviors and failures. This article provides some guidance on how to avoid common configuration mistakes and can help you create a larger configuration. If in doubt, contact your local Microsoft office for assistance or submit a question in the [Azure Local community](https://feedback.azure.com/d365community/search/?q=Azure+Kubernetes).
+AKS on Windows Server deployments have been validated with the following configurations, including the specified maximums. Keep in mind that exceeding these maximums is at your own risk and might lead to unexpected behaviors and failures. This article provides some guidance on how to avoid common configuration mistakes and can help you create a larger configuration. If in doubt, contact your local Microsoft office for assistance or [submit a question to the community](https://feedback.azure.com/d365community/search/?q=Azure+Kubernetes).
 
 | Resource                     | Maximum |
 | ---------------------------- | --------|
@@ -38,7 +38,7 @@ The recommended limits were tested with the default virtual machine (VM) sizes, 
 |Target Cluster Linux worker node| **Standard_K8S3_v1**|
 |Target Cluster Windows worker node| **Standard_K8S3_v1**|
 
-The hardware configuration of each physical node in the Azure Local cluster is as follows:
+The hardware configuration of each physical node in the AKS Arc cluster is as follows:
 
 - Chassis: Dell PowerEdge R650 Server or similar.
 - RAM: RDIMM, 3200 MT/s, Dual Rank, total of 256 GB.
@@ -46,7 +46,7 @@ The hardware configuration of each physical node in the Azure Local cluster is a
 - Disk: 8x HDDs (2 TB or larger) and 2x 1.6 TB NVMe to support S2D storage configurations.
 - Network: Four (4) 100-Gbit NICs (Mellanox or Intel).
 
-Microsoft engineering tested AKS enabled by Arc using the above configuration. For single node. 2 node, 4 node and 8 node Windows failover clusters. If you have a requirement to exceed the tested configuration, see [Scaling AKS on Azure Local](#scaling-aks-on-azure-local).
+Microsoft engineering tested AKS on Windows Server using this configuration, for single node, 2 node, 4 node, and 8 node Windows failover clusters. If you have a requirement that exceeds the tested configuration, see [Scaling AKS](#scaling-aks).
 
 > [!IMPORTANT]  
 > When you upgrade a deployment of AKS, extra resources are temporarily consumed.
@@ -54,7 +54,7 @@ Microsoft engineering tested AKS enabled by Arc using the above configuration. F
 
 ## Available VM sizes
 
-The following VM sizes for control plane nodes, Linux worker nodes, and Windows worker nodes are available for AKS on Azure Local. While VM sizes such as **Standard_K8S2_v1** and **Standard_K8S_v1** are supported for testing and low resource requirement deployments, use these sizes with care and apply stringent testing as they may result in unexpected failures due to out of memory conditions.
+The following VM sizes for control plane nodes, Linux worker nodes, and Windows worker nodes are available for AKS on Windows Server. While VM sizes such as **Standard_K8S2_v1** and **Standard_K8S_v1** are supported for testing and low resource requirement deployments, use these sizes with care and apply stringent testing as they may result in unexpected failures due to out of memory conditions.
 
 | VM Size        | CPU | Memory (GB) | GPU type | GPU count |
 | -------------- | ----| ------------| -------- | --------- |
@@ -79,16 +79,16 @@ The following VM sizes for control plane nodes, Linux worker nodes, and Windows 
 
 ## Supported Azure regions for Azure registration
 
-AKS enabled by Arc is supported in the following Azure regions:
+AKS on Windows Server is supported in the following Azure regions:
 
 - Australia East
 - East US
 - Southeast Asia
 - West Europe
 
-## Scaling AKS on Azure Local
+## Scaling AKS
 
-Scaling an AKS deployment on Azure Local involves planning ahead by knowing your workloads and target cluster utilization. Additionally, consider hardware resources in your underlying infrastructure such as total CPU cores, total memory, storage, IP Addresses and so on.
+Scaling an AKS deployment involves planning ahead by knowing your workloads and target cluster utilization. Additionally, consider hardware resources in your underlying infrastructure such as total CPU cores, total memory, storage, IP Addresses and so on.
 
 The following examples assume that only AKS-based workloads are deployed on the underlying infrastructure. Deploying non-AKS workloads such as stand-alone or clustered virtual machines, or database servers, reduces the resources available to AKS, which you must take into account.
 
@@ -151,16 +151,16 @@ Other considerations:
 
 The following scaling example is based on these general assumptions/use cases:
 
-- You want to be able to completely tolerate the loss of one physical node in the Azure Local cluster.
+- You want to be able to completely tolerate the loss of one physical node in the Kubernetes cluster.
 - You want to support upgrading target clusters to newer versions.
 - You want to allow for high availability of the target cluster control plane nodes and load balancer nodes.
-- You want to reserve a part of the overall Azure Local capacity for these cases.
+- You want to reserve a part of the overall Windows Server capacity for these cases.
 
 #### Suggestions
 
 - For optimal performance, make sure to set at least 15 percent (100/8=12.5) of cluster capacity aside to allow all resources from one physical node to be redistributed to the other seven (7) nodes. This configuration ensures that you have some reserve available to do an upgrade or other AKS day two operations.
 
-- If you want to grow beyond the 200-VM limit for a maximum hardware sized eight (8) node Azure Local cluster, increase the size of the AKS host VM. Doubling in size results in roughly double the number of VMs it can manage. In an 8-node Azure Local cluster, you can get to 8,192 (8x1024) VMs based on the Azure Local recommended resource limits documented in the [Maximum supported hardware specifications](/azure-stack/hci/concepts/system-requirements#maximum-supported-hardware-specifications). You should reserve approximately 30% of capacity, which leaves you with a theoretical limit of 5,734 VMs across all nodes.
+- If you want to grow beyond the 200-VM limit for a maximum hardware sized eight (8) node cluster, increase the size of the AKS host VM. Doubling in size results in roughly double the number of VMs it can manage. In an 8-node Kubernetes cluster, you can get to 8,192 (8x1024) VMs based on the recommended resource limits documented in the [Maximum supported hardware specifications](/azure/azure-local/concepts/system-requirements#maximum-supported-hardware-specifications). You should reserve approximately 30% of capacity, which leaves you with a theoretical limit of 5,734 VMs across all nodes.
 
   - **Standard_D32s_v3**, for the AKS host with 32 cores and 128 GB - can support a maximum of 1,600 nodes.
 
@@ -171,17 +171,17 @@ The following scaling example is based on these general assumptions/use cases:
 - To run 200 worker nodes in one target cluster, you can use the default control plane and load balancer size. Depending on the number of pods per node, you can go up at least one size on the control plane and use **Standard_D8s_v3**.
 - Depending on the number of Kubernetes services hosted in each target cluster, you might have to increase the size of the load balancer VM as well at target cluster creation to ensure that services can be reached with high performance and traffic is routed accordingly.
 
-The deployment of AKS enabled by Arc distributes the worker nodes for each node pool in a target cluster across the available Azure Local nodes using the Azure Local placement logic.
+The deployment of AKS on Windows Server distributes the worker nodes for each node pool in a target cluster across the available nodes using placement logic.
 
 > [!IMPORTANT]
-> The node placement is not preserved during platform and AKS upgrades and will change over time. A failed physical node will also impact the distribution of virtual machines across the remaining cluster nodes.
+> The node placement is not preserved during platform and AKS upgrades and will change over time. A failed physical node also impacts the distribution of virtual machines across the remaining cluster nodes.
 
 > [!NOTE]
 > Do not run more than four target cluster creations at the same time if the physical cluster is already 50% full, as that can lead to temporary resource contention.
 > When scaling up target cluster node pools by large numbers, take into account available physical resources, as AKS does not verify resource availability for parallel running creation/scaling processes.
 > Always ensure enough reserve to allow for upgrades and failover. Especially in very large environments, these operations, when run in parallel, can lead to rapid resource exhaustion.
 
-If in doubt, contact your local Microsoft office for assistance or post in the [Azure Local community forum](https://feedback.azure.com/d365community/search/?q=Azure+Kubernetes).
+If in doubt, contact your local Microsoft office for assistance or [post in the community forum](https://feedback.azure.com/d365community/search/?q=Azure+Kubernetes).
 
 ## Next steps
 

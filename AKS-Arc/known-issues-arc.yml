@@ -1,18 +1,18 @@
 ### YamlMime:FAQ
 metadata:
   title: Resolve errors when enabling and disabling Azure Arc on AKS workload clusters
-  description: Find solutions to known issues and errors when enabling and disabling Azure Arc on AKS workload clusters in AKS enabled by Arc.
+  description: Find solutions to known issues and errors when enabling and disabling Azure Arc on AKS workload clusters in AKS on Windows Server.
   author: sethmanheim
   ms.author: sethm
   ms.service: azure-kubernetes-service-hybrid
   ms.topic: faq
   ms.date: 6/13/2024
 
-title: Resolve errors when enabling or disabling Azure Arc on your AKS workload clusters in AKS enabled by Arc
+title: Resolve errors when enabling or disabling Azure Arc on your AKS workload clusters in AKS on Windows Server
 summary: |
-  Applies to: AKS on Azure Local, AKS on Windows Server
+  Applies to: AKS on Windows Server
   
-  This article describes errors you might encounter (and their workarounds) while connecting or disconnecting your AKS workload clusters to Azure Arc using the PowerShell cmdlets [`Enable-AksHciArcConnection`](./reference/ps/enable-akshciarcconnection.md) and [`Disable-AksHciArcConnection`](./reference/ps/disable-akshciarcconnection.md) in AKS Arc. For issues that are not covered in this article, see [Troubleshooting Arc enabled Kubernetes](/azure/azure-arc/kubernetes/troubleshooting).
+  This article describes errors you might encounter (and their workarounds) while connecting or disconnecting your AKS workload clusters to Azure Arc using the PowerShell cmdlets [`Enable-AksHciArcConnection`](./reference/ps/enable-akshciarcconnection.md) and [`Disable-AksHciArcConnection`](./reference/ps/disable-akshciarcconnection.md) in AKS Arc. For issues that are not covered in this article, see [Troubleshooting Arc-enabled Kubernetes](/azure/azure-arc/kubernetes/troubleshooting).
   
   You can also [open a support issue](./help-support.md) if none of the listed workarounds apply to you.
   
@@ -57,10 +57,10 @@ sections:
         answer: | 
           This error usually points to one of the following issues:
           
-          - The clusters were created in an Azure VM in a virtualized environment, or you deployed AKS on Azure Local on multiple levels of virtualization. 
+          - The clusters were created in an Azure VM in a virtualized environment, or you deployed AKS on Windows Server on multiple levels of virtualization. 
           - A slow internet caused the timeout.
           
-          If one of the above scenarios applies to you, run [Disable-AksHciArcConnection](./reference/ps/disable-akshciarcconnection.md), and try connecting again. If the above scenario doesn't apply to you, [open a support issue](./help-support.md) for AKS on Azure Local.
+          If one of the above scenarios applies to you, run [Disable-AksHciArcConnection](./reference/ps/disable-akshciarcconnection.md), and try connecting again. If the above scenario doesn't apply to you, [open a support issue](./help-support.md) for AKS on Windows Server.
       - question: | 
           Error: "Secrets "sh.helm.release.v1.azure-arc.v1" not found"
 
@@ -90,7 +90,7 @@ sections:
 
         answer: | 
           This error usually means that you already connected your AKS cluster to Arc-enabled Kubernetes.
-          To confirm it's connected, go to the [Azure portal](https://portal.azure.com) and check under the subscription and resource group you provided when you ran [`Set-AksHciRegistration`](./reference/ps/set-akshciregistration.md) (if you used default values) or [`Enable-AksHciArcConnection`](./reference/ps/enable-akshciarcconnection.md) (if you didn't use default values). You can also confirm if your AKS on Azure Local cluster is connected to Azure by running the [`az connectedk8s show` ](/cli/azure/connectedk8s#az-connectedk8s-show) Azure CLI command. If you don't see your workload cluster, run `Disable-AksHciArcConnection` and try again.
+          To confirm it's connected, go to the [Azure portal](https://portal.azure.com) and check under the subscription and resource group you provided when you ran [`Set-AksHciRegistration`](./reference/ps/set-akshciregistration.md) (if you used default values) or [`Enable-AksHciArcConnection`](./reference/ps/enable-akshciarcconnection.md) (if you didn't use default values). You can also confirm if your AKS on Windows Server cluster is connected to Azure by running the [`az connectedk8s show` ](/cli/azure/connectedk8s#az-connectedk8s-show) Azure CLI command. If you don't see your workload cluster, run `Disable-AksHciArcConnection` and try again.
           
           
       - question: | 

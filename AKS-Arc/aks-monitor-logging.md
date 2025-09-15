@@ -15,7 +15,7 @@ ms.reviewer: guanghu
 
 # Monitor and log data
 
-[!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)], Azure Local, version 23H2, AKS enabled by Azure Arc on VMware (preview)
+[!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)], Azure Local, AKS enabled by Azure Arc on VMware (preview)
 
 This article describes how to monitor your AKS enabled by Azure Arc deployment using on-premises monitoring. Two types of monitoring and logging solutions are available, as described in the following table:
 
@@ -53,7 +53,7 @@ The objects and endpoints that the Prometheus solution scrapes include the follo
 
 Prometheus is an open-source monitoring system with a dimensional data model, flexible query language, efficient time series database and modern alerting approach. Grafana is a tool used to view, query, and visualize metrics on the Grafana dashboards. It can be configured to use Prometheus as the data source. Usually, they are used together for Kubernetes cluster monitoring.
 
-To view the Grafana dashboards available in AKS enabled by Arc, see [Grafana dashboards available in AKS](https://github.com/microsoft/AKS-HCI-Apps/blob/main/Monitoring/Grafana.md#grafana-dashboards-available-in-aks-hci).
+To view the Grafana dashboards available in AKS enabled by Arc, see [Grafana dashboards available in AKS](https://github.com/microsoft/AKS-Arc-Apps/blob/main/Monitoring/Grafana.md#grafana-dashboards-available-in-aks-hci).
 
 You can view Microsoft's deployment [guidance on GitHub](https://github.com/microsoft/AKS-Arc-Apps/tree/main/Monitoring) to deploy Prometheus on your Kubernetes cluster and configure Grafana to use Prometheus as data source. You can also follow any publicly available documentation to deploy any specific version of Prometheus or Grafana.
 

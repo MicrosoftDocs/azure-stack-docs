@@ -2,11 +2,10 @@
 title: Prerequisites to deploy Azure App Service on Azure Stack Hub 
 description: Learn the prerequisite steps to complete before you deploy Azure App Service on Azure Stack Hub.
 author: sethmanheim
-
-ms.topic: article
+ms.topic: install-set-up-deploy
 ms.custom:
   - devx-track-arm-template
-ms.date: 10/24/2022
+ms.date: 06/05/2025
 ms.author: sethm
 ms.reviewer: anwestg
 ms.lastreviewed: 10/28/2019
@@ -24,7 +23,7 @@ Before you deploy Azure App Service on Azure Stack Hub, you must complete the pr
 
 ## Before you get started 
 
-This section lists the prerequisites for both integrated system and Azure Stack Development Kit (ASDK) deployments.
+This section lists the prerequisites for Azure Stack Hub integrated systems deployments.
 
 ### Resource provider prerequisites
 
@@ -242,7 +241,7 @@ icacls %WEBSITES_FOLDER% /grant *S-1-1-0:(OI)(CI)(IO)(RA,REA,RD)
 
 For the Azure App Service on Azure Stack Hub hosting and metering databases, you must prepare a SQL Server instance to hold the App Service databases.
 
-For production and high-availability purposes, you should use a full version of SQL Server 2014 SP2 or later, enable mixed-mode authentication, and deploy in a [highly available configuration](/sql/sql-server/failover-clusters/high-availability-solutions-sql-server).
+For production and high-availability purposes, you should use a full version of SQL Server 2016 SP3 or later, enable mixed-mode authentication, and deploy in a [highly available configuration](/sql/sql-server/failover-clusters/high-availability-solutions-sql-server).
 
 The SQL Server instance for Azure App Service on Azure Stack Hub must be accessible from all App Service roles. You can deploy SQL Server within the Default Provider Subscription in Azure Stack Hub. Or you can make use of the existing infrastructure within your organization (as long as there's connectivity to Azure Stack Hub). If you're using an Azure Marketplace image, remember to configure the firewall accordingly.
 
@@ -258,66 +257,6 @@ sp_configure 'contained database authentication', 1;
 GO
 RECONFIGURE;
 GO
-```
-
-<!-- ASDK Only --->
-## Certificates and server configuration (ASDK)
-
-This section lists the prerequisites for ASDK deployments. 
-
-### Certificates required for ASDK deployment of Azure App Service
-
-The *Create-AppServiceCerts.ps1* script works with the Azure Stack Hub certificate authority to create the four certificates that App Service needs.
-
-| File name | Use |
-| --- | --- |
-| _.appservice.local.azurestack.external.pfx | App Service default SSL certificate |
-| api.appservice.local.azurestack.external.pfx | App Service API SSL certificate |
-| ftp.appservice.local.azurestack.external.pfx | App Service publisher SSL certificate |
-| sso.appservice.local.azurestack.external.pfx | App Service identity application certificate |
-
-To create the certificates, follow these steps:
-
-1. Sign in to the ASDK host using the AzureStack\AzureStackAdmin account.
-2. Open an elevated PowerShell session.
-3. Run the *Create-AppServiceCerts.ps1* script from the folder where you extracted the helper scripts. This script creates four certificates in the same folder as the script that App Service needs for creating certificates.
-4. Enter a password to secure the .pfx files, and make a note of it. You must enter it later, in the App Service on Azure Stack Hub installer.
-
-#### Create-AppServiceCerts.ps1 script parameters
-
-| Parameter | Required or optional | Default value | Description |
-| --- | --- | --- | --- |
-| pfxPassword | Required | Null | Password that helps protect the certificate private key |
-| DomainName | Required | local.azurestack.external | Azure Stack Hub region and domain suffix |
-
-### Quickstart template for file server for deployments of Azure App Service on ASDK.
-
-For ASDK deployments only, you can use the [example Azure Resource Manager deployment template](https://aka.ms/appsvconmasdkfstemplate) to deploy a configured single-node file server. The single-node file server will be in a workgroup.  
-
-> [!NOTE]
-> The ASDK instance must be able to download resources from GitHub in order to complete the deployment.
-
-### SQL Server instance
-
-For the Azure App Service on Azure Stack Hub hosting and metering databases, you must prepare a SQL Server instance to hold the App Service databases.
-
-For ASDK deployments, you can use SQL Server Express 2014 SP2 or later. SQL Server must be configured to support **Mixed Mode** authentication because App Service on Azure Stack Hub **DOES NOT** support Windows Authentication.
-
-The SQL Server instance for Azure App Service on Azure Stack Hub must be accessible from all App Service roles. You can deploy SQL Server within the Default Provider Subscription in Azure Stack Hub. Or you can make use of the existing infrastructure within your organization (as long as there's connectivity to Azure Stack Hub). If you're using an Azure Marketplace image, remember to configure the firewall accordingly.
-
-> [!NOTE]
-> A number of SQL IaaS VM images are available through the Marketplace Management feature. Make sure you always download the latest version of the SQL IaaS Extension before you deploy a VM using a Marketplace item. The SQL images are the same as the SQL VMs that are available in Azure. For SQL VMs created from these images, the IaaS extension and corresponding portal enhancements provide features such as automatic patching and backup capabilities.
->
-> For any of the SQL Server roles, you can use a default instance or a named instance. If you use a named instance, be sure to manually start the SQL Server Browser service and open port 1434.
-
-The App Service installer will check to ensure the SQL Server has database containment enabled. To enable database containment on the SQL Server that will host the App Service databases, run these SQL commands:
-
-```sql
-sp_configure 'contained database authentication', 1;
-GO
-RECONFIGURE;
-GO
-
 ```
 
 ## Licensing concerns for required file server and SQL Server
@@ -335,7 +274,7 @@ Cloud operators are responsible for the maintenance and operation of the File Se
 
 ## Retrieve the Azure Resource Manager root certificate for Azure Stack Hub
 
-Open an elevated PowerShell session on a computer that can reach the privileged endpoint on the Azure Stack Hub Integrated System or ASDK Host.
+Open an elevated PowerShell session on a computer that can reach the privileged endpoint on the Azure Stack Hub integrated system.
 
 Run the *Get-AzureStackRootCert.ps1* script from the folder where you extracted the helper scripts. The script creates a root certificate in the same folder as the script that App Service needs for creating certificates.
 

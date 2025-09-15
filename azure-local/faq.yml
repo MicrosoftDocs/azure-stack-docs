@@ -6,7 +6,7 @@ metadata:
   author: cosmosdarwin
   ms.author: cosdar
   ms.service: azure-local
-  ms.date: 02/03/2025
+  ms.date: 04/08/2025
 title: Azure Local FAQ
 summary: The Azure Local FAQ provides information about Azure Local connectivity with the cloud, and how Azure Local relates to Windows Server.
 
@@ -44,7 +44,7 @@ sections:
           
       - question: Are there bandwidth or latency requirements between Azure Local and the cloud?
         answer: |
-          No. Limited-bandwidth connections like rural T1 lines or satellite/cellular connections are adequate for Azure Local to sync. The minimum required connectivity is several kilobytes per day. More services might require extra bandwidth, especially to replicate or back up whole VMs, download large software updates, or upload verbose logs for analysis and monitoring in the cloud.
+          Yes. Limited-bandwidth connections like rural T1 lines or satellite/cellular connections are adequate for Azure Local to sync. The minimum required connectivity is 10 Mbit. More services might require extra bandwidth, especially to replicate or back up whole VMs, download large software updates, or upload verbose logs for analysis and monitoring in the cloud.
 
       - question: Does Azure Local require continuous connectivity to the cloud?
         answer: |
@@ -54,7 +54,7 @@ sections:
         answer: |
           While your connection is down, all host infrastructure and VMs continue to run normally, and you can use edge-local tools for management. However, you wouldn't be able to use features that directly rely on cloud services. Information in the Azure portal may also become out-of-date until Azure Local is able to sync again.
           
-          Configuration changes made to Arc VMs using edge-local tools won't automatically sync with Azure.
+          Configuration changes made to Azure Local VMs enabled by Arc using edge-local tools won't automatically sync with Azure.
 
       - question: How long can Azure Local run with the connection down?
         answer: |
@@ -123,7 +123,17 @@ sections:
           ------                         ----------------
           Microsoft Azure Stack HCI      23H2
           ```
+      - question: Is it possible to unregister an Azure Local machine with Azure Arc once it is registered?
+        answer: |
+          No. You can't undo the registration once you've registered the Azure Local machine with Azure Arc. To undo, you'll need to install the operating system again on the machine.        
+      
       - question: How long is Azure Local, version 22H2 supported?
         answer: |
-            Azure Stack HCI, version 22H2 will reach end of support on May 31, 2025. After this date, you won't receive monthly security and quality updates. Support requests (SR) will only be available when performing an operating system upgrade. To continue receiving updates, we recommend that you upgrade your operating system to [version 23H2](./upgrade/upgrade-22h2-to-23h2-powershell.md).
-            If you're currently running an Azure Local, version 22H2 stretch cluster or managing Azure Local via System Center - Virtual Machine Manager, review the [Supported workloads and configurations](./upgrade/about-upgrades-23h2.md#supported-workloads-and-configurations) table for update timelines.
+            Azure Stack HCI, version 22H2 will reach end of support on May 31, 2025. After this date:
+            - Monthly security and quality updates stop.
+            - Billing continues for version 22H2 systems.
+            - Your system keeps working, including registration and repair.
+            - Microsoft Support remains available only for upgrade assistance.
+
+            To stay supported and continue receiving updates, we recommend upgrading your operating system to [version 23H2](./upgrade/upgrade-22h2-to-23h2-powershell.md).
+            If you're running an Azure Stack HCI, version 22H2 stretch cluster or managing Azure Local via System Center - Virtual Machine Manager, review the [Supported workloads and configurations](./upgrade/about-upgrades-23h2.md#supported-workloads-and-configurations) table for update timelines.

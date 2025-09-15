@@ -4,24 +4,24 @@ description: Learn how to use PowerShell to apply operating system, service, and
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 12/17/2024
+ms.date: 08/13/2025
 ---
 
-# Update your Azure Local, version 23H2 via PowerShell
+# Update Azure Local via PowerShell
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
 This article describes how to apply a solution update to your Azure Local via PowerShell.
 
-The procedure in this article applies to both single node and multi-node systems that run the latest version of Azure Local with the orchestrator (Lifecycle Manager) installed. If your system was created via a new deployment of Azure Local, version 23H2, then the orchestrator was automatically installed as part of the deployment.
+The procedure in this article applies to both single node and multi-node systems that run the latest version of Azure Local with the orchestrator (Lifecycle Manager) installed. If your system was created via a new deployment of Azure Local, then the orchestrator was automatically installed as part of the deployment.
 
 [!INCLUDE [WARNING](../includes/hci-applies-to-23h2-cluster-updates.md)]
 
-
 ## About solution updates
 
-The Azure Local solution updates can consist of platform, service, and solution extension updates. For more information on each of these types of updates, see [About updates for Azure Local, version 23H2](../update/about-updates-23h2.md).
+The Azure Local solution updates can consist of platform, service, and solution extension updates. For more information on each of these types of updates, see [About updates for Azure Local](../update/about-updates-23h2.md).
 
+[!INCLUDE [azure-local-banner-new-releases](../includes/azure-local-banner-new-releases.md)]
 
 When you apply a solution update, here are the high-level steps that you take:
 
@@ -32,6 +32,7 @@ When you apply a solution update, here are the high-level steps that you take:
 1. (Recommended) Predownload the updates and assess the update readiness of your system.
 1. Install the updates and track the progress of the updates. Monitor the detailed progress as needed.
 1. Verify the version of the updates installed.
+1. Install hardware updates.
 
 The time taken to install the updates varies based on the following factors:
 
@@ -43,7 +44,7 @@ The time taken to install the updates varies based on the following factors:
 
 The approximate time estimates for a typical single or multi-node system are summarized in the following table:
 
-|System/Time           |Time for health check<br>*hh:mm:ss*  |Time to install update<br>*hh:mm:ss*  |
+|System/Time           |Time for health check<br>*hh:mm*  |Time to install update<br>*hh:mm*  |
 |------------------|-------------------------------------|---------|
 |Single node     | ~ 03:00        |~ 01:30         |
 |4-nodes    | ~ 05:00       |~ 04:00         |
@@ -55,7 +56,7 @@ The approximate time estimates for a typical single or multi-node system are sum
 
 Before you begin, make sure that:
 
-- You have access to an Azure Local, version 23H2 system that is running 2311 or higher. The system should be registered in Azure.
+- You have access to an Azure Local system that is running 2311 or higher. The system should be registered in Azure.
 - You have access to a client that can connect to your Azure Local. <!--This client should be running PowerShell 5.0 or later.-->
 - You have access to the solution update over the network. <!--A typical quarterly update downloads around XX GB of files.-->
 
@@ -93,9 +94,9 @@ Follow these steps on your client to connect to one of the machines in your Azur
 
     </details>
 
-## Step 1: Confirm software and verify system health 
+## Step 1: Confirm software and verify system health
 
-Before you discover the updates, make sure that your system is running Azure Local, version 23H2, software version 2311 or later.  
+Before you discover the updates, make sure that your system is running Azure Local 2311 or later.  
 
 1. Make sure that you're connected to the machine using the deployment user account. Run the following command:
 
@@ -103,7 +104,7 @@ Before you discover the updates, make sure that your system is running Azure Loc
     whoami
     ```
 
-2. To ensure that the system is running Azure Local, version 23H2, run the following command on one of the machines of your system:
+2. To ensure that the system is running Azure Local 2311 or later, run the following command on one of the machines of your system:
 
 
     ```powershell
@@ -264,13 +265,12 @@ Follow these steps to discover the available updates for your system:
 
     </details>
 
-You can now proceed to [Download and install the updates](#step-2-discover-the-updates).
 
 ## Step 3: Import and rediscover updates
 
 This is an *optional* step. Importing updates could be required in one of the following scenarios:
 
-- The update you wish to install reports an `AdditionalContentRequired`state. Some extra content may be required before you can schedule the update in the `AdditionalContentRequired`state. For details on this state and on solution extension updates, see [Solution  Extension updates on Azure Local, version 23H2](./solution-builder-extension.md).
+- The update you wish to install reports an `AdditionalContentRequired`state. Some extra content may be required before you can schedule the update in the `AdditionalContentRequired`state. For details on this state and on solution extension updates, see [Solution Builder Extension updates on Azure Local](./solution-builder-extension.md).
 
 - The update you wish to install isn't listed because Support is providing you with a private release to address an issue you're experiencing.
 
@@ -429,7 +429,7 @@ Follow these steps to track update progress using PowerShell.
     Get-SolutionUpdate -Id <ResourceId> | ft Version,State,UpdateStateProperties,HealthState
     ```
 
-    The update progresses through several states as described in [Review update phases](./update-phases-23h2.md#review-update-phases-of-azure-local-version-23h2).
+    The update progresses through several states as described in [Review update phases](./update-phases-23h2.md#review-update-phases-of-azure-local).
 
     Using the above command the following examples show how to monitor the update as it progresses through those phases using the `State` and `UpdateStateProperties` properties.
 
@@ -577,6 +577,10 @@ After the updates are installed, verify the solution version of the environment 
     ```
 
     </details>
+
+## Step 9: Install hardware updates
+
+[!INCLUDE [azure-local-install-harware-updates](../includes/azure-local-install-harware-updates.md)]
 
 ## Next step
 

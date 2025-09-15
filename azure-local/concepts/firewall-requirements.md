@@ -4,7 +4,7 @@ description: This topic provides guidance on firewall requirements for the Azure
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 02/14/2025
+ms.date: 01/08/2025
 ---
 
 # Firewall requirements for Azure Local
@@ -56,14 +56,38 @@ For a consolidated list of endpoints for Canada Central that includes Azure Loca
 For a consolidated list of endpoints for India Central that includes Azure Local, Arc-enabled servers, ARB, and AKS, use:
 - [Required endpoints in India Central for Azure Local](https://github.com/Azure/AzureStack-Tools/blob/master/HCI/IndiaCentralEndpoints/IndiaCentral-hci-endpoints.md)
 
-For a consolidated list of endpoints for SouthEast Asia that includes Azure Local, Arc-enabled servers, ARB, and AKS, use:
-- [Required endpoints in SouthEast Asia for Azure Local](https://github.com/Azure/AzureStack-Tools/blob/master/HCI/SouthEastAsiaEndpoints/southeastasia-hci-endpoints.md)
+For a consolidated list of endpoints for Southeast Asia that includes Azure Local, Arc-enabled servers, ARB, and AKS, use:
+- [Required endpoints in Southeast Asia for Azure Local](https://github.com/Azure/AzureStack-Tools/blob/master/HCI/SouthEastAsiaEndpoints/southeastasia-hci-endpoints.md)
 
 For a consolidated list of endpoints for Japan East that includes Azure Local, Arc-enabled servers, ARB, and AKS, use:
 - [Required endpoints in Japan East for Azure Local](https://github.com/Azure/AzureStack-Tools/blob/master/HCI/JapanEastEndpoints/japaneast-hci-endpoints.md)
 
 For a consolidated list of endpoints for South Central US that includes Azure Local, Arc-enabled servers, ARB, and AKS, use:
 - [Required endpoints in South Central US for Azure Local](https://github.com/Azure/AzureStack-Tools/blob/master/HCI/SouthCentralUSEndpoints/southcentralus-hci-endpoints.md)
+
+## Required firewall URLs for Azure Local in Azure Government regions
+
+For a consolidated list of endpoints for US Gov Virginia that includes Azure Local, Arc-enabled servers, ARB, and AKS, use:
+- [Required endpoints in US Gov Virginia for Azure Local](https://github.com/CristianEdwards/AzureStack-Tools/blob/master/HCI/usgovvirginia-hci-endpoints/usgovvirginia-hci-endpoints.md)
+
+## Firewall requirements for OEMs
+
+Depending on the OEM you are using for Azure Local you may need to open additional endpoints in your firewall.
+
+DataON required endpoints for Azure Local deployments
+- [DataOn required endpoints](https://github.com/Azure/AzureStack-Tools/blob/master/HCI/OEMEndpoints/DataOn/DataOnAzureLocalEndpoints.md)
+
+Dell required endpoints for Azure Local deployments
+- [Dell required endpoints](https://github.com/Azure/AzureStack-Tools/blob/master/HCI/OEMEndpoints/Dell/DellAzureLocalEndpoints.md)
+
+HPE required endpoints for Azure Local deployments
+- [HPE required endpoints](https://github.com/Azure/AzureStack-Tools/blob/master/HCI/OEMEndpoints/HPE/HPEAzureLocalEndpoints.md)
+
+Hitachi required endpoints for Azure Local deployments
+- [Hitachi required endpoints](https://github.com/Azure/AzureStack-Tools/blob/master/HCI/OEMEndpoints/Hitachi/HitachiAzureLocalEndpoints.md)
+
+Lenovo required endpoints for Azure Local deployments
+- [Lenovo required endpoints](https://github.com/Azure/AzureStack-Tools/blob/master/HCI/OEMEndpoints/Lenovo/LenovoAzureLocalEndpoints.md)
 
 ## Firewall requirements for additional Azure services
 
@@ -113,7 +137,7 @@ Ensure that the following firewall rules are configured in your on-premises fire
 
 | Rule | Action | Source | Destination | Service | Ports |
 |:--|:--|:--|:--|:--|:--|
-| Allow inbound/outbound connectivity to the Active Directory Web services (ADWS) and Active Directory Management Gateway Service | Allow | Active Directory Services | Azure Local | TCP | 9389 |
+| Allow inbound/outbound connectivity to the Active Directory Web services (ADWS) and Active Directory Management Gateway Service | Allow | Azure Local | Active Directory Services | TCP | 9389 |
 
 ### Network Time Protocol
 

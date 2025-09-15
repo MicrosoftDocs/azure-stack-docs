@@ -4,7 +4,7 @@ description: Learn how to create Kubernetes clusters using Terraform.
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
-ms.date: 02/10/2025
+ms.date: 08/11/2025
 
 ---
 
@@ -13,7 +13,7 @@ ms.date: 02/10/2025
 This article describes how to create Kubernetes clusters in Azure Local using Terraform and the Azure Verified Module. The workflow is as follows:
 
 - Create an SSH key pair.
-- Create a Kubernetes cluster in Azure Local 23H2 using Terraform. By default, the cluster is Azure Arc-connected.
+- Create a Kubernetes cluster in Azure Local using Terraform. By default, the cluster is Azure Arc-connected.
 - Validate the deployment and connect to the cluster.
 
 > [!IMPORTANT]
@@ -32,16 +32,16 @@ Before you begin, make sure you have the following prerequisites:
 
 ## Create an SSH key pair
 
-To create an SSH key pair (same as Azure AKS), use the following procedure:
+Create an SSH key pair in Azure and store the private key file for troubleshooting and log collection purposes. For detailed instructions, see [Create and store SSH keys with the Azure CLI](/azure/virtual-machines/ssh-keys-azure-cli) or in the [Azure portal](/azure/virtual-machines/ssh-keys-portal).
 
-1. [Open a Cloud Shell session](https://shell.azure.com/) in your browser.
-1. Create an SSH key pair using the [az sshkey create](/cli/azure/sshkey#az-sshkey-create) command, [from the portal](/azure/virtual-machines/ssh-keys-portal), or the `ssh-keygen` command:  
+1. [Open a Cloud Shell session](https://shell.azure.com/) in your web browser or launch a terminal on your local machine.
+1. Create an SSH key pair using the [az sshkey create](/cli/azure/sshkey#az-sshkey-create) command:  
 
    ```azurecli
-   az sshkey create --name "mySSHKey" --resource-group "myResourceGroup"
+   az sshkey create --name "mySSHKey" --resource-group $<resource_group_name>
    ```
 
-   or
+   or, use the `ssh-keygen` command:
 
    ```azurecli
    ssh-keygen -t rsa -b 4096 
@@ -49,9 +49,11 @@ To create an SSH key pair (same as Azure AKS), use the following procedure:
 
 1. Retrieve the value of your public key from Azure or from your local machine under **/.ssh/id_rsa.pub**.
 
+For more options, you can either follow [Configure SSH keys for an AKS cluster](/azure/aks/aksarc/configure-ssh-keys) to create SSH keys, or use [Restrict SSH access](/azure/aks/aksarc/restrict-ssh-access) during cluster creation. To access nodes afterward, see [Connect to Windows or Linux worker nodes with SSH](/azure/aks/aksarc/ssh-connect-to-windows-and-linux-worker-nodes).
+
 ## Sign in to Azure
 
-Terraform only supports authenticating to Azure with the Azure CLI using [`az login`](/cli/azure/reference-index#az-login). Authenticating using Azure PowerShell isn't supported. Therefore, while you can use the Azure PowerShell module when doing your Terraform work, you must first [authenticate to Azure](/azure/developer/terraform/authenticate-to-azure):
+Terraform only supports authenticating to Azure with the Azure CLI using [`az login`](/cli/azure/reference-index#az-login). Authenticating using Azure PowerShell isn't supported. Therefore, while you can use the Azure PowerShell module when doing your Terraform work, you must first [authenticate to Azure](/azure/developer/terraform/authenticate-to-azure):
 
 ```azurecli
 az login 
@@ -60,7 +62,7 @@ az login
 ## Implement the Terraform code
 
 1. Create a directory you can use to test the sample Terraform code, and make it your current directory.
-1. In the same directory, create a file named **providers.tf** and paste the following code:
+1. In the same directory, create a file named **providers.tf** and paste the following code. Make sure to replace `<subscription_ID>` with your subscription ID:
 
    ```terraform
    terraform { 
@@ -68,16 +70,17 @@ az login
     required_providers { 
       azapi = { 
         source  = "azure/azapi" 
-        version = "~> 1.13" 
+        version = "~> 2.0" 
       } 
       azurerm = { 
        source  = "hashicorp/azurerm" 
-       version = "~> 3.74" 
+       version = "~> 4.0" 
       } 
      }
     }
   
-    provider "azurerm" { 
+    provider "azurerm" {
+    subscription_id = "<subscription_ID>"
     features { 
      resource_group { 
       prevent_deletion_if_contains_resources = false 
@@ -86,15 +89,15 @@ az login
    }
    ```
 
-1. Create another file named **main.tf** that points to the latest AKS Arc AVM module, and insert the following code. You can read the description and input of the module and add optional parameters as needed. To find the admin group object ID, see [Enable Microsoft Entra authentication for Kubernetes clusters](enable-authentication-microsoft-entra-id.md). You can [follow this guidance](https://github.com/Azure/Edge-infrastructure-quickstart-template/blob/main/doc/AKS-Arc-Admin-Groups.md) to find it in your Azure environment.
+1. Create another file named **main.tf** that points to the latest AKS Arc AVM module, and insert the following code. You can read the comments in the the module and edit parameters as needed. Please make sure all the values are correctly entered to avoid failures during cluster creation. To find the admin group object ID, see [Enable Microsoft Entra authentication for Kubernetes clusters](enable-authentication-microsoft-entra-id.md). You can [follow this guidance](https://github.com/Azure/Edge-infrastructure-quickstart-template/blob/main/doc/AKS-Arc-Admin-Groups.md) to find it in your Azure environment. To enable Azure RBAC, update the corresponding parameter and see [Enable Azure RBAC for Kubernetes Authorization](azure-rbac-local.md) for prerequisites.
 
    ```terraform
    module "aks_arc" { 
    # Make sure to use the latest AVM module version
    source = "Azure/avm-res-hybridcontainerservice-provisionedclusterinstance/azurerm" 
-   version = "~>0.6"
+   version = "~>2.0"
 
-   # Make sure to provide all required parameters  
+   # Make sure to provide all required parameters; for example, location= = "eastus"
    resource_group_id = "<Resource_Group>" 
    location = "<Region>" 
    name = "<Cluster_Name>" 
@@ -104,6 +107,7 @@ az login
    ssh_public_key =  "Your_SSH_Key"
 
    # Optional parameters, update them as needed
+   enable_azure_rbac = false
    enable_workload_identity = false 
    enable_oidc_issuer = false 
    rbac_admin_group_object_ids = ["<Admin_Group_Object_ID>"]
@@ -112,7 +116,7 @@ az login
 
 ## Initialize Terraform
 
-Run [`terraform init`](https://www.terraform.io/docs/commands/init.html) to initialize the Terraform deployment. Make sure to use the `-upgrade` flag to upgrade the necessary provider plugins to the latest version:
+Run [`terraform init`](https://www.terraform.io/docs/commands/init.html) to initialize the Terraform deployment. Make sure to use the `-upgrade` flag to upgrade the necessary provider plugins to the latest version:
 
 ```terraform
 terraform init -upgrade

@@ -3,11 +3,12 @@ title: Add hosting servers for the SQL resource provider
 titleSuffix: Azure Stack Hub
 description: Learn how to add hosting servers for provisioning through the SQL resource provider adapter.
 author: sethmanheim
-ms.topic: article
+ms.topic: how-to
 ms.date: 12/07/2020
 ms.author: sethm
 ms.reviewer: xiaofmao
 ms.lastreviewed: 12/07/2020
+ms.custom: sfi-image-nochange
 
 # Intent: As an Azure Stack operator, I want to add hosting servers to provision through SQL resource provider adapter.
 # Keyword: add hosting servers sql resource provider
@@ -67,7 +68,7 @@ You can create an admin user with lower privileges than a SQL sysadmin. The user
 The following information provides additional security guidance:
 
 * All Azure Stack Hub storage is encrypted using BitLocker, so any SQL instance on Azure Stack Hub will use encrypted blob storage.
-* The SQL Resource Provider fully supports TLS 1.2. Ensure that any SQL Server that's managed through the SQL RP is configured for TLS 1.2 _only_ and the RP will default to that. All supported versions of SQL Server support TLS 1.2. For more information, see [TLS 1.2 support for Microsoft SQL Server](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server).
+* The SQL Resource Provider fully supports TLS 1.2. Ensure that any SQL Server that's managed through the SQL RP is configured for TLS 1.2 _only_ and the RP will default to that. All supported versions of SQL Server support TLS 1.2.
 * Use SQL Server Configuration Manager to set the **ForceEncryption** option to ensure all communications to the SQL server are always encrypted. For more information, see [To configure the server to force encrypted connections](/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine?view=sql-server-2017&preserve-view=true#to-configure-the-server-to-force-encrypted-connections).
 * Ensure any client app is also communicating over an encrypted connection.
 * The RP is configured to trust the certificates used by the SQL Server instances.

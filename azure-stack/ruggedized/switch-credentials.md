@@ -4,7 +4,7 @@ description: Learn how to update switch credentials on a ruggedized Azure Stack 
 author: troettinger
 ms.author: thoroet
 ms.service: azure-stack
-ms.topic: article
+ms.topic: how-to
 ms.date: 05/27/2022
 ms.reviewer: justinha
 ms.lastreviewed: 10/14/2020

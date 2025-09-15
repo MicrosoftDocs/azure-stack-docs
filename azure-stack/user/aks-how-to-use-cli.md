@@ -2,10 +2,10 @@
 title: Use Azure Kubernetes Service on Azure Stack Hub with the CLI
 description: Learn how to use Azure Kubernetes Service on Azure Stack Hub using Azure CLI.
 author: ronmiab
-ms.topic: article
+ms.topic: install-set-up-deploy
 ms.custom:
   - devx-track-azurecli
-ms.date: 10/06/2022
+ms.date: 02/27/2025
 ms.author: robess
 ms.reviewer: waltero
 ms.lastreviewed: 10/06/2022
@@ -16,53 +16,56 @@ ms.lastreviewed: 10/06/2022
 
 # Use Azure Kubernetes Service on Azure Stack Hub with the CLI
 
-This is a guide to get you started using the Azure Kubernetes Service (AKS) service on Azure Stack Hub. This article describes the main set of scenarios to get you familiarized with AKS on Azure Stack Hub. The functionality available in Azure Stack Hub is a [subset](aks-overview.md) of what is available in global Azure.
+This article is a guide to get you started using the Azure Kubernetes Service (AKS) service on Azure Stack Hub. It describes the main set of scenarios to get you familiarized with AKS on Azure Stack Hub. The functionality available in Azure Stack Hub is a [subset](aks-overview.md) of what is available in global Azure.
 
-In the following sections you will:
+In the following sections you:
 
-1.  Complete the prerequisites to use AKS on Azure Stack Hub.
-2.  Complete the lifecycle operations of an AKS cluster using Azure CLI and the Azure Stack Hub user portal.
+1. Complete the prerequisites to use AKS on Azure Stack Hub.
+
+2. Complete the lifecycle operations of an AKS cluster using Azure CLI and the Azure Stack Hub user portal.
 
 ### Install Azure CLI
 
-You will need to install the Azure CLI with AKS support for your machine. Prepare a clean machine Linux or Windows machine to install the preview version of the Azure CLI with AKS support. Ensure the machine does not have Azure CLI installed to avoid conflicting with preview of Azure CLI you will install next. Most of the instructions below assume you are using a Linux VM, but you can find the equivalent steps in Windows in the product documentation.
+You must install the Azure CLI with AKS support for your machine. Prepare a clean machine Linux or Windows machine to install the preview version of the Azure CLI with AKS support. Ensure the machine doesn't have Azure CLI installed to avoid conflicting with preview of Azure CLI you install next. Most of the following instructions assume you're using a Linux VM, but you can find the equivalent steps in Windows in the product documentation.
 
-Don't upgrade Azure CLI after installing the Azure CLI with AKS support. If you do upgrade, it will be replaced by the production ready version that lacks AKS support.
+Don't upgrade Azure CLI after installing the Azure CLI with AKS support. If you do upgrade, it's replaced by the production ready version that lacks AKS support.
+
 ### [Ubuntu](#tab/ubuntu)
 
 For an Ubuntu machine, follow the instructions at [Install the Azure CLI on Linux](/cli/azure/install-azure-cli-linux?pivots=apt).
 
-After you have installed Azure CLI with AKS support, verify that the installation is correct by running the following Azure CLI command:
+After you install Azure CLI with AKS support, verify that the installation is correct by running the following Azure CLI command:
 
 ```azurecli
     az --version
 ```
-This is the output from a Linux machine:
+
+Here is a sample output from a Linux machine:
 
 ![output from a Linux machine](media/aks-how-to-use/output-from-a-linux-machine.png)
 
-Azure CLI should be 2.28.0 or above.
+Azure CLI should be 2.28.0 or later.
 
 ### [Other Linux](#tab/linux)
 
 For other Linux machines, download and install from [Install the Azure CLI on Linux](/cli/azure/install-azure-cli-linux).
 
-After you have installed Azure CLI with AKS support, verify that the installation is correct by running the following Azure CLI command:
+After you install Azure CLI with AKS support, verify that the installation is correct by running the following Azure CLI command:
 
 ```azurecli
     az --version
 ```
 
-This is the output from a Linux machine:
+Here is a sample output from a Linux machine:
 
 ![more output a Linux machine](media/aks-how-to-use/output-from-a-linux-machine.png)
 
-Azure CLI should be 2.28.0 or above.
+Azure CLI should be 2.28.0 or later.
 ### [Windows](#tab/windows)
 
 For a Windows machine, download and install an MSI with the Azure CLI with AKS support from [Install Azure CLI on Windows](/cli/azure/install-azure-cli-windows?tabs=azure-cli).
 
-After you have installed Azure CLI with AKS support, verify that the installation is correct by running the following Azure CLI command:
+After you install Azure CLI with AKS support, verify that the installation is correct by running the following Azure CLI command:
 
 ```azurecli
     az --version
@@ -72,12 +75,12 @@ The following output should be produced in a Windows machine:
 
 ![produced in a windows machine](media/aks-how-to-use/output-from-a-windows-machine.png)
 
-Azure CLI should be 2.28.0 or above.
+Azure CLI should be 2.28.0 or later.
 
 ---
 ### Connect to Azure Stack Hub
 
-1. Connect to your Azure Stack Hub endpoint. You need to use Azure CLI to establish the specific Azure Stack Hub environment to which you are connecting. You can find the instructions at [Connect to Azure Stack Hub](/azure-stack/user/azure-stack-version-profiles-azurecli2?tabs=ad-win#connect-with-azure-cli)
+1. Connect to your Azure Stack Hub endpoint. You need to use Azure CLI to establish the specific Azure Stack Hub environment to which you're connecting. You can find the instructions at [Connect to Azure Stack Hub](/azure-stack/user/azure-stack-version-profiles-azurecli2?tabs=ad-win#connect-with-azure-cli).
 
 2. Register your environment so that Azure CLI can connect to the Azure Stack Hub Resource Manager endpoint for your instance. Update the URLs in the following snippet and run the following command:
 
@@ -108,11 +111,11 @@ Azure CLI should be 2.28.0 or above.
     ```
 
     > [!NOTE]  
-    > If you trigger a **certificate verify failed** error, it may be that the certificate used for the Azure Resource Manager endpoint is not trusted by your client machine. If so, you need to export the certificate used in the Azure Stack Hub endpoints and trust it. You can find instructions at [Export the Azure Stack Hub CA Root Certificate](azure-stack-version-profiles-azurecli2.md).
+    > If you trigger a **certificate verify failed** error, it may be that the certificate used for the Azure Resource Manager endpoint isn't trusted by your client machine. If so, you need to export the certificate used in the Azure Stack Hub endpoints and trust it. You can find instructions at [Export the Azure Stack Hub CA Root Certificate](azure-stack-version-profiles-azurecli2.md).
     > 
     > In particular, for Linux machines see: [Microsoft Entra ID on Linux](azure-stack-version-profiles-azurecli2.md)
 
-6. Set the subscription in your Azure CLI session as the default with:
+6. Use the following command to set the subscription in your Azure CLI session as the default:
 
     ```azurecli  
     az account set --subscription <subscription-id>
@@ -134,9 +137,9 @@ Azure CLI should be 2.28.0 or above.
     az provider register --namespace Microsoft.ContainerService
     ```
 
-9. Rerun step seven to verify the resource provider registration status. The registration can take several minutes to complete. 
+9. Rerun step 7 to verify the resource provider registration status. The registration can take several minutes to complete.
 
-Once those prerequisite steps are completed, you can proceed to test the following scenarios.
+Once those prerequisite steps are completed, you can test the following scenarios.
 
 ## Create an AKS cluster
 
@@ -144,19 +147,19 @@ You can find the global Azure instructions at [Deploy an Azure Kubernetes Servic
 
 ### [Linux containers](#tab/linuxcon)
 
-1.  Create a resource group:
+1. Create a resource group:
 
     ```azurecli
     az group create --name myResourceGroup --location <Azure Stack Hub location>
     ```
 
-2.  Make sure you have a service principal ID ready with contributor permission on your subscription to create clusters in it.
+2. Make sure you have a service principal ID ready with contributor permission on your subscription to create clusters in it.
 
-    1.  To create a service principal (SPN) using Microsoft Entra ID, follow these [instructions](../operator/give-app-access-to-resources.md#create-an-app-registration-that-uses-a-client-secret-credential).
-    2.  To create an SPN using Active Directory Federated Services (AD FS), follow these [instructions](../operator/give-app-access-to-resources.md#create-an-app-registration-that-uses-a-certificate-credential).
-    3.  To assign "Contributor" role to the SPN see [instructions](/azure/active-directory/develop/howto-create-service-principal-portal). Make sure to select the "Contributor" role.
+    1. To create a service principal (SPN) using Microsoft Entra ID, follow these [instructions](../operator/give-app-access-to-resources.md#create-an-app-registration-that-uses-a-client-secret-credential).
+    2. To create an SPN using Active Directory Federated Services (AD FS), follow these [instructions](../operator/give-app-access-to-resources.md#create-an-app-registration-that-uses-a-certificate-credential).
+    3. To assign "Contributor" role to the SPN see [instructions](/azure/active-directory/develop/howto-create-service-principal-portal). Make sure to select the "Contributor" role.
 
-3.  Create an AKS cluster of three agent nodes. Provide values to the parameters below, examples are provided. Run:
+3. Create an AKS cluster of three agent nodes. Provide values for the following parameters, examples are provided. Run:
 
     ```azurecli
     az aks create \
@@ -175,19 +178,21 @@ You can find the global Azure instructions at [Deploy an Azure Kubernetes Servic
     --kubernetes-version 1.20.7
     ```
 
-    The output from this operation will be in json format and contain a specification of the cluster including the ssh public key generated, fully qualified domain name (FQDN) used in the cluster among other properties. Notice that the command will output a text such as this one highlighting the location of the private key: `SSH key files '/home/azureuser/.ssh/id_rsa'` and `'/home/azureuser/.ssh/id_rsa.pub'` have been generated under `\~/.ssh` to allow SSH access to the VM. Store these keys in a safe location to be use in case there is a need to ssh into the VMs as is the case when troubleshooting issues.
+    The output from this operation are in json format and contain a specification of the cluster including the ssh public key generated, fully qualified domain name (FQDN) used in the cluster among other properties. Notice that the command outputs text like this, highlighting the location of the private key: `SSH key files '/home/azureuser/.ssh/id_rsa'` and `'/home/azureuser/.ssh/id_rsa.pub'` are generated under `\~/.ssh` to allow SSH access to the VM. Store these keys in a safe location to be use in case there's a need to ssh into the VMs as is the case when troubleshooting issues.
 
 4. Now you can proceed to repeat the tests for [Scale](#scale-cluster), [deploy an app](aks-how-to-push-an-app-cli.md), and [Delete](#delete-cluster).
+
 ### [Windows containers](#tab/wincon)
 
-1.  Create a resource group
+1. Create a resource group
 
     ```azurecli
         az group create --name myResourceGroup-Win --location <your stamp location>
     ```
 
-2.  Create a Windows Azure Kubernete az login
-3.  Service cluster.
+2. Create an Azure Kubernetes az login.
+
+3. Service cluster.
 
     ```azurecli
     PASSWORD_WIN="************"
@@ -210,41 +215,41 @@ You can find the global Azure instructions at [Deploy an Azure Kubernetes Servic
     --kubernetes-version 1.20.7
     ```
 
-4. Now you can proceed to repeat the tests for [Scale](#scale-cluster), [deploy a Windows app](aks-how-to-push-an-app-cli.md), and [Delete](#delete-cluster).
+4. Now you can repeat the tests for [Scale](#scale-cluster), [deploy a Windows app](aks-how-to-push-an-app-cli.md), and [Delete](#delete-cluster).
 
 ---
 
 ## Connect to the cluster
 
-1.  To manage a Kubernetes cluster, you use **kubectl**, the Kubernetes command-line client. To install **kubectl** locally, use the az aks install-cli command (you may need to use 'sudo' at te beginning to have permission to install it):
+1. To manage a Kubernetes cluster, you use **kubectl**, the Kubernetes command-line client. To install **kubectl** locally, use the `az aks install-cli` command (you may need to use 'sudo' at the beginning to have permission to install it):
 
     ```azurecli  
     az aks install-cli
     ```
 
-2.  To configure **kubectl** to connect to your Kubernetes cluster, use the `az aks get-credentials` command. This command downloads credentials and configures the Kubernetes CLI to use them.
+2. To configure **kubectl** to connect to your Kubernetes cluster, use the `az aks get-credentials` command. This command downloads credentials and configures the Kubernetes CLI to use them.
 
     ```azurecli  
     az aks get-credentials --resource-group myResourceGroup --name myakscluster --admin
     ```
 
-3.  To verify the connection to your cluster, use the **kubectl** get command to return a list of the cluster nodes.
+3. To verify the connection to your cluster, use the **kubectl** get command to return a list of the cluster nodes.
 
     ```bash
     kubectl get nodes
     ```
 
-![verify the connection to your cluster](media/aks-how-to-use/verify-the-connection-to-your-cluster.png)
+   ![verify the connection to your cluster](media/aks-how-to-use/verify-the-connection-to-your-cluster.png)
 
 ## Scale cluster
 
-Another cluster management task is scaling a cluster. You can scale a cluster anytime after it has been created by using the az aks scale command. To scale the cluster from the initial three nodes to 4, run:
+Another cluster management task is scaling a cluster. You can scale a cluster anytime after it' created by using the `az aks scale` command. To scale the cluster from the initial three nodes to 4, run:
 
 ```azurecli  
     az aks scale --resource-group myResourceGroup --name myakscluster --node-count 4
 ```
 
-When the cluster has successfully scaled, the output will contain an "agentPoolProfiles" similar to the following example:
+When the cluster is successfully scaled, the output contains an "agentPoolProfiles" similar to the following example:
 
 ```json
     "agentPoolProfiles": [
@@ -274,19 +279,24 @@ When the cluster has successfully scaled, the output will contain an "agentPoolP
         }
     ]
 ```
+
 ## Delete cluster
 
-Once the previous operations have been performed, you can proceed to delete the cluster. Run:
+Once the previous operations are performed, you can delete the cluster. Run:
 
 ```azurecli
 az aks delete --name myakscluster --resource-group myResourceGroup
 ```
 
-## Create AKS cluster with custom VNET
+## Create AKS cluster with custom virtual network
 
-Creating a cluster to be deployed in a user-provided network is a common scenario. Planning the network configuration takes some preparation. Also, notice that with AKS the default network plugin is Azure CNI, not Kubenet as is the case with AKS engine. With Azure CNI every pod gets an IP address from the subnet and can be accessed directly (without the need for a Routing table as is the case with Kubenet). These IP addresses must be unique across your network space and must be planned. The following article walks you through the process of planning for your custom VNET deployment. You can find various network configurations that work for your needs and test them. For an initial test the following two steps will show you the basic process:
+Creating a cluster to be deployed in a user-provided network is a common scenario. Planning the network configuration takes some preparation. Also, notice that with AKS the default network plugin is Azure CNI, not Kubenet as is the case with AKS engine. 
 
-1.  Follow the instructions in [this article](/azure/aks/configure-azure-cni) to plan the deployment using Azure CNI. For example, you could use the portal to create a VNet named "myAKSVnet" with IP range 10.0.0.0/8 with subnet "myAKSSubnet" and IP range 10.240.0.0/16 in a Resource Group named "myTest-rg". Then use the next step for the creation of the cluster.
+With Azure CNI, every pod gets an IP address from the subnet and can be accessed directly (without the need for a Routing table as is the case with Kubenet). These IP addresses must be unique across your network space and must be planned.
+
+The following article walks you through the process of planning for your custom virtual network deployment. You can find various network configurations that work for your needs and test them. For an initial test, the following two steps show you the basic process:
+
+1. Follow the instructions in [this article](/azure/aks/configure-azure-cni) to plan the deployment using Azure CNI. For example, you could use the portal to create a virtual network named "myAKSVnet" with IP range 10.0.0.0/8 with subnet "myAKSSubnet" and IP range 10.240.0.0/16 in a Resource Group named "myTest-rg." Then use the next step for the creation of the cluster.
 
     ```azurecli
     az network vnet create \
@@ -297,7 +307,7 @@ Creating a cluster to be deployed in a user-provided network is a common scenari
         --subnet-prefix 10.240.0.0/16    
     ```
 
-2.  Note the cluster command provided in the Azure article works fine when deploying on Azure, to deploy to Azure Stack Hub you need to specify extra parameters as in the following example. The vnet subnet ID should look like '/subscriptions/dfdfdff-5dfdf-dfdf-dfdf-dfdfdfdfdfd/resourceGroups/myTest-rg/providers/Microsoft.Network/virtualNetworks/myAKSVnet/subnets/myAKSSubnet':
+2. Note the cluster command provided in the Azure article works fine when deploying on Azure, to deploy to Azure Stack Hub you need to specify extra parameters as in the following example. The virtual network subnet ID should look like '/subscriptions/dfdfdff-5dfdf-dfdf-dfdf-dfdfdfdfdfd/resourceGroups/myTest-rg/providers/Microsoft.Network/virtualNetworks/myAKSVnet/subnets/myAKSSubnet':
 
     ```azurecli  
     az aks create  \ 
@@ -320,18 +330,16 @@ Creating a cluster to be deployed in a user-provided network is a common scenari
     --location redmond
     ```
 
-2.  Follow the instructions on the section "Connect to the cluster" to connect to the Kubernetes cluster and deploy your applications.
+3. Follow the instructions in the section "Connect to the cluster" to connect to the Kubernetes cluster and deploy your applications.
 
 ## Consistency check
 
 Consistency check between Azure and Azure Stack Hub
 
-1.  Select a combination of commands from the ones tested above, from the "Command Reference" section below, or from your own day-to-day scripts.
-2.  Apply them to Azure, and later to Azure Stack Hub. Note any discrepancies not expected and provide [feedback](https://aka.ms/aks-ash-feedback).
+1. Select a combination of commands from the ones tested above, from the "Command Reference" section, or from your own day-to-day scripts.
 
-
-
+2. Apply them to Azure, and later to Azure Stack Hub. Note any discrepancies not expected and provide [feedback](https://aka.ms/aks-ash-feedback).
 
 ## Next steps
 
-[Learn about AKS on Azure Stack Hub](aks-overview.md)
+- [Learn about AKS on Azure Stack Hub](aks-overview.md).

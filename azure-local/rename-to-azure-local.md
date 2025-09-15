@@ -3,9 +3,9 @@ title: Renaming Azure Stack HCI to Azure Local
 description: This article provides the renaming information for Azure Stack HCI to Azure Local.
 author: alkohli
 ms.author: alkohli
-ms.topic: conceptual
+ms.topic: concept-article
 ms.service: azure-local
-ms.date: 11/16/2024
+ms.date: 04/08/2025
 ---
 
 # New name for Azure Stack HCI
@@ -51,7 +51,7 @@ The following table lists what isn't impacted by the rename:
 | Azure Stack HCI APIs/namespace  | The Azure Stack HCI APIs/namespaces remain the same. No breaking changes were made and you won’t be required to update the code. |
 | Azure Stack HCI resource provider        | The `Microsoft.AzureStackHCI` resource provider name remains the same. |
 | Azure Stack HCI PowerShell cmdlets | The Azure Stack HCI PowerShell cmdlets remain the same. |
-| Azure Stack HCI CLI | The Azure CLI commands for Azure Stack HCI and Arc VM management remain the same.  |
+| Azure Stack HCI CLI | The Azure CLI commands for Azure Stack HCI and management of Azure Local VMs remain the same.  |
 | Azure Stack HCI OS  | The Azure Stack HCI operating system (OS), which is a component of Azure Local, remains the same. |
 | Azure Stack HCI OEM license | The license name remains the same. |
 | Azure Stack HCI documentation | The text changes for Azure Stack HCI documentation (on Microsoft Learn) were made for the entire portfolio including screenshots and conceptual diagrams. <br><br> Documentation for older versions of Azure Stack HCI; for example, 22H2 only, continues to reference Azure Stack HCI, and don't reflect the name change. <br><br> Release notes and security updates that are more than 6 months old also do not reflect the name change.|
@@ -84,7 +84,7 @@ The Azure billing meters for Azure Stack HCI will be renamed with meter ID updat
 
 ### Are PowerShell cmdlets and Azure CLI commands being renamed?
 
-No. Both the PowerShell cmdlets and Azure CLI commands for Arc VM management and for Azure Stack HCI system, service, and management remain the same.
+No. Both the PowerShell cmdlets and Azure CLI commands for Azure Local virtual machines (VMs) enabled by Arc and for Azure Stack HCI system, service, and management remain the same.
 
 ### How and when are customers being notified?
 

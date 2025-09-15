@@ -7,11 +7,14 @@ ms.topic: quickstart
 ms.date: 2/1/2021
 ms.author: sethm
 ms.lastreviewed: 01/14/2020
+ms.custom:
+  - mode-api
+  - devx-track-azurecli
+  - sfi-image-nochange
 
 # Intent: As an Azure Stack user, I want to create a Windows  virtual server using CLI.
 # Keyword: windows virtual machine CLI
 
-ms.custom: mode-api, devx-track-azurecli
 ---
 
 

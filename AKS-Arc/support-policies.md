@@ -1,8 +1,8 @@
 ---
-title: Support policies for AKS enabled by Azure Arc
-description: Learn about AKS enabled by Arc support policies, shared responsibility, and features that are in preview.
-ms.topic: article
-ms.date: 07/11/2024
+title: Support policies for AKS on Windows Server
+description: Learn about AKS on Windows Server support policies, shared responsibility, and features that are in preview.
+ms.topic: concept-article
+ms.date: 04/03/2025
 author: sethmanheim
 ms.author: sethm
 ms.lastreviewed: 05/03/2023
@@ -13,11 +13,11 @@ ms.reviewer: rbaziwane
 # Keyword: support policies AKS technical support control plane service updates
 ---
 
-# Support policies for AKS enabled by Azure Arc
+# Support policies for AKS on Windows Server
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-This article provides details about technical support policies and limitations for AKS enabled by Arc. The article also describes cluster node management, control plane components, third-party open-source components, and security or patch management.
+This article provides details about technical support policies and limitations for AKS on Windows Server. The article also describes cluster node management, control plane components, third-party open-source components, and security or patch management.
 
 ## Service updates and releases
 
@@ -59,7 +59,6 @@ For information about the supported Kubernetes versions, see [Supported Kubernet
 
 AKS Arc follows the platform version support timeframes for those products. That is, AKS Arc is not supported on unsupported versions of those products. For more information, see their support policies:
 
-- [Azure Local supported versions information](/azure/azure-local/release-information)
 - [Windows Server 2019 Datacenter and above supported versions](/windows-server/get-started/windows-server-release-info)
 
 ## Shared responsibility
@@ -157,16 +156,16 @@ As previously described, manually de-allocating all cluster nodes via the Hyper-
 
 Clusters that are stopped for more than 90 days can no longer be updated. The control planes for clusters in this state are out of support after 30 days, and they can't be updated to the latest version.
 
-The management cluster in AKS Arc must be able to connect to Azure via HTTPS outbound traffic to well-known Azure endpoints at least every 30 days to maintain day 2 operations such as upgrade and node pool scaling. If the management cluster is disconnected within the 30 day period, workloads continue to run and work as expected until the management cluster and or Azure Local re-connect and synchronize to Azure. Once re-connected, all day 2 operations should recover and continue as expected. See [Azure Local Azure connectivity requirements](/azure/azure-local/concepts/firewall-requirements) for more information. After 30 days, Azure Local prevents the creation of new virtual machines.  
+The management cluster in AKS Arc must be able to connect to Azure via HTTPS outbound traffic to well-known Azure endpoints at least every 30 days to maintain day 2 operations such as upgrade and node pool scaling. If the management cluster is disconnected within the 30 day period, workloads continue to run and work as expected until the management cluster and or Windows Server re-connect and synchronize to Azure. Once re-connected, all day 2 operations should recover and continue as expected.
 
 If the cluster is running on Windows Server 2019 or Windows Server 2022, the underlying host platform does not have the 30-day recurring connection requirement.
 
 > [!NOTE]
-> The start/end of the 30-day period might be different from the validity period on AKS Arc and Azure Local. Manually stopping or de-allocating all cluster nodes via the Hyper-V APIs/CLI/MMC for prolonged periods greater than 30 days and outside of regular maintenance procedures renders the cluster out of support.
+> The start/end of the 30-day period might be different from the validity period on AKS Arc and Windows Server. Manually stopping or de-allocating all cluster nodes via the Hyper-V APIs/CLI/MMC for prolonged periods greater than 30 days and outside of regular maintenance procedures renders the cluster out of support.
 
 ## Deleted or suspended subscription
 
-If your Azure subscription is suspended or deleted, your AKS cluster(s) are out of support after 60 days, unless the subscription is reinstated before the 60-day limit is reached. All other limitations described previously also apply. Once the subscription is deleted, the cluster connection to Azure cannot be recovered and Azure Local and AKS Arc must be re-deployed to be able to reconnect to Azure.
+If your Azure subscription is suspended or deleted, your AKS cluster(s) are out of support after 60 days, unless the subscription is reinstated before the 60-day limit is reached. All other limitations described previously also apply. Once the subscription is deleted, the cluster connection to Azure cannot be recovered and AKS Arc must be re-deployed to be able to reconnect to Azure.
 
 ## Unsupported preview and beta Kubernetes features
 
@@ -180,12 +179,12 @@ Features in public preview receive "best effort" support, as these features are 
 
 ## Upstream bugs and issues
 
-Given the speed of development in the upstream Kubernetes project, bugs invariably arise. Some of these bugs can't be patched or worked around within the AKS Arc system. Instead, bug fixes require larger patches to upstream projects (such as Kubernetes, node or agent operating systems, and kernel). For components that Microsoft owns (such as the cluster API providers for Azure Local), AKS Arc and Azure personnel are committed to fixing issues upstream in the community.
+Given the speed of development in the upstream Kubernetes project, bugs invariably arise. Some of these bugs can't be patched or worked around within the AKS Arc system. Instead, bug fixes require larger patches to upstream projects (such as Kubernetes, node or agent operating systems, and kernel). For components that Microsoft owns (such as the cluster API providers), AKS Arc and Azure personnel are committed to fixing issues upstream in the community.
 
 When a technical support issue is root-caused by one or more upstream bugs, AKS Arc support and engineering teams will do the following:
 
 - Identify and link the upstream bugs with any supporting details to help explain why this issue affects your cluster or workload. Customers receive links to the required repositories so they can watch the issues and see when a new release will provide fixes.
-- Provide potential workarounds or mitigation. If the issue can be mitigated, a [known issue is filed in the AKS on Azure Local and Windows Server repository](https://github.com/Azure/aksArc/issues?q=is%3Aopen+is%3Aissue+label%3Aknown-issue). The known-issue filing explains:
+- Provide potential workarounds or mitigation. If the issue can be mitigated, a [known issue is filed in the AKS on Windows Server repository](https://github.com/Azure/aksArc/issues?q=is%3Aopen+is%3Aissue+label%3Aknown-issue). The known-issue filing explains:
   - The issue, including links to upstream bugs.
   - The workaround and details about an upgrade or another option for the solution.
   - Rough timelines for the issue's inclusion, based on the upstream release cadence.

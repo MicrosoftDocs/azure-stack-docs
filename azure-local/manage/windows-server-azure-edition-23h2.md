@@ -1,24 +1,24 @@
 ---
 title: Deploy Windows Server Azure Edition VMs on Azure Local, version 23H2
 description: Learn how to deploy Windows Server Azure Edition VMs on Azure Local, version 23H2 starting with an image in Azure Local Marketplace or Azure Marketplace.
-ms.topic: conceptual
+ms.topic: install-set-up-deploy
 author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
 ms.custom:
   - devx-track-azurecli
-ms.date: 10/22/2024
+ms.date: 03/19/2025
 ---
 
-# Deploy Windows Server Azure Edition VMs on Azure Local, version 23H2
+# Deploy Windows Server Azure Edition VMs on Azure Local
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
-The Windows Server Azure Edition operating system can be deployed as a guest virtual machine (VM) on Azure Local, version 23H2. This article describes how to deploy and hotpatch Windows Server Azure Edition VMs starting with an image in Azure Local marketplace or an image in Azure Marketplace.
+The Windows Server Azure Edition operating system can be deployed as a guest virtual machine (VM) on Azure Local 2311.2 or later. This article describes how to deploy and hotpatch Windows Server Azure Edition VMs starting with an image in Azure Local marketplace or an image in Azure Marketplace.
 
 > [!NOTE]
-> Both Azure Arc VMs and non-Arc VMs are supported.
+> Both Azure Local VMs enabled by Azure Arc and unmanaged VMs are supported.
 
 Azure Local is the only on-premises platform to run Windows Server Azure Edition with [Azure Automanage](/azure/automanage/automanage-windows-server-services-overview). Azure Automanage brings new capabilities specifically to Windows Server Azure Edition, including [Hotpatch](/azure/automanage/automanage-hotpatch), [SMB over QUIC](/windows-server/storage/file-server/smb-over-quic), and [Extended network for Azure](/windows-server/manage/windows-admin-center/azure/azure-extended-network).
 
@@ -37,7 +37,7 @@ To use Windows Server Azure Edition on your Azure Local environment, here are a 
     - Apply AVMA client key on every Azure Local machine using the `Set-VMAutomaticActivation <product key>` cmdlet.
     To learn more, see [Activate Windows Server subscription](vm-activate.md#activate-windows-server-subscription).
 
-  - **Bring Your Own License (BYOL)**: If you have a valid Windows Server Datacenter license with active Software Assurance (SA), you can use [AVMA](vm-activate.md#activate-azure-hybrid-benefit-ahb-through-avma) or [KMS](/windows-server/get-started/kms-client-activation-keys) for guest activation.
+  - **Bring Your Own License (BYOL)**: If you have a valid Windows Server Datacenter license with active Software Assurance (SA), you can use [AVMA](vm-activate.md#activate-azure-hybrid-benefit-through-avma) or [KMS](/windows-server/get-started/kms-client-activation-keys) for guest activation.
 
    > [!Tip]
    > If you already have Windows Server Datacenter licenses with active Software Assurance, you can also turn on Windows Server subscription at no additional cost through [Azure Hybrid Benefit](../concepts/azure-hybrid-benefit.md?tabs=azureportal). This is more convenient and allows you to save more.
@@ -57,7 +57,7 @@ You can provision a Windows Server Azure Edition VM using an Azure Local Marketp
 
 You do this by following these steps:
 
-1. Deploy [Azure Arc VM management](azure-arc-vm-management-overview.md#) on Azure Local.
+1. Deploy [Azure Local VM management](azure-arc-vm-management-overview.md#) on Azure Local.
 
 1. Learn about how certain [Azure Marketplace images](virtual-machine-image-azure-marketplace.md) can now be used to create VMs on Azure Local.
 

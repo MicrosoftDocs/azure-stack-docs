@@ -2,8 +2,8 @@
 title: Out of stock detection using Azure and Azure Stack Edge
 description: Learn how to use Azure and Azure Stack Edge services to implement out of stock detection.
 author: ronmiab 
-ms.topic: article
-ms.date: 05/24/2021
+ms.topic: how-to
+ms.date: 04/25/2025
 ms.author: robess
 ms.reviewer: anajod
 ms.lastreviewed: 05/24/2021
@@ -19,7 +19,7 @@ This pattern illustrates how to determine if shelves have out of stock items usi
 
 ## Context and problem
 
-Physical retail stores lose sales because when customers look for an item, it's not present on the shelf. However, the item could have been in the back of the store and not been restocked. Stores would like to use their staff more efficiently and get automatically notified when items need restocking.
+Physical retail stores lose sales because when customers look for an item, it's not present on the shelf. However, the item could have been in the back of the store and not been restocked. Stores would like to use their staff more efficiently and get automatically notified when items need to restock.
 
 ## Solution
 
@@ -58,7 +58,7 @@ Consider the following points when deciding how to implement this solution:
 
 ### Scalability
 
-Most machine learning models can only run at a certain number of frames per second, depending on the provided hardware. Determine the optimal sample rate from your camera(s) to ensure that the ML pipeline doesn't back up. Different types of hardware will handle different numbers of cameras and frame rates.
+Most machine learning models can only run at a certain number of frames per second, depending on the provided hardware. Determine the optimal sample rate from your camera to ensure that the ML pipeline doesn't back up. Different types of hardware handle different numbers of cameras and frame rates.
 
 ### Availability
 

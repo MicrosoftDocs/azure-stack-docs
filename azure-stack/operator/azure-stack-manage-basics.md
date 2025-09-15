@@ -2,8 +2,8 @@
 title: Azure Stack Hub administration basics 
 description: Learn the basics of Azure Stack Hub administration.
 author: sethmanheim
-ms.topic: article
-ms.date: 01/28/2025
+ms.topic: how-to
+ms.date: 03/06/2025
 ms.author: sethm
 
 # Intent: As an Azure Stack operator, I want to learn the Azure Stack administration basics so I can get my users what they need.
@@ -46,17 +46,16 @@ These services require additional configuration before you can make them availab
 
 ### Service roadmap
 
-Azure Stack Hub continues to add support for Azure services. For the projected roadmap, see the [Azure Stack Hub: An extension of Azure](https://azure.microsoft.com/resources/videos/azure-friday-azure-stack-an-extension-of-azure/) whitepaper. You can also monitor the [Azure Stack Hub blog posts](https://techcommunity.microsoft.com/t5/azure-stack-blog/bg-p/AzureStackBlog) for new announcements.
+Azure Stack Hub continues to add support for Azure services. For the projected roadmap, see the [Azure Stack Hub: An extension of Azure](https://azure.microsoft.com/products/azure-stack/hub/) whitepaper. You can also monitor the [Azure Stack Hub blog posts](https://techcommunity.microsoft.com/t5/azure-stack-blog/bg-p/AzureStackBlog) for new announcements.
 
 ## What account should I use?
 
-There are a few account considerations to be aware of when managing Azure Stack Hub. This is particularly true in deployments that use Windows Server Active Directory Federation Services (AD FS) as the identity provider instead of Microsoft Entra ID. The following account considerations apply to both Azure Stack Hub integrated systems and ASDK deployments:
+There are a few account considerations to be aware of when managing Azure Stack Hub. This is particularly true in deployments that use Windows Server Active Directory Federation Services (AD FS) as the identity provider instead of Microsoft Entra ID. The following account considerations apply to Azure Stack Hub integrated systems deployments:
 
 |Account|Microsoft Entra ID|AD FS|
 |-----|-----|-----|
-|Local Administrator (.\Administrator)|ASDK host administrator.|ASDK host administrator.|
-|AzureStack\AzureStackAdmin|ASDK host administrator.<br><br>Can be used to sign in to the Azure Stack Hub administrator portal.<br><br>Access to view and administer Service Fabric rings.|ASDK host administrator.<br><br>No access to the Azure Stack Hub administrator portal.<br><br>Access to view and administer Service Fabric rings.<br><br>No longer owner of the Default Provider Subscription (DPS).|
-|AzureStack\CloudAdmin|Can access and run permitted commands within the privileged endpoint.|Can access and run permitted commands within the privileged endpoint.<br><br>Can't sign in to the ASDK host.<br><br>Owner of the Default Provider Subscription (DPS).|
+|AzureStack\AzureStackAdmin|Can be used to sign in to the Azure Stack Hub administrator portal.<br><br>Access to view and administer Service Fabric rings.|No access to the Azure Stack Hub administrator portal.<br><br>Access to view and administer Service Fabric rings.<br><br>No longer owner of the Default Provider Subscription (DPS).|
+|AzureStack\CloudAdmin|Can access and run permitted commands within the privileged endpoint.|Can access and run permitted commands within the privileged endpoint.<br><br>Owner of the Default Provider Subscription (DPS).|
 |Microsoft Entra Application Administrator|Used during installation.<br><br>Owner of the Default Provider Subscription (DPS).|Not applicable.|
 
 [!INCLUDE [CloudAdmin backup account warning](../includes/warning-cloud-admin-backup-account.md)]
@@ -101,7 +100,6 @@ Here is a list of daily, weekly, and monthly tasks for an operator:
 # [Monthly](#tab/monthly)
 
 1. Apply monthly update packages (Microsoft and OEM).
-1. Validate backup using the ASDK.
 1. Manage Azure Stack Hub Marketplace (keep current).
 1. Reclaim storage capacity.
 
@@ -132,8 +130,6 @@ There's information your users must understand before they use services and buil
 The information in these articles summarizes the differences between a service in Azure and Azure Stack Hub. It supplements the information that's available for an Azure service in the global Azure documentation.
 
 ### Connect to Azure Stack Hub as a user
-
-In an ASDK environment, if a user doesn't use Remote Desktop to connect to the ASDK host, they can configure a virtual private network (VPN) connection to connect to Azure Stack Hub. See [Connect to Azure Stack Hub](../asdk/asdk-connect.md).
 
 Your users want to know how to [access the user portal](../user/azure-stack-use-portal.md) or how to connect through PowerShell. In an integrated systems environment, the user portal address varies per deployment. You must provide your users with the correct URL.
 

@@ -3,17 +3,18 @@ title: Install Azure Stack HCI operating system, version 23H2
 description: Learn how to install the Azure Stack HCI operating system, version 23H2 on each machine of your system.
 author: alkohli
 ms.topic: how-to
-ms.date: 02/20/2025
+ms.date: 05/29/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
+ms.custom: sfi-image-nochange
 ---
 
-# Install the Azure Stack HCI operating system, version 23H2
+# Install the Azure Stack HCI operating system
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
-This article describes the steps needed to install the Azure Stack HCI operating system, version 23H2 locally on your Azure Local machines.
+This article describes the steps needed to install the Azure Stack HCI operating system locally on your Azure Local machines.
 
 ## Prerequisites
 
@@ -21,11 +22,11 @@ Before you begin, make sure you do the following steps:
 
 - Satisfy the [prerequisites](./deployment-prerequisites.md).
 - Prepare your [Active Directory](./deployment-prep-active-directory.md) environment.
-- Make sure to keep a password handy to use to sign in to the operating system. This password must conform to the length and complexity requirements. Use a password that is at least 12 characters long and contains a lowercase character, an uppercase character, a numeral, and a special character.
+- Make sure to keep a password handy to use to sign in to the operating system. This password must conform to the length and complexity requirements. Use a password that is at least 14 characters long and contains a lowercase character, an uppercase character, a numeral, and a special character.
 
 ## Boot and install the operating system
 
-To install the operating system, version 23H2, follow these steps:
+To install the operating system, follow these steps:
 
 1. [Download the Azure Stack HCI operating system from the Azure portal](./download-23h2-software.md).
 
@@ -65,13 +66,21 @@ To install the operating system, version 23H2, follow these steps:
 1. At the **Enter new credential** for Administrator prompt, enter a new password.
 
     > [!IMPORTANT]
-    > Make sure that the local administrator password follows Azure password length and complexity requirements. Use a password that is at least 12 characters long and contains a lowercase character, an uppercase character, a numeral, and a special character.
+    > Make sure that the local administrator password follows Azure password length and complexity requirements. Use a password that is at least 14 characters long and contains a lowercase character, an uppercase character, a numeral, and a special character.
 
     Enter the password again to confirm it, then press **Enter**.
 
 1. At the **Your password has been changed** confirmation prompt, press **Enter**.
 
    :::image type="content" source="media/deployment-install-os/azure-stack-hci-admin-password-changed.png" alt-text="Screenshot of the changed password confirmation prompt." lightbox="media/deployment-install-os/azure-stack-hci-admin-password-changed.png":::
+
+## Install drivers and firmware
+
+To install the latest drivers and firmware, follow these steps:
+
+1. Install the latest supported drivers and firmware as per the instructions provided by your hardware manufacturer. After the installation is complete, restart your machines.
+
+1. Perform this step only if your hardware partner provides an SBE. Copy the SBE to each machine that you intend to cluster. Place the SBE content at *C:\SBE* to ensure that it is detected and used during deployment. For more information, see [Azure Local solution builder extension](../concepts/system-requirements-23h2.md#hardware-requirements).
 
 Now you're ready to use the Server Configuration tool (SConfig) to perform important tasks.
 
@@ -88,11 +97,6 @@ To use SConfig, sign in to the machine running the Azure Stack HCI operating sys
 > - Machines must not be joined to Active Directory before deployment.
 
 Follow these steps to configure the operating system using SConfig:
-
-1. Install the latest drivers and firmware as per the instructions provided by your hardware manufacturer. You can use SConfig to run driver installation apps. After the installation is complete, restart your machines.
-
-    > [!IMPORTANT]
-    > If your hardware partner provides a solution builder extension (SBE), copy it to each machine that you intend to cluster. Place the SBE content at *C:\SBE* to ensure that it is detected and used during deployment. For more information, see [Azure Local solution builder extension](../concepts/system-requirements-23h2.md#hardware-requirements).
 
 1. Configure networking as per your environment. You can configure the following optional settings:
 
@@ -140,7 +144,7 @@ Follow these steps to configure the operating system using SConfig:
 7. Set the local administrator credentials to be identical across all machines.
 
     > [!NOTE]
-    > - Make sure that the local administrator password follows Azure password length and complexity requirements. Use a password that is at least 12 characters long and contains a lowercase character, an uppercase character, a numeral, and a special character.
+    > - Make sure that the local administrator password follows Azure password length and complexity requirements. Use a password that is at least 14 characters long and contains a lowercase character, an uppercase character, a numeral, and a special character.
     > - Do not join the machines with the Azure Stack HCI operating system installed, to the Active Directory domain prior to cloud deployment. The machines are automatically joined to a domain during the [Deployment via Azure portal](./deploy-via-portal.md).
 
 ## Install required Windows roles

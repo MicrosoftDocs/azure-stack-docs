@@ -4,7 +4,7 @@ description: Learn how to uninstall AKS Edge Essentials.
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
-ms.date: 07/11/2024
+ms.date: 03/10/2025
 ms.custom:
   - template-how-to
   - devx-track-azurecli
@@ -22,7 +22,7 @@ If you used `Connect-AideArcKubernetes` to connect to Azure Arc, run `Disconnect
 Disconnect-AideArcKubernetes
 ```
 
-If you used `Connect-AksEdgeArc` to connect to Arc, run `Disconnect-AksEdgeArc` to disconnect your cluster from Azure Arc:
+Run `Disconnect-AksEdgeArc` to disconnect your cluster from Azure Arc:
 
 ```powershell
 Disconnect-AksEdgeArc -JsonConfigFilePath .\aksedge-config.json

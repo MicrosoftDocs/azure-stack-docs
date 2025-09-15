@@ -1,7 +1,7 @@
 ---
 title: Scale an Azure Kubernetes Service cluster
-description: Learn how to scale the number of nodes in a Kubernetes cluster in AKS enabled by Azure Arc.
-ms.topic: article
+description: Learn how to scale the number of nodes in a Kubernetes cluster in AKS on Windows Server.
+ms.topic: how-to
 ms.date: 06/25/2024
 author: sethmanheim
 ms.author: sethm 
@@ -14,7 +14,7 @@ ms.author: sethm
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-If the resource needs of your applications change in AKS enabled by Azure Arc, you can manually scale a Kubernetes cluster to run a different number of control plane nodes and worker nodes. You must scale the control plane nodes and worker nodes separately.
+If the resource needs of your applications change in AKS on Windows Server, you can manually scale a Kubernetes cluster to run a different number of control plane nodes and worker nodes. You must scale the control plane nodes and worker nodes separately.
 
 ## Scale control plane nodes
 

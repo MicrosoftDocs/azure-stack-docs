@@ -2,9 +2,8 @@
 title: Recover from catastrophic data loss in Azure Stack Hub 
 description: Learn how to recover and restore your infrastructure data in Azure Stack Hub after catastrophic data loss.
 author: sethmanheim
-
 ms.topic: article
-ms.date: 10/23/2020
+ms.date: 03/06/2025
 ms.author: sethm
 ms.reviewer: hectorl
 ms.lastreviewed: 10/23/2020
@@ -51,19 +50,15 @@ If there's a disaster that renders the hardware unusable, redeployment is only p
 
 Azure Stack Hub supports a type of deployment called cloud recovery mode. This mode is used only if you choose to recover Azure Stack Hub after a disaster or product bug rendered the solution unrecoverable. This deployment mode doesn't recover any of the user data stored in the solution. The scope of this deployment mode is limited to restoring the following data:
 
- - Deployment inputs
- - Internal identity service data
- - Federated identify configuration (ADFS deployments).
- - Root certificates used by internal certificate authority.
- - Azure Resource Manager configuration user data, such as subscriptions, plans, offers, resource groups, tags, storage quotas, network quotas, and compute resources.
- - Key Vault secrets and vaults.
- - RBAC policy assignments and role assignments.
+- Deployment inputs
+- Internal identity service data
+- Federated identify configuration (AD FS deployments).
+- Root certificates used by internal certificate authority.
+- Azure Resource Manager configuration user data, such as subscriptions, plans, offers, resource groups, tags, storage quotas, network quotas, and compute resources.
+- Key Vault secrets and vaults.
+- RBAC policy assignments and role assignments.
 
 None of the user Infrastructure as a Service (IaaS) or Platform as a Service (PaaS) resources are recovered during deployment. These losses include IaaS VMs, storage accounts, blobs, tables, network configuration, and so on. The purpose of cloud recovery is to ensure your operators and users can sign back in to the portal after deployment is complete. Users signing back in won't see any of their resources. Users have their subscriptions restored and along with that the original plans, offers, and policies defined by the admin. Users signing back in to the system operate under the same constraints imposed by the original solution before the disaster. After cloud recovery completes, the operator can manually restore value-add and third-party RPs and associated data.
-
-## Validate backups 
-
-You can use ASDK to test a backup to confirm that the data is valid and usable. For more information, see [Use the ASDK to validate an Azure Stack backup](../asdk/asdk-validate-backup.md).
 
 ## Next steps
 

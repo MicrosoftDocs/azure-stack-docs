@@ -3,7 +3,7 @@ title: Upgrade Azure Stack HCI OS, version 22H2 to version 23H2 via Windows Admi
 description: Learn how to upgrade Azure Stack HCI OS, version 22H2 to version 23H2 using Windows Admin Center.
 author: alkohli
 ms.topic: how-to
-ms.date: 02/03/2025
+ms.date: 06/06/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -15,11 +15,11 @@ ms.service: azure-local
 
 [!INCLUDE [end-of-service-22H2](../includes/end-of-service-22h2.md)]
 
-This article describes how to upgrade the operating system (OS) version 22H2 to version 23H2 on your Azure Local via the Windows Admin Center.
+This article describes how to upgrade the operating system (OS) for Azure Local from version 22H2 to version 23H2 via the Windows Admin Center. This is the first step in the upgrade process, which upgrades only the OS.
 
 While the recommended method is to [Upgrade Azure Stack HCI OS, version 22H2 to version 23H2 via PowerShell](./upgrade-22h2-to-23h2-powershell.md), you can also upgrade via Windows Admin Center or other methods.
 
-Throughout this article, we refer to OS version 23H2 as the new version and version 22H2 as the old version.
+Throughout this article, we refer to OS version 23H2 as the *new* version and version 22H2 as the *old* version.
 
 > [!IMPORTANT]
 > To keep your Azure Local service in a supported state, you have up to six months to install this new OS version. The update applies to all Azure Local running version 22H2. We strongly recommend that you install this version as soon as it becomes available.
@@ -31,6 +31,7 @@ The Azure Stack HCI operating system update is available via Windows Update and 
 To upgrade the OS on your Azure Local, follow these high-level steps:
 
 1. [Complete the prerequisites](#complete-prerequisites).
+1. [Update registry keys.](#step-0-update-registry-keys)
 1. [Connect to the Azure Local, version 22H2](#step-1-connect-to-azure-local-via-windows-admin-center).
 1. [Check for the available updates using Windows Admin Center.](#step-2-install-operating-system-and-hardware-updates-using-windows-admin-center)
 1. [Install the new OS, hardware and extension updates using Windows Admin Center.](#step-2-install-operating-system-and-hardware-updates-using-windows-admin-center)
@@ -42,12 +43,62 @@ Before you begin, make sure that:
 
 - You have access to version 23H2 OS software update.
 - The system is registered in Azure.
-- Make sure that all the machines in your Azure Local are healthy and show as **Online**.
-- You have access to the Azure Stack HCI OS, version 23H2 software update. This update is available via Windows Update or as a downloadable media. The media is an ISO file that you can download from the [Azure portal](https://portal.azure.com/#view/Microsoft_Azure_HybridCompute/AzureArcCenterBlade/~/hciGetStarted).
+- All the machines in your Azure Local are healthy and show as **Online**.
+- You shut down virtual machines (VMs). We recommend shutting down VMs before performing the OS upgrade to prevent unexpected outages and damages to databases.
+- You have access to the Azure Stack HCI OS, version 23H2 software update. This update is available via Windows Update or as a downloadable media. The media must be version **2503** ISO that you can download from the [Azure portal](https://portal.azure.com/#view/Microsoft_Azure_HybridCompute/AzureArcCenterBlade/~/hciGetStarted).
 - You have access to a client that can connect to your Azure Local instance. This client should have Windows Admin Center installed on it. For more information, see [Install Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install).
+- You run the `RepairRegistration` cmdlet only if both of the following conditions apply:
+
+   - The *identity* property is either missing or doesn’t contain `type = "SystemAssigned"`.
+      - Check this in the Resource JSON in the Azure portal
+      - Or run the `Get-AzResource -Name <cluster_name>` PowerShell cmdlet
+   - The **Cloud Management** cluster group is not present. Check it by running the `Get-ClusterGroup` PowerShell cmdlet.
+
+   If both these conditions are met, run the `RepairRegistration` cmdlet:
+
+   ```powershell
+   Register-AzStackHCI -TenantId "<tenant_ID>" -SubscriptionId "<subscription_ID>" -ComputerName "<computer_name>" -RepairRegistration
+   ```
+
+- (Recommended) You enable [Secure Boot](/windows-hardware/design/device-experiences/oem-secure-boot) on Azure Local machines before you upgrade the OS.
+   To enable Secure Boot, follow these steps:
+   1. Drain the cluster node.
+   1. Restart the OS.
+   1. Enter the BIOS/UEFI menu.
+   1. Review the **Boot** or **Security** section of the UEFI configuration options Locate the Secure Boot option.
+   1. Set the option to **Enabled** or **On**.
+   1. Save the changes and restart your computer.
+
+   Consult with your hardware vendor for assistance if required.
 
 > [!NOTE]
-> The offline ISO upgrade method is not available when using Windows Admin Center. For these steps, see [Upgrade the operating system on Azure Local via PowerShell](./upgrade-22h2-to-23h2-powershell.md)
+> The offline **2503** ISO upgrade method is not available when using Windows Admin Center. For these steps, see [Upgrade the operating system on Azure Local via PowerShell](./upgrade-22h2-to-23h2-powershell.md)
+
+## Step 0: Update registry keys
+
+To ensure Resilient File System (ReFS) and live migrations function properly during and after OS upgrade, follow these steps on each machine in the system to update registry keys. Reboot each machine for the changes to take effect.
+
+1. Set `RefsEnableMetadataValidation` to `0`:
+
+   ```powershell
+   Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" -Name "RefsEnableMetadataValidation" -Value 0 -Type DWord  -ErrorAction Stop
+   ```
+
+1. Create the parameters key if it doesn't exist. If it already exists, the command may fail with an error, which is expected.
+
+   ```powershell
+   New-Item -Path HKLM:\SYSTEM\CurrentControlSet\Services\Vid\Parameters
+   ```
+
+1. Set `SkipSmallLocalAllocations` to `0`:
+
+   ```powershell
+   New-ItemProperty -Path HKLM:\SYSTEM\CurrentControlSet\Services\Vid\Parameters -Name SkipSmallLocalAllocations -Value 0 -PropertyType DWord
+   ```
+
+1. Restart the machine for the changes to take effect. On machine restart, if the `RefsEnableMetadataValidation` key gets overridden and ReFS volumes fail to come online, toggle the key by first setting `RefsEnableMetadataValidation` to `1` and then back to `0` again.
+
+1. Update and verify that the registry keys have been applied on each machine in the system before moving to the next step.
 
 ## Step 1: Connect to Azure Local via Windows Admin Center
 
@@ -101,7 +152,7 @@ Follow these steps to install updates:
    :::image type="content" source="media/upgrade-22h2-to-23h2-windows-admin-center/final-confirmation.png" alt-text="Screenshot of selecting Install to install operating system updates on each machine in the system." lightbox="media/upgrade-22h2-to-23h2-windows-admin-center/final-confirmation.png":::
 
    > [!NOTE]
-   > If the updates fail with a **Couldn't install updates** or **Couldn't check for updates** warning or if one or more machines indicate **couldn't get status** during the run, wait a few minutes, and refresh your browser. You can also use `Get-CauRun` to [check the status of the update run with PowerShell](./upgrade-22h2-to-23h2-powershell.md#step-3-check-the-status-of-an-update).
+   > If the updates fail with a **Couldn't install updates** or **Couldn't check for updates** warning or if one or more machines indicate **couldn't get status** during the run, wait a few minutes, and refresh your browser. You can also use `Get-CauRun` to [check the status of the update run with PowerShell](./upgrade-22h2-to-23h2-powershell.md#check-the-status-of-an-update).
 
 1. When operating system updates are complete, the update status changes to **Succeeded**. Select **Next: Hardware updates** to proceed to the hardware updates screen.
 
@@ -118,7 +169,6 @@ Follow these steps to install updates:
     - On the **Overview** page, select **Disable CredSSP**, and then, on the **Disable CredSSP** pop-up window, select **Yes**.
 
 You're now ready to perform the post-upgrade steps for your system.
-
 
 
 ## Next steps

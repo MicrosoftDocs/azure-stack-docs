@@ -5,7 +5,8 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 12/02/2024
+ms.date: 03/21/2025
+ms.custom: sfi-image-nochange
 ---
 
 # Create storage path for Azure Local 
@@ -157,8 +158,6 @@ You receive a notification that the storage path doesn't exist.
 To delete a volume, first remove the associated workloads, then remove the storage paths, and then delete the volume. For more information, see [Delete a volume](/windows-server/storage/storage-spaces/manage-volumes#delete-volumes).
 
 If there's insufficient space at the storage path, then the VM provisioning using that storage path would fail. You might need to expand the volume associated with the storage path. For more information, see [Expand the volume](/windows-server/storage/storage-spaces/manage-volumes#expand-volumes).
-
-To troubleshoot any error when trying to delete a storage path, see [Failure deleting storage path](./troubleshoot-arc-enabled-vms.md#failure-deleting-storage-path).
 
 # [Azure portal](#tab/azureportal)
 

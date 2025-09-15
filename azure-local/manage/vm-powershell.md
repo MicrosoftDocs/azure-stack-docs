@@ -3,8 +3,8 @@ title: Manage VMs using Windows PowerShell on Azure Local
 description: How to manage virtual machines on Azure Local using Windows PowerShell
 author: alkohli
 ms.topic: how-to 
-ms.date: 01/16/2025
-ms.author: jgerend
+ms.date: 03/26/2025
+ms.author: alkohli
 ms.reviewer: stevenek
 ms.service: azure-local
 ---
@@ -101,7 +101,7 @@ Start-VM -Name VM1 -ComputerName Server1
 The following example shows how to shut down a VM named TestVM:
 
 ```powershell
-Stop-VM -Name VM1 -ComputerName Server1
+Stop-VM -Name TestVM -ComputerName Server1
 ```
 
 ## Move a VM
@@ -127,7 +127,7 @@ The `Import-VM` and `Export-VM` cmdlets import and export a VM. The following sh
 The following example shows how to import a VM from its configuration file. The VM is registered in-place, so its files aren't copied:
 
 ```powershell
-Import-VM -ComputerName Server1 -Name VM1 -Path 'C:\<vm export path>\2B91FEB3-F1E0-4FFF-B8BE-29CED892A95A.vmcx'
+Import-VM -ComputerName Server1 -Name VM1 -Path 'C:\<vm export path>\2B91FEB3-F6F0-4FFF-B8BE-29CED892A95A.vmcx'
 ```
 
 The following example exports a VM to the root of the D drive:
@@ -150,10 +150,10 @@ Rename-VM -ComputerName Server1 -Name VM1 -NewName VM2
 
 The `Checkpoint-VM` cmdlet is used to create a checkpoint for a VM. For detailed information, see the [Checkpoint-VM](/powershell/module/hyper-v/checkpoint-vm) reference documentation.
 
-The following example creates a checkpoint named BeforeInstallingUpdates for the VM named Test.
+The following example creates a checkpoint named BeforeInstallingUpdates for the VM named Test1.
 
 ```powershell
-Checkpoint-VM -ComputerName Server1 -Name VM1 -SnapshotName BeforeInstallingUpdates
+Checkpoint-VM -ComputerName Server1 -Name Test1 -SnapshotName BeforeInstallingUpdates
 ```
 
 ## Create a VHD for a VM

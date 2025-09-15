@@ -3,8 +3,8 @@ title: AKS Edge Essentials system requirements
 description: Requirements and supported versions for AKS Edge Essentials. 
 author: sethmanheim
 ms.author: sethm
-ms.topic: conceptual
-ms.date: 09/10/2024
+ms.topic: article
+ms.date: 03/10/2025
 ms.custom: template-concept
 ---
 
@@ -28,7 +28,7 @@ To better understand the etcd hardware recommendations, [see this article](https
 
 You can run AKS Edge Essentials in an Azure VM. You can create a Windows VM with either Windows 10/11 IoT Enterprise/Enterprise/Pro and Windows Server 2019, 2022 SKU, on a VM image that supports nested virtualization such as the [Dv5 and Dsv5-series](/azure/virtual-machines/dv5-dsv5-series) virtual machines. When using an Azure VM, a premium SSD is required, per the [Azure Virtual Machine documentation](/azure/virtual-machines/disks-types#disk-type-comparison). 
 
-You can also run AKS EE in a virtual machine on VMware and Hyper-V as described [here.](./aks-edge-howto-setup-nested-environment.md)
+You can also run AKS Edge Essentials in a virtual machine on VMware and Hyper-V as described [here.](./aks-edge-howto-setup-nested-environment.md)
 
 ### OS requirements
 
@@ -53,14 +53,17 @@ Install Windows 10/11 IoT Enterprise/Enterprise/Pro on your machine and activate
 - **Supported Kubernetes distribution**: currently supported Kubernetes versions on both K3s and K8s [are described in this table](aks-edge-howto-setup-machine.md#download-aks-edge-essentials).
 - **Deployment options**: single-machine clusters and full Kubernetes deployment on single machines only. Full deployment across multiple machines isn't supported in GA.
 - **Workloads**: only Linux worker nodes.
-- **Network plugins**: Calico on K8s.
+- **Network plugins**: Calico on K8s, Flannel on K3s.
 
 ## Experimental or prerelease features
 
 - **Deployment options**: Full Kubernetes deployment on multiple machines.
 - **Workloads**: Windows worker nodes.
-- **Network plugins**: Calico on K3S.
+- **GPU**: [GPU-PV](aks-edge-gpu.md).
+- **Secret Encryption**: [KMS plugin for AKS Edge Essentials](aks-edge-howto-secret-encryption.md).
+- **Security**: [Workload identity](aks-edge-workload-identity.md). Workload identity federation is only available for deployment of Azure IoT Operations on top of AKS Edge Essentials.
+- **Network plugins**: Calico on K3S (discontinued).
 
 ## Next steps
 
-- [Set up your machine](./aks-edge-howto-setup-machine.md)
+- [Set up your machine](aks-edge-howto-setup-machine.md)

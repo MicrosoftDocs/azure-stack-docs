@@ -7,6 +7,7 @@ author: sethmanheim
 ms.author: sethm 
 ms.reviewer: rbaziwane
 ms.lastreviewed: 12/11/2023
+ms.custom: sfi-ropc-nochange
 
 ---
 
@@ -180,5 +181,5 @@ To confirm that the pod was successfully created using the container image from 
 
 ## Next steps
 
-- [Review AKS on Azure Local, version 23H2 prerequisites](aks-hci-network-system-requirements.md)
-- [What's new in AKS on Azure Local](/azure-stack/hci/whats-new)
+- [Review AKS on Azure Local prerequisites](aks-hci-network-system-requirements.md)
+- [What's new in AKS on Azure Local](/azure/azure-local/whats-new)

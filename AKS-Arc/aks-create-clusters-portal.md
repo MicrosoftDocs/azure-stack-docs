@@ -4,7 +4,7 @@ description: Create Kubernetes clusters using the Azure portal.
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
-ms.date: 01/30/2024
+ms.date: 04/22/2025
 ms.reviewer: guanghu
 ms.lastreviewed: 01/30/2024
 ---
@@ -29,7 +29,7 @@ This article describes how to create Kubernetes clusters in Azure Local using th
 ## Create a Kubernetes cluster
 
 1. Sign in to the [Azure portal](https://portal.azure.com/).
-1. On the Azure portal search bar, type Kubernetes Azure Arc.
+1. On the Azure portal search bar, type **Kubernetes Azure Arc**.
 1. Select **Add > Create a Kubernetes cluster with Azure Arc**:
 
    :::image type="content" source="media/aks-create-clusters-portal/cluster-portal.png" alt-text="Screenshot showing cluster creation page on the portal." lightbox="media/aks-create-clusters-portal/cluster-portal.png":::
@@ -48,8 +48,9 @@ This article describes how to create Kubernetes clusters in Azure Local using th
    - **Primary node pool**:
      - You can leave the default values selected, or change the default value from the drop down list.
    - **SSH Keys**
-     - Configure SSH access to the underlying VMs in your Kubernetes nodes for troubleshooting operations. You must provide an existing SSH public key.
-     - Provide an RSA public key in the single line format (starting with "ssh-rsa") or the multi-line PEM format. You can generate SSH keys using PuTTYGen on Windows.
+     - SSH keys are essential for troubleshooting and log collection. Be sure to save your private key file for future use.
+     - You can use an existing SSH key or generate a new key pair during cluster creation. For information about how to create new SSH keys from the Azure portal, see [Create and store SSH keys in the portal](/azure/virtual-machines/ssh-keys-portal#generate-new-keys).
+     - To **Use an existing public key by providing the SSH public key value**, provide an RSA public key in the single line format (starting with "ssh-rsa") or the multi-line PEM format.
 
 1. Select **Next: Node pools** when complete.
 1. On the **Node pools** page, configure the following options:
@@ -81,5 +82,5 @@ This article describes how to create Kubernetes clusters in Azure Local using th
 
 ## Next steps
 
-- [Review AKS on Azure Local, version 23H2 prerequisites](aks-hci-network-system-requirements.md)
-- [What's new in AKS on Azure Local](aks-whats-new-23h2.md)
+- [Review AKS on Azure Local prerequisites](aks-hci-network-system-requirements.md)
+- [What's new in AKS on Azure Local](aks-whats-new-local.md)

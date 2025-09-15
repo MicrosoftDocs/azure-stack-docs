@@ -1,6 +1,6 @@
 ---
-title: Azure policy guidance for AKS enabled by Azure Arc
-description: Learn about best practices and guidance in using Azure policy in AKS enabled by Arc.
+title: Azure policy guidance for AKS on Windows Server
+description: Learn about best practices and guidance in using Azure policy in AKS on Windows Server.
 ms.topic: article
 ms.date: 01/10/2024
 author: sethmanheim
@@ -10,11 +10,11 @@ ms.reviewer: sulahiri
 
 ---
 
-# Azure policy in AKS enabled by Azure Arc
+# Azure policy in AKS on Windows Server
 
 [!INCLUDE [aks-hybrid-applies-to-azure-stack-hci-windows-server-sku](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-This article provides guidance on applying Azure policies to management clusters and recommendations for deploying AKS enabled by Arc.
+This article provides guidance on applying Azure policies to management clusters and recommendations for deploying AKS on Windows Server.
 
 ## Best practices in using Azure policies
 
@@ -42,4 +42,4 @@ Azure policies are primarily for declarative compliance validation, not behavior
 
 ## Next steps
 
-[Security concepts in AKS enabled by Arc](concepts-security.md)
+[Security concepts in AKS on Windows Server](concepts-security.md)

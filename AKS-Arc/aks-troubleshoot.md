@@ -3,31 +3,53 @@ title: Troubleshoot common issues in AKS enabled by Azure Arc
 description: Learn about common issues and workarounds in AKS enabled by Arc.
 ms.topic: how-to
 author: sethmanheim
-ms.date: 11/22/2024
+ms.date: 07/23/2025
 ms.author: sethm 
-ms.lastreviewed: 02/27/2024
-ms.reviewer: guanghu
+ms.lastreviewed: 07/23/2025
+ms.reviewer: rcheeran
 
 ---
 
 # Troubleshoot common issues in AKS enabled by Azure Arc
 
-This article describes how to find solutions for issues you encounter when using AKS enabled by Azure Arc. Known issues and errors are organized by functional area. You can use the links provided in this article to find solutions and workarounds to resolve them.
+This section describes how to find solutions for issues you encounter when using AKS enabled by Azure Arc.
 
 ## Open a support request
 
-See the [Get support](/azure/aks/hybrid/help-support?tabs=aksee) article for information about how to use the Azure portal to get support or open a support request for AKS Arc.
+To open a support request, see the [Get support](help-support.md) article for information about how to use the Azure portal to get support or open a support request for AKS Arc.
 
-## Upgrade
+## Known issues
 
-### Azure Advisor upgrade recommendation
+The following sections describe known issues for AKS enabled by Azure Arc:
 
-If you continually see an [Azure Advisor](/azure/advisor/) upgrade recommendation that says "Upgrade to the latest version of AKS enabled by Azure Arc," follow these steps to disable the recommendation:
+| AKS Arc CRUD operation | Issue | Fix status |
+|------------------------|-------|------------|
+| AKS steady state       | [Storage provisioning issue impacting cluster and node pool creation](storage-provision-issue.md)|Active|
+| AKS cluster delete     | [Deleted AKS Arc cluster still visible on Azure portal](deleted-cluster-visible.md) | Active |
+| AKS steady state       | [AKS Arc telemetry pod consumes too much memory and CPU](telemetry-pod-resources.md) | Fixed in 2507 release  |
+| AKS cluster create     | [Can't create AKS cluster or scale node pool because of issues with AKS Arc images](gallery-image-not-usable.md) | Fixed in 2507 release |
+| AKS steady state       | [Disk space exhaustion on control plane VMs due to accumulation of kube-apiserver audit logs](kube-apiserver-log-overflow.md) | Fixed in 2507 release |
+| AKS cluster upgrade    | [AKS Arc cluster stuck in "Upgrading" state](cluster-upgrade-status.md) | Fixed in 2505 release |
+| AKS cluster delete     | [Can't fully delete AKS Arc cluster with PodDisruptionBudget (PDB) resources](delete-cluster-pdb.md) | Fixed in 2503 release |
+| Azure portal           | [Can't see VM SKUs on Azure portal](check-vm-sku.md) | Fixed in 2411 release |
+| MetalLB Arc extension  | [Connectivity issues with MetalLB](load-balancer-issues.md) | Fixed in 2411 release |
+| MetalLB Arc extension  | [MetalLB speaker pods don't run on nodes tainted with CriticalAddonsOnly=true:NoSchedule](troubleshoot-metallb-speaker-taint.md) | Active |
 
-- Ensure that you update your Azure Local solution to the latest version. For more information, see [About updates for Azure Local, version 23H2](/azure-stack/hci/update/about-updates-23h2).
-- If you use any of the Azure SDKs, ensure that you're using the latest version of that SDK. You can find the Azure SDKs by searching for "HybridContainerService" on the [Azure SDK releases](https://azure.github.io/azure-sdk/) page.
+## Guides to diagnose and troubleshoot Kubernetes CRUD failures
+
+| AKS Arc operation | Issue |
+|------------------------|-------|
+| General network validation errors | [Troubleshoot network validation errors](network-validation-errors.md) |
+| Create validation      | [Control plane configuration validation errors](control-plane-validation-errors.md) |
+| Create validation      | [K8sVersionValidation error](cluster-k8s-version.md) |
+| Create validation      | [KubeAPIServer unreachable error](kube-api-server-unreachable.md) |
+| Network configuration issues | [Use diagnostic checker](aks-arc-diagnostic-checker.md) |
+| Kubernetes steady state   | [Resolve issues due to out-of-band deletion of storage volumes](delete-storage-volume.md) |
+| Kubernetes steady state   | [Repeated Entra authentication prompts when running kubectl with Kubernetes RBAC](entra-prompts.md) |
+| Release validation     | [Azure Advisor upgrade recommendation message](azure-advisor-upgrade.md) |
+| Network validation | [Network validation error due to .local domain](network-validation-error-local.md) |
+| Network validation | [Troubleshoot BGP with FRR in AKS Arc environments](connectivity-troubleshoot.md) |
 
 ## Next steps
 
-- [Troubleshoot K8sVersionValidation error](cluster-k8s-version.md)
-- [Use diagnostic checker](aks-arc-diagnostic-checker.md)
+[What is AKS enabled by Azure Arc?](aks-overview.md)

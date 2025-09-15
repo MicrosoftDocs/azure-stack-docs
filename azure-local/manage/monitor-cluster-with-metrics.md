@@ -6,14 +6,15 @@ ms.author: alkohli
 ms.reviewer: saniyaislam
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 10/15/2024
+ms.date: 03/20/2025
+ms.custom: sfi-image-nochange
 ---
 
 # Monitor Azure Local with Azure Monitor Metrics
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
-This article describes how to monitor your Azure Local system with [Azure Monitor Metrics](/azure/azure-monitor/essentials/data-platform-metrics). It also provides a comprehensive list of metrics collected for compute, storage, and network resources in Azure Local.
+This article describes how to monitor your Azure Local system with [Azure Monitor Metrics](/azure/azure-monitor/essentials/data-platform-metrics). It also describes the Performance Metrics dashboard and lists metrics collected for compute, storage, and network resources in Azure Local.
 
 When you have critical applications and business processes that rely on Azure resources, it's important to monitor those resources for their availability, performance, and operation. The integration of Azure Monitor Metrics with Azure Local enables you to store numeric data from your clusters in a dedicated time-series database. This database is automatically created for each Azure subscription. Use [metrics explorer](/azure/azure-monitor/essentials/tutorial-metrics) to analyze data from your Azure Local system and assess its health and utilization.
 
@@ -25,7 +26,7 @@ Take a few moments to watch the video walkthrough on creating metric charts in m
 
 Here are the benefits of using Metrics for Azure Local:
 
-- **No additional cost**. These metrics are standard, out-of-the-box features that are automatically collected and provided to you at no extra cost.
+- **No extra cost**. These metrics are standard, out-of-the-box features that are automatically collected and provided to you at no extra cost.
 
 - **Near real-time insights**. You have the capability to observe out-of-the-box metrics and correlate trends using near real-time data.  
 
@@ -86,6 +87,122 @@ Follow these steps to analyze metrics for a specific Azure Local cluster in the 
     :::image type="content" source="media/monitor-cluster-with-metrics/cluster-metrics.png" alt-text="Screenshot showing the metrics for your cluster." lightbox="media/monitor-cluster-with-metrics/cluster-metrics.png":::
 
     To create alerts, select the **Alerts** option and set up alerts as described in [Create metric alerts](./setup-metric-alerts.md#create-metrics-alerts).
+
+## Monitor performance metrics
+
+The performance metrics dashboard provides a comprehensive view of performance metrics across all Azure Local systems within a subscription or for a specific system. It collects over 60 metrics at no additional cost via the `AzureEdgeTelemetryAndDiagnostics` extension. These metrics form the basis of the charts displayed in the dashboard, offering insights into infrastructure performance and health.
+
+There are two types of performance metrics dashboards:
+
+- **Single Cluster Performance Metrics**, which offers drilled-down views for a specific system, split by unique logical unit number (LUN).
+
+- **Multi Cluster Performance Metrics**, which monitors multiple systems at scale and provides detailed view of performance metrics across all systems within a subscription.
+
+### Benefits
+
+- Requires no extra setup to view your data, provided the [`AzureEdgeTelemetryAndDiagnostics`](../concepts/telemetry-and-diagnostics-overview.md) extension is installed.
+
+- Consolidates all available metrics into a single view, eliminating the need to select individual metrics.
+
+- Built using Azure Workbooks, highly customizable and user-friendly.
+
+- Includes multiple filters, such as a time filter for viewing data up to the past 30 days.
+
+- Allows viewing metrics for multiple clusters across various subscriptions, with filters for subscription, resource groups, or clusters. For a specific cluster, a drilled-down view of metrics at the node, volume, and netadapter levels is available.
+
+### Access the performance metrics dashboard
+
+You can access the performance metrics dashboard through Azure Monitor or the Azure Local system.
+
+#### Access the dashboard via Azure Monitor
+
+To access the dashboard via Azure Monitor, follow these steps:
+
+1. Navigate to Azure Monitor and select **Workbooks**.
+
+1. Under the **Azure Local** section, select the **Multi Cluster Performance Metrics** workbook.
+
+    :::image type="content" source="media/monitor-cluster-with-metrics/access-via-azure-monitor.png" alt-text="Screenshot of the Workbooks gallery when accessed via Azure Monitor." lightbox="media/monitor-cluster-with-metrics/access-via-azure-monitor.png":::
+
+#### Access the dashboard via the Azure Local system
+
+To access the dashboard via the Azure Local system, follow these steps:
+
+1. In the Azure portal, go to your Azure Local system.
+
+1. Under **Monitoring**, select **Workbooks**.
+
+1. Select one of the following workbooks based on whether you want to view performance metrics for a single cluster or multiple clusters:
+
+    - **Single Cluster Performance Metrics**
+    
+    - **Multi Cluster Performance Metrics**
+
+        :::image type="content" source="media/monitor-cluster-with-metrics/access-via-system.png" alt-text="Screenshot of the Workbooks gallery when accessed via Azure Local system." lightbox="media/monitor-cluster-with-metrics/access-via-system.png":::
+
+### View the dashboard charts
+
+The performance metrics dashboard is organized into three tabs, each focusing on different aspects of system performance. Select the relevant tab to view the metrics related to the selected system performance category.
+
+### [Storage Performance](#tab/storage-performance)
+
+Monitoring storage performance helps optimize storage utilization, allocation, and configuration according to resources and business needs.
+
+The **Storage Performance** tab presents three types of metrics:
+
+- **Volume Usage Metrics.** This section displays metrics related to volume usage, such as disk read/write operations per second, disk read/write bytes per second, and volume latency.
+
+    Here's a sample screenshot of Volume Usage Metrics:
+
+    :::image type="content" source="media/monitor-cluster-with-metrics/storage-performance-volume-usage.png" alt-text="Screenshot of the Storage Performance dashboard showing the Volume Usage metrics." lightbox="media/monitor-cluster-with-metrics/storage-performance-volume-usage.png":::
+
+- **VHD Metrics.** This section displays metrics related to VHD, such as VHD read/write operations per second, VHD read/write bytes per second, VHD latency, and VHD current and maximum size.
+
+    Here's a sample screenshot of VHD Metrics:
+
+    :::image type="content" source="media/monitor-cluster-with-metrics/storage-performance-vhd.png" alt-text="Screenshot of the Storage Performance dashboard showing the VHD metrics." lightbox="media/monitor-cluster-with-metrics/storage-performance-vhd.png":::
+
+- **Physical Disk Metrics.** This section displays metrics related to physical disk read/write operations per second, physical disk read/write bytes per second, latency read and write, total capacity size, and capacity size used.
+
+    Here's a sample screenshot of Physical Disk Metrics:
+
+    :::image type="content" source="media/monitor-cluster-with-metrics/storage-performance-physical-disk.png" alt-text="Screenshot of the Storage Performance dashboard showing the Physical Disk metrics." lightbox="media/monitor-cluster-with-metrics/storage-performance-physical-disk.png":::
+
+In a **Single Cluster Performance Metrics** dashboard, you can drill down further to view metrics split by LUN, which is a unique identifier for storage resources.
+
+### [Network Performance](#tab/network-performance)
+
+Monitoring network performance metrics ensure network availability for users, help identify and troubleshoot problems, and improve network performance.
+
+This section provides network performance metrics, including netadapter bytes sent/received per second, RDMA inbound/outbound bytes per second, and VM netadapter bytes sent/received per second.
+
+Here's a sample screenshot of Network Metrics:
+
+:::image type="content" source="media/monitor-cluster-with-metrics/network-performance-network.png" alt-text="Screenshot of the Network Performance dashboard showing the Network metrics." lightbox="media/monitor-cluster-with-metrics/network-performance-network.png":::
+
+In a **Single Cluster Performance Metrics** dashboard, you can drill down Network metrics to see performance for each netadapter available on different servers within a cluster by its unique LUN.
+
+### [Compute](#tab/compute)
+
+Monitoring compute metrics, including memory and CPU, ensures proper resource allocation and utilization. It identifies usage patterns for appropriate actions, helps detect issues, optimizes system performance, and ensures smooth operation of resources.
+
+The **Compute** tab presents two types of metrics:
+
+- **Memory Metrics.** This section provides information on memory used, available, percentage usage for host and guest, VM memory available, used, memory assigned, pressure, maximum, minimum, startup, and more.
+
+    Here's a sample screenshot of Memory Metrics:
+
+    :::image type="content" source="media/monitor-cluster-with-metrics/compute-memory.png" alt-text="Screenshot of the Compute Performance dashboard showing the Memory metrics." lightbox="media/monitor-cluster-with-metrics/compute-memory.png":::
+
+- **CPU Metrics.** This section offers metrics, such as Total CPU percentage, host vs guest CPU percentage, and VM CPU percentage.
+
+    Here's a sample screenshot of CPU Metrics:
+
+    :::image type="content" source="media/monitor-cluster-with-metrics/compute-cpu.png" alt-text="Screenshot of the Compute Performance dashboard showing the CPU metrics." lightbox="media/monitor-cluster-with-metrics/compute-cpu.png":::
+
+In a **Single Cluster Performance Metrics** dashboard, you can view Memory and CPU metrics for each server within a cluster.
+
+---
 
 ## What metrics are collected?
 

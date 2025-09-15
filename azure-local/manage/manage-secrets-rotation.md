@@ -4,7 +4,7 @@ description: This article describes how to manage internal secret rotation on Az
 author:  alkohli
 ms.author:  alkohli
 ms.topic: how-to
-ms.date: 02/11/2025
+ms.date: 06/16/2025
 ms.service: azure-local
 ---
 
@@ -89,9 +89,9 @@ This section describes how you can change the storage account key for the cluste
     Set-ECEServiceSecret -ContainerName WitnessCredential -Credential $WitnessCred
     ```
 
-## Revoke SAS token for storage account used for Arc VM images
+## Revoke SAS token for storage account used for Azure Local VM images
 
-This section describes how you can revoke the Shared Access Signature (SAS) token for the storage account used for Arc VM images.
+This section describes how you can revoke the Shared Access Signature (SAS) token for the storage account used for images used by Azure Local VMs enabled by Arc.
 
 | SAS policy   | SAS expired?    | Steps to revoke   |
 |---------|---------|---------|
@@ -190,14 +190,14 @@ The exact steps for secret rotation are different depending on the software vers
     Start-SecretRotation
     ```
 
-### Azure Local instance running 2408.2 to 2405.3
+### Azure Local instance running 2408.2 or earlier
 
 1. Sign in to one of the Azure Local nodes using deployment user credentials.
 1. Update the CA Certificate password in ECE store. Run the following PowerShell command:
 
     ```PowerShell
     $SecureSecretText = ConvertTo-SecureString -String "<Replace with a strong password>" -AsPlainText -Force
-    $CACertCred = New-Object -Type PSCredential -ArgumentList "CACertificateCred,$SecureSecretText"
+    $CACertCred = New-Object -Type PSCredential -ArgumentList (CACertificateCred),$SecureSecretText
     Set-ECEServiceSecret -ContainerName CACertificateCred -Credential $CACertCred
     ```
 

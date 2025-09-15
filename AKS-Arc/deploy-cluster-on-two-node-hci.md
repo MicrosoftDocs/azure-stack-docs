@@ -1,21 +1,21 @@
 ---
-title: Availability scenarios for Azure Kubernetes Service (AKS) enabled by Azure Arc on two-node Azure Local
-description: Availability scenarios for Azure Kubernetes Service (AKS) enabled by Arc on a two-node Azure Local deployment.
+title: Availability scenarios for Azure Kubernetes Service (AKS) on Windows Server on two-node Azure Local
+description: Availability scenarios for Azure Kubernetes Service (AKS) on Windows Server on a two-node Azure Local deployment.
 author: sethmanheim
 ms.author: sethm
-ms.topic: conceptual
+ms.topic: article
 ms.date: 01/09/2024
 ---
 
-# Availability scenarios for Azure Kubernetes Service (AKS) enabled by Azure Arc on two-node Azure Local
+# Availability scenarios for Azure Kubernetes Service (AKS) on Windows Server on two-node Azure Local
 
-[!INCLUDE [applies-to](../azure-local/includes/hci-applies-to-22h2.md)]
+[!INCLUDE [aks-hybrid-applies-to-azure-stack-hci-windows-server-sku](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
 This article describes the architecture for deploying a Kubernetes cluster on a two-node Azure Local cluster. The article describes various failure scenarios that can occur, their impact on the cluster, and recoverability from these failure scenarios.
 
 ## Architecture
 
-Traditional Kubernetes deployments require three physical machines to mitigate a single failure. This requirement usually means a higher Total Cost of Ownership (TCO). For cost-sensitive deployments, AKS enabled by Arc can be deployed on a two-node Azure Local system, as shown below, with a few trade-offs in availability. These trade-offs are described in [Availability scenarios and their impact on two-node AKS cluster](#availability-scenarios-and-their-impact-on-two-node-aks-cluster).
+Traditional Kubernetes deployments require three physical machines to mitigate a single failure. This requirement usually means a higher Total Cost of Ownership (TCO). For cost-sensitive deployments, AKS on Windows Server can be deployed on a two-node Azure Local system, as shown below, with a few trade-offs in availability. These trade-offs are described in [Availability scenarios and their impact on two-node AKS cluster](#availability-scenarios-and-their-impact-on-two-node-aks-cluster).
 
 :::image type="content" source="media/deploy-cluster-on-two-node-hci/hci-two-node-architecture.png" alt-text="Illustration showing architecture of an AKS cluster that runs on a two-node Azure Local cluster." lightbox="media/deploy-cluster-on-two-node-hci/hci-two-node-architecture.png":::
 
@@ -27,7 +27,7 @@ This article uses the following terminology:
 
 | Term                | Definition                                                                        |
 |---------------------|-----------------------------------------------------------------------------------|
-| Physical Azure Local Host   | The physical Azure Local cluster node that hosts the VMs needed to run AKS enabled by Arc. |
+| Physical Azure Local Host   | The physical Azure Local cluster node that hosts the VMs needed to run AKS on Windows Server. |
 | Guest OS            | Operating system running inside the control plane virtual machine (VM), load balancer VM, or node pool VMs. |
 | Failover Clustering | Failover Clustering for Azure Local and Windows Server provides infrastructure features that support high availability of VMs and applications. If a cluster node or service fails, the VMs or applications that are hosted on that node can be automatically or manually transferred to another available node in a process known as **failover**. |
 | Workload cluster    | A Kubernetes cluster that is deployed by Azure Kubernetes Service (AKS) to host the containerized end-user application or workload, also known as a **target cluster**. |

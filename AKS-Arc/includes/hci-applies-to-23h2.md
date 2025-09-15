@@ -1,11 +1,10 @@
 ---
-author: alkohli
-ms.author: alkohli
-ms.service: azure-stack-hci
+author: sethmanheim
+ms.author: sethm
+ms.service: azure-kubernetes-service-hybrid
 ms.topic: include
-ms.date: 10/13/2023
-ms.reviewer: alkohli
-ms.lastreviewed: 10/13/2023
+ms.date: 04/03/2025
+
 ---
 
-> Applies to: Azure Local, version 23H2
+> Applies to: AKS on Azure Local

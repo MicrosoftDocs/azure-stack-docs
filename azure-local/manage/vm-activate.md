@@ -4,34 +4,31 @@ description: This article explains the benefits of using Automatic Virtual Machi
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 02/10/2025
+ms.date: 03/03/2025
 ms.service: azure-local
 ---
 
 # Activate Windows Server VMs on Azure Local
 
-> Applies to: Azure Local 2311.1 and later; Windows Server 2022, Windows Server 2019 Datacenter Edition and later
+> Applies to: Azure Local 2311.1 and later; Windows Server 2025, Windows Server 2022, Windows Server 2019 Datacenter Edition and later
 
-Windows Server virtual machines (VMs) must be activated before you can use them on Azure Local. You can use any existing Windows Server licenses and activation methods that you already have. Optionally, Azure Local offers licensing models and tools to help simplify this process. This article describes general licensing concepts and the new options that are available on Azure Local.
+Windows Server virtual machines (VMs) must be activated before you can use them on Azure Local. You can use any existing Windows Server activation methods that you already have. Optionally, Azure Local offers an addon subscription and tools to help simplify this process. This article describes Windows Server VM activation concepts and the options that are available on Azure Local.
 
 ## Summary
 
-The following figure shows the different Windows Server VM licensing options:
+First, choose one of the two options:
 
-:::image type="content" source="media/vm-activate/vm-activation-server.png" alt-text="VM licensing" lightbox="media/vm-activate/vm-activation-server.png":::
-
-First, choose one of two options:
-
-- **Windows Server subscription**: Subscribe to Windows Server guest licenses through Azure. Available for Azure Local only as an add-on.
-- [**Azure Hybrid Benefit (AHB)**](/windows-server/get-started/azure-hybrid-benefit): Use qualifying on-premises licenses to get Windows Server VMs on Azure Local at a reduced cost.
+- **Windows Server subscription**: Activates all Windows Server VMs for the Azure Local. Available for Azure Local only as an add-on.
+- [**Azure Hybrid Benefit (AHB)**](/windows-server/get-started/azure-hybrid-benefit): Exchange qualifying Windows Server Datacenter with Software Assurance licenses to activate your Windows Server VMs on Azure Local at a reduced cost.
 
 For more information, see [Compare options](#compare-options).
 
 Next, activate your Windows Server VMs:
 
-- If you're using Windows Server subscription, AVMA is automatically enabled on the host. You can immediately activate VMs against the system using [generic AVMA client keys](/windows-server/get-started/automatic-vm-activation?tabs=server2025#avma-keys).
-- If you're using AHB, you must use the corresponding keys associated with your license and apply them using your chosen activation method. One of the most convenient ways is to use *Automatic VM Activation* (AVMA) by enabling Windows Server subscriptions.
-- To use other methods to activate VMs, see [Key Management Services (KMS) activation planning](/windows-server/get-started/kms-activation-planning).
+- Azure Local supports Automatic VM Activation (AVMA), a method that binds VM activation to the Azure Local machine and activates the Windows Server VM when it starts up.
+- If you're using Windows Server subscription, AVMA is automatically enabled on the Azure Local machines. You can immediately activate Windows Server VMs against the system using [generic AVMA client keys](/windows-server/get-started/automatic-vm-activation?tabs=server2025#avma-keys).
+- If you're using Azure Hybrid Benefit, you must use the corresponding keys associated with your Windows Server license and apply them using your chosen activation method. One of the most convenient ways is to exchange them to use AVMA by enabling Windows Server subscription.
+- To use other methods to activate Windows Server VMs, see [Key Management Services (KMS) activation planning](/windows-server/get-started/kms-activation-planning).
 
 ## Compare options
 
@@ -40,30 +37,30 @@ Choose the deployment option that best suits your needs:
 | Question | Windows Server subscription | Azure Hybrid Benefit (AHB) |
 |--|--|--|
 | What versions of WS VMs do you want to use? | Evergreen – all versions up to the latest version. | All versions up to the latest version - includes versions of Windows Server that are supported by Azure Local. Specifically, the benefit is extended to Azure Local version 22H2 or later. |
-| Does this option also allow me to use Windows Server: Azure edition? | Yes. | Need to have both Software Assurance (SA) and WS volume license keys. |
+| Does this option also allow me to use Windows Server: Azure edition? | Yes. | For more information, see [Windows Server versions](/windows-server/get-started/azure-edition). |
 | How do I activate my WS VMs? | No host-side keys – AVMA is automatically enabled. After it's enabled, you can then apply the [generic AVMA client keys](/windows-server/get-started/automatic-vm-activation?tabs=server2025#avma-keys) on the client side. | To activate this benefit, you must exchange your 1-core license of Software Assurance-enabled Windows Server Datacenter for 1-physical core of Azure Local. For detailed licensing requirements, see [Azure Hybrid Benefit for Windows Server](/windows-server/get-started/azure-hybrid-benefit?tabs=azure#getting-azure-hybrid-benefit-for-azure-stack-hci). |
 | What are the CAL requirements? | No CAL required – included in WS subscription. | No CAL required – included in SA/WS subscription. |
-| What is the pricing model? | Per physical core/per month pricing, purchased and billed through Azure (free trial within the first 60 days of registering your Azure Local). For details, see [Pricing for Windows Server subscription](https://azure.microsoft.com/pricing/details/azure-local/). | This benefit waives the Azure Local host service fee and Windows Server guest subscription fee on your system. Other costs associated with Azure Local, such as Azure services, are billed as normal. For details about pricing with Azure Hybrid Benefit, see [Azure Local pricing](https://azure.microsoft.com/pricing/details/azure-local/). |
+| What is the pricing model? | Per physical core/per month pricing, purchased and billed through Azure (free trial within the first 60 days of registering your Azure Local). For details, see [Pricing for Windows Server subscription](https://azure.microsoft.com/pricing/details/azure-local/). | This benefit waives the Azure Local host service fee and Windows Server subscription fee on your system. Other costs associated with Azure Local, such as Azure services, are billed as normal. For details about pricing with Azure Hybrid Benefit, see [Azure Local pricing](https://azure.microsoft.com/pricing/details/azure-local/). |
 
-### Guest versions
+### Windows Server VM versions
 
-The following table shows the guest operating systems that the different licensing methods can activate:
+The following table shows the supported Windows Server VM versions per their activation method.
 
-| Version | AHB Windows Server 2019 license | AHB Windows Server 2022 license | AHB Windows Server 2025 license |Windows Server subscription |
+| Windows Server VM Version | AHB Windows Server 2019 | AHB Windows Server 2022 | AHB Windows Server 2025 |Windows Server subscription |
 |--|--|--|--| -- |
-| Windows Server 2016 | X | X | X | X |
-| Windows Server 2019 | X | X | X | X |
-| Windows Server 2022 |  | X | X | X |
-| Windows Server 2025 |  | | X | X |
+| Windows Server 2016 | Y | Y | Y | Y |
+| Windows Server 2019 | Y | Y | Y | Y |
+| Windows Server 2022 |  | Y | Y | Y |
+| Windows Server 2025 |  | | Y | Y |
 | Future Windows Server editions (Evergreen) |  |  | | X |
 
 ## Activate Windows Server subscription
 
-Windows Server subscription enables you to subscribe to Windows Server guest licensing on Azure Local through Azure. For the Windows Server subscription fees, see the *Add-on workloads (optional)* section in the [Azure Local pricing](https://azure.microsoft.com/pricing/details/azure-stack/hci/) page.
+Windows Server subscription enables you to activate all Windows Server VMs on Azure Local. For the Windows Server subscription fees, see the *Add-on workloads (optional)* section in the [Azure Local pricing](https://azure.microsoft.com/pricing/details/azure-stack/hci/) page.
 
 ### How does Windows Server subscription work?
 
-When Windows Server subscription is purchased, Azure Local machines retrieve licenses from the cloud and automatically set up AVMA on the system. After setting up AVMA, you can then apply the generic AVMA keys on the client side.
+When Windows Server subscription is purchased, your Azure Local machines automatically set up AVMA on the Azure Local instance. After setting up AVMA, you can then apply the generic AVMA keys on the client side to activate your Windows Server VMs on Azure Local.
 
 :::image type="content" source="media/vm-activate/windows-server-subscription.png" alt-text="Windows Server subscription" lightbox="media/vm-activate/windows-server-subscription.png":::
 
@@ -73,8 +70,6 @@ When Windows Server subscription is purchased, Azure Local machines retrieve lic
   - [Install updates](update-cluster.md): Version 22H2 or later.
   - [Register Azure Local](../deploy/register-with-azure.md?tab=windows-admin-center#register-a-cluster): All machines must be online and registered to Azure.
 
-- If using Windows Admin Center:
-  - Windows Admin Center (version 2103 or later) with the Cluster Manager extension (version 2.41.0 or later).
 
 ### Enable Windows Server subscription
 
@@ -165,24 +160,21 @@ Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure CLI to config
 
 **Error**: One or more machines in the system doesn't have the latest changes to this setting. We apply the changes as soon as the machines sync again.
 
-**Remediation**: Your system doesn't have the latest status on Windows Server subscription - for example, you enrolled or canceled and therefore may not have retrieved the licenses to set up AVMA. In most cases, the next cloud sync will resolve this error. For faster resolution, you can sync manually. For more information, see [Syncing Azure Local](../faq.yml#how-often-does-azure-local-sync-with-the-cloud).
+**Remediation**: Your system doesn't have the latest status on Windows Server subscription - for example, you enrolled or canceled and therefore may not have retrieved the services to set up AVMA. In most cases, the next cloud sync will resolve this error. For faster resolution, you can sync manually. For more information, see [Syncing Azure Local](../faq.yml#how-often-does-azure-local-sync-with-the-cloud).
 
-### Activate VMs against a host machine
 
-Now that AVMA is enabled through Windows Server subscription, you can activate VMs against the host machine by following the steps in [Automatic Virtual Machine Activation in Windows Server](/windows-server/get-started/automatic-vm-activation).
+## Activate Azure Hybrid Benefit through AVMA
 
-## Activate Azure Hybrid Benefit (AHB) through AVMA
-
-You can use any existing method to activate VMs on Azure Local. Optionally, you can use AVMA, which enables activated host machines to automatically activate VMs running on them. For more information, see [AVMA in Windows Server](/windows-server/get-started/automatic-vm-activation).
+You can use any existing method to activate Windows Server VMs on Azure Local. Optionally, you can use AVMA, which enables activated Azure Local machines to automatically activate VMs running on them. For more information, see [AVMA in Windows Server](/windows-server/get-started/automatic-vm-activation).
 
 :::image type="content" source="media/vm-activate/vm-activate.png" alt-text="Activate VMs" lightbox="media/vm-activate/vm-activate.png":::
 
 ### Benefits of AVMA
 
-VM activation through host machines presents several benefits:
+VM activation through Azure Local machines presents several benefits:
 
 - Individual VMs don't have to be connected to the internet. Only licensed host machines with internet connectivity are required.
-- License management is simplified. Instead of having to true-up key usage counts for individual VMs, you can activate any number of VMs with just a properly licensed machine.
+- VM activation management is simplified. Instead of having to true-up key usage counts for individual VMs, you can activate any number of VMs with an active Azure Local Windows Server subscription.
 - AVMA acts as a proof-of-purchase mechanism. This capability helps to ensure that Windows products are used in accordance with product use rights and Microsoft software license terms.
 
 
@@ -290,14 +282,7 @@ One or more of your machines isn't updated and doesn't have the required package
 
 ## FAQs
 
-This section provides answers to some frequently asked questions (FAQs) about licensing Windows Server.
-
-### Will my Windows Server Datacenter Azure Edition guests activate on Azure Local?
-
-Yes, but you must use either Windows Server subscription-based AVMA, or else bring Windows Server Datacenter keys with **Software Assurance**. For AHB, you can use either:
-
-- [AVMA client keys](/windows-server/get-started/automatic-vm-activation#avma-keys)
-- [KMS client keys](/windows-server/get-started/kms-client-activation-keys#generic-volume-license-keys-gvlk)
+This section provides answers to some frequently asked questions (FAQs) about Windows Server VMs on Azure Local.
 
 ### Do I need to be connected to the internet?
 
@@ -314,7 +299,7 @@ You don't need internet connectivity:
 
 Windows Server subscription starts billing and activating Windows Server VMs immediately upon purchase. If you enable Windows Server subscription within the first 60 days of activating Azure Local, you automatically have a free trial during that period.
 
-You can sign up or cancel your Windows Server subscription at any time. Upon cancellation, billing and activation via Azure stops immediately. Make sure you have an alternate form of licensing if you continue to run Windows Server VMs on your system.
+You can sign up or cancel your Windows Server subscription at any time. Upon cancellation, billing and activation via Azure stops immediately. Make sure you have an alternate form of VM activation if you continue to run Windows Server VMs on your system.
 
 ### I have a license for Windows Server, can I run Windows Server 2016 VMs on Azure Local?
 
@@ -336,11 +321,8 @@ Once a product key is associated with a device, that association is permanent. O
 
 You can update to newer versions of keys, or replace existing keys with the same version, but you can't downgrade to a previous version.
 
-### What happens if I add or remove a new server?
-
-You must [add activation keys](#change-or-add-keys-later-optional) for each new machine, so that the Windows Server VMs can be activated against the new machine. Removing a machine doesn't affect how AVMA is set up for the remaining machines in the system.
 
 ## Next steps
 
-- [Automatic virtual machine activation](/windows-server/get-started-19/vm-activation-19)
+- [Automatic virtual machine activation](/windows-server/get-started/automatic-vm-activation)
 - [Key Management Services (KMS) activation planning for Windows Server](/windows-server/get-started/kms-activation-planning)

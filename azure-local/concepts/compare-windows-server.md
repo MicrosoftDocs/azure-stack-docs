@@ -1,11 +1,11 @@
 ---
 title: Compare Azure Local to Windows Server
 description: This topic helps you determine whether Azure Local or Windows Server is right for your organization.
-ms.topic: conceptual
-author: jasongerend
-ms.author: jgerend
+ms.topic: article
+author: alkohli
+ms.author: alkohli
 ms.service: azure-local
-ms.date: 10/21/2024
+ms.date: 04/08/2025
 ---
 
 # Compare Azure Local to Windows Server
@@ -14,9 +14,11 @@ ms.date: 10/21/2024
 
 This article explains key differences between Azure Local and Windows Server and provides guidance about when to use each. Both products are actively supported and maintained by Microsoft. Many organizations choose to deploy both as they are intended for different and complementary purposes.
 
+When replacing a datacenter primarily running VMware, Azure Local is typically not the optimal solution, as it is better suited for specific distributed scenarios, like retail stores, manufacturing facilities, or branch offices. Azure Local is optimized for distributed sites with fewer than three clusters of 16 nodes, especially when there are latency or regulatory constraints. Instead, we recommend [Azure VMware Solution](/azure/azure-vmware), which is specifically designed for VMware workload modernization and datacenter replacement.
+
 ## When to use Azure Local
 
-Azure Local is Microsoft's premier hyperconverged infrastructure platform for running VMs or virtual desktops on-premises with connections to Azure hybrid services. Azure Local can help to modernize and secure your datacenters and branch offices, and achieve industry-best performance with low latency and data sovereignty.
+Azure Local is Microsoft's premier hyperconverged infrastructure platform for running virtual machines (VMs) or virtual desktops on-premises with connections to Azure hybrid services. Azure Local can help to modernize and secure your datacenters and branch offices, and achieve industry-best performance with low latency and data sovereignty.
 
 :::image type="content" source="media/compare-windows-server/hci-scenarios.png" alt-text="When to use Azure Local over Windows Server 2019" border="false" lightbox="media/compare-windows-server/hci-scenarios.png":::
 
@@ -39,7 +41,7 @@ Windows Server is a highly versatile, multi-purpose operating system with dozens
 
 Use Windows Server for:
 
-- A guest operating system inside of virtual machines (VMs) or containers
+- A guest operating system inside of VMs or containers
 - As the runtime server for a Windows application
 - To use one or more of the built-in server roles such as Active Directory, file services, DNS, DHCP, or Internet Information Services (IIS)
 - As a traditional server, such as a bare-metal domain controller or SQL Server installation
@@ -117,7 +119,7 @@ The following table compares the management options for Azure Local and Windows 
 | Azure portal > Windows Admin Center integration (preview) | Yes | Azure VMs only <sup>1</sup>|
 | Azure portal > Multi-cluster monitoring for Azure Local | Yes | No |
 | Azure portal > Azure Resource Manager integration for clusters | Yes | No |
-| Azure portal > Arc VM management | Yes | No |
+| Azure portal > Management of Azure Local VMs enabled by Arc | Yes | No |
 | Desktop experience | No | Yes |
 
 <sup>1</sup> Requires manually installing the Arc-git statusConnected Machine agent on every machine.

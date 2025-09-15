@@ -1,8 +1,8 @@
 ---
 title: HIPAA guidance for Azure Local
 description: Learn about HIPAA compliance using Azure Local.
-ms.date: 12/27/2024
-ms.topic: conceptual
+ms.date: 04/09/2025
+ms.topic: article
 ms.service: azure-local
 ms.author: nguyenhung
 author: dv00000
@@ -94,7 +94,7 @@ If you're using Microsoft Entra ID to manage identity and access to the platform
 
 #### SIEM integration
 
-Microsoft Defender for Cloud and Microsoft Sentinel is natively integrated with Arc-enabled Azure Local machines. You can enable and onboard your logs to Microsoft Sentinel, which provides security information event management (SIEM) and security orchestration automated response (SOAR) capability. Microsoft Sentinel, like other Azure cloud services, complies with many well-established security standards such as HIPAA and HITRUST, which can help you with your accreditation process. Additionally, Azure Local provides a native syslog event forwarder to send the system events to third party SIEM solutions.
+Microsoft Defender for Cloud and Microsoft Sentinel is natively integrated with Arc-enabled servers. You can enable and onboard your logs to Microsoft Sentinel, which provides security information event management (SIEM) and security orchestration automated response (SOAR) capability. Microsoft Sentinel, like other Azure cloud services, complies with many well-established security standards such as HIPAA and HITRUST, which can help you with your accreditation process. Additionally, Azure Local provides a native syslog event forwarder to send the system events to third party SIEM solutions.
 
 #### Azure Local Insights
 

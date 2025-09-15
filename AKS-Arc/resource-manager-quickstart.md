@@ -3,7 +3,7 @@ title: Deploy a Kubernetes (AKS) cluster using an Azure Resource Manager templat
 description: Learn how to deploy a Kubernetes cluster in AKS enabled by Azure Arc using an Azure Resource Manager template.
 ms.topic: quickstart-arm
 ms.custom: devx-track-arm-template, devx-track-azurecli
-ms.date: 12/18/2024
+ms.date: 02/26/2025
 author: sethmanheim
 ms.author: sethm 
 ms.lastreviewed: 01/31/2024
@@ -25,7 +25,7 @@ To deploy an ARM template, you need write access on the resources you're deployi
 ### Prerequisites
 
 - An Azure account with an active subscription.
-- An Azure Local, version 23H2 cluster.
+- An Azure Local cluster.
 - The latest Azure CLI version.
 
 ## Step 1: Prepare your Azure account
@@ -42,27 +42,27 @@ To deploy an ARM template, you need write access on the resources you're deployi
    az account set --subscription "<your-subscription-id>"
    ```
 
-## Step 2: Create an SSH key pair using Azure CLI
+## Step 2: Create an SSH key pair
 
-```azurecli
-az sshkey create --name "mySSHKey" --resource-group "myResourceGroup"
-```
+Create an SSH key pair in Azure and store the private key file for troubleshooting and log collection purposes. For detailed instructions, see [Create and store SSH keys with the Azure CLI](/azure/virtual-machines/ssh-keys-azure-cli), or in the [Azure portal](/azure/virtual-machines/ssh-keys-portal).
 
-or, create an SSH key pair using **ssh-keygen**:
+1. [Open a Cloud Shell session](https://shell.azure.com/) in your web browser or launch a terminal on your local machine.
+1. Create an SSH key pair using the [az sshkey create](/cli/azure/sshkey#az-sshkey-create) command:
 
-```cmd
-ssh-keygen -t rsa -b 4096
-```
+   ```azurecli
+   az sshkey create --name "mySSHKey" --resource-group $<resource_group_name>
+   ```
 
-To deploy the template, you must provide the public key from the SSH pair. To retrieve the public key, use the `az sshkey show` command:
+   or, use the `ssh-keygen` command:
 
-```azurecli
-az sshkey show --name "mySSHKey" --resource-group "myResourceGroup" --query "publicKey"
-```
+   ```azurecli
+   ssh-keygen -t rsa -b 4096 
+   ```
 
-By default, the SSH key files are created in the **~/.ssh** directory. Run the `az sshkey create` or `ssh-keygen` command to overwrite any existing SSH key pair with the same name.
+1. Retrieve the value of your public key from Azure or from your local machine under **/.ssh/id_rsa.pub**.
 
-For more information about creating SSH keys, see [Create and manage SSH keys for authentication in Azure](/azure/virtual-machines/linux/create-ssh-keys-detailed).
+For more options, you can either follow [Configure SSH keys for an AKS cluster](/azure/aks/aksarc/configure-ssh-keys) to create SSH keys, or use [Restrict SSH access](/azure/aks/aksarc/restrict-ssh-access) during cluster creation. To access nodes afterward, see [Connect to Windows or Linux worker nodes with SSH](/azure/aks/aksarc/ssh-connect-to-windows-and-linux-worker-nodes).
+
 
 ## Step 3: Review the template
 

@@ -2,11 +2,12 @@
 title: Use Azure Kubernetes Service on Azure Stack Hub in the portal
 description: Learn how to use Azure Kubernetes Service (ASK) on Azure Stack Hub in the portal.
 author: sethmanheim
-ms.topic: article
+ms.topic: install-set-up-deploy
 ms.date: 1/3/2022
 ms.author: sethm
 ms.reviewer: waltero
 ms.lastreviewed: 1/3/2022
+ms.custom: sfi-image-nochange
 
 # Intent: As an Azure Stack operator, I want to install and offer Azure Kubernetes Service on Azure Stack Hub so my supported user can offer containerized solutions.
 # Keyword: Kubernetes AKS difference

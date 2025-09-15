@@ -1,7 +1,7 @@
 ---
 ms.topic: include
-author: dansisson
-ms.author: v-dansisson
+author: alkohli
+ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
 ms.date: 12/26/2022

@@ -2,11 +2,11 @@
 title: Azure Stack Hub networking differences 
 description: Learn about differences and considerations when working with networking in Azure Stack Hub.
 author: sethmanheim
-ms.date: 09/03/2024
+ms.date: 04/07/2025
 ms.topic: article
 ms.author: sethm
 ms.reviewer: rtiberiu
-ms.lastreviewed: 07/10/2019
+ms.lastreviewed: 04/07/2025
 
 # Intent: As an Azure Stack user, I want to know the networking differences between Azure and Azure Stack
 # Keyword: azure stack networking differences
@@ -40,11 +40,11 @@ This article provides an overview of the unique considerations for Azure Stack H
 |  | Service Endpoints | Supported for internal (non-Internet) connection to Azure Services. | Not yet supported. |
 |  | Service Endpoint Policies | Supported | Not yet supported. |
 |  | Service Tunnels | Supported | Not yet supported.  |
-| Network Security Groups | Augmented Security Rules | Supported | Supported. |
+| Network Security Groups | Augmented Security Rules | Supported. | Supported. |
 |  | Effective Security Rules | Supported | Not yet supported. |
 |  | Application Security Groups | Supported | Not yet supported. |
 |  | Rule Protocols | TCP, UDP, ICMP, Any | Only TCP, UDP or Any |
-| Virtual Network Gateways | Point-to-Site VPN Gateway | Supported | Not yet supported. |
+| Virtual Network Gateways | Point-to-Site VPN Gateway | Supported. | Not yet supported. |
 |  | Vnet-to-Vnet Gateway | Supported | Not yet supported. |
 |  | Virtual Network Gateway Type | Azure Supports VPN<br> Express Route <br> Hyper Net. | Azure Stack Hub currently supports only VPN type. |
 |  | VPN Gateway SKUs | Support for Basic, GW1, GW2, GW3, Standard High Performance, Ultra-High Performance. | Support for Basic, Standard, and High-Performance SKUs. |
@@ -56,7 +56,7 @@ This article provides an overview of the unique considerations for Azure Stack H
 |  | UsePolicyBasedTrafficSelectors | Azure supports using policy-based traffic selectors with route-based gateway connections. | Not yet supported. |
 |  | Monitoring and Alerts | Azure uses Azure Monitor to set up alerts for VPN resources. | Not yet supported.|
 |  | ASN | Azure supports 4-byte ASNs. | Azure Stack Hub only supports 2-byte ASNs (up to 65535).|
-| Load balancer | SKU | Basic and Standard Load Balancers are supported | Only the Basic Load Balancer is supported. The Standard Load Balancer is currently in public preview. For information, see [Standard Load Balancer considerations](standard-load-balancer-considerations.md).<br>The SKU property isn't supported.<br>The Basic SKU load balancer supports 200 front-end IP configurations per load balancer.  |
+| Load balancer | SKU | The Basic and Standard load balancers are supported. | The Basic and Standard load balancers are supported. While the Standard Load Balancer enables customer scenarios, there are certain differences. For more information, see [Standard Load Balancer considerations](standard-load-balancer-considerations.md).  |
 |  | Zones | Availability Zones are Supported. | Not yet supported |
 |  | Inbound NAT rules support for service endpoints | Azure supports specifying Service Endpoints for inbound NAT rules. | Azure Stack Hub doesn't yet support service endpoints, so these rules can't be specified. |
 |  | Protocol | Azure Supports specifying GRE or ESP. | Protocol Class isn't supported in Azure Stack Hub. |

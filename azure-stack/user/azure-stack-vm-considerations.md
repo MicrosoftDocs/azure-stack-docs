@@ -2,10 +2,8 @@
 title: Azure Stack Hub VM features 
 description: Learn about different features and considerations when working with VMs in Azure Stack Hub.
 author: sethmanheim
-
-ms.topic: article
-ms.custom:
-ms.date: 02/02/2022
+ms.topic: how-to
+ms.date: 03/06/2025
 ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 07/15/2021
@@ -23,14 +21,14 @@ Azure Stack Hub virtual machines (VMs) provide on-demand, scalable computing res
 
 | Feature | Azure (global) | Azure Stack Hub |
 | --- | --- | --- |
-| Virtual machine images | The Azure Marketplace has images that you can use to create a VM. See the [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/compute?subcategories=virtual-machine-images&page=1) page to view the list of images that are available in the Azure Marketplace. | By default, there aren't any images available in the Azure Stack Hub Marketplace. The Azure Stack Hub cloud admin must publish or download images to the Azure Stack Hub Marketplace before users can use them. |
+| Virtual machine images | The Azure Marketplace has images that you can use to create a VM. See the [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute?subcategories=virtual-machine-images&page=1) page to view the list of images that are available in the Azure Marketplace. | By default, there aren't any images available in the Azure Stack Hub Marketplace. The Azure Stack Hub cloud admin must publish or download images to the Azure Stack Hub Marketplace before users can use them. |
 | VHD generation | Generation two VMs support key features that aren't supported in generation one VMs. These features include increased memory, Intel Software Guard Extensions (Intel SGX), and virtualized persistent memory (vPMEM). Generation two VMs running on-premises, have some features that aren't supported in Azure yet. For more information, see [Support for generation 2 VMs on Azure](/azure/virtual-machines/windows/generation-2)  | Azure Stack Hub supports only generation one VMs. You can convert a generation one VM from VHDX to the VHD file format and from dynamically expanding to a fixed-size disk. You can't change a VM's generation. For more information, see [Support for generation 2 VMs on Azure](/azure/virtual-machines/windows/generation-2). |
 | Virtual machine sizes | Azure supports a wide variety of sizes for VMs. To learn about the available sizes and options, refer to the [Azure VMs sizes](/azure/virtual-machines/sizes). | Azure Stack Hub supports a subset of VM sizes that are available in Azure. To view the list of supported sizes, refer to the [VM sizes](#vm-sizes) section of this article. |
 | Virtual machine quotas | [Quota limits](/azure/azure-resource-manager/management/azure-subscription-service-limits#managing-limits) are set by Microsoft. | The Azure Stack Hub cloud admin must assign quotas before they offer VM to their users. |
 | Virtual machine extensions |Azure supports a wide variety of VM extensions. To learn about the available extensions, refer to the [VM extensions and features](/azure/virtual-machines/windows/extensions-features) article.| Azure Stack Hub supports a subset of extensions that are available in Azure and each of the extensions have specific versions. The Azure Stack Hub cloud admin can choose which extensions to be made available to for their users. To view the list of supported extensions, refer to the [VM extensions](#vm-extensions) section of this article. |
-| Virtual machine network | Public IP addresses assigned to a tenant VM are accessible over the Internet.<br><br><br>Azure VMs have a fixed DNS name. | Public IP addresses assigned to a tenant VM are accessible within the Azure Stack Development Kit environment only. A user must have access to the Azure Stack Development Kit via [RDP](../asdk/asdk-connect.md#connect-to-azure-stack-using-rdp) or [VPN](../asdk/asdk-connect.md#connect-to-azure-stack-using-vpn) to connect to a VM that is created in Azure Stack Hub.<br><br>VMs created within a specific Azure Stack Hub instance have a DNS name based on the value that is configured by the cloud admin. |
+| Virtual machine network | Public IP addresses assigned to a tenant VM are accessible over the Internet.<br><br><br>Azure VMs have a fixed DNS name. | Public IP addresses assigned to a tenant VM are accessible within the Azure Stack Development Kit environment only. <br><br>VMs created within a specific Azure Stack Hub instance have a DNS name based on the value that is configured by the cloud admin. |
 | Virtual machine storage | Supports [managed disks.](/azure/virtual-machines/windows/managed-disks-overview) | Managed disks are supported in Azure Stack Hub with version 1808 and later. |
-| Virtual machine disk performance | Depends on disk type and size. | Depends on VM size of the VM, which the disks are attached to. For more info, refer to the [VM sizes supported in Azure Stack Hub](azure-stack-vm-sizes.md) article.
+| Virtual machine disk performance | Depends on disk type and size. | Depends on VM size of the VM, which the disks are attached to. For more info, refer to the [VM sizes supported in Azure Stack Hub](azure-stack-vm-sizes.md) article. |
 | OS Disk Swap | If you have an existing VM, but you want to swap the disk for a backup disk or another OS disk, you can [swap the OS disks](/azure/virtual-machines/windows/os-disk-swap). You don't have to delete and recreate the VM. You can even use a managed disk in another resource group, as long as it isn't already in use. | OS Disk Swap is not supported on Azure Stack Hub. |
 | API versions | Azure always has the latest API versions for all the VM features. | Azure Stack Hub supports specific Azure services and specific API versions for these services. To view the list of supported API versions, refer to the [API versions](#api-versions) section of this article. |
 | Azure Instance Metadata Service | The Azure Instance Metadata Service provides info about running VM instances that can be used to manage and set up your VM.  | The Azure Instance Metadata Service is available as a public preview with the Azure Stack Hub hotfix 1.2108.2.73. It supports the Compute & Network namespace. For more information, see [Azure Instance Metadata Service](instance-metadata-service.md). |
@@ -72,7 +70,7 @@ The following table lists the VMs that are supported on Azure Stack Hub along wi
 |Compute optimized|Fsv2-series    |[F2s_v2 - F64s_v2](azure-stack-vm-sizes.md#fsv2-series) |
 |GPU | NCv3-series |[NC6s_v3-NC24s_v3](gpu-vms-about.md#ncv3) |
 |GPU | NVv4-series |[NV4as_v4](gpu-vms-about.md#nvv4) |
-|GPU | NCasT4_v3-series |[NC4as_T4_v3-NC64as_T4_v3](gpu-vms-about.md#ncast4_v3)
+|GPU | NCasT4_v3-series |[NC4as_T4_v3-NC64as_T4_v3](gpu-vms-about.md#ncast4_v3) |
 
 VM sizes and their associated resource quantities are consistent between Azure Stack Hub and Azure. This consistency includes the amount of memory, the number of cores, and the number/size of data disks that can be created. However, performance of VMs with the same size depends on the underlying characteristics of a particular Azure Stack Hub environment.
 
@@ -91,6 +89,7 @@ Get-AzVmImagePublisher -Location local | `
   Select Type, Version | `
   Format-Table -Property * -AutoSize
 ```
+
 ### [AzureRM modules](#tab/azurerm1)
 
 ```powershell
@@ -99,7 +98,8 @@ Get-AzureRMVmImagePublisher -Location local | `
   Get-AzVMExtensionImage | `
   Select Type, Version | `
   Format-Table -Property * -AutoSize
-``` 
+```
+
 ---
 
 If provisioning an extension on a VM deployment takes too long, let the provisioning timeout instead of trying to stop the process to deallocate or delete the VM.
@@ -137,7 +137,6 @@ Get-AzureRMResourceProvider | `
 
 ---
 
-
 The list of supported resource types and API versions may vary if the cloud operator updates your Azure Stack Hub environment to a newer version.
 
 ## Windows activation
@@ -149,7 +148,7 @@ Windows products must be used in accordance with Product Use Rights and Microsof
 
 Microsoft Azure uses KMS activation to activate Windows VMs. If you move a VM from Azure Stack Hub to Azure and encounter activation problems, see [Troubleshoot Azure Windows VM activation problems](/azure/virtual-machines/windows/troubleshoot-activation-problems). Additional info can be found at the [Troubleshooting Windows activation failures on Azure VMs](/archive/blogs/mast/troubleshooting-windows-activation-failures-on-azure-vms) Azure Support Team Blog post.
 
-## High Availability
+## High availability
 
 Your VM may be subject to a reboot due to planned maintenance as scheduled by the Azure Stack Hub operator. For high availability of a multi-VM production system in Azure, VMs are placed in an [availability set](/azure/virtual-machines/windows/manage-availability#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) that spreads them across multiple fault domains and update domains. In the smaller scale of Azure Stack Hub, a fault domain in an availability set is defined as a single node in the scale unit.  
 
@@ -167,7 +166,7 @@ In Azure Stack Hub, VMs are live migrated across the other online hosts in the c
 
 ## Arc on Azure Stack Hub VMs
 
-Arc enabled servers do not support installing the connected machine agent on virtual machines running in Azure, or virtual machines running on Azure Stack Hub or Azure Stack Edge, as they are already modeled as Azure VMs.
+Arc-enabled servers do not support installing the connected machine agent on virtual machines running in Azure, or virtual machines running on Azure Stack Hub or Azure Stack Edge, as they are already modeled as Azure VMs.
 
 ## Microsoft Office server products on Azure Stack Hub VMs
 
@@ -175,10 +174,9 @@ Not all Microsoft Office server products are supported on Azure Stack Hub VMs, w
 
 | Product | Office support statement | More information |
 | --------| ------------------------ | ---------------- |
-| Exchange | Not supported. Does not meet the storage virtualization requirements for Exchange. |  [Exchange Server virtualization](/exchange/plan-and-deploy/virtualization) | 
-| SharePoint | Supported only if specific networking requirements are met. | [Plan for virtualization of SharePoint Server](/sharepoint/install/deploy-sharepoint-virtual-machines) | 
+| Exchange | Not supported. Does not meet the storage virtualization requirements for Exchange. |  [Exchange Server virtualization](/exchange/plan-and-deploy/virtualization) |
+| SharePoint | Supported only if specific networking requirements are met. | [Plan for virtualization of SharePoint Server](/sharepoint/install/deploy-sharepoint-virtual-machines) |
 | Skype | Not supported. Skype does not support live migration, a core virtualization feature used in Azure Stack Hub. | [Virtualization support for Skype for Business Server 2019](/skypeforbusiness/virtualization-guidance) |  
-
 
 ## Next steps
 

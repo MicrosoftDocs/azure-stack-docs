@@ -2,11 +2,11 @@
 title: AKS enabled by Azure Arc on VMware overview (preview)
 description: Learn about AKS enabled by Azure Arc deployment options on VMware.
 ms.topic: overview
-ms.date: 03/22/2024
+ms.date: 09/15/2025
 author: sethmanheim
 ms.author: sethm 
 ms.reviewer: leslielin
-ms.lastreviewed: 03/15/2024
+ms.lastreviewed: 09/15/2025
 
 ---
 
@@ -14,7 +14,10 @@ ms.lastreviewed: 03/15/2024
 
 [!INCLUDE [aks-applies-to-vmware](includes/aks-hci-applies-to-skus/aks-applies-to-vmware.md)]
 
-As part of the [Azure Kubernetes Service (AKS) enabled by Azure Arc](/azure/aks/hybrid), the AKS on VMware preview enables you to use [Azure Arc](/azure/azure-arc/overview) to create new Kubernetes clusters on VMware vSphere. AKS on VMware builds on the core capabilities developed for [AKS on Azure Local, version 23H2](aks-whats-new-23h2.md). These capabilities enable organizations to leverage the benefits of Azure cloud computing. AKS on VMware also helps you modernize applications and infrastructure, while maintaining control, flexibility, and compatibility across hybrid cloud deployments.
+> [!IMPORTANT]
+> Microsoft is retiring AKS on VMware (preview) on March 16, 2026. We recommend deploying [AKS on Azure Local](aks-whats-new-23h2.md) to benefit from its enhanced capabilities. After March 16, 2026, you will no longer be able to deploy or receive support for Azure Kubernetes Service on VMware. If you have additional questions, please contact us through the [AKS enabled by Azure Arc GitHub repository](https://aka.ms/aksarc-github).
+
+As part of the [Azure Kubernetes Service (AKS) enabled by Azure Arc](/azure/aks/hybrid), the AKS on VMware preview enables you to use [Azure Arc](/azure/azure-arc/overview) to create new Kubernetes clusters on VMware vSphere. AKS on VMware builds on the core capabilities developed for [AKS on Azure Local](aks-whats-new-local.md). These capabilities enable organizations to leverage the benefits of Azure cloud computing. AKS on VMware also helps you modernize applications and infrastructure, while maintaining control, flexibility, and compatibility across hybrid cloud deployments.
 
 With AKS on VMware, you can manage your AKS Arc clusters running on VMware vSphere using familiar tools like Azure CLI. By default, AKS on VMware is Arc-connected, simplifying the process of bringing Azure capabilities to AKS on VMware through the [Arc Resource Bridge](/azure/azure-arc/resource-bridge/overview).
 
@@ -22,7 +25,7 @@ The integration of the Kubernetes extension for AKS Arc operators in Arc-enabled
 
 - **Simplified infrastructure deployment on Arc-Enabled VMware vSphere with seamless onboarding**: The installation of the Kubernetes extension for AKS Arc operators is now incorporated into the single-step onboarding process for Arc-enabled VMWare vSphere through the Azure Portal.
 - **Unified cloud-based management tools**: Administrators can use widely-adopted tools, such as the Azure Command-Line Interface (CLI), to create, configure, and manage Kubernetes clusters directly on VMware. This integration provides a consistent toolset for managing resources, regardless of their deployment environment.
-- **Azure-consistent command-line experience**: The experience provided by AKS on Azure Local, version 23H2 also extends to AKS on VMware, offering a consistent CLI experience in line with Azure standards. Even during the preview phase, where only a subset of commands might be supported, this consistency is essential for administrators who value a uniform and standardized interface across their adaptive cloud deployments.
+- **Azure-consistent command-line experience**: The experience provided by AKS on Azure Local also extends to AKS on VMware, offering a consistent CLI experience in line with Azure standards. Even during the preview phase, where only a subset of commands might be supported, this consistency is essential for administrators who value a uniform and standardized interface across their adaptive cloud deployments.
 
 ## Simplified management of AKS components on VMware vSphere
 

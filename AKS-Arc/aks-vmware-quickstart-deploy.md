@@ -5,14 +5,17 @@ author: sethmanheim
 ms.author: sethm
 ms.topic: quickstart
 ms.custom: devx-track-azurecli
-ms.date: 03/22/2024
-ms.lastreviewed: 03/22/2024
+ms.date: 09/15/2025
+ms.lastreviewed: 09/15/2025
 ms.reviewer: leslielin
 ---
 
 # Quickstart: Deploy an AKS cluster using Azure CLI (preview)
 
 [!INCLUDE [aks-applies-to-vmware](includes/aks-hci-applies-to-skus/aks-applies-to-vmware.md)]
+
+> [!IMPORTANT]
+> Microsoft is retiring AKS on VMware (preview) on March 16, 2026. We recommend deploying [AKS on Azure Local](aks-whats-new-23h2.md) to benefit from its enhanced capabilities. After March 16, 2026, you will no longer be able to deploy or receive support for Azure Kubernetes Service on VMware. If you have additional questions, please contact us through the [AKS enabled by Azure Arc GitHub repository](https://aka.ms/aksarc-github).
 
 This quickstart shows you how to deploy an AKS cluster in AKS enabled by Azure Arc on VMware using the Azure CLI.
 
@@ -94,8 +97,19 @@ Run the following command to create the cluster.
 az aksarc create -n '<name of your cluster>' -g $resource_group --kubernetes-version '<Kubernetes version from the Arc Resource Bridge>' --custom-location $custom_location --aad-admin-group-object-ids $aad_group_id --vnet-ids $vnet_id --control-plane-ip $control_plane_ip --generate-ssh-keys --debug
 ```
 
-   > [!NOTE]
-   > In this preview release, you can only deploy the same Kubernetes version that the Arc Resource Bridge supports. The Kubernetes version you provide in the command must align with the Arc Resource Bridge version. You can find the Arc Resource Bridge version in the Azure portal under **Azure Arc > Management > Resource Bridge**. To determine the corresponding Kubernetes version, see [What's new with Azure Arc resource bridge](/azure/azure-arc/resource-bridge/release-notes).
+> [!NOTE]
+> In this preview release, you can only deploy the same Kubernetes version that the Arc Resource Bridge supports. Currently, this preview only supports Arc Resource Bridge version 1.2.0 and earlier. The Kubernetes version you provide in the command must align with the Arc Resource Bridge version. You can find the Arc Resource Bridge version in the Azure portal under **Azure Arc > Management > Resource Bridge**. To determine the corresponding Kubernetes version, see [What's new with Azure Arc resource bridge](/azure/azure-arc/resource-bridge/release-notes#version-120-july-2024).
+
+## Delete the cluster
+
+Run the `az aksarc delete` command to clean up the cluster you created:
+
+```azurecli
+az aksarc delete -n '<name of your cluster>' -g $resource_group
+```
+
+> [!IMPORTANT]
+> The delete operation can fail if your vCenter credentials are invalid. To prevent this, verify that you have proper administrative access for Arc-enabled VMware vSphere. For more information, see [Updating the vSphere account credentials](/azure/azure-arc/vmware-vsphere/administer-arc-vmware#updating-the-vsphere-account-credentials-using-a-new-password-or-a-new-vsphere-account-after-onboarding).
 
 
 ## Next steps

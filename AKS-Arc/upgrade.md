@@ -1,8 +1,8 @@
 ---
-title: Upgrade Kubernetes version of Azure Kubernetes Service (AKS) workload clusters in AKS enabled by Azure Arc using PowerShell
-description: Learn how to upgrade the Kubernetes version of Azure Kubernetes Service (AKS) workload clusters in AKS enabled by Azure Arc using PowerShell.
-ms.topic: article
-ms.date: 06/27/2024
+title: Upgrade Kubernetes version of Azure Kubernetes Service (AKS) workload clusters in AKS on Windows Server using PowerShell
+description: Learn how to upgrade the Kubernetes version of Azure Kubernetes Service (AKS) workload clusters in AKS on Windows Server using PowerShell.
+ms.topic: upgrade-and-migration-article
+ms.date: 04/02/2025
 author: sethmanheim
 ms.author: sethm 
 
@@ -10,11 +10,11 @@ ms.author: sethm
 # Keyword: Upgrade the Kubernetes version 
 ---
 
-# Upgrade Kubernetes version of AKS clusters in AKS enabled by Arc using PowerShell
+# Upgrade Kubernetes version of AKS clusters in AKS on Windows Server using PowerShell
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-Two types of updates are available for an Azure Kubernetes Service (AKS) workload cluster in AKS enabled by Azure Arc:
+Two types of updates are available for an Azure Kubernetes Service (AKS) workload cluster in AKS on Windows Server:
 
 - Upgrade the Kubernetes version of an AKS cluster.
 - Upgrade the operating system version of an AKS cluster without updating the Kubernetes version.
@@ -25,7 +25,7 @@ Two types of updates are available for an Azure Kubernetes Service (AKS) workloa
 We recommend updating an AKS workload cluster at least once every 60 days. New Kubernetes version updates are available every 30 days. To avoid outages in workload availability, rolling updates are performed. When you bring a new node with a newer build into the cluster, resources move from the old node to the new node. When the resources are successfully moved, the old node is decommissioned and removed from the cluster.
 
 > [!IMPORTANT]
-> Updating the Azure Kubernetes Service on the AKS host is the first step in any update flow and must be initiated before running [`Update-AksHciCluster`](./reference/ps/update-akshcicluster.md). For information about updating the AKS host, see [Update the AKS host on Azure Local](./update-akshci-host-powershell.md).
+> Updating the Azure Kubernetes Service on the AKS host is the first step in any update flow and must be initiated before running [`Update-AksHciCluster`](./reference/ps/update-akshcicluster.md). For information about updating the AKS host, see [Update the AKS host](./update-akshci-host-powershell.md).
 
 ## Get available Kubernetes versions
 

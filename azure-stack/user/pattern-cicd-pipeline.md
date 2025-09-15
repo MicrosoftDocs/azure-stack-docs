@@ -3,7 +3,7 @@ title: The DevOps pattern in Azure Stack Hub
 description: Learn about the DevOps pattern so you can ensure consistency across deployments in Azure and Azure Stack Hub.
 author: ronmiab 
 ms.topic: article
-ms.date: 11/05/2019
+ms.date: 04/25/2025
 ms.author: robess
 ms.reviewer: anajod
 ms.lastreviewed: 11/05/2019
@@ -21,7 +21,7 @@ Code from a single location and deploy to multiple targets in development, test,
 
 Application deployment continuity, security, and reliability are essential to organizations and critical to development teams.
 
-Apps often require refactored code to run in each target environment. This means that an app isn't completely portable. It must be updated, tested, and validated as it moves through each environment. For example, code written in a development environment must then be rewritten to work in a test environment and rewritten when it finally lands in a production environment. Furthermore, this code is specifically tied to the host. This increases the cost and complexity of maintaining your app. Each version of the app is tied to each environment. The increased complexity and duplication increase the risk of security and code quality. In addition, the code can't be readily redeployed when you remove restore failed hosts or deploy additional hosts to handle increases in demand.
+Apps often require refactored code to run in each target environment. This means that an app isn't completely portable. It must be updated, tested, and validated as it moves through each environment. For example, code written in a development environment must then be rewritten to work in a test environment and rewritten when it finally lands in a production environment. Furthermore, this code is tied to the host. This increases the cost and complexity of maintaining your app. Each version of the app is tied to each environment. The increased complexity and duplication increase the risk of security and code quality. In addition, the code can't be readily redeployed when you remove restore failed hosts or deploy additional hosts to handle increases in demand.
 
 ## Solution
 

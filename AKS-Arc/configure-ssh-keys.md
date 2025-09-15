@@ -1,7 +1,7 @@
 ﻿---
 title: Configure SSH keys for a cluster in AKS enabled by Azure Arc
 description: Learn how to configure SSH keys for an AKS Arc cluster.
-ms.date: 01/10/2025
+ms.date: 02/26/2025
 ms.topic: how-to
 author: sethmanheim
 ms.author: sethm
@@ -11,7 +11,7 @@ ms.lastreviewed: 01/10/2025
 
 # Configure SSH keys for an AKS Arc cluster
 
-> Applies to: AKS on Azure Local, version 23H2
+[!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
 [Secure Shell Protocol (SSH)](https://www.ssh.com/ssh/) is an encrypted connection protocol that provides secure sign-ins over unsecured connections. AKS on Azure Local supports access to a VM in your Kubernetes nodes over SSH using a public-private key pair, also known as *SSH keys*. For information about how to create and manage SSH keys, see [Create and manage SSH keys](/azure/virtual-machines/ssh-keys-azure-cli).
 
@@ -71,19 +71,13 @@ You have three options for SSH key configuration:
 - Use an existing key stored in Azure and select from the stored keys.
 - Use an existing public key by providing the SSH public key value.
 
-## Error message
+## Error messages
 
-If you don't provide valid SSH key information during cluster creation and no SSH key exists, you receive error messages like the following:
-
-- An RSA key file or key value must be supplied to SSH Key Value.
-- Control Plane: Missing Security Keys in Cluster Configuration.
-- LinuxProfile SSH public keys should be valid and non-empty.
-- Global LinuxProfile SSH public keys should be valid and non-empty.
-
-To mitigate the issue, see [Create and manage SSH keys with the Azure CLI](/azure/virtual-machines/ssh-keys-azure-cli#generate-new-keys) to create the SSH keys. Then, see [Create Kubernetes clusters](aks-create-clusters-cli.md) for the interface you're using. If you're using the REST API, see [provisioned cluster instances](/rest/api/hybridcontainer/provisioned-cluster-instances) to create the provisioned cluster instance.
+For information about error messages that can occur when you create and deploy an AKS cluster on Azure Local, see the [Control plane configuration validation errors](control-plane-validation-errors.md) article.
 
 ## Next steps
 
 - [Connect to Windows or Linux worker nodes with SSH](ssh-connect-to-windows-and-linux-worker-nodes.md)
 - [Restrict SSH access to specific IP addresses](restrict-ssh-access.md)
 - [Get on-demand logs for troubleshooting](get-on-demand-logs.md)
+- Help to protect your cluster in other ways by following the guidance in the [security book for AKS enabled by Azure Arc](/azure/azure-arc/kubernetes/conceptual-security-book?toc=/azure/aks/aksarc/toc.json&bc=/azure/aks/aksarc/breadcrumb/toc.json).

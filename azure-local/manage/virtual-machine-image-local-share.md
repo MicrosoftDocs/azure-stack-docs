@@ -7,15 +7,14 @@ ms.topic: how-to
 ms.service: azure-local
 ms.custom:
   - devx-track-azurecli
-ms.date: 11/21/2024
+ms.date: 03/25/2025
 ---
 
 # Create Azure Local VM image using images in a local share
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
-This article describes how to create virtual machine (VM) images for Azure Local using source images from a local share. You can create VM images using the Azure portal or Azure CLI and then use these VM images to create Arc VMs on Azure Local.
-
+This article describes how to create virtual machine (VM) images for Azure Local using source images from a local share. You can create VM images using the Azure portal or Azure CLI and then use these VM images to create Azure Local VMs.
 
 ## Prerequisites
 
@@ -94,7 +93,7 @@ Follow these steps to create a VM image using the Azure CLI.
     
     ```
 
-    A deployment job starts for the VM image. 
+    A deployment job starts for the VM image.
 
     In this example, the storage path was specified using the `--storage-path-id` flag and that ensured that the workload data (including the VM, VM image, non-OS data disk) is placed in the specified storage path.
 
@@ -233,7 +232,6 @@ You might want to view the properties of VM images before you use the image to c
 [!INCLUDE [hci-view-vm-image-properties-portal](../includes/hci-view-vm-image-properties-portal.md)]
 
 ---
-
 
 ## Delete VM image
 

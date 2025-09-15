@@ -4,24 +4,26 @@ description: Learn how to troubleshoot known issues for Azure Site Recovery.
 author: ronmiab
 ms.author: robess
 ms.topic: troubleshooting
-ms.custom: linux-related-content
-ms.date: 06/03/2024
+ms.date: 04/25/2025
 ms.reviewer: rtiberiu
 ms.lastreviewed: 04/25/2024
+ms.custom:
+  - linux-related-content
+  - sfi-image-nochange
 ---
 
 # Known issues - Azure Site Recovery on Azure Stack Hub
 
 This article describes known issues for Azure Site Recovery on Azure Stack Hub. Use the following sections for details about the current known issues and limitations in Azure Site Recovery on Azure Stack Hub.
 
-## Maximum disk size supported is 1022 GB
+## Maximum disk size supported is 1,022 GB
 
-When you protect a VM, Azure Site Recovery needs to add an additional 1 GB of data to an existing disk. Since Azure Stack Hub has a hard limitation for the maximum size of a disk at 1023 GB, the maximum size of a disk protected by Site Recovery must be equal to or less than 1022.
+When you protect a virtual machine (VM), Azure Site Recovery needs to add an additional 1 GB of data to an existing disk. Since Azure Stack Hub has a hard limitation for the maximum size of a disk at 1,023 GB, the maximum size of a disk protected by Site Recovery must be equal to or less than 1022.
 
 When you try to protect a VM with a disk of 1023Gb, the following behavior occurs:
 
-- Enable protection succeeds as a seed disk of only 1 GB is created and ready for use. There is no error at this step.
-- Replication is blocked at **xx% Synchronized** and after a while, the replication health becomes **Critical** with the error **AzStackToAzStackSourceAgentDiskSourceAgentSlowResyncProgressOnPremToAzure**. The error occurs because during replication, Site Recovery tries to resize the seed disk to 1024 GB and write to it. This operation fails, as Azure Stack Hub does not support 1024 GB disks.
+- Enable protection succeeds as a seed disk of only 1 GB is created and ready for use. There's no error at this step.
+- Replication is blocked at **xx% Synchronized** and after a while, the replication health becomes **Critical** with the error **AzStackToAzStackSourceAgentDiskSourceAgentSlowResyncProgressOnPremToAzure**. The error occurs because during replication, Site Recovery tries to resize the seed disk to 1,024 GB and write to it. This operation fails, as Azure Stack Hub doesn't support 1,024 GB disks.
 
   :::image type="content" source="media/azure-site-recovery-known-issues/max-disk-number-1.png" alt-text="Screenshot of Azure portal showing maximum disk error." lightbox="media/azure-site-recovery-known-issues/max-disk-number-1.png":::
 
@@ -29,22 +31,22 @@ When you try to protect a VM with a disk of 1023Gb, the following behavior occur
 
   :::image type="content" source="media/azure-site-recovery-known-issues/max-disk-number-2.png" alt-text="Screenshot of Azure portal showing write disk errors." lightbox="media/azure-site-recovery-known-issues/max-disk-number-2.png":::
 
-The current workaround for this issue is to create a new disk (of 1022 GB or less), attach it to your source VM, copy the data from the 1023 GB disk to the new one, and then remove the 1023 GB disk from the source VM. Once this procedure is done, and the VM has all disks smaller or equal to 1022 GB, you can enable the protection using Azure Site Recovery.
+The current workaround for this issue is to create a new disk (of 1,022 GB or less), attach it to your source VM, copy the data from the 1,023 GB disk to the new one, and then remove the 1,023 GB disk from the source VM. Once this procedure is done, and the VM has all disks smaller or equal to 1,022 GB, you can enable the protection using Azure Site Recovery.
 
-## Re-protection: available data disk slots on appliance
+## Reprotection: available data disk slots on appliance
 
-1. Ensure the appliance VM has enough data disk slots, as the replica disks for re-protection are attached to the appliance.
+1. Ensure the appliance VM has enough data disk slots, as the replica disks for reprotection are attached to the appliance.
 
-2. The initial allowed number of disks being re-protected at the same time is 31. The default size of the appliance created from the marketplace item is [Standard_DS4_v2](../user/azure-stack-vm-sizes.md#dsv2-series), which supports up to 32 data disks, and the appliance itself uses one data disk.
+2. The initial allowed number of disks being reprotected at the same time is 31. The default size of the appliance created from the marketplace item is [Standard_DS4_v2](../user/azure-stack-vm-sizes.md#dsv2-series), which supports up to 32 data disks, and the appliance itself uses one data disk.
 
 3. If the sum of the protected VMs is greater than 31, perform one of the following actions:
-    - Split the VMs that require re-protection into smaller groups to ensure that the number of disks re-protected at the same time doesn't exceed the maximum number of data disks the appliance supports.
+    - Split the VMs that require reprotection into smaller groups to ensure that the number of disks reprotected at the same time doesn't exceed the maximum number of data disks the appliance supports.
     - Increase the size of the Azure Site Recovery appliance VM.
 
     >[!NOTE]
-    > We do not test and validate large VM SKUs for the appliance VM.
+    > We don't test and validate large VM SKUs for the appliance VM.
 
-4. If you're trying to re-protect a VM, but there aren't enough slots on the appliance to hold the replication disks, the error message **An internal error occurred** displays. You can check the number of the data disks currently on the appliance, or sign in to the appliance, go to **Event Viewer**, and open logs for **Azure Site Recovery** under **Applications and Services Logs**:
+4. If you're trying to reprotect a VM, but there aren't enough slots on the appliance to hold the replication disks, the error message **An internal error occurred** displays. You can check the number of the data disks currently on the appliance, or sign in to the appliance, go to **Event Viewer**, and open logs for **Azure Site Recovery** under **Applications and Services Logs**:
 
     :::image type="content" source="../operator/media/azure-site-recovery/known-issues/event-viewer.png" alt-text="Sample screenshot of Event Viewer for Azure Site Recovery."lightbox="media/azure-site-recovery/known-issues/event-viewer.png":::
 
@@ -83,9 +85,9 @@ The current workaround for this issue is to create a new disk (of 1022 GB or les
 
     :::image type="content" source="../operator/media/azure-site-recovery/known-issues/mobility-agent-update.png" alt-text="Sample screenshot of mobility agent update check."lightbox="media/azure-site-recovery/known-issues/mobility-agent-update.png":::
 
-## Re-protect manual resync isn't supported yet
+## Reprotect manual resync isn't supported yet
 
-After the re-protect job is complete, the replication is started in sequence. During replication, there may be cases that require a resync, which means a new initial replication is triggered to synchronize all the changes.
+After the reprotect job is complete, the replication is started in sequence. During replication, there may be cases that require a resync, which means a new initial replication is triggered to synchronize all the changes.
 
 There are two types of resync:
 
@@ -103,7 +105,7 @@ There are two types of resync:
 
 ## Known issues in PowerShell automation
 
-- If you leave `$failbackPolicyName` and `$failbackExtensionName` empty or null, the re-protect can fail. See the following examples:
+- If you leave `$failbackPolicyName` and `$failbackExtensionName` empty or null, the reprotect can fail. See the following examples:
 
     :::image type="content" source="../operator/media/azure-site-recovery/known-issues/reprotect-fail-error-1.png" alt-text="Sample screenshot of a VM failed to perform operation error."lightbox="media/azure-site-recovery/known-issues/reprotect-fail-error-1.png":::
 
@@ -134,10 +136,10 @@ When replicating multiple VMs, you might see the **Protected item health changed
 
 :::image type="content" source="../operator/media/azure-site-recovery/known-issues/mobility-service-agent-warning.png" alt-text="Sample screenshot of the Protected item health change warning."lightbox="media/azure-site-recovery/known-issues/mobility-service-agent-warning.png":::
 
-This error message should only be a warning and is not a blocking issue for the actual replication or failover processes.
+This error message should only be a warning and isn't a blocking issue for the actual replication or failover processes.
 
 >[!TIP]
->You can check the the state of the respective VM to ensure it's healthy.
+>You can check the state of the respective VM to ensure it's healthy.
 
 ## Deleting the appliance VM (source) blocks the deletion of the vault (target)
 
@@ -147,5 +149,5 @@ To avoid this issue, make sure to first remove the protection from all items in 
 
 ## Next steps
 
-- [Azure Site Recovery on Azure Stack Hub](azure-site-recovery-overview.md)
-- [Azure Site Recovery on Azure Stack Hub capacity planning](azure-site-recovery-capacity-planning.md)
+- [Azure Site Recovery on Azure Stack Hub](azure-site-recovery-overview.md).
+- [Azure Site Recovery on Azure Stack Hub capacity planning](azure-site-recovery-capacity-planning.md).

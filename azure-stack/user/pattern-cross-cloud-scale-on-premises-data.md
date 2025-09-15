@@ -2,8 +2,8 @@
 title: Cross-cloud scaling (on-premises data) pattern in Azure Stack Hub
 description: Learn how to build a scalable cross-cloud app that uses on-premises data in Azure and Azure Stack Hub.
 author: ronmiab 
-ms.topic: article
-ms.date: 11/05/2019
+ms.topic: install-set-up-deploy
+ms.date: 04/25/2025
 ms.author: robess
 ms.reviewer: anajod
 ms.lastreviewed: 11/05/2019
@@ -40,7 +40,7 @@ This solution uses the following components:
 | | Azure Traffic Manager | [Azure Traffic Manager](/azure/traffic-manager/traffic-manager-overview) is a DNS-based traffic load balancer. It allows you to control the distribution of user traffic for service endpoints in different datacenters. |
 | | Azure Application Insights | [Application Insights](/azure/azure-monitor/app/app-insights-overview) is an extensible Application Performance Management service for web developers building and managing apps on multiple platforms.|
 | | Azure Functions | [Azure Functions](/azure/azure-functions/) allows you to execute your code in a serverless environment without having to first create a VM or publish a web app. |
-| | Azure Autoscale | [Autoscale](/azure/azure-monitor/platform/autoscale-overview) is a built-in feature of Cloud Services, VMs, and web apps. The feature allows apps to perform their best when demand changes. Apps will adjust for traffic spikes, notifying you when metrics change and scaling as needed. |
+| | Azure Autoscale | [Autoscale](/azure/azure-monitor/platform/autoscale-overview) is a built-in feature of Cloud Services, VMs, and web apps. The feature allows apps to perform their best when demand changes. Apps adjust for traffic spikes, notifying you when metrics change and scaling as needed. |
 | Azure Stack Hub | IaaS Compute | Azure Stack Hub allows you to use the same app model, self-service portal, and APIs enabled by Azure. Azure Stack Hub IaaS allows a broad range of open-source technologies for consistent hybrid cloud deployments. The solution example uses a Windows Server VM to SQL Server, for example.|
 | | Azure App Service | Just like the Azure web app, the solution uses [Azure App Service on Azure Stack Hub](/azure-stack/operator/azure-stack-app-service-overview) to host the web app. |
 | | Networking | The Azure Stack Hub Virtual Network works exactly like the Azure Virtual Network. It uses many of the same networking components, including custom hostnames.
@@ -58,7 +58,7 @@ Azure and Azure Stack Hub are uniquely suited to support the needs of today's gl
 
 #### Hybrid cloud without the hassle
 
-Microsoft offers an unrivaled integration of on-premises assets with Azure Stack Hub and Azure in one unified solution. This integration eliminates the hassle of managing multiple point solutions and a mix of cloud providers. With cross-cloud scaling, the power of Azure is just a few clicks away. Just connect your Azure Stack Hub to Azure with cloud bursting and your data and apps will be available in Azure when needed.
+Microsoft offers an unrivaled integration of on-premises assets with Azure Stack Hub and Azure in one unified solution. This integration eliminates the hassle of managing multiple point solutions and a mix of cloud providers. With cross-cloud scaling, the power of Azure is just a few clicks away. Just connect your Azure Stack Hub to Azure with cloud bursting and your data and apps are available in Azure when needed.
 
 - Eliminate the need to build and maintain a secondary DR site.
 - Save time and money by eliminating tape backup and house up to 99 years of backup data in Azure.
@@ -99,7 +99,7 @@ Azure Stack Hub works with both Azure Active Directory (Azure AD) and Active Dir
 
 #### Ensure compliance, and data sovereignty
 
-Azure Stack Hub lets you run the same service across multiple countries as you would if using a public cloud. Deploying the same app in datacenters in each country allows data sovereignty requirements to be met. This capability ensures personal data is kept within each country's borders.
+Azure Stack Hub lets you run the same service across multiple countries/regions as you would if using a public cloud. Deploying the same app in datacenters in each country/region allows data sovereignty requirements to be met. This capability ensures personal data is kept within each country/region's borders.
 
 #### Azure Stack Hub - security posture
 

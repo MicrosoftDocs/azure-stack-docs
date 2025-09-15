@@ -4,7 +4,7 @@ description: This article provides guidance on the Support Diagnostic Tool for A
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 02/18/2025
+ms.date: 05/08/2025
 ---
 
 # Use the Support Diagnostic Tool to troubleshoot Azure Local issues
@@ -31,13 +31,13 @@ The tool provides:
 
 ## Prerequisites
 
-Before you use the PowerShell module, make sure to:
+Before you use the PowerShell module:
 
-- Ensure that you are using an account that has administrative access to the Azure Local nodes.
+- Make sure to use an account that has administrative access to the Azure Local machines.
 
-- Ensure that PSRemoting has been configured on the Azure Local nodes. Run `Enable-PSRemoting` to configure remote PowerShell. For more information, see the [Enable-PSRemoting](https://learn.microsoft.com/powershell/module/microsoft.powershell.core/enable-psremoting) reference documentation.
+- Ensure that PSRemoting is configured on the Azure Local machines. Run `Enable-PSRemoting` to configure remote PowerShell. For more information, see the [Enable-PSRemoting](/powershell/module/microsoft.powershell.core/enable-psremoting) reference documentation.
 
-## Install or Update the Azure Local Support Diagnostic Tool
+## Install or update the Azure Local Support Diagnostic Tool
 
 Run PowerShell as an administrator and then run the following commands:
 
@@ -53,65 +53,72 @@ If you already have the module installed, you can update using the following cmd
 Update-Module -Name Microsoft.AzureStack.HCI.CSSTools
 ```
 
-    > [!NOTE]
-    > When you import the module, it will attempt to automatically update from PowerShell Gallery. You can also update manually using methods below.
+>[!NOTE]
+>When you import the module, it attempts to automatically update from PowerShell gallery. You can also update manually using methods below.
 
 Ensure that you have the latest module loaded into the current runspace by removing and importing the module.
+
 ```powershell
 Remove-Module -Name Microsoft.AzureStack.HCI.CSSTools
 Import-Module -Name Microsoft.AzureStack.HCI.CSSTools
 ```
 
-    > [!NOTE]
-    > Ensure all the nodes within Azure Local have been updated to use the same version. Remove existing PSSessions to ensure the correct module version is loaded into the remote runspace.
+>[!NOTE]
+>Ensure all machines within Azure Local have been updated to use the same version. Remove existing PSSessions to ensure the correct module version is loaded into the remote runspace.
 
+## Use the Azure Local Support Diagnostic Tool
 
-## Using the Azure Local Support Diagnostic Tool
-To see a list of available cmdlets within the PowerShell module, use:
+This section provides different cmdlets for using the Azure Local Support Diagnostic Tool.
+
+### View available cmdlets
+
+To see a list of available cmdlets within the PowerShell module, run the following cmdlet:
+
 ```powershell
 Get-Command -Module Microsoft.AzureStack.HCI.CSSTools
 ```
 
-
 ### Perform diagnostic checks
+
 You can perform a diagnostic health check against the system to help detect common issues. The following components are available:
+
 - BaseSystem
 - Registration
-
 
 ```powershell
 Invoke-AzsSupportDiagnosticCheck -Component <Component>
 ```
 
-
 ### Collect data for support
-To collect data using one of our pre-defined collection sets, run the following command:
 
-```powershell
-New-AzsSupportDataBundle –Component <Component>
-```
+- To collect data using one of our predefined collection sets, run the following command:
 
-To check all data collection sets, press `CTRL+SPACE` after the parameter `Component`.
+    ```powershell
+    New-AzsSupportDataBundle –Component <Component>
+    ```
 
-To collect your own dataset, run the following command:
+- To check all data collection sets, press `CTRL+SPACE` after the parameter `Component`.
 
-```powershell
-$ClusterCommands = @(<clusterCommand1>,<clusterCommand2>)
-$nodeCommands = @(<nodeCommand1>,<nodeCommand2>)
-$nodeEvents = @(<eventLogName1>,<eventLogName2>)
-$nodeRegistry = @(<registryPath1>,<registryPath2>)
-$nodeFolders = @(<folderPath1>,<folderPath2>)
+- To collect your own dataset, run the following command:
+
+    ```powershell
+    $ClusterCommands = @(<clusterCommand1>,<clusterCommand2>)
+    $nodeCommands = @(<nodeCommand1>,<nodeCommand2>)
+    $nodeEvents = @(<eventLogName1>,<eventLogName2>)
+    $nodeRegistry = @(<registryPath1>,<registryPath2>)
+    $nodeFolders = @(<folderPath1>,<folderPath2>)
 
 
-New-AzsSupportDataBundle -ClusterCommands $clusterCommands `
--NodeCommands $nodeCommands `
--NodeEvents $nodeEvents `
--NodeRegistry $nodeRegistry `
--NodeFolders $nodeFolders `
--ComputerName @(<computerName1>,<computerName2>)
-```
+    New-AzsSupportDataBundle -ClusterCommands $clusterCommands `
+    -NodeCommands $nodeCommands `
+    -NodeEvents $nodeEvents `
+    -NodeRegistry $nodeRegistry `
+    -NodeFolders $nodeFolders `
+    -ComputerName @(<computerName1>,<computerName2>)
+    ```
 
 ## Example scenarios
+
 To troubleshoot Azure Local, run the following commands:
 
 ### For deployment issues
@@ -129,11 +136,12 @@ Get-AzsSupportEceUpdateDetails
 ```
 
 ### For storage issues
+
 ```powershell
 Start-AzsSupportStorageDiagnostic
 ```
 
-For full guidance on troubleshooting storage related issues, refer to [Troubleshooting-Storage-With-Support-Diagnostics-Tool](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/Storage/Troubleshooting-Storage-With-Support-Diagnostics-Tool.md).
+For complete guidance on troubleshooting storage related issues, refer to [Troubleshooting-Storage-With-Support-Diagnostics-Tool](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/Storage/Troubleshooting-Storage-With-Support-Diagnostics-Tool.md).
 
 ### For registration issues
 
@@ -141,7 +149,7 @@ For full guidance on troubleshooting storage related issues, refer to [Troublesh
 Invoke-AzsSupportDiagnosticCheck -Component Registration
 ```
 
-Here's an example of output for a registration issue:
+Here's a sample output for a registration issue:
 
 ```output
 PS C:\temp> Invoke-AzsSupportDiagnosticCheck -Component Registration
@@ -178,9 +186,7 @@ Validate that all arc agent checks are passed
 Details: Validation successfull
 
 [Fail] [Validation summary]
-
 Details: At least one node reported an invalid registration state.
-
 We will collect log information from your envirorment.
 Creating local storage container for diagnostic data.
 Gathering cluster data ... this might take a while.
@@ -201,7 +207,7 @@ Data collection done . Please upload the file to the Microsoft Workspace.
 Invoke-AzsSupportDiagnosticCheck -Component BaseSystem
 ```
 
-Here's an example of the output for base system issues:
+Here's a sample output for base system issues:
 
 ```output
 PS C:\temp> Invoke-AzsSupportDiagnosticCheck -Component BaseSystem
@@ -266,7 +272,7 @@ New-AzsSupportDataBundle -ClusterCommands $clusterCommands `
 Data collection done C:\temp\Azs.Support\XXXXXXX\SupportDataBundle-XX-XX_XX-XX-XXXX.zip . Please upload the file to the Microsoft Workspace.
 ```
 
-## Questions or Feedback?
+## Questions or feedback?
 
 Do you have an issue? Would you like to share feedback with us about the Azure Local Support Diagnostic Tool?
 We Listen! To submit feedback, contact [azlocaldiagfeedback@microsoft.com](mailto:azlocaldiagfeedback@microsoft.com).

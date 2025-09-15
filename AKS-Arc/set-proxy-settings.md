@@ -1,11 +1,11 @@
 ---
-title: Proxy server settings in AKS enabled by Azure Arc
-description: Learn about proxy server settings in Azure Kubernetes Service (AKS) enabled by Arc.
-ms.topic: conceptual
-ms.date: 01/10/2024
+title: Proxy server settings in AKS on Windows Server
+description: Learn about proxy server settings in Azure Kubernetes Service (AKS) on Windows Server.
+ms.topic: how-to
+ms.date: 04/02/2025
 ms.author: sethm 
 ms.lastreviewed: 05/25/2022
-ms.reviewer: mikek
+ms.reviewer: abha
 author: sethmanheim
 
 # Intent: As an IT Pro, I want to learn how to configure proxy server settings in my AKS deployments that require authentication.
@@ -13,16 +13,16 @@ author: sethmanheim
 
 ---
 
-# Proxy server settings in AKS enabled by Azure Arc
+# Proxy server settings in AKS on Windows Server
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-This article describes how to configure proxy settings for AKS enabled by Azure Arc. If your network requires the use of a proxy server to connect to the internet, this article walks you through the steps to set up proxy support in AKS using the **AksHci** PowerShell module. The steps are different depending on whether the proxy server requires authentication.
+This article describes how to configure proxy settings for AKS on Windows Server. If your network requires the use of a proxy server to connect to the internet, this article walks you through the steps to set up proxy support in AKS using the **AksHci** PowerShell module. The steps are different depending on whether the proxy server requires authentication.
 
 > [!NOTE]
 > If you want to use Kubernetes and Azure Services with Azure Arc, make sure you also add the URLs shown in [Connect an existing Kubernetes cluster to Azure Arc](/azure/azure-arc/kubernetes/quickstart-connect-cluster?tabs=azure-cli#meet-network-requirements) to your allow list.
 
-Once you've configured your deployment using the following options, you can [install an AKS host on Azure Local](./kubernetes-walkthrough-powershell.md) and [create Kubernetes clusters using PowerShell](./kubernetes-walkthrough-powershell.md#step-6-create-a-kubernetes-cluster).
+Once you've configured your deployment using the following options, you can [install an AKS host on Windows Server](kubernetes-walkthrough-powershell.md) and [create Kubernetes clusters using PowerShell](./kubernetes-walkthrough-powershell.md#step-6-create-a-kubernetes-cluster).
 
 ## Before you begin
 
@@ -43,7 +43,7 @@ The following table contains the list of addresses that you must exclude by usin
 
 |      IP address       |    Reason for exclusion    |  
 | ----------------------- | ------------------------------------ | 
-| `localhost`, `127.0.0.1`  | Localhost traffic  |
+| `localhost`, `127.0.0.1`  | localhost traffic  |
 | `.svc` | Internal Kubernetes service traffic, where `.svc` represents a wildcard name. This is similar to saying `*.svc`, but none is used in this schema. |
 | `10.0.0.0/8` | Private network address space. |
 | `172.16.0.0/12` | Private network address space - Kubernetes service CIDR. |
@@ -52,9 +52,9 @@ The following table contains the list of addresses that you must exclude by usin
 
 The default value for `noProxy` is `localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16`. While these default values work for many networks, you might need to add more subnet ranges and/or names to the exemption list. For example, you might want to exempt your enterprise namespace (.contoso.com) from being directed through the proxy. You can achieve that by specifying the values in the `noProxy` list.
 
-## Set proxy for Azure Local and Windows Server clusters with machine-wide proxy settings
+## Set proxy for Windows Server clusters with machine-wide proxy settings
 
-If you already have machine-wide proxy settings on your Azure Local/Windows Server cluster, the settings might override any AKS-specific proxy settings and lead to a failure during installation.
+If you already have machine-wide proxy settings on your Windows Server cluster, the settings might override any AKS-specific proxy settings and lead to a failure during installation.
 
 To detect whether you have machine-wide proxy settings, run the following script on each of your physical cluster nodes:
 
@@ -95,7 +95,7 @@ Close all open PowerShell windows before running the following command:
 Install-Module -Name AksHci -Repository PSGallery
 ```
 
-If your environment uses a proxy server to access the internet, you might need to add proxy parameters to the **Install-Module** command before installing AKS. See the [Install-Module documentation](/powershell/module/powershellget/install-module) for details, and follow the [Azure Local documentation](/azure-stack/hci/manage/configure-firewalls#set-up-a-proxy-server) to configure the proxy settings on the physical cluster nodes.
+If your environment uses a proxy server to access the internet, you might need to add proxy parameters to the **Install-Module** command before installing AKS. For more information, see the [Install-Module documentation](/powershell/module/powershellget/install-module).
 
 When you download the **AksHci** PowerShell module, we also download the Az PowerShell modules that are required for registering an AKS host with Azure for billing.
 
@@ -121,7 +121,7 @@ $proxySetting=New-AksHciProxySetting -name "corpProxy" -http http://contosoproxy
 If your proxy server requires proxy clients to trust a certificate, specify the certificate file when you run `Set-AksHciConfig`. The format of the certificate file is **Base-64 encoded X .509**. This enables you to create and trust the certificate throughout the stack.
 
 > [!IMPORTANT]
-> If your proxy requires a certificate to be trusted by the physical Azure Local nodes, make sure that you import the certificate chain to the appropriate certificate store on each Azure Local node before you continue. Follow the procedures for your deployment to enroll the Azure Local nodes with the required certificates for proxy authentication.
+> If your proxy requires a certificate to be trusted by the physical nodes, make sure that you import the certificate chain to the appropriate certificate store on each node before you continue. Follow the procedures for your deployment to enroll the nodes with the required certificates for proxy authentication.
 
 ```powershell
 $proxySetting=New-AksHciProxySetting -name "corpProxy" -http http://contosoproxy:8080 -https https://contosoproxy:8443 -noProxy localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,.contoso.com -credential $proxyCredential
@@ -132,6 +132,6 @@ $proxySetting=New-AksHciProxySetting -name "corpProxy" -http http://contosoproxy
 
 ## Next steps
 
-You can now proceed with installing AKS on your Azure Local or Windows Server cluster, by running [`Set-AksHciConfig`](./reference/ps/set-akshciconfig.md) followed by `Install-AksHci`.
+You can now proceed with installing AKS on your Windows Server cluster, by running [`Set-AksHciConfig`](./reference/ps/set-akshciconfig.md) followed by `Install-AksHci`.
 
-- [Deploy Azure Kubernetes Services on Azure Local using PowerShell](./kubernetes-walkthrough-powershell.md)
+- [Deploy Azure Kubernetes Services on Windows Server using PowerShell](./kubernetes-walkthrough-powershell.md)

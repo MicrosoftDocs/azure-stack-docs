@@ -1,16 +1,16 @@
 ### YamlMime:FAQ
 metadata:
-  title: General issues when using AKS enabled by Azure Arc
-  description: General known issues when using AKS enabled by Arc.
+  title: General issues when using AKS on Windows Server
+  description: General known issues when using AKS on Windows Server.
   author: sethmanheim
   ms.author: sethm
   ms.service: azure-kubernetes-service-hybrid
   ms.topic: faq
   ms.date: 07/11/2024
 
-title: Resolve general issues when using AKS enabled by Azure Arc
+title: Resolve general issues when using AKS on Windows Server
 summary: |
-  This article describes some general known issues that occur when using AKS enabled by Azure Arc. You can also review [known issues with Windows Admin Center](/azure-stack/aks-hci/known-issues-windows-admin-center) and [installation issues and errors](/azure-stack/aks-hci/known-issues-installation).
+  This article describes some general known issues that occur when using AKS on Windows Server. You can also review [known issues with Windows Admin Center](/azure-stack/aks-hci/known-issues-windows-admin-center) and [installation issues and errors](/azure-stack/aks-hci/known-issues-installation).
   
 sections:
   - name: Single section - ignored
@@ -71,7 +71,7 @@ sections:
         answer: | 
           This error usually occurs when the service principal (SPN) or your Azure credentials (username and password) used to connect your AKS cluster don't have sufficient privileges in the Azure subscription to perform the operation.
           
-          Review the privilege requirements in [Azure requirements for Kubernetes clusters in AKS enabled by Azure Arc](/azure/aks/hybrid/system-requirements#azure-requirements).
+          Review the privilege requirements in [Azure requirements for Kubernetes clusters in AKS on Windows Server](system-requirements.md#azure-requirements).
       - question: | 
           Running Remove-AksHciCluster results in the error: 'A workload cluster with the name 'my-workload-cluster' was not found'
 
@@ -107,5 +107,5 @@ additionalContent: |
   - [Installation issues and errors](/azure-stack/aks-hci/known-issues-installation)
   - [Connect with SSH to Windows or Linux worker nodes](./ssh-connection.md)
   
-  If you continue to run into problems when you're using AKS enabled by Azure Arc, you can file bugs through [GitHub](https://aka.ms/aks-hci-issues).
+  If you continue to encounter problems when you're using AKS on Windows Server, you can file bugs through [GitHub](https://aka.ms/aks-hci-issues).
     

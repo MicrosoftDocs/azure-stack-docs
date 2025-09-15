@@ -2,9 +2,9 @@
 title: Hybrid capabilities with Azure services in Azure Local, version 23H2
 description: This article describes the cloud service components of Azure Local, version 23H2.
 ms.topic: overview
-author: ManikaDhiman
-ms.author: v-manidhiman
-ms.date: 02/20/2025
+author: alkohli
+ms.author: alkohli
+ms.date: 04/16/2025
 ms.custom: e2e-hybrid
 ---
 
@@ -18,7 +18,7 @@ Your on-premises Azure Local solution integrates with Azure cloud via several cl
 
 ## Azure Local cloud service
 
-The Azure Local cloud service in Azure is a key part of the Azure Local product offering. It includes standard Azure components, such as a resource provider in Azure Resource Manager and a UI extension in the Azure portal. These components enable access to Azure Local functionality via familiar Azure tools and UX, such as [Azure portal](manage/azure-portal.md), [Azure PowerShell](/powershell/module/az.stackhci/?view=azps-7.2.0&preserve-view=true), and [Azure CLI](/cli/azure/stack-hci?view=azure-cli-latest&preserve-view=true). The Azure Local cloud service also enables contextual navigation from an Azure Local resource to its Arc servers and Arc virtual machines (VMs).
+The Azure Local cloud service in Azure is a key part of the Azure Local product offering. It includes standard Azure components, such as a resource provider in Azure Resource Manager and a UI extension in the Azure portal. These components enable access to Azure Local functionality via familiar Azure tools and UX, such as [Azure portal](manage/azure-portal.md), [Azure PowerShell](/powershell/module/az.stackhci/?view=azps-7.2.0&preserve-view=true), and [Azure CLI](/cli/azure/stack-hci?view=azure-cli-latest&preserve-view=true). The Azure Local cloud service also enables contextual navigation from an Azure Local resource to its Arc-enabled servers and Azure Local virtual machines (VMs) enabled by Azure Arc.
 
 The Azure Local cloud service extends the hybrid capabilities for Azure Local by enabling the following cloud-based functionalities:
 
@@ -50,11 +50,11 @@ Azure Arc simplifies governance and management by delivering a consistent manage
 
 Azure Local delivers hybrid value through the following Azure Arc technologies:
 
-- [**Arc machines.**](/azure/azure-arc/servers/overview) As part of the Azure Local deployment process, you must register every Azure Local that you intend to join with Azure Arc. For more information, see [Register your machines and assign permissions for Azure Local deployment](deploy/deployment-arc-register-server-permissions.md).
+- [**Arc-enabled servers.**](/azure/azure-arc/servers/overview) As part of the Azure Local deployment process, you must register every Azure Local that you intend to join with Azure Arc. For more information, see [Register your machines and assign permissions for Azure Local deployment](deploy/deployment-arc-register-server-permissions.md).
 
     You can install, upgrade, and manage Azure Arc extensions on Azure Local to run hybrid services like monitoring and Windows Admin Center in the Azure portal. For more information, see [Azure Arc extension management on Azure Local](manage/arc-extension-management.md).
 
-- **Arc VMs.** Azure Arc VM management lets you provision and manage Windows and Linux VMs hosted in an on-premises Azure Local environment. Administrators can manage Arc VMs on their Azure Local by using Azure management tools, including Azure portal, Azure CLI, Azure PowerShell, and Azure Resource Manager (ARM) templates. For more information, see [What is Azure Arc VM management?](manage/azure-arc-vm-management-overview.md).
+- **Azure Local VMs.** Azure Local VM management lets you provision and manage Windows and Linux VMs hosted in an on-premises Azure Local environment. Administrators can manage VMs on their Azure Local by using Azure management tools, including Azure portal, Azure CLI, Azure PowerShell, and Azure Resource Manager (ARM) templates. For more information, see [What is Azure Arc VM management?](manage/azure-arc-vm-management-overview.md).
 
 - [**Azure Kubernetes Service (AKS) enabled by Arc.**](/azure/aks/hybrid/) AKS on Azure Local uses Azure Arc to create new Kubernetes clusters on Azure Local directly from Azure. It enables you to use familiar tools like the Azure portal, Azure CLI, and Azure Resource Manager templates to create and manage your Kubernetes clusters running on Azure Local. For more information, see [What's new in AKS on Azure Local](/azure/aks/hybrid/aks-whats-new-23h2).
 

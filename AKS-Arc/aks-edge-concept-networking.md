@@ -3,8 +3,8 @@ title: AKS Edge Essentials networking
 description: Basic networking concepts for AKS Edge Essentials 
 author: sethmanheim
 ms.author: sethm
-ms.topic: conceptual
-ms.date: 07/11/2024
+ms.topic: article
+ms.date: 03/10/2025
 ms.custom: template-concept
 ---
 
@@ -99,7 +99,7 @@ It's possible to check the DNS servers being used for both Linux and Windows nod
     Invoke-AksEdgeNodeCommand -NodeType Linux -command "resolvectl status"
     ```
 
-    The command output shows a list of the DNS servers configured for each Linux VM interfaces. In particular, it's important to check the **eth0** interface status, which is the default interface for the AKS EE VM communication. Also, make sure to check the IP addresses of the **Current DNS Server** and **DNS Servers** fields of the list. If there's no IP address, or the IP address isn't a valid DNS server IP address, then the DNS service won't work.
+    The command output shows a list of the DNS servers configured for each Linux VM interfaces. In particular, it's important to check the **eth0** interface status, which is the default interface for the AKS Edge Essentials VM communication. Also, make sure to check the IP addresses of the **Current DNS Server** and **DNS Servers** fields of the list. If there's no IP address, or the IP address isn't a valid DNS server IP address, then the DNS service won't work.
 
 - For Windows VM nodes:
 

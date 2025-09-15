@@ -1,12 +1,13 @@
 ---
 title: Enable Insights for Azure Local at scale using Azure policies
 description: How to enable Insights for Azure Local systems at scale using Azure policies.
-author: ManikaDhiman
-ms.author: v-manidhiman
+author: alkohli
+ms.author: alkohli
 ms.reviewer: saniyaislam
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 09/12/2024
+ms.date: 04/09/2025
+ms.custom: sfi-image-nochange
 ---
 
 # Enable Insights for Azure Local at scale using Azure policies
@@ -722,7 +723,7 @@ To create a policy assignment, follow these steps:
 
 1. Select **Next** to view the **Parameters** tab. If the policy definition you selected on the **Basics** tab included parameters, they show up on the **Parameters** tab.
 
-    For example, the policy to repair AMA shows the **Include Arc connected machines** parameter. Select **True** to include Arc connected machines in the policy assignment.
+    For example, the policy to repair AMA shows the **Include Arc connected machines** parameter. Select **True** to include Arc-enabled servers in the policy assignment.
 
     :::image type="content" source="./media/monitor-multi-azure-policies/policy-assign-parameters-tab.png" alt-text="Screenshot of the Parameters tab on Assign policy page to define or modify parameters." lightbox="./media/monitor-multi-azure-policies/policy-assign-parameters-tab.png":::
 

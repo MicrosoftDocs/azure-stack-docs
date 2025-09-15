@@ -29,7 +29,7 @@ For a conceptual overview of Workload identity federation, see [Workload identi
 > These preview features are available on a self-service, opt-in basis. Previews are provided "as is" and "as available," and they're excluded from the service-level agreements and limited warranty. Azure Kubernetes Service, enabled by Azure Arc previews are partially covered by customer support on a best-effort basis.
 
 > [!NOTE]
-> In public preview, AKS on Azure Local, version 23H2 supports enabling workload identity during AKS cluster creation. However, enabling workload identity after cluster creation or disabling it afterward is currently unsupported.
+> In public preview, AKS on Azure Local supports enabling workload identity during AKS cluster creation. However, enabling workload identity after cluster creation or disabling it afterward is currently unsupported.
 
 ## Prerequisites
 
@@ -98,7 +98,7 @@ The following example output shows the successful creation of a resource group:
 
 To create an AKS Arc cluster, you need both the `$customlocation_ID` and `$logicnet_Id` values.
 
-- `$customlocation_ID`: The Azure Resource Manager ID of the custom location. The custom location is configured during the Azure Local, version 23H2 cluster deployment. Your infrastructure admin should give you the Resource Manager ID of the custom location. You can also get the Resource Manager ID using `$customlocation_ID = $(az customlocation show --name "<your-custom-location-name>" --resource-group $resource_group_name --query "id" -o tsv)`, if the infrastructure admin provides a custom location name and resource group name.
+- `$customlocation_ID`: The Azure Resource Manager ID of the custom location. The custom location is configured during the Azure Local cluster deployment. Your infrastructure admin should give you the Resource Manager ID of the custom location. You can also get the Resource Manager ID using `$customlocation_ID = $(az customlocation show --name "<your-custom-location-name>" --resource-group $resource_group_name --query "id" -o tsv)`, if the infrastructure admin provides a custom location name and resource group name.
 - `$logicnet_Id`: The Azure Resource Manager ID of the Azure Local logical network created [following these steps](/azure/aks/hybrid/aks-networks?tabs=azurecli). Your infrastructure admin should give you the Resource Manager ID of the logical network. You can also get the Resource Manager ID using `$logicnet_Id = $(az stack-hci-vm network lnet show --name "<your-lnet-name>" --resource-group $resource_group_name --query "id" -o tsv)`, if the infrastructure admin provides a logical network name and resource group name.
 
 Run the [az aksarc create](/cli/azure/aksarc#az-aksarc-create) command with the `--enable-oidc-issuer --enable-workload-identity` parameter. Provide your **entra-admin-group-object-ids** and ensure you're a member of the Microsoft Entra ID admin group for proxy mode access:
@@ -274,7 +274,9 @@ The following example shows how to use the Azure role-based access control (Azur
 1. Assign the RBAC [Key Vault Secrets Officer](/azure/role-based-access-control/built-in-roles/security#key-vault-secrets-officer) role to yourself so that you can create a secret in the new key vault. New role assignments can take up to five minutes to propagate and be updated by the authorization server.
 
    ```azurecli
-   az role assignment create --assignee-object-id $MSIPrincipalId --role "Key Vault Secrets Officer" --scope $KVId --assignee-principal-type ServicePrincipal
+   $CALLER_OBJECT_ID=$(az ad signed-in-user show --query id -o tsv)
+
+   az role assignment create --assignee-object-id $CALLER_OBJECT_ID --role "Key Vault Secrets Officer" --scope $KVId --assignee-principal-type ServicePrincipal
    ```
 
 1. Create a secret in the key vault:
@@ -286,7 +288,9 @@ The following example shows how to use the Azure role-based access control (Azur
 1. Assign the [Key Vault Secrets User](/azure/role-based-access-control/built-in-roles/security#key-vault-secrets-user) role to the user-assigned managed identity that you created previously. This step gives the managed identity permission to read secrets from the key vault:
 
    ```azurecli
-   az role assignment create --assignee-object-id $MSIPrincipalId --role "Key Vault Secrets User" --scope $KVId --assignee-principal-type ServicePrincipal
+   $IDENTITY_PRINCIPAL_ID=$(az identity show --name "$USER_ASSIGNED_IDENTITY_NAME" --resource-group "$resource_group_name" --query principalId --output tsv)
+
+   az role assignment create --assignee-object-id $IDENTITY_PRINCIPAL_ID --role "Key Vault Secrets User" --scope $KVId --assignee-principal-type ServicePrincipal
    ```
 
 1. Create an environment variable for the key vault URL:
@@ -347,3 +351,5 @@ az aksarc delete -n $aks_cluster_name -g $resource_group_name
 
 In this article, you deployed a Kubernetes cluster and configured it to use a workload identity in preparation for application workloads to
 authenticate with that credential. Now you're ready to deploy your application and configure it to use the workload identity with the latest version of the [Azure Identity client library](/azure/active-directory/develop/reference-v2-libraries).
+
+You can also help to protect your cluster in other ways by following the guidance in the [security book for AKS enabled by Azure Arc](/azure/azure-arc/kubernetes/conceptual-security-book?toc=/azure/aks/aksarc/toc.json&bc=/azure/aks/aksarc/breadcrumb/toc.json).

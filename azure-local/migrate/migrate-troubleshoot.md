@@ -3,10 +3,12 @@ title: Troubleshoot issues when migrating VMs to Azure Local using Azure Migrate
 description: Learn about how to troubleshoot issues when migrating Windows VMs to your Azure Local instance using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 10/28/2024
+ms.date: 07/25/2025
 ms.author: alkohli
 ms.reviewer: alkohli
-ms.custom: linux-related-content
+ms.custom:
+  - linux-related-content
+  - sfi-image-nochange
 ---
 
 # Troubleshoot issues migrating VMs to Azure Local via Azure Migrate (preview)
@@ -165,10 +167,30 @@ The target system fails to validate because the FQDN is not DNS-resolvable by de
 
 **Recommended resolution**
 
-Manually map the Azure Local IP to its corresponding FQDN by editing the hosts file located at *C:\Windows\System32\drivers\etc\hosts*.
+If the target machine validation step fails during migration, follow these steps to resolve the issue:
 
-Add a new line with the system IP and FQDN in the following format: \<Cluster IP\>\<Cluster FQDN\>.
+1. Manually map the Azure Local IP to its corresponding FQDN:
 
+    1. Edit the hosts file located at C:\Windows\System32\drivers\etc\hosts. 
+
+    1. Add a new line using the format: 
+        `<Cluster IP>    <Cluster FQDN>`
+
+1. Verify the FQDN is reachable by ensuring that the system FQDN can be successfully pinged from the source appliance.
+
+1. Enable WinRM on each target cluster node (if not already enabled). Run the following PowerShell command on each machine:
+ 
+    ```PowerShell
+        Enable-PSRemoting -Force
+    ```
+
+1. Test remote PowerShell connectivity. From the source appliance, ensure the following command completes successfully:
+
+    ```PoweShell
+        Enter-PSSession -ComputerName <Cluster FQDN> -Credential $Cred
+    ```
+
+1. Confirm required ports are open. See Prerequisites section to ensure all necessary ports are allowed between the source appliance and the Azure Local instance.
 
 ### Deleting or changing target system information from Source Appliance Configuration Manager doesn't work.
 
@@ -263,17 +285,33 @@ The component fails to fetch the disk properties from the source Hyper-V host. T
 
 **Root cause**
 
-The disks on the migrated Windows VMs may not come online.
+The disks on the migrated Windows VMs and Linux VMs may not come online. 
 
-Migration creates a new VHD/VHDX, which results in a new disk for the Windows OS on the migrated VM. The OS sees this as a new drive and applies SAN policy. The OS will then not make the disk online as it is considered a shared disk.
+Migration creates a new VHD/VHDX, which results in a new disk for the OS on the migrated VM.  
+
+For Windows VMs, the OS sees this as a new drive and applies storage area network (SAN) policy. The OS will then not make the disk online as it is considered a shared disk. 
 
 **Recommended resolution** 
 
-To work around this issue, choose one of the following options: 
+**For Windows VMs**
 
-- Set SAN policy as `OnlineAll` for migrated Windows VMs. Reboot the VMs. This should bring all the disks online. For detailed instructions, see how to [Configure a SAN policy to bring disks online](/azure/migrate/prepare-for-migration#configure-san-policy).
+To ensure that all migrated disks come online, set the SAN policy to **OnlineAll**. 
 
-- Manually bring the drives online on migrated VMs.
+Configure this setting manually as follows: 
+
+1. On the on-premises virtual machine (not the host server) prior to migration, open an elevated command prompt. 
+
+1. Enter **diskpart**. 
+
+1. Enter **SAN**. If the drive letter of the guest operating system isn't maintained,  **Offline All**  or  **Offline Shared**  is returned. 
+
+1. At the **DISKPART** prompt, enter  **SAN Policy=OnlineAll**. This setting ensures that disks are brought online, and it ensures that you can read and write to both disks. 
+
+1. During migration, you can verify that the disks are brought online. 
+
+**For Linux VMs**
+
+Update **fstab** entries to use persistent volume identifiers prior to migration.  
 
 ### Migration fails with unable to delete snapshot error
 
@@ -338,6 +376,79 @@ $ShutdownIC = Get-WmiObject -Namespace root\virtualization\v2  -Query "Associato
 
 $ShutdownIC.InitiateShutdown("TRUE", "Need to shutdown")
 ```
+
+### Migration fails with address is already in use error
+
+**Root cause**
+
+This error typically occurs during migration of VMs configured to retain their static IP address. If the target logical network already has the same IP assigned to another network interface, migration fails with the following message:  
+
+`The moc-operator network interface service returned an error while reconciling: rpc error: code = Unknown desc = The address is already in use: Already Set`.
+
+**Recommended resolution**
+
+Complete the following steps:
+
+1. Navigate to the Azure Local logical network that the migrated VM is targeting. 
+1. Verify that the intended IP address isn't currently assigned to another network interface.
+1. Update the logical network configuration as needed to ensure no IP conflicts exist before retrying the migration.
+
+### Clean up resources from failed migrations
+
+**Root cause**
+
+In some cases, migrations to Azure Local may fail during the migration phase, such as during planned failover, not during initial replication. When this occurs, manual cleanup of partially created resources may be required to ensure future migration attempts are successful.
+
+**Recommended resolution**
+
+To determine where the failure occurred, open the Planned failover job in the Azure Migrate portal. Use the job details to identify whether the failure occurred before or after VM creation on the Azure Local instance.
+
+*If the failure occurred before VM creation*
+
+Task failures listed above the red line (above the **Preparing protected entities** task) indicate that no target VM was created. No cleanup is required and you can retry migration directly.
+
+:::image type="content" source="./media/migrate-troubleshoot/before-vm-creation.png" alt-text="Screenshot of Planned failover page before creation." lightbox="./media/migrate-troubleshoot/before-vm-creation.png":::
+
+*If the failure occurred during or after VM creation*
+
+Task failures listed below the red line (**Preparing protected entities** task and below) indicate that a target VM was partially or fully created. Manual cleanup is required before retrying migration.
+
+:::image type="content" source="./media/migrate-troubleshoot/after-vm-creation.png" alt-text="Screenshot of Planned failover page after creation." lightbox="./media/migrate-troubleshoot/after-vm-creation.png":::
+
+1. In Azure portal, navigate to the target Azure Local instance.
+
+1. Locate and verify if a VM corresponding to the failed migration exists.
+
+1. If found, delete the VM from the portal.
+
+    :::image type="content" source="./media/migrate-troubleshoot/delete-vm.png" alt-text="Screenshot showing Delete button for selected virtual machine." lightbox="./media/migrate-troubleshoot/delete-vm.png":::
+
+1. Connect to the Azure Local instance directly (via Hyper-V Manager) and confirm that the associated VM was also removed from the local Hyper-V host. If it wasn't removed, manually delete the VM resource.
+
+1. Don't delete any of the following resources that may have been created:
+
+    - Migrated (target) disk.
+
+    - Seed disk.
+
+    - Network interfaces.
+
+    These resources will be reused automatically by Azure Migrate during subsequent migration attempts.
+
+### Migrated VM data disks show as 1GB in Azure Portal
+
+When you migrate a VM with one or more data disks attached, Azure Portal may incorrectly display the total data disk size as **1 GB**.
+
+**Root cause**
+
+This is a display issue only and doesn't affect the actual functionality or size of the VM's data disks.
+
+
+**Recommended resolution**
+
+To correct the display issue in Azure portal and reflect the true data disk size, follow the steps at [Expand a data disk](../manage/manage-arc-virtual-machine-resources.md?&tabs=azurecli#expand-a-data-disk) to reapply the same size as the current data disk (no actual size increase is required).
+
+This triggers a portal refresh and updates the UX to reflect the correct data disk size.
 
 
 ## Next steps

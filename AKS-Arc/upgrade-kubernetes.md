@@ -1,7 +1,7 @@
 ---
 title: Upgrade the Kubernetes version of Azure Kubernetes Service workload clusters with Windows Admin Center
-description: Learn how to upgrade the Kubernetes version of AKS workload clusters in AKS enabled by Azure Arc.
-ms.topic: article
+description: Learn how to upgrade the Kubernetes version of AKS workload clusters in AKS on Windows Server.
+ms.topic: upgrade-and-migration-article
 ms.date: 06/26/2024
 author: sethmanheim
 ms.author: sethm 
@@ -15,7 +15,7 @@ ms.reviewer: abha
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-This article describes how to upgrade an Azure Kubernetes Service (AKS) workload cluster to a new Kubernetes version in AKS enabled by Azure Arc. You should [update the AKS hosts](update-akshci-host-windows-admin-center.md) to a new version of the operating system before updating the Kubernetes version.
+This article describes how to upgrade an Azure Kubernetes Service (AKS) workload cluster to a new Kubernetes version in AKS on Windows Server. You should [update the AKS hosts](update-akshci-host-windows-admin-center.md) to a new version of the operating system before updating the Kubernetes version.
 
 > [!NOTE]
 > You can also use PowerShell to [upgrade AKS workload clusters](upgrade.md).
@@ -46,7 +46,7 @@ The following update scenarios are not supported in Windows Admin Center, but yo
 
 ## Next steps
 
-In this article, you learned how to upgrade AKS workload clusters in AKS enabled by Azure Arc. Next, you can:
+In this article, you learned how to upgrade AKS workload clusters in AKS on Windows Server. Next, you can:
 
 - [Deploy a Linux application on a Kubernetes cluster](./deploy-linux-application.md)
 - [Deploy a Windows Server application on a Kubernetes cluster](./deploy-windows-application.md)

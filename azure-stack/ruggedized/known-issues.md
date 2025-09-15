@@ -3,9 +3,9 @@ title: Azure Stack Hub known issues for Azure Stack Hub ruggedized
 description: Learn about known issues in Azure Stack Hub Azure Stack Hub ruggedized.
 services: azure-stack
 author: sethmanheim
-manager: femila
+manager: lizross
 ms.service: azure-stack
-ms.topic: article
+ms.topic: troubleshooting-known-issue
 ms.date: 12/08/2020
 ms.author: sethm
 ms.reviewer: sranthar

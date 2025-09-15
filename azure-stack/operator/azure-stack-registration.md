@@ -4,11 +4,12 @@ titleSuffix: Azure Stack Hub
 description: Learn how to register Azure Stack Hub integrated systems with Azure so you can download Azure Marketplace items and set up data reporting.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 08/19/2024
+ms.date: 06/06/2025
 ms.author: sethm
+zone_pivot_groups: state-connected-disconnected
 ms.custom:
   - devx-track-azurepowershell
-zone_pivot_groups: state-connected-disconnected
+  - sfi-image-nochange
 
 # Intent: As an Azure Stack operator, I want to register my Azure Stack with Azure so I can download marketplace items and set up data reporting.
 # Keyword: register azure stack (registration)
@@ -17,8 +18,6 @@ zone_pivot_groups: state-connected-disconnected
 # Register Azure Stack Hub with Azure
 
 Register Azure Stack Hub with Azure so you can download Azure Marketplace items from Azure and set up commerce data reporting back to Microsoft. After you register Azure Stack Hub, usage is reported to Azure commerce and you can see it under the Azure billing Subscription ID used for registration.
-
-The information in this article describes registering Azure Stack Hub integrated systems with Azure. For information about registering the ASDK with Azure, see [Azure Stack Hub registration](../asdk/asdk-register.md) in the ASDK documentation.
 
 > [!IMPORTANT]
 > Registration is required to support full Azure Stack Hub functionality, including offering items in the marketplace. You'll be in violation of Azure Stack Hub licensing terms if you don't register when using the pay-as-you-use billing model. To learn more about Azure Stack Hub licensing models, see the [How to buy page](https://azure.microsoft.com/overview/azure-stack/how-to-buy/).
@@ -229,7 +228,8 @@ Connected environments can access the internet and Azure. For these environments
       -BillingModel PayAsYouUse `
       -RegistrationName $RegistrationName
    ```
-   For more information on the Set-AzsRegistration cmdlet, see [Registration reference](#registration-reference).
+
+   For more information about the `Set-AzsRegistration` cmdlet, see the [Registration reference](#registration-reference).
 
 ---
 
@@ -239,7 +239,7 @@ Connected environments can access the internet and Azure. For these environments
 
 Use these steps to register Azure Stack Hub with Azure using the capacity billing model.
 
-> [!Note]
+> [!NOTE]
 > All these steps must be run from a computer that has access to the privileged endpoint (PEP). For details about the PEP, see [Using the privileged endpoint in Azure Stack Hub](azure-stack-privileged-endpoint.md).
 
 Connected environments can access the internet and Azure. For these environments, you need to register the Azure Stack Hub resource provider with Azure and then configure your billing model.
@@ -534,7 +534,10 @@ Set-AzsRegistration -PrivilegedEndpointCredential $YourCloudAdminCredential -Pri
 
 ### Change billing model, how features are offered, or re-register your instance
 
-This section applies if you want to change the billing model, how features are offered, or you want to re-register your instance. For all of these cases, you call the registration function to set the new values. You don't need to first remove the current registration. Sign in to the subscription ID shown in the [administrator portal](#verify-azure-stack-hub-registration), and then rerun registration with a new `BillingModel` value while keeping the `RegistrationName` and `ResourceGroupName` parameters values same as shown in the [administrator portal](#verify-azure-stack-hub-registration):
+This section applies if you want to change the billing model, how features are offered, or you want to re-register your instance. For all of these cases, you call the registration function to set the new values. You don't need to first remove the current registration. Sign in to the subscription ID shown in the [administrator portal](#verify-azure-stack-hub-registration), and then rerun registration with a new `BillingModel` value while keeping the `RegistrationName` and `ResourceGroupName` parameters values same as shown in the [administrator portal](#verify-azure-stack-hub-registration).
+
+> [!NOTE]
+> When changing to a capacity model, you need additional parameters to run the `Set-AzsRegistration` command. For more information, see [Register with capacity billing](#register-with-capacity-billing).
 
 ### [Az modules](#tab/az4)
 

@@ -1,26 +1,26 @@
 ---
-title: Create logical networks for Kubernetes clusters on Azure Local, version 23H2
-description: Learn how to create Arc-enabled logical networks for AKS.
+title: Create logical networks for Kubernetes clusters on Azure Local
+description: Learn how to create Arc-enabled logical networks for AKS enabled by Azure Arc.
 ms.topic: how-to
 author: sethmanheim
-ms.date: 11/19/2024
+ms.date: 04/01/2025
 ms.author: sethm 
 ms.lastreviewed: 04/01/2024
 ms.reviewer: abha
 ---
 
-# Create logical networks for Kubernetes clusters on Azure Local, version 23H2
+# Create logical networks for Kubernetes clusters on Azure Local
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
-After you install and configure Azure Local, version 23H2, you must create Arc VM logical networks. AKS on Azure Local uses static logical networks to provide IP addresses to the underlying VMs of the AKS clusters.
+After you install and configure Azure Local, you must create Arc VM logical networks. AKS on Azure Local uses static logical networks to provide IP addresses to the underlying VMs of the AKS clusters.
 
 ## Before you begin
 
 Before you begin, make sure you have the following prerequisites:
 
-- Install and configure Azure Local, version 23H2. Make sure you have the custom location Azure Resource Manager ID, as this ID is a required parameter for creating a logical network.
-- Make sure that the logical network you create contains enough usable IP addresses to avoid IP address exhaustion. IP address exhaustion can lead to Kubernetes cluster deployment failures. For more information, see [Networking concepts in AKS on Azure Local, version 23H2](aks-hci-network-system-requirements.md).
+- Install and configure Azure Local. Make sure you have the custom location Azure Resource Manager ID, as this ID is a required parameter for creating a logical network.
+- Make sure that the logical network you create contains enough usable IP addresses to avoid IP address exhaustion. IP address exhaustion can lead to Kubernetes cluster deployment failures. For more information, see [Networking concepts in AKS on Azure Local](aks-hci-network-system-requirements.md).
 - Make sure you have an external VM switch that can be accessed by all the machines in your Azure Local cluster. By default, an external switch is created during the deployment of your Azure Local cluster that you can use to associate with the logical network you will create.
 
 Run the following command to get the name of the external VM switch on your Azure Local cluster:
@@ -43,11 +43,27 @@ ConvergedSwitch(management_compute_storage)    External        Teamed-Interface
 
 ## Create the logical network
 
-You can create a logical network using either the Azure Command-Line Interface (CLI) or by using the Azure portal.
+You can create a logical network by using either the Azure CLI or the Azure portal.
 
 # [Azure CLI](#tab/azurecli)
 
-You can use the [`az stack-hci-vm network lnet create`](/cli/azure/stack-hci-vm/network/lnet#az-stack-hci-vm-network-lnet-create) cmdlet to create a logical network on the VM switch in Static IP configuration.
+To create a logical network on the VM switch in a static IP configuration, you can use the [`az stack-hci-vm network lnet create`](/cli/azure/stack-hci-vm/network/lnet#az-stack-hci-vm-network-lnet-create) command:
+
+```azurecli
+az stack-hci-vm network lnet create \
+  --subscription $subscription \
+  --resource-group $resource_group \
+  --custom-location $customLocationID \
+  --name $lnetName \
+  --vm-switch-name $vmSwitchName \
+  --ip-allocation-method "Static" \
+  --address-prefixes $addressPrefixes \
+  --gateway $gateway \
+  --dns-servers $dnsServers \
+  --ip-pool-start $ipPoolStart \
+  --ip-pool-end $ipPoolEnd \
+  --vlan 10
+```
 
 For static IP, the required parameters are as follows:
 
@@ -57,17 +73,14 @@ For static IP, the required parameters are as follows:
 | `--resource-group` | Name of the resource group where you create the logical network. |
 | `--subscription` | Name or ID of the subscription where your Azure Local is deployed. |
 | `--custom-location` | Provide the custom location associated with your Azure Local cluster where you're creating the logical network. |
-| `--vm-switch-name`     | The name of the VM switch. Usage: `--vm-switch-name "vm-switch-01"`. | 
+| `--vm-switch-name`     | The name of the VM switch. Usage: `--vm-switch-name "vm-switch-01"`. |
 | `--address-prefixes` | AddressPrefix for the network. Currently only 1 address prefix is supported. Usage: `--address-prefixes "10.220.32.16/24"`. |
-| `--dns-servers`      | Space-separated list of DNS server IP addresses. Usage: `--dns-servers 10.220.32.16 10.220.32.17`. | 
+| `--dns-servers`      | Space-separated list of DNS server IP addresses. Usage: `--dns-servers 10.220.32.16 10.220.32.17`. |
 | `--gateway`         | Gateway. The gateway IP address must be within the scope of the address prefix. Usage: `--gateway 10.220.32.16`. |
-| `--ip-allocation-method`   | The IP address allocation method. Supported values are "Static". Usage: `--ip-allocation-method "Static"`. |
-| `--ip-pool-start`     | The start IP address of your IP pool. The address must be in range of the address prefix. Usage: `--ip-pool-start "10.220.32.18"`.  | 
+| `--ip-allocation-method`   | The IP address allocation method. Supported values are `Static`. Usage: `--ip-allocation-method "Static"`. |
+| `--ip-pool-start`     | The start IP address of your IP pool. The address must be in range of the address prefix. Usage: `--ip-pool-start "10.220.32.18"`.  |
 | `--ip-pool-end`       | The end IP address of your IP pool. The address must be in range of the address prefix. Usage: `--ip-pool-end "10.220.32.38"`.  |
-
-```azurecli
-az stack-hci-vm network lnet create --subscription $subscription --resource-group $resource_group --custom-location $customLocationID --name $lnetName --vm-switch-name $vmSwitchName --ip-allocation-method "Static" --address-prefixes $addressPrefixes --gateway $gateway --dns-servers $dnsServers --ip-pool-start $ipPoolStart --ip-pool-end $ipPoolEnd
-```
+| `--vlan`              | The VLAN ID. Usage: `--vlan 10`. This parameter is optional. Specifies the VLAN ID (an int32 value) to use when creating the logical network.  |
 
 # [Azure portal](#tab/azureportal)
 
@@ -77,11 +90,11 @@ Complete the following steps to create a logical network using the Azure portal:
 
    :::image type="content" source="./media/aks-networks/select-logical-network.png" alt-text="Screenshot showing Resources pane in Azure portal." lightbox="./media/aks-networks/select-logical-network.png":::
 
-2. In the right pane, select **Create logical network**.
+1. In the right pane, select **Create logical network**.
 
    :::image type="content" source="./media/aks-networks/create-logical-network.png" alt-text="Screenshot showing logical network creation link." lightbox="./media/aks-networks/create-logical-network.png":::
 
-3. On the **Create logical network** page, on the **Basics** tab:
+1. On the **Create logical network** page, on the **Basics** tab:
 
     - Select the Azure subscription name.
     - Select the associated resource group name.
@@ -94,7 +107,7 @@ Complete the following steps to create a logical network using the Azure portal:
 
    :::image type="content" source="./media/aks-networks/enter-network-name.png" alt-text="Screenshot showing Basics tab." lightbox="./media/aks-networks/enter-network-name.png":::
 
-4. On the **Network configuration** tab, select **Static** and then enter the following:
+1. On the **Network configuration** tab, select **Static** and then enter the following:
     - IPv4 address space (previously reserved).
     - IP pools.
     - Default gateway address.
@@ -105,7 +118,7 @@ Complete the following steps to create a logical network using the Azure portal:
 
    :::image type="content" source="./media/aks-networks/enter-ip-addresses.png" alt-text="Screenshot showing Network configuration tab." lightbox="./media/aks-networks/enter-ip-addresses.png":::
 
-5. On the **Review + Create** tab, review network settings and then select **Create**:
+1. On the **Review + Create** tab, review network settings and then select **Create**:
 
    :::image type="content" source="./media/aks-networks/review-and-create-static.png" alt-text="Screenshot showing static network properties page." lightbox="./media/aks-networks/review-and-create-static.png":::
 

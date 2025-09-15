@@ -4,10 +4,12 @@ description: PowerShell cmdlets for AKS Edge Essentials
 author: rcheeran
 ms.author: rcheeran
 ms.topic: reference
-ms.date: 01/31/2023
+ms.date: 08/11/2025
 ---
 
 # AKS Edge Essentials PowerShell module
+
+To get started, see [Prepare your machines for AKS Edge Essentials.](../../aks-edge-howto-setup-machine.md).
 
 ## PowerShell commands
 
@@ -91,13 +93,17 @@ Removes the deployment from an existing cluster.
 
 Removes a local node from an existing cluster.
 
+### [Repair-AksEdgeKms](./repair-aksedgekms.md)
+
+Repairs the KMS plugin for an existing cluster.
+
 ### [Set-AksEdgeBillingPodState](./set-aksedgebillingpodstate.md)
 
- Allows AIDE front end to set Billing pod state after joining Arc through Azure CLI.
+Allows AIDE front end to set Billing pod state after joining Arc through Azure CLI.
 
 ### [Set-AksEdgeNodeConnectivityMode](./set-aksedgenodeconnectivitymode.md)
 
- Sets AKS Edge Essentials node connectivity mode.
+Sets AKS Edge Essentials node connectivity mode.
 
 ### [Set-AksEdgeNodeToDrain](./set-aksedgenodetodrain.md)
 

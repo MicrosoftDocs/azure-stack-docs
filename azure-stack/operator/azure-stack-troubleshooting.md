@@ -3,9 +3,8 @@ title: Troubleshoot Azure Stack Hub
 titleSuffix: Azure Stack
 description: Learn how to troubleshoot Azure Stack Hub, including issues with VMs, storage, and App Service.
 author: sethmanheim
-
-ms.topic: article
-ms.date: 02/12/2021
+ms.topic: troubleshooting-general
+ms.date: 03/06/2025
 ms.author: sethm
 ms.reviewer: prchint
 ms.lastreviewed: 12/10/2020
@@ -17,7 +16,7 @@ ms.lastreviewed: 12/10/2020
 
 # Troubleshoot issues in Azure Stack Hub
 
-This document provides troubleshooting information for Azure Stack Hub integrated environments. For help with the Azure Stack Development Kit, see [ASDK Troubleshooting](../asdk/asdk-troubleshooting.md) or get help from experts on the [Azure Stack Hub MSDN Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack).
+This article provides troubleshooting information for Azure Stack Hub integrated environments.
 
 ## Frequently asked questions
 
@@ -141,10 +140,9 @@ You may also take a snapshot of the original disk and create a new disk from it 
 - [Create a disk from a snapshot](/azure/virtual-machines/troubleshooting/troubleshoot-recovery-disks-portal-linux#create-a-disk-from-the-snapshot)
 - [Changing and resetting the Root password](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/ch-working_with_the_grub_2_boot_loader#sec-Changing_and_Resetting_the_Root_Password)
 
-
 ### License activation fails for Windows Server 2012 R2 during provisioning
 
-In this case, Windows will fail to activate and you will see a watermark on the bottom-right corner of the screen. The WaSetup.xml logs located under C:\Windows\Panther contains the following event:
+In this case, Windows fails to activate and you see a watermark on the bottom-right corner of the screen. The WaSetup.xml logs located under C:\Windows\Panther contains the following event:
 
 ```xml
 <Event time="2019-05-16T21:32:58.660Z" category="ERROR" source="Unattend">
@@ -209,11 +207,11 @@ If the Create-AADIdentityApp.ps1 script that's required for App Service fails, b
 
 The Azure Stack Hub patch and update process is designed to allow operators to apply update packages in a consistent, streamlined way. While uncommon, issues can occur during patch and update process. The following steps are recommended should you encounter an issue during the patch and update process:
 
-0. **Prerequisites**: Be sure that you have followed the [Update Activity Checklist](release-notes-checklist.md) and [enable proactive log collection](./diagnostic-log-collection.md#send-logs-proactively).
+0. **Prerequisites**: Be sure that you follow the [Update Activity Checklist](release-notes-checklist.md) and [enable proactive log collection](./diagnostic-log-collection.md#send-logs-proactively).
 
 1. Follow the remediation steps in the failure alert created when your update failed.
 
-2. If you have been unable to resolve your issue, create an [Azure Stack Hub support ticket](./azure-stack-help-and-support-overview.md). Be sure you have [logs collected](./diagnostic-log-collection.md#send-logs-now) for the time span when the issue occurred. If an update fails, either with a critical alert or a warning, it's important that you review the failure and contact Microsoft Customer Support Services as directed in the alert so that your scale unit does not stay in a failed state for a long time. Leaving a scale unit in a failed update state for an extended period of time can cause additional issues that are more difficult to resolve later.
+2. If you're unable to resolve your issue, create an [Azure Stack Hub support ticket](./azure-stack-help-and-support-overview.md). Make sure you [collect logs](./diagnostic-log-collection.md#send-logs-now) for the time span when the issue occurred. If an update fails, either with a critical alert or a warning, it's important that you review the failure and contact Microsoft Customer Support Services as directed in the alert so that your scale unit does not stay in a failed state for a long time. Leaving a scale unit in a failed update state for an extended period of time can cause additional issues that are more difficult to resolve later.
 
 ## Common Azure Stack Hub patch and update issues
 

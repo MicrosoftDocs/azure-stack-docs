@@ -66,6 +66,8 @@ groups:
     title: Ubuntu 20.04
   - id: ubuntu-22
     title: Ubuntu 22.04
+  - id: ubuntu-24
+    title: Ubuntu 24.04
 - id: version-select
   title: AKS enabled by Azure Arc Azure Local versions
   prompt: AKS on Azure Local version
@@ -82,6 +84,22 @@ groups:
     title: Azure Local
   - id: windows-server
     title: Windows Server
+- id: upgrade-os
+  title: Upgrade OS
+  prompt: Choose an upgrade path for OS
+  pivots:
+  - id: os-24h2
+    title: To 26100.xxxx 
+  - id: os-23h2
+    title: To 25398.xxxx 
+- id: register-arc-options
+  title: Registration options
+  prompt: "Choose a registration option:"
+  pivots:
+  - id: register-proxy
+    title: With proxy
+  - id: register-without-proxy
+    title: Without proxy
 # BELOW: entries inherited from github.com/microsoftdocs/azure-docs-pr/articles/zone-pivot-groups.yml for reuse.
 # For consistency across Docs. This includes: client OSes, languages, etc.
 

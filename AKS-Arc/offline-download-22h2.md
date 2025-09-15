@@ -1,17 +1,17 @@
 ---
-title: Use offline download in AKS on Azure Local
-description: Learn how to use offline download in AKS on Azure Local
+title: Use offline download in AKS on Windows Server
+description: Learn how to use offline download in AKS on Windows Server.
 ms.topic: reference
-ms.date: 02/13/2024
+ms.date: 04/02/2025
 author: sethmanheim
 ms.author: sethm 
 
 ---
-# Use offline download in AKS on Azure Local and Windows Server
+# Use offline download in AKS on Windows Server
 
 [!INCLUDE [aks-hybrid-applies-to-azure-stack-hci-windows-server-sku](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-If you have unreliable internet connectivity at your deployment location or you need to scan files and images for security and compliance before deploying, you can use offline downloading to install or update from a local path. There are two ways that you can use this feature: *onsite* or *offsite*. Onsite means that you download the AKS on Azure Local images at the same location in which you deploy. Offsite means that you download the AKS on Azure Local images to a different location (where you may have better internet connectivity), use a tool of your choice to transfer the images to your deployment site, and then install or update locally.
+If you have unreliable internet connectivity at your deployment location or you need to scan files and images for security and compliance before deploying, you can use offline downloading to install or update from a local path. There are two ways that you can use this feature: *onsite* or *offsite*. Onsite means that you download the AKS images at the same location in which you deploy. Offsite means that you download the AKS images to a different location (where you may have better internet connectivity), use a tool of your choice to transfer the images to your deployment site, and then install or update locally.
 
 In both onsite and offsite scenarios, the latest change ensures that all the zip/cab files of different versions are extracted during the install/update process. This process takes less space than before, which required files to be extracted prior to install/upgrade and stored on the cluster storage.
 
@@ -21,13 +21,13 @@ The following prerequisites are required:
 
 - The latest release of the AKS-HCI PowerShell module.
 - Open PowerShell as an administrator.
-- Make sure you have satisfied all the [system requirements](.\system-requirements.md) prerequisites.
+- Make sure you satisfy all the [system requirements](.\system-requirements.md).
 
 ## Use offline download to install onsite
 
 ### Step 1: Prepare your machine(s) for deployment
 
-Run the following command to check every physical node to see if all the requirements to install AKS on Azure Local are satisfied.
+Run the following command to check every physical node to see if all the requirements to install AKS on Windows Server are satisfied.
 
 ```powershell
 Initialize-AksHciNode
@@ -38,7 +38,7 @@ Initialize-AksHciNode
 In the configuration step, use [Set-AksHciConfig](./reference/ps/set-akshciconfig.md) to enable offline downloading with the `-offlineDownload` parameter. Then, specify the local path with the `-stagingShare` parameter. This is where the images are downloaded.
 
 ```powershell
-Set-AksHciConfig -offlineDownload $true -mode full -stagingShare c:\akshciimages -imageDir c:\clusterstorage\volume1\Images -workingDir c:\ClusterStorage\Volume1\ImageStore -cloudConfigLocation c:\clusterstorage\volume1\Config -vnet $vnet -cloudservicecidr "172.16.10.10/16" 
+Set-AksHciConfig -offlineDownload $true -mode full -stagingShare c:\aksimages -imageDir c:\clusterstorage\volume1\Images -workingDir c:\ClusterStorage\Volume1\ImageStore -cloudConfigLocation c:\clusterstorage\volume1\Config -vnet $vnet -cloudservicecidr "172.16.10.10/16" 
 ```
 
 > [!NOTE]
@@ -72,7 +72,7 @@ Install-AksHci
 
 ## Use offline download to upgrade onsite
 
-### Step 1: Get available AKS on Azure Local host updates
+### Step 1: Get available AKS on Windows Server host updates
 
 Check if there is an available update by running the following command:
 
@@ -96,7 +96,7 @@ Run the following command to download the images. This example downloads in full
 Get-AksHciRelease -mode full
 ```
 
-### Step 4: Start the AKS on Azure Local host update
+### Step 4: Start the AKS on Windows Server host update
 
 Run the following command to start the update:
 
@@ -110,7 +110,7 @@ With the offsite functionality, you download the images to a different location 
 
 ### Step 1: Set the offsite configurations
 
-Run the following command at your offsite location with the version of AKS on Azure Local that you need:
+Run the following command at your offsite location with the version of AKS on Windows Server that you need:
 
 ```powershell
 Set-AksHciOffsiteConfig -version <String> -stagingShare <String>
@@ -126,14 +126,14 @@ Get-AksHciRelease -mode full
 
 ### Step 3: Transfer the images onsite to where you will deploy
 
-In this step, use your tool of choice to transfer the images so that they are available in a local directory onsite where AKS on Azure Local are deployed.
+In this step, use your tool of choice to transfer the images so that they're available in a local directory onsite, where AKS on Windows Server is deployed.
 
 ### Step 4: Configure the deployment onsite
 
-Set your configuration, make sure to use the `-offlineDownload` flag, and set your path to where AKS on Azure Local looks for the images during install:
+Set your configuration, make sure to use the `-offlineDownload` flag, and set your path to the location where AKS on Windows Server looks for the images during installation:
 
 ```powershell
-Set-AksHciConfig -offlineDownload $true -offsiteTransferCompleted $true -stagingShare c:\akshciimages -imageDir c:\clusterstorage\volume1\Images -workingDir c:\ClusterStorage\Volume1\ImageStore -cloudConfigLocation c:\clusterstorage\volume1\Config -vnet $vnet -cloudservicecidr "172.16.10.10/16" 
+Set-AksHciConfig -offlineDownload $true -offsiteTransferCompleted $true -stagingShare c:\aksimages -imageDir c:\clusterstorage\volume1\Images -workingDir c:\ClusterStorage\Volume1\ImageStore -cloudConfigLocation c:\clusterstorage\volume1\Config -vnet $vnet -cloudservicecidr "172.16.10.10/16" 
 ```
 
 > [!NOTE]
@@ -171,7 +171,7 @@ With the offsite functionality, you download the images to a different location 
 
 ### Step 1: Set the offsite configuration
 
-Run the following command at your offsite location with the version of AKS on Azure Local that you need:
+Run the following command at your offsite location with the version of AKS on Windows Server that you need:
 
 ```powershell
 Set-AksHciOffsiteConfig -version <String> -stagingShare <String>
@@ -187,11 +187,11 @@ Get-AksHciRelease -mode full
 
 ### Step 3: Transfer the images onsite to where you will deploy
 
-In this step, use your tool of choice to transfer the images so that they are available in a local directory onsite where AKS on Azure Local is deployed.
+In this step, use your tool of choice to transfer the images so that they are available in a local directory onsite, where AKS on Windows Server is deployed.
 
 ### Step 4: Enable offline download
 
-If you do not already have offline downloading enabled, run the following command to enable offline downloading, and provide the correct path to where the images are located:
+If you don't already have offline downloading enabled, run the following command to enable offline downloading, and provide the correct path to where the images are located:
 
 ```powershell
 Enable-AksHciOfflineDownload -stagingShare <your path> -offsiteTransferCompleted $true 

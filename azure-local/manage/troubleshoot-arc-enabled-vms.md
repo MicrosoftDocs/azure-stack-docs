@@ -1,23 +1,53 @@
 ---
-title: Troubleshoot Azure Arc VM management for Azure Local
-description: Learn how to troubleshoot Azure Arc VM management
+title: Troubleshoot Azure Local Virtual Machines enabled by Azure Arc
+description: Learn how to troubleshoot issues you experience with Azure Local Virtual Machines (VMs).
 author: alkohli
 ms.topic: how-to
-ms.date: 10/24/2024
+ms.date: 07/21/2025
 ms.author: alkohli
 ms.reviewer: vlakshmanan
 ms.service: azure-local
+ms.custom: sfi-image-nochange
 ---
 
-# Troubleshoot Azure Arc VM management for Azure Local
+# Troubleshoot Azure Local Virtual Machines enabled by Azure Arc
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
-This article provides guidance on how to collect logs and troubleshoot issues with Azure Arc virtual machines (VMs) on your Azure Local instance. It also lists the limitations and known issues that currently exist with Azure Arc VM management.
+This article describes how to collect logs and troubleshoot issues with Azure Local Virtual Machines (VMs) enabled by Azure Arc. It also lists the current limitations and known issues with Azure Local VM management, along with recommended resolutions.
 
-## Troubleshoot Azure Arc VMs
+## Property isn't supported for this operation
 
-This section describes the errors related to Azure Arc VM management and their recommended resolutions.
+**Error:**
+
+`Property '<Property Name>' isn't supported for this operation on your Azure Local cluster version. Please update your cluster if you want to set this property for this operation. Please view aka.ms/hciproperties.`
+
+**Cause:**
+
+This error occurs when the feature you're trying to use isn't available for the software version running on your Azure Local instance. This can happen if the software version on your cluster is outdated or the feature was introduced in a later version.
+
+**Resolution:**
+
+To resolve this issue, update your Azure Local instance to the latest version. For more information, see [Update via PowerShell](../update/update-via-powershell-23h2.md) or [Update via Azure portal](../update/azure-update-manager-23h2.md).
+
+
+## Cluster extension doesn't support resource type
+
+**Error:**
+
+`The cluster extension '<Cluster Extension Azure Resource Manager ID>' doesn't support resource type 'Microsoft.AzureStackHCI/<Resource Type>'. The currently enabled resource types are '<Supported Resource Type Names>'. Please ensure the 'Microsoft.AzureStackHCI' cluster extension version metadata file supports the resource type. [ClusterExtensionVersion='<Cluster Extension Version>'] [CorrelationId='<Correlation ID>'].`
+
+**Cause:**
+
+This error occurs when the feature you're trying to use isn't available for the software version running on your Azure Local instance. This can happen if the software version on your cluster is outdated or the feature was introduced in a later version.
+
+**Resolution:**
+
+To resolve this issue, update your Azure Local instance to the latest version. For more information, see [Update via PowerShell](../update/update-via-powershell-23h2.md) or [Update via Azure portal](../update/azure-update-manager-23h2.md).
+
+## Unable to select an image for Trusted launch VMs
+
+Trusted launch for Azure Local VMs currently supports only a select set of Azure Marketplace images. For a list of supported images, see [Guest operating system images](./trusted-launch-vm-overview.md#guest-operating-system-images). When you create a Trusted launch VM in the Azure portal, the Image dropdown list shows only the images supported by Trusted launch. The Image dropdown appears blank if you select an unsupported image, including a custom image. The list also appears blank if none of the images available on your Azure Local system are supported by Trusted launch.
 
 ## Failure when trying to enable guest management
 
@@ -39,7 +69,7 @@ Follow these steps to verify that the Managed Identity isn't created for this VM
 
     :::image type="content" source="./media/troubleshoot-arc-enabled-vms/managed-identity-missing-2.png" alt-text="Screenshot of JSON view indicating the Managed Identity is absent." lightbox="./media/troubleshoot-arc-enabled-vms/managed-identity-missing-2.png":::
 
-1. To create managed identity, connect to the Azure Local machine via RDP. Run the following command:
+1. To create managed identity, connect to the Azure Local machine via Remote Desktop Protocol (RDP). Run the following command:
     
     ```azurecli
     az extension add --name connectedmachine
@@ -86,17 +116,17 @@ Or, you see this error:
 
 **Error:** `{"code":"moc-operator galleryimage serviceClient returned an error while reconciling: rpc error: code = Unknown desc = ===== RESPONSE ERROR (ErrorCode=NoAuthenticationInformation) =====\nDescription=, Details: (none)\n","message":"moc-operator galleryimage serviceClient returned an error while reconciling: rpc error: code = Unknown desc = ===== RESPONSE ERROR (ErrorCode=NoAuthenticationInformation) =====\nDescription=, Details: (none)\n"}`
 
-The failure occurs because the user creating the image does not have the right permissions to access the image from the storage account. The user must have the **Storage Blob Data Contributor** role on the storage account that you use for the image. For more information, see [Assign Azure roles](/azure/role-based-access-control/role-assignments-portal?tabs=current) for access to blob data.
+The failure occurs because the user creating the image doesn't have the right permissions to access the image from the storage account. The user must have the **Storage Blob Data Contributor** role on the storage account that you use for the image. For more information, see [Assign Azure roles](/azure/role-based-access-control/role-assignments-portal?tabs=current) for access to blob data.
 
 **Resolution:**
 
-Add the **Storage Blob Data Contributor** role to the user that needs to create an image from this storage account. Once role has been added, retry deploying the image.
+Add the **Storage Blob Data Contributor** role to the user that needs to create an image from this storage account. Once role is added, retry deploying the image.
 
-You may also see the following error when trying to deploy a VM image from a storage account:
+You might also see the following error when trying to deploy a VM image from a storage account:
 
 **Error:** `{"code":"moc-operator galleryimage serviceClient returned an error while reconciling: rpc error: code = Unknown desc = ===== RESPONSE ERROR (ErrorCode=InvalidBlobType) =====\nDescription=The blob type is invalid for this operation.\nRequestId:5e74055f-e01e-0033-66eb-ff9734000000\nTime:2024-09-05T23:32:56.3001852Z, Details: (none)\n","message":"moc-operator galleryimage serviceClient returned an error while reconciling: rpc error: code = Unknown desc = ===== RESPONSE ERROR (ErrorCode=InvalidBlobType) =====\nDescription=The blob type is invalid for this operation.\nRequestId:5e74055f-e01e-0033-66eb-ff9734000000\nTime:2024-09-05T23:32:56.3001852Z, Details: (none)\n","additionalInfo":[{"type":"ErrorInfo","info":{"category":"Uncategorized","recommendedAction":"","troubleshootingURL":""}}]}`
 
-This failure is because the blob type is not correct within the storage account. The image must be of `page blob` type.
+This failure is because the blob type isn't correct within the storage account. The image must be of `page blob` type.
 
 **Resolution:**
 
@@ -105,9 +135,9 @@ Upload the image into your storage account in `page blob format` and retry deplo
 Ensure that the user has the right permissions, and the blob is in the correct format. For more information, see [Add VM image from Azure Storage account](virtual-machine-image-storage-account.md?tabs=azurecli#prerequisites).
 
 
-## Failure deploying an Arc VM
+## Failure to deploy an Azure Local VM
 
-You see the following error when trying to deploy an Arc VM on your Azure Local:
+You see the following error when trying to deploy an Azure Local VM:
 
 **Error:** `{"code":"ConflictingOperation","message":"Unable to process request 'Microsoft.AzureStackHCI/virtualMachineInstances'. There is already a previous running operation for resource '/subscriptions/<subscription ID>/resourceGroups/<Resource group name>/providers/Microsoft.HybridCompute/machines/<VM name>/providers/Microsoft.AzureStackHCI/virtualMachineInstances/default'. Please wait for the previous operation to complete."}`
 
@@ -119,27 +149,7 @@ Verify in your deployment template that:
 
 The `SystemAssigned` managed identity object is under `Microsoft.HybridCompute/machines` resource type and not under `Microsoft.AzureStackHCI/VirtualMachineInstances` resource type.
 
-The deployment template should match the provided sample template. For more information, see the sample template in [Create Arc virtual machines on Azure Local](./create-arc-virtual-machines.md).
-
-## Failure deleting storage path
-
-When trying to delete a storage path on your Azure Local instance, you might see an error similar to the following message. Resource numbers and versions may vary in your scenario.
-
-**Error:** `"errorMessage" serviceClient returned an error during deletion: The storage container service returned an error during deletion: rpc error: code = Unknown desc = Container is in ACTIVE use by Resources [6:`  
-`- linux-cblmariner-0.2.0.10503`  
-`- windows-windows2019-0.2.0.10503`  
-`- windows-windows2022-0.2.0.10503`  
-`].`  
-`Remove all the Resources from this container, before trying to delete: In Use: Failed,`
-
-**Resolution:**  
-
-The images listed in the error message differ from typical workloads, which are represented as Azure Resource Manager (ARM) objects on the Azure portal and CLI. This error occurs because these images are directly downloaded onto the file system, which Azure couldn't recognize.
-
-Follow these steps before trying to remove a storage path:
-
-1. Remove the associated workloads and the images present on the storage path you want to delete. Look for the following prefixes on the image names: `linux-cblmariner`, `windows-windows2019`, `windows-windows2022`, `windows_k8s`, `aks-image-merged`, `linux-K8s`.
-1. File a [support ticket in the Azure portal](/azure/azure-portal/supportability/how-to-create-azure-support-request).
+The deployment template should match the provided sample template. For more information, see the sample template in [Create Azure Local virtual machines enabled by Azure Arc](./create-arc-virtual-machines.md).
 
 ## Azure CLI installation isn't recognized
 
@@ -152,31 +162,88 @@ If your environment fails to recognize Azure CLI after installing it, run the fo
         }
 ```
 
+## "Windows created a temporary paging file" message appears at startup
 
-<!--## Limitations and known issues
+**Error:**
 
-Here's a list of existing limitations and known issues with Azure Arc VM management:
+When you deploy an Azure Local VM using the SQL Server 2022 on Windows Server 2022 Azure marketplace images (Standard or Enterprise), you might see the following warning at startup:
 
-- Resource name must be unique for an Azure Local instance and must contain only alphabets, numbers, and hyphens.
+*Windows created a temporary paging file...*
 
-- VMs provisioned from Windows Admin Center, PowerShell, or other Hyper-V management tools aren't visible in the Azure portal for management.
+**Resolution:**
 
-- You must update Arc VMs on Azure Local only from the Azure management plane. Any modifications to these VMs from other management tools aren't updated in the Azure portal.
+To resolve this issue, follow these steps:
 
-- Arc VMs must be created in the same Azure subscription as the Custom location.
+1. Select **OK** on the warning popup. Or, go to **System Properties** > **Advanced** > **Performance** > **Settings** to open the **Performance Options** window.
+1. In the **Performance Options** window, select **Change** under the **Virtual memory** section.
 
-- An IT administrator can't view or manage VMs from system resource page in the Azure portal, if they are created in a subscription where the IT administrator doesn't have at least read-only access role.
+    :::image type="content" source="./media/troubleshoot-arc-enabled-vms/temporary-paging-file-1.png" alt-text="Screenshot of the Performance Options window highlighting the Change button." lightbox="./media/troubleshoot-arc-enabled-vms/temporary-paging-file-1.png":::
 
-- If the Arc for servers agents are installed on VMs provisioned through the Azure portal, there will be two projections of the VMs on the Azure portal.
+1. In the **Virtual Memory** window, select **System managed size**.  Also ensure that the **Automatically manage paging file size for all drives** checkbox is cleared.
 
-- Arc VM management is currently not available for stretched cluster configurations on Azure Local.
+    :::image type="content" source="./media/troubleshoot-arc-enabled-vms/temporary-paging-file-2.png" alt-text="Screenshot of the Virtual Memory window showing options to configure the paging file size for each drive." lightbox="./media/troubleshoot-arc-enabled-vms/temporary-paging-file-2.png":::
 
-- Support for Arc Resource Bridge and Arc VM Management is currently available only in English language.
+1. Select **Set**, then select **OK** to apply the changes.
 
-- Azure Arc Linux VMs aren't supported behind a network proxy.
+1. Restart the VM. After the restart, the warning message should no longer appear.
 
-- Naming convention for Azure resources, such as logical networks, gallery images, custom location, Arc Resource Bridge must follow the guidelines listed in [Naming rules and restrictions for Azure resources](/azure/azure-resource-manager/management/resource-name-rules).-->
+## Resource deployment failure due to insufficient disk space on the first storage path
+
+**Error:**
+
+`The system failed to create <Azure resource name>: There is not enough space on the disk.`
+
+**Cause:**
+
+If no storage path is specified during deployment, resources are automatically placed on the first storage path, even when additional storage paths are available on the cluster. This can lead to insufficient disk space on the first storage path, even when other storage paths still have available capacity.
+
+**Resolution:**
+
+When creating a VM, data disk, or image, choose a storage path manually.
+
+# [Azure portal](#tab/azure-portal)
+
+In the Azure portal, when creating a VM, attaching data disks, or creating an image, select the **Choose manually** option for the storage path. Then, select a storage path from the available list to avoid automatic placement on the first storage path.
+
+# [CLI](#tab/cli)
+
+To specify a storage path when creating a VM, data disk, or image, use the `--storage-path-id` parameter with the `az stack-hci-vm create`, `az stack-hci-vm disk create`, or `az stack-hci-vm image create` command.
+
+# [ARM template](#tab/arm-template)
+
+To define a storage path for a VM configuration, add `vmConfigStoragePathId` to the `storageProfile` section of the VM resource:
+
+```json
+"storageProfile": {
+ "vmConfigStoragePathId": "Insert ARM ID of specified storage path"
+}
+```
+
+If using an ARM template that creates multiple VMs in one deployment:
+
+1. Define a parameter for the storage path IDs:
+
+    ```json
+    "parameters": {
+     "storagePathIds": {
+       "type": "array",
+       "metadata": {
+         "description": "List of storage path resource IDs to cycle through for VM placement."
+       }
+     }
+    }
+    ```
+
+1. Add `vmConfigStoragePathId` to the `storageProfile`section of the VM resource:
+
+    ```json
+    "storageProfile": {
+     "vmConfigStoragePathId": "[parameters('storagePathIds')[mod(copyIndex(), length(parameters('storagePathIds')))]]"
+    }
+    ```
+
+---
 
 ## Next steps
 
-- [Azure Arc VM management FAQs](./azure-arc-vms-faq.yml)
+- [Azure Local VM management FAQs](./azure-arc-vms-faq.yml)

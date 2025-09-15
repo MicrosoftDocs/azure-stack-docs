@@ -1,27 +1,27 @@
 ---
-title: Overview of certificate management in AKS enabled by Azure Arc
-description: Learn how to manage certificates for secure communication between in-cluster components in AKS by provisioning and managing certificates in AKS enabled by Arc.
+title: Overview of certificate management in AKS on Windows Server
+description: Learn how to manage certificates for secure communication between in-cluster components in AKS by provisioning and managing certificates in AKS on Windows Server.
 author: sethmanheim
-ms.topic: conceptual
-ms.date: 01/10/2024
+ms.topic: concept-article
+ms.date: 07/03/2025
 ms.author: sethm 
 ms.lastreviewed: 04/01/2023
-ms.reviewer: sulahiri
+ms.reviewer: leslielin
 
 # Intent: As an IT Pro, I want to learn how to use certificates to secure communication between in-cluster components on my AKS deployment.
 # Keyword: control plane nodes secure communication certificate revocation
 
 ---
 
-# Overview of certificate management in AKS enabled by Azure Arc
+# Overview of certificate management in AKS on Windows Server
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-AKS enabled by Azure Arc uses a combination of certificate and token-based authentication to secure communication between services (or agents) responsible for different operations within the platform. Certificate-based authentication uses a digital certificate to identify an entity (agent, machine, user, or device) before granting access to a resource.
+AKS on Windows Server uses a combination of certificate and token-based authentication to secure communication between services (or agents) responsible for different operations within the platform. Certificate-based authentication uses a digital certificate to identify an entity (agent, machine, user, or device) before granting access to a resource.
 
 ## Cloud agent
 
-When you deploy AKS enabled by Arc, AKS installs agents that are used to perform various functions within the cluster. These agents include:
+When you deploy AKS on Windows Server, AKS installs agents that are used to perform various functions within the cluster. These agents include:
 
 - Cloud agent: a service that is responsible for the underlying platform orchestration.
 - Node agent: a service that resides on each node that does the actual work of virtual machine creation, deletion, etc.
@@ -39,16 +39,16 @@ Each entity is valid for a specific period (the default is 90 days), at the end 
 
 ## Certificate types
 
-There are two types of certificates used in AKS enabled by Arc:
+There are two types of certificates used in AKS on Windows Server:
 
 - Cloud agent CA certificate: the certificate used to sign/validate client certificates. This certificate is valid for 365 days (1 year).
 - Client certificates: certificates issued by the cloud agent CA certificate for clients to authenticate to the cloud agent. These certificates are usually valid for 90 days.
 
 Microsoft recommends that you update clusters within 60 days of a new release, not only for ensuring that internal certificates and tokens are kept up to date, but also to make sure that you get access to new features, bug fixes, and to stay up to date with critical security patches. During these monthly updates, the update process rotates any tokens that can't be auto-rotated during normal operations of the cluster. Certificate and token validity is reset to the default 90 days from the date that the cluster is updated.
 
-## Secure communication with certificates in AKS enabled by Arc
+## Secure communication with certificates in AKS on Windows Server
 
-Certificates are used to build secure communication between in-cluster components. AKS provides zero-touch, out-of-the-box provisioning, and management of certificates for built-in Kubernetes components. In this article, you'll learn how to provision and manage certificates in AKS enabled by Arc.
+Certificates are used to build secure communication between in-cluster components. AKS provides zero-touch, out-of-the-box provisioning, and management of certificates for built-in Kubernetes components. In this article, you'll learn how to provision and manage certificates in AKS on Windows Server.
 
 ## Certificates and CAs
 
@@ -105,9 +105,9 @@ A `notBefore` time can be specified to revoke only certificates that are issued 
 > [!NOTE]
 > Revocation of `kubelet` server certificates is currently not available.
 
-If you use a serial number when you perform a revocation, you can use the `Repair-AksHciClusterCerts` PowerShell command, described below, to get your cluster into a working state. If you use any of the other fields listed earlier, make sure to specify a `notBefore` time.
+If you use a serial number when you perform a revocation, you can use the `Repair-AksHciClusterCerts` PowerShell command, described as follows, to get your cluster into a working state. If you use any of the other fields listed earlier, make sure to specify a `notBefore` time.
 
-```console
+```yaml
 apiVersion: certificates.microsoft.com/v1 
 kind: RenewRevocation 
 metadata: 

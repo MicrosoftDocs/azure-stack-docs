@@ -4,7 +4,7 @@ description: Learn how to add GPUs to an existing Azure Stack Hub system.
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
-ms.date: 05/17/2021
+ms.date: 04/21/2025
 ms.custom: template-how-to
 ---
 
@@ -23,6 +23,8 @@ The following flow shows the general process to add memory to each scale unit no
 
 :::image type="content" source="media/manage-gpu-capacity/add-memory-process.png" alt-text="Add GPU capacity flow":::
 
+Each GPU VM can only use GPUs from a single node, and GPU VMs are not automatically load balanced. For example, you have 4 nodes and 2 GPUs on each node, and you create 4 VMs with 1 GPU for each VM. Each VM can exist on a different node. If that happens, any single node only has 1 available GPU left. From the portal, you can see that there are 4 GPUs available. However, if you try to create a VM with 2 GPUs, it fails with insufficient GPU capacity, because no single node has 2 GPUs available. The solution is to create the VMs with 2 GPUs first.
+
 ## Upgrade GPUs or add to an existing node
 
 The following section provides a high-level overview of the process to add a GPU.
@@ -36,9 +38,9 @@ The following section provides a high-level overview of the process to add a GPU
 
 ## Change GPU partition size
 
-Azure Stack Hub supports GPU partitioning for the AMD MI25. With GPU partitioning, you can increase the density of virtual machines using a virtual GPU instance. You can change the partition size to meet specific workload requirements. By default, Azure Stack Hub uses the largest partition size (1/8) to provide the highest possible density with a 2 GB frame buffer. This is useful for workloads that require accelerated graphics applications and virtual desktops.
+Azure Stack Hub supports GPU partitioning for the AMD MI25. With GPU partitioning, you can increase the density of virtual machines using a virtual GPU instance. You can change the partition size to meet specific workload requirements. By default, Azure Stack Hub uses the largest partition size (1/8) to provide the highest possible density with a 2 GB frame buffer. This partitioning is useful for workloads that require accelerated graphics applications and virtual desktops.
 
-To change the partition size, do the following:
+To change the partition size, perform the following steps:
 
 1. Deallocate all VMs that are currently using a GPU.
 1. Ensure that the [PowerShell Az module](powershell-install-az-module.md) for Azure Stack Hub is installed.
@@ -50,6 +52,7 @@ To change the partition size, do the following:
    ```powershell
    Get-AzsScaleUnit                    # Returns a list of information about scale units in your stamp 
    ```
+
    Update the following `$partitionSize` and `$scaleUnitName` variables using the "**name**" value returned in the previous step, then run the following to update the scale unit partition size:
 
    ```powershell
@@ -66,6 +69,9 @@ To change the partition size, do the following:
    | 4            | 1/4 of a physical GPU.  |
    | 2            | 1/2 of a physical GPU.   |
    | 1            | Entire physical GPU.      |
+
+> [!NOTE]
+> Resizing GPU VMs is not supported.
 
 ## Next steps
 

@@ -1,7 +1,7 @@
 ### YamlMime:FAQ
 metadata:
   title: Known issues in Windows Admin Center for AKS Arc
-  description: Known issues in Windows Admin Center for AKS enabled by Arc.
+  description: Known issues in Windows Admin Center for AKS on Windows Server.
   author: sethmanheim
   ms.author: sethm
   ms.service: azure-kubernetes-service-hybrid

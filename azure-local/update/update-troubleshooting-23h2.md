@@ -4,11 +4,12 @@ description: Learn how to troubleshoot solution updates applied to Azure Local, 
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 12/11/2024
+ms.date: 02/25/2025
+ms.custom: sfi-image-nochange
 #customer intent: As a Principal Content Developer, I want provide customers with information and guidance on how to troubleshoot solution updats for their Azure Local intances.
 ---
 
-# Troubleshoot solution updates for Azure Local, version 23H2
+# Troubleshoot solution updates for Azure Local
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
@@ -16,7 +17,7 @@ This article describes how to troubleshoot solution updates that are applied to 
 
 ## About troubleshooting updates
 
-If your system was created via a new deployment of Azure Local, version 23H2, then an orchestrator was installed during the deployment. The orchestrator manages all of the updates for the platform - OS, drivers and firmware, agents and services.
+If your system was created via a new deployment of Azure Local, then an orchestrator was installed during the deployment. The orchestrator manages all of the updates for the platform - OS, drivers and firmware, agents and services.
 
 The new update solution includes a retry and remediation logic. This logic attempts to fix update issues in a non-disruptive way, such as retrying a Cluster-Aware Update (CAU) run. If an update run can't be remediated automatically, it fails. When an update fails, Microsoft recommends inspecting the details for the failure message to determine the appropriate next action. You can attempt to resume the update, if appropriate, to determine if a retry will resolve the issue.
 
@@ -247,7 +248,7 @@ See the table below for update failure scenarios and remediation guidelines.
 | --- | --- | --- |
 | Any | Power loss or other similar interruption to system during the update. | 1. Restore power.<br>2. Run a system health check.<br>3. Resume the update.  |
 | CAU updates | Cluster Aware Update (CAU) update run fails with a `max retries exceeded` failure. | If there is an indication that multiple CAU attempts have been made and that they have all failed, it is often best to investigate the first failure.<br><br>Use the start and end time of the first failure to match up with the correct `Get-CauReport` output to further investigate the failure.  |
-| Any | Memory, power supply, boot driver, or similar critical failure on one or more nodes. | See [Repair a node on Azure Local, version 23H2](../manage/repair-server.md) for how to repair the failing node.<br>Once the node has been repaired the update can be resumed. |
+| Any | Memory, power supply, boot driver, or similar critical failure on one or more nodes. | See [Repair a node on Azure Local](../manage/repair-server.md) for how to repair the failing node.<br>Once the node has been repaired the update can be resumed. |
 
 ## Collect update logs
 
@@ -255,7 +256,7 @@ You can also collect diagnostic logs to help Microsoft identify and fix the issu
 
 To collect logs for updates using the Azure portal, see [Resume an update](#the-azure-portal).
 
-To collect logs for the update failures see [Collect diagnostic logs for Azure Local, version 23H2](../manage/collect-logs.md?tabs=azureportal.md).
+To collect logs for the update failures see [Collect diagnostic logs for Azure Local](../manage/collect-logs.md?tabs=azureportal.md).
 
 ## View update summary report
 

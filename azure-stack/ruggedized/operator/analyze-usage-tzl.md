@@ -3,9 +3,9 @@ title: Analyze Azure Stack usage and resource usage API | Microsoft Docs
 description: Analyzing Azure Stack usage and reference for the resource usage API, which retrieves Azure Stack usage information.
 services: azure-stack
 author: sethmanheim
-manager: femila
+manager: lizross
 ms.service: azure-stack
-ms.topic: article
+ms.topic: how-to
 ms.date: 10/11/2021
 ms.author: sethm
 ms.reviewer: alfredop

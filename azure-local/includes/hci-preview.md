@@ -1,6 +1,6 @@
 ---
-author: ManikaDhiman
-ms.author: v-mandhiman
+author: alkohli
+ms.author: alkohli
 ms.service: azure-local
 ms.topic: include
 ms.date: 10/26/2022

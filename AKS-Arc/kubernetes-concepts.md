@@ -1,29 +1,30 @@
 ---
-title: Kubernetes cluster architecture for AKS enabled by Azure Arc
-description: Learn the basic cluster and workload components of Kubernetes and how they relate to features of AKS enabled by Arc.
+title: Kubernetes cluster architecture for AKS on Windows Server
+description: Learn the basic cluster and workload components of Kubernetes and how they relate to features of AKS on Windows Server.
 author: sethmanheim
 ms.author: sethm 
-ms.lastreviewed: 06/24/2024
-ms.reviewer: daschott
-ms.topic: conceptual
-ms.date: 05/16/2022
+ms.date: 04/04/2025
+ms.reviewer: abha
+ms.lastreviewed: 03/28/2025
+ms.topic: article
 
-# Intent: As an IT Pro, I want to learn about the basic cluster and workload components of Kubernetes and how they relate to features of AKS enabled by Azure Arc.
+
+# Intent: As an IT Pro, I want to learn about the basic cluster and workload components of Kubernetes and how they relate to features of AKS on Windows Server.
 # Keyword: Kubernetes cluster architecture
 
 ---
 
-# Kubernetes cluster architecture and workloads for AKS enabled by Azure Arc
+# Kubernetes cluster architecture and workloads for AKS on Windows Server
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-Azure Kubernetes Service (AKS) on Azure Local and Windows Server is an enterprise-grade Kubernetes container platform powered by Azure Local. It includes Microsoft-supported core Kubernetes, a purpose-built Windows container host, and a Microsoft-supported Linux container host, with a goal to have a simple deployment and life cycle management experience.
+Azure Kubernetes Service (AKS) on Windows Server is an enterprise-grade Kubernetes container platform. It includes Microsoft-supported core Kubernetes, a purpose-built Windows container host, and a Microsoft-supported Linux container host, with a goal to have a simple deployment and life cycle management experience.
 
 This article introduces the core Kubernetes infrastructure components, such as the control plane, nodes, and node pools. Workload resources such as pods, deployments, and sets are also introduced, along with how to group resources into namespaces.
 
 ## Kubernetes cluster architecture
 
-Kubernetes is the core component of AKS enabled by Azure Arc. AKS uses a set of predefined configurations to deploy Kubernetes cluster(s) effectively and with scalability in mind.
+Kubernetes is the core component of AKS on Windows Server. AKS uses a set of predefined configurations to deploy Kubernetes cluster(s) effectively and with scalability in mind.
 
 The deployment operation creates multiple Linux or Windows virtual machines and joins them together to create Kubernetes cluster(s).
 
@@ -37,9 +38,9 @@ An Azure Kubernetes Service cluster has the following components:
 - **Management cluster** (also known as the AKS host) provides the core orchestration mechanism and interface for deploying and managing one or more workload clusters.
 - **Workload clusters** (also known as target clusters) are where containerized applications are deployed.
 
-:::image type="content" source="media/kubernetes-concepts/hci-architecture.png" alt-text="Illustration showing the technical architecture of Azure Kubernetes Service on Azure Local and Windows Server." lightbox="media/kubernetes-concepts/hci-architecture.png":::
+:::image type="content" source="media/kubernetes-concepts/hci-architecture.png" alt-text="Illustration showing the technical architecture of Azure Kubernetes Service on Windows Server." lightbox="media/kubernetes-concepts/hci-architecture.png":::
 
-## Manage AKS enabled by Arc
+## Manage AKS on Windows Server
 
 You can manage AKS using the following management options:
 
@@ -95,7 +96,7 @@ The Deployment Controller uses the Kubernetes scheduler to run a given number of
 
 Kubernetes resources, such as pods and deployments, are logically grouped into a *namespace*. These groupings provide a way to logically divide workload clusters and restrict access to create, view, or manage resources. For example, you can create namespaces to separate business groups. Users can only interact with resources within their assigned namespaces. For more information, see [Kubernetes namespaces](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/).
 
-When you create an Azure Kubernetes Service cluster on AKS enabled by Arc, the following namespaces are available:
+When you create an Azure Kubernetes Service cluster on AKS on Windows Server, the following namespaces are available:
 
 - **default**: a namespace where pods and deployments are created by default when none is provided. In smaller environments, you can deploy applications directly into the default namespace without creating additional logical separations. When you interact with the Kubernetes API, such as with `kubectl get pods`, the default namespace is used when none is specified.
 - **kube-system**: a namespace where core resources exist, such as network features such as DNS and proxy, or the Kubernetes dashboard. You typically don't deploy your own applications into this namespace.
@@ -120,7 +121,7 @@ For more information, see [node selectors](https://kubernetes.io/docs/concepts/s
 
 ## Next steps
 
-In this article, you learned about the cluster architecture of AKS enabled by Azure Arc, and the workload cluster components. For more information about these concepts, see the following articles:
+In this article, you learned about the cluster architecture of AKS on Windows Server, and the workload cluster components. For more information about these concepts, see the following articles:
 
 - [Security](./concepts-security.md)
 - [Container networking](./concepts-container-networking.md)

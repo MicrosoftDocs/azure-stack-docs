@@ -3,21 +3,21 @@ title: Review update phases of Azure Local, version 23H2
 description: Understand the various phases of solution updates applied to Azure Local, version 23H2.
 author: alkohli
 ms.author: alkohl
-ms.topic: conceptual
-ms.date: 10/21/2024
+ms.topic: article
+ms.date: 02/25/2025
 ---
 
-# Review update phases of Azure Local, version 23H2
+# Review update phases of Azure Local
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
-This article describes the various phases of solution updates that are applied to your Azure Local to keep it up-to-date. This information is applicable to Azure Local, version 23H2.
+This article explains the different phases of solution updates that you apply to Azure Local to keep it up to date.
 
 The procedure in this article applies to both single node and multi-node systems that are running the latest version of Azure Local with the orchestrator installed.
 
 ## About update phases
 
-The Azure Local solution updates can consist of OS, agents and service, and solution extension updates. For more information on these solution updates, see [About updates for Azure Local, version 23H2](about-updates-23h2.md).
+The Azure Local solution updates can consist of OS, agents and service, and solution extension updates. For more information on these solution updates, see [About updates for Azure Local](about-updates-23h2.md).
 
 The new update feature automates the update process for agents, services, operating system content, and Solution Extension content, with the goal of maintaining availability by shifting workloads around throughout the update process when needed.
 

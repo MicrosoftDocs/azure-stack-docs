@@ -3,7 +3,7 @@ author: apwestgarth
 ms.author: anwestg
 ms.service: azure-stack
 ms.topic: include
-ms.date: 01/31/2025
+ms.date: 06/25/2025
 ms.reviewer: sethm
 ms.lastreviewed: 10/28/2020
 ---
@@ -13,4 +13,4 @@ ms.lastreviewed: 10/28/2020
 >
 > | Supported minimum Azure Stack Hub version | App Service RP version |
 > |-----|---|
-> | 2311 and later | 24R1 [Installer](https://aka.ms/appsvcupdate24R1installer) ([release notes](../operator/app-service-release-notes-2024R1.md)) |
+> | 2311 and later | 25R1 [Installer](https://aka.ms/appsvcupdate25R1installer) 25R1 [Offline Package](https://aka.ms/appsvcupdate25R1offline) ([release notes](../operator/app-service-release-notes-2025R1.md)) |
