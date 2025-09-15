@@ -4,7 +4,7 @@ description: Learn about the opt-in update workflow to update from Azure Local s
 author: alkohli
 ms.author: alkohl
 ms.topic: article
-ms.date: 09/12/2025
+ms.date: 09/15/2025
 ---
 
 # Opt-in update to Azure Local solution version 12.25xx
@@ -61,7 +61,7 @@ Starting with Azure Local 2508, you can opt-in to update your Azure Local system
 
 1. Perform the update using the [Azure Local update flow](./update-via-powershell-23h2.md) making sure to select the `12.25xx.x.x` package. Begin with [Step 2: Discover the updates](./update-via-powershell-23h2.md#step-2-discover-the-updates).
 
-1. Once the update is finished, verify the OS Build Number is updated to `26100` by using `Get-ComputerInfo | select OsBuildNumber`
+1. Once the update is finished, verify the OS build number is updated to `26100` by using `Get-ComputerInfo | select OsBuildNumber`.
 
 ## Known issues
 
