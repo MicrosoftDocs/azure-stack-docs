@@ -91,6 +91,11 @@
       "redirect_document_id": false
     },
     {
+      "source_path": "release-note-2404.2.md",
+      "redirect_url": "/azure/operator-nexus/release-notes-2404-2",
+      "redirect_document_id": false
+    },
+    {
       "source_path": "howto-service-principal.md",
       "redirect_url": "/azure/operator-nexus",
       "redirect_document_id": false
