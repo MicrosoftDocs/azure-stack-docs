@@ -65,15 +65,20 @@ To participate in the preview, you must meet the following criteria:
 
 - **Hardware**: The disconnected operations feature is supported on validated Azure Local hardware during preview. You must bring your own validated Azure Local hardware. For a list of supported configurations, see the [Azure Local solutions catalog](https://azurestackhcisolutions.azure.microsoft.com/#/catalog).
 
-  Make sure your hardware meets the minimum specifications to run the disconnected operations appliance:
+  Plan enough capacity for the management cluster to host the disconnected operations appliance VM. Make sure to include capacity for core Azure Local infrastructure components and any workloads you plan to run on the management cluster. Review the minimum specifications for setting up a management cluster with the disconnected operations appliance:
 
     | Specification                | Minimum configuration            |
     | -----------------------------| ---------------------------------|
     | Number of nodes              | 3 nodes                          |
-    | Memory per node              | 64 GB                            |
+    | Memory per node              | 96 GB *                           |
     | Cores per node               | 24 physical cores                |
     | Storage per node             | 2 TB SSD/NVME                    |
-    | Boot disk drive storage      | 960 GB SSD/NVME                  |
+    | Boot disk drive storage      | 480 GB SSD/NVME **               |
+
+> [!NOTE]
+> * The Disconnected operations appliance (running on the management cluster) will consume a minimum of 64GB memory. We recommended a minimium configuration for 96GB for the nodes in the management cluster to allow sufficient capacity to run infrastructure components in addition to the appliance.  
+> ** For systems with boot disk smaller than 600 GB - you will be required to use additional data disks from the nodes (capacity) for installing the appliance. We recommend 960GB bootdrive to reduce deployment complexity if your OEM configuration allows for larger boot drive. 
+
 
 ## Get started
 
