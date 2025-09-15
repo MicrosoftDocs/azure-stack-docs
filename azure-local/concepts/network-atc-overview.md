@@ -85,7 +85,7 @@ Network ATC provides the following features:
 
 - **Stretch S2D cluster support**: Network ATC deploys the configuration required for [the storage replica networks](host-network-requirements.md#stretched-clusters). Since these adapters need to route across subnets, Network ATC doesn't assign any IP addresses, so you need to assign the IP address.
 
-- **Scope detection**: Beginning with Azure Local, version 22H2, Network ATC automatically detects if you're running the command on a cluster node. Meaning, you won't need to use the `-ClusterName` parameter because it automatically detects the cluster that you're on.
+- **Scope detection**: Beginning with Azure Local, version 22H2, Network ATC automatically detects if you're running the command on a cluster node. Meaning, you don't need to use the `-ClusterName` parameter because it automatically detects the cluster that you're on.
 
 To learn more about the features in Network ATC, see [Network ATC: What's coming](https://techcommunity.microsoft.com/t5/networking-blog/network-atc-what-s-coming-in-azure-stack-hci-22h2/ba-p/3598442).
 
@@ -102,11 +102,11 @@ An individual physical adapter can only be included in one intent. By default, a
 Management: Adapters are used for management access to nodes. This intent type can be defined in a maximum of one intent.
 Compute: Adapters are used to connect virtual machine (VM) traffic to the physical network. This intent type can be defined in unlimited intents.
 Storage: Adapters are used for SMB traffic, including Storage Spaces Direct. This intent type can be defined in a maximum of one intent.
-Stretch: Adapters are set up similarly to a storage intent, except RDMA can't be used with stretch intents. This intent type can be defined in a maximum of one intent
+Stretch: Adapters are set up similarly to a storage intent, except RDMA can't be used with stretch intents. This intent type can be defined in a maximum of one intent.
 
 **Override**: By default, Network ATC deploys the most common configuration, asking for the smallest amount of user input. Overrides allow you to customize your deployment if necessary. For example, you might choose to modify the VLANs used for storage adapters from the defaults.
 
-Network ATC allows you to modify all configuration that the OS allows. However, the OS limits some modifications to the OS and Network ATC respects these limitations. For example, a virtual switch doesn't allow modification of SR-IOV after it has been deployed.
+Network ATC allows you to modify all configuration that the OS allows. However, the OS limits some modifications to the OS and Network ATC respects these limitations. For example, a virtual switch doesn't allow modification of SR-IOV after it's deployed.
 
 ## Deployment example
 
