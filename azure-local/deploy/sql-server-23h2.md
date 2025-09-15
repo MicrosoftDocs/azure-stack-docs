@@ -17,7 +17,7 @@ This article provides guidance on how to deploy SQL Server on Azure Local, versi
 
 Azure Local provides a highly available, cost efficient, flexible platform to run SQL Server and Storage Spaces Direct. Azure Local can run Online Transaction Processing (OLTP) workloads, data warehouse and BI, and AI and advanced analytics over big data.
 
-The platform's flexibility is especially important for mission critical databases. You can run SQL Server on virtual machines (VMs) that use either Windows Server or Linux, which allows you to consolidate multiple database workloads and add more VMs to your Azure Local environment as needed. Azure Local also enables you to integrate SQL Server with Azure Site Recovery to provide a cloud-based migration, restoration, and protection solution for your organization’s data that is reliable and secure.
+The platform's flexibility is especially important for mission critical databases. You can run SQL Server on virtual machines (VMs) that use either Windows Server or Linux, which allows you to consolidate multiple database workloads and add more VMs to your Azure Local environment as needed. Azure Local also enables you to integrate SQL Server with Azure Site Recovery to provide a cloud-based migration, restoration, and protection solution for your organization’s data that's reliable and secure.
 
 ## Deploy SQL Server
 
@@ -25,7 +25,7 @@ This section describes at a high level how to acquire hardware for SQL Server on
 
 ### Step 1: Acquire hardware from the Azure Local Catalog
 
-First, you need to procure hardware. The easiest way to do that is to locate your preferred Microsoft hardware partner in the [Azure Local Catalog](https://azurestackhcisolutions.azure.microsoft.com/) and purchase an integrated system or premium solution with the Azure Stack HCI operating system preinstalled. In the catalog, you can filter to see vendor hardware that is optimized for this type of workload.
+First, you need to procure hardware. The easiest way to do that is to locate your preferred Microsoft hardware partner in the [Azure Local Catalog](https://azurestackhcisolutions.azure.microsoft.com/) and purchase an integrated system or premium solution with the Azure Stack HCI operating system preinstalled. In the catalog, you can filter to see vendor hardware that's optimized for this type of workload.
 
 Otherwise, use a validated system from the catalog and deploy it on that hardware.
 
@@ -64,7 +64,7 @@ There are several Azure hybrid services that you can use to help keep your SQL S
 
 Alternatively, you can use the [SQL Server Managed Backup](/sql/relational-databases/backup-restore/sql-server-managed-backup-to-microsoft-azure) feature in SQL Server to manage Azure Blob Storage backups.
 
-For more information about using this option that is suitable for off-site archiving, see:
+For more information about using this option that's suitable for off-site archiving, see:
 
 - [Tutorial: Use Azure Blob Storage with SQL Server](/sql/relational-databases/tutorial-use-azure-blob-storage-service-with-sql-server-2016).
 - [Quickstart: SQL backup and restore to Azure Blob storage service](/sql/relational-databases/tutorial-sql-server-backup-and-restore-to-azure-blob-storage-service).

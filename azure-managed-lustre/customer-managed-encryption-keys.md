@@ -15,7 +15,7 @@ You can use Azure Key Vault to control ownership of the keys used to encrypt you
 > [!NOTE]
 > All data stored in Azure is encrypted at rest using Microsoft-managed keys by default. You only need to follow the steps in this article if you want to manage the keys used to encrypt your data when it's stored in your Azure Managed Lustre cluster.
 
-[VM host encryption](/azure/virtual-machines/disk-encryption#encryption-at-host---end-to-end-encryption-for-your-vm-data) protects all information on the managed disks that hold your data in an Azure Managed Lustre file system, even if you add a Customer Key for the Lustre disks. Adding a customer-managed key gives an extra level of security for high security needs. Fo more information, see [Server-side encryption of Azure disk storage](/azure/virtual-machines/disk-encryption).
+[VM host encryption](/azure/virtual-machines/disk-encryption#encryption-at-host---end-to-end-encryption-for-your-vm-data) protects all information on the managed disks that hold your data in an Azure Managed Lustre file system, even if you add a Customer Key for the Lustre disks. Adding a customer-managed key gives an extra level of security for high security needs. For more information, see [Server-side encryption of Azure disk storage](/azure/virtual-machines/disk-encryption).
 
 There are three steps to enable customer-managed key encryption for Azure Managed Lustre:
 

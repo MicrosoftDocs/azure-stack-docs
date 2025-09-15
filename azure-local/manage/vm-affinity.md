@@ -21,7 +21,7 @@ Affinity is a rule that establishes a relationship between two or more resource 
 
 Affinity and anti-affinity rules are used similarly to the way Azure uses Availability Zones. In Azure, you can configure Availability Zones to keep VMs in separate zones and away from each other or in the same zone with each other.  
 
-Using affinity and anti-affinity rules, any clustered VM would either stay on the same machine or be prevented from being together on the same machine. In this way, the only way to move a VM out of a machine would be to do it manually.  You can also keep VMs together with its own storage, such as the Cluster Shared Volume (CSV) that its VHDX resides on.
+Using affinity and anti-affinity rules, any clustered VM would either stay on the same machine or be prevented from being together on the same machine. In this way, the only way to move a VM out of a machine would be to do it manually. You can also keep VMs together with its own storage, such as the Cluster Shared Volume (CSV) that its VHDX resides on.
 
 <!--Combining affinity and anti-affinity rules, you can also configure a stretched system across two sites and keep your VMs in the site they need to be in.-->
 
@@ -169,7 +169,7 @@ Move-ClusterGroup -IgnoreAffinityRule -Cluster Cluster1
 ```
 
 > [!NOTE]
-> If a move rule is valid (supported), all groups and roles that are affected will also move. If a VM move will knowingly violate a rule yet it's needed on a one-time temporary basis, use the `-IgnoreAffinityRule` switch to allow the move to occur. In this case, a violation warning for the VM will be displayed. You can then enable the rule back as necessary.
+> If a move rule is valid (supported), all groups and roles that are affected will also move. If a VM move will knowingly violate a rule, yet it's needed on a one-time temporary basis, use the `-IgnoreAffinityRule` switch to allow the move to occur. In this case, a violation warning for the VM will be displayed. You can then enable the rule back as necessary.
 
 #### Start-ClusterGroup
 

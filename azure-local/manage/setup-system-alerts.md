@@ -105,7 +105,7 @@ When creating a new alert rule, you must set conditional details to summarize yo
 - **Resource ID column**: Splits the alert measure value based on other values. To get alerts on a cluster, use the `clusterarmID` or to set up alerts for the node, use `_resourceID`. Check your value names in your log query for accuracy.
 - **Dimension name**: Splits an alert measure further. For example, to get alerts per node, select the `Nodename`.
   - When you set up alerts, you might not see all the values in the dropdown menu. Select the checkbox for **Include all future values** to ensure you set up the same alert on multiple nodes in the cluster.
-- **Threshold value**: Provides a notification based on the value you've set.
+- **Threshold value**: Provides a notification based on the value you set.
 
 In this example, when the measure value Memoryusageint with an aggregation type of maximum reaches the threshold of 15 minutes, you get an alert.
 
@@ -121,7 +121,7 @@ To determine how you receive notifications for your cluster alerts, use the **Ac
 
 :::image type="content" source="media/setup-system-alerts/action-groups.png" alt-text="Screenshot of the action groups action options." lightbox="media/setup-system-alerts/action-groups.png":::
 
-Once you have set your actions, the **Details** tab allows you to set the alert severity, name, description, and region. Select **Review + Create** for a final review of all your alert settings and to create your alert.
+Once you set your actions, the **Details** tab allows you to set the alert severity, name, description, and region. Select **Review + Create** for a final review of all your alert settings and to create your alert.
 
 :::image type="content" source="media/setup-system-alerts/alert-details.png" alt-text="Screenshot of the action details for alerts." lightbox="media/setup-system-alerts/alert-details.png":::
 

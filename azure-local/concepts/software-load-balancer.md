@@ -134,7 +134,7 @@ You can use Windows Admin Center or Windows PowerShell to install and configure 
 
 ### SLB MUX
 
-The SLB MUX processes inbound network traffic and maps VIPs to DIPs, then forwards the traffic to the correct DIP. Each MUX also uses BGP to publish VIP routes to edge routers. BGP Keep Alive notifies MUXes when a MUX fails, which allows active MUXes to redistribute the load in case of a MUX failure. This essentially provides load balancing for the load balancers.
+The SLB MUX processes inbound network traffic and maps VIPs to DIPs, then forwards the traffic to the correct DIP. Each MUX also uses BGP to publish VIP routes to edge routers. BGP Keep Alive notifies MUXes when a MUX fails, which allows active MUXes to redistribute the load if there's a MUX failure. This essentially provides load balancing for the load balancers.
 
 ### SLB Host Agent
 
