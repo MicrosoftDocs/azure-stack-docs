@@ -15,15 +15,15 @@ ms.reviewer: leslielin
 [!INCLUDE [aks-applies-to-vmware](includes/aks-hci-applies-to-skus/aks-applies-to-vmware.md)]
 
 > [!IMPORTANT]
-> Microsoft is retiring AKS on VMware (preview) on March 16, 2026. We recommend deploying [AKS on Azure Local](aks-whats-new-23h2.md) to benefit from its enhanced capabilities. After March 16, 2026, you will no longer be able to deploy or receive support for Azure Kubernetes Service on VMware. If you have additional questions, please contact us through the [AKS enabled by Azure Arc GitHub repository](https://aka.ms/aksarc-github).
+> Microsoft is retiring AKS on VMware (preview) on March 16, 2026. We recommend deploying [AKS on Azure Local](aks-whats-new-23h2.md) to benefit from its enhanced capabilities. After March 16, 2026, you will no longer be able to deploy or receive support for Azure Kubernetes Service on VMware. If you have more questions, contact us through the [AKS enabled by Azure Arc GitHub repository](https://aka.ms/aksarc-github).
 
 This article describes the AKS enabled by Azure Arc on VMware (preview) support policy and offers guidance on issues you might encounter.
 
 ## Support policy
 
-AKS on VMware is available in public preview and is free of charge. Be aware that the AKS on VMware preview is not recommended for production workloads. Use it with caution.
+AKS on VMware is available in public preview and is free of charge. The AKS on VMware preview is not recommended for production workloads. Use it with caution.
 
-**Preview Terms**: "AKS on VMware" (the "Preview") is subject to the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Previews are provided "as-is," "with all faults," and "as-available," and are excluded from the SLAs and all limited warranties provided by us. Previews may not be covered by customer support. We may change or discontinue previews at any time without notice. We also may choose not to release a preview into general availability.
+**Preview Terms**: "AKS on VMware" (the "Preview") is subject to the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Previews are provided "as-is," "with all faults," and "as-available," and are excluded from the SLAs and all limited warranties provided by us. Previews might not be covered by customer support. We may change or discontinue previews at any time without notice. We also may choose not to release a preview into general availability.
 
 ## File a bug, provide product feedback, and report security vulnerabilities
 
