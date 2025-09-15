@@ -5,7 +5,7 @@ ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 09/02/2025
+ms.date: 09/15/2025
 ---
 
 # What's new in Azure Local?
@@ -22,8 +22,8 @@ There are two 2509 releases for September. Here are the details of each release:
 
 |Solution version  | OS version |
 |---------|---------|
-|12.2509.1001.XX |  26100.5074 |
-|11.2509.1001.XX  | 25398.1840  |
+|12.2509.1001.18 |  26100.5074 |
+|11.2509.1001.17  | 25398.1840  |
 
 For more information, see [Release information summary](./release-information-23h2.md).
 
@@ -45,13 +45,15 @@ This release has the following features and improvements:
     - 
 
 - **Azure Local VM updates**:
-    - 
+    - **(Portal) Enhanced Storage Path Deletion Workflow** - Starting with this release, you can view all the dependent resources linked to a storage path before deletion. Azure portal allows you to delete both the storage path and its dependent resources in a single, streamlined action, making the cleanup faster and more intuitive.
 
-- **Documentation updates**: These changes include:
+- **Documentation updates**: The noteworthy changes include:
 
-    - **Upgrade OS for stretch clusters via PowerShell**:
+    - **Upgrade OS for stretch clusters via PowerShell** was released.
+    - [**Install solution upgrade on Azure Local using Azure Resource Manager template**](./upgrade/install-solution-upgrade-azure-resource-manager-template.md) was released.
     - **Upgrade and Update best practices**:
     - Disaster recovery for Azure Local VMs: 
+    - For Azure Local VMs, article related to RHEL VM image creation : Man
 
 ::: moniker-end
 
