@@ -19,7 +19,7 @@ AKS Edge Essentials is a lightweight on-premises Kubernetes implementation of Az
 The following features and improvements were added in this release:
 - AKS Edge Essentials version 1.11.230.0 uses Azure Linux 3.0, an upgrade from Azure Linux 2.0, used in previous releases.
 
-- AKS Edge Essentials now connects to Azure Arc during deployment to decrease the number of steps required for customers. Arc parameters are required in the aks-edge configuration file during deployment. AKS EE deployment will be blocked if Arc parameters are missing or invalid. Please note, this does not impact offline deployments or volume licensing customers.
+- AKS Edge Essentials now connects to Azure Arc during deployment to decrease the number of steps required for customers. Arc parameters are required in the aks-edge configuration file during deployment. AKS Edge Essentials deployment will be blocked if Arc parameters are missing or invalid. Please note, this does not impact offline deployments or volume licensing customers.
 
 ### Supported versions for 1.11.230.0
 - AKS Edge Essentials Version: 1.11.230.0
