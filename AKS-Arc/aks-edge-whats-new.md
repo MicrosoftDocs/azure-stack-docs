@@ -31,11 +31,11 @@ The following features and improvements were added in this release:
 
 ### Available upgrade paths
 
-| Current version         | Upgrade path      |
-|-------------------------|-------------------|
-| 1.10.868.0 k8s/k3s 1.29 | 1.11 k8s/k3s 1.30 |
-| 1.10.868.0 1.30         | 1.11 k8s/k3s 1.30 |
-| 1.10.868.0 k8s/k3s 1.30 | 1.11 k8s/k3s 1.31 |
+| Current version         | Upgrade path            |
+|-------------------------|-------------------------|
+| 1.10.868.0 k8s/k3s 1.29 | 1.11.230.0 k8s/k3s 1.30 |
+| 1.10.868.0 k8s/k3s 1.30 | 1.11.230.0 k8s/k3s 1.30 |
+| 1.10.868.0 k8s/k3s 1.30 | 1.11.230.0 k8s/k3s 1.31 |
 
 > [!NOTE]  
 > Upgrading from one Kubernetes distribution to another within the same release version is not supported.
