@@ -11,11 +11,11 @@ ms.date: 09/15/2025
 
 ::: moniker range=">=azloc-2508"
 
-This article describes the opt-in update workflow for updating Azure Local systems from solution version `11.25xx` (running OS `25398.xxxx`) to solution version `12.25xx` (running OS `26100.xxxx`).
+This article describes the opt-in update workflow for updating Azure Local systems from solution version `11.25xx` (running OS `25398.xxxx`) to solution version `12.25xx` (running OS `26100.xxxx`). For the release information for Azure Local, including the release build and OS build information, see [Azure Local release information](../release-information-23h2.md).
 
 ## About the Azure Local opt-in update
 
-Starting with Azure Local 2508, you can opt-in to update your Azure Local systems from solution version `11.25xx` (running OS `25398.xxxx`) to solution version `12.25xx` (running OS `26100.xxxx`). This update requires enabling a feature flag, as it is not available by default. This update is supported in production and is not a preview. However, it remains opt-in due to limited customer feedback. The automatic or mandatory rollout of this update is planned with the Azure Local 2510 release.
+Starting with Azure Local 2508, you can opt-in to update your Azure Local systems from solution version `11.25xx` (running OS `25398.xxxx`) to solution version `12.25xx` (running OS `26100.xxxx`). This update requires enabling a feature flag, as it is not available by default. This update is supported in production and is not a preview. This early access gives customers the opportunity to try out ahead of its mandatory rollout with the Azure Local 2510 release.
 
 ## Prerequisites
 
