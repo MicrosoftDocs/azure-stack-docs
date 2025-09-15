@@ -66,7 +66,11 @@ Starting with Azure Local 2508, you can opt-in to update your Azure Local system
 
 ## Known issues
 
-If you encounter issues with the opt-in workflow, review the [Troubleshooting guide](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/Update/Manually-retry-after-failed-at-CauPostVersionCheck.md).
+The following table lists the known issues in the opt-in workflow:
+
+|Feature|Issue|Workaround/Comments|
+|------|------|----------|
+| Update | When applying a solution update to your cluster, an updating run may fail and cause the overall update to get stuck at the `CauPostVersionCheck` or `CauPostCheck` step. | For detailed steps on how to resolve this issue, review the [Troubleshooting guide](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/Update/Manually-retry-after-failed-at-CauPostVersionCheck.md). |
 
 ## Next step
 
