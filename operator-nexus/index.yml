@@ -8,3 +8,15 @@ metadata:
   author: alkohli
   ms.author: alkohli
   ms.date: 09/15/2025
+
+landingContent:
+  - title: Add title here
+    linkLists:
+      - linkListType: overview
+        links:
+          - text: Add text here
+            url: toc.yml
+      - linkListType: concept
+        links:
+          - text: Add text here
+            url: toc.yml
