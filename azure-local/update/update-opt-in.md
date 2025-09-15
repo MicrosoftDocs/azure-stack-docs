@@ -57,7 +57,7 @@ Starting with Azure Local 2508, you can opt-in to update your Azure Local system
     ```
 
     > [!NOTE]
-    > If the 12.25xx update lists prerequisites, it typically indicates a specific SBE version (for example, 4.2.xx SBE) that must be installed first. This will appear in the output as `Ready` or `AdditionalContent` required. Follow the normal process to install the required SBE update, and then return to install the 12.25xx.x.x solution update.
+    > If the 12.25xx update lists prerequisites, it typically indicates a specific SBE version (for example, 4.2.xx SBE) that must be installed first. The prerequisite update will also appear in the list of update options with `Ready` or `AdditionalContent` required. Follow the normal process to install the required prerequisite update, and then return to install the 12.25xx.x.x solution update.
 
 1. Perform the update using the [Azure Local update flow](./update-via-powershell-23h2.md) making sure to select the `12.25xx.x.x` package. Begin with [Step 2: Discover the updates](./update-via-powershell-23h2.md#step-2-discover-the-updates).
 
