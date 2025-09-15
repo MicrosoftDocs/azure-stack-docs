@@ -65,12 +65,12 @@ To participate in the preview, you must meet the following criteria:
 
 - **Hardware**: The disconnected operations feature is supported on validated Azure Local hardware during preview. You must bring your own validated Azure Local hardware. For a list of supported configurations, see the [Azure Local solutions catalog](https://azurestackhcisolutions.azure.microsoft.com/#/catalog).
 
-  You will need to plan sufficient capacity for the management cluster (that will be used to host the disconnected operations appliance VM). The capacity also need to factor in capacity required for core Azure Local infrastructure components and your workloads (if you are also planning on using the management cluster to host other workloads). Please review the minimum specifications for setting up a management cluster with the disconnected operations appliance:
+  Plan enough capacity for the management cluster to host the disconnected operations appliance VM. Make sure to include capacity for core Azure Local infrastructure components and any workloads you plan to run on the management cluster. Review the minimum specifications for setting up a management cluster with the disconnected operations appliance:
 
     | Specification                | Minimum configuration            |
     | -----------------------------| ---------------------------------|
     | Number of nodes              | 3 nodes                          |
-    | Memory per node              | 96GB *                           |
+    | Memory per node              | 96 GB *                           |
     | Cores per node               | 24 physical cores                |
     | Storage per node             | 2 TB SSD/NVME                    |
     | Boot disk drive storage      | 480 GB SSD/NVME **               |
