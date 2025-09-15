@@ -6,13 +6,34 @@ ms.date: 03/12/2025
 author: sethmanheim
 ms.author: sethm 
 ms.reviewer: sumsmith
-ms.lastreviewed: 03/12/2025
+ms.lastreviewed: 09/15/2025
 
 ---
 
 # What's new in AKS Edge Essentials
 
 AKS Edge Essentials is a lightweight on-premises Kubernetes implementation of Azure Kubernetes Service (AKS) that automates running containerized applications at scale. This article describes the latest features, enhancements, and updates in AKS Edge Essentials releases.
+
+## Release 1.11.230.0 (September 2025)
+
+The following features and improvements were added in this release:
+- AKS Edge Essentials version 1.11.230.0 uses Azure Linux 3.0, an upgrade from Azure Linux 2.0, used in previous releases.
+
+- AKS Edge Essentials now connects to Azure Arc during deployment to decrease the number of steps required for customers. Arc parameters are required in the aks-edge configuration file during deployment. AKS EE deployment will be blocked if Arc parameters are missing or invalid. Please note, this does not impact offline deployments or volume licensing customers.
+
+### Supported versions for 1.11.230.0
+- AKS Edge Essentials Version: 1.11.230.0
+- Azure Linux (previously Mariner) Version: 3.0.20250822
+- K8s (upstream Kubernetes) distribution: 1.30.5 (only available as upgrade from 1.10.868.0), 1.31.5
+- K3s distribution: 1.30.6 (only available as upgrade from 1.10.868.0), 1.31.6
+- Json version schema: 1.15
+
+### Available Upgrade Paths
+- Version 1.10.868.0 k8s/k3s 1.29 -> version 1.11 k8s/k3s 1.30
+- Version 1.10.868.0 1.30 -> version 1.11 k8s/k3s 1.30
+- Version 1.10.868.0 k8s/k3s 1.30 -> version 1.11 k8s/k3s 1.31
+
+Please note that upgrading from one Kubernetes distribution to another within the same release version is not supported.
 
 ## Release 1.10.868.0 (March 2025)
 
