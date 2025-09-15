@@ -53,7 +53,7 @@ Starting with Azure Local 2508, you can opt-in to update your Azure Local system
 1. Discover the update by running the following command a few times until you see `12.25xx.x.x` listed:
 
     ```powershell
-    Get-SolutionUpdate | Where-Object {$.State -like "Ready*" -or $.State -like "Additional*" -or $.State -like "HasPrereq*"} | FL DisplayName, Description, ResourceId, State, PackageType, Prerequisites
+    Get-SolutionUpdate | Where-Object {$_.State -like "Ready*" -or $_.State -like "Additional*" -or $_.State -like "HasPrereq*"} | FL DisplayName, Description, ResourceId, State, PackageType, Prerequisites
     ```
 
     > [!NOTE]
