@@ -6,7 +6,7 @@ author: dramasamy
 ms.author: dramasamy
 ms.topic: quickstart
 ms.custom: subject-armqs, devx-track-azurecli
-ms.date: 05/13/2023
+ms.date: 09/15/2025
 ---
 
 # Quickstart: Create an Azure Nexus Kubernetes cluster by using Azure CLI
