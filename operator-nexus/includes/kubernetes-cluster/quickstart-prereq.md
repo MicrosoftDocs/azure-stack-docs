@@ -7,7 +7,7 @@ ms.service: azure-operator-nexus
 ms.custom: devx-track-azurecli
 ---
 
-[!INCLUDE [quickstarts-free-trial-note](~/../azure-stack/reusable-content/azure-cli/quickstarts-free-trial-note.md)]
+[!INCLUDE [quickstarts-free-trial-note](~/../azure-stack/ce-skilling/azure/includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [azure-cli-prepare-your-environment-no-header.md](~/../azure-stack/reusable-content/azure-cli/azure-cli-prepare-your-environment-no-header.md)]
 
