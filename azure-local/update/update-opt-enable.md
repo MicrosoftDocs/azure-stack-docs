@@ -15,7 +15,7 @@ This article describes the opt-in update workflow for updating Azure Local syste
 
 ## About the Azure Local opt-in update
 
-Starting with Azure Local 2508, you can opt-in to update your Azure Local systems from solution version `11.25xx` (running OS `25398.xxxx`) to solution version `12.25xx` (running OS `26100.xxxx`). This update requires enabling a feature flag, as it is not available by default. This update is supported in production and is not a preview. This early access gives customers the opportunity to try out ahead of its mandatory rollout with the Azure Local 2510 release.
+Starting with Azure Local 2508, you can opt-in to update your Azure Local systems from solution version `11.25xx` (running OS `25398.xxxx`) to solution version `12.25xx` (running OS `26100.xxxx`). This update requires enabling a feature flag, as it is not available by default. This update is supported in production and is not a preview. This early access gives customers the opportunity to try out the update ahead of its mandatory rollout with the Azure Local 2510 release.
 
 ## Prerequisites
 
@@ -37,7 +37,7 @@ Starting with Azure Local 2508, you can opt-in to update your Azure Local system
     | HPE | ProLiant-Minimal | 4.2.2507.1 | Either |
     | HPE | ProLiant-Standard | 4.2.2506.14 | Either |
     | Dell | AX-14G, AX-15G, or AX-16G | 4.2.2506.xx | Before |
-    | Dell | APEXCP | 4.2.2507.29213688 | This version must be installed "with" the 12.xx update as combined update) |
+    | Dell | APEXCP | 4.2.2507.29213688 | This version must be installed with the 12.xx update as combined update |
     | Lenovo | ThinkAgileMXPremier or ThinkAgileMXStandard | 4.1.2505.10xx | Before (this will in turn require 4.2.2508.x SBE to be installed with 12.xx)  |
     | DataON | AZS1 or AZS6000 | 4.2.2504.x | Before (this will in turn require 4.2.2507.x SBE to be installed with 12.xx) |
 
