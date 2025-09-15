@@ -225,7 +225,7 @@ Install-WindowsFeature ADFS-Federation -IncludeManagementTools
 # Promote the server to a domain controller
 Install-ADDSForest `
     -DomainName "local.contoso.com" `
-    -DomainNetbiosName "local " ` #NETBIOS 15 char limit
+    -DomainNetbiosName "local" ` #NETBIOS 15 char limit
     -SafeModeAdministratorPassword (ConvertTo-SecureString "" -AsPlainText -Force) `
     -InstallDns
 
