@@ -288,6 +288,8 @@ items:
       href: upgrade/install-solution-upgrade.md
     - name: Upgrade via ARM template
       href: upgrade/install-solution-upgrade-azure-resource-manager-template.md
+  - name: Upgrade stretched clusters to 23H2
+    href: upgrade/upgrade-stretched-cluster-to-23h2.md 
   - name: Troubleshoot upgrades
     href: upgrade/troubleshoot-upgrade-to-23h2.md
 
