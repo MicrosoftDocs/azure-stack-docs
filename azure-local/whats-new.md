@@ -50,13 +50,14 @@ This release has the following features and improvements:
 - **Documentation updates**: The noteworthy changes include the following new articles or articles with major updates:
 
     - **Upgrade and update doc changes**
+        - [**Opt in update to Azure Local solution versions 12.25x**](./update/update-opt-enable.md) is released.
         - [**Upgrade OS for stretch clusters via PowerShell**](./upgrade/upgrade-os-stretch-clusters-powershell.md) is released.
         - [**Install solution upgrade on Azure Local using Azure Resource Manager template**](./upgrade/install-solution-upgrade-azure-resource-manager-template.md) is released.
         - [**ARM template parameters**](./deploy/deployment-azure-resource-manager-template.md#arm-template-parameters-reference) reference is added.
         - [**Update best practices**](./update/update-best-practices.md) is released.
 
     - **Azure Local VM doc changes**
-        - **Disaster recovery for Azure Local VMs**: A new node in TOC **Implementing disaster recovery** is created consisting of four new articles and one updated. These articles include [Disaster recovery overview](./manage/disaster-recovery-overview.md), [Infrastructure resiliency](./manage/disaster-recovery-infrastructure-resiliency.md), [Virtual machine resiliency overview](./manage/disaster-recovery-virtual-machine-resiliency-overview.md), [Use Azure Site Recovery](./manage/azure-site-recovery.md), and [Workloads resiliency](./manage/disaster-recovery-workloads-resiliency.md).
+        - **Disaster recovery for Azure Local VMs**: A new node in TOC **Implementing disaster recovery** is created consisting of four new articles and one updated. These articles include [Disaster recovery overview](./manage/disaster-recovery-overview.md), [Infrastructure resiliency](./manage/disaster-recovery-infrastructure-resiliency.md), [Virtual machine resiliency overview](./manage/disaster-recovery-vm-resiliency.md), [Use Azure Site Recovery](./manage/azure-site-recovery.md), and [Workloads resiliency](./manage/disaster-recovery-workloads-resiliency.md).
         - **VM images**: For Azure Local VMs, two new articles are released including [Prepare Ubuntu Azure Marketplace image](manage/virtual-machine-azure-marketplace-ubuntu.md) and [Prepare RHEL Azure Marketplace image](manage/virtual-machine-azure-marketplace-red-hat.md).
     - A troubleshooting section is added for issues in [Add-server](./manage/add-server.md) and [Repair-server](./manage/repair-server.md) articles.
 
