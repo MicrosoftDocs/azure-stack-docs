@@ -259,10 +259,14 @@ items:
     href: update/update-phases-23h2.md
   - name: Update via PowerShell
     href: update/update-via-powershell-23h2.md
+  - name: Opt in to update to 12.25xx from 11.xxxx
+    href: update/update-opt-enable.md
   - name: Update via PowerShell with limited connectivity
     href: update/import-discover-updates-offline-23h2.md
   - name: Update via Azure portal
     href: update/azure-update-manager-23h2.md
+  - name: Update best practices 
+    href: update/update-best-practices.md
   - name: Troubleshoot updates
     href: update/update-troubleshooting-23h2.md
 
