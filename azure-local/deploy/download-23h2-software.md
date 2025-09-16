@@ -29,14 +29,7 @@ Before you begin the download of the software from Azure portal, ensure that you
    - Subscription obtained through the Cloud Solution Provider (CSP) program.
    - At a minimum, you'll need **Reader** access at the subscription level.
 
-- Register the Microsoft Azure Stack HCI resource provider.
-You must register the resource provider to access the Azure Local OS image download. Follow these steps to register the resource provider via the Azure portal:
-  1. Go to the Azure portal and select the subscription where you want to deploy the Azure Local instance.
-  1. In the left pane, under **Settings**, select **Resource providers**.
-  1. Search for **Microsoft.AzureStackHCI** or scroll through the list.
-  1. Select **Microsoft.AzureStackHCI**, and then select **Register**.
-
-    For instructions on registering the Microsoft Azure Stack HCI resource provider via PowerShell, see [Register required resource providers](deployment-arc-register-server-permissions.md#azure-prerequisites) in the Azure prerequisites section.
+- Register the Microsoft Azure Stack HCI resource provider to access the Azure Local OS image download. For instructions on registering via PowerShell or the Azure portal, see [Register required resource providers](deployment-arc-register-server-permissions.md#azure-prerequisites) in the Azure prerequisites section, or refer to [Register resource provider](/azure/azure-resource-manager/management/resource-providers-and-types#register-resource-provider).
 
 ## Download the software from the Azure portal
 
