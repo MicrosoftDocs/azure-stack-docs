@@ -57,7 +57,7 @@ This release has the following features and improvements:
 
     - **Azure Local VM doc changes**
         - **Disaster recovery for Azure Local VMs**: A new node in TOC **Implementing disaster recovery** is created consisting of four new articles and one updated. These articles include [Disaster recovery overview](./manage/disaster-recovery-overview.md), [Infrastructure resiliency](./manage/disaster-recovery-infrastructure-resiliency.md), [Virtual machine resiliency overview](./manage/disaster-recovery-virtual-machine-resiliency-overview.md), [Use Azure Site Recovery](./manage/azure-site-recovery.md), and [Workloads resiliency](./manage/disaster-recovery-workloads-resiliency.md).
-        - **VM images**: For Azure Local VMs, 2 new articles are released including [Prepare Ubuntu Azure Marketplace image](manage/virtual-machine-azure-marketplace-ubuntu.md) and [Prepare RHEL Azure Marketplace image](manage/virtual-machine-azure-marketplace-red-hat.md).
+        - **VM images**: For Azure Local VMs, two new articles are released including [Prepare Ubuntu Azure Marketplace image](manage/virtual-machine-azure-marketplace-ubuntu.md) and [Prepare RHEL Azure Marketplace image](manage/virtual-machine-azure-marketplace-red-hat.md).
     - A troubleshooting section is added for issues in [Add-server](./manage/add-server.md) and [Repair-server](./manage/repair-server.md) articles.
 
 ::: moniker-end
@@ -93,7 +93,7 @@ This release has the following features and improvements:
 <!--- **Trusted Virtual Machine (Trusted VM) guest attestation**: Azure Local 2508 release introduces guest attestation (also known as boot integrity verification) for Azure Local virtual machines with Trusted launch. This feature lets you verify that the virtual machine starts in a well known good state by checking the integrity of the entire boot chain. This helps detect any unexpected changes to the boot chain (firmware, OS boot loader, and drivers) and take action if it's compromised. For more information, see [Trusted VM guest attestation](./index.yml).-->
 
 - **Deployment and upgrade changes**:
-    - Starting this release, ARM deployment templates are available for previous releases.
+    - Starting this release, Azure Resource Manager (ARM) deployment templates are available for previous releases.
     - With this release, pre-existing cluster (Brownfield) upgrade scenarios no longer require Service Principal Name (SPN) creation and have moved to managed-system identity (MSI).
     - This release includes connectivity validators that ensure that external connectivity is available for Arc registration.
 
