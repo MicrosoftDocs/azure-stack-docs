@@ -3,7 +3,7 @@ title:  Security updates for Azure Local
 description: Security updates for Azure Local.
 author: alkohli
 ms.topic: conceptual
-ms.date: 08/22/2025
+ms.date: 09/16/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
@@ -12,9 +12,151 @@ ms.reviewer: alkohli
 
 This article lists the various security updates that are available for Azure Local.
 
+::: moniker range="=azloc-2509"
+
+## September OS security updates (KB5065425 and KB5065426) for Azure Local
+
+For the 2509 release of Azure Local, Microsoft released two security updates, each corresponding to a specific OS build. The following table provides the details of these security updates, including their associated OS builds and release dates.
+
+| Security update | OS build | Release date |
+|--|--|--|
+| KB5065425 | 25398.1849 | September 09, 2025 |
+| KB5065426 | 26100.6584 | September 09, 2025 |
+
+# [OS build 25398.xxxx](#tab/os-build-25398-xxxx)
+
+This section provides the 2509 security updates associated with OS build **25398.1849**.
+
+## Windows Secure Boot certificate expiration
+
+Secure Boot certificates used by most Windows devices are set to expire starting in June 2026. This might affect the ability of certain personal and business devices to boot securely if not updated in time. To avoid disruption, we recommend reviewing the guidance and taking action to update certificates in advance. For details and preparation steps, see [Windows Secure Boot certificate expiration and CA updates](https://support.microsoft.com/topic/windows-secure-boot-certificate-expiration-and-ca-updates-7ff40d33-95dc-4c3c-8725-a9b95457578e?preview=true).
+
+To learn more about Windows update terminology, see [types of Windows updates](/troubleshoot/windows-client/installing-updates-features-roles/standard-terminology-software-updates) and [monthly quality update types](https://techcommunity.microsoft.com/blog/windows-itpro-blog/windows-monthly-updates-explained/3773544).  
+
+## Improvements
+
+This security update includes quality improvements. Below is a summary of the key issues that this update addresses when you install this KB. If there are new features, it lists them as well. The bold text within the brackets indicates the item or area of the change.
+
+- **[App compatibility (known issue)]** Fixed: Addresses an issue that caused non-admin users to receive unexpected User Account Control (UAC) prompts when MSI installers perform certain custom actions. These actions might include configuration or repair operations in the foreground or background, during the initial installation of an application.
+
+This issue could prevent non-admin users from running apps that perform MSI repairs, including Office Professional Plus 2010 and multiple applications from Autodesk (including AutoCAD). This fix reduces the scope for requiring UAC prompts for MSI repairs and enables IT admins to disable UAC prompts for specific apps by adding them to an allowlist.
+
+For more information, see [Unexpected UAC prompts when running MSI repair operations after installing the August 2025 Windows security update](https://support.microsoft.com/topic/unexpected-uac-prompts-when-running-msi-repair-operations-after-installing-the-august-2025-windows-security-update-5806f583-e073-4675-9464-fe01974df273?preview=true).
+
+- **[Device management]**​​​​​​​ Fixed: An issue where the removable storage policy didn’t correctly block external devices such as USB flash drives.  
+
+- **[File sharing]** Fixed: This update addresses an issue where accessing files on a Server Message Block (SMB) share over Quick UDP Internet Connections (QUIC) might result in unexpected delays.
+
+- **[File server]**: This update enabled auditing SMB client compatibility for SMB Server signing as well as SMB Server EPA. This allows customers to assess their environment and identify any potential device or software incompatibility issues before deploying the hardening measures that are already supported by SMB Server. For detailed guidance, see [CVE-2025-55234](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2025-55234).
+
+- **[Input]**:
+
+    - Fixed: This update fixes an issue where using Snap to organize desktop windows could cause the system to stop responding.
+
+    - Fixed: An issue in Desktop Window Manager (uDWM) might cause the screen to stop responding during certain display operations.
+
+    - Fixed: This update addresses an issue with the Chinese (Simplified) Input Method Editor (IME) where some extended characters appeared as empty boxes.
+
+- **[Performance]** Improved: Added support for Certificate Revocation List (CRL) partitioning in Windows Certificate Authorities.  
+
+For more information about security vulnerabilities, see the [Security Update Guide](https://msrc.microsoft.com/security-guidance) and the [September 2025 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2025-Sep).
+
+## Known issues
+
+Microsoft is not currently aware of any issues with this update.​​​​​
+
+## To install
+
+Microsoft now combines the latest servicing stack update (SSU) for your operating system with the latest cumulative update (LCU). For general information about SSUs, see [Servicing stack updates](/windows/deployment/update/servicing-stack-updates) and [Servicing Stack Updates (SSU): Frequently Asked Questions](https://support.microsoft.com/topic/servicing-stack-updates-ssu-frequently-asked-questions-06b62771-1cb0-368c-09cf-87c4efc4f2fe).
+
+To install the LCU on your Azure Local instance, see [Update Azure Stack Local instances]((../update/about-updates-23h2.md)).
+
+## File list
+
+For a list of the files that are provided in this update, download the file information for [Cumulative update KB5065425](https://go.microsoft.com/fwlink/?linkid=2335305).
+
+# [OS build 26100.xxxx](#tab/os-build-26100-xxxx)
+
+This section provides the 2509 security updates associated with OS build **26100.6584**.
+
+## Windows Secure Boot certificate expiration
+
+Secure Boot certificates used by most Windows devices are set to expire starting in June 2026. This might affect the ability of certain personal and business devices to boot securely if not updated in time. To avoid disruption, we recommend reviewing the guidance and taking action to update certificates in advance. For details and preparation steps, see [Windows Secure Boot certificate expiration and CA updates](https://support.microsoft.com/topic/windows-secure-boot-certificate-expiration-and-ca-updates-7ff40d33-95dc-4c3c-8725-a9b95457578e?preview=true).
+
+To learn more about Windows update terminology, see [types of Windows updates](/troubleshoot/windows-client/installing-updates-features-roles/standard-terminology-software-updates) and [monthly quality update types](https://techcommunity.microsoft.com/blog/windows-itpro-blog/windows-monthly-updates-explained/3773544).  
+
+## Improvements
+
+This security update includes quality improvements. Below is a summary of the key issues that this update addresses when you install this KB. If there are new features, it lists them as well. The bold text within the brackets indicates the item or area of the change.
+
+- **[App compatibility (known issue)]** ​​​​​​​Fixed: Addresses an issue that caused non-admin users to receive unexpected User Account Control (UAC) prompts when MSI installers perform certain [custom actions](/windows/win32/msi/custom-actions). These actions might include configuration or repair operations in the foreground or background, during the initial installation of an application.
+
+    This issue could prevent non-admin users from running apps that perform MSI repairs, including Office Professional Plus 2010 and multiple applications from Autodesk (including AutoCAD). This fix reduces the scope for requiring UAC prompts for MSI repairs and enables IT admins to disable UAC prompts for specific apps by adding them to an allowlist.
+
+    For more information, see [Unexpected UAC prompts when running MSI repair operations after installing the August 2025 Windows security update](https://support.microsoft.com/topic/unexpected-uac-prompts-when-running-msi-repair-operations-after-installing-the-august-2025-windows-security-update-5806f583-e073-4675-9464-fe01974df273?preview=true).
+
+- **[File server]**: This update enabled auditing SMB client compatibility for SMB Server signing as well as SMB Server EPA. This allows customers to assess their environment and identify any potential device or software incompatibility issues before deploying the hardening measures that are already supported by SMB Server. For detailed guidance, see [CVE-2025-55234](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2025-55234).
+
+- **[Input]**: 
+
+    - Fixed: This update addresses an issue that caused certain apps to stop responding input in some input method scenarios.
+
+    - Fixed: This update addresses an issue that caused some Internet Information Services (IIS) modules to disappear from IIS Manager, preventing users from configuring IIS using the IIS Manager interface.
+    
+- **[Networking (known issue)]** Fixed: This update addresses an issue that affects audio in apps using the Network Device Interface (NDI). Audio stutters when Display Capture is on in OBS Studio Application. This can occur after installing [KB5063878](https://support.microsoft.com/topic/august-12-2025-kb5063878-os-build-26100-4946-e4b87262-75c8-4fef-9df7-4a18099ee294?preview=true).
+
+For details about security vulnerabilities, see the [Security Update Guide](https://msrc.microsoft.com/update-guide) website and the [September 2025 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2025-Sep).
+
+To find more information on Azure local, see [Azure Local solution overview](../overview.md).
+
+## Known issues
+
+The following is a known issue with this update:
+
+**PSDirect connections failing in hotpatched devices**
+
+**Symptoms**
+ 
+We are aware of an edge case affecting hotpatched devices that have installed the September 2025 Hotpatch update [(KB5065474)](https://support.microsoft.com/topic/september-9-2025-kb5065474-hotpatch-for-windows-11-enterprise-version-24h2-os-build-26100-6508-1591ce1b-9c6f-4bc9-8d3d-d65240a738ee?preview=true) or the September 2025 security update [(KB5065426)](https://support.microsoft.com/topic/september-9-2025-kb5065426-os-build-26100-6584-77a41d9b-1b7c-4198-b9a5-3c4b6706dea9?preview=true). These devices might experience failures with [PowerShell Direct (PSDirect)](/windows-server/virtualization/hyper-v/powershell-direct) connections when the host and guest virtual machines (VMs) are both not fully updated.
+
+When a patched guest VM attempts to connect to an unpatched host (or vice versa), the system is expected to fall back to a legacy handshake and clean up the socket gracefully. However, this fallback mechanism fails intermittently, resulting in socket cleanup issues. The connection failure might appear random, and users might observe Event ID 4625 logged in the Security Event log within Windows Event Viewer.  
+
+**Workaround**
+
+This issue is addressed in [KB5066360](https://support.microsoft.com/topic/kb5066360-security-update-for-windows-powershell-hotpatch-1168dc4c-fa82-439d-9fc8-7d4231de0d5c?preview=true). If your hotpatched device is experiencing issues with PSDirect connection, we recommend updating both the host and guest VM with these updates.
+
+## To install
+
+**Before you install this update**
+
+Microsoft now combines the latest servicing stack update (SSU) for your operating system with the latest cumulative update (LCU). For general information about SSUs, see [Servicing stack updates](/windows/deployment/update/servicing-stack-updates) and [Servicing Stack Updates (SSU): Frequently Asked Questions](https://support.microsoft.com/topic/servicing-stack-updates-ssu-frequently-asked-questions-06b62771-1cb0-368c-09cf-87c4efc4f2fe).
+
+To install the LCU on your Azure Local instance, see [Update Azure Stack Local instances](../update/about-updates-23h2.md).
+
+**Install this update**
+
+| Release Channel | Available | Next Step |
+|--|--|--|
+| Windows Update and Microsoft Update | Yes | This update downloads and installs automatically from Windows Update. |
+| Windows Update for Business | Yes | This update downloads and installs automatically from Windows Update in accordance with configured policies. |
+| Microsoft Update Catalog | Yes | To get the standalone package for this update, go to the [Microsoft Update Catalog](https://www.catalog.update.microsoft.com/Search.aspx?q=KB5065426). |
+| Windows Server Update Services (WSUS) | Yes | This update automatically syncs with WSUS if you configure Products and Classifications as follows:<br>**Product:** Azure Stack HCI<br>**Classification:** Security Updates |
+
+**If you want to remove the LCU**
+
+To remove the LCU after installing the combined SSU and LCU package, use the DISM/Remove-Package command line option with the LCU package name as the argument. You can find the package name by using this command: **DISM /online /get-packages**.
+
+Running [Windows Update Standalone Installer](https://support.microsoft.com/topic/description-of-the-windows-update-standalone-installer-in-windows-799ba3df-ec7e-b05e-ee13-1cdae8f23b19) **(wusa.exe)** with the **/uninstall** switch on the combined package will not work because the combined package contains the SSU. You cannot remove the SSU from the system after installation.
+
+## File list
+
+For a list of the files that are provided in this update, download the file information for [Cumulative update KB5065426](https://go.microsoft.com/fwlink/?linkid=2334930).
+
+::: moniker-end
+
 ::: moniker range="=azloc-2508"
 
-## August OS security updates (KB5063899 and KB5062553) for Azure Local
+## August OS security updates (KB5063899 and KB5063878) for Azure Local
 
 For the 2508 release of Azure Local, Microsoft released two security updates, each corresponding to a specific OS build. The following table provides the details of these security updates, including their associated OS builds and release dates.
 
@@ -78,7 +220,6 @@ For a list of the files that are provided in this update, download the file info
 
 ::: moniker-end
 
-
 ::: moniker range="=azloc-2507"
 
 ## July OS security updates (KB5062570 and KB5062553) for Azure Local
@@ -87,8 +228,8 @@ For the 2507 release of Azure Local, Microsoft released two security updates, ea
 
 | Security update | OS build | Release date |
 |--|--|--|
-| KB5058384 | 25398.1732 | July 8, 2025 |
-| KB5058411 | 26100.4652 | July 8, 2025 |
+| KB5062570 | 25398.1732 | July 8, 2025 |
+| KB5062553 | 26100.4652 | July 8, 2025 |
 
 # [OS build 25398.xxxx](#tab/os-build-25398-xxxx)
 
@@ -373,7 +514,7 @@ The following is a known issue with this update.
 
 **Symptom**
 
-Devices that have certain Citrix components installed might be unable to complete installation of the January 2025 Windows security update. This issue was observed on devices with [Citrix Session Recording Agent (SRA)](https://docs.citrix.com/en-us/session-recording/current-release/install-upgrade-uninstall.html), version 2411. The 2411 version of this application was released in December 2024.
+Devices that have certain Citrix components installed might be unable to complete installation of the January 2025 Windows security update. This issue was observed on devices with [Citrix Session Recording Agent (SRA)](https://docs.citrix.com/session-recording/current-release/install-upgrade-uninstall.html), version 2411. The 2411 version of this application was released in December 2024.
   
 Affected devices might initially download and apply the January 2025 Windows security update correctly, such as via the Windows Update page in Settings. However, when restarting the device to complete the update installation, an error message with text similar to "*Something didn't go as planned. No need to worry – undoing changes*" appears. The device then reverts to the Windows updates previously present on the device.  
   
@@ -392,7 +533,7 @@ To install the LCU on your Azure Local instance, see [Update Azure Stack Local i
 
 ## File list
 
-For a list of the files that are provided in this update, download the file information for [Cumulative update KB 5055527](https://go.microsoft.com/fwlink/?linkid=2313660).
+For a list of the files that are provided in this update, download the file information for [Cumulative update KB5055527](https://go.microsoft.com/fwlink/?linkid=2313660).
 
 # [OS build 26100.xxxx](#tab/os-build-26100-xxxx)
 
@@ -416,7 +557,7 @@ This update has the following known issues:
 
 **Symptom**
 
-Devices that have certain Citrix components installed might be unable to complete installation of the January 2025 Windows security update. This issue was observed on devices with [Citrix Session Recording Agent (SRA) version 2411](https://docs.citrix.com/en-us/session-recording/current-release/install-upgrade-uninstall.html). The version 2411 version of this application was released in December 2024.
+Devices that have certain Citrix components installed might be unable to complete installation of the January 2025 Windows security update. This issue was observed on devices with [Citrix Session Recording Agent (SRA) version 2411](https://docs.citrix.com/session-recording/current-release/install-upgrade-uninstall.html). The version 2411 version of this application was released in December 2024.
   
 Affected devices might initially download and apply the January 2025 Windows security update correctly, such as via the Windows Update page in Settings. However, when restarting the device to complete the update installation, an error message with text similar to *"Something didn't go as planned. No need to worry – undoing changes"* appears. The device will then revert to the Windows updates previously present on the device.  
   
@@ -473,7 +614,7 @@ The following is a known issue with this update.
 
 **Symptom**
 
-Devices that have certain Citrix components installed might be unable to complete installation of the January 2025 Windows security update. This issue was observed on devices with [Citrix Session Recording Agent (SRA)](https://docs.citrix.com/en-us/session-recording/current-release/install-upgrade-uninstall.html), version 2411. The 2411 version of this application was released in December 2024.
+Devices that have certain Citrix components installed might be unable to complete installation of the January 2025 Windows security update. This issue was observed on devices with [Citrix Session Recording Agent (SRA)](https://docs.citrix.com/session-recording/current-release/install-upgrade-uninstall.html), version 2411. The 2411 version of this application was released in December 2024.
   
 Affected devices might initially download and apply the January 2025 Windows security update correctly, such as via the Windows Update page in Settings. However, when restarting the device to complete the update installation, an error message with text similar to "*Something didn't go as planned. No need to worry – undoing changes*" appears. The device will then revert to the Windows updates previously present on the device.  
   
@@ -491,7 +632,7 @@ To install the LCU on your Azure Local instance, see [Update Azure Stack Local i
 
 ## File list
 
-For a list of the files that are provided in this update, download the file information for [Cumulative update KB 5053599](https://go.microsoft.com/fwlink/?linkid=2309855).
+For a list of the files that are provided in this update, download the file information for [Cumulative update KB5053599](https://go.microsoft.com/fwlink/?linkid=2309855).
 
 ::: moniker-end
 
@@ -1150,7 +1291,7 @@ Microsoft isn't currently aware of any issues with this update.
 
 ### To install this update
 
-Microsoft now combines the latest servicing stack update (SSU) for your operating system with the latest cumulative update (LCU). For general information about SSUs, see [Servicing stack updates](/windows/deployment/update/servicing-stack-updates) and [Servicing Stack Updates (SSU): Frequently Asked Questions](https://support.microsoft.com/en-us/topic/servicing-stack-updates-ssu-frequently-asked-questions-06b62771-1cb0-368c-09cf-87c4efc4f2fe).
+Microsoft now combines the latest servicing stack update (SSU) for your operating system with the latest cumulative update (LCU). For general information about SSUs, see [Servicing stack updates](/windows/deployment/update/servicing-stack-updates) and [Servicing Stack Updates (SSU): Frequently Asked Questions](https://support.microsoft.com/topic/servicing-stack-updates-ssu-frequently-asked-questions-06b62771-1cb0-368c-09cf-87c4efc4f2fe).
 
 To install the LCU on your Azure Stack HCI cluster, see [Update Azure Stack HCI via PowerShell](../update/update-via-powershell-23h2.md).
 
