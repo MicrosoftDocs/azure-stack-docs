@@ -225,7 +225,7 @@ If you have updated your stretched cluster from version 22H2 to 23H2 before this
 
    1. Use `Get-SRPartnership` to ensure the partnership is removed.
 
-1. [Install the new OS using PowerShell](#install-the-new-os-using-powershell).
+1. Update the new version using the 2509 ISO file download.
 
 1. Recreate the Storage Replica partnership.
 
