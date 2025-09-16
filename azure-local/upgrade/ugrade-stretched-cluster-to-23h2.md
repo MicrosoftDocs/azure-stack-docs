@@ -75,7 +75,7 @@ To upgrade the OS on your system, follow these steps:
 
 1. [Check the status of the updates.](#check-the-status-of-an-update)
 
-1. [Check that the stretched cluster is ready.](#Check-that-the-stretched-cluster-is-ready)
+1. [Check that the stretched cluster is ready.](#check-that-the-stretched-cluster-is-ready)
 
 1. [Perform post-upgrade steps.](#next-steps)
 
