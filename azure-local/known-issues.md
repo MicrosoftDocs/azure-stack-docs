@@ -44,11 +44,11 @@ The following table lists the fixed issues in this release:
 
 |Feature  |Issue  |Comments  |
 |---------|---------|---------|
-| Azure Local VMs <!--33528074--> | For Disconnected operations (preview) with Azure Local VMs, the Arc agent download will fail. | Corrected end point and now Arc agent download succeeds. |
-| Deployment <!--33478311--> | Fixed issue for importing paths with spaces. |  |
-| Update <!--32843674--> | Fixed issue where active CAU runs get canceled prematurely. |  |
-| Deployment <!--33731727--> | Disk types not being determined correctly, resulting in false negative results on storage pool size determination. |  |
-
+| Azure Local VMs, Azure Verification <!--58937961--> | VMs on Azure Local running Windows Server Azure Edition, Windows 10, or Windows 11 multi-session OS may not activate properly. A pop-up message or a watermark may display, indicating that Windows is not activated. The VM will function, but the watermark will persist.  | VMs are now activated properly. |
+| Azure Local VMs <!--30573455--> | Recreating an image with the same name could fail due to remnants of a previous failed deployment, occasionally resulting on the creating of a zero-byte image. | Automatic proper cleanup of failed image artifacts, allowing subsequent image creation attempts to succeed. |
+| Deployment <!--34633094--> | Disk types are not being determined correctly resulting in false negative results on storage pool size determination. | Improved validation for resolving disk type when determining storage pool size. |
+| Deployment <!--34493970--> | True max volume size should be calculated and not defaulted to 64 TB. | Improved calculation for maximum volume size. |
+| Deployment <!--34493956--> | Adjusted minimum allocation unit size for thin provisioned volumes.  |  |
 
 ## Known issues
 
@@ -59,7 +59,6 @@ The following table lists the known issues in this release:
 |Feature  |Issue  |Workaround  |
 |---------|---------|---------|
 |Deployment <!--34021247--> |Log collection doesn't start when it starts it the first time, and then shows 404 errors subsequent times. | There is no known workaround for this issue in this release. |
-
 
 
 ## Known issues from previous releases
