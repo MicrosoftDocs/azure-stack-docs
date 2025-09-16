@@ -21,7 +21,7 @@ Azure Local supports update management through Azure Update Manager (AUM), which
 
 :::image type="content" source="./media/update-best-practices/updates.png" alt-text="Diagram that describes the key features of Azure Local update management." lightbox="./media/update-best-practices/updates.png":::
 
-## Do's for Azure Local updates
+## Dos for Azure Local updates
 
 Follow these practices to ensure smooth, reliable updates for Azure Local instances deployed at scale.
 
@@ -37,7 +37,7 @@ Follow these practices to ensure smooth, reliable updates for Azure Local instan
 
    AUM provides a centralized view to apply and manage updates across all Azure Local instances. In the Azure portal, go to **Azure Update Manager** > **Resources** > **Azure Local**.
 
-   :::image type="content" source="./media/update-best-practices/azure-update-manager.png" alt-text="Screenshot of the Azure Update Manager displaying the Azure Local systems ready for updates. ." lightbox="./media/update-best-practices/azure-update-manager.png":::
+   :::image type="content" source="./media/update-best-practices/azure-update-manager.png" alt-text="Screenshot of the Azure Update Manager displaying the Azure Local systems ready for updates." lightbox="./media/update-best-practices/azure-update-manager.png":::
 
    - **Test environment strategy.**
 
