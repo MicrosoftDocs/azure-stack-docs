@@ -31,29 +31,34 @@ This release has the following features and improvements:
 
 - **OS changes**:
 
-    - In the 2504 release, a new operating system was introduced for Azure Local deployments. For 2509, all the new deployments of Azure Local run the new OS version **26100.XXXX**. You can download the 2509 OS image from the Azure portal.
+    - The 2504 release introduced a new operating system for Azure Local deployments. For 2509, all the new deployments of Azure Local run the new OS version **26100.5074**. You can download the 2509 OS image from the Azure portal.
 
-        - You also need to get the driver compatible with OS version **26100.XXXX** or Windows Server 2025. If a compatible driver isn't available, you can use the 2503 image.
+        - You also need a driver that's compatible with OS version **26100.5074** or Windows Server 2025. If a compatible driver isn't available, you can use the 2503 image.
 
         - Existing deployments of Azure Local continue to use OS version **25398.1840**. For more information, see [Release information summary](./release-information-23h2.md).
 
-    - If you purchased Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) through your preferred Microsoft hardware partner, the OS should be preinstalled. Work with your Original Equipment Manufacturer (OEM) to get the OS image compatible with **12.2509** and driver compatible with OS version **26100.XXXX** or Windows Server 2025.
+    - If you purchased Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) through your preferred Microsoft hardware partner, the OS should be preinstalled. Work with your Original Equipment Manufacturer (OEM) to get the OS image that's compatible with **12.2509** and a driver that's compatible with OS version **26100.5074** or Windows Server 2025.
     
 - **.NET updates**: This build uses .NET version **8.0.20** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
 
-- **Deployment and upgrade changes**:
-    - 
+- **Update and upgrade changes**: Starting with this release, you can opt-in to update the solution version 11.25xx (running OS 23598.xxx) to solution version 12.25xx (running OS 26100.xxxx). For more information, see [Opt in update to Azure Local solution versions 12.25x](./update/update-opt-enable.md).
+
 
 - **Azure Local VM updates**:
-    - **(Portal) Enhanced Storage Path Deletion Workflow** - Starting with this release, you can view all the dependent resources linked to a storage path before deletion. Azure portal allows you to delete both the storage path and its dependent resources in a single, streamlined action, making the cleanup faster and more intuitive.
+    - **Enhanced storage path deletion workflow** - Starting with this release, you can view all the dependent resources linked to a storage path before deletion. Azure portal lets you delete both the storage path and its dependent resources in a single, streamlined action, making cleanup faster and more intuitive.
 
-- **Documentation updates**: The noteworthy changes include:
+- **Documentation updates**: The noteworthy changes include the following new articles or articles with major updates:
 
-    - **Upgrade OS for stretch clusters via PowerShell** was released.
-    - [**Install solution upgrade on Azure Local using Azure Resource Manager template**](./upgrade/install-solution-upgrade-azure-resource-manager-template.md) was released.
-    - **Upgrade and Update best practices**:
-    - Disaster recovery for Azure Local VMs: 
-    - For Azure Local VMs, article related to RHEL VM image creation : Man
+    - **Upgrade and update doc changes**
+        - [**Upgrade OS for stretch clusters via PowerShell**](./upgrade/upgrade-os-stretch-clusters-powershell.md) is released.
+        - [**Install solution upgrade on Azure Local using Azure Resource Manager template**](./upgrade/install-solution-upgrade-azure-resource-manager-template.md) is released.
+        - [**ARM template parameters**](./deploy/deployment-azure-resource-manager-template.md#arm-template-parameters-reference) reference is added.
+        - [**Update best practices**](./update/update-best-practices.md) is released.
+
+    - **Azure Local VM doc changes**
+        - **Disaster recovery for Azure Local VMs**: A new node in TOC **Implementing disaster recovery** is created consisting of four new articles and one updated. These articles include [Disaster recovery overview](./manage/disaster-recovery-overview.md), [Infrastructure resiliency](./manage/disaster-recovery-infrastructure-resiliency.md), [Virtual machine resiliency overview](./manage/disaster-recovery-virtual-machine-resiliency-overview.md), [Use Azure Site Recovery](./manage/azure-site-recovery.md), and [Workloads resiliency](./manage/disaster-recovery-workloads-resiliency.md).
+        - **VM images**: For Azure Local VMs, 2 new articles are released including [Prepare Ubuntu Azure Marketplace image](manage/virtual-machine-azure-marketplace-ubuntu.md) and [Prepare RHEL Azure Marketplace image](manage/virtual-machine-azure-marketplace-red-hat.md).
+    - A troubleshooting section is added for issues in [Add-server](./manage/add-server.md) and [Repair-server](./manage/repair-server.md) articles.
 
 ::: moniker-end
 
@@ -791,7 +796,7 @@ Beginning this release, the following Azure Local VM management capabilities are
     For more information, see [Create static logical networks on Azure Local](./manage/create-logical-networks.md#create-a-static-logical-network-via-portal).
 - **Support for storage paths**. While default storage paths are created during the deployment, you can also specify custom storage paths for your Azure Local VMs.
     For more information, see [Create storage paths on Azure Local](./manage/create-storage-path.md).
-- **Support for Azure VM extensions on Azure Local VMs**. Starting with this preview release, you can also enable and manage the Azure VM extensions that are supported on Azure Arc, on Azure Local VMs created via the Azure CLI. You can manage these VM extensions using the Azure CLI or the Azure portal. 
+- **Support for Azure VM extensions on Azure Local VMs**. Starting with this preview release, you can also enable and manage the Azure VM extensions that are supported on Azure Arc, on Azure Local VMs.
     For more information, see [Manage VM extensions for Azure Local VMs](./manage/virtual-machine-manage-extension.md).
 - **Trusted launch for Azure Local VMs**. Azure Trusted Launch protects VMs against boot kits, rootkits, and kernel-level malware. Starting this preview release, some of those Trusted Launch capabilities are available for Azure Local VMs.
     For more information, see [Trusted launch for Azure Local VMs](./manage/trusted-launch-vm-overview.md).
