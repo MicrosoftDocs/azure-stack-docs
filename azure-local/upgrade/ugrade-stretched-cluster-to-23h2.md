@@ -1,5 +1,5 @@
 ---
-title: Upgrade Stretched Clusters from Azure Stack HCI OS, version 22H2 to 23H2
+title: Upgrade stretched clusters from Azure Stack HCI OS, version 22H2 to 23H2
 description: Learn how to upgrade stretched clusters from Azure Stack HCI OS, version 22H2 to 23H2, including prerequisites, PowerShell steps, and post-upgrade verification.
 author: ronmiab
 contributors: null
@@ -13,28 +13,24 @@ ms.custom:
   - ai-seo-date:08/15/2025
 ---
 
-# Upgrade Stretched Clusters from Azure Stack HCI OS, version 22H2 to 23H2
+# Upgrade stretched clusters from Azure Stack HCI OS, version 22H2 to 23H2
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-22h2.md)]
 
 [!INCLUDE [end-of-service-22H2](../includes/end-of-service-22h2.md)]
 
-This article explains how to upgrade the operating system (OS) for Azure Stack HCI stretched clusters from version 20349.xxxx (22H2) to version 25398.xxxx (23H2).
-
-In this article, OS version 25398.xxxx (23H2) is the *new* version, and version 20349.xxxx (22H2) is the *old* version.
+This article explains how to upgrade the operating system (OS) for Azure Stack HCI stretched clusters from version 20349.xxxx (22H2) to version 25398.xxxx (23H2). In this article, OS version 25398.xxxx (23H2) is the *new* version, and version 20349.xxxx (22H2) is the *old* version.
 
 > [!Important]
-> These steps support an upgrade to Azure Stack HCI, version 23H2 OS only. This version is supported until April 2026.
-> You can't upgrade the OS to version 26100.xxxx (24H2) or upgrade the solution after this.
-> After April 2026, stretched clusters aren't supported.
+> These steps support an upgrade to Azure Stack HCI, version 23H2 OS only. This version is supported until April 2026. You can't upgrade the OS to version 26100.xxxx (24H2) or upgrade the solution after this. After April 2026, stretched clusters aren't supported.
 
-If you've already performed the OS upgrade to version 23H2 and are experiencing issues with your volumes, see the [Troubleshoot volumes](#troubleshoot-volumes) section.
+If you've already completed the OS upgrade to version 23H2 and experience issues with your volumes, see the [Troubleshoot volumes](#troubleshoot-volumes) section for remediation steps.
 
 ## Prerequisites
 
 Before you begin, make sure:
 
-- You have access to an Azure Local instance running OS version 20349.xxxx.
+- You have an Azure Local instance running OS version 20349.xxxx.
 
 - The system is registered in Azure.
 
@@ -42,7 +38,7 @@ Before you begin, make sure:
 
 - You shut down virtual machines (VMs). We recommend shutting down VMs before performing the OS upgrade to prevent unexpected outages and damage to databases.
 
-- You have access to the Azure Local version [2509 ISO file download](../index.yml).
+- You have the Azure Local version [2509 ISO file download](../index.yml).
 
 - You run the `RepairRegistration` cmdlet only if both of the following conditions apply:
 
@@ -79,7 +75,7 @@ To upgrade the OS on your system, follow these steps:
 
 1. [Check the status of the updates.](#check-the-status-of-an-update)
 
-1. [Verify the stretched cluster is ready.](#verify-the-stretched-cluster-is-ready)
+1. [Check that the stretched cluster is ready.](#Check-that-the-stretched-cluster-is-ready)
 
 1. [Perform post-upgrade steps.](#next-steps)
 
@@ -137,7 +133,7 @@ To install the new OS using PowerShell, follow these steps:
 
 1. On each machine, extract the contents of the ISO image and copy them to the local system drive:
 
-   - Ensure that the local path is the same on each machine.
+   - Make sure the local path is the same on each machine.
    - Then, update the `PathToSetupMedia` parameter with the local path to the ISO image.
 
    ```powershell
@@ -200,9 +196,9 @@ NodeResults : {
 }
 ```
 
-## Verify the stretched cluster is ready
+## Check that the stretched cluster is ready
 
-After you update your stretched cluster from version 22H2 to 23H2, verify that the stretched cluster is ready by following these steps:
+After you update your stretched cluster from version 22H2 to 23H2, check that the stretched cluster is ready by following these steps:
 
 1. Make sure all volumes are up. To check volume status, run the `Get-ClusterSharedVolumeState` command.
 
@@ -244,7 +240,7 @@ If you have updated your stretched cluster from version 22H2 to 23H2 before this
       > [!NOTE]
       > You can set up and validate each partnership one at a time, making sure the initial sync completes before creating the next. Use the SR partnership details saved from the PowerShell module in step 1 to restore the original configuration.
 
-1. [Verify the stretched cluster is ready](#verify-the-stretched-cluster-is-ready).
+1. [Check that the stretched cluster is ready](#check-that-the-stretched-cluster-is-ready).
 
 ## Frequently asked questions
 
