@@ -39,9 +39,9 @@ This security update includes quality improvements. Below is a summary of the ke
 
 - **[App compatibility (known issue)]** Fixed: Addresses an issue that caused non-admin users to receive unexpected User Account Control (UAC) prompts when MSI installers perform certain custom actions. These actions might include configuration or repair operations in the foreground or background, during the initial installation of an application.
 
-This issue could prevent non-admin users from running apps that perform MSI repairs, including Office Professional Plus 2010 and multiple applications from Autodesk (including AutoCAD). This fix reduces the scope for requiring UAC prompts for MSI repairs and enables IT admins to disable UAC prompts for specific apps by adding them to an allowlist.
+    This issue could prevent non-admin users from running apps that perform MSI repairs, including Office Professional Plus 2010 and multiple applications from Autodesk (including AutoCAD). This fix reduces the scope for requiring UAC prompts for MSI repairs and enables IT admins to disable UAC prompts for specific apps by adding them to an allowlist.
 
-For more information, see [Unexpected UAC prompts when running MSI repair operations after installing the August 2025 Windows security update](https://support.microsoft.com/topic/unexpected-uac-prompts-when-running-msi-repair-operations-after-installing-the-august-2025-windows-security-update-5806f583-e073-4675-9464-fe01974df273?preview=true).
+    For more information, see [Unexpected UAC prompts when running MSI repair operations after installing the August 2025 Windows security update](https://support.microsoft.com/topic/unexpected-uac-prompts-when-running-msi-repair-operations-after-installing-the-august-2025-windows-security-update-5806f583-e073-4675-9464-fe01974df273?preview=true).
 
 - **[Device management]**​​​​​​​ Fixed: An issue where the removable storage policy didn’t correctly block external devices such as USB flash drives.  
 
@@ -67,9 +67,26 @@ Microsoft is not currently aware of any issues with this update.​​​​​
 
 ## To install
 
+**Before you install this update**
+
 Microsoft now combines the latest servicing stack update (SSU) for your operating system with the latest cumulative update (LCU). For general information about SSUs, see [Servicing stack updates](/windows/deployment/update/servicing-stack-updates) and [Servicing Stack Updates (SSU): Frequently Asked Questions](https://support.microsoft.com/topic/servicing-stack-updates-ssu-frequently-asked-questions-06b62771-1cb0-368c-09cf-87c4efc4f2fe).
 
-To install the LCU on your Azure Local instance, see [Update Azure Stack Local instances]((../update/about-updates-23h2.md)).
+To install the LCU on your Azure Local instance, see [Update Azure Stack Local instances](../update/about-updates-23h2.md).
+
+**Install this update**
+
+| Release Channel | Available | Next Step |
+|--|--|--|
+| Windows Update and Microsoft Update | Yes | This update downloads and installs automatically from Windows Update. |
+| Windows Update for Business | Yes | This update downloads and installs automatically from Windows Update in accordance with configured policies. |
+| Microsoft Update Catalog | Yes | To get the standalone package for this update, go to the [Microsoft Update Catalog](https://www.catalog.update.microsoft.com/Search.aspx?q=KB5065426). |
+| Windows Server Update Services (WSUS) | Yes | This update automatically syncs with WSUS if you configure Products and Classifications as follows:<br>**Product:** Azure Stack HCI<br>**Classification:** Security Updates |
+
+**If you want to remove the LCU**
+
+To remove the LCU after installing the combined SSU and LCU package, use the DISM/Remove-Package command line option with the LCU package name as the argument. You can find the package name by using this command: **DISM /online /get-packages**.
+
+Running [Windows Update Standalone Installer](https://support.microsoft.com/topic/description-of-the-windows-update-standalone-installer-in-windows-799ba3df-ec7e-b05e-ee13-1cdae8f23b19) **(wusa.exe)** with the **/uninstall** switch on the combined package will not work because the combined package contains the SSU. You cannot remove the SSU from the system after installation.
 
 ## File list
 
@@ -90,7 +107,7 @@ To learn more about Windows update terminology, see [types of Windows updates]
 This security update includes quality improvements. Below is a summary of the key issues that this update addresses when you install this KB. If there are new features, it lists them as well. The bold text within the brackets indicates the item or area of the change.
 
 - **[App compatibility (known issue)]** ​​​​​​​Fixed: Addresses an issue that caused non-admin users to receive unexpected User Account Control (UAC) prompts when MSI installers perform certain [custom actions](/windows/win32/msi/custom-actions). These actions might include configuration or repair operations in the foreground or background, during the initial installation of an application.
-
+    
     This issue could prevent non-admin users from running apps that perform MSI repairs, including Office Professional Plus 2010 and multiple applications from Autodesk (including AutoCAD). This fix reduces the scope for requiring UAC prompts for MSI repairs and enables IT admins to disable UAC prompts for specific apps by adding them to an allowlist.
 
     For more information, see [Unexpected UAC prompts when running MSI repair operations after installing the August 2025 Windows security update](https://support.microsoft.com/topic/unexpected-uac-prompts-when-running-msi-repair-operations-after-installing-the-august-2025-windows-security-update-5806f583-e073-4675-9464-fe01974df273?preview=true).
@@ -119,7 +136,7 @@ The following is a known issue with this update:
  
 We are aware of an edge case affecting hotpatched devices that have installed the September 2025 Hotpatch update [(KB5065474)](https://support.microsoft.com/topic/september-9-2025-kb5065474-hotpatch-for-windows-11-enterprise-version-24h2-os-build-26100-6508-1591ce1b-9c6f-4bc9-8d3d-d65240a738ee?preview=true) or the September 2025 security update [(KB5065426)](https://support.microsoft.com/topic/september-9-2025-kb5065426-os-build-26100-6584-77a41d9b-1b7c-4198-b9a5-3c4b6706dea9?preview=true). These devices might experience failures with [PowerShell Direct (PSDirect)](/windows-server/virtualization/hyper-v/powershell-direct) connections when the host and guest virtual machines (VMs) are both not fully updated.
 
-When a patched guest VM attempts to connect to an unpatched host (or vice versa), the system is expected to fall back to a legacy handshake and clean up the socket gracefully. However, this fallback mechanism fails intermittently, resulting in socket cleanup issues. The connection failure might appear random, and users might observe Event ID 4625 logged in the Security Event log within Windows Event Viewer.  
+When a patched guest VM attempts to connect to an unpatched host (or vice versa), the system is expected to fall back to a legacy handshake and clean up the socket gracefully. However, this fallback mechanism fails intermittently, resulting in socket cleanup issues. The connection failure might appear random, and users might observe Event ID [4625](/previous-versions/windows/it-pro/windows-10/security/threat-protection/auditing/event-4625) logged in the Security Event log within Windows Event Viewer.  
 
 **Workaround**
 
