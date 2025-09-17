@@ -55,14 +55,14 @@
         - name: Commit Workflow v2
           href: concepts-commit-workflow-v2.md
         - name: Route Policy
-        - name: Azure Firewall outbound rules for Azure Operator Nexus
-          href: concepts-azure-firewall-outbound-rules-nexus.md
           expanded: false
           items:
             - name: Route Policy Overview
               href: concepts-nexus-route-policies-overview.md
             - name: IP Prefixes Overview
               href: concepts-nexus-ip-prefix.md
+        - name: Azure Firewall outbound rules for Azure Operator Nexus
+          href: concepts-azure-firewall-outbound-rules-nexus.md
         - name: Isolation Domains
           expanded: false
           items:
