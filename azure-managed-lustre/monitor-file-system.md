@@ -60,7 +60,16 @@ This section shows queries that you can enter in the **Log search** bar to help 
 
 [!INCLUDE [horz-monitor-alerts](~/../azure-stack/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-alerts.md)]
 
-### Azure Managed Lustre alert rules
+## Azure Managed Lustre alert rules
+
+To set up a custom alert for your cluster’s capacity usage, follow the steps in [Create or edit a metric alert rule](/azure/azure-monitor/alerts/alerts-create-metric-alert-rule). In the **Create an Alert Rule** workflow, under **Signal name**, you may need to select **See all signals** from the dropdown menu to view the full list of available metrics. Relevant options include:
+
+- MDT Bytes Available
+- MDT Files Free
+- OST Bytes Available
+- OST Files Free
+
+Alert thresholds will vary depending on your workloads, so be sure to tailor them to your specific performance and capacity requirements.
 
 The following table lists some suggested alert rules for Azure Managed Lustre. The alerts in this table are just examples. You can set alerts for any metric, log entry, or activity log entry listed in the [Azure Managed Lustre monitoring data reference](monitor-file-system-reference.md).
 
