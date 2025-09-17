@@ -11,7 +11,7 @@ ms.date: 09/05/2025
 
 > Applies to: Azure Local 2311.2 and later; Windows Server 2022, Windows Server 2019
 
-If you've set up Software Load Balancer (SLB) for Software Defined Networking (SDN) and your data path isn't working through SLB, there could be several reasons behind it. This article helps you identify and troubleshoot some common issues in SLB for SDN.
+If you've set up Software Load Balancer (SLB) for Software Defined Networking (SDN) and your data path isn't working through SLB, there could be several reasons behind it. This article helps you identify and troubleshoot some common issues in SLB for SDN managed by on-premises tools.
 
 For an overview of SLB and how to manage it, see [What is Software Load Balancer (SLB) for SDN?](../concepts/software-load-balancer.md) and [Manage Software Load Balancer for SDN](./load-balancers.md).
 
