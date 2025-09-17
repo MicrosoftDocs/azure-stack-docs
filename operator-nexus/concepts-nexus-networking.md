@@ -5,7 +5,7 @@ author: dramasamy
 ms.author: dramasamy
 ms.service: azure-operator-nexus
 ms.topic: conceptual
-ms.date: 06/13/2024
+ms.date: 09/17/2025
 ms.custom: template-concept
 ---
 
@@ -381,7 +381,7 @@ uses the worker node VM's route table for any of the following traffic.
   CloudServicesNetwork associated with the Nexus Kubernetes cluster then
   determine how the traffic should be routed.
 
-:::image type="content" source="media/concepts-networking/pod-ethX-routing.jpg" lightbox="media/concepts-networking/pod-ethX-routing.jpg" alt-text="Diagram of Networking - Pod routing - additional interfaces.":::
+:::image type="content" source="media/concepts-networking/pod-ethx-routing.jpg" lightbox="media/concepts-networking/pod-ethx-routing.jpg" alt-text="Diagram of Networking - Pod routing - additional interfaces.":::
 
 Additional network interfaces inside a Pod will use the Pod's route table to
 route traffic to additional L3 Networks that use the `SRIOV` and `DPDK` plugin
