@@ -28,7 +28,13 @@ ms.custom:
 >
 > - Microsoft Support is available only for upgrade assistance.
 >
-> These steps in this article are the only supported method to upgrade the OS for Azure Stack HCI stretched clusters from version 20349.xxxx (22H2) to version 25398.xxxx (23H2). This version is supported until April 2026. You can't upgrade the OS to version 26100.xxxx (24H2) or upgrade the solution after this. After April 2026, stretched clusters aren't supported.
+> These steps in this article are the only supported method to upgrade the OS for Azure Stack HCI stretched clusters from version 20349.xxxx (22H2) to version 25398.xxxx (23H2).
+>
+> - This version is supported until April 2026.
+>
+> - You can't upgrade the OS to version 26100.xxxx (24H2) or upgrade the solution after this.
+>
+> - After April 2026, stretched clusters aren't supported.
 
 This article explains how to upgrade the operating system (OS) for Azure Stack HCI stretched clusters from version 20349.xxxx (22H2) to version 25398.xxxx (23H2). In this article, OS version 25398.xxxx (23H2) is the *new* version, and version 20349.xxxx (22H2) is the *old* version.
 
