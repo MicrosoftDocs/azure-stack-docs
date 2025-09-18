@@ -79,7 +79,7 @@ The endpoints from the table are required and must be allowlisted in your proxy 
 | 5 | `https://management.azure.com` | Arc registration |
 | 6 | `https://gbl.his.arc.azure.com` | Arc registration |  
 | 7 | `https://<region>.his.arc.azure.com` | Arc registration |
-| 8 | `https://<region>.obo.arc.azure.com:8084` | AKS extensions |
+| 8 | `https://<region>.obo.arc.azure.com:8084` | Only required for certain AKS workloads extensions |
 | 9 | `https://<yourarcgatewayId>.gw.arc.azure.com` | Arc gateway |
 | 10 | `https://<yourkeyvaultname>.vault.azure.net` | Azure Key Vault |
 | 11 | `https://<yourblobstorageforcloudwitnessname>.blob.core.windows.net` | Cloud Witness Storage Account |
