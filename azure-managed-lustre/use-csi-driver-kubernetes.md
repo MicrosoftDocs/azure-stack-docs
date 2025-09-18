@@ -521,6 +521,105 @@ kubectl delete storageclass azurelustre-static
 > [!Important]
 > This only deletes the Kubernetes resources. The Azure Managed Lustre file system itself will continue to exist and can be reused.
 
+## Validate Container Image Signatures
+
+Azure Lustre CSI Driver signs its container images to allow users to verify the integrity and origin of the images they use. Signing utilizes a public/private key pair to prove that Microsoft built a container image by creating a digital signature and adding it to the image. This section provides the steps to verify that an image was signed by Microsoft.
+
+### Understanding Image Security in Kubernetes System Components
+
+Container images used by the Azure Lustre CSI Driver are deployed in the `kube-system` namespace, which is considered a trusted system namespace in Kubernetes. For security and operational reasons, image integrity policies are typically not enforced on system namespaces because:
+
+- **Bootstrap Requirements**: System components like CSI drivers must start before policy enforcement systems (like Gatekeeper and Ratify) are available
+- **Trusted Components**: Images in `kube-system` are core Kubernetes infrastructure components managed by trusted providers
+- **Operational Stability**: Enforcing policies on policy enforcement components themselves could prevent cluster functionality
+
+However, you can still verify the integrity of CSI driver images before deployment.
+
+### Pre-Deployment Image Verification
+
+Before deploying the Azure Lustre CSI Driver, you can verify the digital signatures and authenticity of the container images using Microsoft's public signing certificates:
+
+#### Verify Image Signatures with Notation CLI
+
+1. **Download Notation CLI**:
+
+    ```bash
+    export NOTATION_VERSION=1.3.2
+    curl -LO https://github.com/notaryproject/notation/releases/download/v$NOTATION_VERSION/notation_$NOTATION_VERSION\_linux_amd64.tar.gz
+    sudo tar xvzf notation_$NOTATION_VERSION\_linux_amd64.tar.gz -C /usr/bin/ notation
+    ```
+
+2. **Download the Microsoft signing public certificate**: 
+
+    ```bash
+    curl -sSL "https://www.microsoft.com/pkiops/certs/Microsoft%20Supply%20Chain%20RSA%20Root%20CA%202022.crt" -o msft_signing_cert.crt
+    ```
+
+3. **Add the certificate to notation CLI**:
+
+    ```bash
+    notation cert add --type ca --store supplychain msft_signing_cert.crt
+    ```
+
+4. **Check the certificate in notation**:
+
+    ```bash
+    notation cert ls
+    ```
+
+    The output of the command looks like the following example:
+
+    ```output
+    STORE TYPE  STORE NAME  CERTIFICATE 
+    ca          supplychain msft_signing_cert.crt
+    ```
+
+5. **Create a trustpolicy file for Azure Lustre CSI Driver images**:
+
+    Create a file called `trustpolicy.json`:
+
+    ```json
+    {
+        "version": "1.0",
+        "trustPolicies": [
+            {
+                "name": "supplychain",
+                "registryScopes": [ "*" ],
+                "signatureVerification": {
+                    "level" : "strict" 
+                },
+                "trustStores": [ "ca:supplychain" ],
+                "trustedIdentities": [
+                    "x509.subject: CN=Microsoft SCD Products RSA Signing,O=Microsoft Corporation,L=Redmond,ST=Washington,C=US"
+                ]
+            }
+        ]
+    }
+    ```
+
+6. **Use notation to verify Azure Lustre CSI Driver images**:
+
+    ```bash
+    notation policy import trustpolicy.json
+    export NOTATION_EXPERIMENTAL=1
+    
+    # Verify the controller image
+    notation verify --allow-referrers-api mcr.microsoft.com/oss/v2/kubernetes-csi/azurelustre-csi:v0.3.0
+    ```
+
+    The output of a successful verification looks like the following example:
+
+    ```output
+    Successfully verified signature for mcr.microsoft.com/oss/v2/kubernetes-csi/azurelustre-csi@sha256:a1b2c3d4e5f6789012345678901234567890abcdef1234567890abcdef123456
+    ```
+
+### Application Workload Image Integrity
+
+For enhanced security in production environments, consider enabling AKS Image Integrity to automatically validate container image signatures for your application workloads. While CSI driver images in the `kube-system` namespace are typically excluded from policy enforcement, you can configure image integrity policies for your application namespaces.
+
+To learn more about implementing image integrity policies for your application workloads, see [Image Integrity in Azure Kubernetes Service (AKS)](/azure/aks/image-integrity).
+
+
 ## Troubleshooting
 
 For troubleshooting issues with the Azure Lustre CSI Driver, see the [CSI driver troubleshooting guide](https://github.com/kubernetes-sigs/azurelustre-csi-driver/blob/main/docs/csi-debug.md) in the GitHub repository.
