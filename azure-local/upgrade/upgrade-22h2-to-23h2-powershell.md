@@ -3,7 +3,7 @@ title: Upgrade Azure Stack HCI OS, version 22H2 to version 23H2 via PowerShell
 description: Learn how to use PowerShell to upgrade Azure Stack HCI OS, version 22H2 to version 23H2.
 author: alkohli
 ms.topic: how-to
-ms.date: 09/11/2025
+ms.date: 09/18/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -99,7 +99,7 @@ Before you begin, make sure that:
 
 - You have access to an Azure Local instance running version 20349.xxxx (22H2), and it's registered in Azure.
 - Your system is registered in Azure and all the machines in the system are healthy and online.
-- If you have AKS enabled by Azure Arc clusters running on your 22H2 instance, uninstall AKS Arc and all its settings using the [Uninstall-Aks-Hci](/azure/aks/hybrid/reference/ps/uninstall-akshci) command. Once you uninstall AKS Arc, you must uninstall the **AksHci** Powershell module using this command, as this module does not work on 23H2 and later.
+- If you have AKS enabled by Azure Arc clusters running on your version 22H2 instance, uninstall AKS Arc and all its settings using the [Uninstall-Aks-Hci](/azure/aks/hybrid/reference/ps/uninstall-akshci) command. Once you uninstall AKS Arc, you must uninstall the **AksHci** Powershell module using this command, as this module does not work on version 23H2 and later.
 
   ```powershell
   Uninstall-Module -Name AksHci -Force
