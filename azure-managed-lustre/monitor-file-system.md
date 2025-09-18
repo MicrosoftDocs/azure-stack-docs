@@ -11,29 +11,29 @@ ms.service: azure-managed-lustre
 
 # Monitor Azure Managed Lustre
 
-[!INCLUDE [horz-monitor-intro](~/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-intro.md)]
+[!INCLUDE [horz-monitor-intro](~/../reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-intro.md)]
 
-[!INCLUDE [horz-monitor-resource-types](~/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-resource-types.md)]
+[!INCLUDE [horz-monitor-resource-types](~/../reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-resource-types.md)]
 
 For more information about the resource types for Azure Managed Lustre, see [Azure Managed Lustre monitoring data reference](monitor-file-system-reference.md).
 
-[!INCLUDE [horz-monitor-data-storage](~/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-data-storage.md)]
+[!INCLUDE [horz-monitor-data-storage](~/../reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-data-storage.md)]
 
-[!INCLUDE [horz-monitor-platform-metrics](~/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-platform-metrics.md)]
+[!INCLUDE [horz-monitor-platform-metrics](~/../reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-platform-metrics.md)]
 
 For a list of available metrics for Azure Managed Lustre, see [Azure Managed Lustre monitoring data reference](monitor-file-system-reference.md#metrics).
 
-[!INCLUDE [horz-monitor-resource-logs](~/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-resource-logs.md)]
+[!INCLUDE [horz-monitor-resource-logs](~/../reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-resource-logs.md)]
 
 For the available resource log categories, their associated Log Analytics tables, and the log schemas for Azure Managed Lustre, see [Azure Managed Lustre monitoring data reference](monitor-file-system-reference.md#supported-resource-logs-for-microsoftstoragecacheamlfilesystems).
 
-[!INCLUDE [horz-monitor-activity-log](~/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-activity-log.md)]
+[!INCLUDE [horz-monitor-activity-log](~/../reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-activity-log.md)]
 
-[!INCLUDE [horz-monitor-analyze-data](~/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-analyze-data.md)]
+[!INCLUDE [horz-monitor-analyze-data](~/../reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-analyze-data.md)]
 
-[!INCLUDE [horz-monitor-external-tools](~/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-external-tools.md)]
+[!INCLUDE [horz-monitor-external-tools](~/../reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-external-tools.md)]
 
-[!INCLUDE [horz-monitor-kusto-queries](~/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-kusto-queries.md)]
+[!INCLUDE [horz-monitor-kusto-queries](~/../reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-kusto-queries.md)]
 
 This section shows queries that you can enter in the **Log search** bar to help you monitor your Managed Lustre file system.
 
@@ -58,7 +58,7 @@ This section shows queries that you can enter in the **Log search** bar to help 
     | summarize count() by _ResourceId, OperationName
     ```
 
-[!INCLUDE [horz-monitor-alerts](~/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-alerts.md)]
+[!INCLUDE [horz-monitor-alerts](~/../reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-alerts.md)]
 
 ## Azure Managed Lustre alert rules
 
@@ -81,7 +81,7 @@ The following table lists some suggested alert rules for Azure Managed Lustre. T
 > [!NOTE]
 > The threshold value of 85% is used as an example to show an alert before the file system reaches full capacity. You can adjust the threshold based on your requirements.
 
-[!INCLUDE [horz-monitor-advisor-recommendations](~/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-advisor-recommendations.md)]
+[!INCLUDE [horz-monitor-advisor-recommendations](~/../reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-advisor-recommendations.md)]
 
 ## Related content
 

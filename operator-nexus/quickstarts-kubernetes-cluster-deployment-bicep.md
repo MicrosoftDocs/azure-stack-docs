@@ -17,7 +17,7 @@ ms.date: 05/13/2023
 
 * Deploy an Azure Nexus Kubernetes cluster using Bicep.
 
-[!INCLUDE [About Bicep](~/reusable-content/ce-skilling/azure/includes/resource-manager-quickstart-bicep-introduction.md)]
+[!INCLUDE [About Bicep](~/../reusable-content/ce-skilling/azure/includes/resource-manager-quickstart-bicep-introduction.md)]
 
 ## Prerequisites
 
