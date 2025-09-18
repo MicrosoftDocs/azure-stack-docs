@@ -4,7 +4,7 @@ description: Learn about the opt-in update workflow to update from Azure Local s
 author: alkohli
 ms.author: alkohl
 ms.topic: article
-ms.date: 09/15/2025
+ms.date: 09/16/2025
 ---
 
 # Opt-in update to Azure Local solution version 12.25xx
@@ -71,6 +71,7 @@ The following table lists the known issues in the opt-in workflow:
 |Feature|Issue|Workaround/Comments|
 |------|------|----------|
 | Update | When applying a solution update to your cluster, an updating run may fail and cause the overall update to get stuck at the `CauPostVersionCheck` or `CauPostCheck` step. | For detailed steps on how to resolve this issue, review the [Troubleshooting guide](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/Update/Manually-retry-after-failed-at-CauPostVersionCheck.md). |
+| Update | When applying a solution update to your cluster, an update run may fail during the `UpdateArbAndExtensions` step if the Azure resource bridge VM goes offline. | For detailed steps on how to resolve this issue, review the [Troubleshooting guide](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/Update/Update-fails-with-ARB-offline.md). You may also review this guide preemptively before starting the update. |
 
 ## Next step
 

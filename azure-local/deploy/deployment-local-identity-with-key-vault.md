@@ -3,7 +3,7 @@ title: Deploy Azure Local, version 23H2 using local identity with Azure Key Vaul
 description: Learn how to use local identity with Azure Key Vault for Azure Local, version 23H2 deployment (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 04/22/2025
+ms.date: 08/25/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -15,6 +15,8 @@ ms.custom: sfi-image-nochange
 ::: moniker range=">=azloc-2411"
 
 This article describes how to use local identity with Azure Key Vault for Azure Local deployment.
+
+If you have questions or need further information, contact the product team at [azurelocalidentity@microsoft.com](mailto:azurelocalidentity@microsoft.com). To learn how Microsoft collects, uses, and protects your personal data, see the [Microsoft Privacy Statement](https://privacy.microsoft.com/privacystatement).
 
 [!INCLUDE [important](../includes/hci-preview.md)]
 
@@ -35,10 +37,6 @@ Using local identity with Key Vault on Azure Local offers several benefits, part
 - **Simplified deployment.** During the system deployment via the Azure portal, you have the option to select a local identity provider integrated with Key Vault. This option streamlines the deployment process by ensuring all necessary secrets are securely stored within Key Vault. The deployment becomes more efficient by reducing dependencies on existing AD systems or other systems that run AD, which require ongoing maintenance. Additionally, this approach simplifies firewall configurations for Operational Technology networks, making it easier to manage and secure these environments.
 
 ## Prerequisites
-
-Before you start, make sure that you:
-
-- Send an email to [azurelocalidentity@microsoft.com](mailto:azurelocalidentity@microsoft.com) to participate in the limited public preview. For more information about how we collect, use, and protect your personal data during your participation in the preview, review [Microsoft Privacy Statement](https://privacy.microsoft.com/privacystatement).
 
 - Satisfy the [prerequisites and complete deployment checklist](./deployment-prerequisites.md). Skip the AD-specific prerequisites.
 
