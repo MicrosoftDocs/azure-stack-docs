@@ -72,34 +72,33 @@ The endpoints from the table are required and must be allowlisted in your proxy 
 
 | Endpoint # | Required endpoint | Component  |
 |--| -- |--|
-| 1 | `http://aka.ms:443` | Bootstrap |
-| 2 | `http://azurestackreleases.download.prss.microsoft.com:443]` | Bootstrap |
-| 3 | `http://login.microsoftonline.com:443` | Arc registration |
-| 4 | `http://<region>.login.microsoft.com:443` | Arc registration |
-| 5 | `http://management.azure.com:443` | Arc registration |
-| 6 | `http://gbl.his.arc.azure.com:443` | Arc registration |  
-| 7 | `http://<region>.his.arc.azure.com:443` | Arc registration |
-| 8 | `http://dc.services.visualstudio.com:443` | Arc registration |
-| 9 | `https://<region>.obo.arc.azure.com:8084` | AKS extensions |
-| 10 | `http://<yourarcgatewayId>.gw.arc.azure.com:443` | Arc gateway |
-| 11 | `http://<yourkeyvaultname>.vault.azure.net:443` | Azure Key Vault |
-| 12 | `http://<yourblobstorageforcloudwitnessname>.blob.core.windows.net:443` | Cloud Witness Storage Account |
-| 13 | `http://files.pythonhosted.org:443` | Not required starting with 2504 new deployments. Microsoft On-premises Cloud/ARB/AKS |
-| 14 | `http://pypi.org:443` | Not required starting with 2504 new deployments. Microsoft On-premises Cloud/ARB/AKS |
-| 15 | `http://raw.githubusercontent.com:443` | Not required starting with 2504 new deployments. Microsoft On-premises Cloud/ARB/AKS |
-| 16 | `http://pythonhosted.org:443` | Not required starting with 2504 new deployments. Microsoft On-premises Cloud/ARB/AKS |
-| 17 | `http://ocsp.digicert.com`  | Certificate Revocation List for Arc extensions |
-| 18 | `http://s.symcd.com` | Certificate Revocation List for Arc extensions |
-| 19 | `http://ts-ocsp.ws.symantec.com` | Certificate Revocation List for Arc extensions |
-| 20 | `http://ocsp.globalsign.com` | Certificate Revocation List for Arc extensions |
-| 21 | `http://ocsp2.globalsign.com` | Certificate Revocation List for Arc extensions |
-| 22 | `http://oneocsp.microsoft.com` | Certificate Revocation List for Arc extensions |
-| 23 | `http://crl.microsoft.com/pkiinfra` | Certificate Revocation List for Arc extensions |
-| 24 | `http://dl.delivery.mp.microsoft.com` | Windows Update |
-| 25 | `http://*.tlu.dl.delivery.mp.microsoft.com` | Windows Update |
-| 26 | `http://*.windowsupdate.com` | Windows Update |
-| 27 | `http://*.windowsupdate.microsoft.com` | Windows Update |
-| 28 | `http://*.update.microsoft.com` | Windows Update |
+| 1 | `https://aka.ms` | Bootstrap |
+| 2 | `https://azurestackreleases.download.prss.microsoft.com]` | Bootstrap |
+| 3 | `https://login.microsoftonline.com` | Arc registration |
+| 4 | `https://<region>.login.microsoft.com` | Arc registration |
+| 5 | `https://management.azure.com` | Arc registration |
+| 6 | `https://gbl.his.arc.azure.com` | Arc registration |  
+| 7 | `https://<region>.his.arc.azure.com` | Arc registration |
+| 8 | `https://<region>.obo.arc.azure.com:8084` | Only required for certain AKS workloads extensions |
+| 9 | `https://<yourarcgatewayId>.gw.arc.azure.com` | Arc gateway |
+| 10 | `https://<yourkeyvaultname>.vault.azure.net` | Azure Key Vault |
+| 11 | `https://<yourblobstorageforcloudwitnessname>.blob.core.windows.net` | Cloud Witness Storage Account |
+| 12 | `https://files.pythonhosted.org` | Not required starting with 2504 new deployments. Microsoft On-premises Cloud/ARB/AKS |
+| 13 | `https://pypi.org` | Not required starting with 2504 new deployments. Microsoft On-premises Cloud/ARB/AKS |
+| 14 | `https://raw.githubusercontent.com` | Not required starting with 2504 new deployments. Microsoft On-premises Cloud/ARB/AKS |
+| 15 | `https://pythonhosted.org` | Not required starting with 2504 new deployments. Microsoft On-premises Cloud/ARB/AKS |
+| 16 | `http://ocsp.digicert.com`  | Certificate Revocation List for Arc extensions |
+| 17 | `http://s.symcd.com` | Certificate Revocation List for Arc extensions |
+| 18 | `http://ts-ocsp.ws.symantec.com` | Certificate Revocation List for Arc extensions |
+| 19 | `http://ocsp.globalsign.com` | Certificate Revocation List for Arc extensions |
+| 20 | `http://ocsp2.globalsign.com` | Certificate Revocation List for Arc extensions |
+| 21 | `http://oneocsp.microsoft.com` | Certificate Revocation List for Arc extensions |
+| 22 | `http://crl.microsoft.com/pkiinfra` | Certificate Revocation List for Arc extensions |
+| 23 | `https://dl.delivery.mp.microsoft.com` | Not required starting with 2504 new deployments. Windows Update |
+| 24 | `https://*.tlu.dl.delivery.mp.microsoft.com` | Not required starting with 2504 new deployments. Windows Update |
+| 25 | `https://*.windowsupdate.com` | Not required starting with 2504 new deployments. Windows Update |
+| 26 | `https://*.windowsupdate.microsoft.com` | Not required starting with 2504 new deployments. Windows Update |
+| 27 | `https://*.update.microsoft.com` | Not required starting with 2504 new deployments. Windows Update |
 
 ## Restrictions and limitations
 
