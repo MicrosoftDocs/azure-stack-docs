@@ -49,6 +49,9 @@ To set up and prepare an Azure VM, follow these steps:
 
 1. Enter the required details in the wizard and finish setting up the Azure VM.
 
+   > [!NOTE]
+   > Avoid username conflicts by creating the Azure VM with a username you don't use on Azure Local. If you use the same username (for example, "usernameA") on both the Azure VM and Azure Local, and then reuse the VHD, the VM keeps the original login information. For the best results, set up Azure Local VMs with different credentials (such as "usernameB").
+
 1. After the VM is deployed, go to the **VM overview** page, select the **Connect** option, and then select **Serial console**.
 
    :::image type="content" source="media/virtual-machine-azure-marketplace-red-hat-enterprise/connect-vm.png" alt-text="Screenshot of the Serial console sign in option in Azure portal." lightbox="../manage/media/virtual-machine-azure-marketplace-red-hat-enterprise/connect-vm.png":::
