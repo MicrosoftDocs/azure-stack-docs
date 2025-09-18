@@ -58,6 +58,8 @@ Keep in mind the following information before you start log collection:
    $target = @{"Microsoft.Compute.CustomScriptExtension" = @{"targetVersion"="1.10.12"}} Update-AzConnectedExtension -ResourceGroupName $env.ResourceGroupName -MachineName $machineName -ExtensionTarget $target
    ```
 
+  For more information about updating the connected machine extension, see [Update-AzConnectedExtension](/powershell/module/az.connectedmachine/update-azconnectedextension?view=azps-12.5.0&preserve-view=true).
+
 ### [Azure portal (recommended)](#tab/azureportal)
 
 Follow these steps to collect diagnostic logs for your Azure Local instance via the Azure portal:
