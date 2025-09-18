@@ -94,11 +94,11 @@ The endpoints from the table are required and must be allowlisted in your proxy 
 | 20 | `http://ocsp2.globalsign.com` | Certificate Revocation List for Arc extensions |
 | 21 | `http://oneocsp.microsoft.com` | Certificate Revocation List for Arc extensions |
 | 22 | `http://crl.microsoft.com/pkiinfra` | Certificate Revocation List for Arc extensions |
-| 23 | `http://dl.delivery.mp.microsoft.com` | Not required starting with 2504 new deployments. Windows Update |
-| 24 | `http://*.tlu.dl.delivery.mp.microsoft.com` | Not required starting with 2504 new deployments. Windows Update |
-| 25 | `http://*.windowsupdate.com` | Not required starting with 2504 new deployments. Windows Update |
-| 26 | `http://*.windowsupdate.microsoft.com` | Not required starting with 2504 new deployments. Windows Update |
-| 27 | `http://*.update.microsoft.com` | Not required starting with 2504 new deployments. Windows Update |
+| 23 | `https://dl.delivery.mp.microsoft.com` | Not required starting with 2504 new deployments. Windows Update |
+| 24 | `https://*.tlu.dl.delivery.mp.microsoft.com` | Not required starting with 2504 new deployments. Windows Update |
+| 25 | `https://*.windowsupdate.com` | Not required starting with 2504 new deployments. Windows Update |
+| 26 | `https://*.windowsupdate.microsoft.com` | Not required starting with 2504 new deployments. Windows Update |
+| 27 | `https://*.update.microsoft.com` | Not required starting with 2504 new deployments. Windows Update |
 
 ## Restrictions and limitations
 
