@@ -144,12 +144,15 @@ The following table compares select Arc management options of Azure Local and Wi
 | Connect via SSH | Yes | Yes |
 | Connect via RDP | Yes | Yes |
 | Configure operations<br>(Add/delete/expand data disks and change memory/vCPU) | Yes | Yes |
-| Azure operations<br>(Microsoft Defender for Cloud, security recommendations, Azure extension support, Windows Admin Center extension support, resource locks, policies, Automanage, and run command) | Yes | Yes<br>(Automanage not supported) |
+| Azure operations<br>(Microsoft Defender for Cloud, security recommendations, Azure extension support, Windows Admin Center extension support, resource locks, policies, Automanage, and run command) | Yes | Yes |
 | Azure Update Manager | Yes<br>(included) | Yes<br>(free via Azure Hybrid Benefit)  |
-| Monitoring<br>(Azure Monitor, Insights, logs, alerts, and workbooks) | Yes | Yes<br>(alerts not supported)  |
-| Automation<br>(Azure CLI, PowerShell, Azure tasks, export ARM template, and resource health) | Yes | Yes<br>(export ARM template not supported) |
+| Monitoring<br>(Azure Monitor, Insights, logs, alerts, and workbooks) | Yes | Yes<sup>2</sup>  |
+| Automation<br>(Azure CLI, PowerShell, Azure tasks, export ARM template, and resource health) | Yes | Yes<br>(export ARM template is supported for Azure VMs, but not for on-premises VMs) |
 
 <sup>1</sup> Shutdown and manage snapshots aren't supported for Azure Local. For more information, see [Supported VM operations for Azure Local](../manage/virtual-machine-operations.md).
+
+<sup>2</sup> For Windows Server, alerts are configured using [Azure Monitor from Windows Admin Center](/windows-server/manage/windows-admin-center/azure/azure-monitor). For Azure Local, alerts are natively integrated in the Azure portal.
+
 
 
 ## Next steps
