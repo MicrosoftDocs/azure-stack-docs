@@ -135,7 +135,7 @@ Dynamic provisioning allows the CSI driver to automatically create Azure Managed
 Static provisioning uses an existing Azure Managed Lustre file system. This method involves:
 - Creating storage classes that reference existing Lustre clusters
 - Manually specifying the Lustre file system name and MGS IP address
-- Suitable for scenarios where you have pre-existing Lustre infrastructure
+- Suitable for scenarios where you have preexisting Lustre infrastructure
 
 Choose the method that best fits your use case. Dynamic provisioning is documented first below, followed by static provisioning instructions.
 
