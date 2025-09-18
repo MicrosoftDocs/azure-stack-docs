@@ -17,7 +17,7 @@ The Nexus Network Fabric offers several methods for updating Access Control List
 
 Create a new ACL using the az networkfabric acl create command.
 
-[!INCLUDE [azure-cli-prepare-your-environment.md](~/../azure-stack/reusable-content/azure-cli/azure-cli-prepare-your-environment.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](~/reusable-content/azure-cli/azure-cli-prepare-your-environment.md)]
 
 1. **Set subscription (if necessary):**
  

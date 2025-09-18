@@ -13,7 +13,7 @@ ms.custom: template-how-to, devx-track-azurecli
 
 This document outlines the process of deleting Access Control Lists (ACLs) associated with Network-to-Network Interconnects (NNIs) within a Nexus Network Fabric.
 
-[!INCLUDE [azure-cli-prepare-your-environment.md](~/../azure-stack/reusable-content/azure-cli/azure-cli-prepare-your-environment.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](~/reusable-content/azure-cli/azure-cli-prepare-your-environment.md)]
 
 1. **Set subscription (if necessary):**
    
