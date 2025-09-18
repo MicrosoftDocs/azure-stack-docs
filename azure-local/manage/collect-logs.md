@@ -52,7 +52,7 @@ Keep in mind the following information before you start log collection:
 - The time required for log collection depends on the time range you specify. The longer the time range, the more time it'll take for log collection. Therefore, we recommend limiting the time range to only the logs you need.
 - Log collections longer than 24 hours aren't supported.
 - Attempting multiple log collections simultaneously will result in a failure.
-- Update the connected machine extension on all nodes to ensure compatibility, consistency, and successful log collection. Replace the extension name and version with the appropriate values for your environment. Then run this command:
+- Update the connected machine extension on all nodes to ensure compatibility, consistency, and successful log collection. Use the following command. Make sure you replace the extension name and version with the appropriate values for your environment.
 
    ```powershell
    $target = @{"Microsoft.Compute.CustomScriptExtension" = @{"targetVersion"="1.10.12"}} Update-AzConnectedExtension -ResourceGroupName $env.ResourceGroupName -MachineName $machineName -ExtensionTarget $target
