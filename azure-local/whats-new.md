@@ -46,6 +46,7 @@ This release has the following features and improvements:
 
 - **Azure Local VM updates**:
     - **Enhanced storage path deletion workflow** - Starting with this release, you can view all the dependent resources linked to a storage path before deletion. Azure portal lets you delete both the storage path and its dependent resources in a single, streamlined action, making cleanup faster and more intuitive.
+    - **Live update memory of an Azure Local VM** - You can now live update (VM remains running) the memory of a VM. A restart may be required only if the guest OS does not support live memory updates.
 
 - **AKS enabled by Azure Arc changes**
     - The default disk size on the AKS VM is increased from 100 GB to 200 GB.
@@ -57,7 +58,7 @@ This release has the following features and improvements:
 
     - **Upgrade and update docs changes** include new articles and major updates to existing articles:
         - [**Opt in update to Azure Local solution versions 12.25x**](./update/update-opt-enable.md) is released.
-        <!--- [**Upgrade OS for stretch clusters via PowerShell**](./upgrade/upgrade-os-stretch-clusters-powershell.md) is released.-->
+        - [**Upgrade OS for stretch clusters via PowerShell**](./upgrade/upgrade-os-stretch-clusters-powershell.md) is released.
         - [**Install solution upgrade on Azure Local using Azure Resource Manager template**](./upgrade/install-solution-upgrade-azure-resource-manager-template.md) is released.
         - [**ARM template parameters**](./deploy/deployment-azure-resource-manager-template.md#arm-template-parameters-reference) reference is added.
         - [**Update best practices**](./update/update-best-practices.md) is released.
