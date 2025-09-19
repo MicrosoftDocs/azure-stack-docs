@@ -22,8 +22,8 @@ There are two 2509 releases for September. Here are the details of each release:
 
 |Solution version  | OS version |
 |---------|---------|
-|12.2509.1001.18 |  26100.5074 |
-|11.2509.1001.17  | 25398.1840  |
+|12.2509.1001.22 |  26100.5074 |
+|11.2509.1001.21  | 25398.1840  |
 
 For more information, see [Release information summary](./release-information-23h2.md).
 
