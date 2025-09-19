@@ -275,9 +275,9 @@ The following table lists the fixed issues in this release:
 | Azure Local VMs <!--32195527--> | In some cases, deleting a VM from multiple platforms (Azure portal, Windows Admin Center, Failover Cluster Manager) could cause its high availability (HA) status to remain stuck in a pending state. | Correctly updates the HA status when the VM is removed from the cluster, preventing it from getting stuck. |
 | Azure Local VMs <!--32255591--> | After creating a VM, a temporary ISO file used for guest agent setup was sometimes left attached. | ISO file is automatically removed after VM creation. |
 | Azure Local VMs <!--30846971--> | In some cases, VM deletions did not properly clean up associated network interfaces or disks, leaving behind orphaned resources that blocked reuse of IP addresses and storage. | All dependent resources are correctly detached and deleted when a VM is deleted, preventing resource leaks. |
-| Azure Local VMs <!--30651739--> | Improved validation for the IP address of the infrastructure range.  |  |
-| Azure Local VMs <!--32078730--> | Improved behavior for loading PowerShell modules.  |  |
-| Azure Local VMs <!--32311676--> | Added flag to enable decryption of volumes when re-attaching them.  |  |
+| Deployment <!--30651739--> | Improved validation for the IP address of the infrastructure range.  |  |
+| Deployment <!--32078730--> | Improved behavior for loading PowerShell modules.  |  |
+| Deployment <!--32311676--> | Added flag to enable decryption of volumes when re-attaching them.  |  |
 
 ## Known issues in this release
 
