@@ -14,7 +14,7 @@ ms.lastreviewed: 09/15/2025
 
 AKS Edge Essentials is a lightweight on-premises Kubernetes implementation of Azure Kubernetes Service (AKS) that automates running containerized applications at scale. This article describes the latest features, enhancements, and updates in AKS Edge Essentials releases.
 
-## Release 1.11.230.0 (September 2025)
+<!-- ## Release 1.11.230.0 (September 2025)
 
 The following features and improvements were added in this release:
 
@@ -39,7 +39,7 @@ The following features and improvements were added in this release:
 
 > [!NOTE]  
 > Upgrading from one Kubernetes distribution to another within the same release version is not supported.
-
+ -->
 ## Release 1.10.868.0 (March 2025)
 
 The following features and improvements were added in this release:
