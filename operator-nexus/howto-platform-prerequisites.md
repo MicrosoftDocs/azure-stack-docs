@@ -473,6 +473,16 @@ Interface:    net1, via: LLDP, RID: 1, Time: 0 day, 20:28:36
 >[!NOTE]
 >Verify that the output matches your expectations and that all configurations are correct.
 
+## Determine whether to enable SafeMode on storage arrays
+
+Pure Storage arrays support a feature called SafeMode, which is designed to protect against ransomware attacks and other malicious activities. When enabled, snapshots of volumes are periodically created that can't be fully deleted or modified for a configurable retention period. Enabling SafeMode provides protection against loss of data but also uses more storage capacity on the array.
+
+The Operator Nexus platform supports SafeMode being enabled on storage arrays. Volumes are subject to its protection so long as the default Protection Groups include at least one with SafeMode enabled. However, it doesn't directly interact with the generated snapshots, and you need to work with your Pure support representative if you need to recover data from a snapshot.
+
+By default SafeMode is enabled on Pure Storage arrays via a default Protection Group. If you wish to disable it, you can do so by deleting this default Protection Group. If you wish to enable SafeMode with different snapshot frequency or retention settings, you can replace it with a new SafeMode-enabled Protection Group with your desired settings.
+
+For more information about SafeMode and its implications, see the [Pure Storage documentation](https://support.purestorage.com/bundle/m_flasharray_security/page/FlashArray/FlashArray_Security/SafeMode/topics/concept/FlashArray_SafeMode_Introduction_and_Best_Practices.html) (sign-in required). Contact your Pure support representative for further questions about SafeMode and its configuration.
+
 ## Set up first storage array
 
 1. Operator needs to install the storage array hardware as specified by the BOM and rack elevation
@@ -490,7 +500,7 @@ Interface:    net1, via: LLDP, RID: 1, Time: 0 day, 20:28:36
 4. Data provided to the operator and shared with storage array technician, which will be common to
    all installations:
    - Purity Code Level: Refer to [supported Purity versions]
-   - Safe Mode: Disabled
+   - Safe Mode: Refer to [Determine whether to enable SafeMode on storage arrays](#determine-whether-to-enable-safemode-on-storage-arrays)
    - Array Timezone: UTC
    - DNS (Domain Name System) Server IP Address: not set by operator during setup
    - DNS Domain Suffix: not set by operator during setup
@@ -537,7 +547,7 @@ Interface:    net1, via: LLDP, RID: 1, Time: 0 day, 20:28:36
 ## (Optional) Set up second storage array
 
 >[!NOTE]
-> This section is optional. You only need to execute it if you are deploying an Azure Operator Nexus instance with two storage appliances. For more information, including restrictions on supported hardware, see [Azure Operator Nexus multiple storage appliances](./concepts-storage-multiple-appliances.md).
+> This section is optional. You only need to execute it if you're deploying an Azure Operator Nexus instance with two storage appliances. For more information, including restrictions on supported hardware, see [Azure Operator Nexus multiple storage appliances](./concepts-storage-multiple-appliances.md).
 
 1. Operator needs to install the storage array hardware as specified by the BOM and rack elevation
    within the Aggregation Rack.
@@ -554,7 +564,7 @@ Interface:    net1, via: LLDP, RID: 1, Time: 0 day, 20:28:36
 4. Data provided to the operator and shared with storage array technician, which will be common to
    all installations:
    - Purity Code Level: Refer to [supported Purity versions]
-   - Safe Mode: Disabled
+   - Safe Mode: Refer to [Determine whether to enable SafeMode on storage arrays](#determine-whether-to-enable-safemode-on-storage-arrays)
    - Array Timezone: UTC
    - DNS (Domain Name System) Server IP Address: not set by operator during setup
    - DNS Domain Suffix: not set by operator during setup

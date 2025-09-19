@@ -84,7 +84,7 @@
       "build_output_subfolder": "operator-nexus",
       "locale": "en-us",
       "monikers": [],
-      "open_to_public_contributors": false,
+      "open_to_public_contributors": true,
       "type_mapping": {
         "Conceptual": "Content"
       },
@@ -129,7 +129,7 @@
       "branch_mapping": {}
     },
     {
-      "path_to_root": "azure-stack/reusable-content",
+      "path_to_root": "reusable-content",
       "url": "https://github.com/MicrosoftDocs/reusable-content",
       "branch": "main",
       "branch_mapping": {}
@@ -168,4 +168,5 @@
     ".openpublishing.redirection.azure-local.json",
     ".openpublishing.redirection.hub-hotfixes.json"
   ]
+
 }

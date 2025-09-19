@@ -15,7 +15,7 @@ In managing network infrastructure, deleting Layer 3 (L3) Isolation Domains (ISD
 
 Below are the steps involved:
 
- [!INCLUDE [azure-cli-prepare-your-environment.md](~/../azure-stack/reusable-content/azure-cli/azure-cli-prepare-your-environment.md)]
+ [!INCLUDE [azure-cli-prepare-your-environment.md](~/../reusable-content/azure-cli/azure-cli-prepare-your-environment.md)]
 
 1. **Set subscription (if necessary):**
  

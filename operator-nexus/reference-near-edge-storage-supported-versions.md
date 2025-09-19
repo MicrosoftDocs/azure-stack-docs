@@ -92,9 +92,7 @@ Contact your Pure support representative for further questions about Purity upgr
 
 ## Upgrade requirements
 
-The following Purity configuration settings must be set over upgrade.
-
-* Safe Mode: Disabled
+If you're upgrading from Purity 6.1.x to 6.5.x or beyond, you must decide whether or not to enable SafeMode on your storage arrays. For more information about SafeMode, see [Determine whether to enable SafeMode on storage arrays](./howto-platform-prerequisites.md#determine-whether-to-enable-safemode-on-storage-arrays).
 
 ## Supported Pure FlashArray Expansion Shelf firmware versions
 
