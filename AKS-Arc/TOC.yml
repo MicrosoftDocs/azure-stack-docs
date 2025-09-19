@@ -121,6 +121,8 @@
       items:
       - name: Manage multiple node pools
         href: manage-node-pools.md
+      - name: Windowsnode pools
+        href: use-windows-node-pools.md
       - name: Use GPUs
         href: deploy-gpu-node-pool.md
     - name: Cluster management

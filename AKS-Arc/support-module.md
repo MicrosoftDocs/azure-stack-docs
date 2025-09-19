@@ -10,9 +10,25 @@ ms.lastreviewed: 07/22/2025
 
 ---
 
-# Support.AksArc module
+# Use the Support Tool to troubleshoot and fix AKS Arc related issues
 
-The [**Support.AksArc**](https://www.powershellgallery.com/packages/Support.AksArc) PowerShell module provides diagnostic and remediation capabilities for AKS Arc environments. Before you open a support request, you can run the specified commands in this module to help diagnose and potentially resolve issues.
+The [**Support Tool**](https://www.powershellgallery.com/packages/Support.AksArc) is a PowerShell module provides diagnostic and remediation capabilities for AKS Arc environments. Before you open a support request, you can run the specified commands in this module to help diagnose and potentially resolve issues. 
+
+## Benefits
+
+The Support Tool uses simple commands to identify issues without expert product knowledge.
+
+The tool provides:
+
+- **Fixes installation and upgrade issues**: Identifies and attempts to remediate common issues that occur during installation and upgrade process.
+
+- **Diagnostic checks**: Provides diagnostic health checks based on common issues, incidents, and telemetry data.
+
+- **Enabled Windows nodepool feature**: Allows users to enable Windows nodepool and download the required VHDs before creating Windows nodepools.
+
+- **Regular updates**: Updates with new checks and useful commands to manage, troubleshoot, and diagnose issues on AKS Arc.
+
+## Common Issues where the Support tool might help
 
 You should run the commands if you experience any of the following symptoms:
 
@@ -21,6 +37,74 @@ You should run the commands if you experience any of the following symptoms:
 - MOC service doesn't stay online.
 - Arc Resource Bridge is offline.
 
+## Prerequisites
+
+Before you begin, make sure that:
+
+- You have access to an Azure Local system that is running 2311 or higher. The system should be registered in Azure.
+- You have access to a client that can connect to your Azure Local. <!--This client should be running PowerShell 5.0 or later.-->
+
+
+## Connect to your Azure Local
+
+Follow these steps on your client to connect to one of the machines in your Azure Local.
+
+1. Run PowerShell as administrator on the client that you're using to connect to your system.
+2. Open a remote PowerShell session to a machine on your Azure Local. Run the following command and provide the credentials of your machine when prompted:
+
+    ```powershell
+    $cred = Get-Credential
+    Enter-PSSession -ComputerName "<Azure Local node IP>" -Credential $cred 
+    ```
+
+    > [!NOTE]
+    > Sign in using your deployment user account credentials. This is the account you created when preparing [Active Directory](../deploy/deployment-prep-active-directory.md) and used to deploy Azure Local.
+
+
+    <details>
+    <summary>Expand this section to see an example output.</summary>
+
+
+    Here's an example output:
+
+    ```Console
+    PS C:\Users\Administrator> $cred = Get-Credential
+     
+    cmdlet Get-Credential at command pipeline position 1
+    Supply values for the following parameters:
+    Credential
+    PS C:\Users\Administrator> Enter-PSSession -ComputerName "100.100.100.10" -Credential $cred 
+    [100.100.100.10]: PS C:\Users\Administrator\Documents>
+    ```
+
+    </details>
+
+## Installation
+
+To install the Support tool module, run the following commands:
+
+```powershell
+Install-Module -Name Support.AksArc
+Import-Module Support.AksArc -force
+```
+
+If you already have the module installed, you can update using the following cmdlet:
+
+```powershell
+Update-Module -Name Support.AksArc
+```
+
+>[!NOTE]
+>When you import the module, it attempts to automatically update from PowerShell gallery. You can also update manually using methods below.
+
+Ensure that you have the latest module loaded into the current runspace by removing and importing the module.
+
+```powershell
+Remove-Module -Name Support.AksArc
+Import-Module -Name Support.AksArc
+```
+
+
 ## Commands
 
 The **Support.AksArc** module contains the following PowerShell commands:
@@ -28,33 +112,28 @@ The **Support.AksArc** module contains the following PowerShell commands:
 - `Test-SupportAksArcKnownIssues`: tests for known issues.
 - `Invoke-SupportAksArcRemediation`: fixes identified issues.
 
-## Installation
+## Use the AKS Arc Support Tool
 
-To install the module, run the following commands:
-
-```powershell
-Install-Module -Name Support.AksArc
-Import-Module Support.AksArc
-```
-
-## Usage
+This section provides different cmdlets available in the Support Tool.
 
 > [!NOTE]
 > Make sure to run these PowerShell commands locally, not in a PowerShell remote session.
 
-The following command performs a health check:
+### View available cmdlets
+
+To see a list of available cmdlets within the PowerShell module, run the following cmdlet:
+
+```powershell
+Get-Command -Module Support.AksArc
+```
+
+### Perform diagnostic checks
+
+You can perform a diagnostic health check against the system to help detect common issues.
 
 ```powershell
 Test-SupportAksArcKnownIssues
 ```
-
-This command performs auto-remediation (tests and fixes all issues):
-
-```powershell
-Invoke-SupportAksArcRemediation
-```
-
-## Example output
 
 The following example output from the `Test-SupportAksArcKnownIssues` command shows the results of a failed test:
 
@@ -96,6 +175,31 @@ Validate Windows Event Log Running                         Passed  Windows Event
 Validate Gallery Image Stuck In Deleting                   Passed  No gallery images are stuck in deleting state.
 Validate Virtual Machine Stuck In Pending                  Passed  No virtual machines are stuck in pending state.
 Validate Virtual Machine Management Service Responsiveness Passed  Virtual Machine Management service is responsive.
+```
+
+### Remdediate common issues
+
+This command tests and fixes known issues with a given solution version. 
+
+```powershell
+Invoke-SupportAksArcRemediation
+```
+
+### Enable Windows node pool feature
+
+This command enables the Windows nodepool feature on your AKS Arc cluster. 
+
+```powershell
+Invoke-SupportAksArcRemediation_EnableWindowsNodepool -Verbose
+```
+
+### Disable Windows node pool feature
+
+This command disables the Windows nodepool feature on your AKS Arc cluster.  Before running this command, ensure that you have no[Windows-based nodepools](use-windows-node-pool.md) running on your cluster. 
+
+```powershell
+
+Invoke-SupportAksArcRemediation_DisableWindowsNodepool -Verbose
 ```
 
 ## Next steps

@@ -28,7 +28,6 @@ Before you begin creating Windows node pools, make sure you have the following p
 - **Custom Location**. Name of the custom location. The custom location is configured during the Azure Local deployment. If you're in the Azure portal, go to the **Overview > Server** page in the Azure Local system resource. You should see a custom location for your cluster.
 - **Azure resource group**. The Azure resource group in which Azure Local is deployed.
 - Access to atleast one node on the Azure Local instance.
-- You have access to an Azure Local system that is running 2311 or higher. The system should be registered in Azure.
 - You have access to a client that can connect to your Azure Local. <!--This client should be running PowerShell 5.0 or later.-->
 
 
@@ -43,7 +42,7 @@ Install the **Support.AksArc** module using the following command:
 
 ```powershell
 Install-Module -Name Support.AksArc
-Import-Module Support.AksArc
+Import-Module Support.AksArc -Force
 ```
 
 You can then run the following command to enable the Windows nodepool feature and download the Windows related VHDs. 
