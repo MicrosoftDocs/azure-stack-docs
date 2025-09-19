@@ -105,7 +105,7 @@ Before you begin, make sure that:
   Uninstall-Module -Name AksHci -Force
   ```
 
-  To avoid any PowerShell version-related issues in your AKS deployment, you can use this [helper script to delete old AKS-HCI PowerShell modules](https://github.com/Azure/aksArc/issues/130).
+  To avoid any PowerShell version-related issues in your AKS deployment, you can use this [helper script to delete old AKS-HCI PowerShell modules](https://github.com/Azure/aksArc/blob/main/scripts/samples/uninstall-akshci.ps1).
 
 - Shut down virtual machines (VMs). To prevent unexpected outages and potential damage to databases, we recommend that you shut down the VMs before you upgrade the OS.
 - You have access to the version 25398.xxxx (23H2) OS software update for Azure Local. This update is available via Windows Update or as a downloadable media. The media must be version **2503** ISO file that you can download from the [Azure portal](https://portal.azure.com/#view/Microsoft_Azure_HybridCompute/AzureArcCenterBlade/~/hciGetStarted).
