@@ -49,6 +49,12 @@ The following table lists the fixed issues in this release:
 | Deployment <!--34633094--> | Disk types aren't being determined correctly resulting in false negative results on storage pool size determination. | Improved validation for resolving disk type when determining storage pool size. |
 | Deployment <!--34493970--> | True max volume size should be calculated and not defaulted to 64 TB. | Improved calculation for maximum volume size. |
 | Deployment <!--34493956--> | Adjusted minimum allocation unit size for thin provisioned volumes.  |  |
+|  <!--34751273--> | Bump SFS version to include image with size 200G |  |
+| Azure Local VMs <!--34502023--> | AKS Arc created cluster isn't working in locked environment with proxy enabled. |  |
+| Azure portal <!--33298772--> | Improved the associate NSG dropdown menu in the Azure portal.|  |
+| Deployment <!--34362314--> | In the 2506 release, KIR registries were added to the incorrect path. | Added registries to the correct path. |
+| Upgrade <!--34800777--> | Fixed an issue where Brownfield upgrade fails on environment checker. |  |
+| Deployment <!--34742895--> | Changed the default OS size for thin provisioned volumes. |  |
 
 ## Known issues
 
@@ -67,7 +73,7 @@ The following table lists the known issues from previous releases:
 
 |Feature  |Issue  |Workaround  |
 |---------|---------|---------|
-| Azure Verification <!--58937961-->  | VMs on Azure Local running Windows Server Azure Edition, Windows 10, or Windows 11 multi-session OS may not activate properly. A pop-up message or a watermark may display, indicating that Windows is not activated. The VM will function, but the watermark will persist. | There's no known workaround in this release. |
+| Azure Verification <!--58937961-->  | VMs on Azure Local running Windows Server Azure Edition, Windows 10, or Windows 11 multi-session OS may not activate properly. A pop-up message or a watermark may display, indicating that Windows isn't activated. The VM will function, but the watermark will persist. | There's no known workaround in this release. |
 | Add server <br> Repair server <!--32447442--> | The `Add-server` and `Repair-server` cmdlets fail with the error: <br> `Cluster Build ID matches node to add's Build ID`. | Use the OS image of the same solution version as that running on the existing cluster. To get the OS image, identify and download the image version from this [Release table](https://github.com/Azure-Samples/AzureLocal/blob/main/os-image/os-image-tracking-table.md). |
 | Deployment <!--33008717--> | In this release and previous releases, registration fails with the following error when you try to register Azure Local machines with Azure Arc: <br>`AZCMAgent command failed with error: >> exitcode: 42. Additional Info: See https://aka.ms/arc/azcmerror`. | For detailed steps on how to resolve this issue, see the [Troubleshooting guide](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/ArcRegistration/TSG-Arc-registration-failing-with-error-42.md). |
 | Azure Local VM management | The Mochostagent service might appear to be running but can get stuck without updating logs for over a month. You can identify this issue by checking the service logs in `C:\programdata\mochostagent\logs` to see if logs are being updated. | Run the following command to restart the mochostagent service: `restart-service mochostagent`. |
@@ -145,7 +151,7 @@ The following table lists the known issues from previous releases:
 
 |Feature  |Issue  |Workaround  |
 |---------|---------|---------|
-| Azure Verification <!--58937961-->  | VMs on Azure Local running Windows Server Azure Edition, Windows 10, or Windows 11 multi-session OS may not activate properly. A pop-up message or a watermark may display, indicating that Windows is not activated. The VM will function, but the watermark will persist. | There's no known workaround in this release. |
+| Azure Verification <!--58937961-->  | VMs on Azure Local running Windows Server Azure Edition, Windows 10, or Windows 11 multi-session OS may not activate properly. A pop-up message or a watermark may display, indicating that Windows isn't activated. The VM will function, but the watermark will persist. | There's no known workaround in this release. |
 | Add server <br> Repair server <!--32447442--> | The `Add-server` and `Repair-server` cmdlets fail with the error: <br> `Cluster Build ID matches node to add's Build ID`. | Use the OS image of the same solution version as that running on the existing cluster. To get the OS image, identify and download the image version from this [Release table](https://github.com/Azure-Samples/AzureLocal/blob/main/os-image/os-image-tracking-table.md). |
 | Deployment <!--33008717--> | In this release and previous releases, registration fails with the following error when you try to register Azure Local machines with Azure Arc: <br>`AZCMAgent command failed with error: >> exitcode: 42. Additional Info: See https://aka.ms/arc/azcmerror`. | For detailed steps on how to resolve this issue, see the [Troubleshooting guide](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/ArcRegistration/TSG-Arc-registration-failing-with-error-42.md). |
 | Azure Local VM management | The Mochostagent service might appear to be running but can get stuck without updating logs for over a month. You can identify this issue by checking the service logs in `C:\programdata\mochostagent\logs` to see if logs are being updated. | Run the following command to restart the mochostagent service: `restart-service mochostagent`. |
@@ -217,7 +223,7 @@ The following table lists the known issues from previous releases:
 
 |Feature  |Issue  |Workaround  |
 |---------|---------|---------|
-| Azure Verification <!--58937961-->  | VMs on Azure Local running Windows Server Azure Edition, Windows 10, or Windows 11 multi-session OS may not activate properly. A pop-up message or a watermark may display, indicating that Windows is not activated. The VM will function, but the watermark will persist. | There's no known workaround in this release. |
+| Azure Verification <!--58937961-->  | VMs on Azure Local running Windows Server Azure Edition, Windows 10, or Windows 11 multi-session OS may not activate properly. A pop-up message or a watermark may display, indicating that Windows isn't activated. The VM will function, but the watermark will persist. | There's no known workaround in this release. |
 | Add server <br> Repair server <!--32447442--> | The `Add-server` and `Repair-server` cmdlets fail with the error: <br> `Cluster Build ID matches node to add's Build ID`. | Use the OS image of the same solution version as that running on the existing cluster. To get the OS image, identify and download the image version from this [Release table](https://github.com/Azure-Samples/AzureLocal/blob/main/os-image/os-image-tracking-table.md). |
 | Deployment <!--33008717--> | In this release and previous releases, registration fails with the following error when you try to register Azure Local machines with Azure Arc: <br>`AZCMAgent command failed with error: >> exitcode: 42. Additional Info: See https://aka.ms/arc/azcmerror`. | For detailed steps on how to resolve this issue, see the [Troubleshooting guide](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/ArcRegistration/TSG-Arc-registration-failing-with-error-42.md). |
 | Azure Local VM management | The Mochostagent service might appear to be running but can get stuck without updating logs for over a month. You can identify this issue by checking the service logs in `C:\programdata\mochostagent\logs` to see if logs are being updated. | Run the following command to restart the mochostagent service: `restart-service mochostagent`. |
@@ -267,7 +273,7 @@ The following table lists the fixed issues in this release:
 
 |Feature|Issue|Workaround/Comments|
 |------|------|----------|
-| Azure Local VMs <!--30035765-->| When creating a VM, there is no option to prompt for password. | Password is prompted when `--password` is not explicitly passed. This provides customers a more secure way to input password.  |
+| Azure Local VMs <!--30035765-->| When creating a VM, there is no option to prompt for password. | Password is prompted when `--password` isn't explicitly passed. This provides customers a more secure way to input password.  |
 | Azure Local VMs <!--32130105--> | When creating a VM, `--admin-username` and `--password` are required for guest management enablement. | Unbound requirement for guest management enablement. Now, when creating a VM, `--admin-username` and `--password` are required unless the OS disk is provided or the `--authentication-type` is `ssh`. |
 | Azure Local VMs <!--32417179--> | In some cases, VM update operations were incorrectly shown as successful on the Azure portal even though they had failed in the underlying infrastructure.  | Improved error reporting to ensure the Azure portal accurately reflects the true status of VM update operations. |
 | Azure Local VMs <!--32503885--> | Deleting a logical network with an attached AKS cluster would leave behind orphaned on-premises resources.  | Properly detects and handles AKS cluster dependencies during logical network deletion to prevent resource leaks. |
@@ -298,7 +304,7 @@ The following table lists the known issues from previous releases:
 
 |Feature  |Issue  |Workaround  |
 |---------|---------|---------|
-| Azure Verification <!--58937961-->  | VMs on Azure Local running Windows Server Azure Edition, Windows 10, or Windows 11 multi-session OS may not activate properly. A pop-up message or a watermark may display, indicating that Windows is not activated. The VM will function, but the watermark will persist. | There's no known workaround in this release. |
+| Azure Verification <!--58937961-->  | VMs on Azure Local running Windows Server Azure Edition, Windows 10, or Windows 11 multi-session OS may not activate properly. A pop-up message or a watermark may display, indicating that Windows isn't activated. The VM will function, but the watermark will persist. | There's no known workaround in this release. |
 | Add server <br> Repair server <!--32447442--> | The `Add-server` and `Repair-server` cmdlets fail with the error: <br> `Cluster Build ID matches node to add's Build ID`. | Use the OS image of the same solution version as that running on the existing cluster. To get the OS image, identify and download the image version from this [Release table](https://github.com/Azure-Samples/AzureLocal/blob/main/os-image/os-image-tracking-table.md). |
 | Deployment <!--33008717--> | In this release and previous releases, registration fails with the following error when you try to register Azure Local machines with Azure Arc: <br>`AZCMAgent command failed with error: >> exitcode: 42. Additional Info: See https://aka.ms/arc/azcmerror`. | For detailed steps on how to resolve this issue, see the [Troubleshooting guide](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/ArcRegistration/TSG-Arc-registration-failing-with-error-42.md). |
 | Azure Local VM management | The Mochostagent service might appear to be running but can get stuck without updating logs for over a month. You can identify this issue by checking the service logs in `C:\programdata\mochostagent\logs` to see if logs are being updated. | Run the following command to restart the mochostagent service: `restart-service mochostagent`. |
@@ -364,7 +370,7 @@ The following table lists the fixed issues in this release:
 | Solution extension <!--32616426--> | Changed the severity level for the health check that validates the plugin's presence. | |
 | Azure portal <!--32131565--> | Added a fix to fetch Storage account properties during redeployment. | |
 | Azure portal <!--32105125--> | Added an error message about subscription access rights during Azure Local download. | |
-| Azure portal <!--32379635--> | Added a warning message if the subscription is not registered during the Azure Local download. | |
+| Azure portal <!--32379635--> | Added a warning message if the subscription isn't registered during the Azure Local download. | |
 | Azure portal <!--32694573--> | Improved logic to show Azure Arc-enabled machines for selection during deployment. | |
 | Azure portal <!--32756322--> | Enhanced the setting of machines' state during deployment. | |
 | Azure portal <!--30482549--> | Improved error handling and data processing. | |
@@ -383,7 +389,7 @@ The following table lists the known issues in this release:
 |Feature  |Issue  |Workaround  |
 |---------|---------|---------|
 | Update <!--54889342--> |  A critical VM operational status not OK alert is shown in the Azure portal under **Update readiness** and in the **Alerts** pane after the update has completed successfully. Additionally, the alert appears when running the `Get-HealthFault` cmdlet. | No action is required on your part. This alert will resolve automatically in a few days. |
-| Deployment <!--33153622-->| Updating Azure Arc extensions manually from the Azure Local Machine page via the Azure portal will result in issues during deployment. The extensions that shouldn't be updated manually are: `AzureEdgeDeviceManagement`, `AzureEdgeLifecycleManager`, and `AzureEdgeAKVBackupForWindows`. | Installing extensions manually from the Azure Local machine page is not supported. |
+| Deployment <!--33153622-->| Updating Azure Arc extensions manually from the Azure Local Machine page via the Azure portal will result in issues during deployment. The extensions that shouldn't be updated manually are: `AzureEdgeDeviceManagement`, `AzureEdgeLifecycleManager`, and `AzureEdgeAKVBackupForWindows`. | Installing extensions manually from the Azure Local machine page isn't supported. |
 | Upgrade <!--33417006-->| The upgrade banner is currently available for users using the Azure Government cloud. However, the environment checker fails, suggesting that Azure Government clouds are not supported. | There's no workaround in this release. If you encounter this issue, contact Microsoft Support to determine next steps. |
 
 
@@ -451,7 +457,7 @@ The following table lists the fixed issues in this release:
 | Solution extension <!--31632765--> | Added specification of plug-in name in the solution extension. | |
 | Solution extension <!--32105125--> | Fixed issue where system was unable to get available solution extension updates. | |
 | Update <!--26952715--> | Simplified the Azure portal experience for viewing the progress and history of update runs. | |
-| Update  | When monitoring update progress in the Azure Update Management portal, the progress might appear to not have updated for several hours. | Run `Get-SolutionUpdate` on one of the cluster nodes. If an update object is returned, the update might be taking longer than expected but it is progressing. If an update object is not returned, the update may be stalled. For detailed steps on how to resolve this issue, see the [Troubleshooting guide](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/Update/Get-SolutionUpdate-GatewayTimeout.md).|
+| Update  | When monitoring update progress in the Azure Update Management portal, the progress might appear to not have updated for several hours. | Run `Get-SolutionUpdate` on one of the cluster nodes. If an update object is returned, the update might be taking longer than expected but it is progressing. If an update object isn't returned, the update may be stalled. For detailed steps on how to resolve this issue, see the [Troubleshooting guide](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/Update/Get-SolutionUpdate-GatewayTimeout.md).|
 
 ## Known issues in this release
 
@@ -464,7 +470,7 @@ The following table lists the known issues in this release:
 | Security management <!--57340784--> | The **Security defaults**, **Application control**, and **Data protections** pages show *Unknown* for all security settings. | This issue is only in the security compliance report. The states of the security settings are unaffected. Use PowerShell to verify the compliance status of the security settings. <br><br>For more information, see [Manage secure baseline via PowerShell cmdlets](./manage/manage-secure-baseline.md#powershell-cmdlet-properties) |
 | Deployment <!--33008717--> | In this release and previous releases, registration fails with the following error when you try to register Azure Local machines with Azure Arc: <br>`AZCMAgent command failed with error: >> exitcode: 42. Additional Info: See https://aka.ms/arc/azcmerror`. | For detailed steps on how to resolve this issue, see the [Troubleshooting guide](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/ArcRegistration/TSG-Arc-registration-failing-with-error-42.md). |
 | Azure Arc registration <!-- 32995193 --> | When registering a new machine with Azure Arc, registration fails during `ImageRecipeValidationTests` with the following error:<br>` "Responses": [ { "Name": "ImageRecipeValidation", "Status": "Failed", "Errors": [ { "ErrorMessage": "Diagnostics failed for the test category: ImageRecipeValidation.", "StackTrace": null, "ExceptionType": "DiagnosticsTestFailedException", "RecommendedActions": [ "Please contact Microsoft support." ] } ] } ` | For detailed steps on how to resolve this issue, see the [Troubleshooting guide](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/ArcRegistration/TSG-Arc-registration-failing-with-error-42.md). |
-| Deployment <!--642400448--> | In the 2504 release, when you run the **Install Azure Stack HCI** wizard and select a time zone, the system continues to use Pacific Standard Time (PST), regardless of your selection. | This is not a blocking issue, and deployment will still complete successfully. |
+| Deployment <!--642400448--> | In the 2504 release, when you run the **Install Azure Stack HCI** wizard and select a time zone, the system continues to use Pacific Standard Time (PST), regardless of your selection. | This isn't a blocking issue, and deployment will still complete successfully. |
 
 ## Known issues from previous releases
 
