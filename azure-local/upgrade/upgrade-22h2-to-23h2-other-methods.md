@@ -51,7 +51,7 @@ Before you begin, make sure that:
 - You have access to a client that can connect to your Azure Local. This client should be running PowerShell 5.0 or later.
 - You run the `RepairRegistration` cmdlet only if both of the following conditions apply:
 
-   - The *identity* property is either missing or doesn’t contain `type = "SystemAssigned"`.
+   - The *identity* property is either missing or doesn't contain `type = "SystemAssigned"`.
       - Check this in the Resource JSON in the Azure portal
       - Or run the `Get-AzResource -Name <cluster_name>` PowerShell cmdlet
    - The **Cloud Management** cluster group is not present. Check it by running the `Get-ClusterGroup` PowerShell cmdlet.
