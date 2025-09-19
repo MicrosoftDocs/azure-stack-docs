@@ -112,7 +112,7 @@ Before you begin, make sure that:
 - You have access to a client that can connect to your Azure Local instance. This client should be running PowerShell 5.0 or later.
 - You run the `RepairRegistration` cmdlet only if both of the following conditions apply:
 
-   - The *identity* property is either missing or doesn’t contain `type = "SystemAssigned"`.
+   - The *identity* property is either missing or doesn't contain `type = "SystemAssigned"`.
       - Check this in the Resource JSON in the Azure portal
       - Or run the `Get-AzResource -Name <cluster_name>` PowerShell cmdlet
    - The **Cloud Management** cluster group is not present. Check it by running the `Get-ClusterGroup` PowerShell cmdlet.
@@ -154,7 +154,7 @@ Before you begin, make sure that:
    | Intel | 1.15.121.0 | 1.17.73.0 |
    | NVIDIA | 24.4.26429.0 | 25.4.50020 |
 
-- Ensure the instance is properly registered. If the *identity* property is missing or doesn’t contain `type = "SystemAssigned"`, run the following command to repair the registration:
+- Ensure the instance is properly registered. If the *identity* property is missing or doesn't contain `type = "SystemAssigned"`, run the following command to repair the registration:
 
    ```powershell
    Register-AzStackHCI -TenantId "<tenant_ID>" -SubscriptionId "<subscription_ID>" -ComputerName "<computer_name>" -RepairRegistration
