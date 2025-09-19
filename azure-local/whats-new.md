@@ -5,7 +5,7 @@ ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 09/15/2025
+ms.date: 09/19/2025
 ---
 
 # What's new in Azure Local?
