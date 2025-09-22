@@ -265,7 +265,7 @@ items:
     href: update/import-discover-updates-offline-23h2.md
   - name: Update via Azure portal
     href: update/azure-update-manager-23h2.md
-  - name: Update best practices 
+  - name: Review best practices 
     href: update/update-best-practices.md
   - name: Troubleshoot updates
     href: update/update-troubleshooting-23h2.md
@@ -329,6 +329,9 @@ items:
           items: 
           - name: Using Ubuntu VM image
             href: manage/virtual-machine-image-linux-sysprep.md
+            items:
+            - name: Using Ubuntu Azure Marketplace image
+              href: manage/virtual-machine-azure-marketplace-ubuntu.md
           - name: Using CentOS VM image 
             href: manage/virtual-machine-image-centos.md
           - name: Using Red Hat Enterprise VM image

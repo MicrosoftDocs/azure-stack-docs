@@ -3,7 +3,7 @@ title: About Azure Local upgrades
 description: This article provides an overview of upgrading your cluster to Azure Local.
 author: alkohli
 ms.topic: upgrade-and-migration-article
-ms.date: 09/03/2025
+ms.date: 09/11/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -65,7 +65,7 @@ Azure Local upgrade supports the following services and workloads:
 
 | Workload/Configuration | Currently supported |
 |--|--|
-| Azure Kubernetes (AKS) on Azure Local | See notes <br> Kubernetes versions are incompatible between the *old* and *new* Azure Local versions. <br> Before applying the solution upgrade, wait for the solution upgrade banner to appear on your Azure Local resource page. Then, remove AKS and all the settings from AKS enabled by Azure Arc. |
+| Azure Kubernetes (AKS) on Azure Local | Kubernetes versions are incompatible between the old and new Azure Local versions. <br> Before you apply the OS upgrade, it's important to uninstall AKS Arc and all its settings using the [Uninstall-Aks-Hci](/azure/aks/hybrid/reference/ps/uninstall-akshci) command.  |
 | Azure Local VMs enabled by Azure Arc | See notes <br> Preview versions of Azure Local VMs can't be upgraded. |
 | Stretched clusters on Azure Local | Yes <br> You must upgrade to Azure Stack HCI OS, version 23H2 to maintain your cluster in a supported state. For more information, see [Upgrade stretched clusters from Azure Stack HCI OS, version 22H2 to 23H2](../upgrade/ugrade-stretched-cluster-to-23h2.md). <br> The solution upgrade isn't applicable for stretched clusters. |
 | System Center Virtual Machine Manager (SCVMM) | Yes <br> If your Azure Local instance running version 22H2 is managed by SCVMM 2025, the OS upgrade is supported. |
