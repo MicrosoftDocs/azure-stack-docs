@@ -46,6 +46,13 @@ This release has the following features and improvements:
 
 - **Azure Local VM updates**:
     - **Enhanced storage path deletion workflow** - Starting with this release, you can view all the dependent resources linked to a storage path before deletion. Azure portal lets you delete both the storage path and its dependent resources in a single, streamlined action, making cleanup faster and more intuitive.
+    - **Live update memory of an Azure Local VM** - You can now live update (VM remains running) the memory of a VM. A restart may be required only if the guest OS does not support live memory updates.
+
+- **AKS enabled by Azure Arc changes**
+    - The default disk size on the AKS VM is increased from 100 GB to 200 GB.
+    - The default Windows node pool feature is set to false.
+    
+- **Azure Local deployment using local identity** include zone name for both external and internal DNS servers.
 
 - **Documentation updates**: The noteworthy changes include the following new articles or articles with major updates:
 
