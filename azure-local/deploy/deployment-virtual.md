@@ -43,9 +43,9 @@ Before you begin, make sure that:
     | Component | Minimum |
     | ------------- | -------- |
     | Processor| Intel VT-x or AMD-V, with support for nested virtualization. For more information, see [Does My Processor Support Intel&reg; virtualization technology?](https://www.intel.com/content/www/us/en/support/articles/000005486/processors.html)
-    | Memory| The physical host must have a minimum of 32 GB RAM for single virtual node deployments. The virtual host VM should have at least 24 GB RAM.<br><br>The physical host must have a minimum of 64 GB RAM for two virtual node deployments. Each virtual host VM should have at least 24 GB RAM for deployment and 32 GB for applying updates.|
-    | Host network adapters| A single network adapter.|
-    | Storage| 1 TB Solid state drive (SSD). |
+    | Memory| The physical host must have a minimum of 48 GB RAM for single virtual node deployments. The virtual host VM should have at least 32 GB RAM.<br><br>The physical host must have a minimum of 72 GB RAM for two virtual node deployments. Each virtual host VM should have at least 32 GB RAM for deployment and for applying updates.|
+    | Host network adapters | A single network adapter. |
+    | Storage | 1 TB Solid state drive (SSD). |
 
 ### Virtual host requirements
 
@@ -60,7 +60,7 @@ Before you begin, make sure that each virtual host system can dedicate the follo
 | Boot disk | One disk to install the Azure Stack HCI operating system from ISO. At least 127 GB. |
 | Hard disks for Storage Spaces Direct | Two dynamic expanding disks. Maximum disk size is 1024 GB. |
 | Data disks | At least 127 GB each. The size must be the same for each disk. |
-| Time synchronization in integration  | Disabled. |
+| Time synchronization in integration | Disabled. |
 
 > [!NOTE]
 > These are the minimum requirements to successfully deploy Azure Local. Increase the capacity like virtual cores and memory when running actual workloads like virtual machines or containers.
