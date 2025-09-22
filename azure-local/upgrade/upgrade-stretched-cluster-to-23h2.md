@@ -220,7 +220,7 @@ After you update your stretched cluster from version 22H2 to 23H2, check that th
 
 ## Troubleshoot volumes
 
-If you have updated your stretched cluster from version 22H2 to 23H2 before this release, you might encounter issues with your volumes. To remediate these issues, follow these steps:
+If you've updated your stretched cluster from version 22H2 to 23H2 before this release, you might encounter issues with your volumes. To remediate these issues, follow these steps:
 
 1. Stop the Storage Replica partnership.
 
