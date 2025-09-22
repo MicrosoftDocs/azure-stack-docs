@@ -59,7 +59,7 @@ This release has the following features and improvements:
 
     - **Upgrade and update docs changes** include new articles and major updates to existing articles:
         - [**Opt in update to Azure Local solution versions 12.25x**](./update/update-opt-enable.md) is released.
-        <!--- [**Upgrade OS for stretch clusters via PowerShell**](./upgrade/upgrade-stretched-cluster-to-23h2.md) is released.-->
+        - [**Upgrade OS for stretch clusters via PowerShell**](./upgrade/upgrade-stretched-cluster-to-23h2.md) is released.
         - [**Install solution upgrade on Azure Local using Azure Resource Manager template**](./upgrade/install-solution-upgrade-azure-resource-manager-template.md) is released.
         - [**ARM template parameters**](./deploy/deployment-azure-resource-manager-template.md#arm-template-parameters-reference) reference is added.
         - [**Update best practices**](./update/update-best-practices.md) is released.
