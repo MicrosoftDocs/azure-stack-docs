@@ -4,7 +4,7 @@ description: Learn the process for upgrading Cluster for Operator Nexus with ste
 author: bartpinto 
 ms.author: bpinto
 ms.service: azure-operator-nexus
-ms.date: 04/24/2025
+ms.date: 09/19/2025
 ms.topic: how-to
 ms.custom: azure-operator-nexus, template-include
 ---
@@ -136,6 +136,7 @@ If any failures occur, report the <MISE_CID>, <CORRELATION_ID>, status code, and
    ```
 
    Validate the following resource states for each BMM (except spare):
+   - Role: compute-plane
    - ReadyState: True
    - ProvisioningState: Succeeded
    - DetailedStatus: Provisioned
@@ -143,25 +144,26 @@ If any failures occur, report the <MISE_CID>, <CORRELATION_ID>, status code, and
    - PowerState: On
 
    One control-plane BMM is labeled as a spare with the following BMM status profile:
+   - Role: control-plane
    - ReadyState: False
    - ProvisioningState: Succeeded
    - DetailedStatus: Available
-   - CordonStatus: Uncordoned
+   - CordonStatus: Cordoned
    - PowerState: Off
 
-3. Collect a profile of the tenant workloads:
+4. Collect a profile of the tenant workloads:
    ```
    az networkcloud virtualmachine list --sub <CUSTOMER_SUB_ID> --query "reverse(sort_by([?clusterId=='<CLUSTER_RID>'].{name:name, createdAt:systemData.createdAt, resourceGroup:resourceGroup, powerState:powerState, provisioningState:provisioningState, detailedStatus:detailedStatus,bareMetalMachineId:bareMetalMachineIdi,CPUCount:cpuCores, EmulatorStatus:isolateEmulatorThread}, &createdAt))" -o table
    az networkcloud kubernetescluster list --sub <CUSTOMER_SUB_ID> --query "[?clusterId=='<CLUSTER_RID>'].{name:name, resourceGroup:resourceGroup, provisioningState:provisioningState, detailedStatus:detailedStatus, detailedStatusMessage:detailedStatusMessage, createdAt:systemData.createdAt, kubernetesVersion:kubernetesVersion}" -o table
    ```
 
-4. Review Operator Nexus Release notes for required checks and configuration updates not included in this document.
+5. Review Operator Nexus Release notes for required checks and configuration updates not included in this document.
 
 </details>
 
 ## Upgrade Procedure
 <details>
-<summary> Custer runtime uUpgrade procedure details </summary>
+<summary> Cluster runtime upgrade procedure details </summary>
 
 ### Cluster upgrade settings defaults
 The default threshold for the percent of Compute BMM to pass hardware validation and provisioning is 80% with a default pause between Racks of one minute.
