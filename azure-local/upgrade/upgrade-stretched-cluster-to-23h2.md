@@ -217,6 +217,8 @@ After you update your stretched cluster from version 22H2 to 23H2, check that th
 1. Make sure all volumes are up. To check volume status, run the `Get-ClusterSharedVolumeState` command.
 
 1. Check that the partnerships are set correctly. Make sure the replication status in all groups (from the output of `Get-SRGroup`) shows its `ContinuouslyReplicating` or `ContinuouslyReplicating_InRpo`.
+n
+1. Make sure to perform the post-upgrade steps described in [Perform post operating system upgrade steps on Azure Local via PowerShell](post-upgrade-steps.md).
 
 ## Troubleshoot volumes
 
