@@ -52,7 +52,7 @@ Before you begin, make sure:
 
 - You shut down virtual machines (VMs). We recommend shutting down VMs before performing the OS upgrade to prevent unexpected outages and damage to databases.
 
-- You have the Azure Local version [2509 ISO file download](http://aka.ms/hcireleaseimage/11.2509).
+- You have the Azure Local version [2509 ISO file download](https://aka.ms/hcireleaseimage/11.2509).
 
 - You run the `RepairRegistration` cmdlet only if both of the following conditions apply:
 
@@ -239,7 +239,7 @@ If you have updated your stretched cluster from version 22H2 to 23H2 before this
 
    1. Use `Get-SRPartnership` to ensure the partnership is removed.
 
-1. Update to the new version using the [2509 ISO file download](http://aka.ms/hcireleaseimage/11.2509).
+1. Update to the new version using the [2509 ISO file download](https://aka.ms/hcireleaseimage/11.2509).
 
 1. Recreate the Storage Replica partnership.
 
