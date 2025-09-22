@@ -153,10 +153,12 @@ Follow these steps to create an example VM named `Node1` using PowerShell cmdlet
     Get-VmNetworkAdapter -VmName "Node1" |Connect-VmNetworkAdapter -SwitchName "virtual_switch_name"
     ```
 
-1. Enable MAC spoofing *on all network adapters* on VM `Node1`. MAC address spoofing is a technique that allows a network adapter to masquerade as another by changing its Media Access Control (MAC) address. This is required in scenarios where you're planning to use nested virtualization:
+1. Enable MAC spoofing *on all network adapters* on VM `Node1`. MAC address spoofing is a technique that allows a network adapter to masquerade as another by changing its Media Access Control (MAC) address. 
+In addition we need to enable teaming *on all network adapters*, because NetworkATC will team vNICs for the management / compute intent, and depending on the configuration (storage switched) aswell on the storage vNICs.
+This is required in scenarios where you're planning to use nested virtualization:
 
     ```PowerShell
-    Get-VmNetworkAdapter -VmName "Node1" |Set-VmNetworkAdapter -MacAddressSpoofing On
+    Get-VmNetworkAdapter -VmName "Node1" |Set-VmNetworkAdapter -MacAddressSpoofing On -Allow Teaming On
     ```
 
 1. Enable trunk port (for multi-node deployments only) for all network adapters on VM `Node1`. This script configures the network adapter of a specific VM to operate in trunk mode. This is typically used in multi-node deployments where you want to allow multiple Virtual Local Area Networks (VLANs) to communicate through a single network adapter:
