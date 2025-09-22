@@ -1,8 +1,8 @@
 ---
 title: How to use Commit Workflow v2 in Azure Operator Nexus
 description: Learn the process for using Commit Workflow v2 in Nexus Network Fabric
-author: sushantjrao 
-ms.author: sushrao
+author: RaghvendraMandawale
+ms.author: rmandawale
 ms.date: 05/26/2025
 ms.topic: how-to
 ms.service: azure-operator-nexus
@@ -126,6 +126,9 @@ Users may choose to discard pending configuration updates if issues are found du
 
 >[!Note]
 > You can retrieve the CommitBatchId by performing a GET request on the fabric resource with API version `2024-06-15-preview` or above.
+
+>[!Note]
+> It is recommended not to trigger a discard operation after a failed commit, as this may lead to inconsistent configurations between Azure Resource Manager (ARM) and the device. In some cases, a device refresh might be required to reconcile the configuration state across ARM and the device.
 
 > [!IMPORTANT]
 > If your Network Fabric resource is associated with a User Assigned Managed Identity (UAMI)—for example, when using a customer-managed storage account—you must ensure that the Microsoft.ManagedNetworkFabric resource provider has the [Managed Identity Operator (MIO) role](./howto-configure-bring-your-own-storage-network-fabric.md#step3-assign-permissions-to-uami-for-nexus-network-fabric-resource-provider) on the UAMI.
