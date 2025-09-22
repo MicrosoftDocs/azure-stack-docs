@@ -324,967 +324,967 @@
     {
       "source_path": "azure-local/release-information.md",
       "redirect_url": "/previous-versions/azure/azure-local/release-information",
-      "redirect_document_id": false    
+      "redirect_document_id": false
     },
     {
       "source_path": "azure-local/manage/azure-benefits.md",
       "redirect_url": "/previous-versions/azure/azure-local/manage/azure-benefits",
-      "redirect_document_id": false    
+      "redirect_document_id": false
     },
     {
       "source_path": "azure-local/concepts/system-requirements.md",
       "redirect_url": "/previous-versions/azure/azure-local/concepts/system-requirements",
-      "redirect_document_id": false    
+      "redirect_document_id": false
     },
     {
       "source_path": "azure-local/deploy/download-software.md",
       "redirect_url": "/previous-versions/azure/azure-local/deploy/download-software",
-      "redirect_document_id": false    
+      "redirect_document_id": false
     },
     {
       "source_path": "azure-local/deploy/operating-system.md",
       "redirect_url": "/previous-versions/azure/azure-local/deploy/operating-system",
-      "redirect_document_id": false    
+      "redirect_document_id": false
     },
     {
       "source_path": "azure-local/deploy/create-cluster.md",
       "redirect_url": "/previous-versions/azure/azure-local/deploy/create-cluster",
-      "redirect_document_id": false    
+      "redirect_document_id": false
     },
     {
       "source_path": "azure-local/manage/witness.md",
       "redirect_url": "/previous-versions/azure/azure-local/manage/witness",
-      "redirect_document_id": false    
+      "redirect_document_id": false
     },
     {
       "source_path": "azure-local/deploy/register-with-azure.md",
       "redirect_url": "/previous-versions/azure/azure-local/deploy/register-with-azure",
-      "redirect_document_id": false    
+      "redirect_document_id": false
     },
     {
       "source_path": "azure-local/deploy/validate.md",
       "redirect_url": "/previous-versions/azure/azure-local/deploy/validate",
-      "redirect_document_id": false    
+      "redirect_document_id": false
     },
     {
       "source_path": "azure-local/deploy/single-server.md",
       "redirect_url": "/previous-versions/azure/azure-local/deploy/single-server",
-      "redirect_document_id": false    
+      "redirect_document_id": false
     },
     {
       "source_path": "azure-local/manage/single-node-scale-out.md",
       "redirect_url": "/previous-versions/azure/azure-local/manage/single-node-scale-out",
-      "redirect_document_id": false    
+      "redirect_document_id": false
     },
     {
       "source_path": "azure-local/deploy/create-cluster-powershell.md",
       "redirect_url": "/previous-versions/azure/azure-local/deploy/create-cluster-powershell",
-      "redirect_document_id": false    
+      "redirect_document_id": false
     },
     {
       "source_path": "azure-local/deploy/sdn-wizard.md",
       "redirect_url": "/previous-versions/azure/azure-local/deploy/sdn-wizard",
-      "redirect_document_id": false    
+      "redirect_document_id": false
     },
     {
       "source_path": "azure-local/manage/sdn-express.md",
       "redirect_url": "/previous-versions/azure/azure-local/manage/sdn-express",
-      "redirect_document_id": false    
+      "redirect_document_id": false
     },
     {
       "source_path": "azure-local/deploy/branch-office-edge.md",
       "redirect_url": "/previous-versions/azure/azure-local/deploy/branch-office-edge",
-      "redirect_document_id": false    
+      "redirect_document_id": false
     },
     {
       "source_path": "azure-local/deploy/virtual-desktop-infrastructure.md",
       "redirect_url": "/previous-versions/azure/azure-local/deploy/virtual-desktop-infrastructure",
-      "redirect_document_id": false    
+      "redirect_document_id": false
     },
     {
       "source_path": "azure-local/deploy/sql-server.md",
       "redirect_url": "/previous-versions/azure/azure-local/deploy/sql-server",
-      "redirect_document_id": false    
+      "redirect_document_id": false
     },
     {
       "source_path": "azure-local/deploy/trusted-enterprise-virtualization.md",
       "redirect_url": "/previous-versions/azure/azure-local/deploy/trusted-enterprise-virtualization",
-      "redirect_document_id": false    
+      "redirect_document_id": false
     },
     {
       "source_path": "azure-local/manage/windows-server-azure-edition.md",
       "redirect_url": "/previous-versions/azure/azure-local/manage/windows-server-azure-edition",
-      "redirect_document_id": false    
+      "redirect_document_id": false
     },
     {
       "source_path": "azure-local/manage/upgrade-vm-windows-server-azure-edition.md",
       "redirect_url": "/previous-versions/azure/azure-local/manage/upgrade-vm-windows-server-azure-edition",
-      "redirect_document_id": false    
+      "redirect_document_id": false
     },
     {
       "source_path": "azure-local/manage/create-stretched-volumes.md",
       "redirect_url": "/previous-versions/azure/azure-local/manage/create-stretched-volumes",
-      "redirect_document_id": false    
+      "redirect_document_id": false
     },
     {
       "source_path": "azure-local/manage/thin-provisioning.md",
       "redirect_url": "/previous-versions/azure/azure-local/manage/thin-provisioning",
-      "redirect_document_id": false    
+      "redirect_document_id": false
     },
     {
       "source_path": "azure-local/manage/thin-provisioning-conversion.md",
       "redirect_url": "/previous-versions/azure/azure-local/manage/thin-provisioning-conversion",
-      "redirect_document_id": false    
+      "redirect_document_id": false
     },
     {
       "source_path": "azure-local/manage/monitor-hci-single.md",
       "redirect_url": "/previous-versions/azure/azure-local/manage/monitor-hci-single",
-      "redirect_document_id": false    
+      "redirect_document_id": false
     },
     {
       "source_path": "azure-local/manage/monitor-hci-multi.md",
       "redirect_url": "/previous-versions/azure/azure-local/manage/monitor-hci-multi",
-      "redirect_document_id": false    
+      "redirect_document_id": false
     },
     {
       "source_path": "azure-local/manage/monitor-cluster.md",
       "redirect_url": "/previous-versions/azure/azure-local/manage/monitor-cluster",
-      "redirect_document_id": false    
+      "redirect_document_id": false
     },
     {
       "source_path": "azure-local/manage/diskspd-overview.md",
       "redirect_url": "/previous-versions/azure/azure-local/manage/diskspd-overview",
-      "redirect_document_id": false    
+      "redirect_document_id": false
     },
     {
       "source_path": "azure-local/manage/configure-proxy-settings.md",
       "redirect_url": "/previous-versions/azure/azure-local/manage/configure-proxy-settings",
-      "redirect_document_id": false    
+      "redirect_document_id": false
     },
     {
       "source_path": "azure-local/manage/manage-cluster-registration.md",
       "redirect_url": "/previous-versions/azure/azure-local/manage/manage-cluster-registration",
-      "redirect_document_id": false    
+      "redirect_document_id": false
     },
     {
       "source_path": "azure-local/manage/cluster.md",
       "redirect_url": "/previous-versions/azure/azure-local/manage/cluster",
-      "redirect_document_id": false    
+      "redirect_document_id": false
     },
     {
       "source_path": "azure-local/manage/cluster-powershell.md",
       "redirect_url": "/previous-versions/azure/azure-local/manage/cluster-powershell",
-      "redirect_document_id": false    
+      "redirect_document_id": false
     },
     {
       "source_path": "azure-local/manage/update-cluster.md",
       "redirect_url": "/previous-versions/azure/azure-local/manage/update-cluster",
-      "redirect_document_id": false    
+      "redirect_document_id": false
     },
     {
       "source_path": "azure-local/manage/kernel-soft-reboot.md",
       "redirect_url": "/previous-versions/azure/azure-local/manage/kernel-soft-reboot",
-      "redirect_document_id": false    
+      "redirect_document_id": false
     },
     {
       "source_path": "azure-local/manage/add-cluster.md",
       "redirect_url": "/previous-versions/azure/azure-local/manage/add-cluster",
-      "redirect_document_id": false    
+      "redirect_document_id": false
     },
     {
       "source_path": "azure-local/manage/convert-to-stretched-cluster.md",
       "redirect_url": "/previous-versions/azure/azure-local/manage/convert-to-stretched-cluster",
-      "redirect_document_id": false    
+      "redirect_document_id": false
     },
     {
       "source_path": "azure-local/manage/maintain-servers.md",
       "redirect_url": "/previous-versions/azure/azure-local/manage/maintain-servers",
-      "redirect_document_id": false    
+      "redirect_document_id": false
     },
     {
       "source_path": "azure-local/manage/languages.md",
       "redirect_url": "/previous-versions/azure/azure-local/manage/languages",
-      "redirect_document_id": false    
+      "redirect_document_id": false
     },
     {
       "source_path": "azure-local/manage/change-privacy-settings.md",
       "redirect_url": "/previous-versions/azure/azure-local/manage/change-privacy-settings",
-      "redirect_document_id": false    
+      "redirect_document_id": false
     },
     {
       "source_path": "azure-local/hybrid-capabilities-with-azure-services.md",
       "redirect_url": "/previous-versions/azure/azure-local/hybrid-capabilities-with-azure-services",
-      "redirect_document_id": false    
+      "redirect_document_id": false
     },
     {
       "source_path": "azure-local/manage/register-windows-admin-center.md",
       "redirect_url": "/previous-versions/azure/azure-local/manage/register-windows-admin-center",
-      "redirect_document_id": false    
+      "redirect_document_id": false
     },
     {
       "source_path": "azure-local/manage/azure-portal.md",
       "redirect_url": "/previous-versions/azure/azure-local/manage/azure-portal",
-      "redirect_document_id": false    
+      "redirect_document_id": false
     },
     {
       "source_path": "azure-local/manage/manage-default-network-access-policies-virtual-machines.md",
       "redirect_url": "/previous-versions/azure/azure-local/manage/manage-default-network-access-policies-virtual-machines",
-      "redirect_document_id": false    
+      "redirect_document_id": false
     },
     {
       "source_path": "azure-local/deploy/troubleshoot-hci-registration.md",
       "redirect_url": "/previous-versions/azure/azure-local/deploy/troubleshoot-hci-registration",
-      "redirect_document_id": false    
+      "redirect_document_id": false
     },
     {
       "source_path": "azure-local/manage/validate-qos.md",
       "redirect_url": "/previous-versions/azure/azure-local/manage/validate-qos",
-      "redirect_document_id": false    
+      "redirect_document_id": false
     },
     {
       "source_path": "azure-local/manage/troubleshoot-credssp.md",
       "redirect_url": "/previous-versions/azure/azure-local/manage/troubleshoot-credssp",
-      "redirect_document_id": false    
+      "redirect_document_id": false
     },
     {
       "source_path": "azure-local/manage/collect-diagnostic-data.md",
       "redirect_url": "/previous-versions/azure/azure-local/manage/collect-diagnostic-data",
-      "redirect_document_id": false    
+      "redirect_document_id": false
     },
     {
       "source_path": "azure-local/concepts/single-server-clusters.md",
       "redirect_url": "/previous-versions/azure/azure-local/concepts/single-server-clusters",
-      "redirect_document_id": false    
+      "redirect_document_id": false
     },
     {
       "source_path": "azure-local/concepts/stretched-clusters.md",
       "redirect_url": "/previous-versions/azure/azure-local/concepts/stretched-clusters",
-      "redirect_document_id": false    
+      "redirect_document_id": false
     },
     {
       "source_path": "azure-local/concepts/nested-virtualization.md",
       "redirect_url": "/previous-versions/azure/azure-local/concepts/nested-virtualization",
-      "redirect_document_id": false    
+      "redirect_document_id": false
     },
     {
       "source_path": "azure-local/concepts/software-defined-networking.md",
       "redirect_url": "/previous-versions/azure/azure-local/concepts/software-defined-networking",
-      "redirect_document_id": false    
+      "redirect_document_id": false
     },
     {
       "source_path": "azure-local/concepts/plan-software-defined-networking-infrastructure.md",
       "redirect_url": "/previous-versions/azure/azure-local/concepts/plan-software-defined-networking-infrastructure",
-      "redirect_document_id": false    
+      "redirect_document_id": false
     },
     {
       "source_path": "azure-local/concepts/network-controller.md",
       "redirect_url": "/previous-versions/azure/azure-local/concepts/network-controller",
-      "redirect_document_id": false    
+      "redirect_document_id": false
     },
     {
       "source_path": "azure-local/concepts/updates.md",
       "redirect_url": "/previous-versions/azure/azure-local/concepts/updates",
-      "redirect_document_id": false    
+      "redirect_document_id": false
     },
     {
       "source_path": "azure-local/concepts/security.md",
       "redirect_url": "/previous-versions/azure/azure-local/concepts/security",
-      "redirect_document_id": false    
+      "redirect_document_id": false
     },
     {
       "source_path": "azure-local/concepts/utility-applications.md",
       "redirect_url": "/previous-versions/azure/azure-local/concepts/utility-applications",
-      "redirect_document_id": false    
+      "redirect_document_id": false
     },
     {
       "source_path": "azure-local/concepts/data-collection.md",
       "redirect_url": "/previous-versions/azure/azure-local/concepts/data-collection",
-      "redirect_document_id": false    
-    },
-    {
-      "source_path":"azure-stack/operator/compare-azure-azure-stack.md",
-      "redirect_url":"/azure-stack/operator/azure-stack-overview",
       "redirect_document_id": false
     },
     {
-      "source_path":"azure-stack/hci/guided-quick-deploy-eval.md",
-      "redirect_url":"/azure-stack/hci/deploy/deployment-introduction",
+      "source_path": "azure-stack/operator/compare-azure-azure-stack.md",
+      "redirect_url": "/azure-stack/operator/azure-stack-overview",
       "redirect_document_id": false
     },
     {
-      "source_path":"azure-stack/hci/whats-new-in-hci-22h2.md",
-      "redirect_url":"/azure-stack/hci/whats-new?tabs=2408releases",
+      "source_path": "azure-stack/hci/guided-quick-deploy-eval.md",
+      "redirect_url": "/azure-stack/hci/deploy/deployment-introduction",
       "redirect_document_id": false
     },
     {
-      "source_path":"azure-stack/hci/whats-new-in-hci-21h2.md",
-      "redirect_url":"/azure-stack/hci/whats-new?tabs=2408releases",
+      "source_path": "azure-stack/hci/whats-new-in-hci-22h2.md",
+      "redirect_url": "/azure-stack/hci/whats-new?tabs=2408releases",
       "redirect_document_id": false
     },
     {
-      "source_path":"azure-stack/hci/known-issues-2310.md",
-      "redirect_url":"/azure-stack/hci/known-issues-2311",
+      "source_path": "azure-stack/hci/whats-new-in-hci-21h2.md",
+      "redirect_url": "/azure-stack/hci/whats-new?tabs=2408releases",
       "redirect_document_id": false
     },
     {
-      "source_path":"azure-stack/hci/manage/whats-new-2306-preview.md",
-      "redirect_url":"/azure-stack/hci/whats-new?tabs=2408releases",     
+      "source_path": "azure-stack/hci/known-issues-2310.md",
+      "redirect_url": "/azure-stack/hci/known-issues-2311",
       "redirect_document_id": false
     },
     {
-      "source_path":"azure-stack/hci/manage/whats-new-2306-7-preview.md",
-      "redirect_url":"/azure-stack/hci/whats-new?tabs=2408releases",
+      "source_path": "azure-stack/hci/manage/whats-new-2306-preview.md",
+      "redirect_url": "/azure-stack/hci/whats-new?tabs=2408releases",
       "redirect_document_id": false
     },
     {
-      "source_path":"azure-stack/hci/manage/whats-new-2306-5-preview.md",
-      "redirect_url":"/azure-stack/hci/whats-new?tabs=2408releases",
+      "source_path": "azure-stack/hci/manage/whats-new-2306-7-preview.md",
+      "redirect_url": "/azure-stack/hci/whats-new?tabs=2408releases",
       "redirect_document_id": false
     },
     {
-      "source_path":"azure-stack/hci/manage/whats-new-2306-4-preview.md",
-      "redirect_url":"/azure-stack/hci/whats-new?tabs=2408releases",
+      "source_path": "azure-stack/hci/manage/whats-new-2306-5-preview.md",
+      "redirect_url": "/azure-stack/hci/whats-new?tabs=2408releases",
       "redirect_document_id": false
     },
     {
-      "source_path":"azure-stack/hci/manage/whats-new-2306-3-preview.md",
-      "redirect_url":"/azure-stack/hci/whats-new?tabs=2408releases",
+      "source_path": "azure-stack/hci/manage/whats-new-2306-4-preview.md",
+      "redirect_url": "/azure-stack/hci/whats-new?tabs=2408releases",
       "redirect_document_id": false
     },
     {
-      "source_path":"azure-stack/hci/manage/whats-new-2306-2-preview.md",
-      "redirect_url":"/azure-stack/hci/whats-new?tabs=2408releases",
+      "source_path": "azure-stack/hci/manage/whats-new-2306-3-preview.md",
+      "redirect_url": "/azure-stack/hci/whats-new?tabs=2408releases",
       "redirect_document_id": false
     },
     {
-      "source_path":"azure-stack/hci/manage/whats-new-2306-1-preview.md",
-      "redirect_url":"/azure-stack/hci/whats-new?tabs=2408releases",
+      "source_path": "azure-stack/hci/manage/whats-new-2306-2-preview.md",
+      "redirect_url": "/azure-stack/hci/whats-new?tabs=2408releases",
       "redirect_document_id": false
     },
     {
-      "source_path":"azure-stack/hci/hci-known-issues-2306-7.md",
-      "redirect_url":"/azure-stack/hci/known-issues-2311-2",
+      "source_path": "azure-stack/hci/manage/whats-new-2306-1-preview.md",
+      "redirect_url": "/azure-stack/hci/whats-new?tabs=2408releases",
       "redirect_document_id": false
     },
     {
-      "source_path":"azure-stack/hci/hci-known-issues-2306-5.md",
-      "redirect_url":"/azure-stack/hci/known-issues-2311-2",
+      "source_path": "azure-stack/hci/hci-known-issues-2306-7.md",
+      "redirect_url": "/azure-stack/hci/known-issues-2311-2",
       "redirect_document_id": false
     },
     {
-      "source_path":"azure-stack/hci/hci-known-issues-2306-4.md",
-      "redirect_url":"/azure-stack/hci/known-issues-2311-2",
+      "source_path": "azure-stack/hci/hci-known-issues-2306-5.md",
+      "redirect_url": "/azure-stack/hci/known-issues-2311-2",
       "redirect_document_id": false
     },
     {
-      "source_path":"azure-stack/hci/hci-known-issues-2306-3.md",
-      "redirect_url":"/azure-stack/hci/known-issues-2311-2",
+      "source_path": "azure-stack/hci/hci-known-issues-2306-4.md",
+      "redirect_url": "/azure-stack/hci/known-issues-2311-2",
       "redirect_document_id": false
     },
     {
-      "source_path":"azure-stack/hci/hci-known-issues-2306-2.md",
-      "redirect_url":"/azure-stack/hci/known-issues-2311-2",
+      "source_path": "azure-stack/hci/hci-known-issues-2306-3.md",
+      "redirect_url": "/azure-stack/hci/known-issues-2311-2",
       "redirect_document_id": false
     },
     {
-      "source_path":"azure-stack/hci/hci-known-issues-2306-1.md",
-      "redirect_url":"/azure-stack/hci/known-issues-2311-2",
+      "source_path": "azure-stack/hci/hci-known-issues-2306-2.md",
+      "redirect_url": "/azure-stack/hci/known-issues-2311-2",
       "redirect_document_id": false
     },
     {
-      "source_path":"azure-stack/hci/hci-known-issues-2306.md",
-      "redirect_url":"/azure-stack/hci/known-issues-2311-2",
+      "source_path": "azure-stack/hci/hci-known-issues-2306-1.md",
+      "redirect_url": "/azure-stack/hci/known-issues-2311-2",
       "redirect_document_id": false
     },
     {
-      "source_path":"azure-stack/hci/deploy/tutorial-private-forest.md",
-      "redirect_url":"/azure-stack/hci",
+      "source_path": "azure-stack/hci/hci-known-issues-2306.md",
+      "redirect_url": "/azure-stack/hci/known-issues-2311-2",
       "redirect_document_id": false
     },
     {
-      "source_path":"azure-stack/hci/deploy/download-azure-stack-hci-23h2-software.md",
-      "redirect_url":"/azure-stack/hci/deploy/download-23h2-software",
+      "source_path": "azure-stack/hci/deploy/tutorial-private-forest.md",
+      "redirect_url": "/azure-stack/hci",
       "redirect_document_id": false
     },
     {
-      "source_path":"azure-stack/hci/deploy/download-azure-stack-hci-software.md",
-      "redirect_url":"/azure-stack/hci/deploy/download-software",
+      "source_path": "azure-stack/hci/deploy/download-azure-stack-hci-23h2-software.md",
+      "redirect_url": "/azure-stack/hci/deploy/download-23h2-software",
       "redirect_document_id": false
     },
     {
-      "source_path":"azure-stack/hci/manage/bitlocker-on-csv.md",
-      "redirect_url":"/azure-stack/hci/manage/manage-bitlocker",
+      "source_path": "azure-stack/hci/deploy/download-azure-stack-hci-software.md",
+      "redirect_url": "/azure-stack/hci/deploy/download-software",
       "redirect_document_id": false
     },
     {
-      "source_path":"azure-stack/hci/manage/install-preview-version.md",
-      "redirect_url":"/azure-stack/hci/whats-new?tabs=2405releases",
+      "source_path": "azure-stack/hci/manage/bitlocker-on-csv.md",
+      "redirect_url": "/azure-stack/hci/manage/manage-bitlocker",
       "redirect_document_id": false
     },
     {
-      "source_path":"azure-stack/hci/manage/network-atc-faq.md",
-      "redirect_url":"/azure-stack/hci/whats-new?tabs=2405releases",
+      "source_path": "azure-stack/hci/manage/install-preview-version.md",
+      "redirect_url": "/azure-stack/hci/whats-new?tabs=2405releases",
       "redirect_document_id": false
     },
     {
-      "source_path":"azure-stack/hci/manage/preview-post-installation.md",
-      "redirect_url":"/azure-stack/hci/whats-new?tabs=2405releases",
+      "source_path": "azure-stack/hci/manage/network-atc-faq.md",
+      "redirect_url": "/azure-stack/hci/whats-new?tabs=2405releases",
       "redirect_document_id": false
     },
     {
-      "source_path":"azure-stack/hci/manage/preview-channel.md",
-      "redirect_url":"/azure-stack/hci/deploy/download-azure-stack-hci-23h2-software",
+      "source_path": "azure-stack/hci/manage/preview-post-installation.md",
+      "redirect_url": "/azure-stack/hci/whats-new?tabs=2405releases",
       "redirect_document_id": false
     },
     {
-      "source_path":"azure-stack/hci/manage/faqs-arc-enabled-vms.md",
-      "redirect_url":"/azure-stack/hci/manage/azure-arc-vms-faq",
+      "source_path": "azure-stack/hci/manage/preview-channel.md",
+      "redirect_url": "/azure-stack/hci/deploy/download-azure-stack-hci-23h2-software",
       "redirect_document_id": false
     },
     {
-      "source_path":"azure-stack/hci/deploy/deployment-checklist.md",
-      "redirect_url":"/azure-stack/hci/deploy/deployment-prerequisites",
+      "source_path": "azure-stack/hci/manage/faqs-arc-enabled-vms.md",
+      "redirect_url": "/azure-stack/hci/manage/azure-arc-vms-faq",
       "redirect_document_id": false
     },
     {
-      "source_path":"azure-stack/hci/manage/sdn-express-23h2.md",
-      "redirect_url":"/azure-stack/hci/deploy/sdn-express-23h2",
+      "source_path": "azure-stack/hci/deploy/deployment-checklist.md",
+      "redirect_url": "/azure-stack/hci/deploy/deployment-prerequisites",
       "redirect_document_id": false
     },
     {
-      "source_path":"azure-stack/hci/concepts/other-security-features.md",
-      "redirect_url":"/azure-stack/hci/concepts/security-features",
+      "source_path": "azure-stack/hci/manage/sdn-express-23h2.md",
+      "redirect_url": "/azure-stack/hci/deploy/sdn-express-23h2",
       "redirect_document_id": false
     },
     {
-      "source_path":"azure-stack/hci/concepts/security-windows-defender-application-control.md",
-      "redirect_url":"/azure-stack/hci/manage/manage-wdac",
+      "source_path": "azure-stack/hci/concepts/other-security-features.md",
+      "redirect_url": "/azure-stack/hci/concepts/security-features",
       "redirect_document_id": false
     },
     {
-      "source_path":"azure-stack/hci/concepts/secure-baseline.md",
-      "redirect_url":"/azure-stack/hci/manage/manage-secure-baseline",
+      "source_path": "azure-stack/hci/concepts/security-windows-defender-application-control.md",
+      "redirect_url": "/azure-stack/hci/manage/manage-wdac",
       "redirect_document_id": false
     },
     {
-      "source_path":"azure-stack/hci/concepts/security-bitlocker.md",
-      "redirect_url":"/azure-stack/hci/manage/manage-bitlocker",
+      "source_path": "azure-stack/hci/concepts/secure-baseline.md",
+      "redirect_url": "/azure-stack/hci/manage/manage-secure-baseline",
       "redirect_document_id": false
     },
     {
-      "source_path":"azure-stack/hci/manage/create-virtual-networks.md",
-      "redirect_url":"/azure-stack/hci/manage/create-logical-networks",
+      "source_path": "azure-stack/hci/concepts/security-bitlocker.md",
+      "redirect_url": "/azure-stack/hci/manage/manage-bitlocker",
       "redirect_document_id": false
-    },  
+    },
     {
-      "source_path":"azure-stack/hci/manage/azure-arc-vm-management-networking.md",
-      "redirect_url":"/azure-stack/hci/manage/azure-arc-vm-management-overview",
+      "source_path": "azure-stack/hci/manage/create-virtual-networks.md",
+      "redirect_url": "/azure-stack/hci/manage/create-logical-networks",
       "redirect_document_id": false
-    },  
+    },
     {
-      "source_path":"azure-stack/hci/manage/manage-virtual-machines-in-azure-portal.md",
-      "redirect_url":"/azure-stack/hci/manage/create-arc-virtual-machines",
+      "source_path": "azure-stack/hci/manage/azure-arc-vm-management-networking.md",
+      "redirect_url": "/azure-stack/hci/manage/azure-arc-vm-management-overview",
       "redirect_document_id": false
-    },  
+    },
     {
-      "source_path":"azure-stack/hci/manage/uninstall-arc-resource-bridge.md",
-      "redirect_url":"/azure-stack/hci/manage/azure-arc-vm-management-overview/",
+      "source_path": "azure-stack/hci/manage/manage-virtual-machines-in-azure-portal.md",
+      "redirect_url": "/azure-stack/hci/manage/create-arc-virtual-machines",
       "redirect_document_id": false
-    },    
+    },
     {
-      "source_path":"azure-stack/hci/manage/deploy-arc-resource-bridge-using-command-line.md",
-      "redirect_url":"/azure-stack/hci/manage/azure-arc-vm-management-overview/",
+      "source_path": "azure-stack/hci/manage/uninstall-arc-resource-bridge.md",
+      "redirect_url": "/azure-stack/hci/manage/azure-arc-vm-management-overview/",
       "redirect_document_id": false
-    }, 
+    },
     {
-      "source_path":"azure-stack/hci/manage/deploy-arc-resource-bridge-using-wac.md",
-      "redirect_url":"/azure-stack/hci/manage/deploy-arc-resource-bridge-using-command-line/",
+      "source_path": "azure-stack/hci/manage/deploy-arc-resource-bridge-using-command-line.md",
+      "redirect_url": "/azure-stack/hci/manage/azure-arc-vm-management-overview/",
       "redirect_document_id": false
-    }, 
+    },
     {
-      "source_path":"azure-stack/hci/plan/two-node-decision-matrix.md",
-      "redirect_url":"/azure-stack/hci/plan/two-node-components",
+      "source_path": "azure-stack/hci/manage/deploy-arc-resource-bridge-using-wac.md",
+      "redirect_url": "/azure-stack/hci/manage/deploy-arc-resource-bridge-using-command-line/",
       "redirect_document_id": false
-    }, 
-    { 
-      "source_path":"azure-stack/operator/iot-hub-rp-install.md", 
-      "redirect_url":"/azure/iot-hub/", 
-      "redirect_document_id":false
     },
-    { 
-      "source_path":"azure-stack/operator/iot-hub-rp-manage.md", 
-      "redirect_url":"/azure/iot-hub/", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/hci/plan/two-node-decision-matrix.md",
+      "redirect_url": "/azure-stack/hci/plan/two-node-components",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/iot-hub-rp-overview.md", 
-      "redirect_url":"/azure/iot-hub/", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/iot-hub-rp-install.md",
+      "redirect_url": "/azure/iot-hub/",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/iot-hub-rp-prerequisites.md", 
-      "redirect_url":"/azure/iot-hub/", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/iot-hub-rp-manage.md",
+      "redirect_url": "/azure/iot-hub/",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/iot-hub-rp-rotate-secrets.md", 
-      "redirect_url":"/azure/iot-hub/", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/iot-hub-rp-overview.md",
+      "redirect_url": "/azure/iot-hub/",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/user/iot-hub-connect-iot-edge-device.md", 
-      "redirect_url":"/azure/iot-hub/", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/iot-hub-rp-prerequisites.md",
+      "redirect_url": "/azure/iot-hub/",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/user/iot-hub-overview.md", 
-      "redirect_url":"/azure/iot-hub/", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/iot-hub-rp-rotate-secrets.md",
+      "redirect_url": "/azure/iot-hub/",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/mdc/operator/container-registry-template-install-tzl.md", 
-      "redirect_url":"/azure-stack/mdc/mdc-overview", 
-      "redirect_document_id":false
-    }, 
-    { 
-      "source_path":"azure-stack/mdc/operator/container-registry-template-update-tzl.md", 
-      "redirect_url":"/azure-stack/mdc/mdc-overview", 
-      "redirect_document_id":false
-    }, 
-    { 
-      "source_path":"azure-stack/mdc/operator/container-registry-template-rotate-secrets-tzl.md", 
-      "redirect_url":"/azure-stack/mdc/mdc-overview", 
-      "redirect_document_id":false
-    }, 
-    { 
-      "source_path":"azure-stack/ruggedized/operator/container-registry-template-install-tzl.md", 
-      "redirect_url":"/azure-stack/ruggedized/ruggedized-overview", 
-      "redirect_document_id":false
-    }, 
-    { 
-      "source_path":"azure-stack/ruggedized/operator/container-registry-template-update-tzl.md", 
-      "redirect_url":"/azure-stack/ruggedized/ruggedized-overview", 
-      "redirect_document_id":false
-    }, 
-    { 
-      "source_path":"azure-stack/ruggedized/operator/container-registry-template-rotate-secrets-tzl.md", 
-      "redirect_url":"/azure-stack/ruggedized/ruggedized-overview", 
-      "redirect_document_id":false
-    }, 
-    { 
-      "source_path":"azure-stack/operator/azure-stack-create-service-principals.md", 
-      "redirect_url":"/azure/active-directory/develop/howto-create-service-principal-portal", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/user/iot-hub-connect-iot-edge-device.md",
+      "redirect_url": "/azure/iot-hub/",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/azure-stack-provision-storage-account.md", 
-      "redirect_url":"/azure-stack/operator/azure-stack-manage-storage-accounts", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/user/iot-hub-overview.md",
+      "redirect_url": "/azure/iot-hub/",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/user/azure-stack-connect-azure-stack.md", 
-      "redirect_url":"/azure-stack/user/azure-stack-powershell-configure-user", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/mdc/operator/container-registry-template-install-tzl.md",
+      "redirect_url": "/azure-stack/mdc/mdc-overview",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/app-service-known-issues-v0.md", 
-      "redirect_url":"/azure-stack/operator/app-service-release-notes-2021-q1#known-issues-update", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/mdc/operator/container-registry-template-update-tzl.md",
+      "redirect_url": "/azure-stack/mdc/mdc-overview",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/app-service-known-issues-v1.md", 
-      "redirect_url":"/azure-stack/operator/app-service-release-notes-2020-q3#known-issues-update", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/mdc/operator/container-registry-template-rotate-secrets-tzl.md",
+      "redirect_url": "/azure-stack/mdc/mdc-overview",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/app-service-known-issues-v2.md", 
-      "redirect_url":"/azure-stack/operator/app-service-release-notes-2020-q2#known-issues-update", 
-      "redirect_document_id":false
-    },    
-    { 
-      "source_path":"azure-stack/operator/azure-stack-app-service-release-notes-update-five.md", 
-      "redirect_url":"/azure-stack/operator/app-service-release-notes-2302", 
-      "redirect_document_id":false
-    },    
-    { 
-      "source_path":"azure-stack/operator/azure-stack-app-service-release-notes-update-six.md", 
-      "redirect_url":"/azure-stack/operator/app-service-release-notes-2302", 
-      "redirect_document_id":false
-    },    
-    { 
-      "source_path":"azure-stack/operator/azure-stack-app-service-release-notes-update-four.md", 
-      "redirect_url":"/azure-stack/operator/app-service-release-notes-2302", 
-      "redirect_document_id":false
-    },    
-    { 
-      "source_path":"azure-stack/operator/azure-stack-app-service-release-notes-update-one.md", 
-      "redirect_url":"/azure-stack/operator/app-service-release-notes-2302", 
-      "redirect_document_id":false
-    },    
-    { 
-      "source_path":"azure-stack/operator/azure-stack-app-service-release-notes-update-seven.md", 
-      "redirect_url":"/azure-stack/operator/app-service-release-notes-2302", 
-      "redirect_document_id":false
-    },    
-    { 
-      "source_path":"azure-stack/operator/azure-stack-app-service-release-notes-update-two.md", 
-      "redirect_url":"/azure-stack/operator/app-service-release-notes-2302", 
-      "redirect_document_id":false
-    },    
-    { 
-      "source_path":"azure-stack/operator/azure-stack-app-service-release-notes-update-three.md", 
-      "redirect_url":"/azure-stack/operator/app-service-release-notes-2302", 
-      "redirect_document_id":false
-    },    
-    { 
-      "source_path":"azure-stack/operator/app-service-release-notes-2020-Q2.md", 
-      "redirect_url":"/azure-stack/operator/app-service-release-notes-2302", 
-      "redirect_document_id":false
-    },    
-    { 
-      "source_path":"azure-stack/operator/app-service-release-notes-2020-Q3.md", 
-      "redirect_url":"/azure-stack/operator/app-service-release-notes-2302", 
-      "redirect_document_id":false
-    },    
-    { 
-      "source_path":"azure-stack/operator/azure-stack-sql-resource-provider-11300.md", 
-      "redirect_url":"/azure-stack/operator/azure-stack-mysql-resource-provider-2-0-13", 
-      "redirect_document_id":false
-    },    
-    { 
-      "source_path":"azure-stack/operator/azure-stack-sql-resource-provider-11330.md", 
-      "redirect_url":"/azure-stack/operator/azure-stack-mysql-resource-provider-2-0-13", 
-      "redirect_document_id":false
-    },    
-    { 
-      "source_path":"azure-stack/operator/azure-stack-sql-resource-provider-11930.md", 
-      "redirect_url":"/azure-stack/operator/azure-stack-mysql-resource-provider-2-0-13", 
-      "redirect_document_id":false
-    },    
-    { 
-      "source_path":"azure-stack/operator/azure-stack-mysql-resource-provider-11300.md", 
-      "redirect_url":"/azure-stack/operator/azure-stack-mysql-resource-provider-2-0-13", 
-      "redirect_document_id":false
-    },    
-    { 
-      "source_path":"azure-stack/operator/azure-stack-mysql-resource-provider-11330.md", 
-      "redirect_url":"/azure-stack/operator/azure-stack-mysql-resource-provider-2-0-13", 
-      "redirect_document_id":false
-    },    
-    { 
-      "source_path":"azure-stack/operator/azure-stack-mysql-resource-provider-11930.md", 
-      "redirect_url":"/azure-stack/operator/azure-stack-mysql-resource-provider-2-0-13", 
-      "redirect_document_id":false
-    },    
-    { 
-      "source_path":"azure-stack/ruggedized/operator/azure-stack-manage-basics-tzl.md", 
-      "redirect_url":"/azure-stack/ruggedized/ruggedized-overview", 
-      "redirect_document_id":false
-    },    
-    { 
-      "source_path":"azure-stack/ruggedized/operator/azure-stack-windows-server-faq-tzl.md", 
-      "redirect_url":"/azure-stack/ruggedized/ruggedized-overview", 
-      "redirect_document_id":false
-    },    
-    { 
-      "source_path":"azure-stack/operator/known-issues-vn.md", 
-      "redirect_url":"/azure-stack/operator/known-issues", 
-      "redirect_document_id":false
-    },    
-    { 
-      "source_path":"azure-stack/operator/known-issues-v0.md", 
-      "redirect_url":"/azure-stack/operator/known-issues?view=azs-2206", 
-      "redirect_document_id":false
-    }, 
-    { 
-      "source_path":"azure-stack/operator/known-issues-v1.md", 
-      "redirect_url":"/azure-stack/operator/known-issues?view=azs-2108", 
-      "redirect_document_id":false
-    }, 
-    { 
-      "source_path":"azure-stack/operator/known-issues-v2.md", 
-      "redirect_url":"/azure-stack/operator/known-issues?view=azs-2102", 
-      "redirect_document_id":false
-    },         
-    { 
-      "source_path":"azure-stack/operator/known-issues-v3.md", 
-      "redirect_url":"/azure-stack/operator/relnotearchive/known-issues?view=azs-2008", 
-      "redirect_document_id":false
-    }, 
-    { 
-      "source_path":"azure-stack/operator/relnotearchive/release-notes-known-issues-1802.md", 
-      "redirect_url":"/azure-stack/operator/relnotearchive/release-notes?view=azs-1802", 
-      "redirect_document_id":false
-    }, 
-    { 
-      "source_path":"azure-stack/operator/relnotearchive/release-notes-known-issues-1803.md", 
-      "redirect_url":"/azure-stack/operator/relnotearchive/release-notes?view=azs-1803", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/ruggedized/operator/container-registry-template-install-tzl.md",
+      "redirect_url": "/azure-stack/ruggedized/ruggedized-overview",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/relnotearchive/release-notes-known-issues-1804.md", 
-      "redirect_url":"/azure-stack/operator/relnotearchive/release-notes?view=azs-1804", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/ruggedized/operator/container-registry-template-update-tzl.md",
+      "redirect_url": "/azure-stack/ruggedized/ruggedized-overview",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/relnotearchive/release-notes-known-issues-1805.md", 
-      "redirect_url":"/azure-stack/operator/relnotearchive/release-notes?view=azs-1805", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/ruggedized/operator/container-registry-template-rotate-secrets-tzl.md",
+      "redirect_url": "/azure-stack/ruggedized/ruggedized-overview",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/relnotearchive/release-notes-known-issues-1807.md", 
-      "redirect_url":"/azure-stack/operator/relnotearchive/release-notes?view=azs-1807", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/azure-stack-create-service-principals.md",
+      "redirect_url": "/azure/active-directory/develop/howto-create-service-principal-portal",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/relnotearchive/release-notes-known-issues-1808.md", 
-      "redirect_url":"/azure-stack/operator/relnotearchive/release-notes?view=azs-1808", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/azure-stack-provision-storage-account.md",
+      "redirect_url": "/azure-stack/operator/azure-stack-manage-storage-accounts",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/relnotearchive/release-notes-known-issues-1809.md", 
-      "redirect_url":"/azure-stack/operator/relnotearchive/release-notes?view=azs-1809", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/user/azure-stack-connect-azure-stack.md",
+      "redirect_url": "/azure-stack/user/azure-stack-powershell-configure-user",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/relnotearchive/release-notes-known-issues-1811.md", 
-      "redirect_url":"/azure-stack/operator/relnotearchive/release-notes?view=azs-1811", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/app-service-known-issues-v0.md",
+      "redirect_url": "/azure-stack/operator/app-service-release-notes-2021-q1#known-issues-update",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/relnotearchive/release-notes-known-issues-1901.md", 
-      "redirect_url":"/azure-stack/operator/relnotearchive/release-notes?view=azs-1901", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/app-service-known-issues-v1.md",
+      "redirect_url": "/azure-stack/operator/app-service-release-notes-2020-q3#known-issues-update",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/relnotearchive/release-notes-known-issues-1902.md", 
-      "redirect_url":"/azure-stack/operator/relnotearchive/release-notes?view=azs-1902", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/app-service-known-issues-v2.md",
+      "redirect_url": "/azure-stack/operator/app-service-release-notes-2020-q2#known-issues-update",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/relnotearchive/release-notes-known-issues-1903.md", 
-      "redirect_url":"/azure-stack/operator/relnotearchive/release-notes?view=azs-1903", 
-      "redirect_document_id":false
-    },                                 
-    { 
-      "source_path":"azure-stack/operator/relnotearchive/known-issues-1904.md", 
-      "redirect_url":"/azure-stack/operator/relnotearchive/known-issues?view=azs-1904", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/azure-stack-app-service-release-notes-update-five.md",
+      "redirect_url": "/azure-stack/operator/app-service-release-notes-2302",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/relnotearchive/known-issues-1905.md", 
-      "redirect_url":"/azure-stack/operator/relnotearchive/known-issues?view=azs-1905", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/azure-stack-app-service-release-notes-update-six.md",
+      "redirect_url": "/azure-stack/operator/app-service-release-notes-2302",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/relnotearchive/known-issues-1906.md", 
-      "redirect_url":"/azure-stack/operator/relnotearchive/known-issues?view=azs-1906", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/azure-stack-app-service-release-notes-update-four.md",
+      "redirect_url": "/azure-stack/operator/app-service-release-notes-2302",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/relnotearchive/known-issues-1907.md", 
-      "redirect_url":"/azure-stack/operator/relnotearchive/known-issues?view=azs-1907", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/azure-stack-app-service-release-notes-update-one.md",
+      "redirect_url": "/azure-stack/operator/app-service-release-notes-2302",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/relnotearchive/known-issues-1908.md", 
-      "redirect_url":"/azure-stack/operator/relnotearchive/known-issues?view=azs-1908", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/azure-stack-app-service-release-notes-update-seven.md",
+      "redirect_url": "/azure-stack/operator/app-service-release-notes-2302",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/relnotearchive/known-issues-1910.md", 
-      "redirect_url":"/azure-stack/operator/relnotearchive/known-issues?view=azs-1910", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/azure-stack-app-service-release-notes-update-two.md",
+      "redirect_url": "/azure-stack/operator/app-service-release-notes-2302",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/relnotearchive/release-notes-1904.md", 
-      "redirect_url":"/azure-stack/operator/relnotearchive/release-notes?view=azs-1904", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/azure-stack-app-service-release-notes-update-three.md",
+      "redirect_url": "/azure-stack/operator/app-service-release-notes-2302",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/relnotearchive/release-notes-1905.md", 
-      "redirect_url":"/azure-stack/operator/relnotearchive/release-notes?view=azs-1905", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/app-service-release-notes-2020-Q2.md",
+      "redirect_url": "/azure-stack/operator/app-service-release-notes-2302",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/relnotearchive/release-notes-1906.md", 
-      "redirect_url":"/azure-stack/operator/relnotearchive/release-notes?view=azs-1906", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/app-service-release-notes-2020-Q3.md",
+      "redirect_url": "/azure-stack/operator/app-service-release-notes-2302",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/relnotearchive/release-notes-1907.md", 
-      "redirect_url":"/azure-stack/operator/relnotearchive/release-notes?view=azs-1907", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/azure-stack-sql-resource-provider-11300.md",
+      "redirect_url": "/azure-stack/operator/azure-stack-mysql-resource-provider-2-0-13",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/relnotearchive/release-notes-1908.md", 
-      "redirect_url":"/azure-stack/operator/relnotearchive/release-notes?view=azs-1908", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/azure-stack-sql-resource-provider-11330.md",
+      "redirect_url": "/azure-stack/operator/azure-stack-mysql-resource-provider-2-0-13",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/relnotearchive/release-notes-1910.md", 
-      "redirect_url":"/azure-stack/operator/relnotearchive/release-notes?view=azs-1910", 
-      "redirect_document_id":false
-    },                          
-    { 
-      "source_path":"azure-stack/operator/relnotearchive/known-issues-2002.md", 
-      "redirect_url":"/azure-stack/operator/relnotearchive/known-issues?view=azs-2002", 
-      "redirect_document_id":false
-    },                          
-    { 
-      "source_path":"azure-stack/operator/relnotearchive/release-notes-2002.md", 
-      "redirect_url":"/azure-stack/operator/relnotearchive/release-notes?view=azs-2002", 
-      "redirect_document_id":false
-    },                          
-    { 
-      "source_path":"azure-stack/mdc/customer-journey.md", 
-      "redirect_url":"/azure-stack/mdc/integration-overview", 
-      "redirect_document_id":false
-    },       
-    { 
-      "source_path":"azure-stack/ruggedized/customer-journey.md", 
-      "redirect_url":"/azure-stack/ruggedized/integration-overview", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/azure-stack-sql-resource-provider-11930.md",
+      "redirect_url": "/azure-stack/operator/azure-stack-mysql-resource-provider-2-0-13",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/azure-stack-diagnostic-log-collection-overview.md", 
-      "redirect_url":"/azure-stack/operator/diagnostic-log-collection", 
-      "redirect_document_id":false
-    },    
-    { 
-      "source_path":"azure-stack/operator/azure-stack-configure-automatic-diagnostic-log-collection.md", 
-      "redirect_url":"/azure-stack/operator/diagnostic-log-collection", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/azure-stack-mysql-resource-provider-11300.md",
+      "redirect_url": "/azure-stack/operator/azure-stack-mysql-resource-provider-2-0-13",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/mdc/extended-storage-firmware-updates.md", 
-      "redirect_url":"/azure-stack/mdc/extended-storage-health-checks", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/azure-stack-mysql-resource-provider-11330.md",
+      "redirect_url": "/azure-stack/operator/azure-stack-mysql-resource-provider-2-0-13",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/ruggedized/customer-replaceable-unit/install-firmware-using-idrac.md", 
-      "redirect_url":"/azure-stack/ruggedized/customer-replaceable-unit/required-knowledge-scale-unit-nodes", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/azure-stack-mysql-resource-provider-11930.md",
+      "redirect_url": "/azure-stack/operator/azure-stack-mysql-resource-provider-2-0-13",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/azure-stack-configure-on-demand-diagnostic-log-collection-portal.md", 
-      "redirect_url":"/azure-stack/operator/diagnostic-log-collection", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/ruggedized/operator/azure-stack-manage-basics-tzl.md",
+      "redirect_url": "/azure-stack/ruggedized/ruggedized-overview",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/azure-stack-configure-on-demand-diagnostic-log-collection-powershell.md", 
-      "redirect_url":"/azure-stack/operator/diagnostic-log-collection", 
-      "redirect_document_id":false
-    },    
-    { 
-      "source_path":"azure-stack/operator/app-service-deploy-ha.md", 
-      "redirect_url":"/azure-stack/operator/azure-stack-app-service-deploy", 
-      "redirect_document_id":false
-    },    
-    { 
-      "source_path":"azure-stack/hybrid/index.yml", 
-      "redirect_url":"/hybrid/app-solutions/", 
-      "redirect_document_id":false
-    },    
-    { 
-      "source_path":"azure-stack/hybrid/overview-app-design-considerations.md", 
-      "redirect_url":"/hybrid/app-solutions/overview-app-design-considerations", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/ruggedized/operator/azure-stack-windows-server-faq-tzl.md",
+      "redirect_url": "/azure-stack/ruggedized/ruggedized-overview",
+      "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/hybrid/overview-patterns-solution-examples.md", 
-      "redirect_url":"/hybrid/app-solutions/overview-patterns-solution-examples", 
-      "redirect_document_id":false
-    }, 
-    { 
-      "source_path":"azure-stack/operator/azure-stack-configure-on-demand-diagnostic-log-collection.md", 
-      "redirect_url":"azure-stack-configure-on-demand-diagnostic-log-collection-portal", 
-      "redirect_document_id":false
-    }, 
-    { 
-      "source_path":"azure-stack/hybrid/pattern-cicd-pipeline.md", 
-      "redirect_url":"/hybrid/app-solutions/pattern-cicd-pipeline", 
-      "redirect_document_id":false
-    }, 
-    { 
-      "source_path":"azure-stack/hybrid/pattern-cross-cloud-scale-onprem-data.md", 
-      "redirect_url":"/hybrid/app-solutions/pattern-cross-cloud-scale-onprem-data", 
-      "redirect_document_id":false
-    }, 
-    { 
-      "source_path":"azure-stack/hybrid/pattern-cross-cloud-scale.md", 
-      "redirect_url":"/hybrid/app-solutions/pattern-cross-cloud-scale", 
-      "redirect_document_id":false
-    }, 
-    { 
-      "source_path":"azure-stack/hybrid/pattern-geo-distributed.md", 
-      "redirect_url":"/hybrid/app-solutions/pattern-geo-distributed", 
-      "redirect_document_id":false
-    }, 
-    { 
-      "source_path":"azure-stack/hybrid/pattern-hybrid-relay.md", 
-      "redirect_url":"/hybrid/app-solutions/pattern-hybrid-relay", 
-      "redirect_document_id":false
-    }, 
-    { 
-      "source_path":"azure-stack/hybrid/pattern-out-of-stock-at-edge.md", 
-      "redirect_url":"/hybrid/app-solutions/pattern-out-of-stock-at-edge", 
-      "redirect_document_id":false
-    }, 
-    { 
-      "source_path":"azure-stack/hybrid/pattern-retail-footfall-detection.md", 
-      "redirect_url":"/hybrid/app-solutions/pattern-retail-footfall-detection", 
-      "redirect_document_id":false
-    }, 
-    { 
-      "source_path":"azure-stack/hybrid/pattern-tiered-data-analytics.md", 
-      "redirect_url":"/hybrid/app-solutions/pattern-tiered-data-analytics", 
-      "redirect_document_id":false
-    }, 
-    { 
-      "source_path":"azure-stack/hybrid/pattern-train-ml-model-at-edge.md", 
-      "redirect_url":"/hybrid/app-solutions/pattern-train-ml-model-at-edge", 
-      "redirect_document_id":false
-    }, 
-    { 
-      "source_path":"azure-stack/hybrid/solution-deployment-guide-connectivity.md", 
-      "redirect_url":"/hybrid/app-solutions/solution-deployment-guide-connectivity", 
-      "redirect_document_id":false
-    }, 
-    { 
-      "source_path":"azure-stack/hybrid/solution-deployment-guide-cross-cloud-scaling-onprem-data.md", 
-      "redirect_url":"/hybrid/app-solutions/solution-deployment-guide-cross-cloud-scaling-onprem-data", 
-      "redirect_document_id":false
-    }, 
-    { 
-      "source_path":"azure-stack/hybrid/solution-deployment-guide-cross-cloud-scaling.md", 
-      "redirect_url":"/hybrid/app-solutions/solution-deployment-guide-cross-cloud-scaling", 
-      "redirect_document_id":false
-    }, 
-    { 
-      "source_path":"azure-stack/hybrid/solution-deployment-guide-geo-distributed.md", 
-      "redirect_url":"/hybrid/app-solutions/solution-deployment-guide-geo-distributed", 
-      "redirect_document_id":false
-    }, 
-    { 
-      "source_path":"azure-stack/hybrid/solution-deployment-guide-identity.md", 
-      "redirect_url":"/hybrid/app-solutions/solution-deployment-guide-identity", 
-      "redirect_document_id":false
-    }, 
-    { 
-      "source_path":"azure-stack/hybrid/solution-deployment-guide-mongodb-ha.md", 
-      "redirect_url":"/hybrid/app-solutions/solution-deployment-guide-mongodb-ha", 
-      "redirect_document_id":false
-    }, 
-    { 
-      "source_path":"azure-stack/hybrid/solution-deployment-guide-retail-footfall-detection.md", 
-      "redirect_url":"/hybrid/app-solutions/solution-deployment-guide-retail-footfall-detection", 
-      "redirect_document_id":false
-    }, 
-    { 
-      "source_path":"azure-stack/hybrid/solution-deployment-guide-sql-ha.md", 
-      "redirect_url":"/hybrid/app-solutions/solution-deployment-guide-sql-ha", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/known-issues-vn.md",
+      "redirect_url": "/azure-stack/operator/known-issues",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/known-issues-v0.md",
+      "redirect_url": "/azure-stack/operator/known-issues?view=azs-2206",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/known-issues-v1.md",
+      "redirect_url": "/azure-stack/operator/known-issues?view=azs-2108",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/known-issues-v2.md",
+      "redirect_url": "/azure-stack/operator/known-issues?view=azs-2102",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/known-issues-v3.md",
+      "redirect_url": "/azure-stack/operator/relnotearchive/known-issues?view=azs-2008",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/relnotearchive/release-notes-known-issues-1802.md",
+      "redirect_url": "/azure-stack/operator/relnotearchive/release-notes?view=azs-1802",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/relnotearchive/release-notes-known-issues-1803.md",
+      "redirect_url": "/azure-stack/operator/relnotearchive/release-notes?view=azs-1803",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/relnotearchive/release-notes-known-issues-1804.md",
+      "redirect_url": "/azure-stack/operator/relnotearchive/release-notes?view=azs-1804",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/relnotearchive/release-notes-known-issues-1805.md",
+      "redirect_url": "/azure-stack/operator/relnotearchive/release-notes?view=azs-1805",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/relnotearchive/release-notes-known-issues-1807.md",
+      "redirect_url": "/azure-stack/operator/relnotearchive/release-notes?view=azs-1807",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/relnotearchive/release-notes-known-issues-1808.md",
+      "redirect_url": "/azure-stack/operator/relnotearchive/release-notes?view=azs-1808",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/relnotearchive/release-notes-known-issues-1809.md",
+      "redirect_url": "/azure-stack/operator/relnotearchive/release-notes?view=azs-1809",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/relnotearchive/release-notes-known-issues-1811.md",
+      "redirect_url": "/azure-stack/operator/relnotearchive/release-notes?view=azs-1811",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/relnotearchive/release-notes-known-issues-1901.md",
+      "redirect_url": "/azure-stack/operator/relnotearchive/release-notes?view=azs-1901",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/relnotearchive/release-notes-known-issues-1902.md",
+      "redirect_url": "/azure-stack/operator/relnotearchive/release-notes?view=azs-1902",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/relnotearchive/release-notes-known-issues-1903.md",
+      "redirect_url": "/azure-stack/operator/relnotearchive/release-notes?view=azs-1903",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/relnotearchive/known-issues-1904.md",
+      "redirect_url": "/azure-stack/operator/relnotearchive/known-issues?view=azs-1904",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/relnotearchive/known-issues-1905.md",
+      "redirect_url": "/azure-stack/operator/relnotearchive/known-issues?view=azs-1905",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/relnotearchive/known-issues-1906.md",
+      "redirect_url": "/azure-stack/operator/relnotearchive/known-issues?view=azs-1906",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/relnotearchive/known-issues-1907.md",
+      "redirect_url": "/azure-stack/operator/relnotearchive/known-issues?view=azs-1907",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/relnotearchive/known-issues-1908.md",
+      "redirect_url": "/azure-stack/operator/relnotearchive/known-issues?view=azs-1908",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/relnotearchive/known-issues-1910.md",
+      "redirect_url": "/azure-stack/operator/relnotearchive/known-issues?view=azs-1910",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/relnotearchive/release-notes-1904.md",
+      "redirect_url": "/azure-stack/operator/relnotearchive/release-notes?view=azs-1904",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/relnotearchive/release-notes-1905.md",
+      "redirect_url": "/azure-stack/operator/relnotearchive/release-notes?view=azs-1905",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/relnotearchive/release-notes-1906.md",
+      "redirect_url": "/azure-stack/operator/relnotearchive/release-notes?view=azs-1906",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/relnotearchive/release-notes-1907.md",
+      "redirect_url": "/azure-stack/operator/relnotearchive/release-notes?view=azs-1907",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/relnotearchive/release-notes-1908.md",
+      "redirect_url": "/azure-stack/operator/relnotearchive/release-notes?view=azs-1908",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/relnotearchive/release-notes-1910.md",
+      "redirect_url": "/azure-stack/operator/relnotearchive/release-notes?view=azs-1910",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/relnotearchive/known-issues-2002.md",
+      "redirect_url": "/azure-stack/operator/relnotearchive/known-issues?view=azs-2002",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/relnotearchive/release-notes-2002.md",
+      "redirect_url": "/azure-stack/operator/relnotearchive/release-notes?view=azs-2002",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/mdc/customer-journey.md",
+      "redirect_url": "/azure-stack/mdc/integration-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/ruggedized/customer-journey.md",
+      "redirect_url": "/azure-stack/ruggedized/integration-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/azure-stack-diagnostic-log-collection-overview.md",
+      "redirect_url": "/azure-stack/operator/diagnostic-log-collection",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/azure-stack-configure-automatic-diagnostic-log-collection.md",
+      "redirect_url": "/azure-stack/operator/diagnostic-log-collection",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/mdc/extended-storage-firmware-updates.md",
+      "redirect_url": "/azure-stack/mdc/extended-storage-health-checks",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/ruggedized/customer-replaceable-unit/install-firmware-using-idrac.md",
+      "redirect_url": "/azure-stack/ruggedized/customer-replaceable-unit/required-knowledge-scale-unit-nodes",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/azure-stack-configure-on-demand-diagnostic-log-collection-portal.md",
+      "redirect_url": "/azure-stack/operator/diagnostic-log-collection",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/azure-stack-configure-on-demand-diagnostic-log-collection-powershell.md",
+      "redirect_url": "/azure-stack/operator/diagnostic-log-collection",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/app-service-deploy-ha.md",
+      "redirect_url": "/azure-stack/operator/azure-stack-app-service-deploy",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hybrid/index.yml",
+      "redirect_url": "/hybrid/app-solutions/",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hybrid/overview-app-design-considerations.md",
+      "redirect_url": "/hybrid/app-solutions/overview-app-design-considerations",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hybrid/overview-patterns-solution-examples.md",
+      "redirect_url": "/hybrid/app-solutions/overview-patterns-solution-examples",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/azure-stack-configure-on-demand-diagnostic-log-collection.md",
+      "redirect_url": "azure-stack-configure-on-demand-diagnostic-log-collection-portal",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hybrid/pattern-cicd-pipeline.md",
+      "redirect_url": "/hybrid/app-solutions/pattern-cicd-pipeline",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hybrid/pattern-cross-cloud-scale-onprem-data.md",
+      "redirect_url": "/hybrid/app-solutions/pattern-cross-cloud-scale-onprem-data",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hybrid/pattern-cross-cloud-scale.md",
+      "redirect_url": "/hybrid/app-solutions/pattern-cross-cloud-scale",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hybrid/pattern-geo-distributed.md",
+      "redirect_url": "/hybrid/app-solutions/pattern-geo-distributed",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hybrid/pattern-hybrid-relay.md",
+      "redirect_url": "/hybrid/app-solutions/pattern-hybrid-relay",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hybrid/pattern-out-of-stock-at-edge.md",
+      "redirect_url": "/hybrid/app-solutions/pattern-out-of-stock-at-edge",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hybrid/pattern-retail-footfall-detection.md",
+      "redirect_url": "/hybrid/app-solutions/pattern-retail-footfall-detection",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hybrid/pattern-tiered-data-analytics.md",
+      "redirect_url": "/hybrid/app-solutions/pattern-tiered-data-analytics",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hybrid/pattern-train-ml-model-at-edge.md",
+      "redirect_url": "/hybrid/app-solutions/pattern-train-ml-model-at-edge",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hybrid/solution-deployment-guide-connectivity.md",
+      "redirect_url": "/hybrid/app-solutions/solution-deployment-guide-connectivity",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hybrid/solution-deployment-guide-cross-cloud-scaling-onprem-data.md",
+      "redirect_url": "/hybrid/app-solutions/solution-deployment-guide-cross-cloud-scaling-onprem-data",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hybrid/solution-deployment-guide-cross-cloud-scaling.md",
+      "redirect_url": "/hybrid/app-solutions/solution-deployment-guide-cross-cloud-scaling",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hybrid/solution-deployment-guide-geo-distributed.md",
+      "redirect_url": "/hybrid/app-solutions/solution-deployment-guide-geo-distributed",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hybrid/solution-deployment-guide-identity.md",
+      "redirect_url": "/hybrid/app-solutions/solution-deployment-guide-identity",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hybrid/solution-deployment-guide-mongodb-ha.md",
+      "redirect_url": "/hybrid/app-solutions/solution-deployment-guide-mongodb-ha",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hybrid/solution-deployment-guide-retail-footfall-detection.md",
+      "redirect_url": "/hybrid/app-solutions/solution-deployment-guide-retail-footfall-detection",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hybrid/solution-deployment-guide-sql-ha.md",
+      "redirect_url": "/hybrid/app-solutions/solution-deployment-guide-sql-ha",
+      "redirect_document_id": false
     },
     {
       "source_path": "azure-stack/operator/azure-stack-app-service-deploy-offline.md",
@@ -1389,7 +1389,6 @@
     {
       "source_path": "azure-stack/operator/azure-stack-operations-checklist.md",
       "redirect_url": "/azure-stack/operator/azure-stack-manage-basics",
-
       "redirect_document_id": false
     },
     {
@@ -1401,17 +1400,17 @@
       "source_path": "azure-stack/operator/azure-stack-tutorial-tenant-vm.md",
       "redirect_url": "/azure-stack/operator/tutorial-offer-services",
       "redirect_document_id": false
-    },  
+    },
     {
       "source_path": "azure-stack/operator/azure-stack-tutorial-sql-server.md",
       "redirect_url": "/azure-stack/operator/azure-stack-sql-resource-provider",
       "redirect_document_id": false
-    },   
+    },
     {
       "source_path": "azure-stack/operator/azure-stack-tutorial-app-service.md",
       "redirect_url": "/azure-stack/operator/azure-stack-app-service-overview",
       "redirect_document_id": false
-    },             
+    },
     {
       "source_path": "azure-stack/operator/capacity-planning.md",
       "redirect_url": "/azure-stack/operator/azure-stack-capacity-planning-overview",
@@ -1512,42 +1511,42 @@
       "redirect_url": "/azure-stack/operator/release-notes",
       "redirect_document_id": false
     },
-    {    
+    {
       "source_path": "azure-stack/operator/azure-stack-update-1903.md",
       "redirect_url": "/azure-stack/operator/release-notes",
       "redirect_document_id": false
-    },    
-    {    
+    },
+    {
       "source_path": "azure-stack/operator/azure-stack-release-notes-1904.md",
       "redirect_url": "/azure-stack/operator/release-notes",
       "redirect_document_id": false
     },
-    {    
+    {
       "source_path": "azure-stack/operator/azure-stack-release-notes-1905.md",
       "redirect_url": "/azure-stack/operator/release-notes",
       "redirect_document_id": false
     },
-    {    
+    {
       "source_path": "azure-stack/operator/azure-stack-release-notes-1906.md",
       "redirect_url": "/azure-stack/operator/release-notes",
       "redirect_document_id": false
     },
-    {    
+    {
       "source_path": "azure-stack/operator/azure-stack-release-notes-1907.md",
       "redirect_url": "/azure-stack/operator/release-notes",
       "redirect_document_id": false
     },
-    {    
+    {
       "source_path": "azure-stack/operator/azure-stack-release-notes-1908.md",
       "redirect_url": "/azure-stack/operator/release-notes",
       "redirect_document_id": false
     },
-    {    
+    {
       "source_path": "azure-stack/operator/azure-stack-release-notes-1910.md",
       "redirect_url": "/azure-stack/operator/release-notes",
       "redirect_document_id": false
     },
-    {    
+    {
       "source_path": "azure-stack/operator/azure-stack-release-notes-known-issues-1904.md",
       "redirect_url": "/azure-stack/operator/known-issues",
       "redirect_document_id": false
@@ -1571,7 +1570,7 @@
       "source_path": "azure-stack/operator/azure-stack-release-notes-known-issues-1908.md",
       "redirect_url": "/azure-stack/operator/known-issues",
       "redirect_document_id": false
-    },            
+    },
     {
       "source_path": "azure-stack/operator/azure-stack-release-notes-security-updates-1904.md",
       "redirect_url": "/azure-stack/operator/release-notes-security-updates",
@@ -1596,12 +1595,12 @@
       "source_path": "azure-stack/operator/azure-stack-release-notes-security-updates.md",
       "redirect_url": "/azure-stack/operator/release-notes-security-updates",
       "redirect_document_id": false
-    },    
+    },
     {
       "source_path": "azure-stack/operator/azure-stack-release-notes-checklist.md",
       "redirect_url": "/azure-stack/operator/release-notes-checklist",
       "redirect_document_id": false
-    },        
+    },
     {
       "source_path": "azure-stack/user/azure-stack-solution-staged-data-analytics.md",
       "redirect_url": "/azure-stack/user/azure-stack-solution-staged-data",
@@ -1613,195 +1612,195 @@
       "redirect_document_id": false
     },
     {
-    "source_path": "azure-stack/user/azure-stack-kubernetes-ask-engine-support.md",
-    "redirect_url": "/azure-stack/operator/azure-stack-kubernetes-aks-engine-support",
-    "redirect_document_id": false
+      "source_path": "azure-stack/user/azure-stack-kubernetes-ask-engine-support.md",
+      "redirect_url": "/azure-stack/operator/azure-stack-kubernetes-aks-engine-support",
+      "redirect_document_id": false
     },
     {
       "source_path": "azure-stack/operator/azure-stack-update-plan.md",
       "redirect_url": "/azure-stack/operator/release-notes-checklist",
       "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/operator/azure-stack-hci-overview.md", 
-      "redirect_url":"/azure-stack/hci/overview", 
-      "redirect_document_id":true 
+    {
+      "source_path": "azure-stack/operator/azure-stack-hci-overview.md",
+      "redirect_url": "/azure-stack/hci/overview",
+      "redirect_document_id": true
     },
-    { 
-      "source_path":"azure-stack/operator/azure-stack-updates-troubleshoot.md", 
-      "redirect_url":"/azure-stack/operator/azure-stack-troubleshooting", 
-      "redirect_document_id":false
-    },
-    { 
-      "source_path":"azure-stack/operator/azure-stack-diagnostic-log-collection-overview-tzl.md", 
-      "redirect_url":"/azure-stack/operator/diagnostic-log-collection", 
-      "redirect_document_id":true 
-    },
-    { 
-      "source_path":"azure-stack/operator/azure-stack-help-and-support-overview-tzl.md", 
-      "redirect_url":"/azure-stack/operator/azure-stack-help-and-support-overview", 
-      "redirect_document_id":true 
-    },
-    { 
-      "source_path":"azure-stack/operator/azure-stack-azsreadiness-cmdlet.md", 
-      "redirect_url":"/azure-stack/operator/azure-stack-validate-identity", 
-      "redirect_document_id":true 
-    },
-    { 
-      "source_path":"azure-stack/operator/azure-stack-update-servicing-policy.md", 
-      "redirect_url":"/azure-stack/operator/azure-stack-servicing-policy", 
-      "redirect_document_id":true 
-    },
-    { 
-      "source_path":"azure-stack/operator/azure-stack-train-and-cert.md", 
-      "redirect_url":"/azure-stack/operator/index", 
-      "redirect_document_id":true 
-    },
-    { 
-      "source_path":"azure-stack/operator/azure-stack-powershell-install.md", 
-      "redirect_url":"/azure-stack/operator/powershell-install-az-module", 
-      "redirect_document_id":true 
-    },
-    { 
-      "source_path":"azure-stack/ruggedized/customer-replaceable-unit/emc-poweredge-tactical-indicators-and-codes.md", 
-      "redirect_url":"/azure-stack/ruggedized/customer-replaceable-unit/indicators-and-codes", 
-      "redirect_document_id":true 
-    },
-    { 
-      "source_path":"azure-stack/ruggedized/customer-replaceable-unit/emc-poweredge-tactical-r640-server-overview.md", 
-      "redirect_url":"/azure-stack/ruggedized/customer-replaceable-unit/r640-server-overview", 
-      "redirect_document_id":true 
-    },
-    { 
-      "source_path":"azure-stack/hci/deploy/before-you-start.md", 
-      "redirect_url":"/azure-stack/hci/concepts/system-requirements", 
-      "redirect_document_id":false 
-    },
-    { 
-      "source_path":"azure-stack/hci/concepts/plan-host-networking.md", 
-      "redirect_url":"/azure-stack/hci/concepts/host-network-requirements", 
-      "redirect_document_id":false 
-    },
-    { 
-      "source_path":"azure-stack/hci/deploy/network-controller-powershell.md", 
-      "redirect_url":"/azure-stack/hci/manage/sdn-express", 
-      "redirect_document_id":false 
-    },
-    { 
-      "source_path":"azure-stack/hci/release-notes.md", 
-      "redirect_url":"https://support.microsoft.com/help/4595086", 
-      "redirect_document_id":false 
-    },
-    { 
-      "source_path":"azure-stack/hci/deploy/deploy-vdi.md", 
-      "redirect_url":"/azure-stack/hci/deploy/virtual-desktop-infrastructure", 
-      "redirect_document_id":false 
-    },
-    { 
-      "source_path":"azure-stack/hci/deploy/deploy-sql-server-workload.md", 
-      "redirect_url":"/azure-stack/hci/deploy/sql-server", 
-      "redirect_document_id":false 
-    },
-    { 
-      "source_path":"azure-stack/hci/deploy/deploy-trusted-enterprise-virtualization.md", 
-      "redirect_url":"/azure-stack/hci/deploy/trusted-enterprise-virtualization", 
-      "redirect_document_id":false 
-    },
-    { 
-      "source_path":"azure-stack/hci/known-issues.md", 
-      "redirect_url":"/azure-stack/hci/hci-known-issues", 
-      "redirect_document_id":false 
-    },
-    { 
-      "source_path":"azure-stack/hci/deploy/witness.md", 
-      "redirect_url":"/azure-stack/hci/manage/witness", 
-      "redirect_document_id":false 
-    },
-    { 
-      "source_path":"azure-stack/hci/manage/use-datacenter-firewall.md", 
-      "redirect_url":"/azure-stack/hci/manage/use-datacenter-firewall-powershell", 
-      "redirect_document_id":false 
-    },
-    { 
-      "source_path":"azure-stack/hci/concepts/configure-firewalls.md", 
-      "redirect_url":"/azure-stack/hci/manage/configure-firewalls", 
-      "redirect_document_id":false 
-    },
-    { 
-      "source_path":"azure-stack/hci/deploy/sdn-express.md", 
-      "redirect_url":"/azure-stack/hci/manage/sdn-express", 
-      "redirect_document_id":false 
-    },
-    { 
-      "source_path":"azure-stack/hci/concepts/persistent-memory-direct-access.md", 
-      "redirect_url":"/windows-server/storage/storage-spaces/persistent-memory-direct-access", 
-      "redirect_document_id":false 
-    },
-    { 
-      "source_path":"windows-server/failover-clustering/health-service-overview.md", 
-      "redirect_url":"/azure-stack/hci/manage/health-service-overview", 
-      "redirect_document_id":false 
-    },
-    { 
-      "source_path":"windows-server/failover-clustering/health-service-actions.md", 
-      "redirect_url":"/azure-stack/hci/manage/health-service-actions", 
-      "redirect_document_id":false 
-    },
-    { 
-      "source_path":"windows-server/failover-clustering/health-service-settings.md", 
-      "redirect_url":"/azure-stack/hci/manage/health-service-settings", 
-      "redirect_document_id":false 
-    },
-    { 
-      "source_path":"azure-stack/hci/deploy/deployment-overview.md", 
-      "redirect_url":"/azure-stack/hci/deploy/operating-system", 
-      "redirect_document_id":true
-    },
-    { 
-      "source_path":"azure-stack/hci/manage/azure-monitor.md", 
-      "redirect_url":"/azure-stack/hci/manage/monitor-hci-single", 
+    {
+      "source_path": "azure-stack/operator/azure-stack-updates-troubleshoot.md",
+      "redirect_url": "/azure-stack/operator/azure-stack-troubleshooting",
       "redirect_document_id": false
     },
-    { 
-      "source_path":"azure-stack/hci/manage/monitor-azure-portal.md", 
-      "redirect_url":"/azure-stack/hci/manage/monitor-hci-single", 
-      "redirect_document_id":true
-    },    
-    { 
-      "source_path":"azure-stack/hci/manage/azure-stack-hci-insights.md", 
-      "redirect_url":"/azure-stack/hci/manage/monitor-hci-multi", 
-      "redirect_document_id":true
+    {
+      "source_path": "azure-stack/operator/azure-stack-diagnostic-log-collection-overview-tzl.md",
+      "redirect_url": "/azure-stack/operator/diagnostic-log-collection",
+      "redirect_document_id": true
     },
-    { 
-      "source_path":"azure-stack/hci/manage/manage-azure-registration.md", 
-      "redirect_url":"/azure-stack/hci/deploy/register-with-azure", 
-      "redirect_document_id":true
+    {
+      "source_path": "azure-stack/operator/azure-stack-help-and-support-overview-tzl.md",
+      "redirect_url": "/azure-stack/operator/azure-stack-help-and-support-overview",
+      "redirect_document_id": true
     },
-    { 
-      "source_path":"azure-stack/hci/manage/use-azure-backup.md", 
-      "redirect_url":"/azure/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/azure-stack-azsreadiness-cmdlet.md",
+      "redirect_url": "/azure-stack/operator/azure-stack-validate-identity",
+      "redirect_document_id": true
     },
-    { 
-      "source_path":"azure-stack/hci/manage/use-azure-network-adapter.md", 
-      "redirect_url":"/windows-server/manage/windows-admin-center/azure/use-azure-network-adapter", 
-      "redirect_document_id":false
+    {
+      "source_path": "azure-stack/operator/azure-stack-update-servicing-policy.md",
+      "redirect_url": "/azure-stack/operator/azure-stack-servicing-policy",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "azure-stack/operator/azure-stack-train-and-cert.md",
+      "redirect_url": "/azure-stack/operator/index",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "azure-stack/operator/azure-stack-powershell-install.md",
+      "redirect_url": "/azure-stack/operator/powershell-install-az-module",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "azure-stack/ruggedized/customer-replaceable-unit/emc-poweredge-tactical-indicators-and-codes.md",
+      "redirect_url": "/azure-stack/ruggedized/customer-replaceable-unit/indicators-and-codes",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "azure-stack/ruggedized/customer-replaceable-unit/emc-poweredge-tactical-r640-server-overview.md",
+      "redirect_url": "/azure-stack/ruggedized/customer-replaceable-unit/r640-server-overview",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "azure-stack/hci/deploy/before-you-start.md",
+      "redirect_url": "/azure-stack/hci/concepts/system-requirements",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/concepts/plan-host-networking.md",
+      "redirect_url": "/azure-stack/hci/concepts/host-network-requirements",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/deploy/network-controller-powershell.md",
+      "redirect_url": "/azure-stack/hci/manage/sdn-express",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/release-notes.md",
+      "redirect_url": "https://support.microsoft.com/help/4595086",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/deploy/deploy-vdi.md",
+      "redirect_url": "/azure-stack/hci/deploy/virtual-desktop-infrastructure",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/deploy/deploy-sql-server-workload.md",
+      "redirect_url": "/azure-stack/hci/deploy/sql-server",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/deploy/deploy-trusted-enterprise-virtualization.md",
+      "redirect_url": "/azure-stack/hci/deploy/trusted-enterprise-virtualization",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/known-issues.md",
+      "redirect_url": "/azure-stack/hci/hci-known-issues",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/deploy/witness.md",
+      "redirect_url": "/azure-stack/hci/manage/witness",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/manage/use-datacenter-firewall.md",
+      "redirect_url": "/azure-stack/hci/manage/use-datacenter-firewall-powershell",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/concepts/configure-firewalls.md",
+      "redirect_url": "/azure-stack/hci/manage/configure-firewalls",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/deploy/sdn-express.md",
+      "redirect_url": "/azure-stack/hci/manage/sdn-express",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/concepts/persistent-memory-direct-access.md",
+      "redirect_url": "/windows-server/storage/storage-spaces/persistent-memory-direct-access",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "windows-server/failover-clustering/health-service-overview.md",
+      "redirect_url": "/azure-stack/hci/manage/health-service-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "windows-server/failover-clustering/health-service-actions.md",
+      "redirect_url": "/azure-stack/hci/manage/health-service-actions",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "windows-server/failover-clustering/health-service-settings.md",
+      "redirect_url": "/azure-stack/hci/manage/health-service-settings",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/deploy/deployment-overview.md",
+      "redirect_url": "/azure-stack/hci/deploy/operating-system",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "azure-stack/hci/manage/azure-monitor.md",
+      "redirect_url": "/azure-stack/hci/manage/monitor-hci-single",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/manage/monitor-azure-portal.md",
+      "redirect_url": "/azure-stack/hci/manage/monitor-hci-single",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "azure-stack/hci/manage/azure-stack-hci-insights.md",
+      "redirect_url": "/azure-stack/hci/manage/monitor-hci-multi",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "azure-stack/hci/manage/manage-azure-registration.md",
+      "redirect_url": "/azure-stack/hci/deploy/register-with-azure",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "azure-stack/hci/manage/use-azure-backup.md",
+      "redirect_url": "/azure/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/manage/use-azure-network-adapter.md",
+      "redirect_url": "/windows-server/manage/windows-admin-center/azure/use-azure-network-adapter",
+      "redirect_document_id": false
     },
     {
       "source_path": "azure-stack/user/azure-stack-network-howto-vnet-peering.md",
       "redirect_url": "/azure-stack/user/deploy-foundational-patterns/",
       "redirect_document_id": false
-    },    
+    },
     {
       "source_path": "azure-stack/user/network-howto-vpn-tunnel.md",
       "redirect_url": "/azure-stack/user/deploy-foundational-patterns/",
       "redirect_document_id": false
-    },    
+    },
     {
       "source_path": "azure-stack/user/network-howto-vpn-tunnel-gre.md",
       "redirect_url": "/azure-stack/user/deploy-foundational-patterns/",
       "redirect_document_id": false
-    },    
+    },
     {
       "source_path": "azure-stack/user/network-howto-vpn-tunnel-ipsec.md",
       "redirect_url": "/azure-stack/user/deploy-foundational-patterns/",
@@ -1862,7 +1861,7 @@
       "redirect_url": "/azure-stack/hci/overview",
       "redirect_document_id": true
     },
-    {    
+    {
       "source_path": "azure-stack/hci/manage/extend-volumes.md",
       "redirect_url": "/azure-stack/hci/manage/manage-volumes",
       "redirect_document_id": false
@@ -1881,37 +1880,37 @@
       "source_path": "azure-managed-lustre/preview-support.md",
       "redirect_url": "/azure/azure-managed-lustre/amlfs-overview",
       "redirect_document_id": false
-    },    
+    },
     {
       "source_path": "azure-managed-lustre/install-rhel-9.md",
       "redirect_url": "/azure/azure-managed-lustre/client-install?pivots=rhel-9",
       "redirect_document_id": false
-    },    
+    },
     {
       "source_path": "azure-managed-lustre/install-rhel-8.md",
       "redirect_url": "/azure/azure-managed-lustre/client-install?pivots=rhel-8",
       "redirect_document_id": false
-    },    
+    },
     {
       "source_path": "azure-managed-lustre/install-hpc-alma-86.md",
       "redirect_url": "/azure/azure-managed-lustre/client-install?pivots=alma-86",
       "redirect_document_id": false
-    },    
+    },
     {
       "source_path": "azure-managed-lustre/install-rhel-7.md",
       "redirect_url": "/azure/azure-managed-lustre/client-install?pivots=rhel-7",
       "redirect_document_id": false
-    },    
+    },
     {
       "source_path": "azure-managed-lustre/install-ubuntu-18.md",
       "redirect_url": "/azure/azure-managed-lustre/client-install?pivots=ubuntu-18",
       "redirect_document_id": false
-    },    
+    },
     {
       "source_path": "azure-managed-lustre/install-ubuntu-20.md",
       "redirect_url": "/azure/azure-managed-lustre/client-install?pivots=ubuntu-20",
       "redirect_document_id": false
-    },    
+    },
     {
       "source_path": "azure-managed-lustre/install-ubuntu-22.md",
       "redirect_url": "/azure/azure-managed-lustre/client-install?pivots=ubuntu-22",
@@ -1967,7 +1966,8 @@
       "redirect_url": "/azure-stack/hci/index",
       "redirect_document_id": false
     },
-    {"source_path": "azure-stack/hci/whats-new-in-hci-20h2.md",
+    {
+      "source_path": "azure-stack/hci/whats-new-in-hci-20h2.md",
       "redirect_url": "/azure-stack/hci/whats-new-in-hci-22h2",
       "redirect_document_id": false
     },
@@ -2384,6 +2384,16 @@
     {
       "source_path": "azure-local/concepts/network-hud-overview.md",
       "redirect_url": "/azure/azure-local/concepts/network-atc-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/ruggedized/operator/azure-stack-commvault-offer-tzl.md",
+      "redirect_url": "/azure-stack/ruggedized/",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/user/azure-stack-network-howto-backup-commvault.md",
+      "redirect_url": "/azure-stack/user",
       "redirect_document_id": false
     }
   ]

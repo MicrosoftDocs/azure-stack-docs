@@ -1,8 +1,8 @@
 ---
 title: "Azure Operator Nexus: Configure a network fabric controller"
 description: Learn commands to create and modify a network fabric controller in Azure Operator Nexus instances.
-author: sushantjrao
-ms.author: sushrao
+author: RaghvendraMandawale
+ms.author: rmandawale
 ms.service: azure-operator-nexus
 ms.topic: how-to
 ms.date: 07/20/2023
@@ -35,7 +35,13 @@ With the latest update, all new NFC Cluster deployments uses `Standard_D8s_v3` v
 This change is required due to the limited availability of `Standard_Ds4_v2` in several Azure regions.
 
 > [!Note]
-> Existing NFC Clusters will continue to run on `Standard_Ds4_v2.
+> To ensure optimal performance and scalability, it is essential to provision the appropriate node pool count for the required number of Network Fabric instances (NFs) within each Network Fabric Controller (NFC). If the necessary node pool count is not available, a provisioning request must be submitted in advance. Based on the current configuration—**recommended SKU: StandardDS4v2 (8 vCPUs, 28 GiB Memory)**—the expected node pool scaling requirements for the AKS cluster named nfcCluster are as follows: <br>
+>
+>| Number of NFs per NFC | Minimum Node Pool Count Required in AKS Cluster nfc Cluster|
+>|---------------------- |------------------------------------------------------------|
+>|1 – 5                  | 2                                                          |
+>|6 - 10                 | 3                                                          |
+>|11 - 15                | 4                                                          |
 
 ### Minimum vCPU requirement
 

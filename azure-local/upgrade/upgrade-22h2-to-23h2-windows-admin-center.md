@@ -3,7 +3,7 @@ title: Upgrade Azure Stack HCI OS, version 22H2 to version 23H2 via Windows Admi
 description: Learn how to upgrade Azure Stack HCI OS, version 22H2 to version 23H2 using Windows Admin Center.
 author: alkohli
 ms.topic: how-to
-ms.date: 06/06/2025
+ms.date: 09/19/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -49,7 +49,7 @@ Before you begin, make sure that:
 - You have access to a client that can connect to your Azure Local instance. This client should have Windows Admin Center installed on it. For more information, see [Install Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install).
 - You run the `RepairRegistration` cmdlet only if both of the following conditions apply:
 
-   - The *identity* property is either missing or doesn’t contain `type = "SystemAssigned"`.
+   - The *identity* property is either missing or doesn't contain `type = "SystemAssigned"`.
       - Check this in the Resource JSON in the Azure portal
       - Or run the `Get-AzResource -Name <cluster_name>` PowerShell cmdlet
    - The **Cloud Management** cluster group is not present. Check it by running the `Get-ClusterGroup` PowerShell cmdlet.
