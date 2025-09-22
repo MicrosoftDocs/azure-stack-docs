@@ -19,7 +19,10 @@ This article describes how to deploy a virtualized Azure Local instance on a hos
 You need administrator privileges for the Azure Local virtual deployment and should be familiar with the existing Azure Local solution. The deployment can take around 2.5 hours to complete.
 
 > [!IMPORTANT]
-> A virtual deployment of Azure Local is intended for educational and demonstration purposes only. Microsoft Support doesn't support virtual deployments.
+> A virtual deployment of Azure Local is intended for educational and demonstration purposes only. 
+
+>NOTE
+>Microsoft Support doesn't support virtual >deployments.
 
 ## Prerequisites
 
@@ -227,7 +230,7 @@ This is required in scenarios where you're planning to use nested virtualization
 
 ## Install the OS on the virtual host VMs
 
-Complete the following steps to install and configure the Azure Local OS on the virtual host VMs:
+Complete the following steps to install and configure the Azure Stack HCI OS on the virtual host VMs:
 
 1. [Download version 23H2 operating system for Azure Local deployment](./download-23h2-software.md) and [Install the Azure Stack HCI operating system](deployment-install-os.md).
 
