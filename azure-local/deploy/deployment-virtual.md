@@ -153,7 +153,7 @@ Follow these steps to create an example VM named `Node1` using PowerShell cmdlet
     Get-VmNetworkAdapter -VmName "Node1" |Connect-VmNetworkAdapter -SwitchName "virtual_switch_name"
     ```
 
-1. Enable MAC spoofing on all network adapters on VM `Node1`. MAC address spoofing is a technique that allows a network adapter to masquerade as another by changing its Media Access Control (MAC) address. This is required in scenarios where you're planning to use nested virtualization:
+1. Enable MAC spoofing *on all network adapters* on VM `Node1`. MAC address spoofing is a technique that allows a network adapter to masquerade as another by changing its Media Access Control (MAC) address. This is required in scenarios where you're planning to use nested virtualization:
 
     ```PowerShell
     Get-VmNetworkAdapter -VmName "Node1" |Set-VmNetworkAdapter -MacAddressSpoofing On
