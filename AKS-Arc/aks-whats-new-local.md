@@ -31,7 +31,7 @@ This section lists the new features and improvements in AKS Arc in each release 
 - KMS v1 will be deprecated soon. We will be adding support for KMS v2 in an upcoming Azure Local release. Please plan on upgrading your clusters once KMS v2 is available.
 - Support for [Windows Server 2019 SKU](https://techcommunity.microsoft.com/blog/containers/announcing-the-3-year-retirement-of-windows-server-2019-on-azure-kubernetes-serv/3777341) for node pools will end in March 2026.
 
-#### Supported Kubernetes versions for 2509
+#### Kubernetes versions in 2509
 
 No new Kubernetes versions added in 2509. The versions included in the 2509 release are: 1.29.12, 1.29.13, 1.30.8, 1.30.9, 1.31.4, 1.31.5.
 
@@ -48,9 +48,9 @@ No new Kubernetes versions added in 2509. The versions included in the 2509 rele
 - Support for Kubernetes minor version 1.29 will end with the 2509 release.
 - KMS v1 will be deprecated soon. We will be adding support for KMS v2 in an upcoming Azure Local release. Please plan on upgrading your clusters once KMS v2 is available.
 
-#### Supported Kubernetes versions for 2508
+#### Kubernetes versions in 2508
 
-The Kubernetes versions supported in the 2508 release are: 1.29.12, 1.29.13, 1.30.8, 1.30.9, 1.31.4, 1.31.5.
+The Kubernetes versions included in the 2508 release are: 1.29.12, 1.29.13, 1.30.8, 1.30.9, 1.31.4, 1.31.5.
 
 #### Features
 
