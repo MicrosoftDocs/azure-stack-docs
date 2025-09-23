@@ -49,7 +49,7 @@ The following table lists the fixed issues in this release:
 | Deployment <!--34633094--> | Disk types aren't being determined correctly resulting in false negative results on storage pool size determination. | Improved validation for resolving disk type when determining storage pool size. |
 | Deployment <!--34493970--> | True max volume size should be calculated and not defaulted to 64 TB. | Improved calculation for maximum volume size. |
 | Deployment <!--34493956--> | Adjusted minimum allocation unit size for thin provisioned volumes.  |  |
-| Azure Local VMs  <!--34751273--> | Bumped SFS version to include image with size 200 GB. |  |
+| Azure Local VMs  <!--34751273--> | Increased default disk size from 100 GB to 200 GB. |  |
 | Azure Local VMs <!--34502023--> | AKS Arc created cluster isn't working in locked environment with proxy enabled. |  |
 | Azure portal <!--33298772--> | Improved the associate NSG dropdown menu in the Azure portal.|  |
 | Deployment <!--34362314--> | In the 2506 release, KIR registries were added to the incorrect path. | Added registries to the correct path. |
@@ -66,6 +66,7 @@ The following table lists the known issues in this release:
 |Feature  |Issue  |Workaround  |
 |---------|---------|---------|
 |Deployment <!--34021247, 34493956--> |Log collection doesn't start when it starts it the first time, and then shows 404 errors subsequent times. | There's no known workaround for this issue in this release. |
+|Deployment <!--34752922--> |Deployment, add node, and repair node operations may fail with the error: <br> `Type 'EncryptClusterSharedVolumes' of Role 'AzureStackBitlocker' raised an exception: The job running on xxx failed due to: System.Management.Automation.RemoteException: -> Failed enabling bitlocker for C:\ClusterStorage\UserStorage_13 (F:)`  | <!--For detailed steps on how to resolve this issue, see the Troubleshooting guide.--> |
 
 
 ## Known issues from previous releases
