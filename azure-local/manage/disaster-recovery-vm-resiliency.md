@@ -4,7 +4,7 @@ description: Virtual machine resiliency considerations for Azure Local.
 ms.topic: article
 author: sipastak
 ms.author: sipastak
-ms.date: 09/12/2025
+ms.date: 09/23/2025
 ---
 
 # Virtual machine resiliency for Azure Local
@@ -57,8 +57,7 @@ Beyond MABS, a mature market of partner backup and recovery vendors offers robus
 
 Commvault Cloud offers unified, enterprise-grade data protection for Azure Local environments, enabling secure backup, recovery, and ransomware protection across virtual machines, databases, and unstructured data. With intelligent automation and policy-driven workflows, Commvault simplifies compliance, improves resiliency, and delivers scalable protection from edge to cloud, all while maintaining full control of your data within your Azure Local region.
 
-- [Commvault Azure Local support](https://documentation.commvault.com/2024e/essential/azure_local.html)
-- [Commvault auto recovery](https://documentation.commvault.com/2024e/essential/azure_local_auto_recovery.html)
+For more information, visit the official Commvault documentation site for guidance on Commvault for Azure Local.
 
 #### Rubrik
 
