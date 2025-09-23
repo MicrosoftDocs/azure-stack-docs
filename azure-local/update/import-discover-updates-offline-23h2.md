@@ -5,7 +5,7 @@ author: ronmiab
 ms.author: robess
 ms.topic: how-to
 ms.reviewer: arduppal
-ms.date: 08/13/2025
+ms.date: 09/23/2025
 ---
 
 # Import and discover update packages with limited connectivity
@@ -14,11 +14,9 @@ ms.date: 08/13/2025
 
 [!INCLUDE [azure-local-banner-23h2](../includes/azure-local-banner-23h2.md)]
 
-This article explains how to discover and import solution update packages for Azure Local deployed in sites with limited bandwidth connections to Azure. Starting with version 2503, you can download Azure Local solution updates as static payloads. You can download the payload once, copy or transfer it to multiple instances, and import it using PowerShell. Doing these actions before starting an update reduces the amount of data downloaded during an update.
+This article explains how to discover and import solution update packages for Azure Local deployed in sites with limited bandwidth connections to Azure. Starting with version 2503, you can download Azure Local solution updates as static payloads. Download the payload once, copy or transfer it to multiple instances, and import it using PowerShell. Do these actions before you start an update to reduce the amount of data downloaded during the update.
 
-The static payload for a solution update includes the OS security update, extensions, and core agents, which are installed during the update process. Updated container images required for the Azure Resource Bridge component and Azure Kubernetes Service on Azure Local aren't included in the static payload. The update process downloads these images automatically.
-
-<!--To install updates online via PowerShell, see [Update Azure Local via PowerShell](./update-via-powershell-23h2.md).-->
+The static payload for a solution update includes the OS security update, extensions, and core agents, which install during the update process. The update process automatically downloads updated container images required for the Azure Resource Bridge component and Azure Kubernetes Service on Azure Local. These images aren't included in the static payload.
 
 ## Prerequisites
 
@@ -75,23 +73,23 @@ For more information on the release cadence, see [Azure Local release informatio
    Invoke-WebRequest -Uri "<download URI>" -OutFile "C:\ClusterStorage\Infrastructure_1\Shares\SU1_Infrastructure_1\import\CombinedSolutionBundle.<build number>.zip"
    ```
 
-1. Verify the SHA256 hash of the downloaded **CombinedSolutionBundle**. Run this command:
+1. Check the SHA256 hash of the downloaded **CombinedSolutionBundle**. Run this command:
 
    ```PowerShell
-   # Verify the SHA256 hash of the downloaded CombinedSolutionBundle
+   # Check the SHA256 hash of the downloaded CombinedSolutionBundle
    Get-FileHash -Path "<path to CombinedSolutionBundle.zip>"
    ```
 
 ## Step 2: Import the Solution update bundle
 
-1. Create a folder for the update service to discover at the following location in the infrastructure volume of your system. Run this command:
+1. Create a folder for the update service to discover in the infrastructure volume of your system. Run this command:
 
    ```PowerShell
    # Create a folder for the update service to discover
    New-Item C:\ClusterStorage\Infrastructure_1\Shares\SU1_Infrastructure_1\import -ItemType Directory
    ```
 
-1. Copy the CombinedSolutionBundle you downloaded to the folder you created in the previous step.
+1. Copy the CombinedSolutionBundle you downloaded to the folder you created.
 
 1. Extract the contents of the CombinedSolutionBundle to the Solution subfolder. Run this command:
 
@@ -107,15 +105,15 @@ For more information on the release cadence, see [Azure Local release informatio
    Add-SolutionUpdate -SourceFolder C:\ClusterStorage\Infrastructure_1\Shares\SU1_Infrastructure_1\import\Solution
    ```
 
-1. Check that the update service discovers the update package and that it's available to start preparation and installation. To discover the updates, run the `Get-SolutionUpdate` command. The update service discovers updates asynchronously, so you might need to run `Get-SolutionUpdate` command more than once.
+1. Check that the update service discovers the update package and that it's available to start preparation and installation. To discover the updates, run the `Get-SolutionUpdate` command. The update service discovers updates asynchronously, so you might need to run the `Get-SolutionUpdate` command more than once.
 
 1. If the update returns a state of `AdditionalContentRequired`, follow the instructions in [Update Azure Local via PowerShell](./update-via-powershell-23h2.md#step-3-import-and-rediscover-updates) to import the required Solution Builder Extension (SBE) updates.
 
 ## Next steps
 
-- Learn more about [Understanding update phases](./update-phases-23h2.md).
+- Learn more about [Understanding update phases](./update-phases-23h2.md)
 
-- Review [Troubleshooting updates](./update-troubleshooting-23h2.md).
+- Review [Troubleshooting updates](./update-troubleshooting-23h2.md)
 
 ::: moniker-end
 
