@@ -5,7 +5,7 @@ ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 09/19/2025
+ms.date: 09/22/2025
 ---
 
 # What's new in Azure Local?
@@ -22,8 +22,8 @@ There are two 2509 releases for September. Here are the details of each release:
 
 |Solution version  | OS version |
 |---------|---------|
-|12.2509.1001.22 |  26100.5074 |
-|11.2509.1001.21  | 25398.1840  |
+|12.2509.1001.22 |  26100.6584 |
+|11.2509.1001.21  | 25398.1849  |
 
 For more information, see [Release information summary](./release-information-23h2.md).
 
