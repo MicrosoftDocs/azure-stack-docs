@@ -318,8 +318,6 @@
           href: ./ruggedized-overview.md?bc=/azure-stack/breadcrumb/toc.json&toc=/azure-stack/ruggedized/toc.json
         - name: Rotate container registry secrets
           href: ./ruggedized-overview.md?bc=/azure-stack/breadcrumb/toc.json&toc=/azure-stack/ruggedized/toc.json
-      - name: Offer Commvault marketplace item
-        href: operator/azure-stack-commvault-offer-tzl.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
     - name: Offer services
       items:
       - name: Service, plan, offer, subscription overview
@@ -830,8 +828,6 @@
           href: ../user/azure-stack-network-howto-extend-datacenter.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
       - name: Backup and recovery
         items:
-        - name: Back up your VM on Azure Stack Hub ruggedized with Commvault
-          href: ../user/azure-stack-network-howto-backup-commvault.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
         - name: Back up your storage accounts on Azure Stack Hub ruggedized
           href: ../user/azure-stack-network-howto-backup-storage.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
         - name: Copy subscription resources
