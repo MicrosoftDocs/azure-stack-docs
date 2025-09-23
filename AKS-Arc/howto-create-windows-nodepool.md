@@ -10,11 +10,11 @@ ms.reviewer: sethm
 
 ---
 
-# Create a Windows Node Pool on AKS Enabled by Azure Arc
+# Create a Windows Node Pool on AKS enabled by Azure Arc
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
-This article describes how to use Azure CLI to deploy a Windows node pool to an existing AKS cluster to run Windows Server containers. It also describes how to deploy a sample ASP.NET application in a Windows Server container to the cluster.
+This article describes how to use Azure CLI to deploy a Windows node pool to an existing AKS cluster, to run Windows Server containers. It also describes how to deploy a sample ASP.NET application in a Windows Server container to the cluster.
 
 ## Prerequisites
 

@@ -19,8 +19,8 @@ This article describes the steps to upgrade the OS version for Windows workloads
 When a new version of the Windows Server operating system is released, AKS Arc is committed to supporting it and recommending you upgrade to the latest version to take advantage of the fixes, improvements, and new functionality.
 
 > [!IMPORTANT]
-> Windows Server 2019 is being retired in March 2026. Azure Local version 2510 will be the last release to include the Windows Server 2019 VHDs. The last Kubernetes version available on Windows Server 2019 is 1.32. Windows Server 2019 will not be supported on 1.33 and above. For more information, see [Windows Server 2019 node pool retirement](https://techcommunity.microsoft.com/blog/containers/announcing-the-3-year-retirement-of-windows-server-2019-on-azure-kubernetes-serv/3777341).
-> Windows Server 2022 is being retired in October 2026. Azure Local version 2603 will be the last release to include the Windows Server 2022 VHDs. The last Kubernetes version available on Windows Server 2019 is 1.34. Windows Server 2022 will not be supported on 1.35 and above.
+> Windows Server 2019 will retire in March 2026. Azure Local version 2510 will be the last release to include the Windows Server 2019 VHDs. The last Kubernetes version available on Windows Server 2019 is 1.32. Windows Server 2019 will not be supported on 1.33 and above. For more information, see [Windows Server 2019 node pool retirement](https://techcommunity.microsoft.com/blog/containers/announcing-the-3-year-retirement-of-windows-server-2019-on-azure-kubernetes-serv/3777341).
+> Windows Server 2022 will retire in October 2026. Azure Local version 2603 will be the last release to include the Windows Server 2022 VHDs. The last Kubernetes version available on Windows Server 2019 is 1.34. Windows Server 2022 will not be supported on 1.35 and above.
 
 ### Before you begin
 
@@ -28,7 +28,7 @@ When a new version of the Windows Server operating system is released, AKS Arc i
 - Check your application and verify the container app works on the new OS version.
 - Deploy the verified containerized application on AKS Arc in a development or testing environment.
 - Take note of the new image name or tag for use in this article.
-- Ensure that the [Windows node pool feature is enabled](./howto-enable-windows-nodepools.md) on your cluster.
+- Ensure that the [Windows node pool feature is enabled](./howto-enable-windows-nodepools.md) on your AKS Arc cluster.
 
 ### Add a new Windows-based node pool to an existing cluster
 

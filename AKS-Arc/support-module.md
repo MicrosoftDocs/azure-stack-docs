@@ -58,7 +58,7 @@ Follow these steps on your client to connect to one of the machines in your Azur
     ```
 
     > [!NOTE]
-    > Sign in using your deployment user account credentials. This is the account you created when preparing [Active Directory](../deploy/deployment-prep-active-directory.md) and used to deploy Azure Local.
+    > Sign in using your deployment user account credentials. This is the account you created when preparing [Active Directory](/azure/azure-local/deploy/deployment-prep-active-directory) and used to deploy Azure Local.
 
 
     <details>
@@ -103,14 +103,6 @@ Ensure that you have the latest module loaded into the current runspace by remov
 Remove-Module -Name Support.AksArc
 Import-Module -Name Support.AksArc
 ```
-
-
-## Commands
-
-The **Support.AksArc** module contains the following PowerShell commands:
-
-- `Test-SupportAksArcKnownIssues`: tests for known issues.
-- `Invoke-SupportAksArcRemediation`: fixes identified issues.
 
 ## Use the AKS Arc Support Tool
 
@@ -177,7 +169,7 @@ Validate Virtual Machine Stuck In Pending                  Passed  No virtual ma
 Validate Virtual Machine Management Service Responsiveness Passed  Virtual Machine Management service is responsive.
 ```
 
-### Remdediate common issues
+### Remediate common issues
 
 This command tests and fixes known issues with a given solution version. 
 
@@ -195,7 +187,7 @@ Invoke-SupportAksArcRemediation_EnableWindowsNodepool -Verbose
 
 ### Disable Windows node pool feature
 
-This command disables the Windows nodepool feature on your AKS Arc cluster.  Before running this command, ensure that you have no[Windows-based nodepools](use-windows-node-pool.md) running on your cluster. 
+This command disables the Windows nodepool feature on your AKS Arc cluster.  Before running this command, ensure that you have no Windows node pools running on your cluster.
 
 ```powershell
 

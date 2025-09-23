@@ -17,7 +17,7 @@ ms.lastreviewed: 09/11/2025
 Virtual hard disks (VHDs)  serve as the base operating system images for the Kubernetes nodes within your AKS cluster. Starting with Azure Local version 2509, only the Azure Linux VHDs are downloaded by default on the Azure Local instance. The Azure Linux VHDs are used to create the default Linux nodepool on the AKS Arc cluster. For Windows based workloads, AKS Arc supports Windows Server 2019 and Windows Server 2022 images that can be used to create corresponding Windows node pool, however these VHDs are not available by default and needs to be downloaded before you can create your Windows based node pools.  Having Windows nodepool feature disabled by default ensures that the Windows-based OS images are not downloaded unnecessarily and helps saves bandwidth and storage space.
 
 > [!IMPORTANT]
-> With the Windows nodepool feature is disabled by default in Azure Local release 2509 and later, if you have a Windows node pool and if you attempt commands like `aksarc upgrade`, `aksarc update` or `aksarc nodepool update` or `aksarc nodepool add`, they would fail and you would be asked to explicitly enable this feature before you proceed with these operations.
+> With the Windows nodepool feature disabled by default in Azure Local release 2509 and later, if you have a Windows node pool and if you attempt commands like `aksarc upgrade`, `aksarc update` or `aksarc nodepool update` or `aksarc nodepool add`, they would fail with an error message stating that 'Windows node pool feature is disabled.'and you would be asked to explicitly enable this feature before you proceed with these operations.
 
 ## Enable the Windows nodepool feature on AKS Arc clusters
 
@@ -131,29 +131,8 @@ For the Kubernetes version you intend to use, find the right Windows SKU by look
 ...
 ```
 
-Once the VHDs show `ready` as `true` you can then proceed to create a Windows node pool and deploy your Windows-based workloads.
+Once the VHDs show `ready` as `true` you can then proceed to [create a Windows node pool](./howto-create-windows-nodepool.md) and deploy your Windows-based workloads.
 
-## Create the Windows node pool
-
-With the VHDs downloaded and ready to use, you can now proceed to create the Windows node pool either from the Azure Portal or using the CLI as shown. Specify the right OS SKU based on the results from the `get-versions` command.
-
-Use the ``add nodepool` command,  with the parameter `--os-type` set as `Windows`. If the operating system SKU isn't specified, the node pool is set to the default OS SKU based on the Kubernetes version of the cluster. Windows Server 2022 is the default operating system for Kubernetes versions 1.25.0 and higher. Windows Server 2019 is the default OS for earlier versions.
-
-- To use Windows Server 2019, specify the following parameters:
-  - `os-type` set to `Windows`.
-  - `os-sku` set to `Windows2019` (optional).
-- To use Windows Server 2022, specify the following parameters:
-  - `os-type` set to `Windows`.
-  - `os-sku` set to `Windows2022` (optional).
-
-The following command creates a new node pool named `$mynodepool` and adds it to `$myAKSCluster` with one Windows Server 2022 node:
-
-```azurecli
-az aksarc nodepool add --resource-group $myResourceGroup --cluster-name $myAKSCluster --name $mynodepool --node-count 1 --os-type Windows --os-sku Windows2022
-```
-
-> [!IMPORTANT]
-> The Windows Server nodepools needs to be licenced either using the Windows Server subscription or using Azure Hybrid Benefit as described the [Activate Windows Server VMs on Azure Local](/azure/azure-local/manage/vm-activate) document.
 
 ## Disable the Windows nodepool feature on AKS Arc clusters
 
@@ -222,8 +201,6 @@ az aksarc get-versions --resource-group $resourceGroup --custom-location $custom
 
 You can verify if Windows VHDs were removed from the Azure Local storage paths. Deletion can take a while so wait for around 30 minutes before checking. You must check all the storage paths, because Windows VHDs are assigned to storage paths in round-robin fashion, based on available storage capacity.
 
-> [!IMPORTANT]
-> Once the Windows node pool feature is disabled then operations like adding a Windows node pool, or updating a Windows node pool or attemtping to upgrade a cluster with a Windows node pool are blocked with the error message stating that 'Windows node pool feature is disabled.'. In such scenarios you will have to enable the Windows node pool feature to proceed with the operation.
 
 ## Next steps
 
