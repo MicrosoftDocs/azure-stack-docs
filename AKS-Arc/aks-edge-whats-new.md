@@ -27,7 +27,7 @@ The following features and improvements were added in this release:
 - Azure Linux (previously Mariner) Version: 3.0.20250822
 - K8s (upstream Kubernetes) distribution: 1.30.5 (only available as an upgrade from 1.10.868.0), 1.31.5
 - K3s distribution: 1.30.6 (only available as an upgrade from 1.10.868.0), 1.31.6
-- Json version schema: 1.15
+- Json version schema: 1.16
 
 ### Available upgrade paths
 
