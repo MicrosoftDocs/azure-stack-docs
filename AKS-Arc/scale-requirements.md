@@ -62,6 +62,8 @@ If you operate at enterprise scale and have scenarios that require higher cluste
 | AKS Arc Linux worker node       | Standard_A4_v2                         | 8-GB memory, 4 vcpu  |
 | AKS Arc Windows worker node     | Standard_K8S3_v1                       | 6-GB memory, 4 vcpu  |
 
+Starting with the Azure Local 2509 release, the default OS disk size for VMs used as AKS Arc nodes, is set to 200 GB. These are dynamically expanding virtual hard disks and you should [ensure sufficient physical disk space is available](/windows-server/virtualization/hyper-v/best-practices-analyzer/ensure-sufficient-physical-disk-space-is-available-when-virtual-machines-use-dynamically?source=recommendations) for the node pools that you create on AKS Arc. 
+
 ## Supported values for control plane node sizes
 
 | VM Size                     | CPU  | Memory (GB)  |

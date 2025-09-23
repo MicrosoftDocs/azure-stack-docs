@@ -23,6 +23,24 @@ This article summarizes features, improvements, and important notices for AKS on
 
 This section lists the new features and improvements in AKS Arc in each release of Azure Local.
 
+### Release 2509
+
+#### Announcements
+
+- Support for Kubernetes minor version 1.29 will end with the 2509 release.
+- KMS v1 will be deprecated soon. We will be adding support for KMS v2 in an upcoming Azure Local release. Please plan on upgrading your clusters once KMS v2 is available.
+- Support for [Windows Server 2019 SKU](https://techcommunity.microsoft.com/blog/containers/announcing-the-3-year-retirement-of-windows-server-2019-on-azure-kubernetes-serv/3777341) for node pools will end in March 2026.
+
+#### Supported Kubernetes versions for 2509
+
+No new Kubernetes versions added in 2509. The versions included in the 2509 release are: 1.29.12, 1.29.13, 1.30.8, 1.30.9, 1.31.4, 1.31.5.
+
+#### Features
+
+- Starting with Azure Local 2509 release, we are by default, disabling the download of the Windows VHDs. This helps save on bandwidth usage and reduce depoloyment times for customers who need only Linux based containers. Customers who need to use Windows node pools, can continue to do so by [enabling the Windows node pool feature](./howto-enable-windows-nodepools.md) and then performing Windows node pool based operations.  download Kubernetes version 1.31 is now available on AKS Arc.
+- Increased the default OS disk size on virtual machines used as AKS Arc nodes to 200 GB.  These are dynamically expanding virtual hard disks and you should [ensure sufficient physical disk space is available](/windows-server/virtualization/hyper-v/best-practices-analyzer/ensure-sufficient-physical-disk-space-is-available-when-virtual-machines-use-dynamically?source=recommendations) for the node pools that you create on AKS Arc.
+
+
 ### Release 2508
 
 #### Announcements
