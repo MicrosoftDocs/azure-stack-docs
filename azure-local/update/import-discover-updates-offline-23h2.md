@@ -14,28 +14,28 @@ ms.date: 08/13/2025
 
 [!INCLUDE [azure-local-banner-23h2](../includes/azure-local-banner-23h2.md)]
 
-This article explains how to discover and import solution update packages for Azure Local deployed in sites with limited bandwidth connections to Azure. Beginning with version 2503, Azure Local solution updates can be optionally downloaded as static payloads. You can download the payload once, copy or transfer to multiple instances and import using PowerShell. Performing these actions prior to starting an update, reduces the amount of data that is downloaded during an update.
+This article explains how to discover and import solution update packages for Azure Local deployed in sites with limited bandwidth connections to Azure. Starting with version 2503, you can download Azure Local solution updates as static payloads. You can download the payload once, copy or transfer it to multiple instances, and import it using PowerShell. Doing these actions before starting an update reduces the amount of data that's downloaded during an update.
 
-The static payload for a solution update includes the OS security update, extensions, and core agents, all of which are installed during the update process. Updated container images required for the Azure Resource Bridge component and Azure Kubernetes Service on Azure Local are not included in the static payload. These images are downloaded automatically during the update process.
+The static payload for a solution update includes the OS security update, extensions, and core agents, which are installed during the update process. Updated container images required for the Azure Resource Bridge component and Azure Kubernetes Service on Azure Local aren't included in the static payload. The update process downloads these images automatically.
 
 <!--To install updates online via PowerShell, see [Update Azure Local via PowerShell](./update-via-powershell-23h2.md).-->
 
 ## Prerequisites
 
-- Make sure you're running Azure Local 2411.3 or later to use this feature.
+- Make sure you run Azure Local 2411.3 or later to use this feature.
 
-- Review [About updates for Azure Local](./about-updates-23h2.md) to understand the update process.
+- Review [About updates for Azure Local](./about-updates-23h2.md) to learn more about the update process.
 
-- Review [Azure Local release information](../release-information-23h2.md) to check supported paths.
+- Review [Azure Local release information](../release-information-23h2.md) to check which paths are supported.
 
 ## Solution update bundle
 
-The **CombinedSolutionBundle** is a zip file that contains the update package for the Azure Stack HCI OS, core agents and services, and the solution extension. The **CombinedSolutionBundle** is named `CombinedSolutionBundle.<build number>.zip`, where `<build number>` is the build number for the release. The SHA256 hash is used to check the integrity of your download.
+The **CombinedSolutionBundle** is a zip file that contains the update package for the Azure Stack HCI OS, core agents and services, and the solution extension. The **CombinedSolutionBundle** is named `CombinedSolutionBundle.<build number>.zip`, where `<build number>` is the build number for the release. Use the SHA256 hash to check the integrity of your download.
 
 The following tables list the **CombinedSolutionBundle** versions and associated SHA256 hashes for existing deployments of Azure Local.
 
 - For 25398.xxxx builds, use the **CombinedSolutionBundle** to update the OS and solution components for Azure Local.
-- For 26100.xxxx builds, use the **CombinedSolutionBundle** to install a specific version of Azure Local.
+- For 26100.xxxx builds, use the **CombinedSolutionBundle** to install a specific Azure Local version.
 
 For more information on the release cadence, see [Azure Local release information](../release-information-23h2.md).
 
@@ -91,23 +91,23 @@ For more information on the release cadence, see [Azure Local release informatio
    New-Item C:\ClusterStorage\Infrastructure_1\Shares\SU1_Infrastructure_1\import -ItemType Directory
    ```
 
-1. Copy the CombinedSolutionBundle you downloaded to the folder you created. Run this command:
+1. Copy the CombinedSolutionBundle you downloaded to the folder you created in the previous step.
 
-1. Extract the contents to the Solution subfolder. Run this command:
+1. Extract the contents of the CombinedSolutionBundle to the Solution subfolder. Run this command:
 
    ```PowerShell
    # Extract the contents of the CombinedSolutionBundle to the Solution subfolder
    Expand-Archive -Path C:\ClusterStorage\Infrastructure_1\Shares\SU1_Infrastructure_1\import\CombinedSolutionBundle.<build number>.zip -DestinationPath C:\ClusterStorage\Infrastructure_1\Shares\SU1_Infrastructure_1\import\Solution
    ```
 
-1. Import the package to the update service. Run this command:
+1. Import the package into the update service. Run this command:
 
    ```PowerShell
    # Import the module
    Add-SolutionUpdate -SourceFolder C:\ClusterStorage\Infrastructure_1\Shares\SU1_Infrastructure_1\import\Solution
    ```
 
-1. Verify that the update service discovers the update package and that it's available to start preparation and installation. To discover the updates, run the `Get-SolutionUpdate` command. The update service discovers updates asynchronously, so you might need to run `Get-SolutionUpdate` command more than once.
+1. Check that the update service discovers the update package and that it's available to start preparation and installation. To discover the updates, run the `Get-SolutionUpdate` command. The update service discovers updates asynchronously, so you might need to run `Get-SolutionUpdate` command more than once.
 
 1. If the update returns a state of `AdditionalContentRequired`, follow the instructions in [Update Azure Local via PowerShell](./update-via-powershell-23h2.md#step-3-import-and-rediscover-updates) to import the required Solution Builder Extension (SBE) updates.
 
