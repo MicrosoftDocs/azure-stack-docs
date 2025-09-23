@@ -77,6 +77,28 @@ az networkcloud baremetalmachine list -g $mrg --subscription $sub --query "sort_
 --output table
 
 ```
+
+## Nexus tenant workload health check during cluster runtime upgrade
+
+During a runtime upgrade, the inventory readiness check is triggered to conduct workload health checks. The inventory readiness check feature is appliable for only rack by rack upgrade strategy. The platform feature "UpgradeInventoryChecks" controls the platform runtime upgrade outcome when the health check fails. When the feature is enabled, the upgrade pauses if there is an inventory readiness check failure after the compute rack upgrade. The upgrade can be continued using CCUVA. When the feature is disabled the inventory readiness failures are logged and upgrade continues to next stage.  By default the feature is disabled. 
+
+The Inventory Readiness Check feature performs workload health check after control-plane, management-plane and compute servers are upgraded during platform runtime upgrade. It operates in snapshot and comparison modes and provides a mechanism to verify workload health state after different stages of platform runtime upgrade. the feature supports Nexus Kubernetes Cluster and Virtual Machine workloads.
+
+### Workflow of workload health check
+
+1. **Snapshot Initiation** - Snapshot is collected for all registered workloads (Nexus Kubernetes Cluster and Virtual Machine) before starting upgrade of servers.
+2. **Upgrade Stage Transitions** - After upgrade of each stage like control-plane, management-plane and compute servers are completed, comparison of inventory for workloads are initiated.
+3. **Comparison Process** - Comparison of current workloads with snapshot taken during start of upgrade. Report comparison status.
+4. **Health Check Handling** - On success proceed to next upgrade stage. For failure, based on inventory readiness check feature is enable or disable its handled as below.
+
+| Upgrade Stage            | UpgradeInventoryChecks Enable       | UpgradeInventoryChecks Disable |
+|--------------------------|-------------------------------------|--------------------------------|
+| Initial Snapshot         | Upgrade failure                     | Upgrade continue to next stage |
+| Control Plane Upgrade    | Upgrade failure                     | Upgrade continue to next stage |
+| Management Plane Upgrade | Upgrade failure                     | Upgrade continue to next stage |
+| Compute server Upgrade   | Upgrade paused, continue with CCUVA | Upgrade continue to next stage |
+
+
 ## BareMetalMachine (BMM) keyset operations during cluster runtime upgrade
 
 When a server is upgraded to utilize a new OS, the BMM keysets have to be re-established with the new software. This process starts once the runtime upgrade completes for the instance. Servers yet to undergo a runtime upgrade can still be accessed via the BMM keyset. If access to a machine is needed during the upgrade, the console user is available.
