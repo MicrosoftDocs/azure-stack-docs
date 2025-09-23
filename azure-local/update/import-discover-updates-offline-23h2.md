@@ -14,7 +14,7 @@ ms.date: 08/13/2025
 
 [!INCLUDE [azure-local-banner-23h2](../includes/azure-local-banner-23h2.md)]
 
-This article explains how to discover and import solution update packages for Azure Local deployed in sites with limited bandwidth connections to Azure. Starting with version 2503, you can download Azure Local solution updates as static payloads. You can download the payload once, copy or transfer it to multiple instances, and import it using PowerShell. Doing these actions before starting an update reduces the amount of data that's downloaded during an update.
+This article explains how to discover and import solution update packages for Azure Local deployed in sites with limited bandwidth connections to Azure. Starting with version 2503, you can download Azure Local solution updates as static payloads. You can download the payload once, copy or transfer it to multiple instances, and import it using PowerShell. Doing these actions before starting an update reduces the amount of data downloaded during an update.
 
 The static payload for a solution update includes the OS security update, extensions, and core agents, which are installed during the update process. Updated container images required for the Azure Resource Bridge component and Azure Kubernetes Service on Azure Local aren't included in the static payload. The update process downloads these images automatically.
 
@@ -64,7 +64,7 @@ For more information on the release cadence, see [Azure Local release informatio
 ---
 
 > [!NOTE]
-> You might need to wait for up to 24 hours after the release for the latest version of the CombinedSolutionBundle and the associated SHA256 hash to be available.
+> You might need to wait up to 24 hours after the release for the latest version of the CombinedSolutionBundle and its SHA256 hash to be available.
 
 ## Step 1: Download Solution update bundle
 
