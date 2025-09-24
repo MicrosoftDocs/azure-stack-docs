@@ -43,13 +43,13 @@ Follow these steps to prepare the Azure resources you need for the deployment:
 
 ::: moniker range="<=azloc-24113"
 
-[!INCLUDE [create-service-principal-and-client-secret](../includes/create-service-principal-and-client-secret.md)]
+[!INCLUDE [create-service-principal-client-secret](../includes/create-service-principal-client-secret.md)]
 
 ::: moniker-end
 
 [!INCLUDE [get-object-id-azure-local-resource-provider](../includes/get-object-id-azure-local-resource-provider.md)]
 
-    You use the **Object ID** against the `hciResourceProviderObjectID` parameter in the ARM template.
+You use the **Object ID** against the `hciResourceProviderObjectID` parameter in the ARM template.
 
 ## Step 2: Deploy using ARM template
 

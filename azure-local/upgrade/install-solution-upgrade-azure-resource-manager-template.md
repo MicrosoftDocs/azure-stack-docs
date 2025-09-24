@@ -63,7 +63,7 @@ Follow these steps to prepare the Azure resources you need for the upgrade:
 
 ::: moniker range="<=azloc-24113"
 
-[!INCLUDE [create-service-principal-and-client-secret](../includes/create-service-principal-and-client-secret.md)]
+[!INCLUDE [create-service-principal-client-secret](../includes/create-service-principal-client-secret.md)]
 
 ::: moniker-end
 
