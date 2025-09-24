@@ -37,7 +37,7 @@ No new Kubernetes versions were added in 2509. The versions included in the 2509
 
 #### Features
 
-- Starting with the Azure Local 2509 release, we are disabling the download of the Windows VHDs by default. This helps to save on bandwidth usage and to reduce deployment times for customers who need only Linux-based containers. Customers who need to use Windows node pools can continue to do so by [enabling the Windows node pool feature](howto-enable-windows-nodepools.md), and then performing Windows node pool-based operations. Kubernetes version 1.31 is now available on AKS Arc.
+- Starting with the Azure Local 2509 release, we are disabling the download of the Windows VHDs by default. This helps to save on bandwidth usage and to reduce deployment times for customers who need only Linux-based containers. Customers who need to use Windows node pools can continue to do so by [enabling the Windows node pool feature](howto-enable-windows-node-pools.md), and then performing Windows node pool-based operations. Kubernetes version 1.31 is now available on AKS Arc.
 - Increased the default OS disk size on virtual machines used as AKS Arc nodes to 200 GB. These VMs are dynamically expanding virtual hard disks and you should [ensure sufficient physical disk space is available](/windows-server/virtualization/hyper-v/best-practices-analyzer/ensure-sufficient-physical-disk-space-is-available-when-virtual-machines-use-dynamically?source=recommendations) for the node pools that you create on AKS Arc.
 
 ### Release 2508
