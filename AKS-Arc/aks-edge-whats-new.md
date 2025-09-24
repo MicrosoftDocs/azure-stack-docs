@@ -2,7 +2,7 @@
 title: What's new in AKS Edge Essentials
 description: Learn about what's new in AKS Edge Essentials releases.
 ms.topic: overview
-ms.date: 03/12/2025
+ms.date: 09/24/2025
 author: sethmanheim
 ms.author: sethm 
 ms.reviewer: sumsmith
@@ -14,7 +14,7 @@ ms.lastreviewed: 09/15/2025
 
 AKS Edge Essentials is a lightweight on-premises Kubernetes implementation of Azure Kubernetes Service (AKS) that automates running containerized applications at scale. This article describes the latest features, enhancements, and updates in AKS Edge Essentials releases.
 
-<!-- ## Release 1.11.230.0 (September 2025)
+## Release 1.11.230.0 (September 2025)
 
 The following features and improvements were added in this release:
 
@@ -27,7 +27,7 @@ The following features and improvements were added in this release:
 - Azure Linux (previously Mariner) Version: 3.0.20250822
 - K8s (upstream Kubernetes) distribution: 1.30.5 (only available as an upgrade from 1.10.868.0), 1.31.5
 - K3s distribution: 1.30.6 (only available as an upgrade from 1.10.868.0), 1.31.6
-- Json version schema: 1.15
+- Json version schema: 1.16
 
 ### Available upgrade paths
 
@@ -39,7 +39,7 @@ The following features and improvements were added in this release:
 
 > [!NOTE]  
 > Upgrading from one Kubernetes distribution to another within the same release version is not supported.
- -->
+
 ## Release 1.10.868.0 (March 2025)
 
 The following features and improvements were added in this release:
