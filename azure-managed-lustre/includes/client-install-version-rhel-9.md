@@ -9,7 +9,7 @@ ms.lastreviewed: 10/18/2024
 ---
 
 ```bash
-sudo dnf install amlfs-lustre-client-2.15.6_39_g3e00a10-$(uname -r | sed -e "s/\.$(uname -p)$//" | sed -re 's/[-_]/\./g')-1
+sudo dnf install amlfs-lustre-client-2.15.7_33_g79ddf99-$(uname -r | sed -e "s/\.$(uname -p)$//" | sed -re 's/[-_]/\./g')-1
 ```
 
 > [!NOTE]
@@ -19,5 +19,5 @@ If you want to upgrade *only* the kernel and not all packages, you must (at mini
 
 ```bash
 export NEWKERNELVERSION=6.7.8
-sudo dnf upgrade kernel-$NEWKERNELVERSION amlfs-lustre-client-2.15.6_39_g3e00a10-$(echo $NEWKERNELVERSION | sed -e "s/\.$(uname -p)$//" | sed -re 's/[-_]/\./g')-1
+sudo dnf upgrade kernel-$NEWKERNELVERSION amlfs-lustre-client-2.15.7_33_g79ddf99-$(echo $NEWKERNELVERSION | sed -e "s/\.$(uname -p)$//" | sed -re 's/[-_]/\./g')-1
 ```

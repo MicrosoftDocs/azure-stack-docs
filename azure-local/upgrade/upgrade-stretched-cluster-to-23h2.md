@@ -4,7 +4,7 @@ description: Learn how to upgrade stretched clusters from Azure Stack HCI OS, ve
 author: ronmiab
 contributors: null
 ms.topic: how-to
-ms.date: 09/04/2025
+ms.date: 09/22/2025
 ms.author: robess
 ms.reviewer: mindydiep
 ms.custom:
@@ -14,6 +14,8 @@ ms.custom:
 ---
 
 # Upgrade stretched clusters from Azure Stack HCI OS, version 22H2 to 23H2
+
+::: moniker range=">=azloc-2509"
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-22h2.md)]
 
@@ -38,7 +40,7 @@ ms.custom:
 
 This article explains how to upgrade the operating system (OS) for Azure Stack HCI stretched clusters from version 20349.xxxx (22H2) to version 25398.xxxx (23H2). In this article, OS version 25398.xxxx (23H2) is the *new* version, and version 20349.xxxx (22H2) is the *old* version.
 
-If you've already completed the OS upgrade to version 23H2 and experience issues with your volumes, see the [Troubleshoot volumes](#troubleshoot-volumes) section for remediation steps.
+If you completed the OS upgrade to version 23H2 and experience issues with your volumes, see the [Troubleshoot volumes](#troubleshoot-volumes) section for remediation steps.
 
 ## Prerequisites
 
@@ -71,7 +73,7 @@ Before you begin, make sure:
    1. Drain the cluster node.
    1. Restart the OS.
    1. Enter the BIOS/UEFI menu.
-   1. Review the **Boot** or **Security** section of the UEFI configuration options and locate the Secure Boot option.
+   1. Review the **Boot** or **Security** section of the UEFI configuration options to find the **Secure Boot** option.
    1. Set the option to **Enabled** or **On**.
    1. Save the changes and restart your computer.
 
@@ -97,7 +99,7 @@ To upgrade the OS on your system, follow these steps:
 
 To ensure Resilient File System (ReFS) and live migrations function properly during and after the OS upgrade, follow these steps on each machine in the system to update registry keys. Reboot each machine for the changes to take effect.
 
-1. Set `RefsEnableMetadataValidation` to `0`:
+1. Set `RefsEnableMetadataValidation` to `0`.
 
    ```powershell
    Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" -Name "RefsEnableMetadataValidation" -Value 0 -Type DWord -ErrorAction Stop
@@ -109,7 +111,7 @@ To ensure Resilient File System (ReFS) and live migrations function properly dur
    New-Item -Path HKLM:\SYSTEM\CurrentControlSet\Services\Vid\Parameters
    ```
 
-1. Set `SkipSmallLocalAllocations` to `0`:
+1. Set `SkipSmallLocalAllocations` to `0`.
 
    ```powershell
    New-ItemProperty -Path HKLM:\SYSTEM\CurrentControlSet\Services\Vid\Parameters -Name SkipSmallLocalAllocations -Value 0 -PropertyType DWord
@@ -133,19 +135,19 @@ To install the new OS using PowerShell, follow these steps:
    Enable-PSRemoting
    ```
 
-1. To test whether the system is properly set up to apply software updates using Cluster-Aware Updating (CAU), run the `Test-CauSetup` cmdlet. This notifies you of any warnings or errors:
+1. To test whether the system is properly set up to apply software updates using Cluster-Aware Updating (CAU), run the `Test-CauSetup` cmdlet. This notifies you of any warnings or errors.
 
    ```powershell
    Test-CauSetup -ClusterName <System name>
    ```
 
-1. On one of the machines in the system, validate the hardware and settings by running the `Test-Cluster` cmdlet. If any of the condition checks fail, resolve them before proceeding to the next step:
+1. On one of the machines in the system, validate the hardware and settings by running the `Test-Cluster` cmdlet. If any of the condition checks fail, resolve them before proceeding to the next step.
 
    ```powershell
    Test-Cluster
    ```
 
-1. On each machine, extract the contents of the ISO image and copy them to the local system drive:
+1. On each machine, extract the contents of the ISO image and copy them to the local system drive.
 
    - Make sure the local path is the same on each machine.
    - Then, update the `PathToSetupMedia` parameter with the local path to the ISO image.
@@ -172,7 +174,7 @@ To install the new OS using PowerShell, follow these steps:
    Dismount-DiskImage -ImagePath $isoFilePath
    ```
 
-1. Upgrade the system:
+1. Upgrade the system.
 
    ```powershell
    Invoke-CauRun –ClusterName <SystemName> -CauPluginName Microsoft.RollingUpgradePlugin -EnableFirewallRules -CauPluginArguments @{ 'WuConnected'='false';'PathToSetupMedia'='\some\path\';'UpdateClusterFunctionalLevel'='true'; } -ForceSelfUpdate -Force
@@ -216,13 +218,13 @@ After you update your stretched cluster from version 22H2 to 23H2, check that th
 
 1. Make sure all volumes are up. To check volume status, run the `Get-ClusterSharedVolumeState` command.
 
-1. Check that the partnerships are set correctly. Make sure the replication status in all groups (from the output of `Get-SRGroup`) shows its `ContinuouslyReplicating` or `ContinuouslyReplicating_InRpo`.
+1. Make sure the partnerships are set correctly. The replication status in all groups (from the output of `Get-SRGroup`) should show `ContinuouslyReplicating` or `ContinuouslyReplicating_InRpo`.
 
-1. Perform the post-upgrade steps described in [Perform post operating system upgrade steps on Azure Local via PowerShell](post-upgrade-steps.md).
+1. Complete the post-upgrade steps described in [Perform post operating system upgrade steps on Azure Local via PowerShell](post-upgrade-steps.md).
 
 ## Troubleshoot volumes
 
-If you've updated your stretched cluster from version 22H2 to 23H2 before this release, you might encounter issues with your volumes. To remediate these issues, follow these steps:
+If you updated your stretched cluster from version 22H2 to 23H2 before this release, you might encounter issues with your volumes. To remediate these issues, follow these steps:
 
 1. Stop the Storage Replica partnership.
 
@@ -242,6 +244,8 @@ If you've updated your stretched cluster from version 22H2 to 23H2 before this r
    1. Use `Get-SRPartnership` to ensure the partnership is removed.
 
 1. Update to the new version using the [2509 ISO file download](https://aka.ms/hcireleaseimage/11.2509).
+
+   1. Mount the ISO inside the OS and run the setup. Choose the **Upgrade** option and keep files, settings, and applications.
 
 1. Recreate the Storage Replica partnership.
 
@@ -279,3 +283,11 @@ No. You can only upgrade your version 22H2 stretched cluster to the version 23H2
 ## Next steps
 
 - [Learn how to perform the post-OS upgrade steps for your Azure Local.](post-upgrade-steps.md)
+
+::: moniker-end
+
+::: moniker range="<=azloc-2508"
+
+This feature is available only in Azure Local 2509 or later.
+
+::: moniker-end
