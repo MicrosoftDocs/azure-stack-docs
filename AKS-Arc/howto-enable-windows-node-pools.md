@@ -89,7 +89,7 @@ You can then run the following command to enable the Windows node pool feature a
 Invoke-SupportAksArcRemediation_EnableWindowsNodepool -Verbose
 ```
 
-This enables the Windows node pool feature and begins the download of the Windows VHDs. This can take some time depending on the network bandwidth available on your Azure Local instance.
+This enables the Windows node pool feature and begins the download of the Windows VHDs. This can take some time, depending on the network bandwidth available on your Azure Local instance.
 
 ### Step 3: Check if the Windows VHDs are ready
 
@@ -102,7 +102,7 @@ $resourceGroup = <The Azure resource group in which Azure Local is deployed>
 az aksarc get-versions --resource-group $resourceGroup --custom-location $customlocationName
 ```
 
-For the Kubernetes version you intend to use, find the right Windows SKU by looking for `osType=Windows` and the `osSKU` fields and ensure that the `ready` state is `true`.
+For the Kubernetes version you intend to use, find the right Windows SKU by looking for `osType=Windows` and the `osSKU` fields and ensure that the `ready` state is **true**.
 
 ```output
 ...
@@ -200,7 +200,7 @@ az aksarc get-versions --resource-group $resourceGroup --custom-location $custom
 ....
 ```
 
-You can verify if Windows VHDs were removed from the Azure Local storage paths. Deletion can take a while so wait about 30 minutes before checking. You must check all the storage paths, because Windows VHDs are assigned to storage paths in round-robin fashion, based on available storage capacity.
+You can verify if Windows VHDs were removed from the Azure Local storage paths. Deletion can take a while, so wait about 30 minutes before checking. You must check all the storage paths, because Windows VHDs are assigned to storage paths in round-robin fashion, based on available storage capacity.
 
 
 ## Next steps

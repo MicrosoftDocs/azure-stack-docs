@@ -41,7 +41,7 @@ Node selector is the most common and recommended option for placement of Windows
 
 1. Update the `nodeSelector` field in your application's deployment YAML to match the label of the new Windows node pool.  
 
-   ```yml
+   ```yaml
    nodeSelector:
         "kubernetes.azure.com/os-sku": Windows2022
    ```

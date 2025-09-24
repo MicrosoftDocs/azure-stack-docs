@@ -21,11 +21,11 @@ This article describes how to use Azure CLI to deploy a Windows node pool to an 
 Create an AKS cluster following the instructions in [How to create AKS clusters](aks-create-clusters-cli.md).
 
 > [!IMPORTANT]
-> The Windows Server node pools must be licensed using either the Windows Server subscription or Azure Hybrid Benefit, as described in [Activate Windows Server VMs on Azure Local](/azure/azure-local/manage/vm-activate).
+> Windows Server node pools must be licensed using either the Windows Server subscription or Azure Hybrid Benefit, as described in [Activate Windows Server VMs on Azure Local](/azure/azure-local/manage/vm-activate).
 
 ## Add a Windows node pool
 
-By default, a Kubernetes cluster is created with a node pool that can run Linux containers. Starting with the Azure local 2509 release, the Windows node pool feature is disabled by default. You must first enable the Windows node pool feature before you can create a Windows node pool. For more information, see [enabling Windows node pools](howto-enable-windows-node-pools.md).
+By default, a Kubernetes cluster is created with a node pool that can run Linux containers. Starting with the Azure local 2509 release, the Windows node pool feature is disabled by default. You must first enable the Windows node pool feature before you can create a Windows node pool. For more information, see [Enable Windows node pools](howto-enable-windows-node-pools.md).
 
 Add a node pool with Windows container hosts using the `az aksarc nodepool add` command with the parameter `--os-type Windows`. If the operating system SKU isn't specified, the node pool is set to the default OS based on the Kubernetes version of the cluster. Windows Server 2022 is the default operating system for Kubernetes versions 1.25.0 and higher.
 
