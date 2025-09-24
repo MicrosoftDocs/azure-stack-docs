@@ -1,12 +1,12 @@
 ---
 title: System requirements and support matrix for AKS enabled by Azure Arc on VMware (preview)
 description: Learn about system requirements and the support matrix for AKS enabled by Azure Arc on VMware.
-ms.date: 09/16/2024
-ms.topic: article
+ms.date: 06/13/2025
+ms.topic: concept-article
 author: sethmanheim
 ms.author: sethm
 ms.reviewer: leslielin
-ms.lastreviewed: 09/16/2024
+ms.lastreviewed: 06/13/2025
 
 ms.custom: references_regions
 
@@ -70,7 +70,7 @@ You should create a folder for VM templates, to store the Arc Resource Bridge an
 
 ## Supported Kubernetes version
 
-In this preview release, you can only deploy the same Kubernetes version that the Arc Resource Bridge supports. You can find the Arc Resource Bridge version in the Azure portal under **Azure Arc > Management > Resource Bridge**. To determine the corresponding Kubernetes version, see [What's new with Azure Arc resource bridge](/azure/azure-arc/resource-bridge/release-notes).
+In this preview release, you can only deploy the Kubernetes version that matches what Arc Resource Bridge supports. Currently, this preview only supports Arc Resource Bridge version 1.2.0 and earlier. You can find the Arc Resource Bridge version in the Azure portal under **Azure Arc > Management > Resource Bridge**. To determine the corresponding Kubernetes version, see [What's new with Azure Arc resource bridge](/azure/azure-arc/resource-bridge/release-notes#version-120-july-2024).
 
 ## Custom location
 

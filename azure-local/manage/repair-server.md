@@ -4,7 +4,7 @@ description: Learn how to repair a node on your Azure Local, version 23H2 system
 ms.topic: how-to
 author: alkohli
 ms.author: alkohli
-ms.date: 06/26/2025
+ms.date: 08/26/2025
 ---
 
 # Repair a node on Azure Local
@@ -113,7 +113,7 @@ Follow these steps on the node you're trying to repair.
     1. Go to the resource group used to deploy your Azure Local instance. In the resource group, identify the Azure Arc machine resource for the faulty node that you wish to repair.
     1. In the Azure Arc machine resource, go to **Settings > Locks**. In the right-pane, you see a resource lock.
     1. Select the lock and then select the trash can icon to delete the lock.
-    
+
         :::image type="content" source="./media/repair-server/delete-resource-lock-1.png" alt-text="Screenshot of deletion of resource lock on the faulty Azure Arc machine node." lightbox="./media/repair-server/delete-resource-lock-1.png":::
 
     1. On the **Overview** page of the Azure Arc machine resource, in the right-pane, select **Delete**. This action should delete the faulty machine node.  
@@ -167,7 +167,13 @@ Following recovery scenarios and the recommended mitigation steps are tabulated 
 | Repair node operation failed. | To complete the operation, investigate the failure. <br>Rerun the failed operation using `Repair-Server -Rerun`. | Yes |
 | Repair node operation succeeded partially but had to start with a fresh operation system install. | In this scenario, the orchestrator (also known as Lifecycle Manager) has already updated its knowledge store with the new node. Use the repair node scenario. | Yes |
 
-### Troubleshooting
+### Troubleshoot issues
+
+Starting with the 2508 release, validation runs after you execute the `Repair-Server` command. If a test fails, the validator returns information to help you resolve the failure.
+
+Here's an example of a validation failure message:
+
+:::image type="content" source="./media/repair-server/validation-error.png" alt-text="Screenshot of validation error message." lightbox="./media/repair-server/validation-error.png":::
 
 If you experience failures or errors while repairing a node, you can capture the output of the failures in a log file.
 

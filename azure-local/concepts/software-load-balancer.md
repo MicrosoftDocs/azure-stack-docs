@@ -6,6 +6,7 @@ ms.author: anpaul
 ms.topic: overview
 ms.service: azure-local
 ms.date: 10/25/2024
+ms.custom: sfi-image-nochange
 ---
 
 # What is Software Load Balancer (SLB) for SDN?
@@ -17,7 +18,7 @@ Cloud Service Providers (CSPs) and enterprises that are deploying [Software Defi
 Software Load Balancer can provide a multitenant, unified edge by integrating with SDN technologies such as [RAS Gateway](gateway-overview.md), [Datacenter Firewall](datacenter-firewall-overview.md), and [Route Reflector](route-reflector-overview.md).
 
 > [!NOTE]
-> Multitenancy for VLANs is not supported by [Network Controller](network-controller-overview.md). However, you can use VLANs with SLB for service provider managed workloads, such as the datacenter infrastructure and high density web servers.
+> Multitenancy for VLANs isn't supported by [Network Controller](network-controller-overview.md). However, you can use VLANs with SLB for service provider managed workloads, such as the datacenter infrastructure and high density web servers.
 
 Using Software Load Balancer, you can scale out your load balancing capabilities using SLB virtual machines (VMs) on the same Hyper-V compute servers that you use for your other VM workloads. Because of this, Software Load Balancer supports rapid creation and deletion of load balancing endpoints as required for CSP operations. In addition, Software Load Balancer supports tens of gigabytes per system, provides a simple provisioning model, and is easy to scale out and in.
 
@@ -47,7 +48,7 @@ VIPs are single IP addresses that provide public access to a pool of load balanc
 
 DIPs are the IP addresses of the member VMs of a load balanced pool behind the VIP. DIPs are assigned within the cloud infrastructure to the tenant resources.
 
-VIPs are located in the SLB Multiplexer (MUX).  The MUX consists of one or more VMs.  Network Controller provides each MUX with each VIP, and each MUX in turn uses Border Gateway Protocol (BGP) to advertise each VIP to routers on the physical network as a /32 route.  BGP allows the physical network routers to:
+VIPs are located in the SLB Multiplexer (MUX). The MUX consists of one or more VMs. Network Controller provides each MUX with each VIP, and each MUX in turn uses Border Gateway Protocol (BGP) to advertise each VIP to routers on the physical network as a /32 route. BGP allows the physical network routers to:
 
 - Learn that a VIP is available on each MUX, even if the MUXes are on different subnets in a Layer 3 network.
 
@@ -75,7 +76,7 @@ In the following illustration, a client computer performs a DNS query for the IP
 
 1. The client sends an HTTP request to the VIP.
 
-1. The physical network has multiple paths available to reach the VIP located on any MUX.  Each router along the way uses ECMP to pick the next segment of the path until the request arrives at a MUX.
+1. The physical network has multiple paths available to reach the VIP located on any MUX. Each router along the way uses ECMP to pick the next segment of the path until the request arrives at a MUX.
 
 1. The MUX that receives the request checks configured policies, and sees that there are two DIPs available, 10.10.10.5 and 10.10.20.5, on a virtual network to handle the request to the VIP 107.105.47.60
 
@@ -133,7 +134,7 @@ You can use Windows Admin Center or Windows PowerShell to install and configure 
 
 ### SLB MUX
 
-The SLB MUX processes inbound network traffic and maps VIPs to DIPs, then forwards the traffic to the correct DIP. Each MUX also uses BGP to publish VIP routes to edge routers. BGP Keep Alive notifies MUXes when a MUX fails, which allows active MUXes to redistribute the load in case of a MUX failure. This essentially provides load balancing for the load balancers.
+The SLB MUX processes inbound network traffic and maps VIPs to DIPs, then forwards the traffic to the correct DIP. Each MUX also uses BGP to publish VIP routes to edge routers. BGP Keep Alive notifies MUXes when a MUX fails, which allows active MUXes to redistribute the load if there's a MUX failure. This essentially provides load balancing for the load balancers.
 
 ### SLB Host Agent
 

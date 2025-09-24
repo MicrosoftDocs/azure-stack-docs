@@ -7,6 +7,7 @@ ms.date: 01/16/2025
 ms.author: sethm
 ms.reviewer: scottnap
 ms.lastreviewed: 01/14/2019
+ms.custom: sfi-image-nochange
 
 # Intent: As an Azure Stack user, I want to use iDNS so I can resolve external and internal DNS names.
 # Keyword: azure stack iDNS

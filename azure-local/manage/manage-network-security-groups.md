@@ -4,7 +4,7 @@ description: Learn how to manage network security groups and network security ru
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 07/02/2025
+ms.date: 09/05/2025
 ms.service: azure-local
 ---
 
@@ -1006,12 +1006,12 @@ To update a network security rule, follow these steps:
 
 ## Next steps
 
-- [Troubleshoot SDN enabled by Arc](../index.yml).
+- [Troubleshoot SDN enabled by Arc](sdn-troubleshooting.md).
 
 ::: moniker-end
 
 ::: moniker range="<=azloc-2505"
 
-This feature is available only in Azure Local 2506 or later.
+This feature is available in Azure Local 2506 or later with OS build 26100.xxxx.
 
 ::: moniker-end

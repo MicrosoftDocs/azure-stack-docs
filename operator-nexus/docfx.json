@@ -1,0 +1,59 @@
+{
+  "build": {
+    "content": [
+      {
+        "files": [
+          "**/*.md",
+          "**/*.yml"
+        ],
+        "exclude": [
+          "**/obj/**",
+          "**/includes/**",
+          "_themes/**",
+          "**/docfx.json",
+          "_repo.en-us/**",
+          "README.md",
+          "LICENSE",
+          "LICENSE-CODE",
+          "ThirdPartyNotices.md",
+          "SECURITY.md"
+        ]
+      }
+    ],
+    "resource": [
+      {
+        "files": [
+          "**/*.png",
+          "**/*.jpg"
+        ],
+        "exclude": [
+          "**/obj/**",
+          "**/includes/**",
+          "_themes/**",
+          "**/docfx.json",
+          "_repo.en-us/**"
+        ]
+      }
+    ],
+    "overwrite": [],
+    "externalReference": [],
+    "globalMetadata": {
+      "uhfHeaderId": "Azure",
+      "breadcrumb_path": "/azure/operator-nexus/breadcrumb/toc.json",
+      "feedback_system": "Standard",
+      "permissioned-type": "public",
+      "manager":"lizross",
+      "ms.service": "operator-nexus",
+      "titleSuffix": "Operator Nexus",
+      "feedback_product_url": "https://feedback.azure.com/d365community/forum/79b1327d-d925-ec11-b6e6-000d3a4f06a4",
+      "feedback_help_link_url": "https://learn.microsoft.com/en-us/answers/tags/133/azure",
+      "zone_pivot_group_filename": "../azure-stack/zone-pivot-groups.json"
+    },
+    "fileMetadata": {
+      "feedback_help_link_url": {
+      "articles/operator-nexus/NO-QA-TAG-USE-GLOBAL/": ""
+      }
+    },
+    "template": []
+  }
+}

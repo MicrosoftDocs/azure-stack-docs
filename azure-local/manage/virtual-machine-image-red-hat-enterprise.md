@@ -5,8 +5,11 @@ author: ronmiab
 ms.author: robess
 ms.topic: how-to
 ms.service: azure-local
-ms.custom: devx-track-azurecli, linux-related-content
 ms.date: 03/21/2025
+ms.custom:
+  - devx-track-azurecli
+  - linux-related-content
+  - sfi-image-nochange
 ---
 
 # Prepare a Red Hat Enterprise image for Azure Local VMs enabled by Azure Arc (preview)
@@ -143,13 +146,13 @@ To configure the VM:
 1. Make sure that `cloud-init` wasn't installed.
 
     ```bash
-    Sudo yum list installed | grep cloud-init
+    sudo yum list installed | grep cloud-init
     ```
 
 1. Install the `cloud-init` tool and verify the version of `cloud-init` that was installed.
 
     ```bash
-    Sudo yum install -y cloud-init
+    sudo yum install -y cloud-init
     cloud-init --version
     ```
 

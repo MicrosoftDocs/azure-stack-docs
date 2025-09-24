@@ -13,12 +13,10 @@ items:
     items:
     - name: Release information
       href: release-information-23h2.md
-    - name: Known issues 
+    - name: Known issues
       href: known-issues.md
     - name: Security updates
       href: security-update/security-update.md
-  - name: Disconnected operations
-    href: manage/disconnected-operations-overview.md
   - name: OEM License
     items: 
     - name: OEM license information
@@ -97,17 +95,19 @@ items:
       href: plan/network-patterns-sdn-considerations.md
   - name: Review cloud deployment network considerations
     href: plan/cloud-deployment-network-considerations.md
+  - name: Review Azure Arc gateway
+    href: deploy/deployment-azure-arc-gateway-overview.md
   - name: Review security
     items:
     - name: About security features
       href: concepts/security-features.md
-    - name: Download Azure Local security book
-      href: https://github.com/Azure-Samples/AzureLocal/blob/main/SecurityBook/Azure%20Local%20Security%20Book_04302025.pdf
+    - name: Azure Local security book
+      href: security-book/overview.md
   - name: Assess environment readiness
     href: manage/use-environment-checker.md
   - name: Configure advanced Active Directory settings
     href: plan/configure-custom-settings-active-directory.md 
-
+      
 - name: Deploy
   items:
   - name: Read overview
@@ -120,31 +120,22 @@ items:
     href: deploy/download-23h2-software.md
   - name: 3. Install the OS
     href: deploy/deployment-install-os.md
-  - name: 4. Register with Arc and set up permissions
+  - name: 4. Set up subscription permissions
+    href: deploy/deployment-arc-register-server-permissions.md
+  - name: 5. Choose a registration method
     items:
-    - name: Via console
-      href: deploy/deployment-arc-register-server-permissions.md
-    - name: Via Configurator app
-      href: deploy/deployment-arc-register-configurator-app.md  
-  - name: 5. Choose a deployment method
+    - name: Without Arc gateway
+      href: deploy/deployment-without-azure-arc-gateway.md
+    - name: With Arc gateway
+      href: deploy/deployment-with-azure-arc-gateway.md  
+  - name: 6. Choose a deployment method
     items:
-    - name: 5A. Deploy via Azure portal 
+    - name: 6A. Deploy via Azure portal
       href: deploy/deploy-via-portal.md
-    - name: 5B. Deploy via ARM template
+    - name: 6B. Deploy via ARM template
       href: deploy/deployment-azure-resource-manager-template.md
 
-  - name: Deploy with Arc gateway
-    items:
-    - name: About Arc gateway
-      href: deploy/deployment-azure-arc-gateway-overview.md
-    - name: Choose a proxy option
-      items:
-      - name: Configure proxy manually
-        href: deploy/deployment-azure-arc-gateway-configure-manually.md
-      - name: Configure proxy via Arc script
-        href: deploy/deployment-azure-arc-gateway-configure-via-script.md
-      - name: Configure without a proxy
-        href: deploy/deployment-azure-arc-gateway-use-without-proxy.md
+
   - name: Deploy using local identity with Key Vault
     href: deploy/deployment-local-identity-with-key-vault.md
   - name: Deploy workloads
@@ -268,10 +259,14 @@ items:
     href: update/update-phases-23h2.md
   - name: Update via PowerShell
     href: update/update-via-powershell-23h2.md
+  - name: Opt in to update to 12.25xx from 11.xxxx
+    href: update/update-opt-enable.md
   - name: Update via PowerShell with limited connectivity
     href: update/import-discover-updates-offline-23h2.md
   - name: Update via Azure portal
     href: update/azure-update-manager-23h2.md
+  - name: Review best practices 
+    href: update/update-best-practices.md
   - name: Troubleshoot updates
     href: update/update-troubleshooting-23h2.md
 
@@ -279,18 +274,8 @@ items:
   items:
   - name: About Azure Local upgrades
     href: upgrade/about-upgrades-23h2.md
-  - name: 1. Select upgrade path
-    items: 
-    - name: Upgrade to 26100.xxxx
-      href: upgrade/upgrade-to-24h2-powershell.md
-    - name: Upgrade to 25398.xxxx
-      items: 
-      - name: Via PowerShell (recommended)
-        href: upgrade/upgrade-22h2-to-23h2-powershell.md
-      - name: Via Windows Admin Center
-        href: upgrade/upgrade-22h2-to-23h2-windows-admin-center.md
-      - name: Via other methods
-        href: upgrade/upgrade-22h2-to-23h2-other-methods.md
+  - name: 1. Upgrade OS via PowerShell
+    href: upgrade/upgrade-22h2-to-23h2-powershell.md
   - name: 2. Perform post-OS upgrade tasks
     href: upgrade/post-upgrade-steps.md
   - name: 3. Configure Network ATC
@@ -298,7 +283,13 @@ items:
   - name: 4. Validate solution upgrade readiness
     href: upgrade/validate-solution-upgrade-readiness.md
   - name: 5. Apply solution upgrade
-    href: upgrade/install-solution-upgrade.md
+    items:
+    - name: Upgrade via Azure portal
+      href: upgrade/install-solution-upgrade.md
+    - name: Upgrade via ARM template
+      href: upgrade/install-solution-upgrade-azure-resource-manager-template.md
+  - name: Upgrade stretched clusters to 23H2
+    href: upgrade/upgrade-stretched-cluster-to-23h2.md
   - name: Troubleshoot upgrades
     href: upgrade/troubleshoot-upgrade-to-23h2.md
 
@@ -338,10 +329,16 @@ items:
           items: 
           - name: Using Ubuntu VM image
             href: manage/virtual-machine-image-linux-sysprep.md
+            items:
+            - name: Using Ubuntu Azure Marketplace image
+              href: manage/virtual-machine-azure-marketplace-ubuntu.md
           - name: Using CentOS VM image 
             href: manage/virtual-machine-image-centos.md
           - name: Using Red Hat Enterprise VM image
             href: manage/virtual-machine-image-red-hat-enterprise.md
+            items:
+            - name: Using Red Hat Enterprise Azure Marketplace image
+              href: manage/virtual-machine-azure-marketplace-red-hat.md
           - name: Using SUSE VM image
             href: manage/virtual-machine-image-suse.md
       - name: 3. Create logical networks
@@ -371,6 +368,22 @@ items:
    
     - name: Collect log files for Azure Local VM
       href: manage/collect-log-files-arc-enabled-vms.md 
+    - name: Implement disaster recovery
+      items:
+      - name: Overview
+        href: manage/disaster-recovery-overview.md
+      - name: Infrastructure resiliency
+        href: manage/disaster-recovery-infrastructure-resiliency.md
+      - name: Virtual machine resiliency
+        items:
+        - name: Overview
+          href: manage/disaster-recovery-vm-resiliency.md
+        - name: Use Azure Site Recovery
+          href: manage/azure-site-recovery.md
+        - name: Use Azure Backup Server
+          href: /azure/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines?toc=/azure/azure-local/toc.json&bc=/azure/azure-local/breadcrumb/toc.json
+      - name: Workloads resiliency
+        href: manage/disaster-recovery-workloads-resiliency.md
     - name: Troubleshoot
       href: manage/troubleshoot-arc-enabled-vms.md
     - name: FAQs
@@ -439,10 +452,6 @@ items:
       href: hybrid-capabilities-with-azure-services-23h2.md
     - name: Enhanced management from Azure
       href: manage/azure-enhanced-management-managed-identity.md
-    - name: Use Azure Site Recovery
-      href: manage/azure-site-recovery.md
-    - name: Use Azure Backup
-      href: /azure/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines?toc=/azure/azure-local/toc.json&bc=/azure/azure-local/breadcrumb/toc.json
 
   - name: Azure Arc extensions
     items:
@@ -520,6 +529,8 @@ items:
   items:
   - name: Collect logs
     href: manage/collect-logs.md
+  - name: Troubleshoot registration issues for Configurator app
+    href: manage/troubleshoot-deployment-configurator-app.md
   - name: Troubleshoot deployment validation issues
     href: manage/troubleshoot-deployment.md
   - name: Use the Diagnostic Support tool
@@ -568,26 +579,63 @@ items:
         href: migrate/migrate-vmware-replicate.md
       - name: Migrate, verify
         href: migrate/migrate-vmware-migrate.md
+    - name: Migrate via PowerShell
+      href: migrate/migrate-via-powershell.md
     - name: Enable guest management
       href: migrate/migrate-enable-guest-management.md
     - name: Maintain static IP addresses
       href: migrate/migrate-maintain-ip-addresses.md
+    - name: Monitor Azure Local migrations
+      href: migrate/monitor-migration.md
     - name: FAQ
       href: migrate/migrate-faq.yml
     - name: Troubleshoot
       href: migrate/migrate-troubleshoot.md
-  - name: Migrate using SCVMM
+
+- name: Disconnected operations
+  items:
+  - name: Overview
+    href: manage/disconnected-operations-overview.md
+  - name: Known issues
+    href: manage/disconnected-operations-known-issues.md
+  - name: Plan
     items:
-    - name: For Hyper-V VMs
-      href: /system-center/vmm/manage-azure-stack-hci#migrate-vms-from-windows-server-to-azure-local-instance
-    - name: For VMware VMs
-      href: /system-center/vmm/vm-convert-vmware
-  - name: Migrate manually (v22H2 only)
+    - name: Network
+      href: manage/disconnected-operations-network.md
+    - name: Identity
+      href: manage/disconnected-operations-identity.md
+    - name: Security
+      href: manage/disconnected-operations-security.md
+    - name: Public key infrastructure
+      href: manage/disconnected-operations-pki.md
+  - name: Deploy
     items:
-    - name: To same hardware
-      href: migrate/migrate-cluster-same-hardware.md
-    - name: To new hardware
-      href: migrate/migrate-cluster-new-hardware.md   
+    - name: Set-up
+      href: manage/disconnected-operations-set-up.md
+    - name: Deployment
+      href: manage/disconnected-operations-deploy.md
+  - name: Manage
+    items:
+    - name: Azure CLI
+      href: manage/disconnected-operations-cli.md
+    - name: Azure Local VMs
+      href: manage/disconnected-operations-arc-vm.md
+    - name: Azure Kubernetes Service (AKS)
+      href: manage/disconnected-operations-aks.md
+    - name: Azure Container Registry
+      href: manage/disconnected-operations-azure-container-registry.md
+    - name: Azure Policy
+      href: manage/disconnected-operations-policy.md
+  - name: Monitor
+    items:
+    - name: Monitoring
+      href: manage/disconnected-operations-monitoring.md
+  - name: Troubleshoot
+    items:
+    - name: On-demand log collection
+      href: manage/disconnected-operations-on-demand-logs.md
+    - name: Fallback log collection
+      href: manage/disconnected-operations-fallback.md
 
 - name: Concepts
   items: 
@@ -597,9 +645,6 @@ items:
     items:
     - name: Network ATC overview
       href: concepts/network-atc-overview.md?pivots=azure-local
-
-
-
 - name: Reference
   items:
   - name: For Azure Local VM management

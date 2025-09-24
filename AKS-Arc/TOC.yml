@@ -80,12 +80,12 @@
           href: deploy-load-balancer-cli.md
         - name: Azure portal
           href: deploy-load-balancer-portal.md
-        # - name: Troubleshoot issues
-        #   href: load-balancer-troubleshoot.md
     - name: Security
       items:
       - name: Encrypt etcd secrets
         href: encrypt-etcd-secrets.md
+      - name: Validate signed container images
+        href: validate-signed-container-images.md
     - name: AI and Machine Learning
       items:
       - name: Deploy an AI model with the AI toolchain operator
@@ -107,7 +107,7 @@
       - name: Restrict SSH access
         href: restrict-ssh-access.md
       - name: Deploy and configure Workload Identity
-        href: workload-identity.md     
+        href: workload-identity.md
     - name: Storage
       href: concepts-storage.md
       items:
@@ -159,12 +159,18 @@
     items:
     - name: Troubleshoot and known issues
       href: aks-troubleshoot.md
-    - name: AKS on Azure Local support policy
-      href: aks-on-azure-local-support-policy.md
     - name: Get support
-      href: help-support.md
-    - name: Use diagnostic checker
-      href: aks-arc-diagnostic-checker.md
+      items:
+      - name: AKS on Azure Local support policy
+        href: aks-on-azure-local-support-policy.md
+      - name: Get support
+        href: help-support.md
+      - name: Use the support remediation tool
+        href: support-module.md
+      - name: Use diagnostic checker
+        href: aks-arc-diagnostic-checker.md
+    - name: Storage provisioning issue in cluster and node pool creation
+      href: storage-provision-issue.md
     - name: Control plane configuration validation errors
       href: control-plane-validation-errors.md
     - name: K8sVersionValidation error
@@ -189,6 +195,8 @@
       href: check-vm-sku.md
     - name: Connectivity issues with MetalLB
       href: load-balancer-issues.md
+    - name: MetalLB speaker pods don't run
+      href: troubleshoot-metallb-speaker-taint.md
     - name: Troubleshoot general network validation errors
       href: network-validation-errors.md
     - name: Network validation error due to .local domain

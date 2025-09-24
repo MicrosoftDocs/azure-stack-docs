@@ -3,7 +3,7 @@ title: Validate solution upgrade readiness for Azure Local, version 23H2
 description: Learn how to assess upgrade readiness for Azure Local, version 23H2 that already had its operating system upgraded from version 22H2.
 author: alkohli
 ms.topic: how-to
-ms.date: 05/29/2025
+ms.date: 09/19/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -13,17 +13,17 @@ ms.service: azure-local
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2-22h2.md)]
 
-This article describes how to assess the upgrade readiness of your Azure Local after the operating system (OS) was upgraded from version 22H2 to version 23H2.
+This article describes how to assess the upgrade readiness of your Azure Local after the operating system (OS) was upgraded.
 
-Throughout this article, we refer to Azure Local 2311.2 as the *new* version and version 22H2 as the *old* version.
+Throughout this article, we refer to OS version 24H2 or 23H2 as the *new* version, and version 22H2 as the *old* version.
 
 ## Assess solution upgrade readiness
 
-This *optional* but *recommended* step helps you assess the readiness of Azure Local for the upgrade. The following steps help you assess the upgrade readiness:
+This *recommended* step helps you assess the readiness of Azure Local for the upgrade. The following steps help you assess the upgrade readiness:
 
 - Install and use the Environment Checker to verify that Network ATC is installed and enabled on the machine. Verify that there are no Preview versions for Azure Arc Resource Bridge running on your system.
 - Ensure that sufficient storage space is available for the infrastructure volume.
-- Perform other checks like installation of required and optional Windows features, enablement of Application Control policies, BitLocker suspension, and OS language.
+- Perform other checks like installation of required Windows features, enablement of Application Control policies, BitLocker suspension, and OS language.
 - Review and remediate validation checks that block the upgrade.
 
 ## Use Environment Checker to validate upgrade readiness
@@ -139,15 +139,15 @@ Follow these steps to set up the Environment Checker on a machine of your Azure 
 
 Each validation check of Environment Checker includes remediation guidance with links that help you resolve the potential issues. For more information, see [Remediation guidance](../manage/use-environment-checker.md#).
 
-## Remediation 1: Install required and optional Windows features
+## Remediation 1: Install Windows features
 
-Azure Local 2311.2 requires a set of Windows roles and features to be installed. Some features would require a restart after the installation. Hence, it's important that you put the machine into maintenance mode before you install the roles and features. Verify that all the active virtual machines (VMs) have migrated to other machines.
+Azure Local requires you to install specific Windows roles and features, and enable a set of required features (that are optional for Windows Server). Some features would require a restart after the installation. Hence, it's important that you put the machine into maintenance mode before you install the roles and features. Verify that all the active virtual machines (VMs) have migrated to other machines.
 
-Use the following commands for each machine to install the required features. If a feature is already present, the install automatically skips it.
+Use the following commands for each machine to install the required Windows roles and features. If a feature is already present, the install automatically skips it.
 
 ```powershell
-#Install Windows Roles & Features 
-$windowsFeature =  @( 
+#Install required Windows roles and features
+$windowsRoleFeature =  @( 
 
                 "Failover-Clustering",
                 "FS-VSS-Agent", 
@@ -160,14 +160,14 @@ $windowsFeature =  @(
                 "Data-Center-Bridging", 
                 "NetworkVirtualization", 
                 "RSAT-AD-AdminCenter"
-                ) 
-foreach ($feature in $windowsFeature) 
+                )
+foreach ($feature in $windowsRoleFeature) 
 { 
 Install-WindowsFeature -Name $feature -IncludeAllSubFeature -IncludeManagementTools 
 } 
 
-#Install requires optional Windows features 
-$windowsOptionalFeature = @( 
+#Enable a set of Windows features that are required for Azure Local, but optional for Windows Server
+$windowsFeature = @( 
 
                 "Server-Core", 
                 "ServerManager-Core-RSAT", 
@@ -220,8 +220,8 @@ $windowsOptionalFeature = @(
                 "ServerCore-Drivers-General", 
                 "ServerCore-Drivers-General-WOW64", 
                 "NetworkATC" 
-            ) 
-foreach ($featureName in $windowsOptionalFeature) 
+            )
+foreach ($featureName in $windowsFeature) 
 { 
 Enable-WindowsOptionalFeature -FeatureName $featurename -All -Online 
 } 
@@ -425,6 +425,14 @@ Follow these steps to apply solution upgrade if you're running Azure Kubernetes 
 
 For more information, see [Uninstall-Aks-Hci for AKS enabled by Azure Arc](/azure/aks/hybrid/reference/ps/uninstall-akshci).
 
+Once you uninstall AKS Arc, you must uninstall the **AksHci** Powershell module using the followng command, as this module does not work on 23H2 and later:
+
+```powershell
+Uninstall-Module -Name AksHci -Force
+```
+
+To avoid any PowerShell version-related issues in your AKS deployment, you can use this [helper script to delete old AKS-HCI PowerShell modules](https://github.com/Azure/aksArc/issues/130).
+
 ## Remediation 11: Check the AKS install state
 
 Follow these steps to apply solution upgrade if you're running AKS workloads on your Azure Local:
@@ -433,6 +441,14 @@ Follow these steps to apply solution upgrade if you're running AKS workloads on 
 1. Remove AKS and all the settings from AKS hybrid before you apply the solution upgrade. Kubernetes versions are incompatible between the *old* and *new* versions of Azure Local.
 
 For more information, see [Uninstall-Aks-Hci for AKS enabled by Azure Arc](/azure/aks/hybrid/reference/ps/uninstall-akshci).
+
+Once you uninstall AKS Arc, you must uninstall the **AksHci** Powershell module using the followng command, as this module does not work on 23H2 and later:
+
+```powershell
+Uninstall-Module -Name AksHci -Force
+```
+
+To avoid any PowerShell version-related issues in your AKS deployment, you can use this [helper script to delete old AKS-HCI PowerShell modules](https://github.com/Azure/aksArc/issues/130).
 
 ## Next steps
 

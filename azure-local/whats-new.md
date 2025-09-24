@@ -1,21 +1,131 @@
 ---
 title: What's new in Azure Local latest release
-description: Find out what the new features and enhancements are in the latest Azure Local release.
+description: Find out about the new features and enhancements in the latest Azure Local release.
 ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 07/18/2025
+ms.date: 09/22/2025
 ---
 
 # What's new in Azure Local?
 
 [!INCLUDE [azure-local-banner-23h2](./includes/azure-local-banner-23h2.md)]
 
-[!INCLUDE [azure-local-end-of-support-banner-23h2](./includes/azure-local-end-of-support-banner-23h2.md)]
-
 This article lists the various features and improvements that are available in Azure Local. The latest version of Azure Local solution focuses on cloud-based deployment and updates, cloud-based monitoring, new and simplified experience for Azure Local virtual machine (VM) management, security, and more.
 
+::: moniker range="=azloc-2509"
+
+## Features and improvements in 2509
+
+There are two 2509 releases for September. Here are the details of each release:
+
+|Solution version  | OS version |
+|---------|---------|
+|12.2509.1001.22 |  26100.6584 |
+|11.2509.1001.21  | 25398.1849  |
+
+For more information, see [Release information summary](./release-information-23h2.md).
+
+This release has the following features and improvements:
+
+- **OS changes**:
+
+    - The 2504 release introduced a new operating system for Azure Local deployments. For 2509, all the new deployments of Azure Local run the new OS version **26100.5074**. You can download the 2509 OS image from the Azure portal.
+
+        - You also need a driver that's compatible with OS version **26100.5074** or Windows Server 2025. If a compatible driver isn't available, you can use the 2503 image.
+
+        - Existing deployments of Azure Local continue to use OS version **25398.1840**. For more information, see [Release information summary](./release-information-23h2.md).
+
+    - If you purchased Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) through your preferred Microsoft hardware partner, the OS should be preinstalled. Work with your Original Equipment Manufacturer (OEM) to get the OS image that's compatible with **12.2509** and a driver that's compatible with OS version **26100.5074** or Windows Server 2025.
+    
+- **.NET updates**: This build uses .NET version **8.0.20** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
+
+- **Update and upgrade changes**: Starting with this release, you can opt-in to update the solution version 11.25xx (running OS 25398.xxx) to solution version 12.25xx (running OS 26100.xxxx). For more information, see [Opt in update to Azure Local solution versions 12.25x](./update/update-opt-enable.md).
+
+
+- **Azure Local VM updates**:
+    - **Enhanced storage path deletion workflow** - Starting with this release, you can view all the dependent resources linked to a storage path before deletion. Azure portal lets you delete both the storage path and its dependent resources in a single, streamlined action, making cleanup faster and more intuitive.
+    - **Live update memory of an Azure Local VM** - You can now live update (VM remains running) the memory of a VM. A restart may be required only if the guest OS does not support live memory updates.
+
+- **AKS enabled by Azure Arc changes**
+    - The default OS disk size for the AKS VM is increased from 100 GB to 200 GB. A larger OS disk size offers flexibility on the size of the containerized workloads.
+    - Starting with this release, the download of Windows VHD images is disabled by default.
+    
+    
+- **Azure Local deployment using local identity** include zone name for both external and internal DNS servers.
+
+- **Documentation updates**: The noteworthy changes include the following new articles or articles with major updates:
+
+    - **Upgrade and update docs changes** include new articles and major updates to existing articles:
+        - [**Opt in update to Azure Local solution versions 12.25x**](./update/update-opt-enable.md) is released.
+        - [**Upgrade OS for stretch clusters via PowerShell**](./upgrade/upgrade-stretched-cluster-to-23h2.md) is released.
+        - [**Install solution upgrade on Azure Local using Azure Resource Manager template**](./upgrade/install-solution-upgrade-azure-resource-manager-template.md) is released.
+        - [**ARM template parameters**](./deploy/deployment-azure-resource-manager-template.md#arm-template-parameters-reference) reference is added.
+        - [**Update best practices**](./update/update-best-practices.md) is released.
+
+    - **Azure Local VM doc changes** include:
+        - **Disaster recovery for Azure Local VMs**: A new node in TOC **Implementing disaster recovery** is created consisting of four new articles and one updated article. These articles include [Disaster recovery overview](./manage/disaster-recovery-overview.md), [Infrastructure resiliency](./manage/disaster-recovery-infrastructure-resiliency.md), [Virtual machine resiliency overview](./manage/disaster-recovery-vm-resiliency.md), [Use Azure Site Recovery](./manage/azure-site-recovery.md), and [Workloads resiliency](./manage/disaster-recovery-workloads-resiliency.md).
+        - **VM images**: For Azure Local VMs, two new articles are released including [Prepare Ubuntu Azure Marketplace image](manage/virtual-machine-azure-marketplace-ubuntu.md) and [Prepare RHEL Azure Marketplace image](manage/virtual-machine-azure-marketplace-red-hat.md).
+    - A troubleshooting section is added for issues in [Add-server](./manage/add-server.md) and [Repair-server](./manage/repair-server.md) articles.
+
+::: moniker-end
+
+
+::: moniker range="=azloc-2508"
+
+## Features and improvements in 2508
+
+There are two 2508 releases for August. Here are the details of each release:
+
+|Solution version  | OS version |
+|---------|---------|
+|12.2508.1001.52 |  26100.4946 |
+|11.2508.1001.51  | 25398.1791  |
+
+For more information, see [Release information summary](./release-information-23h2.md).
+
+This release has the following features and improvements:
+
+- **OS changes**:
+
+    - In the 2504 release, a new operating system was introduced for Azure Local deployments. For 2508, all the new deployments of Azure Local run the new OS version **26100.4946**. You can download the 2508 OS image from the Azure portal.
+
+        - You also need to get the driver compatible with OS version **26100.XXXX** or Windows Server 2025. If a compatible driver isn't available, you can use the 2503 image.
+
+        - Existing deployments of Azure Local continue to use OS version **25398.1791**. For more information, see [Release information summary](./release-information-23h2.md).
+
+    - If you purchased Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) through your preferred Microsoft hardware partner, the OS should be preinstalled. Work with your Original Equipment Manufacturer (OEM) to get the OS image compatible with **12.2508** and driver compatible with OS version **26100.XXXX** or Windows Server 2025.
+    
+- **.NET updates**: This build uses .NET version **8.0.18** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
+
+<!--- **Trusted Virtual Machine (Trusted VM) guest attestation**: Azure Local 2508 release introduces guest attestation (also known as boot integrity verification) for Azure Local virtual machines with Trusted launch. This feature lets you verify that the virtual machine starts in a well known good state by checking the integrity of the entire boot chain. This helps detect any unexpected changes to the boot chain (firmware, OS boot loader, and drivers) and take action if it's compromised. For more information, see [Trusted VM guest attestation](./index.yml).-->
+
+- **Deployment and upgrade changes**:
+    - Starting this release, Azure Resource Manager (ARM) deployment templates are available for previous releases.
+    - With this release, pre-existing cluster (Brownfield) upgrade scenarios no longer require Service Principal Name (SPN) creation and have moved to managed-system identity (MSI).
+    - This release includes connectivity validators that ensure that external connectivity is available for Arc registration.
+
+- **Azure Local VM updates**:
+    - **Edit DNS servers on logical networks via Azure CLI**: Starting with this release, DNS servers associated with the logical networks can be modified for Azure Local virtual machines. For more information, see [Manage DNS server configuration on logical networks](./manage/manage-arc-virtual-machine-resources.md).
+    - **Save and Pause Azure Local VMs**: The ability to save and pause an Azure Local VM is available on the Azure portal. For more information, see [Save and Pause Azure Local VMs](./manage/manage-arc-virtual-machines.md#save-a-vm).
+    - **Limit enforcement**: Azure portal now enforces:
+        - The correct memory and vCPU limits.
+        - The correct disk size limits.
+
+- **Disconnected operations (preview)**: Azure Local now supports disconnected operations, letting you work in environments with limited or no internet connectivity. Build, deploy, and manage virtual machines (VMs) and containerized applications with select Azure Arc-enabled services from a local control plane. You'll get the familiar Azure portal and Azure Command-Line Interface (CLI) experience.
+
+    For more information, see [About Disconnected operations (preview)](./manage/disconnected-operations-overview.md).
+
+
+- **Documentation updates**: These changes include:
+
+    - **Azure Arc gateway documentation updates**: Improved guidance on registering with and without Azure Arc gateway and with and without proxy in an easy to use layout. For more information, see [Register with Azure Arc gateway](./deploy/deployment-with-azure-arc-gateway.md) and [Register with Azure Arc](./deploy/deployment-without-azure-arc-gateway.md).
+    - **Upgrade documentation updates**: Clarified steps for upgrading from previous versions of Azure Local and an easy to use layout. For more information, see [Upgrade OS for Azure Local](./upgrade/upgrade-22h2-to-23h2-powershell.md).
+    - **Azure Local Security book**: This book was previously available as a *pdf* and is now available as web content on Learn. For more information, see [Azure Local Security book](./security-book/overview.md)
+
+
+::: moniker-end
 
 ::: moniker range="=azloc-2507"
 
@@ -25,8 +135,8 @@ There are two 2507 releases for July. Here are the details of each release:
 
 |Solution version  | OS version |
 |---------|---------|
-|12.2507.1001.8 |  26100.4652 |
-|11.2507.1001.7  | 25398.1732  |
+|12.2507.1001.10 |  26100.4652 |
+|11.2507.1001.9  | 25398.1732  |
 
 For more information, see [Release information summary](./release-information-23h2.md).
 
@@ -47,6 +157,7 @@ This release has the following features and improvements:
  
 ::: moniker-end
 
+::: moniker range="=azloc-2506"
 
 ## Features and improvements in 2506
 
@@ -191,7 +302,7 @@ This release has the following features and improvements:
 
 ::: moniker-end
 
-::: moniker range="=azloc-2503"
+::: moniker range="=azloc-previous"
 
 ## Features and improvements in 2503
 
@@ -236,11 +347,6 @@ This release has the following features and improvements:
 
 - **What's new for migration**: Documentation for improvements and features for VM migration to Azure Local is now available. For more information, see [What's new in migration](./migrate/migrate-whats-new.md).
 
-
-::: moniker-end
-
-moniker range="=azloc-previous"
-
 ## Features and improvements in 2411.3
 
 This release has the following features and improvements:
@@ -249,11 +355,7 @@ This release has the following features and improvements:
 - **Updated .NET version** - This build has an updated .NET version 8.0.13.
 - **New Lifecycle Manager version** - Lifecycle Manager version 30.2503.0.854 is released to deploy the 2411.3 build. This new version moves the content download from extension installation to a visible step in validation. This reduces the overall content download size from a per machine to a one-time download.
 
-For more information on improvements in this release, see the [Fixed issues in 2411.3](./known-issues.md?view=azloc-24113&preserve-view=true#fixed-issues).
-
-::: moniker-end
-
-::: moniker range="=azloc-previous"
+For more information on improvements in this release, see the [Fixed issues in 2411.3](./known-issues.md?view=azloc-previous&preserve-view=true#fixed-issues).
 
 ## Features and improvements in 2411.2
 
@@ -342,7 +444,7 @@ This release has the following features and improvements:
 This release has the following features and improvements:
 
 - **Environment checker improvements**: Starting in this release, a new validator was added in the environment checker that checks all storage adapters in each of the nodes.
-- **Install module version numbers**: Starting in this release, the install module version numbers for *Az.Accounts*, *Az. Resources*, and *Az.ConnectedMachine* were changed. For more information, see [Register machines with Azure Arc](./deploy/deployment-arc-register-server-permissions.md#register-machines-with-azure-arc).
+- **Install module version numbers**: Starting in this release, the install module version numbers for *Az.Accounts*, *Az. Resources*, and *Az.ConnectedMachine* were changed. For more information, see [Register machines with Azure Arc](./deploy/deployment-arc-register-server-permissions.md).
 - **Azure Local VM Management**: Starting in this release, you can attach or detach GPUs to an Azure Local VM via CLI for GPU-P (preview) and DDA (preview). For more information, see:
   - [Prepare GPUs for Azure Local (preview)](./manage/gpu-preparation.md)
   - [Manage GPUs using partitioning for Azure Local (preview)](./manage/gpu-manage-via-partitioning.md)
@@ -699,7 +801,7 @@ Beginning this release, the following Azure Local VM management capabilities are
     For more information, see [Create static logical networks on Azure Local](./manage/create-logical-networks.md#create-a-static-logical-network-via-portal).
 - **Support for storage paths**. While default storage paths are created during the deployment, you can also specify custom storage paths for your Azure Local VMs.
     For more information, see [Create storage paths on Azure Local](./manage/create-storage-path.md).
-- **Support for Azure VM extensions on Azure Local VMs**. Starting with this preview release, you can also enable and manage the Azure VM extensions that are supported on Azure Arc, on Azure Local VMs created via the Azure CLI. You can manage these VM extensions using the Azure CLI or the Azure portal. 
+- **Support for Azure VM extensions on Azure Local VMs**. Starting with this preview release, you can also enable and manage the Azure VM extensions that are supported on Azure Arc, on Azure Local VMs.
     For more information, see [Manage VM extensions for Azure Local VMs](./manage/virtual-machine-manage-extension.md).
 - **Trusted launch for Azure Local VMs**. Azure Trusted Launch protects VMs against boot kits, rootkits, and kernel-level malware. Starting this preview release, some of those Trusted Launch capabilities are available for Azure Local VMs.
     For more information, see [Trusted launch for Azure Local VMs](./manage/trusted-launch-vm-overview.md).

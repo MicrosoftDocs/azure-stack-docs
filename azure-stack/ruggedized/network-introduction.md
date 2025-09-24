@@ -7,6 +7,7 @@ ms.service: azure-stack
 ms.topic: how-to
 ms.date: 10/14/2020
 ms.lastreviewed: 10/14/2020
+ms.custom: sfi-image-nochange
 ---
 
 # Azure Stack Hub ruggedized network introduction

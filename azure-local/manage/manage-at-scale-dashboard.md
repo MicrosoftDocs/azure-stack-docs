@@ -1,20 +1,19 @@
 ---
-title: Monitor at scale using the Azure Local overview and All systems page (preview)
-description: Learn to monitor your Azure Local using dashboards in Azure portal. You can view the status of Azure Local as charts or lists (preview).
+title: Monitor at scale using the Azure Local overview and All systems page
+description: Learn to monitor your Azure Local using dashboards in Azure portal. You can view the status of Azure Local as charts or lists.
 ms.topic: how-to
 author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
-ms.date: 04/23/2025
+ms.date: 08/18/2025
+ms.custom: sfi-image-nochange
 ---
 
-# Use the dashboard to manage Azure Local (preview)
+# Use the dashboard to manage Azure Local
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
 This article details how to manage at-scale your Azure Local via the dashboard in the Azure portal. You can view the status of the systems as charts or lists.
-
-[!INCLUDE [hci-preview](../includes/hci-preview.md)]
 
 ## View the dashboard charts
 
@@ -22,7 +21,7 @@ The Azure Local dashboard displays overview and detailed information about your 
 
 To access the dashboard chart view, follow these steps in the Azure portal:
 
-1. In Azure portal, go to **Azure Arc** > **Host environments** > **Azure Local** > **Overview (preview)**.
+1. In Azure portal, go to **Azure Arc** > **Host environments** > **Azure Local** > **Overview**.
 
    You can filter the dashboard display by **Subscription**, **Resource group**, **Region**, and **Sites**.
 
@@ -54,7 +53,7 @@ The Azure Local **All systems** list view displays information about your system
 
 To view the dashboard list view, follow these steps in the Azure portal:
 
-1. In Azure portal, go to **Azure Arc** > **Host environments** > **Azure Local** > **All systems (preview)**. The **All systems** page presents a hierarchical view of all your workloads within a system.
+1. In Azure portal, go to **Azure Arc** > **Host environments** > **Azure Local** > **All systems**. The **All systems** page presents a hierarchical view of all your workloads within a system.
 
    All columns can be sorted by selecting a column header. You can filter the dashboard display by subscription, resource group, region, and sites. You can also group display results by using the grouping control at the top right.
 
@@ -66,7 +65,7 @@ To view the dashboard list view, follow these steps in the Azure portal:
 
 ### Issue: No data available
 
-Use the following information when no system data is displayed in the **All systems (preview)** tab on the Azure portal dashboard. You might see **No data available** in the **Updates** column or in the **Connection status** column.
+Use the following information when no system data is displayed in the **All systems** tab on the Azure portal dashboard. You might see **No data available** in the **Updates** column or in the **Connection status** column.
 
 | Issue | Issue seen in | Resolution |
 |-------|---------------|-------|

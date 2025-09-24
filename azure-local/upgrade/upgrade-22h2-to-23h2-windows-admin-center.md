@@ -3,7 +3,7 @@ title: Upgrade Azure Stack HCI OS, version 22H2 to version 23H2 via Windows Admi
 description: Learn how to upgrade Azure Stack HCI OS, version 22H2 to version 23H2 using Windows Admin Center.
 author: alkohli
 ms.topic: how-to
-ms.date: 06/06/2025
+ms.date: 09/19/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -49,7 +49,7 @@ Before you begin, make sure that:
 - You have access to a client that can connect to your Azure Local instance. This client should have Windows Admin Center installed on it. For more information, see [Install Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install).
 - You run the `RepairRegistration` cmdlet only if both of the following conditions apply:
 
-   - The *identity* property is either missing or doesn’t contain `type = "SystemAssigned"`.
+   - The *identity* property is either missing or doesn't contain `type = "SystemAssigned"`.
       - Check this in the Resource JSON in the Azure portal
       - Or run the `Get-AzResource -Name <cluster_name>` PowerShell cmdlet
    - The **Cloud Management** cluster group is not present. Check it by running the `Get-ClusterGroup` PowerShell cmdlet.
@@ -152,7 +152,7 @@ Follow these steps to install updates:
    :::image type="content" source="media/upgrade-22h2-to-23h2-windows-admin-center/final-confirmation.png" alt-text="Screenshot of selecting Install to install operating system updates on each machine in the system." lightbox="media/upgrade-22h2-to-23h2-windows-admin-center/final-confirmation.png":::
 
    > [!NOTE]
-   > If the updates fail with a **Couldn't install updates** or **Couldn't check for updates** warning or if one or more machines indicate **couldn't get status** during the run, wait a few minutes, and refresh your browser. You can also use `Get-CauRun` to [check the status of the update run with PowerShell](./upgrade-22h2-to-23h2-powershell.md#step-3-check-the-status-of-an-update).
+   > If the updates fail with a **Couldn't install updates** or **Couldn't check for updates** warning or if one or more machines indicate **couldn't get status** during the run, wait a few minutes, and refresh your browser. You can also use `Get-CauRun` to [check the status of the update run with PowerShell](./upgrade-22h2-to-23h2-powershell.md#check-the-status-of-an-update).
 
 1. When operating system updates are complete, the update status changes to **Succeeded**. Select **Next: Hardware updates** to proceed to the hardware updates screen.
 

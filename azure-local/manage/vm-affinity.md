@@ -21,7 +21,7 @@ Affinity is a rule that establishes a relationship between two or more resource 
 
 Affinity and anti-affinity rules are used similarly to the way Azure uses Availability Zones. In Azure, you can configure Availability Zones to keep VMs in separate zones and away from each other or in the same zone with each other.  
 
-Using affinity and anti-affinity rules, any clustered VM would either stay on the same machine or be prevented from being together on the same machine.  In this way, the only way to move a VM out of a machine would be to do it manually.  You can also keep VMs together with its own storage, such as the Cluster Shared Volume (CSV) that its VHDX resides on.
+Using affinity and anti-affinity rules, any clustered VM would either stay on the same machine or be prevented from being together on the same machine. In this way, the only way to move a VM out of a machine would be to do it manually. You can also keep VMs together with its own storage, such as the Cluster Shared Volume (CSV) that its VHDX resides on.
 
 <!--Combining affinity and anti-affinity rules, you can also configure a stretched system across two sites and keep your VMs in the site they need to be in.-->
 
@@ -52,7 +52,7 @@ To create affinity rules for clusters, use the following new PowerShell cmdlets:
 
 #### New-ClusterAffinityRule
 
-The **`New-ClusterAffinityRule`** cmdlet is used to create new rules.  With this command you would specify the name of the rule and the type of rule it is, where:
+The **`New-ClusterAffinityRule`** cmdlet is used to create new rules. With this command, you would specify the name of the rule and the type of rule it is, where:
 
 **`-Name`** is the name of the rule
 
@@ -80,7 +80,7 @@ Set-ClusterAffinityRule -Name Rule1 -Enabled
 
 #### Get-ClusterAffinityRule
 
-The **`Get-ClusterAffinityRule`** cmdlet is used to display the specified rule and what type it is.  If **`-Name`** isn't specified, it lists all rules.
+The **`Get-ClusterAffinityRule`** cmdlet is used to display the specified rule and what type it is. If **`-Name`** isn't specified, it lists all rules.
 
 Example:
 
@@ -169,7 +169,7 @@ Move-ClusterGroup -IgnoreAffinityRule -Cluster Cluster1
 ```
 
 > [!NOTE]
-> If a move rule is valid (supported), all groups and roles that are affected will also move.  If a VM move will knowingly violate a rule yet it is needed on a one-time temporary basis, use the `-IgnoreAffinityRule` switch to allow the move to occur. In this case, a violation warning for the VM will be displayed. You can then enable the rule back as necessary.
+> If a move rule is valid (supported), all groups and roles that are affected will also move. If a VM move will knowingly violate a rule, yet it's needed on a one-time temporary basis, use the `-IgnoreAffinityRule` switch to allow the move to occur. In this case, a violation warning for the VM will be displayed. You can then enable the rule back as necessary.
 
 #### Start-ClusterGroup
 
@@ -187,7 +187,7 @@ Affinity rules are "together" rules that keep resources on the same machine, sys
 
 ### Scenario 1
 
-Suppose you have a SQL Server VM and a Web Server VM. These two VMs need to always remain in the same site but don't necessarily need to be on the same machine.  Using `SameFaultDomain`, this is possible, as shown:
+Suppose you have a SQL Server VM and a Web Server VM. These two VMs need to always remain in the same site but don't necessarily need to be on the same machine. Using `SameFaultDomain`, this is possible, as shown:
 
 ```powershell
 New-ClusterAffinityRule -Name WebData -Ruletype SameFaultDomain -Cluster Cluster1
