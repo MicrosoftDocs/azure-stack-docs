@@ -323,6 +323,8 @@
           href: howto-virtual-machine-placement-hints.md
         - name: Gather VM Console Data
           href: howto-gather-vm-console-data.md
+        - name: Virtual machines Arc enrolled using managed identities
+          href: howto-virtual-machine-arc-enroll-managed-identities.md
     - name: Observability
       expanded: false
       items:
@@ -457,6 +459,8 @@
               href: troubleshoot-kubernetes-cluster-stuck-workloads-due-to-power-failure.md
         - name: Troubleshoot a Kubernetes Cluster Node in NotReady,Scheduling Disabled after Runtime Upgrade
           href: troubleshoot-kubernetes-cluster-node-cordoned.md
+        - name: Troubleshoot issues with virtual machine Arc enrollment using managed identities
+          href: troubleshoot-virtual-machine-arc-enrollment-managed-identity.md
 - name: FAQ
   href: azure-operator-nexus-faq.md
 - name: Reference

@@ -5,7 +5,7 @@ author: dramasamy
 ms.author: dramasamy
 ms.service: azure-operator-nexus
 ms.topic: how-to
-ms.date: 07/30/2023
+ms.date: 09/24/2025
 ms.custom:
   - template-how-to-pattern
   - devx-track-azurecli
@@ -17,7 +17,10 @@ ms.custom:
 
 * Deploy an Azure Nexus virtual machine using Bicep
 
-This quick-start guide is designed to help you get started with using Nexus virtual machines to host virtual network functions (VNFs). By following the steps outlined in this guide, you're able to quickly and easily create a customized Nexus virtual machine that meets your specific needs and requirements. Whether you're a beginner or an expert in Nexus networking, this guide is here to help. You learn everything you need to know to create and customize Nexus virtual machines for hosting virtual network functions.
+This quick-start guide is designed to help you get started with using Nexus virtual machines to host virtual network functions (VNFs).
+By following the steps outlined in this guide, you're able to quickly and easily create a customized Nexus virtual machine that meets your specific needs and requirements.
+Whether you're a beginner or an expert in Nexus networking, this guide is here to help.
+You learn everything you need to know to create and customize Nexus virtual machines for hosting virtual network functions.
 
 ## Before you begin
 
@@ -26,14 +29,16 @@ This quick-start guide is designed to help you get started with using Nexus virt
 
 ## Review the template
 
-Before deploying the virtual machine template, let's review the content to understand its structure. 
+Before deploying the virtual machine template, let's review the content to understand its structure.
 
 :::code language="bicep" source="includes/virtual-machine/virtual-machine-bicep-file.bicep":::
 
 > [!WARNING]
-> User data will not be encrypted, and any process on the VM can query this data. You should not store confidential information in user data. For more information, see [Azure data security and encryption best practices](/azure/security/fundamentals/data-encryption-best-practices).
+> User data isn't encrypted, and any process on the VM can query this data.
+> You shouldn't store confidential information in user data.
+> For more information, see [Azure data security and encryption best practices](/azure/security/fundamentals/data-encryption-best-practices).
 
-Once you have reviewed and saved the template file named ```virtual-machine-bicep-file.bicep```, proceed to the next section to deploy the template.
+Review and save the template file named ```virtual-machine-bicep-file.bicep```, then proceed to the next section and deploy the template.
 
 ## Deploy the template
 
@@ -43,11 +48,28 @@ Once you have reviewed and saved the template file named ```virtual-machine-bice
 
 2. Deploy the template.
 
-```azurecli
+```azurecli-interactive
     az deployment group create --resource-group myResourceGroup --template-file virtual-machine-bicep-file.bicep --parameters @virtual-machine-parameters.json
 ```
 
+### Virtual machine Arc enrollment with managed identities
+
+If you want to enroll the virtual machine with Azure Arc using managed identities, you _must_ create the virtual machine with either a system-assigned managed identity or a user-assigned managed identity.
+
+The following example shows how to create a virtual machine with a system-assigned managed identity using Bicep.
+The examples build on the previous Bicep example by adding the managed identity section.
+
+:::code language="bicep" source="includes/virtual-machine/virtual-machine-with-managed-identity-bicep-file.bicep":::
+
+For detailed steps on how to create a virtual machine with managed identities and enroll it with Azure Arc, see [Enroll a Nexus virtual machine with Azure Arc using managed identities].
+
+[Enroll a Nexus virtual machine with Azure Arc using managed identities]: ./howto-virtual-machine-arc-enroll-managed-identities.md
+
 ## Review deployed resources
+
+```azurecli-interactive
+    az deployment group show --resource-group myResourceGroup --name <deployment-name>
+```
 
 [!INCLUDE [quickstart-review-deployment-cli](./includes/virtual-machine/quickstart-review-deployment-cli.md)]
 
@@ -57,4 +79,4 @@ Once you have reviewed and saved the template file named ```virtual-machine-bice
 
 ## Next steps
 
-You've successfully created a Nexus virtual machine. You can now use the virtual machine to host virtual network functions (VNFs).
+The Nexus virtual machine is successfully created! You can now use the virtual machine to host virtual network functions (VNFs).
