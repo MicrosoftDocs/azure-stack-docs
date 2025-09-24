@@ -15,6 +15,8 @@ ms.custom:
 
 # Upgrade stretched clusters from Azure Stack HCI OS, version 22H2 to 23H2
 
+::: moniker range=">=azloc-2509"
+
 [!INCLUDE [applies-to](../includes/hci-applies-to-22h2.md)]
 
 > [!IMPORTANT]
@@ -279,3 +281,11 @@ No. You can only upgrade your version 22H2 stretched cluster to the version 23H2
 ## Next steps
 
 - [Learn how to perform the post-OS upgrade steps for your Azure Local.](post-upgrade-steps.md)
+
+::: moniker-end
+
+::: moniker range="<=azloc-2508"
+
+This feature is available only in Azure Local 2509 or later.
+
+::: moniker-end
