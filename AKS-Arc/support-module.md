@@ -12,7 +12,7 @@ ms.lastreviewed: 07/22/2025
 
 # Use the Support Tool to troubleshoot and fix AKS Arc related issues
 
-The [**Support Tool**](https://www.powershellgallery.com/packages/Support.AksArc) is a PowerShell module provides diagnostic and remediation capabilities for AKS Arc environments. Before you open a support request, you can run the specified commands in this module to help diagnose and potentially resolve issues. 
+The [**Support Tool**](https://www.powershellgallery.com/packages/Support.AksArc) is a PowerShell module that provides diagnostic and remediation capabilities for AKS Arc environments. Before you open a support request, you can run the specified commands in this module to help diagnose and potentially resolve issues. 
 
 ## Benefits
 
