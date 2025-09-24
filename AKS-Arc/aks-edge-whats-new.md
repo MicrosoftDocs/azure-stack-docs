@@ -2,7 +2,7 @@
 title: What's new in AKS Edge Essentials
 description: Learn about what's new in AKS Edge Essentials releases.
 ms.topic: overview
-ms.date: 03/12/2025
+ms.date: 09/24/2025
 author: sethmanheim
 ms.author: sethm 
 ms.reviewer: sumsmith
@@ -14,32 +14,32 @@ ms.lastreviewed: 09/15/2025
 
 AKS Edge Essentials is a lightweight on-premises Kubernetes implementation of Azure Kubernetes Service (AKS) that automates running containerized applications at scale. This article describes the latest features, enhancements, and updates in AKS Edge Essentials releases.
 
-<!-- ## Release 1.11.230.0 (September 2025)
+## Release 1.11.247.0 (September 2025)
 
 The following features and improvements were added in this release:
 
-- AKS Edge Essentials version 1.11.230.0 uses Azure Linux 3.0, an upgrade from Azure Linux 2.0, which was the version used in previous releases.
+- AKS Edge Essentials version 1.11.247.0 uses Azure Linux 3.0, an upgrade from Azure Linux 2.0, which was the version used in previous releases.
 - AKS Edge Essentials now connects to Azure Arc during deployment to decrease the number of steps required. Arc parameters are required in the **aks-edge** configuration file during deployment. AKS Edge Essentials deployment is blocked if Arc parameters are missing or invalid. However, this does not impact offline deployments or volume licensing customers.
 
-### Supported versions for 1.11.230.0
+### Supported versions for 1.11.247.0
 
-- AKS Edge Essentials version: 1.11.230.0
+- AKS Edge Essentials version: 1.11.247.0
 - Azure Linux (previously Mariner) Version: 3.0.20250822
 - K8s (upstream Kubernetes) distribution: 1.30.5 (only available as an upgrade from 1.10.868.0), 1.31.5
 - K3s distribution: 1.30.6 (only available as an upgrade from 1.10.868.0), 1.31.6
-- Json version schema: 1.15
+- Json version schema: 1.16
 
 ### Available upgrade paths
 
 | Current version         | Upgrade path            |
 |-------------------------|-------------------------|
-| 1.10.868.0 k8s/k3s 1.29 | 1.11.230.0 k8s/k3s 1.30 |
-| 1.10.868.0 k8s/k3s 1.30 | 1.11.230.0 k8s/k3s 1.30 |
-| 1.10.868.0 k8s/k3s 1.30 | 1.11.230.0 k8s/k3s 1.31 |
+| 1.10.868.0 k8s/k3s 1.29 | 1.11.247.0 k8s/k3s 1.30 |
+| 1.10.868.0 k8s/k3s 1.30 | 1.11.247.0 k8s/k3s 1.30 |
+| 1.10.868.0 k8s/k3s 1.30 | 1.11.247.0 k8s/k3s 1.31 |
 
 > [!NOTE]  
 > Upgrading from one Kubernetes distribution to another within the same release version is not supported.
- -->
+
 ## Release 1.10.868.0 (March 2025)
 
 The following features and improvements were added in this release:
