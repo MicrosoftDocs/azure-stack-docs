@@ -38,7 +38,7 @@ To explore additional log collection methods in Azure Local and understand when 
 Before you collect on-demand logs, you must complete the following prerequisites:
 
 - You must have access to an Azure Local instance that is deployed and registered.
-- You must have the necessary permissions to trigger logs. You need to be assigned the **Azure Stack HCI Administrator** role in the Azure portal. For more information about assigning roles, see [Assign Azure roles using the Azure portal](/azure/role-based-access-control/role-assignments-portal).
+- You must have the necessary permissions to trigger logs. You need to be assigned the **Azure Stack HCI Administrator** role. For more information about assigning roles, see [Assign Azure roles using the Azure portal](/azure/role-based-access-control/role-assignments-portal) or [Assign Azure roles using PowerShell](/azure/role-based-access-control/role-assignments-powershell).
 - You must have installed the `AzureEdgeTelemetryAndDiagnostics` extension to collect telemetry and diagnostics information from your Azure Local instance. For information about the extension, see [Azure Local telemetry and diagnostics extension overview](../concepts/telemetry-and-diagnostics-overview.md).
 
 ## Collect logs for Azure Local
