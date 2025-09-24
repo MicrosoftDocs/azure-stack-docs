@@ -40,17 +40,17 @@ Node selector is the most common and recommended option for placement of Windows
 
 1. Update the `nodeSelector` field in your application's deployment YAML to match the label of the new Windows node pool.  
 
-```yml
-nodeSelector:
+   ```yml
+   nodeSelector:
         "kubernetes.azure.com/os-sku": Windows2022
-```
+   ```
 
-This enforces the placement of the pod on a Windows node thats running the latest OS version.
+This enforces the placement of the pod on a Windows node that's running the latest OS version.
 
 1. Once you update the `nodeSelector` in the YAML file, you also need to update the container image you want to use. You can get this information from the previous step in which you created a new version of the containerized application by changing the FROM statement on your Dockerfile.
 
-> [!NOTE]
-> You should use the same YAML file you used to initially deploy the application. This ensures that no other configuration changes besides the nodeSelector and container image.
+   > [!NOTE]
+   > You should use the same YAML file you used to initially deploy the application. This ensures that no other configuration changes besides the nodeSelector and container image.
 
 ### Apply the updated YAML file to the existing workload
 
