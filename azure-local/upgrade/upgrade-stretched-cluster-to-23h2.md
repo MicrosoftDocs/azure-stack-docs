@@ -174,7 +174,7 @@ To install the new OS using PowerShell, follow these steps:
    Dismount-DiskImage -ImagePath $isoFilePath
    ```
 
-1. Upgrade the system:
+1. Upgrade the system.
 
    ```powershell
    Invoke-CauRun –ClusterName <SystemName> -CauPluginName Microsoft.RollingUpgradePlugin -EnableFirewallRules -CauPluginArguments @{ 'WuConnected'='false';'PathToSetupMedia'='\some\path\';'UpdateClusterFunctionalLevel'='true'; } -ForceSelfUpdate -Force
