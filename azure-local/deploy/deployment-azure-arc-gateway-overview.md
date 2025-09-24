@@ -96,22 +96,18 @@ The endpoints from the following table are required. Add these endpoints to the 
 | 9 | `https://<yourarcgatewayId>.gw.arc.azure.com` | Arc gateway |
 | 10 | `https://<yourkeyvaultname>.vault.azure.net` | Azure Key Vault |
 | 11 | `https://<yourblobstorageforcloudwitnessname>.blob.core.windows.net` | Cloud Witness Storage Account |
-| 12 | `https://files.pythonhosted.org` | Not required starting with 2504 new deployments. Microsoft On-premises Cloud, Arc resource bridge, AKS |
-| 13 | `https://pypi.org` | Not required starting with 2504 new deployments. Microsoft On-premises Cloud, Arc resource bridge, AKS |
-| 14 | `https://raw.githubusercontent.com` | Not required starting with 2504 new deployments. Microsoft On-premises Cloud, Arc resource bridge,AKS |
-| 15 | `https://pythonhosted.org` | Not required starting with 2504 new deployments. Microsoft On-premises Cloud, Arc resource bridge, AKS |
-| 16 | `http://ocsp.digicert.com`  | Certificate Revocation List for Arc extensions |
-| 17 | `http://s.symcd.com` | Certificate Revocation List for Arc extensions |
-| 18 | `http://ts-ocsp.ws.symantec.com` | Certificate Revocation List for Arc extensions |
-| 19 | `http://ocsp.globalsign.com` | Certificate Revocation List for Arc extensions |
-| 20 | `http://ocsp2.globalsign.com` | Certificate Revocation List for Arc extensions |
-| 21 | `http://oneocsp.microsoft.com` | Certificate Revocation List for Arc extensions |
-| 22 | `http://crl.microsoft.com/pkiinfra` | Certificate Revocation List for Arc extensions |
-| 23 | `https://dl.delivery.mp.microsoft.com` | Not required starting with 2504 new deployments. Windows Update |
-| 24 | `https://*.tlu.dl.delivery.mp.microsoft.com` | Not required starting with 2504 new deployments. Windows Update |
-| 25 | `https://*.windowsupdate.com` | Not required starting with 2504 new deployments. Windows Update |
-| 26 | `https://*.windowsupdate.microsoft.com` | Not required starting with 2504 new deployments. Windows Update |
-| 27 | `https://*.update.microsoft.com` | Not required starting with 2504 new deployments. Windows Update |
+| 13 | `http://ocsp.digicert.com`  | Certificate Revocation List for Arc extensions |
+| 14 | `http://s.symcd.com` | Certificate Revocation List for Arc extensions |
+| 15 | `http://ts-ocsp.ws.symantec.com` | Certificate Revocation List for Arc extensions |
+| 16 | `http://ocsp.globalsign.com` | Certificate Revocation List for Arc extensions |
+| 17 | `http://ocsp2.globalsign.com` | Certificate Revocation List for Arc extensions |
+| 18 | `http://oneocsp.microsoft.com` | Certificate Revocation List for Arc extensions |
+| 19 | `http://crl.microsoft.com/pkiinfra` | Certificate Revocation List for Arc extensions |
+| 20 | `https://dl.delivery.mp.microsoft.com` | Not required starting with 2504 new deployments. Windows Update |
+| 21 | `https://*.tlu.dl.delivery.mp.microsoft.com` | Not required starting with 2506 new deployments. Windows Update |
+| 22 | `https://*.windowsupdate.com` | Not required starting with 2506 new deployments. Windows Update |
+| 23 | `https://*.windowsupdate.microsoft.com` | Not required starting with 2506 new deployments. Windows Update |
+| 24 | `https://*.update.microsoft.com` | Not required starting with 2506 new deployments. Windows Update |
 
 ## Restrictions and limitations
 
