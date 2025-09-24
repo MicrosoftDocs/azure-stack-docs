@@ -4,7 +4,7 @@ description: Learn how to prepare your machines for AKS Edge Essentials clusters
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
-ms.date: 09/23/2025
+ms.date: 09/24/2025
 ms.custom: template-how-to
 ---
 
