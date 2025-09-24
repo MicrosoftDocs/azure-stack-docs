@@ -23,7 +23,7 @@ Virtual hard disks (VHDs) serve as the base operating system images for the Kube
 
 Before you begin creating Windows node pools, make sure you have the following prerequisites in place:
 
-- **Azure Local deployed**. This article applies only if you deployed Azure Local release 2509 or later. Windows VHDs are disabled by default starting in release 2509. If you are on an earlier release, you can proceed to [create a Windows node pool](#create-the-windows-node-pool).
+- **Azure Local deployed**. This article applies only if you deployed Azure Local release 2509 or later. Windows VHDs are disabled by default starting in release 2509. If you are on an earlier release, you can proceed to [create a Windows node pool](howto-create-windows-node-pools.md).
 - **Azure RBAC permissions to update Azure Local configuration**. Make sure you have the following roles. For more information, see [required permissions for deployment](/azure/azure-local/deploy/deployment-arc-register-server-permissions?tabs=powershell#assign-required-permissions-for-deployment):
   - Azure Local Administrator
   - Reader
