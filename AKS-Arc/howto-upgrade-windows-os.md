@@ -20,7 +20,8 @@ When a new version of the Windows Server operating system is released, AKS Arc i
 
 > [!IMPORTANT]
 > Windows Server 2019 is being retired in March 2026. Azure Local version 2510 will be the last release to include the Windows Server 2019 VHDs. The last Kubernetes version available on Windows Server 2019 is 1.32. Windows Server 2019 won't be supported on 1.33 and later. For more information, see [Windows Server 2019 node pool retirement](https://techcommunity.microsoft.com/blog/containers/announcing-the-3-year-retirement-of-windows-server-2019-on-azure-kubernetes-serv/3777341).
-> Windows Server 2022 is being retired in October 2026. Azure Local version 2603 will be the last release to include the Windows Server 2022 VHDs. The last Kubernetes version available on Windows Server 2019 is 1.34. Windows Server 2022 won't be supported on 1.35 and later.
+>
+> Windows Server 2022 is being retired in October 2026. Azure Local version 2603 will be the last release to include the Windows Server 2022 VHDs. The last Kubernetes version available on Windows Server 2022 is 1.34. Windows Server 2022 won't be supported on 1.35 and later.
 
 ### Before you begin
 
