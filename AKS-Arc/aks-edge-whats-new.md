@@ -2,7 +2,7 @@
 title: What's new in AKS Edge Essentials
 description: Learn about what's new in AKS Edge Essentials releases.
 ms.topic: overview
-ms.date: 09/23/2025
+ms.date: 09/24/2025
 author: sethmanheim
 ms.author: sethm 
 ms.reviewer: sumsmith
