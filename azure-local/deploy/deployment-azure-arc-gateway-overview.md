@@ -1,18 +1,18 @@
 --- 
-title: Overview of Azure Arc gateway for Azure Local (Preview)
-description: Learn what is Azure Arc gateway for Azure Local (Preview).
+title: Overview of Azure Arc gateway for Azure Local
+description: Learn what is Azure Arc gateway for Azure Local.
 author: alkohli
 ms.topic: how-to
-ms.date: 09/09/2025
+ms.date: 09/24/2025
 ms.author: alkohli
 ms.service: azure-local
 ---
 
-# About Azure Arc gateway for Azure Local (Preview)
+# About Azure Arc gateway for Azure Local
 
 ::: moniker range=">=azloc-2506"
 
-This article provides an overview of the Azure Arc gateway for Azure Local (formerly known as Azure Stack HCI) which can be enabled on new deployments of Azure Local running software version 2505 and later. This article also describes how to create and delete the Arc gateway resource in Azure.
+This article provides an overview of the Azure Arc gateway for Azure Local (formerly known as Azure Stack HCI) which can be enabled on new deployments of Azure Local running software version 2506 and later. This article also describes how to create and delete the Arc gateway resource in Azure.
 
 You can use the Arc gateway to significantly reduce the number of required endpoints needed to deploy and manage Azure Local instances. When you create the Arc gateway, you can connect to and use it for new deployments of Azure Local.
 
@@ -26,9 +26,13 @@ The Arc gateway works by introducing the following components:
 
 When you integrate the Arc gateway with Azure Local deployments, each machine gets Arc proxy along with other Arc Agents.
 
-When Arc gateway is used, the *http* and *https* traffic flow changes as follows:
+The following diagram illustrates how traffic flows between the various components:
 
-**Traffic flow for Azure Local host operating system components**
+:::image type="content" source="./media/deployment-azure-arc-gateway-overview/arc-gateway-component-diagram.svg" alt-text="Diagram of Azure Arc gateway architecture." lightbox="./media/deployment-azure-arc-gateway-overview/arc-gateway-component-diagram.svg":::
+
+The following sections explain how *http* and *https* traffic flow changes when the Arc gateway is used:
+
+### Traffic flow for Azure Local host operating system components
 
 1. OS proxy settings are used to route all HTTPS host traffic through Arc proxy.  
 
@@ -36,7 +40,7 @@ When Arc gateway is used, the *http* and *https* traffic flow changes as follows
 
 1. Based on the configuration in the Arc gateway, if allowed, the traffic is sent to target services. If not allowed, Arc proxy redirects this traffic to the enterprise proxy (or direct outbound if no proxy set). Arc proxy automatically determines the right path for the endpoint.
 
-**Traffic flow for Arc appliance Azure Arc resource bridge and AKS control plane**
+### Traffic flow for Azure Arc resource bridge and AKS control plane
 
 1. Routable IP (failover clustered IP resource as of now) is used to forward the traffic through Arc proxy running on the Azure Local host machines.
 
@@ -46,14 +50,9 @@ When Arc gateway is used, the *http* and *https* traffic flow changes as follows
 
 1. When traffic reaches the Arc proxy, the remaining flow takes the same path as described. If traffic to the target service is allowed, it's sent to Arc gateway. If not, it's sent to the enterprise proxy (or direct outbound if no proxy set). For AKS specifically, this path is used for downloading docker images for Arc agentry and Arc Extension Pods.
 
-**Traffic flow for Azure Local VMs**
+### Traffic flow for Azure Local VMs
 
 HTTP and HTTPS traffic are forwarded to the enterprise proxy. Arc proxy inside an Azure Local virtual machine (VM) enabled by Arc isn't yet supported in this version.
-
-Traffic flows are illustrated in the following diagram:
-
-:::image type="content" source="./media/deployment-azure-arc-gateway-overview/arc-gateway-component-diagram.png" alt-text="Diagram of Azure Arc gateway architecture." lightbox="./media/deployment-azure-arc-gateway-overview/arc-gateway-component-diagram.png":::
-
 
 ## Supported and unsupported scenarios
 
@@ -73,7 +72,7 @@ The endpoints from the table are required and must be allowlisted in your proxy 
 | Endpoint # | Required endpoint | Component  |
 |--| -- |--|
 | 1 | `https://aka.ms` | Bootstrap |
-| 2 | `https://azurestackreleases.download.prss.microsoft.com]` | Bootstrap |
+| 2 | `https://azurestackreleases.download.prss.microsoft.com` | Bootstrap |
 | 3 | `https://login.microsoftonline.com` | Arc registration |
 | 4 | `https://<region>.login.microsoft.com` | Arc registration |
 | 5 | `https://management.azure.com` | Arc registration |
