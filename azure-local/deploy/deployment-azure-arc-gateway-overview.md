@@ -63,7 +63,7 @@ The following sections explain how *http* and *https* traffic flow changes when 
 
 - The system forwards all Arc HTTPS traffic to the Arc gateway configured for the Azure Local VM.
 - If you want to forward all the HTTP and HTTPS traffic from the Azure Local VM to the Arc gateway, you must configure the OS WinInet and WinHTTP proxy settings to use the Arc proxy that's running on http://\<localhost\>:\<port40343\>.
-- If the Arc gateway doesn't allow endpoints from reaching from inside the Azure Local VM, the system sends the traffic to the enterprise proxy or firewall.
+- If the Arc gateway doesn't allow endpoints from reaching inside the Azure Local VM, the system sends the traffic to the enterprise proxy or firewall.
 
 For more information about the traffic flows, see [Deep dive into Azure Arc gateway outbound traffic mode for Azure Local](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/Networking/Arc-Gateway-Outbound-Connectivity/DeepDive-ArcGateway-Outbound-Traffic.md).
 
@@ -96,18 +96,18 @@ The endpoints from the following table are required. Add these endpoints to the 
 | 9 | `https://<yourarcgatewayId>.gw.arc.azure.com` | Arc gateway |
 | 10 | `https://<yourkeyvaultname>.vault.azure.net` | Azure Key Vault |
 | 11 | `https://<yourblobstorageforcloudwitnessname>.blob.core.windows.net` | Cloud Witness Storage Account |
-| 13 | `http://ocsp.digicert.com`  | Certificate Revocation List for Arc extensions |
-| 14 | `http://s.symcd.com` | Certificate Revocation List for Arc extensions |
-| 15 | `http://ts-ocsp.ws.symantec.com` | Certificate Revocation List for Arc extensions |
-| 16 | `http://ocsp.globalsign.com` | Certificate Revocation List for Arc extensions |
-| 17 | `http://ocsp2.globalsign.com` | Certificate Revocation List for Arc extensions |
-| 18 | `http://oneocsp.microsoft.com` | Certificate Revocation List for Arc extensions |
-| 19 | `http://crl.microsoft.com/pkiinfra` | Certificate Revocation List for Arc extensions |
-| 20 | `https://dl.delivery.mp.microsoft.com` | Not required starting with 2504 new deployments. Windows Update |
-| 21 | `https://*.tlu.dl.delivery.mp.microsoft.com` | Not required starting with 2506 new deployments. Windows Update |
-| 22 | `https://*.windowsupdate.com` | Not required starting with 2506 new deployments. Windows Update |
-| 23 | `https://*.windowsupdate.microsoft.com` | Not required starting with 2506 new deployments. Windows Update |
-| 24 | `https://*.update.microsoft.com` | Not required starting with 2506 new deployments. Windows Update |
+| 12 | `http://ocsp.digicert.com`  | Certificate Revocation List for Arc extensions |
+| 13 | `http://s.symcd.com` | Certificate Revocation List for Arc extensions |
+| 14 | `http://ts-ocsp.ws.symantec.com` | Certificate Revocation List for Arc extensions |
+| 15 | `http://ocsp.globalsign.com` | Certificate Revocation List for Arc extensions |
+| 16 | `http://ocsp2.globalsign.com` | Certificate Revocation List for Arc extensions |
+| 17 | `http://oneocsp.microsoft.com` | Certificate Revocation List for Arc extensions |
+| 18 | `http://crl.microsoft.com/pkiinfra` | Certificate Revocation List for Arc extensions |
+| 19 | `https://dl.delivery.mp.microsoft.com` | Not required starting with 2504 new deployments. Windows Update |
+| 20 | `https://*.tlu.dl.delivery.mp.microsoft.com` | Not required starting with 2506 new deployments. Windows Update |
+| 21 | `https://*.windowsupdate.com` | Not required starting with 2506 new deployments. Windows Update |
+| 22 | `https://*.windowsupdate.microsoft.com` | Not required starting with 2506 new deployments. Windows Update |
+| 23 | `https://*.update.microsoft.com` | Not required starting with 2506 new deployments. Windows Update |
 
 ## Restrictions and limitations
 
