@@ -86,22 +86,6 @@ To set up and prepare an Azure VM, follow these steps:
        sudo rm -rf /var/lib/cloud/ /var/log/* /tmp/*
        ```
 
-    1. Unregister `subscription-manager` and clean it up.
-
-       ```bash
-       sudo subscription-manager unregister
-       sudo subscription-manager clean
-       ```
-
-       Example output:
-
-       ```console
-       [contosotest@localhost ~]$ sudo subscription-manager unregister
-       Unregistering from: subscription.rhsm.redhat.com:443/subscription
-       System has been unregistered.
-       [contosotest@localhost ~]$ sudo subscription-manager
-       ```
-
     1. Clean VM-specific details.
 
        ```bash
