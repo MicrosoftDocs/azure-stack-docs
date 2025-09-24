@@ -45,7 +45,7 @@ Node selector is the most common and recommended option for placement of Windows
         "kubernetes.azure.com/os-sku": Windows2022
    ```
 
-This enforces the placement of the pod on a Windows node that's running the latest OS version.
+   This enforces the placement of the pod on a Windows node that's running the latest OS version.
 
 1. Once you update the `nodeSelector` in the YAML file, you also need to update the container image you want to use. You can get this information from the previous step in which you created a new version of the containerized application by changing the FROM statement on your Dockerfile.
 
