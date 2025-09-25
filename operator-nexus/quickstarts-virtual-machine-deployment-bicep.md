@@ -59,7 +59,43 @@ If you want to enroll the virtual machine with Azure Arc using managed identitie
 The following example shows how to create a virtual machine with a system-assigned managed identity using Bicep.
 The examples build on the previous Bicep example by adding the managed identity section.
 
-:::code language="bicep" source="includes/virtual-machine/virtual-machine-with-managed-identity-bicep-file.bicep":::
+For System-assigned managed identity, add the following section to the Bicep file:
+
+```
+resource vm 'Microsoft.Compute/virtualMachines@2025-07-01-preview' = {
+  name: vmName
+  ...
+  properties: {
+    ...
+    identity: {
+      type: "SystemAssigned",
+      tenantId: "{identity-tenant-id}"
+      principalId: "{identity-principal-id}"
+    }
+  }
+}
+```
+
+For User-assigned managed identity, add the following section to the Bicep file:
+
+```
+resource vm 'Microsoft.NetworkCloud/virtualMachines@2025-07-01-preview' = {
+  name: vmName
+  ...
+  properties: {
+    ...
+    identity: {
+      type: "UserAssigned",
+      userAssignedIdentities: {
+        "/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identity-name}": {
+          clientId: "{identity-client-id}"
+          principalId: "{identity-principal-id}"
+        }
+      }
+    }
+  }
+}
+```
 
 For detailed steps on how to create a virtual machine with managed identities and enroll it with Azure Arc, see [Enroll a Nexus virtual machine with Azure Arc using managed identities].
 
