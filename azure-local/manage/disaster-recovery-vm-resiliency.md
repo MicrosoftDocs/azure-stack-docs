@@ -78,7 +78,7 @@ Veeam backup and replication supports backup and replication of Azure Local VMs.
 
 #### CloudCasa by Catalogic
 
-CloudCasa delivers Kubernetes-native backup, disaster recovery, and migration for AKS on Azure Local and Arc-enabled clusters. It protects cluster resources and persistent volumes, with the ability to perform granular restores, including file-level recovery. Backups can be stored in Azure Blob Storage, other object storage, or NFS. It’s positioned as the most cost-effective and comprehensive solution in comparison to legacy tools. CloudCasa supports restores to the same site, a secondary Azure Local cluster, or Azure AKS for disaster recovery.
+CloudCasa delivers Kubernetes-native backup, disaster recovery, and migration for AKS on Azure Local and Arc-enabled clusters. It protects cluster resources and persistent volumes, with the ability to perform granular restores, including file-level recovery. Backups can be stored in Azure Blob Storage, other object storage, or NFS. CloudCasa supports restores to the same site, a secondary Azure Local cluster, or Azure AKS for disaster recovery.
 
 - [CloudCasa on Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?search=cloudcasa)
 - [CloudCasa for AKS](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/catalogicsoftware1625626770507.cloudcasa-aks-app )
