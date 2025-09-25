@@ -2,7 +2,7 @@
 title: Use Windows node pools 
 description: Learn how to enable the Windows node pool feature in AKS on Azure Local.
 ms.topic: how-to
-ms.date: 09/24/2025
+ms.date: 09/25/2025
 author: rcheeran
 ms.author: rcheeran 
 ms.reviewer: sethm
@@ -10,7 +10,7 @@ ms.lastreviewed: 09/24/2025
 
 ---
 
-# Enable the Windows node pool feature in AKS on Azure Local
+# Enable the Windows node pool feature
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
