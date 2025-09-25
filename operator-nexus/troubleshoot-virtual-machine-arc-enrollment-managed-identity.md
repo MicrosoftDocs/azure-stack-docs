@@ -501,12 +501,11 @@ If you're still experiencing issues after following this troubleshooting guide:
 
 2. **Review related documentation:**
    - [Azure Connected Machine agent troubleshooting](/azure/azure-arc/servers/troubleshoot-agent-onboard)
-   - [Managed identities troubleshooting](s-azure-resources/managed-identities-faq)
-   - [Azure Arc servers overview]()
+   - [Managed identities troubleshooting](/entra/identity/managed-identities-azure-resources/managed-identities-faq)
 
 3. **Reference external documentation:**
-   - [Azure Connected Machine agent connect reference](t-connect#access-token)
-   - [How to use managed identities to get an access token](s-azure-resources/how-to-use-vm-token#get-a-token-using-go)
+   - [Azure Connected Machine agent connect reference](/azure/azure-arc/servers/azcmagent-connect#access-token)
+   - [How to use managed identities to get an access token](/entra/identity/managed-identities-azure-resources/how-to-use-vm-token#get-a-token-using-go)
 
 ## Related articles
 

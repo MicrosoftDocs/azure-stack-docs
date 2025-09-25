@@ -124,15 +124,15 @@ You must also assign the necessary roles to the managed identity to allow it to 
 
 Assign the roles `HybridCompute Machine ListAccessDetails Action` and `Azure Connected Machine Resource Manager` to the managed identity.
 Role assignments can be done at the subscription, resource group, or resource level depending on your requirements.
-The details on how to assign roles can be found in the [Assign Azure roles using the Azure portal](azure/role-based-access-control/role-assignments-portal) documentation.
+The details on how to assign roles can be found in the [Assign Azure roles using the Azure portal](/azure/role-based-access-control/role-assignments-portal) documentation.
 
 Get the identity resource ID for later use.
 Example ARM resource ID: `/subscriptions/<subscription_id>/resourceGroups/<subscription_id>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<uami-name>`
 
 For more information about creating and managing managed identities, see:
 
-- [Create a user-assigned managed identity](entra/identity/managed-identities-azure-resources/how-manage-user-assigned-managed-identities)
-- [Configure managed identities for Azure resources on a VM](entra/identity/managed-identities-azure-resources/qs-configure-cli-windows-vm)
+- [Create a user-assigned managed identity](/entra/identity/managed-identities-azure-resources/how-manage-user-assigned-managed-identities)
+- [Configure managed identities for Azure resources on a VM](/entra/identity/managed-identities-azure-resources/qs-configure-cli-windows-vm)
 
 ## Prepare cloud-init script for Arc enrollment
 
@@ -313,8 +313,8 @@ For more information about the `azcmagent connect` command and access tokens, se
 
 For details about token retrieval with managed identities, see [How to use managed identities to get an access token].
 
-[Azure Connected Machine agent connect reference]: azure/azure-arc/servers/azcmagent-connect#access-token
-[How to use managed identities to get an access token]: entra/identity/managed-identities-azure-resources/how-to-use-vm-token#get-a-token-using-go
+[Azure Connected Machine agent connect reference]: /azure-arc/servers/azcmagent-connect#access-token
+[How to use managed identities to get an access token]: /entra/identity/managed-identities-azure-resources/how-to-use-vm-token#get-a-token-using-go
 
 ## Verify Arc enrollment
 
@@ -350,7 +350,7 @@ az connectedmachine show \
 
 After the VM is created and boots, you can check the cloud-init logs to verify that the Arc enrollment process completed successfully.
 
-To access the VM through console, you will need to follow the steps in [Azure Operator Nexus: VM Console Service](howto-use-vm-console-service.md).
+To access the VM through console, you will need to follow the steps in [Azure Operator Nexus: VM Console Service](./howto-use-vm-console-service.md).
 
 If you need to troubleshoot the enrollment process, you can check the cloud-init logs:
 
@@ -364,7 +364,7 @@ sudo grep -i error /var/log/cloud-init-output.log
 
 ## Next steps
 
-- Explore [Azure Arc security and monitoring capabilities](azure/azure-arc/servers/security-overview)
+- Explore [Azure Arc security and monitoring capabilities](/azure/azure-arc/servers/security-overview)
 - Review [troubleshooting guidance](./troubleshoot-virtual-machine-arc-enrollment-managed-identity.md) for common issues
 
 ## Related articles
