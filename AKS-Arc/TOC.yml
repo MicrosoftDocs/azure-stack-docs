@@ -70,10 +70,6 @@
         href: aks-networks.md
       - name: Simplify outbound connectivity
         href: arc-gateway-aks-arc.md
-      - name: Deploy in environments with low internet bandwidth 
-        items: 
-        - name: Disable Windows nodepool
-          href: disable-windows-nodepool.md        
       - name: Use MetalLB load balancer
         items:
         - name: Azure CLI
@@ -139,8 +135,6 @@
       href: auto-scale-aks-arc.md
     - name: Upgrade Kubernetes clusters
       href: cluster-upgrade.md
-    - name: Create Windows Server containers
-      href: aks-create-containers.md
     - name: Integrate Azure Container Registry
       href: deploy-container-registry.md
     - name: Monitoring and logging
@@ -213,6 +207,8 @@
       href: connectivity-troubleshoot.md
     - name: Cluster status stuck during upgrade
       href: cluster-upgrade-status.md
+    - name: Disable Windows VHDs downloads
+      href: TSG-disable-windows-nodepool.md
   - name: Security
     items:  
     - name: Security book - recommendations and best practices
