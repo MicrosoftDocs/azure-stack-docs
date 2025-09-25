@@ -1,29 +1,31 @@
 ---
 title: Upgrade the Windows Server version on your node pools
-description: Learn how to upgrade the Windows Server version on your node pools.
+description: Learn how to upgrade the Windows Server version on your node pools in AKS enabled by Azure Arc.
 ms.topic: how-to
 author: rcheeran
-ms.date: 09/24/2025
+ms.date: 09/25/2025
 ms.author: rcheeran 
 ms.lastreviewed: 09/24/2025
 ms.reviewer: sethm
 
 ---
 
-# Upgrade the OS version for your Windows node pool on AKS enabled by Azure Arc
+# Upgrade the OS version for your Windows node pool
+
+[!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
 This article describes the steps to upgrade the OS version for Windows workloads on AKS Arc. While this example focuses on the upgrade from Windows Server 2019 to Windows Server 2022, you can follow the same process to upgrade from any Windows Server version to another version.
 
 ## Windows Server OS version support
 
-When a new version of the Windows Server operating system is released, AKS Arc is committed to supporting it, and recommends that you upgrade to the latest version to take advantage of the fixes, improvements, and new functionality.
+When a new version of the Windows Server operating system is released, AKS Arc is committed to supporting it, and recommends that you upgrade to the latest version to take advantage of its fixes, improvements, and new functionality.
 
 > [!IMPORTANT]
 > Windows Server 2019 is being retired in March 2026. Azure Local version 2510 will be the last release to include the Windows Server 2019 VHDs. The last Kubernetes version available on Windows Server 2019 is 1.32. Windows Server 2019 won't be supported on 1.33 and later. For more information, see [Windows Server 2019 node pool retirement](https://techcommunity.microsoft.com/blog/containers/announcing-the-3-year-retirement-of-windows-server-2019-on-azure-kubernetes-serv/3777341).
 >
 > Windows Server 2022 is being retired in October 2026. Azure Local version 2603 will be the last release to include the Windows Server 2022 VHDs. The last Kubernetes version available on Windows Server 2022 is 1.34. Windows Server 2022 won't be supported on 1.35 and later.
 
-### Before you begin
+## Before you begin
 
 - Update the FROM statement in your Dockerfile to the new OS version.
 - Check your application and verify the container app works on the new OS version.
@@ -31,13 +33,13 @@ When a new version of the Windows Server operating system is released, AKS Arc i
 - Take note of the new image name or tag for use in this article.
 - Ensure that the [Windows node pool feature is enabled](howto-enable-windows-node-pools.md) on your AKS Arc cluster.
 
-### Add a new Windows-based node pool to an existing cluster
+## Add a new Windows-based node pool to an existing cluster
 
 Select the right OS SKU and create a new [Windows-based node pool](howto-create-windows-node-pools.md) on your AKS Arc cluster.
 
-### Update the application YAML to use the new OS SKU
+## Update the application YAML to use the new OS SKU
 
-Node selector is the most common and recommended option for placement of Windows pods on Windows nodes.
+A node selector is the most common and recommended option for placement of Windows pods on Windows nodes.
 
 1. Update the `nodeSelector` field in your application's deployment YAML to match the label of the new Windows node pool.  
 
@@ -53,7 +55,7 @@ Node selector is the most common and recommended option for placement of Windows
    > [!NOTE]
    > You should use the same YAML file you used to initially deploy the application. This ensures that no other configuration changes besides the nodeSelector and container image.
 
-### Apply the updated YAML file to the existing workload
+## Apply the updated YAML file to the existing workload
 
 1. View the nodes on your cluster using the `kubectl get nodes` command:
 
