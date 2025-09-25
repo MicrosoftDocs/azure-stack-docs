@@ -2,11 +2,11 @@
 title: What's new in AKS on Azure Local
 description: Learn about what's new in AKS on Azure Local.
 ms.topic: overview
-ms.date: 08/29/2025
+ms.date: 09/24/2025
 author: sethmanheim
 ms.author: sethm 
 ms.reviewer: rcheeran
-ms.lastreviewed: 08/27/2025
+ms.lastreviewed: 09/24/2025
 
 ---
 
@@ -23,6 +23,23 @@ This article summarizes features, improvements, and important notices for AKS on
 
 This section lists the new features and improvements in AKS Arc in each release of Azure Local.
 
+### Release 2509
+
+#### Announcements
+
+- Support for Kubernetes minor version 1.29 ends with this 2509 release.
+- KMS v1 will be deprecated soon. We are adding support for KMS v2 in an upcoming Azure Local release. Please plan on upgrading your clusters once KMS v2 is available.
+- Support for [Windows Server 2019 SKU](https://techcommunity.microsoft.com/blog/containers/announcing-the-3-year-retirement-of-windows-server-2019-on-azure-kubernetes-serv/3777341) for node pools ends in March 2026.
+
+#### Kubernetes versions in 2509
+
+No new Kubernetes versions were added in 2509. The versions included in the 2509 release are: 1.29.12, 1.29.13, 1.30.8, 1.30.9, 1.31.4, 1.31.5.
+
+#### Features
+
+- Starting with the Azure Local 2509 release, we are disabling the download of the Windows VHDs by default. This helps to save on bandwidth usage and to reduce deployment times for customers who need only Linux-based containers. Customers who need to use Windows node pools can continue to do so by [enabling the Windows node pool feature](howto-enable-windows-node-pools.md), and then performing Windows node pool-based operations.
+- Increased the default OS disk size on virtual machines used as AKS Arc nodes to 200 GB. These VMs are dynamically expanding virtual hard disks and you should [ensure sufficient physical disk space is available](/windows-server/virtualization/hyper-v/best-practices-analyzer/ensure-sufficient-physical-disk-space-is-available-when-virtual-machines-use-dynamically?source=recommendations) for the node pools that you create on AKS Arc.
+
 ### Release 2508
 
 #### Announcements
@@ -30,13 +47,9 @@ This section lists the new features and improvements in AKS Arc in each release 
 - Support for Kubernetes minor version 1.29 will end with the 2509 release.
 - KMS v1 will be deprecated soon. We will be adding support for KMS v2 in an upcoming Azure Local release. Please plan on upgrading your clusters once KMS v2 is available.
 
-#### Supported Kubernetes versions for 2508
+#### Kubernetes versions in 2508
 
-The Kubernetes versions supported in the 2508 release are: 1.29.12, 1.29.13, 1.30.8, 1.30.9, 1.31.4, 1.31.5.
-
-#### Features
-
-- Kubernetes version 1.31 is now available on AKS Arc.
+The Kubernetes versions included in the 2508 release are: 1.29.12, 1.29.13, 1.30.8, 1.30.9, 1.31.4, 1.31.5.
 
 #### Bug fixes
 
@@ -63,7 +76,7 @@ The following Kubernetes cluster deployment and management capabilities are avai
   - Improved conflict handling logic during cluster delete operations when the autoscaler or cluster controller tried to update or remove resources that were being changed simultaneously by another process.
   - Fixed an issue in which the node pools' minimum and maximum counts didn't get updated when the autoscaler was enabled.
 
-#### Supported Kubernetes versions for 2507
+#### Kubernetes versions in 2507
 
 The Kubernetes versions supported in the 2507 release are: 1.28.12, 1.28.14, 1.29.7, 1.29.9, 1.30.3, and 1.30.4.  
 
@@ -80,7 +93,7 @@ The following Kubernetes cluster deployment and management capabilities are avai
 
 To get started with these features in the 2503 release, make sure to update your [AKSArc CLI extension](/cli/azure/aksarc) to version 1.5.37 or higher.
 
-#### Supported Kubernetes versions for 2503
+#### Kubernetes versions in 2503
 
 The Kubernetes versions supported in the 2503 release are: 1.28.12, 1.28.14, 1.29.7, 1.29.9, 1.30.3 and 1.30.4.
 
@@ -97,7 +110,7 @@ The following Kubernetes cluster deployment and management capabilities are avai
 
 To get started with these features in the 2411 release, make sure to update your [AKSArc CLI extension](/cli/azure/aksarc) to version 1.4.23 or higher.
 
-#### Supported Kubernetes versions for 2411
+#### Kubernetes versions in 2411
 
 The Kubernetes versions supported in the 2411 release are 1.27.7, 1.27.9, 1.28.5, 1.28.9, 1.29.2, and 1.29.4.
 
