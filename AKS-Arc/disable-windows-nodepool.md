@@ -22,11 +22,11 @@ This article describes how to disable the Windows node pool feature for Azure Ku
 
 Before you begin, make sure you have the following prerequisites in place:
 
-- **Azure Local deployed**. This article is only applicable if you already deployed Azure Local, release 2411. You can't run the commands in this article before you deploy Azure Local release 2411. We currently don't support the ability to make this change before the initial Azure Local release 2411 deployment.
+- **Azure Local deployed**. This article is only applicable if you already deployed Azure Local (release 2508 or earlier). You can't run the commands in this article before you deploy Azure Local. We currently don't support the ability to make this change before the initial Azure Local deployment.
 - **Azure RBAC permissions to update Azure Local configuration**. Make sure you have the following roles. For more information, see [required permissions for deployment](/azure/azure-local/deploy/deployment-arc-register-server-permissions?tabs=powershell#assign-required-permissions-for-deployment):
   - Azure Local Administrator
   - Reader
-- **Custom Location**. Name of the custom location. The custom location is configured during the Azure Local deployment. If you're in the Azure portal, go to the **Overview > Server** page in the Azure Local system resource. You should see a custom location for your cluster.
+- **Custom Location**. The name of the custom location. The custom location is configured during the Azure Local deployment. If you're in the Azure portal, go to the **Overview > Server** page in the Azure Local system resource. You should see a custom location for your cluster.
 - **Azure resource group**. The Azure resource group in which Azure Local is deployed.
 
 ## Recommended option: disable Windows node pool from an Azure CloudShell session
@@ -87,13 +87,11 @@ az k8s-extension update --resource-group $resourceGroup --cluster-name $clusterN
 
 ## Alternate option: disable Windows node pool after connecting to an Azure Local physical node via Remote Desktop
 
-If for some reason you're not able to use Azure CloudShell or a machine with connectivity to Azure in order to disable Windows node pool, you can disable Windows node pool after connecting to any one of the Azure Local physical nodes with Remote Desktop. You must first sign in to Azure.
+If for some reason you're not able to use Azure CloudShell or a machine with connectivity to Azure in order to disable the Windows node pool, you can disable the Windows node pool after connecting to any one of the Azure Local physical nodes with Remote Desktop. You must first sign in to Azure.
 
 ```powershell
 az login --use-device-code --tenant <Azure tenant ID>
- 
 az account set -s <subscription ID>
- 
 $res=get-archcimgmt
  
 az k8s-extension update --resource-group $res.HybridaksExtension.resourceGroup --cluster-name $res.ResourceBridge.name --cluster-type appliances --name $res.HybridaksExtension.name --version $res.HybridaksExtension.version --release-train  $res.HybridaksExtension.releaseTrain --config disable-windows-nodepool=true --yes 
@@ -157,7 +155,7 @@ You must delete the Windows node pool manually before you disable the feature. I
 
 ### What happens to downloaded Windows VHDs if I disable Windows node pools?
 
-The Windows VHDs that were previously downloaded are automatically deleted if the Windows node pools feature is disabled. You can verify if Windows VHDs were removed from the Azure Local storage paths. Deletion can take some time. Wait 30 minutes before checking. You must check all the storage paths, because Windows VHDs are assigned to storage paths in round-robin fashion, based on available storage capacity.
+The Windows VHDs that were previously downloaded are automatically deleted if the Windows node pools feature is disabled. You can verify if Windows VHDs were removed by checking the Azure Local storage paths. Deletion can take some time. Wait 30 minutes before checking. You must check all the storage paths, because Windows VHDs are assigned to storage paths in round-robin fashion, based on available storage capacity.
 
 ## Next steps
 
