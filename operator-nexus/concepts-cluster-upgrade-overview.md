@@ -80,24 +80,23 @@ az networkcloud baremetalmachine list -g $mrg --subscription $sub --query "sort_
 
 ## Nexus tenant workload health check during cluster runtime upgrade
 
-During a runtime upgrade, the inventory readiness check is triggered to conduct workload health checks. The inventory readiness check feature is appliable for only rack by rack upgrade strategy. The platform feature "UpgradeInventoryChecks" controls the platform runtime upgrade outcome when the health check fails. When the feature is enabled, the upgrade pauses if there is an inventory readiness check failure after the compute rack upgrade. The upgrade can be continued using CCUVA. When the feature is disabled the inventory readiness failures are logged and upgrade continues to next stage.  By default the feature is disabled. 
+During a runtime upgrade, tenant workload (Nexus Kubernetes Cluster and Virtual Machine) health checks are performed for only rack by rack upgrade strategy. This functionality is feature flag enabled to control the cluster runtime upgrade outcome for health check failures. When the feature is enabled, the upgrade is paused if health check fails after the compute rack upgrade. The runtime upgrade can be resumed when customer executes the upgrade API [here](./howto-cluster-runtime-upgrade-with-pauserack-strategy.md). When the feature is disabled the health check failures are logged and upgrade continues to next stage. By default the feature is disabled. 
 
-The Inventory Readiness Check feature performs workload health check after control-plane, management-plane and compute servers are upgraded during platform runtime upgrade. It operates in snapshot and comparison modes and provides a mechanism to verify workload health state after different stages of platform runtime upgrade. the feature supports Nexus Kubernetes Cluster and Virtual Machine workloads.
+The tenant workload health checks are performed after different stages of cluster runtime upgrade like control-plane, management-plane and compute servers upgrade. It operates in snapshot and comparison modes and provides a mechanism to verify tenant workload health state after different stages of cluster runtime upgrade.
 
-### Workflow of workload health check
+### Workflow of tenant workload health check
 
-1. **Snapshot Initiation** - Snapshot is collected for all registered workloads (Nexus Kubernetes Cluster and Virtual Machine) before starting upgrade of servers.
-2. **Upgrade Stage Transitions** - After upgrade of each stage like control-plane, management-plane and compute servers are completed, comparison of inventory for workloads are initiated.
-3. **Comparison Process** - Comparison of current workloads with snapshot taken during start of upgrade. Report comparison status.
-4. **Health Check Handling** - On success proceed to next upgrade stage. For failure, based on inventory readiness check feature is enable or disable its handled as below.
+1. **Snapshot Initiation** - Snapshot is collected for tenant type Nexus Kubernetes Cluster and Virtual Machine, before starting upgrade of servers.
+2. **Upgrade Stage Transitions** - After upgrade of each stage like control-plane, management-plane and compute servers upgrade are completed, comparison of tenant workloads are initiated.
+3. **Comparison Process** - Comparison of current tenant workloads with snapshot taken during start of upgrade. Report comparison status.
+4. **Health Check Handling** - On success proceed to next runtime upgrade stage. For failure, based on feature flag is enable or disable its handled as below.
 
-| Upgrade Stage            | UpgradeInventoryChecks Enable       | UpgradeInventoryChecks Disable |
-|--------------------------|-------------------------------------|--------------------------------|
-| Initial Snapshot         | Upgrade failure                     | Upgrade continue to next stage |
-| Control Plane Upgrade    | Upgrade failure                     | Upgrade continue to next stage |
-| Management Plane Upgrade | Upgrade failure                     | Upgrade continue to next stage |
-| Compute server Upgrade   | Upgrade paused, continue with CCUVA | Upgrade continue to next stage |
-
+| Runtime upgrade Stage    | Feature Enable                                                 | Feature Disable                 |
+|--------------------------|----------------------------------------------------------------|---------------------------------|
+| Initial Snapshot         | Upgrade failure                                                | Upgrade continues to next stage |
+| Control Plane Upgrade    | Upgrade failure                                                | Upgrade continues to next stage |
+| Management Plane Upgrade | Upgrade failure                                                | Upgrade continues to next stage |
+| Compute server Upgrade   | Upgrade paused, resumed when customer executes the upgrade API | Upgrade continues to next stage |
 
 ## BareMetalMachine (BMM) keyset operations during cluster runtime upgrade
 
