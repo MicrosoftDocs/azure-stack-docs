@@ -207,8 +207,8 @@
       href: connectivity-troubleshoot.md
     - name: Cluster status stuck during upgrade
       href: cluster-upgrade-status.md
-    - name: Disable Windows VHDs downloads
-      href: TSG-disable-windows-nodepool.md
+    - name: Disable Windows node pools
+      href: disable-windows-nodepool.md
   - name: Security
     items:  
     - name: Security book - recommendations and best practices

@@ -1,6 +1,6 @@
 ---
-title: TSG to disable the Windows nodepool feature 
-description: TSG to disable the Windows nodepool feature prior to 2509 release
+title: Disable the Windows node pool feature
+description: Learn how to disable the Windows node pool feature on the 2509 release and earlier.
 ms.topic: how-to
 ms.date: 09/25/2025
 author: rcheeran
@@ -10,14 +10,13 @@ ms.lastreviewed: 09/25/2025
 
 ---
 
-# Disable the Windows nodepool feature on Azure Local versions lesser than 2509
+# Disable the Windows node pool feature on Azure Local versions earlier than 2509
 
-[!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
+[!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)] version 2508 and earlier.
 
-> [!IMPORTANT]
->The Windows node pool feature disabled by default in Azure Local release 2509 and later. Use this TSG only if you are using an Azure Local version lesser than 2509. For versions 2509 and above refer to this [document](./howto-enable-windows-node-pools.md).
+The Windows node pool feature is disabled by default in Azure Local release 2509 and later. If you are using Azure Local version 2508 or earlier, you can follow the steps in this article to disable the Windows node pool feature. For versions 2509 and later, see [Enable the Windows node pool feature](howto-enable-windows-node-pools.md).
 
-This how-to article walks you through how to disable the Windows nodepool feature for Azure Kubernetes Service (AKS) on Azure Local versions 2508 and earlier. Disabling this feature prevents the automatic download of Windows Virtual Hard Disks (VHDs), which are approximately 20 GB in size and required for creating Windows-based nodepools. By doing so, enterprises with limited internet bandwidth can avoid unnecessary downloads, especially if their workloads are exclusively using Linux containers. This helps optimize bandwidth usage and simplifies resource management for environments where Windows nodes aren't needed.
+This article describes how to disable the Windows node pool feature for Azure Kubernetes Service (AKS) on Azure Local versions 2508 and earlier. Disabling this feature prevents the automatic download of Windows Virtual Hard Disks (VHDs), which are approximately 20 GB in size and required for creating Windows-based node pools. By doing so, enterprises with limited internet bandwidth can avoid unnecessary downloads, especially if their workloads are exclusively using Linux containers. This helps optimize bandwidth usage and simplifies resource management for environments where Windows nodes aren't needed.
 
 ## Before you begin
 
@@ -162,5 +161,5 @@ The Windows VHDs that were previously downloaded are automatically deleted if th
 
 ## Next steps
 
-- [Enable or Disable Windows node pools on versions 2509 and above](./howto-enable-windows-node-pools.md)
-- [Troubleshoot and known issues](./aks-troubleshoot.md)
+- [Enable or disable Windows node pools on versions 2509 and above](howto-enable-windows-node-pools.md)
+- [Troubleshoot and known issues](aks-troubleshoot.md)
