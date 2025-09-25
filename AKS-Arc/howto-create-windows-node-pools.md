@@ -3,14 +3,14 @@ title: Create Windows node pools
 description: Learn how to create Windows node pools in AKS enabled by Azure Arc on Azure Local.
 ms.topic: how-to
 author: rcheeran
-ms.date: 09/22/2025
+ms.date: 09/25/2025
 ms.author: rcheeran 
 ms.lastreviewed: 09/22/2025
 ms.reviewer: sethm
 
 ---
 
-# Create a Windows node pool in AKS enabled by Azure Arc
+# Create a Windows node pool
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
@@ -31,8 +31,8 @@ Add a node pool with Windows container hosts using the `az aksarc nodepool add` 
 
 To use Windows Server 2022, specify the following parameters:
 
-- `os-type` set to `Windows`.
-- `os-sku` set to `Windows2022` (optional).
+- `--os-type` set to `Windows`.
+- `--os-sku` set to `Windows2022` (optional).
 
 The following command creates a new node pool named `$mynodepool` and adds it to `$myAKSCluster` with one Windows Server 2022 node:
 
