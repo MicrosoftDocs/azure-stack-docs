@@ -31,8 +31,8 @@ Add a node pool with Windows container hosts using the `az aksarc nodepool add` 
 
 To use Windows Server 2022, specify the following parameters:
 
-- `os-type` set to `Windows`.
-- `os-sku` set to `Windows2022` (optional).
+- `--os-type` set to `Windows`.
+- `--os-sku` set to `Windows2022` (optional).
 
 The following command creates a new node pool named `$mynodepool` and adds it to `$myAKSCluster` with one Windows Server 2022 node:
 

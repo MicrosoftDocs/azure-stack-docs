@@ -12,7 +12,7 @@ ms.lastreviewed: 09/24/2025
 
 # Enable the Windows node pool feature
 
-[!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
+[!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)] release 2509 or later.
 
 Virtual hard disks (VHDs) serve as the base operating system images for the Kubernetes nodes within your AKS cluster. Starting with Azure Local version 2509, only the Azure Linux VHDs are downloaded by default on the Azure Local instance. The Azure Linux VHDs are used to create the default Linux node pool on the AKS Arc cluster. For Windows-based workloads, AKS Arc supports Windows Server 2019 and Windows Server 2022 images that you can use to create corresponding Windows node pools; however, these VHDs are not available by default and must be downloaded before you can create your Windows-based node pools. Having the Windows node pool feature disabled by default ensures that the Windows-based OS images are not downloaded unnecessarily, and helps to save bandwidth and storage space.
 
@@ -31,7 +31,11 @@ Before you begin creating Windows node pools, make sure you have the following p
 - **Azure resource group**. The Azure resource group in which Azure Local is deployed.
 - Access to at least one node on the Azure Local instance, either directly or via remote PowerShell.
 
-## Step 1: Connect to an Azure Local node
+## Enable the Windows node pool feature on AKS Arc clusters
+
+To enable the Windows node pool feature on your AKS Arc cluster, use the **Support.AksArc** PowerShell module. This module provides tools for diagnostics and remediation in AKS Arc environments. By running its commands, you can activate the Windows node pool feature and initiate the download of the required Windows VHDs, making it possible to create Windows-based node pools.
+
+### Step 1: Connect to an Azure Local node
 
 Follow these steps on your client machine to connect to one of the Azure Local nodes.
 
