@@ -142,7 +142,7 @@ This script handles both system-assigned and user-assigned managed identity scen
 > [!IMPORTANT]
 > The `azcmagent` package installation must happen **after** the access token is retrieved.
 > If the `azcmagent` installation happens before the access token is retrieved, the enrollment process will fail.
-> An alternative approach will be necesssary to obtain the access token using `az rest`.
+> An alternative approach will be necessary to obtain the access token using `az rest`.
 
 Create a file named `arc-enrollment-cloud-init.yaml`:
 
