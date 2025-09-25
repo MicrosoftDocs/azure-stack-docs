@@ -10,7 +10,7 @@ ms.lastreviewed: 09/24/2025
 
 ### Get the object ID for Azure Local Resource Provider
 
-This object ID for the Azure Local Resource Provide (RP) is unique per Azure tenant.
+This object ID for the Azure Local Resource Provider (RP) is unique per Azure tenant.
 
 1. In the Azure portal, search for and go to Microsoft Entra ID.  
 1. Go to the **Overview** tab and search for *Microsoft.AzureStackHCI Resource Provider*.

@@ -48,7 +48,7 @@ The steps are also summarized here:
 1. Copy the **client secret value** as you use it later.
 
     > [!Note]
-    > For the application client ID, you will need it's secret value. Client secret values can't be viewed except for immediately after creation. Be sure to save this value when created before leaving the page.
+    > For the application client ID, you will need its secret value. Client secret values can't be viewed except for immediately after creation. Be sure to save this value when created before leaving the page.
 
     :::image type="content" source="./media/create-service-principal-client-secret/create-client-secret-value.png" alt-text="Screenshot showing client secret value." lightbox="./media/create-service-principal-client-secret/create-client-secret-value.png":::
 
