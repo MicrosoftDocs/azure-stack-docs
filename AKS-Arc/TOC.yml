@@ -121,6 +121,12 @@
       items:
       - name: Manage multiple node pools
         href: manage-node-pools.md
+      - name: Enable Windows node pools
+        href: howto-enable-windows-node-pools.md
+      - name: Create Windows node pools
+        href: howto-create-windows-node-pools.md
+      - name: Upgrade Windows node pool OS
+        href: howto-upgrade-windows-os.md
       - name: Use GPUs
         href: deploy-gpu-node-pool.md
     - name: Cluster management
