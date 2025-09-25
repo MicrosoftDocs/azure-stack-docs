@@ -5,7 +5,7 @@ ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 09/22/2025
+ms.date: 09/25/2025
 ---
 
 # What's new in Azure Local?
@@ -242,7 +242,7 @@ This release has the following features and improvements:
 ::: moniker-end
 
 
-::: moniker range="=azloc-2504"
+::: moniker range="=azloc-previous"
 
 Starting with 2504 release, Microsoft introduced a new versioning schema. There are two 2504 releases for April. Here are the details of each release:
 
@@ -300,12 +300,7 @@ This release has the following features and improvements:
 
 - **Observability changes**: You can now automatically collect, analyze, and debug Azure services crashes with the crash dump collection feature in Azure Local. For more information, see [Crash dump collection](./concepts/observability.md#crash-dump-collection).
 
-::: moniker-end
-
-::: moniker range="=azloc-previous"
-
 ## Features and improvements in 2503
-
 
 This release has the following features and improvements:
 
