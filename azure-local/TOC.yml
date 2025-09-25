@@ -93,10 +93,10 @@ items:
         href: plan/four-node-switchless-two-switches-two-links.md
     - name: SDN considerations
       href: plan/network-patterns-sdn-considerations.md
+  - name: Review Azure Arc gateway for Azure Local
+    href: deploy/deployment-azure-arc-gateway-overview.md
   - name: Review cloud deployment network considerations
     href: plan/cloud-deployment-network-considerations.md
-  - name: Review Azure Arc gateway
-    href: deploy/deployment-azure-arc-gateway-overview.md
   - name: Review security
     items:
     - name: About security features

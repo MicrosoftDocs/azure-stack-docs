@@ -3,7 +3,7 @@ title: Supported Kubernetes versions for AKS enabled by Azure Arc
 description: Understand the Kubernetes version support policy and lifecycle of clusters for Azure Kubernetes Service enabled by Azure Arc.
 services: container-service
 ms.topic: article
-ms.date: 08/27/2025
+ms.date: 09/24/2025
 author: sethmanheim
 ms.author: sethm 
 ms.lastreviewed: 08/27/2025
@@ -57,6 +57,7 @@ You should install the latest patch release of the minor version you're running.
 
 | Release             | Supported minor & patch versions                 |
 |---------------------|--------------------------------------------------|
+| 2509                | 1.29.12, 1.29.13, 1.30.8, 1.30.9, 1.31.4, 1.31.5 |
 | 2508                | 1.29.12, 1.29.13, 1.30.8, 1.30.9, 1.31.4, 1.31.5 |
 | 2507                | 1.28.12, 1.28.14, 1.29.7, 1.29.9, 1.30.3, 1.30.4 |
 | 2503                | 1.28.12, 1.28.14, 1.29.7, 1.29.9, 1.30.3, 1.30.4 |
