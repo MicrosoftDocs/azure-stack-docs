@@ -12,6 +12,8 @@ ms.reviewer: sethm
 
 # Upgrade the OS version for your Windows node pool
 
+[!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
+
 This article describes the steps to upgrade the OS version for Windows workloads on AKS Arc. While this example focuses on the upgrade from Windows Server 2019 to Windows Server 2022, you can follow the same process to upgrade from any Windows Server version to another version.
 
 ## Windows Server OS version support
