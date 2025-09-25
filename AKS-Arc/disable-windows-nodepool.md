@@ -12,7 +12,7 @@ ms.lastreviewed: 09/25/2025
 
 # Disable the Windows node pool feature on Azure Local versions earlier than 2509
 
-[!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)] version 2508 and earlier.
+[!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)] version 2508 and earlier
 
 The Windows node pool feature is disabled by default in Azure Local release 2509 and later. If you are using Azure Local version 2508 or earlier, you can follow the steps in this article to disable the Windows node pool feature. For versions 2509 and later, see [Enable the Windows node pool feature](howto-enable-windows-node-pools.md).
 
