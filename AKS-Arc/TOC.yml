@@ -157,7 +157,7 @@
             href: kubernetes-monitor-metrics.md
   - name: Troubleshooting and known issues
     items:
-    - name: Troubleshoot overview
+    - name: Troubleshooting overview
       href: aks-troubleshoot.md
     - name: Known issues
       href: aks-arc-known-issues.md
