@@ -64,6 +64,8 @@ Keep in mind the following information before you start log collection:
 
   For more information about updating the connected machine extension, see [Update-AzConnectedExtension](/powershell/module/az.connectedmachine/update-azconnectedextension?view=azps-12.5.0&preserve-view=true).
 
+- The `DeviceManagementExtension` version should be **1.2510.0.3012 and above**.
+
 ### [Azure portal (recommended)](#tab/azureportal)
 
 Follow these steps to collect diagnostic logs for your Azure Local instance via the Azure portal:
