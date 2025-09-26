@@ -153,7 +153,7 @@ Deployment engineer/Directly Responsible Individual (DRI) must validate the devi
 
 **Note** : There is no customer action required for the above step.
 
-# Post Upgrade validation steps:
+## Post Upgrade validation steps:
 
 |  |  |  |
 | --- | --- | --- |
@@ -165,7 +165,7 @@ Deployment engineer/Directly Responsible Individual (DRI) must validate the devi
 | BGP Summary Validation | Ensure BGP sessions are established across all VRFs (show ip bgp summary vrf all runro command on CEs) | Customer/Deployment engineering team |
 | GNMI Metrics Emission | Confirm GNMI metrics are being emitted for subscribed paths (check via dashboards or CLI) | Customer/Deployment engineering team |
 
-### Appendix :
+## Appendix :
 
 The following table outlines the **step-by-step procedures** associated with selected pre and post upgrade actions referenced earlier in this guide
 
