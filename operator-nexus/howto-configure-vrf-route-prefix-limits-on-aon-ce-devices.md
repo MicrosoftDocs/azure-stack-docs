@@ -1,183 +1,138 @@
 ---
-title: Configure BGP Prefix Limit on CE Devices for Azure Operator Nexus
-description: Learn the process for configuring a BGP prefix limit on customer edge (CE) devices for Azure Operator Nexus.
-author: sushantjrao 
-ms.author: sushrao
-ms.date: 04/02/2025
+title: Configure VRF route prefix limits (IPv4 and IPv6) on AON CE devices for Azure Operator Nexus
+description: Learn the process for configuring VRF route prefix limits (IPv4 and IPv6) on AON CE devices for Azure Operator Nexus.
+author: RaghvendraMandawale
+ms.author: rmandawale
+ms.date: 09/26/2025
 ms.topic: how-to
 ms.service: azure-operator-nexus
 ms.custom: template-how-to, devx-track-azurecli
 ---
 
-# BGP prefix limiting overview
+# VRF Route Prefix Limits (IPv4 and IPv6) on AON CE Devices
 
-Border Gateway Protocol (BGP) prefix limiting is an essential overload protection mechanism for customer edge (CE) devices. It helps prevent the Azure Operator Nexus fabric from being overwhelmed when an Azure Operator Nexus tenant advertises an excessive number of BGP routes into an Azure Operator Nexus virtual routing and forwarding (VRF) instance. This feature helps to ensure network stability and security by controlling the number of prefixes that are received from BGP peers.
+## Overview
 
-## Configuration of BGP prefix limits
+The VRF-level route prefix limit for both IPv4 and IPv6 address families on AON CE devices helps prevent route table exhaustion across multiple BGP peers. It ensures system stability by maintaining active VRF and BGP sessions even when route limits are exceeded. This capability builds upon the neighbor-level prefix limits introduced in [Configure BGP Prefix Limit on CE Devices for Azure Operator Nexus - Operator Nexus | Microsoft Learn](https://learn.microsoft.com/en-us/azure/operator-nexus/howto-configure-bgp-prefix-limit-on-customer-edge-devices), extending overload protection to a broader scope across the entire VRF.
 
-To configure BGP prefix limits, you can use two primary parameters:
+## Applicability
 
-- `max-routes`
-- `warn-threshold`
+* Device Scope: AON CE devices in multi-tenant environments
+* Configuration Scope: Optional, applied at the L3 Isolation Domain (ISD) level
+* Protocol Scope: BGP IPv4 and IPv6
 
-### Hard limits (max-routes)
+## Key Behaviors
 
-The `max-routes` parameter specifies the maximum number of prefixes that a BGP router can accept from a neighbor. If the number exceeds this limit, the BGP session with that neighbor is terminated. This threshold is a hard limit to protect the router from excessive load and to maintain network stability.
+### Hard Limit
 
-### Soft limits (warn-threshold)
+Defines the maximum number of routes (per AF) allowed in the Routing Information Base (RIB). Once exceeded, new routes are dropped but the VRF and existing BGP sessions remain active. (Only new BGP neighbor routes are not installed). Suppressed routes are not installed in the FIB and not advertised to BGP peers.
 
-The `warn-threshold` parameter is a soft limit. When the number of prefixes exceeds this threshold, a warning is triggered, but the BGP session remains active. This safeguard serves as a precautionary measure so that administrators can intervene before the hard limit is reached.
+### Soft Limit (Threshold)
 
-To configure the BGP prefix limit on CE devices for Azure Operator Nexus, follow the next steps. This configuration includes setting the prefix limits for BGP sessions to manage network stability and prevent the Nexus fabric from being overwhelmed when a tenant advertises excessive BGP routes.
+A warning threshold (percentage of hard limit) that triggers alerts/logs. Does not block new routes but serves as an early warning mechanism.
 
-### Prerequisites
+Note:
 
-- Ensure that Azure Operator Nexus Network Fabric is upgraded to the supported version or later.
-- Verify that your CE devices are running on compatible software.
-- Check that the peer groups for both IPv4 and IPv6 address families are properly set up for internal networks.
+* Hard and soft limits are not independently configurable. They must be defined together per VRF.
+* When both the soft and hard route limits are reached, the system logs are generated to notify administrators of threshold breaches and potential route suppression events.
 
-### Steps to configure BGP prefix limits
+## Suppression Behavior
 
-#### Step 1: Define BGP prefix limits
+Suppressed routes exist in the BGP table/RIB, but are not installed in the FIB or advertised to peers. If the route count drops below the hard limit, suppressed routes are automatically re-evaluated and installed (FIFO queue logic applies). This behavior is NOS-dependent. Arista NOS supports suppression queues; others may require re-advertisement.
 
-Configure the BGP prefix limits by using the parameters `maximumRoutes` and `threshold`:
+Neighbor-level limits and VRF-level limits can coexist. Example: Per-neighbor limits on NNI can be defined alongside per-VRF limits.
 
-- `maximumRoutes`: This parameter defines the maximum number of BGP prefixes that the router accepts from a BGP peer.
-- `threshold`: This parameter defines the warning threshold as a percentage of the `maximumRoutes` parameter. When the number of prefixes exceeds this threshold, a warning is generated.
+### CLI and REST API Examples
 
-#### Step 2: Configure on the CE device
+Create Operations
 
-##### Example 1: BGP prefix limit with automatic restart
+1. Azure CLI – Create a New L3 ISD
 
-This configuration automatically restarts the session after a defined idle time when the prefix limit is exceeded.
+Use this command to create a new L3 ISD with route limits for both IPv4 and IPv6.
 
-```json
-{
-  "prefixLimits": {
-    "maximumRoutes": 5000,
-    "threshold": 80,
-    "idleTimeExpiry": 100
-  }
-}
-```
+az networkfabric l3domain create \
+ --resource-group <resource-group-name> \
+ --nf-id <nf-id> \
+ --resource-name <l3isd-name> \
+ --v6route-prefix-limit "{\"hard-limit\":3000,\"threshold\":50}" \
+ --v4route-prefix-limit "{\"hard-limit\":3000,\"threshold\":40}" \
+ --location <location>
 
-Explanation:
+* hard-limit: Maximum number of routes allowed.
+* threshold: Warning level (percentage of hard limit)
+* This configuration ensures proactive monitoring and suppression of excess routes.
 
-- `maximumRoutes`: The limit for the BGP session is 5,000 routes.
-- `threshold`: A warning is triggered when the prefix count reaches 80% (4,000 routes).
-- `idleTimeExpiry`: If the session is shut down, it restarts automatically after 100 seconds of idle time.
+2. REST API – Create a New L3 ISD
 
-##### Example 2: BGP prefix limit without automatic restart
+Use this REST API call to create an L3 ISD with route limits and additional configuration options.
 
-This configuration shuts down the session when the maximum prefix limit is reached. Manual intervention is required to restart the session.
+az rest --method PUT \
+ --url "https://management.azure.com/subscriptions/<subscription\_id>/resourceGroups/<resource\_group>/providers/Microsoft.ManagedNetworkFabric/L3IsolationDomains/<l3isd-name>?api-version=2025-07-15" \
+ --body "{
+ \"location\": \"<location>\",
+ \"properties\": {
+ \"redistributeConnectedSubnets\": \"True\",
+ \"redistributeStaticRoutes\": \"False\",
+ \"networkFabricId\": \"<network\_fabric\_id>\",
+ \"administrativeState\": \"Disabled\",
+ \"v4routePrefixLimit\": {
+ \"hardLimit\": 10,
+ \"threshold\": 40
+ },
+ \"v6routePrefixLimit\": {
+ \"hardLimit\": 10,
+ \"threshold\": 40
+ }
+ }
+ }"
 
-```json
-{
-  "prefixLimits": {
-    "maximumRoutes": 5000,
-    "threshold": 80
-  }
-}
-```
+* Route limits are applied per VRF and enforced via FIB updates.
 
-Explanation:
+Update Operations
 
-- `maximumRoutes`: The limit for the BGP session is 5,000 routes.
-- `threshold`: A warning is triggered when the prefix count reaches 80% (4,000 routes).
-- No automatic restart. Manual intervention is required to restart the session.
+3. Azure CLI – Update an Existing L3 ISD
 
-##### Example 3: Hard-limit drop BGP sessions
+Use this command to modify route limits for an existing ISD.
 
-This configuration drops extra routes if the prefix limit is exceeded without maintaining a cache of the dropped routes.
+az networkfabric l3domain update \
+ --resource-name <l3isd-name> \
+ --resource-group <resource-group-name> \
+ --v6route-prefix-limit "{\"hard-limit\":2000,\"threshold\":50}" \
+ --v4route-prefix-limit "{\"hard-limit\":2000,\"threshold\":40}"
 
-```json
-{
-  "prefixLimits": {
-    "maximumRoutes": 5000
-  }
-}
-```
+* Adjusts route limits dynamically without service disruption.
+* Useful for scaling or tuning based on tenant growth or operational thresholds.
 
-Explanation:
+4. REST API – Update an Existing L3 ISD
 
-- `maximumRoutes`: The limit for the BGP session is 5,000 routes.
-- After the limit is reached, the CE device drops any extra prefixes received from the BGP peer.
+Use this REST API call to patch route limits for an existing ISD.
 
-##### Example 4: Hard-limit warning only
+az rest --method PATCH \
+ --url "https://management.azure.com/subscriptions/<subscription\_id>/resourceGroups/<resource\_group>/providers/Microsoft.ManagedNetworkFabric/L3IsolationDomains/<l3isd-name>?api-version=2025-07-15" \
+ --body "{
+ \"properties\": {
+ \"v4routePrefixLimit\": {
+ \"hardLimit\": 10,
+ \"threshold\": 40
+ },
+ \"v6routePrefixLimit\": {
+ \"hardLimit\": 10,
+ \"threshold\": 40
+ }
+ }
+ }"
 
-This configuration generates a warning after the prefix count reaches a certain percentage of the maximum limit but doesn't shut down the session.
+* Enables fine-tuning of route limits post-deployment.
+* Changes are applied via API and enforced after a fabric commit v2 flow.
 
-```json
-{
-  "prefixLimits": {
-    "maximumRoutes": 8000,
-    "threshold": 75,
-    "warning-only": true
-  }
-}
-```
+## Troubleshooting
 
-Explanation:
+The following CLI commands are useful for monitoring and diagnosing VRF route limit behavior on AON CE devices. They help administrators track route counts, identify suppressed routes, and verify enforcement of configured limits.
 
-- `maximumRoutes`: The limit for the BGP session is 8,000 routes.
-- `threshold`: A warning is generated when the prefix count reaches 75% (6,000 routes).
-- The session isn't shut down. This configuration is used to generate only a warning without taking any session-terminating action.
-
-#### Step 3: Apply configuration by using the Azure CLI
-
-You can use Azure CLI commands to apply the BGP prefix limits to the external network configuration for Nexus.
-
-- With automatic restart:
-
-   ```bash
-   az networkfabric externalnetwork create --resource-group <resource-group> --fabric-name <fabric-name> --network-name <network-name> --prefix-limits '{"maximumRoutes": 5000, "threshold": 80, "idleTimeExpiry": 100}'
-   ```
-
-- Without automatic restart:
-
-   ```bash
-   az networkfabric externalnetwork create --resource-group <resource-group> --fabric-name <fabric-name> --network-name <network-name> --prefix-limits '{"maximumRoutes": 5000, "threshold": 80}'
-   ```
-
-- Hard-limit drop BGP sessions:
-
-   ```bash
-   az networkfabric externalnetwork create --resource-group <resource-group> --fabric-name <fabric-name> --network-name <network-name> --prefix-limits '{"maximumRoutes": 5000}'
-   ```
-
-- Hard-limit warning only:
-
-   ```bash
-   az networkfabric externalnetwork create --resource-group <resource-group> --fabric-name <fabric-name> --network-name <network-name> --prefix-limits '{"maximumRoutes": 8000, "threshold": 75, "warning-only": true}'
-   ```
-
-#### Step 4: Monitor and validate the configuration
-
-After you apply the configuration, make sure to monitor the BGP session and validate whether the prefix limits are being enforced properly. Check the status of the BGP session by using the following command:
-
-```bash
-show ip bgp summary
-```
-
-Look for the session states and the number of prefixes advertised by each peer. If the limits are being hit, you should see the session state change to **Established** or **Idle** based on the configuration.
-
-### Considerations
-
-- **Threshold and maximum limits:** Ensure that you set appropriate thresholds to avoid unnecessary session terminations while still protecting the network from overload.
-- **Automatic versus manual restart:** Depending on your network operations, choose between automatic and manual restart options. Automatic restart is useful for minimizing manual intervention. Manual restart might give network administrators more control over recovery.
-
-## Handle BGP prefix limits for different networks
-
-### Internal network
-
-The platform supports layer 3 isolation domain (`L3IsolationDomain`) for tenant workloads. It performs device programming on Nexus instances and Arista devices with peer groups for both IPv4 and IPv6 address families.
-
-### External network option B (provider edge)
-
-For external network configuration, only the hard-limit `warning-only` option is supported. Nexus supports this configuration via the Azure Resource Manager API under `NNI optionBlayer3Configuration` with the `maximumRoutes` parameter.
-
-### NNI option A
-
-For network-to-network interface (NNI) option A, only a single peer group is allowed. IPv4 over IPv6 and vice versa aren't supported. The `warning-only` mode is available for handling prefix limits.
-
-By following the steps in this article, you can configure BGP prefix limits effectively to protect your network from overload. You can help to ensure that BGP sessions are properly managed for both internal and external networks.
+|  |  |  |
+| --- | --- | --- |
+| **Command** | **Description** | **Use Case** |
+| show ip route vrf <vrf-name> summary | Displays the total number of IPv4/ IPv6 routes installed in the specified VRF and the configured route limit. | Verify if the IPv4/ IPv6 route count is approaching or exceeding the hard limit. |
+| show ipv4/ipv6 route vrf <vrf-name> summary | Displays the total number of IPv4/ IPv6 routes installed in the specified VRF and the configured route limit. | Monitor IPv4/ IPv6 route growth and ensure it remains within configured thresholds. |
+| show fib ipv4/ ipv6 route limit vrf <vrf-name> suppressed | Lists IPv4/ IPv6 routes that were suppressed due to exceeding the configured hard limit. | Identify which IPv4/ IPv6 routes are being held back from FIB installation. |
+| show fib ipv4 / ipv6 route limit vrf <vrf-name> suppressed | Lists IPv4/ IPv6 routes that were suppressed due to exceeding the configured hard limit. | Troubleshoot IPv4/ IPv6 route suppression and propagation issues. |
