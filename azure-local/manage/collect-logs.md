@@ -54,7 +54,7 @@ Keep in mind the following information before you start log collection:
 - The time required for log collection depends on the time range you specify. The longer the time range, the more time it'll take for log collection. Therefore, we recommend limiting the time range to only the logs you need.
 - Log collections longer than 24 hours aren't supported.
 - Attempting multiple log collections simultaneously will result in a failure.
-- Update the connected machine extension on all nodes to ensure compatibility, consistency, and successful log collection. Use the following command.
+- Make sure the `DeviceManagementExtension` version is **1.2510.0.3012 and later**. If it's not, update the connected machine extension on all nodes to ensure compatibility, consistency, and successful log collection. Use the following command.
 
   - Make sure you replace the extension name and version with the appropriate values for your environment.
 
@@ -63,8 +63,6 @@ Keep in mind the following information before you start log collection:
       ```
 
   For more information about updating the connected machine extension, see [Update-AzConnectedExtension](/powershell/module/az.connectedmachine/update-azconnectedextension?view=azps-12.5.0&preserve-view=true).
-
-- The `DeviceManagementExtension` version should be **1.2510.0.3012 and above**.
 
 ### [Azure portal (recommended)](#tab/azureportal)
 
