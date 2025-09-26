@@ -1,149 +1,120 @@
 ---
-title: Azure Operator Nexus Network Fabric - Commit Workflow v2
-description: Learn about Commit Workflow v2 process in Azure Operator Nexus – Network Fabric
-author: sushantjrao
-ms.author: sushrao
+title: How to use Password Rotation v1 in Azure Operator Nexus
+description: Learn about use of Password Rotation v1 in Azure Operator Nexus – Network Fabric
+author: RaghvendraMandawale
+ms.author: rmandawale
 ms.service: azure-operator-nexus
 ms.topic: conceptual
-ms.date: 05/16/2025
+ms.date: 09/26/2025
 ms.custom: template-concept
 ---
 
-# Commit Workflow v2 in Azure Operator Nexus - Network Fabric
+# Password Rotation in Network Fabric
 
-**Commit Workflow v2** introduces a modernized and transparent approach for applying configuration changes to **Azure Operator Nexus – Network Fabric (NNF)** resources. This enhanced workflow provides better operational control, visibility, and error handling during the configuration update process.
+## Overview
 
-With this update, users can lock configuration states, preview device-level changes, validate updates, and commit with confidence—overcoming earlier limitations such as the inability to inspect pre/post configurations and difficulty in diagnosing failures.
+NNF enables API-driven, fabric-scoped operator password rotation for NNF in release 9.2 and NNF GA API version **2025-07-15 f**or both GF and BF instances. It replaces manual, ticket-based flows with a predictable, automatable operation using Azure CLI. The rotation runs as a long-running Azure Resource Manager (ARM) action for reliability and transient fault tolerance at scale.
 
-## Key concepts and capabilities
+When rotation is triggered, the service securely generates and updates operator credentials on Terminal Server (TS) and supported devices. Secrets are stored using Azure Key Vault secret versioning, allowing safe rollback and continuity during partial updates. Fabrics can temporarily operate in a split-key state until devices converge via resync. Deterministic outcomes are provided per device along with a fabric-level status.
 
-Commit Workflow v2 is built around a structured change management flow. The following core features are available:
+## Capabilities
 
-- **Explicit configuration locking:**
-  Users must explicitly lock the configuration of a Network Fabric resource after making changes. This process ensures updates are applied in a predictable and controlled manner.
+1. Fabric-scoped rotation in a single command. Password will be rotated for following users’ profiles. The target for this API is to include OpenGear Terminal Server when enabling at Fabric scope
+   * Admin
+   * AzureOperatorRO
+   * AzureOperatorRW
+   * TelcoRO
+   * TelcoRW
+   * TelcoRO1 to TelcoRO14 (depends upon feature flag aka MethodDv1.5 feature req)
+   * TelcoRW1 and TelcoRW2 (depends upon feature flag aka MethodDv1.5 feature req)
+   * TS password
+2. Service will leverage the versioning capability of Azure Key Vault when multiple sets of passwords exist.Service uses the new secrets template to generate secrets.
+3. Service will enable support to provide a deterministic status of the executed rotation. It will provide deterministic status: lastRotationTime, overall state, per-device success/failure lists, unique Password Set Count. The configured key vault will have the latest copy of password corresponding device users.
+4. Service will provide targeted resync: device-scope resync operations (single device by ARM ID) to rotate the password for a specific device and also secure secret handling with Azure Key Vault secret versioning.
+5. Service will continue to support split-key continuity supported until convergence.
 
-- **Full device configuration preview:**
-  Enables visibility into the exact configuration that is applied to each device before the commit. This helps validate intent and catch issues early.
+## Limitations/Constraints (Phase 1)
 
-- **Commit configuration to devices:**
-  Once validated, changes can be committed to the devices. This final step applies the locked configuration updates across the fabric.
+**Password rotation API behaviour**
 
-- **Discard Batch Updates:**
-  Allows rollback of all uncommitted resource changes to their last known state.
+1. Password rotation via API will be blocked when Fabric is Administratively locked.
+2. Passwords shall not be rotated for the specific device when the device is in an administrative state (disabled). This occurs during RMA, under maintenance, or in cases where the device is not provisioned. The user must enable the device via a post action to retry rotations
+3. The service will move the fabric configuration state to successful once the rotation post action is completed. When there are failed devices, the status of rotation will show appropriate state(s). with details of failed device(s)
+4. Previously, device passwords were stored in the NFC key vault under several different names. Only the following naming convention will be used for generating secrets (format aligned across Nexus).All older naming conventions will be retired post 9.2 for GF and BF once migrated via API rotation or new geneva action
+5. . Secrets will be stored in NFC key Vault as before.  <subscription ID>-<resource group name>-<fabric name>-<username>-devicePassword-<deterministic hash> .  Example - # device password
+   00000000-0000-0000-0000-000000000000-exampleRG-exampleFabric-admin-devicePassword-4418bf71
 
-- **Enhanced Constraints:**
-  Enforces strict update rules during lock/maintenance/upgrade phases for stability.
+1. Going forward, instead of relying on older naming conventions, user must rely on the new secretArchiveReference fields in the 2025-07-15 API to find device passwords in the key vault.
 
-## Prerequisites
+   For example, on a network device, to find the admin password, look for the secretArchiveReference in its secretRotationStatus.
+2. “secretRotationStatus”: [
+   {
+       “lastRotationTime”: “2025-08-09T04:51:41.251Z”,
+       “synchronizationStatus”: “InSync”,
+       “secretArchiveReference”: {
+         “keyVaultUri”: “https://example-kv.vault.azure.net/secrets/example-secret-1/7e61b8efbcdd4e28963560dba3021df7”,
+         “keyVaultId”: “/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.KeyVault/vaults/example-kv”,
+         “secretName”: “example-secret-1”,
+         “secretVersion”: “7e61b8efbcdd4e28963560dba3021df7”
+       },
+       “secretType”: “Admin user password”
+     },
+3. Once the BYOKV feature in available (TBD) the same secrets will be copied in customer Key Vault in the above format.
+4. On Fabric resource delete all secrets pertaining to that Fabric will be purged from NFC Key Vault (similar to present day behaviour)
+5. Password rotation behavior with other common workflows
 
-Before using Commit Workflow v2, ensure the following environment requirements are met:
+|  |  |  |  |  |  |
+| --- | --- | --- | --- | --- | --- |
+| **Scenario** | **User Action (Recommended)** | **Service Action** | **Fabric State Updates** | **Device State Updates** | **Password / Certificate rotation Notes** |
+| Commit operation | 1. User must perform password rotation only after commit batch is either successful or failed | 1.Service must not cater to any password rotation while commit is in progress | 1. Administrative state - Accepted | NA | Password rotation shall not be catered while fabric state is in accepted |
+| Upgrade | 1.User must perform password rotation or resync operation only after upgrade is successful | 1.Service must not cater to any password rotation while upgrade is in progress or failed | 1.Administrative state - Under maintenance | 1.Administrative state - Under maintenance | Password rotation shall not be catered while fabric is under upgrade or upgrade failure state |
+| Device Disabled (one or more devices ) | 1.User must enable all devices before performing password rotation | 1.Service must cater to password rotation | Administrative state -  Enabled | Administrative state -  Enabled/Deferred control (if Persist RW config exists) | 1.Password rotation is catered. |
+|  | 2.If Device enablement fails due to connectivity issue - User must perform reboot with ZTP and perform device enablement | Service must cater to password rotation post the device is enabled | Administrative state -  Enabled | Administrative state -  Disabled | Password will be catered to post enablement of the device |
 
-## Commit workflow compatible versions
+**Retry framework and Resync behaviour**
 
-The Commit Workflow version supported depends on the combination of Fabric runtime, portal release version, and API version in use. Use the table below to identify which Commit Workflow is applicable for your environment:
+1. Service has implicit retries built in case of failure but will also provide an API driven retry capabilities. Service also provides a retry framework via resync option in password rotation post action.
+2. Rotation of passwords will be blocked when max set of unique passwords are present for a Fabric, and the user must rotate all devices via resync
+3. Resync will not be initiated in below scenarios
 
-| **Fabric Version**     | **Release Version** | **API Version(s)**                                                                                  | **Commit Workflow Version** |
-|------------------------|---------------------|------------------------------------------------------------------------------------------------------|------------------------------|
-| 3.0, 4.0, 5.0          | 8.1 and earlier     | `2024-06-15-preview`<br>`2024-02-15-preview`<br>`2023-06-15-stable`                                  | Commit Workflow v1          |
-| 5.0.0                  | 8.2, 8.3            | `2024-06-15-preview`<br>`2024-02-15-preview`<br>`2023-06-15-stable`                                  | Commit Workflow v1          |
-| 5.0.0                  | 9.0            | `2024-06-15-preview`                                  | Commit Workflow v1          |
-| 5.0.1                  | 8.2, 8.3            | `2024-06-15-preview`                                                                                 | Commit Workflow v2          |
-| 6.0 and later          | 9.0 and later       | `2024-06-15-preview` and later                                                                       | Commit Workflow v2          |
+|  |  |  |  |
+| --- | --- | --- | --- |
+| **Scenario** | **Fabric State** | **Device state** | **Comments** |
+| Fabric Lock | Administrative state - Locked | NA | State to be implemented, today fabric lock property shows the state of fabric lock |
+| Upgrade | Configuration state - Under Maintenance | Configuration state - Under maintenance |  |
+| Device Disabled | Admin state – Enabled-Degraded | Admin state – Disabled |  |
+| RMA | Admin state – Enabled-Degraded | Admin state – RMA |  |
+| Commit | Configuration state- Accepted | NA |  |
 
-> [!NOTE]
-> If you are running Fabric version `5.0.1` or later, **Commit Workflow v2** is required and **Commit Workflow v1** is no longer supported.
+**Other scenarios**
+
+1. Fabric upgrade will be blocked if all device passwords are not same.
+2. Service behavior for RMA scenarios as below
+
+|  |  |  |  |  |  |
+| --- | --- | --- | --- | --- | --- |
+| **Scenario** | **User Action (Recommended)** | **Service Action** | **Fabric State Updates** | **Device State Updates** | **Password / Certificate rotation Notes** |
+| Device is unreachable due to failure and unable to serve traffic | 1. User must perform a POST action to mark Administrative State disabled for the specific device immediately | 1.Service shall put the ARM resource of the specific device in Disabled state and shall not push any config updates- User can only perform RMA, Serial Number update actions. | 1. Administrative state - Enabled Degraded | 1. Administrative state: Disabled | Password rotation shall not be catered when the device is disabled. Password rotation can happen via RMA flow which initiates ZTP and bootstrap |
+|  | 2.User must perform device serial number patch update and the POST action to mark Administrative State as RMA once replacement device is available | 2.If the device is still unreachable while RMA is performed, the startup config shall be updated to be put in maintenance mode at the startup.  Device shall get the latest passwords via ZTP bootstrap | 2. Administrative state - Enabled Degraded unless the RMA is complete, and all devices are in enabled state | 2. Administrative state: RMA |  |
+| Device is flaky and has intermittent issues but able to serve traffic | 1. User must perform the POST action to mark Administrative State Disabled whenever the device needs to stop serving traffic | 1.Service shall put the ARM resource of the specific device in Disabled state and shall not push any config updates- User can only perform RMA, Serial Number update actions once they have replacement ready as next step. | 1. Administrative state - Enabled Degraded | 1. Administrative state: Disabled | Password rotation shall not be catered when device is disabled. Password rotation can happen via RMA flow which initiates ZTP and bootstrap |
+|  | 2.User must perform device serial number patch update and the POST action to mark Administrative State as RMA once replacement device is available | 2.If the device is still unreachable while RMA is performed the startup config shall be put in maintenance mode at the startup.  Device shall get the latest passwords via ZTP bootstrap | 2. Administrative state - Enabled Degraded unless the RMA is complete, and all devices are in enabled state | 2. Administrative state: RMA |  |
+| Device is flaky and has intermittent issues but unable to serve traffic | 1. User must perform a POST action to mark administrative state disabled for the specific device immediately | 1.Service shall put the ARM resource of the specific device in Disabled state and shall not push any config updates- User can only perform RMA, Serial Number update actions. | 1. Administrative state - Enabled Degraded | 1. Administrative state: Disabled | Password rotation will not be catered when device is disabled. Password rotation can happen via RMA flow which initiates ZTP and bootstrap |
+|  | 2.User must perform device serial number patch update and the POST action to mark Administrative State as RMA once replacement device is available | 2. If the device is still unreachable while RMA is performed the startup config shall be put in maintenance mode at the startup.  Device shall get the latest passwords via ZTP bootstrap | 2. Administrative state - Enabled Degraded unless the RMA is complete, and all devices are in enabled state | 2. Administrative state: RMA |  |
+| Device is to be RMA in the future for known issues but serving traffic | 1. User must perform the POST action to mark Administrative State Disabled whenever the device needs to stop serving traffic | 1. Service shall put the ARM resource of the specific device in Disabled state and shall not push any config updates- User can only perform RMA, Serial Number update actions once they have replacement ready as next step. | 1. Administrative state - Enabled Degraded | 1. Administrative state: Disabled | Password rotation will not be catered when device is disabled. Password rotation can happen via RMA flow which initiates ZTP and bootstrap |
+|  | 2.User must perform device serial number patch update and the POST action to mark Administrative State as RMA once replacement device is available | 2. If the device is still unreachable while RMA is performed the startup config shall be put in maintenance mode at the startup.  Device shall get the latest passwords via ZTP bootstrap | 2. Administrative state - Enabled Degraded unless the RMA is complete, and all devices are in enabled state | 2. Administrative state: RMA |  |
+
+1. **Geneva actions**- There are couple of Geneva actions available to handle migration of instances to use the latest secrets format
+
+|  |  |  |  |  |
+| --- | --- | --- | --- | --- |
+| **Geneva action** | **Compatible API version** | **Lockboxed** | **Secrets format** | **Behaviour/Constraints** |
+| Old Geneva action | --2024-06-15-preview and older versions ---GA version - 2025-07-15 | Yes | Old secrets format only | --Rotates BF instances (built prior to 9.2) which use old secret format  --Once instances are migrated to new secrets format via API rotation or new Geneva action, this Geneva action will not work & provide suitable error |
+| New Geneva action | ---GA version - 2025-07-15 | Yes | New secrets format only | --Rotates all GF and BF (which currently have old and new format)  --All new GF instances from 9.2 will be having new secrets format.  -- Requires 2025-07-15 ARM API rolled out and API based password rotation enabled. |
+
+**Note**: Greenfield 9.2 deployments are deployed using the new secrets template. This means it's not possible to rotate secrets on greenfield 9.2 deployments until 2025-07-15 API version is available.
 
 
-### Required versions
-
-If you're unsure which Commit Workflow version applies to your setup, refer to the Commit workflow compatible versions.
-
-* **Runtime version**: `5.0.1` or later is required for Commit Workflow v2.
-
-* **Network Fabric API version**:  `2024-06-15-preview`
-
-* **AzCLI version**:  `8.0.0.b3` or later
-
-### Supported upgrade paths to runtime version 5.0.1
-
-* **Direct upgrade**: From `4.0.0 → 5.0.1` or From `5.0.0 → 5.0.1`
-
-* **Sequential upgrade**:   From `4.0.0 → 5.0.0 → 5.0.1`
-
-> [!Note]
->  Additional actions may be required when upgrading from version 4.0.0. Please refer to the [runtime release notes](#) for guidance on upgrade-specific steps.
-
-
-## Behavior and constraints
-
-Commit Workflow v2 introduces new operational expectations and constraints to ensure consistency and safety in configuration management:
-
-### Availability & locking rules 
-
-- Available only on Runtime Version 5.0.1+. Downgrade to v1 isn't supported.
-
-- Locking is allowed only when:
-
-  - No commit is in progress.
-
-  - Fabric isn't under maintenance or upgrade.
-
-  - Fabric is in an administrative enabled state.
-
-### Unsupported during maintenance or upgrade
-
-`Lock`, `ViewDeviceConfiguration`, and `related post-actions` aren't allowed during maintenance or upgrade windows.
-
-### Commit Finality
-
-Once committed, changes **can't be rolled back**. Any further edits require a new lock-validate-commit cycle.
-
-### Discard Batch Behavior
-
-- The `discard-commit-batch` operation:
-
-  - Reverts all ARM resource changes to their last known good state.
-
-  - Updates admin/config states (for example, external/internal networks become disabled and rejected).
-
-  - Doesn't delete resources; users must delete them manually if desired.
-
-  - Enables further patching to reapply changes.
-
-- When the discard batch action is performed:
-
-  - The administrative state of internal/external network resources moves to disabled and their configuration state to rejected; however, the resources aren't deleted automatically. A separate delete operation is required for removal.
-
-  - Enabled Network Monitor resources attached to a fabric can't be attached to another fabric unless first detached and committed.
-
-  - For Network Monitor resources in administrative state disabled (in commit queue), discard batch moves the config state to rejected. Users can reapply updates (PUT/patch) and commit again to enable.
-
-### Resource update restrictions
-
-**Post-lock**, only a limited set of `Create`/`Update`/`Delete` (CUD) actions are supported (for example, unattached ACLs, TAP rules).
-
-Device-impacting resources (like Network-to-Network Interconnect (NNI), Isolation Domain (ISD), Route Policy, or ACLs attached to parent resources) are blocked during configuration lock.
-
-### Supported resource actions via Commit workflow v2 (when parent resources are in administrative state – Enabled)
-
-| **Supported resource actions which require commit workflow**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | **Unsupported resource actions which doesn’t require commit workflow**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **All resource updates impacting device configuration:**<br>• Updates to Network Fabric resource<br>• Updates to Network-to-Network Interconnect (NNI)<br>• Updates to ISD (L2 and L3)<br>• Creation and updates to Internal and External Networks of enabled L3 ISD<br>• Addition/updates/removal of Route Policy in Internal, External, ISD, and NNI resources<br>• Addition/updates/removal of IP Prefixes, IP Community, and Extended IP Community when attached to Route Policy or Fabric<br>• Addition/updates/removal of ACLs to Internal, External, ISD, and NNI resources<br>• Addition/updates/removal of Network Fabric resource in Network Monitor resource<br>• Additional description updates to Network Device properties<br>• Creation of multiple NNI | **Creation/updating of resources not impacting device configuration:**<br>• Creation of Isolation Domain (ISD) (L3 and L2)<br>• Network Fabric Controller (NFC) creation/updates<br>• Creation and updates to Network TAP rules, Network TAP, Neighbor groups<br>• Creation and updates to Network TAP rules, Network TAP, Neighbor groups<br>• Creation of new Route Policy and connected resources (IP Prefix, IP Community, IP Extended Community)<br>• Update of Route Policy and connected resources when not attached to ISD/Internal/External/NNI<br>• Creation/update of new Access Control List (ACL) which is not attached<br><br>**ARM resources updates only:**<br>• Tag updates for all supported resources<br><br>**Other administrative actions and post actions which manage lifecycle events:**<br>• Enabling/Disabling Isolation Domain (ISD), Return Material Authorization (RMA), Upgrade, and all administrative actions (enable/disable), serial number update<br>• Deletion of all Nexus Network Fabric (NNF) resources |
-
-### Allowed actions after configuration lock
-
-Here's a clear, structured table showing **Supported actions post configuration lock is enabled on the fabric**, categorized by type of action and support status:
-
----
-
-### **Supported and unsupported actions post configuration lock**
-
-| **Actions**                          | **Unsupported resource actions when fabric is under configuration lock**                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | **Unsupported resource actions when fabric is under configuration lock**                                                                                                                                                                                                                                                                                                                                                                                           |
-| ------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **Resource Actions (CUD)**           | - **NFC** (Only *Update*)<br>- **Network TAP rules**, **Network TAP**, **Neighbor Group** *(Create, Update, Delete)* <br>- **ACL** *(Create/Update)* when **not attached** to parent resource<br>- **Network Monitor** created **without Fabric ID**<br>- **Creation/Update** of **IPPrefix**, **IPCommunity List**, **IPExtendedCommunity** when **not attached** to Route Policy<br>- **Read** of all NNF resources<br>- **Delete** of **disabled** resources and **not attached** to any parent resources | - No CUD operations allowed on:<br>  • **Network-to-Network Interconnect (NNI)**<br>  • **Isolation Domains (L2 & L3)**<br>  • **Internal/External Networks** (Additions/Updates)<br>  • **Route Policy**, **IPPrefix**, **IPCommunity List**, **IPExtendedCommunity**<br>  • **ACLs** when **attached to parent resources** (for example, NNI, External Network)<br>  • **Network Monitor** when **attached to Fabric**<br>  • **Deletion** of all **enabled** resources |
-| **Post Actions**                     | - **Lock Fabric** (administrative state)<br>- **View Device Configuration**<br>- **Commit Configuration**<br>- **ARMConfig Diff** <br>- **Commit batch status**                                                                                                                                                                                                                                                                                                                                                         | - All other post actions are **blocked** and must be done **prior to enabling configuration lock**                                                                                                                                                                                                                                                                                                                                              |
-| **Service Actions / Geneva Actions** | - N/A                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | - **All service actions are blocked**                                                                                                                                                                                                                                                                                                                                                                                                                      |
 
 ## Next steps
 
-[How to use Commit Workflow v2 in Azure Operator Nexus](./howto-use-commit-workflow-v2.md)
+[How to use password rotation v1 in Azure Operator Nexus](./howto-use-password-rotation-v1.md)
