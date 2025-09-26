@@ -621,7 +621,7 @@ Follow these steps to provide the required information in the Azure portal:
 
 1. In the **Diagnostics** tab, under **Log activity**, select the link under **Time collected** for the relevant log collection.
 
-1. In the **Log detail** pane, note the value of **Correlation ID**, and share it with Microsoft Support for troubleshooting purposes.
+1. In the **Log detail** pane, you can share full log details with Microsoft Support for troubleshooting purposes.
 
    :::image type="content" source="./media/collect-logs/log-details-pane.png" alt-text="Screenshot shows the Log details pane." lightbox="./media/collect-logs/log-details-pane.png" :::
 
