@@ -3,7 +3,7 @@ title: Troubleshoot issues in AKS enabled by Azure Arc
 description: Learn how to troubleshoot various Kubernetes issues in AKS enabled by Arc.
 ms.topic: how-to
 author: sethmanheim
-ms.date: 09/25/2025
+ms.date: 09/26/2025
 ms.author: sethm
 ms.lastreviewed: 07/29/2025
 ms.reviewer: rcheeran
@@ -32,6 +32,7 @@ To open a support request, see the [Get support](help-support.md) article for in
 | Release validation     | [Azure Advisor upgrade recommendation message](azure-advisor-upgrade.md) |
 | Network validation | [Network validation error due to .local domain](network-validation-error-local.md) |
 | Network validation | [Troubleshoot BGP with FRR in AKS Arc environments](connectivity-troubleshoot.md) |
+| Disable Windows node pools | [Disable Windows node pools](disable-windows-nodepool.md) | 
 
 ## Next steps
 
