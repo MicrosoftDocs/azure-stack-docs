@@ -18,6 +18,27 @@ This article provides the release information for Azure Local, including the rel
 
 > [!NOTE]
 > Azure Local previously followed an annual release cadence for OS and feature updates, with versions like 23H2 and 22H2. The versioning model has now changed to align with a monthly release train, like 2507, 2506. However, references to older versioning might still appear in some documentation.
+>
+> 
+| AZ Local Version |	OS Build Version |	Release Date | End of Life |
+|---------------------| ------------| -------------------------| ----------------|
+| 22H2	| 20349.xxx	| 10/12/2022 | 31-May-25 |
+| 23H2	| 25398.xxx	| 10/24/2023| 31-Oct-25 |
+| 24H2 | 26100.xxx	| 4/29/2025	|
+| 25H2 |		
+>
+> 
+<html>
+  <body>
+    <ul>
+      <li><strong>Version:</strong> Azure Stack HCI release version in "YYH2" format (e.g., 22H2 = 2022 second half).</li>
+      <li><strong>End of Life (EOL):</strong> Date when Microsoft ends support for the version.</li>
+      <li><strong>Release Date:</strong> Date the HCI version was officially released.</li>
+      <li><strong>OS Build Version:</strong> Windows OS build backing the HCI release (e.g., 20349.xxx, 25398.xxx, 26100.xxx).</li>
+    </ul>
+  </body>
+</html>
+
 
 The Azure Local includes multiple release trains: 2411, 2503, 2504, 2505, and so forth. Each release train after 2411 is either a feature build or cumulative update.
 
