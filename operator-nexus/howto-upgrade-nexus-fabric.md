@@ -34,8 +34,8 @@ By following this guide, users can ensure a consistent, scalable, and secure app
 | **Pre RT Upgrade action** | **Expectation** | **Owner** |
 | --- | --- | --- |
 | Check for NFC provisioning state | Must be in Succeeded | Customer/Deployment engineering |
-| Cable validation of Network Fabric | All link connections must be up and stable per BOM description - [Validate Cables for Nexus Network Fabric - Operator Nexus](https://learn.microsoft.com/en-us/azure/operator-nexus/how-to-validate-cables) | Customer/Deployment engineering team |
-| Check for Administrative lock status of Network Fabric resource | Must be in unlocked state - [Azure Operator Nexus - How to Use Administrative Lock or Unlock Network fabric - Operator Nexus](https://learn.microsoft.com/en-us/azure/operator-nexus/howto-set-administrative-lock-or-unlock-for-network-fabric) | Customer/Deployment engineering |
+| Cable validation of Network Fabric | All link connections must be up and stable per BOM description - [Validate Cables for Nexus Network Fabric - Operator Nexus](./how-to-validate-cables.md) | Customer/Deployment engineering team |
+| Check for Administrative lock status of Network Fabric resource | Must be in unlocked state - [Azure Operator Nexus - How to Use Administrative Lock or Unlock Network fabric - Operator Nexus](./howto-set-administrative-lock-or-unlock-for-network-fabric.md) | Customer/Deployment engineering |
 | Network Fabric resource state checks | The following “Network Fabric” resource states must be validated in the portal:   * Provisioning state is in “**succeeded**” state, * Configuration state is in “**provisioned**” state. * Administrative state is in “**enabled**” status. | Customer/Deployment engineering team |
 | NNF device disk space | Minimum 3.0 GB free space within /mnt directory of all the network devices that are getting upgraded. | Customer/Deployment engineering team |
 | Terminal Server reprovision | Copy new TS tarball files before proceeding to the upgrade step. | Deployment engineering team |
