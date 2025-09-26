@@ -131,7 +131,7 @@ Each of the NNF devices will enter maintenance mode post triggering the upgrade.
 
 **Sample az CLI command:**
 
-az networkfabric device list -g <resource-group> --query "[].{name:name,version:version}" -o table
+`az networkfabric device list -g <resource-group> --query "[].{name:name,version:version}" -o table`
 
 **STEP 3: COMPLETE UPGRADE**
 
@@ -139,13 +139,12 @@ Once all the NNF devices are successfully upgraded to the latest version i.e eit
 
 **Sample az CLI command:**
 
-az networkfabric fabric upgrade --action complete --version "6.1.0" -g "<resource-group>" --resource-name "<fabric-name>" --debug
+`az networkfabric fabric upgrade --action complete --version "6.1.0" -g "<resource-group>" --resource-name "<fabric-name>" --debug`
 
 Once the fabric upgrade is done, we can verify the status of the network fabric by executing the following az cli commands:
 
-az networkfabric fabric show -g <resource-group> --resource-name <fabric-name>
-
-az networkfabric fabric list -g xxxxx --query "[].{name:name,fabricVersion:fabricVersion,configurationState:configurationState,provisioningState:provisioningState}" -o table
+`az networkfabric fabric show -g <resource-group> --resource-name <fabric-name>
+az networkfabric fabric list -g xxxxx --query "[].{name:name,fabricVersion:fabricVersion,configurationState:configurationState,provisioningState:provisioningState}" -o table`
 
 **STEP 4: Credential rotation (optional step).**
 
@@ -155,13 +154,12 @@ Deployment engineer/Directly Responsible Individual (DRI) must validate the devi
 
 ## Post Upgrade validation steps:
 
-|  |  |  |
-| --- | --- | --- |
 | **Post NNF RT Upgrade action** | **Expectation** | **Owner** |
+| --- | --- | --- |
 | Version compliance | All Network Fabric devices must be in either RT version 6.0.0 or 6.1.0 | Customer/Deployment engineering team |
-| Maintenance status check | Ensure TOR and CE devices maintenance status is “NOT under Maintenance” (show maintenance runro command) | Customer/Deployment engineering team |
+| Maintenance status check | Ensure TOR and CE devices maintenance status is "NOT under Maintenance" (show maintenance runro command) | Customer/Deployment engineering team |
 | Connectivity Validation | Verify CE ↔ PE connections are stable or similar to the pre-upgrade status (show ip interface brief runro command) | Customer/Deployment engineering team |
-| Reachability Checks | Confirm all NF devices are reachable via jump server (ping <MA1\_IP>, ping6 <Loopback6\_IP>) | Customer/Deployment engineering team |
+| Reachability Checks | Confirm all NF devices are reachable via jump server (ping &lt;MA1_IP&gt;, ping6 &lt;Loopback6_IP&gt;) | Customer/Deployment engineering team |
 | BGP Summary Validation | Ensure BGP sessions are established across all VRFs (show ip bgp summary vrf all runro command on CEs) | Customer/Deployment engineering team |
 | GNMI Metrics Emission | Confirm GNMI metrics are being emitted for subscribed paths (check via dashboards or CLI) | Customer/Deployment engineering team |
 
@@ -171,11 +169,10 @@ The following table outlines the **step-by-step procedures** associated with sel
 
 Each entry in the table corresponds to a specific action, offering detailed instructions, relevant parameters, and operational notes to ensure successful implementation. This appendix serves as a practical reference for users seeking to deepen their understanding and confidently carry out the NNF upgrade procedure
 
-|  |  |
-| --- | --- |
 | **Action** | **Detailed steps** |
-| Device image validation | Confirm latest image version is installed by executing “show version” runro command on each NF device.  az networkfabric device run-ro -g xxxx --resource-name xxxx --ro-command "show version".  The above output must reflect the latest image version as per the release documentation. |
-| Maintenance status check | Ensure TOR and CE device status is not under maintenance by executing “show maintenance” runro command. The above status must not be in “Maintenance mode is disabled”. |
-| Connectivity Validation | Verify CE ↔ PE connections are stable.  “Show ip interface brief” runro command. |
-| Reachability Checks | Confirm all NF devices are reachable via jump server:   * MA1 address ping <MA1\_IP> * Loopback6 address ping6 <Loopback6\_IP> |
-| BGP Summary Validation | Ensure BGP sessions are established across all VRFs by executing “show ip bgp summary vrf all” “runro command” on CE devices.The above status must ensure that peers should be in Established state – consistent with pre upgrade state. |
+| --- | --- |
+| Device image validation | Confirm latest image version is installed by executing "show version" runro command on each NF device. az networkfabric device run-ro -g xxxx -resource-name xxxx -ro-command "show version". The above output must reflect the latest image version as per the release documentation. |
+| Maintenance status check | Ensure TOR and CE device status is not under maintenance by executing "show maintenance" runro command. The above status must not be in "Maintenance mode is disabled". |
+| Connectivity Validation | Verify CE ↔ PE connections are stable. "Show ip interface brief" runro command. |
+| Reachability Checks | Confirm all NF devices are reachable via jump server: \* MA1 address ping &lt;MA1_IP&gt; \* Loopback6 address ping6 &lt;Loopback6_IP&gt; |
+| BGP Summary Validation | Ensure BGP sessions are established across all VRFs by executing "show ip bgp summary vrf all" "runro command" on CE devices.The above status must ensure that peers should be in Established state - consistent with pre upgrade state. |
