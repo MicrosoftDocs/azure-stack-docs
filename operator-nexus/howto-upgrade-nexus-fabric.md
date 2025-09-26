@@ -3,7 +3,7 @@ title: How to upgrade Network Fabric for Azure Operator Nexus
 description: Learn the process for upgrading Network Fabric for Azure Operator Nexus.
 author: RaghvendraMandawale 
 ms.author: rmandawale
-ms.date: 26/09/2025
+ms.date: 09/26/2025
 ms.topic: how-to
 ms.service: azure-operator-nexus
 ms.custom: template-how-to, devx-track-azurecli
