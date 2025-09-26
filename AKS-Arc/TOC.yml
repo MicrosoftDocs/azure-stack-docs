@@ -175,18 +175,16 @@
       items:
       - name: Create, upgrade, scale and delete operations (cluster or node pool)
         items:
-        - name: Create operations
-          items:
-          - name: Control plane configuration validation errors
-            href: control-plane-validation-errors.md
-          - name: K8sVersionValidation error
-            href: cluster-k8s-version.md
-          - name: KubeAPIServer unreachable error
-            href: kube-api-server-unreachable.md
-          - name: Can't see VM SKUs on Azure portal
-            href: check-vm-sku.md
-          - name: Disable Windows node pools
-            href: disable-windows-nodepool.md
+        - name: Control plane configuration validation errors
+          href: control-plane-validation-errors.md
+        - name: K8sVersionValidation error
+          href: cluster-k8s-version.md
+        - name: KubeAPIServer unreachable error
+          href: kube-api-server-unreachable.md
+        - name: Can't see VM SKUs on Azure portal
+          href: check-vm-sku.md
+        - name: Disable Windows node pools
+          href: disable-windows-nodepool.md
       - name: Networking
         items:
         - name: General network validation errors
