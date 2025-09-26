@@ -1,6 +1,6 @@
 ---
-title: How to use Password Rotation v1 in Azure Operator Nexus
-description: Learn about use of Password Rotation v1 in Azure Operator Nexus – Network Fabric
+title: Azure Operator Nexus Network Fabric - Password Rotation v1
+description: Learn about Password Rotation v1 process in Azure Operator Nexus – Network Fabric
 author: RaghvendraMandawale
 ms.author: rmandawale
 ms.service: azure-operator-nexus
