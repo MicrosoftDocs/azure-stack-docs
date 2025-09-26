@@ -74,10 +74,10 @@ NNF Resources (Parent Resources/Child Resources)
 
 az networkfabric fabric show -g xxxxxx --resource-name xxxxxxx
 
-Excepts of the Expected output:
+Excerpts of the Expected output:
 
 **"administrativeState": "Enabled",**
-**"configurationState": "Provisioned**
+**"configurationState": "Provisioned"**
 
 "fabricASN": 65025,
 
