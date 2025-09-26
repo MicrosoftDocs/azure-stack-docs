@@ -171,54 +171,54 @@
         href: support-module.md
       - name: Use diagnostic checker
         href: aks-arc-diagnostic-checker.md
-      - name: Troubleshoot
+    - name: Troubleshoot
+      items:
+      - name: Create, upgrade, scale and delete operations (cluster or node pool)
         items:
-        - name: Create, upgrade, scale and delete operations (cluster or node pool)
+        - name: Create operations
           items:
-          - name: Create operations
-            items:
-            - name: Control plane configuration validation errors
-              href: control-plane-validation-errors.md
-            - name: K8sVersionValidation error
-              href: cluster-k8s-version.md
-            - name: KubeAPIServer unreachable error
-              href: kube-api-server-unreachable.md
-            - name: Can't see VM SKUs on Azure portal
-              href: check-vm-sku.md
-        - name: Networking
-          items:
-          - name: General network validation errors
-            href: network-validation-errors.md
-          - name: Network validation error due to .local domain
-            href: network-validation-error-local.md
-          - name: BGP with FRR not working
-            href: connectivity-troubleshoot.md
-          - name: Connectivity issues with MetalLB load balancer
-            href: load-balancer-issues.md
-        - name: Storage
-          items:
-          - name: Issues after deleting storage volumes
-            href: delete-storage-volume.md
-        - name: Security
-          items:
-          - name: Entra authentication prompts when running kubectl
-            href: entra-prompts.md
-      - name: Known issues
+          - name: Control plane configuration validation errors
+            href: control-plane-validation-errors.md
+          - name: K8sVersionValidation error
+            href: cluster-k8s-version.md
+          - name: KubeAPIServer unreachable error
+            href: kube-api-server-unreachable.md
+          - name: Can't see VM SKUs on Azure portal
+            href: check-vm-sku.md
+      - name: Networking
         items:
-        - name: Storage provisioning issue in cluster and node pool creation
-          href: storage-provision-issue.md
-        - name: Deleted AKS Arc cluster still visible on Azure portal
-          href: deleted-cluster-visible.md
-        - name: Telemetry pod consumes too much memory and CPU  
-          href: telemetry-pod-resources.md
-        - name: Can't create/scale AKS cluster due to image issues
-          href: gallery-image-not-usable.md
-        - name: Disk space exhaustion on control plane VMs
-          href: kube-apiserver-log-overflow.md
-        - name: Cluster status stuck during upgrade
-          href: cluster-upgrade-status.md
-        - name: Can't fully delete AKS Arc cluster with PodDisruptionBudget (PDB) resources
-          href: delete-cluster-pdb.md
+        - name: General network validation errors
+          href: network-validation-errors.md
+        - name: Network validation error due to .local domain
+          href: network-validation-error-local.md
+        - name: BGP with FRR not working
+          href: connectivity-troubleshoot.md
+        - name: Connectivity issues with MetalLB load balancer
+          href: load-balancer-issues.md
+      - name: Storage
+        items:
+        - name: Issues after deleting storage volumes
+          href: delete-storage-volume.md
+      - name: Security
+        items:
+        - name: Entra authentication prompts when running kubectl
+          href: entra-prompts.md
+    - name: Known issues
+      items:
+      - name: Storage provisioning issue in cluster and node pool creation
+        href: storage-provision-issue.md
+      - name: Deleted AKS Arc cluster still visible on Azure portal
+        href: deleted-cluster-visible.md
+      - name: Telemetry pod consumes too much memory and CPU  
+        href: telemetry-pod-resources.md
+      - name: Can't create/scale AKS cluster due to image issues
+        href: gallery-image-not-usable.md
+      - name: Disk space exhaustion on control plane VMs
+        href: kube-apiserver-log-overflow.md
+      - name: Cluster status stuck during upgrade
+        href: cluster-upgrade-status.md
+      - name: Can't fully delete AKS Arc cluster with PodDisruptionBudget (PDB) resources
+        href: delete-cluster-pdb.md
 
     - name: Common issues
       items:
