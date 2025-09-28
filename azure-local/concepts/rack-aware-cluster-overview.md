@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: overview
 ms.service: azure-local
-ms.date: 04/03/2025
+ms.date: 09/27/2025
 ---
 
 # Azure Local Rack Aware Clustering overview
@@ -18,11 +18,11 @@ This article gives a high-level overview of the Azure Local Rack Aware Clusterin
 
 ## About Rack Aware Cluster
 
-Azure Local Rack Aware Cluster is an advanced architecture designed to enhance fault tolerance and data distribution within an Azure Local instance. This architecture enables you to cluster nodes that are strategically placed across two physical racks in two different rooms or buildings with high bandwidth and low latency. 
+Azure Local Rack Aware Cluster is an advanced architecture designed to enhance fault tolerance and data distribution within an Azure Local instance. This architecture enables you to cluster nodes that are strategically placed across two physical racks in two different rooms or buildings with high bandwidth and low latency.
 
-The following diagram shows a cluster of two racks of servers with top-of-rack (TOR) switches connected between rooms. Each rack functions as a local availability zone across layers from the operating system to Azure Local management, including Azure Local VMs enabled by Azure Arc and Azure Kubernetes Service (AKS).  
+The following diagram shows a cluster of two racks of servers with top-of-rack (TOR) switches connected between rooms. Each rack functions as a local availability zone across layers from the operating system to Azure Local management, including Azure Local VMs enabled by Azure Arc.  
 
-:::image type="content" source="media/rack-aware-clustering-overview/rack-aware-cluster-architecture.png" alt-text="Diagram of rack aware cluster architecture." lightbox="media/rack-aware-clustering-overview/rack-aware-cluster-architecture.png":::
+:::image type="content" source="media/rack-aware-cluster-overview/rack-aware-cluster-architecture.png" alt-text="Diagram of rack aware cluster architecture." lightbox="media/rack-aware-cluster-overview/rack-aware-cluster-architecture.png":::
 
 This direct connection between racks supports a single storage pool, with Rack Aware Clusters guaranteeing data copy distribution evenly between the two racks.  
 
@@ -30,7 +30,7 @@ This design is valuable in environments that require high availability and disas
 
 To support the synchronous replications between racks, a dedicated storage network intent is required to secure the bandwidth and low latency for storage traffic. The required round-trip latency between the two racks should be 1 ms or less.
 
-For detailed networking requirements, see [Rack Aware Clustering network design](./rack-aware-clustering-network-design-switch-configuration.md).
+For detailed networking requirements, see [Rack Aware Clustering network design](../index.yml).
 
 ## Benefits
 
@@ -51,7 +51,7 @@ The use cases for Azure Local Rack Aware Cluster include:
 
 - Use rack aware cluster in a high security environment for mission-critical applications.
 - Use rack aware cluster in a manufacturing plant to minimize the risk of data loss or downtime in the event of a rack-level failure.  
-- Barbara to provide more information on use cases.
+<!--more use case info-->
 
 
 ## Requirements and supported configurations
@@ -64,8 +64,9 @@ Other requirements for rack aware clusters include:
 
 - **Availability zone requirements**: Rack aware cluster supports only two local availability zones, with a maximum of four machines in each zone. The two zones must contain an equal number of machines.
 
-- **Supported configurations**:
+- **Supported node configurations**:
 
+    - Rack Level Nested Mirror (RLNM) is required.
     - The following table summarizes the supported configurations with volume resiliency settings.
 
         | Machines in two zones  | Volume resiliency   | Infra volumes  | Workload volumes  |
@@ -77,7 +78,9 @@ Other requirements for rack aware clusters include:
 
     - Only the new deployments are supported. Conversion from existing standard deployments to rack aware clusters isn't supported.
 
-- **Replication requirements**: To facilitate synchronous replications between racks, a dedicated storage network is essential to ensure adequate bandwidth and low latency for storage traffic. The round-trip latency requirement between two racks should be 1 millisecond or less. The necessary bandwidth can be calculated based on the cluster size and the network interface card (NIC) speed as follows:
+- **Latency requirements**: The round-trip latency requirement between two racks should be 1 millisecond or less. <!--Check the instructions below-->
+
+- **Bandwidth requirements**: To facilitate synchronous replications between racks, a dedicated storage network is essential to ensure adequate bandwidth for storage traffic. The necessary bandwidth can be calculated based on the cluster size and the network interface card (NIC) speed as follows:
 
     | Machines in zone | NIC speed | Storage ports | Bandwidth required |
     |--| -- |--| -- |
@@ -90,9 +93,9 @@ Other requirements for rack aware clusters include:
     | 3 | 25 | 2 | 150 GbE |
     | 4 | 25 | 2 | 200 GbE |
 
-- **Adding a machine to a cluster** using the `add-node` command isn't supported in this release.
+    For more information, see [Rack Aware Clustering network design](../index.yml).
 
-## Storage design
+<!--## Storage design
 
 Storage Spaces Direct is used to create a single storage pool that aggregates the disk capacity from all machines.
 
@@ -104,9 +107,45 @@ Storage Spaces Direct is used to create a single storage pool that aggregates th
     With a two-way mirror:
 
     - The total usable capacity of the storage pool is 50%.
-    - The system can handle one type of failure at a time. This means each cluster can support the failure of either one rack, one machine, or one disk without losing data.
+    - The system can handle one type of failure at a time. This means each cluster can support the failure of either one rack, one machine, or one disk without losing data.-->
 
+## Deploy a Rack Aware Cluster
+
+To deploy a Rack Aware Cluster, use one of the following methods:
+
+- [Azure portal](../index.yml).
+- [Azure Resource Manager template](../index.yml).
+
+## Place Azure Local VMs
+
+You can create Azure Local VMs to place in a specified zone to balance workloads between zones. Based on the criticality of the VMs, you can configure strict or non-strict placement to disable or enable failover to the other zone.
+
+## Fail over Azure Local VMs in a Rack Aware Cluster
+
+We recommend that you conduct live migration and failover testing of your VM workloads within a Rack Aware Cluster.
+
+- **Planned failover**: During planned failover, non-strict placed VMs are seamlessly migrated to operational nodes within the same zone or, if necessary, to another zone without incurring downtime. 
+- **Unplanned failover**: During unplanned failover, VM operations may be interrupted. Typically, systems require three to five minutes to restore availability on an alternate node or zone. Strict placed VMs stay in the zone they are placed and do not fail over to the other zone.
+
+    | VM starting placement | Failure mode | VM placement reaction          | Recover     | VM placement reaction |
+    |-----------------------|--------------|--------------------------------|-------------|-----------------------|
+    | Zone 1 (strict)       | Zone 1 down  | Saved mode (no failover)       | Zone 1 back | Zone 1 (strict)       |
+    | Zone 1 (non-strict)   | Zone 1 down  | Zone 2 (non-strict) (failover) | Zone 1 back | Zone 1 (non-strict)   |
+    | Zone 2 (strict)       | Zone 1 down  | No change                      | Zone 1 back | No change             |
+    | Zone 2 (non-strict)   | Zone 1 down  | No change                      | Zone 1 back | No change             |
+
+We recommend that you perform load testing to ensure the solution is properly scaled for deployment in the production environment.
+
+## Scale a Rack Aware Cluster
+
+Scale the cluster by adding a pair of nodes to a Rack Aware Cluster. The 2+2 configuration can be expanded to 3+3, and 3+3 to 4+4.
+
+> [!NOTE]
+> Adding nodes to a 1+1 Rack Aware Cluster is not supported in this release.
+
+For more information, see [Add nodes to a Rack Aware Cluster](../index.yml).
 
 ## Next steps
 
-- See [Rack Aware Cluster networking](./rack-aware-clustering-network-design-switch-configuration.md).
+- To learn how to configure availability zones in a Rack Aware Cluster, see [Configuring availability zones](../index.yml).
+- See [Rack Aware Cluster networking](../index.yml).
