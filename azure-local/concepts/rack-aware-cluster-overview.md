@@ -120,7 +120,7 @@ To deploy a Rack Aware Cluster, use one of the following methods:
 
 You can create Azure Local VMs to place in a specified zone to balance workloads between zones. Based on the criticality of the VMs, you can configure strict or non-strict placement to disable or enable failover to the other zone.
 
-For more information about VM placement in a Rack Aware Cluster, see [Manage VM placement in a Rack Aware Cluster](../manage/rack-aware-clustering-vm-placement.md).
+For more information about VM placement in a Rack Aware Cluster, see [Manage VM placement in a Rack Aware Cluster](../manage/rack-aware-cluster-vm-placement.md).
 
 ## Fail over Azure Local VMs in a Rack Aware Cluster
 
