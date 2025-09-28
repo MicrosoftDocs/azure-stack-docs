@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: overview
 ms.service: azure-local
-ms.date: 04/07/2025
+ms.date: 09/27/2025
 ---
 
 # Place Azure Local VMs on a Rack Aware Cluster (Preview)
