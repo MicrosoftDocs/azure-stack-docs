@@ -20,9 +20,9 @@ This article describes how to place an Azure Local virtual machine (VM) enabled 
 
 You can run Azure Local VMs on a Rack Aware Cluster running on an Azure Local instance. A Rack Aware Cluster is designed to enhance fault tolerance and data distribution within an Azure Local instance.
 
-Before you place Azure VMs on a Rack Aware Cluster, make sure to create 2 or more zones. 
+Before you place Azure VMs on a Rack Aware Cluster, make sure to create 2 or more zones.
 
-<Availability zones expands the level of control you have to maintain the availability of the applications and data on your VMs. An Availability Zone is a physically separate zone, within an Azure region. There are three Availability Zones per supported Azure region.
+Availability zones expands the level of control you have to maintain the availability of the applications and data on your VMs. An Availability Zone is a physically separate zone, within an Azure region. There are three Availability Zones per supported Azure region.
 
 Each Availability Zone has a distinct power source, network, and cooling. By designing your solutions to use replicated VMs in zones, you can protect your apps and data from the loss of a data center. If one zone is compromised, then replicated apps and data are instantly available in another zone.>
 
