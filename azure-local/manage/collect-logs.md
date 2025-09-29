@@ -38,6 +38,7 @@ To explore additional log collection methods in Azure Local and understand when 
 Before you collect on-demand logs, you must complete the following prerequisites:
 
 - You must have access to an Azure Local instance that is deployed and registered.
+- You must have the necessary permissions to trigger logs. You need to be assigned the **Azure Stack HCI Administrator** role. For more information about assigning roles, see [Assign Azure roles using the Azure portal](/azure/role-based-access-control/role-assignments-portal) or [Assign Azure roles using PowerShell](/azure/role-based-access-control/role-assignments-powershell).
 - You must have installed the `AzureEdgeTelemetryAndDiagnostics` extension to collect telemetry and diagnostics information from your Azure Local instance. For information about the extension, see [Azure Local telemetry and diagnostics extension overview](../concepts/telemetry-and-diagnostics-overview.md).
 
 ## Collect logs for Azure Local
@@ -53,6 +54,15 @@ Keep in mind the following information before you start log collection:
 - The time required for log collection depends on the time range you specify. The longer the time range, the more time it'll take for log collection. Therefore, we recommend limiting the time range to only the logs you need.
 - Log collections longer than 24 hours aren't supported.
 - Attempting multiple log collections simultaneously will result in a failure.
+- Make sure the `DeviceManagementExtension` version is **1.2510.0.3012 and later**. If it's not, update the connected machine extension on all nodes to ensure compatibility, consistency, and successful log collection. Use the following command.
+
+  - Make sure you replace the extension name and version with the appropriate values for your environment.
+
+      ```powershell
+      $target = @{"Microsoft.Compute.CustomScriptExtension" = @{"targetVersion"="1.10.12"}} Update-AzConnectedExtension -ResourceGroupName $env.ResourceGroupName -MachineName $machineName -ExtensionTarget $target
+      ```
+
+  For more information about updating the connected machine extension, see [Update-AzConnectedExtension](/powershell/module/az.connectedmachine/update-azconnectedextension?view=azps-12.5.0&preserve-view=true).
 
 ### [Azure portal (recommended)](#tab/azureportal)
 
@@ -609,7 +619,7 @@ Follow these steps to provide the required information in the Azure portal:
 
 1. In the **Diagnostics** tab, under **Log activity**, select the link under **Time collected** for the relevant log collection.
 
-1. In the **Log detail** pane, note the value of **Correlation ID**, and share it with Microsoft Support for troubleshooting purposes.
+1. In the **Log detail** pane, you can share full log details with Microsoft Support for troubleshooting purposes.
 
    :::image type="content" source="./media/collect-logs/log-details-pane.png" alt-text="Screenshot shows the Log details pane." lightbox="./media/collect-logs/log-details-pane.png" :::
 
