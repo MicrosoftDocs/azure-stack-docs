@@ -157,10 +157,6 @@
             href: kubernetes-monitor-metrics.md
   - name: Troubleshooting and known issues
     items:
-    - name: Troubleshooting overview
-      href: aks-troubleshoot.md
-    - name: Known issues
-      href: aks-arc-known-issues.md
     - name: Get support
       items:
       - name: AKS on Azure Local support policy
@@ -173,6 +169,8 @@
         href: aks-arc-diagnostic-checker.md
     - name: Troubleshoot
       items:
+      - name: Troubleshooting overview
+        href: aks-troubleshoot.md
       - name: Control plane configuration validation errors
         href: control-plane-validation-errors.md
       - name: K8sVersionValidation error
@@ -203,6 +201,8 @@
           href: entra-prompts.md
     - name: Known issues
       items:
+      - name: Known issues
+        href: aks-arc-known-issues.md
       - name: Storage provisioning issue in cluster and node pool creation
         href: storage-provision-issue.md
       - name: Deleted AKS Arc cluster still visible on Azure portal
