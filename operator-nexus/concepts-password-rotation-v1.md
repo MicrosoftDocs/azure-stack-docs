@@ -9,7 +9,7 @@ ms.date: 09/26/2025
 ms.custom: template-concept
 ---
 
-# Password Rotation in Network Fabric
+# Password rotation in Network Fabric
 
 NNF enables API-driven, fabric-scoped operator password rotation for NNF in release 9.2 and NNF GA API version **2025-07-15 f**or both GF and BF instances. It replaces manual, ticket-based flows with a predictable, automatable operation using Azure CLI. The rotation runs as a long-running Azure Resource Manager (ARM) action for reliability and transient fault tolerance at scale.
 
