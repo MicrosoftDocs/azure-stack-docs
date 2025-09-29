@@ -217,11 +217,6 @@
         href: cluster-upgrade-status.md
       - name: Can't fully delete AKS Arc cluster with PodDisruptionBudget (PDB) resources
         href: delete-cluster-pdb.md
-
-    - name: Common issues
-      items:
-      - name: Azure Advisor upgrade recommendation
-        href: azure-advisor-upgrade.md
   - name: Security
     items:  
     - name: Security book - recommendations and best practices
