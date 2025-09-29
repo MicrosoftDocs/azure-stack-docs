@@ -323,8 +323,8 @@
           href: howto-virtual-machine-placement-hints.md
         - name: Gather VM Console Data
           href: howto-gather-vm-console-data.md
-        - name: Virtual machines Arc enrolled using managed identities
-          href: howto-virtual-machine-arc-enroll-managed-identities.md
+        - name: Arc enroll Virtual machines using managed identities
+          href: howto-arc-enroll-virtual-machine-using-managed-identities.md
     - name: Observability
       expanded: false
       items:

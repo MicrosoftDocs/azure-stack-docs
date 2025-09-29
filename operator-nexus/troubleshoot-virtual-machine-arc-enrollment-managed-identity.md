@@ -517,3 +517,54 @@ If you're still experiencing issues after following this troubleshooting guide:
 - [Create a virtual machine using Bicep](./quickstarts-virtual-machine-deployment-bicep.md)
 
 [!include[stillHavingIssues](./includes/contact-support.md)]
+
+
+
+TODO add troubleshooting step where the CSN needs to be updated due to the adding of new egress endpoints
+
+    --additional-egress-endpoints "[{category:'azure-resource-management',endpoints:[{domainName:'storageaccountex.blob.core.windows.net',port:443}]},{category:'package-repository',endpoints:[{domainName:'.wikimedia.org',port:443},{domainName:'.microsoft.com',port:443},{domainName:'aka.ms',port:443}]}]" \
+
+we need to mention that there's assumed knowledge that the CSN is already created and configured with the necessary egress endpoints
+using the default endpoints. for example management.azure.com is expected to be present.
+  --enable-default-egress-endpoints "True" \
+
+
+### Alternative approach using `az rest` or `curl`
+
+There may be scenarios where using `az login --identity` does not work as expected.
+If you prefer not to use the Azure CLI for authentication, you can retrieve an access token directly using `az rest` or `curl`.
+This approach can be useful in environments where the Azure CLI is not available or if you encounter issues with the CLI.
+
+The example is meant to provide alternatives for retrieving the access token; however, it is always preferred to use the Azure CLI.
+
+### Using `az rest`
+
+With a system-assigned identity:
+
+```azurecli
+az rest --method get \
+  --url "http://169.254.169.254/metadata/identity/oauth2/token?resource=https%3A%2F%2Fmanagement.core.windows.net%2F&api-version=2018-02-01" \
+  --headers '{"Metadata":"true"}'
+```
+
+Or using a user-assigned identity:
+
+> [!IMPORTANT]
+> The `msi_res_id` query parameter must be set to the resource ID of the user-assigned managed identity.
+> The value must be URL encoded. The example assumes this is done already. Outside the scope of this example.
+
+```azurecli
+az rest --method get \
+  --url "http://169.254.169.254/metadata/identity/oauth2/token?resource=https%3A%2F%2Fmanagement.core.windows.net%2F&api-version=2018-02-01&msi_res_id=${UAMI_ID}" \
+  --headers '{"Metadata":"true"}'
+```
+
+### Using `curl`
+
+```bash
+curl -H "Metadata: true" "http://169.254.169.254/metadata/identity/oauth2/token?resource=https%3A%2F%2Fmanagement.core.windows.net%2F&api-version=2018-02-01"
+```
+
+```bash
+curl -H "Metadata: true" "http://169.254.169.254/metadata/identity/oauth2/token?resource=https%3A%2F%2Fmanagement.core.windows.net%2F&api-version=2018-02-01&msi_res_id=${UAMI_ID}"
+```
