@@ -5,7 +5,7 @@ author: dramasamy
 ms.author: dramasamy
 ms.service: azure-operator-nexus
 ms.topic: how-to
-ms.date: 09/24/2025
+ms.date: 09/29/2025
 ms.custom: template-how-to-pattern, devx-track-azurecli, devx-track-arm-template
 ---
 
@@ -36,6 +36,50 @@ Before deploying the virtual machine template, let's review the content to under
 
 Once you review and save the template file named ```virtual-machine-arm-template.json```, proceed to the next section to deploy the template.
 
+### Virtual machines with managed identities
+
+To associate managed identities to the VM, you _must_ create the virtual machine with either a system-assigned managed identity or a user-assigned managed identity.
+
+> [!IMPORTANT]
+> You must assign a managed identity (system-assigned or user-assigned) when creating the VM.
+> Managed identities can't be added after the VM is created.
+
+To add a system-assigned managed identity, the resource version must be `2025-07-01-preview` or later.
+Update the `apiVersion` for the virtual machine resource in the `virtual-machine-arm-template.json` file:
+
+```json
+  ...
+  "resources": [
+      {
+          "type": "Microsoft.NetworkCloud/virtualMachines",
+          "apiVersion": "2025-07-01-preview",
+          ...
+      }
+    ]
+  }
+```
+
+To the `virtual-machine-arm-template.json` file, add the `identity` property to the virtual machine resource definition.
+
+For System-Assigned Managed Identity, use the following snippet:
+
+```json
+"identity": {
+  "type": "SystemAssigned"
+}
+```
+
+For User-Assigned Managed Identity, use the following snippet:
+
+```json
+"identity": {
+  "type": "UserAssigned",
+  "userAssignedIdentities": {
+    "/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identity-name}": {}
+  }
+}
+```
+
 ## Deploy the template
 
 1. Create a file named ```virtual-machine-parameters.json``` and add the required parameters in JSON format.
@@ -52,38 +96,11 @@ az deployment group create \
   --parameters @virtual-machine-parameters.json
 ```
 
-### Virtual machine Arc enrollment with managed identities
+## Review deployed resources
 
-If you want to enroll the virtual machine with Azure Arc using managed identities, you _must_ create the virtual machine with either a system-assigned managed identity or a user-assigned managed identity.
-To the `virtual-machine-arm-template.json` file, add the `identity` property to the virtual machine resource definition.
-
-For System-Assigned Managed Identity, use the following snippet:
-
-```armasm
-"identity": {
-  "type": "SystemAssigned",
-  "tenantId": "{identity-tenant-id}",
-  "principalId": "{identity-principal-id}"
-}
+```azurecli-interactive
+az deployment group show --resource-group myResourceGroup --name <deployment-name>
 ```
-
-For User-Assigned Managed Identity, use the following snippet:
-
-```armasm
-"identity": {
-  "type": "UserAssigned",
-  "userAssignedIdentities": {
-    "/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identity-name}": {
-      "clientId": "{identity-client-id}",
-      "principalId": "{identity-principal-id}"
-    }
-  }
-}
-```
-
-For detailed steps on how to create a virtual machine with managed identities and enroll it with Azure Arc, see [Enroll a Nexus virtual machine with Azure Arc using managed identities].
-
-[Enroll a Nexus virtual machine with Azure Arc using managed identities]: ./howto-virtual-machine-arc-enroll-managed-identities.md
 
 ## Review deployed resources
 

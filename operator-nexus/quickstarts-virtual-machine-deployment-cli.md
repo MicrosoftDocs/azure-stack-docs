@@ -5,7 +5,7 @@ author: dramasamy
 ms.author: dramasamy
 ms.service: azure-operator-nexus
 ms.topic: how-to
-ms.date: 09/24/2025
+ms.date: 09/29/2025
 ms.custom: template-how-to-pattern, devx-track-azurecli
 ---
 
@@ -116,7 +116,17 @@ az networkcloud virtualmachine create \
     --vm-image-repository-credentials registry-url="$ACR_URL" username="$ACR_USERNAME" password="$ACR_PASSWORD"
 ```
 
-Create the virtual machine using a System-Assigned Managed Identity with Azure CLI:
+### Virtual machines with managed identities
+
+To associate managed identities to the VM, you _must_ create the virtual machine with either a system-assigned managed identity or a user-assigned managed identity.
+
+> [!IMPORTANT]
+> You must assign a managed identity (system-assigned or user-assigned) when creating the VM.
+> Managed identities can't be added after the VM is created.
+
+To enable the system-assigned managed identity for the virtual machine, be sure to include the `--mi-system-assigned` flag (or the alias `--system-assigned`).
+
+Create the virtual machine using a System-Assigned Managed Identity (SAMI) with Azure CLI:
 
 ```azurecli-interactive
 az networkcloud virtualmachine create \
@@ -134,10 +144,18 @@ az networkcloud virtualmachine create \
     --vm-image "$VM_IMAGE" \
     --ssh-key-values "$SSH_PUBLIC_KEY" \
     --vm-image-repository-credentials registry-url="$ACR_URL" username="$ACR_USERNAME" password="$ACR_PASSWORD" \
-    --mi-system-assigned --system-assigned
+    --mi-system-assigned
 ```
 
-Create the virtual machine using a User-Assigned Managed Identity with Azure CLI:
+To use a user-assigned managed identity, you can specify the user-assigned managed identity ID with the `--mi-user-assigned` flag (or the alias `--user-assigned`).
+
+Be sure to include the `UAMI_ID` variable with the resource ID of the user-assigned managed identity that you want to use.
+
+```azurecli
+export UAMI_ID=$(az identity show --name "$UAMI_NAME" --resource-group "$RESOURCE_GROUP" --query "id" -o tsv)
+```
+
+Create the virtual machine using a User-Assigned Managed Identity (UAMI) with Azure CLI:
 
 ```azurecli-interactive
 az networkcloud virtualmachine create \
@@ -155,24 +173,11 @@ az networkcloud virtualmachine create \
     --vm-image "$VM_IMAGE" \
     --ssh-key-values "$SSH_PUBLIC_KEY" \
     --vm-image-repository-credentials registry-url="$ACR_URL" username="$ACR_USERNAME" password="$ACR_PASSWORD" \
-    --mi-user-assigned --user-assigned "$UAMI_ID"
+    --mi-user-assigned "$UAMI_ID"
 ```
 
-After a few minutes, the command completes and returns information about the virtual machine. The virtual machine is now ready for use.
-
-### Virtual machine Arc enrollment with managed identities
-
-If you want to enroll the virtual machine with Azure Arc using managed identities, you _must_ create the virtual machine with either a system-assigned managed identity or a user-assigned managed identity.
-To enable the system-assigned managed identity for the virtual machine, be sure to include the `--mi-system-assigned --system-assigned` flags.
-Or, if you want to use a user-assigned managed identity, you can specify the user-assigned managed identity ID with the `--mi-user-assigned` parameter and the `--user-assigned` flag.
-For detailed steps on how to create a virtual machine with managed identities and enroll it with Azure Arc, see [Enroll a Nexus virtual machine with Azure Arc using managed identities].
-
-[Enroll a Nexus virtual machine with Azure Arc using managed identities]: ./howto-virtual-machine-arc-enroll-managed-identities.md
-
-## Passing a user data cloud-init script
-
-If you want to pass a custom user data cloud-init script to the virtual machine during creation,
-you can encode the user data script in base64 format and include it in the `--user-data "$ENCODED_USER_DATA"` parameter of the `az networkcloud virtualmachine create` command.
+After a few minutes, the command completes and returns information about the virtual machine.
+The virtual machine is now ready for use.
 
 ## Review deployed resources
 

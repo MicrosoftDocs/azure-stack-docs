@@ -568,3 +568,9 @@ curl -H "Metadata: true" "http://169.254.169.254/metadata/identity/oauth2/token?
 ```bash
 curl -H "Metadata: true" "http://169.254.169.254/metadata/identity/oauth2/token?resource=https%3A%2F%2Fmanagement.core.windows.net%2F&api-version=2018-02-01&msi_res_id=${UAMI_ID}"
 ```
+
+
+## Passing a user data cloud-init script
+
+If you want to pass a custom user data cloud-init script to the virtual machine during creation,
+you can encode the user data script in base64 format and include it in the `--user-data "$ENCODED_USER_DATA"` parameter of the `az networkcloud virtualmachine create` command.

@@ -5,7 +5,7 @@ author: dramasamy
 ms.author: dramasamy
 ms.service: azure-operator-nexus
 ms.topic: how-to
-ms.date: 09/24/2025
+ms.date: 09/29/2025
 ms.custom:
   - template-how-to-pattern
   - devx-track-azurecli
@@ -40,26 +40,18 @@ Before deploying the virtual machine template, let's review the content to under
 
 Review and save the template file named ```virtual-machine-bicep-file.bicep```, then proceed to the next section and deploy the template.
 
-## Deploy the template
+### Virtual machines with managed identities
 
-1. Create a file named ```virtual-machine-parameters.json``` and add the required parameters in JSON format. You can use the following example as a starting point. Replace the values with your own.
+To associate managed identities to the VM, you _must_ create the virtual machine with either a system-assigned managed identity or a user-assigned managed identity.
 
-:::code language="json" source="includes/virtual-machine/virtual-machine-params.json":::
+> [!IMPORTANT]
+> You must assign a managed identity (system-assigned or user-assigned) when creating the VM.
+> Managed identities can't be added after the VM is created.
 
-2. Deploy the template.
+To add a system-assigned managed identity, the resource version must be `2025-07-01-preview` or later.
+Make sure to update the resource version for the virtual machine resource in the `virtual-machine-bicep-file.bicep` file.
 
-```azurecli-interactive
-    az deployment group create --resource-group myResourceGroup --template-file virtual-machine-bicep-file.bicep --parameters @virtual-machine-parameters.json
-```
-
-### Virtual machine Arc enrollment with managed identities
-
-If you want to enroll the virtual machine with Azure Arc using managed identities, you _must_ create the virtual machine with either a system-assigned managed identity or a user-assigned managed identity.
-
-The following example shows how to create a virtual machine with a system-assigned managed identity using Bicep.
-The examples build on the previous Bicep example by adding the managed identity section.
-
-For System-assigned managed identity, add the following section to the Bicep file:
+Add the `identity` section with `type` set to `SystemAssigned` to the Bicep file:
 
 ```
 resource vm 'Microsoft.Compute/virtualMachines@2025-07-01-preview' = {
@@ -68,15 +60,14 @@ resource vm 'Microsoft.Compute/virtualMachines@2025-07-01-preview' = {
   properties: {
     ...
     identity: {
-      type: "SystemAssigned",
-      tenantId: "{identity-tenant-id}"
-      principalId: "{identity-principal-id}"
+      type: "SystemAssigned"
     }
   }
 }
 ```
 
-For User-assigned managed identity, add the following section to the Bicep file:
+For User-assigned managed identity, the resource must be created before it can be assigned to the virtual machine.
+Update the Bicep file with the `identity` section with `type` set to `UserAssigned`, and include the `userAssignedIdentities` property with the resource ID of the user-assigned managed identity.
 
 ```
 resource vm 'Microsoft.NetworkCloud/virtualMachines@2025-07-01-preview' = {
@@ -87,24 +78,32 @@ resource vm 'Microsoft.NetworkCloud/virtualMachines@2025-07-01-preview' = {
     identity: {
       type: "UserAssigned",
       userAssignedIdentities: {
-        "/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identity-name}": {
-          clientId: "{identity-client-id}"
-          principalId: "{identity-principal-id}"
-        }
+        "/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identity-name}": {}
       }
     }
   }
 }
 ```
 
-For detailed steps on how to create a virtual machine with managed identities and enroll it with Azure Arc, see [Enroll a Nexus virtual machine with Azure Arc using managed identities].
+## Deploy the template
 
-[Enroll a Nexus virtual machine with Azure Arc using managed identities]: ./howto-virtual-machine-arc-enroll-managed-identities.md
+1. Create a file named ```virtual-machine-parameters.json``` and add the required parameters in JSON format. You can use the following example as a starting point. Replace the values with your own.
+
+:::code language="json" source="includes/virtual-machine/virtual-machine-params.json":::
+
+2. Deploy the template.
+
+```azurecli-interactive
+az deployment group create \
+  --resource-group myResourceGroup
+  --template-file virtual-machine-bicep-file.bicep
+  --parameters @virtual-machine-parameters.json
+```
 
 ## Review deployed resources
 
 ```azurecli-interactive
-    az deployment group show --resource-group myResourceGroup --name <deployment-name>
+az deployment group show --resource-group myResourceGroup --name <deployment-name>
 ```
 
 [!INCLUDE [quickstart-review-deployment-cli](./includes/virtual-machine/quickstart-review-deployment-cli.md)]

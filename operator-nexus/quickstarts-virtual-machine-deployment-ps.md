@@ -5,7 +5,7 @@ author: dramasamy
 ms.author: dramasamy
 ms.service: azure-operator-nexus
 ms.topic: how-to
-ms.date: 09/24/2025
+ms.date: 09/29/2025
 ms.custom: template-how-to-pattern, devx-track-azurepowershell
 ---
 
@@ -56,6 +56,7 @@ Here are the variables you need to set, along with some default values you can u
 | IP_ALLOCATION_METHOD   | The IpAllocationMethod valid for L3Networks: Dynamic, Static, or Disabled.                              |
 | NETWORKATTACHMENTNAME  | The name of the network to attach for workload.                                                         |
 | NETWORKDATA            | The base64 encoded string of cloud-init network data.                                                   |
+| UAMI_ID                    | The resource ID of the user-assigned managed identity (if using user-assigned managed identity).    |
 
 > [!WARNING]
 > User data isn't encrypted, and any process on the VM can query this data.
@@ -155,16 +156,99 @@ New-AzNetworkCloudVirtualMachine -Name $VM_NAME `
 -VMImageRepositoryCredentialsRegistryUrl $ACR_URL
 ```
 
-After a few minutes, the command completes and returns information about the virtual machine. The virtual machine is now ready for use.
+### Virtual machines with managed identities
 
-### Virtual machine Arc enrollment with managed identities
+To associate managed identities to the VM, you _must_ create the virtual machine with either a system-assigned managed identity or a user-assigned managed identity.
 
-If you want to enroll the virtual machine with Azure Arc using managed identities, you _must_ create the virtual machine with either a system-assigned managed identity or a user-assigned managed identity.
+> [!IMPORTANT]
+> You must assign a managed identity (system-assigned or user-assigned) when creating the VM.
+> Managed identities can't be added after the VM is created.
+
 To enable a system-assigned managed identity for the virtual machine, use the `-EnableSystemAssignedIdentity` flag with the `New-AzNetworkCloudVirtualMachine` cmdlet.
-If you want to use a user-assigned managed identity, use the `-UserAssignedIdentityId` parameter and provide the resource ID of the user-assigned managed identity.
-For detailed steps on how to create a virtual machine with managed identities and enroll it with Azure Arc, see [Enroll a Nexus virtual machine with Azure Arc using managed identities].
 
-[Enroll a Nexus virtual machine with Azure Arc using managed identities]: ./howto-virtual-machine-arc-enroll-managed-identities.md
+Create a virtual machine using a System-Assigned Managed Identity (SAMI) with Azure PowerShell, use the following command:
+
+```azurepowershell-interactive
+New-AzNetworkCloudVirtualMachine -Name $VM_NAME `
+-ResourceGroupName $RESOURCE_GROUP `
+-AdminUsername $ADMIN_USERNAME `
+-CloudServiceNetworkAttachmentAttachedNetworkId $CSN_ARM_ID `
+-CloudServiceNetworkAttachmentIPAllocationMethod $IP_AllOCATION_METHOD `
+-CpuCore $CPU_CORES `
+-ExtendedLocationName $CUSTOM_LOCATION `
+-ExtendedLocationType $CUSTOM_LOCATION_TYPE `
+-Location $LOCATION `
+-SubscriptionId $SUBSCRIPTION `
+-MemorySizeGb $MEMORY_SIZE `
+-OSDiskSizeGb $VM_DISK_SIZE `
+-VMImage $VM_IMAGE `
+-BootMethod $BOOT_METHOD `
+-CloudServiceNetworkAttachmentDefaultGateway $CSN_ATTACHMENT_DEFAULTGATEWAY `
+-CloudServiceNetworkAttachmentName $CSN_ATTACHMENT_NAME `
+-IsolateEmulatorThread $ISOLATE_EMULATOR_THREAD `
+-NetworkAttachment $NETWORKATTACHMENT `
+-NetworkData $NETWORKDATA `
+-OSDiskCreateOption $OS_DISK_CREATE_OPTION `
+-OSDiskDeleteOption $OS_DISK_DELETE_OPTION `
+-SshPublicKey $SSH_PUBLIC_KEY `
+-UserData $USERDATA `
+-VMDeviceModel $VMDEVICEMODEL `
+-VMImageRepositoryCredentialsUsername $ACR_USERNAME `
+-VMImageRepositoryCredentialsPassword $SECUREPASSWORD `
+-VMImageRepositoryCredentialsRegistryUrl $ACR_URL `
+-EnableSystemAssignedIdentity
+```
+
+If you want to use a user-assigned managed identity, use the `-UserAssignedIdentityId` parameter and provide the resource ID of the user-assigned managed identity.
+
+```azurepowershell-interactive
+$UAMI_NAME = "<identity-name>"
+$UAMI_ID = (Get-AzUserAssignedIdentity -ResourceGroupName $RESOURCE_GROUP -Name $UAMI_NAME).Id
+```
+
+Alternative (without the specific MSI module, using the generic resource cmdlet):
+
+```azurepowershell-interactive
+$UAMI_ID = (Get-AzResource -ResourceGroupName $RESOURCE_GROUP `
+  -ResourceType "Microsoft.ManagedIdentity/userAssignedIdentities" `
+  -Name $UAMI_NAME).ResourceId
+```
+
+Create a virtual machine using a User-Assigned Managed Identity (UAMI) with Azure PowerShell, use the following command:
+
+```azurepowershell-interactive
+New-AzNetworkCloudVirtualMachine -Name $VM_NAME `
+-ResourceGroupName $RESOURCE_GROUP `
+-AdminUsername $ADMIN_USERNAME `
+-CloudServiceNetworkAttachmentAttachedNetworkId $CSN_ARM_ID `
+-CloudServiceNetworkAttachmentIPAllocationMethod $IP_AllOCATION_METHOD `
+-CpuCore $CPU_CORES `
+-ExtendedLocationName $CUSTOM_LOCATION `
+-ExtendedLocationType $CUSTOM_LOCATION_TYPE `
+-Location $LOCATION `
+-SubscriptionId $SUBSCRIPTION `
+-MemorySizeGb $MEMORY_SIZE `
+-OSDiskSizeGb $VM_DISK_SIZE `
+-VMImage $VM_IMAGE `
+-BootMethod $BOOT_METHOD `
+-CloudServiceNetworkAttachmentDefaultGateway $CSN_ATTACHMENT_DEFAULTGATEWAY `
+-CloudServiceNetworkAttachmentName $CSN_ATTACHMENT_NAME `
+-IsolateEmulatorThread $ISOLATE_EMULATOR_THREAD `
+-NetworkAttachment $NETWORKATTACHMENT `
+-NetworkData $NETWORKDATA `
+-OSDiskCreateOption $OS_DISK_CREATE_OPTION `
+-OSDiskDeleteOption $OS_DISK_DELETE_OPTION `
+-SshPublicKey $SSH_PUBLIC_KEY `
+-UserData $USERDATA `
+-VMDeviceModel $VMDEVICEMODEL `
+-VMImageRepositoryCredentialsUsername $ACR_USERNAME `
+-VMImageRepositoryCredentialsPassword $SECUREPASSWORD `
+-VMImageRepositoryCredentialsRegistryUrl $ACR_URL `
+-UserAssignedIdentityId $UAMI_ID
+```
+
+After a few minutes, the command completes and returns information about the virtual machine.
+The virtual machine is now ready for use.
 
 ## Review deployed resources
 

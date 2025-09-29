@@ -293,16 +293,29 @@ For details about token retrieval with managed identities, see [How to use manag
 > If the `azcmagent` installation happens before the access token is retrieved, the enrollment process fails.
 > An alternative approach is necessary to obtain the access token using `az rest`.
 
+```bash
+azcmagent config set proxy.url "http://<TENANT_PROXY_IP>:<TENANT_PROXY_PORT>"
 ```
-$ azcmagent config set proxy.url "http://169.254.0.11:3128"
-Config property proxy.url set to value http://169.254.0.11:3128
+
+Output from setting the proxy configuration sucessfully:
+
+```
+Config property proxy.url set to value http://<TENANT_PROXY_IP>:<TENANT_PROXY_PORT>
 INFO    Updating service configuration: Azure Arc Proxy
-$ azcmagent config list
+```
+
+```bash
+azcmagent config list
+```
+
+Verify the proxy settings are correctly applied:
+
+```
 Local Configuration Settings
   incomingconnections.enabled (preview)                 : true
   incomingconnections.ports (preview)                   : []
   connection.type (preview)                             : default
-  proxy.url                                             : http://169.254.0.11:3128
+  proxy.url                                             : http://<TENANT_PROXY_IP>:<TENANT_PROXY_PORT>
   proxy.bypass                                          : []
   extensions.allowlist                                  : []
   extensions.blocklist                                  : []
@@ -313,6 +326,17 @@ Local Configuration Settings
   extensions.agent.cpulimit                             : 5
 ```
 
+    # Connect to Azure Arc
+    echo "Connecting virtual machine to Azure Arc..."
+add --verbose to see detailed output, it may be necessary to use `sudo`.
+```bash
+azcmagent connect \
+  --resource-group "${RESOURCE_GROUP}" \
+  --tenant-id "${TENANT_ID}" \
+  --location "${LOCATION}" \
+  --subscription-id "${SUBSCRIPTION_ID}" \
+  --access-token "$ACCESS_TOKEN"
+```
 
 
 ```
@@ -324,20 +348,8 @@ Local Configuration Settings
       bash "$TMP_DIR/install_linux_azcmagent.sh"
       azcmagent version
     fi
-
-    # Connect to Azure Arc
-    echo "Connecting virtual machine to Azure Arc..."
-    if ! sudo azcmagent connect \
-        --resource-group "${RESOURCE_GROUP}" \
-        --tenant-id "${TENANT_ID}" \
-        --location "${LOCATION}" \
-        --subscription-id "${SUBSCRIPTION_ID}" \
-        --access-token "$ACCESS_TOKEN" \
-        --verbose; then
-      echo "ERROR: Failed to connect to Azure Arc"
-      exit 1
-    fi
 ```
+
 
 ## Verify Azure Arc enrollment
 
