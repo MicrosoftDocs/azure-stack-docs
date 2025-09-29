@@ -38,10 +38,6 @@ Before you can migrate, create an Azure Migrate project in Azure portal using th
 
 1. On the Azure portal home page, select **Azure Migrate**.
 
-1. On the **All projects** page, select a project, then select **Create project**.
-
-    :::image type="content" source="media/migrate-hyperv-prerequisites/project-select.png" alt-text="Screenshot of All projects page in Azure portal." lightbox="media/migrate-hyperv-prerequisites/project-select.png":::
-
 1. On the **Get started** page, under **Servers, databases and web apps**, select **Discover, assess and migrate**.
 
     :::image type="content" source="media/migrate-hyperv-prerequisites/project-get-started.png" alt-text="Screenshot of Get started page in Azure portal." lightbox="media/migrate-hyperv-prerequisites/project-get-started.png":::
