@@ -4,16 +4,16 @@ description: Learn how to run the quickstart script that creates an Arc-enabled 
 author: rcheeran
 ms.author: rcheeran
 ms.topic: how-to
-ms.date: 03/24/2025
+ms.date: 09/25/2025
 ms.custom: template-how-to
 ---
 
 # Create and configure an AKS Edge Essentials cluster that can run Azure IoT Operations
 
-Azure Kubernetes Service (AKS) Edge Essentials is one of the supported cluster platforms for [Azure IoT Operations](/azure/iot-operations/overview-iot-operations). You can use AKS Edge Essentials to create a Microsoft-managed Kubernetes cluster and deploy Azure IoT Operations on it as a workload. This article describes the steps to run a script that creates an AKS Edge Essentials Kubernetes cluster with the required configurations for Azure IoT Operations and then connects that cluster to Azure Arc.
+Azure Kubernetes Service (AKS) Edge Essentials is one of the supported cluster platforms for [Azure IoT Operations](/azure/iot-operations/overview-iot-operations). You can use AKS Edge Essentials to create a Microsoft-managed Kubernetes cluster and deploy Azure IoT Operations on it as a workload. This article describes the steps to run a script that creates an AKS Edge Essentials Kubernetes cluster with the required configuration for Azure IoT Operations, and then connects that cluster to Azure Arc.
 
 > [!NOTE]
-> Azure IoT Operations supports AKS Edge Essentials when deployed on k3s single machine clusters only. K8s clusters are not supported for AIO and deploying clusters on multiple machines is an experimental feature.
+> Azure IoT Operations supports AKS Edge Essentials when deployed on K3s single machine clusters only. K8s clusters are not supported for AIO and deploying clusters on multiple machines is an experimental feature.
 
 ## Prerequisites for running the script
 
@@ -76,9 +76,9 @@ To run the quickstart script, perform the following steps:
    |SubscriptionId    |      The ID of your Azure subscription. If you don't know your subscription ID, see [Find your Azure subscription](/azure/azure-portal/get-subscription-tenant-id#find-your-azure-subscription). |
    |TenantId  |    The ID of your Microsoft Entra tenant. If you don't know your tenant ID, see [Find your Microsoft Entra tenant](/azure/azure-portal/get-subscription-tenant-id#find-your-microsoft-entra-tenant).     |
    |ResourceGroupName     |   The name of an existing resource group or a name for a new resource group to be created. Only one Azure IoT Operations instance is supported per resource group.     |
-   |Location     |      An Azure region close to you. For a list of the Azure IoT Operations's supported Azure regions, see [Supported regions](/azure/iot-operations/overview-iot-operations#supported-regions).   |
+   |Location     |      An Azure region close to you. For a list of the Azure IoT Operations supported Azure regions, see [Supported regions](/azure/iot-operations/overview-support#supported-regions).   |
    |CustomLocationOID     |     The object ID value that you retrieved in step 2.     |
-   |EnableWorkloadIdentity (preview) | Enabled by default. While you can opt out before deploying the cluster, you cannot enable it after cluster creation. Workload identity federation lets you configure a user-assigned managed identity or app registration in Microsoft Entra ID to trust tokens from external identity providers (IdPs) such as Kubernetes. To configure workload identity federation, [see this article](aks-edge-workload-identity.md). |
+   |EnableWorkloadIdentity (preview) | Enabled by default. While you can opt out before deploying the cluster, you can't enable it after cluster creation. Workload identity federation lets you configure a user-assigned managed identity or app registration in Microsoft Entra ID to trust tokens from external identity providers (IdPs) such as Kubernetes. To configure workload identity federation, [see this article](aks-edge-workload-identity.md). |
 
    In **aio-aksedge-config.json**, add the required **ClusterName** field and other optional fields, as follows:
 

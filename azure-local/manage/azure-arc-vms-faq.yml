@@ -6,7 +6,7 @@ metadata:
   author: alkohli
   ms.author: alkohli
   ms.service: azure-local
-  ms.date: 06/09/2025
+  ms.date: 09/25/2025
   sections: []
 title: FAQ for Azure Local VMs enabled by Azure Arc
 summary:
@@ -37,12 +37,7 @@ sections:
         The Microsoft support team is available to help you through the transition and can answer any questions you might have. You can get assistance via the Azure portal.
 
         You can also learn more about upgrading at [About Azure Local upgrades](../upgrade/about-upgrades-23h2.md).
-
-    - question: |
-        Can Azure Kubernetes Service on Azure Local and Azure Kubernetes Service on Windows Server coexist with Azure Arc resource bridge on the same Azure Local instance?
-      answer: |
-        Yes. Azure Kubernetes Service on Azure Local and Azure Kubernetes Service on Windows Server can be deployed on the same Azure Local instance as VM provisioning from the Azure portal. You can deploy the *Azure Kubernetes Service on Azure Stack HCI* management system first and then deploy Azure Arc resource bridge. In this configuration, uninstalling Azure Kubernetes Service from Azure Local removes Azure Arc resource bridge.
-    
+   
     - question: |
         I used to be able to create virtual networks for my VMs in past releases. Now, I can create only logical networks. What changed?
       answer: |
