@@ -107,7 +107,9 @@ For more information on the release cadence, see [Azure Local release informatio
 
 1. Check that the update service discovers the update package and that it's available to start preparation and installation. To discover the updates, run the `Get-SolutionUpdate` command. The update service discovers updates asynchronously, so you might need to run the `Get-SolutionUpdate` command more than once.
 
-1. If the update returns a state of `AdditionalContentRequired`, follow the instructions in [Update Azure Local via PowerShell](./update-via-powershell-23h2.md#step-3-import-and-rediscover-updates) to import the required Solution Builder Extension (SBE) updates.
+1. If the update returns a state of `AdditionalContentRequired`, follow the instructions in [Update Azure Local via PowerShell](./update-via-powershell-23h2.md#step-3-import-and-rediscover-updates) to import the required Solution Builder Extension (SBE) updates. If it doesn't, continue to the next step.
+
+1. Start the update. For more information, see [Update Azure Local via PowerShell](./update-via-powershell-23h2.md#step-5-start-the-update).
 
 ## Next steps
 
