@@ -9,9 +9,7 @@ ms.service: azure-operator-nexus
 ms.custom: template-how-to, devx-track-azurecli
 ---
 
-# VRF Route Prefix Limits (IPv4 and IPv6) on AON CE Devices
-
-## Overview
+#  Virtual Routing and Forwarding (VRF) Route Prefix Limits (IPv4 and IPv6) on AON CE Devices
 
 The VRF-level route prefix limit for both IPv4 and IPv6 address families on AON CE devices helps prevent route table exhaustion across multiple BGP peers. It ensures system stability by maintaining active VRF and BGP sessions even when route limits are exceeded. This capability builds upon the neighbor-level prefix limits introduced in [Configure BGP Prefix Limit on CE Devices for Azure Operator Nexus - Operator Nexus](./howto-configure-bgp-prefix-limit-on-customer-edge-devices.md), extending overload protection to a broader scope across the entire VRF.
 
@@ -31,10 +29,9 @@ Defines the maximum number of routes (per AF) allowed in the Routing Information
 
 A warning threshold (percentage of hard limit) that triggers alerts/logs. Does not block new routes but serves as an early warning mechanism.
 
-Note:
-
-* Hard and soft limits are not independently configurable. They must be defined together per VRF.
-* When both the soft and hard route limits are reached, the system logs are generated to notify administrators of threshold breaches and potential route suppression events.
+> [!NOTE]
+> * Hard and soft limits are not independently configurable. They must be defined together per VRF.
+> * When both the soft and hard route limits are reached, the system logs are generated to notify administrators of threshold breaches and potential route suppression events.
 
 ## Suppression Behavior
 
