@@ -1,5 +1,5 @@
 ---
-title: Configure VRF route prefix limits (IPv4 and IPv6) on AON CE devices for Azure Operator Nexus
+title: "Configure Virtual Routing and Forwarding (VRF) route prefix limits (IPv4 and IPv6) on AON CE devices for Azure Operator Nexus"
 description: Learn the process for configuring VRF route prefix limits (IPv4 and IPv6) on AON CE devices for Azure Operator Nexus.
 author: RaghvendraMandawale
 ms.author: rmandawale
@@ -9,7 +9,7 @@ ms.service: azure-operator-nexus
 ms.custom: template-how-to, devx-track-azurecli
 ---
 
-#  Virtual Routing and Forwarding (VRF) Route Prefix Limits (IPv4 and IPv6) on AON CE Devices
+# Virtual Routing and Forwarding (VRF) route prefix limits (IPv4 and IPv6) on AON CE devices
 
 The VRF-level route prefix limit for both IPv4 and IPv6 address families on AON CE devices helps prevent route table exhaustion across multiple BGP peers. It ensures system stability by maintaining active VRF and BGP sessions even when route limits are exceeded. This capability builds upon the neighbor-level prefix limits introduced in [Configure BGP Prefix Limit on CE Devices for Azure Operator Nexus - Operator Nexus](./howto-configure-bgp-prefix-limit-on-customer-edge-devices.md), extending overload protection to a broader scope across the entire VRF.
 
