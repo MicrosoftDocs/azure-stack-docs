@@ -9,7 +9,7 @@ ms.service: azure-operator-nexus
 ms.custom: template-how-to, devx-track-azurecli
 ---
 
-# Network Fabric Upgrade from 5.0.x or 6.0.0 to 6.1.0
+# Network Fabric upgrade from 5.0.x or 6.0.0 to 6.1.0
 
 This guide outlines a streamlined upgrade process for network fabric infrastructure, designed to support users in modernizing and managing their network environments efficiently. It provides step-by-step instructions leveraging both the Azure Portal and Azure CLI, enabling comprehensive lifecycle management of nexus fabric network devices. Regular updates are crucial for maintaining system integrity and accessing the latest product improvements
 
@@ -95,7 +95,7 @@ Nexus Network Fabric administrator/Deployment engineer triggers the upgrade POST
 
 #### Sample az CLI command
 
-az networkfabric fabric upgrade -g xxxx --resource-name xxxx --action start --version "6.0.0"
+`az networkfabric fabric upgrade -g xxxx --resource-name xxxx --action start --version "6.0.0"`
 
 As part of the above POST action request, Managed Network Fabric Resource Provider (RP) performs a validation check to determine whether a version upgrade is permissible from the current fabric version.
 
@@ -122,7 +122,7 @@ Each of the NNF devices will enter maintenance mode post triggering the upgrade.
 
 #### Sample az CLI command
 
-* az networkfabric device upgrade --version 6.1.0 -g xxxx --resource-name xxx-CompRack1-TOR1 --debug
+`az networkfabric device upgrade --version 6.1.0 -g xxxx --resource-name xxx-CompRack1-TOR1 --debug`
 
 #### Post validation for Step 2 
 
