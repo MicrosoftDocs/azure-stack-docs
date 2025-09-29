@@ -3,7 +3,7 @@ title: Discover and replicate VMware VMs for migration to Azure Local using Azur
 description: Learn the discovery and replication process for VMware VMs to Azure Local using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 07/25/2025
+ms.date: 09/29/2025
 ms.author: alkohli
 ms.custom: sfi-image-nochange
 ---
