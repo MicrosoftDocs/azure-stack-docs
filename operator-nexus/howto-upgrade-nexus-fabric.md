@@ -11,8 +11,6 @@ ms.custom: template-how-to, devx-track-azurecli
 
 # Network Fabric Upgrade from 5.0.x or 6.0.0 to 6.1.0
 
-## PURPOSE
-
 This guide outlines a streamlined upgrade process for network fabric infrastructure, designed to support users in modernizing and managing their network environments efficiently. It provides step-by-step instructions leveraging both the Azure Portal and Azure CLI, enabling comprehensive lifecycle management of nexus fabric network devices. Regular updates are crucial for maintaining system integrity and accessing the latest product improvements
 
 ## Overview
@@ -70,31 +68,32 @@ NNF Resources (Parent Resources/Child Resources)
 
 ## NNF Upgrade Procedure
 
-**STEP 0: Network Fabric Status**
+### Step 0: Network Fabric Status
 
-az networkfabric fabric show -g xxxxxx --resource-name xxxxxxx
+`az networkfabric fabric show -g xxxxxx --resource-name xxxxxxx`
 
 Excerpts of the Expected output:
 
-**"administrativeState": "Enabled",**
-**"configurationState": "Provisioned"**
+`**"administrativeState": "Enabled",**`
 
-"fabricASN": 65025,
+`**"configurationState": "Provisioned"**`
 
-"fabricVersion": "5.0.0",
+`"fabricASN": 65025,`
 
-"fabricLocks": [
+`"fabricVersion": "5.0.0",`
+
+`"fabricLocks": [
     {
       "lockState": "Disabled",
       "lockType": "Configuration"
     }
-    ]
+    ]`
 
-**STEP #1: TRIGGER UPGRADE**
+### Step 1: Trigger Upgrade
 
 Nexus Network Fabric administrator/Deployment engineer triggers the upgrade POST action on NetworkFabric via AZCLI/Portal with requested payload as:
 
-**Sample az CLI command:**
+#### Sample az CLI command
 
 az networkfabric fabric upgrade -g xxxx --resource-name xxxx --action start --version "6.0.0"
 
@@ -102,17 +101,17 @@ As part of the above POST action request, Managed Network Fabric Resource Provid
 
 The above command marks the Network Fabric in “Under Maintenance” mode and prevents any create or update operation within the Network fabric instance.
 
-**STEP #2: TRIGGER UPGRADE PER DEVICE**
+### Step 2: Trigger Upgrade Per Device
 
 Nexus Network Fabric administrator/Deployment engineer triggers upgrade POST actions per device. Each of the NNF device resource states must be validated either Azure Portal or Azure CLI:
 
-* Provisioning state is in “**succeeded**” state,
-* Configuration state is in “**provisioned**” state.
-* Administrative state is in “**Enabled**” state
+* Provisioning state is in **succeeded** state,
+* Configuration state is in **provisioned** state.
+* Administrative state is in **Enabled** state
 
 Each of the NNF devices will enter maintenance mode post triggering the upgrade. Traffic is drained and route advertisements will be stopped.
 
-**NNF Upgrade sequence:**
+#### NNF Upgrade sequence
 
 * Odd numbered TORs (Parallel).
 * Even numbered TORs (Parallel).
@@ -121,23 +120,23 @@ Each of the NNF devices will enter maintenance mode post triggering the upgrade.
 * Remaining aggregate rack switches are to be upgraded one after the other in a serial manner.
 * Upgrade Network Packet Broker (NPB) devices in a serial manner.
 
-**Sample az CLI command:**
+#### Sample az CLI command
 
 * az networkfabric device upgrade --version 6.1.0 -g xxxx --resource-name xxx-CompRack1-TOR1 --debug
 
-**Post validation for Step #2 :**
+#### Post validation for Step 2 
 
-1. After all network fabric devices upgrades are completed, User must ensure that none of the NNF devices are “Under Maintenance” and these devices runtime versions must be in either 6.0.0 or 6.1.0 by running the following commands.
+After all network fabric devices upgrades are completed, User must ensure that none of the NNF devices are “Under Maintenance” and these devices runtime versions must be in either 6.0.0 or 6.1.0 by running the following commands.
 
-**Sample az CLI command:**
+#### Sample az CLI command:
 
 `az networkfabric device list -g <resource-group> --query "[].{name:name,version:version}" -o table`
 
-**STEP 3: COMPLETE UPGRADE**
+### Step 3: Complete Upgrade
 
 Once all the NNF devices are successfully upgraded to the latest version i.e either 6.0.0 or 6.1.0, Nexus Network Fabric administrator/Deployment engineer will run the following command to take the network fabric out of maintenance state and complete the upgrade procedure.
 
-**Sample az CLI command:**
+#### Sample az CLI command
 
 `az networkfabric fabric upgrade --action complete --version "6.1.0" -g "<resource-group>" --resource-name "<fabric-name>" --debug`
 
@@ -146,13 +145,14 @@ Once the fabric upgrade is done, we can verify the status of the network fabric 
 `az networkfabric fabric show -g <resource-group> --resource-name <fabric-name>
 az networkfabric fabric list -g xxxxx --query "[].{name:name,fabricVersion:fabricVersion,configurationState:configurationState,provisioningState:provisioningState}" -o table`
 
-**STEP 4: Credential rotation (optional step).**
+### Step 4: Credential rotation (optional step).
 
 Deployment engineer/Directly Responsible Individual (DRI) must validate the device's maintenance mode status after each cycle of credential rotation is completed. The device should not remain in the under-maintenance state post credential rotation.
 
-**Note** : There is no customer action required for the above step.
+>[!NOTE]
+>There is no customer action required for the above step.
 
-## Post Upgrade validation steps:
+## Post Upgrade validation steps
 
 | **Post NNF RT Upgrade action** | **Expectation** | **Owner** |
 | --- | --- | --- |
@@ -163,7 +163,7 @@ Deployment engineer/Directly Responsible Individual (DRI) must validate the devi
 | BGP Summary Validation | Ensure BGP sessions are established across all VRFs (show ip bgp summary vrf all runro command on CEs) | Customer/Deployment engineering team |
 | GNMI Metrics Emission | Confirm GNMI metrics are being emitted for subscribed paths (check via dashboards or CLI) | Customer/Deployment engineering team |
 
-## Appendix :
+## Appendix 
 
 The following table outlines the **step-by-step procedures** associated with selected pre and post upgrade actions referenced earlier in this guide
 
