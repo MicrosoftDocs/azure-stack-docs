@@ -40,7 +40,10 @@
         "bootMethod": {
             "type": "string",
             "defaultValue": "UEFI",
-            "allowedValues": ["UEFI", "BIOS"],
+            "allowedValues": [
+                "UEFI",
+                "BIOS"
+            ],
             "metadata": {
                 "description": "Selects the boot method for the virtual machine."
             }
@@ -137,7 +140,10 @@
         "vmDeviceModel": {
             "type": "string",
             "defaultValue": "T2",
-            "allowedValues": ["T1", "T2"],
+            "allowedValues": [
+                "T1",
+                "T2"
+            ],
             "metadata": {
                 "description": "The type of the device model to use."
             }
@@ -193,4 +199,4 @@
             }
         }
     ]
-  }
+}

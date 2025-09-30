@@ -5,7 +5,7 @@ author: dramasamy
 ms.author: dramasamy
 ms.service: azure-operator-nexus
 ms.topic: how-to
-ms.date: 07/30/2023
+ms.date: 09/30/2025
 ms.custom: template-how-to-pattern, devx-track-azurecli, devx-track-arm-template
 ---
 
@@ -13,7 +13,10 @@ ms.custom: template-how-to-pattern, devx-track-azurecli, devx-track-arm-template
 
 * Deploy an Azure Nexus virtual machine using an Azure Resource Manager template.
 
-This quick-start guide is designed to help you get started with using Nexus virtual machines to host virtual network functions (VNFs). By following the steps outlined in this guide, you're able to quickly and easily create a customized Nexus virtual machine that meets your specific needs and requirements. Whether you're a beginner or an expert in Nexus networking, this guide is here to help. You learn everything you need to know to create and customize Nexus virtual machines for hosting virtual network functions.
+This quick-start guide is designed to help you get started with using Nexus virtual machines to host virtual network functions (VNFs).
+By following the steps outlined in this guide, you're able to quickly and easily create a customized Nexus virtual machine that meets your specific needs and requirements.
+Whether you're a beginner or an expert in Nexus networking, this guide is here to help.
+You learn everything you need to know to create and customize Nexus virtual machines for hosting virtual network functions.
 
 ## Before you begin
 
@@ -22,28 +25,82 @@ This quick-start guide is designed to help you get started with using Nexus virt
 
 ## Review the template
 
-Before deploying the virtual machine template, let's review the content to understand its structure. 
+Before deploying the virtual machine template, let's review the content to understand its structure.
 
 :::code language="json" source="includes/virtual-machine/virtual-machine-arm-template.json":::
 
 > [!WARNING]
-> User data will not be encrypted, and any process on the VM can query this data. You should not store confidential information in user data. For more information, see [Azure data security and encryption best practices](/azure/security/fundamentals/data-encryption-best-practices).
+> User data isn't encrypted, and any process on the VM can query this data.
+> You shouldn't store confidential information in user data.
+> For more information, see [Azure data security and encryption best practices](/azure/security/fundamentals/data-encryption-best-practices).
 
-Once you have reviewed and saved the template file named ```virtual-machine-arm-template.json```, proceed to the next section to deploy the template.
+Once you review and save the template file named ```virtual-machine-arm-template.json```, proceed to the next section to deploy the template.
+
+### Virtual machines with managed identities
+
+Create the virtual machine with either a system-assigned or a user-assigned managed identity.
+To add a managed identity to the VM, the API version must be `2025-07-01-preview` or later.
+
+> [!IMPORTANT]
+> You must assign a managed identity (system-assigned or user-assigned) when creating the VM.
+> Managed identities can't be added after the VM is created.
+
+Update the `apiVersion` for the virtual machine resource in the `virtual-machine-arm-template.json` file:
+
+```json
+  ...
+  "resources": [
+      {
+          "type": "Microsoft.NetworkCloud/virtualMachines",
+          "apiVersion": "2025-07-01-preview",
+          ...
+      }
+    ]
+  }
+```
+
+To the `virtual-machine-arm-template.json` file, add the `identity` property to the virtual machine resource definition.
+
+For System-Assigned Managed Identity, use the following snippet:
+
+```json
+"identity": {
+  "type": "SystemAssigned"
+}
+```
+
+For User-Assigned Managed Identity, use the following snippet:
+
+```json
+"identity": {
+  "type": "UserAssigned",
+  "userAssignedIdentities": {
+    "/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identity-name}": {}
+  }
+}
+```
 
 ## Deploy the template
 
-1. Create a file named ```virtual-machine-parameters.json``` and add the required parameters in JSON format. You can use the following example as a starting point. Replace the values with your own.
+1. Create a file named ```virtual-machine-parameters.json``` and add the required parameters in JSON format.
+   You can use the following example as a starting point. Replace the values with your own.
 
 :::code language="json" source="includes/virtual-machine/virtual-machine-params.json":::
 
 2. Deploy the template.
 
-```azurecli
-    az deployment group create --resource-group myResourceGroup --template-file virtual-machine-arm-template.json --parameters @virtual-machine-parameters.json
+```azurecli-interactive
+az deployment group create \
+  --resource-group myResourceGroup \
+  --template-file virtual-machine-arm-template.json \
+  --parameters @virtual-machine-parameters.json
 ```
 
 ## Review deployed resources
+
+```azurecli-interactive
+az deployment group show --resource-group myResourceGroup --name <deployment-name>
+```
 
 [!INCLUDE [quickstart-review-deployment-cli](./includes/virtual-machine/quickstart-review-deployment-cli.md)]
 
@@ -53,4 +110,4 @@ Once you have reviewed and saved the template file named ```virtual-machine-arm-
 
 ## Next steps
 
-You've successfully created a Nexus virtual machine. You can now use the virtual machine to host virtual network functions (VNFs).
+The Nexus virtual machine is successfully created! You can now use the virtual machine to host virtual network functions (VNFs).
