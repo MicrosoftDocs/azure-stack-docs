@@ -26,7 +26,7 @@ This quick-start guide is designed to help you get started with using Nexus virt
 
 ## Review the template
 
-Before deploying the virtual machine template, let's review the content to understand its structure.
+Before deploying the virtual machine template, let's review the content to understand its structure. 
 
 :::code language="bicep" source="includes/virtual-machine/virtual-machine-bicep-file.bicep":::
 
