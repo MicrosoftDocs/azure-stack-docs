@@ -29,6 +29,18 @@ Azure Arc enrollment allows you to manage your virtual machines as Azure resourc
 [`networkcloud` extension]: /cli/azure/networkcloud
 [`networkcloud` extension release history]: https://github.com/Azure/azure-cli-extensions/blob/main/src/networkcloud/HISTORY.rst
 
+### Nexus VM with associated managed identities at creation time
+
+When you create a Nexus VM for Azure Arc enrollment with managed identities, make sure to assign either a system-assigned or user-assigned managed identity at creation.
+This ensures the platform configures the VM to support managed identity authentication.
+If you create a VM without a managed identity, you cannot add one later without recreating the VM.
+Updating the Nexus VM resource after creation will not enable managed identity authentication if the identity was not assigned initially.
+
+> [!IMPORTANT]
+> To use managed identity features for Azure Arc enrollment, you must assign a system-assigned or user-assigned managed identity when you create the VM.
+> You cannot add a managed identity after the VM is created.
+> If you plan to authenticate using other methods, such as service principals or personal access tokens, a managed identity is not required.
+
 ### Getting started with Azure Operator Nexus virtual machines
 
 [!INCLUDE [virtual-machine-prereq](./includes/virtual-machine/quickstart-prereq.md)]
@@ -399,7 +411,7 @@ az connectedmachine show --name "$VM_NAME" --resource-group "$RESOURCE_GROUP"
 
 ## Next steps
 
-It might be useful to review the [troubleshooting guide](./troubleshoot-virtual-machine-arc-enrollment-managed-identity.md) for common issues and pitfalls.
+It might be useful to review the [troubleshooting guide](./troubleshoot-virtual-machine-arc-enroll-with-managed-identity.md) for common issues and pitfalls.
 
 ## Related articles
 

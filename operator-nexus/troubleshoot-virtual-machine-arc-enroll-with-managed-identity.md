@@ -1,6 +1,6 @@
 ---
 title: Troubleshoot issues with virtual machine Arc enrollment using managed identities
-description: This article provides guidance on troubleshooting issues related to the enrollment of virtual machines with managed identities in Azure Arc.
+description: This article offers step-by-step troubleshooting guidance for resolving issues when enrolling virtual machines with managed identities in Azure Arc.
 ms.service: azure-operator-nexus
 ms.custom: azure-operator-nexus
 ms.topic: troubleshooting
@@ -9,64 +9,43 @@ ms.author: omarrivera
 author: g0r1v3r4
 ---
 
-# Troubleshoot issues with virtual machine Arc enrollment using managed identities
+# Troubleshoot Nexus virtual machines using managed identities
 
-This article provides troubleshooting guidance for common issues that occur when enrolling Azure Operator Nexus virtual machines with Azure Arc using managed identities.
+Use this article to troubleshoot common problems encountered when enrolling Azure Operator Nexus virtual machines (VM) with Azure Arc using managed identities associated with the VM.
 
-## Before you begin
+In order to effectively troubleshoot issues, it's important to understand the key components involved in the authentication and enrollment process.
+The process relies on platform level components that facilitate communication between the VM and Azure services.
 
-[!INCLUDE [virtual-machine-prereq](./includes/virtual-machine/quickstart-prereq.md)]
+## Feature support versions
 
-* Complete the [prerequisites](./quickstarts-tenant-workload-prerequisites.md) for deploying a Nexus virtual machine.
-* Ensure that you have the necessary permissions to create and manage virtual machines and managed identities in your Azure subscription.
-* Ensure that you have the necessary permissions to enroll virtual machines with Azure Arc using managed identities.
-* Ensure that you have installed the latest version of the Azure Connected Machine agent (azcmagent) on the virtual machine that you want to enroll with Azure Arc using managed identities.
+- Ensure that your Nexus Cluster is running Azure Local Nexus `2510.1` Management Bundle and `4.7.0` Minor Runtime or later.
+- The feature support is available in API version `2025-07-01-preview` or later.
+- Make sure the [`networkcloud` extension] is installed with a version that supports the required API version.
+  You can find supported versions in the [`networkcloud` extension release history] on GitHub.
 
-## Understanding the components involved in Arc enrollment with managed identities
+[`networkcloud` extension]: /cli/azure/networkcloud
+[`networkcloud` extension release history]: https://github.com/Azure/azure-cli-extensions/blob/main/src/networkcloud/HISTORY.rst
 
-Before troubleshooting, it's important to understand the key components involved in the Arc enrollment process:
+## Examine the cloud-init logs
 
-### Azure Instance Metadata Service (IMDS)
+If you are using the `--user-data-content` parameter to pass a cloud-init script during VM creation, you can check the cloud-init logs for errors or issues related to the execution of the script.
 
-The Instance Metadata Service (IMDS) provides information about currently running virtual machine instances. For managed identities, IMDS:
-- Provides access tokens for authentication
-- Serves metadata about the VM and its managed identities
-- Runs on a well-known, non-routable IP address: `169.254.169.254`
+> [!NOTE]
+> The `--user-data` parameter is deprecated and will be removed in a future release.
+> Verify in the [`networkcloud` extension release history] for the latest updates.
 
-### Azure Connected Machine agent (azcmagent)
+A cloud-init script is a widely used approach for customizing VMs during their first boot:
 
-The Azure Connected Machine agent is responsible for:
-- Establishing the connection between the VM and Azure Arc
-- Maintaining the connection and heartbeat to Azure
-- Installing and managing extensions
-- Reporting VM status and metadata
-
-### Managed Identities
-
-Managed identities provide Azure services with an automatically managed identity in Microsoft Entra ID:
-- **System-assigned managed identity**: Created and managed by Azure, tied to the VM lifecycle
-- **User-assigned managed identity**: Created as a standalone Azure resource, can be assigned to multiple VMs
-
-### Cloud-init
-
-Cloud-init is a widely used approach for customizing VMs during their first boot:
 - Executes scripts and configurations during VM initialization
 - Handles user creation, package installation, and service configuration
 - Logs activities to `/var/log/cloud-init-output.log`
 
-## Environment variables reference
+## Nexus VM Instance Metadata Service (IMDS) sidecar container and required proxy settings
 
-Understanding the environment variables used in Arc enrollment helps with troubleshooting:
-
-| Variable | Purpose | Troubleshooting Impact |
-|----------|---------|----------------------|
-| `SUBSCRIPTION_ID` | Target Azure subscription | Incorrect value causes authorization failures |
-| `RESOURCE_GROUP` | Target resource group | Must exist and have proper permissions |
-| `TENANT_ID` | Azure tenant identifier | Required for cross-tenant scenarios |
-| `LOCATION` | Azure region | Must match supported Arc regions |
-| `UAMI_CLIENT_ID` | User-assigned managed identity client ID | Required for UAMI scenarios |
-| `ADMIN_USERNAME` | VM administrator username | Used for SSH access and troubleshooting |
-| `SSH_PUBLIC_KEY` | Public key for VM access | Required for remote troubleshooting |
+As part of the Nexus VM deployment, an IMDS sidecar container is deployed alongside the VM.
+This sidecar container is responsible for proxying requests to the platform level token service.
+Nexus VMs are configured to route traffic meant for the IP address `169.254.169.254` to the IMDS sidecar container.
+For this reason, the IP address `169.254.169.254` must be added to the `NO_PROXY` environment variable.
 
 ## Common error messages and solutions
 
@@ -509,7 +488,7 @@ If you're still experiencing issues after following this troubleshooting guide:
 
 ## Related articles
 
-- [How to enroll Azure Operator Nexus virtual machines with Azure Arc using managed identities](./howto-virtual-machine-arc-enroll-managed-identities.md)
+- [How to enroll Azure Operator Nexus virtual machines with Azure Arc using managed identities](./howto-arc-enroll-virtual-machine-using-managed-identities.md)
 - [Prerequisites for deploying tenant workloads](./quickstarts-tenant-workload-prerequisites.md)
 - [Create a virtual machine using Azure CLI](./quickstarts-virtual-machine-deployment-cli.md)
 - [Create a virtual machine using PowerShell](./quickstarts-virtual-machine-deployment-ps.md)
