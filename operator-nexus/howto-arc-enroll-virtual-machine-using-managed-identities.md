@@ -218,15 +218,13 @@ Ensure you complete the necessary setup for your chosen managed identity option 
 
 The VM must have outbound connectivity to Azure Resource Manager endpoints to complete the Azure Arc enrollment process.
 If your environment requires using a proxy server for outbound connectivity, you must configure the proxy settings in the cloud-init script or manually within the VM.
-
-The `TENANT_PROXY_IP` and `TENANT_PROXY_PORT` environment variables must be set with the appropriate values from the tenant proxy configuration.
-The tenant proxy is configured in the Network Fabric Controller (NFC) and is used by the VM for egress traffic.
+The CSN proxy is used by the VM for egress traffic.
 
 ```bash
-export HTTPS_PROXY=http://<TENANT_PROXY_IP>:<TENANT_PROXY_PORT>
-export https_proxy=http://<TENANT_PROXY_IP>:<TENANT_PROXY_PORT>
-export HTTPS_PROXY=http://<TENANT_PROXY_IP>:<TENANT_PROXY_PORT>
-export https_proxy=http://<TENANT_PROXY_IP>:<TENANT_PROXY_PORT>
+export HTTPS_PROXY=http://169.254.0.11:3128
+export https_proxy=http://169.254.0.11:3128
+export HTTPS_PROXY=http://169.254.0.11:3128
+export https_proxy=http://169.254.0.11:3128
 ```
 
 Similarly, you must also configure the `NO_PROXY` environment variable to exclude the IP address `169.254.169.254`.
@@ -318,13 +316,13 @@ The overall process involves the following steps:
 ### Azure Arc enrollment commands
 
 ```bash
-azcmagent config set proxy.url "http://<TENANT_PROXY_IP>:<TENANT_PROXY_PORT>"
+azcmagent config set proxy.url "http://169.254.0.11:3128"
 ```
 
 Output from setting the proxy configuration successfully:
 
 ```
-Config property proxy.url set to value http://<TENANT_PROXY_IP>:<TENANT_PROXY_PORT>
+Config property proxy.url set to value http://169.254.0.11:3128
 INFO    Updating service configuration: Azure Arc Proxy
 ```
 
@@ -341,7 +339,7 @@ Local Configuration Settings
   incomingconnections.enabled (preview)                 : true
   incomingconnections.ports (preview)                   : []
   connection.type (preview)                             : default
-  proxy.url                                             : http://<TENANT_PROXY_IP>:<TENANT_PROXY_PORT>
+  proxy.url                                             : http://169.254.0.11:3128
   proxy.bypass                                          : []
   extensions.allowlist                                  : []
   extensions.blocklist                                  : []

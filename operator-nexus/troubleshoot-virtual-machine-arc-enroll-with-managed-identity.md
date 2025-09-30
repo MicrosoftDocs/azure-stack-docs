@@ -70,9 +70,9 @@ Or, you can use the `networkcloud` extension to check the egress endpoints:
 az networkcloud cloudservicesnetwork show --name "$CSN_NAME" --resource-group "$RESOURCE_GROUP" --query "properties.enabledEgressEndpoints"
 ```
 
-### Tenant Proxy configuration
+### CSN Proxy configuration
 
-The tenant proxy is configured in the Network Fabric Controller (NFC) and is used by the VM for egress traffic.
+The CSN proxy is used by the VM for egress traffic.
 See [Required proxy and network settings to enable outbound connectivity], for more details.
 
 [Required proxy and network settings to enable outbound connectivity]: ./howto-arc-enroll-virtual-machine-using-managed-identities.md#required-proxy-and-network-settings-to-enable-outbound-connectivity
@@ -80,10 +80,10 @@ See [Required proxy and network settings to enable outbound connectivity], for m
 Ensure environment variables are set correctly within the prior to executing `az login --identity` or `azcmagent connect` commands.
 
 ```bash
-export HTTPS_PROXY=http://<TENANT_PROXY_IP>:<TENANT_PROXY_PORT>
-export https_proxy=http://<TENANT_PROXY_IP>:<TENANT_PROXY_PORT>
-export HTTPS_PROXY=http://<TENANT_PROXY_IP>:<TENANT_PROXY_PORT>
-export https_proxy=http://<TENANT_PROXY_IP>:<TENANT_PROXY_PORT>
+export HTTPS_PROXY=http://169.254.0.11:3128
+export https_proxy=http://169.254.0.11:3128
+export HTTPS_PROXY=http://169.254.0.11:3128
+export https_proxy=http://169.254.0.11:3128
 export NO_PROXY=169.254.169.254
 export no_proxy=169.254.169.254
 ```
@@ -91,7 +91,7 @@ export no_proxy=169.254.169.254
 Also, the `azcmagent` should set proxy settings:
 
 ```bash
-azcmagent config set proxy.url "http://<TENANT_PROXY_IP>:<TENANT_PROXY_PORT>"
+azcmagent config set proxy.url "http://169.254.0.11:3128"
 ```
 
 ## Error: Failed to login with managed identity
