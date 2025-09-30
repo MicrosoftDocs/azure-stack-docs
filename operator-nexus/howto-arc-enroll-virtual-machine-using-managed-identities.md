@@ -4,7 +4,7 @@ description: Learn how to Azure Arc enroll Azure Operator Nexus virtual machines
 ms.service: azure-operator-nexus
 ms.custom: azure-operator-nexus
 ms.topic: how-to
-ms.date: 09/29/2025
+ms.date: 09/30/2025
 ms.author: omarrivera
 author: g0r1v3r4
 ---
@@ -19,7 +19,7 @@ Azure Arc enrollment allows you to manage your virtual machines as Azure resourc
 
 ## Before you begin
 
-### Prerequisites on Azure Operator Nexus versions and API versions
+### Prerequisites on Azure Operator Nexus management bundle, runtime, and API versions
 
 - Ensure that your Nexus Cluster is running Azure Local Nexus `2510.1` Management Bundle and `4.7.0` Minor Runtime or later.
 - The feature support is available in API version `2025-07-01-preview` or later.
@@ -133,9 +133,14 @@ For more information about creating and managing managed identities and role ass
 The system-assigned managed identity is created automatically when the VM is created.
 The lifecycle of the system-assigned managed identity is tied to the VM.
 This option is simpler to manage as you do not need to create and manage the identity separately.
-
 However, you will need to assign the necessary roles to the system-assigned managed identity after the VM is created.
-This means you need to use the Azure CLI within the cloud-init user data script to assign the roles; otherwise, the enrollment process will fail.
+
+If you are Azure Arc enrolling manually, you can assign the roles after the VM is created and booted.
+Then you can use the Azure CLI within the VM to authenticate and enroll the VM with Azure Arc.
+
+If you automate Azure Arc enrollment using a cloud-init user data script, make sure to assign the required roles first.
+It is possible to assign the roles using the Azure CLI as part of the cloud-init script.
+If the roles are not assigned, the enrollment will fail.
 
 ### Using a user-assigned managed identity
 
@@ -210,7 +215,7 @@ export https_proxy=http://<TENANT_PROXY_IP>:<TENANT_PROXY_PORT>
 ```
 
 Similarly, you must also configure the `NO_PROXY` environment variable to exclude the IP address `169.254.169.254`.
-The IMDS endpoint `169.254.169.254` is used by the ` by the VM and the platform
+The Instance Metadata Service (IMDS) endpoint `169.254.169.254` is used by the VM to communicate with the platform's token service for managed identity token retrieval.
 
 ```bash
 export NO_PROXY=169.254.169.254
@@ -220,16 +225,16 @@ export no_proxy=169.254.169.254
 The CSN should already have the necessary egress routes to allow the VM to reach required Azure endpoints.
 However, if you are encountering connectivity issues, ensure that the CSN has the necessary routes to allow outbound connectivity.
 
-Known required endpoints:
-
-- management.azure.com (for az login)
-- login.microsoftonline.com (for az login)
-- his.arc.azure.com (for azcmagent connect)
+| Endpoint                         | Reason                                                          |
+|----------------------------------|-----------------------------------------------------------------|
+| management.azure.com             | Required for `az login` and Azure Resource Manager API access   |
+| login.microsoftonline.com        | Required for authentication during `az login`                   |
+| his.arc.azure.com                | Required for Azure Arc enrollment via `azcmagent connect`       |
 
 ## Authentication using Azure CLI and managed identities
 
 No matter the preferred approach of using a cloud-init script or manual execution, the authentication process using managed identities is similar.
-The main difference is that when using a user-assigned managed identity, you need to specify the client ID or resource ID of the identity.
+The main difference is that when using a user-assigned managed identity, it is necessary to specify the resource ID of the identity.
 
 ### Log in with a System-Assigned Managed Identity
 
@@ -273,25 +278,27 @@ The `az login` command is the preferred and recommended method for authenticatio
 
 ## Azure Arc enroll the VM using managed identities
 
-The sample cloud-init script performs the following steps during VM boot up:
+Once you have authenticated using the managed identity and retrieved the access token, you can proceed to enroll the VM with Azure Arc using the `azcmagent connect` command.
+The `azcmagent connect` command requires the access token to authenticate and authorize the enrollment process.
 
-1. **Install Azure CLI** - Downloads and installs the latest Azure CLI
-2. **Authenticate with managed identity** - Uses either system-assigned or user-assigned managed identity to sign in to Azure
-3. **Retrieve access token** - Gets an access token for Azure Resource Manager API
-4. **Install the `azcmagent` CLI tool** - Downloads and installs the Azure Connected Machine agent
-5. **Connect to Arc** - Uses the access token to register the VM with Azure Arc
+> [!TIP]
+> If the managed identity roles or permissions are changed, the token must be refreshed to reflect the changes.
 
-For more information about the `azcmagent connect` command and access tokens, see [Azure Connected Machine agent connect reference].
-
-For details about token retrieval with managed identities, see [How to use managed identities to get an access token].
+For more information about the `azcmagent connect` command and access tokens, see [Azure Connected Machine agent connect reference] and [How to use managed identities to get an access token].
 
 [Azure Connected Machine agent connect reference]: /azure/azure-arc/servers/azcmagent-connect#access-token
 [How to use managed identities to get an access token]: /entra/identity/managed-identities-azure-resources/how-to-use-vm-token#get-a-token-using-go
 
-> [!IMPORTANT]
-> The `azcmagent` package installation must happen **after** the access token is retrieved.
-> If the `azcmagent` installation happens before the access token is retrieved, the enrollment process fails.
-> An alternative approach is necessary to obtain the access token using `az rest`.
+The overall process involves the following steps:
+
+1. **Install Azure CLI** - Downloads and installs the latest Azure CLI
+2. **Configure proxy settings** - Sets the necessary proxy environment variables if required
+3. **Authenticate with managed identity** - Uses either system-assigned or user-assigned managed identity to sign in to Azure
+4. **Retrieve access token** - Gets an access token for Azure Resource Manager API
+5. **Install the `azcmagent` CLI tool** - Downloads and installs the Azure Connected Machine agent
+6. **Connect to Arc** - Uses the access token to register the VM with Azure Arc via the `azcmagent connect` command
+
+### Azure Arc enrollment commands
 
 ```bash
 azcmagent config set proxy.url "http://<TENANT_PROXY_IP>:<TENANT_PROXY_PORT>"
@@ -304,11 +311,13 @@ Config property proxy.url set to value http://<TENANT_PROXY_IP>:<TENANT_PROXY_PO
 INFO    Updating service configuration: Azure Arc Proxy
 ```
 
+Verify the proxy settings are correctly applied:
+
 ```bash
 azcmagent config list
 ```
 
-Verify the proxy settings are correctly applied:
+Output should show the proxy settings:
 
 ```
 Local Configuration Settings
@@ -326,34 +335,25 @@ Local Configuration Settings
   extensions.agent.cpulimit                             : 5
 ```
 
-    # Connect to Azure Arc
-    echo "Connecting virtual machine to Azure Arc..."
-add --verbose to see detailed output, it may be necessary to use `sudo`.
+Execute the command to enroll the VM using the access token retrieved from the managed identity.
+The `ACCESS_TOKEN` variable represents the output of the `az account get-access-token` command from section [Retrieve access token after authentication](#retrieve-access-token-after-authentication).
+Add the `--verbose` flag to see detailed output.
+
 ```bash
 azcmagent connect \
   --resource-group "${RESOURCE_GROUP}" \
   --tenant-id "${TENANT_ID}" \
   --location "${LOCATION}" \
   --subscription-id "${SUBSCRIPTION_ID}" \
-  --access-token "$ACCESS_TOKEN"
+  --access-token "${ACCESS_TOKEN}"
 ```
 
-
-```
-    # Install Azure Connected Machine agent (azcmagent)
-    # It is important that the azcmagent install happens after the access token is retrieved
-    if ! command -v azcmagent &> /dev/null; then
-      echo "Installing Azure Connected Machine agent..."
-      wget https://aka.ms/azcmagent -O "$TMP_DIR/install_linux_azcmagent.sh"
-      bash "$TMP_DIR/install_linux_azcmagent.sh"
-      azcmagent version
-    fi
-```
-
+After the command completes, the VM should be successfully enrolled with Azure Arc.
 
 ## Verify Azure Arc enrollment
 
 After the VM is created and boots, verify that Azure Arc enrollment was successful.
+You can check through Azure portal that the VM has an Azure Arc machine resource created.
 
 ### Check VM health status
 

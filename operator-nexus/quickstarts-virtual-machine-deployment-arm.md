@@ -102,8 +102,6 @@ az deployment group create \
 az deployment group show --resource-group myResourceGroup --name <deployment-name>
 ```
 
-## Review deployed resources
-
 [!INCLUDE [quickstart-review-deployment-cli](./includes/virtual-machine/quickstart-review-deployment-cli.md)]
 
 ## Clean up resources
