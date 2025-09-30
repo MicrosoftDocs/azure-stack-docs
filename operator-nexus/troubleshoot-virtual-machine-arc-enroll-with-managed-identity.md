@@ -36,7 +36,7 @@ The process relies on platform level components that facilitate communication be
 If you are using the `--user-data-content` parameter to pass a cloud-init script during VM creation, you can check the cloud-init logs for errors or issues related to the execution of the script.
 See [Use cloud-init user data script or manual execution for Azure Arc enrollment] for more information.
 
-[Use cloud-init user data script or manual execution for Azure Arc enrollment]: ./howto-arc-enroll-virtual-machine-using-managed-identities#use-cloud-init-user-data-script-or-manual-execution-for-azure-arc-enrollment
+[Use cloud-init user data script or manual execution for Azure Arc enrollment]: howto-arc-enroll-virtual-machine-using-managed-identities.md#use-cloud-init-user-data-script-or-manual-execution-for-azure-arc-enrollment
 
 > [!NOTE]
 > The `--user-data` parameter is deprecated and will be removed in a future release.
@@ -75,7 +75,7 @@ az networkcloud cloudservicesnetwork show --name "$CSN_NAME" --resource-group "$
 The tenant proxy is configured in the Network Fabric Controller (NFC) and is used by the VM for egress traffic.
 See [Required proxy and network settings to enable outbound connectivity], for more details.
 
-[Required proxy and network settings to enable outbound connectivity]: ./howto-arc-enroll-virtual-machine-using-managed-identities#required-proxy-and-network-settings-to-enable-outbound-connectivity
+[Required proxy and network settings to enable outbound connectivity]: ./howto-arc-enroll-virtual-machine-using-managed-identities.md#required-proxy-and-network-settings-to-enable-outbound-connectivity
 
 Ensure environment variables are set correctly within the prior to executing `az login --identity` or `azcmagent connect` commands.
 
@@ -118,7 +118,7 @@ Possible causes:
 
 1. Verify the VM was created with an associated managed identity.
    If the VM was not created with an associated managed identity, you must recreate the VM with one to use managed identity authentication.
-   See [Nexus VM with associated managed identities at creation time](./howto-arc-enroll-virtual-machine-using-managed-identities#nexus-vm-with-associated-managed-identities-at-creation-time) for more information.
+   See [Nexus VM with associated managed identities at creation time](./howto-arc-enroll-virtual-machine-using-managed-identities.md#nexus-vm-with-associated-managed-identities-at-creation-time) for more information.
 
 ```azurecli-interactive
 az networkcloud virtualmachine show --name "$VM_NAME" --resource-group "$RESOURCE_GROUP" --query "identity"
@@ -183,7 +183,7 @@ Possible causes:
        --query "additionalEgressEndpoints"
    ```
 
-[Assign roles to the managed identity]: ./howto-arc-enroll-virtual-machine-using-managed-identities#assign-roles-to-the-managed-identity
+[Assign roles to the managed identity]: ./howto-arc-enroll-virtual-machine-using-managed-identities.md#assign-roles-to-the-managed-identity
 
 ## Error: Failed to connect to Azure Arc
 

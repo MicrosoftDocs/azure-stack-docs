@@ -385,7 +385,7 @@ You can check through Azure portal that the VM has an Azure Arc machine resource
 
 #### Verify Arc enabled VM using Azure CLI
 
-Install the [`connectedmachine` CLI extension](/cli/azure/connectedmachine?view=azure-cli-latest) to run the command.
+Install the [`connectedmachine` CLI extension](/cli/azure/connectedmachine) to run the command.
 
 Get detailed information about specific VM.
 
@@ -426,7 +426,7 @@ az connectedmachine show --name "$VM_NAME" --resource-group "$RESOURCE_GROUP"
 
 ## Next steps
 
-It might be useful to review the [troubleshooting guide](./troubleshoot-virtual-machine-arc-enroll-with-managed-identity.md) for common issues and pitfalls.
+It might be useful to review the [troubleshooting guide][Troubleshoot Nexus virtual machines using managed identities] for common issues and pitfalls.
 
 ## Related articles
 
