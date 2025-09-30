@@ -16,12 +16,6 @@ This article compares Azure Local and Windows Server, and highlights key differe
 
 Azure Local and Windows Server share many similarities, such as letting you run virtual machines and container-based workloads. But they're designed for different scenarios and use cases. Azure Local is a cloud-connected hyperconverged solution that gives you a consistent experience across on-premises and cloud environments. Windows Server is a versatile operating system you can use as a host for virtual machines, as a traditional server, or as a guest operating system inside a virtual machine.
 
-Note that if you want to migrate VMware virtual machines (VMs), we currently provide several options:
-
-- [Use Azure VMware Solution to migrate to Azure](/azure/azure-vmware)
-- [Use Azure Migrate to migrate VMware VMs to Azure Local](../migrate/migrate-vmware-migrate.md)
-- [Use System Center Virtual Machine Manager (VMM) to convert a VMware VM to a Windows Server VM](/system-center/vmm/vm-convert-vmware)
-
 ## When to use Azure Local
 
 Azure Local is Microsoft's premier hyperconverged infrastructure platform for running virtual machines (VMs) or virtual desktops on-premises with connections to Azure hybrid services. Azure Local can help to modernize and secure your datacenters and branch offices, and achieve industry-best performance with low latency and data sovereignty.
@@ -84,7 +78,7 @@ The following table compares the workloads and benefits of Azure Local and Windo
 | Windows Server Datacenter: Azure Edition | Yes | No|
 | Windows Server subscription add-on (Dec. 2021)| Yes | No |
 | Extended Security Updates (ESUs) for Windows Server | Included | Purchased separately and applied via Azure Arc or  Multiple Activation Keys (MAKs) manually applied to every server |
-| VMware migration method | [Azure Migrate](../migrate/migrate-vmware-migrate.md) | [System Center VMM](/system-center/vmm/vm-convert-vmware) |
+| VMware migration method | [Azure Migrate](../migrate/migrate-vmware-migrate.md) | - [System Center VMM](/system-center/vmm/vm-convert-vmware)<br> - [VM Conversion (preview)](/windows-server/manage/windows-admin-center/use/migrate-vmware-to-hyper-v) |
 
 ## Compare technical features
 
