@@ -54,6 +54,8 @@
           href: concepts-nexus-network-packet-broker.md
         - name: Commit Workflow v2
           href: concepts-commit-workflow-v2.md
+        - name: Password Rotation v1
+          href: concepts-password-rotation-v1.md
         - name: Route Policy
           expanded: false
           items:
@@ -251,12 +253,16 @@
           href: howto-restrict-serial-port-access-and-set-timeout-on-terminal-server.md
         - name: How to configure BGP prefix limit on Customer Edge (CE) devices for Azure Operator Nexus
           href: howto-configure-bgp-prefix-limit-on-customer-edge-devices.md
+        - name: Configure Virtual Routing and Forwarding (VRF) route prefix limits (IPv4 and IPv6) on AON CE devices for Azure Operator Nexus
+          href: howto-configure-virtual-routing-forwarding-route-prefix-limits-on-devices.md
         - name: BMP log streaming in Azure Operator Nexus Network Fabric
           href: concepts-bmp-log-streaming.md
         - name: How to enable / disable BMP log streaming Azure Operator Nexus
           href: howto-enable-log-streaming.md
         - name: How to use Commit Workflow v2 in Azure Operator Nexus
           href: howto-use-commit-workflow-v2.md
+        - name: How to use Password Rotation v1 in Azure Operator Nexus
+          href: howto-use-password-rotation-v1.md
         - name: How to set administrative lock or unlock for Network fabric
           href: howto-set-administrative-lock-or-unlock-for-network-fabric.md
     - name: Cluster
