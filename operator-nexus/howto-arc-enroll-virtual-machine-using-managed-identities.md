@@ -24,7 +24,9 @@ Azure Arc enrollment allows you to manage your virtual machines as Azure resourc
 - Ensure that your Nexus Cluster is running Azure Local Nexus `2510.1` Management Bundle and `4.7.0` Minor Runtime or later.
 - The feature support is available in API version `2025-07-01-preview` or later.
 - Make sure the corresponding [Azure CLI `networkcloud` extension](/azure/operator-nexus/howto-install-cli-extensions) version is one that supports the same API version.
-  You can check the available versions in [azure-cli-extensions - networkcloud](https://github.com/Azure/azure-cli-extensions/blob/main/src/networkcloud/HISTORY.rst).
+  You can check the available versions in GitHub for the [`networkcloud` extension release history].
+
+[`networkcloud` extension release history]: https://github.com/Azure/azure-cli-extensions/blob/main/src/networkcloud/HISTORY.rst
 
 ### Getting started with Azure Operator Nexus virtual machines
 
@@ -39,7 +41,7 @@ Azure Arc enrollment allows you to manage your virtual machines as Azure resourc
 - Ensure you have permissions to create and managed identities in your Azure subscription.
 - Ensure you have permissions to enroll virtual machines with Azure Arc.
 - Ensure to create the VM with either a system-assigned or user-assigned managed identity.
-  The VM cannot be updated to add a managed identity after it is created.
+  You can't update the VM to add a managed identity after creation.
 
 ## Environment variables
 
@@ -118,11 +120,11 @@ This guide assumes that the networking resources are created before creating the
 
 ## Choose a managed identity option
 
-You can use either a system-assigned managed identity or a user-assigned managed identity to Azure Arc enroll the VM.
-Both options are supported by this guide.
+You can use either a system-assigned or a user-assigned managed identity to Azure Arc enroll the VM.
+Both options are supported in this guide.
 Choose the option that best fits your requirements.
 
-In this guide we will not cover the details on how to create and manage managed identities and role assignments.
+In this guide, doesn't cover the details on how to create and manage managed identities and role assignments.
 For more information about creating and managing managed identities and role assignments, see the relevant documentation:
 
 - [Manage user-assigned managed identities using the Azure portal](/entra/identity/managed-identities-azure-resources/how-manage-user-assigned-managed-identities)
@@ -132,15 +134,15 @@ For more information about creating and managing managed identities and role ass
 
 The system-assigned managed identity is created automatically when the VM is created.
 The lifecycle of the system-assigned managed identity is tied to the VM.
-This option is simpler to manage as you do not need to create and manage the identity separately.
-However, you will need to assign the necessary roles to the system-assigned managed identity after the VM is created.
+This option is simpler to manage as you don't need to create and manage the identity separately.
+However, it's necessary to assign roles to the system-assigned managed identity after the VM is created.
 
-If you are Azure Arc enrolling manually, you can assign the roles after the VM is created and booted.
+If you're Azure Arc enrolling manually, you can assign the roles after the VM is created and booted.
 Then you can use the Azure CLI within the VM to authenticate and enroll the VM with Azure Arc.
 
 If you automate Azure Arc enrollment using a cloud-init user data script, make sure to assign the required roles first.
-It is possible to assign the roles using the Azure CLI as part of the cloud-init script.
-If the roles are not assigned, the enrollment will fail.
+It's possible to assign the roles using the Azure CLI as part of the cloud-init script.
+If the roles aren't assigned, the enrollment fails.
 
 ### Using a user-assigned managed identity
 
@@ -169,35 +171,39 @@ For more information about role assignments, see:
 
 ## Use cloud-init user data script or manual execution for Azure Arc enrollment
 
-It is possible to pass in a cloud-init script to the VM during creation using the `--user-data` parameter.
-The cloud-init script must be base64 encoded before passing it to the `--user-data` parameter.
+It's possible to pass in a cloud-init script to the VM during creation using the `--user-data-content` parameter (or the alias `--udc`).
+The cloud-init script must be base64 encoded before passing it to the `--user-data-content` parameter.
 
 > [!NOTE]
-> The cloud-init script is only executed during the first boot of the VM.
-> However, the authentication with managed identities procedure can be done manually from within the VM after it is created and booted.
+> The `--user-data` parameter is deprecated and will be removed in a future release.
+> Verify in the [`networkcloud` extension release history] for the latest updates.
+
+> [!NOTE]
+> The cloud-init script runs only during the first boot of the VM.
+> You can also authenticate with managed identities manually from inside the VM after creation and boot.
 
 > [!IMPORTANT]
-> The VM must be created with either a system-assigned or user-assigned managed identity.
-> The VM cannot be updated to add a managed identity after it is created.
+> Create the VM with either a system-assigned or user-assigned managed identity.
+> It isn't possible to add a managed identity to the VM after creation.
 
-The cloud-init script will run during the VM's first boot and can be used to:
+The cloud-init script runs during the VM's first boot and can be used to:
 
 - [Install Azure CLI](https://aka.ms/azcli) (or ensure that the Azure CLI is already installed)
-- Authenticate using the managed identity using the `az login --identity` command,
+- Authenticate using the managed identity with the `az login --identity` command,
   explained in [Authentication using Azure CLI and managed identities](#authentication-using-azure-cli-and-managed-identities)
 - [Install the `azcmagent` package](https://aka.ms/azcmagent) and enroll the VM with Azure Arc
 
 The cloud-init script must handle the required scenario for your VM:
 
-- If you are using a System-Assigned Managed Identity (SAMI), you do not need to pass any additional parameters to the cloud-init script.
-- If you are using a User-Assigned Managed Identity (UAMI), you need to pass the resource ID of the UAMI to the cloud-init script.
+- If you're using a System-Assigned Managed Identity (SAMI), you don't need to pass any other parameters to the cloud-init script.
+- If you're using a User-Assigned Managed Identity (UAMI), you need to pass the resource ID of the UAMI to the cloud-init script.
   (You can also pass the client ID if you prefer to use that instead.)
 
 > [!TIP]
 > After the VM is created and boots, you can check the cloud-init logs to verify that the Arc enrollment process completed successfully.
 > If you need to troubleshoot the enrollment process, you can check the cloud-init logs file `/var/log/cloud-init-output.log` for any errors or issues.
 
-Please, make sure you have done the necessary setup for the chosen managed identity option before creating the VM.
+Ensure you complete the necessary setup for your chosen managed identity option before creating the VM.
 
 ## Required proxy and network settings to enable outbound connectivity
 
@@ -222,8 +228,8 @@ export NO_PROXY=169.254.169.254
 export no_proxy=169.254.169.254
 ```
 
-The CSN should already have the necessary egress routes to allow the VM to reach required Azure endpoints.
-However, if you are encountering connectivity issues, ensure that the CSN has the necessary routes to allow outbound connectivity.
+The Cloud Services Network (CSN) should already have the necessary egress routes to allow the VM to reach required Azure endpoints.
+However, if you're encountering connectivity issues, ensure that the CSN has the necessary routes to allow outbound connectivity.
 
 | Endpoint                         | Reason                                                          |
 |----------------------------------|-----------------------------------------------------------------|
@@ -234,15 +240,15 @@ However, if you are encountering connectivity issues, ensure that the CSN has th
 ## Authentication using Azure CLI and managed identities
 
 No matter the preferred approach of using a cloud-init script or manual execution, the authentication process using managed identities is similar.
-The main difference is that when using a user-assigned managed identity, it is necessary to specify the resource ID of the identity.
+The main difference is that when using a user-assigned managed identity, it's necessary to specify the resource ID of the identity.
 
-### Log in with a System-Assigned Managed Identity
+### Sign in with a System-Assigned Managed Identity
 
 ```azurecli-interactive
 az login --identity --allow-no-subscriptions
 ```
 
-### Log in with a User-Assigned Managed Identity
+### Sign in with a User-Assigned Managed Identity
 
 Ensure to export the necessary environment variables for the cloud-init script
 
@@ -271,28 +277,30 @@ ACCESS_TOKEN=$(az account get-access-token --resource https://management.azure.c
 ### Alternative access token retrieval methods
 
 If you prefer not to use the Azure CLI for authentication, you can retrieve an access token directly using `az rest` or `curl`.
-This approach can be useful in environments where the Azure CLI is not available or if you encounter issues with the CLI.
+This approach can be useful in environments where the Azure CLI isn't available or if you encounter issues with the CLI.
 The `az login` command is the preferred and recommended method for authentication.
 
 - [Alternative approach using `az rest` or `curl`](#alternative-approach-using-az-rest-or-curl)
 
-## Azure Arc enroll the VM using managed identities
+## Enroll the VM using managed identities
 
-Once you have authenticated using the managed identity and retrieved the access token, you can proceed to enroll the VM with Azure Arc using the `azcmagent connect` command.
+Once you authenticate using the managed identity and retrieve the access token, you proceed to enroll the VM with Azure Arc using the `azcmagent connect` command.
 The `azcmagent connect` command requires the access token to authenticate and authorize the enrollment process.
 
-> [!TIP]
-> If the managed identity roles or permissions are changed, the token must be refreshed to reflect the changes.
+Ensure to install the `azcmagent` CLI tool within the VM.
+This step can be done as part of the cloud-init script or manually after the VM is created and boots.
 
-For more information about the `azcmagent connect` command and access tokens, see [Azure Connected Machine agent connect reference] and [How to use managed identities to get an access token].
+- [Install the `azcmagent` CLI tool](/azure/azure-arc/servers/azcmagent)
 
-[Azure Connected Machine agent connect reference]: /azure/azure-arc/servers/azcmagent-connect#access-token
-[How to use managed identities to get an access token]: /entra/identity/managed-identities-azure-resources/how-to-use-vm-token#get-a-token-using-go
+For more information about the `azcmagent connect` command and access tokens, see:
+
+- [Azure Connected Machine agent connect reference]: /azure/azure-arc/servers/azcmagent-connect#access-token
+- [How to use managed identities to get an access token]: /entra/identity/managed-identities-azure-resources/how-to-use-vm-token#get-a-token-using-go
 
 The overall process involves the following steps:
 
 1. **Install Azure CLI** - Downloads and installs the latest Azure CLI
-2. **Configure proxy settings** - Sets the necessary proxy environment variables if required
+2. **Configure proxy settings** - Sets the necessary proxy environment variables if necessary
 3. **Authenticate with managed identity** - Uses either system-assigned or user-assigned managed identity to sign in to Azure
 4. **Retrieve access token** - Gets an access token for Azure Resource Manager API
 5. **Install the `azcmagent` CLI tool** - Downloads and installs the Azure Connected Machine agent
@@ -304,7 +312,7 @@ The overall process involves the following steps:
 azcmagent config set proxy.url "http://<TENANT_PROXY_IP>:<TENANT_PROXY_PORT>"
 ```
 
-Output from setting the proxy configuration sucessfully:
+Output from setting the proxy configuration successfully:
 
 ```
 Config property proxy.url set to value http://<TENANT_PROXY_IP>:<TENANT_PROXY_PORT>
@@ -337,7 +345,11 @@ Local Configuration Settings
 
 Execute the command to enroll the VM using the access token retrieved from the managed identity.
 The `ACCESS_TOKEN` variable represents the output of the `az account get-access-token` command from section [Retrieve access token after authentication](#retrieve-access-token-after-authentication).
-Add the `--verbose` flag to see detailed output.
+
+> [!TIP]
+> If the managed identity roles or permissions are changed, the token must be refreshed to reflect the changes.
+
+To see detailed output, add the `--verbose` flag.
 
 ```bash
 azcmagent connect \
@@ -350,10 +362,17 @@ azcmagent connect \
 
 After the command completes, the VM should be successfully enrolled with Azure Arc.
 
-## Verify Azure Arc enrollment
+### Verify Azure Arc enrollment
 
 After the VM is created and boots, verify that Azure Arc enrollment was successful.
 You can check through Azure portal that the VM has an Azure Arc machine resource created.
+
+Install the [`connectedmachine` CLI extension](/cli/azure/connectedmachine?view=azure-cli-latest) to run the command.
+
+```azurecli-interactive
+az connectedmachine list --resource-group "$RESOURCE_GROUP" \
+  --query "[].{Name:name,Location:location,Status:status,LastChange:lastStatusChange}" -o table
+```
 
 ### Check VM health status
 
@@ -379,7 +398,7 @@ az connectedmachine show --name "$VM_NAME" --resource-group "$RESOURCE_GROUP"
 
 ## Next steps
 
-It may be useful to review the [troubleshooting guide](./troubleshoot-virtual-machine-arc-enrollment-managed-identity.md) for common issues and additional context.
+It might be useful to review the [troubleshooting guide](./troubleshoot-virtual-machine-arc-enrollment-managed-identity.md) for common issues and pitfalls.
 
 ## Related articles
 
@@ -387,3 +406,6 @@ It may be useful to review the [troubleshooting guide](./troubleshoot-virtual-ma
 - [Create a virtual machine using Azure CLI](./quickstarts-virtual-machine-deployment-cli.md)
 - [Create a virtual machine using PowerShell](./quickstarts-virtual-machine-deployment-ps.md)
 - [Troubleshoot VM Arc enrollment issues](./troubleshoot-virtual-machine-arc-enrollment-managed-identity.md)
+- [Connect hybrid machines to Azure using a deployment script](/azure/azure-arc/servers/onboard-portal#install-and-validate-the-agent-on-linux)
+- [Quickstart: Connect a Linux machine with Azure Arc-enabled servers (package-based installation)](/azure/azure-arc/servers/quick-onboard-linux)
+- [Quickstart: Connect a machine to Arc-enabled servers (Windows or Linux install script)](/azure/azure-arc/servers/quick-enable-hybrid-vm)
