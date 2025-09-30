@@ -39,15 +39,13 @@ group that are registered.
 ## (Optional) Test rack-to-rack (room-to-room) latency
 
 Use the `psping` tool to validate network latency through a
-client-server testing model. To ensure accurate and complete testing, we **recommend that you run full mesh tests**. This implies that every host tests connectivity with every other host in both directions. Download the tool
-in this [<u>PsPing - Sysinternals \| Microsoft
-Learn</u>](https://learn.microsoft.com/en-us/sysinternals/downloads/psping)
+client-server testing model. To ensure accurate and complete testing, we **recommend that you run full mesh tests**. This implies that every host tests connectivity with every other host in both directions. Download the tool [PsPing (/sysinternals/downloads/psping).
 
 - **Server**: The machine that listens for incoming test traffic.
 
 - **Client**: The machine that initiates the test to measure latency.
 
-Each host will take turns acting as both **server** and **client** when
+Each host takes turns acting as both **server** and **client** when
 testing against other hosts. Follow the steps below:
 
 1. **Download psping**. Download and extract `psping` on each host that
@@ -63,23 +61,23 @@ PowerShell command:
     -ErrorAction Stop
     ```
 
-2. **Start the `psping` server on one host**. Run the following command:
+1. **Start the `psping` server on one host**. Run the following command:
 
     ```powershell
     .\psping.exe -s \<SERVER_IP\>:\<PORT\>
     ```
 
-3. **Run the `psping` client on another host**. Execute the following command:
+1. **Run the `psping` client on another host**. Execute the following command:
 
     ```powershell
     .\psping.exe -l 1m -n 5000 -h 5 \<SERVER_IP\>:\<PORT\>
     ```
 
-4. **Output Analysis**: After running the test, `psping` provides both a
+1. **Output analysis**: After running the test, `psping` provides both a
 summary and a histogram of latency values. This helps analyze
 performance more effectively.
 
-- **Average Latency**: This is the key metric for understanding overall
+- **Average latency**: This is the key metric for understanding overall
   network delay.
 
 - **Histogram**: Gives a clear picture of how consistent the latency is
