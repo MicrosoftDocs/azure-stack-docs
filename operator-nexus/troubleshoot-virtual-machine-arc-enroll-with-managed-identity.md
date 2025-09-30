@@ -47,87 +47,73 @@ This sidecar container is responsible for proxying requests to the platform leve
 Nexus VMs are configured to route traffic meant for the IP address `169.254.169.254` to the IMDS sidecar container.
 For this reason, the IP address `169.254.169.254` must be added to the `NO_PROXY` environment variable.
 
+## Cloud Services Network (CSN) configuration and tenant proxy settings
+
+Ensure that your cloud services network (CSN) is configured to allow egress traffic to the necessary Azure endpoints.
+
 ## Common error messages and solutions
 
-### "Failed to login with system-assigned managed identity"
+### Failed to login with managed identity
 
-**Error message:**
+Example error messages:
+
 ```
 ERROR: Failed to login with system-assigned managed identity
-```
 
-**Possible causes:**
-- System-assigned managed identity is not enabled on the VM
-- IMDS endpoint is not accessible
-- Network connectivity issues
+# OR
 
-**Solutions:**
-
-1. Verify system-assigned managed identity is enabled:
-   ```bash
-   az networkcloud virtualmachine show \
-       --name "$VM_NAME" \
-       --resource-group "$RESOURCE_GROUP" \
-       --query "identity"
-   ```
-
-2. Check IMDS connectivity from within the VM:
-   ```bash
-   curl -H "Metadata:true" "http://169.254.169.254/metadata/identity/oauth2/token?resource=https://management.azure.com/&api-version=2018-02-01"
-   ```
-
-3. Verify the VM was created with the `--mi-system-assigned --system-assigned` flags.
-
-### "Failed to login with user-assigned managed identity"
-
-**Error message:**
-```
 ERROR: Failed to login with user-assigned managed identity
 ```
 
-**Possible causes:**
+Possible causes:
+
+- System-assigned managed identity is not enabled on the VM
 - User-assigned managed identity is not properly assigned to the VM
-- Incorrect client ID specified
 - Identity permissions issues
+- IMDS endpoint is not accessible
+- Network connectivity issues
 
-**Solutions:**
+1. Verify the VM was created with an associated managed identity.
+   If the VM was not created with an associated managed identity, you must recreate the VM with one to use managed identity authentication.
+   See [Nexus VM with associated managed identities at creation time](./howto-arc-enroll-virtual-machine-using-managed-identities#nexus-vm-with-associated-managed-identities-at-creation-time) for more information.
 
-1. Verify user-assigned managed identity assignment:
+```azurecli-interactive
+az networkcloud virtualmachine show --name "$VM_NAME" --resource-group "$RESOURCE_GROUP" --query "identity"
+```
+
+1. Check IMDS connectivity from within the VM.
+   SSH into the VM and run the following commands:
+
    ```bash
-   az networkcloud virtualmachine show \
-       --name "$VM_NAME" \
-       --resource-group "$RESOURCE_GROUP" \
-       --query "identity.userAssignedIdentities"
+   export NO_PROXY=169.254.169.254
+
+   # Basic connectivity test
+   ping -c 3 169.254.169.254
+
+   # Test IMDS sidecar container is accessible and running
+   curl -v -H "Metadata:true" "http://169.254.169.254/healthz"
    ```
 
-2. Check if the identity exists and get its client ID:
-   ```bash
-   az identity show \
-       --name "$UAMI_NAME" \
-       --resource-group "$RESOURCE_GROUP" \
-       --query "clientId"
-   ```
+   If the IMDS endpoint is not accessible, there could be a network connectivity issue or the IMDS sidecar container may not be running.
 
-3. Test IMDS access with the specific client ID:
-   ```bash
-   curl -H "Metadata:true" "http://169.254.169.254/metadata/identity/oauth2/token?resource=https://management.azure.com/&client_id=$UAMI_CLIENT_ID&api-version=2018-02-01"
-   ```
+### Failed to retrieve access token
 
-### "Failed to retrieve access token"
+Example error message:
 
-**Error message:**
 ```
 ERROR: Failed to retrieve access token
 ```
 
-**Possible causes:**
+Possible causes:
+
+- Managed identity is not associated with the VM
 - Managed identity permissions are insufficient
 - Network connectivity to Azure endpoints is blocked
 - Token request timeout
 
-**Solutions:**
+1. Verify managed identity has appropriate permissions.
 
-1. Verify managed identity has appropriate permissions:
+   See the [Assign roles to the managed identity](./howto-arc-enroll-virtual-machine-using-managed-identities#assign-roles-to-the-managed-identity) for more details.
    ```bash
    # For system-assigned identity
    az role assignment list \
