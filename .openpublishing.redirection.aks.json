@@ -1504,6 +1504,16 @@
       "source_path": "AKS-Arc/azure-advisor-upgrade.md",
       "redirect_url": "/azure/aks/aksarc/aks-arc-known-issues",
       "redirect_document_id": false
+    },
+    {
+      "source_path": "AKS-Arc/check-vm-sku.md",
+      "redirect_url": "/azure/aks/aksarc/aks-troubleshoot",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "AKS-Arc/load-balancer-issues.md",
+      "redirect_url": "/azure/aks/aksarc/aks-troubleshoot",
+      "redirect_document_id": false
     }
   ]
 }

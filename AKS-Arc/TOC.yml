@@ -177,8 +177,6 @@
         href: cluster-k8s-version.md
       - name: KubeAPIServer unreachable error
         href: kube-api-server-unreachable.md
-      - name: Can't see VM SKUs on Azure portal
-        href: check-vm-sku.md
       - name: Disable Windows node pools
         href: disable-windows-nodepool.md
       - name: Networking
@@ -189,8 +187,6 @@
           href: network-validation-error-local.md
         - name: BGP with FRR not working
           href: connectivity-troubleshoot.md
-        - name: Connectivity issues with MetalLB load balancer
-          href: load-balancer-issues.md
       - name: Storage
         items:
         - name: Issues after deleting storage volumes
@@ -201,7 +197,7 @@
           href: entra-prompts.md
     - name: Known issues
       items:
-      - name: Known issues
+      - name: Known issues overview
         href: aks-arc-known-issues.md
       - name: Storage provisioning issue in cluster and node pool creation
         href: storage-provision-issue.md
