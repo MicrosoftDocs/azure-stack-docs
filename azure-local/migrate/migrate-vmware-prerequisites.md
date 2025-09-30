@@ -40,11 +40,9 @@ Before you can migrate, create an Azure Migrate project in Azure portal using th
 
 1. On the Azure portal home page, select **Azure Migrate**.
 
-1. On the **Get started** page, under **Servers, databases and web apps**, select **Discover, assess and migrate**.
+1. On the **Get started** page, select **Create project**.
 
     :::image type="content" source="media/migrate-vmware-prerequisites/project-get-started.png" alt-text="Screenshot of Get started page in Azure portal." lightbox="media/migrate-vmware-prerequisites/project-get-started.png":::
-
-1. On the **Servers, databases and web apps** page, select **Create project**.
 
 1. On the **Create project** page:
     1. Enter your subscription. Make sure that the chosen subscription is associated with the same Azure tenant as the Azure Local instance.
