@@ -26,7 +26,7 @@ Azure Arc enrollment allows you to manage your virtual machines as Azure resourc
 - Make sure the [`networkcloud` extension] is installed with a version that supports the required API version.
   You can find supported versions in the [`networkcloud` extension release history] on GitHub.
 
-[`networkcloud` extension]: https://learn.microsoft.com/en-us/cli/azure/networkcloud?view=azure-cli-latest
+[`networkcloud` extension]: /cli/azure/networkcloud
 [`networkcloud` extension release history]: https://github.com/Azure/azure-cli-extensions/blob/main/src/networkcloud/HISTORY.rst
 
 ### Getting started with Azure Operator Nexus virtual machines
