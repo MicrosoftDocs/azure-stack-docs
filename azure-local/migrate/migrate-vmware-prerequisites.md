@@ -3,7 +3,7 @@ title: Prerequisites for VMware VM migration to Azure Local using Azure Migrate 
 description: Learn prerequisites for VMware migration to Azure Local using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 09/29/2025
+ms.date: 09/30/2025
 ms.author: alkohli
 ---
 
@@ -39,10 +39,6 @@ The following list contains the prerequisites that must be met to migrate VMware
 Before you can migrate, create an Azure Migrate project in Azure portal using the following procedure. For more information, see [Create and manage projects](/azure/migrate/create-manage-projects#create-a-project-for-the-first-time).
 
 1. On the Azure portal home page, select **Azure Migrate**.
-
-1. On the **All projects** page, select a project from the list, then select **Create project**.
-
-    :::image type="content" source="media/migrate-vmware-prerequisites/project-select.png" alt-text="Screenshot of All projects page in Azure portal." lightbox="media/migrate-vmware-prerequisites/project-select.png":::
 
 1. On the **Get started** page, under **Servers, databases and web apps**, select **Discover, assess and migrate**.
 

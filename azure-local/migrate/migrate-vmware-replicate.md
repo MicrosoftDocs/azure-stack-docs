@@ -28,11 +28,12 @@ Ensure all VMs that you wish to migrate are powered on and have VMware tools ins
 
 ### Generate the project key
 
-1. In the Azure portal, go to your Azure Migrate project and then go to **Servers, databases and webapps**.
-1. On the **Migration tools** tile, select **Discover**. Make sure to use the **Migration and Modernization Discover** page for Azure Local. If you use the **Discovery and Assessment Discover** page, Azure Local migrations will be blocked.
+1. In the Azure portal, go to the **All projects** page and select your project from the list.
 
+1. On the **Overview** tab, under **Inventory**, select **Start discovery** > **Using appliance** > **For Azure Local**.
 
     :::image type="content" source="./media/migrate-vmware-replicate/generate-source-appliance-project-key-1.png" alt-text="Screenshot of going to Discover page from Migration tools tile for your source appliance." lightbox="./media/migrate-vmware-replicate/generate-source-appliance-project-key-1.png":::
+
 1. On the **Discover** page, select **Azure Local** under **Where do you want to migrate to** and then select **Yes, with VMware vSphere Hypervisor** under **Are your machines virtualized** in Azure Migrate.
 1. Enter a name for your source appliance and generate the key for the source VMware appliance. For detailed steps, see [Generate the project key](/azure/migrate/how-to-set-up-appliance-vmware#generate-the-project-key).
 
