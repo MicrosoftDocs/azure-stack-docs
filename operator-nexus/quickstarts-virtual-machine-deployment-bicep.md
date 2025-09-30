@@ -5,7 +5,7 @@ author: dramasamy
 ms.author: dramasamy
 ms.service: azure-operator-nexus
 ms.topic: how-to
-ms.date: 09/29/2025
+ms.date: 09/30/2025
 ms.custom:
   - template-how-to-pattern
   - devx-track-azurecli
@@ -42,13 +42,13 @@ Review and save the template file named ```virtual-machine-bicep-file.bicep```, 
 
 ### Virtual machines with managed identities
 
-To associate managed identities to the VM, you _must_ create the virtual machine with either a system-assigned managed identity or a user-assigned managed identity.
+Create the virtual machine with either a system-assigned or a user-assigned managed identity.
+To add a managed identity to the VM, the API version must be `2025-07-01-preview` or later.
 
 > [!IMPORTANT]
 > You must assign a managed identity (system-assigned or user-assigned) when creating the VM.
 > Managed identities can't be added after the VM is created.
 
-To add a system-assigned managed identity, the resource version must be `2025-07-01-preview` or later.
 Make sure to update the resource version for the virtual machine resource in the `virtual-machine-bicep-file.bicep` file.
 
 Add the `identity` section with `type` set to `SystemAssigned` to the Bicep file:

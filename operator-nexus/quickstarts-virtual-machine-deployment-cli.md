@@ -5,7 +5,7 @@ author: dramasamy
 ms.author: dramasamy
 ms.service: azure-operator-nexus
 ms.topic: how-to
-ms.date: 09/29/2025
+ms.date: 09/30/2025
 ms.custom: template-how-to-pattern, devx-track-azurecli
 ---
 
@@ -118,7 +118,14 @@ az networkcloud virtualmachine create \
 
 ### Virtual machines with managed identities
 
-To associate managed identities to the VM, you _must_ create the virtual machine with either a system-assigned managed identity or a user-assigned managed identity.
+Create the virtual machine with either a system-assigned or a user-assigned managed identity.
+To add a managed identity to the VM, the API version must be `2025-07-01-preview` or later.
+
+Make sure the [`networkcloud` extension] is installed with a version that supports the required API version.
+You can find supported versions in the [`networkcloud` extension release history] on GitHub.
+
+[`networkcloud` extension]: https://learn.microsoft.com/en-us/cli/azure/networkcloud?view=azure-cli-latest
+[`networkcloud` extension release history]: https://github.com/Azure/azure-cli-extensions/blob/main/src/networkcloud/HISTORY.rst
 
 > [!IMPORTANT]
 > You must assign a managed identity (system-assigned or user-assigned) when creating the VM.

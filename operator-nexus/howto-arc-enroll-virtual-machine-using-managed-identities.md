@@ -23,9 +23,10 @@ Azure Arc enrollment allows you to manage your virtual machines as Azure resourc
 
 - Ensure that your Nexus Cluster is running Azure Local Nexus `2510.1` Management Bundle and `4.7.0` Minor Runtime or later.
 - The feature support is available in API version `2025-07-01-preview` or later.
-- Make sure the corresponding [Azure CLI `networkcloud` extension](/azure/operator-nexus/howto-install-cli-extensions) version is one that supports the same API version.
-  You can check the available versions in GitHub for the [`networkcloud` extension release history].
+- Make sure the [`networkcloud` extension] is installed with a version that supports the required API version.
+  You can find supported versions in the [`networkcloud` extension release history] on GitHub.
 
+[`networkcloud` extension]: https://learn.microsoft.com/en-us/cli/azure/networkcloud?view=azure-cli-latest
 [`networkcloud` extension release history]: https://github.com/Azure/azure-cli-extensions/blob/main/src/networkcloud/HISTORY.rst
 
 ### Getting started with Azure Operator Nexus virtual machines
