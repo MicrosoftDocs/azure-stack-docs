@@ -185,7 +185,7 @@ For more information about role assignments, see:
 ## Use cloud-init user data script or manual execution for Azure Arc enrollment
 
 It's possible to pass in a cloud-init script to the VM during creation using the `--user-data-content` parameter (or the alias `--udc`).
-The cloud-init script must be base64 encoded before passing it to the `--user-data-content` parameter.
+The cloud-init script must be base64 encoded before passing it to the `--user-data-content "$ENCODED_USER_DATA"` parameter of the `az networkcloud virtualmachine create` command.
 
 > [!NOTE]
 > The `--user-data` parameter is deprecated and will be removed in a future release.
@@ -194,10 +194,6 @@ The cloud-init script must be base64 encoded before passing it to the `--user-da
 > [!NOTE]
 > The cloud-init script runs only during the first boot of the VM.
 > You can also authenticate with managed identities manually from inside the VM after creation and boot.
-
-> [!IMPORTANT]
-> Create the VM with either a system-assigned or user-assigned managed identity.
-> It isn't possible to add a managed identity to the VM after creation.
 
 The cloud-init script runs during the VM's first boot and can be used to:
 
@@ -212,9 +208,9 @@ The cloud-init script must handle the required scenario for your VM:
 - If you're using a User-Assigned Managed Identity (UAMI), you need to pass the resource ID of the UAMI to the cloud-init script.
   (You can also pass the client ID if you prefer to use that instead.)
 
-> [!TIP]
-> After the VM is created and boots, you can check the cloud-init logs to verify that the Arc enrollment process completed successfully.
-> If you need to troubleshoot the enrollment process, you can check the cloud-init logs file `/var/log/cloud-init-output.log` for any errors or issues.
+After the VM is created and boots, you can check the cloud-init logs to verify that the Arc enrollment process completed successfully.
+If you need to troubleshoot the enrollment process, you can check the cloud-init logs file `/var/log/cloud-init-output.log` for any errors or issues.
+It is necessary to SSH into the VM to access the logs.
 
 Ensure you complete the necessary setup for your chosen managed identity option before creating the VM.
 
@@ -235,6 +231,7 @@ export https_proxy=http://<TENANT_PROXY_IP>:<TENANT_PROXY_PORT>
 
 Similarly, you must also configure the `NO_PROXY` environment variable to exclude the IP address `169.254.169.254`.
 The Instance Metadata Service (IMDS) endpoint `169.254.169.254` is used by the VM to communicate with the platform's token service for managed identity token retrieval.
+The `NO_PROXY` variable can have multiple comma-separated values, but at a minimum, it must include the IMDS IP address.
 
 ```bash
 export NO_PROXY=169.254.169.254
@@ -292,8 +289,7 @@ ACCESS_TOKEN=$(az account get-access-token --resource https://management.azure.c
 If you prefer not to use the Azure CLI for authentication, you can retrieve an access token directly using `az rest` or `curl`.
 This approach can be useful in environments where the Azure CLI isn't available or if you encounter issues with the CLI.
 The `az login` command is the preferred and recommended method for authentication.
-
-- [Alternative approach using `az rest` or `curl`](#alternative-approach-using-az-rest-or-curl)
+See [Alternative access token retrieval methods](./troubleshoot-virtual-machine-arc-enroll-with-managed-identity.md#alternative-access-token-retrieval-methods) for more information.
 
 ## Enroll the VM using managed identities
 
@@ -380,7 +376,26 @@ After the command completes, the VM should be successfully enrolled with Azure A
 After the VM is created and boots, verify that Azure Arc enrollment was successful.
 You can check through Azure portal that the VM has an Azure Arc machine resource created.
 
+#### Check Arc enrollment from Azure portal
+
+1. Navigate to the Azure portal
+2. Go to "Azure Arc" > "Servers"
+3. Look for your VM in the resource group
+4. Check the status and last heartbeat timestamp
+
+#### Verify Arc enabled VM using Azure CLI
+
 Install the [`connectedmachine` CLI extension](/cli/azure/connectedmachine?view=azure-cli-latest) to run the command.
+
+Get detailed information about specific VM.
+
+```azurecli-interactive
+az connectedmachine show \
+    --name "$VM_NAME" \
+    --resource-group "$RESOURCE_GROUP"
+```
+
+List all Arc-enabled VM in the resource group.
 
 ```azurecli-interactive
 az connectedmachine list --resource-group "$RESOURCE_GROUP" \
@@ -417,8 +432,7 @@ It might be useful to review the [troubleshooting guide](./troubleshoot-virtual-
 
 - [Prerequisites for deploying tenant workloads](./quickstarts-tenant-workload-prerequisites.md)
 - [Create a virtual machine using Azure CLI](./quickstarts-virtual-machine-deployment-cli.md)
-- [Create a virtual machine using PowerShell](./quickstarts-virtual-machine-deployment-ps.md)
-- [Troubleshoot VM Arc enrollment issues](./troubleshoot-virtual-machine-arc-enrollment-managed-identity.md)
+- [Troubleshoot Nexus virtual machines using managed identities](./troubleshoot-virtual-machine-arc-enroll-with-managed-identity.md)
 - [Connect hybrid machines to Azure using a deployment script](/azure/azure-arc/servers/onboard-portal#install-and-validate-the-agent-on-linux)
 - [Quickstart: Connect a Linux machine with Azure Arc-enabled servers (package-based installation)](/azure/azure-arc/servers/quick-onboard-linux)
 - [Quickstart: Connect a machine to Arc-enabled servers (Windows or Linux install script)](/azure/azure-arc/servers/quick-enable-hybrid-vm)
