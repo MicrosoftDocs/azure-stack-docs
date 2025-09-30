@@ -53,4 +53,4 @@ Once you have reviewed and saved the template file named ```virtual-machine-arm-
 
 ## Next steps
 
-You've successfully created a Nexus virtual machine. You can now use the virtual machine to host virtual network functions (VNFs). 
+You've successfully created a Nexus virtual machine. You can now use the virtual machine to host virtual network functions (VNFs).
