@@ -99,7 +99,7 @@ Logs collected using proactive log collection are uploaded to an Azure storage a
 > [!TIP]
 > Save time by using [Send logs proactively](#send-logs-proactively) instead of Send logs now.
 >
-Send logs now is an option where you manually collect and uploads your diagnostic logs from Azure Stack Hub, usually before opening a support case.
+Send logs now is an option where you manually collect and upload your diagnostic logs from Azure Stack Hub, usually before opening a support case.
 
 There are two ways you can manually send diagnostic logs to Microsoft Support:
 
