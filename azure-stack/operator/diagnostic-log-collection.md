@@ -103,7 +103,7 @@ Send logs now is an option where you manually collect and uploads your diagnosti
 
 There are two ways you can manually send diagnostic logs to Microsoft Support:
 
-* [PowerShell](#send-logs-now-with-powershell)
+* [PowerShell (recommended)](#send-logs-now-with-powershell)
 * [Administrator portal](#send-logs-now-with-the-administrator-portal)
 
 > [!NOTE]
