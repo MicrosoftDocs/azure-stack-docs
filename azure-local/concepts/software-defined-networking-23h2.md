@@ -18,7 +18,7 @@ Virtual network elements such as [Hyper-V Virtual Switch](/windows-server/virtua
 
 There are three major SDN components, and you can choose which you want to deploy: Network Controller, Software Load Balancer, and Gateway.
 
-You can manage SDN on Azure Local in two ways: with Azure Arc or with on-premises tools. This artice provides an overview of SDN managed by on-premises tools.
+You can manage SDN on Azure Local in two ways: with Azure Arc or with on-premises tools. This article provides an overview of SDN managed by on-premises tools.
 
 For details on SDN enabled by Azure Arc and a comparison of both management methods, see [Software Defined Networking enabled by Azure Arc on Azure Local (preview)](./sdn-overview.md).
 
