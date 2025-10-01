@@ -3,9 +3,8 @@ title: Diagnostic log collection
 description: Learn about diagnostic log collection.
 author: sethmanheim
 ms.topic: article
-ms.date: 09/20/2021
+ms.date: 10/01/2025
 ms.author: sethm
-ms.reviewer: shisab
 ms.lastreviewed: 09/20/2021
 ms.custom: sfi-image-nochange
 
@@ -21,14 +20,13 @@ To get started with Azure Stack Hub diagnostic log collection, you have to regis
 
 ::: moniker range=">= azs-2005"
 
-You have multiple ways to send diagnostic logs to Microsoft Support. Depending on your connectivity to Azure, your options include:
+You have several ways to send diagnostic logs to Microsoft Support. Depending on your connectivity to Azure, your options include:
+
 * [Send logs proactively (recommended)](#send-logs-proactively)
 * [Send logs now](#send-logs-now)
 * [Save logs locally](#save-logs-locally)
 
-The flowchart shows which option to use for sending diagnostic logs. If Azure Stack Hub connects to Azure, enable **Proactive log collection**. Proactive log collection automatically uploads diagnostic logs to a Microsoft-controlled storage blob in Azure when a critical alert gets raised. You can also collect logs on-demand by using **Send logs now**. For an Azure Stack Hub that runs in a disconnected environment, or if you're having connectivity issues, choose to **Save logs locally**.
-
-![Flowchart shows how to send logs now to Microsoft](media/azure-stack-help-and-support/send-logs-now-flowchart.png)
+Proactive log collection automatically uploads diagnostic logs to a Microsoft-controlled storage blob in Azure when a critical alert gets raised. You can also collect logs on-demand by using **Send logs now**. For an Azure Stack Hub that runs in a disconnected environment, or if you're having connectivity issues, choose to **Save logs locally**.
 
 ::: moniker-end
 
@@ -118,9 +116,11 @@ If Azure Stack Hub is connected to Azure, we recommend using the administrator p
 To send logs now using the administrator portal:
 
 1. Open **Help + support > Log Collection > Send logs now**.
-1. Specify the start time and end time for log collection.
 1. Choose the local time zone.
 1. Select **Collect and Upload**.
+
+> [!IMPORTANT]
+> You can't specify a time range or filter logs when using the administrator portal. By default, logs are collected for the past four hours.
 
 If you're disconnected from the internet or want to only save logs locally, use the [Get-AzureStackLog](azure-stack-get-azurestacklog.md) method to send logs.
 
