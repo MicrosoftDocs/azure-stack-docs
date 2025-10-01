@@ -103,10 +103,8 @@ Send logs now is an option where you manually collect and uploads your diagnosti
 
 There are two ways you can manually send diagnostic logs to Microsoft Support:
 
-* [Administrator portal (recommended)](#send-logs-now-with-the-administrator-portal)
 * [PowerShell](#send-logs-now-with-powershell)
-
-If Azure Stack Hub is connected to Azure, we recommend using the administrator portal, because it's the simplest way to send the logs directly to Microsoft. If the portal is unavailable, you should send logs using PowerShell.
+* [Administrator portal](#send-logs-now-with-the-administrator-portal)
 
 > [!NOTE]
 > If you send logs using the administrator portal or PowerShell cmdlet, [Test-AzureStack](azure-stack-diagnostic-test.md) runs automatically in the background to collect diagnostic information.
