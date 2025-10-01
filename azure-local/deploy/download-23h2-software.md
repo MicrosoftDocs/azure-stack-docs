@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 06/02/2025
+ms.date: 09/24/2025
 ---
 
 # Download operating system for Azure Local deployment
@@ -29,13 +29,12 @@ Before you begin the download of the software from Azure portal, ensure that you
    - Subscription obtained through the Cloud Solution Provider (CSP) program.
    - At a minimum, you'll need **Reader** access at the subscription level.
 
-- Register the Microsoft Azure Stack HCI resource provider. For more information, see [Register your machines and assign permissions for Azure Local deployment](deployment-arc-register-server-permissions.md).
+- Register the Microsoft Azure Stack HCI resource provider to access the Azure Local OS image download. For instructions on registering via PowerShell or the Azure portal, see [Register required resource providers](deployment-arc-register-server-permissions.md#azure-prerequisites) in the Azure prerequisites section, or refer to [Register resource provider](/azure/azure-resource-manager/management/resource-providers-and-types#register-resource-provider).
 
 ## Download the software from the Azure portal
 
 > [!IMPORTANT]
-> - English is the only supported language for the deployment.
-> - For deployments in Azure Government only, download the OS image from the following location: [OS image](https://aka.ms/hcireleaseimage).
+> English is the only supported language for the deployment.
 
 Follow these steps to download the software:
 

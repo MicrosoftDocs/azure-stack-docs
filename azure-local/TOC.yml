@@ -93,10 +93,10 @@ items:
         href: plan/four-node-switchless-two-switches-two-links.md
     - name: SDN considerations
       href: plan/network-patterns-sdn-considerations.md
+  - name: Review Azure Arc gateway for Azure Local
+    href: deploy/deployment-azure-arc-gateway-overview.md
   - name: Review cloud deployment network considerations
     href: plan/cloud-deployment-network-considerations.md
-  - name: Review Azure Arc gateway
-    href: deploy/deployment-azure-arc-gateway-overview.md
   - name: Review security
     items:
     - name: About security features
@@ -259,10 +259,14 @@ items:
     href: update/update-phases-23h2.md
   - name: Update via PowerShell
     href: update/update-via-powershell-23h2.md
+  - name: Opt in to update to 12.25xx from 11.xxxx
+    href: update/update-opt-enable.md
   - name: Update via PowerShell with limited connectivity
     href: update/import-discover-updates-offline-23h2.md
   - name: Update via Azure portal
     href: update/azure-update-manager-23h2.md
+  - name: Review best practices 
+    href: update/update-best-practices.md
   - name: Troubleshoot updates
     href: update/update-troubleshooting-23h2.md
 
@@ -284,6 +288,8 @@ items:
       href: upgrade/install-solution-upgrade.md
     - name: Upgrade via ARM template
       href: upgrade/install-solution-upgrade-azure-resource-manager-template.md
+  - name: Upgrade stretched clusters to 23H2
+    href: upgrade/upgrade-stretched-cluster-to-23h2.md
   - name: Troubleshoot upgrades
     href: upgrade/troubleshoot-upgrade-to-23h2.md
 
@@ -323,6 +329,9 @@ items:
           items: 
           - name: Using Ubuntu VM image
             href: manage/virtual-machine-image-linux-sysprep.md
+            items:
+            - name: Using Ubuntu Azure Marketplace image
+              href: manage/virtual-machine-azure-marketplace-ubuntu.md
           - name: Using CentOS VM image 
             href: manage/virtual-machine-image-centos.md
           - name: Using Red Hat Enterprise VM image
@@ -359,6 +368,22 @@ items:
    
     - name: Collect log files for Azure Local VM
       href: manage/collect-log-files-arc-enabled-vms.md 
+    - name: Implement disaster recovery
+      items:
+      - name: Overview
+        href: manage/disaster-recovery-overview.md
+      - name: Infrastructure resiliency
+        href: manage/disaster-recovery-infrastructure-resiliency.md
+      - name: Virtual machine resiliency
+        items:
+        - name: Overview
+          href: manage/disaster-recovery-vm-resiliency.md
+        - name: Use Azure Site Recovery
+          href: manage/azure-site-recovery.md
+        - name: Use Azure Backup Server
+          href: /azure/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines?toc=/azure/azure-local/toc.json&bc=/azure/azure-local/breadcrumb/toc.json
+      - name: Workloads resiliency
+        href: manage/disaster-recovery-workloads-resiliency.md
     - name: Troubleshoot
       href: manage/troubleshoot-arc-enabled-vms.md
     - name: FAQs
@@ -427,10 +452,6 @@ items:
       href: hybrid-capabilities-with-azure-services-23h2.md
     - name: Enhanced management from Azure
       href: manage/azure-enhanced-management-managed-identity.md
-    - name: Use Azure Site Recovery
-      href: manage/azure-site-recovery.md
-    - name: Use Azure Backup
-      href: /azure/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines?toc=/azure/azure-local/toc.json&bc=/azure/azure-local/breadcrumb/toc.json
 
   - name: Azure Arc extensions
     items:

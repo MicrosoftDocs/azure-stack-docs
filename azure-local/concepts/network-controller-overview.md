@@ -58,7 +58,7 @@ Gateway connections support Border Gateway Protocol (BGP) for dynamic route mana
 
 ## Virtual appliance chaining
 
-This Network Controller feature allows you to attach virtual network appliances to your virtual networks. These appliances can be used for advanced firewalling, load balancing, intrusion detection and prevention, and many other network services. You can add virtual appliances that perform user-defined routing and port mirroring functions. With user-defined routing, the virtual appliance gets used as a router between the virtual subnets on the virtual network. With port mirroring, all network traffic that is entering or leaving the monitored port is duplicated and sent to a virtual appliance for analysis.
+This Network Controller feature allows you to attach virtual network appliances to your virtual networks. These appliances can be used for advanced firewalling, load balancing, intrusion detection and prevention, and many other network services. You can add virtual appliances that perform user-defined routing and port mirroring functions. With user-defined routing, the virtual appliance gets used as a router between the virtual subnets on the virtual network. With port mirroring, all network traffic that's entering or leaving the monitored port is duplicated and sent to a virtual appliance for analysis.
 
 To learn more about user-defined routes, see [Use Network Virtual Appliances on a Virtual Network](/windows-server/networking/sdn/manage/use-network-virtual-appliances-on-a-vn).
 

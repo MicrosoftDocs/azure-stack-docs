@@ -1,112 +1,120 @@
 --- 
-title: Overview of Azure Arc gateway for Azure Local (Preview)
-description: Learn what is Azure Arc gateway for Azure Local (Preview).
+title: Overview of Azure Arc gateway for Azure Local
+description: Learn what is Azure Arc gateway for Azure Local.
 author: alkohli
 ms.topic: how-to
-ms.date: 07/30/2025
+ms.date: 09/24/2025
 ms.author: alkohli
 ms.service: azure-local
 ---
 
-# About Azure Arc gateway for Azure Local (Preview)
+# About Azure Arc gateway for Azure Local
 
-::: moniker range=">=azloc-2505"
+::: moniker range=">=azloc-2506"
 
-This article provides an overview of the Azure Arc gateway for Azure Local (formerly known as Azure Stack HCI) which can be enabled on new deployments of Azure Local running software version 2505 and later. This article also describes how to create and delete the Arc gateway resource in Azure.
+This article provides an overview of the Azure Arc gateway for Azure Local (formerly known as Azure Stack HCI). You can enable the Arc gateway on new deployments of Azure Local running software version 2506 and later. This article also describes how to create and delete the Arc gateway resource in Azure.
 
-You can use the Arc gateway to significantly reduce the number of required endpoints needed to deploy and manage Azure Local instances. When you create the Arc gateway, you can connect to and use it for new deployments of Azure Local.
+Use the Arc gateway to significantly reduce the number of required endpoints needed to deploy and manage Azure Local instances. When you create the Arc gateway, connect to and use it for new deployments of Azure Local.
 
 ## How it works
 
 The Arc gateway works by introducing the following components:
 
-- **Arc gateway resource** – An Azure resource that acts as a common entry point for Azure traffic. This gateway resource has a specific domain or URL that you can use. When you create the Arc gateway resource, this domain or URL is a part of the success response.  
+- **Arc gateway resource** – An Azure resource that acts as a common entry point for Azure traffic. This gateway resource has a specific domain or URL that you can use. When you create the Arc gateway resource, this domain or URL is part of the success response.  
 
-- **Arc proxy** – A new component that is added to the Arc agentry. This component runs as a service (called the **Azure Arc Proxy**) and works as a forward proxy for the Azure Arc agents and extensions. The gateway router doesn't need any configuration from your side. This router is part of the Arc core agentry and runs within the context of an Arc-enabled resource.
+- **Arc proxy** – A new component that is added to the Arc agentry. This component runs as a service (called the **Azure Arc Proxy**) and functions as a forward proxy for the Azure Arc agents and extensions. The gateway router doesn't need any configuration. This router is part of the Arc core agentry and runs in the context of an Arc-enabled resource.
 
 When you integrate the Arc gateway with Azure Local deployments, each machine gets Arc proxy along with other Arc Agents.
 
-When Arc gateway is used, the *http* and *https* traffic flow changes as follows:
+The following diagram illustrates how traffic flows between the various components:
 
-**Traffic flow for Azure Local host operating system components**
+:::image type="content" source="./media/deployment-azure-arc-gateway-overview/arc-gateway-component-diagram.svg" alt-text="Diagram of Azure Arc gateway architecture." lightbox="./media/deployment-azure-arc-gateway-overview/arc-gateway-component-diagram.svg":::
 
-1. OS proxy settings are used to route all HTTPS host traffic through Arc proxy.  
+The following sections explain how *http* and *https* traffic flow changes when you use the Arc gateway:
 
-1. From Arc proxy, the traffic is forwarded to Arc gateway.
+### Traffic flows 1-3 for Azure Local host OS
 
-1. Based on the configuration in the Arc gateway, if allowed, the traffic is sent to target services. If not allowed, Arc proxy redirects this traffic to the enterprise proxy (or direct outbound if no proxy set). Arc proxy automatically determines the right path for the endpoint.
+- Make sure to [Configure the proxy bypass list](./deployment-with-azure-arc-gateway.md?view=azloc-2509&tabs=script&pivots=register-proxy&preserve-view=true#step-2-set-parameters) for any endpoint that you don't want to send over Arc gateway.
 
-**Traffic flow for Arc appliance Azure Arc resource bridge and AKS control plane**
+- Arc gateway doesn't support HTTP traffic. Configure your proxy or firewall to allow the required HTTP endpoints for Azure Local.
 
-1. Routable IP (failover clustered IP resource as of now) is used to forward the traffic through Arc proxy running on the Azure Local host machines.
+- All HTTPS traffic not configured in the proxy bypass list is forwarded to Arc gateway.
 
-1. Azure Arc resource bridge and Azure Kubernetes Service (AKS) forward proxy are configured to use routable IP.
+- Arc proxy automatically determines the right path for the endpoint. If the Arc gateway doesn't allow the HTTPS endpoint, Arc proxy sends the HTTPS traffic to your enterprise proxy or firewall.
 
-1. With proxy settings in place, Arc resource bridge, and AKS outbound traffic is forwarded to Arc proxy running on one of the Azure Local machines over routable IP.
+### Traffic flow 4 for Azure Arc resource bridge
 
-1. When traffic reaches the Arc proxy, the remaining flow takes the same path as described. If traffic to the target service is allowed, it's sent to Arc gateway. If not, it's sent to the enterprise proxy (or direct outbound if no proxy set). For AKS specifically, this path is used for downloading docker images for Arc agentry and Arc Extension Pods.
+- The Azure Arc resource bridge forward proxy is configured to use cluster IP.
 
-**Traffic flow for Azure Local VMs**
+- With proxy settings in place, the system forwards Arc resource bridge HTTPS traffic to Arc proxy running on one of the Azure Local machines over cluster IP.
 
-HTTP and HTTPS traffic are forwarded to the enterprise proxy. Arc proxy inside an Azure Local virtual machine (VM) enabled by Arc isn't yet supported in this version.
 
-Traffic flows are illustrated in the following diagram:
+### Traffic flow 5 for AKS clusters and pods
 
-:::image type="content" source="./media/deployment-azure-arc-gateway-overview/arc-gateway-component-diagram.png" alt-text="Diagram of Azure Arc gateway architecture." lightbox="./media/deployment-azure-arc-gateway-overview/arc-gateway-component-diagram.png":::
+- When you deploy AKS clusters on Azure Local with Arc gateway, the system forwards all HTTP and HTTPS traffic from the AKS control plane VM and worker node VMs to the cluster IP as the proxy.
+
+- If there's an existing firewall between the infrastructure subnet and the AKS subnet, allow the traffic from ports 22 and 6443.
+
+- When you deploy AKS workloads on Azure Local with Arc gateway configured, you still need to allow access to the non-allowed endpoints on the management subnet. If you don't want the traffic routed through the management subnet, configure the non-allowed endpoints via the proxy bypass list during Azure Local deployment.
+
+    For more information, see the [Comprehensive list of FQDN endpoints required for AKS on a separated subnet](/azure/aks/aksarc/arc-gateway-aks-arc#confirm-access-to-required-urls) when using Arc gateway.
+
+### Traffic flow 6 for Azure Local VMs
+
+- The system forwards all Arc HTTPS traffic to the Arc gateway configured for the Azure Local VM.
+- If you want to forward all the HTTP and HTTPS traffic from the Azure Local VM to the Arc gateway, you must configure the OS WinInet and WinHTTP proxy settings to use the Arc proxy that's running on http://\<localhost\>:\<port40343\>.
+- If the Arc gateway doesn't allow endpoints from reaching inside the Azure Local VM, the system sends the traffic to the enterprise proxy or firewall.
+
+For more information about the traffic flows, see [Deep dive into Azure Arc gateway outbound traffic mode for Azure Local](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/Networking/Arc-Gateway-Outbound-Connectivity/DeepDive-ArcGateway-Outbound-Traffic.md).
 
 
 ## Supported and unsupported scenarios
 
-You can use the Arc gateway in the following scenario for Azure Local:
+Use the Arc gateway in the following scenarios for Azure Local:
 
-- Enable Arc gateway during deployment of new Azure Local instances running versions 2508 or later.
+- Enable Arc gateway during deployment of new Azure Local instances running versions 2506 or later.
 - The Arc gateway resource must be created on the same subscription where you're planning to deploy your Azure Local instance.
 
 Unsupported scenarios for Azure Local include:
 
-- Enabling Arc gateway after deployment isn't supported.
+- You can't enable Arc gateway after deployment.
 
 ## Azure Local endpoints not redirected
 
-The endpoints from the table are required and must be allowlisted in your proxy or firewall to deploy the Azure Local instance:
+The endpoints from the following table are required. Add these endpoints to the allowlist in your proxy or firewall to deploy the Azure Local instance:
 
 | Endpoint # | Required endpoint | Component  |
-|--| -- |--|
-| 1 | `http://aka.ms:443` | Bootstrap |
-| 2 | `http://azurestackreleases.download.prss.microsoft.com:443]` | Bootstrap |
-| 3 | `http://login.microsoftonline.com:443` | Arc registration |
-| 4 | `http://<region>.login.microsoft.com:443` | Arc registration |
-| 5 | `http://management.azure.com:443` | Arc registration |
-| 6 | `http://gbl.his.arc.azure.com:443` | Arc registration |  
-| 7 | `http://<region>.his.arc.azure.com:443` | Arc registration |
-| 8 | `http://dc.services.visualstudio.com:443` | Arc registration |
-| 9 | `https://<region>.obo.arc.azure.com:8084` | AKS extensions |
-| 10 | `http://<yourarcgatewayId>.gw.arc.azure.com:443` | Arc gateway |
-| 11 | `http://<yourkeyvaultname>.vault.azure.net:443` | Azure Key Vault |
-| 12 | `http://<yourblobstorageforcloudwitnessname>.blob.core.windows.net:443` | Cloud Witness Storage Account |
-| 13 | `http://files.pythonhosted.org:443` | Not required starting with 2504 new deployments. Microsoft On-premises Cloud/ARB/AKS |
-| 14 | `http://pypi.org:443` | Not required starting with 2504 new deployments. Microsoft On-premises Cloud/ARB/AKS |
-| 15 | `http://raw.githubusercontent.com:443` | Not required starting with 2504 new deployments. Microsoft On-premises Cloud/ARB/AKS |
-| 16 | `http://pythonhosted.org:443` | Not required starting with 2504 new deployments. Microsoft On-premises Cloud/ARB/AKS |
-| 17 | `http://ocsp.digicert.com`  | Certificate Revocation List for Arc extensions |
-| 18 | `http://s.symcd.com` | Certificate Revocation List for Arc extensions |
-| 19 | `http://ts-ocsp.ws.symantec.com` | Certificate Revocation List for Arc extensions |
-| 20 | `http://ocsp.globalsign.com` | Certificate Revocation List for Arc extensions |
-| 21 | `http://ocsp2.globalsign.com` | Certificate Revocation List for Arc extensions |
-| 22 | `http://oneocsp.microsoft.com` | Certificate Revocation List for Arc extensions |
-| 23 | `http://crl.microsoft.com/pkiinfra` | Certificate Revocation List for Arc extensions |
-| 24 | `http://dl.delivery.mp.microsoft.com` | Windows Update |
-| 25 | `http://*.tlu.dl.delivery.mp.microsoft.com` | Windows Update |
-| 26 | `http://*.windowsupdate.com` | Windows Update |
-| 27 | `http://*.windowsupdate.microsoft.com` | Windows Update |
-| 28 | `http://*.update.microsoft.com` | Windows Update |
+|--|--|--|
+| 1 | `https://aka.ms` | Bootstrap |
+| 2 | `https://azurestackreleases.download.prss.microsoft.com` | Bootstrap |
+| 3 | `https://login.microsoftonline.com` | Arc registration |
+| 4 | `https://<region>.login.microsoft.com` | Arc registration |
+| 5 | `https://management.azure.com` | Arc registration |
+| 6 | `https://gbl.his.arc.azure.com` | Arc registration |  
+| 7 | `https://<region>.his.arc.azure.com` | Arc registration |
+| 8 | `https://<region>.obo.arc.azure.com:8084` | Only required for certain AKS workloads extensions |
+| 9 | `https://<yourarcgatewayId>.gw.arc.azure.com` | Arc gateway |
+| 10 | `https://<yourkeyvaultname>.vault.azure.net` | Azure Key Vault |
+| 11 | `https://<yourblobstorageforcloudwitnessname>.blob.core.windows.net` | Cloud Witness Storage Account |
+| 12 | `http://ocsp.digicert.com`  | Certificate Revocation List for Arc extensions |
+| 13 | `http://s.symcd.com` | Certificate Revocation List for Arc extensions |
+| 14 | `http://ts-ocsp.ws.symantec.com` | Certificate Revocation List for Arc extensions |
+| 15 | `http://ocsp.globalsign.com` | Certificate Revocation List for Arc extensions |
+| 16 | `http://ocsp2.globalsign.com` | Certificate Revocation List for Arc extensions |
+| 17 | `http://oneocsp.microsoft.com` | Certificate Revocation List for Arc extensions |
+| 18 | `http://crl.microsoft.com/pkiinfra` | Certificate Revocation List for Arc extensions |
+| 19 | `https://dl.delivery.mp.microsoft.com` | Not required starting with 2504 new deployments. Windows Update |
+| 20 | `https://*.tlu.dl.delivery.mp.microsoft.com` | Not required starting with 2506 new deployments. Windows Update |
+| 21 | `https://*.windowsupdate.com` | Not required starting with 2506 new deployments. Windows Update |
+| 22 | `https://*.windowsupdate.microsoft.com` | Not required starting with 2506 new deployments. Windows Update |
+| 23 | `https://*.update.microsoft.com` | Not required starting with 2506 new deployments. Windows Update |
 
 ## Restrictions and limitations
 
-Consider the following limitations of Arc gateway in this release:
+Arc gateway has the following limitations in this release:
 
-- Transport Layer Security (TLS) terminating proxies aren't supported with the Arc gateway.
-- Use of ExpressRoute, Site-to-Site VPN, or Private Endpoints in addition to the Arc gateway isn't supported.
+- Arc gateway doesn't support Transport Layer Security (TLS) terminating proxies.
+- Arc gateway doesn't support using ExpressRoute, Site-to-Site VPN, or Private Endpoints together with the Arc gateway.
 
 ## Create the Arc gateway resource in Azure
 
@@ -115,7 +123,7 @@ You can create an Arc gateway resource using the Azure portal, Azure CLI, or Azu
 # [Portal](#tab/portal)
 
 1. Sign in to [Azure portal](https://ms.portal.azure.com/).
-1. Go to the **Azure Arc > Azure Arc gateway** page, then select **Create**.
+1. Go to the **Azure Arc > Azure Arc gateway** page, and then select **Create**.
 1. Select the subscription where you're planning to deploy your Azure Local instance.
 1. For **Name**, enter the name for the Arc gateway resource.
 1. For **Location**, enter the region where the Arc gateway resource should live. An Arc gateway resource is used by any Arc-enabled resource in the same Azure tenant.
@@ -178,8 +186,8 @@ This operation can take a couple of minutes.
 
 ::: moniker-end
 
-::: moniker range="<=azloc-2504"
+::: moniker range="<=azloc-2505"
 
-This feature is available only in Azure Local version 2505 or later.
+This feature is available only in Azure Local version 2506 or later.
 
 ::: moniker-end
