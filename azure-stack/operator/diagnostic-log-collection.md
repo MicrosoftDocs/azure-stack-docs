@@ -109,19 +109,6 @@ There are two ways you can manually send diagnostic logs to Microsoft Support:
 > [!NOTE]
 > If you send logs using the administrator portal or PowerShell cmdlet, [Test-AzureStack](azure-stack-diagnostic-test.md) runs automatically in the background to collect diagnostic information.
 
-### Send logs now with the administrator portal
-
-To send logs now using the administrator portal:
-
-1. Open **Help + support > Log Collection > Send logs now**.
-1. Choose the local time zone.
-1. Select **Collect and Upload**.
-
-> [!IMPORTANT]
-> You can't specify a time range or filter logs when using the administrator portal. By default, logs are collected for the past four hours.
-
-If you're disconnected from the internet or want to only save logs locally, use the [Get-AzureStackLog](azure-stack-get-azurestacklog.md) method to send logs.
-
 ### Send logs now with PowerShell
 
 If you're using the **Send logs now** method and want to use PowerShell instead of the administrator portal, you can use the `Send-AzureStackDiagnosticLog` cmdlet to collect and send specific logs.
@@ -196,6 +183,19 @@ If you're using the **Send logs now** method and want to use PowerShell instead 
 
 > [!NOTE]
 > If you're disconnected from the internet or want to only save logs locally, use the [Get-AzureStackLog](azure-stack-get-azurestacklog.md) command to send logs.
+
+### Send logs now with the administrator portal
+
+To send logs now using the administrator portal:
+
+1. Open **Help + support > Log Collection > Send logs now**.
+1. Choose the local time zone.
+1. Select **Collect and Upload**.
+
+> [!IMPORTANT]
+> You can't specify a time range or filter logs when using the administrator portal. By default, logs are collected for the past four hours.
+
+If you're disconnected from the internet or want to only save logs locally, use the [Get-AzureStackLog](azure-stack-get-azurestacklog.md) method to send logs.
 
 ### How the data is handled
 
