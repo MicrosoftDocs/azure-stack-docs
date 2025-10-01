@@ -3,7 +3,7 @@ title: Discover and replicate Hyper-V VMs for migration to Azure Local using Azu
 description: Learn the discovery and replication process for Hyper-V VMs to Azure Local using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 09/30/2025
+ms.date: 10/01/2025
 ms.author: alkohli
 ms.custom: sfi-image-nochange
 ---
@@ -38,7 +38,7 @@ Ensure all VMs that you wish to migrate are powered on and have [Hyper-V integra
 1. Enter a name for your source appliance and generate the key for the source Hyper-V appliance. For detailed steps, see [Generate the project key](/azure/migrate/how-to-set-up-appliance-vmware#generate-the-project-key).
 
 1. Copy the **Project key** (to a text editor such as Notepad) and save it for later use.
-1. You can now **Download the Azure Migrate source appliance** using either a *.ova* file or a *.zip* file. The detailed steps are provided in the subsequent sections.
+1. You can now **Download the Azure Migrate source appliance** using either a .VHD or a *.zip* file. The detailed steps are provided in the subsequent sections.
 
     :::image type="content" source="./media/migrate-hyperv-replicate/generate-source-appliance-project-key-2.png" alt-text="Screenshot of going to Discover page." lightbox="./media/migrate-hyperv-replicate/generate-source-appliance-project-key-2.png":::
 
