@@ -1,6 +1,6 @@
 ---
-title: Overview of BGP Route Reflector in Azure Localand Windows Server
-description: Use this topic to learn about BGP Route Reflector for Software Defined Networking in Azure Local and Windows Server.
+title: Overview of BGP Route Reflector in Azure Local and Windows Server
+description: Use this topic to learn about BGP Route Reflector for Software Defined Networking managed by on-premises tools in Azure Local and Windows Server.
 author: AnirbanPaul
 ms.author: anpaul
 ms.topic: overview
