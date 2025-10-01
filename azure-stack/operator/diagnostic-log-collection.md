@@ -20,7 +20,7 @@ To get started with Azure Stack Hub diagnostic log collection, you have to regis
 
 ::: moniker range=">= azs-2005"
 
-You have several ways to send diagnostic logs to Microsoft Support. Depending on your connectivity to Azure, your options include:
+You have several ways to send diagnostic logs to Microsoft support. Depending on your connectivity to Azure, your options include:
 
 * [Send logs proactively (recommended)](#send-logs-proactively)
 * [Send logs now](#send-logs-now)
@@ -99,7 +99,7 @@ Logs collected using proactive log collection are uploaded to an Azure storage a
 > [!TIP]
 > Save time by using [Send logs proactively](#send-logs-proactively) instead of Send logs now.
 >
-Send logs now is an option where you manually collect and upload your diagnostic logs from Azure Stack Hub, usually before opening a support case.
+Send logs now is an option where you manually collect and upload your diagnostic logs from Azure Stack Hub, usually before you open a support case.
 
 There are two ways you can manually send diagnostic logs to Microsoft Support:
 
@@ -111,7 +111,7 @@ There are two ways you can manually send diagnostic logs to Microsoft Support:
 
 ### Send logs now with PowerShell
 
-If you're using the **Send logs now** method and want to use PowerShell instead of the administrator portal, you can use the `Send-AzureStackDiagnosticLog` cmdlet to collect and send specific logs.
+If you're using the **Send logs now** method, you can use the `Send-AzureStackDiagnosticLog` cmdlet to collect and send specific logs.
 
 * The `FromDate` and `ToDate` parameters can be used to collect logs for a particular time period. If these parameters aren't specified, logs are collected for the past four hours by default.
 
@@ -239,6 +239,6 @@ The history of logs collected from Azure Stack Hub appears on the **Log collecti
 
 ![Log collections in Help + support](media/azure-stack-help-and-support/azure-stack-log-collection.png)
 
-## See also
+## Next steps
 
 [Azure Stack Hub log and customer data handling](azure-stack-data-collection.md)
