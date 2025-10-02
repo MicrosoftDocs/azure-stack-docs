@@ -55,7 +55,7 @@ To transfer your Azure Compute Gallery image to be an Azure Local compatible ima
 
 ### Set parameters
 
-Before creating an Azure Local VM image, you'll need to set some parameters.
+Before creating an Azure Local VM image, you need to set some parameters.
 
 - Set your subscription, resource group, location, path to the image in local share, and OS type for the image. Replace the parameters in `< >` with the appropriate values.
 
