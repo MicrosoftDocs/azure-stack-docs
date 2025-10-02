@@ -12,7 +12,7 @@ ms.author: sethm
 
 # Use Container Storage Interface (CSI) disk drivers in AKS enabled by Azure Arc
 
-[!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)], AKS on Azure Local
+[!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
 This article describes how to use Container Storage Interface (CSI) built-in storage classes to dynamically create disk persistent volumes and create custom storage classes in AKS enabled by Arc.
 
