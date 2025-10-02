@@ -11,7 +11,7 @@ zone_pivot_groups: register-arc-options
 
 # Register Azure Local with Azure Arc
 
-::: moniker range=">=azloc-2505"
+::: moniker range=">=azloc-2506"
 
 ::: zone pivot="register-proxy"
 
@@ -27,7 +27,7 @@ This article details how to register Azure Local machines with Azure Arc and wit
 
 Make sure the following prerequisites are met before proceeding:
 
-- You have access to Azure Local machines running release 2505 or later. 
+- You have access to Azure Local machines running release 2506 or later. 
 - You have assigned the appropriate permissions to the subscription used for registration. For more information, see [Assign required permissions for Azure Local deployment](deployment-arc-register-server-permissions.md).
 
 
@@ -301,7 +301,7 @@ This article details how to register using Azure Arc gateway on Azure Local with
 
 Make sure the following prerequisites are met before proceeding:
 
-- You have access to Azure Local machines running release 2505 or later. 
+- You have access to Azure Local machines running release 2506 or later. 
 - You have assigned the appropriate permissions to the subscription used for registration. For more information, see [Assign required permissions for Azure Local deployment](deployment-arc-register-server-permissions.md).
 
 
@@ -1095,8 +1095,8 @@ Before you begin, make sure that you complete the following prerequisites:
 
 ::: moniker-end
 
-::: moniker range="<=azloc-24113"
+::: moniker range="<=azloc-2505"
 
-This feature is available only in Azure Local 2503 or later.
+This feature is available only in Azure Local 2506 or later.
 
 ::: moniker-end

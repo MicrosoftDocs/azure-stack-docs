@@ -88,6 +88,10 @@ sections:
         answer: |
           No. There's currently no mechanism to register and sync between on-premises and Azure without network connectivity.
 
+      - question: Is resource move supported for Azure Local resources?
+        answer: |
+          No. We do not support moving resources between subscriptions and/or resource groups for any Azure Local resources. To change the location of the resources, you must redeploy the Azure Local instance using the new subscription and/or resource group locations and appropriate parameters for the cloud deployment process.
+
       - question: How does Azure Local relate to Windows Server?
         answer: |
           Windows Server is the foundation of nearly every Azure product, and all the features you value continue to release with support in Windows Server. The initial offering of Azure Local was based on Windows Server 2019 and used the traditional Windows Server licensing model.

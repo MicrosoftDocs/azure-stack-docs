@@ -1,37 +1,38 @@
 ---
-title: Create Windows Server containers
-description: Learn how to create Windows Server containers in Azure Local.
+title: Create Windows node pools
+description: Learn how to create Windows node pools in AKS enabled by Azure Arc on Azure Local.
 ms.topic: how-to
-author: sethmanheim
-ms.date: 07/15/2024
-ms.author: sethm 
-ms.lastreviewed: 01/31/2024
-ms.reviewer: guanghu
+author: rcheeran
+ms.date: 09/25/2025
+ms.author: rcheeran 
+ms.lastreviewed: 09/22/2025
+ms.reviewer: sethm
 
 ---
 
-# Create Windows Server containers
+# Create a Windows node pool
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
-This article describes how to use Azure CLI to deploy a node pool to an existing AKS cluster that runs Windows Server containers. It also describes how to deploy an ASP.NET sample application in a Windows Server container to the cluster.
+This article describes how to use Azure CLI to deploy a Windows node pool to an existing AKS cluster in order to run Windows Server containers. The article also describes how to deploy a sample ASP.NET application in a Windows Server container to the cluster.
 
 ## Prerequisites
 
 Create an AKS cluster following the instructions in [How to create AKS clusters](aks-create-clusters-cli.md).
 
-## Add a node pool
+> [!IMPORTANT]
+> Windows Server node pools must be licensed using either the Windows Server subscription or Azure Hybrid Benefit, as described in [Activate Windows Server VMs on Azure Local](/azure/azure-local/manage/vm-activate).
 
-By default, a Kubernetes cluster is created with a node pool that can run Linux containers. You must add another node pool that can run Windows Server containers alongside the Linux node pool.
+## Add a Windows node pool
 
-Add a node pool with Windows container hosts using the `az aksarc nodepool add` command with the parameter `--os-type Windows`. If the operating system SKU isn't specified, the node pool is set to the default OS based on the Kubernetes version of the cluster. Windows Server 2022 is the default operating system for Kubernetes versions 1.25.0 and higher. Windows Server 2019 is the default OS for earlier versions.
+By default, a Kubernetes cluster is created with a node pool that can run Linux containers. Starting with the Azure local 2509 release, the Windows node pool feature is disabled by default. You must first enable the Windows node pool feature before you can create a Windows node pool. For more information, see [Enable Windows node pools](howto-enable-windows-node-pools.md).
 
-- To use Windows Server 2019, specify the following parameters:
-  - `os-type` set to `Windows`.
-  - `os-sku` set to `Windows2019`.
-- To use Windows Server 2022, specify the following parameters:
-  - `os-type` set to `Windows`.
-  - `os-sku` set to `Windows2022` (optional).
+Add a node pool with Windows container hosts using the `az aksarc nodepool add` command with the parameter `--os-type Windows`. If the operating system SKU isn't specified, the node pool is set to the default OS based on the Kubernetes version of the cluster. Windows Server 2022 is the default operating system for Kubernetes versions 1.25.0 and higher.
+
+To use Windows Server 2022, specify the following parameters:
+
+- `--os-type` set to `Windows`.
+- `--os-sku` set to `Windows2022` (optional).
 
 The following command creates a new node pool named `$mynodepool` and adds it to `$myAKSCluster` with one Windows Server 2022 node:
 
@@ -43,7 +44,7 @@ az aksarc nodepool add --resource-group $myResourceGroup --cluster-name $myAKSCl
 
 Now you can connect to your Kubernetes cluster by running the `az connectedk8s proxy` command from your local machine. Make sure you sign in to Azure before running this command. If you have multiple Azure subscriptions, select the appropriate subscription ID using the [az account set](/cli/azure/account#az-account-set) command.
 
-This command downloads the kubeconfig of your Kubernetes cluster to your local machine and opens a proxy connection channel to your on-premises Kubernetes cluster. The channel is open for as long as this command runs. Let this command run for as long as you want to access your cluster. If the command times out, close the CLI window, open a new one, then run the command again.
+The following command downloads the kubeconfig of your Kubernetes cluster to your local machine and opens a proxy connection channel to your on-premises Kubernetes cluster. The channel is open for as long as this command runs. Let this command run for as long as you want to access your cluster. If the command times out, close the CLI window, open a new one, then run the command again.
 
 You must have Contributor permissions on the resource group that hosts the AKS cluster in order to run the following command successfully:
 
@@ -60,7 +61,7 @@ Start sending kubectl requests on 'aks-workload' context using kubeconfig at .\a
 Press Ctrl+C to close proxy.
 ```
 
-Keep this session running and connect to your Kubernetes cluster from a different terminal/command prompt. Verify that you can connect to your Kubernetes cluster by running the kubectl get command. This command returns a list of the cluster nodes:
+Keep this session running and connect to your Kubernetes cluster from a different terminal/command prompt. Verify that you can connect to your Kubernetes cluster by running the `kubectl get` command. This command returns a list of the cluster nodes:
 
 ```azurecli
 kubectl get node -A --kubeconfig .\aks-arc-kube-config
@@ -75,15 +76,15 @@ moc-lupeeyd0f8c   Ready    <none>          6d8h    v1.26.3
 moc-ww2c8d5ranw   Ready    <none>          7m18s   v1.26.3
 ```
 
-## Deploy the application
+## Deploy the sample application
 
 A [Kubernetes manifest file](kubernetes-concepts.md#deployments) defines a cluster's desired state, such as which container images to run.
 
 You can use a YAML manifest to create all the objects needed to run the ASP.NET sample application in a Windows Server container. This manifest includes a [Kubernetes deployment](kubernetes-concepts.md#deployments) for the ASP.NET sample application and a Kubernetes service to access the application from the internet.
 
-The ASP.NET sample application is provided as part of the [.NET Framework samples](https://hub.docker.com/_/microsoft-dotnet-framework-samples/) and runs in a Windows Server container. AKS requires Windows Server containers to be based on images of Windows Server 2019 or greater. The Kubernetes manifest file must also define a [node selector](https://kubernetes.io/docs/concepts/configuration/assign-pod-node/) to ensure your ASP.NET sample application's pods are scheduled on a node that can run Windows Server containers.
+The ASP.NET sample application is provided as part of the [.NET Framework samples](https://hub.docker.com/_/microsoft-dotnet-framework-samples/) and runs in a Windows Server container. AKS requires Windows Server containers to be based on images of Windows Server 2019 or later. The Kubernetes manifest file must also define a [node selector](https://kubernetes.io/docs/concepts/configuration/assign-pod-node/) to ensure your ASP.NET sample application's pods are scheduled on a node that can run Windows Server containers.
 
-1. Create a file named **sample.yaml** and copy in the following YAML definition:
+1. Create a file named **sample.yaml** and paste the following YAML definition:
 
    ```yaml
    apiVersion: apps/v1
@@ -168,13 +169,13 @@ When the application runs, a Kubernetes service exposes the application front en
 
 1. See the sample app in action by opening a web browser to the external IP address and port of the **sample** service.
 
-   :::image type="content" source="media/aks-create-containers/sample-app.png" alt-text="Screenshot showing ASP.NET sample application." lightbox="media/aks-create-containers/sample-app.png":::
+   :::image type="content" source="media/howto-create-windows-node-pools/sample-app.png" alt-text="Screenshot showing ASP.NET sample application." lightbox="media/howto-create-windows-node-pools/sample-app.png":::
 
    If you receive a connection timeout when trying to load the page, you should verify that the sample app is ready using the `kubectl get pods --watch` command. Sometimes, the Windows container isn't started by the time your external IP address is available.
 
 ## Delete node pool
 
-Delete the node pool using the [`az akshybrid nodepool delete`](/cli/azure/group#az_group_delete) command:
+Delete the node pool using the `az aksarc nodepool delete`command:
 
 ```azurecli
 az aksarc nodepool delete -g $myResourceGroup --cluster-name $myAKSCluster --name $mynodepool --no-wait
@@ -182,4 +183,4 @@ az aksarc nodepool delete -g $myResourceGroup --cluster-name $myAKSCluster --nam
 
 ## Next steps
 
-[AKS enabled by Arc overview](aks-overview.md)
+- [Manage multiple node pools](manage-node-pools.md)
