@@ -522,7 +522,7 @@ az connectedmachine show \
 
 It might be useful to review the [troubleshooting guide][Troubleshoot Nexus virtual machines using managed identities] for common issues and pitfalls.
 
-If you are wanting to setup [SSH access to Azure Arc-enabled servers](/azure/azure-arc/servers/ssh-arc-overview) using [az ssh arc](/cli/azure/ssh?view=azure-cli-latest#az-ssh-arc)
+If you are wanting to setup [SSH access to Azure Arc-enabled servers](/azure/azure-arc/servers/ssh-arc-overview) using [az ssh arc](/cli/azure/ssh#az-ssh-arc)
 
 ## Related articles
 
