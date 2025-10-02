@@ -433,6 +433,8 @@ Uninstall-Module -Name AksHci -Force
 
 To avoid any PowerShell version-related issues in your AKS deployment, you can use this [helper script to delete old AKS-HCI PowerShell modules](https://github.com/Azure/aksArc/issues/130).
 
+1. If you have used the preview version of AKS Arc on 22H2 or the preview version of Arc VM on 22H2, uninstall MOC by running the command `Uninstall-Moc` on a Azure Local node, to remove the VM instances created using the preview version.
+
 ## Remediation 11: Check the AKS install state
 
 Follow these steps to apply solution upgrade if you're running AKS workloads on your Azure Local:
