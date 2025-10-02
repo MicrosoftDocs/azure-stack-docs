@@ -103,7 +103,7 @@ To create an Azure Local VM image:
     $customLocationID=(az customlocation show --resource-group $resource_group --name "<custom location name for your Azure Local>" --query id -o tsv)
     ```
 
-1. Create the VM image starting with a specified marketplace image. Make sure to specify the offer, publisher, sku and version for the marketplace image.
+1. Create the VM image starting with a specified marketplace image. Make sure to specify the offer, publisher, sku, and version for the marketplace image.
 
     ```azurecli
     az stack-hci-vm image create --subscription $subscription --resource-group $resource_Group --custom-location $customLocationID --location $location --name $imageName --os-type $osType --image-path $imageSourcePath
