@@ -43,7 +43,14 @@ To transfer your Azure Compute Gallery image to be an Azure Local compatible ima
 1. Obtain the SAS token of the managed disk by using the following command:
 
     ```azurecli
-    az disk grant-access --resource-group $resourceGroupName --name $diskName --duration-in-seconds $sasExpiryDuration --query [accessSas] -o tsv
+    # Variables to get SAS URL for the disk
+    $resource_group = "<Resource Group Name>"
+    $diskName = "<myDiskName>" # Replace 'myDiskName' with your actual disk name
+    $sasExpiryDuration = 100000 # Duration in seconds for SAS URL validity
+    ```
+
+    ```azurecli
+    az disk grant-access --resource-group $resource_group --name $diskName --duration-in-seconds $sasExpiryDuration --query [accessSas] -o tsv
     ```
 
 ### Set parameters
@@ -58,10 +65,12 @@ Before creating an Azure Local VM image, you'll need to set some parameters.
     $location = "<Location for your Azure Local>"
     $osType = "<OS of source image>"
     $imageName = "<VM image name>"
+    $customLocationID = "<Custom Location ID>"
+    $imageSourcePath = '"<SAS URL path to the source image>"'
     ```
 
     The parameters are described in the following table:
-    
+
     | Parameter        | Description                                                                                |
     |------------------|--------------------------------------------------------------------------------------------|
     | `subscription`   | Subscription for Azure Local that you associate with this image.        |
@@ -69,15 +78,19 @@ Before creating an Azure Local VM image, you'll need to set some parameters.
     | `location`       | Location for your Azure Local instance. For example, this could be `eastus`. |
     | `imageName`      | Name of the VM image created starting with the image in your local share. <br> **Note**: Azure rejects all the names that contain the keyword Windows. |
     | `os-type`         | Operating system associated with the source image. This can be Windows or Linux.           |
-    
+    | `customLocationID` | Custom location ID for your Azure Local instance.      |
+    | `imageSourcePath`  | Path to the source image using the SAS URL.        |
+  
     Here's a sample output:
-    
+  
     ```azurecli
     PS C:\Users\azcli> $subscription = "<Subscription ID>"
     PS C:\Users\azcli> $resource_group = "mylocal-rg"
     PS C:\Users\azcli> $location = "eastus"
     PS C:\Users\azcli> $osType = "Windows"
     PS C:\Users\azcli> $imageName = "mylocal-computegalleryimage"
+    PS C:\Users\azcli> $customLocationID = " "
+    PS C:\Users\azcli> $imageSourcePath = '"<SAS URL path to the source image>"'
     ```
 
 ### Create an Azure Local VM image
