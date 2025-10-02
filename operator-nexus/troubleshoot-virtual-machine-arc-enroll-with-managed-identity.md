@@ -13,9 +13,6 @@ author: g0r1v3r4
 
 Use this article to troubleshoot common problems encountered when enrolling Azure Operator Nexus virtual machines (VM) with Azure Arc using managed identities associated with the VM.
 
-In order to effectively troubleshoot issues, it's important to understand the key components involved in the authentication and enrollment process.
-The process relies on platform level components that facilitate communication between the VM and Azure services.
-
 ## Feature support versions
 
 - Ensure that your Nexus Cluster is running Azure Local Nexus `2510.1` Management Bundle and `4.7.0` Minor Runtime or later.
@@ -28,13 +25,13 @@ The process relies on platform level components that facilitate communication be
 
 > [!IMPORTANT]
 > To use managed identity features for Azure Arc enrollment, you must assign a system-assigned or user-assigned managed identity when you create the VM.
-> You cannot add a managed identity after the VM is created.
-> If you plan to authenticate using other methods, such as service principals or personal access tokens, a managed identity is not required.
+> You can't add a managed identity after the VM is created.
+> If you plan to authenticate using other methods, such as service principals or personal access tokens, a managed identity isn't required.
 
 ## Examine the cloud-init logs
 
-If you are using the `--user-data-content` parameter to pass a cloud-init script during VM creation, you can check the cloud-init logs for errors or issues related to the execution of the script.
-See [Use cloud-init user data script or manual execution for Azure Arc enrollment] for more information.
+If you're using the `--user-data-content` parameter to pass a cloud-init script during VM creation, you can check the cloud-init logs for errors or issues related to the execution of the script.
+For more information, see [Use cloud-init user data script or manual execution for Azure Arc enrollment].
 
 [Use cloud-init user data script or manual execution for Azure Arc enrollment]: howto-arc-enroll-virtual-machine-using-managed-identities.md#use-cloud-init-user-data-script-or-manual-execution-for-azure-arc-enrollment
 
@@ -60,19 +57,27 @@ The IMDS sidecar container listens on port `80` for HTTP traffic.
 
 Ensure that your cloud services network (CSN) is configured to allow egress traffic to the necessary Azure endpoints.
 The CSN must be created with the `--enable-default-egress-endpoints "True"` flag to automatically include the necessary endpoints.
-If this was skipped during creation, you will need to manually add the required endpoints.
+If the flag was skipped or missed during creation, you will need to manually add the required endpoints.
 See [Required proxy and network settings to enable outbound connectivity], for more details.
 
 The easiest way is to see the egress endpoints configured for the CSN is through Azure portal.
-Or, you can use the `networkcloud` extension to check the egress endpoints:
+Or, you can use the `networkcloud` extension to verify the setting is set to `True`:
 
 ```azurecli-interactive
-az networkcloud cloudservicesnetwork show --name "$CSN_NAME" --resource-group "$RESOURCE_GROUP" --query "properties.enabledEgressEndpoints"
+az networkcloud cloudservicesnetwork show --name "$CSN_NAME" --resource-group "$RESOURCE_GROUP" --query "enableDefaultEgressEndpoints" -o tsv
+```
+
+```azurecli-interactive
+az networkcloud cloudservicesnetwork show  --name "$CSN_NAME" --resource-group "$RESOURCE_GROUP" --query "additionalEgressEndpoints"
+```
+
+```azurecli-interactive
+az networkcloud cloudservicesnetwork show --name "$CSN_NAME" --resource-group "$RESOURCE_GROUP" --query "enabledEgressEndpoints"
 ```
 
 ### CSN Proxy configuration
 
-The CSN proxy is used by the VM for egress traffic.
+The CSN proxy is used by the VM for egress traffic. The value is always `http://169.254.0.11:3128`.
 See [Required proxy and network settings to enable outbound connectivity], for more details.
 
 [Required proxy and network settings to enable outbound connectivity]: ./howto-arc-enroll-virtual-machine-using-managed-identities.md#required-proxy-and-network-settings-to-enable-outbound-connectivity
@@ -94,6 +99,64 @@ Also, the `azcmagent` should set proxy settings:
 azcmagent config set proxy.url "http://169.254.0.11:3128"
 ```
 
+## Verify Managed Identity permissions
+
+Ensure that the managed identity associated with the VM has the necessary permissions to perform Azure Arc enrollment.
+See [Choose a managed identity option](./howto-arc-enroll-virtual-machine-using-managed-identities.md#choose-a-managed-identity-option) for more details.
+
+```azurecli-interactive
+az networkcloud virtualmachine show --name "$VM_NAME" --resource-group "$RESOURCE_GROUP" --query "identity"
+```
+
+For system-assigned identity
+
+```azurecli-interactive
+az role assignment list --assignee $(az networkcloud virtualmachine show --name "$VM_NAME" --resource-group "$RESOURCE_GROUP" --query "identity.principalId" -o tsv)
+```
+
+For user-assigned identity
+
+```azurecli-interactive
+az role assignment list --assignee $(az identity show --name "$UAMI_NAME" --resource-group "$RESOURCE_GROUP" --query "principalId" -o tsv)
+```
+
+The required roles to allow the managed identity to Azure Arc enroll the VM are:
+
+- `HybridCompute Machine ListAccessDetails Action`
+- `Azure Connected Machine Resource Manager`
+
+Other documentation worth reviewing:
+
+- [How to use managed identities to get an access token]
+
+# VM network connectivity sanity tests
+
+   SSH into the VM and run the following commands:
+
+    ```bash
+    export NO_PROXY=169.254.169.254
+
+    # Basic connectivity test
+    ping -c 3 169.254.169.254
+
+    # Test IMDS sidecar container is accessible and running
+    curl -v --max-time 3 -H "Metadata:true" "http://169.254.169.254/healthz"
+    ```
+
+   ```bash
+   # Test connectivity to Azure Arc endpoints
+   curl -I https://management.azure.com/
+   curl -I https://login.microsoftonline.com/
+   curl -I https://pas.windows.net/
+   curl -I https://san-af-eastus-prod.azurewebsites.net/
+   ```
+
+   ```bash
+   # Test DNS resolution for endpoints
+   nslookup management.azure.com
+   nslookup login.microsoftonline.com
+   ```
+
 ## Error: Failed to login with managed identity
 
 When the `az login --identity` command is executed, and the error indicates that the login with managed identity failed.
@@ -110,33 +173,25 @@ ERROR: Failed to login with user-assigned managed identity
 
 Possible causes:
 
+- VM was not created with an associated managed identity, or the identity was added after VM creation
 - System-assigned managed identity is not enabled on the VM
 - User-assigned managed identity is not properly assigned to the VM
 - Identity permissions issues
 - IMDS endpoint is not accessible
 - Network connectivity issues
+- Check [proxy settings](#csn-proxy-configuration)
 
 1. Verify the VM was created with an associated managed identity.
    If the VM was not created with an associated managed identity, you must recreate the VM with one to use managed identity authentication.
    See [Nexus VM with associated managed identities at creation time](./howto-arc-enroll-virtual-machine-using-managed-identities.md#nexus-vm-with-associated-managed-identities-at-creation-time) for more information.
 
-```azurecli-interactive
-az networkcloud virtualmachine show --name "$VM_NAME" --resource-group "$RESOURCE_GROUP" --query "identity"
-```
+2. Verify the managed identity has been assigned to the VM.
+   See the [Verify Managed Identity permissions](#verify-managed-identity-permissions) section for more details.
 
-1. Check IMDS connectivity from within the VM.
+
+3. Check IMDS connectivity from within the VM.
    If the IMDS endpoint is not accessible, there could be a network connectivity issue or the IMDS sidecar container may not be running.
-   SSH into the VM and run the following commands:
-
-    ```bash
-    export NO_PROXY=169.254.169.254
-
-    # Basic connectivity test
-    ping -c 3 169.254.169.254
-
-    # Test IMDS sidecar container is accessible and running
-    curl -v --max-time 3 -H "Metadata:true" "http://169.254.169.254/healthz"
-    ```
+   See the [VM network connectivity sanity tests](#vm-network-connectivity-sanity-tests) section for more details.
 
 ## Error: Failed to retrieve access token
 
@@ -152,36 +207,17 @@ Possible causes:
 
 - Managed identity is not associated with the VM
 - Managed identity permissions are insufficient
-- Network connectivity to Azure endpoints is blocked
-- Token request timeout
+- Network connectivity to Azure endpoints is blocked by [CSN egress configurations](#csn-proxy-configuration)
+- Check [proxy settings](#csn-proxy-configuration)
 
 1. Verify managed identity has appropriate permissions.
-
    See the [Assign roles to the managed identity] for more details.
-   ```bash
-   # For system-assigned identity
-   az role assignment list \
-       --assignee $(az networkcloud virtualmachine show --name "$VM_NAME" --resource-group "$RESOURCE_GROUP" --query "identity.principalId" -o tsv)
 
-   # For user-assigned identity
-   az role assignment list \
-       --assignee $(az identity show --name "$UAMI_NAME" --resource-group "$RESOURCE_GROUP" --query "principalId" -o tsv)
-   ```
+2. Test network connectivity to Azure endpoints.
+  See the [VM network connectivity sanity tests](#vm-network-connectivity-sanity-tests) section for more details.
 
-2. Test network connectivity to Azure endpoints:
-   ```bash
-   # Test from within the VM
-   curl -I https://management.azure.com/
-   curl -I https://login.microsoftonline.com/
-   ```
-
-3. Check cloud services network egress endpoints configuration:
-   ```bash
-   az networkcloud cloudservicesnetwork show \
-       --name "$CSN_NAME" \
-       --resource-group "$RESOURCE_GROUP" \
-       --query "additionalEgressEndpoints"
-   ```
+3. Check [CSN egress endpoints configurations](#cloud-services-network-csn-configurations).
+   Ensure that the CSN has the required egress endpoints configured.
 
 [Assign roles to the managed identity]: ./howto-arc-enroll-virtual-machine-using-managed-identities.md#assign-roles-to-the-managed-identity
 
@@ -200,31 +236,34 @@ Possible causes:
 - Insufficient permissions for Arc enrollment
 - Invalid access token
 - Resource group or subscription issues
+- Network connectivity to Azure endpoints is blocked by [CSN egress configurations](#csn-proxy-configuration)
+- Check [proxy settings](#csn-proxy-configuration)
 
-1. Verify required Azure Arc endpoints are accessible:
-   ```bash
-   # Test connectivity to Azure Arc endpoints
-   curl -I https://management.azure.com/
-   curl -I https://login.microsoftonline.com/
-   curl -I https://pas.windows.net/
-   curl -I https://san-af-eastus-prod.azurewebsites.net/
-   ```
+1. Ensure that the access token is valid and has not expired.
+   Usually, the access token retrieved using `az account get-access-token` is valid for short period of time.
+   Anytime permissions on the managed identity are changed, a new access token must be retrieved.
 
-2. Check if the managed identity has "Azure Connected Machine Onboarding" role:
-   ```bash
-   az role assignment create \
-       --assignee "$PRINCIPAL_ID" \
-       --role "Azure Connected Machine Onboarding" \
-       --scope "/subscriptions/$SUBSCRIPTION_ID/resourceGroups/$RESOURCE_GROUP"
-   ```
+2. Verify required Azure Arc endpoints are accessible:
+   See the [VM network connectivity sanity tests](#vm-network-connectivity-sanity-tests) section for more details.
 
-3. Verify azcmagent version and status:
+3. Check if the managed identity has the necessary roles assigned for Azure Arc enrollment.
+   See the [Verify Managed Identity permissions](#verify-managed-identity-permissions) section for more details.
+
+4. Check [CSN egress endpoints configurations](#cloud-services-network-csn-configurations).
+   Ensure that the CSN has the required egress endpoints configured.
+
+5. Check [Proxy settings](#csn-proxy-configuration).
+   Ensure that the proxy settings are correctly configured in the environment variables and for `azcmagent`.
+
+6. Verify azcmagent version and status:
+
    ```bash
    azcmagent version
    azcmagent show
    ```
 
-4. Run azcmagent with additional debugging:
+7. Run azcmagent with additional debugging:
+
    ```bash
    sudo azcmagent connect \
        --resource-group "$RESOURCE_GROUP" \
@@ -235,6 +274,11 @@ Possible causes:
        --verbose \
        --debug
    ```
+
+Please follow the steps provided by the Azure Arc agent to troubleshoot further.
+
+- [Azure Connected Machine agent troubleshooting]
+- [Azure Connected Machine agent connect reference]
 
 ### Enable azcmagent logging
 
@@ -252,50 +296,7 @@ Check azcmagent logs.
 journalctl -u azcmagent -f
 ```
 
-## Managed identity configuration issues
-
-### System-assigned managed identity problems
-
-1. **Verify SAMI is enabled during VM creation:**
-   ```bash
-   az networkcloud virtualmachine create \
-       --mi-system-assigned --system-assigned \
-       # ... other parameters
-   ```
-
-2. **Check SAMI status after creation:**
-   ```bash
-   az networkcloud virtualmachine show \
-       --name "$VM_NAME" \
-       --resource-group "$RESOURCE_GROUP" \
-       --query "identity.type"
-   ```
-
-### User-assigned managed identity problems
-
-1. **Verify UAMI is created and assigned:**
-   ```bash
-   # Create UAMI
-   az identity create \
-       --name "$UAMI_NAME" \
-       --resource-group "$RESOURCE_GROUP"
-
-   # Assign to VM during creation
-   az networkcloud virtualmachine create \
-       --mi-user-assigned --user-assigned "$UAMI_ID" \
-       # ... other parameters
-   ```
-
-2. **Check UAMI assignment:**
-   ```bash
-   az networkcloud virtualmachine show \
-       --name "$VM_NAME" \
-       --resource-group "$RESOURCE_GROUP" \
-       --query "identity.userAssignedIdentities"
-   ```
-
-
-### Alternative access token retrieval methods
+## Alternative access token retrieval methods
 
 There may be scenarios where using `az login --identity` does not work as expected.
 If you prefer not to use the Azure CLI for authentication, you can retrieve an access token directly using `az rest` or `curl`.
@@ -344,8 +345,8 @@ When contacting support, provide the following information to help diagnose the 
   - azcmagent logs: `sudo journalctl -u azcmagent`
   - Network connectivity tests results
   - VM and managed identity configuration details
-  - CSN configuration details
-  - Proxy settings used
+  - [CSN configuration details](#cloud-services-network-csn-configurations)
+  - [Proxy settings used](#csn-proxy-configuration)
   - Exact error messages encountered when running `az login --identity` and `azcmagent connect` commands
 
 ## Related articles
@@ -359,7 +360,13 @@ When contacting support, provide the following information to help diagnose the 
 - [Connect hybrid machines to Azure using a deployment script](/azure/azure-arc/servers/onboard-portal#install-and-validate-the-agent-on-linux)
 - [Quickstart: Connect a Linux machine with Azure Arc-enabled servers (package-based installation)](/azure/azure-arc/servers/quick-onboard-linux)
 - [Quickstart: Connect a machine to Arc-enabled servers (Windows or Linux install script)](/azure/azure-arc/servers/quick-enable-hybrid-vm)
-- [Azure Connected Machine agent troubleshooting](/azure/azure-arc/servers/troubleshoot-agent-onboard)
-- [Managed identities troubleshooting](/entra/identity/managed-identities-azure-resources/managed-identities-faq)
-- [Azure Connected Machine agent connect reference](/azure/azure-arc/servers/azcmagent-connect#access-token)
-- [How to use managed identities to get an access token](/entra/identity/managed-identities-azure-resources/how-to-use-vm-token#get-a-token-using-go)
+- [Azure Connected Machine agent troubleshooting]
+- [Managed identities troubleshooting]
+- [Azure Connected Machine agent connect reference]
+- [How to use managed identities to get an access token]
+
+<!-- Links added for reuse -->
+[Azure Connected Machine agent troubleshooting]: /azure/azure-arc/servers/troubleshoot-agent-onboard
+[Managed identities troubleshooting]: /entra/identity/managed-identities-azure-resources/managed-identities-faq
+[Azure Connected Machine agent connect reference]: /azure/azure-arc/servers/azcmagent-connect#access-token
+[How to use managed identities to get an access token]: /entra/identity/managed-identities-azure-resources/how-to-use-vm-token#get-a-token-using-go
