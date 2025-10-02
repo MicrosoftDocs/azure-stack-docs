@@ -129,33 +129,33 @@ Other documentation worth reviewing:
 
 - [How to use managed identities to get an access token]
 
-# VM network connectivity sanity tests
+## VM network connectivity sanity tests
 
-   SSH into the VM and run the following commands:
+SSH into the VM and run the following commands:
 
-    ```bash
-    export NO_PROXY=169.254.169.254
+```bash
+export NO_PROXY=169.254.169.254
 
-    # Basic connectivity test
-    ping -c 3 169.254.169.254
+# Basic connectivity test
+ping -c 3 169.254.169.254
 
-    # Test IMDS sidecar container is accessible and running
-    curl -v --max-time 3 -H "Metadata:true" "http://169.254.169.254/healthz"
-    ```
+# Test IMDS sidecar container is accessible and running
+curl -v --max-time 3 -H "Metadata:true" "http://169.254.169.254/healthz"
+```
 
-   ```bash
-   # Test connectivity to Azure Arc endpoints
-   curl -I https://management.azure.com/
-   curl -I https://login.microsoftonline.com/
-   curl -I https://pas.windows.net/
-   curl -I https://san-af-eastus-prod.azurewebsites.net/
-   ```
+```bash
+# Test connectivity to Azure Arc endpoints
+curl -I https://management.azure.com/
+curl -I https://login.microsoftonline.com/
+curl -I https://pas.windows.net/
+curl -I https://san-af-eastus-prod.azurewebsites.net/
+```
 
-   ```bash
-   # Test DNS resolution for endpoints
-   nslookup management.azure.com
-   nslookup login.microsoftonline.com
-   ```
+```bash
+# Test DNS resolution for endpoints
+nslookup management.azure.com
+nslookup login.microsoftonline.com
+```
 
 ## Error: Failed to login with managed identity
 
@@ -334,6 +334,15 @@ curl -H "Metadata: true" "http://169.254.169.254/metadata/identity/oauth2/token?
 
 ```bash
 curl -H "Metadata: true" "http://169.254.169.254/metadata/identity/oauth2/token?resource=https%3A%2F%2Fmanagement.core.windows.net%2F&api-version=2018-02-01&msi_res_id=${UAMI_ID}"
+```
+
+Execute the command to enroll the VM using the access token retrieved from the managed identity.
+
+> [!TIP]
+> If the managed identity roles or permissions are changed, the token must be refreshed to reflect the changes.
+
+```azurecli-interactive
+ACCESS_TOKEN=$(az account get-access-token --resource https://management.azure.com/ --query accessToken -o tsv)
 ```
 
 [!include[stillHavingIssues](./includes/contact-support.md)]

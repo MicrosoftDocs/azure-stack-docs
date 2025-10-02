@@ -478,16 +478,6 @@ Local Configuration Settings
   extensions.agent.cpulimit                             : 5
 ```
 
-Execute the command to enroll the VM using the access token retrieved from the managed identity.
-Make sure the [Retrieve access token after authentication](#retrieve-access-token-after-authentication).
-
-> [!TIP]
-> If the managed identity roles or permissions are changed, the token must be refreshed to reflect the changes.
-
-```azurecli-interactive
-ACCESS_TOKEN=$(az account get-access-token --resource https://management.azure.com/ --query accessToken -o tsv)
-```
-
 Execute the `azcmagent connect existing` command to connect the Azure Arc machine resource associated with the VM.
 To see detailed output, add the `--verbose` flag.
 
