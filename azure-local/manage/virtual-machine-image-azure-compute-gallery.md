@@ -79,7 +79,7 @@ Before creating an Azure Local VM image, you'll need to set some parameters.
     | `imageName`      | Name of the VM image created starting with the image in your local share. <br> **Note**: Azure rejects all the names that contain the keyword Windows. |
     | `os-type`         | Operating system associated with the source image. This can be Windows or Linux.           |
     | `customLocationID` | Custom location ID for your Azure Local instance.      |
-    | `imageSourcePath`  | Path to the source image using the SAS URL.        |
+    | `imageSourcePath`  | Path to the compute gallery image managed disk SAS URL.        |
   
     Here's a sample output:
   
@@ -89,8 +89,8 @@ Before creating an Azure Local VM image, you'll need to set some parameters.
     PS C:\Users\azcli> $location = "eastus"
     PS C:\Users\azcli> $osType = "Windows"
     PS C:\Users\azcli> $imageName = "mylocal-computegalleryimage"
-    PS C:\Users\azcli> $customLocationID = " "
-    PS C:\Users\azcli> $imageSourcePath = '"<SAS URL path to the source image>"'
+    PS C:\Users\azcli> $customLocationID = "/subscriptions/$subscription/resourcegroups/$resource_group/providers/microsoft.extendedlocation/customlocations/$customLocationName"
+    PS C:\Users\azcli> $imageSourcePath = '"https://EXAMPLE.blob.storage.azure.net/EXAMPLE/abcd<sas-token>"'
     ```
 
 ### Create an Azure Local VM image
@@ -106,16 +106,10 @@ To create an Azure Local VM image:
 1. Create the VM image starting with a specified marketplace image. Make sure to specify the offer, publisher, sku and version for the marketplace image.
 
     ```azurecli
-    az stack-hci-vm image create --subscription $subscription --resource-group $resource_Group --custom-location $customLocationID --location $location --name $imageName --os-type $osType --image-path $imageSourcePath --storage-path-id $storagepathid
+    az stack-hci-vm image create --subscription $subscription --resource-group $resource_Group --custom-location $customLocationID --location $location --name $imageName --os-type $osType --image-path $imageSourcePath
     ```
 
-    A deployment job starts for the VM image.
-
-    In this example, the storage path was specified using the `--storage-path-id` flag and that ensured that the workload data (including the VM, VM image, non-OS data disk) is placed in the specified storage path.
-
-    If the flag is not specified, the workload data is automatically placed in a high availability storage path.
-
-    The image deployment takes a few minutes to complete. The time taken to download the image depends on the size of the image and the network bandwidth available for the download.
+    A deployment job starts for the VM image and takes a few minutes to complete. The image download time depends on the image size and the network bandwidth available for the download.
 
     Here's a sample output:
 
