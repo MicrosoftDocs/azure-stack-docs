@@ -552,6 +552,10 @@
           href: deploy-target-clusters-virtual-networks.md
     - name: Storage
       items:
+      - name: CSI storage drivers
+        items: 
+        - name: Use disk CSI drivers
+          href: container-storage-interface-disks-windows-server.md
       - name: Use persistent volumes
         href: persistent-volume.md
     - name: Security and authentication
