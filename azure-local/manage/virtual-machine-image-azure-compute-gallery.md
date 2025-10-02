@@ -43,7 +43,7 @@ To transfer your Azure Compute Gallery image to be an Azure Local compatible ima
 1. Obtain the SAS token of the managed disk by using the following command:
 
     ```azurecli
-    # Variables to get SAS URL for the disk
+    # Variables to get SAS URL for the managed disk
     $resource_group = "<Resource Group Name>"
     $diskName = "<myDiskName>" # Replace 'myDiskName' with your actual disk name
     $sasExpiryDuration = 100000 # Duration in seconds for SAS URL validity
