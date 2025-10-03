@@ -40,27 +40,23 @@ And you can manage the VM as an Azure resource using Azure Arc capabilities.
 
 ### Prerequisites on Azure Operator Nexus management bundle, runtime, and API versions
 
-- Ensure that your Nexus Cluster is running Azure Local Nexus `2510.1` Management Bundle and `4.7.0` Minor Runtime or later.
+- Ensure that your Operator Nexus Cluster is running management bundle `2510.1` version and runtime version `4.7.0`  or later.
 - The feature support is available in API version `2025-07-01-preview` or later.
-- Make sure the [`networkcloud` extension] is installed with a version that supports the required API version.
+- Make sure the [`networkcloud` az CLI extension] is installed with a version that supports the required API version.
   You can find supported versions in the [`networkcloud` extension release history] on GitHub.
+- This guide assumes you have a working Operator Nexus Cluster and the necessary permissions to create and manage virtual machines and managed identities in your Azure subscription.
 
-> [!IMPORTANT]
-> This guide assumes you have a working Nexus Cluster and the necessary permissions to create and manage virtual machines and managed identities in your Azure subscription.
-
-[`networkcloud` extension]: /cli/azure/networkcloud
+[`networkcloud` az CLI extension]: /cli/azure/networkcloud
 [`networkcloud` extension release history]: https://github.com/Azure/azure-cli-extensions/blob/main/src/networkcloud/HISTORY.rst
 
-### Nexus VM with associated managed identities at creation time
+### VM with associated managed identities at creation time
 
-When creating a Nexus VM for Azure Arc enrollment with managed identities, you must assign either a system-assigned or user-assigned managed identity during VM creation.
-This enables managed identity authentication for the VM.
-If you don't specify a managed identity when creating the VM, you can't enable managed identity support by updating the VM after provisioning.
-To use managed identities, always specify them when you create the VM.
+When creating an Operator Nexus VM for Azure Arc enrollment with managed identities, you must assign either a system-assigned or user-assigned managed identity during VM creation.
+Associating the managed identity enables the authentication method for the VM, which is required for Azure Arc enrollment through the Private Relay feature.
+If you plan to use other authentication methods, such as using a service principal, you can create the VM without a managed identity.
 
-> [!NOTE]
-> The managed identity requirement applies to Azure Arc enrollment using the Managed Identity authentication method through the Private Relay feature.
-> If you plan to use other authentication methods, such as using a service principal, you can create the VM without a managed identity.
+> [!IMPORTANT]
+> If you don't specify a managed identity when creating the VM, you can't enable managed identity support by updating the VM after provisioning.
 
 ### Choose a managed identity option
 
@@ -111,7 +107,7 @@ For more information about role assignments, see:
 - [Assign Azure roles using the Azure portal](/azure/role-based-access-control/role-assignments-portal)
 - [Assign Azure roles to a managed identity](/azure/role-based-access-control/role-assignments-portal-managed-identity)
 
-## Create a Nexus virtual machine with the managed identity
+## Create a VM with the managed identity
 
 [!INCLUDE [virtual-machine-prereq](./includes/virtual-machine/quickstart-prereq.md)]
 
@@ -138,7 +134,7 @@ If this flag setting was skipped during creation, you need to manually add the r
 You can use the `networkcloud` extension to verify the setting value:
 
 ```azurecli-interactive
-az networkcloud cloudservicesnetwork show --name "$CSN_NAME" --resource-group "$RESOURCE_GROUP" --query "enableDefaultEgressEndpoints" -o tsv
+az networkcloud cloudservicesnetwork show --name <CSN_NAME> --resource-group <RESOURCE_GROUP> --query "enableDefaultEgressEndpoints" -o tsv
 ```
 
 The easiest way is to see the egress endpoints configured for the CSN is through Azure portal, although you can also use the Azure CLI.
@@ -154,29 +150,29 @@ If you're encountering connectivity issues, ensure that the CSN has the necessar
 
 Before proceeding with the deployment, set the following environment variables to define the configuration for your virtual machine and Arc enrollment:
 
-| Variable                 | Description                                                                                  |
-|--------------------------|----------------------------------------------------------------------------------------------|
-| `ADMIN_USERNAME`         | Administrator username for the VM                                                            |
-| `CLUSTER_CUSTOM_LOCATION`| Custom location of the Nexus instance                                                        |
-| `CLUSTER_NAME`           | The name of your Nexus cluster                                                               |
-| `CPU_CORES`              | Number of CPU cores for the VM                                                               |
-| `CSN_ARM_ID`             | ARM resource ID of the cloud services network                                                |
-| `VM_DISK_SIZE`           | OS disk size in GiB                                                                          |
-| `L3_NETWORK_ARM_ID`      | ARM resource ID of the L3 network to create                                                  |
-| `LOCATION`               | Azure region for the resources                                                               |
-| `MEMORY_SIZE`            | Memory size in GiB for the VM                                                                |
-| `RESOURCE_GROUP`         | The name of the Azure resource group                                                         |
-| `SSH_PUBLIC_KEY`         | SSH public key for VM access                                                                 |
-| `SUBSCRIPTION_ID`        | Your Azure subscription ID                                                                   |
-| `TENANT_ID`              | Your Azure tenant ID                                                                         |
-| `UAMI_NAME`              | Name of the user-assigned managed identity                                                   |
-| `VM_IMAGE`               | Container image for the VM                                                                   |
-| `VM_NAME`                | Name of the virtual machine                                                                  |
-| `NETWORK_INTERFACE_NAME` | Name of the network interface                                                                |
-| `ACR_URL`                | Azure Container Registry URL                                                                 |
-| `ACR_USERNAME`           | Azure Container Registry username                                                            |
-| `ACR_PASSWORD`           | Azure Container Registry password                                                            |
-| `UAMI_ID`                | The user-assigned managed identity (UAMI) ID to be used for the virtual machine              |
+| Variable                  | Description                                                                                                       |
+|---------------------------|-------------------------------------------------------------------------------------------------------------------|
+| `ACR_PASSWORD`            | Azure Container Registry password.                                                                                |
+| `ACR_URL`                 | Azure Container Registry URL.                                                                                     |
+| `ACR_USERNAME`            | Azure Container Registry username.                                                                                |
+| `ADMIN_USERNAME`          | Administrator username for the VM.                                                                                |
+| `CLUSTER_CUSTOM_LOCATION` | Custom location of the Nexus instance.                                                                            |
+| `CLUSTER_NAME`            | The name of your Nexus cluster.                                                                                   |
+| `CPU_CORES`               | Number of CPU cores for the VM.                                                                                   |
+| `CSN_ARM_ID`              | ARM resource ID of the cloud services network.                                                                    |
+| `L3_NETWORK_ARM_ID`       | ARM resource ID of the L3 network to create.                                                                      |
+| `LOCATION`                | Azure region for the resources.                                                                                   |
+| `MEMORY_SIZE`             | Memory size in GiB for the VM.                                                                                    |
+| `NETWORK_INTERFACE_NAME`  | Name of the network interface.                                                                                    |
+| `RESOURCE_GROUP`          | The name of the Azure resource group.                                                                             |
+| `SSH_PUBLIC_KEY`          | SSH public key for VM access.                                                                                     |
+| `SUBSCRIPTION_ID`         | Your Azure subscription ID.                                                                                       |
+| `TENANT_ID`               | Your Azure tenant ID.                                                                                             |
+| `UAMI_ID`                 | (Optional.) The user-assigned managed identity (UAMI) ID to be used for the virtual machine. Not required when using system-assigned managed identity. |
+| `UAMI_NAME`               | (Optional.) Name of the user-assigned managed identity. Not required when using system-assigned managed identity. |
+| `VM_DISK_SIZE`            | OS disk size in GiB.                                                                                              |
+| `VM_IMAGE`                | Container image for the VM.                                                                                       |
+| `VM_NAME`                 | Name of the virtual machine.                                                                                      |
 
 To set these variables, use the following commands and replace the example values with your actual values:
 
@@ -192,13 +188,16 @@ CLUSTER_CUSTOM_LOCATION=$(az networkcloud cluster show -g "$RESOURCE_GROUP" -n "
 # VM specific variables (replace with your preferred values)
 VM_NAME="myNexusVirtualMachine"
 
+# (Optional) User-Assigned Managed Identity (UAMI) parameters
+UAMI_NAME="myUamiName"
+
 # VM Image parameters
 VM_IMAGE="<VM image, example: myacr.azurecr.io/ubuntu:20.04>"
 ACR_URL="<Azure Container Registry URL, example: myacr.azurecr.io>"
 ACR_USERNAME="<Azure Container Registry username>"
 ACR_PASSWORD="<Azure Container Registry password>"
 
-# Optional variables (will use defaults if not set), values here are examples you can modify as needed
+# (Optional) variables (will use defaults if not set), values here are examples you can modify as needed
 CPU_CORES="4"
 MEMORY_SIZE="8"
 VM_DISK_SIZE="64"
@@ -264,9 +263,11 @@ The Instance Metadata Service (IMDS) endpoint `169.254.169.254` is used by the V
 The `NO_PROXY` variable can have multiple comma-separated values, but at a minimum, it must include the IMDS IP address.
 
 ```bash
-export NO_PROXY=169.254.169.254
-export no_proxy=169.254.169.254
+export NO_PROXY=localhost,127.0.0.1,::1,169.254.169.254
+export no_proxy=localhost,127.0.0.1,::1,169.254.169.254
 ```
+
+Add other addresses that you don't want to be proxied through the CSN proxy to the `NO_PROXY` variable as needed for your environment.
 
 ## Authentication using Azure CLI and managed identities
 
@@ -314,9 +315,9 @@ In order to enroll the VM with Azure Arc without having the traffic go through t
 |----------------------|----------------------------------------------------------------------------------------------|
 | ARC_MACHINE_NAME     | The name of the Azure Arc machine resource to be created.                                    |
 | ARC_MACHINE_VMID     | The unique identifier (UUID) for the Azure Arc machine resource.                             |
-| ARC_MACHINE_ID | The resource ID of the Azure Arc machine to be created.                                      |
-| PRIVATE_B64          | The base64-encoded private key used for connecting the VM Arc machine resource.    |
-| PUBLIC_B64           | The base64-encoded public key used for connecting the VM with the Arc machine resource.  |
+| ARC_MACHINE_ID       | The resource ID of the Azure Arc machine to be created.                                      |
+| PRIVATE_B64          | The base64-encoded private key used for connecting the VM Arc machine resource.              |
+| PUBLIC_B64           | The base64-encoded public key used for connecting the VM with the Arc machine resource.      |
 
 Generate a new key pair to use during the creation of the Arc machine resource.
 This key pair is required for secure authentication between your Nexus VM and Azure Arc during the connection phase.
@@ -438,8 +439,8 @@ azcmagent version
 
 For more information about the `azcmagent connect` command and access tokens, see:
 
-- [Azure Connected Machine agent connect reference]: /azure/azure-arc/servers/azcmagent-connect#access-token
-- [How to use managed identities to get an access token]: /entra/identity/managed-identities-azure-resources/how-to-use-vm-token#get-a-token-using-go
+- [Azure Connected Machine agent connect reference](/azure/azure-arc/servers/azcmagent-connect#access-token)
+- [How to use managed identities to get an access token](/entra/identity/managed-identities-azure-resources/how-to-use-vm-token#get-a-token-using-go)
 
 ### Azure Arc enrollment commands
 
@@ -520,7 +521,7 @@ az connectedmachine show \
 
 ## Next steps
 
-It might be useful to review the [troubleshooting guide][Troubleshoot Nexus virtual machines using managed identities] for common issues and pitfalls.
+It might be useful to review the [troubleshooting guide](./troubleshoot-virtual-machine-arc-enroll-with-managed-identity.md) for common issues and pitfalls.
 
 If you're wanting to set up [SSH access to Azure Arc-enabled servers](/azure/azure-arc/servers/ssh-arc-overview) using [az ssh arc](/cli/azure/ssh#az-ssh-arc)
 
@@ -528,7 +529,6 @@ If you're wanting to set up [SSH access to Azure Arc-enabled servers](/azure/azu
 
 - [Prerequisites for deploying tenant workloads](./quickstarts-tenant-workload-prerequisites.md)
 - [Create a virtual machine using Azure CLI](./quickstarts-virtual-machine-deployment-cli.md)
-- [Troubleshoot Nexus virtual machines using managed identities](./troubleshoot-virtual-machine-arc-enroll-with-managed-identity.md)
 - [Connect hybrid machines to Azure using a deployment script](/azure/azure-arc/servers/onboard-portal#install-and-validate-the-agent-on-linux)
 - [Quickstart: Connect a Linux machine with Azure Arc-enabled servers (package-based installation)](/azure/azure-arc/servers/quick-onboard-linux)
 - [Quickstart: Connect a machine to Arc-enabled servers (Windows or Linux install script)](/azure/azure-arc/servers/quick-enable-hybrid-vm)

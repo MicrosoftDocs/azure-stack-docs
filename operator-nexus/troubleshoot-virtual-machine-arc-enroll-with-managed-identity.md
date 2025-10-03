@@ -1,6 +1,6 @@
 ---
-title: Troubleshoot issues with virtual machine Arc enrollment using managed identities
-description: This article offers step-by-step troubleshooting guidance for resolving issues when enrolling virtual machines with managed identities in Azure Arc.
+title: Troubleshoot issues with Azure Arc enrollment for virtual machines with managed identities
+description: This article offers step-by-step troubleshooting guidance for resolving issues when enrolling virtual machines with managed identities.
 ms.service: azure-operator-nexus
 ms.custom: azure-operator-nexus
 ms.topic: troubleshooting
@@ -9,24 +9,19 @@ ms.author: omarrivera
 author: g0r1v3r4
 ---
 
-# Troubleshoot Nexus virtual machines using managed identities
+# Troubleshoot issues with Azure Arc enrollment for virtual machines with managed identities
 
-Use this article to troubleshoot common problems encountered when enrolling Azure Operator Nexus virtual machines (VM) with Azure Arc using managed identities associated with the VM.
+Use this article to troubleshoot common issues or pitfalls when enrolling Azure Operator Nexus virtual machines (VMs) with Azure Arc using managed identities.
 
 ## Feature support versions
 
-- Ensure that your Nexus Cluster is running Azure Local Nexus `2510.1` Management Bundle and `4.7.0` Minor Runtime or later.
+- Ensure that your Operator Nexus Cluster is running management bundle `2510.1` version and runtime version `4.7.0`  or later.
 - The feature support is available in API version `2025-07-01-preview` or later.
-- Make sure the [`networkcloud` extension] is installed with a version that supports the required API version.
+- Make sure the [`networkcloud` az CLI extension] is installed with a version that supports the required API version.
   You can find supported versions in the [`networkcloud` extension release history] on GitHub.
 
-[`networkcloud` extension]: /cli/azure/networkcloud
+[`networkcloud` az CLI extension]: /cli/azure/networkcloud
 [`networkcloud` extension release history]: https://github.com/Azure/azure-cli-extensions/blob/main/src/networkcloud/HISTORY.rst
-
-> [!IMPORTANT]
-> To use managed identity features for Azure Arc enrollment, you must assign a system-assigned or user-assigned managed identity when you create the VM.
-> You can't add a managed identity after the VM is created.
-> If you plan to authenticate using other methods, such as service principals or personal access tokens, a managed identity isn't required.
 
 ## Examine the cloud-init logs
 
@@ -89,8 +84,8 @@ export HTTPS_PROXY=http://169.254.0.11:3128
 export https_proxy=http://169.254.0.11:3128
 export HTTPS_PROXY=http://169.254.0.11:3128
 export https_proxy=http://169.254.0.11:3128
-export NO_PROXY=169.254.169.254
-export no_proxy=169.254.169.254
+export NO_PROXY=localhost,127.0.0.1,::1,169.254.169.254
+export no_proxy=localhost,127.0.0.1,::1,169.254.169.254
 ```
 
 Also, the `azcmagent` should set proxy settings:
@@ -181,13 +176,14 @@ Possible causes:
 - Network connectivity issues
 - Check [proxy settings](#csn-proxy-configuration)
 
+Possible solutions:
+
 1. Verify the VM was created with an associated managed identity.
    If the VM wasn't created with an associated managed identity, you must recreate the VM with one to use managed identity authentication.
    For more information, see [Nexus VM with associated managed identities at creation time](./howto-arc-enroll-virtual-machine-using-managed-identities.md#nexus-vm-with-associated-managed-identities-at-creation-time).
 
 2. Verify the correct managed identity is assigned to the VM.
    For more information, see the [Verify Managed Identity permissions](#verify-managed-identity-permissions) section.
-
 
 3. Check IMDS connectivity from within the VM.
    If the IMDS endpoint isn't accessible, there could be a network connectivity issue or the IMDS sidecar container might not be running.
@@ -209,6 +205,8 @@ Possible causes:
 - Managed identity permissions are insufficient
 - Network connectivity to Azure endpoints might be missing from the [CSN egress configurations](#csn-proxy-configuration)
 - Check [proxy settings](#csn-proxy-configuration)
+
+Possible solutions:
 
 1. Verify managed identity has appropriate permissions.
    For more information, see the [Assign roles to the managed identity] section.
@@ -238,6 +236,8 @@ Possible causes:
 - Resource group or subscription issues
 - Network connectivity to Azure endpoints might be missing from the [CSN egress configurations](#csn-proxy-configuration)
 - Check [proxy settings](#csn-proxy-configuration)
+
+Possible solutions:
 
 1. Ensure that the access token is valid and isn't expired.
    Usually, the access token retrieved using `az account get-access-token` is valid for short period of time.
@@ -341,7 +341,7 @@ Or using `curl` with a user-assigned identity:
 curl -H "Metadata: true" "http://169.254.169.254/metadata/identity/oauth2/token?resource=https%3A%2F%2Fmanagement.core.windows.net%2F&api-version=2018-02-01&msi_res_id=${UAMI_ID}"
 ```
 
-[!include[stillHavingIssues](./includes/contact-support.md)]
+[!INCLUDE[stillHavingIssues](./includes/contact-support.md)]
 
 If you're still experiencing issues after following this troubleshooting guide, consider reaching out to Microsoft support for further assistance.
 When contacting support, provide the following information to help diagnose the issue:
