@@ -16,6 +16,8 @@ This article explains how to deploy Azure Kubernetes Service (AKS) clusters with
 
 ## Key considerations
 
+## Supported scenarios
+
 ## Deploy control plan nodes
 
 AKS deployment supports any node configuration in Azure Local with rack aware cluster support. In this example, a 2:2 configuration (two zones with two nodes each) is used. Follow these steps to spread AKS nodes across zones.
@@ -62,5 +64,7 @@ Remove the fault. The nodes fail over to the original hosts, and all Kubernetes 
 ## Limitations
 
 Node spreading across the zone uses availability sets, which use fault domains and default to one physical machine. Availability sets aren't zone aware. For more information, see [Availability sets in AKS enabled by Azure Arc](/azure/aks/aksarc/availability-sets).
+
+## Unsupported features or Unsupported scenarios
 
 ## Related content
