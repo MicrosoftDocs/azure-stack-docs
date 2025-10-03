@@ -57,8 +57,8 @@ The IMDS sidecar container listens on port `80` for HTTP traffic.
 
 Ensure that your cloud services network (CSN) is configured to allow egress traffic to the necessary Azure endpoints.
 The CSN must be created with the `--enable-default-egress-endpoints "True"` flag to automatically include the necessary endpoints.
-If the flag was skipped or missed during creation, you will need to manually add the required endpoints.
-See [Required proxy and network settings to enable outbound connectivity], for more details.
+If the flag is skipped or missed during creation, you need to manually add the required endpoints.
+For more information, see [Required proxy and network settings to enable outbound connectivity].
 
 The easiest way is to see the egress endpoints configured for the CSN is through Azure portal.
 Or, you can use the `networkcloud` extension to verify the setting is set to `True`:
@@ -78,11 +78,11 @@ az networkcloud cloudservicesnetwork show --name "$CSN_NAME" --resource-group "$
 ### CSN Proxy configuration
 
 The CSN proxy is used by the VM for egress traffic. The value is always `http://169.254.0.11:3128`.
-See [Required proxy and network settings to enable outbound connectivity], for more details.
+For more information, see [Required proxy and network settings to enable outbound connectivity].
 
 [Required proxy and network settings to enable outbound connectivity]: ./howto-arc-enroll-virtual-machine-using-managed-identities.md#required-proxy-and-network-settings-to-enable-outbound-connectivity
 
-Ensure environment variables are set correctly within the prior to executing `az login --identity` or `azcmagent connect` commands.
+Ensure environment variables are set correctly within the VM session before executing `az login --identity` or `azcmagent connect` commands.
 
 ```bash
 export HTTPS_PROXY=http://169.254.0.11:3128
@@ -102,7 +102,7 @@ azcmagent config set proxy.url "http://169.254.0.11:3128"
 ## Verify Managed Identity permissions
 
 Ensure that the managed identity associated with the VM has the necessary permissions to perform Azure Arc enrollment.
-See [Choose a managed identity option](./howto-arc-enroll-virtual-machine-using-managed-identities.md#choose-a-managed-identity-option) for more details.
+For more information, see [Choose a managed identity option](./howto-arc-enroll-virtual-machine-using-managed-identities.md#choose-a-managed-identity-option).
 
 ```azurecli-interactive
 az networkcloud virtualmachine show --name "$VM_NAME" --resource-group "$RESOURCE_GROUP" --query "identity"
@@ -157,45 +157,45 @@ nslookup management.azure.com
 nslookup login.microsoftonline.com
 ```
 
-## Error: Failed to login with managed identity
+## Error: Failed to sign in with managed identity
 
-When the `az login --identity` command is executed, and the error indicates that the login with managed identity failed.
+When the `az login --identity` command is executed, and the error indicates that the sign-in with managed identity failed.
 
 Example error messages:
 
 ```
-ERROR: Failed to login with system-assigned managed identity
+ERROR: Failed to log in with system-assigned managed identity
 
 # OR
 
-ERROR: Failed to login with user-assigned managed identity
+ERROR: Failed to log in with user-assigned managed identity
 ```
 
 Possible causes:
 
-- VM was not created with an associated managed identity, or the identity was added after VM creation
-- System-assigned managed identity is not enabled on the VM
-- User-assigned managed identity is not properly assigned to the VM
+- VM wasn't created with an associated managed identity, or the identity was added after VM creation
+- System-assigned managed identity isn't enabled on the VM
+- User-assigned managed identity isn't properly assigned to the VM
 - Identity permissions issues
-- IMDS endpoint is not accessible
+- IMDS endpoint isn't accessible
 - Network connectivity issues
 - Check [proxy settings](#csn-proxy-configuration)
 
 1. Verify the VM was created with an associated managed identity.
-   If the VM was not created with an associated managed identity, you must recreate the VM with one to use managed identity authentication.
-   See [Nexus VM with associated managed identities at creation time](./howto-arc-enroll-virtual-machine-using-managed-identities.md#nexus-vm-with-associated-managed-identities-at-creation-time) for more information.
+   If the VM wasn't created with an associated managed identity, you must recreate the VM with one to use managed identity authentication.
+   For more information, see [Nexus VM with associated managed identities at creation time](./howto-arc-enroll-virtual-machine-using-managed-identities.md#nexus-vm-with-associated-managed-identities-at-creation-time).
 
-2. Verify the managed identity has been assigned to the VM.
-   See the [Verify Managed Identity permissions](#verify-managed-identity-permissions) section for more details.
+2. Verify the correct managed identity is assigned to the VM.
+   For more information, see the [Verify Managed Identity permissions](#verify-managed-identity-permissions) section.
 
 
 3. Check IMDS connectivity from within the VM.
-   If the IMDS endpoint is not accessible, there could be a network connectivity issue or the IMDS sidecar container may not be running.
-   See the [VM network connectivity sanity tests](#vm-network-connectivity-sanity-tests) section for more details.
+   If the IMDS endpoint isn't accessible, there could be a network connectivity issue or the IMDS sidecar container might not be running.
+   For more information, see the [VM network connectivity sanity tests](#vm-network-connectivity-sanity-tests) section.
 
 ## Error: Failed to retrieve access token
 
-When either the `az login --identity` or `az account get-access-token` commands are executed, and the error indicates that the access token could not be retrieved.
+When either the `az login --identity` or `az account get-access-token` commands are executed, and the error indicates that the access token couldn't be retrieved.
 
 Example error message:
 
@@ -205,16 +205,16 @@ ERROR: Failed to retrieve access token
 
 Possible causes:
 
-- Managed identity is not associated with the VM
+- Managed identity isn't associated with the VM
 - Managed identity permissions are insufficient
-- Network connectivity to Azure endpoints is blocked by [CSN egress configurations](#csn-proxy-configuration)
+- Network connectivity to Azure endpoints might be missing from the [CSN egress configurations](#csn-proxy-configuration)
 - Check [proxy settings](#csn-proxy-configuration)
 
 1. Verify managed identity has appropriate permissions.
-   See the [Assign roles to the managed identity] for more details.
+   For more information, see the [Assign roles to the managed identity] section.
 
 2. Test network connectivity to Azure endpoints.
-  See the [VM network connectivity sanity tests](#vm-network-connectivity-sanity-tests) section for more details.
+   For more information, see the [VM network connectivity sanity tests](#vm-network-connectivity-sanity-tests) section.
 
 3. Check [CSN egress endpoints configurations](#cloud-services-network-csn-configurations).
    Ensure that the CSN has the required egress endpoints configured.
@@ -223,7 +223,7 @@ Possible causes:
 
 ## Error: Failed to connect to Azure Arc
 
-When the `azcmagent connect` command is executed, and the error indicates that the connection or the enrollment failed.
+When the `azcmagent connect` command is executed, and the error indicates the connection, or the enrollment failed.
 
 Example error message:
 ```
@@ -236,18 +236,18 @@ Possible causes:
 - Insufficient permissions for Arc enrollment
 - Invalid access token
 - Resource group or subscription issues
-- Network connectivity to Azure endpoints is blocked by [CSN egress configurations](#csn-proxy-configuration)
+- Network connectivity to Azure endpoints might be missing from the [CSN egress configurations](#csn-proxy-configuration)
 - Check [proxy settings](#csn-proxy-configuration)
 
-1. Ensure that the access token is valid and has not expired.
+1. Ensure that the access token is valid and isn't expired.
    Usually, the access token retrieved using `az account get-access-token` is valid for short period of time.
    Anytime permissions on the managed identity are changed, a new access token must be retrieved.
 
 2. Verify required Azure Arc endpoints are accessible:
-   See the [VM network connectivity sanity tests](#vm-network-connectivity-sanity-tests) section for more details.
+   For more information, see the [VM network connectivity sanity tests](#vm-network-connectivity-sanity-tests) section.
 
 3. Check if the managed identity has the necessary roles assigned for Azure Arc enrollment.
-   See the [Verify Managed Identity permissions](#verify-managed-identity-permissions) section for more details.
+   For more information, see the [Verify Managed Identity permissions](#verify-managed-identity-permissions) section.
 
 4. Check [CSN egress endpoints configurations](#cloud-services-network-csn-configurations).
    Ensure that the CSN has the required egress endpoints configured.
@@ -255,14 +255,14 @@ Possible causes:
 5. Check [Proxy settings](#csn-proxy-configuration).
    Ensure that the proxy settings are correctly configured in the environment variables and for `azcmagent`.
 
-6. Verify azcmagent version and status:
+6. Verify `azcmagent` version and status:
 
    ```bash
    azcmagent version
    azcmagent show
    ```
 
-7. Run azcmagent with additional debugging:
+7. Run `azcmagent` with more debugging:
 
    ```bash
    sudo azcmagent connect \
@@ -275,22 +275,20 @@ Possible causes:
        --debug
    ```
 
-Please follow the steps provided by the Azure Arc agent to troubleshoot further.
+Follow the steps provided by the Azure Arc agent to troubleshoot further.
 
 - [Azure Connected Machine agent troubleshooting]
 - [Azure Connected Machine agent connect reference]
 
-### Enable azcmagent logging
-
-Enable verbose logging for azcmagent.
+Enable verbose logging for `azcmagent`.
 You can also set the verbosity by using the `--verbose` or `--debug` flags when running `azcmagent` commands.
-See [azcmagent CLI documentation](/azure/azure-arc/servers/azcmagent) for more details.
+For more information, see [`azcmagent` CLI documentation](/azure/azure-arc/servers/azcmagent).
 
 ```bash
 azcmagent config set log.level DEBUG
 ```
 
-Check azcmagent logs.
+Check `azcmagent` logs.
 
 ```bash
 journalctl -u azcmagent -f
@@ -298,45 +296,8 @@ journalctl -u azcmagent -f
 
 ## Alternative access token retrieval methods
 
-There may be scenarios where using `az login --identity` does not work as expected.
-If you prefer not to use the Azure CLI for authentication, you can retrieve an access token directly using `az rest` or `curl`.
-This approach can be useful in environments where the Azure CLI is not available or if you encounter issues with the CLI.
-
-The example is meant to provide alternatives for retrieving the access token; however, it is always preferred to use the Azure CLI.
-
-### Using `az rest`
-
-With a system-assigned identity:
-
-```azurecli
-az rest --method get \
-  --url "http://169.254.169.254/metadata/identity/oauth2/token?resource=https%3A%2F%2Fmanagement.core.windows.net%2F&api-version=2018-02-01" \
-  --headers '{"Metadata":"true"}'
-```
-
-Or using a user-assigned identity:
-
-> [!IMPORTANT]
-> The `msi_res_id` query parameter must be set to the resource ID of the user-assigned managed identity.
-> The value must be URL encoded. The example assumes this is done already. Outside the scope of this example.
-
-```azurecli
-az rest --method get \
-  --url "http://169.254.169.254/metadata/identity/oauth2/token?resource=https%3A%2F%2Fmanagement.core.windows.net%2F&api-version=2018-02-01&msi_res_id=${UAMI_ID}" \
-  --headers '{"Metadata":"true"}'
-```
-
-### Using `curl`
-
-```bash
-curl -H "Metadata: true" "http://169.254.169.254/metadata/identity/oauth2/token?resource=https%3A%2F%2Fmanagement.core.windows.net%2F&api-version=2018-02-01"
-```
-
-```bash
-curl -H "Metadata: true" "http://169.254.169.254/metadata/identity/oauth2/token?resource=https%3A%2F%2Fmanagement.core.windows.net%2F&api-version=2018-02-01&msi_res_id=${UAMI_ID}"
-```
-
-Execute the command to enroll the VM using the access token retrieved from the managed identity.
+When authenticating with Azure services, you might need to request an access token using your desired managed identity.
+After authenticating with `az login --identity`, you can retrieve an access token for the Azure Resource Manager (ARM) endpoint using the following command:
 
 > [!TIP]
 > If the managed identity roles or permissions are changed, the token must be refreshed to reflect the changes.
@@ -345,13 +306,48 @@ Execute the command to enroll the VM using the access token retrieved from the m
 ACCESS_TOKEN=$(az account get-access-token --resource https://management.azure.com/ --query accessToken -o tsv)
 ```
 
+However, if you encounter issues with the Azure CLI `az login --identity` command or prefer not to use it, there are alternative methods to retrieve an access token directly from the IMDS endpoint.
+The example is meant to provide alternatives for retrieving the access token using `az rest` or `curl`.
+
+Use `az rest` to retrieve a token with a system-assigned identity:
+
+```azurecli-interactive
+az rest --method get \
+  --url "http://169.254.169.254/metadata/identity/oauth2/token?resource=https%3A%2F%2Fmanagement.core.windows.net%2F&api-version=2018-02-01" \
+  --headers '{"Metadata":"true"}'
+```
+
+Or using `curl` with a system-assigned identity:
+
+```bash
+curl -H "Metadata: true" "http://169.254.169.254/metadata/identity/oauth2/token?resource=https%3A%2F%2Fmanagement.core.windows.net%2F&api-version=2018-02-01"
+```
+
+Use `az rest` to retrieve a token with a user-assigned identity:
+
+> [!IMPORTANT]
+> Set the `msi_res_id` query parameter to the resource ID of the user-assigned managed identity.
+> URL encode the value before using it. The example assumes the value is already encoded.
+
+```azurecli
+az rest --method get \
+  --url "http://169.254.169.254/metadata/identity/oauth2/token?resource=https%3A%2F%2Fmanagement.core.windows.net%2F&api-version=2018-02-01&msi_res_id=${UAMI_ID}" \
+  --headers '{"Metadata":"true"}'
+```
+
+Or using `curl` with a user-assigned identity:
+
+```bash
+curl -H "Metadata: true" "http://169.254.169.254/metadata/identity/oauth2/token?resource=https%3A%2F%2Fmanagement.core.windows.net%2F&api-version=2018-02-01&msi_res_id=${UAMI_ID}"
+```
+
 [!include[stillHavingIssues](./includes/contact-support.md)]
 
 If you're still experiencing issues after following this troubleshooting guide, consider reaching out to Microsoft support for further assistance.
 When contacting support, provide the following information to help diagnose the issue:
 
   - Cloud-init logs: `/var/log/cloud-init-output.log`
-  - azcmagent logs: `sudo journalctl -u azcmagent`
+  - `azcmagent` logs: `sudo journalctl -u azcmagent`
   - Network connectivity tests results
   - VM and managed identity configuration details
   - [CSN configuration details](#cloud-services-network-csn-configurations)

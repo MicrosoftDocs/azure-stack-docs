@@ -16,7 +16,7 @@ Once enrolled, you can manage the VM as an Azure resource using Azure Arc capabi
 Azure Arc enrollment allows you to manage your virtual machines as Azure resources, providing unified management and monitoring capabilities.
 
 The guide covers each individual step required to complete the process, including prerequisites, environment setup, and the actual enrollment process.
-You may be able to automate the entire process using a cloud-init user data script passed during VM creation or execute after the VM is created and boots.
+You're able to automate the entire process using a cloud-init user data script passed during VM creation or execute after the VM is created and boots.
 We leave this choice to you based on your requirements and preferences.
 
 The overall process involves the following steps:
@@ -55,7 +55,7 @@ And you can manage the VM as an Azure resource using Azure Arc capabilities.
 
 When creating a Nexus VM for Azure Arc enrollment with managed identities, you must assign either a system-assigned or user-assigned managed identity during VM creation.
 This enables managed identity authentication for the VM.
-If you omit a managed identity at creation, you cannot add one later—managed identity support cannot be enabled by updating the VM after it is provisioned.
+If you don't specify a managed identity when creating the VM, you can't enable managed identity support by updating the VM after provisioning.
 To use managed identities, always specify them when you create the VM.
 
 > [!NOTE]
@@ -133,7 +133,7 @@ For more information about role assignments, see:
 
 The Cloud Services Network (CSN) should already have the necessary default egress routes to allow the VM to reach required Azure endpoints.
 The CSN must be created with the `--enable-default-egress-endpoints "True"` flag to automatically include the necessary endpoints.
-If this was skipped during creation, you will need to manually add the required endpoints.
+If this flag setting was skipped during creation, you need to manually add the required endpoints.
 
 You can use the `networkcloud` extension to verify the setting value:
 
@@ -241,7 +241,7 @@ The cloud-init script must handle the required scenario for your VM:
 
 After the VM is created and boots, you can check the cloud-init logs to verify that the Arc enrollment process completed successfully.
 If you need to troubleshoot the enrollment process, you can check the cloud-init logs file `/var/log/cloud-init-output.log` for any errors or issues.
-It is necessary to SSH into the VM to access the logs.
+It's necessary to SSH into the VM to access the logs.
 
 Ensure you complete the necessary setup for your chosen managed identity option before creating the VM.
 
@@ -304,7 +304,7 @@ az login --identity --msi-resource-id "${UAMI_ID}" --allow-no-subscriptions
 If you prefer not to use the Azure CLI for authentication, you can retrieve an access token directly using `az rest` or `curl`.
 This approach can be useful in environments where the Azure CLI isn't available or if you encounter issues with the CLI.
 The `az login` command is the preferred and recommended method for authentication.
-See [Alternative access token retrieval methods](./troubleshoot-virtual-machine-arc-enroll-with-managed-identity.md#alternative-access-token-retrieval-methods) for more information.
+For more information, see [Alternative access token retrieval methods](./troubleshoot-virtual-machine-arc-enroll-with-managed-identity.md#alternative-access-token-retrieval-methods).
 
 ## Create the Azure Arc machine resource
 
@@ -320,10 +320,10 @@ In order to enroll the VM with Azure Arc without having the traffic go through t
 
 Generate a new key pair to use during the creation of the Arc machine resource.
 This key pair is required for secure authentication between your Nexus VM and Azure Arc during the connection phase.
-The private key will be needed later when you run the `azcmagent connect existing` command to complete the enrollment.
+The private key is needed later when you run the `azcmagent connect existing` command to complete the enrollment.
 
 The key pair is for one-time use only and should be kept secure until the VM is successfully connected to Azure Arc.
-Do not share the key pair publicly. Once the Azure Arc machine resource is created and the connection is established, the key pair is no longer required.
+Don't share the key pair publicly. Once the Azure Arc machine resource is created and the connection is established, the key pair is no longer required.
 
 ```bash
 TEMP_DIR=$(mktemp -d)
@@ -334,9 +334,9 @@ PRIVATE_B64=$(openssl rsa -in "$TEMP_DIR/key.pem" -outform DER | base64 | tr -d 
 PUBLIC_B64=$(openssl rsa -in "$TEMP_DIR/key.pem" -RSAPublicKey_out -outform DER | base64 | tr -d '\n')
 ```
 
-Define the `ARC_MACHINE_ID` variable with the resource ID for the Azure Arc machine resource that you will create in your `SUBSCRIPTION` and `RESOURCE_GROUP`.
+Define the `ARC_MACHINE_ID` variable with the resource ID for the Azure Arc machine resource that you create in your `SUBSCRIPTION` and `RESOURCE_GROUP`.
 Set the `ARC_MACHINE_NAME` variable to match the VM name for easy identification.
-You must specify these values manually, as the resource does not exist until you create it.
+You specify these values manually, as the resource doesn't exist until you create it.
 
 ```bash
 ARC_MACHINE_NAME="${VM_NAME}"
@@ -362,7 +362,7 @@ EOF
 
 >[!IMPORTANT]
 > The `identity.type` property in the request body is set to `SystemAssigned` regardless of the managed identity type used for the VM.
-> This property is for the Arc machine resource which does create an system-assigned identity for itself.
+> This property is for the Arc machine resource, which creates a system-assigned identity for itself.
 
 Submit the request to create the Arc machine resource using `az rest`.
 You can add `--debug`, `--verbose` flags to see detailed output for troubleshooting if necessary.
@@ -375,7 +375,7 @@ az rest --method PUT \
 ```
 
 Validate the Arc machine resource was created successfully.
-The resource does not receive `Connected` status until the VM is enrolled using the `azcmagent connect existing` command.
+The resource doesn't receive `Connected` status until the VM is enrolled using the `azcmagent connect existing` command.
 
 ```azurecli-interactive
 az connectedmachine show \
@@ -502,12 +502,12 @@ After the command completes, the VM should be successfully enrolled with Azure A
 
 You can verify that your VM is enrolled with Azure Arc by checking its status in the Azure portal or by using the Azure CLI.
 First, confirm that the VM is provisioned by reviewing its detailed status.
-Then, view the details of the Azure Arc enabled VM to ensure it is connected and reporting correctly.
 
 ```azurecli-interactive
 az networkcloud virtualmachine show --name "$VM_NAME" --resource-group "$RESOURCE_GROUP" --query "detailedStatus"
 ```
 
+Next, view the details of the Azure Arc enabled VM to confirm connectivity and statuses are reported correctly.
 Install the [`connectedmachine` CLI extension](/cli/azure/connectedmachine) to run the command.
 
 ```azurecli-interactive
@@ -522,7 +522,7 @@ az connectedmachine show \
 
 It might be useful to review the [troubleshooting guide][Troubleshoot Nexus virtual machines using managed identities] for common issues and pitfalls.
 
-If you are wanting to setup [SSH access to Azure Arc-enabled servers](/azure/azure-arc/servers/ssh-arc-overview) using [az ssh arc](/cli/azure/ssh#az-ssh-arc)
+If you're wanting to set up [SSH access to Azure Arc-enabled servers](/azure/azure-arc/servers/ssh-arc-overview) using [az ssh arc](/cli/azure/ssh#az-ssh-arc)
 
 ## Related articles
 
