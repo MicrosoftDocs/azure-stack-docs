@@ -3,7 +3,7 @@ title: Azure Local, version 23H2 deployment overview
 description: Learn about the deployment methods for Azure Local, version 23H2.
 author: alkohli
 ms.topic: overview
-ms.date: 09/08/2025
+ms.date: 10/02/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -41,7 +41,7 @@ Follow this sequence to deploy Azure Local in your environment:
 | (Optional) [Configure the proxy](../manage/configure-proxy-settings.md) | Optionally configure proxy settings for Azure Local if your network uses a proxy server for internet access. |
 | Step 4: [Set up subscription permissions](./deployment-arc-register-server-permissions.md) | Assign required permissions for the deployment. |
 | Step 5A: [Register Azure Local machines with Azure Arc, without using the Arc gateway](./deployment-without-azure-arc-gateway.md) | Depending on whether your deployment environment uses a proxy or not, register your Azure Local machines directly with Azure Arc, without using the Arc gateway. |
-| Step 5B: [Register Azure Local machines with Azure Arc using Arc gateway (Preview)](./deployment-with-azure-arc-gateway.md) | Depending on whether your deployment environment uses a proxy or not, register your Azure Local machines with Azure Arc through the centralized Arc gateway. |
+| Step 5B: [Register Azure Local machines with Azure Arc using Arc gateway](./deployment-with-azure-arc-gateway.md) | Depending on whether your deployment environment uses a proxy or not, register your Azure Local machines with Azure Arc through the centralized Arc gateway. |
 | Step 6A: [Deploy the system via Azure portal](./deploy-via-portal.md) | Use the Azure portal to select Arc servers to deploy an Azure Local instance. |
 | Step 6B: [Deploy the system via Resource Manager template](deployment-azure-resource-manager-template.md) | Use the Azure Resource Manager deployment template and the parameter file to deploy an Azure Local instance. |
 
