@@ -12,11 +12,9 @@ ms.topic: concept-article
 
 This article explains how to deploy Azure Kubernetes Service (AKS) clusters with Rack Aware Cluster support. You learn how to ensure fault tolerance and evenly distribute nodes across Azure Local zones for improved reliability.
 
-## Overview
+## Prerequisites
 
 ## Key considerations
-
-## Prerequisites
 
 ## Deploy control plan nodes
 
@@ -65,4 +63,4 @@ Remove the fault. The nodes fail over to the original hosts, and all Kubernetes 
 
 Node spreading across the zone uses availability sets, which use fault domains and default to one physical machine. Availability sets aren't zone aware. For more information, see [Availability sets in AKS enabled by Azure Arc](/azure/aks/aksarc/availability-sets).
 
-## Next steps
+## Related content
