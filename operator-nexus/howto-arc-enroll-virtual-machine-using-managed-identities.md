@@ -157,19 +157,19 @@ Before proceeding with the deployment, set the following environment variables t
 | `ADMIN_USERNAME`          | Administrator username for the VM.                                                                                |
 | `CLUSTER_CUSTOM_LOCATION` | Custom location of the Nexus instance.                                                                            |
 | `CLUSTER_NAME`            | The name of your Nexus cluster.                                                                                   |
-| `CPU_CORES`               | Number of CPU cores for the VM.                                                                                   |
+| `CPU_CORES`               | (Optional) Number of CPU cores for the VM.                                                                        |
 | `CSN_ARM_ID`              | ARM resource ID of the cloud services network.                                                                    |
 | `L3_NETWORK_ARM_ID`       | ARM resource ID of the L3 network to create.                                                                      |
 | `LOCATION`                | Azure region for the resources.                                                                                   |
-| `MEMORY_SIZE`             | Memory size in GiB for the VM.                                                                                    |
+| `MEMORY_SIZE`             | (Optional) Memory size in GiB for the VM.                                                                         |
 | `NETWORK_INTERFACE_NAME`  | Name of the network interface.                                                                                    |
 | `RESOURCE_GROUP`          | The name of the Azure resource group.                                                                             |
 | `SSH_PUBLIC_KEY`          | SSH public key for VM access.                                                                                     |
 | `SUBSCRIPTION_ID`         | Your Azure subscription ID.                                                                                       |
 | `TENANT_ID`               | Your Azure tenant ID.                                                                                             |
-| `UAMI_ID`                 | (Optional.) The user-assigned managed identity (UAMI) ID to be used for the virtual machine. Not required when using system-assigned managed identity. |
-| `UAMI_NAME`               | (Optional.) Name of the user-assigned managed identity. Not required when using system-assigned managed identity. |
-| `VM_DISK_SIZE`            | OS disk size in GiB.                                                                                              |
+| `UAMI_ID`                 | (Optional) The user-assigned managed identity (UAMI) ID to be used for the virtual machine. Not required when using system-assigned managed identity. |
+| `UAMI_NAME`               | (Optional) Name of the user-assigned managed identity. Not required when using system-assigned managed identity.  |
+| `VM_DISK_SIZE`            | (Optional) OS disk size in GiB.                                                                                   |
 | `VM_IMAGE`                | Container image for the VM.                                                                                       |
 | `VM_NAME`                 | Name of the virtual machine.                                                                                      |
 
