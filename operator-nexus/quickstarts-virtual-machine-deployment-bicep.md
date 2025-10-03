@@ -44,6 +44,7 @@ Review and save the template file named ```virtual-machine-bicep-file.bicep```, 
 
 Create the virtual machine with either a system-assigned or a user-assigned managed identity.
 To add a managed identity to the VM, the API version must be `2025-07-01-preview` or later.
+The `apiVersion` can be populated with `2025-07-01-preview`, `2025-09-01` or any future version of the API.
 
 [!INCLUDE[mustAssignManagedIdentityAtCreation](./includes/virtual-machine/quickstart-managed-identity-important.md)]
 
@@ -52,7 +53,7 @@ Make sure to update the resource version for the virtual machine resource in the
 Add the `identity` section with `type` set to `SystemAssigned` to the Bicep file:
 
 ```
-resource vm 'Microsoft.Compute/virtualMachines@2025-07-01-preview' = {
+resource vm 'Microsoft.NetworkCloud/virtualMachines@2025-09-01' = {
   name: vmName
   ...
   properties: {
@@ -68,7 +69,7 @@ For User-assigned managed identity, the resource must be created before it can b
 Update the Bicep file with the `identity` section with `type` set to `UserAssigned`, and include the `userAssignedIdentities` property with the resource ID of the user-assigned managed identity.
 
 ```
-resource vm 'Microsoft.NetworkCloud/virtualMachines@2025-07-01-preview' = {
+resource vm 'Microsoft.NetworkCloud/virtualMachines@2025-09-01' = {
   name: vmName
   ...
   properties: {

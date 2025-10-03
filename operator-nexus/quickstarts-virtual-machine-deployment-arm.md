@@ -40,18 +40,18 @@ Once you review and save the template file named ```virtual-machine-arm-template
 
 Create the virtual machine with either a system-assigned or a user-assigned managed identity.
 To add a managed identity to the VM, the API version must be `2025-07-01-preview` or later.
+The `apiVersion` can be populated with `2025-07-01-preview`, `2025-09-01` or any future version of the API.
 
 [!INCLUDE[mustAssignManagedIdentityAtCreation](./includes/virtual-machine/quickstart-managed-identity-important.md)]
 
 Update the `apiVersion` for the virtual machine resource in the `virtual-machine-arm-template.json` file.
-The `apiVersion` can be populated with `2025-07-01-preview`, `2025-09-01` or any future version of the API.
 
 ```json
 ...
 "resources": [
     {
         "type": "Microsoft.NetworkCloud/virtualMachines",
-        "apiVersion": "2025-07-01-preview", // Update the API version here
+        "apiVersion": "2025-09-01", // Update the API version here
         ...
     }
   ]
