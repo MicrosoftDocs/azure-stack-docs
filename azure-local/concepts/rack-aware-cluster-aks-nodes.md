@@ -66,4 +66,3 @@ Remove the fault. The nodes fail over to the original hosts, and all Kubernetes 
 Node spreading across the zone uses availability sets, which use fault domains and default to one physical machine. Availability sets aren't zone aware. For more information, see [Availability sets in AKS enabled by Azure Arc](/azure/aks/aksarc/availability-sets).
 
 ## Next steps
-
