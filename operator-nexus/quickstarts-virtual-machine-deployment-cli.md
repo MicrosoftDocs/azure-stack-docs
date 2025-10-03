@@ -125,9 +125,7 @@ You can find supported versions in the [`networkcloud` extension release history
 [`networkcloud` extension]: /cli/azure/networkcloud
 [`networkcloud` extension release history]: https://github.com/Azure/azure-cli-extensions/blob/main/src/networkcloud/HISTORY.rst
 
-> [!IMPORTANT]
-> You must assign a managed identity (system-assigned or user-assigned) when creating the VM.
-> Managed identities can't be added after the VM is created.
+[!INCLUDE[mustAssignManagedIdentityAtCreation](./includes/virtual-machine/quickstart-managed-identity-important.md)]
 
 To enable the system-assigned managed identity for the virtual machine, be sure to include the `--mi-system-assigned` flag (or the alias `--system-assigned`).
 

@@ -45,9 +45,7 @@ Review and save the template file named ```virtual-machine-bicep-file.bicep```, 
 Create the virtual machine with either a system-assigned or a user-assigned managed identity.
 To add a managed identity to the VM, the API version must be `2025-07-01-preview` or later.
 
-> [!IMPORTANT]
-> You must assign a managed identity (system-assigned or user-assigned) when creating the VM.
-> Managed identities can't be added after the VM is created.
+[!INCLUDE[mustAssignManagedIdentityAtCreation](./includes/virtual-machine/quickstart-managed-identity-important.md)]
 
 Make sure to update the resource version for the virtual machine resource in the `virtual-machine-bicep-file.bicep` file.
 
