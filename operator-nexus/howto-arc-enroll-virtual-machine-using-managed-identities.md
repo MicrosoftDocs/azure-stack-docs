@@ -22,15 +22,14 @@ We leave this choice to you based on your requirements and preferences.
 The overall process involves the following steps:
 
 1. **Create Nexus VM** - Create a Nexus VM with an associated managed identity
-1. **Assign roles to the managed identity** - Assign the necessary roles to the managed identity to allow Azure Arc enrollment
-1. **Install Azure CLI** - Downloads and installs the latest Azure CLI
-1. **Configure proxy settings** - Sets the necessary proxy environment variables if necessary
-1. **Authenticate with managed identity** - Uses either system-assigned or user-assigned managed identity to sign in to Azure
-1. **Create Arc machine resource** - Creates the Azure Arc machine resource in the specified resource group
-1. **Assign VM traffic to Private Relay** - Assigns the VM's traffic to use Private Relay for secure outbound connectivity
-1. **Retrieve access token** - Gets an access token for Azure Resource Manager API
-1. **Install the `azcmagent` CLI tool** - Downloads and installs the Azure Connected machine agent
-1. **Connect to Arc** - Uses the access token to register the VM with Azure Arc via the `azcmagent connect` command
+2. **Assign roles to the managed identity** - Assign the necessary roles to the managed identity to allow Azure Arc enrollment
+3. **Install Azure CLI** - Install the latest Azure CLI
+4. **Configure proxy settings** - Configure the necessary proxy environment variables if necessary
+5. **Authenticate with managed identity** - Authenticate using either a system-assigned or user-assigned managed identity to sign in to Azure
+6. **Create Arc machine resource** - Create the Azure Arc machine resource in the specified resource group without connecting it to the VM
+7. **Assign VM traffic to Private Relay** - Assign the VM's traffic to use Private Relay for secure outbound connectivity
+8. **Install the `azcmagent` CLI tool** - Install the Azure Connected machine agent (`azcmagent`) CLI tool
+9. **Connect to existing Arc machine** - Connect the VM to the existing Azure Arc machine using the `azcmagent connect existing` command
 
 The end result is a Nexus VM that is successfully enrolled with Azure Arc using managed identities for authentication.
 Its traffic is routed through Private Relay for secure outbound connectivity.
