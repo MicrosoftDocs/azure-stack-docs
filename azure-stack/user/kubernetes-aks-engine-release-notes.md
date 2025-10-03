@@ -3,10 +3,10 @@ title: Release notes for Azure Kubernetes Service (AKS) engine on Azure Stack Hu
 description: Learn the steps you need to take with the update to AKS engine on Azure Stack Hub.
 author: sethmanheim
 ms.topic: release-notes
-ms.date: 08/27/2025
+ms.date: 10/03/2025
 ms.author: sethm
 ms.reviewer: sumsmith
-ms.lastreviewed: 08/27/2025
+ms.lastreviewed: 10/03/2025
 
 # Intent: As an Azure Stack Hub user, I want to update a Kubernetes cluster using AKS engine on a custom virtual network so that I can deliver my service in an environment that extends my data center or in a hybrid cloud solution with my cluster in Azure Stack Hub and Azure.
 # Keywords: update ASK engine Azure Stack Hub
@@ -98,6 +98,7 @@ For AKS Engine release v0.75.3, clusters with Windows nodes on Kubernetes v1.23 
 | 2406                                           | 0.80.2, 0.80.3, 0.81.1 |
 | 2408                                           | 0.80.2, 0.80.3, 0.81.1, 0.82.1*, 0.83.0* |
 | 2501                                           | 0.81.1, 0.82.1*, 0.83.0* |
+| 2506                                           | 0.81.1, 0.82.1*, 0.83.0* |
 
 *Supported. See the [AKS Engine Version Support policy](azure-stack-kubernetes-aks-engine-support.md#version-support) for more information.
 
