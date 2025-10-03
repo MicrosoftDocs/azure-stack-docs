@@ -48,15 +48,15 @@ To add a managed identity to the VM, the API version must be `2025-07-01-preview
 Update the `apiVersion` for the virtual machine resource in the `virtual-machine-arm-template.json` file:
 
 ```json
-  ...
-  "resources": [
-      {
-          "type": "Microsoft.NetworkCloud/virtualMachines",
-          "apiVersion": "2025-07-01-preview",
-          ...
-      }
-    ]
-  }
+...
+"resources": [
+    {
+        "type": "Microsoft.NetworkCloud/virtualMachines",
+        "apiVersion": "2025-07-01-preview",
+        ...
+    }
+  ]
+...
 ```
 
 To the `virtual-machine-arm-template.json` file, add the `identity` property to the virtual machine resource definition.

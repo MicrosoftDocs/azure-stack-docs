@@ -96,8 +96,6 @@ ACR_PASSWORD="<Azure Container Registry password>"
 
 After defining these variables, you can create the virtual machine by executing the following Azure CLI command.
 
-Create the virtual machine using a Service Principal with Azure CLI:
-
 ```azurecli-interactive
 az networkcloud virtualmachine create \
     --name "$VM_NAME" \

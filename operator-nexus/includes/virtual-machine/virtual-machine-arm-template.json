@@ -84,7 +84,7 @@
             }
             */
         },
-        "networkData": {
+        "networkDataContent": {
             "type": "string",
             "metadata": {
                 "description": "The Base64 encoded cloud-init network data."
@@ -130,7 +130,7 @@
                 }
             }
         },
-        "userData": {
+        "userDataContent": {
             "type": "string",
             "metadata": {
                 "description": "The Base64 encoded cloud-init user data."
@@ -187,12 +187,12 @@
                 },
                 "cpuCores": "[parameters('cpuCores')]",
                 "memorySizeGB": "[parameters('memorySizeGB')]",
-                "networkData": "[if(empty(parameters('networkData')), json('null'), parameters('networkData'))]",
+                "networkDataContent": "[if(empty(parameters('networkDataContent')), json('null'), parameters('networkDataContent'))]",
                 "networkAttachments": "[if(empty(parameters('networkAttachments')), json('null'), parameters('networkAttachments'))]",
                 "placementHints": "[if(empty(parameters('placementHints')), json('null'), parameters('placementHints'))]",
                 "sshPublicKeys": "[if(empty(parameters('sshPublicKeys')), json('null'), parameters('sshPublicKeys'))]",
                 "storageProfile": "[if(empty(parameters('storageProfile')), json('null'), parameters('storageProfile'))]",
-                "userData": "[if(empty(parameters('userData')), json('null'), parameters('userData'))]",
+                "userDataContent": "[if(empty(parameters('userDataContent')), json('null'), parameters('userDataContent'))]",
                 "vmDeviceModel": "[if(empty(parameters('vmDeviceModel')), json('null'), parameters('vmDeviceModel'))]",
                 "vmImage": "[if(empty(parameters('vmImage')), json('null'), parameters('vmImage'))]",
                 "vmImageRepositoryCredentials": "[if(empty(parameters('vmImageRepositoryCredentials')), json('null'), parameters('vmImageRepositoryCredentials'))]"
