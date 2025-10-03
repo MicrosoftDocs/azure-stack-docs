@@ -82,8 +82,8 @@ Ensure environment variables are set correctly within the VM session before exec
 ```bash
 export HTTPS_PROXY=http://169.254.0.11:3128
 export https_proxy=http://169.254.0.11:3128
-export HTTPS_PROXY=http://169.254.0.11:3128
-export https_proxy=http://169.254.0.11:3128
+export HTTP_PROXY=http://169.254.0.11:3128
+export http_proxy=http://169.254.0.11:3128
 export NO_PROXY=localhost,127.0.0.1,::1,169.254.169.254
 export no_proxy=localhost,127.0.0.1,::1,169.254.169.254
 ```

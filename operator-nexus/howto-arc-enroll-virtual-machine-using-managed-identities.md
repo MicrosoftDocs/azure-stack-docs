@@ -253,8 +253,8 @@ The CSN proxy is used by the VM for outbound traffic, which should always be `ht
 ```bash
 export HTTPS_PROXY=http://169.254.0.11:3128
 export https_proxy=http://169.254.0.11:3128
-export HTTPS_PROXY=http://169.254.0.11:3128
-export https_proxy=http://169.254.0.11:3128
+export HTTP_PROXY=http://169.254.0.11:3128
+export http_proxy=http://169.254.0.11:3128
 ```
 
 Similarly, you must also configure the `NO_PROXY` environment variable to exclude the IP address `169.254.169.254`.
