@@ -180,7 +180,7 @@ Possible solutions:
 
 1. Verify the VM was created with an associated managed identity.
    If the VM wasn't created with an associated managed identity, you must recreate the VM with one to use managed identity authentication.
-   For more information, see [Nexus VM with associated managed identities at creation time](./howto-arc-enroll-virtual-machine-using-managed-identities.md#nexus-vm-with-associated-managed-identities-at-creation-time).
+   For more information, see [Nexus VM with associated managed identities at creation time](./howto-arc-enroll-virtual-machine-using-managed-identities.md#vm-with-associated-managed-identities-at-creation-time).
 
 2. Verify the correct managed identity is assigned to the VM.
    For more information, see the [Verify Managed Identity permissions](#verify-managed-identity-permissions) section.
