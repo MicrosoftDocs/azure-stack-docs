@@ -1,6 +1,6 @@
 ---
 title: Enable secret encryption on an AKS Edge Essentials cluster
-description: Learn how to enable the KMS plugin for AKS Edge Essentials clusters to encrypt secrets.
+description: Learn how to enable the KMS provider for AKS Edge Essentials clusters to encrypt secrets.
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
@@ -15,10 +15,7 @@ Following Kubernetes security best practices, it's recommended that you encrypt 
 
 For more detailed information about using KMS, see the official [KMS provider documentation](https://kubernetes.io/docs/tasks/administer-cluster/kms-provider/).
 
-This article demonstrates how to activate the KMS plugin for AKS Edge Essentials clusters.
-
-> [!IMPORTANT]
-> The KMS provider for AKS Edge Essentials is currently in PREVIEW. See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
+This article demonstrates how to activate the KMS provider for AKS Edge Essentials clusters.
 
 ## Prerequisites
 
@@ -39,7 +36,7 @@ In your [**aksedge-config.json** file](aks-edge-deployment-config-json.md), in t
 }
 ```
 
-The following output is displayed during deployment, showing that the KMS plugin is enabled:
+The following output is displayed during deployment, showing that the KMS provider is enabled:
 
 ```output
 Preparing to install kms-plugin as encryption provider...
@@ -72,9 +69,9 @@ If you encounter errors, see the [Troubleshooting](#troubleshooting) section.
 
 ## How to update your secrets after KEK is rotated  
 
-When using the KMS provider, consider updating all secrets following each KEK rotation. This ensures you are following Kubernetes Best Practices and that every secret is encrypted with the most current KEK after automatic KEK rotation every 30 days.  Without this step your secrets will still be secure and encrypted using the first KEK provisioned when your secret was created. For larger clusters, consider subdividing secrets by namespace or developing a dedicated update script to streamline the process. 
+When using the KMS provider, consider updating all secrets following each KEK rotation. This ensures you are following [Kubernetes Best Practices](https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/#ensure-all-secrets-are-encrypted) and that every secret is encrypted with the most current KEK after automatic KEK rotation every 30 days.  Even without this step, your secrets remain secure and encrypted with the original KEK used at creation, until you update or write to the secret. For larger clusters, consider subdividing secrets by namespace or developing a dedicated update script to streamline the process. 
 ```powershell
-kubectl get secrets --all-namespaces -o json | kubectl replace -f - 
+kubectl get secrets --all-namespaces -o json | kubectl replace -f -
 ```
 
 ## Troubleshooting
@@ -89,7 +86,7 @@ If there are errors with the KMS provider, follow this procedure:
 
    If the version is older, upgrade to the latest version. For more information, see [Upgrade an AKS cluster](aks-edge-howto-update.md).
 
-1. View the `readyz` API. If the problem persists, verify that the KMS provider is enabled. See the [Verify that the KMS provider is enabled](#verify-that-the-kms-plugin-is-enabled) section.
+1. View the `readyz` API. If the problem persists, verify that the KMS provider is enabled. See the [Verify that the KMS provider is enabled](#verify-that-the-kms-provider-is-enabled) section.
 
    If you receive "**[-]**" before the `kms-providers` field, collect diagnostic logs for debugging. For more information, see [Get kubelet logs from cluster nodes](aks-get-kubelet-logs.md).
 
