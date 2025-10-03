@@ -80,7 +80,7 @@ See [Create Azure Local virtual machines enabled by Azure Arc](create-arc-virtua
     Here's an example:
 
     ```azurecli
-    # To connect to your Azure Local via Az CLI, see [Connect to Azure Local via Azure CLI client](azure-arc-vm-management-prerequisites.md?#azure-command-line-interface-cli-requirements).
+    # To connect to your Azure Local via Az CLI, see Connect to Azure Local via Azure CLI client(https://learn.microsoft.com/en-us/azure/azure-local/azure-arc-vm-management-prerequisites.md?#azure-command-line-interface-cli-requirements).
 
     # Login to Azure
     [host1]: PS C:\Users\HCIDeploymentUser> az login –use-device-code
@@ -228,7 +228,7 @@ You can view the guest attestation status using Azure CLI. The guest attestation
 Here's the sample output:
 
 ```output
-# To connect to your Azure Local via Az CLI, see Connect to Azure Local via Azure CLI client.
+  # To connect to your Azure Local via Az CLI, see Connect to Azure Local via Azure CLI client(https://learn.microsoft.com/en-us/azure/azure-local/azure-arc-vm-management-prerequisites.md?#azure-command-line-interface-cli-requirements).
 
 # Login to Azure
 PS C:\WINDOWS\system32>az login --use-device-code
