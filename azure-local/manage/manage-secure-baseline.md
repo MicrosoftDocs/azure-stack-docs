@@ -71,9 +71,9 @@ Use the following table to view and download the complete list of security setti
 
 | Azure Local solution version             | Running Azure Local OS version                       | Download link for settings csv file |
 |------------------------------------------|-------------------------------------------|-------------------------------------|
-| 2505 existing deployments                | Running OS build 25398.xxxx and domain-joined                      | [Download security baseline](https://aka.ms/SecBase) |
-| 2506 new deployments                     | Running OS build 26100.xxxx and domain-joined     | [Download security baseline](https://aka.ms/SecBaseDomJoin) |
-| 2506 existing deployments                | Running OS build 26100.xxxx and not domain-joined (also known as AD-less)    | [Download security baseline](https://aka.ms/SecBaseAdless) |
+| 2505 and below deployments    | Running OS build 25398.xxxx and domain-joined                      | [Download security baseline](https://aka.ms/SecBase) |
+| 2506 and beyond deployments   | Running OS build 26100.xxxx and domain-joined     | [Download security baseline](https://aka.ms/SecBaseDomJoin) |
+| 2506 and beyond deployments   | Running OS build 26100.xxxx and not domain-joined (also known as AD-less)    | [Download security baseline](https://aka.ms/SecBaseAdless) |
 
 ## Modify security defaults
 
