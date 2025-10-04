@@ -1,5 +1,5 @@
 ---
-title: Prepare to deploy Rack Aware Cluster
+title: Deploy Rack Aware Cluster via the Azure portal
 description: Learn how to deploy Azure Local Rack Aware Clusters with high resiliency using ToR switches and VLAN isolation for optimal network configurations.
 author: alkohli
 ms.author: alkohli
@@ -7,6 +7,7 @@ ms.reviewer: alkohli
 ms.date: 09/29/2025
 ms.topic: how-to
 ---
+
 
 # Prepare for Rack Aware Cluster deployment
 
