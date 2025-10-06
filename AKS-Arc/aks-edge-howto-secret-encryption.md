@@ -1,10 +1,10 @@
 ---
-title: Enable secret encryption on an AKS Edge Essentials cluster (preview)
+title: Enable secret encryption on an AKS Edge Essentials cluster
 description: Learn how to enable the KMS Provider for AKS Edge Essentials clusters to encrypt secrets.
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
-ms.date: 03/11/2025
+ms.date: 10/6/2025
 ms.custom: template-how-to
 ms.reviewer: leslielin
 ---
@@ -45,7 +45,7 @@ Preparing to install kms-plugin as encryption provider...
 For deployment instructions, see [Single machine deployment](aks-edge-howto-single-node-deployment.md).
 
 > [!NOTE]
-> You can only enable or disable the KMS plugin when you create a new deployment. Once you set the flag, it can't be changed.
+> You can only enable or disable the KMS provider when you create a new deployment. Once you set the flag, it can't be changed.
 
 ## Verify that the KMS provider is enabled
 
