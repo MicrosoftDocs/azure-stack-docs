@@ -7,7 +7,7 @@ ms.topic: how-to
 ms.service: azure-local
 ms.custom:
   - devx-track-azurecli
-ms.date: 05/21/2025
+ms.date: 10/06/2025
 ---
 
 # Create Azure Local VM image using Azure Compute Gallery images
@@ -43,12 +43,19 @@ To transfer your Azure Compute Gallery image to be an Azure Local compatible ima
 1. Obtain the SAS token of the managed disk by using the following command:
 
     ```azurecli
-    az disk grant-access --resource-group $resourceGroupName --name $diskName --duration-in-seconds $sasExpiryDuration --query [accessSas] -o tsv
+    # Variables to get SAS URL for the managed disk
+    $resource_group = "<Resource Group Name>"
+    $diskName = "<myDiskName>" # Replace 'myDiskName' with your actual disk name
+    $sasExpiryDuration = 100000 # Duration in seconds for SAS URL validity
+    ```
+
+    ```azurecli
+    az disk grant-access --resource-group $resource_group --name $diskName --duration-in-seconds $sasExpiryDuration --query [accessSas] -o tsv
     ```
 
 ### Set parameters
 
-Before creating an Azure Local VM image, you'll need to set some parameters.
+Before creating an Azure Local VM image, you need to set some parameters.
 
 - Set your subscription, resource group, location, path to the image in local share, and OS type for the image. Replace the parameters in `< >` with the appropriate values.
 
@@ -58,10 +65,12 @@ Before creating an Azure Local VM image, you'll need to set some parameters.
     $location = "<Location for your Azure Local>"
     $osType = "<OS of source image>"
     $imageName = "<VM image name>"
+    $customLocationID = "<Custom Location ID>"
+    $imageSourcePath = '"<SAS URL path to the source image>"'
     ```
 
     The parameters are described in the following table:
-    
+
     | Parameter        | Description                                                                                |
     |------------------|--------------------------------------------------------------------------------------------|
     | `subscription`   | Subscription for Azure Local that you associate with this image.        |
@@ -69,15 +78,19 @@ Before creating an Azure Local VM image, you'll need to set some parameters.
     | `location`       | Location for your Azure Local instance. For example, this could be `eastus`. |
     | `imageName`      | Name of the VM image created starting with the image in your local share. <br> **Note**: Azure rejects all the names that contain the keyword Windows. |
     | `os-type`         | Operating system associated with the source image. This can be Windows or Linux.           |
-    
+    | `customLocationID` | Custom location ID for your Azure Local instance.      |
+    | `imageSourcePath`  | Path to the compute gallery image managed disk SAS URL.        |
+  
     Here's a sample output:
-    
+  
     ```azurecli
     PS C:\Users\azcli> $subscription = "<Subscription ID>"
     PS C:\Users\azcli> $resource_group = "mylocal-rg"
     PS C:\Users\azcli> $location = "eastus"
     PS C:\Users\azcli> $osType = "Windows"
     PS C:\Users\azcli> $imageName = "mylocal-computegalleryimage"
+    PS C:\Users\azcli> $customLocationID = "/subscriptions/$subscription/resourcegroups/$resource_group/providers/microsoft.extendedlocation/customlocations/$customLocationName"
+    PS C:\Users\azcli> $imageSourcePath = '"https://EXAMPLE.blob.storage.azure.net/EXAMPLE/abcd<sas-token>"'
     ```
 
 ### Create an Azure Local VM image
@@ -90,19 +103,13 @@ To create an Azure Local VM image:
     $customLocationID=(az customlocation show --resource-group $resource_group --name "<custom location name for your Azure Local>" --query id -o tsv)
     ```
 
-1. Create the VM image starting with a specified marketplace image. Make sure to specify the offer, publisher, sku and version for the marketplace image.
+1. Create the VM image starting with a specified marketplace image. Make sure to specify the offer, publisher, sku, and version for the marketplace image.
 
     ```azurecli
-    az stack-hci-vm image create --subscription $subscription --resource-group $resource_Group --custom-location $customLocationID --location $location --name $imageName --os-type $osType --image-path $imageSourcePath --storage-path-id $storagepathid
+    az stack-hci-vm image create --subscription $subscription --resource-group $resource_Group --custom-location $customLocationID --location $location --name $imageName --os-type $osType --image-path $imageSourcePath
     ```
 
-    A deployment job starts for the VM image.
-
-    In this example, the storage path was specified using the `--storage-path-id` flag and that ensured that the workload data (including the VM, VM image, non-OS data disk) is placed in the specified storage path.
-
-    If the flag is not specified, the workload data is automatically placed in a high availability storage path.
-
-    The image deployment takes a few minutes to complete. The time taken to download the image depends on the size of the image and the network bandwidth available for the download.
+    A deployment job starts for the VM image and takes a few minutes to complete. The image download time depends on the image size and the network bandwidth available for the download.
 
     Here's a sample output:
 
