@@ -54,13 +54,13 @@ Install Windows 10/11 IoT Enterprise/Enterprise/Pro on your machine and activate
 - **Deployment options**: single-machine clusters and full Kubernetes deployment on single machines only. Full deployment across multiple machines isn't supported in GA.
 - **Workloads**: only Linux worker nodes.
 - **Network plugins**: Calico on K8s, Flannel on K3s.
+- **Secret Encryption**: [KMS Provider for AKS Edge Essentials](aks-edge-howto-secret-encryption.md).
 
 ## Experimental or prerelease features
 
 - **Deployment options**: Full Kubernetes deployment on multiple machines.
 - **Workloads**: Windows worker nodes.
 - **GPU**: [GPU-PV](aks-edge-gpu.md).
-- **Secret Encryption**: [KMS plugin for AKS Edge Essentials](aks-edge-howto-secret-encryption.md).
 - **Security**: [Workload identity](aks-edge-workload-identity.md). Workload identity federation is only available for deployment of Azure IoT Operations on top of AKS Edge Essentials.
 - **Network plugins**: Calico on K3S (discontinued).
 
