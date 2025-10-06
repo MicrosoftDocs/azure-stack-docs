@@ -23,7 +23,17 @@ A Rack Aware Cluster in Azure Local is an architecture that improves fault toler
 
 ## Prerequisites
 
+Before you begin, make sure you:
+
+Review [Create Kubernetes clusters using Azure CLI](azure/aks/aksarc/aks-create-clusters-cli).
+
 ## Key considerations
+
+When distributing AKS nodes in rack-aware clusters, consider the following key points:
+
+- Make sure the AKS control plane has more nodes than a single zone. This setup lets the control plane deploy across zones and recover faster. For example, in a 3:3 rack-aware configuration, use a 5-node control plane to ensure a 3:2 split. If you use only 3 nodes, you might end up with a 3:0 split, which can slow recovery.
+
+- Control plane high availability isn't supported in rack aware clusters because they support only two zones. If a zone fails, the control plane majority can be affected, such as in a 2:1 or 3:2 split.
 
 ## Supported scenarios
 
