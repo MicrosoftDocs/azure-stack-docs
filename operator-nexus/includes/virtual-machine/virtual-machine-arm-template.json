@@ -40,7 +40,10 @@
         "bootMethod": {
             "type": "string",
             "defaultValue": "UEFI",
-            "allowedValues": ["UEFI", "BIOS"],
+            "allowedValues": [
+                "UEFI",
+                "BIOS"
+            ],
             "metadata": {
                 "description": "Selects the boot method for the virtual machine."
             }
@@ -81,7 +84,7 @@
             }
             */
         },
-        "networkData": {
+        "networkDataContent": {
             "type": "string",
             "metadata": {
                 "description": "The Base64 encoded cloud-init network data."
@@ -127,7 +130,7 @@
                 }
             }
         },
-        "userData": {
+        "userDataContent": {
             "type": "string",
             "metadata": {
                 "description": "The Base64 encoded cloud-init user data."
@@ -137,7 +140,10 @@
         "vmDeviceModel": {
             "type": "string",
             "defaultValue": "T2",
-            "allowedValues": ["T1", "T2"],
+            "allowedValues": [
+                "T1",
+                "T2"
+            ],
             "metadata": {
                 "description": "The type of the device model to use."
             }
@@ -164,7 +170,7 @@
     "resources": [
         {
             "type": "Microsoft.NetworkCloud/virtualMachines",
-            "apiVersion": "2025-02-01",
+            "apiVersion": "2025-09-01",
             "name": "[parameters('vmName')]",
             "location": "[parameters('location')]",
             "extendedLocation": {
@@ -181,16 +187,16 @@
                 },
                 "cpuCores": "[parameters('cpuCores')]",
                 "memorySizeGB": "[parameters('memorySizeGB')]",
-                "networkData": "[if(empty(parameters('networkData')), json('null'), parameters('networkData'))]",
+                "networkDataContent": "[if(empty(parameters('networkDataContent')), json('null'), parameters('networkDataContent'))]",
                 "networkAttachments": "[if(empty(parameters('networkAttachments')), json('null'), parameters('networkAttachments'))]",
                 "placementHints": "[if(empty(parameters('placementHints')), json('null'), parameters('placementHints'))]",
                 "sshPublicKeys": "[if(empty(parameters('sshPublicKeys')), json('null'), parameters('sshPublicKeys'))]",
                 "storageProfile": "[if(empty(parameters('storageProfile')), json('null'), parameters('storageProfile'))]",
-                "userData": "[if(empty(parameters('userData')), json('null'), parameters('userData'))]",
+                "userDataContent": "[if(empty(parameters('userDataContent')), json('null'), parameters('userDataContent'))]",
                 "vmDeviceModel": "[if(empty(parameters('vmDeviceModel')), json('null'), parameters('vmDeviceModel'))]",
                 "vmImage": "[if(empty(parameters('vmImage')), json('null'), parameters('vmImage'))]",
                 "vmImageRepositoryCredentials": "[if(empty(parameters('vmImageRepositoryCredentials')), json('null'), parameters('vmImageRepositoryCredentials'))]"
             }
         }
     ]
-  }
+}
