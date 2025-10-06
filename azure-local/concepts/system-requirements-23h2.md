@@ -45,7 +45,7 @@ Here are the Azure requirements for your Azure Local instance:
    - South Central US
 
 
-   # [Azure Government (Preview)](#tab/azure-government)
+   # [Azure Government](#tab/azure-government)
 
    Regions supported in the Azure Government cloud:
 

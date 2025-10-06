@@ -27,7 +27,7 @@ A deployment consists of single-node or multiple node systems (up to 16 machines
 
 The following highlights some considerations of using switchless configurations:
 
-- Storage switchless deployments in Azure Local only support 1,2 or 3 nodes.
+- Storage switchless deployments in Azure Local only support 1,2,3 or 4 nodes.
 
 - Scale out operations on storage switchless deployments from Azure portal or ARM aren't supported in Azure Local systems.  
 
@@ -39,7 +39,7 @@ The following highlights some considerations of using switchless configurations:
 
 - As the number of nodes in the system grows beyond two nodes, the cost of network adapters could exceed the cost of using network switches.
 
-- Beyond a three-node system, cable management complexity grows.
+- Beyond a four-node system, cable management complexity grows.
 
 For more information, see [Physical network requirements for Azure Local](../concepts/physical-network-requirements.md).
 
