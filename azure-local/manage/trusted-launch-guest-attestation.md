@@ -5,7 +5,7 @@ ms.topic: how-to
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 10/03/2025
+ms.date: 10/06/2025
 ---
 
 # Guest attestation for Trusted launch for Azure Local VMs (preview)
@@ -16,7 +16,7 @@ This article describes how to enable guest attestation for Trusted launch for Az
 
 Guest attestation allows you to verify if the VM started in a well-known good state – specifically, verify integrity of the entire boot chain. This helps detect any unexpected changes to the boot chain (firmware, OS boot loader, and drivers) so you can take corrective actions if the boot chain is compromised. 
 
-When you enable guest attestation, an Azure Arc extension called **deployed guest attestation** extension is deployed on the VM. The guest attestation extension interacts with Azure services such as Microsoft Azure Attestation service to support boot integrity verification. 
+When you enable guest attestation, an Azure Arc extension called guest attestation extension is deployed on the VM. The guest attestation extension interacts with Azure services such as Microsoft Azure Attestation service to support boot integrity verification. 
 
 ## Prerequisites
 
@@ -80,7 +80,7 @@ See [Create Azure Local virtual machines enabled by Azure Arc](create-arc-virtua
     Here's an example:
 
     ```azurecli
-    # To connect to your Azure Local via Az CLI, see Connect to Azure Local via Azure CLI client(https://learn.microsoft.com/en-us/azure/azure-local/azure-arc-vm-management-prerequisites.md?#azure-command-line-interface-cli-requirements).
+    # To connect to your Azure Local via Az CLI, see https://learn.microsoft.com/en-us/azure/azure-local/azure-arc-vm-management-prerequisites.md?#azure-command-line-interface-cli-requirements.
 
     # Login to Azure
     [host1]: PS C:\Users\HCIDeploymentUser> az login –use-device-code
@@ -88,7 +88,7 @@ See [Create Azure Local virtual machines enabled by Azure Arc](create-arc-virtua
     # Set your subscription
     [host 1]: PS C:\Users\HCIDeploymentUser> az account set --subscription "<subscription>"
     
-    [host1]: PS C:\Users\HCIDeploymentUser> $cluster = (az stack-hci cluster show --resource-group "<resource group>" --name "<Azure Local instance name>") | ConvertFrom-Json 
+    [host1]: PS C:\Users\HCIDeploymentUser> $cluster = (az stack-hci cluster show --subscription  "<subscription>" --resource-group "<resource group>" --name "<Azure Local instance name>") | ConvertFrom-Json
 
     [host1]: PS C:\Users\HCIDeploymentUser> $extensionSettings= '"{\"AttestationConfig\":{\"MaaSettings\":{\"maaEndpoint\": \"' + $cluster.isolatedVmAttestationConfiguration.attestationServiceEndpoint + '\",\"maaTenantName\": \"DUMMY_Tenant_NewConfig\"},\"AscSettings\":{\"ascReportingEndpoint\": \"' + $cluster.isolatedVmAttestationConfiguration.relyingPartyServiceEndpoint + '\",\"ascReportingFrequency\": \"4H\"},\"AzureStackSettings\":{\"clusterId\": \"'+$cluster.id+'\",\"clusterAadTenantId\": \"'+$cluster.aadTenantId+'\"},\"useCustomToken\": \"true\",\"disableAlerts\": \"false\",\"isAzureStack\": \"true\"}}"'
     ```
@@ -131,7 +131,7 @@ See [Create Azure Local virtual machines enabled by Azure Arc](create-arc-virtua
     WARNING: The installed extension 'connectedmachine' is in preview. 
 
  
-    Run the command below to install the Azure Arc guest attestation extension. 
+    # Run the command below to install the Azure Arc guest attestation extension. 
 
     [host1]: PS C:\Users\HCIDeploymentUser> az connectedmachine extension create --subscription "<subscription>" --resource-group "<resource group>" --machine-name "<name of VM>" --location "<Azure region of your Azure Local instance>" --publisher "Microsoft.Azure.Security.WindowsAttestation" --type "GuestAttestation" --name "GuestAttestation" --settings $extensionSettings --enable-automatic-upgrade 
 
@@ -225,10 +225,10 @@ You can view the guest attestation status using Azure CLI. The guest attestation
 - `"linuxKernelVersion": "0",` 
 - `"provisioningState": "Succeeded",` 
 
-Here's the sample output:
+Here’s the Az CLI command and sample output:
 
-```output
-  # To connect to your Azure Local via Az CLI, see Connect to Azure Local via Azure CLI client(https://learn.microsoft.com/en-us/azure/azure-local/azure-arc-vm-management-prerequisites.md?#azure-command-line-interface-cli-requirements).
+```azurecli
+# To connect to your Azure Local via Az CLI, see https://learn.microsoft.com/en-us/azure/azure-local/azure-arc-vm-management-prerequisites.md?#azure-command-line-interface-cli-requirements.
 
 # Login to Azure
 PS C:\WINDOWS\system32>az login --use-device-code
