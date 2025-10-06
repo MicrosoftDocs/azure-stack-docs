@@ -23,8 +23,6 @@ A Rack Aware Cluster in Azure Local is an architecture that improves fault toler
 
 ## Prerequisites
 
-Before you begin, make sure you:
-
 Review [Create Kubernetes clusters using Azure CLI](azure/aks/aksarc/aks-create-clusters-cli).
 
 ## Key considerations
