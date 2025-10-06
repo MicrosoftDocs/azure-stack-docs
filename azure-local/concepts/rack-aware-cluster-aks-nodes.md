@@ -58,7 +58,7 @@ AKS deployment supports any node configuration in Azure Local with rack aware cl
 
     :::image type="content" source="./media/rack-aware-cluster-aks-nodes/spread-node-two-zones.png" alt-text="Screenshot of control plane and worker nodes spread across two zones." lightbox=" ./media/rack-aware-cluster-aks-nodes/spread-node-two-zones.png":::
 
-    With availability sets enabled by default in AKS on Azure Local, both control plane nodes and worker nodes spread evenly across the physical hosts. For more information, see [Availability sets in AKS enabled by Azure Arc](/azure/aks/aksarc/availability-sets).
+    With availability sets enabled by default in AKS on Azure Local, both control plane nodes and worker nodes spread evenly across the physical hosts. For more information, see [Availability sets in AKS enabled by Azure Arc](/azure/aks/aksarc/aks-create-clusters-cli).
 
 ## Workload Deployment
 
