@@ -29,7 +29,7 @@ Review [Create Kubernetes clusters using Azure CLI](azure/aks/aksarc/aks-create-
 
 When distributing AKS nodes in rack-aware clusters, consider the following key points:
 
-- Make sure the AKS control plane has more nodes than a single zone. This setup lets the control plane deploy across zones and recover faster. For example, in a 3:3 rack-aware configuration, use a 5-node control plane to ensure a 3:2 split. If you use only 3 nodes, you might end up with a 3:0 split, which can slow recovery.
+- Make sure the AKS control plane has more nodes than a single zone. This setup lets the control plane deploy across zones and recover faster. For example, in a 3:3 rack-aware configuration, use a five node control plane to ensure a 3:2 split. If you use only three nodes, you might end up with a 3:0 split, which can slow recovery.
 
 - Control plane high availability isn't supported in rack aware clusters because they support only two zones. If a zone fails, the control plane majority can be affected, such as in a 2:1 or 3:2 split.
 
@@ -64,7 +64,11 @@ Now that both control plane nodes and worker nodes spread evenly across the phys
 
 ## Fault injection
 
-Simulate a rack failure by turning off all the physical hosts in one zone or rack, and force the Kubernetes node to fail over to the other zone or rack. After one rack or zone goes down, all Kubernetes nodes migrate to the healthy zone, and Kubernetes pods return to running status.
+Fault injection is a testing technique used to intentionally introduce errors or faults into a system to check how it responds and recovers. This helps identify weaknesses and improve the system’s reliability and resilience.
+
+You can simulate a rack failure by turning off all the physical hosts in one zone or rack, and force the Kubernetes node to fail over to the other zone or rack. After one rack or zone goes down, all Kubernetes nodes migrate to the healthy zone, and Kubernetes pods return to running status.
+
+Here's an example:
 
 :::image type="content" source="./media/rack-aware-cluster-aks-nodes/zone-b-down-fault-injection.png" alt-text="Screenshot of Zone B being down during fault injection." lightbox=" ./media/rack-aware-cluster-aks-nodes/zone-b-down-fault-injection.png":::
 
@@ -72,7 +76,11 @@ Simulate a rack failure by turning off all the physical hosts in one zone or rac
 
 ## Zone Recovery
 
-Remove the fault. The nodes fail over to the original hosts, and all Kubernetes pods return to running status.
+Zone recovery is a process or feature that helps restore data or services after a failure or disaster in a specific zone, such as a data center or geographic region. It’s designed to minimize downtime and data loss by enabling recovery from backups or replicas located in other zones.
+
+To simulate zone recovery, remove the fault. After you remove the fault, the nodes fail over to the original hosts, and all Kubernetes pods return to running status.
+
+Here's an example:
 
 :::image type="content" source="./media/rack-aware-cluster-aks-nodes/zone-b-recovery.png" alt-text="Screenshot of Zone B being back online after recovery." lightbox=" ./media/rack-aware-cluster-aks-nodes/zone-b-recovery.png":::
 
