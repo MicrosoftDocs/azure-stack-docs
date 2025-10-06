@@ -12,13 +12,22 @@ ms.topic: concept-article
 
 This article explains how to deploy Azure Kubernetes Service (AKS) clusters with Rack Aware Cluster support. You learn how to ensure fault tolerance and evenly distribute nodes across Azure Local zones for improved reliability.
 
+## About AKS nodes and Rack Aware Cluster
+
+In Azure Kubernetes Service (AKS), a node is essentially a virtual machine (VM) that runs your containerized applications. These nodes are part of a node pool, which is a group of VMs with the same configuration. Each AKS cluster has two main components:
+
+- **Control Plane**: Managed by Azure, it orchestrates workloads and handles cluster operations.
+- **Nodes**: These are the worker machines (VMs) that run your actual application containers.
+
+A Rack Aware Cluster in Azure Local is an architecture that improves fault tolerance and data distribution. It clusters machines across two physical racks in separate rooms or buildings, connected with high bandwidth and low latency. This setup helps prevent data loss or downtime if one rack fails, such as during a fire or power outage. Data is distributed evenly between the racks, so if one rack goes down, the other keeps your data available. This design is especially useful in environments like manufacturing plants that need high availability.
+
 ## Prerequisites
 
 ## Key considerations
 
 ## Supported scenarios
 
-## Deploy control plan nodes
+## Deploy control plane nodes across the zones
 
 AKS deployment supports any node configuration in Azure Local with rack aware cluster support. In this example, a 2:2 configuration (two zones with two nodes each) is used. Follow these steps to spread AKS nodes across zones.
 
@@ -43,7 +52,7 @@ AKS deployment supports any node configuration in Azure Local with rack aware cl
 
 ## Workload Deployment
 
-Now that both control plane nodes and worker nodes spread evenly across the physical hosts and zones, you're ready to deploy the workload. For more information, see [Pod Anti-Affinity](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#more-practical-use-cases) in Kubernetes to deploy workload pods with replicas. In the case of a 2:2 node configuration, use four replicas.
+Now that both control plane nodes and worker nodes spread evenly across the physical hosts and zones, you're ready to deploy the workload. For more information, see [Pod Anti-Affinity](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#more-practical-use-cases) in Kubernetes to deploy workload pods with replicas. For a 2:2 node configuration, use four replicas.
 
 ## Fault injection
 
