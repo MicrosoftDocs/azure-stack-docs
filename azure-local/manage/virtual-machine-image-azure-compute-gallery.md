@@ -7,7 +7,7 @@ ms.topic: how-to
 ms.service: azure-local
 ms.custom:
   - devx-track-azurecli
-ms.date: 05/21/2025
+ms.date: 10/06/2025
 ---
 
 # Create Azure Local VM image using Azure Compute Gallery images
