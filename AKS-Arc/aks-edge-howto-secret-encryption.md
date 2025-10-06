@@ -83,7 +83,7 @@ If there are errors with the KMS provider, follow this procedure:
 
    If the version is older, upgrade to the latest version. For more information, see [Upgrade an AKS cluster](aks-edge-howto-update.md).
 
-1. View the `readyz` API. If the problem persists, verify that the KMS provider is enabled. See the [Verify that the KMS plugin is enabled](#verify-that-the-kms-plugin-is-enabled) section.
+1. View the `readyz` API. If the problem persists, verify that the KMS provider is enabled. See the [Verify that the KMS provider is enabled](#verify-that-the-kms-provider-is-enabled) section.
 
    If you receive "**[-]**" before the `kms-providers` field, collect diagnostic logs for debugging. For more information, see [Get kubelet logs from cluster nodes](aks-get-kubelet-logs.md).
 
