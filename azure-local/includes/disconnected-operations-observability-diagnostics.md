@@ -39,7 +39,7 @@ This setup lets Arc registration use a managed identity to upload logs, metrics,
 1. Create a service principal. Replace \<SubscriptionID> with your subscription ID, and run this command:
 
     ```PowerShell
-    az ad sp create-for-rbac --name "<SPNName>" --role "Azure Connected Machine Onboarding" --scopes /subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroupName>
+    az ad sp create-for-rbac --name "<SPNName>" --role "Azure Connected Machine Resource Administrator" --scopes /subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroupName>
     ```
 
     Example output:

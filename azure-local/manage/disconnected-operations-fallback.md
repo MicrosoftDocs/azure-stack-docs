@@ -48,7 +48,7 @@ Use these parameters with the `Copy-DiagnosticData` cmdlet.
 
 - **DiagnosticLogPath**: Required. The destination path contains copied logs and temporarily mounted VHDs.
 
-- **Roles**: The roles required for log collection or diagnostics can vary depending on the scenario. Work with your support contact to determine the appropriate roles to include.
+- **FilterRoles**: The roles required for log collection or diagnostics might vary depending on the scenario. Use the `get-help`cmdlet or work with your support contact to determine the appropriate roles to include.
 
 - **FromDate** and **ToDate**: Optional. Start and end times of logs included in the collection. Logs before the FromDate and after the ToDate are excluded. By default, logs from the **last four hours** of the current time are collected if you don't provide these parameters.
 
@@ -113,7 +113,7 @@ Use these parameters with the `Copy-DiagnosticData` cmdlet.
     To manually create a RecoveryKeySet parameter, use this template:
 
     ```powershell
-    $bitLockerKeysPasswords = @(
+    $recoveryKeySet = @(
     [PSCustomObject]@{protectorid = "{<Protector Id>}"; recoverypassword = "<Recovery password>"})
     ```
 
@@ -130,7 +130,7 @@ Import-Module "C:\azurelocal\OperationsModule\ApplianceFallbackLogging.psm1" -Fo
 ```
 
 ```powershell
-Copy-DiagnosticData -DiagnosticLogPath "C:/path/to/copied_logs_parent_directory" -Roles @("Agents", "Oplets", "ServiceFabric")
+Copy-DiagnosticData -DiagnosticLogPath "C:/path/to/copied_logs_parent_directory" -FilterRoles @("Agents", "Oplets", "ServiceFabric")
 ```
 
 #### Copy diagnostic data logs for specific roles and time ranges
@@ -150,7 +150,7 @@ $recoveryKeySet = @()
 ```
 
 ```powershell  
-Copy-DiagnosticData -DiagnosticLogPath $diagnosticLogPath -Roles $roles -FromDate $fromDate -ToDate $toDate -RecoveryKeySet $recoveryKeySet
+Copy-DiagnosticData -DiagnosticLogPath $diagnosticLogPath -FilterRoles $roles -FromDate $fromDate -ToDate $toDate -RecoveryKeySet $recoveryKeySet
 ```
 
 Example output:
@@ -160,7 +160,7 @@ PS C:\Users\administrator.s46r2004\Documents> Copy-DiagnosticData -DiagnosticLog
 VERBOSE: [2025-03-26 22:10:58Z] [Get-ValidCollectionWindow] $ToDate not provided, set to: 03/26/2025 22:10:58 (current time)  
 VERBOSE: [2025-03-26 22:10:58Z] [Get-ValidCollectionWindow] #FromDate not provided, set to: 03/26/2025 18:10:58 (4hr collection window)  
 VERBOSE: [2025-03-26 22:10:58Z] [Copy-DiagnosticData] Collecting logs for range: '03/26/2025 18:10:58' - '03/26/2025 22:10:58'  
-VERBOSE: [2025-03-26 22:10:58Z] [Copy-DiagnosticData] Collecting logs for roles: 'Agents', 'Oplets', 'MASLogs', 'ServiceFabric', 'ArcADiagnostics', 'Observability', 'WindowsEventLogs'  
+VERBOSE: [2025-03-26 22:10:58Z] [Copy-DiagnosticData] Collecting logs for FilterRoles: 'Agents', 'Oplets', 'MASLogs', 'ServiceFabric', 'ArcADiagnostics', 'Observability', 'WindowsEventLogs'  
 VERBOSE: [2025-03-26 22:10:59Z] [Invoke-StopIRVMAndMountVHDs] Stopping the IRVM...  
 VERBOSE: [2025-03-26 22:11:55Z] [Invoke-StopIRVMAndMountVHDs] Attempting to mount VHD 'C:\ClusterStorage\UserStorage_1\InfraVms\IRVM01\Virtual Hard Disks\OSAndDocker_A.vhdx'...      
 ```

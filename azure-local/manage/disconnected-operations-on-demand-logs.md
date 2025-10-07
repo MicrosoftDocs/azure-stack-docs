@@ -103,7 +103,7 @@ To collect logs from the control plane, follow these steps:
 
     For more information on the `Send-DiagnosticData` command, see [Telemetry and diagnostics extension](../concepts/telemetry-and-diagnostics-overview.md).
 
-1. Upload logs by using the **standalone observability tool**. <!--need to get exact link from Harald/team-->
+1. Upload logs by using the **standalone observability tool**.
 
     After you save logs from both the appliance and host nodes to a shared location, upload them with the standalone observability tool. There are product specific wrappers around **Microsoft.AzureStack.Observability.Standalone**.
 
@@ -168,38 +168,33 @@ Here's what you need to do log collection in a connected disconnected operations
     $context = Set-DisconnectedOperationsClientContext -ManagementEndpointClientCertificatePath "<Management Endpoint Client Cert Path>" -ManagementEndpointClientCertificatePassword $certPassword -ManagementEndpointIpAddress "<Management Endpoint IP address>"
     ```
 
-1. Retrieve BitLocker keys:
+1. Retrieve Recoverykeys:
   
     ```powershell
-    $recoveryKeys = Get-ApplianceBitlockerRecoveryKeys $context # context can be omitted if context is set.
+    $recoveryKeys = Invoke-ApplianceLogCollection $context # context can be omitted if context is set.
     $recoveryKeys
     ```
 
     Example output:
 
     ```console
-    PS C:\Users\administrator.s46r2004\Documents> $recoverykeySet = Get-ApplianceBitlockerRecoveryKeys  
+    PS C:\Users\administrator.s46r2004\Documents> $recoverykeySet = Invoke-ApplianceLogCollection  
     >> $recoverykeySet | ConvertTo-JSON > c:\recoveryKey.json  
-    VERBOSE: [2025-03-26 21:57:01Z][Get-ApplianceBitlockerRecoveryKeys] [START] Get bitlocker recovery keys.
+    VERBOSE: [2025-03-26 21:57:01Z][Invoke-ApplianceLogCollection] [START] Get bitlocker recovery keys.
     VERBOSE: [2025-03-26 21:57:01Z][Invoke-ScriptsWithRetry] Executing 'Script Block' with timeout 300 seconds ...
     VERBOSE: [2025-03-26 21:57:01Z][Invoke-ScriptsWithRetry] [CHECK][Attempt 0] for task 'Script Block' ...
     VERBOSE: [2025-03-26 21:57:01Z][Invoke-ScriptsWithRetry] Task 'Script Block' succeeded.
-    VERBOSE: [2025-03-26 21:57:01Z][Get-ApplianceBitlockerRecoveryKeys] [END] Get bitlocker recovery keys.
+    VERBOSE: [2025-03-26 21:57:01Z][Invoke-ApplianceLogCollection] [END] Get bitlocker recovery keys.
     PS C:\Users\administrator.s46r2004\Documents> Get-content c:\recoveryKey.json
     ```
-
-1. [Trigger log collection](#trigger-log-collection).
-
-1. [Send logs to Microsoft support](#send-diagnosticdata).
 
 ## Use fallback log collection
 
 Use fallback log collection when the disconnected operations with Azure Local VM is down, the management endpoint can't be reached, or standard log collection doesn't work.
 
-There are three methods used in this scenario:
+There are two methods used in this scenario:
 
 - **Copy-DiagnosticData**: Copy logs from the disconnected operations with Azure Local VM to a local folder.
-- **Send-DiagnosticData**: Send logs to Microsoft for analysis.
 - **Get-observabilityStampId**: Get the stamp ID.
 
 Run the following commands on the first machine (seed node):
@@ -278,6 +273,20 @@ Run `Send-DiagnosticData` on a Windows machine that's connected to the internet.
 
 Use this method when you can’t collect logs directly from the appliance VM. Use this method if you can’t collect logs from the appliance VM. For example, use it when the control plane appliance VM has issues and the management endpoint isn’t accessible, or the appliance VM is disconnected from Azure.
 
+Here are some examples of using the `Send-DiagnosticData` cmdlet.
+
+- To trigger a manual sign in via device code for permissions, run this command:
+
+  ```PowerShell
+  Send-DiagnosticData -ResourceGroupName <String> -SubscriptionId <String> -TenantId <String> [-RegistrationWithDeviceCode] -RegistrationRegion <String> [-Cloud <String>] -DiagnosticLogPath <String> [-ObsRootFolderPath <String>] [-StampId <Guid>] [<CommonParameters>]
+  ```
+
+- To use service principal credentials, run this command:
+
+  ```PowerShell
+  Send-DiagnosticData -ResourceGroupName <String> -SubscriptionId <String> -TenantId <String> -RegistrationWithCredential <PSCredential> -RegistrationRegion <String> [-Cloud <String>] -DiagnosticLogPath <String> [-ObsRootFolderPath <String>] [-StampId <Guid>] [<CommonParameters>]
+  ```
+
 > [!NOTE]
 > Don’t run the `Send-DiagnosticData` cmdlet on Azure Local host nodes. These nodes are managed by the Azure Local disconnected operations control plane. Run the cmdlet from a Windows machine with Azure connectivity, such as your laptop or desktop.
 
@@ -296,26 +305,9 @@ What `Send-DiagnosticData` does
 - Saves logs locally with the `-SaveToPath` parameter.
 - Lets you use secure credentials to save logs to a network share.
 
-`Send-DiagnosticData` usage modes
-
-- Connected mode (standard).
-- Disconnected mode (only with `-SaveToPath`).
+The `Send-DiagnosticData` usage mode is Disconnected mode (only with `-SaveToPath`).
 
 For a list of unsupported features in disconnected mode, see [Unsupported features in disconnected mode](#unsupported-features-in-disconnected-mode).
-
-### Other Send-DiagnosticData cmdlets
-
-To trigger a manual sign in via device code for permissions, run this command:
-
-```PowerShell
-Send-DiagnosticData -ResourceGroupName <String> -SubscriptionId <String> -TenantId <String> [-RegistrationWithDeviceCode] -RegistrationRegion <String> [-Cloud <String>] -DiagnosticLogPath <String> [-ObsRootFolderPath <String>] [-StampId <Guid>] [<CommonParameters>]
-```
-
-To use service principal credentials, run this command:
-
-```PowerShell
-Send-DiagnosticData -ResourceGroupName <String> -SubscriptionId <String> -TenantId <String> -RegistrationWithCredential <PSCredential> -RegistrationRegion <String> [-Cloud <String>] -DiagnosticLogPath <String> [-ObsRootFolderPath <String>] [-StampId <Guid>] [<CommonParameters>]
-```
 
 ## Monitor log collection
 
@@ -409,7 +401,7 @@ This approach lets you share diagnostic data for support purposes without affect
 
 - `Invoke-ApplianceLogCollectionAndSaveToShareFolder`: You need to specify the account in the format: Domain\Username. If you omit the domain or use an incorrect username, the copy operation to the share fails with an access-denied error.
 
-- **Roles**: The roles required for log collection or diagnostics might vary depending on the scenario. Work with your support contact to determine the appropriate roles to include.
+- **FilterRoles**: The roles required for log collection or diagnostics might vary depending on the scenario. Use the `get-help`cmdlet or work with your support contact to determine the appropriate roles to include.
 
 - Improper Execution of `Send-DiagnosticData`.
   - Log collection fails when customers attempt to run `Send-DiagnosticData` or `Copy-DiagnosticData` from:
