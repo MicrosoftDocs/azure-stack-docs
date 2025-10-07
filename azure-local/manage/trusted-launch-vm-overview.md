@@ -5,7 +5,7 @@ ms.topic: concept-article
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 07/18/2025
+ms.date: 10/07/2025
 ---
 
 # Introduction to Trusted launch for Azure Local VMs enabled by Azure Arc
@@ -44,7 +44,7 @@ Trusted launch is a security type that can be specified when you create Azure Lo
 
 ## Guest operating system images
 
-All Windows 11 images (excluding 24H2 Windows 11 SKUs) and Windows Server 2022 images from Azure Marketplace supported by Azure Local VMs are supported. See [Create Azure Local VM image using Azure Marketplace images](/azure-stack/hci/manage/virtual-machine-image-azure-marketplace?tabs=azurecli) for a list of all supported Windows 11 images.
+All Windows images and Windows Server images from Azure Marketplace supported by Azure Local VMs are supported. See [Create Azure Local VM image using Azure Marketplace images](/azure-stack/hci/manage/virtual-machine-image-azure-marketplace?tabs=azurecli) for a list of all supported Windows 11 images.
 
 > [!NOTE]
 > VM guest images obtained outside of Azure Marketplace aren't supported.
@@ -64,6 +64,10 @@ When working with Trusted launch Azure Local VMs, make sure to understand the fo
 - Restore all VM files. You can use any backup solution or tool to restore all VM files as long as the backup solution or tool follows standard [Hyper-V Backup Approaches](/virtualization/hyper-v-on-windows/reference/hypervbackupapproaches).
 
 - Restore VM guest state protection key. You must restore the VM guest state protection key to the local key vault of the Azure Local instance as described in [Manual backup and recovery of VM guest state protection key](trusted-launch-vm-import-key.md).
+
+### VM replication
+
+Azure Site recovery, which can replicate virtual machines on your Azure Local instance to Azure, is not supported.
 
 **Restoring to same Azure Local instance**
 
