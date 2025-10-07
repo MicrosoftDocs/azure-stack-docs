@@ -82,23 +82,27 @@ The first step is [Start the wizard and fill out the basics](./deploy-via-portal
 
     :::image type="content" source="media/rack-aware-cluster-deploy-portal/image6.png" alt-text="Screenshot of local availability zone settings in the Azure portal.":::
 
-1. Select **Next: Tags**. and optionally add a tag to the Azure Local
-resource in Azure.
+1. Select **Next: Tags**.
+1. Optionally add a tag to the Azure Local resource in Azure.
+1. Select **Next: Validation**.
+1. Select **Start validation**. The validation takes about 15 minutes to deploy one to two machines and longer for bigger deployments. Monitor the validation progress.
 
-1. Select **Next: Validation**. Select **Start validation**. The validation takes about 15 minutes to deploy one to two machines and longer for bigger deployments. Monitor the validation progress.
+    Follow the [Validate and deploy the system](./deploy-via-portal.md#validate-and-deploy-the-system) step.
 
-Follow the [Validate and deploy the system](./deploy-via-portal.md#validate-and-deploy-the-system) step.
+    :::image type="content" source="media/rack-aware-cluster-deploy-portal/image7.png" alt-text="Screenshot of validation progress in the Azure portal.":::
 
-:::image type="content" source="media/rack-aware-cluster-deploy-portal/image7.png" alt-text="Screenshot of validation progress in the Azure portal.":::
+    If the validation has errors, resolve any actionable issues.
 
-If the validation has errors, resolve any actionable issues, and then
-select **Next: Review + create**. Review the settings that are used for deployment and then select **Create** to deploy the system.
+1. Select **Next: Review + create**. Review the settings that are used for deployment and then select **Create** to deploy the system.
 
-:::image type="content" source="media/rack-aware-cluster-deploy-portal/image8.png" alt-text="Screenshot of review and create settings in the Azure portal.":::
+    :::image type="content" source="media/rack-aware-cluster-deploy-portal/image8.png" alt-text="Screenshot of review and create settings in the Azure portal.":::
 
-The **Deployments** page then appears, which you can use to monitor the
-deployment progress.
+    The **Deployments** page appears, which you can use to monitor the deployment progress.
 
-:::image type="content" source="media/rack-aware-cluster-deploy-portal/image9.png" alt-text="Screenshot of deployment progress in the Azure portal.":::
+    :::image type="content" source="media/rack-aware-cluster-deploy-portal/image9.png" alt-text="Screenshot of deployment progress in the Azure portal.":::
 
-You can monitor the deployment status just like the standard cluster.
+    You can monitor the deployment status just like the standard cluster.
+
+## Next steps
+
+- After the deployment is complete, follow the steps in [Post-deployment tasks](../index.yml).
