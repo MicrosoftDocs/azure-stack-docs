@@ -45,12 +45,12 @@ This setup allows Arc registration using a managed identity to upload logs, metr
     Example output:
 
     {
-      "appId": "`<AppId>`",
+      "appId": "\<AppId>",
       "displayName": "azlocalobsapp",
-      "password": "`<RETRACTED>`",
-      "tenant": "`<RETRACTED>`"
+      "password": "\<RETRACTED>",
+      "tenant": "\<RETRACTED>"
     }
-    `<SubscriptionID>`
+    \<SubscriptionID>
 
     > [!NOTE]
     > Use the appID as the Service Principal ID and password as the Service Principal Secret
