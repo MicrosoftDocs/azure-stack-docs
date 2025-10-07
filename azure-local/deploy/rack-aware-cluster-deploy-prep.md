@@ -20,12 +20,14 @@ configuration guidelines, and best practices for deployment.
 - Make sure to review the [Network design requirements for Azure Local Rack Aware Clusters](../index.yml) for detailed design and supported network configurations.
 
     We strongly recommend that you deploy two Top of Rack (ToR) switches in each rack or room to ensure high resiliency. However, for certain edge implementations where cost efficiency is a priority, a single ToR switch per room or rack may be sufficient, provided that adequate bandwidth is available. Both storage networks will reside on the same device and will be isolated through distinct VLANs.
+
 - Ensure that your network switches support Link Layer Discovery Protocol (LLDP) and that LLDP is enabled on all switch ports connected to the Azure Local machines. This is crucial for the LLDP Network Validator test, which verifies the network topology and connections for your Rack Aware Cluster deployment.
 
 ## Register cluster nodes
 
-- Make sure to register the Azure Local machines that you intend to use in the Rack Aware Cluster. Follow the steps detailed in the [Register Azure Local machines with Azure Arc](./deployment-introduction.md).
-    You will see the machines presented in the resource group that are registered.
+- Make sure to register the Azure Local machines that you intend to use in the Rack Aware Cluster. Follow the steps detailed in the [Register Azure Local machines with Azure Arc](./deployment-without-azure-arc-gateway.md).
+
+    Verify that the Azure Local machines show in the resource group as registered.
 
 ## (Optional) Test rack-to-rack latency
 
@@ -85,6 +87,8 @@ To complete full mesh testing, **repeat steps 2 and 3** with **different server-
 ## (Optional) Run the LLDP Network Validator test for Rack Aware Clusters
 
 Use the LLDP Network Validator Test to validate the network topology and connections for your Rack Aware Cluster deployment. This test helps ensure that your network configuration meets the requirements for a successful Rack Aware Cluster deployment.
+
+For more information, see [Run the LLDP Network Validator test for Rack Aware Clusters](../index.yml).
 
 ## Next steps
 
