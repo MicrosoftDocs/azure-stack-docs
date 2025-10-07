@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 03/04/2025
+ms.date: 10/07/2025
 ms.custom:
   - devx-track-azurecli
   - sfi-image-nochange
@@ -80,6 +80,7 @@ Follow these steps to create a VM image using the Azure CLI.
     | `customLocation` | Resource ID of custom location for your Azure Local.   |
     | `location`       | Location for your Azure Local. For example, this could be `eastus`. |
     | `os-type`         | Operating system associated with the source image. This can be Windows or Linux.           |
+    | `version` | (Optional) Specify the OS version for Marketplace image. If left empty, it will default to the latest version. |
 
     Here's a sample output:
 
@@ -91,7 +92,10 @@ Follow these steps to create a VM image using the Azure CLI.
     PS C:\Users\azcli> $customerLocationID /subscriptions$subscription/resourcegroups/$resource_group/providers/microsoft.extendedlocation/customlocations/$customLocationName
     PS C:\Users\azcli> $location = "eastus"
     PS C:\Users\azcli> $ostype = "Windows"
+    PS C:\Users\azcli> $version = "26100.4652.250808"
     ```
+> [!NOTE]
+> If you encounter compatibility issues, look at the VM image version as CLI always defaults to the latest version.
 
 ### Create VM image from marketplace image
 
@@ -171,18 +175,7 @@ PS C:\Users\azcli> az stack-hci-vm image create --custom-location $cl --name $mk
         "status": "Succeeded" 
       } 
     }, 
-    "version": { 
-      "name": "17763.6293.240905", 
-      "properties": { 
-        "storageProfile": { 
-          "osDiskImage": { 
-            "sizeInMb": 130050 
-          } 
-        } 
-      } 
 
-    } 
-  }, 
   "resourceGroup": "mylocal-rg", 
   "systemData": { 
     "createdAt": "2024-09-23T18:53:13.734389+00:00", 
