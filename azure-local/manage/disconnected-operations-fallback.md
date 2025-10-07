@@ -18,7 +18,7 @@ This article explains how to use appliance fallback logging to export and send l
 
 ## About fallback logging
 
-Use appliance fallback logging to collect and send logs to Microsoft when the Azure Local disconnected operations appliance virtual machine (VM) is down. Use this method if standard log collection can't start and you need logs for troubleshooting.
+Use appliance fallback logging to collect and send logs to Microsoft when the Azure Local disconnected operations appliance virtual machine (VM) is down. Use this method if standard log collection can't start and you need logs to troubleshoot.
 
 ## Prerequisites
 
@@ -32,7 +32,7 @@ To import appliance logging, run the following command:
 Import-Module "C:\azurelocal\OperationsModule\ApplianceFallbackLogging.psm1" -Force
 ```
 
-## Export logs using the Copy-DiagnosticData command
+## Export logs via Copy-DiagnosticData
 
 To export logs in the fallback scenario, use the `Copy-DiagnosticData` cmdlet.
 
@@ -40,22 +40,22 @@ To export logs in the fallback scenario, use the `Copy-DiagnosticData` cmdlet.
 
 The **Copy-DiagnosticData** command is used to copy diagnostic logs from mounted virtual hard disks (VHDs) to a specified folder. This command is part of the operations module and helps you collect diagnostic data from a log volume VHD for analysis.
 
-The fallback logging scenario applies when the Azure Local VM running disconnected operations isn't working as expected or a management endpoint isn't functional. This cmdlet shuts down the VM. To get the logs, mount and unlock the VHDs, then copy the logs from the mounted VHDs to a local `LogsToExport` folder inside the folder you specify with `DiagnosticLogPath`. You can set the time window and roles to collect. If you set the `Observability Stamp ID`, the cmdlet includes it in the return values.
+The fallback logging scenario is used when the Azure Local VM can’t run disconnected operations or when a management endpoint doesn’t work. This cmdlet shuts down the VM. To get the logs, mount and unlock the VHDs, then copy the logs from the mounted VHDs to a local `LogsToExport` folder inside the folder you specify with `DiagnosticLogPath`. You can set the time window and roles to collect. If you set the `Observability Stamp ID`, the cmdlet includes it in the return values.
 
-Make sure this location has enough space for the logs because the Azure Local VMs running disconnected VHDs are temporarily mounted there during the copy action.
+Make sure this location has enough space for the logs because the Azure Local VM running disconnected VHDs is temporarily mounted there during the copy action.
 
 Use these parameters with the `Copy-DiagnosticData` cmdlet.
 
 - **DiagnosticLogPath**: Required. The destination path contains copied logs and temporarily mounted VHDs.
 
-- **Roles**: The roles required for log collection or diagnostics may vary depending on the scenario. Work with your support contact to determine the appropriate roles to include.
+- **Roles**: The roles required for log collection or diagnostics can vary depending on the scenario. Work with your support contact to determine the appropriate roles to include.
 
-- **FromDate** and **ToDate**: Optional. Start and end times of logs included in the collection. Logs before the FromDate and after the ToDate are excluded. By default, logs from the **last four hours** of the current time are collected, if you don't provide these parameters.
+- **FromDate** and **ToDate**: Optional. Start and end times of logs included in the collection. Logs before the FromDate and after the ToDate are excluded. By default, logs from the **last four hours** of the current time are collected if you don't provide these parameters.
 
-- **RecoveryKeySet** (BitLocker): Optional. The RecoveryKeySet contains relevant **ProtectorId** and **RecoveryPassword** pairs for BitLocker encrypted volumes used for log collection retrieval. If recovery keys aren't provided, manual entry of the keys is required during the mount process.
+- **RecoveryKeySet** (BitLocker): Optional. The RecoveryKeySet has relevant **ProtectorId** and **RecoveryPassword** pairs for BitLocker encrypted volumes used for log collection retrieval. If recovery keys aren't provided, manual entry of the keys is required during the mount process.
 
     > [!NOTE]
-    > The BitLocker recovery key set is required to unlock the mounted VHDs used for log collection. These keys should be retrieved and saved upon successful deployment of the appliance using the BitlockerRecoveryKeys endpoint.
+    > The BitLocker recovery key set is required to unlock the mounted VHDs used for log collection. Get and save these keys after you deploy the appliance using the BitlockerRecoveryKeys endpoint.
 
     Example:
 
@@ -165,7 +165,7 @@ VERBOSE: [2025-03-26 22:10:59Z] [Invoke-StopIRVMAndMountVHDs] Stopping the IRVM.
 VERBOSE: [2025-03-26 22:11:55Z] [Invoke-StopIRVMAndMountVHDs] Attempting to mount VHD 'C:\ClusterStorage\UserStorage_1\InfraVms\IRVM01\Virtual Hard Disks\OSAndDocker_A.vhdx'...      
 ```
 
-Example of the copy-diagnosticdata output:
+Example of the Copy-DiagnosticData output:
 
 ```output
 | DiagnosticLogPath                                       | StampId                                  |
