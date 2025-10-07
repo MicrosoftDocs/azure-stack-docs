@@ -338,7 +338,7 @@ Run `Send-DiagnosticData` on a Windows machine connected to the internet. You ca
 Use this method when you can’t collect logs directly from the appliance VM. This might happen if the control plane appliance VM has issues and the management endpoint isn’t accessible, or if the appliance VM is disconnected from Azure.
 
 > [!NOTE]
-> The `Send-DiagnosticsData` cmdlet must not be run on Azure Local host nodes, as those are managed by the Azure Local disconnected operations control plane. Instead, run it from a Windows machine with Azure connectivity—ideally the user's laptop or desktop.
+> The `Send-DiagnosticData` cmdlet must not be run on Azure Local host nodes, as those are managed by the Azure Local disconnected operations control plane. Instead, run it from a Windows machine with Azure connectivity—ideally the user's laptop or desktop.
 
 ### Send-DiagnosticData –SaveToPath (applicable for Azure Local Host node logs)
 
