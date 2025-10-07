@@ -25,16 +25,13 @@ configuration guidelines, and best practices for deployment.
 ## Register cluster nodes
 
 - Make sure to register the Azure Local machines that you intend to use in the Rack Aware Cluster. Follow the steps detailed in the [Register Azure Local machines with Azure Arc](./deployment-introduction.md).
-
-    :::image type="content" source="media/rack-aware-cluster-deploy-prep/image1.png" alt-text="A screenshot of a computer program AI-generated content may be incorrect.":::
-
     You will see the machines presented in the resource group that are registered.
 
 ## (Optional) Test rack-to-rack (room-to-room) latency
 
 Use the `psping` tool to validate network latency through a client-server testing model.
 
-To ensure accurate and complete testing, we **recommend that you run full mesh tests**. This implies that every host tests connectivity with every other host in both directions. 
+To ensure accurate and complete testing, we **recommend that you run full mesh tests**. This implies that every host tests connectivity with every other host in both directions.
 
 - **Server**: The machine that listens for incoming test traffic.
 
