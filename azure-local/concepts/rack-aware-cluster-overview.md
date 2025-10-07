@@ -51,8 +51,6 @@ The use cases for Azure Local Rack Aware Cluster include:
 
 - Use rack aware cluster in a high security environment for mission-critical applications.
 - Use rack aware cluster in a manufacturing plant to minimize the risk of data loss or downtime in the event of a rack-level failure.  
-<!--more use case info-->
-
 
 ## Requirements
 
