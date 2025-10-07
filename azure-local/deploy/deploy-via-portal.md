@@ -3,7 +3,7 @@ title: Deploy an Azure Local instance using the Azure portal
 description: Learn how to deploy an Azure Local instance from the Azure portal
 author: alkohli
 ms.topic: how-to
-ms.date: 06/24/2025
+ms.date: 10/07/2025
 ms.author: alkohli
 ms.service: azure-local
 ms.custom: sfi-image-nochange
@@ -21,7 +21,7 @@ This article helps you deploy an Azure Local instance using the Azure portal.
 
 ::: moniker range="<=azloc-24113"
 
-- To deply Azure Local 2411.3 and earlier, use the alternative version of the [Azure portal](https://aka.ms/dfc-2411deploycluster). Use this version only for deployment, don't use it for any other purpose.
+- To deploy Azure Local 2411.3 and earlier, use the alternative version of the [Azure portal](https://aka.ms/dfc-2411deploycluster). Use this version only for deployment, don't use it for any other purpose.
 
 ::: moniker-end
 
