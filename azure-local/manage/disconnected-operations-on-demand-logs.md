@@ -12,45 +12,45 @@ ai-usage: ai-assisted
 
 ::: moniker range=">=azloc-2506"
 
-This article explains how to collect logs on demand for Azure Local disconnected operations by using the PowerShell module. You learn how to provide logs for troubleshooting and support when Azure Local operates in disconnected mode.
+This article explains how to collect logs on demand for Azure Local disconnected operations by using the PowerShell module. Learn how to provide logs for troubleshooting and support when Azure Local operates in disconnected mode.
 
 [!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
 
 ## Overview
 
-Log collection is essential for diagnosing and troubleshooting issues in Azure Local disconnected operations. Use this feature to give logs to Microsoft support. The logs include information about the Azure Local disconnected operations environment, like the management endpoint, integrated runtime, and other components. During log collection, you might see errors because of different environmental or tooling limitations.
+Log collection helps you diagnose and troubleshoot issues in Azure Local disconnected operations. Use this feature to send logs to Microsoft support. Logs include information about the Azure Local disconnected operations environment, such as the management endpoint, integrated runtime, and other components. During log collection, you might see errors because of different environmental or tooling limitations.
 
 > [!IMPORTANT]
 > Complete the prerequisites and configure observability with the `Set-ApplianceObservabilityConfiguration` cmdlet before using on-demand direct log collection. If you skip these steps, you might see an error.
 
 ## Prerequisites
 
-Before you configure observability for your Azure Local appliance, make sure:
+Before you set up observability for your Azure Local appliance, make sure you:
 
-- You [Deploy Disconnected Operations for Azure Local (preview)](disconnected-operations-deploy.md).
-- You have the following parameters:
-  - **Azure resource group**: Create a resource group in Azure for the appliance (for example, azure-disconnectedoperations).
-  - **Service Principal Name (SPN)**: Create an SPN with contributor rights on the resource group.
-  - **Service Principal credentials**: You need the Service Principal ID (appId) and Secret (password).
+- [Deploy Disconnected Operations for Azure Local (preview)](disconnected-operations-deploy.md)
+- Have the following parameters:
+  - **Azure resource group**: Create a resource group in Azure for the appliance, like azure-disconnectedoperations.
+  - **Service Principal Name (SPN)**: Create an SPN with contributor rights to the resource group.
+  - **Service Principal credentials**: Get the Service Principal ID (appId) and secret (password).
   - **Subscription**: Identify your Azure subscription.
   - **Tenant ID**: Identify your tenant ID.
-  - **Azure Region**: Specify the Azure region (location) for deployment.
-  - **Required resource providers**: Register the following resource providers in your subscription:
+  - **Azure region**: Specify the Azure region (location) for deployment.
+  - **Required resource providers**: Register these resource providers in your subscription:
     - *Microsoft.Compute* (for Update Manager and extension upgrades)
-    - *Microsoft.AzureArcData* (if using Arc-enabled SQL)
+    - *Microsoft.AzureArcData* (if you use Arc-enabled SQL)
     - *Microsoft.HybridConnectivity*
     - *Microsoft.GuestConfiguration*
     - *Microsoft.HybridCompute*
   - **Connectivity**: Make sure your appliance can connect to Azure for telemetry and diagnostics (not required for air-gapped deployments).
-- You have enough disk space for both compressed and uncompressed logs when uploading with diagnostic tools. The required space depends on the size of the logs.
-  - For typical log collection, have at least 20 GB of free space.
-  - For larger log bundles (like those from an Azure Local appliance), compressed logs can exceed 25 GB, and uncompressed logs might be even larger due to extra metadata and processing.
+- Have enough disk space for both compressed and uncompressed logs when you upload with diagnostic tools. The required space depends on the log size.
+  - For typical log collection, keep at least 20 GB of free space.
+  - For larger log bundles, like those from an Azure Local appliance, compressed logs can exceed 25 GB, and uncompressed logs can be even larger because of extra metadata and processing.
     - As a rule, keep at least twice the compressed log size available. For example:
-      - For a 10 GB compressed log bundle, have at least 20 GB free.
-      - For a 25 GB compressed bundle, have at least 50 GB free.
+      - For a 10 GB compressed log bundle, keep at least 20 GB free.
+      - For a 25 GB compressed bundle, keep at least 50 GB free.
 
 > [!NOTE]
-> Upload logs in small batches to reduce processing time and disk usage. Before you start, check your disk space to prevent failures from low storage.
+> Upload logs in small batches to reduce processing time and disk usage. Before you start, check your disk space to prevent failures because of low storage.
 
 ## Workflow
 
@@ -58,9 +58,9 @@ Follow these steps to collect logs on demand:
 
 - [Prerequisites](#prerequisites)
 - [Set up observability for diagnostics](#set-up-observability-for-diagnostics-and-support)
-- [Select a log collection method for your connectivity scenario.](#supported-scenarios)
+- [Select a log collection method for your connectivity scenario](#supported-scenarios)
 - [Collect logs](#trigger-log-collection)
-- [Monitor log collection](#monitor-log-collection).
+- [Monitor log collection](#monitor-log-collection)
 - Review logs locally or [send them to Microsoft](#send-diagnosticdata).
 
 [!INCLUDE [disconnected-operations-observability-diagnostics](../includes/disconnected-operations-observability-diagnostics.md)]
@@ -72,14 +72,14 @@ The following on-demand scenarios are supported for log collection:
 | Scenarios for log collection             | How to collect logs                    |
 |------------------------------------------|----------------------------------------|
 | [Use on-demand direct log collection](#azure-local-disconnected-when-the-appliance-vm-is-connected-to-azure) when an on-premises device with Azure Local disconnected operations is connected to Azure and the management endpoint for disconnected operations is accessible. | Trigger log collection with the `Invoke-ApplianceLogCollection` cmdlet. |
-| [Use on-demand indirect log collection](#azure-local-disconnected-when-the-appliance-vm-isnt-connected-to-azure) when an on-premises device using Azure Local disconnected operations can't connect to Azure but can still reach the management endpoint for disconnected operations. | Trigger log collection with the `Invoke-ApplianceLogCollectionAndSaveToShareFolder` cmdlet.<br></br> After you run the `Invoke-ApplianceLogCollectionAndSaveToShareFolder` cmdlet, use the `Send-DiagnosticData` cmdlet to upload the copied data logs from the file share to Microsoft. |
+| [Use on-demand indirect log collection](#azure-local-disconnected-when-the-appliance-vm-isnt-connected-to-azure) when an on-premises device using Azure Local disconnected operations can't connect to Azure but can still reach the management endpoint for disconnected operations. | Trigger log collection with the `Invoke-ApplianceLogCollectionAndSaveToShareFolder` cmdlet.<br></br> After you run the `Invoke-ApplianceLogCollectionAndSaveToShareFolder` cmdlet, use the `Send-DiagnosticData` cmdlet to upload the copied logs from the file share to Microsoft. |
 | [Use on-demand fallback log collection](#use-fallback-log-collection) when the management endpoint for disconnected operations isn't accessible or the integrated runtime disconnected operations with Azure Local virtual machine (VM) is down. | Collect logs after you shut down the disconnected operations appliance VM, mount and unlock virtual hard disks (VHDs), and copy logs by using the `Copy-DiagnosticData` cmdlet from mounted VHDs into a local, user-defined location.<br></br> Use the `Send-DiagnosticData` cmdlet to manually send diagnostic data to Microsoft. |
 
 ## Azure Local disconnected when the appliance VM isn't connected to Azure
 
-In disconnected Azure Local environments, collect logs from the control plane (appliance) and host nodes, then manually upload them with a standalone tool.
+In disconnected Azure Local environments, collect logs from the control plane (appliance) and host nodes, and then manually upload them with a standalone tool.
 
-The following diagram shows key components for log collection in Azure Local disconnected environments when the appliance VM isn't connected to Azure:
+The following diagram shows key components for log collection in Azure Local disconnected environments when the appliance VM isn't connected to Azure.
 
 :::image type="content" source="./media/disconnected-operations/on-demand-logs/on-demand-components.png" alt-text="Diagram that shows key components for on-demand log collection in Azure Local disconnected operations." lightbox=" ./media/disconnected-operations/on-demand-logs/on-demand-components.png":::
 
@@ -91,7 +91,7 @@ To collect logs from the control plane, follow these steps:
     Invoke-ApplianceLogCollectionAndSaveToShareFolder
     ```
 
-    This command gathers logs from the appliance VM and saves them to the specified shared folder.
+    This command gathers logs from the appliance VM and saves them to the shared folder you specify.
 
 1. Collect host node logs. On each Azure Local host node, run this command:
 
@@ -99,13 +99,13 @@ To collect logs from the control plane, follow these steps:
     Send-DiagnosticData -SaveToPath <shared folder path>
     ```
 
-    This command collects logs specific to the node, including system and cluster level diagnostics.
+    This command collects logs specific to the node, including system-level and cluster-level diagnostics.
 
     For more information on the `Send-DiagnosticData` command, see [Telemetry and diagnostics extension](../concepts/telemetry-and-diagnostics-overview.md).
 
 1. Upload logs by using the **standalone observability tool**. <!--need to get exact link from Harald/team-->
 
-    After you save logs from both the appliance and host nodes to a shared location, upload them with the standalone observability tool. There are product specific wrappers around **Microsoft.AzureStack.Observability.Standalone**.
+    After you save logs from both the appliance and host nodes to a shared location, upload them with the standalone observability tool. There are product-specific wrappers around **Microsoft.AzureStack.Observability.Standalone**.
 
     - For appliance logs: Use the tool version that supports logs collected with `Send-DiagnosticData`.
     - For host node logs: Use the `Send-AzStackHciDiagnosticData` command to upload logs from the host node.
@@ -274,35 +274,32 @@ After you collect logs into a directory, either by using the `Invoke-ApplianceLo
 
 The `Send-DiagnosticData` cmdlet needs your subscription details, for example, the *ResourceGroupName*, *SubscriptionId*, *TenantId*, and *RegistrationRegion*. It also needs credentials, either through manual sign-in or by providing the appropriate *service principal* and *password*. Review the Observability Configuration setup section for steps to create the *resource group* and *service principal* required to upload logs.
 
-Run `Send-DiagnosticData` on a Windows machine connected to the internet. You can’t run this on Azure Local Hosts, since they can’t use Azure as the Arc Control Plane when disconnected operations are already configured. When you run the cmdlet, it connects the machine to Azure using Arc Registration so the device can upload data to Microsoft Support. Note that *RegistrationRegion* is the same as *Location* in ObservabilityConfiguration.
+Run `Send-DiagnosticData` on a Windows machine that's connected to the internet. You can't run this cmdlet on Azure Local Hosts because they can't use Azure as the Arc control plane when disconnected operations are configured. When you run the cmdlet, the machine connects to Azure using Arc registration so it can upload data to Microsoft Support. *RegistrationRegion* is the same as *Location* in *ObservabilityConfiguration*.
 
-Use this method when you can’t collect logs directly from the appliance VM. This might happen if the control plane appliance VM has issues and the management endpoint isn’t accessible, or if the appliance VM is disconnected from Azure.
+Use this method when you can’t collect logs directly from the appliance VM. Use this method if you can’t collect logs from the appliance VM. For example, use it when the control plane appliance VM has issues and the management endpoint isn’t accessible, or the appliance VM is disconnected from Azure.
 
 > [!NOTE]
-> The `Send-DiagnosticData` cmdlet must not be run on Azure Local host nodes, as those are managed by the Azure Local disconnected operations control plane. Instead, run it from a Windows machine with Azure connectivity—ideally the user's laptop or desktop.
+> Don’t run the `Send-DiagnosticData` cmdlet on Azure Local host nodes. These nodes are managed by the Azure Local disconnected operations control plane. Run the cmdlet from a Windows machine with Azure connectivity, such as your laptop or desktop.
 
 ### Send-DiagnosticData –SaveToPath (applicable for Azure Local Host node logs)
 
-The `Send-DiagnosticData` cmdlet gathers logs and, when needed, securely uploads them to Microsoft for analysis. It supports both Azure Stack HCI and Azure Local environments, providing detailed telemetry and diagnostic data to help troubleshoot issues. This cmdlet is available when the telemetry and diagnostics extension is installed, ensuring all necessary components for log collection and upload are present.
+Use the `Send-DiagnosticData` cmdlet to collect logs and securely upload them to Microsoft for analysis. The cmdlet works with Azure Stack HCI and Azure Local environments, and provides detailed telemetry and diagnostic data to help you troubleshoot issues. The cmdlet is available when the telemetry and diagnostics extension is installed.
 
-What `Send-DiagnosticData` does:
+What `Send-DiagnosticData` does
 
 - Collects logs from the local system, including:
   - Role-specific logs
   - Supplementary logs
-  - Software Defined Data Center (SDDC) log (Optional)
-- Supports filtering by:
-  - Role
-  - Date range
-  - Log type
-- Bypasses observability agents to collect logs only on the node where the command is run.
-- Let’s you save logs locally by using the `-SaveToPath` parameter.
-- Supports secure credential access when saving to a network share.
+  - Software Defined Data Center (SDDC) log (optional)
+- Filters logs by role, date range, or log type.
+- Collects logs only on the node where you run the command, bypassing observability agents.
+- Saves logs locally with the `-SaveToPath` parameter.
+- Lets you use secure credentials to save logs to a network share.
 
-Using the `Send-DiagnosticData` Command:
+`Send-DiagnosticData` usage modes
 
-- Connected mode (standard usage).
-- Disconnected mode (`-SaveToPath` usage only).
+- Connected mode (standard).
+- Disconnected mode (only with `-SaveToPath`).
 
 For a list of unsupported features in disconnected mode, see [Unsupported features in disconnected mode](#unsupported-features-in-disconnected-mode).
 

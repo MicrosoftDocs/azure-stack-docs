@@ -18,7 +18,7 @@ This article explains how to use appliance fallback logging to export and send l
 
 ## About fallback logging
 
-Use appliance fallback logging to collect and send logs to Microsoft when the Azure Local disconnected operations appliance virtual machine (VM) is down. Use this method if standard log collection can't start and you need logs to troubleshoot.
+Use appliance fallback logging to collect and send logs to Microsoft when the Azure Local disconnected operations appliance virtual machine (VM) is down. Use this method if standard log collection can't start and you need logs to troubleshoot issues.
 
 ## Prerequisites
 
@@ -42,7 +42,7 @@ The **Copy-DiagnosticData** command is used to copy diagnostic logs from mounted
 
 The fallback logging scenario is used when the Azure Local VM can’t run disconnected operations or when a management endpoint doesn’t work. This cmdlet shuts down the VM. To get the logs, mount and unlock the VHDs, then copy the logs from the mounted VHDs to a local `LogsToExport` folder inside the folder you specify with `DiagnosticLogPath`. You can set the time window and roles to collect. If you set the `Observability Stamp ID`, the cmdlet includes it in the return values.
 
-Make sure this location has enough space for the logs because the Azure Local VM running disconnected VHDs is temporarily mounted there during the copy action.
+Make sure this location has enough space for the logs because the Azure Local VM running disconnected VHDs mounts there temporarily during the copy action.
 
 Use these parameters with the `Copy-DiagnosticData` cmdlet.
 
