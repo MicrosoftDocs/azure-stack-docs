@@ -79,7 +79,7 @@ In this sample example, the average latency is 0.51 ms which is less than 1ms.
 
 :::image type="content" source="media/rack-aware-cluster-deploy-prep/image2.png" alt-text="A screenshot of a computer AI-generated content may be incorrect.":::
 
-To complete full mesh testing, **repeat steps 2 and 3** with **different server-client combinations until every host has tested with every other host.
+To complete the full mesh testing, repeat steps 2 and 3 with different server-client combinations until every host is tested with every other host.
 
 > [!NOTE]
 > Results can vary depending on when you run the test, as TCP latency is affected by your current network conditions. We strongly recommend that you run the test *multiple* times to get a reliable average.
