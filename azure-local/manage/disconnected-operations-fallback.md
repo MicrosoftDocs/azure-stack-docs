@@ -26,7 +26,7 @@ Import the appliance logging module to use the cmdlets in this article.
 
 ## Import appliance logging
 
-Run the following command to import appliance logging.
+To import appliance logging, run the following command:
 
 ```PowerShell
 Import-Module "C:\azurelocal\OperationsModule\ApplianceFallbackLogging.psm1" -Force
@@ -34,9 +34,7 @@ Import-Module "C:\azurelocal\OperationsModule\ApplianceFallbackLogging.psm1" -Fo
 
 ## Export logs using the Copy-DiagnosticData command
 
-To export logs in the fallback scenario, use this cmdlet:
-
-- [**Copy-DiagnosticData**]
+To export logs in the fallback scenario, use the `Copy-DiagnosticData` cmdlet.
 
 ### Copy-DiagnosticData command
 
