@@ -91,7 +91,7 @@ This setup allows Arc registration using a managed identity to upload logs, metr
     az account show
     ```
 
-5. Create a Service Principal. Replace <SubscriptionID> with your subscription ID and run this command:
+5. Create a Service Principal. Replace `<SubscriptionID>` with your subscription ID and run this command:
 
     ```PowerShell
     az ad sp create-for-rbac --name "<SPNName>" --role "Azure Connected Machine Onboarding" --scopes /subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroupName>
@@ -100,12 +100,12 @@ This setup allows Arc registration using a managed identity to upload logs, metr
     Example output:
 
     {
-      "appId": "<AppId>",
+      "appId": "`<AppId>`",
       "displayName": "azlocalobsapp",
-      "password": "<RETRACTED>",
-      "tenant": "<RETRACTED>"
+      "password": "`<RETRACTED>`",
+      "tenant": "`<RETRACTED>`"
     }
-    <SubscriptionID>
+    `<SubscriptionID>`
 
     > [!NOTE]
     > Use the appID as the Service Principal ID and password as the Service Principal Secret
