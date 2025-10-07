@@ -12,7 +12,7 @@ ms.date: 10/07/2025
 
 Applies to: Azure Local version 2510 and later
 
-This article gives a high-level overview of the Azure Local Rack Aware Clustering feature including its benefits and use cases. The article also details the supported configurations and deployment requirements for Rack Aware Clusters.
+This article gives a high-level overview of the Azure Local Rack Aware Clustering feature including its benefits and use cases. The article also details the supported configurations and deployment requirements for Rack Aware Clusters. This article applies only to new deployments of Azure Local version 2510 and later.
 
 [!INCLUDE [important](../includes/hci-preview.md)]
 
@@ -54,7 +54,7 @@ The use cases for Azure Local Rack Aware Cluster include:
 <!--more use case info-->
 
 
-## Requirements and supported configurations
+## Requirements
 
 All [system requirements for Azure Local](../concepts/system-requirements-23h2.md) apply to rack aware clusters. There are [Other requirements](../index.yml) for rack aware clusters including those for drives, Availability Zones, node configurations, latency, and bandwidth.
 
