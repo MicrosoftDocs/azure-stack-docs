@@ -37,7 +37,6 @@ Import-Module "C:\azurelocal\OperationsModule\ApplianceFallbackLogging.psm1" -Fo
 To export logs in the fallback scenario, use this cmdlet:
 
 - [**Copy-DiagnosticData**]
-<!--- [**Send-DiagnosticData**]-->
 
 ### Copy-DiagnosticData command
 
@@ -51,7 +50,7 @@ Use these parameters with the `Copy-DiagnosticData` cmdlet.
 
 - **DiagnosticLogPath**: Required. The destination path contains copied logs and temporarily mounted VHDs.
 
-- **Roles**: Optional. Available roles: **Agents**, **Oplets**, **MASLogs**, **ServiceFabric**, **ArcADiagnostics**, **Observability**, **WindowsEventLogs**, **CosmosDB**, and **Storage**. By default, all roles except **CosmosDB** and **Storage** are included.
+- **Roles**: The roles required for log collection or diagnostics may vary depending on the scenario. Work with your support contact to determine the appropriate roles to include.
 
 - **FromDate** and **ToDate**: Optional. Start and end times of logs included in the collection. Logs before the FromDate and after the ToDate are excluded. By default, logs from the **last four hours** of the current time are collected, if you don't provide these parameters.
 
