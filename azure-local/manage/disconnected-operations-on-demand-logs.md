@@ -132,7 +132,7 @@ The following on-demand scenarios are supported for log collection:
 |------------------------------------------|----------------------------------------|
 | [Use on-demand direct log collection](#azure-local-disconnected-when-the-appliance-vm-is-connected-to-azure) when an on-premises device with Azure Local disconnected operations is connected to Azure and the management endpoint for disconnected operations is accessible. | Trigger log collection with the `Invoke-ApplianceLogCollection` cmdlet. |
 | [Use on-demand indirect log collection](#azure-local-disconnected-when-the-appliance-vm-isnt-connected-to-azure) when an on-premises device using Azure Local disconnected operations doesn't have a connection to Azure, but the management endpoint for disconnected operations is accessible. | Trigger log collection with the `Invoke-ApplianceLogCollectionAndSaveToShareFolder` cmdlet.<br></br> After you run the `Invoke-ApplianceLogCollectionAndSaveToShareFolder` cmdlet, use the `Send-DiagnosticData` cmdlet to upload the copied data logs from the file share to Microsoft. |
-| [Use on-demand fallback log collection](#indirect-or-fallback-log-collection-disconnected-mode) when the management endpoint for disconnected operations isn't accessible or the integrated runtime disconnected operations with Azure Local virtual machine (VM) is down. | Collect logs after you shut down the disconnected operations appliance VM, mount and unlock virtual hard disks (VHDs), and copy logs by using the `Copy-DiagnosticData` cmdlet from mounted VHDs into a local, user-defined location.<br></br> Use the `Send-DiagnosticData` cmdlet to manually send diagnostic data to Microsoft. |
+| [Use on-demand fallback log collection](#use-fallback-log-collection) when the management endpoint for disconnected operations isn't accessible or the integrated runtime disconnected operations with Azure Local virtual machine (VM) is down. | Collect logs after you shut down the disconnected operations appliance VM, mount and unlock virtual hard disks (VHDs), and copy logs by using the `Copy-DiagnosticData` cmdlet from mounted VHDs into a local, user-defined location.<br></br> Use the `Send-DiagnosticData` cmdlet to manually send diagnostic data to Microsoft. |
 
 ## Azure Local disconnected when the appliance VM isn't connected to Azure
 
@@ -378,86 +378,6 @@ To use service principal credentials, run this command:
 ```PowerShell
 Send-DiagnosticData -ResourceGroupName <String> -SubscriptionId <String> -TenantId <String> -RegistrationWithCredential <PSCredential> -RegistrationRegion <String> [-Cloud <String>] -DiagnosticLogPath <String> [-ObsRootFolderPath <String>] [-StampId <Guid>] [<CommonParameters>]
 ```
-
-<!--### Parameters
-
-- ResourceGroupName `<String>`
-  - Azure Resource group name where temporary Arc resource will be created.
-
-- SubscriptionId `<String>`
-  - Azure SubscriptionID where temporary Arc resource will be created.
-
-- TenantId `<String>`
-  - Azure TenantID where temporary Arc resource will be created.
-
-- RegistrationWithDeviceCode `[<SwitchParameter>]`
-  - Switch to use device code for authentication. This is the default if Service Principal credentials (-RegistrationWithCredential {creds}) is not provided.
-
-- RegistrationWithCredential `<PSCredential>`
-  - Service Principal credentials used for authentication to register ArcAgent.
-
-- RegistrationRegion `<String>`
-  - Azure registration region where Arc resource will be created, e.g. 'eastus' or 'westeurope'.
-
-- Cloud `<String>`
-  - Optional. Default: AzureCloud
-
-- DiagnosticLogPath `<String>`
-  - Path to a directory containing the logs to be parsed and sent to Microsoft.
-
-- ObsRootFolderPath `<String>`
-  - Optional. Observability root folder path where the standalone pipeline is (temporarily) installed and activity logs related to sending diagnostic data are output.
-    - Default: {DiagnosticLogPath}\..\SendLogs_{yyyyMMddTHHmmssffff} (a new file created in the DiagnosticLogPath parent directory)
-
-- StampId `<Guid>`
-  - Optional. Unique id for disconnected operations deployment. This GUID is used for tracking collected logs on Microsoft support. Same can be retrieved using Get-ApplianceInstanceConfiguration when management endpoint is accessible for disconnected operations appliance VM. The default value applied will be based on the following setting:
-    - Provided StampId GUID
-    - $env:STAMP_GUID (when StampId GUID not provided)
-    - The host machine's UUID (when StampId GUID not provided and $env:STAMP_GUID not set)
-
-Example:
-
-```powershell
-Send-DiagnosticData with device code login (used by default if no credential is provided, even if -RegistrationWithDeviceCode is missing):
-
-Import-Module "C:\azurelocal\OperationsModule\ApplianceFallbackLogging.psm1" -Force
-```
-
-```PowerShell
-Send-DiagnosticData -ResourceGroupName "xxxxx" ` -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" `-TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" ` -RegistrationWithDeviceCode ` -RegistrationRegion "eastus" ` -DiagnosticLogPath "C:\path\to\LogsToExport" ` -StampId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-```
-
-```PowerShell
-Send-DiagnosticData using Service Principal Credential, sending to the eastus region of the Azure cloud:
-
-Import-Module "C:\azurelocal\OperationsModule\ApplianceFallbackLogging.psm1" -Force
-```
-
-```PowerShell
-$spId = "{...}"
-$spSecret = "{...}"
-$ss = ConvertTo-SecureString -String $spSecret -AsPlainText -Force
-$spCred = New-Object System.Management.Automation.PSCredential($spId, $ss)
-
-Send-DiagnosticData -ResourceGroupName "xxxxx" ` -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" ` -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" `
-    -RegistrationWithCredential $spCred ` -RegistrationRegion "eastus" ` -DiagnosticLogPath "C:\path\to\LogsToExport" ` -StampId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-```
-
-The cmdlet returns the Stamp ID used for log uploads to Microsoft Support, any errors encountered during the upload, and the location of the send activity logs. For example:
-
-Example output:
-
-```PowerShell
-AEOStampID 'e5182bb9-7c18-4dec-9def-0004d34f3e94' used for log tracking in Kusto.
-
-Logs and artifacts from send action can be found under:
- G:\CopyLogs_20240501T1826317607\SendLogs_20240501T1827168699
-
-Log parsing engine results can be found under:
- G:\CopyLogs_20240501T1826317607\SendLogs_20240501T1827168699\ObsScheduledTaskTranscripts
-```
-
-If the Stamp ID isn't set and isn't passed to the `Send-DiagnosticData` cmdlet manually, it defaults to using the host UUID. The Stamp ID is synonymous with the AEOStampId used to track logs in Azure Data Explorer.-->
 
 ## Monitor log collection
 
