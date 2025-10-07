@@ -3,7 +3,7 @@ title: Install solution upgrade on Azure Local
 description: Learn how to install the solution upgrade on your Azure Local instance.
 author: alkohli
 ms.topic: how-to
-ms.date: 09/02/2025
+ms.date: 10/07/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -118,7 +118,7 @@ On the **Validation** tab, the operation automatically creates Azure resources a
     :::image type="content" source="./media/install-solution-upgrade/upgrade-progress-2.png" alt-text="Screenshot of Upgrade Azure Local showing a completed upgrade." lightbox="./media/install-solution-upgrade/upgrade-progress-2.png":::
 
 > [!NOTE]
-> If the upgrade fails, restart the upgrade operation to try again.
+> If the upgrade fails, select **Resume deployments** at the top of the Deployments blade page to retry again. Don't restart the process from the **Your cluster can be upgraded to the latest version** banner again.
 
 ## Verify a successful upgrade
 
