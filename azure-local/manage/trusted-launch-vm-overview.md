@@ -65,10 +65,6 @@ When working with Trusted launch Azure Local VMs, make sure to understand the fo
 
 - Restore VM guest state protection key. You must restore the VM guest state protection key to the local key vault of the Azure Local instance as described in [Manual backup and recovery of VM guest state protection key](trusted-launch-vm-import-key.md).
 
-### VM replication
-
-Azure Site recovery, which can replicate virtual machines on your Azure Local instance to Azure, is not supported.
-
 **Restoring to same Azure Local instance**
 
 - In some situations, the VM may be restored to the same Azure Local instance, the same as the Azure Local instance where the VM resided before failure. When a Trusted launch VM is successfully restored to the same Azure Local instance, the VM can be managed via Azure Local control plane as it was before.
@@ -76,6 +72,10 @@ Azure Site recovery, which can replicate virtual machines on your Azure Local in
 **Restoring to different Azure Local instance**
 
 - In some situations, the VM may be restored to a different Azure Local instance, different from the Azure Local instance where the VM resided before failure. When a Trusted launch VM is successfully restored to a different Azure Local instance, the VM can no longer be managed via the Azure Arc control plane, but it can be managed using local VM management tools.
+
+### VM replication
+
+Azure Site recovery, which can replicate virtual machines on your Azure Local instance to Azure, is not supported.
 
 ## Next steps
 
