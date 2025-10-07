@@ -45,7 +45,7 @@ Each host takes turns acting as both **server** and **client** when testing agai
 
 Follow these steps to test rack-to-rack latency:
 
-1. **[Download psping](https://docs.microsoft.com/sysinternals/downloads/psping)**. Download and extract `psping` on each host that participates in testing.
+1. **[Download psping](/sysinternals/downloads/psping)**. Download and extract `psping` on each host that participates in testing.
 
 1. **Allow TCP traffic through the firewall**. Since this test uses TCP, ensure the port is open on the **server**. Run this PowerShell command:
 
@@ -77,7 +77,7 @@ Follow these steps to test rack-to-rack latency:
 
 In this sample example, the average latency is 0.51 ms which is less than 1ms.
 
-:::image type="content" source="media/rack-aware-cluster-deploy-prep/image2.png" alt-text="A screenshot of a computer AI-generated content may be incorrect.":::
+:::image type="content" source="media/rack-aware-cluster-deploy-prep/rack-aware-cluster-use-psping.png" alt-text="Screenshot of an example when using psping." lightbox="media/rack-aware-cluster-deploy-prep/rack-aware-cluster-use-psping.png":::
 
 To complete the full mesh testing, repeat steps 2 and 3 with different server-client combinations until every host is tested with every other host.
 
