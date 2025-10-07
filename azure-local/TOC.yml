@@ -127,7 +127,10 @@ items:
     - name: Without Arc gateway
       href: deploy/deployment-without-azure-arc-gateway.md
     - name: With Arc gateway
-      href: deploy/deployment-with-azure-arc-gateway.md  
+      href: deploy/deployment-with-azure-arc-gateway.md
+      items:
+      - name: Register systems with OEM image
+        href: deploy/deployment-oem-providers.md
   - name: 6. Choose a deployment method
     items:
     - name: 6A. Deploy via Azure portal
