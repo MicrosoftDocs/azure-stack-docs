@@ -11,7 +11,7 @@ ms.topic: how-to
 
 # Prepare for Rack Aware Cluster deployment
 
-This document describes the steps to prepare for deploying Azure Local
+This document describes the preparation steps for deploying Azure Local
 Rack Aware Clusters. It includes network design recommendations, machine
 configuration guidelines, and best practices for deployment.
 
@@ -47,7 +47,7 @@ Follow these steps to test rack-to-rack latency:
 
 1. **[Download psping](https://docs.microsoft.com/sysinternals/downloads/psping)**. Download and extract `psping` on each host that participates in testing.
 
-1. **Allow TCP traffic through the firewall**. Since this test uses TCP, ensure the port is open on the **server**. Run the following PowerShell command:
+1. **Allow TCP traffic through the firewall**. Since this test uses TCP, ensure the port is open on the **server**. Run this PowerShell command:
 
     ```powershell  
     New-NetFirewallRule -DisplayName "\<RULENAME\>" -Direction Inbound
@@ -55,21 +55,19 @@ Follow these steps to test rack-to-rack latency:
     -ErrorAction Stop
     ```
 
-1. **Start the `psping` server on one host**. Run the following PowerShell command:
+1. **Start the `psping` server on one host**. Run this PowerShell command:
 
     ```powershell
     .\psping.exe -s \<SERVER_IP\>:\<PORT\>
     ```
 
-1. **Run the `psping` client on another host**. Execute the following PowerShell command:
+1. **Run the `psping` client on another host**. Run this PowerShell command:
 
     ```powershell
     .\psping.exe -l 1m -n 5000 -h 5 \<SERVER_IP\>:\<PORT\>
     ```
 
-1. **Review output analysis**: After running the test, `psping` provides both a
-summary and a histogram of latency values. This helps analyze
-performance more effectively.
+1. **Review output analysis**: After the test is complete, `psping` provides a summary and a histogram of latency values. This helps analyze performance more effectively.
 
     - **Average latency**: Use this key metric to understand the overall network delay.
 
@@ -84,7 +82,7 @@ In this sample example, the average latency is 0.51 ms which is less than 1ms.
 To complete full mesh testing, **repeat steps 2 and 3** with **different server-client combinations until every host has tested with every other host.
 
 > [!NOTE]
-> Results may vary depending on when you run the test, as TCP latency is affected by your current network conditions. We strongly recommend that you run the test *multiple* times to get a reliable average.
+> Results can vary depending on when you run the test, as TCP latency is affected by your current network conditions. We strongly recommend that you run the test *multiple* times to get a reliable average.
 
 ## (Optional) Run the LLDP Network Validator test for Rack Aware Clusters
 
