@@ -83,7 +83,7 @@ See [Create Azure Local virtual machines enabled by Azure Arc](create-arc-virtua
     # To connect to your Azure Local via Az CLI, see https://learn.microsoft.com/en-us/azure/azure-local/azure-arc-vm-management-prerequisites.md?#azure-command-line-interface-cli-requirements.
 
     # Login to Azure
-    [host1]: PS C:\Users\HCIDeploymentUser> az login –-use-device-code
+    [host1]: PS C:\Users\HCIDeploymentUser> az login --use-device-code
 
     # Set your subscription
     [host 1]: PS C:\Users\HCIDeploymentUser> az account set --subscription "<subscription>"
@@ -234,7 +234,7 @@ Here’s the Az CLI command and sample output:
 PS C:\WINDOWS\system32>az login --use-device-code
 
 # Set your subscription
-[host 1]: PS C:\Users\HCIDeploymentUser> az account set –-subscription "<subscription>"
+[host 1]: PS C:\Users\HCIDeploymentUser> az account set --subscription "<subscription>"
 
 # Get list of installed extensions 
 PS C:\WINDOWS\system32>az version 
