@@ -19,7 +19,9 @@ configuration guidelines, and best practices for deployment.
 
 - Make sure to review the [Network design requirements for Azure Local Rack Aware Clusters](../index.yml) for detailed design and supported network configurations.
 
-    We strongly recommend that you deploy two Top of Rack (ToR) switches in each rack or room to ensure high resiliency. However, for certain edge implementations where cost efficiency is a priority, a single ToR switch per room or rack may be sufficient, provided that adequate bandwidth is available. Both storage networks will reside on the same device and will be isolated through distinct VLANs.
+    - We strongly recommend that you deploy two Top of Rack (ToR) switches in each rack or room to ensure high resiliency.
+    - For edge implementations where cost efficiency is a priority, a single ToR switch per room or rack may be sufficient, provided that adequate bandwidth is available.
+    - Both storage networks reside on the same device and are isolated through distinct VLANs.
 
 - Ensure that your network switches support Link Layer Discovery Protocol (LLDP) and that LLDP is enabled on all switch ports connected to the Azure Local machines. This is crucial for the LLDP Network Validator test, which verifies the network topology and connections for your Rack Aware Cluster deployment.
 
