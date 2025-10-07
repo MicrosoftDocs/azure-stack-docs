@@ -1,18 +1,18 @@
 ---
-title: Overview of Azure Local Rack Aware Clustering
-description: Use this article to learn about Azure Local Rack Aware Clustering.
+title: Overview of Azure Local Rack Aware Clustering (Preview)
+description: Use this article to learn about Azure Local Rack Aware Clustering. (Preview)
 author: alkohli
 ms.author: alkohli
 ms.topic: overview
 ms.service: azure-local
-ms.date: 09/27/2025
+ms.date: 10/07/2025
 ---
 
-# Azure Local Rack Aware Clustering overview
+# Azure Local Rack Aware Clustering overview (Preview)
 
-[!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
+Applies to: Azure Local version 2510 and later
 
-This article gives a high-level overview of the Azure Local Rack Aware Clustering feature including its benefits and use cases. The article also details the supported configurations and deployment requirements for rack aware clustering.
+This article gives a high-level overview of the Azure Local Rack Aware Clustering feature including its benefits and use cases. The article also details the supported configurations and deployment requirements for Rack Aware Clusters.
 
 [!INCLUDE [important](../includes/hci-preview.md)]
 
@@ -56,58 +56,8 @@ The use cases for Azure Local Rack Aware Cluster include:
 
 ## Requirements and supported configurations
 
-All [system requirements for Azure Local](../concepts/system-requirements-23h2.md) apply to rack aware clusters.  
+All [system requirements for Azure Local](../concepts/system-requirements-23h2.md) apply to rack aware clusters. There are [Other requirements](../index.yml) for rack aware clusters including those for drives, Availability Zones, node configurations, latency, and bandwidth.
 
-Other requirements for rack aware clusters include:
-
-- **Drive requirements**: Data drives must be all-flash. Either non volatile memory express (NVMe) or solid-state drives (SSD) work.
-
-- **Availability zone requirements**: Rack aware cluster supports only two local availability zones, with a maximum of four machines in each zone. The two zones must contain an equal number of machines.
-
-- **Supported node configurations**:
-
-    - Rack Level Nested Mirror (RLNM) is required.
-    - The following table summarizes the supported configurations with volume resiliency settings.
-
-        | Machines in two zones  | Volume resiliency   | Infra volumes  | Workload volumes  |
-        |--| -- |--| -- |
-        | 1+1 <br> (2-node cluster)  | 2-way mirror  | 1 | 2 |
-        | 2+2 <br> (4-node cluster)  | Rack level nested mirror <br> (4-way mirror)  | 1 | 4 |
-        | 3+3 <br> (6-node cluster)  | Rack level nested mirror <br> (4-way mirror)  | 1 | 6 |
-        | 4+4 <br> (8-node cluster)  | Rack level nested mirror <br> (4-way mirror)  | 1 | 8 |
-
-    - Only the new deployments are supported. Conversion from existing standard deployments to rack aware clusters isn't supported.
-
-- **Latency requirements**: The round-trip latency requirement between two racks should be 1 millisecond or less. <!--Check the instructions below-->
-
-- **Bandwidth requirements**: To facilitate synchronous replications between racks, a dedicated storage network is essential to ensure adequate bandwidth for storage traffic. The necessary bandwidth can be calculated based on the cluster size and the network interface card (NIC) speed as follows:
-
-    | Machines in zone | NIC speed | Storage ports | Bandwidth required |
-    |--| -- |--| -- |
-    | 1 | 10 | 2 | 20 GbE  |
-    | 2 | 10 | 2 | 40 GbE  |
-    | 3 | 10 | 2 | 60 GbE  |
-    | 4 | 10 | 2 | 80 GbE  |
-    | 1 | 25 | 2 | 50 GbE  |
-    | 2 | 25 | 2 | 100 GbE |
-    | 3 | 25 | 2 | 150 GbE |
-    | 4 | 25 | 2 | 200 GbE |
-
-    For more information, see [Rack Aware Clustering network design](../index.yml).
-
-<!--## Storage design
-
-Storage Spaces Direct is used to create a single storage pool that aggregates the disk capacity from all machines.
-
-- Only two-way mirror volumes are supported. Three-way mirror volumes aren't supported.
-
-- For a *1+1* configuration, two volumes are created—one on each machine—with a two-way mirror that respects the rack fault domain, ensuring two copies of data are available in the cluster, one in each rack.
-- In a *2+2* configuration, four volumes are created—one on each machine—with a two-way mirror that also respects the rack fault domain, providing one copy of data in each rack.
-
-    With a two-way mirror:
-
-    - The total usable capacity of the storage pool is 50%.
-    - The system can handle one type of failure at a time. This means each cluster can support the failure of either one rack, one machine, or one disk without losing data.-->
 
 ## Deploy a Rack Aware Cluster
 
@@ -115,6 +65,15 @@ To deploy a Rack Aware Cluster, use one of the following methods:
 
 - [Azure portal](../index.yml).
 - [Azure Resource Manager template](../index.yml).
+
+## Scale a Rack Aware Cluster
+
+Scale the cluster by adding a pair of nodes to a Rack Aware Cluster. The 2+2 configuration can be expanded to 3+3, and 3+3 to 4+4.
+
+> [!NOTE]
+> Adding nodes to a 1+1 Rack Aware Cluster is not supported in this release.
+
+For more information, see [Add nodes to a Rack Aware Cluster](../index.yml).
 
 ## Place Azure Local VMs
 
@@ -137,15 +96,6 @@ We recommend that you conduct live migration and failover testing of your VM wor
     | Zone 2 (non-strict)   | Zone 1 down  | No change                      | Zone 1 back | No change             |
 
 We recommend that you perform load testing to ensure the solution is properly scaled for deployment in the production environment.
-
-## Scale a Rack Aware Cluster
-
-Scale the cluster by adding a pair of nodes to a Rack Aware Cluster. The 2+2 configuration can be expanded to 3+3, and 3+3 to 4+4.
-
-> [!NOTE]
-> Adding nodes to a 1+1 Rack Aware Cluster is not supported in this release.
-
-For more information, see [Add nodes to a Rack Aware Cluster](../index.yml).
 
 ## Next steps
 
