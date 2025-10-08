@@ -89,7 +89,7 @@ This article details how to register Azure Local using Azure Arc gateway and wit
 ## Step 3: Run registration script
 
 > [!NOTE]
-> If your system uses an Original Equipment Manufacturer (OEM) image, follow the instructions in [Azure Arc registration workflow for systems with OEM images](./deployment-oem-providers.md).
+> If your system uses an Original Equipment Manufacturer (OEM) image, follow the instructions in [Azure Arc registration workflow for systems with OEM images](./deployment-arc-registration-preinstalled-os.md).
 
 1. Run the Arc registration script. The script takes a few minutes to run.
 
@@ -333,7 +333,7 @@ $ArcgwId = "/subscriptions/yourarcgatewayid/resourceGroups/yourresourcegroupname
 ## Step 3: Run the registration script
 
 > [!NOTE]
-> If your system uses an Original Equipment Manufacturer (OEM) image, follow the instructions in [Azure Arc registration workflow for systems with OEM images](./deployment-oem-providers.md).
+> If your system uses an Original Equipment Manufacturer (OEM) image, follow the instructions in [Azure Arc registration workflow for systems with OEM images](./deployment-arc-registration-preinstalled-os.md).
 
 To use the Arc gateway feature for Azure Local systems without a proxy, only use the `ArcGatewayID` parameter.
 
