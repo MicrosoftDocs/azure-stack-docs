@@ -1,14 +1,14 @@
 ---
-title: Deploy Rack Aware Cluster using the Azure portal
-description: Learn how to deploy a Rack Aware Cluster via the Azure portal with step-by-step guidance, including configuration, networking, and validation processes.
+title: Deploy Rack Aware Cluster using the Azure portal (Preview)
+description: Learn how to deploy a Rack Aware Cluster via the Azure portal with step-by-step guidance, including configuration, networking, and validation processes. (Preview)
 author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
-ms.date: 10/07/2025
+ms.date: 10/08/2025
 ms.topic: how-to
 ---
 
-# Deploy Rack Aware Cluster via the Azure portal
+# Deploy Rack Aware Cluster via the Azure portal (Preview)
 
 This document describes the steps to deploy Azure Local Rack Aware Clusters using the Azure portal.
 
