@@ -8,32 +8,30 @@ ms.date: 10/03/2025
 ms.topic: concept-article
 ---
 
-# Spread Azure Kubernetes Service (AKS) nodes in Rack Aware Cluster
+# Spread Azure Kubernetes Service (AKS) nodes in rack aware cluster
 
-This article explains how to deploy Azure Kubernetes Service (AKS) clusters with Rack Aware Cluster support. You learn how to ensure fault tolerance and evenly distribute nodes across Azure Local zones for improved reliability.
+This article explains how to deploy Azure Kubernetes Service (AKS) clusters with rack aware cluster support. You'll learn how to ensure fault tolerance and evenly distribute nodes across Azure local zones for improved reliability.
 
-## About AKS nodes and Rack Aware Cluster
+## About AKS nodes and rack aware cluster
 
-In Azure Kubernetes Service (AKS), a node is essentially a virtual machine (VM) that runs your containerized applications. These nodes are part of a node pool, which is a group of VMs with the same configuration. Each AKS cluster has two main components:
+In Azure Kubernetes Service (AKS), a node is a virtual machine (VM) that runs your containerized applications. These nodes are part of a node pool, which is a group of VMs with the same configuration. Each AKS cluster has two main components:
 
-- **Control Plane**: Managed by Azure, it orchestrates workloads and handles cluster operations.
-- **Nodes**: These are the worker machines (VMs) that run your actual application containers.
+- **Control Plane**: Azure manages the service. The control plane orchestrates workloads and handles cluster operations.
+- **Nodes**: Worker machines (VMs) that run your application containers.
 
-A Rack Aware Cluster in Azure Local is an architecture that improves fault tolerance and data distribution. It clusters machines across two physical racks in separate rooms or buildings, connected with high bandwidth and low latency. This setup helps prevent data loss or downtime if one rack fails, such as during a fire or power outage. Data is distributed evenly between the racks, so if one rack goes down, the other keeps your data available. This design is especially useful in environments like manufacturing plants that need high availability.
+A rack aware cluster in Azure Local is an architecture that improves fault tolerance and data distribution. It clusters machines across two physical racks in separate rooms or buildings, connected with high bandwidth and low latency. This setup helps prevent data loss or downtime if one rack fails, such as during a fire or power outage. Data is distributed evenly between the racks, so if one rack goes down, the other keeps your data available. This design is especially useful in environments like manufacturing plants that need high availability.
 
 ## Prerequisites
 
-Review [Create Kubernetes clusters using Azure CLI](azure/aks/aksarc/aks-create-clusters-cli).
+Review [Create Kubernetes clusters using Azure CLI](/azure/aks/aksarc/aks-create-clusters-cli#before-you-begin).
 
 ## Key considerations
 
-When distributing AKS nodes in rack-aware clusters, consider the following key points:
+When you distribute AKS nodes in rack aware clusters, keep these key points in mind:
 
-- Make sure the AKS control plane has more nodes than a single zone. This setup lets the control plane deploy across zones and recover faster. For example, in a 3:3 rack-aware configuration, use a five node control plane to ensure a 3:2 split. If you use only three nodes, you might end up with a 3:0 split, which can slow recovery.
+- Make sure the AKS control plane has more nodes than a single zone. This setup lets the control plane deploy across zones and recover faster. For example, in a 3:3 rack aware configuration, use a five-node control plane to ensure a 3:2 split. If you use only three nodes, you can end up with a 3:0 split, which slows recovery.
 
 - Control plane high availability isn't supported in rack aware clusters because they support only two zones. If a zone fails, the control plane majority can be affected, such as in a 2:1 or 3:2 split.
-
-## Supported scenarios
 
 ## Deploy control plane nodes across the zones
 
@@ -76,7 +74,7 @@ Here's an example:
 
 ## Zone Recovery
 
-Zone recovery is a process or feature that helps restore data or services after a failure or disaster in a specific zone, such as a data center or geographic region. It’s designed to minimize downtime and data loss by enabling recovery from backups or replicas located in other zones.
+Zone recovery helps you restore data or services after a failure in a specific zone, like a data center or region. It reduces downtime and data loss by letting you recover from backups or replicas in other zones.
 
 To simulate zone recovery, remove the fault. After you remove the fault, the nodes fail over to the original hosts, and all Kubernetes pods return to running status.
 
@@ -89,7 +87,5 @@ Here's an example:
 ## Limitations
 
 Node spreading across the zone uses availability sets, which use fault domains and default to one physical machine. Availability sets aren't zone aware. For more information, see [Availability sets in AKS enabled by Azure Arc](/azure/aks/aksarc/availability-sets).
-
-## Unsupported features or Unsupported scenarios
 
 ## Related content
