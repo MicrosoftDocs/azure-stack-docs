@@ -291,7 +291,7 @@ Run `Send-DiagnosticData` on a Windows machine that's connected to the internet.
 
 For a list of unsupported features in disconnected mode, see [Unsupported features in disconnected mode](#unsupported-features-in-disconnected-mode).
 
-### Send-DiagnosticData cmdlet examples
+## Send-DiagnosticData cmdlet examples
 
 Here are some examples of using the `Send-DiagnosticData` cmdlet.
 
@@ -306,6 +306,8 @@ Here are some examples of using the `Send-DiagnosticData` cmdlet.
   ```PowerShell
   Send-DiagnosticData -ResourceGroupName <String> -SubscriptionId <String> -TenantId <String> -RegistrationWithCredential <PSCredential> -RegistrationRegion <String> [-Cloud <String>] -DiagnosticLogPath <String> [-ObsRootFolderPath <String>] [-StampId <Guid>] [<CommonParameters>]
   ```
+
+- PM to include an example using the `-SaveToPath`
 
 ## Monitor log collection
 
@@ -367,9 +369,9 @@ Example
     ExternalDomainSuffix         : autonomous.cloud.private
     ImageVersion                 : 7.1064750419.18210
     IngressNICPrefixLength       : 24
-    DeviceARMResourceUri         : /subscriptions/5acadb2e-3867-4158-a581-cf7bd9569341/resourceGroups/arcaobs/providers/Microsoft.Edge/winfields/7dfd0b
+    DeviceARMResourceUri         : /subscriptions/<Subcription ID>/resourceGroups/<Resource group>/providers/Microsoft.Edge/winfields/7dfd0b
     ConnectionIntent             : Connected
-    StampId                      : 8801e7bf-846b-462d-a5c3-829514cf0b1b
+    StampId                      : <Stamp ID>
     IngressNICIPAddress          : 10.0.50.4
     DnsForwarderIpAddress        : 10.10.240.23
     IngressNICDefaultGateway     : 10.0.50.1
@@ -393,11 +395,11 @@ This approach lets you share diagnostic data for support purposes without affect
 
 ## Common issues
 
-- `Copy-DiagnosticData`: This cmdlet must be run on the Hyper-V host that's hosting your Azure Local disconnected VM.
+- `Invoke-ApplianceLogCollectionAndSaveToShareFolder`: You need to specify the account in the format: Domain\Username. If you omit the domain or use an incorrect username, the copy operation to the share fails with an access-denied error.
 
 - `Send-DiagnosticData`: This cmdlet must be run on a windows machine that has direct internet access to Azure, isn't arc-enabled, and doesn't use the appliance as its arc control plane.
 
-- `Invoke-ApplianceLogCollectionAndSaveToShareFolder`: You need to specify the account in the format: Domain\Username. If you omit the domain or use an incorrect username, the copy operation to the share fails with an access-denied error.
+- `Copy-DiagnosticData`: This cmdlet must be run on the Hyper-V host that's hosting your Azure Local disconnected VM.
 
 - **FilterRoles**: The roles required for log collection or diagnostics might vary depending on the scenario. Use the `get-help`cmdlet or work with your support contact to determine the appropriate roles to include.
 
