@@ -12,7 +12,7 @@ ms.topic: concept-article
 
 This article explains how to deploy Azure Kubernetes Service (AKS) clusters with rack aware cluster support. You'll learn how to ensure fault tolerance and evenly distribute nodes across Azure local zones for improved reliability.
 
-## About AKS nodes and rack aware cluster
+## About AKS and rack aware cluster
 
 In Azure Kubernetes Service (AKS), a node is a virtual machine (VM) that runs your containerized applications. These nodes are part of a node pool, which is a group of VMs with the same configuration. Each AKS cluster has two main components:
 
