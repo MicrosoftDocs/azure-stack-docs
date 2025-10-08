@@ -103,7 +103,7 @@ On the **Configuration** tab, choose whether to create a new configuration for t
 
     :::image type="content" source="media/rack-aware-cluster-deploy-portal/rack-aware-cluster-management-settings.png" alt-text="Screenshot of management settings in the Azure portal." lightbox="media/rack-aware-cluster-deploy-portal/rack-aware-cluster-management-settings.png":::
 
-When selecting an existing account, the dropdown list filters to display only the storage accounts contained in the specified resource group for deployment. You can use the same storage account with multiple clusters; each witness uses less than a kilobyte of storage.
+    When selecting an existing account, the dropdown list filters to display only the storage accounts contained in the specified resource group for deployment. You can use the same storage account with multiple clusters; each witness uses less than a kilobyte of storage.
 
     :::image type="content" source="./media/deploy-via-portal/management-tab-2.png" alt-text="Screenshot of the Management tab with storage account for cluster witness for deployment via Azure portal." lightbox="./media/deploy-via-portal/management-tab-2.png":::
 
