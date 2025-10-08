@@ -1,9 +1,9 @@
 ---
 title: Azure Operator Nexus - How to Use Administrative Lock or Unlock Network fabric
 description: Learn how to lock or unlock a fabric resource using the Administrative Lock feature in Nexus Network Fabric.
-author: sushantjrao
-ms.author: sushrao
-ms.date: 05/27/2025
+author: jac0bsmith
+ms.author: jacosmith
+ms.date: 10/08/2025
 ms.topic: how-to
 ms.service: azure-operator-nexus
 ms.custom: template-how-to, devx-track-azurecli
@@ -27,6 +27,37 @@ The **Administrative Lock** feature provides a mechanism to control write and up
 ## Prerequisites
 
 * **Azure CLI version** `8.0.0b3` or later is installed.
+
+## Check Current Fabric Lock Status
+
+Before applying or removing an administrative lock, you can query the current lock status of your fabric using the following CLI command:
+
+```Azure CLI
+az networkfabric fabric show \
+  -g <resource-group-name> \
+  --resource-name <fabric-name> \
+  --query "fabricLocks[?lockType=='Administrative'].{Type:lockType,State:lockState}" \
+  -o table
+```
+
+### Parameters:
+
+* `-g` or `--resource-group`: Name of the resource group containing the fabric.
+* `--resource-name`: Name of your Network Fabric resource.
+* `--query`: Filters the output to show only Administrative lock type and its current state.
+* `-o table`: Formats the output as a table for better readability.
+
+### Example
+
+```Azure CLI
+az networkfabric fabric show \
+  -g nf-rg-prod \
+  --resource-name nf-eastus-prod \
+  --query "fabricLocks[?lockType=='Administrative'].{Type:lockType,State:lockState}" \
+  -o table
+```
+
+This command will display the current administrative lock status (Locked or Unlocked) for the specified fabric.
 
 ## How to Use the Azure CLI to Lock or Unlock a Fabric
 
