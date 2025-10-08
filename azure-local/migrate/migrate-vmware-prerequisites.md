@@ -3,7 +3,7 @@ title: Prerequisites for VMware VM migration to Azure Local using Azure Migrate 
 description: Learn prerequisites for VMware migration to Azure Local using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 09/30/2025
+ms.date: 10/08/2025
 ms.author: alkohli
 ---
 
@@ -32,6 +32,7 @@ The following list contains the prerequisites that must be met to migrate VMware
 |Create a logical network for the Azure Arc resource bridge for VMs to use.|target|[Create a logical network.](../manage/create-logical-networks.md)|
 |Enable contributor and user administrator access on the subscription for the Azure Migrate project.|both|[Assign Azure roles using the Azure portal](/azure/role-based-access-control/role-assignments-portal).|
 |Create an Azure Migrate project|source, target|[Create an Azure Migrate project](#create-an-azure-migrate-project).|
+| Install Hyper-V Linux Integration Services on Linux VMs | source | Rebuild the Linux init image so it contains the necessary Hyper-V drivers.<br>Rebuilding the init image ensures that the VM will boot on Azure Local. Most new versions of Linux distributions have this included. |
 
 
 ## Create an Azure Migrate project
