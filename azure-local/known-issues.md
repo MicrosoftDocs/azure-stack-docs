@@ -19,6 +19,89 @@ These release notes are continuously updated, and as critical issues requiring a
 
 For more information about new features in this release, see [What's new for Azure Local](whats-new.md).
 
+::: moniker range="=azloc-2510"
+
+## Known issues for version 2510
+
+For the 2510 release of Azure Local, Microsoft released two security updates, each aligned with a specific OS build. The following table provides the specific versions and their OS builds:
+
+| Solution version  | OS build  |
+|---------|---------|---------|
+| 11.2510.1001.21          | 25398.1849        |
+| 12.2510.1001.22         | 26100.6584       |
+
+> [!IMPORTANT]
+> The new deployments of this software use the **12.2510.1001.22** build. You can also update an existing deployment from 2508 by using **11.2510.1001.21**.
+
+Release notes for this version include the issues fixed in this release, known issues in this release, and release note issues carried over from previous versions.
+
+> [!NOTE]
+> For detailed remediation for common known issues, see the [Azure Local Supportability](https://github.com/Azure/AzureStackHCI-Supportability) GitHub repository.
+
+## Fixed issues
+
+The following table lists the fixed issues in this release:
+
+|Feature  |Issue  |Comments  |
+|---------|---------|---------|
+| Deployment <!--34566504--> | Improved calculation of maximum volume size for express storage provisioning. |  |
+| Deployment <!--34566509, 34742714--> | Adjusted allocation unit size for thin provisioned volumes.  |  |
+| Deployment <!--34437246--> | Fixed issue with importing modules for storage. |  |
+|  <!--34865085--> | Enabled Rack Level Nested Mirror for Rack Aware Clusters.  |  |
+| Deployment <!--35001389--> | Fixed issue with restarting performance history volume.   |  |
+| Deployment <!--35126494--> | Added mitigation for Cluster DNS resolution issues.  |  |
+| Upgrade <!--35145029--> | Refined the version check to get the correct latest updates. |  |
+| Upgrade <!--34687921--> | Improved check for local administrator.  |  |
+
+
+## Known issues
+
+<!--Microsoft isn't aware of any known issues in this release.-->
+
+The following table lists the known issues in this release:
+
+|Feature  |Issue  |Workaround  |
+|---------|---------|---------|
+|  <!----> |  |  |
+|  <!----> |  |  |
+|  <!----> |  |  |
+
+## Known issues from previous releases
+
+The following table lists the known issues from previous releases:
+
+|Feature  |Issue  |Workaround  |
+|---------|---------|---------|
+| Azure Verification <!--58937961-->  | VMs on Azure Local running Windows Server Azure Edition, Windows 10, or Windows 11 multi-session OS may not activate properly. A pop-up message or a watermark may display, indicating that Windows isn't activated. The VM will function, but the watermark will persist. | There's no known workaround in this release. |
+| Add server <br> Repair server <!--32447442--> | The `Add-server` and `Repair-server` cmdlets fail with the error: <br> `Cluster Build ID matches node to add's Build ID`. | Use the OS image of the same solution version as that running on the existing cluster. To get the OS image, identify and download the image version from this [Release table](https://github.com/Azure-Samples/AzureLocal/blob/main/os-image/os-image-tracking-table.md). |
+| Deployment <!--33008717--> | In this release and previous releases, registration fails with the following error when you try to register Azure Local machines with Azure Arc: <br>`AZCMAgent command failed with error: >> exitcode: 42. Additional Info: See https://aka.ms/arc/azcmerror`. | For detailed steps on how to resolve this issue, see the [Troubleshooting guide](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/ArcRegistration/TSG-Arc-registration-failing-with-error-42.md). |
+| Azure Local VM management | The Mochostagent service might appear to be running but can get stuck without updating logs for over a month. You can identify this issue by checking the service logs in `C:\programdata\mochostagent\logs` to see if logs are being updated. | Run the following command to restart the mochostagent service: `restart-service mochostagent`. |
+| Update | When viewing the readiness check results for an Azure Local instance via the Azure Update Manager, there might be multiple readiness checks with the same name.  |There's no known workaround in this release. Select **View details** to view specific information about the readiness check. |
+| Update | There's an intermittent issue in this release when the Azure portal incorrectly reports the update status as **Failed to update** or **In progress** though the update is complete.  |[Connect to your Azure Local instance](./update/update-via-powershell-23h2.md#connect-to-your-azure-local) via a remote PowerShell session. To confirm the update status, run the following PowerShell cmdlets: <br><br> `$Update = get-solutionupdate`\| `? version -eq "<version string>"`<br><br>Replace the version string with the version you're running. For example, "10.2405.0.23". <br><br>`$Update.state`<br><br>If the update status is **Installed**, no further action is required on your part. The Azure portal refreshes the status correctly within 24 hours. <br> To refresh the status sooner, follow these steps on one of the nodes. <br>Restart the Cloud Management cluster group.<br>`Stop-ClusterGroup "Cloud Management"`<br>`Start-ClusterGroup "Cloud Management"`|
+| Add server <!--26852600--> |In this release and previous releases, when adding a machine to the system, isn't possible to update the proxy bypass list string to include the new machine. Updating environment variables proxy bypass list on the hosts won't update the proxy bypass list on Azure resource bridge or AKS. |There's no workaround in this release. If you encounter this issue, contact Microsoft Support to determine next steps.|
+| Azure portal <!--25741164--> |In some instances, the Azure portal might take a while to update and the view might not be current.| You might need to wait for 30 minutes or more to see the updated view. |
+| Update | When updating the Azure Local instance via the Azure Update Manager, the update progress and results may not be visible in the Azure portal.| To work around this issue, on each node, add the following registry key (no value needed):<br><br>`New-Item -Path "HKLM:\SYSTEM\CurrentControlSet\Services\HciCloudManagementSvc\Parameters" -force`</br><br> Then on one of the nodes, restart the Cloud Management cluster group. </br><br>`Stop-ClusterGroup "Cloud Management"`</br><br>`Start-ClusterGroup "Cloud Management"`</br><br> This won't fully remediate the issue as the progress details may still not be displayed for a duration of the update process. To get the latest update details, you can [Retrieve the update progress with PowerShell](./update/update-via-powershell-23h2.md#step-6-track-update-progress). |
+| Security <!-- 56969147 --> | When fixing the compliance for the minimum password length rule, even after you've changed the minimum password length on the Azure Local host to 14, you continue to see it as noncompliant in Azure policy.  | You can verify the length of the password using the `net accounts` cmdlet. In the output, find **Minimum password length** to see the value. |
+| Security <!--30348397--> |  Azure Local might face an issue during normal operations (for example, Update, Repair) while using Defender for Endpoint and when the **Restrict App Execution** setting is enabled for one or more servers in the deployment.  | Disable the **Restrict App Execution** setting in the Defender portal and reboot. If the issue persists, [open a support case](/azure/azure-portal/supportability/how-to-create-azure-support-request). |
+| Deployment <!--33471589--> |  After Azure portal deployment, SConfig network settings shows the error: `Set-SCfNetworksetting : Cannot bind argument to parameter 'Value' because it is null.` | There's no known workaround in this release. |
+| Deployment <!--33390832--> | In rare instances, deployment fails with errors during validation that state that the mandatory Arc extensions are not yet installed. | If you face this issue, retry the deployment. |
+| Update | When installing cumulative updates using Azure Update Manager, only the latest update for version 2507 is installed. If earlier update options (for versions 2505, 2506) are selected, they are not installed. | There's no workaround in this release. |
+|Registration, deployment, Add-server, Upgrade, Update<!--34559459--> |In this release, connectivity tests can take longer than 20 minutes in some environments. | There's no known workaround for this issue in this release. |
+| Update <!--34867064--> | Update health check results not shown when it's been longer than 3 hours after health check completed |Rerun the update health checks to restart the 3 hour expiration clock. |
+|Deployment <!--34021247, 34493956--> |Log collection doesn't start when it starts it the first time, and then shows 404 errors subsequent times. | There's no known workaround for this issue in this release. |
+|Deployment <!--34752922--> |Deployment, add node, and repair node operations may fail with the error: <br> `Type 'EncryptClusterSharedVolumes' of Role 'AzureStackBitlocker' raised an exception: The job running on xxx failed due to: System.Management.Automation.RemoteException: -> Failed enabling bitlocker for C:\ClusterStorage\UserStorage_13 (F:)`  | For detailed steps on how to resolve this issue, see the [Troubleshooting guide](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/Deployment/Deployment-or-ScaleOut-failure-at-EncryptClusterSharedVolumes-of-AzureStackBitlocker.md).|
+
+## Known and expected behaviors
+
+The following table lists the known and expected system behaviors that shouldn't be considered as bugs or limitations.
+
+| Feature  | Behavior  |  Workaround |
+|---------|---------|---------|
+| Operating system  | Restoring the registry using *RegBack* isn't supported on Azure Local. This operation can remove the Lifecycle Manager (LCM) and Microsoft On-premises Cloud (MOC) settings on your Azure Local instance, which can corrupt the solution.  | |
+| Azure Local VM management| Using an exported Azure VM OS disk as a VHD to create a gallery image for provisioning an Azure Local VM is unsupported. | Run the command `restart-service mochostagent` to restart the mochostagent service. |
+
+::: moniker-end
+
 ::: moniker range="=azloc-2509"
 
 ## Known issues for version 2509
