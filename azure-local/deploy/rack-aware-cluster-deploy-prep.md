@@ -77,7 +77,7 @@ Follow these steps to test rack-to-rack latency:
 
 In this sample example, the average latency is 0.51 ms which is less than 1ms.
 
-:::image type="content" source="media/rack-aware-cluster-deploy-prep/rack-aware-cluster-use-psping.png" alt-text="Screenshot of an example when using psping." lightbox="media/rack-aware-cluster-deploy-prep/rack-aware-cluster-use-psping.png":::
+:::image type="content" source="media/rack-aware-cluster-deploy-prep/rack-aware-cluster-test-latency.png" alt-text="Screenshot of an example when using psping." lightbox="media/rack-aware-cluster-deploy-prep/rack-aware-cluster-test-latency.png":::
 
 To complete the full mesh testing, repeat steps 2 and 3 with different server-client combinations until every host is tested with every other host.
 
