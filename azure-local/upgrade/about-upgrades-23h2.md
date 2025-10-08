@@ -54,7 +54,7 @@ The following diagram illustrates the Azure Local upgrade process:
 
 :::image type="content" source="./media/about-upgrades-23h2/update-os-to-23h2-and-apply-the-solution-update.png" alt-text="Diagram that illustrates the two steps to upgrade the OS and then apply the solution update." lightbox="./media/about-upgrades-23h2/update-os-to-23h2-and-apply-the-solution-update.png":::
 
-## Supported workloads and configuration
+## Supported workloads and configurations
 
 > [!IMPORTANT]
 > - Consult your hardware OEM before you upgrade Azure Local. Validate that your OEM supports the version and the upgrade.
