@@ -20,7 +20,7 @@ This article explains how to create Azure Local virtual machines (VMs) in a loca
 
 - Make sure that you have access to a Rack Aware Cluster.  
 
-- Before you create an Azure Local VM for a Rack Aware Cluster, make sure that all prerequisites listed in [Create Azure Local virtual machines enabled by Azure Arc](/manage/create-arc-virtual-machines?tabs=azurecli) are met.
+- Before you create an Azure Local VM for a Rack Aware Cluster, make sure that all prerequisites listed in [Create Azure Local virtual machines enabled by Azure Arc](/manage/create-arc-virtual-machines.md) are met.
 
 ## Create and place the VM
 
