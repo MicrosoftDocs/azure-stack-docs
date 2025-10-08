@@ -34,9 +34,10 @@ To deploy a Rack Aware Cluster, follow the steps to [Deploy an Azure Local insta
 
 1. In this step, select **Rack aware cluster** for the **Cluster options**.
 
-1. 1. Select the **Region** to store this system's Azure resources. For a list of supported Azure regions, [Azure requirements](../concepts/system-requirements-23h2.md#azure-requirements).
+1. Select the **Region** to store this system's Azure resources. For a list of supported Azure regions, [Azure requirements](../concepts/system-requirements-23h2.md#azure-requirements).
 
-   We don't transfer a lot of data so it's OK if the region isn't close. 
+   We don't transfer a lot of data so it's OK if the region isn't close.
+
 1. Select  **+ Add machines**. Select the machine or machines that make up this Azure Local instance.
 
    > [!IMPORTANT]
@@ -76,7 +77,7 @@ To deploy a Rack Aware Cluster, follow the steps to [Deploy an Azure Local insta
 On the **Configuration** tab, choose whether to create a new configuration for this system or to load deployment settings from a template–either way you are able to review the settings before you deploy:
 
 1. Choose the source of the deployment settings:
-   * **New configuration** - Specify all of the settings to deploy this system.
+   * **New configuration** - Specify all of the settings to deploy this system. In this example, we choose this option.
    * **Template spec** - Load the settings to deploy this system from a template spec stored in your Azure subscription.
    * **Quickstart template** - This setting isn't available in this release.
 
@@ -88,10 +89,10 @@ On the **Configuration** tab, choose whether to create a new configuration for t
 
 1. Choose the only storage connectivity available option for a Rack Aware Cluster as **Network switch for storage traffic**.
 1. Choose the only networking pattern available for Rack Aware Cluster as **Group management and compute traffic**. This groups management and compute traffic together on one set of adapters while keeping storage traffic isolated on dedicated high-speed adapters. You create two network intents:
-        - Management and compute intent.
-        - Storage intent.
+    - Management and compute intent.
+    - Storage intent.
 
-:::image type="content" source="media/rack-aware-cluster-deploy-portal/rack-aware-cluster-network-settings.png" alt-text="Screenshot of network settings in the Azure portal." lightbox="media/rack-aware-cluster-deploy-portal/rack-aware-cluster-network-settings.png":::
+    :::image type="content" source="media/rack-aware-cluster-deploy-portal/rack-aware-cluster-network-settings.png" alt-text="Screenshot of network settings in the Azure portal." lightbox="media/rack-aware-cluster-deploy-portal/rack-aware-cluster-network-settings.png":::
 
 1. Select **Next: Management**.
 
