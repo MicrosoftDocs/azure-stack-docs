@@ -75,6 +75,8 @@ The following on-demand scenarios are supported for log collection:
 | [Use on-demand indirect log collection](#azure-local-disconnected-when-the-appliance-vm-isnt-connected-to-azure) when an on-premises device using Azure Local disconnected operations can't connect to Azure but can still reach the management endpoint for disconnected operations. | Trigger log collection with the `Invoke-ApplianceLogCollectionAndSaveToShareFolder` cmdlet.<br></br> After you run the `Invoke-ApplianceLogCollectionAndSaveToShareFolder` cmdlet, use the `Send-DiagnosticData` cmdlet to upload the copied logs from the file share to Microsoft. |
 | [Use on-demand fallback log collection](#use-fallback-log-collection) when the management endpoint for disconnected operations isn't accessible or the integrated runtime disconnected operations with Azure Local virtual machine (VM) is down. | Collect logs after you shut down the disconnected operations appliance VM, mount and unlock virtual hard disks (VHDs), and copy logs by using the `Copy-DiagnosticData` cmdlet from mounted VHDs into a local, user-defined location.<br></br> Use the `Send-DiagnosticData` cmdlet to manually send diagnostic data to Microsoft. |
 
+For a list of unsupported features in disconnected mode, see [Unsupported features in disconnected mode](#unsupported-features-in-disconnected-mode).
+
 ## Azure Local disconnected when the appliance VM isn't connected to Azure
 
 In disconnected Azure Local environments, collect logs from the control plane (appliance) and host nodes, then manually upload them with a standalone tool.
@@ -288,8 +290,6 @@ Run `Send-DiagnosticData` on a Windows machine that's connected to the internet.
 > Don’t run the `Send-DiagnosticData` cmdlet on Azure Local host nodes. These nodes are managed by the Azure Local disconnected operations control plane. Run the cmdlet from a Windows machine with Azure connectivity, such as your laptop or desktop.
 >
 > The `Send-DiagnosticData` usage mode is Disconnected mode (only with `-SaveToPath`).
-
-For a list of unsupported features in disconnected mode, see [Unsupported features in disconnected mode](#unsupported-features-in-disconnected-mode).
 
 ## Send-DiagnosticData cmdlet examples
 
