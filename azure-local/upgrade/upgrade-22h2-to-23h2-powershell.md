@@ -3,7 +3,7 @@ title: Upgrade Azure Stack HCI OS, version 22H2 to version 23H2 via PowerShell
 description: Learn how to use PowerShell to upgrade Azure Stack HCI OS, version 22H2 to version 23H2.
 author: alkohli
 ms.topic: how-to
-ms.date: 09/18/2025
+ms.date: 10/08/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -105,7 +105,7 @@ Before you begin, make sure that:
   Uninstall-Module -Name AksHci -Force
   ```
 
-  To avoid any PowerShell version-related issues in your AKS deployment, you can use this [helper script to delete old AKS-HCI PowerShell modules](https://github.com/Azure/aksArc/blob/main/scripts/samples/uninstall-akshci.ps1). If you have used the preview version of AKS Arc on 22H2, run the command `Uninstall-Moc` on a Azure Local node, to remove the VM instances created using the preview version.
+To avoid any PowerShell version-related issues in your AKS deployment, you can use this [helper script to delete old AKS-HCI PowerShell modules](https://github.com/Azure/aksArc/blob/main/scripts/samples/uninstall-akshci.ps1). If you used the preview version of AKS Arc on 22H2, run the command `Uninstall-Moc` on an Azure Local node, to remove the VM instances created using the preview version.
 
 - Shut down virtual machines (VMs). To prevent unexpected outages and potential damage to databases, we recommend that you shut down the VMs before you upgrade the OS.
 - You have access to the version 25398.xxxx (23H2) OS software update for Azure Local. This update is available via Windows Update or as a downloadable media. The media must be version **2503** ISO file that you can download from the [Azure portal](https://portal.azure.com/#view/Microsoft_Azure_HybridCompute/AzureArcCenterBlade/~/hciGetStarted).
@@ -145,14 +145,14 @@ Before you begin, make sure that:
 - Make sure your Azure Local system is running either OS version 20349.3692 or OS version greater than 25398.1611.
 - Make sure the system is registered in Azure and all the machines in the system are healthy and online.
 - Make sure to shut down virtual machines (VMs). We recommend shutting down VMs before performing the OS upgrade to prevent unexpected outages and damages to databases.
-- If you have AKS enabled by Azure Arc clusters running on your version 22H2 instance, uninstall AKS Arc and all its settings using the [Uninstall-Aks-Hci](/azure/aks/hybrid/reference/ps/uninstall-akshci) command. Once you uninstall AKS Arc, you must uninstall the **AksHci** Powershell module using this command, as this module does not work on version 23H2 and later.
+- If you have AKS enabled by Azure Arc clusters running on your version 22H2 instance, uninstall AKS Arc and all its settings using the [Uninstall-Aks-Hci](/azure/aks/hybrid/reference/ps/uninstall-akshci) command. Once you uninstall AKS Arc, you must uninstall the **AksHci** Powershell module using this command, as this module does not work on version 23H2 and later:
 
   ```powershell
   Uninstall-Module -Name AksHci -Force
   ```
 
-  To avoid any PowerShell version-related issues in your AKS deployment, you can use this [helper script to delete old AKS-HCI PowerShell modules](https://github.com/Azure/aksArc/blob/main/scripts/samples/uninstall-akshci.ps1). If you have used the preview version of AKS Arc on 22H2, run the command `Uninstall-Moc` on a Azure Local node, to remove the VM instances created using the preview version.
-- Confirm that you have access to the latest Azure Local that you can [Download from the Azure portal](../deploy/download-23h2-software.md#download-the-software-from-the-azure-portal).
+  To avoid any PowerShell version-related issues in your AKS deployment, you can use this [helper script to delete old AKS-HCI PowerShell modules](https://github.com/Azure/aksArc/blob/main/scripts/samples/uninstall-akshci.ps1). If you used the preview version of AKS Arc on 22H2, run the command `Uninstall-Moc` on an Azure Local node to remove the VM instances created using the preview version.
+- Confirm that you have access to the latest Azure Local that you can [download from the Azure portal](../deploy/download-23h2-software.md#download-the-software-from-the-azure-portal).
 - Consult your hardware OEM to verify driver compatibility. Confirm that all drivers compatible with Windows Server 2025 or Azure Stack HCI OS, 26100.xxxx are installed before the upgrade.
 - Make sure the Network Interface Card (NIC) driver currently installed on your system is newer than the version included by default (inbox) with Azure Stack HCI OS, version 26100.xxxx. The following table compares the current and recommended versions of NIC drivers for two manufacturers:
 
