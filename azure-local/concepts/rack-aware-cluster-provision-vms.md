@@ -2,7 +2,7 @@
 title: Provision VMs in local availability zone for Azure Local (Preview)
 description: Learn about how to provision VMs in local availability zone for Azure Local (Preview).
 author: alkohli
-ms.topic: concepts
+ms.topic: conceptual
 ms.date: 10/08/2025
 ms.author: alkohli
 ---
@@ -20,7 +20,7 @@ This article explains how to create Azure Local virtual machines (VMs) in a loca
 
 - Make sure that you have access to a Rack Aware Cluster.  
 
-- Before you create an Azure Local VM for a Rack Aware Cluster, make sure that all prerequisites listed in [Create Azure Local virtual machines enabled by Azure Arc](/manage/create-arc-virtual-machines.md?tabs=azurecli) are met.
+- Before you create an Azure Local VM for a Rack Aware Cluster, make sure that all prerequisites listed in [Create Azure Local virtual machines enabled by Azure Arc](/manage/create-arc-virtual-machines?tabs=azurecli) are met.
 
 ## Create and place the VM
 
