@@ -3,7 +3,7 @@ title: Validate solution upgrade readiness for Azure Local, version 23H2
 description: Learn how to assess upgrade readiness for Azure Local, version 23H2 that already had its operating system upgraded from version 22H2.
 author: alkohli
 ms.topic: how-to
-ms.date: 09/25/2025
+ms.date: 10/08/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -396,22 +396,44 @@ Make sure to verify that there are no volumes that exist with the name *Infrastr
 
 Make sure that the cluster functional level and storage pool version are up to date. For more information, see [Update the cluster functional level and storage pool version](./post-upgrade-steps.md#step-3-perform-the-post-os-upgrade-steps).
 
-## Remediation 9: Check the MOC install state
+## Remediation 9: Check the Azure Arc Lifecycle extension
+
+1. Review the extension status using the Azure Arc resource view.
+
+   :::image type="content" source="./media/install-solution-upgrade/upgrade-22h2-to-23h2-azureedgelcm-extension.png" alt-text="Screenshot of Azure Arc extensions list view." lightbox="./media/install-solution-upgrade/upgrade-22h2-to-23h2-azureedgelcm-extension.png":::
+
+   If an update is available, select the **AzureEdgeLifecycleManager** extension and then select **Update**.
+
+1. If the **AzureEdgeLifecycleManager** extension isn't listed, install it manually using the following steps on each machine:
+
+   ```powershell
+   $ResourceGroup = "Your Resource Group Name"
+   $Region = "eastus" #replace with your region
+   $tenantid = "Your tenant ID"
+   $SubscriptionId = "Your Subscription ID"
+   Login-AzAccount –UseDeviceAuthentication –tenantid  $tenantid –subscriptionid $SubscriptionId
+   Install-module az.connectedmachine
+   New-AzConnectedMachineExtension -Name "AzureEdgeLifecycleManager" -ResourceGroupName $ResourceGroup -MachineName $env:COMPUTERNAME -Location $Region -Publisher "Microsoft.AzureStack.Orchestration" -ExtensionType "LcmController" -NoWait
+   ```
+
+## Remediation 10: Check the MOC install state
 
 Follow these steps to apply solution upgrade if you're running Azure Kubernetes Service (AKS) workloads on your Azure Local:
 
 1. Wait for the solution upgrade banner to appear on your Azure Local resource page.
 1. Remove AKS and all the settings from AKS hybrid before you apply the solution upgrade. Kubernetes versions are incompatible between the *old* and *new* versions of Azure Local. Additionally, preview versions of Azure Local VMs enabled by Azure Arc can't be updated.
 
-For more information, see [Uninstall-Aks-Hci for AKS enabled by Azure Arc](/azure/aks/hybrid/reference/ps/uninstall-akshci).
+   For more information, see [Uninstall-Aks-Hci for AKS enabled by Azure Arc](/azure/aks/hybrid/reference/ps/uninstall-akshci).
 
-Once you uninstall AKS Arc, you must uninstall the **AksHci** Powershell module using the followng command, as this module does not work on 23H2 and later:
+   Once you uninstall AKS Arc, you must uninstall the **AksHci** Powershell module using the followng command, as this module does not work on 23H2 and later:
 
-```powershell
-Uninstall-Module -Name AksHci -Force
-```
+   ```powershell
+   Uninstall-Module -Name AksHci -Force
+   ```
 
-To avoid any PowerShell version-related issues in your AKS deployment, you can use this [helper script to delete old AKS-HCI PowerShell modules](https://github.com/Azure/aksArc/issues/130).
+   To avoid any PowerShell version-related issues in your AKS deployment, you can use this [helper script to delete old AKS-HCI PowerShell modules](https://github.com/Azure/aksArc/issues/130).
+
+1. If you used the preview version of AKS Arc on 22H2 or the preview version of Arc VM on 22H2, uninstall MOC by running the command `Uninstall-Moc` on a Azure Local node to remove the VM instances created using the preview version.
 
 ## Remediation 10: Check the AKS install state
 
@@ -420,15 +442,15 @@ Follow these steps to apply solution upgrade if you're running AKS workloads on 
 1. Wait for the solution upgrade banner to appear on your Azure Local resource page.
 1. Remove AKS and all the settings from AKS hybrid before you apply the solution upgrade. Kubernetes versions are incompatible between the *old* and *new* versions of Azure Local.
 
-For more information, see [Uninstall-Aks-Hci for AKS enabled by Azure Arc](/azure/aks/hybrid/reference/ps/uninstall-akshci).
+   For more information, see [Uninstall-Aks-Hci for AKS enabled by Azure Arc](/azure/aks/hybrid/reference/ps/uninstall-akshci).
 
-Once you uninstall AKS Arc, you must uninstall the **AksHci** Powershell module using the followng command, as this module does not work on 23H2 and later:
+   Once you uninstall AKS Arc, you must uninstall the **AksHci** Powershell module using the followng command, as this module does not work on 23H2 and later:
 
-```powershell
-Uninstall-Module -Name AksHci -Force
-```
+   ```powershell
+   Uninstall-Module -Name AksHci -Force
+   ```
 
-To avoid any PowerShell version-related issues in your AKS deployment, you can use this [helper script to delete old AKS-HCI PowerShell modules](https://github.com/Azure/aksArc/issues/130).
+   To avoid any PowerShell version-related issues in your AKS deployment, you can use this [helper script to delete old AKS-HCI PowerShell modules](https://github.com/Azure/aksArc/issues/130).
 
 ## Next steps
 
