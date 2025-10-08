@@ -10,9 +10,7 @@ ms.date: 10/07/2025
 
 # Azure Local Rack Aware Clustering overview (Preview)
 
-Applies to: Azure Local version 2510 and later
-
-This article gives a high-level overview of the Azure Local Rack Aware Clustering feature including its benefits and use cases. The article also details the supported configurations and deployment requirements for Rack Aware Clusters. This article applies only to new deployments of Azure Local version 2510 and later.
+This article gives a high-level overview of the Azure Local Rack Aware Clustering feature including its benefits and use cases. The article also details the supported configurations and deployment requirements for Rack Aware Clusters. This article applies only to new deployments of Azure Local.
 
 [!INCLUDE [important](../includes/hci-preview.md)]
 
@@ -66,10 +64,7 @@ To deploy a Rack Aware Cluster, use one of the following methods:
 
 ## Scale a Rack Aware Cluster
 
-Scale the cluster by adding a pair of nodes to a Rack Aware Cluster. The 2+2 configuration can be expanded to 3+3, and 3+3 to 4+4.
-
-> [!NOTE]
-> Adding nodes to a 1+1 Rack Aware Cluster is not supported in this release.
+You can scale the cluster by adding a pair of nodes to a Rack Aware Cluster. The 2+2 configuration can be expanded to 3+3, and 3+3 to 4+4.
 
 For more information, see [Add nodes to a Rack Aware Cluster](../index.yml).
 
@@ -81,19 +76,10 @@ For more information about VM placement in a Rack Aware Cluster, see [Manage VM 
 
 ## Fail over Azure Local VMs in a Rack Aware Cluster
 
-We recommend that you conduct live migration and failover testing of your VM workloads within a Rack Aware Cluster.
+We recommend that you conduct live migration and failover testing of your VM workloads within a Rack Aware Cluster. The failover behavior depends on the VM placement configuration and can be planned failover or unplanned failover.
 
-- **Planned failover**: During planned failover, non-strict placed VMs are seamlessly migrated to operational nodes within the same zone or, if necessary, to another zone without incurring downtime. 
-- **Unplanned failover**: During unplanned failover, VM operations may be interrupted. Typically, systems require three to five minutes to restore availability on an alternate node or zone. Strict placed VMs stay in the zone they are placed and do not fail over to the other zone.
+For more information, see [Fail over Azure Local VMs in a Rack Aware Cluster](../index.yml).
 
-    | VM starting placement | Failure mode | VM placement reaction          | Recover     | VM placement reaction |
-    |-----------------------|--------------|--------------------------------|-------------|-----------------------|
-    | Zone 1 (strict)       | Zone 1 down  | Saved mode (no failover)       | Zone 1 back | Zone 1 (strict)       |
-    | Zone 1 (non-strict)   | Zone 1 down  | Zone 2 (non-strict) (failover) | Zone 1 back | Zone 1 (non-strict)   |
-    | Zone 2 (strict)       | Zone 1 down  | No change                      | Zone 1 back | No change             |
-    | Zone 2 (non-strict)   | Zone 1 down  | No change                      | Zone 1 back | No change             |
-
-We recommend that you perform load testing to ensure the solution is properly scaled for deployment in the production environment.
 
 ## Next steps
 
