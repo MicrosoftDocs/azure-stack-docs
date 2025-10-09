@@ -1,6 +1,6 @@
 ---
-title: Collect diagnostic logs for Azure Local (preview)
-description: Learn how to collect diagnostic logs and share them with Microsoft (preview).
+title: Collect diagnostic logs for Azure Local
+description: Learn how to collect diagnostic logs and share them with Microsoft.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
@@ -9,7 +9,7 @@ ms.date: 04/08/2025
 ms.custom: sfi-image-nochange
 ---
 
-# Collect diagnostic logs for Azure Local (preview)
+# Collect diagnostic logs for Azure Local
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
