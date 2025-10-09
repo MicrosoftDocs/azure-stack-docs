@@ -18,7 +18,9 @@ During the cluster deployment, cluster undergoes various lifecycle phases, which
 
 ### Hardware Validation phase:
 
-Hardware Validation (HWV) is initiated during the cluster deployment process. Cluster deployment HWV involves a machine pre deployment check. HWV assesses the state of hardware components for the machines provided through the Cluster's rack definition. Based on the results of these checks and any user skipped machines, a determination is done on whether sufficient nodes passed and/or are available to meet the thresholds necessary for deployment to continue. HWV results for a given server are written into the Log Analytics Workspace (LAW), which is provided as part of the cluster creation.
+Hardware Validation (HWV) is initiated during the cluster deployment process. During this phase, each machine defined in the cluster’s rack configuration undergoes a thorough hardware check before deployment. HWV evaluates the health and status of all hardware components on these machines. HWV attempts to fix misconfigured BIOS boot settings and firmware components as needed.
+
+Based on the results of these HWV checks and any user skipped machines, a determination is done on whether sufficient nodes passed and/or are available to meet the thresholds necessary for deployment to continue. The results of HWV for each server are recorded in the Log Analytics Workspace (LAW), which is created as part of the cluster setup.
 
 > **Note:**  
 > Hardware validation thresholds are enforced for various node types to ensure reliable cluster operation:
@@ -27,7 +29,7 @@ Hardware Validation (HWV) is initiated during the cluster deployment process. Cl
 > - **NMP nodes:** These are grouped into two management groups, with each group required to meet a 50% hardware validation success rate.
 > - **Compute nodes:** Must meet the thresholds specified by the deployment input.
 
-This article provides an overview of the HWV process [Hardware Validation Overview](concepts-hardware-validataion-overview.md)
+This article provides a detailed overview of the HWV process [Hardware Validation Overview](concepts-hardware-validataion-overview.md)
 
 This article provides instructions on how to check and troubleshoot HWV results [Troubleshoot Hardware Validation](troubleshoot-hardware-validation-failure.md)
 
