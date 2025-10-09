@@ -1,22 +1,26 @@
 ---
-title: Add a server to a Rack Aware Cluster on Azure Local (Preview)
-description: Learn how to add a server to a Rack Aware Cluster on Azure Local (Preview).
+title: Add or repair a server to a Rack Aware Cluster on Azure Local (Preview)
+description: Learn how to add or repair a server to a Rack Aware Cluster on Azure Local (Preview).
 author: alkohli
 ms.topic: how-to
 ms.date: 10/09/2025
 ms.author: alkohli
 ---
 
-# Add a server to a Rack Aware Cluster (Preview)
+# Add or repair a server to a Rack Aware Cluster (Preview)
 
 Applies to: Azure Local version 2510 and later
 
-This article explains how to manage capacity for your Azure Local Rack Aware Cluster by adding servers (nodes). For more information, see [Add a node on Azure Local](../manage/add-server.md).
+This article explains how to add or repair servers (nodes) for your Azure Local Rack Aware Cluster.
 
 
 [!INCLUDE [important](../includes/hci-preview.md)]
 
-## Limitations
+## Add a server
+
+For more information on adding a server, see [Add a node on Azure Local](../manage/add-server.md).
+
+### Limitations
 
 This is only supported for 2+2 to 3+3, and 3+3 to 4+4 Rack Aware Cluster. You can't add nodes to a 1+1 Rack Aware Cluster. For a Rack Aware Cluster, you must add two nodes at a time by using the `Add-Server` command:
 
@@ -24,7 +28,7 @@ This is only supported for 2+2 to 3+3, and 3+3 to 4+4 Rack Aware Cluster. You ca
 Add-Server -Name <String Array> -HostIpv4 <String Array> -LocalAvailabilityZone <String Array> -LocalAdminCredential <Credential>
 ```
 
-## Parameters
+### Parameters
 
 The following parameters can be used with the `Add-server` command:
 
@@ -46,4 +50,8 @@ You can also see the zone and node information in the Azure portal:
 
 :::image type="content" source="media/rack-aware-cluster-add-server/add-server-portal.png" alt-text="Screenshot in Azure portal showing server added." lightbox="media/rack-aware-cluster-add-server/add-server-portal.png":::
 
-## Next steps
+## Repair a server
+
+You can repair nodes in your Azure Local Rack Aware Cluster. You may need to repair a node in your system if there is a hardware failure. For more information, see [Repair a node on Azure Local](../manage/repair-server.md).
+
+
