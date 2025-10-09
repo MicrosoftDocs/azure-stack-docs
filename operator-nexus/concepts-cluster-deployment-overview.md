@@ -18,7 +18,7 @@ During the cluster deployment, cluster undergoes various lifecycle phases, which
 
 ### Hardware Validation phase:
 
-Hardware Validation is initiated during the cluster deployment process, assessing the state of hardware components for the machines provided through the Cluster's rack definition. Based on the results of these checks and any user skipped machines, a determination is done on whether sufficient nodes passed and/or are available to meet the thresholds necessary for deployment to continue.
+Hardware Validation (HWV) is initiated during the cluster deployment process. Cluster deployment HWV involves a machine pre deployment check. HWV assesses the state of hardware components for the machines provided through the Cluster's rack definition. Based on the results of these checks and any user skipped machines, a determination is done on whether sufficient nodes passed and/or are available to meet the thresholds necessary for deployment to continue. HWV results for a given server are written into the Log Analytics Workspace (LAW), which is provided as part of the cluster creation.
 
 > **Note:**  
 > Hardware validation thresholds are enforced for various node types to ensure reliable cluster operation:
@@ -27,22 +27,17 @@ Hardware Validation is initiated during the cluster deployment process, assessin
 > - **NMP nodes:** These are grouped into two management groups, with each group required to meet a 50% hardware validation success rate.
 > - **Compute nodes:** Must meet the thresholds specified by the deployment input.
 
-Hardware validation results for a given server are written into the Log Analytics Workspace(LAW), which is provided as part of the cluster creation. The results include the following categories:
-- system_info
-- drive_info
-- network_info
-- health_info
-- boot_info
+This article provides an overview of the HWV process [Hardware Validation Overview](concepts-hardware-validataion-overview.md)
 
-This article provides instructions on how to check hardware results information [Troubleshoot Hardware validation](troubleshoot-hardware-validation-failure.md)
+This article provides instructions on how to check and troubleshoot HWV results [Troubleshoot Hardware Validation](troubleshoot-hardware-validation-failure.md)
 
 ### Bootstrap phase:
 
-Once the Hardware Validation is successful and the thresholds necessary for deployment to continue are met, bootstrap image is generated for cluster deploy action on the cluster manager. This image iso URL is used to bootstrap the ephemeral node, which would deploy the target cluster components, which are provisioning the kubernetes control plane (KCP), Nexus Management plane (NMP), and storage appliance. These various states are reflected in the cluster status, which these stages are executed as part of the ephemeral bootstrap workflow.
+Once hardware validation is successful and deployment thresholds are met, a bootstrap image is generated on the cluster manager to initiate cluster deployment. This image iso URL is used to bootstrap the ephemeral node, which would deploy the target cluster components, which are provisioning the kubernetes control plane (KCP), Nexus Management plane (NMP), and storage appliance. These various states are reflected in the cluster status, which these stages are executed as part of the ephemeral bootstrap workflow.
 
-The ephemeral bootstrap node sequentially provisions each KCP node, and if a KCP node fails to provision, the cluster deployment action fails, marking the cluster status as failed. The Bootstrap operator manages the provisioning process for bare-metal nodes using the PXE boot approach.
+The ephemeral bootstrap node sequentially provisions each KCP node, and if a KCP node fails to provision, the cluster deployment action fails, marking the cluster status as failed. The Bootstrap operator manages the provisioning process for bare-metal nodes using the Preboot Execution Environment (PXE) boot approach.
 
-Once KCP nodes are successfully provisioned, the deployment action proceeds to provision NMP nodes in parallel. Each management group must achieve at least a 50% provisioning success rate. If this requirement is not met, the cluster deployment action fails, resulting in the cluster status being marked as failed.
+Once KCP nodes are successfully provisioned, the deployment action proceeds to provision NMP nodes in parallel. Each management group must achieve at least a 50% provisioning success rate. If this requirement isn't met, the cluster deployment action fails, resulting in the cluster status being marked as failed.
 
 Upon successful provisioning of NMP nodes, up to two storage appliances are created before the deployment action proceeds with provisioning the compute nodes. Compute nodes are provisioned in parallel, and once the defined compute node threshold is met, the cluster status transitions from Deploying to Running. However, the remaining nodes continue undergoing the provisioning process until they too are successfully provisioned.
 
