@@ -603,6 +603,9 @@ The following roles are available for filtering by the **FilterByRole** paramete
 
 ---
 
+> [!NOTE]
+> After you initiate log collection, status updates may take up to five minutes. This is expected behavior.
+
 ## Provide required information in a support case
 
 If you encounter an issue and need help from Microsoft Support, they might ask for specific information to locate your logs.
@@ -629,6 +632,7 @@ When requested, share the following information with Microsoft Support. Get this
 - `CorrelationId`: A unique identifier to locate the logs.
 
 ---
+
 
 ## Next steps
 
