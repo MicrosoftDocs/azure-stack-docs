@@ -604,7 +604,7 @@ The following roles are available for filtering by the **FilterByRole** paramete
 ---
 
 > [!NOTE]
-> After you initiate log collection, status updates may take up to five minutes. This is expected behavior.
+> After you start log collection, status updates can take up to five minutes to appear. This is expected behavior.
 
 ## Provide required information in a support case
 
