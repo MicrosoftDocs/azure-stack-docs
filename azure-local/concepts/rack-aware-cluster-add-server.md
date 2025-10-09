@@ -44,8 +44,23 @@ If you are adding nodes ["Node1", "Node2"] and Node1 is in ZoneA, and Node2 is i
 
 To validate that the nodes were added successfully, run the `Get-ClusterFaultDomain` command. You should see the two nodes are listed and added to the correct zone.
 
-:::image type="content" source="media/rack-aware-cluster-add-server/add-server-output.png" alt-text="Screenshot of output showing server added." lightbox="media/rack-aware-cluster-add-server/add-server-output.png":::
+```output
+[<IP address>]: PS C:\> Get ClusterFaultDomain
 
+Name                    Type      ParentName            ChildrenNames   Location
+----                    ----      ----------            -------------   --------
+Site <IP address>/24	Site                            {Zone1, Zone2}
+Zone1	                Rack	  Site <IP address>/24	{ASRRR15, ASRRR16, ASRRR17, ASRRR18}	
+Zone2	                Rack	  Site <IP address>/24	{ASRRR25, ASRRR26, ASRRR27, ASRRR28}
+ASRRR15       	        Node	  Zone1
+ASRRR16	                Node	  Zone1
+ASRRR17	                Node	  Zone1
+ASRRR18	                Node	  Zone1
+ASRRR25	                Node	  Zone2
+ASRRR26	                Node	  Zone2
+ASRRR27	                Node	  Zone2
+ASRRR28	                Node	  Zone2
+```
 You can also see the zone and node information in the Azure portal:
 
 :::image type="content" source="media/rack-aware-cluster-add-server/add-server-portal.png" alt-text="Screenshot in Azure portal showing server added." lightbox="media/rack-aware-cluster-add-server/add-server-portal.png":::
