@@ -179,7 +179,7 @@ Servers contain many physical components that can fail over time. It's important
 
 A hardware validation process is invoked to ensure the integrity of the physical host in advance of deploying the OS image.
 
-This article provides an overview of the hardware validation process [Hardware Validation Overview](concepts-hardware-validataion-overview.md)
+This article provides an overview of the hardware validation process [Hardware Validation Overview](concepts-hardware-validation-overview.md)
 
 This article provides instructions on how to check and troubleshoot hardware validation results [Troubleshoot Hardware Validation](troubleshoot-hardware-validation-failure.md)
 

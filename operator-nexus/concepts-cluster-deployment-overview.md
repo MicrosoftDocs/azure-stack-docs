@@ -29,7 +29,7 @@ Based on the results of these HWV checks and any user skipped machines, a determ
 > - **NMP nodes:** These are grouped into two management groups, with each group required to meet a 50% hardware validation success rate.
 > - **Compute nodes:** Must meet the thresholds specified by the deployment input.
 
-This article provides a detailed overview of the HWV process [Hardware Validation Overview](concepts-hardware-validataion-overview.md)
+This article provides a detailed overview of the HWV process [Hardware Validation Overview](concepts-hardware-validation-overview.md)
 
 This article provides instructions on how to check and troubleshoot HWV results [Troubleshoot Hardware Validation](troubleshoot-hardware-validation-failure.md)
 
