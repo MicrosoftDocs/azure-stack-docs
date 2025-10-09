@@ -601,10 +601,10 @@ The following roles are available for filtering by the **FilterByRole** paramete
 | TestObservability | Collects logs from the `Test-Observability` cmdlet, which is used to test that the `TelemetryAndDiagnostics` extension is working properly. |
 | URP | Consists of logs related to the `UpdateService` and `OsUpdate` ECE role events. The `Update Service` manages updates for Azure Local. The `OsUpdate` ECE role is used to acquire and install operating system updates on machines (physical hosts and InfraVMs) which aren't part of the system during the deployment, add node, repair node, and Infra VMs update scenarios. Traces from these two components are part of the `URP` role. |
 
+---
+
 > [!NOTE]
 > After you start log collection, status updates can take up to five minutes to appear. This is expected behavior.
-
----
 
 ## Provide required information in a support case
 
