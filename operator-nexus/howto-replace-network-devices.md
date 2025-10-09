@@ -120,7 +120,7 @@ This action performs the following tasks:
 - Keeps the device in `Disabled` state and Fabric Administrative State in `EnabledDegraded`
 
 > [!Note]
-> The expected format for the serial number should be: `<Manufacturer;Model;HW Version;Serial Number>`<br>
+> The expected format for the serial number should be: `<Manufacturer;Model;Hardware Version;Serial Number>`<br>
 > For example, `"Arista;DCS-7280DR3-XX;12.05;ABC23XXXXXX"`
 
 ### Step 3: Ensure device is in ZTP Mode
