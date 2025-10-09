@@ -272,20 +272,71 @@ Tooling support in Azure Local environments configured with Azure Key Vault for 
 
 This section provides answers to some frequently asked questions about using local identity with Key Vault.
 
-### What to do if the Azure Key Vault Backup Secrets extension gets deleted?
+### What should I do if the Azure Key Vault Backup Secrets extension is deleted?
 
 The Azure Key Vault Backup Secrets extension is an Azure-managed extension, meaning you don't need to install or uninstall it manually. However, if the extension is deleted or becomes unavailable, follow these mitigation steps:
 
 1. Do not attempt to reinstall the extension manually.
-This extension requires specific configurations that are only applied by the Azure Local Resource Provider (RP). To restore the extension, trigger a synchronization from the cluster by running the following command:
+
+    This extension requires specific configurations that are only applied by the Azure Local Resource Provider (*Microsoft.AzureStackHCI Resource Provider*). To restore the extension, trigger a synchronization from the cluster by running the following command:
 
     <!--Add command here-->
 
-This command instructs the HCI Resource Provider to reconcile the extension and reinstall any missing components with the correct configuration.
+    This command instructs the Resource Provider to reconcile the extension and reinstall any missing components with the correct configuration.
 
+    > [!NOTE]
+    > Clusters automatically sync with the cloud every hour. If no manual action is taken, the issue will self-resolve within an hour. Whether you initiate the operation from the Azure portal or directly on the cluster node, the same mitigation steps apply.
 
-Note: Clusters automatically sync with the cloud every hour. If no manual action is taken, the issue will self-resolve within an hour.
-Whether you initiate the operation from the Azure portal or directly on the cluster node, the same mitigation steps apply.
+### What should I do if the Azure Key Vault Backup Secrets extension didn't install during deployment?
+
+If the extension was not installed during deployment, you can manually install it on Arc-enabled servers by following these steps:
+
+1. Create a new Azure Key Vault if you don’t already have one. For instructions, see [Quickstart: Create a key vault using the Azure portal](/key-vault/general/quick-create-portal).
+
+1. In the Key Vault page, navigate to **Access control (IAM)** > **Add role assignment**.
+
+    :::image type="content" source="media/deployment-local-identity-with-key-vault/key-vault-secret-extension-install-1.png" alt-text="Screenshot of the Access control (IAM) page highlighting the Add role assignment option." lightbox="media/deployment-local-identity-with-key-vault/key-vault-secret-extension-install-1.png":::
+
+1. On the **Add role assignment** page, under the **Role** tab, select **Key Vault Secrets Officer**, and then select **Next**.
+
+    :::image type="content" source="media/deployment-local-identity-with-key-vault/key-vault-secret-extension-install-2.png" alt-text="Screenshot of the Add role assignment page highlighting the Key Vault Secrets Officer option." lightbox="media/deployment-local-identity-with-key-vault/key-vault-secret-extension-install-2.png":::
+
+1. On the **Members** tab, select **Managed identity** and add the Azure Local cluster as a member.
+
+    :::image type="content" source="media/deployment-local-identity-with-key-vault/key-vault-secret-extension-install-3.png" alt-text="Screenshot of the Members tab on the Add role assignment page, showing the Azure Local cluster being added as a member." lightbox="media/deployment-local-identity-with-key-vault/key-vault-secret-extension-install-3.png":::
+
+1. Select **Review + assign** and confirm the role assignment.
+
+    :::image type="content" source="media/deployment-local-identity-with-key-vault/key-vault-secret-extension-install-4.png" alt-text="Screenshot of the Review + assign tab." lightbox="media/deployment-local-identity-with-key-vault/key-vault-secret-extension-install-4.png":::
+ 
+1.	Verify that the role assignment is applied successfully.
+ 
+7.	Go to your Azure Local cluster and note the Arc machine names.
+ 
+8.	Run the following PowerShell script to install the extension on Arc machines:
+
+```powershell
+# Login to Azure
+Connect-AzAccount
+
+$ResourceGroup = "<Resource Group>"
+$ResourceLocation = "<Location>"
+$KeyVaultUri = "<URL of Azure Key Vault>"
+$ArcMachines = @("v-host1", "v-host2", "v-host3", "v-host4")
+
+foreach ($MachineName in $ArcMachines) {
+New-AzConnectedMachineExtension `
+-Name AzureEdgeAKVBackupForWindows `
+-ResourceGroupName $ResourceGroup `
+-Location $ResourceLocation `
+-MachineName $MachineName `
+-Publisher Microsoft.Edge.Backup `
+-ExtensionType AKVBackupForWindows `
+-Setting @{KeyVaultUrl = $KeyVaultUri; UseClusterIdentity = $true}
+}
+```
+
+1. Confirm the extension status in the Azure portal.
 
 
 ## Next steps
