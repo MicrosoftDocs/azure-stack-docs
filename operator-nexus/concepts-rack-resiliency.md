@@ -88,6 +88,8 @@ In the Azure portal, navigate to your Nexus cluster's bare metal machines, from 
 - Detailed status: Available
 - Machine roles: control-plane
 
+![Compute spare control plane node](media/compute-spare-control.png)
+
 #### Azure CLI
 
 Use the following command to list control plane nodes and identify the spare:
@@ -99,11 +101,7 @@ az networkcloud baremetalmachine list \
   --output table
 ```
 
-#### Azure Portal
-
 You can identify the spare node by looking for these attributes: `powerState: Off`, `detailedStatus: Available`, and `machineRoles: control-plane`.
-
-![Compute spare control plane node](media/compute-spare-control.png)
 
 ### Spare node provisioning and lifecycle
 
