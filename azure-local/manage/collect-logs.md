@@ -80,6 +80,9 @@ Follow these steps to collect diagnostic logs for your Azure Local instance via 
 
    :::image type="content" source="./media/collect-logs/log-details-pane.png" alt-text="Screenshot shows the Log details pane." lightbox="./media/collect-logs/log-details-pane.png" :::
 
+> [!NOTE]
+> In the Portal, after you start log collection, status updates can take up to five minutes to appear. This is expected behavior.
+
 ## [PowerShell](#tab/powershell)
 
 To use PowerShell for log collection, run the `Send-DiagnosticData` cmdlet from any node within the Azure Local instance. This cmdlet temporarily copies the logs locally. The copied logs are parsed, sent to Microsoft, and then deleted from your system.
@@ -602,9 +605,6 @@ The following roles are available for filtering by the **FilterByRole** paramete
 | URP | Consists of logs related to the `UpdateService` and `OsUpdate` ECE role events. The `Update Service` manages updates for Azure Local. The `OsUpdate` ECE role is used to acquire and install operating system updates on machines (physical hosts and InfraVMs) which aren't part of the system during the deployment, add node, repair node, and Infra VMs update scenarios. Traces from these two components are part of the `URP` role. |
 
 ---
-
-> [!NOTE]
-> After you start log collection, status updates can take up to five minutes to appear. This is expected behavior.
 
 ## Provide required information in a support case
 
