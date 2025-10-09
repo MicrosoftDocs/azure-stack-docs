@@ -56,7 +56,7 @@ Keep in mind the following information before you start log collection:
 - Attempting multiple log collections simultaneously will result in a failure.
 - If your cluster runs a build earlier than 2510, the portal shows a banner that says the `DeviceManagementExtension` extension is outdated and disables the **Send Logs** button. To enable log collection, upgrade your cluster to build 2510 or later.
 
-   :::image type="content" source="./media/collect-logs/device-management-extension-disabled-logs.png" alt-text="Screenshot shows the banner message and the send logs button disabled." lightbox="./media/collect-logs/device-management-extension-disabled-logs.png" :::
+   :::image type="content" source="./media/collect-logs/device-management-extension-disabled-logs.png" alt-text="Screenshot that shows the banner message and disabled send logs button." lightbox="./media/collect-logs/device-management-extension-disabled-logs.png" :::
 
 ### [Azure portal (recommended)](#tab/azureportal)
 
