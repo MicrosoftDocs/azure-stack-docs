@@ -54,15 +54,9 @@ Keep in mind the following information before you start log collection:
 - The time required for log collection depends on the time range you specify. The longer the time range, the more time it'll take for log collection. Therefore, we recommend limiting the time range to only the logs you need.
 - Log collections longer than 24 hours aren't supported.
 - Attempting multiple log collections simultaneously will result in a failure.
-- Make sure the `DeviceManagementExtension` version is **1.2510.0.3012 and later**. If it's not, update the connected machine extension on all nodes to ensure compatibility, consistency, and successful log collection. Use the following command.
+- If your cluster runs a build earlier than 2510, the portal shows a banner that says the `DeviceManagementExtension` extension is outdated and disables the **Send Logs** button. To enable log collection, upgrade your cluster to build 2510 or later.
 
-  - Make sure you replace the extension name and version with the appropriate values for your environment.
-
-      ```powershell
-      $target = @{"Microsoft.Compute.CustomScriptExtension" = @{"targetVersion"="1.10.12"}} Update-AzConnectedExtension -ResourceGroupName $env.ResourceGroupName -MachineName $machineName -ExtensionTarget $target
-      ```
-
-  For more information about updating the connected machine extension, see [Update-AzConnectedExtension](/powershell/module/az.connectedmachine/update-azconnectedextension?view=azps-12.5.0&preserve-view=true).
+   :::image type="content" source="./media/collect-logs/device-management-extension-disabled-logs.png" alt-text="Screenshot shows the banner message and the send logs button disabled." lightbox="./media/collect-logs/device-management-extension-disabled-logs.png" :::
 
 ### [Azure portal (recommended)](#tab/azureportal)
 
