@@ -63,7 +63,7 @@ Once the network security group is created, you can associate it to the unique s
 
 ## Configure network security group rules
 
-It's important to follow the minimum provided guidelines when you configure your network security group. Proper network security group configuration enables Azure Managed Lustre to operate essential services like the Lustre protocol, engineering and diagnostic support, Azure Blob storage, and security monitoring. Disabling any of these essential services may lead to a degraded product and support experience.
+It's important to follow the minimum provided guidelines when you configure your network security group. Proper network security group configuration enables Azure Managed Lustre to operate essential services like the Lustre protocol, engineering and diagnostic support, Azure Blob storage, and security monitoring. Disabling any of these essential services might lead to a degraded product and support experience.
 
 To configure network security group rules for Azure Managed Lustre file system support, add inbound and outbound security rules to the network security group associated with the  Azure Managed Lustre subnet. The following sections describe how to create and configure the inbound and outbound security rules that allow Azure Managed Lustre file system support.
 
@@ -111,7 +111,7 @@ Add the following outbound rules and network service tags to the network securit
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | 100 | *rule-name* | 443 | TCP | `VirtualNetwork` | `AzureMonitor` | Allow | Allow the AzureMonitor service to report health or and security issues diagnosed with the Azure Managed Lustre service hosts. |
 | 101 | *rule-name* | 443 | TCP | `VirtualNetwork` | `AzureKeyVault.EastUS` | Allow | Allow access to AzureKeyVault, which the service uses to store essential security secrets needed for basic operation and storage access. |
-| 102 | *rule-name* | 443 | TCP | `VirtualNetwork` | `AzureActiveDirectory` | Allow | Allow access to AzureActiveDirectory required for the secure Entra ID service used during deployment and support activities. |
+| 102 | *rule-name* | 443 | TCP | `VirtualNetwork` | `AzureActiveDirectory` | Allow | Allow access to AzureActiveDirectory required for the secure Microsoft Entra ID service used during deployment and support activities. |
 | 103 | *rule-name* | 443 | TCP | `VirtualNetwork` | `Storage.EastUS` | Allow | Allow access to Storage account endpoints that are required for Lustre HSM, system health signals, and other communication flows to the Azure Managed Lustre Resource Provider. |
 | 104 | *rule-name* | 443 | TCP | `VirtualNetwork` | `GuestAndHybridManagement` | Allow | Allow access to GuestAndHybridManagement so the service can utilize Azure Log Analytics for supportability workflows. |
 | 105 | *rule-name* | 443 | TCP | `VirtualNetwork` | `ApiManagement.EastUS` | Allow | Allow access to ApiManagement for security and performance of Azure Managed Lustre’s interactions with other services. |

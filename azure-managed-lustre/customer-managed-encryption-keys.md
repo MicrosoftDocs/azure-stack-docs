@@ -29,7 +29,7 @@ After you create the file system, you can't change between customer-managed keys
 
 ## Prerequisites
 
-You can use either a pre-existing key vault and key, or you can create new ones to use with Azure Managed Lustre. See the following required settings to ensure you have a properly configured key vault and key.
+You can use either a preexisting key vault and key, or you can create new ones to use with Azure Managed Lustre. See the following required settings to ensure you have a properly configured key vault and key.
 
 ### Create a key vault and key
 
@@ -56,12 +56,12 @@ Networking:
 - **Public Access** - Must be enabled.
 - **Allow Access** - Select either **All networks** or, if you need to restrict access, select **Selected networks**
 
-  - If **Selected networks** is chosen, you must enable the **Allow trusted Microsoft services to bypass this firewall** option in the **Exception** section below.
+  - If **Selected networks** is chosen, you must enable the **Allow trusted Microsoft services to bypass this firewall** option in the **Exception** section.
 
 :::image type="content" source="./media/customer-managed-encryption-keys/keyvault-network-config.png" alt-text="Screenshot showing how to restrict key vault access to selected networks, while allowing access to trusted Microsoft services." lightbox="./media/customer-managed-encryption-keys/keyvault-network-config.png":::
 
 > [!NOTE]
-> If you are using an existing key vault, you can review the network settings section to confirm that **Allow access from** is set to **Allow public access from all networks**, or make changes if necessary.
+> If you're using an existing key vault, you can review the network settings section to confirm that **Allow access from** is set to **Allow public access from all networks**, or make changes if necessary.
 
 #### Key properties
 
@@ -81,16 +81,14 @@ Learn more [Azure Key Vault basics](/azure/key-vault/general/basic-concepts).
 
 The Azure Managed Lustre file system needs a user-assigned managed identity to access the key vault.
 
-Managed identities are standalone identity credentials that take the place of user identities when accessing Azure services through Microsoft Entra ID. Like other users, they can be assigned roles and permissions. [Learn more about managed identities](/azure/active-directory/managed-identities-azure-resources/).
+Managed identities are standalone identity credentials that take the place of user identities when a user accesses Azure services through Microsoft Entra ID. Like user identities, managed identities can be assigned roles and permissions. [Learn more about managed identities](/azure/active-directory/managed-identities-azure-resources/).
 
 Create this identity before you create the file system, and give it access to the key vault.
 
 > [!NOTE]
-> If you supply a managed identity that can't access the key vault, you won't be able to create the file system.
+> If you supply a managed identity that can't access the key vault, you can't create the file system.
 
-For more information, see the managed identities documentation:
-
-- [Create a user-assigned managed identity](/azure/active-directory/managed-identities-azure-resources/how-manage-user-assigned-managed-identities)
+For more information, see [Create a user-assigned managed identity](/azure/active-directory/managed-identities-azure-resources/how-manage-user-assigned-managed-identities).
 
 ## Create the Azure Managed Lustre file system with customer-managed encryption keys
 
@@ -104,7 +102,7 @@ Remember that you can only set up customer managed keys at creation time. You ca
 
 Select the link in **Customer Key settings** to select the key vault, key, and version settings. You can also create a new Azure Key Vault from this page. If you create a new key vault, remember to give your managed identity access to it.
 
-If your Azure Key Vault doesn't appear in the list, check these requirements:
+If your key vault doesn't appear in the list, check these requirements:
 
 - Is the file system in the same subscription as the key vault?
 - Is the file system in the same region as the key vault?
