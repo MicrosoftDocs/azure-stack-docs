@@ -136,6 +136,9 @@ The table below compares the product pricing for Azure Local and Windows Server.
 | Evaluation/trial period | 60-day free trial once registered | 180-day evaluation copy |
 | Channels | Enterprise agreement, cloud service provider, or direct | Enterprise agreement/volume licensing, OEM, services provider license agreement (SPLA) |
 
+
+[!INCLUDE [aks-include-test](../../AKS-Arc/includes/built-in-roles.md)]
+
 ## Next steps
 
 - [Evaluate Azure Local](../deploy/deployment-virtual.md).
