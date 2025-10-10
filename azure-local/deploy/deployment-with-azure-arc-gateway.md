@@ -89,7 +89,7 @@ This article details how to register Azure Local using Azure Arc gateway and wit
 ## Step 3: Run registration script
 
 > [!NOTE]
-> Skip this step if your Azure Local system is preinstalled with an Original Equipment Manufacturer (OEM) image. Instead, follow the instructions in [Azure Arc registration workflow for systems with OEM images](./deployment-arc-registration-preinstalled-os.md).
+> If your Azure Local system is preinstalled with an Original Equipment Manufacturer (OEM) image that's outdated or unsupported, an update is triggered automatically. The update typically takes 40-45 minutes to complete and includes a system reboot. After the reboot, rerun the cmdlet to continue. For more instructions about the update flow, see [Azure Arc registration workflow for systems with OEM images](./deployment-arc-registration-preinstalled-os.md).
 
 1. Run the Arc registration script. The script takes a few minutes to run.
 
@@ -333,7 +333,7 @@ $ArcgwId = "/subscriptions/yourarcgatewayid/resourceGroups/yourresourcegroupname
 ## Step 3: Run the registration script
 
 > [!NOTE]
-> Skip this step if your Azure Local system is preinstalled with an Original Equipment Manufacturer (OEM) image. Instead, follow the instructions in [Azure Arc registration workflow for systems with OEM images](./deployment-arc-registration-preinstalled-os.md).
+> If your Azure Local system is preinstalled with an Original Equipment Manufacturer (OEM) image that's outdated or unsupported, an update is triggered automatically. The update typically takes 40-45 minutes to complete and includes a system reboot. After the reboot, rerun the cmdlet to continue. For more instructions about the update flow, see [Azure Arc registration workflow for systems with OEM images](./deployment-arc-registration-preinstalled-os.md).
 
 To use the Arc gateway feature for Azure Local systems without a proxy, only use the `ArcGatewayID` parameter.
 
