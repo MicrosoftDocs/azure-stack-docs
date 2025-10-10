@@ -206,10 +206,10 @@ Follow these steps to update the backup configuration to use a new Key Vault:
         Invoke-AzRestMethod -Path "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/updateSecretsLocations" -Method POST -Payload { 
         "properties": { 
         "secretsType": "BackupSecrets",
-        "secretsLocation": "https://hcikeyvaulttestingnew.vault.azure.net/"
-        }
+        "secretsLocation": "https://hcikeyvaulttestingnew.vault.azure.net/"   }
         }
         response: 200 OK
+        ```
 
 1. Validate configuration. In the Azure portal, open the system resource and verify that **Resource JSON** includes the updated Key Vault details.
 
