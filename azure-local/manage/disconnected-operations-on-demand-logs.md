@@ -27,8 +27,8 @@ Log collection helps you diagnose and troubleshoot issues in Azure Local disconn
 
 Before you set up observability for your Azure Local appliance, make sure you:
 
-- [Deploy Disconnected Operations for Azure Local (preview)](disconnected-operations-deploy.md).
-- [Set up observability for diagnostics and support](#set-up-observability-for-diagnostics-and-support).
+- [Deploy Disconnected Operations for Azure Local (preview)](disconnected-operations-deploy.md)
+- [Set up observability for diagnostics and support](#set-up-observability-for-diagnostics-and-support)
 - Have enough disk space for both compressed and uncompressed logs when you upload with diagnostic tools. The required space depends on the log size.
   - For typical log collection, keep at least 20 GB of free space.
   - For larger log bundles, such as those from an Azure Local appliance, compressed logs can exceed 25 GB, and uncompressed logs can be even larger because of extra metadata and processing.
