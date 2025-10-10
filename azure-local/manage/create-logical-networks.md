@@ -127,7 +127,7 @@ Create a static logical network when you want to create Azure Local VMs with net
     > [!NOTE]
     > For the default VM switch created at the deployment, pass the name string encased in double quotes followed by single quotes. For example, a default VM switch ConvergedSwitch(management_compute_storage) is passed as '"ConvergedSwitch(management_compute_storage)"'.
 
-    For static IP, the *required* parameters are tabulated as follows:
+    For static IP, the *required* parameters are tabulated as follows. Contact your network admin to get networking specific input parameters in the table below:
 
     | Parameters | Description |
     |------------|-------------|
@@ -137,7 +137,7 @@ Create a static logical network when you want to create Azure Local VMs with net
     | **subscription** |Name or ID of the subscription where your Azure Local is deployed. This could be another subscription you use for logical network on your Azure Local. |
     | **custom-location** | Use this to provide the custom location associated with your Azure Local where you're creating this logical network. |
     | **location** | Azure regions as specified by `az locations`. |
-    | **vlan** | VLAN identifier for Azure Local VMs. Contact your network admin to get this value. If no VLAN ID is specified, the logical network (LNET) is created with a default VLAN ID of 0. In this configuration, the Azure Local VM sends untagged network traffic, which the physical switch maps to its default VLAN.<br>**Note**: Outbound traffic from the VM, such as internet-bound packets, may be dropped if a default VLAN isn’t configured on the physical switch to handle untagged traffic. |
+    | **vlan** | VLAN identifier for Azure Local VMs. If no VLAN ID is specified, the logical network (LNET) is created with a default VLAN ID of 0. In this configuration, the Azure Local VM sends untagged network traffic, which the physical switch maps to its default VLAN.<br>**Note**: Outbound traffic from the VM, such as internet-bound packets, may be dropped if a default VLAN isn’t configured on the physical switch to handle untagged traffic. |
     | **ip-allocation-method** | IP address allocation method and could be `Dynamic` or `Static`. If this parameter isn't specified, by default the logical network is created with a dynamic configuration. |
     | **address-prefixes** | Subnet address in CIDR notation. For example: "192.168.0.0/16". |
     | **dns-servers** | List of IPv4 addresses of DNS servers. Specify multiple DNS servers in a space separated format. For example: "10.0.0.5" "10.0.0.10" |
@@ -241,7 +241,7 @@ Follow these steps to configure a DHCP logical network:
     > [!NOTE]
     > For the default VM switch created at the deployment, pass the name string encased in double quotes followed by single quotes. For example, a default VM switch ConvergedSwitch(management_compute_storage) is passed as '"ConvergedSwitch(management_compute_storage)"'.
     
-    Here are the parameters that are *required* to create a DHCP logical network. Contact your network admin to get networking specific input parameters in the table below.
+    Here are the parameters that are *required* to create a DHCP logical network. Contact your network admin to get networking specific input parameters in the table below:
 
     | Parameters | Description |
     |--|--|
