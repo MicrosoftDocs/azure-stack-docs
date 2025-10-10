@@ -79,7 +79,6 @@ You can create a logical network using either the Azure Command-Line Interface (
 > [!NOTE]
 > Once a logical network is created, you can't update the following:
 >
-> - DNS server
 > - Default gateway
 > - IP pools
 > - IP address space
@@ -122,6 +121,7 @@ Create a static logical network when you want to create Azure Local VMs with net
     $addressPrefixes = "100.68.180.0/28"
     $gateway = "192.168.200.1"
     $dnsServers = "192.168.200.222"
+    $vlan = "201"
     ```
 
     > [!NOTE]
@@ -137,20 +137,20 @@ Create a static logical network when you want to create Azure Local VMs with net
     | **subscription** |Name or ID of the subscription where your Azure Local is deployed. This could be another subscription you use for logical network on your Azure Local. |
     | **custom-location** | Use this to provide the custom location associated with your Azure Local where you're creating this logical network. |
     | **location** | Azure regions as specified by `az locations`. |
-    | **vlan** |VLAN identifier for Azure Local VMs. Contact your network admin to get this value. A value of 0 implies that there's no VLAN ID. |
+    | **vlan** | VLAN identifier for Azure Local VMs. Contact your network admin to get this value. If no VLAN ID is specified, the logical network (LNET) is created with a default VLAN ID of 0. In this configuration, the Azure Local VM sends untagged network traffic, which the physical switch maps to its default VLAN.<br>**Note**: Outbound traffic from the VM, such as internet-bound packets, may be dropped if a default VLAN isn’t configured on the physical switch to handle untagged traffic. |
     | **ip-allocation-method** | IP address allocation method and could be `Dynamic` or `Static`. If this parameter isn't specified, by default the logical network is created with a dynamic configuration. |
     | **address-prefixes** | Subnet address in CIDR notation. For example: "192.168.0.0/16". |
     | **dns-servers** | List of IPv4 addresses of DNS servers. Specify multiple DNS servers in a space separated format. For example: "10.0.0.5" "10.0.0.10" |
     | **gateway** | Ipv4 address of the default gateway. |
 
     > [!NOTE]
-    > DNS server and gateway must be specified if you're creating a static logical network.
+    > DNS server, gateway, and VLAN ID must be specified if you're creating a static logical network.
  
 
 1. Create a static logical network. Run the following cmdlet:
 
     ```azurecli
-    az stack-hci-vm network lnet create --subscription $subscription --resource-group $resource_group --custom-location $customLocationID --location $location --name $lnetName --vm-switch-name $vmSwitchName --ip-allocation-method "Static" --address-prefixes $addressPrefixes --gateway $gateway --dns-servers $dnsServers     
+    az stack-hci-vm network lnet create --subscription $subscription --resource-group $resource_group --custom-location $customLocationID --location $location --name $lnetName --vm-switch-name $vmSwitchName --ip-allocation-method "Static" --address-prefixes $addressPrefixes --gateway $gateway --dns-servers $dnsServers --vlan $vlan
     ```
 
     Here's a sample output:
