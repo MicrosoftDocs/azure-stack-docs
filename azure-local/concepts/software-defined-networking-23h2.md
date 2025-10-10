@@ -1,14 +1,14 @@
 ---
-title: Software defined networking (SDN) in Azure Local, version 23H2
-description: Software defined networking (SDN) provides a way to centrally configure and manage networks and network services such as switching, routing, and load balancing in Azure Local.
+title: Software defined networking (SDN) managed by on-premises tools in Azure Local, version 23H2
+description: Software defined networking (SDN) managed by on-premises tools provides a way to centrally configure and manage networks and network services such as switching, routing, and load balancing in Azure Local.
 author: AnirbanPaul
 ms.author: anpaul
 ms.topic: article
 ms.service: azure-local
-ms.date: 06/03/2025
+ms.date: 09/05/2025
 ---
 
-# Software Defined Networking (SDN) in Azure Local
+# Software Defined Networking (SDN) managed by on-premises tools in Azure Local
 
 > Applies to: Azure Local 2311.2 and later; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
@@ -17,6 +17,10 @@ Software defined networking (SDN) provides a way to centrally configure and mana
 Virtual network elements such as [Hyper-V Virtual Switch](/windows-server/virtualization/hyper-v-virtual-switch/hyper-v-virtual-switch), [Hyper-V Network Virtualization](/windows-server/networking/sdn/technologies/hyper-v-network-virtualization/hyper-v-network-virtualization), [Software Load Balancing](/windows-server/networking/sdn/technologies/network-function-virtualization/software-load-balancing-for-sdn), and [RAS Gateway](/windows-server/networking/sdn/technologies/network-function-virtualization/ras-gateway-for-sdn) are designed to be integral elements of your SDN infrastructure. You can also use your existing SDN-compatible devices to achieve deeper integration between your workloads running in virtual networks and the physical network.
 
 There are three major SDN components, and you can choose which you want to deploy: Network Controller, Software Load Balancer, and Gateway.
+
+You can manage SDN on Azure Local in two ways: with Azure Arc or with on-premises tools. This article provides an overview of SDN managed by on-premises tools.
+
+For details on SDN enabled by Azure Arc and a comparison of both management methods, see [Software Defined Networking enabled by Azure Arc on Azure Local (preview)](./sdn-overview.md).
 
 ## Network Controller
 
