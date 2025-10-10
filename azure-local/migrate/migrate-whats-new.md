@@ -4,13 +4,21 @@ description: Learn about new features in Azure Migrate for Azure Local.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 09/29/2025
+ms.date: 10/09/2025
 ms.service: azure-local
 ---
 
 # What's new in Azure Migrate for Azure Local
 
 This article lists the various features and improvements that are available in virtual machine (VM) migration to Azure Local.
+
+## August 2025
+
+This release includes these features and improvements:
+
+- **Tag updates for Data Replication Vault** – You can now correctly create and update tags for the Azure Migrate Data Replication Vault resource in Azure portal. This improves organization, tag-based policies, and automation.
+
+- **Azure portal UX improvements** – Fixed a set of minor issues across Azure Migrate blades for Azure Local to make replication and migration flows smoother and more reliable.
 
 ## July 2025
 
