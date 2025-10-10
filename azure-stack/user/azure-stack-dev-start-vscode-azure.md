@@ -125,7 +125,7 @@ The Azure Stack Hub Resource Manager is a management framework that allows you t
 | Azure: Sign In to Azure Cloud | Sign in to your Azure subscription in one of the sovereign clouds. |
 | Azure: Sign Out | Sign out of your Azure subscription. |
 | Azure: Select Subscriptions | Pick the set of subscriptions you want to work with. The extension only shows resources within the filtered subscriptions. |
-| Azure: Create an Account | If you don't have an Azure Account, you can [sign up](https://azure.microsoft.com/free/?utm_source=campaign&utm_campaign=vscode-azure-account&mktingSource=vscode-azure-account) for one today and receive \$200 in free credits. |
+| Azure: Create an Account | If you don't have an Azure Account, you can [sign up](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) for one today and receive \$200 in free credits. |
 | Azure: Open Bash in Cloud Shell | Open a new terminal running Bash in Cloud Shell. |
 | Azure: Open PowerShell in Cloud Shell | Open a new terminal running PowerShell in Cloud Shell. |
 | Azure: Upload to Cloud Shell | Upload a file to your Cloud Shell storage account. |
