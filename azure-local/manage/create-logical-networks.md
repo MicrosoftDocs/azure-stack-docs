@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 04/09/2025
+ms.date: 10/10/2025
 ms.custom: sfi-image-nochange
 ---
 
@@ -241,7 +241,7 @@ Follow these steps to configure a DHCP logical network:
     > [!NOTE]
     > For the default VM switch created at the deployment, pass the name string encased in double quotes followed by single quotes. For example, a default VM switch ConvergedSwitch(management_compute_storage) is passed as '"ConvergedSwitch(management_compute_storage)"'.
     
-    Here are the parameters that are *required* to create a DHCP logical network:
+    Here are the parameters that are *required* to create a DHCP logical network. Contact your network admin to get networking specific input parameters in the table below.
 
     | Parameters | Description |
     |--|--|
@@ -251,7 +251,7 @@ Follow these steps to configure a DHCP logical network:
     | **subscription** | Name or ID of the subscription where Azure Local is deployed. This could be another subscription you use for logical network on your Azure Local. |
     | **custom-location** | Use this to provide the custom location associated with your Azure Local where you're creating this logical network. |
     | **location** | Azure regions as specified by `az locations`. |
-    | **vlan** | VLAN identifier for Azure Local VMs. Contact your network admin to get this value. A value of 0 implies that there's no VLAN ID. |
+    | **vlan** | VLAN identifier for Azure Local VMs. A value of 0 implies that there's no VLAN ID. |
 
 
 1. Run the following cmdlet to create a DHCP logical network:
