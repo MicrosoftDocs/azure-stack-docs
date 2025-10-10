@@ -10,13 +10,13 @@ ms.lastreviewed: 10/07/2025
 
 ## Set up observability for diagnostics and support
 
-Setting up observability for diagnostics and support lets Arc registration use a managed identity upload logs, metrics, and telemetry from the appliance VM.
+Set up observability for diagnostics and support to let Arc registration use a managed identity to upload logs, metrics, and telemetry from the appliance VM.
 
 Here's a list of parameters needed:
 
 - **Azure resource group**: Create a resource group in Azure for the appliance, such as azure-disconnectedoperations.
 - **Service Principal Name (SPN)**: Create an SPN that has contributor rights to the resource group.
-- **Service Principal credentials**: Get the Service Principal ID (appId) and secret (password).
+- **Service Principal credentials**: Get the service principal ID (appId) and secret (password).
 - **Subscription**: Identify your Azure subscription.
 - **Tenant ID**: Identify your tenant ID.
 - **Azure region**: Specify the Azure region (location) for deployment.
