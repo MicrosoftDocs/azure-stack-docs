@@ -22,15 +22,15 @@ This article describes how to use local identity with Azure Key Vault for Azure 
 
 ## Overview
 
-In addition to Active Directory (AD) based deployment, Azure Local supports deployment through Local Identity with Azure Key Vault, previously known as AD-less deployment.
+In addition to Active Directory (AD) based deployment, Azure Local supports deployment through local identity with Azure Key Vault, previously known as AD-less deployment.
 
-With Local Identity using a Local Administrator Account, the deployment process configures cluster-level integration with certificate-based authentication. This setup ensures secure communication during deployment and ongoing operations.
+With local identity using a Local Administrator Account, the deployment process configures cluster-level integration with certificate-based authentication. This setup ensures secure communication during deployment and ongoing operations.
 
 As part of this configuration, an Azure Key Vault in the Azure Cloud is provisioned during deployment to serve as a secure backup for Azure Local secrets, including BitLocker keys and other critical configuration data.
 
 ## Benefits
 
-Using Local Identity with Key Vault on Azure Local offers several benefits, particularly for environments that don't rely on AD. Here are some key benefits:
+Using local identity with Key Vault on Azure Local offers several benefits, particularly for environments that don't rely on AD. Here are some key benefits:
 
 - **Minimal edge infrastructure.** For environments that don't use AD, local identity with Key Vault provides a secure and efficient way to manage user identities and secrets.
 
@@ -240,7 +240,7 @@ To address and resolve the issue of the failed extension and restore normal back
     1. After reassignment, monitor the extension status in the Azure portal to ensure it changes from **Failed** to **Succeeded**. This indicates the extension has regained the necessary permissions and is now functioning properly.
     1. Test the backup operations to ensure that secrets are being backed up correctly and that the backup process is functioning as expected.
 
-## Tool compatibility in Azure Local Identity with Azure Key Vault environments
+## Tool compatibility in Azure Local environments configured with Azure Key Vault
 
 Tooling support in Azure Local environments configured with Azure Key Vault for identity management varies across the ecosystem. Use the following guidance to plan and operate effectively in these configurations.
 
