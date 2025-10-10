@@ -94,7 +94,7 @@ Invoke-AzStackHciLLDPValidation -PSSession $allServerSessions -PhysicalNodeList 
 
 The following sample output shows results from a run of the LLDP validator. The result shows that the merged LLDP JSON file was successfully generated. It also shows validation checks that need attention, including Cross-Zone Switch Isolation, Host LLDP Neighbor Existence, and Intra-Zone Switch Consistency. Each item includes a description of the issue and the recommended remediation steps to resolve the issue.
 
-:::image type="content" source="./media/rack-aware-cluster-readiness-check/sample-failed-test.png" alt-text="Screenshot of a sample output to check switch isolation." lightbox="./media/rack-aware-cluster-readiness-check/sample-failed-test.png":::
+:::image type="content" source="./media/rack-aware-cluster-readiness-check/sample-failed-test.png" alt-text="Screenshot of a sample healthy generated merged file." lightbox="./media/rack-aware-cluster-readiness-check/sample-failed-test.png":::
 
 ## Validator output
 
