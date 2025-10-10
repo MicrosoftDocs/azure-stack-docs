@@ -10,7 +10,25 @@ ms.lastreviewed: 10/07/2025
 
 ## Set up observability for diagnostics and support
 
-This setup lets Arc registration use a managed identity to upload logs, metrics, and telemetry from the appliance VM.
+Setting up observability for diagnostics and support lets Arc registration use a managed identity upload logs, metrics, and telemetry from the appliance VM.
+
+Here's a list of parameters needed:
+
+- **Azure resource group**: Create a resource group in Azure for the appliance, such as azure-disconnectedoperations.
+- **Service Principal Name (SPN)**: Create an SPN that has contributor rights to the resource group.
+- **Service Principal credentials**: Get the Service Principal ID (appId) and secret (password).
+- **Subscription**: Identify your Azure subscription.
+- **Tenant ID**: Identify your tenant ID.
+- **Azure region**: Specify the Azure region (location) for deployment.
+- **Required resource providers**: Register these resource providers in your subscription:
+  - *Microsoft.Compute* (for Update Manager and extension upgrades)
+  - *Microsoft.AzureArcData* (if you use Arc-enabled SQL)
+  - *Microsoft.HybridConnectivity*
+  - *Microsoft.GuestConfiguration*
+  - *Microsoft.HybridCompute*
+- **Connectivity**: Make sure your appliance can connect to Azure for telemetry and diagnostics (this isn't required for air-gapped deployments).
+
+Follow these steps to set up observability for diagnostics and support:
 
 1. Sign in to Azure. Use Azure CLI or Azure Cloud Shell, and run this command:
 
