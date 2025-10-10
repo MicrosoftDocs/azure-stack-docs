@@ -16,13 +16,13 @@ ms.custom: sfi-image-nochange
 
 This article describes how to use local identity with Azure Key Vault for Azure Local deployment.
 
-If you have questions or need further information, contact the product team at [azurelocalidentity@microsoft.com](mailto:azurelocalidentity@microsoft.com). To learn how Microsoft collects, uses, and protects your personal data, see the [Microsoft Privacy Statement](https://privacy.microsoft.com/privacystatement).
+<!--If you have questions or need further information, contact the product team at [azurelocalidentity@microsoft.com](mailto:azurelocalidentity@microsoft.com). To learn how Microsoft collects, uses, and protects your personal data, see the [Microsoft Privacy Statement](https://privacy.microsoft.com/privacystatement).-->
 
 [!INCLUDE [important](../includes/hci-preview.md)]
 
 ## Overview
 
-In addition to Active Directory (AD) based deployment, Azure Local supports deployment through Local Identity with Azure Key Vault, previosuly known as AD-less deployment.
+In addition to Active Directory (AD) based deployment, Azure Local supports deployment through Local Identity with Azure Key Vault, previously known as AD-less deployment.
 
 With Local Identity using a Local Administrator Account, the deployment process configures cluster-level integration with certificate-based authentication. This setup ensures secure communication during deployment and ongoing operations.
 
@@ -200,16 +200,17 @@ Follow these steps to update the backup configuration to use a new Key Vault:
 
     1. Once authenticated, use the `Invoke-AzRestMethod` cmdlet to send the POST request. This updates the cluster with the new Key Vault location.
     
-        Here's a sample output:
+    Here's a sample output:
 
-        ```output
-        Invoke-AzRestMethod -Path "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/updateSecretsLocations" -Method POST -Payload { 
-        "properties": { 
-        "secretsType": "BackupSecrets",
-        "secretsLocation": "https://hcikeyvaulttestingnew.vault.azure.net/"   }
-        }
-        response: 200 OK
-        ```
+    ```output
+    Invoke-AzRestMethod -Path "/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.AzureStackHCI/clusters/<clusterName>/updateSecretsLocations" -Method POST -Payload
+    { 
+    "properties": {
+        "secretsType": "BackupSecrets",
+        "secretsLocation": "https://hcikeyvaulttestingnew.vault.azure.net/"
+                  }
+    } # Response: 200 OK
+    ```
 
 1. Validate configuration. In the Azure portal, open the system resource and verify that **Resource JSON** includes the updated Key Vault details.
 
@@ -291,7 +292,7 @@ The Azure Key Vault Backup Secrets extension is an Azure-managed extension, mean
 
 If the extension wasn't installed during deployment, you can manually install it on Arc-enabled servers by following these steps:
 
-1. Create a new Azure Key Vault if you don’t already have one. For instructions, see [Quickstart: Create a key vault using the Azure portal](/key-vault/general/quick-create-portal).
+1. Create a new Azure Key Vault if you don’t already have one. For instructions, see [Quickstart: Create a key vault using the Azure portal](/azure//key-vault/general/quick-create-portal).
 
 1. In the Key Vault page, navigate to **Access control (IAM)** > **Add role assignment**.
 
