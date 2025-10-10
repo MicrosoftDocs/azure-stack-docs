@@ -68,6 +68,7 @@ Follow these steps to create a VM image using the Azure CLI.
     $customLocationID = (az customlocation show --resource-group $resource_group --name "<custom_location_name_for_Azure_Local>" --query id -o tsv)
     $location = "<Location for your Azure Local>"
     $osType = "<OS of source image>"
+    $version = "<OS version of Marketplace image>"
     ```
 
     The parameters are described in the following table:
