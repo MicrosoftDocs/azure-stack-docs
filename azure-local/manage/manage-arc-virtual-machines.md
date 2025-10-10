@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 08/27/2025
+ms.date: 10/08/2025
 ms.custom: sfi-image-nochange
 ---
 
@@ -22,6 +22,8 @@ This article describes how to manage Azure Local virtual machines (VMs) enabled 
   Go to the resource group in Azure. The displayed information includes the custom location and the Azure Arc resource bridge created for Azure Local. Make a note of the subscription, the resource group, and the custom location. You use them later in this scenario.
 
 - One or more Azure Local VMs running on your Azure Local instance. For more information, see [Create Azure Local virtual machines](./create-arc-virtual-machines.md).
+
+- The Azure Local VM must have access to public network connectivity to enable guest management.
 
 ## Enable guest management
 

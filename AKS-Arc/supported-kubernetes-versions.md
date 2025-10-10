@@ -3,7 +3,7 @@ title: Supported Kubernetes versions for AKS enabled by Azure Arc
 description: Understand the Kubernetes version support policy and lifecycle of clusters for Azure Kubernetes Service enabled by Azure Arc.
 services: container-service
 ms.topic: article
-ms.date: 09/24/2025
+ms.date: 10/09/2025
 author: sethmanheim
 ms.author: sethm 
 ms.lastreviewed: 08/27/2025
@@ -64,6 +64,9 @@ You should install the latest patch release of the minor version you're running.
 | 2411                | 1.27.7, 1.27.9, 1.28.5, 1.28.9, 1.29.2, 1.29.4   |
 | 2408                | 1.27.7, 1.27.9, 1.28.5, 1.28.9, 1.29.2, 1.29.4   |
 | 2405                | 1.26.10, 1.26.12, 1.27.7, 1.27.9, 1.28.3, 1.28.5 |
+
+> [!IMPORTANT]
+> Once you upgrade your Azure Local instance to a specific release, you can only use the Kubernetes versions available in that release for Kubernetes cluster create and cluster upgrade operations. Outside of those operations, your existing Kubernetes clusters continue to run on the same version they were on before the Azure Local upgrade. For example, if you're on release 2507 and you create a cluster using Kubernetes version 1.30.3, and then you upgrade your Azure Local instance to 2508, the cluster created on 2507 will continue to run 1.30.3. If you create a new cluster after the upgrade, it will use a version available in the 2508 release (for example, 1.29.12, 1.29.13, 1.30.8, 1.30.9, 1.31.4, 1.31.5). You can also upgrade the cluster you created on 2507 to any version available in the 2508 release (for example, 1.30.8, 1.30.9, 1.31.4, 1.31.5).
 
 ## Kubernetes version support policy
 

@@ -35,7 +35,7 @@ For a conceptual overview of Workload identity federation, see [Workload identi
 
 Before you deploy a Kubernetes cluster with Azure Arc enabled, you must have the following prerequisites:
 
-- If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) before you begin.
+- If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin.
 - This article requires version 1.4.23 or later of the Azure CLI. If you're using Azure Cloud Shell, the latest version is already installed.
 
 ### Export environment variables

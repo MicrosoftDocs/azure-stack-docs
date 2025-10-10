@@ -70,6 +70,10 @@ The current list of supported commands are
   Command Name: `platform-services-status`\
   Arguments: None
 
+- [Collect System Diagnostics](#collect-system-diagnostics)\
+  Command Name: `collect-system-diagnostics`\
+  Arguments: None
+
 The command syntax is:
 
 ```azurecli-interactive
@@ -673,6 +677,105 @@ Nov 12 06:33:40 rack1compute01 systemd[1]: Finished Arc-unenrollment upon shutdo
 TriggeredBy: ● atop-rotate.timer
 [..snip..]
 
+```
+
+### Collect System Diagnostics
+
+System Diagnostics logs are collected with the `collect-system-diagnostics` command. It retrieves all the necessary logs giving deeper visibility within the bare metal machine. It collects following types of diagnostics data.
+
+
+This example executes the `collect-system-diagnostics` command without arguments.
+- System and kernel diagnostics
+  - Kernel information: Logs, human-readable messages, version, and architecture, for in-depth kernel diagnostics.
+  - Operating System Logs: Essential logs detailing system activity and container logs for system services.
+- Hardware and resource usage
+  - CPU and IO throttled processes: Identifies throttling issues, providing insights into performance bottlenecks.
+  - Network Interface Statistics: Detailed statistics for network interfaces to diagnose errors and drops.
+- Software and services
+  - Installed packages: A list of all installed packages, vital for understanding the system's software environment.
+  - Active system services: Information on active services, process snapshots, and detailed system and process statistics.
+  - Container runtime and Kubernetes components logs: Logs for Kubernetes components and other vital services for cluster diagnostics.
+- Networking and connectivity
+  - Network connection tracking information: Conntrack statistics and connection lists for firewall diagnostics.
+  - Network configuration and interface details: Interface configurations, IP routing, addresses, and neighbor information.
+  - Any additional interface configuration and logs: Logs related to the configuration of all interfaces inside the Node.
+  - Network connectivity tests: Tests external network connectivity and Kubernetes API server communication.
+  - DNS resolution configuration: DNS resolver configuration for diagnosing domain name resolution issues.
+  - Networking configuration and logs: Comprehensive networking data including connection tracking and interface configurations.
+  - Container network interface (CNI) configuration: Configuration of CNI for container networking diagnostics.
+- Security and compliance
+  - SELinux status: Reports the SELinux mode to understand access control and security contexts.
+  - IPtables rules: Configuration of IPtables rulesets for insights into firewall settings.
+- Storage and filesystems
+  - Mount points and volume information: Detailed information on mount points, volumes, disk usage, and filesystem specifics.
+- Azure Arc azcmagent logs
+  - Collects log files for the Azure connected machine agent and extensions into a ZIP archive.
+- Configuration and management
+  - System configuration: Sysctl parameters for a comprehensive view of kernel runtime configuration.
+  - Kubernetes configuration and health: Kubernetes setup details, including configurations and service listings.
+  - Container runtime information: Configuration, version information, and details on running containers.
+  - Container runtime interface (CRI) information: Operations data for container runtime interface, aiding in container orchestration diagnostics.
+
+```azurecli
+az networkcloud baremetalmachine run-data-extract --name "bareMetalMachineName" \
+  --resource-group "cluster_MRG" \
+  --subscription "subscription" \
+  --commands '[{"command":"collect-system-diagnostics"}]' \
+  --limit-time-seconds 900
+```
+
+**`collect-system-diagnostics` Output**
+
+```azurecli
+====Action Command Output====
+Trying to check for root... 
+Trying to check for required utilities... 
+Trying to create required directories... 
+Trying to check for disk space... 
+Trying to start collecting logs... Trying to collect common operating system logs... 
+Trying to collect mount points and volume information... 
+Trying to collect SELinux status... 
+Trying to collect Containerd daemon information... 
+Trying to collect Containerd running information... 
+Trying to collect Container Runtime Interface (CRI) information... Trying to collect CRI information... 
+Trying to collect kubelet information... 
+Trying to collect Multus logs if they exist... 
+Trying to collect azcmagent logs... time="2025-09-09T15:21:55Z" level=info msg="Adding directory /var/opt/azcmagent/log to zip"
+time="2025-09-09T15:21:55Z" level=info msg="Adding directory /var/lib/GuestConfig/arc_policy_logs to zip"
+time="2025-09-09T15:21:57Z" level=info msg="Adding directory /var/lib/GuestConfig/ext_mgr_logs to zip"
+time="2025-09-09T15:21:57Z" level=info msg="Adding directory /var/lib/GuestConfig/extension_logs to zip"
+time="2025-09-09T15:21:57Z" level=info msg="Adding directory /var/lib/GuestConfig/extension_reports to zip"
+time="2025-09-09T15:21:57Z" level=info msg="Adding directory /var/lib/GuestConfig/gc_agent_logs to zip"
+time="2025-09-09T15:21:57Z" level=info msg="Diagnostic logs have been saved to /tmp/azcmagent-logs-3765466.zip."
+
+
+Collecting System logs
+Trying to collect kernel logs... 
+Trying to collect installed packages... 
+Trying to collect active system services... 
+Trying to collect sysctls information... 
+Trying to collect CPU Throttled Process Information... 
+Trying to collect IO Throttled Process Information... 
+Trying to collect conntrack information... conntrack v1.4.8 (conntrack-tools): 1917 flow entries have been shown.
+
+Trying to collect ipvsadm information... 
+Trying to collect kernel command line... 
+Trying to collect configuration files... Collecting Networking logs
+Trying to collect networking information... conntrack v1.4.8 (conntrack-tools): 1916 flow entries have been shown.
+
+Trying to collect CNI configuration information... 
+Trying to collect iptables information... 
+
+Trying to archive gathered information... 
+Finishing up...
+
+	Done... your bundled logs are located in /hostfs/tmp/runcommand/system_diagnostics_bareMetalMachineName_2025-09-09_1519-UTC.tar.gz
+
+
+
+================================
+Script execution result can be downloaded from storage account using the command: 
+ az storage blob download --blob-url https://simdev4003469vm1sa.blob.core.windows.net/command-output-blob/runcommand-output-7d601db8-75b7-4af2-94dd-f4f49ee0b0b7.tar.gz --file runcommand-output-7d601db8-75b7-4af2-94dd-f4f49ee0b0b7.tar.gz --auth-mode login  > /dev/null 2>&1
 ```
 
 [!INCLUDE [command-output-view](./includes/run-commands/command-output-view.md)]
