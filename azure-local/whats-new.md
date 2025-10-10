@@ -5,7 +5,7 @@ ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 09/25/2025
+ms.date: 10/08/2025
 ---
 
 # What's new in Azure Local?
@@ -13,6 +13,49 @@ ms.date: 09/25/2025
 [!INCLUDE [azure-local-banner-23h2](./includes/azure-local-banner-23h2.md)]
 
 This article lists the various features and improvements that are available in Azure Local. The latest version of Azure Local solution focuses on cloud-based deployment and updates, cloud-based monitoring, new and simplified experience for Azure Local virtual machine (VM) management, security, and more.
+
+::: moniker range="=azloc-2510"
+
+There are two 2510 releases for October. Here are the details of each release:
+
+|Solution version  | OS version |
+|---------|---------|
+|12.2510.x |  26100.6584 |
+|11.2510.x  | 25398.1849  |
+
+For more information, see [Release information summary](./release-information-23h2.md).
+
+This release has the following features and improvements:
+
+- **OS changes**:
+
+    - The 2504 release introduced a new operating system for Azure Local deployments. For 2509, all the new deployments of Azure Local run the new OS version **26100.xxxx**. You can download the 2510 OS image from the Azure portal.
+
+        - You also need a driver that's compatible with OS version **26100.xxxx** or Windows Server 2025. If a compatible driver isn't available, you can use the 2503 image.
+
+        - Existing deployments of Azure Local continue to use OS version **25398.xxxx**. For more information, see [Release information summary](./release-information-23h2.md).
+
+    - If you purchased Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) through your preferred Microsoft hardware partner, the OS should be preinstalled. Work with your Original Equipment Manufacturer (OEM) to get the OS image that's compatible with **12.2509** and a driver that's compatible with OS version **26100.xxxx** or Windows Server 2025.
+    
+- **.NET updates**: This build uses .NET version **8.0.21** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
+
+- **Rack Aware Clustering**: Azure Local now supports rack aware clustering. This feature allows you to define fault domains based on physical racks in your data center, enhancing the resilience of your cluster against rack-level failures. For more information, see [Rack Aware Clustering](./concepts/rack-aware-clustering.md).
+
+- **Azure Local VM updates**:
+
+- **Azure Local deployment using local identity** 
+
+- **Documentation updates**: The noteworthy changes include the following new articles or articles with major updates:
+
+    - **Registration and deployment** include new articles and major updates to existing articles:
+        - [Article name](link) is released.
+
+
+    - **Azure Local VM doc changes** include:
+        - [Article name](link) is released.
+
+::: moniker-end
+
 
 ::: moniker range="=azloc-2509"
 
