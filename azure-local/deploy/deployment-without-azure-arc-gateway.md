@@ -159,7 +159,7 @@ After the script completes successfully on all the machines, verify that your ma
    :::image type="content" source="media/deployment-without-azure-arc-gateway/arc-servers-registered-1.png" alt-text="Screenshot of the Azure Local machines in the resource group after the successful registration." lightbox="./media/deployment-without-azure-arc-gateway/arc-servers-registered-1.png":::
 
 > [!NOTE]
-> If the Azure Local machine fails to register, you can deregister and then register your cluster again. For detailed instructions, see [Troubleshoot Azure Arc registration](../index.yml).
+> If the Azure Local machine fails to register, you can deregister and then register your cluster again. For detailed instructions, see [Re-register Azure Local machines](../manage/unregister-register-machine.md).
 
 # [Via Configurator app (Preview)](#tab/app)
 
