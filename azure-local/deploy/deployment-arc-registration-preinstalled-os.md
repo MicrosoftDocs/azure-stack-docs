@@ -45,7 +45,7 @@ Follow these steps to register Azure Local systems with Azure Arc when using pre
     ```
 
     - If the status is **Succeeded**, the machine is successfully registered with Azure Arc following the update.
-    - If the status is **Failed**, re-run the registration using a new ARM token or device code flow.
+    - If the status is **Failed**, rerun the registration using a new ARM token or device code flow.
     - If the issue persists, collect logs using `Collect-ArcBootstrapSupportLogs` and share them for further troubleshooting.
 
 1. During the Arc registration process, you must authenticate with your Azure account. The console window displays a code that you must enter in the URL, displayed in the app, in order to authenticate. Follow the instructions to complete the authentication process.
