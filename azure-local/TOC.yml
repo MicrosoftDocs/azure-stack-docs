@@ -446,6 +446,8 @@ items:
       href: manage/configure-proxy-settings-23h2.md
     - name: Suspend and resume
       href: manage/suspend-resume-cluster-maintenance.md
+    - name: Unregister and reregister machines
+      href: manage/unregister-register-machine.md
     - name: Use dashboard to manage at-scale
       href: manage/manage-at-scale-dashboard.md
 
