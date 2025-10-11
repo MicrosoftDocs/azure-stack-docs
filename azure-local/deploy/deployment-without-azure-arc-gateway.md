@@ -3,7 +3,7 @@ title: Register Azure Local with Azure Arc.
 description: Learn how to register Azure Local with Azure Arc with and without proxy setup. The proxy configuration can be done via an Arc script or via the Configurator app on Azure Local. 
 author: alkohli
 ms.topic: how-to
-ms.date: 09/08/2025
+ms.date: 10/11/2025
 ms.author: alkohli
 ms.service: azure-local
 zone_pivot_groups: register-arc-options
@@ -159,7 +159,7 @@ After the script completes successfully on all the machines, verify that your ma
    :::image type="content" source="media/deployment-without-azure-arc-gateway/arc-servers-registered-1.png" alt-text="Screenshot of the Azure Local machines in the resource group after the successful registration." lightbox="./media/deployment-without-azure-arc-gateway/arc-servers-registered-1.png":::
 
 > [!NOTE]
-> Once an Azure Local machine is registered with Azure Arc, the only way to undo the registration is to install the operating system again on the machine.
+> If the Azure Local machine fails to register, you can deregister and then register your cluster again. For detailed instructions, see [Troubleshoot Azure Arc registration](../index.yml).
 
 # [Via Configurator app (Preview)](#tab/app)
 
