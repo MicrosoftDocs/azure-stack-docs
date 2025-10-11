@@ -56,14 +56,14 @@ Before you begin, ensure you have the following:
    ```output
       PS C: Start-ArcBootstrapReset  -Wait 
       Arc reset in progress. Elapsed tine: 0.3 minutes. Current status InProgress 
-      ExtensionCteanup: InProgress 
+      ExtensionCleanup: InProgress 
       WARNING: 
-      To sign in, use a web browser to open the page https://nicrosoft.con/devicelogin and enter the code ACWYHL9RT to authenticate. 
+      To sign in, use a web browser to open the page https://nicrosoft.con/devicelogin and enter the code ABDCDEF1GH to authenticate. 
       GatewayCleanup: NotStarted 
-      AzcnAgentCIeanup: NotStarted 
-      BootstrapCteanup: NotStarted 
+      AzcnAgentCleanup: NotStarted 
+      BootstrapCleanup: NotStarted 
       Arc reset in progress. Elapsed time: 0.5 minutes. Current status InProgress
-      ExtensionCIeanup: InProgress 
+      ExtensionCleanup: InProgress 
    ```
 
 1. This is a long running operation. To monitor the progress of the operation, run the following command:
