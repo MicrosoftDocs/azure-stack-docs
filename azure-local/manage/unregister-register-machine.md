@@ -15,7 +15,7 @@ ms.date: 10/11/2025
 This article provides guidance on how to unregister and re-register Azure Local machines without having to install the operating system again. This method uses PowerShell cmdlets.
 
 
-## About re-registrationof Azure Local machines
+## About reregistration Azure Local machines
 
 Previously there was no way to undo the registration of Azure Local machines. The only method available was to uninstall and install the operating system again on machines. Now, you can use PowerShell cmdlets to re-register Azure Local machines without having to reinstall the operating system.
 
@@ -53,10 +53,10 @@ Install-Module -Name AzStackHCI -AllowClobber -Force
     
    |Parameter  |Description  |
    |---------|---------|
-   |`ArmAccessToken`     | [Optional] The Azure Resource Manager access token. If omitted, device code authentication will be prompted.     |
+   |`ArmAccessToken`     | [Optional] The Azure Resource Manager access token. If omitted, device code authentication is prompted.     |
    |`Wait`     | [Optional] When specified, the cmdlet monitors and reports progress until completion. |
 
-   Here is a sample output of the command:    
+   Here's a sample output of the command:    
 
    ```output
    Unregistering machine...
