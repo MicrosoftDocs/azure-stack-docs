@@ -54,8 +54,16 @@ Before you begin, ensure you have the following:
    Here's a sample output of the command:    
 
    ```output
-   Unregistering machine...
-   Machine unregistered successfully.
+      PS C: Start-ArcBootstrapReset  -Wait 
+      Arc reset in progress. Elapsed tine: 0.3 minutes. Current status InProgress 
+      ExtensionCteanup: InProgress 
+      WARNING: 
+      To sign in, use a web browser to open the page https://nicrosoft.con/devicelogin and enter the code ACWYHL9RT to authenticate. 
+      GatewayCleanup: NotStarted 
+      AzcnAgentCIeanup: NotStarted 
+      BootstrapCteanup: NotStarted 
+      Arc reset in progress. Elapsed time: 0.5 minutes. Current status InProgress
+      ExtensionCIeanup: InProgress 
    ```
 
 1. This is a long running operation. To monitor the progress of the operation, run the following command:
