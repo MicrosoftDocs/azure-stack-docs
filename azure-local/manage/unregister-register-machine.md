@@ -12,32 +12,27 @@ ms.date: 10/11/2025
 
 > Applies to: Azure Local 2508 and later
 
-This article provides guidance on how to unregister and re-register Azure Local machines without having to install the operating system again. This method uses PowerShell cmdlets.
+This article provides guidance on how to unregister and re-register Azure Local machines without having to install the operating system (OS) again. This method uses PowerShell cmdlets.
 
 
 ## About reregistration Azure Local machines
 
-Previously there was no way to undo the registration of Azure Local machines. The only method available was to uninstall and install the operating system again on machines. Now, you can use PowerShell cmdlets to re-register Azure Local machines without having to reinstall the operating system.
+Previously there was no way to undo the registration of Azure Local machines. The only method available was to uninstall and install the OS again on machines. Now, you can use PowerShell cmdlets to first unregister the Azure Local machines and then re-register the machines without having to reinstall the OS.
 
 ## Prerequisites
 
 Before you begin, ensure you have the following:
 
-- Azure Local 2508 or later installed.
-- PowerShell 7.0 or later.
-- The AzStackHCI module installed. You can install it using the following command:
-
-```powershell
-Install-Module -Name AzStackHCI -AllowClobber -Force
-```
+- Registered Azure Local machines with 2508 or later installed.
+- Remote Desktop Protocol (RDP) should be enabled on Azure Local machines. Follow the instructions in [Enable RDP](../deploy/deploy-via-portal.md#enable-rdp).
 
 ## Re-register Azure Local machine
 
-1. [Connect to the Azure Local machine](../manage/azure-arc-vm-management-prerequisites.md#connect-to-the-system-directly).
+1. Connect to the Azure Local machine via RDP.
 
 1. Open PowerShell as an administrator.
 
-1. To get the Azure Resource Manager access token, `ArmAccessToken`, run the following command:
+1. To get the Azure Resource Manager access token, run the following command:
 
    ```powershell
    $ArmAccessToken = (Get-AzAccessToken -ResourceUrl "https://management.azure.com/").Token
@@ -69,9 +64,9 @@ Install-Module -Name AzStackHCI -AllowClobber -Force
    Get-ArcBootstrapResetStatus
    ```
 
-1. After the machine is unregistered, re-register the machine using the steps in [Register Azure Local machines](../deploy/deployment-without-azure-arc-gateway.md#register-azure-local-machines).
+1. After the machine is unregistered, re-register the machine using the steps in [Register Azure Local machines](../deploy/deployment-without-azure-arc-gateway.md).
 
 
 ## Next steps
 
-- Learn how to register Azure Local machines: [Register Azure Local machines](../deploy/deployment-without-azure-arc-gateway.md#register-azure-local-machines)
+- Learn how to register Azure Local machines: [Register Azure Local machines](../deploy/deployment-without-azure-arc-gateway.md).
