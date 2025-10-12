@@ -143,7 +143,7 @@ $idpConfig = @{
 Consider these limitations when you plan your identity integration with disconnected operations:
 
 - **Users/Group removal after synchronization**: If you remove users and groups with memberships after the last sync, disconnected operations don't clean them up. This can cause errors when you query group memberships.
-- **No force synchronization capability**: Sync runs every 6 hours.  
+- **No force synchronization capability**: Initial sync can take up to 6 hours. Sub-sequent sync runs every 15 min.
 - **No management groups or aggregate root level**: Not available for multiple subscriptions.  
 - **Supported validations**: Only Active Directory/AD FS are validated for support.
   - [Install Active Directory Domain Services (Level 100)](/windows-server/identity/ad-ds/deploy/install-active-directory-domain-services--level-100-)
