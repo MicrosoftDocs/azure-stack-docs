@@ -340,7 +340,8 @@ $AccessControlType = [System.Security.AccessControl.AccessControlType]::Allow
 $InheritanceType = [System.DirectoryServices.ActiveDirectorySecurityInheritance]::All
 
 # Create the access rule and apply it to the group
-$Rule = New-Object System.DirectoryServices.ActiveDirectoryAccessRule $Identity, $ActiveDirectoryRights, $AccessControlType, $null, $InheritanceType
+# bf9679c0-0de6-11d0-a285-00aa003049e2 - Member attribute : https://learn.microsoft.com/en-us/windows/win32/adschema/a-member?redirectedfrom=MSDN 
+$Rule = New-Object System.DirectoryServices.ActiveDirectoryAccessRule $Identity, $ActiveDirectoryRights, $AccessControlType, "bf9679c0-0de6-11d0-a285-00aa003049e2", $InheritanceType
 $GroupEntry = [ADSI]"LDAP://$GroupDN"
 $Security = $GroupEntry.ObjectSecurity
 $Security.AddAccessRule($Rule)
