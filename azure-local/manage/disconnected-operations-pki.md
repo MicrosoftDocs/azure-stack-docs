@@ -289,12 +289,32 @@ _continue_ = "DNS=$subject"
 
 Copy the management certificates (*.pfx) to the directory structure represented in ManagementEndpointCerts.
 
-## Export Root CA certificate
+## Export Root CA certificate 
 
-You need the root certificate public key for deployment. The following example shows how to export your root certificate public key:
+You need the root certificate public key for deployment. The Root certificate needs to be exported with base64 encoding. 
+The following example shows how to export your root certificate public key:
 
-```azurecli
-certutil -ca.cert C:\AzureLocalDisconnectedOperations\applianceRoot.cer
+```powershell
+$applianceRootcert = "C:\AzureLocalDisconnectedOperations\applianceRoot.cer"
+
+# Option 1) Get the Root CA certificate by its name:
+$RootCACert = Get-ChildItem -Path Cert:\LocalMachine\Root | Where-Object { $_.Subject -like "*YourRootCAName*" } | Select-Object -First 1
+
+# # Option 2) Get the Root CA certificate by its thumbprint:
+$RootCACert = Get-ChildItem -Path Cert:\LocalMachine\Root | Where-Object { $_.Thumbprint -eq "12345678ABCDEFGH607857694DF5E45B68851868" } | Select-Object -First 1
+
+# Check you have the correct Root CA certificate:
+$cert
+
+# If it matches, export in CER (DER) format
+Export-Certificate -Cert $cert -FilePath "C:\Temp\RootCA-DER.cer" -Type CERT
+
+# Finally, convert from CER (DER) to Base-64 CER
+certutil -encode "C:\Temp\RootCA-DER.cer" "C:\Temp\RootCA-Base64.cer"
+
+## Alternative method (If CA is setup and responds)
+# certutil -ca.cert $applianceRootCert
+
 ```
 
 For more information, see [Active Directory Certificate Services](/troubleshoot/windows-server/certificates-and-public-key-infrastructure-pki/export-root-certification-authority-certificate).
