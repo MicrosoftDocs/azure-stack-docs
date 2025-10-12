@@ -86,6 +86,16 @@ To prepare each machine for the disconnected operations appliance, follow these 
 1. Install the OS and configure the node networking for each Azure Local machine you intend to use to form an instance. For more information, see [Install the Azure Stack HCI operating system](../deploy/deployment-install-os.md).  
 
 1. On physical hardware, install firmware and drivers as instructed by your OEM.
+1. Rename netadapters 
+
+    Ensure each node has an identical naming for the physical network you are connecting. For simplicity you might want to give your network cards more meaningfull names. Skip this step if your network adapters have identical names and you are OK with the naming.
+
+     ```powershell
+      # Example
+      Rename-NetAdapter -Name "Mellanox #1" -NewName "ethernet"
+      Rename-NetAdapter -Name "Mellanox #2" -NewName "ethernet 2" 
+      # Other examples for naming e.g."storage port 0" 
+     ```
 
 1. Set up the virtual switches according to your planned network:  
    - [Network considerations for cloud deployments of Azure Local](../plan/cloud-deployment-network-considerations.md).
@@ -369,17 +379,6 @@ Install-Appliance @installAzureLocalParams -disconnectMachineDeploy -Verbose
 >
 > DisableChecksum = $true will skip validating the signature of the Appliance. Use this when deploying an air-gapped environment in this release. If checksum validation is enabled - the node needs to be able to reach and validate the Microsoft cert signing certificates used for signing this build.  
 
-### Update configuration and re-run installation (if failure)
-
-To update the configuration and retry the installation after a failure, follow these steps:
-
-1. Modify the configuration object.
-
-    ```powershell
-    $ingressNetworkConfiguration.IngressIpAddress = '192.168.200.115'
-    ```
-
-1. Set `$installAzureLocalParams` and rerun `Install-appliance` as described in [Install and configure the appliance](#install-and-configure-the-appliance).
 
 ## Configure observability for diagnostics and support
 
@@ -527,9 +526,11 @@ To initialize each node, follow these steps. Modify where necessary to match you
     }
     ```
 
-1. Arc-enable each node and install extensions to prepare for cloud deployment and cluster creation.
+1. Arc-enable each node and install extensions to prepare for cloud deployment and cluster creation. 
 
     ```powershell
+    # Important: 
+    # This must run on the seed node first - before running the other nodes! 
     Invoke-AzStackHciArcInitialization @hash
     Write-Host -Subject 'ARC node configuration completed'
     ```
@@ -672,9 +673,9 @@ Follow these steps to create an Azure Local instance (cluster):
 
 Here are some tasks you should perform after deploying Azure Local with disconnected operations:
 
-1. Back up the BitLocker keys. This encrypts your volumes and lets you recover the appliance if you ever need to restore the VM. For more information, see [Understand security controls with disconnected operations on Azure Local](disconnected-operations-security.md).
+1. **Back up the BitLocker keys (do not skip this step).**  During deployment - your appliance is encrypted. Without the recovery keys for the volumes you cannot recover and restore the appliance. For more information, see [Understand security controls with disconnected operations on Azure Local](disconnected-operations-security.md).
 
-1. Assign extra operators. You can assign one or many operators by navigating to **Operator subscriptions**. Assign the **contributor** role at the subscription level.
+1. **Assign extra operators.** You can assign one or many operators by navigating to **Operator subscriptions**. Assign the **contributor** role at the subscription level.
 
 1. [Export the host guardian service certificates](disconnected-operations-security.md) and backup the folder you export them to on an external share/drive.
 
@@ -705,6 +706,22 @@ After you install the appliance, you might see this screen for a while. Let the 
 
 - To view the health state of your appliance, use the management endpoint `Get-ApplianceHealthState` cmdlet. If you see this screen and the cmdlet reports no errors and all services report 100, open a support ticket from the Azure portal.
 
+### Update appliance configuration and re-run installation (if failure)
+
+If your install-appliance fails (e.g. ip already in use on network) and you need to update the configuration and retry the installation after a failure, follow these steps
+
+1. Modify the configuration object.
+
+    Here is an example on how to modify the ingress ip address
+
+    ```powershell
+    # Set a new IP address
+    $ingressNetworkConfiguration.IngressIpAddress = '192.168.0.115'
+    ```
+
+1. If it failed during installation, set `$installAzureLocalParams` and rerun `Install-appliance` as described in [Install and configure the appliance](#install-and-configure-the-appliance).
+1. If appliance deployment succeeded and you are updating network configuration, please see Get-Help Set-*Appliance* for which configurations you can update post-deployment
+
 ::: moniker-end
 
 ::: moniker range="<=azloc-2505"
@@ -712,3 +729,4 @@ After you install the appliance, you might see this screen for a while. Let the 
 This feature is available only in Azure Local 2506.
 
 ::: moniker-end
+

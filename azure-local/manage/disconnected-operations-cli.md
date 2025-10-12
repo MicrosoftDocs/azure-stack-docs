@@ -51,7 +51,21 @@ For disconnected operations:
 1. Understand [public key infrastructure (PKI) for Azure Local with disconnected operations (preview)](disconnected-operations-pki.md)
 2. Set up and configure the certificate trusts for Azure CLI using PowerShell.
 
-    Here's an example script you can run in PowerShell:
+Python uses a local pem file for the trust store. You have 2-options for configuring trust for your client. 
+1. Install a python module that uses the OS trust store. 
+
+Here is an example to run on windows to install the pip-system-certs module for python that is bundled with your Azure CLI. Please modify the paths to match your system.
+
+```powershell    
+"C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\python.exe" -m pip install pip-system-certs
+
+# If your client does not already have the root cert imported -  here is how you can import it.
+$applianceRootCertFile = "C:\AzureLocalDisconnectedOperations\applianceRoot.cer"
+Import-Certificate -FilePath $applianceRootCertFile -CertStoreLocation Cert:\LocalMachine\Root -Confirm:$false
+```
+2. Alternative, update the .PEM used by the cli installation
+
+    Here's an example script you can run in PowerShell that will do this:
 
     ```powershell    
         # Define the helper method
@@ -226,6 +240,11 @@ The following table lists the CLI extensions supported on Azure Local disconnect
 | Azure Container Registry | Built-in      |    |  |
 | Azure Policy | Built-in      |    | [Quickstart: Create a policy assignment to identify noncompliant resources using Azure CLI](/azure/governance/policy/assign-policy-azurecli) |
 | Azure Key Vault | Built-in      |    | [Quickstart: Create a key vault using Azure CLI](/azure/key-vault/general/quick-create-cli) |
+
+## Troubleshoot Azure CLI
+
+For troubleshooting , add a --debug when you run az cli commands. This will give you a stack trace to understand what might have failed. 
+If your root CA is not trusted on the client, you will get ssl / unable to connect issues when using your private cloud endpoints.
 
 ::: moniker-end
 
