@@ -8,6 +8,18 @@ ms.author: hafianba
 ms.reviewer: hafianba
 ai-usage: ai-assisted
 ---
+# What is new in disconnected operations for Azure Local
+## 2509
+
+ - Supports Azure Local 2508 ISO and capabilities included in Azure Local 2508.
+ - Added support for SCOM 2025 (Fixes issue with SCOM MP failing on newer SCOM). Supporting SCOM 2022 and SCOM 2025
+ - This release enables the update scenario. When 2510 is released, you will be able to test updating from this version to 2510 of ALDO. This will also include the ability to update Azure Local that is connected to disconnected operations.
+ - Security and observability fixes
+ - Ldaps and custom port for ldap binding enabled
+ - Portal/UX fixes. 
+ - OperationsModule improvements - improved logging and error messages. Introduced certificate validation and CSR generation.
+ - External certificate rotation added in OperationsModule (Set-ApplianceExternalEndpointCertificates)
+
 
 # Known issues for disconnected operations for Azure Local
 
@@ -20,21 +32,6 @@ This article lists critical known issues and their workarounds in disconnected o
 These release notes update continuously, and we add critical issues that need a workaround as we find them. Before you deploy disconnected operations with Azure Local, review the information here.
 
 ## Known issues in the preview release
-
-###  Get-CertificateChainFromEndpoint method not found 
-There's a known issue when running `Get-CertificateChainFromEndpoint` in order to populate the OidcCertChainInfo object. 
-
-Mitigation: You need to make a modification in the OperationsModule. 
-Open the Azure.Local.DisconnectedOperations.psm1 file in notepad (or another text editor). Add the end of the file with the following
-```powershell
-Export-ModuleMember Get-CertificateChainFromEndpoint
-```
-Save the file and exit your editor. Restart your powershell session. Set the execution policy to unrestricted and import the modified OperationsModule module
-```powershell
-Set-ExeuctionPolicy Unrestricted
-Import-Module "$applianceConfigBasePath\OperationsModule\Azure.Local.DisconnectedOperations.psd1" -Force
-```
-
 
 ### Air-gapped deployment when local DNS forwards and resolves external domain requests
 There's a known issue when deploying an air-gapped environment—this happens if you’ve got a local DNS server that can resolve public endpoints like Microsoft.com.
