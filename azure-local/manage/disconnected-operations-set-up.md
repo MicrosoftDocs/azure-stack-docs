@@ -91,6 +91,26 @@ To create a virtual appliance and download the required files for your on-premis
 
 1. When the steps are complete, put all the files in a share or on portable media. You need these files during deployment.
 
+### Download Azure Local ISO 
+1. Sign in to [the portal](https://portal.azure.com) and navigate to **Azure Local**. 
+1. Hit **download software **
+1. Download Local HCI OS
+1. Select a subscription where you have registered the Microsoft.AzureStackHCI resource provider
+1. Select the compatible Software version based for the preview version you are starting off with. 
+1. Read the privacy notice and click download
+
+Make sure you have the ISO available for installing on your Azure Local nodes.
+
+### Review Azure local disconnected operations compatible versions
+
+Please note that when you deploy a new system - you will need to use a Azure Local build that is compatible with your Azure Local disconnected operations build.
+
+| Disconnected operations milestone | Disconnected operations build | Azure Local Build |  
+|------|-------------|----------------|  
+| M1 | 6.1064663200.16860 | AzureLocal24H2.26100.1742.LCM.10.2411.2.3003 |
+| M2 | 7.1064837202.19761 | AzureLocal24H2.26100.1742.LCM.12.2506.0.3136 |
+| 2508 | 8.1064855627.20050 | AzureLocal24H2.26100.1742.LCM.12.2506.0.3136 |
+| 2509 | 9. | AzureLocal24H2.26100.1742.LCM.12.2508.0.3201 |
 ## Related content
 
 - [Deploy disconnected operations for Azure Local](disconnected-operations-deploy.md)
@@ -102,3 +122,4 @@ To create a virtual appliance and download the required files for your on-premis
 This feature is available only in Azure Local 2506.
 
 ::: moniker-end
+
