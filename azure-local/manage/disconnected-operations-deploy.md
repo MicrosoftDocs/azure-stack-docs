@@ -280,9 +280,9 @@ Populate the required parameters based on your deployment planning. Modify the e
 1. Populate the ingress network configuration object.
 
     ```powershell  
-    $azureLocalDns = "192.168.0.150"  
-    $NodeGw = "192.168.0.1"  
-    $IngressIpAddress = "192.168.0.100"  
+    $azureLocalDns = "192.168.200.150"  
+    $NodeGw = "192.168.200.1"  
+    $IngressIpAddress = "192.168.200.115"  
     $NICPrefixLength= 24  
     $ingressNetworkConfigurationParams = @{  
         DnsServer = $azureLocalDns  
@@ -384,7 +384,6 @@ Install-Appliance @installAzureLocalParams -disconnectMachineDeploy -Verbose
 >
 > DisableChecksum = $true will skip validating the signature of the Appliance. Use this when deploying an air-gapped environment in this release. If checksum validation is enabled - the node needs to be able to reach and validate the Microsoft cert signing certificates used for signing this build.  
 
-
 ## Configure observability for diagnostics and support
 
 We recommend that you configure observability to get telemetry and logs for support for your first deployment. This doesn't apply if you're planning to run air-gapped, as telemetry and diagnostics require connectivity.
@@ -443,17 +442,135 @@ To configure observability, follow these steps:
     Get-ApplianceObservabilityConfiguration
     ```
 
+### For fully air-gapped or disconnected deployments (where nodes have no line of sight to internet connection)
+
+To enable Azure Local to be air-gapped or deployed fully disconnected, you must do the following on each node:
+
+- Configure the timeserver to use your domain controller. Modify the script and run it from PowerShell:
+
+```powershell
+w32tm /config /manualpeerlist:"dc.contoso.com" /syncfromflags:manual /reliable:yes /update
+net stop w32time
+net start w32time
+w32tm /resync /rediscover
+# Check your NTP settings
+w32tm /query /peers
+```
+
+Download (or copy) the following certificates and import them into the local trust store:
+
+- [MicCodSigPCA2011](https://www.microsoft.com/pkiops/certs/MicCodSigPCA2011_2011-07-08.crt)
+
+- [DigiCertGlobalRootCA](https://cacerts.digicert.com/DigiCertGlobalRootCA.crt?utm_medium=organic&utm_source=msazure-visualstudio&referrer=https://msazure.visualstudio.com/&_gl=1*1c6vxin*_gcl_au*MTE2OTcyNDYyMy4xNzUyMTg0NDU5)
+
+- [DigiCertGlobalRootG2](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt?utm_medium=organic&utm_source=msazure-visualstudio&referrer=https://msazure.visualstudio.com/&_gl=1*1c6vxin*_gcl_au*MTE2OTcyNDYyMy4xNzUyMTg0NDU5)
+
+Place them in a folder, for example, C:\AzureLocalDisconnectedOperations\Certs\
+
+Import the certs by running the following:
+
+```powershell
+Import-Certificate -FilePath C:\AzureLocalDisconnectedOperations\Certs\MicCodSigPCA2011_2011-07-08.crt -CertStoreLocation Cert:\LocalMachine\Root -Confirm:$false
+Import-Certificate -FilePath C:\AzureLocalDisconnectedOperations\Certs\DigiCertGlobalRootCA.cer Cert:\LocalMachine\Root -Confirm:$false
+Import-Certificate -FilePath C:\AzureLocalDisconnectedOperations\Certs\DigiCertGlobalRootG2.cer -CertStoreLocation Cert:\LocalMachine\Root -Confirm:$false
+```
+
+
+## Create a subscription for Azure Local nodes (infrastructure)
+Next you should create a subscription that will be used for your Azure Local nodes and for creating the Azure Local instance (cluster).
+
+1. With the operator credentials - log in to the local Azure portal , by accessing https://portal.fqdn (replace FDQN with your domain name)
+1. Click subscriptions 
+1. Click + Add 
+1. In subscription name, give it a name such as 'Starter subscription'
+1. Select the subscription owner that will be having the RBAC owner rights on this subscription
+1. In location leave this to autonomous. 
+1. Hit create and wait until the operation succeeds. Refresh the browser and see the new subscription appear in your list. 
+
+> [!NOTE]  
+    > You can also do this from Azure cli or Powershell if you prefer to automate this process.
+
+### Create resource group and SPN for the Azure Local instance  
+
+Use the operator account to create an SPN for Arc initialization of each Azure Local node. For bootstrap, owner role is required on subscription level. 
+To create the SPN, follow these steps:
+
+1. Configure CLI on your client machine and run this command:
+
+    ```azurecli  
+    $subscriptionName = 'Starter subscription'
+    $resourcegroup = 'azurelocal-disconnected-operations'
+    $appname = 'azlocalclusapp'      
+    az cloud set -n 'azure.local'
+    az login      
+    az account set --subscription $subscriptionName
+    $subscriptionId = az account show --query id --output tsv
+    $g = (az group create -n $resourcegroup -l autonomous)|ConvertFrom-Json  
+    az ad sp create-for-rbac -n $appname --role Owner --scopes "/subscriptions/$($subscriptionId)"  
+    ```  
+
+    Here's an example output:
+
+    ```json  
+    {  
+      "appId": "<AppId>",  
+      "displayName": "azlocalclusapp",  
+      "password": "<RETRACTED>",  
+      "tenant": "<RETRACTED>"  
+    }  
+
+1. Copy out the AppID and password for use in the next step.
+
+    > [!NOTE]
+    > Plan the subscription and resource group where you want to place your nodes and cluster. The resource move action isn't supported.
+    >
+    > The cluster resource created during deployment is used for workloads like VMs and Azure Kubernetes Services, so plan your role-based access controls accordingly.
+    > 
+    > Don't place the cluster resource in the operator subscription, unless you plan to restrict this to only operators with full access to other operations. You can create more subscriptions or place it in the starter subscription.
+
+## Register required resource providers
+
+Make sure you register the required resource providers before deployment. Here's an example of how to automate the resource providers registration from Azure CLI. Make sure you do this 
+
+```azurecli  
+    # Replace with the subscription you just created if you access to multiple subscriptions
+    $subscriptionName = 'Starter subscription'
+    az cloud set -n 'azure.local'
+    az login          
+    az account set --subscription $subscriptionName
+    az provider register --namespace Microsoft.AzureStackHCI
+    az provider register --namespace Microsoft.ExtendedLocation
+    az provider register --namespace Microsoft.ResourceConnector
+    az provider register --namespace Microsoft.EdgeArtifact
+    az provider register --namespace Microsoft.KubernetesConfiguration
+    az provider register --namespace Microsoft.HybridContainerService
+```
+Wait until all resource providers are in the state **Registered**. Here's a sample Azure CLI command to list all resource providers and their statuses.
+
+```azurecli  
+    az provider list -o table
+```
+
+> [!NOTE]
+> You can also register or view resource provider statuses in the local portal. To do this, go to your **Subscription**, click the dropdown arrow for **Settings**, and select **Resource providers**.
+
+
 ## Deploy Azure Local
 
-In this section, verify the installation and create local Azure resources.
+At this point you have a control plane deployed and configured, a subscription and resource group created (intended for your Azure Local deployment) and optionally a SPN created to use for deployment automation.
 
-1. Sign in with the root operator you defined during the deployment.
+In this section, verify the installation and that you are ready to create local Azure resources in the coming sections.
+
+1. Sign in with the root operator you defined during the deployment (or a subscription owner).
 1. From a client with network access to your Ingress IP, open your browser and go to `https://portal.FQDN` (replace FQDN with your domain name)
     - You should be redirected to your identity provider to sign in.
 1. Sign in to your identity provider using the credentials you configured during the deployment.
     - You should see a familiar Azure portal running in your network.
+1. Verify that you have a subscription that you will use for your Azure Local infrastructure (e.g. 'Starter subscription')
+1. Verify that you have the resource providers registered at this subscription
+1. Verify that you have a resource group that you will use for your Azure Local infrastructure (e.g. 'azurelocal-disconnected-operations')
 
-### Initialize each node
+### Initialize each Azure Local node
 
 To initialize each node, follow these steps. Modify where necessary to match your environment details:
 
@@ -547,117 +664,11 @@ To initialize each node, follow these steps. Modify where necessary to match you
     >
     > You can also use the [Configurator App](../deploy/deployment-arc-register-configurator-app.md?view=azloc-2506&preserve-view=true) to initialize each node.
 
-### For fully air-gapped or disconnected deployments (where nodes have no line of sight to internet connection)
+## Pre-create Azure Keyvault
+Due to a known issue with Azure Keyvault and a long wait time, we recommend that you pre-deploy Azure Keyvault at this time before deploying Azure Local.
+For information on how to pre-create Keyvault with a code example - [see known issues](../includes/disconnected-operations-known-issues.md)
 
-To enable Azure Local to be air-gapped or deployed fully disconnected, you must do the following on each node:
-
-- Configure the timeserver to use your domain controller. Modify the script and run it from PowerShell:
-
-```powershell
-w32tm /config /manualpeerlist:"dc.contoso.com" /syncfromflags:manual /reliable:yes /update
-net stop w32time
-net start w32time
-w32tm /resync /rediscover
-# Check your NTP settings
-w32tm /query /peers
-```
-
-Download (or copy) the following certificates and import them into the local trust store:
-
-- [MicCodSigPCA2011](https://www.microsoft.com/pkiops/certs/MicCodSigPCA2011_2011-07-08.crt)
-
-- [DigiCertGlobalRootCA](https://cacerts.digicert.com/DigiCertGlobalRootCA.crt?utm_medium=organic&utm_source=msazure-visualstudio&referrer=https://msazure.visualstudio.com/&_gl=1*1c6vxin*_gcl_au*MTE2OTcyNDYyMy4xNzUyMTg0NDU5)
-
-- [DigiCertGlobalRootG2](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt?utm_medium=organic&utm_source=msazure-visualstudio&referrer=https://msazure.visualstudio.com/&_gl=1*1c6vxin*_gcl_au*MTE2OTcyNDYyMy4xNzUyMTg0NDU5)
-
-Place them in a folder, for example, C:\AzureLocalDisconnectedOperations\Certs\
-
-Import the certs by running the following:
-
-```powershell
-Import-Certificate -FilePath C:\AzureLocalDisconnectedOperations\Certs\MicCodSigPCA2011_2011-07-08.crt -CertStoreLocation Cert:\LocalMachine\Root -Confirm:$false
-Import-Certificate -FilePath C:\AzureLocalDisconnectedOperations\Certs\DigiCertGlobalRootCA.cer Cert:\LocalMachine\Root -Confirm:$false
-Import-Certificate -FilePath C:\AzureLocalDisconnectedOperations\Certs\DigiCertGlobalRootG2.cer -CertStoreLocation Cert:\LocalMachine\Root -Confirm:$false
-```
-
-## Create a subscription for Azure Local nodes (infrastructure)
-Next you should create a subscription that will be used for your Azure Local nodes and for creating the Azure Local instance (cluster).
-
-1. With the operator credentials - log in to the local Azure portal , by accessing https://portal.fqdn (replace FDQN with your domain name)
-1. Click subscriptions 
-1. Click + Add 
-1. In subscription name, give it a name such as 'Starter subscription'
-1. Select the subscription owner that will be having the RBAC owner rights on this subscription
-1. In location leave this to autonomous. 
-1. Hit create and wait until the operation succeeds. Refresh the browser and see the new subscription appear in your list. 
-
-> [!NOTE]  
-    > You can also do this from Azure cli or Powershell if you prefer to automate this process.
-
-### Create resource group and SPN for the Azure Local instance  
-
-Use the operator account to create an SPN for Arc initialization of each Azure Local node. For bootstrap, owner role is required on subscription level. 
-To create the SPN, follow these steps:
-
-1. Configure CLI on your client machine and run this command:
-
-    ```azurecli  
-    $subscriptionName = 'Starter subscription'
-    $resourcegroup = 'azurelocal-disconnected-operations'
-    $appname = 'azlocalclusapp'      
-    az cloud set -n 'azure.local'
-    az login      
-    az account set --subscription $subscriptionName
-    $subscriptionId = az account show --query id --output tsv
-    $g = (az group create -n $resourcegroup -l autonomous)|ConvertFrom-Json  
-    az ad sp create-for-rbac -n $appname --role Owner --scopes "/subscriptions/$($subscriptionId)"  
-    ```  
-
-    Here's an example output:
-
-    ```json  
-    {  
-      "appId": "<AppId>",  
-      "displayName": "azlocalclusapp",  
-      "password": "<RETRACTED>",  
-      "tenant": "<RETRACTED>"  
-    }  
-
-1. Copy out the AppID and password for use in the next step.
-
-    > [!NOTE]
-    > Plan the subscription and resource group where you want to place your nodes and cluster. The resource move action isn't supported.
-    >
-    > The cluster resource created during deployment is used for workloads like VMs and Azure Kubernetes Services, so plan your role-based access controls accordingly.
-    > 
-    > Don't place the cluster resource in the operator subscription, unless you plan to restrict this to only operators with full access to other operations. You can create more subscriptions or place it in the starter subscription.
-
-## Register required resource providers
-
-Make sure you register the required resource providers before deployment. Here's an example of how to automate the resource providers registration from Azure CLI. Make sure you do this 
-
-```azurecli  
-    # Replace with the subscription you just created if you access to multiple subscriptions
-    $subscriptionName = 'Starter subscription'
-    az cloud set -n 'azure.local'
-    az login          
-    az account set --subscription $subscriptionName
-    az provider register --namespace Microsoft.AzureStackHCI
-    az provider register --namespace Microsoft.ExtendedLocation
-    az provider register --namespace Microsoft.ResourceConnector
-    az provider register --namespace Microsoft.EdgeArtifact
-    az provider register --namespace Microsoft.KubernetesConfiguration
-    az provider register --namespace Microsoft.HybridContainerService
-```
-Wait until all resource providers are in the state **Registered**. Here's a sample Azure CLI command to list all resource providers and their statuses.
-
-```azurecli  
-    az provider list -o table
-```
-
-> [!NOTE]
-> You can also register or view resource provider statuses in the local portal. To do this, go to your **Subscription**, click the dropdown arrow for **Settings**, and select **Resource providers**.
-
+Once you have pre-created Azure Keyvault - please allow 20 minutes time before continuing to the portal deployment in next step.
 
 ## Create the Azure Local instance (cluster)
 

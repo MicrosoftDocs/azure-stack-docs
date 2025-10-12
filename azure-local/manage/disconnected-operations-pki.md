@@ -73,7 +73,7 @@ The management endpoint requires two certificates, and you must put them in the 
 
 | Management endpoint certificate  | Required certificate subject  |
 |----------------------|------------------|
-| Server  | Management endpoint IP address: $ManagementIngressIpAddress. <br> If the management endpoint IP is **192.168.100.25**, then the server certificate's subject name must match exactly. For example, **Subject = 192.168.100.25**|
+| Server  | Management endpoint IP address: $ManagementIngressIpAddress. <br> If the management endpoint IP is **192.168.50.100**, then the server certificate's subject name must match exactly. For example, **Subject = 192.168.50.100** . You can also use a FQDN as SAN as long as this resolves to the management ip| 
 | Client  | Use a certificate subject that helps you distinguish it from others. Any string is acceptable. <br> For example, **Subject = ManagementEndpointClientAuth**.  |
 
 ## Create certificates to secure endpoints
@@ -296,9 +296,10 @@ The following example shows how to export your root certificate public key:
 
 ```powershell
 $applianceRootcert = "C:\AzureLocalDisconnectedOperations\applianceRoot.cer"
+$caName = 'corp/myca'
 
 # Option 1) Get the Root CA certificate by its name:
-$RootCACert = Get-ChildItem -Path Cert:\LocalMachine\Root | Where-Object { $_.Subject -like "*YourRootCAName*" } | Select-Object -First 1
+$RootCACert = Get-ChildItem -Path Cert:\LocalMachine\Root | Where-Object { $_.Subject -like "*$($caname)*" } | Select-Object -First 1
 
 # # Option 2) Get the Root CA certificate by its thumbprint:
 $RootCACert = Get-ChildItem -Path Cert:\LocalMachine\Root | Where-Object { $_.Thumbprint -eq "12345678ABCDEFGH607857694DF5E45B68851868" } | Select-Object -First 1
