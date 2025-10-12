@@ -299,19 +299,24 @@ Populate the required parameters based on your deployment planning. Modify the e
 1. Populate the identity configuration object.
 
     ```powershell  
-    $oidcCertChain = Get-CertificateChainFromEndpoint -requestUri 'https://adfs.azurestack.local/adfs'    
-    # $ldapsCertChain = Get-CertificateChainFromEndpoint -requestUri 'https://dc01.azurestack.local'
+    $oidcCertChain = Get-CertificateChainFromEndpoint -requestUri 'https://adfs.azurestack.local/adfs'        
+    # Note this can be ommitted if you do not have ldaps 
+    $ldapsCertChain = Get-CertificateChainFromEndpoint -requestUri 'https://dc01.azurestack.local'
+    # Ldaps default port (Non secure default = 389)
+    $ldapPort = 636 
 
     $ldapPassword = 'RETRACTED'|ConvertTo-SecureString -AsPlainText -Force
-
+    # Populate params with ldaps enabled.
     $identityParams = @{  
         Authority = "https://adfs.azurestack.local/adfs"  
         ClientId = "<ClientId>"  
         RootOperatorUserPrincipalName = "operator@azurestack.local"  
         LdapServer = "adfs.azurestack.local"  
+        LdapPort = $ldapPort 
         LdapCredential = New-Object PSCredential -ArgumentList @("ldap", $ldapPassword)  
-        OidcCertChain = $oidcCertChain
-        SyncGroupIdentifier = "<SynGroupIdentifier>"          
+        SyncGroupIdentifier = "<SynGroupIdentifier>"     
+        OidcCertChainInfo = $oidcCertChain
+        LdapsCertChainInfo = $ldapsCertChain             
     }  
     $identityConfiguration = New-ApplianceExternalIdentityConfiguration @identityParams  
     ```  
