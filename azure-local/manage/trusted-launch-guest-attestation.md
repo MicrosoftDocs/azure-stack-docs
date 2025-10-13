@@ -20,9 +20,9 @@ When you enable guest attestation, an Azure Arc extension called guest attestati
 
 ## Prerequisites
 
-1. Your Azure Local instance must be running version 2509 or later release. 
+- Your Azure Local instance must be running version 2509 or later release. 
 
-1. Register the `Microsoft.Attestation` resource provider with your subscription – see [Register your Azure Local machines with Azure Arc and assign permissions for deployment](../deploy/deployment-arc-register-server-permissions.md?abs=powershell#azure-prerequisites). This must be done before setting up a new Azure Local instance or updating an existing Azure Local instance. This only needs to be done once per subscription. 
+- Register the `Microsoft.Attestation` resource provider with your subscription – see [Register your Azure Local machines with Azure Arc and assign permissions for deployment](../deploy/deployment-arc-register-server-permissions.md?abs=powershell#azure-prerequisites). This must be done before setting up a new Azure Local instance or updating an existing Azure Local instance. This only needs to be done once per subscription. 
 
 ## Enable guest attestation using Azure portal
 
@@ -496,11 +496,11 @@ Command group 'stack-hci-vm' is experimental and under development. Reference an
 
 ## Guidance
 
-1. Guest attestation support relies on and uses the Microsoft Azure Attestation service. When guest attestation is supported, the Azure Local instance is automatically set up with a Microsoft Azure Attestation service endpoint and an attestation policy. For guest attestation to work properly, outbound network access to the Microsoft Azure Attestation service is required. Make sure that relevant policies or network firewall rules for your Azure Local instance allow outbound network access to the Microsoft Azure Attestation service. 
+- Guest attestation support relies on and uses the Microsoft Azure Attestation service. When guest attestation is supported, the Azure Local instance is automatically set up with a Microsoft Azure Attestation service endpoint and an attestation policy. For guest attestation to work properly, outbound network access to the Microsoft Azure Attestation service is required. Make sure that relevant policies or network firewall rules for your Azure Local instance allow outbound network access to the Microsoft Azure Attestation service. 
 
     For example, when using Azure Policy to manage the security posture of your Azure Local instance, you shouldn't disallow resource type `Microsoft.Attestation/attestationProviders`. For more information, see [Disallow resource types in your cloud environment](/azure/governance/policy/tutorials/disallowed-resources). Specifically, the policy `Microsoft.Attestation/attestationProviders/publicNetworkAccess` must be enabled. 
 
-2. There may be situations when you need to manually set up a Microsoft Azure Attestation service endpoint and an associated attestation policy for your Azure Local instance. For example, you may accidentally delete the attestation provider (and the associated attestation policy) from the resource group of your Azure Local instance. Another example, you want to update the attestation policy to use a different attestation root certificate that was provisioned into your Azure Local instance.
+- There may be situations when you need to manually set up a Microsoft Azure Attestation service endpoint and an associated attestation policy for your Azure Local instance. For example, you may accidentally delete the attestation provider (and the associated attestation policy) from the resource group of your Azure Local instance. Another example, you want to update the attestation policy to use a different attestation root certificate that was provisioned into your Azure Local instance.
 
     In such situations, you can run the following to manually set up a Microsoft Azure Attestation service endpoint and an attestation policy for your Azure Local instance. The commands below must be run from one of the machines (nodes) in your Azure Local instance.
  
