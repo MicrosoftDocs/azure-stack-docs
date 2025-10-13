@@ -452,6 +452,24 @@ Follow these steps to apply solution upgrade if you're running AKS workloads on 
 
    To avoid any PowerShell version-related issues in your AKS deployment, you can use this [helper script to delete old AKS-HCI PowerShell modules](https://github.com/Azure/aksArc/issues/130).
 
+## Remediation 12: Resolve subscription state validation failure
+
+If the Azure Stack HCI subscription state test fails, make sure your subscription is active and registered. Follow these steps:
+
+1. Sign in to the [Azure portal](https://portal.azure.com).
+1. Go to **Subscriptions** and select your Azure Stack HCI subscription.
+1. Check the subscription status. If it’s not **Active**, follow the prompts to reactivate or resolve any issues.
+1. Make sure the Azure Stack HCI resource provider is registered:
+   - In your subscription, select **Resource providers**.
+   - Find **Microsoft.AzureStackHCI** and select **Register** if it’s not already registered.
+1. Run the`Sync-AzureStackHCI` cmdlet on any node in the cluster
+
+   ```PowerShell
+   Sync-AzureStackHCI
+   ```
+
+   Example output
+
 ## Next steps
 
 - [Learn how to apply the solution upgrade.](./install-solution-upgrade.md)
