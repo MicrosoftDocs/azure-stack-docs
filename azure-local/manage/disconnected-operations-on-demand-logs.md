@@ -173,8 +173,6 @@ Before you collect logs in a connected disconnected scenario, make sure you:
 
         To learn more about the `Send-AzStackHciDiagnosticData` command, see [Get support for Azure Local deployment issues](../manage/get-support-for-deployment-issues.md).
 
-## Log collection cmdlets
-
 ## Invoke-ApplianceLogCollectionAndSaveToShareFolder
 
 Collect logs in your disconnected environment by running the `Invoke-ApplianceLogCollectionAndSaveToShareFolder` cmdlet. This cmdlet copies logs from the disconnected operations appliance VM to a shared folder. Use `Invoke-ApplianceLogCollectionAndSaveToShareFolder` when the disconnected operations appliance VM management endpoint is accessible.
@@ -237,7 +235,7 @@ After you collect logs into a directory, using the `Invoke-ApplianceLogCollectio
 
 The `Send-DiagnosticData` cmdlet needs your subscription details, for example, the *ResourceGroupName*, *SubscriptionId*, *TenantId*, and *RegistrationRegion*. It also needs credentials, either through manual sign-in or by providing the appropriate *service principal* and *password*. Review the [set up observability for diagnostics and support](#set-up-observability-for-diagnostics-and-support) section for steps to create the *resource group* and *service principal* required to upload logs.
 
-Run `Send-DiagnosticData` on a Windows machine that's connected to the internet. You can't run this cmdlet on Azure Local Hosts because they can't use Azure as the Arc control plane when disconnected operations are configured. When you run the cmdlet, the machine connects to Azure using Arc registration so it can upload data to Microsoft Support. *RegistrationRegion* is the same as *Location* in *ObservabilityConfiguration*.
+Run `Send-DiagnosticData` on a Windows machine that's connected to the internet. You can't run this cmdlet on Azure Local Hosts because they can't use Azure as the Arc control plane when disconnected operations are configured. When you run the cmdlet, the machine connects to Azure using Arc registration so it can upload data to Microsoft Support. *RegistrationRegion* is the same as *Location* in `ObservabilityConfiguration`.
 
 Use this method when you can’t collect logs directly from the appliance VM. For example, use it when the control plane appliance VM has issues and the management endpoint isn’t accessible, or the appliance VM is disconnected from Azure.
 
