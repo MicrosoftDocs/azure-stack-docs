@@ -3,7 +3,7 @@ title: Set up VM affinity rules using Windows PowerShell
 description: Learn how to set up VM affinity rules using Windows PowerShell
 author: alkohli
 ms.topic: how-to
-ms.date: 10/23/2024
+ms.date: 10/10/2025
 ms.author: alkohli
 ms.reviewer: robhind
 ms.service: azure-local
@@ -142,7 +142,7 @@ Remove-ClusterGroupFromAffinityRule -Name Rule1 -Groups Group1
 
 #### Remove-ClusterSharedVolumeFromAffinityRule
 
-The **`Remove-ClusterSharedVolumeFromAffinityRule`** cmdlet is used to remove the Cluster Shared Volumes from a specific rule but doesn't disable or delete the rule, where:
+The **`Remove-ClusterSharedVolumeFromAffinityRule`** cmdlet is used to remove the Cluster Shared Volumes from a specific rule, but doesn't disable or delete the rule, where:
 
 **`-ClusterSharedVolumes`** is the CSV disk that you want to remove from the rule.
 
@@ -234,7 +234,7 @@ DC      SameNode    {SQL1, WEB1}     1
 Anti-affinity rules are "apart" rules that separate resources and place them on different machines, systems, or sites.
 
 ### Scenario 1
-You have two VMs each running SQL Server on the same Azure Local multi-site system. Each VM utilizes a lot of memory, CPU, and storage resources. If the two end up on the same machine, this can cause performance issues with one or both as they compete for memory, CPU, and storage cycles. Using an anti-affinity rule with `DifferentNode` as the rule type, these VMs will always stay on different machines.  
+You have two VMs each running SQL Server on the same Azure Local multi-site system. Each VM utilizes a lot of memory, CPU, and storage resources. If the two VMs end up on the same machine, this can cause performance issues with one or both as they compete for memory, CPU, and storage cycles. Using an anti-affinity rule with `DifferentNode` as the rule type, these VMs will always stay on different machines.  
 
 The example commands would be:
 
