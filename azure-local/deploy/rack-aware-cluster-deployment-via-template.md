@@ -34,7 +34,7 @@ Follow these steps to prepare the Azure resources you need for deployment:
 
 <!--Use include once the public PR gets merged-->
 
-This object ID for the Azure Local Resource Provide (RP) is unique per Azure tenant.
+This object ID for the Azure Local Resource Provider (RP) is unique per Azure tenant.
 
 1. In the Azure portal, search for and go to Microsoft Entra ID.  
 1. Go to the **Overview** tab and search for *Microsoft.AzureStackHCI Resource Provider*.
