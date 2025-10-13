@@ -173,7 +173,9 @@ Before you collect logs in a connected disconnected scenario, make sure you:
 
         To learn more about the `Send-AzStackHciDiagnosticData` command, see [Get support for Azure Local deployment issues](../manage/get-support-for-deployment-issues.md).
 
-## Invoke-ApplianceLogCollectionAndSaveToShareFolder
+## Log collection cmdlets
+
+### Invoke-ApplianceLogCollectionAndSaveToShareFolder
 
 Collect logs in your disconnected environment by running the `Invoke-ApplianceLogCollectionAndSaveToShareFolder` cmdlet. This cmdlet copies logs from the disconnected operations appliance VM to a shared folder. Use `Invoke-ApplianceLogCollectionAndSaveToShareFolder` when the disconnected operations appliance VM management endpoint is accessible.
 
@@ -229,11 +231,11 @@ Before you collect logs, follow these steps to create a share and credentials:
 
 1. After collection, review the logs locally or upload them to Microsoft with the `Send-DiagnosticData` cmdlet.
 
-## Send-DiagnosticData
+### Send-DiagnosticData
 
 After you collect logs into a directory, using the `Invoke-ApplianceLogCollectionAndSaveToShareFolder` cmdlet or by copying them manually, send them to Microsoft with the standalone pipeline. This pipeline connects your host machine to Azure, targets all logs in a user-provided folder, and sends them to Microsoft Support. If the upload fails, the cmdlet tries up to three times and outputs the results when done.
 
-The `Send-DiagnosticData` cmdlet needs your subscription details, for example, the *ResourceGroupName*, *SubscriptionId*, *TenantId*, and *RegistrationRegion*. It also needs credentials, either through manual sign-in or by providing the appropriate *service principal* and *password*. Review the [set up observability for diagnostics and support](#set-up-observability-for-diagnostics-and-support) section for steps to create the *resource group* and *service principal* required to upload logs.
+The `Send-DiagnosticData` cmdlet needs your subscription details, for example, the *ResourceGroupName*, *SubscriptionId*, *TenantId*, and *RegistrationRegion*. It also needs credentials, either through manual sign-in or by providing the appropriate *service principal* and *password*. Review the [Set up observability for diagnostics and support](#set-up-observability-for-diagnostics-and-support) section for steps to create the *resource group* and *service principal* required to upload logs.
 
 Run `Send-DiagnosticData` on a Windows machine that's connected to the internet. You can't run this cmdlet on Azure Local Hosts because they can't use Azure as the Arc control plane when disconnected operations are configured. When you run the cmdlet, the machine connects to Azure using Arc registration so it can upload data to Microsoft Support. *RegistrationRegion* is the same as *Location* in `ObservabilityConfiguration`.
 
@@ -241,7 +243,7 @@ Use this method when you can’t collect logs directly from the appliance VM. Fo
 
 Don’t run the `Send-DiagnosticData` cmdlet on Azure Local host nodes. These nodes are managed by the Azure Local disconnected operations control plane. Run the cmdlet from a Windows machine with Azure connectivity, such as your laptop or desktop.
 
-### Send-DiagnosticData cmdlet examples
+#### Send-DiagnosticData cmdlet examples
 
 Here are some examples of using the `Send-DiagnosticData` cmdlet.
 
@@ -257,7 +259,7 @@ Here are some examples of using the `Send-DiagnosticData` cmdlet.
   Send-DiagnosticData -ResourceGroupName <String> -SubscriptionId <String> -TenantId <String> -RegistrationWithCredential <PSCredential> -RegistrationRegion <String> [-Cloud <String>] -DiagnosticLogPath <String> [-ObsRootFolderPath <String>] [-StampId <Guid>] [<CommonParameters>]
   ```
 
-## Send-DiagnosticData -SaveToPath
+### Send-DiagnosticData -SaveToPath
 
 The `Send-DiagnosticData -SaveToPath` cmdlet works in the disconnected mode, and is the only supported option to copy logs from the Azure Local host nodes. This cmdlet provides detailed diagnostic data to help you troubleshoot issues and is available when the [telemetry and diagnostics extension](../concepts/telemetry-and-diagnostics-overview.md) is installed.
 
