@@ -62,6 +62,7 @@ To start this process, open the **Microsoft Azure Appliance Configuration Manage
 
 > [!NOTE]
 > During the configuration of the appliance, you must provide a user (or SPN) which the appliance then uses for discovery. This user (or SPN) must have **owner** rights on these subscriptions, both to discover resources as well as delegate rights as needed. The Site Recovery Vault discovers all the VMs this user (or SPN) has access to, within the respective tenant.
+> Additionally, during the **Register with Recovery Services vault** step, you’ll be prompted to enter an **ASR replication appliance key**. You can generate this key from your Recovery Services vault in the Azure portal by navigating to **Site Recovery > Prepare infrastructure > Generate registration key**. Ensure that the key corresponds to the vault where the appliance will be registered.
 
 :::image type="content" source="media/site-recovery-deploy-source/appliance-configuration.png" alt-text="Screenshot of portal showing appliance configuration." lightbox="media/site-recovery-deploy-source/appliance-configuration.png":::
 
