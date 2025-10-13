@@ -49,8 +49,7 @@ Consider the following limitations when you're managing VMs on Azure Local:
 - Azure Local VMs only support IPv4 addresses. IPv6 addresses aren't supported.
 
 - Once a logical network is created, you can't update the following:
-  - DNS server
-  - Default gateway
+   - Default gateway
   - IP pools
   - IP address space
   - VLAN ID

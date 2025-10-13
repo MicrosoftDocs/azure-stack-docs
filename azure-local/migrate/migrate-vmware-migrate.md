@@ -3,7 +3,7 @@ title: Migrate VMware VMs to Azure Local using Azure Migrate (preview)
 description: Learn about how to to migrate VMware VMs to your Azure Local instance using Azure Migrate  (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 10/31/2024
+ms.date: 10/10/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.custom: sfi-image-nochange
@@ -122,7 +122,7 @@ Once you have verified that migration is complete and no more machines need to b
 
 ## Enable guest management
 
-After migrating a VM, you may want to enable guest management on that VM. For more information, see [Enable guest management](../manage/manage-arc-virtual-machines.md#enable-guest-management).
+After migrating a VM, you might want to enable guest management on that VM. For more information, see [Enable guest management](../manage/manage-arc-virtual-machines.md#enable-guest-management).
 
 Enabling guest management is supported only on Windows Server 2016 or later, and on Linux guests with Linux Integration Services. For more information, see [Supported Guest OS](/virtualization/hyper-v-on-windows/user-guide/make-integration-service#supported-guest-os).
 
