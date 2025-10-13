@@ -1,6 +1,6 @@
 ---
-title: Collect diagnostic logs for Azure Local (preview)
-description: Learn how to collect diagnostic logs and share them with Microsoft (preview).
+title: Collect diagnostic logs for Azure Local
+description: Learn how to collect diagnostic logs and share them with Microsoft.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
@@ -9,7 +9,7 @@ ms.date: 04/08/2025
 ms.custom: sfi-image-nochange
 ---
 
-# Collect diagnostic logs for Azure Local (preview)
+# Collect diagnostic logs for Azure Local
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
@@ -54,15 +54,9 @@ Keep in mind the following information before you start log collection:
 - The time required for log collection depends on the time range you specify. The longer the time range, the more time it'll take for log collection. Therefore, we recommend limiting the time range to only the logs you need.
 - Log collections longer than 24 hours aren't supported.
 - Attempting multiple log collections simultaneously will result in a failure.
-- Make sure the `DeviceManagementExtension` version is **1.2510.0.3012 and later**. If it's not, update the connected machine extension on all nodes to ensure compatibility, consistency, and successful log collection. Use the following command.
+- If your cluster runs a build earlier than 2510, the portal shows a banner that says *Device Management Extension is outdated and not support. Update to the latest version*, and disables the **Send Logs** button. To collect logs, upgrade your cluster to build 2510 or later.
 
-  - Make sure you replace the extension name and version with the appropriate values for your environment.
-
-      ```powershell
-      $target = @{"Microsoft.Compute.CustomScriptExtension" = @{"targetVersion"="1.10.12"}} Update-AzConnectedExtension -ResourceGroupName $env.ResourceGroupName -MachineName $machineName -ExtensionTarget $target
-      ```
-
-  For more information about updating the connected machine extension, see [Update-AzConnectedExtension](/powershell/module/az.connectedmachine/update-azconnectedextension?view=azps-12.5.0&preserve-view=true).
+   :::image type="content" source="./media/collect-logs/device-management-extension-disabled-logs.png" alt-text="Screenshot that shows the banner message and disabled send logs button." lightbox="./media/collect-logs/device-management-extension-disabled-logs.png" :::
 
 ### [Azure portal (recommended)](#tab/azureportal)
 
@@ -85,6 +79,9 @@ Follow these steps to collect diagnostic logs for your Azure Local instance via 
 1. The **Log activity** table shows the status of log collections. For more details on a specific log collection, select the link under **Time collected** and review the details in the **Log detail** pane. If you encounter an issue and need help from Microsoft Support, they might request the **Correlation ID** to locate the logs.
 
    :::image type="content" source="./media/collect-logs/log-details-pane.png" alt-text="Screenshot shows the Log details pane." lightbox="./media/collect-logs/log-details-pane.png" :::
+
+> [!NOTE]
+> In the Portal, after you start log collection, status updates can take up to five minutes to appear. This is expected behavior.
 
 ## [PowerShell](#tab/powershell)
 
@@ -635,6 +632,7 @@ When requested, share the following information with Microsoft Support. Get this
 - `CorrelationId`: A unique identifier to locate the logs.
 
 ---
+
 
 ## Next steps
 
