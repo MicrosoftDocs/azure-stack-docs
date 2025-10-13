@@ -135,7 +135,7 @@ Get-Content "C:\CloudDeployment\Logs\MergedLLDPData.json" | ConvertFrom-Json
 
 #### Sample JSON output
 
-- Sample output of the validation test, **AzStackHCI_LLDP_Test_Intra_Zone_Switch_Consistency**.
+- Sample output of the validation test, **AzStackHci_LLDP_Test_Intra_Zone_Switch_Consistency**.
 
    This test validates that all nodes within the same Availability Zone (rack) are connected to the same set of switches, as required by the Rack Aware configuration.
 
@@ -143,7 +143,7 @@ Get-Content "C:\CloudDeployment\Logs\MergedLLDPData.json" | ConvertFrom-Json
 
    :::image type="content" source="./media/rack-aware-cluster-readiness-check/sample-output-1.png" alt-text="Screenshot of a sample output to check switch consistency." lightbox="./media/rack-aware-cluster-readiness-check/sample-output-1.png":::
 
-- Sample output of the validation test, **AzStackId_LLDP_Test_Cross_Zone_Switch_Isolation**.
+- Sample output of the validation test, **AzStackHci_LLDP_Test_Cross_Zone_Switch_Isolation**.
 
    This test validates cross-zone switch isolation in a Rack Aware cluster environment.
 
