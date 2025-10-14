@@ -1,25 +1,25 @@
 ---
-title: Spread Azure Kubernetes Service (AKS) nodes in Rack Aware cluster
-description: Learn how to deploy AKS clusters with Rack Aware cluster support to ensure fault tolerance and evenly distribute nodes across Azure Local zones.
+title: Spread Azure Kubernetes Service (AKS) nodes in rack aware cluster
+description: Learn how to deploy AKS clusters with rack aware cluster support to ensure fault tolerance and evenly distribute nodes across Azure Local zones.
 author: ronmiab
 ms.author: robess
 ms.reviewer: mindyqdiep
-ms.date: 10/03/2025
+ms.date: 10/14/2025
 ms.topic: concept-article
 ---
 
-# Spread Azure Kubernetes Service (AKS) nodes in Rack Aware cluster
+# Spread Azure Kubernetes Service (AKS) nodes in rack aware cluster
 
-This article explains how to deploy Azure Kubernetes Service (AKS) clusters with Rack Aware cluster support. You'll learn how to ensure fault tolerance and evenly distribute nodes across Azure local zones for improved reliability.
+This article explains how to deploy Azure Kubernetes Service (AKS) clusters with rack aware cluster support. You'll learn how to ensure fault tolerance and evenly distribute nodes across Azure Local zones for improved reliability.
 
-## About AKS and Rack Aware cluster
+## About AKS and rack aware cluster
 
 In Azure Kubernetes Service (AKS), a node is a virtual machine (VM) that runs your containerized applications. These nodes are part of a node pool, which is a group of VMs with the same configuration. Each AKS cluster has two main components:
 
 - **Control Plane**: Azure manages the service. The control plane orchestrates workloads and handles cluster operations.
 - **Nodes**: Worker machines (VMs) that run your application containers.
 
-A Rack Aware cluster in Azure Local is an architecture that improves fault tolerance and data distribution. It clusters machines across two physical racks in separate rooms or buildings, connected with high bandwidth and low latency. This setup helps prevent data loss or downtime if one rack fails, such as during a fire or power outage. Data is distributed evenly between the racks, so if one rack goes down, the other keeps your data available. This design is especially useful in environments like manufacturing plants that need high availability.
+A rack aware cluster in Azure Local is an architecture that improves fault tolerance and data distribution. It clusters machines across two physical racks in separate rooms or buildings, connected with high bandwidth and low latency. This setup helps prevent data loss or downtime if one rack fails, such as during a fire or power outage. Data is distributed evenly between the racks, so if one rack goes down, the other keeps your data available. This design is especially useful in environments like manufacturing plants that need high availability.
 
 ## Prerequisites
 
@@ -27,15 +27,15 @@ Review [Create Kubernetes clusters using Azure CLI](/azure/aks/aksarc/aks-create
 
 ## Key considerations
 
-When you distribute AKS nodes in Rack Aware clusters, keep these key points in mind:
+When you distribute AKS nodes in rack aware clusters, keep these key points in mind:
 
 - Make sure the AKS control plane has more nodes than a single zone. This setup lets the control plane deploy across zones and recover faster. For example, in a 3:3 rack aware configuration, use a five-node control plane to ensure a 3:2 split. If you use only three nodes, you can end up with a 3:0 split, which slows recovery.
 
-- Control plane high availability isn't supported in Rack Aware clusters because they support only two zones. If a zone fails, the control plane majority can be affected, such as in a 2:1 or 3:2 split.
+- Control plane high availability isn't supported in rack aware clusters because they support only two zones. If a zone fails, the control plane majority can be affected, such as in a 2:1 or 3:2 split.
 
 ## Deploy control plane nodes across the zones
 
-AKS deployment supports any node configuration in Azure Local with Rack Aware cluster support. In this example, a 2:2 configuration (two zones with two nodes each) is used. Follow these steps to spread AKS nodes across zones.
+AKS deployment supports any node configuration in Azure Local with rack aware cluster support. In this example, a 2:2 configuration (two zones with two nodes each) is used. Follow these steps to spread AKS nodes across zones.
 
 1. Deploy AKS with control plane nodes across the zones using the `az aksarc create` cmdlet.
     - Make sure the number of control plane nodes is greater than the number of physical hosts in one zone.
