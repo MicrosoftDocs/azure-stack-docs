@@ -1,6 +1,6 @@
 ---
-title: Software Defined Networking (SDN) enabled by Azure Arc on Azure Local (preview)
-description: Software Defined Networking enabled by Arc provides a way to centrally configure and manage logical networks, network security groups, network security rules via the Azure portal and Azure CLI in Azure Local (preview).
+title: Software Defined Networking (SDN) enabled by Azure Arc on Azure Local
+description: Software Defined Networking enabled by Arc provides a way to centrally configure and manage logical networks, network security groups, network security rules via the Azure portal and Azure CLI in Azure Local.
 author: alkohli
 ms.author: alkohli
 ms.topic: conceptual
@@ -8,15 +8,13 @@ ms.service: azure-local
 ms.date: 09/05/2025
 ---
 
-# Software Defined Networking enabled by Azure Arc on Azure Local (preview)
+# Software Defined Networking enabled by Azure Arc on Azure Local
 
 ::: moniker range=">=azloc-2506"
 
 This article explains Software Defined Networking (SDN) enabled by Azure Arc on Azure Local. It covers SDN management methods, when to use each method, and supported and unsupported SDN scenarios.
 
 SDN offers a centralized way to configure and manage networks and network services such as switching, routing, and load balancing in your datacenter. SDN enables you to dynamically create, secure, and connect your network to meet the evolving needs of your applications.
-
-[!INCLUDE [important](../includes/hci-preview.md)]
 
 ## About SDN management on Azure Local
 
