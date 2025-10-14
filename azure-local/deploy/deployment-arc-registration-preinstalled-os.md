@@ -3,13 +3,15 @@ title: Azure Arc registration workflow for systems with OEM images
 description: Learn about the Azure Arc registration workflow for systems with OEM images.
 author: alkohli
 ms.topic: overview
-ms.date: 10/07/2025
+ms.date: 10/14/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
 ---
 
 # Azure Arc registration workflow for systems with OEM images
+
+::: moniker range=">=azloc-2510"
 
 This article describes the Azure Arc registration workflow for systems using Original Equipment Manufacturer (OEM) images. It replaces [Step 3: Run registration script](./deployment-with-azure-arc-gateway.md#step-3-run-registration-script) in [Register Azure Local with Azure Arc using Arc gateway](./deployment-with-azure-arc-gateway.md) for both with proxy and without proxy scenarios. All other instructions remain the same.
 
@@ -53,5 +55,18 @@ Follow these steps to register Azure Local systems with Azure Arc when using pre
     :::image type="content" source="media/deployment-arc-registration-preinstalled-os/authentication-device-code.png" alt-text="Screenshot of the console window with the device code and the URL to open." lightbox="media/deployment-arc-registration-preinstalled-os/authentication-device-code.png":::
 
 ## Next steps
-<!--confirm next steps-->
-- [Step 4: Verify the Azure Arc gateway setup is successful](./deployment-with-azure-arc-gateway.md#step-4-verify-the-azure-arc-gateway-setup-is-successful) for both with proxy and without proxy scenarios.
+
+- If using Arc gateway:
+    - For proxy scenarios, see [Step 4: Verify the Azure Arc gateway setup is successful](./deployment-with-azure-arc-gateway.md#step-4-verify-the-azure-arc-gateway-setup-is-successful).
+    - For without proxy scenarios, see [Step 4: Verify the Azure Arc gateway setup is successful](./deployment-with-azure-arc-gateway.md#step-4-verify-the-azure-arc-gateway-setup-is-successful).
+- If not using Arc gateway:
+    - For proxy scenarios, see [Step 4: Verify the setup is successful](./deployment-without-azure-arc-gateway.md#step-4-verify-the-setup-is-successful).
+    - For without proxy scenarios, see [Step 4: Verify the setup is successful](./deployment-without-azure-arc-gateway.md#step-4-verify-the-setup-is-successful-1).
+
+::: moniker-end
+
+::: moniker range="<=azloc-2509"
+
+This feature is available only in Azure Local 2510 or later.
+
+::: moniker-end

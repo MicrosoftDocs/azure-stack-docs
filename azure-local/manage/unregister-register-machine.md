@@ -12,7 +12,7 @@ ms.date: 10/11/2025
 
 > Applies to: Azure Local 2508 and later
 
-This article provides guidance on how to unregister and re-register Azure Local machines without having to install the operating system (OS) again. This method uses PowerShell cmdlets.
+This article provides guidance on how to unregister and re-register Azure Local machines without having to install the operating system (OS) again. This method uses PowerShell cmdlets and applies to registration with and without Azure Arc gateway.
 
 
 ## About reregistration Azure Local machines
@@ -41,7 +41,7 @@ Before you begin, ensure you have the following:
 1. Unregister the machine. Run the following command:
 
    ```powershell
-   Start-ArcBootstrapReset -ArmAccessToken $ArmAccessToken -Wait
+   Start-ArcBootstrapReset -ArmAccessToken $ArmAccessToken -TenantId $TenantId -Wait
    ```
 
    Here's a description of the parameters used in the command:
@@ -50,6 +50,7 @@ Before you begin, ensure you have the following:
    |---------|---------|
    |`ArmAccessToken`     | [Optional] The Azure Resource Manager access token. If omitted, device code authentication is prompted.     |
    |`Wait`     | [Optional] When specified, the cmdlet monitors and reports progress until completion. |
+   |`TenantId`     | [Required] When specified, the cmdlet monitors and reports progress until completion. |
 
    Here's a sample output of the command:    
 
