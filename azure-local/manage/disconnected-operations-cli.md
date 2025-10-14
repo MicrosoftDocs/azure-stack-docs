@@ -245,7 +245,7 @@ The following table lists the CLI extensions supported on Azure Local disconnect
 
 ## Troubleshoot Azure CLI
 
-To troubleshoot Azure CLI, run Azure CLI commands with the --debug parameter to get detailed logs and a stack trace. If the client doesn't trust your root CA, requests to private cloud endpoints can fail with SSL or connection errors.
+To troubleshoot Azure CLI, run CLI commands with the --debug parameter to get detailed logs and a stack trace. If the client doesn't trust your root CA, requests to private cloud endpoints can fail with SSL or connection errors.
 
 ::: moniker-end
 
