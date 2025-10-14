@@ -108,7 +108,7 @@ Note the following important changes to make before you upgrade to any of the av
 > :::image type="content" source="media/nexus-kubernetes/etcd-upgrade-issue-generic.png" alt-text="etcd upgrade flow":::
 >
 > For example, a user has a cluster that is currently on version bundle v1.30.8-4.3.0 and wants to upgrade to a Kubernetes version available in the 4.7 release (v1.31 for n+1). The user must first upgrade the cluster to version bundle v1.31.10-4.5.0. Then the user can perform a subsequent upgrade to version bundle v1.31.12-4.7.0. The upgrade path in this scenario is:
-> :::image type="content" source="media/nexus-kubernetes/etcd-upgrade-issue-specific.png" alt-text="NAKS version bundle upgrade to avoid etcd issue":::
+> :::image type="content" source="media/nexus-kubernetes/etcd-upgrade-issue-specific.png" alt-text="Flow diagram of a specific Nexus Kubernetes version bundle upgrade addressing the etcd issue":::
 <!-- prettier-ignore-end -->
 
 <!-- prettier-ignore-start -->
