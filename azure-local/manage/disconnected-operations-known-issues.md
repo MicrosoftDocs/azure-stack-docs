@@ -9,20 +9,21 @@ ms.reviewer: hafianba
 ai-usage: ai-assisted
 ---
 ::: moniker range=">=azloc-2506"
-# What is new in disconnected operations for Azure Local
-## 2509
 
- - Supports Azure Local 2508 ISO and capabilities included in Azure Local 2508.
- - Added support for SCOM 2025 (Fixes issue with SCOM MP failing on newer SCOM). Supporting SCOM 2022 and SCOM 2025
+# What's new in disconnected operations for Azure Local
+
+## Features and improvements in 2509
+
+ - Adds support for Azure Local 2508 ISO and its capabilities.
+ - Adds support for SCOM 2025 and fixes a management pack failure on newer SCOM versions; continues support for SCOM 2022.
  - This release enables the update scenario. When 2510 is released, you will be able to test updating from this version to 2510 of ALDO. This will also include the ability to update Azure Local that is connected to disconnected operations.
- - Security improvements 
- - Observability improvements
- - Ldaps and custom port for ldap binding enabled
- - Portal/UX fixes. 
- - OperationsModule improvements - improved logging and error messages. Introduced certificate validation and CSR generation.
- - Enables use of FQDN in SAN for management certificate
- - External certificate rotation added in OperationsModule (Set-ApplianceExternalEndpointCertificates)
-
+ - Improves security.
+ - Improves observability.
+ - Enables Ldaps and custom port for ldap binding.
+ - Fixes Portal and UX issues.
+ - Improves OperationsModule logging and error messages and adds certificate validation and CSR generation.
+ - Adds external certificate rotation in OperationsModule. For example, `Set-ApplianceExternalEndpointCertificates`.
+ - Enables use of a FQDN in the SAN of the management certificate.
 
 # Known issues for disconnected operations for Azure Local
 This article lists critical known issues and their workarounds in disconnected operations for Azure Local.
@@ -31,15 +32,15 @@ These release notes update continuously, and we add critical issues that need a 
 
 ## Known issues in the preview release
 
-### Memory consumption (If you have less than 128 GB memory available on each node)
-This release will use 78 GB of memory for the disconnected operations appliance. If you have less than 128 GB of memory on your nodes, do take the following actions before deploying Azure Local (instances) after a successful appliance deployment. 
+### Memory consumption when there's less than 128 GB of memory per node
 
-- Shutdown the IRVM01VM  (on the seednode)
-- Adjust the VM memory (IRVM01) to use 64GB
-- Start the IRVM01 Appliance 
-- Wait for convergence and monitor Get-ApplianceHealthState until all services converge
-- Continue with deploying Azure Local
+The disconnected operations appliance uses 78 GB of memory. If a node has less than 128 GB of memory, complete these steps after the appliance deploys and before you deploy Azure Local instances.
 
+- Shut down the IRVM01VM on the seed node (first node).
+- Change the IRVM01 virtual machine memory setting to 64 GB.
+- Start the IRVM01 appliance.
+- Wait for convergence. Monitor `Get-ApplianceHealthState` until all services converge.
+- Deploy Azure Local instances.
 
 [!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
 
