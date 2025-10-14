@@ -4,13 +4,21 @@ description: Learn about new features in Azure Migrate for Azure Local.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 09/29/2025
+ms.date: 10/13/2025
 ms.service: azure-local
 ---
 
 # What's new in Azure Migrate for Azure Local
 
 This article lists the various features and improvements that are available in virtual machine (VM) migration to Azure Local.
+
+## August 2025
+
+This release includes these features and improvements:
+
+- **Tag updates for Data Replication Vault** – You can now correctly create and update tags for the Azure Migrate Data Replication Vault resource in Azure portal. This improves organization, tag-based policies, and automation.
+
+- **Azure portal UX improvements** – Fixed a set of minor issues across Azure Migrate blades for Azure Local to make replication and migration flows smoother and more reliable.
 
 ## July 2025
 
@@ -49,7 +57,7 @@ This release includes these features and improvements:
 
 This release includes these features and improvements:
 
-- **Linux VM static IP migration support** – Azure Migrate to Azure Local migrations now support preserving static IP addresses during Linux virtual machine (VM) migrations by following steps documented at [Maintain static IP addresses during migration](migrate-maintain-ip-addresses.md?&tabs=linux).
+- **Linux VM static IP migration support** – Azure Migrate to Azure Local migrations now offers scripts that preserve static IP addresses during Linux virtual machine (VM) migrations. See [Maintain static IP addresses during migration](migrate-maintain-ip-addresses.md?&tabs=linux).
 
 - **Customizable physical sector size on migrated disks** – You can now select either 512B or 4KB physical sector sizes for migrated disks, enabling better alignment with your workload and storage configuration.
 
