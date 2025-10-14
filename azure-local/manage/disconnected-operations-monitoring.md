@@ -88,11 +88,12 @@ warnings.
 
 - Notification and reporting support.
 
-To download the System Center Management Pack and user guide - please review the table and download the management pack suporting your SCOM installation
-| SCOM Version                | Management pack (msi)      | Mangement pack guide (doc)
-|----------------------------|--------------|-----------|
-| SCOM 2022                 | [Microsoft System Center Management Pack for Azure Local with disconnected operations](https://aka.ms/disconnected-operations-scom-mp)  | [Docs](https://aka.ms/disconnected-operations-scom-docs)|
-| SCOM 2025                | [Microsoft System Center Management Pack for Azure Local with disconnected operations](https://aka.ms/disconnected-operations-scom-mp-2025)| [Docs](https://aka.ms/disconnected-operations-scom-2025-docs)
+The following table lists the download and user guide for the System Center Management Pack. Select the download that supports your SCOM installation.
+
+| SCOM Version   | Management pack (MSI)      | Management pack guide   |
+|----------------|----------------------------|-------------------------|
+| SCOM 2022      | [Microsoft System Center Management Pack for Azure Local with disconnected operations](https://aka.ms/disconnected-operations-scom-mp)  | [Guide](https://aka.ms/disconnected-operations-scom-docs)|
+| SCOM 2025      | [Microsoft System Center Management Pack for Azure Local with disconnected operations](https://aka.ms/disconnected-operations-scom-mp-2025) | [Guide](https://aka.ms/disconnected-operations-scom-2025-docs) |
 
 For monitoring failover clusters, see [Monitoring Failover Cluster with Operations Manager](/system-center/scom/manage-monitor-clusters-overview).
 
