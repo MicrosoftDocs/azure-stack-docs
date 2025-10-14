@@ -480,7 +480,7 @@ Import-Certificate -FilePath C:\AzureLocalDisconnectedOperations\Certs\DigiCertG
 
 Create a subscription for your Azure Local nodes and the Azure Local instance (cluster).
 
-1. Sign in to the local Azure portal at https://portal.<FQDN>. Replace <FQDN> with your domain name.  
+1. Sign in to the local Azure portal at https://portal.</FQDN>. Replace </FQDN> with your domain name.  
 2. Go to **Subscriptions**.  
 3. Select **+ Add**.  
 4. For Subscription name, enter a name such as *Starter subscription*.  
