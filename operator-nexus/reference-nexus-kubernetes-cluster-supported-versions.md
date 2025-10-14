@@ -101,10 +101,8 @@ Note the following important changes to make before you upgrade to any of the av
 - Starting with 4.6.0, the ipam-cni-plugin version reflects the internal app version (4.6.0-32) versus the chart version (1.0.10). For 4.6.0, both are shown for transition's sake.
 
 <!-- prettier-ignore-start -->
-> [!CAUTION] 
-> **Mitigation for Nexus AKS Cluster version bundle upgrades impacting v4.3.0 or earlier due to known etcd upgrade issue**
->
-> There's an external etcd bug that affects etcd upgrades from etcd version v3.5 to v3.6. Users shouldn't upgrade a Nexus AKS version bundle from version 4.3.0 or earlier to a version bundle that is 4.6.0 or later without first upgrading to version bundle 4.4.0 or 4.5.0. There's a high likelihood that the upgrade fails due to this etcd issue. Details of the etcd bug can be found here [How to Prevent a Common Failure when Upgrading etcd v3.5 to v3.6](https://etcd.io/blog/2025/upgrade_from_3.5_to_3.6_issue/).
+> [!CAUTION]
+> **Users shouldn't upgrade a Nexus AKS version bundle from version 4.3.0 or earlier to a version bundle that is 4.6.0 or later without first upgrading to version bundle 4.4.0 or 4.5.0.** There's an external etcd bug that affects upgrades from etcd version v3.5 to v3.6. There's a high likelihood that a Nexus Kubernetes v4.3.0 or earlier upgrade to v4.6.0 or later fails due to this etcd issue. Details of the etcd bug can be found here [How to Prevent a Common Failure when Upgrading etcd v3.5 to v3.6](https://etcd.io/blog/2025/upgrade_from_3.5_to_3.6_issue/).
 >
 > To mitigate this potential upgrade issue, users are advised to perform a two-step upgrade. The cluster must first be upgraded to a version bundle that is produced in either the 4.4 or 4.5 release. Then it can be upgraded to a new version bundle from either 4.6 or 4.7. Here's a simplified summary of the recommended upgrade path:
 > :::image type="content" source="media/nexus-kubernetes/etcd-upgrade-issue-generic.png" alt-text="etcd upgrade flow":::
