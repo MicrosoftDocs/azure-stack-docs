@@ -468,7 +468,18 @@ If the Azure Stack HCI subscription state test fails, make sure your subscriptio
    Sync-AzureStackHCI
    ```
 
-   Example output
+   Here's an example
+
+   ```console
+    [192.168.200.92]: PS C:\Users\Administrator.v\Documents> Sync-AzureStackHCI
+    [192.168.200.92]: PS C:\Users\Administrator.v\Documents> Sync-AzureStackHCI -verbose
+    VERBOSE: Attempting version check on localhost
+    VERBOSE: Checking version on localhost
+    VERBOSE: Negotiated version : Version4_0
+    VERBOSE: LocalHost, Negotiated version set to: Version3_0
+    VERBOSE: Successfully scheduled a sync with Azure.
+    [192.168.200.92]: PS C:\Users\Administrator.v\Documents> 
+    ```
 
 ## Next steps
 
