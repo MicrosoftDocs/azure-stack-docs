@@ -100,7 +100,10 @@ Note the following important changes to make before you upgrade to any of the av
 - The azure-arc-k8sagents version refers to the version of this Feature shipped with the version bundle. The Arc-enabled Kubernetes agent is set to auto upgrade to the latest version of the agent whenever it's available.
 - Starting with 4.6.0, the ipam-cni-plugin version reflects the internal app version (4.6.0-32) versus the chart version (1.0.10). For 4.6.0, both are shown for transition's sake.
 
-> [!CAUTION]
+<!-- prettier-ignore-start -->
+> [!CAUTION] 
+> **Mitigation for Nexus AKS Cluster version bundle upgrades impacting v4.3.0 or earlier due to known etcd upgrade issue**
+>
 > There's an external etcd bug that affects etcd upgrades from etcd version v3.5 to v3.6. Users shouldn't upgrade a Nexus AKS version bundle from version 4.3.0 or earlier to a version bundle that is 4.6.0 or later without first upgrading to version bundle 4.4.0 or 4.5.0. There's a high likelihood that the upgrade fails due to this etcd issue. Details of the etcd bug can be found here [How to Prevent a Common Failure when Upgrading etcd v3.5 to v3.6](https://etcd.io/blog/2025/upgrade_from_3.5_to_3.6_issue/).
 >
 > To mitigate this potential upgrade issue, users are advised to perform a two-step upgrade. The cluster must first be upgraded to a version bundle that is produced in either the 4.4 or 4.5 release. Then it can be upgraded to a new version bundle from either 4.6 or 4.7. Here's a simplified summary of the recommended upgrade path:
@@ -108,6 +111,7 @@ Note the following important changes to make before you upgrade to any of the av
 >
 > For example, a user has a cluster that is currently on version bundle v1.30.8-4.3.0 and wants to upgrade to a Kubernetes version available in the 4.7 release (v1.31 for n+1). The user must first upgrade the cluster to version bundle v1.31.10-4.5.0. Then the user can perform a subsequent upgrade to version bundle v1.31.12-4.7.0. The upgrade path in this scenario is:
 > :::image type="content" source="media/nexus-kubernetes/etcd-upgrade-issue-specific.png" alt-text="NAKS version bundle upgrade to avoid etcd issue":::
+<!-- prettier-ignore-end -->
 
 <!-- prettier-ignore-start -->
 | Kubernetes Version | Release Identifier | OS Image | azure-arc-k8sagents | azure-arc-servers | calico | cloud-provider-kubevirt | coredns image | csi-nfs | csi-volume | etcd image | ipam-cni-plugin | kube-vip image | metallb | metrics-server | multus | node-local-dns | pause image | sriov-dp |
