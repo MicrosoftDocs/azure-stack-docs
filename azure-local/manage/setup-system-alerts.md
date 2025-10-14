@@ -6,7 +6,7 @@ author: ronmiab
 ms.author: robess
 ms.service: azure-local
 ms.reviewer: kimlam
-ms.date: 10/15/2024
+ms.date: 10/10/2025
 ms.custom: sfi-image-nochange
 ---
 
@@ -90,13 +90,13 @@ After the information appears, you can examine the logs and create alerts based 
 
 ### Set up alerts for multiple clusters
 
-To set a new or change an existing query to accommodate multiple clusters ClusterArmId's, add the `| where ClusterArmId in~` clause to your query. Include the ClusterArmId's for each of the clusters you want to use in your query. For example, `| where ClusterArmId in~ ('ClusterArmId1', 'ClusterArmId2', 'ClusterArmId3')`
+To set a new query or change an existing query to accommodate multiple clusters ClusterArmId's, add the `| where ClusterArmId in~` clause to your query. Include the ClusterArmId's for each of the clusters you want to use in your query. For example, `| where ClusterArmId in~ ('ClusterArmId1', 'ClusterArmId2', 'ClusterArmId3')`
 
 :::image type="content" source="media/setup-system-alerts/multiple-clusters.png" alt-text="Screenshot of a query to show logs for multiple clusters." lightbox="media/setup-system-alerts/multiple-clusters.png":::
 
 ## Log query results
 
-After adding logs, you should confirm that you get the expected results by running your query against the workspace that stores your cluster logs. If you don't get the expected results, correct your log query and rerun it.
+After adding logs, confirm that you get the expected results by running your query against the workspace that stores your cluster logs. If you don't get the expected results, correct your log query and rerun it.
 
 When creating a new alert rule, you must set conditional details to summarize your query results. These details are based on three categories: measurement, split by dimensions, and alert logic. In your alert details, fill in the following components:
 
