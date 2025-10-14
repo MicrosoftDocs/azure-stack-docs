@@ -1,22 +1,22 @@
 ---
-title: Azure Resource Manager template deployment for Rack Aware cluster (Preview)
-description: Learn how to prepare and then deploy Rack Aware cluster using the Azure Resource Manager template (Preview).
+title: Azure Resource Manager template deployment for Azure Local rack aware cluster (Preview)
+description: Learn how to prepare and then deploy Azure Local rack aware cluster using the Azure Resource Manager template (Preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 10/13/2025
+ms.date: 10/14/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
 ---
 
-# Deploy Rack Aware cluster using Azure Resource Manager deployment template (Preview)
+# Deploy Azure Local rack aware cluster using Azure Resource Manager deployment template (Preview)
 
-This article describes how to use an Azure Resource Manager (ARM) template in the Azure portal to deploy a Rack Aware cluster.
+This article describes how to use an Azure Resource Manager (ARM) template in the Azure portal to deploy a rack aware cluster.
 
 [!INCLUDE [important](../includes/hci-preview.md)]
 
 > [!IMPORTANT]
-> ARM template deployment of Rack Aware cluster is targeted for deployments-at-scale. The intended audience for this deployment is IT administrators who have experience deploying Rack Aware clusters. We recommend that you deploy a system via the Azure portal first, and then perform subsequent deployments via the ARM template.
+> ARM template deployment of rack aware cluster is targeted for deployments-at-scale. The intended audience for this deployment is IT administrators who have experience deploying rack aware clusters. We recommend that you deploy a system via the Azure portal first, and then perform subsequent deployments via the ARM template.
 
 ## Prerequisites
 
@@ -86,15 +86,15 @@ Use the **Select a template** tab to choose the template for your deployment.
   
 1. Select the **Select template** button to continue to the **Basics** tab.
   
-    :::image type="content" source="./media/rack-aware-cluster-deployment-via-template/select-a-template-tab.png" alt-text="Screenshot showing template to deploy Rack Aware cluster." lightbox="./media/rack-aware-cluster-deployment-via-template/select-a-template-tab.png":::
+    :::image type="content" source="./media/rack-aware-cluster-deployment-via-template/select-a-template-tab.png" alt-text="Screenshot showing template to deploy rack aware cluster." lightbox="./media/rack-aware-cluster-deployment-via-template/select-a-template-tab.png":::
   
 #### Basics tab
   
 Use the **Basics** tab to provide the essential information to initiate the deployment.
 
-This section describes how to configure the **Basics** tab using the following sample Rack Aware cluster configuration:
+This section describes how to configure the **Basics** tab using the following sample rack aware cluster configuration:
   
-You deploy a Rack Aware cluster with four machines, two in each rack:
+You deploy a rack aware cluster with four machines, two in each rack:
   
 - **node1** and **node2** are physically located in the same rack (**Zone1**).
 - **node3** and **node4** are located in a different rack (**Zone2**).
@@ -110,7 +110,7 @@ For an example of a parameter JSON file that shows the format of various inputs,
   
     :::image type="content" source="./media/rack-aware-cluster-deployment-via-template/basics-tab.png" alt-text="Screenshot showing the Edit parameters button on the Basics tab." lightbox="./media/rack-aware-cluster-deployment-via-template/basics-tab.png":::
   
-1. Configure all required parameters. Configure the following extra parameters required for Rack Aware cluster deployment. You can use the sample JSON snippets to deploy the cluster described in the example configuration.
+1. Configure all required parameters. Configure the following extra parameters required for rack aware cluster deployment. You can use the sample JSON snippets to deploy the cluster described in the example configuration.
     
     - **Arc node resource IDs.**
       
@@ -148,7 +148,7 @@ For an example of a parameter JSON file that shows the format of various inputs,
         ```
   
     - **Cloud witness configuration.**
-      Rack Aware cluster requires cloud witness. Enter the name of the cloud witness, which is created during the deployment process.
+      rack aware cluster requires cloud witness. Enter the name of the cloud witness, which is created during the deployment process.
       
         ```json
         "witnessType": {
