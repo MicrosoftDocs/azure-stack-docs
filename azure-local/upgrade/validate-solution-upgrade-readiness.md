@@ -462,7 +462,7 @@ If the Azure Stack HCI subscription state test fails, make sure your subscriptio
 1. Make sure the Azure Stack HCI resource provider is registered:
    - In your subscription, select **Resource providers**.
    - Find **Microsoft.AzureStackHCI** and select **Register** if it’s not already registered.
-1. Run the`Sync-AzureStackHCI` cmdlet on any node in the cluster
+1. Run the`Sync-AzureStackHCI` cmdlet on any node in the cluster.
 
    ```PowerShell
    Sync-AzureStackHCI
