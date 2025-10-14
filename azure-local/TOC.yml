@@ -104,7 +104,7 @@ items:
     - name: Azure Local security book
       href: security-book/overview.md
     - name: MDE runtime plan
-      href: ../operator-nexus/howto-use-mde-runtime-protection.md
+      href: /azure/operator-nexus/howto-use-mde-runtime-protection
   - name: Assess environment readiness
     href: manage/use-environment-checker.md
   - name: Configure advanced Active Directory settings
