@@ -108,6 +108,8 @@
       href: concepts-security-access-identity.md
     - name: Availability
       href: concepts-nexus-availability.md
+    - name: Hardware Validation
+      href: concepts-hardware-validation-overview.md
     - name: Credential
       expanded: false
       items:

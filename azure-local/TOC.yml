@@ -395,6 +395,8 @@ items:
         href: manage/trusted-launch-vm-overview.md
       - name: Automatic virtual TPM state transfer
         href: manage/trusted-launch-automatic-state-transfer.md
+      - name: Enable guest attestation
+        href: manage/trusted-launch-guest-attestation.md
       - name: Manual backup and recovery
         href: manage/trusted-launch-vm-import-key.md
 

@@ -4,7 +4,7 @@ description: Learn about new features in Azure Migrate for Azure Local.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 10/09/2025
+ms.date: 10/13/2025
 ms.service: azure-local
 ---
 
@@ -57,7 +57,7 @@ This release includes these features and improvements:
 
 This release includes these features and improvements:
 
-- **Linux VM static IP migration support** – Azure Migrate to Azure Local migrations now support preserving static IP addresses during Linux virtual machine (VM) migrations by following steps documented at [Maintain static IP addresses during migration](migrate-maintain-ip-addresses.md?&tabs=linux).
+- **Linux VM static IP migration support** – Azure Migrate to Azure Local migrations now offers scripts that preserve static IP addresses during Linux virtual machine (VM) migrations. See [Maintain static IP addresses during migration](migrate-maintain-ip-addresses.md?&tabs=linux).
 
 - **Customizable physical sector size on migrated disks** – You can now select either 512B or 4KB physical sector sizes for migrated disks, enabling better alignment with your workload and storage configuration.
 
