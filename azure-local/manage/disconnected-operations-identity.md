@@ -143,7 +143,7 @@ $idpConfig = @{
 Consider these limitations when you plan your identity integration with disconnected operations:
 
 - **Users/Group removal after synchronization**: If you remove users and groups with memberships after the last sync, disconnected operations don't clean them up. This can cause errors when you query group memberships.
-- **No force synchronization capability**: Initial sync can take up to 6 hours. Sub-sequent sync runs every 15 min.
+- **No force synchronization capability**: The initial sync can take up to 6 hours. After that, the sync runs every 15 min.
 - **No management groups or aggregate root level**: Not available for multiple subscriptions.  
 - **Supported validations**: Only Active Directory/AD FS are validated for support.
   - [Install Active Directory Domain Services (Level 100)](/windows-server/identity/ad-ds/deploy/install-active-directory-domain-services--level-100-)
@@ -340,7 +340,7 @@ $AccessControlType = [System.Security.AccessControl.AccessControlType]::Allow
 $InheritanceType = [System.DirectoryServices.ActiveDirectorySecurityInheritance]::All
 
 # Create the access rule and apply it to the group
-# bf9679c0-0de6-11d0-a285-00aa003049e2 - Member attribute : https://learn.microsoft.com/en-us/windows/win32/adschema/a-member?redirectedfrom=MSDN 
+# bf9679c0-0de6-11d0-a285-00aa003049e2 (Member attribute): https://learn.microsoft.com/en-us/windows/win32/adschema/a-member?redirectedfrom=MSDN 
 $Rule = New-Object System.DirectoryServices.ActiveDirectoryAccessRule $Identity, $ActiveDirectoryRights, $AccessControlType, "bf9679c0-0de6-11d0-a285-00aa003049e2", $InheritanceType
 $GroupEntry = [ADSI]"LDAP://$GroupDN"
 $Security = $GroupEntry.ObjectSecurity
