@@ -1,11 +1,11 @@
 ---
-title: Enable Software-Defined Networking (SDN) on Azure Local using a PowerShell Action Plan (preview)
-description: Describes how to enable SDN integration using a PowerShell action plan on Azure Local (preview).
+title: Enable Software-Defined Networking (SDN) enabled by Azure Arc on Azure Local using a PowerShell Action Plan (preview)
+description: Describes how to enable integration of SDN enabled by Azure Arc using a PowerShell action plan on Azure Local (preview).
 author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.topic: how-to
-ms.date: 09/05/2025
+ms.date: 09/19/2025
 ---
 
 # Enable SDN integration on Azure Local using PowerShell (preview)

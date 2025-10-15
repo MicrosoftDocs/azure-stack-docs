@@ -70,10 +70,6 @@
         href: aks-networks.md
       - name: Simplify outbound connectivity
         href: arc-gateway-aks-arc.md
-      - name: Deploy in environments with low internet bandwidth 
-        items: 
-        - name: Disable Windows nodepool
-          href: disable-windows-nodepool.md        
       - name: Use MetalLB load balancer
         items:
         - name: Azure CLI
@@ -121,6 +117,12 @@
       items:
       - name: Manage multiple node pools
         href: manage-node-pools.md
+      - name: Enable Windows node pools
+        href: howto-enable-windows-node-pools.md
+      - name: Create Windows node pools
+        href: howto-create-windows-node-pools.md
+      - name: Upgrade Windows node pool OS
+        href: howto-upgrade-windows-os.md
       - name: Use GPUs
         href: deploy-gpu-node-pool.md
     - name: Cluster management
@@ -133,8 +135,6 @@
       href: auto-scale-aks-arc.md
     - name: Upgrade Kubernetes clusters
       href: cluster-upgrade.md
-    - name: Create Windows Server containers
-      href: aks-create-containers.md
     - name: Integrate Azure Container Registry
       href: deploy-container-registry.md
     - name: Monitoring and logging
@@ -155,10 +155,8 @@
             href: get-on-demand-logs.md
           - name: Monitoring data reference
             href: kubernetes-monitor-metrics.md
-  - name: Troubleshooting
+  - name: Troubleshooting and known issues
     items:
-    - name: Troubleshoot and known issues
-      href: aks-troubleshoot.md
     - name: Get support
       items:
       - name: AKS on Azure Local support policy
@@ -169,44 +167,52 @@
         href: support-module.md
       - name: Use diagnostic checker
         href: aks-arc-diagnostic-checker.md
-    - name: Storage provisioning issue in cluster and node pool creation
-      href: storage-provision-issue.md
-    - name: Control plane configuration validation errors
-      href: control-plane-validation-errors.md
-    - name: K8sVersionValidation error
-      href: cluster-k8s-version.md
-    - name: KubeAPIServer unreachable error
-      href: kube-api-server-unreachable.md
-    - name: Can't create/scale AKS cluster due to image issues
-      href: gallery-image-not-usable.md
-    - name: Disk space exhaustion on control plane VMs
-      href: kube-apiserver-log-overflow.md
-    - name: Telemetry pod consumes too much memory and CPU  
-      href: telemetry-pod-resources.md
-    - name: Issues after deleting storage volumes
-      href: delete-storage-volume.md
-    - name: Can't fully delete AKS Arc cluster with PodDisruptionBudget (PDB) resources
-      href: delete-cluster-pdb.md
-    - name: Azure Advisor upgrade recommendation
-      href: azure-advisor-upgrade.md
-    - name: Deleted AKS Arc cluster still visible on Azure portal
-      href: deleted-cluster-visible.md
-    - name: Can't see VM SKUs on Azure portal
-      href: check-vm-sku.md
-    - name: Connectivity issues with MetalLB
-      href: load-balancer-issues.md
-    - name: MetalLB speaker pods don't run
-      href: troubleshoot-metallb-speaker-taint.md
-    - name: Troubleshoot general network validation errors
-      href: network-validation-errors.md
-    - name: Network validation error due to .local domain
-      href: network-validation-error-local.md
-    - name: Entra authentication prompts when running kubectl
-      href: entra-prompts.md
-    - name: BGP with FRR not working
-      href: connectivity-troubleshoot.md
-    - name: Cluster status stuck during upgrade
-      href: cluster-upgrade-status.md
+    - name: Troubleshoot
+      items:
+      - name: Troubleshooting overview
+        href: aks-troubleshoot.md
+      - name: Control plane configuration validation errors
+        href: control-plane-validation-errors.md
+      - name: K8sVersionValidation error
+        href: cluster-k8s-version.md
+      - name: KubeAPIServer unreachable error
+        href: kube-api-server-unreachable.md
+      - name: Disable Windows node pools
+        href: disable-windows-nodepool.md
+      - name: Networking
+        items:
+        - name: General network validation errors
+          href: network-validation-errors.md
+        - name: Network validation error due to .local domain
+          href: network-validation-error-local.md
+        - name: BGP with FRR not working
+          href: connectivity-troubleshoot.md
+      - name: Storage
+        items:
+        - name: Issues after deleting storage volumes
+          href: delete-storage-volume.md
+      - name: Security
+        items:
+        - name: Entra authentication prompts when running kubectl
+          href: entra-prompts.md
+    - name: Known issues
+      items:
+      - name: Known issues overview
+        href: aks-arc-known-issues.md
+      - name: Storage provisioning issue in cluster and node pool creation
+        href: storage-provision-issue.md
+      - name: Deleted AKS Arc cluster still visible on Azure portal
+        href: deleted-cluster-visible.md
+      - name: Telemetry pod consumes too much memory and CPU  
+        href: telemetry-pod-resources.md
+      - name: Can't create/scale AKS cluster due to image issues
+        href: gallery-image-not-usable.md
+      - name: Disk space exhaustion on control plane VMs
+        href: kube-apiserver-log-overflow.md
+      - name: Cluster status stuck during upgrade
+        href: cluster-upgrade-status.md
+      - name: Can't fully delete AKS Arc cluster with PodDisruptionBudget (PDB) resources
+        href: delete-cluster-pdb.md
   - name: Security
     items:  
     - name: Security book - recommendations and best practices
@@ -548,6 +554,12 @@
       items:
       - name: Use persistent volumes
         href: persistent-volume.md
+      - name: CSI storage drivers
+        items: 
+        - name: Use disk CSI drivers
+          href: container-storage-interface-disks-windows-server.md
+        - name: Use file CSI drivers
+          href: container-storage-interface-files-windows-server.md
     - name: Security and authentication
       items:
       - name: Restrict SSH access

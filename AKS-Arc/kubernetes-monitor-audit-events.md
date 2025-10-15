@@ -12,7 +12,7 @@ ms.reviewer: guanghu
 
 # Monitor Kubernetes audit events
 
-[!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)], AKS enabled by Azure Arc on VMware (preview)
+[!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
 You can access Kubernetes audit logs in Kubernetes control plane logs. Control plane logs for AKS clusters are implemented as [resource logs](/azure/azure-monitor/essentials/resource-logs) in Azure Monitor. Resource logs aren't collected and stored until you create a diagnostic setting to route them to one or more locations. You typically send them to a Log Analytics workspace, which is where most of the data for Container Insights is stored.
 

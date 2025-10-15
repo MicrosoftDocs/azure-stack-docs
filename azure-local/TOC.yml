@@ -93,10 +93,10 @@ items:
         href: plan/four-node-switchless-two-switches-two-links.md
     - name: SDN considerations
       href: plan/network-patterns-sdn-considerations.md
+  - name: Review Azure Arc gateway for Azure Local
+    href: deploy/deployment-azure-arc-gateway-overview.md
   - name: Review cloud deployment network considerations
     href: plan/cloud-deployment-network-considerations.md
-  - name: Review Azure Arc gateway
-    href: deploy/deployment-azure-arc-gateway-overview.md
   - name: Review security
     items:
     - name: About security features
@@ -288,6 +288,8 @@ items:
       href: upgrade/install-solution-upgrade.md
     - name: Upgrade via ARM template
       href: upgrade/install-solution-upgrade-azure-resource-manager-template.md
+  - name: Upgrade stretched clusters to 23H2
+    href: upgrade/upgrade-stretched-cluster-to-23h2.md
   - name: Troubleshoot upgrades
     href: upgrade/troubleshoot-upgrade-to-23h2.md
 
@@ -393,6 +395,8 @@ items:
         href: manage/trusted-launch-vm-overview.md
       - name: Automatic virtual TPM state transfer
         href: manage/trusted-launch-automatic-state-transfer.md
+      - name: Enable guest attestation
+        href: manage/trusted-launch-guest-attestation.md
       - name: Manual backup and recovery
         href: manage/trusted-launch-vm-import-key.md
 

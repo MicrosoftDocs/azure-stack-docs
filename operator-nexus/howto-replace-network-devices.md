@@ -1,8 +1,8 @@
 ---
 title: How to replace network devices in Azure Operator Nexus Network Fabric
 description: Process of replacing network devices in Azure Operator Nexus Network Fabric.
-author: sushantjrao 
-ms.author: sushrao
+author: RaghvendraMandawale
+ms.author: rmandawale
 ms.service: azure-operator-nexus
 ms.topic: how-to
 ms.date: 08/12/2024
@@ -61,6 +61,10 @@ To ensure a smooth and timely RMA process, verify the following prerequisites be
 - Management Switch (Mgmt Switch)
 - Network Packet Broker (NPB)
 
+>[!Note]
+>Please note that this workflow supports RMA for only one device at a time through POST actions, which accept input related to a single device per request. 
+
+
 ## Steps to replace a device
 
 ### Step 1: Disable administrative state
@@ -114,6 +118,10 @@ This action performs the following tasks:
 - Update serial number stored in Azure ARM resource
 
 - Keeps the device in `Disabled` state and Fabric Administrative State in `EnabledDegraded`
+
+> [!Note]
+> The expected format for the serial number should be: `<Manufacturer;Model;Hardware Version;Serial Number>`<br>
+> For example, `"Arista;DCS-7280DR3-XX;12.05;ABC23XXXXXX"`
 
 ### Step 3: Ensure device is in ZTP Mode
 
@@ -180,3 +188,37 @@ This action sets the following state once it's fully healthy and synchronized wi
 ## Summary
 
 The RMA workflow in Network Fabric ensures seamless device replacement with controlled state transitions and full configuration synchronization. This helps maintain service continuity and operational consistency across the network.
+
+### **Permitted/Non-Permitted Actions When Fabric is in Enabled Degraded State**
+
+When the fabric is in an **Enabled Degraded State**, certain operations are permitted while others should be deferred or handled with caution. Please refer to the below list:
+
+---
+
+#### **Following are the Permitted Operations**
+
+| **Operation Category** | **Examples (APIs / CLI)** | **Allowed?** | **Notes / Recommended Practice** |
+|---|---|---|---|
+| **READ (non-mutating)** | GET/List, Show for Fabric / Devices / ISDs / Networks; metrics & health | **Allowed** | Safe to monitor state, validate results, and track onboarding |
+| **RMA Device Replacement Actions** | Disable + Update Serial + RMA + Refresh Config + Enable | **Allowed** | Follow standard Replace Device guide steps |
+| **Commit (configuration apply)** | Start / Monitor Commit (Commit Workflow v2) | **Allowed** | Configurations pushed to all devices except those in Disabled state |
+| **VALIDATE (pre-flight checks)** | Validate configuration / dry-runs | **Allowed** | Useful to catch issues before commit |
+| **Administrative Lock / Unlock** | Lock / Unlock fabric | **Allowed** | No restrictions in this state |
+
+---
+
+#### **Following Operations are Technically Allowed but Recommended to Defer**
+
+| **Operation Category** | **Examples (APIs / CLI)** | **Allowed?** | **Notes / Recommended Practice** |
+|---|---|---|---|
+| **CREATE/UPDATE config (non-RMA config)** | Add/Change ISDs, Networks, Route Policies, Prefs/vias, Taps, Communities | Technically allowed but defer if possible | Configuration won’t reach Disabled devices until RMA completes. Once device RMA completed all latest configuration will be pushed to devices. |
+| **DELETE (fabric config)** | Remove ISDs, Networks, Policies, Taps | Technically allowed but defer if possible | Disabled devices may retain removed config until re-enabled. |
+
+---
+
+#### **Non-permitted Operations**
+
+| **Operation Category** | **Examples (APIs/CLI)** | **Allowed?** | **Notes / Recommended Practice** |
+|---|---|---|---|
+| **Upgrades** | Fabric/Device runtime upgrades | **Not permitted** | Schedule upgrades after RMA completes and fabric returns to Enabled |
+| **Secret rotation** | Geneva action | **Not permitted** | TS reprovisioning and device RMA would be treated as mutually exclusive operations. If one is active the other cannot be initiated. |
