@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 12/17/2024
+ms.date: 10/10/2025
 ---
 
 # Get support for Azure Local deployment issues
@@ -74,9 +74,9 @@ Send-AzStackHciDiagnosticData -ResourceGroupName <ResourceGroupName> -Subscripti
 
 ## Get remote support
 
-In the pre-deployment or pre-registration scenarios, you're prompted to install and enable remote support via the Environment Checker to evaluate the readiness for deployment. If you enable remote support, Microsoft Support can connect to your device remotely and offer assistance. If you want to get remote support post-deployment of the system, see [Get remote support for Azure Local](./get-remote-support.md).
+In the predeployment or preregistration scenarios, you're prompted to install and enable remote support via the Environment Checker to evaluate the readiness for deployment. If you enable remote support, Microsoft Support can connect to your device remotely and offer assistance. If you want to get remote support post-deployment of the system, see [Get remote support for Azure Local](./get-remote-support.md).
 
-The high-level workflow to get remote support in the pre-deployment or pre-registration scenario is as follows:
+The high-level workflow to get remote support in the predeployment or preregistration scenario is as follows:
 
 - [Submit a support request](/azure/azure-portal/supportability/how-to-create-azure-support-request).
 - Enable remote support via PowerShell. This is a one-time configuration.
