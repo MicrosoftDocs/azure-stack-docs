@@ -73,7 +73,7 @@ The management endpoint requires two certificates, and you must put them in the 
 
 | Management endpoint certificate  | Required certificate subject  |
 |----------------------|------------------|
-| Server  | Management endpoint IP address: $ManagementIngressIpAddress. <br> If the management endpoint IP is **192.168.50.100**, then the server certificate's subject name must match exactly. For example, **Subject = 192.168.50.100** . You can also use a FQDN as a SN as long as this resolves to the management ip | 
+| Server  | Management endpoint IP address: $ManagementIngressIpAddress. <br> If the management endpoint IP is **192.168.50.100**, then the server certificate's subject name must match exactly. For example, **Subject = 192.168.50.100**. You can also use a FQDN as a SN as long as it resolves to the management IP.| 
 | Client  | Use a certificate subject that helps you distinguish it from others. Any string is acceptable. <br> For example, **Subject = ManagementEndpointClientAuth**.  |
 
 ## Create certificates to secure endpoints
@@ -292,6 +292,7 @@ Copy the management certificates (*.pfx) to the directory structure represented 
 ## Export Root CA certificate 
 
 You need the root certificate public key for deployment. The Root certificate needs to be exported with base64 encoding. 
+
 The following example shows how to export your root certificate public key:
 
 ```powershell
@@ -315,7 +316,6 @@ certutil -encode "C:\Temp\RootCA-DER.cer" "C:\Temp\RootCA-Base64.cer"
 
 ## Alternative method (If CA is setup and responds)
 # certutil -ca.cert $applianceRootCert
-
 ```
 
 For more information, see [Active Directory Certificate Services](/troubleshoot/windows-server/certificates-and-public-key-infrastructure-pki/export-root-certification-authority-certificate).
