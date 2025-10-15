@@ -69,7 +69,7 @@ Before you begin, make sure that the physical machine and storage hardware used 
 |Host network adapters|At least two network adapters listed in the Windows Server Catalog. Or dedicated network adapters per intent, which does require two separate adapters for storage intent. For more information, see [Windows Server Catalog](https://www.windowsservercatalog.com/).|
 |BIOS|Intel VT or AMD-V must be turned on.|
 |Boot drive|A minimum size of 200 GB.<br>400 GB or more recommended for large memory Azure Local instances for [support and diagnosability](#support-and-diagnosability).|
-|Data drives|At least two disks per server with a minimum capacity of 500 GB.<br>Same number, type, capacity, performance, and firmware of drives across all servers at time of deployment. Flexibility provided for [Add](../manage/add-server.mdadd-server.md) and [Repair](../manage/repair-server.md) scenarios, when drives at time of deployment are no longer available. |
+|Data drives|At least two disks per server with a minimum capacity of 500 GB.<br>Same number, type, capacity, performance, and firmware of drives across all servers at time of deployment. Flexibility provided for [Add](../manage/add-server.md) and [Repair](../manage/repair-server.md) scenarios, when drives at time of deployment are no longer available. |
 |Trusted Platform Module (TPM)|TPM version 2.0 hardware must be present and turned on.|
 |Secure boot|Secure Boot must be present and turned on.|
 |GPU | Optional<br>Up to 192 GB GPU memory per machine. |
