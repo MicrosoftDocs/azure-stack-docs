@@ -3,7 +3,7 @@ title: Azure Resource Manager template deployment for Azure Local rack aware clu
 description: Learn how to prepare and then deploy Azure Local rack aware cluster using the Azure Resource Manager template (Preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 10/14/2025
+ms.date: 10/15/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -137,11 +137,11 @@ For an example of a parameter JSON file that shows the format of various inputs,
             "value": [
             {
                 "localAvailabilityZoneName": "Zone1",
-                "nodes": ["node1inRack1","node2inRack1"]  
+                "nodes": ["node1","node2"]  
             },
             {
                 "localAvailabilityZoneName": "Zone2",
-                "nodes": ["node1inRack2","node2inRack2"]
+                "nodes": ["node3","node4"]
             }
             ]
         },
@@ -152,10 +152,10 @@ For an example of a parameter JSON file that shows the format of various inputs,
       
         ```json
         "witnessType": {
-        "value": "Cloud"
+            "value": "Cloud"
         },
         "clusterWitnessStorageAccountName": {
-        "value": "yourcloudwitness"
+            "value": "yourcloudwitness"
         },
         ```
   
@@ -164,37 +164,83 @@ For an example of a parameter JSON file that shows the format of various inputs,
  
         ```json
         "networkingType": {
-        "value" : "switchedMultiserverDeployment"
+            "value" : "switchedMultiserverDeployment"
         },
         "networkingPattern": {
-        "value" : "convergedManagementCompute"
+            "value" : "convergedManagementCompute"
         },
         "intentList" : {
-        "value": [
-        {
-        "name": "ManagementCompute",
-        "trafficType" : ["Management","Compute"],
-        "adapter": ["ethernet","ethernet 2"],
-        "overridevirtualswitchConfiguration" : false,
-        "virtualswitchConfigurationoverrides" : {
-        "enableIov" : "",
-        "loadBalancingAlgorithm": ""
+            "value": [
+                {
+                    "name": "ManagementCompute",
+                    "trafficType": [
+                        "Management",
+                        "Compute"
+                    ],
+                    "adapter": [
+                        "ethernet",
+                        "ethernet 2"
+                    ],
+                    "overridevirtualswitchConfiguration": false,
+                    "virtualswitchConfigurationoverrides": {
+                        "enableIov": "",
+                        "loadBalancingAlgorithm": ""
+                    },
+                    "overrideQosPolicy": false,
+                    "qosPolicyoverrides": {
+                    "priorityvalue8021Action_SMB": "",
+                    "priorityvalues8021Action_Cluster": "",
+                    "bandwidthPercentage_SMB": ""
+                    },
+                    "overrideAdapterProperty": false,
+                    "adapterPropertyoverrides": {
+                        "jumboPacket": "",
+                        "networkDirect": "",
+                        "networkDirectTechnology": ""
+                    }
+                },
+                "name": "Storage",
+                "trafficType": [
+                        "Storage"
+                        ],
+                    "adapter": [
+                        "ethernet 3",
+                        "ethernet 4"
+                    ],
+                    "overridevirtualswitchConfiguration": false,
+                    "virtualswitchConfigurationoverrides": {
+                        "enableIov": "",
+                        "loadBalancingAlgorithm": ""
+                    },
+                    "overrideQosPolicy": false,
+                    "qosPolicyoverrides": {
+                    "priorityvalue8021Action_SMB": "",
+                    "priorityvalues8021Action_Cluster": "",
+                    "bandwidthPercentage_SMB": ""
+                    },
+                    "overrideAdapterProperty": false,
+                    "adapterPropertyoverrides": {
+                        "jumboPacket": "",
+                        "networkDirect": "",
+                        "networkDirectTechnology": ""
+                    }
+                }
+            ]
         },
-        "overrideQosPolicy": false,
-        "qosPolicyoverrides" : {
-        "priorityvalue8021Action_SMB" : "",
-        "priorityvalues8021Action_Cluster" : "",
-        "bandwidthPercentage_SMB" : ""
-        },
-        "overrideAdapterProperty" : false,
-        "adapterPropertyoverrides": {
-        "jumboPacket": "",
-        "networkDirect": "",
-        "networkDirectTechnology" : ""
-        }
-        }
-        ]
-        }    
+        "StorageNetworkList": {
+            "value": [
+                {
+                    "name": "Storage1Network",
+                    "networkAdapterName": "ethernet 3",
+                    "vlanId": "711"
+                },
+                {
+                    "name": "Storage2Network",
+                    "networkAdapterName": "ethernet 4",
+                    "vlanId": "712"
+                }
+            ]
+        },            
         ```
   
 1. After configuring all parameters, select **Save** to save the parameters file.
