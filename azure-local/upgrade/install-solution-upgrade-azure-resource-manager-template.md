@@ -191,7 +191,7 @@ The following table describes the parameters that you define in the ARM template
 | AzureStackLCMAdminUsername | Username for the LCM admin.<br/> For more information, see [Review deployment prerequisites for Azure Local](../deploy/deployment-prerequisites.md).|
 | AzureStackLCMAdminPasssword | Password for the LCM admin. <br/> For more information, see [Review deployment prerequisites for Azure Local](../deploy/deployment-prerequisites.md).|
 | arcNodeResourceIds | Array of resource IDs of the Azure Arc-enabled servers that are part of this Azure Local cluster. |
-| domainFqdn | Fully-qualified domain name (FQDN) for the Active Directory Domain Services prepared for deployment. |
+| domainFqdn | Fully qualified domain name (FQDN) for the Active Directory Domain Services prepared for deployment. |
 | subnetMask | The subnet mask for the management network used by the Azure Local deployment. |
 | defaultGateway | The default gateway for deploying an Azure Local cluster. |
 | startingIPAddress | The first IP address in a contiguous block of at least six static IP addresses on your management network's subnet, omitting addresses already used by the machines.<br/>These IPs are used by Azure Local and internal infrastructure (Arc Resource Bridge) that's required for Arc VM management and AKS Hybrid. |
