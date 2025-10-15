@@ -10,7 +10,7 @@ ms.reviewer: alkohli
 
 # Options to migrate VM workloads to Azure Local
 
-[!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [hci-applies-to-2503](../includes/hci-applies-to-2503.md)]
 
 [!INCLUDE [azure-local-banner-23h2](../includes/azure-local-banner-23h2.md)]
 

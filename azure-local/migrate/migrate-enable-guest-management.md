@@ -11,7 +11,7 @@ ms.custom: sfi-image-nochange
 
 # Enable guest management for migrated VMs
 
-[!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [hci-applies-to-2503](../includes/hci-applies-to-2503.md)]
 
 This article describes how to enable guest management after migration for Azure Local virtual machines (VMs) enabled by Arc.
 

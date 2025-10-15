@@ -13,7 +13,7 @@ ms.custom:
 
 # Troubleshoot issues migrating VMs to Azure Local via Azure Migrate
 
-[!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [hci-applies-to-2503](../includes/hci-applies-to-2503.md)]
 
 This article describes how to troubleshoot any potential issues that you may experience when migrating Hyper-V (Preview) and VMware VMs to your Azure Local using Azure Migrate.
 
