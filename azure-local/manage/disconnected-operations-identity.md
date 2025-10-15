@@ -115,7 +115,7 @@ The following parameters must be collected and available before deployment:
 
 | Parameter Name        | Description            | Example                 |  
 |-----------------------|------------------------|-------------------------|  
-| Authority    | An accessible authority URI that gives information about OIDC endpoints, metadata, and more. | `hhttps://adfs.contoso-AzureLocal.com/adfs` |  
+| Authority    | An accessible authority URI that gives information about OIDC endpoints, metadata, and more. | `https://adfs.contoso-AzureLocal.com/adfs` |  
 | ClientID     | AppID created when setting up the adfsclient app.    | `1e7655c5-1bc4-52af-7145-afdf6bbe2ec1`     |  
 | LdapCredential (Username and Password) | Credentials (read-only) for LDAP integration.       | Username: `ldap` <br></br> Password: ******       |  
 | LdapsCertChainInfo    | Certificate chain information for your LDAP endpoint. You can omit the certificate chain information for demo purposes. | [How to get the certificate chain](disconnected-operations-pki.md)  |
