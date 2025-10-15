@@ -385,63 +385,7 @@ Install-Appliance @installAzureLocalParams -disconnectMachineDeploy -Verbose
 >
 > DisableChecksum = $true will skip validating the signature of the Appliance. Use this when deploying an air-gapped environment in this release. If checksum validation is enabled - the node needs to be able to reach and validate the Microsoft cert signing certificates used for signing this build.  
 
-## Configure observability for diagnostics and support
-
-We recommend that you configure observability to get telemetry and logs for support for your first deployment. This doesn't apply if you're planning to run air-gapped, as telemetry and diagnostics require connectivity.
-
-The Azure resources needed:
-
-- A resource group in Azure used for the appliance.
-- A Service Principal Name (SPN) with contributor rights on the resource group.
-
-To configure observability, follow these steps:
-
-1. On a computer with Azure CLI (or using the Azure Cloud Shell in Azure portal) create the SPN. Run the following script:
-
-    ```powershell
-    $resourcegroup = 'azure-disconnectedoperations'
-    $appname = 'azlocalobsapp'
-    az login
-    $g = (az group create -n $resourcegroup -l eastus)|ConvertFrom-Json
-    az ad sp create-for-rbac -n $appname --role Owner --scopes $g.id
-    
-    # get the subscription id
-    $j = (az account list|ConvertFrom-Json)|Where-object { $_.IsDefault}
-    
-    # SubscriptionID:
-    $j.id
-    ```
-
-    Here's an example output:
-
-    ```json
-    {
-      "appId": "<AppId>",
-      "displayName": "azlocalobsapp",
-      "password": "<RETRACTED>",
-      "tenant": "<RETRACTED>"
-    }
-    <subscriptionID>
-    ```
-
-1. Set the observability configuration. Modify to match your environment details:
-
-    ```powershell
-    $observabilityConfiguration = New-ApplianceObservabilityConfiguration -ResourceGroupName "azure-disconnectedoperations" `
-      -TenantId "<TenantID>" `
-      -Location "<Location>" `
-      -SubscriptionId "<SubscriptionId>" `
-      -ServicePrincipalId "<AppId>" `
-      -ServicePrincipalSecret ("<Password>"|ConvertTo-SecureString -AsPlainText -Force)
-
-    Set-ApplianceObservabilityConfiguration -ObservabilityConfiguration $observabilityConfiguration
-    ```
-
-1. Verify that observability is configured:
-
-    ```powershell
-    Get-ApplianceObservabilityConfiguration
-    ```
+[!INCLUDE [disconnected-operations-observability-diagnostics](../includes/disconnected-operations-observability-diagnostics.md)]
 
 ### Fully disconnected (air-gapped) deployments
 
