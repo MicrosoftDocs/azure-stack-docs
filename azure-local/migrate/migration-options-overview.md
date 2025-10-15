@@ -1,14 +1,14 @@
 ---
-title: Options for migrating virtual machines to Azure Local (preview)
-description: Learn about the available migration options for migrating VM workloads to your Azure Local (preview).
+title: Options for migrating virtual machines to Azure Local
+description: Learn about the available migration options for migrating VM workloads to your Azure Local.
 author: alkohli
 ms.topic: overview
-ms.date: 07/28/2025
+ms.date: 10/15/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
 
-# Options to migrate VM workloads to Azure Local (preview)
+# Options to migrate VM workloads to Azure Local
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
@@ -16,7 +16,6 @@ ms.reviewer: alkohli
 
 This article provides an overview of the options available for migrating virtual machine (VM) workloads to your Azure Local instance.
 
-[!INCLUDE [important](../includes/hci-preview.md)]
 
 ## Migration options
 
@@ -32,14 +31,14 @@ The primary first-party migration option is [Azure Migrate](./migration-azure-mi
 
 You can use Azure Migrate to migrate the following types of VMs to Azure Local:
 
-   - [Hyper-V VMs](./migration-azure-migrate-overview.md)
+   - [Hyper-V VMs (Preview)](./migration-azure-migrate-overview.md)
    - [VMware VMs](./migration-azure-migrate-vmware-overview.md)
 
 **Considerations for Azure Migrate**
 
 Azure Migrate requires both a source appliance in your on-premises environment and a target appliance in your Azure Local instance. This setup is necessary for every Azure Migrate project. For more information, see [Source VMware requirements](migrate-vmware-requirements.md#source-vmware-server-requirements) and [Source Hyper-V requirements](migrate-hyperv-requirements.md#source-hyper-v-requirements).  
 
-By default, Azure Migrate provisions all migrated VMs as Azure Local VMs enabled by Azure Arc. For more information on VM types for Azure Local, see [Types of VMs on Azure Local](../concepts/compare-vm-management-capabilities.md#types-of-vms-on-azure-local). 
+By default, Azure Migrate provisions all migrated VMs as Azure Local VMs enabled by Azure Arc. For more information on VM types for Azure Local, see [Types of VMs on Azure Local](../concepts/compare-vm-management-capabilities.md#types-of-vms-on-azure-local).
 
 
 ## Third-party migration options

@@ -3,13 +3,13 @@ title: Enable guest management for migrated VMs (preview)
 description: Learn how to enable guest management for migrated VMs (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 10/08/2025
+ms.date: 10/15/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.custom: sfi-image-nochange
 ---
 
-# Enable guest management for migrated VMs (preview)
+# Enable guest management for migrated VMs
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
@@ -19,7 +19,7 @@ For more information on other scenarios, see [Manage Azure Local VMs](../manage/
 
 The output properties may vary depending on whether VMs were migrated or not.
 
-[!INCLUDE [important](../includes/hci-preview.md)]
+
 
 ## Prerequisites
 
