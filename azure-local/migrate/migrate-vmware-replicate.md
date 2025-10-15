@@ -10,7 +10,7 @@ ms.custom: sfi-image-nochange
 
 # Discover and replicate VMware VMs for migration to Azure Local using Azure Migrate
 
-[!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [hci-applies-to-2503](../includes/hci-applies-to-2503.md)]
 
 This article describes the discovery and replication phase for VMware virtual machine (VM) migration to Azure Local using Azure Migrate.
 
@@ -36,7 +36,7 @@ Ensure all VMs that you wish to migrate are powered on and have VMware tools ins
 1. Enter a name for your source appliance and generate the key for the source VMware appliance. For detailed steps, see [Generate the project key](/azure/migrate/how-to-set-up-appliance-vmware#generate-the-project-key).
 
 1. Copy the **Project key** (to a text editor such as Notepad) and save it for later use.
-1. You can now **Download the Azure Migrate source appliance** using either a *.ova* file or a *.zip* file. The detailed steps are provided in the subsequent sections.
+1. You can now **Download the Azure Migrate source appliance** using either an *.ova* file or a *.zip* file. The detailed steps are provided in the subsequent sections.
 
     :::image type="content" source="./media/migrate-vmware-replicate/generate-source-appliance-project-key-2.png" alt-text="Screenshot of going to Discover page." lightbox="./media/migrate-vmware-replicate/generate-source-appliance-project-key-2.png":::
 

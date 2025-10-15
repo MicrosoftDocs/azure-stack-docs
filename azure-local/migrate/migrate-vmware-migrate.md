@@ -11,7 +11,7 @@ ms.custom: sfi-image-nochange
 
 # Migrate VMware VMs to Azure Local using Azure Migrate
 
-[!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [hci-applies-to-2503](../includes/hci-applies-to-2503.md)]
 
 This article describes how to migrate the VMware virtual machines (VMs) to Azure Local using Azure Migrate and includes the steps to verify the migration.
 

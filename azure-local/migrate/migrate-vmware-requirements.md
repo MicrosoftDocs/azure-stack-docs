@@ -10,7 +10,7 @@ ms.custom: references_regions
 
 # Review requirements for VMware VM migration to Azure Local using Azure Migrate
 
-[!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [hci-applies-to-2503](../includes/hci-applies-to-2503.md)]
 
 This article lists the system requirements for migrating VMware virtual machines (VMs) to Azure Local using Azure Migrate.
 
