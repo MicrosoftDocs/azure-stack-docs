@@ -16,7 +16,7 @@ This article lists the various features and improvements that are available in v
 
 This release marks the **General Availability (GA) of Azure Migrate support for migrating VMware VMs to Azure Local**.
 
-This milestone highlights several capabilities shaped by customer and partner feedback during the public preview, including:
+This milestone highlights several capabilities shaped by customer and partner feedback during the preview, including:
 
 - Static IP address retention for Windows and Linux VMs via scripts.
 
@@ -32,7 +32,7 @@ This release includes these features and improvements:
 
 - **Improved PowerShell validation** – Fixed an issue in the Az.Migrate PowerShell module where VM replications were blocked if source disk names contained reserved words. Replications now proceed correctly using validated target VM names for disk naming.
 
-- **Additional PowerShell reliability improvements** – Fixed an issue requiring -PhysicalSectorSize when replicating VHD disks and enhanced ARM ID validation for resources in PowerShell migrations.
+- **Additional PowerShell reliability improvements** – Fixed an issue requiring `-PhysicalSectorSize` when replicating VHD disks and enhanced ARM ID validation for resources in PowerShell migrations
 
 ## August 2025
 
