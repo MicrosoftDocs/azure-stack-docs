@@ -76,17 +76,17 @@ For more information, see [Add nodes to a rack aware cluster](../index.yml).
 
 You can create Azure Local VMs to place in a specified zone to balance workloads between zones. Based on the criticality of the VMs, you can configure strict or non-strict placement to disable or enable failover to the other zone.
 
-For more information about VM placement in a Rack Aware Cluster, see [Manage VM placement in a Rack Aware Cluster](../index.yml).
+For more information about VM placement in a rack aware cluster, see [Manage VM placement in a rack aware cluster](../index.yml).
 
 ## Azure Local VM failover
 
-We recommend that you conduct live migration and failover testing of your VM workloads within a Rack Aware Cluster. The failover behavior depends on the VM placement configuration and can be planned failover or unplanned failover.
+We recommend that you conduct live migration and failover testing of your VM workloads within a rack aware cluster. The failover behavior depends on the VM placement configuration and can be planned failover or unplanned failover.
 
 For more information, see [Fail over Azure Local VMs in a Rack Aware Cluster](../index.yml).
 
 
 ## Next steps
 
-- Review [Rack Aware Cluster network design](../index.yml).
-- Deploy a Rack Aware Cluster via [Azure portal](../index.yml) or [ARM template](../index.yml).
-- Learn how to [Configure availability zones](../index.yml) in a Rack Aware Cluster.
+- Review [rack aware cluster network design](../index.yml).
+- Deploy a rack aware cluster via [Azure portal](../index.yml) or [ARM template](../index.yml).
+- Learn how to [Configure availability zones](../index.yml) in a rack aware cluster.
