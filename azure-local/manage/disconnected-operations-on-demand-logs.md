@@ -4,7 +4,7 @@ description: Learn how to use the PowerShell module to collect logs on demand fo
 ms.topic: how-to
 author: ronmiab
 ms.author: robess
-ms.date: 08/06/2025
+ms.date: 10/15/2025
 ai-usage: ai-assisted
 ---
 
@@ -233,14 +233,7 @@ Before you collect logs, follow these steps to create a share and set up credent
 
 ### Use Send-DiagnosticData
 
-After you collect logs into a directory, by using the `Invoke-ApplianceLogCollectionAndSaveToShareFolder` cmdlet or by copying them manually, you can send them to Microsoft with the standalone pipeline.
-
-The standalone pipeline:
-
-- Connects your host machine to Azure.
-- Targets all logs in a folder you provided.
-- Uploads them to Microsoft support.
-  - If the upload fails, the cmdlet tries up to three times and shows the results when it's done.
+After you collect logs into a directory, by using the `Invoke-ApplianceLogCollectionAndSaveToShareFolder` cmdlet, you can send them to Microsoft with the standalone pipeline.
 
 This cmdlet requires:
 
@@ -248,6 +241,13 @@ This cmdlet requires:
 - Credentials: Either through manual sign-in or by providing the appropriate *service principal* and *password*.
 
 Review the [Set up observability for diagnostics and support](#set-up-observability-for-diagnostics-and-support) section for steps to create the *resource group* and *service principal* required to upload logs.
+
+The standalone pipeline:
+
+- Connects your host machine to Azure.
+- Targets all logs in a folder you provided.
+- Uploads them to Microsoft support.
+  - If the upload fails, the cmdlet tries up to three times and shows the results when it's done.
 
 > [!NOTE]
 > Run `Send-DiagnosticData` on a Windows machine that's connected to the internet.
@@ -370,7 +370,7 @@ Example
 
 When you collect diagnostic logs in air-gapped environments, you should understand the security and privacy protections built into this process. The following considerations help ensure that your diagnostic data remains secure while still providing Microsoft with the information needed for effective support.
 
-- In air-gapped environments, this method is the only supported way to extract and give diagnostic logs to Microsoft.
+- In air-gapped environments, use this method to get and give diagnostic logs to Microsoft.
 - Logs aren't automatically sent unless you explicitly set them to be sent.
 - Logs can be saved locally and reviewed before sharing.
 - Logs can contain sensitive operational metadata, but they don't include personal data by default.
@@ -384,27 +384,26 @@ If your organization doesn't let the affected node connect directly to the inter
 
 ## Common issues
 
-- `Invoke-ApplianceLogCollectionAndSaveToShareFolder`: You need to specify the account in the format: Domain\Username. If you omit the domain or use an incorrect username, the copy operation to the share fails with an access-denied error.
+- `Invoke-ApplianceLogCollectionAndSaveToShareFolder`: Specify the account in the format: Domain\Username. If you omit the domain or use an incorrect username, the copy operation to the share fails with an access-denied error.
 
-- `Send-DiagnosticData`: This cmdlet must be run on a windows machine that has direct internet access to Azure, isn't arc-enabled, and doesn't use the appliance as its arc control plane.
+- `Send-DiagnosticData`: Run this cmdlet on a Windows machine that has direct internet access to Azure, isn't arc-enabled, and doesn't use the appliance as its arc control plane.
 
-- `Copy-DiagnosticData`: This cmdlet must be run on the Hyper-V host that's hosting your Azure Local disconnected VM.
+- `Copy-DiagnosticData`: Run this cmdlet on the Hyper-V host that hosts your Azure Local disconnected VM.
 
-- **FilterRoles**: The roles required for log collection or diagnostics might vary depending on the scenario. Use the `get-help`cmdlet or work with your support contact to determine the appropriate roles to include.
+- **FilterRoles**: The roles required for log collection or diagnostics vary depending on the scenario. Use the `get-help` cmdlet or work with your support contact to determine the appropriate roles to include.
 
-- Improper Execution of `Send-DiagnosticData`.
-  - Log collection fails when customers attempt to run `Send-DiagnosticData` or `Copy-DiagnosticData` from:
+- Improper Execution of `Send-DiagnosticData`
+  - Log collection fails when you run `Send-DiagnosticData` or `Copy-DiagnosticData` from:
     - Nodes that aren't part of the Azure Local host infrastructure.
     - External machines (for example, personal laptops) that don't host the required appliance VMs on the same Hyper-V host.
 
-- Misuse of the Observability Tool.
-  - The Standalone Observability Tool must be:
-    - Run on a Windows Server.
-    - Set up with more manual steps if executed in unsupported environments.
+- Misuse of the Observability Tool
+  - Run the Standalone Observability Tool on a Windows Server.
+  - Set up the tool with more manual steps if you execute it in unsupported environments.
 
 ## Unsupported features in disconnected mode
 
-Here's a list of unsupported features in disconnected mode.
+These features are unsupported in disconnected mode.
 
 - Remote support.
 - Portal-based log collection.
