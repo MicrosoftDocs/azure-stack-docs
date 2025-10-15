@@ -22,7 +22,7 @@ To deploy a rack aware cluster, follow the steps to [Deploy an Azure Local insta
 
 ## Start the wizard and fill out the basics
 
-1. Go to the Azure portal. Search for and select **Azure Local**. On the **Azure Arc|Azure Local**, go to the **Get started** tab. On the **Deploy Azure Local** tile, select **Create instance**.
+1. Go to the Azure portal. Search for and select **Azure Local**. On the **Azure Arc > Azure Local** page, go to the **Get started** tab. On the **Deploy Azure Local** tile, select **Create instance**.
 
    :::image type="content" source="./media/deploy-via-portal/get-started-1.png" alt-text="Screenshot of the Get started tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/get-started-1.png":::
 
@@ -185,7 +185,7 @@ On the **Configuration** tab, choose whether to create a new configuration for t
 
 ## Verify a successful deployment
 
-To confirm that the system and all of its Azure resources were successfully deployed
+To confirm that the system and all of its Azure resources were successfully deployed:
 1. In the Azure portal, navigate to the resource group into which you deployed the system.
 2. On the **Overview** > **Resources**, you should see the following:
 
@@ -199,7 +199,7 @@ To confirm that the system and all of its Azure resources were successfully depl
     | 2*           | Storage account     |
     | 1 per workload volume | Azure Local storage path - Azure Arc |
     
-    \* One storage account is created for the cloud witness and one for key vault audit logs. These accounts are locally redundant storage (LRS) account with a lock placed on them.
+    \* One storage account is created for the cloud witness and one for key vault audit logs. These accounts are locally redundant storage (LRS) accounts with a lock placed on them.
 
 ## Next steps
 
