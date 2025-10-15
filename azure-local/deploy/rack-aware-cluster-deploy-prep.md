@@ -4,7 +4,7 @@ description: Learn how to deploy Azure Local Rack Aware Clusters with high resil
 author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
-ms.date: 10/07/2025
+ms.date: 10/15/2025
 ms.topic: how-to
 ---
 

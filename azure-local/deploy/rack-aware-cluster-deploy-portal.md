@@ -1,24 +1,24 @@
 ---
-title: Deploy Rack Aware Cluster using the Azure portal (Preview)
-description: Learn how to deploy a Rack Aware Cluster via the Azure portal with step-by-step guidance, including configuration, networking, and validation processes. (Preview)
+title: Deploy rack aware cluster using the Azure portal (Preview)
+description: Learn how to deploy a rack aware cluster via the Azure portal with step-by-step guidance, including configuration, networking, and validation processes. (Preview)
 author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
-ms.date: 10/08/2025
+ms.date: 10/15/2025
 ms.topic: how-to
 ---
 
-# Deploy Rack Aware Cluster via the Azure portal (Preview)
+# Deploy rack aware cluster via the Azure portal (Preview)
 
 This document describes the steps to deploy Azure Local Rack Aware Clusters using the Azure portal.
 
 ## Prerequisites
 
-Make sure to complete the steps in [Prepare for Rack Aware Cluster deployment](./rack-aware-cluster-deploy-prep.md).
+Make sure to complete the steps in [Prepare for rack aware cluster deployment](./rack-aware-cluster-deploy-prep.md).
 
-## Deploy Rack Aware Cluster
+## Deploy rack aware cluster
 
-To deploy a Rack Aware Cluster, follow the steps to [Deploy an Azure Local instance via the Azure portal](./deploy-via-portal.md). In general, the steps are similar to deploying a standard single cluster. The differences are highlighted in the following sections.
+To deploy a rack aware cluster, follow the steps to [Deploy an Azure Local instance via the Azure portal](./deploy-via-portal.md). In general, the steps are similar to deploying a standard single cluster. The differences are highlighted in the following sections.
 
 ## Start the wizard and fill out the basics
 
@@ -87,8 +87,8 @@ On the **Configuration** tab, choose whether to create a new configuration for t
 
 ## Specify network settings
 
-1. Choose the only storage connectivity available option for a Rack Aware Cluster as **Network switch for storage traffic**.
-1. Choose the only networking pattern available for Rack Aware Cluster as **Group management and compute traffic**. This groups management and compute traffic together on one set of adapters while keeping storage traffic isolated on dedicated high-speed adapters. You create two network intents:
+1. Choose the only storage connectivity available option for a rack aware cluster as **Network switch for storage traffic**.
+1. Choose the only networking pattern available for rack aware cluster as **Group management and compute traffic**. This groups management and compute traffic together on one set of adapters while keeping storage traffic isolated on dedicated high-speed adapters. You create two network intents:
     - Management and compute intent.
     - Storage intent.
 
@@ -100,7 +100,7 @@ On the **Configuration** tab, choose whether to create a new configuration for t
 ## Specify management settings
 
 1. Optionally edit the suggested **Custom location name** that helps users identify this system when creating resources such as VMs on it.
-1. For Rack Aware Cluster, cluster witness is required. Select an existing Storage account or create a new Storage account to store the cloud witness file. Choose **Cloud witness** and provide a name for the cloud witness.
+1. For rack aware cluster, cluster witness is required. Select an existing Storage account or create a new Storage account to store the cloud witness file. Choose **Cloud witness** and provide a name for the cloud witness.
 
     :::image type="content" source="media/rack-aware-cluster-deploy-portal/rack-aware-cluster-management-settings.png" alt-text="Screenshot of management settings in the Azure portal." lightbox="media/rack-aware-cluster-deploy-portal/rack-aware-cluster-management-settings.png":::
 
@@ -137,7 +137,7 @@ On the **Configuration** tab, choose whether to create a new configuration for t
 ## Optionally change advanced settings and apply tags
 
 
-1. Select the only option available for Rack Aware Cluster, which is for creating workload volumes and required infrastructure volumes (also known as Express mode). This option creates one thinly provisioned volume and storage path per machine for workloads to use. This is in addition to the required one infrastructure volume per cluster.
+1. Select the only option available for rack aware cluster, which is for creating workload volumes and required infrastructure volumes (also known as Express mode). This option creates one thinly provisioned volume and storage path per machine for workloads to use. This is in addition to the required one infrastructure volume per cluster.
 
     > [!IMPORTANT]
     > Don't delete the infrastructure volumes created during deployment.
