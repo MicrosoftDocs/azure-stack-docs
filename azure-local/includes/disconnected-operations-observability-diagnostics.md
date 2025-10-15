@@ -83,6 +83,9 @@ Follow these steps to set up observability for diagnostics and support:
     Set-ApplianceObservabilityConfiguration -ObservabilityConfiguration $observabilityConfiguration
     ```
 
+    > [!NOTE]
+    > If you want to set this up as part of bootstrap deployment, you can pass the `$observabilityConfiguration` as a parameter to `Install-Appliance` and skip `Set-ApplianceObservabilityConfiguration`. This simplifies deployment and helps you get logs and telemetry as part of the deployment.
+
 1. Check that observability is configured.
 
     ```PowerShell
