@@ -38,6 +38,7 @@
     "overwrite": [],
     "externalReference": [],
     "globalMetadata": {
+      "uhfHeaderId": "Azure",
       "breadcrumb_path": "~/breadcrumb/azure-local-max/toc.yml",
       "feedback_system": "Standard",
       "permissioned-type": "public"
