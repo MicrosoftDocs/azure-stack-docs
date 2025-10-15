@@ -984,7 +984,7 @@ az stack-hci-vm create --name "my_dynmemory" -g my_registration" --admin-usernam
 
 ## Guest management enablement support
 
-The folllowing operating systems (OS) support guest management enablement:
+The following operating systems (OS) support guest management enablement:
 
 ### Windows OS
 
