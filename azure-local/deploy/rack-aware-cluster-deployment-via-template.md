@@ -164,7 +164,7 @@ For an example of a parameter JSON file that shows the format of various inputs,
  
         ```json
         "networkingType": {
-            "value" : "switchedMultiserverDeployment"
+            "value": "switchedMultiserverDeployment"
         },
         "networkingPattern": {
             "value" : "convergedManagementCompute"
@@ -224,8 +224,7 @@ For an example of a parameter JSON file that shows the format of various inputs,
                         "networkDirect": "",
                         "networkDirectTechnology": ""
                     }
-                }
-            ]
+                ]
         },
         "StorageNetworkList": {
             "value": [
