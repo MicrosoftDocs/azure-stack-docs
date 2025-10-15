@@ -33,6 +33,8 @@ Before you begin, complete the following:
 
 - Familiarize yourself with Azure Local VMs and guest management features and considerations - see [Enable guest management](../manage/manage-arc-virtual-machines.md#enable-guest-management).
 
+- Check the list of supported guest OS on Azure Local. See [Supported Guest Operating Systems on Azure Local](/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows).
+
 - The Azure Local VM must have access to public network connectivity to enable guest management.
 
 ## Enable the guest agent on migrated VMs
