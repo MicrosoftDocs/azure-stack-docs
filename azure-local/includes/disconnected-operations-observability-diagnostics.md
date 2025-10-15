@@ -10,7 +10,10 @@ ms.lastreviewed: 10/07/2025
 
 ## Set up observability for diagnostics and support
 
-Set up observability for diagnostics and support to let Arc registration use a managed identity to upload logs, metrics, and telemetry from the appliance VM.
+We recommend that you set up observability to get telemetry and logs for your first deployment. This lets Arc registration use a managed identity to upload logs, metrics, and telemetry from the appliance VM.
+
+> [!NOTE]
+> This doesn't apply if you plan to run air-gapped, as telemetry and diagnostics require connectivity.
 
 Here's a list of parameters needed:
 
@@ -26,7 +29,7 @@ Here's a list of parameters needed:
   - *Microsoft.HybridConnectivity*
   - *Microsoft.GuestConfiguration*
   - *Microsoft.HybridCompute*
-- **Connectivity**: Make sure your appliance can connect to Azure for telemetry and diagnostics (this isn't required for air-gapped deployments).
+- **Connectivity**: Make sure your appliance can connect to Azure for telemetry and diagnostics.
 
 Follow these steps to set up observability for diagnostics and support:
 

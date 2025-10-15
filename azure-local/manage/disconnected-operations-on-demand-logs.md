@@ -371,10 +371,10 @@ Example
 When you collect diagnostic logs in air-gapped environments, you should understand the security and privacy protections built into this process. The following considerations help ensure that your diagnostic data remains secure while still providing Microsoft with the information needed for effective support.
 
 - In air-gapped environments, use this method to get and give diagnostic logs to Microsoft.
-- Logs aren't automatically sent unless you explicitly set them to be sent.
+- Logs aren't automatically sent unless you clearly set them to be sent.
 - Logs can be saved locally and reviewed before sharing.
 - Logs can contain sensitive operational metadata, but they don't include personal data by default.
-- Microsoft doesn't keep access to logs unless they're explicitly shared by the customer.
+- Microsoft doesn't keep access to logs unless they're directly shared by the customer.
 
 If your organization doesn't let the affected node connect directly to the internet, follow these steps:
 
