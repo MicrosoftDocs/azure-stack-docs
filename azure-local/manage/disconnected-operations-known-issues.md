@@ -8,9 +8,12 @@ ms.author: hafianba
 ms.reviewer: hafianba
 ai-usage: ai-assisted
 ---
-::: moniker range=">=azloc-2506"
 
 # What's new in disconnected operations for Azure Local
+
+::: moniker range=">=azloc-2506"
+
+This article highlights what's new (features and improvements) and critical known issues with workarounds for disconnected operations in Azure Local. These release notes update continuously, we add critical issues and workarounds as they are identified. Review this information before you deploy disconnected operations with Azure Local.
 
 ## Features and improvements in 2509
 
@@ -25,10 +28,9 @@ ai-usage: ai-assisted
  - Adds external certificate rotation in OperationsModule. For example, `Set-ApplianceExternalEndpointCertificates`.
  - Enables use of a FQDN in the SAN of the management certificate.
 
-# Known issues for disconnected operations for Azure Local
-This article lists critical known issues and their workarounds in disconnected operations for Azure Local.
+## Known issues for disconnected operations for Azure Local
 
-These release notes update continuously, and we add critical issues that need a workaround as we find them. Before you deploy disconnected operations with Azure Local, review the information here.
+There are no known issues in this release.
 
 ## Known issues in the preview release
 
@@ -43,7 +45,6 @@ The disconnected operations appliance uses 78 GB of memory. If a node has less t
 - Deploy Azure Local instances.
 
 [!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
-
 
 ### Azure Local deployment with Azure Keyvault
 
