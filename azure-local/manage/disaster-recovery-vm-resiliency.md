@@ -4,7 +4,7 @@ description: Virtual machine resiliency considerations for Azure Local.
 ms.topic: article
 author: sipastak
 ms.author: sipastak
-ms.date: 09/23/2025
+ms.date: 09/25/2025
 ---
 
 # Virtual machine resiliency for Azure Local
@@ -75,6 +75,14 @@ Veeam backup and replication supports backup and replication of Azure Local VMs.
 - [Veeam Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/veeam.veeam-backup-replication?tab=overview )
 - [Veeam Azure Local support](https://www.veeam.com/kb4047)
 - [Veeem Supported Platforms](https://helpcenter.veeam.com/docs/backup/hyperv/platform_support.html)
+
+#### CloudCasa by Catalogic
+
+CloudCasa delivers Kubernetes-native backup, disaster recovery, and migration for AKS on Azure Local and Arc-enabled clusters. It protects cluster resources and persistent volumes, with the ability to perform granular restores, including file-level recovery. Backups can be stored in Azure Blob Storage, other object storage, or NFS. CloudCasa supports restores to the same site, a secondary Azure Local cluster, or Azure AKS for disaster recovery.
+
+- [CloudCasa on Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?search=cloudcasa)
+- [CloudCasa solutions for Azure](https://cloudcasa.io/partners/microsoft-azure/)
+- [Simplify Upgrades and Backup for Azure Local](https://cloudcasa.io/blog/upgrade-backup-azure-local/)
 
 ### Backup frequency, retention, and restoration testing
 
