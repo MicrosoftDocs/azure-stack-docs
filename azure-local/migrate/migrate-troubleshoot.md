@@ -434,9 +434,9 @@ Task failures listed below the red line (**Preparing protected entities** task a
 
     These resources will be reused automatically by Azure Migrate during subsequent migration attempts.
 
-### Migrated VM data disks show as 1GB in Azure Portal
+### Migrated VM data disks show as 1GB in Azure portal
 
-When you migrate a VM with one or more data disks attached, Azure Portal may incorrectly display the total data disk size as **1 GB**.
+When you migrate a VM with one or more data disks attached, Azure portal may incorrectly display the total data disk size as **1 GB**.
 
 **Root cause**
 
