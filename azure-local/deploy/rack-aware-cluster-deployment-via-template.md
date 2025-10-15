@@ -270,7 +270,7 @@ After successful validation, you're ready to proceed with the actual deployment 
 
 1. Once validation is complete, select **Redeploy**.
 
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-7a.png" alt-text="Screenshot showing Redeploy selected." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-7a.png":::
+    :::image type="content" source="./media/rack-aware-cluster-deployment-via-template/deploy-arm-template-7a.png" alt-text="Screenshot showing Redeploy selected." lightbox="./media/rack-aware-cluster-deployment-via-template/deploy-arm-template-7a.png":::
 
 1. On the **Custom deployment** screen, select **Edit parameters**. Load up the previously saved parameters and select **Save**.
 
@@ -280,7 +280,7 @@ After successful validation, you're ready to proceed with the actual deployment 
 
 1. Confirm that **Deployment Mode** is set to **Deploy**.
 
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-7b.png" alt-text="Screenshot showing deploy selected for deployment mode." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-7b.png":::
+    :::image type="content" source="./media/rack-aware-cluster-deployment-via-template/deploy-arm-template-7b.png" alt-text="Screenshot showing deploy selected for deployment mode." lightbox="./media/rack-aware-cluster-deployment-via-template/deploy-arm-template-7b.png":::
 
 1. Select **Review + create**.
 
@@ -292,7 +292,7 @@ After successful validation, you're ready to proceed with the actual deployment 
 
     After a few minutes, you can monitor deployment progress in the Azure portal.
 
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-9.png" alt-text="Screenshot showing the status of environment checker validation." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-9.png":::
+    :::image type="content" source="./media/rack-aware-cluster-deployment-via-template/deploy-arm-template-9.png" alt-text="Screenshot showing the status of environment checker validation." lightbox="./media/rack-aware-cluster-deployment-via-template/deploy-arm-template-9.png":::
 
 ### Monitor deployment
 
