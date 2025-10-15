@@ -17,7 +17,7 @@ This article lists the system requirements for migrating Hyper-V virtual machine
 
 ## Supported configurations
 
-The following operating systems (OS) are supported for the source appliance, target appliance, and for the guest VMs that your'e migrating.
+The following operating systems (OS) are supported for the source appliance, target appliance, and for the guest VMs that you are migrating.
 
 
 |Component  |Supported configurations |
