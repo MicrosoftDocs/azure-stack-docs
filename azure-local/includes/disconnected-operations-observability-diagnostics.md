@@ -10,7 +10,7 @@ ms.lastreviewed: 10/15/2025
 
 ## Set up observability for diagnostics and support
 
-We recommend that you set up observability to get telemetry and logs for your first deployment. This lets Arc registration use a managed identity to upload logs, metrics, and telemetry from the appliance VM.
+We recommend that you set up observability to get telemetry and logs for your first deployment. This allows Azure Local Disconnected to connect to Azure through Arc registration and use a managed identity to upload logs, metrics, and telemetry from the appliance VM.
 
 > [!NOTE]
 > Set up observability doesn't apply if you plan to run air-gapped, as telemetry and diagnostics require connectivity.
