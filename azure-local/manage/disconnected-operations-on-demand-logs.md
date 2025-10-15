@@ -233,7 +233,7 @@ Before you collect logs, follow these steps to create a share and set up credent
 
 ### Use Send-DiagnosticData
 
-After you collect logs into a directory, by using the `Invoke-ApplianceLogCollectionAndSaveToShareFolder` cmdlet, you can send them to Microsoft with the standalone pipeline.
+The `Send-DiagnosticData` cmdlet lets you send logs to Microsoft support through the standalone pipeline.
 
 This cmdlet requires:
 
