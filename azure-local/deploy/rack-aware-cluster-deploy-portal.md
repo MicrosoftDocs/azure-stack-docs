@@ -10,7 +10,7 @@ ms.topic: how-to
 
 # Deploy rack aware cluster via the Azure portal (Preview)
 
-This document describes the steps to deploy Azure Local Rack Aware Clusters using the Azure portal.
+This document describes the steps to deploy Azure Local rack aware clusters using the Azure portal.
 
 ## Prerequisites
 
