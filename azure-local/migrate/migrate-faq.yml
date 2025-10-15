@@ -6,15 +6,15 @@ metadata:
   author: alkohli
   ms.author: alkohli
   ms.service: azure-local
-  ms.date: 05/14/2025
+  ms.date: 10/15/2025
 
 
-title: FAQ - Migration of Hyper-V and VMware VMs to Azure Local using Azure Migrate (preview)
+title: FAQ - Migration of Hyper-V and VMware VMs to Azure Local using Azure Migrate 
 
 summary:
-  The Azure Migrate based solution enables you to migrate VMs from Hyper-V and VMware to an Azure Local instance.  This FAQ answers questions you might have about the migration of a VM from a Hyper-V or a VMware VM to an Azure Local instance using Azure Migrate.
+  The Azure Migrate based solution enables you to migrate VMs from Hyper-V (Preview) and VMware to an Azure Local instance.  This FAQ answers questions you might have about the migration of a VM from a Hyper-V or a VMware VM to an Azure Local instance using Azure Migrate.
 
-  Tabs have questions about **VMware and Hyper-V VMs**, **VMware VMs only**, and **Hyper-V VMs only**.
+  Tabs have questions about **VMware and Hyper-V VMs**, **VMware VMs only**, and **Hyper-V VMs only**. The migration of Hyper-V VMs is in preview.
 
 sections:
   - name: Ignored
