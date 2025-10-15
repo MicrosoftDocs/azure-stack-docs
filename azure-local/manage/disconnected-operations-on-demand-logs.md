@@ -231,23 +231,45 @@ Before you collect logs, follow these steps to create a share and credentials:
 
 1. After collection, review the logs locally or upload them to Microsoft with the `Send-DiagnosticData` cmdlet.
 
-### Send-DiagnosticData
+### Using Send-DiagnosticData
 
-After you collect logs into a directory, using the `Invoke-ApplianceLogCollectionAndSaveToShareFolder` cmdlet or by copying them manually, send them to Microsoft with the standalone pipeline. This pipeline connects your host machine to Azure, targets all logs in a user-provided folder, and sends them to Microsoft Support. If the upload fails, the cmdlet tries up to three times and outputs the results when done.
+After you collect logs into a directory, using the `Invoke-ApplianceLogCollectionAndSaveToShareFolder` cmdlet or by copying them manually, you can send them to Microsoft with the standalone pipeline.
 
-The `Send-DiagnosticData` cmdlet needs your subscription details, for example, the *ResourceGroupName*, *SubscriptionId*, *TenantId*, and *RegistrationRegion*. It also needs credentials, either through manual sign-in or by providing the appropriate *service principal* and *password*. Review the [Set up observability for diagnostics and support](#set-up-observability-for-diagnostics-and-support) section for steps to create the *resource group* and *service principal* required to upload logs.
+The standalone pipeline:
 
-Run `Send-DiagnosticData` on a Windows machine that's connected to the internet. You can't run this cmdlet on Azure Local Hosts because they can't use Azure as the Arc control plane when disconnected operations are configured. When you run the cmdlet, the machine connects to Azure using Arc registration so it can upload data to Microsoft Support. *RegistrationRegion* is the same as *Location* in `ObservabilityConfiguration`.
+- Connects your host machine to Azure.
+- Targets all logs in a user-provided folder.
+- Uploads them to Microsoft Support.
+  - If the upload fails, the cmdlet tries up to three times and outputs the results when done.
 
-Use this method when you can’t collect logs directly from the appliance VM. For example, use it when the control plane appliance VM has issues and the management endpoint isn’t accessible, or the appliance VM is disconnected from Azure.
+This cmdlet requires:
+
+- Subscription details: *ResourceGroupName*, *SubscriptionId*, *TenantId*, and *RegistrationRegion*.
+- Credentials: Either through manual sign-in or by providing the appropriate *service principal* and *password*.
+
+Review the [Set up observability for diagnostics and support](#set-up-observability-for-diagnostics-and-support) section for steps to create the *resource group* and *service principal* required to upload logs.
+
+> [!NOTE]
+> Run `Send-DiagnosticData` on a Windows machine that's connected to the internet.
+>
+> - You can't run this cmdlet on Azure Local Hosts because they can't use Azure as the Arc control plane when disconnected operations are configured.
+> - When you run the cmdlet, the machine uses Arc registration to upload data to Microsoft Support.
+>   - *RegistrationRegion* is the same as *Location* in `ObservabilityConfiguration`.
+
+Use this method when you can’t collect logs directly from the appliance VM, for example:
+
+- The appliance VM is disconnected from Azure.
+- The management endpoint isn’t accessible.
+
+### Best practice
 
 Don’t run the `Send-DiagnosticData` cmdlet on Azure Local host nodes. These nodes are managed by the Azure Local disconnected operations control plane. Run the cmdlet from a Windows machine with Azure connectivity, such as your laptop or desktop.
 
-#### Send-DiagnosticData cmdlet examples
+### Send-DiagnosticData cmdlet examples
 
 Here are some examples of using the `Send-DiagnosticData` cmdlet.
 
-- To trigger a manual sign in via device code for permissions, run this command:
+- To trigger a manual sign in via device code, run this command:
 
   ```PowerShell
   Send-DiagnosticData -ResourceGroupName <String> -SubscriptionId <String> -TenantId <String> [-RegistrationWithDeviceCode] -RegistrationRegion <String> [-Cloud <String>] -DiagnosticLogPath <String> [-ObsRootFolderPath <String>] [-StampId <Guid>] [<CommonParameters>]
@@ -259,20 +281,22 @@ Here are some examples of using the `Send-DiagnosticData` cmdlet.
   Send-DiagnosticData -ResourceGroupName <String> -SubscriptionId <String> -TenantId <String> -RegistrationWithCredential <PSCredential> -RegistrationRegion <String> [-Cloud <String>] -DiagnosticLogPath <String> [-ObsRootFolderPath <String>] [-StampId <Guid>] [<CommonParameters>]
   ```
 
-### Send-DiagnosticData -SaveToPath
+### Send-DiagnosticData -SaveToPath (disconnected mode)
 
 The `Send-DiagnosticData -SaveToPath` cmdlet works in the disconnected mode, and is the only supported option to copy logs from the Azure Local host nodes. This cmdlet provides detailed diagnostic data to help you troubleshoot issues and is available when the [telemetry and diagnostics extension](../concepts/telemetry-and-diagnostics-overview.md) is installed.
 
-The `Send-DiagnosticData -SaveToPath` cmdlet:
+The cmdlet:
 
-- Collects logs from the local system, including:
-  - Role-specific logs
-  - Supplementary logs
-  - Software Defined Data Center (SDDC) log (optional)
+- Is available when the [telemetry and diagnostics extension](../concepts/telemetry-and-diagnostics-overview.md) is installed.
+- Provides detailed diagnostic data to help you troubleshoot issues.
+
+Capabilities:
+
+- Collects role-specific and supplementary logs, and optional Software Defined Data Center logs
 - Filters logs by role, date range, or log type.
-- Collects logs only on the node where you run the command, bypassing observability agents.
+- Runs only on the node where you execute the command, bypassing observability agents.
 - Saves logs locally only when you use the `-SaveToPath` parameter.
-- Lets you use secure credentials to save logs to a network share.
+- Supports secure credentials to save logs to a network share.
 
 ## Monitor log collection
 
