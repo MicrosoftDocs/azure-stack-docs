@@ -181,7 +181,7 @@ The following table describes the parameters that you define in the ARM template
 | AzureStackLCMAdminPasssword | Password for the LCM admin. <br/> For more information, see [Review deployment prerequisites for Azure Local](../deploy/deployment-prerequisites.md).|
 | hciResourceProviderObjectID | Object ID of the Azure Local Resource Provider. <br/> For more information, see [Get the object ID for Azure Local Resource Provider](#get-the-object-id-for-azure-local-resource-provider).|
 | arcNodeResourceIds | Array of resource IDs of the Azure Arc-enabled servers that are part of this Azure Local cluster. |
-| domainFqdn | Fully-qualified domain name (FQDN) for the Active Directory Domain Services prepared for deployment. |
+| domainFqdn | Fully qualified domain name (FQDN) for the Active Directory Domain Services prepared for deployment. |
 | namingPrefix | Prefix used for all objects created for the Azure Local deployment. |
 | adouPath | Path of the Organizational Unit (OU) created for this deployment. The OU can't be at the top level of the domain. For example: OU=Local001,DC=contoso,DC=com. |
 | securityLevel | Security configuration profile to be applied to the Azure Local cluster during deployment. The default is **Recommended**. |
