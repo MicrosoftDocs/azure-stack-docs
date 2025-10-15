@@ -3,9 +3,9 @@ author: ronmiab
 ms.author: robess
 ms.service: azure-local
 ms.topic: include
-ms.date: 10/07/2025
+ms.date: 10/15/2025
 ms.reviewer: alkohli
-ms.lastreviewed: 10/07/2025
+ms.lastreviewed: 10/15/2025
 ---
 
 ## Set up observability for diagnostics and support
@@ -13,7 +13,7 @@ ms.lastreviewed: 10/07/2025
 We recommend that you set up observability to get telemetry and logs for your first deployment. This lets Arc registration use a managed identity to upload logs, metrics, and telemetry from the appliance VM.
 
 > [!NOTE]
-> This doesn't apply if you plan to run air-gapped, as telemetry and diagnostics require connectivity.
+> Set up observability doesn't apply if you plan to run air-gapped, as telemetry and diagnostics require connectivity.
 
 Here's a list of parameters needed:
 
@@ -87,7 +87,7 @@ Follow these steps to set up observability for diagnostics and support:
     ```
 
     > [!NOTE]
-    > If you want to set this up as part of bootstrap deployment, you can pass the `$observabilityConfiguration` as a parameter to `Install-Appliance` and skip `Set-ApplianceObservabilityConfiguration`. This simplifies deployment and helps you get logs and telemetry as part of the deployment.
+    > If you want to set up observability as part of a bootstrap deployment, you can pass the `$observabilityConfiguration` as a parameter to `Install-Appliance` and skip `Set-ApplianceObservabilityConfiguration`. This simplifies deployment and helps you get logs and telemetry as part of the deployment.
 
 1. Check that observability is configured.
 
