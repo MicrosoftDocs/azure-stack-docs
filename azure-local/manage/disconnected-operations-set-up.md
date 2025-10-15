@@ -91,19 +91,20 @@ To create a virtual appliance and download the required files for your on-premis
 
 1. When the steps are complete, put all the files in a share or on portable media. You need these files during deployment.
 
-### Download Azure Local ISO 
-1. Sign in to [the portal](https://portal.azure.com) and navigate to **Azure Local**. 
-1. Hit **download software **
-1. Download Local HCI OS
-1. Select a subscription where you have registered the Microsoft.AzureStackHCI resource provider
-1. Select the compatible Software version based for the preview version you are starting off with. 
-1. Read the privacy notice and click download
+### Download Azure Local ISO
 
-Make sure you have the ISO available for installing on your Azure Local nodes.
+1. Sign in to [the Portal](https://portal.azure.com) and navigate to **Azure Local**. 
+1. Hit **download software**.
+1. Download Local HCI OS.
+1. Select a subscription where you have registered the *Microsoft.AzureStackHCI* resource provider.
+1. Select the software version that's compatible with the preview version you're using.
+1. Read the privacy notice and click **download**.
+
+Make sure you have the ISO available to install on your Azure Local nodes.
 
 ### Review Azure local disconnected operations compatible versions
 
-Please note that when you deploy a new system - you will need to use a Azure Local build that is compatible with your Azure Local disconnected operations build.
+When you deploy a new system, use an Azure Local build that's compatible with your Azure Local disconnected operations build.
 
 | Disconnected operations milestone | Disconnected operations build | Azure Local Build |  
 |------|-------------|----------------|  
@@ -111,6 +112,7 @@ Please note that when you deploy a new system - you will need to use a Azure Loc
 | M2 | 7.1064837202.19761 | AzureLocal24H2.26100.1742.LCM.12.2506.0.3136 |
 | 2508 | 8.1064855627.20050 | AzureLocal24H2.26100.1742.LCM.12.2506.0.3136 |
 | 2509 | 9. | AzureLocal24H2.26100.1742.LCM.12.2508.0.3201 |
+
 ## Related content
 
 - [Deploy disconnected operations for Azure Local](disconnected-operations-deploy.md)
