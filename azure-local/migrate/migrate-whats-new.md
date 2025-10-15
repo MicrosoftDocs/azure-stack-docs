@@ -4,13 +4,35 @@ description: Learn about new features in Azure Migrate for Azure Local.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 10/13/2025
+ms.date: 10/15/2025
 ms.service: azure-local
 ---
 
 # What's new in Azure Migrate for Azure Local
 
 This article lists the various features and improvements that are available in virtual machine (VM) migration to Azure Local.
+
+## October 2025
+
+This release marks the **General Availability (GA) of Azure Migrate support for migrating VMware VMs to Azure Local**.
+
+This milestone highlights several capabilities shaped by customer and partner feedback during the preview, including:
+
+- Static IP address retention for Windows and Linux VMs via scripts.
+
+- PowerShell migration support for scripting and automation.
+
+- Advanced compute and disk customization options during migration.
+
+For more information, see [Overview of Azure Migrate based VMware migration for Azure Local](migration-azure-migrate-vmware-overview.md).
+
+## September 2025
+
+This release includes these features and improvements:
+
+- **Improved PowerShell validation** – Fixed an issue in the Az.Migrate PowerShell module where VM replications were blocked if source disk names contained reserved words. Replications now proceed correctly using validated target VM names for disk naming.
+
+- **Additional PowerShell reliability improvements** – Fixed an issue requiring `-PhysicalSectorSize` when replicating VHD disks and enhanced ARM ID validation for resources in PowerShell migrations
 
 ## August 2025
 
