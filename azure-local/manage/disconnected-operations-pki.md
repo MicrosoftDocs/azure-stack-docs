@@ -306,13 +306,13 @@ $RootCACert = Get-ChildItem -Path Cert:\LocalMachine\Root | Where-Object { $_.Su
 $RootCACert = Get-ChildItem -Path Cert:\LocalMachine\Root | Where-Object { $_.Thumbprint -eq "12345678ABCDEFGH607857694DF5E45B68851868" } | Select-Object -First 1
 
 # Check you have the correct Root CA certificate:
-$cert
+$RootCACert
 
 # If it matches, export in CER (DER) format
-Export-Certificate -Cert $cert -FilePath "C:\Temp\RootCA-DER.cer" -Type CERT
+Export-Certificate -Cert $RootCACert -FilePath "C:\Temp\RootCA-DER.cer" -Type CERT
 
-# Finally, convert from CER (DER) to Base-64 CER
-certutil -encode "C:\Temp\RootCA-DER.cer" "C:\Temp\RootCA-Base64.cer"
+# Finally, convert from CER (DER) to Base-64 CER (and store it in $applianceRootcert)
+certutil -encode "C:\Temp\RootCA-DER.cer" $applianceRootcert
 
 ## Alternative method (If CA is setup and responds)
 # certutil -ca.cert $applianceRootCert
