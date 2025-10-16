@@ -1,8 +1,8 @@
 ---
 title: "Azure Firewall outbound rules for Azure Operator Nexus"
 description: "Guidance on configuring outbound network and FQDN rules in Azure Firewall for Azure Operator Nexus to remove wildcards and strengthen security."
-author: sushantjrao
-ms.author: sushrao
+author: RaghvendraMandawale
+ms.author: rmandawale
 ms.service: azure-operator-nexus
 ms.topic: conceptual
 ms.date: 08/18/2025
