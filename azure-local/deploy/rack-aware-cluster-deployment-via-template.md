@@ -347,48 +347,6 @@ The following table describes the parameters that you define in the ARM template
 <!--| clusterPattern | Supported storage type for the Azure Local cluster: <br/>- **Standard**<br/>- **RackAware** |
 | localAvailabilityZones | Local Availability Zone information for the Azure Local cluster. |-->
 
-<!--## Troubleshoot deployment issues
-
-If the deployment fails, you should see an error message on the deployments page.
-
-1. On the **Deployment details**, select the **error details**.
-
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/select-view-error-details-1.png" alt-text="Screenshot showing the selection of error details." lightbox="./media/deployment-azure-resource-manager-template/select-view-error-details-1.png":::
-
-2. Copy the error message from the **Errors** blade. You can provide this error message to Microsoft support for further assistance.
-
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/select-view-error-details-2.png" alt-text="Screenshot showing the summary in the Errors blade." lightbox="./media/deployment-azure-resource-manager-template/select-view-error-details-2.png":::
-
-### Known issues for ARM template deployment
-
-This section contains known issues and workarounds for ARM template deployment.
-
-#### Role assignment already exists
-
-**Issue**: In this release, you may see *Role assignment already exists* error. This error occurs if the Azure Local instance deployment was attempted from the portal first and the same resource group was used for ARM template deployment. You see this error on the **Overview > Deployment details** page for the applicable resource. This error indicates that an equivalent role assignment was already done by another identity for the same resource group scope and the ARM template deployment is unable to perform role assignment.
-
-:::image type="content" source="./media/deployment-azure-resource-manager-template/select-view-error-details-3.png" alt-text="Screenshot showing the role assignment error in the Errors blade." lightbox="./media/deployment-azure-resource-manager-template/select-view-error-details-3.png":::
-
-**Workaround**: The failed resource on the Deployment details page specifies the role assignment name. If the resource name is **AzureStackHCIDeviceManagementRole-RoleAssignment** then role assignment failed for the **Azure Stack HCI Device Management Role**. Note this role name and go to **Resource Group > Access Control (IAM) > Role Assignments**. Search for the corresponding name and delete the existing role assignments there. Redeploy your template.
-
-:::image type="content" source="./media/deployment-azure-resource-manager-template/workaround-details-2.png" alt-text="Screenshot showing the role assignment name on the Details page." lightbox="./media/deployment-azure-resource-manager-template/workaround-details-2.png":::
-
-#### Tenant ID, application ID, principal ID, and scope aren't allowed to be updated
-
-**Issue**: Role assignment fails with error *Tenant ID, application ID, principal ID, and scope aren't allowed to be updated*. You see this error on the **Overview > Deployment details** page for the applicable resource. This error could show up when there are zombie role assignments in the same resource group. For example, when a prior deployment was performed and the resources corresponding to that deployment were deleted but the role assignment resources were left around.
-
-:::image type="content" source="./media/deployment-azure-resource-manager-template/error-tenantid-applicationid-principalid-not-allowed-to-update-1.png" alt-text="Screenshot showing the tenant ID, application ID, principal ID, and scope can't be updated message in the Errors blade." lightbox="./media/deployment-azure-resource-manager-template/error-tenantid-applicationid-principalid-not-allowed-to-update-1.png":::
-
-**Workaround**: To identify the zombie role assignments, go to **Access control (IAM) > Role assignments > Type : Unknown** tab. These assignments are listed as *Identity not found. Unable to find identity.* Delete such role assignments and then retry ARM template deployment.
-
-:::image type="content" source="./media/deployment-azure-resource-manager-template/error-identity-not-found-1.png" alt-text="Screenshot showing the identity not found message in the Errors blade." lightbox="./media/deployment-azure-resource-manager-template/error-identity-not-found-1.png":::
-
-#### License sync issue
-
-**Issue**: In this release, you may encounter license sync issue when using ARM template deployment.
-
-**Workaround**: After the system completes the validation stage, we recommend that you don't initiate another ARM template deployment in **Validate** mode if your system is in **Deployment failed** state. Starting another deployment resets the system properties, which could result in license sync issues.-->
-
 ## Next steps
 
 <!--Add next steps-->
