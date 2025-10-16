@@ -412,6 +412,8 @@ items:
         href: manage/vm-load-balancing.md
       - name: Attach GPU to Linux VM
         href: manage/attach-gpu-to-linux-vm.md
+      - name: Enable nested virtualization
+        href: manage/enable-nested-virtualization.md
 
   - name: GPUs
     items:
