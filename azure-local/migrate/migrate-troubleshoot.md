@@ -1,9 +1,9 @@
 ---
-title: Troubleshoot issues when migrating VMs to Azure Local using Azure Migrate (preview)
-description: Learn about how to troubleshoot issues when migrating Windows VMs to your Azure Local instance using Azure Migrate (preview).
+title: Troubleshoot issues when migrating VMs to Azure Local using Azure Migrate
+description: Learn about how to troubleshoot issues when migrating Windows VMs to your Azure Local instance using Azure Migrate.
 author: alkohli
 ms.topic: how-to
-ms.date: 07/25/2025
+ms.date: 10/15/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.custom:
@@ -11,13 +11,12 @@ ms.custom:
   - sfi-image-nochange
 ---
 
-# Troubleshoot issues migrating VMs to Azure Local via Azure Migrate (preview)
+# Troubleshoot issues migrating VMs to Azure Local via Azure Migrate
 
-[!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [hci-applies-to-2503](../includes/hci-applies-to-2503.md)]
 
-This article describes how to troubleshoot any potential issues that you may experience when migrating Hyper-V and VMware VMs to your Azure Local using Azure Migrate.
+This article describes how to troubleshoot any potential issues that you may experience when migrating Hyper-V (Preview) and VMware VMs to your Azure Local using Azure Migrate.
 
-[!INCLUDE [important](../includes/hci-preview.md)]
 
 ## Check if required services are running
 
@@ -435,9 +434,9 @@ Task failures listed below the red line (**Preparing protected entities** task a
 
     These resources will be reused automatically by Azure Migrate during subsequent migration attempts.
 
-### Migrated VM data disks show as 1GB in Azure Portal
+### Migrated VM data disks show as 1GB in Azure portal
 
-When you migrate a VM with one or more data disks attached, Azure Portal may incorrectly display the total data disk size as **1 GB**.
+When you migrate a VM with one or more data disks attached, Azure portal may incorrectly display the total data disk size as **1 GB**.
 
 **Root cause**
 

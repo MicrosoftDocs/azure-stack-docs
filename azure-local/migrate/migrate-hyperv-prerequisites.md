@@ -9,7 +9,7 @@ ms.author: alkohli
 
 # Prerequisites for Hyper-V VM migration to Azure Local using Azure Migrate (preview)
 
-[!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [hci-applies-to-2503](../includes/hci-applies-to-2503.md)]
 
 This article describes the prerequisite tasks you need to complete before you begin the process to migrate Hyper-V virtual machines (VMs) to Azure Local. Make sure to [review the requirements](migrate-hyperv-requirements.md) for migration if you haven't already.
 
