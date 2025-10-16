@@ -205,7 +205,7 @@ For an example of a parameter JSON file that shows the format of various inputs,
                     }
                 ]
         },
-        "StorageNetworkList": {
+        "storageNetworkList": {
             "value": [
                 {
                     "name": "Storage1Network",
