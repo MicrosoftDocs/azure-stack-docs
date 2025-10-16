@@ -83,7 +83,7 @@ You perform these operations either on the VM itself or on the cluster/node. The
     > This manual change is allowed from within the guest operating system using local tools only when a static IP NIC was added post VM provisioning from Azure Local control plane. This ensures network configurations within the VM aligns with the configuration defined in the Azure control plane.
 - Configure processor Non-Uniform Memory Access (NUMA) topology
 - Configure processor VM reserve, limit, and weight
-- Enable Quality of Service (QoS) management per disk
+- [Enable Storage Quality of Service (QoS) for virtual hard disks](/windows-server/storage/storage-qos/storage-qos-overview?toc=/azure/azure-local/toc.json&bc=/azure/azure-local/breadcrumb/toc.json)
 - Add a Small Computer System Interface (SCSI) controller and move an existing data disk to another SCSI controller
 - Remove a SCSI controller
 - Add or remove a DVD drive
