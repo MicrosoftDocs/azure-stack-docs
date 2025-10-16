@@ -46,6 +46,13 @@ The disconnected operations appliance uses 78 GB of memory. If a node has less t
 
 [!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
 
+### Deployment fails (does not converge service 100%)
+
+There is a known issue in virtual environments that we see occur where deployment times out and services does not converge to 100% (even when checking back after 8 hours).
+
+**Mitigation:** Retry redeploy the disconnected operations appliance a few times. If the problem persists, please do collect logs and open a support ticket if this is a physical environment.  
+
+
 ### Azure Local deployment with Azure Keyvault
 
 Role-Based Access Control (RBAC) permissions on a newly created Azure Key Vault can take up to 20 minutes to propagate. If you create the Azure Key Vault in the local portal and try to finish the cloud deployment, you might run into permission issues when validating the cluster before deployment.
