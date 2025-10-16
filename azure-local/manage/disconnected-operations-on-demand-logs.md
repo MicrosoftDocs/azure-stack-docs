@@ -41,7 +41,7 @@ Before you set up observability for your Azure Local appliance, make sure you:
 
 ## Workflow
 
-Follow these steps to collect logs on-demand:
+To collect logs on-demand, follow these steps:
 
 - [Prerequisites](#prerequisites)
 - [Select a log collection method for your connectivity scenario](#supported-scenarios)
@@ -174,6 +174,10 @@ To collect logs from the control plane, follow these steps:
     To learn more about the `Send-AzStackHciDiagnosticData` command, see [Get support for Azure Local deployment issues](../manage/get-support-for-deployment-issues.md).
 
 ## Log collection cmdlets
+
+### Invoke-ApplianceLogCollection
+
+Run the `Invoke-ApplianceLogCollection` cmdlet to <!--PM to provide content ... see the next section as an example>
 
 ### Invoke-ApplianceLogCollectionAndSaveToShareFolder
 
