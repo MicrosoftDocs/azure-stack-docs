@@ -1,5 +1,5 @@
 ---
-title: Deploy a virtual Azure Local, version 23H2 / 24H2 system
+title: Deploy a virtual Azure Local, version 23H2 and 24H2 system
 description: Describes how to perform an Azure Local, version 23H2 virtualized deployment.
 author: alkohli
 ms.author: alkohli
@@ -19,9 +19,12 @@ This article describes how to deploy a virtualized Azure Local instance on a hos
 You need administrator privileges for the Azure Local virtual deployment and should be familiar with the existing Azure Local solution. The deployment can take around 2.5 hours to complete.
 
 > [!IMPORTANT]
+>
 > A virtual deployment of Azure Local is intended for educational and demonstration purposes only. 
 
+
 >[!NOTE]
+>
 >Microsoft Support doesn't support virtual deployments.
 
 ## Prerequisites
@@ -153,21 +156,22 @@ Follow these steps to create an example VM named `Node1` using PowerShell cmdlet
 1. Attach all network adapters to the virtual switch. Specify the name of the virtual switch you created, whether it was external without NAT, or internal with NAT:
 
     ```PowerShell
-    Get-VmNetworkAdapter -VmName "Node1" |Connect-VmNetworkAdapter -SwitchName "virtual_switch_name"
+    Get-VmNetworkAdapter -VmName "Node1" | Connect-VmNetworkAdapter -SwitchName "virtual_switch_name"
     ```
 
-1. Enable MAC spoofing *on all network adapters* on VM `Node1`. MAC address spoofing is a technique that allows a network adapter to masquerade as another by changing its Media Access Control (MAC) address. 
-In addition we need to enable teaming *on all network adapters*, because NetworkATC will team vNICs for the management / compute intent, and depending on the configuration (storage switched) aswell on the storage vNICs.
-This is required in scenarios where you're planning to use nested virtualization:
+1. Enable MAC address spoofing and teaming on all network adapters on VM Node1 if you plan to use nested virtualization.
+
+* MAC address spoofing lets a network adapter appear as another by changing its Media Access Control (MAC) address.
+* NetworkATC teams vNICs for management and compute intent, and, depending on the configuration, for storage vNICs.
 
     ```PowerShell
-    Get-VmNetworkAdapter -VmName "Node1" |Set-VmNetworkAdapter -MacAddressSpoofing On -Allow Teaming On
+    Get-VmNetworkAdapter -VmName "Node1" | Set-VmNetworkAdapter -MacAddressSpoofing On -Allow Teaming On
     ```
 
 1. Enable trunk port (for multi-node deployments only) for all network adapters on VM `Node1`. This script configures the network adapter of a specific VM to operate in trunk mode. This is typically used in multi-node deployments where you want to allow multiple Virtual Local Area Networks (VLANs) to communicate through a single network adapter:
 
     ```PowerShell
-    Get-VmNetworkAdapter -VmName "Node1" |Set-VMNetworkAdapterVlan -Trunk -NativeVlanId 0 -AllowedVlanIdList 0-1000
+    Get-VmNetworkAdapter -VmName "Node1" | Set-VMNetworkAdapterVlan -Trunk -NativeVlanId 0 -AllowedVlanIdList 0-1000
     ```
 
 1. Create a new key protector and assign it to `Node1`. This is typically done in the context of setting up a guarded fabric in Hyper-V, a security feature that protects VMs from unauthorized access or tampering.
