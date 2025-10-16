@@ -168,7 +168,7 @@ To collect logs from the control plane, follow these steps:
 
     After you save logs from both the appliance and host nodes to a shared location, upload them with the standalone observability tool. There are product specific wrappers around **Microsoft.AzureStack.Observability.Standalone**.
 
-    - For appliance logs: Use the tool version that supports logs collected with `Send-DiagnosticData`.
+    - For appliance logs: Use the `Send-DiagnosticData` command from the Azure Local disconnected operations PS module to upload logs from the appliance VM.
     - For host node logs: Use the `Send-AzStackHciDiagnosticData` command to upload logs from the host node.
 
     To learn more about the `Send-AzStackHciDiagnosticData` command, see [Get support for Azure Local deployment issues](../manage/get-support-for-deployment-issues.md).
