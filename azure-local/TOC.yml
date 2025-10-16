@@ -413,7 +413,7 @@ items:
       - name: Attach GPU to Linux VM
         href: manage/attach-gpu-to-linux-vm.md
       - name: Enabled nested virtualization
-        href: /previous-versions/azure/azure-local/concepts/nested-virtualization?toc=/azure/azure-local/toc.json&bc=/azure/azure-local/breadcrumb/toc.json
+        href: /concepts/nested-virtualization?toc=/azure/azure-local/toc.json&bc=/azure/azure-local/breadcrumb/toc.json
 
   - name: GPUs
     items:

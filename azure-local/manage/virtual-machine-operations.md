@@ -94,7 +94,7 @@ You perform these operations either on the VM itself or on the cluster/node. The
 - Change an automatic stop action
 - Enable secure boot of a generation 2 VM
 - [Apply affinity / anti-affinity rules](vm-affinity.md)
-- [Enable nested virtualization](/previous-versions/azure/azure-local/concepts/nested-virtualization?toc=/azure/azure-local/toc.json&bc=/azure/azure-local/breadcrumb/toc.json)
+- [Enable nested virtualization](../concepts/nested-virtualization?toc=/azure/azure-local/toc.json&bc=/azure/azure-local/breadcrumb/toc.json)
 
 #### Cluster or node-level operations
 
