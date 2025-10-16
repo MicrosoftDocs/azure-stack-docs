@@ -3,7 +3,7 @@ title: Release notes for disconnected operations for Azure Local
 description: Read about the known issues and fixed issues for disconnected operations for Azure Local.
 author: haraldfianbakken
 ms.topic: conceptual
-ms.date: 08/06/2025
+ms.date: 10/16/2025
 ms.author: hafianba
 ms.reviewer: hafianba
 ai-usage: ai-assisted
@@ -234,7 +234,7 @@ Azure CLI doesn't support providing `subscriptionOwnerId` for new subscriptions.
 
 #### Signout fails
 
-When you select Sign-out, the request doesn't work.
+When you select **Signout**, the request doesn't work.
 
 **Mitigation**: Close your browser, then go to the portal URL.
 
