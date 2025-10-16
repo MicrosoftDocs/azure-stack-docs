@@ -10,7 +10,7 @@ ms.custom: sfi-image-nochange
 
 # Discover and replicate Hyper-V VMs for migration to Azure Local using Azure Migrate (preview)
 
-[!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [hci-applies-to-2503](../includes/hci-applies-to-2503.md)]
 
 This article describes the discovery and replication phase for Hyper-V virtual machine (VM) migration to Azure Local using Azure Migrate.
 
