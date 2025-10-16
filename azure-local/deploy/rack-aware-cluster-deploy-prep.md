@@ -1,5 +1,5 @@
 ---
-title: Deploy rack aware cluster via the Azure portal
+title: Prepare to deploy rack aware cluster via the Azure portal
 description: Learn how to deploy Azure Local rack aware clusters with high resiliency using ToR switches and VLAN isolation for optimal network configurations.
 author: alkohli
 ms.author: alkohli
@@ -11,29 +11,27 @@ ms.topic: how-to
 
 # Prepare for rack aware cluster deployment
 
-This document describes the preparation steps for deploying Azure Local
-rack aware clusters. It includes network design recommendations, machine
-configuration guidelines, and best practices for deployment.
+This article describes the preparation steps to deploy Azure Local rack aware clusters. It includes network design recommendations, machine configuration guidelines, and best practices for deployment.
 
 ## Review supported network configurations
 
 - Make sure to review the [Network design requirements for Azure Local rack aware clusters](../index.yml) for detailed design and supported network configurations.
 
     - We strongly recommend that you deploy two Top of Rack (ToR) switches in each rack or room to ensure high resiliency.
-    - For edge implementations where cost efficiency is a priority, a single ToR switch per room or rack may be sufficient, provided that adequate bandwidth is available.
+    - For edge implementations where cost efficiency is a priority, a single ToR switch per room or rack might be sufficient, provided that adequate bandwidth is available.
     - Both storage networks reside on the same device and are isolated through distinct VLANs.
 
-- Ensure that your network switches support Link Layer Discovery Protocol (LLDP) and that LLDP is enabled on all switch ports connected to the Azure Local machines. This is crucial for the LLDP Network Validator test, which verifies the network topology and connections for your rack aware cluster deployment.
+- Make sure your network switches support Link Layer Discovery Protocol (LLDP) and that LLDP is enabled on all switch ports connected to the Azure Local machines. This is crucial for the LLDP Network Validator test, which verifies the network topology and connections for your rack aware cluster deployment.
 
 ## Register cluster nodes
 
-- Make sure to register the Azure Local machines that you intend to use in the rack aware cluster. Follow the steps detailed in the [Register Azure Local machines with Azure Arc](./deployment-without-azure-arc-gateway.md).
+- Make sure you register the Azure Local machines that you intend to use in the rack aware cluster. Follow the steps detailed in the [Register Azure Local machines with Azure Arc](./deployment-without-azure-arc-gateway.md).
 
-    Verify that the Azure Local machines show in the resource group as registered.
+- Verify that the Azure Local machines show in the resource group as registered.
 
 ## (Optional) Test rack-to-rack latency
 
-Use the `psping` tool to validate rack-to-rack (room-to-room) network latency through a client-server testing model.
+To validate rack-to-rack (room-to-room) network latency through a client-server testing model, use the `psping` tool.
 
 To ensure accurate and complete testing, we recommend that you run full mesh tests. This implies that every host tests connectivity with every other host in both directions.
 
@@ -45,9 +43,9 @@ Each host takes turns acting as both **server** and **client** when testing agai
 
 Follow these steps to test rack-to-rack latency:
 
-1. **[Download psping](/sysinternals/downloads/psping)**. Download and extract `psping` on each host that participates in testing.
+1. **[Download `psping`](/sysinternals/downloads/psping)** and extract it on each host that participates in testing.
 
-1. **Allow TCP traffic through the firewall**. Since this test uses TCP, ensure the port is open on the **server**. Run this PowerShell command:
+1. **Allow TCP traffic through the firewall**. Since this test uses TCP, ensure the port is open on the **server**. Run this command:
 
     ```powershell  
     New-NetFirewallRule -DisplayName "\<RULENAME\>" -Direction Inbound
@@ -55,31 +53,31 @@ Follow these steps to test rack-to-rack latency:
     -ErrorAction Stop
     ```
 
-1. **Start the `psping` server on one host**. Run this PowerShell command:
+1. **Start the `psping` server on one host**. Run this command:
 
     ```powershell
     .\psping.exe -s \<SERVER_IP\>:\<PORT\>
     ```
 
-1. **Run the `psping` client on another host**. Run this PowerShell command:
+1. **Run the `psping` client on another host**. Run this command:
 
     ```powershell
     .\psping.exe -l 1m -n 5000 -h 5 \<SERVER_IP\>:\<PORT\>
     ```
 
-1. **Review output analysis**: After the test is complete, `psping` provides a summary and a histogram of latency values. This helps analyze performance more effectively.
+1. **Review output analysis**: After the test is complete, `psping` provides a summary and a histogram of latency values. This analysis helps evaluate performance more effectively.
 
-    - **Average latency**: Use this key metric to understand the overall network delay.
+    - **Average latency**: To understand the overall network delay, use this key metric.
 
-    - **Histogram**: Use this metric to see a clear picture of how consistent the latency is across all the test packets.
+    - **Histogram**: To see a clear picture of how consistent the latency is across all the test packets, use this metric.
 
-### Sample example
+### Latency example
 
-In this sample example, the average latency is 0.51 ms which is less than 1 ms.
+In this example, the average latency is 0.51 ms which is less than 1 ms.
 
 :::image type="content" source="media/rack-aware-cluster-deploy-prep/rack-aware-cluster-test-latency.png" alt-text="Screenshot of an example when using psping." lightbox="media/rack-aware-cluster-deploy-prep/rack-aware-cluster-test-latency.png":::
 
-To complete the full mesh testing, repeat steps 2 and 3 with different server-client combinations until every host is tested with every other host.
+To complete the full mesh testing, repeat steps 3 and 4 with different server-client combinations until every host is tested with every other host.
 
 > [!NOTE]
 > Results can vary depending on when you run the test, as TCP latency is affected by your current network conditions. We strongly recommend that you run the test *multiple* times to get a reliable average.

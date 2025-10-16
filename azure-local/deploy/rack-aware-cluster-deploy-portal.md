@@ -12,6 +12,8 @@ ms.topic: how-to
 
 This document describes the steps to deploy Azure Local rack aware clusters using the Azure portal.
 
+[!INCLUDE [hci-preview](../includes/hci-preview.md)]
+
 ## Prerequisites
 
 Make sure to complete the steps in [Prepare for rack aware cluster deployment](./rack-aware-cluster-deploy-prep.md).
@@ -193,7 +195,7 @@ On the **Configuration** tab, choose whether to create a new configuration for t
 
     <!-->:::image type="content" source="media/rack-aware-cluster-deploy-portal/rack-aware-cluster-deployments.png" alt-text="Screenshot of deployment progress in the Azure portal." lightbox="media/rack-aware-cluster-deploy-portal/rack-aware-cluster-deployments.png":::-->
 
-    You can monitor the deployment status just like the standard cluster.
+1. You can monitor the deployment status just like the standard cluster.
 
 ## Verify a successful deployment
 
