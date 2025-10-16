@@ -4,7 +4,7 @@ description: Learn how to set up disconnected operations for Azure Local by crea
 ms.topic: how-to
 author: ronmiab
 ms.author: robess
-ms.date: 08/06/2025
+ms.date: 10/16/2025
 ai-usage: ai-assisted
 ---
 
@@ -96,7 +96,7 @@ To create a virtual appliance and download the required files for your on-premis
 1. Sign in to [the Portal](https://portal.azure.com) and navigate to **Azure Local**. 
 1. Hit **download software**.
 1. Download Local HCI OS.
-1. Select a subscription where you have registered the *Microsoft.AzureStackHCI* resource provider.
+1. Select a subscription where you've registered the `Microsoft.AzureStackHCI` resource provider.
 1. Select the software version that's compatible with the preview version you're using.
 1. Read the privacy notice and click **download**.
 
