@@ -3,7 +3,7 @@ title: Deploy Azure Local, version 23H2 using local identity with Azure Key Vaul
 description: Learn how to use local identity with Azure Key Vault for Azure Local, version 23H2 deployment (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 10/09/2025
+ms.date: 10/16/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -260,12 +260,6 @@ Tooling support in Azure Local environments configured with Azure Key Vault for 
 ### Mixed compatibility
 
 - **Microsoft Management Consoles (MMCs).** Compatibility varies. Tools such as Hyper-V Manager and Failover Cluster Manager may not be functional in all scenarios. Test critical workflows before relying on MMCs for production use.
-
-- **Failover Cluster Manager.**
-    - Some scenarios may work, others may not. Key scenarios to validate include:
-        - Storage management (critical for custom deployments).
-        - Live migration.
-        - Node drain or maintenance mode.
 
 <!-- Plan: Add explicit notes for unsupported or broken hero scenarios in documentation.-->
 
