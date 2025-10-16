@@ -65,7 +65,7 @@ For a list of unsupported features in disconnected mode, see [Unsupported featur
 
 ## Azure Local disconnected when the appliance VM is connected to Azure
 
-When the appliance VM is connected to Azure, upload host node logs the same way as in the Azure Local disconnected scenario. For control plane logs, send them directly by using `Invoke-ApplianceLogCollection`. You don't need to save them locally.
+When the appliance VM is connected to Azure, you can upload host node logs the same way you do in the Azure Local disconnected scenario. For control plane logs, send them directly by using `Invoke-ApplianceLogCollection`. You don't need to save them locally.
 
 The following diagram shows the key components for log collection in Azure Local disconnected when the appliance VM is connected to Azure:
 
@@ -140,7 +140,7 @@ Before you collect logs in a connected disconnected scenario, make sure you:
 
 ## Azure Local disconnected when the appliance VM isn't connected to Azure
 
-In disconnected Azure Local environments, collect logs from the control plane (appliance) and host nodes, and then manually upload them with a standalone tool.
+In disconnected Azure Local environments, you can collect logs from the control plane (appliance) and host nodes, and then manually upload them with a standalone tool.
 
 The following diagram shows key components for log collection in Azure Local disconnected environments when the appliance VM isn't connected to Azure.
 
@@ -177,7 +177,7 @@ To collect logs from the control plane, follow these steps:
 
 ### Invoke-ApplianceLogCollectionAndSaveToShareFolder
 
-Run the `Invoke-ApplianceLogCollectionAndSaveToShareFolder` cmdlet to collect logs in your disconnected environment. This cmdlet copies logs from the disconnected operations appliance VM to a shared folder. Use `Invoke-ApplianceLogCollectionAndSaveToShareFolder` when the disconnected operations appliance VM management endpoint is accessible.
+Run the `Invoke-ApplianceLogCollectionAndSaveToShareFolder` cmdlet to collect logs in your disconnected environment and copy them from the disconnected operations appliance VM to a shared folder. Use this cmdlet when the disconnected operations appliance VM management endpoint is accessible.
 
 Before you collect logs, follow these steps to create a share and set up credentials:
 
