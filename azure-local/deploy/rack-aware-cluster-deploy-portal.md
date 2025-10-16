@@ -102,7 +102,7 @@ On the **Configuration** tab, choose whether to create a new configuration for t
 1. Optionally edit the suggested **Custom location name** that helps users identify this system when creating resources such as VMs on it.
 1. For rack aware cluster, cluster witness is required. Select an existing Storage account or create a new Storage account to store the cloud witness file. Choose **Cloud witness** and provide a name for the cloud witness.
 
-    :::image type="content" source="media/rack-aware-cluster-deploy-portal/rack-aware-cluster-management-settings.png" alt-text="Screenshot of management settings in the Azure portal." lightbox="media/rack-aware-cluster-deploy-portal/rack-aware-cluster-management-settings.png":::
+
 
     When selecting an existing account, the dropdown list filters to display only the storage accounts contained in the specified resource group for deployment. You can use the same storage account with multiple clusters; each witness uses less than a kilobyte of storage.
 
@@ -120,7 +120,7 @@ On the **Configuration** tab, choose whether to create a new configuration for t
 
     The credentials must be identical on all machines in the system.  If the current password doesn't meet the complexity requirements (14+ characters long, a lowercase and uppercase character, a numeral, and a special character), you must change it on all machines before proceeding.
 
-    :::image type="content" source="./media/deploy-via-portal/management-tab-1.png" alt-text="Screenshot of the Management tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/management-tab-1.png":::
+     :::image type="content" source="media/rack-aware-cluster-deploy-portal/rack-aware-cluster-management-settings.png" alt-text="Screenshot of management settings in the Azure portal." lightbox="media/rack-aware-cluster-deploy-portal/rack-aware-cluster-management-settings.png":::
 
 1. Select **Next: Security**.
 
