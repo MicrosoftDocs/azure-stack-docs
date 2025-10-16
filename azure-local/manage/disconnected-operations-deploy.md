@@ -4,7 +4,7 @@ description: Learn how to deploy disconnected operations for Azure Local in your
 ms.topic: how-to
 author: ronmiab
 ms.author: robess
-ms.date: 08/06/2025
+ms.date: 10/16/2025
 ai-usage: ai-assisted
 ---
 
@@ -12,7 +12,7 @@ ai-usage: ai-assisted
 
 ::: moniker range=">=azloc-2506"
 
-This article explains how to deploy disconnected operations for Azure Local in your datacenter. You'll learn how to determine the Azure Local topology, prepare the first machine, install the appliance, and create the Azure Local instance for improved resilience and control.
+This article explains how to deploy disconnected operations for Azure Local in your datacenter. You learn how to determine the Azure Local topology, prepare the first machine, install the appliance, and create the Azure Local instance for improved resilience and control.
 
 [!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
 
@@ -22,7 +22,7 @@ When deploying Azure Local with disconnected operations, consider the following 
 
 - The network configuration and names entered in the portal should be consistent with your setup and the previously created switches.
 - Virtual deployments aren't supported. Physical machines are required.
-- A minimum of three machines is required to support disconnected operations. Up to 8 machines are supported.
+- A minimum of three machines is required to support disconnected operations. Up to eight machines are supported.
 - The deployment of the Azure Local cluster can take several hours.
 - The local control plane can experience periods of downtime during node reboots and updates.
 - During the creation of the cluster, a thinly provisioned 2-TB infrastructure volume is created for disconnected operations. Don't tamper with or delete the infrastructure volumes created during the deployment process.
@@ -55,7 +55,7 @@ Here's a checklist of things you need before you deploy Azure Local with disconn
 - [Local credentials and AD credentials to meet minimum password complexity](../deploy/deployment-prerequisites.md).
 - [Active directory prepared for Azure Local deployment](../deploy/deployment-prep-active-directory.md).
 - Certificates to secure ingress endpoints (24 certificates) and the public key (root) used to create these certificates.
-- Certificates to secure the management endpoint (2 certificates).
+- Certificates to secure the management endpoint (two certificates).
 - Credentials and parameters to integrate with identity provider:
   - Active Directory Federations Services (ADFS) application, credentials, server details, and certificate chain details for certificates used in identity configuration.
 - Disconnected operations deployment files (manifest and appliance).
@@ -70,10 +70,10 @@ You deploy and configure Azure Local with disconnected operations in multiple st
 
 :::image type="content" source="./media/disconnected-operations/deployment/deployment-journey.png" alt-text="Screenshot of the deployment flow for disconnected operations in Azure Local." lightbox=" ./media/disconnected-operations/deployment/deployment-journey.png":::
 
-Here's a brief overview of the tools and processes used during the deployment. Access to Azure Local nodes (OS/host) might be required.
+Here's a brief overview of the tools and processes used during the deployment. Access to Azure Local nodes (OS or host) might be required.
 
 1. Use the existing tools and processes to install and configure the OS. Local admin access is required on all Azure Local nodes.
-1. Run PowerShell and the Operations module on the first node (sorted by node name like `seed node`). Local admin access is required.
+1. Run PowerShell and the Operations module on the first machine (sorted by node name like `seed node`). Local admin access is required.
 1. Use the local Azure portal or Azure CLI. You don't need physical node access, but you do need Azure Role-Based Access Control (RBAC) with the **Owner role**.
 1. Use the local Azure portal or Azure CLI. You don't need physical node access, but you do need Azure RBAC with the **Operator role**.
 
@@ -88,7 +88,7 @@ To prepare each machine for the disconnected operations appliance, follow these 
 1. On physical hardware, install firmware and drivers as instructed by your OEM.
 1. Rename network adapters.
 
-   Use the same adapter name on each node for the physical network. If the default names aren’t clear, rename the adapters to meaningful names. Skip this step if the adapter names already match and you don't need to rename them.
+   Use the same adapter name on each node for the physical network. If the default names aren’t clear, rename the adapters to meaningful names. If the adapter names already match and you don't need to rename them, skip this step.
 
    Here's an example:
 
@@ -174,9 +174,9 @@ To prepare each machine for the disconnected operations appliance, follow these 
     > [!NOTE]
     > Be sure to deploy disconnected operations on this node.
 
-## Deploy disconnected operations on the seed node
+## Deploy disconnected operations
 
-Disconnected operations must be deployed on the seed node (first machine). To make sure you do the following steps on the first machine, see [Prepare Azure Local machines](#prepare-azure-local-machines).
+Disconnected operations must be deployed on the seed node. To make sure you do the following steps on the first machine, see [Prepare Azure Local machines](#prepare-azure-local-machines).
 
 To prepare the first machine for the disconnected operations appliance, follow these steps:
 
@@ -351,7 +351,7 @@ Populate the required parameters based on your deployment planning. Modify the e
 
 ## Install and configure the appliance  
 
-To install and configure the appliance on the first machine (seed node), use the following command. Point the `AzureLocalInstallationFile` to a path that contains the **IRVM01.zip**.
+To install and configure the appliance on the first machine, use the following command. Point the `AzureLocalInstallationFile` to a path that contains the **IRVM01.zip**.
 
 ```powershell
 $azureLocalInstallationFile = "$($applianceConfigBasePath)"  
@@ -377,7 +377,7 @@ Install-Appliance @installAzureLocalParams -disconnectMachineDeploy -Verbose
 ```
 
 > [!NOTE]
-> Install the appliance on the first machine (seed node) to ensure Azure Local deploys correctly. The setup takes a few hours and must finish successfully before you move on. Once it’s complete, you have a local control plane running in your datacenter.
+> Install the appliance on the first machine to ensure Azure Local deploys correctly. The setup takes a few hours and must finish successfully before you move on. Once it’s complete, you have a local control plane running in your datacenter.
 >
 > If the installation fails because of incorrect network, identity, or observability settings, update the configuration object and run the `Install-appliance` command again.
 >
@@ -661,7 +661,7 @@ To initialize each node, follow these steps. Modify where necessary to match you
     ```
   
     > [!NOTE]  
-    > Ensure that you run initialization on the first machine (seed node) before moving on to other nodes.
+    > Ensure that you run initialization on the first machine before moving on to other nodes.
     > 
     > Nodes appear in the local portal shortly after you run the steps, and the extensions appear on the nodes a few minutes after installation.  
     >
