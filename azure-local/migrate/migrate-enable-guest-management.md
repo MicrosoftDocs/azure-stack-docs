@@ -3,15 +3,15 @@ title: Enable guest management for migrated VMs (preview)
 description: Learn how to enable guest management for migrated VMs (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 10/08/2025
+ms.date: 10/15/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.custom: sfi-image-nochange
 ---
 
-# Enable guest management for migrated VMs (preview)
+# Enable guest management for migrated VMs
 
-[!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [hci-applies-to-2503](../includes/hci-applies-to-2503.md)]
 
 This article describes how to enable guest management after migration for Azure Local virtual machines (VMs) enabled by Arc.
 
@@ -19,7 +19,7 @@ For more information on other scenarios, see [Manage Azure Local VMs](../manage/
 
 The output properties may vary depending on whether VMs were migrated or not.
 
-[!INCLUDE [important](../includes/hci-preview.md)]
+
 
 ## Prerequisites
 
@@ -32,6 +32,8 @@ Before you begin, complete the following:
 - You are able to [connect to the target Azure Local instance remotely](../manage/azure-arc-vm-management-prerequisites.md#connect-to-the-system-remotely).
 
 - Familiarize yourself with Azure Local VMs and guest management features and considerations - see [Enable guest management](../manage/manage-arc-virtual-machines.md#enable-guest-management).
+
+- Check the list of supported guest OS on Azure Local. See [Supported Guest Operating Systems on Azure Local](/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows).
 
 - The Azure Local VM must have access to public network connectivity to enable guest management.
 
