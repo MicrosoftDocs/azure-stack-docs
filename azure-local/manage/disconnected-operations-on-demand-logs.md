@@ -411,7 +411,7 @@ These features are unsupported in disconnected mode.
 
 ## Related content
 
-- Learn how and when to use [Use appliance fallback log collection](disconnected-operations-fallback.md).
+- Learn how and when to [Use appliance fallback log collection](disconnected-operations-fallback.md).
 
 ::: moniker-end
 
