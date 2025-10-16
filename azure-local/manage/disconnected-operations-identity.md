@@ -4,7 +4,7 @@ description: Plan and integrate your identity for disconnected operations on Azu
 ms.topic: concept-article
 author: ronmiab
 ms.author: robess
-ms.date: 08/06/2025
+ms.date: 10/16/2025
 ai-usage: ai-assisted
 ---
 
@@ -105,8 +105,8 @@ Use this checklist to plan your identity integration with disconnected operation
   - Login endpoint (AD FS/OIDC)  
 
 - If you use an FQDN for the LDAP endpoint:  
-
-  - Make sure the disconnected operations appliance is set and uses a domain name system (DNS) that resolves the provided endpoint.  
+  - Make sure the disconnected operations appliance is set and uses a domain name system (DNS) that resolves the provided endpoint.
+    
 - Create an account with read-only access on the LDAP v3 server (Active Directory).  
 - Identify the root group for membership synchronization.  
 - Identify UPN. This should be a user that is assigned the role of **Initial operator**.
@@ -143,8 +143,11 @@ $idpConfig = @{
 Consider these limitations when you plan your identity integration with disconnected operations:
 
 - **Users/Group removal after synchronization**: If you remove users and groups with memberships after the last sync, disconnected operations don't clean them up. This can cause errors when you query group memberships.
+  
 - **No force synchronization capability**: The initial sync can take up to 6 hours. After that, the sync runs every 15 min.
-- **No management groups or aggregate root level**: Not available for multiple subscriptions.  
+  
+- **No management groups or aggregate root level**: Not available for multiple subscriptions.
+  
 - **Supported validations**: Only Active Directory/AD FS are validated for support.
   - [Install Active Directory Domain Services (Level 100)](/windows-server/identity/ad-ds/deploy/install-active-directory-domain-services--level-100-)
   - [Active Directory Federation Services Overview](/windows-server/identity/ad-fs/ad-fs-overview)
@@ -208,7 +211,7 @@ Get-Command *Appliance*ExternalIdentity*
 
 Use PowerShell on Windows Server 2022 or newer for these commands.
 
-### Set up Active Directory/Active Directory Domain Services (ADDS) for demo purposes
+### Set up Active Directory or Active Directory Domain Services (ADDS) for demo purposes
 
 ```powershell
 # Modify to fit your domain/installation
