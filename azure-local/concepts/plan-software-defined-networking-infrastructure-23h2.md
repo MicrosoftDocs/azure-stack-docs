@@ -4,7 +4,7 @@ description: This topic provides information on how to plan a Software Defined N
 ms.topic: article
 ms.author: anpaul
 author: AnirbanPaul
-ms.date: 16/10/2025
+ms.date: 10/16/2025
 ms.service: azure-local
 ---
 # Plan a Software Defined Networking infrastructure for Azure Local

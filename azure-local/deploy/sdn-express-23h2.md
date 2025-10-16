@@ -3,7 +3,7 @@ title: Deploy infrastructure for Software Defined Networking managed by on-premi
 description: Learn how to deploy infrastructure for Software Defined Networking managed by on-premises tools using SDN Express for Azure Local, version 23h2.
 author: alkohli 
 ms.topic: how-to 
-ms.date: 16/10/2025
+ms.date: 10/16/2025
 ms.author: alkohli 
 ms.reviewer: anirbanpaul 
 ---
