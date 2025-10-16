@@ -43,74 +43,13 @@ Follow these steps to prepare the Azure resources you need for the deployment:
 
 ::: moniker range="<=azloc-24113"
 
-### Create a service principal and client secret
-
-To authenticate your system, you need to create a service principal and a corresponding **Client secret** for Arc Resource Bridge (ARB).
-
-### Create a service principal for ARB
-
-Follow the steps in [Create a Microsoft Entra application and service principal that can access resources via Azure portal](/entra/identity-platform/howto-create-service-principal-portal) to create the service principal and assign the roles. Alternatively, use the PowerShell procedure to [Create an Azure service principal with Azure PowerShell](/powershell/azure/create-azure-service-principal-azureps).
-
-The steps are also summarized here:
-
-1. Sign in to the [Microsoft Entra admin center](https://entra.microsoft.com/) as at least a Cloud Application Administrator. Browse to **Identity > Applications > App registrations** then select **New registration**.
-
-1. Provide a **Name** for the application, select a **Supported account type**, and then select **Register**.
-
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/create-service-principal-1a.png" alt-text="Screenshot showing Register an application for service principal creation." lightbox="./media/deployment-azure-resource-manager-template/create-service-principal-1a.png":::
-
-1. Once the service principal is created, go to the **Enterprise applications** page. Search for and select the SPN you created.
-
-   :::image type="content" source="./media/deployment-azure-resource-manager-template/create-service-principal-2a.png" alt-text="Screenshot showing search results for the service principal created." lightbox="./media/deployment-azure-resource-manager-template/create-service-principal-2a.png":::
-
-1. Under properties, copy the **Application (client) ID**  and the **Object ID** for this service principal.
-
-   :::image type="content" source="./media/deployment-azure-resource-manager-template/create-service-principal-2b.png" alt-text="Screenshot showing Application (client) ID and the object ID for the service principal created." lightbox="./media/deployment-azure-resource-manager-template/create-service-principal-2b.png":::
-
-    You use the **Application (client) ID** against the `arbDeploymentAppID` parameter and the **Object ID** against the `arbDeploymentSPNObjectID` parameter in the ARM template.
-
-### Create a client secret for ARB service principal
-
-1. Go to the application registration that you created and browse to **Certificates & secrets > Client secrets**.
-1. Select **+ New client** secret.
-
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/create-client-secret-1.png" alt-text="Screenshot showing creation of a new client secret." lightbox="./media/deployment-azure-resource-manager-template/create-client-secret-1.png":::
-
-1. Add a **Description** for the client secret and provide a timeframe when it **Expires**. Select **Add**.
-
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/create-client-secret-2.png" alt-text="Screenshot showing Add a client secret blade." lightbox="./media/deployment-azure-resource-manager-template/create-client-secret-2.png":::
-
-1. Copy the **client secret value** as you use it later.
-
-    > [!Note]
-    > For the application client ID, you will need it's secret value. Client secret values can't be viewed except for immediately after creation. Be sure to save this value when created before leaving the page.
-
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/create-client-secret-3.png" alt-text="Screenshot showing client secret value." lightbox="./media/deployment-azure-resource-manager-template/create-client-secret-3.png":::
-
-    You use the **client secret value** against the `arbDeploymentAppSecret` parameter in the ARM.
+[!INCLUDE [create-service-principal-client-secret](../includes/create-service-principal-client-secret.md)]
 
 ::: moniker-end
 
-### Get the object ID for Azure Local Resource Provider
+[!INCLUDE [get-object-id-azure-local-resource-provider](../includes/get-object-id-azure-local-resource-provider.md)]
 
-This object ID for the Azure Local Resource Provide (RP) is unique per Azure tenant.
-
-1. In the Azure portal, search for and go to Microsoft Entra ID.  
-1. Go to the **Overview** tab and search for *Microsoft.AzureStackHCI Resource Provider*.
-
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/search-azure-stackhci-resource-provider-1a.png" alt-text="Screenshot showing the search for the Azure Local Resource Provider service principal." lightbox="./media/deployment-azure-resource-manager-template/search-azure-stackhci-resource-provider-1a.png":::
-
-1. Select the Service Principal Name that is listed and copy the **Object ID**.
-
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/get-azure-stackhci-object-id-1a.png" alt-text="Screenshot showing the object ID for the Azure Local Resource Provider service principal." lightbox="./media/deployment-azure-resource-manager-template/get-azure-stackhci-object-id-1a.png":::
-
-    Alternatively, you can use PowerShell to get the object ID of the Azure Local RP service principal. Run the following command in PowerShell:
-
-    ```powershell
-    Get-AzADServicePrincipal -DisplayName "Microsoft.AzureStackHCI Resource Provider"
-    ```
-
-    You use the **Object ID** against the `hciResourceProviderObjectID` parameter in the ARM template.
+You use the **Object ID** against the `hciResourceProviderObjectID` parameter in the ARM template.
 
 ## Step 2: Deploy using ARM template
 
@@ -242,7 +181,7 @@ The following table describes the parameters that you define in the ARM template
 | AzureStackLCMAdminPasssword | Password for the LCM admin. <br/> For more information, see [Review deployment prerequisites for Azure Local](../deploy/deployment-prerequisites.md).|
 | hciResourceProviderObjectID | Object ID of the Azure Local Resource Provider. <br/> For more information, see [Get the object ID for Azure Local Resource Provider](#get-the-object-id-for-azure-local-resource-provider).|
 | arcNodeResourceIds | Array of resource IDs of the Azure Arc-enabled servers that are part of this Azure Local cluster. |
-| domainFqdn | Fully-qualified domain name (FQDN) for the Active Directory Domain Services prepared for deployment. |
+| domainFqdn | Fully qualified domain name (FQDN) for the Active Directory Domain Services prepared for deployment. |
 | namingPrefix | Prefix used for all objects created for the Azure Local deployment. |
 | adouPath | Path of the Organizational Unit (OU) created for this deployment. The OU can't be at the top level of the domain. For example: OU=Local001,DC=contoso,DC=com. |
 | securityLevel | Security configuration profile to be applied to the Azure Local cluster during deployment. The default is **Recommended**. |
