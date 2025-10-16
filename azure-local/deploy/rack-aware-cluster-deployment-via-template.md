@@ -3,7 +3,7 @@ title: Azure Resource Manager template deployment for Azure Local rack aware clu
 description: Learn how to prepare and then deploy Azure Local rack aware cluster using the Azure Resource Manager template (Preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 10/15/2025
+ms.date: 10/16/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -20,9 +20,9 @@ This article describes how to use an Azure Resource Manager (ARM) template in th
 
 ## Prerequisites
 
-<!--- Confirm if this prereq applies. Completion of [Register your machines with Azure Arc and assign deployment permissions](./deployment-arc-register-server-permissions.md). Make sure that:
+- Completion of [Register your machines with Azure Arc and assign deployment permissions](./deployment-arc-register-server-permissions.md). Make sure that:
   - All machines are running the same version of OS.
-  - All the machines have the same network adapter configuration.-->
+  - All the machines have the same network adapter configuration.
 
 - Make sure to select the **create-cluster-rac-enabled** template for deployment.
 
@@ -30,28 +30,7 @@ This article describes how to use an Azure Resource Manager (ARM) template in th
 
 Follow these steps to prepare the Azure resources you need for deployment:
 
-### Get the object ID for Azure Local Resource Provider
-
-<!--Use include once the public PR gets merged-->
-
-This object ID for the Azure Local Resource Provider (RP) is unique per Azure tenant.
-
-1. In the Azure portal, search for and go to Microsoft Entra ID.  
-1. Go to the **Overview** tab and search for *Microsoft.AzureStackHCI Resource Provider*.
-
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/search-azure-stackhci-resource-provider-1a.png" alt-text="Screenshot showing the search for the Azure Local Resource Provider service principal." lightbox="./media/deployment-azure-resource-manager-template/search-azure-stackhci-resource-provider-1a.png":::
-
-1. Select the Service Principal Name that is listed and copy the **Object ID**.
-
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/get-azure-stackhci-object-id-1a.png" alt-text="Screenshot showing the object ID for the Azure Local Resource Provider service principal." lightbox="./media/deployment-azure-resource-manager-template/get-azure-stackhci-object-id-1a.png":::
-
-    Alternatively, you can use PowerShell to get the object ID of the Azure Local RP service principal. Run the following command in PowerShell:
-
-    ```powershell
-    Get-AzADServicePrincipal -DisplayName "Microsoft.AzureStackHCI Resource Provider"
-    ```
-
-    You use the **Object ID** against the `hciResourceProviderObjectID` parameter in the ARM template.
+[!INCLUDE [get-object-id-azure-local-resource-provider](../includes/get-object-id-azure-local-resource-provider.md)]
 
 ## Step 2: Deploy using ARM template
 
