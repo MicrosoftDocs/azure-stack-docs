@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: concept-article
 ms.service: azure-local
-ms.date: 06/30/2025
+ms.date: 10/16/2025
 ---
 
 # Supported operations for Azure Local VMs enabled by Azure Arc
@@ -93,6 +93,8 @@ You perform these operations either on the VM itself or on the cluster/node. The
 - Change an automatic start action
 - Change an automatic stop action
 - Enable secure boot of a generation 2 VM
+- [Apply affinity / anti-affinity rules](vm-affinity.md)
+- [Enable nested virtualization](/previous-versions/azure/azure-local/concepts/nested-virtualization?toc=/azure/azure-local/toc.json&bc=/azure/azure-local/breadcrumb/toc.json)
 
 #### Cluster or node-level operations
 
@@ -119,7 +121,7 @@ The following VM operations are supported only when you use the Network ATC Powe
 
 ## Unsupported VM operations
 
-The following VM operations aren't supported.
+The following VM operations aren't supported for Azure Local VMs.
 
 > [!IMPORTANT]
 > You can't perform these operations by using the Azure portal, the Azure CLI, or local tools. Performing these operations can lead to Azure Local VMs becoming unmanageable from the Azure portal.
@@ -128,6 +130,7 @@ The following VM operations aren't supported.
 - Live migrate a VM from one cluster to another
 - Storage live migration on a VM
 - Change the type of disk (static, dynamic, VHD, or VHDX)
+- Add shared storage (shared VHD/X)
 
 If you need to change the IP address or the VLAN ID of a network interface, create a new network interface and delete the old one.
 
