@@ -4,7 +4,7 @@ description: Virtual machine resiliency considerations for Azure Local.
 ms.topic: article
 author: sipastak
 ms.author: sipastak
-ms.date: 09/25/2025
+ms.date: 10/16/2025
 ---
 
 # Virtual machine resiliency for Azure Local
