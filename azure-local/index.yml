@@ -26,8 +26,8 @@ landingContent:
         links:
           - text: What's new in Azure Local?
             url: whats-new.md
-          - text: Azure Local disconnected operations (preview)
-            url: manage/disconnected-operations-overview.md  
+          - text: What is Azure Local rack aware clusters (preview)?
+            url: concepts/rack-aware-overview.md
 
   # Card 
   - title: Deploy
@@ -116,15 +116,15 @@ landingContent:
             url: manage/disconnected-operations-network.md
           - text: Deploy disconnected operations (preview)
             url: manage/disconnected-operations-deploy.md  
-          - text: Deploy Arc gateway (preview)
-            url: deploy/deployment-azure-arc-gateway-overview.md
           - text: Deploy using local identity with Key Vault (preview)
             url: deploy/deployment-local-identity-with-key-vault.md
           - text: Manage GPU via partitioning (preview)
             url: manage/gpu-manage-via-partitioning.md
-          - text: Migrate VMware (preview)
-            url: migrate/migration-azure-migrate-vmware-overview.md
-      
+          - text: Prepare to deploy Azure Local rack aware clusters (preview)
+            url: plan/prepare-azure-local-rack-aware-clusters.md
+          - text: Deploy Azure Local rack aware clusters (preview)
+            url: deploy/deploy-azure-local-rack-aware-clusters.md
+
   # Card
   - title: Concepts
     linkLists:
