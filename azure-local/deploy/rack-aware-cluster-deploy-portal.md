@@ -65,7 +65,7 @@ To deploy a rack aware cluster, follow the steps to [Deploy an Azure Local insta
     1. Accept the default number of Days to retain deleted vaults or specify a value between 7 and 90 days. You can’t change the retention period later. The key vault creation takes several minutes.
     1. If you don’t have permissions to the resource group, you see a message that you have insufficient permissions for the key vault. Select **Grant key vault permissions**.
 
-   :::image type="content" source="./media/deploy-via-portal/basics-tab-7.png" alt-text="Screenshot of key vault parameters specified on the Basics tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/basics-tab-7.png":::
+   :::image type="content" source="./media/rack-aware-cluster-deploy-portal/basics-tab-7.png" alt-text="Screenshot of key vault parameters specified on the Basics tab in deployment via Azure portal." lightbox="./media/rack-aware-cluster-deploy-portal/basics-tab-7.png":::
 
     The key vault adds cost in addition to the Azure Local subscription. For details, see [Key vault pricing](https://azure.microsoft.com/pricing/details/key-vault). View security implications when sharing an existing key vault.
 
@@ -179,7 +179,7 @@ On the **Configuration** tab, choose whether to create a new configuration for t
 
     The **Deployments** page appears, which you can use to monitor the deployment progress.
 
-    :::image type="content" source="media/rack-aware-cluster-deploy-portal/rack-aware-cluster-deployments.png" alt-text="Screenshot of deployment progress in the Azure portal." lightbox="media/rack-aware-cluster-deploy-portal/rack-aware-cluster-deployments.png":::
+    <!-->:::image type="content" source="media/rack-aware-cluster-deploy-portal/rack-aware-cluster-deployments.png" alt-text="Screenshot of deployment progress in the Azure portal." lightbox="media/rack-aware-cluster-deploy-portal/rack-aware-cluster-deployments.png":::-->
 
     You can monitor the deployment status just like the standard cluster.
 
