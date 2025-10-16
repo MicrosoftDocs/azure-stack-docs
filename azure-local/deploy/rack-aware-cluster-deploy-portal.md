@@ -94,6 +94,18 @@ On the **Configuration** tab, choose whether to create a new configuration for t
 
     :::image type="content" source="media/rack-aware-cluster-deploy-portal/rack-aware-cluster-network-settings.png" alt-text="Screenshot of network settings in the Azure portal." lightbox="media/rack-aware-cluster-deploy-portal/rack-aware-cluster-network-settings.png":::
 
+
+1. Choose the IP allocation as **Manual** or **Automatic**. Use **Automatic** if you use a DHCP server for IP assignments in your network.
+
+1. If you picked static IP, provide the following values:
+    1. Using the **Starting IP** and **Ending IP** (and related) fields, allocate a contiguous block of at least six static IP addresses on your management network's subnet, omitting addresses already used by the machines.
+
+        These IPs are used by Azure Local and internal infrastructure (Arc Resource Bridge) that's required for Arc VM management and AKS Hybrid.
+    1. Provide the Subnet mask, Default gateway, and one or more DNS servers.
+    1. Validate subnet.
+
+    :::image type="content" source="./media/deploy-via-portal/networking-tab-4.png" alt-text="Screenshot of the Networking tab with IP address allocation to systems and services in deployment via Azure portal." lightbox="./media/deploy-via-portal/networking-tab-4.png":::
+
 1. Select **Next: Management**.
 
 
