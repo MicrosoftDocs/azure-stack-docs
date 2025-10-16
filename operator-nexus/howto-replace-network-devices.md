@@ -61,6 +61,10 @@ To ensure a smooth and timely RMA process, verify the following prerequisites be
 - Management Switch (Mgmt Switch)
 - Network Packet Broker (NPB)
 
+>[!Note]
+>Please note that this workflow supports RMA for only one device at a time through POST actions, which accept input related to a single device per request. 
+
+
 ## Steps to replace a device
 
 ### Step 1: Disable administrative state
@@ -114,6 +118,10 @@ This action performs the following tasks:
 - Update serial number stored in Azure ARM resource
 
 - Keeps the device in `Disabled` state and Fabric Administrative State in `EnabledDegraded`
+
+> [!Note]
+> The expected format for the serial number should be: `<Manufacturer;Model;Hardware Version;Serial Number>`<br>
+> For example, `"Arista;DCS-7280DR3-XX;12.05;ABC23XXXXXX"`
 
 ### Step 3: Ensure device is in ZTP Mode
 

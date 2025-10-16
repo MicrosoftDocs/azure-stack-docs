@@ -1,18 +1,20 @@
 ---
-title: Maintain static IP addresses during migration (preview)
+title: Maintain static IP addresses during migration
 description: Learn how to maintain static IP addresses for VMs during migration.
 author: alkohli
 ms.topic: how-to
-ms.date: 04/14/2025
+ms.date: 10/15/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
 
-# Maintain static IP addresses during migration (preview)
+# Maintain static IP addresses during migration
 
-[!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [hci-applies-to-2503](../includes/hci-applies-to-2503.md)]
 
 This article explains how to preserve static IP addresses during virtual machine (VM) migration to Azure Local using Azure Migrate. It provides detailed instructions for running the static IP migration scripts on Windows and Linux VMs.
+
+This article applies to migration of Hyper-V VMs (Preview) and VMware VMs.
 
 ## About the static IP migration package
 
