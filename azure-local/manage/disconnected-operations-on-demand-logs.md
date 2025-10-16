@@ -198,8 +198,6 @@ Before you collect logs, follow these steps to create a share and set up credent
 
 1. Trigger log collection with the `Invoke-ApplianceLogCollectionAndSaveToShareFolder` cmdlet. Replace the placeholder text `<File Share Path>` and `<Share Folder Password>` with your own values.
 
-    Example:
-
     ```azurecli
     $fromDate = (Get-Date).AddMinutes(-30)
     $toDate = (Get-Date)
@@ -306,8 +304,6 @@ Use these commands to monitor log collection.
 
 Check the status of the log collection job with this cmdlet.
 
-Example:
-
 ```powershell
 Get-ApplianceLogCollectionJobStatus -OperationId $OperationId
 ```
@@ -328,8 +324,6 @@ Example output:
 
 Get log collection history with this cmdlet. The input parameter `FromDate` takes DateTime type, and sets the start time for the history search window. If you don't specify the `FromDate`, the cmdlet searches the last three hours.
 
-Example:
-
 ```powershell
    Get-ApplianceLogCollectionHistory -FromDate ((Get-Date).AddHours(-6))
 ```
@@ -342,7 +336,7 @@ Get the appliance instance configuration, including the stamp ID and resource ID
    $stampId = (Get-ApplianceInstanceConfiguration).StampId
 ```
 
-Example
+Example output:
 
 ```powershell
     PS G:\azurelocal\> Get-ApplianceInstanceConfiguration
