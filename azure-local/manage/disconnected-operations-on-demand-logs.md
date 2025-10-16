@@ -63,41 +63,6 @@ The following on-demand scenarios are supported for log collection:
 
 For a list of unsupported features in disconnected mode, see [Unsupported features in disconnected mode](#unsupported-features-in-disconnected-mode).
 
-## Azure Local disconnected when the appliance VM isn't connected to Azure
-
-In disconnected Azure Local environments, collect logs from the control plane (appliance) and host nodes, and then manually upload them with a standalone tool.
-
-The following diagram shows key components for log collection in Azure Local disconnected environments when the appliance VM isn't connected to Azure.
-
-:::image type="content" source="./media/disconnected-operations/on-demand-logs/on-demand-components.png" alt-text="Diagram that shows key components for on-demand log collection in Azure Local disconnected operations." lightbox=" ./media/disconnected-operations/on-demand-logs/on-demand-components.png":::
-
-To collect logs from the control plane, follow these steps:
-
-1. Collect control plane logs. Run this command on a system that can access the appliance VM (usually the same Hyper-V host):
-
-    ```powershell
-    Invoke-ApplianceLogCollectionAndSaveToShareFolder
-    ```
-
-    This command gathers logs from the appliance VM and saves them to the shared folder you specify. For more information, see [Invoke-ApplianceLogCollectionAndSaveToShareFolder](#invoke-appliancelogcollectionandsavetosharefolder).
-
-1. Collect host node logs. On each Azure Local host node, run this command:
-
-    ```powershell
-    Send-DiagnosticData -SaveToPath <shared folder path>
-    ```
-
-    This command collects logs specific to the node, including system level and cluster level diagnostics. For more information, see [Send-DiagnosticData -SaveToPath](#send-diagnosticdata--savetopath-disconnected-mode).
-
-1. Upload logs by using the **standalone observability tool**.
-
-    After you save logs from both the appliance and host nodes to a shared location, upload them with the standalone observability tool. There are product specific wrappers around **Microsoft.AzureStack.Observability.Standalone**.
-
-    - For appliance logs: Use the tool version that supports logs collected with `Send-DiagnosticData`.
-    - For host node logs: Use the `Send-AzStackHciDiagnosticData` command to upload logs from the host node.
-
-    To learn more about the `Send-AzStackHciDiagnosticData` command, see [Get support for Azure Local deployment issues](../manage/get-support-for-deployment-issues.md).
-
 ## Azure Local disconnected when the appliance VM is connected to Azure
 
 When the appliance VM is connected to Azure, upload host node logs the same way as in the Azure Local disconnected scenario. For control plane logs, send them directly by using `Invoke-ApplianceLogCollection`. You don't need to save them locally.
@@ -172,6 +137,41 @@ Before you collect logs in a connected disconnected scenario, make sure you:
     1. Upload host node logs by using the **standalone observability tool** and running the `Send-AzStackHciDiagnosticData` command.
 
         To learn more about the `Send-AzStackHciDiagnosticData` command, see [Get support for Azure Local deployment issues](../manage/get-support-for-deployment-issues.md).
+
+## Azure Local disconnected when the appliance VM isn't connected to Azure
+
+In disconnected Azure Local environments, collect logs from the control plane (appliance) and host nodes, and then manually upload them with a standalone tool.
+
+The following diagram shows key components for log collection in Azure Local disconnected environments when the appliance VM isn't connected to Azure.
+
+:::image type="content" source="./media/disconnected-operations/on-demand-logs/on-demand-components.png" alt-text="Diagram that shows key components for on-demand log collection in Azure Local disconnected operations." lightbox=" ./media/disconnected-operations/on-demand-logs/on-demand-components.png":::
+
+To collect logs from the control plane, follow these steps:
+
+1. Collect control plane logs. Run this command on a system that can access the appliance VM (usually the same Hyper-V host):
+
+    ```powershell
+    Invoke-ApplianceLogCollectionAndSaveToShareFolder
+    ```
+
+    This command gathers logs from the appliance VM and saves them to the shared folder you specify. For more information, see [Invoke-ApplianceLogCollectionAndSaveToShareFolder](#invoke-appliancelogcollectionandsavetosharefolder).
+
+1. Collect host node logs. On each Azure Local host node, run this command:
+
+    ```powershell
+    Send-DiagnosticData -SaveToPath <shared folder path>
+    ```
+
+    This command collects logs specific to the node, including system level and cluster level diagnostics. For more information, see [Send-DiagnosticData -SaveToPath](#send-diagnosticdata--savetopath-disconnected-mode).
+
+1. Upload logs by using the **standalone observability tool**.
+
+    After you save logs from both the appliance and host nodes to a shared location, upload them with the standalone observability tool. There are product specific wrappers around **Microsoft.AzureStack.Observability.Standalone**.
+
+    - For appliance logs: Use the tool version that supports logs collected with `Send-DiagnosticData`.
+    - For host node logs: Use the `Send-AzStackHciDiagnosticData` command to upload logs from the host node.
+
+    To learn more about the `Send-AzStackHciDiagnosticData` command, see [Get support for Azure Local deployment issues](../manage/get-support-for-deployment-issues.md).
 
 ## Log collection cmdlets
 
