@@ -46,7 +46,7 @@ The disconnected operations appliance uses 78 GB of memory. If a node has less t
 
 [!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
 
-### Deployment fails
+### Deployment failure
 
 In virtual environments, a deployment can time out and services don't converge to 100% (even after 8 hours).
 
