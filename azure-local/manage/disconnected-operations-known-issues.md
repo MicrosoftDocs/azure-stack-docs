@@ -46,12 +46,11 @@ The disconnected operations appliance uses 78 GB of memory. If a node has less t
 
 [!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
 
-### Deployment fails (does not converge service 100%)
+### Deployment fails
 
-There is a known issue in virtual environments that we see occur where deployment times out and services does not converge to 100% (even when checking back after 8 hours).
+In virtual environments, a deployment can time out and services don't converge to 100% (even after 8 hours).
 
-**Mitigation:** Retry redeploy the disconnected operations appliance a few times. If the problem persists, please do collect logs and open a support ticket if this is a physical environment.  
-
+**Mitigation:** Attempt to redeploy the disconnected operations appliance a few times. If this is a physical environment and the problem persists, collect logs and open a support ticket.
 
 ### Azure Local deployment with Azure Keyvault
 
