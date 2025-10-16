@@ -23,7 +23,7 @@ Here are the Azure requirements for your Azure Local instance:
 
 - **Azure subscription**: If you don't already have an Azure account, [create one](https://azure.microsoft.com/). You can use an existing subscription of any type:
 
-   - Free account with Azure credits [for students](https://azure.microsoft.com/free/students/) or [Visual Studio subscribers](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/).
+   - Free account with Azure credits [for students](https://azure.microsoft.com/free/students/?cid=msft_learn) or [Visual Studio subscribers](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/).
    - [Pay-as-you-go](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go/) subscription with credit card.
    - Subscription obtained through an Enterprise Agreement (EA).
    - Subscription obtained through the Cloud Solution Provider (CSP) program.
@@ -45,7 +45,7 @@ Here are the Azure requirements for your Azure Local instance:
    - South Central US
 
 
-   # [Azure Government (Preview)](#tab/azure-government)
+   # [Azure Government](#tab/azure-government)
 
    Regions supported in the Azure Government cloud:
 

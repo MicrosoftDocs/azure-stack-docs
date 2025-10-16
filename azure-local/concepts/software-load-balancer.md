@@ -5,7 +5,7 @@ author: AnirbanPaul
 ms.author: anpaul
 ms.topic: overview
 ms.service: azure-local
-ms.date: 09/05/2025
+ms.date: 10/10/2025
 ms.custom: sfi-image-nochange
 ---
 
@@ -100,7 +100,7 @@ With internal traffic load balancing, the first request is sent to and processed
 
 ### Health probes
 
-Software Load Balancer includes health probes to validate the health of the network infrastructure, including the following:
+Software Load Balancer includes the following health probes to validate the health of the network infrastructure:
 
 - TCP probe to port
 

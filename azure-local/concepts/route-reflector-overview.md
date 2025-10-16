@@ -5,7 +5,7 @@ author: AnirbanPaul
 ms.author: anpaul
 ms.topic: overview
 ms.service: azure-local
-ms.date: 10/22/2024
+ms.date: 16/10/2025
 ---
 
 # What is Route Reflector?

@@ -1,14 +1,14 @@
 ---
-title: Deploy Software Defined Network managed by on-premises tools using Windows Admin Center for Azure Local
-description: Learn how to deploy infrastructure for Software Defined Network managed by on-premises tools using Windows Admin Center for Azure Local
+title: Deploy Software Defined Networking managed by on-premises tools with Windows Admin Center for Azure Local
+description: Learn how to deploy infrastructure for Software Defined Networking managed by on-premises tools with Windows Admin Center for Azure Local
 author: alkohli
 ms.topic: how-to
-ms.date: 09/17/2025
+ms.date: 10/16/2025
 ms.author: alkohli
 ms.reviewer: anirbanpaul
 ---
 
-# Deploy SDN managed by on-premises tools using Windows Admin Center for Azure Local
+# Deploy SDN managed by on-premises tools with Windows Admin Center for Azure Local
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
