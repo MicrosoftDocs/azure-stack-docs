@@ -1,6 +1,6 @@
 ---
-title: Collect diagnostic logs for Azure Local (preview)
-description: Learn how to collect diagnostic logs and share them with Microsoft (preview).
+title: Collect diagnostic logs for Azure Local
+description: Learn how to collect diagnostic logs and share them with Microsoft.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
@@ -9,7 +9,7 @@ ms.date: 04/08/2025
 ms.custom: sfi-image-nochange
 ---
 
-# Collect diagnostic logs for Azure Local (preview)
+# Collect diagnostic logs for Azure Local
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
@@ -38,6 +38,7 @@ To explore additional log collection methods in Azure Local and understand when 
 Before you collect on-demand logs, you must complete the following prerequisites:
 
 - You must have access to an Azure Local instance that is deployed and registered.
+- You must have the necessary permissions to trigger logs. You need to be assigned the **Azure Stack HCI Administrator** role. For more information about assigning roles, see [Assign Azure roles using the Azure portal](/azure/role-based-access-control/role-assignments-portal) or [Assign Azure roles using PowerShell](/azure/role-based-access-control/role-assignments-powershell).
 - You must have installed the `AzureEdgeTelemetryAndDiagnostics` extension to collect telemetry and diagnostics information from your Azure Local instance. For information about the extension, see [Azure Local telemetry and diagnostics extension overview](../concepts/telemetry-and-diagnostics-overview.md).
 
 ## Collect logs for Azure Local
@@ -53,6 +54,9 @@ Keep in mind the following information before you start log collection:
 - The time required for log collection depends on the time range you specify. The longer the time range, the more time it'll take for log collection. Therefore, we recommend limiting the time range to only the logs you need.
 - Log collections longer than 24 hours aren't supported.
 - Attempting multiple log collections simultaneously will result in a failure.
+- If your cluster runs a build earlier than 2510, the portal shows a banner that says *Device Management Extension is outdated and not supported. Update to the latest version*, and disables the **Send Logs** button. To collect logs, upgrade your cluster to build 2510 or later.
+
+   :::image type="content" source="./media/collect-logs/device-management-extension-disabled-logs.png" alt-text="Screenshot that shows the banner message and disabled send logs button." lightbox="./media/collect-logs/device-management-extension-disabled-logs.png" :::
 
 ### [Azure portal (recommended)](#tab/azureportal)
 
@@ -75,6 +79,9 @@ Follow these steps to collect diagnostic logs for your Azure Local instance via 
 1. The **Log activity** table shows the status of log collections. For more details on a specific log collection, select the link under **Time collected** and review the details in the **Log detail** pane. If you encounter an issue and need help from Microsoft Support, they might request the **Correlation ID** to locate the logs.
 
    :::image type="content" source="./media/collect-logs/log-details-pane.png" alt-text="Screenshot shows the Log details pane." lightbox="./media/collect-logs/log-details-pane.png" :::
+
+> [!NOTE]
+> In the Portal, after you start log collection, status updates can take up to five minutes to appear. This is expected behavior.
 
 ## [PowerShell](#tab/powershell)
 
@@ -609,7 +616,7 @@ Follow these steps to provide the required information in the Azure portal:
 
 1. In the **Diagnostics** tab, under **Log activity**, select the link under **Time collected** for the relevant log collection.
 
-1. In the **Log detail** pane, note the value of **Correlation ID**, and share it with Microsoft Support for troubleshooting purposes.
+1. In the **Log detail** pane, you can share full log details with Microsoft Support for troubleshooting purposes.
 
    :::image type="content" source="./media/collect-logs/log-details-pane.png" alt-text="Screenshot shows the Log details pane." lightbox="./media/collect-logs/log-details-pane.png" :::
 
@@ -625,6 +632,7 @@ When requested, share the following information with Microsoft Support. Get this
 - `CorrelationId`: A unique identifier to locate the logs.
 
 ---
+
 
 ## Next steps
 

@@ -1,20 +1,18 @@
 --- 
-title: Discover and replicate VMware VMs for migration to Azure Local using Azure Migrate (preview) 
-description: Learn the discovery and replication process for VMware VMs to Azure Local using Azure Migrate (preview).
+title: Discover and replicate VMware VMs for migration to Azure Local using Azure Migrate 
+description: Learn the discovery and replication process for VMware VMs to Azure Local using Azure Migrate.
 author: alkohli
 ms.topic: how-to
-ms.date: 07/25/2025
+ms.date: 09/29/2025
 ms.author: alkohli
 ms.custom: sfi-image-nochange
 ---
 
-# Discover and replicate VMware VMs for migration to Azure Local using Azure Migrate (preview)
+# Discover and replicate VMware VMs for migration to Azure Local using Azure Migrate
 
-[!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [hci-applies-to-2503](../includes/hci-applies-to-2503.md)]
 
 This article describes the discovery and replication phase for VMware virtual machine (VM) migration to Azure Local using Azure Migrate.
-
-[!INCLUDE [important](../includes/hci-preview.md)]
 
 For more information on appliances for Azure Migrate and how to manage them, see [Azure Migrate appliance](/azure/migrate/migrate-appliance).
 
@@ -28,16 +26,17 @@ Ensure all VMs that you wish to migrate are powered on and have VMware tools ins
 
 ### Generate the project key
 
-1. In the Azure portal, go to your Azure Migrate project and then go to **Servers, databases and webapps**.
-1. On the **Migration tools** tile, select **Discover**. Make sure to use the **Migration and Modernization Discover** page for Azure Local. If you use the **Discovery and Assessment Discover** page, Azure Local migrations will be blocked.
+1. In the Azure portal, go to the **All projects** page and select your project from the list.
 
+1. On the **Overview** tab, under **Inventory**, select **Start discovery** > **Using appliance** > **For Azure Local**.
 
     :::image type="content" source="./media/migrate-vmware-replicate/generate-source-appliance-project-key-1.png" alt-text="Screenshot of going to Discover page from Migration tools tile for your source appliance." lightbox="./media/migrate-vmware-replicate/generate-source-appliance-project-key-1.png":::
+
 1. On the **Discover** page, select **Azure Local** under **Where do you want to migrate to** and then select **Yes, with VMware vSphere Hypervisor** under **Are your machines virtualized** in Azure Migrate.
 1. Enter a name for your source appliance and generate the key for the source VMware appliance. For detailed steps, see [Generate the project key](/azure/migrate/how-to-set-up-appliance-vmware#generate-the-project-key).
 
 1. Copy the **Project key** (to a text editor such as Notepad) and save it for later use.
-1. You can now **Download the Azure Migrate source appliance** using either a *.ova* file or a *.zip* file. The detailed steps are provided in the subsequent sections.
+1. You can now **Download the Azure Migrate source appliance** using either an *.ova* file or a *.zip* file. The detailed steps are provided in the subsequent sections.
 
     :::image type="content" source="./media/migrate-vmware-replicate/generate-source-appliance-project-key-2.png" alt-text="Screenshot of going to Discover page." lightbox="./media/migrate-vmware-replicate/generate-source-appliance-project-key-2.png":::
 
@@ -330,11 +329,11 @@ This step applies to using a .zip file.
 
     1. Select a resource group to associate with your migrated VMs. This resource group can be different than the resource group associated with your storage account.
    
-	1. Select the logical network that you created as a [prerequisite](./migrate-vmware-prerequisites.md#prerequisites-for-vmware-migration-to-azure-local-using-azure-migrate-preview). The VMs are connected to this network. 
+	1. Select the logical network that you created as a [prerequisite](./migrate-vmware-prerequisites.md#prerequisites-for-vmware-migration-to-azure-local-using-azure-migrate). The VMs are connected to this network. 
 
         If you don't see a logical network in the dropdown list, [Create a logical network](../manage/create-logical-networks.md) and select **Reload logical network**.
 
-	1. Select the storage path that you created as a [prerequisite](./migrate-vmware-prerequisites.md#prerequisites-for-vmware-migration-to-azure-local-using-azure-migrate-preview). The VMs are created at this storage path.
+	1. Select the storage path that you created as a [prerequisite](./migrate-vmware-prerequisites.md#prerequisites-for-vmware-migration-to-azure-local-using-azure-migrate). The VMs are created at this storage path.
 
         If you don't see a storage path in the dropdown list, [Create a storage path](../manage/create-storage-path.md) and select **Reload storage path**.
 
