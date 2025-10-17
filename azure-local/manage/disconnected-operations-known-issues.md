@@ -18,7 +18,7 @@ This article highlights what's new (features and improvements) and critical know
 ## Features and improvements in 2509
 
  - Adds support for Azure Local 2508 ISO and its capabilities.
- - Adds support for SCOM 2025 and fixes a management pack failure on newer SCOM versions; continues support for SCOM 2022.
+ - Adds support for System Center Operations Manager 2025 and fixes a management pack failure on newer System Center Operations Manager versions; continues support for System Center Operations Manager 2022.
  - This release enables the update scenario. When 2510 is released, you will be able to test updating from this version to 2510 of ALDO. This will also include the ability to update Azure Local that is connected to disconnected operations.
  - Improves security.
  - Improves observability.
