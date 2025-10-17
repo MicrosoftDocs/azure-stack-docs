@@ -3,7 +3,7 @@ title: Release notes with fixed and known issues in Azure Local
 description: Read about the known issues and fixed issues in Azure Local.
 author: alkohli
 ms.topic: conceptual
-ms.date: 09/25/2025
+ms.date: 10/15/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
@@ -52,19 +52,16 @@ The following table lists the fixed issues in this release:
 | Deployment <!--35126494--> | Added mitigation for Cluster DNS resolution issues.  |  |
 | Upgrade <!--35145029--> | Refined the version check to get the correct latest updates. |  |
 | Upgrade <!--34687921--> | Improved check for local administrator.  |  |
+| Security <!-- 56969147 --> | When fixing the compliance for the minimum password length rule, even after you've changed the minimum password length on the Azure Local host to 14, you continue to see it as noncompliant in Azure policy.  |  |
+| Azure Local VMs <!-- 30323252--> | Azure Local VMs have empty DVD drives attached after deployment. | Newly created Azure Local VMs will no longer include empty DVD drives after deployment. |
+| Azure Local VMs <!--30856036--> | In some cases, Azure Local VMs fail to create with error: `Failed to cleanup seed iso disk from the file system for vm.` | This build addresses additional corner cases that were not resolved in the previous fix (2503). |
+| Azure Local VMs <!--33648132--> | In rare cases, the operator would enter a crash loop, preventing Azure Local VM management. |  |
+| Azure Local VMs <!--34444839--> | In some cases, deleting logical networks could fail when network interfaces created with those logical networks existed in other resource groups or locations. | Updated deletion logic to ensure safe deletion of logical network. |
 
 
 ## Known issues
 
-<!--Microsoft isn't aware of any known issues in this release.-->
-
-The following table lists the known issues in this release:
-
-|Feature  |Issue  |Workaround  |
-|---------|---------|---------|
-|  <!----> |  |  |
-|  <!----> |  |  |
-|  <!----> |  |  |
+Microsoft isn't aware of any known issues in this release.
 
 ## Known issues from previous releases
 
