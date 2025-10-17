@@ -110,7 +110,7 @@ Before you collect logs in a connected disconnected scenario, make sure you:
     - Identify the management client certificate used to authenticate with the Azure Local disconnected operations management endpoint.
     - Set up the management endpoint client context. Run this script:
 
-    ```powershell
+    ```PowerShell
     $certPasswordPlainText = "***"
     $certPassword = ConvertTo-SecureString $certPasswordPlainText -AsPlainText -Force
     $context = Set-DisconnectedOperationsClientContext -ManagementEndpointClientCertificatePath "<Management Endpoint Client Cert Path>" -ManagementEndpointClientCertificatePassword $certPassword -ManagementEndpointIpAddress "<Management Endpoint IP address>"
@@ -211,7 +211,7 @@ Before you collect logs, follow these steps to create a share and set up credent
 
     Example output:
 
-    ```powerShell
+    ```console
     PS C:\Users\administrator.s46r2004\Documents> $operationId = Invoke-ApplianceLogCollectionAndSaveToShareFolder -FromDate $fromDate -ToDate $toDate -LogOutputShareFolderPath "\\<LogShareName>\$logShareName" -ShareFolderUsername "<Username>.masd.stbtest.microsoft.com\administrator" -ShareFolderPassword (ConvertTo-SecureString "<Password>" -AsPlainText -Force)  
     
     VERBOSE: [2023-04-09 22:34:28Z] [Invoke-ApplianceLogCollectionAndSaveToShareFolder] Trigger log collections with parameters:  
@@ -314,7 +314,7 @@ Get-ApplianceLogCollectionJobStatus -OperationId $OperationId
 
 Example output:
 
-```powershell
+```console
    PS C:\Users\administrator.s46r2004\Documents> Get-ApplianceLogCollectionJobStatus -OperationId $operationId  
    VERBOSE: [2023-04-09 22:35:29Z] [Invoke-ScriptsWithRetry] Executing 'Get log collection job status ...' with timeout 600 seconds ...  
    VERBOSE: [2023-04-09 22:35:29Z] [Invoke-ScriptsWithRetry] [CHECK] [Attempt 0] for task 'Get log collection job status ...' ...  
@@ -329,7 +329,32 @@ Example output:
 Get log collection history with this cmdlet. The input parameter `FromDate` takes DateTime type, and sets the start time for the history search window. If you don't specify the `FromDate`, the cmdlet searches the last three hours.
 
 ```powershell
-   Get-ApplianceLogCollectionHistory -FromDate ((Get-Date).AddHours(-6))
+   Get-ApplianceLogCollectionHistory -FromDate ((Get-Date).AddHours(-5))
+```
+
+Example output:
+
+```console
+PS G:\azurelocal\OperationsModule> Get-ApplianceLogCollectionHistory -FromDate ((Get-Date).AddHours(-5))
+VERBOSE: [2025-10-17 05:16:14Z][Invoke-ScriptsWithRetry][Get-ApplianceLogCollectionHistory] Executing 'Get log collection job history ...' with timeout 600 seconds ...
+VERBOSE: [2025-10-17 05:16:14Z][Invoke-ScriptsWithRetry][Get-ApplianceLogCollectionHistory] [CHECK][Attempt 0] for task 'Get log collection job history ...' ...
+VERBOSE: [2025-10-17 05:16:14Z][Invoke-ScriptsWithRetry][Get-ApplianceLogCollectionHistory] Task 'Get log collection job history ...' succeeded.
+ 
+ 
+Name              : b4cffa08-6eb8-4700-a29e-6b5f08824c87
+OperationId       : b4cffa08-6eb8-4700-a29e-6b5f08824c87
+CorrelationId     : 0436955c-5008-49cb-af54-98b696bcb9bc
+State             : Succeeded
+CollectionTime    : 2025-10-17T01:13:00.273+00:00
+CollectionEndTime : 2025-10-17T02:07:52.069+00:00
+FromDate          : 2025-10-17T00:39:40.448+00:00
+ToDate            : 2025-10-17T01:09:40.453+00:00
+Distributed       : True
+JobType           : OnDemand
+StorageKind       : Azure
+Reason            : User initiated
+Error             : @{Code=0}
+UploadDetails     : @{UploadStartTime=2025-10-17T01:13:00.273+00:00; UploadSizeInMb=6982; UploadNumberOfFiles=710}
 ```
 
 ### Get-ApplianceInstanceConfiguration
@@ -342,7 +367,7 @@ Get the appliance instance configuration, including the stamp ID and resource ID
 
 Example output:
 
-```powershell
+```console
     PS G:\azurelocal\> Get-ApplianceInstanceConfiguration
     VERBOSE: [2025-08-06 00:00:35Z][Invoke-ScriptsWithRetry][Get-ApplianceInstanceConfiguration] Executing 'Retrieving system configuration ...' with timeout 300 seconds ...
     VERBOSE: [2025-08-06 00:00:35Z][Invoke-ScriptsWithRetry][Get-ApplianceInstanceConfiguration] [CHECK][Attempt 0] for task 'Retrieving system configuration ...' ...
