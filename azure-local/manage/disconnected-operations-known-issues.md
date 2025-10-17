@@ -26,7 +26,7 @@ This article highlights what's new (features and improvements) and critical know
  - Fixes Portal and UX issues.
  - Improves OperationsModule logging and error messages and adds certificate validation and CSR generation.
  - Adds external certificate rotation in OperationsModule. For example, `Set-ApplianceExternalEndpointCertificates`.
- - Enables use of a FQDN in the SAN of the management certificate.
+ - Enables use of an FQDN in the SAN of the management certificate.
 
 ## Known issues for disconnected operations for Azure Local
 
