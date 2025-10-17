@@ -43,15 +43,15 @@ The main benefits of Azure Local rack aware cluster include:
 
 The use cases for Azure Local rack aware cluster include:
 
-- Use rack aware cluster in a high security environment for mission-critical applications.
-- Use rack aware cluster in a manufacturing plant to minimize the risk of data loss or downtime in the event of a rack-level failure.  
 
-## Deployment requirements 
+- Use rack aware cluster in a manufacturing plant, in a hospital or an airport to minimize the risk of data loss or downtime in the event of a rack-level failure.  
+
+## Review requirements
 
 All the [System requirements for Azure Local](../concepts/system-requirements-23h2.md) apply to rack aware clusters. There are [Other requirements](../index.yml) for rack aware clusters including those for drives, Availability Zones, node configurations, latency, and bandwidth.
 
 
-## Deployment preparation for a rack aware cluster
+## Prepare to deploy a rack aware cluster
 
 Before you deploy a rack aware cluster, ensure that you have completed the tasks detailed in [Prepare to deploy](../index.yml)
 
@@ -62,7 +62,7 @@ To deploy a rack aware cluster, use one of the following methods:
 - Deploy via the [Azure portal](../index.yml).
 - Deploy via an [Azure Resource Manager template](../index.yml).
 
-## Post deployment tasks
+## Complete post deployment tasks
 
 After you deploy a rack aware cluster, make sure to complete the [post deployment tasks](../index.yml).
 
@@ -72,13 +72,13 @@ To scale the cluster, you can add a pair of nodes to a rack aware cluster. The 2
 
 For more information, see [Add nodes to a rack aware cluster](../index.yml).
 
-## Azure Local VM placement
+## Place an Azure Local VM
 
 To balance workloads between zones, create Azure Local VMs to place in a specified zone. Based on the criticality of the VMs, you can configure strict or non-strict placement to disable or enable failover to the other zone.
 
 For more information about VM placement in a rack aware cluster, see [Manage VM placement in a rack aware cluster](../index.yml).
 
-## Azure Local VM failover
+## Fail over Azure Local VMs
 
 We recommend that you conduct live migration and failover testing of your VM workloads within a rack aware cluster. The failover behavior depends on the VM placement configuration and can be a planned failover or unplanned failover.
 
