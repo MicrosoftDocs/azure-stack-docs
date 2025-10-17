@@ -387,7 +387,7 @@ Install-Appliance @installAzureLocalParams -disconnectMachineDeploy -Verbose
 
 ## Configure observability for diagnostics and support
 
-We recommend that you configure observability to get telemetry and logs for support for your first deployment. This doesn't apply if you're planning to run air-gapped, as telemetry and diagnostics require connectivity.
+We recommend that you configure observability to get system-generated logs for your first deployment. This doesn't apply if you're planning to run air-gapped, as  and diagnostics require connectivity.
 
 The Azure resources needed:
 
