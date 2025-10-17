@@ -17,16 +17,15 @@ This article highlights what's new (features and improvements) and critical know
 
 ## Features and improvements in 2509
 
- - Adds support for Azure Local 2508 ISO and its capabilities.
- - Adds support for System Center Operations Manager 2025 and fixes a management pack failure on newer System Center Operations Manager versions; continues support for System Center Operations Manager 2022.
- - This release enables the update scenario. When 2510 is released, you will be able to test updating from this version to 2510 of ALDO. This will also include the ability to update Azure Local that is connected to disconnected operations.
- - Improves security.
- - Improves observability.
- - Enables Ldaps and custom port for ldap binding.
- - Fixes Portal and UX issues.
- - Improves OperationsModule logging and error messages and adds certificate validation and CSR generation.
- - Adds external certificate rotation in OperationsModule. For example, `Set-ApplianceExternalEndpointCertificates`.
- - Enables use of an FQDN in the SAN of the management certificate.
+ - Added support for Azure Local 2508 ISO and its capabilities.
+ - Added support for System Center Operations Manager 2025, resolves a management pack failure in newer versions, and maintains support for System Center Operations Manager 2022.
+ - Improved security.
+ - Improved observability.
+ - Enabled Ldaps and custom port for ldap binding.
+ - Fixed Portal and UX issues.
+ - Improved OperationsModule logging and error messages and adds certificate validation and CSR generation.
+ - Added external certificate rotation in OperationsModule. For example, `Set-ApplianceExternalEndpointCertificates`.
+ - Enabled the use of an FQDN in the SAN of the management certificate.
 
 ## Known issues for disconnected operations for Azure Local
 
