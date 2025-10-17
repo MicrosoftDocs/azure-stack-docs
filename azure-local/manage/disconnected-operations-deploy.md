@@ -492,7 +492,7 @@ Create a subscription for your Azure Local nodes and the Azure Local instance (c
 
 ### Create resource group and service principal for the Azure Local instance
 
-Use the operator account to create a SPN for Arc initialization of each Azure Local node. For bootstrap, the Owner role is required at the subscription level.
+Use the operator account to create an SPN for Arc initialization of each Azure Local node. For bootstrap, the Owner role is required at the subscription level.
 
 To create the SPN, follow these steps:
 
@@ -561,7 +561,7 @@ Here's a sample Azure CLI command to list all resource providers and their statu
 
 ## Deploy Azure Local
 
-You now have a control plane deployed and configured, a subscription and resource group created for your Azure Local deployment, and (optionally) a SPN created to use for deployment automation.
+You now have a control plane deployed and configured, a subscription and resource group created for your Azure Local deployment, and (optionally) an SPN created to use for deployment automation.
 
 Verify the deployment before creating local Azure resources.
 
