@@ -10,25 +10,30 @@ ms.topic: how-to
 
 # Deploy rack aware cluster via the Azure portal (Preview)
 
-This document describes the steps to deploy Azure Local rack aware clusters using the Azure portal.
+This article describes the steps to deploy Azure Local rack aware clusters using the Azure portal.
 
 [!INCLUDE [hci-preview](../includes/hci-preview.md)]
 
 ## Prerequisites
 
-Make sure to complete the steps in [Prepare for rack aware cluster deployment](./rack-aware-cluster-deploy-prep.md).
+- Make sure you complete the steps in [Prepare for rack aware cluster deployment](./rack-aware-cluster-deploy-prep.md).
+- Make sure that the machines you intend to use for the cluster are not joined to Active Directory before deployment.
 
 ## Deploy rack aware cluster
 
-To deploy a rack aware cluster, follow the steps to [Deploy an Azure Local instance via the Azure portal](./deploy-via-portal.md). In general, the steps are similar to deploying a standard single cluster. The differences are highlighted in the following sections.
+To deploy a rack aware cluster, follow the steps to [Deploy an Azure Local instance via the Azure portal](./deploy-via-portal.md). In general, the steps are similar to deploying a standard single cluster. The differences are highlighted in the next sections.
 
 ## Start the wizard and fill out the basics
+1. Go to the [Azure portal](https://portal.azure.com). 
+1. Search for and select **Azure Local**. 
+1. On the **Azure Arc > Azure Local** page, go to the **Get started** tab. 
+1. On the **Deploy Azure Local** tile, select **Create instance**.
 
-1. Go to the Azure portal. Search for and select **Azure Local**. On the **Azure Arc > Azure Local** page, go to the **Get started** tab. On the **Deploy Azure Local** tile, select **Create instance**.
+5. Select the **Subscription** and **Resource group** to store this system's resources.
 
-   :::image type="content" source="./media/deploy-via-portal/get-started-1.png" alt-text="Screenshot of the Get started tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/get-started-1.png":::
+    All resources in the Azure subscription are billed together.  :::image type="content" source="./media/deploy-via-portal/get-started-1.png" alt-text="Screenshot of the Get started tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/get-started-1.png":::
 
-1. Select the **Subscription** and **Resource group** in which to store this system's resources.
+1. Select the **Subscription** and **Resource group** to store this system's resources.
 
    All resources in the Azure subscription are billed together.
 
@@ -43,9 +48,9 @@ To deploy a rack aware cluster, follow the steps to [Deploy an Azure Local insta
 
 1. Select the **Region** to store this system's Azure resources. For a list of supported Azure regions, [Azure requirements](../concepts/system-requirements-23h2.md#azure-requirements).
 
-   We don't transfer a lot of data so it's OK if the region isn't close.
+   If the system doesn't transfer a lot of data, you can select a region that isn't close.
 
-1. Select  **+ Add machines**. Select the machine or machines that make up this Azure Local instance.
+1. Select **+ Add machines** and choose the machine or machines that make up the Azure Local instance.
 
    > [!IMPORTANT]
    > Machines must not be joined to Active Directory before deployment.
@@ -58,18 +63,18 @@ To deploy a rack aware cluster, follow the steps to [Deploy an Azure Local insta
 
     After the extensions are installed successfully, the status of the machine updates to **Ready**.
 
-1. **Validate selected machines**. Wait for the green validation check to indicate the validation is successful. The validation process checks that each machine is running the same exact version of the OS, has the correct Azure extensions, and has matching (symmetrical) network adapters.
+1. **Validate selected machines**. Wait for the green validation check to show the validation is successful. The validation process checks that each machine runs the same exact version of the OS, has the correct Azure extensions, and has matching (symmetrical) network adapters.
 
     :::image type="content" source="media/rack-aware-cluster-deploy-portal/rack-aware-cluster-basics.png" alt-text="Screenshot of successful validation on the Basics tab in deployment via Azure portal." lightbox="media/rack-aware-cluster-deploy-portal/rack-aware-cluster-basics.png":::
 
-1. **Select an existing Key Vault** or select **Create a new Key Vault**. Create an empty key vault to securely store secrets for this system, such as cryptographic keys, local admin credentials, and BitLocker recovery keys.
+1. **Select an existing Key Vault** or select **Create a new Key Vault**. Create an empty key vault to securely store secrets for this system such as cryptographic keys, local admin credentials, and BitLocker recovery keys.
 
 1. On the **Create a new key vault** page, provide information for the specified parameters and select **Create**:
 
    :::image type="content" source="./media/deploy-via-portal/basics-tab-6.png" alt-text="Screenshot of Create a new key vault on Basics tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/basics-tab-6.png":::
 
     1. Accept the suggested name or provide a name for the key vault you create.
-    1. Accept the default number of Days to retain deleted vaults or specify a value between 7 and 90 days. You can’t change the retention period later. The key vault creation takes several minutes.
+    1. Accept the default number of **Days** to retain deleted vaults or specify a value between 7 and 90 days. You can’t change the retention period later. The key vault creation takes several minutes.
     1. If you don’t have permissions to the resource group, you see a message that you have insufficient permissions for the key vault. Select **Grant key vault permissions**.
 
    :::image type="content" source="./media/rack-aware-cluster-deploy-portal/basics-tab-7.png" alt-text="Screenshot of key vault parameters specified on the Basics tab in deployment via Azure portal." lightbox="./media/rack-aware-cluster-deploy-portal/basics-tab-7.png":::
