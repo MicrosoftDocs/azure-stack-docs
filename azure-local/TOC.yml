@@ -429,6 +429,9 @@ items:
     - name: Add and repair nodes
       href: concepts/rack-aware-cluster-add-server.md
      
+    - name: Spread AKS nodes
+      href: concepts/rack-aware-cluster-aks-nodes.md
+
   - name: Security
     items:
     - name: Manage security defaults
