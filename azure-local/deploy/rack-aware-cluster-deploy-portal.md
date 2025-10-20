@@ -201,9 +201,9 @@ On the **Configuration** tab, choose whether to create a new configuration for y
 
     The **Deployments** page appears, which you can use to monitor the deployment just as your would with a standard cluster.
 
-        <!-->:::image type="content" source="media/rack-aware-cluster-deploy-portal/rack-aware-cluster-deployments.png" alt-text="Screenshot of deployment progress in the Azure portal." lightbox="media/rack-aware-cluster-deploy-portal/rack-aware-cluster-deployments.png":::-->
+    <!-->:::image type="content" source="media/rack-aware-cluster-deploy-portal/rack-aware-cluster-deployments.png" alt-text="Screenshot of deployment progress in the Azure portal." lightbox="media/rack-aware-cluster-deploy-portal/rack-aware-cluster-deployments.png":::-->
 
-    1. You can monitor the deployment status just like the standard cluster.
+1. You can monitor the deployment status just like the standard cluster.
 
     ## Verify a successful deployment
 
