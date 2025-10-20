@@ -199,7 +199,7 @@ On the **Configuration** tab, choose whether to create a new configuration for y
 
     :::image type="content" source="media/rack-aware-cluster-deploy-portal/rack-aware-cluster-review-create.png" alt-text="Screenshot of review and create settings in the Azure portal." lightbox="media/rack-aware-cluster-deploy-portal/rack-aware-cluster-review-create.png":::
 
-    The **Deployments** page appears, which you can use to monitor the deployment just as you would with a standard cluster.
+    The **Deployments** page appears.
 
     <!-->:::image type="content" source="media/rack-aware-cluster-deploy-portal/rack-aware-cluster-deployments.png" alt-text="Screenshot of deployment progress in the Azure portal." lightbox="media/rack-aware-cluster-deploy-portal/rack-aware-cluster-deployments.png":::-->
 
