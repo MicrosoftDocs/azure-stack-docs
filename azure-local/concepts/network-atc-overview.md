@@ -3,7 +3,7 @@ title: Network ATC overview
 description: This article introduces Network ATC for Azure Local and Windows Server.
 author: parammahajan5
 ms.topic: overview
-ms.date: 11/13/2024
+ms.date: 10/10/2025
 ms.author: alkohli 
 ms.reviewer: alkohli
 zone_pivot_groups: windows-os
