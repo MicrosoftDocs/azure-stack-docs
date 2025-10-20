@@ -86,7 +86,7 @@ To deploy a rack aware cluster, follow the steps to [Deploy an Azure Local insta
 
 ## Specify the deployment settings
 
-On the **Configuration** tab, choose whether to create a new configuration for this system or to load deployment settings from a template–either way you are able to review the settings before you deploy:
+On the **Configuration** tab, choose whether to create a new configuration for your system or to load deployment settings from a template – either way you are able to review the settings before you deploy:
 
 1. Choose the source of the deployment settings:
    * **New configuration** - Specify all of the settings to deploy this system. In this example, we choose this option.
@@ -99,20 +99,21 @@ On the **Configuration** tab, choose whether to create a new configuration for t
 
 ## Specify network settings
 
-1. Choose the only storage connectivity available option for a rack aware cluster as **Network switch for storage traffic**.
-1. Choose the only networking pattern available for rack aware cluster as **Group management and compute traffic**. This groups management and compute traffic together on one set of adapters while keeping storage traffic isolated on dedicated high-speed adapters. You create two network intents:
+1. Choose the only storage connectivity option available  for a rack aware cluster as **Network switch for storage traffic**.
+1. Choose the only networking pattern available for a rack aware cluster as **Group management and compute traffic**. This groups management and compute traffic together on one set of adapters while keeping storage traffic isolated on dedicated high-speed adapters. You create two network intents:
     - Management and compute intent.
     - Storage intent.
 
     :::image type="content" source="media/rack-aware-cluster-deploy-portal/rack-aware-cluster-network-settings.png" alt-text="Screenshot of network settings in the Azure portal." lightbox="media/rack-aware-cluster-deploy-portal/rack-aware-cluster-network-settings.png":::
 
 
-1. Choose the IP allocation as **Manual** or **Automatic**. Use **Automatic** if you use a DHCP server for IP assignments in your network.
+1. Choose the IP allocation as **Manual** or **Automatic**. Use **Automatic** if you have a DHCP server for IP assignments in your network.
 
-1. If you picked static IP, provide the following values:
-    1. Using the **Starting IP** and **Ending IP** (and related) fields, allocate a contiguous block of at least six static IP addresses on your management network's subnet, omitting addresses already used by the machines.
+1. If you chose static IP, provide the following values:
 
-        These IPs are used by Azure Local and internal infrastructure (Arc Resource Bridge) that's required for Arc VM management and AKS Hybrid.
+    1. Using the **Starting IP** and **Ending IP** (and related) fields, allocate a contiguous block of at least six static IP addresses on your management network's subnet, excluding addresses already used by the machines.
+
+        These IPs are used by Azure Local and internal infrastructure (Arc Resource Bridge) that's required for Azure Local VM management and AKS on Azure Local.
     1. Provide the Subnet mask, Default gateway, and one or more DNS servers.
     1. Validate subnet.
 
@@ -123,23 +124,20 @@ On the **Configuration** tab, choose whether to create a new configuration for t
 
 ## Specify management settings
 
-1. Optionally edit the suggested **Custom location name** that helps users identify this system when creating resources such as VMs on it.
-1. For rack aware cluster, cluster witness is required. Select an existing Storage account or create a new Storage account to store the cloud witness file. Choose **Cloud witness** and provide a name for the cloud witness.
+1. Optionally edit the suggested **Custom location name** that helps users identify your system when creating resources such as VMs on it.
+1. A cluster witness is required for rack aware cluster. Select an existing Storage account or create a new Storage account to store the cloud witness file.
 
-
-
-    When selecting an existing account, the dropdown list filters to display only the storage accounts contained in the specified resource group for deployment. You can use the same storage account with multiple clusters; each witness uses less than a kilobyte of storage.
+    When selecting an existing account, the dropdown list filters to display only the storage accounts contained in the specified resource group for deployment. You can use the same storage account with multiple clusters; each witness uses less than a kilobyte of storage. 
+1. Choose **Cloud witness** and provide a name for the cloud witness.
 
     :::image type="content" source="./media/deploy-via-portal/management-tab-2.png" alt-text="Screenshot of the Management tab with storage account for cluster witness for deployment via Azure portal." lightbox="./media/deploy-via-portal/management-tab-2.png":::
 
-1. Enter the Active Directory **Domain** where you're deploying this system. This must be the same fully qualified domain name (FQDN) used when the Active Directory Domain Services (AD DS) domain was prepared for deployment.
+1. Enter the Active Directory **Domain** where you deploy your system. This must be the same fully qualified domain name (FQDN) used when the Active Directory Domain Services (AD DS) domain was prepared for deployment.
 
-1. Enter the **OU** created for this deployment. The OU can't be at the top level of the domain.
+1. Enter the **OU** created for this deployment. The Organizational Unit (OU) can't be at the top level of the domain.
    For example: `OU=Local001,DC=contoso,DC=com`.
 
-1. Enter the **Deployment account** credentials.
-
-    This domain user account was created when the domain was prepared for deployment.
+1. Enter the **Deployment account** credentials. This domain user account was created when the domain was prepared for deployment.
 1. Enter the **Local administrator** credentials for the machines.
 
     The credentials must be identical on all machines in the system.  If the current password doesn't meet the complexity requirements (14+ characters long, a lowercase and uppercase character, a numeral, and a special character), you must change it on all machines before proceeding.
@@ -166,7 +164,7 @@ On the **Configuration** tab, choose whether to create a new configuration for t
     > [!IMPORTANT]
     > Don't delete the infrastructure volumes created during deployment.
 
-    Here's a summary of the volumes that are created based on the number of machines in your system. To change the resiliency setting of the workload volumes, delete them and recreate them, being careful not to delete the infrastructure volumes.
+    Here's a summary of the volumes that are created based on the number of machines in your system. To change the resiliency setting of the workload volumes, delete them and re-create them. Be careful not to delete the infrastructure volumes.
     
     
     |# machines  |Volume resiliency  |# Infrastructure volumes  |# Workload volumes  |
@@ -175,51 +173,56 @@ On the **Configuration** tab, choose whether to create a new configuration for t
     |Two machines     | Two-way mirror       | 1        |  2        |
     |Three machines +     | Three-way mirror        |1        |1 per machine         |
 
-1. Specify the **Local availability zone** configurations. Ensure servers in the same zone are physically in the same rack, which isn't validated in the deployment process in this release. It's critical to configure this correctly, otherwise, one rack failure could bring the whole cluster down.
+1. Specify the **Local availability zone** settings. Ensure servers in the same zone are physically in the same rack. This check isn't validated during the deployment process in this release so the correct configuration is critical. If misconfigured, a single rack failure could take down the entire cluster.
 
     :::image type="content" source="media/rack-aware-cluster-deploy-portal/rack-aware-cluster-advanced-settings.png" alt-text="Screenshot of local availability zone settings in the Azure portal." lightbox="media/rack-aware-cluster-deploy-portal/rack-aware-cluster-advanced-settings.png":::
 
 1. Select **Next: Tags**.
 1. Optionally add a tag to the Azure Local resource in Azure.
-    Tags are name/value pairs you can use to categorize resources. You can then view consolidated billing for all resources with a given tag.
+    Tags are name or value pairs you can use to categorize resources. You can then view consolidated billing for all resources with a specific tag.
 1. Select **Next: Validation**.
-1. Select **Start validation**. The validation takes about 15 minutes to deploy one to two machines and longer for bigger deployments. Monitor the validation progress.
+1. Select **Start validation**. Validation typically takes about 15 minutes to deploy one to two machines and longer for bigger deployments. Monitor the validation progress.
 
 ## Validate and deploy the system
 
 
-1. After the validation is complete, review the validation results.
+1. After validation completes, review the validation results.
 
     :::image type="content" source="media/rack-aware-cluster-deploy-portal/rack-aware-cluster-validation.png" alt-text="Screenshot of validation progress in the Azure portal." lightbox="media/rack-aware-cluster-deploy-portal/rack-aware-cluster-validation.png":::
 
-    If the validation has errors, resolve any actionable issues.
+    If the validation has any errors, resolve actionable issues.
 
     <!-- verify w/ Barbara Don't select **Try again** while validation tasks are running as doing so can provide inaccurate results in this release.-->
 
 1. Select **Next: Review + create**. 
-1. Review the settings that are used for deployment and then select **Create** to deploy the system.
+1. Review the deployment settings and then select **Create** to deploy the system.
 
     :::image type="content" source="media/rack-aware-cluster-deploy-portal/rack-aware-cluster-review-create.png" alt-text="Screenshot of review and create settings in the Azure portal." lightbox="media/rack-aware-cluster-deploy-portal/rack-aware-cluster-review-create.png":::
 
-    The **Deployments** page appears, which you can use to monitor the deployment progress.
+    The **Deployments** page appears, which you can use to monitor the deployment just as your would with a standard cluster.
 
-    <!-->:::image type="content" source="media/rack-aware-cluster-deploy-portal/rack-aware-cluster-deployments.png" alt-text="Screenshot of deployment progress in the Azure portal." lightbox="media/rack-aware-cluster-deploy-portal/rack-aware-cluster-deployments.png":::-->
+        <!-->:::image type="content" source="media/rack-aware-cluster-deploy-portal/rack-aware-cluster-deployments.png" alt-text="Screenshot of deployment progress in the Azure portal." lightbox="media/rack-aware-cluster-deploy-portal/rack-aware-cluster-deployments.png":::-->
 
-1. You can monitor the deployment status just like the standard cluster.
+    1. You can monitor the deployment status just like the standard cluster.
 
-## Verify a successful deployment
+    ## Verify a successful deployment
 
-To confirm that the system and all of its Azure resources were successfully deployed:
-1. In the Azure portal, navigate to the resource group into which you deployed the system.
-2. On the **Overview** > **Resources**, you should see the following:
+    To verify that the system and all associated Azure resources were deployed successfully, follow these steps:
 
-    |Number of resources  | Resource type  |
-    |---------|---------|
-    | 1 per machine | Machine - Azure Arc |
-    | 1            | Azure Local     |
-    | 1            | Arc Resource Bridge |
-    | 1            | Key vault           |
-    | 1            | Custom location     |
+    1. In the [Azure portal](https://portal.azure.com), go to the resource group where you deployed the system.
+    2. On the **Overview** page, under **Resources**, confirm that the following items are listed:
+
+        |Number of resources  | Resource type  |
+        |---------|---------|
+        | 1 per machine | Machine - Azure Arc |
+        | 1            | Azure Local     |
+        | 1            | Arc Resource Bridge |
+        | 1            | Key vault           |
+        | 1            | Custom location     |
+        | 2*           | Storage account     |
+        | 1 per workload volume | Azure Local storage path - Azure Arc |
+        
+        \* Two storage accounts are created: one for the cloud witness and another for Key Vault audit logs. Both accounts use locally redundant storage (LRS) and have a lock applied.
     | 2*           | Storage account     |
     | 1 per workload volume | Azure Local storage path - Azure Arc |
     
