@@ -426,7 +426,15 @@ items:
     items:
     - name: What's a rack aware cluster?
       href: concepts/rack-aware-cluster-overview.md
-     
+    - name: Deploy
+      items:    
+      - name: Prepare to deploy
+        href: deploy/rack-aware-cluster-deploy-prep.md
+      - name: Choose a deployment method
+        items:
+        - name: Via Azure portal
+          href: deploy/rack-aware-cluster-deploy-portal.md
+
   - name: Security
     items:
     - name: Manage security defaults
