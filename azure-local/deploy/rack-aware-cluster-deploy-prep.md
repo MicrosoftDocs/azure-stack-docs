@@ -18,8 +18,7 @@ This article describes the preparation steps to deploy Azure Local rack aware cl
 - Make sure to review the [Network design requirements for Azure Local rack aware clusters](../index.yml) for detailed design and supported network configurations.
 
     - We strongly recommend that you deploy two Top of Rack (ToR) switches in each rack or room to ensure high resiliency.
-    - For edge implementations where cost efficiency is a priority, a single ToR switch per room or rack might be sufficient, provided that adequate bandwidth is available.
-    - Both storage networks reside on the same device and are isolated through distinct VLANs.
+    - For edge implementations where cost efficiency is a priority, a single ToR switch per room or rack might be sufficient, provided that adequate bandwidth is available. Both storage networks reside on the same device and are isolated through distinct VLANs.
 
 - Make sure your network switches support Link Layer Discovery Protocol (LLDP) and that LLDP is enabled on all switch ports connected to the Azure Local machines. This is crucial for the LLDP Network Validator test, which verifies the network topology and connections for your rack aware cluster deployment.
 
@@ -29,7 +28,7 @@ This article describes the preparation steps to deploy Azure Local rack aware cl
 
 - Verify that the Azure Local machines show in the resource group as registered.
 
-## (Optional) Test rack-to-rack latency
+## Test rack-to-rack latency
 
 To validate rack-to-rack (room-to-room) network latency through a client-server testing model, use the `psping` tool.
 
@@ -82,7 +81,7 @@ To complete the full mesh testing, repeat steps 3 and 4 with different server-cl
 > [!NOTE]
 > Results can vary depending on when you run the test, as TCP latency is affected by your current network conditions. We strongly recommend that you run the test *multiple* times to get a reliable average.
 
-## (Optional) Run the LLDP Network Validator test for rack aware clusters
+## Run the LLDP Network Validator test for rack aware clusters
 
 Use the LLDP Network Validator Test to validate the network topology and connections for your rack aware cluster deployment. This test helps ensure that your network configuration meets the requirements for a successful rack aware cluster deployment.
 
