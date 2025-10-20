@@ -25,10 +25,10 @@ This architecture allows customers to operate in disconnected or semi-connected 
 
 Azure Operator Nexus relies on [cert-manager](https://cert-manager.io/) to automate certificate lifecycles:
 
-1. **Issuer objects** are defined for each certificate purpose (interface access, internal services, and other specialized workloads).
-2. **Certificate resources** request leaf certificates from the appropriate issuer, including Subject Alternative Names (SANs) required by platform components.
-3. **Renewal automation** is driven by cert-manager, which renews leaf certificates before expiration and rotates them transparently across the platform.
-4. **Secret distribution** to pods and services is handled through Kubernetes secrets and projected volumes, ensuring workloads always present valid certificates.
+- **Issuer objects** are defined for each certificate purpose (interface access, internal services, and other specialized workloads).
+- **Certificate resources** request leaf certificates from the appropriate issuer, including Subject Alternative Names (SANs) required by platform components.
+- **Renewal automation** is driven by cert-manager, which renews leaf certificates before expiration and rotates them transparently across the platform.
+- **Secret distribution** to pods and services is handled through Kubernetes secrets and projected volumes, ensuring workloads always present valid certificates.
 
 Because all issuance is in-cluster, operators retain full control over the trust fabric without depending on external connectivity or services.
 
