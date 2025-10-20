@@ -3,7 +3,7 @@ title: Install solution upgrade on Azure Local using Azure Resource Manager temp
 description: Learn how to install the solution upgrade on your Azure Local instance using Azure Resource Manager template.
 author: alkohli
 ms.topic: how-to
-ms.date: 08/25/2025
+ms.date: 09/24/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -14,13 +14,15 @@ ms.service: azure-local
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2-22h2.md)]
 
-[!INCLUDE [end-of-service-22H2](../includes/end-of-service-22h2.md)]
-
 This article describes how to install the solution upgrade on your Azure Local instance using Azure Resource Manager (ARM) template, after upgrading the operating system (OS) build from 20349.xxxx (22H2) to 25398.xxxx (23H2).
 
 > [!IMPORTANT]
 > - While the OS upgrade is generally available, the solution upgrade is rolled out in phases. Additionally, the solution upgrade isn't available to customers in Azure China.
 > - Installing solution upgrade using ARM template is targeted for at-scale upgrades. This method is intended for IT administrators who have experience managing Azure Local instances. We recommend that you upgrade a system via the Azure portal first, and then use ARM template for subsequent upgrades. To install the solution upgrade via the Azure portal, see [Install solution upgrade on Azure Local](./install-solution-upgrade.md).
+
+## About End of Support (EOS) for version 22H2
+
+[!INCLUDE [end-of-service-22H2](../includes/end-of-service-22h2.md)]
 
 ## Prerequisites
 
@@ -61,74 +63,13 @@ Follow these steps to prepare the Azure resources you need for the upgrade:
 
 ::: moniker range="<=azloc-24113"
 
-### Create a service principal and client secret
-
-To authenticate your system, you need to create a service principal and a corresponding **Client secret** for Arc Resource Bridge (ARB).
-
-### Create a service principal for ARB
-
-Follow the steps in [Create a Microsoft Entra application and service principal that can access resources via Azure portal](/entra/identity-platform/howto-create-service-principal-portal) to create the service principal and assign the roles. Alternatively, use the PowerShell procedure to [Create an Azure service principal with Azure PowerShell](/powershell/azure/create-azure-service-principal-azureps).
-
-The steps are also summarized here:
-
-1. Sign in to the [Microsoft Entra admin center](https://entra.microsoft.com/) as at least a Cloud Application Administrator. Browse to **Identity > Applications > App registrations** then select **New registration**.
-
-1. Provide a **Name** for the application, select a **Supported account type**, and then select **Register**.
-
-    :::image type="content" source="./media/install-solution-upgrade-azure-resource-manager-template/create-service-principal-register.png" alt-text="Screenshot showing Register an application for service principal creation." lightbox="./media/install-solution-upgrade-azure-resource-manager-template/create-service-principal-register.png":::
-
-1. Once the service principal is created, go to the **Enterprise applications** page. Search for and select the SPN you created.
-
-   :::image type="content" source="./media/install-solution-upgrade-azure-resource-manager-template/create-service-principal-search.png" alt-text="Screenshot showing search results for the service principal created." lightbox="./media/install-solution-upgrade-azure-resource-manager-template/create-service-principal-search.png":::
-
-1. Under properties, copy the **Application (client) ID**  and the **Object ID** for this service principal.
-
-   :::image type="content" source="./media/install-solution-upgrade-azure-resource-manager-template/create-service-principal-id.png" alt-text="Screenshot showing Application (client) ID and the object ID for the service principal created." lightbox="./media/install-solution-upgrade-azure-resource-manager-template/create-service-principal-id.png":::
-
-    You use the **Application (client) ID** against the `arbDeploymentAppID` parameter and the **Object ID** against the `arbDeploymentSPNObjectID` parameter in the Resource Manager template.
-
-### Create a client secret for ARB service principal
-
-1. Go to the application registration that you created and browse to **Certificates & secrets > Client secrets**.
-1. Select **+ New client** secret.
-
-    :::image type="content" source="./media/install-solution-upgrade-azure-resource-manager-template/create-client-secret-new.png" alt-text="Screenshot showing creation of a new client secret." lightbox="./media/install-solution-upgrade-azure-resource-manager-template/create-client-secret-new.png":::
-
-1. Add a **Description** for the client secret and provide a timeframe when it **Expires**. Select **Add**.
-
-    :::image type="content" source="./media/install-solution-upgrade-azure-resource-manager-template/create-client-secret-add.png" alt-text="Screenshot showing Add a client secret blade." lightbox="./media/install-solution-upgrade-azure-resource-manager-template/create-client-secret-add.png":::
-
-1. Copy the **client secret value** as you use it later.
-
-    > [!Note]
-    > For the application client ID, you will need it's secret value. Client secret values can't be viewed except for immediately after creation. Be sure to save this value when created before leaving the page.
-
-    :::image type="content" source="./media/install-solution-upgrade-azure-resource-manager-template/create-client-secret-value.png" alt-text="Screenshot showing client secret value." lightbox="./media/install-solution-upgrade-azure-resource-manager-template/create-client-secret-value.png":::
-
-    You use the **client secret value** against the `arbDeploymentAppSecret` parameter in the Resource Manager template.
+[!INCLUDE [create-service-principal-client-secret](../includes/create-service-principal-client-secret.md)]
 
 ::: moniker-end
 
-### Get the object ID for Azure Local Resource Provider
+[!INCLUDE [get-object-id-azure-local-resource-provider](../includes/get-object-id-azure-local-resource-provider.md)]
 
-This object ID for the Azure Local Resource Provide (RP) is unique per Azure tenant.
-
-1. In the Azure portal, search for and go to Microsoft Entra ID.  
-1. Go to the **Overview** tab and search for *Microsoft.AzureStackHCI Resource Provider*.
-
-    :::image type="content" source="./media/install-solution-upgrade-azure-resource-manager-template/search-resource-provider-overview.png" alt-text="Screenshot showing the search for the Azure Local Resource Provider service principal." lightbox="./media/install-solution-upgrade-azure-resource-manager-template/search-resource-provider-overview.png":::
-
-1. Select the Service Principal Name that is listed and copy the **Object ID**.
-
-    :::image type="content" source="./media/install-solution-upgrade-azure-resource-manager-template/get-object-id.png" alt-text="Screenshot showing the object ID for the Azure Local Resource Provider service principal." lightbox="./media/install-solution-upgrade-azure-resource-manager-template/get-object-id.png":::
-
-    Alternatively, you can use PowerShell to get the object ID of the Azure Local RP service principal. Run the following command in PowerShell:
-
-    ```powershell
-    Get-AzADServicePrincipal -DisplayName "Microsoft.AzureStackHCI Resource Provider"
-    ```
-
-## Install the solution upgrade using Azure Resource Manager template
+## Step 2: Install the solution upgrade using Azure Resource Manager template
 
 An ARM template creates and assigns all the resource permissions required for the upgrade.
 With all the prerequisite and preparation steps complete, you're ready to upgrade using a known good and tested ARM template and corresponding parameters JSON file. Use the parameters contained in the JSON file to fill out all values, including the values generated previously.
@@ -250,7 +191,7 @@ The following table describes the parameters that you define in the ARM template
 | AzureStackLCMAdminUsername | Username for the LCM admin.<br/> For more information, see [Review deployment prerequisites for Azure Local](../deploy/deployment-prerequisites.md).|
 | AzureStackLCMAdminPasssword | Password for the LCM admin. <br/> For more information, see [Review deployment prerequisites for Azure Local](../deploy/deployment-prerequisites.md).|
 | arcNodeResourceIds | Array of resource IDs of the Azure Arc-enabled servers that are part of this Azure Local cluster. |
-| domainFqdn | Fully-qualified domain name (FQDN) for the Active Directory Domain Services prepared for deployment. |
+| domainFqdn | Fully qualified domain name (FQDN) for the Active Directory Domain Services prepared for deployment. |
 | subnetMask | The subnet mask for the management network used by the Azure Local deployment. |
 | defaultGateway | The default gateway for deploying an Azure Local cluster. |
 | startingIPAddress | The first IP address in a contiguous block of at least six static IP addresses on your management network's subnet, omitting addresses already used by the machines.<br/>These IPs are used by Azure Local and internal infrastructure (Arc Resource Bridge) that's required for Arc VM management and AKS Hybrid. |

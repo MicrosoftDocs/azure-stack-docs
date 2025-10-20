@@ -124,7 +124,7 @@ To ensure Resilient File System (ReFS) and live migrations function properly dur
 ## Install the new OS using PowerShell
 
 > [!NOTE]
-> The following steps require the Cluster-Aware Updating (CAU) role to be installed and enabled on the system. For information on how to install and enable this feature on your Azure Local instance, see [Cluster-Aware Updating overview](https://github.com/MicrosoftDocs/azure-stack-docs/blob/main/windows-server/failover-clustering/cluster-aware-updating#installing-cluster-aware-updating).
+> The following steps require the Cluster-Aware Updating (CAU) role to be installed and enabled on the system. For information on how to install and enable this feature on your Azure Local instance, see [Cluster-Aware Updating overview](/windows-server/failover-clustering/cluster-aware-updating#installing-cluster-aware-updating).
 
 To install the new OS using PowerShell, follow these steps:
 

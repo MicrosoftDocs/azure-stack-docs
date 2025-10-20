@@ -27,7 +27,7 @@ The time required to complete each of these actions is similar. Restarting is th
   - Subscription ID
 
 > [!IMPORTANT]
-> Disruptive command requests against a Kubernetes Control Plane (KCP) node are rejected if there's another disruptive action command already running against another KCP node or if the full KCP isn't available.
+> Disruptive commands to a Kubernetes Control Plane (KCP) node are rejected if another disruptive action is already in progress on any KCP node or if the full KCP is unavailable.
 >
 > Restart, reimage and replace are all considered disruptive actions.
 >
@@ -175,9 +175,13 @@ az networkcloud baremetalmachine uncordon \
 
 ## Troubleshoot with a replace action
 
-Servers contain many physical components that can fail over time. It's important to understand which physical repairs require BMM replacement and when BMM replacement is recommended.
+Servers contain many physical components that can fail over time. It's important to understand which physical repairs require BMM replacement and when BMM replacement is recommended. The Tenant data isn't modified during replacement as long as `storage-policy="Preserve"` flag is used.
 
-A hardware validation process is invoked to ensure the integrity of the physical host in advance of deploying the OS image. Like the reimage action, the Tenant data isn't modified during replacement.
+A hardware validation process is invoked to ensure the integrity of the physical host in advance of deploying the OS image.
+
+This article provides an overview of the hardware validation process [Hardware Validation Overview](concepts-hardware-validation-overview.md)
+
+This article provides instructions on how to check and troubleshoot hardware validation results [Troubleshoot Hardware Validation](troubleshoot-hardware-validation-failure.md)
 
 > [!IMPORTANT]
 > When run with default options, the RAID controller is reset during BMM replace, wiping all data from the server's virtual disks. Baseboard Management Controller (BMC) virtual disk alerts triggered during BMM replace can be ignored unless there are other physical disk and/or RAID controllers alerts. Starting with the `2025-07-01-preview` version of the NetworkCloud API, and generally available with the `2025-09-01` GA version, use `replace` with `storage-policy="Preserve"` to retain virtual disk data.
