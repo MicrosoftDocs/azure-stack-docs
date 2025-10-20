@@ -39,18 +39,26 @@ This release has the following features and improvements:
     
 - **.NET updates**: This build uses .NET version **8.0.21** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
     
-- **Rack Aware Clustering**: Azure Local now supports rack aware clustering. This feature allows you to define fault domains based on physical racks in your data center, enhancing the resilience of your cluster against rack-level failures. For more information, see [Rack Aware Clustering](./index.yml).
+- **Rack Aware Clustering (Preview)**: Azure Local now supports rack aware clustering. This Preview feature allows you to define fault domains based on physical racks in your data center, enhancing the resilience of your cluster against rack-level failures. For more information, see [Rack Aware Clustering](./index.yml).
 
 - **Azure Local VM updates**:
-    - **Software defined networking (SDN)**: SDN enabled by Azure Arc on Azure Local is now generally available. This feature allows you to create and manage network security groups (NSGs) and network security rules for your Azure Local VMs, providing enhanced network security and segmentation capabilities. For more information, see [Software-Defined Networking (SDN) enabled by Azure Arc](./concepts/sdn-overview.md). 
-    - **Trusted Virtual Machine (Trusted VM) guest attestation** - Azure Local 2510 release introduces guest attestation (also known as boot integrity verification) for Azure Local virtual machines with Trusted launch. This feature lets you verify that the virtual machine starts in a well known good state by checking the integrity of the entire boot chain. This helps detect any unexpected changes to the boot chain (firmware, OS boot loader, and drivers) and take action if it's compromised. For more information, see [Trusted VM guest attestation](./index.yml).
+    - **Software defined networking (SDN)**: SDN enabled by Azure Arc on Azure Local is now generally available. This feature allows you to create and manage network security groups (NSGs) and network security rules for your Azure Local VMs, providing enhanced network security and segmentation capabilities. 
+    
+        For more information, see [Software-Defined Networking (SDN) enabled by Azure Arc](./concepts/sdn-overview.md). 
+
+    - **Trusted Virtual Machine (Trusted VM) guest attestation** - Azure Local 2510 release introduces guest attestation (also known as boot integrity verification) for Azure Local virtual machines with Trusted launch.
+        
+        This feature lets you verify that the virtual machine starts in a well known good state by checking the integrity of the entire boot chain. This helps detect any unexpected changes to the boot chain (firmware, OS boot loader, and drivers) and take action if it's compromised.
+        
+        For more information, see [Trusted VM guest attestation](./index.yml).
 
 - **Documentation updates**: The noteworthy changes include the following new articles or articles with major updates:
 
-**Azure Local deployment using local identity**: Deploy Azure Local using local identity with Azure Key Vault doc changes include:
-- Revised instructions for updating Azure Key Vault in Azure Local environments.
-- Added a new section on tool compatibility in Azure Local environments configured with Azure Key Vault.
-- Added a new FAQ section to address common questions.
+- **Azure Local deployment using local identity**: Deploy Azure Local using local identity with Azure Key Vault doc changes include:
+    - Revised instructions for updating Azure Key Vault in Azure Local environments.
+    - Added a new section on tool compatibility in Azure Local environments configured with Azure Key Vault.
+    - Added a new FAQ section to address common questions.
+    
     For more information, see [Deploy Azure Local using local identity with Azure Key Vault]( ../deploy/deployment-local-identity-with-key-vault.md).
 
 
