@@ -426,6 +426,8 @@ items:
     items:
     - name: What's a rack aware cluster?
       href: concepts/rack-aware-cluster-overview.md
+    - name: Add and repair nodes
+      href: concepts/rack-aware-cluster-add-server.md
      
   - name: Security
     items:

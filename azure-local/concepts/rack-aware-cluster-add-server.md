@@ -1,13 +1,13 @@
 ---
-title: Add or repair a server to a rack aware cluster on Azure Local (Preview)
-description: Learn how to add or repair a server to a rack aware cluster on Azure Local (Preview).
+title: Add or repair a node to a rack aware cluster on Azure Local (Preview)
+description: Learn how to add or repair a node to a rack aware cluster on Azure Local (Preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 10/09/2025
+ms.date: 10/20/2025
 ms.author: alkohli
 ---
 
-# Add or repair a server to a rack aware cluster (Preview)
+# Add or repair a node to a rack aware cluster (Preview)
 
 Applies to: Azure Local version 2510 and later
 
@@ -22,7 +22,7 @@ For more information on adding a server, see [Add a node on Azure Local](../mana
 
 ### Limitations
 
-This is only supported for 2+2 to 3+3, and 3+3 to 4+4 Rack Aware Cluster. You can't add nodes to a 1+1 Rack Aware Cluster. For a Rack Aware Cluster, you must add two nodes at a time by using the `Add-Server` command:
+This is only supported for 2+2 to 3+3, and 3+3 to 4+4 rack aware cluster. You can't add nodes to a 1+1 rack aware cluster. For a rack aware cluster, you must add two nodes at a time by using the `Add-Server` command:
 
 ```azurecli
 Add-Server -Name <String Array> -HostIpv4 <String Array> -LocalAvailabilityZone <String Array> -LocalAdminCredential <Credential>
@@ -38,7 +38,7 @@ The following parameters can be used with the `Add-Server` command:
 
 **LocalAvailabilityZone**: String array of local availability zones in the respective order of the nodes being added. You need to ensure the nodes are added to the correct zone.  
 
-If you are adding nodes ["Node1", "Node2"] and Node1 is in ZoneA, and Node2 is in ZoneB, then the value should be ["ZoneA", "ZoneB"].
+For example, if you are adding nodes ["Node1", "Node2"] and Node1 is in ZoneA, and Node2 is in ZoneB, then the value should be ["ZoneA", "ZoneB"].
 
 **LocalAdminCredential**: Local administrator user credentials for the nodes. Use the same credential for both nodes.
 
