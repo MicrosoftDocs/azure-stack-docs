@@ -3,14 +3,14 @@ title: Discover and replicate Hyper-V VMs for migration to Azure Local using Azu
 description: Learn the discovery and replication process for Hyper-V VMs to Azure Local using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 08/06/2025
+ms.date: 10/01/2025
 ms.author: alkohli
 ms.custom: sfi-image-nochange
 ---
 
 # Discover and replicate Hyper-V VMs for migration to Azure Local using Azure Migrate (preview)
 
-[!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [hci-applies-to-2503](../includes/hci-applies-to-2503.md)]
 
 This article describes the discovery and replication phase for Hyper-V virtual machine (VM) migration to Azure Local using Azure Migrate.
 
@@ -28,7 +28,19 @@ Ensure all VMs that you wish to migrate are powered on and have [Hyper-V integra
 
 ### Generate the project key
 
-In this step, you generate the key for the source appliance - see [Generate the project key](/azure/migrate/how-to-set-up-appliance-hyper-v#generate-the-project-key) for specific steps.
+1. In the Azure portal, go to the **All projects** page and select your project from the list.
+
+1. On the **Overview** tab, under **Inventory**, select **Start discovery** > **Using appliance** > **For Azure Local**.
+
+    :::image type="content" source="./media/migrate-hyperv-replicate/generate-source-appliance-project-key-1.png" alt-text="Screenshot of going to Discover page from Migration tools tile for your source appliance." lightbox="./media/migrate-hyperv-replicate/generate-source-appliance-project-key-1.png":::
+
+1. On the **Discover** page, select **Azure Local** under **Where do you want to migrate to** and then select **Yes, with Hyper-V** under **Are your machines virtualized** in Azure Migrate.
+1. Enter a name for your source appliance and generate the key for the source Hyper-V appliance. For detailed steps, see [Generate the project key](/azure/migrate/how-to-set-up-appliance-vmware#generate-the-project-key).
+
+1. Copy the **Project key** (to a text editor such as Notepad) and save it for later use.
+1. You can now **Download the Azure Migrate source appliance** using either a .VHD or a *.zip* file. The detailed steps are provided in the subsequent sections.
+
+    :::image type="content" source="./media/migrate-hyperv-replicate/generate-source-appliance-project-key-2.png" alt-text="Screenshot of going to Discover page." lightbox="./media/migrate-hyperv-replicate/generate-source-appliance-project-key-2.png":::
 
 ### Create the source appliance
 

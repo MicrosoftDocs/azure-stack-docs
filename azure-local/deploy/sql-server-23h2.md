@@ -4,7 +4,7 @@ description: This article provides guidance on how to deploy SQL Server on Azure
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 10/17/2024
+ms.date: 10/10/2025
 ---
 
 # Deploy SQL Server on Azure Local, version 23H2
@@ -44,7 +44,7 @@ For instructions on installing SQL Server, see:
 
 ### Step 3: Monitor and performance tune SQL Server
 
-Microsoft provides a comprehensive set of tools for monitoring events in SQL Server and for tuning the physical database design. Tool choice depends on the type of monitoring or tuning that you want to perform.
+Microsoft provides a comprehensive set of tools for monitoring events in SQL Server and for tuning the physical database design. Tool choice depends on the type of monitoring or tuning you want to perform.
 
 To ensure the performance and health of your SQL Server instances on Azure Local, see [Performance Monitoring and Tuning Tools](/sql/relational-databases/performance/performance-monitoring-and-tuning-tools).
 
@@ -52,7 +52,7 @@ For tuning SQL Server 2017 and SQL Server 2016, see [Recommended updates and con
 
 ### Step 4: Use SQL Server high availability features
 
-Azure Local leverages [Windows Server Failover Clustering with SQL Server](/sql/sql-server/failover-clusters/windows/windows-server-failover-clustering-wsfc-with-sql-server) (WSFC) to support SQL Server running in VMs in the event of a hardware failure. SQL Server also offers [Always On availability groups](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server) (AG) to provide database-level high availability that is designed to help with application and software faults. In addition to WSFC and AG, Azure Local can use [Always On Failover Cluster Instance](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server) (FCI), which is based on [Storage Spaces Direct](/windows-server/storage/storage-spaces/storage-spaces-direct-overview) technology for shared storage.
+Azure Local uses [Windows Server Failover Clustering with SQL Server](/sql/sql-server/failover-clusters/windows/windows-server-failover-clustering-wsfc-with-sql-server) (WSFC) to support SQL Server running in VMs in the event of a hardware failure. SQL Server also offers [Always On availability groups](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server) (AG) to provide database-level high availability that is designed to help with application and software faults. In addition to WSFC and AG, Azure Local can use [Always On Failover Cluster Instance](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server) (FCI), which is based on [Storage Spaces Direct](/windows-server/storage/storage-spaces/storage-spaces-direct-overview) technology for shared storage.
 
 These options all work with the Microsoft [Azure Cloud witness](/windows-server/failover-clustering/deploy-cloud-witness) for quorum control. We recommend using cluster [AntiAffinity](/windows-server/failover-clustering/cluster-affinity) rules in WSFC for VMs placed on different physical nodes to maintain uptime for SQL Server in the event of host failures when you configure Always On availability groups.
 

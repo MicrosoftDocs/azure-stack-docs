@@ -395,6 +395,8 @@ items:
         href: manage/trusted-launch-vm-overview.md
       - name: Automatic virtual TPM state transfer
         href: manage/trusted-launch-automatic-state-transfer.md
+      - name: Enable guest attestation
+        href: manage/trusted-launch-guest-attestation.md
       - name: Manual backup and recovery
         href: manage/trusted-launch-vm-import-key.md
 
@@ -419,7 +421,12 @@ items:
         href: manage/gpu-manage-via-device.md
       - name: Manage GPUs via partitioning
         href: manage/gpu-manage-via-partitioning.md
-        
+
+  - name: Rack aware cluster
+    items:
+    - name: What's a rack aware cluster?
+      href: concepts/rack-aware-cluster-overview.md
+     
   - name: Security
     items:
     - name: Manage security defaults
