@@ -33,7 +33,7 @@ You can easily create a new VM using Windows Admin Center.
     > [!NOTE]
     > We strongly recommend that you select a cluster shared volume to ensure high availability of your VM.
 
-8. Under **Virtual processors**, select the number of virtual processors and whether you want [nested virtualization](../concepts/nested-virtualization.md) enabled for the VM. If the system is running Azure Local, version 21H2, you'll also see a checkbox to enable [processor compatibility mode](processor-compatibility-mode.md) on the VM.
+8. Under **Virtual processors**, select the number of virtual processors and whether you want [nested virtualization](enable-nested-virtualization.md) enabled for the VM. If the system is running Azure Local, version 21H2, you'll also see a checkbox to enable [processor compatibility mode](processor-compatibility-mode.md) on the VM.
 9. Under **Memory**, select the amount of startup memory (4 GB is recommended as a minimum), and a min and max range of dynamic memory as applicable to be allocated to the VM.
 10. Under **Network**, select a virtual switch from the dropdown list.
 11. Under **Network**, select one of the following for the isolation mode from the dropdown list:
