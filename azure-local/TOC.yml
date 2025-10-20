@@ -426,7 +426,9 @@ items:
     items:
     - name: What's a rack aware cluster?
       href: concepts/rack-aware-cluster-overview.md
-     
+    - name: Spread AKS nodes
+      href: concepts/rack-aware-cluster-aks-nodes.md
+
   - name: Security
     items:
     - name: Manage security defaults
