@@ -426,6 +426,8 @@ items:
     items:
     - name: What's a rack aware cluster?
       href: concepts/rack-aware-cluster-overview.md
+    - name: Provision and place VMs
+      href: concepts/rack-aware-cluster-provision-vm-local-availability-zone.md
      
   - name: Security
     items:
