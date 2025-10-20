@@ -199,34 +199,31 @@ On the **Configuration** tab, choose whether to create a new configuration for y
 
     :::image type="content" source="media/rack-aware-cluster-deploy-portal/rack-aware-cluster-review-create.png" alt-text="Screenshot of review and create settings in the Azure portal." lightbox="media/rack-aware-cluster-deploy-portal/rack-aware-cluster-review-create.png":::
 
-    The **Deployments** page appears, which you can use to monitor the deployment just as your would with a standard cluster.
+    The **Deployments** page appears, which you can use to monitor the deployment just as you would with a standard cluster.
 
     <!-->:::image type="content" source="media/rack-aware-cluster-deploy-portal/rack-aware-cluster-deployments.png" alt-text="Screenshot of deployment progress in the Azure portal." lightbox="media/rack-aware-cluster-deploy-portal/rack-aware-cluster-deployments.png":::-->
 
 1. You can monitor the deployment status just like the standard cluster.
 
-    ## Verify a successful deployment
+## Verify a successful deployment
 
-    To verify that the system and all associated Azure resources were deployed successfully, follow these steps:
+To verify that the system and all associated Azure resources were deployed successfully, follow these steps:
 
-    1. In the [Azure portal](https://portal.azure.com), go to the resource group where you deployed the system.
-    2. On the **Overview** page, under **Resources**, confirm that the following items are listed:
+1. In the [Azure portal](https://portal.azure.com), go to the resource group where you deployed the system.
+2. On the **Overview** page, under **Resources**, confirm that the following items are listed:
 
-        |Number of resources  | Resource type  |
-        |---------|---------|
-        | 1 per machine | Machine - Azure Arc |
-        | 1            | Azure Local     |
-        | 1            | Arc Resource Bridge |
-        | 1            | Key vault           |
-        | 1            | Custom location     |
-        | 2*           | Storage account     |
-        | 1 per workload volume | Azure Local storage path - Azure Arc |
-        
-        \* Two storage accounts are created: one for the cloud witness and another for Key Vault audit logs. Both accounts use locally redundant storage (LRS) and have a lock applied.
+    |Number of resources  | Resource type  |
+    |---------|---------|
+    | 1 per machine | Machine - Azure Arc |
+    | 1            | Azure Local     |
+    | 1            | Arc Resource Bridge |
+    | 1            | Key vault           |
+    | 1            | Custom location     |
     | 2*           | Storage account     |
     | 1 per workload volume | Azure Local storage path - Azure Arc |
     
-    \* One storage account is created for the cloud witness and one for key vault audit logs. These accounts are locally redundant storage (LRS) accounts with a lock placed on them.
+    \* Two storage accounts are created: one for the cloud witness and another for Key Vault audit logs. Both accounts use locally redundant storage (LRS) and have a lock applied.
+
 
 ## Next steps
 
