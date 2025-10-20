@@ -34,7 +34,12 @@ To deploy a rack aware cluster, follow the steps to [Deploy an Azure Local insta
 
 1. Enter the **Instance name** to use for this Azure Local instance.
 
-1. In this step, select **Rack aware cluster** for the **Cluster options**.
+1. In this step, select **Rack aware cluster** for the **Cluster options**. If you select this option, you can only deploy with Active Directory. Local identity with key vault is not supported for rack aware clusters in this release. 
+
+    If you select **Rack aware cluster** and **Local identity with Azure Key Vault** together, you see an error to the effect that the combination is not supported.
+
+   :::image type="content" source="media/rack-aware-cluster-deploy-portal/rack-aware-cluster-local-identity-key-vault-error.png" alt-text="Screenshot of cluster options in the Azure portal." lightbox="media/rack-aware-cluster-deploy-portal/rack-aware-cluster-local-identity-key-vault-error.png":::
+
 
 1. Select the **Region** to store this system's Azure resources. For a list of supported Azure regions, [Azure requirements](../concepts/system-requirements-23h2.md#azure-requirements).
 
