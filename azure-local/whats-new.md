@@ -39,16 +39,16 @@ This release has the following features and improvements:
 
 - **.NET updates**: This build uses .NET version **8.0.21** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
     
-- **Azure rack aware clustering (Preview)**: Azure Local now supports rack aware clustering. This Preview feature allows you to define fault domains based on physical racks in your datacenter, enhancing the resilience of your cluster against rack-level failures. For more information, see [Rack aware clustering](./index.yml).
+- **Azure Local rack aware clustering (Preview)**: Azure Local now supports rack aware clustering. This Preview feature allows you to define fault domains based on physical racks in your datacenter, enhancing the resilience of your cluster against rack-level failures. For more information, see [Rack aware clustering](./index.yml).
 
 - **Azure Local VM updates**:
     - **Software Defined Networking (SDN)**: SDN enabled by Azure Arc on Azure Local is now generally available. This feature allows you to create and manage network security groups (NSGs) and network security rules for your Azure Local VMs, providing enhanced network security and segmentation capabilities.
     
         For more information, see [Software Defined Networking (SDN) enabled by Azure Arc](./concepts/sdn-overview.md).
 
-    - **Trusted Virtual Machine (Trusted VM) guest attestation** - Azure Local 2510 release introduces guest attestation (also known as boot integrity verification) for Azure Local virtual machines with Trusted launch.
+    - **Trusted Virtual Machine (Trusted VM) guest attestation (Preview)** - Azure Local 2510 release introduces guest attestation (also known as boot integrity verification) for Azure Local virtual machines with Trusted launch.
         
-        This feature lets you verify that the virtual machine starts in a well known good state by checking the integrity of the entire boot chain. This helps detect any unexpected changes to the boot chain (firmware, OS boot loader, and drivers) and take action if it's compromised.
+        This Preview feature lets you verify that the virtual machine starts in a well known good state by checking the integrity of the entire boot chain. This helps detect any unexpected changes to the boot chain (firmware, OS boot loader, and drivers) and take action if it's compromised.
         
         For more information, see [Trusted VM guest attestation](./index.yml).
 
