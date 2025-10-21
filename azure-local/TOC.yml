@@ -426,16 +426,24 @@ items:
     items:
     - name: What's a rack aware cluster?
       href: concepts/rack-aware-cluster-overview.md
+    - name: Review requirements
+      href: concepts/rack-aware-cluster-requirements.md
     - name: Deploy
       items:    
       - name: Prepare to deploy
         href: deploy/rack-aware-cluster-deploy-prep.md
+      - name: Assess network readiness via LLDP
+        href: deploy/rack-aware-cluster-readiness-check.md
       - name: Choose a deployment method
         items:
         - name: Via Azure portal
           href: deploy/rack-aware-cluster-deploy-portal.md
         - name: Via ARM template
           href: deploy/rack-aware-cluster-deployment-via-template.md
+      - name: Complete post-deployment tasks
+        href: deploy/rack-aware-cluster-post-deployment.md
+    - name: Add and repair nodes
+      href: concepts/rack-aware-cluster-add-server.md
     - name: Spread AKS nodes
       href: concepts/rack-aware-cluster-aks-nodes.md
 
