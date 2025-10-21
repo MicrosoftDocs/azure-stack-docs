@@ -151,4 +151,6 @@ If the test result shows remediation steps, it indicates that the test has faile
 
 ## Next steps
 
-<!--add next steps-->
+- After validating your environment with the LLDP validator, proceed to deploy your Azure Local rack aware cluster by following the instructions in one of the following articles:
+    - [Deploy a rack aware cluster using Azure portal (Preview)](./rack-aware-cluster-deploy-portal.md).
+    - [Deploy a rack aware cluster using Azure Resource Manager templates (Preview)](../index.yml).
