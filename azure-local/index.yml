@@ -26,8 +26,8 @@ landingContent:
         links:
           - text: What's new in Azure Local?
             url: whats-new.md
-          - text: Azure Local rack aware clustering overview (Preview)
-            url: concepts/rack-aware-overview.md
+          - text: What's a rack aware cluster? (Preview)
+            url: concepts/rack-aware-cluster-overview.md
 
   # Card 
   - title: Deploy
