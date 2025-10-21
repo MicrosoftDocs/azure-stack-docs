@@ -1,22 +1,22 @@
 ---
-title: Use LLDP validator to assess deployment readiness for Rack Aware cluster (Preview).
-description: How to use the LLDP validator to assess if your environment is ready for deploying Rack Aware cluster (Preview).
+title: Use LLDP validator to assess deployment readiness for rack aware cluster (Preview).
+description: How to use the LLDP validator to assess if your environment is ready for deploying rack aware cluster (Preview).
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 10/10/2025
+ms.date: 10/21/2025
 ---
 
-# Evaluate the deployment readiness of your environment for Rack Aware cluster (Preview)
+# Evaluate the deployment readiness for Azure Local rack aware cluster (Preview)
 
-This article describes how to use the Link Layer Discovery Protocol (LLDP) validator in a standalone mode to assess how ready your environment is for deploying Rack Aware cluster.
+This article describes how to use the Link Layer Discovery Protocol (LLDP) validator in a standalone mode to assess how ready your environment is for deploying rack aware cluster.
 
 [!INCLUDE [important](../includes/hci-preview.md)]
 
 ## About the LLDP validator
 
-The Link Layer Discovery Protocol (LLDP) validator collects and analyzes network topology information from your switches to document the physical network connections for Azure Local Rack Aware cluster deployments. The validator uses LLDP data advertised by your network switches to map the connectivity between nodes and switches.
+The Link Layer Discovery Protocol (LLDP) validator collects and analyzes network topology information from your switches to document the physical network connections for Azure Local rack aware cluster deployments. The validator uses LLDP data advertised by your network switches to map the connectivity between nodes and switches.
 
 The LLDP validator isn't included in the default deployment validation process. You can run the tool before deployment to verify your network configurations.
 
@@ -31,7 +31,7 @@ The LLDP validator performs the following checks:
 
 - **LLDP neighbor discovery.** Collects LLDP information from all network adapters and verifies switches are advertising their identity.
 
-- **Availability zone consistency (Rack Aware clusters).** Documents which switches each rack connects to and validates the following:
+- **Availability zone consistency (rack aware clusters).** Documents which switches each rack connects to and validates the following:
 
    - All nodes within a rack connect to the same switches.
    - Different racks connect to separate switches with no overlap.
@@ -133,21 +133,19 @@ Get-Content "C:\CloudDeployment\Logs\MergedLLDPData.json" | ConvertFrom-Json
 > [!IMPORTANT]
 > Even if the LLDP validator reports a **SUCCESS** status, always manually review the detailed `AzStackHciEnvironmentReport` located in `$env:TEMP\LLDPValidation` (or your specified OutputPath) to ensure switch connection validations have been completed correctly. This report contains comprehensive information about network topology, connection consistency, and any configuration information that requires attention.
 
-#### Sample JSON output
+#### Sample JSON outputs
 
-- Sample output of the validation test, **AzStackHci_LLDP_Test_Intra_Zone_Switch_Consistency**.
+If the test result shows remediation steps, it indicates that the test has failed. These remediation steps provide guidance to help you resolve the issue.
 
-   This test validates that all nodes within the same Availability Zone (rack) are connected to the same set of switches, as required by the Rack Aware configuration.
+- Sample output of the **AzStackHci_LLDP_Test_Intra_Zone_Switch_Consistency** validation test:
 
-   The test result shows a **FAILURE** status and the reason for failure. It also provides remediation steps to help resolve the issue:
+   This test validates that all nodes within the same Availability Zone (rack) are connected to the same set of switches, as required by the rack aware cluster configuration.
 
    :::image type="content" source="./media/rack-aware-cluster-readiness-check/sample-output-1.png" alt-text="Screenshot of a sample output to check switch consistency." lightbox="./media/rack-aware-cluster-readiness-check/sample-output-1.png":::
 
-- Sample output of the validation test, **AzStackHci_LLDP_Test_Cross_Zone_Switch_Isolation**.
+- Sample output of the **AzStackHci_LLDP_Test_Cross_Zone_Switch_Isolation** validation test:
 
-   This test validates cross-zone switch isolation in a Rack Aware cluster environment.
-
-   The test result shows a **FAILURE** status and the reason for failure. It also provides remediation steps to help resolve the issue:
+   This test validates cross-zone switch isolation in a rack aware cluster environment.
 
    :::image type="content" source="./media/rack-aware-cluster-readiness-check/sample-output-2.png" alt-text="Screenshot of a sample output to check switch isolation." lightbox="./media/rack-aware-cluster-readiness-check/sample-output-2.png":::
 
