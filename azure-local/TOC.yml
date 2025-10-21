@@ -438,6 +438,8 @@ items:
           href: deploy/rack-aware-cluster-deploy-portal.md
       - name: Complete post-deployment tasks
         href: deploy/rack-aware-cluster-post-deployment.md
+    - name: Add and repair nodes
+      href: concepts/rack-aware-cluster-add-server.md
     - name: Spread AKS nodes
       href: concepts/rack-aware-cluster-aks-nodes.md
 
