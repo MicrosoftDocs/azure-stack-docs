@@ -16,11 +16,6 @@ zone_pivot_groups: upgrade-os
 
 This article describes how to upgrade the Azure Stack HCI operating system (OS) from version 20349.xxxx (22H2) to version 25398.xxxx (23H2), via PowerShell. This is the first step in the upgrade process, which upgrades only the OS.
 
-<!--Commenting this out as the articles for other methods no longer appear in the TOC. Upgrade via PowerShell is the recommended method. There are other methods to upgrade the OS to version 25398.xxxx (23H2) that include using Windows Admin Center and the Server Configuration tool (SConfig). For more information about these methods, see [Upgrade the Azure Stack HCI OS, version 22H2 OS via Windows Admin Center](./upgrade-22h2-to-23h2-windows-admin-center.md) and [Upgrade Azure Local to new OS using other methods](./upgrade-22h2-to-23h2-other-methods.md).-->
-
-<!-- [!IMPORTANT]
-To keep your Azure Local service in a supported state, you have up to six months to install this new OS version. The update is applicable to all Azure Local instances running version 22H2. We strongly recommend that you install this version as soon as it becomes available.-->
-
 ::: zone-end
 
 ::: zone pivot="os-24h2"
