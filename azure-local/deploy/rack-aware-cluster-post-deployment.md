@@ -3,7 +3,7 @@ title: Perform post deployment tasks on Rack Aware Cluster (Preview)
 description: Learn about the post deployment tasks that you need to perform on your newly deployed Rack Aware Cluster (Preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 10/08/2025
+ms.date: 10/21/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -48,7 +48,7 @@ Here's is a sample output from a 4+4 Rack Aware Cluster:
 
 :::image type="content" source="./media/rack-aware-cluster-post-deployment/workload-volumes.png" alt-text="Screenshot of the Machines page showing machines grouped by local availability zone for 4+4 cluster." lightbox="./media/rack-aware-cluster-post-deployment/workload-volumes.png":::
 
-If you want to create custom workload volumes instead of those crea./media/rack-aware-cluster-post-deployment/workload-volumes.pngted during cluster deployment, you can create either 2-way or 4-way mirror volumes, using either fixed or thin provisioning. Before adding the new volumes, you must delete the existing storage paths and volumes.
+If you want to create custom workload volumes instead of those created during cluster deployment, you can create either 2-way or 4-way mirror volumes, using either fixed or thin provisioning. Before adding the new volumes, you must delete the existing storage paths and volumes.
 
 After creating new workload volumes, you must create storage paths for the new volumes. For detailed instructions, see [Create storage path for Azure Local](../manage/create-storage-path.md).
 
@@ -84,7 +84,7 @@ The following table shows the expected output for each configuration:
 | 2-way mirror with RLNM | `NestedFdType`: Unknown<br> `MaxFdType`: Rack |
 | No RLNM, Storage domain is set to RACK | `NestedFdType`: (null)<br> `MaxFdType`: Rack |
 
-If your volumes match the output of the **No RLNM, Storage domain is set to RACK** configuration, it means the volume isn't RLNM. This configuration isn't supported for Rack Aware Clusters. You need to redeploy the cluster with RLNM enabled, as described [Enable Rack Level Nested Mirror](../index.yml).
+If your volumes match the output of the **No RLNM, Storage domain is set to RACK** configuration, it means the volume isn't RLNM. This configuration isn't supported for Rack Aware Clusters. You need to redeploy the cluster with RLNM enabled, as described in [Enable Rack Level Nested Mirror](../index.yml).
 
 Here's a sample output from a volume with RLNM 4-way mirror enabled:
 

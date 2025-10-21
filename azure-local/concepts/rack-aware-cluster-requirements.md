@@ -3,7 +3,7 @@ title: Requirements and supported configurations for Rack Aware Clusters (Previe
 description: Learn about requirements and supported configurations for Rack Aware Clusters (Preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 10/08/2025
+ms.date: 10/21/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -54,7 +54,7 @@ The following table summarizes the supported configurations with volume resilien
 | 3+3 (6-node) | 6 | Four-way mirror | 25% | Three faults (drive or node). <br> If one rack fails, the remaining can sustain one fault of drive or node. |
 | 4+4 (8-node) | 8 | Four-way mirror | 25% | Three faults (drive or node). <br> If one rack fails, the remaining can sustain one fault of drive or node. |
 
-> [!NOTES]
+> [!NOTE]
 > - Rack Level Nested Mirror (RLNM) is required for all configurations.
 > - You can’t create 3-way mirror volumes. Only 2-way or 4-way mirror volumes are supported.
 
