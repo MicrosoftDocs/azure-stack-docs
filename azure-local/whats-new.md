@@ -5,7 +5,7 @@ ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 10/08/2025
+ms.date: 10/21/2025
 ---
 
 # What's new in Azure Local?
@@ -41,6 +41,8 @@ This release has the following features and improvements:
     
 - **Azure Local rack aware clustering (Preview)**: Azure Local now supports rack aware clustering. This Preview feature allows you to define fault domains based on physical racks in your datacenter, enhancing the resilience of your cluster against rack-level failures. For more information, see [Rack aware clustering](./index.yml).
 
+- **Upgrade**: Starting this release, solution upgrade from 11.2510 to 12.2510 is available to everyone and no longer requires you to opt-in.
+
 - **Azure Local VM updates**:
     - **Software Defined Networking (SDN)**: SDN enabled by Azure Arc on Azure Local is now generally available. This feature allows you to create and manage network security groups (NSGs) and network security rules for your Azure Local VMs, providing enhanced network security and segmentation capabilities.
     
@@ -52,19 +54,17 @@ This release has the following features and improvements:
         
         For more information, see [Trusted VM guest attestation](./index.yml).
 
+- **Azure Local deployment using local identity**: This feature has now moved from Limited Preview to Preview. There were many changes made to the documentation for deploying Azure Local using local identity with Azure Key Vault, including:
+    - Revised instructions for updating Azure Key Vault in Azure Local environments.
+    - Added a new section on tool compatibility in Azure Local environments configured with Azure Key Vault.
+    - Added a new FAQ section to address common questions.
+    For more information, see [Deploy Azure Local using local identity with Azure Key Vault](./deploy/deployment-local-identity-with-key-vault.md).
+
 - **VMware migration to Azure Local** - This feature is now generally available. You can migrate your VMware VMs to Azure Local using Azure Migrate. For more information, see [Migrate VMware VMs to Azure Local](./migrate/migration-azure-migrate-vmware-overview.md).
 
-- **OEM image support** - OEM images are now supported for Azure Local deployments for both proxy and without proxy scenarios. This allows Original Equipment Manufacturers (OEMs) to provide pre-configured images for easier deployment of Azure Local instances. For more information, see [Register with Arc gateway](./deploy/deployment-with-azure-arc-gateway.md) and [Register without Arc gateway](./deploy/deployment-without-azure-arc-gateway.md).
+- **OEM image support for registration** - OEM images are now supported for registration of Azure Local machines for both proxy and without proxy scenarios. For more information, see [Register with Arc gateway](./deploy/deployment-with-azure-arc-gateway.md) and [Register without Arc gateway](./deploy/deployment-without-azure-arc-gateway.md).
 
-- **Documentation updates**: The noteworthy changes include the following new articles or articles with major updates:
-
-    - **Azure Local deployment using local identity**: Deploy Azure Local using local identity with Azure Key Vault doc changes include:
-        - Revised instructions for updating Azure Key Vault in Azure Local environments.
-        - Added a new section on tool compatibility in Azure Local environments configured with Azure Key Vault.
-        - Added a new FAQ section to address common questions.
-
-        For more information, see [Deploy Azure Local using local identity with Azure Key Vault](./deploy/deployment-local-identity-with-key-vault.md).
-
+<!--- **Documentation updates**: The noteworthy changes include the following new articles or articles with major updates:-->
 
 ::: moniker-end
 
