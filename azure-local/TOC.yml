@@ -434,6 +434,8 @@ items:
         items:
         - name: Via Azure portal
           href: deploy/rack-aware-cluster-deploy-portal.md
+        - name: Via ARM template
+          href: deploy/rack-aware-cluster-deployment-via-template.md
     - name: Spread AKS nodes
       href: concepts/rack-aware-cluster-aks-nodes.md
 
