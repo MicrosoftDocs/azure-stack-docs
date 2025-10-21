@@ -1,6 +1,6 @@
 ---
-title: Use LLDP validator to assess deployment readiness for rack aware cluster (Preview).
-description: How to use the LLDP validator to assess if your environment is ready for deploying rack aware cluster (Preview).
+title: Use LLDP validator to assess deployment readiness for Azure Local rack aware cluster (Preview).
+description: How to use the LLDP validator to assess if your environment is ready for deploying Azure Local rack aware cluster (Preview).
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
