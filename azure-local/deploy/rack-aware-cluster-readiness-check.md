@@ -31,7 +31,7 @@ The LLDP validator performs the following checks:
 
 - **LLDP neighbor discovery.** Collects LLDP information from all network adapters and verifies switches are advertising their identity.
 
-- **Availability zone consistency (rack aware clusters).** Documents which switches each rack connects to and validates the following:
+- **Availability zone consistency (rack aware clusters).** Documents the switches each rack connects to and validates the following:
 
    - All nodes within a rack connect to the same switches.
    - Different racks connect to separate switches with no overlap.
@@ -131,11 +131,11 @@ Get-Content "C:\CloudDeployment\Logs\MergedLLDPData.json" | ConvertFrom-Json
 ```
 
 > [!IMPORTANT]
-> Even if the LLDP validator reports a **SUCCESS** status, always manually review the detailed `AzStackHciEnvironmentReport` located in `$env:TEMP\LLDPValidation` (or your specified OutputPath) to ensure switch connection validations have been completed correctly. This report contains comprehensive information about network topology, connection consistency, and any configuration information that requires attention.
+> Even if the LLDP validator reports a **SUCCESS** status, always manually review the detailed `AzStackHciEnvironmentReport` located in `$env:TEMP\LLDPValidation` (or your specified OutputPath) to ensure switch connection validations are correctly. This report contains comprehensive information about network topology, connection consistency, and any configuration information that requires attention.
 
 #### Sample JSON outputs
 
-If the test result shows remediation steps, it indicates that the test has failed. These remediation steps provide guidance to help you resolve the issue.
+If the test result shows remediation steps, it indicates that the test failed. These remediation steps provide guidance to help you resolve the issue.
 
 - Sample output of the **AzStackHci_LLDP_Test_Intra_Zone_Switch_Consistency** validation test:
 
