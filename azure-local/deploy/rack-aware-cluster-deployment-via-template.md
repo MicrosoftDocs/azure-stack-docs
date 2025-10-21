@@ -298,5 +298,5 @@ The following table describes parameters that are specific to a rack aware clust
 
 ## Next steps
 
-- After the deployment is complete, follow the steps in [Post-deployment tasks](./rack-aware-cluster-post-deployment.md).
+- After the deployment is complete, follow the steps in [Post-deployment tasks](../index.yml).
 - [Get support for Azure Local deployment issues](../manage/get-support-for-deployment-issues.md).
