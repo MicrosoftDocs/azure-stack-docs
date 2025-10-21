@@ -106,8 +106,14 @@ Each of the NNF devices will enter maintenance mode post triggering the upgrade.
 * Even numbered TORs (Parallel).
 * Compute rack management switches (Parallel).
 * CEs are to be upgraded one after the other in a serial manner. Stop the upgrade procedure if there are any failures corresponding to CE upgrade operation. After each CE upgrade, wait for a duration of five minutes to ensure that the recovery process is complete before proceeding to the next CE device upgrade.
-* Remaining aggregate rack switches are to be upgraded one after the other in a serial manner.
 * Upgrade Network Packet Broker (NPB) devices in a serial manner.
+* Remaining aggregate rack switches are to be upgraded one after the other in a serial manner.
+
+Similar to the pre-upgrade validation steps, it is recommended to validate the NNF device resource states post triggering the upgrade at the following checkpoints:
+* After odd numbered TORs complete, prior to even numbered TORs upgrade.
+* After CE1 upgrade, prior to CE2 upgrade.
+* After Agg switch1 upgrade, prior to Agg switch2 upgrade.
+
 
 #### Sample az CLI command
 
