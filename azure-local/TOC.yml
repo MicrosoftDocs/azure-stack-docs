@@ -438,6 +438,8 @@ items:
         items:
         - name: Via Azure portal
           href: deploy/rack-aware-cluster-deploy-portal.md
+        - name: Via ARM template
+          href: deploy/rack-aware-cluster-deployment-via-template.md
       - name: Complete post-deployment tasks
         href: deploy/rack-aware-cluster-post-deployment.md
     - name: Add and repair nodes
