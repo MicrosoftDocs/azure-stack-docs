@@ -298,4 +298,4 @@ The following table describes parameters that are specific to a rack aware clust
 
 ## Next steps
 
-<!--Add next steps-->
+- After deployment is complete, continue to [Complete post-deployment tasks for rack aware cluster](./rack-aware-cluster-post-deployment.md).
