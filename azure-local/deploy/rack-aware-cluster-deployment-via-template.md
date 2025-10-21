@@ -3,7 +3,7 @@ title: Azure Resource Manager template deployment for Azure Local rack aware clu
 description: Learn how to prepare and then deploy Azure Local rack aware cluster using the Azure Resource Manager template (Preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 10/16/2025
+ms.date: 10/21/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -82,7 +82,7 @@ For an example of a parameter JSON file that shows the format of various inputs,
 
 > [!IMPORTANT]
 > - Ensure that all parameters in the JSON file are filled out.
-> - Replace any placeholder values such as `[“”]`, with actual data. These placeholders indicate that the parameter expects an array structure.
+> - Replace any placeholder values such as `[“”]` with actual data. These placeholders indicate that the parameter expects an array structure.
 > - If required values are missing or incorrectly formatted, the validation will fail.
   
 1. On the **Basics** tab, select the required parameters from the dropdown list, or select **Edit parameters** to modify them manually.
@@ -96,15 +96,15 @@ For an example of a parameter JSON file that shows the format of various inputs,
         ```json
         "arcNodeResourceIds": {
         "value": [
-        "/subscriptions/SubID/resourcegroup/providers/Microsoft.HybridCompute/machines/node1",
-        "/subscriptions/SubID/resourcegroup/providers/Microsoft.HybridCompute/machines/node2",
-        "/subscriptions/SubID/resourcegroup/providers/Microsoft.HybridCompute/machines/node3",
-        "/subscriptions/SubID/resourcegroup/providers/Microsoft.HybridCompute/machines/node4"
+        "/subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroupName>/providers/Microsoft.HybridCompute/machines/node1",
+        "/subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroupName>/providers/Microsoft.HybridCompute/machines/node2",
+        "/subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroupName>/providers/Microsoft.HybridCompute/machines/node3",
+        "/subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroupName>/providers/Microsoft.HybridCompute/machines/node4"
         ]
         }
         ```
   
-    - **Cluster pattern and local Availability Zones.**
+    - **Cluster pattern and local availability zones.**
         Verify that the `clusterPattern` parameter is **RackAware**.
         Ensure that **node1** and **node2** are physically located in **Zone1** (same rack), and **node3** and **node4** are in **Zone2** (different rack).
   
@@ -127,7 +127,7 @@ For an example of a parameter JSON file that shows the format of various inputs,
         ```
   
     - **Cloud witness configuration.**
-      rack aware cluster requires cloud witness. Enter the name of the cloud witness, which is created during the deployment process.
+      Rack aware cluster requires cloud witness. Enter the name of the cloud witness, which is created during the deployment process.
       
         ```json
         "witnessType": {
@@ -139,7 +139,7 @@ For an example of a parameter JSON file that shows the format of various inputs,
         ```
   
     - **Network intent configuration.**
-      The storage network intent must be a dedicated network intent. vlanIDs 711 and 712 are defaults and can be customized for your environment.
+      The storage network intent must be a dedicated network intent. VLAN IDs 711 and 712 are defaults and can be customized for your environment.
  
         ```json
         "networkingType": {
@@ -237,7 +237,7 @@ Use the **Review + create** tab to review your deployment settings and accept th
   
 1. On the **Review + Create** tab, review the deployment summary and legal terms.
   
-1. Select **Create** to begin validation. This action creates the remaining prerequisite resources and validates the deployment. Validation takes about 10 minutes to complete.
+1. Select **Create** to begin validation. This action creates the remaining prerequisite resources and validates the deployment. Validation typically takes about 15 minutes to deploy one to two machines and longer for bigger deployments. Monitor the validation progress.
   
     :::image type="content" source="./media/rack-aware-cluster-deployment-via-template/review-and-create-tab.png" alt-text="Screenshot showing Create selected on Review + Create tab." lightbox="./media/rack-aware-cluster-deployment-via-template/review-and-create-tab.png":::
   
@@ -294,7 +294,7 @@ The following table describes parameters that are specific to a rack aware clust
 | Parameter | Description |
 |--|--|
 | clusterPattern | Supported cluster type for the Azure Local cluster: <br/>- **Standard**<br/>- **RackAware** |
-| localAvailabilityZones | Local Availability Zone information for the Azure Local rack aware cluster. |
+| localAvailabilityZones | Local availability zone information for the Azure Local rack aware cluster. |
 
 ## Next steps
 
