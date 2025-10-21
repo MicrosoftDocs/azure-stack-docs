@@ -549,7 +549,7 @@ This section is a reference for the deprecated resource fields and their replace
 
 Cluster Overview in the Azure portal reflects the new data fields.
 
-:::image type="content" source="media/byor/MI_ClusterLanding_Page.png" alt-text="Cluster Overview":::
+:::image type="content" source="media/byor/cluster-landing-page.png" alt-text="Image of the Azure portal Operator Nexus Cluster Overview page.":::
 
 1. The Overview Properties section contains read only views for `Log analytics`, `Secret archive` (Key Vault), and `Storage account`.
    1. Selecting `edit` next to each resource takes you to the resource specific page within Operator Nexus and allows for updating the resource & managed identity information.
@@ -577,7 +577,7 @@ analytics-output-settings:
 
 In the Azure portal, the LAW information can be viewed and modified on the `Log analytics` page within Cluster Settings.
 
-:::image type="content" source="media/byor/MI_law_details.png" alt-text="Image of Azure portal Operator Nexus user provided LAW settings.":::
+:::image type="content" source="media/byor/law-details.png" alt-text="Image of Azure portal Operator Nexus user provided LAW settings.":::
 
 ---
 
@@ -612,7 +612,7 @@ secret-archive-settings:
 
 In the Azure portal, the Key Vault information can be viewed and modified on the `Secret archive` page within Cluster Settings.
 
-:::image type="content" source="media/byor/MI_kv_details.png" alt-text="Image of Azure portal Operator Nexus user provided Key Vault settings.":::
+:::image type="content" source="media/byor/key-vault-details.png" alt-text="Image of Azure portal Operator Nexus user provided Key Vault settings.":::
 
 ---
 
@@ -639,6 +639,6 @@ command-output-settings:
 
 In the Azure portal, the Storage Account information can be viewed and modified on the `Storage account` page within Cluster Settings.
 
-:::image type="content" source="media/byor/MI_sa_details.png" alt-text="Image of Azure portal Operator Nexus user provided Storage Account settings.":::
+:::image type="content" source="media/byor/storage-account-details.png" alt-text="Image of Azure portal Operator Nexus user provided Storage Account settings.":::
 
 ---
