@@ -14,7 +14,8 @@ ms.service: azure-local
 
 This article describes how to manage network security groups (NSGs) on your Azure Local virtual machines (VMs) enabled by Azure Arc. Once you create network security groups on your Azure Local VMs, you can then list, show details, associate, dissociate, update, and delete these resources.
 
-*The only VMs that are in scope for using NSGs with this feature are Azure Local VMs. These are VMs that were deployed from Azure client interfaces (Azure CLI, Azure portal, Azure Resource Manager). Do not use an Azure Local VM in conjunction with an NSG that is managed and applied from on-premises tools.*
+> [!NOTE]
+> The only VMs that are in scope for using NSGs with this feature are Azure Local VMs. These are VMs that were deployed from Azure client interfaces (Azure CLI, Azure portal, Azure Resource Manager). Do not use an Azure Local VM in conjunction with an NSG that is managed and applied from on-premises tools.*
 
 ## Prerequisites
 

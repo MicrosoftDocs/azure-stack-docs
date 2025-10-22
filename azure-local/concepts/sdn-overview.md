@@ -26,6 +26,9 @@ You can manage SDN on Azure Local in two ways: with Arc or with on-premises tool
 
     With SDN enabled by Azure Arc, you create and apply network security groups (NSGs) to logical networks and Azure Local VM network interfaces (NICs).
 
+    > [!NOTE]
+    > AKS workloads don't support SDN enabled by Azure Arc.
+
 - **SDN managed by on-premises tools**: You can also manage SDN with on-premises tools like Windows Admin Center or SDN Express scripts. This approach is available for Windows Server and Azure Local 2311.2 or later. This method uses three main SDN components, and you choose which to deploy: Network Controller, Software Load Balancer (SLB), and Gateway. For more information, see [SDN managed by on-premises tools](../concepts/software-defined-networking-23h2.md).
 
 ## Important considerations
@@ -33,7 +36,7 @@ You can manage SDN on Azure Local in two ways: with Arc or with on-premises tool
 
 |Management method  |Consideration |
 |---------|---------|
-|SDN enabled by Azure Arc    | Enable SDN by running this PowerShell command `Add-EceFeature`. <br><br>If Network controller on your Azure Local was deployed using on-premises tools, you must not attempt to run this method. <br><br>The only VMs that are in scope for using NSGs with this feature are Azure Local VMs. These Azure Local VMs were deployed from Azure client interfaces (Azure CLI, Azure portal, Azure Resource Manager). <br><br>Do not use an Azure Local VM in conjunction with an NSG that is managed and applied from on-premises tools.        |
+|SDN enabled by Azure Arc    | Enable SDN using PowerShell. For information, see [Enable SDN integration on Azure Local using PowerShell](../deploy/enable-sdn-integration.md). <br><br>If Network controller on your Azure Local was deployed using on-premises tools, you must not attempt to run this method. <br><br>The only VMs that are in scope for using NSGs with this feature are Azure Local VMs. These Azure Local VMs were deployed from Azure client interfaces (Azure CLI, Azure portal, Azure Resource Manager). <br><br>Don't use an Azure Local VM in conjunction with an NSG that is managed and applied from on-premises tools.<br><br>**Note**: If you provision multiple static NICs on an Azure Local VM, all NICs use the default gateway. Remove the default gateway from the secondary NICs to prevent asymmetric networking, packet loss, and unpredictable networking.    |
 |SDN managed by on-premises tools    | Enable SDN using on-premises tools like Windows Admin Center or SDN Express scripts. <br><br>If Network Controller on your Azure Local was deployed using PowerShell command `Add-EceFeature`, you must not attempt to run SDN managed by on-premises tools. <br><br>The only VMs that are in scope for NSG management using this feature are unmanaged VMs that were deployed from local tools such as Windows Admin Center, Hyper-V Manager, System Center Virtual Machine Manager and Failover Cluster Manager. To manage NSGs on unmanaged VMs, you can only use Windows Admin Center, and SDN Express scripts.         |
 
 ## Comparison summary of SDN management
@@ -54,10 +57,8 @@ Here's a summary of unsupported scenarios for SDN enabled by Arc on Azure Local:
 |---------|---------|
 |SDN resources     | The following resources aren't supported:<br><br> - Virtual networks <br><br> - Software Load Balancers <br><br> - Gateways (VPN, L3, GRE)         |
 |Hybrid scenarios     | Deployment and management method must be consistent. <br><br> - If SDN is enabled by Arc, manage it only using Azure portal, Azure CLI, and Azure Resource Manager templates. <br><br> - Don't manage via on-premises tools such as Windows Admin Center and SDN Express scripts.         |
-|Multiple NICs     | Scenarios that require multiple NICs simultaneously aren't supported.        |
 |AKS workloads     | AKS workloads aren't supported.      |
-|Disaster recovery     | Disaster recovery support isn't available.      |
-|Multi-cast workloads     | Multi-cast workloads aren't supported.      |
+|Multi-cast workloads     | Multi-cast workloads aren’t supported as SDN exclusively facilitates unicast communication currently.   |
 
 ## Supported networking patterns for SDN enabled by Arc
 
@@ -73,7 +74,10 @@ Before you deploy Azure Local and enable SDN, review these supported networking 
 
 - A single virtual switch is available to create SDN resources.
 
-- The Azure Virtual Filtering extensions are turned on after the Network Controller is enabled.  
+- The Azure Virtual Filtering extensions are turned on after the Network Controller is enabled.
+
+> [!NOTE]
+> Grouping management and compute traffic in one intent with no storage intent is supported only on single node clusters.  
 
 ### Group management and compute traffic in one intent with a separate storage intent
 

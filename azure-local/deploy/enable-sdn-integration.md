@@ -45,7 +45,7 @@ Here's an architecture diagram of Network Controller in a 2-node Azure Local ins
 ## Considerations for SDN enabled by Arc
 
 > [!IMPORTANT]
-> - SDN enabled by Arc is a preview feature. Once you enable SDN, you can't roll back or disable.
+> - Once you enable SDN, you can't roll back or disable.
 > - If you are already running Network controller on your Azure Local cluster that was deployed using on-premises tools, you must not attempt to run this method.
 > - The only VMs that are in scope for using NSGs with this feature are Azure Local VMs. These are the VMs that were deployed from Azure client interfaces (Azure CLI, Azure portal, Azure Resource Manager). Do not use an Azure Local VM in conjunction with an NSG that is managed and applied from on-premises tools.
 
@@ -158,10 +158,10 @@ Follow these steps to enable SDN on your Azure Local instance:
     Add-EceFeature -Name NC -SDNPrefix <SDNPrefix>
     ```
 
-    Confirm when prompted to proceed.
+    Proceed to provide confirmation when acknowledgments are requested.
 
     > [!TIP]
-    > To skip the confirmation prompt, use the `-AcknowledgeMaintenanceWindow` parameter.
+    > To skip the confirmation prompt to acknowledge the maintenance window, use the `-AcknowledgeMaintenanceWindow` parameter, and then use the `-AcknowledgeDNSRecordCreation` parameter to acknowledge you have prepared your DNS environment if not using dynamic DNS.
 
     This step can take up to 20 minutes.
 
