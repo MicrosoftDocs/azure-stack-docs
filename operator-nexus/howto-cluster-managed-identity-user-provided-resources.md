@@ -549,12 +549,15 @@ This section is a reference for the deprecated resource fields and their replace
 
 Cluster Overview in the Azure portal reflects the new data fields.
 
-:::image type="content" source="media/byor/cluster-landing-page.png" alt-text="Image of the Azure portal Operator Nexus Cluster Overview page.":::
+:::image type="content" source="media/bring-your-own-resource/cluster-landing-page-inline.png" alt-text="Screenshot of the Azure portal Operator Nexus Cluster Overview page." lightbox="media/bring-your-own-resource/cluster-landing-page.png":::
 
 1. The Overview Properties section contains read only views for `Log analytics`, `Secret archive` (Key Vault), and `Storage account`.
    1. Selecting `edit` next to each resource takes you to the resource specific page within Operator Nexus and allows for updating the resource & managed identity information.
-   1. **NOTE:** The `Secret Archive` example reflects an instance where the Cluster was updated to populate `secretArchiveSettings` with the Key Vault URI and associated managed identity, but the legacy `secretArchive` fields remain populated. The Overview reflects both fields from a display perspective but the system only uses the `secretArchiveSettings` values.
+      values.
 1. The `Settings` navigation menu provides links to manage each of the resources.
+
+> [!NOTE]
+> The `Secret Archive` example reflects an instance where the Cluster was updated to populate `secretArchiveSettings` with the Key Vault URI and associated managed identity, but the legacy `secretArchive` fields remain populated. The Overview reflects both fields from a display perspective but the system only uses the `secretArchiveSettings`. If just `secretArchiveSettings` is populated, then only `Key Vault URI` is populated. `Key Vault` would be empty.
 
 ### Log Analytics Workspace
 
@@ -577,11 +580,11 @@ analytics-output-settings:
 
 In the Azure portal, the LAW information can be viewed and modified on the `Log analytics` page within Cluster Settings.
 
-:::image type="content" source="media/byor/law-details.png" alt-text="Image of Azure portal Operator Nexus user provided LAW settings.":::
+:::image type="content" source="media/bring-your-own-resource/law-details-inline.png" alt-text="Screenshot of Azure portal Operator Nexus user provided LAW settings." lightbox="media/bring-your-own-resource/law-details.png":::
 
 ---
 
-_**Notes:**_ The input format (LAW Azure Resource Manager (ARM) resource ID) is the same between the deprecated `analytics-workspace-id` field and the `analytics-workspace-id` within `analytics-output-settings`. The system updates the deprecated `analytics-workspace-id` field with the `analytics-output-settings:analytics-workspace-id` field. Updating the deprecated was done for backwards compatibility purposes during the transition period when moving from using the Service Principal to managed identity for authentication. It no longer has any use but is still present.
+The input format (LAW Azure Resource Manager (ARM) resource ID) is the same between the deprecated `analytics-workspace-id` field and the `analytics-workspace-id` within `analytics-output-settings`. The system updates the deprecated `analytics-workspace-id` field with the `analytics-output-settings:analytics-workspace-id` field. Updating the deprecated was done for backwards compatibility purposes during the transition period when moving from using the Service Principal to managed identity for authentication. It no longer has any use but is still present.
 
 ### Key Vault
 
@@ -612,11 +615,11 @@ secret-archive-settings:
 
 In the Azure portal, the Key Vault information can be viewed and modified on the `Secret archive` page within Cluster Settings.
 
-:::image type="content" source="media/byor/key-vault-details.png" alt-text="Image of Azure portal Operator Nexus user provided Key Vault settings.":::
+:::image type="content" source="media/bring-your-own-resource/key-vault-details-inline.png" alt-text="Screenshot of Azure portal Operator Nexus user provided Key Vault settings." lightbox="media/bring-your-own-resource/key-vault-details.png":::
 
 ---
 
-_**Notes:**_ `vault-uri` in `secret-archive-settings` is the URI for the Key Vault being specified versus the Azure Resource Manager (ARM) resource ID that is specified for `key-vault-id`. The same managed identity that was specified for the Cluster Manager can be used on the Cluster.
+`vault-uri` in `secret-archive-settings` is the URI for the Key Vault being specified versus the Azure Resource Manager (ARM) resource ID that is specified for `key-vault-id`. The same managed identity that was specified for the Cluster Manager can be used on the Cluster.
 
 ### Storage Account
 
@@ -639,6 +642,6 @@ command-output-settings:
 
 In the Azure portal, the Storage Account information can be viewed and modified on the `Storage account` page within Cluster Settings.
 
-:::image type="content" source="media/byor/storage-account-details.png" alt-text="Image of Azure portal Operator Nexus user provided Storage Account settings.":::
+:::image type="content" source="media/bring-your-own-resource/storage-account-details-inline.png" alt-text="Screenshot of Azure portal Operator Nexus user provided Storage Account settings." lightbox="media/bring-your-own-resource/storage-account-details.png":::
 
 ---
