@@ -47,7 +47,7 @@ The following table lists the fixed issues in this release:
 | Deployment <!--34566504--> | Improved calculation of maximum volume size for express storage provisioning. |  |
 | Deployment <!--34566509, 34742714--> | Adjusted allocation unit size for thin provisioned volumes.  |  |
 | Deployment <!--34437246--> | Fixed issue with importing modules for storage. |  |
-|  <!--34865085--> | Enabled Rack Level Nested Mirror for rack aware clusters.  |  |
+| Deployment <!--34865085--> | Enabled Rack Level Nested Mirror for rack aware clusters.  |  |
 | Deployment <!--35001389--> | Fixed issue with restarting performance history volume.   |  |
 | Deployment <!--35126494--> | Added mitigation for Cluster DNS resolution issues.  |  |
 | Upgrade <!--35145029--> | Refined the version check to get the correct latest updates. |  |
