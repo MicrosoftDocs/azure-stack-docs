@@ -76,12 +76,13 @@ Before you deploy Azure Local and enable SDN, review these supported networking 
 
 - The Azure Virtual Filtering extensions are turned on after the Network Controller is enabled.
 
-> [!NOTE]
-> Grouping management and compute traffic in one intent with no storage intent is supported only on single node clusters.  
 
 ### Group management and compute traffic in one intent with a separate storage intent
 
 - Use the *Group management and compute traffic* host networking pattern in single or multi node configuration. For details, see [Group management and compute traffic in one intent with a separate storage intent](../upgrade/install-enable-network-atc.md#example-intent-group-management-and-compute-in-one-intent-with-a-separate-intent-for-storage).
+
+    > [!NOTE]
+    > Grouping management and compute traffic in one intent with no storage intent is supported only on single node clusters. 
 
 - Use this pattern with switched or switchless storage connectivity for up to four-node Azure Local deployments. Use only storage switched connectivity for deployments with five or more nodes.
 
