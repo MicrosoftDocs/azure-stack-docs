@@ -7,7 +7,7 @@ ms.date: 10/20/2025
 ms.author: alkohli
 ---
 
-# Provision VMs in a local availability zone (Preview)
+# Provision Azure Local VMs in a local availability zone (Preview)
 
 > Applies to: Azure Local version 2510 and later
 
@@ -24,11 +24,11 @@ This article explains how to create Azure Local virtual machines (VMs) in a loca
 
 - Before you create an Azure Local VM for a rack aware cluster, make sure that all prerequisites listed in [Create Azure Local virtual machines enabled by Azure Arc](../manage/create-arc-virtual-machines.md) are met.
 
-## Create and place the VM
+## Set parameters
 
 1. Connect to a machine on your Azure Local. 
 
-1. Sign in, then run the following command:
+1. Sign in and run the following command:
 
     ```azurecli
     az login --use-device-code
@@ -114,4 +114,3 @@ Follow these steps to create a VM in a specific availability zone with strict pl
       "zone": "local-zone"  
     }, 
     ```
-## Next steps
