@@ -25,3 +25,6 @@ AzureMigration.ps1
 
 # validating Doc Index Validator
 .docIndex/
+
+# Ignore SpecStory work directories at any level
+.specstory/
