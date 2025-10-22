@@ -16,6 +16,8 @@ This article lists the various features and improvements that are available in A
 
 ::: moniker range="=azloc-2510"
 
+## Features and improvements in 2510
+
 There are two 2510 releases for October. Here are the details of each release:
 
 |Solution version  | OS version |
