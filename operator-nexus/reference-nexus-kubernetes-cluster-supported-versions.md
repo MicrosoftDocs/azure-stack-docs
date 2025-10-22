@@ -133,7 +133,7 @@ To assist with readability, the latest two version bundles are included in the c
 #### Older version bundle information
 
 > [!IMPORTANT]
-> The 1.27 LTS support is ending at the end of 2025. User should upgrade their Nexus Kubernetes clusters to at least a 1.30 LTS version bundle. If possible, upgrade clusters to the latest Kubernetes version. Being on the latest version ensures new features and security updates are available.
+> Version 1.27 LTS support is ending at the end of 2025. User should upgrade their Nexus Kubernetes clusters to at least a 1.30 LTS version bundle. If possible, upgrade clusters to the latest Kubernetes version. Being on the latest version ensures new features and security updates are available.
 
 <!-- prettier-ignore-start -->
 | Kubernetes Version | Release Identifier | OS Image | azure-arc-k8sagents | azure-arc-servers | calico | cloud-provider-kubevirt | coredns image | csi-nfs | csi-volume | etcd image | ipam-cni-plugin | kube-vip image | metallb | metrics-server | multus | node-local-dns | pause image | sriov-dp |
