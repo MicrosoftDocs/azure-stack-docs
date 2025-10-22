@@ -425,7 +425,7 @@ items:
   - name: Rack aware cluster
     items:
     - name: What's a rack aware cluster?
-      href: concepts/rack-aware-cluster-overview.md
+      href: concepts/rack-aware-cluster-overview.md   
     - name: Review requirements
       href: concepts/rack-aware-cluster-requirements.md
     - name: Deploy
@@ -444,6 +444,8 @@ items:
         href: deploy/rack-aware-cluster-post-deployment.md
     - name: Add and repair nodes
       href: concepts/rack-aware-cluster-add-server.md
+    - name: Provision and place VMs
+      href: concepts/rack-aware-cluster-provision-vm-local-availability-zone.md
     - name: Spread AKS nodes
       href: concepts/rack-aware-cluster-aks-nodes.md
 
