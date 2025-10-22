@@ -27,7 +27,7 @@ For the 2510 release of Azure Local, Microsoft released two security updates, ea
 
 | Solution version  | OS build  |
 |---------|---------|---------|
-| 11.2510.1002.87         | 25398.1910         |
+| 11.2510.1002.87         | 25398.1913         |
 | 12.2510.1002.88         | 26100.6899         |
 
 > [!IMPORTANT]
