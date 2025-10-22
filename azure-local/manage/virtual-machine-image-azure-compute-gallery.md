@@ -177,4 +177,4 @@ To create an Azure Local VM image:
 
 ## Next steps
 
-- [Create logical networks](./create-virtual-networks.md)
+- [Create logical networks](./create-logical-networks.md)

@@ -1,11 +1,11 @@
 ---
 title: Manage Azure Local gateway connections using Windows Admin Center
-description: Learn to manage your SDN gateway connections on Azure Local using Windows Admin Center.
+description: Learn how to create, delete, and update gateway connections using Windows Admin Center after you deploy Software Defined Networking (SDN) managed by on-premises tools.
 ms.topic: how-to
 author: alkohli
 ms.author: alkohli
 ms.reviewer: anpaul
-ms.date: 01/16/2025
+ms.date: 09/17/2025
 ms.custom: sfi-image-nochange
 ---
 
@@ -13,7 +13,7 @@ ms.custom: sfi-image-nochange
 
 > Applies to: Azure Local 2311.2 and later; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
-This article describes how to create, delete, and update gateway connections using Windows Admin Center after you deploy Software Defined Networking (SDN). Gateways are used for routing network traffic between a virtual network and another network, either local or remote. There are three types of gateway connections – Internet Protocol Security (IPsec), Generic Routing Encapsulation (GRE), and Layer 3 (L3).
+This article describes how to create, delete, and update gateway connections using Windows Admin Center after you deploy Software Defined Networking (SDN) managed by on-premises tools. Gateways are used for routing network traffic between a virtual network and another network, either local or remote. There are three types of gateway connections – Internet Protocol Security (IPsec), Generic Routing Encapsulation (GRE), and Layer 3 (L3).
 
 > [!NOTE]
 > You need to deploy SDN gateways before you can create a gateway connection. Additionally, you need to deploy Software Load Balancers (SLBs) before you can create an IPsec connection.

@@ -81,7 +81,7 @@ In this release, the Azure Local VM management workflow is as follows:
 1. You create VM resources such as:
     1. [Storage paths](./create-storage-path.md) for VM disks.
     1. VM images, starting with an image in [Azure Marketplace](./virtual-machine-image-azure-marketplace.md), in an [Azure Storage account](./virtual-machine-image-storage-account.md), or in a [local share](./virtual-machine-image-local-share.md). These images are then used with other VM resources to create VMs.
-    1. [Logical networks](./create-virtual-networks.md).  
+    1. [Logical networks](./create-logical-networks.md).  
     1. [VM network interfaces](./create-network-interfaces.md).
 1. You use the VM resources to [create VMs](./create-arc-virtual-machines.md).
 

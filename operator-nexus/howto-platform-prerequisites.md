@@ -688,6 +688,35 @@ For reference, version N is the latest available runtime version. N-1 and N-2 ar
 
 | Component                                                               | Version       |
 |-------------------------------------------------------------------------|---------------|
+| BIOS                                                                    | 1.18.1        |
+| Storage Array Controller (PERC H755)                                    | 52.30.0-6115  |
+| iDRAC                                                                   | 7.20.30.55    |
+| Non-Expander Storage Backplane Passive SEP Firmware (15G Non-Expander)  | 7.10          |
+| CPLD                                                                    | 1.1.1         |
+| Mellanox ConnectX-6 DX Adapter                                          | 22.41.10.00   |
+| NVIDIA ConnectX-6 Lx 2x 25G SFP28                                       | 26.41.10.00   |
+| Broadcom 5720 Quad Port 1GbE BASE-T Adapter                             | 23.21.6       |
+
+##### BOM 2.0.0
+
+| Component                                           | Version       |
+|-----------------------------------------------------|---------------|
+| BIOS                                                | 2.7.5         |
+| Storage Array Controller (PERC H755)                | 52.30.0-6115  |
+| iDRAC                                               | 7.20.30.55    |
+| SAS Expander Backplane Firmware (R760)              | 1.61          |
+| Non-Expander Storage Backplane Firmware (R660)      | 7.10          |
+| CPLD                                                | 1.2.6         |
+| Mellanox ConnectX-6 DX Adapter                      | 22.41.10.00   |
+| NVIDIA ConnectX-6 Lx 2x 25G SFP28                   | 26.41.10.00   |
+| Broadcom 5720 Quad Port 1GbE BASE-T Adapter         | 23.21.6       |
+
+#### Nexus Cluster runtime version N-1
+
+##### BOM 1.7.3
+
+| Component                                                               | Version       |
+|-------------------------------------------------------------------------|---------------|
 | BIOS                                                                    | 1.17.2        |
 | Storage Array Controller (PERC H755)                                    | 52.26.0-5179  |
 | iDRAC                                                                   | 7.20.30.00    |
@@ -711,7 +740,7 @@ For reference, version N is the latest available runtime version. N-1 and N-2 ar
 | NVIDIA ConnectX-6 Lx 2x 25G SFP28                   | 26.41.10.00   |
 | Broadcom 5720 Quad Port 1GbE BASE-T Adapter         | 23.21.6       |
 
-#### Nexus Cluster runtime version N-1
+#### Nexus Cluster runtime version N-2
 
 ##### BOM 1.7.3
 
@@ -719,12 +748,12 @@ For reference, version N is the latest available runtime version. N-1 and N-2 ar
 |-------------------------------------------------------------------------|---------------|
 | BIOS                                                                    | 1.15.2        |
 | Storage Array Controller (PERC H755)                                    | 52.26.0-5179  |
-| iDRAC                                                                   | 6.10.30.20    |
+| iDRAC                                                                   | 7.10.90.00    |
 | Non-Expander Storage Backplane Passive SEP Firmware (15G Non-Expander)  | 7.10          |
 | CPLD                                                                    | 1.1.1         |
-| Mellanox ConnectX-6 DX Adapter                                          | 22.35.10.12   |
+| Mellanox ConnectX-6 DX Adapter                                          | 22.41.10.00   |
 | NVIDIA ConnectX-6 Lx 2x 25G SFP28                                       | 26.41.10.00   |
-| Broadcom 5720 Quad Port 1GbE BASE-T Adapter                             | 22.00.6       |
+| Broadcom 5720 Quad Port 1GbE BASE-T Adapter                             | 22.91.5       |
 
 ##### BOM 2.0.0
 
@@ -732,39 +761,12 @@ For reference, version N is the latest available runtime version. N-1 and N-2 ar
 |-----------------------------------------------------|---------------|
 | BIOS                                                | 2.4.4         |
 | Storage Array Controller (PERC H755)                | 52.26.0-5179  |
-| iDRAC                                               | 7.10.30.00    |
+| iDRAC                                               | 7.10.90.00    |
 | SAS Expander Backplane Firmware (R760)              | 1.61          |
 | Non-Expander Storage Backplane Firmware (R660)      | 7.10          |
 | CPLD                                                | 1.2.6         |
 | Mellanox ConnectX-6 DX Adapter                      | 22.41.10.00   |
 | NVIDIA ConnectX-6 Lx 2x 25G SFP28                   | 26.41.10.00   |
-| Broadcom 5720 Quad Port 1GbE BASE-T Adapter         | 22.91.5       |
-
-#### Nexus Cluster runtime version N-2
-
-##### BOM 1.7.3
-
-| Component                                                               | Version       |
-|-------------------------------------------------------------------------|---------------|
-| BIOS                                                                    | 1.13.2        |
-| Storage Array Controller (PERC H755)                                    | 52.26.0-5179  |
-| iDRAC                                                                   | 6.10.30.20    |
-| Non-Expander Storage Backplane Passive SEP Firmware (15G Non-Expander)  | 7.10          |
-| CPLD                                                                    | 1.0.9         |
-| Mellanox ConnectX-6 DX Adapter                                          | 22.35.10.12   |
-| Broadcom 5720 Quad Port 1GbE BASE-T Adapter                             | 22.00.6       |
-
-##### BOM 2.0.0
-
-| Component                                           | Version       |
-|-----------------------------------------------------|---------------|
-| BIOS                                                | 2.2.7         |
-| Storage Array Controller (PERC H755)                | 52.26.0-5179  |
-| iDRAC                                               | 7.10.30.00    |
-| SAS Expander Backplane Firmware (R760)              | 1.61          |
-| Non-Expander Storage Backplane Firmware (R660)      | 7.10          |
-| CPLD                                                | 1.2.1         |
-| Mellanox ConnectX-6 DX Adapter                      | 22.39.10.02   |
 | Broadcom 5720 Quad Port 1GbE BASE-T Adapter         | 22.91.5       |
 
 

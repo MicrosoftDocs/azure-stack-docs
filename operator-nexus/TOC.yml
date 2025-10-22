@@ -102,6 +102,8 @@
           href: concepts-internal-network-bgp-metrics.md
     - name: Security
       href: concepts-security.md
+    - name: PKI implementation
+      href: concepts-pki-implementation.md
     - name: Control Plane Resiliency
       href: concepts-rack-resiliency.md
     - name: Access and Identity

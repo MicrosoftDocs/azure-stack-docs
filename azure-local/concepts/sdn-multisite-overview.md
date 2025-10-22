@@ -6,7 +6,7 @@ ms.topic: concept-article
 author: alkohli
 zone_pivot_groups: windows-os
 ms.service: azure-local
-ms.date: 12/17/2024
+ms.date: 09/05/2025
 ---
 
 # What is SDN Multisite?

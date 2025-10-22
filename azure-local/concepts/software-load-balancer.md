@@ -1,6 +1,6 @@
 ---
-title: Software Load Balancer (SLB) for SDN in Azure Local and Windows Server
-description: Use this article to learn about Software Load Balancer for Software Defined Networking in Azure Local and Windows Server.
+title: Software Load Balancer (SLB) for SDN managed by on-premises tools in Azure Local and Windows Server
+description: Use this article to learn about Software Load Balancer for Software Defined Networking managed by on-premises tools in Azure Local and Windows Server.
 author: AnirbanPaul
 ms.author: anpaul
 ms.topic: overview

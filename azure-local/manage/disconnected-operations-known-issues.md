@@ -3,43 +3,53 @@ title: Release notes for disconnected operations for Azure Local
 description: Read about the known issues and fixed issues for disconnected operations for Azure Local.
 author: haraldfianbakken
 ms.topic: conceptual
-ms.date: 08/06/2025
+ms.date: 10/16/2025
 ms.author: hafianba
 ms.reviewer: hafianba
 ai-usage: ai-assisted
 ---
 
-# Known issues for disconnected operations for Azure Local
+# What's new in disconnected operations for Azure Local
 
 ::: moniker range=">=azloc-2506"
 
-[!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
+This article highlights what's new (features and improvements) and critical known issues with workarounds for disconnected operations in Azure Local. These release notes update continuously, we add critical issues and workarounds as they are identified. Review this information before you deploy disconnected operations with Azure Local.
 
-This article lists critical known issues and their workarounds in disconnected operations for Azure Local.
+## Features and improvements in 2509
 
-These release notes update continuously, and we add critical issues that need a workaround as we find them. Before you deploy disconnected operations with Azure Local, review the information here.
+ - Added support for Azure Local 2508 ISO and its capabilities.
+ - Added support for System Center Operations Manager 2025, resolves a management pack failure in newer versions, and maintains support for System Center Operations Manager 2022.
+ - Improved security.
+ - Improved observability.
+ - Enabled Ldaps and custom port for ldap binding.
+ - Fixed Portal and UX issues.
+ - Improved OperationsModule logging and error messages and adds certificate validation and CSR generation.
+ - Added external certificate rotation in OperationsModule. For example, `Set-ApplianceExternalEndpointCertificates`.
+ - Enabled the use of an FQDN in the SAN of the management certificate.
+
+## Known issues for disconnected operations for Azure Local
+
+There are no known issues in this release.
 
 ## Known issues in the preview release
 
-###  Get-CertificateChainFromEndpoint method not found 
-There's a known issue when running `Get-CertificateChainFromEndpoint` in order to populate the OidcCertChainInfo object. 
+### Memory consumption when there's less than 128 GB of memory per node
 
-Mitigation: You need to make a modification in the OperationsModule. 
-Open the Azure.Local.DisconnectedOperations.psm1 file in notepad (or another text editor). Add the end of the file with the following
-```powershell
-Export-ModuleMember Get-CertificateChainFromEndpoint
-```
-Save the file and exit your editor. Restart your powershell session. Set the execution policy to unrestricted and import the modified OperationsModule module
-```powershell
-Set-ExeuctionPolicy Unrestricted
-Import-Module "$applianceConfigBasePath\OperationsModule\Azure.Local.DisconnectedOperations.psd1" -Force
-```
+The disconnected operations appliance uses 78 GB of memory. If a node has less than 128 GB of memory, complete these steps after the appliance deploys and before you deploy Azure Local instances.
 
+- Shut down the IRVM01VM on the seed node (first node).
+- Change the IRVM01 virtual machine memory setting to 64 GB.
+- Start the IRVM01 appliance.
+- Wait for convergence. Monitor `Get-ApplianceHealthState` until all services converge.
+- Deploy Azure Local instances.
 
-### Air-gapped deployment when local DNS forwards and resolves external domain requests
-There's a known issue when deploying an air-gapped environment—this happens if you’ve got a local DNS server that can resolve public endpoints like Microsoft.com.
+[!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
 
-Mitigation: Disable DNS forwarding for microsoft.com and azure.com zones. The appliance can't resolve these DNS endpoints and fails if it receives an IP address. 
+### Deployment failure
+
+In virtual environments, a deployment can time out and services don't converge to 100% (even after 8 hours).
+
+**Mitigation:** Attempt to redeploy the disconnected operations appliance a few times. If this is a physical environment and the problem persists, collect logs and open a support ticket.
 
 ### Azure Local deployment with Azure Keyvault
 
@@ -223,7 +233,7 @@ Azure CLI doesn't support providing `subscriptionOwnerId` for new subscriptions.
 
 #### Signout fails
 
-When you select Sign-out, the request doesn't work.
+When you select **Signout**, the request doesn't work.
 
 **Mitigation**: Close your browser, then go to the portal URL.
 

@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: conceptual
 ms.service: azure-local
-ms.date: 09/05/2025
+ms.date: 10/21/2025
 ---
 
 # Software Defined Networking enabled by Azure Arc on Azure Local (preview)
@@ -111,7 +111,7 @@ Before you deploy Azure Local and enable SDN, review these supported networking 
 The following network intent configurations are not supported for SDN enabled by Arc on Azure Local:
 
 - More than three intents on any deployment size.
-- Combined compute and storage intents without a management intent.
+- Combined compute and storage intents, regardless of whether a management intent is included or not.
 - Standalone compute intent on a single-node deployment.
 - Three-intent configurations on two-node switchless or three-node switchless deployments.
 

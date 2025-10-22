@@ -4,7 +4,7 @@ description: Learn about public key infrastructure (PKI) requirements for discon
 ms.topic: concept-article
 author: ronmiab
 ms.author: robess
-ms.date: 08/06/2025
+ms.date: 10/16/2025
 ai-usage: ai-assisted
 ---
 
@@ -73,7 +73,7 @@ The management endpoint requires two certificates, and you must put them in the 
 
 | Management endpoint certificate  | Required certificate subject  |
 |----------------------|------------------|
-| Server  | Management endpoint IP address: $ManagementIngressIpAddress. <br> If the management endpoint IP is **192.168.100.25**, then the server certificate's subject name must match exactly. For example, **Subject = 192.168.100.25**|
+| Server  | Management endpoint IP address: $ManagementIngressIpAddress. <br> If the management endpoint IP is **192.168.50.100**, then the server certificate's subject name must match exactly. For example, **Subject = 192.168.50.100**. You can also use an FQDN as an SN as long as it resolves to the management IP.| 
 | Client  | Use a certificate subject that helps you distinguish it from others. Any string is acceptable. <br> For example, **Subject = ManagementEndpointClientAuth**.  |
 
 ## Create certificates to secure endpoints
@@ -289,12 +289,33 @@ _continue_ = "DNS=$subject"
 
 Copy the management certificates (*.pfx) to the directory structure represented in ManagementEndpointCerts.
 
-## Export Root CA certificate
+## Export Root CA certificate 
 
-You need the root certificate public key for deployment. The following example shows how to export your root certificate public key:
+You need the root certificate public key for deployment. The Root certificate needs to be exported with base64 encoding. 
 
-```azurecli
-certutil -ca.cert C:\AzureLocalDisconnectedOperations\applianceRoot.cer
+The following example shows how to export your root certificate public key:
+
+```powershell
+$applianceRootcert = "C:\AzureLocalDisconnectedOperations\applianceRoot.cer"
+$caName = 'corp/myca'
+
+# Option 1) Get the Root CA certificate by its name:
+$RootCACert = Get-ChildItem -Path Cert:\LocalMachine\Root | Where-Object { $_.Subject -like "*$($caname)*" } | Select-Object -First 1
+
+# # Option 2) Get the Root CA certificate by its thumbprint:
+$RootCACert = Get-ChildItem -Path Cert:\LocalMachine\Root | Where-Object { $_.Thumbprint -eq "12345678ABCDEFGH607857694DF5E45B68851868" } | Select-Object -First 1
+
+# Check you have the correct Root CA certificate:
+$RootCACert
+
+# If it matches, export in CER (DER) format
+Export-Certificate -Cert $RootCACert -FilePath "C:\Temp\RootCA-DER.cer" -Type CERT
+
+# Finally, convert from CER (DER) to Base-64 CER (and store it in $applianceRootcert)
+certutil -encode "C:\Temp\RootCA-DER.cer" $applianceRootcert
+
+## Alternative method (If CA is setup and responds)
+# certutil -ca.cert $applianceRootCert
 ```
 
 For more information, see [Active Directory Certificate Services](/troubleshoot/windows-server/certificates-and-public-key-infrastructure-pki/export-root-certification-authority-certificate).
