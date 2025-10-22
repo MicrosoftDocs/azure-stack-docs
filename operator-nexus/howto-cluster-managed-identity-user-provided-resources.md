@@ -39,7 +39,7 @@ It's a best practice to first define all of the user provided resources (Storage
 The impacts of not configuring these resources for a new Cluster are as follows:
 
 - _Storage Account:_ Cluster creation fails as there's a check to ensure that `commandOutputSettings` exists on the Cluster input.
-- _LAW:_ Cluster deployment fails as the LAW (Log Analytics Workplace) is required to install software extensions during deployment.
+- _LAW:_ Cluster deployment fails as the LAW (Log Analytics Workspace) is required to install software extensions during deployment.
 - _Key Vault:_ Credential rotations fail as there's a check to ensure write access to the user provided Key Vault before performing credential rotation.
 
 Updating the Cluster can be done at any time. Changing the LAW settings causes a brief disruption in sending metrics to the LAW as the extensions that use the LAW need to be reinstalled.
@@ -553,11 +553,10 @@ Cluster Overview in the Azure portal reflects the new data fields.
 
 1. The Overview Properties section contains read only views for `Log analytics`, `Secret archive` (Key Vault), and `Storage account`.
    1. Selecting `edit` next to each resource takes you to the resource specific page within Operator Nexus and allows for updating the resource & managed identity information.
-      values.
 1. The `Settings` navigation menu provides links to manage each of the resources.
 
 > [!NOTE]
-> The `Secret Archive` example reflects an instance where the Cluster was updated to populate `secretArchiveSettings` with the Key Vault URI and associated managed identity, but the legacy `secretArchive` fields remain populated. The Overview reflects both fields from a display perspective but the system only uses the `secretArchiveSettings`. If just `secretArchiveSettings` is populated, then only `Key Vault URI` is populated. `Key Vault` would be empty.
+> The `Secret Archive` example reflects an instance where the Cluster was updated to populate `secretArchiveSettings` with the Key Vault URI and associated managed identity, but the legacy `secretArchive` fields remain populated. The Overview reflects both fields from a display perspective but the system only uses the `secretArchiveSettings`. If just `secretArchiveSettings` is populated, then only `Key Vault URI` is populated. The `Key Vault` field would be empty.
 
 ### Log Analytics Workspace
 
@@ -596,13 +595,13 @@ cluster-secret-archive:
   key-vault-id
 ```
 
-The Cluster Manager managed identity
+The Cluster Manager managed identity is used for authentication.
 
 _**Replacing Fields:**_
 
 # [Azure CLI](#tab/azurecli)
 
-The Key Vault information is provided and viewed via the `secret-archive-settings` data construct.
+The Key Vault information is provided and viewed via the `secret-archive-settings` data construct. The Cluster managed identity is used in this construct.
 
 ```azurecli
 secret-archive-settings:
