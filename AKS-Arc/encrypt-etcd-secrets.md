@@ -30,8 +30,6 @@ KMS v1 was [deprecated with Kubernetes v1.28](https://kubernetes.io/docs/tasks/a
 
 The KMS Provider v2 is automatically enabled for all new clusters that you create on AKS Arc: there's no action you need to take. The provider generates a new KEK immediately, and then automatically rotates it every 30 days, reducing the risk of key compromise. After each rotation, it uses this new KEK to encrypt the DEK for any subsequent secrets you create. Existing secrets in the cluster aren't automatically re-encrypted. For now, existing clusters continue to use the KMS v1 provider.
 
-Before you begin, you must deploy a new Kubernetes cluster on Azure Local 24H2. For more information, see [create Azure Local clusters](create-kubernetes-cluster.md).
-
 ## Before you begin
 
 Before you begin, ensure that you have the following prerequisites:
