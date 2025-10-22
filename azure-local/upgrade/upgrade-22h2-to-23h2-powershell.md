@@ -382,6 +382,6 @@ To install the new OS using PowerShell, follow these steps:
 
 [!INCLUDE [verify-update](../includes/azure-local-verify-update.md)]
 
-## Next step
+## Next steps
 
 - Learn how to [Perform the post-OS upgrade steps for Azure Local](./post-upgrade-steps.md).
