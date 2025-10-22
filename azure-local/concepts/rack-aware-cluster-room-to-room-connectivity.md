@@ -47,9 +47,9 @@ The following configuration example shows the room-to-room port-channel setup fo
 
 Configuration details:
 
-- **TOR1**: Hosts SMB1 traffic using VLAN 711 on port-channel 700
-- **TOR2**: Hosts SMB2 traffic using VLAN 712 on port-channel 701
-- **Room-to-room links**: TOR1 ↔ TOR3 (VLAN 711), TOR2 ↔ TOR4 (VLAN 712)
+- **TOR1**: Hosts SMB1 traffic using VLAN 711 on port-channel 700.
+- **TOR2**: Hosts SMB2 traffic using VLAN 712 on port-channel 701.
+- **Room-to-room links**: TOR1 ↔ TOR3 (VLAN 711), TOR2 ↔ TOR4 (VLAN 712).
 
 ```console
 interface port-channel700
@@ -111,8 +111,8 @@ interface Ethernet1/52
 Option B operates similarly to Option A in a disaggregated setup. RDMA storage traffic uses interfaces SMB1 and SMB2. The key differences are:
 
 - **TOR1 and TOR2**: Two port-channels (700, 701) connect across rooms, supporting VLANs SMB1, SMB2. VPC is used for MLAG service, with each port-channel assigned to a corresponding VPC group.
-- **TOR3**: A single Port-Channel 700 connects to TOR1 and TOR2, assigned to VPC identifier 700.
-- **TOR4**: A single Port-Channel 701 connects to TOR1 and TOR2, assigned to VPC identifier 701.
+- **TOR3**: A single port-channel 700 connects to TOR1 and TOR2, assigned to VPC identifier 700.
+- **TOR4**: A single port-channel 701 connects to TOR1 and TOR2, assigned to VPC identifier 701.
 
 In-room TOR-to-TOR MLAG links support VLANs 7, 8, 711, and 712, forming a full mesh:
 
@@ -197,8 +197,8 @@ vpc domain 2
 
 **role priority (1 vs 2):**
 
-- **TOR1 Primary**: `role priority 1` (lower value = higher priority)
-- **TOR2 Secondary**: `role priority 2` (higher value = lower priority)
+- **TOR1 primary**: `role priority 1` (lower value = higher priority)
+- **TOR2 secondary**: `role priority 2` (higher value = lower priority)
 - **Function**: Determines which switch becomes the vPC primary for control plane operations.
 - **Impact**: Primary switch handles initial configuration sync and certain forwarding decisions.
 
@@ -568,17 +568,17 @@ Each node requires **4 physical links** to achieve the required connectivity:
 
 **Room 1 nodes:**
 
-- **Eth1**: Connected to local TOR1 (management/compute)
-- **SMB1**: Connected to local TOR1 (storage)
-- **Eth2**: Connected to remote TOR2 (management/compute)
-- **SMB2**: Connected to remote TOR2 (storage)
+- **Eth1**: Connected to local TOR1 (management/compute).
+- **SMB1**: Connected to local TOR1 (storage).
+- **Eth2**: Connected to remote TOR2 (management/compute).
+- **SMB2**: Connected to remote TOR2 (storage).
 
 **Room 2 nodes:**
 
-- **Eth1**: Connected to remote TOR1 (management/compute)
-- **SMB1**: Connected to remote TOR1 (storage)
-- **Eth2**: Connected to local TOR2 (management/compute)
-- **SMB2**: Connected to local TOR2 (storage)
+- **Eth1**: Connected to remote TOR1 (management/compute).
+- **SMB1**: Connected to remote TOR1 (storage).
+- **Eth2**: Connected to local TOR2 (management/compute).
+- **SMB2**: Connected to local TOR2 (storage).
 
 This configuration ensures that storage traffic is distributed across both switches while maintaining redundant paths for management and compute workloads.
 
@@ -605,10 +605,10 @@ Using a 2×2 configuration with 25-GbE storage NICs:
 
 Each server in the cluster has:
 
-- A dual-port storage NIC with 2 interface ports
-- Port 1: Connected to VLAN 711
-- Port 2: Connected to VLAN 712
-- Each port operates at the specified link speed (10 GbE or 25 GbE)
+- A dual-port storage NIC with 2 interface ports.
+- Port 1: Connected to VLAN 711.
+- Port 2: Connected to VLAN 712.
+- Each port operates at the specified link speed (10 GbE or 25 GbE).
 
 ### Bandwidth requirements
 

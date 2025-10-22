@@ -10,7 +10,9 @@ ms.topic: concept-article
 
 # Azure Local rack aware cluster reference architecture (Preview)
 
-This article contains information about the network design and configuration of an Azure Local rack aware cluster. This configuration involves a single cluster where nodes are placed in different physical locations within a building. The primary intent is to support factory environments where hardware must be isolated in different rooms due to regulatory requirements, safety protocols, or operational constraints. This isolation provides fault domain separation while maintaining cluster functionality for critical industrial workloads.
+This article contains information about the network design and configuration of an Azure Local rack aware cluster. This configuration involves a single cluster where nodes are placed in different physical locations within a building.
+
+The primary intent is to support factory environments where hardware must be isolated in different rooms due to regulatory requirements, safety protocols, or operational constraints. This isolation provides fault domain separation while maintaining cluster functionality for critical industrial workloads.
 
 The rack aware cluster configuration can also support disaster recovery scenarios by placing different workloads in one or both locations. This configuration supports environments with or without software defined networking (SDN) or Layer 2 virtual networks.
 
@@ -114,13 +116,13 @@ Option B implements a disaggregated setup similar to Option A but with aggregate
 **Storage configuration:**
 
 - RDMA storage traffic uses SMB1 and SMB2 interfaces.
-- TOR1 and TOR2: Two Port-Channels (700, 701) provide cross-room connectivity.
+- TOR1 and TOR2: Two port-channels (700, 701) provide cross-room connectivity.
 - Virtual Port Channel (vPC) provides MLAG services with Port-Channel to vPC mapping.
 
 **Connectivity details:**
 
-- **TOR3**: Single Port-Channel 700 connects to TOR1/TOR2 (vPC ID 700)
-- **TOR4**: Single Port-Channel 701 connects to TOR1/TOR2 (vPC ID 701)
+- **TOR3**: Single port-channel 700 connects to TOR1/TOR2 (vPC ID 700).
+- **TOR4**: Single port-channel 701 connects to TOR1/TOR2 (vPC ID 701).
 
 **In-room MLAG links:**
 Full mesh connectivity supporting VLANs 7, 8, 711, and 712:
@@ -146,10 +148,10 @@ Option C simplifies the architecture with a single TOR device per room.
 
 **Key characteristics:**
 
-- Single TOR per availability zone
-- SMB1 and SMB2 hosted on the same TOR device
-- Room-to-room link can be redundant (bonded) carrying both storage VLANs
-- No TOR redundancy within zones
+- Single TOR per availability zone.
+- SMB1 and SMB2 are hosted on the same TOR device.
+- Room-to-room link can be redundant (bonded) carrying both storage VLANs.
+- No TOR redundancy within zones.
 
 
 **Uplink configuration:** Spine connectivity can be single or bundled links depending on the number of spine switches deployed.
@@ -164,10 +166,10 @@ Option D represents a distributed design where nodes connect to TOR devices in b
 
 **Node connectivity pattern (per node):**
 
-- **SET Team NIC 0**: Connects to local TOR1 (room 1)
-- **SET Team NIC 1**: Connects to remote TOR2 (room 2)
-- **SMB1 NIC 0**: Connects to TOR1 (room 1)
-- **SMB2 NIC 1**: Connects to TOR2 (room 2)
+- **SET team NIC 0**: Connects to local TOR1 (room 1).
+- **SET team NIC 1**: Connects to remote TOR2 (room 2).
+- **SMB1 NIC 0**: Connects to TOR1 (room 1).
+- **SMB2 NIC 1**: Connects to TOR2 (room 2).
 
 **Infrastructure requirements:**
 
