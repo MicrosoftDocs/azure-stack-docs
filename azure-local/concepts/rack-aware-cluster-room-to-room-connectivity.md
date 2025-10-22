@@ -25,7 +25,7 @@ Review the following key concepts:
 
 ## Option A
 
-:::image type="content" source="media/rack-aware-cluster-room-to-room-connectivity/room-to-room-link-option-a.png" alt-text="Room-to-room link option A diagram.":::
+:::image type="content" source="media/rack-aware-cluster-room-to-room-connectivity/room-to-room-link-option-a.png" alt-text="Screenshot of room-to-room link option A diagram.":::
 
 The diagram shows four Top-of-Rack (TOR) switches (TOR-1 to TOR-4). Each node is equipped with two physical network cards, totaling four interfaces.
 
@@ -106,7 +106,7 @@ interface Ethernet1/52
 
 ## Option B 
 
-:::image type="content" source="media/rack-aware-cluster-room-to-room-connectivity/room-to-room-link-option-b.png" alt-text="Room-to-room link option B diagram.":::
+:::image type="content" source="media/rack-aware-cluster-room-to-room-connectivity/room-to-room-link-option-b.png" alt-text="Screenshot of room-to-room link option B diagram.":::
 
 Option B operates similarly to Option A in a disaggregated setup. RDMA storage traffic uses interfaces SMB1 and SMB2. The key differences are:
 
@@ -435,7 +435,7 @@ interface port-channel701
 
 Option C represents the most simplified room-to-room design, consolidating both storage VLANs (711 and 712) onto a single TOR switch per availability zone. This approach reduces infrastructure complexity and cost while maintaining RDMA performance requirements for less critical environments.
 
-:::image type="content" source="media/rack-aware-cluster-room-to-room-connectivity/room-to-room-link-option-c.png" alt-text="Room-to-room link option C diagram.":::
+:::image type="content" source="media/rack-aware-cluster-room-to-room-connectivity/room-to-room-link-option-c.png" alt-text="Screenshot of room-to-room link option C diagram.":::
 
 
 **Option C** is a configuration where a single top-of-rack (TOR) switch is utilized to support an availability zone. This configuration is typically deployed when redundant top-of-rack switches aren't required due to cost constraints, simplified management requirements, or reduced complexity needs. In this design, the room-to-room link carries both Storage 1 and Storage 2 network traffic for RDMA communications.
@@ -549,7 +549,7 @@ interface Ethernet1/52
 
 ## Option D
 
-:::image type="content" source="media/rack-aware-cluster-room-to-room-connectivity/room-to-room-link-option-d.png" alt-text="Room-to-room link option D diagram.":::
+:::image type="content" source="media/rack-aware-cluster-room-to-room-connectivity/room-to-room-link-option-d.png" alt-text="Screenshot of room-to-room link option D diagram.":::
 
 Option D differs from the other configurations by implementing cross-room direct node connections. In this design, nodes directly connect to switches in different rooms rather than relying solely on inter-switch room-to-room links for storage traffic.
 

@@ -81,7 +81,7 @@ Node 1 RDMA NIC 1 → local TOR → room-to-room link → remote TOR → node 3 
 
 ### Option A: Dedicated storage links
 
-:::image type="content" source="media/rack-aware-cluster-reference-architecture/rack-aware-cluster-diagrams-option-a.png" alt-text="Network diagram showing rack aware cluster design option A.":::
+:::image type="content" source="media/rack-aware-cluster-reference-architecture/rack-aware-cluster-diagrams-option-a.png" alt-text="Network diagram showing rack aware cluster design option A." lightbox="media/article-folder-name/media/rack-aware-cluster-reference-architecture/rack-aware-cluster-diagrams-option-a.png":::
 
 This design features four TOR switches (TOR-1 through TOR-4) with the following characteristics:
 
@@ -133,10 +133,10 @@ Full mesh connectivity supporting VLANs 7, 8, 711, and 712:
 **Traffic patterns:**
 Room-to-room traffic follows two scenarios based on link hashing algorithms:
 
-1. Direct room-to-room connection (optimal path)
+- Direct room-to-room connection (optimal path)
    TOR1 ↔ TOR3
    TOR2 ↔ TOR4
-2. Room-to-room with MLAG traversal (potential latency increase)
+- Room-to-room with MLAG traversal (potential latency increase)
    TOR1 ↔ TOR4 ↔ TOR3
    TOR2 ↔ TOR3 ↔ TOR4
 
