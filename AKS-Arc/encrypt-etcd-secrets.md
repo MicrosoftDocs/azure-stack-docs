@@ -38,7 +38,7 @@ Before you begin, ensure that you have the following prerequisites:
 
 - To interact with Kubernetes clusters, you must install [**kubectl**](https://kubernetes.io/docs/tasks/tools/) and [**kubelogin**](https://azure.github.io/kubelogin/install.html).
 - To view or manage secrets, ensure you have the necessary entitlements to access them. For more information, see [Access and identity](concepts-security-access-identity.md#built-in-roles).
-- You must deploy a new Kubernetes cluster on Azure Local 24H2. For more information, see [the instructions for creating an Azure Local cluster](create-kubernetes-cluster.md).
+- You must deploy a new Kubernetes cluster on Azure Local 24H2. For more information, see [the instructions for creating an Azure Local cluster](aks-create-clusters-cli.md).
 
 ## Access your Microsoft Entra-enabled cluster
 
@@ -121,5 +121,5 @@ If you encounter any errors with the KMS provider, follow the procedure on the [
 ## Next steps
 
 - Help to protect your cluster in other ways by following the guidance in the [security book for AKS enabled by Azure Arc](/azure/azure-arc/kubernetes/conceptual-security-book?toc=/azure/aks/aksarc/toc.json&bc=/azure/aks/aksarc/breadcrumb/toc.json).
-- [Create Kubernetes clusters](aks-create-clusters-cli.md#deploy-the-application-and-load-balancer)
+- [Create Kubernetes clusters](aks-create-clusters-cli.md)
 - [Deploy a Linux application on a Kubernetes cluster](deploy-linux-application.md)
