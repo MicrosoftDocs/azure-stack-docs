@@ -265,21 +265,6 @@ Tooling support in Azure Local environments configured with Azure Key Vault for 
 
 This section provides answers to some frequently asked questions about using local identity with Key Vault.
 
-### What to do if the Azure Key Vault Backup Secrets extension is deleted?
-
-The Azure Key Vault Backup Secrets extension is an Azure-managed extension, meaning you don't need to install or uninstall it manually. However, if the extension is deleted or becomes unavailable, follow these mitigation steps:
-
-1. Do not attempt to reinstall the extension manually.
-
-    This extension requires specific configurations that are only applied by the Azure Local Resource Provider (*Microsoft.AzureStackHCI Resource Provider*). To restore the extension, trigger a synchronization from the cluster by running the following command:
-
-    <!--Add command here-->
-
-    This command instructs the Resource Provider to reconcile the extension and reinstall any missing components with the correct configuration.
-
-    > [!NOTE]
-    > Clusters automatically sync with the cloud every hour. If no manual action is taken, the issue will self-resolve within an hour. Whether you initiate the operation from the Azure portal or directly on the cluster node, the same mitigation steps apply.
-
 ### What to do if the Azure Key Vault Backup Secrets extension wasn't installed during deployment?
 
 If the extension wasn't installed during deployment, you can manually install it on Arc-enabled servers by following these steps:
