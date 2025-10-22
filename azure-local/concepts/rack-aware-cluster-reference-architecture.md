@@ -22,7 +22,7 @@ The rack aware cluster configuration can also support disaster recovery scenario
 
 The rack aware cluster setup is intended to support environments with up to 4+4 nodes, where the cluster is separated into two local availability zones with less than or equal to 1-ms latency between rooms. This low-latency requirement ensures that despite physical separation, the cluster maintains performance characteristics suitable for factory automation, real-time monitoring, and other time-sensitive industrial applications.
 
-- RDMA traffic doesn't traverse to the spine switch layer.
+- RDMA (Remote Direct Memory Access) traffic doesn't traverse to the spine switch layer.
 - RDMA traffic is dedicated to the Top of Rack (TOR) layer and can travel to neighboring TORs in different zones.
 - Storage VLANs (711, 712) are Layer 2 broadcast domains without IP configuration.
 - Room-to-room latency must be less than or equal to 1 ms for RDMA traffic.
@@ -53,7 +53,7 @@ The TOR switches operate as Layer 2 switches with the following connectivity pat
 - Room-to-room links must support storage intent traffic between TOR devices.
 - Management and compute network intents require Layer 2 extension to all TOR devices via the spine layer.
 - RDMA room-to-room link latency must be less than or equal to 1ms.
-- Minimum 10 GbE interfaces required for storage traffic with 25 GbE recommended for optimal performance.
+- Minimum 10-GbE interfaces required for storage traffic with 25 GbE recommended for optimal performance.
 - Jumbo frame support (MTU 9216) is required only for iWARP implementations when host nodes support jumbo frames.
 
 The following switch capabilities are required:
@@ -70,9 +70,9 @@ The following switch capabilities are required:
 
 **Design considerations:**
 
-- **Buffer allocation**: Ensure adequate buffer depth for PFC pause frame handling
+- **Buffer allocation**: Ensure adequate buffer depth for PFC pause frame handling.
 - **Port density**: Plan for four ports per node minimum (2x management/compute, 2x storage).
-- **Power and cooling**: Account for higher power consumption in DCB-enabled switches
+- **Power and cooling**: Account for higher power consumption in DCB-enabled switches.
 - **Firmware compatibility**: Refer to [Physical Network Requirements for Azure Local](physical-network-requirements.md) for supported network devices and appropriate firmware levels.
 - **RDMA protocol considerations**: RoCEv2 doesn't require jumbo frames; iWARP requires jumbo frames only when host nodes support them.
 
@@ -87,9 +87,9 @@ This design features four TOR switches (TOR-1 through TOR-4) with the following 
 
 **Node configuration:**
 
-- Two physical network cards per node (four interfaces total)
-- NIC 1: Switch Embedded Teaming (SET) for management (VLAN 7) and compute (VLAN 8) traffic
-- NIC 2: Dedicated storage interfaces with single VLAN tagging (711, 712)
+- Two physical network cards per node (four interfaces total).
+- NIC 1: Switch Embedded Teaming (SET) for management (VLAN 7) and compute (VLAN 8) traffic.
+- NIC 2: Dedicated storage interfaces with single VLAN tagging (711, 712).
 
 **Switch configuration:**
 
@@ -100,9 +100,9 @@ This design features four TOR switches (TOR-1 through TOR-4) with the following 
 
 **Room-to-room connectivity:**
 
-- Two independent bundled link sets support room-to-room traffic
-- VLAN 711: Dedicated link between TOR1 and TOR3
-- VLAN 712: Dedicated link between TOR2 and TOR4
+- Two independent bundled link sets support room-to-room traffic.
+- VLAN 711: Dedicated link between TOR1 and TOR3.
+- VLAN 712: Dedicated link between TOR2 and TOR4.
 
 > [!NOTE]
 > Storage intents are intentionally distributed across specific TOR devices following the disaggregated network design principle. Each node's storage interface supports only one storage intent per interface. This configuration has been validated using Multiple Spanning Tree Protocol (MSTP) with separate spanning tree groups for storage and nonstorage VLANs.
@@ -247,7 +247,7 @@ Option C utilizes a single TOR device supporting all Azure Local network intents
 
 In a typical rack aware cluster configuration, storage intents are isolated to different TOR devices within a room. This simplified configuration consolidates all intents onto a single device while maintaining logical separation through different interfaces and VLANs.
 
-The following is an example of a complete single-node configuration:
+See the following example of a complete single-node configuration:
 
 **Management/compute interfaces (SET team):**
 
@@ -316,11 +316,11 @@ Option D removes the requirement for room-to-room links supporting RDMA storage 
 
 **Key characteristics:**
 
-- **TOR1 (room 1)**: Services management, compute, and SMB1 traffic
-- **TOR2 (room 2)**: Services management, compute, and SMB2 traffic
-- **Cross-room connectivity**: Each node connects to both TORs for redundancy
+- **TOR1 (room 1)**: Services management, compute, and SMB1 traffic.
+- **TOR2 (room 2)**: Services management, compute, and SMB2 traffic.
+- **Cross-room connectivity**: Each node connects to both TORs for redundancy.
 
-The following is an example of a TOR1 configuration:
+See the following example of a TOR1 configuration:
 
 ```console
 interface Ethernet1/1

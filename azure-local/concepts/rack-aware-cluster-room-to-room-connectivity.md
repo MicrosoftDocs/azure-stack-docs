@@ -16,9 +16,9 @@ Azure Local rack aware clusters require specialized room-to-room connectivity to
 
 Review the following key concepts:
 
-- **Room-to-room links**: Physical network connections that span between separate rooms or availability zones, enabling RDMA storage traffic, management, and compute workloads to traverse between zones for high availability and disaster recovery scenarios.
+- **Room-to-room links**: Physical network connections that span between separate rooms or availability zones, enabling RDMA (Remote Direct Memory Access) storage traffic, management, and compute workloads to traverse between zones for high availability and disaster recovery scenarios.
 
-- **Storage intent traffic**: Dedicated RDMA (Remote Direct Memory Access) network traffic using SMB1 and SMB2 protocols for Storage Spaces Direct (S2D) operations. This traffic requires low-latency, lossless connectivity to maintain cluster performance and data consistency.
+- **Storage intent traffic**: Dedicated RDMA network traffic using SMB1 and SMB2 protocols for Storage Spaces Direct (S2D) operations. This traffic requires low-latency, lossless connectivity to maintain cluster performance and data consistency.
 
 - **Bandwidth requirements**: Room-to-room links must maintain a 1:1 bandwidth ratio between aggregate storage network capacity within a zone and inter-zone connectivity to prevent bottlenecks during storage operations and failover scenarios.
 
@@ -67,7 +67,7 @@ interface port-channel700
 
 ### Ethernet interface configuration
 
-This configuration is used to create a high-bandwidth, redundant link between two network rooms, ensuring that traffic can flow efficiently and reliably between them.
+This configuration is used to create a high-bandwidth redundant link between two network rooms, ensuring that traffic can flow efficiently and reliably between them.
 
 ```console
 interface Ethernet1/51
@@ -99,7 +99,7 @@ interface Ethernet1/52
 | `switchport trunk native vlan 99` | Specifies VLAN 99 as the native VLAN to black hole traffic. |
 | `switchport trunk allowed vlan 711` | Specifies that only VLAN 711 traffic is allowed on these trunk links. |
 | `priority-flow-control mode on` | Enables priority flow control on these interfaces as well. |
-| `mtu 9216` | Sets the MTU to 9216 bytes. |
+| `mtu 9216` | Sets the MTU to 9,216 bytes. |
 | `channel-group 700` | Adds these interfaces to the port channel group 700, effectively bundling them into a single logical link. |
 | `no shutdown` | Ensures that the interfaces are active and not administratively shut down. |
 
@@ -175,7 +175,7 @@ vpc domain 2
   auto-recovery
 ```
 
-**Ethernet1/47 interface configuration:**
+**interface Ethernet1/47 configuration:**
 
 - **no switchport**: Configures the interface as a Layer 3 routed interface.
 - **ip address 192.168.100.1/30**: Assigns point-to-point IP addressing.
@@ -441,7 +441,7 @@ Option C represents the most simplified room-to-room design, consolidating both 
 **Option C** is a configuration where a single top-of-rack (TOR) switch is utilized to support an availability zone. This configuration is typically deployed when redundant top-of-rack switches aren't required due to cost constraints, simplified management requirements, or reduced complexity needs. In this design, the room-to-room link carries both Storage 1 and Storage 2 network traffic for RDMA communications.
 
 > [!WARNING]
-> Loss of the single TOR switch due to maintenance or failure will result in a complete outage for all nodes in the affected zone.
+> Loss of the single TOR switch due to maintenance or failure results in a complete outage for all nodes in the affected zone.
 
 **Key design characteristics:**
 
@@ -612,7 +612,7 @@ Each server in the cluster has:
 
 ### Bandwidth requirements
 
-The following table shows the bandwith requirements.
+The following table shows the bandwidth requirements.
 
 | ARC nodes per zone | NIC Speed | Storage ports per node | Total bandwidth required |
 | ------------------ | --------- | ---------------------- | ------------------------ |
@@ -629,7 +629,7 @@ The following table shows the bandwith requirements.
 ### Implementation considerations
 
 - The room-to-room links must provide sufficient aggregate bandwidth to handle the full storage traffic from all nodes in a zone.
-- Link aggregation (bonding/teaming) may be required to achieve the calculated bandwidth requirements.
+- Link aggregation (bonding/teaming) might be required to achieve the calculated bandwidth requirements.
 
 ## Next steps
 
