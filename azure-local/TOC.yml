@@ -127,7 +127,10 @@ items:
     - name: Without Arc gateway
       href: deploy/deployment-without-azure-arc-gateway.md
     - name: With Arc gateway
-      href: deploy/deployment-with-azure-arc-gateway.md  
+      href: deploy/deployment-with-azure-arc-gateway.md
+    - name: Register systems with OEM image
+      href: deploy/deployment-arc-registration-preinstalled-os.md
+      hidden: true
   - name: 6. Choose a deployment method
     items:
     - name: 6A. Deploy via Azure portal
@@ -447,6 +450,8 @@ items:
       href: manage/configure-proxy-settings-23h2.md
     - name: Suspend and resume
       href: manage/suspend-resume-cluster-maintenance.md
+    - name: Unregister and reregister machines
+      href: manage/unregister-register-machine.md
     - name: Use dashboard to manage at-scale
       href: manage/manage-at-scale-dashboard.md
 

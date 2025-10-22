@@ -3,7 +3,7 @@ title: Register Azure Local with Azure Arc.
 description: Learn how to register Azure Local with Azure Arc with and without proxy setup. The proxy configuration can be done via an Arc script or via the Configurator app on Azure Local. 
 author: alkohli
 ms.topic: how-to
-ms.date: 10/09/2025
+ms.date: 10/14/2025
 ms.author: alkohli
 ms.service: azure-local
 zone_pivot_groups: register-arc-options
@@ -107,6 +107,8 @@ PS C:\Users\SetupUser> $ProxyBypassList = "localhost,127.0.0.1,*.contoso.com,mac
 
 ## Step 3: Run registration script
 
+> [!NOTE]
+> If your Azure Local system is preinstalled with an Original Equipment Manufacturer (OEM) image that's outdated or unsupported, an update is triggered automatically. The update typically takes 40-45 minutes to complete and includes a system reboot. After the reboot, rerun the cmdlet to continue. For more instructions about the update flow, see [Azure Arc registration workflow for systems with OEM images](./deployment-arc-registration-preinstalled-os.md).
 
 1. Run the Arc registration script. The script takes a few minutes to run.
 
@@ -161,7 +163,7 @@ After the script completes successfully on all the machines, verify that your ma
    :::image type="content" source="media/deployment-without-azure-arc-gateway/arc-servers-registered-1.png" alt-text="Screenshot of the Azure Local machines in the resource group after the successful registration." lightbox="./media/deployment-without-azure-arc-gateway/arc-servers-registered-1.png":::
 
 > [!NOTE]
-> Once an Azure Local machine is registered with Azure Arc, the only way to undo the registration is to install the operating system again on the machine.
+> If the Azure Local machine fails to register, you can deregister and then register your cluster again. For detailed instructions, see [Re-register Azure Local machines](../manage/unregister-register-machine.md).
 
 # [Via Configurator app (Preview)](#tab/app)
 
@@ -362,6 +364,8 @@ PS C:\Users\SetupUser> $Region = "eastus"
 
 ## Step 3: Run registration script
 
+> [!NOTE]
+> If your Azure Local system is preinstalled with an Original Equipment Manufacturer (OEM) image that's outdated or unsupported, an update is triggered automatically. The update typically takes 40-45 minutes to complete and includes a system reboot. After the reboot, rerun the cmdlet to continue. For more instructions about the update flow, see [Azure Arc registration workflow for systems with OEM images](./deployment-arc-registration-preinstalled-os.md).
 
 1. Run the Arc registration script. The script takes a few minutes to run.
 
