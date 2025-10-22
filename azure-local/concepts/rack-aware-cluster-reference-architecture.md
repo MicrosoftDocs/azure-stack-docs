@@ -109,7 +109,7 @@ This design features four TOR switches (TOR-1 through TOR-4) with the following 
 
 ### Option B: Aggregated storage links
 
-:::image type="content" source="media/rack-aware-cluster-reference-architecture/rack-aware-cluster-diagrams-option-b.png" alt-text="Network diagram showing rack aware cluster design option B.":::
+:::image type="content" source="media/rack-aware-cluster-reference-architecture/rack-aware-cluster-diagrams-option-b.png" alt-text="Network diagram showing rack aware cluster design option B." lightbox="media/rack-aware-cluster-reference-architecture/rack-aware-cluster-diagrams-option-b.png":::
 
 Option B implements a disaggregated setup similar to Option A but with aggregated storage connectivity:
 
@@ -142,7 +142,7 @@ Room-to-room traffic follows two scenarios based on link hashing algorithms:
 
 ### Option C: Single TOR per room
 
-:::image type="content" source="media/rack-aware-cluster-reference-architecture/rack-aware-cluster-diagrams-option-c.png" alt-text="Network diagram showing rack aware cluster design option C.":::
+:::image type="content" source="media/rack-aware-cluster-reference-architecture/rack-aware-cluster-diagrams-option-c.png" alt-text="Network diagram showing rack aware cluster design option C." lightbox="media/rack-aware-cluster-reference-architecture/rack-aware-cluster-diagrams-option-c.png":::
 
 Option C simplifies the architecture with a single TOR device per room.
 
@@ -160,7 +160,7 @@ While this option simplifies management and reduces complexity, it also creates 
 
 ### Option D: Cross-room node connectivity
 
-:::image type="content" source="media/rack-aware-cluster-reference-architecture/rack-aware-cluster-diagrams-option-D.png" alt-text="Network diagram showing rack aware cluster design option D.":::
+:::image type="content" source="media/rack-aware-cluster-reference-architecture/rack-aware-cluster-diagrams-option-D.png" alt-text="Network diagram showing rack aware cluster design option D." lightbox="media/rack-aware-cluster-reference-architecture/rack-aware-cluster-diagrams-option-D.png":::
 
 Option D represents a distributed design where nodes connect to TOR devices in both rooms.
 
@@ -190,7 +190,7 @@ For information on room-to-room link configurations, see [Room-to-room connectiv
 
 ### Option A and B
 
-:::image type="content" source="media/rack-aware-cluster-reference-architecture/rack-aware-cluster-in-room-option-a-and-b.png" alt-text="Network diagram showing option A and B.":::
+:::image type="content" source="media/rack-aware-cluster-reference-architecture/rack-aware-cluster-in-room-option-a-and-b.png" alt-text="Network diagram showing option A and B." lightbox="media/rack-aware-cluster-reference-architecture/rack-aware-cluster-in-room-option-a-and-b.png":::
 
 Options A and B have similar configurations, featuring two TOR devices to support a room environment.
 
@@ -241,7 +241,7 @@ interface ethernet 1/15
 
 ### Option C
 
-:::image type="content" source="media/rack-aware-cluster-reference-architecture/rack-aware-cluster-in-room-option-c.png" alt-text="Network diagram showing option C.":::
+:::image type="content" source="media/rack-aware-cluster-reference-architecture/rack-aware-cluster-in-room-option-c.png" alt-text="Network diagram showing option C." lightbox="media/rack-aware-cluster-reference-architecture/rack-aware-cluster-in-room-option-c.png":::
 
 Option C utilizes a single TOR device supporting all Azure Local network intents (management, compute, SMB1, SMB2).
 
@@ -310,7 +310,7 @@ interface ethernet 1/16
 
 ### Option D
 
-:::image type="content" source="media/rack-aware-cluster-reference-architecture/rack-aware-cluster-in-room-option-d.png" alt-text="Network diagram showing option D.":::
+:::image type="content" source="media/rack-aware-cluster-reference-architecture/rack-aware-cluster-in-room-option-d.png" alt-text="Network diagram showing option D." lightbox="media/rack-aware-cluster-reference-architecture/rack-aware-cluster-in-room-option-d.png":::
 
 Option D removes the requirement for room-to-room links supporting RDMA storage traffic. Instead, nodes directly cross-connect to TOR devices in both rooms. Each room maintains a single TOR, but that TOR has direct connections to all nodes in both rooms. This configuration requires additional fiber infrastructure but provides high availability through distributed connectivity.
 
