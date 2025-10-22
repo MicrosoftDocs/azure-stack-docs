@@ -8,7 +8,7 @@ ms.date: 09/05/2025
 ms.service: azure-local
 ---
 
-# Manage network security groups on Azure Local (preview)
+# Manage network security groups on Azure Local
 
 ::: moniker range=">=azloc-2506"
 
