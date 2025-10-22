@@ -428,6 +428,12 @@ items:
       href: concepts/rack-aware-cluster-overview.md
     - name: Review requirements
       href: concepts/rack-aware-cluster-requirements.md
+    - name: Review network requirements
+      items: 
+      - name: Reference architecture
+        href: concepts/rack-aware-cluster-reference-architecture.md
+      - name: Room-to-room connections
+        href: concepts/rack-aware-cluster-room-to-room-connectivity.md
     - name: Deploy
       items:    
       - name: Prepare to deploy
