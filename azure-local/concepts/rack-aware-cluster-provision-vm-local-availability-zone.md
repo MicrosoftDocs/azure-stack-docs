@@ -7,7 +7,7 @@ ms.date: 10/20/2025
 ms.author: alkohli
 ---
 
-# Provision Azure Local VMs in a local availability zone (Preview)
+# Provision Azure Local VMs in a local availability zone (preview)
 
 > Applies to: Azure Local version 2510 and later
 
