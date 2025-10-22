@@ -36,7 +36,7 @@ Before you begin, ensure that you have the following prerequisites:
 
 - To interact with Kubernetes clusters, you must install [**kubectl**](https://kubernetes.io/docs/tasks/tools/) and [**kubelogin**](https://azure.github.io/kubelogin/install.html).
 - To view or manage secrets, ensure you have the necessary entitlements to access them. For more information, see [Access and identity](concepts-security-access-identity.md#built-in-roles).
-- You must deploy a new Kubernetes cluster on Azure Local 24H2. For more information, see [the instructions for creating an Azure Local cluster](aks-create-clusters-cli.md).
+- You must deploy a new Kubernetes cluster on Azure Local 2510. For more information, see [the instructions for creating an Azure Local cluster](aks-create-clusters-cli.md).
 
 ## Access your Microsoft Entra-enabled cluster
 
