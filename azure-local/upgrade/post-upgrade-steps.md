@@ -3,7 +3,7 @@ title: Post-upgrade steps on Azure Local via PowerShell
 description: Learn how to perform the post-upgrade tasks for Azure Local using PowerShell.
 author: alkohli
 ms.topic: how-to
-ms.date: 09/02/2025
+ms.date: 09/18/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -21,12 +21,7 @@ Throughout this article, we refer to OS version 24H2 or 23H2 as the *new* versio
 
 Before you begin, make sure that:
 
-- You successfully upgraded the OS to version 23H2 on Azure Local as per the instructions in one of the following docs:
-
-   - [Upgrade to 23H2 OS via PowerShell](./upgrade-22h2-to-23h2-powershell.md).
-   - [Upgrade to 23H2 OS via Windows Admin Center](./upgrade-22h2-to-23h2-windows-admin-center.md).
-   - [Upgrade to 23H2 OS via other methods](./upgrade-22h2-to-23h2-other-methods.md).
-
+- You successfully upgraded the OS to version 23H2 on Azure Local as per the instructions in the [Upgrade to 23H2 OS via PowerShell](./upgrade-22h2-to-23h2-powershell.md) article.
 - Make sure that all the machines in your system are healthy and show as **Online**.
 - You have access to a client that can connect to your system. This client should be running PowerShell 5.0 or later.
 
