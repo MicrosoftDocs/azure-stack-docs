@@ -12,7 +12,7 @@ ms.reviewer: khareanushka
 
 ---
 
-# How to: Enable secrets encyption for Kubernetes secrets using KMS provider
+# How to: Enable secrets encryption for Kubernetes secrets using KMS provider
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
