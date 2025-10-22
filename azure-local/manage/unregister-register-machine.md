@@ -4,7 +4,7 @@ description: Learn how to unregister and re-register Azure Local machines withou
 ms.topic: how-to
 ms.author: alkohli
 author: alkohli
-ms.date: 10/11/2025
+ms.date: 10/22/2025
 ---
 
 
@@ -41,7 +41,7 @@ Before you begin, ensure you have the following:
 1. Unregister the machine. Run the following command:
 
    ```powershell
-   Start-ArcBootstrapReset -ArmAccessToken $ArmAccessToken -TenantId $TenantId -Wait
+   Invoke-ArzStackHCiArcReset -ArmAccessToken $ArmAccessToken -TenantId $TenantId 
    ```
 
    Here's a description of the parameters used in the command:
@@ -49,8 +49,7 @@ Before you begin, ensure you have the following:
    |Parameter  |Description  |
    |---------|---------|
    |`ArmAccessToken`     | [Optional] The Azure Resource Manager access token. If omitted, device code authentication is prompted.     |
-   |`Wait`     | [Optional] When specified, the cmdlet monitors and reports progress until completion. |
-   |`TenantId`     | [Required] When specified, the cmdlet monitors and reports progress until completion. |
+   |`TenantId`     | [Optional] When specified, the cmdlet monitors and reports progress until completion. |
 
    Here's a sample output of the command:    
 
