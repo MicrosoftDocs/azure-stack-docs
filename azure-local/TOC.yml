@@ -454,6 +454,11 @@ items:
     - name: Use dashboard to manage at-scale
       href: manage/manage-at-scale-dashboard.md
 
+  - name: Capacity
+    items:
+    - name: Add a node
+    href: manage/add-server.md
+
   - name: Azure services
     items:
     - name: Hybrid capabilities with Azure services
@@ -472,8 +477,6 @@ items:
 
   - name: Storage
     items:
-    - name: Add a node
-      href: manage/add-server.md
     - name: Replace failed drives
       href: /windows-server/storage/storage-spaces/replace-drives?toc=/azure/azure-local/toc.json&bc=/azure/azure-local/breadcrumb/toc.json
     - name: Health and operational states
