@@ -112,6 +112,15 @@ Once the new OS is installed, you need to upgrade the cluster functional level a
       Get-Cluster | Select-Object ClusterFunctionalLevel, ClusterUpgradeVersion
       ```
 
+    - Expected values for Azure Local 23H2 OS (build 25398.xxxx):
+      - ClusterFunctionalLevel = 12
+      - ClusterUpgradeVersion = 32772
+<br>
+    - Expected values for Azure Local 24H2 OS (build 26100.xxxx):
+      - ClusterFunctionalLevel = 12
+      - ClusterUpgradeVersion = 32774
+<br>
+
 1. Upgrade the storage pool.
 
    1. After upgrading the cluster functional level, use the following cmdlet to identify the `FriendlyName` of the storage pool representing your system.
