@@ -10,6 +10,8 @@ ms.date: 10/21/2025
 
 # Evaluate the deployment readiness for Azure Local rack aware cluster (Preview)
 
+> Applies to: Azure Local version 2510 and later
+
 This article describes how to use the Link Layer Discovery Protocol (LLDP) validator in a standalone mode to assess how ready your environment is for deploying rack aware cluster.
 
 [!INCLUDE [important](../includes/hci-preview.md)]
@@ -152,5 +154,5 @@ If the test result shows remediation steps, it indicates that the test failed. T
 ## Next steps
 
 - After validating your environment with the LLDP validator, proceed to deploy your Azure Local rack aware cluster by following the instructions in one of the following articles:
-    - [Deploy a rack aware cluster using Azure portal (Preview)](./rack-aware-cluster-deploy-portal.md).
-    - [Deploy a rack aware cluster using Azure Resource Manager templates (Preview)](../index.yml).
+    - [Deploy a rack aware cluster using Azure portal (Preview)](rack-aware-cluster-deploy-portal.md).
+    - [Deploy a rack aware cluster using Azure Resource Manager templates (Preview)](rack-aware-cluster-deployment-via-template.md).

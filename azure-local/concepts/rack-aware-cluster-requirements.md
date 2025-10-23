@@ -1,6 +1,6 @@
 ---
-title: Requirements and supported configurations for Rack Aware Clusters (Preview)
-description: Learn about requirements and supported configurations for Rack Aware Clusters (Preview).
+title: Requirements and supported configurations for rack aware clusters (Preview)
+description: Learn about requirements and supported configurations for rack aware clusters (Preview).
 author: alkohli
 ms.topic: how-to
 ms.date: 10/21/2025
@@ -9,9 +9,11 @@ ms.reviewer: alkohli
 ms.service: azure-local
 ---
 
-# Requirements and supported configurations for Rack Aware Clusters (Preview)
+# Requirements and supported configurations for rack aware clusters (Preview)
 
-This article provides the requirements and supported configurations for Rack Aware Clusters.
+> Applies to: Azure Local version 2510 and later
+
+This article provides the requirements and supported configurations for rack aware clusters.
 
 [!INCLUDE [important](../includes/hci-preview.md)]
 
@@ -19,10 +21,10 @@ This article provides the requirements and supported configurations for Rack Awa
 
 | Category | Details |
 |--|--|
-| System requirements | All Azure Local system requirements apply to Rack Aware Clusters. See [System requirements for Azure Local](../concepts/system-requirements-23h2.md). |
+| System requirements | All Azure Local system requirements apply to rack aware clusters. See [System requirements for Azure Local](../concepts/system-requirements-23h2.md). |
 | Drive requirements | Data drives must be all-flash. Either Nonvolatile Memory Express (NVMe) or solid-state drives (SSD) work. |
 | Availability zones | - Supports two local zones with maximum four machines per zone.<br>- The two zones must contain an equal number of machines.<br>- A machine can belong to only one zone. |
-| Deployment type | Only new deployments are supported. Conversion from standard clusters deployments to Rack Aware Clusters isn't supported. |
+| Deployment type | Only new deployments are supported. Conversion from standard clusters deployments to rack aware clusters isn't supported. |
 | Latency requirement | Round-trip latency between racks must be 1 millisecond or less. |
 | Bandwidth requirement | Dedicated storage network is required for synchronous replication between racks. For details on bandwidth requirements based on cluster size and network interface card (NIC) speed, see [Bandwidth requirements](#bandwidth-requirements). |
 
@@ -60,13 +62,13 @@ The following table summarizes the supported configurations with volume resilien
 
 ## Key considerations
 
-Keep in mind the following key considerations for Rack Aware Cluster:
+Keep in mind the following key considerations for rack aware cluster:
 
-- You can deploy Rack Aware Clusters through the [Azure portal](../index.yml) or using [ARM template](../index.yml).
+- You can deploy rack aware clusters through the [Azure portal](../deploy/rack-aware-cluster-deploy-portal.md) or using [ARM template](../deploy/rack-aware-cluster-deployment-via-template.md).
 - You can create Azure Local VMs and assign them to specific zones to balance workloads. Based on VM criticality, you can configure:
   - Strict placement. VM stays in its assigned zone and doesn't fail over.
   - Non-strict placement. VM can fail over to the other zone if needed.
-- You can scale the cluster by adding a pair of nodes to a Rack Aware Cluster. The 2+2 configuration can be expanded to 3+3, and 3+3 to 4+4. However, adding nodes to a 1+1 Rack Aware Cluster isn't supported in this release.
+- You can scale the cluster by adding a pair of nodes to a rack aware cluster. The 2+2 configuration can be expanded to 3+3, and 3+3 to 4+4. However, adding nodes to a 1+1 rack aware cluster isn't supported in this release.
 
 ## Recommendations
 
@@ -91,9 +93,9 @@ Keep in mind the following key considerations for Rack Aware Cluster:
 ## Unsupported configurations
 
 - Applying VM affinity rules using Windows Admin Center and PowerShell can result in unknown behavior.
-- Adding nodes to a 1+1 Rack Aware Cluster isn't supported in this release.
+- Adding nodes to a 1+1 rack aware cluster isn't supported in this release.
 
 ## Next steps
 
-- [Deploy Rack Aware Cluster via the Azure portal](../index.yml).
-- [Deploy Rack Aware Cluster via ARM template](../index.yml).
+- [Deploy rack aware cluster via the Azure portal](../deploy/rack-aware-cluster-deploy-portal.md).
+- [Deploy rack aware cluster via ARM template](../deploy/rack-aware-cluster-deployment-via-template.md).

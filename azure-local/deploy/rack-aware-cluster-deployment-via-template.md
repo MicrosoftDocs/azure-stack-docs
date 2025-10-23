@@ -11,6 +11,8 @@ ms.service: azure-local
 
 # Deploy Azure Local rack aware cluster using Azure Resource Manager deployment template (Preview)
 
+> Applies to: Azure Local version 2510 and later
+
 This article describes how to use an Azure Resource Manager (ARM) template in the Azure portal to deploy a rack aware cluster.
 
 [!INCLUDE [important](../includes/hci-preview.md)]

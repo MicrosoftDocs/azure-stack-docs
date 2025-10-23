@@ -10,6 +10,8 @@ ms.topic: concept-article
 
 # Azure Local rack aware cluster room-to-room connectivity (Preview)
 
+> Applies to: Azure Local version 2510 and later
+
 Azure Local rack aware clusters require specialized room-to-room connectivity to enable storage replication and failover across availability zones. This article outlines four distinct configuration options (A, B, C, and D) for implementing room-to-room links, each optimized for different resilience, cost, and complexity requirements.
 
 [!INCLUDE [important](../includes/hci-preview.md)]
