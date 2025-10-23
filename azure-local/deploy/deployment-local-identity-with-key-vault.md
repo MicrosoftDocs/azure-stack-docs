@@ -250,7 +250,7 @@ Tooling support in Azure Local environments configured with Azure Key Vault for 
 
 - **Azure Monitor.** Supported for monitoring the health and performance of hosts and virtual machines. Integration with Azure Monitor enables visibility into system health, alerts, and telemetry.
 
-- **Azure portal.** Supported for managing for Azure Local clusters.
+- **Azure portal.** Supported for managing Azure Local clusters.
 
 ### Unsupported or limited support tools
 
