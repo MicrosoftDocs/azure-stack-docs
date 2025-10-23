@@ -1,6 +1,6 @@
 ---
-title: How to create virtual machines with managed identities and authenticate with a managed identity
-description: Learn how to use system-assigned and user-assigned managed identities associated with Azure Operator Nexus virtual machines.
+title: How to Azure Arc enroll virtual machines using managed identities through the public relay
+description: Learn how to Azure Arc enroll Azure Operator Nexus virtual machines using managed identities through the public relay.
 ms.service: azure-operator-nexus
 ms.custom: azure-operator-nexus
 ms.topic: how-to
@@ -9,7 +9,7 @@ ms.author: omarrivera
 author: g0r1v3r4
 ---
 
-# How to create virtual machines with managed identities and authenticate with a managed identity
+# How to Azure Arc enroll virtual machines using managed identities through the public relay
 
 This guide explains how to create Azure Arc enroll an Azure Operator Nexus virtual machines (VM) with associated managed identities.
 
