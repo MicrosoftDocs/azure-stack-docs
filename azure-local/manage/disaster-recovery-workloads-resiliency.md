@@ -23,33 +23,33 @@ Arc-enabled SQL Server provides a range of proven disaster recovery technologies
 Key SQL Server disaster recovery features and best-practice recommendations for using them on Azure Local include:
 
 - **Always On Availability Groups (AG)**
-    - An Always On AG is a premier high-availability/disaster recovery feature that protects a set of user databases by replicating transactions from a primary to one or more secondary replicas.
-    - In an Azure Local environment, AGs can be used within a single cluster for high availability and across clusters or sites for disaster recovery. For automatic failover, deploy AGs on a Windows Server Failover Cluster (WSFC) and use synchronous-commit mode between replicas in proximity (low latency network). Use asynchronous-commit mode for replicas at distant replicas (higher latency) to maximize performance. [Distributed Availability Groups](/sql/database-engine/availability-groups/windows/distributed-availability-groups) can also span multiple clusters for advanced scenarios. Always On AGs on Azure Local support both automatic and manual failover when configured appropriately and are the recommended solution for protecting critical databases requiring minimal downtime.
-    - For more information, see [What is an Always On availability group](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server).
-    
+  - An Always On AG is a premier high-availability/disaster recovery feature that protects a set of user databases by replicating transactions from a primary to one or more secondary replicas.
+  - In an Azure Local environment, AGs can be used within a single cluster for high availability and across clusters or sites for disaster recovery. For automatic failover, deploy AGs on a Windows Server Failover Cluster (WSFC) and use synchronous-commit mode between replicas in proximity (low latency network). Use asynchronous-commit mode for replicas at distant replicas (higher latency) to maximize performance. [Distributed Availability Groups](/sql/database-engine/availability-groups/windows/distributed-availability-groups) can also span multiple clusters for advanced scenarios. Always On AGs on Azure Local support both automatic and manual failover when configured appropriately and are the recommended solution for protecting critical databases requiring minimal downtime.
+  - For more information, see [What is an Always On availability group](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server).
+
 - **Always on failover cluster instances (FCI)**:
-    - An Always On failover cluster instance is an instance-level high availability solution based on WSFC that provides failover of the entire SQL Server instance (including all databases) to another node in the cluster.
-    - An FCI on Azure Local uses the cluster’s shared storage (provided by the Azure Local S2D volumes) to ensure the SQL instance can restart on a second node with the same data.
-    - Best practice: Use FCIs to protect applications that require instance-level failover or in scenarios where shared storage is available.
-    - For more information, see [Always On failover cluster instances](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server).  
-    
+  - An Always On failover cluster instance is an instance-level high availability solution based on WSFC that provides failover of the entire SQL Server instance (including all databases) to another node in the VM guest-level cluster.
+  - An FCI on Azure Local uses the cluster’s shared storage (provided by the Azure Local S2D volumes) to ensure the SQL instance can restart on a second node with the same data.
+  - Best practice: Use FCIs to protect applications that require instance-level failover or in scenarios where shared storage is available.
+  - For more information, see [Always On failover cluster instances](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server).  
+
 - **Log shipping**:
-    - Log shipping periodically backs up transaction logs from a primary database and restores them to a secondary database. This establishes a warm standby server that can be brought online in a disaster. On Azure Local, log shipping is fully supported and can be a low-cost disaster recovery option for less time-sensitive databases.
-    - Best practice: ensure the log backup frequency aligns with your RPO. Also monitor the restore delay on the secondary to estimate failover time. For more information, see [About log shipping](/sql/database-engine/log-shipping/about-log-shipping-sql-server).
+  - Log shipping periodically backs up transaction logs from a primary database and restores them to a secondary database. This establishes a warm standby server that can be brought online in a disaster. On Azure Local, log shipping is fully supported and can be a low-cost disaster recovery option for less time-sensitive databases.
+  - Best practice: ensure the log backup frequency aligns with your RPO. Also monitor the restore delay on the secondary to estimate failover time. For more information, see [About log shipping](/sql/database-engine/log-shipping/about-log-shipping-sql-server).
 
 - **Database mirroring**:
-    - Mirroring maintains two copies of a database and can be configured synchronously or asynchronously. However, mirroring is deprecated in recent SQL versions and isn't recommended for new deployments. Instead, use Basic Availability Groups or full Always On AGs, which provide similar capabilities on Azure Local without the limitations of mirroring.
-    - For more information, see [Database Mirroring](/sql/database-engine/database-mirroring/database-mirroring-sql-server).
+  - Mirroring maintains two copies of a database and can be configured synchronously or asynchronously. However, mirroring is deprecated in recent SQL versions and isn't recommended for new deployments. Instead, use Basic Availability Groups or full Always On AGs, which provide similar capabilities on Azure Local without the limitations of mirroring.
+  - For more information, see [Database Mirroring](/sql/database-engine/database-mirroring/database-mirroring-sql-server).
 
 - **Backup and Restore**:
-    - Regular database backups including full, differential, and transaction log backups are the foundation of any disaster recovery strategy. SQL Server supports backing up to a disk or to a URL such as Azure Blob Storage. Customers can use [Microsoft Azure Backup Server](/azure/backup/backup-azure-sql-mabs) (MABS) or non-Microsoft partner tools to back up their whole VMs or applications to local disks and to cloud storage. SQL Server also offers [Managed Backup to Azure](/sql/relational-databases/backup-restore/sql-server-managed-backup-to-microsoft-azure), which can automatically schedule backups to cloud storage without MABS or any non-Microsoft backup solution.
-    - Best practice: Use whichever tool makes sense for your environment, take frequent backups to meet your RPO goals, and routinely test restoration.
-    - For more information, see [Back Up and Restore of SQL Server Databases](/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases)
+  - Regular database backups including full, differential, and transaction log backups are the foundation of any disaster recovery strategy. SQL Server supports backing up to a disk or to a URL such as Azure Blob Storage. Customers can use [Microsoft Azure Backup Server](/azure/backup/backup-azure-sql-mabs) (MABS) or non-Microsoft partner tools to back up their whole VMs or applications to local disks and to cloud storage. SQL Server also offers [Managed Backup to Azure](/sql/relational-databases/backup-restore/sql-server-managed-backup-to-microsoft-azure), which can automatically schedule backups to cloud storage without MABS or any non-Microsoft backup solution.
+  - Best practice: Use whichever tool makes sense for your environment, take frequent backups to meet your RPO goals, and routinely test restoration.
+  - For more information, see [Back Up and Restore of SQL Server Databases](/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases)
 
 - **Replication**:
-    - SQL Server replication (Transactional, Merge, or Snapshot) allows copying and distributing data from one database to others in near real-time. While typically used for distributing read-only copies or synchronizing data, replication can also serve as part of a disaster recovery strategy. On Azure Local, all forms of SQL Server replication are supported.
-    - Caveat: Replication doesn't automatically fail over entire databases and might require manual reconfiguration in a disaster.
-    - For more information, see [SQL Server Replication](/sql/relational-databases/replication/sql-server-replication).  
+  - SQL Server replication (Transactional, Merge, or Snapshot) allows copying and distributing data from one database to others in near real-time. While typically used for distributing read-only copies or synchronizing data, replication can also serve as part of a disaster recovery strategy. On Azure Local, all forms of SQL Server replication are supported.
+  - Caveat: Replication doesn't automatically fail over entire databases and might require manual reconfiguration in a disaster.
+  - For more information, see [SQL Server Replication](/sql/relational-databases/replication/sql-server-replication).  
 
 All the above capabilities can be mixed to achieve a desired outcome. For example, use an Always on AG for zero-data-loss high availability within your primary site, and simultaneously use asynchronous replication to a secondary Azure Local instance off-site for disaster recovery. The choice should be guided by your application’s RPO/RTO requirements and whether the solution provides automatic failover or requires a manual process.
 
@@ -60,20 +60,20 @@ Every guest enabled Azure Local VM is Arc enabled, therefore the SQL Server insi
 Key Azure Arc-enabled SQL Server features for disaster recovery include:
 
 - **Always On Availability Group Management**:
-    - View and manage Always-On AGs on Arc-enabled SQL Servers in the Azure portal. This includes seeing the list of availability groups, their replicas and synchronization state, and performing manual failover if needed. 
-    - For more information, see [Manage Always On availability groups](/sql/sql-server/azure-arc/manage-availability-group).
+  - View and manage Always-On AGs on Arc-enabled SQL Servers in the Azure portal. This includes seeing the list of availability groups, their replicas and synchronization state, and performing manual failover if needed.
+  - For more information, see [Manage Always On availability groups](/sql/sql-server/azure-arc/manage-availability-group).
 
 - **Failover Cluster Instance Visibility**:
-    - Azure Arc surfaces SQL Server FCIs in the portal, allowing you to identify and monitor FCI deployments across your hybrid environment.
-    - For more information, see [View Always On failover cluster instances in Azure Arc](/sql/sql-server/azure-arc/support-for-fci).
+  - Azure Arc surfaces SQL Server FCIs in the portal, allowing you to identify and monitor FCI deployments across your hybrid environment.
+  - For more information, see [View Always On failover cluster instances in Azure Arc](/sql/sql-server/azure-arc/support-for-fci).
 
 - **Automated Backup and Restore**:
-    - Configure automated backups via Azure Policy or the portal. The Arc SQL Server extension can schedule and execute backups according to a defined policy. You can restore them from the portal as well.
-    - For more information, see [Manage](/sql/sql-server/azure-arc/backup-local) and [Restore to a point-in-time](/sql/sql-server/azure-arc/point-in-time-restore).
+  - Configure automated backups via Azure Policy or the portal. The Arc SQL Server extension can schedule and execute backups according to a defined policy. You can restore them from the portal as well.
+  - For more information, see [Manage](/sql/sql-server/azure-arc/backup-local) and [Restore to a point-in-time](/sql/sql-server/azure-arc/point-in-time-restore).
 
 - **Backup to URL with Managed Identity**:
-    - Arc allows your on-premises SQL Server to use an Azure Managed Identity for authentication when backing up to Azure Blob Storage. This eliminates the need for SAS tokens or account keys.
-    - For more information, see [Back up to URL with managed identity (preview)](/sql/sql-server/azure-arc/backup-to-url).
+  - Arc allows your on-premises SQL Server to use an Azure Managed Identity for authentication when backing up to Azure Blob Storage. This eliminates the need for SAS tokens or account keys.
+  - For more information, see [Back up to URL with managed identity (preview)](/sql/sql-server/azure-arc/backup-to-url).
 
 ## Azure Virtual Desktop
 
@@ -107,13 +107,13 @@ The strategy largely follows the recommendations in the Hyper-V Replica section 
 
 - **Replicate session hosts**: For personal session hosts, ensure that each VM is replicated regularly to the secondary cluster and that the user-to-VM mapping is consistent with the primary cluster. It's recommended to keep the replicated VMs provisioned and assigned to the host pool before failover, but if not, they must be assigned upon failover.
 
-### Hyper-V Replica Failover
+### Hyper-V Replica failover
 
 At failover time, the first step is to confirm that the domain controller is operational and DNS settings are up to date before starting any hosts. Personal session hosts should have the latest replication turned on and checked to ensure that the profile is assigned appropriately.
 
 It's important to note that after failover using Hyper-V Replica, VMs on the secondary site will be unmanaged. End users are able to use Azure Virtual Desktop as they normally would, but the VMs won't be manageable from the portal the way they were before failover. In order to restore management capabilities, it's recommended to fail back to the primary site as soon as it can be restored.  
 
-### Hyper-V Replica Failback
+### Hyper-V Replica failback
 
 It's recommended to plan a maintenance window to fail VMs back to the primary site once it's healthy and functional. Reverse replication of VMs back to the primary site and verify that the hosts are accessible and DNS settings are as expected.  
 
@@ -123,7 +123,7 @@ Another approach to disaster resiliency for pooled host pools is to divide sessi
 
 To configure this approach:
 
-- Ensure that both clusters are configured in the same way and have matching AD and DNS settings. 
+- Ensure that both clusters are configured in the same way and have matching AD and DNS settings.
 - Deploy session hosts on both clusters, then [manually add them to host pools](/azure/virtual-desktop/add-session-hosts-host-pool) using the Azure Virtual Desktop portal, PowerShell, or Azure CLI.
 - Sessions will automatically load balance across clusters as needed. In this case, use a Scale-Out File Server to store FSLogix profiles to be accessible by both clusters.  
 
