@@ -10,7 +10,7 @@ ms.date: 04/08/2025
 
 # Compare Azure Local to Windows Server
 
-> Applies to: Azure Local 2311.2 and later; Windows Server 2022
+> Applies to: Azure Local 2311.2 and later; Windows Server 2025; Windows Server 2022
 
 This article explains key differences between Azure Local and Windows Server and provides guidance about when to use each. Both products are actively supported and maintained by Microsoft. Many organizations choose to deploy both as they are intended for different and complementary purposes.
 
@@ -51,7 +51,7 @@ Use Windows Server for:
 
 The following table shows the high-level product packaging for Azure Local and Windows Server.
 
-| Attribute    | Azure Local | Windows Server |
+| Attribute    | Azure Local 23H2 / 24H2 | Windows Server |
 | ---------------- | ------------------- | ----------------------- |
 | Product type     | Cloud service that includes an operating system and more | Operating system |
 | Legal            | Covered under your Microsoft customer agreement or online subscription agreement | Has its own end-user license agreement |
@@ -67,40 +67,44 @@ The following table shows the high-level product packaging for Azure Local and W
 
 The following table compares the workloads and benefits of Azure Local and Windows Server.
 
-| Attribute | Azure Local | Windows Server |
+| Attribute | Azure Local 23H2 / 24H2 | Windows Server |
 | ------------- | ------------------- | ----------------------- |
-| Azure Kubernetes Service (AKS)| Yes | Yes |
+| Azure Kubernetes Service (AKS)| Yes | Yes, but sunset <sup>1</sup> |
 | Azure Arc-Enabled PaaS Services | Yes | Yes |
-| Windows Server 2022 Azure Edition | Yes | No|
+| Windows Server 2022 Azure Edition | Yes | No |
+| Windows Server 2025 Azure Edition | Yes | No |
+| Windows Server Management Features via Arc (Nov. 2024) | Yes | Yes |
 | Windows Server subscription add-on (Dec. 2021)| Yes | No |
-| Free Extended Security Updates (ESUs) for Windows Server and SQL 2008/R2 and 2012/R2 | Yes | No <sup>1</sup>|
+| Free Extended Security Updates (ESUs) for Windows Server and SQL 2008/R2 and 2012/R2 | Yes | No <sup>2</sup> |
 
- <sup>1</sup> Requires purchasing an Extended Security Updates (ESU) license key and manually applying it to every VM.
+ <sup>1</sup> [AKS on Windows Server End of Support 27th March 2027](https://learn.microsoft.com/en-us/azure/aks/aksarc/aks-windows-server-retirement?tabs=ws).<br>
+ <sup>2</sup> Requires purchasing an Extended Security Updates (ESU) license key and manually applying it to every VM.
  
 ## Compare technical features
 
-The following table compares the technical features of Azure Local and Windows Server 2022.
+The following table compares the technical features of Azure Local and Windows Server 2025.
 
-| Attribute | Azure Local | Windows Server 2022 |
-| ------------- | ------------------- | ----------------------- |
-| Hyper-V | Yes | Yes |
-| Storage Spaces Direct | Yes | Yes |
-| Software-Defined Networking | Yes | Yes |
-| Adjustable storage repair speed | Yes | Yes|
-| Secured-core Server| Yes | Yes |
-| Stronger, faster network encryption | Yes | Yes |
-| 4-5x faster Storage Spaces repairs | Yes | Yes |
-| Stretch clustering for disaster recovery with Storage Spaces Direct<sup>1</sup> | Yes | No |
-| High availability for GPU workload | Yes | No |
-| Restart up to 10x faster with kernel-only restarts | Yes | No |
-| Simplified host networking with Network ATC | Yes | No |
-| Storage Spaces Direct on a single machine | Yes | No |
-| Storage Spaces Direct thin provisioning | Yes | No |
-| Dynamic processor compatibility mode| Yes | No |
-| Cluster-Aware OS feature update | Yes | No |
-| Integrated driver and firmware updates | Yes (Integrated Systems only) | No |
+| Attribute | Azure Local 23H2 / 24H2 | Windows Server 2025 | Windows Server 2022
+| ------------- | ------------------- | ----------------------- | ----------------------- |
+| Hyper-V | Yes | Yes | Yes |
+| Storage Spaces Direct | Yes | Yes | Yes |
+| Software-Defined Networking | Yes | Yes | Yes |
+| Adjustable storage repair speed | Yes | Yes | Yes |
+| Secured-core Server| Yes | Yes | Yes |
+| Stronger, faster network encryption | Yes | Yes | Yes |
+| 4-5x faster Storage Spaces repairs (256kb slab size) | Yes | Yes | Yes |
+| Stretch clustering for disaster recovery with Storage Spaces Direct | No <sup>1</sup> | Work in Progress | No |
+| High availability for GPU workload | Yes | Yes | No |
+| Restart up to 10x faster with kernel-only restarts | Yes <sup>2</sup> | No | No |
+| Simplified host networking with Network ATC | Yes | Yes | No |
+| Storage Spaces Direct on a single machine | Yes | Yes | No |
+| Storage Spaces Direct thin provisioning | Yes | Yes | No |
+| Dynamic processor compatibility mode| Yes | Yes | No |
+| Cluster-Aware OS feature update | Yes | Yes | No |
+| Integrated driver and firmware updates | Yes <sup>2</sup> | No | No
 
-<sup>1</sup> Functionality only available in Azure Local, version 22H2.
+<sup>1</sup> Functionality only available in Azure Local 22H2. These may be upgraded to supported versions with known feature limitations.<br>
+<sup>2</sup> With Azure Local Integrated Systems and Premier Systems Hardware only.
 
 For more information, see [What's New in Azure Local](../whats-new.md) and [Using Azure Local on a single machine](single-server-clusters.md).
 
@@ -108,33 +112,34 @@ For more information, see [What's New in Azure Local](../whats-new.md) and [Usin
 
 The following table compares the management options for Azure Local and Windows Server. Both products are designed for remote management and can be managed with many of the same tools.
 
-| Attribute | Azure Local | Windows Server |
-| ------------- | ------------------- | ----------------------- |
-| Windows Admin Center | Yes | Yes |
-| Microsoft System Center | Yes (sold separately) | Yes (sold separately) |
-| Third-party tools | Yes | Yes |
-| Azure Backup and Azure Site Recovery support | Yes | Yes |
-| Azure portal | Yes (natively) | Requires Azure Arc agent |
-| Azure portal > Extensions and Arc-enabled host | Yes | Manual <sup>1</sup>|
-| Azure portal > Windows Admin Center integration (preview) | Yes | Azure VMs only <sup>1</sup>|
-| Azure portal > Multi-cluster monitoring for Azure Local | Yes | No |
-| Azure portal > Azure Resource Manager integration for clusters | Yes | No |
-| Azure portal > Management of Azure Local VMs enabled by Arc | Yes | No |
-| Desktop experience | No | Yes |
+| Attribute | Azure Local 24H2 | Azure Local 23H2 | Windows Server 2025 |
+| ------------- | ------------------- | ----------------------- | ----------------------- |
+| Windows Admin Center | Partly | Partly | Yes |
+| Microsoft System Center | Yes <sup>1</sup> | Yes <sup>1</sup> | Yes <sup>1</sup> |
+| Third-party tools | Yes | Yes | Yes |
+| Azure Backup and Azure Site Recovery support | Yes | Yes | Yes |
+| Azure portal | Yes (natively) | Yes (natively) | Requires Azure Arc agent |
+| Azure portal > Extensions and Arc-enabled host | Yes | Yes | Manual <sup>1</sup>|
+| Azure portal > Windows Admin Center integration (preview) | Yes | Yes | Yes <sup>2</sup>|
+| Azure portal > Multi-cluster monitoring for Azure Local | Yes | Yes | No |
+| Azure portal > Azure Resource Manager integration for clusters | Yes | Yes | No |
+| Azure portal > Management of Azure Local VMs enabled by Arc | Yes | Yes | No |
+| OS Desktop experience | No | No | Yes |
 
-<sup>1</sup> Requires manually installing the Arc-git statusConnected Machine agent on every machine.
+<sup>1</sup> Microsoft System Center and System Center Virtual Machine Manager (SCVMM) are sold and licensed seperately. Please check which version of SCVMM supports which Azure Local solution version.
+<sup>2</sup> Requires manually installing the Arc Connected Machine agent on every machine, also known Azure Arc-enabled Servers.
 
 ## Compare product pricing
 
 The table below compares the product pricing for Azure Local and Windows Server. For details, see [Azure Local pricing](https://azure.microsoft.com/pricing/details/azure-stack/hci/).
 
-| Attribute | Azure Local | Windows Server |
+| Attribute | Azure Local 23H2 / 24H2 | Windows Server |
 | ------------- | ------------------- | ----------------------- |
 | Price type | Subscription service | Varies: most often a one-time license |
 | Price structure | Per core, per month | Varies: usually per core |
 | Price | Per core, per month | See [Pricing and licensing for Windows Server 2022](https://www.microsoft.com/windows-server/pricing) |
 | Evaluation/trial period | 60-day free trial once registered | 180-day evaluation copy |
-| Channels | Enterprise agreement, cloud service provider, or direct | Enterprise agreement/volume licensing, OEM, services provider license agreement (SPLA) |
+| Channels | Enterprise agreement, cloud service provider, Azure Local OEM, or direct | Enterprise agreement/volume licensing, OEM, services provider license agreement (SPLA) |
 
 ## Next steps
 
