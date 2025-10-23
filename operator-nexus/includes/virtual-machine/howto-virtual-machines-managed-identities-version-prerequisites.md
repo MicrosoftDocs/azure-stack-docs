@@ -10,7 +10,7 @@ ms.service: azure-operator-nexus
 
 - Ensure that your Operator Nexus Cluster is running management bundle `2510.1` version and runtime version `4.7.0` or later.
   The feature support is available in API version `2025-07-01-preview`, but recommend GA `2025-09-01` version or later.
-- It is required to have the [Azure core CLI] installed with version `2.75` or later.
+- The [Azure core CLI] must be installed with version `2.75` or later.
   You can find supported versions in the [Az core CLI release history].
 - Make sure the [`networkcloud` az CLI extension] is installed with a version that supports the required API version.
   You can find supported versions in the [`networkcloud` extension release history] on GitHub.

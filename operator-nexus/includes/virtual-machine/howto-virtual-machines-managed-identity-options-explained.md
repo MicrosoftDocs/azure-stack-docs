@@ -8,7 +8,7 @@ ms.service: azure-operator-nexus
 
 ## Choose a managed identity option
 
-You can use either a system-assigned or a user-assigned managed identity to associate with the VM.
+You can use either a system-assigned or a user-assigned managed identity to associate with the virtual machine (VM).
 Choose the option that best fits your requirements.
 
 For more information about creating and managing managed identities and role assignments, see the relevant documentation:

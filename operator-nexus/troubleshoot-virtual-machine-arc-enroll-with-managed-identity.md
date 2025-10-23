@@ -163,7 +163,6 @@ Possible solutions:
 
 1. Verify the VM was created with an associated managed identity.
    If the VM wasn't created with an associated managed identity, you must recreate the VM with one to use managed identity authentication.
-   For more information, see [Nexus VM with associated managed identities at creation time](./howto-arc-enroll-virtual-machine-using-managed-identities.md#vm-with-associated-managed-identities-at-creation-time).
 
 2. Verify the correct managed identity is assigned to the VM.
    For more information, see the [Verify Managed Identity permissions](#verify-managed-identity-permissions) section.
@@ -192,15 +191,12 @@ Possible causes:
 Possible solutions:
 
 1. Verify managed identity has appropriate permissions.
-   For more information, see the [Assign roles to the managed identity] section.
 
 2. Test network connectivity to Azure endpoints.
    For more information, see the [VM network connectivity sanity tests](#vm-network-connectivity-sanity-tests) section.
 
 3. Check [CSN egress endpoints configurations](#cloud-services-network-csn-configurations).
    Ensure that the CSN has the required egress endpoints configured.
-
-[Assign roles to the managed identity]: ./howto-arc-enroll-virtual-machine-using-managed-identities.md#assign-roles-to-the-managed-identity
 
 ## Error: Failed to connect to Azure Arc
 
@@ -249,13 +245,12 @@ Possible solutions:
 
    ```bash
    sudo azcmagent connect \
-       --resource-group "$RESOURCE_GROUP" \
-       --tenant-id "$TENANT_ID" \
-       --location "$LOCATION" \
-       --subscription-id "$SUBSCRIPTION_ID" \
-       --access-token "$ACCESS_TOKEN" \
-       --verbose \
-       --debug
+       --resource-group "${RESOURCE_GROUP}" \
+       --tenant-id "${TENANT_ID}" \
+       --location "${LOCATION}" \
+       --subscription-id "${SUBSCRIPTION_ID}" \
+       --access-token "${ACCESS_TOKEN}" \
+       --verbose
    ```
 
 Follow the steps provided by the Azure Arc agent to troubleshoot further.
@@ -314,7 +309,7 @@ Use `az rest` to retrieve a token with a user-assigned identity:
 
 > [!IMPORTANT]
 > Set the `msi_res_id` query parameter to the resource ID of the user-assigned managed identity.
-> URL encode the value before using it. The example assumes the value is already encoded.
+> The example assumes the value is already URL encoded.
 
 ```azurecli
 az rest --method get \
