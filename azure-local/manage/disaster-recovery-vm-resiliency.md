@@ -21,7 +21,7 @@ To mitigate the risk of service disruptions or data loss that cannot be mitigate
 
 - Data replication technologies enable synchronized copies of virtual machine data to be maintained across multiple Azure Local instances and/or Azure regions, which can minimize downtime and enable rapid workload failover in the event of hardware or system failure. Together, these approaches provide a robust safety net designed to safeguard data and sustain operational and business continuity during unexpected disruptions.
 
-Review [Azure Well-Architected Framework (WAF) - Reliability design principles](/azure/well-architected/reliability/principles) for more information and recommendations to enhance the resiliency of your workload or applications.
+Review [Azure Well-Architected Framework (WAF) - Reliability design principles](/azure/well-architected/reliability/principles) for more information and recommendations to enhance the resiliency of your workload and applications.
 
 ## Storage path (volumes) considerations
 
