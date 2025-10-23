@@ -333,10 +333,6 @@
           href: howto-virtual-machine-placement-hints.md
         - name: Gather VM Console Data
           href: howto-gather-vm-console-data.md
-        # Purposefully hiding the article due to the deferred feature release of the assign relay action
-        # The article can be restored to visible once the assign relay feature has been validated
-        # - name: How to Azure Arc enroll Azure Operator Nexus virtual machines using managed identities
-        #   href: howto-arc-enroll-virtual-machine-using-managed-identities.md
     - name: Observability
       expanded: false
       items:
@@ -471,8 +467,6 @@
               href: troubleshoot-kubernetes-cluster-stuck-workloads-due-to-power-failure.md
         - name: Troubleshoot a Kubernetes Cluster Node in NotReady,Scheduling Disabled after Runtime Upgrade
           href: troubleshoot-kubernetes-cluster-node-cordoned.md
-        - name: Troubleshoot issues with Azure Arc enrollment for virtual machines with managed identities
-          href: troubleshoot-virtual-machine-arc-enroll-with-managed-identity.md
 - name: FAQ
   href: azure-operator-nexus-faq.md
 - name: Reference
