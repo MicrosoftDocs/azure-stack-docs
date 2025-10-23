@@ -78,7 +78,7 @@ It's necessary to SSH into the VM to access the logs.
 Once you authenticate using the managed identity and retrieve the access token, use the `azcmagent connect` command to Azure Arc enroll the VM.
 The `azcmagent connect` command requires the access token to authenticate and authorize the enrollment process.
 
-[!INCLUDE [virtual-machine-howto-virtual-machines-warning-azcmagent-blocks-access-token](./includes/virtual-machine/howto-virtual-machines-warning-azcmagent-blocks-access-token.md)]
+[!INCLUDE [virtual-machine-howto-virtual-machines-important-blocked-access-token-retrieval](./includes/virtual-machine/howto-virtual-machines-important-blocked-access-token-retrieval.md)]
 
 ### Install the `azcmagent` CLI tool
 

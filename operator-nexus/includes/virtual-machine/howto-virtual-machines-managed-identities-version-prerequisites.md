@@ -17,7 +17,7 @@ ms.service: azure-operator-nexus
   The minimum required version begins in the preview `4.0.0b1` version, but recommend `4.0.0` or later.
 - This guide assumes you have a working Operator Nexus Cluster and the necessary permissions to create and manage virtual machines and managed identities in your Azure subscription.
 
-[Azure core CLI]: https://learn.microsoft.com/cli/azure/install-azure-cli
-[Az core CLI release history]: https://learn.microsoft.com/cli/azure/release-notes-azure-cli
+[Azure core CLI]: /cli/azure/install-azure-cli
+[Az core CLI release history]: /cli/azure/release-notes-azure-cli
 [`networkcloud` az CLI extension]: /cli/azure/networkcloud
 [`networkcloud` extension release history]: https://github.com/Azure/azure-cli-extensions/blob/main/src/networkcloud/HISTORY.rst
