@@ -19,9 +19,9 @@ Review [Azure Well-Architected Framework (WAF) - Reliability design principles](
 
 To mitigate the risk of service disruptions or data loss that cannot be mitigated by the redundancy capabilities of a single Azure Local instance, it is essential to implement a combination of comprehensive [backup strategies](#backup-tools) alongside continuous [data replication technologies](#continuous-replication-of-business-critical-vms).
 
-  - Backup strategies protect against scenarios such as data corruption, accidental or malicious deletion, and catastrophic incidents, facilitating the restoration of data to a previous state when necessary.
-<br>
-  - Data replication technologies enable synchronized copies of virtual machine data to be maintained across multiple Azure Local instances and/or Azure regions, which can minimize downtime and enable rapid workload failover in the event of hardware or system failure. Together, these approaches provide a robust safety net designed to safeguard data and sustain operational and business continuity during unexpected disruptions.
+- Backup strategies protect against scenarios such as data corruption, accidental or malicious deletion, and catastrophic incidents, facilitating the restoration of data to a previous state when necessary.
+
+- Data replication technologies enable synchronized copies of virtual machine data to be maintained across multiple Azure Local instances and/or Azure regions, which can minimize downtime and enable rapid workload failover in the event of hardware or system failure. Together, these approaches provide a robust safety net designed to safeguard data and sustain operational and business continuity during unexpected disruptions.
 
 ## Storage path (volumes) considerations
 
