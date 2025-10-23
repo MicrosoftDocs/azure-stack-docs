@@ -6,7 +6,7 @@ ms.topic: include
 ms.service: azure-operator-nexus
 ---
 
-### Prerequisites on Azure Operator Nexus management bundle, runtime, and API versions
+## Prerequisites on Azure Operator Nexus management bundle, runtime, and API versions
 
 - Ensure that your Operator Nexus Cluster is running management bundle `2510.1` version and runtime version `4.7.0` or later.
   The feature support is available in API version `2025-07-01-preview`, but recommend GA `2025-09-01` version or later.
