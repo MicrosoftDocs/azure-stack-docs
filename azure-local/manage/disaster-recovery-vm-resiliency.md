@@ -223,6 +223,8 @@ It's essential to have a recovery plan where you document all the steps required
 
 It's important to regularly test the disaster recovery plan through simulated drills. Conducting a test failover at least once a month is recommended to ensure functionality and maintain staff proficiency. Additionally, testing reveals if your recovery time objectives (RTOs) are being met, such as the time required to spin up in Azure or on secondary hardware.
 
+For additional information, review [Architecture strategies for designing a disaster recovery strategy](/azure/well-architected/reliability/disaster-recovery#maintain-a-disaster-recovery-plan).
+
 ## Next steps
 
 - Learn more about [Workloads resiliency](disaster-recovery-workloads-resiliency.md).
