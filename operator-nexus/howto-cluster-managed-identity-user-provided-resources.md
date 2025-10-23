@@ -23,7 +23,7 @@ To learn more about managed identities in Azure, see [Managed identities for Azu
 
 While a user can choose to use either managed identity type, UAMIs are recommended. They allow users to preconfigure resources with the appropriate access to the UAMI in advance of Operator Nexus Cluster creation or updating. The same UAMI can be used for all resources, or if users want fine grained access, they can define UAMIs for each resource.
 
-For information on using the API to update Cluster managed identities, see [Update Cluster Identities](#update-cluster-identities-via-apis). 
+For information on using the API to update Cluster managed identities, see [Update Cluster Identities](#update-cluster-identities-via-apis).
 
 ## Prerequisites
 
@@ -39,7 +39,7 @@ It's a best practice to first define all of the user provided resources (Storage
 The impacts of not configuring these resources for a new Cluster are as follows:
 
 - _Storage Account:_ Cluster creation fails as there's a check to ensure that `commandOutputSettings` exists on the Cluster input.
-- _LAW:_ Cluster deployment fails as the LAW (Log Analytics Workplace) is required to install software extensions during deployment.
+- _LAW:_ Cluster deployment fails as the LAW (Log Analytics Workspace) is required to install software extensions during deployment.
 - _Key Vault:_ Credential rotations fail as there's a check to ensure write access to the user provided Key Vault before performing credential rotation.
 
 Updating the Cluster can be done at any time. Changing the LAW settings causes a brief disruption in sending metrics to the LAW as the extensions that use the LAW need to be reinstalled.
@@ -57,7 +57,7 @@ The following steps should be followed for using UAMIs with Nexus Clusters and a
 
 ### Create the resources and assign the UAMI to the resources
 
-#### Storage Accounts setup
+#### UAMI Storage Accounts setup
 
 1. Create a storage account, or identify an existing storage account that you want to use. See [Create an Azure storage account](/azure/storage/common/storage-account-create?tabs=azure-portal).
 1. Create a blob storage container in the storage account. See [Create a container](/azure/storage/blobs/storage-quickstart-blobs-portal#create-a-container).
@@ -66,12 +66,12 @@ The following steps should be followed for using UAMIs with Nexus Clusters and a
    1. The IPs for all users executing run-\* commands need to be added to the Storage Account's `Virtual Networks` and/or `Firewall` lists.
    1. Ensure `Allow Azure services on the trusted services list to access this storage account.` under `Exceptions` is selected.
 
-#### Log Analytics Workspaces setup
+#### UAMI Log Analytics Workspaces setup
 
 1. Create a Log Analytics Workspace (LAW), or identify an existing LAW that you want to use. See [Create a Log Analytics Workspace](/azure/azure-monitor/logs/quick-create-workspace).
 1. Assign the `Log Analytics Contributor` role to the UAMI for the log analytics workspace. See [Manage access to Log Analytics workspaces](/azure/azure-monitor/logs/manage-access?tabs=portal).
 
-#### Key Vault setup
+#### UAMI Key Vault setup
 
 1. Create a Key Vault, or identify an existing Key Vault that you want to use. See [Create a Key Vault](/azure/key-vault/general/quick-create-cli).
 1. Enable the Key Vault for Role Based Access Control (RBAC). See [Enable Azure RBAC permissions on Key Vault](/azure/key-vault/general/rbac-guide?tabs=azure-cli#enable-azure-rbac-permissions-on-key-vault).
@@ -85,24 +85,25 @@ The following steps should be followed for using UAMIs with Nexus Clusters and a
 
 #### Define the UAMI(S) on the Cluster
 
-When creating or updating a Cluster with a user assigned managed identity, use the `--mi-user-assigned` parameter along with the resource ID of the UAMI. If you wish to specify multiple UAMIs, list the UAMIs' resources IDs with a space between them. Each UAMI that's used for a Key Vault, LAW, or Storage Account must be provided in this list.
+When creating or updating a Cluster with a user assigned managed identity, use the `--mi-user-assigned` parameter along with the Azure Resource Manager (ARM) resource identifier of the UAMI. If you wish to specify multiple UAMIs, list the UAMIs' Azure Resource Manager (ARM) resource identifiers with a space between them. Each UAMI that's used for a Key Vault, LAW, or Storage Account must be provided in this list.
 
 When creating the Cluster, you specify the UAMIs in `--mi-user-assigned` and also define the resource settings. Updating the Cluster to set or change a UAMI should also include the resource settings changes to associate the UAMI to the resource.
 
-#### Storage Account settings
+#### UAMI Storage Account settings
 
 The `--command-output-settings` data construct is used to define the Storage Account where run command output is written. It consists of the following fields:
 
 - `container-url`: The URL of the storage account container that is to be used by the specified identities.
 - `identity-resource-id`: The user assigned managed identity resource ID to use. Mutually exclusive with a system assigned identity type.
-- `identity-type`: The type of managed identity that is being selected. Use `UserAssignedIdentity`.
+- `identity-type`: The type of managed identity that's being selected. Use `UserAssignedIdentity`.
 - `overrides`: Optional. An array of override objects that can be used to override the storage account container and identity to use for specific types of run commands. Each override object consists of the following fields:
   - `command-output-type`: The type of run command to override.
   - `container-url`: The URL of the storage account container to use for the specified command type.
   - `identity-resource-id`: The user assigned managed identity resource ID to use for the specified command type.
-  - `identity-type`: The type of managed identity that is being selected. Use `UserAssignedIdentity`.
+  - `identity-type`: The type of managed identity that's being selected. Use `UserAssignedIdentity`.
 
 Valid `command-output-type` values are:
+
 - `BareMetalMachineRunCommand`: Output from the `az networkcloud baremetalmachine run-command` command.
 - `BareMetalMachineRunDataExtracts`: Output from the `az networkcloud baremetalmachine run-data-extract` command.
 - `BareMetalMachineRunDataExtractsRestricted`: Output from the `az networkcloud baremetalmachine run-data-extracts-restricted` command.
@@ -111,23 +112,23 @@ Valid `command-output-type` values are:
 
 Run command output is written to the storage account container defined in the `overrides` for the specific command type, using the associated identity for that override. If no matching override is found, the default `container-url` and `identity-resource-id` from the command output settings is used.
 
-#### Log Analytics Workspace settings
+#### UAMI Log Analytics Workspace settings
 
 The `--analytics-output-settings` data construct is used to define the LAW where metrics are sent. It consists of the following fields:
 
 - `analytics-workspace-id`: The resource ID of the analytics workspace that is to be used by the specified identity.
 - `identity-resource-id`: The user assigned managed identity resource ID to use. Mutually exclusive with a system assigned identity type
-- `identity-type`: The type of managed identity that is being selected. Use `UserAssignedIdentity`.
+- `identity-type`: The type of managed identity that's being selected. Use `UserAssignedIdentity`.
 
-#### Key Vault settings
+#### UAMI Key Vault settings
 
 The `--secret-archive-settings` data construct is used to define the Key Vault where rotated credentials are written. It consists of the following fields:
 
 - `identity-resource-id`: The user assigned managed identity resource ID to use.
-- `identity-type`: The type of managed identity that is being selected. Use `UserAssignedIdentity`.
+- `identity-type`: The type of managed identity that's being selected. Use `UserAssignedIdentity`.
 - `vault-uri`: The URI for the key vault used as the secret archive.
 
-#### Cluster create command examples
+#### UAMI Cluster create command examples
 
 _Example 1:_ This example is an abbreviated Cluster create command that uses one UAMI across the Storage Account, LAW, and Key Vault.
 
@@ -195,7 +196,7 @@ az networkcloud cluster update --name "clusterName" --resource-group "resourceGr
     container-url="https://myaccount.blob.core.windows.net/mycontainer"
 ```
 
-_Example 3:_ Update a Cluster that already has a SAMI and add a UAMI and assign the UAMI to the log analytics output settings (LAW). The SAMI is retained. 
+_Example 3:_ Update a Cluster that already has a SAMI and add a UAMI and assign the UAMI to the log analytics output settings (LAW). The SAMI is retained.
 
 > [!CAUTION]
 > Changing the LAW settings causes a brief disruption in sending metrics to the LAW as the extensions that use the LAW might need to be reinstalled.
@@ -213,7 +214,7 @@ az networkcloud cluster update --name "clusterName" --resource-group "resourceGr
 
 The identity resource ID can be found by selecting "JSON view" on the identity resource; the ID is at the top of the panel that appears. The container URL can be found on the Settings -> Properties tab of the container resource.
 
-The CLI can also be used to view the identity and the associated principal ID data within the cluster.
+The Azure CLI is another option for viewing the identity and the associated principal ID data within the cluster.
 
 _Example:_
 
@@ -249,36 +250,36 @@ Updating the Cluster can be done at any time. Changing the LAW settings causes a
 
 The following steps should be followed for using UAMIs with Nexus Clusters and associated resources.
 
-_Cluster Creation_
+_**Cluster Creation:**_
 
-1. [Create the user provided resources](#create-the-user-provided-resources)
+1. [Create the user provided resources](#initial-user-provided-resources-creation)
 1. [Create the Cluster with a SAMI and specify the resources that use the SAMI](#create-the-cluster-with-a-sami-and-user-provided-resources)
-1. [Query the Cluster to get the SAMI](#query-the-cluster-to-get-the-sami)
+1. [Get the SAMI by querying the Cluster](#get-the-sami-by-querying-the-cluster)
 1. [Update the resources and assign the SAMI to the resources](#update-the-resources-and-assign-the-sami-to-the-resources)
 1. Deploy the Cluster
 
-_Cluster Update_
+_**Cluster Update:**_
 
-1. [Create the user provided resources](#create-the-user-provided-resources)
-1. [Update the Cluster to add a SAMI](#update-the-cluster-to-add-a-sami)
-1. [Query the Cluster to get the SAMI](#query-the-cluster-to-get-the-sami)
+1. [Create the user provided resources](#initial-user-provided-resources-creation)
+1. [Add a SAMI via Cluster update](#add-a-sami-via-cluster-update)
+1. [Get the SAMI by querying the Cluster](#get-the-sami-by-querying-the-cluster)
 1. [Update the resources and assign the SAMI to the resources](#update-the-resources-and-assign-the-sami-to-the-resources)
 1. [Update the Cluster with the user provided resources information](#update-the-cluster-with-the-user-provided-resources-information)
 
-### Create the user provided resources
+### Initial user provided resources creation
 
-This section provides external links for the user resource setup that needs to occur before Cluster creation. 
+This section provides external links for the user resource setup that needs to occur before Cluster creation.
 
-#### Storage Accounts setup
+#### Initial Storage Accounts setup
 
 1. Create a storage account, or identify an existing storage account that you want to use. See [Create an Azure storage account](/azure/storage/common/storage-account-create?tabs=azure-portal).
 1. Create a blob storage container in the storage account. See [Create a container](/azure/storage/blobs/storage-quickstart-blobs-portal#create-a-container).
 
-#### Log Analytics Workspaces setup
+#### Initial Log Analytics Workspaces setup
 
 - Create a Log Analytics Workspace (LAW), or identify an existing LAW that you want to use. See [Create a Log Analytics Workspace](/azure/azure-monitor/logs/quick-create-workspace).
 
-#### Key Vault setup
+#### Initial Key Vault setup
 
 - Create a Key Vault, or identify an existing Key Vault that you want to use. See [Create a Key Vault](/azure/key-vault/general/quick-create-cli).
 
@@ -286,31 +287,31 @@ This section provides external links for the user resource setup that needs to o
 
 When creating a Cluster with a system assigned managed identity, use the `--mi-system-assigned` parameter. The Cluster creation process generates the SAMI information. The user provided resources are also defined at the time of Cluster creation.
 
-#### Storage Account settings
+#### SAMI Storage Account settings
 
 The `--command-output-settings` data construct is used to define the Storage Account where run command output is written. It consists of the following fields:
 
 - `container-url`: The URL of the storage account container that is to be used by the specified identities.
 - `identity-resource-id`: Not required when using a SAMI
-- `identity-type`: The type of managed identity that is being selected. Use `SystemAssignedIdentity`.
+- `identity-type`: The type of managed identity that's being selected. Use `SystemAssignedIdentity`.
 
-#### Log Analytics Workspace settings
+#### SAMI Log Analytics Workspace settings
 
 The `--analytics-output-settings` data construct is used to define the LAW where metrics are sent. It consists of the following fields:
 
 - `analytics-workspace-id`: The resource ID of the analytics workspace that is to be used by the specified identity.
 - `identity-resource-id`: Not required when using a SAMI
-- `identity-type`: The type of managed identity that is being selected. Use `SystemAssignedIdentity`.
+- `identity-type`: The type of managed identity that's being selected. Use `SystemAssignedIdentity`.
 
-#### Key Vault settings
+#### SAMI Key Vault settings
 
 The `--secret-archive-settings` data construct is used to define the Key Vault where rotated credentials are written. It consists of the following fields:
 
 - `identity-resource-id`: Not required when using a SAMI
-- `identity-type`: The type of managed identity that is being selected. Use `SystemAssignedIdentity`.
+- `identity-type`: The type of managed identity that's being selected. Use `SystemAssignedIdentity`.
 - `vault-uri`: The URI for the key vault used as the secret archive.
 
-#### Cluster create command examples
+#### SAMI Cluster create command example
 
 _Example:_ This example is an abbreviated Cluster create command that specifies a SAMI and uses the SAMI for each of the user provided resources.
 
@@ -328,7 +329,7 @@ az networkcloud cluster create --name "clusterName" -g "resourceGroupName" \
      vault-uri="https://keyvaultname.vault.azure.net/"
 ```
 
-### Update the Cluster to add a SAMI
+### Add a SAMI via Cluster update
 
 When updating a Cluster with a system assigned managed identity, use the `--mi-system-assigned` parameter. The Cluster update process generates the SAMI information. The user provided resources are updated later to use the SAMI once the appropriate role assignments are made.
 
@@ -352,7 +353,7 @@ az networkcloud cluster update --name "clusterName" -g "resourceGroupName" \
     --mi-system-assigned
 ```
 
-### Query the Cluster to get the SAMI
+### Get the SAMI by querying the Cluster
 
 The identity resource ID can be found by selecting "JSON view" on the identity resource in the Azure portal.
 
@@ -380,18 +381,18 @@ System-assigned identity example:
 
 These updates are applicable post Cluster creation or update to ensure that the SAMI has the appropriate role assignments and the resources are configured properly for Operator Nexus usage.
 
-#### Storage Accounts setup
+#### SAMI Storage Accounts setup
 
 1. Assign the `Storage Blob Data Contributor` role to users and the SAMI that need access to the run-\* command output. See [Assign an Azure role for access to blob data](/azure/storage/blobs/assign-azure-role-data-access?tabs=portal).
 1. To limit access to the Storage Account to a select set of IP or virtual networks, see [Configure Azure Storage firewalls and virtual networks](/azure/storage/common/storage-network-security?tabs=azure-portal).
    1. The IPs for all users executing run-\* commands need to be added to the Storage Account's `Virtual Networks` and/or `Firewall` lists.
    1. Ensure `Allow Azure services on the trusted services list to access this storage account.` under `Exceptions` is selected.
 
-#### Log Analytics Workspaces setup
+#### SAMI Log Analytics Workspaces setup
 
 - Assign the `Log Analytics Contributor` role to the SAMI for the log analytics workspace. See [Manage access to Log Analytics workspaces](/azure/azure-monitor/logs/manage-access?tabs=portal).
 
-#### Key Vault setup
+#### SAMI Key Vault setup
 
 1. Enable the Key Vault for Role Based Access Control (RBAC). See [Enable Azure RBAC permissions on Key Vault](/azure/key-vault/general/rbac-guide?tabs=azure-cli#enable-azure-rbac-permissions-on-key-vault).
 1. Assign the `Operator Nexus Key Vault Writer Service Role (Preview)` role to the SAMI for the Key Vault. See [Assign role](/azure/key-vault/general/rbac-guide?tabs=azure-cli#assign-role).
@@ -402,33 +403,33 @@ These updates are applicable post Cluster creation or update to ensure that the 
 
 ### Update the Cluster with the user provided resources information
 
-This step is only required after updating a Cluster to add a SAMI and should be performed after updating the resources to assign the SAMI the appropriate role or roles. 
+This step is only required after updating a Cluster to add a SAMI and should be performed after updating the resources to assign the SAMI the appropriate role or roles.
 
-#### Storage Account settings
+#### SAMI Storage Account update settings
 
 The `--command-output-settings` data construct is used to define the Storage Account where run command output is written. It consists of the following fields:
 
 - `container-url`: The URL of the storage account container that is to be used by the specified identities.
 - `identity-resource-id`: Not required when using a SAMI
-- `identity-type`: The type of managed identity that is being selected. Use `SystemAssignedIdentity`.
+- `identity-type`: The type of managed identity that's being selected. Use `SystemAssignedIdentity`.
 
-#### Log Analytics Workspace settings
+#### SAMI Log Analytics Workspace update settings
 
 The `--analytics-output-settings` data construct is used to define the LAW where metrics are sent. It consists of the following fields:
 
 - `analytics-workspace-id`: The resource ID of the analytics workspace that is to be used by the specified identity.
 - `identity-resource-id`: Not required when using a SAMI
-- `identity-type`: The type of managed identity that is being selected. Use `SystemAssignedIdentity`.
+- `identity-type`: The type of managed identity that's being selected. Use `SystemAssignedIdentity`.
 
-#### Key Vault settings
+#### SAMI Key Vault update settings
 
 The `--secret-archive-settings` data construct is used to define the Key Vault where rotated credentials are written. It consists of the following fields:
 
 - `identity-resource-id`: Not required when using a SAMI
-- `identity-type`: The type of managed identity that is being selected. Use `SystemAssignedIdentity`.
+- `identity-type`: The type of managed identity that's being selected. Use `SystemAssignedIdentity`.
 - `vault-uri`: The URI for the key vault used as the secret archive.
 
-#### Cluster update examples
+#### SAMI Cluster update examples
 
 Updating a Cluster follows the same pattern as create. If you need to change the UAMI for a resource, you must include it in both the `--mi-user-assigned` field and corresponding `--identity-resource-id` for the Storage Account, LAW or Key Vault. If there are multiple UAMIs in use, the full list of UAMIs must be specified in the `--mi-user-assigned` field when updating.
 
@@ -512,9 +513,9 @@ Note, `<APIVersion>` is the API version 2024-07-01 or newer.
   {
     "identity": {
         "type": "UserAssigned",
-  	    "userAssignedIdentities": {
-  		    "/subscriptions/$SUB_ID/resourceGroups/$UAI_RESOURCE_GROUP/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$UAI_NAME": {}
-  	    }
+        "userAssignedIdentities": {
+          "/subscriptions/$SUB_ID/resourceGroups/$UAI_RESOURCE_GROUP/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$UAI_NAME": {}
+        }
     }
   }
   ```
@@ -531,9 +532,9 @@ Note, `<APIVersion>` is the API version 2024-07-01 or newer.
   {
     "identity": {
         "type": "UserAssigned",
-  	    "userAssignedIdentities": {
-  		    "/subscriptions/$SUB_ID/resourceGroups/$UAI_RESOURCE_GROUP/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$UAI_NAME": null
-  	    }
+        "userAssignedIdentities": {
+          "/subscriptions/$SUB_ID/resourceGroups/$UAI_RESOURCE_GROUP/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$UAI_NAME": null
+        }
     }
   }
   ```
@@ -544,20 +545,45 @@ This section is a reference for the deprecated resource fields and their replace
 
 `identity-resource-id` is only required when using a UAMI. It shouldn't be specified if using a SAMI for the resource.
 
-### Storage Account
+### Cluster Overview
 
-_**Deprecated Fields:**_ N/A
+Cluster Overview in the Azure portal reflects the new data fields.
+
+:::image type="content" source="media/bring-your-own-resource/cluster-landing-page-inline.png" alt-text="Screenshot of the Azure portal Operator Nexus Cluster Overview page." lightbox="media/bring-your-own-resource/cluster-landing-page.png":::
+
+1. The Overview Properties section contains read only views for `Log analytics`, `Secret archive` (Key Vault), and `Storage account`.
+   1. Selecting `edit` next to each resource takes you to the resource specific page within Operator Nexus and allows for updating the resource & managed identity information.
+1. The `Settings` navigation menu provides links to manage each of the resources.
+
+> [!NOTE]
+> The `Secret Archive` example reflects an instance where the Cluster was updated to populate `secretArchiveSettings` with the Key Vault URI and associated managed identity, but the legacy `secretArchive` fields remain populated. The Overview reflects both fields from a display perspective but the system only uses the `secretArchiveSettings`. If just `secretArchiveSettings` is populated, then only `Key Vault URI` is populated. The `Key Vault` field would be empty.
+
+### Log Analytics Workspace
+
+_**Deprecated Fields:**_ `analytics-workspace-id`
+
+# [Azure CLI](#tab/azurecli)
+
+The LAW information is provided and viewed via the `analytics-output-settings` data construct.
 
 _**Replacing Fields:**_
 
 ```azurecli
-command-output-settings:
-  container-url
+analytics-output-settings:
+  analytics-workspace-id
   identity-type
   identity-resource-id
 ```
 
-_**Notes:**_ Deprecated Fields is N/A because the Cluster Manager storage account gets created automatically today and doesn't require user input.
+# [Azure portal](#tab/azureportal)
+
+In the Azure portal, the LAW information can be viewed and modified on the `Log analytics` page within Cluster Settings.
+
+:::image type="content" source="media/bring-your-own-resource/law-details-inline.png" alt-text="Screenshot of Azure portal Operator Nexus user provided LAW settings." lightbox="media/bring-your-own-resource/law-details.png":::
+
+---
+
+The input format (LAW Azure Resource Manager (ARM) resource ID) is the same between the deprecated `analytics-workspace-id` field and the `analytics-workspace-id` within `analytics-output-settings`. The system updates the deprecated `analytics-workspace-id` field with the `analytics-output-settings:analytics-workspace-id` field. Updating the deprecated was done for backwards compatibility purposes during the transition period when moving from using the Service Principal to managed identity for authentication. It no longer has any use but is still present.
 
 ### Key Vault
 
@@ -569,9 +595,13 @@ cluster-secret-archive:
   key-vault-id
 ```
 
-Cluster Manager managed identity
+The Cluster Manager managed identity is used for authentication.
 
 _**Replacing Fields:**_
+
+# [Azure CLI](#tab/azurecli)
+
+The Key Vault information is provided and viewed via the `secret-archive-settings` data construct. The Cluster managed identity is used in this construct.
 
 ```azurecli
 secret-archive-settings:
@@ -580,19 +610,37 @@ secret-archive-settings:
   identity-resource-id
 ```
 
-_**Notes:**_ `vault-uri` in `secret-archive-settings` is the URI for the Key Vault being specified versus the Azure Resource Manager (ARM) resource ID that is specified for `key-vault-id`. The same managed identity that was specified for the Cluster Manager can be used on the Cluster.
+# [Azure portal](#tab/azureportal)
 
-### Log Analytics Workspace
+In the Azure portal, the Key Vault information can be viewed and modified on the `Secret archive` page within Cluster Settings.
 
-_**Deprecated Fields:**_ `analytics-workspace-id`
+:::image type="content" source="media/bring-your-own-resource/key-vault-details-inline.png" alt-text="Screenshot of Azure portal Operator Nexus user provided Key Vault settings." lightbox="media/bring-your-own-resource/key-vault-details.png":::
+
+---
+
+`vault-uri` in `secret-archive-settings` is the URI for the Key Vault being specified versus the Azure Resource Manager (ARM) resource ID that is specified for `key-vault-id`. The same managed identity that was specified for the Cluster Manager can be used on the Cluster.
+
+### Storage Account
+
+_**Deprecated Fields:**_ N/A - Previously, the Storage Account was automatically created as part of Cluster Manager creation and didn't require customer input.
 
 _**Replacing Fields:**_
 
+# [Azure CLI](#tab/azurecli)
+
+The Storage Account information is provided and viewed via the `command-output-settings` data construct.
+
 ```azurecli
-analytics-output-settings:
-  analytics-workspace-id
+command-output-settings:
+  container-url
   identity-type
   identity-resource-id
 ```
 
-_**Notes:**_ The input format (LAW ARM resource ID) is the same between the deprecated `analytics-workspace-id` field and the `analytics-workspace-id` within `analytics-output-settings`.
+# [Azure portal](#tab/azureportal)
+
+In the Azure portal, the Storage Account information can be viewed and modified on the `Storage account` page within Cluster Settings.
+
+:::image type="content" source="media/bring-your-own-resource/storage-account-details-inline.png" alt-text="Screenshot of Azure portal Operator Nexus user provided Storage Account settings." lightbox="media/bring-your-own-resource/storage-account-details.png":::
+
+---
