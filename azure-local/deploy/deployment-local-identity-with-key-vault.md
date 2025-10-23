@@ -265,11 +265,11 @@ Tooling support in Azure Local environments configured with Azure Key Vault for 
 
 This section provides answers to some frequently asked questions about using local identity with Key Vault.
 
-### What to do if the Azure Key Vault Backup Secrets extension wasn't installed during deployment?
+### What to do if the Azure Key Vault Backup Secrets extension wasn't installed during deployment
 
 If the extension wasn't installed during deployment, you can manually install it on Arc-enabled servers by following these steps:
 
-1. Create a new Azure Key Vault if you don’t already have one. For instructions, see [Quickstart: Create a key vault using the Azure portal](/azure//key-vault/general/quick-create-portal).
+1. Create a new Azure Key Vault if you don’t already have one. For instructions, see [Quickstart: Create a key vault using the Azure portal](/azure/key-vault/general/quick-create-portal).
 
 1. In the Key Vault page, navigate to **Access control (IAM)** > **Add role assignment**.
 
