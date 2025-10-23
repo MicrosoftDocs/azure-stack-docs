@@ -20,6 +20,7 @@ The following features and improvements were added in this release:
 
 - AKS Edge Essentials version 1.11.247.0 uses Azure Linux 3.0, an upgrade from Azure Linux 2.0, which was the version used in previous releases.
 - AKS Edge Essentials now connects to Azure Arc during deployment to decrease the number of steps required. Arc parameters are required in the **aks-edge** configuration file during deployment. AKS Edge Essentials deployment is blocked if Arc parameters are missing or invalid. However, this does not impact offline deployments or volume licensing customers.
+- Enabling secret encryption on AKS Edge Essentials clusters with [KMS provider](aks-edge-howto-secret-encryption.md) is now generally available for AKS Edge Essentials version 1.11.247.0 and later. 
 
 ### Supported versions for 1.11.247.0
 
