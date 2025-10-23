@@ -97,15 +97,6 @@ The required roles to allow the managed identity to Azure Arc enroll the VM are:
 - `HybridCompute Machine ListAccessDetails Action`
 - `Azure Connected Machine Resource Manager`
 
-The required permissions for the assign relay action:
-
-- `Microsoft.NetworkCloud/virtualMachines/assignRelay/action`
-
-The permission can be assigned through a custom role, or by assigning the `Contributor` built-in role to the managed identity.
-For steps on how to create a custom role, see [Create or update Azure custom roles using an ARM template].
-
-[Create or update Azure custom roles using an ARM template]: /azure/role-based-access-control/custom-roles-template
-
 ## VM network connectivity sanity tests
 
 SSH into the VM and run the following commands:
