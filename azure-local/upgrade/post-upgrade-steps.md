@@ -96,6 +96,7 @@ Once the new OS is installed, you need to upgrade the cluster functional level a
 
       ```PowerShell
       [System.Environment]::OSVersion.Version
+
       Get-Cluster | Select-Object ClusterFunctionalLevel, ClusterUpgradeVersion
       ```
 
@@ -111,6 +112,7 @@ Once the new OS is installed, you need to upgrade the cluster functional level a
 
       ```powershell
       [System.Environment]::OSVersion.Version
+
       Get-Cluster | Select-Object ClusterFunctionalLevel, ClusterUpgradeVersion
       ```
 
