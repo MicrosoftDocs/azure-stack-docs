@@ -457,7 +457,7 @@ items:
   - name: Capacity
     items:
     - name: Add a node
-    href: manage/add-server.md
+      href: manage/add-server.md
 
   - name: Azure services
     items:
