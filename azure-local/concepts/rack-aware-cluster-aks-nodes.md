@@ -1,6 +1,6 @@
 ---
-title: Spread Azure Kubernetes Service (AKS) nodes in rack aware cluster
-description: Learn how to deploy AKS clusters with rack aware cluster support to ensure fault tolerance and evenly distribute nodes across Azure Local zones.
+title: Spread Azure Kubernetes Service (AKS) nodes in rack aware cluster (Preview)
+description: Learn how to deploy AKS clusters with rack aware cluster support to ensure fault tolerance and evenly distribute nodes across Azure Local zones. (Preview)
 author: ronmiab
 ms.author: robess
 ms.reviewer: mindyqdiep
@@ -8,9 +8,13 @@ ms.date: 10/14/2025
 ms.topic: concept-article
 ---
 
-# Spread Azure Kubernetes Service (AKS) nodes in rack aware cluster
+# Spread Azure Kubernetes Service (AKS) nodes in rack aware cluster (Preview)
+
+> Applies to: Azure Local version 2510 and later
 
 This article explains how to deploy Azure Kubernetes Service (AKS) clusters with rack aware cluster support. You'll learn how to ensure fault tolerance and evenly distribute nodes across Azure Local zones for improved reliability.
+
+[!INCLUDE [important](../includes/hci-preview.md)]
 
 ## About AKS and rack aware cluster
 
@@ -87,5 +91,3 @@ Here's an example:
 ## Limitations
 
 Node spreading across the zone uses availability sets, which use fault domains and default to one physical machine. Availability sets aren't zone aware. For more information, see [Availability sets in AKS enabled by Azure Arc](/azure/aks/aksarc/availability-sets).
-
-## Related content

@@ -9,10 +9,9 @@ ms.author: alkohli
 
 # Add or repair a node to a rack aware cluster (Preview)
 
-Applies to: Azure Local version 2510 and later
+> Applies to: Azure Local version 2510 and later
 
 This article explains how to add or repair servers (nodes) for your Azure Local rack aware cluster.
-
 
 [!INCLUDE [important](../includes/hci-preview.md)]
 

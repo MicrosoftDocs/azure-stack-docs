@@ -10,6 +10,8 @@ ms.topic: concept-article
 
 # Azure Local rack aware cluster reference architecture (Preview)
 
+> Applies to: Azure Local version 2510 and later
+
 This article contains information about the network design and configuration of an Azure Local rack aware cluster. This configuration involves a single cluster where nodes are placed in different physical locations within a building.
 
 The primary intent is to support factory environments where hardware must be isolated in different rooms due to regulatory requirements, safety protocols, or operational constraints. This isolation provides fault domain separation while maintaining cluster functionality for critical industrial workloads.
