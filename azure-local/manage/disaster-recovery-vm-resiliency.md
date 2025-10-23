@@ -98,7 +98,7 @@ CloudCasa delivers Kubernetes-native backup, disaster recovery, and migration fo
 - [CloudCasa solutions for Azure](https://cloudcasa.io/partners/microsoft-azure/)
 - [Simplify Upgrades and Backup for Azure Local](https://cloudcasa.io/blog/upgrade-backup-azure-local/)
 
-### Backup frequency, retention, and restoration testing
+## Backup frequency, retention, and restoration testing
 
 Even with hardware fault tolerance and Storage Spaces Direct maintaining multiple copies of data, implementing and regularly testing data backup processes is essential. Storage redundancy protects against infrastructure failures, but it doesn't prevent data corruption, deletion, or site-wide disasters. Regular backups ensure you can restore data or entire VMs to a previous point in time if needed.
 
@@ -198,10 +198,9 @@ For more information, see the deployment steps in [Set up Hyper-V Replica](/wind
 
 During the replication process, the hardware and network you use affects the services that rely on them. Depending on the amount of data replicated between the source and target systems, this process consumes a large amount of system resources. Your device performance is impacted until this process completes. Adequate network bandwidth is required between the two Azure Local clusters for Hyper-V replica to function optimally, especially with lower replication intervals (for example, 30 seconds). Similarly, the target cluster needs sufficient storage input output operations per second (IOPS) to keep up with incoming replication traffic. For more information, see [Feature and performance optimization of Hyper-V Replica (HVR)](/troubleshoot/windows-server/virtualization/feature-performance-optimization-hyper-v-replica).
 
-### Compare Azure Site Recovery and Hyper-V Replica
+## Compare Azure Site Recovery and Hyper-V Replica
 
 In choosing between Azure Site Recovery and Hyper-V Replica for Azure Local VMs, review the differences between both solutions:
-
 
 | Attribute |Azure Site Recovery |Hyper-V Replica |
 |---------|---------|---------|
@@ -217,7 +216,7 @@ In choosing between Azure Site Recovery and Hyper-V Replica for Azure Local VMs,
 
 **Use Azure Site Recovery and Hyper-V Replica both**: Organizations with remote sites with single clusters and larger hubs with multiple clusters can extend Azure as a disaster recovery site, use Azure Site Recovery for remote sites and Hyper-V Replica for larger locations. This allows some VMs to replicate to Azure while others replicate to a secondary site, ensuring flexibility and tailored disaster recovery strategies for various operational needs.
 
-### Recovery plans and testing
+## Recovery plans and testing
 
 It's essential to have a recovery plan where you document all the steps required to fail over workloads, including the sequence (for example, domain controllers should be activated before application servers), and any necessary network adjustments (such as DNS updates and user redirection). Hyper-V Replica enables the creation of recovery plans, allowing for the sequencing of VM groups and the inclusion of scripts as part of the failover process. These plans can be manual or scripted via PowerShell.  
 
