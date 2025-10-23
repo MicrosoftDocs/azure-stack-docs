@@ -95,6 +95,7 @@ Once the new OS is installed, you need to upgrade the cluster functional level a
    1. Run the following cmdlet on any machine in the system to check the current ClusterFunctionalLevel and ClusterUpgradeVersion:
 
       ```PowerShell
+      [System.Environment]::OSVersion.Version
       Get-Cluster | Select-Object ClusterFunctionalLevel, ClusterUpgradeVersion
       ```
 
@@ -109,6 +110,7 @@ Once the new OS is installed, you need to upgrade the cluster functional level a
    1. Run the following cmdlet to check the new or updated ClusterFunctionalLevel and ClusterUpgradeVersion:
 
       ```powershell
+      [System.Environment]::OSVersion.Version
       Get-Cluster | Select-Object ClusterFunctionalLevel, ClusterUpgradeVersion
       ```
 
