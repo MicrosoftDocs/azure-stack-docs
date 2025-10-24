@@ -127,7 +127,10 @@ items:
     - name: Without Arc gateway
       href: deploy/deployment-without-azure-arc-gateway.md
     - name: With Arc gateway
-      href: deploy/deployment-with-azure-arc-gateway.md  
+      href: deploy/deployment-with-azure-arc-gateway.md
+    - name: Register systems with OEM image
+      href: deploy/deployment-arc-registration-preinstalled-os.md
+      hidden: true
   - name: 6. Choose a deployment method
     items:
     - name: 6A. Deploy via Azure portal
@@ -423,7 +426,40 @@ items:
         href: manage/gpu-manage-via-device.md
       - name: Manage GPUs via partitioning
         href: manage/gpu-manage-via-partitioning.md
-        
+
+  - name: Rack aware cluster
+    items:
+    - name: What's a rack aware cluster?
+      href: concepts/rack-aware-cluster-overview.md   
+    - name: Review requirements
+      href: concepts/rack-aware-cluster-requirements.md
+    - name: Review network requirements
+      items: 
+      - name: Reference architecture
+        href: concepts/rack-aware-cluster-reference-architecture.md
+      - name: Room-to-room connections
+        href: concepts/rack-aware-cluster-room-to-room-connectivity.md
+    - name: Deploy
+      items:    
+      - name: Prepare to deploy
+        href: deploy/rack-aware-cluster-deploy-prep.md
+      - name: Assess network readiness via LLDP
+        href: deploy/rack-aware-cluster-readiness-check.md
+      - name: Choose a deployment method
+        items:
+        - name: Via Azure portal
+          href: deploy/rack-aware-cluster-deploy-portal.md
+        - name: Via ARM template
+          href: deploy/rack-aware-cluster-deployment-via-template.md
+      - name: Complete post-deployment tasks
+        href: deploy/rack-aware-cluster-post-deployment.md
+    - name: Add and repair nodes
+      href: concepts/rack-aware-cluster-add-server.md
+    - name: Provision and place VMs
+      href: concepts/rack-aware-cluster-provision-vm-local-availability-zone.md
+    - name: Spread AKS nodes
+      href: concepts/rack-aware-cluster-aks-nodes.md
+
   - name: Security
     items:
     - name: Manage security defaults
@@ -447,6 +483,8 @@ items:
       href: manage/configure-proxy-settings-23h2.md
     - name: Suspend and resume
       href: manage/suspend-resume-cluster-maintenance.md
+    - name: Unregister and reregister machines
+      href: manage/unregister-register-machine.md
     - name: Use dashboard to manage at-scale
       href: manage/manage-at-scale-dashboard.md
 
