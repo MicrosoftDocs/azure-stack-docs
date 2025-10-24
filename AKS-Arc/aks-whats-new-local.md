@@ -1,6 +1,6 @@
 ---
-title: What's new in AKS on Azure Local
-description: Learn about what's new in AKS on Azure Local.
+title: What's new in AKS enabled by Azure Arc on Azure Local
+description: Learn about what's new in AKS enabled by Azure Arc on Azure Local.
 ms.topic: overview
 ms.date: 10/24/2025
 author: sethmanheim
@@ -10,7 +10,7 @@ ms.lastreviewed: 10/24/2025
 
 ---
 
-# What's new in AKS on Azure Local
+# What's new in AKS enabled by Azure Arc on Azure Local
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
