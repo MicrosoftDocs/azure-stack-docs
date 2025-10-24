@@ -18,7 +18,7 @@ The Auto-Import feature in Azure Managed Lustre (AMLFS) enables seamless synchro
 
 The Auto-Import feature in Azure Managed Lustre (AMLFS) operates by continuously monitoring changes in the associated Azure Blob Storage Container via the [Azure Blob Storage Change Feed](/azure/storage/blobs/storage-blob-change-feed?tabs=azure-portal).
 
-Based on the configured import policy, it updates the contents of the AMLFS namespace to reflect these changes. This provides users with a seamless and automated data replication process.
+Based on the configured import policy, it updates the contents of the AMLFS namespace to reflect these changes. Auto-Import provides users with a seamless and automated data replication process.
 
 Following creation, the Auto-Import process consists of two phases, Full Sync and Blob Sync:
 
@@ -32,7 +32,7 @@ See [Change Feed documentation](/azure/storage/blobs/storage-blob-change-feed?ta
 - Existing Azure Managed Lustre file system - create one using the [Azure portal](/azure/azure-managed-lustre/create-file-system-portal), [Azure Resource Manager](/azure/azure-managed-lustre/create-file-system-resource-manager), or [Terraform](/azure/azure-managed-lustre/create-aml-file-system-terraform). To learn more about blob integration, see [Blob integration prerequisites](/azure/azure-managed-lustre/amlfs-prerequisites#blob-integration-prerequisites-optional).
 - [Azure Blob Storage Change Feed](/azure/storage/blobs/storage-blob-change-feed?tabs=azure-portal) **must be enabled** on the Storage Account associated with the AMLFS file system. **NOTE**: Change Feed [does not support](/azure/storage/blobs/storage-blob-change-feed?tabs=azure-portal#enable-and-disable-the-change-feed) Storage Accounts with a Hierarchical Namespace (HNS) enabled.
   - Change Feed retention period MUST be set to 7 days or greater. When enabling the blob change feed, select to either: **Keep all logs** OR set **Delete change feed logs after (in days)** to 7 or greater.
-- Concurrent Blob Integration jobs are not permitted. It is necessary to disable Auto-Export prior to enabling Auto-Import.
+- Concurrent Blob Integration jobs are not permitted. It is necessary to disable Auto-Export before enabling Auto-Import.
 
 ## Configuration
 
@@ -57,7 +57,7 @@ The **Blob Integration** pane displays details of import activities in the **Rec
 
 To cancel the job that's in progress, select the **Cancel** link for that job in the **Recent jobs** table. The **Cancel** link is only available for the current auto-import.
 
-To view the metrics of an Auto-Import job, click on the **Name** of the job and the Metrics blade will appear on the right-hand side panel in the Portal.
+To view the metrics of an Auto-Import job, click on the **Name** of the job and the Metrics blade appears on the right-hand side panel in the Portal.
 
 ## Metrics
 
@@ -68,14 +68,14 @@ Metrics are grouped into two main categories, *Full Sync* and *Blob Sync*.
 Imported Files | Count of files successfully imported to the Lustre namespace from the associated Blob Container during the initial Full Sync phase.
 Imported Directories | Count of directories successfully imported to the Lustre namespace from the associated Blob Container during the initial Full Sync phase.
 Imported Symlinks | Count of symlinks successfully imported to the Lustre namespace from the associated Blob Container during the initial Full Sync phase.
-Pre-existing Files | Count of files with the same path and name found to already exist in the Lustre namespace when attempted to be imported by the initial Full Sync phase that already have expected data and metadata as the corresponding Blob.
-Pre-existing Directories | Count of directories encountered in the Lustre namespace during the initial Full Sync phase that already have expected metadata as the corresponding Blob.
-Pre-existing Symlinks | Count of symbolic links encountered in the Lustre namespace during the initial Full Sync phase that already have expected metadata and target as the corresponding Blob.
-Total Blobs Imported | Count of Blobs imported into the Lustre namespace from the Blob Container during the initial Full Sync phase. A superset of imported files, directories, and symlinks listed above.
+Pre-existing Files | Count of files with the same path and name that already exist in the Lustre namespace. Files already contain expected data and metadata as the corresponding Blob.
+Pre-existing Directories | Count of directories encountered in the Lustre namespace during the initial Full Sync phase that already contain expected metadata as the corresponding Blob.
+Pre-existing Symlinks | Count of symbolic links encountered in the Lustre namespace during the initial Full Sync phase that already contain expected metadata and target as the corresponding Blob.
+Total Blobs Imported | Count of Blobs imported into the Lustre namespace from the Blob Container during the initial Full Sync phase. A superset of imported files, directories, and symlinks listed.
 Rate of Blob Import | Per-second count of Blobs imported from Blob to Lustre during the initial Full Sync phase
 Total Blobs Walked | Count of Blobs scanned during the Full Sync phase
 Rate of Blob Walk | Per-second count of Blobs scanned during the Full Sync phase
-Total Conflicts | Count of encounters with Blobs that have the same path and name of an existing object in the Lustre namespace during the initial Full Sync phase, but that differ in terms of type of object, data, and/or metadata.
+Total Conflicts | Count of encounters with Blobs that have the same path and name of an existing object in the Lustre namespace, but that differ in terms of one or more areas including type of object, data, and metadata.
 Total Errors | Total number of errors encountered, failing to import Blobs to Lustre, during the initial Full Sync phase. Click on this link to be taken to the Logging Container page to view the logs associated with this Auto-Import job.
 
 **Blob Sync Statistics** | **Statistics about activity related to monitoring Change Feed**
@@ -83,10 +83,10 @@ Total Errors | Total number of errors encountered, failing to import Blobs to Lu
 Imported Files | Count of files successfully imported to the Lustre namespace from the associated Blob Container after the initial Full Sync phase
 Imported Directories | Count of directories successfully imported to the Lustre namespace from the associated Blob Container after the initial Full Sync phase
 Imported Symlinks | Count of symlinks successfully imported to the Lustre namespace from the associated Blob Container after the initial Full Sync phase
-Pre-existing Files | Count of files with the same path and name found to already exist in the Lustre namespace after the initial Full Sync phase that already have expected data and metadata as the corresponding Blob.
-Pre-existing Directories | Count of directories encountered in the Lustre namespace after the initial Full Sync phase that already have expected metadata as the corresponding Blob.
-Pre-existing Symlinks | Count of symbolic links encountered in the Lustre namespace after the initial Full Sync phase that already have expected metadata and target as the corresponding Blob.
-Total Blobs Imported | Count of Blobs imported into the Lustre namespace from the Blob Container after the initial Full Sync phase. A superset of imported files, directories, and symlinks listed above.
+Pre-existing Files | Count of files with the same path and name found to already exist in the Lustre namespace after the initial Full Sync phase that already contain expected data and metadata as the corresponding Blob.
+Pre-existing Directories | Count of directories encountered in the Lustre namespace after the initial Full Sync phase that already contain expected metadata as the corresponding Blob.
+Pre-existing Symlinks | Count of symbolic links encountered in the Lustre namespace after the initial Full Sync phase that already contain expected metadata and target as the corresponding Blob.
+Total Blobs Imported | Count of Blobs imported into the Lustre namespace from the Blob Container after the initial Full Sync phase. A superset of imported files, directories, and symlinks listed.
 Rate of Blob Import | Per-second count of Blobs imported from Blob to Lustre after the initial Full Sync phase
 Deletions | Count of files deleted during the Blob Sync phase
 Total Conflicts | Count of encounters with Blobs that have the same path and name of an existing object in the Lustre namespace after the initial Full Sync phase, but that differ in terms of type of object, data, and/or metadata.
@@ -110,7 +110,7 @@ Best practices for enabling Deletions:
 - Deletions are one way (Blob ➜ Lustre) and only apply going forward.
 - AutoImport always begins with a manual (full sync) scan. That scan does not compute a bidirectional map or attempt to detect “blob was deleted, file still exists in Lustre.” **Deletes that occurred before enablement therefore won’t be removed during the scan.**
 - During the initial scan, changes (including deletes) are delayed. Any Change Feed events, including deletes, that occur while the initial scan runs are applied **after** the scan completes. Expect a temporary period where Lustre may still show files that were deleted in Blob during the scan.
-- Deletion behavior is explicitly tied to the selected conflict mode. The table below demonstrates the behavior for each mode when “Enable deletions” is selected:
+- Deletion behavior is explicitly tied to the selected conflict mode. The following table demonstrates the behavior for each mode when “Enable deletions” is selected:
 
 **Conflict resolution mode** | **Delete File?** | **Effect if encountered**
 --- | --- | ---
