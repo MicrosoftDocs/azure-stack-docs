@@ -22,7 +22,7 @@ The simplified flow of traffic is as follows:
 - **Infrastructure traffic** → Infra Proxy allow-list → Azure Firewall  
 - **Tenant traffic** → CSN allow-list → Azure Firewall
 
-:::image type="content" source="media/network-fabric-controller-virtual-networks.png" alt-text="Network Fabric Controller Virtual Networks Description" lightbox="media/network-fabric-controller-virtual-networks.png":::
+:::image type="content" source="media/network-fabric-controller-virtual-network.png" alt-text="Network Fabric Controller Virtual Networks Description" lightbox="media/network-fabric-controller-virtual-network.png":::
 
 ## Tenant / CSN
 
