@@ -3,10 +3,10 @@ title: Supported Kubernetes versions for AKS enabled by Azure Arc
 description: Understand the Kubernetes version support policy and lifecycle of clusters for Azure Kubernetes Service enabled by Azure Arc.
 services: container-service
 ms.topic: article
-ms.date: 10/09/2025
+ms.date: 10/24/2025
 author: sethmanheim
 ms.author: sethm 
-ms.lastreviewed: 08/27/2025
+ms.lastreviewed: 10/24/2025
 ms.reviewer: rcheeran
 
 # Intent: As an IT Pro, I want to know how Kubernetes versions are supported, as well as the lifecycle of clusters in AKS enabled by Azure Arc.
@@ -42,7 +42,7 @@ You should install the latest patch release of the minor version you're running.
 
 |  K8s minor version | Supported Azure Local versions | Current status | Last release with Kubernetes patch/CVE updates |
 |--------------|-------------------|--------------|------------|
-| 1.32 | [2510](aks-whats-new-local.md#features-and-improvements) | Generally available | TBD 
+| 1.32 | [2510](aks-whats-new-local.md#features-and-improvements) | Generally available | TBD |
 | 1.31 | [2510, 2509, 2508](aks-whats-new-local.md#features-and-improvements) | Generally available | TBD |
 | 1.30 | [2510, 2509, 2508, 2507, 2503](aks-whats-new-local.md#features-and-improvements) | Generally available | 2601 |
 | 1.29 | [2509, 2508, 2507, 2503](aks-whats-new-local.md#features-and-improvements), [2411](aks-whats-new-local.md#features-and-improvements), [2408](aks-whats-new-local.md#release-2408) | Generally available | 2509 |
@@ -52,7 +52,7 @@ You should install the latest patch release of the minor version you're running.
 
 > [!NOTE]
 > Kubernetes version 1.33 is planned for the next Azure Local release.
-> Kubernetes version 1.29 no longer supported.
+> Kubernetes version 1.29 is no longer supported.
 
 ### AKS Arc supported Kubernetes minor and patch versions per release
 
