@@ -10,6 +10,8 @@ ms.lastreviewed: 10/24/2025
 
 ---
 
+# What's new in AKS on Azure Local
+
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
 This article summarizes features, improvements, and important notices for AKS on Azure Local (AKS enabled by Azure Arc). It highlights release-specific updates—such as supported Kubernetes versions, platform and tooling changes, security advisories, and notable bug fixes—to help you plan upgrades and manage clusters. For details about a particular release, see the release sections that follow.
