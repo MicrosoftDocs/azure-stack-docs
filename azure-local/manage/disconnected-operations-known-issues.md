@@ -29,10 +29,43 @@ This article highlights what's new (features and improvements) and critical know
 
 ## Known issues for disconnected operations for Azure Local
 
-There are no known issues in this release.
+### Arca bootstrap fails on node (Invoke-AzStackHCIArcInitialization) (OEM provided images)
+If you are running a OEM provided image - you need to ensure you are on the correct OS baseline.
 
-## Known issues in the preview release
+Make sure you follow the following steps:
+- Make sure you are on a baseline on the same or older (e.g. 2508 or older)
+- Disable ZDU on each node:
+```powershell
+    Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Environment\EdgeArcBootstrapSetup" -Name "MicrosoftOSImage" -Value 1
+```
+- Upgrade to the Microsoft provided ISO (2508). Choose upgrade and keep settings when re-imaging the nodes using this approach
+    - Alternative approach, run the following to get to 2508 update:
 
+```powershell
+
+# Define the solution version and local package path
+$DownloadUpdateZipUrl = 'https://azurestackreleases.download.prss.microsoft.com/dbazure/AzureLocal/WindowsPlatform/12.2508.0.3201/Platform.12.2508.0.3201.zip'
+$TargetSolutionVersion = "12.2508.1001.52"
+$LocalPlatformPackagePath = "C:\Platform.12.2508.0.3201.zip"
+# Download the DownloadUpdateZipUrl to LocalPlatformPackagePath (Alternative do this from browser and copy file over if you cannot run this on your nodes/disconnected scenarios)
+Invoke-WebRequest $DownloadZipUrl -Outfile LocalPlatformPackagePath
+
+$updateConfig = @{
+  "TargetSolutionVersion" = $TargetSolutionVersion
+  "LocalPlatformPackagePath" = $LocalPlatformPackagePath
+}
+
+$configHash = @{
+  "UpdateConfiguration" = $updateConfig
+}
+
+# Trigger zero day update
+$tempConfigPath = "C:\temp.json"
+$configHash | ConvertTo-Json -Depth 3 | Out-File $tempConfigPath -Force
+Start-ArcBootstrap -ConfigFilePath $tempConfigPath
+
+# Continue with Invoke-AzStackHCIArcInitialization.
+```
 ### Memory consumption when there's less than 128 GB of memory per node
 
 The disconnected operations appliance uses 78 GB of memory. If a node has less than 128 GB of memory, complete these steps after the appliance deploys and before you deploy Azure Local instances.
