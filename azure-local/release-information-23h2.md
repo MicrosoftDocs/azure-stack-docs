@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: article
 ms.service: azure-local
-ms.date: 10/22/2025
+ms.date: 10/24/2025
 ---
 
 # Azure Local release information
@@ -79,7 +79,7 @@ The following tables summarize the release information for Azure Local across al
 
 | Solution version | OS build | Security update | What's new | Known issues |
 |------|-------|---------------|------------|--------------|
-| 11.2510.1002.87 <br><br> Availability date: 2025-10-22 | 25398.1910 | [October OS security update](security-update/security-update.md?view=azloc-25010&preserve-view=true) | [Features and improvements](./whats-new.md?view=azloc-2510&preserve-view=true#features-and-improvements-in-2510) | [Known issues](./known-issues.md?view=azloc-2510&preserve-view=true) |
+| 11.2510.1002.87 <br><br> Availability date: 2025-10-24 | 25398.1913 | [October OS security update](security-update/security-update.md?view=azloc-25010&preserve-view=true) | [Features and improvements](./whats-new.md?view=azloc-2510&preserve-view=true#features-and-improvements-in-2510) | [Known issues](./known-issues.md?view=azloc-2510&preserve-view=true) |
 | 11.2509.1001.21 <br><br> Availability date: 2025-09-22 | 25398.1849 | [September OS security update](security-update/security-update.md?view=azloc-2509&preserve-view=true) | [Features and improvements](./whats-new.md?view=azloc-2509&preserve-view=true#features-and-improvements-in-2509) | [Known issues](./known-issues.md?view=azloc-2509&preserve-view=true) |
 | 11.2508.1001.51 <br><br> Availability date: 2025-08-29 | 25398.1791 | [August OS security update](security-update/security-update.md?view=azloc-2508&preserve-view=true) | [Features and improvements](./whats-new.md?view=azloc-2508&preserve-view=true#features-and-improvements-in-2508) | [Known issues](./known-issues.md?view=azloc-2508&preserve-view=true) |
 | 11.2507.1001.9 <br><br> 10.2507.0.6 <br></br> Availability date: 2025-07-24 | 25398.1732 | [July OS security update](security-update/security-update.md?view=azloc-2507&preserve-view=true) | [Features and improvements](./whats-new.md?view=azloc-2507&preserve-view=true#features-and-improvements-in-2507) | [Known issues](./known-issues.md?view=azloc-2507&preserve-view=true) |
@@ -90,7 +90,7 @@ The following tables summarize the release information for Azure Local across al
 
 | Solution version | OS build | Security update | What's new | Known issues |
 |------|-------|---------------|------------|--------------|
-| 12.2510.1002.88 <br><br> Availability date: 2025-10-22 | 26100.6887 | [October OS security update](security-update/security-update.md?view=azloc-2510&preserve-view=true&tabs=new-deployments) | [Features and improvements](./whats-new.md?view=azloc-2510&preserve-view=true#features-and-improvements-in-2510) | [Known issues](./known-issues.md?view=azloc-2510&preserve-view=true) |
+| 12.2510.1002.88 <br><br> Availability date: 2025-10-24 | 26100.6899 | [October OS security update](security-update/security-update.md?view=azloc-2510&preserve-view=true&tabs=new-deployments) | [Features and improvements](./whats-new.md?view=azloc-2510&preserve-view=true#features-and-improvements-in-2510) | [Known issues](./known-issues.md?view=azloc-2510&preserve-view=true) |
 | 12.2509.1001.22 <br><br> Availability date: 2025-09-22 | 26100.6584 | [September OS security update](security-update/security-update.md?view=azloc-2509&preserve-view=true&tabs=new-deployments) | [Features and improvements](./whats-new.md?view=azloc-2509&preserve-view=true#features-and-improvements-in-2509) | [Known issues](./known-issues.md?view=azloc-2509&preserve-view=true) |
 | 12.2508.1001.52 <br><br> Availability date: 2025-08-29 | 26100.4946 | [August OS security update](security-update/security-update.md?view=azloc-2508&preserve-view=true&tabs=new-deployments) | [Features and improvements](./whats-new.md?view=azloc-2508&preserve-view=true#features-and-improvements-in-2508) | [Known issues](./known-issues.md?view=azloc-2508&preserve-view=true) |
 | 12.2507.1001.10 <br><br> Availability date: 2025-07-24 | 26100.4652 | [July OS security update](security-update/security-update.md?view=azloc-2507&preserve-view=true&tabs=new-deployments) | [Features and improvements](./whats-new.md?view=azloc-2507&preserve-view=true#features-and-improvements-in-2507) | [Known issues](./known-issues.md?view=azloc-2507&preserve-view=true) |
