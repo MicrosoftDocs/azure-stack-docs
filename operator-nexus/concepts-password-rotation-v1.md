@@ -9,7 +9,7 @@ ms.date: 09/26/2025
 ms.custom: template-concept
 ---
 
-# Password rotation in Network Fabric
+# Secret Rotation in Nexus Network Fabric
 
 NNF enables API-driven, fabric-scoped operator password rotation for NNF in release 9.2 and NNF GA API version **2025-07-15 f**or both GF and BF instances. It replaces manual, ticket-based flows with a predictable, automatable operation using Azure CLI. The rotation runs as a long-running Azure Resource Manager (ARM) action for reliability and transient fault tolerance at scale.
 
@@ -31,13 +31,15 @@ When rotation is triggered, the service securely generates and updates operator 
 - Service will provide targeted resync: device-scope resync operations (single device by ARM ID) to rotate the password for a specific device and also secure secret handling with Azure Key Vault secret versioning.
 - Service will continue to support split-key continuity supported until convergence.
 
-## Limitations/Constraints (Phase 1)
+## Limitations/Constraints
 
 **Password rotation API behaviour**
 
 - Password rotation via API will be blocked when Fabric is Administratively locked.
+- During Password rotation service will move fabric to maintenance mode and certain action such as Commit, RMA,Device disablement will not be available. 
 - Passwords shall not be rotated for the specific device when the device is in an administrative state (disabled). This occurs during RMA, under maintenance, or in cases where the device is not provisioned. The user must enable the device via a post action to retry rotations
 - The service will move the fabric configuration state to successful once the rotation post action is completed. When there are failed devices, the status of rotation will show appropriate state(s). with details of failed device(s)
+- If password rotation failed on any device service will move to Device state Deferred control .Customer can use resync-passwords on specific device resource to retry password rotation on failed devices. User cannot perfom RMA, disabling of devices in such scenario.
 - Previously, device passwords were stored in the NFC key vault under several different names. Only the following naming convention will be used for generating secrets (format aligned across Nexus).All older naming conventions will be retired post 9.2 for GF and BF once migrated via API rotation or new geneva action
 - . Secrets will be stored in NFC key Vault as before.  `<subscription ID>-<resource group name>-<fabric name>-<username>-devicePassword-<deterministic hash>` .  Example - # device password
    00000000-0000-0000-0000-000000000000-exampleRG-exampleFabric-admin-devicePassword-4418bf71
@@ -61,12 +63,12 @@ When rotation is triggered, the service securely generates and updates operator 
 - On Fabric resource delete all secrets pertaining to that Fabric will be purged from NFC Key Vault (similar to present day behaviour)
 - Password rotation behavior with other common workflows
 
-| **Scenario** | **User Action (Recommended)** | **Service Action** | **Fabric State Updates** | **Device State Updates** | **Password / Certificate rotation Notes** |
-| --- | --- | --- | --- | --- | --- |
-| Commit operation | 1\. User must perform password rotation only after commit batch is either successful or failed <br><br>&nbsp;<br><br>&nbsp; | 1.Service must not cater to any password rotation while commit is in progress <br><br>&nbsp; | 1\. Administrative state - Accepted <br><br>&nbsp; | NA  | Password rotation shall not be catered while fabric state is in accepted |
-| Upgrade | 1.User must perform password rotation or resync operation only after upgrade is successful | 1.Service must not cater to any password rotation while upgrade is in progress or failed | 1.Administrative state - Under maintenance | 1.Administrative state - Under maintenance | Password rotation shall not be catered while fabric is under upgrade or upgrade failure state |
-| Device Disabled (one or more devices ) | 1.User must enable all devices before performing password rotation <br><br>&nbsp; | 1.Service must cater to password rotation <br><br>&nbsp; | Administrative state -  Enabled | Administrative state -  Enabled/Deferred control (if Persist RW config exists) | 1.Password rotation is catered. |
-|     | 2.If Device enablement fails due to connectivity issue - User must perform reboot with ZTP and perform device enablement | Service must cater to password rotation post the device is enabled | Administrative state -  Enabled | Administrative state -  Disabled | Password will be catered to post enablement of the device |
+| **Scenario** | **User Action (Recommended)** | **Fabric State Updates** | **Device State Updates** | **Password / Certificate rotation Notes** |
+| --- | --- | --- | --- | --- |
+| Commit operation | 1\. User must perform password rotation only after commit batch is either successful or failed <br><br>&nbsp;<br><br>&nbsp; | 1\. Administrative state - Accepted <br><br>&nbsp; | NA  | Password rotation shall not be catered while fabric state is in accepted |
+| Upgrade | 1.User must perform password rotation or resync operation only after upgrade is successful | 1.Administrative state - Under maintenance | 1.Administrative state - Under maintenance | Password rotation shall not be catered while fabric is under upgrade or upgrade failure state |
+| Device Disabled (one or more devices ) | 1.User must enable all devices before performing password rotation <br><br>&nbsp; | Administrative state -  Enabled | Administrative state -  Enabled/Deferred control (if Persist RW config exists) | 1.Password rotation is catered. |
+|     | 2.If Device enablement fails due to connectivity issue - User must perform reboot with ZTP and perform device enablement | Administrative state -  Enabled | Administrative state -  Disabled | Password will be catered to post enablement of the device |
 
 **Retry framework and Resync behaviour**
 
@@ -87,16 +89,16 @@ When rotation is triggered, the service securely generates and updates operator 
 - Fabric upgrade will be blocked if all device passwords are not same.
 - Service behavior for RMA scenarios as below
 
-| &nbsp;**Scenario** | **User Action (Recommended)** | **Service Action** | **Fabric State Updates** | **Device State Updates** | **Password / Certificate rotation Notes** |
-| --- | --- | --- | --- | --- | --- |
-| Device is unreachable due to failure and unable to serve traffic | 1\. User must perform a POST action to mark Administrative State disabled for the specific device immediately | 1.Service shall put the ARM resource of the specific device in Disabled state and shall not push any config updates- User can only perform RMA, Serial Number update actions. | 1\. Administrative state - Enabled Degraded | 1\. Administrative state: Disabled | Password rotation shall not be catered when the device is disabled. Password rotation can happen via RMA flow which initiates ZTP and bootstrap |
-|     | 2.User must perform device serial number patch update and the POST action to mark Administrative State as RMA once replacement device is available | 2.If the device is still unreachable while RMA is performed, the startup config shall be updated to be put in maintenance mode at the startup. <br><br>Device shall get the latest passwords via ZTP bootstrap | 2\. Administrative state - Enabled Degraded unless the RMA is complete, and all devices are in enabled state | 2\. Administrative state: RMA |     |
-| Device is flaky and has intermittent issues but able to serve traffic | 1\. User must perform the POST action to mark Administrative State Disabled whenever the device needs to stop serving traffic <br><br>&nbsp;<br><br>&nbsp; | 1.Service shall put the ARM resource of the specific device in Disabled state and shall not push any config updates- User can only perform RMA, Serial Number update actions once they have replacement ready as next step. <br><br>&nbsp; | 1\. Administrative state - Enabled Degraded | 1\. Administrative state: Disabled | Password rotation shall not be catered when device is disabled. Password rotation can happen via RMA flow which initiates ZTP and bootstrap |
-|     | 2.User must perform device serial number patch update and the POST action to mark Administrative State as RMA once replacement device is available | 2.If the device is still unreachable while RMA is performed the startup config shall be put in maintenance mode at the startup. <br><br>Device shall get the latest passwords via ZTP bootstrap | 2\. Administrative state - Enabled Degraded unless the RMA is complete, and all devices are in enabled state | 2\. Administrative state: RMA |     |
-| Device is flaky and has intermittent issues but unable to serve traffic | 1\. User must perform a POST action to mark administrative state disabled for the specific device immediately <br><br>&nbsp;<br><br>&nbsp; | 1.Service shall put the ARM resource of the specific device in Disabled state and shall not push any config updates- User can only perform RMA, Serial Number update actions. <br><br>&nbsp; | 1\. Administrative state - Enabled Degraded | 1\. Administrative state: Disabled | Password rotation will not be catered when device is disabled. Password rotation can happen via RMA flow which initiates ZTP and bootstrap |
-|     | 2.User must perform device serial number patch update and the POST action to mark Administrative State as RMA once replacement device is available | 2\. If the device is still unreachable while RMA is performed the startup config shall be put in maintenance mode at the startup. <br><br>Device shall get the latest passwords via ZTP bootstrap | 2\. Administrative state - Enabled Degraded unless the RMA is complete, and all devices are in enabled state | 2\. Administrative state: RMA |     |
-| Device is to be RMA in the future for known issues but serving traffic | 1\. User must perform the POST action to mark Administrative State Disabled whenever the device needs to stop serving traffic <br><br>&nbsp;<br><br>&nbsp; | 1\. Service shall put the ARM resource of the specific device in Disabled state and shall not push any config updates- User can only perform RMA, Serial Number update actions once they have replacement ready as next step. <br><br>&nbsp; | 1\. Administrative state - Enabled Degraded | 1\. Administrative state: Disabled | Password rotation will not be catered when device is disabled. Password rotation can happen via RMA flow which initiates ZTP and bootstrap |
-| &nbsp; | &nbsp;2.User must perform device serial number patch update and the POST action to mark Administrative State as RMA once replacement device is available | &nbsp;2. If the device is still unreachable while RMA is performed the startup config shall be put in maintenance mode at the startup. <br><br>Device shall get the latest passwords via ZTP bootstrap | &nbsp;2. Administrative state - Enabled Degraded unless the RMA is complete, and all devices are in enabled state | &nbsp;2. Administrative state: RMA | &nbsp; |
+| &nbsp;**Scenario** | **User Action (Recommended)** | **Fabric State Updates** | **Device State Updates** | **Password / Certificate rotation Notes** |
+| --- | --- | --- | --- | --- |
+| Device is unreachable due to failure and unable to serve traffic | 1\. User must perform a POST action to mark Administrative State disabled for the specific device immediately | 1\. Administrative state - Enabled Degraded | 1\. Administrative state: Disabled | Password rotation shall not be catered when the device is disabled. Password rotation can happen via RMA flow which initiates ZTP and bootstrap |
+|     | 2.User must perform device serial number patch update and the POST action to mark Administrative State as RMA once replacement device is available | 2\. Administrative state - Enabled Degraded unless the RMA is complete, and all devices are in enabled state | 2\. Administrative state: RMA |     |
+| Device is flaky and has intermittent issues but able to serve traffic | 1\. User must perform the POST action to mark Administrative State Disabled whenever the device needs to stop serving traffic <br><br>&nbsp;<br><br>&nbsp; | 1\. Administrative state - Enabled Degraded | 1\. Administrative state: Disabled | Password rotation shall not be catered when device is disabled. Password rotation can happen via RMA flow which initiates ZTP and bootstrap |
+|     | 2.User must perform device serial number patch update and the POST action to mark Administrative State as RMA once replacement device is available | 2\. Administrative state - Enabled Degraded unless the RMA is complete, and all devices are in enabled state | 2\. Administrative state: RMA |     |
+| Device is flaky and has intermittent issues but unable to serve traffic | 1\. User must perform a POST action to mark administrative state disabled for the specific device immediately <br><br>&nbsp;<br><br>&nbsp; | 1\. Administrative state - Enabled Degraded | 1\. Administrative state: Disabled | Password rotation will not be catered when device is disabled. Password rotation can happen via RMA flow which initiates ZTP and bootstrap |
+|     | 2.User must perform device serial number patch update and the POST action to mark Administrative State as RMA once replacement device is available | 2\. Administrative state - Enabled Degraded unless the RMA is complete, and all devices are in enabled state | 2\. Administrative state: RMA |     |
+| Device is to be RMA in the future for known issues but serving traffic | 1\. User must perform the POST action to mark Administrative State Disabled whenever the device needs to stop serving traffic <br><br>&nbsp;<br><br>&nbsp; | 1\. Administrative state - Enabled Degraded | 1\. Administrative state: Disabled | Password rotation will not be catered when device is disabled. Password rotation can happen via RMA flow which initiates ZTP and bootstrap |
+| &nbsp; | &nbsp;2.User must perform device serial number patch update and the POST action to mark Administrative State as RMA once replacement device is available | &nbsp;2. Administrative state - Enabled Degraded unless the RMA is complete, and all devices are in enabled state | &nbsp;2. Administrative state: RMA | &nbsp; |
 
 - **Geneva actions**- There are couple of Geneva actions available to handle migration of instances to use the latest secrets format
 
