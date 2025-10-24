@@ -1,6 +1,6 @@
 ---
-title: Create network security groups, network security rules, default network access policies on Azure Local VMs (preview)
-description: Learn how to create network security groups, network security rules, and default network access policies on Azure Local VMs using the Azure CLI or the Azure portal (preview).
+title: Create network security groups, network security rules, default network access policies on Azure Local VMs
+description: Learn how to create network security groups, network security rules, and default network access policies on Azure Local VMs using the Azure CLI or the Azure portal.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
@@ -8,15 +8,11 @@ ms.date: 09/05/2025
 ms.service: azure-local
 ---
 
-# Create network security groups on Azure Local (preview)
+# Create network security groups on Azure Local
 
 ::: moniker range=">=azloc-2506"
 
 This article explains how to create and configure network security groups (NSGs) to manage data traffic flow after you enable network controller on your Azure Local.
-
-
-[!INCLUDE [important](../includes/hci-preview.md)]
-
 
 ## About NSGs on Azure Local VMs
 
@@ -90,8 +86,6 @@ In this example, the NSG controls traffic flow between logical networks A and B,
 ## Create a network security group (NSG)
 
 Create a network security group (NSG) to manage data traffic flow on Azure Local. You can create an NSG by itself or associate it with a network interface or a logical network.
-
-NSGs are available only for static logical networks. DHCP-based logical networks aren't supported.
 
 > [!WARNING]
 > NSGs must have at least one network security rule. An empty NSG denies all inbound traffic by default. A VM or logical network associated with this NSG isn't reachable.

@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 07/03/2025
+ms.date: 10/23/2025
 ---
 
 # Manage security defaults for Azure Local
@@ -71,9 +71,9 @@ Use the following table to view and download the complete list of security setti
 
 | Azure Local solution version             | Running Azure Local OS version                       | Download link for settings csv file |
 |------------------------------------------|-------------------------------------------|-------------------------------------|
-| 2505 existing deployments                | Running OS build 25398.xxxx and domain-joined                      | [Download security baseline](https://aka.ms/SecBase) |
-| 2506 new deployments                     | Running OS build 26100.xxxx and domain-joined     | [Download security baseline](https://aka.ms/SecBaseDomJoin) |
-| 2506 existing deployments                | Running OS build 26100.xxxx and not domain-joined (also known as AD-less)    | [Download security baseline](https://aka.ms/SecBaseAdless) |
+| Deployments running v 2505 and earlier     | Running OS build 25398.xxxx and domain-joined                      | [Download security baseline](https://aka.ms/SecBase) |
+| Deployments running v 2506 and later   | Running OS build 26100.xxxx and domain-joined     | [Download security baseline](https://aka.ms/SecBaseDomJoin) |
+| Deployments running v 2506 and later   | Running OS build 26100.xxxx and not domain-joined (also known as AD-less)    | [Download security baseline](https://aka.ms/SecBaseAdless) |
 
 ## Modify security defaults
 

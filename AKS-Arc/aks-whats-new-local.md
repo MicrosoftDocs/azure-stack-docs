@@ -1,16 +1,16 @@
 ---
-title: What's new in AKS on Azure Local
-description: Learn about what's new in AKS on Azure Local.
+title: What's new in AKS enabled by Azure Arc on Azure Local
+description: Learn about what's new in AKS enabled by Azure Arc on Azure Local.
 ms.topic: overview
-ms.date: 09/24/2025
+ms.date: 10/24/2025
 author: sethmanheim
 ms.author: sethm 
 ms.reviewer: rcheeran
-ms.lastreviewed: 09/24/2025
+ms.lastreviewed: 10/24/2025
 
 ---
 
-# What's new in AKS on Azure Local
+# What's new in AKS enabled by Azure Arc on Azure Local
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
@@ -19,13 +19,29 @@ This article summarizes features, improvements, and important notices for AKS on
 > [!NOTE]
 > AKS on Azure Local requires Azure Local version 23H2 or later.
 
-## Features and improvements
+## AKS enabled by Azure Arc releases
 
 This section lists the new features and improvements in AKS Arc in each release of Azure Local.
 
+### Release 2510
+
+#### Announcements for 2510
+
+- Kubernetes version 1.29 is no longer supported.
+- KMS v1 will be deprecated soon. KMS v2 is included in this Azure Local release. Please plan on redeploying your clusters using KMS v2.
+- Support for [Windows Server 2019 SKU](https://techcommunity.microsoft.com/blog/containers/announcing-the-3-year-retirement-of-windows-server-2019-on-azure-kubernetes-serv/3777341) for node pools ends in March 2026.
+
+#### Kubernetes versions in 2510
+
+Kubernetes version 1.32 is introduced in 2510. The versions included in the 2510 release are: 1.30.13, 1.30.14, 1.31.9, 1.31.10, 1.32.5, 1.32.6.
+
+#### Features
+
+- The KMS v2 provider is introduced for new cluster deployments in Azure Local 2510. [KMS v2](https://kubernetes.io/docs/tasks/administer-cluster/kms-provider/) brings many improvements in performance, scalability, health check and status, and observability. These enhancements provide a reliable solution to encrypt all resources in Kubernetes clusters. When you create a new cluster after upgrading to 2510, the Kubernetes cluster is configured to use KMS v2 by default. For more information, [see the instructions here](encrypt-etcd-secrets.md).
+
 ### Release 2509
 
-#### Announcements
+#### Announcements for 2509
 
 - Support for Kubernetes minor version 1.29 ends with this 2509 release.
 - KMS v1 will be deprecated soon. We are adding support for KMS v2 in an upcoming Azure Local release. Please plan on upgrading your clusters once KMS v2 is available.
@@ -37,12 +53,12 @@ No new Kubernetes versions were added in 2509. The versions included in the 2509
 
 #### Features
 
-- Starting with the Azure Local 2509 release, we are disabling the download of the Windows VHDs by default. This helps to save on bandwidth usage and to reduce deployment times for customers who need only Linux-based containers. Customers who need to use Windows node pools can continue to do so by [enabling the Windows node pool feature](howto-enable-windows-node-pools.md), and then performing Windows node pool-based operations.
+- Starting with the Azure Local 2509 release, we are disabling the download of the Windows VHDs by default. This change helps to save on bandwidth usage and to reduce deployment times for customers who need only Linux-based containers. Customers who need to use Windows node pools can continue to do so by [enabling the Windows node pool feature](howto-enable-windows-node-pools.md), and then performing Windows node pool-based operations.
 - Increased the default OS disk size on virtual machines used as AKS Arc nodes to 200 GB. These VMs are dynamically expanding virtual hard disks and you should [ensure sufficient physical disk space is available](/windows-server/virtualization/hyper-v/best-practices-analyzer/ensure-sufficient-physical-disk-space-is-available-when-virtual-machines-use-dynamically?source=recommendations) for the node pools that you create on AKS Arc.
 
 ### Release 2508
 
-#### Announcements
+#### Announcements for 2508
 
 - Support for Kubernetes minor version 1.29 will end with the 2509 release.
 - KMS v1 will be deprecated soon. We will be adding support for KMS v2 in an upcoming Azure Local release. Please plan on upgrading your clusters once KMS v2 is available.

@@ -1,6 +1,6 @@
 ---
-title: Enable Software-Defined Networking (SDN) enabled by Azure Arc on Azure Local using a PowerShell Action Plan (preview)
-description: Describes how to enable integration of SDN enabled by Azure Arc using a PowerShell action plan on Azure Local (preview).
+title: Enable Software-Defined Networking (SDN) enabled by Azure Arc on Azure Local using a PowerShell Action Plan
+description: Describes how to enable integration of SDN enabled by Azure Arc using a PowerShell action plan on Azure Local.
 author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
@@ -8,13 +8,11 @@ ms.topic: how-to
 ms.date: 09/19/2025
 ---
 
-# Enable SDN integration on Azure Local using PowerShell (preview)
+# Enable SDN integration on Azure Local using PowerShell
 
 ::: moniker range=">=azloc-2506"
 
 This article describes how to enable and integrate software defined networking (SDN) on your existing Azure Local instance. You use a PowerShell action plan to enable SDN.
-
-[!INCLUDE [important](../includes/hci-preview.md)]
 
 ## About SDN integration in Azure Local
 
@@ -47,7 +45,7 @@ Here's an architecture diagram of Network Controller in a 2-node Azure Local ins
 ## Considerations for SDN enabled by Arc
 
 > [!IMPORTANT]
-> - SDN enabled by Arc is a preview feature. Once you enable SDN, you can't roll back or disable.
+> - Once you enable SDN, you can't roll back or disable.
 > - If you are already running Network controller on your Azure Local cluster that was deployed using on-premises tools, you must not attempt to run this method.
 > - The only VMs that are in scope for using NSGs with this feature are Azure Local VMs. These are the VMs that were deployed from Azure client interfaces (Azure CLI, Azure portal, Azure Resource Manager). Do not use an Azure Local VM in conjunction with an NSG that is managed and applied from on-premises tools.
 
@@ -160,10 +158,10 @@ Follow these steps to enable SDN on your Azure Local instance:
     Add-EceFeature -Name NC -SDNPrefix <SDNPrefix>
     ```
 
-    Confirm when prompted to proceed.
+    Proceed to provide confirmation when acknowledgments are requested.
 
     > [!TIP]
-    > To skip the confirmation prompt, use the `-AcknowledgeMaintenanceWindow` parameter.
+    > To skip the confirmation prompt to acknowledge the maintenance window, use the `-AcknowledgeMaintenanceWindow` parameter, and then use the `-AcknowledgeDNSRecordCreation` parameter to acknowledge you have prepared your DNS environment if not using dynamic DNS.
 
     This step can take up to 20 minutes.
 
