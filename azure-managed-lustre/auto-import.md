@@ -30,9 +30,9 @@ See [Change Feed documentation](/azure/storage/blobs/storage-blob-change-feed?ta
 ## Prerequisites
 
 - Existing Azure Managed Lustre file system - create one using the [Azure portal](/azure/azure-managed-lustre/create-file-system-portal), [Azure Resource Manager](/azure/azure-managed-lustre/create-file-system-resource-manager), or [Terraform](/azure/azure-managed-lustre/create-aml-file-system-terraform). To learn more about blob integration, see [Blob integration prerequisites](/azure/azure-managed-lustre/amlfs-prerequisites#blob-integration-prerequisites-optional).
-- [Azure Blob Storage Change Feed](/azure/storage/blobs/storage-blob-change-feed?tabs=azure-portal) **must be enabled** on the Storage Account associated with the AMLFS file system. **NOTE**: Change Feed [does not support](/azure/storage/blobs/storage-blob-change-feed?tabs=azure-portal#enable-and-disable-the-change-feed) Storage Accounts with a Hierarchical Namespace (HNS) enabled.
-  - Change Feed retention period MUST be set to 7 days or greater. When enabling the blob change feed, select to either: **Keep all logs** OR set **Delete change feed logs after (in days)** to 7 or greater.
-- Concurrent Blob Integration jobs are not permitted. It is necessary to disable Auto-Export before enabling Auto-Import.
+- [Azure Blob Storage Change Feed](/azure/storage/blobs/storage-blob-change-feed?tabs=azure-portal) **must be enabled** on the Storage Account associated with the AMLFS file system. **NOTE**: Change Feed [doesn't support](/azure/storage/blobs/storage-blob-change-feed?tabs=azure-portal#enable-and-disable-the-change-feed) Storage Accounts with a Hierarchical Namespace (HNS) enabled.
+  - Change Feed retention period MUST be set to seven days or greater. When enabling the blob change feed, select to either: **Keep all logs** OR set **Delete change feed logs after (in days)** to seven or greater.
+- Concurrent Blob Integration jobs aren't permitted. It's necessary to disable Auto-Export before enabling Auto-Import.
 
 ## Configuration
 
@@ -89,7 +89,7 @@ Pre-existing Symlinks | Count of symbolic links encountered in the Lustre namesp
 Total Blobs Imported | Count of Blobs imported into the Lustre namespace from the Blob Container after the initial Full Sync phase. A superset of imported files, directories, and symlinks listed.
 Rate of Blob Import | Per-second count of Blobs imported from Blob to Lustre after the initial Full Sync phase
 Deletions | Count of files deleted during the Blob Sync phase
-Total Conflicts | Count of encounters with Blobs that have the same path and name of an existing object in the Lustre namespace after the initial Full Sync phase, but that differ in terms of type of object, data, and/or metadata.
+Total Conflicts | Count of encounters with Blobs that have the same path and name of an existing object in the Lustre namespace after the initial Full Sync phase, but that differ in terms of one or more areas including type of object, data, and metadata.
 Total Errors | Total number of errors encountered, failing to import Blobs to Lustre, after the initial Full Sync phase. Click on this link to be taken to the Logging Container page to view the logs associated with this Auto-Import job.
 Last Change Feed Event Consumed Time | Timestamp of the last Change Feed event processed for this Auto-Import job
 Last Time Fully Synchronized | Most recent timestamp when all Change Feed events were processed for this Auto-Import job
@@ -98,19 +98,19 @@ Last Time Fully Synchronized | Most recent timestamp when all Change Feed events
 
 While using Auto-Import, consider the following best practices to ensure smooth operation:
 
-- It is highly recommended to review the behavior of the Change Feed feature, specifically the [specifications](/azure/storage/blobs/storage-blob-change-feed?tabs=azure-portal#specifications).
-- Change Feed retention period MUST be set to 7 days or greater. When enabling the blob change feed, select to either: **Keep all logs** OR set **Delete change feed logs after (in days)** to 7 or greater.
-- Auto-Import is dependent on the Change Feed and is, thus, limited to the timeliness of events published to the Change Feed. The Change Feed currently suggests that events are published “within minutes”.
+- It's highly recommended to review the behavior of the Change Feed feature, specifically the [specifications](/azure/storage/blobs/storage-blob-change-feed?tabs=azure-portal#specifications).
+- Change Feed retention period MUST be set to seven days or greater. When enabling the blob change feed, select to either: **Keep all logs** OR set **Delete change feed logs after (in days)** to seven or greater.
+- Auto-Import is dependent on the Change Feed and is, thus, limited to the timeliness of events published to the Change Feed. The Change Feed currently suggests that events are published "within minutes."
 - Auto-Import can typically import changes at a rate of 2000 per second.
-- No Blob Integration jobs can be run at the same time. Once Auto-Import is enabled, manual import and export jobs (both manual and auto) cannot be used.
-- Lfs hsm_* commands are not supported during the use of Auto-Import.
+- No Blob Integration jobs can be run at the same time. Once Auto-Import is enabled, manual import and export jobs (both manual and auto) can't be used.
+- Lfs hsm_* commands aren't supported during the use of Auto-Import.
 
 Best practices for enabling Deletions:
 
 - Deletions are one way (Blob ➜ Lustre) and only apply going forward.
-- AutoImport always begins with a manual (full sync) scan. That scan does not compute a bidirectional map or attempt to detect “blob was deleted, file still exists in Lustre.” **Deletes that occurred before enablement therefore won’t be removed during the scan.**
+- AutoImport always begins with a manual (full sync) scan. That scan doesn't compute a bidirectional map or attempt to detect "blob was deleted, file still exists in Lustre." **Deletes that occurred before enablement therefore won’t be removed during the scan.**
 - During the initial scan, changes (including deletes) are delayed. Any Change Feed events, including deletes, that occur while the initial scan runs are applied **after** the scan completes. Expect a temporary period where Lustre may still show files that were deleted in Blob during the scan.
-- Deletion behavior is explicitly tied to the selected conflict mode. The following table demonstrates the behavior for each mode when “Enable deletions” is selected:
+- Deletion behavior is explicitly tied to the selected conflict mode. The following table demonstrates the behavior for each mode when "Enable deletions" is selected:
 
 **Conflict resolution mode** | **Delete File?** | **Effect if encountered**
 --- | --- | ---
@@ -119,4 +119,4 @@ Skip | No | File remains in Lustre
 
 ## Next Steps
 
-- Learn more about [Azure Blob Storage integration with Azure Managed Lustre file systems](/blob-integration).
+- Learn more about [Azure Blob Storage integration with Azure Managed Lustre file systems](/azure/azure-managed-lustre/blob-integration).
