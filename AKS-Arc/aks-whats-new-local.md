@@ -2,11 +2,11 @@
 title: What's new in AKS on Azure Local
 description: Learn about what's new in AKS on Azure Local.
 ms.topic: overview
-ms.date: 09/24/2025
+ms.date: 10/24/2025
 author: sethmanheim
 ms.author: sethm 
 ms.reviewer: rcheeran
-ms.lastreviewed: 09/24/2025
+ms.lastreviewed: 10/24/2025
 
 ---
 
@@ -25,18 +25,17 @@ This section lists the new features and improvements in AKS Arc in each release 
 
 #### Announcements for 2510
 
-- Kubernetes version 1.29 no longer supported.
-- KMS v1 will be deprecated soon. KMS v2 is included in this Azure Local release. Please plan on redeploying your clusters to use KMS v2.
+- Kubernetes version 1.29 is no longer supported.
+- KMS v1 will be deprecated soon. KMS v2 is included in this Azure Local release. Please plan on redeploying your clusters using KMS v2.
 - Support for [Windows Server 2019 SKU](https://techcommunity.microsoft.com/blog/containers/announcing-the-3-year-retirement-of-windows-server-2019-on-azure-kubernetes-serv/3777341) for node pools ends in March 2026.
 
 #### Kubernetes versions in 2510
 
-Kubernetes version 1.32 is introduced in 2510. The versions included in the 2510 release are: 1.30.13, 1.30.14, 1.31.9, 1.31.10, 1.32.5, 1.32.6
+Kubernetes version 1.32 is introduced in 2510. The versions included in the 2510 release are: 1.30.13, 1.30.14, 1.31.9, 1.31.10, 1.32.5, 1.32.6.
 
 #### Features
 
-- KMS v2 provider is introduced for new cluster deployments in the Azure Local 2510 release. (KMS v2) [https://kubernetes.io/docs/tasks/administer-cluster/kms-provider/] brings numerous improvements in performance, scalability, health check & status, and observability. These enhancements provide users with a reliable solution to encrypt all resources in their Kubernetes clusters. When you create a new cluster after upgrading to 2510, the Kubernetes cluster would be configured to use KMS v2 by default. For more information please see instructions (here) [encrypt-etcd-secrets.md]
-
+- The KMS v2 provider is introduced for new cluster deployments in Azure Local 2510. [KMS v2](https://kubernetes.io/docs/tasks/administer-cluster/kms-provider/) brings many improvements in performance, scalability, health check and status, and observability. These enhancements provide a reliable solution to encrypt all resources in Kubernetes clusters. When you create a new cluster after upgrading to 2510, the Kubernetes cluster is configured to use KMS v2 by default. For more information, [see the instructions here](encrypt-etcd-secrets.md).
 
 ### Release 2509
 
