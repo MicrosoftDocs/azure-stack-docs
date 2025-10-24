@@ -58,6 +58,10 @@ foreach ($currentServer in $allServers) {
     $allServerSessions += $currentSession
 }
 
+# Create an alias for Trace-Execution
+function TraceExecutionPreviewBypass { [CmdletBinding()] param( [Parameter(ValueFromRemainingArguments=$true)] $RemainingArgs ) }
+Set-Alias -Name Trace-Execution -Value TraceExecutionPreviewBypass -Force -Scope Global
+
 # Run the LLDP validator
 $localAvailabilityZones = @(
     @{
