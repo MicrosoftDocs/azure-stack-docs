@@ -3,10 +3,10 @@ title: Supported Kubernetes versions for AKS enabled by Azure Arc
 description: Understand the Kubernetes version support policy and lifecycle of clusters for Azure Kubernetes Service enabled by Azure Arc.
 services: container-service
 ms.topic: article
-ms.date: 10/09/2025
+ms.date: 10/24/2025
 author: sethmanheim
 ms.author: sethm 
-ms.lastreviewed: 08/27/2025
+ms.lastreviewed: 10/24/2025
 ms.reviewer: rcheeran
 
 # Intent: As an IT Pro, I want to know how Kubernetes versions are supported, as well as the lifecycle of clusters in AKS enabled by Azure Arc.
@@ -42,21 +42,23 @@ You should install the latest patch release of the minor version you're running.
 
 |  K8s minor version | Supported Azure Local versions | Current status | Last release with Kubernetes patch/CVE updates |
 |--------------|-------------------|--------------|------------|
-| 1.31 | [2508](aks-whats-new-local.md#features-and-improvements) | Generally available | TBD |
-| 1.30 | [2508, 2507, 2503](aks-whats-new-local.md#features-and-improvements) | Generally available | TBD |
-| 1.29 | [2508, 2507, 2503](aks-whats-new-local.md#features-and-improvements), [2411](aks-whats-new-local.md#features-and-improvements), [2408](aks-whats-new-local.md#release-2408) | Generally available | 2509 |
-| 1.28 | [2507, 2503](aks-whats-new-local.md#features-and-improvements), [2411](aks-whats-new-local.md#features-and-improvements), [2408](aks-whats-new-local.md#release-2408), [2405](aks-whats-new-local.md#release-2405) | No more patch versions/CVE updates | 2507 release |
-| 1.27 | [2411](aks-whats-new-local.md#features-and-improvements), [2408](aks-whats-new-local.md#release-2408), [2405](aks-whats-new-local.md#release-2405), 2402 | No more patch versions/CVE updates | 2411 release |
+| 1.32 | [2510](aks-whats-new-local.md#aks-enabled-by-azure-arc-releases) | Generally available | TBD |
+| 1.31 | [2510, 2509, 2508](aks-whats-new-local.md#aks-enabled-by-azure-arc-releases) | Generally available | TBD |
+| 1.30 | [2510, 2509, 2508, 2507, 2503](aks-whats-new-local.md#aks-enabled-by-azure-arc-releases) | Generally available | 2601 |
+| 1.29 | [2509, 2508, 2507, 2503](aks-whats-new-local.md#aks-enabled-by-azure-arc-releases), [2411](aks-whats-new-local.md#aks-enabled-by-azure-arc-releases), [2408](aks-whats-new-local.md#release-2408) | Generally available | 2509 |
+| 1.28 | [2507, 2503](aks-whats-new-local.md#aks-enabled-by-azure-arc-releases), [2411](aks-whats-new-local.md#aks-enabled-by-azure-arc-releases), [2408](aks-whats-new-local.md#release-2408), [2405](aks-whats-new-local.md#release-2405) | No more patch versions/CVE updates | 2507 release |
+| 1.27 | [2411](aks-whats-new-local.md#aks-enabled-by-azure-arc-releases), [2408](aks-whats-new-local.md#release-2408), [2405](aks-whats-new-local.md#release-2405), 2402 | No more patch versions/CVE updates | 2411 release |
 | 1.26 | [2405](aks-whats-new-local.md#release-2405), 2402 and older | No more patch versions/CVE updates | 2405 release |
 
 > [!NOTE]
-> Kubernetes version 1.32 is planned for the next Azure Local release.
-> Kubernetes version 1.29 will be no longer be supported after the next release.
+> Kubernetes version 1.33 is planned for the next Azure Local release.
+> Kubernetes version 1.29 is no longer supported.
 
 ### AKS Arc supported Kubernetes minor and patch versions per release
 
 | Release             | Supported minor & patch versions                 |
 |---------------------|--------------------------------------------------|
+| 2509                | 1.30.13, 1.30.14, 1.31.9, 1.31.10, 1.32.5, 1.32.6|
 | 2509                | 1.29.12, 1.29.13, 1.30.8, 1.30.9, 1.31.4, 1.31.5 |
 | 2508                | 1.29.12, 1.29.13, 1.30.8, 1.30.9, 1.31.4, 1.31.5 |
 | 2507                | 1.28.12, 1.28.14, 1.29.7, 1.29.9, 1.30.3, 1.30.4 |
