@@ -20,7 +20,6 @@ For more information about creating and managing managed identities and role ass
 
 The system-assigned managed identity is created automatically when the VM is created.
 The lifecycle of the system-assigned managed identity is tied to the VM.
-This option is simpler to manage as you don't need to create and manage the identity separately.
 However, it's necessary to assign roles to the system-assigned managed identity after the VM is created.
 You can grant the required roles to the system-assigned managed identity after the VM is created either manually or using Azure CLI.
 The role assignments can be automated by embedding the az CLI commands in the cloud-init userData script; remember that cloud-init runs only once on the first boot.
