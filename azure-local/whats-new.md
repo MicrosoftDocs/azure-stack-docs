@@ -41,7 +41,7 @@ This release has the following features and improvements:
 
 - **.NET updates**: This build uses .NET version **8.0.21** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
     
-- **Azure Local rack aware clustering (Preview)**: Azure Local now supports rack aware clustering. This Preview feature allows you to define local availability zones based on physical racks in your datacenter, enhancing the resilience of your cluster against rack-level failures. For more information, see [Rack aware clustering](./index.yml).
+- **Azure Local rack aware clustering (Preview)**: Azure Local now supports rack aware clustering. This Preview feature allows you to define local availability zones based on physical racks in your datacenter, enhancing the resilience of your cluster against rack-level failures. For more information, see [Rack aware clustering](concepts/rack-aware-cluster-overview.md).
 
 - **Upgrade**: Starting this release, solution upgrade from 11.2510 to 12.2510 is available to everyone and no longer requires you to opt-in.
 
@@ -54,7 +54,7 @@ This release has the following features and improvements:
         
         This Preview feature lets you verify that the virtual machine starts in a well known good state by checking the integrity of the entire boot chain.  This helps detect any unexpected changes to the boot chain (firmware, OS boot loader, and drivers).
         
-        For more information, see [Trusted VM guest attestation](./index.yml).
+        For more information, see [Trusted VM guest attestation](manage/trusted-launch-guest-attestation.md).
 
 - **Azure Local deployment using local identity**: This feature has now moved from Limited Preview to Preview. There were many changes made to the documentation for deploying Azure Local using local identity with Azure Key Vault, including:
     - Revised instructions for updating Azure Key Vault in Azure Local environments.
@@ -156,7 +156,7 @@ This release has the following features and improvements:
     
 - **.NET updates**: This build uses .NET version **8.0.18** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
 
-<!--- **Trusted Virtual Machine (Trusted VM) guest attestation**: Azure Local 2508 release introduces guest attestation (also known as boot integrity verification) for Azure Local virtual machines with Trusted launch. This feature lets you verify that the virtual machine starts in a well known good state by checking the integrity of the entire boot chain. This helps detect any unexpected changes to the boot chain (firmware, OS boot loader, and drivers) and take action if it's compromised. For more information, see [Trusted VM guest attestation](./index.yml).-->
+**Trusted Virtual Machine (Trusted VM) guest attestation**: Azure Local 2508 release introduces guest attestation (also known as boot integrity verification) for Azure Local virtual machines with Trusted launch. This feature lets you verify that the virtual machine starts in a well known good state by checking the integrity of the entire boot chain. This helps detect any unexpected changes to the boot chain (firmware, OS boot loader, and drivers) and take action if it's compromised. For more information, see [Trusted VM guest attestation](manage/trusted-launch-guest-attestation.md).
 
 - **Deployment and upgrade changes**:
     - Starting this release, Azure Resource Manager (ARM) deployment templates are available for previous releases.
