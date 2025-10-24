@@ -3,7 +3,7 @@ title:  Security updates for Azure Local
 description: Security updates for Azure Local.
 author: alkohli
 ms.topic: conceptual
-ms.date: 10/14/2025
+ms.date: 10/24/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
@@ -34,7 +34,7 @@ Secure Boot certificates used by most Windows devices are set to expire starting
 To learn more about Windows update terminology, see [types of Windows updates](/troubleshoot/windows-client/installing-updates-features-roles/standard-terminology-software-updates) and [monthly quality update types](https://techcommunity.microsoft.com/blog/windows-itpro-blog/windows-monthly-updates-explained/3773544).  
 ## Improvements
 
-This security update contains fixes and quality improvements from [KB5065425](https://support.microsoft.com/topic/september-9-2025-kb5065425-os-build-25398-1849-5cbdf982-3ed6-49bf-a936-457f0edc7056?preview=true) (released September 9, 2025). The following summary outlines key issues addressed by this update. Also, included are available new features. The bold text within the brackets indicates the item or area of the change.
+This security update contains fixes and quality improvements from [KB5066780](https://support.microsoft.com/en-us/topic/october-14-2025-kb5066780-os-build-25398-1913-fcae5a50-170f-40dd-af68-ea2a267a74e6) (released October 14, 2025). The following summary outlines key issues addressed by this update. Also, included are available new features. The bold text within the brackets indicates the item or area of the change.
 
 - **[Input]**
     - Fixed: An issue where some characters didn’t display correctly when using the Chinese Input Method Editor (IME).
@@ -77,7 +77,7 @@ Secure Boot certificates used by most Windows devices are set to expire starting
 To learn more about Windows update terminology, see [types of Windows updates](/troubleshoot/windows-client/installing-updates-features-roles/standard-terminology-software-updates) and [monthly quality update types](https://techcommunity.microsoft.com/blog/windows-itpro-blog/windows-monthly-updates-explained/3773544).  
 ## Improvements
 
-This security update contains fixes and quality improvements from [KB5065789](https://support.microsoft.com/en-us/topic/september-29-2025-kb5065789-os-builds-26200-6725-and-26100-6725-preview-fa03ce47-cec5-4d1c-87d0-cac4195b4b4e?preview=true) (released September 29, 2025). The following summary outlines key issues addressed by this update. Also, included are available new features. The bold text within the brackets indicates the item or area of the change. 
+This security update contains fixes and quality improvements from [KB5066835](https://support.microsoft.com/en-us/topic/october-14-2025-kb5066835-os-builds-26200-6899-and-26100-6899-1db237d8-9f3b-4218-9515-3e0a32729685) (released October 14, 2025). The following summary outlines key issues addressed by this update. Also, included are available new features. The bold text within the brackets indicates the item or area of the change. 
 
 - **[Browser]** Fixed: This update addresses an issue that caused the print preview screen to stop responding in Chromium-based browsers.
 
