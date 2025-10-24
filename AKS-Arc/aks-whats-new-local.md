@@ -10,8 +10,6 @@ ms.lastreviewed: 09/24/2025
 
 ---
 
-# What's new in AKS on Azure Local
-
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
 This article summarizes features, improvements, and important notices for AKS on Azure Local (AKS enabled by Azure Arc). It highlights release-specific updates—such as supported Kubernetes versions, platform and tooling changes, security advisories, and notable bug fixes—to help you plan upgrades and manage clusters. For details about a particular release, see the release sections that follow.
@@ -19,13 +17,30 @@ This article summarizes features, improvements, and important notices for AKS on
 > [!NOTE]
 > AKS on Azure Local requires Azure Local version 23H2 or later.
 
-## Features and improvements
+## AKS enabled by Azure Arc releases
 
 This section lists the new features and improvements in AKS Arc in each release of Azure Local.
 
+### Release 2510
+
+#### Announcements for 2510
+
+- Kubernetes version 1.29 no longer supported.
+- KMS v1 will be deprecated soon. KMS v2 is included in this Azure Local release. Please plan on redeploying your clusters to use KMS v2.
+- Support for [Windows Server 2019 SKU](https://techcommunity.microsoft.com/blog/containers/announcing-the-3-year-retirement-of-windows-server-2019-on-azure-kubernetes-serv/3777341) for node pools ends in March 2026.
+
+#### Kubernetes versions in 2510
+
+Kubernetes version 1.32 is introduced in 2510. The versions included in the 2510 release are: 1.30.13, 1.30.14, 1.31.9, 1.31.10, 1.32.5, 1.32.6
+
+#### Features
+
+- KMS v2 provider is introduced for new cluster deployments in the Azure Local 2510 release. (KMS v2) [https://kubernetes.io/docs/tasks/administer-cluster/kms-provider/] brings numerous improvements in performance, scalability, health check & status, and observability. These enhancements provide users with a reliable solution to encrypt all resources in their Kubernetes clusters. When you create a new cluster after upgrading to 2510, the Kubernetes cluster would be configured to use KMS v2 by default. For more information please see instructions (here) [encrypt-etcd-secrets.md]
+
+
 ### Release 2509
 
-#### Announcements
+#### Announcements for 2509
 
 - Support for Kubernetes minor version 1.29 ends with this 2509 release.
 - KMS v1 will be deprecated soon. We are adding support for KMS v2 in an upcoming Azure Local release. Please plan on upgrading your clusters once KMS v2 is available.
@@ -42,7 +57,7 @@ No new Kubernetes versions were added in 2509. The versions included in the 2509
 
 ### Release 2508
 
-#### Announcements
+#### Announcements for 2508
 
 - Support for Kubernetes minor version 1.29 will end with the 2509 release.
 - KMS v1 will be deprecated soon. We will be adding support for KMS v2 in an upcoming Azure Local release. Please plan on upgrading your clusters once KMS v2 is available.
