@@ -43,8 +43,6 @@ This release has the following features and improvements:
     
 - **Azure Local rack aware clustering (Preview)**: Azure Local now supports rack aware clustering. This Preview feature allows you to define local availability zones based on physical racks in your datacenter, enhancing the resilience of your cluster against rack-level failures. For more information, see [Rack aware clustering](concepts/rack-aware-cluster-overview.md).
 
-- **Upgrade**: Starting this release, solution upgrade from 11.2510 to 12.2510 is available to everyone and no longer requires you to opt-in.
-
 - **Azure Local VM updates**:
     - **Software Defined Networking (SDN)**: SDN enabled by Azure Arc on Azure Local is now generally available. This feature allows you to create and manage network security groups (NSGs) and network security rules for your Azure Local VMs, providing enhanced network security and segmentation capabilities.
     
