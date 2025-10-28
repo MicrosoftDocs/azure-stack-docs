@@ -52,7 +52,7 @@ To access known issues for a different archived version, use the version selecto
 ### ESv3 and DSv3 series don't have nested virtualization enabled
 
 - Applicable: This issue applies to release 2408.
-- Cause: Neither of the [newly introduced ESv3 or DSv3 series](../user/azure-stack-vm-sizes.md#esv3-series); for example, E20s_v3, has nested virtualization enabled.
+- Cause: Neither of the [newly introduced ESv3 or DSv3 series](../../user/azure-stack-vm-sizes.md#esv3-series); for example, E20s_v3, has nested virtualization enabled.
 - Remediation: Microsoft is aware of the issue and is working on a fix.
 - Occurrence: Common.
 
