@@ -81,6 +81,10 @@ Unsupported scenarios for Azure Local include:
 
 ## Azure Local endpoints not redirected
 
+> [!NOTE]
+> Endpoint requirements may vary by Azure region. For region-specific endpoint lists (for example, Japan East), refer to the [AzureStack-Tools GitHub repository](https://github.com/Azure/AzureStack-Tools/tree/master/HCI) for the latest endpoint mapping.
+> The table in this article represents global defaults.
+
 The endpoints from the following table are required. Add these endpoints to the allowlist in your proxy or firewall to deploy the Azure Local instance:
 
 | Endpoint # | Required endpoint | Component  |
