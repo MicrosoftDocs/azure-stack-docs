@@ -1,5 +1,5 @@
 ---
-title: "How to Use Password Rotation v1 in Azure Operator Nexus"
+title: "How to Use Secret Rotation v1 in Azure Operator Nexus"
 description: Learn the process for using Password Rotation v1 in Azure Operator Nexus
 author: RaghvendraMandawale
 ms.author: rmandawale
@@ -9,7 +9,7 @@ ms.service: azure-operator-nexus
 ms.custom: template-how-to, devx-track-azurecli
 ---
 
-# How to use Password Rotation v1 in Azure Operator Nexus
+# How to use Secret Rotation v1 in Azure Operator Nexus
 
 This guide explains prerequisites for rotating password for a network fabric
 
@@ -18,7 +18,7 @@ This guide explains prerequisites for rotating password for a network fabric
 * Network Fabric & Network Fabric Controller are deployed.
 * Environment on NNF 9.2 with API 2025-07-15 enabled .
 * Azure CLI installed and authenticated to the correct subscription.
-* Ensure Network fabric is in healthy state - Configuration state provisioned and Adminstrative state : enabled.
+* Ensure Network fabric is in healthy state - Configuration state provisioned and Administrative state : enabled.
 * Run outside commit/upgrade workflows; ensure targeted devices are in administrative state - Enabled.
 
 ## Operational guardrails
@@ -38,7 +38,7 @@ Start a fabric-scoped rotation across all supported devices:
 az networkfabric fabric rotate-password --ids <nf-id>
 ```
 
-Sample response (acknowledgement):
+Sample response (acknowledgment):
 
 ```Azure CLI
 { 
@@ -80,13 +80,13 @@ Sample output:
 
 ### 3) Resync failed devices (fabric scope)
 
-Retry the new password only on specific devices (use device ARM IDs from the previous status output): 
+Retry the new password only on specific devices (use device Azure Resource Manager IDs from the previous status output): 
 
 ```Azure CLI
 az networkfabric fabric resync-password --resource-group example-rg -resource-name example-fabric
 ```
 
-Sample response (acknowledgement):
+Sample response (acknowledgment):
 
 ```Azure CLI
 {
@@ -99,7 +99,7 @@ Sample response (acknowledgement):
 
 ### 4) Resync a single device (device scope)
 
-Use the device ARM ID with --ids (no device name parameter): 
+Use the device Azure Resource Manager ID with --IDs (no device name parameter): 
 
 ```Azure CLI
 az networkfabric device resync-password --resource-group example-rg --resource-name example-device
