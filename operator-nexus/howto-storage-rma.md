@@ -13,10 +13,12 @@ ms.custom: template-how-to
 
 The Operator Nexus platform architecture incorporates a storage component replacement process that enables storage Original Equipment Manufacturers (OEMs) to perform hardware remediation autonomously. When storage appliances experience operational failures or degradation, the platform's design allows OEM personnel to execute component-level replacements—including drives, controllers, and other field-replaceable units—without necessitating intervention on the platform or requiring system-level reconfiguration.
 
-Before and during the process of replacing these components, the status of the Storage Appliance can be viewed either through the Azure portal or using [Command Line](.howto-storage-run-read.md)
+Before and during the process of replacing these components, the status of the Storage Appliance can be viewed either through the Azure portal or using [Command Line](./howto-storage-run-read.md)
 
 ## Pure Storage
 
 Pure Storage FlashArray appliances support nondisruptive component replacement through [Pure's standard repair procedure](https://support.purestorage.com/bundle/m_technical_services_information/page/Pure_Storage_Technical_Services/Technical_Services_Information/topics/task/t_pure_storage_parts_replacement_procedure.html). All major hardware components—including controllers, drives, power supplies, and fans—are [hot-swappable](https://support.purestorage.com/bundle/50-0035-12/resource/50-0035-12.pdf), allowing technicians to replace failed parts without taking the system offline. The FlashArray automatically retains its configuration across hardware replacements, eliminating the need for manual reconfiguration.
+
+For chassis replacement, there is a need to update the serial number for customer tracking purposes.
 
 :::image type="content" source="media/pure-hot-swap.png" alt-text="Diagram showing Pure Storage hot-swappable components" lightbox="media/pure-hot-swap.png":::
