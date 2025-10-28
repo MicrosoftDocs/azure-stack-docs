@@ -76,6 +76,11 @@
       "redirect_document_id": false
     },
     {
+      "source_path": "howto-arc-enroll-virtual-machine-using-managed-identities.md",
+      "redirect_url": "howto-virtual-machines-arc-enroll-using-managed-identities",
+      "redirect_document_id": false
+    },
+    {
       "source_path": "howto-replace-a-terminal-server.md",
       "redirect_url": "howto-replace-terminal-server",
       "redirect_document_id": false
@@ -102,11 +107,6 @@
     },
     {
       "source_path": "howto-arc-enroll-virtual-machine-using-managed-identities.md",
-      "redirect_url": "/azure/operator-nexus",
-      "redirect_document_id": false
-    },
-    {
-      "source_path": "troubleshoot-virtual-machine-arc-enroll-with-managed-identity.md",
       "redirect_url": "/azure/operator-nexus",
       "redirect_document_id": false
     }
