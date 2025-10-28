@@ -3,7 +3,7 @@ title: Azure Stack Hub archived release notes
 description: Archived release notes for Azure Stack Hub integrated systems, including updates and bug fixes.
 author: sethmanheim
 ms.topic: article
-ms.date: 03/12/2025
+ms.date: 10/28/2025
 ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 09/09/2020
@@ -19,6 +19,63 @@ To access release notes for a different archived version, use the version select
 <!---------------------------------------------------------->
 <!------------------- SUPPORTED VERSIONS ------------------->
 <!---------------------------------------------------------->
+
+::: moniker range="azs-2408"
+## 2408 build reference
+
+The Azure Stack Hub 2408 update build number is **1.2408.0.19**.
+
+### Update type
+
+The Azure Stack Hub 2408 update build type is **Full**. This build contains only important security updates.
+
+The 2408 update has the following expected runtimes based on our internal testing:
+
+- 4 nodes: 8-28 hours
+- 8 nodes: 11-30 hours
+- 12 nodes: 14-34 hours
+- 16 nodes: 17-40 hours
+
+Exact update durations typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware specifications. Durations that are shorter or longer than the expected value are not uncommon and do not require action by Azure Stack Hub operators unless the update fails. This runtime approximation is specific to the 2408 update and should not be compared to other Azure Stack Hub updates.
+
+For more information about update build types, see [Manage updates in Azure Stack Hub](../azure-stack-updates.md).
+
+### What's new
+
+- With the 2408 update, we are introducing the ESv3 and DSv3 VM SKUs. These new SKUs are designed to provide higher IOPS for both OS and data disks. For more information, see [Azure Stack Hub VM SKUs](../../user/azure-stack-vm-sizes.md).
+- We are also introducing [two new VM SKUs to support the L40s GPUs](../../user/gpu-vms-about.md#nc_l40s-v4).
+
+<!-- ### Changes -->
+
+<!-- ### Fixes -->
+
+## Security updates
+
+For information about security updates in this update of Azure Stack Hub, see [Azure Stack Hub security updates](../release-notes-security-updates.md).
+
+## Hotfixes
+
+Azure Stack Hub releases hotfixes regularly. Starting with the 2005 release, when you update to a new major version (for example, 1.2008.x to 1.2102.x), the latest hotfixes (if any) in the new major version are installed automatically. From that point forward, if a hotfix is released for your build, you should install it.
+
+> [!NOTE]
+> Azure Stack Hub hotfix releases are cumulative; you only need to install the latest hotfix to get all fixes included in any previous hotfix releases for that version.
+
+For more information, see our [servicing policy](../azure-stack-servicing-policy.md).
+
+### Hotfix prerequisites: before applying the 2408 update
+
+The 2408 release of Azure Stack Hub must be applied on the 2406 release with the following hotfix installed:
+
+- [Azure Stack Hub hotfix 1.2406.1.23](../hotfix-1-2406-1-23.md)
+
+### After successfully applying the 2408 update
+
+When you update to a new major version (for example, 1.2108.x to 1.2206.x), the latest hotfixes (if any) in the new major version are installed automatically. From that point forward, if a hotfix is released for your build, you should install it.
+
+After the installation of 2408, if any hotfixes for 2408 are subsequently released, you should install them:
+
+- [Azure Stack Hub hotfix 1.2408.1.50](../hotfix-1-2408-1-50.md)
+::: moniker-end
 
 ::: moniker range="azs-2406"
 ## 2406 build reference
@@ -626,9 +683,6 @@ Azure Stack Hub releases hotfixes regularly. Make sure you install the latest 20
 For more information, see our [servicing policy](../azure-stack-servicing-policy.md).
 
 Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated systems; do not attempt to install hotfixes on the ASDK.
-
-> [!TIP]
-> If you want to be notified about each hotfix release, subscribe to the [**RSS feed**](https://azurestackhubdocs.azurewebsites.net/xml/hotfixes.rss) to be notified about each hotfix release.
 
 ### After successfully applying the 2008 update
 
