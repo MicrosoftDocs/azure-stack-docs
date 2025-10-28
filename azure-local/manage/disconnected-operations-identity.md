@@ -4,7 +4,7 @@ description: Plan and integrate your identity for disconnected operations on Azu
 ms.topic: concept-article
 author: ronmiab
 ms.author: robess
-ms.date: 08/06/2025
+ms.date: 10/16/2025
 ai-usage: ai-assisted
 ---
 
@@ -105,8 +105,8 @@ Use this checklist to plan your identity integration with disconnected operation
   - Login endpoint (AD FS/OIDC)  
 
 - If you use an FQDN for the LDAP endpoint:  
-
-  - Make sure the disconnected operations appliance is set and uses a domain name system (DNS) that resolves the provided endpoint.  
+  - Make sure the disconnected operations appliance is set and uses a domain name system (DNS) that resolves the provided endpoint.
+    
 - Create an account with read-only access on the LDAP v3 server (Active Directory).  
 - Identify the root group for membership synchronization.  
 - Identify UPN. This should be a user that is assigned the role of **Initial operator**.
@@ -115,7 +115,7 @@ The following parameters must be collected and available before deployment:
 
 | Parameter Name        | Description            | Example                 |  
 |-----------------------|------------------------|-------------------------|  
-| Authority    | An accessible authority URI that gives information about OIDC endpoints, metadata, and more. | `hhttps://adfs.contoso-AzureLocal.com/adfs` |  
+| Authority    | An accessible authority URI that gives information about OIDC endpoints, metadata, and more. | `https://adfs.contoso-AzureLocal.com/adfs` |  
 | ClientID     | AppID created when setting up the adfsclient app.    | `1e7655c5-1bc4-52af-7145-afdf6bbe2ec1`     |  
 | LdapCredential (Username and Password) | Credentials (read-only) for LDAP integration.       | Username: `ldap` <br></br> Password: ******       |  
 | LdapsCertChainInfo    | Certificate chain information for your LDAP endpoint. You can omit the certificate chain information for demo purposes. | [How to get the certificate chain](disconnected-operations-pki.md)  |
@@ -143,8 +143,11 @@ $idpConfig = @{
 Consider these limitations when you plan your identity integration with disconnected operations:
 
 - **Users/Group removal after synchronization**: If you remove users and groups with memberships after the last sync, disconnected operations don't clean them up. This can cause errors when you query group memberships.
-- **No force synchronization capability**: Sync runs every 6 hours.  
-- **No management groups or aggregate root level**: Not available for multiple subscriptions.  
+  
+- **No force synchronization capability**: The initial sync can take up to 6 hours. After that, the sync runs every 15 min.
+  
+- **No management groups or aggregate root level**: Not available for multiple subscriptions.
+  
 - **Supported validations**: Only Active Directory/AD FS are validated for support.
   - [Install Active Directory Domain Services (Level 100)](/windows-server/identity/ad-ds/deploy/install-active-directory-domain-services--level-100-)
   - [Active Directory Federation Services Overview](/windows-server/identity/ad-fs/ad-fs-overview)
@@ -208,7 +211,7 @@ Get-Command *Appliance*ExternalIdentity*
 
 Use PowerShell on Windows Server 2022 or newer for these commands.
 
-### Set up Active Directory/Active Directory Domain Services (ADDS) for demo purposes
+### Set up Active Directory or Active Directory Domain Services (ADDS) for demo purposes
 
 ```powershell
 # Modify to fit your domain/installation
@@ -340,7 +343,8 @@ $AccessControlType = [System.Security.AccessControl.AccessControlType]::Allow
 $InheritanceType = [System.DirectoryServices.ActiveDirectorySecurityInheritance]::All
 
 # Create the access rule and apply it to the group
-$Rule = New-Object System.DirectoryServices.ActiveDirectoryAccessRule $Identity, $ActiveDirectoryRights, $AccessControlType, $null, $InheritanceType
+# bf9679c0-0de6-11d0-a285-00aa003049e2 (Member attribute): https://learn.microsoft.com/en-us/windows/win32/adschema/a-member?redirectedfrom=MSDN 
+$Rule = New-Object System.DirectoryServices.ActiveDirectoryAccessRule $Identity, $ActiveDirectoryRights, $AccessControlType, "bf9679c0-0de6-11d0-a285-00aa003049e2", $InheritanceType
 $GroupEntry = [ADSI]"LDAP://$GroupDN"
 $Security = $GroupEntry.ObjectSecurity
 $Security.AddAccessRule($Rule)
