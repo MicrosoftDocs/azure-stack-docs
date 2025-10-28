@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 08/04/2025
+ms.date: 10/28/2025
 ---
 # Virtual machine load balancing
 
@@ -21,6 +21,10 @@ VM load balancing evaluates a machine's load based on the following heuristics:
 
 - **Current memory pressure:** Memory is the most common resource constraint on a Hyper-V host.
 - **CPU utilization averaged over a five-minute window:** Mitigates any machine in the system from becoming over-committed.
+
+## Considerations
+
+While load balancing can help to optimize overall cluster resource efficiency, it can also introduce temporary performance disruptions when VMs are redistributed across hosts. The degree of impact depends on the workload profile and may be more pronounced in memory-intensive applications or workloads with frequent state changes. To minimize risk, perform a workload impact assessment in a test or staging environment before enabling automatic load balancing in production.
 
 ## How does VM load balancing work?
 
@@ -58,7 +62,7 @@ The easiest way to configure VM load balancing is using Windows Admin Center.
 
 2. Under **Settings**, select **Virtual machine load balancing**.
 
-3. Under **Balance virtual machines**, select **Always** to load balance upon machine join and every 30 minutes, **Server joins** to load balance only upon machine joins, or **Never** to disable the VM load balancing feature. The default setting is **Always**.
+3. Under **Balance virtual machines**, select **Always** to load balance upon machine join and every 30 minutes, **Server joins** to load balance only upon machine joins, or **Never** to disable the VM load balancing feature. The default setting is **Never**.
 
 4. Under **Aggressiveness**, select **Low** to live migrate VMs when the machine is more than 80% loaded, **Medium** to migrate when the machine is more than 70% loaded, or **High** to average the machines in the system and migrate when the machine is more than 5% above average. The default setting is **Low**.
 
