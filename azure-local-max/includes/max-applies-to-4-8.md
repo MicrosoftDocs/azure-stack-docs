@@ -8,4 +8,4 @@ ms.reviewer: alkohli
 ms.lastreviewed: 01/30/2024
 ---
 
-> Applies to: Azure Local max version 4.8 and later
+> Applies to: Azure Local max 2511 and later
