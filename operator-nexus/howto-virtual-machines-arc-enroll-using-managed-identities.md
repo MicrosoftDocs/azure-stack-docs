@@ -177,7 +177,7 @@ az connectedmachine show \
 
 ## Next steps
 
-It might be useful to review the [troubleshooting guide](./troubleshoot-virtual-machine-arc-enroll-with-managed-identity.md) for common issues and pitfalls.
+It might be useful to review the [troubleshooting guide](./troubleshoot-virtual-machines-arc-enroll-with-managed-identities.md) for common issues and pitfalls.
 
 If you're wanting to set up [SSH access to Azure Arc-enabled servers](/azure/azure-arc/servers/ssh-arc-overview) using [az ssh arc](/cli/azure/ssh#az-ssh-arc).
 

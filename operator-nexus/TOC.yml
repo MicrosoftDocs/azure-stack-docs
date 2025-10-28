@@ -472,7 +472,7 @@
         - name: Troubleshoot a Kubernetes Cluster Node in NotReady,Scheduling Disabled after Runtime Upgrade
           href: troubleshoot-kubernetes-cluster-node-cordoned.md
         - name: Troubleshoot issues with Azure Arc enrollment for virtual machines with managed identities
-          href: troubleshoot-virtual-machine-arc-enroll-with-managed-identity.md
+          href: troubleshoot-virtual-machines-arc-enroll-with-managed-identities.md
 - name: FAQ
   href: azure-operator-nexus-faq.md
 - name: Reference

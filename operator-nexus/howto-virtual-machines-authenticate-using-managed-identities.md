@@ -76,6 +76,6 @@ It's necessary to SSH into the VM to access the logs.
 
 ## Related articles
 
-It might be useful to review the [troubleshooting guide](./troubleshoot-virtual-machine-arc-enroll-with-managed-identity.md) for common issues and pitfalls.
+It might be useful to review the [troubleshooting guide](./troubleshoot-virtual-machines-arc-enroll-with-managed-identities.md) for common issues and pitfalls.
 
 [!INCLUDE [contact-support](./includes/contact-support.md)]
