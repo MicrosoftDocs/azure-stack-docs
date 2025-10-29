@@ -1,8 +1,8 @@
 ---
 title: "Azure Firewall outbound rules for Azure Operator Nexus"
 description: "Guidance on configuring outbound network and FQDN rules in Azure Firewall for Azure Operator Nexus to remove wildcards and strengthen security."
-author: sushantjrao
-ms.author: sushrao
+author: RaghvendraMandawale
+ms.author: rmandawale
 ms.service: azure-operator-nexus
 ms.topic: conceptual
 ms.date: 08/18/2025
@@ -20,8 +20,9 @@ The following tables provide a reference of how the outbound rules appear within
 The simplified flow of traffic is as follows:
 
 - **Infrastructure traffic** → Infra Proxy allow-list → Azure Firewall  
-- **Tenant traffic** → CSN allow-list → Azure Firewall  
+- **Tenant traffic** → CSN allow-list → Azure Firewall
 
+:::image type="content" source="media/network-fabric-controller-virtual-network.png" alt-text="Network Fabric Controller Virtual Networks Description." lightbox="media/network-fabric-controller-virtual-network.png":::
 
 ## Tenant / CSN
 
