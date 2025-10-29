@@ -21,4 +21,8 @@ Pure Storage FlashArray appliances support nondisruptive component replacement t
 
 For chassis replacement, there is a need to update the serial number for customer tracking purposes.
 
-:::image type="content" source="media/pure-hot-swap.png" alt-text="Diagram showing Pure Storage hot-swappable components" lightbox="media/pure-hot-swap.png":::
+```azurecli
+
+az networkcloud storageappliance update --name <storageAppliance> -g <HostedResourceGroup> --serial-number "<serial_number>"
+
+```
