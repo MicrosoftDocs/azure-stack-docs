@@ -19,7 +19,7 @@ Throughout the process of replacing these components, the status of the Storage 
 
 Pure Storage FlashArray appliances support nondisruptive component replacement through [Pure's standard repair procedure](https://support.purestorage.com/bundle/m_technical_services_information/page/Pure_Storage_Technical_Services/Technical_Services_Information/topics/task/t_pure_storage_parts_replacement_procedure.html) (sign-in required). All major hardware components—including controllers, drives, power supplies, and fans—are [hot-swappable](https://support.purestorage.com/bundle/50-0035-12/resource/50-0035-12.pdf) (sign-in required), allowing technicians to replace failed parts without taking the system offline. The FlashArray automatically retains its configuration across hardware replacements, eliminating the need for manual reconfiguration.
 
-For chassis replacement, there is a need to update the serial number for customer tracking purposes.
+For chassis replacements, update the serial number using Az CLI for asset tracking purposes. This does not impact Operator Nexus functionality.
 
 ```azurecli
 
