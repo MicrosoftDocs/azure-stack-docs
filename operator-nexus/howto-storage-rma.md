@@ -13,7 +13,7 @@ ms.custom: template-how-to
 
 The Operator Nexus platform architecture incorporates a storage component replacement process that enables storage Original Equipment Manufacturers (OEMs) to perform hardware remediation autonomously. When storage appliances experience operational failures or degradation, the platform's design allows OEM personnel to execute component-level replacements—including drives, controllers, and other field-replaceable units—without necessitating intervention on the platform or requiring system-level reconfiguration.
 
-Before and during the process of replacing these components, the status of the Storage Appliance can be viewed either through the Azure portal or using [Command Line](./howto-storage-run-read.md)
+Throughout the process of replacing these components, the status of the Storage Appliance can be viewed either through the Azure portal or using [Command Line](./howto-storage-run-read.md)
 
 ## Pure Storage
 
