@@ -334,9 +334,9 @@
         - name: Gather VM Console Data
           href: howto-gather-vm-console-data.md
         - name: Create virtual machines with managed identities and authentication steps
-          href: howto-virtual-machines-authenticate-using-managed-identities.md
-        - name: Arc enroll virtual machines using managed identities for authentication and access token
-          href: howto-virtual-machines-arc-enroll-using-managed-identities.md
+          href: howto-virtual-machines-authenticate-with-managed-identities.md
+        - name: Arc enroll virtual machines with managed identities for authentication and access token
+          href: howto-virtual-machines-arc-enroll-with-managed-identities.md
     - name: Observability
       expanded: false
       items:

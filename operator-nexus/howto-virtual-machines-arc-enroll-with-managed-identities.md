@@ -21,7 +21,7 @@ This guide explains how to create Azure Arc enroll an Azure Operator Nexus virtu
 
 ## Create a VM with a managed identity
 
-For a comprehensive walkthrough, see [How to create virtual machines with managed identities and authenticate with a managed identity](./howto-virtual-machines-authenticate-using-managed-identities.md).
+For a comprehensive walkthrough, see [How to create virtual machines with managed identities and authenticate with a managed identity](./howto-virtual-machines-authenticate-with-managed-identities.md).
 Review the entire document before starting the steps in this guide.
 
 [!INCLUDE [virtual-machine-howto-virtual-machines-environment-variables](./includes/virtual-machine/howto-virtual-machines-environment-variables.md)]
