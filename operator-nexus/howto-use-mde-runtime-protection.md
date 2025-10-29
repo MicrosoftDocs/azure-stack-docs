@@ -1,20 +1,21 @@
 ---
-title: "Azure Operator Nexus: MDE Runtime Protection"
-description: Learn how to use the MDE Runtime Protection.
+title: MDE Runtime Protection for Azure Local max and Operator Nexus
+description: Learn how to use the MDE Runtime Protection for Azure Local max and Operator Nexus.
 author: sshiba
 ms.author: sidneyshiba
 ms.service: azure-operator-nexus
 ms.topic: how-to
-ms.date: 08/13/2025
+ms.date: 10/29/2025
 ms.custom: template-how-to
 ---
 
 # Introduction to the Microsoft Defender for Endpoint runtime protection service
 
-The Microsoft Defender for Endpoint (MDE) runtime protection service provides the tools to configure and manage runtime protection for a Nexus cluster.
+[!INCLUDE [max-operator-nexus-applies-to-4-8](../azure-local-max/includes/max-operator-nexus-applies-to-4-8.md)]
 
-The Azure CLI allows you to configure runtime protection **_Enforcement Level_** and the ability to trigger **_MDE Scan_** on all nodes.
-This document provides the steps to execute those tasks.
+This article introduces the Microsoft Defender for Endpoint (MDE) runtime protection service. This service provides the tools to configure and manage runtime protection for your Azure Local max or Operator Nexus cluster.
+
+The Azure CLI allows you to configure runtime protection **_Enforcement Level_** and the ability to trigger **_MDE Scan_** on all nodes of your cluster. This article provides the steps to execute those tasks.
 
 > [!NOTE]
 > The MDE runtime protection service integrates with [Microsoft Defender for Endpoint](/azure/defender-for-cloud/integration-defender-for-endpoint), which provides comprehensive Endpoint Detection and Response (EDR) capabilities. With Microsoft Defender for Endpoint integration, you can spot abnormalities and detect vulnerabilities.
@@ -44,10 +45,10 @@ export CLUSTER_NAME="contoso-cluster"
 
 ## Defaults for MDE Runtime Protection
 
-The runtime protection sets to following default values when you deploy a cluster
+The runtime protection sets to following default values when you deploy a cluster:
 
-- Enforcement Level: `Disabled` if not specified when creating the cluster
-- MDE Service: `Disabled`
+- Enforcement Level: `Disabled` if not specified when creating the cluster.
+- MDE Service: `Disabled`.
 
 > [!NOTE]
 > The argument `--runtime-protection enforcement-level="<enforcement level>"` serves two purposes: enabling/disabling MDE service and updating the enforcement level.
