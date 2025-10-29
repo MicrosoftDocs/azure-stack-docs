@@ -63,7 +63,7 @@ It's necessary to SSH into the VM to access the logs.
 
 > [!NOTE]
 > The previous `--user-data` parameter is deprecated and will be removed in a future release.
-> Verify in the [`networkcloud` extension release history] for the latest updates.
+> Verify in the [`networkcloud` extension release history](https://github.com/Azure/azure-cli-extensions/blob/main/src/networkcloud/HISTORY.rst) for the latest updates.
 
 > [!TIP]
 > The cloud-init script runs only during the first boot of the VM.
@@ -179,6 +179,8 @@ az connectedmachine show \
 
 It might be useful to review the [troubleshooting guide](./troubleshoot-virtual-machines-arc-enroll-with-managed-identities.md) for common issues and pitfalls.
 
-If you're wanting to set up [SSH access to Azure Arc-enabled servers](/azure/azure-arc/servers/ssh-arc-overview) using [az ssh arc](/cli/azure/ssh#az-ssh-arc).
+Once the Arc Machine resource is connected, extensions can be installed and managed.
+For more information, see [Virtual machine extension management with Azure Arc-enabled servers](/azure/azure-arc/servers/manage-vm-extensions).
+For example, a common use case for VM access is to enable [SSH access to Azure Arc-enabled servers](/azure/azure-arc/servers/ssh-arc-overview) which uses the [az ssh arc](/cli/azure/ssh#az-ssh-arc) command.
 
 [!INCLUDE [contact-support](./includes/contact-support.md)]

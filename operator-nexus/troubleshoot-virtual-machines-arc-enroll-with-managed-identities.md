@@ -152,15 +152,13 @@ Possible causes:
 
 Possible solutions:
 
-1. Verify the VM was created with an associated managed identity.
-   If the VM wasn't created with an associated managed identity, you must recreate the VM with one to use managed identity authentication.
-
-2. Verify the correct managed identity is assigned to the VM.
-   For more information, see the [Verify Managed Identity permissions](#verify-managed-identity-permissions) section.
-
-3. Check IMDS connectivity from within the VM.
-   If the IMDS endpoint isn't accessible, there could be a network connectivity issue or the IMDS sidecar container might not be running.
-   For more information, see the [VM network connectivity sanity tests](#vm-network-connectivity-sanity-tests) section.
+- Verify the VM was created with an associated managed identity.
+  If the VM wasn't created with an associated managed identity, you must recreate the VM with one to use managed identity authentication.
+- Verify the correct managed identity is assigned to the VM.
+  For more information, see the [Verify Managed Identity permissions](#verify-managed-identity-permissions) section.
+- Check IMDS connectivity from within the VM.
+  If the IMDS endpoint isn't accessible, there could be a network connectivity issue or the IMDS sidecar container might not be running.
+  For more information, see the [VM network connectivity sanity tests](#vm-network-connectivity-sanity-tests) section.
 
 ## Error: Failed to retrieve access token
 
@@ -181,13 +179,11 @@ Possible causes:
 
 Possible solutions:
 
-1. Verify managed identity has appropriate permissions.
-
-2. Test network connectivity to Azure endpoints.
-   For more information, see the [VM network connectivity sanity tests](#vm-network-connectivity-sanity-tests) section.
-
-3. Check [CSN egress endpoints configurations](#cloud-services-network-csn-configurations).
-   Ensure that the CSN has the required egress endpoints configured.
+- Verify managed identity has appropriate permissions.
+- Test network connectivity to Azure endpoints.
+  For more information, see the [VM network connectivity sanity tests](#vm-network-connectivity-sanity-tests) section.
+- Check [CSN egress endpoints configurations](#cloud-services-network-csn-configurations).
+  Ensure that the CSN has the required egress endpoints configured.
 
 ## Error: Failed to connect to Azure Arc
 
@@ -209,60 +205,53 @@ Possible causes:
 
 Possible solutions:
 
-1. Ensure that the access token is valid and isn't expired.
-   Usually, the access token retrieved using `az account get-access-token` is valid for short period of time.
-   Anytime permissions on the managed identity are changed, a new access token must be retrieved.
+- Ensure that the access token is valid and isn't expired.
+  Usually, the access token retrieved using `az account get-access-token` is valid for short period of time.
+  Anytime permissions on the managed identity are changed, a new access token must be retrieved.
+- Verify required Azure Arc endpoints are accessible:
+  For more information, see the [VM network connectivity sanity tests](#vm-network-connectivity-sanity-tests) section.
+- Check if the managed identity has the necessary roles assigned for Azure Arc enrollment.
+  For more information, see the [Verify Managed Identity permissions](#verify-managed-identity-permissions) section.
+- Check [CSN egress endpoints configurations](#cloud-services-network-csn-configurations).
+  Ensure that the CSN has the required egress endpoints configured.
+- Check [Proxy settings](#csn-proxy-configuration).
+  Ensure that the proxy settings are correctly configured in the environment variables and for `azcmagent`.
+- Verify `azcmagent` version and status:
 
-2. Verify required Azure Arc endpoints are accessible:
-   For more information, see the [VM network connectivity sanity tests](#vm-network-connectivity-sanity-tests) section.
+  ```bash
+  azcmagent version
+  azcmagent show
+  ```
 
-3. Check if the managed identity has the necessary roles assigned for Azure Arc enrollment.
-   For more information, see the [Verify Managed Identity permissions](#verify-managed-identity-permissions) section.
+- Run `azcmagent` with more debugging using the `--verbose` flag:
 
-4. Check [CSN egress endpoints configurations](#cloud-services-network-csn-configurations).
-   Ensure that the CSN has the required egress endpoints configured.
+  ```bash
+  azcmagent connect \
+   --resource-group "${RESOURCE_GROUP}" \
+   --tenant-id "${TENANT_ID}" \
+   --location "${LOCATION}" \
+   --subscription-id "${SUBSCRIPTION_ID}" \
+   --access-token "${ACCESS_TOKEN}" \
+   --verbose
+  ```
 
-5. Check [Proxy settings](#csn-proxy-configuration).
-   Ensure that the proxy settings are correctly configured in the environment variables and for `azcmagent`.
+- Enable verbose logging for `azcmagent`.
+  For more information, see [`azcmagent` CLI documentation](/azure/azure-arc/servers/azcmagent).
 
-6. Verify `azcmagent` version and status:
+  ```bash
+  azcmagent config set log.level DEBUG
+  ```
 
-   ```bash
-   azcmagent version
-   azcmagent show
-   ```
+- Check `azcmagent` logs.
 
-7. Run `azcmagent` with more debugging:
+  ```bash
+  journalctl -u azcmagent -f
+  ```
 
-   ```bash
-   sudo azcmagent connect \
-       --resource-group "${RESOURCE_GROUP}" \
-       --tenant-id "${TENANT_ID}" \
-       --location "${LOCATION}" \
-       --subscription-id "${SUBSCRIPTION_ID}" \
-       --access-token "${ACCESS_TOKEN}" \
-       --verbose
-   ```
-
-Follow the steps provided by the Azure Arc agent to troubleshoot further.
+To troubleshoot further, follow the steps provided by the Azure Arc agent.
 
 - [Azure Connected Machine agent troubleshooting](/azure/azure-arc/servers/troubleshoot-agent-onboard)
 - [Azure Connected Machine agent connect reference](/azure/azure-arc/servers/azcmagent-connect#access-token)
-
-
-Enable verbose logging for `azcmagent`.
-You can also set the verbosity by using the `--verbose` or `--debug` flags when running `azcmagent` commands.
-For more information, see [`azcmagent` CLI documentation](/azure/azure-arc/servers/azcmagent).
-
-```bash
-azcmagent config set log.level DEBUG
-```
-
-Check `azcmagent` logs.
-
-```bash
-journalctl -u azcmagent -f
-```
 
 ## Alternative access token retrieval methods
 

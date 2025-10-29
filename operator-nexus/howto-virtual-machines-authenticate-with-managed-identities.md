@@ -64,7 +64,7 @@ It's necessary to SSH into the VM to access the logs.
 
 > [!NOTE]
 > The previous `--user-data` parameter is deprecated and will be removed in a future release.
-> Verify in the [`networkcloud` extension release history] for the latest updates.
+> Verify in the [`networkcloud` extension release history](https://github.com/Azure/azure-cli-extensions/blob/main/src/networkcloud/HISTORY.rst) for the latest updates.
 
 > [!TIP]
 > The cloud-init script runs only during the first boot of the VM.
