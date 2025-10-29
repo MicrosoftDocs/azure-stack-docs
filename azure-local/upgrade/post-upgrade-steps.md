@@ -92,7 +92,7 @@ Once the new OS is installed, you need to upgrade the cluster functional level a
 
    We recommend that you upgrade the cluster functional level as soon as possible. Skip this step if you installed the feature upgrades with Windows Admin Center and checked the optional **Update the cluster functional level to enable new features** checkbox.
 
-   1. Run the following cmdlet on any machine in the system to check the current ClusterFunctionalLevel and ClusterUpgradeVersion:
+   1. Run the following cmdlet on any machine in the system to check the current `ClusterFunctionalLevel` and `ClusterUpgradeVersion`:
 
       ```PowerShell
       [System.Environment]::OSVersion.Version
@@ -100,7 +100,7 @@ Once the new OS is installed, you need to upgrade the cluster functional level a
       Get-Cluster | Select-Object ClusterFunctionalLevel, ClusterUpgradeVersion
       ```
 
-   1. Run the following cmdlet on any machine in the system to update the current cluster functional level:
+   1. Run the following cmdlet on any machine in the system to update the Cluster Functional Level:
 
       ```powershell
       Update-ClusterFunctionalLevel -Verbose   
@@ -108,7 +108,7 @@ Once the new OS is installed, you need to upgrade the cluster functional level a
 
    1. You'll see a warning that you can't undo this operation. Confirm **Y** to continue.
 
-   1. Run the following cmdlet to check the new or updated ClusterFunctionalLevel and ClusterUpgradeVersion:
+   1. Run the following cmdlet to check the new or updated `ClusterFunctionalLevel` and `ClusterUpgradeVersion`:
 
       ```powershell
       [System.Environment]::OSVersion.Version
@@ -116,12 +116,12 @@ Once the new OS is installed, you need to upgrade the cluster functional level a
       Get-Cluster | Select-Object ClusterFunctionalLevel, ClusterUpgradeVersion
       ```
 
-    - Expected values for Azure Local 23H2 (OS build 25398.xxxx):
+    - Expected values for Azure Local OS build 25398.xxxx:
       - ClusterFunctionalLevel = 12
       - ClusterUpgradeVersion = 32772
 <br>
 
-    - Expected values for Azure Local 24H2 (OS build 26100.xxxx):
+    - Expected values for Azure Local OS build 26100.xxxx:
       - ClusterFunctionalLevel = 12
       - ClusterUpgradeVersion = 32774
 <br>
