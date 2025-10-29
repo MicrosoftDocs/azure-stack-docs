@@ -30,7 +30,7 @@ The Azure CLI allows you to configure runtime protection **_Enforcement Level_**
 To help with configuring and triggering MDE scans, define these environment variables used by the various commands throughout this guide.
 
 > [!NOTE]
-> These environment variable values do not reflect a real deployment and users MUST change them to match their environments.
+> These environment variable values don't reflect a real deployment and users MUST change them to match their environments.
 
 ```bash
 # SUBSCRIPTION_ID: Subscription of your cluster
@@ -76,10 +76,10 @@ Allowed values for `<enforcement level>`: `Disabled`, `RealTime`, `OnDemand`, `P
 - `OnDemand`: Files are scanned only on demand. In this:
   - Real-time protection is turned off.
 - `Passive`: Runs the antivirus engine in passive mode. In this:
-  - Real-time protection is turned off: Threats are not remediated by Microsoft Defender Antivirus.
+  - Real-time protection is turned off: Threats aren't remediated by Microsoft Defender Antivirus.
   - On-demand scanning is turned on: Still use the scan capabilities on the endpoint.
-  - Automatic threat remediation is turned off: No files will be moved and security admin is expected to take required action.
-  - Security intelligence updates are turned on: Alerts will be available on security admins tenant.
+  - Automatic threat remediation is turned off: No files are moved and security admin is expected to take required action.
+  - Security intelligence updates are turned on: Alerts are available on security admins tenant.
 
 You can confirm that enforcement level was updated by inspecting the output for the following json snippet:
 
@@ -102,8 +102,8 @@ az networkcloud cluster scan-runtime \
 ```
 
 > [!NOTE]
-> The MDE scan action requires the MDE service to be enabled. Just in case it is not enabled, the command will fail.
-> In this case set the `Enforcement Level` to a value different from `Disabled` to enable the MDE service.
+> The MDE scan action requires the MDE service to be enabled. Just in case it isn't enabled, the command fails.
+> In this case, set the `Enforcement Level` to a value different from `Disabled` to enable the MDE service.
 
 > [!TIP]
 > In version 2509.1 and above, you can view the status of the most recent `scan-runtime` request in the Azure portal `JSON View`.
