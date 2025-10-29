@@ -68,7 +68,7 @@ Perform the following VM operations only via the Azure CLI. Don't use the local 
 
 ### Local tools
 
-The following VM operations are supported only when you use the local tools, such as PowerShell, Windows Admin Center (WAC), Hyper-V Manager, Failover Cluster Manager, and Virtual Machine Manager.
+The following VM operations are supported only when you use the local tools, such as PowerShell, Windows Admin Center, Hyper-V Manager, Failover Cluster Manager, and Virtual Machine Manager.
 
 You perform these operations either on the VM itself or on the cluster/node. The changes aren't reflected in Azure portal.
 
