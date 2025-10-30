@@ -16,6 +16,9 @@ This article provides an overview of the Azure Arc gateway for Azure Local (form
 
 Use the Arc gateway to significantly reduce the number of required endpoints needed to deploy and manage Azure Local instances. When you create the Arc gateway, connect to and use it for new deployments of Azure Local.
 
+> [!NOTE]
+> Although Arc gateway for Azure Local infrastructure and Azure Local VMs is GA, the use of Arc gateway for AKS clusters is still in public preview.
+
 ## How it works
 
 The Arc gateway works by introducing the following components:
@@ -114,7 +117,6 @@ The endpoints from the following table are required. Add these endpoints to the 
 Arc gateway has the following limitations in this release:
 
 - Arc gateway doesn't support Transport Layer Security (TLS) terminating proxies.
-- Arc gateway doesn't support using ExpressRoute, Site-to-Site VPN, or Private Endpoints together with the Arc gateway.
 
 ## Create the Arc gateway resource in Azure
 
