@@ -37,7 +37,7 @@ sections:
 
       - question: Can I configure static network interfaces after the Azure Local VM is provisioned on an Azure Local instance with SDN enabled by Azure Arc?
         answer: |
-          Yes. However, if you provision multiple static NICs on an Azure Local VM all NICs get the default gateway. Please ensure to remove the default gateway from secondary NICs to prevent asymmetric networking, packet loss, and unpredictable networking.
+          Yes. However, if you provision multiple static NICs on an Azure Local VM all NICs get the default gateway. Ensure to remove the default gateway from secondary NICs to prevent asymmetric networking, packet loss, and unpredictable networking.
       - question: Why am I seeing unexpected traffic drop or blocks for my Azure Local VMs?
         answer: |
           If logical networks and VM network interfaces on your Azure Local VMs have NSGs with conflicting allow or deny rules, you can see unexpected traffic drops or blocks.

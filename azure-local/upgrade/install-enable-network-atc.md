@@ -442,4 +442,4 @@ Add-NetIntent -Name compute -Compute -AdapterName "pNIC5","pNIC6"
 
 ## Next step
 
-Learn how to [Assess solution upgrade readiness for Azure Local](./validate-solution-upgrade-readiness.md).
+- Learn how to [Assess solution upgrade readiness for Azure Local](./validate-solution-upgrade-readiness.md).
