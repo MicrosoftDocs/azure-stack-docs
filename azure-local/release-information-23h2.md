@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: article
 ms.service: azure-local
-ms.date: 10/24/2025
+ms.date: 10/30/2025
 ---
 
 # Azure Local release information
@@ -17,7 +17,7 @@ ms.date: 10/24/2025
 >
 > The issue under review involves a version mismatch between the current node platform version 10.0.25398.1849 and the expected version, which should be greater than or equal to 10.0.25398.1913.
 >
-> If you've already applied this update, there is no need to take further action. A troubleshooting guide is available if you've been impacted by this issue. For more information, see [GitHub AzureLocal-Supportability TSG](https://github.com/Azure/AzureLocal-Supportability/tree/main/TSG).
+> If you've already applied this update, there is no need to take further action. If you are affected by this issue, see [GitHub AzureLocal-Supportability TSG](https://github.com/Azure/AzureLocal-Supportability/tree/main/TSG).
 >
 > We anticipate that the version 11.2510 update will be available again in the next days.
 
