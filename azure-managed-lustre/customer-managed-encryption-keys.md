@@ -51,7 +51,7 @@ Access policy settings:
 Networking settings:
 
 - **Public Access**: Must be enabled.
-- **Allow Access**: Choose **All networks**. If you need to restrict access, you can instead choose **Selected networks**. If you choose **Selected networks**, you must enable the **Allow trusted Microsoft services to bypass this firewall** option in the **Exception** section.
+- **Allow Access**: Select **All networks**. If you need to restrict access, you can instead choose **Selected networks**. If you choose **Selected networks**, you must enable the **Allow trusted Microsoft services to bypass this firewall** option in the **Exception** section.
 
 :::image type="content" source="./media/customer-managed-encryption-keys/keyvault-network-config.png" alt-text="Screenshot shows how to restrict key vault access to selected networks while allowing access to trusted Microsoft services." lightbox="./media/customer-managed-encryption-keys/keyvault-network-config.png":::
 
