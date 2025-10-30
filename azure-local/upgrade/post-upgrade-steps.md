@@ -3,7 +3,7 @@ title: Post-upgrade steps on Azure Local via PowerShell
 description: Learn how to perform the post-upgrade tasks for Azure Local using PowerShell.
 author: alkohli
 ms.topic: how-to
-ms.date: 09/18/2025
+ms.date: 10/23/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -92,13 +92,15 @@ Once the new OS is installed, you need to upgrade the cluster functional level a
 
    We recommend that you upgrade the cluster functional level as soon as possible. Skip this step if you installed the feature upgrades with Windows Admin Center and checked the optional **Update the cluster functional level to enable new features** checkbox.
 
-   1. Run the following cmdlet on any machine in the system to check the current cluster functional level:
+   1. Run the following cmdlet on any machine in the system to check the current `ClusterFunctionalLevel` and `ClusterUpgradeVersion`:
 
       ```PowerShell
-      Write-Host "Cluster Functional Level = $((Get-Cluster).ClusterFunctionalLevel)"
+      [System.Environment]::OSVersion.Version
+
+      Get-Cluster | Select-Object ClusterFunctionalLevel, ClusterUpgradeVersion
       ```
 
-   1. Run the following cmdlet on any machine in the system to update the current cluster functional level:
+   1. Run the following cmdlet on any machine in the system to update the Cluster Functional Level:
 
       ```powershell
       Update-ClusterFunctionalLevel -Verbose   
@@ -106,11 +108,23 @@ Once the new OS is installed, you need to upgrade the cluster functional level a
 
    1. You'll see a warning that you can't undo this operation. Confirm **Y** to continue.
 
-   1. Run the following cmdlet to check the new or updated cluster functional level:
+   1. Run the following cmdlet to check the updated version numbers for `ClusterFunctionalLevel` and/or `ClusterUpgradeVersion`:
 
       ```powershell
-      Write-Host "Cluster Functional Level = $((Get-Cluster).ClusterFunctionalLevel)"
+      [System.Environment]::OSVersion.Version
+
+      Get-Cluster | Select-Object ClusterFunctionalLevel, ClusterUpgradeVersion
       ```
+
+    - Expected values for Azure Local OS build 25398.xxxx:
+      - ClusterFunctionalLevel = 12
+      - ClusterUpgradeVersion = 32772
+<br>
+
+    - Expected values for Azure Local OS build 26100.xxxx:
+      - ClusterFunctionalLevel = 12
+      - ClusterUpgradeVersion = 32774
+<br>
 
 1. Upgrade the storage pool.
 
@@ -140,6 +154,7 @@ Once the new OS is installed, you need to upgrade the cluster functional level a
 
 1. Install the latest drivers from your hardware partner, as some drivers may revert to an older inbox driver version resulting in unexpected behaviors.  
 
-## Next step
+## Next steps
 
-- Learn how to [configure Network ATC on Azure Local](./install-enable-network-atc.md).
+- If Network ATC is not enabled, learn how to [Install and enable Network ATC on Azure Local](./install-enable-network-atc.md)
+- If Network ATC is already enabled, learn how to [Assess solution upgrade readiness for Azure Local](./validate-solution-upgrade-readiness.md).
