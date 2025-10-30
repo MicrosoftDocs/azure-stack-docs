@@ -3,7 +3,7 @@ title: Overview of Azure Arc gateway for Azure Local
 description: Learn what is Azure Arc gateway for Azure Local.
 author: alkohli
 ms.topic: how-to
-ms.date: 09/24/2025
+ms.date: 10/30/2025
 ms.author: alkohli
 ms.service: azure-local
 ---
@@ -17,7 +17,7 @@ This article provides an overview of the Azure Arc gateway for Azure Local (form
 Use the Arc gateway to significantly reduce the number of required endpoints needed to deploy and manage Azure Local instances. When you create the Arc gateway, connect to and use it for new deployments of Azure Local.
 
 > [!NOTE]
-> Although Arc gateway for Azure Local infrastructure and Azure Local VMs is GA, the use of Arc gateway for AKS clusters is still in public preview.
+> Although Arc gateway for Azure Local infrastructure and Azure Local VMs is generally available, Arc gateway for AKS on Azure Local is still in preview.
 
 ## How it works
 
