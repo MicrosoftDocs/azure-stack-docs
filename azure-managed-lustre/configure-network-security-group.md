@@ -1,5 +1,5 @@
 ---
-title: Configure a network security group for Azure Managed Lustre file systems
+title: Configure a Network Security Group for Azure Managed Lustre File Systems
 description: Configure network security group rules to allow Azure Managed Lustre file system support as part of a locked down, Zero Trust networking strategy. 
 ms.topic: how-to
 ms.date: 11/08/2024
@@ -12,7 +12,7 @@ ms.custom: sfi-image-nochange
 
 # Configure a network security group for Azure Managed Lustre file systems
 
-Network security groups can be configured to filter inbound and outbound network traffic to and from Azure resources in an Azure virtual network. A network security group can contain security rules that filter network traffic by IP address, port, and protocol. When a network security group is associated with a subnet, security rules are applied to resources deployed in that subnet.
+You can configure a network security group to filter inbound and outbound network traffic to and from Azure resources in an Azure virtual network. A network security group can contain security rules that filter network traffic by IP address, port, and protocol. When a network security group is associated with a subnet, security rules are applied to resources deployed in that subnet.
 
 This article describes how to configure network security group rules to secure access to an Azure Managed Lustre file system cluster as part of a [Zero Trust](/security/zero-trust/zero-trust-overview) strategy.
 
@@ -24,34 +24,36 @@ This article describes how to configure network security group rules to secure a
 
 ## Create and configure a network security group
 
-You can use an Azure network security group to filter network traffic between Azure resources in an Azure virtual network. A network security group contains security rules that allow or deny inbound network traffic to, or outbound network traffic from, several types of Azure resources. For each rule, you can specify source and destination, port, and protocol.
+You can use an Azure network security group to filter network traffic between Azure resources in an Azure virtual network. A network security group contains security rules that allow or deny inbound network traffic to or outbound network traffic from several types of Azure resources. For each rule, you can specify source and destination, port, and protocol.
 
-To create a network security group in the Azure portal, follow these steps:
+To create a network security group in the Azure portal:
 
-1. In the search box at the top of the portal, enter *Network security group*. Select **Network security groups** in the search results.
+1. In the search box at the top of the portal, enter *Network security group*. In the search results, select **Network security groups**.
 
-2. Select **+ Create**.
+2. Select **Create**.
 
-3. In the **Create network security group** page, under the **Basics** tab, enter or select the following values:
+3. On the **Create network security group** pane, on the **Basics** tab, enter or select the following values:
 
     | Setting | Action |
     | --- | --- |
-    | **Project details** | |
-    | Subscription | Select your Azure subscription. |
-    | Resource group | Select an existing resource group, or create a new one by selecting **Create new**. This example uses the *sample-rg* resource group. |
-    | **Instance details** | |
-    | Network security group name | Enter a name for the network security group you're creating. |
-    | Region | Select the region you want. |
+    | *Project details* | |
+    | **Subscription** | Select your Azure subscription. |
+    | **Resource group** | Select an existing resource group, or create a new one by selecting **Create new**. This example uses the *sample-rg* resource group. |
+    | *Instance details* | |
+    | **Network security group name** | Enter a name for the network security group. |
+    | **Region** | Select the Azure region to use. |
 
     :::image type="content" source="media/network-security-group/create-new.png" alt-text="Screenshot showing how to create a network security group in the Azure portal." lightbox="media/network-security-group/create-new.png":::
 
 4. Select **Review + create**.
 
-5. After you see the **Validation passed** message, select **Create**.
+5. After **Validation passed** appears, select **Create**.
 
 ### Associate the network security group to a subnet
 
-Once the network security group is created, you can associate it to the unique subnet in your virtual network where the Azure Managed Lustre file system exists. To associate the network security group to a subnet using the Azure portal, follow these steps:
+After you create the network security group, you can associate it to the unique subnet in your virtual network where the Azure Managed Lustre file system is located.
+
+To associate the network security group to a subnet by using the Azure portal:
 
 1. In the search box at the top of the portal, enter *Network security group* and select **Network security groups** in the search results.
 
@@ -96,47 +98,49 @@ The inbound security rules in the Azure portal should look similar to the follow
 
 ### Create outbound security rules
 
-You can create outbound security rules in the Azure portal. The following example shows how to create and configure a new outbound security rule:
+To create and configure a new outbound security rule:
 
-1. In the Azure portal, open the network security group resource you created in an earlier step.
-1. Select **Outbound security rules** under **Settings**.
-1. Select **+ Add**.
-1. In the **Add outbound security rule** pane, configure the settings for the rule and select **Add**.
+1. In the Azure portal, open the network security group resource.
+1. Under **Settings**, select **Outbound security rules**.
+1. On the command bar, select **Add**.
+1. On the **Add outbound security rule** pane, configure the settings for the rule, and then select **Add**.
 
 :::image type="content" source="media/network-security-group/add-outbound-security-rule.png" alt-text="Screenshot showing how to create an outbound security rule for a network security group in the Azure portal." lightbox="media/network-security-group/add-outbound-security-rule.png":::
 
-Add the following outbound rules and network service tags to the network security group. A description of all Azure service tags can be found at [Azure Service Tags Overview](/azure/virtual-network/service-tags-overview).
+Add the following outbound rules and network service tags to the network security group. For a description of all Azure service tags, see the [Azure service tags overview](/azure/virtual-network/service-tags-overview).
 
 | Priority | Name | Ports | Protocol | Source | Destination | Action | Description |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| 100 | *rule-name* | 443 | TCP | `VirtualNetwork` | `AzureMonitor` | Allow | Allow the AzureMonitor service to report health or and security issues diagnosed with the Azure Managed Lustre service hosts. |
-| 101 | *rule-name* | 443 | TCP | `VirtualNetwork` | `AzureKeyVault.EastUS` | Allow | Allow access to AzureKeyVault, which the service uses to store essential security secrets needed for basic operation and storage access. |
-| 102 | *rule-name* | 443 | TCP | `VirtualNetwork` | `AzureActiveDirectory` | Allow | Allow access to AzureActiveDirectory required for the secure Microsoft Entra ID service used during deployment and support activities. |
-| 103 | *rule-name* | 443 | TCP | `VirtualNetwork` | `Storage.EastUS` | Allow | Allow access to Storage account endpoints that are required for Lustre HSM, system health signals, and other communication flows to the Azure Managed Lustre Resource Provider. |
-| 104 | *rule-name* | 443 | TCP | `VirtualNetwork` | `GuestAndHybridManagement` | Allow | Allow access to GuestAndHybridManagement so the service can utilize Azure Log Analytics for supportability workflows. |
-| 105 | *rule-name* | 443 | TCP | `VirtualNetwork` | `ApiManagement.EastUS` | Allow | Allow access to ApiManagement for security and performance of Azure Managed Lustre’s interactions with other services. |
-| 106 | *rule-name* | 443 | TCP | `VirtualNetwork` | `AzureDataLake` | Allow | Allow access to AzureDataLake so security and health services running on the Azure Managed Lustre platform can log essential information for platform supportability. |
-| 107 | *rule-name* | 443 | TCP | `VirtualNetwork` | `AzureResourceManager` | Allow | Allow access to Azure Resource Manager, which the service requires for deployment and maintenance of its internal resources. |
-| 108 | *rule-name* | 988, 1019-1023 | TCP | *IP address/CIDR range for Azure Managed Lustre file system subnet* | *IP address/CIDR range for Lustre client subnet* | Allow | Allow the essential ports for proper Lustre protocol operation between the storage servers and the Lustre client VMs. |
-| 109 | *rule-name* | 123 | UDP | *IP address/CIDR range for Azure Managed Lustre file system subnet* | 168.61.215.74/32 | Allow | Allow access to the MS NTP server for time synchronization of the Lustre storage servers and client VMs. |
-| 110 | *rule-name* | 443 | TCP | `VirtualNetwork` | 20.34.120.0/21 | Allow | Allow Azure Managed Lustre to upload telemetry to its telemetry service, which is essential for Azure engineering to provide product support. |
-| 111 | *rule-name* | Any | Any | *IP address/CIDR range for Azure Managed Lustre file system subnet* | *IP address/CIDR range for Azure Managed Lustre file system subnet* | Allow | Allow Azure Managed Lustre servers to communicate with each other within the subnet. Note: the system uses port 22 (SSH) during initial deployment and configuration. |
-| 112 | *rule-name* | 443 | TCP | `VirtualNetwork` | `EventHub` | Allow | Allow access to EventHub so security and monitoring services running on the Azure Managed Lustre platform can store real-time system events. |
-| 1000 | *rule-name* | Any | Any | `VirtualNetwork` | `Internet` | Deny | Deny outbound flows to the internet. |
+| 100 | *rule-name* | 443 | TCP | `VirtualNetwork` | `AzureMonitor` | Allow | Allows the AzureMonitor service to report health or and security issues diagnosed by the Azure Managed Lustre service hosts. |
+| 101 | *rule-name* | 443 | TCP | `VirtualNetwork` | `AzureKeyVault.EastUS` | Allow | Allows access to AzureKeyVault, which the service uses to store essential security secrets required for basic operation and storage access. |
+| 102 | *rule-name* | 443 | TCP | `VirtualNetwork` | `AzureActiveDirectory` | Allow | Allows access to AzureActiveDirectory, which is required for the secure Microsoft Entra ID service used during deployment and support activities. |
+| 103 | *rule-name* | 443 | TCP | `VirtualNetwork` | `Storage.EastUS` | Allow | Allows access to Storage account endpoints that are required for the Managed Lustre hardware security module, system health signals, and other communication flows to the Azure Managed Lustre resource provider. |
+| 104 | *rule-name* | 443 | TCP | `VirtualNetwork` | `GuestAndHybridManagement` | Allow | Allows access to `GuestAndHybridManagement` so that the service can use Azure Log Analytics for supportability workflows. |
+| 105 | *rule-name* | 443 | TCP | `VirtualNetwork` | `ApiManagement.EastUS` | Allow | Allows access to ApiManagement for security and performance of Azure Managed Lustre’s interactions with other services. |
+| 106 | *rule-name* | 443 | TCP | `VirtualNetwork` | `AzureDataLake` | Allow | Allows access to AzureDataLake so security and health services running on the Azure Managed Lustre platform can log essential information for platform supportability. |
+| 107 | *rule-name* | 443 | TCP | `VirtualNetwork` | `AzureResourceManager` | Allow | Allows access to Azure Resource Manager, which the service requires for deployment and maintenance of its internal resources. |
+| 108 | *rule-name* | 988, 1019-1023 | TCP | *IP address/CIDR range for Azure Managed Lustre file system subnet* | *IP address/CIDR range for Lustre client subnet* | Allow | Allows the essential ports for proper Lustre protocol operation between the storage servers and the Lustre client VMs. |
+| 109 | *rule-name* | 123 | UDP | *IP address/CIDR range for Azure Managed Lustre file system subnet* | 168.61.215.74/32 | Allow | Allows access to the Microsoft NTP server for time synchronization of the Managed Lustre storage servers and client VMs. |
+| 110 | *rule-name* | 443 | TCP | `VirtualNetwork` | 20.34.120.0/21 | Allow | Allows Azure Managed Lustre to upload telemetry to its telemetry service, which is essential for Azure engineering to provide product support. |
+| 111 | *rule-name* | Any | Any | *IP address/CIDR range for Azure Managed Lustre file system subnet* | *IP address/CIDR range for Azure Managed Lustre file system subnet* | Allow | Allows Azure Managed Lustre servers to communicate with each other within the subnet. Note: the system uses port 22 (SSH) during initial deployment and configuration. |
+| 112 | *rule-name* | 443 | TCP | `VirtualNetwork` | `EventHub` | Allow | Allows access to EventHub so security and monitoring services running on the Azure Managed Lustre platform can store real-time system events. |
+| 1000 | *rule-name* | Any | Any | `VirtualNetwork` | `Internet` | Deny | Denies outbound flows to the internet. |
 | 1010 | *rule-name* | Any | Any | Any | Any | Deny | Deny all other outbound flows. |
 
-The outbound security rules in the Azure portal should look similar to the following screenshot. The screenshot is provided as an example; consult the table for the complete list of rules. You should adjust the subnet IP address/CIDR range and other settings based on your deployment:
+The outbound security rules in the Azure portal should look similar to the following example:
 
 :::image type="content" source="media/network-security-group/outbound-security-rules.png" alt-text="Screenshot showing outbound security rules for a network security group in the Azure portal." lightbox="media/network-security-group/outbound-security-rules.png":::
 
-## Next steps
+This figure is provided as an *example*. For the complete list of rules, see the preceding table. Adjust the subnet IP address, the CIDR range, and other settings per your deployment.
 
-To learn more about Azure Managed Lustre, see the following articles:
+## Related content
+
+To learn more about Azure Managed Lustre:
 
 - [What is Azure Managed Lustre?](amlfs-overview.md)
 - [Create an Azure Managed Lustre file system](create-file-system-portal.md)
 
-To learn more about Azure network security groups, see the following articles:
+To learn more about Azure network security groups:
 
 - [Overview of network security groups](/azure/virtual-network/network-security-groups-overview)
 - [How network security groups filter network traffic](/azure/virtual-network/network-security-group-how-it-works)
