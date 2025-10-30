@@ -1,6 +1,6 @@
 ---
 title: "Storage Appliance Component Repair"
-description: How to document describing replacing storage appliance components in an Operator Nexus instance.
+description: How to document describing storage appliance components replacement in an Operator Nexus instance.
 author: matternst7258 
 ms.author: matthewernst
 ms.service: azure-operator-nexus
