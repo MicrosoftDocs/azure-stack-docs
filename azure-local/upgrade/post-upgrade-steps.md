@@ -108,7 +108,7 @@ Once the new OS is installed, you need to upgrade the cluster functional level a
 
    1. You'll see a warning that you can't undo this operation. Confirm **Y** to continue.
 
-   1. Run the following cmdlet to check the updated `ClusterFunctionalLevel` and `ClusterUpgradeVersion`:
+   1. Run the following cmdlet to check the updated version numbers for `ClusterFunctionalLevel` and/or `ClusterUpgradeVersion`:
 
       ```powershell
       [System.Environment]::OSVersion.Version
