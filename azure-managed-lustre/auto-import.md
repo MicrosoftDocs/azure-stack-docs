@@ -32,13 +32,13 @@ See [Change Feed documentation](/azure/storage/blobs/storage-blob-change-feed?ta
 - Existing Azure Managed Lustre file system - create one using the [Azure portal](/azure/azure-managed-lustre/create-file-system-portal), [Azure Resource Manager](/azure/azure-managed-lustre/create-file-system-resource-manager), or [Terraform](/azure/azure-managed-lustre/create-aml-file-system-terraform). To learn more about blob integration, see [Blob integration prerequisites](/azure/azure-managed-lustre/amlfs-prerequisites#blob-integration-prerequisites-optional).
 - [Azure Blob Storage Change Feed](/azure/storage/blobs/storage-blob-change-feed?tabs=azure-portal) **must be enabled** on the Storage Account associated with the AMLFS file system. **NOTE**: Change Feed [doesn't support](/azure/storage/blobs/storage-blob-change-feed?tabs=azure-portal#enable-and-disable-the-change-feed) Storage Accounts with a Hierarchical Namespace (HNS) enabled.
   - Change Feed retention period MUST be set to seven days or greater. When enabling the blob change feed, select to either: **Keep all logs** OR set **Delete change feed logs after (in days)** to seven or greater.
-- Concurrent Blob Integration jobs aren't permitted. It's necessary to disable Auto-Export before enabling Auto-Import.
+- Concurrent Blob Integration jobs aren't permitted. It's necessary to disable Auto-Export as well as manual import or export jobs before enabling Auto-Import.
 
 ## Configuration
 
 Auto-Import is enabled on an existing Azure Managed Lustre file system that has an associated Blob Storage Container configured. Auto-Import is configured in the Blob Integration settings in the Azure portal.
 
-To create a new Auto-Export job, follow these steps:
+To create a new Auto-Import job, follow these steps:
 
 1. In the Azure portal, open your Azure Managed Lustre file system and select the **Blob integration** pane under **Settings**.
 1. Select **+ Create new job**.
@@ -103,7 +103,8 @@ While using Auto-Import, consider the following best practices to ensure smooth 
 - Auto-Import is dependent on the Change Feed and is, thus, limited to the timeliness of events published to the Change Feed. The Change Feed currently suggests that events are published "within minutes."
 - Auto-Import can typically import changes at a rate of 2000 per second.
 - No Blob Integration jobs can be run at the same time. Once Auto-Import is enabled, manual import and export jobs (both manual and auto) can't be used.
-- Lfs hsm_* commands aren't supported during the use of Auto-Import.
+- Lfs hsm_* commands aren't recommended during the use of Auto-Import as it can cause consistency issues between Blob and the Lustre file system.
+- If a file is modified in Lustre (**its a conflict**), Deletion behavior is explicitly tied to the selected conflict mode.
 
 Best practices for enabling Deletions:
 
@@ -112,10 +113,12 @@ Best practices for enabling Deletions:
 - During the initial scan, changes (including deletes) are delayed. Any Change Feed events, including deletes, that occur while the initial scan runs are applied **after** the scan completes. Expect a temporary period where Lustre may still show files that were deleted in Blob during the scan.
 - Deletion behavior is explicitly tied to the selected conflict mode. The following table demonstrates the behavior for each mode when "Enable deletions" is selected:
 
-**Conflict resolution mode** | **Delete File?** | **Effect if encountered**
+**File modified in Lustre?** | **Conflict resolution mode** | **Delete File?**
 --- | --- | ---
-Overwrite – If Dirty | Yes | File deleted from Lustre
-Skip | No | File remains in Lustre
+Yes | Overwrite – If Dirty | Yes
+Yes | Skip | No - File remains in Lustre
+No | Overwrite – If Dirty | Yes
+No | Skip | Yes
 
 ## Next Steps
 
