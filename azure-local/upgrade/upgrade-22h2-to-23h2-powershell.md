@@ -384,4 +384,4 @@ To install the new OS using PowerShell, follow these steps:
 
 ## Next steps
 
-- [Learn how to perform the post-OS upgrade steps for your Azure Local.](./post-upgrade-steps.md)
+- Learn how to [Perform the post-OS upgrade steps for Azure Local](./post-upgrade-steps.md).
