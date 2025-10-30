@@ -103,7 +103,7 @@ While using Auto-Import, consider the following best practices to ensure smooth 
 - Auto-Import is dependent on the Change Feed and is, thus, limited to the timeliness of events published to the Change Feed. The Change Feed currently suggests that events are published "within minutes."
 - Auto-Import can typically import changes at a rate of 2000 per second.
 - No Blob Integration jobs can be run at the same time. Once Auto-Import is enabled, manual import and export jobs (both manual and auto) can't be used.
-- Lfs hsm_* commands aren't recommended during the use of Auto-Import as it can cause consistency issues between Blob and the Lustre file system.
+- Lfs hsm_* commands aren't supported during the use of Auto-Import as it can cause consistency issues between Blob and the Lustre file system.
 - If a file is modified in Lustre (**its a conflict**), Deletion behavior is explicitly tied to the selected conflict mode.
 
 Best practices for enabling Deletions:
@@ -113,7 +113,7 @@ Best practices for enabling Deletions:
 - During the initial scan, changes (including deletes) are delayed. Any Change Feed events, including deletes, that occur while the initial scan runs are applied **after** the scan completes. Expect a temporary period where Lustre may still show files that were deleted in Blob during the scan.
 - Deletion behavior is explicitly tied to the selected conflict mode. The following table demonstrates the behavior for each mode when "Enable deletions" is selected:
 
-**File modified in Lustre?** | **Conflict resolution mode** | **Delete File?**
+**File previously modified in Lustre?** | **Conflict resolution mode** | **Perform Deletion?**
 --- | --- | ---
 Yes | Overwrite – If Dirty | Yes
 Yes | Skip | No - File remains in Lustre
