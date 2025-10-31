@@ -5,7 +5,7 @@ author: ronmiab
 ms.author: robess
 ms.topic: how-to
 ms.reviewer: arduppal
-ms.date: 09/23/2025
+ms.date: 10/30/2025
 ---
 
 # Import and discover update packages with limited connectivity
@@ -53,6 +53,7 @@ For more information on the release cadence, see [Azure Local release informatio
 
 | OS Build | Download URI | SHA256 |
 |--|--|--|
+| 26100.6899 | [12.2510.1002.88](https://azurestackreleases.download.prss.microsoft.com/dbazure/AzureLocal/CombinedSolutionBundle/12.2510.1002.88/CombinedSolutionBundle.12.2510.1002.88.zip) <br><br> Availability date: <br><br> 2025-10-24  | 5A13A5D01B5B32466883C83C89186B0FED937CAB53E7DF76D46E6275721952D2 |
 | 26100.6584 | [12.2509.1001.22](https://azurestackreleases.download.prss.microsoft.com/dbazure/AzureLocal/CombinedSolutionBundle/12.2509.1001.22/CombinedSolutionBundle.12.2509.1001.22.zip) <br><br> Availability date: <br><br> 2025-09-22  | 15771552A97785B7EE291587FE62EE678EDE850E2250A5407EE6738AFEF729B65B |
 | 26100.4946 | [12.2508.1001.52](https://azurestackreleases.download.prss.microsoft.com/dbazure/AzureLocal/CombinedSolutionBundle/12.2508.1001.52/CombinedSolutionBundle.12.2508.1001.52.zip) <br><br> Availability date: <br><br> 2025-08-29  | 410723EAD2177247932B10AD79978F2E4D8049FBFF70E8F9F94943384B59BB80 |
 | 26100.4652 | [12.2507.1001.10](https://azurestackreleases.download.prss.microsoft.com/dbazure/AzureLocal/CombinedSolutionBundle/12.2507.1001.10/CombinedSolutionBundle.12.2507.1001.10.zip) <br><br> Availability date: <br><br> 2025-07-25 | 8FAC8A7F52C570682407573F7AAAB79BDBA62299C9F50C3497FD0A10FBF73105 |
