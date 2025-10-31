@@ -18,8 +18,10 @@
   items:
     - name: Use Azure Blob Storage with Azure Managed Lustre
       href: blob-integration.md
-    - name: Import data using import jobs
+    - name: Import data using manual import jobs
       href: create-import-job.md
+    - name: Import data using auto-import jobs
+      href: auto-import.md
     - name: Export data using manual export jobs
       href: export-with-archive-jobs.md
     - name: Export data using auto-export jobs
