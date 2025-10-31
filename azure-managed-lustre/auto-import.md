@@ -51,7 +51,7 @@ To create a new Auto-Import job, follow these steps:
 1. Determine if you’d like to **Enable deletions** which enables propagation of deletions from Azure Blob Storage to Azure Managed Lustre.
 1. Once the job is configured, select **Start** to begin the import process.
 
-## Monitoring and Managing Auto-Import
+## Monitoring and managing auto-import
 
 After the auto-import job is created, you can monitor its progress in the Azure portal.
 
@@ -96,7 +96,7 @@ Total Errors | Total number of errors encountered, failing to import Blobs to Lu
 Last Change Feed Event Consumed Time | Timestamp of the last Change Feed event processed for this Auto-Import job
 Last Time Fully Synchronized | Most recent timestamp when all Change Feed events were processed for this Auto-Import job
 
-## Considerations and Best Practices
+## Considerations and best practices
 
 While using Auto-Import, consider the following best practices to ensure smooth operation:
 
@@ -121,6 +121,6 @@ Yes | Skip | No - File remains in Lustre
 No | Overwrite – If Dirty | Yes
 No | Skip | Yes
 
-## Next Steps
+## Next steps
 
 - Learn more about [Azure Blob Storage integration with Azure Managed Lustre file systems](/azure/azure-managed-lustre/blob-integration).
