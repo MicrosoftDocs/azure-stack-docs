@@ -26,6 +26,18 @@ This Azure region should be used in the `Location` field of the Cluster Manager 
 ## Limitations
 - **Naming** - Naming rules can be found [here](/azure/azure-resource-manager/management/resource-name-rules#microsoftnetworkcloud).
 
+## Capacity Requirements
+
+Cluster Manager supports the following VM SKUs: 
+- Standard_D4_v2 (default)
+- Standard_D8s_v3
+
+Refer to [Azure Virtual Machine size overview](/azure/virtual-machines/sizes/overview) for each SKU requirements.
+ 
+Cluster Manager requires 3 VMs and is created using all 3 availability zones. A customer can switch to 2 availability zones if the selected SKU is not available in all zones. In that case, the 3 VMs will be redistributed across the provided zones.
+ 
+The compute needs increase during upgrades and may double depending on the type of the upgrade. For example, AKS upgrades require more capacity while regular Network Cloud maintenance requires one extra VM. This scaling is temporary and reverts to three VMs after the upgrade completes. When multiple Cluster Managers are deployed in the same subscription, customers do not need to reserve double capacity for all instances, as not all upgrades occur at the same time. 
+
 ## Cluster Manager properties
 
 | Property Name                     | Description                                                                                                                                                                                                                              |
