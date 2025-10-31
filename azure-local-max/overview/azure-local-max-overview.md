@@ -5,13 +5,13 @@ description: Discover Azure Local Max, a new capability for deploying large on-p
 author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
-ms.date: 10/16/2025
+ms.date: 10/31/2025
 ms.topic: overview
 ---
 
 # What is Azure Local Max? (Preview)
 
-> Applies to: Azure Local Max preview release
+[!INCLUDE [max-applies-to-preview](../includes/max-applies-to-preview.md)]
 
 This article provides an overview of Azure Local Max. The overview also details the benefits, key features, use cases for deployment and how to get started with the preview release.
 

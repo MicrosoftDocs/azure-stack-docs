@@ -4,14 +4,14 @@ description: Get instructions on setting up network access control lists (ACLs) 
 ms.service: azure-operator-nexus
 ms.custom: template-how-to, devx-track-azurecli
 ms.topic: how-to
-ms.date: 10/29/2025
-author: sushantjrao
-ms.author: sushrao
+ms.date: 10/31/2025
+author: alkohli
+ms.author: alkohli
 ---
 
 # Create ACLs on an NNI in Azure Local max and Azure Operator Nexus
 
-[!INCLUDE [max-operator-nexus-applies-to-4-8](../azure-local-max/includes/max-operator-nexus-applies-to-4-8.md)]
+[!INCLUDE [max-operator-nexus-applies-to-preview](../azure-local-max/includes/max-operator-nexus-applies-to-preview.md)]
 
 This article describes the process of creating access control lists (ACLs) in Azure Local max and Azure Operator Nexus.
 

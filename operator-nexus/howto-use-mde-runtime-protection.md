@@ -5,13 +5,13 @@ author: sshiba
 ms.author: sidneyshiba
 ms.service: azure-operator-nexus
 ms.topic: how-to
-ms.date: 10/29/2025
+ms.date: 10/31/2025
 ms.custom: template-how-to
 ---
 
 # Introduction to the Microsoft Defender for Endpoint runtime protection service
 
-[!INCLUDE [max-operator-nexus-applies-to-4-8](../azure-local-max/includes/max-operator-nexus-applies-to-4-8.md)]
+[!INCLUDE [max-operator-nexus-applies-to-preview](../azure-local-max/includes/max-operator-nexus-applies-to-preview.md)]
 
 This article introduces the Microsoft Defender for Endpoint (MDE) runtime protection service. This service provides the tools to configure and manage runtime protection for your Azure Local max or Operator Nexus cluster.
 
