@@ -72,8 +72,8 @@ Follow these steps to configure DNS for Azure Local:
 
     To verify that the DNS records for a specific machine are correctly set up, run the following command:
 
-    ```cmd
-    nslookup "machine name"
+    ```Powershell
+    Resolve-DnsName hostname
     ```
 
 1. **Set up DNS forwarding.**
@@ -90,7 +90,7 @@ Follow these steps to configure DNS for Azure Local:
 
 1. Restart the operating system on local and remote machines using the following command:
     
-    ```cmd
+    ```Powershell
     Restart-Computer
     ```
 
