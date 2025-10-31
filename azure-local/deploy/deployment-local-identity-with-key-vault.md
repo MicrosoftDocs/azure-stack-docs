@@ -90,7 +90,7 @@ Follow these steps to configure DNS for Azure Local:
 
 1. Restart the operating system on local and remote machines using the following command:
     
-    ```Powershell
+    ```powershell
     Restart-Computer
     ```
 
