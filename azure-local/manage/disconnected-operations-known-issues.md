@@ -17,29 +17,31 @@ This article highlights what's new (features and improvements) and critical know
 
 ## Features and improvements in 2509
 
- - Added support for Azure Local 2508 ISO and its capabilities.
- - Added support for System Center Operations Manager 2025, resolves a management pack failure in newer versions, and maintains support for System Center Operations Manager 2022.
- - Improved security.
- - Improved observability.
- - Enabled Ldaps and custom port for ldap binding.
- - Fixed Portal and UX issues.
- - Improved OperationsModule logging and error messages and adds certificate validation and CSR generation.
- - Added external certificate rotation in OperationsModule. For example, `Set-ApplianceExternalEndpointCertificates`.
- - Enabled the use of an FQDN in the SAN of the management certificate.
+ - Adds support for Azure Local 2508 ISO and its capabilities.
+ - Adds support for SCOM 2025 and fixes a management pack failure on newer SCOM versions; continues support for SCOM 2022.
+ - This release enables the update scenario. When 2510 is released, you will be able to test updating from this version to 2510 of ALDO. This will also include the ability to update Azure Local that is connected to disconnected operations.
+ - Improves security.
+ - Improves observability.
+ - Enables Ldaps and custom port for ldap binding.
+ - Fixes Portal and UX issues.
+ - Improves OperationsModule logging and error messages and adds certificate validation and CSR generation.
+ - Adds external certificate rotation in OperationsModule. For example, `Set-ApplianceExternalEndpointCertificates`.
+ - Enables use of a FQDN in the SAN of the management certificate.
 
 ## Known issues for disconnected operations for Azure Local
 
-### Arca bootstrap fails on node (Invoke-AzStackHCIArcInitialization) (OEM provided images)
-If you are running a OEM provided image - you need to ensure you are on the correct OS baseline.
+### Arc bootstrap fails on node (Invoke-AzStackHCIArcInitialization) on Original Equipment Manufactorer (OEM) provided images 
+f you are running an OEM image, makre sure that you are on the correct OS baseline.
 
-Make sure you follow the following steps:
-- Make sure you are on a baseline on the same or older (e.g. 2508 or older)
-- Disable ZDU on each node:
+Follow these steps:
+
+- Make sure that you are on a same supported version or an earlier version (for example, 2508 or earlier).
+- Disable Zero Day Update (ZDU) on each node:
 ```powershell
     Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Environment\EdgeArcBootstrapSetup" -Name "MicrosoftOSImage" -Value 1
 ```
 - Upgrade to the Microsoft provided ISO (2508). Choose upgrade and keep settings when re-imaging the nodes using this approach
-    - Alternative approach, run the following to get to 2508 update:
+    - Alternatively, run the following command to get the 2508 update:
 
 ```powershell
 
@@ -66,6 +68,40 @@ Start-ArcBootstrap -ConfigFilePath $tempConfigPath
 
 # Continue with Invoke-AzStackHCIArcInitialization.
 ```
+
+### Cloud Deployment validation fails during portal experience
+
+Solution Builder extension (SBE) validation fails with it trying to reach an aka.ms link to download. 
+
+Workaround:
+
+- Runs cloud deployment (Portal) flow until validation fails in the UX 
+- On the seed node, modify modify the following file c:\CloudDeployment\Setup\Common\ExtractOEMContent.ps1 
+ - Replace line 899 in thie file with the code snippet below 
+```powershell
+if (-not (Test-SBEXMLSignature -XmlPath $sbeDiscoveryManifestPath)) {
+    throw ($localizedStrings.OEMManifestSignature -f $sbeDiscoveryManifestPath)
+}
+$packageHash = (Get-FileHash -Path $zipFile.FullName -Algorithm SHA256).Hash
+$manifestXML = New-Object -TypeName System.Xml.XmlDocument
+$manifestXML.PreserveWhitespace = $false
+$xmlTextReader = New-Object -TypeName System.Xml.XmlTextReader -ArgumentList $sbeDiscoveryManifestPath
+$manifestXML.Load($xmlTextReader)
+$xmlTextReader.Dispose()
+
+# Test that the zip file hash matches the package hash from the manifest
+$applicableUpdate = $manifestXML.SelectSingleNode("//ApplicableUpdate[UpdateInfo/PackageHash='$packageHash']")
+if ([System.String]::IsNullOrEmpty($applicableUpdate)) {
+    throw "$($zipFile.FullName) hash of $packageHash does not match value in manifest at $sbeDiscoveryManifestPath"
+}
+$result = [PSCustomObject]@{
+    Code = "Latest"
+    Message = "Override for ALDO"
+    Endpoint = "https://aka.ms/AzureStackSBEUpdate/Dell"
+}
+```
+- Resume cloud deployment
+
 ### Memory consumption when there's less than 128 GB of memory per node
 
 The disconnected operations appliance uses 78 GB of memory. If a node has less than 128 GB of memory, complete these steps after the appliance deploys and before you deploy Azure Local instances.
