@@ -30,8 +30,10 @@ See [Change Feed documentation](/azure/storage/blobs/storage-blob-change-feed?ta
 ## Prerequisites
 
 - Existing Azure Managed Lustre file system - create one using the [Azure portal](/azure/azure-managed-lustre/create-file-system-portal), [Azure Resource Manager](/azure/azure-managed-lustre/create-file-system-resource-manager), or [Terraform](/azure/azure-managed-lustre/create-aml-file-system-terraform). To learn more about blob integration, see [Blob integration prerequisites](/azure/azure-managed-lustre/amlfs-prerequisites#blob-integration-prerequisites-optional).
-- [Azure Blob Storage Change Feed](/azure/storage/blobs/storage-blob-change-feed?tabs=azure-portal) **must be enabled** on the Storage Account associated with the AMLFS file system. **NOTE**: Change Feed [doesn't support](/azure/storage/blobs/storage-blob-change-feed?tabs=azure-portal#enable-and-disable-the-change-feed) Storage Accounts with a Hierarchical Namespace (HNS) enabled.
-  - Change Feed retention period MUST be set to seven days or greater. When enabling the blob change feed, select to either: **Keep all logs** OR set **Delete change feed logs after (in days)** to seven or greater.
+- [Azure Blob Storage Change Feed](/azure/storage/blobs/storage-blob-change-feed?tabs=azure-portal) **must be enabled** on the Storage Account associated with the AMLFS file system.
+  > [!NOTE]
+  > Change Feed [doesn't support](/azure/storage/blobs/storage-blob-change-feed?tabs=azure-portal#enable-and-disable-the-change-feed) Storage Accounts with a Hierarchical Namespace (HNS) enabled.
+- Change Feed retention period MUST be set to seven days or greater. When enabling the blob change feed, select to either: **Keep all logs** OR set **Delete change feed logs after (in days)** to seven or greater.
 - Concurrent Blob Integration jobs aren't permitted. It's necessary to disable Auto-Export as well as manual import or export jobs before enabling Auto-Import.
 
 ## Configuration
@@ -104,7 +106,6 @@ While using Auto-Import, consider the following best practices to ensure smooth 
 - Auto-Import can typically import changes at a rate of 2000 per second.
 - No Blob Integration jobs can be run at the same time. Once Auto-Import is enabled, manual import and export jobs (both manual and auto) can't be used.
 - Lfs hsm_* commands aren't supported during the use of Auto-Import as it can cause consistency issues between Blob and the Lustre file system.
-- If a file is modified in Lustre (**its a conflict**), Deletion behavior is explicitly tied to the selected conflict mode.
 
 Best practices for enabling Deletions:
 
