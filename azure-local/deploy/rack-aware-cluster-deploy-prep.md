@@ -4,7 +4,7 @@ description: Learn how to deploy Azure Local rack aware clusters with high resil
 author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
-ms.date: 10/16/2025
+ms.date: 10/31/2025
 ms.topic: how-to
 ---
 
@@ -89,7 +89,7 @@ To complete the full mesh testing, repeat steps 3 and 4 with different server-cl
 
 Use the LLDP Network Validator Test to validate the network topology and connections for your rack aware cluster deployment. This test helps ensure that your network configuration meets the requirements for a successful rack aware cluster deployment.
 
-For more information, see [Run the LLDP Network Validator test for rack aware clusters](../index.yml).
+For more information, see [Run the LLDP Network Validator test for rack aware clusters](./rack-aware-cluster-readiness-check.md).
 
 ## Next steps
 
