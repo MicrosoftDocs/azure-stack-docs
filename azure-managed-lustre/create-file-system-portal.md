@@ -81,9 +81,11 @@ Currently, the following throughput configurations are available:
 
 Use the **Maintenance window** setting to control the day and time when system updates can occur.
 
-System updates are typically applied to the service once every two months. The service might be temporarily unavailable during the maintenance window when system updates are being applied. System updates include, but aren't limited to, security updates, Lustre code fixes, and service enhancements.
+System updates are typically applied to the service once every three months. The service might be temporarily unavailable during the maintenance window when system updates are being applied. System updates include, but aren't limited to, security updates, Lustre code fixes, and service enhancements.
 
 During the maintenance window, user workloads that access the file system will temporarily pause if a system update is being applied. User workloads resume when the system updates are complete. If you have multiple Azure Managed Lustre deployments, consider spacing out their maintenance windows for availability when updates are necessary.
+
+To configure service health alerts for Azure Managed Lustre Filesystem Service, see [Configure Health Alerts](/azure/service-health/service-health-overview#configure-service-health-alerts).
 
 ## Advanced tab
 

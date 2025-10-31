@@ -3,7 +3,7 @@ title: Overview of Azure Arc gateway for Azure Local
 description: Learn what is Azure Arc gateway for Azure Local.
 author: alkohli
 ms.topic: how-to
-ms.date: 09/24/2025
+ms.date: 10/30/2025
 ms.author: alkohli
 ms.service: azure-local
 ---
@@ -15,6 +15,9 @@ ms.service: azure-local
 This article provides an overview of the Azure Arc gateway for Azure Local (formerly known as Azure Stack HCI). You can enable the Arc gateway on new deployments of Azure Local running software version 2506 and later. This article also describes how to create and delete the Arc gateway resource in Azure.
 
 Use the Arc gateway to significantly reduce the number of required endpoints needed to deploy and manage Azure Local instances. When you create the Arc gateway, connect to and use it for new deployments of Azure Local.
+
+> [!NOTE]
+> Although Arc gateway for Azure Local infrastructure and Azure Local VMs is generally available, Arc gateway for AKS on Azure Local is still in preview.
 
 ## How it works
 
@@ -114,7 +117,6 @@ The endpoints from the following table are required. Add these endpoints to the 
 Arc gateway has the following limitations in this release:
 
 - Arc gateway doesn't support Transport Layer Security (TLS) terminating proxies.
-- Arc gateway doesn't support using ExpressRoute, Site-to-Site VPN, or Private Endpoints together with the Arc gateway.
 
 ## Create the Arc gateway resource in Azure
 

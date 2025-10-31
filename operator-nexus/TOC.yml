@@ -366,6 +366,8 @@
       items:
         - name: Storage Appliance Run-Read Commands
           href: howto-storage-run-read.md
+        - name: Storage Appliance Component Repair
+          href: howto-storage-device-repair.md
     - name: Install CLI Extension
       href: howto-install-cli-extensions.md
     - name: General

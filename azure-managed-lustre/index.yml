@@ -40,8 +40,10 @@ landingContent:
             url: blob-integration.md
       - linkListType: how-to-guide
         links:
-          - text: Import data using import jobs
+          - text: Import data using manual import jobs
             url: create-import-job.md
+          - text: Import data using auto-import jobs
+            url: auto-import.md
           - text: Export data using manual export jobs
             url: export-with-archive-jobs.md
           - text: Export data using auto-export jobs
