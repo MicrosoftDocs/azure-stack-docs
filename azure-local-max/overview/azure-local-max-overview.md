@@ -27,7 +27,7 @@ Azure Local max is delivered as multiple integrated racks, uses SAN storage, and
 
 To ensure performance and consistency, this capability is built on a prescriptive hardware Bill of materials (BOM). This enterprise-grade setup includes one main rack for aggregation with SAN storage and several compute racks, installed in your own datacenter.
 
-:::image type="content" source="media/azure-local-max-overview/image1.png" alt-text="Diagram showing Azure Local max aggregation and compute racks.":::
+:::image type="content" source="media/azure-local-max-overview/rack-structure.png" alt-text="Diagram showing Azure Local max aggregation and compute racks.":::
 
 Azure Local Max uses Microsoft’s own version of Linux, called Azure Linux OS, to run on the host machines. With this setup, customers can run familiar Arc-enabled infrastructure and services at higher scale for datacenter scenarios. Services such as Network Cloud and Network Fabric offer fully managed networking that extends to L2 and L3 networking devices. You can use the Azure Command-line Interface (CLI) or Azure portal to monitor and manage individual instances, and view all the deployments of Azure Local max.
 
@@ -65,7 +65,7 @@ The following table lists the various features and capabilities available on Azu
 
 The following diagram illustrates the architecture of Azure Local Rack Scale.
 
-:::image type="content" source="media/azure-local-max-overview/image2.png" alt-text="Architecture diagram of Azure Local Max.":::
+:::image type="content" source="media/azure-local-max-overview/architecture.png" alt-text="Architecture diagram of Azure Local Max.":::
 
 The important points about this architecture are as follows:
 
