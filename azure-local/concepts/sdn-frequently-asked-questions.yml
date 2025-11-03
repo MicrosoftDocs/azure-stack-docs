@@ -19,7 +19,7 @@ sections:
 
       - question: Will I have downtime for my Azure Local VMs when I enable Network Controller via the PowerShell cmdlet?
         answer: |
-          Yes. When you enable Network Controller, Azure Local VMs use a null port profile to set up network connectivity. Because this process affects all VMs, you experience brief downtime until configuration finishes.
+          Yes. When you enable Network Controller, you experience brief downtime until configuration finishes.
 
           Because this operation is disruptive, plan a maintenance window if you're running in a production environment.
 
@@ -37,7 +37,7 @@ sections:
 
       - question: Can I configure static network interfaces after the Azure Local VM is provisioned on an Azure Local instance with SDN enabled by Azure Arc?
         answer: |
-          No. You can't add a secondary network interface to a VM after provisioning. This setup causes both interfaces to act as the default gateway, which leads to asymmetric networking, packet loss, and unpredictable networking. Set up all needed static network interfaces during VM provisioning when using SDN enabled by Azure Arc.
+          Yes. However, if you provision multiple static NICs on an Azure Local VM all NICs get the default gateway. Ensure to remove the default gateway from secondary NICs to prevent asymmetric networking, packet loss, and unpredictable networking.
       - question: Why am I seeing unexpected traffic drop or blocks for my Azure Local VMs?
         answer: |
           If logical networks and VM network interfaces on your Azure Local VMs have NSGs with conflicting allow or deny rules, you can see unexpected traffic drops or blocks.
