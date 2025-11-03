@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
 ms.custom: references_regions
-ms.date: 10/15/2025
+ms.date: 11/03/2025
 ---
 
 # System requirements for Azure Local
@@ -74,6 +74,9 @@ Before you begin, make sure that the physical machine and storage hardware used 
 |Secure boot|Secure Boot must be present and turned on.|
 |GPU | Optional<br>Up to 192 GB GPU memory per machine. |
 
+
+### Extra requirements for drives
+
 The machines should also meet these extra requirements for drives:
 
 - Have direct-attached drives that are physically attached to one machine each. RAID controller cards or SAN (Fibre Channel, iSCSI, FCoE) storage, shared SAS enclosures connected to multiple machines, or any form of multi-path IO (MPIO) where drives are accessible by multiple paths, aren't supported.
@@ -81,27 +84,26 @@ The machines should also meet these extra requirements for drives:
     > [!NOTE]
     > Host-bus adapter (HBA) cards must implement simple pass-through mode for any storage devices used for Storage Spaces Direct.
 
-    **Drive Support**
+- **Drive Support**
+   - Supported drives: SATA, SAS, and NVMe (M.2, U.2, and add-in card).
 
-- Supported drives: SATA, SAS, and NVMe (M.2, U.2, and add-in card).
+   - Supported formats: 512n, 512e, and 4K native.
 
-- Supported formats: 512n, 512e, and 4K native.
+- **Deployment-specific requirements**
+
+   - **Single-node**: Use one drive type (NVMe or SSD) with uniform performance characteristics across drives.
+
+   - **Multi-node cluster**: Strongly recommend all-flash, single drive type (NVMe or SSD) with uniform performance.
+
+- **Hybrid two-tier requirements for HDD + flash**
+
+   - Hybrid two-tier is supported only when using HDD for capacity + flash (NVMe or SSD) for cache.
+
+   - Cache devices must be ≥ 32 GB.
 
 - NVMe driver is the Microsoft-provided one included in Windows (driver filename is stornvme.sys).
 
 - Flash (NVMe or SSD) must have power-loss protection.
-
-    **Deployment-specific requirements**
-
-- **Single-node**: Use one drive type (NVMe or SSD) with uniform performance characteristics across drives.
-
-- **Multi-node cluster**: Strongly recommend all-flash, single drive type (NVMe or SSD) with uniform performance.
-
-    **Hybrid two-tier requirements for HDD + flash**
-
-- Hybrid two-tier is supported only when using HDD for capacity + flash (NVMe or SSD) for cache.
-
-- Cache devices must be ≥ 32 GB.
 
 For more feature-specific requirements for Hyper-V, see [System requirements for Hyper-V on Windows Server](/windows-server/virtualization/hyper-v/system-requirements-for-hyper-v-on-windows).
 
