@@ -68,7 +68,7 @@ The following switch capabilities are required:
 
 > [!IMPORTANT]
 > **RDMA QoS requirement:**
-> All interfaces that support RDMA (SMB) traffic are **required** to implement [QoS policies](https://github.com/ebmarquez/AzureLocal-Supportability/blob/main/TSG/Networking/Top-Of-Rack-Switch/Reference-TOR-QOS-Policy-Configuration.md). This includes both host-facing storage interfaces and room-to-room links carrying storage VLANs (711, 712). Proper QoS configuration is essential for maintaining lossless, low-latency RDMA performance across the cluster.
+> All interfaces that support RDMA (SMB) traffic are **required** to implement [QoS policies](https://github.com/azure/AzureLocal-Supportability/blob/main/TSG/Networking/Top-Of-Rack-Switch/Reference-TOR-QOS-Policy-Configuration.md). This includes both host-facing storage interfaces and room-to-room links carrying storage VLANs (711, 712). Proper QoS configuration is essential for maintaining lossless, low-latency RDMA performance across the cluster.
 
 **Design considerations:**
 
@@ -381,13 +381,13 @@ The QoS configuration uses the Data Center Bridging (DCB) framework to establish
 
 For environments supporting RoCEv2, ECN is implemented to prevent incast situations. When congestion is detected along the connection path between nodes, the DSCP field is marked, and the destination device instructs senders to reduce their traffic flow.
 
-For more information, see [Azure Local QoS policy](https://github.com/ebmarquez/AzureLocal-Supportability/blob/main/TSG/Networking/Top-Of-Rack-Switch/Reference-TOR-QOS-Policy-Configuration.md).
+For more information, see [Azure Local QoS policy](https://github.com/azure/AzureLocal-Supportability/blob/main/TSG/Networking/Top-Of-Rack-Switch/Reference-TOR-QOS-Policy-Configuration.md).
 
 ## Software defined networking
 
 Azure Local rack aware clusters support Software Defined Networking (SDN) implementations for advanced network virtualization and micro-segmentation requirements. SDN integration enables centralized network policy management and enhanced security isolation between workloads across availability zones.
 
-For more information, see the [Software Defined Networking configuration guide](https://github.com/ebmarquez/AzureLocal-Supportability/blob/main/TSG/Networking/SDN-Express/HowTo-SDNExpress-SDN-Layer3-Gateway-Configuration.md).
+For more information, see the [Software Defined Networking configuration guide](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/Networking/SDN-Express/HowTo-SDNExpress-SDN-Layer3-Gateway-Configuration.md).
 
 ## Next steps
 
