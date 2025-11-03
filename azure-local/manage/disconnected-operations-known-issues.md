@@ -13,13 +13,13 @@ ai-usage: ai-assisted
 
 ::: moniker range=">=azloc-2506"
 
-This article highlights what's new (features and improvements) and critical known issues with workarounds for disconnected operations in Azure Local. These release notes update continuously, we add critical issues and workarounds as they are identified. Review this information before you deploy disconnected operations with Azure Local.
+This article highlights what's new (features and improvements) and critical known issues with workarounds for disconnected operations in Azure Local. These release notes update continuously. We add critical issues and workarounds as they're identified. Review this information before you deploy disconnected operations with Azure Local.
 
 ## Features and improvements in 2509
 
  - Adds support for Azure Local 2508 ISO and its capabilities.
- - Adds support for SCOM 2025 and fixes a management pack failure on newer SCOM versions; continues support for SCOM 2022.
- - This release enables the update scenario. When 2510 is released, you will be able to test updating from this version to 2510 of ALDO. This will also include the ability to update Azure Local that is connected to disconnected operations.
+ - Adds support for System Center Operations Manager 2025 and fixes a management pack failure on newer System Center Operations Manager versions; continues support for System Center Operations Manager 2022.
+ - This release enables the update scenario. When 2510 is released, you'll be able to test updating from this version to 2510 of Disconnected operations for Azure Local. This includes the ability to update Azure Local that is connected to disconnected operations.
  - Improves security.
  - Improves observability.
  - Enables Ldaps and custom port for ldap binding.
@@ -31,7 +31,7 @@ This article highlights what's new (features and improvements) and critical know
 ## Known issues for disconnected operations for Azure Local
 
 ### Arc bootstrap fails on node (Invoke-AzStackHCIArcInitialization) on Original Equipment Manufactorer (OEM) provided images 
-f you are running an OEM image, makre sure that you are on the correct OS baseline.
+f you are running an OEM image, make sure that you are on the correct OS baseline.
 
 Follow these steps:
 
@@ -40,7 +40,7 @@ Follow these steps:
 ```powershell
     Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Environment\EdgeArcBootstrapSetup" -Name "MicrosoftOSImage" -Value 1
 ```
-- Upgrade to the Microsoft provided ISO (2508). Choose upgrade and keep settings when re-imaging the nodes using this approach
+- Upgrade to the Microsoft provided ISO (2508). Choose upgrade and keep settings when reimaging the nodes using this approach
     - Alternatively, run the following command to get the 2508 update:
 
 ```powershell
@@ -76,8 +76,8 @@ Solution Builder extension (SBE) validation fails with it trying to reach an aka
 Workaround:
 
 - Runs cloud deployment (Portal) flow until validation fails in the UX 
-- On the seed node, modify modify the following file c:\CloudDeployment\Setup\Common\ExtractOEMContent.ps1 
- - Replace line 899 in thie file with the code snippet below 
+- On the seed node, modify the following file c:\CloudDeployment\Setup\Common\ExtractOEMContent.ps1 
+ - Replace line 899 in this file with the code snippet 
 ```powershell
 if (-not (Test-SBEXMLSignature -XmlPath $sbeDiscoveryManifestPath)) {
     throw ($localizedStrings.OEMManifestSignature -f $sbeDiscoveryManifestPath)
@@ -98,6 +98,7 @@ $result = [PSCustomObject]@{
     Code = "Latest"
     Message = "Override for ALDO"
     Endpoint = "https://aka.ms/AzureStackSBEUpdate/Dell"
+    ApplicableUpdate = $applicableUpdate.OuterXml
 }
 ```
 - Resume cloud deployment
@@ -118,7 +119,7 @@ The disconnected operations appliance uses 78 GB of memory. If a node has less t
 
 In virtual environments, a deployment can time out and services don't converge to 100% (even after 8 hours).
 
-**Mitigation:** Attempt to redeploy the disconnected operations appliance a few times. If this is a physical environment and the problem persists, collect logs and open a support ticket.
+**Mitigation:** Attempt to redeploy the disconnected operations appliance a few times. If this environment is a physical environment and the problem persists, collect logs and open a support ticket.
 
 ### Azure Local deployment with Azure Keyvault
 
@@ -232,7 +233,7 @@ When you navigate to Azure Local and click **Kubernetes clusters**, you might se
 
 After updating to a newer version of Kubernetes, you might encounter a stuck notification, `Save Kubernetes service`.
 
-**Mitigation**: Navigate to the cluster view page and refresh it. Verify that the state is still upgrading or has completed. If it's completed, you can ignore the notification.
+**Mitigation**: Navigate to the cluster view page and refresh it. Verify that the state is still upgrading or completed. If completed successfully, you can ignore the notification.
 
 #### Activity log shows authentication issue
 
@@ -246,13 +247,13 @@ When attempting to create a Kubernetes cluster with Entra authentication, you en
 
 #### Arc extensions
 
-When navigating to extensions on an AKS cluster the add button is disabled and there aren't any extensions listed.
+When navigating to extensions on an AKS cluster, the add button is disabled and there aren't any extensions listed.
 
 Arc extensions are unsupported in this preview release.
 
 #### AKS resource shows on portal after deletion
 
-After successfully deleting an AKS cluster from portal the resource continues to show.
+After successfully deleting an AKS cluster from portal, the resource continues to show.
 
 **Mitigation**: Use the CLI to delete and clean up the cluster. Run this command:
 
