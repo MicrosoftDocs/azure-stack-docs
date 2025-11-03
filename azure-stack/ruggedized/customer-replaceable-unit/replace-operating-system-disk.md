@@ -46,7 +46,7 @@ health.
     
 3.  Replace the failed M.2 SSD module.
 
-    Follow the [M.2 SSD module replacement process](https://www.dell.com/support/manuals/us/en/04/poweredge-r640/per640_ism_pub/dell-emc-poweredge-r640-overview?guid=guid-f39be9ba-158c-45e3-b8b1-f07bb750d6d4)
+    Follow the [M.2 SSD module replacement process](https://www.dell.com/support/manuals/en-us/poweredge-r640/per640_ism_pub/installing-the-m.2-ssd-module?guid=guid-038529e9-709b-4d16-91a2-26f69beb6f40&lang=en-us)
     for scale unit nodes.
     
 4.  Power on the node.
