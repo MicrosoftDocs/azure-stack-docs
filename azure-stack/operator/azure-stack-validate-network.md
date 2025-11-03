@@ -42,7 +42,7 @@ Download the latest version of the Posh-SSH module from the [PowerShell Gallery]
 
 ## Get the virtual router image
 
-The Azure Stack Hub Readiness Checker tool uses a virtual router image based on SONiC switch operating system. Download the latest version of the SONiC virtual switch image for Hyper-V at [https://aka.ms/azssonic](https://aka.ms/azssonic).
+The Azure Stack Hub Readiness Checker tool uses a virtual router image based on SONiC switch operating system. Download the latest version of the [SONiC virtual switch image for Hyper-V](https://sonic-build.azurewebsites.net/ui/sonic/pipelines).
 
 ## Hardware prerequisites
 
