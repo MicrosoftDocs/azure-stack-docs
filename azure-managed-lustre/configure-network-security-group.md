@@ -30,9 +30,9 @@ To create a network security group in the Azure portal:
 
 1. In the search box at the top of the portal, enter *Network security group*. In the search results, select **Network security groups**.
 
-2. Select **Create**.
+1. Select **Create**.
 
-3. On the **Create network security group** pane, on the **Basics** tab, enter or select the following values:
+1. On the **Create network security group** pane, on the **Basics** tab, enter or select the following values:
 
     | Setting | Action |
     | --- | --- |
@@ -45,9 +45,9 @@ To create a network security group in the Azure portal:
 
     :::image type="content" source="media/network-security-group/create-new.png" alt-text="Screenshot showing how to create a network security group in the Azure portal." lightbox="media/network-security-group/create-new.png":::
 
-4. Select **Review + create**.
+1. Select **Review + create**.
 
-5. After **Validation passed** appears, select **Create**.
+1. After **Validation passed** appears, select **Create**.
 
 ### Associate the network security group to a subnet
 
@@ -57,44 +57,46 @@ To associate the network security group to a subnet by using the Azure portal:
 
 1. In the search box at the top of the portal, enter *Network security group* and select **Network security groups** in the search results.
 
-2. Select the name of your network security group, then select **Subnets**.
+1. Select the name of your network security group, then select **Subnets**.
 
-3. To associate a network security group to the subnet, select **+ Associate**, then select your virtual network and the subnet that you want to associate the network security group to. Select **OK**.
+1. To associate a network security group to the subnet, select **+ Associate**, then select your virtual network and the subnet that you want to associate the network security group to. Select **OK**.
 
-:::image type="content" source="./media/network-security-group/associate-to-subnet.png" alt-text="Screenshot showing how to associate a network security group to a subnet in Azure portal." lightbox="media/network-security-group/associate-to-subnet.png":::
+:::image type="content" source="./media/network-security-group/associate-to-subnet.png" alt-text="Screenshot that shows how to associate a network security group to a subnet in the Azure portal." lightbox="media/network-security-group/associate-to-subnet.png":::
 
 ## Configure network security group rules
 
-It's important to follow the minimum provided guidelines when you configure your network security group. Proper network security group configuration enables Azure Managed Lustre to operate essential services like the Lustre protocol, engineering and diagnostic support, Azure Blob storage, and security monitoring. Disabling any of these essential services might lead to a degraded product and support experience.
+When you configure your network security group, it's important to align with the guidelines that are provided. If you correctly set up your network security group, Azure Managed Lustre operates essential services like the Managed Lustre protocol, engineering and diagnostic support, Azure Blob storage, and security monitoring. Disabling any of these essential services might result in degraded product and support experience.
 
-To configure network security group rules for Azure Managed Lustre file system support, add inbound and outbound security rules to the network security group associated with the  Azure Managed Lustre subnet. The following sections describe how to create and configure the inbound and outbound security rules that allow Azure Managed Lustre file system support.
+To configure network security group rules for Azure Managed Lustre file system support, add inbound and outbound security rules to the network security group associated with the  Azure Managed Lustre subnet. The following sections describe how to create and configure the inbound and outbound security rules for Azure Managed Lustre file system support.
 
 > [!NOTE]
-> The security rules shown in this section are configured based on an Azure Managed Lustre file system test deployment in the East US region, with Blob Storage integration enabled. You need to adjust the rules based on your deployment region, virtual network subnet IP address, and other configuration settings for the Azure Managed Lustre file system.
+> The security rules described in this section are based on an Azure Managed Lustre file system test deployment in the East US region and with Blob Storage integration enabled. Adjust the rules based on your deployment region, virtual network subnet IP address, and other configuration settings for your Azure Managed Lustre file system.
 
 ### Create inbound security rules
 
-You can create inbound security rules in the Azure portal. The following example shows how to create and configure a new inbound security rule:
+The following example shows how to create and configure a new inbound security rule in the Azure portal.
 
-1. In the Azure portal, open the network security group resource you created in the previous step.
-1. Select **Inbound security rules** under **Settings**.
-1. Select **+ Add**.
-1. In the **Add inbound security rule** pane, configure the settings for the rule and select **Add**.
+1. In the Azure portal, open the network security group resource to configure.
+1. Under **Settings**, select **Inbound security rules**.
+1. In the command bar, select **Add**.
+1. On the **Add inbound security rule** pane, configure the settings for the rule, and then select **Add**.
 
-:::image type="content" source="media/network-security-group/add-inbound-security-rule.png" alt-text="Screenshot showing how to create an inbound security rule for a network security group in the Azure portal." lightbox="media/network-security-group/add-inbound-security-rule.png":::
+:::image type="content" source="media/network-security-group/add-inbound-security-rule.png" alt-text="Screenshot that shows how to create an inbound security rule for a network security group in the Azure portal." lightbox="media/network-security-group/add-inbound-security-rule.png":::
 
-Add the following inbound rules to the network security group. A description of all Azure service tags can be found at [Azure Service Tags Overview](/azure/virtual-network/service-tags-overview).
+Add the following inbound rules to the network security group. For a description of all Azure service tags, see the [Azure service tags overview](/azure/virtual-network/service-tags-overview).
 
 | Priority | Name | Ports | Protocol | Source | Destination | Action | Description |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| 110 | *rule-name* | Any | Any | *IP address/CIDR range for Azure Managed Lustre file system subnet* | *IP address/CIDR range for Azure Managed Lustre file system subnet* | Allow | Allow traffic flow between Azure Managed Lustre hosts for file system activities. The system also requires TCP port 22 (SSH) for initial deployment and configuration. |
-| 111 | *rule-name* | 988, 1019-1023 | TCP | *IP address/CIDR range for Lustre client subnet* | *IP address/CIDR range for Azure Managed Lustre file system subnet* | Allow | Allow your Lustre clients to interact with all Azure Managed Lustre storage nodes for file system activities. The Lustre file system protocol requires ports 988 and 1019-1023. |
-| 112 | *rule-name* | Any | TCP | `AzureMonitor` | `VirtualNetwork` | Allow | Allow the AzureMonitor service to detect health or security issues with the Azure Managed Lustre service hosts. |
-| 120 | *rule-name* | Any | Any | Any | Any | Deny | Deny all other inbound flows. |
+| 110 | *rule-name* | Any | Any | *IP address/CIDR range for Azure Managed Lustre file system subnet* | *IP address/CIDR range for Azure Managed Lustre file system subnet* | Allow | Allows traffic flow between Azure Managed Lustre hosts for file system activities. The system also requires TCP port 22 (SSH) for initial deployment and configuration. |
+| 111 | *rule-name* | 988, 1019-1023 | TCP | *IP address/CIDR range for Lustre client subnet* | *IP address/CIDR range for Azure Managed Lustre file system subnet* | Allow | Allows your Lustre clients to interact with all Azure Managed Lustre storage nodes for file system activities. The Lustre file system protocol requires ports 988 and 1019-1023. |
+| 112 | *rule-name* | Any | TCP | `AzureMonitor` | `VirtualNetwork` | Allow | Allows the AzureMonitor service to detect health or security issues with the Azure Managed Lustre service hosts. |
+| 120 | *rule-name* | Any | Any | Any | Any | Deny | Denies all other inbound flows. |
 
-The inbound security rules in the Azure portal should look similar to the following screenshot. The screenshot is provided as an example; consult the table for the complete list of rules. You should adjust the subnet IP address/CIDR range and other settings based on your deployment:
+The inbound security rules in the Azure portal should look similar to the following example:
 
 :::image type="content" source="media/network-security-group/inbound-security-rules.png" alt-text="Screenshot showing inbound security rules for a network security group in the Azure portal." lightbox="media/network-security-group/inbound-security-rules.png":::
+
+This figure is provided as an example. For the complete list of rules, see the preceding table. Adjust the subnet IP address, CIDR range, and other settings per your deployment.
 
 ### Create outbound security rules
 
