@@ -19,12 +19,10 @@ This article describes how to configure network security group rules to secure a
 ## Prerequisites
 
 - An Azure subscription. If you don't have an Azure subscription, [create a free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin.
-- A virtual network with a subnet configured to allow Azure Managed Lustre file system support. To learn more, see [Networking prerequisites](amlfs-prerequisites.md#network-prerequisites).
+- A virtual network with a subnet configured for Azure Managed Lustre file system support. To learn more, see [Networking prerequisites](amlfs-prerequisites.md#network-prerequisites).
 - An Azure Managed Lustre file system deployed in your Azure subscription. To learn more, see [Create an Azure Managed Lustre file system](create-file-system-portal.md).
 
 ## Create and configure a network security group
-
-You can use an Azure network security group to filter network traffic between Azure resources in an Azure virtual network. A network security group contains security rules that allow or deny inbound network traffic to or outbound network traffic from several types of Azure resources. For each rule, you can specify source and destination, port, and protocol.
 
 To create a network security group in the Azure portal:
 
@@ -66,9 +64,9 @@ To associate the network security group to a subnet by using the Azure portal:
 
 ## Configure network security group rules
 
-When you configure your network security group, it's important to align with the guidelines that are provided. If you correctly set up your network security group, Azure Managed Lustre operates essential services like the Managed Lustre protocol, engineering and diagnostic support, Azure Blob Storage, and security monitoring. Disabling any of these essential services might result in degraded product and support experience.
+When you configure your network security group, it's important to align with the guidelines that are provided. If you correctly set up your network security group, Managed Lustre operates essential services like the Managed Lustre protocol, engineering and diagnostic support, Azure Blob Storage, and security monitoring. Disabling any of these essential services might result in degraded product and support experience.
 
-To configure network security group rules for Azure Managed Lustre file system support, add inbound and outbound security rules to the network security group associated with the  Azure Managed Lustre subnet. The following sections describe how to create and configure the inbound and outbound security rules for Azure Managed Lustre file system support.
+To configure network security group rules for Azure Managed Lustre file system support, add inbound and outbound security rules to the network security group associated with the  Managed Lustre subnet. The following sections describe how to create and configure the inbound and outbound security rules for Azure Managed Lustre file system support.
 
 > [!NOTE]
 > The security rules described in this section are based on an Azure Managed Lustre file system test deployment in the East US region and with Blob Storage integration enabled. Adjust the rules for your deployment region, virtual network subnet IP address, and other configuration settings for your Managed Lustre file system.
@@ -88,8 +86,8 @@ Add the following inbound rules to the network security group. For a description
 
 | Priority | Name | Ports | Protocol | Source | Destination | Action | Description |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| 110 | *rule-name* | Any | Any | *IP address/CIDR range for Managed Lustre file system subnet* | *IP address/CIDR range for Managed Lustre file system subnet* | Allow | Allows traffic flow between Managed Lustre hosts for file system activities. The system also requires TCP port 22 (Secure Shell) for initial deployment and configuration. |
-| 111 | *rule-name* | 988, 1019 to 1023 | TCP | *IP address/CIDR range for Managed Lustre client subnet* | *IP address/CIDR range for Managed Lustre file system subnet* | Allow | Allows your Managed Lustre clients to interact with all Managed Lustre storage nodes for file system activities. The Managed Lustre file system protocol requires ports 988 and 1019 to 1023. |
+| 110 | *rule-name* | Any | Any | *IP address/CIDR range for the Managed Lustre file system subnet* | *IP address/CIDR range for the Managed Lustre file system subnet* | Allow | Allows traffic flow between Managed Lustre hosts for file system activities. The system also requires TCP port 22 (Secure Shell) for initial deployment and configuration. |
+| 111 | *rule-name* | 988, 1019 to 1023 | TCP | *IP address/CIDR range for the Managed Lustre client subnet* | *IP address/CIDR range for the Managed Lustre file system subnet* | Allow | Allows your Managed Lustre clients to interact with all Managed Lustre storage nodes for file system activities. The Azure Managed Lustre file system protocol requires ports 988 and 1019 to 1023. |
 | 112 | *rule-name* | Any | TCP | `AzureMonitor` | `VirtualNetwork` | Allow | Allows the `AzureMonitor` service to detect health or security issues with the Managed Lustre service hosts. |
 | 120 | *rule-name* | Any | Any | Any | Any | Deny | Denies all other inbound flows. |
 
@@ -97,7 +95,7 @@ The inbound security rules in the Azure portal should look similar to the follow
 
 :::image type="content" source="media/network-security-group/inbound-security-rules.png" alt-text="Screenshot that shows inbound security rules for a network security group in the Azure portal." lightbox="media/network-security-group/inbound-security-rules.png":::
 
-The figure is provided as an example. For the complete list of rules, see the preceding table. Adjust the subnet IP address, CIDR range, and other settings per your deployment.
+The figure is provided as an example. For the complete list of rules, see the preceding table. Adjust the subnet IP address, CIDR range, and other settings for your deployment.
 
 ### Create outbound security rules
 
@@ -122,10 +120,10 @@ Add the following outbound rules and network service tags to the network securit
 | 105 | *rule-name* | 443 | TCP | `VirtualNetwork` | `ApiManagement.EastUS` | Allow | Allows access to `ApiManagement` for security and performance of Managed Lustre interactions with other services. |
 | 106 | *rule-name* | 443 | TCP | `VirtualNetwork` | `AzureDataLake` | Allow | Allows access to `AzureDataLake` so that security and health services running on the Managed Lustre platform can log essential information for platform supportability. |
 | 107 | *rule-name* | 443 | TCP | `VirtualNetwork` | `AzureResourceManager` | Allow | Allows access to `AzureResourceManager` for deployment and maintenance of internal resources. |
-| 108 | *rule-name* | 988, 1019-1023 | TCP | *IP address/CIDR range for Managed Lustre file system subnet* | *IP address/CIDR range for Lustre client subnet* | Allow | Allows the essential ports for Managed Lustre protocol operation between the storage servers and Managed Lustre client VMs. |
-| 109 | *rule-name* | 123 | UDP | *IP address/CIDR range for Managed Lustre file system subnet* | `168.61.215.74/32` | Allow | Allows access to the Microsoft NTP server for time sync of Managed Lustre storage servers and client VMs. |
+| 108 | *rule-name* | 988, 1019-1023 | TCP | *IP address/CIDR range for the Managed Lustre file system subnet* | *IP address/CIDR range for the Managed Lustre client subnet* | Allow | Allows the essential ports for Managed Lustre protocol operation between the storage servers and Managed Lustre client VMs. |
+| 109 | *rule-name* | 123 | UDP | *IP address/CIDR range for the Managed Lustre file system subnet* | `168.61.215.74/32` | Allow | Allows access to the Microsoft NTP server for time sync of Managed Lustre storage servers and client VMs. |
 | 110 | *rule-name* | 443 | TCP | `VirtualNetwork` | `20.34.120.0/21` | Allow | Allows Managed Lustre to upload telemetry to its telemetry service so that Azure engineering can provide product support. |
-| 111 | *rule-name* | Any | Any | *IP address/CIDR range for Azure Managed Lustre file system subnet* | *IP address/CIDR range for Azure Managed Lustre file system subnet* | Allow | Allows Managed Lustre servers to communicate with each other within the subnet. The system uses port 22 (Secure Shell) during initial deployment and configuration. |
+| 111 | *rule-name* | Any | Any | *IP address/CIDR range for the Managed Lustre file system subnet* | *IP address/CIDR range for the Managed Lustre file system subnet* | Allow | Allows Managed Lustre servers to communicate with each other within the subnet. The system uses port 22 (Secure Shell) during initial deployment and configuration. |
 | 112 | *rule-name* | 443 | TCP | `VirtualNetwork` | `EventHub` | Allow | Allows access to `EventHub` so that security and monitoring services running on the Managed Lustre platform can store real-time system events. |
 | 1000 | *rule-name* | Any | Any | `VirtualNetwork` | `Internet` | Deny | Denies outbound flows to the internet. |
 | 1010 | *rule-name* | Any | Any | Any | Any | Deny | Deny all other outbound flows. |
@@ -134,16 +132,11 @@ The outbound security rules in the Azure portal should look similar to the follo
 
 :::image type="content" source="media/network-security-group/outbound-security-rules.png" alt-text="Screenshot that shows outbound security rules for a network security group in the Azure portal." lightbox="media/network-security-group/outbound-security-rules.png":::
 
-This figure is provided as an *example*. For the complete list of rules, see the preceding table. Adjust the subnet IP address, the CIDR range, and other settings per your deployment.
+This figure is provided as an example. For the complete list of rules, see the preceding table. Adjust the subnet IP address, the CIDR range, and other settings for your deployment.
 
 ## Related content
 
-To learn more about Azure Managed Lustre:
-
 - [What is Azure Managed Lustre?](amlfs-overview.md)
 - [Create an Azure Managed Lustre file system](create-file-system-portal.md)
-
-To learn more about Azure network security groups:
-
 - [Overview of network security groups](/azure/virtual-network/network-security-groups-overview)
 - [How network security groups filter network traffic](/azure/virtual-network/network-security-group-how-it-works)
