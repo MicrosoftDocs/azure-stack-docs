@@ -31,7 +31,7 @@ This article highlights what's new (features and improvements) and critical know
 ## Known issues for disconnected operations for Azure Local
 
 ### Arc bootstrap fails on node (Invoke-AzStackHCIArcInitialization) on Original Equipment Manufactorer (OEM) provided images 
-f you are running an OEM image, make sure that you are on the correct OS baseline.
+If you are running an OEM image, make sure that you are on the correct OS baseline.
 
 Follow these steps:
 
@@ -69,13 +69,13 @@ Start-ArcBootstrap -ConfigFilePath $tempConfigPath
 # Continue with Invoke-AzStackHCIArcInitialization.
 ```
 
-### Cloud Deployment validation fails during portal experience
+### Cloud deployment validation fails during portal experience
 
 Solution Builder extension (SBE) validation fails with it trying to reach an aka.ms link to download. 
 
 Workaround:
 
-- Runs cloud deployment (Portal) flow until validation fails in the UX 
+- Runs cloud deployment (portal) flow until validation fails in the UX 
 - On the seed node, modify the following file c:\CloudDeployment\Setup\Common\ExtractOEMContent.ps1 
  - Replace line 899 in this file with the code snippet 
 ```powershell
