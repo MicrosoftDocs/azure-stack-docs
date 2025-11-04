@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 12/26/2024
+ms.date: 11/04/2025
 ms.custom: sfi-image-nochange
 ---
 
@@ -62,7 +62,7 @@ Follow these steps to turn on health alerts via the Azure portal.
 
    The installation of the Azure Monitor alerts extension begins in the background.
 
-3. After the extension is successfully installed, you are taken to the **Capabilities** tab. Verify that the **Health alerts** tile under the **Capabilities** tab now shows as **Configured**.
+3. After the extension is successfully installed, you're taken to the **Capabilities** tab. Verify that the **Health alerts** tile under the **Capabilities** tab now shows as **Configured**.
 
    :::image type="content" source="./media/health-alerts-via-azure-monitor-alerts/health-alerts-are-configured-3.png" alt-text="Screenshot of the Capabilities tab, with Health alerts tile showing as Configured." lightbox="./media/health-alerts-via-azure-monitor-alerts/health-alerts-are-configured-3.png":::
 
