@@ -5,7 +5,7 @@ ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 10/21/2025
+ms.date: 11/03/2025
 ---
 
 # What's new in Azure Local?
@@ -261,7 +261,9 @@ This release has the following features and improvements:
 
 ::: moniker-end
 
-::: moniker range="=azloc-2505"
+::: moniker range="=azloc-previous"
+
+## Features and improvements in 2505
 
 There are two 2505 releases for May. Here are the details of each release:
 
@@ -271,8 +273,6 @@ There are two 2505 releases for May. Here are the details of each release:
 |11.2505.1001.22  | 25398.1611        | Existing deployments only.        |
 
 For more information, see [Release information summary](./release-information-23h2.md).
-
-## Features and improvements in 2505
 
 This release has the following features and improvements:
 
@@ -288,16 +288,13 @@ This release has the following features and improvements:
 
 - **.NET updates**: This build uses .NET version **8.0.16** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
 
-- **Update changes**: This release includes reliability improvements to the update process. For more information, see [Fixed issues in 2505](./known-issues.md?view=azloc-2505&preserve-view=true#fixed-issues).
+- **Update changes**: This release includes reliability improvements to the update process. For more information, see [Fixed issues in 2505](./known-issues.md?view=azloc-previous&preserve-view=true#fixed-issues).
 
 - **Ability to upload logs**: You can now upload a Support log package that includes all relevant logs to help Microsoft Support troubleshoot machine issues, directly from the Configurator app. For details, see [Upload the Support log package](./deploy/deployment-arc-register-configurator-app.md#upload-the-support-log-package).
 
 - **Archival of Azure Local, version 22H2 documentation**: The archival of Azure Local, version 22H2 documentation is currently in progress and will complete soon. Once archived, the articles are available in the [Azure previous versions documentation](/previous-versions/azure/) for reference. The archived documentation isn't updated and isn't supported.
 
-::: moniker-end
-
-
-::: moniker range="=azloc-previous"
+## Features and improvements in 2504
 
 Starting with 2504 release, Microsoft introduced a new versioning schema. There are two 2504 releases for April. Here are the details of each release:
 
@@ -307,8 +304,6 @@ Starting with 2504 release, Microsoft introduced a new versioning schema. There 
 |11.2504.1001.19  | 25398.1551        | Existing deployments only.        |
 
 For more information, see [Release information summary](./release-information-23h2.md).
-
-## Features and improvements in 2504
 
 This release has the following features and improvements:
 
