@@ -4,7 +4,7 @@ description: This article describes how to use Application Control on Azure Loca
 author:  alkohli
 ms.author:  alkohli
 ms.topic: how-to
-ms.date: 02/03/2025
+ms.date: 11/04/2025
 ms.service: azure-local
 ---
 
@@ -46,7 +46,7 @@ This is useful when:
 - You started with default, recommended settings.
 - You must install or run new third party software. You can switch your policy modes to create a supplemental policy.
 - You started with Application Control disabled during deployment and now you want to enable Application Control to increase security protection or to validate that your software runs properly.
-- Your software or scripts are blocked by Application Control. In this case you can use audit mode to understand and troubleshoot the issue.
+- Your software or scripts are blocked by Application Control. In this case, you can use audit mode to understand and troubleshoot the issue.
 
 > [!NOTE]
 > When your application is blocked, Application Control creates a corresponding event. Review the Event log to understand details of the policy that's blocking your application. For more information, see the [Application Control operational guide](/windows/security/threat-protection/windows-defender-application-control/windows-defender-application-control-operational-guide).

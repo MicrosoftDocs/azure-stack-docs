@@ -235,6 +235,12 @@ Rename-NetAdapter -Name "vEthernet (ConvergedSwitch(MgmtCompute))" -NewName "vMa
 
 ```
 
+> [!NOTE]
+> During deployment validation, all vSwitches on nodes must have corresponding vNICs. If there are vSwitches present but no matching vNICs, the operation fails with the following error:  
+> *"Could not complete the operation. 200: There are vSwitches present on the nodes but no vnics, this scenario is not supported."*  
+> Ensure the names of the adapters match between the outputs of `Get-NetAdapter` and `Get-VMNetworkAdapter -ManagementOS`. If they don’t match, rename the NICs before retrying deployment.
+
+
 #### 3. Configure VLAN ID to management virtual network adapter for all nodes
 
 Once the virtual switch and the management virtual network adapter are created, you can specify the required VLAN ID for this adapter. Although there are different options to assign a VLAN ID to a virtual network adapter, the only supported option is to use the `Set-VMNetworkAdapterIsolation` command.

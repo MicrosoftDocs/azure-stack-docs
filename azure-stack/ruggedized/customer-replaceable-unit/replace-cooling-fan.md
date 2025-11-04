@@ -57,7 +57,7 @@ Use the following procedure to replace a cooling fan or fans.
     
 3.  Replace the fan or fans.
 
-    Follow the [fan replacement process](https://www.dell.com/support/manuals/us/en/04/poweredge-r640/per640_ism_pub/dell-emc-poweredge-r640-overview?guid=guid-f39be9ba-158c-45e3-b8b1-f07bb750d6d4)
+    Follow the [fan replacement process](https://www.dell.com/support/contents/en-us/videos/videoplayer/How-To-Replace-Fan-of-PowerEdge-R640/6079801066001)
     for scale unit nodes or Hardware Lifecycle Hosts.
     
 4.  Power on the node.
