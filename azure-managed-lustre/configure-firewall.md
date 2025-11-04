@@ -36,7 +36,7 @@ If you don't have a rule collection group, create one. For more information, see
 
 ### Add application rules
 
-Application rules allow Managed Lustre to access essential services. For Microsoft fully qualified domain names (FQDNs), essential services include blob storage, metrics, diagnostics, and health monitoring. Non-Microsoft FQDNs allow access to operating system security updates, security scanners, and Azure Load Balancer.
+Application rules allow Managed Lustre to access essential services. For Microsoft fully qualified domain names (FQDNs), essential services include Azure Blob Storage, metrics, diagnostics, and health monitoring. Non-Microsoft FQDNs allow access to operating system security updates, security scanners, and Azure Load Balancer.
 
 To create an application rule collection:
 

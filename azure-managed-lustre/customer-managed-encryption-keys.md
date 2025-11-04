@@ -46,7 +46,7 @@ Basic settings:
 
 Access policy settings:
 
-- **Access Configuration**: Set to Azure role-based access control.
+- **Access Configuration**: Set to Azure role-based access control (Azure RBAC).
 
 Networking settings:
 
