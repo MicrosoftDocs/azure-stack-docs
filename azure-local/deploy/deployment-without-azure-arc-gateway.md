@@ -11,6 +11,8 @@ zone_pivot_groups: register-arc-options
 
 # Register Azure Local with Azure Arc
 
+::: moniker range=">=azloc-2505"
+
 ::: zone pivot="register-proxy"
 
 This article details how to register Azure Local machines with Azure Arc without using an Arc gateway and with proxy configuration enabled. The proxy configuration can be done via an Arc script or via the Configurator app for Azure Local.
@@ -534,11 +536,12 @@ Before you begin, make sure that you complete the following prerequisites:
 - After your machines are registered with Azure Arc, proceed to deploy your Azure Local instance via one of the following options:
     - [Deploy via Azure portal](./deploy-via-portal.md)
     - [Deploy via Azure Resource Manager (ARM) template](./deployment-azure-resource-manager-template.md)
-    
+
+::: moniker-end
 
 ::: moniker range="=azloc-previous"
 
-This feature is available only in Azure Local 2503 or later.
+This feature is available only in Azure Local 2503 or later. The following content applies specifically to release 2503 or 2504.
 
 ::: zone pivot="register-proxy"
 
