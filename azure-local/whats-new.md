@@ -1,1108 +1,909 @@
---- 
-title: Register Azure Local with Azure Arc.
-description: Learn how to register Azure Local with Azure Arc with and without proxy setup. The proxy configuration can be done via an Arc script or via the Configurator app on Azure Local. 
+---
+title: What's new in Azure Local latest release
+description: Find out about the new features and enhancements in the latest Azure Local release.
+ms.topic: overview
 author: alkohli
-ms.topic: how-to
-ms.date: 11/04/2025
 ms.author: alkohli
 ms.service: azure-local
-zone_pivot_groups: register-arc-options
+ms.date: 11/04/2025
 ---
 
-# Register Azure Local with Azure Arc
+# What's new in Azure Local?
 
-::: moniker range=">=azloc-2505"
+[!INCLUDE [azure-local-banner-23h2](./includes/azure-local-banner-23h2.md)]
 
-::: zone pivot="register-proxy"
+This article lists the various features and improvements that are available in Azure Local. The latest version of Azure Local solution focuses on cloud-based deployment and updates, cloud-based monitoring, new and simplified experience for Azure Local virtual machine (VM) management, security, and more.
 
-This article details how to register Azure Local machines with Azure Arc without using an Arc gateway and with proxy configuration enabled. The proxy configuration can be done via an Arc script or via the Configurator app for Azure Local.
+::: moniker range="=azloc-2510"
 
-- **Configure with a script**: You can use an Arc script to configure registration settings.
+## Features and improvements in 2510
 
-- **Set up via the Configurator app (Preview)**: Using this method, you can configure Azure Local registration via a user interface. This method is useful if you prefer not to use scripts or if you want to configure the settings interactively.
+There are two 2510 releases for October. Here are the details of each release:
 
-For instructions on registering Azure Local machines with Azure Arc using an Arc gateway and with proxy configuration enabled, see [Register Azure Local with Azure Arc using Arc gateway](./deployment-with-azure-arc-gateway.md?pivots=register-proxy).
+|Solution version  | OS version |
+|---------|---------|
+|12.2510.1002.88 |  26100.6899 |
+|11.2510.1002.87  | 25398.1913  |
 
-# [Via Arc script](#tab/script)
+For more information, see [Release information summary](./release-information-23h2.md).
 
-## Prerequisites
+This release has the following features and improvements:
 
-Make sure the following prerequisites are met before proceeding:
+- **OS changes**:
 
-- You have access to Azure Local machines running release 2505 or later.
-- You have assigned the appropriate permissions to the subscription used for registration. For more information, see [Assign required permissions for Azure Local deployment](deployment-arc-register-server-permissions.md).
+    - The 2504 release introduced a new operating system for Azure Local deployments. For 2510, all the new deployments of Azure Local run the new OS version **26100.6899**. You can download the 2510 OS image from the Azure portal.
 
+        - You also need a driver that's compatible with OS version **26100.6899** or Windows Server 2025. If a compatible driver isn't available, you can use the 2503 image.
+
+        - Existing deployments of Azure Local continue to use OS version **25398.1913**. For more information, see [Release information summary](./release-information-23h2.md).
+
+    - If you purchased Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) through your preferred Microsoft hardware partner, the OS should be preinstalled. Work with your Original Equipment Manufacturer (OEM) to get the OS image that's compatible with **12.2510.1002.88** and a driver that's compatible with OS version **26100.6899** or Windows Server 2025.
+
+- **.NET updates**: This build uses .NET version **8.0.21** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
+    
+- **Azure Local rack aware clustering (Preview)**: Azure Local now supports rack aware clustering. This Preview feature allows you to define local availability zones based on physical racks in your datacenter, enhancing the resilience of your cluster against rack-level failures. For more information, see [Rack aware clustering](concepts/rack-aware-cluster-overview.md).
+
+- **Azure Local VM updates**:
+    - **Software Defined Networking (SDN)**: SDN enabled by Azure Arc on Azure Local is now generally available. This feature allows you to create and manage network security groups (NSGs) and network security rules for your Azure Local VMs, providing enhanced network security and segmentation capabilities.
+    
+        For more information, see [Software Defined Networking (SDN) enabled by Azure Arc](./concepts/sdn-overview.md).
+
+    - **Trusted Virtual Machine (Trusted VM) guest attestation (Preview)** - Azure Local 2510 release introduces guest attestation (also known as boot integrity verification) for Azure Local virtual machines with Trusted launch.
+        
+        This Preview feature lets you verify that the virtual machine starts in a well known good state by checking the integrity of the entire boot chain.  This helps detect any unexpected changes to the boot chain (firmware, OS boot loader, and drivers).
+        
+        For more information, see [Trusted VM guest attestation](manage/trusted-launch-guest-attestation.md).
+
+- **Azure Local deployment using local identity**: This feature has now moved from Limited Preview to Preview. There were many changes made to the documentation for deploying Azure Local using local identity with Azure Key Vault, including:
+    - Revised instructions for updating Azure Key Vault in Azure Local environments.
+    - Added a new section on tool compatibility in Azure Local environments configured with Azure Key Vault.
+    - Added a new FAQ section to address common questions.
+    For more information, see [Deploy Azure Local using local identity with Azure Key Vault](./deploy/deployment-local-identity-with-key-vault.md).
+
+- **VMware migration to Azure Local** - This feature is now generally available. You can migrate your VMware VMs to Azure Local using Azure Migrate. For more information, see [Migrate VMware VMs to Azure Local](./migrate/migration-azure-migrate-vmware-overview.md).
+
+- **OEM image support for registration** - OEM images are now supported for registration of Azure Local machines for both proxy and without proxy scenarios. For more information, see [Register with Arc gateway](./deploy/deployment-with-azure-arc-gateway.md) and [Register without Arc gateway](./deploy/deployment-without-azure-arc-gateway.md).
+
+<!--- **Documentation updates**: The noteworthy changes include the following new articles or articles with major updates:-->
+
+::: moniker-end
+
+
+::: moniker range="=azloc-2509"
+
+## Features and improvements in 2509
+
+There are two 2509 releases for September. Here are the details of each release:
+
+|Solution version  | OS version |
+|---------|---------|
+|12.2509.1001.22 |  26100.6584 |
+|11.2509.1001.21  | 25398.1849  |
+
+For more information, see [Release information summary](./release-information-23h2.md).
+
+This release has the following features and improvements:
+
+- **OS changes**:
+
+    - The 2504 release introduced a new operating system for Azure Local deployments. For 2509, all the new deployments of Azure Local run the new OS version **26100.5074**. You can download the 2509 OS image from the Azure portal.
+
+        - You also need a driver that's compatible with OS version **26100.5074** or Windows Server 2025. If a compatible driver isn't available, you can use the 2503 image.
+
+        - Existing deployments of Azure Local continue to use OS version **25398.1840**. For more information, see [Release information summary](./release-information-23h2.md).
+
+    - If you purchased Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) through your preferred Microsoft hardware partner, the OS should be preinstalled. Work with your Original Equipment Manufacturer (OEM) to get the OS image that's compatible with **12.2509** and a driver that's compatible with OS version **26100.5074** or Windows Server 2025.
+    
+- **.NET updates**: This build uses .NET version **8.0.20** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
+
+- **Update and upgrade changes**: Starting with this release, you can opt-in to update the solution version 11.25xx (running OS 25398.xxx) to solution version 12.25xx (running OS 26100.xxxx). For more information, see [Opt in update to Azure Local solution versions 12.25x](./update/update-opt-enable.md).
+
+
+- **Azure Local VM updates**:
+    - **Enhanced storage path deletion workflow** - Starting with this release, you can view all the dependent resources linked to a storage path before deletion. Azure portal lets you delete both the storage path and its dependent resources in a single, streamlined action, making cleanup faster and more intuitive.
+    - **Live update memory of an Azure Local VM** - You can now live update (VM remains running) the memory of a VM. A restart may be required only if the guest OS does not support live memory updates.
+
+- **AKS enabled by Azure Arc changes**
+    - The default OS disk size for the AKS VM is increased from 100 GB to 200 GB. A larger OS disk size offers flexibility on the size of the containerized workloads.
+    - Starting with this release, the download of Windows VHD images is disabled by default.
+    
+    
+- **Azure Local deployment using local identity** include zone name for both external and internal DNS servers.
+
+- **Documentation updates**: The noteworthy changes include the following new articles or articles with major updates:
+
+    - **Upgrade and update docs changes** include new articles and major updates to existing articles:
+        - [**Opt in update to Azure Local solution versions 12.25x**](./update/update-opt-enable.md) is released.
+        - [**Upgrade OS for stretch clusters via PowerShell**](./upgrade/upgrade-stretched-cluster-to-23h2.md) is released.
+        - [**Install solution upgrade on Azure Local using Azure Resource Manager template**](./upgrade/install-solution-upgrade-azure-resource-manager-template.md) is released.
+        - [**ARM template parameters**](./deploy/deployment-azure-resource-manager-template.md#arm-template-parameters-reference) reference is added.
+        - [**Update best practices**](./update/update-best-practices.md) is released.
+
+    - **Azure Local VM doc changes** include:
+        - **Disaster recovery for Azure Local VMs**: A new node in TOC **Implementing disaster recovery** is created consisting of four new articles and one updated article. These articles include [Disaster recovery overview](./manage/disaster-recovery-overview.md), [Infrastructure resiliency](./manage/disaster-recovery-infrastructure-resiliency.md), [Virtual machine resiliency overview](./manage/disaster-recovery-vm-resiliency.md), [Use Azure Site Recovery](./manage/azure-site-recovery.md), and [Workloads resiliency](./manage/disaster-recovery-workloads-resiliency.md).
+        - **VM images**: For Azure Local VMs, two new articles are released including [Prepare Ubuntu Azure Marketplace image](manage/virtual-machine-azure-marketplace-ubuntu.md) and [Prepare RHEL Azure Marketplace image](manage/virtual-machine-azure-marketplace-red-hat.md).
+    - A troubleshooting section is added for issues in [Add-server](./manage/add-server.md) and [Repair-server](./manage/repair-server.md) articles.
+
+::: moniker-end
+
+
+::: moniker range="=azloc-2508"
+
+## Features and improvements in 2508
+
+There are two 2508 releases for August. Here are the details of each release:
+
+|Solution version  | OS version |
+|---------|---------|
+|12.2508.1001.52 |  26100.4946 |
+|11.2508.1001.51  | 25398.1791  |
+
+For more information, see [Release information summary](./release-information-23h2.md).
+
+This release has the following features and improvements:
+
+- **OS changes**:
+
+    - In the 2504 release, a new operating system was introduced for Azure Local deployments. For 2508, all the new deployments of Azure Local run the new OS version **26100.4946**. You can download the 2508 OS image from the Azure portal.
+
+        - You also need to get the driver compatible with OS version **26100.XXXX** or Windows Server 2025. If a compatible driver isn't available, you can use the 2503 image.
+
+        - Existing deployments of Azure Local continue to use OS version **25398.1791**. For more information, see [Release information summary](./release-information-23h2.md).
+
+    - If you purchased Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) through your preferred Microsoft hardware partner, the OS should be preinstalled. Work with your Original Equipment Manufacturer (OEM) to get the OS image compatible with **12.2508** and driver compatible with OS version **26100.XXXX** or Windows Server 2025.
+    
+- **.NET updates**: This build uses .NET version **8.0.18** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
+
+**Trusted Virtual Machine (Trusted VM) guest attestation**: Azure Local 2508 release introduces guest attestation (also known as boot integrity verification) for Azure Local virtual machines with Trusted launch. This feature lets you verify that the virtual machine starts in a well known good state by checking the integrity of the entire boot chain. This helps detect any unexpected changes to the boot chain (firmware, OS boot loader, and drivers) and take action if it's compromised. For more information, see [Trusted VM guest attestation](manage/trusted-launch-guest-attestation.md).
+
+- **Deployment and upgrade changes**:
+    - Starting this release, Azure Resource Manager (ARM) deployment templates are available for previous releases.
+    - With this release, pre-existing cluster (Brownfield) upgrade scenarios no longer require Service Principal Name (SPN) creation and have moved to managed-system identity (MSI).
+    - This release includes connectivity validators that ensure that external connectivity is available for Arc registration.
+
+- **Azure Local VM updates**:
+    - **Edit DNS servers on logical networks via Azure CLI**: Starting with this release, DNS servers associated with the logical networks can be modified for Azure Local virtual machines. For more information, see [Manage DNS server configuration on logical networks](./manage/manage-arc-virtual-machine-resources.md).
+    - **Save and Pause Azure Local VMs**: The ability to save and pause an Azure Local VM is available on the Azure portal. For more information, see [Save and Pause Azure Local VMs](./manage/manage-arc-virtual-machines.md#save-a-vm).
+    - **Limit enforcement**: Azure portal now enforces:
+        - The correct memory and vCPU limits.
+        - The correct disk size limits.
+
+- **Disconnected operations (preview)**: Azure Local now supports disconnected operations, letting you work in environments with limited or no internet connectivity. Build, deploy, and manage virtual machines (VMs) and containerized applications with select Azure Arc-enabled services from a local control plane. You'll get the familiar Azure portal and Azure Command-Line Interface (CLI) experience.
+
+    For more information, see [About Disconnected operations (preview)](./manage/disconnected-operations-overview.md).
+
+
+- **Documentation updates**: These changes include:
+
+    - **Azure Arc gateway documentation updates**: Improved guidance on registering with and without Azure Arc gateway and with and without proxy in an easy to use layout. For more information, see [Register with Azure Arc gateway](./deploy/deployment-with-azure-arc-gateway.md) and [Register with Azure Arc](./deploy/deployment-without-azure-arc-gateway.md).
+    - **Upgrade documentation updates**: Clarified steps for upgrading from previous versions of Azure Local and an easy to use layout. For more information, see [Upgrade OS for Azure Local](./upgrade/upgrade-22h2-to-23h2-powershell.md).
+    - **Azure Local Security book**: This book was previously available as a *pdf* and is now available as web content on Learn. For more information, see [Azure Local Security book](./security-book/overview.md)
+
+
+::: moniker-end
+
+::: moniker range="=azloc-2507"
+
+## Features and improvements in 2507
+
+There are two 2507 releases for July. Here are the details of each release:
+
+|Solution version  | OS version |
+|---------|---------|
+|12.2507.1001.10 |  26100.4652 |
+|11.2507.1001.9  | 25398.1732  |
+
+For more information, see [Release information summary](./release-information-23h2.md).
+
+This release has the following features and improvements:
+
+- **OS changes**:
+
+    - In the 2504 release, a new operating system was introduced for Azure Local deployments. For 2507, all the new deployments of Azure Local run the new OS version **26100.4652**. You can download the 2507 OS image from the Azure portal.
+    
+        - You also need to get the driver compatible with OS version **26100.4652** or Windows Server 2025. If a compatible driver isn't available, you can use the 2503 image.
+
+        - Existing deployments of Azure Local continue to use OS version **25398.1732**. For more information, see [Release information summary](./release-information-23h2.md).
+
+    - If you purchased Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) through your preferred Microsoft hardware partner, the OS should be preinstalled. Work with your Original Equipment Manufacturer (OEM) to get the OS image compatible with **12.2507** and driver compatible with OS version **26100.4652** or Windows Server 2025.
+    
+- **.NET updates**: This build uses .NET version **8.0.18** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
+
+ 
+::: moniker-end
+
+::: moniker range="=azloc-2506"
+
+## Features and improvements in 2506
+
+There are two 2506 releases for June. Here are the details of each release:
+
+|Solution version  | OS version |
+|---------|---------|
+|12.2506.1001.29 |  26100.4349  |
+|11.2506.1001.28  | 25398.1665  |
+
+For more information, see [Release information summary](./release-information-23h2.md).
+
+This release has the following features and improvements:
+
+- **OS changes**:
+
+    - In 2504 release, a new operating system was introduced for Azure Local deployments. For 2506, all the new deployments of Azure Local run the new OS version **26100.4349**. You can download the 2506 OS image from the Azure portal.
+    
+        You also need to get the driver compatible with OS version **26100.4349** or Windows Server 2025. If a compatible driver isn't available, you can use the 2503 image.
+
+        Existing deployments of Azure Local continue to use OS version **25398.1665**. For more information, see [Release information summary](./release-information-23h2.md).
+
+    - If you purchased Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) through your preferred Microsoft hardware partner, the OS should be preinstalled. Work with your Original Equipment Manufacturer (OEM) to get the OS image compatible with **12.2506** and driver compatible with OS version **26100.4349** or Windows Server 2025.
+    
+- **.NET updates**: This build uses .NET version **8.0.17** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
+
+- **Software-Defined Networking (SDN) enabled by Azure Arc (Preview)**: Azure Local now supports creating Networking Security Groups (NSGs), configuring Network Security Rules, and assigning them to logical networks and network interfaces. This provides a consistent networking experience across your cloud and edge environment. For more information, see [Software-Defined Networking (SDN) enabled by Azure Arc](./concepts/sdn-overview.md).
+
+- **Deployment changes**: To ensure consistent validation before you deploy Azure Local, deployment validators for Microsoft On-premises Cloud and Azure resource bridge are now a part of environment checker.
+
+- **Overprovisioning alert**: A warning is shown prior to starting an update if an Azure Local instance is overprovisioned. This alert indicates there is insufficient compute capacity (memory) to live migrate workloads during an update. You must acknowledge this alert before proceeding with an update, as VM workloads are paused due to the lack of available compute or memory capacity.
+
+- **Security improvements**:
+    - **New security baseline**: The 2506 release introduces a security baseline with 407 evaluated rules, a 25% increase from the previous 324. Key improvements include:
+      - Over 90% alignment with CIS Azure Compute Windows Baseline and Defense Information Systems Agency (DISA) Security Technical Implementation Guide (STIG) benchmark.
+      - Enhanced Microsoft Defender Antivirus settings, including Potentially Unwanted Apps (PUA), network inspection, and attack surface reduction rules.
+      - Additional adjustments tailored for Azure Local.
+
+      This release has also improved conflict resolution with existing security policies. Instead of disabling drift control system-wide, you can now fine-tune individual settings while maintaining drift control. For more information, see [View and download security settings in Azure Local](./manage/manage-secure-baseline.md#view-and-download-security-settings).
+
+    - To comply with National Institute of Standards and Technology(NIST) 2 guidelines, the minimum required password length when deploying Azure Local is changed to 14 characters.
+
+- **Archival of Azure Local, version 22H2 documentation**: [Azure Local, version 22H2 documentation](/previous-versions/azure/azure-local/release-information) is now archived and available in the [Azure previous versions documentation](/previous-versions/azure/) for reference. The archived documentation isn't updated and isn't supported.
+
+- **Azure Government cloud**: The solution update isn't supported for Azure Local instances deployment in Azure Government cloud.
+
+::: moniker-end
+
+::: moniker range="=azloc-previous"
+
+## Features and improvements in 2505
+
+There are two 2505 releases for May. Here are the details of each release:
+
+|Solution version  |OS version |Deployment  |
+|---------|---------|---------|
+|12.2505.1001.23 |  26100.4061        | New deployments only.        |
+|11.2505.1001.22  | 25398.1611        | Existing deployments only.        |
+
+For more information, see [Release information summary](./release-information-23h2.md).
+
+This release has the following features and improvements:
+
+- **OS version changes**:
+
+    - In the last release (2504), a new operating system was introduced for Azure Local deployments. For 2505, all the new deployments of Azure Local run new OS version **26100.4061**. You can download the 2505 OS image from the Azure portal.
+    
+        You also need to get the driver compatible with Azure Local 12.2505 or Windows Server 2025. If a compatible driver isn't available, you can use the 2503 image.
+
+        Existing deployments of Azure Local continue to use OS version **25398.1611**. For more information, see [Release information summary](./release-information-23h2.md).
+
+    - If you purchased Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) through your preferred Microsoft hardware partner, the OS should be preinstalled. Work with your Original Equipment Manufacturer (OEM) to get the OS image compatible with **12.2505** and driver compatible with Azure Local 12.2505 or Windows Server 2025.
+
+- **.NET updates**: This build uses .NET version **8.0.16** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
+
+- **Update changes**: This release includes reliability improvements to the update process. For more information, see [Fixed issues in 2505](./known-issues.md?view=azloc-2505&preserve-view=true#fixed-issues).
+
+- **Ability to upload logs**: You can now upload a Support log package that includes all relevant logs to help Microsoft Support troubleshoot machine issues, directly from the Configurator app. For details, see [Upload the Support log package](./deploy/deployment-arc-register-configurator-app.md#upload-the-support-log-package).
+
+- **Archival of Azure Local, version 22H2 documentation**: The archival of Azure Local, version 22H2 documentation is currently in progress and will complete soon. Once archived, the articles are available in the [Azure previous versions documentation](/previous-versions/azure/) for reference. The archived documentation isn't updated and isn't supported.
+
+## Features and improvements in 2504
+
+Starting with 2504 release, Microsoft introduced a new versioning schema. There are two 2504 releases for April. Here are the details of each release:
+
+|Solution version  |OS version |Deployment  |
+|---------|---------|---------|
+|12.2504.1001.20 | 26100.3775        | New deployments only.        |
+|11.2504.1001.19  | 25398.1551        | Existing deployments only.        |
+
+For more information, see [Release information summary](./release-information-23h2.md).
+
+This release has the following features and improvements:
+
+- **OS version changes**:
+    - Starting 2504, all new Azure Local deployments use a new operating system (OS) version **26100.3775**. You can download the 2504 OS image from the Azure portal. You also need to get the driver compatible with Azure Local 12.2504 or Windows Server 2025. Existing deployments continue to use the OS version **25398.1551**. For more information, see [Release information summary](./release-information-23h2.md).
+    - If you've purchased Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) through your preferred Microsoft hardware partner, the OS should be preinstalled. Work with your Original Equipment Manufacturer (OEM) to get the OS image compatible with **12.2504** and driver compatible with Azure Local 12.2504 or Windows Server 2025.
+
+- **.NET update installations improvements**:
+  - Increased reliability of .NET security update installations.
+
+- **Registration and deployment changes**:
+    - Starting with this release, you can download a specific version of Azure Local software instead of just the latest version. For each upcoming release, you can choose from up to last six supported versions. For more information, see [Download Azure Local software](./deploy/download-23h2-software.md).
+    - The error logging in the registration script is enhanced.
+    - Proxy bypass list is now mandatory if a proxy configuration is specified.
+
+- **Security changes**: The Dynamic Root of Trust for Measurement (DRTM) is enabled by default for all new 2504 deployments running OS version **26100.3775**. For more information, see [Security features for Azure Local](./concepts/security-features.md#security-features-for-azure-local).
+
+- **Azure Local VM changes**:
+    - **Data disk expansion**: With this release, you can expand the size of a data disk attached to an Azure Local VM. For more information, see [Expand the size of a data disk attached to an Azure Local VM](./manage/manage-arc-virtual-machine-resources.md).
+    - **Live VM migration with GPU partitioning (GPU-P)**: You can now live migrate VMs with GPU-P. These VMs must be on the latest NVIDIA virtual GPU v18 drivers to enable live migration with GPU-P. For more information, see [Microsoft Azure Local - NVIDIA Docs](https://docs.nvidia.com/vgpu/18.0/grid-vgpu-release-notes-microsoft-azure-stack-hci/index.html).
+    - **Documentation changes**: An article describing a [Comparison of the management capabilities of VMs on Azure](./concepts/compare-vm-management-capabilities.md) was released recently.
+
+- **Update improvements**:
+    - Improved reliability when downloading updates.
+    - Added a health check to ensure failover cluster nodes are healthy before starting the update.
+    - Simplified the Azure portal experience for viewing the progress and history of update runs.
+
+- **Add and repair node changes**:
+    - For Microsoft images, download the OS image matching the solution version of your existing cluster. See the [Release table](https://github.com/Azure-Samples/AzureLocal/blob/main/os-image/os-image-tracking-table.md) for the correct version. For OEM images, contact your OEM.
+
+- **OEM license changes**:
+    
+    - **OEM license renamed**: Azure Stack HCI OEM license is now known as OEM license for Azure Local. For more information, see [OEM license overview](./oem-license.md) and [OEM license and billing FAQ](./license-billing.yml).
+    - **OEM license with Windows Server 2025 guest VMs**: With the release of 2504, OEM license for Azure Local is available with Windows Server 2025 guest VMs. This integrates essential services for your cloud infrastructure: Azure Local, and Windows Server Datacenter 2025 Guest rights.
+
+- **Solution extension improvements**:
+    - Improved error message to fix firewall blocking access to solution extension manifest endpoints.
+    - Improved reliability of copying solution extension content locally to each machine.
+    - Added specification of plug-in name in the solution extension.
+
+- **Billing changes**: For deployments running solution version 12.2504.1001.20 and later, the usage record originates from the Azure Local resource in Azure directly. For more information, see [Billing and payment](./concepts/billing.md#billing-changes-for-122504100120-and-later).
+
+- **Archival of Azure Local, version 22H2 documentation**: The documentation for version 22H2 will be archived by May 31, 2025 and will be available in the [Azure previous versions documentation](/previous-versions/azure/) for reference. The archived documentation isn't updated and isn't supported.
+
+- **Observability changes**: You can now automatically collect, analyze, and debug Azure services crashes with the crash dump collection feature in Azure Local. For more information, see [Crash dump collection](./concepts/observability.md#crash-dump-collection).
+
+## Features and improvements in 2503
+
+This release has the following features and improvements:
+
+- **Preview availability of Azure Government cloud** - Azure Local is now available in the US Government regions in preview. Download the latest Azure Stack HCI OS image for Azure Government from [OS image](https://aka.ms/hcireleaseimage). For more information on where Azure Government is supported, see [Azure Local supported regions](./concepts/system-requirements-23h2.md#azure-requirements).
+
+    The following preview features aren't supported for Azure Local in Azure Government cloud:
+
+  - [Azure Arc Gateway](./deploy/deployment-azure-arc-gateway-overview.md).
+  - [Deploy using local identity with Key Vault](./deploy/deployment-local-identity-with-key-vault.md).
+  - [Azure Site Recovery](./manage/azure-site-recovery.md).
+  - [Windows Admin Center in Azure portal](/windows-server/manage/windows-admin-center/azure/manage-vm).
+
+- **Registration and deployment changes**
+  - **Extension installation**: Extensions are no longer installed during the registration of Azure Local machines. Instead, the extensions are installed in the machine validation step during the Azure Local instance deployment. For more information, see [Register with Azure Arc via console](./deploy/deployment-arc-register-server-permissions.md) and [Deploy via Azure portal](./deploy/deploy-via-portal.md).
+  - **Register via app**: You can bootstrap your Azure Local machines using the Configurator app. The local UI is now deprecated. For more information, see [Register Azure Local machines using Configurator app](./deploy/deployment-arc-register-configurator-app.md).
+    - Composed image is now supported for Original Equipment Manufacturers (OEMs).
+    - Several security enhancements were done for the Bootstrap service.
+    - Service Principal Name (SPN) is deprecated for Arc registration.
+
+  - **Deployment of current version and previous versions**: Starting with this release, you can deploy the current version of Azure Local using the Azure portal. To deploy a previous version, use an Azure Resource Manager template that matches the version you wish to deploy. For more information, see [Deploy via ARM template](./deploy/deployment-azure-resource-manager-template.md).
+
+- **Environment checker related changes**
+  - Environment checker is now integrated for connectivity tests.
+  - Environment checker validates the composed image used for bootstrap.
+  - Environment checker validates PowerShell modules as per the validated solution recipe in the Pre-Update checks.
+
+- **Updates and upgrade improvements**
+  - The Solution Builder Extension update now supports both supported and nonsupported SKUs for a given model.
+  - A tag is added to indicate whether an update is the latest or is superseded.
+  - HTTP content is now downloaded using a more resilient service (Download Service).
+  - OS content is packaged with the release, rather than determining applicable content on the device at runtime. This change is aimed to minimize failure points and support [Importing content](update/update-via-powershell-23h2.md#step-3-import-and-rediscover-updates).
+  - OS content is installed using the CAU plug-ins that are shipped with OS.
+  - Azure Local rebranding changes were made for this update.
+  - OS update components for Azure Local are distributed as a static payload, so you can import and discover update packages with limited connectivity to Azure. For more information, see [Import and discover updates with limited connectivity](./update/import-discover-updates-offline-23h2.md).
+
+- **Azure Local VM changes**: You can now connect to an Azure Local VM using the SSH/RDP protocol without the need for line of sight (inside the host network). For more information, see [Connect to an Azure Local VM using SSH](./manage/connect-arc-vm-using-ssh.md).
+
+- **Add and repair node changes**: Starting with this release, you must use the OS image of the same solution version as that running on the existing cluster. For more information on the OS image, see [Add a node](./manage/add-server.md) and [Repair a node](./manage/repair-server.md). 
+
+- **What's new for migration**: Documentation for improvements and features for VM migration to Azure Local is now available. For more information, see [What's new in migration](./migrate/migrate-whats-new.md).
+
+## Features and improvements in 2411.3
+
+This release has the following features and improvements:
+
+- **Quality updates** - This build contains the latest quality updates and is based off the Operating system version 25398.1425.
+- **Updated .NET version** - This build has an updated .NET version 8.0.13.
+- **New Lifecycle Manager version** - Lifecycle Manager version 30.2503.0.854 is released to deploy the 2411.3 build. This new version moves the content download from extension installation to a visible step in validation. This reduces the overall content download size from a per machine to a one-time download.
+
+For more information on improvements in this release, see the [Fixed issues in 2411.3](./known-issues.md?view=azloc-previous&preserve-view=true#fixed-issues).
+
+## Features and improvements in 2411.2
+
+This is a baseline release with the following features and improvements:
+
+- **Azure Local VMs** - Here are the improvements made to VMs in this release:
+    - **Azure Marketplace images**: Three new Azure Marketplace images are available in addition to the existing images. For more information, see the [List of Azure Marketplace images supported for VMs](./manage/virtual-machine-image-azure-marketplace.md#create-azure-local-vm-image-using-azure-marketplace-images).
+    - **Live migration**: Live migration is available for Azure Local VMs via on-premises tools. For more information, see [Live migration of Azure Local VMs](./manage/manage-arc-virtual-machines.md#conduct-live-migration-of-azure-local-vms).
+
+- **4-node switchless support documentation** - Documentation for 4-node switchless is now available. For more information, see [4-node switchless support](./plan/four-node-switchless-two-switches-two-links.md).
+
+For more information on improvements in this release, see the [Fixed issues in 2411.2](./known-issues.md?view=azloc-previous&preserve-view=true#fixed-issues).
+
+## Features and improvements in 2411.1
+
+This release has the following features and improvements:
+
+- **Azure Local VMs** - Starting this release, the deletion for attached resources (network interface, disk) is blocked while the associated Azure Local VM is in creation. For more information, see [Delete a network interface](./manage/manage-arc-virtual-machine-resources.md#delete-a-network-interface) and [Delete a data disk](./manage/manage-arc-virtual-machine-resources.md#delete-a-data-disk).
+
+- **Updates** - In this release, an update precheck is added to ensure that the solution extension content is copied correctly.
+
+- **4-node switchless support** - Starting this release, 4-node switchless is supported for Azure Local.
+
+For more information on improvements in this release, see the [Fixed issues in 2411.1](./known-issues.md?view=azloc-previous&preserve-view=true#fixed-issues-1).
+
+## Features and improvements in 2411
+
+This release has the following features and improvements:
+
+- **Renaming of Azure Stack HCI to Azure Local** - Azure Stack HCI is now a part of Azure Local. Microsoft renamed Azure Stack HCI to Azure Local to communicate a single brand that unifies the entire distributed infrastructure portfolio.
+
+    For more information, see [Renaming Azure Stack HCI to Azure Local](./rename-to-azure-local.md).
+- **Azure Local for Small Form Factor (Preview)**- Beginning this release, Azure Local supports a new class of *small* devices with reduced hardware requirements. These low cost devices are suitable for edge scenarios across the industry horizontals. The devices must meet the Windows Server certification requirements and relaxed requirements from Software Defined Data Center (SDDC) and Windows Server Software-Defined (WSSD) program.
+
+    For more information about this Preview feature, see [System requirements for Azure Local for small form factor (Preview)](./concepts/system-requirements-small-23h2.md).
+- **Azure Local for disconnected operations (Preview)** - Azure Local is now available for disconnected operations. Disconnected operations for Azure Local enable the deployment and management of Azure Local instances without a connection to the Azure public cloud.
+
+    This feature allows you to build, deploy, and manage virtual machines (VMs) and containerized applications using select Azure Arc-enabled services from a local control plane, providing a familiar Azure portal and CLI experience.
+
+    For more information about this Preview feature, see [Azure Local for Disconnected Operations (Preview)](./manage/disconnected-operations-overview.md).
+- **Deploy Azure Local with Local Identity (Preview)** - Starting this release, you can deploy Azure Local using Local identity with Azure Key Vault. By integrating with Key Vault and using certificate-based authentication, security posture is enhanced and operations continuity is ensured. This approach offers minimal edge infrastructure, a secure secret store, and simplified management by consolidating secrets in a single vault. Additionally, it streamlines deployment by eliminating dependencies on Active Directory systems and simplifying firewall configurations.
+
+    For more information about this Preview feature, see [Deploy Azure Local with Local Identity and Azure Key Vault (Preview)](./deploy/deployment-local-identity-with-key-vault.md).
+
+- **Azure Local VM changes**: The following changes were made to Azure Local VM management:
+    - **Terraform templates for Azure Local VM** - Starting this release, you can create logical networks and Azure Local VMs using Terraform templates.
+    
+        For more information, see [Template to create logical networks](https://registry.terraform.io/modules/Azure/avm-res-azurestackhci-logicalnetwork/azurerm/0.4.0) and [Template to create Azure Local VMs](https://registry.terraform.io/modules/Azure/avm-res-azurestackhci-virtualmachineinstance/azurerm/0.1.2).
+    - **Add network interface on static logical network** - After the Azure Local VMs are provisioned, you can now add a network interface on a static logical network. To add this network interface, you're required to configure the desired static IP from within the VM.
+        
+        For more information, see [Add a network interface on your Azure Local](./manage/manage-arc-virtual-machine-resources.md#add-a-network-interface).
+
+    - **Download data disks** - Beginning this release, you can download an Azure managed disk from Azure to your Azure Local instance. You use this disk to create an Azure Local VM image or attach the image to your VMs as needed.
+  
+        For more information, see [Download data disks from Azure to Azure Local](./manage/manage-data-disks.md).
+
+- **Security improvements** - Starting this release, the security posture of Azure Local is enhanced with the following improvements:
+
+  - **Security posture following Azure Stack HCI, version 22H2 to Azure Local upgrade** - Warnings and guardrails were added in the upgrade flow. Documentation was also updated to reflect the security posture of Azure Local after upgrading from version 22H2.
+  
+    For more information, see [Manage security after upgrading Azure Local from version 22H2](./manage/manage-security-post-upgrade.md).
+
+  - **Improved security baseline compliance** - Starting this release, the security settings on the Azure Local nodes are compared against the security baseline with full accuracy. On the right secured-core hardware, you achieve a 99% compliance score, which you can view in the Azure portal.
+  
+    For more information, see [View security baseline compliance in the Azure portal](./manage/manage-secure-baseline.md#view-security-baseline-compliance-in-the-azure-portal).
+
+- **Error-Correcting Code (ECC) memory requirements** - Beginning this release, the ECC memory requirements are enforced. If you can't meet the memory and ECC requirements, you can opt for a virtual deployment.
+
+    For more information, see [System requirements for Azure Local](./concepts/system-requirements-23h2.md).
+
+- **AKS on Azure Local** - This release has several new features and enhancements for AKS on Azure Local. For more information, see [What's new in AKS on Azure Local](/azure/aks/hybrid/aks-whats-new-23h2).
+
+## Features and improvements in 2408.2
+
+This release has the following features and improvements:
+
+- **Azure Local VM management improvements**: Starting with this release, following improvements were made to the Azure Local VM management experience:
+
+  - You can set a proxy configuration for Azure VMs on the Portal.
+  - You can set a SQL Server configuration for Azure VMs on Portal.
+  - You can now create an image from an Azure VM's OS disk.
+  - You can now select the virtual switch of a logical network from a dropdown menu.
+
+## Features and improvements in 2408.1
+
+This release has the following features and improvements:
+
+- **Environment checker improvements**: Starting in this release, a new validator was added in the environment checker that checks all storage adapters in each of the nodes.
+- **Install module version numbers**: Starting in this release, the install module version numbers for *Az.Accounts*, *Az. Resources*, and *Az.ConnectedMachine* were changed. For more information, see [Register machines with Azure Arc](./deploy/deployment-arc-register-server-permissions.md).
+- **Azure Local VM Management**: Starting in this release, you can attach or detach GPUs to an Azure Local VM via CLI for GPU-P (preview) and DDA (preview). For more information, see:
+  - [Prepare GPUs for Azure Local (preview)](./manage/gpu-preparation.md)
+  - [Manage GPUs using partitioning for Azure Local (preview)](./manage/gpu-manage-via-partitioning.md)
+  - [Manage GPUs via Discrete Device Assignment for Azure Local (preview)](./manage/gpu-manage-via-device.md)
+- **Improved CLI error messages** for deletion of VM network interfaces, data disks, and storage paths that are in use.
+- **Improved reliability** when installing open ssh client during solution deployment.
+
+## Features and improvements in 2408
+
+This is a baseline release with the following features and improvements:
+
+### Upgrade from Azure Stack HCI, version 22H2 to Azure Local 
+
+This release introduces the ability to upgrade your Azure Stack HCI from version 22H2 to Azure Local. The upgrade process is supported for clusters running version 22H2 with the latest updates and is a two-step process. While the OS upgrade is generally available, the solution upgrade has a phased rollout.
+
+For more information, see [Upgrade Azure Local from version 22H2](./upgrade/about-upgrades-23h2.md).
+
+### Updates changes
+
+This release contains the following changes for updates:
+
+- Revised the names and descriptions of update steps. 
+- Introduced a health fault alert that is raised when there are available updates on the system. 
+
+### Azure Local VM management changes
+
+This release contains the following changes for Azure Local VM management:
+
+- 12 new Azure Marketplace images went live. For more information, see [Create Azure Local VM from Azure Marketplace images via Azure CLI](./manage/virtual-machine-image-azure-marketplace.md#create-vm-image-from-marketplace-image).
+- Creation of logical networks is blocked if trying to create with overlapping IP pools.
+- Logical network properties are properly updated. Previously, the logical network sometimes wouldn't have its properties (vLAN, IP Pools, etc.) filled.
+- The vLAN field on a logical network defaults to '0' if not specified.
+- Either (not both) *-image* or *-os-disk-name* can be used to create a VM from a VHD. Previously, Azure CLI enforced *-image* to be required for `az stack-hci-vm create` command.
+
+For more information, see the [Fixed issues list in 2408](./known-issues.md?view=azloc-2408&preserve-view=true#fixed-issues-5).
+
+### SBE changes
+
+This release contains the following changes for SBE:
+
+- **Reduced deployment times**: Starting in this release, SBE extension interfaces are executed more efficiently leading to reduced Azure Local deployment times.
+- **CAU plugin**: Starting in this release, SBE extensions use an updated CAU plugin that enhances support for host OS driver updates, addressing issues with drivers newer than those in the SBE. This plugin update provides hardware vendors more flexibility for driver version updates in support cases. Microsoft recommends installing host OS driver updates only through your hardware vendor's SBE.
+- **Improved error details**: Starting in this release, hardware vendor SBE failures or exceptions include the SBE publisher, family, and version at the beginning of the exception string. Provide this information to your hardware vendor to streamline the failure analysis.
+
+## Features and improvements in 2405.3
+
+This is primarily a bug fix release. See the [Fixed issues list](./known-issues.md?view=azloc-previous&preserve-view=true) to understand the bug fixes.
+
+## Features and improvements in 2405.2
+
+This is primarily a bug fix release with a few improvements.
+
+- Azure Local VM management improvements: Starting this release, following improvements were made to the Azure Local VM management experience:
+
+  - You can now view and delete VM network interfaces from the Azure portal.
+  - You can view **Connected devices** for logical networks. In the Azure portal, you can go to the logical network and then go to **Settings > Connected devices** to view the connected devices.
+  - Deletion of logical networks is blocked if connected devices are present. When you try to delete a logical network from the Azure portal that has connected devices, you see a warning message: *Can't delete logical network because it's currently in use*. Delete all the resources under **Connected Devices** setting before you delete the logical network.
+  - From this release onwards, a new URL needs to be added to the allowlist for `stack-hci-vm` Azure CLI installation. The URL has changed from: `https://hciarcvmsstorage.blob.core.windows.net/cli-extension/stack_hci_vm-{version}-py3-none-any.whl` to: `https://hciarcvmsstorage.z13.web.core.windows.net/cli-extensions/stack_hci_vm-{version}-py3-none-any.whl`. For more information, see [Azure Local firewall requirements](./concepts/firewall-requirements.md).
+  
+- **Update health checks**: Starting this release, a new health check was added and the update service was improved. Additionally, the update service now supports the ability to view or start new updates when the service crashes on machines. Also, multiple issues for health checks related to Azure Update Manager and Solution Builder Extension Update were fixed.
+
+  For more information, see [Fixed issues in 2405.2](./known-issues.md?view=azloc-previous&preserve-view=true).
+
+- **Azure Stack HCI OEM license**: Starting this release, we are introducing the Azure Stack HCI OEM license designed for Azure Local hardware including the Azure Local Premier Solutions, Integrated systems, and Validated Nodes. This license remains valid for the lifetime of the hardware, covers up to 16 cores, and includes three essential services for your cloud infrastructure.
+
+  For more information, see [Azure Stack HCI OEM license overview](./oem-license.md) and [Azure Stack HCI OEM license and billing FAQ](./license-billing.yml).
+
+## Features and improvements in 2405.1
+
+This is primarily a bug fix release with a few improvements.
+
+- **Custom storage IPs for add and repair server scenarios**: Starting this release, it's possible to add machines or repair machines to the Azure Local instance using custom IPs for the storage intent network adapters.
+- **Improved outbound connectivity check**: Starting this release, improvements were made to the outbound connectivity requirement validation in the environment checker.
+- **Reliability improvements** were made in this release for partner health checks implemented in their Solution Builder Extensions.
+- **Rotation of Arc Resource Bridge service principal credentials**: Starting this release, you can rotate the service principal credentials used by Azure Arc resource bridge.
+- **Multiple bug fixes related to Updates** were made in this release.
+
+For more information on bug fixes, see the [Fixed issues list](./known-issues.md?view=azloc-previous&preserve-view=true).
+
+## Features and improvements in 2405
+
+Here are the features and improvements in this release.
+
+### Deployment changes
+
+
+- **Active Directory integration** - In this release, an issue related to the use of a large Active Directory that results in timeouts when adding users to the local administrator group, is fixed. <!--27022398-->
+
+- **New Azure Resource Manager (ARM) template** - This release has a new ARM template for deployment that simplifies the resource creation dependencies. The new template creation also includes multiple fixes around the missing mandatory fields. <!--26376120-->
+
+- **Secret rotation improvements** - In this release, improvements were made to the secret rotation flow.
+  - The secret rotation PowerShell command `Set-AzureStackLCMUserPassword` now supports a new parameter to skip the confirmation message. This parameter is useful when automating secret rotation. <!--27101544-->
+  - Reliability improvements were made around the services not restarting in a timely manner. <!--27837538-->
+
+- **Solution Builder Extension (SBE) improvements** include:
+  - A new PowerShell command to update the Solution Builder Extension partner property values is provided at the time of deployment. <!--25093172-->
+  - Fixing an issue that prevents the update service to respond to requests after a Solution Builder Extension only update run. <!--27940543-->
+
+- **Add server and Repair server fixes** include:
+  - An issue that prevents a node from joining Active Directory during the add-server operation. <!--27101597-->
+  - Enabling deployment when a disjoint namespace is used.
+
+- **Reliability enhancements** include:
+  - Changes for Network ATC when setting up the host networking configuration with certain network adapter types. <!--27285196-->
+  - Changes when detecting the firmware versions for disk drives. <!--27395303-->
+
+- This release contains a fix for a deployment issue that is encountered when setting the diagnostic level in Azure and the device. <!--26737110-->
+
+For more information, see the [Fixed issues list in 2405](./known-issues.md?view=azloc-previous&preserve-view=true).
+
+### Updates changes
+
+This release contains the following changes for updates:
+
+- Starting this release, an adjusted naming schema is introduced for updates. This schema allows for the identification of feature versus cumulative updates. <!--26952963-->
+
+- This release contains reliability improvements:
+  - For the update notifications for health check results sent from the device to Azure Update Manager. In certain instances, the message size was too large and results weren't shown in the Update Manager. <!--27230554-->
+  - For reporting the cluster update progress to the orchestrator.
+
+- This release has bug fixes for various issues including:
+
+  - A file lock issue that could cause update failures for the trusted launch VM agent (IGVM). <!--27689489-->
+  - An issue that prevented the orchestrator agent from restarting during an update run. <!--27726586-->
+  - A rare condition where the update service took a long time to discover or start an update. <!--27745420-->
+  - An issue for Cluster-Aware Updating (CAU) interaction with the orchestrator when an update in progress is reported by CAU. <!--26805746-->
+
+For more information, see the [Fixed issues list in 2405](./known-issues.md?view=azloc-previous&preserve-view=true).
+
+### Environment checker changes
+
+In this release, changes to the environment checker include several new checks:
+
+- A new check is added to ensure the inbox drivers on the physical network adapters aren't in use. The provided OEM or manufacturer latest drivers must be installed before deployment.
+- A new check is added to ensure the link speed across physical network adapters on the same intent is identical.
+- A new check is added to ensure RDMA is operational on the storage network adapters before deployment.
+- A new check is added to validate the infrastructure IP addresses defined during deployment have outbound connectivity and can resolve the DNS.
+- A new check is added to ensure the DNS server value isn't empty on the management IP address.
+- A new check is added to make sure that there's only one IP address on the management network adapter.
+- A new check is added to ensure that the minimum bandwidth required for RDMA storage adapters is at least 10 Gb.
+- Check that the uplink connectivity in any physical network adapters assigned to Network ATC intents is up.
+- Improved the ability to handle adapters that don't expose the VLAN ID field correctly.
+
+### Observability changes
+
+This release contains the following improvements to observability:
+
+- When starting a log collection, a warning message now advises you to limit the log collection to 24 hours.
+- Deployment logs are automatically collected by default.
+- The newly added `Test-observability` feature validates whether the telemetry and diagnostic data can be successfully sent to Microsoft.
+
+### Azure Local VM management changes
+
+- This release contains new documentation that provides guidance on VM image creation starting with a CentOS image or a Red Hat Enterprise Linux (RHEL) image. For more information, see:
+  - [Prepare CentOS Linux image for Azure Local virtual machines (preview)](./manage/virtual-machine-image-centos.md).
+  - [Prepare Red Hat Enterprise image for Azure Local virtual machines (preview)](./manage/virtual-machine-image-red-hat-enterprise.md).
+
+### Azure portal, extensions, and resource provider changes
+
+Here are the changes related to the Azure portal, extensions, and resource providers:
+
+- In this release, an issue was fixed that prevented from showing a failed deployment in the Cluster overview when the deployment was canceled.
+- The **Retry** button in Azure portal is renamed to **Resume** as the deployment continues from the step that it failed.
+- The new clusters deployed in this release have resource locks enabled to protect against accidental deletion.
+- This release changes the behavior to not delete the Arc-enabled server resources when the Azure Local resource is deleted.
+
+### Security changes
+
+This release includes the following updates to the security documentation:
+
+- The compliance score for Azure Local machine is 281 out of 288 rules even when all the hardware requirements for Secured-core are met. The [View security baseline compliance in the Azure portal](./manage/manage-secure-baseline.md#view-security-baseline-compliance-in-the-azure-portal) section now explains the noncompliant rules and the reasons for the current gap.
+- The Security Baselines settings have been updated to 315 settings, including six removals and 1 addition. To view and download the complete list of security settings, see [Security Baseline](https://github.com/Azure-Samples/AzureStackHCI/blob/main/security/SecurityBaseline_2405.csv).
+- Updated the [Application Control](./concepts/security-features.md#application-control) section in the [Security features for Azure Local](./concepts/security-features.md) article.
+
+### Azure Kubernetes Service on Azure Local
+
+For a list of the changes and improvements in AKS on Azure Local, see [What's new in Azure Kubernetes on Azure Local?](/azure/aks/hybrid/aks-whats-new-23h2).
+
+
+
+## Features and improvements in 2402.4
+
+This is primarily a bug fix release. See the [Fixed issues list](./known-issues.md?view=azloc-previous&preserve-view=true) to understand the bug fixes.
+
+## Features and improvements in 2402.3
+
+This is primarily a bug fix release. See the [Fixed issues list](./known-issues.md?view=azloc-previous&preserve-view=true) to understand the bug fixes.
+
+## Features and improvements in 2402.2
+
+This is primarily a bug fix release with a few enhancements. See the [Fixed issues list](./known-issues.md?view=azloc-previous&preserve-view=true) to understand the bug fixes. Here's the list of enhancements:
+
+- **Region expansion** - The following new regions are now supported on your Azure Local instance: Southeast Asia, India Central, Canada Central, Japan East, and South Central US. For more information, see [Azure Local supported regions](./concepts/system-requirements-23h2.md#azure-requirements).
+- **Deployment changes** - A permission check was added to the Azure portal deployment experience to check for sufficient permissions. For more information, see [Deploy via Azure portal](./deploy/deploy-via-portal.md).
+- **Update changes** - A notification banner was included in the update experience that informs you when the new updates are available. For more information, see [Update your Azure Local instance via the Azure Update Manager](./update/azure-update-manager-23h2.md).
+
+## Features and improvements in 2402.1
+
+This is primarily a bug fix release. See the [Fixed issues list](./known-issues.md?view=azloc-previous&preserve-view=true) to understand the bug fixes.
+
+## Features and improvements in 2402
+
+This section lists the new features and improvements in the 2402 release of Azure Local.
+
+### New built in security role
+
+This release introduces a new Azure built-in role called Azure Resource Bridge Deployment Role, to harden the security posture for Azure Local. If you provisioned a cluster before January 2024, then you must assign the **Azure Resource Bridge Deployment User** role to the Azure Resource Bridge principal.
+
+The role applies the concept of least amount of privilege and must be assigned to the service principal: *clustername.arb* before you update the cluster.
+
+To take advantage of the constraint permissions, remove the permissions that were applied before. Follow the steps to [Assign an Azure RBAC role via the portal](/azure/role-based-access-control/role-assignments-portal?tabs=delegate-condition). Search for and assign the Azure Resource Bridge Deployment role to the member: `<deployment-cluster-name>-cl.arb`.
+
+An update health check is also included in this release that confirms that the new role is assigned before you apply the update.
+
+### Changes to Active Directory preparation
+
+Beginning this release, the Active Directory preparation process is simplified. You can use your own existing process to create an Organizational Unit (OU), a user account with appropriate permissions, and with Group policy inheritance blocked for the Group Policy Object (GPO). You can also use the Microsoft provided script to create the OU. For more information, see [Prepare Active Directory](./deploy/deployment-prep-active-directory.md).
+
+### Region expansion
+
+Azure Local solution is now supported in Australia. For more information, see [Azure Local supported regions](./concepts/system-requirements-23h2.md#azure-requirements).
+
+### New documentation for network considerations
+
+We're also releasing new documentation that provides guidance on network considerations for the cloud deployment of Azure Local. For more information, see [Network considerations for Azure Local](./plan/cloud-deployment-network-considerations.md).
+
+### Security changes
+
+This release includes the following updates to the security documentation:
+
+- Updated the documentation for [Manage system security with Microsoft Defender for Cloud (preview)](./manage/manage-security-with-defender-for-cloud.md).
+- Updated the Security Baselines settings to 320 settings, including one removal, three additions, and one change about disabling Dynamic Root of Measurement (DRTM) for new deployments. To view and download the complete list of security settings, see [Security Baseline](https://github.com/Azure-Samples/AzureStackHCI/blob/main/security/SecurityBaseline_2402.csv).
+- Published the [Azure Local security book](https://assetsprod.microsoft.com/mpn/azure-stack-hci-security-book.pdf).
+
+
+## Features and improvements in 2311.5
+
+This is primarily a bug fix release. See the [Fixed issues list](./known-issues.md?view=azloc-previous&preserve-view=true) to understand the bug fixes.
+
+## Features and improvements in 2311.4
+
+This is primarily a bug fix release. See the [Fixed issues list](./known-issues.md?view=azloc-previous&preserve-view=true) to understand the bug fixes.
+
+## Features and improvements in 2311.3
+
+A new Azure built-in role called **Azure Resource Bridge Deployment Role** is available to harden the security posture for Azure Local. If you provisioned a cluster before January 2024, then you must assign the Azure Resource Bridge Deployment User role to the Arc Resource Bridge service principal.
+
+The role applies the concept of the least amount of privilege and must be assigned to the Arc Resource Bridge service principal, `clustername.arb`, before you update the cluster.
+
+You must remove the previously assigned permissions to take advantage of the constraint permission. Follow the steps to [Assign an Azure RBAC role via the portal](/azure/role-based-access-control/role-assignments-portal?tabs=delegate-condition). Search for and assign the Azure Resource Bridge Deployment role to the member: `<deployment-cluster-name>-cl.arb`.
+
+Additionally, this release includes an update health check that confirms the assignment of the new role before applying the update.
+
+## Features and improvements in 2311.2 GA
+
+This section lists the new features and improvements in the 2311.2 General Availability (GA) release for Azure Local.
 
 > [!IMPORTANT]
-> Run these steps as a local administrator on every Azure Local machine that you intend to cluster.
+> The production workloads are only supported on the Azure Local systems running the generally available 2311.2 release. To run the GA version, start with a new 2311 deployment and then update to 2311.2.
 
-## Step 1: Review script parameters
+In this generally available release of the Azure Local, all the features that were available with the [2311](#features-and-improvements-in-2311) preview releases are also now generally available. In addition, the following improvements and enhancements are available:
 
-Review the parameters used in the script:
+### Deployment changes
 
-|Parameters  |Description  |
-|------------|-------------|
-|`TenantID`          |The tenant ID used to register your machines with Azure Arc. Go to your Microsoft Entra ID and copy the tenant ID property.         |
-|`SubscriptionID`    |The ID of the subscription used to register your machines with Azure Arc.         |
-|`ResourceGroup`     |The resource group precreated for Arc registration of the machines. A resource group is created if one doesn't exist.         |
-|`Region`            |The Azure region used for registration. See the [Supported regions](../concepts/system-requirements-23h2.md#azure-requirements) that can be used.          |
-|`ProxyServer`       |Optional parameter. Proxy Server address when required for outbound connectivity. |
+With this release:
 
+- Deployment is supported using existing storage accounts.
+- A failed deployment can be run using the **Rerun deployment** option that becomes available in the cluster **Overview** page.
+- Network settings such as storage traffic priority, cluster traffic priority, storage traffic bandwidth reservation, jumbo frames, and RDMA protocol can all be customized.
+- Validation must be started explicitly via the **Start validation** button.
 
+For more information, see [Deploy via Azure portal](./deploy/deploy-via-portal.md).
 
-## Step 2: Set parameters
+### Add server and repair server changes
 
-Set the parameters required for the registration script.
+- Bug fixes in the Add server and Repair server scenarios. For more information, see the [Fixed issues in 2311.2](./known-issues.md?view=azloc-previous&preserve-view=true).
 
-Here's an example of how you should change these parameters for the `Invoke-AzStackHciArcInitialization` initialization script. Once the registration is complete, the Azure Local machines are registered in Azure Arc:
+### Azure Local VM management changes
 
-```powershell
-#Define the tenant you will use to register your machine as Arc device
-$Tenant = "YourTenantID"
+In this release:
 
-#Define the subscription where you want to register your Azure Local machine with Arc.
-$Subscription = "YourSubscriptionID"
+- Guest management is available via Azure CLI. For more information, see [Enable guest management](./manage/manage-arc-virtual-machines.md).
+- Proxy is supported for Azure Local VMs. For more information, see [Set up proxy for Azure Local VMs](./manage/create-arc-virtual-machines.md#create-a-vm-with-proxy-configured).
+- Storage path selection is available during the Azure Local VM image creation via the Azure portal. For more information, see [Create an Azure Local VM image from Azure Marketplace via the Azure portal](./manage/virtual-machine-image-azure-marketplace.md).
 
-#Define the resource group where you want to register your Azure Local machine with Arc.
-$RG = "YourResourceGroupName"
+### Migration of Hyper-V VMs to Azure Local (preview)
 
-#Define the region to use to register your server as Arc device
-#Do not use spaces or capital letters when defining region
-$Region = "eastus"
+You can now migrate Hyper-V VMs to Azure Local using Azure Migrate. This feature is currently in Preview. For more information, see [Migration of Hyper-V VMs using Azure Migrate to Azure Local (preview)](./migrate/migration-azure-migrate-overview.md).
 
-#Define the proxy address for your Azure Local deployment to access the internet via proxy.
-$ProxyServer = "http://proxyaddress:port"
+### Monitoring changes
 
-#Define the bypass list for the proxy. Use comma to separate each item from the list.  
-# Parameters must be separated with a comma `,`.
-# Use "localhost" instead of <local> 
-# Use specific IPs such as 127.0.0.1 without mask 
-# Use * for subnets allowlisting. 192.168.1.* for /24 exclusions. Use 192.168.*.* for /16 exclusions. 
-# Append * for domain names exclusions like *.contoso.com 
-# DO NOT INCLUDE .svc on the list. The registration script takes care of Environment Variables configuration. 
-# At least the IP address of each Azure Local machine.
-# At least the IP address of the Azure Local cluster.
-# At least the IPs you defined for your infrastructure network. Arc resource bridge, Azure Kubernetes Service (AKS), and future infrastructure services using these IPs require outbound connectivity.
-# NetBIOS name of each machine.
-# NetBIOS name of the Azure Local cluster.
+In the Azure portal, you can now monitor platform metrics of your cluster by navigating to the **Monitoring** tab on your cluster's **Overview** page. This tab offers a quick way to view graphs for different platform metrics. You can select any graph to open it in Metrics Explorer for a more in-depth analysis. For more information, see [Monitor Azure Local through the Monitoring tab](./manage/monitor-cluster-with-metrics.md#monitor-azure-local-through-the-monitoring-tab).
 
-$ProxyBypassList = "localhost,127.0.0.1,*.contoso.com,machine1,machine2,machine3,machine4,machine5,192.168.*.*,AzureLocal-1"
-```
+### Security via Microsoft Defender for Cloud (preview)
 
-<details>
-<summary>Expand this section to see an example output.</summary>
+You can now use Microsoft Defender for Cloud to help improve the security posture of your Azure Local environment and protect against existing and evolving threats. This feature is currently in Preview. For more information, see [Microsoft Defender on Cloud for Azure Local (Preview)](./manage/manage-security-with-defender-for-cloud.md).
 
-```output
-PS C:\Users\SetupUser> $Subscription = "Subscription ID"
-PS C:\Users\SetupUser> $RG = "myashcirg"
-PS C:\Users\SetupUser> $Region = "eastus"
-PS C:\Users\SetupUser> $Tenant = "Tenant ID"
-PS C:\Users\SetupUser> $ProxyServer = "http://192.168.10.10:8080"
-PS C:\Users\SetupUser> $ProxyBypassList = "localhost,127.0.0.1,*.contoso.com,machine1,machine2,machine3,machine4,machine5,192.168.*.*,AzureLocal-1"
-```
+### Supported workloads
 
-</details>
+Starting with this release, the following workloads are generally available on Azure Local:
 
+- Azure Kubernetes Service (AKS) on Azure Local. For more information, see [Create Kubernetes clusters](/azure/aks/hybrid/aks-create-clusters-cli).
 
+    In addition, AKS on HCI has a new CLI extension and Azure portal experience, [Support for logical networks](/azure/aks/hybrid/aks-networks), [Support for taints and labels](/azure/aks/hybrid/cluster-labels), [Support for upgrade via Azure CLI](/azure/aks/hybrid/cluster-upgrade), [Support for Nvidia A2](/azure/aks/hybrid/deploy-gpu-node-pool?pivots=aks-23h2) and more. For details, see [What's new in AKS on Azure Local?](/azure/aks/hybrid/aks-whats-new-23h2).
 
-## Step 3: Run registration script
+- Azure Virtual Desktops (AVD) on Azure Local. For more information, see [Deploy AVD on Azure Local](/azure/virtual-desktop/azure-stack-hci-overview).
 
-> [!NOTE]
-> If your Azure Local system is preinstalled with an Original Equipment Manufacturer (OEM) image that's outdated or unsupported, an update is triggered automatically. The update typically takes 40-45 minutes to complete and includes a system reboot. After the reboot, rerun the cmdlet to continue. For more instructions about the update flow, see [Azure Arc registration workflow for systems with OEM images](./deployment-arc-registration-preinstalled-os.md).
+## Features and improvements in 2311
 
-1. Run the Arc registration script. The script takes a few minutes to run.
+This section lists the new features and improvements in the 2311 release of Azure Local. Additionally, this section includes features and improvements that were originally released for 2310 starting with cloud-based deployment.
 
-    ```powershell
-    #Invoke the registration script. Use a supported region.
-    Invoke-AzStackHciArcInitialization -TenantId $Tenant -SubscriptionID $Subscription -ResourceGroup $RG -Region $Region -Cloud "AzureCloud" -Proxy $ProxyServer -ProxyBypass $ProxyBypassList 
-    ```
 
-    For a list of supported Azure regions, see [Azure requirements](../concepts/system-requirements-23h2.md#azure-requirements).
+### Cloud-based deployment
 
-    <details>
-    <summary>Expand this section to see an example output.</summary>
+For machines running Azure Local, release 2311.2, you can perform new deployments via the cloud. You can deploy an Azure Local instance in one of the two ways - via the Azure portal or via an Azure Resource Manager deployment template.
 
-    Here's a sample output of a successful registration of your machines:
+For more information, see [Deploy Azure Local instance using the Azure portal](./deploy/deploy-via-portal.md) and [Deploy Azure Local via the Azure Resource Manager deployment template](./deploy/deployment-azure-resource-manager-template.md).
 
-    ```output
-    PS C:\Users\Administrator> Invoke-AzStackHciArcInitialization -TenantId $Tenant -SubscriptionID $Subscription -ResourceGroup $RG -Region $Region -Cloud "AzureCloud" -Proxy $ProxyServer
-    >>
-    Configuration saved to: C:\Users\ADMINI~1\AppData\Local\Temp\bootstrap.json
-    Triggering bootstrap on the device...
-    Waiting for bootstrap to complete... Current Status: InProgress
-    =========SNIPPED=========SNIPPED=============
-    Waiting for bootstrap to complete... Current Status: InProgress
-    Waiting for bootstrap to complete... Current Status: Succeeded
-    Bootstrap succeeded.
-    
-    Triggering bootstrap log collection as a best effort.
-    Version Response                                                    
-    ------- --------                                                    
-    V1      Microsoft.Azure.Edge.Bootstrap.ServiceContract.Data.Response
-    V1      Microsoft.Azure.Edge.Bootstrap.ServiceContract.Data.Response
+### Cloud-based updates
 
+This new release has the infrastructure to consolidate all the relevant updates for the OS, software agents, Azure Arc infrastructure, and OEM drivers and firmware into a unified monthly update package. This comprehensive update package is identified and applied from the cloud through the Azure Update Manager tool. Alternatively, you can apply the updates using the PowerShell.
 
-    PS C:\Users\Administrator>
-    ```
-    </details>
+For more information, see [Update your Azure Local instance via the Azure Update Manager](./update/azure-update-manager-23h2.md) and [Update your Azure Local via the PowerShell](./update/update-via-powershell-23h2.md).​
 
+### Cloud-based monitoring
 
-1. During the Arc registration process, you must authenticate with your Azure account. The console window displays a code that you must enter in the URL, displayed in the app, in order to authenticate. Follow the instructions to complete the authentication process.
+#### Respond to health alerts
 
-    :::image type="content" source="media/deployment-without-azure-arc-gateway/authentication-device-code.png" alt-text="Screenshot of the console window with device code and URL for authentication." lightbox="media/deployment-without-azure-arc-gateway/authentication-device-code.png":::
+This release integrates the Azure Monitor alerts with Azure Local so that any health alerts generated within your on-premises Azure Local system are automatically forwarded to Azure Monitor alerts. You can link these alerts with your automated incident management systems, ensuring timely and efficient response.
 
-Once the registration is complete, the Azure Local machines are registered in Azure Arc.
+For more information, see [Respond to Azure Local health alerts using Azure Monitor alerts](./manage/health-alerts-via-azure-monitor-alerts.md).
 
-## Step 4: Verify the setup is successful
+#### Monitor metrics
 
-After the script completes successfully on all the machines, verify that your machines are registered with Arc.
+This release also integrates the Azure Monitor metrics with Azure Local so that you can monitor the health of your Azure Local system via the metrics collected for compute, storage, and network resources. This integration enables you to store cluster data in a dedicated time-series database that you can use to analyze data from your Azure Local system.
 
-1. Go to the Azure portal.
-1. Go to the resource group associated with the registration. The machines appear within the specified resource group as **Machine - Azure Arc** type resources.
+For more information, see [Monitor Azure Local with Azure Monitor metrics](./manage/monitor-cluster-with-metrics.md).
 
-   :::image type="content" source="media/deployment-without-azure-arc-gateway/arc-servers-registered-1.png" alt-text="Screenshot of the Azure Local machines in the resource group after the successful registration." lightbox="./media/deployment-without-azure-arc-gateway/arc-servers-registered-1.png":::
+#### Enhanced monitoring capabilities with Insights
 
-> [!NOTE]
-> If the Azure Local machine fails to register, you can deregister and then register your cluster again. For detailed instructions, see [Re-register Azure Local machines](../manage/unregister-register-machine.md).
+With Insights for Azure Local, you can now monitor and analyze performance, savings, and usage insights about key Azure Local features, such as ReFS deduplication and compression. To use these enhanced monitoring capabilities, ensure that your cluster is deployed, registered, and connected to Azure, and enrolled in monitoring. For more information, see [Monitor Azure Local features with Insights](./manage/monitor-features.md).
 
-# [Via Configurator app (Preview)](#tab/app)
+### Azure Local VM management
 
-If you plan to deploy a few machines per site, use the Configurator app to register your Azure Local machines with Azure Arc.
+Beginning this release, the following Azure Local VM management capabilities are available:
 
-[!INCLUDE [important](../includes/hci-preview.md)]
+- **Simplified Azure Arc resource bridge deployment**. The Azure Arc resource bridge is now deployed as part of the Azure Local deployment.
+    For more information, see [Deploy Azure Local instance using the Azure portal](./deploy/deploy-via-portal.md).
+- **New RBAC roles for Azure Local VMs**. This release introduces new RBAC roles for Azure Local VMs.
+    For more information, see [Manage RBAC roles for Azure Local VMs](./manage/assign-vm-rbac-roles.md).
+- **New Azure consistent CLI**. Beginning this preview release, a new consistent command line experience is available to create VM and VM resources such as VM images, storage paths, logical networks, and network interfaces. 
+    For more information, see [Create Azure Local VMs on Azure Local](./manage/create-arc-virtual-machines.md).
+- **Support for static IPs**. This release has the support for static IPs. 
+    For more information, see [Create static logical networks on Azure Local](./manage/create-logical-networks.md#create-a-static-logical-network-via-portal).
+- **Support for storage paths**. While default storage paths are created during the deployment, you can also specify custom storage paths for your Azure Local VMs.
+    For more information, see [Create storage paths on Azure Local](./manage/create-storage-path.md).
+- **Support for Azure VM extensions on Azure Local VMs**. Starting with this preview release, you can also enable and manage the Azure VM extensions that are supported on Azure Arc, on Azure Local VMs.
+    For more information, see [Manage VM extensions for Azure Local VMs](./manage/virtual-machine-manage-extension.md).
+- **Trusted launch for Azure Local VMs**. Azure Trusted Launch protects VMs against boot kits, rootkits, and kernel-level malware. Starting this preview release, some of those Trusted Launch capabilities are available for Azure Local VMs.
+    For more information, see [Trusted launch for Azure Local VMs](./manage/trusted-launch-vm-overview.md).
 
-## Prerequisites
+### AKS on Azure Local
 
-Before you begin, make sure that you complete the following prerequisites:
+Starting with this release, you can run Azure Kubernetes Service (AKS) workloads on your Azure Local system. AKS on Azure Local uses Azure Arc to create new Kubernetes clusters on Azure Local directly from Azure. For more information, see [What's new in AKS on Azure Local?](/azure/aks/hybrid/aks-whats-new-23h2).
 
-### Azure Local machine prerequisites
+The following Azure Kubernetes cluster deployment and management capabilities are available:
 
-- Download the [Configurator App for Azure Local](https://aka.ms/ConfiguratorAppForHCI) on a client machine that is connected to the same network as the Azure Local machines..
+- **Simplified infrastructure deployment on Azure Local**. In this release, the infrastructure components of Azure Kubernetes on Azure Local including the Azure Arc resource bridge, custom location, and the Azure Kubernetes Extension for the Azure Kubernetes operator, are all deployed as part of the Azure Local deployment. For more information, see [Deploy Azure Local instance using the Azure portal (preview)](./deploy/deploy-via-portal.md).
+- **Integrated infrastructure upgrade on Azure Local**. The whole lifecycle management of Azure Kubernetes infrastructure follows the same approach as the other components on Azure Local. For more information, see [Infrastructure component updates for AKS on Azure Local (preview)](/azure/aks/hybrid/infrastructure-components).
+- **New Azure consistent CLI**. Starting with this preview release, a new consistent command line experience is available to create and manage Kubernetes clusters. <!--For more information, see [Azure CLI extension az akshybrid reference](https://learn.microsoft.com/cli/azure/akshybrid).-->
+- **Cloud-based management**. You can now create and manage Kubernetes clusters on Azure Local with familiar tools such as Azure portal and Azure CLI. For more information, see [Create Kubernetes clusters using Azure CLI](/azure/aks/hybrid/aks-create-clusters-cli).
+- **Support for upgrading a Kubernetes cluster using Azure CLI**. You can use Azure CLI to upgrade the Kubernetes cluster to a newer version and apply the OS version updates. For more information, see [Upgrade an Azure Kubernetes Service (AKS) cluster (preview)](/azure/aks/hybrid/cluster-upgrade).
+- **Support for Azure Container Registry to deploy container images**. In this release, you can deploy container images from a private container registry using Azure Container Registry to your Kubernetes clusters running on Azure Local. For more information, see [Deploy from private container registry to on-premises Kubernetes using Azure Container Registry and Azure Kubernetes](/azure/aks/hybrid/deploy-container-registry).
+- **Support for managing and scaling the node pools**. For more information, see [Manage multiple node pools in Azure Kubernetes](/azure/aks/hybrid/manage-node-pools).
+- **Support for Linux and Windows Server containers**. For more information, see [Create Windows Server containers](/azure/aks/hybrid/aks-create-containers).
 
-- Note down:
+### Security capabilities
 
-   - The serial number for each machine.
-   - Local administrator credentials to sign into each machine.
+The new installations with this release of Azure Local start with a *secure-by-default* strategy. The new version has a tailored security baseline coupled with a security drift control mechanism and a set of well-known security features enabled by default. This release provides:
 
-### Azure prerequisites
+- A tailored security baseline with over 300 security settings configured and enforced with a security drift control mechanism. For more information, see [Security baseline settings for Azure Local](./concepts/secure-baseline.md).
+- Out-of-box protection for data and network with SMB signing and BitLocker encryption for OS and Cluster Shared Volumes. For more information, see [BitLocker encryption for Azure Local](./concepts/security-bitlocker.md).
+- Reduced attack surface as Windows Defender Application Control is enabled by default and limits the applications and the code that you can run on the core platform. For more information, see [Windows Defender Application Control for Azure Local](./concepts/security-windows-defender-application-control.md).
 
-- Make sure you have the required permissions to register Azure Local machines with Azure Arc. For more information, see [Assign required permissions for Azure Local deployment](deployment-arc-register-server-permissions.md).
+### Support for web proxy
 
-   
-## Step 1: Configure the network and connect to Azure
+This release supports configuring a web proxy for your Azure Local system. You perform this optional configuration if your network uses a proxy server for internet access. For more information, see [Configure web proxy for Azure Local](./manage/configure-proxy-settings-23h2.md).
 
-[!INCLUDE [azure-local-start-configurator](../includes/azure-local-start-configurator.md)]
+### Removal of GMSA accounts
 
-### Prerequisites tab
+In this release, the Group Managed Service Accounts (gMSA) created during the Active Directory preparation are removed. For more information, see [Prepare Active Directory](./deploy/deployment-prep-active-directory.md).
 
-[!INCLUDE [azure-local-prerequisites-tab-configurator-app](../includes/azure-local-prerequisites-tab-configurator-app.md)]
+<!--### Guest management operations via Azure CLI
 
-### Basics tab
+In this release, you can perform an extended set of guest management operations via the Azure CLI.-->
 
-1. On the **Basics** tab, configure one network interface that is connected to the internet. Select the **Pencil icon** to modify network interface settings.
+### Capacity management
 
-   :::image type="content" source="media/deployment-without-azure-arc-gateway/basics-tab-1.png" alt-text="Screenshot of the Basics tab in the Configurator app for Azure Local." lightbox="media/deployment-without-azure-arc-gateway/basics-tab-2.png":::
+In this release, you can add and remove machines, or repair machines from your Azure Local system via the PowerShell.
 
-1. Provide the interface name, IP allocation as static or DHCP, IP address, subnet, gateway, and preferred DNS servers. Optionally, enter an alternate DNS server.
+For more information, see [Add server](./manage/add-server.md) and [Repair server](./manage/repair-server.md).
 
-   :::image type="content" source="media/deployment-without-azure-arc-gateway/basics-tab-2.png" alt-text="Screenshot of the Basics tab with Network settings configured in the Configurator app for Azure Local." lightbox="media/deployment-without-azure-arc-gateway/basics-tab-1.png":::
+### ReFS deduplication and compression
 
-   > [!IMPORTANT]
-   > Make sure that the IPs you assign are free and not in use.  
+This release introduces the Resilient File System (ReFS) deduplication and compression feature designed specifically for active workloads, such as Azure Virtual Desktop (AVD) on Azure Local. Enable this feature using Windows Admin Center or PowerShell to optimize storage usage and reduce cost.
 
-1. To specify more details, select **Enter additional details**.
+For more information, see [Optimize storage with ReFS deduplication and compression in Azure Local](./manage/refs-deduplication-and-compression.md).
 
-1. On the **Additional details** page, provide the following inputs and then select **Apply**.
-
-   :::image type="content" source="media/deployment-without-azure-arc-gateway/basics-tab-additional-details-with-proxy.png" alt-text="Screenshot of the Basics tab with additional details configured in the Configurator app for Azure Local." lightbox="media/deployment-without-azure-arc-gateway/basics-tab-additional-details-with-proxy.png":::
-
-   1. Select **ON** to enable **Remote desktop** protocol. Remote desktop protocol is disabled by default.
-
-   1. Select **Proxy server** as the connectivity method. Provide the proxy URL and the bypass list. The bypass list is required and can be provided in a comma separated format.
-   
-      When defining your proxy bypass string, make sure you meet the following conditions:
-
-      - Include at least the IP address of each Azure Local machine.
-      - Include at least the IP address of the Azure Local cluster.
-      - Include at least the IPs you defined for your infrastructure network. Arc resource bridge, Azure Kubernetes Service (AKS), and future infrastructure services using these IPs require outbound connectivity.
-      - Or you can bypass the entire infrastructure subnet.
-      - Provide the NetBIOS name of each machine.
-      - Provide the NetBIOS name of the Azure Local cluster.
-      - Domain name or domain name with asterisk * wildcard at the beginning to include any host or subdomain. For example, `192.168.1.*` for subnets or `*.contoso.com` for domain names.
-      - Parameters must be separated with a comma `,`.
-      - Classless Inter-Domain Routing (CIDR) notation to bypass subnets isn't supported.
-      - The use of \<local\> strings isn't supported in the proxy bypass list.
-
-   1. Select a time zone.
-
-   1. Specify a preferred and an alternate NTP server to act as a time server or accept the **Default**. The default is `time.windows.com`.
-
-   1. Set the hostname for your machine to what you specified during the preparation of Active Directory. Changing the hostname automatically reboots the system.
-
-1. Select **Next** on the **Basics** tab.
-
-### Arc agent setup tab
-
-1. On the **Arc agent setup** tab, provide the following inputs:
-
-   :::image type="content" source="media/deployment-without-azure-arc-gateway/arc-agent-setup-tab-no-gateway.png" alt-text="Screenshot of the Arc agent setup tab in the Configurator app for Azure Local." lightbox="media/deployment-without-azure-arc-gateway/arc-agent-setup-tab-no-gateway.png":::
-
-   1. The **Cloud type** is populated automatically as `Azure`.
-   
-   1. Enter a **Subscription ID** to register the machine.
-
-   1. Provide a **Resource group** name. This resource group contains the machine and system resources that you create.
-
-   1. Specify the **Region** where you want to create the resources. The region should be the same as the region where you want to deploy the Azure Local instance.
-
-      > [!IMPORTANT]
-      > Specify the region with spaces removed. For example, specify the East US region as `EastUS`.
-
-   1. Skip the **Tenant ID**.
-
-   1. Skip the Arc gateway ID.
-
-   > [!IMPORTANT]
-   > Make sure to verify all the inputs before you proceed. Any incorrect inputs here might result in a setup failure.
-
-1. Select **Next**.
-
-### Review and apply tab
-
-[!INCLUDE [azure-local-review-apply-tab-configurator-app](../includes/azure-local-review-apply-tab-configurator-app.md)]
-
-## Step 2: Complete registration of machines to Azure
-
-1. Wait for the configuration to complete. First, machine is configured with the basic details followed by registration of the machines to Azure.
-
-1. During the Arc registration process, you must authenticate with your Azure account. The app displays a code that you must enter in the URL, displayed in the app, in order to authenticate. Follow the instructions to complete the authentication process.
-
-   :::image type="content" source="media/deployment-without-azure-arc-gateway/setup-configuration-authentication.png" alt-text="Screenshot of the Arc agent sign in and registration dialog in the Configurator app for Azure Local." lightbox="media/deployment-without-azure-arc-gateway/setup-configuration-authentication.png":::
-
-1. Once the configuration is complete, status for Arc configuration should display **Success (Open in Azure portal)**.
-
-1. Repeat all steps on the other machines until the Arc configuration succeeds. Select the **Open in Azure portal** link.
-
-## Step 3: Verify machines are connected to Arc
-
-[!INCLUDE [azure-local-verify-machines](../includes/azure-local-verify-machines.md)]
-
----
-
-::: zone-end
-
-::: zone pivot="register-without-proxy"
-
-This article describes how to register Azure Local machines with Azure Arc without using an Arc gateway and without proxy configuration enabled. You can register via the Arc script or the Configurator app.
-
-- **Configure with a script**: Using this method, configure the registration settings via a script.
-
-- **Set up via the Configurator app**: Configure Azure Arc gateway via a user interface. This method is useful if you prefer not to use scripts or if you want to configure the registration settings interactively.
-
-For instructions on registering Azure Local machines with Azure Arc using an Arc gateway without proxy configuration enabled, see [Register Azure Local with Azure Arc using Arc gateway](./deployment-with-azure-arc-gateway.md?pivots=register-without-proxy).
-
-# [Via Arc script](#tab/script)
-
-## Prerequisites
-
-Make sure the following prerequisites are met before proceeding:
-
-- You have access to Azure Local machines running release 2505 or later. 
-- You have assigned the appropriate permissions to the subscription used for registration. For more information, see [Assign required permissions for Azure Local deployment](deployment-arc-register-server-permissions.md).
-
-
-> [!IMPORTANT]
-> Run these steps as a local administrator on every Azure Local machine that you intend to cluster.
-
-## Step 1: Review script parameters
-
-
-Review the parameters used in the script:
-
-|Parameters  |Description  |
-|------------|-------------|
-|`TenantID`          |The tenant ID used to register your machines with Azure Arc. Go to your Microsoft Entra ID and copy the tenant ID property.         |
-|`SubscriptionID`    |The ID of the subscription used to register your machines with Azure Arc.         |
-|`ResourceGroup`     |The resource group precreated for Arc registration of the machines. A resource group is created if one doesn't exist.         |
-|`Region`            |The Azure region used for registration. See the [Supported regions](../concepts/system-requirements-23h2.md#azure-requirements) that can be used.          |
-
-
-
-## Step 2: Set parameters
-
-
-Set the parameters.
-
-```powershell
-#Define the tenant you will use to register your machine as Arc device
-$Tenant = "YourTenantID"
-
-#Define the subscription where you want to register your machine as Arc device
-$Subscription = "YourSubscriptionID"
-
-#Define the resource group where you want to register your machine as Arc device
-$RG = "YourResourceGroupName"
-
-#Define the region to use to register your server as Arc device
-#Do not use spaces or capital letters when defining region
-$Region = "eastus"
-
-```
-
-<details>
-<summary>Expand this section to see an example output.</summary>
-
-```output
-PS C:\Users\SetupUser> $Tenant = "Your tenant ID"
-PS C:\Users\SetupUser> $Subscription = "Subscription ID"
-PS C:\Users\SetupUser> $RG = "myashcirg"
-PS C:\Users\SetupUser> $Region = "eastus"
-```
-</details>
-
-
-
-## Step 3: Run registration script
-
-> [!NOTE]
-> If your Azure Local system is preinstalled with an Original Equipment Manufacturer (OEM) image that's outdated or unsupported, an update is triggered automatically. The update typically takes 40-45 minutes to complete and includes a system reboot. After the reboot, rerun the cmdlet to continue. For more instructions about the update flow, see [Azure Arc registration workflow for systems with OEM images](./deployment-arc-registration-preinstalled-os.md).
-
-1. Run the Arc registration script. The script takes a few minutes to run.
-
-    ```powershell
-    #Invoke the registration script. Use a supported region.
-    Invoke-AzStackHciArcInitialization -TenantId $Tenant -SubscriptionID $Subscription -ResourceGroup $RG -Region $Region -Cloud "AzureCloud"
-    ```
-
-    For a list of supported Azure regions, see [Azure requirements](../concepts/system-requirements-23h2.md#azure-requirements).
-
-    <details>
-    <summary>Expand this section to see an example output.</summary>
-
-
-    ```output
-    PS C:\Users\Administrator> Invoke-AzStackHciArcInitialization -TenantId $Tenant -SubscriptionID $Subscription -ResourceGroup $RG -Region $Region -Cloud "AzureCloud"
-    >>
-    Configuration saved to: C:\Users\ADMINI~1\AppData\Local\Temp\bootstrap.json
-    Triggering bootstrap on the device...
-    Waiting for bootstrap to complete... Current Status: InProgress
-    =========SNIPPED=========SNIPPED=============
-    Waiting for bootstrap to complete... Current Status: InProgress
-    Waiting for bootstrap to complete... Current Status: Succeeded
-    Bootstrap succeeded.
-    
-    Triggering bootstrap log collection as a best effort.
-    Version Response                                                    
-    ------- --------                                                    
-    V1      Microsoft.Azure.Edge.Bootstrap.ServiceContract.Data.Response
-    V1      Microsoft.Azure.Edge.Bootstrap.ServiceContract.Data.Response
-
-
-    PS C:\Users\Administrator>
-    ```
-
-    </details>
-
-1. During the Arc registration process, you must authenticate with your Azure account. The console window displays a code that you must enter in the URL, displayed in the app, in order to authenticate. Follow the instructions to complete the authentication process.
-
-     :::image type="content" source="media/deployment-without-azure-arc-gateway/authentication-device-code.png" alt-text="Screenshot of the console window with device code and URL for authentication." lightbox="media/deployment-without-azure-arc-gateway/authentication-device-code.png":::
-
-
-
-## Step 4: Verify the setup is successful
-
-1. Go to the Azure portal.
-1. Go to the resource group associated with the registration. The machines appear within the specified resource group as **Machine - Azure Arc** type resources.
-
-   :::image type="content" source="media/deployment-without-azure-arc-gateway/arc-servers-registered-1.png" alt-text="Screenshot of the Azure Local machines in the resource group after the successful registration." lightbox="./media/deployment-without-azure-arc-gateway/arc-servers-registered-1.png":::
-
-> [!NOTE]
-> Once an Azure Local machine is registered with Azure Arc, the only way to undo the registration is to install the operating system again on the machine.
-
-
-# [Via Configurator app (Preview)](#tab/app)
-
-If you plan to deploy a few machines per site, use the Configurator app to register your Azure Local machines with Azure Arc.
-
-[!INCLUDE [important](../includes/hci-preview.md)]
-
-## Prerequisites for registration without proxy configuration
-
-Before you begin, make sure that you complete the following prerequisites:
-
-### Azure Local machine prerequisites
-
-- Download the [Configurator App for Azure Local](https://aka.ms/ConfiguratorAppForHCI) on a client machine that is connected to the same network as the Azure Local machines..
-
-- Note down:
-
-   - The serial number for each machine.
-   - Local administrator credentials to sign into each machine.
-
-### Azure prerequisites
-
-- Make sure you have the required permissions to register Azure Local machines with Azure Arc. For more information, see [Assign required permissions for Azure Local deployment](deployment-arc-register-server-permissions.md).
-   
-## Configure the network and connect to Azure
-
-[!INCLUDE [azure-local-start-configurator](../includes/azure-local-start-configurator.md)]
-
-### Prerequisites tab
-
-[!INCLUDE [azure-local-prerequisites-tab-configurator-app](../includes/azure-local-prerequisites-tab-configurator-app.md)]
-
-### Basics tab
-
-1. On the **Basics** tab, configure one network interface that is connected to the internet. Select the **Pencil icon** to modify network interface settings.
-
-   :::image type="content" source="media/deployment-without-azure-arc-gateway/basics-tab-1.png" alt-text="Screenshot of the Basics tab in the Configurator app for Azure Local." lightbox="media/deployment-without-azure-arc-gateway/basics-tab-1.png":::
-
-1. Provide the interface name, IP allocation as static or DHCP, IP address, subnet, gateway, and preferred DNS servers. Optionally, enter an alternate DNS server.
-
-   :::image type="content" source="media/deployment-without-azure-arc-gateway/basics-tab-2.png" alt-text="Screenshot of the Basics tab with Network settings configured in the Configurator app for Azure Local." lightbox="media/deployment-without-azure-arc-gateway/basics-tab-2.png":::
-
-   > [!IMPORTANT]
-   > Make sure that the IPs you assign are free and not in use.  
-
-1. To specify more details, select **Enter additional details**.
-
-1. On the **Additional details** page, provide the following inputs and then select **Apply**.
-
-   :::image type="content" source="media/deployment-without-azure-arc-gateway/basics-tab-additional-details-1.png" alt-text="Screenshot of the Basics tab with additional details configured in the Configurator app for Azure Local." lightbox="media/deployment-without-azure-arc-gateway/basics-tab-additional-details-1.png":::
-
-   1. Select **ON** to enable **Remote desktop** protocol. Remote desktop protocol is disabled by default.
-
-   1. Select **Public endpoint** as the connectivity method. 
-
-   1. Select a time zone.
-
-   1. Specify a preferred and an alternate NTP server to act as a time server or accept the **Default**. The default is `time.windows.com`.
-
-   1. Set the hostname for your machine to what you specified during the preparation of Active Directory. Changing the hostname automatically reboots the system.
-
-1. Select **Next** on the **Basics** tab.
-
-### Arc agent setup tab
-
-1. On the **Arc agent setup** tab, provide the following inputs:
-
-   :::image type="content" source="media/deployment-without-azure-arc-gateway/arc-agent-setup-tab-no-gateway.png" alt-text="Screenshot of the Arc agent setup tab in the Configurator app for Azure Local." lightbox="media/deployment-without-azure-arc-gateway/arc-agent-setup-tab-no-gateway.png":::
-
-
-   1. The **Cloud type** is populated automatically as `Azure`.
-   
-   1. Enter a **Subscription ID** to register the machine.
-
-   1. Provide a **Resource group** name. This resource group contains the machine and system resources that you create.
-
-   1. Specify the **Region** where you want to create the resources. The region should be the same as the region where you want to deploy the Azure Local instance.
-
-      > [!IMPORTANT]
-      > Specify the region with spaces removed. For example, specify the East US region as `EastUS`.
-
-   1. Skip the **Tenant ID**.
-
-   1. Skip the Arc gateway ID.
-
-   > [!IMPORTANT]
-   > Make sure to verify all the inputs before you proceed. Any incorrect inputs here might result in a setup failure.
-
-1. Select **Next**.
-
-### Review and apply tab
-
-[!INCLUDE [azure-local-review-apply-tab-configurator-app](../includes/azure-local-review-apply-tab-configurator-app.md)]
-
-## Complete registration of machines to Azure
-
-1. Wait for the configuration to complete. First, machine is configured with the basic details followed by registration of the machines to Azure.
-
-1. During the Arc registration process, you must authenticate with your Azure account. The app displays a code that you must enter in the URL, displayed in the app, in order to authenticate. Follow the instructions to complete the authentication process.
-
-   :::image type="content" source="media/deployment-arc-register-configurator-app/setup-configuration-authentication.png" alt-text="Screenshot of the Arc agent sign in and registration dialog in the Configurator app for Azure Local." lightbox="media/deployment-arc-register-configurator-app/setup-configuration-authentication.png":::
-
-1. Once the configuration is complete, status for Arc configuration should display **Success (Open in Azure portal)**.
-
-1. Repeat all steps on the other machines until the Arc configuration succeeds. Select the **Open in Azure portal** link.
-
-## Verify machines are connected to Arc
-
-[!INCLUDE [azure-local-verify-machines](../includes/azure-local-verify-machines.md)]
-
----
-
-::: zone-end
-
+::: moniker-end
 
 ## Next steps
 
-- [Troubleshoot registration issues with Configurator app](../manage/troubleshoot-deployment-configurator-app.md)
-
-- After your machines are registered with Azure Arc, proceed to deploy your Azure Local instance via one of the following options:
-    - [Deploy via Azure portal](./deploy-via-portal.md)
-    - [Deploy via Azure Resource Manager (ARM) template](./deployment-azure-resource-manager-template.md)
-    
-::: moniker-end
-
-::: moniker range="azloc-2504||azloc-2503"
-
-::: zone pivot="register-proxy"
-
-This article details how to register Azure Local machines with Azure Arc and with proxy configuration. The proxy configuration can be done via an Arc script or via the Configurator app for Azure Local.
-
-- **Configure with a script**: You can use an Arc script to configure registration settings.
-
-- **Set up via the Configurator app (Preview)**: Using this method, you can configure Azure Local registration via a user interface. This method is useful if you prefer not to use scripts or if you want to configure the settings interactively.
-
-# [Via Arc script](#tab/script)
-
-## Prerequisites for registration with proxy configuration
-
-Make sure the following prerequisites are met before proceeding:
-
-- You have access to Azure Local machines running release 2503 or 2504. 
-- You have assigned the appropriate permissions to the subscription used for registration. For more information, see [Assign required permissions for Azure Local deployment](deployment-arc-register-server-permissions.md).
-
-
-> [!IMPORTANT]
-> Run these steps as a local administrator on every Azure Local machine that you intend to cluster.
-
-## Review script parameters
-
-
-Review the parameters used in the script:
-
-|Parameters  |Description  |
-|------------|-------------|
-|`TenantID`          |The tenant ID used to register your machines with Azure Arc. Go to your Microsoft Entra ID and copy the tenant ID property.         |
-|`SubscriptionID`    |The ID of the subscription used to register your machines with Azure Arc.         |
-|`ResourceGroup`     |The resource group precreated for Arc registration of the machines. A resource group is created if one doesn't exist.         |
-|`Region`            |The Azure region used for registration. See the [Supported regions](../concepts/system-requirements-23h2.md#azure-requirements) that can be used.          |
-|`ProxyServer`       |Optional parameter. Proxy Server address when required for outbound connectivity. |
-|`AccountID`        |The user who registers and deploys the instance.        |
-|`DeviceCode`       |The device code displayed in the console at `https://microsoft.com/devicelogin` and is used to sign in to the device.       |
-
-
-## Set parameters
-
-
-1. Set the parameters required for the registration script.
-
-    Here's an example of how you should change these parameters for the `Invoke-AzStackHciArcInitialization` initialization script. Once the registration is complete, the Azure Local machines are registered in Azure Arc:
-
-    ```PowerShell
-    #Define the tenant you will use to register your machine as Arc device
-    $Tenant = "YourTenantID"
-
-    #Define the subscription where you want to register your machine as Arc device
-    $Subscription = "YourSubscriptionID"
-    
-    #Define the resource group where you want to register your machine as Arc device
-    $RG = "YourResourceGroupName"
-    
-    #Define the region to use to register your server as Arc device, do not use spaces or capital letters when defining region
-    $Region = "eastus"
-    
-    #Define the proxy address if your Azure Local deployment accesses the internet via proxy
-    $ProxyServer = "http://proxyaddress:port"
-    ```
-
-    <details>
-    <summary>Expand this section to see an example output.</summary>
-    
-    ```output
-    PS C:\Users\SetupUser> $Tenant = "<Tenant ID>"
-    PS C:\Users\SetupUser> $Subscription = "<Subscription ID>"
-    PS C:\Users\SetupUser> $RG = "myashcirg"   PS C:\Users\SetupUser> $Region = "eastus"
-    PS C:\Users\SetupUser> $ProxyServer = "<http://proxyserver:tcpPort>"
-    ```
-    
-    </details>
-
-1. Connect to your Azure account and set the subscription. Open a browser on the client that you're using to connect to the machine and open this page: https://microsoft.com/devicelogin and enter the provided code in the Azure CLI output to authenticate. Get the access token and account ID for the registration.
-
-    ```powershell
-    #Connect to your Azure account and Subscription
-    Connect-AzAccount -TenantId $Tenant -SubscriptionId $Subscription -DeviceCode
-    
-    #Get the Access Token for the registration
-    $ARMtoken = (Get-AzAccessToken -WarningAction SilentlyContinue).Token
-    
-    #Get the Account ID for the registration
-    $id = (Get-AzContext).Account.Id
-
-    ```
-    <details>
-    <summary>Expand this section to see an example output.</summary>
-
-    ```output
-    PS C:\Users\SetupUser> Connect-AzAccount -TenantId $Tenant -SubscriptionId $Subscription -DeviceCode
-    WARNING: To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code A44KHK5B5
-    to authenticate.
-    
-    Account               SubscriptionName      TenantId                Environment
-    -------               ----------------      --------                ----------- 
-    guspinto@contoso.com AzureLocal_Content  <Tenant ID>             AzureCloud
-    
-    PS C:\Users\SetupUser> $ARMtoken = (Get-AzAccessToken).Token
-    PS C:\Users\SetupUser> $id = (Get-AzContext).Account.Id
-
-    ```
-
-    </details>
-   
-
-
-## Run registration script
-
-
-1. Finally run the Arc registration script. The script takes a few minutes to run.
-
-    ```powershell
-    #Invoke the registration script. Use a supported region.
-    Invoke-AzStackHciArcInitialization -TenantID $Tenant -SubscriptionID $Subscription -ResourceGroup $RG -Region $Region -Cloud "AzureCloud" -ArmAccessToken $ARMtoken -AccountID $id -Proxy $ProxyServer -ProxyBypass $ProxyBypassList
-    ```
-    
-    For a list of supported Azure regions, see [Azure requirements](../concepts/system-requirements-23h2.md#azure-requirements).
-
-    <details>
-    <summary>Expand this section to see an example output.</summary>
-    
-    ```output
-    PS C:\Users\Administrator> Invoke-AzStackHciArcInitialization -SubscriptionID $Subscription -ResourceGroup $RG -TenantID $Tenant -Region $Region -Cloud "AzureCloud" -ArmAccessToken $ARMtoken -AccountID $id
-    >>
-    Configuration saved to: C:\Users\ADMINI~1\AppData\Local\Temp\bootstrap.json
-    Triggering bootstrap on the device...
-    Waiting for bootstrap to complete... Current Status: InProgress
-    =========SNIPPED=========SNIPPED=============
-    Waiting for bootstrap to complete... Current Status: InProgress
-    Waiting for bootstrap to complete... Current Status: Succeeded
-    Bootstrap succeeded.
-    
-    Triggering bootstrap log collection as a best effort.
-    Version Response                                                    
-    ------- --------                                                    
-    V1      Microsoft.Azure.Edge.Bootstrap.ServiceContract.Data.Response
-    V1      Microsoft.Azure.Edge.Bootstrap.ServiceContract.Data.Response
-    
-    PS C:\Users\Administrator>
-
-    ```
-
-    </details>
-
-## Verify the setup is successful
-
-After the script completes successfully on all the machines, verify that your machines are registered with Arc.
-
-1. Go to the Azure portal.
-1. Go to the resource group associated with the registration. The machines appear within the specified resource group as **Machine - Azure Arc** type resources.
-
-   :::image type="content" source="media/deployment-without-azure-arc-gateway/arc-servers-registered-1.png" alt-text="Screenshot of the Azure Local machines in the resource group after the successful registration." lightbox="./media/deployment-without-azure-arc-gateway/arc-servers-registered-1.png":::
-
-> [!NOTE]
-> Once an Azure Local machine is registered with Azure Arc, the only way to undo the registration is to install the operating system again on the machine.
-
-# [Via Configurator app (Preview)](#tab/app)
-
-If you plan to deploy a few machines per site, use the Configurator app to register your Azure Local machines with Azure Arc.
-
-[!INCLUDE [important](../includes/hci-preview.md)]
-
-## Prerequisites for registration with proxy configuration
-
-Before you begin, make sure that you complete the following prerequisites:
-
-### Azure Local machine prerequisites
-
-- Download the [Configurator App for Azure Local](https://aka.ms/ConfiguratorAppForHCI) on a client machine that is connected to the same network as the Azure Local machines..
-
-- Note down:
-
-   - The serial number for each machine.
-   - Local administrator credentials to sign into each machine.
-
-### Azure prerequisites
-
-- Make sure you have the required permissions to register Azure Local machines with Azure Arc. For more information, see [Assign required permissions for Azure Local deployment](deployment-arc-register-server-permissions.md).
-
-   
-## Configure the network and connect to Azure
-
-[!INCLUDE [azure-local-start-configurator](../includes/azure-local-start-configurator.md)]
-
-### Prerequisites tab
-
-[!INCLUDE [azure-local-prerequisites-tab-configurator-app](../includes/azure-local-prerequisites-tab-configurator-app.md)]
-
-### Basics tab
-
-1. On the **Basics** tab, configure one network interface that is connected to the internet. Select the **Pencil icon** to modify network interface settings.
-
-   :::image type="content" source="media/deployment-without-azure-arc-gateway/basics-tab-1.png" alt-text="Screenshot of the Basics tab in the Configurator app for Azure Local." lightbox="media/deployment-without-azure-arc-gateway/basics-tab-2.png":::
-
-1. Provide the interface name, IP allocation as static or DHCP, IP address, subnet, gateway, and preferred DNS servers. Optionally, enter an alternate DNS server.
-
-   :::image type="content" source="media/deployment-without-azure-arc-gateway/basics-tab-2.png" alt-text="Screenshot of the Basics tab with Network settings configured in the Configurator app for Azure Local." lightbox="media/deployment-without-azure-arc-gateway/basics-tab-1.png":::
-
-   > [!IMPORTANT]
-   > Make sure that the IPs you assign are free and not in use.  
-
-1. To specify more details, select **Enter additional details**.
-
-1. On the **Additional details** page, provide the following inputs and then select **Apply**.
-
-   :::image type="content" source="media/deployment-without-azure-arc-gateway/basics-tab-additional-details-with-proxy.png" alt-text="Screenshot of the Basics tab with additional details configured in the Configurator app for Azure Local." lightbox="media/deployment-without-azure-arc-gateway/basics-tab-additional-details-with-proxy.png":::
-
-   1. Select **ON** to enable **Remote desktop** protocol. Remote desktop protocol is disabled by default.
-
-   1. Select **Proxy server** as the connectivity method. Provide the proxy URL and the bypass list. The bypass list is required and can be provided in a comma separated format.
-   
-      When defining your proxy bypass string, make sure you meet the following conditions:
-
-      - Include at least the IP address of each Azure Local machine.
-      - Include at least the IP address of the Azure Local cluster.
-      - Include at least the IPs you defined for your infrastructure network. Arc resource bridge, Azure Kubernetes Service (AKS), and future infrastructure services using these IPs require outbound connectivity.
-      - Or you can bypass the entire infrastructure subnet.
-      - Provide the NetBIOS name of each machine.
-      - Provide the NetBIOS name of the Azure Local cluster.
-      - Domain name or domain name with asterisk * wildcard at the beginning to include any host or subdomain. For example, `192.168.1.*` for subnets or `*.contoso.com` for domain names.
-      - Parameters must be separated with a comma `,`.
-      - Classless Inter-Domain Routing (CIDR) notation to bypass subnets isn't supported.
-      - The use of \<local\> strings isn't supported in the proxy bypass list.
-
-   1. Select a time zone.
-
-   1. Specify a preferred and an alternate NTP server to act as a time server or accept the **Default**. The default is `time.windows.com`.
-
-   1. Set the hostname for your machine to what you specified during the preparation of Active Directory. Changing the hostname automatically reboots the system.
-
-1. Select **Next** on the **Basics** tab.
-
-### Arc agent setup tab
-
-1. On the **Arc agent setup** tab, provide the following inputs:
-
-   :::image type="content" source="media/deployment-without-azure-arc-gateway/arc-agent-setup-tab-no-gateway.png" alt-text="Screenshot of the Arc agent setup tab in the Configurator app for Azure Local." lightbox="media/deployment-without-azure-arc-gateway/arc-agent-setup-tab-no-gateway.png":::
-
-   1. The **Cloud type** is populated automatically as `Azure`.
-   
-   1. Enter a **Subscription ID** to register the machine.
-
-   1. Provide a **Resource group** name. This resource group contains the machine and system resources that you create.
-
-   1. Specify the **Region** where you want to create the resources. The region should be the same as the region where you want to deploy the Azure Local instance.
-
-      > [!IMPORTANT]
-      > Specify the region with spaces removed. For example, specify the East US region as `EastUS`.
-
-   1. Skip the **Tenant ID**.
-
-   1. Skip the Arc gateway ID.
-
-   > [!IMPORTANT]
-   > Make sure to verify all the inputs before you proceed. Any incorrect inputs here might result in a setup failure.
-
-1. Select **Next**.
-
-### Review and apply tab
-
-[!INCLUDE [azure-local-review-apply-tab-configurator-app](../includes/azure-local-review-apply-tab-configurator-app.md)]
-
-## Complete registration of machines to Azure
-
-1. Wait for the configuration to complete. First, machine is configured with the basic details followed by registration of the machines to Azure.
-
-1. During the Arc registration process, you must authenticate with your Azure account. The app displays a code that you must enter in the URL, displayed in the app, in order to authenticate. Follow the instructions to complete the authentication process.
-
-   :::image type="content" source="media/deployment-without-azure-arc-gateway/setup-configuration-authentication.png" alt-text="Screenshot of the Arc agent sign in and registration dialog in the Configurator app for Azure Local." lightbox="media/deployment-without-azure-arc-gateway/setup-configuration-authentication.png":::
-
-1. Once the configuration is complete, status for Arc configuration should display **Success (Open in Azure portal)**.
-
-1. Repeat all steps on the other machines until the Arc configuration succeeds. Select the **Open in Azure portal** link.
-
-## Verify machines are connected to Arc
-
-[!INCLUDE [azure-local-verify-machines](../includes/azure-local-verify-machines.md)]
-
----
-
-::: zone-end
-
-::: zone pivot="register-without-proxy"
-
-This article details how to register using Azure Arc gateway on Azure Local without the proxy configuration. You can register via the Arc script or the Configurator app.
-
-- **Configure with a script**: Using this method, configure the registration settings via a script.
-
-- **Set up via the Configurator app**: Configure Azure Arc gateway via a user interface. This method is useful if you prefer not to use scripts or if you want to configure the registration settings interactively.
-
-# [Via Arc script](#tab/script)
-
-## Prerequisites for registration without proxy configuration
-
-Make sure the following prerequisites are met before proceeding:
-
-- You have access to Azure Local machines running release 2503 or 2504.
-- You have assigned the appropriate permissions to the subscription used for registration. For more information, see [Assign required permissions for Azure Local deployment](deployment-arc-register-server-permissions.md).
-
-
-> [!IMPORTANT]
-> Run these steps as a local administrator on every Azure Local machine that you intend to cluster.
-
-## Review script parameters
-
-
-Review the parameters used in the script:
-
-|Parameters  |Description  |
-|------------|-------------|
-|`TenantID`          |The tenant ID used to register your machines with Azure Arc. Go to your Microsoft Entra ID and copy the tenant ID property.         |
-|`SubscriptionID`    |The ID of the subscription used to register your machines with Azure Arc.         |
-|`ResourceGroup`     |The resource group precreated for Arc registration of the machines. A resource group is created if one doesn't exist.         |
-|`Region`            |The Azure region used for registration. See the [Supported regions](../concepts/system-requirements-23h2.md#azure-requirements) that can be used.          |
-|`AccountID`        |The user who registers and deploys the instance.        |
-|`DeviceCode`       |The device code displayed in the console at `https://microsoft.com/devicelogin` and is used to sign in to the device.       |
-
-## Set parameters
-
-
-1. Set the parameters.
-
-    ```PowerShell
-    #Define the tenant you will use to register your machine as Arc device
-    $Tenant = "YourTenantID"
-
-    #Define the subscription where you want to register your machine as Arc device
-    $Subscription = "YourSubscriptionID"
-    
-    #Define the resource group where you want to register your machine as Arc device
-    $RG = "YourResourceGroupName"
-    
-    #Define the region to use to register your server as Arc device, do not use spaces or capital letters when defining region
-    $Region = "eastus"
-    
-    ```
-
-
-    <details>
-    <summary>Expand this section to see an example output.</summary>
-    
-    ```output
-    PS C:\Users\SetupUser> $Tenant = "<Tenant ID>"
-    PS C:\Users\SetupUser> $Subscription = "<Subscription ID>"
-    PS C:\Users\SetupUser> $RG = "myashcirg"
-    PS C:\Users\SetupUser> $Region = "eastus"
-    ```
-    
-    </details>
-
-1. Connect to your Azure account and set the subscription. Open a browser on the client that you're using to connect to the machine and open this page: https://microsoft.com/devicelogin and enter the provided code in the Azure CLI output to authenticate. Get the access token and account ID for the registration.
-
-    ```powershell
-    #Connect to your Azure account and Subscription
-    Connect-AzAccount -TenantId $Tenant -SubscriptionId $Subscription -DeviceCode
-    
-    #Get the Access Token for the registration
-    $ARMtoken = (Get-AzAccessToken -WarningAction SilentlyContinue).Token
-    
-    #Get the Account ID for the registration
-    $id = (Get-AzContext).Account.Id
-
-    ```
-    <details>
-    <summary>Expand this section to see an example output.</summary>
-
-    ```output
-    PS C:\Users\SetupUser> Connect-AzAccount -TenantId $Tenant -SubscriptionId $Subscription -DeviceCode
-    WARNING: To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code A44KHK5B5
-    to authenticate.
-    
-    Account               SubscriptionName      TenantId                Environment
-    -------               ----------------      --------                ----------- 
-    guspinto@contoso.com AzureStackHCI_Content  <Tenant ID>             AzureCloud
-    
-    PS C:\Users\SetupUser> $ARMtoken = (Get-AzAccessToken).Token
-    PS C:\Users\SetupUser> $id = (Get-AzContext).Account.Id
-
-    ```
-
-    </details>
-
-
-## Run registration script
-
-Finally run the Arc registration script. The script takes a few minutes to run.
-
-```powershell
-#Invoke the registration script. Use a supported region.
-Invoke-AzStackHciArcInitialization -TenantID $Tenant -SubscriptionID $Subscription -ResourceGroup $RG -Region $Region -Cloud "AzureCloud" -ArmAccessToken $ARMtoken -AccountID $id
-```
-
-For a list of supported Azure regions, see [Azure requirements](../concepts/system-requirements-23h2.md?view=azloc-2507&preserve-view=true#azure-requirements).
-
-<details>
-<summary>Expand this section to see an example output.</summary>
-
-```output
-PS C:\Users\Administrator> Invoke-AzStackHciArcInitialization -TenantID $Tenant -SubscriptionID $Subscription -ResourceGroup $RG -Region $Region -Cloud "AzureCloud" -ArmAccessToken $ARMtoken -AccountID $id
->>
-Configuration saved to: C:\Users\ADMINI~1\AppData\Local\Temp\bootstrap.json
-Triggering bootstrap on the device...
-Waiting for bootstrap to complete... Current Status: InProgress
-=========SNIPPED=========SNIPPED=============
-Waiting for bootstrap to complete... Current Status: InProgress
-Waiting for bootstrap to complete... Current Status: Succeeded
-Bootstrap succeeded.
-
-Triggering bootstrap log collection as a best effort.
-Version Response                                                    
-------- --------                                                    
-V1      Microsoft.Azure.Edge.Bootstrap.ServiceContract.Data.Response
-V1      Microsoft.Azure.Edge.Bootstrap.ServiceContract.Data.Response
-
-PS C:\Users\Administrator>
-```
-
-</details>
-
-## Verify the setup is successful
-
-1. Go to the Azure portal.
-1. Go to the resource group associated with the registration. The machines appear within the specified resource group as **Machine - Azure Arc** type resources.
-
-   :::image type="content" source="media/deployment-without-azure-arc-gateway/arc-servers-registered-1.png" alt-text="Screenshot of the Azure Local machines in the resource group after the successful registration." lightbox="./media/deployment-without-azure-arc-gateway/arc-servers-registered-1.png":::
-
-> [!NOTE]
-> Once an Azure Local machine is registered with Azure Arc, the only way to undo the registration is to install the operating system again on the machine.
-
-
-# [Via Configurator app (Preview)](#tab/app)
-
-If you plan to deploy a few machines per site, use the Configurator app to register your Azure Local machines with Azure Arc.
-
-[!INCLUDE [important](../includes/hci-preview.md)]
-
-## Prerequisites for registration without proxy configuration
-
-Before you begin, make sure that you complete the following prerequisites:
-
-### Azure Local machine prerequisites
-
-- Download the [Configurator App for Azure Local](https://aka.ms/ConfiguratorAppForHCI) on a client machine that is connected to the same network as the Azure Local machines..
-
-- Note down:
-
-   - The serial number for each machine.
-   - Local administrator credentials to sign into each machine.
-
-### Azure prerequisites
-
-- Make sure you have the required permissions to register Azure Local machines with Azure Arc. For more information, see [Assign required permissions for Azure Local deployment](deployment-arc-register-server-permissions.md).
-
-## Configure the network and connect to Azure
-
-[!INCLUDE [azure-local-start-configurator](../includes/azure-local-start-configurator.md)]
-
-### Prerequisites tab
-
-[!INCLUDE [azure-local-prerequisites-tab-configurator-app](../includes/azure-local-prerequisites-tab-configurator-app.md)]
-
-### Basics tab
-
-1. On the **Basics** tab, configure one network interface that is connected to the internet. Select the **Pencil icon** to modify network interface settings.
-
-   :::image type="content" source="media/deployment-without-azure-arc-gateway/basics-tab-1.png" alt-text="Screenshot of the Basics tab in the Configurator app for Azure Local." lightbox="media/deployment-without-azure-arc-gateway/basics-tab-1.png":::
-
-1. Provide the interface name, IP allocation as static or DHCP, IP address, subnet, gateway, and preferred DNS servers. Optionally, enter an alternate DNS server.
-
-   :::image type="content" source="media/deployment-without-azure-arc-gateway/basics-tab-2.png" alt-text="Screenshot of the Basics tab with Network settings configured in the Configurator app for Azure Local." lightbox="media/deployment-without-azure-arc-gateway/basics-tab-2.png":::
-
-   > [!IMPORTANT]
-   > Make sure that the IPs you assign are free and not in use.  
-
-1. To specify more details, select **Enter additional details**.
-
-1. On the **Additional details** page, provide the following inputs and then select **Apply**.
-
-   :::image type="content" source="media/deployment-without-azure-arc-gateway/basics-tab-additional-details-1.png" alt-text="Screenshot of the Basics tab with additional details configured in the Configurator app for Azure Local." lightbox="media/deployment-without-azure-arc-gateway/basics-tab-additional-details-1.png":::
-
-   1. Select **ON** to enable **Remote desktop** protocol. Remote desktop protocol is disabled by default.
-
-   1. Select **Public endpoint** as the connectivity method. 
-
-   1. Select a time zone.
-
-   1. Specify a preferred and an alternate NTP server to act as a time server or accept the **Default**. The default is `time.windows.com`.
-
-   1. Set the hostname for your machine to what you specified during the preparation of Active Directory. Changing the hostname automatically reboots the system.
-
-1. Select **Next** on the **Basics** tab.
-
-### Arc agent setup tab
-
-1. On the **Arc agent setup** tab, provide the following inputs:
-
-   :::image type="content" source="media/deployment-without-azure-arc-gateway/arc-agent-setup-tab-no-gateway.png" alt-text="Screenshot of the Arc agent setup tab in the Configurator app for Azure Local." lightbox="media/deployment-without-azure-arc-gateway/arc-agent-setup-tab-no-gateway.png":::
-
-
-   1. The **Cloud type** is populated automatically as `Azure`.
-
-   1. Enter a **Subscription ID** to register the machine.
-
-   1. Provide a **Resource group** name. This resource group contains the machine and system resources that you create.
-
-   1. Specify the **Region** where you want to create the resources. The region should be the same as the region where you want to deploy the Azure Local instance.
-
-      > [!IMPORTANT]
-      > Specify the region with spaces removed. For example, specify the East US region as `EastUS`.
-
-   1. Skip the **Tenant ID**.
-
-   1. Skip the Arc gateway ID.
-
-   > [!IMPORTANT]
-   > Make sure to verify all the inputs before you proceed. Any incorrect inputs here might result in a setup failure.
-
-1. Select **Next**.
-
-### Review and apply tab
-
-[!INCLUDE [azure-local-review-apply-tab-configurator-app](../includes/azure-local-review-apply-tab-configurator-app.md)]
-
-## Complete registration of machines to Azure
-
-1. Wait for the configuration to complete. First, machine is configured with the basic details followed by registration of the machines to Azure.
-
-1. During the Arc registration process, you must authenticate with your Azure account. The app displays a code that you must enter in the URL, displayed in the app, in order to authenticate. Follow the instructions to complete the authentication process.
-
-   :::image type="content" source="media/deployment-arc-register-configurator-app/setup-configuration-authentication.png" alt-text="Screenshot of the Arc agent sign in and registration dialog in the Configurator app for Azure Local." lightbox="media/deployment-arc-register-configurator-app/setup-configuration-authentication.png":::
-
-1. Once the configuration is complete, status for Arc configuration should display **Success (Open in Azure portal)**.
-
-1. Repeat all steps on the other machines until the Arc configuration succeeds. Select the **Open in Azure portal** link.
-
-## Verify machines are connected to Arc
-
-[!INCLUDE [azure-local-verify-machines](../includes/azure-local-verify-machines.md)]
-
----
-
-::: zone-end
-
-
-## Related steps
-
-- [Troubleshoot registration issues with Configurator app](../manage/troubleshoot-deployment-configurator-app.md)
-
-- After your machines are registered with Azure Arc, proceed to deploy your Azure Local instance via one of the following options:
-    - [Deploy via Azure portal](./deploy-via-portal.md)
-    - [Deploy via Azure Resource Manager (ARM) template](./deployment-azure-resource-manager-template.md)
-
-::: moniker-end
-
-::: moniker range="<=azloc-24113"
-
-This feature is available only in Azure Local 2503 or later.
-
-::: moniker-end
+- [Read the blog about What's new for Azure Local at Microsoft Ignite 2024](https://techcommunity.microsoft.com/blog/azurearcblog/introducing-azure-local-cloud-infrastructure-for-distributed-locations-enabled-b/4296017).
+- Read the [blog announcing the general availability of Azure Local](https://techcommunity.microsoft.com/t5/azure-stack-blog/azure-stack-hci-version-23h2-is-generally-available/ba-p/4046110).
+- For Azure Local deployments:
+  - Read the [Deployment overview](./deploy/deployment-introduction.md).
+  - Learn how to [Deploy Azure Local via the Azure portal](./deploy/deploy-via-portal.md).
