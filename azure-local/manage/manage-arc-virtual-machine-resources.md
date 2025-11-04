@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 08/21/2025
+ms.date: 10/23/2025
 ---
 
 # Manage resources for Azure Local VMs enabled by Azure Arc
@@ -189,6 +189,8 @@ Follow these steps in the Azure portal for your Azure Local instance.
 
    :::image type="content" source="./media/manage-arc-virtual-machine-resources/delete-network-interface-4.png" alt-text="Screenshot of an updated network interface list on the Networking pane for a VM." lightbox="./media/manage-arc-virtual-machine-resources/delete-network-interface-4.png":::
 
+::: moniker range=">=azloc-2508"
+
 ## Manage DNS server configuration for logical networks (preview)
 
 ### Key considerations
@@ -220,6 +222,7 @@ $dnsServers = "IP-address1", "IP-address2"
 ```azure cli
 az stack-hci-vm network lnet update --name $logicalNetwork --resource-group $resourceGroup --dns-servers $dnsServers
 ```
+::: moniker-end
 
 ## Related content
 
