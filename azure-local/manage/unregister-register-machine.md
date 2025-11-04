@@ -41,7 +41,7 @@ Before you begin, ensure you have the following:
 1. Unregister the machine. Run the following command:
 
    ```powershell
-   Invoke-ArzStackHCiArcReset -ArmAccessToken $ArmAccessToken -TenantId $TenantId 
+   Invoke-AzStackHCiArcReset -ArmAccessToken $ArmAccessToken -TenantId $TenantId 
    ```
 
    Here's a description of the parameters used in the command:
