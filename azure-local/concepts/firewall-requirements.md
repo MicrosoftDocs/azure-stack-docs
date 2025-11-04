@@ -39,7 +39,7 @@ As shown in the following diagram, Azure Local can access Azure using more than 
 
 ## Required firewall URLs for Azure Local deployments
 
-Azure Local instances automatically enable Azure Resource Bridge and AKS infrastructure and uses the Arc for Servers agent to connect to Azure control plane. Along with the list of HCI specific endpoints on the following table, the [Azure Resource Bridge on Azure Local](/azure/azure-arc/resource-bridge/network-requirements) endpoints, the [AKS on Azure Local](/azure/aks/hybrid/aks-hci-network-system-requirements#firewall-url-exceptions) endpoints and the [Azure Arc-enabled servers](/azure/azure-arc/servers/network-requirements) endpoints must be included in the allowlist of your firewall.
+Azure Local instances automatically enable Azure Resource Bridge and AKS infrastructure and use the Arc for Servers agent to connect to Azure control plane. Along with the list of HCI specific endpoints on the following table, the [Azure Resource Bridge on Azure Local](/azure/azure-arc/resource-bridge/network-requirements) endpoints, the [AKS on Azure Local](/azure/aks/hybrid/aks-hci-network-system-requirements#firewall-url-exceptions) endpoints and the [Azure Arc-enabled servers](/azure/azure-arc/servers/network-requirements) endpoints must be included in the allowlist of your firewall.
 
 For a consolidated list of endpoints for East US that includes Azure Local, Arc-enabled servers, ARB, and AKS, use:
 - [Required endpoints in East US for Azure Local](https://github.com/Azure/AzureStack-Tools/blob/master/HCI/EastUSendpoints/eastus-hci-endpoints.md)
