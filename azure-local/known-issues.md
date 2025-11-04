@@ -91,6 +91,7 @@ The following table lists the known issues from previous releases:
 | Update <!--34867064--> | Update health check results not shown when it's been longer than 3 hours after health check completed |Rerun the update health checks to restart the 3 hour expiration clock. |
 |Deployment <!--34021247, 34493956--> |Log collection doesn't start when it starts it the first time, and then shows 404 errors subsequent times. | There's no known workaround for this issue in this release. |
 |Deployment <!--34752922--> |Deployment, add node, and repair node operations may fail with the error: <br> `Type 'EncryptClusterSharedVolumes' of Role 'AzureStackBitlocker' raised an exception: The job running on xxx failed due to: System.Management.Automation.RemoteException: -> Failed enabling bitlocker for C:\ClusterStorage\UserStorage_13 (F:)`  | For detailed steps on how to resolve this issue, see the [Troubleshooting guide](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/Deployment/Deployment-or-ScaleOut-failure-at-EncryptClusterSharedVolumes-of-AzureStackBitlocker.md).|
+| Security | If the Windows Defender attack surface reduction rule Block Process Creations originating from PSExec & WMI commands is configured to Block, the Azure Local Solution Update will fail to run. | For detailed steps on how to resolve this issue, see the [Troubleshooting guide](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/Update/Solution-Update-CAU-Run-fails-due-to-Windows-Defender-blocking-WMI-commands.md). |
 
 ## Known and expected behaviors
 
