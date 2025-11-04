@@ -71,7 +71,7 @@ When you configure your network security group, it's important to align with the
 To configure network security group rules for Azure Managed Lustre file system support, add inbound and outbound security rules to the network security group associated with the  Azure Managed Lustre subnet. The following sections describe how to create and configure the inbound and outbound security rules for Azure Managed Lustre file system support.
 
 > [!NOTE]
-> The security rules described in this section are based on an Azure Managed Lustre file system test deployment in the East US region and with Blob Storage integration enabled. Adjust the rules based on your deployment region, virtual network subnet IP address, and other configuration settings for your Azure Managed Lustre file system.
+> The security rules described in this section are based on an Azure Managed Lustre file system test deployment in the East US region and with Azure Blob storage integration enabled. Adjust the rules based on your deployment region, virtual network subnet IP address, and other configuration settings for your Azure Managed Lustre file system.
 
 ### Create inbound security rules
 
@@ -79,7 +79,7 @@ The following example shows how to create and configure a new inbound security r
 
 1. In the Azure portal, go to your network security group resource.
 1. Under **Settings**, select **Inbound security rules**.
-1. In the command bar, select **Add**.
+1. On the command bar, select **Add**.
 1. On the **Add inbound security rule** pane, configure the settings for the rule, and then select **Add**.
 
 :::image type="content" source="media/network-security-group/add-inbound-security-rule.png" alt-text="Screenshot that shows how to create an inbound security rule for a network security group in the Azure portal." lightbox="media/network-security-group/add-inbound-security-rule.png":::
@@ -88,16 +88,16 @@ Add the following inbound rules to the network security group. For a description
 
 | Priority | Name | Ports | Protocol | Source | Destination | Action | Description |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| 110 | *rule-name* | Any | Any | *IP address/CIDR range for Managed Lustre file system subnet* | *IP address/CIDR range for Managed Lustre file system subnet* | Allow | Allows traffic flow between Managed Lustre hosts for file system activities. The system also requires TCP port 22 (SSH) for initial deployment and configuration. |
-| 111 | *rule-name* | 988, 1019-1023 | TCP | *IP address/CIDR range for Managed Lustre client subnet* | *IP address/CIDR range for Managed Lustre file system subnet* | Allow | Allows your Managed Lustre clients to interact with all Managed Lustre storage nodes for file system activities. The Managed Lustre file system protocol requires ports 988 and 1019 to 1023. |
-| 112 | *rule-name* | Any | TCP | `AzureMonitor` | `VirtualNetwork` | Allow | Allows the AzureMonitor service to detect health or security issues with the Managed Lustre service hosts. |
+| 110 | *rule-name* | Any | Any | *IP address/CIDR range for Managed Lustre file system subnet* | *IP address/CIDR range for Managed Lustre file system subnet* | Allow | Allows traffic flow between Managed Lustre hosts for file system activities. The system also requires TCP port 22 (Secure Shell) for initial deployment and configuration. |
+| 111 | *rule-name* | 988, 1019 to 1023 | TCP | *IP address/CIDR range for Managed Lustre client subnet* | *IP address/CIDR range for Managed Lustre file system subnet* | Allow | Allows your Managed Lustre clients to interact with all Managed Lustre storage nodes for file system activities. The Managed Lustre file system protocol requires ports 988 and 1019 to 1023. |
+| 112 | *rule-name* | Any | TCP | `AzureMonitor` | `VirtualNetwork` | Allow | Allows the `AzureMonitor` service to detect health or security issues with the Managed Lustre service hosts. |
 | 120 | *rule-name* | Any | Any | Any | Any | Deny | Denies all other inbound flows. |
 
 The inbound security rules in the Azure portal should look similar to the following example:
 
 :::image type="content" source="media/network-security-group/inbound-security-rules.png" alt-text="Screenshot that shows inbound security rules for a network security group in the Azure portal." lightbox="media/network-security-group/inbound-security-rules.png":::
 
-This figure is provided as an example. For the complete list of rules, see the preceding table. Adjust the subnet IP address, CIDR range, and other settings per your deployment.
+The figure is provided as an example. For the complete list of rules, see the preceding table. Adjust the subnet IP address, CIDR range, and other settings per your deployment.
 
 ### Create outbound security rules
 

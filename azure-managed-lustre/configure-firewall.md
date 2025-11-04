@@ -73,9 +73,9 @@ To create a network rule collection:
 
     | Name | Source type | Source | Protocol | Destination ports | Destination Type | Destination |
     |------|-------------|--------|----------|-------------------|------------------|-------------|
-    | `LustreSubnetAllowAll` | IP Address | *Managed-Lustre-subnet* | Any | \* | IP address | *Managed-Lustre-subnet* |
-    | `AllowLustreDependencies` | IP Address | *Managed-Lustre-subnet* | TCP | 443 | Service Tag | `ActionGroup`, `ApiManagement`, `AzureActiveDirectory`, `AzureDataLake`, `AzureKeyVault`, `AzureMonitor`, `AzureResourceManager`, `EventHub`, `GuestAndHybridManagement`, `Storage` |
-    | `NTPAccess` | IP address | *Managed-Lustre-subnet* | UDP | 123 | IP address | 168.61.215.74/32     |
+    | `LustreSubnetAllowAll` | IP address | *Managed-Lustre-subnet* | Any | \* | IP address | *Managed-Lustre-subnet* |
+    | `AllowLustreDependencies` | IP address | *Managed-Lustre-subnet* | TCP | 443 | Service Tag | `ActionGroup`, `ApiManagement`, `AzureActiveDirectory`, `AzureDataLake`, `AzureKeyVault`, `AzureMonitor`, `AzureResourceManager`, `EventHub`, `GuestAndHybridManagement`, `Storage` |
+    | `NTPAccess` | IP address | *Managed-Lustre-subnet* | UDP | 123 | IP address | `168.61.215.74/32`     |
 
 1. Select **Add**.
 
