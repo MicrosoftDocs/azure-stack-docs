@@ -30,7 +30,7 @@ This article highlights what's new (features and improvements) and critical know
 
 ## Known issues for disconnected operations for Azure Local
 
-### Arc bootstrap fails on node (Invoke-AzStackHCIArcInitialization) on Original Equipment Manufactorer (OEM) provided images 
+### Arc bootstrap fails on node (Invoke-AzStackHCIArcInitialization) on Original Equipment Manufacturer (OEM) provided images 
 If you are running an OEM image, make sure that you are on the correct OS baseline.
 
 Follow these steps:
