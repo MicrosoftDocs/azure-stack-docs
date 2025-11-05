@@ -26,25 +26,25 @@ Multiple volumes from the SAN array can be presented as Cluster Shared Volumes (
 
 ## Benefits
 
-- **Investment protection:** Extends existing SAN infrastructure into Azure Local without re-architecture.
+- **Investment protection**: Extends existing SAN infrastructure into Azure Local without re-architecture.
 
-- **Operational consistency:** Offers the ability to leverage existing practices for management and operations.
+- **Operational consistency**: Offers the ability to leverage existing practices for management and operations.
 
-- **Resilience and scale:** Dual fabrics, multipathing, and SAN-native redundancy ensure high availability.
+- **Resilience and scale**: Dual fabrics, multipathing, and SAN-native redundancy ensure high availability.
 
-- **Flexibility:** Choice between Storage Spaces Direct or external SAN volumes per workload requirement.
+- **Flexibility**: Choice between Storage Spaces Direct or external SAN volumes per workload requirement.
 
-- **Enterprise performance:** Leverages Fibre Channel-class bandwidth and latency for demanding workloads.
+- **Enterprise performance**: Leverages Fibre Channel-class bandwidth and latency for demanding workloads.
 
 ## Supported configurations
 
-- **Dell PowerFlex:** Generally available.
+- **Dell PowerFlex**: Generally available.
 
-- **Fibre Channel (FC) based SAN connectivity:** Currently in limited preview.
+- **Fibre Channel (FC) based SAN connectivity**: Currently in limited preview.
 
 ## Dell PowerFlex solution integration
 
-**Dell PowerFlex** delivers a robust, software-defined storage solution built for hybrid environments like Azure Local. In this Limited Preview release, PowerFlex enables external block storage to be presented as **high-performance CSVs** accessible to Azure Local clusters over Fibre Channel.
+**Dell PowerFlex** delivers a robust, software-defined storage solution built for hybrid environments like Azure Local. In this limited preview release, PowerFlex enables external block storage to be presented as **high-performance CSVs** accessible to Azure Local clusters over Fibre Channel.
 
 :::image type="content" source="media/external-storage-support-azure-local/integration-architecture-diagram.png" alt-text="Screenshot of Dell PowerFlex integration architecture diagram showing connections between Azure Local cluster hosts and PowerFlex storage nodes through dual fabric connectivity." lightbox="media/external-storage-support-azure-local/integration-architecture-diagram.png":::
 
@@ -54,7 +54,7 @@ Each Azure Local node installs the PowerFlex SDC driver, which facilitates effic
 
 Together, Dell PowerFlex and Azure Local deliver an integrated, high-performance storage fabric that combines Azure operational simplicity with PowerFlex's software-defined resiliency and scale.
 
-## Fibre Channel based SAN arrays (in limited preview)
+## Fibre Channel based SAN arrays
 
 Customers can bring their Fibre Channel based SAN arrays from leading vendors and directly integrate them into Azure Local clusters for consistent management, high throughput, and low-latency I/O. Each Azure Local node connects to the SAN through dual Fibre Channel fabrics (Fabric A and Fabric B) for redundancy and performance. Host Bus Adapters (HBAs) installed on each host enable resilient, high-throughput connectivity to the external SAN.
 
@@ -62,7 +62,7 @@ Customers can bring their Fibre Channel based SAN arrays from leading vendors an
 
 Once connected, SAN-backed volumes are discovered and integrated as Cluster Shared Volumes (CSVs) formatted with NTFS, allowing shared access across nodes and seamless visibility for workloads. This configuration enables independent scaling of compute and storage while maintaining unified Azure management for both local and Arc-enabled services.
 
-> [!IMPORTANT]
+> [!NOTE]
 > Fibre Channel support is currently available for nonproduction workloads through **limited preview program**. Customers interested in evaluating this capability should contact their Microsoft representative or their Storage vendor for participation in the preview.
 
 ## Related content
