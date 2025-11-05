@@ -20,7 +20,7 @@ This article gives a high-level overview of the Azure Local rack aware clusterin
 
 Azure Local rack aware cluster is an advanced architecture designed to enhance fault tolerance and data distribution within an Azure Local instance. This architecture enables you to cluster nodes that are strategically placed across two physical racks in two different rooms or buildings with high bandwidth and low latency.
 
-The following diagram shows a cluster of two racks of servers with top-of-rack (TOR) switches connected between rooms. Each rack functions as a local availability zone across layers from the operating system to Azure Local management, including Azure Local VMs enabled by Azure Arc.  
+The following diagram shows a cluster of two racks of servers with top-of-rack (TOR) switches connected between rooms. Each rack functions as a local availability zone across layers from the operating system to Azure Local management, including Azure Local virtual machines (VMs) enabled by Azure Arc.  
 
 :::image type="content" source="media/rack-aware-cluster-overview/rack-aware-cluster-architecture.png" alt-text="Diagram of rack aware cluster architecture." lightbox="media/rack-aware-cluster-overview/rack-aware-cluster-architecture.png":::
 
@@ -47,7 +47,7 @@ The use cases for Azure Local rack aware cluster include:
 - Use rack aware cluster in a manufacturing plant, in a hospital or an airport to minimize the risk of data loss or downtime in the event of a rack-level failure.
 
 > [!NOTE]
-> Azure Local rack aware cluster does not currently support Storage Area Network (SAN).
+> Azure Local rack aware cluster doesn't currently support Storage Area Network (SAN).
 
 ## Review requirements
 
@@ -76,7 +76,7 @@ For more information, see [Add nodes to a rack aware cluster](rack-aware-cluster
 
 ## Place an Azure Local VM
 
-To balance workloads between zones, create Azure Local VMs to place in a specified zone. Based on the criticality of the VMs, you can configure strict or non-strict placement to disable or enable failover to the other zone.
+To balance workloads between zones, create Azure Local VMs to place in a specified zone. Based on the criticality of the VMs, you can configure strict or nonstrict placement to disable or enable failover to the other zone.
 
 For more information about VM placement in a rack aware cluster, see [Manage VM placement in a rack aware cluster](rack-aware-cluster-provision-vm-local-availability-zone.md).
 
