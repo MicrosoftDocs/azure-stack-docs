@@ -65,9 +65,6 @@ The following table lists the fixed issues in this release:
 | Deployment <!--35607138--> | Deployment fails with error: `The parameter is incorrect.` |  |
 | Azure Local VMs <!--35644811--> | After upgrading the OS, customers may be unable to deploy v12 VMs on the cluster.  |  |
 
-
-
-
 ## Known issues
 
 The following table lists the known issues in this release:
