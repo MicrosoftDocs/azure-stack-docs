@@ -38,9 +38,9 @@ Multiple volumes from the SAN array can be presented as Cluster Shared Volumes (
 
 ## Supported configurations
 
-- **Dell PowerFlex** - Generally Available.
+- **Dell PowerFlex:** Generally available.
 
-- **Fibre Channel (FC) based SAN connectivity** - Currently in limited preview.
+- **Fibre Channel (FC) based SAN connectivity:** Currently in limited preview.
 
 ## Dell PowerFlex solution integration
 
