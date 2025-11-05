@@ -14,7 +14,7 @@ This article lists the various security updates that are available for Azure Loc
 
 ::: moniker range="=azloc-2511"
 
-## October OS security updates (KB5068779 and KB5068861) for Azure Local
+## November OS security updates (KB5068779 and KB5068861) for Azure Local
 
 For the 2511 release of Azure Local, Microsoft released two security updates, each corresponding to a specific OS build. The following table provides the details of these security updates, including their associated OS builds and release dates.
 
@@ -35,7 +35,7 @@ To learn more about Windows update terminology, see [types of Windows updates]
   
 ## Improvements
 
-This security update contains fixes and quality improvements from [KB5066780](https://support.microsoft.com/en-us/topic/october-14-2025-kb5066780-os-build-25398-1913-fcae5a50-170f-40dd-af68-ea2a267a74e6) (released October 14, 2025). The following summary outlines key issues addressed by this update. Also, included are available new features. The bold text within the brackets indicates the item or area of the change.
+This security update contains fixes and quality improvements from [KB5066780](https://support.microsoft.com/topic/october-14-2025-kb5066780-os-build-25398-1913-fcae5a50-170f-40dd-af68-ea2a267a74e6?preview=true) (released October 14, 2025) and [KB5070879](https://support.microsoft.com/topic/october-23-2025-kb5070879-os-build-25398-1916-out-of-band-e192ac2e-3519-44c6-8706-d7e40c556c8c?preview=true) (released October 23, 2025). The following summary outlines key issues addressed by this update. Also, included are available new features. The bold text within the brackets indicates the item or area of the change.
 
 - **[Windows Security]** Fixed: This update addresses an issue that affected SmartScreen application reputation (Apprep) events from being logged. As a result, you couldn’t always see the level of protection provided by Microsoft Defender SmartScreen. 
 
