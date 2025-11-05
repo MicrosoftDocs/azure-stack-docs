@@ -11,18 +11,11 @@ ms.date: 11/05/2025
 # Azure Local release information
 
 > [!IMPORTANT]
-> **Azure Local Update 11.2510.1002.87 and 12.2510.1002.88**
+> **Azure Local Update 11.2510.1002.93 and 12.2510.1002.94**
 >
-> We've temporarily disabled the update for Azure Local versions 11.2510.1002.87 and 12.2510.1002.88 for investigation.
->
-> The issues under review involve:
-> - A version mismatch between the current node platform version 10.0.25398.1849 and the expected version, which should be greater than or equal to 10.0.25398.1913.
-> - An issue in the Hyper-V socket that can cause a node to crash.
->
-> If you are affected by any of the two issues, see [GitHub AzureLocal-Supportability TSG](https://github.com/Azure/AzureLocal-Supportability/tree/main/TSG).
-> 
-> We anticipate that updates for both versions 11.2510 and 12.2510 will be available again in the next few days. During this time, we recommend that you use version 12.2509 for new deployments.
-
+> Azure Local versions 11.2510.1002.93 and 12.2510.1002.94 are now available.
+> - If you are already on 11.2510.1002.87, you can apply the OS upgrade to 12.2510.1002.94.
+> - If you haven't updated to 11.2510.1002.87, you can update to 11.2510.1002.93 first before applying the upgrade to 12.2510.1002.94.
 
 To enhance your Azure Local (formerly known as Azure Stack HCI) experience, we periodically release feature updates that introduce new capabilities and improvements. Additionally, Azure Local provides cumulative updates that include monthly quality and security enhancements. These updates are listed for each instance, ensuring your devices remain protected and productive.
 
