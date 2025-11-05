@@ -21,7 +21,7 @@ The Azure Local solution updates can consist of OS, agents and service, and solu
 
 The new update feature automates the update process for agents, services, operating system content, and Solution Extension content, with the goal of maintaining availability by shifting workloads around throughout the update process when needed.
 
-Cluster-Aware Updating (CAU) determines the update sequence order by using nodes from `(Get-ClusterNode).Name`. For more information, see [Cluster-Aware Updating overview](/windows-server/failover-clustering/cluster-aware-updating#BKMK_OVER).
+The AzureStack Update component retrieves the node sequence from `(Get-ClusterNode).Name` and passes it to Cluster-Aware Updating (CAU). For more information on updates through CAU, see [Cluster-Aware Updating overview](/windows-server/failover-clustering/cluster-aware-updating#BKMK_OVER).
 
 The updates can be of the following types:
 
