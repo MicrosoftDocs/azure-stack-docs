@@ -3,7 +3,7 @@ title: Microsoft 365 Local Overview
 description: Learn about Microsoft 365 Local on Azure Local infrastructure.
 author: alkohli
 ms.topic: conceptual
-ms.date: 11/03/2025
+ms.date: 11/05/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -37,7 +37,7 @@ Organizations choose Microsoft 365 Local for several key reasons:
 
 ## Microsoft 365 Local capabilities
 
-- **Exchange Server, SharePoint Server, and Skype for Business Server:** Delivers core productivity and collaboration services on-premises, addressing compliance and stringent data residency requirements while providing enterprise-grade capabilities for email, document management, and unified communications.
+- **Exchange Server, SharePoint Server, and Skype for Business Server:** Deliver core productivity and collaboration services on-premises, addressing compliance and stringent data residency requirements while providing enterprise-grade capabilities for email, document management, and unified communications.
 
 - **Certified and validated solutions by Microsoft and hardware partners:** Microsoft 365 Local is supported on a subset of Azure Local Premier Solutions offered in collaboration with hardware partners to guarantee compatibility and support for sovereign deployments.
 
@@ -91,4 +91,4 @@ A typical engagement with a solution partner involves the following phases:
 | **Acquisition** | Procure necessary hardware, software, and licenses. |
 | **Deployment** | Execute the planned rollout in accordance with best practices. |
 
-Additional information about authorized partners will be available when Microsoft 365 Local reaches general availability in December 2025. To learn more or get started, contact your account team or at https://aka.ms/signupM365Local.
+Additional information about authorized partners will be available when Microsoft 365 Local reaches general availability. To learn more or get started, contact your account team or at https://aka.ms/signupM365Local.
