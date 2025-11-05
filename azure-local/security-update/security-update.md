@@ -3,7 +3,7 @@ title:  Security updates for Azure Local
 description: Security updates for Azure Local.
 author: alkohli
 ms.topic: conceptual
-ms.date: 10/24/2025
+ms.date: 11/05/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
@@ -11,6 +11,106 @@ ms.reviewer: alkohli
 # Security updates for Azure Local
 
 This article lists the various security updates that are available for Azure Local.
+
+::: moniker range="=azloc-2511"
+
+## October OS security updates (KB5068779 and KB5068861) for Azure Local
+
+For the 2511 release of Azure Local, Microsoft released two security updates, each corresponding to a specific OS build. The following table provides the details of these security updates, including their associated OS builds and release dates.
+
+| Security update | OS build | Release date |
+|--|--|--|
+| KB5068779 | 25398.1965 | November 11, 2025 |
+| KB5068861 | 26100.7159<br>26200.7159 | November 11, 2025 |
+
+# [OS build 25398.xxxx](#tab/os-build-25398-xxxx)
+
+This section provides the 2511 security updates associated with OS build **25398.1965**.
+
+## Windows Secure Boot certificate expiration
+
+Secure Boot certificates used by most Windows devices are set to expire starting in June 2026. This might affect the ability of certain personal and business devices to boot securely if not updated in time. To avoid disruption, we recommend reviewing the guidance and taking action to update certificates in advance. For details and preparation steps, see [Windows Secure Boot certificate expiration and CA updates](https://support.microsoft.com/en-us/topic/windows-secure-boot-certificate-expiration-and-ca-updates-7ff40d33-95dc-4c3c-8725-a9b95457578e?preview=true).
+
+To learn more about Windows update terminology, see [types of Windows updates](/troubleshoot/windows-client/installing-updates-features-roles/standard-terminology-software-updates) and [monthly quality update types](https://techcommunity.microsoft.com/blog/windows-itpro-blog/windows-monthly-updates-explained/3773544).
+  
+## Improvements
+
+This security update contains fixes and quality improvements from [KB5066780](https://support.microsoft.com/en-us/topic/october-14-2025-kb5066780-os-build-25398-1913-fcae5a50-170f-40dd-af68-ea2a267a74e6) (released October 14, 2025). The following summary outlines key issues addressed by this update. Also, included are available new features. The bold text within the brackets indicates the item or area of the change.
+
+- **[Windows Security]** Fixed: This update addresses an issue that affected SmartScreen application reputation (Apprep) events from being logged. As a result, you couldn’t always see the level of protection provided by Microsoft Defender SmartScreen. 
+
+If you've already installed previous updates, your device will download and install only the new updates included in this package.
+
+For more information about security vulnerabilities, see the [Security Update Guide](https://portal.msrc.microsoft.com/security-guidance) and the [November 2025 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2025-Nov).
+
+## Known issues
+
+The following issues are known for this update.​​​​​
+
+**Issue**
+
+Windows Server Update Services (WSUS) does not display error details
+
+**Symptoms**
+
+After installing [KB5070879](https://support.microsoft.com/topic/october-23-2025-kb5070879-os-build-25398-1916-out-of-band-e192ac2e-3519-44c6-8706-d7e40c556c8c?preview=true) or later updates, Windows Server Update Services (WSUS) does not display synchronization error details within its error reporting.
+
+As a result, this functionality is temporarily removed to address the Remote Code Execution Vulnerability, [CVE-2025-59287](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2025-59287).  
+
+## To install
+
+Microsoft now combines the latest servicing stack update (SSU) for your operating system with the latest cumulative update (LCU). For general information about SSUs, see [Servicing stack updates](/windows/deployment/update/servicing-stack-updates) and [Servicing Stack Updates (SSU): Frequently Asked Questions](https://support.microsoft.com/topic/servicing-stack-updates-ssu-frequently-asked-questions-06b62771-1cb0-368c-09cf-87c4efc4f2fe).
+
+To install the LCU on your Azure Local instance, see [Update Azure Stack Local instances](../update/about-updates-23h2.md).
+
+## File list
+
+For a list of the files that are provided in this update, download the file information for [Cumulative update KB5068779.](https://go.microsoft.com/fwlink/?linkid=).
+
+
+# [OS build 26100.xxxx](#tab/os-build-26100-xxxx)
+
+This section provides the 2511 security updates associated with OS build **26200.7159** and **26100.7159**.
+
+## Windows Secure Boot certificate expiration
+
+Secure Boot certificates used by most Windows devices are set to expire starting in June 2026. This might affect the ability of certain personal and business devices to boot securely if not updated in time. To avoid disruption, we recommend reviewing the guidance and taking action to update certificates in advance. For details and preparation steps, see [Windows Secure Boot certificate expiration and CA updates](https://support.microsoft.com/en-us/topic/windows-secure-boot-certificate-expiration-and-ca-updates-7ff40d33-95dc-4c3c-8725-a9b95457578e?preview=true).
+
+To learn more about Windows update terminology, see [types of Windows updates](/troubleshoot/windows-client/installing-updates-features-roles/standard-terminology-software-updates) and [monthly quality update types](https://techcommunity.microsoft.com/blog/windows-itpro-blog/windows-monthly-updates-explained/3773544). 
+ 
+## Improvements
+
+This security update contains fixes and quality improvements from [KB5067036](https://support.microsoft.com/topic/october-28-2025-kb5067036-os-builds-26200-7019-and-26100-7019-preview-ec3da7dc-63ba-4b1d-ac41-cf2494d2123a?preview=true) (released October 28, 2025). The following summary outlines key issues addressed by this update. Also, included are available new features. The bold text within the brackets indicates the item or area of the change. 
+
+- **[Gaming]**
+    - Fixed: This update addresses an issue that affects gaming handheld devices. These devices were unable to stay in low-power states, which caused faster battery drain.​​​​​​​
+
+    - Fixed: An issue on some handheld gaming devices where after signing in using the built-in Gamepad, the controller might not respond in apps for about five seconds, causing a delay. The on-screen keyboard hides automatically after you enter your password or PIN.
+
+- **[System utilities (known issue)]** Fixed: An issue where closing Task Manager with the Close button didn’t fully end the process, leaving background instances that could slow performance over time.  This might occur after installing [KB5067036](https://support.microsoft.com/topic/october-28-2025-kb5067036-os-builds-26200-7019-and-26100-7019-preview-ec3da7dc-63ba-4b1d-ac41-cf2494d2123a?preview=true).
+
+- **​​​​​​​[Window management]** Fixed: This update addresses an issue that occurs after the first restart following an upgrade. If full-screen experience is enabled, selecting the desktop wallpaper after opening several windows might cause them to minimize unexpectedly.
+
+If you've already installed previous updates, your device will download and install only the new updates included in this package.
+
+For more information about security vulnerabilities, see the [Security Update Guide](https://portal.msrc.microsoft.com/security-guidance) and the [November 2025 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2025-Nov).
+
+## Known issues
+
+Microsoft is not currently aware of any issues with this update. 
+
+## To install
+
+Microsoft now combines the latest servicing stack update (SSU) for your operating system with the latest cumulative update (LCU). For general information about SSUs, see [Servicing stack updates](/windows/deployment/update/servicing-stack-updates) and [Servicing Stack Updates (SSU): Frequently Asked Questions](https://support.microsoft.com/topic/servicing-stack-updates-ssu-frequently-asked-questions-06b62771-1cb0-368c-09cf-87c4efc4f2fe).
+
+To install the LCU on your Azure Local instance, see [Update Azure Stack Local instances](../update/about-updates-23h2.md).
+
+## File list
+
+For a list of the files that are provided in this update, download the file information for [Cumulative update KB 5067035](https://go.microsoft.com/fwlink/?linkid=).
+
+::: moniker-end
+
 
 ::: moniker range="=azloc-2510"
 
