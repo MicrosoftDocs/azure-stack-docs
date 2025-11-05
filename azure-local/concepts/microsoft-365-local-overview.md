@@ -15,9 +15,9 @@ This article provides an overview of Microsoft 365 Local on Azure Local infrastr
 
 ## Overview
 
-Microsoft 365 Local allows organizations to run Microsoft 365 server workloads, such as Exchange Server, SharePoint Server, and Skype for Business Server on Azure Local infrastructure. You can deploy it in a hybrid or fully disconnected environment that is entirely customer-owned and controlled. This approach gives organizations greater control over data residency, access, and compliance to meet sovereign requirements.
+Microsoft 365 Local enables organizations to run Exchange Server, SharePoint Server and Skype for Business Server on Azure Local infrastructure that is entirely customer-owned and managed. Using Microsoft 365 Local gives organizations enhanced control over data residency, access, and compliance, helping them meet their sovereignty requirements.
 
-Designed for organizations that need productivity tools in a private cloud environment, Microsoft 365 Local uses Azure Arc to provide a unified control plane for easy infrastructure management, deployment, and updates.
+Designed for organizations that need productivity tools in a private cloud environment, Microsoft 365 Local leverages Azure Arc to provide a unified control plane with simplified deployment and streamlined updates for easy infrastructure management.
 
 The solution includes a validated reference architecture with certified hardware for optimal performance and reliability, along with a hardened security baseline and robust controls to protect your infrastructure. <!--can we link out to the security baseline for Microsoft 365 Local?-->
 
@@ -25,21 +25,16 @@ The solution includes a validated reference architecture with certified hardware
 
 Organizations choose Microsoft 365 Local for several key reasons:
 
-- **Regulatory compliance:** Provides advanced privacy safeguards, strict compliance controls, and transparent operational practices, enabling governments and regulated industries to adhere to data protection and privacy laws and regulations.
-
-- **Data residency:** Ensures that sensitive organizational data remains within national borders and under local jurisdiction.
-
-- **Enhanced controls:** Offers advanced isolation, monitoring, and access controls tailored to sovereign cloud environments.
-
-- **Operational resilience:** Supports business continuity and disaster recovery strategies in line with local requirements.
-
-- **Trusted productivity:** Delivers familiar collaboration tools, empowering users without compromise.
+- Keep sensitive workloads and data entirely on-premises to meet the strictest jurisdictional and sovereignty mandates.
+- Gain the agility and simplicity of cloud management within your own data center, by implementing a sovereign private cloud with Azure-consistent management.
+- Plan and deploy with confidence through a Microsoft-authorized partner, reducing risk and accelerating time to value.
+- Choose between seamless integration with cloud services or a fully disconnected environment based on your sovereignty requirements.
 
 ## Microsoft 365 Local capabilities
 
 - **Exchange Server, SharePoint Server, and Skype for Business Server:** Deliver core productivity and collaboration services on-premises, addressing compliance and stringent data residency requirements while providing enterprise-grade capabilities for email, document management, and unified communications.
 
-- **Certified and validated solutions by Microsoft and hardware partners:** Microsoft 365 Local is supported on a subset of Azure Local Premier Solutions offered in collaboration with hardware partners to guarantee compatibility and support for sovereign deployments.
+- **Certified and validated solutions by Microsoft and hardware partners:** Microsoft 365 Local is supported on Azure Local Premier Solutions offered in collaboration with hardware partners to guarantee compatibility and support for sovereign deployments.
 
 - **Full-stack deployment based on validated reference architecture:** Offers validated architecture based on best practices to ensure optimal performance and resiliency. This includes guidance for networking, storage, compute, and identity integration, ensuring consistency and best practices across the entire stack.
 
@@ -91,4 +86,4 @@ A typical engagement with a solution partner involves the following phases:
 | **Acquisition** | Procure necessary hardware, software, and licenses. |
 | **Deployment** | Execute the planned rollout in accordance with best practices. |
 
-Additional information about authorized partners will be available when Microsoft 365 Local reaches general availability. To learn more or get started, contact your account team or at https://aka.ms/signupM365Local.
+Additional information about authorized partners will be available when Microsoft 365 Local reaches general availability. To learn more or get started, contact your account team or visit https://aka.ms/M365LocalSignup.
