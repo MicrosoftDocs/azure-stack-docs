@@ -40,18 +40,18 @@ The main benefits of Azure Local rack aware cluster include:
 
 - **Improved performance**: The architecture allows for better load balancing and resource utilization, as workloads can be distributed across multiple racks.
 
-
 ## Use cases
 
 The use cases for Azure Local rack aware cluster include:
 
+- Use rack aware cluster in a manufacturing plant, in a hospital or an airport to minimize the risk of data loss or downtime in the event of a rack-level failure.
 
-- Use rack aware cluster in a manufacturing plant, in a hospital or an airport to minimize the risk of data loss or downtime in the event of a rack-level failure.  
+> [!NOTE]
+> Azure Local rack aware cluster does not currently support Storage Area Network (SAN).
 
 ## Review requirements
 
 All the [System requirements for Azure Local](../concepts/system-requirements-23h2.md) apply to rack aware clusters. There are [Other requirements](rack-aware-cluster-requirements.md) for rack aware clusters including those for drives, Availability Zones, node configurations, latency, and bandwidth.
-
 
 ## Prepare to deploy a rack aware cluster
 
@@ -85,7 +85,6 @@ For more information about VM placement in a rack aware cluster, see [Manage VM 
 We recommend that you conduct live migration and failover testing of your VM workloads within a rack aware cluster. The failover behavior depends on the VM placement configuration and can be a planned failover or unplanned failover.
 
 For more information, see [Fail over Azure Local VMs in a rack aware cluster](rack-aware-cluster-requirements.md#recommendations).
-
 
 ## Next steps
 
