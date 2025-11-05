@@ -471,7 +471,6 @@ If the Azure Stack HCI subscription state test fails, make sure your subscriptio
    Here's an example
 
    ```console
-    [<IP address>]: PS C:\Users\Administrator.v\Documents> Sync-AzureStackHCI
     [<IP address>]: PS C:\Users\Administrator.v\Documents> Sync-AzureStackHCI -verbose
     VERBOSE: Attempting version check on localhost
     VERBOSE: Checking version on localhost
