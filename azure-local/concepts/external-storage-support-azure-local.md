@@ -10,7 +10,6 @@ ms.date: 11/05/2025
 ai-usage: ai-assisted
 ---
 
-
 # External storage support for Azure Local (preview)
 
 This article explains external storage support for Azure Local, its benefits, supported configurations, and other essential information.
