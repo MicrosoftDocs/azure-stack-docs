@@ -3,7 +3,7 @@ title: Release notes with fixed and known issues in Azure Local
 description: Read about the known issues and fixed issues in Azure Local.
 author: alkohli
 ms.topic: conceptual
-ms.date: 10/23/2025
+ms.date: 11/05/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
@@ -27,11 +27,11 @@ For the 2510 release of Azure Local, Microsoft released two security updates, ea
 
 | Solution version  | OS build  |
 |---------|---------|---------|
-| 11.2510.1002.87         | 25398.1913         |
-| 12.2510.1002.88         | 26100.6899         |
+| 11.2510.1002.93         | 25398.1913         |
+| 12.2510.1002.94         | 26100.6899         |
 
 > [!IMPORTANT]
-> The new deployments of this software use the **12.2510.1002.88** build. You can also update an existing deployment from 2509 by using **11.2510.1002.87**.
+> The new deployments of this software use the **12.2510.1002.94** build. You can also update an existing deployment from 2509 by using **11.2510.1002.93**.
 
 Release notes for this version include the issues fixed in this release, known issues in this release, and release note issues carried over from previous versions.
 
@@ -57,6 +57,15 @@ The following table lists the fixed issues in this release:
 | Azure Local VMs <!--30856036--> | In some cases, Azure Local VMs fail to create with error: `Failed to cleanup seed iso disk from the file system for vm.` | This build addresses additional corner cases that were not resolved in the previous fix (2503). |
 | Azure Local VMs <!--33648132--> | In rare cases, the operator would enter a crash loop, preventing Azure Local VM management. |  |
 | Azure Local VMs <!--34444839--> | In some cases, deleting logical networks could fail when network interfaces created with those logical networks existed in other resource groups or locations. | Updated deletion logic to ensure safe deletion of logical network. |
+| Update <!--35755435--> | Update fails with VSR registry not found error. |  |
+| Deployment, update <!--35755425--> | Deployment and updates crash with a blue screen. |  |
+| Update <!--35755363--> | Updates failing for deployments between 2504 and 2511. |  |
+| Update <!--35696805--> | After upgrade, the subsequent update preparation fails. |  |
+| Deployment <!--35652270--> | Deployment fails with error: `The following error with errorcode 0x80090308 occurred while using Negotiate authentication: The parameter is incorrect.` |  |
+| Deployment <!--35607138--> | Deployment fails with error: `The parameter is incorrect.` |  |
+| Azure Local VMs <!--35644811--> | After upgrading the OS, customers may be unable to deploy v12 VMs on the cluster.  |  |
+
+
 
 
 ## Known issues
@@ -67,6 +76,7 @@ The following table lists the known issues in this release:
 |---------|---------|---------|
 | Deployment <!--35607138-->  | Deployment fails with the following issue: `Type 'SetAzureStackHostsPreConfiguration' of Role 'HostNetwork' raised an exception: Closing the remote server shell instance failed with the following error message : The parameter is incorrect. For more information, see the about_Remote_Troubleshooting Help topic. at Invoke-ConfigureHostAdaptersWithNetworkAtc, C:\NugetStore\Microsoft.AS.Network.Deploy.HostNetwork.1.2510.0.28\content\Powershell\Roles\HostNetwork\HostNetwork.psm1: line 2973 at ConfigureAzureStackHostNetworkingWithATC, C:\NugetStore\Microsoft.AS.Network.Deploy.HostNetwork.1.2510.0.28\content\Powershell\Roles\HostNetwork\HostNetwork.psm1: line 4198 at Invoke-SetAzureStackHostsPreConfiguration, C:\NugetStore\Microsoft.AS.Network.Deploy.HostNetwork.1.2510.0.28\content\Powershell\Roles\HostNetwork\HostNetwork.psm1: line 4376 at SetAzureStackHostsPreConfiguration, C:\NugetStore\Microsoft.AS.Network.Deploy.HostNetwork.1.2510.0.28\content\Powershell\Classes\HostNetwork\HostNetwork.psm1: line 65 at , C:\CloudDeployment\ECEngine\InvokeInterfaceInternal.psm1: line 165 at Invoke-EceInterfaceInternal, C:\CloudDeployment\ECEngine\InvokeInterfaceInternal.psm1: line 160 at , : line 50`  | To resolve the issue, resume the deployment from the portal.  |
 | Deployment <!--35652270-->  | Deployment fails with the following issue: `Type 'SetAzCliPathAndVariables' of Role 'MocArb' raised an exception: Processing data for a remote command failed with the following error message: WinRM cannot process the request. The following error with errorcode 0x80090308 occurred while using Negotiate authentication: The parameter is incorrect.   Possible causes are:   -The user name or password specified are invalid.   -Kerberos is used when no authentication method and no user name are specified.   -Kerberos accepts domain user names, but not local user names.   -The Service Principal Name (SPN) for the remote computer name and port does not exist.   -The client and remote computers are in different domains and there is no trust between the two domains. After checking for the above issues, try the following:   -Check the Event Viewer for events related to authentication.   -Change the authentication method; add the destination computer to the WinRM TrustedHosts configuration setting or use HTTPS transport. Note that computers in the TrustedHosts list might not be authenticated.`  | To resolve the issue, resume the deployment from the portal.  |
+|  <!--35816797--> | Add node and repair node operations fail when running on 11.2510.2000.87 or 12.2510.2000.88, as these images were recalled and don't exist. | Upgrade your environment to 11.2510.2000.93 or 12.2510.2000.94. <br> If you need to run add node or repair node operations during the update from 1.2510.2000.87/12.2510.2000.88 to 11.2510.2000.93/12.2510.2000.94, [open a support case](/azure/azure-portal/supportability/how-to-create-azure-support-request) to overwrite the image validation.|
 
 ## Known issues from previous releases
 
