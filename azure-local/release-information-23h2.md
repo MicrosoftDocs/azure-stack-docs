@@ -11,8 +11,6 @@ ms.date: 11/05/2025
 # Azure Local release information
 
 > [!IMPORTANT]
-> **Azure Local Update 11.2510.1002.93 and 12.2510.1002.94**
->
 > Azure Local versions 11.2510.1002.93 and 12.2510.1002.94 are now available.
 > - If you are already on 11.2510.1002.87, you can apply the OS upgrade to 12.2510.1002.94.
 > - If you haven't updated to 11.2510.1002.87, you can update to 11.2510.1002.93 first before applying the upgrade to 12.2510.1002.94.
