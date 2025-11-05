@@ -1,6 +1,6 @@
 ---
 title: Microsoft 365 Local Overview
-description: Learn about the Microsoft 365 Local solution running on Azure Local infrastructure.
+description: Learn about Microsoft 365 Local on Azure Local infrastructure.
 author: alkohli
 ms.topic: conceptual
 ms.date: 11/03/2025
@@ -21,7 +21,7 @@ Designed for organizations that need productivity tools in a private cloud envir
 
 The solution includes a validated reference architecture with certified hardware for optimal performance and reliability, along with a hardened security baseline and robust controls to protect your infrastructure. <!--can we link out to the security baseline for Microsoft 365 Local?-->
 
-## Why Use Microsoft 365 Local?
+## Why use Microsoft 365 Local?
 
 Organizations choose Microsoft 365 Local for several key reasons:
 
