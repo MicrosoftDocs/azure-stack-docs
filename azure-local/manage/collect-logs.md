@@ -53,8 +53,8 @@ Keep in mind the following information before you start log collection:
 
 - The time required for log collection depends on the time range you specify. The longer the time range, the more time it'll take for log collection. Therefore, we recommend limiting the time range to only the logs you need.
 - Log collections longer than 24 hours aren't supported.
-- Attempting multiple log collections simultaneously will result in a failure.
-- If your cluster runs a build earlier than 2510, the portal shows a banner that says *Device Management Extension is outdated and not supported. Update to the latest version*, and disables the **Send Logs** button. To collect logs, upgrade your cluster to build 2510 or later.
+- Multiple log collections cannot be initiated simultaneously. When a log collection is in progress, the **Send Logs** button is disabled (greyed out).
+- If your cluster runs a build earlier than 2510, the portal shows a banner that says *Device Management Extension is outdated and unsupported*. In this state, the **Send Logs** button is diabled. To collect logs, upgrade your cluster to build 2510 or later.
 
    :::image type="content" source="./media/collect-logs/device-management-extension-disabled-logs.png" alt-text="Screenshot that shows the banner message and disabled send logs button." lightbox="./media/collect-logs/device-management-extension-disabled-logs.png" :::
 
