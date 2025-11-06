@@ -10,7 +10,7 @@ ms.custom: template-concept
 
 # AKS Edge Essentials requirements and support matrix
 
-This article describes the requirements for the host machine that runs AKS Edge Essentials:
+This article describes the requirements for the host machine that runs AKS Edge Essentials.
 
 ## Hardware requirements
 
