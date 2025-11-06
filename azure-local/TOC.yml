@@ -728,39 +728,39 @@ items:
     - name: Overview
       items:
       - name: About multi-rack deployments
-        href: ./multi-rack/overview/multi-rack-overview.md 
+        href: ./overview.md 
       - name: Known issues and limitations
-        href: ../multi-rack/overview/multi-rack-overview.md 
+        href: ../overview.md 
     - name: Deploy
       items:
       - name: Complete deployment prerequisites
-        href: ../multi-rack/overview/multi-rack-overview.md
+        href:./overview.md 
       - name: Deploy SDN resources
         items:
         - name: Create virtual networks
-          href: ../multi-rack/overview/multi-rack-overview.md
+          href:./overview.md 
         - name: Create NSGs
-          href: ../multi-rack/overview/multi-rack-overview.md
+          href:./overview.md 
         - name: Create load balancer
-          href: ../multi-rack/overview/multi-rack-overview.md
+          href:./overview.md 
         - name: Create public IP addresses
-          href: ../multi-rack/overview/multi-rack-overview.md
+          href:./overview.md 
         - name: Create NAT gateway
-          href: ../multi-rack/overview/multi-rack-overview.md
+          href:./overview.md 
       - name: Deploy Azure Local VM workloads
         items:
         - name: Complete Azure Local VM prerequisites
-          href: ../multi-rack/overview/multi-rack-overview.md
+          href:./overview.md 
         - name: Assign RBAC roles
-          href: ../multi-rack/overview/multi-rack-overview.md
+          href:./overview.md 
         - name: Create Azure Local VMs image
-          href: ../multi-rack/overview/multi-rack-overview.md
+          href:./overview.md 
         - name: Create logical networks
-          href: ../multi-rack/overview/multi-rack-overview.md
+          href:./overview.md 
         - name: Create network interfaces
-          href: ../multi-rack/overview/multi-rack-overview.md
+          href:./overview.md 
         - name: Create Azure Local VMs
-          href: ../multi-rack/overview/multi-rack-overview.md
+          href:./overview.md 
 
     - name: Monitor
       items:
@@ -800,9 +800,9 @@ items:
     - name: Reference
       items:
         - name: Azure Local multi-rack CLI reference
-          href: ../multi-rack/overview/multi-rack-overview.md
+          href:./overview.md 
         - name: Azure Local multi-rack PowerShell reference
-          href: ../multi-rack/overview/multi-rack-overview.md
+          href:./overview.md 
 
     - name: Related
       items:
