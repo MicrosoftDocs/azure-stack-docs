@@ -135,9 +135,7 @@ Before you collect logs in a connected disconnected scenario, make sure you:
 
     This command collects logs specific to the node, including system level and cluster level diagnostics. For more information, see [Send-DiagnosticData -SaveToPath](#send-diagnosticdata--savetopath-disconnected-mode).
 
-1. Upload host node logs by using the **standalone observability tool** and running the `Send-AzStackHciDiagnosticData` command.
-
-    To learn more about the `Send-AzStackHciDiagnosticData` command, see [Get support for Azure Local deployment issues](../manage/get-support-for-deployment-issues.md).
+1. Upload host node logs by using the **standalone observability tool** and running the `Send-AzStackHciDiagnosticData` command. To learn more about the `Send-AzStackHciDiagnosticData` command, see [Get support for Azure Local deployment issues](../manage/get-support-for-deployment-issues.md).
 
 ## Azure Local disconnected when the appliance VM isn't connected to Azure
 
@@ -254,9 +252,7 @@ Before you collect logs in a disconnected scenario, make sure you:
     After you save logs from both the appliance and host nodes to a shared location, upload them with the standalone observability tool. There are product specific wrappers around **Microsoft.AzureStack.Observability.Standalone**.
 
     - For appliance logs: To upload logs from the appliance VM, use the `Send-DiagnosticData` command from the Azure Local disconnected operations PowerShell module.
-    - For host node logs: To upload logs from the host node, use the `Send-AzStackHciDiagnosticData` command.
-
-    To learn more about the `Send-AzStackHciDiagnosticData` command, see [Get support for Azure Local deployment issues](../manage/get-support-for-deployment-issues.md).
+    - For host node logs: To upload logs from the host node, use the `Send-AzStackHciDiagnosticData` command. To learn more about the `Send-AzStackHciDiagnosticData` command, see [Get support for Azure Local deployment issues](../manage/get-support-for-deployment-issues.md).
 
 1. After collection, review the logs locally or upload them to Microsoft with the [`Send-DiagnosticData`](#send-diagnosticdata) cmdlet.
 
@@ -326,7 +322,7 @@ Here are some examples of how to use the `Send-DiagnosticData` cmdlet.
 - To import the module, run this command:
 
     ```powershell
-    Import-Module "Q:\AzureLocalVHD\OperationsModule\ApplianceFallbackLogging.psm1" -Force
+    Import-Module "<disconnected operations module folder path>" -Force
     Send-DiagnosticData -ResourceGroupName <String> -SubscriptionId <String> -TenantId <String> [-RegistrationWithDeviceCode] -RegistrationRegion <String> [-Cloud <String>] -DiagnosticLogPath <String> [-ObsRootFolderPath <String>] [-StampId <Guid>] [<CommonParameters>]
     ```
 
