@@ -372,9 +372,10 @@ items:
         href: manage/windows-server-azure-edition-23h2.md
       - name: Extended Security Updates (ESUs)
         href: manage/azure-benefits-esu.md
-   
     - name: Collect log files for Azure Local VM
-      href: manage/collect-log-files-arc-enabled-vms.md 
+      href: manage/collect-log-files-arc-enabled-vms.md
+    - name: VM load balancing
+      href: manage/vm-load-balancing.md
     - name: Implement disaster recovery
       items:
       - name: Overview
@@ -415,8 +416,6 @@ items:
         href: manage/vm-powershell.md
       - name: Create VM affinity rules
         href: manage/vm-affinity.md
-      - name: VM load balancing
-        href: manage/vm-load-balancing.md
       - name: Attach GPU to Linux VM
         href: manage/attach-gpu-to-linux-vm.md
       - name: Enable nested virtualization
