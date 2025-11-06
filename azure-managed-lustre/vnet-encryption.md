@@ -43,7 +43,7 @@ To enable VNet encryption with Managed Lustre:
    - A peered VNet that also has encryption enabled  
 
    > [!NOTE]  
-   > If you enable VNet encryption on a VNet after you deploy Managed Lustre, the cluster doesn't immediately support encrypted traffic. Encryption capability is activated only after a maintenance event and cluster reboot. For guidance on scheduling and managing updates, see the Managed Lustre maintenance window documentation.
+   > If you enable VNet encryption on a VNet after you deploy Managed Lustre, the cluster doesn't immediately support encrypted traffic. Encryption capability is activated only after a maintenance event and cluster reboot. For more information about scheduling and managing updates, see [Maintenance window for Managed Lustre](/azure/azure-managed-lustre/create-file-system-portal#maintenance-window).
 
 ## Enforcement mode
 
