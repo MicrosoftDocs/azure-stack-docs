@@ -123,15 +123,15 @@ Follow these steps to create a VM in a specific availability zone with strict pl
 
 If you specify no zone when creating an Azure Local VM, the system automatically chooses an optimal placement within the rack aware cluster.
 
-:::image type="content" source="media/rack-aware-cluster-availability-zone/no-zone.png" alt-text="Screenshot of virtual machine with no zone specific in the Azure portl." lightbox="media/rack-aware-cluster-availability-zone/no-zone.png":::
+:::image type="content" source="media/rack-aware-cluster-availability-zone/no-zone.png" alt-text="Screenshot of virtual machine with no zone specific in the Azure portal." lightbox="media/rack-aware-cluster-availability-zone/no-zone.png":::
 
 If you specify zone A there isn't any strict placement enabled. This means during a failover event, the VM can move to another zone. However, after zone A recovers the VM migrates back to zone A (the original zone the VM was created in).
 
-:::image type="content" source="media/rack-aware-cluster-availability-zone/zone-a.png" alt-text="Screenshot of virtual machine with no zone specific in the Azure portl." lightbox="media/rack-aware-cluster-availability-zone/zone-a.png":::
+:::image type="content" source="media/rack-aware-cluster-availability-zone/zone-a.png" alt-text="Screenshot of virtual machine with no zone specific in the Azure portal." lightbox="media/rack-aware-cluster-availability-zone/zone-a.png":::
 
 If you specify zone A strict placement, the VM is created in zone A and has strict placement enabled. This means during a failover event, the VM cannot move to another zone. Therefore, the VM goes down with the zone.
 
-:::image type="content" source="media/rack-aware-cluster-availability-zone/zone-a-strict.png" alt-text="Screenshot of virtual machine with no zone specific in the Azure portl." lightbox="media/rack-aware-cluster-availability-zone/zone-a-strict.png":::
+:::image type="content" source="media/rack-aware-cluster-availability-zone/zone-a-strict.png" alt-text="Screenshot of virtual machine with no zone specific in the Azure portal." lightbox="media/rack-aware-cluster-availability-zone/zone-a-strict.png":::
 
 ---
 
