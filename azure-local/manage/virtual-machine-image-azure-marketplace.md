@@ -178,7 +178,16 @@ PS C:\Users\azcli> az stack-hci-vm image create --custom-location $cl --name $mk
         "status": "Succeeded" 
       } 
     },
-    "version": { "name": "17763.7922.251021" }
+    "version": {
+    "name": "17763.7922.251021",
+    "properties": {
+    "storageProfile": {
+    "osDiskImage": {
+    "sizeInMB": 130050
+    }
+    }
+    }
+    },
 
   "resourceGroup": "mylocal-rg", 
   "systemData": { 
