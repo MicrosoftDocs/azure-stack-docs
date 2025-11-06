@@ -156,7 +156,7 @@ Use the `Invoke-ApplianceLogCollection` cmdlet to collect diagnostic logs from y
 
 The cmdlet lets you specify a time range for log collection. Run this cmdlet from a host that has the required PowerShell module imported and that can access the appliance management endpoint.
 
-Trigger the log collection.
+Trigger the log collection:
 
 - Collect control plane logs. Run this command on a system that can access the appliance VM (usually the same Hyper-V host):
 
