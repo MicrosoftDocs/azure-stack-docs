@@ -34,7 +34,7 @@ View the SMB signing status under the **Data protections** > **Network protectio
 
 After you enroll your Azure Local instance with Microsoft Defender for Cloud or assign the built-in policy *Windows machines should meet requirements of the Azure compute security baseline*, a compliance report is generated. For the full list of rules your Azure Local instance is compared to, see [Windows security baseline](/azure/governance/policy/samples/guest-configuration-baseline-windows).
 
-For an Azure Local machine, when all the hardware requirements for Secured-core are met, the default expected compliance score is 321 out of 324 rules - that is, 99% of the rules are compliant.
+For an Azure Local host machine, when all the hardware requirements for Secured-core are met, the default expected compliance score is 99% of the rules are compliant.
 
 The following table explains the rules that aren't compliant and the rationale of the current gap:
 
