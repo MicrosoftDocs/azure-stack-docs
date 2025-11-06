@@ -19,16 +19,16 @@ Microsoft 365 Local enables organizations to run Exchange Server, SharePoint Ser
 
 Designed for organizations that need productivity tools in a private cloud environment, Microsoft 365 Local leverages Azure Arc to provide a unified control plane with simplified deployment and streamlined updates for easy infrastructure management.
 
-The solution includes a validated reference architecture with certified hardware for optimal performance and reliability, along with a hardened security baseline and robust controls to protect your infrastructure. <!--can we link out to the security baseline for Microsoft 365 Local?-->
+The solution includes a validated reference architecture with certified hardware, along with a hardened security baseline and robust controls to protect your infrastructure. <!--can we link out to the security baseline for Microsoft 365 Local?-->
 
 ## Why use Microsoft 365 Local?
 
 Organizations choose Microsoft 365 Local for several key reasons:
 
-- Keep sensitive workloads and data entirely on-premises to meet the strictest jurisdictional and sovereignty mandates.
 - Gain the agility and simplicity of cloud management within your own data center, by implementing a sovereign private cloud with Azure-consistent management.
 - Plan and deploy with confidence through a Microsoft-authorized partner, reducing risk and accelerating time to value.
 - Choose between seamless integration with cloud services or a fully disconnected environment based on your sovereignty requirements.
+- Keep sensitive workloads and data entirely on-premises to meet the strictest jurisdictional and sovereignty mandates.
 
 ## Microsoft 365 Local capabilities
 
@@ -86,4 +86,4 @@ A typical engagement with a solution partner involves the following phases:
 | **Acquisition** | Procure necessary hardware, software, and licenses. |
 | **Deployment** | Execute the planned rollout in accordance with best practices. |
 
-Additional information about authorized partners will be available when Microsoft 365 Local reaches general availability. To learn more or get started, contact your account team or visit https://aka.ms/M365LocalSignup.
+Additional information about authorized partners will be available when Microsoft 365 Local reaches general availability. To learn more or get started, contact your Microsoft account team or visit https://aka.ms/M365LocalSignup.
