@@ -30,7 +30,7 @@ At a high-level, the monitoring architecture includes:
 
 Here's an architectural representation of Azure Local monitoring implementation:
 
-:::image type="content" source="./media/monitor-overview/monitor-architecture.png" alt-text="High-level architecture diagram of Azure Local monitoring." lightbox="./media/monitor-overview/monitor-architecture.png" :::
+:::image type="content" source="./media/multi-rack-monitor-overview/monitor-architecture.png" alt-text="High-level architecture diagram of Azure Local monitoring." lightbox="./media/multi-rack-monitor-overview/monitor-architecture.png" :::
 
 The observability framework is built on the following key components:
 
