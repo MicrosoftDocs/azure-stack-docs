@@ -1,16 +1,16 @@
 ---
-title: Azure Local solution overview
+title: Overview of hyperconverged deployments for Azure Local
 description: Azure Local is a hyperconverged infrastructure (HCI) cluster solution that hosts virtualized Windows and Linux workloads and their storage in a hybrid on-premises environment. Azure hybrid services enhance the cluster with capabilities such as cloud-based monitoring, Site Recovery, and VM backups, as well as a central view of all of your Azure Local deployments in the Azure portal.
 ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 11/04/2025
+ms.date: 11/06/2025
 ai-usage: ai-assisted
 ms.custom: e2e-hybrid, linux-related-content
 ---
 
-# Azure Local L2 overview
+# What are hyperconverged deployments for Azure Local?
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
