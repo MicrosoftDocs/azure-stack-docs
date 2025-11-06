@@ -24,6 +24,8 @@ This article explains how to create Azure Local virtual machines (VMs) in a loca
 
 - Before you create an Azure Local VM for a rack aware cluster, make sure that all prerequisites listed in [Create Azure Local virtual machines enabled by Azure Arc](../manage/create-arc-virtual-machines.md) are met.
 
+# [Azure CLI](#tab/azure-CLI)
+
 ## Set parameters
 
 1. Connect to a machine on your Azure Local.
@@ -114,3 +116,22 @@ Follow these steps to create a VM in a specific availability zone with strict pl
       "zone": "local-zone"  
     }, 
     ```
+
+---
+
+# [Azure portal](#tab/azure-portal)
+
+If you specify no zone when creating an Azure Local VM, the system automatically chooses an optimal placement within the rack aware cluster.
+
+:::image type="content" source="media/rack-aware-cluster-availability-zone/no-zone.png" alt-text="Screenshot of virtual machine with no zone specific in the Azure portl." lightbox="media/rack-aware-cluster-availability-zone/no-zone.png":::
+
+If you specify zone A there isn't any strict placement enabled. This means during a failover event, the VM can move to another zone. However, after zone A recovers the VM migrates back to zone A (the original zone the VM was created in).
+
+:::image type="content" source="media/rack-aware-cluster-availability-zone/zone-a.png" alt-text="Screenshot of virtual machine with no zone specific in the Azure portl." lightbox="media/rack-aware-cluster-availability-zone/zone-a.png":::
+
+If you specify zone A strict placement, the VM is created in zone A and has strict placement enabled. This means during a failover event, the VM cannot move to another zone. Therefore, the VM goes down with the zone.
+
+:::image type="content" source="media/rack-aware-cluster-availability-zone/zone-a-strict.png" alt-text="Screenshot of virtual machine with no zone specific in the Azure portl." lightbox="media/rack-aware-cluster-availability-zone/zone-a-strict.png":::
+
+---
+
