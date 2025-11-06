@@ -121,8 +121,8 @@ Follow these steps to create a VM in a specific availability zone with strict pl
 
 1. Sign in to the [Azure portal](https://portal.azure.com/)
 1. Navigate to your Azure Local rack aware cluster
-1. Select **Virtual Machine** and **Create**
-1. Provide details for the following:
+1. Select **Virtual Machine** and **Create**.
+1. Provide the following details:
 
     - Virtual machine name
     - Security type
@@ -131,7 +131,7 @@ Follow these steps to create a VM in a specific availability zone with strict pl
     - Memory (MB)
     - Memory type
     - [Availability zone](#availability-zones): None, Zone A, and Zone A Strict placement
-    - Enabe guest management
+    - Enable guest management
 
 ## Availability zones
 
@@ -143,13 +143,13 @@ If you specify no zone when creating an Azure Local VM, the system automatically
 
 ### Create a VM in an availability zone without strict placement
 
-If you specify zone A there isn't any strict placement enabled. This means during a failover event, the VM can move to another zone. However, after zone A recovers the VM migrates back to zone A (the original zone the VM was created in).
+If you specify zone A, there isn't any strict placement enabled. This means during a failover event, the VM can move to another zone. However, after zone A recovers, the VM migrates back to zone A (the original zone the VM was created in).
 
 :::image type="content" source="media/rack-aware-cluster-availability-zone/zone-a.png" alt-text="Screenshot of virtual machine with zone A in the Azure portal." lightbox="media/rack-aware-cluster-availability-zone/zone-a.png":::
 
 ### Create a VM in an availability zone with strict placement
 
-If you specify zone A strict placement, the VM is created in zone A and has strict placement enabled. This means during a failover event, the VM cannot move to another zone. Therefore, the VM goes down with the zone.
+If you specify zone A strict placement, the VM is created in zone A and has strict placement enabled. This means during a failover event, the VM can't move to another zone. Therefore, the VM goes down with the zone.
 
 :::image type="content" source="media/rack-aware-cluster-availability-zone/zone-a-strict.png" alt-text="Screenshot of virtual machine with zone A strict in the Azure portal." lightbox="media/rack-aware-cluster-availability-zone/zone-a-strict.png":::
 
