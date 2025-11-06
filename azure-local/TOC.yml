@@ -7,7 +7,7 @@ items:
   - name: What is Azure Local?
     href: ./overview.md
   - name: About Azure Local scale points
-    href: ./scale-points.md
+    href: ./overview.md
 - name: Scale points
   expanded: true
   items:
@@ -729,80 +729,51 @@ items:
       items:
       - name: About multi-rack deployments
         href: ./overview.md 
-      - name: Known issues and limitations
-        href: ../overview.md 
     - name: Deploy
       items:
       - name: Complete deployment prerequisites
-        href:./overview.md 
+        href: ./overview.md 
       - name: Deploy SDN resources
         items:
         - name: Create virtual networks
-          href:./overview.md 
+          href: ./overview.md
         - name: Create NSGs
-          href:./overview.md 
+          href: ./overview.md
         - name: Create load balancer
-          href:./overview.md 
+          href: ./overview.md
         - name: Create public IP addresses
-          href:./overview.md 
+          href: ./overview.md
         - name: Create NAT gateway
-          href:./overview.md 
+          href: ./overview.md
       - name: Deploy Azure Local VM workloads
         items:
         - name: Complete Azure Local VM prerequisites
-          href:./overview.md 
+          href: ./overview.md 
         - name: Assign RBAC roles
-          href:./overview.md 
+          href: ./overview.md
         - name: Create Azure Local VMs image
-          href:./overview.md 
+          href: ./overview.md
         - name: Create logical networks
-          href:./overview.md 
+          href: ./overview.md
         - name: Create network interfaces
-          href:./overview.md 
+          href: ./overview.md
         - name: Create Azure Local VMs
-          href:./overview.md 
+          href: ./overview.md
 
     - name: Monitor
       items:
         - name: Monitoring overview
-          href: ./l3/monitor-overview.md
+          href: ./overview.md
         - name: Monitor cluster metrics
-          href: ./l3/monitor-cluster-with-metrics.md
-        - name: How to configure cluster metrics collection
-          href: /azure/operator-nexus/howto-cluster-metrics-configuration-management
-        - name: Metrics collected
-          href: /azure/operator-nexus/list-of-metrics-collected
+          href: ./overview.md
 
-    - name: Concepts
-      items:
-      - name: Azure Local VMs
-        items:
-        - name: Azure Local VMs overview
-          href: /azure/operator-nexus/concepts-azure-local-vms-overview
-        - name: Azure Local VMs architecture
-          href: /azure/operator-nexus/concepts-azure-local-vms-architecture
-
-      - name: Security 
-        items: 
-        - name: Security features overview
-          href: /azure/operator-nexus/concepts-security-features-overview
-        - name: Set up Defender for cloud Security
-          href: /azure/operator-nexus/howto-setup-defender-for-cloud-security
-        - name: Secure resources with Azure Policy
-          href: /azure/operator-nexus/howto-use-azure-policy
-        - name: Security access and Identity management
-          href: /azure/operator-nexus/concepts-security-access-identity
-        - name: Configure Network Access Control Lists (ACLs)
-          href: /azure/operator-nexus/howto-configure-network-acls
-        - name: Enable/Disable Vulnerability Scanning
-          href: /azure/operator-nexus/howto-enable-disable-vulnerability-scanning
 
     - name: Reference
       items:
         - name: Azure Local multi-rack CLI reference
-          href:./overview.md 
+          href: ./overview.md 
         - name: Azure Local multi-rack PowerShell reference
-          href:./overview.md 
+          href: ./overview.md 
 
     - name: Related
       items:
