@@ -15,7 +15,7 @@ This article provides an overview of Microsoft 365 Local on Azure Local infrastr
 
 ## Overview
 
-Microsoft 365 Local enables organizations to run Exchange Server, SharePoint Server and Skype for Business Server on Azure Local infrastructure that is entirely customer-owned and managed. Using Microsoft 365 Local gives organizations enhanced control over data residency, access, and compliance, helping them meet their sovereignty requirements.
+Microsoft 365 Local enables organizations to run Exchange Server, SharePoint Server, and Skype for Business Server on Azure Local infrastructure that is entirely customer-owned and managed. Using Microsoft 365 Local gives organizations enhanced control over data residency, access, and compliance, helping them meet their sovereignty requirements.
 
 Designed for organizations that need productivity tools in a private cloud environment, Microsoft 365 Local leverages Azure Arc to provide a unified control plane with simplified deployment and streamlined updates for easy infrastructure management.
 
@@ -32,7 +32,7 @@ Organizations choose Microsoft 365 Local for several key reasons:
 
 ## Microsoft 365 Local capabilities
 
-- **Exchange Server, SharePoint Server, and Skype for Business Server:** Deliver core productivity and collaboration services on-premises, addressing compliance and stringent data residency requirements while providing enterprise-grade capabilities for email, document management, and unified communications.
+- **Exchange Server, SharePoint Server, and Skype for Business Server:** Deliver core productivity and collaboration services on-premises, addressing compliance, and stringent data residency requirements while providing enterprise-grade capabilities for email, document management, and unified communications.
 
 - **Certified and validated solutions by Microsoft and hardware partners:** Microsoft 365 Local is supported on Azure Local Premier Solutions offered in collaboration with hardware partners to guarantee compatibility and support for sovereign deployments.
 
