@@ -117,8 +117,6 @@ Follow these steps to create a VM in a specific availability zone with strict pl
     }, 
     ```
 
----
-
 # [Azure portal](#tab/azure-portal)
 
 If you specify no zone when creating an Azure Local VM, the system automatically chooses an optimal placement within the rack aware cluster.
