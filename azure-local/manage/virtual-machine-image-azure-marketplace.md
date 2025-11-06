@@ -21,6 +21,8 @@ To create Linux VM images from Azure Marketplace, choose:
 
 - [Prepare RHEL Azure Marketplace image for Azure Local VM deployment](../manage/virtual-machine-azure-marketplace-red-hat.md).
 
+- [Prepare Ubuntu Azure Marketplace image for Azure Local VMs](../manage/virtual-machine-azure-marketplace-ubuntu.md)
+
 ## Prerequisites
 
 Before you begin, make sure that the following prerequisites are completed.
@@ -137,13 +139,13 @@ Follow these steps to create a VM image using the Azure CLI.
 1. Create the VM image starting with a specified marketplace image:
 
     ```azurecli
-    az stack-hci-vm image create --resource-group $resource_group --custom-location $customLocationID --name $mktplaceImage --os-type $ostype --offer $offer --publisher $publisher --sku $sku 
+    az stack-hci-vm image create --resource-group $resource_group --custom-location $customLocationID --name $mktplaceImage --os-type $ostype --offer $offer --publisher $publisher --sku $sku --version $version
     ```
 
 Here's a sample output:
 
 ```
-PS C:\Users\azcli> az stack-hci-vm image create --custom-location $cl --name $mktplaceImage --os-type $ostype --resource-group $rg --publisher $publisher --offer $offer --sku $sku 
+PS C:\Users\azcli> az stack-hci-vm image create --custom-location $cl --name $mktplaceImage --os-type $ostype --resource-group $rg --publisher $publisher --offer $offer --sku $sku  --version $version
 { 
   "extendedLocation": { 
     "name": “/subscriptions/<Subscription ID>/resourceGroups/mylocal-rg/providers/Microsoft.ExtendedLocation/customLocations/mylocal-cl", 
@@ -175,7 +177,8 @@ PS C:\Users\azcli> az stack-hci-vm image create --custom-location $cl --name $mk
         "operationId": "13efc468-7473-429f-911b-858c1e6fc1d5*B11A62EE76B08EF194F8293CDD40F7BC71BFB93255D5A99DD11B4167690752D9", 
         "status": "Succeeded" 
       } 
-    }, 
+    },
+    "version": { "name": "17763.7922.251021" }
 
   "resourceGroup": "mylocal-rg", 
   "systemData": { 
@@ -185,7 +188,8 @@ PS C:\Users\azcli> az stack-hci-vm image create --custom-location $cl --name $mk
     "lastModifiedAt": "2024-09-23T19:06:07.532276+00:00", 
     "lastModifiedBy": "319f651f-7ddb-4fc6-9857-7aef9250bd05", 
     "lastModifiedByType": "Application" 
-  }, 
+  },
+  
 
   "tags": null, 
   "type": "microsoft.azurestackhci/marketplacegalleryimages" 
