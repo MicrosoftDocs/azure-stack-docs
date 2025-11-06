@@ -88,7 +88,7 @@ You can also configure the aggressiveness of balancing by using the cluster comm
 
 | AutoBalancerLevel | Aggressiveness | Behavior |
 |-------------------|----------------|----------|
-| 1 (default) | Low | Move when host is more than 80% loaded |
+| 1 | Low | Move when host is more than 80% loaded (default) |
 | 2 | Medium | Move when host is more than 70% loaded |
 | 3 | High | Average machines in the system and move when host is more than 5% above average |
 
