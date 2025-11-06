@@ -146,13 +146,7 @@ The following diagram shows key components for log collection in Azure Local dis
 
 :::image type="content" source="./media/disconnected-operations/on-demand-logs/on-demand-components.png" alt-text="Diagram that shows key components for on-demand log collection in Azure Local disconnected operations." lightbox=" ./media/disconnected-operations/on-demand-logs/on-demand-components.png":::
 
-Before you collect logs in a disconnected scenario, make sure you:
-
-1.
-
-1.
-
-1. Trigger the log collection using the [`Invoke-ApplianceLogCollectionAndSaveToShareFolder`](#invoke-appliancelogcollectionandsavetosharefolder)
+Trigger the log collection using the [`Invoke-ApplianceLogCollectionAndSaveToShareFolder`](#invoke-appliancelogcollectionandsavetosharefolder)
 
 ## Log collection cmdlets
 
@@ -162,48 +156,42 @@ Use the `Invoke-ApplianceLogCollection` cmdlet to collect diagnostic logs from y
 
 The cmdlet lets you specify a time range for log collection. Run this cmdlet from a host that has the required PowerShell module imported and that can access the appliance management endpoint.
 
-Before you collect logs:
+Trigger the log collection.
 
-1.
+- Collect control plane logs. Run this command on a system that can access the appliance VM (usually the same Hyper-V host):
 
-1.
+    ```powershell
+    Invoke-ApplianceLogCollection
+    ```
 
-1. Trigger the log collection.
+    This command gathers logs from the appliance VM and sends them directly to Microsoft support.
 
-    - Collect control plane logs. Run this command on a system that can access the appliance VM (usually the same Hyper-V host):
+    Example:
 
-        ```powershell
-        Invoke-ApplianceLogCollection
-        ```
+    ```azurecli
+    $fromDate = (Get-Date).AddMinutes(-30)
+    $toDate = (Get-Date)
+    $operationId = Invoke-ApplianceLogCollection -FromDate $fromDate -ToDate $toDate
+    ```
 
-        This command gathers logs from the appliance VM and sends them directly to Microsoft support.
+    Example output:
 
-        Example:
+    ```console
+    PS C:\Users\administrator> $operationId = Invoke-ApplianceLogCollection -FromDate $fromDate -ToDate $toDate
+    PS C:\Users\administrator> $operationId </OperationID>
+    ```
 
-        ```azurecli
-        $fromDate = (Get-Date).AddMinutes(-30)
-        $toDate = (Get-Date)
-        $operationId = Invoke-ApplianceLogCollection -FromDate $fromDate -ToDate $toDate
-        ```
+- Collect host node logs. On each Azure Local host node, run this command:
 
-        Example output:
+    ```powershell
+    Send-DiagnosticData -SaveToPath <shared folder path>
+    ```
 
-        ```console
-        PS C:\Users\administrator> $operationId = Invoke-ApplianceLogCollection -FromDate $fromDate -ToDate $toDate
-        PS C:\Users\administrator> $operationId </OperationID>
-        ```
+    This command collects logs specific to the node, including system level and cluster level diagnostics. For more information, see [Send-DiagnosticData -SaveToPath](#send-diagnosticdata--savetopath-disconnected-mode).
 
-    - Collect host node logs. On each Azure Local host node, run this command:
+- Upload host node logs by using the **standalone observability tool** and running the `Send-AzStackHciDiagnosticData` command.
 
-        ```powershell
-        Send-DiagnosticData -SaveToPath <shared folder path>
-        ```
-
-        This command collects logs specific to the node, including system level and cluster level diagnostics. For more information, see [Send-DiagnosticData -SaveToPath](#send-diagnosticdata--savetopath-disconnected-mode).
-
-    - Upload host node logs by using the **standalone observability tool** and running the `Send-AzStackHciDiagnosticData` command.
-
-        To learn more about the `Send-AzStackHciDiagnosticData` command, see [Get support for Azure Local deployment issues](../manage/get-support-for-deployment-issues.md).
+    To learn more about the `Send-AzStackHciDiagnosticData` command, see [Get support for Azure Local deployment issues](../manage/get-support-for-deployment-issues.md).
 
 ### Invoke-ApplianceLogCollectionAndSaveToShareFolder
 
