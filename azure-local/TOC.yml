@@ -23,6 +23,8 @@ items:
       href: oem-license.md
     - name: FAQ
       href: license-billing.yml
+  - name: Microsoft 365 Local overview
+    href: concepts/microsoft-365-local-overview.md
   - name: Compare to Windows Server
     href: concepts/compare-windows-server.md 
   - name: FAQ
