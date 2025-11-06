@@ -47,7 +47,7 @@ To collect logs on-demand, follow these steps:
 - [Select a log collection method for your connectivity scenario](#supported-scenarios)
 - [Collect logs](#log-collection-cmdlets)
 - [Monitor log collection](#monitor-log-collection)
-- Review logs locally or [send them to Microsoft](#use-send-diagnosticdata)
+- Review logs locally or [send them to Microsoft](#send-diagnosticdata)
 
 [!INCLUDE [disconnected-operations-observability-diagnostics](../includes/disconnected-operations-observability-diagnostics.md)]
 
@@ -258,7 +258,7 @@ Before you collect logs in a disconnected scenario, make sure you:
 
     To learn more about the `Send-AzStackHciDiagnosticData` command, see [Get support for Azure Local deployment issues](../manage/get-support-for-deployment-issues.md).
 
-1. After collection, review the logs locally or upload them to Microsoft with the [`Send-DiagnosticData`](#use-send-diagnosticdata) cmdlet.
+1. After collection, review the logs locally or upload them to Microsoft with the [`Send-DiagnosticData`](#send-diagnosticdata) cmdlet.
 
 ## Log collection cmdlets
 
