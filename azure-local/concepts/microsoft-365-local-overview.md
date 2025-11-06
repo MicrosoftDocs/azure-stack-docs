@@ -86,4 +86,4 @@ A typical engagement with a solution partner involves the following phases:
 | **Acquisition** | Procure necessary hardware, software, and licenses. |
 | **Deployment** | Execute the planned rollout in accordance with best practices. |
 
-Additional information about authorized partners will be available when Microsoft 365 Local reaches general availability. To learn more or get started, contact your Microsoft account team or visit https://aka.ms/M365LocalSignup.
+Additional information about authorized partners will be available when Microsoft 365 Local reaches general availability. To learn more or get started, contact your Microsoft account team or visit https://aka.ms/m365localsignup.
