@@ -4,7 +4,7 @@ description: Learn how Azure Local accelerates cloud and AI innovation by delive
 author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
-ms.date: 11/03/2025
+ms.date: 11/06/2025
 ms.topic: overview
 ---
 
@@ -33,5 +33,5 @@ Azure Local is part of Microsoft’s [adaptive cloud](https://www.microsoft.com/
 
 To learn more about Azure Local, see the following articles:
 - [Azure Local scale points](./scale-points.md)
-- [What is L2 scale point for Azure Local?](./overview/l2-overview.md)
-- [What is L3 scale point for Azure Local?](./l3/overview/l3-overview.md)
+- [What are hyperconverged deployments for Azure Local?](./index.yml)
+- [What are multi-rack deployments for Azure Local?](./index.yml)
