@@ -32,6 +32,6 @@ Azure Local is part of Microsoft’s [adaptive cloud](https://www.microsoft.com/
 ## Next steps
 
 To learn more about Azure Local, see the following articles:
-- [Azure Local scale points](./scale-points.md)
+- [Azure Local scale points](./index.yml)
 - [What are hyperconverged deployments for Azure Local?](./index.yml)
 - [What are multi-rack deployments for Azure Local?](./index.yml)

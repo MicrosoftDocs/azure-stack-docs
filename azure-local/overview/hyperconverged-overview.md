@@ -49,7 +49,7 @@ Azure Local combines the following:
 - Azure services including monitoring, backup, site recovery, and more.
 - Azure portal, Azure Resource Manager and Bicep templates, Azure CLI and tools.
 
-:::image type="content" source="./media/l2-overview/azure-stack-hci-solution.png" alt-text="The architecture diagram of the Azure Local solution." lightbox="./media/l2-overview/azure-stack-hci-solution.png" :::
+:::image type="content" source="./media/hyperconverged-overview/azure-stack-hci-solution.png" alt-text="The architecture diagram of the Azure Local solution." lightbox="./media/hyperconverged-overview/azure-stack-hci-solution.png" :::
 
 See [What's new in Azure Local](../whats-new.md) for details on the latest enhancements.
 
