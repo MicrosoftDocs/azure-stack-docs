@@ -21,7 +21,7 @@ To create Linux VM images from Azure Marketplace, choose:
 
 - [Prepare RHEL Azure Marketplace image for Azure Local VM deployment](../manage/virtual-machine-azure-marketplace-red-hat.md).
 
-- [Prepare Ubuntu Azure Marketplace image for Azure Local VMs](../manage/virtual-machine-azure-marketplace-ubuntu.md)
+- [Prepare Ubuntu Azure Marketplace image for Azure Local VMs](../manage/virtual-machine-azure-marketplace-ubuntu.md).
 
 ## Prerequisites
 
