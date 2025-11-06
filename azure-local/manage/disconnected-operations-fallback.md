@@ -29,7 +29,7 @@ Import the appliance logging module to use the cmdlets in this article.
 To import appliance logging, run the following command:
 
 ```PowerShell
-Import-Module "C:\azurelocal\OperationsModule\ApplianceFallbackLogging.psm1" -Force
+Import-Module "<disconnected operations module folder path>" -Force
 ```
 
 ## Export logs via Copy-DiagnosticData
@@ -126,7 +126,7 @@ Here are some examples of how to use the `Copy-DiagnosticData` cmdlet to get log
 To copy diagnostic data logs for specific roles, run these commands:
 
 ```powershell
-Import-Module "C:\azurelocal\OperationsModule\ApplianceFallbackLogging.psm1" -Force
+Import-Module "<disconnected operations module folder path>" -Force
 ```
 
 ```powershell
@@ -138,7 +138,7 @@ Copy-DiagnosticData -DiagnosticLogPath "C:/path/to/copied_logs_parent_directory"
 To copy diagnostic data logs for specific roles with time ranges and recovery keys, if provided, run these commands:
 
 ```powershell
-Import-Module "C:\azurelocal\OperationsModule\ApplianceFallbackLogging.psm1" -Force
+Import-Module "<disconnected operations module folder path>" -Force
 ```
 
 ```powershell
@@ -181,7 +181,7 @@ Example of the Copy-DiagnosticData output:
 To copy diagnostic data logs to a specific directory path, run these commands:
 
 ```powershell
-Import-Module "C:\azurelocal\OperationsModule\ApplianceFallbackLogging.psm1" -Force
+Import-Module "<disconnected operations module folder path>" -Force
 ```
 
 ```powershell

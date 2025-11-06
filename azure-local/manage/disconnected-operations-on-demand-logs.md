@@ -63,6 +63,9 @@ The following on-demand scenarios are supported for log collection:
 
 For a list of unsupported features in disconnected mode, see [Unsupported features in disconnected mode](#unsupported-features-in-disconnected-mode).
 
+> [!IMPORTANT]
+> Don’t run the `Send-DiagnosticData` cmdlet on Azure Local host nodes. The Azure Local disconnected operations control plane manages these nodes. Run the cmdlet from a Windows machine with Azure connectivity, such as your laptop or desktop.
+
 ## Azure Local disconnected when the appliance VM is connected to Azure
 
 When the appliance VM is connected to Azure, you can upload host node logs the same way you do in the Azure Local disconnected scenario. For control plane logs, send them directly by using `Invoke-ApplianceLogCollection`. You don't need to save them locally.
@@ -116,27 +119,25 @@ Before you collect logs in a connected disconnected scenario, make sure you:
     $context = Set-DisconnectedOperationsClientContext -ManagementEndpointClientCertificatePath "<Management Endpoint Client Cert Path>" -ManagementEndpointClientCertificatePassword $certPassword -ManagementEndpointIpAddress "<Management Endpoint IP address>"
     ```
 
-1. Trigger the log collection using the [`Invoke-ApplianceLogCollection`](#invoke-appliancelogcollection) cmdlet.
+1. Collect control plane logs. Run this command on a system that can access the appliance VM (usually the same Hyper-V host):
 
-<!--1. Collect control plane logs. Run this command on a system that can access the appliance VM (usually the same Hyper-V host):
+    ```powershell
+    Invoke-ApplianceLogCollection
+    ```
 
-        ```powershell
-        Invoke-ApplianceLogCollection
-        ```
+    This command gathers logs from the appliance VM and sends them directly to Microsoft support.
 
-        This command gathers logs from the appliance VM and sends them directly to Microsoft support.
+1. Collect host node logs. On each Azure Local host node, run this command:
 
-    1. Collect host node logs. On each Azure Local host node, run this command:
+    ```powershell
+    Send-DiagnosticData -SaveToPath <shared folder path>
+    ```
 
-        ```powershell
-        Send-DiagnosticData -SaveToPath <shared folder path>
-        ```
+    This command collects logs specific to the node, including system level and cluster level diagnostics. For more information, see [Send-DiagnosticData -SaveToPath](#send-diagnosticdata--savetopath-disconnected-mode).
 
-        This command collects logs specific to the node, including system level and cluster level diagnostics. For more information, see [Send-DiagnosticData -SaveToPath](#send-diagnosticdata--savetopath-disconnected-mode).
+1. Upload host node logs by using the **standalone observability tool** and running the `Send-AzStackHciDiagnosticData` command.
 
-    1. Upload host node logs by using the **standalone observability tool** and running the `Send-AzStackHciDiagnosticData` command.
-
-        To learn more about the `Send-AzStackHciDiagnosticData` command, see [Get support for Azure Local deployment issues](../manage/get-support-for-deployment-issues.md). -->
+    To learn more about the `Send-AzStackHciDiagnosticData` command, see [Get support for Azure Local deployment issues](../manage/get-support-for-deployment-issues.md).
 
 ## Azure Local disconnected when the appliance VM isn't connected to Azure
 
@@ -146,58 +147,45 @@ The following diagram shows key components for log collection in Azure Local dis
 
 :::image type="content" source="./media/disconnected-operations/on-demand-logs/on-demand-components.png" alt-text="Diagram that shows key components for on-demand log collection in Azure Local disconnected operations." lightbox=" ./media/disconnected-operations/on-demand-logs/on-demand-components.png":::
 
-Trigger the log collection using the [`Invoke-ApplianceLogCollectionAndSaveToShareFolder`](#invoke-appliancelogcollectionandsavetosharefolder)
+Before you collect logs in a disconnected scenario, make sure you:
 
-## Log collection cmdlets
-
-### Invoke-ApplianceLogCollection
-
-Use the `Invoke-ApplianceLogCollection` cmdlet to collect diagnostic logs from your Azure Local appliance on demand. Use this cmdlet when you need to troubleshoot issues or when Microsoft Support requests logs.
-
-The cmdlet lets you specify a time range for log collection. Run this cmdlet from a host that has the required PowerShell module imported and that can access the appliance management endpoint.
-
-Trigger the log collection:
-
-- Collect control plane logs. Run this command on a system that can access the appliance VM (usually the same Hyper-V host):
+1. Install the operations module if it's not installed. Use the `Import-Module` cmdlet and change the path to match your folder structure.
 
     ```powershell
-    Invoke-ApplianceLogCollection
-    ```
-
-    This command gathers logs from the appliance VM and sends them directly to Microsoft support.
-
-    Example:
-
-    ```azurecli
-    $fromDate = (Get-Date).AddMinutes(-30)
-    $toDate = (Get-Date)
-    $operationId = Invoke-ApplianceLogCollection -FromDate $fromDate -ToDate $toDate
+    Import-Module "<disconnected operations module folder path>\Azure.Local.DisconnectedOperations.psd1" -Force
     ```
 
     Example output:
 
     ```console
-    PS C:\Users\administrator> $operationId = Invoke-ApplianceLogCollection -FromDate $fromDate -ToDate $toDate
-    PS C:\Users\administrator> $operationId </OperationID>
+    PS C:\Users\administrator.s46r2004\Documents> Import-Module "Q:\AzureLocalVHD\OperationsModule\Azure.Local.DisconnectedOperations.psd1" -Force  
+    VERBOSE: [2025-03-26 19:49:12Z][Test-RunningRequirements] PSVersionTable:  
+      
+    Name                           Value  
+    ----                           -----  
+    PSVersion                      5.1.26100.2161  
+    PSEdition                      Desktop  
+    PSCompatibleVersions           {1.0, 2.0, 3.0, 4.0...}  
+    BuildVersion                   10.0.26100.2161  
+    CLRVersion                     4.0.30319.42000  
+    WSManStackVersion              3.0  
+    PSRemotingProtocolVersion      2.3  
+    SerializationVersion           1.1.0.1  
+      
+    VERBOSE: See Readme.md for directions on how to use this module.
     ```
 
-- Collect host node logs. On each Azure Local host node, run this command:
+1. Use [Deploy disconnected operations for Azure Local (Preview)](disconnected-operations-deploy.md) for your management endpoint.
 
-    ```powershell
-    Send-DiagnosticData -SaveToPath <shared folder path>
+    - Identify your management endpoint IP address.
+    - Identify the management client certificate used to authenticate with the Azure Local disconnected operations management endpoint.
+    - Set up the management endpoint client context. Run this script:
+
+    ```PowerShell
+    $certPasswordPlainText = "***"
+    $certPassword = ConvertTo-SecureString $certPasswordPlainText -AsPlainText -Force
+    $context = Set-DisconnectedOperationsClientContext -ManagementEndpointClientCertificatePath "<Management Endpoint Client Cert Path>" -ManagementEndpointClientCertificatePassword $certPassword -ManagementEndpointIpAddress "<Management Endpoint IP address>"
     ```
-
-    This command collects logs specific to the node, including system level and cluster level diagnostics. For more information, see [Send-DiagnosticData -SaveToPath](#send-diagnosticdata--savetopath-disconnected-mode).
-
-- Upload host node logs by using the **standalone observability tool** and running the `Send-AzStackHciDiagnosticData` command.
-
-    To learn more about the `Send-AzStackHciDiagnosticData` command, see [Get support for Azure Local deployment issues](../manage/get-support-for-deployment-issues.md).
-
-### Invoke-ApplianceLogCollectionAndSaveToShareFolder
-
-Use the `Invoke-ApplianceLogCollectionAndSaveToShareFolder` cmdlet to collect logs in your disconnected environment and copy them from the disconnected operations appliance VM to a shared folder. Use this cmdlet when the disconnected operations appliance VM management endpoint is accessible.
-
-Before you collect logs, follow these steps to create a share and set up credentials:
 
 1. Create a share. Run this command:
 
@@ -214,67 +202,94 @@ Before you collect logs, follow these steps to create a share and set up credent
     $shareCredential = New-Object System.Management.Automation.PSCredential ($user, $sec)
     ```
 
-1. Trigger the log collection. Replace the placeholder text `<File Share Path>` and `<Share Folder Password>` with your own values.
+1. Collect control plane logs. Run this command on a system that can access the appliance VM (usually the same Hyper-V host):
 
-    - Collect control plane logs. Run this command on a system that can access the appliance VM (usually the same Hyper-V host):
+    ```powershell
+    Invoke-ApplianceLogCollectionAndSaveToShareFolder
+    ```
 
-        ```powershell
-        Invoke-ApplianceLogCollectionAndSaveToShareFolder
-        ```
+    This command gathers logs from the appliance VM and saves them to the shared folder you specify.
 
-        This command gathers logs from the appliance VM and saves them to the shared folder you specify.
+    Example:
 
-        Example:
+    ```azurecli
+    $fromDate = (Get-Date).AddMinutes(-30)
+    $toDate = (Get-Date)
+    $operationId = Invoke-ApplianceLogCollectionAndSaveToShareFolder -FromDate $fromDate -ToDate $toDate `
+    -LogOutputShareFolderPath "<File Share Path>" -ShareFolderUsername "ShareFolderUser" -ShareFolderPassword (ConvertTo-SecureString "<Share Folder Password>" -AsPlainText -Force)
+    ```
 
-        ```azurecli
-        $fromDate = (Get-Date).AddMinutes(-30)
-        $toDate = (Get-Date)
-        $operationId = Invoke-ApplianceLogCollectionAndSaveToShareFolder -FromDate $fromDate -ToDate $toDate `
-        -LogOutputShareFolderPath "<File Share Path>" -ShareFolderUsername "ShareFolderUser" -ShareFolderPassword (ConvertTo-SecureString "<Share Folder Password>" -AsPlainText -Force)
-        ```
+    Example output:
 
-        Example output:
-
-        ```console
-        PS C:\Users\administrator.s46r2004\Documents> $operationId = Invoke-ApplianceLogCollectionAndSaveToShareFolder -FromDate $fromDate -ToDate $toDate -LogOutputShareFolderPath "\\<LogShareName>\$logShareName" -ShareFolderUsername "<Username>.masd.stbtest.microsoft.com\administrator" -ShareFolderPassword (ConvertTo-SecureString "<Password>" -AsPlainText -Force)  
+    ```console
+    PS C:\Users\administrator.s46r2004\Documents> $operationId = Invoke-ApplianceLogCollectionAndSaveToShareFolder -FromDate $fromDate -ToDate $toDate -LogOutputShareFolderPath "\\<LogShareName>\$logShareName" -ShareFolderUsername "<Username>.masd.stbtest.microsoft.com\administrator" -ShareFolderPassword (ConvertTo-SecureString "<Password>" -AsPlainText -Force)  
         
-        VERBOSE: [2023-04-09 22:34:28Z] [Invoke-ApplianceLogCollectionAndSaveToShareFolder] Trigger log collections with parameters:  
-        https://<IP address>/logs/logCollectionIndirectJob  
-        VERBOSE: [2023-04-09 22:34:28Z] [Invoke-ScriptsWithRetry] Executing 'Trigger log collection ...' with timeout 600 seconds ...  
-        VERBOSE: [2023-04-09 22:34:28Z] [Invoke-ScriptsWithRetry] [CHECK] [Attempt 0] for task 'Trigger log collection ...' ...  
-        VERBOSE: [2023-04-09 22:34:28Z] [Invoke-ScriptsWithRetry] Task 'Trigger log collection ...' succeeded.  
-        VERBOSE: [2023-04-09 22:34:28Z] [Invoke-ApplianceLogCollectionAndSaveToShareFolder] Log collections trigger result: "<Instance Id>"  
+    VERBOSE: [2023-04-09 22:34:28Z] [Invoke-ApplianceLogCollectionAndSaveToShareFolder] Trigger log collections with parameters:  
+    https://<IP address>/logs/logCollectionIndirectJob  
+    VERBOSE: [2023-04-09 22:34:28Z] [Invoke-ScriptsWithRetry] Executing 'Trigger log collection ...' with timeout 600 seconds ...  
+    VERBOSE: [2023-04-09 22:34:28Z] [Invoke-ScriptsWithRetry] [CHECK] [Attempt 0] for task 'Trigger log collection ...' ...  
+    VERBOSE: [2023-04-09 22:34:28Z] [Invoke-ScriptsWithRetry] Task 'Trigger log collection ...' succeeded.  
+    VERBOSE: [2023-04-09 22:34:28Z] [Invoke-ApplianceLogCollectionAndSaveToShareFolder] Log collections trigger result: "<Instance Id>"  
     
-        PS C:\Users\administrator.s46r2004\Documents> $onDemandRequestBody  
-        Name        Value  
-        ----        -----  
-        SaveToPath  \\<IP address>\Arc\LogsShare1  
-        FromDate    2025-04-09T21:26:51.8237434+00:00  
-        UserName    masd.stbtest.microsoft.com\administrator  
-        ToDate      2025-04-10T21:56:50.7453871+00:00  
-        UserPassword <Password>
-        ```
+    PS C:\Users\administrator.s46r2004\Documents> $onDemandRequestBody  
+    Name        Value  
+    ----        -----  
+    SaveToPath  \\<IP address>\Arc\LogsShare1  
+    FromDate    2025-04-09T21:26:51.8237434+00:00  
+    UserName    masd.stbtest.microsoft.com\administrator  
+    ToDate      2025-04-10T21:56:50.7453871+00:00  
+    UserPassword <Password>
+    ```
 
-    - Collect host node logs. On each Azure Local host node, run this command:
+1. Collect host node logs. On each Azure Local host node, run this command:
 
-        ```powershell
-        Send-DiagnosticData -SaveToPath <shared folder path>
-        ```
+    ```powershell
+    Send-DiagnosticData -SaveToPath <shared folder path>
+    ```
 
-        This command collects logs specific to the node, including system level and cluster level diagnostics. For more information, see [Send-DiagnosticData -SaveToPath](#send-diagnosticdata--savetopath-disconnected-mode).
+    This command collects logs specific to the node, including system level and cluster level diagnostics. For more information, see [Send-DiagnosticData -SaveToPath](#send-diagnosticdata--savetopath-disconnected-mode).
 
-    - Upload logs by using the **standalone observability tool**.
+1. Upload logs by using the **standalone observability tool**.
 
-        After you save logs from both the appliance and host nodes to a shared location, upload them with the standalone observability tool. There are product specific wrappers around **Microsoft.AzureStack.Observability.Standalone**.
+    After you save logs from both the appliance and host nodes to a shared location, upload them with the standalone observability tool. There are product specific wrappers around **Microsoft.AzureStack.Observability.Standalone**.
 
-        - For appliance logs: To upload logs from the appliance VM, use the `Send-DiagnosticData` command from the Azure Local disconnected operations PowerShell module.
-        - For host node logs: To upload logs from the host node, use the `Send-AzStackHciDiagnosticData` command.
+    - For appliance logs: To upload logs from the appliance VM, use the `Send-DiagnosticData` command from the Azure Local disconnected operations PowerShell module.
+    - For host node logs: To upload logs from the host node, use the `Send-AzStackHciDiagnosticData` command.
 
-        To learn more about the `Send-AzStackHciDiagnosticData` command, see [Get support for Azure Local deployment issues](../manage/get-support-for-deployment-issues.md).
+    To learn more about the `Send-AzStackHciDiagnosticData` command, see [Get support for Azure Local deployment issues](../manage/get-support-for-deployment-issues.md).
 
-1. After collection, review the logs locally or upload them to Microsoft with the `Send-DiagnosticData` cmdlet.
+1. After collection, review the logs locally or upload them to Microsoft with the [`Send-DiagnosticData`](#use-send-diagnosticdata) cmdlet.
 
-### Use Send-DiagnosticData
+## Log collection cmdlets
+
+### Invoke-ApplianceLogCollection
+
+Use the `Invoke-ApplianceLogCollection` cmdlet to collect diagnostic logs from your Azure Local appliance on demand. Use this cmdlet when you need to troubleshoot issues or when Microsoft Support requests logs.
+
+The cmdlet lets you specify a time range for log collection. Run this cmdlet from a host that has the required PowerShell module imported and that can access the appliance management endpoint.
+
+### Invoke-ApplianceLogCollectionAndSaveToShareFolder
+
+Use the `Invoke-ApplianceLogCollectionAndSaveToShareFolder` cmdlet to collect logs in your disconnected environment and copy them from the disconnected operations appliance VM to a shared folder. Use this cmdlet when the disconnected operations appliance VM management endpoint is accessible.
+
+### Send-DiagnosticData -SaveToPath (disconnected mode)
+
+The `Send-DiagnosticData -SaveToPath` cmdlet works in disconnected mode, and is the only supported option to copy logs from Azure Local host nodes. This cmdlet provides detailed diagnostic data to help you troubleshoot issues and is available when the [telemetry and diagnostics extension](../concepts/telemetry-and-diagnostics-overview.md) is installed.
+
+This cmdlet:
+
+- Is available when the [telemetry and diagnostics extension](../concepts/telemetry-and-diagnostics-overview.md) is installed.
+- Provides detailed diagnostic data to help you troubleshoot issues.
+
+Capabilities:
+
+- Collects role-specific and supplementary logs, and optional Software Defined Data Center logs
+- Filters logs by role, date range, or log type.
+- Runs only on the node where you execute the command, and bypasses observability agents.
+- Saves logs locally only when you use the `-SaveToPath` parameter.
+- Supports secure credentials to save logs to a network share.
+
+### Send-DiagnosticData
 
 The `Send-DiagnosticData` cmdlet lets you send logs to Microsoft support through the standalone pipeline.
 
@@ -304,42 +319,28 @@ Use this method when you can’t collect logs directly from the appliance VM, fo
 - The appliance VM is disconnected from Azure.
 - The management endpoint isn’t accessible.
 
-### Best practice
-
-Don’t run the `Send-DiagnosticData` cmdlet on Azure Local host nodes. The Azure Local disconnected operations control plane manages these nodes. Run the cmdlet from a Windows machine with Azure connectivity, such as your laptop or desktop.
-
-### Send-DiagnosticData cmdlet examples
+#### Send-DiagnosticData cmdlet examples
 
 Here are some examples of how to use the `Send-DiagnosticData` cmdlet.
 
+- To import the module, run this command:
+
+    ```powershell
+    Import-Module "Q:\AzureLocalVHD\OperationsModule\ApplianceFallbackLogging.psm1" -Force
+    Send-DiagnosticData -ResourceGroupName <String> -SubscriptionId <String> -TenantId <String> [-RegistrationWithDeviceCode] -RegistrationRegion <String> [-Cloud <String>] -DiagnosticLogPath <String> [-ObsRootFolderPath <String>] [-StampId <Guid>] [<CommonParameters>]
+    ```
+
 - To sign in manually by using a device code, run this command:
 
-  ```powerShell
-  Send-DiagnosticData -ResourceGroupName <String> -SubscriptionId <String> -TenantId <String> [-RegistrationWithDeviceCode] -RegistrationRegion <String> [-Cloud <String>] -DiagnosticLogPath <String> [-ObsRootFolderPath <String>] [-StampId <Guid>] [<CommonParameters>]
-  ```
+    ```powerShell
+    Send-DiagnosticData -ResourceGroupName <String> -SubscriptionId <String> -TenantId <String> [-RegistrationWithDeviceCode] -RegistrationRegion <String> [-Cloud <String>] -DiagnosticLogPath <String> [-ObsRootFolderPath <String>] [-StampId <Guid>] [<CommonParameters>]
+    ```
 
 - To use service principal credentials, run this command:
 
-  ```powerShell
-  Send-DiagnosticData -ResourceGroupName <String> -SubscriptionId <String> -TenantId <String> -RegistrationWithCredential <PSCredential> -RegistrationRegion <String> [-Cloud <String>] -DiagnosticLogPath <String> [-ObsRootFolderPath <String>] [-StampId <Guid>] [<CommonParameters>]
-  ```
-
-### Send-DiagnosticData -SaveToPath (disconnected mode)
-
-The `Send-DiagnosticData -SaveToPath` cmdlet works in disconnected mode, and is the only supported option to copy logs from Azure Local host nodes. This cmdlet provides detailed diagnostic data to help you troubleshoot issues and is available when the [telemetry and diagnostics extension](../concepts/telemetry-and-diagnostics-overview.md) is installed.
-
-This cmdlet:
-
-- Is available when the [telemetry and diagnostics extension](../concepts/telemetry-and-diagnostics-overview.md) is installed.
-- Provides detailed diagnostic data to help you troubleshoot issues.
-
-Capabilities:
-
-- Collects role-specific and supplementary logs, and optional Software Defined Data Center logs
-- Filters logs by role, date range, or log type.
-- Runs only on the node where you execute the command, and bypasses observability agents.
-- Saves logs locally only when you use the `-SaveToPath` parameter.
-- Supports secure credentials to save logs to a network share.
+    ```powerShell
+    Send-DiagnosticData -ResourceGroupName <String> -SubscriptionId <String> -TenantId <String> -RegistrationWithCredential <PSCredential> -RegistrationRegion <String> [-Cloud <String>] -DiagnosticLogPath <String> [-ObsRootFolderPath <String>] [-StampId <Guid>] [<CommonParameters>]
+    ```
 
 ## Monitor log collection
 

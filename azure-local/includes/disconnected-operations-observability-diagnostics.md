@@ -18,7 +18,7 @@ We recommend that you set up observability to get telemetry and logs for your fi
 Here's a list of parameters needed:
 
 - **Azure resource group**: Create a resource group in Azure for the appliance, such as azure-disconnectedoperations.
-- **Service Principal Name (SPN)**: Create an SPN that has contributor rights to the resource group.
+- **Service Principal Name (SPN)**: Create an SPN that has `Azure Connected Machine Resource Administrator` rights to the resource group.
 - **Service Principal credentials**: Get the service principal ID (appId) and secret (password).
 - **Subscription**: Identify your Azure subscription.
 - **Tenant ID**: Identify your tenant ID.
@@ -68,11 +68,10 @@ Follow these steps to set up observability for diagnostics and support:
     ```json  
     {
       "appId": "<AppId>",
-      "displayName": "azlocalobsapp",
+      "displayName": "<SPNName>",
       "password": "<RETRACTED>",
       "tenant": "<RETRACTED>"
     }
-    <SubscriptionID>
     ```
 
     > [!NOTE]
