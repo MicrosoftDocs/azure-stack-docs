@@ -6,781 +6,766 @@ items:
   items:  
   - name: What is Azure Local?
     href: ./overview.md
-  - name: About Azure Local scale points
+  - name: About Azure Local deployments
     href: ./overview.md
-- name: Scale points
-  expanded: true
-  items:
-  - name: Hyperconverged deployments
-    items: 
-    - name: Overview
+
+- name: Hyperconverged deployments
+  items: 
+  - name: Overview
+    items:
+    - name: About hyperconverged deployments
+      href: ./overview/hyperconverged-overview.md
+    - name: What's new in Azure Local? 
+      href: whats-new.md
+    - name: Release notes
       items:
-      - name: About hyperconverged deployments
-        href: ./overview/hyperconverged-overview.md
-      - name: What's new in Azure Local? 
-        href: whats-new.md
-      - name: Release notes
-        items:
-        - name: Release information
-          href: release-information-23h2.md
-        - name: Known issues
-          href: known-issues.md
-        - name: Security updates
-          href: security-update/security-update.md
-      - name: OEM License
-        items: 
-        - name: OEM license information
-          href: oem-license.md
-        - name: FAQ
-          href: license-billing.yml
-      - name: Compare to Windows Server
-        href: concepts/compare-windows-server.md 
+      - name: Release information
+        href: release-information-23h2.md
+      - name: Known issues
+        href: known-issues.md
+      - name: Security updates
+        href: security-update/security-update.md
+    - name: OEM License
+      items: 
+      - name: OEM license information
+        href: oem-license.md
       - name: FAQ
-        href: faq.yml
+        href: license-billing.yml
+    - name: Compare to Windows Server
+      href: concepts/compare-windows-server.md 
+    - name: FAQ
+      href: faq.yml
 
-    - name: Evaluate 
-      items:
-      - name: Virtual deployment
-        href: deploy/deployment-virtual.md
-      - name: Azure Local jumpstart
-        href: https://jumpstart.azure.com/azure_jumpstart_localbox
+  - name: Evaluate 
+    items:
+    - name: Virtual deployment
+      href: deploy/deployment-virtual.md
+    - name: Azure Local jumpstart
+      href: https://jumpstart.azure.com/azure_jumpstart_localbox
 
-    - name: Plan
+  - name: Plan
+    items:
+    - name: Review requirements
       items:
-      - name: Review requirements
+      - name: System requirements
+        href: concepts/system-requirements-23h2.md
+      - name: System requirements for low capacity class
+        href: concepts/system-requirements-small-23h2.md
+      - name: Physical network requirements
+        href: concepts/physical-network-requirements.md
+      - name: Host network requirements
+        href: concepts/host-network-requirements.md
+      - name: Firewall requirements
+        href: concepts/firewall-requirements.md
+    - name: Review network reference patterns
+      items:
+      - name: Network reference patterns overview
+        href: plan/network-patterns-overview.md
+      - name: Choose network reference pattern
+        href: plan/choose-network-pattern.md
+      - name: Single-node deployment
         items:
-        - name: System requirements
-          href: concepts/system-requirements-23h2.md
-        - name: System requirements for low capacity class
-          href: concepts/system-requirements-small-23h2.md
-        - name: Physical network requirements
-          href: concepts/physical-network-requirements.md
-        - name: Host network requirements
-          href: concepts/host-network-requirements.md
-        - name: Firewall requirements
-          href: concepts/firewall-requirements.md
-      - name: Review network reference patterns
-        items:
-        - name: Network reference patterns overview
-          href: plan/network-patterns-overview.md
-        - name: Choose network reference pattern
-          href: plan/choose-network-pattern.md
         - name: Single-node deployment
-          items:
-          - name: Single-node deployment
-            href: plan/single-server-deployment.md
-          - name: Pattern components
-            href: plan/single-server-components.md
-          - name: Pattern IP requirements
-            href: plan/single-server-ip-requirements.md
-        - name: Two-node deployments
-          items:
-          - name: Storage switchless, single switch
-            href: plan/two-node-switchless-single-switch.md
-          - name: Storage switchless, two switches
-            href: plan/two-node-switchless-two-switches.md
-          - name: Storage switched, non-converged
-            href: plan/two-node-switched-non-converged.md
-          - name: Storage switched, fully converged
-            href: plan/two-node-switched-converged.md
-          - name: Pattern components
-            href: plan/two-node-components.md
-          - name: Pattern IP requirements
-            href: plan/two-node-ip-requirements.md
-        - name: Three-node switchless deployments
-          items:
-          - name: Storage switchless, dual TOR, single link
-            href: plan/three-node-switchless-two-switches-single-link.md
-          - name: Storage switchless, dual TOR, dual link
-            href: plan/three-node-switchless-two-switches-two-links.md
-          - name: Pattern components
-            href: plan/three-node-components.md
-          - name: Pattern IP requirements
-            href: plan/three-node-ip-requirements.md
-        - name: Four-node switchless deployments
-          items:
-          - name: Storage switchless, dual TOR, dual link
-            href: plan/four-node-switchless-two-switches-two-links.md
-        - name: SDN considerations
-          href: plan/network-patterns-sdn-considerations.md
-      - name: Review Azure Arc gateway for Azure Local
-        href: deploy/deployment-azure-arc-gateway-overview.md
-      - name: Review cloud deployment network considerations
-        href: plan/cloud-deployment-network-considerations.md
-      - name: Review security
+          href: plan/single-server-deployment.md
+        - name: Pattern components
+          href: plan/single-server-components.md
+        - name: Pattern IP requirements
+          href: plan/single-server-ip-requirements.md
+      - name: Two-node deployments
         items:
-        - name: About security features
-          href: concepts/security-features.md
-        - name: Azure Local security book
-          href: security-book/overview.md
-      - name: Assess environment readiness
-        href: manage/use-environment-checker.md
-      - name: Configure advanced Active Directory settings
-        href: plan/configure-custom-settings-active-directory.md 
-          
-    - name: Deploy
+        - name: Storage switchless, single switch
+          href: plan/two-node-switchless-single-switch.md
+        - name: Storage switchless, two switches
+          href: plan/two-node-switchless-two-switches.md
+        - name: Storage switched, non-converged
+          href: plan/two-node-switched-non-converged.md
+        - name: Storage switched, fully converged
+          href: plan/two-node-switched-converged.md
+        - name: Pattern components
+          href: plan/two-node-components.md
+        - name: Pattern IP requirements
+          href: plan/two-node-ip-requirements.md
+      - name: Three-node switchless deployments
+        items:
+        - name: Storage switchless, dual TOR, single link
+          href: plan/three-node-switchless-two-switches-single-link.md
+        - name: Storage switchless, dual TOR, dual link
+          href: plan/three-node-switchless-two-switches-two-links.md
+        - name: Pattern components
+          href: plan/three-node-components.md
+        - name: Pattern IP requirements
+          href: plan/three-node-ip-requirements.md
+      - name: Four-node switchless deployments
+        items:
+        - name: Storage switchless, dual TOR, dual link
+          href: plan/four-node-switchless-two-switches-two-links.md
+      - name: SDN considerations
+        href: plan/network-patterns-sdn-considerations.md
+    - name: Review Azure Arc gateway for Azure Local
+      href: deploy/deployment-azure-arc-gateway-overview.md
+    - name: Review cloud deployment network considerations
+      href: plan/cloud-deployment-network-considerations.md
+    - name: Review security
       items:
-      - name: Read overview
-        href: deploy/deployment-introduction.md
-      - name: Complete prerequisites
-        href: deploy/deployment-prerequisites.md
-      - name: 1. Prepare Active Directory
-        href: deploy/deployment-prep-active-directory.md
-      - name: 2. Download the software
-        href: deploy/download-23h2-software.md
-      - name: 3. Install the OS
-        href: deploy/deployment-install-os.md
-      - name: 4. Set up subscription permissions
-        href: deploy/deployment-arc-register-server-permissions.md
-      - name: 5. Choose a registration method
-        items:
-        - name: Without Arc gateway
-          href: deploy/deployment-without-azure-arc-gateway.md
-        - name: With Arc gateway
-          href: deploy/deployment-with-azure-arc-gateway.md
-        - name: Register systems with OEM image
-          href: deploy/deployment-arc-registration-preinstalled-os.md
-          hidden: true
-      - name: 6. Choose a deployment method
-        items:
-        - name: 6A. Deploy via Azure portal
-          href: deploy/deploy-via-portal.md
-        - name: 6B. Deploy via ARM template
-          href: deploy/deployment-azure-resource-manager-template.md
-
-
-      - name: Deploy using local identity with Key Vault
-        href: deploy/deployment-local-identity-with-key-vault.md
-      - name: Deploy workloads
-        items:
-        - name: Run AKS on Azure Local
-          href: /azure/aks/hybrid/aks-create-clusters-portal?toc=/azure/azure-local/toc.json&bc=/azure/azure-local/breadcrumb/toc.json
-        - name: Run Azure Virtual Desktop on Azure Local
-          href: /azure/virtual-desktop/deploy-azure-virtual-desktop?toc=/azure/azure-local/toc.json&bc=/azure/azure-local/breadcrumb/toc.json
-        - name: Run Azure Local VMs
-          href: manage/create-arc-virtual-machines.md
-        - name: Run SQL Server
-          href: deploy/sql-server-23h2.md
-
-    - name: Enable
+      - name: About security features
+        href: concepts/security-features.md
+      - name: Azure Local security book
+        href: security-book/overview.md
+    - name: Assess environment readiness
+      href: manage/use-environment-checker.md
+    - name: Configure advanced Active Directory settings
+      href: plan/configure-custom-settings-active-directory.md 
+        
+  - name: Deploy
+    items:
+    - name: Read overview
+      href: deploy/deployment-introduction.md
+    - name: Complete prerequisites
+      href: deploy/deployment-prerequisites.md
+    - name: 1. Prepare Active Directory
+      href: deploy/deployment-prep-active-directory.md
+    - name: 2. Download the software
+      href: deploy/download-23h2-software.md
+    - name: 3. Install the OS
+      href: deploy/deployment-install-os.md
+    - name: 4. Set up subscription permissions
+      href: deploy/deployment-arc-register-server-permissions.md
+    - name: 5. Choose a registration method
       items:
-      - name: SDN enabled by Azure Arc
-        items:
-        - name: Overview
-          href: concepts/sdn-overview.md
-        - name: Enable SDN integration
-          href: deploy/enable-sdn-integration.md
-        - name: Create Network Security Groups
-          href: manage/create-network-security-groups.md
-        - name: Manage Network Security Groups
-          href: manage/manage-network-security-groups.md
-        - name: Troubleshoot SDN
-          href: manage/sdn-troubleshooting.md
-        - name: SDN FAQ
-          href: concepts/sdn-frequently-asked-questions.yml
-
-      - name: SDN managed by on-premises tools
-        items:
-        - name: Overview
-          items:
-          - name: Software-defined networking overview
-            href: concepts/software-defined-networking-23h2.md
-          - name: Network Controller overview
-            href: concepts/network-controller-overview.md
-          - name: RAS Gateway overview
-            href: concepts/gateway-overview.md
-          - name: Load balancer overview
-            href: concepts/software-load-balancer.md
-          - name: Datacenter Firewall overview
-            href: concepts/datacenter-firewall-overview.md
-          - name: Route reflector overview
-            href: concepts/route-reflector-overview.md
-          - name: SDN Multisite overview
-            href: concepts/sdn-multisite-overview.md
-        - name: Plan 
-          items:
-          - name: Network Controller
-            href: concepts/plan-network-controller-deployment.md
-          - name: SDN infrastructure
-            href: concepts/plan-software-defined-networking-infrastructure-23h2.md
-        - name: Deploy
-          items:    
-          - name: Using Express scripts
-            href: deploy/sdn-express-23h2.md
-          - name: Using Windows Admin Center
-            href: deploy/sdn-wizard-23h2.md
-        - name: Manage
-          items:
-          - name: Update SDN infrastructure
-            href: manage/update-sdn.md
-          - name: Manage tenant logical networks
-            href: manage/tenant-logical-networks.md
-          - name: Manage tenant virtual networks
-            href: manage/tenant-virtual-networks.md
-          - name: Manage software load balancers
-            href: manage/load-balancers.md
-          - name: Manage gateway connections
-            href: manage/gateway-connections.md
-          - name: Manage default network access policies
-            href: manage/manage-default-network-access-policies-virtual-machines-23h2.md
-          - name: Configure network security groups with Windows Admin Center
-            href: manage/use-datacenter-firewall-windows-admin-center.md
-          - name: Configure network security groups with PowerShell
-            href: manage/use-datacenter-firewall-powershell.md
-          - name: Configure network security groups with tags
-            href: manage/configure-network-security-groups-with-tags.md
-          - name: Manage SDN Multisite
-            href: manage/manage-sdn-multisite.md
-          - name: Assign public IP address to a VM
-            href: manage/assign-public-ip-to-vm.md
-          - name: Configure load balancer for high availability ports
-            href: manage/configure-software-load-balancer.md
-          - name: Load balance multiple logical networks
-            href: manage/load-balance-multiple-networks.md
-          - name: Manage SDN security
-            items:
-            - name: Manage certificates for SDN
-              href: manage/sdn-manage-certs.md
-            - name: Update Network Controller certificates
-              href: manage/update-network-controller-certificates.md
-            - name: Update SDN infrastructure certificates
-              href: manage/update-sdn-infrastructure-certificates.md
-            - name: Secure the Network Controller
-              href: manage/nc-security.md
-            - name: Authenticate with Kerberos
-              href: manage/kerberos-with-spn.md
-            - name: SDN technical reference
-              href: manage/sdn-technical-reference.md
-        - name: Troubleshoot
-          items:
-          - name: Troubleshoot SDN deployment
-            href: manage/troubleshoot-sdn-deployment.md
-          - name: Collect SDN logs
-            href: manage/sdn-log-collection.md
-          - name: Troubleshoot common SDN issues
-            href: manage/troubleshoot-common-sdn-issues.md
-          - name: Troubleshoot Software Load Balancer for SDN
-            href: manage/troubleshoot-software-load-balancer.md
-
-    - name: Update 
+      - name: Without Arc gateway
+        href: deploy/deployment-without-azure-arc-gateway.md
+      - name: With Arc gateway
+        href: deploy/deployment-with-azure-arc-gateway.md
+      - name: Register systems with OEM image
+        href: deploy/deployment-arc-registration-preinstalled-os.md
+        hidden: true
+    - name: 6. Choose a deployment method
       items:
-      - name: About Updates
-        href: update/about-updates-23h2.md
-      - name: About Solution Builder Extension software updates
-        href: update/solution-builder-extension.md
-      - name: Understand update phases
-        href: update/update-phases-23h2.md
-      - name: Update via PowerShell
-        href: update/update-via-powershell-23h2.md
-      - name: Opt in to update to 12.25xx from 11.xxxx
-        href: update/update-opt-enable.md
-      - name: Update via PowerShell with limited connectivity
-        href: update/import-discover-updates-offline-23h2.md
-      - name: Update via Azure portal
-        href: update/azure-update-manager-23h2.md
-      - name: Review best practices 
-        href: update/update-best-practices.md
-      - name: Troubleshoot updates
-        href: update/update-troubleshooting-23h2.md
+      - name: 6A. Deploy via Azure portal
+        href: deploy/deploy-via-portal.md
+      - name: 6B. Deploy via ARM template
+        href: deploy/deployment-azure-resource-manager-template.md
 
-    - name: Upgrade 
+
+    - name: Deploy using local identity with Key Vault
+      href: deploy/deployment-local-identity-with-key-vault.md
+    - name: Deploy workloads
       items:
-      - name: About Azure Local upgrades
-        href: upgrade/about-upgrades-23h2.md
-      - name: 1. Upgrade OS via PowerShell
-        href: upgrade/upgrade-22h2-to-23h2-powershell.md
-      - name: 2. Perform post-OS upgrade tasks
-        href: upgrade/post-upgrade-steps.md
-      - name: 3. Configure Network ATC
-        href: upgrade/install-enable-network-atc.md
-      - name: 4. Validate solution upgrade readiness
-        href: upgrade/validate-solution-upgrade-readiness.md
-      - name: 5. Apply solution upgrade
-        items:
-        - name: Upgrade via Azure portal
-          href: upgrade/install-solution-upgrade.md
-        - name: Upgrade via ARM template
-          href: upgrade/install-solution-upgrade-azure-resource-manager-template.md
-      - name: Upgrade stretched clusters to 23H2
-        href: upgrade/upgrade-stretched-cluster-to-23h2.md
-      - name: Troubleshoot upgrades
-        href: upgrade/troubleshoot-upgrade-to-23h2.md
+      - name: Run AKS on Azure Local
+        href: /azure/aks/hybrid/aks-create-clusters-portal?toc=/azure/azure-local/toc.json&bc=/azure/azure-local/breadcrumb/toc.json
+      - name: Run Azure Virtual Desktop on Azure Local
+        href: /azure/virtual-desktop/deploy-azure-virtual-desktop?toc=/azure/azure-local/toc.json&bc=/azure/azure-local/breadcrumb/toc.json
+      - name: Run Azure Local VMs
+        href: manage/create-arc-virtual-machines.md
+      - name: Run SQL Server
+        href: deploy/sql-server-23h2.md
 
-
-    - name: Manage
-      items:
-
-      - name: Azure Local VMs
-        items:
-        - name: What is Azure Local VM management?
-          href: manage/azure-arc-vm-management-overview.md
-        - name: Compare VM management capabilities
-          href: concepts/compare-vm-management-capabilities.md
-        - name: Supported operations for VMs
-          href: manage/virtual-machine-operations.md
-        - name: Review prerequisites
-          href: manage/azure-arc-vm-management-prerequisites.md
-        - name: Assign RBAC role
-          href: manage/assign-vm-rbac-roles.md
-        - name: Create Azure Local VM resources
-          items:
-          - name: 1. Create a storage path
-            href: manage/create-storage-path.md
-          - name: 2. Create VM images
-            items:
-            - name: Using Azure Marketplace images
-              href: manage/virtual-machine-image-azure-marketplace.md
-            - name: Using Azure Compute Gallery images
-              href: manage/virtual-machine-image-azure-compute-gallery.md
-            - name: Using images in Azure Storage account
-              href: manage/virtual-machine-image-storage-account.md
-            - name: Using images in local share 
-              href: manage/virtual-machine-image-local-share.md
-            - name: Using an existing Azure Local VM
-              href: manage/virtual-machine-image-existing-arc-vm.md
-            - name: Using Linux VM image
-              items: 
-              - name: Using Ubuntu VM image
-                href: manage/virtual-machine-image-linux-sysprep.md
-                items:
-                - name: Using Ubuntu Azure Marketplace image
-                  href: manage/virtual-machine-azure-marketplace-ubuntu.md
-              - name: Using CentOS VM image 
-                href: manage/virtual-machine-image-centos.md
-              - name: Using Red Hat Enterprise VM image
-                href: manage/virtual-machine-image-red-hat-enterprise.md
-                items:
-                - name: Using Red Hat Enterprise Azure Marketplace image
-                  href: manage/virtual-machine-azure-marketplace-red-hat.md
-              - name: Using SUSE VM image
-                href: manage/virtual-machine-image-suse.md
-          - name: 3. Create logical networks
-            href: manage/create-logical-networks.md
-          - name: 4. Create network interfaces
-            href: manage/create-network-interfaces.md
-          - name: 5. Create Azure Local VMs
-            href: manage/create-arc-virtual-machines.md
-        - name: Connect to VM via SSH
-          href: manage/connect-arc-vm-using-ssh.md
-        - name: Manage Azure Local VMs
-          href: manage/manage-arc-virtual-machines.md
-        - name: Manage Azure Local VM resources
-          href: manage/manage-arc-virtual-machine-resources.md 
-        - name: Manage VM extensions
-          href: manage/virtual-machine-manage-extension.md
-        - name: Activate Azure Local VMs
-          items:
-          - name: Azure verification for VMs
-            href: deploy/azure-verification.md
-          - name: Activate Windows Server VMs
-            href: manage/vm-activate.md
-          - name: Deploy Windows Server Azure Edition VMs
-            href: manage/windows-server-azure-edition-23h2.md
-          - name: Extended Security Updates (ESUs)
-            href: manage/azure-benefits-esu.md
-      
-        - name: Collect log files for Azure Local VM
-          href: manage/collect-log-files-arc-enabled-vms.md 
-        - name: Implement disaster recovery
-          items:
-          - name: Overview
-            href: manage/disaster-recovery-overview.md
-          - name: Infrastructure resiliency
-            href: manage/disaster-recovery-infrastructure-resiliency.md
-          - name: Virtual machine resiliency
-            items:
-            - name: Overview
-              href: manage/disaster-recovery-vm-resiliency.md
-            - name: Use Azure Site Recovery
-              href: manage/azure-site-recovery.md
-            - name: Use Azure Backup Server
-              href: /azure/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines?toc=/azure/azure-local/toc.json&bc=/azure/azure-local/breadcrumb/toc.json
-          - name: Workloads resiliency
-            href: manage/disaster-recovery-workloads-resiliency.md
-        - name: Troubleshoot
-          href: manage/troubleshoot-arc-enabled-vms.md
-        - name: FAQs
-          href: manage/azure-arc-vms-faq.yml
-
-      - name: Trusted launch for Azure Local VMs
-        items: 
-          - name: What is Trusted launch for Azure Local VMs?
-            href: manage/trusted-launch-vm-overview.md
-          - name: Automatic virtual TPM state transfer
-            href: manage/trusted-launch-automatic-state-transfer.md
-          - name: Enable guest attestation
-            href: manage/trusted-launch-guest-attestation.md
-          - name: Manual backup and recovery
-            href: manage/trusted-launch-vm-import-key.md
-
-      - name: Unmanaged VMs
-        items:
-          - name: Manage VMs
-            href: manage/vm.md
-          - name: Manage VMs with PowerShell
-            href: manage/vm-powershell.md
-          - name: Create VM affinity rules
-            href: manage/vm-affinity.md
-          - name: VM load balancing
-            href: manage/vm-load-balancing.md
-          - name: Attach GPU to Linux VM
-            href: manage/attach-gpu-to-linux-vm.md
-          - name: Enable nested virtualization
-            href: manage/enable-nested-virtualization.md
-
-      - name: GPUs
-        items:
-          - name: Prepare GPUs
-            href: manage/gpu-preparation.md
-          - name: Manage GPUs using Discrete Device Assignment
-            href: manage/gpu-manage-via-device.md
-          - name: Manage GPUs via partitioning
-            href: manage/gpu-manage-via-partitioning.md
-
-      - name: Rack aware cluster
-        items:
-        - name: What's a rack aware cluster?
-          href: concepts/rack-aware-cluster-overview.md   
-        - name: Review requirements
-          href: concepts/rack-aware-cluster-requirements.md
-        - name: Review network requirements
-          items: 
-          - name: Reference architecture
-            href: concepts/rack-aware-cluster-reference-architecture.md
-          - name: Room-to-room connections
-            href: concepts/rack-aware-cluster-room-to-room-connectivity.md
-        - name: Deploy
-          items:    
-          - name: Prepare to deploy
-            href: deploy/rack-aware-cluster-deploy-prep.md
-          - name: Assess network readiness via LLDP
-            href: deploy/rack-aware-cluster-readiness-check.md
-          - name: Choose a deployment method
-            items:
-            - name: Via Azure portal
-              href: deploy/rack-aware-cluster-deploy-portal.md
-            - name: Via ARM template
-              href: deploy/rack-aware-cluster-deployment-via-template.md
-          - name: Complete post-deployment tasks
-            href: deploy/rack-aware-cluster-post-deployment.md
-        - name: Add and repair nodes
-          href: concepts/rack-aware-cluster-add-server.md
-        - name: Provision and place VMs
-          href: concepts/rack-aware-cluster-provision-vm-local-availability-zone.md
-        - name: Spread AKS nodes
-          href: concepts/rack-aware-cluster-aks-nodes.md
-
-      - name: Security
-        items:
-        - name: Manage security defaults
-          href: manage/manage-secure-baseline.md
-        - name: Manage Application Control
-          href: manage/manage-wdac.md
-        - name: Manage BitLocker encryption
-          href: manage/manage-bitlocker.md
-        - name: Manage secrets rotation
-          href: manage/manage-secrets-rotation.md 
-        - name: Manage syslog forwarding
-          href: manage/manage-syslog-forwarding.md
-        - name: Manage with Microsoft Defender for Cloud
-          href: manage/manage-security-with-defender-for-cloud.md
-        - name: Manage security post upgrade
-          href: manage/manage-security-post-upgrade.md
-          
-      - name: Systems
-        items:
-        - name: Configure proxy 
-          href: manage/configure-proxy-settings-23h2.md
-        - name: Suspend and resume
-          href: manage/suspend-resume-cluster-maintenance.md
-        - name: Unregister and reregister machines
-          href: manage/unregister-register-machine.md
-        - name: Use dashboard to manage at-scale
-          href: manage/manage-at-scale-dashboard.md
-
-      - name: Azure services
-        items:
-        - name: Hybrid capabilities with Azure services
-          href: hybrid-capabilities-with-azure-services-23h2.md
-        - name: Enhanced management from Azure
-          href: manage/azure-enhanced-management-managed-identity.md
-
-      - name: Azure Arc extensions
-        items:
-        - name: Azure Arc extension management
-          href: manage/arc-extension-management.md
-        - name: Telemetry and diagnostics extension
-          href: concepts/telemetry-and-diagnostics-overview.md
-        - name: Remote support extension
-          href: manage/remote-support-arc-extension.md
-
-      - name: Storage
-        items:
-        - name: Storage thin provisioning
-          href: manage/manage-thin-provisioning-23h2.md
-        - name: Use ReFS deduplication and compression
-          href: manage/refs-deduplication-and-compression.md
-        - name: Download managed data disks
-          href: manage/manage-data-disks.md
-
-      - name: Capacity
-        items:
-        - name: Add a node
-          href: manage/add-server.md
-        - name: Repair a node
-          href: manage/repair-server.md
-
-      - name: Billing
-        items:
-        - name: Azure Hybrid Benefit
-          href: concepts/azure-hybrid-benefit.md
-        - name: Billing and payment
-          href: concepts/billing.md
-    - name: Monitor
+  - name: Enable
+    items:
+    - name: SDN enabled by Azure Arc
       items:
       - name: Overview
-        href: concepts/monitoring-overview.md
-      - name: Via Azure 
+        href: concepts/sdn-overview.md
+      - name: Enable SDN integration
+        href: deploy/enable-sdn-integration.md
+      - name: Create Network Security Groups
+        href: manage/create-network-security-groups.md
+      - name: Manage Network Security Groups
+        href: manage/manage-network-security-groups.md
+      - name: Troubleshoot SDN
+        href: manage/sdn-troubleshooting.md
+      - name: SDN FAQ
+        href: concepts/sdn-frequently-asked-questions.yml
+
+    - name: SDN managed by on-premises tools
+      items:
+      - name: Overview
         items:
-        - name: Insights
+        - name: Software-defined networking overview
+          href: concepts/software-defined-networking-23h2.md
+        - name: Network Controller overview
+          href: concepts/network-controller-overview.md
+        - name: RAS Gateway overview
+          href: concepts/gateway-overview.md
+        - name: Load balancer overview
+          href: concepts/software-load-balancer.md
+        - name: Datacenter Firewall overview
+          href: concepts/datacenter-firewall-overview.md
+        - name: Route reflector overview
+          href: concepts/route-reflector-overview.md
+        - name: SDN Multisite overview
+          href: concepts/sdn-multisite-overview.md
+      - name: Plan 
+        items:
+        - name: Network Controller
+          href: concepts/plan-network-controller-deployment.md
+        - name: SDN infrastructure
+          href: concepts/plan-software-defined-networking-infrastructure-23h2.md
+      - name: Deploy
+        items:    
+        - name: Using Express scripts
+          href: deploy/sdn-express-23h2.md
+        - name: Using Windows Admin Center
+          href: deploy/sdn-wizard-23h2.md
+      - name: Manage
+        items:
+        - name: Update SDN infrastructure
+          href: manage/update-sdn.md
+        - name: Manage tenant logical networks
+          href: manage/tenant-logical-networks.md
+        - name: Manage tenant virtual networks
+          href: manage/tenant-virtual-networks.md
+        - name: Manage software load balancers
+          href: manage/load-balancers.md
+        - name: Manage gateway connections
+          href: manage/gateway-connections.md
+        - name: Manage default network access policies
+          href: manage/manage-default-network-access-policies-virtual-machines-23h2.md
+        - name: Configure network security groups with Windows Admin Center
+          href: manage/use-datacenter-firewall-windows-admin-center.md
+        - name: Configure network security groups with PowerShell
+          href: manage/use-datacenter-firewall-powershell.md
+        - name: Configure network security groups with tags
+          href: manage/configure-network-security-groups-with-tags.md
+        - name: Manage SDN Multisite
+          href: manage/manage-sdn-multisite.md
+        - name: Assign public IP address to a VM
+          href: manage/assign-public-ip-to-vm.md
+        - name: Configure load balancer for high availability ports
+          href: manage/configure-software-load-balancer.md
+        - name: Load balance multiple logical networks
+          href: manage/load-balance-multiple-networks.md
+        - name: Manage SDN security
           items:
-          - name: Monitor a single system
-            href: manage/monitor-single-23h2.md
-          - name: Monitor multiple systems
-            href: manage/monitor-multi-23h2.md
-          - name: Monitor feature workbooks
-            href: manage/monitor-features.md
-          - name: Enable Insights at scale using Azure policies
-            href: manage/monitor-multi-azure-policies.md
-        - name: Metrics
-          href: manage/monitor-cluster-with-metrics.md
-        - name: Alerts
-          items: 
-          - name: Health alerts
-            href: manage/health-alerts-via-azure-monitor-alerts.md
-          - name: Log alerts
-            href: manage/setup-system-alerts.md
-          - name: Metric alerts
-            href: manage/setup-metric-alerts.md
-          - name: Recommended alert rules
-            href: manage/set-up-recommended-alert-rules.md
-      - name: Via PowerShell
+          - name: Manage certificates for SDN
+            href: manage/sdn-manage-certs.md
+          - name: Update Network Controller certificates
+            href: manage/update-network-controller-certificates.md
+          - name: Update SDN infrastructure certificates
+            href: manage/update-sdn-infrastructure-certificates.md
+          - name: Secure the Network Controller
+            href: manage/nc-security.md
+          - name: Authenticate with Kerberos
+            href: manage/kerberos-with-spn.md
+          - name: SDN technical reference
+            href: manage/sdn-technical-reference.md
+      - name: Troubleshoot
         items:
-          - name: Monitor clusters with Health Service
-            href: manage/health-service-overview.md
-          - name: Get cluster performance history
-            href: manage/health-service-cluster-performance-history.md
-          - name: View Health Service faults
-            href: manage/health-service-faults.md
-          - name: Track Health Service actions
-            href: manage/health-service-actions.md
-          - name: Modify Health Service settings
-            href: manage/health-service-settings.md
+        - name: Troubleshoot SDN deployment
+          href: manage/troubleshoot-sdn-deployment.md
+        - name: Collect SDN logs
+          href: manage/sdn-log-collection.md
+        - name: Troubleshoot common SDN issues
+          href: manage/troubleshoot-common-sdn-issues.md
+        - name: Troubleshoot Software Load Balancer for SDN
+          href: manage/troubleshoot-software-load-balancer.md
 
-    - name: Troubleshoot
-      items:
-      - name: Collect logs
-        href: manage/collect-logs.md
-      - name: Troubleshoot registration issues for Configurator app
-        href: manage/troubleshoot-deployment-configurator-app.md
-      - name: Troubleshoot deployment validation issues
-        href: manage/troubleshoot-deployment.md
-      - name: Use the Diagnostic Support tool
-        href: manage/support-tools.md
-      - name: Get support for deployment issues
-        href: manage/get-support-for-deployment-issues.md
-      - name: Get support for Azure Local
-        href: manage/get-support.md
-      - name: Get remote support
-        href: manage/get-remote-support.md
+  - name: Update 
+    items:
+    - name: About Updates
+      href: update/about-updates-23h2.md
+    - name: About Solution Builder Extension software updates
+      href: update/solution-builder-extension.md
+    - name: Understand update phases
+      href: update/update-phases-23h2.md
+    - name: Update via PowerShell
+      href: update/update-via-powershell-23h2.md
+    - name: Opt in to update to 12.25xx from 11.xxxx
+      href: update/update-opt-enable.md
+    - name: Update via PowerShell with limited connectivity
+      href: update/import-discover-updates-offline-23h2.md
+    - name: Update via Azure portal
+      href: update/azure-update-manager-23h2.md
+    - name: Review best practices 
+      href: update/update-best-practices.md
+    - name: Troubleshoot updates
+      href: update/update-troubleshooting-23h2.md
 
-    - name: Migrate
+  - name: Upgrade 
+    items:
+    - name: About Azure Local upgrades
+      href: upgrade/about-upgrades-23h2.md
+    - name: 1. Upgrade OS via PowerShell
+      href: upgrade/upgrade-22h2-to-23h2-powershell.md
+    - name: 2. Perform post-OS upgrade tasks
+      href: upgrade/post-upgrade-steps.md
+    - name: 3. Configure Network ATC
+      href: upgrade/install-enable-network-atc.md
+    - name: 4. Validate solution upgrade readiness
+      href: upgrade/validate-solution-upgrade-readiness.md
+    - name: 5. Apply solution upgrade
       items:
-      - name: Migration overview
-        href: migrate/migration-options-overview.md
-      - name: Migrate using Azure Migrate
+      - name: Upgrade via Azure portal
+        href: upgrade/install-solution-upgrade.md
+      - name: Upgrade via ARM template
+        href: upgrade/install-solution-upgrade-azure-resource-manager-template.md
+    - name: Upgrade stretched clusters to 23H2
+      href: upgrade/upgrade-stretched-cluster-to-23h2.md
+    - name: Troubleshoot upgrades
+      href: upgrade/troubleshoot-upgrade-to-23h2.md
+
+
+  - name: Manage
+    items:
+
+    - name: Azure Local VMs
+      items:
+      - name: What is Azure Local VM management?
+        href: manage/azure-arc-vm-management-overview.md
+      - name: Compare VM management capabilities
+        href: concepts/compare-vm-management-capabilities.md
+      - name: Supported operations for VMs
+        href: manage/virtual-machine-operations.md
+      - name: Review prerequisites
+        href: manage/azure-arc-vm-management-prerequisites.md
+      - name: Assign RBAC role
+        href: manage/assign-vm-rbac-roles.md
+      - name: Create Azure Local VM resources
         items:
-        - name: What's new in VM migration?
-          href: migrate/migrate-whats-new.md
-        - name: Hyper-V VMs
-          items: 
+        - name: 1. Create a storage path
+          href: manage/create-storage-path.md
+        - name: 2. Create VM images
+          items:
+          - name: Using Azure Marketplace images
+            href: manage/virtual-machine-image-azure-marketplace.md
+          - name: Using Azure Compute Gallery images
+            href: manage/virtual-machine-image-azure-compute-gallery.md
+          - name: Using images in Azure Storage account
+            href: manage/virtual-machine-image-storage-account.md
+          - name: Using images in local share 
+            href: manage/virtual-machine-image-local-share.md
+          - name: Using an existing Azure Local VM
+            href: manage/virtual-machine-image-existing-arc-vm.md
+          - name: Using Linux VM image
+            items: 
+            - name: Using Ubuntu VM image
+              href: manage/virtual-machine-image-linux-sysprep.md
+              items:
+              - name: Using Ubuntu Azure Marketplace image
+                href: manage/virtual-machine-azure-marketplace-ubuntu.md
+            - name: Using CentOS VM image 
+              href: manage/virtual-machine-image-centos.md
+            - name: Using Red Hat Enterprise VM image
+              href: manage/virtual-machine-image-red-hat-enterprise.md
+              items:
+              - name: Using Red Hat Enterprise Azure Marketplace image
+                href: manage/virtual-machine-azure-marketplace-red-hat.md
+            - name: Using SUSE VM image
+              href: manage/virtual-machine-image-suse.md
+        - name: 3. Create logical networks
+          href: manage/create-logical-networks.md
+        - name: 4. Create network interfaces
+          href: manage/create-network-interfaces.md
+        - name: 5. Create Azure Local VMs
+          href: manage/create-arc-virtual-machines.md
+      - name: Connect to VM via SSH
+        href: manage/connect-arc-vm-using-ssh.md
+      - name: Manage Azure Local VMs
+        href: manage/manage-arc-virtual-machines.md
+      - name: Manage Azure Local VM resources
+        href: manage/manage-arc-virtual-machine-resources.md 
+      - name: Manage VM extensions
+        href: manage/virtual-machine-manage-extension.md
+      - name: Activate Azure Local VMs
+        items:
+        - name: Azure verification for VMs
+          href: deploy/azure-verification.md
+        - name: Activate Windows Server VMs
+          href: manage/vm-activate.md
+        - name: Deploy Windows Server Azure Edition VMs
+          href: manage/windows-server-azure-edition-23h2.md
+        - name: Extended Security Updates (ESUs)
+          href: manage/azure-benefits-esu.md
+    
+      - name: Collect log files for Azure Local VM
+        href: manage/collect-log-files-arc-enabled-vms.md 
+      - name: Implement disaster recovery
+        items:
+        - name: Overview
+          href: manage/disaster-recovery-overview.md
+        - name: Infrastructure resiliency
+          href: manage/disaster-recovery-infrastructure-resiliency.md
+        - name: Virtual machine resiliency
+          items:
           - name: Overview
-            href: migrate/migration-azure-migrate-overview.md
-          - name: Prepare
-            items:
-            - name: Review requirements
-              href: migrate/migrate-hyperv-requirements.md
-            - name: Complete prerequisites
-              href: migrate/migrate-hyperv-prerequisites.md 
-          - name: Discover, replicate
-            href: migrate/migrate-hyperv-replicate.md
-          - name: Migrate, verify
-            href: migrate/migrate-azure-migrate.md
-        - name: VMware VMs
-          items: 
-          - name: Overview
-            href: migrate/migration-azure-migrate-vmware-overview.md
-          - name: Prepare
-            items:
-            - name: Review requirements
-              href: migrate/migrate-vmware-requirements.md
-            - name: Complete prerequisites
-              href: migrate/migrate-vmware-prerequisites.md 
-          - name: Discover, replicate
-            href: migrate/migrate-vmware-replicate.md
-          - name: Migrate, verify
-            href: migrate/migrate-vmware-migrate.md
-        - name: Migrate via PowerShell
-          href: migrate/migrate-via-powershell.md
-        - name: Enable guest management
-          href: migrate/migrate-enable-guest-management.md
-        - name: Maintain static IP addresses
-          href: migrate/migrate-maintain-ip-addresses.md
-        - name: Monitor Azure Local migrations
-          href: migrate/monitor-migration.md
-        - name: FAQ
-          href: migrate/migrate-faq.yml
-        - name: Troubleshoot
-          href: migrate/migrate-troubleshoot.md
-    - name: Concepts
+            href: manage/disaster-recovery-vm-resiliency.md
+          - name: Use Azure Site Recovery
+            href: manage/azure-site-recovery.md
+          - name: Use Azure Backup Server
+            href: /azure/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines?toc=/azure/azure-local/toc.json&bc=/azure/azure-local/breadcrumb/toc.json
+        - name: Workloads resiliency
+          href: manage/disaster-recovery-workloads-resiliency.md
+      - name: Troubleshoot
+        href: manage/troubleshoot-arc-enabled-vms.md
+      - name: FAQs
+        href: manage/azure-arc-vms-faq.yml
+
+    - name: Trusted launch for Azure Local VMs
       items: 
-      - name: Azure Local observability
-        href: concepts/observability.md
-      - name: Host networking
-        items:
-        - name: Network ATC overview
-          href: concepts/network-atc-overview.md?pivots=azure-local
-    - name: Reference
+        - name: What is Trusted launch for Azure Local VMs?
+          href: manage/trusted-launch-vm-overview.md
+        - name: Automatic virtual TPM state transfer
+          href: manage/trusted-launch-automatic-state-transfer.md
+        - name: Enable guest attestation
+          href: manage/trusted-launch-guest-attestation.md
+        - name: Manual backup and recovery
+          href: manage/trusted-launch-vm-import-key.md
+
+    - name: Unmanaged VMs
       items:
-      - name: For Azure Local VM management
-        items:
-        - name: Azure Local VM PowerShell commands
-          href: /powershell/module/az.stackhcivm
-        - name: Azure Local VMs Azure CLI commands
-          href: /cli/azure/stack-hci-vm
-      - name: For Azure Local instance, service, and management
-        items:
-        - name: Azure registration Azure CLI commands
-          href: /cli/azure/ext/stack-hci/stack-hci
-        - name: Azure registration PowerShell commands
-          href: /powershell/module/az.stackhci
-        - name: Go package for ARM Azure Local service API
-          href: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/azurestackhci/mgmt/2020-10-01/azurestackhci
-        - name: Azure Local Java service classes and interfaces
-          href: /java/api/com.microsoft.azure.management.azurestackhci.v2020_10_01
-        - name: Azure Local management service Python package
-          href: /python/api/azure-mgmt-azurestackhci/azure.mgmt.azurestackhci?view=azure-python&preserve-view=true
-        - name: Azure Local JavaScript package
-          href: /javascript/api/@azure/arm-azurestackhci
-        - name: Azure Local REST API reference
-          href: /rest/api/stackhci
-        - name: .NET Namespaces for Azure Local
-          href: /dotnet/api/overview/azure/stack-hci
-      - name: For OS and storage management
-        items:
-        - name: Hyper-V PowerShell commands
-          href: /powershell/module/hyper-v
-        - name: Storage PowerShell commands
-          href: /powershell/module/storage
-        - name: ClusterAwareUpdating PowerShell commands
-          href: /powershell/module/clusterawareupdating
-        - name: FailoverClusters PowerShell commands
-          href: /powershell/module/failoverclusters
-        - name: StorageReplica PowerShell commands
-          href: /powershell/module/storagereplica
-        - name: NetAdapter PowerShell commands
-          href: /powershell/module/netadapter
-        - name: NetQoS PowerShell commands
-          href: /powershell/module/netqos
-        - name: DcbQoS PowerShell commands
-          href: /powershell/module/dcbqos
-    - name: Related
+        - name: Manage VMs
+          href: manage/vm.md
+        - name: Manage VMs with PowerShell
+          href: manage/vm-powershell.md
+        - name: Create VM affinity rules
+          href: manage/vm-affinity.md
+        - name: VM load balancing
+          href: manage/vm-load-balancing.md
+        - name: Attach GPU to Linux VM
+          href: manage/attach-gpu-to-linux-vm.md
+        - name: Enable nested virtualization
+          href: manage/enable-nested-virtualization.md
+
+    - name: GPUs
       items:
-      - name: Azure Kubernetes Service on Azure Local and Windows Server 
-        href: /azure/aks/hybrid/aks-overview
-      - name: Windows Server
-        href: /windows-server/
-      - name: Windows Admin Center
-        href: /windows-server/manage/windows-admin-center/understand/windows-admin-center
-      - name: System Center
-        href: /system-center/
-    - name: Resources
+        - name: Prepare GPUs
+          href: manage/gpu-preparation.md
+        - name: Manage GPUs using Discrete Device Assignment
+          href: manage/gpu-manage-via-device.md
+        - name: Manage GPUs via partitioning
+          href: manage/gpu-manage-via-partitioning.md
+
+    - name: Rack aware cluster
       items:
-      - name: Assurance
-        items:
-        - name: Azure Local and security standards
-          href: assurance/azure-stack-security-standards.md
-        - name: ISO/IEC 27001 guidance
-          href: assurance/azure-stack-iso27001-guidance.md
-        - name: PCI DSS guidance
-          href: assurance/azure-stack-pci-dss-guidance.md
-        - name: HIPAA guidance
-          href: assurance/azure-stack-hipaa-guidance.md
-        - name: FedRAMP guidance
-          href: assurance/azure-stack-fedramp-guidance.md
-      - name: Azure Local product page
-        href: https://azure.com/hci
-      - name: Pricing
-        href: https://azure.microsoft.com/products/local/#Pricing
-  
-  - name: Multi-rack deployments with SAN storage
+      - name: What's a rack aware cluster?
+        href: concepts/rack-aware-cluster-overview.md   
+      - name: Review requirements
+        href: concepts/rack-aware-cluster-requirements.md
+      - name: Review network requirements
+        items: 
+        - name: Reference architecture
+          href: concepts/rack-aware-cluster-reference-architecture.md
+        - name: Room-to-room connections
+          href: concepts/rack-aware-cluster-room-to-room-connectivity.md
+      - name: Deploy
+        items:    
+        - name: Prepare to deploy
+          href: deploy/rack-aware-cluster-deploy-prep.md
+        - name: Assess network readiness via LLDP
+          href: deploy/rack-aware-cluster-readiness-check.md
+        - name: Choose a deployment method
+          items:
+          - name: Via Azure portal
+            href: deploy/rack-aware-cluster-deploy-portal.md
+          - name: Via ARM template
+            href: deploy/rack-aware-cluster-deployment-via-template.md
+        - name: Complete post-deployment tasks
+          href: deploy/rack-aware-cluster-post-deployment.md
+      - name: Add and repair nodes
+        href: concepts/rack-aware-cluster-add-server.md
+      - name: Provision and place VMs
+        href: concepts/rack-aware-cluster-provision-vm-local-availability-zone.md
+      - name: Spread AKS nodes
+        href: concepts/rack-aware-cluster-aks-nodes.md
+
+    - name: Security
+      items:
+      - name: Manage security defaults
+        href: manage/manage-secure-baseline.md
+      - name: Manage Application Control
+        href: manage/manage-wdac.md
+      - name: Manage BitLocker encryption
+        href: manage/manage-bitlocker.md
+      - name: Manage secrets rotation
+        href: manage/manage-secrets-rotation.md 
+      - name: Manage syslog forwarding
+        href: manage/manage-syslog-forwarding.md
+      - name: Manage with Microsoft Defender for Cloud
+        href: manage/manage-security-with-defender-for-cloud.md
+      - name: Manage security post upgrade
+        href: manage/manage-security-post-upgrade.md
+        
+    - name: Systems
+      items:
+      - name: Configure proxy 
+        href: manage/configure-proxy-settings-23h2.md
+      - name: Suspend and resume
+        href: manage/suspend-resume-cluster-maintenance.md
+      - name: Unregister and reregister machines
+        href: manage/unregister-register-machine.md
+      - name: Use dashboard to manage at-scale
+        href: manage/manage-at-scale-dashboard.md
+
+    - name: Azure services
+      items:
+      - name: Hybrid capabilities with Azure services
+        href: hybrid-capabilities-with-azure-services-23h2.md
+      - name: Enhanced management from Azure
+        href: manage/azure-enhanced-management-managed-identity.md
+
+    - name: Azure Arc extensions
+      items:
+      - name: Azure Arc extension management
+        href: manage/arc-extension-management.md
+      - name: Telemetry and diagnostics extension
+        href: concepts/telemetry-and-diagnostics-overview.md
+      - name: Remote support extension
+        href: manage/remote-support-arc-extension.md
+
+    - name: Storage
+      items:
+      - name: Storage thin provisioning
+        href: manage/manage-thin-provisioning-23h2.md
+      - name: Use ReFS deduplication and compression
+        href: manage/refs-deduplication-and-compression.md
+      - name: Download managed data disks
+        href: manage/manage-data-disks.md
+
+    - name: Capacity
+      items:
+      - name: Add a node
+        href: manage/add-server.md
+      - name: Repair a node
+        href: manage/repair-server.md
+
+    - name: Billing
+      items:
+      - name: Azure Hybrid Benefit
+        href: concepts/azure-hybrid-benefit.md
+      - name: Billing and payment
+        href: concepts/billing.md
+  - name: Monitor
     items:
     - name: Overview
+      href: concepts/monitoring-overview.md
+    - name: Via Azure 
       items:
-      - name: About multi-rack deployments
-        href: ./overview.md 
-    - name: Deploy
-      items:
-      - name: Complete deployment prerequisites
-        href: ./overview.md 
-      - name: Deploy SDN resources
+      - name: Insights
         items:
-        - name: Create virtual networks
-          href: ./overview.md
-        - name: Create NSGs
-          href: ./overview.md
-        - name: Create load balancer
-          href: ./overview.md
-        - name: Create public IP addresses
-          href: ./overview.md
-        - name: Create NAT gateway
-          href: ./overview.md
-      - name: Deploy Azure Local VM workloads
-        items:
-        - name: Complete Azure Local VM prerequisites
-          href: ./overview.md 
-        - name: Assign RBAC roles
-          href: ./overview.md
-        - name: Create Azure Local VMs image
-          href: ./overview.md
-        - name: Create logical networks
-          href: ./overview.md
-        - name: Create network interfaces
-          href: ./overview.md
-        - name: Create Azure Local VMs
-          href: ./overview.md
-
-    - name: Monitor
+        - name: Monitor a single system
+          href: manage/monitor-single-23h2.md
+        - name: Monitor multiple systems
+          href: manage/monitor-multi-23h2.md
+        - name: Monitor feature workbooks
+          href: manage/monitor-features.md
+        - name: Enable Insights at scale using Azure policies
+          href: manage/monitor-multi-azure-policies.md
+      - name: Metrics
+        href: manage/monitor-cluster-with-metrics.md
+      - name: Alerts
+        items: 
+        - name: Health alerts
+          href: manage/health-alerts-via-azure-monitor-alerts.md
+        - name: Log alerts
+          href: manage/setup-system-alerts.md
+        - name: Metric alerts
+          href: manage/setup-metric-alerts.md
+        - name: Recommended alert rules
+          href: manage/set-up-recommended-alert-rules.md
+    - name: Via PowerShell
       items:
-        - name: Monitoring overview
-          href: ./overview.md
-        - name: Monitor cluster metrics
-          href: ./overview.md
+        - name: Monitor clusters with Health Service
+          href: manage/health-service-overview.md
+        - name: Get cluster performance history
+          href: manage/health-service-cluster-performance-history.md
+        - name: View Health Service faults
+          href: manage/health-service-faults.md
+        - name: Track Health Service actions
+          href: manage/health-service-actions.md
+        - name: Modify Health Service settings
+          href: manage/health-service-settings.md
 
+  - name: Troubleshoot
+    items:
+    - name: Collect logs
+      href: manage/collect-logs.md
+    - name: Troubleshoot registration issues for Configurator app
+      href: manage/troubleshoot-deployment-configurator-app.md
+    - name: Troubleshoot deployment validation issues
+      href: manage/troubleshoot-deployment.md
+    - name: Use the Diagnostic Support tool
+      href: manage/support-tools.md
+    - name: Get support for deployment issues
+      href: manage/get-support-for-deployment-issues.md
+    - name: Get support for Azure Local
+      href: manage/get-support.md
+    - name: Get remote support
+      href: manage/get-remote-support.md
 
-    - name: Reference
+  - name: Migrate
+    items:
+    - name: Migration overview
+      href: migrate/migration-options-overview.md
+    - name: Migrate using Azure Migrate
       items:
-        - name: Azure Local multi-rack CLI reference
-          href: ./overview.md 
-        - name: Azure Local multi-rack PowerShell reference
-          href: ./overview.md 
-
-    - name: Related
+      - name: What's new in VM migration?
+        href: migrate/migrate-whats-new.md
+      - name: Hyper-V VMs
+        items: 
+        - name: Overview
+          href: migrate/migration-azure-migrate-overview.md
+        - name: Prepare
+          items:
+          - name: Review requirements
+            href: migrate/migrate-hyperv-requirements.md
+          - name: Complete prerequisites
+            href: migrate/migrate-hyperv-prerequisites.md 
+        - name: Discover, replicate
+          href: migrate/migrate-hyperv-replicate.md
+        - name: Migrate, verify
+          href: migrate/migrate-azure-migrate.md
+      - name: VMware VMs
+        items: 
+        - name: Overview
+          href: migrate/migration-azure-migrate-vmware-overview.md
+        - name: Prepare
+          items:
+          - name: Review requirements
+            href: migrate/migrate-vmware-requirements.md
+          - name: Complete prerequisites
+            href: migrate/migrate-vmware-prerequisites.md 
+        - name: Discover, replicate
+          href: migrate/migrate-vmware-replicate.md
+        - name: Migrate, verify
+          href: migrate/migrate-vmware-migrate.md
+      - name: Migrate via PowerShell
+        href: migrate/migrate-via-powershell.md
+      - name: Enable guest management
+        href: migrate/migrate-enable-guest-management.md
+      - name: Maintain static IP addresses
+        href: migrate/migrate-maintain-ip-addresses.md
+      - name: Monitor Azure Local migrations
+        href: migrate/monitor-migration.md
+      - name: FAQ
+        href: migrate/migrate-faq.yml
+      - name: Troubleshoot
+        href: migrate/migrate-troubleshoot.md
+  - name: Concepts
+    items: 
+    - name: Azure Local observability
+      href: concepts/observability.md
+    - name: Host networking
       items:
-        - name: Azure Operator Nexus documentation
-          href: /azure/azure-operator-nexus/overview
-        - name: Azure Local standard documentation
-          href: /azure/azure-local/overview 
+      - name: Network ATC overview
+        href: concepts/network-atc-overview.md?pivots=azure-local
+  - name: Reference
+    items:
+    - name: For Azure Local VM management
+      items:
+      - name: Azure Local VM PowerShell commands
+        href: /powershell/module/az.stackhcivm
+      - name: Azure Local VMs Azure CLI commands
+        href: /cli/azure/stack-hci-vm
+    - name: For Azure Local instance, service, and management
+      items:
+      - name: Azure registration Azure CLI commands
+        href: /cli/azure/ext/stack-hci/stack-hci
+      - name: Azure registration PowerShell commands
+        href: /powershell/module/az.stackhci
+      - name: Go package for ARM Azure Local service API
+        href: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/azurestackhci/mgmt/2020-10-01/azurestackhci
+      - name: Azure Local Java service classes and interfaces
+        href: /java/api/com.microsoft.azure.management.azurestackhci.v2020_10_01
+      - name: Azure Local management service Python package
+        href: /python/api/azure-mgmt-azurestackhci/azure.mgmt.azurestackhci?view=azure-python&preserve-view=true
+      - name: Azure Local JavaScript package
+        href: /javascript/api/@azure/arm-azurestackhci
+      - name: Azure Local REST API reference
+        href: /rest/api/stackhci
+      - name: .NET Namespaces for Azure Local
+        href: /dotnet/api/overview/azure/stack-hci
+    - name: For OS and storage management
+      items:
+      - name: Hyper-V PowerShell commands
+        href: /powershell/module/hyper-v
+      - name: Storage PowerShell commands
+        href: /powershell/module/storage
+      - name: ClusterAwareUpdating PowerShell commands
+        href: /powershell/module/clusterawareupdating
+      - name: FailoverClusters PowerShell commands
+        href: /powershell/module/failoverclusters
+      - name: StorageReplica PowerShell commands
+        href: /powershell/module/storagereplica
+      - name: NetAdapter PowerShell commands
+        href: /powershell/module/netadapter
+      - name: NetQoS PowerShell commands
+        href: /powershell/module/netqos
+      - name: DcbQoS PowerShell commands
+        href: /powershell/module/dcbqos
+  - name: Related
+    items:
+    - name: Azure Kubernetes Service on Azure Local and Windows Server 
+      href: /azure/aks/hybrid/aks-overview
+    - name: Windows Server
+      href: /windows-server/
+    - name: Windows Admin Center
+      href: /windows-server/manage/windows-admin-center/understand/windows-admin-center
+    - name: System Center
+      href: /system-center/
+  - name: Resources
+    items:
+    - name: Assurance
+      items:
+      - name: Azure Local and security standards
+        href: assurance/azure-stack-security-standards.md
+      - name: ISO/IEC 27001 guidance
+        href: assurance/azure-stack-iso27001-guidance.md
+      - name: PCI DSS guidance
+        href: assurance/azure-stack-pci-dss-guidance.md
+      - name: HIPAA guidance
+        href: assurance/azure-stack-hipaa-guidance.md
+      - name: FedRAMP guidance
+        href: assurance/azure-stack-fedramp-guidance.md
+    - name: Azure Local product page
+      href: https://azure.com/hci
+    - name: Pricing
+      href: https://azure.microsoft.com/products/local/#Pricing
+  
+- name: Multi-rack deployments
+  items:
+  - name: Overview
+    items:
+    - name: About multi-rack deployments
+      href: ./overview.md 
+
+  - name: Deploy
+    items:
+    - name: Complete deployment prerequisites
+      href: ./overview.md 
+    - name: Deploy Azure Local VM workloads
+      items:
+      - name: Complete Azure Local VM prerequisites
+        href: ./overview.md 
+      - name: Assign RBAC roles
+        href: ./overview.md
+      - name: Create Azure Local VMs image
+        href: ./overview.md
+      - name: Create logical networks
+        href: ./overview.md
+      - name: Create network interfaces
+        href: ./overview.md
+      - name: Create Azure Local VMs
+        href: ./multi-rack/multi-rack-create-arc-virtual-machines.md
+
+  - name: Monitor
+    items:
+      - name: Monitoring overview
+        href: ./multi-rack/multi-rack-monitor-overview.md
+      - name: Monitor cluster metrics
+        href: ./multi-rack/multi-rack-monitor-cluster-with-metrics.md
+
+  - name: Concepts
+    items:
+      - name: Compute for multi-rack deployments
+        href: ./multi-rack/multi-rack-concepts-compute.md
+
+  - name: Reference
+    items:
+      - name: Azure Local multi-rack CLI reference
+        href: ./overview.md 
+      - name: Azure Local multi-rack PowerShell reference
+        href: ./overview.md 
+
 - name: Disconnected operations
   items:
   - name: Overview
