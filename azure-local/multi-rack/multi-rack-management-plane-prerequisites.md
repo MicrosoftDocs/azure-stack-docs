@@ -19,7 +19,8 @@ Each NFC is associated with a cluster manager in the same Azure region and your 
 You need to complete the prerequisites before you can deploy the first multi-rack NFC and cluster manager pair.
 In subsequent multi-rack deployments, you'll only need to create the NFC and cluster manager after reaching the quota of supported multi-rack instances.
 
-During Preview, the NFC, cluster manager, and the cluster has been created for you.
+> [!NOTE]
+> During preview, the NFC, cluster manager, and the cluster will be created for you.
 
 [!INCLUDE [hci-preview](../includes/hci-preview.md)]
 
@@ -97,7 +98,9 @@ Ensure that the registration state is `Registered`.
 
 ## Dependent Azure resources setup
 
-- During preview, the following resources will be created and set up for you.  
+> [!NOTE]
+> During preview, the following resources will be created and set up for you.  
+
 - Establish [ExpressRoute](/azure/expressroute/expressroute-introduction) connectivity from your on-premises network to an Azure region:
   - [Create and verify an ExpressRoute circuit](/azure/expressroute/expressroute-howto-circuit-portal-resource-manager) via the Azure portal.
   - In the ExpressRoute blade, ensure Circuit status indicates the status of the circuit on the Microsoft side. Provider status indicates if the circuit is provisioned or not provisioned on the service-provider side. For an ExpressRoute circuit to be operational, circuit status must be **Enabled**, and provider status must be **Provisioned**.
