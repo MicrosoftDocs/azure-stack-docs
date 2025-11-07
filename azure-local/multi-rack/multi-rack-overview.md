@@ -58,11 +58,11 @@ The following table lists the various features and capabilities available on Azu
 
 ## Architecture
 
-The following diagram illustrates the architecture of Azure Local Rack Scale.
+The following diagram illustrates the architecture of Azure Local for multi-rack deployments.
 
-:::image type="content" source="media/azure-local-max-overview/architecture.png" alt-text="Architecture diagram of Azure Local." lightbox="media/azure-local-max-overview/architecture.png":::
+:::image type="content" source="media/multi-rack-overview/architecture.png" alt-text="Architecture diagram of Azure Local." lightbox="media/multi-rack-overview/architecture.png":::
 
-The important points about this architecture are as follows:
+<!--The important points about this architecture are as follows:
 
 - **Infrastructure layer** –Prescriptive hardware Bill of Materials (BOM) with racks from Microsoft partners. This layer also includes **SAN based storage that consists of Pure Storage Flash Array.**
 
@@ -76,40 +76,15 @@ The important points about this architecture are as follows:
 
 - **Workload layer** – Deployment of Windows and Linux Azure Local virtual machines (VMs) as workloads.
 
-- **Azure services** – Include Azure Monitor, Azure Policy, Microsoft Defender for Cloud and more.
+- **Azure services** – Include Azure Monitor, Azure Policy, Microsoft Defender for Cloud and more.-->
 
-## Use cases
-
-Customers often choose Azure Local in the following scenarios:
-
-- **Datacenter modernization**
-
-- **Large scale data residency**
-
-- **Low latency scenarios**
-
-- **Legacy applications**
-
-- **Local data gravity** – examples include personnel safety checks or a pipeline leak detection.
-
-- **Mission critical business continuity** – examples include production line operations or point of sale systems.
-
-- **Near real time systems** - examples includes quality assurance or a manufacturing execution system.
-
-- **Custom sovereignty and regulatory requirements** – examples include highly regulated industries or defense and intelligence.
 
 ## Get started
 
-To get started with Azure Local multi-rack deployments (Preview), you need:
-
-- A form filled out to be a Preview customer.
-
-- Access to an [Azure subscription](https://azure.microsoft.com/) used for Preview. This subscription is enabled for Azure Local multi-rack deployments and is registered with the required Resource Providers.
-
-- Access to a deployed Azure Local multi-rack instance. This deployed instance meets the [system requirements](/azure/azure-local/concepts/system-requirements-23h2), [physical network](/azure/azure-local/concepts/physical-network-requirements) and [host network](/azure/azure-local/concepts/host-network-requirements) requirements.
+To get started with Azure Local multi-rack deployments (Preview), reach out to your Account team.
 
 ## Next steps
 
 - Read the blog post: [Blog list short link](https://techcommunity.microsoft.com/blog/azurearcblog/introducing-azure-local-cloud-infrastructure-for-distributed-locations-enabled-b/4296017).
 
-- Learn more about [Azure Local multi-rack deployment](/azure/azure-local/deploy/deployment-introduction) prerequisites.
+- Learn more about [Azure Local multi-rack deployment](../index.yml) prerequisites.
