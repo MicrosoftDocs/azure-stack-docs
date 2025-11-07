@@ -12,7 +12,7 @@ ms.date: 11/07/2025
 
 [!INCLUDE [multi-rack-applies-to-preview](../includes/multi-rack-applies-to-preview.md)]
 
-This article describes how to create or add logical networks on Azure Local for multi-rack deployments. Any Azure Local virtual machines (VMs) that you create use these logical networks.
+This article describes how to create or add logical networks on Azure Local for multi-rack deployments using Azure Command Line Interface (CLI). Any Azure Local virtual machines (VMs) that you create use these logical networks.
 
 > [!NOTE]
 > Azure Local VMs only support IPv4 addresses. IPv6 addresses aren't supported.
@@ -20,9 +20,6 @@ This article describes how to create or add logical networks on Azure Local for 
 ## Prerequisites
 
 Before you begin, make sure to complete the following prerequisites:
-
-
-# [Azure CLI](#tab/azurecli)
 
 - Make sure to review and [complete the prerequisites](../manage/azure-arc-vm-management-prerequisites.md). If using a client to connect to your Azure Local, see [Connect to the system remotely](../manage/azure-arc-vm-management-prerequisites.md#connect-to-the-system-remotely).
 
@@ -32,13 +29,6 @@ Before you begin, make sure to complete the following prerequisites:
 
 > [!NOTE]
 > Dynamic IP allocation is not supported on Azure Local Rack Scale preview version. Only static logical networks are supported.
-
-# [Azure portal](#tab/azureportal)
-
-The prerequisites for the Azure portal are the same as those for the Azure CLI. See [Azure CLI](../manage/create-logical-networks.md#tabpanel_1_azurecli).
-
----
-
 
 ## Create the logical network
 
@@ -53,8 +43,6 @@ You can create a logical network using either the Azure Command-Line Interface (
 > - VLAN ID
 > - Virtual switch name (applies to ALM)
 > - Fabric Network (reference to the underlying L3 Internal Network) 
-
-# [Azure CLI](#tab/azurecli)
 
 Complete the following steps to create a logical network using Azure CLI.
 
@@ -73,7 +61,7 @@ Complete the following steps to create a logical network using Azure CLI.
     ```azurecli
     az account set --subscription <Subscription ID>
 
-### Create logical network via CLI
+### Create logical network
 
 You can use the `az stack-hci-vm network lnet create` cmdlet to create a logical network on the L3 internal network of your choice or static IP configuration. Only static IP allocation is supported in Azure Local Rack Scale v1.0.0.
 
@@ -82,7 +70,7 @@ You can use the `az stack-hci-vm network lnet create` cmdlet to create a logical
 > - Creating logical networks with overlapping IP pools on the same VLAN isn't permitted.
 > - If a VLAN ID isn't specified, the value defaults to 0.
 
-#### Create a static logical network via CLI
+#### Create a static logical network
 
 In this release, you can create Azure Local VMs enabled by Azure Arc using a static IP only via the Azure CLI.
 
