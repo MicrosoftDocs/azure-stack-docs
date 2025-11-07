@@ -29,12 +29,14 @@ Before you set up observability for your Azure Local appliance, make sure you:
 
 - [Deploy Disconnected Operations for Azure Local (preview)](disconnected-operations-deploy.md)
 - [Set up observability for diagnostics and support](#set-up-observability-for-diagnostics-and-support)
-- Have enough disk space for both compressed and uncompressed logs when you upload with diagnostic tools. The required space depends on the log size.
-  - For typical log collection, keep at least 20 GB of free space.
-  - For larger log bundles, such as those from an Azure Local appliance, compressed logs can exceed 25 GB, and uncompressed logs can be even larger because of extra metadata and processing.
-    - As a rule, keep at least twice the compressed log size available. For example:
-      - For a 10 GB compressed log bundle, keep at least 20 GB free.
-      - For a 25 GB compressed bundle, keep at least 50 GB free.
+- Have sufficient disk space for logs:
+  - For typical log collection: At least 25 GB of free space.
+  - For larger log bundles, such appliance logs:
+    - Compressed logs can exceed 25 GB
+    - Uncompressed logs require more space.
+  - As a rule, keep at least twice the compressed log size available. For example:
+    - For a 10 GB compressed log bundle, keep at least 20 GB free.
+    - For a 25 GB compressed bundle, keep at least 50 GB free.
 
 > [!NOTE]
 > Upload logs in small batches to reduce processing time and disk usage. Before you start, check your disk space to prevent failures because of low storage.
@@ -256,17 +258,30 @@ Before you collect logs in a disconnected scenario, make sure you:
 
 1. After collection, review the logs locally or upload them to Microsoft with the [`Send-DiagnosticData`](#send-diagnosticdata) cmdlet.
 
-## Log collection cmdlets
+## Log collection methods
 
-### Invoke-ApplianceLogCollection
+### Direct collection (connected to Azure)
 
-Use the `Invoke-ApplianceLogCollection` cmdlet to collect diagnostic logs from your Azure Local appliance on demand. Use this cmdlet when you need to troubleshoot issues or when Microsoft Support requests logs.
+When the appliance can connect to Azure and the management endpoint is accessible use the `Invoke-ApplianceLogCollection` cmdlet.
 
 The cmdlet lets you specify a time range for log collection. Run this cmdlet from a host that has the required PowerShell module imported and that can access the appliance management endpoint.
 
-### Invoke-ApplianceLogCollectionAndSaveToShareFolder
+For more information, see [Azure Local disconnected when the appliance VM is connected to Azure](#azure-local-disconnected-when-the-appliance-vm-is-connected-to-azure).
 
-Use the `Invoke-ApplianceLogCollectionAndSaveToShareFolder` cmdlet to collect logs in your disconnected environment and copy them from the disconnected operations appliance VM to a shared folder. Use this cmdlet when the disconnected operations appliance VM management endpoint is accessible.
+### Indirect collection (disconnected from Azure, endpoint accessbile)
+
+When the appliance can’t connect to Azure but can reach the management endpoint use `Invoke-ApplianceLogCollectionAndSaveToShareFolder` cmdlet. Then upload logs with the `Send-DiagnosticData` cmdlet.
+
+For more information, see [Azure Local disconnected when the appliance VM isn't connected to Azure](#azure-local-disconnected-when-the-appliance-vm-isnt-connected-to-azure).
+
+### Fallback collection (endpoint not accessible, appliance VM down)
+
+When the management endpoint is unavailable or the appliance VM is offline:
+
+- Shut down the appliance VM, mount and unlock VHDs, copy logs using `Copy-DiagnosticData` cmdlet.
+- Upload logs manually with `Send-DiagnosticData` cmdlet.
+
+For more information on fallback collection, see [Appliance fallback log collection for disconnected operations](disconnected-operations-fallback.md).
 
 ### Send-DiagnosticData -SaveToPath (disconnected mode)
 
@@ -445,22 +460,29 @@ If your organization blocks the affected node from connecting directly to the in
 
 ## Common issues
 
-- `Invoke-ApplianceLogCollectionAndSaveToShareFolder`: Specify the account in the format: Domain\Username. If you omit the domain or use an incorrect username, the copy operation to the share fails with an access-denied error.
+- **Account format for indirect collection**:
+  - Use Domain\Username when running `Invoke-ApplianceLogCollectionAndSaveToShareFolder`.
+  - If you omit the domain or use an incorrect username, the copy operation to the share fails with an access-denied error.
 
-- `Send-DiagnosticData`: Run this cmdlet on a Windows machine that has direct internet access to Azure, isn't arc-enabled, and doesn't use the appliance as its arc control plane.
+- **Send-DiagnosticData execution**:
+  - Must be run on a Windows machine that has direct internet access to Azure.
+  - Do not run on Arc-enabled systems or the appliance acting as the Arc control plane.
 
-- `Copy-DiagnosticData`: Run this cmdlet on the Hyper-V host that hosts your Azure Local disconnected VM.
+- **Copy-DiagnosicData execution**:
+  - Must be run on the Hyper-V host that hosts your Azure Local disconnected VM.
 
-- **FilterRoles**: The roles required for log collection or diagnostics vary depending on the scenario. To determine the appropriate roles to include, use the `get-help` cmdlet or work with your support contact.
+- **Role requirements**:
+  - The roles required vary by scenario.
+  - To determine the appropriate roles, use the `get-help` cmdlet or work with your support contact.
 
-- Improper Execution of `Send-DiagnosticData`
-  - Log collection fails when you run `Send-DiagnosticData` or `Copy-DiagnosticData` from:
+- **Improper execution of commands**:
+  - Log collection fails if commands run from:
     - Nodes that aren't part of the Azure Local host infrastructure.
     - External machines (for example, personal laptops) that don't host the required appliance VMs on the same Hyper-V host.
 
-- Misuse of the Observability Tool
-  - Run the Standalone Observability Tool on a Windows Server.
-  - Set up the tool with more manual steps if you execute it in unsupported environments.
+- **Observability tool usage**:
+  - Run the standalone observability tool on Windows Server.
+  - Unsupported environments require extra manual setup.
 
 ## Unsupported features in disconnected mode
 
