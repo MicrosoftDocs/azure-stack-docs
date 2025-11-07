@@ -27,7 +27,7 @@ Administrators can manage Azure Local VMs enabled by Azure Arc on their Azure Lo
 - Azure Local VM management provides the ability to deploy with Resource Manager templates. <!--Open comment present in the starter doc regarding Bicep and Terraform. Removed them for now.-->.
 - The Azure portal acts as a single pane of glass to manage VMs on Azure Local and Azure VMs. With Azure Local VM management, you can perform various operations from the Azure portal or the Azure CLI, including:
 
-  - Create, manage, update, and delete VMs. For more information, see [Create Azure Local VMs enabled by Azure Arc](./create-arc-virtual-machines.md).
+  - Create, manage, update, and delete VMs. For more information, see [Create Azure Local VMs enabled by Azure Arc](../index.yml).
   - Create, manage, and delete VM resources such as virtual disks, logical networks, network interfaces, and VM images.
 
 - The self-service capabilities of Azure Local VM management reduce administrative overhead.
