@@ -365,8 +365,7 @@ $installAzureLocalParams = @{
     ManagementSwitchName = "ConvergedSwitch($networkIntentName)"  
     ApplianceManifestFile = $applianceManifestJsonPath  
     IdentityConfiguration = $identityConfiguration  
-    CertificatesConfiguration = $CertificatesConfiguration  
-    TimeoutSec = 7200  
+    CertificatesConfiguration = $CertificatesConfiguration      
     DisableCheckSum = $true  
     AutoScaleVMToHostHW = $false  
 }  
