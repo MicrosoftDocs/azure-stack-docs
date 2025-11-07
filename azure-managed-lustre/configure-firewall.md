@@ -24,7 +24,7 @@ Azure Firewall is a cloud-native, intelligent network firewall security service 
 
 ## Add Azure Firewall policy rule sets
 
-An Azure Firewall policy is a top-level resource that contains security and operational settings for Azure Firewall. You can use an Azure Firewall policy to manage rule sets that Azure Firewall uses to filter traffic. Firewall policy organizes, prioritizes, and processes rule sets based on a hierarchy that has the following components: rule collection groups, rule collections, and rules. For more information, see [Azure Firewall policy rule sets](/azure/firewall/policy-rule-sets).
+An Azure Firewall policy is a top-level resource that contains security and operational settings for Azure Firewall. You can use an Azure Firewall policy to manage rule sets that Azure Firewall uses to filter traffic. The policy organizes, prioritizes, and processes rule sets based on a hierarchy that has the following components: rule collection groups, rule collections, and rules. For more information, see [Azure Firewall policy rule sets](/azure/firewall/policy-rule-sets).
 
 :::image type="content" source="media/firewall/firewall-policy.png" alt-text="Screenshot of the Azure Firewall Rules policy pane with the Rules section expanded." lightbox="media/firewall/firewall-policy.png":::
 
