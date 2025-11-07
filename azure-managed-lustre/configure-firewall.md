@@ -36,7 +36,7 @@ Application rules allow Managed Lustre to access essential services. For Microso
 
 To create an application rule collection:
 
-1. In your Azure Firewall policy, under **Rules**, select **Application rules**.
+1. In your firewall policy, under **Rules**, select **Application rules**.
 1. Select **Add a rule collection**.
 1. Enter a name for the rule collection. For example, use *LustreApplicationRules*.
 1. For **Rule collection type**, use **Application**. Then enter a priority value, such as **200**.
@@ -60,7 +60,7 @@ Next, add three rules.
 
 To create a network rule collection:
 
-1. In your Azure Firewall policy, under **Rules**, select **Network rules**.
+1. In your firewall policy, under **Rules**, select **Network rules**.
 1. Select **Add a rule collection**.
 1. Enter a name for the network rule collection. For example, use *LustreNetworkRules*.
 1. For **Rule collection type**, use **Network**. Enter a priority value, such as **199**.
