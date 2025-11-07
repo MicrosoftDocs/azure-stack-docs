@@ -112,7 +112,7 @@ Add the following outbound rules and network service tags to the network securit
 
 | Priority | Name | Ports | Protocol | Source | Destination | Action | Description |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| 100 | *rule-name* | 443 | TCP | `VirtualNetwork` | `AzureMonitor` | Allow | Allows the `AzureMonitor` service to report health or and security issues diagnosed by the Managed Lustre service hosts. |
+| 100 | *rule-name* | 443 | TCP | `VirtualNetwork` | `AzureMonitor` | Allow | Allows the `AzureMonitor` service to report health and security issues diagnosed by the Managed Lustre service hosts. |
 | 101 | *rule-name* | 443 | TCP | `VirtualNetwork` | `AzureKeyVault.EastUS` | Allow | Allows access to the `AzureKeyVault` network service to store essential security secrets for basic operation and storage access. |
 | 102 | *rule-name* | 443 | TCP | `VirtualNetwork` | `AzureActiveDirectory` | Allow | Allows access to `AzureActiveDirectory` for the secure Microsoft Entra ID service used during deployment and support activities. |
 | 103 | *rule-name* | 443 | TCP | `VirtualNetwork` | `Storage.EastUS` | Allow | Allows access to storage account endpoints that are required for the Managed Lustre hardware security module, system health signals, and other communication flows to the Managed Lustre resource provider. |
