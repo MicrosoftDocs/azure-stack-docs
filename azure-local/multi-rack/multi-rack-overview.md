@@ -21,7 +21,7 @@ Multi-rack deployments extend the scale of Azure Local, supporting hundreds of s
 
 ## Overview
 
-Multi-rack deployments of Azure Local is delivered as pre-integrated racks with compute, storage, and networking included. You can use it to run Azure Local virtual machines and Azure services via Azure Arc. Support for Azure Kubernetes Service (AKS) enabled by Azure Arc will be available in a future release.
+Multi-rack deployments of Azure Local is delivered as preintegrated racks with compute, storage, and networking included. You can use it to run Azure Local virtual machines and Azure services via Azure Arc. Support for Azure Kubernetes Service (AKS) enabled by Azure Arc will be available in a future release.
 
 To deliver optimal performance and reliability, this capability is designed around a prescriptive hardware bill of materials (BOM) featuring one main rack for network aggregation with SAN storage alongside several compute racks, installed at your on-premises location.
 
@@ -37,7 +37,7 @@ Azure Local for multi-rack deployments has the following key benefits:
 
 - Provides a resilient large-scale infrastructure with built-in redundancies for high availability.
 
-- Provides managed networking, with all network devices and settings managed via familiar Azure concepts and APIs.
+- Provides managed networking, with all network devices and settings managed through familiar Azure concepts and APIs.
 
 - Allows you to access key Arc-enabled Azure services within your on-premises environment.
 
@@ -49,10 +49,10 @@ The following table lists the various features and capabilities available on Azu
 
 | **Features** | **Description** |
 |----|----|
-| Hardware | Prescriptive hardware procured from a Microsoft hardware partner. Each instance has 1 main rack for network aggregation and SAN storage plus 3 or more compute racks. The minimum footprint is 4 racks.  |
+| Hardware | Prescriptive hardware procured from a Microsoft hardware partner. Each instance has one main rack for network aggregation and SAN storage plus three or more compute racks. The minimum footprint is four racks.  |
 | SAN storage | Built-in SAN storage shared by compute racks. |
 | Managed networking | Automated bootstrapping and lifecycle management of network devices using Azure APIs and ARM templates. Includes deployment of logical Layer 2 and Layer 3 networks spanning racks to support workloads. |
-| Azure Local services | Foundational services such as Azure Local virtual machines, Azure Kubernetes service (AKS) enabled by Azure Arc and software-defined networking (SDN) services. |
+| Azure Local services | Foundational services such as Azure Local virtual machines, Azure Kubernetes service (AKS) enabled by Azure Arc, and software-defined networking (SDN) services. |
 | Observability | Sends metrics and logs from on-premises infrastructure to Azure Monitor and Log Analytics for both infrastructure and tenant resources. |
 | Management tools | Cloud management via Azure portal, Azure Resource Manager templates, and Azure CLI. |
 
@@ -64,7 +64,7 @@ The following diagram illustrates the architecture of Azure Local for multi-rack
 
 <!--The important points about this architecture are as follows:
 
-- **Infrastructure layer** –Prescriptive hardware Bill of Materials (BOM) with racks from Microsoft partners. This layer also includes **SAN based storage that consists of Pure Storage Flash Array.**
+- **Infrastructure layer** – Prescriptive hardware Bill of Materials (BOM) with racks from Microsoft partners. This layer also includes **SAN based storage that consists of Pure Storage Flash Array.**
 
 - **Operating system** – Azure Linux OS installed on the hardware.
 
@@ -81,7 +81,7 @@ The following diagram illustrates the architecture of Azure Local for multi-rack
 
 ## Get started
 
-To get started with Azure Local multi-rack deployments (Preview), reach out to your Account team.
+To get started with Azure Local multi-rack deployments (Preview), contact your Account team.
 
 ## Next steps
 
