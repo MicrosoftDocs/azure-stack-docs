@@ -1,7 +1,7 @@
 ---
-title: "Azure Local Max Overview: Features, Benefits, and Use Cases (Preview)"
-description: Discover Azure Local Max, a new capability for deploying large on-premises datacenters with over 100 nodes and 8,000 cores. Learn how to get started. (Preview)
-#customer intent: As an IT admin, I want to understand Azure Local Max so that I can evaluate its suitability for my datacenter modernization needs.
+title: "Azure Local multi-rack deployments: Features, Benefits, and Use Cases (Preview)"
+description: Discover Azure Local multi-rack deployments, a new capability for deploying large on-premises datacenters with over 100 nodes and 8,000 cores. Learn how to get started. (Preview)
+#customer intent: As an IT admin, I want to understand Azure Local multi-rack deployments so that I can evaluate its suitability for my datacenter modernization needs.
 author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
@@ -11,29 +11,29 @@ ms.topic: overview
 
 # What is Azure Local for multi-rack deployments? (Preview)
 
-[!INCLUDE [multi-rack-applies-to-preview](../../includes/multi-rack-applies-to-preview.md)]
+[!INCLUDE [multi-rack-applies-to-preview](../includes/multi-rack-applies-to-preview.md)]
 
 This article provides an overview of Azure Local for multi-rack deployments. The overview also details the benefits, key features, use cases for deployment and how to get started with the preview release.
 
-Azure Local max is a new capability in Azure Local that helps you set up large on-premises datacenters. This capability uses prescriptive hardware based on Azure Linux, making it possible to deploy over 100 nodes and more than 8,000 cores in your datacenter.
+Azure Local multi-rack deployments is a new capability in Azure Local that helps you set up large on-premises datacenters. This capability uses prescriptive hardware based on Azure Linux, making it possible to deploy over 100 nodes and more than 8,000 cores in your datacenter.
 
-Azure Local max is available in Limited Preview for qualified opportunities and supports fresh deployments that require new hardware.
+Azure Local multi-rack deployments is available in Limited Preview for qualified opportunities and supports fresh deployments that require new hardware.
 
-[!INCLUDE [hci-preview](../../includes/hci-preview.md)]
+[!INCLUDE [hci-preview](../includes/hci-preview.md)]
 
 ## Overview
 
-Azure Local max is delivered as multiple integrated racks, uses SAN storage, and provides managed networking. You can use it to run Azure Local virtual machines (VMs) and Azure Kubernetes Service (AKS) workloads.
+Azure Local multi-rack deployments is delivered as multiple integrated racks, uses SAN storage, and provides managed networking. You can use it to run Azure Local virtual machines (VMs) and Azure Kubernetes Service (AKS) workloads.
 
 To ensure performance and consistency, this capability is built on a prescriptive hardware Bill of materials (BOM). This enterprise-grade setup includes one main rack for aggregation with SAN storage and several compute racks, installed in your own datacenter.
 
-:::image type="content" source="media/azure-local-max-overview/rack-structure.png" alt-text="Diagram showing Azure Local max aggregation and compute racks.":::
+:::image type="content" source="media/azure-local-max-overview/rack-structure.png" alt-text="Diagram showing Azure Local aggregation and compute racks." lightbox="media/azure-local-max-overview/rack-structure.png":::
 
-Azure Local Max uses Microsoft’s own version of Linux, called Azure Linux OS, to run on the host machines. With this setup, customers can run familiar Arc-enabled infrastructure and services at higher scale for datacenter scenarios. Services such as Network Cloud and Network Fabric offer fully managed networking that extends to L2 and L3 networking devices. You can use the Azure Command-line Interface (CLI) or Azure portal to monitor and manage individual instances, and view all the deployments of Azure Local max.
+Azure Local uses Microsoft’s own version of Linux, called Azure Linux OS, to run on the host machines. With this setup, customers can run familiar Arc-enabled infrastructure and services at higher scale for datacenter scenarios. Services such as Network Cloud and Network Fabric offer fully managed networking that extends to L2 and L3 networking devices. You can use the Azure Command-line Interface (CLI) or Azure portal to monitor and manage individual instances, and view all the deployments of Azure Local.
 
 ## Benefits
 
-Azure Local max has the following key benefits:
+Azure Local has the following key benefits:
 
 - Uses the same familiar Azure Local experiences and APIs available through the Azure portal.
 
@@ -65,7 +65,7 @@ The following table lists the various features and capabilities available on Azu
 
 The following diagram illustrates the architecture of Azure Local Rack Scale.
 
-:::image type="content" source="media/azure-local-max-overview/architecture.png" alt-text="Architecture diagram of Azure Local Max.":::
+:::image type="content" source="media/azure-local-max-overview/architecture.png" alt-text="Architecture diagram of Azure Local." lightbox="media/azure-local-max-overview/architecture.png":::
 
 The important points about this architecture are as follows:
 
@@ -105,16 +105,16 @@ Customers often choose Azure Local in the following scenarios:
 
 ## Get started
 
-To get started with Azure Local Rack Scale (Preview), you need:
+To get started with Azure Local multi-rack deployments (Preview), you need:
 
 - A form filled out to be a Preview customer.
 
-- Access to an [Azure subscription](https://azure.microsoft.com/) used for Preview. This subscription is enabled for Azure Local Rack Scale and is registered with the required Resource Providers.
+- Access to an [Azure subscription](https://azure.microsoft.com/) used for Preview. This subscription is enabled for Azure Local multi-rack deployments and is registered with the required Resource Providers.
 
-- Access to a deployed Azure Local Rack Scale instance. This deployed instance meets the [system requirements](/azure/azure-local/concepts/system-requirements-23h2), [physical network](/azure/azure-local/concepts/physical-network-requirements) and [host network](/azure/azure-local/concepts/host-network-requirements) requirements.
+- Access to a deployed Azure Local multi-rack instance. This deployed instance meets the [system requirements](/azure/azure-local/concepts/system-requirements-23h2), [physical network](/azure/azure-local/concepts/physical-network-requirements) and [host network](/azure/azure-local/concepts/host-network-requirements) requirements.
 
 ## Next steps
 
 - Read the blog post: [Blog list short link](https://techcommunity.microsoft.com/blog/azurearcblog/introducing-azure-local-cloud-infrastructure-for-distributed-locations-enabled-b/4296017).
 
-- Learn more about [Azure Local max deployment](/azure/azure-local/deploy/deployment-introduction) prerequisites.
+- Learn more about [Azure Local multi-rack deployment](/azure/azure-local/deploy/deployment-introduction) prerequisites.
