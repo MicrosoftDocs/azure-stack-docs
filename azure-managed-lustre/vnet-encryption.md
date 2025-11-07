@@ -87,5 +87,5 @@ To confirm that traffic between Managed Lustre and client VMs is encrypted:
 
 ## Related content
 
-- [Azure Virtual Network encryption](/azure/virtual-network/virtual-network-encryption-overview)
+- [Azure virtual network encryption](/azure/virtual-network/virtual-network-encryption-overview)
 - [Azure encryption of data in transit](/azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit)
