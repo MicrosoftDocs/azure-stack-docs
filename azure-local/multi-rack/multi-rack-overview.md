@@ -9,41 +9,39 @@ ms.date: 11/06/2025
 ms.topic: overview
 ---
 
-# What is Azure Local for multi-rack deployments? (Preview)
+# What are Azure Local multi-rack deployments? (Preview)
 
 [!INCLUDE [multi-rack-applies-to-preview](../includes/multi-rack-applies-to-preview.md)]
 
-This article provides an overview of Azure Local for multi-rack deployments. The overview also details the benefits, key features, use cases for deployment and how to get started with the preview release.
+This article provides an overview of Azure Local multi-rack deployments.  The overview also details the benefits, key features, use cases, and how to get started with the preview release.
 
-Azure Local multi-rack deployments is a new capability in Azure Local that helps you set up large on-premises datacenters. This capability uses prescriptive hardware based on Azure Linux, making it possible to deploy over 100 nodes and more than 8,000 cores in your datacenter.
-
-Azure Local multi-rack deployments is available in Limited Preview for qualified opportunities and supports fresh deployments that require new hardware.
+Multi-rack deployments extend the scale of Azure Local, supporting hundreds of servers across multiple racks in a single instance. Multi-rack deployments are currently offered in Preview for qualified opportunities.
 
 [!INCLUDE [hci-preview](../includes/hci-preview.md)]
 
 ## Overview
 
-Azure Local multi-rack deployments is delivered as multiple integrated racks, uses SAN storage, and provides managed networking. You can use it to run Azure Local virtual machines (VMs) and Azure Kubernetes Service (AKS) workloads.
+Multi-rack deployments of Azure Local is delivered as pre-integrated racks with compute, storage, and networking included. You can use it to run Azure Local virtual machines and Azure services via Azure Arc. Support for Azure Kubernetes Service (AKS) enabled by Azure Arc will be available in a future release.
 
-To ensure performance and consistency, this capability is built on a prescriptive hardware Bill of materials (BOM). This enterprise-grade setup includes one main rack for aggregation with SAN storage and several compute racks, installed in your own datacenter.
+To deliver optimal performance and reliability, this capability is designed around a prescriptive hardware bill of materials (BOM) featuring one main rack for network aggregation with SAN storage alongside several compute racks, installed at your on-premises location.
 
 :::image type="content" source="media/azure-local-max-overview/rack-structure.png" alt-text="Diagram showing Azure Local aggregation and compute racks." lightbox="media/azure-local-max-overview/rack-structure.png":::
 
-Azure Local uses Microsoft’s own version of Linux, called Azure Linux OS, to run on the host machines. With this setup, customers can run familiar Arc-enabled infrastructure and services at higher scale for datacenter scenarios. Services such as Network Cloud and Network Fabric offer fully managed networking that extends to L2 and L3 networking devices. You can use the Azure Command-line Interface (CLI) or Azure portal to monitor and manage individual instances, and view all the deployments of Azure Local.
+With this solution, you can run familiar Arc-enabled infrastructure and services at a higher scale. The platform offers fully Azure-managed compute, storage, and networking capabilities. You can use the Azure Command-line Interface (CLI) or Azure portal to monitor and manage individual instances or view all the multi-rack deployments.
 
 ## Benefits
 
-Azure Local has the following key benefits:
+Azure Local for multi-rack deployments has the following key benefits:
 
 - Uses the same familiar Azure Local experiences and APIs available through the Azure portal.
 
-- Operates a resilient rack-scale infrastructure with built-in redundancies for enterprise-grade availability.
+- Provides a resilient large-scale infrastructure with built-in redundancies for high availability.
 
-- Managed Network Fabric service lets you manage L2 and L3 networking devices.
+- Provides managed networking, with all network devices and settings managed via familiar Azure concepts and APIs.
 
-- Allows you to access key Azure services through the same connection as the on-premises network. You can also monitor logs and metrics and analyze telemetry data.
+- Allows you to access key Arc-enabled Azure services within your on-premises environment.
 
-- Offers unified governance and compliance across cloud and on-premises infrastructure. You can use [Azure role-based access control](/azure/role-based-access-control/overview) and [Azure Policy](/azure/governance/policy/overview) to unify data governance and enforce security and compliance policies.
+- Offers unified governance and compliance across cloud and on-premises infrastructure. You can use [Azure role-based access control](/azure/role-based-access-control/overview) and [Azure Policy](/azure/governance/policy/overview) to unify data governance and enforce security and compliance policies.
 
 ## Features
 
@@ -51,15 +49,12 @@ The following table lists the various features and capabilities available on Azu
 
 | **Features** | **Description** |
 |----|----|
-| Hardware | Curated and certified hardware for enterprise use cases procured from a hardware partner. Each instance has 1 aggregation rack and 3-8 compute racks with each rack having up to 128 nodes. Each aggregation rack contains WAN uplinks and SAN storage. |
-| Azure Linux Operating System | Runs Microsoft's own Linux distribution called [Azure Linux](https://github.com/microsoft/azurelinux)  on the bare-metal hosts in the datacenter. |
-| SAN storage | Shared SAN storage infrastructure layer. |
-| Bare metal and cluster management | Enables operators to manage and provision bare-metal hosts at their sites, offering capabilities like restarting, shutting down, or reimaging. The service also includes a cluster manager responsible for the lifecycle management of infrastructure Kubernetes clusters built on these hosts. |
-| Azure Local services | Foundational services such as virtual machines, Kubernetes services, SAN storage, and managed network fabric. |
-| Tenant layer | Uses the Azure Local tenant layer and provides Software-defined Networking capabilities. |
+| Hardware | Prescriptive hardware procured from a Microsoft hardware partner. Each instance has 1 main rack for network aggregation and SAN storage plus 3 or more compute racks. The minimum footprint is 4 racks.  |
+| SAN storage | Built-in SAN storage shared by compute racks. |
+| Managed networking | Automated bootstrapping and lifecycle management of network devices using Azure APIs and ARM templates. Includes deployment of logical Layer 2 and Layer 3 networks spanning racks to support workloads. |
+| Azure Local services | Foundational services such as Azure Local virtual machines, Azure Kubernetes service (AKS) enabled by Azure Arc and software-defined networking (SDN) services. |
 | Observability | Sends metrics and logs from on-premises infrastructure to Azure Monitor and Log Analytics for both infrastructure and tenant resources. |
-| Region availability | Currently available in East US, Australia East, and South Central US. |
-| Management tools | Cloud management via Azure portal, Azure Resource Manager templates, Azure CLI. |
+| Management tools | Cloud management via Azure portal, Azure Resource Manager templates, and Azure CLI. |
 
 ## Architecture
 
