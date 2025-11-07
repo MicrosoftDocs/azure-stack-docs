@@ -25,7 +25,7 @@ Multi-rack deployments of Azure Local is delivered as pre-integrated racks with 
 
 To deliver optimal performance and reliability, this capability is designed around a prescriptive hardware bill of materials (BOM) featuring one main rack for network aggregation with SAN storage alongside several compute racks, installed at your on-premises location.
 
-:::image type="content" source="media/azure-local-max-overview/rack-structure.png" alt-text="Diagram showing Azure Local aggregation and compute racks." lightbox="media/azure-local-max-overview/rack-structure.png":::
+:::image type="content" source="media/multi-rack-overview/rack-structure.png" alt-text="Diagram showing Azure Local aggregation and compute racks." lightbox="media/multi-rack-overview/rack-structure.png":::
 
 With this solution, you can run familiar Arc-enabled infrastructure and services at a higher scale. The platform offers fully Azure-managed compute, storage, and networking capabilities. You can use the Azure Command-line Interface (CLI) or Azure portal to monitor and manage individual instances or view all the multi-rack deployments.
 
