@@ -65,7 +65,7 @@ The following table lists the various features and capabilities available on Azu
 
 The following diagram illustrates the architecture of Azure Local Rack Scale.
 
-:::image type="content" source="media/azure-local-max-overview/architecture.png" alt-text="Architecture diagram of Azure Local.":::
+:::image type="content" source="media/azure-local-max-overview/architecture.png" alt-text="Architecture diagram of Azure Local." lightbox="media/azure-local-max-overview/architecture.png":::
 
 The important points about this architecture are as follows:
 
