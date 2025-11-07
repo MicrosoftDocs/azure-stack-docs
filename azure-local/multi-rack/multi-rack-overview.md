@@ -27,7 +27,7 @@ Azure Local multi-rack deployments is delivered as multiple integrated racks, us
 
 To ensure performance and consistency, this capability is built on a prescriptive hardware Bill of materials (BOM). This enterprise-grade setup includes one main rack for aggregation with SAN storage and several compute racks, installed in your own datacenter.
 
-:::image type="content" source="media/azure-local-max-overview/rack-structure.png" alt-text="Diagram showing Azure Local aggregation and compute racks.":::
+:::image type="content" source="media/azure-local-max-overview/rack-structure.png" alt-text="Diagram showing Azure Local aggregation and compute racks." lightbox="media/azure-local-max-overview/rack-structure.png":::
 
 Azure Local uses Microsoft’s own version of Linux, called Azure Linux OS, to run on the host machines. With this setup, customers can run familiar Arc-enabled infrastructure and services at higher scale for datacenter scenarios. Services such as Network Cloud and Network Fabric offer fully managed networking that extends to L2 and L3 networking devices. You can use the Azure Command-line Interface (CLI) or Azure portal to monitor and manage individual instances, and view all the deployments of Azure Local.
 
