@@ -10,12 +10,16 @@ ms.date: 11/07/2025
 
 # Azure Local multi-rack security
 
+[!INCLUDE [multi-rack-applies-to-preview](../includes/multi-rack-applies-to-preview.md)]
+
 Azure Local multi-rack deployments are designed and built to both detect and defend against the latest security threats and comply with the strict requirements of government and industry security standards. Two cornerstones form the foundation of its security architecture:
 
 * **Security by default** - Security resiliency is an inherent part of the platform with little to no configuration changes needed to use it securely.
 * **Assume breach** - The underlying assumption is that any system can be compromised, and as such the goal is to minimize the impact of a security breach if one occurs.
 
 Azure Local multi-rack realizes the above by leveraging Microsoft cloud-native security tools that give you the ability to improve your cloud security posture while allowing you to protect your operator workloads.
+
+[!INCLUDE [hci-preview](../includes/hci-preview.md)]
 
 ## Platform-wide protection via Microsoft Defender for Cloud
 

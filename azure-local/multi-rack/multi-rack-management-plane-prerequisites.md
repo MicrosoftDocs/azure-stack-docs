@@ -19,6 +19,8 @@ Each NFC is associated with a CM in the same Azure region and your subscription.
 You need to complete the prerequisites before you can deploy the first Azure Local multi-rack NFC and CM pair.
 In subsequent deployments of Azure Local multi-rack, you'll only need to create the NFC and CM after reaching the [quota](../index.yml)<!--update link: (../../operator-nexus/reference-limits-and-quotas.md#network-fabric)--> of supported Azure Local multi-rack instances.
 
+[!INCLUDE [hci-preview](../includes/hci-preview.md)]
+
 ## Install CLI extensions and sign-in to your Azure subscription
 
 Install latest version of the [necessary CLI extensions](../index.yml)<!--update link: (../../operator-nexus/howto-install-cli-extensions.md)-->.
