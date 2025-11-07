@@ -747,19 +747,19 @@ items:
       - name: Create network interfaces
         href: ./overview.md
       - name: Create Azure Local VMs
-        href: ./multi-rack/multi-rack-create-arc-virtual-machines.md
+        href: ./overview.md 
 
   - name: Monitor
     items:
       - name: Monitoring overview
-        href: ./multi-rack/multi-rack-monitor-overview.md
+        href: ./overview.md
       - name: Monitor cluster metrics
-        href: ./multi-rack/multi-rack-monitor-cluster-with-metrics.md
+        href: ./overview.md 
 
   - name: Concepts
     items:
       - name: Compute for multi-rack deployments
-        href: ./multi-rack/multi-rack-concepts-compute.md
+        href: ./overview.md 
 
   - name: Reference
     items:
