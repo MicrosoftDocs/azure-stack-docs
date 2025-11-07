@@ -12,9 +12,24 @@ ms.reviewer: alkohli
 
 [!INCLUDE [hci-applies-to-2503](../includes/hci-applies-to-2503.md)]
 
-This article explains how to preserve static IP addresses during virtual machine (VM) migration to Azure Local using Azure Migrate. It provides detailed instructions for running the static IP migration scripts on Windows and Linux VMs.
+This article explains how to preserve static IP addresses during virtual machine (VM) migration to Azure Local using Azure Migrate. It provides detailed instructions for both Software Defined Networking (SDN) enabled and non-SDN enabled Azure Local environments.
 
 This article applies to migration of Hyper-V VMs (Preview) and VMware VMs.
+
+# For SDN Enabled Azure Local Environments
+
+If your Azure Local environment is using [Software Defined Networking (SDN) enabled by Azure Arc on Azure Local](/azure/azure-local/concepts/sdn-overview), the static IP migration script package is not required. Instead, static IP addresses will automatically be preserved during migration when the network interfaces are assigned to static logical networks in the Replication Wizard.
+
+See how to enable [SDN integration on Azure Local](/azure/azure-local/deploy/enable-sdn-integration) and create [static logical networks](/azure/azure-local/manage/create-logical-networks) for more information.
+
+> [!NOTE]
+> If you are using SDN, the following considerations apply:
+> - Ensure that Linux VMs have necessary DHCP client packages installed to support network configuration when using SDN.
+> - If migrating VMs with multiple static NICs, all NICs will get the default gateway. Ensure to remove the default gateway from secondary NICs to prevent asymmetric networking, packet loss, and unpredictable networking. See [SDN FAQ](/azure/azure-local/concepts/sdn-frequently-asked-questions#can-i-configure-static-network-interfaces-after-the-azure-local-vm-is-provisioned-on-an-azure-local-instance-with-sdn-enabled-by-azure-arc)
+
+# For Non-SDN Enabled Azure Local Environments
+
+If your Azure Local environment is not using Software Defined Networking (SDN), you can still maintain static IP addresses during migration by following the steps outlined in this article and using the provided static IP migration package.
 
 ## About the static IP migration package
 

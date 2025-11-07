@@ -17,13 +17,16 @@ This article describes the prerequisite tasks you need to complete before you be
 
 ## Prerequisites
 
-The following list contains the prerequisites that must be met to migrate Hyper-V VMs to Azure Local. Some prerequisites apply to the source Hyper-V server, some to the target Azure Local instance, and others to both.
+The following list contains the prerequisites and considerations that must be met to migrate Hyper-V VMs to Azure Local. Some prerequisites apply to the source Hyper-V server, some to the target Azure Local instance, and others to both.
 
 |Prerequisite|Applies to|More information|
 |--|--|--|
 |Open required firewall ports.|source, target|**3389** – Inbound connections on port 3389 to allow remote desktop connections to the appliance. <br> **44368** – Inbound connections on port 44368 to remotely access the appliance management app by using the URL: *https:\//\<appliance-ip-or-name\>:44368*. <br> **5985, 5986** – Inbound and outbound connections on port 5985 (WinRM) to communicate from appliance to host. <br> **445** – Inbound and outbound connections on port 445 (SMB) to communicate between source and target appliance.|
 |Allow required URLs |source, <br> target |[URL access](/azure/migrate/migrate-appliance#url-access) and <br> **\*.siterecovery.azure.com** |
 |Configure SAN/disks policy on VMs. |source|[Configure SAN/disks policy](migrate-troubleshoot.md#disks-on-migrated-vms-are-offline).|
+| Disable BitLocker on Windows VMs. | source | BitLocker must be disabled on VMs before migration.|
+| Encrypted disks/volumes are not supported. | source | Any encrypted disks/volumes must be decrypted on VMs before migration.|
+| Shared Disks are not supported. | source | Ensure that VMs do not have any shared disks attached before migration. |
 |Deploy, configure and register an Azure Local instance.|target|[Create and register an Azure Local instance](../deploy/deployment-introduction.md).|
 | Verify a successful deployment. | target | [Verify a successful deployment](../deploy/deploy-via-portal.md#verify-a-successful-deployment). |
 |Verify and make a note of the custom location created during deployment on Azure Local.|target|[Verify a successful deployment](../deploy/deploy-via-portal.md#verify-a-successful-deployment).|

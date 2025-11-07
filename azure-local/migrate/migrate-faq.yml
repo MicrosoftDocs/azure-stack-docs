@@ -123,6 +123,14 @@ sections:
 
           Migration is not supported if the VM IP address is configured as the DNS server for the logical network it will join. In this case, migration fails with an *address already in use* error. Additionally, Azure Local doesn't support running DNS server infrastructure as a VM on the system. For more information, see [DNS server considerations](../plan/cloud-deployment-network-considerations.md#dns-server-considerations). 
 
+          ### Can I forcefully stop replications or complete migrations?
+
+          Yes, you can forcefully stop replications and complete migrations if your target appliance becomes unresponsive or the migrate project is in a bad state. 
+          In the Azure portal, this option appears as “Forcefully stop replication” or “Forcefully complete migration”, and is only available after a normal stop or complete operation fails.
+          From PowerShell, you can use the [Remove-AzMigrateLocalServerReplication (Az.Migrate) cmdlet](/powershell/module/az.migrate/remove-azmigratelocalserverreplication) to forcefully stop replication or complete migration only when standard operations don’t succeed.
+          
+          Force deletion may not clean up all associated resources. Seed disks and migration logs may remain. Review and manually delete any leftover replication artifacts in your resource group and on-premises environment.
+          
           ## [VMware VMs only](#tab/vmware-vms)
           
           ### How many VMs can I replicate in parallel from VMware?
