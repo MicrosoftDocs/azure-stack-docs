@@ -18,7 +18,7 @@ This article applies to migration of Hyper-V VMs (Preview) and VMware VMs.
 
 # For SDN Enabled Azure Local Environments
 
-If your Azure Local environment is using [Software Defined Networking (SDN) enabled by Azure Arc on Azure Local](/azure/azure-local/concepts/sdn-overview), the static IP migration script package is not required. Instead, static IP addresses will automatically be preserved during migration when the network interfaces are assigned to static logical networks in the Replication Wizard.
+If your Azure Local environment is using [Software Defined Networking (SDN) enabled by Azure Arc on Azure Local](/azure/azure-local/concepts/sdn-overview), the static IP migration script package is not required. Instead, static IP addresses will automatically be preserved during migration when VMs with static IPs are assigned to static logical networks in the Replication Wizard.
 
 See how to enable [SDN integration on Azure Local](/azure/azure-local/deploy/enable-sdn-integration) and create [static logical networks](/azure/azure-local/manage/create-logical-networks) for more information.
 
