@@ -32,7 +32,7 @@ landingContent:
             url: manage/disconnected-operations-overview.md
 
 # Card 
-  - title: Plan and deploy
+  - title: Plan, deploy, and enable
     linkLists:
       - linkListType: deploy
         links:
@@ -42,40 +42,8 @@ landingContent:
             url: index.yml
           - text: Deploy Microsoft 365
             url: index.yml
-          - text: Plan your network for disconnected operations (preview)
-            url: manage/disconnected-operations-network.md
           - text: Deploy disconnected operations (preview)
             url: manage/disconnected-operations-deploy.md
-
-# Card
-  - title: Manage
-    linkLists:
-      - linkListType: how-to-guide
-        links:
-          - text: Manage at-scale
-            url: manage/manage-at-scale-dashboard.md          
-          - text: Add node on hyperconverged deployments
-            url: manage/add-server.md
-          - text: Repair node on hyperconverged deployments
-            url: manage/repair-server.md
-          - text: Manage NSGs on hyperconverged deployments
-            url: manage/manage-network-security-groups.md
-          - text: Manage NSGs on multi-rack (preview)
-            url: index.yml
-
-# Card
-  - title: Deploy workloads
-    linkLists:
-      - linkListType: deploy
-        links:
-          - text: Deploy Azure Local VMs
-            url: manage/create-arc-virtual-machines.md
-          - text: Deploy Azure Local VMs on disconnected operations (preview)
-            url: manage/disconnected-operations-arc-vm.md
-          - text: Deploy Azure Kubernetes Service clusters
-            url: /azure/aks/hybrid/aks-create-clusters-portal?toc=/azure-local/toc.json&bc=/azure-local/breadcrumb/toc.json
-          - text: Run Azure Virtual Desktop
-            url: /azure/virtual-desktop/azure-stack-hci-overview
           - text: Enable Software Defined Networking
             url: deploy/enable-sdn-integration.md
 
@@ -96,18 +64,20 @@ landingContent:
             url: index.yml
 
   # Card
-  - title: Try it out
+  - title: Troubleshoot
     linkLists:
-      - linkListType: overview
+      - linkListType: how-to-guide
         links:
-          - text: Deploy using local identity with Key Vault (preview)
-            url: deploy/deployment-local-identity-with-key-vault.md
-          - text: Deploy rack aware clusters (preview)
-            url: deploy/rack-aware-cluster-deploy-portal.md
-          - text: Place VMs in rack aware clusters (preview)
-            url: concepts/rack-aware-cluster-provision-vm-local-availability-zone.md
+          - text: Collect logs for hyperconverged deployments
+            url: manage/collect-logs.md
+          - text: Collect logs for disconnected operations (preview)
+            url: manage/disconnected-operations-on-demand-logs.md
+          - text: Troubleshoot deployment issues
+            url: manage/troubleshoot-deployment.md
+          - text: Get support
+            url: manage/get-remote-support.md
 
-  # Card
+    # Card
   - title: Concepts
     linkLists:
       - linkListType: concept
@@ -122,24 +92,25 @@ landingContent:
             url: concepts/observability.md
 
   # Card
-  - title: Troubleshoot
+  - title: Try it out
     linkLists:
-      - linkListType: how-to-guide
+      - linkListType: overview
         links:
-          - text: Collect logs for hyperconverged deployments
-            url: manage/collect-logs.md
-          - text: Collect logs for disconnected operations (preview)
-            url: manage/disconnected-operations-on-demand-logs.md
-          - text: Troubleshoot deployment issues
-            url: manage/troubleshoot-deployment.md
-          - text: Get support
-            url: manage/get-remote-support.md
-
+          - text: Deploy using local identity with Key Vault (preview)
+            url: deploy/deployment-local-identity-with-key-vault.md
+          - text: Deploy rack aware clusters (preview)
+            url: deploy/rack-aware-cluster-deploy-portal.md
+          - text: Place VMs in rack aware clusters (preview)
+            url: concepts/rack-aware-cluster-provision-vm-local-availability-zone.md
 
   # Card
-  - title: Azure Architecture Center
+  - title: Architecture
     linkLists:
       - linkListType: architecture
         links:
-          - text: Azure Local baseline reference architecture
+          - text: Architecture best practices for hyperconverged
+            url: /azure/well-architected/service-guides/azure-local 
+          - text: Baseline reference architecture for hyperconverged
             url: /azure/architecture/hybrid/azure-local-baseline
+          - text: Well-Architected Review assessment for hyperconverged
+            url: /assessments/d8f04a92-c8b9-4ae7-8e51-61b8a1035942/
