@@ -34,7 +34,7 @@ For the list of available versions, see [the extension release history](https://
     az extension add --yes --upgrade --name networkcloud
     ```
 
-- Install and test the latest version of `networkcloud` CLI extension:
+- Install and test the latest version of the `networkcloud` CLI extension:
 
     ```azurecli
     az extension add --name networkcloud
@@ -51,7 +51,7 @@ For the list of available versions, see [the extension release history](https://
     az extension add --yes --upgrade --name managednetworkfabric
     ```
 
-- Install and test the `managednetworkfabric` CLI extension:
+- Install and test the latest version of the `managednetworkfabric` CLI extension:
 
     ```azurecli
     az extension add --name managednetworkfabric
@@ -66,7 +66,7 @@ For the list of available versions, see [the extension release history](https://
     az extension add --yes --upgrade --name stack-hci-vm 
     ```
 
-- Install and test the `stack-hci-vm` CLI extension.
+- Install and test the latest version of the `stack-hci-vm` CLI extension.
 
     ```azurecli
     az extension add --name stack-hci-vm 
