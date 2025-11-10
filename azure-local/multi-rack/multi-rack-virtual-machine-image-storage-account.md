@@ -19,8 +19,6 @@ This article describes how to create Azure Local VMs for multi-rack deployments 
 
 Before you begin, make sure that the following prerequisites are completed.
 
-# [Azure CLI](#tab/azurecli)
-
 For custom images in Azure Storage account, you have the following extra prerequisites:
 
 - You should have a VHD loaded in your Azure Storage account. For more information, see [Upload a VHD image in your Azure Storage account](/azure/databox-online/azure-stack-edge-gpu-create-virtual-machine-image#copy-vhd-to-storage-account-using-azcopy). 
@@ -39,36 +37,10 @@ For custom images in Azure Storage account, you have the following extra prerequ
 - If using a client to connect to your Azure Local instance, see [Connect to Azure Local via Azure CLI client](../manage/azure-arc-vm-management-prerequisites.md#azure-command-line-interface-cli-requirements).
 
 - Make sure that you have **Storage Blob Data Contributor** role on the Storage account that you use for the image. For more information, see [Assign an Azure role for access to blob data](/azure/role-based-access-control/role-assignments-portal?tabs=current).
-
-
-# [Azure portal](#tab/azureportal)
-
-For custom images in Azure Storage account, you have the following extra prerequisites:
-
-- You should have a VHD loaded in your Azure Storage account. For more information, see [Upload a VHD image in your Azure Storage account](/azure/databox-online/azure-stack-edge-gpu-create-virtual-machine-image#copy-vhd-to-storage-account-using-azcopy). 
-
-- Make sure that you're uploading your VHD or VHDX as a page blob image into the Storage account. Only page blob images are supported to create VM images via the Storage account.
-
-- The VHDX image must be prepared using `sysprep /generalize /shutdown /oobe`. For more information, see [Sysprep command-line options](/windows-hardware/manufacture/desktop/sysprep-command-line-options#oobe&preserve-view=true). This is true for both Windows and Linux VM images.
-
-- For Linux VM image:
-
-    - To allow for initial configuration and customization during VM provisioning, you need to ensure that the image contains `cloud init with nocloud` datasource.
-
-    - You need to configure the bootloader, kernel, and init system in your image to enable both serial connectivity and text-based console. Use both `GRUB_TERMINAL="console serial"` and kernel cmdline settings. This configuration is required to enable serial access for troubleshooting deployment issues and console support for your VM after deployment. Make sure the serial port settings on your system and terminal match to establish proper communication.
-- For Windows VM image, install **VirtIO** drivers in the image to ensure proper detection of virtual storage and network devices during VM deployment. 
-
-- If using a client to connect to your Azure Local instance, see [Connect to Azure Local via Azure CLI client](../manage/azure-arc-vm-management-prerequisites.md#azure-command-line-interface-cli-requirements).
-
-- Make sure that you have **Storage Blob Data Contributor** role on the Storage account that you use for the image. For more information, see [Assign an Azure role for access to blob data](/azure/role-based-access-control/role-assignments-portal?tabs=current).
-
----
 
 ## Add VM image from Azure Storage account
 
 You create a VM image starting from an image in Azure Storage account and then use this image to deploy VMs on your Azure Local max.
-
-# [Azure CLI](#tab/azurecli)
 
 Follow these steps to create a VM image using the Azure CLI.
 
@@ -190,69 +162,9 @@ Command group 'stack-hci-vm' is experimental and under development. Reference an
 PS C:\Users\azcli>
 ```
 
-# [Azure portal](#tab/azureportal)
-
-Follow these steps to create a VM image using the Azure portal. In the Azure portal of your Azure Local resource, take the following steps:
-
-1. Go to **Resources** > **VM images**.
-
-1. Select **+ Add VM Image** and from the dropdown list, select **Add VM image from Azure Storage Account**.
-
-   :::image type="content" source="./media/multi-rack-virtual-machine-image-storage-account/add-image-from-azure-storage-account.png" alt-text="Screenshot showing Add VM image from Azure Marketplace option." lightbox="./media/multi-rack-virtual-machine-image-storage-account/add-image-from-azure-storage-account.png":::
-
-1. In the **Create an image** page, on the **Basics** tab, input the following information:
-
-    1. **Subscription** Select a subscription to associate with your VM image.
-
-    1. **Resource group** Create new or select an existing resource group that you associate with the VM image.
-    
-    1. **Save image as** Enter a name for your VM image.
-
-    1. **Custom location** Select a custom location to deploy your VM image. The custom location should correspond to the custom location for your Azure Local.
-
-    1. **Image to download** Select a VM image from the list of images in Azure Marketplace. The dropdown list shows all the Azure Marketplace images that are compatible with your Azure Local.
-
-    1. **OS type** Select the OS of the image as Windows or Linux. This is the OS associated with the image in your Storage account.
-    
-    1. **VM generation.** Select the Generation of the image.
-
-    1. **Source.** The source of the image should be Storage blobs and is automatically populated.
-
-    1. **Storage blob.** Specify the Azure Storage account path for the source image on your system.
-
-    1. **Storage path.** Select the storage path for your VM image. Select **Choose automatically** to have a storage path with high availability automatically selected. Select **Choose manually** to specify a storage path to store VM images and configuration files on the Azure Local instance. In this case, ensure that the specified storage path has sufficient storage space.
-
-1. Select **Review + Create** to create your VM image.
-
-   :::image type="content" source="./media/multi-rack-virtual-machine-image-storage-account/create-an-image-storage-account-review-create.png" alt-text="Screenshot of the Create an Image page highlighting the Review + Create button." lightbox="./media/multi-rack-virtual-machine-image-storage-account/create-an-image-storage-account-review-create.png":::
-
-1. The input parameters are validated. If the validations succeed, you can review the VM image details and select **Create**.
-        
-   :::image type="content" source="./media/multi-rack-virtual-machine-image-storage-account/create-an-image-create.png" alt-text="Screenshot of the Create an Image page highlighting the Create button." lightbox="./media/multi-rack-virtual-machine-image-storage-account/create-an-image-create.png":::
-    
-1. An Azure Resource Manager template deployment job starts for the VM image. The image deployment takes a few minutes to complete. The time taken to download the image depends on the size of the Marketplace image and the network bandwidth available for the download.
-
-   :::image type="content" source="./media/multi-rack-virtual-machine-image-storage-account/deployment-in-progress.png" alt-text="Screenshot showing deployment is in progress." lightbox="./media/multi-rack-virtual-machine-image-storage-account/deployment-in-progress.png":::
-
-   You can track the image deployment on the VM image grid. You can see the list of the VM images that are already downloaded and the ones that are being downloaded on the system.
-
-   To view more details of any image, select the VM image name from the list of VM images.
-
-1. When the image download is complete, the VM image shows up in the list of images, and the **Status** shows as **Available**.
-
-   :::image type="content" source="./media/multi-rack-virtual-machine-image-storage-account/added-vm-image.png" alt-text="Screenshot showing the newly added VM image in the list of images." lightbox="./media/multi-rack-virtual-machine-image-storage-account/added-vm-image.png":::
-
-   If the download of the VM image fails, the error details are shown in the portal blade.
-
-   :::image type="content" source="./media/multi-rack-virtual-machine-image-storage-account/failed-deployment.png" alt-text="Screenshot showing an error when the download of VM image fails." lightbox="./media/multi-rack-virtual-machine-image-storage-account/failed-deployment.png":::
-
----
-
 ## List VM images
 
 You need to view the list of VM images to choose an image to manage.
-
-# [Azure CLI](#tab/azurecli)
 
 Follow these steps to list VM image using Azure CLI.
 
@@ -341,26 +253,9 @@ PS C:\Users\azcli>
 
 For more information on this CLI command, see [az stack-hci-vm image list](/cli/azure/stack-hci-vm/image#az-stack-hci-vm-image-list).
 
-
-# [Azure portal](#tab/azureportal)
-
-In the Azure portal of your Azure Local resource, you can track the VM image deployment on the VM image grid. You can see the list of the VM images that are already downloaded and the ones that are being downloaded on your system.
-
-Follow these steps to view the list of VM images in Azure portal.
-
-1. In the Azure portal, go to your Azure Local resource.
-1. Go to **Resources > VM images**.
-1. In the right-pane, you can view the list of the VM images.
-
-    :::image type="content" source="./media/multi-rack-virtual-machine-image-storage-account/list-virtual-machine-images.png" alt-text="Screenshot showing the list of VM images on your Azure Local." lightbox="./media/multi-rack-virtual-machine-image-storage-account/list-virtual-machine-images.png":::
-
----
-
 ## View VM image properties
 
 You might want to view the properties of VM images before you use the image to create a VM. Follow these steps to view the image properties:
-
-# [Azure CLI](#tab/azurecli)
 
 Follow these steps to use Azure CLI to view properties of an image:
 
@@ -496,26 +391,9 @@ Follow these steps to use Azure CLI to view properties of an image:
  -->        ```
 
 
-# [Azure portal](#tab/azureportal)
-
-In the Azure portal of your Azure Local resource, perform the following steps:
-
-1. Go to **Resources** > **VM images**. In the right-pane, a list of VM images is displayed.
-
-   :::image type="content" source="./media/multi-rack-virtual-machine-image-storage-account/vm-images-list.png" alt-text="Screenshot showing list of images." lightbox="./media/multi-rack-virtual-machine-image-storage-account/vm-images-list.png":::
-
-1. Select the VM **Image name** to view the properties.
-
-   :::image type="content" source="./media/multi-rack-virtual-machine-image-storage-account/vm-image-properties.png" alt-text="Screenshot showing the properties of a selected VM image." lightbox="./media/multi-rack-virtual-machine-image-storage-account/vm-image-properties.png":::
-
----
-
-
 ## Delete VM image
 
 You might want to delete a VM image if the download fails for some reason or if the image is no longer needed. Follow these steps to delete the VM images.
-
-# [Azure CLI](#tab/azurecli)
 
 1. Run PowerShell as an administrator.
 1. Set the following parameters:
@@ -551,24 +429,6 @@ Command group 'stack-hci-vm' is experimental and under development. Reference an
 ResourceNotFound: The Resource 'Microsoft.AzureStackHCI/marketplacegalleryimages/myhci-marketplaceimage' under resource group 'mylocal-rg' was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix
 PS C:\Users\azcli>
 ```
-
-# [Azure portal](#tab/azureportal)
-
-In the Azure portal of your Azure Local resource, perform the following steps:
-
-1. Go to **Resources** > **VM images**.
-
-1. From the list of VM images displayed in the right-pane, select the trash can icon next to the VM image you want to delete.
-
-   :::image type="content" source="./media/multi-rack-virtual-machine-image-storage-account/delete-vm-image.png" alt-text="Screenshot showing the trash can icon against the VM image you want to delete." lightbox="./media/multi-rack-virtual-machine-image-storage-account/delete-vm-image.png":::
-
-1. When prompted to confirm deletion, select **Yes**.
-
-   :::image type="content" source="./media/multi-rack-virtual-machine-image-storage-account/prompt-to-confirm-deletion.png" alt-text="Screenshot showing a prompt to confirm deletion." lightbox="./media/multi-rack-virtual-machine-image-storage-account/prompt-to-confirm-deletion.png":::
-
-After the VM image is deleted, the list of VM images refreshes to reflect the deleted image.
-
----
 
 ## Next steps
 
