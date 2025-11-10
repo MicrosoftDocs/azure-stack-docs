@@ -69,7 +69,7 @@ You can now create the Azure Local VM in a specific availability zone with or wi
 
 ## Create a VM in a specific availability zone without strict placement
 
-Once you have set up availability zones in a rack aware cluster, you can create Azure Local VMs on a specific availability zone to reduce latency, improve performance, ensure redundancy, and meet compliance requirements.
+Once you set up availability zones in a rack aware cluster, you can create Azure Local VMs on a specific availability zone to reduce latency, improve performance, ensure redundancy, and meet compliance requirements.
 
 When you create a VM in a specific availability zone, the default option is without strict placement. The VM is created on a machine within the specified zone using the `--zone` flag.
 
