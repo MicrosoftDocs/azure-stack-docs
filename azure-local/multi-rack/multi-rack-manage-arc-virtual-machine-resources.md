@@ -12,10 +12,11 @@ ms.date: 11/07/2025
 
 [!INCLUDE [multi-rack-applies-to-preview](../includes/multi-rack-applies-to-preview.md)]
 
-After you deploy Azure Local virtual machines (VMs) enabled by Azure Arc, you need to add or delete resources like data disks and network interfaces.
+After you deploy Azure Local virtual machines (VMs) enabled by Azure Arc, you may need to add or delete resources like data disks and network interfaces.
 This article describes how to manage these VM resources for an Azure Local VM for multi-rack deployments.
 
-Add or delete resources using the Azure portal. To add a data disk, use the Azure CLI.
+> [!NOTE]
+> You can't add or delete network interfaces after the VM is created. If more than one network interfaces are needed, make sure to add them during VM creation.
 
 ## Prerequisites
 
@@ -26,6 +27,9 @@ Add or delete resources using the Azure portal. To add a data disk, use the Azur
 
 After you create a VM, you might want to add a data disk to it.
 
+> [!NOTE]
+> You must turn off your VM before adding or deleting a data disk. Once it is updated, you need to restart your VM.
+
 ### [Azure CLI](#tab/azurecli)
 
 To add a data disk, you first create a disk and then attach it to the VM. Run the following commands in the Azure CLI on the computer that you're using to connect to Azure Local.
@@ -33,7 +37,7 @@ To add a data disk, you first create a disk and then attach it to the VM. Run th
 1. Create a data disk on a specified storage path:
 
    ```azurecli
-   az stack-hci-vm disk create --resource-group $resource_group --name $diskName --custom-location $customLocationID --location $location --size-gb 1 --storage-path-id $storagePathid
+   az stack-hci-vm disk create --resource-group $resource_group --name $diskName --custom-location $customLocationID --location $location --size-gb 1
    ```
 
 1. Attach the disk to the VM:
@@ -57,12 +61,6 @@ Follow these steps in the Azure portal for your Azure Local instance:
 1. On the **Add new disk** pane, enter the following parameters, and then select **Add**:
     1. For **Name**, specify a friendly name for the data disk.
     1. For **Size (GB)**, provide the size for the disk in gigabytes.
-    1. For **Provisioning type**, select **Dynamic** or **Static**.
-    1. For **Storage path**, select the storage path for your VM image:
-
-       - To have a storage path with high availability automatically selected, select **Choose automatically**.
-
-       - To specify a storage path to store VM images and configuration files on your Azure Local instance, select **Choose manually**. Ensure that the selected storage path has sufficient storage space.
 
 1. Select **Save** to add the new disk.
 
@@ -80,7 +78,6 @@ You can expand an existing data disk to your desired size using Azure CLI.
 
 >[!NOTE]
 >
->- This feature is available only in Azure Local max version 2511 and later.
 >- The size you're changing the data disk to can't be the same or less than the original size of the data disk.
 >- The maximum size the disk can expand to depends on the storage capacity of the cluster. Disk size maximum is 20 TB.
 
