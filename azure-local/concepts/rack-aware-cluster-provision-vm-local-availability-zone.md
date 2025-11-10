@@ -119,21 +119,33 @@ Follow these steps to create a VM in a specific availability zone with strict pl
 
 # [Azure portal](#tab/azure-portal)
 
-1. Sign in to the [Azure portal](https://portal.azure.com/)
-1. Navigate to your Azure Local rack aware cluster
-1. Select **Virtual Machine** and **Create**.
-1. Provide the following details:
+Follow these steps in Azure portal for your Azure Local.
 
-    - Virtual machine name
-    - Security type
-    - Image
-    - Virtual processor count
-    - Memory (MB)
-    - Memory type
-    - [Availability zone](#availability-zones): None, Zone A, and Zone A Strict placement
-    - Enable guest management
+1. Go to Azure **Arc cluster view** > **Virtual machines**.
+1. From the top command bar, select **+ Create VM**.
+1. In the **Instance details** section, input the following parameters:
 
-## Availability zones
+    :::image type="content" source="media/rack-aware-cluster-availability-zone/no-zone.png" alt-text="Screenshot of virtual machine with no zone in the Azure portal." lightbox="media/rack-aware-cluster-availability-zone/no-zone.png":::
+
+    1. Virtual machine name: The name should follow all the naming conventions for Azure virtual machines.
+    1. Security type: Select Standard or Trusted launch virtual machines. For more information about Trusted launch Azure Local VMs, see [What is Trusted launch for Azure Local Virtual Machines?](../manage/trusted-launch-vm-overview.md)
+    1. Image: Select the Marketplace or customer managed image to create the VM image.
+    1. Virtual processor count: Specify the number of vCPUs you want to use to create the VM.
+    1. Memory (MB): Specify the memory in MB for the VM you want to create.
+    1. Memory type: Specify the memory type as static or dynamic.
+    1. Availability zone:
+        1. **None**: The system automatically chooses an optimal placement within the rack aware cluster.
+        1. **Zone A**: There isn't any strict placement enabled.
+            1. During a failover event, the VM can move to another zone.
+            1. After zone A recovers, the VM migrates back to zone A (the original zone the VM was created in).
+        1. **Zone A Strict placement**: The VM is created in zone A and has strict placement enabled.
+            1. During a failover event, the VM can't move to another zone.
+            1. The VM goes down with the zone.
+    1. Enable guest management: Extensions can be installed on VMs where guest management is enabled.
+        1. Add at least one network interface through the **Networking** tab to complete the guest management setup.
+        1. The enabled network interface must have a valid IP address and internet access. For more information, see [Azure Local VM management networking]().
+
+<!--## Availability zones
 
 ### Create a VM without a specific availability zone
 
@@ -151,7 +163,7 @@ If you specify zone A, there isn't any strict placement enabled. This means duri
 
 If you specify zone A strict placement, the VM is created in zone A and has strict placement enabled. This means during a failover event, the VM can't move to another zone. Therefore, the VM goes down with the zone.
 
-:::image type="content" source="media/rack-aware-cluster-availability-zone/zone-a-strict.png" alt-text="Screenshot of virtual machine with zone A strict in the Azure portal." lightbox="media/rack-aware-cluster-availability-zone/zone-a-strict.png":::
+:::image type="content" source="media/rack-aware-cluster-availability-zone/zone-a-strict.png" alt-text="Screenshot of virtual machine with zone A strict in the Azure portal." lightbox="media/rack-aware-cluster-availability-zone/zone-a-strict.png":::-->
 
 ---
 
