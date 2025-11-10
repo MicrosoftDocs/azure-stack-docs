@@ -21,13 +21,13 @@ landingContent:
       - linkListType: overview
         links:
           - text: What is Azure Local?
-            url: index.yml
+            url: index.yml <!--replace link-->
           - text: Hyperconverged deployments
             url: overview.md
           - text: Multi-rack deployments (preview)
             url: multi-rack/multi-rack-overview.md
           - text: Microsoft 365 on Local
-            url: concepts/rack-aware-cluster-overview.md
+            url: index.yml <!--replace link-->
           - text: Disconnected operations
             url: manage/disconnected-operations-overview.md
 
@@ -36,12 +36,12 @@ landingContent:
     linkLists:
       - linkListType: deploy
         links:
-          - text: Deploy hyperconverged
+          - text: Deploy hyperconverged deployments
             url: deploy/deploy-via-portal.md
           - text: Plan multi-rack (preview)
-            url: index.yml
+            url: index.yml <!--replace link-->
           - text: Deploy Microsoft 365
-            url: index.yml
+            url: index.yml <!--replace link-->
           - text: Plan your network for disconnected operations
             url: manage/disconnected-operations-network.md
           - text: Deploy disconnected operations 
@@ -54,14 +54,14 @@ landingContent:
         links:
           - text: Manage at-scale
             url: manage/manage-at-scale-dashboard.md          
-          - text: Add node on hyperconverged
+          - text: Add node on hyperconverged deployments
             url: manage/add-server.md
-          - text: Repair node on hyperconverged
+          - text: Repair node on hyperconverged deployments
             url: manage/repair-server.md
-          - text: Manage NSGs on hyperconverged
+          - text: Manage NSGs on hyperconverged deployments
             url: manage/manage-network-security-groups.md
           - text: Manage NSGs on multi-rack (preview)
-            url: index.yml
+            url: index.yml <!--replace link-->
 
 # Card
   - title: Deploy workloads
@@ -69,7 +69,7 @@ landingContent:
       - linkListType: deploy
         links:
           - text: Deploy Azure Local VMs
-            url: manage/create-arc-virtual-machines
+            url: manage/create-arc-virtual-machines.md
           - text: Deploy Azure Local VMs on disconnected operations
             url: manage/disconnected-operations-arc-vm.md
           - text: Deploy Azure Kubernetes Service clusters
@@ -84,47 +84,40 @@ landingContent:
     linkLists:
       - linkListType: overview
         links:
-          - text: What is Azure Local monitoring?
+          - text: Monitor hyperconverged deployments
             url: concepts/monitoring-overview.md
-      - linkListType: how-to-guide
-        links:
-          - text: Monitor via Insights
-            url: manage/monitor-single-23h2.md
-          - text: Enable Insights at-scale
-            url: manage/monitor-multi-azure-policies.md          
-          - text: Azure Monitor Metrics
+          - text: Monitor multi-rack deployments (preview)
+            url: index.yml <!--replace link-->
+          - text: Monitor disconnected operations
+            url: manage/disconnected-operations-monitoring.md       
+          - text: Azure Monitor metrics for hyperconverged deployments
             url: manage/monitor-cluster-with-metrics.md
-          - text: Health alerts
-            url: manage/health-alerts-via-azure-monitor-alerts.md
+          - text: Azure Monitor metrics for multi-rack deployments (preview)
+            url: index.yml <!--replace link-->
 
   # Card
   - title: Try it out
     linkLists:
       - linkListType: overview
         links:
-          - text: Plan your network for disconnected operations (preview)
-            url: manage/disconnected-operations-network.md
-          - text: Deploy disconnected operations (preview)
-            url: manage/disconnected-operations-deploy.md  
-          - text: Prepare to deploy rack aware clusters (preview)
-            url: deploy/rack-aware-cluster-deploy-prep.md
-          - text: Deploy rack aware clusters (preview)
-            url: deploy/rack-aware-cluster-deploy-portal.md
           - text: Deploy using local identity with Key Vault (preview)
             url: deploy/deployment-local-identity-with-key-vault.md
-          - text: Manage GPU via partitioning (preview)
-            url: manage/gpu-manage-via-partitioning.md
-
+          - text: Deploy rack aware clusters (preview)
+            url: deploy/rack-aware-cluster-deploy-portal.md
+          - text: Place VMs in rack aware clusters (preview)
+            url: concepts/rack-aware-cluster-provision-vm-local-availability-zone.md
 
   # Card
   - title: Concepts
     linkLists:
       - linkListType: concept
         links:
-          - text: Network reference patterns overview
-            url: plan/network-patterns-overview.md
-          - text: Security features
+          - text: Security for hyperconverged deployments
             url: concepts/security-features.md
+          - text: Security for disconnected operations
+            url: manage/disconnected-operations-security.md
+          - text: Security for multi-rack deployments (preview)
+            url: index.yml <!--replace link-->
           - text: Observability
             url: concepts/observability.md
 
@@ -133,8 +126,10 @@ landingContent:
     linkLists:
       - linkListType: how-to-guide
         links:
-          - text: Collect logs
+          - text: Collect logs for hyperconverged deployments
             url: manage/collect-logs.md
+          - text: Collect logs for disconnected operations
+            url: manage/disconnected-operations-on-demand-logs.md
           - text: Troubleshoot deployment issues
             url: manage/troubleshoot-deployment.md
           - text: Get support
@@ -142,18 +137,9 @@ landingContent:
 
 
   # Card
-  - title: Update and Upgrade
+  - title: Azure Architecture Center
     linkLists:
-      - linkListType: how-to-guide
+      - linkListType: architecture
         links:
-          - text: About updates
-            url: update/about-updates-23h2.md
-          - text: Update via Azure portal
-            url: update/azure-update-manager-23h2.md
-          - text: About upgrades
-            url: upgrade/about-upgrades-23h2.md
-          - text: Upgrade OS
-            url: upgrade/upgrade-22h2-to-23h2-powershell.md
-          - text: Upgrade solution
-            url: upgrade/install-solution-upgrade.md
-
+          - text: Azure Local baseline reference architecture
+            url: /azure/architecture/hybrid/azure-local-baseline
