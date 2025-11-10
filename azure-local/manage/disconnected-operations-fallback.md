@@ -22,7 +22,7 @@ Use appliance fallback logging to collect and send logs to Microsoft when the Az
 
 Here's a diagram showing a high-level overview of the appliance fallback log collection process:
 
-:::image type="content" source="./media/disconnected-operations/deployment/fall-back-log-collection-overview.png" alt-text="Diagram showing a high-level overivew of the appliance fallback log collection process." lightbox=" ./media/disconnected-operations/deployment/fall-back-log-collection-overview.png":::
+:::image type="content" source="./media/disconnected-operations/fallback-log/fall-back-log-collection-overview.png" alt-text="Diagram showing a high-level overivew of the appliance fallback log collection process." lightbox=" ./media/disconnected-operations/fallback-log/fall-back-log-collection-overview.png":::
 
 ## Prerequisites
 
