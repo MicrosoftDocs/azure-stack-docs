@@ -23,7 +23,7 @@ In subsequent multi-rack deployments, you'll only need to create the NFC and CM 
 
 ## Install CLI extensions and sign into your Azure subscription
 
-Install latest version of the necessary CLI extensions<!--insert link-->.
+Install latest version of the necessary [CLI extensions](multi-rack-cli-extensions.md).
 
 ### Azure subscription sign-in
 
