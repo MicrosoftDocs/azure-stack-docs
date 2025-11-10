@@ -12,7 +12,7 @@ ms.date: 11/10/2025
 
 This article explains how to install the required Azure CLI extensions for Azure Local multi-rack deployments.
 
-Azure CLI is required to be installed before the installing the extensions. Follow [Install Azure CLI](/cli/azure) instructions to install it.
+Ensure Azure CLI is installed before the installing the extensions. Follow [Install Azure CLI](/cli/azure) instructions to install it.
 
 Install the following CLI extensions:
 
