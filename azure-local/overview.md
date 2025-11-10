@@ -4,7 +4,7 @@ description: Learn how Azure Local accelerates cloud and AI innovation by delive
 author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
-ms.date: 11/06/2025
+ms.date: 11/10/2025
 ms.topic: overview
 ---
 
@@ -27,7 +27,7 @@ Some examples are:
 - **Control systems and near real-time operations** that have extreme latency requirements. Examples include manufacturing execution systems, industrial quality assurance, and financial infrastructure.
 - **Strict sovereignty and regulatory requirements** requiring that data be kept and controlled locally. Examples include highly regulated industries such as defense and intelligence sectors and energy infrastructure.
 
-Azure Local is part of Microsoft’s [adaptive cloud](https://www.microsoft.com/cloud/adaptive-cloud) approach - bringing the cloud to you so you can build and innovate anywhere, without limits.
+Azure Local is part of Microsoft’s [adaptive cloud](https://azure.microsoft.com/solutions/adaptive-cloud) approach - bringing the cloud to you so you can build and innovate anywhere, without limits.
 
 ## Next steps
 
