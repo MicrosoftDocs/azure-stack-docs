@@ -133,7 +133,7 @@ Follow these steps in Azure portal for your Azure Local.
     1. Virtual processor count: Specify the number of vCPUs you want to use to create the VM.
     1. Memory (MB): Specify the memory in MB for the VM you want to create.
     1. Memory type: Specify the memory type as static or dynamic.
-    1. [Availability zone](#availability-zones): No zone, a zone without strict placement, and a zone with strick placement.
+    1. [Availability zone](#availability-zones): No zone, a zone without strict placement, or a zone with strict placement.
     1. Enable guest management: Extensions can be installed on VMs where guest management is enabled.
 
 ## Availability zones
