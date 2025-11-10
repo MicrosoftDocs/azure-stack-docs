@@ -125,7 +125,7 @@ Follow these steps in Azure portal for your Azure Local.
 1. From the top command bar, select **+ Create VM**.
 1. In the **Instance details** section, input the following parameters:
 
-    :::image type="content" source="media/rack-aware-cluster-availability-zone/no-zone.png" alt-text="Screenshot of virtual machine with no zone in the Azure portal." lightbox="media/rack-aware-cluster-availability-zone/no-zone.png":::
+    :::image type="content" source="media/rack-aware-cluster-availability-zone/create-azure-arc-virtual-machine.png" alt-text="Screenshot of the Create an Azure Arc virtual machine page in the Azure portal." lightbox="media/rack-aware-cluster-availability-zone/create-azure-arc-virtual-machine.png":::
 
     1. Virtual machine name: The name should follow all the naming conventions for Azure virtual machines.
     1. Security type: Select Standard or Trusted launch virtual machines. For more information about Trusted launch Azure Local VMs, see [What is Trusted launch for Azure Local Virtual Machines?](../manage/trusted-launch-vm-overview.md)
