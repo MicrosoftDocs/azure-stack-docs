@@ -127,14 +127,14 @@ Follow these steps in Azure portal for your Azure Local.
 
     :::image type="content" source="media/rack-aware-cluster-availability-zone/create-azure-arc-virtual-machine.png" alt-text="Screenshot of the Create an Azure Arc virtual machine page in the Azure portal." lightbox="media/rack-aware-cluster-availability-zone/create-azure-arc-virtual-machine.png":::
 
-    1. Virtual machine name: The name should follow all the naming conventions for Azure virtual machines.
-    1. Security type: Select Standard or Trusted launch virtual machines. For more information about Trusted launch Azure Local VMs, see [What is Trusted launch for Azure Local Virtual Machines?](../manage/trusted-launch-vm-overview.md)
-    1. Image: Select the Marketplace or customer managed image to create the VM image.
-    1. Virtual processor count: Specify the number of vCPUs you want to use to create the VM.
-    1. Memory (MB): Specify the memory in MB for the VM you want to create.
-    1. Memory type: Specify the memory type as static or dynamic.
-    1. [Availability zone](#availability-zones): No zone, a zone without strict placement, or a zone with strict placement.
-    1. Enable guest management: Extensions can be installed on VMs where guest management is enabled.
+    1. **Virtual machine name**: The name should follow all the naming conventions for Azure virtual machines.
+    1. **Security type**: Select Standard or Trusted launch virtual machines. For more information about Trusted launch Azure Local VMs, see [What is Trusted launch for Azure Local Virtual Machines?](../manage/trusted-launch-vm-overview.md)
+    1. **Image**: Select the Marketplace or customer managed image to create the VM image.
+    1. **Virtual processor count**: Specify the number of vCPUs you want to use to create the VM.
+    1. **Memory (MB)**: Specify the memory in MB for the VM you want to create.
+    1. **Memory type**: Specify the memory type as static or dynamic.
+    1. **[Availability zone](#availability-zones)**: Specify no zone, a zone without strict placement, or a zone with strict placement.
+    1. **Enable guest management**: Extensions can be installed on VMs where guest management is enabled.
 
 ## Availability zones
 
