@@ -1,6 +1,6 @@
 ---
-title: "Azure Local multi-rack deployments: Network Fabric Controller and Cluster Manager creation (Preview)"
-description: Prepare to create the Azure Local multi-rack Network Fabric Controller and Cluster Manager (Preview).
+title: "Azure Local multi-rack deployment prerequisites (Preview)"
+description: Review the prerequisites for Azure Local multi-rack deployments (preview).
 author: sipastak
 ms.author: sipastak
 ms.service: azure-local
@@ -8,19 +8,16 @@ ms.date: 11/07/2025
 ms.topic: conceptual
 ---
 
-# Management plane prerequisites for Azure Local multi-rack deployments (Preview)
+# Azure Local multi-rack deployment prerequisites (Preview)
 
 [!INCLUDE [multi-rack-applies-to-preview](../includes/multi-rack-applies-to-preview.md)]
 
-To get started with Azure Local multi-rack deployments, you need to create a Network Fabric Controller (NFC) and then a cluster manager in your target Azure region.
+To get started with Azure Local multi-rack deployments, you need to create a Network Fabric Controller (NFC) and then a Cluster Manager (CM) in your target Azure region. These resources will need to be created prior to the creation of the Azure Local multi-rack cluster.
 
-Each NFC is associated with a cluster manager in the same Azure region and your subscription.
+Each NFC is associated with a CM in the same Azure region and your subscription.
 
-You need to complete the prerequisites before you can deploy the first multi-rack NFC and cluster manager pair.
-In subsequent multi-rack deployments, you'll only need to create the NFC and cluster manager after reaching the quota of supported multi-rack instances.
-
-> [!NOTE]
-> During preview, the NFC, cluster manager, and the cluster will be created for you.
+You need to complete the prerequisites before you can deploy the first multi-rack NFC and CM pair.
+In subsequent multi-rack deployments, you'll only need to create the NFC and CM after reaching the quota of supported multi-rack clusters.
 
 [!INCLUDE [hci-preview](../includes/hci-preview.md)]
 
@@ -41,13 +38,15 @@ Install latest version of the necessary CLI extensions<!--insert link-->.
 
 ## Resource provider registration
 
-Ensure access to the necessary Azure resource providers for the Azure subscription for multi-rack resources. During preview, the following resource providers will be registered for you:
+Ensure access to the necessary Azure resource providers for the Azure subscription for multi-rack resources. Register the following resource providers:
 
 ```Azure CLI
 az provider register --namespace Microsoft.AzureArcData
 az provider register --namespace Microsoft.Compute
+az provider register --namespace Microsoft.AzureStackHCI
 az provider register --namespace Microsoft.ContainerService
 az provider register --namespace Microsoft.ExtendedLocation
+az provider register --namespace Microsoft.GuestConfiguration
 az provider register --namespace Microsoft.HybridCompute
 az provider register --namespace Microsoft.HybridConnectivity
 az provider register --namespace Microsoft.HybridContainerService
@@ -98,16 +97,15 @@ Ensure that the registration state is `Registered`.
 
 ## Dependent Azure resources setup
 
-> [!NOTE]
-> During preview, the following resources will be created and set up for you.  
+Create and set up the following resources:
 
 - Establish [ExpressRoute](/azure/expressroute/expressroute-introduction) connectivity from your on-premises network to an Azure region:
   - [Create and verify an ExpressRoute circuit](/azure/expressroute/expressroute-howto-circuit-portal-resource-manager) via the Azure portal.
   - In the ExpressRoute blade, ensure Circuit status indicates the status of the circuit on the Microsoft side. Provider status indicates if the circuit is provisioned or not provisioned on the service-provider side. For an ExpressRoute circuit to be operational, circuit status must be **Enabled**, and provider status must be **Provisioned**.
 - Set up an Azure Key Vault to store encryption and security tokens, passwords, certificates, and API keys.
 - Set up a Log Analytics workspace to store logs and analytics data for multi-rack subcomponents (Network Fabric, Cluster, etc.).
-- Set up an Azure Storage account to store data objects for your resource in the Azure portal:
+- Set up an Azure Storage account to store data objects for your resource in the Azure portal.
 - The Azure Key Vault, Log Analytics workspace, and storage account require a managed identity to be granted the appropriate permissions. Both user-assigned managed identities and system-assigned managed identities are supported.
   - If using user-assigned managed identities, the resources can be configured in advance for managed identity support.
-  - For system-assigned managed identities, configuration must be done after cluster creation.
-- Ensure SKU availability in the targeted zones are met for the subscription.
+  - For system-assigned managed identities, configuration must be done after multi-rack cluster creation.
+- Ensure Azure VM SKU availability in the targeted zones are met for the subscription.
