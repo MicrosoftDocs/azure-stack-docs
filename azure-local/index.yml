@@ -21,14 +21,14 @@ landingContent:
       - linkListType: overview
         links:
           - text: What is Azure Local?
-            url: index.yml <!--replace link-->
+            url: index.yml
           - text: Hyperconverged deployments
             url: overview.md
           - text: Multi-rack deployments (preview)
             url: multi-rack/multi-rack-overview.md
           - text: Microsoft 365 on Local
-            url: index.yml <!--replace link-->
-          - text: Disconnected operations
+            url: index.yml
+          - text: Disconnected operations (preview)
             url: manage/disconnected-operations-overview.md
 
 # Card 
@@ -39,12 +39,12 @@ landingContent:
           - text: Deploy hyperconverged deployments
             url: deploy/deploy-via-portal.md
           - text: Plan multi-rack (preview)
-            url: index.yml <!--replace link-->
+            url: index.yml
           - text: Deploy Microsoft 365
-            url: index.yml <!--replace link-->
-          - text: Plan your network for disconnected operations
+            url: index.yml
+          - text: Plan your network for disconnected operations (preview)
             url: manage/disconnected-operations-network.md
-          - text: Deploy disconnected operations 
+          - text: Deploy disconnected operations (preview)
             url: manage/disconnected-operations-deploy.md
 
 # Card
@@ -61,7 +61,7 @@ landingContent:
           - text: Manage NSGs on hyperconverged deployments
             url: manage/manage-network-security-groups.md
           - text: Manage NSGs on multi-rack (preview)
-            url: index.yml <!--replace link-->
+            url: index.yml
 
 # Card
   - title: Deploy workloads
@@ -70,7 +70,7 @@ landingContent:
         links:
           - text: Deploy Azure Local VMs
             url: manage/create-arc-virtual-machines.md
-          - text: Deploy Azure Local VMs on disconnected operations
+          - text: Deploy Azure Local VMs on disconnected operations (preview)
             url: manage/disconnected-operations-arc-vm.md
           - text: Deploy Azure Kubernetes Service clusters
             url: /azure/aks/hybrid/aks-create-clusters-portal?toc=/azure-local/toc.json&bc=/azure-local/breadcrumb/toc.json
@@ -87,13 +87,13 @@ landingContent:
           - text: Monitor hyperconverged deployments
             url: concepts/monitoring-overview.md
           - text: Monitor multi-rack deployments (preview)
-            url: index.yml <!--replace link-->
-          - text: Monitor disconnected operations
+            url: index.yml
+          - text: Monitor disconnected operations (preview)
             url: manage/disconnected-operations-monitoring.md       
           - text: Azure Monitor metrics for hyperconverged deployments
             url: manage/monitor-cluster-with-metrics.md
           - text: Azure Monitor metrics for multi-rack deployments (preview)
-            url: index.yml <!--replace link-->
+            url: index.yml
 
   # Card
   - title: Try it out
@@ -114,10 +114,10 @@ landingContent:
         links:
           - text: Security for hyperconverged deployments
             url: concepts/security-features.md
-          - text: Security for disconnected operations
+          - text: Security for disconnected operations (preview)
             url: manage/disconnected-operations-security.md
           - text: Security for multi-rack deployments (preview)
-            url: index.yml <!--replace link-->
+            url: index.yml
           - text: Observability
             url: concepts/observability.md
 
@@ -128,7 +128,7 @@ landingContent:
         links:
           - text: Collect logs for hyperconverged deployments
             url: manage/collect-logs.md
-          - text: Collect logs for disconnected operations
+          - text: Collect logs for disconnected operations (preview)
             url: manage/disconnected-operations-on-demand-logs.md
           - text: Troubleshoot deployment issues
             url: manage/troubleshoot-deployment.md
