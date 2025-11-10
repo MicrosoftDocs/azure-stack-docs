@@ -3,7 +3,7 @@ title: Release notes with fixed and known issues in Azure Local
 description: Read about the known issues and fixed issues in Azure Local.
 author: alkohli
 ms.topic: conceptual
-ms.date: 11/05/2025
+ms.date: 11/10/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
@@ -421,7 +421,7 @@ The following table lists the known and expected system behaviors that shouldn't
 
 ::: moniker-end
 
-::: moniker range="=azloc-2505"
+::: moniker range="=azloc-previous"
 
 This article identifies critical known issues and their workarounds in Azure Local.
 
@@ -449,7 +449,7 @@ Release notes for this version include the issues fixed in this release, known i
 > [!NOTE]
 > For detailed remediation for common known issues, see the [Azure Local Supportability](https://github.com/Azure/AzureStackHCI-Supportability) GitHub repository.
 
-## Fixed issues
+### Fixed issues
 
 The following table lists the fixed issues in this release:
 
@@ -476,7 +476,7 @@ The following table lists the fixed issues in this release:
 | Security management <!--57340784--> | Fixed **Security defaults**, **Application control**, and **Data protections** pages showing as *Unknown* in the security compliance report. | |
 | Add server <br> Repair server <!--32483959--> | Fixed running `Add-server` and `Repair-server` cmdlets with a customized storage adapter IP in Azure Local which resulted in the error: `Type 'ConfigureAzureStackHostStorageAdpaterIPAddressesInAddRepairNode' of Role 'HostNetwork' raised an exception: Connecting to remote server <MACHINE> failed with the following error message: Access is denied.`. | |
 
-## Known issues in this release
+### Known issues in this release
 
 The following table lists the known issues in this release:
 
@@ -487,7 +487,7 @@ The following table lists the known issues in this release:
 | Upgrade <!--33417006-->| The upgrade banner is currently available for users using the Azure Government cloud. However, the environment checker fails, suggesting that Azure Government clouds are not supported. | There's no workaround in this release. If you encounter this issue, contact Microsoft Support to determine next steps. |
 
 
-## Known issues from previous releases
+### Known issues from previous releases
 
 The following table lists the known issues from previous releases:
 
@@ -504,7 +504,7 @@ The following table lists the known issues from previous releases:
 | Upgrade <!--32812323--> | Failed to upgrade cluster with `Get-AzureStackHCI ConnectionStatus` in `RepairRegistration` due to the Virtualization-Based Security (VBS) master key lost during Secure Boot certificate installation. | For detailed steps on how to resolve this issue, see the [Troubleshooting guide](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/Update/BreakFix-Update-Resolve-subscription-status-precheck-failure.md). |
 | Registration <!--32812323-->  | After installing certain updates (including BIOS), clusters may report `RepairRegistrationRequired` and show a stale connection state.  | For detailed steps on how to resolve this issue, see the [Troubleshooting guide](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/ClusterRegistration/BreakFix-Registration-How-to-resolve-a-repairregistrationrequired-connection-status-after-service-or-bios-updates.md).  |
 
-## Known and expected behaviors
+### Known and expected behaviors
 
 The following table lists the known and expected system behaviors that shouldn't be considered as bugs or limitations.
 
@@ -512,10 +512,6 @@ The following table lists the known and expected system behaviors that shouldn't
 |---------|---------|---------|
 | Operating system  | Restoring the registry using *RegBack* isn't supported on Azure Local. This operation can remove the Lifecycle Manager (LCM) and Microsoft On-premises Cloud (MOC) settings on your Azure Local instance, which can corrupt the solution.  | |
 | Azure Local VM management| Using an exported Azure VM OS disk as a VHD to create a gallery image for provisioning an Azure Local VM is unsupported. | Run the command `restart-service mochostagent` to restart the mochostagent service. |
-
-::: moniker-end
-
-::: moniker range="=azloc-previous"
 
 ## Known issues for version 2504
 

@@ -5,7 +5,7 @@ ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 11/05/2025
+ms.date: 11/10/2025
 ---
 
 # What's new in Azure Local?
@@ -43,7 +43,7 @@ This release has the following features and improvements:
     
 - **Azure Local rack aware clustering (Preview)**: Azure Local now supports rack aware clustering. This Preview feature allows you to define local availability zones based on physical racks in your datacenter, enhancing the resilience of your cluster against rack-level failures. For more information, see [Rack aware clustering](concepts/rack-aware-cluster-overview.md).
 
-- **Upgrade**: Starting this release, solution upgrade from 11.2510 to 12.2510 is available to everyone and no longer requires you to opt-in.
+- **Upgrade**: Starting this release, solution upgrade from 11.2510 to 12.2510 is available to everyone and no longer requires you to opt in.
     - If you are already on 11.2510.1002.87, you can apply the OS upgrade to 12.2510.1002.94.
     - If you haven't updated to 11.2510.1002.87, you can update to 11.2510.1002.93 first before applying the upgrade to 12.2510.1002.94.
 
@@ -100,7 +100,7 @@ This release has the following features and improvements:
     
 - **.NET updates**: This build uses .NET version **8.0.20** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
 
-- **Update and upgrade changes**: Starting with this release, you can opt-in to update the solution version 11.25xx (running OS 25398.xxx) to solution version 12.25xx (running OS 26100.xxxx). For more information, see [Opt in update to Azure Local solution versions 12.25x](./update/update-opt-enable.md).
+- **Update and upgrade changes**: Starting with this release, you can opt in to update the solution version 11.25xx (running OS 25398.xxx) to solution version 12.25xx (running OS 26100.xxxx). For more information, see [Opt in update to Azure Local solution versions 12.25x](./update/update-opt-enable.md).
 
 
 - **Azure Local VM updates**:
@@ -265,7 +265,9 @@ This release has the following features and improvements:
 
 ::: moniker-end
 
-::: moniker range="=azloc-2505"
+::: moniker range="=azloc-previous"
+
+## Features and improvements in 2505
 
 There are two 2505 releases for May. Here are the details of each release:
 
@@ -275,8 +277,6 @@ There are two 2505 releases for May. Here are the details of each release:
 |11.2505.1001.22  | 25398.1611        | Existing deployments only.        |
 
 For more information, see [Release information summary](./release-information-23h2.md).
-
-## Features and improvements in 2505
 
 This release has the following features and improvements:
 
@@ -292,16 +292,13 @@ This release has the following features and improvements:
 
 - **.NET updates**: This build uses .NET version **8.0.16** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
 
-- **Update changes**: This release includes reliability improvements to the update process. For more information, see [Fixed issues in 2505](./known-issues.md?view=azloc-2505&preserve-view=true#fixed-issues).
+- **Update changes**: This release includes reliability improvements to the update process. For more information, see [Fixed issues in 2505](./known-issues.md?view=azloc-previous&preserve-view=true#fixed-issues).
 
 - **Ability to upload logs**: You can now upload a Support log package that includes all relevant logs to help Microsoft Support troubleshoot machine issues, directly from the Configurator app. For details, see [Upload the Support log package](./deploy/deployment-arc-register-configurator-app.md#upload-the-support-log-package).
 
 - **Archival of Azure Local, version 22H2 documentation**: The archival of Azure Local, version 22H2 documentation is currently in progress and will complete soon. Once archived, the articles are available in the [Azure previous versions documentation](/previous-versions/azure/) for reference. The archived documentation isn't updated and isn't supported.
 
-::: moniker-end
-
-
-::: moniker range="=azloc-previous"
+## Features and improvements in 2504
 
 Starting with 2504 release, Microsoft introduced a new versioning schema. There are two 2504 releases for April. Here are the details of each release:
 
@@ -311,8 +308,6 @@ Starting with 2504 release, Microsoft introduced a new versioning schema. There 
 |11.2504.1001.19  | 25398.1551        | Existing deployments only.        |
 
 For more information, see [Release information summary](./release-information-23h2.md).
-
-## Features and improvements in 2504
 
 This release has the following features and improvements:
 
