@@ -47,7 +47,7 @@ To collect logs on-demand, follow these steps:
 
 - [Prerequisites](#prerequisites)
 - [Select a log collection method for your connectivity scenario](#supported-scenarios)
-- [Collect logs](#log-collection-cmdlets)
+- [Collect logs](#log-collection-methods)
 - [Monitor log collection](#monitor-log-collection)
 - Review logs locally or [send them to Microsoft](#send-diagnosticdata)
 
