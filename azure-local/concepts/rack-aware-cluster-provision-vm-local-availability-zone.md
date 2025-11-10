@@ -135,8 +135,6 @@ Follow these steps in Azure portal for your Azure Local.
     1. Memory type: Specify the memory type as static or dynamic.
     1. [Availability zone](#availability-zones): No zone, a zone without strict placement, and a zone with strick placement.
     1. Enable guest management: Extensions can be installed on VMs where guest management is enabled.
-       - Add at least one network interface through the **Networking** tab to complete the guest management setup.
-       - The enabled network interface must have a valid IP address and internet access. For more information, see [Azure Local VM management networking](../manage/azure-arc-vm-management-overview.md).
 
 ## Availability zones
 
@@ -152,8 +150,8 @@ You can specify a zone without any strict placement enabled. This means if all m
 
 In the **Instance details** section, input the following parameters:
 
-**Availability zone**: Select the availability zone to place the VM in.
-**Strict placement**: Do not select this checkbox to create the VM without strict placement
+- **Availability zone**: Select the availability zone to place the VM in.
+- **Strict placement**: Do not select this checkbox to create the VM without strict placement.
 
 :::image type="content" source="media/rack-aware-cluster-availability-zone/zone-a.png" alt-text="Screenshot of virtual machine with zone A in the Azure portal." lightbox="media/rack-aware-cluster-availability-zone/zone-a.png":::
 
@@ -163,8 +161,8 @@ You can create a VM in a specific availability zone with strict placement to ens
 
 In the **Instance details** section, input the following parameters:
 
-Availability zone: Select the availability zone to place the VM in.
-Strict placement: Select this checkbox to create the VM with strict placement.
+- **Availability zone**: Select the availability zone to place the VM in.
+- **Strict placement**: Select this checkbox to create the VM with strict placement.
 
 :::image type="content" source="media/rack-aware-cluster-availability-zone/zone-a-strict.png" alt-text="Screenshot of virtual machine with zone A strict in the Azure portal." lightbox="media/rack-aware-cluster-availability-zone/zone-a-strict.png":::
 
