@@ -3,7 +3,7 @@ title: Register Azure Local with Azure Arc.
 description: Learn how to register Azure Local with Azure Arc with and without proxy setup. The proxy configuration can be done via an Arc script or via the Configurator app on Azure Local. 
 author: alkohli
 ms.topic: how-to
-ms.date: 09/08/2025
+ms.date: 10/14/2025
 ms.author: alkohli
 ms.service: azure-local
 zone_pivot_groups: register-arc-options
@@ -11,15 +11,17 @@ zone_pivot_groups: register-arc-options
 
 # Register Azure Local with Azure Arc
 
-::: moniker range=">=azloc-2506"
+::: moniker range=">=azloc-2505"
 
 ::: zone pivot="register-proxy"
 
-This article details how to register Azure Local machines with Azure Arc and with proxy configuration. The proxy configuration can be done via an Arc script or via the Configurator app for Azure Local.
+This article details how to register Azure Local machines with Azure Arc without using an Arc gateway and with proxy configuration enabled. The proxy configuration can be done via an Arc script or via the Configurator app for Azure Local.
 
 - **Configure with a script**: You can use an Arc script to configure registration settings.
 
 - **Set up via the Configurator app (Preview)**: Using this method, you can configure Azure Local registration via a user interface. This method is useful if you prefer not to use scripts or if you want to configure the settings interactively.
+
+For instructions on registering Azure Local machines with Azure Arc using an Arc gateway and with proxy configuration enabled, see [Register Azure Local with Azure Arc using Arc gateway](./deployment-with-azure-arc-gateway.md?pivots=register-proxy).
 
 # [Via Arc script](#tab/script)
 
@@ -27,7 +29,7 @@ This article details how to register Azure Local machines with Azure Arc and wit
 
 Make sure the following prerequisites are met before proceeding:
 
-- You have access to Azure Local machines running release 2506 or later. 
+- You have access to Azure Local machines running release 2505 or later.
 - You have assigned the appropriate permissions to the subscription used for registration. For more information, see [Assign required permissions for Azure Local deployment](deployment-arc-register-server-permissions.md).
 
 
@@ -105,6 +107,8 @@ PS C:\Users\SetupUser> $ProxyBypassList = "localhost,127.0.0.1,*.contoso.com,mac
 
 ## Step 3: Run registration script
 
+> [!NOTE]
+> If your Azure Local system is preinstalled with an Original Equipment Manufacturer (OEM) image that's outdated or unsupported, an update is triggered automatically. The update typically takes 40-45 minutes to complete and includes a system reboot. After the reboot, rerun the cmdlet to continue. For more instructions about the update flow, see [Azure Arc registration workflow for systems with OEM images](./deployment-arc-registration-preinstalled-os.md).
 
 1. Run the Arc registration script. The script takes a few minutes to run.
 
@@ -159,7 +163,7 @@ After the script completes successfully on all the machines, verify that your ma
    :::image type="content" source="media/deployment-without-azure-arc-gateway/arc-servers-registered-1.png" alt-text="Screenshot of the Azure Local machines in the resource group after the successful registration." lightbox="./media/deployment-without-azure-arc-gateway/arc-servers-registered-1.png":::
 
 > [!NOTE]
-> Once an Azure Local machine is registered with Azure Arc, the only way to undo the registration is to install the operating system again on the machine.
+> If the Azure Local machine fails to register, you can deregister and then register your cluster again. For detailed instructions, see [Re-register Azure Local machines](../manage/unregister-register-machine.md).
 
 # [Via Configurator app (Preview)](#tab/app)
 
@@ -289,11 +293,13 @@ Before you begin, make sure that you complete the following prerequisites:
 
 ::: zone pivot="register-without-proxy"
 
-This article details how to register using Azure Arc gateway on Azure Local without the proxy configuration. You can register via the Arc script or the Configurator app.
+This article describes how to register Azure Local machines with Azure Arc without using an Arc gateway and without proxy configuration enabled. You can register via the Arc script or the Configurator app.
 
 - **Configure with a script**: Using this method, configure the registration settings via a script.
 
 - **Set up via the Configurator app**: Configure Azure Arc gateway via a user interface. This method is useful if you prefer not to use scripts or if you want to configure the registration settings interactively.
+
+For instructions on registering Azure Local machines with Azure Arc using an Arc gateway without proxy configuration enabled, see [Register Azure Local with Azure Arc using Arc gateway](./deployment-with-azure-arc-gateway.md?pivots=register-without-proxy).
 
 # [Via Arc script](#tab/script)
 
@@ -301,7 +307,7 @@ This article details how to register using Azure Arc gateway on Azure Local with
 
 Make sure the following prerequisites are met before proceeding:
 
-- You have access to Azure Local machines running release 2506 or later. 
+- You have access to Azure Local machines running release 2505 or later. 
 - You have assigned the appropriate permissions to the subscription used for registration. For more information, see [Assign required permissions for Azure Local deployment](deployment-arc-register-server-permissions.md).
 
 
@@ -358,6 +364,8 @@ PS C:\Users\SetupUser> $Region = "eastus"
 
 ## Step 3: Run registration script
 
+> [!NOTE]
+> If your Azure Local system is preinstalled with an Original Equipment Manufacturer (OEM) image that's outdated or unsupported, an update is triggered automatically. The update typically takes 40-45 minutes to complete and includes a system reboot. After the reboot, rerun the cmdlet to continue. For more instructions about the update flow, see [Azure Arc registration workflow for systems with OEM images](./deployment-arc-registration-preinstalled-os.md).
 
 1. Run the Arc registration script. The script takes a few minutes to run.
 
@@ -991,7 +999,7 @@ Before you begin, make sure that you complete the following prerequisites:
 ### Azure prerequisites
 
 - Make sure you have the required permissions to register Azure Local machines with Azure Arc. For more information, see [Assign required permissions for Azure Local deployment](deployment-arc-register-server-permissions.md).
-   
+
 ## Configure the network and connect to Azure
 
 [!INCLUDE [azure-local-start-configurator](../includes/azure-local-start-configurator.md)]
@@ -1039,7 +1047,7 @@ Before you begin, make sure that you complete the following prerequisites:
 
 
    1. The **Cloud type** is populated automatically as `Azure`.
-   
+
    1. Enter a **Subscription ID** to register the machine.
 
    1. Provide a **Resource group** name. This resource group contains the machine and system resources that you create.
@@ -1091,12 +1099,10 @@ Before you begin, make sure that you complete the following prerequisites:
     - [Deploy via Azure portal](./deploy-via-portal.md)
     - [Deploy via Azure Resource Manager (ARM) template](./deployment-azure-resource-manager-template.md)
 
-
-
 ::: moniker-end
 
-::: moniker range="<=azloc-2505"
+::: moniker range="<=azloc-24113"
 
-This feature is available only in Azure Local 2506 or later.
+This feature is available only in Azure Local 2503 or later.
 
 ::: moniker-end

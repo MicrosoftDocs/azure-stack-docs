@@ -102,12 +102,16 @@
           href: concepts-internal-network-bgp-metrics.md
     - name: Security
       href: concepts-security.md
+    - name: PKI implementation
+      href: concepts-pki-implementation.md
     - name: Control Plane Resiliency
       href: concepts-rack-resiliency.md
     - name: Access and Identity
       href: concepts-security-access-identity.md
     - name: Availability
       href: concepts-nexus-availability.md
+    - name: Hardware Validation
+      href: concepts-hardware-validation-overview.md
     - name: Credential
       expanded: false
       items:
@@ -329,8 +333,10 @@
           href: howto-virtual-machine-placement-hints.md
         - name: Gather VM Console Data
           href: howto-gather-vm-console-data.md
-        - name: How to Azure Arc enroll Azure Operator Nexus virtual machines using managed identities
-          href: howto-arc-enroll-virtual-machine-using-managed-identities.md
+        - name: Create virtual machines with managed identities and authentication steps
+          href: howto-virtual-machines-authenticate-with-managed-identities.md
+        - name: Arc enroll virtual machines with managed identities for authentication and access token
+          href: howto-virtual-machines-arc-enroll-with-managed-identities.md
     - name: Observability
       expanded: false
       items:
@@ -360,6 +366,8 @@
       items:
         - name: Storage Appliance Run-Read Commands
           href: howto-storage-run-read.md
+        - name: Storage Appliance Component Repair
+          href: howto-storage-device-repair.md
     - name: Install CLI Extension
       href: howto-install-cli-extensions.md
     - name: General
@@ -466,7 +474,7 @@
         - name: Troubleshoot a Kubernetes Cluster Node in NotReady,Scheduling Disabled after Runtime Upgrade
           href: troubleshoot-kubernetes-cluster-node-cordoned.md
         - name: Troubleshoot issues with Azure Arc enrollment for virtual machines with managed identities
-          href: troubleshoot-virtual-machine-arc-enroll-with-managed-identity.md
+          href: troubleshoot-virtual-machines-arc-enroll-with-managed-identities.md
 - name: FAQ
   href: azure-operator-nexus-faq.md
 - name: Reference

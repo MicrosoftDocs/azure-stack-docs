@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 03/04/2025
+ms.date: 10/07/2025
 ms.custom:
   - devx-track-azurecli
   - sfi-image-nochange
@@ -20,6 +20,8 @@ This article explains how to create Windows virtual machine (VM) images for Azur
 To create Linux VM images from Azure Marketplace, choose:
 
 - [Prepare RHEL Azure Marketplace image for Azure Local VM deployment](../manage/virtual-machine-azure-marketplace-red-hat.md).
+
+- [Prepare Ubuntu Azure Marketplace image for Azure Local VMs](../manage/virtual-machine-azure-marketplace-ubuntu.md).
 
 ## Prerequisites
 
@@ -68,6 +70,7 @@ Follow these steps to create a VM image using the Azure CLI.
     $customLocationID = (az customlocation show --resource-group $resource_group --name "<custom_location_name_for_Azure_Local>" --query id -o tsv)
     $location = "<Location for your Azure Local>"
     $osType = "<OS of source image>"
+    $version = "<OS version of Marketplace image>"
     ```
 
     The parameters are described in the following table:
@@ -80,6 +83,7 @@ Follow these steps to create a VM image using the Azure CLI.
     | `customLocation` | Resource ID of custom location for your Azure Local.   |
     | `location`       | Location for your Azure Local. For example, this could be `eastus`. |
     | `os-type`         | Operating system associated with the source image. This can be Windows or Linux.           |
+    | `version` | (Optional) Specify the OS version for Marketplace image. If left empty, it will default to the latest version. |
 
     Here's a sample output:
 
@@ -91,7 +95,10 @@ Follow these steps to create a VM image using the Azure CLI.
     PS C:\Users\azcli> $customerLocationID /subscriptions$subscription/resourcegroups/$resource_group/providers/microsoft.extendedlocation/customlocations/$customLocationName
     PS C:\Users\azcli> $location = "eastus"
     PS C:\Users\azcli> $ostype = "Windows"
+    PS C:\Users\azcli> $version = "26100.4652.250808"
     ```
+> [!NOTE]
+> If you encounter compatibility issues, look at the VM image version as CLI always defaults to the latest version.
 
 ### Create VM image from marketplace image
 
@@ -132,13 +139,13 @@ Follow these steps to create a VM image using the Azure CLI.
 1. Create the VM image starting with a specified marketplace image:
 
     ```azurecli
-    az stack-hci-vm image create --resource-group $resource_group --custom-location $customLocationID --name $mktplaceImage --os-type $ostype --offer $offer --publisher $publisher --sku $sku 
+    az stack-hci-vm image create --resource-group $resource_group --custom-location $customLocationID --name $mktplaceImage --os-type $ostype --offer $offer --publisher $publisher --sku $sku --version $version
     ```
 
 Here's a sample output:
 
 ```
-PS C:\Users\azcli> az stack-hci-vm image create --custom-location $cl --name $mktplaceImage --os-type $ostype --resource-group $rg --publisher $publisher --offer $offer --sku $sku 
+PS C:\Users\azcli> az stack-hci-vm image create --custom-location $cl --name $mktplaceImage --os-type $ostype --resource-group $rg --publisher $publisher --offer $offer --sku $sku  --version $version
 { 
   "extendedLocation": { 
     "name": “/subscriptions/<Subscription ID>/resourceGroups/mylocal-rg/providers/Microsoft.ExtendedLocation/customLocations/mylocal-cl", 
@@ -170,19 +177,18 @@ PS C:\Users\azcli> az stack-hci-vm image create --custom-location $cl --name $mk
         "operationId": "13efc468-7473-429f-911b-858c1e6fc1d5*B11A62EE76B08EF194F8293CDD40F7BC71BFB93255D5A99DD11B4167690752D9", 
         "status": "Succeeded" 
       } 
-    }, 
-    "version": { 
-      "name": "17763.6293.240905", 
-      "properties": { 
-        "storageProfile": { 
-          "osDiskImage": { 
-            "sizeInMb": 130050 
-          } 
-        } 
-      } 
+    },
+    "version": {
+    "name": "17763.7922.251021",
+    "properties": {
+    "storageProfile": {
+    "osDiskImage": {
+    "sizeInMB": 130050
+    }
+    }
+    }
+    },
 
-    } 
-  }, 
   "resourceGroup": "mylocal-rg", 
   "systemData": { 
     "createdAt": "2024-09-23T18:53:13.734389+00:00", 
@@ -191,7 +197,8 @@ PS C:\Users\azcli> az stack-hci-vm image create --custom-location $cl --name $mk
     "lastModifiedAt": "2024-09-23T19:06:07.532276+00:00", 
     "lastModifiedBy": "319f651f-7ddb-4fc6-9857-7aef9250bd05", 
     "lastModifiedByType": "Application" 
-  }, 
+  },
+  
 
   "tags": null, 
   "type": "microsoft.azurestackhci/marketplacegalleryimages" 
@@ -323,4 +330,4 @@ You might want to delete a VM image if the download fails for some reason or if 
 
 ## Next steps
 
-- [Create logical networks](./create-virtual-networks.md)
+- [Create logical networks](./create-logical-networks.md)

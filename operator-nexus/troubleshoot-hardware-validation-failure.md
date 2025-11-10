@@ -231,7 +231,7 @@ The HWV framework identifies problematic firmware versions and attempts to fix t
 ```
 
 > [!NOTE]
-> The HWV firmware auto fix framework was expanded to include BIOS for Ice Lake models in release 2509.1 (NC4.6.0).
+> The HWV firmware auto fix framework was expanded to include CPLD for Ice Lake models in release 2510.1 (NC4.7.0).
 
 ### Drive info category
 

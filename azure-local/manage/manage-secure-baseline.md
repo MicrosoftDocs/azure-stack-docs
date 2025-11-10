@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 07/03/2025
+ms.date: 10/23/2025
 ---
 
 # Manage security defaults for Azure Local
@@ -34,7 +34,7 @@ View the SMB signing status under the **Data protections** > **Network protectio
 
 After you enroll your Azure Local instance with Microsoft Defender for Cloud or assign the built-in policy *Windows machines should meet requirements of the Azure compute security baseline*, a compliance report is generated. For the full list of rules your Azure Local instance is compared to, see [Windows security baseline](/azure/governance/policy/samples/guest-configuration-baseline-windows).
 
-For an Azure Local machine, when all the hardware requirements for Secured-core are met, the default expected compliance score is 321 out of 324 rules - that is, 99% of the rules are compliant.
+For an Azure Local host machine, when all the hardware requirements for Secured-core are met, the default expected compliance score is 99% of the rules are compliant.
 
 The following table explains the rules that aren't compliant and the rationale of the current gap:
 
@@ -71,9 +71,9 @@ Use the following table to view and download the complete list of security setti
 
 | Azure Local solution version             | Running Azure Local OS version                       | Download link for settings csv file |
 |------------------------------------------|-------------------------------------------|-------------------------------------|
-| 2505 existing deployments                | Running OS build 25398.xxxx and domain-joined                      | [Download security baseline](https://aka.ms/SecBase) |
-| 2506 new deployments                     | Running OS build 26100.xxxx and domain-joined     | [Download security baseline](https://aka.ms/SecBaseDomJoin) |
-| 2506 existing deployments                | Running OS build 26100.xxxx and not domain-joined (also known as AD-less)    | [Download security baseline](https://aka.ms/SecBaseAdless) |
+| Deployments running v 2505 and earlier     | Running OS build 25398.xxxx and domain-joined                      | [Download security baseline](https://aka.ms/SecBase) |
+| Deployments running v 2506 and later   | Running OS build 26100.xxxx and domain-joined     | [Download security baseline](https://aka.ms/SecBaseDomJoin) |
+| Deployments running v 2506 and later   | Running OS build 26100.xxxx and not domain-joined (also known as AD-less)    | [Download security baseline](https://aka.ms/SecBaseAdless) |
 
 ## Modify security defaults
 
