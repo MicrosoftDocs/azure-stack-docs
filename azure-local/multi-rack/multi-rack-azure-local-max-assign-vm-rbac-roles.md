@@ -70,13 +70,13 @@ Based on the above split of resource ownership and access, we recommend the foll
 
 - **Workload VM contributor role**: Complete workload VM and other workload resources lifecycle management.  **Scope**: Workload subscription or a specific resource group.
 
-You can find the custom role definitions here.
+For more information, see [NEW DOC: Custom role definitions].
 
 ## Prerequisites 
 
 Before you begin, make sure to complete the following prerequisites:
 
-- Make sure that complete the Azure Local requirements. 
+- Make sure that complete the [LINK WON'T RESOLVE UNTIL AFTER MERGE: Azure Local requirements for multi-rack deployments]. 
 
 - Make sure that you have access to Azure subscription as an Owner or User Access Administrator to assign roles to others.
 
@@ -84,13 +84,13 @@ Before you begin, make sure to complete the following prerequisites:
 
 To controll access to VM and VM resources, you can create custom roles as needed. Custom roles can be created using the Azure portal, Azure PowerShell, Azure CLI, or the REST API.
 
-1. **Determine permissions you need for the custom role**. When you create a custom role, you need to know the actions that are available to define your permissions. You will add the actions to the Actions or NotActions properties of the role definition. If you have data actions, you will add those to the DataActions or NotDataActions properties.
+1. **Determine permissions you need for the custom role**. When you create a custom role, you need to know the actions that are available to define your permissions. You will add the actions to the Actions or NotActions properties of the [role definition](/azure/role-based-access-control/role-definitions). If you have data actions, you will add those to the DataActions or NotDataActions properties.
 
-    For Azure Local max, we recommend the following custom role definitions to be used as a starting point. Use this doc to learn more.
+    For multi-rack deployments, we recommend the following [NEW DOC: custom role definitions] to be used as a starting point.
 
-1. **Decide how you want to create the custom role**. You can create custom roles using Azure portal, Azure PowerShell, Azure CLI, or the REST API.
+1. **Decide how you want to create the custom role**. You can create custom roles using [Azure portal](/azure/role-based-access-control/custom-roles-portal), [Azure PowerShell](/azure/role-based-access-control/custom-roles-powershell), [Azure CLI](/en-us/azure/role-based-access-control/custom-roles-cli), or the [REST API](/azure/role-based-access-control/custom-roles-rest).
 
-1. **Create the custom role**. The easiest way is to use the Azure portal. For steps on how to create a custom role using the Azure portal, see Create or update Azure custom roles using the Azure portal.
+1. **Create the custom role**. The easiest way is to use the Azure portal. For steps on how to create a custom role using the Azure portal, see  [Create or update Azure custom roles using the Azure portal](/azure/role-based-access-control/custom-roles-portal).
 
 1. **Test the custom role**. Once you have your custom role, you have to test it to verify that it works as you expect. If you need to adjust later, you can update the custom role. 
  
