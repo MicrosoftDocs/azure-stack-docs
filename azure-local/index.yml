@@ -10,7 +10,7 @@ metadata:
   ms.topic: landing-page
   author: ronmiab
   ms.author: robess
-  ms.date: 04/18/2025
+  ms.date: 11/07/2025
 
 # linkListType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | sample | tutorial | video | whats-new
 
@@ -21,75 +21,65 @@ landingContent:
       - linkListType: overview
         links:
           - text: What is Azure Local?
+            url: index.yml
+          - text: Hyperconverged deployments
             url: overview.md
-      - linkListType: whats-new
-        links:
-          - text: What's new in Azure Local?
-            url: whats-new.md
-          - text: What's a rack aware cluster? (Preview)
+          - text: Multi-rack deployments (preview)
+            url: multi-rack/multi-rack-overview.md
+          - text: Microsoft 365 on Local
             url: concepts/rack-aware-cluster-overview.md
+          - text: Disconnected operations
+            url: manage/disconnected-operations-overview.md
 
-  # Card 
-  - title: Deploy
+# Card 
+  - title: Plan and deploy
     linkLists:
       - linkListType: deploy
         links:
-          - text: 1. Download the software
-            url: deploy/download-23h2-software.md
-          - text: 2. Install the OS
-            url: deploy/deployment-install-os.md
-          - text: 3. Register with Arc
-            url: deploy/deployment-arc-register-server-permissions.md
-          - text: 4A. Deploy via the portal
+          - text: Deploy hyperconverged
             url: deploy/deploy-via-portal.md
-          - text: 4B. Deploy via ARM template
-            url: deploy/deployment-azure-resource-manager-template.md
+          - text: Plan multi-rack (preview)
+            url: index.yml
+          - text: Deploy Microsoft 365
+            url: index.yml
+          - text: Plan your network for disconnected operations
+            url: manage/disconnected-operations-network.md
+          - text: Deploy disconnected operations 
+            url: manage/disconnected-operations-deploy.md
 
-  # Card
-  - title: Update and Upgrade
-    linkLists:
-      - linkListType: how-to-guide
-        links:
-          - text: About updates
-            url: update/about-updates-23h2.md
-          - text: Update via Azure portal
-            url: update/azure-update-manager-23h2.md
-          - text: About upgrades
-            url: upgrade/about-upgrades-23h2.md
-          - text: Upgrade OS
-            url: upgrade/upgrade-22h2-to-23h2-powershell.md
-          - text: Upgrade solution
-            url: upgrade/install-solution-upgrade.md
-
-  # Card
-  - title: Deploy workloads
-    linkLists:
-      - linkListType: deploy
-        links:
-          - text: Deploy Azure Kubernetes Service clusters
-            url: /azure/aks/hybrid/aks-create-clusters-portal?toc=/azure-local/toc.json&bc=/azure-local/breadcrumb/toc.json
-          - text: Run Azure Virtual Desktop
-            url: /azure/virtual-desktop/azure-stack-hci-overview
-          - text: Run Azure Local VMs enabled by Azure Arc
-            url: /azure/azure-local/manage/create-arc-virtual-machines
-
-  # Card
+# Card
   - title: Manage
     linkLists:
       - linkListType: how-to-guide
         links:
           - text: Manage at-scale
             url: manage/manage-at-scale-dashboard.md          
-          - text: Add node
+          - text: Add node on hyperconverged
             url: manage/add-server.md
-          - text: Repair node
+          - text: Repair node on hyperconverged
             url: manage/repair-server.md
-          - text: Manage Azure Local VMs enabled by Azure Arc
-            url: manage/manage-arc-virtual-machines.md
-          - text: Manage SDN Multisite
-            url: manage/manage-sdn-multisite.md?pivots=azure-local
+          - text: Manage NSGs on hyperconverged
+            url: manage/manage-network-security-groups.md
+          - text: Manage NSGs on multi-rack (preview)
+            url: index.yml
 
-  # Card
+# Card
+  - title: Deploy workloads
+    linkLists:
+      - linkListType: deploy
+        links:
+          - text: Deploy Azure Local VMs
+            url: manage/create-arc-virtual-machines
+          - text: Deploy Azure Local VMs on disconnected operations
+            url: manage/disconnected-operations-arc-vm.md
+          - text: Deploy Azure Kubernetes Service clusters
+            url: /azure/aks/hybrid/aks-create-clusters-portal?toc=/azure-local/toc.json&bc=/azure-local/breadcrumb/toc.json
+          - text: Run Azure Virtual Desktop
+            url: /azure/virtual-desktop/azure-stack-hci-overview
+          - text: Enable Software Defined Networking
+            url: deploy/enable-sdn-integration.md
+
+# Card
   - title: Monitor
     linkLists:
       - linkListType: overview
@@ -149,3 +139,21 @@ landingContent:
             url: manage/troubleshoot-deployment.md
           - text: Get support
             url: manage/get-remote-support.md
+
+
+  # Card
+  - title: Update and Upgrade
+    linkLists:
+      - linkListType: how-to-guide
+        links:
+          - text: About updates
+            url: update/about-updates-23h2.md
+          - text: Update via Azure portal
+            url: update/azure-update-manager-23h2.md
+          - text: About upgrades
+            url: upgrade/about-upgrades-23h2.md
+          - text: Upgrade OS
+            url: upgrade/upgrade-22h2-to-23h2-powershell.md
+          - text: Upgrade solution
+            url: upgrade/install-solution-upgrade.md
+
