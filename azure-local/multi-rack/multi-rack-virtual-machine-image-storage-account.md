@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 11/07/2025
+ms.date: 11/10/2025
 ---
 
 # Create Azure Local VM image for multi-rack deployments using Azure Storage account (Preview)
