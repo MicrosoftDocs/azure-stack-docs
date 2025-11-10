@@ -20,6 +20,10 @@ This article explains how to use appliance fallback logging to export and send l
 
 Use appliance fallback logging to collect and send logs to Microsoft when the Azure Local disconnected operations appliance virtual machine (VM) is down. Use this method if standard log collection can't start and you need logs to troubleshoot issues.
 
+Here's a diagram showing a high-level overview of the appliance fallback log collection process:
+
+:::image type="content" source="./media/disconnected-operations/deployment/fall-back-log-collection-overview.png" alt-text="Diagram showing a high-level overivew of the appliance fallback log collection process." lightbox=" ./media/disconnected-operations/deployment/fall-back-log-collection-overview.png":::
+
 ## Prerequisites
 
 Import the appliance logging module to use the cmdlets in this article.
