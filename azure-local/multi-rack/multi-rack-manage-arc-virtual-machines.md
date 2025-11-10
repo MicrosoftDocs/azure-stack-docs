@@ -12,18 +12,18 @@ ms.date: 11/07/2025
 
 [!INCLUDE [multi-rack-applies-to-preview](../includes/multi-rack-applies-to-preview.md)]
 
-This article describes how to manage Azure Local virtual machines (VMs) enabled by Azure Arc for multi-rack deployments. The procedures to enable guest management, start, stop, restart, or delete an Azure Local VM, are detailed.
+This article describes how to manage Azure Local virtual machines (VMs) enabled by Azure Arc for multi-rack deployments. The procedures to start, stop, restart, or delete an Azure Local VM as well as manage guest management are detailed.
 
 ## Prerequisites
 
-- Access to an Azure Local Rack Scale instance that's deployed and registered.
-- On the Azure Local Rack Scale overview page, find the custom location of the instance. 
+- Access to an Azure Local instance for multi-rack deployments that's deployed and registered.
+- On the Azure Local overview page, find the custom location of the instance. 
 
 - One or more Azure Local VMs running on your Azure Local instance. For more information, see [Create Azure Local virtual machines](../manage/create-arc-virtual-machines.md).
 
 - The Azure Local VM must have access to public network connectivity to enable guest management.
 
-## Enable guest management
+## Verify guest management
 
 When you enable guest management on an Azure Local VM, the [Azure Connected Machine agent](/azure/azure-arc/servers/agent-overview) is installed on the VM. You use the Azure Connected Machine agent to manage Azure Local VM extensions on your VM.
 
