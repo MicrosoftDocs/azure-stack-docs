@@ -22,7 +22,7 @@ You can open an RDP connection to every Windows Server from the Azure CLI withou
 
 Before you begin, ensure that you:
 
-1. Have access to Azure Local that is running the latest version of software.
+1. Have access to Azure Local VM that you want to connect to.
 
 1. Install the OpenSSH Server Extension.
 
