@@ -143,7 +143,7 @@ Follow these steps in Azure portal for your Azure Local.
             1. The VM goes down with the zone.
     1. Enable guest management: Extensions can be installed on VMs where guest management is enabled.
         1. Add at least one network interface through the **Networking** tab to complete the guest management setup.
-        1. The enabled network interface must have a valid IP address and internet access. For more information, see [Azure Local VM management networking]().
+        1. The enabled network interface must have a valid IP address and internet access. For more information, see [Azure Local VM management networking](../manage/azure-arc-vm-management-overview.md).
 
 <!--## Availability zones
 
