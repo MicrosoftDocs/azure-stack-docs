@@ -43,7 +43,7 @@ This release has the following features and improvements:
     
 - **Azure Local rack aware clustering (Preview)**: Azure Local now supports rack aware clustering. This Preview feature allows you to define local availability zones based on physical racks in your datacenter, enhancing the resilience of your cluster against rack-level failures. For more information, see [Rack aware clustering](concepts/rack-aware-cluster-overview.md).
 
-- **Upgrade**: Starting this release, solution upgrade from 11.2510 to 12.2510 is available to everyone and no longer requires you to opt-in.
+- **Upgrade**: Starting this release, solution upgrade from 11.2510 to 12.2510 is available to everyone and no longer requires you to opt in.
     - If you are already on 11.2510.1002.87, you can apply the OS upgrade to 12.2510.1002.94.
     - If you haven't updated to 11.2510.1002.87, you can update to 11.2510.1002.93 first before applying the upgrade to 12.2510.1002.94.
 
@@ -100,7 +100,7 @@ This release has the following features and improvements:
     
 - **.NET updates**: This build uses .NET version **8.0.20** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
 
-- **Update and upgrade changes**: Starting with this release, you can opt-in to update the solution version 11.25xx (running OS 25398.xxx) to solution version 12.25xx (running OS 26100.xxxx). For more information, see [Opt in update to Azure Local solution versions 12.25x](./update/update-opt-enable.md).
+- **Update and upgrade changes**: Starting with this release, you can opt in to update the solution version 11.25xx (running OS 25398.xxx) to solution version 12.25xx (running OS 26100.xxxx). For more information, see [Opt in update to Azure Local solution versions 12.25x](./update/update-opt-enable.md).
 
 
 - **Azure Local VM updates**:
