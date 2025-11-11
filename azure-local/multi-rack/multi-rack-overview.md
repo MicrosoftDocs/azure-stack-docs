@@ -64,27 +64,21 @@ The following diagram illustrates the architecture of Azure Local for multi-rack
 
 The important points about this architecture are as follows:
 
-- **Infrastructure layer** – Prescriptive hardware Bill of Materials (BOM) with racks from Microsoft partners. This layer also includes **SAN based storage that consists of Pure Storage Flash Array.**
-
-- **Operating system** – Azure Linux OS installed on the hardware.
-
-- **Hypervisor** – Consists of Kernel-based Virtual Machine (KVM) and Quick Emulator (QEMU) for virtualization.
-
-- **Managed network fabric and observability tools**.
-
-- **SDN networking** - Includes capabilities such as virtual networks, logical networks, load balancer and a Network Address Translation (NAT) gateway.
-
-- **Workload layer** – Deployment of Windows and Linux Azure Local virtual machines (VMs) as workloads.
-
-- **Azure services** – Includes Azure Monitor, Azure Policy, Microsoft Defender for Cloud and more.
+- Prescriptive hardware bill of materials (BOM) featuring preintegrated racks that contain SAN storage, servers, and network devices.
+- Azure Linux OS installed on the hardware and hypervisor for virtualization.
+- Azure Local services:
+    - Software-defined networking (SDN) services including virtual networks, logical networks, software load balancers, Network Address Translation (NAT) gateways, and network security groups.
+    - Deployment of Windows and Linux Azure Local virtual machines (VMs) and Azure Kubernetes services (AKS) enabled by Azure Arc.
+- Azure ExpressRoute to connect your on-premises infrastructure to Azure.
+- Azure arc-enabled add-on services like Azure Monitor, Azure Policy, Microsoft Defender for Cloud and more.
 
 
 ## Get started
 
 To get started with Azure Local multi-rack deployments (Preview), contact your Account team.
 
-## Next steps
+## Next stepss
 
-- Read the blog post: [Blog list short link](https://techcommunity.microsoft.com/blog/azurearcblog/introducing-azure-local-cloud-infrastructure-for-distributed-locations-enabled-b/4296017).
+- Read the blog post: [Blog list short link](https://aka.ms/ignite25/blog/azurelocal).
 
 - Learn more about [Azure Local multi-rack deployment prerequisites](../index.yml) .
