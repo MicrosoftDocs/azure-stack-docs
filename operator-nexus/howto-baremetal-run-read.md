@@ -13,7 +13,7 @@ ms.custom: template-how-to
 
 Learn how you can investigate and resolve issues with an on-premises bare-metal machine by using the `run-read` command. Azure Operator Nexus provides the `az networkcloud baremetalmachine run-read-command`. Users can use it to run a curated list of read-only commands to get information from a bare-metal machine.
 
-The command produces an output file that contains the results of the `run-read` command execution. By default, the data is sent to the Cluster Manager storage account. Users can also use a preview method. They can configure the Cluster resource with a storage account and identity that has access to the storage account to receive the output.
+The command produces an output file that contains the results of the `run-read` command execution. By default, the data is sent to the Cluster Manager storage account. Users can also use a preview method. They can configure the cluster resource with a storage account and identity that has access to the storage account to receive the output.
 
 ## Prerequisites
 
@@ -25,7 +25,7 @@ The command produces an output file that contains the results of the `run-read` 
 
 ## Execute a `run-read` command
 
-You can use the `run-read` command to run a command on a bare-metal machine without changing anything. Some commands have more than one word, or need an argument to work. These commands are made like this to separate them from the ones that can change things. For example, the `run-read` command can use `kubectl get` but not `kubectl apply`.
+You can use the `run-read` command to run a command on a bare-metal machine without changing anything. Some commands have more than one word, or need an argument to work. These commands are structured to separate them from ones that can make changes. For example, the `run-read` command can use `kubectl get` but not `kubectl apply`.
 
 When you use these commands, you have to put all the words in the "command" field. For example, `{command:'kubectl get',arguments:[nodes]}` is right; `{command:kubectl,arguments:[get,nodes]}` is wrong.
 

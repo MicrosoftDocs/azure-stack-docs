@@ -13,7 +13,7 @@ ms.custom: template-how-to, devx-track-azurecli
 
 If you need to investigate and resolve issues with an on-premises bare-metal machine, Azure Operator Nexus provides a prescribed set of data extract commands via `az networkcloud baremetalmachine run-data-extract`. Users can employ these commands to get diagnostic data from a bare-metal machine.
 
-The `az networkcloud baremetalmachine run-data-extract` command produces an output file that contains the results of the data extract. By default, the data is sent to the cluster manager storage account.
+The `az networkcloud baremetalmachine run-data-extract` command produces an output file that contains the results of the data extract. By default, the data is sent to the Cluster Manager storage account.
 
 There's also a preview method. Users can configure the cluster resource with a storage account and an identity with access to the storage account so that it can receive the output.
 
@@ -22,7 +22,7 @@ There's also a preview method. Users can configure the cluster resource with a s
 - The Azure command line interface and the `networkcloud` command line interface extension must be installed. For more information, see [How to install CLI extensions](./howto-install-cli-extensions.md).
 - The target bare-metal machine is on and ready.
 - The syntax for these commands is based on the 0.3.0+ version of the `az networkcloud` CLI.
-- The cluster managed resource group name (`cluster_MRG`) that you created for Cluster resource.
+- The name of the cluster managed resource group (`cluster_MRG`) that you created for the cluster resource.
 
 [!INCLUDE [command-output-settings](./includes/run-commands/command-output-settings.md)]
 
@@ -35,7 +35,7 @@ The `run-data-extract` command executes one or more predefined scripts to extrac
 
 The following commands are currently supported:
 
-- [SupportAssist/TSR collection for Dell troubleshooting](#hardware-support-data-collection)\
+- [SupportAssist or TSR collection for Dell troubleshooting](#hardware-support-data-collection)\
   Command name: `hardware-support-data-collection`\
   Arguments: Type of logs requested
 
@@ -58,10 +58,10 @@ The following commands are currently supported:
   Command name: `hardware-rollup-status`\
   Arguments: None
 
-> [!WARNING]
-> As of `v20250701preview` API version and later, this command isn't supported by the nonrestricted `run-data-extract` command. To run `cluster-cve-report`, go to [Execute a run-data-extracts-restricted command](#executing-a-run-data-extracts-restricted-command).
+  > [!WARNING]
+  > As of `v20250701preview` API version and later, this command isn't supported by the nonrestricted `run-data-extract` command. To run `cluster-cve-report`, go to [Execute a run-data-extracts-restricted command](#executing-a-run-data-extracts-restricted-command).
 
-- [Generate a Cluster Common Vulnerabilities and Exposures (CVE) report](#generate-cluster-cve-report)\
+- [Generate a cluster Common Vulnerabilities and Exposures (CVE) report](#generate-cluster-cve-report)\
   Command name: `cluster-cve-report`\
   Arguments: None
 
@@ -681,20 +681,20 @@ TriggeredBy: ● atop-rotate.timer
 
 You can use the `collect-system-diagnostics` command to collect system diagnostics logs. The command retrieves all necessary logs, which gives you deeper visibility within the bare-metal machine. It collects the following types of diagnostics data:
 
-- **System and kernel diagnostics**:
+- System and kernel diagnostics:
   - **Kernel information**: Logs, human-readable messages, version, and architecture, for in-depth kernel diagnostics.
   - **Operating system Logs**: Essential logs that detail system activity and container logs for system services.
 
-- **Hardware and resource usage**:
+- Hardware and resource usage:
   - **CPU and IO throttled processes**: Identifies throttling issues, providing insights into performance bottlenecks.
   - **Network interface statistics**: Detailed statistics for network interfaces to diagnose errors and drops.
 
-- **Software and services**:
+- Software and services:
   - **Installed packages**: A list of all installed packages, vital for understanding the system's software environment.
   - **Active system services**: Information on active services, process snapshots, and detailed system and process statistics.
   - **Container runtime and Kubernetes components logs**: Logs for Kubernetes components and other vital services for cluster diagnostics.
 
-- **Networking and connectivity**:
+- Networking and connectivity:
   - **Network connection tracking information**: Connection tracking (Conntrack) statistics and connection lists for firewall diagnostics.
   - **Network configuration and interface details**: Interface configurations, IP routing, addresses, and neighbor information.
   - **Any additional interface configuration and logs**: Logs related to the configuration of all interfaces inside the node.
@@ -703,14 +703,14 @@ You can use the `collect-system-diagnostics` command to collect system diagnosti
   - **Networking configuration and logs**: Comprehensive networking data including connection tracking and interface configurations.
   - **CNI configuration**: Container network interface (CNI) configuration for container networking diagnostics.
 
-- **Security and compliance**:
+- Security and compliance:
   - **SELinux status**: Reports the Security-Enhanced Linux (SELinux) mode to understand access control and security contexts.
-  - **IPtables rules**: Configuration of IPtables rulesets for insights into firewall settings.
+  - **iptables rules**: Configuration of iptables rule sets for insights into firewall settings.
 
-- **Storage and filesystems**:
-  - **Mount points and volume information**: Detailed information on mount points, volumes, disk usage, and filesystem specifics.
+- Storage and file systems:
+  - **Mount points and volume information**: Detailed information on mount points, volumes, disk usage, and file system specifics.
 
-- **Azure Arc `azcmagent` logs**:
+- Azure Arc `azcmagent` logs:
   - Collects log files for the Azure connected machine agent and extensions and puts them in a ZIP archive.
 
 - **Configuration and management**:
@@ -787,7 +787,7 @@ Script execution result can be downloaded from storage account using the command
 
 The downloaded tar.gz file contains the full output and the zipped extract command file outputs.
 
-If you use cluster manager storage, the command provides a link to download the full output. If you use user-provided storage, it provides another command to download the full output. The tar.gz file also contains the zipped extract command file outputs. Download the output file from the storage blob to a local directory by specifying the directory path in the optional argument `--output-directory`.
+If you use Cluster Manager storage, the command provides a link to download the full output. If you use user-provided storage, it provides another command to download the full output. The tar.gz file also contains the zipped extract command file outputs. Download the output file from the storage blob to a local directory by specifying the directory path in the optional argument `--output-directory`.
 
 > [!WARNING]
 > The `--output-directory` argument overwrites any files in the local directory that have the same name as the new files you create.
@@ -831,4 +831,4 @@ az networkcloud baremetalmachine run-data-extracts-restricted --name "<machine-n
 
 ### Storage and output
 
-The output from `run` command executions are, by default, stored in the blob container defined by the `commandOutputSettings`. Override of the `commandOutputSettings` value is supported per command output type (like `BareMetalMachineRunDataExtractsRestricted`). To learn how to specify the `commandOutputSettings` override for the run command, see [Azure Operator Nexus Cluster support for managed identities and user-provided resources](./howto-cluster-managed-identity-user-provided-resources.md).
+The output from `run` command executions are, by default, stored in the blob container defined by the `commandOutputSettings`. Override of the `commandOutputSettings` value is supported per command output type (like `BareMetalMachineRunDataExtractsRestricted`). To learn how to specify the `commandOutputSettings` override for the run command, see [Azure Operator Nexus cluster support for managed identities and user-provided resources](./howto-cluster-managed-identity-user-provided-resources.md).
