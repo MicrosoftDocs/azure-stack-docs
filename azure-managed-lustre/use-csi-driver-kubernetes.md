@@ -2,7 +2,7 @@
 title: Use the Azure Managed Lustre CSI Driver with Azure Kubernetes Service
 description: Learn how to use an Azure Managed Lustre storage system with your Kubernetes containers in Azure Kubernetes Service (AKS).
 ms.topic: overview
-ms.date: 01/10/2025
+ms.date: 11/11/2025
 author: pauljewellmsft
 ms.author: pauljewell
 ms.reviewer: brianl
