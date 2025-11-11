@@ -70,7 +70,7 @@ For the list of available versions, see [the extension release history](https://
 
     ```azurecli
     az extension add --name stack-hci-vm 
-    az networkfabric --help
+    az stack-hci-vm --help
     ```
 
 ## Install other Azure extensions
@@ -107,6 +107,7 @@ k8s-extension            1.6.4
 networkcloud             2.0.0
 k8s-configuration        2.2.0
 managednetworkfabric     8.0.0
+stack-hci-vm             0.1.18
 customlocation           0.1.3
 ssh                      2.0.6
 ```

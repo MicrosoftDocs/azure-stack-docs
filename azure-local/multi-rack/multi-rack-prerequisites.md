@@ -61,6 +61,7 @@ az provider register --namespace Microsoft.Network
 az provider register --namespace Microsoft.NetworkCloud
 az provider register --namespace Microsoft.OperationalInsights
 az provider register --namespace Microsoft.OperationsManagement
+az provider register --namespace Microsoft.Relay
 az provider register --namespace Microsoft.ResourceConnector
 az provider register --namespace Microsoft.Resources
 az provider register --namespace Microsoft.Storage
