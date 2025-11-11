@@ -22,7 +22,7 @@ Azure Local supports integration with external Storage Area Networks (SAN), enab
 
 This capability extends Azure Local's hybrid flexibility by allowing organizations to use enterprise-grade, high-performance SAN infrastructure without disrupting existing investments. External SAN storage operates side-by-side with the in-box Storage Spaces Direct (S2D) solution, giving customers flexibility to choose the right data-tiering and performance model for each workload.
 
-Multiple volumes from the SAN array can be presented as Cluster Shared Volumes (CSVs) on Azure Local nodes. Each CSV appears as a folder path that can be mapped as a Storage Path for VM or container workloads.
+Multiple volumes from the SAN array can be presented as Cluster Shared Volumes (CSVs) on Azure Local nodes. Each CSV appears as a folder path that can be mapped as a Storage Path for VMs.
 
 ## Benefits
 
@@ -40,7 +40,7 @@ Multiple volumes from the SAN array can be presented as Cluster Shared Volumes (
 
 - **Dell PowerFlex**: Generally available.
 
-- **Fibre Channel (FC) based SAN connectivity**: Currently in limited preview.
+- **Fibre Channel (FC) based SAN connectivity**: Currently in preview.
 
 ## Dell PowerFlex solution integration
 
