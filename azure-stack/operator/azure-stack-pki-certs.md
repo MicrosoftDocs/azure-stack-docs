@@ -43,7 +43,7 @@ The following list describes the general certificate issuance, security, and for
 - The certificate format must be PFX, as both the public and private keys are required for Azure Stack Hub installation. The private key must have the local machine key attribute set.
 - The PFX encryption must be 3DES (this encryption is default when exporting from a Windows 10 client or Windows Server 2016 certificate store).
 - The certificate pfx files must have a value "Digital Signature" and "KeyEncipherment" in its "Key Usage" field.
-- The certificate pfx files must have the values "Server Authentication (1.3.6.1.5.5.7.3.1)" in the "Enhanced Key Usage" field.
+- The certificate pfx files must have the values "Server Authentication (1.3.6.1.5.5.7.3.1)" and "Client Authentication (1.3.6.1.5.5.7.3.2)" in the "Enhanced Key Usage" field.
 - The certificate's "Issued to:" field must not be the same as its "Issued by:" field.
 - The passwords to all certificate pfx files must be the same at the time of deployment.
 - The password to the certificate pfx must be a complex password. Make a note of this password, because you use it as a deployment parameter. The password must meet the following password complexity requirements:
