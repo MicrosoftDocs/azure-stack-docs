@@ -6,7 +6,7 @@ ms.topic: include
 ms.service: azure-operator-nexus
 ---
 
-## View the full output of a command in the associated storage account
+## <a name = "how-to-view-the-full-output-of-a-command-in-the-associated-storage-account"></a> View the full output of a command in the associated storage account
 
 [!INCLUDE [command-output-access](./command-output-access.md)]
 

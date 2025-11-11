@@ -6,7 +6,7 @@ ms.topic: include
 ms.service: azure-operator-nexus
 ---
 
-## Send the command output to a user-specified storage account
+## <a name = "send-command-output-to-a-user-specified-storage-account"></a> Send the command output to a user-specified storage account
 
 To send the command output to a specified storage account and container, see [Azure Operator Nexus cluster support for managed identities and user-provided resources](../../howto-cluster-managed-identity-user-provided-resources.md).
 
