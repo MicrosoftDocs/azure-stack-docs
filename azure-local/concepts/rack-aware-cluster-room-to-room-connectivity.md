@@ -10,7 +10,7 @@ ms.topic: concept-article
 
 # Azure Local rack aware cluster room-to-room connectivity (Preview)
 
-> Applies to: Azure Local version 2510 and later
+::: moniker range=">=azloc-2510"
 
 Azure Local rack aware clusters require specialized room-to-room connectivity to enable storage replication and failover across availability zones. This article outlines four distinct configuration options (A, B, C, and D) for implementing room-to-room links, each optimized for different resilience, cost, and complexity requirements.
 
@@ -23,7 +23,6 @@ Review the following key concepts:
 - **Storage intent traffic**: Dedicated RDMA network traffic using SMB1 and SMB2 protocols for Storage Spaces Direct (S2D) operations. This traffic requires low-latency, lossless connectivity to maintain cluster performance and data consistency.
 
 - **Bandwidth requirements**: Room-to-room links must maintain a 1:1 bandwidth ratio between aggregate storage network capacity within a zone and inter-zone connectivity to prevent bottlenecks during storage operations and failover scenarios.
-
 
 ## Option A
 
@@ -93,7 +92,6 @@ interface Ethernet1/52
   no shutdown
 ```
 
-
 |Parameter/setting |Description  |
 |---------|---------|
 | `interface Ethernet1/51 and interface Ethernet1/52`| Defines physical Ethernet interfaces Ethernet1/51 and Ethernet1/52. |
@@ -105,8 +103,7 @@ interface Ethernet1/52
 | `channel-group 700` | Adds these interfaces to the port channel group 700, effectively bundling them into a single logical link. |
 | `no shutdown` | Ensures that the interfaces are active and not administratively shut down. |
 
-
-## Option B 
+## Option B
 
 :::image type="content" source="media/rack-aware-cluster-room-to-room-connectivity/room-to-room-link-option-b.png" alt-text="Screenshot of room-to-room link option B diagram." lightbox="media/rack-aware-cluster-room-to-room-connectivity/room-to-room-link-option-b.png":::
 
@@ -266,7 +263,6 @@ vlan 712
 | VLAN 99 (NativeVlan) | Blackhole VLAN for untagged traffic security. |
 | VLAN 711 (Storage_711)  | SMB1 RDMA storage traffic. |
 | VLAN 712 (Storage_712) | SMB2 RDMA storage traffic. |
-
 
 > [!NOTE]
 > VLAN names include references to specific TOR switches for operational clarity, helping network administrators quickly identify which switch primarily handles each storage intent.
@@ -438,7 +434,6 @@ interface port-channel701
 Option C represents the most simplified room-to-room design, consolidating both storage VLANs (711 and 712) onto a single TOR switch per availability zone. This approach reduces infrastructure complexity and cost while maintaining RDMA performance requirements for less critical environments.
 
 :::image type="content" source="media/rack-aware-cluster-room-to-room-connectivity/room-to-room-link-option-c.png" alt-text="Screenshot of room-to-room link option C diagram." lightbox="media/rack-aware-cluster-room-to-room-connectivity/room-to-room-link-option-c.png":::
-
 
 **Option C** is a configuration where a single top-of-rack (TOR) switch is utilized to support an availability zone. This configuration is typically deployed when redundant top-of-rack switches aren't required due to cost constraints, simplified management requirements, or reduced complexity needs. In this design, the room-to-room link carries both Storage 1 and Storage 2 network traffic for RDMA communications.
 
@@ -636,3 +631,11 @@ The following table shows the bandwidth requirements.
 ## Next steps
 
 - [Prepare for rack aware cluster deployment](../deploy/rack-aware-cluster-deploy-prep.md)
+
+::: moniker-end
+
+::: moniker range="<=azloc-2509"
+
+This feature is available in Azure Local 2510 and later.
+
+::: moniker-end

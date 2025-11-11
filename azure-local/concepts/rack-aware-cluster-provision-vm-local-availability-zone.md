@@ -9,7 +9,7 @@ ms.author: alkohli
 
 # Provision Azure Local VMs in a local availability zone (Preview)
 
-> Applies to: Azure Local version 2510 and later
+::: moniker range=">=azloc-2510"
 
 This article explains how to create Azure Local virtual machines (VMs) in a local availability zone to reduce latency, improve performance, ensure redundancy, and meet compliance requirements.
 
@@ -114,3 +114,11 @@ Follow these steps to create a VM in a specific availability zone with strict pl
       "zone": "local-zone"  
     }, 
     ```
+
+::: moniker-end
+
+::: moniker range="<=azloc-2509"
+
+This feature is available in Azure Local 2510 and later.
+
+::: moniker-end
