@@ -12,7 +12,8 @@ ms.date: 11/07/2025
 
 [!INCLUDE [multi-rack-applies-to-preview](../includes/multi-rack-applies-to-preview.md)]
 
-After you deploy Azure Local virtual machines (VMs) enabled by Azure Arc, you may need to add or delete resources like data disks and network interfaces.
+After you deploy Azure Local virtual machines (VMs) enabled by Azure Arc, you may need to add or delete resources like data disks.
+
 This article describes how to manage these VM resources for an Azure Local VM for multi-rack deployments.
 
 > [!NOTE]
