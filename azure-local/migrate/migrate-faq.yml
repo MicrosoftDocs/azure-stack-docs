@@ -125,7 +125,7 @@ sections:
 
           ### Can I forcefully stop replications or complete migrations?
 
-          Yes, you can forcefully stop replications and complete migrations if your target appliance becomes unresponsive or the migrate project is in a bad state. 
+          Yes. You can forcefully stop replications and complete migrations if your target appliance becomes unresponsive or the migrate project is in a bad state. 
           In the Azure portal, this option appears as “Forcefully stop replication” or “Forcefully complete migration”, and is only available after a normal stop or complete operation fails.
           From PowerShell, you can use the [Remove-AzMigrateLocalServerReplication (Az.Migrate) cmdlet](/powershell/module/az.migrate/remove-azmigratelocalserverreplication) to forcefully stop replication or complete migration only when standard operations don’t succeed.
           

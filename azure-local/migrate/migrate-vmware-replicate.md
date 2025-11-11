@@ -322,7 +322,7 @@ This step applies to using a .zip file.
     
     1. The VM subscription is automatically populated.
     
-    2. For your **storage account**, you can either select an existing storage account from the dropdown list or create a new one by selecting **Create new**. The storage account is only used for storing metadata during replication and migration. All migrated VM data and disks remain completely on-premises. We recommend that you create a new storage account.
+    2. For your **storage account**, you can select an existing storage account from the dropdown list or create a new one by selecting **Create new**. The storage account is only used for storing metadata during replication and migration. All migrated VM data and disks remain completely on-premises. We recommend that you create a new storage account.
 
         > [!NOTE]
         > If you are using an existing storage account, ensure the following:
@@ -348,7 +348,7 @@ This step applies to using a .zip file.
 
 	1. Rename target VMs as needed. Make sure that the VM names conform to the [Azure naming conventions](/azure/azure-resource-manager/management/resource-name-rules#microsoftcompute).
 	2. Select the OS disk for each VM from the dropdown lists.
-    3. Configure number of vCPUs and RAM including selecting dynamic RAM for each VM, as needed.
+    3. Configure the number of vCPUs and RAM including selecting dynamic RAM for each VM, as needed.
     4. When finished, select **Next**.
     
         :::image type="content" source="./media/migrate-vmware-replicate/replicate-5-compute.png" alt-text="Screenshot showing the Compute tab." lightbox="./media/migrate-vmware-replicate/replicate-5-compute.png":::

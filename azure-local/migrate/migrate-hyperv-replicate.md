@@ -240,7 +240,7 @@ This step applies to using a .zip file.
     
     1. The VM subscription is automatically populated.
     
-    1. For your **storage account**, you can either select an existing storage account from the dropdown list or create a new one by selecting **Create new**. The storage account is only used for storing metadata during replication and migration. All migrated VM data and disks remain completely on-premises. We recommend that you create a new storage account.
+    1. For your **storage account**, you can select an existing storage account from the dropdown list or create a new one by selecting **Create new**. The storage account is only used for storing metadata during replication and migration. All migrated VM data and disks remain completely on-premises. We recommend that you create a new storage account.
 
         > [!NOTE]
         > If you are using an existing storage account, ensure the following:

@@ -26,7 +26,7 @@ The following list contains the prerequisites and considerations that must be me
 | Install Hyper-V Linux Integration Services on Linux VMs | source | Rebuild the Linux init image so it contains the necessary Hyper-V drivers.<br>Rebuilding the init image ensures that the VM will boot on Azure Local. Most new versions of Linux distributions have this included. |
 | Disable BitLocker on Windows VMs. | source | BitLocker must be disabled on VMs before migration.|
 | Encrypted disks/volumes are not supported. | source | Any encrypted disks/volumes must be decrypted on VMs before migration.|
-| Shared Disks are not supported. | source | Ensure that VMs do not have any shared disks attached before migration. |
+| Shared disks are not supported. | source | Ensure that VMs do not have any shared disks attached before migration. |
 |Deploy, configure, and register an Azure Local instance.|target|[Create and register an Azure Local instance](../deploy/deployment-introduction.md).|
 | Verify a successful deployment. | target | [Verify a successful deployment](../deploy/deploy-via-portal.md#verify-a-successful-deployment). |
 |Verify and make a note of the custom location created during deployment on the Azure Local system.|target|[Verify a successful deployment](../deploy/deploy-via-portal.md#verify-a-successful-deployment).|
