@@ -207,7 +207,7 @@ To change cores and memory, follow these steps in the Azure portal for your Azur
 
 1. Under **Settings**, select **Size**. Edit the **CPU cores** or **Memory (MB)** values to change the cores or the memory size for the VM. For memory, only the size can be changed. You can't change the memory type after a VM is created.
 
-    :::image type="content" source="./media/multi-rack-manage-arc-virtual-machines/change-cores-memory-2.png" alt-text="Screenshot of hidden types of resources associated with a virtual machine." lightbox="./media/multi-rack-manage-arc-virtual-machines/change-cores-memory-2.png":::
+    :::image type="content" source="./media/multi-rack-manage-arc-virtual-machines/change-cores-memory-2.png" alt-text="Screenshot of Size settings associated with a virtual machine." lightbox="./media/multi-rack-manage-arc-virtual-machines/change-cores-memory-2.png":::
 
 ## Related content
 
