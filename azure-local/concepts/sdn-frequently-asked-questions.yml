@@ -25,7 +25,7 @@ sections:
 
       - question: Why am I experiencing network connectivity issues for my unmanaged VMs on Azure Local after I enabled SDN enabled by Azure Arc?
         answer: |
-          You can experience network connectivity issues if you enable Network Controller and create unmanaged VMs outside Azure interfaces like Azure CLI, Azure portal, Azure PowerShell, and Azure Resource Manager APIs. To fix these issues, see how to [unblock and configure the null port profile for unmanaged VMs]().
+          You can experience network connectivity issues if you enable Network Controller and create unmanaged VMs outside Azure interfaces like Azure CLI, Azure portal, Azure PowerShell, and Azure Resource Manager APIs. To fix these issues, see how to [unblock and configure the null port profile for unmanaged VMs](../manage/manage-default-network-access-policies-virtual-machines-23h2.md#vms-created-outside-of-windows-admin-center).
 
       - question: Why can't I connect to my Azure Local VMs, if I associate an NSG with the VM network interface or its logical network?
         answer: |
