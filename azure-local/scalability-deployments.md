@@ -48,4 +48,8 @@ For more information on multi-rack deployments, see [What are multi-rack deploym
 
 Specific reference architectures exist for Azure Local deployments that run Microsoft 365 Local applications. For more information about Microsoft 365 Local, see [Microsoft 365 Local](./index.yml).
 
-Next steps
+## Next steps
+
+Read about the different Azure Local deployment types:
+- [What are hyperconverged deployments for Azure Local?](./overview/hyperconverged-overview.md).
+- [What are multi-rack deployments for Azure Local?](./multi-rack/multi-rack-overview.md).
