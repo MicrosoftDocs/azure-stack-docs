@@ -29,6 +29,9 @@ When you enable guest management on an Azure Local VM, the [Azure Connected Mach
 
 #### Verify that guest management is enabled in the Azure portal
 
+> [!NOTE]
+> Enable guest management at VM creation. You can't enable it after the VM is created.
+
 1. Go to the Azure portal.
 
 1. Go to **Your Azure Local** > **Virtual machines**, and then select the VM on which you enabled guest management.
