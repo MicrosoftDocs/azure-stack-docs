@@ -794,7 +794,7 @@ If you use Cluster Manager storage, the command provides a link to download the 
 
 The storage account might be locked, and you might receive the error message: "403 This request is not authorized to perform this operation." This error is triggered by networking or firewall restrictions. For procedures that you can use to verify access, go to the [user-managed storage](#send-command-output-to-a-user-specified-storage-account) section.
 
-## Execute a run-data-extracts-restricted command
+## <a name = "executing-a-run-data-extracts-restricted-command"></a> Execute a run-data-extracts-restricted command
 
 ### Prerequisites
 
