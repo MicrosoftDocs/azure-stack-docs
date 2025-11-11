@@ -37,7 +37,18 @@ To learn more about Windows update terminology, see [types of Windows updates]
 
 This security update contains fixes and quality improvements from [KB5066780](https://support.microsoft.com/topic/october-14-2025-kb5066780-os-build-25398-1913-fcae5a50-170f-40dd-af68-ea2a267a74e6?preview=true) (released October 14, 2025) and [KB5070879](https://support.microsoft.com/topic/october-23-2025-kb5070879-os-build-25398-1916-out-of-band-e192ac2e-3519-44c6-8706-d7e40c556c8c?preview=true) (released October 23, 2025). The following summary outlines key issues addressed by this update. Also, included are available new features. The bold text within the brackets indicates the item or area of the change.
 
-- **[Windows Security]** Fixed: This update addresses an issue that affected SmartScreen application reputation (Apprep) events from being logged. As a result, you couldn’t always see the level of protection provided by Microsoft Defender SmartScreen. 
+- **[Windows Security]** Fixed: This update addresses an issue that affected SmartScreen application reputation (Apprep) events from being logged. As a result, you couldn’t always see the level of protection provided by Microsoft Defender SmartScreen.
+
+- **[Networking]** Fixed: This update fixes an issue in the `HTTP.sys` request parser, a Windows component that reads and processes HTTP requests. The parser allowed a single line break within HTTP/1.1 chunk extensions, where the RFC 9112 standard requires a carriage return and line feed (CRLF) sequence to terminate each chunk. This can cause a parsing discrepancy when front end proxies are a part of the setup.
+ 
+To turn on strict parsing, use the following registry key and values: 
+
+**Registry key**:
+`HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Http\Parameters]`
+
+**Registry value:** `"HttpAllowLenientChunkExtParsing"=dword:00000000`
+
+**Data to be set**: `0`
 
 If you've already installed previous updates, your device will download and install only the new updates included in this package.
 
@@ -65,12 +76,18 @@ To install the LCU on your Azure Local instance, see [Update Azure Stack Local i
 
 ## File list
 
-For a list of the files that are provided in this update, download the file information for [Cumulative update KB5068779.](https://go.microsoft.com/fwlink/?linkid=).
+For a list of the files that are provided in this update, download the file information for [Cumulative update KB5068779.](https://go.microsoft.com/fwlink/?linkid=2340950).
 
 
 # [OS build 26100.xxxx](#tab/os-build-26100-xxxx)
 
-This section provides the 2511 security updates associated with OS build **26200.7159** and **26100.7159**.
+This section provides the 2511 security updates associated with OS build **26200.7159** and **26100.7159**, and also includes key notifications, announcements, change logs, and end-of-support notices.
+
+## Simplified Windows update titles
+
+A new, standardized title format makes Windows updates easier to read and understand. It improves clarity by removing unnecessary technical elements like platform architecture. Key identifiers such as date prefixes, the KB number, and build or version are retained to help you quickly recognize each update.
+
+For more information, see Simplified Windows Update titles or the accompanying blog post.
 
 ## Windows Secure Boot certificate expiration
 
@@ -85,11 +102,27 @@ This security update contains fixes and quality improvements from [KB5067036](
 - **[Gaming]**
     - Fixed: This update addresses an issue that affects gaming handheld devices. These devices were unable to stay in low-power states, which caused faster battery drain.​​​​​​​
 
-    - Fixed: An issue on some handheld gaming devices where after signing in using the built-in Gamepad, the controller might not respond in apps for about five seconds, causing a delay. The on-screen keyboard hides automatically after you enter your password or PIN.
+    - Fixed: This update addresses an issue on some handheld gaming devices where after signing in using the built-in gamepad, the controller might not respond in apps for about five seconds, causing a delay. After you submit your password or PIN, the touch keyboard on the sign-in screen hides automatically.
 
-- **[System utilities (known issue)]** Fixed: An issue where closing Task Manager with the Close button didn’t fully end the process, leaving background instances that could slow performance over time.  This might occur after installing [KB5067036](https://support.microsoft.com/topic/october-28-2025-kb5067036-os-builds-26200-7019-and-26100-7019-preview-ec3da7dc-63ba-4b1d-ac41-cf2494d2123a?preview=true).
+- **[Storage]** Fixed: This update addresses an issue that could cause some Storage Spaces to become inaccessible or Storage Spaces Direct to fail when creating a storage cluster.
 
-- **​​​​​​​[Window management]** Fixed: This update addresses an issue that occurs after the first restart following an upgrade. If full-screen experience is enabled, selecting the desktop wallpaper after opening several windows might cause them to minimize unexpectedly.
+- **[System utilities (known issue)]** Fixed: This update addresses an issue where closing Task Manager with the Close button didn’t fully end the process, leaving background instances that could slow performance over time.  This might occur after installing [KB5067036](https://support.microsoft.com/topic/october-28-2025-kb5067036-os-builds-26200-7019-and-26100-7019-preview-ec3da7dc-63ba-4b1d-ac41-cf2494d2123a?preview=true).
+
+- **[Voice Access]** Fixed: This update addresses an issue where **Voice Access** failed during initial setup if no microphone was connected and the voice model wasn’t installed.
+
+- **​​​​​​​[Window management]** Fixed: his update addresses an issue where selecting the desktop could unexpectedly open **Task View**.
+
+- **[Networking]** Fixed: This update fixes an issue in the `HTTP.sys` request parser, a Windows component that reads and processes HTTP requests. The parser allowed a single line break within HTTP/1.1 chunk extensions, where the RFC 9112 standard requires a carriage return and line feed (CRLF) sequence to terminate each chunk. This can cause a parsing discrepancy when front end proxies are a part of the setup.
+ 
+To turn off strict parsing, use the following registry key and values:
+
+**Registry Key:** 
+`HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Http\Parameters]`
+
+**Registry value:**
+`"HttpAllowLenientChunkExtParsing"=dword:00000001`
+
+**Data to be set**: `1`  
 
 If you've already installed previous updates, your device will download and install only the new updates included in this package.
 
@@ -107,7 +140,7 @@ To install the LCU on your Azure Local instance, see [Update Azure Stack Local i
 
 ## File list
 
-For a list of the files that are provided in this update, download the file information for [Cumulative update KB 5067035](https://go.microsoft.com/fwlink/?linkid=).
+For a list of the files that are provided in this update, download the file information for [Cumulative update KB 5067035](https://go.microsoft.com/fwlink/?linkid=2340951).
 
 ::: moniker-end
 
