@@ -21,7 +21,7 @@ For the 2511 release of Azure Local, Microsoft released two security updates, ea
 | Security update | OS build | Release date |
 |--|--|--|
 | KB5068779 | 25398.1965 | November 11, 2025 |
-| KB5068861 | 26100.7159<br>26200.7159 | November 11, 2025 |
+| KB5068861 | 26100.7171<br>26200.7171 | November 11, 2025 |
 
 # [OS build 25398.xxxx](#tab/os-build-25398-xxxx)
 
@@ -81,7 +81,7 @@ For a list of the files that are provided in this update, download the file info
 
 # [OS build 26100.xxxx](#tab/os-build-26100-xxxx)
 
-This section provides the 2511 security updates associated with OS build **26200.7159** and **26100.7159**, and also includes key notifications, announcements, change logs, and end-of-support notices.
+This section provides the 2511 security updates associated with OS build **26200.7171** and **26100.7171**, and also includes key notifications, announcements, change logs, and end-of-support notices.
 
 ## Simplified Windows update titles
 
