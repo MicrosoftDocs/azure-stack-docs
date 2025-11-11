@@ -1,6 +1,6 @@
 ---
-title: Troubleshoot bare metal machine issues using the `az networkcloud baremetalmachine run-read-command` for Operator Nexus
-description: Step by step guide on using the `az networkcloud baremetalmachine run-read-command` to run diagnostic commands on a BMM.
+title: Troubleshoot Bare-Metal Machine Issues by Using the run-read Command for Azure Operator Nexus
+description: This article teaches you how to run diagnostics on a bare-metal machine by using the run-read command.
 author: eak13
 ms.author: ekarandjeff
 ms.service: azure-operator-nexus
@@ -9,42 +9,34 @@ ms.date: 4/17/2025
 ms.custom: template-how-to
 ---
 
-# Troubleshoot BMM issues using the `az networkcloud baremetalmachine run-read-command`
+# Troubleshoot bare-metal machine issues by using the `run-read` command
 
-There might be situations where a user needs to investigate and resolve issues with an on-premises bare metal machine (BMM). Operator Nexus provides the `az networkcloud baremetalmachine run-read-command` so users can run a curated list of read only commands to get information from a BMM.
+Learn how you can investigate and resolve issues with an on-premises bare-metal machine by using the `run-read` command. Azure Operator Nexus provides the `az networkcloud baremetalmachine run-read-command`. Users can use it to run a curated list of read-only commands to get information from a bare-metal machine.
 
-The command produces an output file containing the results of the run-read command execution. By default, the data is sent to the Cluster Manager storage account. There's also a preview method where users can configure the Cluster resource with a storage account and identity that has access to the storage account to receive the output.
+The command produces an output file that contains the results of the `run-read` command execution. By default, the data is sent to the Cluster Manager storage account. Users can also use a preview method. They can configure the Cluster resource with a storage account and identity that has access to the storage account to receive the output.
 
 ## Prerequisites
 
-1. Install the latest version of the
-   [appropriate CLI extensions](./howto-install-cli-extensions.md)
-1. Ensure that the target BMM must have its `poweredState` set to `On` and have its `readyState` set to `True`
-1. Get the Managed Resource group name (cluster_MRG) that you created for `Cluster` resource
+1. Install the latest version of the [appropriate CLI extensions](./howto-install-cli-extensions.md).
+1. Ensure that the target bare-metal machine has its `poweredState` set to `On` and its `readyState` set to `True`.
+1. Get the managed resource group name (cluster_MRG) that you created for `Cluster` resource.
 
 [!INCLUDE [command-output-settings](./includes/run-commands/command-output-settings.md)]
 
-## Execute a run-read command
+## Execute a `run-read` command
 
-The run-read command lets you run a command on the BMM that doesn't change anything. Some commands have more
-than one word, or need an argument to work. These commands are made like this to separate them from the ones
-that can change things. For example, run-read-command can use `kubectl get` but not `kubectl apply`. When you
-use these commands, you have to put all the words in the "command" field. For example,
-`{command:'kubectl get',arguments:[nodes]}` is right; `{command:kubectl,arguments:[get,nodes]}`
-is wrong.
+You can use the `run-read` command to run a command on a bare-metal machine without changing anything. Some commands have more than one word, or need an argument to work. These commands are made like this to separate them from the ones that can change things. For example, the `run-read` command can use `kubectl get` but not `kubectl apply`.
 
-Also note that some commands begin with `nc-toolbox nc-toolbox-runread` and must be entered as shown.
-`nc-toolbox-runread` is a special container image that includes more tools that aren't installed on the
-bare metal host, such as `ipmitool` and `racadm`.
+When you use these commands, you have to put all the words in the "command" field. For example, `{command:'kubectl get',arguments:[nodes]}` is right; `{command:kubectl,arguments:[get,nodes]}` is wrong.
 
-Some of the run-read commands require specific arguments be supplied to enforce read-only capabilities of the commands.
-An example of run-read commands that require specific arguments is the allowed Mellanox command `mstconfig`,
-which requires the `query` argument be provided to enforce read-only.
+Some commands begin with `nc-toolbox nc-toolbox-runread` and must be entered as shown. The `nc-toolbox-runread` command is a special container image that includes more tools that aren't installed on the bare-metal host, including `ipmitool` and `racadm`.
+
+Some of the `run-read` commands require that you supply specific arguments to ensure the commands are read only. For example, a `run-read` command that requires specific arguments is the allowed Mellanox command `mstconfig`. This command needs the `query` argument to be read only.
 
 > [!WARNING]
-> Microsoft doesn't provide or support any Operator Nexus API calls that expect plaintext username and/or password to be supplied. Note any values sent are logged and are considered exposed secrets, which should be rotated and revoked. The Microsoft documented method for securely using secrets is to store them in an Azure Key Vault. If you have specific questions or concerns, submit a request via the Azure portal.
+> Microsoft doesn't provide or support any Azure Operator Nexus API calls that require a plaintext username or password. Any values sent are logged and are considered exposed secrets, which should be rotated and revoked. We recommend that you store secrets in Azure Key Vault. If you have specific questions or concerns, submit a request via the Azure portal.
 
-This list shows the commands you can use. Commands in `*italics*` can't have `arguments`; the rest can.
+This list shows the commands you can use. Commands that are displayed in *italics* can't have arguments, but the rest can.
 
 - `arp`
 - `brctl show`
@@ -212,7 +204,7 @@ This list shows the commands you can use. Commands in `*italics*` can't have `ar
 - `nc-toolbox nc-toolbox-runread mstfwmanager` (requires `query` arg)
 - `nc-toolbox nc-toolbox-runread mlx_temp`
 
-The command syntax for a single command with no arguments is as follows, using `hostname` as an example:
+See the following code snippet for the command syntax for a single command with no arguments, using `hostname` as an example:
 
 ```azurecli
 az networkcloud baremetalmachine run-read-command --name "<bareMetalMachineName>"
@@ -222,12 +214,14 @@ az networkcloud baremetalmachine run-read-command --name "<bareMetalMachineName>
     --subscription "<subscription>"
 ```
 
-- `--name` is the name of the BMM resource on which to execute the command.
+The previous code snippet uses the following variables:
+
+- The value `--name` is the name of the bare-metal machine resource on which to execute the command.
 - The `--commands` parameter always takes a list of commands, even if there's only one command.
-- Multiple commands can be provided in json format using [Azure CLI Shorthand](https://aka.ms/cli-shorthand) notation.
-- Any whitespace must be enclosed in single quotes.
-- Any arguments for each command must also be provided as a list, as shown in the following examples.
-- Not all commands can run on any BMM. For example, `kubectl` commands can only be run from a BMM with the `control-plane` role.
+- Multiple commands can be provided in JSON format by using the [Azure CLI shorthand](https://aka.ms/cli-shorthand) notation.
+- Any blank spaces must be enclosed in single quotes.
+- Arguments for each command must also be provided as a list, as shown in the following examples.
+- Not all commands can run on any bare-metal machine. For example, `kubectl` commands can only be run from a bare-metal machine with the `control-plane` role.
 
 ```
 --commands "[{command:hostname},{command:'nc-toolbox nc-toolbox-runread racadm ifconfig'}]"
@@ -235,16 +229,16 @@ az networkcloud baremetalmachine run-read-command --name "<bareMetalMachineName>
 --commands "[{command:ping,arguments:[198.51.102.1,-c,3]}]"
 ```
 
-These commands can be long running so the recommendation is to set `--limit-time-seconds` to at least 600 seconds (10 minutes). Running multiple commands might take longer than 10 minutes.
+These commands can be long-running so we recommend that you set `--limit-time-seconds` to at least 600 seconds (10 minutes). Running multiple commands might take longer than 10 minutes.
 
-This command runs synchronously. If you wish to skip waiting for the command to complete, specify the `--no-wait --debug` options. For more information, see [how to track asynchronous operations](howto-track-async-operations-cli.md).
+This command runs synchronously. To skip waiting for the command to complete, specify the `--no-wait --debug` options. For more information, see [How to track asynchronous operations](howto-track-async-operations-cli.md).
 
-When an optional argument `--output-directory` is provided, the output result is downloaded and extracted to the local directory, provided the user running the command has appropriate access to the Storage Account.
+When you provide an optional argument `--output-directory` value, the output result is downloaded and extracted to the local directory, as long as the user running the command has appropriate access to the storage account.
 
 > [!WARNING]
 > Using the `--output-directory` argument overwrites any files in the local directory that have the same name as the new files being created.
 
-### This example executes a 'kubectl get pods'
+### This example executes the `kubectl get pods` command
 
 ```azurecli
 az networkcloud baremetalmachine run-read-command --name "<bareMetalMachineName>" \
@@ -276,7 +270,7 @@ az networkcloud baremetalmachine run-read-command --name "<bareMetalMachineName>
 
 ## Check the command status
 
-Sample output is shown. It prints the top 4,000 characters of the result to the screen for convenience and provides a short-lived link to the storage blob containing the command execution result.
+The following sample output prints the result's top 4,000 characters to the screen for convenience. It provides a short-lived link to the storage blob that contains the command execution result.
 
 ```output
   ====Action Command Output====

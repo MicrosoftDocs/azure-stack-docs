@@ -6,18 +6,18 @@ ms.topic: include
 ms.service: azure-operator-nexus
 ---
 
-## Send command output to a user specified Storage Account
+## Send the command output to a user-specified storage account
 
-To configure the Storage Account and container to which command output is sent, see [Azure Operator Nexus Cluster support for managed identities and user provided resources](../../howto-cluster-managed-identity-user-provided-resources.md).
+To choose the storage account and container to which you want to send the command output, see [Azure Operator Nexus Cluster support for managed identities and user-provided resources](../../howto-cluster-managed-identity-user-provided-resources.md).
 
 [!INCLUDE [command-output-access](./command-output-access.md)]
 
-## Verify access to the specified Storage Account
+## Verify you can access the specified storage account
 
-Before running commands, you might wish to verify you have access to the specified Storage Account:
+Before you run commands, you might want to verify that you can access the specified storage account:
 
-1. From the Azure portal, navigate to the Storage Account.
-1. In the Storage Account details, select **Storage browser** from the navigation menu on the left side.
-1. In the Storage browser details, select **Blob containers**.
-1. Find the container to which command output is to be sent and select it.
-1. If you encounter errors while accessing the Storage Account or container, the user you're using might need a role assignment for the Storage Account or container. Alternatively, the Storage Account’s firewall settings might need to be updated to include your IP address.
+1. From the Azure portal, navigate to **Storage Account**.
+1. In **Storage Account details**, select **Storage browser** from the left menu.
+1. In **Storage browser details**, select **Blob containers**.
+1. Select the container where you plan to send the command output.
+1. If you encounter errors while accessing the storage account or container, you might need a role assignment for the storage account or container. Alternatively, you might need to update the storage account's firewall settings to include your IP address.
