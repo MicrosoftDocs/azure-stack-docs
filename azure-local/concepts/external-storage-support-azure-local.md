@@ -1,5 +1,5 @@
 ---
-title: External Storage support for Azure Local (preview)
+title: External storage support for Azure Local (preview)
 ms.service: azure-local
 ms.reviewer: robess
 description: Learn how Azure Local supports external SAN integration, enabling high-performance storage for VMs, AKS clusters, and AVD instances without re-architecture (preview).
