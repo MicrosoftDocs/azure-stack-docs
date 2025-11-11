@@ -22,7 +22,7 @@ You can open an RDP connection to every Windows Server from the Azure CLI withou
 
 Before you begin, ensure that you:
 
-1. Have access to Azure Local VM that you want to connect to.
+1. Have access to the Azure Local VM that you want to connect to.
 
 1. Install the OpenSSH Server Extension.
 
@@ -136,11 +136,11 @@ Use the following steps to connect to Azure Local.
 
 1. Sign in to authenticate for RDP.
 
-   :::image type="content" source="./media/multi-rack-connect-arc-vm-using-ssh/rdp-login-dialog-for-ssh-arc-connection-6.png" alt-text="Screenshot of the RDP server sign-in dialog to connect to Windows Server over SSH." lightbox="./media/multi-rack-connect-arc-vm-using-ssh/rdp-login-dialog-for-ssh-arc-connection-6.png":::
+   :::image type="content" source="./media/multi-rack-connect-arc-vm-using-ssh/remote-desktop-login-dialog-for-ssh-arc-connection-6.png" alt-text="Screenshot of the remote desktop server sign-in dialog to connect to Windows Server over SSH." lightbox="./media/multi-rack-connect-arc-vm-using-ssh/remote-desktop-login-dialog-for-ssh-arc-connection-6.png":::
 
 1. You can see the desktop for the remote desktop connection.
 
-   :::image type="content" source="./media/multi-rack-connect-arc-vm-using-ssh/rdp-desktop-for-ssh-arc-connection-9.png" alt-text="Screenshot of the RDP desktop to connect to Windows Server over SSH." lightbox="./media/multi-rack-connect-arc-vm-using-ssh/rdp-desktop-for-ssh-arc-connection-9.png":::
+   :::image type="content" source="./media/multi-rack-connect-arc-vm-using-ssh/remote-desktop-for-ssh-arc-connection-9.png" alt-text="Screenshot of the remote desktop to connect to Windows Server over SSH." lightbox="./media/multi-rack-connect-arc-vm-using-ssh/remote-desktop-for-ssh-arc-connection-9.png":::
 
    You set up an RDP tunnel over SSH into your Azure Local using Azure CLI without any VPN or open ports at your firewall.
 
