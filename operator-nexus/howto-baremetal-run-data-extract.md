@@ -26,7 +26,7 @@ There's also a preview method. Users can configure the cluster resource with a s
 
 [!INCLUDE [command-output-settings](./includes/run-commands/command-output-settings.md)]
 
-## Execute a run-data-extract command
+## <a name = "executing-a-run-data-extracts-command"></a> Execute a run-data-extract command
 
 The `run-data-extract` command executes one or more predefined scripts to extract data from a bare-metal machine.
 
@@ -93,7 +93,7 @@ These commands can take a long time to run, so we recommend that you set the `--
 
 In the response, the operation performs asynchronously and returns an HTTP status code of `202`. To learn how to track command completion and view the output file, go to [How to view the full output of a command in the associated storage account](#how-to-view-the-full-output-of-a-command-in-the-associated-storage-account).
 
-### The hardware support data collection command
+### <a name = "hardware-support-data-collection"></a> The hardware support data collection command
 
 The following example executes the `hardware-support-data-collection` command and gets `SysInfo` and `TTYLog` logs from the Dell server. The script executes a `racadm supportassist collect` command on the designated bare-metal machine. The resulting tar.gz file contains the zipped extract command file outputs in `hardware-support-data-<timestamp>.zip`.
 
@@ -156,7 +156,7 @@ Archive:  TSR20240227164024_FM56PK3.pl.zip
 [..snip..]
 ```
 
-### Collect Microsoft Defender for Endpoint agent information
+### <a name = "collect-mde-agent-information"></a> Collect Microsoft Defender for Endpoint agent information
 
 You can use the `mde-agent-information` command to collect data, which is delivered in JSON format to `/hostfs/tmp/runcommand/mde-agent-information.json`. You can find the JSON file in the data extract zip file in the storage account. The script executes a sequence of `mdatp` commands on the designated bare-metal machine.
 
@@ -203,7 +203,7 @@ Script execution result can be found in storage account:
 }
 ```
 
-### Collect Microsoft Defender for Endpoint support diagnostics
+### <a name = "collect-mde-support-diagnostics"></a> Collect Microsoft Defender for Endpoint support diagnostics
 
 That data that you collect by using the `mde-support-diagnostics` command employs the Microsoft Defender for Endpoint Client Analyzer tool to bundle information from `mdatp` commands and relevant log files. The storage account `tgz` file contains a `zip` file named `mde-support-diagnostics-<hostname>.zip`. You should send the ZIP file with any support requests so that support teams can use the logs for troubleshooting and root cause analysis.
 
@@ -324,7 +324,7 @@ https://cmkfjft8twwpst.blob.core.windows.net/bmm-run-command-output/20b217b5-ea3
 [..snip..]
 ```
 
-### Generate a cluster CVE report
+### <a name = "generate-cluster-cve-report"></a> Generate a cluster CVE report
 
 You can use the `cluster-cve-report` command to collect vulnerability data, which is delivered in JSON format to `{year}-{month}-{day}-nexus-cluster-vulnerability-report.json`. You can find the JSON file in the data extract zip file in the storage account. The data includes vulnerability data per container image in the cluster.
 
@@ -812,7 +812,7 @@ You can implement the `run-data-extracts-restricted` command as a new and separa
   Command name: `mde-agent-information`\
   Arguments: None
 
-- [Generate a cluster common vulnerabilities and exposures (CVE) report](#generate-cluster-cve-report)\
+- [Generate a cluster Common Vulnerabilities and Exposures (CVE) report](#generate-cluster-cve-report)\
   Command name: `cluster-cve-report`\
   Arguments: None
 
