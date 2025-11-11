@@ -129,7 +129,7 @@ The Azure Lustre CSI Driver supports two provisioning methods:
 Dynamic provisioning allows the CSI driver to automatically create Azure Managed Lustre file systems on-demand when persistent volume claims are created.
 
 > [!NOTE]
-> Dynamic provisioning is available starting with Azure Lustre CSI Driver version 0.3.0 and is currently in Public Preview. For more information, see the [v0.3.0 release notes](https://github.com/kubernetes-sigs/azurelustre-csi-driver/releases/tag/v0.3.0).
+> Dynamic provisioning is available starting with Azure Lustre CSI Driver version 0.3.0. For more information, see the [v0.3.0 release notes](https://github.com/kubernetes-sigs/azurelustre-csi-driver/releases/tag/v0.3.0).
 
 ### Static Provisioning
 Static provisioning uses an existing Azure Managed Lustre file system. This method involves:
@@ -139,9 +139,7 @@ Static provisioning uses an existing Azure Managed Lustre file system. This meth
 
 Choose the method that best fits your use case. Dynamic provisioning is documented first below, followed by static provisioning instructions.
 
-## Dynamic Provisioning (Public Preview)
-
-**Public Preview Notice**: Dynamic provisioning functionality is currently in public preview. Some features may not be supported or may have constrained capabilities.
+## Dynamic Provisioning
 
 Dynamic provisioning automatically creates Azure Managed Lustre file systems on-demand when persistent volume claims are created. This feature became available in CSI driver version 0.3.0.
 
