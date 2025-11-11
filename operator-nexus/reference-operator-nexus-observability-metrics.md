@@ -48,6 +48,32 @@ The BGP connection states are:
 - **OpenConfirm (5):** The system is waiting for a KEEPALIVE or NOTIFICATION message from the peer.
 - **Established (6):** The BGP connection is fully established and the peers can exchange UPDATE messages.
 
+> [!IMPORTANT]
+> The BGP Peer Status metric represents the operational state of a BGP session as integers 1–6.
+ 
+## How to analyze the data correctly:
+BGP sessions can flap multiple times within a one-minute interval, resulting in multiple samples per bucket. To interpret these correctly:</br>
+- Min: Lowest state observed (reveals drops toward Idle/Active)</br>
+- Max: Highest state observed (shows if the session reached Established)</br>
+- Count: Number of samples in the bucket (indicates instability when high)</br>
+
+## Recommended interpretation:
+- Max=6 & Min=6 & Count=1 → Session stayed Established throughout the minute</br>
+- Max=6 & Min<6 & Count>1 → At least one transition occurred during the minute</br>
+- Max<6 & Min≥1 → Session never reached Established in that minute</br>
+- Count≫1 (e.g., >3) → Potential flap or rapid oscillation</br>
+ 
+## Visualization guidance
+- Metrics Explorer: Use Min, Max, and Count aggregations. Avoid Avg, as it misrepresents categorical states.</br>
+- Workbooks: Consider grids or state-timeline visuals that display per-minute Min/Max/Count together.</br>
+- Log Analytics (KQL): Use min(), max(), and count() over bin(…, 1m); optionally compute a state spread (MaxState - MinState) to detect transitions.</br>
+- Alerts:</br>
+  1. Availability: Min < 6 or Max < 6</br>
+  2. Instability: SampleCount > threshold</br>
+
+## Limitation
+If multiple transitions occur within a minute, Min and Max only show the range (e.g., 1 and 6) without revealing intermediate states. Use Count and KQL queries for deeper analysis.
+
 ## Component operational state
 
 The operational state of a hardware or software component shows its current functioning state.
@@ -187,29 +213,3 @@ Resource utilization metrics provide critical insights into how efficiently netw
 | Power Supply Output Power       | The amount of electrical power, measured in watts, that the power supply unit (PSU) delivers to the device's components. It's a critical factor in ensuring the device has sufficient power for optimal performance.                                                                                                | 1 min               |                       |
 | Temperature Instantaneous       | The real-time temperature of the device's components.                                                                                                                                                                                                                                                                   | 1 min               |                       |
 | Temperature Max                 | The highest safe operating temperature for the device's components. Exceeding this limit can lead to overheating, which might cause performance issues, component damage, or even lead to device failure. It's crucial to monitor and manage the device's temperature to ensure its longevity and optimal performance. | 1 min               |                       |
-
-> [!IMPORTANT]
-> The BGP Peer Status metric represents the operational state of a BGP session as integers 1–6.
- 
-## How to analyze the data correctly:
-BGP sessions can flap multiple times within a one-minute interval, resulting in multiple samples per bucket. To interpret these correctly:</br>
-- Min: Lowest state observed (reveals drops toward Idle/Active)</br>
-- Max: Highest state observed (shows if the session reached Established)</br>
-- Count: Number of samples in the bucket (indicates instability when high)</br>
-
-## Recommended interpretation:
-- Max=6 & Min=6 & Count=1 → Session stayed Established throughout the minute</br>
-- Max=6 & Min<6 & Count>1 → At least one transition occurred during the minute</br>
-- Max<6 & Min≥1 → Session never reached Established in that minute</br>
-- Count≫1 (e.g., >3) → Potential flap or rapid oscillation</br>
- 
-## Visualization guidance
-- Metrics Explorer: Use Min, Max, and Count aggregations. Avoid Avg, as it misrepresents categorical states.</br>
-- Workbooks: Consider grids or state-timeline visuals that display per-minute Min/Max/Count together.</br>
-- Log Analytics (KQL): Use min(), max(), and count() over bin(…, 1m); optionally compute a state spread (MaxState - MinState) to detect transitions.</br>
-- Alerts:</br>
-  1. Availability: Min < 6 or Max < 6</br>
-  2. Instability: SampleCount > threshold</br>
-
-## Limitation
-If multiple transitions occur within a minute, Min and Max only show the range (e.g., 1 and 6) without revealing intermediate states. Use Count and KQL queries for deeper analysis.
