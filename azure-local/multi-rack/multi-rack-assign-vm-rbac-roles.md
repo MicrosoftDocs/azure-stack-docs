@@ -14,19 +14,20 @@ ms.date: 11/07/2025
 
 This article describes how to use Role-based Access Control (RBAC) to control access to Azure Local virtual machines (VMs) for multi-rack deployments.
 
-You can use the RBAC roles to control access to VMs and VM resources such as virtual disks, network interfaces, VM images, logical networks, virtual networks, NAT gateways, and load balancers. You can assign these roles to users, groups, service principals and managed identities.
+You can use the RBAC roles to control access to VMs and VM resources such as virtual disks, network interfaces, VM images, logical networks and virtual networks. You can assign these roles to users, groups, service principals, and managed identities.
 
 ## Multi-team operational model 
 
 The following section explains an operational model and associated custom role definitions that Microsoft provides merely as a reference. You can choose to disregard this model and create custom roles that work for your organization.
 
-Given that Azure Local max is multi-rack infrastructure, this guide assumes that it is operated and administered by a central team but shared across many application teams. Under this model, we assume two primary user personas, infrastructure admins and application admins:
+Given the scale of Azure Local for multi-rack deployments, this guide assumes that it is operated and administered by a central team but shared across many application teams. Under this model, we assume two primary user personas, infrastructure admins and application admins:
 
 - **Infrastructure admins**: This persona administers shared platform resources, owning core Azure Local platform assets (clusters, logical networks, Public IPs) and maintaining governance.  
 
-- **Application admins**: This persona deploys tenant workloads in a separate subscription, managing VMs, NICs, disks, and their own networking (VNets, NSGs, NAT GWs, Load Balancers) with configuration autonomy. 
+- **Application admins**: This persona administers shared platform resources, owning Azure Local platform assets (clusters, logical networks, Public IPs) that require additional admin overview and maintaining governance.
 
-Infra and application admins use separate subscriptions but must exist within the same Microsoft Entra tenant.
+> [!NOTE]
+> While the use of separate subscriptions to disaggregate responsibility across various personas is supported, the subscriptions must exist within the same Microsoft Entra tenant.
 
 ### Control split 
 
@@ -68,7 +69,7 @@ Based on the above split of resource ownership and access, we recommend the foll
 
 - **Infrastructure network consumer role**: Consume shared infrastructure network resources. **Scope**: Infrastructure subscription or application-specific resource group.
 
-- **Workload VM contributor role**: Complete workload VM and other workload resources lifecycle management.  **Scope**: Workload subscription or a specific resource group.
+- **Workload VM contributor role**: Gives application teams least privileged access to consume shared infrastructure network resources. **Scope**: Infrastructure subscription or application-specific resource group.
 
 For more information, see [Custom role definitions](#custom-role-definitions).
 
@@ -82,7 +83,7 @@ Before you begin, make sure to complete the following prerequisites:
 
 ## Create custom roles
 
-To controll access to VM and VM resources, you can create custom roles as needed. Custom roles can be created using the Azure portal, Azure PowerShell, Azure CLI, or the REST API.
+To control access to Azure Local VM and workload resources, you can create custom roles as needed. Custom roles can be created using the Azure portal, Azure PowerShell, Azure CLI, or the REST API.
 
 1. **Determine permissions you need for the custom role**. When you create a custom role, you need to know the actions that are available to define your permissions. You will add the actions to the Actions or NotActions properties of the [role definition](/azure/role-based-access-control/role-definitions). If you have data actions, you will add those to the DataActions or NotDataActions properties.
 
