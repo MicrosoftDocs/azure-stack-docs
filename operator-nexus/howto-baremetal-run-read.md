@@ -11,27 +11,29 @@ ms.custom: template-how-to
 
 # Troubleshoot bare-metal machine issues by using the `run-read` command
 
-Learn how you can investigate and resolve issues with an on-premises bare-metal machine by using the `run-read` command. Azure Operator Nexus provides the `az networkcloud baremetalmachine run-read-command`. Users can use it to run a curated list of read-only commands to get information from a bare-metal machine.
+Learn how you can investigate and resolve issues with an on-premises bare-metal machine by using the `run-read` command. Azure Operator Nexus provides the `az networkcloud baremetalmachine run-read-command`. Users can employ it to run a curated list of read-only commands to get information from a bare-metal machine.
 
-The command produces an output file that contains the results of the `run-read` command execution. By default, the data is sent to the Cluster Manager storage account. Users can also use a preview method. They can configure the cluster resource with a storage account and identity that has access to the storage account to receive the output.
+The command produces an output file that contains the results of the `run-read` command execution. By default, the data is sent to the Cluster Manager storage account.
+
+There's also a preview method. Users can configure the cluster resource with a storage account and identity that has access to the storage account to receive the output.
 
 ## Prerequisites
 
 1. Install the latest version of the [appropriate CLI extensions](./howto-install-cli-extensions.md).
 1. Ensure that the target bare-metal machine has its `poweredState` set to `On` and its `readyState` set to `True`.
-1. Get the managed resource group name (cluster_MRG) that you created for `Cluster` resource.
+1. Get the managed resource group name (`cluster_MRG`) that you created for the `Cluster` resource.
 
 [!INCLUDE [command-output-settings](./includes/run-commands/command-output-settings.md)]
 
 ## Execute a `run-read` command
 
-You can use the `run-read` command to run a command on a bare-metal machine without changing anything. Some commands have more than one word, or need an argument to work. These commands are structured to separate them from ones that can make changes. For example, the `run-read` command can use `kubectl get` but not `kubectl apply`.
+You can use the `run-read` command to run a command on a bare-metal machine without changing anything. Some commands have more than one word, or need an argument to work. These commands are structured to distinguish them from ones that can make changes. For example, the `run-read` command can use `kubectl get` but not `kubectl apply`.
 
 When you use these commands, you have to put all the words in the "command" field. For example, `{command:'kubectl get',arguments:[nodes]}` is right; `{command:kubectl,arguments:[get,nodes]}` is wrong.
 
 Some commands begin with `nc-toolbox nc-toolbox-runread` and must be entered as shown. The `nc-toolbox-runread` command is a special container image that includes more tools that aren't installed on the bare-metal host, including `ipmitool` and `racadm`.
 
-Some of the `run-read` commands require that you supply specific arguments to ensure the commands are read only. For example, a `run-read` command that requires specific arguments is the allowed Mellanox command `mstconfig`. This command needs the `query` argument to be read only.
+Some of the `run-read` commands require that you supply specific arguments to ensure the commands are read-only. For example, a `run-read` command that requires specific arguments is the allowed Mellanox command `mstconfig`. This command needs the `query` argument to be read-only.
 
 > [!WARNING]
 > Microsoft doesn't provide or support any Azure Operator Nexus API calls that require a plaintext username or password. Any values sent are logged and are considered exposed secrets, which should be rotated and revoked. We recommend that you store secrets in Azure Key Vault. If you have specific questions or concerns, submit a request via the Azure portal.
@@ -229,7 +231,7 @@ The previous code snippet uses the following variables:
 --commands "[{command:ping,arguments:[198.51.102.1,-c,3]}]"
 ```
 
-These commands can be long-running so we recommend that you set `--limit-time-seconds` to at least 600 seconds (10 minutes). Running multiple commands might take longer than 10 minutes.
+These commands can take a long time to run so we recommend that you set `--limit-time-seconds` to at least 600 seconds (10 minutes). Running multiple commands might take longer than 10 minutes.
 
 This command runs synchronously. To skip waiting for the command to complete, specify the `--no-wait --debug` options. For more information, see [How to track asynchronous operations](howto-track-async-operations-cli.md).
 

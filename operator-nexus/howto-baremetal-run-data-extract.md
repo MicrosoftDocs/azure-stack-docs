@@ -205,7 +205,7 @@ Script execution result can be found in storage account:
 
 ### <a name = "collect-mde-support-diagnostics"></a> Collect Microsoft Defender for Endpoint support diagnostics
 
-That data that you collect by using the `mde-support-diagnostics` command employs the Microsoft Defender for Endpoint Client Analyzer tool to bundle information from `mdatp` commands and relevant log files. The storage account `tgz` file contains a `zip` file named `mde-support-diagnostics-<hostname>.zip`. You should send the ZIP file with any support requests so that support teams can use the logs for troubleshooting and root cause analysis.
+The data that you collect by using the `mde-support-diagnostics` command employs the Microsoft Defender for Endpoint Client Analyzer tool to bundle information from `mdatp` commands and relevant log files. The storage account `tgz` file contains a `zip` file named `mde-support-diagnostics-<hostname>.zip`. You should send the ZIP file with any support requests so that support teams can use the logs for troubleshooting and root cause analysis.
 
 This example executes the `mde-support-diagnostics` command without arguments.
 
@@ -711,7 +711,7 @@ You can use the `collect-system-diagnostics` command to collect system diagnosti
   - **Mount points and volume information**: Detailed information on mount points, volumes, disk usage, and file system specifics.
 
 - Azure Arc `azcmagent` logs:
-  - Collects log files for the Azure connected machine agent and extensions and puts them in a ZIP archive.
+  - Collects log files for the Azure-connected machine agent and extensions and puts them in a ZIP archive.
 
 - **Configuration and management**:
   - **System configuration**: `Sysctl` parameters for a comprehensive view of kernel runtime configuration.

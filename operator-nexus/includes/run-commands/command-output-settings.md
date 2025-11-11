@@ -12,7 +12,7 @@ To send the command output to a specified storage account and container, see [Az
 
 [!INCLUDE [command-output-access](./command-output-access.md)]
 
-## Verify you can access the specified storage account
+## Verify that you can access the specified storage account
 
 Before you run commands, you might want to verify that you can access the specified storage account:
 
