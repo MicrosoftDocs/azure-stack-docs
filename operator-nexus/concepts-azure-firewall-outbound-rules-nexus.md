@@ -1,5 +1,5 @@
 ---
-title: "Azure Firewall outbound rules for Azure Operator Nexus"
+title: "Azure Firewall Outbound Rules for Azure Operator Nexus"
 description: "Guidance on configuring outbound network and FQDN rules in Azure Firewall for Azure Operator Nexus to remove wildcards and strengthen security."
 author: RaghvendraMandawale
 ms.author: rmandawale
@@ -10,29 +10,30 @@ ms.date: 08/18/2025
 
 # Outbound network and FQDN rules within Azure Firewall for Azure Operator Nexus
 
-Azure Operator Nexus deploys and manages outbound firewall rules to ensure that the infrastructure can securely connect to Microsoft services and external package sources.  
-Azure Operator Nexus automatically pushes and maintains these rules as part of the service. Customers **do not need to configure or update these rules manually**.
+Azure Operator Nexus deploys and manages outbound firewall rules to ensure that the infrastructure can securely connect to Microsoft services and external package sources.
 
-The following tables provide a reference of how the outbound rules appear within Azure Firewall.
+Azure Operator Nexus automatically pushes and maintains these rules as part of the service. You *don't need to configure or update these rules manually*.
+
+The following tables provide a reference for how the outbound rules appear within Azure Firewall.
 
 ## Traffic flow
 
-The simplified flow of traffic is as follows:
+The simplified flow of traffic is:
 
-- **Infrastructure traffic** → Infra Proxy allow-list → Azure Firewall  
-- **Tenant traffic** → CSN allow-list → Azure Firewall
+- **Infrastructure traffic** → Infra proxy allow list → Azure Firewall  
+- **Tenant traffic** → CSN allow list → Azure Firewall
 
-:::image type="content" source="media/network-fabric-controller-virtual-network.png" alt-text="Network Fabric Controller Virtual Networks Description." lightbox="media/network-fabric-controller-virtual-network.png":::
+:::image type="content" source="media/network-fabric-controller-virtual-network.png" alt-text="Diagram that shows Network Fabric Controller virtual networks." lightbox="media/network-fabric-controller-virtual-network.png":::
 
-## Tenant / CSN
+## Tenant/CSN
 
-The following **Network Rules** and **Application Rules** are used to allow-list Network Fabric Controller (NFC) traffic from version 6.5 onward. These rules will also apply to Cluster Manager (CM) traffic in future releases.
+The following *network rules* and *application rules* are used to allow list Network Fabric Controller traffic from version 6.5 and later. These rules will also apply to Cluster Manager (CM) traffic in future releases.
 
 ### Network rules
 
-Network rules allow the following list of (protocol, port, service tags):
+Network rules allow the following list of protocol, port, and service tags.
 
-| Protocol | Port | Destination (Service Tag) |
+| Protocol | Port | Destination (service tag) |
 | -------- | ---- | ------------------------- |
 | TCP      | 443  | AzureActiveDirectory      |
 | TCP      | 443  | AzureTrafficManager       |
@@ -43,10 +44,9 @@ Network rules allow the following list of (protocol, port, service tags):
 | TCP      | 443  | AzureContainerRegistry    |
 | TCP      | 443  | AzureKubernetesService    |
 
-
 ### Application rules
 
-Application rules allow the following list of (protocol, port, FQDN) combinations:
+Application rules allow the following list of protocols, ports, and fully qualified domain name (FQDN) combinations.
 
 | Protocol | Port | FQDN                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 | -------- | ---- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -55,5 +55,5 @@ Application rules allow the following list of (protocol, port, FQDN) combination
 | HTTPS   | 123  | `time.windows.com`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 | HTTP   | 80   | `archive.ubuntu.com` <br> `*.mp.microsoft.com` <br> `www.msftconnecttest.com` <br> `ctldl.windowsupdate.com` <br> `crl3.digicert.com` <br> `ocsp.digicert.com` <br> `*.digicert.com` <br> `crl.microsoft.com`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 
->[!Note]
-> The `region` placeholder represents the actual Azure region name where the resource is deployed (for example: eastus, westeurope, centralindia, etc.).
+> [!NOTE]
+> The `region` placeholder represents the actual Azure region name where the resource is deployed. Some examples are eastus, westeurope, and centralindia.

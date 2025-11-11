@@ -1,6 +1,6 @@
 ---
 title: "Azure Operator Nexus Network Fabric - Secret Rotation v1"
-description: Learn about Password Rotation v1 process in Azure Operator Nexus – Network Fabric
+description: Learn about the password rotation v1 process in Azure Operator Nexus Network Fabric.
 author: RaghvendraMandawale
 ms.author: rmandawale
 ms.service: azure-operator-nexus
@@ -9,109 +9,112 @@ ms.date: 09/26/2025
 ms.custom: template-concept
 ---
 
-# Secret Rotation in Nexus Network Fabric
+# Secret rotation in Nexus Network Fabric
 
-NNF enables API-driven, fabric-scoped operator password rotation for NNF in release 9.2 and NNF GA API version **2025-07-15 f**or both GF and BF instances. It replaces manual, ticket-based flows with a predictable, automatable operation using Azure CLI. The rotation runs as a long-running Azure Resource Manager (ARM) action for reliability and transient fault tolerance at scale.
+Azure Operator Nexus Network Fabric enables API-driven, fabric-scoped operator password rotation for Nexus Network Fabric in release 9.2 and Nexus Network Fabric GA API version *2025-07-15 f* or both GF and BF instances. It replaces manual, ticket-based flows with a predictable, automatable operation by using the Azure CLI. The rotation runs as a long-running Azure Resource Manager action for reliability and transient fault tolerance at scale.
 
-When rotation is triggered, the service securely generates and updates operator credentials on Terminal Server (TS) and supported devices. Secrets are stored using Azure Key Vault secret versioning, allowing safe rollback and continuity during partial updates. Fabrics can temporarily operate in a split-key state until devices converge via resync. Deterministic outcomes are provided per device along with a fabric-level status.
+When rotation is triggered, the service securely generates and updates operator credentials on Terminal Server and supported devices. Secrets are stored by using Azure Key Vault secret versioning, which allows safe rollback and continuity during partial updates. Fabrics can temporarily operate in a split-key state until devices converge via resync. Deterministic outcomes are provided per device along with a fabric-level status.
 
 ## Capabilities
 
-- Fabric-scoped rotation in a single command. Password will be rotated for following users’ profiles. The target for this API is to include OpenGear Terminal Server when enabling at Fabric scope
+- Fabric-scoped rotation in a single command. The password is rotated for the following user profiles. The target for this API is to include Opengear Terminal Server when enabling at Fabric scope:
+
    * Admin
    * AzureOperatorRO
    * AzureOperatorRW
    * TelcoRO
    * TelcoRW
-   * TelcoRO1 to TelcoRO14 (depends upon feature flag also known as MethodDv1.5 feature req)
-   * TelcoRW1 and TelcoRW2 (depends upon feature flag also known as MethodDv1.5 feature req)
-   * TS password
-- Service will leverage the versioning capability of Azure Key Vault when multiple sets of passwords exist. Service uses the new secrets template to generate secrets.
-- Service will enable support to provide a deterministic status of the executed rotation. It will provide deterministic status: lastRotationTime, overall state, per-device success/failure lists, unique Password Set Count. The configured key vault will have the latest copy of password corresponding device users.
-- Service will provide targeted resync: device-scope resync operations (single device by Azure Resource Manager ID) to rotate the password for a specific device and also secure secret handling with Azure Key Vault secret versioning.
-- Service will continue to support split-key continuity supported until convergence.
+   * TelcoRO1 to TelcoRO14 (depends upon the feature flag also known as MethodDv1.5 feature req)
+   * TelcoRW1 and TelcoRW2 (depends upon the feature flag also known as MethodDv1.5 feature req)
+   * Terminal Server password
 
-## Limitations/Constraints
+- The service leverages the versioning capability of Azure Key Vault when multiple sets of passwords exist. The service uses the new secrets template to generate secrets.
+- The service enables support to provide a deterministic status of the executed rotation. It provides a deterministic status: lastRotationTime, overall state, per-device success/failure lists, unique Password Set Count. The configured key vault has the latest copy of the password corresponding device users.
+- The service provides targeted resync: device-scope resync operations (single device by Azure Resource Manager ID) to rotate the password for a specific device and also secure secret handling with Azure Key Vault secret versioning.
+- The service continues to support split-key continuity supported until convergence.
 
-**Password rotation API behavior**
+## Limitations/constraints
 
-- Password rotation via API will be blocked when Fabric is Administratively locked.
-- During Password rotation service will move fabric to maintenance mode and certain actions such as Commit, RMA, Device disablement will not be available. 
-- Passwords shall not be rotated for the specific device when the device is in an administrative state (disabled). This occurs during RMA, under maintenance, or in cases where the device is not provisioned. The user must enable the device via a post action to retry rotations
-- The service will move the fabric configuration state to successful once the rotation post action is completed. When there are failed devices, the status of rotation will show appropriate state(s). with details of failed device(s)
-- If password rotation failed on any device service will move to Device state Deferred control. Customer can use resync-passwords on specific device resource to retry password rotation on failed devices. User cannot perfrom RMA, disabling of devices in such scenario.
-- Previously, device passwords were stored in the NFC key vault under several different names. Only the following naming convention will be used for generating secrets (format aligned across Nexus).All older naming conventions will be retired post 9.2 for GF and BF once migrated via API rotation or new geneva action
-- . Secrets will be stored in NFC key Vault as before.  `<subscription ID>-<resource group name>-<fabric name>-<username>-devicePassword-<deterministic hash>` .  Example - # device password
-   00000000-0000-0000-0000-000000000000-exampleRG-exampleFabric-admin-devicePassword-4418bf71
+### Password rotation API behavior
 
-- Going forward, instead of relying on older naming conventions, user must rely on the new secretArchiveReference fields in the 2025-07-15 API to find device passwords in the key vault.
+- Password rotation via API is blocked when Fabric is administratively locked.
+- During password rotation, service moves fabric to maintenance mode and certain actions such as commit, RMA, and device disablement aren't available.
+- Passwords shall not be rotated for the specific device when the device is in an administrative state (disabled). This occurs during RMA, under maintenance, or in cases where the device isn't provisioned. You must enable the device via a post action to retry rotations.
+- The service moves the fabric configuration state to successful after the rotation post action is completed. When there are failed devices, the status of the rotation shows the appropriate states with details about the failed devices.
+- If password rotation failed on any device service moves to Device state Deferred control. You can use resync passwords on specific device resources to retry password rotation on failed devices. You can't perform RMA, disabling of devices in such a scenario.
+- Previously, device passwords were stored in the Network Fabric Controller key vault under several different names. Only the following naming convention is used for generating secrets (format is aligned across Nexus). All older naming conventions will be retired post 9.2 for GF and BF after migrated via API rotation or the new Geneva action.
+- Secrets are stored in the Network Fabric Controller key vault as before: `<subscription ID>-<resource group name>-<fabric name>-<username>-devicePassword-<deterministic hash>`. An example is # device password:
+   `00000000-0000-0000-0000-000000000000-exampleRG-exampleFabric-admin-devicePassword-4418bf71`.
 
-   For example, on a network device, to find the admin password, look for the secretArchiveReference in its secretRotationStatus.
-- “secretRotationStatus”: [
-   {
-       “lastRotationTime”: “2025-08-09T04:51:41.251Z”,
-       “synchronizationStatus”: “InSync”,
-       “secretArchiveReference”: {
-         “keyVaultUri”: “https://example-kv.vault.azure.net/secrets/example-secret-1/7e61b8efbcdd4e28963560dba3021df7”,
-         “keyVaultId”: “/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.KeyVault/vaults/example-kv”,
-         “secretName”: “example-secret-1”,
-         “secretVersion”: “7e61b8efbcdd4e28963560dba3021df7”
-       },
-       “secretType”: “Admin user password”
-     },
-- When the Bring Your Own Key Vault (BYOKV) feature becomes available, secrets will be copied to the customer’s Key Vault in the same format as shown above.
-- On Fabric resource delete all secrets pertaining to that Fabric will be purged from NFC Key Vault (similar to present day behavior)
-- Password rotation behavior with other common workflows
+- Instead of relying on older naming conventions, you must rely on the new `secretArchiveReference` fields in the 2025-07-15 API to find device passwords in the key vault.
 
-| **Scenario** | **User Action (Recommended)** | **Fabric State Updates** | **Device State Updates** | **Password / Certificate rotation Notes** |
-| --- | --- | --- | --- | --- |
-| Commit operation | 1\. User must perform password rotation only after commit batch is either successful or failed <br><br>&nbsp;<br><br>&nbsp; | 1\. Administrative state - Accepted <br><br>&nbsp; | NA  | Password rotation shall not be catered while fabric state is in accepted |
-| Upgrade | 1.User must perform password rotation or resync operation only after upgrade is successful | 1.Administrative state - Under maintenance | 1.Administrative state - Under maintenance | Password rotation shall not be catered while fabric is under upgrade or upgrade failure state |
-| Device Disabled (one or more devices) | 1.User must enable all devices before performing password rotation <br><br>&nbsp; | Administrative state -  Enabled | Administrative state -  Enabled/Deferred control (if Persist RW config exists) | 1.Password rotation is catered. |
-|     | 2.If Device enablement fails due to connectivity issue - User must perform reboot with ZTP and perform device enablement | Administrative state -  Enabled | Administrative state -  Disabled | Password will be catered to post enablement of the device |
+   For example, on a network device, to find the admin password, look for `secretArchiveReference` in `secretRotationStatus`:
 
-**Retry framework and Resync behavior**
+    ```
+     “secretRotationStatus”: [
+       {
+           “lastRotationTime”: “2025-08-09T04:51:41.251Z”,
+           “synchronizationStatus”: “InSync”,
+           “secretArchiveReference”: {
+             “keyVaultUri”: “https://example-kv.vault.azure.net/secrets/example-secret-1/7e61b8efbcdd4e28963560dba3021df7”,
+             “keyVaultId”: “/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourceGroups/example-rg/providers/Microsoft.KeyVault/vaults/example-kv”,
+             “secretName”: “example-secret-1”,
+             “secretVersion”: “7e61b8efbcdd4e28963560dba3021df7”
+           },
+           “secretType”: “Admin user password”
+         },
+    ```
+- When bring your own key vault becomes available, secrets are copied to your key vault in the same format, as shown in the preceding example.
+- On Fabric resource, the capability to delete all secrets that pertain to Fabric is purged from the Network Fabric Controller key vault (similar to present-day behavior).
+- Password rotation behavior with other common workflows:
 
-- Service has implicit retries built in case of failure but will also provide an API driven retry capabilities. Service also provides resync post action to rotate passwords of specific devices.
-- Rotation of passwords will be blocked when max set of unique passwords are present for a Fabric, and the user must rotate all devices via resync
-- Resync will not be initiated in below scenarios
+    | Scenario | User action (recommended) | Fabric state updates | Device state updates | Password/certificate rotation notes |
+    | --- | --- | --- | --- | --- |
+    | Commit operation | 1\. You must perform password rotation only after the commit batch was either successful or failed. <br><br>&nbsp;<br><br>&nbsp; | 1\. Administrative state: Accepted <br><br>&nbsp; | Not available  | Password rotation isn't catered while the fabric state is in the accepted state. |
+    | Upgrade | 1. You must perform password rotation or a resync operation only after the upgrade was successful. | 1. Administrative state: Under maintenance | 1. Administrative state: Under maintenance | Password rotation isn't catered while the fabric is under the upgrade or the upgrade failure state. |
+    | Device Disabled (one or more devices) | 1. You must enable all devices before you perform password rotation. <br><br>&nbsp; | Administrative state:  Enabled | Administrative state: Enabled/Deferred control (if Persist RW configuration exists) | 1. Password rotation is catered. |
+    |     | 2. If Device enablement fails because of a connectivity issue: You must perform reboot with zero touch provisioning (ZTP) and perform device enablement. | Administrative state: Enabled | Administrative state: Disabled | Password is catered to post enablement of the device. |
 
-| **Scenario** | **Fabric State** | **Device state** | **Comments** |
-| --- | --- | --- | --- |
-| Fabric Lock | Administrative state - Locked | NA  | State to be implemented, today fabric lock property shows the state of fabric lock |
-| Upgrade | Configuration state - Under Maintenance | Configuration state - Under maintenance | &nbsp; |
-| Device Disabled | Admin state - Enabled-Degraded | Admin state - Disabled | &nbsp; |
-| RMA | Admin state - Enabled-Degraded | Admin state - RMA | &nbsp; |
-| Commit | Configuration state- Accepted | NA  | &nbsp; |
+### Retry framework and resync behavior
 
-**Other scenarios**
+- The service has implicit retries built in case of failure, but it also provides API-driven retry capabilities. The service also provides resync post action to rotate the passwords of specific devices.
+- Rotation of passwords is blocked when the maximum set of unique passwords is present for a fabric. You must rotate all devices via resync.
+- Resync isn't initiated in the following scenarios:
 
-- Fabric upgrade will be blocked if all device passwords are not same.
-- Service behavior for RMA scenarios as below
+    | Scenario | Fabric state | Device state | Comments |
+    | --- | --- | --- | --- |
+    | Fabric Lock | Administrative state: Locked | Not available  | State to be implemented. The fabric lock property shows the state of the fabric lock. |
+    | Upgrade | Configuration state: Under maintenance | Configuration state: Under maintenance | &nbsp; |
+    | Device Disabled | Administrative state: Enabled-Degraded | Administrative state: Disabled | &nbsp; |
+    | RMA | Administrative state: Enabled-Degraded | Administrative state: RMA | &nbsp; |
+    | Commit | Configuration state: Accepted. | Not available  | &nbsp; |
 
-| &nbsp;**Scenario** | **User Action (Recommended)** | **Fabric State Updates** | **Device State Updates** | **Password / Certificate rotation Notes** |
-| --- | --- | --- | --- | --- |
-| Device is unreachable due to failure and unable to serve traffic | 1\. User must perform a POST action to mark Administrative State disabled for the specific device immediately | 1\. Administrative state - Enabled Degraded | 1\. Administrative state: Disabled | Password rotation shall not be catered when the device is disabled. Password rotation can happen via RMA flow which initiates ZTP and bootstrap |
-|     | 2.User must perform device serial number patch update and the POST action to mark Administrative State as RMA once replacement device is available | 2\. Administrative state - Enabled Degraded unless the RMA is complete, and all devices are in enabled state | 2\. Administrative state: RMA |     |
-| Device is flaky and has intermittent issues but able to serve traffic | 1\. User must perform the POST action to mark Administrative State Disabled whenever the device needs to stop serving traffic <br><br>&nbsp;<br><br>&nbsp; | 1\. Administrative state - Enabled Degraded | 1\. Administrative state: Disabled | Password rotation shall not be catered when device is disabled. Password rotation can happen via RMA flow which initiates ZTP and bootstrap |
-|     | 2.User must perform device serial number patch update and the POST action to mark Administrative State as RMA once replacement device is available | 2\. Administrative state - Enabled Degraded unless the RMA is complete, and all devices are in enabled state | 2\. Administrative state: RMA |     |
-| Device is flaky and has intermittent issues but unable to serve traffic | 1\. User must perform a POST action to mark administrative state disabled for the specific device immediately <br><br>&nbsp;<br><br>&nbsp; | 1\. Administrative state - Enabled Degraded | 1\. Administrative state: Disabled | Password rotation will not be catered when device is disabled. Password rotation can happen via RMA flow which initiates ZTP and bootstrap |
-|     | 2.User must perform device serial number patch update and the POST action to mark Administrative State as RMA once replacement device is available | 2\. Administrative state - Enabled Degraded unless the RMA is complete, and all devices are in enabled state | 2\. Administrative state: RMA |     |
-| Device is to be RMA in the future for known issues but serving traffic | 1\. User must perform the POST action to mark Administrative State Disabled whenever the device needs to stop serving traffic <br><br>&nbsp;<br><br>&nbsp; | 1\. Administrative state - Enabled Degraded | 1\. Administrative state: Disabled | Password rotation will not be catered when device is disabled. Password rotation can happen via RMA flow which initiates ZTP and bootstrap |
-| &nbsp; | &nbsp;2.User must perform device serial number patch update and the POST action to mark Administrative State as RMA once replacement device is available | &nbsp;2. Administrative state - Enabled Degraded unless the RMA is complete, and all devices are in enabled state | &nbsp;2. Administrative state: RMA | &nbsp; |
+### Other scenarios
 
-- **Geneva actions**- There are couple of Geneva actions available to handle migration of instances to use the latest secrets format
+- Fabric upgrade is blocked if all device passwords aren't the same.
+- Service behavior for RMA scenarios is described in the following table:
 
-| **Geneva action** | **Compatible API version** | **Lockboxed** | **Secrets format** | **Behaviour/Constraints** |
-| --- | --- | --- | --- | --- |
-| Old Geneva action | \--2024-06-15-preview and older versions ---GA version - 2025-07-15 | Yes | Old secrets format only | \--Rotates BF instances (built prior to 9.2) which use old secret format<br><br>\--Once instances are migrated to new secrets format via API rotation or new Geneva action, this Geneva action will not work & provide suitable error |
-| New Geneva action | \---GA version - 2025-07-15 | Yes | New secrets format only | \--Rotates all GF and BF (which currently have old and new format)<br><br>\--All new GF instances from 9.2 will be having new secrets format.<br><br>\-- Requires 2025-07-15 Azure Resource Manager API rolled out and API based password rotation enabled. |
+    | &nbsp;Scenario | User action (recommended) | Fabric state updates | Device state updates | Password/Certificate rotation notes |
+    | --- | --- | --- | --- | --- |
+    | Device is unreachable because of failure and is unable to serve traffic. | 1\. You must perform a POST action to mark Administrative state disabled for the specific device immediately. | 1\. Administrative state: Enabled Degraded. | 1\. Administrative state: Disabled | Password rotation shall not be catered when the device is disabled. Password rotation can happen via RMA flow which initiates ZTP and bootstrap. |
+    |     | 2. You must perform a device serial number patch update and the POST action to mark Administrative state as RMA after the replacement device is available. | 2\. Administrative state: Enabled Degraded unless the RMA is complete and all devices are in the enabled state. | 2\. Administrative state: RMA |     |
+    | Device is flaky and has intermittent issues, but it can serve traffic. | 1\. You must perform the POST action to mark Administrative State Disabled whenever the device needs to stop serving traffic <br><br>&nbsp;<br><br>&nbsp; | 1\. Administrative state: Enabled Degraded | 1\. Administrative state: Disabled | Password rotation shall not be catered when the device is disabled. Password rotation can happen via RMA flow, which initiates ZTP and bootstrap. |
+    |     | 2. You must perform a device serial number patch update and the POST action to mark the Administrative state as RMA after the replacement device is available. | 2\. Administrative state: Enabled Degraded unless the RMA is complete and all devices are in the enabled state. | 2\. Administrative state: RMA |     |
+    | Device is flaky and has intermittent issues but is unable to serve traffic. | 1\. You must perform a POST action to mark the Administrative state Disabled for the specific device immediately. <br><br>&nbsp;<br><br>&nbsp; | 1\. Administrative state: Enabled Degraded. | 1\. Administrative state: Disabled | Password rotation isn't catered when the device is disabled. Password rotation can happen via RMA flow, which initiates ZTP and bootstrap. |
+    |     | 2. You must perform a device serial number patch update and the POST action to mark the Administrative state as RMA after the replacement device is available. | 2\. Administrative state: Enabled Degraded unless the RMA is complete and all devices are in the enabled state. | 2\. Administrative state: RMA |     |
+    | Device is to be RMA in the future for known issues but serving traffic. | 1\. You must perform the POST action to mark the Administrative state Disabled whenever the device needs to stop serving traffic. <br><br>&nbsp;<br><br>&nbsp; | 1\. Administrative state: Enabled Degraded. | 1\. Administrative state: Disabled | Password rotation isn't catered when the device is disabled. Password rotation can happen via RMA flow, which initiates ZTP and bootstrap. |
+    | &nbsp; | &nbsp;2. You must perform a device serial number patch update and the POST action to mark the Administrative state as RMA after the replacement device is available. | &nbsp;2. Administrative state: Enabled Degraded unless the RMA is complete and all devices are in the enabled state. | &nbsp;2. Administrative state: RMA | &nbsp; |
+
+- A couple of *Geneva actions* are available to handle migration of instances to use the latest secrets format.
+
+    | Geneva action | Compatible API version | Lockboxed | Secrets format | Behavior/Constraints |
+    | --- | --- | --- | --- | --- |
+    | Old Geneva action | \--2024-06-15-preview and older versions ---GA version - 2025-07-15 | Yes | Old secrets format only | \--Rotates BF instances (built prior to 9.2), which use the old secret format.<br><br>\--After instances are migrated to the new secrets format via API rotation or the new Geneva action, this Geneva action doesn't work and provides a suitable error. |
+    | New Geneva action | \---GA version - 2025-07-15 | Yes | New secrets format only | \--Rotates all GF and BF (which currently have the old and new format).<br><br>\--All new GF instances from 9.2 have the new secrets format.<br><br>\--Requires 2025-07-15 Azure Resource Manager API rolled out, and API-based password rotation must be enabled. |
 
 > [!NOTE]
-> Greenfield 9.2 deployments are deployed using the new secrets template. This means it's not possible to rotate secrets on greenfield 9.2 deployments until 2025-07-15 API version is available.
+> Greenfield 9.2 is deployed by using the new secrets template. For this reason, it isn't possible to rotate secrets on Greenfield 9.2 deployments until the 2025-07-15 API version is available.
 
+## Related content
 
-
-## Next steps
-
-[How to use password rotation v1 in Azure Operator Nexus](./howto-use-password-rotation-v1.md)
+- [Use password rotation v1 in Azure Operator Nexus](./howto-use-password-rotation-v1.md)
