@@ -14,7 +14,9 @@ Azure Local is Microsoft’s distributed infrastructure solution that extends Az
 
 The solution offers a cloud-native management experience and supports deployments that are connected or disconnected from the cloud. It uses a broad partner ecosystem by providing a comprehensive catalog and prescriptive Bill of Materials (BOMs) across hardware solution categories.
 
-Azure Local includes all the familiar Azure management plane tooling via Azure portal, Azure CLI, and ARM templates to provision and manage resources. You can also onboard Azure services such as Azure Policy, Microsoft Defender for Cloud, Azure Monitor, and Copilot for Azure. Manage, govern, and secure your infrastructure and the workloads running on them from a single pane of glass. Azure Local is priced per physical core on your on-premises machines, plus any consumption-based charges for additional Azure services you use. All charges roll up to your existing Azure subscription.
+Azure Local includes all the familiar Azure management plane tooling via Azure portal, Azure CLI, and ARM templates to provision and manage resources. You can also onboard Azure services such as Azure Policy, Microsoft Defender for Cloud, Azure Monitor, and Copilot for Azure. Manage, govern, and secure your infrastructure and the workloads running on them from a single pane of glass.
+
+Azure Local is priced per physical core on your on-premises machines, plus any consumption-based charges for additional Azure services you use. All charges roll up to your existing Azure subscription.
 
 ## Key benefits of Azure Local
 
