@@ -16,7 +16,7 @@ This article explains how to preserve static IP addresses during virtual machine
 
 This article applies to migration of Hyper-V VMs (Preview) and VMware VMs.
 
-# For SDN Enabled Azure Local Environments
+## For SDN Enabled Azure Local Environments
 
 If your Azure Local environment is using [Software Defined Networking (SDN) enabled by Azure Arc on Azure Local](/azure/azure-local/concepts/sdn-overview), the static IP migration script package is not required. Instead, static IP addresses will automatically be preserved during migration when VMs with static IPs are assigned to static logical networks in the Replication Wizard.
 
@@ -27,11 +27,11 @@ See how to enable [SDN integration on Azure Local](/azure/azure-local/deploy/ena
 > - Ensure that Linux VMs have necessary DHCP client packages installed to support network configuration when using SDN.
 > - If migrating VMs with multiple static NICs, all NICs will get the default gateway. Ensure to remove the default gateway from secondary NICs to prevent asymmetric networking, packet loss, and unpredictable networking. See [SDN FAQ](/azure/azure-local/concepts/sdn-frequently-asked-questions#can-i-configure-static-network-interfaces-after-the-azure-local-vm-is-provisioned-on-an-azure-local-instance-with-sdn-enabled-by-azure-arc)
 
-# For Non-SDN Enabled Azure Local Environments
+## For Non-SDN Enabled Azure Local Environments
 
 If your Azure Local environment is not using Software Defined Networking (SDN), you can still maintain static IP addresses during migration by following the steps outlined in this article and using the provided static IP migration package.
 
-## About the static IP migration package
+### About the static IP migration package
 
 For Windows VMs, this article supports guest operating systems from Windows Server 2012 R2 and later. For Linux VMs, it supports Ubuntu, Red Hat Enterprise Linux, CentOS, and Debian distributions.
 
@@ -65,7 +65,7 @@ The following scripts are included for Linux:
 
 ---
 
-## Prerequisites
+### Prerequisites
 
 # [Windows](#tab/windows)
 
@@ -107,7 +107,7 @@ To migrate Linux VMs with static IPs from the source system (Hyper-V or VMware),
 
 ---
 
-## Set up IP migration
+### Set up IP migration
 
 Follow these steps to set up IP migration. The steps are different for Windows and Linux VMs.
 
