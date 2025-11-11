@@ -32,7 +32,7 @@ landingContent:
             url: index.yml
 
 # Card 
-  - title: Plan, deploy, and enable
+  - title: Plan and deploy
     linkLists:
       - linkListType: deploy
         links:
@@ -42,8 +42,6 @@ landingContent:
             url: index.yml
           - text: Deploy disconnected operations (preview)
             url: manage/disconnected-operations-deploy.md
-          - text: Enable Software Defined Networking
-            url: deploy/enable-sdn-integration.md
 
 # Card
   - title: Monitor
