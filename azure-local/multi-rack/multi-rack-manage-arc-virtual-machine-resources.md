@@ -33,7 +33,7 @@ After you create a VM, you might want to add a data disk to it.
 
 ### [Azure CLI](#tab/azurecli)
 
-To add a data disk, you first create a disk and then attach it to the VM. Run the following commands in the Azure CLI on the computer that you're using to connect to Azure Local.
+To add a data disk to a VM, complete the following steps using Azure CLI from the computer that you're using to connect to Azure Local.
 
 1. Create a data disk on a specified storage path:
 
@@ -41,10 +41,22 @@ To add a data disk, you first create a disk and then attach it to the VM. Run th
    az stack-hci-vm disk create --resource-group $resource_group --name $diskName --custom-location $customLocationID --location $location --size-gb 1
    ```
 
+1. Stop the VM:
+
+    ```azurecli
+    az stack-hci-vm stop --resource-group $resource_group --name $vmName
+    ```
+
 1. Attach the disk to the VM:
 
    ```azurecli
    az stack-hci-vm disk attach --resource-group $resource_group --vm-name $vmName --disks $diskName --yes
+   ```
+
+1. Start the VM:
+
+    ```azurecli
+   az stack-hci-vm start --resource-group $resource_group --name $vmName
    ```
 
 ### [Azure portal](#tab/azureportal)
@@ -109,6 +121,41 @@ Here's a sample output that indicates successful resizing of the data disk:
 ```
 
 ## Delete a data disk
+
+When deleting a data disk, you'll get a notification that the job for disk deletion has started. After the disk is deleted, the list refreshes to display the remaining data disks.
+
+> [!NOTE]
+> You must turn off your VM before adding or deleting a data disk. Once it is updated, you need to restart your VM.
+
+### [Azure CLI](#tab/azurecli)
+
+To delete a data disk from a VM, complete the following steps using Azure CLI from the computer that you're using to connect to Azure Local.
+
+1. Stop the VM:
+
+    ```azurecli
+    az stack-hci-vm stop --resource-group $resource_group --name $vmName
+    ```
+ 
+1. Detach disk from the VM:
+
+    ```azurecli
+    az stack-hci-vm disk detach --resource-group $resource_group --vm-name $vmName --name $diskName
+    ```
+ 
+1. Start the VM:
+
+   ```azurecli
+    az stack-hci-vm start --resource-group $resource_group --name $vmName
+   ```
+ 
+4. Delete the disk (optional):
+
+    ```azurecli
+    az stack-hci-vm disk delete--resource-group $resource_group --vm-name $vmName --name $diskName
+    ```
+
+### [Azure portal](#tab/azureportal)
 
 Follow these steps in the Azure portal for your Azure Local instance:
 
