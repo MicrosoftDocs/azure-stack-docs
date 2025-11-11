@@ -24,7 +24,7 @@ Administrators can manage Azure Local VMs enabled by Azure Arc on their Azure Lo
 ## Benefits of Azure Local VM management
 
 - Role-based access control (RBAC) via built-in Azure Local roles enhances security by ensuring that only authorized users can perform VM management operations. For more information, see [Use role-based access control to manage Azure Local virtual machines](../index.yml)<!--update link-->.
-- Azure Local VM management provides the ability to deploy with Resource Manager templates. <!--Open comment present in the starter doc regarding Bicep and Terraform. Removed them for now.-->.
+- Azure Local VM management provides the ability to deploy with Azure Resource Manager and Bicep templates. <!--Open comment present in the starter doc regarding Bicep and Terraform. Removed them for now.-->.
 - The Azure portal acts as a single pane of glass to manage VMs on Azure Local and Azure VMs. With Azure Local VM management, you can perform various operations from the Azure portal or the Azure CLI, including:
 
   - Create, manage, update, and delete VMs. For more information, see [Create Azure Local VMs enabled by Azure Arc](../index.yml).
@@ -36,17 +36,23 @@ Administrators can manage Azure Local VMs enabled by Azure Arc on their Azure Lo
 
 Consider the following limitations when you're managing VMs on Azure Local:
 
-<!--Open comment present in the starter doc about the following bullet.-->
+
 - Moving a resource group isn't supported for VMs on Azure Local and its associated resources (such as network interfaces and disks).
 
 - Azure Local VMs only support IPv4 addresses. IPv6 addresses aren't supported.
 
 - Once a logical network is created, you can't update the following:
-   - Default gateway
-  - IP pools
-  - IP address space
-  - VLAN ID
-  - Fabric network (defines the underlying Layer 3 connectivity)
+   - Default gateway.
+  - IP pools.
+  - IP address space.
+  - VLAN ID.
+  - Fabric network (defines the underlying Layer 3 connectivity).
+  
+- Guest management cannot be enabled after VM creation.
+- You can't add or remove network interfaces after VM creation. Make sure to create all the required network interfaces during VM creation.
+- You can't update VM size on a running VM. To update VM size (CPU or memory), first turn off the VM. Apply the change and then restart the VM.
+- You can't add or remove data disks from a running VM. To add or remove data disks from a VM, first turn off the VM. Apply the change, and then restart the VM.
+- Terraform is not supported for VM and VM resource deployment.
 
 <!--## Components of Azure Local VM management
 
