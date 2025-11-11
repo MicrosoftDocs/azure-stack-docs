@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
 ms.custom: linux-related-content
-ms.date: 11/06/2025
+ms.date: 11/11/2025
 ---
 
 # What is Azure Local VM management for multi-rack deployments?
@@ -46,18 +46,18 @@ Consider the following limitations when you're managing VMs on Azure Local:
   - IP pools
   - IP address space
   - VLAN ID
-  - Fabric network (defines the underlying L3 connectivity)
+  - Fabric network (defines the underlying Layer 3 connectivity)
 
-## Components of Azure Local VM management
+<!--## Components of Azure Local VM management
 
 Azure Local VM management has several components, including:
 
 - **Custom location**: A custom location is created automatically when you deploy Azure Local. You can use this custom location to deploy Azure services. You can also deploy VMs in these user-defined custom locations, to integrate your on-premises setup more closely with Azure.
 
-<!--Open comment present in the starter doc about the following bullet.-->
+
 - **Kubernetes extension for VM operators**: The VM operator is the on-premises counterpart of the Azure Resource Manager resource provider. It's a Kubernetes controller that uses custom resources to manage your VMs.
 
-By integrating these components, Azure Arc offers a unified and efficient VM management solution that bridges the gap between on-premises and cloud infrastructures.
+By integrating these components, Azure Arc offers a unified and efficient VM management solution that bridges the gap between on-premises and cloud infrastructures.-->
 
 ## Azure Local VM management workflow
 
@@ -68,7 +68,7 @@ In this release, the Azure Local VM management workflow is as follows:
 1. You create VM resources such as:
     1. VM images, starting with an image in an [Azure Storage account](../index.yml)<!--update link-->. These images are then used with other VM resources to create VMs.
     1. [Logical networks](../index.yml)<!--update link--> or virtual networks.  
-    1. [VM network interfaces](../index.yml)<!--update link-->.
+    1. [Network interfaces](../index.yml)<!--update link-->.
 1. You use the VM resources to [create VMs](../index.yml)<!--update link-->.
 
 To troubleshoot problems with your VMs or to learn about known issues and limitations, see [Troubleshoot Azure Local VM management](../index.yml)<!--update link-->.
