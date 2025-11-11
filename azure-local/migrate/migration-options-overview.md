@@ -16,10 +16,12 @@ ms.reviewer: alkohli
 
 This article provides an overview of the options available for migrating virtual machine (VM) workloads to your Azure Local instance.
 
-
 ## Migration options
 
 To migrate VM workloads and their data to your Azure Local instance, several options are available. These options are classified either as first-party or third-party. Select the option that best suits your current infrastructure and migration goals.
+
+> [!NOTE]
+> Azure Local rack aware clusters aren't supported with External SAN storage for hyperconverged deployments.
 
 ## First-party migration options
 
