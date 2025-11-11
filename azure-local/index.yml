@@ -10,7 +10,7 @@ metadata:
   ms.topic: landing-page
   author: ronmiab
   ms.author: robess
-  ms.date: 11/07/2025
+  ms.date: 11/11/2025
 
 # linkListType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | sample | tutorial | video | whats-new
 
@@ -26,10 +26,10 @@ landingContent:
             url: overview.md
           - text: Multi-rack deployments (preview)
             url: multi-rack/multi-rack-overview.md
-          - text: Microsoft 365 on Local
-            url: index.yml
           - text: Disconnected operations (preview)
             url: manage/disconnected-operations-overview.md
+          - text: Microsoft 365 on Local
+            url: index.yml
 
 # Card 
   - title: Plan, deploy, and enable
@@ -39,8 +39,6 @@ landingContent:
           - text: Deploy hyperconverged deployments
             url: deploy/deploy-via-portal.md
           - text: Plan multi-rack (preview)
-            url: index.yml
-          - text: Deploy Microsoft 365
             url: index.yml
           - text: Deploy disconnected operations (preview)
             url: manage/disconnected-operations-deploy.md
@@ -78,7 +76,7 @@ landingContent:
             url: manage/get-remote-support.md
 
     # Card
-  - title: Concepts
+  - title: Security
     linkLists:
       - linkListType: concept
         links:
@@ -86,10 +84,6 @@ landingContent:
             url: concepts/security-features.md
           - text: Security for disconnected operations (preview)
             url: manage/disconnected-operations-security.md
-          - text: Security for multi-rack deployments (preview)
-            url: index.yml
-          - text: Observability
-            url: concepts/observability.md
 
   # Card
   - title: Try it out
