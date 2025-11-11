@@ -12,14 +12,12 @@ ms.date: 11/10/2025
 
 [!INCLUDE [multi-rack-applies-to-preview](../includes/multi-rack-applies-to-preview.md)]
 
-This article describes how to create Azure Local VMs for multi-rack deployments using source images from the Azure Storage account. You can create VM images using the Azure portal or Azure CLI and then use these images to create Azure Local VMs.
+This article describes how to create Azure Local VMs for multi-rack deployments using source images from the Azure Storage account. You can create VM images using Azure CLI and then use these images to create Azure Local VMs.
 
 
 ## Prerequisites
 
-Before you begin, make sure that the following prerequisites are completed.
-
-For custom images in Azure Storage account, you have the following extra prerequisites:
+For custom images in the Azure Storage account,make sure that the following prerequisites are met:
 
 - You should have a VHD loaded in your Azure Storage account. For more information, see [Upload a VHD image in your Azure Storage account](/azure/databox-online/azure-stack-edge-gpu-create-virtual-machine-image#copy-vhd-to-storage-account-using-azcopy). 
 
@@ -27,12 +25,12 @@ For custom images in Azure Storage account, you have the following extra prerequ
 
 - The VHDX image must be prepared using `sysprep /generalize /shutdown /oobe`. For more information, see [Sysprep command-line options](/windows-hardware/manufacture/desktop/sysprep-command-line-options#oobe&preserve-view=true). This is true for both Windows and Linux VM images.
 
-- For Linux VM image:
+- For Linux VM images:
 
     - To allow for initial configuration and customization during VM provisioning, you need to ensure that the image contains `cloud init with nocloud` datasource.
 
     - You need to configure the bootloader, kernel, and init system in your image to enable both serial connectivity and text-based console. Use both `GRUB_TERMINAL="console serial"` and kernel cmdline settings. This configuration is required to enable serial access for troubleshooting deployment issues and console support for your VM after deployment. Make sure the serial port settings on your system and terminal match to establish proper communication.
-- For Windows VM image, install **VirtIO** drivers in the image to ensure proper detection of virtual storage and network devices during VM deployment. 
+- For Windows VM images, install **VirtIO** drivers in the image to ensure proper detection of virtual storage and network devices during VM deployment. 
 
 - If using a client to connect to your Azure Local instance, see [Connect to Azure Local via Azure CLI client](../manage/azure-arc-vm-management-prerequisites.md#azure-command-line-interface-cli-requirements).
 
@@ -40,7 +38,7 @@ For custom images in Azure Storage account, you have the following extra prerequ
 
 ## Add VM image from Azure Storage account
 
-You create a VM image starting from an image in Azure Storage account and then use this image to deploy VMs on your Azure Local max.
+You create a VM image starting from an image in Azure Storage account and then use this image to deploy VMs on your Azure Local instance.
 
 Follow these steps to create a VM image using the Azure CLI.
 
@@ -62,12 +60,13 @@ Follow these steps to create a VM image using the Azure CLI.
 
 ### Set some parameters
 
-1. Set your subscription, resource group, location, path to the image in local share, and OS type for the image. Replace the parameters in `< >` with the appropriate values.
+1. Set your subscription, resource group, location, SAS URL for the image in the storage account, and OS type for the image. Replace the parameters in `< >` with the appropriate values.
 
 ```azurecli
 $subscription = "<Subscription ID>"
 $resource_group = "<Resource group>"
 $location = "<Location for your Azure Local>"
+$customLocation = "<Custom or extended location of your Azure Local instance>"
 $osType = "<OS of source image>"
 $imageName = "<VM image name>"
 $imageSourcePath = '"<Blob SAS URL path to the source image in the storage account>"'
@@ -100,7 +99,7 @@ PS C:\Users\azcli> $imageSourcePath = '"https://vmimagevhdsa1.blob.core.windows.
 
 ### Create VM image from image in Azure Storage account
 
-1. Select a custom location to deploy your VM image. The custom location should correspond to the custom location for your Azure Local. Get the custom location ID for your Azure Local. Run the following command:
+1. Select a custom location to deploy your VM image. The custom location should correspond to the custom location for your Azure Local. Get the custom location ID for your Azure Local from the Azure Local **Overview** page on Azure Portal or run the following command:
 
     ```azurecli
     $customLocationID=(az customlocation show --resource-group $resource_group --name "<custom location name for your Azure Local>" --query id -o tsv)
@@ -108,7 +107,7 @@ PS C:\Users\azcli> $imageSourcePath = '"https://vmimagevhdsa1.blob.core.windows.
 1. Create the VM image from an image in the storage account:
 
     ```azurecli
-    az stack-hci-vm image create --subscription $subscription --resource-group $resource_Group --custom-location $customLocationID --location $location --name $imageName --os-type $osType --image-path $imageSourcePath
+    az stack-hci-vm image create --subscription $subscription --resource-group $resource_group --custom-location $customLocationID --location $location --name $imageName --os-type $osType --image-path $imageSourcePath
     ```
     A deployment job starts for the VM image. 
 
@@ -166,7 +165,7 @@ PS C:\Users\azcli>
 
 You need to view the list of VM images to choose an image to manage.
 
-Follow these steps to list VM image using Azure CLI.
+Follow these steps to list VM images using Azure CLI.
 
 1. Run PowerShell as an administrator.
 1. Set some parameters.
