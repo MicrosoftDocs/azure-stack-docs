@@ -728,7 +728,7 @@ items:
   - name: Overview
     items:
     - name: About multi-rack deployments
-      href: ./overview.md 
+      href: ./multi-rack/multi-rack-overview.md
 
   - name: Deploy
     items:
