@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 11/07/2025
+ms.date: 11/12/2025
 ---
 
 # Manage resources for Azure Local VMs for multi-rack deployments (Preview)
@@ -89,11 +89,11 @@ Follow these steps in the Azure portal for your Azure Local instance:
 
 You can expand an existing data disk to your desired size using Azure CLI.
 
->[!NOTE]
+> [!NOTE]
+> - The size you're changing the data disk to can't be the same or less than the original size of the data disk.
 >
->- The size you're changing the data disk to can't be the same or less than the original size of the data disk.
->- The maximum size the disk can expand to depends on the storage capacity of the cluster. Disk size maximum is 20 TB.
-
+> - The maximum size the disk can expand to depends on the storage capacity of the cluster. Disk size maximum is 20 TB.
+>
 To expand the size of your data disk using Azure CLI, run the following command:
 
 ```azurecli
@@ -177,42 +177,6 @@ Follow these steps in the Azure portal for your Azure Local instance:
 
 1. You get a notification that the job for disk deletion started. After the disk is deleted, the list refreshes to display the remaining data disks.
 
-
-
-<!-- >::: moniker range=">=azloc-2508"
-
-## Manage DNS server configuration for logical networks (preview)
-
-### Key considerations
-
-Before you update the DNS server configuration for a logical network, be aware of the following caveats:
-
-- This feature is in preview and shouldn't be used on production logical networks.
-- The updated DNS server configuration only applies to new Azure Local VMs created on the logical network after the update. For all the existing Azure Local VMs, manually update the DNS server entries within the VM.
-- You can't update the DNS server of a logical network that has an AKS cluster deployed.
-- The infrastructure logical network (enveloping the 6 management IP address range provided during deployment) and Arc resource bridge DNS server updates are not supported.
-
-### Update DNS server configuration
-
-> [!IMPORTANT]
-> Make sure to enter all the relevant DNS server IP entries in your `update` command and not just the entry you want to change. Running a DNS server `update` command replaces the existing configuration.
-
-Follow these steps to manage DNS server configuration for logical networks.
-
-#### Set parameters
-
-```PowerShell
-$logicalNetwork = "your-logical-network"
-$resourceGroup = "your-resource-group"
-$dnsServers = "IP-address1", "IP-address2"
-```
-
-#### Update DNS server configuration
-
-```azure cli
-az stack-hci-vm network lnet update --name $logicalNetwork --resource-group $resourceGroup --dns-servers $dnsServers
-```
-::: moniker-end -->
 
 ## Related content
 
