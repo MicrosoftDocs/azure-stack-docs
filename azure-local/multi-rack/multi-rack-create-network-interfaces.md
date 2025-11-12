@@ -13,7 +13,7 @@ ms.date: 11/12/2025
 
 [!INCLUDE [multi-rack-applies-to-preview](../includes/multi-rack-applies-to-preview.md)]
 
-This article describes how to create network interfaces that you can associate with an Azure Local VM for multi-rack deployments. You can create network interfaces using the Azure portal or Azure Command-Line Interface (CLI). 
+This article describes how to create network interfaces that you can associate with an Azure Local virtual machine (VM) for multi-rack deployments. You can create network interfaces using the Azure portal or Azure Command-Line Interface (CLI). 
 
 
 ## About network interfaces
