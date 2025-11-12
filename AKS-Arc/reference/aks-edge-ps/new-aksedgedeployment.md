@@ -1,10 +1,10 @@
 ---
 title: New-AksEdgeDeployment for AKS Edge
-author: rcheeran
+author: sethmanheim
 description: The New-AksEdgeDeployment PowerShell command creates a new AksEdge deployment 
 ms.topic: reference
 ms.date: 10/04/2022
-ms.author: rcheeran 
+ms.author: sethm 
 ms.lastreviewed: 10/04/2022
 #ms.reviewer: jeguan
 

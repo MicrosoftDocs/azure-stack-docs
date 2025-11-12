@@ -36,6 +36,27 @@ Click on a vendor tab to see validated switches for each of the Azure Local traf
 > We update these lists as we're informed of changes by network switch vendors.
 
 If your switch isn't included, contact your switch vendor to ensure that your switch model and the version of the switch's operating system supports the requirements in the next section.
+# [Alcatel-Lucent](#tab/Alcatel-Lucent)
+
+### 24H2
+
+|Model |Firmware|Management |Storage |Compute (Standard)|Compute (SDN)|
+|-----  |---| :-:  | :-:  | :-:   | :-:   |
+| [OmniSwitch 6200](https://www.al-enterprise.com/-/media/assets/internet/documents/omniswitch-6900-datasheet-en.pdf) <br>(10, 25, 100, 400 GbE)|AOS version 8.10R4 or later|&check;| &check;| &check;| &check; |
+| [OmniSwitch 6290](https://www.al-enterprise.com/-/media/assets/internet/documents/omniswitch-6900-datasheet-en.pdf) <br>(10, 25, 100, 400 GbE)|AOS version 8.10R4 or later|&check;| &check;| &check;| &check; |
+
+> [!NOTE]
+> Guest RDMA requires both Compute (Standard) and Storage.
+
+### 23H2
+
+|Model |Firmware|Management |Storage |Compute (Standard)|Compute (SDN)|
+|-----  |---| :-:  | :-:  | :-:   | :-:   |
+| [OmniSwitch 6200](https://www.al-enterprise.com/-/media/assets/internet/documents/omniswitch-6900-datasheet-en.pdf) <br>(10, 25, 100, 400 GbE)|AOS version 8.10R4 or later|&check;| &check;| &check;| &check; |
+| [OmniSwitch 6290](https://www.al-enterprise.com/-/media/assets/internet/documents/omniswitch-6900-datasheet-en.pdf) <br>(10, 25, 100, 400 GbE)|AOS version 8.10R4 or later|&check;| &check;| &check;| &check; |
+
+> [!NOTE]
+> Guest RDMA requires both Compute (Standard) and Storage.
 
 # [Arista](#tab/Arista)
 

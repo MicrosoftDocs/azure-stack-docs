@@ -1,8 +1,8 @@
 ---
 title: Azure IoT Operations with AKS Edge Essentials
 description: Learn how to run the quickstart script that creates an Arc-enabled AKS Edge Essentials Kubernetes cluster that can run Azure IoT Operations.
-author: rcheeran
-ms.author: rcheeran
+author: sethmanheim
+ms.author: sethm
 ms.topic: how-to
 ms.date: 09/25/2025
 ms.custom: template-how-to

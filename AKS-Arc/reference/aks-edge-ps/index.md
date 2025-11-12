@@ -1,8 +1,8 @@
 ---
 title: AKS Edge Essentials PowerShell commands
 description: PowerShell cmdlets for AKS Edge Essentials 
-author: rcheeran
-ms.author: rcheeran
+author: sethmanheim
+ms.author: sethm
 ms.topic: reference
 ms.date: 08/11/2025
 ---

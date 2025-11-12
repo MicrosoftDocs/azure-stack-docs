@@ -1,10 +1,10 @@
 ---
 title: Test-AksEdgeArcConnection for AKS Edge
-author: rcheeran
+author: sethmanheim
 description: The Test-AksEdgeArcConnection PowerShell command checks whether the cluster is Azure Arc-connected.
 ms.topic: reference
 ms.date: 02/04/2023
-ms.author: rcheeran 
+ms.author: sethm 
 ms.lastreviewed: 10/04/2022
 #ms.reviewer: jeguan
 

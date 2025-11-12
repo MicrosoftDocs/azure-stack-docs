@@ -2,9 +2,9 @@
 title: Upgrade the Windows Server version on your node pools
 description: Learn how to upgrade the Windows Server version on your node pools in AKS enabled by Azure Arc.
 ms.topic: how-to
-author: rcheeran
+author: sethmanheim
 ms.date: 09/25/2025
-ms.author: rcheeran 
+ms.author: sethm 
 ms.lastreviewed: 09/24/2025
 ms.reviewer: sethm
 
