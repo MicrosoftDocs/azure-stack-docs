@@ -760,7 +760,8 @@ items:
     items:
       - name: Compute for multi-rack deployments
         href: ./overview.md 
-
+      - name: Azure Local VMs for multi-rack deployments
+        href: ./multi-rack/multi-rack-azure-arc-vm-management-overview.md
   - name: Reference
     items:
       - name: Azure Local multi-rack CLI reference
