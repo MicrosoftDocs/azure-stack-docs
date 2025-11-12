@@ -50,6 +50,8 @@ The following diagram illustrates the architecture and the capabilities of Azure
 
 :::image type="content" source="media/hyperconverged-overview/azure-local-hyperconverged-solution-reference-architecture.png" alt-text="The architecture diagram of the Azure Local solution." lightbox="media/hyperconverged-overview/azure-local-hyperconverged-solution-reference-architecture.png":::
 
+[!INCLUDE [important](../includes/azure-local-jumpstart-gems.md)]
+
 See [What's new in hyperconverged deployments of Azure Local?](../whats-new.md) for details on the latest enhancements.
 
 ## Benefits
