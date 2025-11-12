@@ -18,7 +18,7 @@ This article provides an overview of how to migrate Hyper-V virtual machines (VM
 Azure Migrate is a central hub for tools to discover, assess, and migrate on-premises servers, apps, and data to the Microsoft Azure cloud. Azure Local is a hyperconverged infrastructure (HCI) system solution that hosts virtualized Windows and Linux workloads in a hybrid environment. You can use the Azure Migrate platform to move on-premises Hyper-V VMs to your Azure Local instance.
 
 > [!NOTE]
-> Azure Local rack aware cluster aren't supported with External Storage Area Network (SAN).
+> Azure migrate isn't supported with External Storage Area Network (SAN).
 
 For more information on the Azure Migrate platform, see [About Azure Migrate](/azure/migrate/migrate-services-overview).
 
