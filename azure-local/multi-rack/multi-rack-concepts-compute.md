@@ -80,12 +80,12 @@ The following properties reflect the operational state of a BMM:
 - **Cordon BareMetal Machine**: Prevent scheduling of workloads on the specified BMM's Kubernetes node. Optionally, allow for evacuation of the workloads from the node.
 - **Uncordon BareMetal Machine**: Allow scheduling of workloads on the specified BMM's Kubernetes node.
 - **BareMetalMachine Validate**: Trigger hardware validation of a BMM.
-- **BareMetalMachine Run**: Allow the customer to run a script specified directly in the input on the targeted BMM.
-- **BareMetalMachine Run Data Extract**: Allow the customer to run one or more data extractions against a BMM.
-- **BareMetalMachine Run Read-only**: Allow the customer to run one or more read-only commands against a BMM.
+- **BareMetalMachine Run**: Allows you to run a script specified directly in the input on the targeted BMM.
+- **BareMetalMachine Run Data Extract**: Allows you to run one or more data extractions against a BMM.
+- **BareMetalMachine Run Read-only**: Allows you to run one or more read-only commands against a BMM.
 
 > [!NOTE]
-> Customers can't create or delete BMMs directly. These machines are created only as the realization of the cluster lifecycle. Implementation blocks creation or deletion requests from any user, and it allows only internal/application-driven creation or deletion operations.
+> You can't create or delete BMMs directly. These machines are created only as the realization of the Azure Local cluster lifecycle. Implementation blocks creation or deletion requests from any user, and it allows only internal/application-driven creation or deletion operations.
 
 ## FAQ
 
@@ -93,7 +93,7 @@ This section answers common questions about BMM roles.
 
 ### How do machine roles work?
 
-Kubernetes labels are applied to BMM resources during the cluster deployment. The `machineRoles` property is derived from the Kubernetes labels applied to the BMM resource.
+Kubernetes labels are applied to BMM resources during the Azure multi-rack cluster deployment. The `machineRoles` property is derived from the Kubernetes labels applied to the BMM resource.
 
 ### How to determine the BareMetal Machine role?
 
