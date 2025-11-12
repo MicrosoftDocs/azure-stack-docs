@@ -1,18 +1,18 @@
 ---
-title: Connect to an Azure Local virtual machine (VM) using SSH on for multi-rack deployments (Preview)
+title: Connect to an Azure Local virtual machine (VM) via SSH for multi-rack deployments (Preview)
 description: Learn how to use SSH to connect to an Azure Local VM for multi-rack deployments (Preview).
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 11/07/2025
+ms.date: 11/12/2025
 ---
 
-# Connect to an Azure Local VM using SSH and RDP over SSH for multi-rack deployments (Preview)
+# Connect to an Azure Local VM via SSH for multi-rack deployments (Preview)
 
 [!INCLUDE [multi-rack-applies-to-preview](../includes/multi-rack-applies-to-preview.md)]
 
-This article provides an example to connect to an Azure Local VM using Secure Shell (SSH) and Remote Desktop (RDP) over SSH for multi-rack deployments. The example shown demonstrates enabling the OpenSSH Server via the Arc extension using Azure portal and Azure CLI.
+This article describes how to connect to an Azure Local virtual machine (VM) using Secure Shell (SSH) and Remote Desktop (RDP) over SSH for multi-rack deployments. The example shown demonstrates enabling the OpenSSH Server via the Azure Arc extension using Azure portal and Azure CLI.
 
 ## About SSH Server extension
 
@@ -101,14 +101,14 @@ Before you begin, ensure that you:
    PS C:\Users\labadmin>
    ```
 
-   f. You can see `WindowsOpenSSH` Extension in the Azure portal Extensions list view.
+   f. You can see the **WindowsOpenSSH** extension in the Azure portal Extensions list view.
 
       :::image type="content" source="./media/multi-rack-connect-arc-vm-using-ssh/azure-portal-extensions-list-view-3.png" alt-text="Screenshot of Azure portal Extensions list view." lightbox="./media/multi-rack-connect-arc-vm-using-ssh/azure-portal-extensions-list-view-3.png":::
 
 ## Use SSH to connect to an Azure Local VM
 
 > [!NOTE]
-> You may be asked to allow Arc SSH to set up port 22 for SSH.
+> You may be asked to allow Azure Arc SSH to set up port 22 for SSH.
 
 Use the following steps to connect to Azure Local.
 
