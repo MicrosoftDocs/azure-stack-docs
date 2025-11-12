@@ -4,7 +4,7 @@ description: Learn how to prepare GPUs for an Azure Local instance.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 11/07/2025
+ms.date: 11/11/2025
 ms.service: azure-local
 ---
 
@@ -117,7 +117,7 @@ For DDA, when you uninstall the host driver or have a new Azure Local setup, the
 ```powershell
 $id1 = "GPU_instance_ID"
 Disable-PnpDevice -InstanceId $id1 -Confirm:$false
-Dismount-VMHostAssignableDevice -ClusterPath $id1 -Force
+Dismount-VMHostAssignableDevice -InstancePath $id1 -Force
 ```
 
 Confirm the GPUs were correctly dismounted from the host machine. The GPUs is now in an `Unknown` state:
