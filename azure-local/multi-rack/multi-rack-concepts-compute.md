@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.service: azure-local
 ms.topic: conceptual
-ms.date: 11/11/2025
+ms.date: 11/12/2025
 ms.custom: conceptual
 ---
 
@@ -21,9 +21,9 @@ This article provides an overview of compute resources for multi-rack deployment
 
 Azure Local for multi-rack deployments is built on basic constructs like compute servers, storage appliances, and network devices. These compute servers, also called bare-metal machines (BMMs), represent the physical machines on the compute rack. They run the Azure Linux operating system and provide closed integration support for high-performance workloads.
 
-These BMMs are deployed as part of the Azure Local automation suite. They exist as nodes in a Kubernetes cluster to serve various virtualized and containerized workloads in the ecosystem.
+These BMMs are deployed as part of the Azure Local automation suite. They exist as nodes in the infrastructure Kubernetes cluster to serve various virtualized and containerized workloads in the multi-rack cluster.
 
-Each BMM in your instance is represented as an Azure resource. Users can perform various operations to manage the BMM's lifecycle like any other Azure resource.
+Each BMM in your cluster is represented as an Azure resource. Users can perform various operations to manage the BMM's lifecycle like any other Azure resource.
 
 
 ## Key capabilities of compute for multi-rack deployments
@@ -46,7 +46,7 @@ The following properties reflect the operational state of a BMM:
 
 - `Power State` indicates the state as derived from a baseboard management controller (BMC). The state can be either `On` or `Off`.
 
-- `Ready State` provides an overall assessment of BMM readiness. It looks at a combination of `Detailed Status`, `Power State`, and the provisioning state of the resource to determine whether the BMM is ready or not. When `Ready State` is `True`, the BMM is turned on, `Detailed Status` is `Provisioned`, and the node that represents the BMM has successfully joined the infrastructure Kubernetes cluster (also referred to as the **Undercloud** cluster). If any of those conditions aren't met, `Ready State` is set to `False`.
+- `Ready State` provides an overall assessment of BMM readiness. It looks at a combination of `Detailed Status`, `Power State`, and the provisioning state of the resource to determine whether the BMM is ready or not. When `Ready State` is `True`, the BMM is turned on, `Detailed Status` is `Provisioned`, and the node that represents the BMM has successfully joined the infrastructure Kubernetes cluster. If any of those conditions aren't met, `Ready State` is set to `False`.
 
 - `Cordon State` reflects the ability to run any workloads on a machine. Valid values are `Cordoned` and `Uncordoned`. `Cordoned` seizes creation of any new workloads on the machine. `Uncordoned` ensures that workloads can now run on this BMM.
 
@@ -62,9 +62,9 @@ The following properties reflect the operational state of a BMM:
 
 - `MachineRoles` helps identify the roles that the BMM fulfills in the cluster. The following roles are assigned to BMM resources:
 
-  - `Control plane`: The BMM runs the Kubernetes control plane agents for infrastructure cluster.
+  - `Control plane`: The BMM runs the Kubernetes control plane agents for the infrastructure cluster.
   - `Management plane`: The BMM runs the platform software including controllers and extensions.
-  - `Compute plane`: The BMM responsible for running actual tenant workloads including Virtual Machines.
+  - `Compute plane`: The BMM responsible for running workloads including Virtual Machines.
   
   For frequently asked questions about BMM roles, see the [FAQ](#faq) section.
 
@@ -73,7 +73,7 @@ The following properties reflect the operational state of a BMM:
 - **Update/Patch BareMetal Machine**: Update the BMM resource properties.
 - **List/Show BareMetal Machine**: Retrieve BMM information.
 - **Reimage BareMetal Machine**: Reprovision a BMM that matches the image version that's used across the cluster.
-- **Replace BareMetal Machine**: Replace a BMM as part of an effort to service the machine.
+- **Replace BareMetal Machine**: Replace a BMM for servicing the machine.
 - **Restart BareMetal Machine**: Restart a BMM.
 - **Power Off BareMetal Machine**: Turn off a BMM.
 - **Start BareMetal Machine**: Turn on a BMM.
@@ -93,11 +93,11 @@ This section answers common questions about BMM roles.
 
 ### How do machine roles work?
 
-Kubernetes labels are applied to BMM resources during the Azure multi-rack cluster deployment. The `machineRoles` property is derived from the Kubernetes labels applied to the BMM resource.
+Kubernetes labels are applied to BMM resources during the multi-rack cluster deployments of Azure Local. The `machineRoles` property is derived from the Kubernetes labels applied to the BMM resource.
 
 ### How to determine the BareMetal Machine role?
 
-In any standard multi-rack instance with three or more compute racks, there are three powered-on control plane nodes.
+In any standard multi-rack cluster with three or more compute racks, there are three powered-on control plane nodes.
 Additionally, there's one node that is powered off but available to join the cluster.
 The `machineRoles` field is used in addition to the `powerState` and `detailedStatus` fields to identify the spare control plane node in an instance.
 
