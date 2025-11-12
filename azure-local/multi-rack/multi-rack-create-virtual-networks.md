@@ -12,20 +12,20 @@ ms.date: 11/07/2025
 
 [!INCLUDE [multi-rack-applies-to-preview](../includes/multi-rack-applies-to-preview.md)]
 
-This article describes what virtual networks on Azure Local are and how to create them for multi-rack deployments. 
+This article provides an overview of virtual networks (Vnets) on Azure Local for multi-rack deployments and how to create them on your Azure Local instance. 
 
 ## What are virtual networks? 
 
-Virtual networks are a new software-defined networking resource available for multi-rack deployments. Virtual Networks on Azure Local are similar to Azure Virtual Networks and provide a private, overlay network solution to customers with the same scale and isolation benefits of Azure Virtual networks. 
+Virtual networks are a new software-defined (SDN) networking resource available for multi-rack deployments. Virtual Networks on Azure Local are similar to Azure Virtual Networks in providing a private, overlay network solution to customers. They offer the same scale and isolation benefits of Azure Virtual networks. 
 
 Following the structure of Azure Virtual Networks, we provide: 
 
-- **Address space**: When creating a VNet for multi-rack deployments, you define a private IP address space using one or more CIDRs (e.g., 10.0.0.0/16). All resources deployed within the VNet will receive a private IP address from this space.  
+- **Address space**: When creating a VNet on Azure Local for multi-rack deployments, you define a private IP address space using one or more CIDRs (Classless Inter-Domain Routing), for example 10.0.0.0/16. All resources deployed within the VNet will receive a private IP address from this space. We recommend using private IP address ranges defined in RFC 1918 (such as 10.0.0.0/8, 172.16.0.0/12, and 192.168.0.0/16).
 
 - **Subnets**: Each VNet’s address space can be segmented into smaller subnets to group and isolate resources and to apply different security policies to each subnet.
 
 > [!NOTE]
-> VNet peering isn't supported on Azure Local Rack Scale.
+> VNet peering isn't supported on Azure Local for multi-rack deployments.
 
 ## Using a virtual network for multi-rack deployments
 
@@ -39,22 +39,19 @@ Following the structure of Azure Virtual Networks, we provide:
 
 ## Prerequisites  
 
-Before you begin, make sure to complete the following prerequisites:
+Before you begin, make sure to meet or complete the following prerequisites:
 
-Make sure to review and [complete the prerequisites](../manage/azure-arc-vm-management-prerequisites.md). If using a client to connect to your Azure Local, see [Connect to the system remotely](../manage/azure-arc-vm-management-prerequisites.md#connect-to-the-system-remotely).  
+- Rview and [complete the prerequisites](../manage/azure-arc-vm-management-prerequisites.md). If using a client to connect to your Azure Local, see [Connect to the system remotely](../manage/azure-arc-vm-management-prerequisites.md#connect-to-the-system-remotely).  
 
-*** Add CLI prereqs? ***
-
-*** Add ARM template prereqs? ***
+- Access to a resource group where you want to provision the virtual network.
+- Access to ARM ID of the custom location associated with your Azure Local instance where you want to provision the virtual network.
 
 ## Create the virtual network 
 
 You can create a virtual network using either the Azure Command-Line Interface (CLI) or by using ARM templates.  
 
 > [!NOTE]
-> Once a virtual network is created, you can't update any fields.
-
-==Azure CLI ==
+> Once a virtual network is created, you can't update any fields except tags.
 
 Complete the following steps to create a virtual network using Azure CLI.  
 
@@ -76,7 +73,7 @@ Complete the following steps to create a virtual network using Azure CLI. 
 
 ## Create virtual network via CLI  
 
-You can use the `azstack-hci-vm network vnet` cmdlet to create a virtual network on your Azure Local Rack Scale instance. Only IPv4 addresses are supported - there is no support for IPv6 addresses. 
+You can use the `azstack-hci-vm network vnet` cmdlet to create a virtual network on your Azure Local instance. Only IPv4 addresses are supported - there is no support for IPv6 addresses. 
 
 Complete these steps in Azure CLI to configure a virtual network:  
 
@@ -96,9 +93,8 @@ The required parameters: 
 | Parameter | Description  |
 | --- | --- |
 | name  | Name for the virtual network on the Azure Local Rack Scale instance. Make sure to provide a name that follows the Naming rules for Azure network resources. You can't rename a virtual network after it's created. |  
-| resource-group  | Name of the resource group where you create the virtual network. For ease of management, we recommend that you use the same resource group as your Azure Local. |  
-| custom-location  
-| Use this to provide the custom location associated with your Azure Local where you're creating this virtual network.  | 
+| resource-group  | Name of the resource group where you create the virtual network.  | 
+| custom-location  | Use this to provide the full ARM ID of the custom location associated with your Azure Local where you're creating this virtual network.  | 
 | location  | Azure regions as specified by az locations.  | 
 | address-prefixes |  Private address space in CIDR notation. For example: "10.0.0.0/16".  | 
 
@@ -118,7 +114,47 @@ The required parameters: 
     Here's a sample output:  
 
     ```output
-    ** NEED OUTPUT CODE **
+    {
+      "extendedLocation": {
+        "name": "/subscriptions/<SubscriptionID>/resourceGroups/mylocal-rg>/providers/Microsoft.ExtendedLocation/customLocations/<CustomLocation>",
+        "type": "CustomLocation"
+      },
+      "id": "/subscriptions/<SubscriptionID>/resourceGroups/mylocal-rg/providers/Microsoft.AzureStackHCI/virtualNetworks/mylocal-vnet",
+      "location": "eastus",
+      "name": "mylocal-vnet",
+      "properties": {
+        "addressSpace": {
+          "addressPrefixes": [
+            "10.0.0.0/16"
+          ]
+        },
+        "dhcpOptions": {
+          "dnsServers": [
+            "10.X.X.X"
+          ]
+        },
+        "provisioningState": "Succeeded",
+        "status": {
+          "errorCode": null,
+          "errorMessage": null,
+          "provisioningStatus": {
+            "operationId": "30d56e69-e4e2-4704-aa0d-5a9719f2f656*972BB9DE6F92BF283F66D12D20BC8747D45B98F5BEB6F0B950C247BA8119B02F",
+            "status": "Succeeded"
+         }
+        }
+      },
+      "resourceGroup": "mylocal-rg",
+      "systemData": {
+        "createdAt": "2025-11-10T16:35:05.518894+00:00",
+        "createdBy": "user@contoso.com",
+        "createdByType": "User",
+        "lastModifiedAt": "2025-11-10T16:35:12.499753+00:00",
+        "lastModifiedBy": "319f651f-7ddb-4fc6-9857-7aef9250bd05",
+        "lastModifiedByType": "Application"
+      },
+      "tags": null,
+      "type": "microsoft.azurestackhci/virtualnetworks"
+    }
     ```  
 
 Once the virtual network is created, you can create a subnet.
@@ -130,7 +166,7 @@ Create virtual network subnet via CLI 
 Once you’ve created a virtual network, you can create one or more subnets on the virtual network. You need to define at least one subnet in a VNet as the workloads, including network interfaces, load balancers, and others will be housed to a subnet in a virtual network.  
 
 > [!NOTE]
-> Only the Network Security Group (NSG) field can be modified after VNet creation.
+> Only the Network Security Group (NSG) field can be modified after VNet subnet creation.
 
 ```azurecli
 $subnetName = "mylocal-subnet"  
@@ -143,20 +179,20 @@ $dnsServers = "192.168.200.222" 
 $subscription = "<Subscription ID>"  
 $resourceGroup = "mylocal-rg"  
 $nsg = “mylocal-nsg” --- Optional 
-$routes = “'[{"name":"default","address_prefix":"0.0.0.0/0","next_hop_ip_address":"10.0.0.1"}]'” 
+$routes = “'[{"name":"default","address_prefix":"0.0.0.0/0","next_hop_ip_address":"10.0.0.1"}]'”  
 ```
  
 The required parameters:  
 
 | Parameter | Description | 
 | --- | --- |
-| name  | Name for the virtual network subnet on the Azure Local Rack Scale instance. Make sure to provide a name that follows the Naming rules for Azure network resources. You can't rename a virtual network after it's created.  |
+| name  | Name for the virtual network subnet on the Azure Local Rack Scale instance. Make sure to provide a name that follows the Naming rules for Azure network resources. You can't rename a virtual network subnet after it's created.  |
 | vnet-name | Name of the parent virtual network. |
-| resource-group  | Name of the resource group where you create the logical network. For ease of management, we recommend that you use the same resource group as your Azure Local.  |
-| subscription  | Name or ID of the subscription where your Azure Local is deployed. This could be another subscription you use for logical network on your Azure Local.  |
-| custom-location  | Use this to provide the custom location associated with your Azure Local where you're creating this logical network.  |
+| resource-group  | Name of the resource group where you create the logical network. For ease of management, we recommend that you use the same resource group as the parent virtual network.  |
+| subscription  | Subscription ID you want to use for the resource creation.  |
+| custom-location  | Use this to provide the custom location associated with your Azure Local where you're creating this virtual network subnet.  |
 | location  | Azure regions as specified by az locations.  |
-| address-prefix  | Private address space in CIDR notation. Must be fall within the parent virtual network address space. For example: "10.0.0.0/24".  |
+| address-prefix  | Private address space in CIDR notation. Must fall within the parent virtual network address space. For example: "10.0.0.0/24".  |
 
 1. Create a virtual network subnet. Run the following cmdlet:  
 
@@ -175,13 +211,49 @@ The required parameters: 
 Here's a sample output:  
 
 ```output
-** NEED OUTPUT CODE **
+{
+  "extendedLocation": {
+    "name": "/subscriptions/<SubscriptionID>/resourceGroups/<mylocal-rg>/providers/Microsoft.ExtendedLocation/customLocations/<customLocation>",
+    "type": "CustomLocation"
+  },
+  "id": "/subscriptions/<SubscriptionID>/resourceGroups/<mylocal-rg/providers/Microsoft.AzureStackHCI/virtualNetworks/mylocal-vnet/subnets/mylocal-subnet",
+  "name": "mylocal-subnet",
+  "properties": {
+    "addressPrefix": "10.0.0.0/24",
+    "ipConfigurations": null,
+    "natGateway": null,
+    "networkSecurityGroup": null,
+    "provisioningState": "Succeeded",
+    "routeTable": {
+      "etag": null,
+      "name": null,
+      "properties": null,
+      "type": null
+    },
+    "status": {
+      "errorCode": "",
+      "errorMessage": "",
+      "provisioningStatus": {
+        "operationId": "e1d312e9-74f4-4d0e-b6b5-8e138efa1a13*456E6AD0C996A760B5E0B8A14FCDC1C986A7663C594049B47702A0AB8C3DB352",
+        "status": "Succeeded"
+      }
+    }
+  },
+  "resourceGroup": "mylocal-rg",
+  "systemData": {
+    "createdAt": "2025-11-10T22:54:18.793244+00:00",
+    "createdBy": "user@contoso.com",
+    "createdByType": "User",
+    "lastModifiedAt": "2025-11-10T22:54:30.424794+00:00",
+    "lastModifiedBy": "319f651f-7ddb-4fc6-9857-7aef9250bd05",
+    "lastModifiedByType": "Application"
+  },
+  "type": "microsoft.azurestackhci/virtualnetworks/subnets"
+}
 ``` 
 
-Once the virtual network subnet is created, you can start creating network interfaces and subsequently, virtual machines. Additionally, you can also create other SDN services like NAT gateway and Software Load Balancer.
+Once the virtual network subnet is created, you can start creating network interfaces and then, virtual machines. Additionally, you can also create other SDN services like NAT gateway and Software Load Balancer.
 
 ## Next steps  
 
-- [Create a network interface]
-- [Associate a VNet Subnet with a NAT Gateway]
-- [Create Azure Local VMs enabled by Azure Arc]
+- Create a network interface
