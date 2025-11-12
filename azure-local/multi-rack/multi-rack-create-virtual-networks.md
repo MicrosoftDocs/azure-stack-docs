@@ -12,17 +12,17 @@ ms.date: 11/07/2025
 
 [!INCLUDE [multi-rack-applies-to-preview](../includes/multi-rack-applies-to-preview.md)]
 
-This article provides an overview of virtual networks (Vnets) on Azure Local for multi-rack deployments and how to create them on your Azure Local instance. 
+This article provides an overview of virtual networks (VNets) on Azure Local for multi-rack deployments and how to create them on your Azure Local instance. 
 
 ## What are virtual networks? 
 
-Virtual networks are a new software-defined (SDN) networking resource available for multi-rack deployments. Virtual Networks on Azure Local are similar to Azure Virtual Networks in providing a private, overlay network solution to customers. They offer the same scale and isolation benefits of Azure Virtual networks. 
+Virtual networks are a new software-defined (SDN) networking resource available for multi-rack deployments. Virtual networks on Azure Local are similar to Azure virtual networks in providing a private, overlay network solution to customers. They offer the same scale and isolation benefits of Azure virtual networks. 
 
-Following the structure of Azure Virtual Networks, we provide: 
+Following the structure of Azure virtual networks, the following are provided: 
 
 - **Address space**: When creating a VNet on Azure Local for multi-rack deployments, you define a private IP address space using one or more CIDRs (Classless Inter-Domain Routing), for example 10.0.0.0/16. All resources deployed within the VNet will receive a private IP address from this space. We recommend using private IP address ranges defined in RFC 1918 (such as 10.0.0.0/8, 172.16.0.0/12, and 192.168.0.0/16).
 
-- **Subnets**: Each VNet’s address space can be segmented into smaller subnets to group and isolate resources and to apply different security policies to each subnet.
+- **Subnets**: Each VNet address space can be segmented into smaller subnets to group and isolate resources and to apply different security policies to each subnet.
 
 > [!NOTE]
 > VNet peering isn't supported on Azure Local for multi-rack deployments.
