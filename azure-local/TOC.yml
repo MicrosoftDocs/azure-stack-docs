@@ -723,12 +723,12 @@ items:
       - name: Pricing
         href: https://azure.microsoft.com/products/local/#Pricing
   
-  - name: Multi-rack deployments with SAN storage
+  - name: Multi-rack deployments
     items:
     - name: Overview
       items:
       - name: About multi-rack deployments
-        href: ./multi-rack/multi-rack-overview.md 
+        href: ./multi-rack/multi-rack-overview.md
     - name: Deploy
       items:
       - name: Complete deployment prerequisites
