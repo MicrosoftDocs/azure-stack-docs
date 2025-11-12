@@ -1,5 +1,5 @@
 ---
-title: Create network interfaces for virtual machines on Azure Local for multi-rack deployments (Preview)
+title: Create network interfaces for Azure Local VMs for multi-rack deployments (Preview)
 description: Learn how to create network interfaces on an existing logical network associated with your Azure Local for multi-rack deployments. The Azure Local VM enabled by Azure Arc uses these network interfaces. (Preview)
 author: alkohli
 ms.author: alkohli
@@ -18,9 +18,9 @@ This article describes how to create network interfaces that you can associate w
 
 ## About network interfaces
 
-Network interfaces are an Azure resource and can be used to deploy virtual machines on your system. On Azure Local for multi-rack deployments, network interfaces can be created on logical networks or virtual network (VNet) subnets. After a logical network or a VNet subnet is created, you can create network interfaces and associate those with the virtual machines you'll create.
+Network interfaces are an Azure resource and can be used to deploy virtual machines on your system. On Azure Local for multi-rack deployments, network interfaces can be created on logical networks or virtual network (VNet) subnets. After a logical network or a VNet subnet is created, you can create network interfaces and associate those with the VMs you'll create.
 
-You can create network interfaces using the Azure portal or the Azure CLI. When using the Azure portal, the network interface creation is a part of the VM creation process. When using the Azure CLI, you can create a network interface first and then use it to create a VM.
+You can create network interfaces using the Azure portal or the Azure Command Line Interface (CLI). When using the Azure portal, the network interface creation is a part of the VM creation process. When using the Azure CLI, you can create a network interface first and then use it to create a VM.
 
 
 ## Prerequisites
