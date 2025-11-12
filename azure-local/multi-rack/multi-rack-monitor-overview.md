@@ -2,9 +2,9 @@
 title: Overview of Azure Local Monitoring for Multi-rack Deployments (Preview)
 description: This article provides an overview of the Azure Local monitoring solution for multi-rack deployments. (Preview)
 ms.author: alkohli
-ms.topic: concept-article
+ms.topic: overview
 author: alkohli
-ms.date: 11/06/2025
+ms.date: 11/11/2025
 ---
 
 # What is monitoring for multi-rack deployments of Azure Local? (Preview)
@@ -13,7 +13,7 @@ ms.date: 11/06/2025
 
 This article provides an overview of monitoring for multi-rack deployments of Azure Local.
 
-Monitoring Azure Local involves regular collection and analysis of data from all components of your system to promptly identify and address any potential issues. Routine monitoring is crucial for maintaining the health and functionality of your system.
+Monitoring multi-rack deployments of Azure Local involves regular collection and analysis of data from all components of your system to promptly identify and address any potential issues. Routine monitoring is crucial for maintaining the health and functionality of your system.
 
 To understand the current performance patterns, identify performance anomalies, and develop methods to address issues, it's important to set baseline performance metrics for your system under different times and load conditions.
 
@@ -56,13 +56,22 @@ Azure Local provides monitoring capabilities fully integrated with Azure Monitor
 
 Azure Local provides key infrastructure metrics out of the box, at no extra cost. These metrics include CPU and memory usage, storage performance metrics, such as IOPS, latency and throughput, network throughput. You can view these metrics in Azure Monitor through predefined charts. You can also create custom charts to visualize these metrics based on your preferences.
 
-Metrics enables you to store numeric data from your clusters in a dedicated time-series database. This data is collected using Telemetry and Diagnostics Arc extension and then analyzed using Metrics Explorer. To learn more about Metrics, see [List of metrics collected](/azure/operator-nexus/list-of-metrics-collected).
-
 For additional monitoring, Cluster Metrics Configuration enables you to extend beyond the default metrics by selectively enabling optional ones. This gives you tailored visibility and greater control over monitoring to meet specific operational needs. To learn more about Cluster Metrics Configuration, see [Cluster metrics configuration](/azure/operator-nexus/howto-cluster-metrics-configuration-management).
 
 ### Logs
 
 Azure Local emits logs from edge platform components. These metrics can be streamed to Storage Account, EventHub or Log Analytics Workspace for storing analyzing logs into customer specified targets. To learn more about logs available for streaming, see [Logs available for streaming](#logs-available-for-streaming).
+
+#### Logs available for streaming
+
+Logs emitted by system resources provide detailed insight into the operations of Azure Local components and are useful for monitoring their health and availability. Logs are categorized based on the type of resource emitting them.
+
+You can stream these logs to the following targets by configuring [Diagnostic Settings](/azure/azure-monitor/essentials/diagnostic-settings) in Azure Monitor:
+
+- Log Analytics Workspace
+- Storage Account
+- Event Hubs
+
 
 ### Alerts
 
@@ -82,15 +91,6 @@ The following table provides a brief description and setup instructions for each
 | Metric based alerts | These are customer-defined alerts that are used to evaluate metrics of your system at regular intervals. Metric alerts are useful when you want to be alerted about data that requires little or no manipulation. | See [Create or edit a metric alert rule](/azure/azure-monitor/alerts/alerts-create-metric-alert-rule). |
 | Recommended alerts | These are predefined metric-based alerts for your system resource. These alerts provide you with initial monitoring for a common set of metrics using recommended alert templates | See [Recommended health alerts](../index.yml). |
 
-## Logs available for streaming
-
-Logs emitted by system resources provide detailed insight into the operations of Azure Local components and are useful for monitoring their health and availability. Logs are categorized based on the type of resource emitting them.
-
-You can stream these logs to the following targets by configuring [Diagnostic Settings](/azure/azure-monitor/essentials/diagnostic-settings) in Azure Monitor:
-
-- Log Analytics Workspace
-- Storage Account
-- Event Hubs
 
 ### Cluster
 

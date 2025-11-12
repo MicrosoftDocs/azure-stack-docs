@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.service: azure-local
 ms.topic: conceptual
-ms.date: 11/06/2025
+ms.date: 11/11/2025
 ms.custom: conceptual
 ---
 
@@ -19,66 +19,32 @@ This article provides an overview of compute resources for multi-rack deployment
 
 ## About compute infrastructure in multi-rack deployments of Azure Local
 
-Azure Local is built on basic constructs like compute servers, storage appliances, and network fabric devices. These compute servers, also called bare-metal machines (BMMs), represent the physical machines on the rack. They run the Azure Linux operating system and provide closed integration support for high-performance workloads.
+Azure Local for multi-rack deployments is built on basic constructs like compute servers, storage appliances, and network devices. These compute servers, also called bare-metal machines (BMMs), represent the physical machines on the compute rack. They run the Azure Linux operating system and provide closed integration support for high-performance workloads.
 
 These BMMs are deployed as part of the Azure Local automation suite. They exist as nodes in a Kubernetes cluster to serve various virtualized and containerized workloads in the ecosystem.
 
-Each BMM in your instance is represented as an Azure resource. Operators get access to perform various operations to manage the BMM's lifecycle like any other Azure resource.
+Each BMM in your instance is represented as an Azure resource. Users can perform various operations to manage the BMM's lifecycle like any other Azure resource.
 
-<!--The following section contains unresolved comment in the starter doc. I've made edits as per the starter doc, but commented out the entire section until the comment is resolved.
 
-## Key capabilities of scompute for multi-rack deployments
+## Key capabilities of compute for multi-rack deployments
 
-### NUMA alignment
-
-Nonuniform memory access (NUMA) alignment is a technique to optimize performance and resource utilization in multiple-socket servers. It involves aligning memory and compute resources to reduce latency and improve data access within a server system.
-
-Through the strategic placement of software components and workloads in a NUMA-aware way, Operators can enhance the performance of applications, such as virtualized routers and firewalls. This placement leads to improved service delivery and responsiveness in their cloud environments.
-
-By default, all the workloads deployed in an Azure Local instance are NUMA aligned.
-
-### CPU pinning
-
-CPU pinning is a technique to allocate specific CPU cores to dedicated tasks or workloads, which help ensure consistent performance and resource isolation. Pinning critical network functions or real-time applications to specific CPU cores allows operators to minimize latency and improve predictability in their infrastructure. This approach is useful in scenarios where strict quality-of-service requirements exist, because these tasks can receive dedicated processing power for optimal performance.
-
-All of the virtual machines created for workloads on Azure Local compute are pinned to specific virtual cores. This pinning provides better performance and avoids CPU stealing.
 
 ### CPU isolation
 
-CPU isolation provides a clear separation between the CPUs allocated for workloads and the CPUs allocated for control plane and platform activities. CPU isolation prevents interference and limits the performance predictability for critical workloads. By isolating CPU cores or groups of cores, operators can mitigate the effect of noisy neighbors. It helps guarantee the required processing power for latency-sensitive applications.
+CPU isolation provides a clear separation between the CPUs allocated for workloads and the CPUs allocated for platform activities. CPU isolation prevents interference and limits the performance predictability for critical workloads. By isolating CPU cores or groups of cores, you can mitigate the effect of noisy neighbors. It helps guarantee the required processing power for latency-sensitive applications.
 
 Azure Local reserves a small set of CPUs for the host operating system and other platform applications. The remaining CPUs are available for running actual workloads.
 
-### Huge page support
+### CPU oversubscription
 
-Huge page usage in workloads refers to the utilization of large memory pages, typically 2 MiB or 1 GiB in size, instead of the standard 4 KiB pages. This approach helps reduce memory overhead and improves the overall system performance. It reduces the translation look-aside buffer (TLB) miss rate and improves memory access efficiency.
+CPU oversubscription enables efficient utilization of compute resources by allowing multiple virtual CPUs (vCPUs) to share a single physical CPU core. Azure Local with multi-rack deployments supports a default 4:1 CPU oversubscription ratio, meaning up to four vCPUs can be mapped to one physical core. This capability increases workload density and optimizes infrastructure efficiency, allowing users to run more workloads within the same hardware footprint. It is particularly beneficial in environments where workloads have variable or intermittent CPU usage, helping maximize performance and overall platform scalability.
 
-Workloads that involve large data sets or intensive memory operations can benefit from huge page usage because it enhances memory performance and reduces memory-related bottlenecks. As a result, users see improved throughput and reduced latency.
-
-All virtual machines created on Azure Local are backed by 1GiB(1G) hugepages for the requested memory.  The kernel running inside the VM can manage these available memory anyway it likes, including the allocation of memory to support hugepages (2M or 1G).
-
-### Dual-stack support
-
-Dual-stack support refers to the ability of networking equipment and protocols to simultaneously handle both IPv4 and IPv6 traffic. With the depletion of available IPv4 addresses and the growing adoption of IPv6, dual-stack support is crucial for seamless transition and coexistence between the two protocols.
-
-Telco operators use dual-stack support to ensure compatibility, interoperability, and future-proofing of their networks. It allows them to accommodate both IPv4 and IPv6 devices and services while gradually transitioning toward full IPv6 deployment.
-
-Dual-stack support helps ensure uninterrupted connectivity and smooth service delivery to customers regardless of their network addressing protocols. Azure Local provides support for both IPv4 and IPv6 configuration across all layers of the stack.
-
-### Network interface cards
-
-Computes in Azure Local are designed to meet the requirements for running critical applications that are enterprise grade. They can perform fast and efficient data transfer between servers and networks.
-
-Workloads can make use of single-root I/O virtualization (SR-IOV). SR-IOV enables the direct assignment of physical I/O resources, such as network interfaces, to virtual machines. This direct assignment bypasses the hypervisor's virtual switch layer.
-
-This direct hardware access improves network throughput, reduces latency, and enables more efficient utilization of resources. It makes SR-IOV an ideal choice for operators running enterprise applications.
--->
 
 ## BMM status
 
 The following properties reflect the operational state of a BMM:
 
-- `Power State` indicates the state as derived from a bare-metal controller (BMC). The state can be either `On` or `Off`.
+- `Power State` indicates the state as derived from a baseboard management controller (BMC). The state can be either `On` or `Off`.
 
 - `Ready State` provides an overall assessment of BMM readiness. It looks at a combination of `Detailed Status`, `Power State`, and the provisioning state of the resource to determine whether the BMM is ready or not. When `Ready State` is `True`, the BMM is turned on, `Detailed Status` is `Provisioned`, and the node that represents the BMM has successfully joined the infrastructure Kubernetes cluster (also referred to as the **Undercloud** cluster). If any of those conditions aren't met, `Ready State` is set to `False`.
 

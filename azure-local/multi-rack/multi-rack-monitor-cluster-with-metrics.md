@@ -5,8 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 11/06/2025
-ms.custom: sfi-image-nochange
+ms.date: 11/11/2025
 ---
 
 # Monitor multi-rack deployments of Azure Local with Azure Monitor Metrics (Preview)
@@ -41,15 +40,13 @@ In the Azure portal, you can monitor platform health and utilization of your clu
 
 Follow these steps to monitor metrics of your system in the Azure portal:
 
-1. Go to your Azure Local multi-rack cluster resource page and select your cluster.
+1. Go to your Azure Local cluster resource page and select your multi-rack cluster.
 
 1. On the **Overview** page of your cluster, select the **Monitoring** tab.
 
 <!--   :::image type="content" source="media/multi-rack-monitor-cluster-with-metrics/monitoring-tab.png" alt-text="Screenshot showing the Monitoring tab for your cluster." lightbox="media/multi-rack-monitor-cluster-with-metrics/monitoring-tab.png":::-->
 
-1. On the **Health metrics** pane, review the status of various cluster resources like Bare metal machine, Network device. You can also review alerts generated for the cluster.
-
-1. On the **Utilization metrics** pane, review the graphs displaying current utilization of the cluster.
+1. Review the graphs displaying current utilization of the cluster under **Performance and Utilization pane**.
 
 ## Analyze metrics
 
@@ -77,4 +74,4 @@ Follow these steps to analyze metrics for a specific cluster in the Azure portal
 
     To create alerts, select the **Alerts** option and set up alerts as described in [Create metric alerts](../index.yml). <!--update link-->
 
-    For a complete list of metrics, see [List of metrics collected](/azure/operator-nexus/list-of-metrics-collected).
+    
