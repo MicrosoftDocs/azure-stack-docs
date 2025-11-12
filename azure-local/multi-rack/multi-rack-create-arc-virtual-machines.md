@@ -6,17 +6,14 @@ ms.author: alkohli
 ms.reviewer: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 11/06/2025
-ms.custom:
-  - devx-track-azurecli
-  - sfi-image-nochange
+ms.date: 11/11/2025
 ---
 
 # Create Azure Local virtual machines enabled by Azure Arc for multi-rack deployments (Preview)
 
 [!INCLUDE [multi-rack-applies-to-preview](../includes/multi-rack-applies-to-preview.md)]
 
-This article describes how to create Azure Local virtual machines (VMs) enabled by Azure Arc, starting with the VM images that you created on multi-rack deployments of Azure Local. You can create Azure Local VMs using the Azure CLI, Azure portal, or Azure Resource Manager template.
+This article describes how to create Azure Local virtual machines (VMs) enabled by Azure Arc, using the VM images that you created on multi-rack deployments of Azure Local. You can create Azure Local VMs using the Azure CLI, Azure portal, or Azure Resource Manager (ARM) template.
 
 > [!NOTE]
 > Arc gateway isn't supported on Azure Local VMs.
@@ -46,14 +43,17 @@ Before you create an Azure Local VM, make sure that the following prerequisites 
     > If you’re deploying a Windows VM, make sure that the appropriate VirtIO drivers are present in the image.
 - A custom location for your Azure Local instance that you'll use to provision VMs. The custom location will also show up in the **Overview** page for Azure Local.
 - If using a client to connect to your Azure Local, see [Connect to Azure Local via Azure CLI client](../index.yml)<!--update link-->.
-- Access to a network interface that you created on a logical network or virtual network associated with Azure Local. You can choose a network interface with static IP allocation. For more information, see how to [Create network interfaces](../index.yml)<!--update link-->.
+- Access to a network interface that you created on a logical network or virtual network subnet associated with Azure Local. You can choose a network interface with static IP allocation. For more information, see how to [Create network interfaces](../index.yml)<!--update link-->.
 
 # [Azure portal](#tab/azureportal)
 
 - Access to an Azure subscription with the appropriate RBAC role and permissions assigned. For more information, see [RBAC roles for Azure Local VM management](../index.yml)<!--update link-->.
 - Access to a resource group where you want to provision the VM.
 - Access to one or more VM images on your Azure Local.
+    > [!NOTE]
+    > If you’re deploying a Windows VM, make sure that the appropriate VirtIO drivers are present in the image.
 - A custom location for your Azure Local instance that you'll use to provision VMs. The custom location will also show up in the **Overview** page for Azure Local.
+- Details of your proxy server to provide during VM creation. Azure Local VMs wouldn't have external connectivity to enable guest management without proxy details configured at the time of creation.
 
 # [Azure Resource Manager template](#tab/armtemplate)
 
@@ -61,7 +61,7 @@ Before you create an Azure Local VM, make sure that the following prerequisites 
 - Access to a resource group where you want to provision the VM.
 - Access to one or more VM images on your Azure Local. These VM images could be created using [VM image starting from an image in Azure Storage account](../index.yml)<!--update link-->.
 - A custom location for your Azure Local instance that you'll use to provision VMs. The custom location will also show up in the **Overview** page for Azure Local.
-- Access to a logical network or virtual network that you associate with the VM on your Azure Local instance. For more information, see how to [Create logical network](../index.yml)<!--update link-->.
+- Access to a logical network or virtual network subnet that you associate with the VM on your Azure Local instance. For more information, see how to [Create logical network](../index.yml)<!--update link-->.
 - [Download the sample Azure Resource Manager template](../index.yml)<!--update link--> in the GitHub Azure QuickStarts repo. You use this template to create a VM.
 
 <!--# [Bicep template](#tab/biceptemplate)
@@ -123,7 +123,7 @@ Follow these steps on the client running az CLI that is connected to Azure Local
 In Azure Local preview version, you can create a VM that has network interface with static IP allocation.
 
 > [!NOTE]
-> If you need more than one network interface for your VM, create one or more interfaces now before you create the VM. Adding a network interface after the VM is provisioned, isn't supported in the preview version.
+> If you need more than one network interface for your VM, create one or more interfaces now before you create the VM. Adding a network interface after the VM is provisioned isn't supported in the preview version.
 
 Here we create a VM that uses specific memory and processor counts.
 
@@ -139,9 +139,10 @@ Here we create a VM that uses specific memory and processor counts.
     $computerName = "mycomputer"
     $userName = "local-user"
     $password = "<Password for the VM>"
-    $imageName ="ws22server"<!--comment from Dinesh: We need to double check - Is this Name or ID @Kushmeen Kambow -->
+    $imageName ="ws22server"<!--comment from DR: We need to double check - Is this Name or ID KK -->
     $nicName ="local-vnic" 
-    $storagePathName = "local-sp" 
+    $httpProxy = "<Proxy server address>"
+    $httpsProxy = "<Proxy server address>"
     ```
 
     The parameters for VM creation are tabulated as follows:
@@ -160,16 +161,16 @@ Here we create a VM that uses specific memory and processor counts.
     | **nics** |Names or the IDs of the network interfaces associated with your VM. You must have atleast one network interface when you create a VM, to enable guest management.|
     | **memory-mb** |Memory in Megabytes allocated to your VM. If not specified, defaults are used.|
     | **processors** |The number of processors allocated to your VM. If not specified, defaults are used.|
-    | **proxy-configuration** |Use this optional parameter to configure a proxy server for your VM. For more information, see [Create a VM with proxy configured](../index.yml)<!--update link-->.  |
-    | zone | Name of the availability zone (rack) where you want the VM to be placed. You can choose the availability zone by looking at the list of availability zones. <!--Comment from Sanjana: Need to either create a new doc or have this be added to an existing doc.--> |
-    | strict-placement | Choose strict placement if you want a VM to only be scheduled on the specified availability zone. If the specified zone doesn’t have capacity or is unavailable, VM creation will fail. If you specify no for this parameter, the VM will be scheduled on the specified zone on a best-effort basis. <!--comment from Sanjana: can you please confirm the parameter names in the latest az cli?--> |
+    | **proxy-configuration** |Use this parameter to configure a proxy server for your VM. It is required to enable guest management on your VM. For more information, see [Create a VM with proxy configured](../index.yml)<!--update link-->.  |
+    | **zone** | (Optional) Name of the availability zone (rack) where you want the VM to be placed. You can choose the availability zone by looking at the list of availability zones. <!--Comment from SR: Need to either create a new doc or have this be added to an existing doc.--> |
+    | **strict-placement** | (Optional) Choose strict placement if you want a VM to only be scheduled on the specified availability zone. If the specified zone doesn’t have capacity or is unavailable, VM creation will fail. If you specify no for this parameter, the VM will be scheduled on the specified zone on a best-effort basis. <!--comment from SR: can you please confirm the parameter names in the latest az cli?--> |
 
 1. Run the following commands to create the applicable VM.
 
     **To create a standard Azure Local VM for multi-rack deployments:**
 
    ```azurecli
-    az stack-hci-vm create --name $vmName --resource-group $resource_group --admin-username $userName --admin-password $password --computer-name $computerName --image $imageName --location $location --authentication-type all --nics $nicName --custom-location $customLocationID --hardware-profile memory-mb="8192" processors="4" --zone $zone –strict-placement true 
+    az stack-hci-vm create --name $vmName --resource-group $resource_group --admin-username $userName --admin-password $password --computer-name $computerName --image $imageName --location $location --authentication-type all --nics $nicName --custom-location $customLocationID --hardware-profile memory-mb="8192" processors="4" --zone $zone –strict-placement true --enable-agent true --enable-vm-config-agent true --proxy-configuration http_proxy=$httpProxy https_proxy=$httpsProxy no_proxy="" cert_file_path="" 
    ```
 
 The VM is successfully created when the `provisioningState` shows as `succeeded`in the output.
@@ -183,15 +184,15 @@ The VM is successfully created when the `provisioningState` shows as `succeeded`
 To create a Linux VM, use the same command that you used to create the Windows VM.
 
 - The gallery image specified should be a Linux image.
-- For Linux VMs, we recommend using SSH keys. For SSH keys, you need to pass the `ssh-key-values` parameters along with `authentication-type-all`.
-- If you want to use username and password, use the `authentication-type-all` parameter.
+- For Linux VMs, we recommend using SSH keys. For SSH keys, you need to pass the `ssh-key-values` parameters along with `authentication-type ssh`.
+- If you want to use username and password, use the `authentication-type password` parameter.
 
 > [!IMPORTANT]
 > The VM created has guest management enabled by default. It is required to provide HTTP proxy to enable guest management properly.
 
 ### Create a VM with proxy configured
 
-Use this optional parameter **proxy-configuration** to configure a proxy server for your VM.
+Use this parameter **proxy-configuration** to configure a proxy server for your VM.
 
 Proxy configuration for VMs is applied only to the onboarding of the Azure connected machine agent and set as environment variables within the guest VM operating system. Browsers and applications on the VM aren't necessarily all enabled with this proxy configuration.
 
@@ -255,15 +256,15 @@ Follow these steps in Azure portal for Azure Local.
     
         **The Virtual machine kind** is automatically set to **Azure Local**. <!--verify this-->
 
-    1. **Security type** - For the security of your VM, select **Standard** or **Trusted launch virtual machines**. For more information about Trusted launch Azure Local VMs, see [What is Trusted launch for Azure Local Virtual Machines?](../index.yml)<!--update link-->.
+    1. **Security type** - Only **Standard** security type is supported and selected by default. For more information about Trusted launch Azure Local VMs, see [What is Trusted launch for Azure Local Virtual Machines?](../index.yml)<!--update link-->.
 
-   1. **Image** – Select the Marketplace or customer managed image to create the VM image.
+   1. **Image** - Select from the VM images you previously created on your Azure Local instance.
     
         1. If you selected a Windows image, provide a username and password for the administrator account, and then confirm the password.
  
         <!--:::image type="content" source="media/multi-rack-create-arc-virtual-machines/create-arc-vm-windows-image.png" alt-text="Screenshot showing how to Create a VM using Windows VM image." lightbox="media/multi-rack-create-arc-virtual-machines/create-arc-vm-windows-image.png":::-->
 
-        1. If you selected a Linux image, in addition to providing username and password, you'll also need SSH keys.
+        1. If you selected a Linux image, you can choose between password and ssh key.
 
            <!--:::image type="content" source="media/multi-rack-create-arc-virtual-machines/create-arc-vm-linux-vm-image.png" alt-text="Screenshot showing how to Create a VM using a Linux VM image." lightbox="media/multi-rack-create-arc-virtual-machines/create-arc-vm-linux-vm-image.png":::-->
 
@@ -271,7 +272,7 @@ Follow these steps in Azure portal for Azure Local.
 
     1. **Memory** – Specify the memory in MB for the VM you intend to create.
 
-    1. **Memory type** – Specify the memory type as static.
+    1. **Memory type** – Only **Static** memory type is supported and selected by default.
     
     1. **Availability Zone** - Name of the availability zone (rack) where you want the VM to be placed.
      
@@ -438,7 +439,7 @@ Follow these steps to deploy the Resource Manager template:
             "subnetId": {
                 "type": "String",
                 "metadata": {
-                    "description": "The Azure Resource Manager ID of the subnet for the network interface."
+                    "description": "The Azure Resource Manager ID of the logical network or virtual network subnet for the network interface."
                 }
             },
             "vmSize": {
@@ -538,7 +539,7 @@ Follow these steps to deploy the Resource Manager template:
             {
                 "condition": "[parameters('enableVirtualDisk')]",
                 "type": "Microsoft.AzureStackHCI/virtualHardDisks",
-                "apiVersion": "2023-09-01-preview",
+                "apiVersion": "2025-09-01-preview",
                 "name": "[variables('virtualDiskName')]",
                 "location": "[parameters('location')]",
                 "extendedLocation": {
@@ -551,7 +552,7 @@ Follow these steps to deploy the Resource Manager template:
             },
             {
                 "type": "Microsoft.AzureStackHCI/networkInterfaces",
-                "apiVersion": "2023-09-01-preview",
+                "apiVersion": "2025-09-01-preview",
                 "name": "[parameters('vNicName')]",
                 "location": "[parameters('location')]",
                 "extendedLocation": {
@@ -609,6 +610,10 @@ Follow these steps to deploy the Resource Manager template:
                             }
                         ]
                     },
+	                "httpProxyConfig": {
+                        "httpProxy": "http://proxy.example.com:3128",
+                        "httpsProxy": "http://proxy.example.com:3128"
+	                },
                     "networkProfile": {
                         "networkInterfaces": [
                             {
