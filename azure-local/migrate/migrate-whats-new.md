@@ -27,7 +27,7 @@ This release includes these features and improvements:
 - **Pagination on replication, events, and jobs pages** - Improved performance and usability by adding paginated views to replication, events, and jobs pages in the Azure portal.
 - **Force delete now available for replications and migrations** - You can now forcefully stop replications and complete migrations if your target appliance becomes unresponsive or the migrate project is in a bad state. For more information, see [Can I forcefully stop replications or complete migrations?](https://go.microsoft.com/fwlink/?linkid=2335712).
 
-![force stop replication](media/migrate-whats-new/force-stop-replication.png)
+![Screenshot of force stop replication option for Azure Migrate replications to Azure Local](media/migrate-whats-new/force-stop-replication.png)
 
 ## October 2025
 
