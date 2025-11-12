@@ -48,7 +48,7 @@ Azure Local has the following features and capabilities:
 
 The following diagram illustrates the architecture and the capabilities of Azure Local for hyperconverged deployments.
 
-:::image type="content" source="media/hyperconverged-overview/azure-local-hyperconverged-solution.png" alt-text="The architecture diagram of the Azure Local solution." lightbox="media/hyperconverged-overview/azure-local-hyperconverged-solution.png":::
+:::image type="content" source="media/hyperconverged-overview/azure-local-hyperconverged-solution-reference-architecture.png" alt-text="The architecture diagram of the Azure Local solution." lightbox="media/hyperconverged-overview/azure-local-hyperconverged-solution-reference-architecture.png":::
 
 See [What's new in hyperconverged deployments of Azure Local?](../whats-new.md) for details on the latest enhancements.
 
