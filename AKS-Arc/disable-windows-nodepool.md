@@ -2,9 +2,9 @@
 title: Disable the Windows node pool feature
 description: Learn how to disable the Windows node pool feature on the 2509 release and earlier.
 ms.topic: how-to
-ms.date: 11/12/2025
-author: rcheeran
-ms.author: rcheeran 
+ms.date: 09/25/2025
+author: sethmanheim
+ms.author: sethm 
 ms.reviewer: sethm
 ms.lastreviewed: 09/25/2025
 

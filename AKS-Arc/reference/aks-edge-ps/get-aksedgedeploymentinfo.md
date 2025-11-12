@@ -1,10 +1,10 @@
 ---
 title: Get-AksEdgeDeploymentInfo for AKS Edge
-author: rcheeran
+author: sethmanheim
 description: The Get-AksEdgeDeploymentInfo PowerShell command gets AKS Edge deployment information
 ms.topic: reference
 ms.date: 02/03/2023
-ms.author: rcheeran 
+ms.author: sethm 
 ms.lastreviewed: 10/04/2022
 #ms.reviewer: jeguan
 
