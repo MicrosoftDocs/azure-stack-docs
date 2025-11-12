@@ -11,11 +11,7 @@ ms.custom: template-how-to, devx-track-azurecli
 
 # Troubleshoot bare-metal machine issues by using the run-data-extract command
 
-If you need to investigate and resolve issues with an on-premises bare-metal machine, Azure Operator Nexus provides a prescribed set of data extract commands via `az networkcloud baremetalmachine run-data-extract`. Users can employ these commands to get diagnostic data from a bare-metal machine.
-
-The `az networkcloud baremetalmachine run-data-extract` command produces an output file that contains the results of the data extract. By default, the data is sent to the Cluster Manager storage account.
-
-There's also a preview method. Users can configure the cluster resource with a storage account and an identity with access to the storage account so that it can receive the output.
+Azure Operator Nexus provides a prescribed set of data extract commands via `az networkcloud baremetalmachine run-data-extract` that help users investigate and resolve issues with on-premises bare-metal machines. Users can employ these commands to get diagnostic data from a bare-metal machine.
 
 ## Prerequisites
 
@@ -158,7 +154,7 @@ Archive:  TSR20240227164024_FM56PK3.pl.zip
 
 ### <a name = "collect-mde-agent-information"></a> Collect Microsoft Defender for Endpoint agent information
 
-You can use the `mde-agent-information` command to collect data, which is delivered in JSON format to `/hostfs/tmp/runcommand/mde-agent-information.json`. You can find the JSON file in the data extract zip file in the storage account. The script executes a sequence of `mdatp` commands on the designated bare-metal machine.
+You can use the `mde-agent-information` command to execute a sequence of `mdatp` commands on the designated bare-metal machine. The collected data is delivered in JSON format to `/hostfs/tmp/runcommand/mde-agent-information.json`. You can find the JSON file in the data extract zip file in the storage account.
 
 This example executes the `mde-agent-information` command without arguments.
 
@@ -205,7 +201,7 @@ Script execution result can be found in storage account:
 
 ### <a name = "collect-mde-support-diagnostics"></a> Collect Microsoft Defender for Endpoint support diagnostics
 
-The data that you collect by using the `mde-support-diagnostics` command employs the Microsoft Defender for Endpoint Client Analyzer tool to bundle information from `mdatp` commands and relevant log files. The storage account `tgz` file contains a `zip` file named `mde-support-diagnostics-<hostname>.zip`. You should send the ZIP file with any support requests so that support teams can use the logs for troubleshooting and root cause analysis.
+The data that you collect by using the `mde-support-diagnostics` command employs the Microsoft Defender for Endpoint Client Analyzer tool to bundle information from the `mdatp` commands and relevant log files. The storage account `tgz` file contains a `zip` file named `mde-support-diagnostics-<hostname>.zip`. You should send the ZIP file with any support requests so that support teams can use the logs for troubleshooting and root cause analysis.
 
 This example executes the `mde-support-diagnostics` command without arguments.
 
@@ -262,7 +258,7 @@ Archive:  mde-support-diagnostics-rack1compute02.zip
 
 ### Hardware rollup status
 
-You can use the `hardware-rollup-status` command to collect data, which is delivered in JSON format to `/hostfs/tmp/runcommand/rollupStatus.json`. The JSON file is found in the data extract zip file located in the storage account. The data collected shows the health of the machine subsystems.
+The `hardware-rollup-status` command collects data that reflects the health of the machine subsystems. The command writes the JSON-formatted output file to `/hostfs/tmp/runcommand/rollupStatus.json`. You can find the file in the data extract zip file in the storage account.
 
 This example executes the `hardware-rollup-status` command without arguments.
 
@@ -512,7 +508,7 @@ The CVE data is refreshed per container image every 24 hours or when there's a c
 
 ### Collect helm releases
 
-You can use the `collect-helm-releases` command to collect helm release data, which is delivered in JSON format to `{year}-{month}-{day}-helm-releases.json`. You can find the JSON file in the data extract zip file in the storage account. The data includes all helm release information from the cluster, which includes the standard data that's returned when you run the `helm list` command.
+You can use the `collect-helm-releases` command to collect helm release data, which is delivered in JSON format to `{year}-{month}-{day}-helm-releases.json`. You can find the JSON file in the data extract zip file in the storage account. The data contains all helm release information from the cluster, which includes the standard data that's returned from a `helm list` command.
 
 This example executes the `collect-helm-releases` command without arguments.
 
@@ -787,7 +783,7 @@ Script execution result can be downloaded from storage account using the command
 
 The downloaded tar.gz file contains the full output and the zipped extract command file outputs.
 
-If you use Cluster Manager storage, the command provides a link to download the full output. If you use user-provided storage, it provides another command to download the full output. The tar.gz file also contains the zipped extract command file outputs. Download the output file from the storage blob to a local directory by specifying the directory path in the optional argument `--output-directory`.
+The command output provides a prompt to download the full output from the user-provided storage account. The tar.gz file also contains the zipped extract command file outputs. Download the output file from the storage blob to a local directory by specifying the directory path in the optional argument `--output-directory`.
 
 > [!WARNING]
 > The `--output-directory` argument overwrites any files in the local directory that have the same name as the new files you create.
@@ -806,7 +802,7 @@ The storage account might be locked, and you might receive the error message: "4
 
 The functionality of the `run-data-extracts-restricted` command mirrors the nonrestricted `run-data-extracts` command and includes fine-grained access control via role-based access control (RBAC). It allows customers to run sensitive data extraction operations on bare-metal machines with elevated privileges.
 
-You can implement the `run-data-extracts-restricted` command as a new and separate API action. The action will be introduced in the `v20250701preview` and `v20250901` versions of the GA API, and will mirror the behavior of the original command but with restricted access to specific sub-commands. The following list contains the allowed sub-commands for `run-data-extracts-restricted`:
+You can execute the `run-data-extracts-restricted` command as a new and separate API action. The action will be introduced in the `v20250701preview` and `v20250901` versions of the GA API, and will mirror the behavior of the original command but with restricted access to specific sub-commands. The following list contains the allowed sub-commands for `run-data-extracts-restricted`:
 
 - [Collect Microsoft Defender for Endpoint agent information](#collect-mde-agent-information)\
   Command name: `mde-agent-information`\

@@ -11,11 +11,7 @@ ms.custom: template-how-to
 
 # Troubleshoot bare-metal machine issues by using the `run-read` command
 
-Learn how you can investigate and resolve issues with an on-premises bare-metal machine by using the `run-read` command. Azure Operator Nexus provides the `az networkcloud baremetalmachine run-read-command`. Users can employ it to run a curated list of read-only commands to get information from a bare-metal machine.
-
-The command produces an output file that contains the results of the `run-read` command execution. By default, the data is sent to the Cluster Manager storage account.
-
-There's also a preview method. Users can configure the cluster resource with a storage account and identity that has access to the storage account to receive the output.
+You can investigate and resolve issues with an on-premises bare-metal machine by using the `az networkcloud baremetalmachine run-read-command` for Azure Operator Nexus. The `run-read` command supports a curated list of read-only commands that help you get information from a bare-metal machine.
 
 ## Prerequisites
 

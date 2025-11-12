@@ -14,10 +14,10 @@ To send the command output to a specified storage account and container, see [Az
 
 ## Verify that you can access the specified storage account
 
-Before you run commands, you might want to verify that you can access the specified storage account:
+Before you run commands, verify that you can access the specified storage account:
 
 1. From the Azure portal, navigate to **Storage Account**.
 1. In **Storage Account details**, select **Storage browser** from the left menu.
 1. In **Storage browser details**, select **Blob containers**.
-1. Select the container to which you want to send the command output.
-1. If you encounter errors while accessing the storage account or container, you might need a role assignment for the storage account or container. Alternatively, you might need to update the storage account's firewall settings to include your IP address.
+1. Select the container where want to send the command output.
+1. If you encounter errors while accessing the storage account or container, verify that your role assignments are correct. If the storage account is protected by a firewall, verify that the storage account's firewall settings include your IP address.
