@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: concept-article
 ms.service: azure-local
-ms.date: 11/11/2025
+ms.date: 11/12/2025
 ---
 
 # Supported operations for Azure Local VMs enabled by Azure Arc
@@ -16,7 +16,7 @@ This article discusses the most common operations for Azure Local virtual machin
 
 ## Overview
 
-Azure Local can host [various types of VMs](../concepts/compare-vm-management-capabilities.md#types-of-vms-on-azure-local), including Azure Local VMs enabled by Azure Arc, Azure Arc-enabled servers and Unmanaged VMs. Azure Local VMs provide the highest level of management capabilities in Azure portal, second only to native Azure VMs.
+Azure Local can host [various types of VMs](../concepts/compare-vm-management-capabilities.md), including Azure Local VMs enabled by Azure Arc, Azure Arc-enabled servers and Unmanaged VMs. Azure Local VMs provide the highest level of management capabilities in Azure portal, second only to native Azure VMs.
 
 Azure Local VMs are designed to be managed through the Azure control plane and have numerous management features within the portal. However, on-premises tools offer a broader range of capabilities. These tools include System Center Virtual Machine Manager, Failover Cluster Manager, Hyper-V Manager, and Windows Admin Center. Many IT admins use these tools to manage their on-premises VMs.
 
