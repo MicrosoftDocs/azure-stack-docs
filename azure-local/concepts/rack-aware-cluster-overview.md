@@ -47,7 +47,7 @@ The use cases for Azure Local rack aware cluster include:
 - Use rack aware cluster in a manufacturing plant, in a hospital or an airport to minimize the risk of data loss or downtime in the event of a rack-level failure.
 
 > [!NOTE]
-> Azure Local rack aware cluster aren't supported with External Storage Area Network (SAN) storage for hyperconverged deployments.
+> Azure Local rack aware cluster aren't supported with External Storage Area Network (SAN).
 
 ## Review requirements
 
