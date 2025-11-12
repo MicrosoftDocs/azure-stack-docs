@@ -30,7 +30,7 @@ Before you begin, make sure to complete the following prerequisites:
 - To create VMs with static IP addresses in your address space, add a logical network with static IP allocation. Reserve an IP range with your network admin and make sure to get the address prefix for this IP range.
 
 > [!NOTE]
-> Dynamic IP allocation is not supported on Azure Local Rack Scale preview version. Only static logical networks are supported.
+> Dynamic IP allocation is not supported on Azure Local for multi-rack deployments. Only static logical networks are supported.
 >
 > When creating logical networks on multi-rack Azure Local, you must specify the IP pool with IP pool type `vm` to restrict the logical network to those IP addresses. If you specify no IP pool during logical network creation, the entire subnet address space in the L3 internal network will be dedicated to this logical network and no other logical network can be created on this L3 internal network. You can create multiple logical networks on the same L3 internal network with non-overlapping IP pools.
 
