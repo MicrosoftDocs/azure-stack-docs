@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 11/07/2025
+ms.date: 11/12/2025
 ---
 
 # Use Role-based Access Control to manage Azure Local VMs for multi-rack deployments (Preview)
@@ -14,7 +14,7 @@ ms.date: 11/07/2025
 
 This article describes how to use Role-based Access Control (RBAC) to control access to Azure Local virtual machines (VMs) for multi-rack deployments.
 
-You can use the RBAC roles to control access to VMs and VM resources such as virtual disks, network interfaces, VM images, logical networks and virtual networks. You can assign these roles to users, groups, service principals, and managed identities.
+You can use the RBAC roles to control access to VMs and VM resources such as virtual disks, network interfaces, VM images, logical networks, and virtual networks. You can assign these roles to users, groups, service principals, and managed identities.
 
 ## Multi-team operational model 
 
