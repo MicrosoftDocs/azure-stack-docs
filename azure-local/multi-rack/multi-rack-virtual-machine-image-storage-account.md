@@ -1,23 +1,23 @@
 ---
-title: Create Azure Local VM image for multi-rack deployments using Azure Storage account (Preview)
+title: Create Azure Local VM images for multi-rack deployments using Azure Storage account (Preview)
 description: Learn how to create Azure Local VMs for multi-rack deployments using source images from Azure Storage account via Azure portal and Azure CLI. (Preview)
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 11/10/2025
+ms.date: 11/12/2025
 ---
 
-# Create Azure Local VM image for multi-rack deployments using Azure Storage account (Preview)
+# Create Azure Local VM images for multi-rack deployments using Azure Storage account (Preview)
 
 [!INCLUDE [multi-rack-applies-to-preview](../includes/multi-rack-applies-to-preview.md)]
 
-This article describes how to create Azure Local VMs for multi-rack deployments using source images from the Azure Storage account. You can create VM images using Azure CLI and then use these images to create Azure Local VMs.
+This article describes how to create Azure Local virtual machines (VMs) for multi-rack deployments using source images from the Azure Storage account. You can create VM images using Azure Command Line Interface (CLI) and then use these images to create Azure Local VMs.
 
 
 ## Prerequisites
 
-For custom images in the Azure Storage account,make sure that the following prerequisites are met:
+For custom images in the Azure Storage account, make sure that the following prerequisites are met:
 
 - You should have a VHD loaded in your Azure Storage account. For more information, see [Upload a VHD image in your Azure Storage account](/azure/databox-online/azure-stack-edge-gpu-create-virtual-machine-image#copy-vhd-to-storage-account-using-azcopy). 
 
@@ -111,55 +111,55 @@ PS C:\Users\azcli> $imageSourcePath = '"https://vmimagevhdsa1.blob.core.windows.
     ```
     A deployment job starts for the VM image. 
 
-The image deployment takes a few minutes to complete. The time taken to download the image depends on the size of the image in Azure Storage account and the network bandwidth available for the download.
+    The image deployment takes a few minutes to complete. The time taken to download the image depends on the size of the image in Azure Storage account and the network bandwidth available for the download.
 
-Here's a sample output:
+    Here's a sample output:
 
-```
-PS > $customLocationID=(az customlocation show --resource-group $resource_group --name "mylocal-cl" --query id -o tsv)
-PS C:\Users\azcli> az stack-hci-vm image create --subscription $subscription --resource-group $resource_Group --custom-location $customLocationID --location $location --name $imageName --os-type $osType --image-path $imageSourcePath
+    ```output
+    PS > $customLocationID=(az customlocation show --resource-group $resource_group --name "mylocal-cl" --query id -o tsv)
+    PS C:\Users\azcli> az stack-hci-vm image create --subscription $subscription --resource-group $resource_Group --custom-location $customLocationID --location $location --name $imageName --os-type $osType --image-path $imageSourcePath
 
-Command group 'stack-hci-vm' is experimental and under development. Reference and support levels: https://aka.ms/CLI_refstatus
-{
-  "extendedLocation": {
-    "name": "/subscriptions/<Subscription ID>/resourceGroups/mylocal-rg/providers/Microsoft.ExtendedLocation/customLocations/mylocal-cl",
-    "type": "CustomLocation"
-  },
-  "id": "/subscriptions/<Subscription ID>/resourceGroups/mylocal-rg/providers/Microsoft.AzureStackHCI/galleryimages/mylocal-storacctimage",
-  "location": "eastus",
-  "name": "windos",
-  "properties": {
-    "identifier": null,
-    "imagePath": null,
-    "osType": "Windows",
-    "provisioningState": "Succeeded",
-    "status": {
-      "downloadStatus": {
-        "downloadSizeInMB": 7876
+    Command group 'stack-hci-vm' is experimental and under development. Reference and support levels: https://aka.ms/CLI_refstatus
+    {
+      "extendedLocation": {
+        "name": "/subscriptions/<Subscription ID>/resourceGroups/mylocal-rg/providers/Microsoft.ExtendedLocation/customLocations/mylocal-cl",
+        "type": "CustomLocation"
       },
-        "progressPercentage": 100,
-      "provisioningStatus": {
-        "operationId": "cdc9c9a8-03a1-4fb6-8738-7a8550c87fd1*31CE1EA001C4B3E38EE29B78ED1FD47CCCECF78B4CEA9E9A85C0BAEA5F6D80CA",
-        "status": "Succeeded"
-      }
-    },
-    "storagepathId": "/subscriptions/<Subscription ID>/resourceGroups/mylocal-rg/providers/Microsoft.AzureStackHCI/storagecontainers/mylocal-storagepath",
-    "version": null
-  },
-  "resourceGroup": "mylocal-rg",
-  "systemData": {
-    "createdAt": "2023-11-03T20:17:10.971662+00:00",
-    "createdBy": "guspinto@contoso.com",
-    "createdByType": "User",
-    "lastModifiedAt": "2023-11-03T21:08:01.190475+00:00",
-    "lastModifiedBy": "319f651f-7ddb-4fc6-9857-7aef9250bd05",
-    "lastModifiedByType": "Application"
-  },
-  "tags": null,
-  "type": "microsoft.azurestackhci/galleryimages"
-}
-PS C:\Users\azcli>
-```
+      "id": "/subscriptions/<Subscription ID>/resourceGroups/mylocal-rg/providers/Microsoft.AzureStackHCI/galleryimages/mylocal-storacctimage",
+      "location": "eastus",
+      "name": "windos",
+      "properties": {
+        "identifier": null,
+        "imagePath": null,
+        "osType": "Windows",
+        "provisioningState": "Succeeded",
+        "status": {
+          "downloadStatus": {
+            "downloadSizeInMB": 7876
+          },
+            "progressPercentage": 100,
+          "provisioningStatus": {
+            "operationId": "cdc9c9a8-03a1-4fb6-8738-7a8550c87fd1*31CE1EA001C4B3E38EE29B78ED1FD47CCCECF78B4CEA9E9A85C0BAEA5F6D80CA",
+            "status": "Succeeded"
+          }
+        },
+        "storagepathId": "/subscriptions/<Subscription ID>/resourceGroups/mylocal-rg/providers/Microsoft.AzureStackHCI/storagecontainers/mylocal-storagepath",
+        "version": null
+      },
+      "resourceGroup": "mylocal-rg",
+      "systemData": {
+        "createdAt": "2023-11-03T20:17:10.971662+00:00",
+        "createdBy": "guspinto@contoso.com",
+        "createdByType": "User",
+        "lastModifiedAt": "2023-11-03T21:08:01.190475+00:00",
+        "lastModifiedBy": "319f651f-7ddb-4fc6-9857-7aef9250bd05",
+        "lastModifiedByType": "Application"
+      },
+      "tags": null,
+      "type": "microsoft.azurestackhci/galleryimages"
+    }
+    PS C:\Users\azcli>
+    ```
 
 ## List VM images
 
@@ -187,70 +187,70 @@ Follow these steps to list VM images using Azure CLI.
 
     These images include custom images that reside in your Azure Storage account.
 
-Here's a sample output.
+    Here's a sample output.
 
-```
-PS C:\Users\azcli> az stack-hci-vm image list --subscription "<Subscription ID>" --resource-group "myhci-rg"
-Command group 'stack-hci-vm' is experimental and under development. Reference and support levels: https://aka.ms/CLI_refstatus
-[
-  {
-    "extendedLocation": {
-      "name": "/subscriptions/<Subscription ID>/resourcegroups/myhci-rg/providers/microsoft.extendedlocation/customlocations/myhci-cl",
-      "type": "CustomLocation"
-    },
-    "id": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/microsoft.azurestackhci/marketplacegalleryimages/w
-inServer2022Az-01",
-    "location": "eastus",
-    "name": "winServer2022Az-01",
-    "properties": {
-      "hyperVGeneration": "V2",
-      "identifier": {
-        "offer": "windowsserver",
-        "publisher": "microsoftwindowsserver",
-        "sku": "2022-datacenter-azure-edition-core"
-      },
-      "imagePath": null,
-      "osType": "Windows",
-      "provisioningState": "Succeeded",
-      "status": {
-        "downloadStatus": {
-          "downloadSizeInMB": 6710
+    ```output
+    PS C:\Users\azcli> az stack-hci-vm image list --subscription "<Subscription ID>" --resource-group "myhci-rg"
+    Command group 'stack-hci-vm' is experimental and under development. Reference and support levels: https://aka.ms/CLI_refstatus
+    [
+      {
+        "extendedLocation": {
+          "name": "/subscriptions/<Subscription ID>/resourcegroups/myhci-rg/providers/microsoft.extendedlocation/customlocations/myhci-cl",
+          "type": "CustomLocation"
         },
-        "progressPercentage": 100,
-        "provisioningStatus": {
-          "operationId": "19742d69-4a00-4086-8f17-4dc1f7ee6681*E1E9889F0D1840B93150BD74D428EAE483CB67B0904F9A198C161AD471F670ED",
-          "status": "Succeeded"
-        }
-      },
-      "storagepathId": null,
-      "version": {
-        "name": "20348.2031.231006",
+        "id": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/microsoft.azurestackhci/marketplacegalleryimages/w
+    inServer2022Az-01",
+        "location": "eastus",
+        "name": "winServer2022Az-01",
         "properties": {
-          "storageProfile": {
-            "osDiskImage": {
-              "sizeInMB": 130050
+          "hyperVGeneration": "V2",
+          "identifier": {
+            "offer": "windowsserver",
+            "publisher": "microsoftwindowsserver",
+            "sku": "2022-datacenter-azure-edition-core"
+          },
+          "imagePath": null,
+          "osType": "Windows",
+          "provisioningState": "Succeeded",
+          "status": {
+            "downloadStatus": {
+              "downloadSizeInMB": 6710
+            },
+            "progressPercentage": 100,
+            "provisioningStatus": {
+              "operationId": "19742d69-4a00-4086-8f17-4dc1f7ee6681*E1E9889F0D1840B93150BD74D428EAE483CB67B0904F9A198C161AD471F670ED",
+              "status": "Succeeded"
+            }
+          },
+          "storagepathId": null,
+          "version": {
+            "name": "20348.2031.231006",
+            "properties": {
+              "storageProfile": {
+                "osDiskImage": {
+                  "sizeInMB": 130050
+                }
+              }
             }
           }
-        }
+        },
+        "resourceGroup": "mylocal-rg",
+        "systemData": {
+          "createdAt": "2023-10-30T21:44:53.020512+00:00",
+          "createdBy": "guspinto@contoso.com",
+          "createdByType": "User",
+          "lastModifiedAt": "2023-10-30T22:08:25.495995+00:00",
+          "lastModifiedBy": "319f651f-7ddb-4fc6-9857-7aef9250bd05",
+          "lastModifiedByType": "Application"
+        },
+        "tags": {},
+        "type": "microsoft.azurestackhci/    marketplacegalleryimages"
       }
-    },
-    "resourceGroup": "mylocal-rg",
-    "systemData": {
-      "createdAt": "2023-10-30T21:44:53.020512+00:00",
-      "createdBy": "guspinto@contoso.com",
-      "createdByType": "User",
-      "lastModifiedAt": "2023-10-30T22:08:25.495995+00:00",
-      "lastModifiedBy": "319f651f-7ddb-4fc6-9857-7aef9250bd05",
-      "lastModifiedByType": "Application"
-    },
-    "tags": {},
-    "type": "microsoft.azurestackhci/marketplacegalleryimages"
-  }
-]
-PS C:\Users\azcli>
-```
+    ]
+    PS C:\Users\azcli>
+    ```
 
-For more information on this CLI command, see [az stack-hci-vm image list](/cli/azure/stack-hci-vm/image#az-stack-hci-vm-image-list).
+    For more information on this CLI command, see [az stack-hci-vm image list](/cli/azure/stack-hci-vm/image#az-stack-hci-vm-image-list).
 
 ## View VM image properties
 
@@ -281,7 +281,7 @@ Follow these steps to use Azure CLI to view properties of an image:
 
         Here's a sample output for this command:
 
-        ```
+        ```output
         PS C:\Users\azcli> az stack-hci-vm image show --ids $mktplaceImageID
         Command group 'stack-hci-vm' is experimental and under development. Reference and support levels: `https://aka.ms/CLI_refstatus`
         {
@@ -316,79 +316,6 @@ Follow these steps to use Azure CLI to view properties of an image:
         }
         PS C:\Users\azcli> 
         ```
-<!--
-1.	Take the following steps when specifying name and resource group.
-
-    1. Set the following parameters:
-    
-        ```azurecli
-        $mktplaceImage = "mylocal-marketplaceimage"
-        $resource_group = "mylocal-rg"    
-        ```
-    
-    1. Run the following command to view the properties:
-    
-        ```azurecli
-        az azurestackhci image show --name $MktplaceImage --resource-group $Resource_Group
-        ```
-    	
-        Here's a sample output:
-
-         ```azurecli
-            PS C:\Users\azcli> az stack-hci-vm image show --ids $mktplaceImageID
-            Command group 'stack-hci-vm' is experimental and under development. Reference and support levels: https://aka.ms/CLI_refstatus
-            {
-              "extendedLocation": {
-                "name": "/subscriptions/<Suscription ID>/resourceGroups/myhci-rg/providers/Microsoft.ExtendedLocation/customLocations/cluster-638d2f5b237b4af6978885a2885d3ef4-mocarb-cl",
-                "type": "CustomLocation"
-              },
-              "id": "/subscriptions/<Suscription ID>/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/marketplacegalleryimages/mylocal-marketplaceimage",
-              "location": "eastus",
-              "name": "mylocal-marketplaceimage",
-              "properties": {
-                "identifier": {
-                  "offer": "windowsserver",
-                  "publisher": "microsoftwindowsserver",
-                  "sku": "2022-datacenter-azure-edition-core"
-                },
-                "imagePath": null,
-                "osType": "Windows",
-                "provisioningState": "Accepted",
-                "status": {
-                  "downloadStatus": {
-                    "downloadSizeInMB": 3932
-                  },
-                  "progressPercentage": 57,
-                  "provisioningStatus": {}
-                },
-                "storagepathId": null,
-                "version": {
-                  "name": "20348.2031.231006",
-                  "properties": {
-                    "storageProfile": {
-                      "osDiskImage": {
-                        "sizeInMB": 130050
-                      }
-                    }
-                  }
-                }
-              },
-              "resourceGroup": "mylocal-rg",
-              "systemData": {
-                "createdAt": "2023-10-27T21:43:15.920502+00:00",
-                "createdBy": "guspinto@contoso.com",
-                "createdByType": "User",
-                "lastModifiedAt": "2023-10-27T21:43:15.920502+00:00",
-                "lastModifiedBy": "guspinto@contoso.com",
-                "lastModifiedByType": "User"
-              },
-              "tags": null,
-              "type": "microsoft.azurestackhci/marketplacegalleryimages"
-            }
-            PS C:\Users\azcli>
-   
- -->        ```
-
 
 ## Delete VM image
 
@@ -431,4 +358,4 @@ PS C:\Users\azcli>
 
 ## Next steps
 
-- [Create logical networks](../manage/create-logical-networks.md)
+- [Create logical networks](../manage/create-logical-networks.md).
