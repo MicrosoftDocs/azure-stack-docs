@@ -4,11 +4,11 @@ description: Review the prerequisites for Azure Local multi-rack deployments (pr
 author: sipastak
 ms.author: sipastak
 ms.service: azure-local
-ms.date: 11/07/2025
+ms.date: 11/12/2025
 ms.topic: conceptual
 ---
 
-# Azure Local multi-rack deployment prerequisites (Preview)
+# Prerequisites for multi-rack deployments of Azure Local (Preview)
 
 [!INCLUDE [multi-rack-applies-to-preview](../includes/multi-rack-applies-to-preview.md)]
 
@@ -25,7 +25,7 @@ In subsequent multi-rack deployments, you'll only need to create the NFC and CM 
 
 Install latest version of the necessary [CLI extensions](multi-rack-cli-extensions.md).
 
-### Azure subscription sign-in
+### Sign into your Azure subscription
 
 ```azurecli
   az login
@@ -36,7 +36,7 @@ Install latest version of the necessary [CLI extensions](multi-rack-cli-extensio
 >[!NOTE]
 >Your account must have permissions to read, write, and publish in the subscription.
 
-## Resource provider registration
+## Register resource providers
 
 Ensure access to the necessary Azure resource providers for the Azure subscription for multi-rack resources. Register the following resource providers:
 
@@ -70,11 +70,11 @@ az provider register --namespace Microsoft.NexusIdentity
 
 ## EncryptionAtHost feature registration
 
-You must enable the [EncryptionAtHost](/azure/virtual-machines/linux/disks-enable-host-based-encryption-cli) feature for your subscription. Use the following steps to enable the feature for your subscription:
+You must enable the [EncryptionAtHost](/azure/virtual-machines/linux/disks-enable-host-based-encryption-cli) feature for your subscription. Use the following steps to enable the feature for your subscription.
 
 ### Register the EncryptionAtHost feature
 
-Execute the following command to register the feature for your subscription
+Execute the following command to register the feature for your subscription:
 
 ```Azure CLI
 az feature register --namespace Microsoft.Compute --name EncryptionAtHost
@@ -82,7 +82,7 @@ az feature register --namespace Microsoft.Compute --name EncryptionAtHost
 
 ### Verify the registration state
 
-Confirm that the registration state is `Registered` (registration might take a few minutes) using the following command before trying out the feature.
+Confirm that the registration state is `Registered` (registration might take a few minutes) using the following command before trying out the feature:
 
 ```Azure CLI
 az feature show --namespace Microsoft.Compute --name EncryptionAtHost
@@ -96,7 +96,7 @@ az provider register --namespace Microsoft.Compute
 
 Ensure that the registration state is `Registered`.
 
-## Dependent Azure resources setup
+## Set up dependent Azure resources
 
 Create and set up the following resources:
 

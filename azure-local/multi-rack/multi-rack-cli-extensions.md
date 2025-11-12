@@ -1,20 +1,28 @@
 ---
-title: "Install CLI extensions for Azure Local multi-rack deployments (Preview)"
-description: Learn to install the needed Azure CLI extensions for Azure Local multi-rack deployments (preview).
+title: "Install CLI extensions for Azure Local Multi-Rack Deployments (Preview)"
+description: Learn to install the needed Azure CLI extensions for Azure Local multi-rack deployments (Preview).
 author: sipastak
 ms.author: sipastak
 ms.service: azure-local
 ms.topic: how-to
-ms.date: 11/10/2025
+ms.date: 11/12/2025
 ---
 
-# Install Azure CLI extensions for Azure Local multi-rack deployments (Preview)
+# Install Azure CLI extensions for multi-rack deployments of Azure Local (Preview)
 
-This article explains how to install the required Azure CLI extensions for Azure Local multi-rack deployments.
+[!INCLUDE [multi-rack-applies-to-preview](../includes/multi-rack-applies-to-preview.md)]
+
+This article explains how to install the required Azure CLI extensions for multi-rack deployments of Azure Local.
+
+[!INCLUDE [hci-preview](../includes/hci-preview.md)]
+
+## Install Azure CLI
 
 Ensure Azure CLI is installed before the installing the extensions. Follow [Install Azure CLI](/cli/azure) instructions to install it.
 
-Install the following CLI extensions:
+## Install required Azure CLI extensions
+
+See the following sections to install the required Azure CLI extensions:
 
 - `networkcloud` for Microsoft.NetworkCloud APIs
 - `managednetworkfabric` for Microsoft.ManagedNetworkFabric APIs
@@ -24,7 +32,7 @@ Install the following CLI extensions:
 > Any upgrade of the Azure CLI downloads the latest stable version of the installed extension.
 > The `--allow-preview=True` needs to be explicitly set to install the preview version of the extensions.
 
-## Install the `networkcloud` CLI extension
+### Install the `networkcloud` CLI extension
 
 For the list of available versions, see [the extension release history](https://github.com/Azure/azure-cli-extensions/blob/main/src/networkcloud/HISTORY.rst).
 
@@ -41,7 +49,7 @@ For the list of available versions, see [the extension release history](https://
     az networkcloud --help
     ```
 
-## Install the `managednetworkfabric` CLI extension
+### Install the `managednetworkfabric` CLI extension
 
 For the list of available versions, see [the extension release history](https://github.com/Azure/azure-cli-extensions/blob/main/src/managednetworkfabric/HISTORY.rst).
 
@@ -58,7 +66,7 @@ For the list of available versions, see [the extension release history](https://
     az networkfabric --help
     ```
 
-## Install the `stack-hci-vm` CLI extension
+### Install the `stack-hci-vm` CLI extension
 
 - Upgrade any previously installed version of the extension.
 
@@ -73,7 +81,7 @@ For the list of available versions, see [the extension release history](https://
     az stack-hci-vm --help
     ```
 
-## Install other Azure extensions
+### Install other Azure extensions
 
 Install the other Azure CLI extensions that multi-rack makes use of:
 
