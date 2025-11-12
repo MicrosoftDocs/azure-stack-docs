@@ -11,7 +11,7 @@ ms.custom: template-concept
 
 # Secret rotation in Nexus Network Fabric
 
-Azure Operator Nexus Network Fabric enables API-driven, fabric-scoped operator password rotation for Nexus Network Fabric in release 9.2 and Nexus Network Fabric GA API version *2025-07-15 f* or both GF and BF instances. It replaces manual, ticket-based flows with a predictable, automatable operation by using the Azure CLI. The rotation runs as a long-running Azure Resource Manager action for reliability and transient fault tolerance at scale.
+Azure Operator Nexus Network Fabric enables API-driven, fabric-scoped operator password rotation for Nexus Network Fabric in release 9.2 and Nexus Network Fabric general availability (GA) API version 2025-07-15 for both GF and BF instances. It replaces manual, ticket-based flows with a predictable, automatable operation by using the Azure CLI. The rotation runs as a long-running Azure Resource Manager action for reliability and transient fault tolerance at scale.
 
 When rotation is triggered, the service securely generates and updates operator credentials on Terminal Server and supported devices. Secrets are stored by using Azure Key Vault secret versioning, which allows safe rollback and continuity during partial updates. Fabrics can temporarily operate in a split-key state until devices converge via resync. Deterministic outcomes are provided per device along with a fabric-level status.
 
@@ -24,25 +24,25 @@ When rotation is triggered, the service securely generates and updates operator 
    * AzureOperatorRW
    * TelcoRO
    * TelcoRW
-   * TelcoRO1 to TelcoRO14 (depends upon the feature flag also known as MethodDv1.5 feature req)
-   * TelcoRW1 and TelcoRW2 (depends upon the feature flag also known as MethodDv1.5 feature req)
+   * TelcoRO1 to TelcoRO14 (depends upon the feature flag also known as MethodDv1.5 feature request)
+   * TelcoRW1 and TelcoRW2 (depends upon the feature flag also known as MethodDv1.5 feature request)
    * Terminal Server password
 
-- The service leverages the versioning capability of Azure Key Vault when multiple sets of passwords exist. The service uses the new secrets template to generate secrets.
-- The service enables support to provide a deterministic status of the executed rotation. It provides a deterministic status: lastRotationTime, overall state, per-device success/failure lists, unique Password Set Count. The configured key vault has the latest copy of the password corresponding device users.
+- The service uses the versioning capability of Azure Key Vault when multiple sets of passwords exist. The service uses the new secrets template to generate secrets.
+- The service enables support to provide a deterministic status of the executed rotation. It provides a deterministic status like the last rotation time, overall state, per-device success/failure lists, and unique password set count. The configured key vault has the latest copy of the password corresponding to device users.
 - The service provides targeted resync: device-scope resync operations (single device by Azure Resource Manager ID) to rotate the password for a specific device and also secure secret handling with Azure Key Vault secret versioning.
-- The service continues to support split-key continuity supported until convergence.
+- The service continues to support split-key continuity, which is supported until convergence.
 
 ## Limitations/constraints
 
 ### Password rotation API behavior
 
-- Password rotation via API is blocked when Fabric is administratively locked.
-- During password rotation, service moves fabric to maintenance mode and certain actions such as commit, RMA, and device disablement aren't available.
-- Passwords shall not be rotated for the specific device when the device is in an administrative state (disabled). This occurs during RMA, under maintenance, or in cases where the device isn't provisioned. You must enable the device via a post action to retry rotations.
-- The service moves the fabric configuration state to successful after the rotation post action is completed. When there are failed devices, the status of the rotation shows the appropriate states with details about the failed devices.
-- If password rotation failed on any device service moves to Device state Deferred control. You can use resync passwords on specific device resources to retry password rotation on failed devices. You can't perform RMA, disabling of devices in such a scenario.
-- Previously, device passwords were stored in the Network Fabric Controller key vault under several different names. Only the following naming convention is used for generating secrets (format is aligned across Nexus). All older naming conventions will be retired post 9.2 for GF and BF after migrated via API rotation or the new Geneva action.
+- Password rotation via API is blocked when Nexus Network Fabric is administratively locked.
+- During password rotation, the service moves fabric to maintenance mode and certain actions, such as commit, RMA, and device disablement, aren't available.
+- Passwords aren't rotated for the specific device when the device is in an administrative state (disabled). This occurs during RMA, under maintenance, or in cases where the device isn't provisioned. You must enable the device via a POST action to retry rotations.
+- The service moves the fabric configuration state to successful after the rotation POST action is finished. When there are failed devices, the status of the rotation shows the appropriate states with details about the failed devices.
+- If password rotation failed on any device, the service moves to Device state Deferred control. You can use resync passwords on specific device resources to retry password rotation on failed devices. You can't perform RMA, disabling of devices in such a scenario.
+- Previously, device passwords were stored in the Network Fabric Controller key vault under several different names. Only the following naming convention is used for generating secrets (format is aligned across Nexus). All older naming conventions will be retired post 9.2 for GF and BF after migration via API rotation or the new Geneva action.
 - Secrets are stored in the Network Fabric Controller key vault as before: `<subscription ID>-<resource group name>-<fabric name>-<username>-devicePassword-<deterministic hash>`. An example is # device password:
    `00000000-0000-0000-0000-000000000000-exampleRG-exampleFabric-admin-devicePassword-4418bf71`.
 
@@ -64,13 +64,13 @@ When rotation is triggered, the service securely generates and updates operator 
            “secretType”: “Admin user password”
          },
     ```
-- When bring your own key vault becomes available, secrets are copied to your key vault in the same format, as shown in the preceding example.
-- On Fabric resource, the capability to delete all secrets that pertain to Fabric is purged from the Network Fabric Controller key vault (similar to present-day behavior).
+- When the bring your own key vault becomes available, secrets are copied to your key vault in the same format, as shown in the preceding example.
+- On the Nexus Network Fabric resource, the capability to delete all secrets that pertain to Nexus Network Fabric is purged from the Network Fabric Controller key vault (similar to present-day behavior).
 - Password rotation behavior with other common workflows:
 
-    | Scenario | User action (recommended) | Fabric state updates | Device state updates | Password/certificate rotation notes |
+    | Scenario | User action (recommended) | Nexus Network Fabric state updates | Device state updates | Password/certificate rotation notes |
     | --- | --- | --- | --- | --- |
-    | Commit operation | 1\. You must perform password rotation only after the commit batch was either successful or failed. <br><br>&nbsp;<br><br>&nbsp; | 1\. Administrative state: Accepted <br><br>&nbsp; | Not available  | Password rotation isn't catered while the fabric state is in the accepted state. |
+    | Commit operation | 1\. You must perform password rotation only after the commit batch was either successful or failed. <br><br>&nbsp;<br><br>&nbsp; | 1\. Administrative state: Accepted <br><br>&nbsp; | Not available  | Password rotation isn't catered while the Nexus Network Fabric state is in the accepted state. |
     | Upgrade | 1. You must perform password rotation or a resync operation only after the upgrade was successful. | 1. Administrative state: Under maintenance | 1. Administrative state: Under maintenance | Password rotation isn't catered while the fabric is under the upgrade or the upgrade failure state. |
     | Device Disabled (one or more devices) | 1. You must enable all devices before you perform password rotation. <br><br>&nbsp; | Administrative state:  Enabled | Administrative state: Enabled/Deferred control (if Persist RW configuration exists) | 1. Password rotation is catered. |
     |     | 2. If Device enablement fails because of a connectivity issue: You must perform reboot with zero touch provisioning (ZTP) and perform device enablement. | Administrative state: Enabled | Administrative state: Disabled | Password is catered to post enablement of the device. |

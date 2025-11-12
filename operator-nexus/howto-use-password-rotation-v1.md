@@ -146,6 +146,6 @@ Sample output (based on latest GA example fields):
 
 ## Troubleshooting
 
-* **BadRequest/Operation not allowed:** Fabric is in a conflicting workflow (commit/upgrade). Wait to complete, and then retry.
+* **BadRequest/Operation not allowed:** Fabric is in a conflicting workflow (commit/upgrade). Wait for the operation to finish, and then retry.
 * **Devices remain under failedDeviceIds:** Ensure that the device Administrative state is Enabled, and then run a resync.
-* **Rotation accepted but no progress:** Verify that Nexus Network Fabric 9.2, GA API 2025-07-15, is enabled and the feature flag is active.
+* **Rotation accepted but no progress:** Verify that Nexus Network Fabric 9.2 GA API 2025-07-15 is enabled and that the feature flag is active.

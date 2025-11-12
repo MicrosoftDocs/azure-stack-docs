@@ -20,29 +20,29 @@ The following tables provide a reference for how the outbound rules appear withi
 
 The simplified flow of traffic is:
 
-- **Infrastructure traffic** → Infra proxy allow list → Azure Firewall  
-- **Tenant traffic** → CSN allow list → Azure Firewall
+- **Infrastructure traffic** → infrastructure proxy allow list → Azure Firewall  
+- **Tenant traffic** → cloud services network (CSN) allow list → Azure Firewall
 
 :::image type="content" source="media/network-fabric-controller-virtual-network.png" alt-text="Diagram that shows Network Fabric Controller virtual networks." lightbox="media/network-fabric-controller-virtual-network.png":::
 
 ## Tenant/CSN
 
-The following *network rules* and *application rules* are used to allow list Network Fabric Controller traffic from version 6.5 and later. These rules will also apply to Cluster Manager (CM) traffic in future releases.
+The following *network rules* and *application rules* are used to allow list Network Fabric Controller traffic from version 6.5 and later. These rules will also apply to Cluster Manager traffic in future releases.
 
 ### Network rules
 
-Network rules allow the following list of protocol, port, and service tags.
+Network rules allow the following list of protocols, ports, and service tags.
 
 | Protocol | Port | Destination (service tag) |
 | -------- | ---- | ------------------------- |
-| TCP      | 443  | AzureActiveDirectory      |
-| TCP      | 443  | AzureTrafficManager       |
-| TCP      | 443  | AzureResourceManager      |
-| TCP      | 443  | AzureArcInfrastructure    |
-| TCP      | 443  | Storage                   |
-| TCP      | 443  | AzureMonitor              |
-| TCP      | 443  | AzureContainerRegistry    |
-| TCP      | 443  | AzureKubernetesService    |
+| TCP      | 443  | `AzureActiveDirectory`      |
+| TCP      | 443  | `AzureTrafficManager`       |
+| TCP      | 443  | `AzureResourceManager`      |
+| TCP      | 443  | `AzureArcInfrastructure`    |
+| TCP      | 443  | `Storage`                   |
+| TCP      | 443  | `AzureMonitor`              |
+| TCP      | 443  | `AzureContainerRegistry`    |
+| TCP      | 443  | `AzureKubernetesService`    |
 
 ### Application rules
 
@@ -56,4 +56,4 @@ Application rules allow the following list of protocols, ports, and fully qualif
 | HTTP   | 80   | `archive.ubuntu.com` <br> `*.mp.microsoft.com` <br> `www.msftconnecttest.com` <br> `ctldl.windowsupdate.com` <br> `crl3.digicert.com` <br> `ocsp.digicert.com` <br> `*.digicert.com` <br> `crl.microsoft.com`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 
 > [!NOTE]
-> The `region` placeholder represents the actual Azure region name where the resource is deployed. Some examples are eastus, westeurope, and centralindia.
+> The `region` placeholder represents the actual Azure region name where the resource is deployed. Some examples are `eastus`, `westeurope`, and `centralindia`.
