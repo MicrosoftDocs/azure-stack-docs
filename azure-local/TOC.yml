@@ -733,7 +733,7 @@ items:
   - name: Deploy
     items:
     - name: Complete deployment prerequisites
-      href: ./multi-rack/multi-rack-prequisites.md
+      href: ./multi-rack/multi-rack-prerequisites.md
     - name: Deploy Azure Local VM workloads
       items:
       - name: Complete Azure Local VM prerequisites
