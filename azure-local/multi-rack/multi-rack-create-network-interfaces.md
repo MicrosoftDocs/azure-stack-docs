@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.reviewer: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 11/07/2025
+ms.date: 11/12/2025
 ---
 
 # Create network interfaces for Azure Local VMs for multi-rack deployments (Preview)
@@ -44,7 +44,7 @@ In the Azure portal, you create a network interface during the VM creation flow.
 To create a VM, you'll first need to create a network interface on your logical network or virtual network.
 
 > [!NOTE]
-> Only static logical networks are supported in Azure Local Rack Scale preview version.
+> Only static logical networks are supported in Azure Local for multi-rack deployments.
 
 # [Azure CLI](#tab/azurecli)
 
@@ -263,7 +263,7 @@ Follow these steps to create a network interface on your static virtual network.
 
     }  
     ```
-You can use this network interface to create a VM. For more information, see [Create a VM]. 
+You can use this network interface to create a VM. For more information. 
 
 # [Azure portal](#tab/azureportal)
 
