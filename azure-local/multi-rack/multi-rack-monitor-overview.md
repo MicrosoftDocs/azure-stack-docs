@@ -4,7 +4,7 @@ description: This article provides an overview of the Azure Local monitoring sol
 ms.author: alkohli
 ms.topic: overview
 author: alkohli
-ms.date: 11/11/2025
+ms.date: 11/12/2025
 ---
 
 # What is monitoring for multi-rack deployments of Azure Local? (Preview)
@@ -20,8 +20,6 @@ To understand the current performance patterns, identify performance anomalies, 
 [!INCLUDE [hci-preview](../includes/hci-preview.md)]
 
 ## High-level architecture
-
-<!--I've moved the architecture section towards the top and merged the key observability framework components content. Please review and confirm.-->
 
 At a high-level, the monitoring architecture includes:
 
@@ -72,6 +70,36 @@ You can stream these logs to the following targets by configuring [Diagnostic Se
 - Storage Account
 - Event Hubs
 
+#### Cluster
+
+| Log categories | Description |
+|--|:-|
+| Kubernetes Logs | Logs emitted by the Kubernetes containers |
+| VM Orchestration Logs | Logs emitted by the hypervisor service |
+
+#### Bare metal servers
+
+| Log categories | Categories | Description |
+|--|:-|:-|
+| System | Debug, Info, Notice, Warning, Error, Critical | System logs from the Bare metal server |
+| Security | Debug, Info, Notice, Warning, Error, Critical, Defender, BreakGlass Audit | Security logs from the Bare metal server |
+
+#### Storage appliance
+
+| Log categories | Description |
+|--|:-|
+| Storage Appliance logs | System Logs from Storage Appliance |
+| Storage Appliance audits | Audit Logs from Storage Appliance |
+| Storage Appliance alerts | Alert logs from Storage Appliance |
+
+>[!NOTE]
+> Storage appliance audit and alert logs are specific to a single storage appliance. Instances with multiple storage appliances have different tables for each storage appliance. System logs have a single table for all storage appliances in the instance.
+
+#### Cluster Manager
+
+| Log categories | Description |
+|--|:-|
+| Cluster Manager Deploy or Upgrade Logs | Logs emitted during the deployment or upgrade of the Cluster from Cluster Manager |
 
 ### Alerts
 
@@ -92,33 +120,6 @@ The following table provides a brief description and setup instructions for each
 | Recommended alerts | These are predefined metric-based alerts for your system resource. These alerts provide you with initial monitoring for a common set of metrics using recommended alert templates | See [Recommended health alerts](../index.yml). |
 
 
-### Cluster
+## Next steps
 
-| Log categories | Description |
-|--|:-|
-| Kubernetes Logs | Logs emitted by the Kubernetes containers |
-| VM Orchestration Logs | Logs emitted by the hypervisor service |
-
-### Bare metal servers
-
-| Log categories | Categories | Description |
-|--|:-|:-|
-| System | Debug, Info, Notice, Warning, Error, Critical | System logs from the Bare metal server |
-| Security | Debug, Info, Notice, Warning, Error, Critical, Defender, BreakGlass Audit | Security logs from the Bare metal server |
-
-### Storage appliance
-
-| Log categories | Description |
-|--|:-|
-| Storage Appliance logs | System Logs from Storage Appliance |
-| Storage Appliance audits | Audit Logs from Storage Appliance |
-| Storage Appliance alerts | Alert logs from Storage Appliance |
-
->[!NOTE]
-> Storage appliance audit and alert logs are specific to a single storage appliance. Instances with multiple storage appliances have different tables for each storage appliance. System logs have a single table for all storage appliances in the instance.
-
-### Cluster Manager
-
-| Log categories | Description |
-|--|:-|
-| Cluster Manager Deploy or Upgrade Logs | Logs emitted during the deployment or upgrade of the Cluster from Cluster Manager |
+- Learn more about [Monitoring multi-rack deployments of Azure Local with Azure Monitor metrics](../multi-rack/multi-rack-monitor-cluster-with-metrics.md).
