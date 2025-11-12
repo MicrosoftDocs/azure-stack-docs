@@ -1,6 +1,6 @@
 ---
-title: Create logical networks for Azure Local virtual machines on Azure Local for multi-rack deployments (Preview)
-description: Learn how to create logical networks on Azure Local for multi-rack deployments. (Preview)
+title: Create logical networks for Azure Local VMs for multi-rack deployments (Preview)
+description: Learn how to create logical networks on Azure Local VMs for multi-rack deployments. (Preview)
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
@@ -12,7 +12,7 @@ ms.date: 11/12/2025
 
 [!INCLUDE [multi-rack-applies-to-preview](../includes/multi-rack-applies-to-preview.md)]
 
-This article describes how to create or add logical networks on Azure Local for multi-rack deployments. Azure Local virtual machines (VMs) that you create use these logical networks.
+This article describes how to create or add logical networks for Azure Local virtual machines (VMs) for multi-rack deployments. Azure Local VMs that you create use these logical networks.
 
 > [!NOTE]
 > Azure Local VMs only support IPv4 addresses. IPv6 addresses aren't supported.
@@ -23,20 +23,20 @@ Before you begin, make sure to complete the following prerequisites:
 
 - Make sure to review and [complete the prerequisites](../manage/azure-arc-vm-management-prerequisites.md). If using a client to connect to your Azure Local, see [Connect to the system remotely](../manage/azure-arc-vm-management-prerequisites.md#connect-to-the-system-remotely).
 
-- Make sure that you have at least one L3 Internal Network configured with sufficient IP addresses and that you have the right set of permissions to associate this internal network with the logical network you create.
+- Make sure that you have at least one L3 internal network configured with sufficient IP addresses and that you have the right set of permissions to associate this internal network with the logical network you create.
 
-- Make sure you have access to the following details about the L3 internal network you plan to associate with the logical network: ARM ID, subnet (address prefix), and VLAN ID. These details must match the internal network when creating the LNET. 
+- Make sure you have access to the following details about the L3 internal network you plan to associate with the logical network: ARM ID, subnet (address prefix), and VLAN ID. These details must match the internal network when creating the logical network. 
 
 - To create VMs with static IP addresses in your address space, add a logical network with static IP allocation. Reserve an IP range with your network admin and make sure to get the address prefix for this IP range.
 
 > [!NOTE]
 > Dynamic IP allocation is not supported on Azure Local for multi-rack deployments. Only static logical networks are supported.
 >
-> When creating logical networks on multi-rack Azure Local, you must specify the IP pool with IP pool type `vm` to restrict the logical network to those IP addresses. If you specify no IP pool during logical network creation, the entire subnet address space in the L3 internal network will be dedicated to this logical network and no other logical network can be created on this L3 internal network. You can create multiple logical networks on the same L3 internal network with non-overlapping IP pools.
+> When creating logical networks for Azure Local for multi-rack deployments, you must specify the IP pool with IP pool type `vm` to restrict the logical network to those IP addresses. If you don't specify an IP pool during logical network creation, the entire subnet address space in the L3 internal network will be dedicated to this logical network and no other logical network can be created on this L3 internal network. You can create multiple logical networks on the same L3 internal network with non-overlapping IP pools.
 
 ## Create the logical network
 
-You can create a logical network using either the Azure Command-Line Interface (CLI) or by using the Azure portal.
+You can create a logical network using either the Azure Command-Line Interface (CLI) or using the Azure portal.
 
 > [!NOTE]
 > Once a logical network is created, you can't update any fields except the Network Security Group (NSG) field.
@@ -69,7 +69,7 @@ You can use the `az stack-hci-vm network lnet create` cmdlet to create a logical
 
 #### Create a static logical network
 
-In this release, you can create Azure Local VMs enabled by Azure Arc using a static IP only via the Azure CLI.
+You can create Azure Local VMs enabled by Azure Arc using a static IP only via the Azure CLI.
 
 Create a static logical network when you want to create Azure Local VMs with network interfaces on these logical networks. Follow these steps in Azure CLI to configure a static logical network:
 
@@ -191,7 +191,7 @@ Create a static logical network when you want to create Azure Local VMs with net
     }
     ```
 
-    Once the logical network creation is complete, you're ready to create virtual machines with network interfaces on these logical networks. You can also create public IP and load balancer resources on these logical networks.
+    Once the logical network creation is complete, you're ready to create VMs with network interfaces on these logical networks. You can also create public IP and load balancer resources on these logical networks.
 
 
 ## Next steps
