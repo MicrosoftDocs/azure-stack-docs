@@ -11,7 +11,7 @@ ms.service: azure-local
 
 # Deploy Azure Local rack aware cluster using Azure Resource Manager deployment template (Preview)
 
-> Applies to: Azure Local version 2510 and later
+::: moniker range=">=azloc-2510"
 
 This article describes how to use an Azure Resource Manager (ARM) template in the Azure portal to deploy a rack aware cluster.
 
@@ -83,6 +83,7 @@ You deploy a rack aware cluster with four machines, two in each rack:
 For an example of a parameter JSON file that shows the format of various inputs, such as `ArcNodeResourceId`, see [azuredeploy.parameters.json](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.azurestackhci/create-cluster/azuredeploy.parameters.json). For detailed descriptions of the parameters defined in this file, see [ARM template parameters reference](#arm-template-parameters-reference).
 
 > [!IMPORTANT]
+>
 > - Ensure that all parameters in the JSON file are filled out.
 > - Replace any placeholder values such as `[“”]` with actual data. These placeholders indicate that the parameter expects an array structure.
 > - If required values are missing or incorrectly formatted, the validation will fail.
@@ -92,9 +93,9 @@ For an example of a parameter JSON file that shows the format of various inputs,
     :::image type="content" source="./media/rack-aware-cluster-deployment-via-template/basics-tab.png" alt-text="Screenshot showing the Edit parameters button on the Basics tab." lightbox="./media/rack-aware-cluster-deployment-via-template/basics-tab.png":::
   
 1. Configure all required parameters. Configure the following extra parameters required for rack aware cluster deployment. You can use the sample JSON snippets to deploy the cluster described in the example configuration.
-    
+
     - **Arc node resource IDs.**
-      
+
         ```json
         "arcNodeResourceIds": {
         "value": [
@@ -130,7 +131,7 @@ For an example of a parameter JSON file that shows the format of various inputs,
   
     - **Cloud witness configuration.**
       Rack aware cluster requires cloud witness. Enter the name of the cloud witness, which is created during the deployment process.
-      
+
         ```json
         "witnessType": {
             "value": "Cloud"
@@ -142,7 +143,7 @@ For an example of a parameter JSON file that shows the format of various inputs,
   
     - **Network intent configuration.**
       The storage network intent must be a dedicated network intent. VLAN IDs 711 and 712 are defaults and can be customized for your environment.
- 
+
         ```json
         "networkingType": {
             "value": "switchedMultiserverDeployment"
@@ -301,3 +302,11 @@ The following table describes parameters that are specific to a rack aware clust
 ## Next steps
 
 - After deployment is complete, continue to [Complete post-deployment tasks for rack aware cluster](./rack-aware-cluster-post-deployment.md).
+
+::: moniker-end
+
+::: moniker range="<=azloc-2509"
+
+This feature is available in Azure Local 2510 and later.
+
+::: moniker-end
