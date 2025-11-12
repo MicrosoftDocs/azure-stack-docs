@@ -1,5 +1,5 @@
 ---
-title: Manage including restart, start, stop or delete Azure Local VMs for multi-rack deployments (Preview) 
+title: Manage Azure Local VMs for multi-rack deployments (Preview) 
 description: Learn how to manage Azure Local VMs enabled by Azure Arc. This includes operations such as start, stop, restart, view properties of Azure Local VMs for multi-rack deployments (Preview).
 author: alkohli
 ms.author: alkohli
@@ -12,12 +12,12 @@ ms.date: 11/07/2025
 
 [!INCLUDE [multi-rack-applies-to-preview](../includes/multi-rack-applies-to-preview.md)]
 
-This article describes how to manage Azure Local virtual machines (VMs) enabled by Azure Arc for multi-rack deployments. The procedures to start, stop, restart, or delete an Azure Local VM as well as manage guest management are detailed.
+This article describes how to manage Azure Local virtual machines (VMs) enabled by Azure Arc for multi-rack deployments. The procedures to start, stop, restart, and delete an Azure Local VM as well as manage guest management are detailed.
 
 ## Prerequisites
 
 - Access to an Azure Local instance for multi-rack deployments that's deployed and registered.
-- On the Azure Local overview page, find the custom location of the instance. 
+- On the Azure Local Overview page, find the custom location of the instance. 
 
 - One or more Azure Local VMs running on your Azure Local instance. For more information, see [Create Azure Local virtual machines](../manage/create-arc-virtual-machines.md).
 
@@ -36,7 +36,7 @@ When you enable guest management on an Azure Local VM, the [Azure Connected Mach
 
 1. Go to **Your Azure Local** > **Virtual machines**, and then select the VM on which you enabled guest management.
 
-1. On the **Overview** page, on the **Properties** tab, go to **Configuration**. **Guest management** should show **Enabled (Connected)**.
+1. On the **Overview** page, on the **Properties** tab, go to **Configuration**. **Guest management** should show **Enabled (connected)**.
 
    :::image type="content" source="./media/multi-rack-manage-arc-virtual-machines/verify-guest-management-enabled-1.png" alt-text="Screenshot of the Azure portal that shows the area for verifying that guest management is enabled." lightbox="./media/multi-rack-manage-arc-virtual-machines/verify-guest-management-enabled-1.png":::
 
@@ -72,11 +72,11 @@ To start a VM, follow these steps in the Azure portal for your Azure Local insta
 
 ## Restart a VM
 
-To restart a VM, follow these steps in the Azure portal for your Azure Local instance:
+To restart a VM, follow these steps in Azure portal for your Azure Local instance:
 
 1. Go to the Azure Local resource, and then go to **Virtual machines**.
 
-1. In the list of virtual machines, select a VM that's stopped and that you want to restart.
+1. In the list of virtual machines, select the VM that's stopped and that you want to restart.
 
 1. On the **Overview** page for the VM, on the command bar, select **Restart**.
 
@@ -110,7 +110,7 @@ To delete a VM, follow these steps in the Azure portal for your Azure Local inst
 
 1. Go to the Azure Local resource, and then go to **Virtual machines**.
 
-1. In the list of virtual machines, select a VM that you want to remove from your system.
+1. In the list of virtual machines, select the VM that you want to remove from your system.
 
 1. On the **Overview** page for the VM, on the command bar, select **Delete**.
 
@@ -196,7 +196,7 @@ If Bash is in a different directory, be sure to change the `#!/bin/bash` line ac
 
 ## Change cores and memory
 
-To change cores and memory, follow these steps in the Azure portal for your Azure Local instance:
+To change cores and memory, follow these steps in Azure portal for your Azure Local instance:
 
 1. Go to your Azure Local resource, and then go to **Virtual machines**.
 
