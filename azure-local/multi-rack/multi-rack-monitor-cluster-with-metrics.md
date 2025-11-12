@@ -44,7 +44,7 @@ Follow these steps to monitor metrics of your system in the Azure portal:
 
 1. On the **Overview** page of your cluster, select the **Monitoring** tab.
 
-<!--   :::image type="content" source="media/multi-rack-monitor-cluster-with-metrics/monitoring-tab.png" alt-text="Screenshot showing the Monitoring tab for your cluster." lightbox="media/multi-rack-monitor-cluster-with-metrics/monitoring-tab.png":::-->
+:::image type="content" source="media/multi-rack-monitor-cluster-with-metrics/monitoring-tab.png" alt-text="Screenshot showing the Monitoring tab for your cluster." lightbox="media/multi-rack-monitor-cluster-with-metrics/monitoring-tab.png":::
 
 1. Review the graphs displaying current utilization of the cluster under **Performance and Utilization pane**.
 
@@ -52,11 +52,8 @@ Follow these steps to monitor metrics of your system in the Azure portal:
 
 You can use [metrics explorer](/azure/azure-monitor/essentials/metrics-charts) to interactively analyze the data in your metric database and chart the values of multiple metrics over time. To open the metrics explorer in the Azure portal, select **Metrics** under the **Monitoring** section.
 
-<!--:::image type="content" source="media/multi-rack-monitor-cluster-with-metrics/monitor-metrics.png" alt-text="Screenshot showing the Select a scope pane." lightbox="media/multi-rack-monitor-cluster-with-metrics/monitor-metrics.png":::-->
+:::image type="content" source="media/multi-rack-monitor-cluster-with-metrics/monitor-metrics.png" alt-text="Screenshot showing the Select a scope pane." lightbox="media/multi-rack-monitor-cluster-with-metrics/monitor-metrics.png":::
 
-You can also access **Metrics** directly from the menu for the Azure Local services.
-
-<!--:::image type="content" source="media/multi-rack-monitor-cluster-with-metrics/metrics-page.png" alt-text="Screenshot of the Metrics page." lightbox="media/multi-rack-monitor-cluster-with-metrics/metrics-page.png":::-->
 
 With **Metrics**, you can create charts from metric values and visually correlate trends. You can also create a metric alert rule or pin a chart to an Azure dashboard to view them with other visualizations. For a tutorial on using this tool, see [Analyze metrics for an Azure resource](/azure/azure-monitor/essentials/tutorial-metrics).
 

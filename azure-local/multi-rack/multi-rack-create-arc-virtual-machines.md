@@ -120,8 +120,6 @@ Follow these steps on the client running az CLI that is connected to Azure Local
 
 ### Create a Windows VM
 
-In Azure Local preview version, you can create a VM that has network interface with static IP allocation.
-
 > [!NOTE]
 > If you need more than one network interface for your VM, create one or more interfaces now before you create the VM. Adding a network interface after the VM is provisioned isn't supported in the preview version.
 
@@ -139,7 +137,7 @@ Here we create a VM that uses specific memory and processor counts.
     $computerName = "mycomputer"
     $userName = "local-user"
     $password = "<Password for the VM>"
-    $imageName ="ws22server"<!--comment from DR: We need to double check - Is this Name or ID KK -->
+    $imageName ="ws22server"
     $nicName ="local-vnic" 
     $httpProxy = "<Proxy server address>"
     $httpsProxy = "<Proxy server address>"
@@ -227,7 +225,7 @@ For proxy authentication, you can pass the username and password combined in a U
 Follow these steps in Azure portal for Azure Local.
 
 > [!IMPORTANT]
-> Setting the proxy server during VM creation required to enable guest management on your Azure Local VM for multi-rack deployments.
+> Setting the proxy server during VM creation is required to enable guest management on your Azure Local VM for multi-rack deployments.
 
 1. Go to **Azure Arc cluster view** > **Virtual machines**.
 1. From the top command bar, select **+ Create VM**.
@@ -324,9 +322,8 @@ Follow these steps in Azure portal for Azure Local.
     
         If the domain isn't specified, the suffix of the Active Directory domain join UPN is used by default. For example, the user *guspinto@contoso.com* would get the default domain name *contoso.com*.
 
-        For LinuxVM, provide root user details.
+        For Linux VM, provide root user details.
 
-        <!--add screenshot-->
 
 1. **(Optional)** Create new or add more disks to the VM.
 
