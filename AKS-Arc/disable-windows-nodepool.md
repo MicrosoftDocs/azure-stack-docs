@@ -2,7 +2,7 @@
 title: Disable the Windows node pool feature
 description: Learn how to disable the Windows node pool feature on the 2509 release and earlier.
 ms.topic: how-to
-ms.date: 09/25/2025
+ms.date: 11/12/2025
 author: rcheeran
 ms.author: rcheeran 
 ms.reviewer: sethm
@@ -151,7 +151,11 @@ The output for `osType=Windows` should say "Windows node pool feature is disable
 
 ### What happens if I try disabling Windows node pools and Windows node pools exist on at least 1 AKS cluster on the Azure local deployment?
 
-You must delete the Windows node pool manually before you disable the feature. If there are existing Windows node pools, you can't disable the feature.
+Starting with [release 2509](aks-whats-new-local.md#release-2509), the Windows node pool feature is disabled by default. This change improves the download experience by avoiding unnecessary downloads of the Windows VHD when it's not required.
+
+If you have existing clusters created before this build that include Windows node pools, you can re-enable the feature as needed. However, if the feature remains disabled, cluster upgrades won't succeed while Windows node pools still exist. It's recommended that you delete all Windows node pools before upgrading Azure Local or AKS Arc.
+
+To ensure a smooth upgrade experience, either re-enable the Windows node pool feature if you plan to continue using Windows node pools, or remove all Windows node pools from your clusters.
 
 ### What happens to downloaded Windows VHDs if I disable Windows node pools?
 
