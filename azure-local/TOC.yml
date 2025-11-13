@@ -752,20 +752,20 @@ items:
   - name: Monitor
     items:
       - name: Monitoring overview
-        href: ./overview.md
+        href: ./multi-rack/multi-rack-monitor-overview.md
       - name: Monitor cluster metrics
-        href: ./overview.md 
+        href: ./multi-rack/multi-rack-monitor-cluster-with-metrics.md
 
   - name: Concepts
     items:
       - name: Compute for multi-rack deployments
-        href: ./overview.md 
+        href: ./multi-rack/multi-rack-concepts-compute.md
 
   - name: Reference
     items:
-      - name: Azure Local multi-rack CLI reference
+      - name: CLI reference
         href: ./overview.md 
-      - name: Azure Local multi-rack PowerShell reference
+      - name: PowerShell reference
         href: ./overview.md 
 
 - name: Disconnected operations
