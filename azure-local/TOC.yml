@@ -752,8 +752,8 @@ items:
         href: ./multi-rack/multi-rack-create-network-interfaces.md
       - name: Create Azure Local VMs
         href: ./multi-rack/multi-rack-create-arc-virtual-machines.md
-      - name: Manage Azure Local VMs
-        href: ./multi-rack/multi-rack-manage-arc-virtual-machines.md 
+      - name: Manage Azure Local VM extensions
+        href: ./multi-rack/multi-rack-virtual-machine-manage-extension.md
 
   - name: Monitor
     items:
