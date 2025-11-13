@@ -20,14 +20,14 @@ The following tables provide a reference for how the outbound rules appear withi
 
 The simplified flow of traffic is:
 
-- **Infrastructure traffic** → infrastructure proxy allow list → Azure Firewall  
-- **Tenant traffic** → cloud services network (CSN) allow list → Azure Firewall
+- **Infrastructure traffic** → infrastructure proxy allowlist → Azure Firewall
+- **Tenant traffic** → cloud services network (CSN) allowlist → Azure Firewall
 
 :::image type="content" source="media/network-fabric-controller-virtual-network.png" alt-text="Diagram that shows Network Fabric Controller virtual networks." lightbox="media/network-fabric-controller-virtual-network.png":::
 
 ## Tenant/CSN
 
-The following *network rules* and *application rules* are used to allow list Network Fabric Controller traffic from version 6.5 and later. These rules will also apply to Cluster Manager traffic in future releases.
+The following *network rules* and *application rules* are used to put Network Fabric Controller traffic from version 6.5 and later on an allowlist. These rules will also apply to cluster manager traffic in future releases.
 
 ### Network rules
 
