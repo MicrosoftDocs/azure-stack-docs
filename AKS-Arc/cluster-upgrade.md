@@ -2,10 +2,9 @@
 title: Upgrade an Azure Kubernetes Service (AKS) cluster
 description: Learn how to upgrade an Azure Kubernetes Service (AKS) cluster.
 ms.topic: overview
-ms.date: 02/27/2024
+ms.date: 11/13/2025
 author: sethmanheim
 ms.author: sethm 
-ms.reviewer: rbaziwane
 ms.lastreviewed: 02/27/2024
 
 ---
@@ -16,7 +15,7 @@ ms.lastreviewed: 02/27/2024
 
 As part of managing the application and cluster lifecycle, you might want to upgrade to the latest available version of Kubernetes. An upgrade involves either a move to a newer version of Kubernetes, applying operating system (OS) version updates (patching), or both. AKS Arc supports upgrading (or patching) nodes in a workload cluster with the latest OS and runtime updates.
 
-All upgrades are executed in a continuous, rolling manner to ensure uninterrupted availability of workloads. When a new Kubernetes worker node with a newer build is brought into the cluster, resources are moved from the old node to the new node. Once this is completed successfully, the old node is decommissioned and removed from the cluster.
+All upgrades run in a continuous, rolling manner to ensure uninterrupted availability of workloads. When a new Kubernetes worker node with a newer build joins the cluster, the process moves resources from the old node to the new node. After this step completes successfully, the process decommissions and removes the old node from the cluster.
 
 ## Before you begin
 
@@ -62,12 +61,12 @@ The following example output shows the current version as **1.24.11** and lists 
 
 ## Upgrade the Kubernetes version
 
-When you upgrade a supported AKS cluster, you can't skip Kubernetes minor versions. You must perform all upgrades sequentially by major version number. For example, upgrades from **1.24.x** to **1.25.x** or **1.25.x** to **1.26.x** are allowed. **1.24.x** to **1.26.x** isn't allowed.
+When you upgrade a supported AKS cluster, you can't skip Kubernetes minor versions. You must perform all upgrades sequentially by major version number. For example, you can upgrade from **1.24.x** to **1.25.x** or from **1.25.x** to **1.26.x**. You can't upgrade from **1.24.x** to **1.26.x**.
 
 > [!NOTE]
-> If no patch is specified, the cluster automatically upgrades to the specified minor version's latest GA patch. For example, setting `--kubernetes-version` to **1.25** results in the cluster upgrading to **1.25.7**.
+> If you don't specify a patch version, the cluster automatically upgrades to the latest GA patch for the specified minor version. For example, setting `--kubernetes-version` to **1.25** upgrades the cluster to **1.25.7**.
 
-You can upgrade your cluster using the following command:
+Use the following command to upgrade your cluster:
 
 ```azurecli
 az aksarc upgrade \
@@ -76,7 +75,7 @@ az aksarc upgrade \
   --kubernetes-version <KUBERNETES_VERSION>
 ```
 
-Confirm the upgrade was successful by using the `show` command:
+Use the `show` command to confirm the upgrade was successful:
 
 ```azurecli
 az aksarc show --resource-group myResourceGroup --name myAKSCluster
@@ -128,16 +127,16 @@ location>",
 ```
 
 > [!IMPORTANT]
-> When you perform an upgrade from an unsupported version that skips two or more minor versions, the upgrade cannot guarantee proper functionality. If your version is significantly out of date, we recommend you recreate your cluster instead.
+> If you upgrade from an unsupported version that skips two or more minor versions, the upgrade might not work properly. If your version is significantly out of date, we recommend you recreate your cluster instead.
 
 During an upgrade operation, both the `provisioningState` and `currentState` indicators display an **Upgrading** message to reflect the ongoing process. However, if the operation times out, `provisioningState` shows **Failed**, while `currentState` continues to show **Upgrading** as the upgrade continues in the background. No action is required; the upgrade continues until it's complete.
 
-## Update Operating System (OS) version
+## Update operating system (OS) version
 
-Updating worker nodes to a newer version of the node image without changing the Kubernetes version only works if the new image does not require a different Kubernetes version. Currently, AKS Arc does not support node-image-only updates across all the Kubernetes versions in support. If you need to update the node image, you must upgrade the cluster to the latest Kubernetes version to ensure that all node image updates are incorporated.
+You can update worker nodes to a newer version of the node image without changing the Kubernetes version only if the new image doesn't require a different Kubernetes version. Currently, AKS Arc doesn't support node-image-only updates across all supported Kubernetes versions. If you need to update the node image, you must upgrade the cluster to the latest Kubernetes version to ensure that all node image updates are incorporated.
 
 > [!IMPORTANT]
-> When attempting to use the `node-image-only` flag, you receive a message indicating that this feature is not yet supported.
+> If you try to use the `node-image-only` flag, you receive a message indicating that this feature isn't yet supported.
 
 ## Next steps
 
