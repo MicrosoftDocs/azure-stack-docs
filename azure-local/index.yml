@@ -10,7 +10,7 @@ metadata:
   ms.topic: landing-page
   author: ronmiab
   ms.author: robess
-  ms.date: 11/11/2025
+  ms.date: 11/13/2025
 
 # linkListType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | sample | tutorial | video | whats-new
 
@@ -102,6 +102,8 @@ landingContent:
         links:
           - text: Architecture best practices for hyperconverged
             url: /azure/well-architected/service-guides/azure-local 
+          - text: Storage switchless architecture for hyperconverged
+            url: /azure/architecture/hybrid/azure-local-switchless
           - text: Baseline reference architecture for hyperconverged
             url: /azure/architecture/hybrid/azure-local-baseline
           - text: Well-Architected Review assessment for hyperconverged
