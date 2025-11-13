@@ -167,7 +167,7 @@ Before production migration:
 - [ ] Performance acceptable
 - [ ] Monitoring operational
 
-## Resources
+## Next steps
 
 - [AKS Arc overview](aks-overview.md)
 - [Windows container upgrade guide](/azure/aks/upgrade-windows-2019-2022)
