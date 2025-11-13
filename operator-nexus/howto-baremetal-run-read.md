@@ -202,7 +202,7 @@ This list shows the commands you can use. Commands that are displayed in *italic
 - `nc-toolbox nc-toolbox-runread mstfwmanager` (requires `query` argument)
 - `nc-toolbox nc-toolbox-runread mlx_temp`
 
-See the following code snippet for the command syntax for a single command with no arguments, using `hostname` as an example:
+The following code snippet shows the command syntax for a single command with no arguments, using `hostname` as an example:
 
 ```azurecli
 az networkcloud baremetalmachine run-read-command --name "<bareMetalMachineName>"
@@ -227,7 +227,7 @@ The previous code snippet uses the following variables:
 --commands "[{command:ping,arguments:[198.51.102.1,-c,3]}]"
 ```
 
-These commands can take a long time to run so we recommend that you set `--limit-time-seconds` to at least 600 seconds (10 minutes). Running multiple commands might take longer than 10 minutes.
+These commands can take a long time to run, so we recommend that you set `--limit-time-seconds` to at least 600 seconds (10 minutes). Running multiple commands might take longer than 10 minutes.
 
 This command runs synchronously. To skip waiting for the command to complete, specify the `--no-wait --debug` options. For more information, see [How to track asynchronous operations](howto-track-async-operations-cli.md).
 
