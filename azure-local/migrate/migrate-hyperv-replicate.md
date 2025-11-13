@@ -234,17 +234,18 @@ This step applies to using a .zip file.
     1. The **Storage account subscription** is automatically populated. If this is not the subscription where you want to create the storage account, choose another subscription.
         
         > [!NOTE]
-        > Migration requires a storage account to be created. This account must reside in the same subscription as your Azure project.
+        > Migration requires a storage account to be created. This account must reside in the same subscription as your Azure migrate project.
 
     1. Select the **Resource group** to associate with your storage account.
     
     1. The VM subscription is automatically populated.
     
-    1. For your **Cache storage account**, select an existing storage account. You can also select **(New) Storage account** to create a new storage account with a randomly generated name.
+    1. For your **storage account**, you can select an existing storage account from the dropdown list or create a new one by selecting **Create new**. The storage account is only used for storing metadata during replication and migration. All migrated VM data and disks remain completely on-premises. We recommend that you create a new storage account.
 
         > [!NOTE]
-        > We recommend that you create new a storage account to be used as your cache storage account. Once created, the storage account location can't be changed.
-
+        > If you are using an existing storage account, ensure the following:
+        > - The storage account is **Standard Performance** tier. Premium storage accounts aren't supported.
+        > - The storage account has **Public network access** enabled. If public network access is disabled, replication fails.
     1. Select a resource group to associate with your migrated VMs.
    
 	1. Select the logical network that you created as a [prerequisite](./migrate-hyperv-prerequisites.md#prerequisites-for-hyper-v-vm-migration-to-azure-local-using-azure-migrate-preview). The VMs will be connected to this network. If you don't see a logical network in the dropdown list, [create a logical network](../manage/create-logical-networks.md) and select **Reload logical network**.

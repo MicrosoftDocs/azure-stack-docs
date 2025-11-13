@@ -4,7 +4,7 @@ description: Learn how to deploy and configure an AKS Arc cluster with workload 
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
-ms.date: 01/23/2025
+ms.date: 11/13/2025
 ms.reviewer: leslielin
 
 ---
@@ -29,18 +29,18 @@ For a conceptual overview of Workload identity federation, see [Workload identi
 > These preview features are available on a self-service, opt-in basis. Previews are provided "as is" and "as available," and they're excluded from the service-level agreements and limited warranty. Azure Kubernetes Service, enabled by Azure Arc previews are partially covered by customer support on a best-effort basis.
 
 > [!NOTE]
-> In public preview, AKS on Azure Local supports enabling workload identity during AKS cluster creation. However, enabling workload identity after cluster creation or disabling it afterward is currently unsupported.
+> In public preview, AKS on Azure Local supports enabling workload identity during AKS cluster creation. However, enabling workload identity after cluster creation or disabling it afterward isn't currently supported.
 
 ## Prerequisites
 
 Before you deploy a Kubernetes cluster with Azure Arc enabled, you must have the following prerequisites:
 
 - If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin.
-- This article requires version 1.4.23 or later of the Azure CLI. If you're using Azure Cloud Shell, the latest version is already installed.
+- Version 1.4.23 or later of the Azure CLI. If you're using Azure Cloud Shell, the latest version is already installed.
 
 ### Export environment variables
 
-To help simplify the steps to configure the identities required, the following commands define environment variables that are referenced in the examples in this article. Replace the following values with your own:
+To simplify the steps to configure the required identities, run the following commands to define environment variables. The examples in this article reference these variables. Replace the following values with your own values:
 
 ```azurecli
 $AZSubscriptionID = "00000000-0000-0000-0000-000000000000" 
@@ -98,8 +98,8 @@ The following example output shows the successful creation of a resource group:
 
 To create an AKS Arc cluster, you need both the `$customlocation_ID` and `$logicnet_Id` values.
 
-- `$customlocation_ID`: The Azure Resource Manager ID of the custom location. The custom location is configured during the Azure Local cluster deployment. Your infrastructure admin should give you the Resource Manager ID of the custom location. You can also get the Resource Manager ID using `$customlocation_ID = $(az customlocation show --name "<your-custom-location-name>" --resource-group $resource_group_name --query "id" -o tsv)`, if the infrastructure admin provides a custom location name and resource group name.
-- `$logicnet_Id`: The Azure Resource Manager ID of the Azure Local logical network created [following these steps](/azure/aks/hybrid/aks-networks?tabs=azurecli). Your infrastructure admin should give you the Resource Manager ID of the logical network. You can also get the Resource Manager ID using `$logicnet_Id = $(az stack-hci-vm network lnet show --name "<your-lnet-name>" --resource-group $resource_group_name --query "id" -o tsv)`, if the infrastructure admin provides a logical network name and resource group name.
+- `$customlocation_ID`: The Azure Resource Manager ID of the custom location. The custom location is configured during the Azure Local cluster deployment. Your infrastructure admin should give you the Resource Manager ID of the custom location. You can also get the Resource Manager ID by running `$customlocation_ID = $(az customlocation show --name "<your-custom-location-name>" --resource-group $resource_group_name --query "id" -o tsv)`, if the infrastructure admin provides a custom location name and resource group name.
+- `$logicnet_Id`: The Azure Resource Manager ID of the Azure Local logical network created [following these steps](/azure/aks/hybrid/aks-networks?tabs=azurecli). Your infrastructure admin should give you the Resource Manager ID of the logical network. You can also get the Resource Manager ID by running `$logicnet_Id = $(az stack-hci-vm network lnet show --name "<your-lnet-name>" --resource-group $resource_group_name --query "id" -o tsv)`, if the infrastructure admin provides a logical network name and resource group name.
 
 Run the [az aksarc create](/cli/azure/aksarc#az-aksarc-create) command with the `--enable-oidc-issuer --enable-workload-identity` parameter. Provide your **entra-admin-group-object-ids** and ensure you're a member of the Microsoft Entra ID admin group for proxy mode access:
 
@@ -145,7 +145,7 @@ In the Azure portal, you can view the **wiextension** extension under the **Prop
 
 ### Save the OIDC issuer URL to an environment variable
 
-Once AKS cluster is created successfully, you can get the OIDC issuer URL and save it to an environment variable. Run the following command:
+After the AKS cluster is created successfully, you can get the OIDC issuer URL and save it to an environment variable. Run the following command:
 
 ```azurecli
 $SERVICE_ACCOUNT_ISSUER =$(az connectedk8s show --n $aks_cluster_name --resource-group $resource_group_name --query "oidcIssuerProfile.issuerUrl" --output tsv)
@@ -204,7 +204,7 @@ serviceaccount/workload-identity-sa created
 
 ## Step 3: Create a federated credential on the managed identity to trust the OIDC issuer
 
-First, create a federated identity credential. Call the [az identity federated-credential create](/cli/azure/identity/federated-credential#az-identity-federated-credential-create) command
+First, create a federated identity credential. Use the [az identity federated-credential create](/cli/azure/identity/federated-credential#az-identity-federated-credential-create) command
 to create the federated identity credential between the managed identity, the service account issuer, and the subject. For more information about federated identity credentials in Microsoft Entra,
 see [Overview of federated identity credentials in Microsoft Entra ID](/graph/api/resources/federatedidentitycredentials-overview).
 
@@ -262,7 +262,7 @@ The instructions in this step describe how to access secrets, keys, or certifica
 
 The following example shows how to use the Azure role-based access control (Azure RBAC) permission model to grant the pod access to the key vault. For more information about the Azure RBAC permission model for Azure Key Vault, see [Grant permission to applications to access an Azure key vault using Azure RBAC](/azure/key-vault/general/rbac-guide).
 
-1. Create a key vault with purge protection and RBAC authorization enabled. You can also use an existing key vault if it is configured for both purge protection and RBAC authorization:
+1. Create a key vault with purge protection and RBAC authorization enabled. You can also use an existing key vault if it's configured for both purge protection and RBAC authorization:
 
    ```azurecli
    az keyvault create --name $KVName --resource-group $resource_group_name --location $Location --enable-purge-protection --enable-rbac-authorization
@@ -343,7 +343,7 @@ az aksarc delete -n $aks_cluster_name -g $resource_group_name
 ```
 
 > [!NOTE]
-> There's a known issue when deleting an AKS Arc cluster with [PodDisruptionBudget](https://kubernetes.io/docs/tasks/run-application/configure-pdb/) (PDB) resources: the deletion might fail to remove these PDB resources. Microsoft is aware of the problem and is working on a fix.
+> When you delete an AKS Arc cluster with [PodDisruptionBudget](https://kubernetes.io/docs/tasks/run-application/configure-pdb/) (PDB) resources, the deletion might fail to remove these PDB resources. Microsoft is aware of the problem and is working on a fix.
 >
 > PDB is installed by default in workload identity-enabled AKS Arc clusters. To delete a workload identity enabled AKS Arc cluster, see the [troubleshooting guide](delete-cluster-pdb.md).
 

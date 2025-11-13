@@ -316,62 +316,65 @@ This step applies to using a .zip file.
     1. The **Storage account subscription** is automatically populated. If this isn't the subscription where you want to create the storage account, choose another subscription.
         
         > [!NOTE]
-        > Migration requires a storage account to be created. This account must reside in the same subscription as your Azure project.
+        > Migration requires a storage account to be created. This account must reside in the same subscription as your Azure Migrate project.
 
     1. Select the **Resource group** to associate with your storage account.
     
     1. The VM subscription is automatically populated.
     
-    1. For your **Cache storage account**, select an existing storage account. You can also select **(New) Storage account** to create a new storage account with a randomly generated name.
+    2. For your **storage account**, you can select an existing storage account from the dropdown list or create a new one by selecting **Create new**. The storage account is only used for storing metadata during replication and migration. All migrated VM data and disks remain completely on-premises. We recommend that you create a new storage account.
 
         > [!NOTE]
-        > We recommend that you create a new storage account to be used as your cache storage account.
+        > If you are using an existing storage account, ensure the following:
+        > - The storage account is **Standard Performance** tier. Premium storage accounts aren't supported.
+        > - The storage account has **Public network access** enabled. If public network access is disabled, replication fails.
 
-    1. Select a resource group to associate with your migrated VMs. This resource group can be different than the resource group associated with your storage account.
+
+    3. Select a resource group to associate with your migrated VMs. This resource group can be different than the resource group associated with your storage account.
    
-	1. Select the logical network that you created as a [prerequisite](./migrate-vmware-prerequisites.md#prerequisites-for-vmware-migration-to-azure-local-using-azure-migrate). The VMs are connected to this network. 
+	4. Select the logical network that you created as a [prerequisite](./migrate-vmware-prerequisites.md#prerequisites-for-vmware-migration-to-azure-local-using-azure-migrate). The VMs are connected to this network. 
 
         If you don't see a logical network in the dropdown list, [Create a logical network](../manage/create-logical-networks.md) and select **Reload logical network**.
 
-	1. Select the storage path that you created as a [prerequisite](./migrate-vmware-prerequisites.md#prerequisites-for-vmware-migration-to-azure-local-using-azure-migrate). The VMs are created at this storage path.
+	5. Select the storage path that you created as a [prerequisite](./migrate-vmware-prerequisites.md#prerequisites-for-vmware-migration-to-azure-local-using-azure-migrate). The VMs are created at this storage path.
 
         If you don't see a storage path in the dropdown list, [Create a storage path](../manage/create-storage-path.md) and select **Reload storage path**.
 
-    1. When finished, select **Next**.
+    6. When finished, select **Next**.
 
         :::image type="content" source="./media/migrate-vmware-replicate/replicate-4-target-2.png" alt-text="Screenshot showing the Target settings tab." lightbox="./media/migrate-vmware-replicate/replicate-4-target-2.png":::
 
-1. On the **Compute** tab:
+2. On the **Compute** tab:
 
 	1. Rename target VMs as needed. Make sure that the VM names conform to the [Azure naming conventions](/azure/azure-resource-manager/management/resource-name-rules#microsoftcompute).
-	1. Select the OS disk for each VM from the dropdown lists.
-    1. Configure number of vCPUs and RAM including selecting dynamic RAM for each VM, as needed.
-    1. When finished, select **Next**.
+	2. Select the OS disk for each VM from the dropdown lists.
+    3. Configure the number of vCPUs and RAM including selecting dynamic RAM for each VM, as needed.
+    4. When finished, select **Next**.
     
         :::image type="content" source="./media/migrate-vmware-replicate/replicate-5-compute.png" alt-text="Screenshot showing the Compute tab." lightbox="./media/migrate-vmware-replicate/replicate-5-compute.png":::
 
-1. On the **Disks** tab, select which disks you would like to replicate.
+3. On the **Disks** tab, select which disks you would like to replicate.
 
     > [!NOTE]
     > Once selected, the OS disks can't be unselected.
  
-1. Change the disk type if needed and select **Next**.
+4. Change the disk type if needed and select **Next**.
 
     :::image type="content" source="./media/migrate-vmware-replicate/replicate-6-disks.png" alt-text="Screenshot showing the Disks tab." lightbox="./media/migrate-vmware-replicate/replicate-6-disks.png":::
 
-1. On the  **Review + Start replication** tab, make sure that all the values are correct and then select **Replicate**.
+5. On the  **Review + Start replication** tab, make sure that all the values are correct and then select **Replicate**.
 
     :::image type="content" source="./media/migrate-vmware-replicate/replicate-7-review.png" alt-text="Screenshot showing the Review + Start replication tab." lightbox="./media/migrate-vmware-replicate/replicate-7-review.png":::
 
-1. Stay on this page until the process is complete (this might take 5-10 minutes). If you move away from this page, the replication artifacts won't be created fully leading to a failure in replication and eventually migration.
+6. Stay on this page until the process is complete (this might take 5-10 minutes). If you move away from this page, the replication artifacts won't be created fully leading to a failure in replication and eventually migration.
 
     :::image type="content" source="./media/migrate-vmware-replicate/replicate-77-review.png" alt-text="Screenshot showing the warning on the Review + Start replication tab." lightbox="./media/migrate-vmware-replicate/replicate-77-review.png":::
 
-1. You're automatically taken to **Servers, databases and web apps** page. On the **Migration tools** tile, select **Overview**.
+7. You're automatically taken to **Servers, databases and web apps** page. On the **Migration tools** tile, select **Overview**.
 
-1. Go to **Azure Local migration > Replications**. Review the replication status. Select **Refresh** to see the replicated VMs appear.
+8. Go to **Azure Local migration > Replications**. Review the replication status. Select **Refresh** to see the replicated VMs appear.
  
-1. As the replication continues, replication status shows progress. Continue refreshing periodically. After the initial replication is complete, hourly delta replications begin. The **Migration status** changes to **Ready to migrate**. The VMs can be migrated.
+9. As the replication continues, replication status shows progress. Continue refreshing periodically. After the initial replication is complete, hourly delta replications begin. The **Migration status** changes to **Ready to migrate**. The VMs can be migrated.
 
     :::image type="content" source="./media/migrate-vmware-replicate/migrate-replicated-virtual-machine-1-a.png" alt-text="Screenshot showing Replications page in Azure portal with migration status Ready to migrate." lightbox="./media/migrate-vmware-replicate/migrate-replicated-virtual-machine-1-a.png":::
 
