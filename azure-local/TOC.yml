@@ -733,7 +733,9 @@ items:
   - name: Deploy
     items:
     - name: Complete deployment prerequisites
-      href: ./overview.md 
+      href: ./multi-rack/multi-rack-prerequisites.md
+    - name: Install Azure CLI extensions
+      href: ./multi-rack/multi-rack-cli-extensions.md
     - name: Deploy Azure Local VM workloads
       items:
       - name: Complete Azure Local VM prerequisites
@@ -760,7 +762,8 @@ items:
     items:
       - name: Compute for multi-rack deployments
         href: ./multi-rack/multi-rack-concepts-compute.md
-
+      - name: Azure Local VMs for multi-rack deployments
+        href: ./multi-rack/multi-rack-azure-arc-vm-management-overview.md
   - name: Reference
     items:
       - name: CLI reference
