@@ -741,7 +741,7 @@ items:
       - name: Complete Azure Local VM prerequisites
         href: ./overview.md 
       - name: Assign RBAC roles
-        href: ./overview.md
+        href: ./multi-rack/multi-rack-assign-vm-rbac-roles.md
       - name: Create Azure Local VMs image
         href: ./overview.md
       - name: Create logical networks

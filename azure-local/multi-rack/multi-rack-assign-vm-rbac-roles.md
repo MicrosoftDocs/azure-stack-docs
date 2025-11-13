@@ -22,7 +22,7 @@ The following section explains an operational model and associated custom role d
 
 Given the scale of Azure Local for multi-rack deployments, this guide assumes that it is operated and administered by a central team but shared across many application teams. Under this model, we assume two primary user personas, infrastructure admins and application admins:
 
-- **Infrastructure admins**: This persona administers shared platform resources, owning core Azure Local platform assets (clusters, logical networks, Public IPs) and maintaining governance.  
+- **Infrastructure admins**: This persona administers shared platform resources, owning Azure Local platform assets (clusters, logical networks, Public IPs) that require additional admin overview and maintaining governance.  
 
 - **Application admins**: This persona administers shared platform resources, owning Azure Local platform assets (clusters, logical networks, Public IPs) that require additional admin overview and maintaining governance.
 
