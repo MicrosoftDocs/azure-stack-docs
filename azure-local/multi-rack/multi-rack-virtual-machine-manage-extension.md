@@ -25,7 +25,7 @@ For a full list of supported VM extensions, see:
 
 ## Prerequisites
 
-- Access to a VM running on Azure Local with guest management enabled. Guest management is supported on Windows and Linux VMs. For information on how to create a VM, see [Create Azure Local VMs](../manage/create-arc-virtual-machines.md).
+- Access to a VM running on Azure Local with guest management enabled. Guest management is supported on Windows and Linux VMs. For information on how to create a VM, see [Update link URL after rel branch merge](multi-rack-virtual-machine-extension.md).
 
 ## Verify that guest management is enabled
 
@@ -34,7 +34,7 @@ To manage VMs on Azure Local, you must enable guest management on the VMs. When 
 You must verify that guest management is enabled on your VMs before you install VM extensions.
 
 > [!NOTE]
-> Extensions for domain join are supported only for Windows VMs. You can enable and install these extensions only during VM creation, via the Azure portal. For more information, see [Create Azure Local VMs](../manage/create-arc-virtual-machines.md).
+> Extensions for domain join are supported only for Windows VMs. You can enable and install these extensions only during VM creation, via the Azure portal. For more information, see [Update link URL after rel branch merge](multi-rack-virtual-machine-extension.md).
 
 To verify that guest management is enabled:
 
