@@ -19,7 +19,7 @@ This article provides an overview of hyperconverged deployments of Azure Local (
 
 Hyperconverged deployments come in different sizes, from a single machine footprint to a maximum of 16 machines that use hyperconverged storage. They offer a unified management control plane and support a wide range of validated hardware from trusted Microsoft partners.
 
-Hyperconverged deployments also accelerate cloud and AI innovation by seamlessly delivering new applications, workloads, and services from cloud to edge.
+Hyperconverged deployments also accelerate cloud and AI innovation by seamlessly delivering new applications, workloads, and services from the cloud to the edge.
 
 ## Overview
 
@@ -52,7 +52,7 @@ The following diagram illustrates the architecture and the capabilities of Azure
 
 [!INCLUDE [important](../includes/azure-local-jumpstart-gems.md)]
 
-See [What's new in hyperconverged deployments of Azure Local?](../whats-new.md) for details on the latest enhancements.
+For information on the latest enhancements, see [What's new in hyperconverged deployments of Azure Local?](../whats-new.md).
 
 ## Benefits
 
@@ -80,7 +80,7 @@ The following table lists commonly used Azure services with Azure Local:
 
 | **Use case** | **Description** |
 |---|---|
-| Azure Local VMs enabled by Azure Arc | Deploy Windows and Linux VMs hosted on your Azure Local instance. To learn more, see [Create Azure Local virtual machines enabled by Azure Arc](../manage/create-arc-virtual-machines.md).<br><br>Additionally, Trusted launch for Azure Local VMs enables secure boot and vTPM, automatically transfers the vTPM state within a cluster, and supports the ability to attest whether the VM started in a known good state. |
+| Azure Local VMs enabled by Azure Arc | Deploy Windows and Linux VMs hosted on your Azure Local instance. To learn more, see [Create Azure Local virtual machines enabled by Azure Arc](../manage/create-arc-virtual-machines.md).<br><br>Additionally, Trusted launch for Azure Local VMs enables secure boot and vTPM. It automatically transfers the vTPM state within a cluster, and supports the ability to determine whether the VM started in a known good state. |
 | Azure Virtual Desktop (AVD) | Deploy and manage Azure Virtual Desktop session hosts on your on-premises Azure Local. To learn more, see [Azure Virtual Desktop for Azure Local](/azure/virtual-desktop/azure-stack-hci-overview). |
 | Azure Kubernetes Service (AKS) enabled by Azure Arc | Use Azure Local to host container-based deployments using Azure Kubernetes Service (AKS) enabled by Azure Arc. To learn more, see [Azure Kubernetes Service on Azure Local](/azure/aks/aksarc/aks-whats-new-local). |
 | Run Azure Arc services on-premises | Azure Arc allows you to run select Azure services to support hybrid workloads. To learn more, see [Azure Arc overview](/azure/azure-arc/overview). |
@@ -89,7 +89,7 @@ The following table lists commonly used Azure services with Azure Local:
 | Azure Edge RAG (Preview) | Azure Edge RAG, enabled by Azure Arc is a turnkey solution that packages everything that's necessary to allow customers to build custom chat assistants and derive insights from their private data. To learn more, see [What is Edge Retrieval Augmented Generation (RAG)?](/azure/azure-arc/edge-rag/overview) |
 | Azure IoT Operations | Deploy Azure IoT Operations on Azure Kubernetes Service (AKS) enabled by Azure Arc clusters running on Azure Local to manage and process IoT data at the edge. To learn more, see [Azure IoT Operations overview](/azure/iot-operations/overview-iot-operations). |
 
-For more details on the cloud service components of Azure Local, see [Azure Local hybrid capabilities with Azure services](../hybrid-capabilities-with-azure-services-23h2.md).
+For more information on the cloud service components of Azure Local, see [Azure Local hybrid capabilities with Azure services](../hybrid-capabilities-with-azure-services-23h2.md).
 
 ## What you need to get started with Azure Local
 
@@ -114,9 +114,9 @@ For Azure Kubernetes Service on Azure Local, see [AKS network requirements](/azu
 
 Microsoft recommends purchasing Premier Solutions offered in collaboration with our hardware partners to provide the best experience for Azure Local solution. Microsoft partners also offer a single point of contact for implementation and support services.
 
-Browse the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) to view Azure Local solutions from Microsoft partners such as ASUS, Blue Chip, DataON, Dell EMC, Fujitsu, HPE, Hitachi, Lenovo, NEC, primeLine Solutions, QCT, and Supermicro.
+Browse the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) to view Azure Local solutions from Microsoft partners. Partners include ASUS, Blue Chip, DataON, Dell EMC, Fujitsu, HPE, Hitachi, Lenovo, NEC, primeLine Solutions, QCT, and Supermicro.
 
 
 ## Next steps
 
-- Learn more [About Azure Local hyperconvereged deployments](../deploy/deployment-introduction.md).
+- Learn more [About Azure Local hyperconverged deployments](../deploy/deployment-introduction.md).
