@@ -222,7 +222,7 @@ Follow these steps in Azure portal for Azure Local.
 1. Go to **Azure Arc cluster view** > **Virtual machines**.
 1. From the top command bar, select **+ Create VM**.
 
-   :::image type="content" source="media/multi-rack-create-arc-virtual-machines/select-create-vm.png" alt-text="Screenshot of select + Add/Create VM." lightbox="media/multi-rack-create-arc-virtual-machines/select-create-vm.png":::
+   :::image type="content" source="media/multi-rack-create-arc-virtual-machines/virtual-machine-create-button.png" alt-text="Screenshot of select + Add/Create VM." lightbox="media/multi-rack-create-arc-virtual-machines/virtual-machine-create-button.png":::
 
 1. On the **Basics** tab, input the following parameters in the **Project details** section:
 
@@ -234,8 +234,8 @@ Follow these steps in Azure portal for Azure Local.
 
 1. In the **Instance details** section, input the following parameters:
 
-    <!--update screenshot--
-    :::image type="content" source="media/multi-rack-create-arc-virtual-machines/create-virtual-machines-instance-details.png" alt-text="Screenshot of system details on Basics tab." lightbox="media/multi-rack-create-arc-virtual-machines/create-virtual-machines-instance-details.png":::-->
+   
+    :::image type="content" source="media/multi-rack-create-arc-virtual-machines/virtual-machine-instance-details.png" alt-text="Screenshot of system details on Basics tab." lightbox="media/multi-rack-create-arc-virtual-machines/virtual-machine-instance-details.png"
 
     1. **Virtual machine name** – Enter a name for your VM. The name should follow all the naming conventions for Azure virtual machines.  
     
@@ -246,7 +246,7 @@ Follow these steps in Azure portal for Azure Local.
     
         **The Virtual machine kind** is automatically set to **Azure Local**.
 
-    1. **Security type** - Only **Standard** security type is supported and selected by default. For more information about Trusted launch Azure Local VMs, see [What is Trusted launch for Azure Local Virtual Machines?](../index.yml)<!--update link-->.
+    1. **Security type** - Only **Standard** security type is supported and selected by default. For more information about Trusted launch Azure Local VMs, see [What is Trusted launch for Azure Local Virtual Machines?](../index.yml)<!--update link-->
 
     1. **Image** - Select from the VM images you previously created on your Azure Local instance.
     
@@ -256,7 +256,7 @@ Follow these steps in Azure portal for Azure Local.
 
         1. If you selected a Linux image, you can choose between password and ssh key.
 
-           <!--:::image type="content" source="media/multi-rack-create-arc-virtual-machines/create-arc-vm-linux-vm-image.png" alt-text="Screenshot showing how to Create a VM using a Linux VM image." lightbox="media/multi-rack-create-arc-virtual-machines/create-arc-vm-linux-vm-image.png":::-->
+           :::image type="content" source="media/multi-rack-create-arc-virtual-machines/virtual-machine-linux-root-user.png" alt-text="Screenshot showing how to Create a VM using a Linux VM image." lightbox="media/multi-rack-create-arc-virtual-machines/virtual-machine-linux-root-user.png":::
 
     1. **Virtual processor count** – Specify the number of vCPUs you would like to use to create the VM.
 
@@ -292,7 +292,7 @@ Follow these steps in Azure portal for Azure Local.
 
 1. Set the local VM administrator account credentials used when connecting to your VM via RDP. For Windows VM, in the **Administrator account** section, input the following parameters:
 
-    <!--:::image type="content" source="media/multi-rack-create-arc-virtual-machines/create-virtual-machines-administrator-account-domain-join.png" alt-text="Screenshot of guest management enabled inVM extensions on Basics tab." lightbox="media/multi-rack-create-arc-virtual-machines/create-virtual-machines-administrator-account-domain-join.png":::-->
+    :::image type="content" source="media/multi-rack-create-arc-virtual-machines/virtual-machine-windows-admin-password-domain-join.png" alt-text="Screenshot of guest management enabled inVM extensions on Basics tab." lightbox="media/multi-rack-create-arc-virtual-machines/virtual-machine-windows-admin-password-domain-join.png":::
 
     1. Specify the local VM administrator account username.
     1. Specify the password and then **Confirm password**.
@@ -319,14 +319,12 @@ Follow these steps in Azure portal for Azure Local.
 
 1. **(Optional)** Create new or add more disks to the VM.
 
-   <!--:::image type="content" source="media/multi-rack-create-arc-virtual-machines/create-new-disk.png" alt-text="Screenshot of new disk added during Create a VM." lightbox="media/multi-rack-create-arc-virtual-machines/create-new-disk.png":::-->
+   :::image type="content" source="media/multi-rack-create-arc-virtual-machines/virtual-machine-add-data-disk.png" alt-text="Screenshot of new disk added during Create a VM." lightbox="media/multi-rack-create-arc-virtual-machines/virtual-machine-add-data-disk.png":::
 
     1. Select **+ Add new disk**.
     1. Provide a **Name** and **Size**.
     1. Select **Add**. After it's created, you can see the new disk in the list view.
-    
-    <!--update screenshot
-       :::image type="content" source="media/multi-rack-create-arc-virtual-machines/create-new-disk.png" alt-text="Screenshot of new disk added during Create a VM." lightbox="media/multi-rack-create-arc-virtual-machines/create-new-disk.png":::-->
+
 
 1. **(Optional)** Create or add a network interface for the VM.
 
@@ -334,7 +332,7 @@ Follow these steps in Azure portal for Azure Local.
     > - If you enabled guest management, you must add at least one network interface.
     > - If you need more than one network interface with static IPs for your VM, create one or more interfaces now before you create the VM. Adding a network interface with static IP, after the VM is provisioned, isn't supported.
 
-    <!--:::image type="content" source="media/multi-rack-create-arc-virtual-machines/add-new-network-interface.png" alt-text="Screenshot of network interface added during Create a VM." lightbox="media/multi-rack-create-arc-virtual-machines/add-new-network-interface.png":::-->
+    :::image type="content" source="media/multi-rack-create-arc-virtual-machines/virtual-machine-network-interface.png" alt-text="Screenshot of network interface added during Create a VM." lightbox="media/multi-rack-create-arc-virtual-machines/virtual-machine-network-interface.png":::
 
     1. Provide a **Name** for the network interface.
     1. From the drop-down list, select the **Network**. Based on the logical network selected, you see the IPv4 type automatically populate as **Static** or **DHCP**.
