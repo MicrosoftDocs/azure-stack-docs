@@ -6,7 +6,7 @@ metadata:
   author: alkohli
   ms.author: alkohli
   ms.service: azure-local
-  ms.date: 09/05/2025
+  ms.date: 11/11/2025
 title: FAQ - SDN enabled by Azure Arc on Azure Local 
 summary: This FAQ provides information about Software-Defined Networking (SDN) enabled by Azure Arc on your Azure Local VMs. This feature is available in Azure Local 2506 or later with OS build 26100.xxxx.
 
@@ -25,7 +25,7 @@ sections:
 
       - question: Why am I experiencing network connectivity issues for my unmanaged VMs on Azure Local after I enabled SDN enabled by Azure Arc?
         answer: |
-          You can experience network connectivity issues if you enable Network Controller and create unmanaged VMs outside Azure interfaces like Azure CLI, Azure portal, Azure PowerShell, and Azure Resource Manager APIs. To fix these issues, see how to [unblock and configure the null port profile for unmanaged VMs]().
+          You can experience network connectivity issues if you enable Network Controller and create unmanaged VMs outside Azure interfaces like Azure CLI, Azure portal, Azure PowerShell, and Azure Resource Manager APIs. To fix these issues, run all the steps under the first bullet in [VMs created outside of Windows Admin Center](../manage/manage-default-network-access-policies-virtual-machines-23h2.md#vms-created-outside-of-windows-admin-center).
 
       - question: Why can't I connect to my Azure Local VMs, if I associate an NSG with the VM network interface or its logical network?
         answer: |

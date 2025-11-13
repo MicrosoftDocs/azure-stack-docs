@@ -1,10 +1,10 @@
 ---
 title: Connect-AksEdgeArc for AKS Edge
-author: rcheeran
+author: sethmanheim
 description: The Connect-AksEdgeArc PowerShell command adds the cluster to Azure Arc.
 ms.topic: reference
 ms.date: 02/01/2023
-ms.author: rcheeran 
+ms.author: sethm 
 ms.lastreviewed: 02/01/2023
 #ms.reviewer: jeguan
 

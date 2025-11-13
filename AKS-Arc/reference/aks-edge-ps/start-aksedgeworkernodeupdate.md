@@ -1,10 +1,10 @@
 ---
 title: Start-AksEdgeWorkerNodeUpdate for AKS Edge
-author: rcheeran
+author: sethmanheim
 description: The Start-AksEdgeWorkerNodeUpdate PowerShell command updates any worker nodes on this machine as part of the update process.
 ms.topic: reference
 ms.date: 02/02/2023
-ms.author: rcheeran 
+ms.author: sethm 
 ms.lastreviewed: 02/03/2023
 #ms.reviewer: jeguan
 
