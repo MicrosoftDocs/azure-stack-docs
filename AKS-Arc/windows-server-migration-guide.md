@@ -11,7 +11,7 @@ ms.reviewer: srikantsarwa
 
 # Migration guide: Windows Server 2019 to 2022 on AKS Arc
 
-To continue ensuring Azure remains the best possible experience with the highest standards of safety and reliability, [we are retiring the current architecture of AKS enabled by Azure Arc on all versions of Windows Server, including AKS Arc on Windows Server 2019 and on Windows Server 2022, in 3 years, on March 27, 2028](aks-windows-server-retirement.md).
+To continue ensuring Azure remains the best possible experience with the highest standards of safety and reliability, [we are retiring the current architecture of AKS enabled by Azure Arc on Windows Server 2019 in March 2026, and on Windows Server 2022 in 3 years, on March 27, 2028](aks-windows-server-retirement.md).
 
 This guide helps you migrate your AKS enabled by Azure Arc workloads from Windows Server 2019 to Windows Server 2022. The migration involves updating container images, creating new node pools, and redeploying applications to ensure compatibility with the newer operating system.
 

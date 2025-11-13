@@ -5,8 +5,8 @@ ms.topic: how-to
 ms.custom: linux-related-content
 author: sethmanheim
 ms.author: sethm
-ms.date: 07/22/2025
-ms.reviewer: rcheeran
+ms.date: 11/13/2025
+ms.reviewer: srikantsarwa
 ms.lastreviewed: 07/21/2025
 
 # Intent: As an IT Pro, I want to move my workloads from AKS on Windows Server to the latest version of AKS on Azure Local.
@@ -15,7 +15,7 @@ ms.lastreviewed: 07/21/2025
 
 # Announcing the 3-year retirement of AKS enabled by Azure Arc on Windows Server based platforms
 
-Azure Kubernetes Service enabled by Azure Arc (AKS Arc) is a managed Kubernetes service that you can use to deploy and manage containerized applications on-premises, in datacenters, or at edge locations. It enables you to use familiar tools such as the Azure portal, Azure CLI, Azure Resource Manager, and Bicep and Terraform templates to create and manage your Kubernetes clusters running on different infrastructure platforms. Microsoft continues to focus on delivering consistent user experience for all your AKS Arc clusters. To continue ensuring Azure remains the best possible experience with the highest standards of safety and reliability, **we are retiring the current architecture of AKS enabled by Azure Arc on all versions of Windows Server, including AKS Arc on Windows Server 2019 and on Windows Server 2022, in 3 years, on March 27, 2028**.
+Azure Kubernetes Service enabled by Azure Arc (AKS Arc) is a managed Kubernetes service that you can use to deploy and manage containerized applications on-premises, in datacenters, or at edge locations. It enables you to use familiar tools such as the Azure portal, Azure CLI, Azure Resource Manager, and Bicep and Terraform templates to create and manage your Kubernetes clusters running on different infrastructure platforms. Microsoft continues to focus on delivering consistent user experience for all your AKS Arc clusters. To continue ensuring Azure remains the best possible experience with the highest standards of safety and reliability, **we are retiring the current architecture of AKS enabled by Azure Arc on Windows Server 2019 in March 2026, and on Windows Server 2022 in 3 years, on March 27, 2028**.
 
 > [!IMPORTANT]
 > This also implies that AKS enabled by Azure Arc will not be available on Windows Server 2025. Plan your migration to AKS Arc on Azure Local to ensure continued support and updates.
