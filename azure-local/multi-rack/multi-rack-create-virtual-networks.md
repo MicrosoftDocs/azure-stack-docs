@@ -41,7 +41,7 @@ Following the structure of Azure virtual networks, the following are provided:
 
 Before you begin, make sure to meet or complete the following prerequisites:
 
-- Rview and [complete the prerequisites](../manage/azure-arc-vm-management-prerequisites.md). If using a client to connect to your Azure Local, see [Connect to the system remotely](../manage/azure-arc-vm-management-prerequisites.md#connect-to-the-system-remotely).  
+- Review and [complete the prerequisites](../manage/azure-arc-vm-management-prerequisites.md). If using a client to connect to your Azure Local, see [Connect to the system remotely](../manage/azure-arc-vm-management-prerequisites.md#connect-to-the-system-remotely).  
 
 - Access to a resource group where you want to provision the virtual network.
 - Access to ARM ID of the custom location associated with your Azure Local instance where you want to provision the virtual network.
@@ -88,15 +88,15 @@ Complete these steps in Azure CLI to configure a virtual network: 
     $resourceGroup = "mylocal-rg" 
     ```
 
-The required parameters:  
+    The required parameters:  
 
-| Parameter | Description  |
-| --- | --- |
-| name  | Name for the virtual network on the Azure Local Rack Scale instance. Make sure to provide a name that follows the Naming rules for Azure network resources. You can't rename a virtual network after it's created. |  
-| resource-group  | Name of the resource group where you create the virtual network.  | 
-| custom-location  | Use this to provide the full ARM ID of the custom location associated with your Azure Local where you're creating this virtual network.  | 
-| location  | Azure regions as specified by az locations.  | 
-| address-prefixes |  Private address space in CIDR notation. For example: "10.0.0.0/16".  | 
+    | Parameter | Description  |
+    | --- | --- |
+    | name  | Name for the virtual network on the Azure Local Rack Scale instance. Make sure to provide a name that follows the Naming rules for Azure network resources. You can't rename a virtual network after it's created. |  
+    | resource-group  | Name of the resource group where you create the virtual network.  | 
+    | custom-location  | Use this to provide the full ARM ID of the custom location associated with your Azure Local where you're creating this virtual network.  | 
+    | location  | Azure regions as specified by az locations. | 
+    | address-prefixes |  Private address space in CIDR notation. For example: "10.0.0.0/16".  | 
 
  
 1. Create a virtual network. Run the following cmdlet:  
@@ -157,42 +157,43 @@ The required parameters: 
     }
     ```  
 
-Once the virtual network is created, you can create a subnet.
+    Once the virtual network is created, you can create a subnet.
 
 ## Create a virtual network subnet 
-
-Create virtual network subnet via CLI  
 
 Once you’ve created a virtual network, you can create one or more subnets on the virtual network. You need to define at least one subnet in a VNet as the workloads, including network interfaces, load balancers, and others will be housed to a subnet in a virtual network.  
 
 > [!NOTE]
 > Only the Network Security Group (NSG) field can be modified after VNet subnet creation.
 
-```azurecli
-$subnetName = "mylocal-subnet"  
-$vnetName = “mylocal-vnet” 
-$location = "eastus"  
+Complete these steps in Azure CLI to configure a virtual network subnet:
 
-$customLocationID ="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customLocationName"  
-$addressPrefix = “10.0.0.0/24” 
-$dnsServers = "192.168.200.222"  
-$subscription = "<Subscription ID>"  
-$resourceGroup = "mylocal-rg"  
-$nsg = “mylocal-nsg” --- Optional 
-$routes = “'[{"name":"default","address_prefix":"0.0.0.0/0","next_hop_ip_address":"10.0.0.1"}]'”  
-```
+1. Set the parameters. Here's an example:
+
+    ```azurecli
+    $subnetName = "mylocal-subnet"  
+    $vnetName = “mylocal-vnet” 
+    $location = "eastus"  
+    $customLocationID ="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customLocationName"  
+    $addressPrefix = “10.0.0.0/24” 
+    $dnsServers = "192.168.200.222"  
+    $subscription = "<Subscription ID>"  
+    $resourceGroup = "mylocal-rg"  
+    $nsg = “mylocal-nsg” --- Optional 
+    $routes = “'[{"name":"default","address_prefix":"0.0.0.0/0","next_hop_ip_address":"10.0.0.1"}]'”  
+    ```
  
-The required parameters:  
+    The required parameters:  
 
-| Parameter | Description | 
-| --- | --- |
-| name  | Name for the virtual network subnet on the Azure Local Rack Scale instance. Make sure to provide a name that follows the Naming rules for Azure network resources. You can't rename a virtual network subnet after it's created.  |
-| vnet-name | Name of the parent virtual network. |
-| resource-group  | Name of the resource group where you create the logical network. For ease of management, we recommend that you use the same resource group as the parent virtual network.  |
-| subscription  | Subscription ID you want to use for the resource creation.  |
-| custom-location  | Use this to provide the custom location associated with your Azure Local where you're creating this virtual network subnet.  |
-| location  | Azure regions as specified by az locations.  |
-| address-prefix  | Private address space in CIDR notation. Must fall within the parent virtual network address space. For example: "10.0.0.0/24".  |
+    | Parameter | Description | 
+    | --- | --- |
+    | name  | Name for the virtual network subnet on the Azure Local Rack Scale instance. Make sure to provide a name that follows the Naming rules for Azure network resources. You can't rename a virtual network subnet after it's created.  |
+    | vnet-name | Name of the parent virtual network. |
+    | resource-group  | Name of the resource group where you create the logical network. For ease of management, we recommend that you use the same resource group as the parent virtual network.  |
+    | subscription  | Subscription ID you want to use for the resource creation.  |
+    | custom-location  | Use this to provide the custom location associated with your Azure Local where you're creating this virtual network subnet.  |
+    | location  | Azure regions as specified by az locations. |
+    | address-prefix  | Private address space in CIDR notation. Must fall within the parent virtual network address space. For example: "10.0.0.0/24".  |
 
 1. Create a virtual network subnet. Run the following cmdlet:  
 
@@ -208,51 +209,51 @@ The required parameters: 
     --routes $routes 
     ```
  
-Here's a sample output:  
+    Here's a sample output:  
 
-```output
-{
-  "extendedLocation": {
-    "name": "/subscriptions/<SubscriptionID>/resourceGroups/<mylocal-rg>/providers/Microsoft.ExtendedLocation/customLocations/<customLocation>",
-    "type": "CustomLocation"
-  },
-  "id": "/subscriptions/<SubscriptionID>/resourceGroups/<mylocal-rg/providers/Microsoft.AzureStackHCI/virtualNetworks/mylocal-vnet/subnets/mylocal-subnet",
-  "name": "mylocal-subnet",
-  "properties": {
-    "addressPrefix": "10.0.0.0/24",
-    "ipConfigurations": null,
-    "natGateway": null,
-    "networkSecurityGroup": null,
-    "provisioningState": "Succeeded",
-    "routeTable": {
-      "etag": null,
-      "name": null,
-      "properties": null,
-      "type": null
-    },
-    "status": {
-      "errorCode": "",
-      "errorMessage": "",
-      "provisioningStatus": {
-        "operationId": "e1d312e9-74f4-4d0e-b6b5-8e138efa1a13*456E6AD0C996A760B5E0B8A14FCDC1C986A7663C594049B47702A0AB8C3DB352",
-        "status": "Succeeded"
-      }
+    ```output
+    {
+      "extendedLocation": {
+        "name": "/subscriptions/<SubscriptionID>/resourceGroups/<mylocal-rg>/providers/Microsoft.ExtendedLocation/customLocations/<customLocation>",
+        "type": "CustomLocation"
+      },
+      "id": "/subscriptions/<SubscriptionID>/resourceGroups/<mylocal-rg/providers/Microsoft.AzureStackHCI/virtualNetworks/mylocal-vnet/subnets/mylocal-subnet",
+      "name": "mylocal-subnet",
+      "properties": {
+        "addressPrefix": "10.0.0.0/24",
+        "ipConfigurations": null,
+        "natGateway": null,
+        "networkSecurityGroup": null,
+        "provisioningState": "Succeeded",
+        "routeTable": {
+          "etag": null,
+          "name": null,
+          "properties": null,
+          "type": null
+        },
+        "status": {
+          "errorCode": "",
+          "errorMessage": "",
+          "provisioningStatus": {
+            "operationId": "e1d312e9-74f4-4d0e-b6b5-8e138efa1a13*456E6AD0C996A760B5E0B8A14FCDC1C986A7663C594049B47702A0AB8C3DB352",
+            "status": "Succeeded"
+          }
+        }
+      },
+      "resourceGroup": "mylocal-rg",
+      "systemData": {
+        "createdAt": "2025-11-10T22:54:18.793244+00:00",
+        "createdBy": "user@contoso.com",
+        "createdByType": "User",
+        "lastModifiedAt": "2025-11-10T22:54:30.424794+00:00",
+        "lastModifiedBy": "319f651f-7ddb-4fc6-9857-7aef9250bd05",
+        "lastModifiedByType": "Application"
+      },
+      "type": "microsoft.azurestackhci/virtualnetworks/subnets"
     }
-  },
-  "resourceGroup": "mylocal-rg",
-  "systemData": {
-    "createdAt": "2025-11-10T22:54:18.793244+00:00",
-    "createdBy": "user@contoso.com",
-    "createdByType": "User",
-    "lastModifiedAt": "2025-11-10T22:54:30.424794+00:00",
-    "lastModifiedBy": "319f651f-7ddb-4fc6-9857-7aef9250bd05",
-    "lastModifiedByType": "Application"
-  },
-  "type": "microsoft.azurestackhci/virtualnetworks/subnets"
-}
-``` 
+    ``` 
 
-Once the virtual network subnet is created, you can start creating network interfaces and then, virtual machines. Additionally, you can also create other SDN services like NAT gateway and Software Load Balancer.
+    Once the virtual network subnet is created, you can start creating network interfaces and then, virtual machines. Additionally, you can also create other SDN services like NAT gateway and Software Load Balancer.
 
 ## Next steps  
 
