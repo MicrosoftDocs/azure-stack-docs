@@ -169,6 +169,6 @@ Before production migration:
 
 ## Resources
 
-- [AKS Arc Documentation](https://learn.microsoft.com/azure/aks/hybrid/aks-overview)
-- [Windows Container Upgrade Guide](https://learn.microsoft.com/azure/aks/upgrade-windows-2019-2022)
-- [Azure Local Documentation](https://learn.microsoft.com/azure-stack/hci/)
+- [AKS Arc overview](aks-overview.md)
+- [Windows container upgrade guide](/azure/aks/upgrade-windows-2019-2022)
+- [Azure Local](/azure/azure-local)
