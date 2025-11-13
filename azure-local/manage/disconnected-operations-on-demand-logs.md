@@ -85,7 +85,7 @@ Before you collect logs in a connected disconnected scenario, make sure you:
 
 1. Install the operations module if it's not installed. Use the `Import-Module` cmdlet and change the path to match your folder structure.
 
-    ```powershell
+    ```PowerShell
     Import-Module "<disconnected operations module folder path>\Azure.Local.DisconnectedOperations.psd1" -Force
     ```
 
@@ -123,15 +123,46 @@ Before you collect logs in a connected disconnected scenario, make sure you:
 
 1. Collect control plane logs. Run this command on a system that can access the appliance VM (usually the same Hyper-V host):
 
-    ```powershell
+    ```PowerShell
     Invoke-ApplianceLogCollection
     ```
 
     This command gathers logs from the appliance VM and sends them directly to Microsoft support.
 
+    Example:
+
+    ```PowerShell
+    $fromDate = (Get-Date).AddMinutes(-30)
+    $toDate = (Get-Date)
+    $operationId = Invoke-ApplianceLogCollection -FromDate $fromDate -ToDate $toDate
+    ```
+
+    Example output:
+
+    ```console
+    PS G:\azurelocal\OperationsModule> $fromDate = (Get-Date).AddMinutes(-30)
+    PS G:\azurelocal\OperationsModule> $toDate = (Get-Date)
+    PS G:\azurelocal\OperationsModule> $operationId = Invoke-ApplianceLogCollection -FromDate $fromDate -ToDate $toDate
+    VERBOSE: [2025-11-13 18:33:26Z][Invoke-ApplianceLogCollection] Get health state with URI: https://169.254.53.25:9443/sysconfig/SystemReadiness
+    VERBOSE: [2025-11-13 18:33:26Z][Invoke-ScriptsWithRetry][Invoke-ApplianceLogCollection] Executing 'Get health state ...' with timeout 600 seconds ...
+    VERBOSE: [2025-11-13 18:33:26Z][Invoke-ScriptsWithRetry][Invoke-ApplianceLogCollection] [CHECK][Attempt 0] for task 'Get health state ...' ...
+    VERBOSE: [2025-11-13 18:33:56Z][Invoke-ScriptsWithRetry][Invoke-ApplianceLogCollection] Task 'Get health state ...' succeeded.
+    VERBOSE: [2025-11-13 18:33:56Z][Invoke-ScriptsWithRetry][Invoke-ApplianceLogCollection] Executing 'Get system configuration ...' with timeout 600 seconds ...
+    VERBOSE: [2025-11-13 18:33:56Z][Invoke-ScriptsWithRetry][Invoke-ApplianceLogCollection] [CHECK][Attempt 0] for task 'Get system configuration ...' ...
+    VERBOSE: [2025-11-13 18:34:37Z][Invoke-ScriptsWithRetry][Invoke-ApplianceLogCollection] Task 'Get system configuration ...' succeeded.
+    VERBOSE: [2025-11-13 18:34:37Z][Invoke-ApplianceLogCollection] Trigger log collections with parameters: https://169.254.53.25:9443/logs/logCollectionJob/default and body {
+        "fromDate":  "2025-11-13T18:03:08.4868568Z",
+        "toDate":  "2025-11-13T18:33:13.7369896Z"
+    }
+    VERBOSE: [2025-11-13 18:34:37Z][Invoke-ScriptsWithRetry][Invoke-ApplianceLogCollection] Executing 'Trigger log collection ...' with timeout 600 seconds ...
+    VERBOSE: [2025-11-13 18:34:37Z][Invoke-ScriptsWithRetry][Invoke-ApplianceLogCollection] [CHECK][Attempt 0] for task 'Trigger log collection ...' ...
+    VERBOSE: [2025-11-13 18:34:37Z][Invoke-ScriptsWithRetry][Invoke-ApplianceLogCollection] Task 'Trigger log collection ...' succeeded.
+    VERBOSE: [2025-11-13 18:34:37Z][Invoke-ApplianceLogCollection] Log collections trigger result: "d5cb5a24-7f35-4fdb-a0a5-f6dbab77a68c"
+    ```
+
 1. Collect host node logs. On each Azure Local host node, run this command:
 
-    ```powershell
+    ```PowerShell
     Send-DiagnosticData -SaveToPath <shared folder path>
     ```
 
@@ -151,7 +182,7 @@ Before you collect logs in a disconnected scenario, make sure you:
 
 1. Install the operations module if it's not installed. Use the `Import-Module` cmdlet and change the path to match your folder structure.
 
-    ```powershell
+    ```PowerShell
     Import-Module "<disconnected operations module folder path>\Azure.Local.DisconnectedOperations.psd1" -Force
     ```
 
@@ -189,13 +220,13 @@ Before you collect logs in a disconnected scenario, make sure you:
 
 1. Create a share. Run this command:
 
-    ```powerShell
+    ```PowerShell
     New-SMBShare -Name `<share-name>` -Path `<path-to-share>` -FullAccess Users -ChangeAccess 'Server Operators'
     ```
 
 1. Set up credentials for the share. Replace the placeholder text `<share-name>` and `<path-to-share>` with your own values, then run this command:
 
-    ```powerShell
+    ```PowerShell
     $user = "<username>"
     $pass = "<password>"
     $sec=ConvertTo-SecureString -String $pass -AsPlainText -Force
@@ -204,7 +235,7 @@ Before you collect logs in a disconnected scenario, make sure you:
 
 1. Collect control plane logs. Run this command on a system that can access the appliance VM (usually the same Hyper-V host):
 
-    ```powershell
+    ```PowerShell
     Invoke-ApplianceLogCollectionAndSaveToShareFolder
     ```
 
@@ -212,17 +243,17 @@ Before you collect logs in a disconnected scenario, make sure you:
 
     Example:
 
-    ```azurecli
+    ```PowerShell
     $fromDate = (Get-Date).AddMinutes(-30)
     $toDate = (Get-Date)
     $operationId = Invoke-ApplianceLogCollectionAndSaveToShareFolder -FromDate $fromDate -ToDate $toDate `
-    -LogOutputShareFolderPath "<File Share Path>" -ShareFolderUsername "ShareFolderUser" -ShareFolderPassword (ConvertTo-SecureString "<Share Folder Password>" -AsPlainText -Force)
+    -LogOutputShareFolderPath "<File Share Path>" -ShareFolderUsername "<Username>" -ShareFolderPassword (ConvertTo-SecureString "<Share Folder Password>" -AsPlainText -Force)
     ```
 
     Example output:
 
     ```console
-    PS C:\Users\administrator.s46r2004\Documents> $operationId = Invoke-ApplianceLogCollectionAndSaveToShareFolder -FromDate $fromDate -ToDate $toDate -LogOutputShareFolderPath "\\<LogShareName>\$logShareName" -ShareFolderUsername "<Username>.masd.stbtest.microsoft.com\administrator" -ShareFolderPassword (ConvertTo-SecureString "<Password>" -AsPlainText -Force)  
+    PS C:\Users\administrator.s46r2004\Documents> $operationId = Invoke-ApplianceLogCollectionAndSaveToShareFolder -FromDate $fromDate -ToDate $toDate -LogOutputShareFolderPath "\\<IP or Hostname>\<share-name or LogShareName>" -ShareFolderUsername "<Username>" -ShareFolderPassword (ConvertTo-SecureString "<Password>" -AsPlainText -Force)  
         
     VERBOSE: [2023-04-09 22:34:28Z] [Invoke-ApplianceLogCollectionAndSaveToShareFolder] Trigger log collections with parameters:  
     https://<IP address>/logs/logCollectionIndirectJob  
@@ -243,7 +274,7 @@ Before you collect logs in a disconnected scenario, make sure you:
 
 1. Collect host node logs. On each Azure Local host node, run this command:
 
-    ```powershell
+    ```PowerShell
     Send-DiagnosticData -SaveToPath <shared folder path>
     ```
 
@@ -336,20 +367,20 @@ Here are some examples of how to use the `Send-DiagnosticData` cmdlet.
 
 - To import the module, run this command:
 
-    ```powershell
+    ```PowerShell
     Import-Module "<disconnected operations module folder path>" -Force
     Send-DiagnosticData -ResourceGroupName <String> -SubscriptionId <String> -TenantId <String> [-RegistrationWithDeviceCode] -RegistrationRegion <String> [-Cloud <String>] -DiagnosticLogPath <String> [-ObsRootFolderPath <String>] [-StampId <Guid>] [<CommonParameters>]
     ```
 
 - To sign in manually by using a device code, run this command:
 
-    ```powerShell
+    ```PowerShell
     Send-DiagnosticData -ResourceGroupName <String> -SubscriptionId <String> -TenantId <String> [-RegistrationWithDeviceCode] -RegistrationRegion <String> [-Cloud <String>] -DiagnosticLogPath <String> [-ObsRootFolderPath <String>] [-StampId <Guid>] [<CommonParameters>]
     ```
 
 - To use service principal credentials, run this command:
 
-    ```powerShell
+    ```PowerShell
     Send-DiagnosticData -ResourceGroupName <String> -SubscriptionId <String> -TenantId <String> -RegistrationWithCredential <PSCredential> -RegistrationRegion <String> [-Cloud <String>] -DiagnosticLogPath <String> [-ObsRootFolderPath <String>] [-StampId <Guid>] [<CommonParameters>]
     ```
 
@@ -361,7 +392,7 @@ Use these commands to monitor log collection.
 
 Check the status of the log collection job with this cmdlet.
 
-```powershell
+```PowerShell
 Get-ApplianceLogCollectionJobStatus -OperationId $OperationId
 ```
 
@@ -381,7 +412,7 @@ Example output:
 
 Get log collection history with this cmdlet. The input parameter `FromDate` takes DateTime type, and sets the start time for the history search window. If you don't specify the `FromDate`, the cmdlet searches the last three hours.
 
-```powershell
+```PowerShell
    Get-ApplianceLogCollectionHistory -FromDate ((Get-Date).AddHours(-5))
 ```
 
@@ -414,7 +445,7 @@ UploadDetails     : @{UploadStartTime=2025-10-17T01:13:00.273+00:00; UploadSizeI
 
 Get the appliance instance configuration, including the stamp ID and resource ID (DeviceARMResourceUri), with this cmdlet.
 
-```powershell
+```PowerShell
    $stampId = (Get-ApplianceInstanceConfiguration).StampId
 ```
 
