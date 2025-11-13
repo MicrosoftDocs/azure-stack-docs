@@ -747,7 +747,7 @@ items:
       - name: Create logical networks
         href: ./overview.md
       - name: Create network interfaces
-        href: ./overview.md
+        href: ./multi-rack/multi-rack-create-network-interfaces.md
       - name: Create Azure Local VMs
         href: ./multi-rack/multi-rack-create-arc-virtual-machines.md 
 
