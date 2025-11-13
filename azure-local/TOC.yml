@@ -817,4 +817,4 @@ items:
       href: manage/disconnected-operations-fallback.md      
 
 - name: Microsoft 365 Local
-  href: ./overview.md
+  href: ./concepts/microsoft-365-local-overview.md
