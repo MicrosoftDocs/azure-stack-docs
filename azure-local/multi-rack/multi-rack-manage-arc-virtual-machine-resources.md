@@ -29,7 +29,7 @@ This article describes how to manage these VM resources for an Azure Local VM fo
 After you create a VM, you might want to add a data disk to it.
 
 > [!NOTE]
-> You must turn off your VM before adding or deleting a data disk. Once it is updated, you need to restart your VM.
+> You must turn off your VM before adding or removing a data disk. Once it is updated, you need to restart your VM.
 
 ### [Azure CLI](#tab/azurecli)
 
@@ -125,7 +125,7 @@ Here's a sample output that indicates successful resizing of the data disk:
 When deleting a data disk, you'll get a notification that the job for disk deletion has started. After the disk is deleted, the list refreshes to display the remaining data disks.
 
 > [!NOTE]
-> You must turn off your VM before adding or deleting a data disk. Once it is updated, you need to restart your VM.
+> You must turn off your VM before adding or removing a data disk. Once it is updated, you need to restart your VM.
 
 ### [Azure CLI](#tab/azurecli)
 
