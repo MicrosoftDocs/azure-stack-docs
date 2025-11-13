@@ -25,6 +25,8 @@ For custom images in the Azure Storage account, make sure that the following pre
 
 - The VHDX image must be prepared using `sysprep /generalize /shutdown /oobe`. For more information, see [Sysprep command-line options](/windows-hardware/manufacture/desktop/sysprep-command-line-options#oobe&preserve-view=true). This is true for both Windows and Linux VM images.
 
+- Use only English (en-us) language VHDs to create VM images.
+
 - For Linux VM images:
 
     - To allow for initial configuration and customization during VM provisioning, you need to ensure that the image contains `cloud init with nocloud` datasource.
