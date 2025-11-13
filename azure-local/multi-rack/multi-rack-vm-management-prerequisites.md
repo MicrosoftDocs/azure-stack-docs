@@ -8,7 +8,7 @@ ms.service: azure-local
 ms.date: 11/12/2025
 ---
 
-# Review prerequisites for Azure Local VMs for multi-rack deployments (Preview)
+# Review prerequisites for Azure Local VMs for multi-rack deployments (preview)
 
 [!INCLUDE [multi-rack-applies-to-preview](../includes/multi-rack-applies-to-preview.md)]
 
@@ -29,7 +29,8 @@ Azure requirements include:
 
 - You have access to an Azure Local instance that is deployed with the network fabric, configured, with at least one L3 isolation domain that has at least one L3 external network and one L3 internal network configured with sufficiently large IP CIDR, and the custom location of the Azure Local instance.
 
-    **Note**: The first eight IPs of the address prefix associated with an L3 internal network are reserved for internal use. Plan the size of the IP CIDR based on how many IPs you expect are required by your workloads. 
+    > [!NOTE]
+    > The first eight IPs of the address prefix associated with an L3 internal network are reserved for internal use. Plan the size of the IP CIDR based on how many IPs you expect are required by your workloads.
 
     - Go to the **Overview** page in the Azure Local resource. Verify that **Detailed Status** shows as **Running**. You should also see a custom/extended location in the cluster overview page.
     
@@ -44,7 +45,7 @@ For Azure Local VM images to be used on Azure Local, make sure to satisfy the fo
 - Use only English (en-us) language VHDs to create VM images.
 - For Linux VM images:  
 
-    - To allow for intial configuration and customization during VM provisioning, you need to ensure that the image contains cloud init with nocloud datasource 
+    - To allow for initial configuration and customization during VM provisioning, you need to ensure that the image contains cloud init with nocloud datasource 
 
     - You need to configure the bootloader, kernel, and init system in your image to enable both serial connectivity and text-based console. Use both GRUB_TERMINAL="console serial" and kernel cmdline settings. This configuration is required to enable serial access for troubleshooting deployment issues and console support for your virtual machine (VM) after deployment. Make sure the serial port settings on your system and terminal match to establish proper communication.
 - For Windows VM images, install VirtIO drivers in the image to ensure proper detection of virtual storage and network devices during VM deployment.
