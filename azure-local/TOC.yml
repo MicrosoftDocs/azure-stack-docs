@@ -745,7 +745,7 @@ items:
       - name: Create Azure Local VMs image
         href: ./overview.md
       - name: Create logical networks
-        href: ./overview.md
+        href: ./multi-rack/multi-rack-create-logical-networks.md
       - name: Create network interfaces
         href: ./overview.md
       - name: Create Azure Local VMs
