@@ -749,7 +749,9 @@ items:
       - name: Create network interfaces
         href: ./overview.md
       - name: Create Azure Local VMs
-        href: ./overview.md 
+        href: ./overview.md
+      - name: Connect to Azure Local VMs via SSH
+        href: ./multi-rack/multi-rack-connect-arc-vm-using-ssh.md
 
   - name: Monitor
     items:
