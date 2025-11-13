@@ -1,5 +1,5 @@
 ---
-title: Use built-in RBAC roles for to manage Azure Local VMs for multi-rack deployments (Preview)
+title: Use built-in RBAC roles to manage Azure Local VMs for multi-rack deployments (Preview)
 description: Learn how to use RBAC built-in roles to manage Azure Local VMs for multi-rack deployments. (Preview)
 author: alkohli
 ms.author: alkohli
@@ -77,9 +77,9 @@ For more information, see [Custom role definitions](#custom-role-definitions).
 
 Before you begin, make sure to complete the following prerequisites:
 
-- Make sure that complete the [LINK WON'T RESOLVE UNTIL AFTER MERGE: Azure Local requirements for multi-rack deployments]. 
+- Make sure that you complete the Azure Local requirements for multi-rack deployments.
 
-- Make sure that you have access to Azure subscription as an Owner or User Access Administrator to assign roles to others.
+- Make sure that you have access to an Azure subscription as an Owner or User Access Administrator to assign roles to others.
 
 ## Create custom roles
 
@@ -101,7 +101,7 @@ Once you’ve created the custom roles according to your requirements, you can a
 
 - **Azure CLI**: To assign RBAC roles via Azure CLI, see [Assign Azure roles using Azure CLI](/azure/role-based-access-control/role-assignments-cli). 
 
-- **Azure portal**: To assign RBAC roles via Azure Portal, see [Assign Azure roles using the Azure portal](/azure/role-based-access-control/role-assignments-portal). 
+- **Azure portal**: To assign RBAC roles via Azure portal, see [Assign Azure roles using the Azure portal](/azure/role-based-access-control/role-assignments-portal). 
 
 ## Custom role definitions
 
