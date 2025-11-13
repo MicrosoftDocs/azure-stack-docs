@@ -771,6 +771,9 @@ items:
       - name: PowerShell reference
         href: ./overview.md 
 
+- name: Microsoft 365 Local
+  href: ./concepts/microsoft-365-local-overview.md
+
 - name: Disconnected operations
   items:
   - name: Overview
@@ -815,6 +818,3 @@ items:
       href: manage/disconnected-operations-on-demand-logs.md
     - name: Fallback log collection
       href: manage/disconnected-operations-fallback.md      
-
-- name: Microsoft 365 Local
-  href: ./concepts/microsoft-365-local-overview.md
