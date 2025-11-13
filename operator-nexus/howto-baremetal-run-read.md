@@ -1,6 +1,6 @@
 ---
-title: Troubleshoot Bare-Metal Machine Issues by Using the run-read Command for Azure Operator Nexus
-description: This article teaches you how to run diagnostics on a bare-metal machine by using the run-read command.
+title: Troubleshoot Bare-Metal Machines by Using the run-read Command
+description: This article teaches you how to run diagnostics on a bare-metal machine by using the run-read command for Azure Operator Nexus.
 author: eak13
 ms.author: ekarandjeff
 ms.service: azure-operator-nexus
@@ -9,7 +9,7 @@ ms.date: 4/17/2025
 ms.custom: template-how-to
 ---
 
-# Troubleshoot bare-metal machine issues by using the `run-read` command
+# Troubleshoot bare-metal machine issues by using the run-read command
 
 You can investigate and resolve issues with an on-premises bare-metal machine by using the `az networkcloud baremetalmachine run-read-command` for Azure Operator Nexus. The `run-read` command supports a curated list of read-only commands that help you get information from a bare-metal machine.
 
@@ -21,11 +21,11 @@ You can investigate and resolve issues with an on-premises bare-metal machine by
 
 [!INCLUDE [command-output-settings](./includes/run-commands/command-output-settings.md)]
 
-## Execute a `run-read` command
+## Run a `run-read` command
 
-You can use the `run-read` command to run a command on a bare-metal machine without changing anything. Some commands have more than one word, or need an argument to work. These commands are structured to distinguish them from ones that can make changes. For example, the `run-read` command can use `kubectl get` but not `kubectl apply`.
+You can use the `run-read` command to run a command on a bare-metal machine without changing anything. Some commands have more than one word or need an argument to work. These commands are structured to distinguish them from ones that can make changes. For example, the `run-read` command can use `kubectl get` but not `kubectl apply`.
 
-When you use these commands, you have to put all the words in the "command" field. For example, `{command:'kubectl get',arguments:[nodes]}` is right; `{command:kubectl,arguments:[get,nodes]}` is wrong.
+When you use these commands, you have to put all the words in the `command` field. For example, `{command:'kubectl get',arguments:[nodes]}` is right; `{command:kubectl,arguments:[get,nodes]}` is wrong.
 
 Some commands begin with `nc-toolbox nc-toolbox-runread` and must be entered as shown. The `nc-toolbox-runread` command is a special container image that includes more tools that aren't installed on the bare-metal host, including `ipmitool` and `racadm`.
 
@@ -187,7 +187,7 @@ This list shows the commands you can use. Commands that are displayed in *italic
 - `nc-toolbox nc-toolbox-runread racadm sslcertview`
 - _`nc-toolbox nc-toolbox-runread racadm swinventory`_
 - _`nc-toolbox nc-toolbox-runread racadm systemconfig getbackupscheduler`_
-- `nc-toolbox nc-toolbox-runread racadm systemperfstatistics` (PeakReset argument NOT allowed)
+- `nc-toolbox nc-toolbox-runread racadm systemperfstatistics` (`PeakReset` argument not allowed)
 - _`nc-toolbox nc-toolbox-runread racadm techsupreport getupdatetime`_
 - `nc-toolbox nc-toolbox-runread racadm traceroute`
 - `nc-toolbox nc-toolbox-runread racadm traceroute6`
@@ -196,10 +196,10 @@ This list shows the commands you can use. Commands that are displayed in *italic
 - _`nc-toolbox nc-toolbox-runread racadm vflashpartition list`_
 - _`nc-toolbox nc-toolbox-runread racadm vflashpartition status -a`_
 - `nc-toolbox nc-toolbox-runread mstregdump`
-- `nc-toolbox nc-toolbox-runread mstconfig` (requires `query` arg)
-- `nc-toolbox nc-toolbox-runread mstflint` (requires `query` arg)
-- `nc-toolbox nc-toolbox-runread mstlink` (requires `query` arg)
-- `nc-toolbox nc-toolbox-runread mstfwmanager` (requires `query` arg)
+- `nc-toolbox nc-toolbox-runread mstconfig` (requires `query` argument)
+- `nc-toolbox nc-toolbox-runread mstflint` (requires `query` argument)
+- `nc-toolbox nc-toolbox-runread mstlink` (requires `query` argument)
+- `nc-toolbox nc-toolbox-runread mstfwmanager` (requires `query` argument)
 - `nc-toolbox nc-toolbox-runread mlx_temp`
 
 See the following code snippet for the command syntax for a single command with no arguments, using `hostname` as an example:
@@ -214,10 +214,10 @@ az networkcloud baremetalmachine run-read-command --name "<bareMetalMachineName>
 
 The previous code snippet uses the following variables:
 
-- The value `--name` is the name of the bare-metal machine resource on which to execute the command.
+- The value `--name` is the name of the bare-metal machine resource on which to run the command.
 - The `--commands` parameter always takes a list of commands, even if there's only one command.
 - Multiple commands can be provided in JSON format by using the [Azure CLI shorthand](https://aka.ms/cli-shorthand) notation.
-- Any blank spaces must be enclosed in single quotes.
+- Any blank spaces must be enclosed in single quotation marks.
 - Arguments for each command must also be provided as a list, as shown in the following examples.
 - Not all commands can run on any bare-metal machine. For example, `kubectl` commands can only be run from a bare-metal machine with the `control-plane` role.
 
@@ -236,7 +236,7 @@ When you provide an optional argument `--output-directory` value, the output res
 > [!WARNING]
 > Using the `--output-directory` argument overwrites any files in the local directory that have the same name as the new files being created.
 
-### This example executes the `kubectl get pods` command
+### This example runs the `kubectl get pods` command
 
 ```azurecli
 az networkcloud baremetalmachine run-read-command --name "<bareMetalMachineName>" \
@@ -246,7 +246,7 @@ az networkcloud baremetalmachine run-read-command --name "<bareMetalMachineName>
    --subscription "<subscription>"
 ```
 
-### This example executes the `hostname` command and a `ping` command
+### This example runs the `hostname` command and a `ping` command
 
 ```azurecli
 az networkcloud baremetalmachine run-read-command --name "<bareMetalMachineName>" \
@@ -256,7 +256,7 @@ az networkcloud baremetalmachine run-read-command --name "<bareMetalMachineName>
     --subscription "<subscription>"
 ```
 
-### This example executes the `racadm getsysinfo -c` command
+### This example runs the `racadm getsysinfo -c` command
 
 ```azurecli
 az networkcloud baremetalmachine run-read-command --name "<bareMetalMachineName>" \

@@ -16,7 +16,7 @@ To send the command output to a specified storage account and container, see [Az
 
 Before you run commands, verify that you can access the specified storage account:
 
-1. From the Azure portal, navigate to **Storage Account**.
+1. From the Azure portal, go to **Storage Account**.
 1. In **Storage Account details**, select **Storage browser** from the left menu.
 1. In **Storage browser details**, select **Blob containers**.
 1. Select the container where you want to send the command output.

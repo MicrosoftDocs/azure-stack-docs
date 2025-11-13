@@ -18,5 +18,5 @@ You can also download it via the Azure portal:
 1. In **Storage account details**, select **Storage browser** from the left menu.
 1. In **Storage browser details**, select **Blob containers**.
 1. Select the blob container.
-1. Select the output file from the command. You can identify the file name in the output summary. Additionally, the **Last modified** timestamp aligns with when the command was executed.
+1. Select the output file from the command. You can identify the file name in the output summary. Additionally, the **Last modified** time stamp aligns with when the command was run.
 1. You can manage and download the output file from the **Overview** pane.
