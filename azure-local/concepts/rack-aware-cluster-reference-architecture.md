@@ -10,7 +10,7 @@ ms.topic: concept-article
 
 # Azure Local rack aware cluster reference architecture (Preview)
 
-> Applies to: Azure Local version 2510 and later
+::: moniker range=">=azloc-2510"
 
 This article contains information about the network design and configuration of an Azure Local rack aware cluster. This configuration involves a single cluster where nodes are placed in different physical locations within a building.
 
@@ -154,7 +154,6 @@ Option C simplifies the architecture with a single TOR device per room.
 - SMB1 and SMB2 are hosted on the same TOR device.
 - Room-to-room link can be redundant (bonded) carrying both storage VLANs.
 - No TOR redundancy within zones.
-
 
 **Uplink configuration:** Spine connectivity can be single or bundled links depending on the number of spine switches deployed.
 
@@ -392,3 +391,11 @@ For more information, see the [Software Defined Networking configuration guide](
 ## Next steps
 
 - [Room-to-room connectivity](rack-aware-cluster-room-to-room-connectivity.md)
+
+::: moniker-end
+
+::: moniker range="<=azloc-2509"
+
+This feature is available in Azure Local 2510 and later.
+
+::: moniker-end

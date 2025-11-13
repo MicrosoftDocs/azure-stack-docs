@@ -9,7 +9,7 @@ ms.author: alkohli
 
 # Provision Azure Local VMs in a local availability zone (Preview)
 
-> Applies to: Azure Local version 2510 and later
+::: moniker range=">=azloc-2510"
 
 This article explains how to create Azure Local virtual machines (VMs) in a local availability zone to reduce latency, improve performance, ensure redundancy, and meet compliance requirements.
 
@@ -167,3 +167,11 @@ In the **Instance details** section, input the following parameters:
 :::image type="content" source="media/rack-aware-cluster-availability-zone/zone-a-strict.png" alt-text="Screenshot of virtual machine with zone A strict in the Azure portal." lightbox="media/rack-aware-cluster-availability-zone/zone-a-strict.png":::
 
 ---
+
+::: moniker-end
+
+::: moniker range="<=azloc-2509"
+
+This feature is available in Azure Local 2510 and later.
+
+::: moniker-end

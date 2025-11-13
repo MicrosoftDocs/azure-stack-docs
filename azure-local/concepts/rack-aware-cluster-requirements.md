@@ -11,7 +11,7 @@ ms.service: azure-local
 
 # Requirements and supported configurations for rack aware clusters (Preview)
 
-> Applies to: Azure Local version 2510 and later
+::: moniker range=">=azloc-2510"
 
 This article provides the requirements and supported configurations for rack aware clusters.
 
@@ -75,9 +75,9 @@ Keep in mind the following key considerations for rack aware cluster:
 - Perform load testing to ensure the solution is properly scaled for production.
 - Conduct live migration and failover testing for VM workloads.
 
-    - During planned failovers, non-strict VMs are seamlessly migrated to operational nodes within the same zone or, if necessary, to another zone with no downtime.
+  - During planned failovers, non-strict VMs are seamlessly migrated to operational nodes within the same zone or, if necessary, to another zone with no downtime.
 
-    - During unplanned failovers, VM operations might be interrupted. Typically, systems require three to five minutes to restore availability on an alternate node or zone.
+  - During unplanned failovers, VM operations might be interrupted. Typically, systems require three to five minutes to restore availability on an alternate node or zone.
 
     The following table outlines the VM placement and failover behavior:
 
@@ -99,3 +99,11 @@ Keep in mind the following key considerations for rack aware cluster:
 
 - [Deploy rack aware cluster via the Azure portal](../deploy/rack-aware-cluster-deploy-portal.md).
 - [Deploy rack aware cluster via ARM template](../deploy/rack-aware-cluster-deployment-via-template.md).
+
+::: moniker-end
+
+::: moniker range="<=azloc-2509"
+
+This feature is available in Azure Local 2510 and later.
+
+::: moniker-end

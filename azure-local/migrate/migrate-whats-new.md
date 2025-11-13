@@ -16,6 +16,19 @@ This article lists the various features and improvements that are available in v
 
 [!INCLUDE [azure-local-banner-23h2](../includes/azure-local-banner-23h2.md)]
 
+## November 2025
+
+This release includes these features and improvements:
+
+- **Key bug fix for Hyper-V migration boot failures** - Fixed a critical issue causing some VMs migrated from Hyper-V to fail at boot due to mismatched source and target data.
+- **Improved Hyper-V source environment cleanup** - Enhanced the cleanup process for Hyper-V environments and resolved issues where snapshot creation failed or old snapshots weren’t removed when the snapshot name exceeded 100 characters.
+- **Support for migrating Hyper-V VMs hosted on SOFS** - Added support for discovering and replicating Hyper-V source VMs whose virtual disks are stored on external Scale-Out File Server (SOFS) shares. Previously, replication failed because the source appliance could not read disks hosted on SOFS. With this release, replication and migration work as long as the source Hyper-V credentials have read access to the SOFS shares. This feature only enables Azure Migrate to read from SOFS during replication. After migration, VMs run on Azure Local storage.
+- **Replication workflows in deployments** - Replication workflow and validation now execute through the standard Azure deployment model, providing improved visibility, consistent execution, and full tracking through the Activity Log and target resource group.
+- **Pagination on replication, events, and jobs pages** - Improved performance and usability by adding paginated views to replication, events, and jobs pages in the Azure portal.
+- **Force delete now available for replications and migrations** - You can now forcefully stop replications and complete migrations if your target appliance becomes unresponsive or the migrate project is in a bad state. For more information, see [Can I forcefully stop replications or complete migrations?](https://go.microsoft.com/fwlink/?linkid=2335712).
+
+![Screenshot of force stop replication option for Azure Migrate replications to Azure Local.](media/migrate-whats-new/force-stop-replication.png)
+
 ## October 2025
 
 This release marks the **General Availability (GA) of Azure Migrate support for migrating VMware VMs to Azure Local**.

@@ -21,7 +21,7 @@ Before you begin, make sure you have the following prerequisites:
 
 - Install and configure Azure Local. Make sure you have the custom location Azure Resource Manager ID, as this ID is a required parameter for creating a logical network.
 - Make sure that the logical network you create contains enough usable IP addresses to avoid IP address exhaustion. IP address exhaustion can lead to Kubernetes cluster deployment failures. For more information, see [Networking concepts in AKS on Azure Local](aks-hci-network-system-requirements.md).
-- Make sure you have an external VM switch that can be accessed by all the machines in your Azure Local cluster. By default, an external switch is created during the deployment of your Azure Local cluster that you can use to associate with the logical network you will create.
+- Make sure you have an external VM switch that all the machines in your Azure Local cluster can access. By default, an external switch is created during the deployment of your Azure Local cluster that you can use to associate with the logical network you create.
 
 Run the following command to get the name of the external VM switch on your Azure Local cluster:
 
@@ -47,7 +47,7 @@ You can create a logical network by using either the Azure CLI or the Azure port
 
 # [Azure CLI](#tab/azurecli)
 
-To create a logical network on the VM switch in a static IP configuration, you can use the [`az stack-hci-vm network lnet create`](/cli/azure/stack-hci-vm/network/lnet#az-stack-hci-vm-network-lnet-create) command:
+To create a logical network on the VM switch in a static IP configuration, use the [`az stack-hci-vm network lnet create`](/cli/azure/stack-hci-vm/network/lnet#az-stack-hci-vm-network-lnet-create) command:
 
 ```azurecli
 az stack-hci-vm network lnet create \
@@ -65,7 +65,7 @@ az stack-hci-vm network lnet create \
   --vlan 10
 ```
 
-For static IP, the required parameters are as follows:
+For static IP, provide the following required parameters:
 
 | Required parameters | Description |
 |------------|-------------|
@@ -94,11 +94,11 @@ Complete the following steps to create a logical network using the Azure portal:
 
    :::image type="content" source="./media/aks-networks/create-logical-network.png" alt-text="Screenshot showing logical network creation link." lightbox="./media/aks-networks/create-logical-network.png":::
 
-1. On the **Create logical network** page, on the **Basics** tab:
+1. On **Create logical network**, on the **Basics** tab:
 
     - Select the Azure subscription name.
     - Select the associated resource group name.
-    - Provide a logical network name. Make sure to provide a name that follows the [Rules for Azure resources.](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming#example-names-networking) You can't rename a logical network after it's created.
+    - Enter a logical network name. Make sure to provide a name that follows the [Rules for Azure resources.](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming#example-names-networking) You can't rename a logical network after it's created.
     - Enter the virtual switch name that you saved earlier.
     - The geographic region is automatically set to the region where you registered your cluster.
     - The custom location is automatically populated from the cluster.
@@ -107,7 +107,7 @@ Complete the following steps to create a logical network using the Azure portal:
 
    :::image type="content" source="./media/aks-networks/enter-network-name.png" alt-text="Screenshot showing Basics tab." lightbox="./media/aks-networks/enter-network-name.png":::
 
-1. On the **Network configuration** tab, select **Static** and then enter the following:
+1. On the **Network configuration** tab, select **Static** and then enter the following values:
     - IPv4 address space (previously reserved).
     - IP pools.
     - Default gateway address.
