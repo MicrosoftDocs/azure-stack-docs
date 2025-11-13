@@ -742,8 +742,8 @@ items:
         href: ./overview.md 
       - name: Assign RBAC roles
         href: ./overview.md
-      - name: Create Azure Local VMs image
-        href: ./overview.md
+      - name: Create Azure Local VM image
+        href: ./multi-rack/multi-rack-virtual-machine-image-storage-account.md
       - name: Create logical networks
         href: ./overview.md
       - name: Create virtual networks
