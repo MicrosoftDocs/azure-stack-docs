@@ -7,6 +7,7 @@ ms.author: alkohli
 ms.reviewer: alkohli
 ms.date: 11/13/2025
 ms.topic: overview
+ms.custom: references_regions
 ---
 
 # What are multi-rack deployments for Azure Local? (Preview)
