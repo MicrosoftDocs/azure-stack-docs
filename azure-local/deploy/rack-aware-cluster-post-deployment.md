@@ -11,7 +11,7 @@ ms.service: azure-local
 
 # Perform post deployment tasks on rack aware cluster (Preview)
 
-> Applies to: Azure Local version 2510 and later
+::: moniker range=">=azloc-2510"
 
 After deploying rack aware cluster, either through the [Azure portal](../deploy/rack-aware-cluster-deploy-portal.md) or using the [Azure Resource Manager deployment template](../deploy/rack-aware-cluster-deployment-via-template.md), you need to complete a set of post-deployments tasks. This article describes the typical tasks required once your rack aware cluster is successfully deployed and all machines are up and running.
 
@@ -139,3 +139,11 @@ MaxIoBandwidth         : 0
 
 - [Add and repair nodes to a rack aware cluster](../concepts/rack-aware-cluster-add-server.md)
 - [Provision VMs in a local availability zone](../concepts/rack-aware-cluster-provision-vm-local-availability-zone.md)
+
+::: moniker-end
+
+::: moniker range="<=azloc-2509"
+
+This feature is available in Azure Local 2510 and later.
+
+::: moniker-end
