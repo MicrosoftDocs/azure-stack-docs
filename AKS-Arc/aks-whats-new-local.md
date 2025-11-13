@@ -1,31 +1,47 @@
 ---
-title: What's new in AKS on Azure Local
-description: Learn about what's new in AKS on Azure Local.
+title: What's new in AKS enabled by Azure Arc on Azure Local
+description: Learn about what's new in AKS enabled by Azure Arc on Azure Local.
 ms.topic: overview
-ms.date: 09/24/2025
+ms.date: 11/13/2025
 author: sethmanheim
 ms.author: sethm 
 ms.reviewer: rcheeran
-ms.lastreviewed: 09/24/2025
+ms.lastreviewed: 10/24/2025
 
 ---
 
-# What's new in AKS on Azure Local
+# What's new in AKS enabled by Azure Arc on Azure Local
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
-This article summarizes features, improvements, and important notices for AKS on Azure Local (AKS enabled by Azure Arc). It highlights release-specific updates—such as supported Kubernetes versions, platform and tooling changes, security advisories, and notable bug fixes—to help you plan upgrades and manage clusters. For details about a particular release, see the release sections that follow.
+This article summarizes features, improvements, and important notices for AKS on Azure Local (AKS enabled by Azure Arc). It highlights release-specific updates, such as supported Kubernetes versions, platform and tooling changes, security advisories, and notable bug fixes. Use this information to help you plan upgrades and manage clusters. For details about a particular release, see the release sections that follow.
 
 > [!NOTE]
 > AKS on Azure Local requires Azure Local version 23H2 or later.
 
-## Features and improvements
+## AKS enabled by Azure Arc releases
 
 This section lists the new features and improvements in AKS Arc in each release of Azure Local.
 
+### Release 2510
+
+#### Announcements for 2510
+
+- Kubernetes version 1.29 is no longer supported.
+- KMS v1 will be deprecated soon. KMS v2 is included in this Azure Local release. Plan on redeploying your clusters by using KMS v2.
+- Support for [Windows Server 2019 SKU](https://techcommunity.microsoft.com/blog/containers/announcing-the-3-year-retirement-of-windows-server-2019-on-azure-kubernetes-serv/3777341) for node pools ends in March 2026.
+
+#### Kubernetes versions in 2510
+
+Kubernetes version 1.32 is introduced in 2510. The versions included in the 2510 release are: 1.30.13, 1.30.14, 1.31.9, 1.31.10, 1.32.5, 1.32.6.
+
+#### Features
+
+- The KMS v2 provider is introduced for new cluster deployments in Azure Local 2510. [KMS v2](https://kubernetes.io/docs/tasks/administer-cluster/kms-provider/) brings many improvements in performance, scalability, health check and status, and observability. These enhancements provide a reliable solution to encrypt all resources in Kubernetes clusters. When you create a new cluster after upgrading to 2510, the Kubernetes cluster is configured to use KMS v2 by default. For more information, [see the instructions here](encrypt-etcd-secrets.md).
+
 ### Release 2509
 
-#### Announcements
+#### Announcements for 2509
 
 - Support for Kubernetes minor version 1.29 ends with this 2509 release.
 - KMS v1 will be deprecated soon. We are adding support for KMS v2 in an upcoming Azure Local release. Please plan on upgrading your clusters once KMS v2 is available.
@@ -37,15 +53,15 @@ No new Kubernetes versions were added in 2509. The versions included in the 2509
 
 #### Features
 
-- Starting with the Azure Local 2509 release, we are disabling the download of the Windows VHDs by default. This helps to save on bandwidth usage and to reduce deployment times for customers who need only Linux-based containers. Customers who need to use Windows node pools can continue to do so by [enabling the Windows node pool feature](howto-enable-windows-node-pools.md), and then performing Windows node pool-based operations.
+- Starting with the Azure Local 2509 release, we disable the download of the Windows VHDs by default. This change helps save on bandwidth usage and reduces deployment times for customers who need only Linux-based containers. Customers who need to use Windows node pools can continue to do so by [enabling the Windows node pool feature](howto-enable-windows-node-pools.md), and then performing Windows node pool-based operations.
 - Increased the default OS disk size on virtual machines used as AKS Arc nodes to 200 GB. These VMs are dynamically expanding virtual hard disks and you should [ensure sufficient physical disk space is available](/windows-server/virtualization/hyper-v/best-practices-analyzer/ensure-sufficient-physical-disk-space-is-available-when-virtual-machines-use-dynamically?source=recommendations) for the node pools that you create on AKS Arc.
 
 ### Release 2508
 
-#### Announcements
+#### Announcements for 2508
 
-- Support for Kubernetes minor version 1.29 will end with the 2509 release.
-- KMS v1 will be deprecated soon. We will be adding support for KMS v2 in an upcoming Azure Local release. Please plan on upgrading your clusters once KMS v2 is available.
+- Support for Kubernetes minor version 1.29 ends with the 2509 release.
+- KMS v1 is deprecated. We're adding support for KMS v2 in an upcoming Azure Local release. Plan on upgrading your clusters when KMS v2 is available.
 
 #### Kubernetes versions in 2508
 
@@ -53,26 +69,26 @@ The Kubernetes versions included in the 2508 release are: 1.29.12, 1.29.13, 1.30
 
 #### Bug fixes
 
-- Fixed an issue in which cluster creation failed after kubeadm installation in the default node pool failed, due to a tdnf cache issue.
+- Fixed an issue where cluster creation failed after kubeadm installation in the default node pool failed, due to a tdnf cache issue.
 
 ### Release 2507
 
 > [!IMPORTANT]
-> Azure Linux 2.0 (formerly CBL-Mariner) will reach its official end of life (EOL) on July 31, 2025. After this date, Azure Linux will no longer receive updates, security patches, or support from the Azure Linux team. Starting with the [Azure Local 2507 release](/azure/azure-local/whats-new), AKS on Azure Local will release Azure Linux 3.0 images for all supported Kubernetes versions. To maintain security compliance and ensure continued support, you should migrate to [Azure Linux 3.0](/azure/azure-linux/intro-azure-linux#whats-new-with-azure-linux-30) as soon as possible, by upgrading Azure Local instances to the 2507 release.
+> Azure Linux 2.0 (formerly CBL-Mariner) reaches its official end of life (EOL) on July 31, 2025. After this date, Azure Linux no longer receives updates, security patches, or support from the Azure Linux team. Starting with the [Azure Local 2507 release](/azure/azure-local/whats-new), AKS on Azure Local releases Azure Linux 3.0 images for all supported Kubernetes versions. To maintain security compliance and ensure continued support, migrate to [Azure Linux 3.0](/azure/azure-linux/intro-azure-linux#whats-new-with-azure-linux-30) as soon as possible by upgrading Azure Local instances to the 2507 release.
 >
-> Support for Kubernetes minor version 1.28 will end on August 31, 2025. We will introduce Kubernetes 1.31 in the next Azure Local release.
+> Support for Kubernetes minor version 1.28 ends on August 31, 2025. Kubernetes 1.31 is introduced in the next Azure Local release.
 
 The following Kubernetes cluster deployment and management capabilities are available:
 
-- **Disk space exhaustion**: Fixed [issues due to disk space exhaustion on control plane VMs due to accumulation of kube-apiserver audit logs](kube-apiserver-log-overflow.md).  
+- **Disk space exhaustion**: Fixed [issues due to disk space exhaustion on control plane VMs caused by accumulation of kube-apiserver audit logs](kube-apiserver-log-overflow.md).  
 - **Cluster upgrade**: Fixed AKS Arc cluster and node pool create, scale, and [upgrade issues due to unavailability of AKS Arc VM images](gallery-image-not-usable.md).
-- **AKS Arc Telemetry pod issue**: Fixed an issue in which the [AKS Arc telemetry pod was consuming excessing CPU and memory](telemetry-pod-resources.md).
+- **AKS Arc Telemetry pod issue**: Fixed an issue in which the [AKS Arc telemetry pod consumed excess CPU and memory](telemetry-pod-resources.md).
 - **New checks**: Added new checks during cluster and node pool operations. These improvements allow the system to proactively detect and handle scenarios where there are insufficient IP addresses in the IP pool.
-- **GPU resource allocation**: Additional pre-checks for resource allocation for GPUs during Kubernetes cluster create operation.
+- **GPU resource allocation**: Added pre-checks for resource allocation for GPUs during Kubernetes cluster create operation.
 - **Node pool improvements**: Accurate representation of node pool count and status on the Azure portal. This release also includes improvements to node pool creation and update flows to ensure that the Kubernetes cluster status accounts for corresponding node pool status.
 - **Improvements to autoscaler capabilities**:
   - Fixed an issue in which secrets were updated repeatedly when the autoscaler was enabled. The fix ensures that the provider checks for an existing secret and only creates it if it's missing.
-  - Fixed an issue in which users were unable to disable the autoscaler at the Kubernetes cluster level.
+  - Fixed an issue in which you couldn't disable the autoscaler at the Kubernetes cluster level.
   - Improved conflict handling logic during cluster delete operations when the autoscaler or cluster controller tried to update or remove resources that were being changed simultaneously by another process.
   - Fixed an issue in which the node pools' minimum and maximum counts didn't get updated when the autoscaler was enabled.
 
@@ -86,16 +102,16 @@ The following Kubernetes cluster deployment and management capabilities are avai
 
 - **Large VM SKUs for Kubernetes node pools**: Added two new VM SKUs - `Standard_D32s_v3`: 32 vCPU, 128 GiB and `Standard_D16s_v3`: 16 vCPU, 64 GiB - to support larger node pools on an AKS cluster. For more information about supported VM sizes, see [supported scale options](scale-requirements.md).
 - **Improved log collection experience**: Improved log collection for AKS control plane node VMs and node pool VMs, with support for passing multiple IP addresses and SSH key or directory path. For more information, see [on-demand log collection](get-on-demand-logs.md) and [az aksarc get-logs CLI](/cli/azure/aksarc#az-aksarc-get-logs).
-- **Improved diagnosability**: The [Diagnostic Checker tool](aks-arc-diagnostic-checker.md) is automatically run if the Kubernetes cluster creation fails, and added new test cases.
+- **Improved diagnosability**: The [Diagnostic Checker tool](aks-arc-diagnostic-checker.md) automatically runs if the Kubernetes cluster creation fails, and added new test cases.
 - **Improved Kubernetes cluster delete**: Fixed deletion issues; for example, due to [pod disruption budgets](delete-cluster-pdb.md?tabs=aks-on-azure-local).
 - **Improved AKS Arc image download**: Fixed issues with AKS Arc image downloads.
 - **Improved GPU support**: Improved error handling for Kubernetes cluster creation with GPU enabled node pools. Fixed known issues with attaching persistent volumes on GPU enabled node pools.
 
-To get started with these features in the 2503 release, make sure to update your [AKSArc CLI extension](/cli/azure/aksarc) to version 1.5.37 or higher.
+To get started with these features in the 2503 release, update your [AKSArc CLI extension](/cli/azure/aksarc) to version 1.5.37 or higher.
 
 #### Kubernetes versions in 2503
 
-The Kubernetes versions supported in the 2503 release are: 1.28.12, 1.28.14, 1.29.7, 1.29.9, 1.30.3 and 1.30.4.
+The Kubernetes versions supported in the 2503 release are: 1.28.12, 1.28.14, 1.29.7, 1.29.9, 1.30.3, and 1.30.4.
 
 ### Release 2411
 
@@ -108,7 +124,7 @@ The following Kubernetes cluster deployment and management capabilities are avai
 - **Terraform (preview)**. You can now create AKS Arc clusters with Terraform modules and smart defaults. For more information, see [Create clusters using Terraform](create-clusters-terraform.md).
 - **Error handling**. Error handling is now improved to prevent logical network deletions with dependent cluster resources, GPU misconfigurations, and more.
 
-To get started with these features in the 2411 release, make sure to update your [AKSArc CLI extension](/cli/azure/aksarc) to version 1.4.23 or higher.
+To get started with these features in the 2411 release, update your [AKSArc CLI extension](/cli/azure/aksarc) to version 1.4.23 or higher.
 
 #### Kubernetes versions in 2411
 
@@ -123,7 +139,7 @@ The following Kubernetes cluster deployment and management capabilities are avai
 - **Error report improvements**. You can now get improved error case reporting with prechecks; for example, a check for incorrect Kubernetes versions and available GPU capacity.
 - **Support for NVIDIA T4**. You can now create node pools in new VM sizes with GPU NVIDIA T4. For more information, see [Use GPUs](deploy-gpu-node-pool.md).
 - **Arc Gateway**. You can now use the Arc Gateway to configure a few of the outbound URLs to use AKS clusters on Azure Local.
-- **Support pod CIDR**. You can now create an AKS Arc cluster with a user-specified pod CIDR IP arrange.
+- **Support pod CIDR**. You can now create an AKS Arc cluster with a user-specified pod CIDR IP range.
 
 #### Supported component versions for 2408
 
@@ -136,11 +152,11 @@ The following Kubernetes cluster deployment and management capabilities are avai
 
 The following Kubernetes cluster deployment and management capabilities are available:
 
-- **Azure RBAC support**. You can now enable Azure RBAC for Kubernetes while creating AKS Arc clusters using Azure CLI and Azure Resource Manager templates.
-- **Taints and labels update**. You can now update taints and labels during an AKS Arc node pool update operation using Azure CLI and Azure Resource Manager templates.
+- **Azure RBAC support**. You can now enable Azure RBAC for Kubernetes while creating AKS Arc clusters by using Azure CLI and Azure Resource Manager templates.
+- **Taints and labels update**. You can now update taints and labels during an AKS Arc node pool update operation by using Azure CLI and Azure Resource Manager templates.
 - **AKS Arc cluster platform metrics and alerts**. You can now view AKS Arc cluster metrics (platform metrics) and create metric-based alerts.
 - **Auto cert repair**. You can now automatically repair certificates, managed by cert-tattoo, that expired when the cluster was shut down.
-- **Download VHDs manually (offline download)**. This feature, now available only in private preview, enables you to download virtual machine images and upload them to the target center using a manual process. This feature can help in environments in which downloading large files is inconvenient. If you're interested in using it, contact your Microsoft Account representative.
+- **Download VHDs manually (offline download)**. This feature, now available only in private preview, enables you to download virtual machine images and upload them to the target center by using a manual process. This feature can help in environments in which downloading large files is inconvenient. If you're interested in using it, contact your Microsoft Account representative.
 
 #### Supported component versions for 2405
 
@@ -158,7 +174,7 @@ The following Kubernetes cluster deployment and management capabilities are avai
 - **Autoscaling**. You can now enable the autoscaling feature when you create or update Kubernetes clusters and node pools.
 - **Support for NVIDIA A16**. You can now create node pools in new VM sizes with GPU NVIDIA A16. For more information, see [Use GPUs for compute-intensive workloads](deploy-gpu-node-pool.md).
 - **Diagnostic settings**. You can export audit logs and other control plane logs to one or more destinations. For more information, see [Diagnostic settings in Azure Monitor](/azure/azure-monitor/essentials/diagnostic-settings).
-- **Certificate expiration**. You can now shut down Kubernetes clusters for up to 7 days without any certificate expiration issues.
+- **Certificate expiration**. You can now shut down Kubernetes clusters for up to seven days without any certificate expiration issues.
 - **Update status**. You can now view the status of ongoing Kubernetes cluster upgrades.
 
 <!-- ### Release 2311.2

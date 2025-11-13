@@ -4,7 +4,7 @@ description: Learn how to prepare GPUs for an Azure Local instance.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 08/05/2025
+ms.date: 11/11/2025
 ms.service: azure-local
 ---
 
@@ -81,7 +81,7 @@ First ensure there is no driver installed for each machine. If there is a host d
 After you uninstalled the host driver or if you didn't have any driver installed, run PowerShell as administrator with the following command:
 
 ```powershell
-Get-PnpDevice -Status Error | fl FriendlyName, ClusterId
+Get-PnpDevice -Status Error | fl FriendlyName, InstanceId
 ```
 You should see the GPU devices appear in an error state as `3D Video Controller` as shown in the example output that lists the friendly name and instance ID of the GPU:
 
@@ -112,18 +112,18 @@ Follow this process if using DDA:
 
 ### 1. Disable and dismount GPUs from the host
 
-For DDA, when you uninstall the host driver or have a new Azure Local setup, the physical GPU goes into an error state. You must dismount all the GPU devices to continue. You can use Device Manager or PowerShell to disable and dismount the GPU using the `ClusterID` obtained in the prior step.
+For DDA, when you uninstall the host driver or have a new Azure Local setup, the physical GPU goes into an error state. You must dismount all the GPU devices to continue. You can use Device Manager or PowerShell to disable and dismount the GPU using the `InstanceId` obtained in the prior step.
 
 ```powershell
 $id1 = "GPU_instance_ID"
-Disable-PnpDevice -ClusterId $id1 -Confirm:$false
-Dismount-VMHostAssignableDevice -ClusterPath $id1 -Force
+Disable-PnpDevice -InstanceId $id1 -Confirm:$false
+Dismount-VMHostAssignableDevice -InstancePath $id1 -Force
 ```
 
 Confirm the GPUs were correctly dismounted from the host machine. The GPUs is now in an `Unknown` state:
 
 ```powershell
-Get-PnpDevice -Status Unknown | fl FriendlyName, ClusterId
+Get-PnpDevice -Status Unknown | fl FriendlyName, InstanceId
 ```
 
 Repeat this process for each machine in your system to prepare the GPUs.
@@ -155,7 +155,7 @@ pnputil /enum-devices OR pnputil /scan-devices
 You should be able to see the correctly identified GPUs in `Get-PnpDevice`:
 
 ```powershell
-Get-PnpDevice -Class Display | fl FriendlyName, ClusterId
+Get-PnpDevice -Class Display | fl FriendlyName, InstanceId
 ```
 
 Repeat the above steps for each host in your Azure Local.
@@ -166,7 +166,7 @@ Follow this process if using GPU-P:
 
 ### Download and install the host driver
 
-GPU-P requires drivers on the host level that differ from DDA. For NVIDIA GPUs, you need an NVIDIA vGPU software graphics driver on each host and on each VM that uses GPU-P. For more information, see the latest version of [NVIDIA vGPU Documentation](https://docs.nvidia.com/vgpu/17.0/grid-vgpu-release-notes-microsoft-azure-stack-hci/index.html) and details on licensing at [Client Licensing User Guide](https://docs.nvidia.com/vgpu/17.0/grid-licensing-user-guide/index.html).
+GPU-P requires drivers on the host level that differ from DDA. For NVIDIA GPUs, you need an NVIDIA vGPU software graphics driver on each host and on each VM that uses GPU-P. For more information, see the latest version of [NVIDIA vGPU Documentation](https://docs.nvidia.com/vgpu/latest/grid-vgpu-release-notes-microsoft-azure-stack-hci/index.html) and details on licensing at [Client Licensing User Guide](https://docs.nvidia.com/vgpu/latest/grid-licensing-user-guide/index.html).
 
 After identifying the GPUs as `3D Video Controller` on your host machine, download the host vGPU driver. Through your NVIDIA GRID license, you should be able to obtain the proper host driver .zip file.
 
@@ -187,7 +187,7 @@ pnputil /enum-devices
 You should be able to see the correctly identified GPUs in `Get-PnpDevice`:
 
 ```powershell
-Get-PnpDevice -Class Display | fl FriendlyName, ClusterId
+Get-PnpDevice -Class Display | fl FriendlyName, InstanceId
 ```
 You can also run the NVIDIA System Management Interface `nvidia-smi` to list the GPUs on the host machine as follows:
 
@@ -271,7 +271,7 @@ GPU management is supported for the following VM workloads:
 
 - Generation 2 VMs
 
-- A supported 64-bit OS as detailed in the latest [NVIDIA vGPU support Supported Products](https://docs.nvidia.com/vgpu/17.0/product-support-matrix/index.html#abstract__microsoft-azure-stack-hci)
+- A supported 64-bit OS as detailed in the latest [NVIDIA vGPU support Supported Products](https://docs.nvidia.com/vgpu/latest/product-support-matrix/index.html#abstract__microsoft-azure-stack-hci)
 
 ## Next steps
 

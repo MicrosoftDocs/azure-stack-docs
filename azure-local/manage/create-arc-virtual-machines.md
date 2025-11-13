@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.reviewer: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 09/09/2025
+ms.date: 11/12/2025
 ms.custom:
   - devx-track-azurecli
   - sfi-image-nochange
@@ -373,9 +373,9 @@ Follow these steps in Azure portal for your Azure Local.
     1. Provide the UPN of an Active Directory user who has privileges to join the virtual machine to your domain.
        
        > [!IMPORTANT]
-       > For your Active Directory, if your SAM Account Name and UPN are different, enter the SAM Account Name in the UPN field as: `SAMAccountName@domain`. 
+       > For your Active Directory, if your SAM Account Name and UPN are different, enter the SAM Account Name in the UPN field as: `SAMAccountName@domain`.
     
-    1. Provide the domain administrator password. If using SAM Account Name in the UPN field, enter the corresponding password.
+    1. Provide the password of the user account you entered in the previous step. If using SAM Account Name in the UPN field, enter the corresponding password.
 
     1. Specify domain or organizational unit. You can join virtual machines to a specific domain or to an organizational unit (OU) and then provide the domain to join and the OU path.
     
@@ -731,7 +731,7 @@ You can use the Azure Verified Module (AVM) that contains the Terraform template
 
 ### Steps to use the Terraform template
 
-1. Download the Terraform template from [Azure verified module](https://registry.terraform.io/modules/Azure/avm-res-azurestackhci-virtualmachineinstance/azurerm/0.1.2).
+1. Download the Terraform template from [Azure verified module](https://registry.terraform.io/modules/Azure/avm-res-azurestackhci-virtualmachineinstance/azurerm/).
 2. Navigate to the **examples** folder in the repository, and look for the following subfolders:
     - **default**: Creates one virtual machine instance.
     - **multi**: Creates multiple virtual machine instances.

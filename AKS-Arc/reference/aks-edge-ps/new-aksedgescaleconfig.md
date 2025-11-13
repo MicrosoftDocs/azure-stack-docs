@@ -1,10 +1,10 @@
 ---
 title: New-AksEdgeScaleConfig for AKS Edge
-author: rcheeran
+author: sethmanheim
 description: The New-AksEdgeScaleConfig PowerShell command creates the configs needed to scale the cluster.
 ms.topic: reference
 ms.date: 02/03/2023
-ms.author: rcheeran 
+ms.author: sethm 
 ms.lastreviewed: 02/02/2023
 #ms.reviewer: jeguan
 
