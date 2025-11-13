@@ -15,7 +15,7 @@ Azure Operator Nexus provides a prescribed set of data extract commands via `az 
 
 ## Prerequisites
 
-- The Azure command line interface and the `networkcloud` command line interface extension must be installed. For more information, see [How to install CLI extensions](./howto-install-cli-extensions.md).
+- The Azure CLI and the `networkcloud` CLI extension must be installed. For more information, see [How to install CLI extensions](./howto-install-cli-extensions.md).
 - The target bare-metal machine is on and ready.
 - The syntax for these commands is based on the 0.3.0+ version of the `az networkcloud` CLI.
 - The name of the cluster managed resource group (`cluster_MRG`) that you created for the cluster resource.
@@ -40,7 +40,7 @@ The following commands are currently supported:
   - `Debug`: Debug logs
 
   > [!WARNING]
-  > As of `v20250701preview` API version and later, this command isn't supported by the nonrestricted `run-data-extract` command. To run `mde-agent-information`, go to [Run a run-data-extracts-restricted command](#executing-a-run-data-extracts-restricted-command).
+  > As of the `v20250701preview` API version and later, this command isn't supported by the nonrestricted `run-data-extract` command. To run `mde-agent-information`, go to [Run a run-data-extracts-restricted command](#executing-a-run-data-extracts-restricted-command).
 
 - [Collect Microsoft Defender for Endpoint agent information](#collect-mde-agent-information)\
   Command name: `mde-agent-information`\
@@ -55,13 +55,13 @@ The following commands are currently supported:
   Arguments: None
 
   > [!WARNING]
-  > As of `v20250701preview` API version and later, this command isn't supported by the nonrestricted `run-data-extract` command. To run `cluster-cve-report`, go to [Run a run-data-extracts-restricted command](#executing-a-run-data-extracts-restricted-command).
+  > As of the `v20250701preview` API version and later, this command isn't supported by the nonrestricted `run-data-extract` command. To run `cluster-cve-report`, go to [Run a run-data-extracts-restricted command](#executing-a-run-data-extracts-restricted-command).
 
 - [Generate a cluster Common Vulnerabilities and Exposures (CVE) report](#generate-cluster-cve-report)\
   Command name: `cluster-cve-report`\
   Arguments: None
 
-- [Collect helm releases](#collect-helm-releases)\
+- [Collect Helm releases](#collect-helm-releases)\
   Command name: `collect-helm-releases`\
   Arguments: None
 
@@ -506,14 +506,14 @@ https://cmkfjft8twwpst.blob.core.windows.net/bmm-run-command-output/20b217b5-ea3
 
 The CVE data is refreshed per container image every 24 hours or when there's a change to the Kubernetes resource that references the image.
 
-### Collect helm releases
+### Collect Helm releases
 
-You can use the `collect-helm-releases` command to collect helm release data, which is delivered in JSON format to `{year}-{month}-{day}-helm-releases.json`. You can find the JSON file in the ZIP file that contains the data extract in the storage account. The data contains all helm release information from the cluster, which includes the standard data that's returned from a `helm list` command.
+You can use the `collect-helm-releases` command to collect Helm release data, which is delivered in JSON format to `{year}-{month}-{day}-helm-releases.json`. You can find the JSON file in the ZIP file that contains the data extract in the storage account. The data contains all Helm release information from the cluster, which includes the standard data that's returned from a `helm list` command.
 
 This example runs the `collect-helm-releases` command without arguments.
 
 > [!NOTE]
-> The target machine must be a control-plane node or the action doesn't run.
+> The target machine must be a control-plane node, or the action doesn't run.
 
 ```azurecli
 az networkcloud baremetalmachine run-data-extract --name "bareMetalMachineName" \
@@ -621,7 +621,7 @@ https://cmcr5xp3mbn7st.blob.core.windows.net/bmm-run-command-output/a29dcbdb-552
 
 #### Collect systemctl status output
 
-You can use the `platform-services-status` command to collect service status information. The output is in plaintext format and returns an overview of the status of the services on the host and the `systemctl status` for each found service.
+You can use the `platform-services-status` command to collect service status information. The output is in plaintext format and returns an overview of the status of the services on the host and the `systemctl status` value for each found service.
 
 This example runs the `platform-services-status` command without arguments.
 
@@ -697,7 +697,7 @@ You can use the `collect-system-diagnostics` command to collect system diagnosti
   - **Network connectivity tests**: Tests external network connectivity and Kubernetes API server communication.
   - **DNS resolution configuration**: DNS resolver configuration for diagnosing resolution issues with domain names.
   - **Networking configuration and logs**: Comprehensive networking data, including connection tracking and interface configurations.
-  - **CNI configuration**: Container network interface (CNI) configuration for container networking diagnostics.
+  - **CNI configuration**: Container Network Interface (CNI) configuration for container networking diagnostics.
 
 - Security and compliance:
   - **SELinux status**: Reports the Security-Enhanced Linux (SELinux) mode to understand access control and security contexts.
@@ -713,7 +713,7 @@ You can use the `collect-system-diagnostics` command to collect system diagnosti
   - **System configuration**: `Sysctl` parameters for a comprehensive view of kernel runtime configuration.
   - **Kubernetes configuration and health**: Kubernetes setup details, including configurations and service listings.
   - **Container runtime information**: Configuration, version information, and details on running containers.
-  - **CRI information**: Operations data for the container runtime interface (CRI), which aids in container orchestration diagnostics.
+  - **CRI information**: Operations data for the Container Runtime Interface (CRI), which aids in container orchestration diagnostics.
 
 This example runs the `collect-system-diagnostics` command without arguments.
 
@@ -802,7 +802,7 @@ The storage account might be locked, and you might receive the error message: "4
 
 The functionality of the `run-data-extracts-restricted` command mirrors the nonrestricted `run-data-extracts` command and includes fine-grained access control via role-based access control (RBAC). It allows customers to run sensitive data extraction operations on bare-metal machines with elevated privileges.
 
-You can run the `run-data-extracts-restricted` command as a new and separate API action. The action will be introduced in the `v20250701preview` and `v20250901` versions of the GA API, and will mirror the behavior of the original command but with restricted access to specific sub-commands. The following list contains the allowed sub-commands for `run-data-extracts-restricted`:
+You can run the `run-data-extracts-restricted` command as a new and separate API action. The action will be introduced in the `v20250701preview` and `v20250901` versions of the GA API, and will mirror the behavior of the original command but with restricted access to specific subcommands. The following list contains the allowed subcommands for `run-data-extracts-restricted`:
 
 - [Collect Microsoft Defender for Endpoint agent information](#collect-mde-agent-information)\
   Command name: `mde-agent-information`\
