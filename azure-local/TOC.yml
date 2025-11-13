@@ -749,7 +749,7 @@ items:
       - name: Create network interfaces
         href: ./overview.md
       - name: Create Azure Local VMs
-        href: ./overview.md 
+        href: ./multi-rack/multi-rack-create-arc-virtual-machines.md 
 
   - name: Monitor
     items:
