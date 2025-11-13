@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 11/12/2025
+ms.date: 11/13/2025
 ---
 
 # Manage resources for Azure Local VMs for multi-rack deployments (Preview)
@@ -35,7 +35,7 @@ After you create a VM, you might want to add a data disk to it.
 
 To add a data disk to a VM, complete the following steps using Azure CLI from the computer that you're using to connect to Azure Local.
 
-1. Create a data disk on a specified storage path:
+1. Create a data disk:
 
    ```azurecli
    az stack-hci-vm disk create --resource-group $resource_group --name $diskName --custom-location $customLocationID --location $location --size-gb 1
