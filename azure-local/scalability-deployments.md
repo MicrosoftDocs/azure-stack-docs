@@ -28,7 +28,7 @@ You can deploy Azure Local in different ways depending on your use case and need
 
 ## Hyperconverged deployments
 
-Hyperconverged deployments are the most common type of Azure Local deployment. They provide maximum flexibility, a range of sizes, and various networking architectures. The minimum footprint is a single machine. Most customers choose to deploy Azure Local to a cluster of machines for increased scale and resiliency.
+Hyperconverged deployments are the most common type of Azure Local deployment. They provide maximum flexibility, a range of sizes, and various networking architectures. The minimum footprint is a single machine. Most customers choose to deploy Azure Local to a cluster of machines for increased scale and resiliency. Hyperconverged deployments support cluster sizes of up to 16 machines for standard clusters, and up to 8 machines for rack aware clusters.
 
 You can select hardware that suits your needs in the Azure Local Catalog from leading Original Equipment Manufacturer (OEM) partners.
 
