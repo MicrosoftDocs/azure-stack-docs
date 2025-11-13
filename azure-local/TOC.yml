@@ -728,7 +728,7 @@ items:
   - name: Overview
     items:
     - name: About multi-rack deployments
-      href: ./multi-rack/multi-rack-overview.md
+      href: ./multi-rack/multi-rack-overview.md 
 
   - name: Deploy
     items:
@@ -747,7 +747,7 @@ items:
       - name: Create logical networks
         href: ./overview.md
       - name: Create network interfaces
-        href: ./overview.md
+        href: ./multi-rack/multi-rack-create-network-interfaces.md
       - name: Create Azure Local VMs
         href: ./overview.md
       - name: Connect to Azure Local VMs via SSH
@@ -756,22 +756,25 @@ items:
   - name: Monitor
     items:
       - name: Monitoring overview
-        href: ./overview.md
+        href: ./multi-rack/multi-rack-monitor-overview.md
       - name: Monitor cluster metrics
-        href: ./overview.md 
+        href: ./multi-rack/multi-rack-monitor-cluster-with-metrics.md
 
   - name: Concepts
     items:
       - name: Compute for multi-rack deployments
-        href: ./overview.md 
+        href: ./multi-rack/multi-rack-concepts-compute.md
       - name: Azure Local VMs for multi-rack deployments
         href: ./multi-rack/multi-rack-azure-arc-vm-management-overview.md
   - name: Reference
     items:
-      - name: Azure Local multi-rack CLI reference
+      - name: CLI reference
         href: ./overview.md 
-      - name: Azure Local multi-rack PowerShell reference
+      - name: PowerShell reference
         href: ./overview.md 
+
+- name: Microsoft 365 Local
+  href: ./concepts/microsoft-365-local-overview.md
 
 - name: Disconnected operations
   items:
@@ -817,6 +820,3 @@ items:
       href: manage/disconnected-operations-on-demand-logs.md
     - name: Fallback log collection
       href: manage/disconnected-operations-fallback.md      
-
-- name: Microsoft 365 Local
-  href: ./overview.md
