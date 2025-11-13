@@ -28,7 +28,7 @@ This article explains the prerequisites for rotating passwords for a network fab
 * Treat rotation as mutually exclusive with other fabric-wide operations.
 * If password rotation fails on the Terminal Server device, retry by using the resync password on the Nexus Network Fabric resource.
 
-## Azure CLI procedures (generally available [GA], Az CLI only)
+## Azure CLI procedures (GA, Az CLI only)
 
 ### 1. Rotate passwords across the fabric
 
