@@ -3,7 +3,7 @@ title: Install Azure Stack HCI operating system, version 23H2
 description: Learn how to install the Azure Stack HCI operating system, version 23H2 on each machine of your system.
 author: alkohli
 ms.topic: how-to
-ms.date: 05/29/2025
+ms.date: 11/13/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -146,20 +146,6 @@ Follow these steps to configure the operating system using SConfig:
     > [!NOTE]
     > - Make sure that the local administrator password follows Azure password length and complexity requirements. Use a password that is at least 14 characters long and contains a lowercase character, an uppercase character, a numeral, and a special character.
     > - Do not join the machines with the Azure Stack HCI operating system installed, to the Active Directory domain prior to cloud deployment. The machines are automatically joined to a domain during the [Deployment via Azure portal](./deploy-via-portal.md).
-
-## Install required Windows roles
-
-**This step is only required if you're using an OS ISO that's older than 2408**. For more information, see [What's new in 2408](../whats-new.md#features-and-improvements-in-2408).
-
-Install the Hyper-V role. Run the following command on each machine of the system:
-
-```powershell
-Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
-```
-
-Your machines will restart; this takes a few minutes.
-
-You are now ready to register the Azure Local machine with Azure Arc and assign permissions for deployment.
 
 ## Next steps
 
