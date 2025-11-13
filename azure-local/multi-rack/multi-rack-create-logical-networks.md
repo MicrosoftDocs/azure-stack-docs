@@ -63,7 +63,7 @@ Complete the following steps to create a logical network using Azure CLI.
 You can use the `az stack-hci-vm network lnet create` cmdlet to create a logical network on the L3 internal network of your choice or static IP configuration. Only static IP allocation is supported in Azure Local Rack Scale v1.0.0.
 
 > [!NOTE]
-> For both dynamic and static logical networks, the following apply:
+> For logical networks, the following apply:
 > - Creating logical networks with overlapping IP pools on the same VLAN isn't permitted.
 > - VLAN ID and the address prefix must match the VLAN ID and subnet in the L3 internal network provided as the fabric network resource.
 
