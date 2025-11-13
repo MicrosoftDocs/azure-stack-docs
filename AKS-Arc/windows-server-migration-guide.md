@@ -144,6 +144,8 @@ kubectl get nodes
 
 ## Common issues
 
+If you encounter issues during migration, consider the following troubleshooting tips:
+
 **Pods not scheduling:**
 - Check node selectors match: `kubectl describe pod <pod-name>`
 - Verify node labels: `kubectl describe node <node-name>`
