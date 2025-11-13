@@ -6,18 +6,18 @@ ms.topic: include
 ms.service: azure-operator-nexus
 ---
 
-## Send command output to a user specified Storage Account
+## <a name = "send-command-output-to-a-user-specified-storage-account"></a> Send the command output to a user-specified storage account
 
-To configure the Storage Account and container to which command output is sent, see [Azure Operator Nexus Cluster support for managed identities and user provided resources](../../howto-cluster-managed-identity-user-provided-resources.md).
+To send the command output to a specified storage account and container, see [Azure Operator Nexus cluster support for managed identities and user-provided resources](../../howto-cluster-managed-identity-user-provided-resources.md).
 
 [!INCLUDE [command-output-access](./command-output-access.md)]
 
-## Verify access to the specified Storage Account
+## Verify that you can access the specified storage account
 
-Before running commands, you might wish to verify you have access to the specified Storage Account:
+Before you run commands, verify that you can access the specified storage account:
 
-1. From the Azure portal, navigate to the Storage Account.
-1. In the Storage Account details, select **Storage browser** from the navigation menu on the left side.
-1. In the Storage browser details, select **Blob containers**.
-1. Find the container to which command output is to be sent and select it.
-1. If you encounter errors while accessing the Storage Account or container, the user you're using might need a role assignment for the Storage Account or container. Alternatively, the Storage Account’s firewall settings might need to be updated to include your IP address.
+1. From the Azure portal, go to **Storage Account**.
+1. In **Storage Account details**, select **Storage browser** from the left menu.
+1. In **Storage browser details**, select **Blob containers**.
+1. Select the container where you want to send the command output.
+1. If you encounter errors while accessing the storage account or container, verify that your role assignments are correct. If the storage account is protected by a firewall, verify that the storage account's firewall settings include your IP address.
