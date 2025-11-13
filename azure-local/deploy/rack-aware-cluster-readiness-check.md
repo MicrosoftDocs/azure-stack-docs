@@ -10,7 +10,7 @@ ms.date: 10/21/2025
 
 # Evaluate the deployment readiness for Azure Local rack aware cluster (Preview)
 
-> Applies to: Azure Local version 2510 and later
+::: moniker range=">=azloc-2510"
 
 This article describes how to use the Link Layer Discovery Protocol (LLDP) validator in a standalone mode to assess how ready your environment is for deploying rack aware cluster.
 
@@ -35,8 +35,8 @@ The LLDP validator performs the following checks:
 
 - **Availability zone consistency (rack aware clusters).** Documents the switches each rack connects to and validates the following:
 
-   - All nodes within a rack connect to the same switches.
-   - Different racks connect to separate switches with no overlap.
+  - All nodes within a rack connect to the same switches.
+  - Different racks connect to separate switches with no overlap.
 
 - **Topology mapping.** Creates detailed JSON files documenting the discovered network topology.
 
@@ -158,5 +158,13 @@ If the test result shows remediation steps, it indicates that the test failed. T
 ## Next steps
 
 - After validating your environment with the LLDP validator, proceed to deploy your Azure Local rack aware cluster by following the instructions in one of the following articles:
-    - [Deploy a rack aware cluster using Azure portal (Preview)](rack-aware-cluster-deploy-portal.md).
-    - [Deploy a rack aware cluster using Azure Resource Manager templates (Preview)](rack-aware-cluster-deployment-via-template.md).
+  - [Deploy a rack aware cluster using Azure portal (Preview)](rack-aware-cluster-deploy-portal.md).
+  - [Deploy a rack aware cluster using Azure Resource Manager templates (Preview)](rack-aware-cluster-deployment-via-template.md).
+
+::: moniker-end
+
+::: moniker range="<=azloc-2509"
+
+This feature is available in Azure Local 2510 and later.
+
+::: moniker-end
