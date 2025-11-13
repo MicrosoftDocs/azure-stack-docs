@@ -42,8 +42,8 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 
 |Model |Firmware|Management |Storage |Compute (Standard)|Compute (SDN)|
 |-----  |---| :-:  | :-:  | :-:   | :-:   |
-| [OmniSwitch 6200](https://www.al-enterprise.com/-/media/assets/internet/documents/omniswitch-6900-datasheet-en.pdf) <br>(10, 25, 100, 400 GbE)|AOS version 8.10R4 or later|&check;| &check;| &check;| &check; |
-| [OmniSwitch 6290](https://www.al-enterprise.com/-/media/assets/internet/documents/omniswitch-6900-datasheet-en.pdf) <br>(10, 25, 100, 400 GbE)|AOS version 8.10R4 or later|&check;| &check;| &check;| &check; |
+| [OmniSwitch 6900](https://www.al-enterprise.com/-/media/assets/internet/documents/omniswitch-6900-datasheet-en.pdf) <br>(10, 25, 100, 400 GbE)|AOS version 8.10R4 or later|&check;| &check;| &check;| &check; |
+| [OmniSwitch 6920](https://www.al-enterprise.com/-/media/assets/internet/documents/omniswitch-6900-datasheet-en.pdf) <br>(10, 25, 100, 400 GbE)|AOS version 8.10R4 or later|&check;| &check;| &check;| &check; |
 
 > [!NOTE]
 > Guest RDMA requires both Compute (Standard) and Storage.
@@ -52,8 +52,8 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 
 |Model |Firmware|Management |Storage |Compute (Standard)|Compute (SDN)|
 |-----  |---| :-:  | :-:  | :-:   | :-:   |
-| [OmniSwitch 6200](https://www.al-enterprise.com/-/media/assets/internet/documents/omniswitch-6900-datasheet-en.pdf) <br>(10, 25, 100, 400 GbE)|AOS version 8.10R4 or later|&check;| &check;| &check;| &check; |
-| [OmniSwitch 6290](https://www.al-enterprise.com/-/media/assets/internet/documents/omniswitch-6900-datasheet-en.pdf) <br>(10, 25, 100, 400 GbE)|AOS version 8.10R4 or later|&check;| &check;| &check;| &check; |
+| [OmniSwitch 6900](https://www.al-enterprise.com/-/media/assets/internet/documents/omniswitch-6900-datasheet-en.pdf) <br>(10, 25, 100, 400 GbE)|AOS version 8.10R4 or later|&check;| &check;| &check;| &check; |
+| [OmniSwitch 6920](https://www.al-enterprise.com/-/media/assets/internet/documents/omniswitch-6900-datasheet-en.pdf) <br>(10, 25, 100, 400 GbE)|AOS version 8.10R4 or later|&check;| &check;| &check;| &check; |
 
 > [!NOTE]
 > Guest RDMA requires both Compute (Standard) and Storage.
