@@ -739,7 +739,7 @@ items:
     - name: Deploy Azure Local VM workloads
       items:
       - name: Complete Azure Local VM prerequisites
-        href: ./overview.md 
+        href: ./multi-rack/multi-rack-vm-management-prerequisites.md 
       - name: Assign RBAC roles
         href: ./overview.md
       - name: Create Azure Local VMs image
