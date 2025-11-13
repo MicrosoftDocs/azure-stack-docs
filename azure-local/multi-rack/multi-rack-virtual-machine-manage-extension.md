@@ -34,7 +34,7 @@ To manage VMs on Azure Local, you must enable guest management on the VMs. When 
 You must verify that guest management is enabled on your VMs before you install VM extensions.
 
 > [!NOTE]
-> Extensions for domain join are supported only for Windows VMs. You can enable and install these extensions only during VM creation, via the Azure portal. For more information, see [Update link URL after rel branch merge](multi-rack-virtual-machine-extension.md).
+> Extensions for domain join are supported only for Windows VMs. You can enable and install these extensions only during VM creation, via the Azure portal. For more information, see [update link URL after rel branch merge](multi-rack-virtual-machine-extension.md).
 
 To verify that guest management is enabled:
 
