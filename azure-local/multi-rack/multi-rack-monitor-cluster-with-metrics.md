@@ -44,7 +44,7 @@ Follow these steps to monitor metrics of your system in the Azure portal:
 
 1. On the **Overview** page of your cluster, select the **Monitoring** tab.
 
-:::image type="content" source="media/multi-rack-monitor-cluster-with-metrics/monitoring-tab.png" alt-text="Screenshot showing the Monitoring tab for your cluster." lightbox="media/multi-rack-monitor-cluster-with-metrics/monitoring-tab.png":::
+    :::image type="content" source="media/multi-rack-monitor-cluster-with-metrics/monitoring-tab.png" alt-text="Screenshot showing the Monitoring tab for your cluster." lightbox="media/multi-rack-monitor-cluster-with-metrics/monitoring-tab.png":::
 
 1. Review the graphs displaying current utilization of the cluster under **Performance and Utilization pane**.
 

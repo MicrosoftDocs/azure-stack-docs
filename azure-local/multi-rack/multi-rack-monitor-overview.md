@@ -58,7 +58,7 @@ For additional monitoring, Cluster Metrics Configuration enables you to extend b
 
 ### Logs
 
-Azure Local emits logs from edge platform components. These metrics can be streamed to Storage Account, EventHub or Log Analytics Workspace for storing analyzing logs into customer specified targets. To learn more about logs available for streaming, see [Logs available for streaming](#logs-available-for-streaming).
+Azure Local emits logs from edge platform components. These metrics can be streamed to Storage Account, Event Hubs or Log Analytics Workspace for storing analyzing logs into customer specified targets. To learn more about logs available for streaming, see [Logs available for streaming](#logs-available-for-streaming).
 
 #### Logs available for streaming
 

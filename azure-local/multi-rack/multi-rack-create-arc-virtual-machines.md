@@ -339,7 +339,7 @@ Follow these steps in Azure portal for Azure Local.
     1. For **Static** IP, choose the **Allocation method** as **Automatic** or **Manual**. For **Manual** IP, provide an IP address.
 
     >[!NOTE]
-    > To create a VM with virtual network, use Azure CLI or Arm templates.
+    > To create a VM with virtual network, use Azure CLI or ARM templates.
 
     1. Select **Add**.
 
