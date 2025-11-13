@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 11/07/2025
+ms.date: 11/13/2025
 ---
 
 # Manage VM extensions on Azure Local for multi-rack deployments (Preview) 
