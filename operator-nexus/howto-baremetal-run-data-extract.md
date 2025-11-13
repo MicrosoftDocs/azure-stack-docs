@@ -89,7 +89,7 @@ These commands can take a long time to run, so we recommend that you set the `--
 
 In the response, the operation performs asynchronously and returns an HTTP status code of `202`. To learn how to track command completion and view the output file, go to [How to view the full output of a command in the associated storage account](#how-to-view-the-full-output-of-a-command-in-the-associated-storage-account).
 
-### <a name = "hardware-support-data-collection"></a> The hardware support data collection command
+### <a name = "hardware-support-data-collection"></a> The hardware-support-data-collection command
 
 The following example executes the `hardware-support-data-collection` command and gets `SysInfo` and `TTYLog` logs from the Dell server. The script executes a `racadm supportassist collect` command on the designated bare-metal machine. The resulting tar.gz file contains the zipped extract command file outputs in `hardware-support-data-<timestamp>.zip`.
 
@@ -827,4 +827,4 @@ az networkcloud baremetalmachine run-data-extracts-restricted --name "<machine-n
 
 ### Storage and output
 
-The output from `run` command executions are, by default, stored in the blob container defined by the `commandOutputSettings`. Override of the `commandOutputSettings` value is supported per command output type (like `BareMetalMachineRunDataExtractsRestricted`). To learn how to specify the `commandOutputSettings` override for the run command, see [Azure Operator Nexus cluster support for managed identities and user-provided resources](./howto-cluster-managed-identity-user-provided-resources.md).
+The output from `run` command executions is, by default, stored in the blob container defined by `commandOutputSettings`. Override of the `commandOutputSettings` value is supported per command output type (like `BareMetalMachineRunDataExtractsRestricted`). To learn how to specify the `commandOutputSettings` override for the run command, see [Azure Operator Nexus cluster support for managed identities and user-provided resources](./howto-cluster-managed-identity-user-provided-resources.md).
