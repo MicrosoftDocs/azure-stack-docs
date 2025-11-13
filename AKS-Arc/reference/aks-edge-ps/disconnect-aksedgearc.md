@@ -1,10 +1,10 @@
 ---
 title: Disconnect-AksEdgeArc for AKS Edge
-author: rcheeran
+author: sethmanheim
 description: The Disconnect-AksEdgeArc PowerShell command removes the cluster from Azure Arc.
 ms.topic: reference
 ms.date: 02/01/2023
-ms.author: rcheeran 
+ms.author: sethm 
 ms.lastreviewed: 02/01/2023
 #ms.reviewer: jeguan
 
