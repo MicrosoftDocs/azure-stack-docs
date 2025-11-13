@@ -1,10 +1,10 @@
 ---
 title: Add-AksEdgeNode for AKS Edge
-author: rcheeran
+author: sethmanheim
 description: The Add-AksEdgeNode PowerShell command Adds a new AksEdge node to the cluster.
 ms.topic: reference
 ms.date: 10/04/2022
-ms.author: rcheeran 
+ms.author: sethm 
 ms.lastreviewed: 02/02/2023
 #ms.reviewer: jeguan
 
