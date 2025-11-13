@@ -3,9 +3,9 @@ author: ronmiab
 ms.author: robess
 ms.service: azure-local
 ms.topic: include
-ms.date: 10/15/2025
+ms.date: 11/13/2025
 ms.reviewer: alkohli
-ms.lastreviewed: 10/15/2025
+ms.lastreviewed: 11/13/2025
 ---
 
 ## Set up observability for diagnostics and support

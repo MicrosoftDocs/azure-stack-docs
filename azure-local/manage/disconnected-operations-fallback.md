@@ -4,7 +4,7 @@ description: Export and send logs for disconnected operations with Azure Local V
 ms.topic: how-to
 author: ronmiab
 ms.author: robess
-ms.date: 08/06/2025
+ms.date: 11/13/2025
 ai-usage: ai-assisted
 ---
 

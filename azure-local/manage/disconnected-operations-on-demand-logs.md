@@ -4,7 +4,7 @@ description: Learn how to use the PowerShell module to collect logs on-demand fo
 ms.topic: how-to
 author: ronmiab
 ms.author: robess
-ms.date: 10/15/2025
+ms.date: 11/13/2025
 ai-usage: ai-assisted
 ---
 
@@ -299,7 +299,7 @@ The cmdlet lets you specify a time range for log collection. Run this cmdlet fro
 
 For more information, see [Azure Local disconnected when the appliance VM is connected to Azure](#azure-local-disconnected-when-the-appliance-vm-is-connected-to-azure).
 
-### Indirect collection (disconnected from Azure, endpoint accessbile)
+### Indirect collection (disconnected from Azure, endpoint accessible)
 
 When the appliance can’t connect to Azure but can reach the management endpoint use `Invoke-ApplianceLogCollectionAndSaveToShareFolder` cmdlet. Then upload logs with the `Send-DiagnosticData` cmdlet.
 
