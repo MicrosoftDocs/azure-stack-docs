@@ -102,7 +102,7 @@ PS C:\Users\azcli> $imageSourcePath = '"https://vmimagevhdsa1.blob.core.windows.
 
 ### Create VM image from image in Azure Storage account
 
-1. Select a custom location to deploy your VM image. The custom location should correspond to the custom location for your Azure Local. Get the custom location ID for your Azure Local from the Azure Local **Overview** page on Azure Portal or run the following command:
+1. Select a custom location to deploy your VM image. The custom location should correspond to the custom location for your Azure Local. Get the custom location ID for your Azure Local from the Azure Local **Overview** page on Azure portal or run the following command:
 
     ```azurecli
     $customLocationID=(az customlocation show --resource-group $resource_group --name "<custom location name for your Azure Local>" --query id -o tsv)
