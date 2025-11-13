@@ -7,7 +7,7 @@ items:
   - name: What is Azure Local?
     href: ./overview.md
   - name: About Azure Local deployments
-    href: ./overview.md
+    href: ./scalability-deployments.md
 
 - name: Hyperconverged deployments
   items: 
@@ -728,12 +728,14 @@ items:
   - name: Overview
     items:
     - name: About multi-rack deployments
-      href: ./overview.md 
+      href: ./multi-rack/multi-rack-overview.md
 
   - name: Deploy
     items:
     - name: Complete deployment prerequisites
-      href: ./overview.md 
+      href: ./multi-rack/multi-rack-prerequisites.md
+    - name: Install Azure CLI extensions
+      href: ./multi-rack/multi-rack-cli-extensions.md
     - name: Deploy Azure Local VM workloads
       items:
       - name: Complete Azure Local VM prerequisites
@@ -760,7 +762,8 @@ items:
     items:
       - name: Compute for multi-rack deployments
         href: ./overview.md 
-
+      - name: Azure Local VMs for multi-rack deployments
+        href: ./multi-rack/multi-rack-azure-arc-vm-management-overview.md
   - name: Reference
     items:
       - name: Azure Local multi-rack CLI reference
