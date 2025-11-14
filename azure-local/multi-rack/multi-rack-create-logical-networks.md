@@ -84,7 +84,7 @@ Create a static logical network when you want to create Azure Local VMs with net
     $internalNetworkName = "<L3InternalNetwork>" 
     $subscription = "<Subscription ID>"
     $resource_group = "mylocal-rg"
-    $customLocationID = "/subscriptions/<Subscription ID>resourceGroups/mylocal-rg/providers/Microsoft.ExtendedLocation/customLocations/mylocal-cl"
+    $customLocationID = "/subscriptions/<Subscription ID>/resourceGroups/mylocal-rg/providers/Microsoft.ExtendedLocation/customLocations/mylocal-cl"
     $location = "eastus"
     $addressPrefixes = "100.68.180.0/28"
     $ipPoolEnd = “100.68.180.20” 

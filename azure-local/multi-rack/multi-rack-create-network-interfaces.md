@@ -1,6 +1,6 @@
 ---
 title: Create network interfaces for Azure Local VMs for multi-rack deployments (Preview)
-description: Learn how to create network interfaces on an existing logical network associated with your Azure Local for multi-rack deployments. The Azure Local VM enabled by Azure Arc uses these network interfaces. (Preview)
+description: Learn how to create network interfaces on an existing logical network associated with your Azure Local for multi-rack deployments. The Azure Local VM enabled by Azure Arc uses these network interfaces (preview).
 author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
@@ -13,23 +13,21 @@ ms.date: 11/12/2025
 
 [!INCLUDE [multi-rack-applies-to-preview](../includes/multi-rack-applies-to-preview.md)]
 
-This article describes how to create network interfaces that you can associate with an Azure Local virtual machine (VM) for multi-rack deployments. You can create network interfaces using the Azure portal or Azure Command-Line Interface (CLI). 
-
+This article describes how to create network interfaces that you can associate with an Azure Local virtual machine (VM) for multi-rack deployments. You can create network interfaces using the Azure portal or Azure Command-Line Interface (CLI).
 
 ## About network interfaces
 
-Network interfaces are an Azure resource and can be used to deploy virtual machines on your system. On Azure Local for multi-rack deployments, network interfaces can be created on logical networks or virtual network (VNet) subnets. After a logical network or a VNet subnet is created, you can create network interfaces and associate those with the VMs you'll create.
+Network interfaces are an Azure resource that you can use to deploy virtual machines on your system. On Azure Local for multi-rack deployments, network interfaces can be created on logical networks or virtual network (VNet) subnets. After a logical network or a VNet subnet is created, you can create network interfaces and associate those with the VMs you create.
 
-You can create network interfaces using the Azure portal or the Azure Command Line Interface (CLI). When using the Azure portal, the network interface creation is a part of the VM creation process. When using the Azure CLI, you can create a network interface first and then use it to create a VM.
-
+You can create network interfaces by using the Azure portal or the Azure Command Line Interface (CLI). When using the Azure portal, the network interface creation is a part of the VM creation process. When using the Azure CLI, you can create a network interface first and then use it to create a VM.
 
 ## Prerequisites
 
-Before you create a network interface, make sure that the following prerequisites are completed.
+Before you create a network interface, make sure that you complete the following prerequisites.
 
 # [Azure CLI](#tab/azurecli)
 
-- Make sure to review and [complete the prerequisites](../manage/azure-arc-vm-management-prerequisites.md). If using a client to connect to your Azure Local, see [Connect to the system remotely](../manage/azure-arc-vm-management-prerequisites.md#connect-to-the-system-remotely).
+- Make sure you review and [complete the prerequisites](../manage/azure-arc-vm-management-prerequisites.md). If you're using a client to connect to your Azure Local, see [Connect to the system remotely](../manage/azure-arc-vm-management-prerequisites.md#connect-to-the-system-remotely).
 
 - Access to a logical network or a VNet subnet that you created on your Azure Local. For more information, see [Create logical network](../manage/create-logical-networks.md).
 
@@ -41,7 +39,7 @@ In the Azure portal, you create a network interface during the VM creation flow.
 
 ## Create network interface
 
-To create a VM, you'll first need to create a network interface on your logical network or virtual network.
+To create a VM, you first need to create a network interface on your logical network or virtual network.
 
 > [!NOTE]
 > Only static logical networks are supported in Azure Local for multi-rack deployments.
@@ -66,10 +64,9 @@ To create a VM, you'll first need to create a network interface on your logical 
 
 ### Network interface with static IP using logical network
 
-
 Follow these steps to create a network interface on your static logical network. Replace the parameters in `< >` with the appropriate values.
 
-1. Set the required parameters. Here's a sample output:
+1. Set the required parameters.
 
     ```azurecli
     $lnetName = "mylocal-lnet-static"
@@ -83,28 +80,27 @@ Follow these steps to create a network interface on your static logical network.
     $location = "eastus"
     ```
 
-    Here is a description of the parameters:
+    Here's a description of the parameters:
 
     | Parameter | Description |
     | ----- | ----------- |
-    | **name** | Name for the network interface that you'll create on the logical network deployed on your Azure Local. Make sure to provide a name that follows the [Rules for Azure resources.](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming#example-names-networking) You can't rename a network interface after it's created. |
+    | **name** | Name for the network interface that you create on the logical network deployed on your Azure Local. Make sure to provide a name that follows the [Rules for Azure resources.](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming#example-names-networking) You can't rename a network interface after it's created. |
     | **resource-group** |Name of the resource group where your Azure Local is deployed. This could also be another precreated resource group. |
-    | **subscription** |Name or ID of the subscription where your Azure Local is deployed. This could be another subscription you use for logical network on your Azure Local. |
-    | **custom-location** |Name or ID of the custom location to use for logical network on your Azure Local.  |
+    | **subscription** |Name or ID of the subscription where your Azure Local is deployed. This could be another subscription you use for the logical network on your Azure Local. |
+    | **custom-location** |Name or ID of the custom location to use for the logical network on your Azure Local.  |
     | **location** | Azure regions as specified by `az locations`. For example, this could be `eastus`, `westeurope`. |
     | **subnet-id** |Name of your logical network or the ARM ID of the VNet subnet. For example: `test-lnet-dynamic`.  |
-    | **ip-address** | An IPv4 address you want to assign to the network interface that you are creating. For example: "192.168.0.10". If you choose not to provide `ip-address`, an IP address will automatically be allocated from the available IP pool. |
+    | **ip-address** | An IPv4 address you want to assign to the network interface that you're creating. For example: "192.168.0.10". If you choose not to provide `ip-address`, an IP address will automatically be allocated from the available IP pool. |
 
-
-1. To create a network interface with static IP address, run the following command:
+1. To create a network interface with a static IP address, run the following command:
 
     ```azurecli
     az stack-hci-vm network nic create --subscription $subscription --resource-group $resource_group --custom-location $customLocationID --location $location --name $nicName --subnet-id $lnetName --ip-address $ipAddress
     ```
-    
+
     Here's a sample output:
-    
-    ```console   
+
+    ```console
     {
       "extendedLocation": {
         "name": "/subscriptions/<subscription ID>/resourceGroups/mylocal-rg/providers/Microsoft.ExtendedLocation/customLocations/mylocal-cl",
@@ -153,8 +149,7 @@ Follow these steps to create a network interface on your static logical network.
 
 You can use this network interface to create a VM. For more information, see [Create a VM](../manage/create-arc-virtual-machines.md).
 
-
-## Network interface with static IP using virtual network 
+## Network interface with static IP using virtual network
 
 Follow these steps to create a network interface on your static virtual network. Replace the parameters in `< >` with the appropriate values.
 
@@ -168,32 +163,32 @@ Follow these steps to create a network interface on your static virtual network.
     $nicName ="mylocal-nic-static" 
     $subscription =  "<Subscription ID>" 
     $resource_group = "mylocal-rg" 
-    $customLocationName = "mylocal-cl"  
-
-    $customLocationID ="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customLocationName" 
+    $customLocationID = "/subscriptions/<Subscription ID>/resourceGroups/mylocal-rg/providers/Microsoft.ExtendedLocation/customLocations/mylocal-cl"
+ 
 
     $location = "eastus" 
     ```
 
-    Here's is a description of the parameters:
+    Here's a description of the parameters:
 
     | Parameter | Description |
     | --- |  --- |
-    | name | Name for the network interface that you'll create on the logical network deployed on your Azure Local. Make sure to provide a name that follows the Rules for Azure resources. You can't rename a network interface after it's created. |
+    | name | Name for the network interface that you create on the logical network deployed on your Azure Local. Make sure to provide a name that follows the Rules for Azure resources. You can't rename a network interface after it's created. |
     | resource-group | Name of the resource group where your Azure Local is deployed. This could also be another precreated resource group. |
     |  subscription | Name or ID of the subscription where your Azure Local is deployed. This could be another subscription you use for logical network on your Azure Local. |
     | custom-location | Name or ID of the custom location to use for logical network on your Azure Local. |
     | location | Azure regions as specified by az locations. For example, this could be eastus, westeurope. |
     | subnet-id | Name of your vnet subnet. For example: test-vnet-subnet. |
-    | ip-address | An IPv4 address you want to assign to the network interface that you are creating. For example: "192.168.0.10". |
-    | dns-server | IP address of the DNS server. You should set it at during network interface creation if it hasn't already been provided during the VNet subnet creation. |
+    | ip-address | An IPv4 address you want to assign to the network interface that you're creating. For example: "192.168.0.10". |
+    | dns-server | IP address of the DNS server. Set it during network interface creation if it hasn't already been provided during the VNet subnet creation. |
 
-1. To create a network interface with static IP address, run the following command: 
+1. To create a network interface with static IP address, run the following command:
 
     ```azurecli
     az stack-hci-vm network nic create --subscription $subscription --resource-group $resource_group --custom-location $customLocationID --location $location --name $nicName --subnet-id $vnetSubnet --ip-address $ipAddress 
     ```
-    Here's a sample output: 
+
+    Here's a sample output:
 
     ```output
     { 
@@ -263,7 +258,8 @@ Follow these steps to create a network interface on your static virtual network.
 
     }  
     ```
-You can use this network interface to create a VM. For more information. 
+
+You can use this network interface to create a VM. For more information, see [Create a VM](../manage/create-arc-virtual-machines.md).
 
 # [Azure portal](#tab/azureportal)
 
