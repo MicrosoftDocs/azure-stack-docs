@@ -1,17 +1,19 @@
 ---
-title: Microsoft 365 Local Overview
-description: Learn about Microsoft 365 Local on Azure Local infrastructure.
+title: Microsoft 365 Local Overview (Preview)
+description: Learn about Microsoft 365 Local on Azure Local infrastructure (Preview).
 author: alkohli
 ms.topic: conceptual
-ms.date: 11/05/2025
+ms.date: 11/13/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
 ---
 
-# What is Microsoft 365 Local?
+# What is Microsoft 365 Local? (Preview)
 
 This article provides an overview of Microsoft 365 Local on Azure Local infrastructure.
+
+[!INCLUDE [important](../includes/hci-preview.md)]
 
 ## Overview
 
