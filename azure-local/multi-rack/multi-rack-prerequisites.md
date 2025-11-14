@@ -14,12 +14,12 @@ ms.topic: conceptual
 
 This article describes the prerequisites for multi-rack deployments of Azure Local.
 
-To get started with Azure Local multi-rack deployments, create a Network Fabric Controller (NFC) and then a Cluster Manager (CM) in your target Azure region. These resources should be created before you create the Azure Local multi-rack cluster.
+To get started with Azure Local multi-rack deployments, create a Network Fabric Controller (NFC) and then a Cluster Manager (CM) in your target Azure region. Create these resources before you create the Azure Local multi-rack cluster.
 
 Each NFC is associated with a CM in the same Azure region and your subscription.
 
 You need to complete the prerequisites before you can deploy the first multi-rack NFC and CM pair.
-In subsequent multi-rack deployments, you'll only need to create the NFC and CM after reaching the quota of supported multi-rack clusters.
+In subsequent multi-rack deployments, you only need to create the NFC and CM after reaching the quota of supported multi-rack clusters.
 
 [!INCLUDE [hci-preview](../includes/hci-preview.md)]
 
@@ -35,14 +35,14 @@ In subsequent multi-rack deployments, you'll only need to create the NFC and CM 
   az account show
   ```
 
-  >[!NOTE]
-  >Your account must have permissions to read, write, and publish in the subscription.
+  > [!NOTE]
+  > Your account must have permissions to read, write, and publish in the subscription.
 
 ## Register resource providers
 
 Ensure access to the necessary Azure resource providers for the Azure subscription for multi-rack resources. Register the following resource providers:
 
-```Azure CLI
+```azurecli
 az provider register --namespace Microsoft.AzureArcData
 az provider register --namespace Microsoft.Compute
 az provider register --namespace Microsoft.AzureStackHCI
@@ -78,13 +78,13 @@ You must enable the [EncryptionAtHost](/azure/virtual-machines/linux/disks-enabl
 
   Execute the following command to register the feature for your subscription:
 
-  ```Azure CLI
+  ```azurecli
   az feature register --namespace Microsoft.Compute --name EncryptionAtHost
   ```
 
 1. Verify the registration state.
 
-  Confirm that the registration state is `Registered` (registration might take a few minutes) using the following command before trying out the feature:
+  Confirm that the registration state is `Registered` (registration might take a few minutes) by using the following command before trying out the feature:
 
   ```Azure CLI
   az feature show --namespace Microsoft.Compute --name EncryptionAtHost
