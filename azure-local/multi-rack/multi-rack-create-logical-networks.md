@@ -15,7 +15,7 @@ ms.date: 11/14/2025
 This article describes how to create or add logical networks for Azure Local virtual machines (VMs) for multi-rack deployments. Azure Local VMs that you create use these logical networks.
 
 > [!NOTE]
-> Azure Local VMs only support IPv4 addresses. IPv6 addresses aren't supported.
+> Azure Local VMs support only IPv4 addresses. IPv6 addresses aren't supported.
 
 ## Prerequisites
 
@@ -27,12 +27,12 @@ Before you begin, complete these prerequisites:
 
 - Gather the following details about the L3 internal network you plan to associate with the logical network: ARM ID, subnet (address prefix), and VLAN ID. These details must match the internal network when creating the logical network.
 
-- To create VMs with static IP addresses in your address space, add a logical network with static IP allocation. Reserve an IP range with your network admin and get the address prefix for this IP range.
+- To create VMs with static IP addresses in your address space, add a logical network with static IP allocation. Reserve an IP range with your network admin, and get the address prefix for this IP range.
 
 > [!NOTE]
 > Dynamic IP allocation is not supported on Azure Local for multi-rack deployments. Only static logical networks are supported.
 >
-> When you create logical networks for Azure Local for multi-rack deployments, specify the IP pool with IP pool type `vm`. This restricts the logical network to those IP addresses.
+> When you create logical networks for Azure Local for multi-rack deployments, specify the IP pool with IP pool type `vm`. This action restricts the logical network to those IP addresses.
 > If you don't specify an IP pool during logical network creation, the entire subnet address space in the L3 internal network is dedicated to this logical network. No other logical network can be created on this L3 internal network.
 > You can create multiple logical networks on the same L3 internal network with non-overlapping IP pools.
 
@@ -43,7 +43,7 @@ You can create a logical network using either the Azure Command-Line Interface (
 > [!NOTE]
 > After a logical network is created, you can't update any fields except the Network Security Group (NSG) field.
 
-To create a logical network using Azure CLI, complete the following steps.
+To create a logical network using Azure CLI, follow these steps.
 
 ### Sign in and set subscription
 
@@ -63,7 +63,7 @@ To create a logical network using Azure CLI, complete the following steps.
 
 ### Create logical network
 
-To create a logical network on the L3 internal network of your choice or static IP configuration, use the `az stack-hci-vm network lnet create` cmdlet. Only static IP allocation is supported in Azure Local Rack Scale v1.0.0.
+To create a logical network on the L3 internal network of your choice or static IP configuration, use the `az stack-hci-vm network lnet create` command. Only static IP allocation is supported in Azure Local Rack Scale v1.0.0.
 
 > [!NOTE]
 > For logical networks, the following apply:
@@ -95,7 +95,7 @@ Create a static logical network when you want to create Azure Local VMs with net
     ```
 
     > [!NOTE]
-    > For the default VM switch created at deployment, pass the name string encased in double quotes followed by single quotes. For example, a default VM switch ConvergedSwitch(management_compute_storage) is passed as '"ConvergedSwitch(management_compute_storage)"'.
+    > For the default VM switch created at deployment, pass the name string enclosed in double quotes followed by single quotes. For example, a default VM switch ConvergedSwitch(management_compute_storage) is passed as '"ConvergedSwitch(management_compute_storage)"'.
 
     For static IP, the *required* parameters are tabulated as follows. Contact your network admin to get networking specific input parameters in the following table:
 
@@ -115,7 +115,7 @@ Create a static logical network when you want to create Azure Local VMs with net
     | **fabric-network-configuration-id** |ARM resource ID of the L3 Internal network. |
 
     > [!NOTE]
-    > `dns-server` and `gateway` are optional. Use the `--no-gateway` flag to bypass passing the gateway parameter. Use the `--no-dns-servers` flag to bypass passing the `dns-servers` parameter.
+    > The `dns-server` and `gateway` parameters are optional. Use the `--no-gateway` flag to bypass passing the gateway parameter. Use the `--no-dns-servers` flag to bypass passing the `dns-servers` parameter.
 
 1. Create a static logical network. Run the following command:
 
