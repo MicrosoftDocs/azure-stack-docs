@@ -524,6 +524,17 @@ items:
       href: manage/manage-thin-provisioning-23h2.md
     - name: Use ReFS deduplication and compression
       href: manage/refs-deduplication-and-compression.md
+    - name: Download managed data disks
+      href: manage/manage-data-disks.md
+    - name: External storage support
+      href: concepts/external-storage-support.md
+
+  - name: Capacity
+    items:
+    - name: Add a node
+      href: manage/add-server.md
+    - name: Repair a node
+      href: manage/repair-server.md
 
   - name: Billing
     items:
