@@ -13,7 +13,7 @@ ms.lastreviewed: 07/21/2025
 # Keyword: retirement
 ---
 
-# Announcing the 3-year retirement of AKS enabled by Azure Arc on Windows Server based platforms
+# Announcing the retirement of AKS enabled by Azure Arc on Windows Server based platforms
 
 Azure Kubernetes Service enabled by Azure Arc (AKS Arc) is a managed Kubernetes service that you can use to deploy and manage containerized applications on-premises, in datacenters, or at edge locations. It enables you to use familiar tools such as the Azure portal, Azure CLI, Azure Resource Manager, and Bicep and Terraform templates to create and manage your Kubernetes clusters running on different infrastructure platforms. Microsoft continues to focus on delivering consistent user experience for all your AKS Arc clusters. To continue ensuring Azure remains the best possible experience with the highest standards of safety and reliability, **we are retiring the current architecture of AKS enabled by Azure Arc on Windows Server 2019 in March 2026**.
 
