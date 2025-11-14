@@ -18,7 +18,7 @@ This article lists the requirements and prerequisites for Azure Local virtual ma
 
 Azure requirements include:
 
-- To provision Azure Local VMs and VM resources such as network interfaces, VM images, and data disks, you must have access to an Azure subscription with the appropriate role-based access control (RBAC) role and permissions assigned. For more information, see [RBAC roles for Azure Local VMs](../manage/assign-vm-rbac-roles.md#about-built-in-rbac-roles).
+- To provision Azure Local VMs and VM resources such as network interfaces, VM images, and data disks, you must have access to an Azure subscription with the appropriate Role-based access control (RBAC) role and permissions assigned. For more information, see [RBAC roles for Azure Local VMs](../manage/assign-vm-rbac-roles.md#about-built-in-rbac-roles).
 
 - Azure Local VM infrastructure is supported in the regions documented in the [What is Azure Local for multi-rack deployments?](multi-rack-overview.md) For Azure Local VMs, all entities must be registered, enabled, or created in the same region.
 
