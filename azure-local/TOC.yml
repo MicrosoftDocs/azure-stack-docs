@@ -739,15 +739,13 @@ items:
     - name: Deploy Azure Local VM workloads
       items:
       - name: Complete Azure Local VM prerequisites
-        href: ./overview.md 
+        href: ./multi-rack/multi-rack-vm-management-prerequisites.md 
       - name: Assign RBAC roles
         href: ./overview.md
       - name: Create Azure Local VM image
         href: ./multi-rack/multi-rack-virtual-machine-image-storage-account.md
       - name: Create logical networks
-        href: ./overview.md
-      - name: Create virtual networks
-        href: ./multi-rack/multi-rack-create-virtual-networks.md
+        href: ./multi-rack/multi-rack-create-logical-networks.md
       - name: Create network interfaces
         href: ./multi-rack/multi-rack-create-network-interfaces.md
       - name: Create Azure Local VMs
@@ -822,3 +820,6 @@ items:
       href: manage/disconnected-operations-on-demand-logs.md
     - name: Fallback log collection
       href: manage/disconnected-operations-fallback.md      
+
+- name: Microsoft 365 Local
+  href: ./concepts/microsoft-365-local-overview.md
