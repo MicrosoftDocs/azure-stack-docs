@@ -103,7 +103,7 @@ Before you begin, ensure that you:
 
    f. You can see the **WindowsOpenSSH** extension in the Azure portal Extensions list view.
 
-      :::image type="content" source="./media/multi-rack-connect-arc-vm-using-ssh/azure-portal-extensions-list-view-3.png" alt-text="Screenshot of Azure portal Extensions list view." lightbox="./media/multi-rack-connect-arc-vm-using-ssh/azure-portal-extensions-list-view-3.png":::
+   :::image type="content" source="./media/multi-rack-connect-arc-vm-using-ssh/azure-portal-extensions-list-view-3.png" alt-text="Screenshot of Azure portal Extensions list view." lightbox="./media/multi-rack-connect-arc-vm-using-ssh/azure-portal-extensions-list-view-3.png":::
 
 ## Use SSH to connect to an Azure Local VM
 
