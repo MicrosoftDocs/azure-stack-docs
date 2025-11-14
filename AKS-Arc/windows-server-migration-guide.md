@@ -159,12 +159,12 @@ If you encounter issues during migration, consider the following troubleshooting
 
 Before production migration:
 
-- [ ] Container images build on Windows Server 2022
-- [ ] Applications start without errors
-- [ ] Network connectivity verified
-- [ ] Storage mounts correctly
-- [ ] Performance acceptable
-- [ ] Monitoring operational
+- Container images build on Windows Server 2022
+- Applications start without errors
+- Network connectivity verified
+- Storage mounts correctly
+- Performance acceptable
+- Monitoring operational
 
 ## Next steps
 
