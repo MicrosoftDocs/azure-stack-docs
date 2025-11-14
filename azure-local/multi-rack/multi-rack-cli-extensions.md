@@ -1,11 +1,11 @@
 ---
-title: "Install CLI extensions for Azure Local Multi-Rack Deployments (Preview)"
-description: Learn to install the needed Azure CLI extensions for Azure Local multi-rack deployments (Preview).
+title: Install CLI extensions for Azure Local Multi-Rack Deployments (Preview)
+description: Learn to install the needed Azure CLI extensions for Azure Local multi-rack deployments (preview).
 author: sipastak
 ms.author: sipastak
 ms.service: azure-local
 ms.topic: how-to
-ms.date: 11/12/2025
+ms.date: 11/14/2025
 ---
 
 # Install Azure CLI extensions for multi-rack deployments of Azure Local (Preview)
@@ -18,7 +18,7 @@ This article explains how to install the required Azure CLI extensions for multi
 
 ## Install Azure CLI
 
-Ensure Azure CLI is installed before the installing the extensions. Follow [Install Azure CLI](/cli/azure) instructions to install it.
+Ensure Azure CLI is installed before installing the extensions. Follow [Install Azure CLI](/cli/azure/install-azure-cli) instructions to install it.
 
 ## Install required Azure CLI extensions
 
@@ -30,7 +30,7 @@ See the following sections to install the required Azure CLI extensions:
 
 > [!NOTE]
 > Any upgrade of the Azure CLI downloads the latest stable version of the installed extension.
-> The `--allow-preview=True` needs to be explicitly set to install the preview version of the extensions.
+> To install the preview version of the extensions, you must explicitly set the `--allow-preview=True` parameter.
 
 ### Install the `networkcloud` CLI extension
 
@@ -83,7 +83,7 @@ For the list of available versions, see [the extension release history](https://
 
 ### Install other Azure extensions
 
-Install the other Azure CLI extensions that multi-rack makes use of:
+Install other Azure CLI extensions that multi-rack deployment makes use of:
 
 ```azurecli
 az extension add --yes --upgrade --name customlocation
