@@ -92,7 +92,7 @@ You can expand an existing data disk to your desired size using Azure CLI.
 > [!NOTE]
 > - The size you're changing the data disk to can't be the same or less than the original size of the data disk.
 >
-> - The maximum size the disk can expand to depends on the storage capacity of the cluster. Disk size maximum is 20 TB.
+> - The maximum size of the disk can expand depending on the storage capacity of the cluster. Disk size maximum is 20 TB.
 >
 To expand the size of your data disk using Azure CLI, run the following command:
 
