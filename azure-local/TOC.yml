@@ -31,8 +31,6 @@ items:
         href: oem-license.md
       - name: FAQ
         href: license-billing.yml
-    - name: Microsoft 365 Local overview
-      href: ./concepts/microsoft-365-local-overview.md
     - name: Compare to Windows Server
       href: concepts/compare-windows-server.md 
     - name: FAQ
@@ -743,7 +741,7 @@ items:
       - name: Assign RBAC roles
         href: ./multi-rack/multi-rack-assign-vm-rbac-roles.md
       - name: Create Azure Local VMs image
-        href: ./overview.md
+        href: ./multi-rack/multi-rack-virtual-machine-image-storage-account.md
       - name: Create logical networks
         href: ./multi-rack/multi-rack-create-logical-networks.md
       - name: Create network interfaces
@@ -768,10 +766,8 @@ items:
         href: ./multi-rack/multi-rack-azure-arc-vm-management-overview.md
   - name: Reference
     items:
-      - name: CLI reference
-        href: ./overview.md 
-      - name: PowerShell reference
-        href: ./overview.md 
+      - name: Network cloud REST API reference
+        href: /rest/api/networkcloud/
 
 - name: Microsoft 365 Local
   href: ./concepts/microsoft-365-local-overview.md
