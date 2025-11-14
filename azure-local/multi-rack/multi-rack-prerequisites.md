@@ -1,6 +1,6 @@
 ---
-title: Azure Local Multi-Rack Deployment Prerequisites (Preview)
-description: Review the prerequisites for Azure Local multi-rack deployments (preview).
+title: Prerequisites for multi-rack deployments of Azure Local (Preview)
+description: Review the prerequisites for multi-rack deployments of Azure Local (preview).
 author: sipastak
 ms.author: sipastak
 ms.service: azure-local

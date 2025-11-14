@@ -1,6 +1,6 @@
 ---
 title: Create Azure Local VM images for multi-rack deployments using Azure Storage account (Preview)
-description: Learn how to create Azure Local VMs for multi-rack deployments using source images from Azure Storage account via Azure portal and Azure CLI. (Preview)
+description: Learn how to create Azure Local VMs for multi-rack deployments using source images from Azure Storage account via Azure portal and Azure CLI (preview).
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
@@ -14,25 +14,25 @@ ms.date: 11/12/2025
 
 This article describes how to create Azure Local virtual machines (VMs) for multi-rack deployments using source images from the Azure Storage account. You can create VM images using Azure Command Line Interface (CLI) and then use these images to create Azure Local VMs.
 
-
 ## Prerequisites
 
 For custom images in the Azure Storage account, make sure that the following prerequisites are met:
 
-- You should have a VHD loaded in your Azure Storage account. For more information, see [Upload a VHD image in your Azure Storage account](/azure/databox-online/azure-stack-edge-gpu-create-virtual-machine-image#copy-vhd-to-storage-account-using-azcopy). 
+- You should have a VHD loaded in your Azure Storage account. For more information, see [Upload a VHD image in your Azure Storage account](/azure/databox-online/azure-stack-edge-gpu-create-virtual-machine-image#copy-vhd-to-storage-account-using-azcopy).
 
-- Make sure that you're uploading your VHD or VHDX as a page blob image into the Storage account. Only page blob images are supported to create VM images via the Storage account.
+- Make sure that you upload your VHD or VHDX as a page blob image into the Storage account. Only page blob images are supported to create VM images via the Storage account.
 
-- The VHDX image must be prepared using `sysprep /generalize /shutdown /oobe`. For more information, see [Sysprep command-line options](/windows-hardware/manufacture/desktop/sysprep-command-line-options#oobe&preserve-view=true). This is true for both Windows and Linux VM images.
+- Prepare the VHDX image using `sysprep /generalize /shutdown /oobe`. For more information, see [Sysprep command-line options](/windows-hardware/manufacture/desktop/sysprep-command-line-options#oobe&preserve-view=true). This requirement applies to both Windows and Linux VM images.
 
 - Use only English (en-us) language VHDs to create VM images.
 
 - For Linux VM images:
 
-    - To allow for initial configuration and customization during VM provisioning, you need to ensure that the image contains `cloud init with nocloud` datasource.
+  - To allow for initial configuration and customization during VM provisioning, ensure that the image contains `cloud init with nocloud` datasource.
 
-    - You need to configure the bootloader, kernel, and init system in your image to enable both serial connectivity and text-based console. Use both `GRUB_TERMINAL="console serial"` and kernel cmdline settings. This configuration is required to enable serial access for troubleshooting deployment issues and console support for your VM after deployment. Make sure the serial port settings on your system and terminal match to establish proper communication.
-- For Windows VM images, install **VirtIO** drivers in the image to ensure proper detection of virtual storage and network devices during VM deployment. 
+  - Configure the bootloader, kernel, and init system in your image to enable both serial connectivity and text-based console. Use both `GRUB_TERMINAL="console serial"` and kernel cmdline settings. This configuration is required to enable serial access for troubleshooting deployment issues and console support for your VM after deployment. Make sure the serial port settings on your system and terminal match to establish proper communication.
+  
+- For Windows VM images, install **VirtIO** drivers in the image to ensure proper detection of virtual storage and network devices during VM deployment.
 
 - If using a client to connect to your Azure Local instance, see [Connect to Azure Local via Azure CLI client](../manage/azure-arc-vm-management-prerequisites.md#azure-command-line-interface-cli-requirements).
 
@@ -40,9 +40,9 @@ For custom images in the Azure Storage account, make sure that the following pre
 
 ## Add VM image from Azure Storage account
 
-You create a VM image starting from an image in Azure Storage account and then use this image to deploy VMs on your Azure Local instance.
+Create a VM image from an image in an Azure Storage account, and then use this image to deploy VMs on your Azure Local instance.
 
-Follow these steps to create a VM image using the Azure CLI.
+To create a VM image using the Azure CLI, follow these steps:
 
 ### Sign in and set subscription
 
@@ -75,7 +75,7 @@ $imageSourcePath = '"<Blob SAS URL path to the source image in the storage accou
 ```
 
 > [!NOTE]
-> For `$imageSourcePath`, the string must be escaped by double quotes, then enclosed by single quotes as follows: `'""'`.
+> For `$imageSourcePath`, escape the string with double quotes, then enclose it with single quotes: `'""'`.
 
 The parameters are described in the following table:
 
@@ -86,12 +86,12 @@ The parameters are described in the following table:
 | `location`       | Location for your Azure Local instance. For example, this could be `eastus`. |
 | `custom-location`       | ARM ID of the custom or extended location of your Azure Local instance. |
 | `name`      | Name of the VM image created starting with the image in your local share. <br> **Note**: Azure rejects all the names that contain the keyword Windows. |
-| `image-path`| Blob SAS URL path to the source image in the storage account. For instructions, see [Generating SAS tokens](/azure/applied-ai-services/form-recognizer/create-sas-tokens#generating-sas-tokens).<br>**Note**: The path string must be escaped by double quotes, then enclosed by single quotes as follows: `'""'`. |
+| `image-path`| Blob SAS URL path to the source image in the storage account. For instructions, see [Generating SAS tokens](/azure/applied-ai-services/form-recognizer/create-sas-tokens#generating-sas-tokens).<br>**Note**: Escape the path with double quotes, then enclose it with single quotes like: `'""'`. |
 | `os-type`         | Operating system associated with the source image. This can be Windows or Linux.           |
 
 Here's a sample output:
 
-```
+```console
 PS C:\Users\azcli> $subscription = "<Subscription ID>"
 PS C:\Users\azcli> $resource_group = "mylocal-rg"
 PS C:\Users\azcli> $location = "eastus"
@@ -107,12 +107,14 @@ PS C:\Users\azcli> $imageSourcePath = '"https://vmimagevhdsa1.blob.core.windows.
     ```azurecli
     $customLocationID=(az customlocation show --resource-group $resource_group --name "<custom location name for your Azure Local>" --query id -o tsv)
     ```
+
 1. Create the VM image from an image in the storage account:
 
     ```azurecli
     az stack-hci-vm image create --subscription $subscription --resource-group $resource_group --custom-location $customLocationID --location $location --name $imageName --os-type $osType --image-path $imageSourcePath
     ```
-    A deployment job starts for the VM image. 
+
+    A deployment job starts for the VM image.
 
     The image deployment takes a few minutes to complete. The time taken to download the image depends on the size of the image in Azure Storage account and the network bandwidth available for the download.
 
@@ -166,9 +168,9 @@ PS C:\Users\azcli> $imageSourcePath = '"https://vmimagevhdsa1.blob.core.windows.
 
 ## List VM images
 
-You need to view the list of VM images to choose an image to manage.
+View the list of VM images to choose an image to manage.
 
-Follow these steps to list VM images using Azure CLI.
+To list VM images using Azure CLI:
 
 1. Run PowerShell as an administrator.
 1. Set some parameters.
@@ -177,20 +179,21 @@ Follow these steps to list VM images using Azure CLI.
     $subscription = "<Subscription ID associated with your Azure Local>"
     $resource_group = "<Resource group name for your Azure Local>"
     ```
-1. List all the VM images associated with your Azure Local. Run the following command:
+
+1. List all the VM images associated with your Azure Local:
 
     ```azurecli
     az stack-hci-vm image list --subscription $subscription --resource-group $resource_group
     ```
-    
+
     Depending on the command used, a corresponding set of images associated with your Azure Local are listed.
 
     - If you specify just the subscription, the command lists all the images in the subscription.
     - If you specify both the subscription and the resource group, the command lists all the images in the resource group.
 
-    These images include custom images that reside in your Azure Storage account.
+    These images include custom images that are in your Azure Storage account.
 
-    Here's a sample output.
+    Here's a sample output:
 
     ```output
     PS C:\Users\azcli> az stack-hci-vm image list --subscription "<Subscription ID>" --resource-group "myhci-rg"
@@ -257,9 +260,9 @@ Follow these steps to list VM images using Azure CLI.
 
 ## View VM image properties
 
-You might want to view the properties of VM images before you use the image to create a VM. Follow these steps to view the image properties:
+You might want to view VM image properties before you use the image to create a VM. Follow these steps to view the image properties:
 
-Follow these steps to use Azure CLI to view properties of an image:
+To use Azure CLI to view image properties:
 
 1. Run PowerShell as an administrator.
 1. Set the following parameters.
@@ -270,7 +273,7 @@ Follow these steps to use Azure CLI to view properties of an image:
     $Image = "<Image name>"
     ```
 
-1. You can view image properties in two different ways: specify ID or specify name and resource group. Take the following steps when specifying Marketplace image ID:
+1. You can view image properties in two ways: specify ID or specify name and resource group. When specifying a Marketplace image ID:
 
     1. Set the following parameter.
 
@@ -278,11 +281,11 @@ Follow these steps to use Azure CLI to view properties of an image:
         $ImageID = "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/galleryimages/mylocal-marketplaceimage"
         ```
 
-    1.	Run the following command to view the properties.
+    1. To view the properties, run this command:
 
         ```az stack-hci-vm image show --ids $ImageID```
 
-        Here's a sample output for this command:
+        Here's sample output for this command:
 
         ```output
         PS C:\Users\azcli> az stack-hci-vm image show --ids $mktplaceImageID
@@ -322,7 +325,7 @@ Follow these steps to use Azure CLI to view properties of an image:
 
 ## Delete VM image
 
-You might want to delete a VM image if the download fails for some reason or if the image is no longer needed. Follow these steps to delete the VM images.
+You might want to delete a VM image if the download fails for some reason or if the image isn't needed anymore. To delete a VM image, follow these steps:
 
 1. Run PowerShell as an administrator.
 1. Set the following parameters:
@@ -339,14 +342,14 @@ You might want to delete a VM image if the download fails for some reason or if 
     az stack-hci-vm image delete --subscription $subscription --resource-group $resource_group --name $Image --yes
     ```
 
-You can delete image two ways:
+You can delete an image in two ways:
 
 - Specify name and resource group.
 - Specify ID.
 
-After you've deleted an image, you can check that the image is removed. Here's a sample output when the image was deleted by specifying the name and the resource-group.
+After you delete an image, check that it's removed. Here's sample output when the image is deleted by specifying the name and the resource group.
 
-```
+```console
 PS C:\Users\azcli> $subscription = "<Subscription ID>"
 PS C:\Users\azcli> $resource_group = "mylocal-rg"
 PS C:\Users\azcli> $Image = "mymylocal-marketplaceimage"
