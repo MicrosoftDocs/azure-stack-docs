@@ -109,7 +109,7 @@ Create a static logical network when you want to create Azure Local VMs with net
     | **ip-pool-end** | End of the IP pool. For example: “192.168.0.20”. |
     | **dns-servers** | List of IPv4 addresses of DNS servers. Specify multiple DNS servers in a space separated format. For example: "10.0.0.5" "10.0.0.10" Use the `--no-dns-server` flag instead if you choose to not provide this parameter.|
     | **gateway** | Ipv4 address of the default gateway. Use the `--no-gateway` flag instead if you choose to not provide this parameter. |
-    | **fabric-network-configuration-id** |ARM resource id of the L3 Internal network. |
+    | **fabric-network-configuration-id** |ARM resource ID of the L3 Internal network. |
 
     > [!NOTE]
     > `dns-server` and `gateway` are optional. Use the `--no-gateway` flag to bypass passing the gateway parameter. Use `--no-dns-servers` flag to bypass passing the `dns-servers` parameter.
