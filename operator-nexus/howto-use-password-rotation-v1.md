@@ -18,8 +18,8 @@ This article explains the prerequisites for rotating passwords for a network fab
 * Deploy Azure Operator Nexus Network Fabric and the Network Fabric Controller.
 * Enable the environment on Nexus Network Fabric 9.2 with API 2025-07-15.
 * Install and authenticate the Azure CLI to the correct subscription.
-* Ensure that Nexus Network Fabric is in a healthy state, the configuration state is provisioned, and the Administrative state is Enabled.
-* Run outside commit/upgrade workflows. Ensure that the Administrative state for the targeted devices is Enabled.
+* Ensure that Nexus Network Fabric is in a healthy state, the configuration state is provisioned, and the administrative state is Enabled.
+* Run outside commit/upgrade workflows. Ensure that the administrative state for the targeted devices is Enabled.
 
 ## Operational guardrails
 
@@ -147,5 +147,5 @@ Sample output (based on latest GA example fields):
 ## Troubleshooting
 
 * **BadRequest/Operation not allowed:** Fabric is in a conflicting workflow (commit/upgrade). Wait for the operation to finish, and then retry.
-* **Devices remain under failedDeviceIds:** Ensure that the device Administrative state is Enabled, and then run a resync.
+* **Devices remain under failedDeviceIds:** Ensure that the device administrative state is Enabled, and then run a resync.
 * **Rotation accepted but no progress:** Verify that the Nexus Network Fabric 9.2 GA API 2025-07-15 is enabled and that the feature flag is active.
