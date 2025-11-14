@@ -39,7 +39,7 @@ Based on the structure of Azure virtual networks, the following are provided:
 
 ## Prerequisites  
 
-- Review and [complete the prerequisites](../index.yml)<!--update link-->. If using a client to connect to your Azure Local, see [Connect to the system remotely](../index.yml)<!--update link-->.  
+- Review and [complete the prerequisites](../manage/azure-arc-vm-management-prerequisites.md). If using a client to connect to your Azure Local, see [Connect to the system remotely](../manage/azure-arc-vm-management-prerequisites.md#connect-to-the-system-remotely).  
 - Access to a resource group where you want to provision the virtual network.
 - Access to Azure Resource Manager (ARM) ID of the custom location associated with your Azure Local instance where you want to provision the virtual network.
 
