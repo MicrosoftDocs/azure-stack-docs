@@ -80,11 +80,7 @@ The following table lists commonly used Azure services with Azure Local:
 
 | **Use case** | **Description** |
 |---|---|
-<<<<<<< HEAD
-| Azure Local VMs enabled by Azure Arc | Deploy Windows and Linux VMs hosted on your Azure Local instance. To learn more, see [Create Azure Local virtual machines enabled by Azure Arc](../manage/create-arc-virtual-machines.md).<br><br>Additionally, Trusted launch for Azure Local VMs enables secure boot and vTPM. It automatically transfers the vTPM state within a cluster, and supports the ability to determine whether the VM started in a known good state. |
-=======
 | Azure Local VMs enabled by Azure Arc | Deploy Windows and Linux VMs hosted on your Azure Local instance. To learn more, see [Create Azure Local virtual machines enabled by Azure Arc](../manage/create-arc-virtual-machines.md).<br><br>Additionally, Trusted launch for Azure Local VMs enables secure boot and vTPM. It automatically transfers the vTPM state within a cluster and supports the ability to attest whether the VM started in a known good state. |
->>>>>>> 6e3b30c87fcae90da5338bf40e2c9c3f732eb5f6
 | Azure Virtual Desktop (AVD) | Deploy and manage Azure Virtual Desktop session hosts on your on-premises Azure Local. To learn more, see [Azure Virtual Desktop for Azure Local](/azure/virtual-desktop/azure-stack-hci-overview). |
 | Azure Kubernetes Service (AKS) enabled by Azure Arc | Use Azure Local to host container-based deployments using Azure Kubernetes Service (AKS) enabled by Azure Arc. To learn more, see [Azure Kubernetes Service on Azure Local](/azure/aks/aksarc/aks-whats-new-local). |
 | Run Azure Arc services on-premises | Azure Arc allows you to run select Azure services to support hybrid workloads. To learn more, see [Azure Arc overview](/azure/azure-arc/overview). |
