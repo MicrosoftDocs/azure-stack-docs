@@ -29,7 +29,7 @@ You can [Download the operating system software](../deploy/download-23h2-softwar
 
 ## Features and architecture
 
-Azure Local is built on proven technologies including Hyper-V, Storage Spaces Direct, Failover Clustering, and core Azure Management service. Each Azure Local instance can have one to 16 physical machines (excluding Rack aware cluster where a maximum of eight machines is supported).
+Azure Local is built on proven technologies including Hyper-V, Storage Spaces Direct, Failover Clustering, and core Azure Management service. Each Azure Local instance can have one to 16 physical machines (excluding rack aware cluster where a maximum of eight machines is supported).
 
 Azure Local has the following features and capabilities:
 
@@ -43,7 +43,7 @@ Azure Local has the following features and capabilities:
 | Observability | Metrics and logs are sent from on-premises to Azure Monitor and Log Analytics for both infrastructure and workload resources. |
 | Management tools | Cloud management via Azure portal, Azure CLI, and Azure Resource Manager/Bicep/Terraform templates.<br><br>On-premises management via local tools such as PowerShell, Windows Admin Center, Hyper-V Manager, and Failover Cluster Manager. |
 | Disaster Recovery | Can be enabled through Azure Backup, Azure Site Recovery, and non-Microsoft partners. |
-| Security | A secure-by-default configuration with more than 300 security settings that provide a consistent security baseline and a drift control mechanism.<br><br>Once deployed, secure your Azure Local VM workloads by using the Trusted launch.<br><br>Moreover use the Microsoft Defender for Cloud to assess and improve the security posture of your Azure Local instance and your Azure Local VMs. |
+| Security | A secure-by-default configuration with more than 300 security settings that provide a consistent security baseline and a drift control mechanism.<br><br>Once deployed, secure your Azure Local VM workloads by using Trusted launch.<br><br>Moreover use Microsoft Defender for Cloud to assess and improve the security posture of your Azure Local instance and your Azure Local VMs. |
 
 
 The following diagram illustrates the architecture and the capabilities of Azure Local for hyperconverged deployments.
@@ -64,9 +64,9 @@ Azure Local for hyperconverged deployments offers the following key benefits:
 
 - Flexible hardware choices let you choose the vendor with the best service and support in your geography. Joint support between Microsoft and the hardware vendor improves the customer experience.
 
-- Built on familiar technologies such as Hyper-V and Failover clustering, Azure Local enables admins to use existing virtualization and storage concepts and skills.
+- Built on familiar technologies such as Hyper-V and Failover Clustering, Azure Local lets admins use existing virtualization and storage concepts and skills.
 
-- Azure Local includes all the familiar Azure management plane tooling such as Azure portal, Azure CLI, and Azure Resource Manager (ARM) templates to provision and manage resources.
+- Azure Local includes all the familiar Azure management plane tooling such as Azure portal, Azure CLI, and Azure Resource Manager (ARM) templates to create and manage resources.
 
 - Solution updates make it easy to keep the entire solution up-to-date.
 
@@ -80,12 +80,16 @@ The following table lists commonly used Azure services with Azure Local:
 
 | **Use case** | **Description** |
 |---|---|
+<<<<<<< HEAD
 | Azure Local VMs enabled by Azure Arc | Deploy Windows and Linux VMs hosted on your Azure Local instance. To learn more, see [Create Azure Local virtual machines enabled by Azure Arc](../manage/create-arc-virtual-machines.md).<br><br>Additionally, Trusted launch for Azure Local VMs enables secure boot and vTPM. It automatically transfers the vTPM state within a cluster, and supports the ability to determine whether the VM started in a known good state. |
+=======
+| Azure Local VMs enabled by Azure Arc | Deploy Windows and Linux VMs hosted on your Azure Local instance. To learn more, see [Create Azure Local virtual machines enabled by Azure Arc](../manage/create-arc-virtual-machines.md).<br><br>Additionally, Trusted launch for Azure Local VMs enables secure boot and vTPM. It automatically transfers the vTPM state within a cluster and supports the ability to attest whether the VM started in a known good state. |
+>>>>>>> 6e3b30c87fcae90da5338bf40e2c9c3f732eb5f6
 | Azure Virtual Desktop (AVD) | Deploy and manage Azure Virtual Desktop session hosts on your on-premises Azure Local. To learn more, see [Azure Virtual Desktop for Azure Local](/azure/virtual-desktop/azure-stack-hci-overview). |
 | Azure Kubernetes Service (AKS) enabled by Azure Arc | Use Azure Local to host container-based deployments using Azure Kubernetes Service (AKS) enabled by Azure Arc. To learn more, see [Azure Kubernetes Service on Azure Local](/azure/aks/aksarc/aks-whats-new-local). |
 | Run Azure Arc services on-premises | Azure Arc allows you to run select Azure services to support hybrid workloads. To learn more, see [Azure Arc overview](/azure/azure-arc/overview). |
 | Highly performant SQL Server | Azure Local provides extra resiliency to highly available, mission-critical deployments of SQL Server. To learn more, see [Deploy SQL Server on Azure Local](../deploy/sql-server-23h2.md). |
-| Azure Video Indexer | Extract the insights from your videos using **Azure** AI **Video Indexer** video and audio models. To learn more, see [What is Azure AI Video Indexer enabled by Azure Arc](/azure/azure-video-indexer/arc/azure-video-indexer-enabled-by-arc-overview)? |
+| Azure Video Indexer | Extract insights from your videos using **Azure** AI **Video Indexer** video and audio models. To learn more, see [What is Azure AI Video Indexer enabled by Azure Arc](/azure/azure-video-indexer/arc/azure-video-indexer-enabled-by-arc-overview)? |
 | Azure Edge RAG (Preview) | Azure Edge RAG, enabled by Azure Arc is a turnkey solution that packages everything that's necessary to allow customers to build custom chat assistants and derive insights from their private data. To learn more, see [What is Edge Retrieval Augmented Generation (RAG)?](/azure/azure-arc/edge-rag/overview) |
 | Azure IoT Operations | Deploy Azure IoT Operations on Azure Kubernetes Service (AKS) enabled by Azure Arc clusters running on Azure Local to manage and process IoT data at the edge. To learn more, see [Azure IoT Operations overview](/azure/iot-operations/overview-iot-operations). |
 

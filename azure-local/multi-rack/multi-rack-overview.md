@@ -5,8 +5,9 @@ description: Discover Azure Local multi-rack deployments, a new capability for d
 author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
-ms.date: 11/11/2025
+ms.date: 11/13/2025
 ms.topic: overview
+ms.custom: references_regions
 ---
 
 # What are multi-rack deployments for Azure Local? (Preview)
@@ -55,6 +56,7 @@ The following table lists the various features and capabilities available on Azu
 | Azure Local services | Foundational services such as Azure Local virtual machines, Azure Kubernetes service (AKS) enabled by Azure Arc, and software-defined networking (SDN) services. |
 | Observability | Sends metrics and logs from on-premises infrastructure to Azure Monitor and Log Analytics for both infrastructure and workload resources. |
 | Management tools | Cloud management via Azure portal, Azure Resource Manager templates, and Azure CLI. |
+| Region availability | The control plane is currently available in East US, Australia East, and South Central US. |
 
 ## Architecture
 
