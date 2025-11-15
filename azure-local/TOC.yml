@@ -769,9 +769,6 @@ items:
       - name: Network cloud REST API reference
         href: /rest/api/networkcloud/
 
-- name: Microsoft 365 Local
-  href: ./concepts/microsoft-365-local-overview.md
-
 - name: Disconnected operations
   items:
   - name: Overview
