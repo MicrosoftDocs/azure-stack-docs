@@ -14,7 +14,7 @@ ms.custom: references_regions
 
 [!INCLUDE [multi-rack-applies-to-preview](../includes/multi-rack-applies-to-preview.md)]
 
-This article provides an overview of multi-rack deployments for Azure Local.  The overview also details the benefits, key features, use cases, and how to get started with the preview release.
+This article provides an overview of multi-rack deployments for Azure Local. The overview also details the benefits, key features, use cases, and how to get started with the preview release.
 
 Multi-rack deployments extend the scale of Azure Local, supporting hundreds of servers across multiple racks in a single instance. Microsoft currently offers multi-rack deployments in preview for qualified opportunities.
 
@@ -24,11 +24,11 @@ Multi-rack deployments extend the scale of Azure Local, supporting hundreds of s
 
 Multi-rack deployments of Azure Local are delivered as preintegrated racks with compute, storage, and networking included. You can use it to run Azure Local virtual machines and Azure services through Azure Arc. Support for Azure Kubernetes Service (AKS) enabled by Azure Arc will be available in a future release.
 
-To deliver optimal performance and reliability, this capability is designed around a prescriptive hardware bill of materials (BOM) featuring one main rack for network aggregation with SAN storage alongside several compute racks, installed at your on-premises location.
+This capability is designed around a prescriptive hardware bill of materials (BOM) to deliver optimal performance and reliability. The setup features one main rack for network aggregation with SAN storage alongside several compute racks, which are installed at your on-premises location.
 
 :::image type="content" source="media/multi-rack-overview/rack-structure.png" alt-text="Diagram showing Azure Local aggregation and compute racks." lightbox="media/multi-rack-overview/rack-structure.png":::
 
-With this solution, you can run familiar Arc-enabled infrastructure and services at a higher scale. The platform offers fully Azure-managed compute, storage, and networking capabilities. You can use the Azure Command-line Interface (CLI) or Azure portal to monitor and manage individual instances or view all the multi-rack deployments.
+With this solution, you can run familiar Arc-enabled infrastructure and services at a higher scale. The platform offers fully Azure-managed compute, storage, and networking capabilities. You can use the Azure Command-line Interface (CLI) or Azure portal to monitor and manage individual instances or view all multi-rack deployments.
 
 ## Benefits
 
@@ -36,7 +36,7 @@ Azure Local for multi-rack deployments offers the following key benefits:
 
 - Uses the same familiar Azure Local experiences and APIs available through the Azure portal.
 
-- Provides a resilient large-scale infrastructure with built-in redundancies for high availability.
+- Provides resilient large-scale infrastructure with built-in redundancies for high availability.
 
 - Provides managed networking, with all network devices and settings managed through familiar Azure concepts and APIs.
 
@@ -53,7 +53,7 @@ The following table lists the various features and capabilities available on Azu
 | Hardware | Prescriptive hardware procured from a Microsoft hardware partner. Each instance has one main rack for network aggregation and SAN storage plus three or more compute racks. The minimum footprint is four racks.  |
 | SAN storage | Built-in SAN storage shared by compute racks. |
 | Managed networking | Automated bootstrapping and lifecycle management of network devices using Azure APIs and ARM templates. Includes deployment of logical Layer 2 and Layer 3 networks spanning racks to support workloads. |
-| Azure Local services | Foundational services such as Azure Local virtual machines, Azure Kubernetes service (AKS) enabled by Azure Arc, and software-defined networking (SDN) services. |
+| Azure Local services | Foundational services such as Azure Local virtual machines, Azure Kubernetes Service (AKS) enabled by Azure Arc, and software-defined networking (SDN) services. |
 | Observability | Sends metrics and logs from on-premises infrastructure to Azure Monitor and Log Analytics for both infrastructure and workload resources. |
 | Management tools | Cloud management via Azure portal, Azure Resource Manager templates, and Azure CLI. |
 | Region availability | The control plane is currently available in East US, Australia East, and South Central US. |
@@ -72,11 +72,11 @@ The important points about this architecture are as follows:
   - Software-defined networking (SDN) services including virtual networks, logical networks, software load balancers, Network Address Translation (NAT) gateways, and network security groups.
   - Deployment of Windows and Linux Azure Local virtual machines (VMs) and Azure Kubernetes services (AKS) enabled by Azure Arc.
 - Azure ExpressRoute to connect your on-premises infrastructure to Azure.
-- Azure arc-enabled add-on services like Azure Monitor, Azure Policy, Microsoft Defender for Cloud, and more.
+- Azure Arc-enabled add-on services like Azure Monitor, Azure Policy, Microsoft Defender for Cloud, and more.
 
 ## Get started
 
-To get started with Azure Local multi-rack deployments (Preview), contact your Account team.
+To get started with Azure Local multi-rack deployments (Preview), contact your account team.
 
 ## Next steps
 
