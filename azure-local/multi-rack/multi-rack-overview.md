@@ -1,6 +1,6 @@
 ---
 title: Azure Local multi-rack deployments - Features, Benefits, and Use Cases (Preview)
-description: Discover Azure Local multi-rack deployments, a new capability for deploying large on-premises datacenters with over 100 machines and 8,000 cores. Learn how to get started. (Preview)
+description: Discover Azure Local multi-rack deployments, a new capability for deploying large on-premises datacenters with over 100 machines and 8,000 cores. Learn how to get started (Preview).
 #customer intent: As an IT admin, I want to understand Azure Local multi-rack deployments so that I can evaluate its suitability for my datacenter modernization needs.
 author: alkohli
 ms.author: alkohli

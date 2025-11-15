@@ -1,6 +1,6 @@
 ---
 title: Overview of Azure Local Monitoring for Multi-rack Deployments (Preview)
-description: This article provides an overview of the Azure Local monitoring solution for multi-rack deployments. (Preview)
+description: This article provides an overview of the Azure Local monitoring solution for multi-rack deployments (Preview).
 ms.author: alkohli
 ms.topic: overview
 author: alkohli

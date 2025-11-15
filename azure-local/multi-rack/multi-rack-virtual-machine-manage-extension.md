@@ -1,6 +1,6 @@
 ---
 title: Manage VM extensions on Azure Local VMs for multi-rack deployments (Preview)
-description: Learn how to enable guest management and then install and manage extensions on Azure Local VMs via Azure portal for multi-rack deployments (preview).
+description: Learn how to enable guest management and then install and manage extensions on Azure Local VMs via Azure portal for multi-rack deployments (Preview).
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
