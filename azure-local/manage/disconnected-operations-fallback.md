@@ -4,7 +4,7 @@ description: Export and send logs for disconnected operations with Azure Local V
 ms.topic: how-to
 author: ronmiab
 ms.author: robess
-ms.date: 08/06/2025
+ms.date: 11/13/2025
 ai-usage: ai-assisted
 ---
 
@@ -18,7 +18,11 @@ This article explains how to use appliance fallback logging to export and send l
 
 ## About fallback logging
 
-Use appliance fallback logging to collect and send logs to Microsoft when the Azure Local disconnected operations appliance virtual machine (VM) is down. Use this method if standard log collection can't start and you need logs for troubleshooting.
+Use appliance fallback logging to collect and send logs to Microsoft when the Azure Local disconnected operations appliance virtual machine (VM) is down. Use this method if standard log collection can't start and you need logs to troubleshoot issues.
+
+Here's a diagram showing a high-level overview of the appliance fallback log collection process:
+
+:::image type="content" source="./media/disconnected-operations/fallback-log/fall-back-log-collection-overview.png" alt-text="Diagram showing a high-level overview of the appliance fallback log collection process." lightbox=" ./media/disconnected-operations/fallback-log/fall-back-log-collection-overview.png":::
 
 ## Prerequisites
 
@@ -26,39 +30,36 @@ Import the appliance logging module to use the cmdlets in this article.
 
 ## Import appliance logging
 
-Run the following command to import appliance logging.
+To import appliance logging, run the following command:
 
 ```PowerShell
-Import-Module "C:\azurelocal\OperationsModule\ApplianceFallbackLogging.psm1" -Force
+Import-Module "<disconnected operations module folder path>" -Force
 ```
 
-## Export logs using the Copy-DiagnosticData command
+## Export logs via Copy-DiagnosticData
 
-To export logs in the fallback scenario, use this cmdlet:
-
-- [**Copy-DiagnosticData**]
-<!--- [**Send-DiagnosticData**]-->
+To export logs in the fallback scenario, use the `Copy-DiagnosticData` cmdlet.
 
 ### Copy-DiagnosticData command
 
 The **Copy-DiagnosticData** command is used to copy diagnostic logs from mounted virtual hard disks (VHDs) to a specified folder. This command is part of the operations module and helps you collect diagnostic data from a log volume VHD for analysis.
 
-The fallback logging scenario applies when the Azure Local VM running disconnected operations isn't working as expected or a management endpoint isn't functional. This cmdlet shuts down the VM. To get the logs, mount and unlock the VHDs, then copy the logs from the mounted VHDs to a local `LogsToExport` folder inside the folder you specify with `DiagnosticLogPath`. You can set the time window and roles to collect. If you set the `Observability Stamp ID`, the cmdlet includes it in the return values.
+The fallback logging scenario is used when the Azure Local VM can’t run disconnected operations or when a management endpoint doesn’t work. This cmdlet shuts down the VM. To get the logs, mount and unlock the VHDs, then copy the logs from the mounted VHDs to a local `LogsToExport` folder inside the folder you specify with `DiagnosticLogPath`. You can set the time window and roles to collect. If you set the `Observability Stamp ID`, the cmdlet includes it in the return values.
 
-Make sure this location has enough space for the logs because the Azure Local VMs running disconnected VHDs are temporarily mounted there during the copy action.
+Make sure this location has enough space for the logs because the Azure Local VM running disconnected VHDs mounts there temporarily during the copy action.
 
 Use these parameters with the `Copy-DiagnosticData` cmdlet.
 
 - **DiagnosticLogPath**: Required. The destination path contains copied logs and temporarily mounted VHDs.
 
-- **Roles**: Optional. Available roles: **Agents**, **Oplets**, **MASLogs**, **ServiceFabric**, **ArcADiagnostics**, **Observability**, **WindowsEventLogs**, **CosmosDB**, and **Storage**. By default, all roles except **CosmosDB** and **Storage** are included.
+- **FilterRoles**: The roles required for log collection or diagnostics might vary depending on the scenario. Use the `get-help`cmdlet or work with your support contact to determine the appropriate roles to include.
 
-- **FromDate** and **ToDate**: Optional. Start and end times of logs included in the collection. Logs before the FromDate and after the ToDate are excluded. By default, logs from the **last four hours** of the current time are collected, if you don't provide these parameters.
+- **FromDate** and **ToDate**: Optional. Start and end times of logs included in the collection. Logs before the FromDate and after the ToDate are excluded. By default, logs from the **last four hours** of the current time are collected if you don't provide these parameters.
 
-- **RecoveryKeySet** (BitLocker): Optional. The RecoveryKeySet contains relevant **ProtectorId** and **RecoveryPassword** pairs for BitLocker encrypted volumes used for log collection retrieval. If recovery keys aren't provided, manual entry of the keys is required during the mount process.
+- **RecoveryKeySet** (BitLocker): Optional. The RecoveryKeySet has relevant **ProtectorId** and **RecoveryPassword** pairs for BitLocker encrypted volumes used for log collection retrieval. If recovery keys aren't provided, manual entry of the keys is required during the mount process.
 
     > [!NOTE]
-    > The BitLocker recovery key set is required to unlock the mounted VHDs used for log collection. These keys should be retrieved and saved upon successful deployment of the appliance using the BitlockerRecoveryKeys endpoint.
+    > The BitLocker recovery key set is required to unlock the mounted VHDs used for log collection. Get and save these keys after you deploy the appliance using the BitlockerRecoveryKeys endpoint.
 
     Example:
 
@@ -116,7 +117,7 @@ Use these parameters with the `Copy-DiagnosticData` cmdlet.
     To manually create a RecoveryKeySet parameter, use this template:
 
     ```powershell
-    $bitLockerKeysPasswords = @(
+    $recoveryKeySet = @(
     [PSCustomObject]@{protectorid = "{<Protector Id>}"; recoverypassword = "<Recovery password>"})
     ```
 
@@ -129,11 +130,11 @@ Here are some examples of how to use the `Copy-DiagnosticData` cmdlet to get log
 To copy diagnostic data logs for specific roles, run these commands:
 
 ```powershell
-Import-Module "C:\azurelocal\OperationsModule\ApplianceFallbackLogging.psm1" -Force
+Import-Module "<disconnected operations module folder path>" -Force
 ```
 
 ```powershell
-Copy-DiagnosticData -DiagnosticLogPath "C:/path/to/copied_logs_parent_directory" -Roles @("Agents", "Oplets", "ServiceFabric")
+Copy-DiagnosticData -DiagnosticLogPath "C:/path/to/copied_logs_parent_directory" -FilterRoles @("Agents", "Oplets", "ServiceFabric")
 ```
 
 #### Copy diagnostic data logs for specific roles and time ranges
@@ -141,7 +142,7 @@ Copy-DiagnosticData -DiagnosticLogPath "C:/path/to/copied_logs_parent_directory"
 To copy diagnostic data logs for specific roles with time ranges and recovery keys, if provided, run these commands:
 
 ```powershell
-Import-Module "C:\azurelocal\OperationsModule\ApplianceFallbackLogging.psm1" -Force
+Import-Module "<disconnected operations module folder path>" -Force
 ```
 
 ```powershell
@@ -153,7 +154,7 @@ $recoveryKeySet = @()
 ```
 
 ```powershell  
-Copy-DiagnosticData -DiagnosticLogPath $diagnosticLogPath -Roles $roles -FromDate $fromDate -ToDate $toDate -RecoveryKeySet $recoveryKeySet
+Copy-DiagnosticData -DiagnosticLogPath $diagnosticLogPath -FilterRoles $roles -FromDate $fromDate -ToDate $toDate -RecoveryKeySet $recoveryKeySet
 ```
 
 Example output:
@@ -163,12 +164,12 @@ PS C:\Users\administrator.s46r2004\Documents> Copy-DiagnosticData -DiagnosticLog
 VERBOSE: [2025-03-26 22:10:58Z] [Get-ValidCollectionWindow] $ToDate not provided, set to: 03/26/2025 22:10:58 (current time)  
 VERBOSE: [2025-03-26 22:10:58Z] [Get-ValidCollectionWindow] #FromDate not provided, set to: 03/26/2025 18:10:58 (4hr collection window)  
 VERBOSE: [2025-03-26 22:10:58Z] [Copy-DiagnosticData] Collecting logs for range: '03/26/2025 18:10:58' - '03/26/2025 22:10:58'  
-VERBOSE: [2025-03-26 22:10:58Z] [Copy-DiagnosticData] Collecting logs for roles: 'Agents', 'Oplets', 'MASLogs', 'ServiceFabric', 'ArcADiagnostics', 'Observability', 'WindowsEventLogs'  
+VERBOSE: [2025-03-26 22:10:58Z] [Copy-DiagnosticData] Collecting logs for FilterRoles: 'Agents', 'Oplets', 'MASLogs', 'ServiceFabric', 'ArcADiagnostics', 'Observability', 'WindowsEventLogs'  
 VERBOSE: [2025-03-26 22:10:59Z] [Invoke-StopIRVMAndMountVHDs] Stopping the IRVM...  
 VERBOSE: [2025-03-26 22:11:55Z] [Invoke-StopIRVMAndMountVHDs] Attempting to mount VHD 'C:\ClusterStorage\UserStorage_1\InfraVms\IRVM01\Virtual Hard Disks\OSAndDocker_A.vhdx'...      
 ```
 
-Example of the copy-diagnosticdata output:
+Example of the Copy-DiagnosticData output:
 
 ```output
 | DiagnosticLogPath                                       | StampId                                  |
@@ -184,7 +185,7 @@ Example of the copy-diagnosticdata output:
 To copy diagnostic data logs to a specific directory path, run these commands:
 
 ```powershell
-Import-Module "C:\azurelocal\OperationsModule\ApplianceFallbackLogging.psm1" -Force
+Import-Module "<disconnected operations module folder path>" -Force
 ```
 
 ```powershell
