@@ -24,11 +24,18 @@ This document provides the list of software versioning supported in Release 2407
 |                         | MD5 checksum: e5ee34d50149749c177bbeef3d10e363 |                                          |
 |                         | **4.32.2FX-NX**                          | 4.0.0                                    |
 |                         | MD5 checksum: c02f7cd5429c9aa0e4109b542388eb31 |                                          |
-|                         | **EOS-4.33.1F**                          | 5.0.0                                    |
+|                         | **EOS-4.33.1F**                          | 5.0.0/5.0.1                                  |
 |                         | **32bit version EOS-4.33.1F.swi:** MD5 Checksum 92bd63991108dbfb6f8ef3d2c15e9028<br> **64bit version EOS64-4.33.1F.swi:** MD5 Checksum 108401f80963ebbf764d4fd1a6273a52 |                                          |
-| **Instance Cluster AKS** | NC4.1.4                                  | NC Runtime is 1.30.7                                  |
-| **Azure Linux (aka Mariner)** | NC4.1.4                          | NC Runtime is 3.0.20250102                             |
-| **Purity**              | 6.5.1, 6.5.4, 6.5.6, 6.5.8               |                                          |
+|                         | **EOS-4.34.1F**                          | 6.0.0/6.1.0                                    |
+|                         | **32bit version EOS-4.34.1F.swi:** MD5 Checksum ffaf9bf536d35ccab538de358c5e0a75<br> **64bit version EOS64-4.34.1F.swi:** MD5 Checksum b7b8984d4d35de2545862d8cdd34d1f0 |                                          |
+| **Instance Cluster AKS** | NC4.1.x                                  | NC Runtime is 1.30.x                                  |
+| **Azure Linux (aka Mariner)** | NC4.1.6                             | NC Runtime is 3.0.20250102                            |
+| **Instance Cluster AKS** | NC4.4.x                                  | NC Runtime is 1.31.x                                  |
+| **Azure Linux (aka Mariner)** | NC4.4.3                             | NC Runtime is 3.0.20250702                            |
+| **Azure Linux (aka Mariner)** | NC4.4.4                             | NC Runtime is 3.0.20250729                            |
+| **Instance Cluster AKS** | NC4.7.x                                  | NC Runtime is 1.32.x                                  |
+| **Azure Linux (aka Mariner)** | NC4.7.5                             | NC Runtime is 3.0.20250910                            |
+| **Purity**              | 6.5.1, 6.5.4, 6.5.6, 6.5.8, 6.5.10, 6.5.11               |                                          |
 
 > [!Note]
 > Management Switches (Arista devices) support only 32bit OS images and all other devices support only 64 bits OS images.
