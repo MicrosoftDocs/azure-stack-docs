@@ -29,10 +29,11 @@ Please note that this list is subject to change as new software versions are rel
 
 | Stack release | Components |
 |---------------|------------|
-| NC 4.1.6        | Instance cluster AKS: 1.30.x)<br>Azure Linux (Mariner): 3.0.20250102 |
-| NC 4.4.3        | Instance cluster AKS: 1.31.x)<br>Azure Linux (Mariner): 3.0.20250702 |
-| NC 4.4.4        | Instance cluster AKS: 1.31.x)<br>Azure Linux (Mariner): 3.0.20250729 |
-| NC 4.7.5        | Instance cluster AKS: 1.32.x)<br>Azure Linux (Mariner): 3.0.20250910 |
+| NC 4.1.6        | Instance cluster AKS: 1.30.8<br>Azure Linux: 3.0.20250102 |
+| NC 4.4.3        | Instance cluster AKS: 1.31.8<br>Azure Linux: 3.0.20250702 |
+| NC 4.4.4        | Instance cluster AKS: 1.31.11<br>Azure Linux: 3.0.20250729 |
+| NC 4.7.5        | Instance cluster AKS: 1.32.7<br>Azure Linux: 3.0.20250910 |
+| NC 4.7.7        | Instance cluster AKS: 1.32.7<br>Azure Linux: 3.0.20250910 |
 
 ### Purity versions
 
