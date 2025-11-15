@@ -1,11 +1,11 @@
 ---
-title: Azure Local multi-rack deployments - Features, Benefits, and Use Cases (Preview)
+title: What are multi-rack deployments for Azure Local? (Preview)
 description: Discover Azure Local multi-rack deployments, a new capability for deploying large on-premises datacenters with over 100 machines and 8,000 cores. Learn how to get started (Preview).
 #customer intent: As an IT admin, I want to understand Azure Local multi-rack deployments so that I can evaluate its suitability for my datacenter modernization needs.
 author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
-ms.date: 11/13/2025
+ms.date: 11/14/2025
 ms.topic: overview
 ms.custom: references_regions
 ---
@@ -69,11 +69,10 @@ The important points about this architecture are as follows:
 - Prescriptive hardware bill of materials (BOM) featuring preintegrated racks that contain SAN storage, servers, and network devices.
 - Azure Linux OS installed on the hardware and hypervisor for virtualization.
 - Azure Local services:
-    - Software-defined networking (SDN) services including virtual networks, logical networks, software load balancers, Network Address Translation (NAT) gateways, and network security groups.
-    - Deployment of Windows and Linux Azure Local virtual machines (VMs) and Azure Kubernetes services (AKS) enabled by Azure Arc.
+  - Software-defined networking (SDN) services including virtual networks, logical networks, software load balancers, Network Address Translation (NAT) gateways, and network security groups.
+  - Deployment of Windows and Linux Azure Local virtual machines (VMs) and Azure Kubernetes services (AKS) enabled by Azure Arc.
 - Azure ExpressRoute to connect your on-premises infrastructure to Azure.
 - Azure arc-enabled add-on services like Azure Monitor, Azure Policy, Microsoft Defender for Cloud, and more.
-
 
 ## Get started
 
@@ -83,4 +82,4 @@ To get started with Azure Local multi-rack deployments (Preview), contact your A
 
 - Read the blog post: [Blog list short link](https://aka.ms/ignite25/blog/azurelocal).
 
-- Learn more about [Azure Local multi-rack deployment prerequisites](../index.yml) .
+- Learn more about [Azure Local multi-rack deployment prerequisites](multi-rack-prerequisites.md) .
