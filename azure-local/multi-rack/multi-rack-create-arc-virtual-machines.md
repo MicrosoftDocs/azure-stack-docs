@@ -20,7 +20,6 @@ This article describes how to create Azure Local virtual machines (VMs) enabled 
 
 [!INCLUDE [hci-preview](../includes/hci-preview.md)]
 
-
 ## Prerequisites
 
 Before you create an Azure Local VM, make sure that the following prerequisites are complete:
@@ -234,24 +233,23 @@ Follow these steps in Azure portal for Azure Local.
 
 1. In the **Instance details** section, input the following parameters:
 
-   
     :::image type="content" source="media/multi-rack-create-arc-virtual-machines/virtual-machine-instance-details.png" alt-text="Screenshot of system details on Basics tab." lightbox="media/multi-rack-create-arc-virtual-machines/virtual-machine-instance-details.png"
 
     1. **Virtual machine name** – Enter a name for your VM. The name should follow all the naming conventions for Azure virtual machines.  
-    
+
         > [!IMPORTANT]
         > VM names should be in lowercase letters and can include hyphens and numbers.
 
     1. **custom-location** – Select the custom location for your VM. The custom locations are filtered to only show those locations that are enabled for Azure Local.
-    
+
         **The Virtual machine kind** is automatically set to **Azure Local**.
 
     1. **Security type** - Only **Standard** security type is supported and selected by default. For more information about Trusted launch Azure Local VMs, see [What is Trusted launch for Azure Local Virtual Machines?](../index.yml)<!--update link-->
 
     1. **Image** - Select from the VM images you previously created on your Azure Local instance.
-    
-        1. If you selected a Windows image, provide a username and password for the administrator account, and then confirm the password.
- 
+
+        1. If you selected a Windows image, provide a username and credentials for the administrator account, and then confirm the credentials.
+
         <!--:::image type="content" source="media/multi-rack-create-arc-virtual-machines/create-arc-vm-windows-image.png" alt-text="Screenshot showing how to Create a VM using Windows VM image." lightbox="media/multi-rack-create-arc-virtual-machines/create-arc-vm-windows-image.png":::-->
 
         1. If you selected a Linux image, you can choose between password and ssh key.
@@ -263,11 +261,10 @@ Follow these steps in Azure portal for Azure Local.
     1. **Memory** – Specify the memory in MB for the VM you intend to create.
 
     1. **Memory type** – Only **Static** memory type is supported and selected by default.
-    
+
     1. **Availability Zone** - Name of the availability zone (rack) where you want the VM to be placed.
-     
+
     1. **Strict placement** - Choose strict placement if you want a VM to only be scheduled on the specified availability zone. If the specified zone doesn’t have capacity or is unavailable, VM creation will fail. If you specify no for this field, the VM will be scheduled on the specified zone on a best-effort basis.
- 
 
 1. In the **VM extensions** section, select the checkbox to enable guest management and input the following parameters. You can install extensions on VMs where the guest management is enabled.
 
@@ -298,24 +295,23 @@ Follow these steps in Azure portal for Azure Local.
     1. Specify the password and then **Confirm password**.
 
 1. If you selected a Windows VM image, you can domain join your Windows VM. In the **Domain join** section, input the following parameters:
-   
+
     1. Select **Enable domain join**.
 
     1. Only the Active Directory domain join is supported and selected by default.  
-    
+
     1. Provide the UPN of an Active Directory user who has privileges to join the virtual machine to your domain.
-       
+
        > [!IMPORTANT]
-       > For your Active Directory, if your SAM Account Name and UPN are different, enter the SAM Account Name in the UPN field as: `SAMAccountName@domain`. 
-    
+       > For your Active Directory, if your SAM Account Name and UPN are different, enter the SAM Account Name in the UPN field as: `SAMAccountName@domain`.
+
     1. Provide the domain administrator password. If using SAM Account Name in the UPN field, enter the corresponding password.
 
     1. Specify domain or organizational unit. You can join virtual machines to a specific domain or to an organizational unit (OU) and then provide the domain to join and the OU path.
-    
-        If the domain isn't specified, the suffix of the Active Directory domain join UPN is used by default. For example, the user *guspinto@contoso.com* would get the default domain name *contoso.com*.
+
+        If the domain isn't specified, the suffix of the Active Directory domain join UPN is used by default. For example, the user *<guspinto@contoso.com>* would get the default domain name *contoso.com*.
 
         For Linux VM, provide root user details.
-
 
 1. **(Optional)** Create new or add more disks to the VM.
 
@@ -324,7 +320,6 @@ Follow these steps in Azure portal for Azure Local.
     1. Select **+ Add new disk**.
     1. Provide a **Name** and **Size**.
     1. Select **Add**. After it's created, you can see the new disk in the list view.
-
 
 1. **(Optional)** Create or add a network interface for the VM.
 
@@ -654,7 +649,7 @@ Follow these steps to deploy the Resource Manager template:
    :::image type="content" source="media/multi-rack-create-arc-virtual-machines/filled-review-create.png" alt-text="Screenshot of Review + Create tab for template in Azure portal." lightbox="media/multi-rack-create-arc-virtual-machines/filled-review-create.png":::
 
 1. When the deployment completes, you see the status of the deployment as complete. After the deployment has successfully completed, a VM is created.
-    
+
    <!--:::image type="content" source="./create-arc-virtual-machines/view-resource-group.png" alt-text="Screenshot of resource group with storage account and virtual network in Azure portal." lightbox="media/multi-rack-create-arc-virtual-machines/review-virtual-machine.png":::-->
 
 <!--# [Bicep template](#tab/biceptemplate)
@@ -685,6 +680,7 @@ You can use the Azure Verified Module (AVM) that contains the Terraform template
 ---
 
 > [!NOTE]
+>
 > - Two DVD drives are created and used in Azure Local VMs during VM provisioning. The ISO files used during provisioning are removed after successfully creating the VM. However, you might see the empty drives visible for the VM. 
 > - To delete these drives in a Windows VM, use Device Manager to uninstall the drives. Depending on the flavor of Linux you are using, you can also delete them for Linux VMs.
 

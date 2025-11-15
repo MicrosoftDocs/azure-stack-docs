@@ -17,6 +17,8 @@ This article describes how to create or add logical networks for Azure Local vir
 > [!NOTE]
 > Azure Local VMs support only IPv4 addresses. IPv6 addresses aren't supported.
 
+[!INCLUDE [hci-preview](../includes/hci-preview.md)]
+
 ## Prerequisites
 
 Before you begin, complete these prerequisites:
@@ -87,8 +89,8 @@ Create a static logical network when you want to create Azure Local VMs with net
     $customLocationID = "/subscriptions/<Subscription ID>/resourceGroups/mylocal-rg/providers/Microsoft.ExtendedLocation/customLocations/mylocal-cl"
     $location = "eastus"
     $addressPrefixes = "100.68.180.0/28"
-    $ipPoolEnd = “100.68.180.20” 
-    $ipPoolStart = “100.68.180.10” 
+    $ipPoolEnd = "100.68.180.20"
+    $ipPoolStart = "100.68.180.10"
     $gateway = "192.168.200.1"
     $dnsServers = "192.168.200.222"
     $vlan = "201"
@@ -144,7 +146,7 @@ Create a static logical network when you want to create Azure Local VMs with net
     
         "fabricNetworkConfiguration": { 
 
-          "resourceId": " /subscriptions/<Subscription ID>/resourceGroups/mylocal-rg/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/<L3 Isolation Domain> /internalNetworks/<name of internal network>" 
+          "resourceId": "/subscriptions/<Subscription ID>/resourceGroups/mylocal-rg/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/<L3 Isolation Domain> /internalNetworks/<name of internal network>" 
 
         }, 
         "provisioningState": "Succeeded",

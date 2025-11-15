@@ -16,6 +16,8 @@ This article describes how to use Role-based Access Control (RBAC) to control ac
 
 You can use the RBAC roles to control access to VMs and VM resources such as virtual disks, network interfaces, VM images, logical networks, and virtual networks. You can assign these roles to users, groups, service principals, and managed identities.
 
+[!INCLUDE [hci-preview](../includes/hci-preview.md)]
+
 ## Multi-team operational model
 
 The following section explains an operational model and associated custom role definitions that Microsoft provides merely as a reference. You can choose to disregard this model and create custom roles that work for your organization.
@@ -110,7 +112,7 @@ You can use the following role examples as a starting point to determine which p
 ### Azure Local Infrastructure Network Reader
 Allows consuming shared infrastructure network resources for  workload deployments.
 
-`{ "Name": "Azure Local Infrastructure Network Consumer", "Id": "2f3baa15-1dc2-4f2d-9db7-22377a75481b", "IsCustom": true, "Description": "Allows consuming shared infrastructure network resources for cross-subscription workload deployments.", "Actions": ["Microsoft.AzureStackHCI/LogicalNetworks/Read", "Microsoft.AzureStackHCI/LogicalNetworks/join/action", "Microsoft.AzureStackHCI/publicIPAddresses/Read", "Microsoft.AzureStackHCI/publicIPAddresses/join/action", "Microsoft.ExtendedLocation/customLocations/Read", "Microsoft.ExtendedLocation/customLocations/deploy/action", "Microsoft.NetworkCloud/clusters/read"], "NotActions": [], "DataActions": [], "NotDataActions": [], "AssignableScopes": ["/subscriptions/6331f5e9-a352-4c5d-b2dd-51da18d8c243"]}`
+`{"Name": "Azure Local Infrastructure Network Consumer", "Id": "2f3baa15-1dc2-4f2d-9db7-22377a75481b", "IsCustom": true, "Description": "Allows consuming shared infrastructure network resources for cross-subscription workload deployments.", "Actions": ["Microsoft.AzureStackHCI/LogicalNetworks/Read", "Microsoft.AzureStackHCI/LogicalNetworks/join/action", "Microsoft.AzureStackHCI/publicIPAddresses/Read", "Microsoft.AzureStackHCI/publicIPAddresses/join/action", "Microsoft.ExtendedLocation/customLocations/Read", "Microsoft.ExtendedLocation/customLocations/deploy/action", "Microsoft.NetworkCloud/clusters/read"], "NotActions": [], "DataActions": [], "NotDataActions": [], "AssignableScopes": ["/subscriptions/6331f5e9-a352-4c5d-b2dd-51da18d8c243"]}`
 
 ### Azure Local Workload VM Contributor
 

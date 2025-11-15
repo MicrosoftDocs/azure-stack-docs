@@ -14,6 +14,8 @@ ms.date: 11/14/2025
 
 This article provides an overview of virtual networks (VNets) for multi-rack deployments of Azure Local and shows how to create one.
 
+[!INCLUDE [hci-preview](../includes/hci-preview.md)]
+
 ## What are virtual networks?
 
 Virtual networks are the Software Defined Networking (SDN) resource available for multi-rack deployments. Virtual networks on Azure Local function similar to Azure virtual networks by providing a private, overlay network solution. They offer the same benefits of scale and isolation as Azure virtual networks.

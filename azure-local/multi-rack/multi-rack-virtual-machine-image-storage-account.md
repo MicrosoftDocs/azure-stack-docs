@@ -14,6 +14,8 @@ ms.date: 11/14/2025
 
 This article describes how to create Azure Local virtual machines (VMs) for multi-rack deployments using source images from the Azure Storage account. You can create VM images using Azure Command Line Interface (CLI) and then use these images to create Azure Local VMs.
 
+[!INCLUDE [hci-preview](../includes/hci-preview.md)]
+
 ## Prerequisites
 
 For custom images in the Azure Storage account, make sure that the following prerequisites are met:

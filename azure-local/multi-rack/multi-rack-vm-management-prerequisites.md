@@ -14,6 +14,8 @@ ms.date: 11/14/2025
 
 This article lists the requirements and prerequisites for Azure Local virtual machines (VMs) for multi-rack deployments. Review the requirements and complete the prerequisites before you manage your Azure Local VMs.
 
+[!INCLUDE [hci-preview](../includes/hci-preview.md)]
+
 ## Azure requirements
 
 Azure requirements include:
