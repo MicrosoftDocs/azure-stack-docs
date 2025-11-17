@@ -5,7 +5,7 @@ description: Learn the benefits, features, and use cases of Azure Local hypercon
 author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
-ms.date: 11/12/2025
+ms.date: 11/17/2025
 ms.topic: overview
 ai-usage: ai-assisted
 ms.service: azure-local

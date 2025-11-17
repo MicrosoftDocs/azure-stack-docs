@@ -20,7 +20,7 @@ This article lists the requirements and prerequisites for Azure Local virtual ma
 
 Azure requirements include:
 
-- To provision Azure Local VMs and VM resources such as network interfaces, VM images, and data disks, you must have access to an Azure subscription with the appropriate Role-based access control (RBAC) role and permissions assigned. For more information, see [RBAC roles for Azure Local VMs](../manage/assign-vm-rbac-roles.md#about-built-in-rbac-roles).
+- To provision Azure Local VMs and VM resources such as network interfaces, VM images, and data disks, you must have access to an Azure subscription with the appropriate Role-based access control (RBAC) role and permissions assigned. For more information, see [RBAC roles for Azure Local VMs](./multi-rack-assign-vm-rbac-roles.md#about-built-in-rbac-roles).
 
 - Azure Local VM infrastructure is supported in the regions documented in the [What is Azure Local for multi-rack deployments?](multi-rack-overview.md) For Azure Local VMs, all entities must be registered, enabled, or created in the same region.
 
@@ -33,12 +33,12 @@ Ensure you have:
 - Access to an Azure Local instance with the following configuration:
 
   - Deployed with the network fabric.
-  - At least one L3 isolation domain is configured.
-  - At least one L3 external network and one L3 internal network with sufficiently large IP CIDR.
+  - At least one Layer 3 isolation domain is configured.
+  - At least one Layer 3 external network and one Layer 3 internal network with sufficiently large IP CIDR.
   - Custom location is configured.
 
     > [!NOTE]
-    > The first eight IPs of the address prefix associated with an L3 internal network are reserved for internal use. Plan the size of the IP CIDR based on how many IPs your workloads require.
+    > The first eight IPs of the address prefix associated with an Layer 3 internal network are reserved for internal use. Plan the size of the IP CIDR based on how many IPs your workloads require.
 
   - Go to the **Overview** page in the Azure Local resource. Verify that **Detailed Status** shows as **Running**. You should also see a custom/extended location in the cluster overview page.
 
@@ -102,4 +102,4 @@ If you're accessing your Azure Local remotely, the following requirements must b
 
 ## Next steps
 
-- [Assign RBAC role for Azure Local VMs](../manage/assign-vm-rbac-roles.md).
+- [Assign RBAC role for Azure Local VMs](./multi-rack-assign-vm-rbac-roles.md).
