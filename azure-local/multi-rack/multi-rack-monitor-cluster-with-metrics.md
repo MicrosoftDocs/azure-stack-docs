@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 11/11/2025
+ms.date: 11/14/2025
 ---
 
 # Monitor multi-rack deployments of Azure Local with Azure Monitor Metrics (Preview)
@@ -69,6 +69,4 @@ Follow these steps to analyze metrics for a specific cluster in the Azure portal
 
     <!--:::image type="content" source="media/multi-rack-monitor-cluster-with-metrics/cluster-metrics.png" alt-text="Screenshot showing the metrics for your cluster." lightbox="media/multi-rack-monitor-cluster-with-metrics/cluster-metrics.png":::-->
 
-    To create alerts, select the **Alerts** option and set up alerts as described in [Create metric alerts](../index.yml). <!--update link-->
-
-    
+    To create alerts, select the **Alerts** option.
