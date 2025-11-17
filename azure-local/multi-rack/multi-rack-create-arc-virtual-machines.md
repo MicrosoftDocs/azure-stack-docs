@@ -671,3 +671,8 @@ When the VMs are created on your Azure Local via Azure CLI or Azure portal, a sy
 The VMs on Azure Local are extended from Arc-enabled servers and can use system-assigned managed identity to access other Azure resources that support Microsoft Entra ID-based authentication. For example, the VMs can use a system-assigned managed identity to access the Azure Key Vault.
 
 For  more information, see [system-assigned managed identities](/entra/identity/managed-identities-azure-resources/overview#managed-identity-types) and [Authenticate against Azure resource with Azure Arc-enabled servers](/azure/azure-arc/servers/managed-identity-authentication).
+
+
+## Next steps
+
+- Learn how to [Manage Azure Local VMs](./multi-rack-manage-arc-virtual-machines.md).
