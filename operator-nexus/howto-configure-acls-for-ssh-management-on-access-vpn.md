@@ -1,21 +1,17 @@
 ---
-title: Create ACLs on an NNI in Azure Operator Nexus and Azure Local max
-description: Get instructions on setting up network access control lists (ACLs) to control SSH access on a management VPN associated with Azure Local max and Azure Operator Nexus.
+title: Create ACLs on an NNI in Azure Operator Nexus
+description: Get instructions on setting up network access control lists (ACLs) to control SSH access on a management VPN.
 ms.service: azure-operator-nexus
 ms.custom: template-how-to, devx-track-azurecli
 ms.topic: how-to
-ms.date: 10/31/2025
-author: alkohli
-ms.author: alkohli
+ms.date: 02/07/2024
+author: sushantjrao
+ms.author: sushrao
 ---
 
-# Create ACLs on an NNI in Azure Local max and Azure Operator Nexus
+# Create ACLs on an NNI in Azure Operator Nexus
 
-[!INCLUDE [max-operator-nexus-applies-to-preview](../azure-local-max/includes/max-operator-nexus-applies-to-preview.md)]
-
-This article describes the process of creating access control lists (ACLs) in Azure Local max and Azure Operator Nexus.
-
-ACLs for `Permit` and `Deny` actions at a network-to-network interconnect (NNI) level help protect Secure Shell (SSH) access on the management virtual private network (VPN). You create ingress and egress ACLs before the creation of NNI resources and then reference those ACLs in the NNI payload. You need to create referenced ingress and egress ACLs before you provision the network fabric.
+In Azure Operator Nexus, access control lists (ACLs) for `Permit` and `Deny` actions at a network-to-network interconnect (NNI) level help protect Secure Shell (SSH) access on the management virtual private network (VPN). You create ingress and egress ACLs before the creation of NNI resources and then reference those ACLs in the NNI payload. You need to create referenced ingress and egress ACLs before you provision the network fabric.
 
 These are the high-level steps for creating an ACL on an NNI:
 
@@ -43,7 +39,7 @@ These are the high-level steps for creating an ACL on an NNI:
 | `layer4Protocol`       | Layer 4 protocol.                                           | Should be either `TCP` or `UDP`.    |
 | `ipCondition`          | IP condition that needs to be matched.                       |                                |
 | `actions`              | Action to be taken based on a match condition.                 | Example: `permit`.                |
-| `configuration-type`   | Configuration type, which can be inline or file. At this time, only the inline configuration is supported. | Example: `inline`.                |
+| `configuration-type`   | Configuration type, which can be inline or file. At this time, Azure Operator Nexus supports only inline. | Example: `inline`.                |
 
 You should also be aware of these restrictions:
 
