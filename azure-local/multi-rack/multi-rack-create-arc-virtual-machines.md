@@ -1,6 +1,6 @@
 ---
-title: Create Azure Local Virtual Machines Enabled by Azure Arc on Multi-rack Deployments (Preview)
-description: Learn how to view your Azure Local multi-rack deployment in the Azure portal and create Azure Local virtual machines enabled by Azure Arc (Preview).
+title: Create Azure Local Virtual Machines Enabled by Azure Arc on Multi-rack Deployments (preview)
+description: Learn how to view your Azure Local multi-rack deployment in the Azure portal and create Azure Local virtual machines enabled by Azure Arc (preview).
 author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
@@ -9,7 +9,7 @@ ms.service: azure-local
 ms.date: 11/17/2025
 ---
 
-# Create Azure Local virtual machines enabled by Azure Arc for multi-rack deployments (Preview)
+# Create Azure Local virtual machines enabled by Azure Arc for multi-rack deployments (preview)
 
 [!INCLUDE [multi-rack-applies-to-preview](../includes/multi-rack-applies-to-preview.md)]
 

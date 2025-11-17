@@ -1,6 +1,6 @@
 ---
-title: Create logical networks for Azure Local VMs for multi-rack deployments (Preview)
-description: Learn how to create logical networks on Azure Local VMs for multi-rack deployments (Preview).
+title: Create logical networks for Azure Local VMs for multi-rack deployments (preview)
+description: Learn how to create logical networks on Azure Local VMs for multi-rack deployments (preview).
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
@@ -8,7 +8,7 @@ ms.service: azure-local
 ms.date: 11/17/2025
 ---
 
-# Create logical networks for Azure Local VMs for multi-rack deployments (Preview)
+# Create logical networks for Azure Local VMs for multi-rack deployments (preview)
 
 [!INCLUDE [multi-rack-applies-to-preview](../includes/multi-rack-applies-to-preview.md)]
 

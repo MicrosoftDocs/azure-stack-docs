@@ -1,6 +1,6 @@
 ---
-title: Manage Azure Local VMs for Multi-Rack Deployments (Preview) 
-description: Learn how to manage Azure Local VMs enabled by Azure Arc. This includes operations such as start, stop, restart, view properties of Azure Local VMs for multi-rack deployments (Preview).
+title: Manage Azure Local VMs for Multi-Rack Deployments (preview) 
+description: Learn how to manage Azure Local VMs enabled by Azure Arc. This includes operations such as start, stop, restart, view properties of Azure Local VMs for multi-rack deployments (preview).
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
@@ -8,7 +8,7 @@ ms.service: azure-local
 ms.date: 11/17/2025
 ---
 
-# Manage Azure Local VMs for multi-rack deployments (Preview)
+# Manage Azure Local VMs for multi-rack deployments (preview)
 
 [!INCLUDE [multi-rack-applies-to-preview](../includes/multi-rack-applies-to-preview.md)]
 

@@ -1,6 +1,6 @@
 ---
-title: Create Azure Local VM images for multi-rack deployments using Azure Storage account (Preview)
-description: Learn how to create Azure Local VMs for multi-rack deployments using source images from Azure Storage account via Azure portal and Azure CLI (Preview).
+title: Create Azure Local VM images for multi-rack deployments using Azure Storage account (preview)
+description: Learn how to create Azure Local VMs for multi-rack deployments using source images from Azure Storage account via Azure portal and Azure CLI (preview).
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
@@ -8,7 +8,7 @@ ms.service: azure-local
 ms.date: 11/14/2025
 ---
 
-# Create Azure Local VM images for multi-rack deployments using Azure Storage account (Preview)
+# Create Azure Local VM images for multi-rack deployments using Azure Storage account (preview)
 
 [!INCLUDE [multi-rack-applies-to-preview](../includes/multi-rack-applies-to-preview.md)]
 

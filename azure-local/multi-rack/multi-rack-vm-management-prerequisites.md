@@ -1,6 +1,6 @@
 ---
-title: Review prerequisites for Azure Local VMs for multi-rack deployments (Preview)
-description: Learn about the prerequisites for deploying Azure Local VMs for multi-rack deployments (Preview).
+title: Review prerequisites for Azure Local VMs for multi-rack deployments (preview)
+description: Learn about the prerequisites for deploying Azure Local VMs for multi-rack deployments (preview).
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
@@ -8,7 +8,7 @@ ms.service: azure-local
 ms.date: 11/17/2025
 ---
 
-# Review prerequisites for Azure Local VMs for multi-rack deployments (Preview)
+# Review prerequisites for Azure Local VMs for multi-rack deployments (preview)
 
 [!INCLUDE [multi-rack-applies-to-preview](../includes/multi-rack-applies-to-preview.md)]
 
@@ -38,7 +38,7 @@ Ensure you have:
   - Custom location is configured.
 
     > [!NOTE]
-    > The first eight IPs of the address prefix associated with an Layer 3 internal network are reserved for internal use. Plan the size of the IP CIDR based on how many IPs your workloads require.
+    > The first eight IPs of the address prefix associated with a Layer 3 internal network are reserved for internal use. Plan the size of the IP CIDR based on how many IPs your workloads require.
 
   - Go to the **Overview** page in the Azure Local resource. Verify that **Detailed Status** shows as **Running**. You should also see a custom/extended location in the cluster overview page.
 
