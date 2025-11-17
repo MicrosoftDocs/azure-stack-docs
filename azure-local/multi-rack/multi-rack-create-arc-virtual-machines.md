@@ -54,7 +54,7 @@ Before you create an Azure Local VM, make sure that the following prerequisites 
 - A custom location for your Azure Local instance that you'll use to provision VMs. The custom location will also show up in the **Overview** page for Azure Local.
 - Access to a logical network or virtual network subnet that you associate with the VM on your Azure Local instance. For more information, see how to [Create logical network](./multi-rack-create-logical-networks.md).
 - Details of your proxy server to provide during VM creation. Azure Local VMs wouldn't have external connectivity to enable guest management without proxy details configured at the time of creation.
-
+---
 <!--# [Bicep template](#tab/biceptemplate)
 
 [!INCLUDE [hci-vm-prerequisites](../includes/hci-vm-prerequisites.md)]
@@ -66,11 +66,11 @@ Before you create an Azure Local VM, make sure that the following prerequisites 
 
 ## Create Azure Local VMs
 
-Follow these steps to create a VM on Azure Local.
+Follow these steps to create a VM on Azure Local.-->
 
 # [Azure CLI](#tab/azurecli)
 
-Follow these steps on the client running az CLI that is connected to Azure Local.-->
+Follow these steps on the client running az CLI that is connected to Azure Local.
 
 ## Sign in and set subscription
 
