@@ -89,7 +89,7 @@ This section provides the 2511 security updates associated with OS build **26200
 
 A new, standardized title format makes Windows updates easier to read and understand. It improves clarity by removing unnecessary technical elements like platform architecture. Key identifiers such as date prefixes, the KB number, and build or version are retained to help you quickly recognize each update.
 
-For more information, see Simplified Windows Update titles or the accompanying blog post.
+<!--For more information, see Simplified Windows Update titles or the accompanying blog post. -->
 
 ## Windows Secure Boot certificate expiration
 
