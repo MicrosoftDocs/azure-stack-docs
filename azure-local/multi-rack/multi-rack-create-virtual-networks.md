@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 11/14/2025
+ms.date: 11/17/2025
 ---
 
 # Create virtual networks for multi-rack deployments of Azure Local (Preview)
@@ -41,7 +41,7 @@ Based on the structure of Azure virtual networks, the following are provided:
 
 ## Prerequisites  
 
-- Review and [complete the prerequisites](../manage/azure-arc-vm-management-prerequisites.md). If using a client to connect to your Azure Local, see [Connect to the system remotely](../manage/azure-arc-vm-management-prerequisites.md#connect-to-the-system-remotely).  
+- Review and [complete the prerequisites](./multi-rack-vm-management-prerequisites.md). If using a client to connect to your Azure Local, connect to the system remotely.  
 - Access to a resource group where you want to provision the virtual network.
 - Access to Azure Resource Manager (ARM) ID of the custom location associated with your Azure Local instance where you want to provision the virtual network.
 
@@ -72,7 +72,10 @@ Complete the following steps to create a virtual network using Azure CLI. 
 
 ## Create virtual network via Azure CLI  
 
-To create a virtual network on your Azure Local instance use the `azstack-hci-vm network vnet` cmdlet. Only IPv4 addresses are supported. There's no support for IPv6 addresses.
+To create a virtual network on your Azure Local instance use the `azstack-hci-vm network vnet` cmdlet. 
+
+> [!NOTE]
+> Only IPv4 addresses are supported. There's no support for IPv6 addresses.
 
 Complete these steps in Azure CLI to configure a virtual network:  
 
@@ -253,8 +256,7 @@ Complete these steps in Azure CLI to configure a virtual network subnet:
 
     Once the virtual network subnet is created, you can start creating network interfaces and then, virtual machines. Additionally, you can also create other SDN services like NAT gateway and Software Load Balancer.
 
-<!--Commented out next steps since the article links aren't available yet.
+
 ## Next steps  
 
-- Create a network interface
--->
+- Learn how to [Create a network interface](./multi-rack-create-network-interfaces.md).

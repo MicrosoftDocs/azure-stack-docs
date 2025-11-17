@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.reviewer: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 11/12/2025
+ms.date: 11/17/2025
 ---
 
 # Create network interfaces for Azure Local VMs for multi-rack deployments (Preview)
@@ -29,13 +29,13 @@ Before you create a network interface, make sure that you complete the following
 
 # [Azure CLI](#tab/azurecli)
 
-- Make sure you review and [complete the prerequisites](../manage/azure-arc-vm-management-prerequisites.md). If you're using a client to connect to your Azure Local, see [Connect to the system remotely](../manage/azure-arc-vm-management-prerequisites.md#connect-to-the-system-remotely).
+- Make sure you review and [complete the prerequisites](./multi-rack-prerequisites.md). Connect to the system remotely.
 
-- Access to a logical network or a VNet subnet that you created on your Azure Local. For more information, see [Create logical network](../manage/create-logical-networks.md).
+- Access to a logical network or a VNet subnet that you created on your Azure Local. For more information, see [Create logical network](./multi-rack-create-logical-networks.md).
 
 # [Azure portal](#tab/azureportal)
 
-In the Azure portal, you create a network interface during the VM creation flow. For prerequisites and more information, see [Create Azure Local VM in Azure portal](../manage/create-arc-virtual-machines.md).
+In the Azure portal, you create a network interface during the VM creation flow. For prerequisites and more information, see [Create Azure Local VM in Azure portal](./multi-rack-create-arc-virtual-machines.md).
 
 ---
 
@@ -50,7 +50,7 @@ To create a VM, you first need to create a network interface on your logical net
 
 ### Sign in and set subscription
 
-1. [Connect to a machine](../manage/azure-arc-vm-management-prerequisites.md#connect-to-the-system-directly) on your Azure Local.
+1. Connect to a machine on your Azure Local.
 
 1. Sign in and type:
 
@@ -261,14 +261,13 @@ Follow these steps to create a network interface on your static virtual network.
     }  
     ```
 
-You can use this network interface to create a VM. For more information, see [Create a VM](../manage/create-arc-virtual-machines.md).
+You can use this network interface to create a VM. For more information, see [Create a VM](./multi-rack-create-arc-virtual-machines.md).
 
 # [Azure portal](#tab/azureportal)
 
-In the Azure portal, you create a network interface during the VM creation flow. For more information, see [Create Azure Local VM in Azure portal](../manage/create-arc-virtual-machines.md).
-
+In the Azure portal, you create a network interface during the VM creation flow. For more information, see [Create Azure Local VM in Azure portal](./multi-rack-create-arc-virtual-machines.md).
 ---
 
 ## Next steps
 
-- Use this network interface when you [Create Azure Local VMs enabled by Azure Arc](../manage/create-arc-virtual-machines.md).
+- Use this network interface when you [Create Azure Local VMs enabled by Azure Arc](./multi-rack-create-arc-virtual-machines.md).

@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 11/14/2025
+ms.date: 11/17/2025
 ---
 
 # Manage Azure Local VMs for multi-rack deployments (Preview)
@@ -18,9 +18,9 @@ This article describes how to manage Azure Local virtual machines (VMs) enabled 
 
 ## Prerequisites
 
-- Access to an Azure Local instance for multi-rack deployments that's deployed and registered.
-- On the Azure Local Overview page, find the custom location of the instance.
-- One or more Azure Local VMs running on your Azure Local instance. For more information, see [Create Azure Local virtual machines](../manage/create-arc-virtual-machines.md).
+- Access to a multi-rack deployment of Azure Local.
+- On the **Azure Local Overview** page, find the custom location of the instance.
+- One or more Azure Local VMs running on your Azure Local instance. For more information, see [Create Azure Local virtual machines](./multi-rack-create-arc-virtual-machines.md).
 - The Azure Local VM must have access to public network connectivity to enable guest management.
 
 ## Verify guest management
@@ -166,7 +166,7 @@ If Bash is in a different directory, make sure you change the `#!/bin/bash` line
 
 1. Sign in to the Azure Local VM.
 
-1. From where Bash is installed, run the following script:
+1. Go to the folder where Bash is installed and run the following script:
 
     ```Bash
     #!/bin/bash

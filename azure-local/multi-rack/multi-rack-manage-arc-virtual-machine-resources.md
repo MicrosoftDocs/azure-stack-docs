@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 11/14/2025
+ms.date: 11/17/2025
 ---
 
 # Manage resources for Azure Local VMs for multi-rack deployments (Preview)
@@ -23,7 +23,7 @@ After you deploy Azure Local virtual machines (VMs) enabled by Azure Arc, you ma
 
 ## Prerequisites
 
-- Access to a deployed and registered Azure Local instance with one or more running Azure Local VMs. For more information, see [Create an Azure Local VM enabled by Azure Arc](../manage/create-arc-virtual-machines.md).
+- Access to a multi-rack deployment of Azure Local with one or more running Azure Local VMs. For more information, see [Create an Azure Local VM enabled by Azure Arc](./multi-rack-create-arc-virtual-machines.md).
 
 ## Add a data disk
 

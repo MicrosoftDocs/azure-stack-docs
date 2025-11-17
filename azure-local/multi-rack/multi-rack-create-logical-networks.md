@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 11/14/2025
+ms.date: 11/17/2025
 ---
 
 # Create logical networks for Azure Local VMs for multi-rack deployments (Preview)
@@ -25,9 +25,9 @@ Before you begin, complete these prerequisites:
 
 - Review and [complete the prerequisites](../manage/azure-arc-vm-management-prerequisites.md). If you're using a client to connect to your Azure Local, see [Connect to the system remotely](../manage/azure-arc-vm-management-prerequisites.md#connect-to-the-system-remotely).
 
-- Ensure you have at least one L3 internal network configured with sufficient IP addresses and the right permissions to associate this internal network with the logical network you create.
+- Ensure you have at least one Layer 3 internal network configured with sufficient IP addresses and the right permissions to associate this internal network with the logical network you create.
 
-- Gather the following details about the L3 internal network you plan to associate with the logical network: ARM ID, subnet (address prefix), and VLAN ID. These details must match the internal network when creating the logical network.
+- Gather the following details about the Layer 3 internal network you plan to associate with the logical network: ARM ID, subnet (address prefix), and VLAN ID. These details must match the internal network when creating the logical network.
 
 - To create VMs with static IP addresses in your address space, add a logical network with static IP allocation. Reserve an IP range with your network admin, and get the address prefix for this IP range.
 
@@ -35,8 +35,8 @@ Before you begin, complete these prerequisites:
 > Dynamic IP allocation is not supported on Azure Local for multi-rack deployments. Only static logical networks are supported.
 >
 > When you create logical networks for Azure Local for multi-rack deployments, specify the IP pool with IP pool type `vm`. This action restricts the logical network to those IP addresses.
-> If you don't specify an IP pool during logical network creation, the entire subnet address space in the L3 internal network is dedicated to this logical network. No other logical network can be created on this L3 internal network.
-> You can create multiple logical networks on the same L3 internal network with non-overlapping IP pools.
+> If you don't specify an IP pool during logical network creation, the entire subnet address space in the Layer 3 internal network is dedicated to this logical network. No other logical network can be created on this Layer 3 internal network.
+> You can create multiple logical networks on the same Layer 3 internal network with non-overlapping IP pools.
 
 ## Create the logical network
 
@@ -65,13 +65,13 @@ To create a logical network using Azure CLI, follow these steps.
 
 ### Create logical network
 
-To create a logical network on the L3 internal network of your choice or static IP configuration, use the `az stack-hci-vm network lnet create` command. Only static IP allocation is supported in Azure Local Rack Scale v1.0.0.
+To create a logical network on the Layer 3 internal network of your choice or static IP configuration, use the `az stack-hci-vm network lnet create` command. Only static IP allocation is supported in this release of multi-rack deployments.
 
 > [!NOTE]
 > For logical networks, the following apply:
 >
 > - Creating logical networks with overlapping IP pools on the same VLAN isn't permitted.
-> - VLAN ID and the address prefix must match the VLAN ID and subnet in the L3 internal network provided as the fabric network resource.
+> - VLAN ID and the address prefix must match the VLAN ID and subnet in the Layer 3 internal network provided as the fabric network resource.
 
 #### Create a static logical network
 
@@ -83,7 +83,7 @@ Create a static logical network when you want to create Azure Local VMs with net
 
     ```azurecli
     $lnetName = "mylocal-lnet-static"
-    $internalNetworkName = "<L3InternalNetwork>" 
+    $internalNetworkName = "<Layer 3InternalNetwork>" 
     $subscription = "<Subscription ID>"
     $resource_group = "mylocal-rg"
     $customLocationID = "/subscriptions/<Subscription ID>/resourceGroups/mylocal-rg/providers/Microsoft.ExtendedLocation/customLocations/mylocal-cl"
@@ -108,13 +108,13 @@ Create a static logical network when you want to create Azure Local VMs with net
     | **subscription** |Name or ID of the subscription where your Azure Local is deployed. This could be another subscription you use for the logical network on your Azure Local. |
     | **custom-location** | Use this parameter to provide the custom location associated with your Azure Local where you're creating this logical network. |
     | **location** | Azure regions as specified by `az locations`. |
-    | **vlan** | VLAN ID as configured in the L3 Internal Network and provided as the fabric network resource. |
-    | **address-prefixes** | Subnet address in CIDR notation. For example: "192.168.0.0/16". Must match "ipv4prefix" in the L3 Internal Network provided as the fabric network resource. Only one prefix is supported.|
+    | **vlan** | VLAN ID as configured in the Layer 3 Internal Network and provided as the fabric network resource. |
+    | **address-prefixes** | Subnet address in CIDR notation. For example: "192.168.0.0/16". Must match "ipv4prefix" in the Layer 3 Internal Network provided as the fabric network resource. Only one prefix is supported.|
     | **ip-pool-start** | Start of the IP pool. For example: “192.168.0.0”. |
     | **ip-pool-end** | End of the IP pool. For example: “192.168.0.20”. |
     | **dns-servers** | List of IPv4 addresses of DNS servers. Specify multiple DNS servers in a space separated format. For example: "10.0.0.5" "10.0.0.10" Use the `--no-dns-server` flag instead if you choose not to provide this parameter.|
     | **gateway** | IPv4 address of the default gateway. Use the `--no-gateway` flag instead if you choose not to provide this parameter. |
-    | **fabric-network-configuration-id** |ARM resource ID of the L3 Internal network. |
+    | **fabric-network-configuration-id** |ARM resource ID of the Layer 3 Internal network. |
 
     > [!NOTE]
     > The `dns-server` and `gateway` parameters are optional. Use the `--no-gateway` flag to bypass passing the gateway parameter. Use the `--no-dns-servers` flag to bypass passing the `dns-servers` parameter.
@@ -146,7 +146,7 @@ Create a static logical network when you want to create Azure Local VMs with net
     
         "fabricNetworkConfiguration": { 
 
-          "resourceId": "/subscriptions/<Subscription ID>/resourceGroups/mylocal-rg/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/<L3 Isolation Domain> /internalNetworks/<name of internal network>" 
+          "resourceId": "/subscriptions/<Subscription ID>/resourceGroups/mylocal-rg/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/<Layer 3 Isolation Domain> /internalNetworks/<name of internal network>" 
 
         }, 
         "provisioningState": "Succeeded",

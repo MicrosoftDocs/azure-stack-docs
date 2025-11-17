@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.reviewer: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 11/11/2025
+ms.date: 11/17/2025
 ---
 
 # Create Azure Local virtual machines enabled by Azure Arc for multi-rack deployments (Preview)
@@ -244,11 +244,11 @@ Follow these steps in Azure portal for Azure Local.
 
         **The Virtual machine kind** is automatically set to **Azure Local**.
 
-    1. **Security type** - Only **Standard** security type is supported and selected by default. For more information about Trusted launch Azure Local VMs, see [What is Trusted launch for Azure Local Virtual Machines?](../index.yml)<!--update link-->
+    1. **Security type** - Only **Standard** security type is supported and selected by default. <!--For more information about Trusted launch Azure Local VMs, see [What is Trusted launch for Azure Local Virtual Machines?](../index.yml) -->
 
     1. **Image** - Select from the VM images you previously created on your Azure Local instance.
 
-        1. If you selected a Windows image, provide a username and credentials for the administrator account, and then confirm the credentials.
+        1. If you selected a Windows image, provide a username and password for the administrator account, and then confirm the password.
 
         <!--:::image type="content" source="media/multi-rack-create-arc-virtual-machines/create-arc-vm-windows-image.png" alt-text="Screenshot showing how to Create a VM using Windows VM image." lightbox="media/multi-rack-create-arc-virtual-machines/create-arc-vm-windows-image.png":::-->
 

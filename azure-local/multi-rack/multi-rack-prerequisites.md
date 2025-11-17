@@ -4,7 +4,7 @@ description: Review the prerequisites for multi-rack deployments of Azure Local 
 author: sipastak
 ms.author: sipastak
 ms.service: azure-local
-ms.date: 11/14/2025
+ms.date: 11/17/2025
 ms.topic: conceptual
 ---
 
@@ -14,11 +14,11 @@ ms.topic: conceptual
 
 This article describes the prerequisites for multi-rack deployments of Azure Local.
 
+## Complete prerequisites
+
 To get started with Azure Local multi-rack deployments, create a Network Fabric Controller (NFC) and then a Cluster Manager (CM) in your target Azure region. Create these resources before you create the Azure Local multi-rack cluster.
 
-Each NFC is associated with a CM in the same Azure region and your subscription.
-
-You need to complete the prerequisites before you can deploy the first multi-rack NFC and CM pair.
+Each NFC is associated with a CM in the same Azure region and your subscription. You need to complete the prerequisites before you can deploy the first multi-rack NFC and CM pair.
 In subsequent multi-rack deployments, you only need to create the NFC and CM after reaching the quota of supported multi-rack clusters.
 
 [!INCLUDE [hci-preview](../includes/hci-preview.md)]
@@ -104,7 +104,7 @@ Create and set up the following resources:
 
 - Establish [ExpressRoute](/azure/expressroute/expressroute-introduction) connectivity from your on-premises network to an Azure region:
   - [Create and verify an ExpressRoute circuit](/azure/expressroute/expressroute-howto-circuit-portal-resource-manager) via the Azure portal.
-  - In the ExpressRoute blade, ensure Circuit status indicates the status of the circuit on the Microsoft side. Provider status indicates if the circuit is provisioned or not provisioned on the service-provider side. For an ExpressRoute circuit to be operational, circuit status must be **Enabled**, and provider status must be **Provisioned**.
+  - In the **ExpressRoute** pane, ensure Circuit status indicates the status of the circuit on the Microsoft side. Provider status indicates if the circuit is provisioned or not provisioned on the service-provider side. For an ExpressRoute circuit to be operational, circuit status must be **Enabled**, and provider status must be **Provisioned**.
 - Set up an Azure Key Vault to store encryption and security tokens, passwords, certificates, and API keys.
 - Set up a Log Analytics workspace to store logs and analytics data for multi-rack subcomponents, such as Network Fabric and cluster.
 - Set up an Azure Storage account to store data objects for your resource in the Azure portal.
@@ -112,3 +112,8 @@ Create and set up the following resources:
   - If using user-assigned managed identities, the resources can be configured in advance for managed identity support.
   - For system-assigned managed identities, configuration must be done after multi-rack cluster creation.
 - Ensure Azure VM SKU availability in the targeted zones are met for the subscription.
+
+
+## Next steps
+
+- Learn how to [Assign RBAC roles](./multi-rack-assign-vm-rbac-roles.md).
