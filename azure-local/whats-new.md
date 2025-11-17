@@ -30,10 +30,7 @@ This release has the following features and improvements:
 
 - **.NET updates**: This build uses .NET version **8.0.22** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
 
-- **OEM image support for registration** - OEM images are now supported for registration of Azure Local machines for both proxy and without proxy scenarios. For more information, see [Register with Arc gateway](./deploy/deployment-with-azure-arc-gateway.md) and [Register without Arc gateway](./deploy/deployment-without-azure-arc-gateway.md).
-
-<!--- **Documentation updates**: The noteworthy changes include the following new articles or articles with major updates:-->
-
+- This release includes various reliability improvements and other bug fixes.
 
 ::: moniker-end
 
