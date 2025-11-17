@@ -3,7 +3,7 @@ title:  Security updates for Azure Local
 description: Security updates for Azure Local.
 author: alkohli
 ms.topic: conceptual
-ms.date: 11/10/2025
+ms.date: 11/17/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
@@ -14,7 +14,9 @@ This article lists the various security updates that are available for Azure Loc
 
 ::: moniker range="=azloc-2511"
 
-## November OS security updates (KB5068779 and KB5068861) for Azure Local
+## November OS security update (KB5068861) for Azure Local
+
+<!-- This article describes the OS security update for the 2511 release of Azure Local on November 11, 2025 and applies to OS builds 26100.7171 and 26200.7171.
 
 For the 2511 release of Azure Local, Microsoft released two security updates, each corresponding to a specific OS build. The following table provides the details of these security updates, including their associated OS builds and release dates.
 
@@ -23,7 +25,7 @@ For the 2511 release of Azure Local, Microsoft released two security updates, ea
 | KB5068779 | 25398.1965 | November 11, 2025 |
 | KB5068861 | 26100.7171<br>26200.7171 | November 11, 2025 |
 
-# [OS build 25398.xxxx](#tab/os-build-25398-xxxx)
+ # [OS build 25398.xxxx](#tab/os-build-25398-xxxx)
 
 This section provides the 2511 security updates associated with OS build **25398.1965**.
 
@@ -76,12 +78,12 @@ To install the LCU on your Azure Local instance, see [Update Azure Stack Local i
 
 ## File list
 
-For a list of the files that are provided in this update, download the file information for [Cumulative update KB5068779.](https://go.microsoft.com/fwlink/?linkid=2340950).
+For a list of the files that are provided in this update, download the file information for [Cumulative update KB5068779.](https://go.microsoft.com/fwlink/?linkid=2340950). 
 
 
-# [OS build 26100.xxxx](#tab/os-build-26100-xxxx)
+# [OS build 26100.xxxx](#tab/os-build-26100-xxxx) -->
 
-This section provides the 2511 security updates associated with OS build **26200.7171** and **26100.7171**, and also includes key notifications, announcements, change logs, and end-of-support notices.
+This section provides the 2511 security updates associated with OS build **26200.7171** and **26100.7171** released on November 11, 2025, and also includes key notifications, announcements, change logs, and end-of-support notices.
 
 ## Simplified Windows update titles
 
