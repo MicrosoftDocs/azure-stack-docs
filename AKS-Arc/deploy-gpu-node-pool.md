@@ -3,7 +3,7 @@ title: Use GPUs for compute-intensive workloads in AKS on Azure Local
 description: Learn how to deploy GPU-enabled node pools in AKS enabled by Arc on Azure Local.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 04/14/2025
+ms.date: 11/17/2025
 ms.author: sethm 
 ms.lastreviewed: 03/21/2025
 ms.reviewer: abha
@@ -19,13 +19,13 @@ ms.reviewer: abha
 > [!NOTE]
 > For information about GPUs in AKS on Windows Server, see [Use GPUs in AKS on Windows Server](deploy-gpu-node-pool-22h2.md).
 
-Graphical Processing Units (GPU) are used for compute-intensive workloads such as machine learning, deep learning, and more. This article describes how to use GPUs for compute-intensive workloads in AKS enabled by Azure Arc.
+*Graphical Processing Units* (GPUs) are useful for compute-intensive workloads such as machine learning, deep learning, and more. This article describes how to use GPUs for compute-intensive workloads in AKS enabled by Azure Arc.
 
 [!INCLUDE [supported-gpu-models](includes/supported-gpu-models.md)]
 
 ## Before you begin
 
-To use GPUs in AKS Arc, make sure you installed the necessary GPU drivers before you begin the deployment of the cluster. Follow the steps in this section.
+To use GPUs in AKS Arc, make sure you install the necessary GPU drivers before you begin the deployment of the cluster. Follow the steps in this section.
 
 ### Step 1: install the OS
 
@@ -33,7 +33,7 @@ Install the Azure Local operating system locally on each server in your Azure Lo
 
 ### Step 2: uninstall the NVIDIA host driver
 
-On each host machine, navigate to **Control Panel > Add or Remove programs**, uninstall the NVIDIA host driver, then reboot the machine. After the machine reboots, confirm that the driver was successfully uninstalled. Open an elevated PowerShell terminal and run the following command:
+On each host machine, go to **Control Panel > Add or Remove programs**, uninstall the NVIDIA host driver, then reboot the machine. After the machine reboots, confirm that the driver was successfully uninstalled. Open an elevated PowerShell terminal and run the following command:
 
 ```powershell
 Get-PnpDevice  | select status, class, friendlyname, instanceid | where {$_.friendlyname -eq "3D Video Controller"}
@@ -46,7 +46,7 @@ Error       3D Video Controller                   PCI\VEN_10DE&DEV_1EB8&SUBSYS_1
 Error       3D Video Controller                   PCI\VEN_10DE&DEV_1EB8&SUBSYS_12A210DE&REV_A1\4&3569C1D3&0&0000 
 ```
 
-### Step 3: dismount the host driver from the host
+### Step 3: Dismount the host driver from the host
 
 When you uninstall the host driver, the physical GPU goes into an error state. You must dismount all the GPU devices from the host.
 
@@ -59,7 +59,7 @@ Disable-PnpDevice -InstanceId $id1 -Confirm:$false
 Dismount-VMHostAssignableDevice -LocationPath $lp1 -Force
 ```
 
-To confirm that the GPUs were correctly dismounted from the host, run the following command. You should put GPUs in an `Unknown` state:
+To confirm that the GPUs are correctly dismounted from the host, run the following command. You should see GPUs in an `Unknown` state:
 
 ```powershell
 Get-PnpDevice  | select status, class, friendlyname, instanceid | where {$_.friendlyname -eq "3D Video Controller"}
@@ -70,7 +70,7 @@ Unknown       3D Video Controller               PCI\VEN_10DE&DEV_1EB8&SUBSYS_12A
 Unknown       3D Video Controller               PCI\VEN_10DE&DEV_1EB8&SUBSYS_12A210DE&REV_A1\4&3569C1D3&0&0000 
 ```
 
-### Step 4: download and install the NVIDIA mitigation driver
+### Step 4: Download and install the NVIDIA mitigation driver
 
 The software might include components developed and owned by NVIDIA Corporation or its licensors. The use of these components is governed by the [NVIDIA end user license agreement](https://www.nvidia.com/content/DriverDownload-March2009/licence.php?lang=us).
 
@@ -82,9 +82,9 @@ mkdir nvidia-mitigation-driver
 Expand-Archive .\nvidia_azure_stack_inf_v2022.10.13_public.zip .\nvidia-mitigation-driver\
 ```
 
-To install the mitigation driver, navigate to the folder that contains the extracted files, and select the GPU driver file based on the actual GPU type installed on your Azure Local hosts. For example, if the type is **A2 GPU**, right-click the **nvidia_azure_stack_A2_base.inf** file, and select **Install**.
+To install the mitigation driver, go to the folder that contains the extracted files, and select the GPU driver file based on the actual GPU type installed on your Azure Local hosts. For example, if the type is **A2 GPU**, right-click the **nvidia_azure_stack_A2_base.inf** file, and select **Install**.
 
-You can also install using the command line by navigating to the folder and running the following commands to install the mitigation driver:
+You can also install the mitigation driver by running the following commands from the command line:
 
 ```powershell
 pnputil /add-driver nvidia_azure_stack_A2_base.inf /install 
@@ -112,7 +112,7 @@ Continue the deployment of the Azure Local cluster by following the steps in [Az
 
 ### Get a list of available GPU-enabled VM SKUs
 
-Once the Azure Local cluster deployment is complete, you can run the following CLI command to show the available VM SKUs on your deployment. If your GPU drivers are installed correctly, the corresponding GPU VM SKUs are listed:
+When the Azure Local cluster deployment finishes, run the following CLI command to show the available VM SKUs on your deployment. If you install your GPU drivers correctly, the command lists the corresponding GPU VM SKUs:
 
 ```azurecli
 az aksarc vmsize list --custom-location <custom location ID> -g <resource group name>
@@ -120,13 +120,13 @@ az aksarc vmsize list --custom-location <custom location ID> -g <resource group 
 
 ## Create a new workload cluster with a GPU-enabled node pool
 
-Currently, using GPU-enabled node pools is only available for Linux node pools. To create a new Kubernetes cluster:
+Currently, you can only use GPU-enabled node pools for Linux node pools. To create a new Kubernetes cluster:
 
 ```azurecli
 az aksarc create -n <aks cluster name> -g <resource group name> --custom-location <custom location ID> --vnet-ids <vnet ID>
 ```
 
-The following example adds a node pool with 2 GPU-enabled (NVDIA A2) nodes with a **Standard\_NC4\_A2** VM SKU:
+The following example adds a node pool with two GPU-enabled (NVIDIA A2) nodes with a **Standard\_NC4\_A2** VM SKU:
 
 ```azurecli
 az aksarc nodepool add --cluster-name <aks cluster name> -n <node pool name> -g <resource group name> --node-count 2 --node-vm-size Standard_NC4_A2 --os-type Linux
@@ -134,7 +134,7 @@ az aksarc nodepool add --cluster-name <aks cluster name> -n <node pool name> -g 
 
 ## Confirm you can schedule GPUs
 
-With your GPU node pool created, confirm that you can schedule GPUs in Kubernetes. First, list the nodes in your cluster using the [kubectl get nodes](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get) command:
+After you create your GPU node pool, confirm that you can schedule GPUs in Kubernetes. First, list the nodes in your cluster using the [kubectl get nodes](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get) command:
 
 ```powershell
 kubectl get nodes
@@ -147,13 +147,13 @@ moc-lhbkqoncefu  Ready   <none>                3m19s  v1.22.6
 moc-li87udi8l9s  Ready   <none>                3m5s  v1.22.6
 ```
 
-Now use the [kubectl describe node](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe) command to confirm that the GPUs can be scheduled. Under the **Capacity** section, the GPU should appear as **nvidia.com/gpu: 1**.
+Now use the [kubectl describe node](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe) command to confirm that you can schedule the GPUs. Under the **Capacity** section, the GPU appears as **nvidia.com/gpu: 1**.
 
 ```powershell
 kubectl describe <node> | findstr "gpu" 
 ```
 
-The output should display the GPU(s) from the worker node and look something like this:
+The output displays the GPUs from the worker node and looks similar to the following example:
 
 ```output
 Capacity: 
@@ -168,7 +168,7 @@ Capacity:
 
 ## Run a GPU-enabled workload
 
-Once you complete the previous steps, create a new YAML file for testing; for example, **gpupod.yaml**. Copy and paste the following YAML into the new file named **gpupod.yaml**, then save it:
+After you complete the previous steps, create a new YAML file for testing, such as **gpupod.yaml**. Copy and paste the following YAML into the new file named **gpupod.yaml**, then save it:
 
 ```yaml
 apiVersion: v1
@@ -227,16 +227,16 @@ If you receive a version mismatch error when calling into drivers, such as "CUDA
 
 ### What happens during upgrade of a GPU-enabled node pool?
 
-Upgrading GPU-enabled node pools follows the same rolling upgrade pattern that's used for regular node pools. For GPU-enabled node pools in a new VM to be successfully created on the physical host machine, it requires one or more physical GPUs to be available for successful device assignment. This availability ensures that your applications can continue running when Kubernetes schedules pods on this upgraded node.
+Upgrading GPU-enabled node pools follows the same rolling upgrade pattern that's used for regular node pools. For the upgrade to succeed, Kubernetes needs to create new VMs on the physical host machine that have one or more physical GPUs available for device assignment. This availability ensures that your applications can continue running when Kubernetes schedules pods on this upgraded node.
 
 Before you upgrade:
 
 1. Plan for downtime during the upgrade.
-1. Have one extra GPU per physical host if you are running the **Standard_NK6** or 2 extra GPUs if you are running **Standard_NK12**. If you are running at full capacity and don't have an extra GPU, we recommend scaling down your node pool to a single node before the upgrade, then scaling up after upgrade succeeds.
+1. Have one extra GPU per physical host if you're running the **Standard_NK6** or two extra GPUs if you're running **Standard_NK12**. If you're running at full capacity and don't have an extra GPU, scale down your node pool to a single node before the upgrade, then scale up after the upgrade succeeds.
 
 ### What happens if I don't have extra physical GPUs on my physical machine during an upgrade?
 
-If an upgrade is triggered on a cluster without extra GPU resources to facilitate the rolling upgrade, the upgrade process hangs until a GPU is available. If you run at full capacity and don't have an extra GPU, we recommend scaling down your node pool to a single node before the upgrade, then scaling up after the upgrade succeeds.
+If you trigger an upgrade on a cluster without extra GPU resources to facilitate the rolling upgrade, the upgrade process hangs until a GPU is available. If you run at full capacity and don't have an extra GPU, scale down your node pool to a single node before the upgrade, then scale up after the upgrade succeeds.
 
 ## Next steps
 
