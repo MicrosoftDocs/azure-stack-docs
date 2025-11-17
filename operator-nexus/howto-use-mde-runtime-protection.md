@@ -1,21 +1,20 @@
 ---
-title: MDE Runtime Protection for Azure Local max and Operator Nexus
-description: Learn how to use the MDE Runtime Protection for Azure Local max and Operator Nexus.
+title: "Azure Operator Nexus: MDE Runtime Protection"
+description: Learn how to use the MDE Runtime Protection.
 author: sshiba
 ms.author: sidneyshiba
 ms.service: azure-operator-nexus
 ms.topic: how-to
-ms.date: 10/31/2025
+ms.date: 08/13/2025
 ms.custom: template-how-to
 ---
 
 # Introduction to the Microsoft Defender for Endpoint runtime protection service
 
-[!INCLUDE [max-operator-nexus-applies-to-preview](../azure-local-max/includes/max-operator-nexus-applies-to-preview.md)]
+The Microsoft Defender for Endpoint (MDE) runtime protection service provides the tools to configure and manage runtime protection for a Nexus cluster.
 
-This article introduces the Microsoft Defender for Endpoint (MDE) runtime protection service. This service provides the tools to configure and manage runtime protection for your Azure Local max or Operator Nexus cluster.
-
-The Azure CLI allows you to configure runtime protection **_Enforcement Level_** and the ability to trigger **_MDE Scan_** on all nodes of your cluster. This article provides the steps to execute those tasks.
+The Azure CLI allows you to configure runtime protection **_Enforcement Level_** and the ability to trigger **_MDE Scan_** on all nodes.
+This document provides the steps to execute those tasks.
 
 > [!NOTE]
 > The MDE runtime protection service integrates with [Microsoft Defender for Endpoint](/azure/defender-for-cloud/integration-defender-for-endpoint), which provides comprehensive Endpoint Detection and Response (EDR) capabilities. With Microsoft Defender for Endpoint integration, you can spot abnormalities and detect vulnerabilities.
@@ -30,7 +29,7 @@ The Azure CLI allows you to configure runtime protection **_Enforcement Level_**
 To help with configuring and triggering MDE scans, define these environment variables used by the various commands throughout this guide.
 
 > [!NOTE]
-> These environment variable values don't reflect a real deployment and users MUST change them to match their environments.
+> These environment variable values do not reflect a real deployment and users MUST change them to match their environments.
 
 ```bash
 # SUBSCRIPTION_ID: Subscription of your cluster
@@ -45,10 +44,10 @@ export CLUSTER_NAME="contoso-cluster"
 
 ## Defaults for MDE Runtime Protection
 
-The runtime protection sets to following default values when you deploy a cluster:
+The runtime protection sets to following default values when you deploy a cluster
 
-- Enforcement Level: `Disabled` if not specified when creating the cluster.
-- MDE Service: `Disabled`.
+- Enforcement Level: `Disabled` if not specified when creating the cluster
+- MDE Service: `Disabled`
 
 > [!NOTE]
 > The argument `--runtime-protection enforcement-level="<enforcement level>"` serves two purposes: enabling/disabling MDE service and updating the enforcement level.
@@ -76,10 +75,10 @@ Allowed values for `<enforcement level>`: `Disabled`, `RealTime`, `OnDemand`, `P
 - `OnDemand`: Files are scanned only on demand. In this:
   - Real-time protection is turned off.
 - `Passive`: Runs the antivirus engine in passive mode. In this:
-  - Real-time protection is turned off: Threats aren't remediated by Microsoft Defender Antivirus.
+  - Real-time protection is turned off: Threats are not remediated by Microsoft Defender Antivirus.
   - On-demand scanning is turned on: Still use the scan capabilities on the endpoint.
-  - Automatic threat remediation is turned off: No files are moved and security admin is expected to take required action.
-  - Security intelligence updates are turned on: Alerts are available on security admins tenant.
+  - Automatic threat remediation is turned off: No files will be moved and security admin is expected to take required action.
+  - Security intelligence updates are turned on: Alerts will be available on security admins tenant.
 
 You can confirm that enforcement level was updated by inspecting the output for the following json snippet:
 
@@ -102,8 +101,8 @@ az networkcloud cluster scan-runtime \
 ```
 
 > [!NOTE]
-> The MDE scan action requires the MDE service to be enabled. Just in case it isn't enabled, the command fails.
-> In this case, set the `Enforcement Level` to a value different from `Disabled` to enable the MDE service.
+> The MDE scan action requires the MDE service to be enabled. Just in case it is not enabled, the command will fail.
+> In this case set the `Enforcement Level` to a value different from `Disabled` to enable the MDE service.
 
 > [!TIP]
 > In version 2509.1 and above, you can view the status of the most recent `scan-runtime` request in the Azure portal `JSON View`.
