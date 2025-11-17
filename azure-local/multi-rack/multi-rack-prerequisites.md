@@ -111,7 +111,7 @@ Create and set up the following resources:
 - The Azure Key Vault, Log Analytics workspace, and storage account require a managed identity to be granted the appropriate permissions. Both user-assigned managed identities and system-assigned managed identities are supported.
   - If using user-assigned managed identities, the resources can be configured in advance for managed identity support.
   - For system-assigned managed identities, configuration must be done after multi-rack cluster creation.
-- Ensure Azure VM SKU availability in the targeted zones are met for the subscription.
+- Ensure Azure VM SKUs are available in the targeted zones for the subscription.
 
 
 ## Next steps

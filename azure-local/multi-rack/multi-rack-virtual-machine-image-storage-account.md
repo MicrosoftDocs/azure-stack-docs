@@ -36,7 +36,7 @@ For custom images in the Azure Storage account, make sure that the following pre
   
 - For Windows VM images, install **VirtIO** drivers in the image to ensure proper detection of virtual storage and network devices during VM deployment.
 
-- If using a client to connect to your Azure Local instance, see [Connect to Azure Local via Azure CLI client](../manage/azure-arc-vm-management-prerequisites.md#azure-command-line-interface-cli-requirements).
+- Connect to Azure Local via Azure CLI client.
 
 - Make sure that you have **Storage Blob Data Contributor** role on the Storage account that you use for the image. For more information, see [Assign an Azure role for access to blob data](/azure/role-based-access-control/role-assignments-portal?tabs=current).
 
@@ -48,7 +48,7 @@ To create a VM image using the Azure CLI, follow these steps:
 
 ### Sign in and set subscription
 
-1. [Connect to a machine](../manage/azure-arc-vm-management-prerequisites.md#connect-to-the-system-directly) on your Azure Local.
+1. Connect to a machine on your Azure Local.
 
 1. Sign in and type:
 
@@ -366,4 +366,4 @@ PS C:\Users\azcli>
 
 ## Next steps
 
-- [Create logical networks](../manage/create-logical-networks.md).
+- [Create logical networks](./multi-rack-create-logical-networks.md).
