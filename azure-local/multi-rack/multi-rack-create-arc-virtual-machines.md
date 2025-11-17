@@ -26,19 +26,19 @@ Before you create an Azure Local VM, make sure that the following prerequisites 
 
 # [Azure CLI](#tab/azurecli)
 
-- Access to an Azure subscription with the appropriate RBAC role and permissions assigned. For more information, see [RBAC roles for Azure Local VM management](../index.yml)<!--update link-->.
+- Access to an Azure subscription with the appropriate RBAC role and permissions assigned. For more information, see [RBAC roles for Azure Local VM management](./multi-rack-assign-vm-rbac-roles.md#custom-roles).
 - Access to a resource group where you want to provision the VM.
-- Access to one or more VM images on your Azure Local. These VM images could be created using [VM image starting from an image in Azure Storage account](../index.yml)<!--update link-->.
+- Access to one or more VM images on your Azure Local. These VM images could be created using [VM image starting from an image in Azure Storage account](./multi-rack-virtual-machine-image-storage-account.md.
     > [!NOTE]
     > If you’re deploying a Windows VM, make sure that the appropriate VirtIO drivers are present in the image.
 - A custom location for your Azure Local instance that you'll use to provision VMs. The custom location will also show up in the **Overview** page for Azure Local.
-- If using a client to connect to your Azure Local, see [Connect to Azure Local via Azure CLI client](../index.yml)<!--update link-->.
-- Access to a network interface that you created on a logical network or virtual network subnet associated with Azure Local. You can choose a network interface with static IP allocation. For more information, see how to [Create network interfaces](../index.yml)<!--update link-->.
+- If using a client to connect to your Azure Local, see [Connect to Azure Local via Azure CLI client](./multi-rack-vm-management-prerequisites.md#connect-to-the-system-remotely).
+- Access to a network interface that you created on a logical network or virtual network subnet associated with Azure Local. You can choose a network interface with static IP allocation. For more information, see how to [Create network interfaces](./multi-rack-create-network-interfaces.md).
 - Details of your proxy server to provide during VM creation. Azure Local VMs wouldn't have external connectivity to enable guest management without proxy details configured at the time of creation.
 
 # [Azure portal](#tab/azureportal)
 
-- Access to an Azure subscription with the appropriate RBAC role and permissions assigned. For more information, see [RBAC roles for Azure Local VM management](../index.yml)<!--update link-->.
+- Access to an Azure subscription with the appropriate RBAC role and permissions assigned. For more information, see [RBAC roles for Azure Local VM management](./multi-rack-assign-vm-rbac-roles.md#custom-roles).
 - Access to a resource group where you want to provision the VM.
 - Access to one or more VM images on your Azure Local.
     > [!NOTE]
@@ -48,11 +48,11 @@ Before you create an Azure Local VM, make sure that the following prerequisites 
 
 # [Azure Resource Manager template](#tab/armtemplate)
 
-- Access to an Azure subscription with the appropriate RBAC role and permissions assigned. For more information, see [RBAC roles for Azure Local VM management](../index.yml)<!--update link-->.
+- Access to an Azure subscription with the appropriate RBAC role and permissions assigned. For more information, see [RBAC roles for Azure Local VM management](./multi-rack-assign-vm-rbac-roles.md#custom-roles).
 - Access to a resource group where you want to provision the VM.
-- Access to one or more VM images on your Azure Local. These VM images could be created using [VM image starting from an image in Azure Storage account](../index.yml)<!--update link-->.
+- Access to one or more VM images on your Azure Local. These VM images could be created using [VM image starting from an image in Azure Storage account](./multi-rack-virtual-machine-image-storage-account.md).
 - A custom location for your Azure Local instance that you'll use to provision VMs. The custom location will also show up in the **Overview** page for Azure Local.
-- Access to a logical network or virtual network subnet that you associate with the VM on your Azure Local instance. For more information, see how to [Create logical network](../index.yml)<!--update link-->.
+- Access to a logical network or virtual network subnet that you associate with the VM on your Azure Local instance. For more information, see how to [Create logical network](./multi-rack-create-logical-networks.md).
 - Details of your proxy server to provide during VM creation. Azure Local VMs wouldn't have external connectivity to enable guest management without proxy details configured at the time of creation.
 
 <!--# [Bicep template](#tab/biceptemplate)
@@ -62,26 +62,6 @@ Before you create an Azure Local VM, make sure that the following prerequisites 
 - Access to a logical network that you associate with the VM on your Azure Local. For more information, see how to [Create logical network](./create-logical-networks.md).
 - [Download the sample Bicep template](https://aka.ms/hci-vmbiceptemplate)
 
-# [Terraform template](#tab/terraformtemplate)
-
-[!INCLUDE[hci-vm-prerequisites](../includes/hci-vm-prerequisites.md)]
-
-- Access to a logical network that you associate with the VM of your Azure Local. For more information, see [Create logical networks](../manage/create-logical-networks.md).
-- Make sure Terraform is installed and up to date on your machine.
-    - To verify your Terraform version, run the `terraform -v` command.
-    
-    Here's an example of sample output:
-    ```output
-    PS C:\Users\username\terraform-azurenn-avm-res-azurestackhci-virtualmachineinstance> terraform -v 
-    Terraform vi.9.8 on windows_amd64
-    + provider registry.terraform.io/azure/azapi vl.15.0 
-    + provider registry.terraform.io/azure/modtm V0.3.2 
-    + provider registry.terraform.io/hashicorp/azurerm v3.116.0 
-    + provider registry.terraform.io/hashicorp/random V3.6.3
-    ```
-- Make sure Git is installed and up to date on your machine.
-    -  To verify your version of Git, run the `git --version` command.
--->
 ---
 
 ## Create Azure Local VMs
@@ -90,11 +70,11 @@ Follow these steps to create a VM on Azure Local.
 
 # [Azure CLI](#tab/azurecli)
 
-Follow these steps on the client running az CLI that is connected to Azure Local.
+Follow these steps on the client running az CLI that is connected to Azure Local.-->
 
 ## Sign in and set subscription
 
-1. [Connect to a machine](../index.yml)<!--update link--> on Azure Local.
+1. [Connect to a machine on Azure Local](./multi-rack-vm-management-prerequisites.md#connect-to-the-system-remotely).
 
 
 1. Sign in. Type:
@@ -150,7 +130,7 @@ Here we create a VM that uses specific memory and processor counts.
     | **nics** |Names or the IDs of the network interfaces associated with your VM. You must have atleast one network interface when you create a VM, to enable guest management.|
     | **memory-mb** |Memory in Megabytes allocated to your VM. If not specified, defaults are used.|
     | **processors** |The number of processors allocated to your VM. If not specified, defaults are used.|
-    | **proxy-configuration** |Use this parameter to configure a proxy server for your VM. It is required to enable guest management on your VM. For more information, see [Create a VM with proxy configured](../index.yml)<!--update link-->.  |
+    | **proxy-configuration** |Use this parameter to configure a proxy server for your VM. It is required to enable guest management on your VM. For more information, see [Create a VM with proxy configured](#create-a-vm-with-proxy-configured).  |
     | **zone** | (Optional) Name of the availability zone (rack) where you want the VM to be placed.|
     | **strict-placement** | (Optional) Choose strict placement if you have specified a zone and want the VM to only be scheduled on the specified availability zone. If the specified zone doesn’t have capacity or is unavailable, VM creation will fail. If you specify no for this parameter, the VM will be scheduled on the specified zone on a best-effort basis. |
 
@@ -244,7 +224,7 @@ Follow these steps in Azure portal for Azure Local.
 
         **The Virtual machine kind** is automatically set to **Azure Local**.
 
-    1. **Security type** - Only **Standard** security type is supported and selected by default. <!--For more information about Trusted launch Azure Local VMs, see [What is Trusted launch for Azure Local Virtual Machines?](../index.yml) -->
+    1. **Security type** - Only **Standard** security type is supported and selected by default. 
 
     1. **Image** - Select from the VM images you previously created on your Azure Local instance.
 

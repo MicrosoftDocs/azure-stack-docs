@@ -106,4 +106,4 @@ Removal of the extension from the list takes a couple of minutes.
 
 ## Related content
 
-- [Enable guest management when creating Azure Local VMs](./multi-rack-create-arc-virtual-machines.md#enable-guest-management-on-azure-local-vms).
+- [Enable guest management when creating Azure Local VMs](./multi-rack-manage-arc-virtual-machine-resources.md).
