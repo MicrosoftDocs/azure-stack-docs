@@ -3,7 +3,7 @@ title: Configure group Managed Service Accounts (gMSA) for Windows containers wi
 description: Learn how to configure  Managed Service Accounts (gMSA) for containers on Windows nodes
 author: sethmanheim
 ms.topic: how-to
-ms.date: 04/03/2025
+ms.date: 11/17/2025
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: abha
