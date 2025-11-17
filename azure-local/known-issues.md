@@ -60,6 +60,7 @@ The following table lists the known issues in this release:
 |---------|---------|------------|
 | Update <!--35747709--> | Update may fail when the cloud management group is running on a different node than the owner node with the error: `Type 'RegisterCloudManagementUpdatesExtension' of Role 'CloudManagementConfig' raised an exception: Exception occurred in Get-ClusterExtension'` | Move the management group to the owner node manually and proceed with the update: <br><br> `# Get the owner node of the group matching '*orch*'` <br>
 `$orchOwner = (Get-ClusterGroup -Name '*orch*').OwnerNode.Name`<br><br> `# Move the "Cloud Management" group to that node`<br> `Move-ClusterGroup -Name 'Cloud Management' -Node $orchOwner` |
+| Deployment <!--35929472--> | AD-less deployments fail with error: `Failed to execute Test-Cluster: An error occurred opening cluster`. | AD-less environments will need to be deployed on 2510 until this issue is fixed. |
 
 
 ## Known issues from previous releases
@@ -79,7 +80,6 @@ The following table lists the known issues from previous releases:
 | Security <!--30348397--> |  Azure Local might face an issue during normal operations (for example, Update, Repair) while using Defender for Endpoint and when the **Restrict App Execution** setting is enabled for one or more servers in the deployment.  | Disable the **Restrict App Execution** setting in the Defender portal and reboot. If the issue persists, [open a support case](/azure/azure-portal/supportability/how-to-create-azure-support-request). |
 | Deployment <!--33471589--> |  After Azure portal deployment, SConfig network settings shows the error: `Set-SCfNetworksetting : Cannot bind argument to parameter 'Value' because it is null.` | There's no known workaround in this release. |
 | Deployment <!--33390832--> | In rare instances, deployment fails with errors during validation that state that the mandatory Arc extensions are not yet installed. | If you face this issue, retry the deployment. |
-|Registration, deployment, Add-server, Upgrade, Update<!--34559459--> |In this release, connectivity tests can take longer than 20 minutes in some environments. | There's no known workaround for this issue in this release. |
 |Deployment <!--34021247, 34493956--> |Log collection doesn't start when it starts it the first time, and then shows 404 errors subsequent times. | There's no known workaround for this issue in this release. |
 |Deployment <!--34752922--> |Deployment, add node, and repair node operations may fail with the error: <br> `Type 'EncryptClusterSharedVolumes' of Role 'AzureStackBitlocker' raised an exception: The job running on xxx failed due to: System.Management.Automation.RemoteException: -> Failed enabling bitlocker for C:\ClusterStorage\UserStorage_13 (F:)`  | For detailed steps on how to resolve this issue, see the [Troubleshooting guide](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/Deployment/Deployment-or-ScaleOut-failure-at-EncryptClusterSharedVolumes-of-AzureStackBitlocker.md).|
 | Security | If the Windows Defender attack surface reduction rule Block Process Creations originating from PSExec & WMI commands is configured to Block, the Azure Local Solution Update will fail to run. | For detailed steps on how to resolve this issue, see the [Troubleshooting guide](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/Update/Solution-Update-CAU-Run-fails-due-to-Windows-Defender-blocking-WMI-commands.md). |
@@ -172,7 +172,6 @@ The following table lists the known issues from previous releases:
 | Deployment <!--33471589--> |  After Azure portal deployment, SConfig network settings shows the error: `Set-SCfNetworksetting : Cannot bind argument to parameter 'Value' because it is null.` | There's no known workaround in this release. |
 | Deployment <!--33390832--> | In rare instances, deployment fails with errors during validation that state that the mandatory Arc extensions are not yet installed. | If you face this issue, retry the deployment. |
 | Update | When installing cumulative updates using Azure Update Manager, only the latest update for version 2507 is installed. If earlier update options (for versions 2505, 2506) are selected, they are not installed. | There's no workaround in this release. |
-|Registration, deployment, Add-server, Upgrade, Update<!--34559459--> |In this release, connectivity tests can take longer than 20 minutes in some environments. | There's no known workaround for this issue in this release. |
 | Update <!--34867064--> | Update health check results not shown when it's been longer than 3 hours after health check completed |Rerun the update health checks to restart the 3 hour expiration clock. |
 |Deployment <!--34021247, 34493956--> |Log collection doesn't start when it starts it the first time, and then shows 404 errors subsequent times. | There's no known workaround for this issue in this release. |
 |Deployment <!--34752922--> |Deployment, add node, and repair node operations may fail with the error: <br> `Type 'EncryptClusterSharedVolumes' of Role 'AzureStackBitlocker' raised an exception: The job running on xxx failed due to: System.Management.Automation.RemoteException: -> Failed enabling bitlocker for C:\ClusterStorage\UserStorage_13 (F:)`  | For detailed steps on how to resolve this issue, see the [Troubleshooting guide](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/Deployment/Deployment-or-ScaleOut-failure-at-EncryptClusterSharedVolumes-of-AzureStackBitlocker.md).|
@@ -226,6 +225,7 @@ The following table lists the fixed issues in this release:
 | Upgrade <!--34800777--> | Fixed an issue where upgrade fails on environment validator. |  |
 | Deployment <!--34742895, 34493956--> | Changed the default OS size for thin provisioned volumes. |  |
 | Security <!--34860200--> | Mitigation for security vulnerability CVE-2025-55316 was implemented. |  |
+|Registration, deployment, Add-server, Upgrade, Update<!--34559459--> |In this release, connectivity tests can take longer than 20 minutes in some environments. | There's no known workaround for this issue in this release. |
 
 ## Known issues
 
@@ -259,7 +259,6 @@ The following table lists the known issues from previous releases:
 | Deployment <!--33471589--> |  After Azure portal deployment, SConfig network settings shows the error: `Set-SCfNetworksetting : Cannot bind argument to parameter 'Value' because it is null.` | There's no known workaround in this release. |
 | Deployment <!--33390832--> | In rare instances, deployment fails with errors during validation that state that the mandatory Arc extensions are not yet installed. | If you face this issue, retry the deployment. |
 | Update | When installing cumulative updates using Azure Update Manager, only the latest update for version 2507 is installed. If earlier update options (for versions 2505, 2506) are selected, they are not installed. | There's no workaround in this release. |
-|Registration, deployment, Add-server, Upgrade, Update<!--34559459--> |In this release, connectivity tests can take longer than 20 minutes in some environments. | There's no known workaround for this issue in this release. |
 | Update <!--34867064--> | Update health check results not shown when it's been longer than 3 hours after health check completed |Rerun the update health checks to restart the 3 hour expiration clock. |
 
 ## Known and expected behaviors
