@@ -29,7 +29,7 @@ Before you create a network interface, make sure that you complete the following
 
 # [Azure CLI](#tab/azurecli)
 
-- Make sure you review and [complete the prerequisites](./multi-rack-prerequisites.md). Connect to the system remotely.
+- Make sure you review and [complete the prerequisites](./multi-rack-vm-management-prerequisites.md). Connect to the system remotely.
 
 - Access to a logical network or a VNet subnet that you created on your Azure Local. For more information, see [Create logical network](./multi-rack-create-logical-networks.md).
 

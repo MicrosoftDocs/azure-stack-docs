@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 11/14/2025
+ms.date: 11/17/2025
 ---
 
 # Review prerequisites for Azure Local VMs for multi-rack deployments (Preview)

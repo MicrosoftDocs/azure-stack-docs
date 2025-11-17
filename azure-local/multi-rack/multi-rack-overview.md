@@ -82,4 +82,4 @@ To get started with Azure Local multi-rack deployments (Preview), contact your a
 
 - Read the blog post: [Blog list short link](https://aka.ms/ignite25/blog/azurelocal).
 
-- Learn more about [Azure Local multi-rack deployment prerequisites](multi-rack-prerequisites.md) .
+- Learn more about [Deployment prerequisites for multi-rack deployments Azure Local](./multi-rack-prerequisites.md) .
