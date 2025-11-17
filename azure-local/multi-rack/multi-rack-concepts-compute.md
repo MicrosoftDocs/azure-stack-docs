@@ -1,11 +1,11 @@
 ---
-title: "Compute for Multi-rack Deployments of Azure Local (Preview)"
+title: Compute for Multi-rack Deployments of Azure Local (Preview)
 description: Get an overview of compute resources for multi-rack deployments of Azure Local (Preview).
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
 ms.topic: conceptual
-ms.date: 11/12/2025
+ms.date: 11/14/2025
 ms.custom: conceptual
 ---
 
@@ -25,20 +25,17 @@ These BMMs are deployed as part of the Azure Local automation suite. They exist 
 
 Each BMM in your cluster is represented as an Azure resource. Users can perform various operations to manage the BMM's lifecycle like any other Azure resource.
 
-
 ## Key capabilities of compute for multi-rack deployments
-
 
 ### CPU isolation
 
-CPU isolation provides a clear separation between the CPUs allocated for workloads and the CPUs allocated for platform activities. CPU isolation prevents interference and limits the performance predictability for critical workloads. By isolating CPU cores or groups of cores, you can mitigate the effect of noisy neighbors. It helps guarantee the required processing power for latency-sensitive applications.
+CPU isolation provides a clear separation between the CPUs allocated for workloads and the CPUs allocated for platform activities. CPU isolation prevents interference and enables the performance predictability for critical workloads. By isolating CPU cores or groups of cores, you can mitigate the effect of noisy neighbors. It helps guarantee the required processing power for latency-sensitive applications.
 
 Azure Local reserves a small set of CPUs for the host operating system and other platform applications. The remaining CPUs are available for running actual workloads.
 
 ### CPU oversubscription
 
-CPU oversubscription enables efficient utilization of compute resources by allowing multiple virtual CPUs (vCPUs) to share a single physical CPU core. Azure Local with multi-rack deployments supports a default 4:1 CPU oversubscription ratio, meaning up to four vCPUs can be mapped to one physical core. This capability increases workload density and optimizes infrastructure efficiency, allowing users to run more workloads within the same hardware footprint. It is particularly beneficial in environments where workloads have variable or intermittent CPU usage, helping maximize performance and overall platform scalability.
-
+CPU oversubscription enables efficient utilization of compute resources by allowing multiple virtual CPUs (vCPUs) to share a single physical CPU core. Azure Local with multi-rack deployments supports a default 4:1 CPU oversubscription ratio, meaning up to four vCPUs can be mapped to one physical core. This capability increases workload density and optimizes infrastructure efficiency, allowing users to run more workloads within the same hardware footprint. It's particularly beneficial in environments where workloads have variable or intermittent CPU usage, helping maximize performance and overall platform scalability.
 
 ## BMM status
 
