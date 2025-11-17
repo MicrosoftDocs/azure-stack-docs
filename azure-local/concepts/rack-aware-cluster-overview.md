@@ -10,7 +10,7 @@ ms.date: 10/15/2025
 
 # Azure Local rack aware clustering overview (Preview)
 
-> Applies to: Azure Local version 2510 and later
+::: moniker range=">=azloc-2510"
 
 This article gives a high-level overview of the Azure Local rack aware clustering feature including its benefits and use cases. The article also details the supported configurations and deployment requirements for rack aware clusters. This article applies only to new deployments of Azure Local.
 
@@ -20,7 +20,7 @@ This article gives a high-level overview of the Azure Local rack aware clusterin
 
 Azure Local rack aware cluster is an advanced architecture designed to enhance fault tolerance and data distribution within an Azure Local instance. This architecture enables you to cluster nodes that are strategically placed across two physical racks in two different rooms or buildings with high bandwidth and low latency.
 
-The following diagram shows a cluster of two racks of servers with top-of-rack (TOR) switches connected between rooms. Each rack functions as a local availability zone across layers from the operating system to Azure Local management, including Azure Local VMs enabled by Azure Arc.  
+The following diagram shows a cluster of two racks of servers with top-of-rack (TOR) switches connected between rooms. Each rack functions as a local availability zone across layers from the operating system to Azure Local management, including Azure Local virtual machines (VMs) enabled by Azure Arc.  
 
 :::image type="content" source="media/rack-aware-cluster-overview/rack-aware-cluster-architecture.png" alt-text="Diagram of rack aware cluster architecture." lightbox="media/rack-aware-cluster-overview/rack-aware-cluster-architecture.png":::
 
@@ -40,18 +40,18 @@ The main benefits of Azure Local rack aware cluster include:
 
 - **Improved performance**: The architecture allows for better load balancing and resource utilization, as workloads can be distributed across multiple racks.
 
-
 ## Use cases
 
 The use cases for Azure Local rack aware cluster include:
 
+- Use rack aware cluster in a manufacturing plant, in a hospital or an airport to minimize the risk of data loss or downtime in the event of a rack-level failure.
 
-- Use rack aware cluster in a manufacturing plant, in a hospital or an airport to minimize the risk of data loss or downtime in the event of a rack-level failure.  
+> [!NOTE]
+> Rack aware clustering doesn't support configurations with External Storage Area Networks.
 
 ## Review requirements
 
 All the [System requirements for Azure Local](../concepts/system-requirements-23h2.md) apply to rack aware clusters. There are [Other requirements](rack-aware-cluster-requirements.md) for rack aware clusters including those for drives, Availability Zones, node configurations, latency, and bandwidth.
-
 
 ## Prepare to deploy a rack aware cluster
 
@@ -76,7 +76,7 @@ For more information, see [Add nodes to a rack aware cluster](rack-aware-cluster
 
 ## Place an Azure Local VM
 
-To balance workloads between zones, create Azure Local VMs to place in a specified zone. Based on the criticality of the VMs, you can configure strict or non-strict placement to disable or enable failover to the other zone.
+To balance workloads between zones, create Azure Local VMs to place in a specified zone. Based on the criticality of the VMs, you can configure strict or nonstrict placement to disable or enable failover to the other zone.
 
 For more information about VM placement in a rack aware cluster, see [Manage VM placement in a rack aware cluster](rack-aware-cluster-provision-vm-local-availability-zone.md).
 
@@ -86,9 +86,16 @@ We recommend that you conduct live migration and failover testing of your VM wor
 
 For more information, see [Fail over Azure Local VMs in a rack aware cluster](rack-aware-cluster-requirements.md#recommendations).
 
-
 ## Next steps
 
 - Review [rack aware cluster network design](rack-aware-cluster-reference-architecture.md).
 - Deploy a rack aware cluster via [Azure portal](../deploy/rack-aware-cluster-deploy-portal.md) or [ARM template](../deploy/rack-aware-cluster-deployment-via-template.md).
 - Learn how to [Configure availability zones](rack-aware-cluster-provision-vm-local-availability-zone.md) in a rack aware cluster.
+
+::: moniker-end
+
+::: moniker range="<=azloc-2509"
+
+This feature is available in Azure Local 2510 and later.
+
+::: moniker-end
