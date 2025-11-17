@@ -1,7 +1,7 @@
 ---
 title: System requirements for AKS on Windows Server
 description: Learn about system requirements for Azure Kubernetes Service (AKS) on Windows Server.
-ms.date: 04/04/2025
+ms.date: 11/17/2025
 ms.topic: concept-article
 author: sethmanheim
 ms.author: sethm 
@@ -19,7 +19,7 @@ This article describes the requirements for setting up Azure Kubernetes Service 
 
 ## Hardware requirements
 
-Microsoft recommends purchasing a validated Windows Server hardware/software solution from our partners. These solutions are designed, assembled, and validated to run our reference architecture and to check compatibility and reliability so you get up and running quickly. You should check that the systems, components, devices, and drivers you're using are Windows Server Certified per the Windows Server Catalog.
+Microsoft recommends purchasing a validated Windows Server hardware and software solution from our partners. These solutions are designed, assembled, and validated to run our reference architecture. They check compatibility and reliability so you get up and running quickly. Check that the systems, components, devices, and drivers you're using are Windows Server Certified per the Windows Server Catalog.
 
 > [!IMPORTANT]
 > The host systems for production deployments must be physical hardware. Nested virtualization, characterized as deploying Windows Server in a virtual machine and installing AKS in that virtual machine, isn't supported.
@@ -37,16 +37,16 @@ AKS on Windows Server deployments that exceed the following specifications aren'
 
 ### Minimum memory requirements
 
-You can set up your AKS cluster in the following way, to run AKS on a single node Windows Server with limited RAM:
+Set up your AKS cluster as follows to run AKS on a single node Windows Server with limited RAM:
 
 | Cluster type  | Control plane VM size | Worker node | For update operations | Load balancer  |
 | ------------- | ------------------ | ---------- | ----------| -------------|
 | AKS host | Standard_A4_v2 VM size = 8GB |  N/A - AKS host doesn't have worker nodes.  |  8GB |  N/A - AKS host uses **kubevip** for load balancing.  |
-| Workload cluster  |  Standard_A4_v2 VM size = 8GB | Standard_K8S3_v1 for 1 worker node = 6GB | Can re-use this reserved 8GB for workload cluster upgrade. | N/A if **kubevip** is used for load balancing (instead of the default **HAProxy** load balancer). |
+| Workload cluster  |  Standard_A4_v2 VM size = 8 GB | Standard_K8S3_v1 for 1 worker node = 6 GB | Can re-use this reserved 8 GB for workload cluster upgrade. | N/A if **kubevip** is used for load balancing (instead of the default **HAProxy** load balancer). |
 
 Total minimum requirement: **30 GB RAM**.
 
-This minimum requirement is for an AKS deployment with one worker node for running containerized applications. If you choose to add worker nodes or a HAProxy load balancer, the final RAM requirement changes accordingly.
+This minimum requirement is for an AKS deployment with one worker node for running containerized applications. If you add worker nodes or a HAProxy load balancer, the final RAM requirement changes accordingly.
 
 ### Recommended compute requirements
 
@@ -55,9 +55,9 @@ This minimum requirement is for an AKS deployment with one worker node for runni
 | Windows Server failover cluster | 32 | 256 GB |
 | Single node Windows Server | 16 | 128 GB |
 
-For a production environment, final sizing depends on the application and number of worker nodes you're planning to deploy on the Windows Server cluster. If you choose to run AKS on a single-node Windows Server, you don't get features like high availability that come with running AKS on a Windows Server failover cluster.
+For a production environment, final sizing depends on the application and number of worker nodes you plan to deploy on the Windows Server cluster. If you run AKS on a single-node Windows Server, you don't get features like high availability that come with running AKS on a Windows Server failover cluster.
 
-You must install the same operating system on each server in the cluster. In Windows Server Datacenter, the same OS and version must be the same on each server in the cluster. Each OS must use the **en-us** region and language selections. You can't change these settings after installation.
+You must install the same operating system on each server in the cluster. In Windows Server Datacenter, each server in the cluster must have the same OS and version. Each OS must use the **en-us** region and language selections. You can't change these settings after installation.
 
 ## Storage requirements
 
@@ -68,16 +68,16 @@ AKS on Windows Server supports the following storage implementations:
 | Windows Server Datacenter failover cluster          | Cluster shared volumes          | 1 TB              |
 | Single-node Windows Server Datacenter | Direct attached storage | 500 GB|
 
-For a Windows Server cluster, there are two supported storage configurations for running virtual machine workloads:
+For a Windows Server cluster, two storage configurations support running virtual machine workloads:
 
-- **Hybrid storage** balances performance and capacity using flash storage and hard disk drives (HDDs).
-- **All-flash storage** maximizes performance using solid-state drives (SSDs) or NVMe.
+- **Hybrid storage** balances performance and capacity by using flash storage and hard disk drives (HDDs).
+- **All-flash storage** maximizes performance by using solid-state drives (SSDs) or NVMe.
 
 Kubernetes uses *etcd* to store the state of the clusters. Etcd stores the configuration, specifications, and status of running pods. In addition, Kubernetes uses the store for service discovery. As a coordinating component to the operation of Kubernetes and the workloads it supports, latency and throughput to etcd are critical. You must run AKS on an SSD. For more information, see [Performance](https://etcd.io/docs/v3.2/op-guide/performance/).
 
-For a Windows Server Datacenter-based cluster, you can either deploy with local storage or SAN-based storage. For local storage, it's recommended that you use the built-in [Storage Spaces Direct](/windows-server/storage/storage-spaces/storage-spaces-direct-overview), or an equivalent certified virtual SAN solution to create a hyperconverged infrastructure that presents Cluster Shared Volumes for use by workloads. For Storage Spaces Direct, it's required that your storage either be hybrid (flash + HDD) that balances performance and capacity, or all-flash (SSD, NVMe) that maximizes performance. If you choose to deploy with SAN-based storage, ensure that your SAN storage can deliver enough performance to run several virtual machine workloads. Older HDD-based SAN storage might not deliver the required levels of performance to run multiple virtual machine workloads, and you might see performance issues and timeouts.
+For a Windows Server Datacenter-based cluster, you can either deploy with local storage or SAN-based storage. For local storage, use the built-in [Storage Spaces Direct](/windows-server/storage/storage-spaces/storage-spaces-direct-overview) or an equivalent certified virtual SAN solution to create a hyperconverged infrastructure that presents Cluster Shared Volumes for use by workloads. For Storage Spaces Direct, your storage must be either hybrid (flash + HDD) that balances performance and capacity, or all-flash (SSD, NVMe) that maximizes performance. If you choose to deploy with SAN-based storage, ensure that your SAN storage can deliver enough performance to run several virtual machine workloads. Older HDD-based SAN storage might not deliver the required levels of performance to run multiple virtual machine workloads, and you might see performance issues and timeouts.
 
-For single-node Windows Server deployments using local storage, the use of all-flash storage (SSD, NVMe) is highly recommended to deliver the required performance to host multiple virtual machines on a single physical host. Without flash storage, the lower levels of performance on HDDs might cause deployment issues and timeouts.
+For single-node Windows Server deployments that use local storage, use all-flash storage (SSD, NVMe) to deliver the required performance to host multiple virtual machines on a single physical host. Without flash storage, the lower levels of performance on HDDs might cause deployment issues and timeouts.
 
 ## Network requirements
 
@@ -93,31 +93,31 @@ The following requirements apply to a Windows Server Datacenter cluster.
 
 ### IP address assignment  
 
-In AKS on Windows Server, virtual networks are used to allocate IP addresses to the Kubernetes resources that require them, as previously listed. There are two networking models to choose from, depending on your desired AKS networking architecture.
+In AKS on Windows Server, virtual networks allocate IP addresses to the Kubernetes resources that require them, as previously listed. Choose from two networking models, depending on your desired AKS networking architecture.
 
 > [!NOTE]
 > The virtual networking architecture defined here for your AKS deployments is different from the underlying physical networking architecture in your data center.
 
-- **Static IP networking**: The virtual network allocates static IP addresses to the Kubernetes cluster API server, Kubernetes nodes, underlying VMs, load balancers and any Kubernetes services you run on top of your cluster.
-- **DHCP networking**: The virtual network allocates dynamic IP addresses to the Kubernetes nodes, underlying VMs and load balancers using a DHCP server. The Kubernetes cluster API server and any Kubernetes services you run on top of your cluster are still allocated static IP addresses.
+- **Static IP networking**: The virtual network allocates static IP addresses to the Kubernetes cluster API server, Kubernetes nodes, underlying VMs, load balancers, and any Kubernetes services you run on top of your cluster.
+- **DHCP networking**: The virtual network allocates dynamic IP addresses to the Kubernetes nodes, underlying VMs, and load balancers by using a DHCP server. The Kubernetes cluster API server and any Kubernetes services you run on top of your cluster still get static IP addresses.
 
 ### Minimum IP address reservation
 
-At a minimum, you should reserve the following number of IP addresses for your deployment:
+At a minimum, reserve the following number of IP addresses for your deployment:
 
 | Cluster type  | Control plane node | Worker node | For update operations | Load balancer  |
 | ------------- | ------------------ | ---------- | ----------| -------------|
-| AKS host |  1 IP |  NA  |  2 IP |  NA  |
+| AKS host |  1 IP |  N/A  |  2 IP |  N/A  |
 | Workload cluster  |  1 IP per node  | 1 IP per node |  5 IP  |  1 IP |
 
-You should also reserve the following number of IP addresses for your VIP pool:
+Also reserve the following number of IP addresses for your VIP pool:
 
 | Resource type  | Number of IP addresses |
 | ------------- | ------------------ |
 | Cluster API server |  1 per cluster |
 | Kubernetes services  |  1 per service |
 
-As you can see, the number of required IP addresses is variable depending on the AKS architecture and the number of services you run on your Kubernetes cluster. We recommend reserving a total of 256 IP addresses (/24 subnet) for your deployment.
+As you can see, the number of required IP addresses varies depending on the AKS architecture and the number of services you run on your Kubernetes cluster. Reserve a total of 256 IP addresses (/24 subnet) for your deployment.
 
 For more information about networking requirements, see [node networking concepts in AKS](./concepts-node-networking.md) and [container networking concepts in AKS](./concepts-container-networking.md).
 
@@ -125,9 +125,9 @@ For more information about networking requirements, see [node networking concept
 
 #### AKS on Windows Server requirements
 
-When creating a Kubernetes cluster, the following firewall ports are automatically opened on each server in the cluster.
+When you create a Kubernetes cluster, the process automatically opens the following firewall ports on each server in the cluster.
 
-If the physical cluster nodes and the Azure Kubernetes cluster VMs are on two isolated vlans, these ports must be opened at the firewall between them:
+If the physical cluster nodes and the Azure Kubernetes cluster VMs are on two isolated VLANs, you must open these ports at the firewall between them:
 
 | Port   | Source                               | Description                                        | Firewall Notes                                                                               |
 |-------|--------------------------------------|----------------------------------------------------|----------------------------------------------------------------------------------------------|
@@ -143,7 +143,7 @@ If your network requires the use of a proxy server to connect to the internet, s
 
 ### [Table](#tab/allow-table)
 
-The following URLs must be added to your allowlist:
+Add the following URLs to your allowlist:
 
 [!INCLUDE [URL allow table](includes/data-allow-table.md)]
 
@@ -158,7 +158,7 @@ Download the [URL allowlist (json)](https://raw.githubusercontent.com/MicrosoftD
 ---
 
 > [!NOTE]
-> AKS on Windows Server stores and processes customer data. By default, customer data stays within the region in which the customer deploys the service instance. This data is stored within regional Microsoft-operated datacenters. For regions with data residency requirements, customer data is always kept within the same region.
+> AKS on Windows Server stores and processes customer data. By default, customer data stays within the region in which you deploy the service instance. This data is stored within regional Microsoft-operated datacenters. For regions with data residency requirements, customer data is always kept within the same region.
 
 #### Additional URL requirements for Azure Arc features
 
@@ -172,7 +172,7 @@ As outlined in the [Stretched clusters overview](/azure/azure-local/concepts/str
 
 Windows Admin Center is the user interface for creating and managing AKS on Windows Server. To use Windows Admin Center with AKS on Windows Server, you must meet all the criteria in the following list.
 
-These are the requirements for the machine running the Windows Admin Center gateway:
+These requirements apply to the machine running the Windows Admin Center gateway:
 
 - Windows 10 or Windows Server.
 - [Registered with Azure](/windows-server/manage/windows-admin-center/azure/azure-integration).
@@ -194,14 +194,14 @@ If you don't already have an Azure account, [create one](https://azure.microsoft
 
 <a name='azure-ad-permissions-role-and-access-level'></a>
 
-### Microsoft Entra permissions, role and access level
+### Microsoft Entra permissions, role, and access level
 
 You must have sufficient permissions to register an application with your Microsoft Entra tenant.
 
-To check that you have sufficient permissions, follow the information below:
+To check that you have sufficient permissions, follow the information in the following section:
 
 - Go to the Azure portal and select [Roles and administrators](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RolesAndAdministrators) under **Microsoft Entra ID** to check your role.
-- If your role is **User**, you must make sure that non-administrators can register applications.
+- If your role is **User**, make sure that non-administrators can register applications.
 - To check if you can register applications, go to [User settings](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UserSettings) under the Microsoft Entra service to check if you have permission to register an application.
 
 If the app registrations setting is set to **No**, only users with an administrator role can register these types of applications. To learn about the available administrator roles and the specific permissions in Microsoft Entra ID that are given to each role, see [Microsoft Entra built-in roles](/azure/active-directory/roles/permissions-reference#all-roles). If your account is assigned the **User** role, but the app registration setting is limited to admin users, ask your administrator either to assign you one of the administrator roles that can create and manage all aspects of app registrations, or to enable users to register apps.
@@ -250,7 +250,7 @@ Set the subscription you want to use to register your AKS host for billing as th
 Set-AzContext -Subscription $subscriptionID
 ```
 
-Verify that your sign-in context is correct by running the [Get-AzContext](/powershell/module/az.accounts/get-azcontext) PowerShell command. Verify that the subscription, tenant and account are what you want to use to register your AKS host for billing:
+Verify that your sign-in context is correct by running the [Get-AzContext](/powershell/module/az.accounts/get-azcontext) PowerShell command. Verify that the subscription, tenant, and account are what you want to use to register your AKS host for billing:
 
 ```powershell
 Get-AzContext
@@ -268,7 +268,7 @@ Create a service principal by running the [New-AzADServicePrincipal](/powershell
 $sp = New-AzADServicePrincipal -role "Owner" -scope /subscriptions/$subscriptionID
 ```
 
-Retrieve the password for the service principal by running the following command. Note that this command only works for Az.Accounts 2.6.0 or below. We automatically download Az.Accounts 2.6.0 module when you install the **AksHci** PowerShell module:
+Retrieve the password for the service principal by running the following command. Note that this command only works for Az.Accounts 2.6.0 or earlier. The **AksHci** PowerShell module automatically downloads Az.Accounts 2.6.0 module when you install it:
 
 ```powershell
 $secret = $sp.PasswordCredentials[0].SecretText
@@ -276,7 +276,7 @@ Write-Host "Application ID: $($sp.ApplicationId)"
 Write-Host "App Secret: $secret"
 ```
 
-From the previous output, you now have the **application ID** and the **secret** available when deploying AKS. You should make a note of these items and store them safely. With that created, in the Azure portal, under **Subscriptions**, **Access Control**, and then **Role Assignments**, you should see your new service principal.
+From the previous output, you now have the **application ID** and the **secret** available when deploying AKS. Make a note of these items and store them safely. With that created, in the Azure portal, under **Subscriptions**, **Access Control**, and then **Role Assignments**, you should see your new service principal.
 
 ### Azure resource group
 
@@ -287,7 +287,7 @@ You must have an Azure resource group in the Australia East, East US, Southeast 
 > [!WARNING]
 > AKS Arc currently supports cluster creation exclusively within the following specified Azure regions. If you attempt to deploy in a region outside of this list, a deployment failure occurs.
 
-The AKS Arc service is used for registration, billing, and management. It is currently supported in the following regions:
+The AKS Arc service is used for registration, billing, and management. It currently supports the following regions:
 
 - East US
 - South Central US
@@ -295,13 +295,13 @@ The AKS Arc service is used for registration, billing, and management. It is cur
 
 ## Active Directory requirements
 
-For an AKS failover cluster with 2 or more physical nodes to function optimally in an Active Directory environment, ensure the following requirements are met:
+For an AKS failover cluster with two or more physical nodes to function optimally in an Active Directory environment, ensure the following requirements are met:
 
 > [!NOTE]
-> Active Directory is not required for single node Windows Server deployments.
+> Active Directory isn't required for single node Windows Server deployments.
 
-- Set up time synchronization so that the divergence isn't greater than 2 minutes across all cluster nodes and the domain controller. For information about setting time synchronization, see [Windows time service](/windows-server/networking/windows-time-service/windows-time-service-top).
-- Make sure the user account(s) used to add update, and manage AKS or Windows Server Datacenter clusters has the correct permissions in Active Directory. If you're using Organizational Units (OUs) to manage group policies for servers and services, the user account(s) require list, read, modify, and delete permissions on all objects in the OU.
+- Set up time synchronization so that the divergence isn't greater than two minutes across all cluster nodes and the domain controller. For information about setting time synchronization, see [Windows time service](/windows-server/networking/windows-time-service/windows-time-service-top).
+- Make sure the user accounts you use to add, update, and manage AKS or Windows Server Datacenter clusters have the correct permissions in Active Directory. If you're using Organizational Units (OUs) to manage group policies for servers and services, the user accounts require list, read, modify, and delete permissions on all objects in the OU.
 - Use a separate organizational unit (OU) for the servers and services by your AKS or Windows Server Datacenter clusters. Using a separate OU allows you to control access and permissions with more granularity.
 - If you're using GPO templates on containers in Active Directory, ensure deploying AKS on Windows Server is exempt from the policy.
 

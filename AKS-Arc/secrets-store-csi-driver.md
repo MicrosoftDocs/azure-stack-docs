@@ -3,7 +3,7 @@ title: Kubernetes Secrets Store CSI driver integration
 description: Learn how to use the Azure Key Vault Provider for Secrets Store CSI Driver to integrate secrets stores with AKS on Windows Server.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 05/01/2025
+ms.date: 11/17/2025
 ms.author: sethm 
 
 # Intent: As an IT Pro, I want to learn how to use the Azure Key Vault Provider to integrate the Kubernetes Secret Store CSI Driver. 
@@ -27,14 +27,14 @@ Before you begin, make sure you have the following prerequisites:
 - An existing deployment of AKS on Windows Server with an existing workload cluster. If you don't have a deployment, follow this [Quickstart for deploying an AKS host and a workload cluster](./kubernetes-walkthrough-powershell.md).
 - If you're running Linux clusters, they must be on version Linux 1.16.0 or later.
 - If you're running Windows clusters, they must be on version Windows 1.18.0 or later.
-- Make sure you've completed the following installations:
+- Make sure you complete the following installations:
   - [Helm](https://helm.sh/)
   - [`kubectl`](https://kubernetes.io/docs/tasks/tools/install-kubectl-windows/)
   - The latest version of the [Azure CLI](/cli/azure/install-azure-cli).
 
 ## Access your clusters using kubectl
 
-Run the following command to access your cluster using `kubectl`. In the command, replace the value of `-name` with your existing cluster name. You cluster name uses the specified cluster's `kubeconfig` file as the default `kubeconfig` file for `kubectl`:
+Run the following command to access your cluster by using `kubectl`. In the command, replace the value of `-name` with your existing cluster name. Your cluster name uses the specified cluster's `kubeconfig` file as the default `kubeconfig` file for `kubectl`:
 
 ```powershell
 Get-AksHciCredential -name mycluster
@@ -55,7 +55,7 @@ helm install csi csi-secrets-store-provider-azure/csi-secrets-store-provider-azu
 ```
 
 > [!NOTE]
-> You should install the Secrets Store CSI driver and Azure Key Vault provider in the `kube-system` namespace. This guide uses the `kube-system` namespace for all instances.
+> You should install the Secrets Store CSI driver and Azure Key Vault provider in the `kube-system` namespace. This article uses the `kube-system` namespace for all instances.
 
 ## Verify the Secrets Store CSI driver and Azure Key Vault provider are successfully installed
 
@@ -91,7 +91,7 @@ Check your running pods to make sure the Secrets Store CSI driver and the Azure 
 
 You need an Azure Key Vault resource that contains your secret data. You can use an existing Azure Key Vault resource or create a new one.
 
-If you need to create an Azure Key Vault resource, run the following command. Make sure you're logged in by running `az login` with your Azure credentials. Then change the following values to your environment:
+If you need to create an Azure Key Vault resource, run the following command. Make sure you're signed in by running `az login` with your Azure credentials. Then change the following values to your environment:
 
 ```azurecli
 az keyvault create -n <keyvault-name> -g <resourcegroup-name> -l eastus
@@ -105,7 +105,7 @@ az keyvault secret set --vault-name <keyvault-name> -n ExampleSecret --value MyA
 
 ## Create an identity in Azure
 
-Use a service principal to access the Azure Key Vault instance that you created in the previous step. You should record the output when running the following commands. You use both the client secret and client ID in the next steps.
+Use a service principal to access the Azure Key Vault instance that you created in the previous step. Record the output when running the following commands. You use both the client secret and client ID in the next steps.
 
 Provide the client secret by running the following command:
 
@@ -135,7 +135,7 @@ To create the Kubernetes secret with the service principal credentials, run the 
 kubectl create secret generic secrets-store-creds --from-literal clientid=<client-id> --from-literal clientsecret=<client-secret>
 ```
 
-By default, the secret store provider has filtered watch enabled on secrets. You can allow the command to find the secret in the default configuration by adding the label `secrets-store.csi.k8s.io/used=true` to the secret:
+By default, the secret store provider filters watch on secrets. You can allow the command to find the secret in the default configuration by adding the label `secrets-store.csi.k8s.io/used=true` to the secret:
 
 ```powershell
 kubectl label secret secrets-store-creds secrets-store.csi.k8s.io/used=true
