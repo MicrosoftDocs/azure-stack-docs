@@ -27,8 +27,8 @@ For the 2511 release of Azure Local, Microsoft released two security updates, ea
 
 | Solution version  | OS build  |
 |---------|---------|---------|
-| 11.2510.1002.93 <!--update--> | 25398.1913 <!--update-->  |
-| 12.2510.1002.94 <!--update--> | 26100.6899 <!--update-->  |
+| 11.2511 <!--update--> | 25398.1913 <!--update-->  |
+| 12.2511.1002.5  | 26100.7171  |
 
 > [!IMPORTANT]
 > The new deployments of this software use the **12.2510.1002.94** <!--update--> build. You can also update an existing deployment from 2509 by using **11.2510.1002.93** <!--update-->.
