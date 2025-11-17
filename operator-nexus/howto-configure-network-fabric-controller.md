@@ -29,34 +29,27 @@ Before configuring NFC, ensure you meet the following requirements:
 
 Validate the ExpressRoute circuits for correct connectivity (CircuitID)(AuthID); NFC provisioning would fail if connectivity is incorrect.
 
-## Virtual Machine (VM) SKU update for Network Fabric Controller  
+## Virtual Machine (VM) SKU information for Network Fabric Controller 
 
-With the latest update, all new NFC Cluster deployments uses `Standard_D8s_v3` virtual machine SKU instead of `Standard_Ds4_v2`. 
-This change is required due to the limited availability of `Standard_Ds4_v2` in several Azure regions.
+All the new NFC Cluster deployments use Standard_D8s_v3 virtual machine SKU. To maintain reliability and ensure uninterrupted service, all underlying clusters within the NFC architecture are deployed to ensure zone redundancy across all availability zones.  
 
-> [!Note]
-> To ensure optimal performance and scalability, it is essential to provision the appropriate node pool count for the required number of Network Fabric instances (NFs) within each Network Fabric Controller (NFC). If the necessary node pool count is not available, a provisioning request must be submitted in advance. Based on the current configuration—**recommended SKU: StandardDS4v2 (8 vCPUs, 28 GiB Memory)**—the expected node pool scaling requirements for the AKS cluster named nfcCluster are as follows: <br>
->
->| Number of NFs per NFC | Minimum Node Pool Count Required in AKS Cluster nfc Cluster|
->|---------------------- |------------------------------------------------------------|
->|1 – 5                  | 2                                                          |
->|6 - 10                 | 3                                                          |
->|11 - 15                | 4                                                          |
+The above architecture distributes workloads intelligently across three separate zones. NFC requires up to six nodes and is created using all the availability zones. A customer can switch to two availability zones if the Standard_D8s_v3  SKU is not available in all zones. In the event of a zone failure, the remaining zones continue to handle traffic, minimizing the risk of outages and supporting business continuity.
+
 
 ### Minimum vCPU requirement
 
-The new VM SKU 'DSv3' requires a minimum of **120 vCPUs** to ensure optimal performance and resource availability.  
+Standard_D8s_v3 requires a minimum of 128 vCPUs (starting from NNF 10.0) to ensure optimal performance and resource availability.   
 
 ### Checking VM Quota for the new SKU
 
-To check if your subscription has sufficient vCPU quota for the new SKU 'DSv3', follow these steps:  
+To check if your subscription has sufficient vCPU quota for the Standard_D8s_v3, follow these steps:  
 
 1. **Azure Portal**:  
    - Navigate to **Azure Portal** → **Subscriptions**  
 
    - Go to **Usage + quotas**  
    
-   - Search for the required VM SKU 'DSv3' 
+   - Search for the required VM SKU Standard_D8s_v3 
    
    - Check the **Total Quota** and **Current Usage**  
 
