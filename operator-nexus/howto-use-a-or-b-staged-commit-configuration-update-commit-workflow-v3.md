@@ -82,7 +82,7 @@ az managednetworkfabric fabric commit-batch-status \
   --fabric-name <fabric-name> \ 
 ```
 
-## Discard or Rollback incase of changes (Commit Batch Management) 
+## Discard or Rollback in case of changes (Commit Batch Management) 
 
 ### Step 6: Unlock the Fabric
 ```Azure CLI
