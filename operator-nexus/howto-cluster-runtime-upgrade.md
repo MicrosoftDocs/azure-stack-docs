@@ -35,7 +35,7 @@ This how-to guide explains the steps for installing the required Azure CLI and e
     - In the resource group, search for Kubernetes to identify the Azure Arc information and select it. Status should be ``Connected``.
         - Within Azure Arc page, select Settings > Extensions.
             - ``nc-platform-extension`` should be in status ``Succeeded``.
-        - ``nc-platform-runtime-extesnions`` should be in status ``Succeeded``.
+        - ``nc-platform-runtime-extension`` should be in status ``Succeeded``.
 
 ## Checking current runtime version
 
