@@ -16,6 +16,8 @@ This article lists the various features and improvements that are available in h
 
 ::: moniker range="=azloc-2511"
 
+## Features and improvements in 2511
+
 The November 2025 release of hyperconverged deployments of Azure Local is version **12.2511.1002.5**. For more information, see [Release information summary](./release-information-23h2.md).
 
 This release has the following features and improvements:
