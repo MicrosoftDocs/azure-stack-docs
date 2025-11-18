@@ -23,11 +23,11 @@ Administrators can manage Azure Local VMs enabled by Azure Arc on their Azure Lo
 
 ## Benefits of Azure Local VM management
 
-- Role-based access control (RBAC) via built-in Azure Local roles enhances security by ensuring that only authorized users can perform VM management operations. For more information, see [Use role-based access control to manage Azure Local virtual machines](../index.yml)<!--update link-->.
+- Role-based access control (RBAC) via built-in Azure Local roles enhances security by ensuring that only authorized users can perform VM management operations. For more information, see [Use role-based access control to manage Azure Local virtual machines](multi-rack-assign-vm-rbac-roles.md).
 - Azure Local VM management provides the ability to deploy with Azure Resource Manager and Bicep templates. 
 - The Azure portal acts as a single pane of glass to manage VMs on Azure Local and Azure VMs. With Azure Local VM management, you can perform various operations from the Azure portal or the Azure CLI, including:
 
-  - Create, manage, update, and delete VMs. For more information, see [Create Azure Local VMs enabled by Azure Arc](../index.yml).
+  - Create, manage, update, and delete VMs. For more information, see [Create Azure Local VMs enabled by Azure Arc](multi-rack-create-arc-virtual-machines.md).
   - Create, manage, and delete VM resources such as virtual disks, logical networks, network interfaces, and VM images.
 
 - The self-service capabilities of Azure Local VM management reduce administrative overhead.
@@ -35,7 +35,6 @@ Administrators can manage Azure Local VMs enabled by Azure Arc on their Azure Lo
 ## Limitations of Azure Local VM management
 
 Consider the following limitations when you're managing VMs on Azure Local:
-
 
 - Moving a resource group isn't supported for VMs on Azure Local and its associated resources (such as network interfaces and disks).
 
@@ -48,27 +47,24 @@ Consider the following limitations when you're managing VMs on Azure Local:
   - VLAN ID.
   - Fabric network (defines the underlying Layer 3 connectivity).
   
-- Guest management cannot be enabled after VM creation.
+- Guest management can't be enabled after VM creation.
 - You can't add or remove network interfaces after VM creation. Make sure to create all the required network interfaces during VM creation.
 - You can't update VM size on a running VM. To update VM size (CPU or memory), first turn off the VM. Apply the change and then restart the VM.
 - You can't add or remove data disks from a running VM. To add or remove data disks from a VM, first turn off the VM. Apply the change, and then restart the VM.
-- Terraform is not supported for VM and VM resource deployment.
-
+- Terraform isn't supported for VM and VM resource deployment.
 
 ## Azure Local VM management workflow
 
 In this release, the Azure Local VM management workflow is as follows:
 
 1. During deployment of Azure Local, one custom location is created.
-1. You [assign built-in RBAC roles for Azure Local VM management](../index.yml)<!--update link-->.
+1. You [assign built-in RBAC roles for Azure Local VM management](multi-rack-assign-vm-rbac-roles.md).
 1. You create VM resources such as:
-    1. VM images, starting with an image in an [Azure Storage account](../index.yml)<!--update link-->. These images are then used with other VM resources to create VMs.
-    1. [Logical networks](../index.yml)<!--update link--> or virtual networks.  
-    1. [Network interfaces](../index.yml)<!--update link-->.
-1. You use the VM resources to [create VMs](../index.yml)<!--update link-->.
-
-To troubleshoot problems with your VMs or to learn about known issues and limitations, see [Troubleshoot Azure Local VM management](../index.yml)<!--update link-->.
+    1. VM images, starting with an image in an [Azure Storage account](multi-rack-virtual-machine-image-storage-account.md). These images are then used with other VM resources to create VMs.
+    1. [Logical networks](multi-rack-create-logical-networks.md) or virtual networks.  
+    1. [Network interfaces](multi-rack-create-network-interfaces.md).
+1. You use the VM resources to [create VMs](multi-rack-create-arc-virtual-machines.md).
 
 ## Related content
 
-- [Azure Local VM management prerequisites for multi-rack deployments](../index.yml)<!--update link-->
+- [Azure Local VM management prerequisites for multi-rack deployments](multi-rack-vm-management-prerequisites.md)
