@@ -10,7 +10,7 @@ metadata:
   ms.topic: landing-page
   author: ronmiab
   ms.author: robess
-  ms.date: 11/13/2025
+  ms.date: 11/18/2025
 
 # linkListType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | sample | tutorial | video | whats-new
 
@@ -21,15 +21,15 @@ landingContent:
       - linkListType: overview
         links:
           - text: What is Azure Local?
-            url: index.yml
-          - text: Hyperconverged deployments
             url: overview.md
+          - text: Hyperconverged deployments
+            url: overview/hyperconverged-overview.md
           - text: Multi-rack deployments (preview)
             url: multi-rack/multi-rack-overview.md
           - text: Disconnected operations (preview)
             url: manage/disconnected-operations-overview.md
           - text: Microsoft 365 on Local
-            url: index.yml
+            url: concepts/microsoft-365-local-overview.md
 
 # Card 
   - title: Plan and deploy
@@ -39,7 +39,7 @@ landingContent:
           - text: Deploy hyperconverged deployments
             url: deploy/deploy-via-portal.md
           - text: Plan multi-rack (preview)
-            url: index.yml
+            url: multi-rack/multi-rack-prerequisites.md
           - text: Deploy disconnected operations (preview)
             url: manage/disconnected-operations-deploy.md
 
@@ -51,13 +51,13 @@ landingContent:
           - text: Monitor hyperconverged deployments
             url: concepts/monitoring-overview.md
           - text: Monitor multi-rack deployments (preview)
-            url: index.yml
+            url: multi-rack/multi-rack-monitor-overview.md
           - text: Monitor disconnected operations (preview)
             url: manage/disconnected-operations-monitoring.md       
           - text: Azure Monitor metrics for hyperconverged deployments
             url: manage/monitor-cluster-with-metrics.md
           - text: Azure Monitor metrics for multi-rack deployments (preview)
-            url: index.yml
+            url: multi-rack/multi-rack-monitor-cluster-with-metrics.md
 
   # Card
   - title: Troubleshoot
