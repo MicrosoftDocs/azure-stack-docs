@@ -1,5 +1,5 @@
 ---
-title: Troubleshoot a Kubernetes Cluster node in NotReady,Scheduling Disabled after Runtime Upgrade
+title: Troubleshoot a Kubernetes Cluster node in Ready,Scheduling Disabled after Runtime Upgrade
 description: Learn what to do when your Kubernetes Cluster node is in the Ready, Scheduling Disabled state after a runtime upgrade.
 ms.service: azure-operator-nexus
 ms.custom: troubleshooting
@@ -27,7 +27,8 @@ However, a race condition might occur wherein the system fails to find virtual m
 
 After Kubernetes Cluster Nodes are discovered in the `Ready,SchedulingDisabled` state, use the following remediation actions.
 
-1. Use kubectl to list the nodes using the wide flag. Observe the node in **Ready,SchedulingDisabled** status.
+1. List the nodes using `kubectl get` command with the `-o wide` flag. Observe the node in **Ready,SchedulingDisabled** status.
+
     ~~~bash
     $ kubectl get nodes -o wide
     NAME                                          STATUS                      ROLES           AGE    VERSION    INTERNAL-IP   EXTERNAL-IP   OS-IMAGE                    KERNEL-VERSION    CONTAINER-RUNTIME
@@ -35,14 +36,14 @@ After Kubernetes Cluster Nodes are discovered in the `Ready,SchedulingDisabled` 
     example-naks-agentpool1-md-s8vp4-xp98x        Ready,SchedulingDisabled    <none>          2d6h   v1.30.12   10.4.32.11    <none>        Microsoft Azure Linux 3.0   6.6.85.1-2.azl3   containerd://2.0.0
     ~~~
 
-1. Issue the kubectl command to uncordon the node in the undesired state.
+1. Uncordon the node in the undesired state by issuing `kubectl uncordon`.
 
     ~~~bash
     $ kubectl uncordon example-naks-agentpool1-md-s8vp4-xp98x
     node/example-naks-agentpool1-md-s8vp4-xp98x uncordoned
     ~~~
 
-    Alternatively, the uncordon action can be performed in bulk. The bulk execution option is useful for large scale deployments where the issue occurs more frequently. Execute the uncordon command as part of a loop to find and uncordon all affected Nodes.
+    Alternatively, the uncordon action can be performed in bulk. The bulk execution option is useful for large scale deployments where the issue occurs more frequently. Find and uncordon all affected Nodes using `kubectl uncordon` as part of a scripted loop.
 
     ~~~bash
     cordoned_nodes=$(kubectl get nodes -o wide --no-headers | awk '/SchedulingDisabled/ {print $1}')
