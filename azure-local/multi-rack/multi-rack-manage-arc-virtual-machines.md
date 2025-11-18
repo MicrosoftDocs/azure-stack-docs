@@ -1,38 +1,38 @@
 ---
-title: Manage Azure Local VMs for multi-rack deployments (Preview) 
-description: Learn how to manage Azure Local VMs enabled by Azure Arc. This includes operations such as start, stop, restart, view properties of Azure Local VMs for multi-rack deployments (Preview).
+title: Manage Azure Local VMs for Multi-Rack Deployments (preview) 
+description: Learn how to manage Azure Local VMs enabled by Azure Arc. This includes operations such as start, stop, restart, view properties of Azure Local VMs for multi-rack deployments (preview).
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 11/07/2025
+ms.date: 11/17/2025
 ---
 
-# Manage Azure Local VMs for multi-rack deployments (Preview)
+# Manage Azure Local VMs for multi-rack deployments (preview)
 
 [!INCLUDE [multi-rack-applies-to-preview](../includes/multi-rack-applies-to-preview.md)]
 
-This article describes how to manage Azure Local virtual machines (VMs) enabled by Azure Arc for multi-rack deployments. The procedures to start, stop, restart, and delete an Azure Local VM as well as manage guest management are detailed.
+This article describes how to manage Azure Local virtual machines (VMs) enabled by Azure Arc for multi-rack deployments. The procedures to start, stop, restart, and delete an Azure Local VM, and manage guest management are detailed.
+
+[!INCLUDE [hci-preview](../includes/hci-preview.md)]
 
 ## Prerequisites
 
-- Access to an Azure Local instance for multi-rack deployments that's deployed and registered.
-- On the Azure Local Overview page, find the custom location of the instance. 
-
-- One or more Azure Local VMs running on your Azure Local instance. For more information, see [Create Azure Local virtual machines](../manage/create-arc-virtual-machines.md).
-
+- Access to a multi-rack deployment of Azure Local.
+- On the **Azure Local Overview** page, find the custom location of the instance.
+- One or more Azure Local VMs running on your Azure Local instance. For more information, see [Create Azure Local virtual machines](./multi-rack-create-arc-virtual-machines.md).
 - The Azure Local VM must have access to public network connectivity to enable guest management.
 
 ## Verify guest management
 
-When you enable guest management on an Azure Local VM, the [Azure Connected Machine agent](/azure/azure-arc/servers/agent-overview) is installed on the VM. You use the Azure Connected Machine agent to manage Azure Local VM extensions on your VM.
-
-#### Verify that guest management is enabled in the Azure portal
+When you enable guest management on an Azure Local VM, the [Azure Connected Machine agent](/azure/azure-arc/servers/agent-overview) installs on the VM. You use the Azure Connected Machine agent to manage Azure Local VM extensions on your VM.
 
 > [!NOTE]
 > Enable guest management at VM creation. You can't enable it after the VM is created.
 
-1. Go to the Azure portal.
+Follow these steps to verify that guest management is enabled in the Azure portal:
+
+1. Go to the [Azure portal](https://portal.azure.com).
 
 1. Go to **Your Azure Local** > **Virtual machines**, and then select the VM on which you enabled guest management.
 
@@ -104,7 +104,7 @@ To stop a VM, follow these steps in the Azure portal for your Azure Local instan
 
 ## Delete a VM
 
-Deleting a VM doesn't delete all the resources associated with the VM. For example, it doesn't delete the data disks and the network interfaces associated with the VM. You need to locate and delete these resources separately.
+Deleting a VM doesn't delete all the resources associated with the VM. For example, it doesn't delete the data disks or the network interfaces associated with the VM. You need to locate and delete these resources separately.
 
 To delete a VM, follow these steps in the Azure portal for your Azure Local instance:
 
@@ -162,11 +162,11 @@ Follow these steps to change the local account passwords for an Azure Local VM d
 
 ### Change the local account password for Linux VMs
 
-If Bash is in a different directory, be sure to change the `#!/bin/bash` line accordingly.
+If Bash is in a different directory, make sure you change the `#!/bin/bash` line accordingly.
 
 1. Sign in to the Azure Local VM.
 
-1. Run the following script from where Bash is installed:
+1. Go to the folder where Bash is installed and run the following script:
 
     ```Bash
     #!/bin/bash
@@ -203,7 +203,7 @@ To change cores and memory, follow these steps in Azure portal for your Azure Lo
 1. In the list of VMs, select and go to the VM whose cores and memory you want to modify.
 
     > [!NOTE]
-    > You can't change VM CPU and memory of a running VM. You need to stop a VM and then update CPU and memory.
+    > You can't change the VM CPU and memory of a running VM. You need to stop the VM and then update the CPU and memory.
 
 1. Under **Settings**, select **Size**. Edit the **CPU cores** or **Memory (MB)** values to change the cores or the memory size for the VM. For memory, only the size can be changed. You can't change the memory type after a VM is created.
 
@@ -211,4 +211,4 @@ To change cores and memory, follow these steps in Azure portal for your Azure Lo
 
 ## Related content
 
-- [Manage Azure Local VM resources such as data disks and network interfaces](../manage/manage-arc-virtual-machine-resources.md).
+- [Manage Azure Local VM resources such as data disks and network interfaces](./multi-rack-manage-arc-virtual-machine-resources.md).

@@ -1,40 +1,42 @@
 ---
-title: Manage VM extensions on Azure Local VMs for multi-rack deployments (Preview)
-description: Learn how to enable guest management and then install and manage extensions on Azure Local VMs via Azure portal for multi-rack deployments (Preview).
+title: Manage VM extensions on Azure Local VMs for multi-rack deployments (preview)
+description: Learn how to enable guest management and then install and manage extensions on Azure Local VMs via Azure portal for multi-rack deployments (preview).
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 11/13/2025
+ms.date: 11/17/2025
 ---
 
-# Manage VM extensions on Azure Local for multi-rack deployments (Preview) 
+# Manage VM extensions for multi-rack deployments of Azure Local (preview) 
 
 [!INCLUDE [multi-rack-applies-to-preview](../includes/multi-rack-applies-to-preview.md)]
 
 This article describes how to install and manage Azure Local virtual machine (VM) extensions for multi-rack deployments via Azure portal.
 
-The VM extensions for Azure Local VMs enabled by Azure Arc are useful for post-deployment configuration, software installation, or other management tasks. To install VM extensions, you must enable Azure guest management on your Azure Local VMs.
+VM extensions for Azure Local VMs enabled by Azure Arc are useful for post-deployment configuration, software installation, or other management tasks. To install VM extensions, you must enable Azure guest management on your Azure Local VMs.
+
+[!INCLUDE [hci-preview](../includes/hci-preview.md)]
 
 ## Supported VM extensions
 
-For a full list of supported VM extensions, see:
+For a full list of supported VM extensions, see the following:
 
 - [Supported VM extensions for Windows](/azure/azure-arc/servers/manage-vm-extensions#windows-extensions)
 - [Supported VM extensions for Linux](/azure/azure-arc/servers/manage-vm-extensions#linux-extensions)
 
 ## Prerequisites
 
-- Access to a VM running on Azure Local with guest management enabled. Guest management is supported on Windows and Linux VMs. For information on how to create a VM, see [Update link URL after rel branch merge].
+- Access to a VM running on Azure Local with guest management enabled. Guest management is supported on Windows and Linux VMs. For information about how to create a VM, see [Create Azure Local VMs for multi-rack deployments](./multi-rack-create-arc-virtual-machines.md).
 
 ## Verify that guest management is enabled
 
 To manage VMs on Azure Local, you must enable guest management on the VMs. When you enable guest management on a VM, an agent is installed on the VM.
 
-You must verify that guest management is enabled on your VMs before you install VM extensions.
+Verify that guest management is enabled on your virtual machines before you install VM extensions.
 
 > [!NOTE]
-> Extensions for domain join are supported only for Windows VMs. You can enable and install these extensions only during VM creation, via the Azure portal. For more information, see [update link URL after rel branch merge].
+> Extensions for domain join are supported only for Windows VMs. You can enable and install these extensions only during VM creation, via the Azure portal. For more information, see [update link URL after release branch merge](../index.yml)<!--update link-->.
 
 To verify that guest management is enabled:
 
@@ -58,7 +60,7 @@ After you verify that guest management is enabled, follow these steps to add a V
 
     :::image type="content" source="./media/multi-rack-virtual-machine-manage-extension/add-azure-monitor-extension-1.png" alt-text="Screenshot that shows the command to add an extension on the chosen Azure Local VM." lightbox="./media/multi-rack-virtual-machine-manage-extension/add-azure-monitor-extension-1.png":::
 
-1. On the **Install extension** pane, choose from the available extensions. In this example, we'll deploy **Azure Monitor Agent for Windows (Recommended)**.
+1. On the **Install extension** pane, choose from the available extensions. In this example, we deploy **Azure Monitor Agent for Windows (Recommended)**.
 
     :::image type="content" source="./media/multi-rack-virtual-machine-manage-extension/add-azure-monitor-extension-2.png" alt-text="Screenshot that shows the Azure Monitor extension selected for the chosen Azure Local VM." lightbox="./media/multi-rack-virtual-machine-manage-extension/add-azure-monitor-extension-2.png":::
 
@@ -70,11 +72,11 @@ After you verify that guest management is enabled, follow these steps to add a V
 
 1. Select **Review + Create**.
 
-The extension might take a few minutes to install. After the extension is installed, the list refreshes to display the newly installed extension.
+The extension can take a few minutes to install. After the extension is installed, the list refreshes to display the newly installed extension.
 
 ## List installed extensions
 
-To list all the VM extensions installed on your Azure Local instance:
+To list all VM extensions installed on your Azure Local instance:
 
 1. In the Azure portal for your Azure Local resource, go to **Resources** > **Virtual machines**.
 
@@ -100,10 +102,8 @@ You might want to delete a VM extension if the installation fails or if you no l
 
     :::image type="content" source="./media/multi-rack-virtual-machine-manage-extension/uninstall-azure-monitor-extension-1.png" alt-text="Screenshot showing Uninstall selected for the chosen Azure Local VM." lightbox="./media/multi-rack-virtual-machine-manage-extension/uninstall-azure-monitor-extension-1.png":::
 
-Removal of the extension from the list should take a couple of minutes.  
+Removal of the extension from the list takes a couple of minutes.  
 
 ## Related content
 
-- [Enable guest management when creating Azure Local VMs](../manage/create-arc-virtual-machines.md)
-- [Troubleshoot VM extension issues](/azure/azure-arc/servers/troubleshoot-vm-extensions)
-
+- [Enable guest management when creating Azure Local VMs](./multi-rack-manage-arc-virtual-machine-resources.md).

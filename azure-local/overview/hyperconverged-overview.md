@@ -5,7 +5,7 @@ description: Learn the benefits, features, and use cases of Azure Local hypercon
 author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
-ms.date: 11/12/2025
+ms.date: 11/17/2025
 ms.topic: overview
 ai-usage: ai-assisted
 ms.service: azure-local
@@ -52,7 +52,7 @@ The following diagram illustrates the architecture and the capabilities of Azure
 
 [!INCLUDE [important](../includes/azure-local-jumpstart-gems.md)]
 
-See [What's new in hyperconverged deployments of Azure Local?](../whats-new.md) for details on the latest enhancements.
+For information on the latest enhancements, see [What's new in hyperconverged deployments of Azure Local?](../whats-new.md).
 
 ## Benefits
 

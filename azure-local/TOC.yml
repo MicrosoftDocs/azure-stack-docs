@@ -748,6 +748,8 @@ items:
         href: ./multi-rack/multi-rack-create-network-interfaces.md
       - name: Create Azure Local VMs
         href: ./multi-rack/multi-rack-create-arc-virtual-machines.md
+      - name: Connect to Azure Local VMs via SSH
+        href: ./multi-rack/multi-rack-connect-arc-vm-using-ssh.md
       - name: Manage Azure Local VM resources
         href: ./multi-rack/multi-rack-manage-arc-virtual-machine-resources.md
 
@@ -768,9 +770,6 @@ items:
     items:
       - name: Network cloud REST API reference
         href: /rest/api/networkcloud/
-
-- name: Microsoft 365 Local
-  href: ./concepts/microsoft-365-local-overview.md
 
 - name: Disconnected operations
   items:
