@@ -40,4 +40,4 @@ Disabling internal or external networks while an Isolation Domain (ISD) is enabl
 
 ## Next steps
 
-[How to disable Internal/External networks in enabled layer 3 isolation domain](./howto-disable-internal-external-networks-in-enabled-layer-3-isolation-domain.md)
+[How to disable Internal/External networks in enabled layer 3 isolation domain](./howto-disable-internal-external-networks-enabled-layer-3-isolation-domain.md)
