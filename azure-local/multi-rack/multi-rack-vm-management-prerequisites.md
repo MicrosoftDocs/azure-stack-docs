@@ -56,7 +56,7 @@ For Azure Local VM images to be used on Azure Local, make sure to satisfy the fo
 
   - To allow for initial configuration and customization during VM provisioning, you need to ensure that the image contains cloud init with nocloud datasource.
 
-    - You need to configure the bootloader, kernel, and init system in your image to enable both serial connectivity and text-based console. Use both `GRUB_TERMINAL="console serial"` and kernel cmdline settings. This configuration is required to enable serial access for troubleshooting deployment issues and console support for your VM after deployment. Make sure the serial port settings on your system and terminal match to establish proper communication.
+  - You need to configure the bootloader, kernel, and init system in your image to enable both serial connectivity and text-based console. Use both `GRUB_TERMINAL="console serial"` and kernel cmdline settings. This configuration is required to enable serial access for troubleshooting deployment issues and console support for your VM after deployment. Make sure the serial port settings on your system and terminal match to establish proper communication.
 
 - For Windows VM images, install VirtIO drivers in the image to ensure proper detection of virtual storage and network devices during VM deployment.
 
@@ -92,7 +92,7 @@ If you're accessing your Azure Local remotely, the following requirements must b
         az extension remove --name "stack-hci-vm"
         ```
 
-    1. To install the extension. Run the following command:
+    1. To install the extension, run the following command:
 
         ```azurecli
         az extension add --name "stack-hci-vm" --version "<version>"

@@ -76,25 +76,25 @@ You must enable the [EncryptionAtHost](/azure/virtual-machines/linux/disks-enabl
 
 1. Register the EncryptionAtHost feature.
 
-  Execute the following command to register the feature for your subscription:
+    Execute the following command to register the feature for your subscription:
 
-  ```azurecli
-  az feature register --namespace Microsoft.Compute --name EncryptionAtHost
-  ```
+    ```azurecli
+    az feature register --namespace Microsoft.Compute --name EncryptionAtHost
+    ```
 
 1. Verify the registration state.
 
-  Confirm that the registration state is `Registered` (registration might take a few minutes) by using the following command before trying out the feature:
+    Confirm that the registration state is `Registered` (registration might take a few minutes) by using the following command before trying out the feature:
 
-  ```Azure CLI
-  az feature show --namespace Microsoft.Compute --name EncryptionAtHost
-  ```
+    ```Azure CLI
+    az feature show --namespace Microsoft.Compute --name EncryptionAtHost
+    ```
 
 1. Register the resource provider.
 
-  ```Azure CLI
-  az provider register --namespace Microsoft.Compute
-  ```
+    ```Azure CLI
+    az provider register --namespace Microsoft.Compute
+    ```
 
 1. Check that the registration state is `Registered`.
 

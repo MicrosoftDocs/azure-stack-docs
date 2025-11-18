@@ -27,7 +27,7 @@ Before you begin, complete these prerequisites:
 
 - Ensure you have at least one Layer 3 internal network configured with sufficient IP addresses and the right permissions to associate this internal network with the logical network you create.
 
-- Gather the following details about the Layer 3 internal network you plan to associate with the logical network: ARM ID, subnet (address prefix), and VLAN ID. These details must match the internal network when creating the logical network.
+- Gather the following details about the Layer 3 internal network you plan to associate with the logical network: Azure Resource Manager (ARM) ID, subnet (address prefix), and VLAN ID. These details must match the internal network when creating the logical network.
 
 - To create VMs with static IP addresses in your address space, add a logical network with static IP allocation. Reserve an IP range with your network admin, and get the address prefix for this IP range.
 
@@ -71,7 +71,7 @@ To create a logical network on the Layer 3 internal network of your choice or st
 > For logical networks, the following apply:
 >
 > - Creating logical networks with overlapping IP pools on the same VLAN isn't permitted.
-> - VLAN ID and the address prefix must match the VLAN ID and subnet in the Layer 3 internal network provided as the fabric network resource.
+> - VLAN ID and the address prefix must match the VLAN ID and subnet in the Layer 3 internal network provided as the Fabric network resource.
 
 #### Create a static logical network
 

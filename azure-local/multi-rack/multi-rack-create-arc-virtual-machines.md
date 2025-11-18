@@ -228,11 +228,11 @@ Follow these steps in Azure portal for Azure Local.
 
     1. **Image** - Select from the VM images you previously created on your Azure Local instance.
 
-        1. If you selected a Windows image, provide a username and password for the administrator account, and then confirm the password.
+        - If you selected a Windows image, provide a username and password for the administrator account, and then confirm the password.
 
         <!--:::image type="content" source="media/multi-rack-create-arc-virtual-machines/create-arc-vm-windows-image.png" alt-text="Screenshot showing how to Create a VM using Windows VM image." lightbox="media/multi-rack-create-arc-virtual-machines/create-arc-vm-windows-image.png":::-->
 
-        1. If you selected a Linux image, you can choose between password and ssh key.
+        - If you selected a Linux image, you can choose between password and ssh key.
 
            :::image type="content" source="media/multi-rack-create-arc-virtual-machines/virtual-machine-linux-root-user.png" alt-text="Screenshot showing how to Create a VM using a Linux VM image." lightbox="media/multi-rack-create-arc-virtual-machines/virtual-machine-linux-root-user.png":::
 
@@ -313,8 +313,8 @@ Follow these steps in Azure portal for Azure Local.
     1. From the drop-down list, select the **Network**. Based on the logical network selected, you see the IPv4 type automatically populate as **Static** or **DHCP**.
     1. For **Static** IP, choose the **Allocation method** as **Automatic** or **Manual**. For **Manual** IP, provide an IP address.
 
-    >[!NOTE]
-    > To create a VM with virtual network, use Azure CLI or ARM templates.
+        >[!NOTE]
+        > To create a VM with virtual network, use Azure CLI or ARM templates.
 
     1. Select **Add**.
 
@@ -341,11 +341,9 @@ Follow these steps to deploy the Resource Manager template:
 
    <!--:::image type="content" source="media/multi-rack-create-arc-virtual-machines/blank-template.png" alt-text="Screenshot of blank Resource Manager template in Azure portal." lightbox="media/multi-rack-create-arc-virtual-machines/blank-template.png":::-->
 
-1. Replace the blank template with the template that you downloaded during the prerequisites step.
+1. Replace the blank template with the template that you downloaded during the prerequisites step. This template creates an Azure Local VM for multi-rack deployments. First, a virtual network interface is created. You can optionally enable domain-join and attach a virtual disk to the VM you create. Finally, the VM is created with the guest management enabled.
 
-    This template creates an Azure Local VM for multi-rack deployments. First, a virtual network interface is created. You can optionally enable domain-join and attach a virtual disk to the VM you create. Finally, the VM is created with the guest management enabled.
-<!--open comments present in the json code snippet-->
-   ```json
+    ```json
     {
         "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
         "contentVersion": "1.0.0.0",

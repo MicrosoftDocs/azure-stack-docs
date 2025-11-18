@@ -91,7 +91,7 @@ Follow these steps to create a network interface on your static logical network.
     | **subscription** |Name or ID of the subscription where your Azure Local is deployed. This could be another subscription you use for the logical network on your Azure Local. |
     | **custom-location** |Name or ID of the custom location to use for the logical network on your Azure Local.  |
     | **location** | Azure regions as specified by `az locations`. For example, this could be `eastus`, `westeurope`. |
-    | **subnet-id** |Name of your logical network or the ARM ID of the VNet subnet. For example: `test-lnet-dynamic`.  |
+    | **subnet-id** |Name of your logical network or the Azure Resource Manager (ARM) ID of the VNet subnet. For example: `test-lnet-dynamic`.  |
     | **ip-address** | An IPv4 address you want to assign to the network interface that you're creating. For example: "192.168.0.10". If you choose not to provide `ip-address`, an IP address will automatically be allocated from the available IP pool. |
 
 1. To create a network interface with a static IP address, run the following command:
