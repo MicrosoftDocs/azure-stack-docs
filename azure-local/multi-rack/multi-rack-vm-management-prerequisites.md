@@ -42,7 +42,7 @@ Ensure you have:
 
   - Go to the **Overview** page in the Azure Local resource. Verify that **Detailed Status** shows as **Running**. You should also see a custom/extended location in the cluster overview page.
 
-    :::image type="content" source="./media/multi-rack-vm-management-prerequisites/azure-arc-connected.png" alt-text="Screenshot of the Overview page in the Azure Local resource showing Azure Arc as connected." lightbox="./media/multi-rack-vm-management-prerequisites/azure-arc-connected.png":::
+    <!--:::image type="content" source="./media/multi-rack-vm-management-prerequisites/azure-arc-connected.png" alt-text="Screenshot of the Overview page in the Azure Local resource showing Azure Arc as connected." lightbox="./media/multi-rack-vm-management-prerequisites/azure-arc-connected.png":::-->
 
 - Details of your proxy server to provide during VM creation. Azure Local VMs don't have external connectivity to enable guest management without proxy details configured at the time of creation.
 

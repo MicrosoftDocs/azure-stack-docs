@@ -16,7 +16,7 @@ This article describes the prerequisites for multi-rack deployments of Azure Loc
 
 ## Complete prerequisites
 
-To get started with Azure Local multi-rack deployments, create a Network Fabric Controller (NFC) and then a Cluster Manager (CM) in your target Azure region. Create these resources before you create the Azure Local multi-rack cluster.
+To get started with multi-rack deployments of Azure Local, create a Network Fabric Controller (NFC) and then a Cluster Manager (CM) in your target Azure region. Create these resources before you create the multi-rack cluster.
 
 Each NFC is associated with a CM in the same Azure region and your subscription. You need to complete the prerequisites before you can deploy the first multi-rack NFC and CM pair.
 In subsequent multi-rack deployments, you only need to create the NFC and CM after reaching the quota of supported multi-rack clusters.

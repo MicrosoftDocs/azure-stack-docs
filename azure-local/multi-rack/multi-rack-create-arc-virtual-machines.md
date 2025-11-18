@@ -201,7 +201,7 @@ Follow these steps in Azure portal for Azure Local.
 1. Go to **Azure Arc cluster view** > **Virtual machines**.
 1. From the top command bar, select **+ Create VM**.
 
-   :::image type="content" source="media/multi-rack-create-arc-virtual-machines/virtual-machine-create-button.png" alt-text="Screenshot of select + Add/Create VM." lightbox="media/multi-rack-create-arc-virtual-machines/virtual-machine-create-button.png":::
+   <!--:::image type="content" source="media/multi-rack-create-arc-virtual-machines/virtual-machine-create-button.png" alt-text="Screenshot of select + Add/Create VM." lightbox="media/multi-rack-create-arc-virtual-machines/virtual-machine-create-button.png":::-->
 
 1. On the **Basics** tab, input the following parameters in the **Project details** section:
 
