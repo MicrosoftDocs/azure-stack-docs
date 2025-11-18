@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 11/14/2025
+ms.date: 11/18/2025
 ---
 
 # Create Azure Local VM images for multi-rack deployments using Azure Storage account (preview)
@@ -64,7 +64,7 @@ To create a VM image using the Azure CLI, follow these steps:
 
 ### Set some parameters
 
-1. Set your subscription, resource group, location, SAS URL for the image in the storage account, and OS type for the image. Replace the parameters in `< >` with the appropriate values.
+Set your subscription, resource group, location, SAS URL for the image in the storage account, and OS type for the image. Replace the parameters in `< >` with the appropriate values.
 
 ```azurecli
 $subscription = "<Subscription ID>"
@@ -81,15 +81,15 @@ $imageSourcePath = '"<Blob SAS URL path to the source image in the storage accou
 
 The parameters are described in the following table:
 
-| Parameter        | Description                                                                                |
-|------------------|--------------------------------------------------------------------------------------------|
-| `subscription`   | Subscription for Azure Local that you associate with this image.        |
-| `resource-group` | Resource group for Azure Local that you associate with this image.        |
-| `location`       | Location for your Azure Local instance. For example, this could be `eastus`. |
-| `custom-location`       | ARM ID of the custom or extended location of your Azure Local instance. |
-| `name`      | Name of the VM image created starting with the image in your local share. <br> **Note**: Azure rejects all the names that contain the keyword Windows. |
-| `image-path`| Blob SAS URL path to the source image in the storage account. For instructions, see [Generating SAS tokens](/azure/applied-ai-services/form-recognizer/create-sas-tokens#generating-sas-tokens).<br>**Note**: Escape the path with double quotes, then enclose it with single quotes like: `'""'`. |
-| `os-type`         | Operating system associated with the source image. This can be Windows or Linux.           |
+| Parameter | Description |
+|--|--|
+| `subscription` | Subscription for Azure Local that you associate with this image. |
+| `resource-group` | Resource group for Azure Local that you associate with this image. |
+| `location` | Location for your Azure Local instance. For example, this could be `eastus`. |
+| `custom-location` | ARM ID of the custom or extended location of your Azure Local instance. |
+| `name` | Name of the VM image created starting with the image in your local share. <br> **Note**: Azure rejects all the names that contain the keyword Windows. |
+| `image-path` | Blob SAS URL path to the source image in the storage account. For instructions, see [Generating SAS tokens](/azure/applied-ai-services/form-recognizer/create-sas-tokens#generating-sas-tokens).<br>**Note**: Escape the path with double quotes, then enclose it with single quotes like: `'""'`. |
+| `os-type` | Operating system associated with the source image. This can be Windows or Linux. |
 
 Here's a sample output:
 
