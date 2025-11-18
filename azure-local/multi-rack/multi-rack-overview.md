@@ -1,20 +1,20 @@
 ---
-title: What are multi-rack deployments for Azure Local? (preview)
+title: What are multi-rack deployments of Azure Local? (preview)
 description: Discover Azure Local multi-rack deployments, a new capability for deploying large on-premises datacenters with over 100 machines and 8,000 cores. Learn how to get started (preview).
 #customer intent: As an IT admin, I want to understand Azure Local multi-rack deployments so that I can evaluate its suitability for my datacenter modernization needs.
 author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
-ms.date: 11/14/2025
+ms.date: 11/18/2025
 ms.topic: overview
 ms.custom: references_regions
 ---
 
-# What are multi-rack deployments for Azure Local? (preview)
+# What are multi-rack deployments of Azure Local? (preview)
 
 [!INCLUDE [multi-rack-applies-to-preview](../includes/multi-rack-applies-to-preview.md)]
 
-This article provides an overview of multi-rack deployments for Azure Local. The overview also details the benefits, key features, use cases, and how to get started with the preview release.
+This article provides an overview of multi-rack deployments of Azure Local. The overview also details the benefits, key features, use cases, and how to get started with the preview release.
 
 Multi-rack deployments extend the scale of Azure Local, supporting hundreds of servers across multiple racks in a single instance. Microsoft currently offers multi-rack deployments in preview for qualified opportunities.
 
@@ -32,7 +32,7 @@ With this solution, you can run familiar Arc-enabled infrastructure and services
 
 ## Benefits
 
-Azure Local for multi-rack deployments offers the following key benefits:
+Multi-rack deployments of Azure Local offer the following key benefits:
 
 - Uses the same familiar Azure Local experiences and APIs available through the Azure portal.
 
@@ -52,10 +52,10 @@ The following table lists the various features and capabilities available on Azu
 |----|----|
 | Hardware | Prescriptive hardware procured from a Microsoft hardware partner. Each instance has one main rack for network aggregation and SAN storage plus three or more compute racks. The minimum footprint is four racks.  |
 | SAN storage | Built-in SAN storage shared by compute racks. |
-| Managed networking | Automated bootstrapping and lifecycle management of network devices using Azure APIs and ARM templates. Includes deployment of logical Layer 2 and Layer 3 networks spanning racks to support workloads. |
+| Managed networking | Automated bootstrapping and lifecycle management of network devices using Azure APIs and Azure Resource Manager (ARM) templates. Includes deployment of logical Layer 2 and Layer 3 networks spanning racks to support workloads. |
 | Azure Local services | Foundational services such as Azure Local virtual machines, Azure Kubernetes Service (AKS) enabled by Azure Arc, and software-defined networking (SDN) services. |
 | Observability | Sends metrics and logs from on-premises infrastructure to Azure Monitor and Log Analytics for both infrastructure and workload resources. |
-| Management tools | Cloud management via Azure portal, Azure Resource Manager templates, and Azure CLI. |
+| Management tools | Cloud management via Azure portal, ARM templates, and Azure CLI. |
 | Region availability | The control plane is currently available in East US, Australia East, and South Central US. |
 
 ## Architecture

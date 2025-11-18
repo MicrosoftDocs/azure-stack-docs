@@ -752,6 +752,8 @@ items:
         href: ./multi-rack/multi-rack-connect-arc-vm-using-ssh.md
       - name: Manage Azure Local VM resources
         href: ./multi-rack/multi-rack-manage-arc-virtual-machine-resources.md
+      - name: Manage Azure Local VM extensions
+        href: ./multi-rack/multi-rack-virtual-machine-manage-extension.md
 
   - name: Monitor
     items:
