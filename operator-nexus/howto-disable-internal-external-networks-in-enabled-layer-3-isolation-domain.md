@@ -20,10 +20,10 @@ ms.custom: template-concept
 ## Steps
 
 ### Common parameters used across commands:
-- --resource-group <rg>_ – Resource group containing the ISD and network resources
-- --l3-isolation-domain-name <isd-name>_ – The L3 Isolation Domain where networks belong
-- --name <resource-name>_ – Internal/External network resource name
-- --fabric <fabric-name>_ – Fabric resource name for commit operations
+- --resource-group \<rg\>_ – Resource group containing the ISD and network resources
+- --l3-isolation-domain-name \<isd-name\>_ – The L3 Isolation Domain where networks belong
+- --name \<resource-name\>_ – Internal/External network resource name
+- --fabric \<fabric-name\>_ – Fabric resource name for commit operations
 
 ### Step 1: Disable an External Network (Administrative State)
 ```Azure CLI
