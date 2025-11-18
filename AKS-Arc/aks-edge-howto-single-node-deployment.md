@@ -4,7 +4,7 @@ description: Learn how to deploy AKS Edge Essentials on a single machine.
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
-ms.date: 03/10/2025
+ms.date: 11/17/2025
 ms.custom: template-how-to
 ---
 
@@ -18,7 +18,7 @@ Set up your primary machine as described in [Set up machine](aks-edge-howto-setu
 
 ## Step 1: single machine configuration parameters
 
-You can generate the parameters you need to create a single machine cluster using the following command:
+Generate the parameters you need to create a single machine cluster by running the following command:
 
 ```powershell
 New-AksEdgeConfig -DeploymentType SingleMachineCluster -outFile .\aksedge-config.json | Out-Null
@@ -30,19 +30,19 @@ See [Deployment JSON configuration](aks-edge-deployment-config-json.md) for a de
 
 The key parameters for single machine deployment are:
 
-- `DeploymentType`: This parameter defines the deployment type and is specified as `SingleMachineCluster`.
+- `DeploymentType`: This parameter defines the deployment type. Specify `SingleMachineCluster`.
 - `Arc`: This section is required. During the AKS Edge Essentials deployment, the Arc parameters are used to connect the AKS Edge Essentials cluster to Azure Arc. For more information about the required Arc parameters, see the [connect to Arc documentation](aks-edge-howto-connect-to-arc.md).
   
-- The `Network.NetworkPlugin` by default is `flannel`. This is the default for a K3S cluster. If you're using a K8S cluster, change the CNI to `calico`.
-- You can set the following parameters according to your deployment configuration [as described here](aks-edge-deployment-config-json.md): `LinuxNode.CpuCount`, `LinuxNode.MemoryInMB`, `LinuxNode.DataSizeInGB`, `WindowsNode.CpuCount`, `WindowsNode.MemoryInMB`, `Init.ServiceIPRangeSize`, and `Network.InternetDisabled`.
-- To encrypt the Kubernetes secret store, you can enable the Key Management Service (KMS) plugin (preview) by setting the `Init.KmsPlugin enable` to **true**. For more information, see [Enable secret encryption on a cluster](aks-edge-howto-secret-encryption.md).
+- The `Network.NetworkPlugin` by default is `flannel`. This plugin is the default for a K3S cluster. If you're using a K8S cluster, change the CNI to `calico`.
+- Set the following parameters according to your deployment configuration [as described here](aks-edge-deployment-config-json.md): `LinuxNode.CpuCount`, `LinuxNode.MemoryInMB`, `LinuxNode.DataSizeInGB`, `WindowsNode.CpuCount`, `WindowsNode.MemoryInMB`, `Init.ServiceIPRangeSize`, and `Network.InternetDisabled`.
+- To encrypt the Kubernetes secret store, enable the Key Management Service (KMS) plugin (preview) by setting the `Init.KmsPlugin enable` to **true**. For more information, see [Enable secret encryption on a cluster](aks-edge-howto-secret-encryption.md).
 
 > [!IMPORTANT]
 > Starting with the AKS Edge Essentials 1.10.868.0 release, the `Arc` section of the config file is required. The Azure Arc connection occurs automatically during the AKS Edge Essentials deployment.
 
-## Step 2: create a single machine cluster
+## Step 2: Create a single machine cluster
 
-You can now run the `New-AksEdgeDeployment` cmdlet to deploy a single-machine AKS Edge cluster with a single Linux control-plane node:
+Run the `New-AksEdgeDeployment` cmdlet to deploy a single-machine AKS Edge cluster with a single Linux control-plane node:
 
 ```powershell
 New-AksEdgeDeployment -JsonConfigFilePath .\aksedge-config.json
@@ -51,7 +51,7 @@ New-AksEdgeDeployment -JsonConfigFilePath .\aksedge-config.json
 > [!IMPORTANT]
 > The Kubernetes `pod cidr` is `10.42.0.0/16` for K3s and `10.244.0.0/24` for K8s. The Kubernetes `service cidr` is `10.43.0.0/16` for K3s and `10.96.0.0/12` for K8s.
 
-## Step 3: validate your cluster
+## Step 3: Validate your cluster
 
 Confirm that the deployment was successful by running:
 
@@ -69,13 +69,13 @@ The following image shows pods on a K3S cluster:
 > [!CAUTION]
 > Windows worker nodes is an experimental feature in this release. We are actively working on this feature.
 
-If you want to add a Windows node to an existing Linux only single machine cluster, first create the configuration file using the following command:
+If you want to add a Windows node to an existing Linux-only single machine cluster, first create the configuration file using the following command:
 
 ```powershell
 New-AksEdgeScaleConfig -ScaleType AddNode -NodeType Windows -outFile .\ScaleConfig.json | Out-Null
 ```
 
-This creates the configuration file **ScaleConfig.json** in the current working directory. You can also modify the Windows node parameters in the configuration file to specify the resources that need to be allocated to the Windows node. With the configuration file, you can run the following command to add the node the single machine cluster:
+This command creates the configuration file **ScaleConfig.json** in the current working directory. You can also modify the Windows node parameters in the configuration file to specify the resources that you need to allocate to the Windows node. With the configuration file, run the following command to add the node to the single machine cluster:
 
 ```powershell
 Add-AksEdgeNode -JsonConfigFilePath .\ScaleConfig.json
@@ -104,7 +104,7 @@ New-AksEdgeDeployment -JsonConfigString ($jsonObj | ConvertTo-Json -Depth 4)
 
 ### Create a simple cluster with NodePort service
 
-You can create a simple cluster with no service IPs (`ServiceIPRangeSize` set as 0):
+You can create a simple cluster with no service IPs by setting `ServiceIPRangeSize` to 0:
 
 ```powershell
 New-AksEdgeDeployment -JsonConfigString (New-AksEdgeConfig | ConvertTo-Json -Depth 4)
@@ -112,7 +112,7 @@ New-AksEdgeDeployment -JsonConfigString (New-AksEdgeConfig | ConvertTo-Json -Dep
 
 ### Allocate resources to your nodes
 
-To connect to Arc and deploy your apps with GitOps, allocate four CPUs or more for the `LinuxNode.CpuCount` (processing power), 4 GB or more for `LinuxNode.MemoryinMB` (RAM), and to assign a number greater than 0 to the `ServiceIpRangeSize`. Here, we allocate 10 IP addresses for your Kubernetes services:
+To connect to Arc and deploy your apps with GitOps, allocate four CPUs or more for the `LinuxNode.CpuCount` (processing power), 4 GB or more for `LinuxNode.MemoryinMB` (RAM), and assign a number greater than 0 to the `ServiceIpRangeSize`. In the following example, you allocate 10 IP addresses for your Kubernetes services:
 
 ```json
 {
@@ -141,7 +141,7 @@ To connect to Arc and deploy your apps with GitOps, allocate four CPUs or more f
 ```
 
 > [!NOTE]
-> AKS Edge Essentials allocates IP addresses from your internal switch to run your Kubernetes services if you specified a `ServiceIPRangeSize`.
+> AKS Edge Essentials allocates IP addresses from your internal switch to run your Kubernetes services if you specify a `ServiceIPRangeSize`.
 
 You can also choose to pass the parameters as a JSON string, as previously described:
 
@@ -159,13 +159,13 @@ You can also choose to pass the parameters as a JSON string, as previously descr
 
 ### Create a mixed workload cluster
 
-You can create a cluster with both Linux and Windows nodes. You can create the configuration file using the command:
+You can create a cluster with both Linux and Windows nodes. Use the following command to create the configuration file:
 
 ```powershell
 New-AksEdgeConfig -DeploymentType SingleMachineCluster -NodeType LinuxAndWindows -outFile .\aksedge-config.json | Out-Null
 ```
 
-Once the configuration file is created, you can deploy your cluster using the following command:
+After you create the configuration file, use the following command to deploy your cluster:
 
 ```powershell
 New-AksEdgeDeployment -JsonConfigFilePath .\aksedge-config.json

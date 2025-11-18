@@ -1,6 +1,6 @@
 ---
-title: "How to Use Secret Rotation v1 in Azure Operator Nexus"
-description: Learn the process for using Password Rotation v1 in Azure Operator Nexus
+title: "Use Secret Rotation v1 in Azure Operator Nexus"
+description: Learn the process for using password rotation v1 in Azure Operator Nexus.
 author: RaghvendraMandawale
 ms.author: rmandawale
 ms.date: 09/26/2025
@@ -9,28 +9,28 @@ ms.service: azure-operator-nexus
 ms.custom: template-how-to, devx-track-azurecli
 ---
 
-# How to use Secret Rotation v1 in Azure Operator Nexus
+# Use secret rotation v1 in Azure Operator Nexus
 
-This guide explains prerequisites for rotating password for a network fabric
+This article explains the prerequisites for rotating passwords for a network fabric.
 
 ## Prerequisites
 
-* Network Fabric & Network Fabric Controller are deployed.
-* Environment on NNF 9.2 with API 2025-07-15 enabled .
-* Azure CLI installed and authenticated to the correct subscription.
-* Ensure Network fabric is in healthy state - Configuration state provisioned and Administrative state : enabled.
-* Run outside commit/upgrade workflows; ensure targeted devices are in administrative state - Enabled.
+* Deploy Azure Operator Nexus Network Fabric and the Network Fabric Controller.
+* Enable the environment on Nexus Network Fabric 9.2 with API 2025-07-15.
+* Install and authenticate the Azure CLI to the correct subscription.
+* Ensure that Nexus Network Fabric is in a healthy state, the configuration state is provisioned, and the administrative state is Enabled.
+* Run outside commit/upgrade workflows. Ensure that the administrative state for the targeted devices is Enabled.
 
 ## Operational guardrails
 
-* Do not rotate during an upgrade or while upgrade is Failed.
+* Don't rotate during an upgrade or while the upgrade status is Failed.
 * Enable disabled devices before rotation or resync.
 * Treat rotation as mutually exclusive with other fabric-wide operations.
-* If password rotation fails on Terminal server device, customer can retry using Resync password on Network Fabric resource. 
+* If password rotation fails on the Terminal Server device, retry by using the resync password on the Nexus Network Fabric resource.
 
 ## Azure CLI procedures (GA, Az CLI only)
 
-### 1) Rotate passwords across the fabric
+### 1. Rotate passwords across the fabric
 
 Start a fabric-scoped rotation across all supported devices:
 
@@ -53,9 +53,10 @@ Sample response (acknowledgment):
 }
 ```
 
-### 2) Check rotation status (fabric)
+### 2. Check rotation status (fabric)
 
-View last rotation results and per-device outcomes:
+View the last rotation results and per-device outcomes:
+
 ```Azure CLI
 az networkfabric fabric show --resource-group "example-rg" --resource-name "example-fabric"
 ```
@@ -78,9 +79,9 @@ Sample output:
 }
 ```
 
-### 3) Resync failed devices (fabric scope)
+### 3. Resync failed devices (fabric scope)
 
-Retry the new password only on specific devices (use device Azure Resource Manager IDs from the previous status output): 
+Retry the new password only on specific devices (use device Azure Resource Manager IDs from the previous status output):
 
 ```Azure CLI
 az networkfabric fabric resync-password --resource-group example-rg -resource-name example-fabric
@@ -97,15 +98,15 @@ Sample response (acknowledgment):
 }
 ```
 
-### 4) Resync a single device (device scope)
+### 4. Resync a single device (device scope)
 
-Use the device Azure Resource Manager ID with --IDs (no device name parameter): 
+Use the device Azure Resource Manager ID with --IDs (no device name parameter):
 
 ```Azure CLI
 az networkfabric device resync-password --resource-group example-rg --resource-name example-device
 ```
 
-### 5) Get device password status (GA fields)
+### 5. Get device password status (GA fields)
 
 Return the device-level password/secret status object for auditing and troubleshooting:
 
@@ -145,6 +146,6 @@ Sample output (based on latest GA example fields):
 
 ## Troubleshooting
 
-* BadRequest / Operation not allowed: Fabric is in a conflicting workflow (commit/upgrade). Wait to complete, then retry.
-* Devices remain under failedDeviceIds: Ensure device administrative state is Enabled; then run a resync.
-* Rotation Accepted but no progress: Verify NNF 9.2, GA API 2025-07-15 enabled, and feature flag is active.
+* **BadRequest/Operation not allowed:** Fabric is in a conflicting workflow (commit/upgrade). Wait for the operation to finish, and then retry.
+* **Devices remain under failedDeviceIds:** Ensure that the device administrative state is Enabled, and then run a resync.
+* **Rotation accepted but no progress:** Verify that the Nexus Network Fabric 9.2 GA API 2025-07-15 is enabled and that the feature flag is active.

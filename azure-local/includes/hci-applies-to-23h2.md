@@ -3,9 +3,9 @@ author: alkohli
 ms.author: alkohli
 ms.service: azure-local
 ms.topic: include
-ms.date: 01/08/2025
+ms.date: 11/11/2025
 ms.reviewer: alkohli
-ms.lastreviewed: 01/30/2024
+ms.lastreviewed: 11/11/2025
 ---
 
-> Applies to: Azure Local 2311.2 and later
+> Applies to: Hyperconverged deployments of Azure Local 2311.2 and later

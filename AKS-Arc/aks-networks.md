@@ -3,7 +3,7 @@ title: Create logical networks for Kubernetes clusters on Azure Local
 description: Learn how to create Arc-enabled logical networks for AKS enabled by Azure Arc.
 ms.topic: how-to
 author: sethmanheim
-ms.date: 04/01/2025
+ms.date: 11/17/2025
 ms.author: sethm 
 ms.lastreviewed: 04/01/2024
 ms.reviewer: abha
@@ -74,10 +74,10 @@ For static IP, provide the following required parameters:
 | `--subscription` | Name or ID of the subscription where your Azure Local is deployed. |
 | `--custom-location` | Provide the custom location associated with your Azure Local cluster where you're creating the logical network. |
 | `--vm-switch-name`     | The name of the VM switch. Usage: `--vm-switch-name "vm-switch-01"`. |
-| `--address-prefixes` | AddressPrefix for the network. Currently only 1 address prefix is supported. Usage: `--address-prefixes "10.220.32.16/24"`. |
+| `--address-prefixes` | AddressPrefix for the network. Currently only one address prefix is supported. Usage: `--address-prefixes "10.220.32.16/24"`. |
 | `--dns-servers`      | Space-separated list of DNS server IP addresses. Usage: `--dns-servers 10.220.32.16 10.220.32.17`. |
 | `--gateway`         | Gateway. The gateway IP address must be within the scope of the address prefix. Usage: `--gateway 10.220.32.16`. |
-| `--ip-allocation-method`   | The IP address allocation method. Supported values are `Static`. Usage: `--ip-allocation-method "Static"`. |
+| `--ip-allocation-method`   | The IP address allocation method. Supported value is `Static`. Usage: `--ip-allocation-method "Static"`. |
 | `--ip-pool-start`     | The start IP address of your IP pool. The address must be in range of the address prefix. Usage: `--ip-pool-start "10.220.32.18"`.  |
 | `--ip-pool-end`       | The end IP address of your IP pool. The address must be in range of the address prefix. Usage: `--ip-pool-end "10.220.32.38"`.  |
 | `--vlan`              | The VLAN ID. Usage: `--vlan 10`. This parameter is optional. Specifies the VLAN ID (an int32 value) to use when creating the logical network.  |
