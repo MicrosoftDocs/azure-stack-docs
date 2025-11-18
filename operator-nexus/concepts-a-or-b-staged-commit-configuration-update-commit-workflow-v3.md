@@ -1,149 +1,70 @@
 ---
-title: Azure Operator Nexus Network Fabric - Commit Workflow v2
-description: Learn about Commit Workflow v2 process in Azure Operator Nexus – Network Fabric
-author: sushantjrao
-ms.author: sushrao
+title: A / B staged commit configuration update commit workflow v3 in Azure Operator Nexus
+description: Learn about A / B staged commit configuration update commit workflow v3 in Azure Operator Nexus
+author: RaghvendraMandawale
+ms.author: rmandawale
 ms.service: azure-operator-nexus
 ms.topic: conceptual
 ms.date: 05/16/2025
 ms.custom: template-concept
 ---
 
-# Commit Workflow v2 in Azure Operator Nexus - Network Fabric
+# A / B staged commit configuration update commit workflow v3 in Azure Operator Nexus - Network Fabric
 
-**Commit Workflow v2** introduces a modernized and transparent approach for applying configuration changes to **Azure Operator Nexus – Network Fabric (NNF)** resources. This enhanced workflow provides better operational control, visibility, and error handling during the configuration update process.
+**A/B Staged Config Update** introduces a safe rollout model for Network Fabric configuration. Operators stage configuration on one CE (A or B), validate behavior, optionally cancel to revert, or complete to roll out to the remaining devices—leveraging **Commit Workflow** semantics (lock → validate → commit). Current scope targets **CE-only staging**; broader policies may be added later.
 
-With this update, users can lock configuration states, preview device-level changes, validate updates, and commit with confidence—overcoming earlier limitations such as the inability to inspect pre/post configurations and difficulty in diagnosing failures.
+### Key Highlights
 
-## Key concepts and capabilities
+- **Reduced Risk:** Prevents simultaneous configuration errors that could impact all devices, ensuring network stability.
+- **Staged Rollout**: Enables updates to be applied to one CE device at a time, allowing for targeted testing and validation.
+- **Rollback Capability:** Provides a straightforward rollback mechanism to revert to the previous configuration if issues are detected during staging.
+- **Operational Flexibility:** Supports both staged and traditional (non-staged) configuration workflows, giving operators control over the update process.Both workflows are mutually exclusive and cannot be triggered while one is in progress.
 
-Commit Workflow v2 is built around a structured change management flow. The following core features are available:
+### Supported Use Cases
 
-- **Explicit configuration locking:**
-  Users must explicitly lock the configuration of a Network Fabric resource after making changes. This process ensures updates are applied in a predictable and controlled manner.
+- CE configuration changes that can be fully validated during staging; other devices update only after **Complete**.
+- Non‑staged Commit V2 remains available (lock → diff/validate → commit) for all supported resources.
 
-- **Full device configuration preview:**
-  Enables visibility into the exact configuration that is applied to each device before the commit. This helps validate intent and catch issues early.
+### Architecture & Workflow
 
-- **Commit configuration to devices:**
-  Once validated, changes can be committed to the devices. This final step applies the locked configuration updates across the fabric.
+A/B Update extends Commit V2 with policy‑driven staged steps:<br>
+1. **Lock (Configuration)** – freeze fabric configuration to batch the intended updates.<br>
+2. **Prepare (Start)** – build candidate configs based on policy (e.g., Stage‑CE‑config).<br>
+3. **Staged Apply (Continue to CE1/CE2)** – apply to the selected CE only; no other devices change.<br>
+4. **Validate & Test** – run traffic/telemetry checks, device config views.<br>
+5. **Cancel (Rollback)** – revert all devices to previous golden configuration if results aren’t acceptable.<br>
+6. **Complete** – roll out to remaining devices, then release the lock.<br>
 
-- **Discard Batch Updates:**
-  Allows rollback of all uncommitted resource changes to their last known state.
+### Prerequisites & Versioning
 
-- **Enhanced Constraints:**
-  Enforces strict update rules during lock/maintenance/upgrade phases for stability.
+- **Runtime**: Network Fabric runtime **≥ 7.0.0**.
+- **NNF Release**: Feature ships with **NNF 10.0**.
+- **API**: GA API dated **2025‑07‑15** (or later).
+- **Commit V2** foundation: Runtime **≥ 5.0.1** (for non‑staged operations and device previews/diffs).
 
-## Prerequisites
+### Behavior & Constraints
 
-Before using Commit Workflow v2, ensure the following environment requirements are met:
+- Fabric administrative **lock is mandatory** before staged or full commits.
+- During **CE staging**, only the specified CE is updated; all other devices remain unchanged until **Complete**.
+- **Commit Discard** restores last known good configuration across all ARM resource and can be used to prior to staging the devices.
+- Commit cancel rollback restores last known good configuration to all devices and ARM resources. This operation can be used post staging the configuration on one device
+- Commit cancel operation is not supported post the final commit is executed.
+- User can retry to commit the changes across all devices via the commit operation in case of failures
+- A/B Update currently **does not** support staging for ToRs, NPBs, or management switches; some L3 ISD operations cannot be fully validated during CE staging.
+- A/B update and commit v2 workflows (patch and update) are mutually exclusive and cannot be performed in parallel.
+- Once A/B update workflow has been initiated the service does not support switching over to commit v2 workflow
 
-## Commit workflow compatible versions
+### State Transitions (high level)
 
-The Commit Workflow version supported depends on the combination of Fabric runtime, portal release version, and API version in use. Use the table below to identify which Commit Workflow is applicable for your environment:
+- **Fabric**: Provisioned → Locked (Configuration) → Prepared (Staged) → Committed/Completed → Provisioned.
+- **CE device**: Config(previous) → Candidate(staged) → Applied → (if cancel) Reverted(previous).
 
-| **Fabric Version**     | **Release Version** | **API Version(s)**                                                                                  | **Commit Workflow Version** |
-|------------------------|---------------------|------------------------------------------------------------------------------------------------------|------------------------------|
-| 3.0, 4.0, 5.0          | 8.1 and earlier     | `2024-06-15-preview`<br>`2024-02-15-preview`<br>`2023-06-15-stable`                                  | Commit Workflow v1          |
-| 5.0.0                  | 8.2, 8.3            | `2024-06-15-preview`<br>`2024-02-15-preview`<br>`2023-06-15-stable`                                  | Commit Workflow v1          |
-| 5.0.0                  | 9.0            | `2024-06-15-preview`                                  | Commit Workflow v1          |
-| 5.0.1                  | 8.2, 8.3            | `2024-06-15-preview`                                                                                 | Commit Workflow v2          |
-| 6.0 and later          | 9.0 and later       | `2024-06-15-preview` and later                                                                       | Commit Workflow v2          |
+### Failure Handling & Observability
 
-> [!NOTE]
-> If you are running Fabric version `5.0.1` or later, **Commit Workflow v2** is required and **Commit Workflow v1** is no longer supported.
+- Use device configuration views to identify misconfigurations **before** commit.
+- Failed commit batches surface descriptive errors; use activity logs and Commit V2 diagnostics.
 
-
-### Required versions
-
-If you're unsure which Commit Workflow version applies to your setup, refer to the Commit workflow compatible versions.
-
-* **Runtime version**: `5.0.1` or later is required for Commit Workflow v2.
-
-* **Network Fabric API version**:  `2024-06-15-preview`
-
-* **AzCLI version**:  `8.0.0.b3` or later
-
-### Supported upgrade paths to runtime version 5.0.1
-
-* **Direct upgrade**: From `4.0.0 → 5.0.1` or From `5.0.0 → 5.0.1`
-
-* **Sequential upgrade**:   From `4.0.0 → 5.0.0 → 5.0.1`
-
-> [!Note]
->  Additional actions may be required when upgrading from version 4.0.0. Please refer to the [runtime release notes](#) for guidance on upgrade-specific steps.
-
-
-## Behavior and constraints
-
-Commit Workflow v2 introduces new operational expectations and constraints to ensure consistency and safety in configuration management:
-
-### Availability & locking rules 
-
-- Available only on Runtime Version 5.0.1+. Downgrade to v1 isn't supported.
-
-- Locking is allowed only when:
-
-  - No commit is in progress.
-
-  - Fabric isn't under maintenance or upgrade.
-
-  - Fabric is in an administrative enabled state.
-
-### Unsupported during maintenance or upgrade
-
-`Lock`, `ViewDeviceConfiguration`, and `related post-actions` aren't allowed during maintenance or upgrade windows.
-
-### Commit Finality
-
-Once committed, changes **can't be rolled back**. Any further edits require a new lock-validate-commit cycle.
-
-### Discard Batch Behavior
-
-- The `discard-commit-batch` operation:
-
-  - Reverts all ARM resource changes to their last known good state.
-
-  - Updates admin/config states (for example, external/internal networks become disabled and rejected).
-
-  - Doesn't delete resources; users must delete them manually if desired.
-
-  - Enables further patching to reapply changes.
-
-- When the discard batch action is performed:
-
-  - The administrative state of internal/external network resources moves to disabled and their configuration state to rejected; however, the resources aren't deleted automatically. A separate delete operation is required for removal.
-
-  - Enabled Network Monitor resources attached to a fabric can't be attached to another fabric unless first detached and committed.
-
-  - For Network Monitor resources in administrative state disabled (in commit queue), discard batch moves the config state to rejected. Users can reapply updates (PUT/patch) and commit again to enable.
-
-### Resource update restrictions
-
-**Post-lock**, only a limited set of `Create`/`Update`/`Delete` (CUD) actions are supported (for example, unattached ACLs, TAP rules).
-
-Device-impacting resources (like Network-to-Network Interconnect (NNI), Isolation Domain (ISD), Route Policy, or ACLs attached to parent resources) are blocked during configuration lock.
-
-### Supported resource actions via Commit workflow v2 (when parent resources are in administrative state – Enabled)
-
-| **Supported resource actions which require commit workflow**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | **Unsupported resource actions which doesn’t require commit workflow**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **All resource updates impacting device configuration:**<br>• Updates to Network Fabric resource<br>• Updates to Network-to-Network Interconnect (NNI)<br>• Updates to ISD (L2 and L3)<br>• Creation and updates to Internal and External Networks of enabled L3 ISD<br>• Addition/updates/removal of Route Policy in Internal, External, ISD, and NNI resources<br>• Addition/updates/removal of IP Prefixes, IP Community, and Extended IP Community when attached to Route Policy or Fabric<br>• Addition/updates/removal of ACLs to Internal, External, ISD, and NNI resources<br>• Addition/updates/removal of Network Fabric resource in Network Monitor resource<br>• Additional description updates to Network Device properties<br>• Creation of multiple NNI | **Creation/updating of resources not impacting device configuration:**<br>• Creation of Isolation Domain (ISD) (L3 and L2)<br>• Network Fabric Controller (NFC) creation/updates<br>• Creation and updates to Network TAP rules, Network TAP, Neighbor groups<br>• Creation and updates to Network TAP rules, Network TAP, Neighbor groups<br>• Creation of new Route Policy and connected resources (IP Prefix, IP Community, IP Extended Community)<br>• Update of Route Policy and connected resources when not attached to ISD/Internal/External/NNI<br>• Creation/update of new Access Control List (ACL) which is not attached<br><br>**ARM resources updates only:**<br>• Tag updates for all supported resources<br><br>**Other administrative actions and post actions which manage lifecycle events:**<br>• Enabling/Disabling Isolation Domain (ISD), Return Material Authorization (RMA), Upgrade, and all administrative actions (enable/disable), serial number update<br>• Deletion of all Nexus Network Fabric (NNF) resources |
-
-### Allowed actions after configuration lock
-
-Here's a clear, structured table showing **Supported actions post configuration lock is enabled on the fabric**, categorized by type of action and support status:
-
----
-
-### **Supported and unsupported actions post configuration lock**
-
-| **Actions**                          | **Unsupported resource actions when fabric is under configuration lock**                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | **Unsupported resource actions when fabric is under configuration lock**                                                                                                                                                                                                                                                                                                                                                                                           |
-| ------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **Resource Actions (CUD)**           | - **NFC** (Only *Update*)<br>- **Network TAP rules**, **Network TAP**, **Neighbor Group** *(Create, Update, Delete)* <br>- **ACL** *(Create/Update)* when **not attached** to parent resource<br>- **Network Monitor** created **without Fabric ID**<br>- **Creation/Update** of **IPPrefix**, **IPCommunity List**, **IPExtendedCommunity** when **not attached** to Route Policy<br>- **Read** of all NNF resources<br>- **Delete** of **disabled** resources and **not attached** to any parent resources | - No CUD operations allowed on:<br>  • **Network-to-Network Interconnect (NNI)**<br>  • **Isolation Domains (L2 & L3)**<br>  • **Internal/External Networks** (Additions/Updates)<br>  • **Route Policy**, **IPPrefix**, **IPCommunity List**, **IPExtendedCommunity**<br>  • **ACLs** when **attached to parent resources** (for example, NNI, External Network)<br>  • **Network Monitor** when **attached to Fabric**<br>  • **Deletion** of all **enabled** resources |
-| **Post Actions**                     | - **Lock Fabric** (administrative state)<br>- **View Device Configuration**<br>- **Commit Configuration**<br>- **ARMConfig Diff** <br>- **Commit batch status**                                                                                                                                                                                                                                                                                                                                                         | - All other post actions are **blocked** and must be done **prior to enabling configuration lock**                                                                                                                                                                                                                                                                                                                                              |
-| **Service Actions / Geneva Actions** | - N/A                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | - **All service actions are blocked**                                                                                                                                                                                                                                                                                                                                                                                                                      |
 
 ## Next steps
 
-[How to use Commit Workflow v2 in Azure Operator Nexus](./howto-use-commit-workflow-v2.md)
+[How to use A / B staged commit configuration update commit workflow v3 in Azure Operator Nexus](./howto-use-a-or-b-staged-commit-configuration-update-commit-workflow-v3.md)

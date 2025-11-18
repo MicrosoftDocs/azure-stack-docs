@@ -1,6 +1,6 @@
 ---
-title: How to use Commit Workflow v2 in Azure Operator Nexus
-description: Learn the process for using Commit Workflow v2 in Nexus Network Fabric
+title: How to perform A / B staged commit configuration update commit workflow v3 in Azure Operator Nexus
+description: Learn about how to perform A / B staged commit configuration update commit workflow v3 in Azure Operator Nexus
 author: RaghvendraMandawale
 ms.author: rmandawale
 ms.date: 05/26/2025
@@ -9,176 +9,134 @@ ms.service: azure-operator-nexus
 ms.custom: template-how-to, devx-track-azurecli
 ---
 
-# How to use Commit Workflow v2 in Azure Operator Nexus
-
-This article explains how to use Commit Workflow Version 2 (Commit V2) in Azure Operator Nexus. It helps you safely stage changes, review them, commit the changes you want, or discard the ones you don’t need—across supported resources.
+# How to perform A / B staged commit configuration update commit workflow v3 in Azure Operator Nexus
 
 ## Prerequisites
+-------------
 
-* **Runtime version**: `5.0.1` or later is required for Commit Workflow v2.
+- Network Fabric runtime ≥ 7.0.0, NNF 10.0, GA API 2025-07-15 or later.
+- Contributor rights on the resource group and fabric.
+- Fabric must be in Provisioned and Enabled state, with no active commit batch in progress.
 
-* **Azure CLI version** `8.0.0b3` or later is installed
+### Step 1: Make ARM Resource Changes (Pre-commit)
+----------------------------------------------
+Apply your intended configuration changes to ARM resources. These changes form the candidate configuration for A/B staging. <br>
+#### Example: Update L3 Isolation Domain (ISD) to enable a new QoS policy and associate a new route policy
+```Azure CLI
+az managednetworkfabric l3-isolation-domain update \ 
+  --resource-group <rg> \ 
+  --name <isd-name> \ 
+  --annotation "AB-staged change: tighten routing, add aggregate prefixes" \ 
+  --redistribute-connected-subnets True \ 
+  --redistribute-static-routes False \ 
+  --aggregate-route-configuration '{ 
+    "ipv4Routes": [ 
+      { "prefix": "10.10.0.0/16" }, 
+      { "prefix": "10.20.0.0/16" } 
+    ], 
+    "ipv6Routes": [ 
+      { "prefix": "2001:db8:100::/40" } 
+    ] 
+  }' \ 
+  --connected-subnet-route-policy '{ 
+    "exportRoutePolicyId": "/subscriptions/<subscriptionId>/resourceGroups/<rg>/providers/Microsoft.ManagedNetworkFabric/routePolicies/route-policy-v2", 
+    "exportRoutePolicy": { 
+      "exportIpv4RoutePolicyId": "/subscriptions/<subscriptionId>/resourceGroups/<rg>/providers/Microsoft.ManagedNetworkFabric/routePolicies/route-policy-v2", 
+      "exportIpv6RoutePolicyId": "/subscriptions/<subscriptionId>/resourceGroups/<rg>/providers/Microsoft.ManagedNetworkFabric/routePolicies/route-policy-v2" 
+ } 
+ }' \ 
+  --tags env=prod change=ab-staged
+```
 
-* Your **Network Fabric must be in `Provisioned` state** and **configuration state must be `Succeeded`**.
-
-* The **fabric and all impacted resources must have admin state set to `Enabled`**.
-
-* You must have **BYOS (Bring Your Own Storage)** configured on the fabric to use the optional validation step.
-
-## Commit Workflow v2 overview
-
-Commit V2 enables you to update supported resources in a draft state, validate configuration changes, view configuration differences, and explicitly commit or discard the changes. It ensures atomicity, operational control, and improved user experience for complex network fabric operations.
-
-### Benefits of Commit V2
-
-- Faster commit operations: Reduces the time to apply configuration changes.
-
-- Review pending configuration: View and validate configuration differences before committing.
-
-- Discard commit batch: Revert staged changes if necessary.
-
-- Lock configuration: Prevent conflicting changes during staging and review.
-
-- Foundation for advanced scenarios: Enables A/B commit strategy and multi-user sessions in future releases.
-
-### Workflow summary
-
-The Commit V2 workflow includes the following steps:
-
-- Update supported resources in draft mode using PATCH operations.
-
-- Lock the fabric configuration to review or discard staged changes.
-
-- Optionally, view configuration differences for each device.
-
-- Either commit or discard the changes.
-
-- After commit/discard, the fabric and all related resources return to a Provisioned state.
-
-### Step 1: Update resources in draft mode
-
-Resources can be updated using PATCH operations that leave the resource in a draft (ConfigurationState: `Accepted`) until explicitly committed. These changes are not applied to the data plane until committed.
-
-#### Example scenario
-
-* Create a new **Route Policy** and attach it to **Internal Network 1**
-
-* Create another **Internal Network 2**
-
-All these changes are **batched**, but **not applied** to devices yet.
-
-
-### Step 2: Lock fabric configuration
-
-Before you can view the configuration diff or discard the commit, the fabric must be locked in configuration mode.
-
-Lock the configuration to signal that all intended updates are completed. After this lock, **no further updates** can be made to any fabric-related resources until you unlock.
-
-#### Azure CLI Command
+### Step 2: Lock the Fabric for Configuration
 
 ```Azure CLI
-az networkfabric fabric lock-fabric \
-    --action Lock \
-    --lock-type Configuration \
-    --network-fabric-name "example-fabric" \
-    --resource-group "example-rg"
+az managednetworkfabric fabric lock-configuration \ 
+   --resource-group <rg> \ 
+   --fabric-name <fabric-name> 
 ```
+- This locks the fabric for configuration changes and is required before any commit workflow.
 
-> [!Note]
-> Ensure fabric configuration state is Accepted.<br> 
-> Fabric is not under maintenance due to unrelated (non-commit) operations.<br>
-> Network Fabric version is >= 5.0.1.<br>
-> Fabric is in ProvisioningState: Succeeded.<br>
-
-### Step 3: Validate updates (Optional but recommended)
-
-Another key functionality commit V2 provides is to view the pending commit configuration and last committed configuration for each device (except Network Packet Broker (NPB) devices) so that users can compare them to validate the intended configuration. If there's any discrepancy, users can unlock the fabric, make necessary change, lock fabric, review pending commit followed by commit operation.
-
-Validate the configuration using the `view-device-configuration` post-action. This step provides insight into the expected configuration outcomes.
-
-> [!Important] 
-> The fabric must be locked in configuration mode.<br>
-> [BYOS](./howto-configure-bring-your-own-storage-network-fabric.md) must be configured on the Network Fabric.
-
-#### Azure CLI Command
-
+### Step 3: Validate Candidate Configuration
 ```Azure CLI
-
-az networkfabric fabric view-device-configuration \
-    --network-fabric-name "example-fabric"\
-    --resource-group "example-rg"
+# View device-level configuration (candidate vs current) 
+az managednetworkfabric fabric view-device-configuration \ 
+  --resource-group <rg> \ 
+  --fabric-name <fabric-name> \ 
+  --output table 
 ```
 
-#### Configuration diff location
-
-Configuration diff files are stored in the customer-provided storage account in the following format:
-
-```Location
-https://<storageAccountName>.blob.core.windows.net/<NF_name>/CommitOperations/DeviceConfigDiff/<CommitBatchId>
-```
-
-You can retrieve the current CommitBatchId by performing a GET request on the fabric resource with API version `2024-06-15-preview` or higher.
-
-### Step 3a: Discard commit batch (Optional)
-
-Commit Discard is a POST action on NetworkFabric, allowed before a commit is performed. This operation allows a user to revert the changes made to the resources via PATCH operations for a specific commit session.
-Users may choose to discard pending configuration updates if issues are found during validation using ViewDeviceConfiguration. This operation restores the ARM resource state to its last known good configuration and resets the fabric state from Accepted & Locked to Succeeded.
-
->[!Note]
-> You can retrieve the CommitBatchId by performing a GET request on the fabric resource with API version `2024-06-15-preview` or above.
-
->[!Note]
-> It is recommended not to trigger a discard operation after a failed commit, as this may lead to inconsistent configurations between Azure Resource Manager (ARM) and the device. In some cases, a device refresh might be required to reconcile the configuration state across ARM and the device.
-
-> [!IMPORTANT]
-> If your Network Fabric resource is associated with a User Assigned Managed Identity (UAMI)—for example, when using a customer-managed storage account—you must ensure that the Microsoft.ManagedNetworkFabric resource provider has the [Managed Identity Operator (MIO) role](./howto-configure-bring-your-own-storage-network-fabric.md#step3-assign-permissions-to-uami-for-nexus-network-fabric-resource-provider) on the UAMI.
-> Without this permission, the commit discard operation fails. This requirement is applicable only when the Network Fabric is linked to a UAMI. Network Fabrics that aren't associated with a UAMI don’t need any extra permission for commit discard.
-
+### Step 4: Commit Configuration (A/B Staged Update)
 ```Azure CLI
-az networkfabric fabric discard-commit-batch \
-  --resource-group "example-rg" \
-  --network-fabric-name "example-fabric"
-  --commit-batch-id "example-commit-batch-id"
+az managednetworkfabric fabric commit-configuration \ 
+  --resource-group <rg> \ 
+  --fabric-name <fabric-name> 
 ```
+- This applies the candidate configuration to the fabric according to the current commit policy (including staged/CE-first if set in the resource). 
 
-> [!Note]
-> Internal/External network resources move to Admin State: Disabled and Config State: Rejected.<br>
-> Resources aren't deleted, user must delete them manually if required.<br>
-> Network Monitor handling includes additional constraints (disabled monitors revert to rejected state).<br>
-
-#### Need to Make More Updates?
-
-Unlock the configuration to make further changes, then repeat the lock/validate/commit steps.
-
-#### Unlock Example
-
+### Step 5: Monitor Commit Status
 ```Azure CLI
-az networkfabric fabric lock-fabric \
-    --action Unlock \
-    --lock-type Configuration \
-    --network-fabric-name "example-fabric" \
-    --resource-group "example-rg"
+# Get the full commit batch status object for a fabric 
+az managednetworkfabric fabric commit-batch-status \ 
+  --resource-group <rg> \ 
+  --fabric-name <fabric-name> \ 
 ```
 
-### Step 4: Commit Configuration (Mandatory)
+## Discard or Rollback incase of changes (Commit Batch Management) 
 
-Commit the configuration to apply the batched changes to all relevant fabric devices.
-
-#### Azure CLI Command
-
+### Step 6: Unlock the Fabric
 ```Azure CLI
-az networkfabric fabric commit-configuration \
-  --resource-group "example-rg" \
-  --resource-name "example-fabric"
+az managednetworkfabric fabric unlock-configuration \ 
+  --resource-group <rg> \ 
+  --fabric-name <fabric-name> 
 ```
 
-- The operation returns a **status**: `Succeeded`, `InProgress`, or `Failed`
+### Step 7 (optional): Discard or Rollback
+--------------------------------------
 
-- Use CLI polling or Azure Activity Logs to monitor progress
+#### 7.1 Discard Commit Batch (Before Staging to Device)
 
-> [!Important]
-> - This workflow applies **only when the fabric is in Provisioned state** and **admin state is Enabled**. <br>
-> - Locking is mandatory before commit; **commit cannot proceed without locking first**. <br>
-> - **Rollback is not supported** – any incorrect configuration must be updated and re-committed. <br>
-> - Updates outside of this workflow (e.g., to tags or disconnected resources) do **not require commit**. <br>
+If you have locked the fabric and created a commit batch but have **not yet staged the configuration to any device**, you can **discard the commit batch**. This will abandon the candidate configuration and unlock the fabric for new changes.
+```Azure CLI
+az managednetworkfabric fabric discard-commit-configuration \ 
+    --resource-group <rg> \ 
+    --fabric-name <fabric-name> 
+```
+##### Effect:
+- The candidate configuration is dropped.
+- No changes are pushed to any device.
+- The fabric is unlocked and ready for a new commit workflow.
 
+#### 7.2 Rollback (After Staging to Device, Before Final Commit)
+
+If you have already staged the configuration to a device (e.g., CE1 or CE2) but **have not yet performed the final commit**, you can **rollback** the staged changes. This will revert the device(s) to the previous golden configuration and abandon the batch.
+```Azure CLI
+az managednetworkfabric fabric rollback-commit-configuration \ 
+   --resource-group <rg> \ 
+   --fabric-name <fabric-name> 
+```
+##### Effect:
+- Only available after staging to device, before final commit.
+- Device(s) are reverted to their pre-staging state.
+- The batch is closed; the fabric remains locked until explicitly unlocked.
+
+#### 7.3 No Rollback/Discard After Final Commit
+
+- **After the final commit is performed, rollback or discard is NOT available.**
+- To remediate, you must update the ARM resources to the desired state and repeat the lock/commit workflow as a new batch.
+
+## Summary Table: Discard/Rollback Actions
+
+| **Stage**<br> | **Supported Action**<br> | **Command Example**<br> |
+| --- | --- | --- |
+| **Before device staging**<br> | Discard commit batch<br> | az managednetworkfabric fabric discard-commit-configuration<br> |
+| **After device staging**<br> | Rollback staged changes<br> | az managednetworkfabric fabric rollback-commit-configuration<br> |
+| **After final commit**<br> | No rollback/discard; new batch<br> | Update ARM, lock, commit, unlock<br> |
+
+## Troubleshooting
+
+- **Check commit batch status:**
+```Azure CLI
+az managednetworkfabric fabric show --resource-group <rg> --fabric-name <fabric-name> --query "commitStatus" 
+```
+- **View operation logs and diagnostics** for errors or unexpected results.
