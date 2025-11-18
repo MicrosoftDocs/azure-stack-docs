@@ -755,7 +755,7 @@ items:
       - name: Manage Azure Local VMs
         href: ./multi-rack/multi-rack-manage-arc-virtual-machines.md
       - name: Manage Azure Local VM resources
-        href: ./multi-rack/multi-rack-manage-arc-virtual-machines.md
+        href: ./multi-rack/multi-rack-manage-arc-virtual-machine-resources.md
       - name: Manage Azure Local VM extensions
         href: ./multi-rack/multi-rack-virtual-machine-manage-extension.md
 
