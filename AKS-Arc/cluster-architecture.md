@@ -2,7 +2,7 @@
 title: AKS Arc and workload cluster architecture
 description: Learn about AKS Arc and workload cluster architecture.
 ms.topic: overview
-ms.date: 02/28/2025
+ms.date: 11/17/2025
 author: sethmanheim
 ms.author: sethm 
 ms.reviewer: rbaziwane
@@ -15,20 +15,20 @@ ms.custom: references_regions
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
-Azure Kubernetes Service (AKS) on Azure Local is an enterprise-grade Kubernetes container platform. It includes Microsoft-supported core Kubernetes, a purpose-built Windows container host, and a Microsoft-supported Linux container host, with a goal to have a simple deployment and lifecycle management experience.
+Azure Kubernetes Service (AKS) on Azure Local is an enterprise-grade Kubernetes container platform. It includes Microsoft-supported core Kubernetes, a purpose-built Windows container host, and a Microsoft-supported Linux container host. The goal is to provide a simple deployment and lifecycle management experience.
 
-This article introduces the core Kubernetes infrastructure components, such as the control plane, nodes, and node pools. Workload resources such as pods, deployments, and sets are also introduced, along with how to group resources into namespaces.
+This article introduces the core Kubernetes infrastructure components, such as the control plane, nodes, and node pools. It also introduces workload resources such as pods, deployments, and sets, along with how to group resources into namespaces.
 
 ## AKS architecture on Azure Local
 
-AKS clusters on Azure Local use **Arc Resource Bridge** (also known as **Arc appliance**) to provide the core orchestration mechanism and interface for deploying and managing one or more AKS clusters. Containerized applications are deployed into AKS clusters.
+AKS clusters on Azure Local use **Arc Resource Bridge** (also known as **Arc appliance**) to provide the core orchestration mechanism and interface for deploying and managing one or more AKS clusters. You deploy containerized applications into AKS clusters.
 
 :::image type="content" source="media/cluster-architecture/cluster-architecture.png" alt-text="Diagram showing cluster architecture." lightbox="media/cluster-architecture/cluster-architecture.png":::
 
 AKS Arc uses a predefined configuration to deploy Kubernetes clusters effectively and with scalability in mind. A deployment operation creates multiple Linux or Windows virtual machines and joins them together to create one or more Kubernetes clusters.
 
 > [!NOTE]
-> To help improve the reliability of the system, if you run multiple Cluster Shared Volumes (CSVs) in your cluster, by default virtual machine data is automatically spread out across all available CSVs in the cluster. This ensures that applications survive in the event of CSV outages.
+> To help improve the reliability of the system, if you run multiple Cluster Shared Volumes (CSVs) in your cluster, virtual machine data automatically spreads out across all available CSVs in the cluster. This default behavior ensures that applications survive in the event of CSV outages.
 
 ### Arc Resource Bridge
 
