@@ -61,8 +61,7 @@ The following diagram illustrates the feature builds, cumulative updates, and up
   > [!NOTE]
   > After April 2026, you won't receive monthly security and quality updates for 23H2 (OS version 25398.xxxx). Support requests will only be available for patching to a supported release.
 
-- In Azure Local 2510 you must upgrade (23H2) 11.2510.x.x to (24H2) 12.2510.x.x before you can update to the subsequent 2511 release.
-- Before you can update to the 2511 release, you must apply the 2510 update first. Once the 2510 update is applied, (23H2) 11.2510.x.x will upgrade to (24H2) 12.2510.x.x.
+- Before you can update to the 2511 release, you must apply the 2510 update first. Once the 2510 update is applied, 23H2 (11.2510.x.x) will automatically upgrade to 24H2 (12.2510.x.x).
 
 ## Feature release availability timing
 
