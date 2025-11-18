@@ -30,7 +30,7 @@ This how-to guide explains the steps for installing the required Azure CLI and e
         - The spare control plane node should be in Power state ``Off``, Ready state ``No``, and Degraded ``No``.
     - The management plane servers are broken into two groups on odd and even numbered racks. For each group at least one half of the servers must be in Power State ``On``, Cordon status ``Uncordoned``, Ready state ``Yes``, and Degraded ``No``.
         - It is recommended to have more than 50% of the management plane servers available to mitigate any risk.
-    - Control plane server numbers vary based on individual cluster runtime threshold settings. Customers need to determine their minimum number based on their settings, looking for Power state ``On``, Cordon status ``Uncordoned``, Ready state ``Yes``, and Degraded ``No``.
+    - Compute plane server numbers vary based on individual cluster runtime threshold settings. Customers need to determine their minimum number based on their settings, looking for Power state ``On``, Cordon status ``Uncordoned``, Ready state ``Yes``, and Degraded ``No``.
 1. Under Cluster > Managed Resource Group select the group name to go to the resource group page.
     - In the resource group, search for ``Kubernetes - Azure Arc`` to identify the Azure Arc information and select it. Status should be ``Connected``.
         - Within Azure Arc page, select Settings > Extensions.
