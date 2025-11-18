@@ -69,7 +69,7 @@
             - name: Disable internal/external networks in an enabled layer 3 isolation domain
               href: concepts-disable-internal-external-networks-enabled-layer-3-isolation-domain.md
         - name: A/B Staged configuration update Commit Workflow v3
-          href: concepts-AB-staged-commit-configuration-update-commit-workflow-v3.md              
+          href: concepts-ab-staged-commit-configuration-update-commit-workflow-v3.md              
         - name: Azure Firewall outbound rules for Azure Operator Nexus
           href: concepts-azure-firewall-outbound-rules-nexus.md
         - name: Isolation Domains
@@ -277,7 +277,7 @@
         - name: How to set administrative lock or unlock for Network fabric
           href: howto-set-administrative-lock-or-unlock-for-network-fabric.md
         - name: How to perform A / B staged commit configuration update commit workflow v3 in Azure Operator Nexus
-          href: howto-use-AB-staged-commit-configuration-update-commit-workflow-v3.md
+          href: howto-use-ab-staged-commit-configuration-update-commit-workflow-v3.md
         - name: How to disable internal/external networks in an enabled layer 3 isolation domain
           href: howto-disable-internal-external-networks-enabled-layer-3-isolation-domain.md        
     - name: Cluster
