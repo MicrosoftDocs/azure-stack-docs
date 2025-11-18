@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.reviewer: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 11/17/2025
+ms.date: 11/18/2025
 ---
 
 # Create Azure Local virtual machines enabled by Azure Arc for multi-rack deployments (preview)
@@ -54,6 +54,7 @@ Before you create an Azure Local VM, make sure that the following prerequisites 
 - A custom location for your Azure Local instance that you'll use to provision VMs. The custom location will also show up in the **Overview** page for Azure Local.
 - Access to a logical network or virtual network subnet that you associate with the VM on your Azure Local instance. For more information, see how to [Create logical network](./multi-rack-create-logical-networks.md).
 - Details of your proxy server to provide during VM creation. Azure Local VMs wouldn't have external connectivity to enable guest management without proxy details configured at the time of creation.
+
 ---
 <!--# [Bicep template](#tab/biceptemplate)
 
@@ -62,11 +63,11 @@ Before you create an Azure Local VM, make sure that the following prerequisites 
 - Access to a logical network that you associate with the VM on your Azure Local. For more information, see how to [Create logical network](./create-logical-networks.md).
 - [Download the sample Bicep template](https://aka.ms/hci-vmbiceptemplate)
 
----
+--- -->
 
 ## Create Azure Local VMs
 
-Follow these steps to create a VM on Azure Local.-->
+Follow these steps to create a VM on Azure Local.
 
 # [Azure CLI](#tab/azurecli)
 
@@ -144,7 +145,6 @@ Here we create a VM that uses specific memory and processor counts.
 
 The VM is successfully created when the `provisioningState` shows as `succeeded`in the output.
 
-
 > [!NOTE]
 > The VM created has guest management enabled by default. It is required to provide HTTP proxy to enable guest management properly.
 
@@ -168,7 +168,6 @@ Proxy configuration for VMs is applied only to the onboarding of the Azure conne
 As such, you may need to specifically set the proxy configuration for your applications if they don't reference the environment variables set within the VM.
 
 If creating a VM behind a proxy server, run the following command:
-
 
 ```azurecli
 az stack-hci-vm create --name $vmName --resource-group $resource_group --admin-username $userName --admin-password $password --computer-name $computerName --image $imageName --location $location --authentication-type all --nics $nicName --custom-location $customLocationID --hardware-profile memory-mb="8192" processors="4" --zone $zone –strict-placement true --enable-agent true --enable-vm-config-agent true --proxy-configuration http_proxy="<Http URL of proxy server>" https_proxy="<Https URL of proxy server>" no_proxy="<URLs which bypass proxy>" cert_file_path="<Certificate file path for your machine>"
