@@ -1,6 +1,6 @@
 ---
-title: Disable Internal/External Networks in an Enabled Layer 3 Isolation Domain 
-description: Learn about Disable Internal/External Networks in an Enabled Layer 3 Isolation Domain 
+title: Disable Internal/External Networks in an Enabled Layer 3 Isolation Domain in Azure Operator Nexus 
+description: Learn about Disable Internal/External Networks in an Enabled Layer 3 Isolation Domain in Azure Operator Nexus
 author: RaghvendraMandawale
 ms.author: rmandawale
 ms.service: azure-operator-nexus
@@ -9,17 +9,17 @@ ms.date: 05/16/2025
 ms.custom: template-concept
 ---
 
-# Disable Internal/External Networks in an Enabled Layer 3 Isolation Domain 
+# Disable Internal/External Networks in an Enabled Layer 3 Isolation Domain in Azure Operator Nexus 
 
 Disabling internal or external networks while an Isolation Domain (ISD) is enabled ensures controlled configuration changes without disrupting active traffic. This feature introduces administrative state updates for networks, integrated with Commit workflows for atomic operations.
 
-### Key Capabilities
+## Key Capabilities
 
 - Support enabling/disbaling of Internal and External Networks on an enabled Layer 3 ISD via updateAdministrativeState POST action.
 - Integration with Commit workflow for consistent configuration changes.
 - Enables safe disablement of internal/external networks before deletion by enforcing Disable → Commit → Delete (outside commit) to prevent accidental removal.
 
-### Behavior & Constraints
+## Behavior & Constraints
 
 - Internal/External Networks resoruces cannot be deleted directly when ISD is enabled; they must be disabled first.
 - **Mutually exclusive pipelines:** PATCH-based config updates (**Accepted**) and admin POST actions (**PendingAdministrativeUpdate**) cannot be performed in a single commit session.
@@ -33,7 +33,7 @@ Disabling internal or external networks while an Isolation Domain (ISD) is enabl
 - Unlocking during the batch will not restore the resource to enabled state, user must perform update Administrative State to enabled and commit if the user desires to change the state.
 - Post delete operation there are no mechanisms to restore the deleted internal/external network. Users must recreate the resource via ARM API via commit workflow if the Layer3 Isolation Domain is in enabled state
 
-### State Transitions
+## State Transitions
 
 - Network **Fabric:** Provisioned → PendingAdministrativeUpdate → Provisione
 - Internal/External **Network:** Enabled → PendingAdministrativeUpdate → Disabled
