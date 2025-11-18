@@ -64,7 +64,7 @@ When rotation is triggered, the service securely generates and updates operator 
            "secretType": "Admin user password"
          },
     ```
-- When the bring your own key vault becomes available, secrets are copied to your key vault in the same format, as shown in the preceding example.
+- When the bring your own key vault (BYOKV) feature becomes available, secrets are copied to your key vault in the same format, as shown in the preceding example.
 - On the Nexus Network Fabric resource, the capability to delete all secrets that pertain to Nexus Network Fabric is purged from the Network Fabric Controller key vault (similar to present-day behavior).
 - Password rotation behavior with other common workflows is listed in the following table:
 
