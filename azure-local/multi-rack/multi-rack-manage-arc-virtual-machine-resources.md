@@ -1,0 +1,184 @@
+---
+title: Manage resources for Azure Local VMs for multi-rack deployments (preview)
+description: Learn how to manage resources like data disks and network interfaces on an Azure Local VM for multi-rack deployments (preview).
+author: alkohli
+ms.author: alkohli
+ms.topic: how-to
+ms.service: azure-local
+ms.date: 11/17/2025
+---
+
+# Manage resources for Azure Local VMs for multi-rack deployments (preview)
+
+[!INCLUDE [multi-rack-applies-to-preview](../includes/multi-rack-applies-to-preview.md)]
+
+This article describes how to manage these VM resources for an Azure Local VM for multi-rack deployments.
+
+After you deploy Azure Local virtual machines (VMs) enabled by Azure Arc, you may need to add or delete resources like data disks.
+
+> [!NOTE]
+> You can't add or delete network interfaces after the VM is created. If more than one network interface is needed, make sure to add them during VM creation.
+
+[!INCLUDE [hci-preview](../includes/hci-preview.md)]
+
+## Prerequisites
+
+- Access to a multi-rack deployment of Azure Local with one or more running Azure Local VMs. For more information, see [Create an Azure Local VM enabled by Azure Arc](./multi-rack-create-arc-virtual-machines.md).
+
+## Add a data disk
+
+After you create a VM, you might want to add a data disk to it.
+
+> [!NOTE]
+> You must turn off your VM before adding or removing a data disk. After the update completes, you need to restart your VM.
+
+### [Azure CLI](#tab/azurecli)
+
+To add a data disk to a VM, complete the following steps using Azure CLI from the computer that you use to connect to Azure Local.
+
+1. Create a data disk:
+
+   ```azurecli
+   az stack-hci-vm disk create --resource-group $resource_group --name $diskName --custom-location $customLocationID --location $location --size-gb 1
+   ```
+
+1. Stop the VM:
+
+    ```azurecli
+    az stack-hci-vm stop --resource-group $resource_group --name $vmName
+    ```
+
+1. Attach the disk to the VM:
+
+   ```azurecli
+   az stack-hci-vm disk attach --resource-group $resource_group --vm-name $vmName --disks $diskName --yes
+   ```
+
+1. Start the VM:
+
+    ```azurecli
+   az stack-hci-vm start --resource-group $resource_group --name $vmName
+   ```
+
+### [Azure portal](#tab/azureportal)
+
+Follow these steps in the Azure portal for your deployment instance:
+
+1. Go to your Azure Local resource, and then go to **Virtual machines**.
+
+1. In the list of VMs, select and go to the VM to which you want to add a data disk.
+
+1. Go to **Disks**. On the command bar, select **+ Add new disk**.  
+
+   :::image type="content" source="./media/multi-rack-manage-arc-virtual-machine-resources/add-data-disk-1.png" alt-text="Screenshot of the command for adding a new disk on the Disks pane for a virtual machine." lightbox="./media/multi-rack-manage-arc-virtual-machine-resources/add-data-disk-1.png":::
+
+1. On the **Add new disk** pane, enter the following parameters, and then select **Add**:
+    1. For **Name**, specify a friendly name for the data disk.
+    1. For **Size (GB)**, provide the size for the disk in gigabytes.
+
+1. Select **Save** to add the new disk.
+
+   :::image type="content" source="./media/multi-rack-manage-arc-virtual-machine-resources/add-data-disk-3.png" alt-text="Screenshot of the command to save a newly created data disk." lightbox="./media/multi-rack-manage-arc-virtual-machine-resources/add-data-disk-3.png":::
+
+1. You get a notification that the job for creating a data disk started. When the disk is created, the list refreshes to display the newly added disk.
+
+   :::image type="content" source="./media/multi-rack-manage-arc-virtual-machine-resources/add-data-disk-4.png" alt-text="Screenshot of a newly added data disk for a virtual machine." lightbox="./media/multi-rack-manage-arc-virtual-machine-resources/add-data-disk-4.png":::
+
+---
+
+## Expand a data disk
+
+You can expand an existing data disk to your desired size using Azure CLI.
+
+> [!NOTE]
+>
+> - The size you're changing the data disk to can't be the same or less than the original size of the data disk.
+>
+> - The maximum size of the disk can expand depending on the storage capacity of the cluster. Disk size maximum is 20 TB.
+>
+To expand the size of your data disk using Azure CLI, run the following command:
+
+```azurecli
+az stack-hci-vm disk update --name $name --resource-group $resource_group --size-gb $size_in_gb
+```
+
+Here's a sample output that indicates successful resizing of the data disk:
+
+```Output
+{
+ "endTime": "2025-03-17T17:55:49.3271204Z",
+ "error": {},
+ "extendedLocation": null,
+ "id": "/providers/Microsoft.AzureStackHCI/locations/EASTUS2EUAP/operationStatuses/00000000-0000-0000-0000-000000000000*0000000000000000000000000000000000000000000000000000000000000000",
+ "location": null,
+ "name": "00000000-0000-0000-0000-000000000000*0000000000000000000000000000000000000000000000000000000000000000",
+ "properties": null,
+ "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resourceGroupName/providers/Microsoft.AzureStackHCI/virtualHardDisks/dataDiskName",
+ "startTime": "2025-03-17T17:55:25.8868586Z",
+ "status": "Succeeded",
+ "systemData": null,
+ "tags": null,
+ "type": null
+}
+```
+
+## Delete a data disk
+
+When you delete a data disk, you get a notification that the job for disk deletion started. After the disk deletion completes, the list refreshes to display the remaining data disks.
+
+> [!NOTE]
+> You must turn off your VM before adding or removing a data disk. After it updates, you need to restart your VM.
+
+### [Azure CLI](#tab/azurecli)
+
+To delete a data disk from a VM, complete the following steps using Azure CLI from the computer that you're using to connect to Azure Local.
+
+1. Stop the VM:
+
+    ```azurecli
+    az stack-hci-vm stop --resource-group $resource_group --name $vmName
+    ```
+
+1. Detach disk from the VM:
+
+    ```azurecli
+    az stack-hci-vm disk detach --resource-group $resource_group --vm-name $vmName --name $diskName
+    ```
+
+1. Start the VM:
+
+   ```azurecli
+    az stack-hci-vm start --resource-group $resource_group --name $vmName
+   ```
+
+1. Delete the disk (optional):
+
+    ```azurecli
+    az stack-hci-vm disk delete --resource-group $resource_group --vm-name $vmName --name $diskName
+    ```
+
+### [Azure portal](#tab/azureportal)
+
+Follow these steps in the Azure portal for your deployment instance:
+
+1. Go to Azure Local resource, and then go to **Virtual machines**.
+
+1. In the list of VMs, select and go to the VM whose data disk you want to delete.
+
+1. Go to **Disks** and select the data disk that you want to delete. On the command bar, select **Delete**.
+
+    :::image type="content" source="./media/multi-rack-manage-arc-virtual-machine-resources/delete-data-disk-1.png" alt-text="Screenshot of a selected data disk and the Delete button on the Disks pane." lightbox="./media/multi-rack-manage-arc-virtual-machine-resources/delete-data-disk-1.png":::
+
+1. In the confirmation dialog, select **Yes** to continue.
+
+    :::image type="content" source="./media/multi-rack-manage-arc-virtual-machine-resources/delete-data-disk-2.png" alt-text="Screenshot of the confirmation dialog for deleting a data disk." lightbox="./media/multi-rack-manage-arc-virtual-machine-resources/delete-data-disk-2.png":::
+
+1. Select **Save** to save the changes.
+
+    :::image type="content" source="./media/multi-rack-manage-arc-virtual-machine-resources/delete-data-disk-3.png" alt-text="Screenshot of the Save command in an empty list of data disks." lightbox="./media/multi-rack-manage-arc-virtual-machine-resources/delete-data-disk-3.png":::
+
+1. You get a notification that the job for disk deletion started. After the disk is deleted, the list refreshes to display the remaining data disks.
+
+## Related content
+
+- [Manage VM extensions on Azure Local VMs for multi-rack deployments](./multi-rack-virtual-machine-manage-extension.md).
