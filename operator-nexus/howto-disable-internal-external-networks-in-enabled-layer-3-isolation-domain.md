@@ -1,6 +1,6 @@
 ---
-title: How to Disable Internal/External Networks in an Enabled Layer 3 Isolation Domain 
-description: Learn about how to disable Internal/External networks in an enabled layer 3 isolation domain
+title: How to Disable Internal/External Networks in an Enabled Layer 3 Isolation Domain in Azure Operator Nexus 
+description: Learn about how to disable Internal/External networks in an enabled layer 3 isolation domain in Azure Operator Nexus 
 author: RaghvendraMandawale
 ms.author: rmandawale
 ms.service: azure-operator-nexus
@@ -9,7 +9,7 @@ ms.date: 05/16/2025
 ms.custom: template-concept
 ---
 
-# How to Disable Internal/External Networks in an Enabled Layer 3 Isolation Domain 
+# How to Disable Internal/External Networks in an Enabled Layer 3 Isolation Domain in Azure Operator Nexus 
 
 ## Prerequisites
 
@@ -25,7 +25,7 @@ ms.custom: template-concept
 - --name \<resource-name\>_ – Internal/External network resource name
 - --fabric \<fabric-name\>_ – Fabric resource name for commit operations
 
-### Step 1: Disable an External Network (Administrative State)
+## Step 1: Disable an External Network (Administrative State)
 ```Azure CLI
 az managednetworkfabric external-network update-administrative-state \
   --resource-group <rg> \
@@ -42,7 +42,7 @@ az managednetworkfabric external-network show \
   --query "{name:name, adminState:administrativeState, provState:provisioningState}"
 ```
 
-### Step 2: Disable an Internal Network (Administrative State)
+## Step 2: Disable an Internal Network (Administrative State)
 ```Azure CLI
 az managednetworkfabric internal-network update-administrative-state \
   --resource-group <rg> \
@@ -59,7 +59,7 @@ az managednetworkfabric internal-network show \
   --query "{name:name, adminState:administrativeState, provState:provisioningState}"
 ```
 
-### Step 3: CommitV2 Workflow (Fabric-wide)
+## Step 3: CommitV2 Workflow (Fabric-wide)
 **Lock configuration**
 ```Azure CLI
 az managednetworkfabric fabric lock-configuration \
@@ -84,7 +84,7 @@ az managednetworkfabric fabric show \
   --query "{name:name, provState:provisioningState, commitStatus:commitStatus}"
 ```
 
-### Step 4: Re-enable a Network (Rollback / Enable)
+## Step 4: Re-enable a Network (Rollback / Enable)
 **External Network: Enable**
 ```Azure CLI
 az managednetworkfabric external-network update-administrative-state \
@@ -107,7 +107,7 @@ az managednetworkfabric fabric lock-configuration --fabric <fabric-name>
 az managednetworkfabric fabric commit-configuration --fabric <fabric-name> 
 ```
 
-### Step 5: Optional step - Delete a Network (after Disable + Commit)
+## Step 5: Optional step - Delete a Network (after Disable + Commit)
 **External Network: Delete**
 ```Azure CLI
 az managednetworkfabric external-network delete \
@@ -132,7 +132,7 @@ az managednetworkfabric internal-network delete \
 - Disable and commit must be completed before delete.
 - Associated resources will also be disabled unless shared globally.
 
-### FAQ
+## FAQ
 ---
 
 - **Why not allow direct delete?** To maintain configuration integrity and avoid traffic disruption.
