@@ -4,7 +4,7 @@ description: Learn how to prepare GPUs for an Azure Local instance.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 11/11/2025
+ms.date: 11/18/2025
 ms.service: azure-local
 ---
 
@@ -35,7 +35,9 @@ GPU resource model | Entire device | Equally partitioned device |
 
 ## Supported GPU models
 
-To see the full list of supported solutions and GPUs available, see [Azure Local Solutions](https://azurestackhcisolutions.azure.microsoft.com/#/catalog?gpuSupport=GPU_P&gpuSupport=DDA) and select **GPU support** in the left menu for options.  
+To see the full list of supported solutions and GPUs available, see [Azure Local catalog](https://azurestackhcisolutions.azure.microsoft.com/#/catalog?gpuSupport=GPU_P&gpuSupport=DDA). The page opens with GPU support options already selected.
+
+For a list of Premier Solutions and Integrated Systems that support accelerated AI workloads with Azure Local supported GPU models, go to the Azure Local catalog and select **AI workload** under **Solution capability** in the left menu.
 
 NVIDIA supports their workloads separately with their virtual GPU software. For more information, see [Microsoft Azure Local - Supported NVIDIA GPUs and Validated Server Platforms](https://docs.nvidia.com/vgpu/17.0/grid-vgpu-release-notes-microsoft-azure-stack-hci/index.html#hardware-configuration).
 
