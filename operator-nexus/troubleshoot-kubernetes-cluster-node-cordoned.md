@@ -1,5 +1,5 @@
 ---
-title: Troubleshoot a Kubernetes Cluster node in Ready,Scheduling Disabled after Runtime Upgrade
+title: Troubleshoot a Kubernetes Cluster node in Ready, Scheduling Disabled after Runtime Upgrade
 description: Learn what to do when your Kubernetes Cluster node is in the Ready, Scheduling Disabled state after a runtime upgrade.
 ms.service: azure-operator-nexus
 ms.custom: troubleshooting
