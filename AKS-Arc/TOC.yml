@@ -471,7 +471,9 @@
       - name: Azure Hybrid Benefit
         href: azure-hybrid-benefit-22h2.md
   - name: How-to guides
-    items: 
+    items:
+    - name: Migrate from Windows Server 2019 to Windows Server 2022
+      href: windows-server-migration-guide.md 
     - name: Install AKS Arc host with prestaged cluster service objects and DNS records
       href: prestage-cluster-service-host-create.md
     - name: Use manual (offline) download
