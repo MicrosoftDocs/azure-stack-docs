@@ -13,19 +13,19 @@ ms.custom: template-concept
 
 **A/B Staged Config Update** introduces a safe rollout model for Network Fabric configuration. Operators stage configuration on one CE (A or B), validate behavior, optionally cancel to revert, or complete to roll out to the remaining devices—leveraging **Commit Workflow** semantics (lock → validate → commit). Current scope targets **CE-only staging**; broader policies may be added later.
 
-### Key Highlights
+## Key Highlights
 
 - **Reduced Risk:** Prevents simultaneous configuration errors that could impact all devices, ensuring network stability.
 - **Staged Rollout**: Enables updates to be applied to one CE device at a time, allowing for targeted testing and validation.
 - **Rollback Capability:** Provides a straightforward rollback mechanism to revert to the previous configuration if issues are detected during staging.
 - **Operational Flexibility:** Supports both staged and traditional (non-staged) configuration workflows, giving operators control over the update process.Both workflows are mutually exclusive and cannot be triggered while one is in progress.
 
-### Supported Use Cases
+## Supported Use Cases
 
 - CE configuration changes that can be fully validated during staging; other devices update only after **Complete**.
 - Non‑staged Commit V2 remains available (lock → diff/validate → commit) for all supported resources.
 
-### Architecture & Workflow
+## Architecture & Workflow
 
 A/B Update extends Commit V2 with policy‑driven staged steps:<br>
 1. **Lock (Configuration)** – freeze fabric configuration to batch the intended updates.<br>
@@ -35,14 +35,14 @@ A/B Update extends Commit V2 with policy‑driven staged steps:<br>
 5. **Cancel (Rollback)** – revert all devices to previous golden configuration if results aren’t acceptable.<br>
 6. **Complete** – roll out to remaining devices, then release the lock.<br>
 
-### Prerequisites & Versioning
+## Prerequisites & Versioning
 
 - **Runtime**: Network Fabric runtime **≥ 7.0.0**.
 - **NNF Release**: Feature ships with **NNF 10.0**.
 - **API**: GA API dated **2025‑07‑15** (or later).
 - **Commit V2** foundation: Runtime **≥ 5.0.1** (for non‑staged operations and device previews/diffs).
 
-### Behavior & Constraints
+## Behavior & Constraints
 
 - Fabric administrative **lock is mandatory** before staged or full commits.
 - During **CE staging**, only the specified CE is updated; all other devices remain unchanged until **Complete**.
@@ -54,12 +54,12 @@ A/B Update extends Commit V2 with policy‑driven staged steps:<br>
 - A/B update and commit v2 workflows (patch and update) are mutually exclusive and cannot be performed in parallel.
 - Once A/B update workflow has been initiated the service does not support switching over to commit v2 workflow
 
-### State Transitions (high level)
+## State Transitions (high level)
 
 - **Fabric**: Provisioned → Locked (Configuration) → Prepared (Staged) → Committed/Completed → Provisioned.
 - **CE device**: Config(previous) → Candidate(staged) → Applied → (if cancel) Reverted(previous).
 
-### Failure Handling & Observability
+## Failure Handling & Observability
 
 - Use device configuration views to identify misconfigurations **before** commit.
 - Failed commit batches surface descriptive errors; use activity logs and Commit V2 diagnostics.
