@@ -3,7 +3,7 @@ title:  Security updates for Azure Local
 description: Security updates for Azure Local.
 author: alkohli
 ms.topic: conceptual
-ms.date: 11/17/2025
+ms.date: 11/18/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
@@ -99,7 +99,7 @@ To learn more about Windows update terminology, see [types of Windows updates]
  
 ## Improvements
 
-This security update contains fixes and quality improvements from [KB5067036](https://support.microsoft.com/topic/october-28-2025-kb5067036-os-builds-26200-7019-and-26100-7019-preview-ec3da7dc-63ba-4b1d-ac41-cf2494d2123a?preview=true) (released October 28, 2025). The following summary outlines key issues addressed by this update. Also, included are available new features. The bold text within the brackets indicates the item or area of the change. 
+This security update contains fixes and quality improvements from [KB5068861](https://support.microsoft.com/topic/november-11-2025-kb5068861-os-builds-26200-7171-and-26100-7171-2e0512e4-3ad4-4da6-958c-a468a1af949e) (released November 11, 2025). The following summary outlines key issues addressed by this update. Also, included are available new features. The bold text within the brackets indicates the item or area of the change. 
 
 - **[Gaming]**
     - Fixed: This update addresses an issue that affects gaming handheld devices. These devices were unable to stay in low-power states, which caused faster battery drain.​​​​​​​
