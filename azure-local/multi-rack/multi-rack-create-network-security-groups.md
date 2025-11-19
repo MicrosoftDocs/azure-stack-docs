@@ -56,10 +56,13 @@ In this example, the NSG controls traffic flow between logical networks A and B,
     - This instance has a custom location.
     - You have access to an Azure subscription with the Azure Stack HCI Administrator role-based access control (RBAC) role. This role grants full access to your Azure Local instance and its resources. For more information, see [Assign Azure Local RBAC roles](./multi-rack-assign-vm-rbac-roles.md#custom-roles).
     - You have at least one static logical network or virtual network and one static network interface on this instance. For more information, see [Create logical networks](./multi-rack-create-logical-networks.md#create-a-static-logical-network), [Create virtual networks](./multi-rack-create-virtual-networks.md) and [Create network interfaces](./multi-rack-create-network-interfaces.md#network-interface-with-static-ip-using-logical-network).
-    - If you use a client to connect to your Azure Local, make sure you install the latest Azure CLI and the `az-stack-hci-vm` extension. For more information, see [Azure Local VM management prerequisites](./multi-rack-vm-management-prerequisites.md).
+
+- If you use a client to connect to your instance, make sure you install the latest Azure CLI and the `az-stack-hci-vm` extension. For more information, see [Azure Local VM management prerequisites](./multi-rack-vm-management-prerequisites.md).
 
 
 ## Create network security groups and network security rules
+
+The following sections explain how to create network security groups (NSGs) and network security rules on your multi-rack deployments using the Azure CLI.
 
 ## Sign in and set subscription
 
@@ -69,6 +72,7 @@ In this example, the NSG controls traffic flow between logical networks A and B,
     ```azurecli
     az login --use-device-code
     ```
+
 1. Set your subscription. Run the following command to set your subscription context to the subscription where your Azure Local instance is deployed:
 
     ```azurecli
@@ -81,7 +85,9 @@ Create a network security group (NSG) to manage data traffic flow on Azure Local
 
 > [!WARNING]
 > NSGs must have at least one network security rule. An empty NSG denies all inbound traffic by default. A VM or logical network associated with this NSG isn't reachable.
+
 <!-- open comment in word doc -->
+
 1. Set the following parameters in your Azure CLI session.
 
     ```azurecli
@@ -269,6 +275,6 @@ Run the following command to create an outbound network security rule that block
   ```
 
 
-## Next steps
+<!--## Next steps
 
-- [Manage NSGs on Azure Local](../manage/manage-network-security-groups.md)
+- [Manage NSGs on Azure Local](../manage/manage-network-security-groups.md)-->
