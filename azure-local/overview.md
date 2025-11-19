@@ -36,6 +36,6 @@ Azure Local is part of Microsoft’s [adaptive cloud](https://azure.microsoft.co
 To learn more about Azure Local, see the following articles:
 
 - Read the [Azure Local blog](https://aka.ms/ignite25/blog/azurelocal) post.
-- [Azure Local scalability and deployments](./scalability-deployments.md)
+- [Azure Local scalability and deployments](./scalability-deployments.md).
 - [What are hyperconverged deployments of Azure Local?](./overview/hyperconverged-overview.md)
 - [What are multi-rack deployments of Azure Local?](./multi-rack/multi-rack-overview.md)
