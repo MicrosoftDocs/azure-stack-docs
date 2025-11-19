@@ -928,8 +928,7 @@ For more information, see [Optimize storage with ReFS deduplication and compress
 
 ## Next steps
 
-- [Read the blog about What's new for Azure Local at Microsoft Ignite 2024](https://techcommunity.microsoft.com/blog/azurearcblog/introducing-azure-local-cloud-infrastructure-for-distributed-locations-enabled-b/4296017).
+- [Read the Azure Local blog](https://aka.ms/ignite25/blog/azurelocal) post.
 - Read the [blog announcing the general availability of Azure Local](https://techcommunity.microsoft.com/t5/azure-stack-blog/azure-stack-hci-version-23h2-is-generally-available/ba-p/4046110).
-- For Azure Local deployments:
-  - Read the [Deployment overview](./deploy/deployment-introduction.md).
-  - Learn how to [Deploy Azure Local via the Azure portal](./deploy/deploy-via-portal.md).
+- Read [About hyperconverged deployment methods](./deploy/deployment-introduction.md).
+- Learn how to [Deploy Azure Local via the Azure portal](./deploy/deploy-via-portal.md).
