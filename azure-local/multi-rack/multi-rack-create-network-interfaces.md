@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.reviewer: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 11/17/2025
+ms.date: 11/18/2025
 ---
 
 # Create network interfaces for Azure Local VMs for multi-rack deployments (preview)
@@ -266,6 +266,7 @@ You can use this network interface to create a VM. For more information, see [Cr
 # [Azure portal](#tab/azureportal)
 
 In the Azure portal, you create a network interface during the VM creation flow. For more information, see [Create Azure Local VM in Azure portal](./multi-rack-create-arc-virtual-machines.md).
+
 ---
 
 ## Next steps
