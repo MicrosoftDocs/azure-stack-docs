@@ -57,8 +57,7 @@ The following table lists the known issues in this release:
 
 |Feature  |Issue    |Workaround  |
 |---------|---------|------------|
-| Update <!--35747709--> | Update may fail when the cloud management group is running on a different node than the owner node with the error: `Type 'RegisterCloudManagementUpdatesExtension' of Role 'CloudManagementConfig' raised an exception: Exception occurred in Get-ClusterExtension'` | Move the management group to the owner node manually and proceed with the update: <br><br> `# Get the owner node of the group matching '*orch*'` <br>
-`$orchOwner = (Get-ClusterGroup -Name '*orch*').OwnerNode.Name`<br><br> `# Move the "Cloud Management" group to that node`<br> `Move-ClusterGroup -Name 'Cloud Management' -Node $orchOwner` |
+| Update <!--35747709--> | Update may fail when the cloud management group is running on a different node than the owner node with the error: `Type 'RegisterCloudManagementUpdatesExtension' of Role 'CloudManagementConfig' raised an exception: Exception occurred in Get-ClusterExtension'` | Move the management group to the owner node manually and proceed with the update: <br><br> `# Get the owner node of the group matching '*orch*'` <br> `$orchOwner = (Get-ClusterGroup -Name '*orch*').OwnerNode.Name`<br><br> `# Move the "Cloud Management" group to that node`<br> `Move-ClusterGroup -Name 'Cloud Management' -Node $orchOwner` |
 | Deployment <!--35929472--> | AD-less deployments fail with error: `Failed to execute Test-Cluster: An error occurred opening cluster`. | AD-less environments will need to be deployed on 2510 until this issue is fixed. |
 
 
