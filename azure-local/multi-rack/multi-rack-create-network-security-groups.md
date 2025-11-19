@@ -27,7 +27,7 @@ Use a network security group to filter network traffic between logical networks,
 
 Here is a diagram that shows how network security groups are attached to logical networks, virtual networks, and VM network interfaces on a multi-rack deployment:
 
-:::image type="content" source="./media/create-network-security-groups/network-security-groups.png" alt-text="Screenshot of conceptual diagram for network security groups attached to logical networks." lightbox="./media/create-network-security-groups/network-security-groups.png":::
+:::image type="content" source="./media/multi-rack-create-network-security-groups/network-security-groups.png" alt-text="Screenshot of conceptual diagram for network security groups attached to logical networks." lightbox="./media/multi-rack-create-network-security-groups/network-security-groups.png":::
 
 
 The diagram shows a network setup with two logical networks:
