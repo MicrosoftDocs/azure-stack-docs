@@ -18,7 +18,7 @@ ms.custom: template-how-to, devx-track-azurecli
 - Contributor rights on the resource group and fabric.
 - Fabric must be in Provisioned and Enabled state, with no active commit batch in progress.
 
-### Step 1: Make ARM Resource Changes (Pre-commit)
+### Step 1: Make ARM Resource Changes (Precommit)
 ----------------------------------------------
 Apply your intended configuration changes to ARM resources. These changes form the candidate configuration for A/B staging. <br>
 #### Example: Update L3 Isolation Domain (ISD) to enable a new QoS policy and associate a new route policy
@@ -82,7 +82,7 @@ az managednetworkfabric fabric commit-batch-status \
   --fabric-name <fabric-name> \ 
 ```
 
-## Discard or Rollback in case of changes (Commit Batch Management) 
+## Discard or Rollback if there are changes (Commit Batch Management) 
 
 ### Step 6: Unlock the Fabric
 ```Azure CLI
@@ -91,12 +91,12 @@ az managednetworkfabric fabric unlock-configuration \
   --fabric-name <fabric-name> 
 ```
 
-### Step 7 (optional): Discard or Rollback
+### Step 7 (optional): Discard or Roll back
 --------------------------------------
 
 #### 7.1 Discard Commit Batch (Before Staging to Device)
 
-If you have locked the fabric and created a commit batch but have **not yet staged the configuration to any device**, you can **discard the commit batch**. This will abandon the candidate configuration and unlock the fabric for new changes.
+If you lock the fabric and create a commit batch but have **not yet staged the configuration to any device**, you can **discard the commit batch**. This abandons the candidate configuration and unlocks the fabric for new changes.
 ```Azure CLI
 az managednetworkfabric fabric discard-commit-configuration \ 
     --resource-group <rg> \ 
@@ -109,7 +109,7 @@ az managednetworkfabric fabric discard-commit-configuration \
 
 #### 7.2 Rollback (After Staging to Device, Before Final Commit)
 
-If you have already staged the configuration to a device (e.g., CE1 or CE2) but **have not yet performed the final commit**, you can **rollback** the staged changes. This will revert the device(s) to the previous golden configuration and abandon the batch.
+If you have already staged the configuration to a device (for example, CE1 or CE2) but **have not yet performed the final commit**, you can **rollback** the staged changes. This reverts the device(s) to the previous golden configuration and abandon the batch.
 ```Azure CLI
 az managednetworkfabric fabric rollback-commit-configuration \ 
    --resource-group <rg> \ 
@@ -117,7 +117,7 @@ az managednetworkfabric fabric rollback-commit-configuration \
 ```
 ##### Effect:
 - Only available after staging to device, before final commit.
-- Device(s) are reverted to their pre-staging state.
+- Device(s) are reverted to their prestaging state.
 - The batch is closed; the fabric remains locked until explicitly unlocked.
 
 #### 7.3 No Rollback/Discard After Final Commit

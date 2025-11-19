@@ -21,21 +21,21 @@ Disabling internal or external networks while an Isolation Domain (ISD) is enabl
 
 ## Behavior & Constraints
 
-- Internal/External Networks resoruces cannot be deleted directly when ISD is enabled; they must be disabled first.
-- **Mutually exclusive pipelines:** PATCH-based config updates (**Accepted**) and admin POST actions (**PendingAdministrativeUpdate**) cannot be performed in a single commit session.
+- Internal/External Networks resource can't be deleted directly when ISD is enabled; they must be disabled first.
+- **Mutually exclusive pipelines:** PATCH-based config updates (**Accepted**) and admin POST actions (**PendingAdministrativeUpdate**) can't be performed in a single commit session.
 - At least one internal network must remain enabled in ISD.
 - Disable operation is blocked if an ARM update and commit batch is in progress.
-- Disabling will fail if associated resources are enabled
+- Disabling fails if associated resources are enabled
   - Internal Networks: RoutePolicy, NetworkTap, NetworkMonitor.
   - External Networks: RoutePolicy, NNIs, ACLs.
-- Disabling Internal /external network is not supported via A/B update workflow.
-- Modification of any Internal/External Network configuration might lead to temporary or may be permanent disruption of network if the dependent service/workloads are still using the old configuration.
-- Unlocking during the batch will not restore the resource to enabled state, user must perform update Administrative State to enabled and commit if the user desires to change the state.
+- Disabling Internal /external network isn't supported via A/B update workflow.
+- Modification of any Internal/External Network configuration might lead to temporary or might be permanent disruption of network if the dependent service/workloads are still using the old configuration.
+- Unlocking during the batch won't restore the resource to enabled state, user must perform update Administrative State to enabled and commit if the user desires to change the state.
 - Post delete operation there are no mechanisms to restore the deleted internal/external network. Users must recreate the resource via ARM API via commit workflow if the Layer3 Isolation Domain is in enabled state
 
 ## State Transitions
 
-- Network **Fabric:** Provisioned → PendingAdministrativeUpdate → Provisione
+- Network **Fabric:** Provisioned → PendingAdministrativeUpdate → Provisioned
 - Internal/External **Network:** Enabled → PendingAdministrativeUpdate → Disabled
 
 ## Next steps
