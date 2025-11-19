@@ -30,7 +30,7 @@ The network fabric enables you to:
 
 - Get highly available and robust control plane for your network infrastructure.
 
-:::image type="content" source="./media/multi-rack-network-fabric-overview/network-fabric-diagram.png" alt-text="Diagram showing network fabric components." lightbox="./media/network-fabric-overview/multi-rack-network-fabric-diagram.png":::
+:::image type="content" source="./media/multi-rack-network-fabric-overview/network-fabric-diagram.png" alt-text="Diagram showing network fabric components." lightbox="./media/multi-rack-network-fabric-overview/network-fabric-diagram.png":::
 
 Key capabilities offered in the network fabric:
 
