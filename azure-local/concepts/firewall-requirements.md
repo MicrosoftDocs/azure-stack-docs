@@ -4,7 +4,7 @@ description: This article provides guidance on firewall requirements for the Azu
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 11/04/2025
+ms.date: 11/19/2025
 ---
 
 # Firewall requirements for Azure Local
@@ -15,10 +15,10 @@ This article provides guidance on how to configure firewalls for the Azure Stack
 
 This article also describes how to optionally use a highly locked-down firewall configuration to block all traffic to all destinations except those included in your allowlist.
 
-If your network uses a proxy server for internet access, see [Configure proxy settings for Azure Local](../manage/configure-proxy-settings-23h2.md).
-
 > [!IMPORTANT]
-> Azure Express Route and Azure Private Link aren't supported for Azure Local or any of its components as it isn't possible to access the public endpoints required for Azure Local.
+> Azure Arc Private Link Scopes are not supported by Azure Local. Arc endpoints (*.his.arc.azure.com,*.guestconfiguration.azure.com and *.dp.kubernetesconfiguration.azure.com) must always resolve to public IPs from Azure Local nodes, ARB VM and the proxy server if in use.
+> Using other PaaS services private endpoints different from Arc Private Link Scopes is possible as long as routing is configured to send the traffic over Azure Express Route or Site-to-Site VPN to reach your Azure VNET private endpoints.
+> Additional Private Endpoints FQDNs might be required to be added to your proxy bypass list during Azure Local machines Arc registration. Make sure you plan your proxy bypass list string before registering your nodes in Arc.
 
 ## Firewall requirements for outbound endpoints
 
