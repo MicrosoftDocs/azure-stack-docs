@@ -5,7 +5,7 @@ description: Discover how Azure Local offers scalable on-premises solutions for 
 author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
-ms.date: 11/12/2025
+ms.date: 11/18/2025
 ms.topic: conceptual
 ms.service: azure-local
 ---
@@ -45,7 +45,7 @@ For more information on multi-rack deployments, see [What are multi-rack deploym
 Specific reference architectures exist for Azure Local deployments that run Microsoft 365 Local applications. For more information about Microsoft 365 Local, see [Microsoft 365 Local](./concepts/microsoft-365-local-overview.md).
 
 
-## Disconnected operations for Azure Local
+## Disconnected operations for Azure Local (preview)
 
 Azure Local is typically deployed as a cloud-connected solution with the control plane running in an Azure cloud region. For customers with the strictest sovereignty or security requirements, you can also deploy Azure Local as a disconnected solution. Disconnected operations for Azure Local provides a local instance of the control plane, with a subset of Azure capabilities - enabling you to operate without a connection to the cloud.
 
@@ -54,7 +54,7 @@ For more information, see [Disconnected operations for Azure Local](./manage/dis
 ## Next steps
 
 Read about the different Azure Local deployment types:
-- [What are hyperconverged deployments for Azure Local?](./overview/hyperconverged-overview.md)
-- [What are multi-rack deployments for Azure Local?](./multi-rack/multi-rack-overview.md)
+- [What are hyperconverged deployments of Azure Local?](./overview/hyperconverged-overview.md)
+- [What are multi-rack deployments of Azure Local?](./multi-rack/multi-rack-overview.md)
 - [Microsoft 365 Local overview](./concepts/microsoft-365-local-overview.md).
 - [Disconnected operations for Azure Local overview](./manage/disconnected-operations-overview.md).
