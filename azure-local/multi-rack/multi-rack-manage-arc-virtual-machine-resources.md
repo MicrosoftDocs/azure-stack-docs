@@ -5,14 +5,14 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 11/17/2025
+ms.date: 11/18/2025
 ---
 
 # Manage resources for Azure Local VMs for multi-rack deployments (preview)
 
 [!INCLUDE [multi-rack-applies-to-preview](../includes/multi-rack-applies-to-preview.md)]
 
-This article describes how to manage these VM resources for an Azure Local VM for multi-rack deployments.
+This article describes how to manage the VM resources for an Azure Local VM for multi-rack deployments.
 
 After you deploy Azure Local virtual machines (VMs) enabled by Azure Arc, you may need to add or delete resources like data disks.
 
@@ -178,6 +178,8 @@ Follow these steps in the Azure portal for your deployment instance:
     :::image type="content" source="./media/multi-rack-manage-arc-virtual-machine-resources/delete-data-disk-3.png" alt-text="Screenshot of the Save command in an empty list of data disks." lightbox="./media/multi-rack-manage-arc-virtual-machine-resources/delete-data-disk-3.png":::
 
 1. You get a notification that the job for disk deletion started. After the disk is deleted, the list refreshes to display the remaining data disks.
+
+---
 
 ## Related content
 

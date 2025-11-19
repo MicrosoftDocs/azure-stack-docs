@@ -4,12 +4,17 @@ description: Learn how to configure proxy settings for Azure Local, version 23H2
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 06/09/2025
+ms.date: 11/19/2025
 ---
 
 # Configure proxy settings for Azure Local
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
+
+> [!IMPORTANT]
+> Since the release of Azure Local 2506, it is not required to configure the proxy settings manually on your Azure Local Machines. Azure Local machines proxy configuration is done automatically during Arc registration. Make sure you follow the guidance for proxy environments deployments based on your registration method:
+> [Register Azure local with Arc using proxy](../deploy/deployment-without-azure-arc-gateway.md).
+> [Register Azure Local with Arc using proxy and Arc gateway](../deploy/deployment-with-azure-arc-gateway.md).
 
 This article describes how to configure proxy settings for Azure Local cloud deployment if your network uses a proxy server for internet access.
 

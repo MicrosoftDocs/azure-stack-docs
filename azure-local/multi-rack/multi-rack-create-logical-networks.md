@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 11/17/2025
+ms.date: 11/18/2025
 ---
 
 # Create logical networks for Azure Local VMs for multi-rack deployments (preview)
@@ -23,7 +23,7 @@ This article describes how to create or add logical networks for Azure Local vir
 
 Before you begin, complete these prerequisites:
 
-- Review and [complete the prerequisites](../manage/azure-arc-vm-management-prerequisites.md). If you're using a client to connect to your Azure Local, see [Connect to the system remotely](../manage/azure-arc-vm-management-prerequisites.md#connect-to-the-system-remotely).
+- Review and [complete the prerequisites](./multi-rack-vm-management-prerequisites.md). If you're using a client to connect to your Azure Local, see [Connect to the system remotely](./multi-rack-vm-management-prerequisites.md#connect-to-the-system-remotely).
 
 - Ensure you have at least one Layer 3 internal network configured with sufficient IP addresses and the right permissions to associate this internal network with the logical network you create.
 
@@ -49,7 +49,7 @@ To create a logical network using Azure CLI, follow these steps.
 
 ### Sign in and set subscription
 
-1. [Connect to your Azure Local instance](../deploy/deployment-prerequisites.md).
+1. Connect to your Azure Local instance.
 
 1. Sign in and type:
 
@@ -200,4 +200,4 @@ Create a static logical network when you want to create Azure Local VMs with net
 
 ## Next steps
 
-- [Create Azure Local VMs enabled by Azure Arc](../manage/create-arc-virtual-machines.md)
+- [Create Azure Local VMs enabled by Azure Arc](./multi-rack-create-arc-virtual-machines.md)

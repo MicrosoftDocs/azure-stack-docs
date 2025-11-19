@@ -740,16 +740,20 @@ items:
         href: ./multi-rack/multi-rack-vm-management-prerequisites.md 
       - name: Assign RBAC roles
         href: ./multi-rack/multi-rack-assign-vm-rbac-roles.md
-      - name: Create Azure Local VMs image
-        href: ./multi-rack/multi-rack-virtual-machine-image-storage-account.md
+      - name: Create virtual networks
+        href: ./multi-rack/multi-rack-create-virtual-networks.md
       - name: Create logical networks
         href: ./multi-rack/multi-rack-create-logical-networks.md
+      - name: Create Azure Local VM images
+        href: ./multi-rack/multi-rack-virtual-machine-image-storage-account.md
       - name: Create network interfaces
         href: ./multi-rack/multi-rack-create-network-interfaces.md
       - name: Create Azure Local VMs
         href: ./multi-rack/multi-rack-create-arc-virtual-machines.md
       - name: Connect to Azure Local VMs via SSH
         href: ./multi-rack/multi-rack-connect-arc-vm-using-ssh.md
+      - name: Manage Azure Local VMs
+        href: ./multi-rack/multi-rack-manage-arc-virtual-machines.md
       - name: Manage Azure Local VM resources
         href: ./multi-rack/multi-rack-manage-arc-virtual-machine-resources.md
       - name: Manage Azure Local VM extensions
@@ -772,6 +776,10 @@ items:
     items:
       - name: Network cloud REST API reference
         href: /rest/api/networkcloud/
+      - name: Network Fabric CLI commands
+        href: /cli/azure/networkfabric
+      - name: Azure Local VM CLI commands
+        href: /cli/azure/stack-hci-vm
 
 - name: Disconnected operations
   items:
