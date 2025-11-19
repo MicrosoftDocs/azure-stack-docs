@@ -52,8 +52,8 @@ After Kubernetes Cluster Nodes are discovered in the `Ready,SchedulingDisabled` 
     done
     ~~~
 
-
 1. Use kubectl to list the nodes using the wide flag. Observe the node in **Ready** status.
+
     ~~~bash
     $ kubectl get nodes -o wide
     NAME                                          STATUS  ROLES           AGE    VERSION    INTERNAL-IP   EXTERNAL-IP   OS-IMAGE                    KERNEL-VERSION    CONTAINER-RUNTIME
