@@ -1,0 +1,305 @@
+---
+title: Upgrade Infrastructure of Software Defined Networking (SDN) managed by on-premises tools
+description: Learn how to upgrade infrastructure of Software Defined Networking (SDN) managed by on-premises tools.
+ms.topic: how-to
+ms.author: alkohli
+author: alkohli
+ms.date: 11/19/2025
+---
+
+# Upgrade infrastructure of Software Defined Networking (SDN) managed by on-premises tools
+
+<!--add applies to-->
+
+This article provides guidance on safely and securely upgrading infrastructure of an SDN environment managed by on-premises tools.
+
+## About upgrading SDN infrastructure
+
+Your SDN deployment consists of several roles and machines, each providing essential services for your environment. To keep your environment secure and up to date, it's required to upgrade the SDN infrastructure, one node at a time.
+
+We recommend upgrading roles in the following order:
+
+- Hyper-V Hosts
+- Network Controller nodes
+- Load Balancer Multiplexer nodes (optional)
+- Gateway nodes (optional)
+
+> [!IMPORTANT]
+> During the upgrade, workloads that use Load Balancer Multiplexers (Internal Load Balancers, Load Balancers, Public IPs) or Gateways (L3, GRE, S2S Connections) might experience disruption. Most disruption should be minimal while services fail over. Schedule the upgrade during a maintenance window and notify users about potential temporary disruption.
+
+## Before you begin
+
+- Download the ISO image for performing the in-place upgrade.
+
+    - For Azure Local, see [Download operating system for Azure Local deployment](../deploy/download-23h2-software.md).
+
+    - For Windows Server, see [Install Windows Server from installation media](/windows-server/get-started/install-windows-server).<!--verify the link-->
+
+- Use [Unblock-File](/powershell/module/microsoft.powershell.utility/unblock-file) and copy the ISO to a file system that your Hyper-V hosts can access, or copy it manually to each Hyper-V host as needed.
+
+- Install the `SdnDiagnostics` module on the machine where you'll perform the upgrade tasks:
+
+    ```powershell
+    # install or update SdnDiagnostics module
+    # once we have installed or updated, we will remove any modules currently
+    # from the runspace and import to ensure the latest module is imported
+    if ($null -eq (get-module -ListAvailable -Name SdnDiagnostics)) {
+    Install-Module -Name SdnDiagnostics
+    } else {
+    Update-Module -Name SdnDiagnostics
+    }
+    if (Get-Module -Name SdnDiagnostics){
+    Remove-Module -Name SdnDiagnostics
+    } else {
+    Import-Module -Name SdnDiagnostics
+    }
+    ```
+
+- After installation, retrieve current SDN fabric environment details and copy the `SdnDiagnostics` module into the environment:
+
+    ```powershell
+    $environmentInfo = Get-SdnEnvironmentInfo -NetworkController "<NC_VM>"
+    Install-SdnDiagnostics -ComputerName $environmentInfo.FabricNodes
+    ```
+
+- Ensure sufficient space before proceeding. The in-place upgrade requires a minimum of 40 GB of available storage. For VMs, you can increase the VM's VHD size using Windows Admin Center. After resizing the VHD, adjust the partition within the VM using the [Resize-Partition](/powershell/module/storage/resize-partition) or [diskpart](/windows-server/administration/windows-commands/diskpart) commands.
+
+## Perform in-place upgrade
+
+Use the steps in this section to perform an in-place upgrade of the existing OS. These steps apply to all SDN nodes.
+
+### Mount the media
+
+#### Mount-DiskImage for Hyper-V hosts
+
+If the ISO file is located on the local file system, you can mount it directly.
+
+1. Locate the ISO file you downloaded earlier.
+
+1. Run the following command to mount the ISO. Make sure to update the drive letter to one that is not already in use.
+
+    ```powershell
+    Mount-DiskImage -ImagePath "E:\<PATH_NAME>.ISO"
+    ```
+
+#### Add-VMDvdDrive for VMs
+
+For an in-place upgrade on a VM, use Hyper-V to attach the ISO as a DVD drive to the VM directly. This approach reduces overhead required on the file system of the OS.
+
+1. On the Hyper-V host where the VM resides, locate the ISO file that you downloaded earlier.
+
+1. Attach the ISO as a DVD drive:
+
+    ```powershell
+    Add-VMDvdDrive -VMName "<VM_NAME>" -Path "<DRIVE>:\<PATH>.ISO"
+    ```
+
+### Start the upgrade
+
+1. Check the OS version before the upgrade:
+
+    ```powershell
+    # Check the OS version BEFORE OS Upgrade:
+    Get-ComputerInfo | Select-Object WindowsProductName, WindowsInstallationType, OSDisplayVersion, WindowsBuildLabEx | Format-Table -AutoSize
+    ```
+
+1. Initiate the upgrade. The upgrade process will take a while, and the node may reboot several times. For more information regarding command line options, see [Windows Setup Command-Line Options](/windows-hardware/manufacture/desktop/windows-setup-command-line-options?view=windows-11).
+
+1. Check the OS after the upgrade:
+
+    ```powershell
+    # Check the OS version AFTER OS has been upgraded:
+    Get-ComputerInfo | Select-Object WindowsProductName, WindowsInstallationType, OSDisplayVersion, WindowsBuildLabEx | Format-Table -AutoSize
+    ```
+
+## Upgrade Hyper-V hosts
+
+> [!IMPORTANT]
+> If you deployed SDN on Azure Local, upgrade your Hyper-V hosts by following instructions in [About Azure Local upgrades](../upgrade/about-upgrades-23h2.md). Do not use the steps in this article for upgrading Hyper-V hosts.
+
+The upgrade process varies depending on the roles and services in your environment. If you have Storage Spaces Direct, clustering, or similar features, complete the necessary maintenance tasks to take a node offline for the upgrade process.
+
+If virtual machines (VMs) aren't using clustering, evaluate live migrating VMs to another host within the environment depending on capacity.
+
+After you put the Hyper-V host in the maintenance mode, follow the steps in [Perform in-place upgrade](#perform-in-place-upgrade). Repeat this process for all Hyper-V hosts within your cluster.
+
+## Upgrade Network Controller VMs (Service Fabric)
+
+Before you upgrade or restart a Network Controller VM, disable it in the Service Fabric cluster.
+
+Follow these steps on a remote computer that has WinRM connectivity to the Network Controller VMs.
+
+1. Retrieve the current state of the Network Controller nodes:
+
+    ```powershell
+    Get-SdnServiceFabricNode -NetworkController "<NC_VM>" | FT NodeName, IpAddressOrFQDN, NodeStatus, HealthState, IsStopped -AutoSize
+    ```
+
+1. Disable the node from the Service Fabric quorum. This step ensures Service Fabric can migrate primary replicas to other nodes and keep partition databases in sync.
+
+    ```powershell
+    Disable-SdnServiceFabricNode -NetworkController "<NC_VM>" -NodeName "<Node_Name>"
+    ```
+
+1. After the node is safely disabled, perform the in-place upgrade [Perform in-place upgrade](#perform-in-place-upgrade).
+
+1. After the node has completed the in-place upgrade, re-enable the node. This operation enables the node and waits until Service Fabric returns to a healthy state.
+
+    ```powershell
+    Enable-SdnServiceFabricNode -NetworkController "<NC_VM>" -NodeName "<Node_Name>"
+    ```
+
+    If the operation times out, wait and manually check the state:
+
+    ```powershell
+    Get-SdnServiceFabricNode -NetworkController "<NC_VM>"| FT NodeName, IpAddressOrFQDN, NodeStatus, HealthState, IsStopped -AutoSize
+
+    Confirm-SdnServiceFabricHealthy -NetworkController "<NC_VM>"
+    ```
+    
+      - If the commands return status healthy and node is up, repeat the process for other Network Controller nodes.
+        
+      - If the issue persists after an hour, see [Troubleshooting](#troubleshooting).
+
+1. Repeat the process for all Network Controller nodes in your deployment.
+
+### Perform Network Controller application update
+
+After upgrading all the Network Controller VMs, run `Update-NetworkController` on one of the Network Controller VMs directly. This command initiates an application upgrade if it was not automatically initiated.
+
+## Upgrade Load Balancer Multiplexer VMs
+
+You can upgrade Load Balancer Multiplexers without any additional requirements. To upgrade, proceed directly with [Perform in-place upgrade](#perform-in-place-upgrade) on each Load Balancer Multiplexer, one at a time.
+
+## Upgrade Gateway VMs
+
+> [!IMPORTANT]
+> Ensure that Network Controller and Load Balancer Multiplexer VMs are already upgraded. If the VMs are not upgraded yet, do not proceed with upgrading Gateways.
+
+1. Retrieve the current list of SDN Gateways:
+
+    ```powershell
+    $environmentinfo = Get-SdnEnvironmentInfo -NetworkController "<NC_VM>"
+    Get-SdnGateway -NcUri $environmentInfo.NcUrl
+    ```
+
+1. Identify the Gateway VM to patch first, and remove its resource from the Network Controller using `SdnDiagnostics`:
+
+    ```powershell
+    # Remove Gateway resource from Network Controller 
+    $resourceRef = "/Gateways/<RESOURCE_ID>"
+    $gateway = Get-SdnGateway -NcUri $environmentInfo.NcUrl -ResourceRef $resourceRef 
+
+    # create backup of the gateway
+    $gateway | ConvertTo-Json -Depth 10 | Out-File -FilePath "$(Get-SdnWorkingDirectory)\$($gateway.resourceId).json"
+
+    # delete the gateway resource
+    Set-SdnResource -NcUri $environmentInfo.NcUrl -ResourceRef $gateway.resourceRef -OperationType Delete
+    ```
+
+1. [Perform the in-place upgrade](#perform-in-place-upgrade).
+
+1. After the in-place upgrade completes and the version is updated to 2509, refresh the RSAT tools:
+
+    ```powershell
+    # refresh RSAT tools
+    Remove-WindowsFeature -Name RSAT-RemoteAccess
+    Add-WindowsFeature -Name RSAT-RemoteAccess
+    ```
+
+1. Add the Gateway VM resource back to Network Controller:
+
+    ```powershell
+    # Add GW resource back to Network Controller 
+    # update the filepath to the .json file that was generated in earlier step if variable not available
+    $filePath = "$(Get-SdnWorkingDirectory)\$($gateway.resourceId).json"
+    $dataObject = Get-Content -Path $filePath | ConvertFrom-Json 
+
+    Set-SdnResource -NcUri $environmentInfo.NcUrl -ResourceRef $dataObject.resourceRef -Object $dataObject -OperationType Add
+    ```
+
+1. Repeat these steps for all Gateways.
+
+## Troubleshooting
+
+This section lists common issues that you might encounter during the upgrade process and their recommended remediations.
+
+### Service Fabric node is not healthy
+
+**Issue**
+
+In some cases, the NetAdapter might get renamed during the upgrade. This causes issues as Network Controller node configuration requires the `RestInterface` to match the NetAdapter name on the VM.
+
+**Remediation**
+
+1. Verify that the NetAdapter on the Network Controller VM matches the configuration in NetworkController. For `-NetworkController`, specify a working Network Controller VM. For `-Name`, specify the non-working SDN node.
+
+    ```powershell
+    Get-SdnNetworkControllerNode -NetworkController "<WORKING NC_VM>" -Name "<BROKEN NC_VM>"
+    ```
+
+1. Note the `RestInterface` value from the output.
+
+1. Connect to Network Controller VM and run `Get-NetAdapter` directly. Ensure the name matches the value returned in step 1.
+
+    - If the adapter name is changed, check if the previous adapter is orphaned or ghosted.
+    
+        ```powershell
+        Get-PnpDevice -class net | ? Status -eq Unknown | Select FriendlyName,InstanceId
+        ```
+
+    - If an orphaned adapter exists, remove it.
+    
+        ```powershell
+        pnputil /remove-device "INSTANCE_ID"
+        ```    
+
+    - Rename the new adapter back to the original name using [Rename-NetAdapter](/powershell/module/netadapter/rename-netadapter?view=windowsserver2025-ps).
+
+### Unable to resolve FQDN of Network Controllers
+
+**Issue**
+
+In some cases, `unattend.xml` is applied for initial VM deployment with SdnExpress. If DNS servers have changed since the initial deployment, incorrect DNS servers can be programmed into the adapters, causing FQDN resolution failures.
+
+**Remediation**
+
+1. Verify that you can resolve the FQDN of other Network Controller nodes. Ensure that the FQDN resolution succeeds because Service Fabric relies on FQDN for communication.
+
+    ```powershell
+    Resolve-DnsName -Name "<NC NODE FQDN>" -Type A
+    ```
+
+1. If resolution fails, check the current DNS servers configured and confirm they match the configuration on other Network Controller VMs.
+
+    ```powershell
+    Get-DnsClientServerAddress
+    ```
+
+1. If DNS servers differ, update them using [Set-DnsClientServerAddress](https://learn.microsoft.com/en-us/powershell/module/dnsclient/set-dnsclientserveraddress). If DNS servers are correct but resolution still fails, investigate your DNS infrastructure.
+
+### Resources reporting configurationState failures
+
+**Issue**
+
+During the upgrade process, you might encounter any of the following failures:
+
+- Load Balancer Multiplexer VMs reporting configurationState failure.
+
+- Servers reporting configurationState failure.
+
+- Virtual Networks reporting configurationState failure.
+
+**Remediation**
+
+These errors are typically transient and can be resolved by moving the Service Fabric replicas for the affected service. Perform this operation directly on a Network Controller VM that is enabled within the Service Fabric cluster.
+
+### Traffic is unable to traverse the Gateway connection
+
+**Issue**
+
+Due to known issues in certain builds, performing an update or upgrade might result in stale route mappings for specific address prefixes on the Gateway connection.
+
+**Remediation**
+
+If you encounter data-path routing issues and resources don't report failures, we recommend rebooting the Gateway VM that hosts the Virtual Gateway or Network Connection.
