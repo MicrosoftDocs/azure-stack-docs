@@ -54,17 +54,17 @@ Follow these steps to sign in and set your subscription.
 
 1. Sign in. Type:  
 
-  ```azurecli
-    
-  az login --use-device-code
-  ```
+    ```azurecli
+      
+    az login --use-device-code
+    ```
 
 1. Set your subscription.  
 
-  ```azurecli
-    
-  az account set --subscription <Subscription ID>  
-  ```
+    ```azurecli
+      
+    az account set --subscription <Subscription ID>  
+    ```
 
 > [!NOTE]
 > - Use the `az stack-hci-vm network lb update` cmdlet to update tags.
@@ -136,7 +136,7 @@ Follow these steps in Azure CLI to configure a virtual network:  
     | **frontend-ip-allocation-methods** | Choose allocation method for the private address assigned to your load balancer instance. Allowed values: Static and Default. |
     | **frontend-ip-private-address** | If you choose "Static" as the allocation method, you must provide the private IP address you want to assign your load balancer instance. |
     | **backend-pool-names** | Name(s) for the backend pool(s) |
-    | **backend-pool-backend-addresses** | An array of backend addresses. Each entry takes three inputs:<br><br>1. "name": Name of the specific backend server/resource<br>1. "network_interface_ip_configuration": ARM ID of the network interface's IP configuration. |
+    | **backend-pool-backend-addresses** | An array of backend addresses. Each entry takes two inputs:<br><br>1. "name": Name of the specific backend server/resource<br>2. "network_interface_ip_configuration": ARM ID of the network interface's IP configuration. |
     | **backend-pool-virtual-network-ids** | ARM ID of the Virtual Network where the backend pool resources reside. NOTE: All backend resources should be in the same virtual network as the load balancer. |
     | **lb-rule-names** | Names for the load balancing rules. |
     | **lb-rule-frontend-ip-config-names** | Names of the frontend IP configurations you want to include in the scope of this load balancing rule. |
@@ -152,7 +152,7 @@ Follow these steps in Azure CLI to configure a virtual network:  
     | **probe-ports** | Ports for communicating the probe. |
 
 
-1. Create a Load Balancer. Run the following cmdlet:  
+1. Create a load balancer. Run the following cmdlet:  
 
     ```azurecli        
     az stack-hci-vm network lb create `
