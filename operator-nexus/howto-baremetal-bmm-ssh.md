@@ -229,6 +229,9 @@ This feature is useful in scenarios such as:
 - **Team access management**: Different teams can manage their own keysets, and a user can be included in multiple teams with different keys
 - **Temporary access**: Providing temporary access via a separate keyset with a different key, which can be easily revoked by deleting that keyset
 
+> [!NOTE]
+> A user can be in multiple keysets for bare metal machine access, however a user can not be in multiple "storage access enabled" keysets concurrently.
+
 ### Example: Adding a user to two keysets with different SSH keys
 
 This example creates two keysets for the same user with different SSH keys:
@@ -303,7 +306,7 @@ When a user is in multiple keysets:
 
 - The user is added to all groups associated with those keysets
 - Each keyset can have a different `osGroupName` and `privilegeLevel`
-- The user's effective permissions are the union of all groups they belong to
+- The user's effective permissions are the union of all groups they belong to. For example, if the user is a member of a Superuser group in keyset A and a member of a Standard group in keyset B, the user will retain Superuser capabilities
 
 #### Keyset expiration
 
