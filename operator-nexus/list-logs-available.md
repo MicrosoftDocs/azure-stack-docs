@@ -18,6 +18,9 @@ Logs emitted by Nexus Resources provide insight in the detailed operations of Ne
 | Log categories              | Description                              |
 |-----------------------|:-----------------------------------------|
 | Kubernetes Logs       | Logs emitted by the Kubernetes containers|
+| Kubernetes API Audit Logs | Audit logs emitted by the Kubernetes API server |
+| IDRAC Container Logs | Logs emitted by the IDRAC of the Baremetal Machines |
+| Platform Operation Logs | Logs during operations executed on the platform cluster |
 | VM Orchestration Logs | Logs emitted by the hypervisor service   |
 
 ## Bare metal servers
@@ -25,7 +28,7 @@ Logs emitted by Nexus Resources provide insight in the detailed operations of Ne
 | Log categories      | Categories | Description |
 |-------------|:--------------|:--------------|
 | System | Debug, Info, Notice, Warning, Error, Critical | System logs from the Bare metal server |
-| Security | Debug, Info, Notice, Warning, Error, Critical, Defender, BreakGlass Audit | Security logs from the Bare metal server |
+| Security | Audit, Debug, Info, Notice, Warning, Error, Critical, Defender, BreakGlass Audit | Security logs from the Bare metal server |
 
 ## Storage appliance
 
