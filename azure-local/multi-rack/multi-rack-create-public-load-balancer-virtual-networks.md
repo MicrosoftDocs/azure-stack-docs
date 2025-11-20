@@ -1,5 +1,5 @@
 ---
-title: Create Public Load Balancer on Azure Local Virtual Networks
+title: Create Public Load Balancer on Virtual Networks for Multi-Rack Deployments of Azure Local
 description: Learn how to create and manage a public Load Balancer on Azure Local for multi-rack deployments. Distribute inbound traffic efficiently across virtual machines.
 #customer intent: As a network administrator, I want to learn how to create a public Load Balancer on Azure Local so that I can distribute traffic across virtual machines in a multi-rack deployment.
 author: alkohli
