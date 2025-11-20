@@ -10,41 +10,39 @@ ms.topic: how-to
 ms.service: azure-local
 ---
 
-# Create public Load Balancer on virtual networks on multi-rack deployments of Azure Local
+# Create public load balancer on virtual networks on multi-rack deployments of Azure Local
 
 [!INCLUDE [multi-rack-applies-to-preview](../includes/multi-rack-applies-to-preview.md)]
 
-This article describes how to create a public Load Balancer on a multi-rack deployment of Azure Local using the Azure Command-line Interface (CLI).
+This article describes how to create a public load balancer on a multi-rack deployment of Azure Local using the Azure Command-line Interface (CLI).
 
 [!INCLUDE [hci-preview](../includes/hci-preview.md)]
 
-## About public Load Balancer
+## About public load balancer
 
-Load Balancer on Azure Local for multi-rack deployments is a fully managed load balancing service that distributes incoming traffic across backend virtual machines (VMs). A Public Load Balancer on Virtual Networks can provide inbound connectivity from external networks (Internet or enterprise WAN) to VMs (NICs) and distribute traffic flows directed to a public frontend IP across a backend pool consisting of VMs in the VNet.
+Load balancer on Azure Local for multi-rack deployments is a fully managed load balancing service that distributes incoming traffic across backend virtual machines (VMs). A public load balancer on virtual networks provides inbound connectivity from external networks (Internet or enterprise WAN) to VMs (network interfaces) and distributes traffic flows directed to a public frontend IP across a backend pool consisting of VMs in the VNet.
 
-You can create a load balancer on Azure Local max using Azure CLI (az cli) or using ARM/Bicep templates.
+You can create a load balancer on multi-rack deployments using Azure CLI, Azure Resource Manager (ARM) templates, or Bicep templates.
 
 ## Prerequisites  
 
-Before you begin, complete the following prerequisites:  
-
 - Review and [Complete the prerequisites](./multi-rack-vm-management-prerequisites.md).  
-- Access to an Azure subscription with the appropriate RBAC role and permissions assigned. For more information, see RBAC roles for Azure Local max workload management.
-- Access to a resource group where you want to provision the public IP address.
-- A NAT gateway configured on the VNet where you’re creating the load balancer.
-- Access to ARM ID of the custom location associated with your Azure Local max instance where you want to provision the load balancer resource.
-- For backend pools you want to add to the load balancer instance, access to the ARM IDs of the network interfaces you want to add to the backend pool and of the VNet they are in.
-- Access to ARM ID of the VNet subnet where you want to create the load balancer.
-  - If there isn't a public load balancer already on this VNet, you need to provide an empty subnet without any user VMs.
-  - If there is already a public load balancer on the target VNet, provide the same subnet ARM ID where the other load balancer is present.
+- Get access to an Azure subscription with the appropriate RBAC role and permissions assigned. For more information, see [RBAC roles for multi-rack deployments of Azure Local](./multi-rack-assign-vm-rbac-roles.md).
+- Get access to a resource group where you want to provision the public IP address.
+- Configure a NAT gateway on the VNet where you’re creating the load balancer. For more information, see [Create a NAT gateway on virtual networks in multi-rack deployments of Azure Local](../index.yml).
+- Get access to ARM ID of the custom location associated with your Azure Local instance where you want to provision the load balancer resource.
+- To add backend pools to your load balancer instance, get access to the ARM IDs of the network interfaces you want to add to the backend pool and the associated virtual network (VNet).
+- Get access to ARM ID of the VNet subnet where you want to create the load balancer.
+  - If a public load balancer doesn't exist on this VNet, provide an empty subnet without any user VMs.
+  - If a public load balancer exists on the target VNet, provide the same subnet ARM ID where the other load balancer is present.
 
     > [!NOTE]
     > You need separate subnets for different types of load balancers.
 
 - If using a client to connect to your Azure Local max instance, see [Connect to the system remotely](./multi-rack-vm-management-prerequisites.md#connect-to-the-system-remotely). 
-- Access to ARM ID of the public IP resource for the frontend IP configuration. The public IP resource must come from the same LNet as the public IP used in the NAT Gateway.
+- Get access to ARM ID of the public IP resource for the frontend IP configuration. The public IP resource must come from the same logical network as the public IP used in the NAT Gateway.
 
-## Create Public Load Balancer on Virtual Networks using Azure CLI
+## Create public load balancer on virtual networks using Azure CLI
 
 Complete the following steps to create a Public Load Balancer on a Virtual Network using Azure CLI.  
 
@@ -72,9 +70,9 @@ Follow these steps to sign in and set your subscription.
 > - Use the `az stack-hci-vm network lb update` cmdlet to update tags.
 > - To associate backend pools, load balancing rules, or probes after creating the load balancer, use the `az stack-hci-vm network lb` create command with the same parameters.
 
-### Create a public load balancer on virtual networks with Azure CLI 
+### Create a public load balancer on virtual networks with Azure CLI
 
-Use the `az stack-hci-vm network lb` cmdlet to create a load balancer on your Azure Local max instance.  
+Use the `az stack-hci-vm network lb` cmdlet to create a load balancer on your Azure Local instance.  
 
 > [!NOTE]
 > You can't update the frontend IP or the VNet subnet after creating the load balancer.
@@ -126,9 +124,9 @@ Follow these steps in Azure CLI to configure a virtual network:  
     
     | **Parameters** | **Description** |
     |---|---|
-    | **name** | Name for the Load Balancer on the Azure Local max instance. Make sure to provide a name that follows the [Naming rules for Azure network resources](/azure/azure-resource-manager/management/resource-name-rules#microsoftnetwork). You can't rename a Load Balancer after it's created. |
+    | **name** | Name for the Load Balancer on the Azure Local instance. Make sure to provide a name that follows the [Naming rules for Azure network resources](/azure/azure-resource-manager/management/resource-name-rules#microsoftnetwork). You can't rename a Load Balancer after it's created. |
     | **resource-group** | Name of the resource group where you create the Load Balancer. |
-    | **custom-location** | Use this parameter to provide the fully qualified Azure Resource Manager (ARM) ID of the custom location associated with your Azure Local max instance where you're creating this Load Balancer. |
+    | **custom-location** | Use this parameter to provide the fully qualified Azure Resource Manager (ARM) ID of the custom location associated with your Azure Local instance where you're creating this Load Balancer. |
     | **location** | Azure regions as specified by az locations. |
     | **frontend-ip-config-names** | Name(s) for the frontend IP configuration(s). |
     | **frontend-ip-subnet-ids** | ARM ID(s) of the VNet subnet where all your load balancer instances are created. No other resources should be present in this delegated subnet. |
