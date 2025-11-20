@@ -154,39 +154,41 @@ Follow these steps in Azure CLI to configure a virtual network:  
 
 1. Create a Load Balancer. Run the following cmdlet:  
 
-  az stack-hci-vm network lb create `
-  --subscription $subscriptionID `
-  --resource-group $resource_group `
-  --name $name `
-  --location $location `
-  --frontend-ip-config-names $frontendIPConfigName `
-  --frontend-ip-private-addresses $frontendIPPrivateAddress `
-  --frontend-ip-allocation-methods $frontendIPAllocationMethod `
-  --frontend-ip-subnet-ids $frontendIPSubnetID `
-  --frontend-ip-public-ip-ids $frontendIPPublicIP `
-  --backend-pool-names $backendPoolName `
-  --backend-pool-backend-addresses $backendPoolBEAddresses `
-  --backend-pool-virtual-network-ids $backendVNetID `
-  --lb-rule-names $lbRuleName `
-  --lb-rule-frontend-ip-config-names $lbRuleFrontendIPConfigName `
-  --lb-rule-backend-pool-names $lbRuleBackendPoolName `
-  --lb-rule-frontend-ports $lbRuleFrontendPort `
-  --lb-rule-backend-ports $lbRuleBackendPort `
-  --lb-rule-protocols $lbRuleProtocol `
-  --lb-rule-probe-names $lbRuleProbeName `
-  --lb-rule-load-distributions $lbRuleLoadDistributions `
-  --probe-names $lbRuleProbeName `
-  --probe-protocols $lbRuleProtocol `
-  --probe-ports $probePort `
-  --custom-location $customLocation `
-  --lb-rule-idle-timeouts 4 5 `
-  --probe-names $probeName `
-  --probe-protocols $probeProtocol `
-  --probe-ports $probePort `
-  --probe-request-paths $probeRequestPaths `
-  --probe-intervals $probeIntervals `
-  --probe-num-probes $probeNumProbes `
-  --custom-location $customLocationID
+    ```azurecli        
+    az stack-hci-vm network lb create `
+    --subscription $subscriptionID `
+    --resource-group $resource_group `
+    --name $name `
+    --location $location `
+    --frontend-ip-config-names $frontendIPConfigName `
+    --frontend-ip-private-addresses $frontendIPPrivateAddress `
+    --frontend-ip-allocation-methods $frontendIPAllocationMethod `
+    --frontend-ip-subnet-ids $frontendIPSubnetID `
+    --frontend-ip-public-ip-ids $frontendIPPublicIP `
+    --backend-pool-names $backendPoolName `
+    --backend-pool-backend-addresses $backendPoolBEAddresses `
+    --backend-pool-virtual-network-ids $backendVNetID `
+    --lb-rule-names $lbRuleName `
+    --lb-rule-frontend-ip-config-names $lbRuleFrontendIPConfigName `
+    --lb-rule-backend-pool-names $lbRuleBackendPoolName `
+    --lb-rule-frontend-ports $lbRuleFrontendPort `
+    --lb-rule-backend-ports $lbRuleBackendPort `
+    --lb-rule-protocols $lbRuleProtocol `
+    --lb-rule-probe-names $lbRuleProbeName `
+    --lb-rule-load-distributions $lbRuleLoadDistributions `
+    --probe-names $lbRuleProbeName `
+    --probe-protocols $lbRuleProtocol `
+    --probe-ports $probePort `
+    --custom-location $customLocation `
+    --lb-rule-idle-timeouts 4 5 `
+    --probe-names $probeName `
+    --probe-protocols $probeProtocol `
+    --probe-ports $probePort `
+    --probe-request-paths $probeRequestPaths `
+    --probe-intervals $probeIntervals `
+    --probe-num-probes $probeNumProbes `
+    --custom-location $customLocationID
+    ```
 
 Here's a sample output:  Need to insert sample output from az cli cmdlet
 
