@@ -103,7 +103,7 @@ For an in-place upgrade on a VM, use Hyper-V to attach the ISO as a DVD drive to
     Get-ComputerInfo | Select-Object WindowsProductName, WindowsInstallationType, OSDisplayVersion, WindowsBuildLabEx | Format-Table -AutoSize
     ```
 
-1. Initiate the upgrade. The upgrade process will take a while, and the node may reboot several times. For more information regarding command line options, see [Windows Setup Command-Line Options](/windows-hardware/manufacture/desktop/windows-setup-command-line-options?view=windows-11).
+1. Initiate the upgrade. The upgrade process will take a while, and the node may reboot several times. For more information regarding command line options, see [Windows Setup Command-Line Options](/windows-hardware/manufacture/desktop/windows-setup-command-line-options).
 
 1. Check the OS after the upgrade:
 
@@ -254,7 +254,7 @@ In some cases, the NetAdapter might get renamed during the upgrade. This causes 
         pnputil /remove-device "INSTANCE_ID"
         ```    
 
-    - Rename the new adapter back to the original name using [Rename-NetAdapter](/powershell/module/netadapter/rename-netadapter?view=windowsserver2025-ps).
+    - Rename the new adapter back to the original name using [Rename-NetAdapter](/powershell/module/netadapter/rename-netadapter).
 
 ### Unable to resolve FQDN of Network Controllers
 
@@ -276,7 +276,7 @@ In some cases, `unattend.xml` is applied for initial VM deployment with SdnExpre
     Get-DnsClientServerAddress
     ```
 
-1. If DNS servers differ, update them using [Set-DnsClientServerAddress](https://learn.microsoft.com/en-us/powershell/module/dnsclient/set-dnsclientserveraddress). If DNS servers are correct but resolution still fails, investigate your DNS infrastructure.
+1. If DNS servers differ, update them using [Set-DnsClientServerAddress](/powershell/module/dnsclient/set-dnsclientserveraddress). If DNS servers are correct but resolution still fails, investigate your DNS infrastructure.
 
 ### Resources reporting configurationState failures
 
