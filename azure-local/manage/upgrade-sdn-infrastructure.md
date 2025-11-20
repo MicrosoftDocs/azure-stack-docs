@@ -1,17 +1,17 @@
 ---
-title: Upgrade Infrastructure of Software Defined Networking (SDN) managed by on-premises tools
-description: Learn how to upgrade infrastructure of Software Defined Networking (SDN) managed by on-premises tools.
+title: Upgrade Infrastructure for Software Defined Networking (SDN) managed by on-premises tools
+description: Learn how to upgrade infrastructure for SDN managed by on-premises tools.
 ms.topic: how-to
 ms.author: alkohli
 author: alkohli
 ms.date: 11/19/2025
 ---
 
-# Upgrade infrastructure of Software Defined Networking (SDN) managed by on-premises tools
+# Upgrade infrastructure for Software Defined Networking managed by on-premises tools
 
 <!--add applies to-->
 
-This article provides guidance on safely and securely upgrading infrastructure of an SDN environment managed by on-premises tools.
+This article provides guidance on safely and securely upgrading infrastructure for Software Defined Networking (SDN) managed by on-premises tools. It also provides troubleshooting guidance to help remediate issues that might occur during the upgrade process.
 
 ## About upgrading SDN infrastructure
 
