@@ -81,11 +81,12 @@ Follow these steps in Azure CLI to configure a virtual network:  
 
 1. Set the parameters. Here's an example:  
 
+    ```azurecli    
     $location = "eastus"  
     $subscriptionID = "<subscription ID>"
     $resourceGroup = "mylocal-rg"  
     $customLocationID ="/subscriptions/$subscriptionID/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customLocationName"  
-    $name = "mylocal-VNET-PublicLB" 
+    $name = "mylocal-VNET-PublicLB"
     $frontendIPConfigName= "fe1"
     $frontendIPPublicIP = "/subscriptions/$subscriptionID/resourceGroups/$resourceGroup/providers/Microsoft.AzureStackHCI/publicIPAddresses/mylocal-publicIP"
     $frontendIPPrivateAddress = "10.0.0.4"
@@ -107,6 +108,7 @@ Follow these steps in Azure CLI to configure a virtual network:  
     $probeNumProbes = 2
     $backendPoolName = "web-backend"
     $backendVNetID = "/subscriptions/$subscriptionID/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/mylocal-vnet"
+    ```
 
     **If using BASH**
 
