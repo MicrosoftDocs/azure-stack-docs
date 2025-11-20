@@ -54,14 +54,11 @@ The following diagram illustrates the feature builds, cumulative updates, and up
 
 - End of support for 23H2 (OS version 25398.xxxx):
   - Each Azure Local release is supported for 6 months, whether you're on 23H2 (11.x.x.x) or 24H2 (12.x.x.x).
-  - October 2025 (version 11.2510) was the final 23H2 release. We'll support it until April 2026.
-  - If you're running the 23H2 OS without the Azure Local solution, we'll support it until April 2026.
-  - Stretched clusters running the 23H2 OS will be supported until April 2026. For more information, see [Upgrade stretched clusters to 23h2](./upgrade/upgrade-stretched-cluster-to-23h2.md)
+  - October 2025 (version 11.2510) was the final 23H2 release. We support it until April 2026.
+  - If you're running the 23H2 OS without the Azure Local solution, we support it until April 2026. After April 2026, you won't receive monthly security and quality updates for 23H2 (OS version 25398.xxxx). Support requests will only be available for patching to a supported release.
+  - Stretched clusters running the 23H2 OS is supported until April 2026. For more information, see [Upgrade stretched clusters to 23h2](./upgrade/upgrade-stretched-cluster-to-23h2.md)
 
-  > [!NOTE]
-  > After April 2026, you won't receive monthly security and quality updates for 23H2 (OS version 25398.xxxx). Support requests will only be available for patching to a supported release.
-
-- Before you can update to the 2511 release, you must apply the 2510 update first. Once the 2510 update is applied, 23H2 (11.2510.x.x) will automatically upgrade to 24H2 (12.2510.x.x).
+- Before you can update to the 2511 release, you must apply the 12.2510 update first. The 12.2510 (24H2) update becomes automatically available once you have applied 11.2510. Apply the 24H2 upgrade to keep your Azure Local up-to-date.
 
 ## Feature release availability timing
 

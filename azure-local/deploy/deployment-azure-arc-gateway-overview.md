@@ -120,6 +120,9 @@ Arc gateway has the following limitations in this release:
 
 ## Create the Arc gateway resource in Azure
 
+> [!NOTE]
+> Arc gateway creation is currently impacted by temporary Azure Front Door changes. Resource creation may take up to two 2 hours and can time out, causing failures. If resource creation fails, please try Arc gateway resource creation again.
+
 You can create an Arc gateway resource using the Azure portal, Azure CLI, or Azure PowerShell.
 
 # [Portal](#tab/portal)

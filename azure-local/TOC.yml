@@ -326,6 +326,8 @@ items:
           href: manage/create-storage-path.md
         - name: 2. Create VM images
           items:
+          - name: Download managed disks from Azure
+            href: manage/manage-data-disks.md
           - name: Using Azure Marketplace images
             href: manage/virtual-machine-image-azure-marketplace.md
           - name: Using Azure Compute Gallery images
@@ -487,6 +489,8 @@ items:
         
     - name: Systems
       items:
+      - name: Repair a node 
+        href: manage/repair-server.md
       - name: Configure proxy 
         href: manage/configure-proxy-settings-23h2.md
       - name: Suspend and resume
@@ -495,6 +499,11 @@ items:
         href: manage/unregister-register-machine.md
       - name: Use dashboard to manage at-scale
         href: manage/manage-at-scale-dashboard.md
+
+    - name: Capacity
+      items:
+      - name: Add a node 
+        href: manage/add-server.md
 
     - name: Azure services
       items:
@@ -514,19 +523,14 @@ items:
 
     - name: Storage
       items:
+      - name: Replace failed drives
+        href: /windows-server/storage/storage-spaces/replace-drives?toc=/azure/azure-local/toc.json&bc=/azure/azure-local/breadcrumb/toc.json
+      - name: Health and operational states
+        href: /windows-server/storage/storage-spaces/storage-spaces-states?toc=/azure/azure-local/toc.json&bc=/azure/azure-local/breadcrumb/toc.json
       - name: Storage thin provisioning
         href: manage/manage-thin-provisioning-23h2.md
       - name: Use ReFS deduplication and compression
         href: manage/refs-deduplication-and-compression.md
-      - name: Download managed data disks
-        href: manage/manage-data-disks.md
-
-    - name: Capacity
-      items:
-      - name: Add a node
-        href: manage/add-server.md
-      - name: Repair a node
-        href: manage/repair-server.md
 
     - name: Billing
       items:
@@ -534,6 +538,7 @@ items:
         href: concepts/azure-hybrid-benefit.md
       - name: Billing and payment
         href: concepts/billing.md
+        
   - name: Monitor
     items:
     - name: Overview
