@@ -20,7 +20,7 @@ This article provides the steps, best practices, and troubleshooting guidance to
 
 Before you begin, complete the following prerequisites:  
 
-- Review and [complete the prerequisites](/azure/azure-local/manage/azure-arc-vm-management-prerequisites?view=azloc-2507).  
+- Review and [complete the prerequisites](../manage/azure-arc-vm-management-prerequisites.md).  
 
 - Access to an Azure subscription with the appropriate role-based access control (RBAC) role and permissions assigned. For more information, see [RBAC to manage Azure Local virtual machines (VMs) for multi-rack deployments (preview)].
 
@@ -39,7 +39,7 @@ Before you begin, complete the following prerequisites:
 > [!NOTE]
 >
 > - You need separate subnets for different types of load balancers.
-> - If you're using a client to connect to your Azure Local multi-rack instance, see [Connect to the system remotely](/azure/azure-local/manage/azure-arc-vm-management-prerequisites?view=azloc-2507#connect-to-the-system-remotely).  
+> - If you're using a client to connect to your Azure Local multi-rack instance, see [Connect to the system remotely](../manage/azure-arc-vm-management-prerequisites.md#connect-to-the-system-remotely).  
 > - Access to ARM ID of the public IP resource for the frontend IP configuration. The public IP resource must come from the same LNet as the public IP used in the NAT Gateway.
 
 ## Parameters
