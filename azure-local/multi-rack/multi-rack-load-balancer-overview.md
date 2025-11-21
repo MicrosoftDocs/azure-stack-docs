@@ -17,9 +17,9 @@ This article describes the different types of load balancers you can use in mult
 
 ## About load balancers
 
-A load balancer is a fully managed service that distributes incoming traffic across backend virtual machines (VMs). It operates at Layer 4 of the OSI model and distributes inbound flows that arrive at the load balancer’s frontend to backend pool instances according to configured load-balancing rules and health probes.
+A load balancer is a fully managed service that distributes incoming traffic across backend virtual machines (VMs). It operates at Layer 4 of the Open Systems Interconnection (OSI) model and distributes inbound flows that arrive at the load balancer’s frontend to backend pool instances according to configured load-balancing rules and health probes.
 
-Multi-rack deployments of Azure Local supports three types of load balancers:
+Multi-rack deployments of Azure Local support three types of load balancers:
 
 - **Public load balancer on virtual networks.** Provides inbound connectivity from external networks (internet or enterprise WAN) to VMs (NICs). It distributes traffic flows directed to a public frontend IP across a backend pool of VMs in the virtual network.
 
@@ -58,11 +58,11 @@ Backend pools must be in the same virtual network but can be across different su
 
 On logical networks, only public load balancers are supported. To create a load balancer on a logical network, provide a public IP address resource from the same logical network. Backend pools must be in the same logical network.
 
-The following table show the configuration parameters for different types of load balancers:
+The following table shows the configuration parameters for different types of load balancers:
 
 | Parameter | Public load balancer on virtual network | Internal load balancer on virtual network | Load balancers on logical network |
 |--|--|--|--|
-| Frontend-ip-subnet-ids | Required | Required | Omit |
-| Frontend-ip-public-ip-ids | Required<br><br>Must be from the same logical network as the NAT Gateway public IP. | Omit | Required<br><br>Must be from the same logical network. |
-| Backend-pool-virtual-network-ids | Required | Required | Omit |
-| Backend-pool-logical-network-ids | Omit | Omit | Required |
+| `Frontend-ip-subnet-ids` | Required | Required | Omit |
+| `Frontend-ip-public-ip-ids` | Required<br><br>Must be from the same logical network as the NAT Gateway public IP. | Omit | Required<br><br>Must be from the same logical network. |
+| `Backend-pool-virtual-network-ids` | Required | Required | Omit |
+| `Backend-pool-logical-network-ids` | Omit | Omit | Required |
