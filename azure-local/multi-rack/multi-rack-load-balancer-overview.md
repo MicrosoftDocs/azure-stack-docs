@@ -50,7 +50,7 @@ Azure Local supports both public and internal load balancers on virtual networks
 
 - To create an internal load balancer, provide the delegated subnet information (an empty subnet if it's the first instance). A private IP address from this subnet is assigned to the load balancer.
 
-- To create a public load balancer instance, provide the Azure Resource Manager (ARM) ID of a public IP resource in addition to the delegated subnet. The instance is assigned both the public IP and a private IP from the subnet for internal communication.
+- To create a public load balancer, provide the Azure Resource Manager (ARM) ID of a public IP resource in addition to the delegated subnet. The instance is assigned both the public IP and a private IP from the subnet for internal communication.
 
 Backend pools must be in the same virtual network but can be across different subnets.
 
@@ -58,11 +58,11 @@ Backend pools must be in the same virtual network but can be across different su
 
 On logical networks, only public load balancers are supported. To create a load balancer on a logical network, provide a public IP address resource from the same logical network. Backend pools must be in the same logical network.
 
-The following table describes the configuration parameters:
+The following table show the configuration parameters for different types of load balancers:
 
-| Parameter | Public LB on VNets | Internal LB on VNets | LB on LNets |
+| Parameter | Public load balancer on virtual network | Internal load balancer on virtual network | Load balancers on logical network |
 |--|--|--|--|
-| Frontend-ip-subnet-ids | Required | Required | Should be omitted |
-| Frontend-ip-public-ip-ids | Required<br>Needs to be from the same logical network as the NAT Gateway public IP. | Should be omitted | Required<br>Needs to be from the same logical network. |
-| Backend-pool-virtual-network-ids | Required | Required | Should be omitted |
-| Backend-pool-logical-network-ids | Should be omitted | Should be omitted | Required |
+| Frontend-ip-subnet-ids | Required | Required | Omit |
+| Frontend-ip-public-ip-ids | Required<br><br>Must be from the same logical network as the NAT Gateway public IP. | Omit | Required<br><br>Must be from the same logical network. |
+| Backend-pool-virtual-network-ids | Required | Required | Omit |
+| Backend-pool-logical-network-ids | Omit | Omit | Required |
