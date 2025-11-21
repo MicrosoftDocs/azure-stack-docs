@@ -37,6 +37,9 @@ This how-to guide explains the steps for installing the required Azure CLI and e
             - ``nc-platform-extension`` should be in status ``Succeeded``.
         - ``nc-platform-runtime-extension`` should be in status ``Succeeded``.
 
+> [!NOTE]
+> These same checks should also be performed following the upgrade to ensure the Cluster is healthy.
+
 ## Checking current runtime version
 
 Verify current Cluster runtime version before upgrade:

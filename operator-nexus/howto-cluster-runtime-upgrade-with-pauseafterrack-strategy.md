@@ -25,7 +25,7 @@ Executing Cluster runtime upgrade with `PauseAfterRack` strategy will pause to w
    - Subscription ID (`SUBSCRIPTION`)
    - Cluster name (`CLUSTER`)
    - Resource group (`CLUSTER_RG`)
-1. Target Cluster must be healthy in a running state, with all control plane nodes healthy.
+1. Target Cluster must be healthy in a running state, with all control plane nodes healthy. Details on checking Cluster health can be found in [Cluster Runtime Upgrade](./howto-cluster-runtime-upgrade.md#prerequisites).
 
 ## Procedure
 
