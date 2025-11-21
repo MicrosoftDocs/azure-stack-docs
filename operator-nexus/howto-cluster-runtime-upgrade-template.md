@@ -4,7 +4,7 @@ description: Learn the process for upgrading Cluster for Operator Nexus with ste
 author: bartpinto 
 ms.author: bpinto
 ms.service: azure-operator-nexus
-ms.date: 09/19/2025
+ms.date: 11/21/2025
 ms.topic: how-to
 ms.custom: azure-operator-nexus, template-include
 ---
