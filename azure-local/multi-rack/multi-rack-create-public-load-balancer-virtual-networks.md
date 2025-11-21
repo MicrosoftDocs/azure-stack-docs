@@ -28,7 +28,7 @@ You can create a load balancer on multi-rack deployments using Azure CLI, Azure 
 
 - Review and [Complete the prerequisites](./multi-rack-vm-management-prerequisites.md).  
 - Get access to an Azure subscription with the appropriate RBAC role and permissions assigned. For more information, see [RBAC roles for multi-rack deployments of Azure Local](./multi-rack-assign-vm-rbac-roles.md).
-- Get access to a resource group where you want to provision the public IP address.
+- Get access to a resource group where you want to provision the load balancer.
 - Configure a NAT gateway on the virtual network where you’re creating the load balancer. For more information, see [Create a NAT gateway on virtual networks in multi-rack deployments of Azure Local](../index.yml).
 - Get access to ARM ID of the custom location associated with your Azure Local instance where you want to provision the load balancer resource.
 - To add backend pools to your load balancer instance, get access to the ARM IDs of the network interfaces you want to add to the backend pool and the associated virtual network (virtual network).
@@ -39,8 +39,8 @@ You can create a load balancer on multi-rack deployments using Azure CLI, Azure 
     > [!NOTE]
     > You need separate subnets for different types of load balancers.
 
-- If using a client to connect to your Azure Local max instance, see [Connect to the system remotely](./multi-rack-vm-management-prerequisites.md#connect-to-the-system-remotely). 
-- Get access to ARM ID of the public IP resource for the frontend IP configuration. The public IP resource must come from the same logical network as the public IP used in the NAT Gateway.
+- If using a client to connect to your Azure Local instance, see [Connect to the system remotely](./multi-rack-vm-management-prerequisites.md#connect-to-the-system-remotely).
+- Get access to ARM ID of the public IP resource you wish to use for the frontend IP configuration. The public IP resource must come from the same logical network as the public IP used in the NAT Gateway.
 
 ## Create public load balancer on virtual networks using Azure CLI
 
@@ -68,7 +68,7 @@ Follow these steps to sign in and set your subscription.
 
 > [!NOTE]
 > - Use the `az stack-hci-vm network lb update` cmdlet to update tags.
-> - To associate backend pools, load balancing rules, or probes after creating the load balancer, use the `az stack-hci-vm network lb` create command with the same parameters.
+> - To associate backend pools, load balancing rules, or probes after creating the load balancer, use the `az stack-hci-vm network lb` create command with the same exact parameters you provided at the time of creation.
 
 ### Create a public load balancer on virtual networks with Azure CLI
 
@@ -85,7 +85,7 @@ Follow these steps in Azure CLI to configure a virtual network:  
     $location = "eastus"  
     $subscriptionID = "<subscription ID>"
     $resourceGroup = "mylocal-rg"  
-    $customLocationID ="/subscriptions/$subscriptionID/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customLocationName"  
+    $customLocationID ="/subscriptions/$subscriptionID/resourceGroups/$resourceGroup/providers/Microsoft.ExtendedLocation/customLocations/<Custom Location Name>"  
     $name = "mylocal-VNET-PublicLB"
     $frontendIPConfigName= "fe1"
     $frontendIPPublicIP = "/subscriptions/$subscriptionID/resourceGroups/$resourceGroup/providers/Microsoft.AzureStackHCI/publicIPAddresses/mylocal-publicIP"
@@ -93,7 +93,7 @@ Follow these steps in Azure CLI to configure a virtual network:  
     $frontendIPAllocationMethod = "Static"
     $frontendIPSubnetID = "/subscriptions/$subscriptionID/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/mylocal-subnet1"
     $lbRuleName = "rule1"
-    $lbRuleBackendPoolName = "web=backend"
+    $lbRuleBackendPoolName = "web-backend"
     $lbRuleFrontendIPConfigName = "fe1"
     $lbRuleFrontendPort = 80
     $lbRuleBackendPort = 8080
@@ -119,7 +119,7 @@ Follow these steps in Azure CLI to configure a virtual network:  
     **If using PowerShell:**
     
     ```powershell
-    $backendPoolBEAddresses = '[{\"name\": \"nic1\", \"admin_state\": \"Up\", \"network_interface_ip_configuration\": \"/subscriptions/$subscriptionID/resourceGroups/$resourceGroup/providers/Microsoft.AzureStackHCI/networkInterfaces/nic1/ipConfigurations/ipconfig\"}, {\"name\": \"nic2\", \"admin_state\": \"Up\", \"network_interface_ip_configuration\": \"/subscriptions/$subscriptionID/resourceGroups/$resourceGroup/providers/Microsoft.AzureStackHCI/networkInterfaces/nic2/ipConfigurations/ipconfig\"}]'
+    $backendPoolBEAddresses = '[{\"name\": \"be1\", \"admin_state\": \"Up\", \"network_interface_ip_configuration\": \"/subscriptions/$subscriptionID/resourceGroups/$resourceGroup/providers/Microsoft.AzureStackHCI/networkInterfaces/nic1/ipConfigurations/ipconfig\"}, {\"name\": \"be2\", \"admin_state\": \"Up\", \"network_interface_ip_configuration\": \"/subscriptions/$subscriptionID/resourceGroups/$resourceGroup/providers/Microsoft.AzureStackHCI/networkInterfaces/nic2/ipConfigurations/ipconfig\"}]'
     ```
 
     The *required* parameters are tabulated as follows:  
@@ -131,12 +131,12 @@ Follow these steps in Azure CLI to configure a virtual network:  
     | **custom-location** | Use this parameter to provide the fully qualified Azure Resource Manager (ARM) ID of the custom location associated with your Azure Local instance where you're creating this Load Balancer. |
     | **location** | Azure regions as specified by az locations. |
     | **frontend-ip-config-names** | Name(s) for the frontend IP configuration(s). |
-    | **frontend-ip-subnet-ids** | ARM IDs of the virtual network subnet where all your load balancer instances are created. No other resources should be present in this delegated subnet. |
+    | **frontend-ip-subnet-ids** | ARM ID of the virtual network subnet where all your public load balancer instances are created. No other workload resources should be present in this delegated subnet. |
     | **frontend-ip-public-ip-ids** | Required for public load balancer. ARM IDs of the Public IP resource you want to assign to your load balancer. Each frontend IP configuration can have only one public IP address, but multiple frontend IP configurations are supported, with the same subnet. |
     | **frontend-ip-allocation-methods** | Choose allocation method for the private address assigned to your load balancer instance. Allowed values: Static and Default. |
     | **frontend-ip-private-address** | If you choose "Static" as the allocation method, you must provide the private IP address you want to assign your load balancer instance. |
     | **backend-pool-names** | Name(s) for the backend pool(s) |
-    | **backend-pool-backend-addresses** | An array of backend addresses. Each entry takes two inputs:<br><br>1. "name": Name of the specific backend server/resource<br>2. "network_interface_ip_configuration": ARM ID of the network interface's IP configuration. |
+    | **backend-pool-backend-addresses** | An array of backend addresses. Each entry takes three inputs:<br><br>1. "name": Name of the specific backend server/resource<br>2. "network_interface_ip_configuration": ARM ID of the network interface's IP configuration<br>3. "admin_state": Administrative state (Up, Down, or None) |
     | **backend-pool-virtual-network-ids** | ARM ID of the Virtual Network where the backend pool resources reside. NOTE: All backend resources should be in the same virtual network as the load balancer. |
     | **lb-rule-names** | Names for the load balancing rules. |
     | **lb-rule-frontend-ip-config-names** | Names of the frontend IP configurations you want to include in the scope of this load balancing rule. |
@@ -179,7 +179,6 @@ Follow these steps in Azure CLI to configure a virtual network:  
     --probe-names $lbRuleProbeName `
     --probe-protocols $lbRuleProtocol `
     --probe-ports $probePort `
-    --custom-location $customLocation `
     --lb-rule-idle-timeouts 4 5 `
     --probe-names $probeName `
     --probe-protocols $probeProtocol `
