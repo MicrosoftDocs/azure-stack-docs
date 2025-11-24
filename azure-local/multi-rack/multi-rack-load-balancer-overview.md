@@ -2,7 +2,7 @@
 title: About Load Balancers in Multi-Rack Deployments of Azure Local (Preview)
 description: Learn about the types of load balancers you can use in multi-rack deployments of Azure Local (Preview).
 ms.topic: conceptual
-ms.date: 11/20/2025
+ms.date: 11/24/2025
 author: alkohli
 ms.author: alkohli
 ---
@@ -21,7 +21,7 @@ A load balancer is a fully managed service that distributes incoming traffic acr
 
 Multi-rack deployments of Azure Local support three types of load balancers:
 
-- **Public load balancer on virtual networks.** Provides inbound connectivity from external networks (internet or enterprise WAN) to VMs (NICs). It distributes traffic flows directed to a public frontend IP across a backend pool of VMs in the virtual network.
+- **Public load balancer on virtual networks.** Provides inbound connectivity from external networks (internet or enterprise WAN) to VMs (network interfaces). It distributes traffic flows directed to a public frontend IP across a backend pool of VMs in the virtual network.
 
 - **Internal load balancer on virtual networks.** Balances traffic within a virtual network. Use an internal load balancer to provide inbound connectivity to your VMs in private network connectivity scenarios. The internal load balancer uses a private frontend IP.
 
@@ -38,7 +38,7 @@ Multi-rack deployments of Azure Local support three types of load balancers:
 - Doesn't support Network Address Translation (NAT), both inbound and outbound. For Source Network Address Translation (SNAT) functionality and outbound connectivity, always use a NAT Gateway.
 
 > [!NOTE]
-> You can use either a load balancer or configure inbound rules on a NAT Gateway to enable inbound connectivity on Azure Local virtual networks. However, we recommend using a load balancer for inbound connectivity.
+> You can use either a load balancer or configure inbound rules on a NAT Gateway to enable inbound connectivity on Azure Local virtual networks. We recommend that you use a load balancer for inbound connectivity.
 
 ## Load balancer configurations
 
@@ -46,7 +46,7 @@ Load balancers in Azure Local are available on both virtual networks and logical
 
 ### On virtual networks
 
-Azure Local supports both public and internal load balancers on virtual networks. Multiple load balancers can reside in the same virtual network, but all must be assigned to a single delegated subnet. When setting up the first load balancer, use an empty subnet with no other user resources such as NICs or VMs.
+Azure Local supports both public and internal load balancers on virtual networks. Multiple load balancers can reside in the same virtual network, but all load balancers of one kind (public or internal) must be assigned to its own delegated subnet. When setting up the first load balancer, use an empty subnet with no other user resources such as NICs or VMs.
 
 - To create an internal load balancer, provide the delegated subnet information (an empty subnet if it's the first instance). A private IP address from this subnet is assigned to the load balancer.
 
@@ -62,7 +62,7 @@ The following table shows the configuration parameters for different types of lo
 
 | Parameter | Public load balancer on virtual network | Internal load balancer on virtual network | Load balancers on logical network |
 |--|--|--|--|
-| `Frontend-ip-subnet-ids` | Required | Required | Omit |
-| `Frontend-ip-public-ip-ids` | Required<br><br>Must be from the same logical network as the NAT Gateway public IP. | Omit | Required<br><br>Must be from the same logical network. |
-| `Backend-pool-virtual-network-ids` | Required | Required | Omit |
-| `Backend-pool-logical-network-ids` | Omit | Omit | Required |
+| `frontend-ip-subnet-ids` | Required | Required | Omit |
+| `frontend-ip-public-ip-ids` | Required<br><br>Must be from the same logical network as the NAT Gateway public IP. | Omit | Required<br><br>Must be from the same logical network. |
+| `backend-pool-virtual-network-ids` | Required | Required | Omit |
+| `backend-pool-logical-network-ids` | Omit | Omit | Required |
