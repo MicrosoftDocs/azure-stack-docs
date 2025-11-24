@@ -12,7 +12,7 @@ ms.date: 11/18/2025
 
 [!INCLUDE [multi-rack-applies-to-preview](../includes/multi-rack-applies-to-preview.md)]
 
-This article describes how to public IP addresses on multi-rack deployments of Azure Local.
+This article describes how to create public IP resources on multi-rack deployments of Azure Local.
 
 A public IP in a multi-rack deployment of Azure Local represents an externally routable IP address resource.
 
