@@ -12,7 +12,7 @@ ms.date: 11/24/2025
 
 [!INCLUDE [multi-rack-applies-to-preview](../includes/multi-rack-applies-to-preview.md)]
 
-This article describes the capabilities of the network fabric used to manage the infrastructure and workload networking required to run Azure Local multi-rack deployments.
+This article describes the capabilities of the network fabric used to manage the infrastructure and workload networking required to run Azure Local for multi-rack deployments.
 
 The network fabric enables you to:
 
