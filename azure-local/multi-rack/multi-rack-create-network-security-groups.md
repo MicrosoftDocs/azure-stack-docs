@@ -27,7 +27,7 @@ Use a network security group to filter network traffic between logical networks,
 
 The following diagrams show how you attach network security groups to logical networks, virtual network subnets, and VM network interfaces on a multi-rack deployment:
 
-:::image type="content" source="./media/multi-rack-create-network-security-groups/network-security-groups.png" alt-text="Screenshot of conceptual diagram for network security groups attached to logical networks." lightbox="./media/multi-rack-create-network-security-groups/network-security-groups.png":::
+:::image type="content" source="./media/multi-rack-create-network-security-groups/multi-rack-create-network-security-groups-logical-networks.png" alt-text="Screenshot of conceptual diagram for network security groups attached to logical networks." lightbox="./media/multi-rack-create-network-security-groups/multi-rack-create-network-security-groups-logical-networks.png":::
 
 
 Scenario-1 diagram shows a network setup with two logical networks:
@@ -48,7 +48,7 @@ Scenario-1 diagram shows a network setup with two logical networks:
 
 In this example, the NSG controls traffic flow between logical networks A and B, and between VM Web and VM SQL.
 
-:::image type="content" source="./media/multi-rack-create-network-security-groups/network-security-groups-scenario2.png" alt-text="Screenshot of conceptual diagram for network security groups attached to virtual network subnets and network interfaces." lightbox="./media/multi-rack-create-network-security-groups/network-security-groups-scenario2.png":::
+:::image type="content" source="./media/multi-rack-create-network-security-groups/multi-rack-create-network-security-groups-virtual-networks.png" alt-text="Screenshot of conceptual diagram for network security groups attached to virtual network subnets and network interfaces." lightbox="./media/multi-rack-create-network-security-groups/multi-rack-create-network-security-groups-virtual-networks.png":::
 
 Scenario-2 shows a network setup with two virtual networks:
 	
