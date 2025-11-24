@@ -10,7 +10,7 @@ ms.date: 11/24/2025
 
 # Security concepts for multi-rack deployments of Azure Local
 
-This article provides an overview of security for multi-rack deployments of Azure Local.
+This article provides an overview of security for multi-rack deployments of Azure Local. 
 
 Multi-rack deployments of Azure Local are designed and built to both detect and defend against the latest security threats and comply with the strict requirements of government industry security standards. Two cornerstones form the foundation of its security architecture:
 
