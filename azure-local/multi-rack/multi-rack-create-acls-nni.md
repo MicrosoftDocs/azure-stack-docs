@@ -1,11 +1,11 @@
 ---
-title: Create ACLs for NNI for multi-rack deployments of Azure Local (preview)
+title: Create ACLs for NNI for Multi-Rack Deployments of Azure Local (preview)
 description: Learn how to create and manage ACLs on an NNI for multi-rack deployments to secure SSH access and control traffic flow.
 author: ronmiab
 ms.author: robess
 ms.reviewer: alkohli
 ms.date: 11/24/2025
-ms.topic: concept-article
+ms.topic: conceptual
 ---
 
 # Create ACLs on an NNI for multi-rack deployments of Azure Local (preview)
@@ -17,14 +17,6 @@ This article describes how to create and manage access control lists (ACLs) on n
 [!INCLUDE [hci-preview](../includes/hci-preview.md)]
 
 In multi-rack Azure Local deployments, you can protect Secure Shell (SSH) access on the management virtual private network (VPN) by using access control lists (ACLs) for Permit and Deny actions at a network-to-network interconnect (NNI) level. You create ingress and egress ACLs before you create NNI resources and then reference those ACLs in the NNI payload. You need to create referenced ingress and egress ACLs before you provision the network fabric.
-
-These high-level steps show how to create an ACL on an NNI:
-
-1. Create NNI ingress and egress ACLs.
-
-1. Update the Azure Resource Manager resource reference in a management NNI.
-
-1. Create an NNI and provision the network fabric.
 
 ## Parameter usage guidance
 
@@ -54,17 +46,25 @@ Be aware of these retrictions:
 
 - Inline ports and inline VLANs are a static way of defining the ports or VLANs by using azcli.
 
-- portGroupNames and vlanGroupNames are dynamic ways of defining ports and VLANs.
+- `portGroupNames` and `vlanGroupNames` are dynamic ways of defining ports and VLANs.
 
-- You can't use inline ports and portGroupNames together.
+- You can't use inline ports and `portGroupNames` together.
 
-- You can't use inline VLANs and vlanGroupNames together.
+- You can't use inline VLANs and `vlanGroupNames` together.
 
-- You can't use ipGroupNames and ipPrefixValues together.
+- You can't use `ipGroupNames` and `ipPrefixValues` together.
 
-- Egress ACLs don't support IP options, IP length, fragment, EtherType, DSCP marking, or TTL values.
+- Egress ACLs don't support IP options, IP length, fragment, `EtherType`, DSCP marking, or TTL values.
 
-- Ingress ACLs don't support EtherType options.
+- Ingress ACLs don't support `EtherType` options.
+
+## Workflow to create an ACL on an NNI
+
+- Create NNI ingress and egress ACLs.
+
+- Update the Azure Resource Manager resource reference in a management NNI.
+
+- Create an NNI and provision the network fabric.
 
 ## Create an ingress ACL
 
@@ -417,4 +417,3 @@ When you run the command successfully, it returns information about the created 
 "type": "microsoft.managednetworkfabric/accesscontrollists"
 }
 ```
-
