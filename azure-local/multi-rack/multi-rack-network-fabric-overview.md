@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.service: azure-local
 ms.topic: conceptual
-ms.date: 11/19/2025
+ms.date: 11/24/2025
 ---
 
 # Network fabric overview for Azure Local multi-rack deployments
@@ -34,7 +34,7 @@ The network fabric enables you to:
 
 Key capabilities offered in the network fabric:
 
-* **Bootstrapping and lifecycle management** - Automated bootstrapping & provisioning of network fabric resources based on network function use-cases. It provides various controls to manage network devices in operator premises via Azure APIs.
+* **Bootstrapping and lifecycle management** - Automated bootstrapping & provisioning of network fabric resources based on network function use-cases. It provides various controls to manage network devices in enterprise environments via Azure APIs.
 
 * **Tenant network configuration** - Automated network configuration in Network Fabric for Container Network Functions (CNFs) and Virtual Network Functions (VNFs) that are deployed on the compute nodes. The network configuration enables east-west communication between network functions as well as north-south communication between external networks and VNFs/CNFs. 
 
@@ -42,8 +42,5 @@ Key capabilities offered in the network fabric:
 
 * **Network Policy Automation** - Automating the management of consistent network policies across the fabric to ensure security, performance, and access controls are enforced uniformly.
 
-* **Networking features built for Operators** - Support for unique features like multicast, SCTP, and jumbo frames.
+* **Networking features built for enterprise operators** - Support for unique features like multicast, SCTP, and jumbo frames.
 
-## Next steps
-
-- See [Network Fabric Controller overview]
