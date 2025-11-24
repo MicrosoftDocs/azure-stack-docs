@@ -74,10 +74,10 @@ Scenario-2 shows a network setup with two virtual networks:
     - Subnet C (10.0.1.0/26)
         - Hosts VM SQL at 10.0.1.6 and Internal VM at 10.0.1.7.
         - NSG rules defined at the subnet level deny all outbound Internet access.
-        - NSG rules defined at the network interface level (10.0.1.7) overrides the subnet-level NSG and denies all inbound and outbound HTTPS traffic. However, the internal VM can communicate with the SQL VM.
+        - NSG rules defined at the network interface level (10.0.1.7) override the subnet-level NSG and denies all inbound and outbound HTTPS traffic. However, the internal VM can communicate with the SQL VM.
         - Internal VMs are isolated from the Internet.
 	
-	The diagram highlights how different parts of an application can have public-facing Internet access, limited enterprise WAN-only access, and fully isolated, internal-only access. Granular traffic controls can be implemented with NSGs associated with either the VNet subnets or the network interfaces.
+	The diagram highlights how different parts of an application can have public-facing Internet access, limited enterprise WAN-only access, and fully isolated, internal-only access. Granular traffic controls can be implemented with NSGs associated with either the virtual network subnets or the network interfaces.
 
 ## Prerequisites
 
@@ -85,7 +85,7 @@ Scenario-2 shows a network setup with two virtual networks:
 
     - This instance has a custom location.
     - You have access to an Azure subscription with the appropriate Role-based access control (RBAC) role and permissions assigned. For more information, see  [Assign Azure Local RBAC roles](./multi-rack-assign-vm-rbac-roles.md#custom-roles).
-    -You have at least one logical network or one virtual network with one or more subnets. You can optionally have network interfaces configured on these network resources as well. For more information, see [Create logical networks](./multi-rack-create-logical-networks.md#create-a-static-logical-network), [Create virtual networks](./multi-rack-create-virtual-networks.md) and [Create network interfaces](./multi-rack-create-network-interfaces.md#network-interface-with-static-ip-using-logical-network).
+    -You have at least one logical network or one virtual network with one or more subnets. You can optionally have network interfaces configured on these network resources as well. For more information, see [Create logical networks](./multi-rack-create-logical-networks.md#create-a-static-logical-network), [Create virtual networks](./multi-rack-create-virtual-networks.md), and [Create network interfaces](./multi-rack-create-network-interfaces.md#network-interface-with-static-ip-using-logical-network).
 
 - If you use a client to connect to your instance, make sure you install the latest Azure CLI and the `az-stack-hci-vm` extension. For more information, see [Azure Local VM management prerequisites](./multi-rack-vm-management-prerequisites.md).
 
@@ -135,7 +135,7 @@ Create a network security group (NSG) to manage data traffic flow on Azure Local
     | **location** |Azure region to associate with your network security group. For example, this could be `eastus`, `westeurope`. <br><br> For ease of management, use the same location as your Azure Local instance.  |
     | **resource-group** |Name of the resource group where you create the network security group. For ease of management, use the same resource group as your Azure Local. |
     | **subscription** |Name or ID of the subscription where your Azure Local is deployed. <!--This could be another subscription you use for your Azure Local VMs.--> |
-    | **custom-location** |ARM ID of the custom location associated with your Azure Local. |
+    | **custom-location** |Azure Resource Manager ID of the custom location associated with your Azure Local. |
 
 
 1. Run the following command to create a network security group (NSG) on your instance.
