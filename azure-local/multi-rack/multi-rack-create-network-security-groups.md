@@ -4,7 +4,7 @@ description: Learn how to create network security groups, network security rules
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 11/19/2025
+ms.date: 11/21/2025
 ms.service: azure-local
 ---
 
@@ -18,19 +18,19 @@ This article explains how to create and configure network security groups (NSGs)
 
 ## About NSGs on Azure Local VMs on multi-rack deployments
 
-Use a network security group to filter network traffic between logical networks, virtual networks, or VMs on Azure Local. Configure a network security group with security rules that allow or deny either inbound or outbound network traffic. The network security rules control traffic based on:
+Use a network security group to filter network traffic between logical networks, virtual network (VNet) subnets, or VMs on Azure Local. Configure a network security group with security rules that allow or deny either inbound or outbound network traffic. The network security rules control traffic based on:
 
 - Source and destination IP addresses.
 - Port numbers.
 - Protocols (TCP/UDP).
 - Direction (inbound or outbound).
 
-The following diagram shows how you attach network security groups to logical networks, virtual networks, and VM network interfaces on a multi-rack deployment:
+The following diagrams show how you attach network security groups to logical networks, virtual network subnets, and VM network interfaces on a multi-rack deployment:
 
 :::image type="content" source="./media/multi-rack-create-network-security-groups/network-security-groups.png" alt-text="Screenshot of conceptual diagram for network security groups attached to logical networks." lightbox="./media/multi-rack-create-network-security-groups/network-security-groups.png":::
 
 
-The diagram shows a network setup with two logical networks:
+Scenario-1 diagram shows a network setup with two logical networks:
 
 - Logical Network A
 
@@ -46,16 +46,46 @@ The diagram shows a network setup with two logical networks:
     - NSG rule blocks outbound internet access.
     - VM SQL runs SQL Server locally and isn't exposed to the internet.
 
-In this example, the NSG controls traffic flow between logical networks A and B, and between VM Web and VM SQL. You can apply the NSG to each logical network, virtual network subnet, or network interface to enforce specific security rules. For example, logical network B might allow only traffic over SQL port 1433 from logical network A.
+In this example, the NSG controls traffic flow between logical networks A and B, and between VM Web and VM SQL.
 
+:::image type="content" source="./media/multi-rack-create-network-security-groups/network-security-groups-scenario2.png" alt-text="Screenshot of conceptual diagram for network security groups attached to virtual network subnets and network interfaces." lightbox="./media/multi-rack-create-network-security-groups/network-security-groups-scenario2.png":::
+
+Scenario-2 shows a network setup with two virtual networks:
+	
+-	Virtual Network A:
+    - This network has a private IP space of 10.0.0.0/24.
+    - Contains two subnets hosting the frontend and backend VMs.
+	
+    	- Subnet A (10.0.0.0/26)
+    	   - Hosts VM Frontend at 10.0.0.5.
+    	   - NSG rules allow both inbound and outbound Internet access.
+    	   - VM Frontend can send and receive Internet traffic freely.
+	
+    	- Subnet B (10.0.1.0/26)
+    	   - Hosts VM Backend at 10.0.1.6.
+    	   - NSG rules allow outbound traffic to local WAN to reach the other virtual networks and deny all inbound Internet traffic.
+    	   - VM Backend can communicate with VM Frontend and with virtual network B via enterprise WAN.
+    	   - VM Backend isn’t exposed to the Internet.
+	
+- Virtual Network B:
+    - This network also has a private IP space of 10.0.0.0/24.
+    - Contains internal-only application components.
+	
+    - Subnet C (10.0.1.0/26)
+        - Hosts VM SQL at 10.0.1.6 and Internal VM at 10.0.1.7.
+        - NSG rules defined at the subnet level deny all outbound Internet access.
+        - NSG rules defined at the network interface level (10.0.1.7) overrides the subnet-level NSG and denies all inbound and outbound HTTPS traffic. However, the internal VM can communicate with the SQL VM.
+        - Internal VMs are isolated from the Internet.
+	
+	The diagram highlights how different parts of an application can have public-facing Internet access, limited enterprise WAN-only access, and fully isolated, internal-only access. Granular traffic controls can be implemented with NSGs associated with either the VNet subnets or the network interfaces.
 
 ## Prerequisites
 
 - You have access to a multi-rack deployment.
 
     - This instance has a custom location.
-    - You have access to an Azure subscription with the Azure Stack HCI Administrator role-based access control (RBAC) role. This role grants full access to your Azure Local instance and its resources. For more information, see [Assign Azure Local RBAC roles](./multi-rack-assign-vm-rbac-roles.md#custom-roles).
-    - You have at least one static logical network or virtual network and one static network interface on this instance. For more information, see [Create logical networks](./multi-rack-create-logical-networks.md#create-a-static-logical-network), [Create virtual networks](./multi-rack-create-virtual-networks.md) and [Create network interfaces](./multi-rack-create-network-interfaces.md#network-interface-with-static-ip-using-logical-network).
+    - You have access to an Azure subscription with the appropriate Role-based access control (RBAC) role and permissions assigned. For more information, see  [Assign Azure Local RBAC roles](./multi-rack-assign-vm-rbac-roles.md#custom-roles).
+    -You have at least one logical network or one virtual network with one or more subnets. You can optionally have network interfaces configured on these network resources as well. For more information, see [Create logical networks](./multi-rack-create-logical-networks.md#create-a-static-logical-network), [Create virtual networks](./multi-rack-create-virtual-networks.md) and [Create network interfaces](./multi-rack-create-network-interfaces.md#network-interface-with-static-ip-using-logical-network).
 
 - If you use a client to connect to your instance, make sure you install the latest Azure CLI and the `az-stack-hci-vm` extension. For more information, see [Azure Local VM management prerequisites](./multi-rack-vm-management-prerequisites.md).
 
@@ -81,7 +111,7 @@ The following sections explain how to create network security groups (NSGs) and 
 
 ## Create a network security group (NSG)
 
-Create a network security group (NSG) to manage data traffic flow on Azure Local. You can create an NSG by itself or associate it with a network interface, a virtual network subnet, or a logical network.
+Create a network security group (NSG) to manage data traffic flow on Azure Local. You can create an NSG and associate it with a network interface, a virtual network subnet, or a logical network.
 
 > [!WARNING]
 > NSGs must have at least one network security rule. An empty NSG denies all inbound traffic by default. A VM or logical network associated with this NSG isn't reachable.
@@ -105,7 +135,7 @@ Create a network security group (NSG) to manage data traffic flow on Azure Local
     | **location** |Azure region to associate with your network security group. For example, this could be `eastus`, `westeurope`. <br><br> For ease of management, use the same location as your Azure Local instance.  |
     | **resource-group** |Name of the resource group where you create the network security group. For ease of management, use the same resource group as your Azure Local. |
     | **subscription** |Name or ID of the subscription where your Azure Local is deployed. <!--This could be another subscription you use for your Azure Local VMs.--> |
-    | **custom-location** |Custom location associated with your Azure Local. |
+    | **custom-location** |ARM ID of the custom location associated with your Azure Local. |
 
 
 1. Run the following command to create a network security group (NSG) on your instance.
