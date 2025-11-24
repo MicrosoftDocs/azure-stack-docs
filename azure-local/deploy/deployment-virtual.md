@@ -23,9 +23,9 @@ You need administrator privileges for the Azure Local virtual deployment and sho
 > A virtual deployment of Azure Local is intended for educational and demonstration purposes only. 
 
 
->[!NOTE]
+> [!NOTE]
 >
->Microsoft Support doesn't support virtual deployments.
+> Microsoft Support doesn't support virtual deployments.
 
 ## Prerequisites
 
