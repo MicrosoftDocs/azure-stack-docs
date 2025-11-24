@@ -5,7 +5,7 @@ author: ronmiab
 ms.author: robess
 ms.reviewer: alkohli
 ms.date: 11/24/2025
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Create ACLs on an NNI for multi-rack deployments of Azure Local (preview)
