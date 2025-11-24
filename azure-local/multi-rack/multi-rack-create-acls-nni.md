@@ -4,7 +4,7 @@ description: Learn how to create and manage ACLs on an NNI for multi-rack deploy
 author: ronmiab
 ms.author: robess
 ms.reviewer: alkohli
-ms.date: 11/21/2025
+ms.date: 11/24/2025
 ms.topic: concept-article
 ---
 
@@ -48,7 +48,9 @@ These high-level steps show how to create an ACL on an NNI:
 | actions | Action to take based on a match condition. | Example: permit. |
 | configuration-type | Configuration type, which can be inline or file. At this time, multi-rack deployments support only inline. | Example: inline. |
 
-You should also be aware of these restrictions:
+## Restrictions
+
+Be aware of these retrictions:
 
 - Inline ports and inline VLANs are a static way of defining the ports or VLANs by using azcli.
 
@@ -66,7 +68,7 @@ You should also be aware of these restrictions:
 
 ## Create an ingress ACL
 
-To create an ingress ACL, use the following Azure CLI command. This command creates an ingress ACL with the specified configurations and provides the expected result as output. Adjust the parameters as needed for your use case.
+To create an ingress ACL, use the following Azure CLI command. This command creates an ingress ACL with the specified configurations and provides the expected result as output. Adjust the parameters as needed for your scenario.
 
 ```bash
 az networkfabric acl create
@@ -148,7 +150,7 @@ Expected output
 
 ## Create an egress ACL
 
-To create an egress ACL, use the following Azure CLI command. This command creates an egress ACL with the specified configurations and provides the expected result as output. Adjust the parameters as needed for your use case.
+To create an egress ACL, use the following Azure CLI command. This command creates an egress ACL with the specified configurations and provides the expected result as output. Adjust the parameters as needed for your scenario.
 
 ```bash
 az networkfabric acl create
@@ -209,27 +211,28 @@ Expected output
 
 ## Update the Resource Manager reference
 
-This step enables the creation of ACLs (ingress and egress if a reference is provided) during the creation of the NNI resource. After you create the NNI and before you provision the network fabric, you can perform re-put on the NNI.
+After you create the NNI and before you provision the network fabric, you can perform re-put on the NNI. This step lets you create ACLs (ingress and egress if a reference is provided) during the creation of the NNI resource.
 
-- ingressAclId: Reference ID for the ingress ACL.
+- **ingressAclId**: Reference ID for the ingress ACL.
 
-- egressAclId: Reference ID for the egress ACL.
+- **egressAclId**: Reference ID for the egress ACL.
 
-To get the Resource Manager resource ID, go to the resource group of the subscription that you're using.
+> [!NOTE]
+> To get the Resource Manager resource ID, go to the resource group of the subscription that you're using.
 
-The following command updates the Resource Manager reference for the NNI resource by associating it with the provided ingress and egress ACLs. Adjust the parameters as needed for your use case.
+The following command updates the Resource Manager reference for the NNI resource. It links the resource to your ingress and egress ACLs. Update the parameters to match your scenario.
 
 ```bash
-az networkfabric nni create
---resource-group "example-rg"
---fabric "example-fabric"
---resource-name "example-nniwithACL"
---nni-type "CE"
---is-management-type "True"
---use-option-b "True"
---layer2-configuration "{interfaces:\['/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxx/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/networkDevices/example-networkDevice/networkInterfaces/example-interface'\],mtu:1500}"
---option-b-layer3-configuration "{peerASN:28,vlanId:501,primaryIpv4Prefix:'10.18.0.124/30',secondaryIpv4Prefix:'10.18.0.128/30',primaryIpv6Prefix:'10:2:0:124::400/127',secondaryIpv6Prefix:'10:2:0:124::402/127'}"
---ingress-acl-id "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxx/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/accesscontrollists/example-Ipv4ingressACL"
+az networkfabric nni create \
+--resource-group "example-rg" \
+--fabric "example-fabric" \
+--resource-name "example-nniwithACL" \
+--nni-type "CE" \
+--is-management-type "True" \
+--use-option-b "True" \
+--layer2-configuration "{interfaces:['/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxx/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/networkDevices/example-networkDevice/networkInterfaces/example-interface'],mtu:1500}" \
+--option-b-layer3-configuration "{peerASN:28,vlanId:501,primaryIpv4Prefix:'10.18.0.124/30',secondaryIpv4Prefix:'10.18.0.128/30',primaryIpv6Prefix:'10:2:0:124::400/127',secondaryIpv6Prefix:'10:2:0:124::402/127'}" \
+--ingress-acl-id "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxx/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/accesscontrollists/example-Ipv4ingressACL" \
 --egress-acl-id "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxx/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/accesscontrollists/example-Ipv4egressACL"
 ```
 
@@ -251,20 +254,20 @@ az networkfabric acl list --resource-group "ResourceGroupName"
 
 ## Create ACLs on the ISD external network
 
-Use the following information to create ingress and egress ACLs for the isolation domain (ISD) external network. Then, update the Resource Manager resource reference for the external network.
+To create ingress and egress ACLs for the isolation domain (ISD) external network refer to the next sections. Then, update the Resource Manager resource reference for the external network.
 
 ## Create an egress ACL for the ISD external network
 
 To create an egress ACL for the specified ISD external network with the provided configuration, use the following command. Adjust the parameters as needed for your use case.
 
 ```bash
-az networkfabric acl create
---resource-group "example-rg"
---location "eastus2euap"
---resource-name "example-Ipv4egressACL"
---annotation "annotation"
---configuration-type "Inline"
---default-action "Deny"
+az networkfabric acl create \
+--resource-group "example-rg" \
+--location "eastus2euap" \
+--resource-name "example-Ipv4egressACL" \
+--annotation "annotation" \
+--configuration-type "Inline" \
+--default-action "Deny" \
 --match-configurations "\[{matchConfigurationName:'L3ISD_EXT_OPTA_EGRESS_ACL_IPV4_CE_PE',sequenceNumber:1110,ipAddressType:IPv4,matchConditions:\[{ipCondition:{type:SourceIP,prefixType:Prefix,ipPrefixValues:\['10.18.0.124/30','10.18.0.128/30','10.18.30.16/30','10.18.30.20/30'\]}},{ipCondition:{type:DestinationIP,prefixType:Prefix,ipPrefixValues:\['10.18.0.124/30','10.18.0.128/30','10.18.30.16/30','10.18.30.20/30'\]}}\],actions:\[{type:Count}\]}\]"
 ```
 
@@ -339,13 +342,13 @@ When you run the command successfully, it returns information about the created 
 To create an ingress ACL for the specified ISD external network with the provided configuration, use the following command. Adjust the parameters as needed for your use case.
 
 ```bash
-az networkfabric acl create
---resource-group "example-rg"
---location "eastus2euap"
---resource-name "example-Ipv4ingressACL"
---annotation "annotation"
---configuration-type "Inline"
---default-action "Deny"
+az networkfabric acl create \
+--resource-group "example-rg" \
+--location "eastus2euap" \
+--resource-name "example-Ipv4ingressACL" \
+--annotation "annotation" \
+--configuration-type "Inline" \
+--default-action "Deny" \
 --match-configurations "\[{matchConfigurationName:'L3ISD_EXT_OPTA_INGRESS_ACL_IPV4_CE_PE',sequenceNumber:1110,ipAddressType:IPv4,matchConditions:\[{ipCondition:{type:SourceIP,prefixType:Prefix,ipPrefixValues:\['10.18.0.124/30','10.18.0.128/30','10.18.30.16/30','10.18.30.20/30'\]}},{ipCondition:{type:DestinationIP,prefixType:Prefix,ipPrefixValues:\['10.18.0.124/30','10.18.0.128/30','10.18.30.16/30','10.18.30.20/30'\]}}\],actions:\[{type:Count}\]}\]"
 ```
 
@@ -415,6 +418,3 @@ When you run the command successfully, it returns information about the created 
 }
 ```
 
-------------------------------------------------------------------------
-
-## Additional resources
