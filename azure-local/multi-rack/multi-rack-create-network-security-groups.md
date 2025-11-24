@@ -1,10 +1,10 @@
 ---
-title: Create network security groups, network security rules, default network access policies on Azure Local VMs on multi-rack deployments (preview) 
-description: Learn how to create network security groups, network security rules, and default network access policies on Azure Local VMs on multi-rack deployments using the Azure CLI or the Azure portal (preview).
+title: Create network security groups on Azure Local VMs on multi-rack deployments (preview) 
+description: Learn how to create network security groups on Azure Local VMs on multi-rack deployments using the Azure CLI (preview).
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 11/21/2025
+ms.date: 11/24/2025
 ms.service: azure-local
 ---
 
@@ -61,7 +61,7 @@ Scenario-2 shows a network setup with two virtual networks:
     	   - NSG rules allow both inbound and outbound Internet access.
     	   - VM Frontend can send and receive Internet traffic freely.
 	
-    	- Subnet B (10.0.1.0/26)
+    	- Subnet B (10.0.1.64/26)
     	   - Hosts VM Backend at 10.0.1.6.
     	   - NSG rules allow outbound traffic to local WAN to reach the other virtual networks and deny all inbound Internet traffic.
     	   - VM Backend can communicate with VM Frontend and with virtual network B via enterprise WAN.
@@ -71,7 +71,7 @@ Scenario-2 shows a network setup with two virtual networks:
     - This network also has a private IP space of 10.0.0.0/24.
     - Contains internal-only application components.
 	
-    - Subnet C (10.0.1.0/26)
+    - Subnet C (10.0.0.0/26)
         - Hosts VM SQL at 10.0.1.6 and Internal VM at 10.0.1.7.
         - NSG rules defined at the subnet level deny all outbound Internet access.
         - NSG rules defined at the network interface level (10.0.1.7) override the subnet-level NSG and denies all inbound and outbound HTTPS traffic. However, the internal VM can communicate with the SQL VM.
@@ -85,9 +85,9 @@ Scenario-2 shows a network setup with two virtual networks:
 
     - This instance has a custom location.
     - You have access to an Azure subscription with the appropriate Role-based access control (RBAC) role and permissions assigned. For more information, see  [Assign Azure Local RBAC roles](./multi-rack-assign-vm-rbac-roles.md#custom-roles).
-    -You have at least one logical network or one virtual network with one or more subnets. You can optionally have network interfaces configured on these network resources as well. For more information, see [Create logical networks](./multi-rack-create-logical-networks.md#create-a-static-logical-network), [Create virtual networks](./multi-rack-create-virtual-networks.md), and [Create network interfaces](./multi-rack-create-network-interfaces.md#network-interface-with-static-ip-using-logical-network).
+    - You have at least one logical network or one virtual network with one or more subnets. You can optionally have network interfaces configured on these network resources as well. For more information, see [Create logical networks](./multi-rack-create-logical-networks.md#create-a-static-logical-network), [Create virtual networks](./multi-rack-create-virtual-networks.md), and [Create network interfaces](./multi-rack-create-network-interfaces.md#network-interface-with-static-ip-using-logical-network).
 
-- If you use a client to connect to your instance, make sure you install the latest Azure CLI and the `az-stack-hci-vm` extension. For more information, see [Azure Local VM management prerequisites](./multi-rack-vm-management-prerequisites.md).
+- If you use a client to connect to your instance, make sure you install the latest Azure CLI and the `stack-hci-vm` extension. For more information, see [Azure Local VM management prerequisites](./multi-rack-vm-management-prerequisites.md).
 
 
 ## Create network security groups and network security rules
@@ -202,7 +202,7 @@ After you create a network security group, create network security rules. To app
     $nsgname="examplensg"     
     $customLocationId="/subscriptions/<Subscription ID>/resourcegroups/examplerg/providers/microsoft.extendedlocation/customlocations/examplecl" 
     $location="eastus"
-    $securityrulename="examplensr" 
+    $securityrulename_in="examplensr" 
     $sportrange="*" 
     $saddprefix="10.0.0.0/24" 
     $dportrange="80" 
@@ -216,24 +216,24 @@ After you create a network security group, create network security rules. To app
     |------------|-------------|
     | **name**  | Name for the network security rule that you create for your Azure Local. Make sure to provide a name that follows the [Rules for Azure resources.](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming#example-names-networking)|
     | **nsg-name**  | Name for the network security group that contains this network security rule. Make sure to provide a name that follows the [Rules for Azure resources.](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming#example-names-networking)|
-    | **location** |Azure regions as specified by `az locations`. For example, this could be `eastus`, `westeurope`. If you don't specify the location, the resource group location is used. |
+    | **location** |Azure regions as specified by Azure regions as specified by `az account list-locations -o table`.For example, this could be `eastus`, `westeurope`. If you don't specify the location, the resource group location is used. |
     | **resource-group** | Name of the resource group where you create the network security group. For ease of management, use the same resource group as your Azure Local. |
     | **subscription** | Name or ID of the subscription where your Azure Local is deployed. This subscription can be different from the one you use for your Azure Local VMs. |
     | **custom-location** |Use this parameter to provide the custom location associated with your Azure Local where you're creating this network security group. |
     | **direction** | Direction of the rule specifies if the rule applies to incoming or outgoing traffic. Allowed values are outbound or inbound (default). |
     | **source-port-ranges** | Specify the source port range 0 and 65535 to match either an incoming or outgoing packet. The default `*` specifies all source ports. |
-    | **source-address-prefixes** | Specify the CIDR or destination IP ranges. The default is `*`.|
+    | **source-address-prefixes** | Specify the CIDR or source addresses. The default is `*`.|
     | **destination-address-prefixes** | Specify the CIDR or destination IP ranges. The default is `*`.  |  
     | **destination-port-ranges** | Enter a specific port or a port range that this rule allows or denies. Enter an asterisk (*) to allow traffic on any port.  |
     | **protocol** | Protocol to match either an incoming or outgoing packet. Acceptable values are `*` (default), **All**, **TCP** and **UDP**. |
     | **access** | If the above conditions are matched, specify either to allow or block the packet. Acceptable values are **Allow** and **Deny** with default being **Allow**. |
-    | **priority** | Specify a unique priority for each rule in the collection. Acceptable values are from **100** to **4096**. A lower value denotes a higher priority.  |
+    | **priority** | Specify a unique priority for each rule in the collection. Acceptable values are from **100** to **4096**. A lower value denotes a higher priority.<br> NSGs evaluate rules by priority and stop at the first match. We recommend that you leave room in the priority range for future rules.  |
     | **description** | An optional description for this network security rule. The description is a maximum of 140 characters.  |
 
 1. Run the following command to create an inbound network security rule on your instance. This rule blocks all inbound ICMP traffic to Azure Local VMs (except the management ports you want enabled) and allows all outbound access.
 
     ```azurecli
-    az stack-hci-vm network nsg rule create -g $resource_group --nsg-name $nsgname --name $securityrulename --priority 400 --custom-location $customLocationId --access "Deny" --direction "Inbound" --location $location --protocol "*" --source-port-ranges $sportrange --source-address-prefixes $saddprefix --destination-port-ranges $dportrange --destination-address-prefixes $daddprefix --description $description  
+    az stack-hci-vm network nsg rule create -g $resource_group --nsg-name $nsgname --name $securityrulename_in --priority 400 --custom-location $customLocationId --access "Deny" --direction "Inbound" --location $location --protocol "*" --source-port-ranges $sportrange --source-address-prefixes $saddprefix --destination-port-ranges $dportrange --destination-address-prefixes $daddprefix --description $description  
     ```
 
 1. The command creates a network security rule and associates it with the specified network security group.
@@ -264,7 +264,7 @@ After you create a network security group, create network security rules. To app
     
         "direction": "Inbound", 
         "priority": 400, 
-        "protocol": "Icmp", 
+        "protocol": "*", 
         "provisioningState": "Succeeded", 
         "sourceAddressPrefixes": [ 
           "10.0.0.0/24" 
@@ -296,15 +296,20 @@ After you create a network security group, create network security rules. To app
 > [!TIP]
 > Use `az stack-hci-vm network nsg rule create -h` for help with Azure CLI.
 
-### Create an outbound security rule <!-- open comment in word doc -->
+### Create an outbound security rule
 
-Run the following command to create an outbound network security rule that blocks all network traffic.
+Run the following command to create an outbound network security rule that denies traffic to destination `port 80` and the specified prefixes.
 
-  ```azurecli
-  az stack-hci-vm network nsg rule create -g $resource_group --nsg-name $nsgname --name $securityrulename --priority 500 --custom-location $customLocationId --access "Deny" --direction "Outbound" --location $location --protocol "*" --source-port-ranges $sportrange --source-address-prefixes $saddprefix --destination-port-ranges $dportrange --destination-address-prefixes $daddprefix --description $description
-  ```
+```azurecli
+az stack-hci-vm network nsg rule create -g $resource_group --nsg-name $nsgname --name $securityrulename_out --priority 500 --custom-location $customLocationId --access "Deny" --direction "Outbound" --location $location --protocol "*" --source-port-ranges $sportrange --source-address-prefixes $saddprefix --destination-port-ranges $dportrange --destination-address-prefixes $daddprefix --description $description
+```
 
+Run the following command to block all outbounf traffic:
 
+```azurecli
+Set --source-address-prefixes "" --source-port-ranges "" --destination-address-prefixes "" --destination-port-ranges "" --protocol "*"
+```
+  
 <!--## Next steps
 
 - [Manage NSGs on Azure Local](../manage/manage-network-security-groups.md)-->
