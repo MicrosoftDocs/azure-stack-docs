@@ -20,7 +20,7 @@ This article provides an overview of Network Address Translation (NAT) gateway o
 
 NAT gateway in multi-rack deployments of Azure Local is a managed egress service that provides outbound connectivity for resources within virtual networks. It's a critical component that enables resources in a virtual network to communicate with external networks, whether that's customer's enterprise network or the internet.
 
-When a subnet is associated with a NAT gateway, outbound traffic from resources in that subnet is SNATed to the NAT gateway’s public IP. NAT gateway blocks unsolicited inbound connections and only allows responses to established outbound flows.
+When a subnet is associated with a NAT gateway, Source Network Address Translation (SNAT) is applied to all outbound traffic from resources in that subnet to NAT gateway’s public IP. NAT gateway blocks unsolicited inbound connections and only allows responses to established outbound flows.
 
 ## Key characteristics of NAT gateway
 
