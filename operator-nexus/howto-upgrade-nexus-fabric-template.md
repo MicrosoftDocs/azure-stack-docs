@@ -34,7 +34,7 @@ Runtime changes are categorized as follows:
 - Latest `managednetworkfabric` [CLI extension](howto-install-cli-extensions.md).
 - Latest `networkcloud` [CLI extension](howto-install-cli-extensions.md).
 - Subscription access to run the Azure Operator Nexus Network Fabric (NF) and Network Cloud (NC) CLI extension commands.
-- Target Fabric must be healthy in a running state. Details on checking Fabric health can be found in [Fabric Runtime Upgrade](./howto-upgrade-nexus-fabric.md#prerequisites).
+- Target Fabric must be healthy in a running state. Details on checking Fabric health can be found in [Fabric Runtime Upgrade](./howto-upgrade-nexus-fabric.md#required-pre-upgrade-validations).
 
 </details>
 
