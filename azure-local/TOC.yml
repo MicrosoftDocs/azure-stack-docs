@@ -748,7 +748,7 @@ items:
       - name: Create internal load balancer for VNETs
         href: ./multi-rack/multi-rack-overview.md
       - name: Create public load balancer for LNETs
-        href: ./multi-rack/multi-rack-create-load-balancer-logical-networks.md
+        href: ./multi-rack/multi-rack-create-load-balancer-logical-network.md
       - name: Create NAT gateway
         href: ./multi-rack/multi-rack-overview.md
       - name: Create public IP addresses
