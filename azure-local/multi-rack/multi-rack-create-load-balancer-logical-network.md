@@ -124,33 +124,32 @@ The example in this section demonstrates how to create a load balancer on a logi
 
 #### Create the load balancer
 
-1. Create a load balancer. Run the following cmdlet:  
+Create a load balancer. Run the following cmdlet:  
 
-    ```PowerShell
-    az stack-hci-vm network lb create `
-    --subscription $subscriptionID `
-    --resource-group $resourceGroup `
-    --name $name `
-    --location $location `
-    --frontend-ip-config-names $frontendIPConfigName `
-    --frontend-ip-public-ip-ids $frontendIPPublicIP `
-    --backend-pool-names $backendPoolName `
-    --backend-pool-backend-addresses $backendPoolBEAddresses `
-    --backend-pool-logical-network-ids $backendLNetID `
-    --lb-rule-names $lbRuleName `
-    --lb-rule-frontend-ip-config-names $lbRuleFrontendIPConfigName `
-    --lb-rule-backend-pool-names $lbRuleBackendPoolName `
-    --lb-rule-frontend-ports $lbRuleFrontendPort `
-    --lb-rule-backend-ports $lbRuleBackendPort `
-    --lb-rule-protocols $lbRuleProtocol `
-    --lb-rule-probe-names $lbRuleProbeName `
-    --lb-rule-load-distributions $lbRuleLoadDistributions `
-    --probe-names $lbRuleProbeName `
-    --probe-protocols $lbRuleProtocol `
-    --probe-ports $probePort `
-    --lb-rule-idle-timeouts 4 `
-    --probe-intervals $probeIntervals `
-    --probe-num-probes $probeNumProbes `
-    --custom-location $customLocationID
-    ```
-
+```PowerShell
+az stack-hci-vm network lb create `
+--subscription $subscriptionID `
+--resource-group $resourceGroup `
+--name $name `
+--location $location `
+--frontend-ip-config-names $frontendIPConfigName `
+--frontend-ip-public-ip-ids $frontendIPPublicIP `
+--backend-pool-names $backendPoolName `
+--backend-pool-backend-addresses $backendPoolBEAddresses `
+--backend-pool-logical-network-ids $backendLNetID `
+--lb-rule-names $lbRuleName `
+--lb-rule-frontend-ip-config-names $lbRuleFrontendIPConfigName `
+--lb-rule-backend-pool-names $lbRuleBackendPoolName `
+--lb-rule-frontend-ports $lbRuleFrontendPort `
+--lb-rule-backend-ports $lbRuleBackendPort `
+--lb-rule-protocols $lbRuleProtocol `
+--lb-rule-probe-names $lbRuleProbeName `
+--lb-rule-load-distributions $lbRuleLoadDistributions `
+--probe-names $lbRuleProbeName `
+--probe-protocols $lbRuleProtocol `
+--probe-ports $probePort `
+--lb-rule-idle-timeouts 4 `
+--probe-intervals $probeIntervals `
+--probe-num-probes $probeNumProbes `
+--custom-location $customLocationID
+```
