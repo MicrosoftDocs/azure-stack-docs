@@ -52,8 +52,6 @@
           href: concepts-disable-border-gateway-protocol-neighbors.md
         - name: Network Packet Broker
           href: concepts-nexus-network-packet-broker.md
-        - name: Commit Workflow v2
-          href: concepts-commit-workflow-v2.md
         - name: Password Rotation v1
           href: concepts-password-rotation-v1.md
         - name: Route Policy
@@ -63,8 +61,15 @@
               href: concepts-nexus-route-policies-overview.md
             - name: IP Prefixes Overview
               href: concepts-nexus-ip-prefix.md
-        - name: Azure Firewall outbound rules for Azure Operator Nexus
-          href: concepts-azure-firewall-outbound-rules-nexus.md
+        - name: Commit Workflow
+          expanded: false
+          items:
+            - name: Commit Workflow v2
+              href: concepts-commit-workflow-v2.md
+            - name: Disable internal/external networks in an enabled layer 3 isolation domain
+              href: concepts-disable-internal-external-networks-enabled-layer-3-isolation-domain.md
+            - name: A/B Staged configuration update Commit Workflow v3
+              href: concepts-ab-staged-commit-configuration-update-commit-workflow-v3.md              
         - name: Isolation Domains
           expanded: false
           items:
@@ -269,6 +274,10 @@
           href: howto-use-password-rotation-v1.md
         - name: How to set administrative lock or unlock for Network fabric
           href: howto-set-administrative-lock-or-unlock-for-network-fabric.md
+        - name: How to perform A / B staged commit configuration update commit workflow v3 in Azure Operator Nexus
+          href: howto-use-ab-staged-commit-configuration-update-commit-workflow-v3.md
+        - name: How to disable internal/external networks in an enabled layer 3 isolation domain
+          href: howto-disable-internal-external-networks-enabled-layer-3-isolation-domain.md        
     - name: Cluster
       expanded: false
       items:

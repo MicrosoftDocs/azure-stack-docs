@@ -84,6 +84,10 @@ Unsupported scenarios for Azure Local include:
 
 ## Azure Local endpoints not redirected
 
+> [!NOTE]
+> Endpoint requirements may vary by Azure region. For region-specific endpoint lists (for example, Japan East), refer to the [AzureStack-Tools GitHub repository](https://github.com/Azure/AzureStack-Tools/tree/master/HCI) for the latest endpoint mapping.
+> The table in this article represents global defaults.
+
 The endpoints from the following table are required. Add these endpoints to the allowlist in your proxy or firewall to deploy the Azure Local instance:
 
 | Endpoint # | Required endpoint | Component  |
@@ -119,6 +123,9 @@ Arc gateway has the following limitations in this release:
 - Arc gateway doesn't support Transport Layer Security (TLS) terminating proxies.
 
 ## Create the Arc gateway resource in Azure
+
+> [!NOTE]
+> Arc gateway creation is currently impacted by temporary Azure Front Door changes. Resource creation may take up to two 2 hours and can time out, causing failures. If resource creation fails, please try Arc gateway resource creation again.
 
 You can create an Arc gateway resource using the Azure portal, Azure CLI, or Azure PowerShell.
 

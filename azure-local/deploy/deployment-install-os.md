@@ -102,7 +102,6 @@ Follow these steps to configure the operating system using SConfig:
 
     - Configure VLAN IDs for the management network. For more information, see [Management VLAN ID](../plan/cloud-deployment-network-considerations.md#management-vlan-id) and [Management VLAN ID with a virtual switch](../plan/cloud-deployment-network-considerations.md#management-vlan-id-with-a-virtual-switch).
     - Configure DHCP for the management network. For more information, see [DHCP IP assignment](../plan/cloud-deployment-network-considerations.md#dhcp-ip-assignment).
-    - Configure a proxy server. For more information, see [Configure proxy settings for Azure Local](../manage/configure-proxy-settings-23h2.md).
 
 1. Use the **Network Settings** option in SConfig to configure a default valid gateway and a DNS server. Set **DNS** to the DNS of the domain you're joining.
 
@@ -160,21 +159,6 @@ Starting with version 2510, you can domain join machines before deployment:
 
 If you don't domain join beforehand, the machines are automatically joined to a domain during the [Deployment via Azure portal](./deploy-via-portal.md).
 
-## Install required Windows roles
-
-**This step is only required if you're using an OS ISO that's older than 2408**. For more information, see [What's new in 2408](../whats-new.md#features-and-improvements-in-2408).
-
-Install the Hyper-V role. Run the following command on each machine of the system:
-
-```powershell
-Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
-```
-
-Your machines will restart; this takes a few minutes.
-
-You are now ready to register the Azure Local machine with Azure Arc and assign permissions for deployment.
-
 ## Next steps
 
-- (Optional) [Configure proxy settings for Azure Local](../manage/configure-proxy-settings-23h2.md).
 - [Register Azure Local machines in your system with Azure Arc and assign permissions](./deployment-arc-register-server-permissions.md).

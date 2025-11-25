@@ -3,7 +3,7 @@ title: Configure group Managed Service Accounts (gMSA) for Windows containers wi
 description: Learn how to configure  Managed Service Accounts (gMSA) for containers on Windows nodes
 author: sethmanheim
 ms.topic: how-to
-ms.date: 04/03/2025
+ms.date: 11/17/2025
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: abha
@@ -17,14 +17,14 @@ ms.reviewer: abha
 
 [!INCLUDE [aks-hybrid-applies-to-azure-stack-hci-windows-server-sku](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-To use AD Authentication, you can configure group Managed Service Accounts (gMSA) for Windows containers to run with a non-domain joined host. A [group Managed Service Account](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview) is a special type of service account introduced in Windows Server 2012 that's designed to allow multiple computers to share an identity without knowing the password. Windows containers cannot be domain joined, but many Windows applications that run in Windows containers still need AD Authentication.
+To use AD Authentication, you can configure group Managed Service Accounts (gMSA) for Windows containers to run with a non-domain joined host. A [group Managed Service Account](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview) is a special type of service account introduced in Windows Server 2012 that's designed to allow multiple computers to share an identity without knowing the password. Windows containers can't be domain joined, but many Windows applications that run in Windows containers still need AD Authentication.
 
 > [!NOTE]
 > To learn how the Kubernetes community supports using gMSA with Windows containers, see [Configure gMSA](https://kubernetes.io/docs/tasks/configure-pod-container/configure-gmsa).
 
 ## Architecture of gMSA for containers with a non-domain joined host
 
-gMSA for containers with a non-domain joined host uses a portable user identity instead of a host identity to retrieve gMSA credentials. Therefore, manually joining Windows worker nodes to a domain is no longer necessary. The user identity is saved as a secret in Kubernetes. The following diagram shows the process for configuring gMSA for containers with a non-domain joined host:
+gMSA for containers with a non-domain joined host uses a portable user identity instead of a host identity to retrieve gMSA credentials. Therefore, you don't need to manually join Windows worker nodes to a domain. The user identity is saved as a secret in Kubernetes. The following diagram shows the process for configuring gMSA for containers with a non-domain joined host:
 
 ![Diagram of group Managed Service Accounts version two](media/gmsa/gmsa-v-2.png)
 
@@ -32,10 +32,10 @@ gMSA for containers with a non-domain joined host provides the flexibility of cr
 
 ## Comparison of gMSA for containers with a non-domain joined host and a domain joined host
 
-When gMSA was initially introduced, it required the container host to be domain joined, which created a lot of overhead to join Windows worker nodes manually to a domain. This limitation was addressed with gMSA for containers with a non-domain joined host, so users can now use gMSA with domain-unjoined hosts. Other improvements to gMSA include the following features:
+When gMSA was initially introduced, it required the container host to be domain joined, which created a lot of overhead to join Windows worker nodes manually to a domain. This limitation was addressed with gMSA for containers with a non-domain joined host, so you can now use gMSA with domain-unjoined hosts. Other improvements to gMSA include the following features:
 
-- Eliminating the requirement to manually join Windows worker nodes to a domain, which caused a lot of overhead. For scaling scenarios, this simplifies the process.
-- In rolling update scenarios, users no longer need to rejoin the node to a domain.
+- Eliminating the requirement to manually join Windows worker nodes to a domain. For scaling scenarios, this simplification helps.
+- In rolling update scenarios, you no longer need to rejoin the node to a domain.
 - An easier process for managing the worker node machine accounts to retrieve gMSA service account passwords.
 - A less complicated end-to-end process to configure gMSA with Kubernetes.
 
@@ -53,8 +53,8 @@ To run a Windows container with a group managed service account, you need the fo
 Follow these steps to prepare the gMSA in the domain controller:
 
 1. In the domain controller, [prepare Active Directory](/virtualization/windowscontainers/manage-containers/manage-serviceaccounts#one-time-preparation-of-active-directory) and [create the gMSA account](/virtualization/windowscontainers/manage-containers/manage-serviceaccounts#create-a-group-managed-service-account).
-1. Create a domain user account. This user account/password credentials are saved as a Kubernetes secret and used to retrieve the gMSA password.
-1. To create a GMSA account and grant permission to read the password for the gMSA account created in Step 2, run the following [New-ADServiceAccount](/powershell/module/activedirectory/new-adserviceaccount?preserve-view=true&view=windowsserver2019-ps) PowerShell command:
+1. Create a domain user account. Save this user account and password credentials as a Kubernetes secret. Use these credentials to retrieve the gMSA password.
+1. To create a gMSA account and grant permission to read the password for the gMSA account created in Step 2, run the following [New-ADServiceAccount](/powershell/module/activedirectory/new-adserviceaccount?preserve-view=true&view=windowsserver2019-ps) PowerShell command:
 
    ```powershell
     New-ADServiceAccount -Name "<gmsa account name>" -DnsHostName "<gmsa account name>.<domain name>.com" -ServicePrincipalNames "host/<gmsa account name>", "host/<gmsa account name>.<domain name>.com" -PrincipalsAllowedToRetrieveManagedPassword <username you created earlier> 
@@ -72,9 +72,9 @@ To prepare the gMSA credential spec JSON file, follow the steps for [creating a 
 
 ## Configure gMSA for Windows pods and containers in the cluster
 
-The Kubernetes community already supports domain joined Windows worker nodes for [gMSA](https://kubernetes.io/docs/tasks/configure-pod-container/configure-gmsa/). Although you don't need to domain join a Windows worker node in AKS on Windows Server, there are other required configuration steps. These steps include installing the webhook, the custom resource definition (CRD), and the credential spec, and enabling role-based access control (RBAC role). The following steps use PowerShell commands that are built to help simplify the configuration process.
+The Kubernetes community already supports domain joined Windows worker nodes for [gMSA](https://kubernetes.io/docs/tasks/configure-pod-container/configure-gmsa/). Although you don't need to domain join a Windows worker node in AKS on Windows Server, you need to complete other configuration steps. These steps include installing the webhook, the custom resource definition (CRD), and the credential spec, and enabling role-based access control (RBAC role). The following steps use PowerShell commands that simplify the configuration process.
 
-Before completing the following steps, make sure the **AksHci** PowerShell module is installed and `kubectl` can connect to your cluster.
+Before completing the following steps, make sure you install the **AksHci** PowerShell module and `kubectl` can connect to your cluster.
 
 1. To install the webhook, run the following [Install-AksHciGmsaWebhook](./reference/ps/install-akshcigmsawebhook.md) PowerShell command:
 
@@ -82,7 +82,7 @@ Before completing the following steps, make sure the **AksHci** PowerShell modul
    Install-AksHciGMSAWebhook -Name <cluster name>
    ```
 
-   To validate that the webhook pod is successfully running, run the following command:
+   To validate that the webhook pod is running, run the following command:
 
    ```powershell
    kubectl get pods -n kube-system | findstr gmsa
@@ -202,7 +202,7 @@ After you deploy the container, use the following steps to verify that it's work
    kubectl exec -it <container id> powershell
    ```
 
-1. Once you are in the container, run the following command:
+1. Once you're in the container, run the following command:
 
    ```console
    Nltest /parentdomain 
