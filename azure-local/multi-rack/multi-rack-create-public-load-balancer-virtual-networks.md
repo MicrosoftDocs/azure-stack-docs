@@ -28,7 +28,7 @@ You can create a load balancer on multi-rack deployments using Azure CLI, Azure 
 
 - Review and [Complete the prerequisites](./multi-rack-vm-management-prerequisites.md).  
 - Get access to an Azure subscription with the appropriate RBAC role and permissions assigned. For more information, see [RBAC roles for multi-rack deployments of Azure Local](./multi-rack-assign-vm-rbac-roles.md).
-- Get access to a resource group where you want to provision the load balancer.
+- Access to a resource group where you want to provision the load balancer.
 - Configure a NAT gateway on the virtual network where you’re creating the load balancer. For more information, see [Create a NAT gateway on virtual networks in multi-rack deployments of Azure Local](../index.yml).
 - Get access to Azure Resource Manager ID of the custom location associated with your Azure Local instance where you want to provision the load balancer resource.
 - To add backend pools to your load balancer instance, get access to the Azure Resource Manager IDs of the network interfaces you want to add to the backend pool and the associated virtual network (virtual network).
@@ -84,41 +84,32 @@ Follow these steps in Azure CLI to configure a virtual network:  
     ```azurecli    
     $location = "eastus"  
     $subscriptionID = "<subscription ID>"
-    $resourceGroup = "mylocal-rg"  
-    $customLocationID ="/subscriptions/$subscriptionID/resourceGroups/$resourceGroup/providers/Microsoft.ExtendedLocation/customLocations/<Custom Location Name>"  
+    $resourceGroup = "my-mrg"  
+    $customLocationName = "<Custom Location Name>"
+    $customLocationID ="/subscriptions/$subscriptionID/resourceGroups/$resourceGroup/providers/Microsoft.ExtendedLocation/customLocations/$customLocationName"  
     $name = "mylocal-VNET-PublicLB"
     $frontendIPConfigName= "fe1"
     $frontendIPPublicIP = "/subscriptions/$subscriptionID/resourceGroups/$resourceGroup/providers/Microsoft.AzureStackHCI/publicIPAddresses/mylocal-publicIP"
     $frontendIPPrivateAddress = "10.0.0.4"
     $frontendIPAllocationMethod = "Static"
-    $frontendIPSubnetID = "/subscriptions/$subscriptionID/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/mylocal-subnet1"
+    $frontendIPSubnetID = "/subscriptions/$subscriptionID/resourceGroups/$resourceGroup/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/mylocal-subnet1"
     $lbRuleName = "rule1"
     $lbRuleBackendPoolName = "web-backend"
     $lbRuleFrontendIPConfigName = "fe1"
     $lbRuleFrontendPort = 80
     $lbRuleBackendPort = 8080
-    $lbRuleProtocol = Tcp
+    $lbRuleProtocol = "Tcp"
     $lbRuleProbeName = "probe1"
-    $lbRuleLoadDistributions = Default
+    $lbRuleLoadDistributions = "Default"
     $probePort = 80
     $probeName = "probe1"
-    $probeProtocol = "Tcp"
+    $probeProtocol = "Http"
     $probeIntervals = 5
     $probeRequestPaths = "/"
     $probeNumProbes = 2
     $backendPoolName = "web-backend"
-    $backendVNetID = "/subscriptions/$subscriptionID/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/mylocal-vnet"
-    ```
+    $backendVNetID = "/subscriptions/$subscriptionID/resourceGroups/$resourceGroup/providers/Microsoft.Network/virtualNetworks/mylocal-vnet"
 
-    **If using BASH:**
-
-    ```bash
-    $backendPoolBEAddresses = '[{"name": "be1", "admin_state": "Up", "network_interface_ip_configuration": "/subscriptions/$subscriptionID/resourceGroups/$resourceGroup/providers/Microsoft.AzureStackHCI/networkInterfaces/nic1/ipConfigurations/ipconfig"}, {"name": "be2", "admin_state": "Up", "network_interface_ip_configuration": "/subscriptions/$subscriptionID/resourceGroups/$resourceGroup/providers/Microsoft.AzureStackHCI/networkInterfaces/nic2/ipConfigurations/ipconfig"}]'
-    ```
-
-    **If using PowerShell:**
-    
-    ```powershell
     $backendPoolBEAddresses = '[{\"name\": \"be1\", \"admin_state\": \"Up\", \"network_interface_ip_configuration\": \"/subscriptions/$subscriptionID/resourceGroups/$resourceGroup/providers/Microsoft.AzureStackHCI/networkInterfaces/nic1/ipConfigurations/ipconfig\"}, {\"name\": \"be2\", \"admin_state\": \"Up\", \"network_interface_ip_configuration\": \"/subscriptions/$subscriptionID/resourceGroups/$resourceGroup/providers/Microsoft.AzureStackHCI/networkInterfaces/nic2/ipConfigurations/ipconfig\"}]'
     ```
 
@@ -127,7 +118,7 @@ Follow these steps in Azure CLI to configure a virtual network:  
     | **Parameters** | **Description** |
     |---|---|
     | **name** | Name for the Load Balancer on the Azure Local instance. Make sure to provide a name that follows the [Naming rules for Azure network resources](/azure/azure-resource-manager/management/resource-name-rules#microsoftnetwork). You can't rename a Load Balancer after it's created. |
-    | **resource-group** | Name of the resource group where you create the Load Balancer. |
+    | **resource-group** | Name of the managed resource group for your custom location. |
     | **custom-location** | Use this parameter to provide the fully qualified Azure Resource Manager (ARM) ID of the custom location associated with your Azure Local instance where you're creating this Load Balancer. |
     | **location** | Azure regions as specified by az locations. |
     | **frontend-ip-config-names** | Name(s) for the frontend IP configuration(s). |
@@ -180,9 +171,6 @@ Follow these steps in Azure CLI to configure a virtual network:  
     --probe-protocols $lbRuleProtocol `
     --probe-ports $probePort `
     --lb-rule-idle-timeouts 4 5 `
-    --probe-names $probeName `
-    --probe-protocols $probeProtocol `
-    --probe-ports $probePort `
     --probe-request-paths $probeRequestPaths `
     --probe-intervals $probeIntervals `
     --probe-num-probes $probeNumProbes `
