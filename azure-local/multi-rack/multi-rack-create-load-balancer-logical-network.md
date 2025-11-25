@@ -44,7 +44,7 @@ Before you begin, review the required parameters:
 | Parameter | Description |
 |--|--|
 | name | Name for the load balancer. Follow the [naming rules for Azure network resources](/azure/azure-resource-manager/management/resource-name-rules#microsoftnetwork). You can't rename a load balancer after it's created. |
-| resource-group | Name of the resource group where you create the load balancer. |
+| resource-group | Name of the managed resource group of the custom location. |
 | custom-location | ARM ID of the custom location associated with your Azure Local instance where you're creating this load balancer. |
 | location | Azure region as specified by `az locations`. |
 | frontend-ip-config-names | Name for the frontend IP configuration. Your load balancer can have multiple frontend IP configurations. |
@@ -75,7 +75,7 @@ The example in this section demonstrates how to create a load balancer on a logi
 
 1. Sign in. Type:
 
-    ```azurecli   
+    ```azurecli
     az login --use-device-code
     ```
 
@@ -92,8 +92,9 @@ The example in this section demonstrates how to create a load balancer on a logi
     ```azurecli
     $location = "eastus"  
     $subscriptionID = "<subscription ID>"
-    $resourceGroup = "mylocal-rg"  
-    $customLocationID ="/subscriptions/$subscriptionID/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customLocationName"  
+    $resourceGroup = "my-mrg"  
+    $customLocationName = "mylocal-cl"
+    $customLocationID ="/subscriptions/$subscriptionID/resourceGroups/$resourceGroup/providers/Microsoft.ExtendedLocation/customLocations/$customLocationName"  
     $name = "mylocal-LNET-LB" 
     $frontendIPConfigName= "fe1"
     $frontendIPPublicIP = "/subscriptions/$subscriptionID/resourceGroups/$resourceGroup/providers/Microsoft.AzureStackHCI/publicIPAddresses/mylocal-publicIP"
