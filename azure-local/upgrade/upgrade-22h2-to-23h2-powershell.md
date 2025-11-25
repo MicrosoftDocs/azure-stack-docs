@@ -293,7 +293,7 @@ To install the new OS using PowerShell, follow these steps:
    Test-Cluster
    ```
 
-1. Extract the contents of the ISO image and copy them to the local system drive on each machine. Ensure that the local path is the same on each machine. Then, update the `PathToSetupMedia` parameter with the local path to the extracted ISO contents (not the ISO file).
+1. Extract the contents of the ISO image and copy them to the local system drive on each machine. Ensure that the local path is the same on each machine. Then, update the `PathToSetupMedia` parameter with the local path to the extracted ISO contents, not the ISO file.
 
    ```powershell
    # Define ISO and destination folder for extracted contents 
@@ -366,7 +366,7 @@ To install the new OS using PowerShell, follow these steps:
    Test-Cluster
    ```
 
-1. Extract the contents of the ISO image and copy them to the local system drive on each machine. Ensure that the local path is the same on each machine. Then, update the `PathToSetupMedia` parameter with the local path to the extracted ISO contents (not the ISO file).
+1. Extract the contents of the ISO image and copy them to the local system drive on each machine. Ensure that the local path is the same on each machine. Then, update the `PathToSetupMedia` parameter with the local path to the extracted ISO contents, not the ISO file.
 
    ```powershell
    # Define ISO and destination folder for extracted contents 
