@@ -1,13 +1,13 @@
 ---
-title: Create Load Balancers on Logical Networks using Azure CLI in Multi-Rack Deployments of Azure Local (Preview)
-description: Learn how to create load balancers on logical networks using Azure CLI in multi-rack deployments of Azure Local (Preview).
+title: Create Load Balancers on Logical Networks using Azure CLI in Multi-Rack Deployments of Azure Local (preview)
+description: Learn how to create load balancers on logical networks using Azure CLI in multi-rack deployments of Azure Local (preview).
 ms.topic: conceptual
-ms.date: 11/20/2025
+ms.date: 11/25/2025
 author: alkohli
 ms.author: alkohli
 ---
 
-# Create load balancers on logical networks using Azure CLI in multi-rack deployments of Azure Local (Preview)
+# Create load balancers on logical networks using Azure CLI in multi-rack deployments of Azure Local (preview)
 
 [!INCLUDE [multi-rack-applies-to-preview](../includes/multi-rack-applies-to-preview.md)]
 
@@ -71,11 +71,11 @@ The example in this section demonstrates how to create a load balancer on a logi
 
 #### Sign in and set subscription
 
-1. Connect to your Azure Local max instance.
+1. Connect to your Azure Local instance.
 
 1. Sign in. Type:
 
-    ```azurecli
+    ```azurecli   
     az login --use-device-code
     ```
 
@@ -98,16 +98,16 @@ The example in this section demonstrates how to create a load balancer on a logi
     $frontendIPConfigName= "fe1"
     $frontendIPPublicIP = "/subscriptions/$subscriptionID/resourceGroups/$resourceGroup/providers/Microsoft.AzureStackHCI/publicIPAddresses/mylocal-publicIP"
     $lbRuleName = "rule1"
-    $lbRuleBackendPoolName = "web=backend"
+    $lbRuleBackendPoolName = "web-backend"
     $lbRuleFrontendIPConfigName = "fe1"
     $lbRuleFrontendPort = 80
     $lbRuleBackendPort = 8080
-    $lbRuleProtocol = Tcp
+    $lbRuleProtocol = "Tcp"
     $lbRuleProbeName = "probe1"
-    $lbRuleLoadDistributions = Default
+    $lbRuleLoadDistributions = "Default"
     $probePort = 80
     $probeName = "probe1"
-    $probeProtocol = "Tcp"
+    $probeProtocol = "Http"
     $probeIntervals = 5
     $probeRequestPaths = "/"
     $probeNumProbes = 2
@@ -115,17 +115,9 @@ The example in this section demonstrates how to create a load balancer on a logi
     $backendLNetID = "/subscriptions/$subscriptionID/resourceGroups/$resourceGroup/providers/Microsoft.AzureStackHCI/logicalNetworks/mylocal-lnet"
     ```
 
-1. Set backend pool addresses. Depending on your shell, use the appropriate format:
+1. Set backend pool addresses.
 
-    **BASH**
-
-    ```bash
-    $backendPoolBEAddresses = '[{"name": "be1", "admin_state": "Up", "network_interface_ip_configuration": "/subscriptions/$subscriptionID/resourceGroups/$resourceGroup/providers/Microsoft.AzureStackHCI/networkInterfaces/nic1/ipConfigurations/ipconfig"}, {"name": "be2", "admin_state": "Up", "network_interface_ip_configuration": "/subscriptions/$subscriptionID/resourceGroups/$resourceGroup/providers/Microsoft.AzureStackHCI/networkInterfaces/nic2/ipConfigurations/ipconfig"}]'
-    ```
-
-    **PowerShell**
-
-    ```powershell
+    ```azurecli
     $backendPoolBEAddresses = '[{\"name\": \"nic1\", \"admin_state\": \"Up\", \"network_interface_ip_configuration\": \"/subscriptions/$subscriptionID/resourceGroups/$resourceGroup/providers/Microsoft.AzureStackHCI/networkInterfaces/nic1/ipConfigurations/ipconfig\"}, {\"name\": \"nic2\", \"admin_state\": \"Up\", \"network_interface_ip_configuration\": \"/subscriptions/$subscriptionID/resourceGroups/$resourceGroup/providers/Microsoft.AzureStackHCI/networkInterfaces/nic2/ipConfigurations/ipconfig\"}]' 
     ```
 
@@ -133,10 +125,10 @@ The example in this section demonstrates how to create a load balancer on a logi
 
 1. Create a load balancer. Run the following cmdlet:  
 
-    ```azurecli
+    ```PowerShell
     az stack-hci-vm network lb create `
     --subscription $subscriptionID `
-    --resource-group $resource_group `
+    --resource-group $resourceGroup `
     --name $name `
     --location $location `
     --frontend-ip-config-names $frontendIPConfigName `
@@ -155,15 +147,9 @@ The example in this section demonstrates how to create a load balancer on a logi
     --probe-names $lbRuleProbeName `
     --probe-protocols $lbRuleProtocol `
     --probe-ports $probePort `
-    --lb-rule-idle-timeouts 4 5 `
-    --probe-names $probeName `
-    --probe-protocols $probeProtocol `
-    --probe-ports $probePort `
-    --probe-request-paths $probeRequestPaths `
+    --lb-rule-idle-timeouts 4 `
     --probe-intervals $probeIntervals `
     --probe-num-probes $probeNumProbes `
     --custom-location $customLocationID
     ```
 
-<!--Need to add a sample output-->
-<!--Can we add a step to verify that the load balancer is created?-->
