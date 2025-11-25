@@ -4,7 +4,7 @@ description: Learn the process for upgrading Fabric for Operator Nexus with step
 author: jeffreymason 
 ms.author: jeffreymason
 ms.service: azure-operator-nexus
-ms.date: 08/04/2025
+ms.date: 11/25/2025
 ms.topic: how-to
 ms.custom: azure-operator-nexus, template-include
 ---
@@ -34,7 +34,7 @@ Runtime changes are categorized as follows:
 - Latest `managednetworkfabric` [CLI extension](howto-install-cli-extensions.md).
 - Latest `networkcloud` [CLI extension](howto-install-cli-extensions.md).
 - Subscription access to run the Azure Operator Nexus Network Fabric (NF) and Network Cloud (NC) CLI extension commands.
-- Target Fabric must be healthy in a running state, with all Devices healthy.
+- Target Fabric must be healthy in a running state. Details on checking Fabric health can be found in [Fabric Runtime Upgrade](./howto-upgrade-nexus-fabric.md#prerequisites).
 
 </details>
 
