@@ -6,7 +6,7 @@ ms.author: bpinto
 ms.service: azure-operator-nexus
 ms.custom: azure-operator-nexus, devx-track-azurecli
 ms.topic: how-to
-ms.date: 08/13/2025
+ms.date: 11/21/2025
 # ms.custom: template-include
 ---
 
@@ -36,6 +36,9 @@ This how-to guide explains the steps for installing the required Azure CLI and e
         - Within Azure Arc page, select Settings > Extensions.
             - ``nc-platform-extension`` should be in status ``Succeeded``.
         - ``nc-platform-runtime-extension`` should be in status ``Succeeded``.
+
+> [!NOTE]
+> These same checks should also be performed following the upgrade to ensure the Cluster is healthy.
 
 ## Checking current runtime version
 

@@ -266,10 +266,11 @@ Here are the summarized considerations for the VLAN ID:
 
 |#  | Considerations  |
 |---------|---------|
-|1    | VLAN ID must be specified on the physical network adapter for management before registering the machines with Azure Arc.         |
+|1     | VLAN ID must be specified on the physical network adapter for management before registering the machines with Azure Arc.         |
 |2     | Use specific steps when a virtual switch is required before registering the machines to Azure Arc.         |
 |3     | The management VLAN ID is carried over from the host configuration to the infrastructure VMs during deployment.        |
 |4     | There is no VLAN ID input parameter for Azure portal deployment or for Resource Manager template deployment.        |
+|5     | All the adapters that you intend to use for management must have the same VLAN ID configured.         |
 
 ### Custom IPs for storage
 

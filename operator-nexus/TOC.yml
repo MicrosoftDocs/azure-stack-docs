@@ -68,10 +68,8 @@
               href: concepts-commit-workflow-v2.md
             - name: Disable internal/external networks in an enabled layer 3 isolation domain
               href: concepts-disable-internal-external-networks-enabled-layer-3-isolation-domain.md
-        - name: A/B Staged configuration update Commit Workflow v3
-          href: concepts-ab-staged-commit-configuration-update-commit-workflow-v3.md              
-        - name: Azure Firewall outbound rules for Azure Operator Nexus
-          href: concepts-azure-firewall-outbound-rules-nexus.md
+            - name: A/B Staged configuration update Commit Workflow v3
+              href: concepts-ab-staged-commit-configuration-update-commit-workflow-v3.md              
         - name: Isolation Domains
           expanded: false
           items:

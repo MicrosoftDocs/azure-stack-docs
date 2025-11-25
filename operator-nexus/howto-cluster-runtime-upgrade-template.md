@@ -4,7 +4,7 @@ description: Learn the process for upgrading Cluster for Operator Nexus with ste
 author: bartpinto 
 ms.author: bpinto
 ms.service: azure-operator-nexus
-ms.date: 09/19/2025
+ms.date: 11/21/2025
 ms.topic: how-to
 ms.custom: azure-operator-nexus, template-include
 ---
@@ -30,11 +30,14 @@ Runtime changes are categorized as follows:
 <details>
 <summary> Prerequisites for using this template to upgrade a Cluster </summary>
 
-- Latest version of [Azure CLI](https://aka.ms/azcli).
-- Latest `managednetworkfabric` [CLI extension](howto-install-cli-extensions.md).
-- Latest `networkcloud` [CLI extension](howto-install-cli-extensions.md).
-- Subscription access to run the Azure Operator Nexus Network Fabric (NF) and Network Cloud (NC) CLI extension commands.
-- Target Cluster must be healthy in a running state.
+1. Install the latest version of the [appropriate CLI extensions](howto-install-cli-extensions.md).
+1. The latest `networkcloud` CLI extension is required. It can be installed following the steps listed [here](./howto-install-cli-extensions.md).
+1. Subscription access to run the Azure Operator Nexus network fabric (NF) and network cloud (NC) CLI extension commands.
+1. Collect the following information:
+   - Subscription ID (`SUBSCRIPTION`)
+   - Cluster name (`CLUSTER`)
+   - Resource group (`CLUSTER_RG`)
+1. Target Cluster must be healthy in a running state, with all control plane nodes healthy. Details on checking Cluster health can be found in [Cluster Runtime Upgrade](./howto-cluster-runtime-upgrade.md#prerequisites).
 
 </details>
 
