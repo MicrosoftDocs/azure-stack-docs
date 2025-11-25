@@ -16,7 +16,7 @@ This article describes how to create public IP resources on multi-rack deploymen
 
 A public IP in a multi-rack deployment of Azure Local represents an externally routable IP address resource.
 
-Unlike Azure public IP addresses, which are always internet-routable, a public IP on multi-rack deployments can be configured with any IP address that is routable within your network or, optionally, internet-facing. This resource can be attached to software defined networking (SDN) services, such as NAT Gateways and Software Load Balancers (SLB), to expose them to external networks (on-prem or the internet).  
+Unlike Azure public IP addresses, which are always internet-routable, a public IP on multi-rack deployments can be configured with any IP address that's routable within your network or, optionally, internet-facing. This resource can be attached to software defined networking (SDN) services, such as NAT Gateways and Software Load Balancers (SLB), to expose them to external networks (on-premises or the internet).  
 
 [!INCLUDE [hci-preview](../includes/hci-preview.md)]
 
@@ -24,7 +24,7 @@ Unlike Azure public IP addresses, which are always internet-routable, a public I
 
 - **Only IPv4**: Public IP address resources can only be IPv4 today. IPv6 addresses aren't supported on multirack deployments.
 - **Static allocation only**: Public IP addresses are statically allocated from a user-created logical network with routable IP address space assigned. Dynamic allocation of IP addresses isn't supported. Effectively, the public IP resource is assigned an IP address at the time it’s created and it stays the same throughout the life of the resource.
-- **Supported resources**: Public IP address resources can only be assigned to NAT Gateways and SLBs. They can't be associated with a VM network interface.
+- **Supported resources**: Public IP address resources can only be assigned to NAT Gateways and SLBs. They can't be associated with a virtual machine (VM) network interface.
 
 ## Prerequisites
 
@@ -111,7 +111,7 @@ Use the `az stack-hci-vm network public-ip create` command to create a public IP
     ```output
     ``` -->
 
-    Once the public IP is created, you can associate it with a NAT Gateway or a SLB.
+    Once the public IP is created, you can associate it with a NAT Gateway or an SLB.
 
 ## Next steps
 
