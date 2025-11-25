@@ -742,7 +742,7 @@ items:
     - name: Deploy SDN infrastructure
       items:
       - name: Create NSGs
-        href: ./multi-rack/multi-rack-overview.md
+        href: ./multi-rack/multi-rack-create-network-security-groups.md
       - name: Create public load balancer for VNETs
         href: ./multi-rack/multi-rack-create-public-load-balancer-virtual-networks.md
       - name: Create internal load balancer for VNETs
