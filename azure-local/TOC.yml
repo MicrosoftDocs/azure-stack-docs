@@ -739,6 +739,20 @@ items:
       href: ./multi-rack/multi-rack-prerequisites.md
     - name: Install Azure CLI extensions
       href: ./multi-rack/multi-rack-cli-extensions.md
+    - name: Deploy SDN infrastructure
+      items:
+      - name: Create NSGs
+        href: ./multi-rack/multi-rack-create-network-security-groups.md
+      - name: Create public load balancer for VNETs
+        href: ./multi-rack/multi-rack-create-public-load-balancer-virtual-networks.md
+      - name: Create internal load balancer for VNETs
+        href: ./multi-rack/multi-rack-overview.md
+      - name: Create public load balancer for LNETs
+        href: ./multi-rack/multi-rack-overview.md
+      - name: Create NAT gateway
+        href: ./multi-rack/multi-rack-overview.md
+      - name: Create public IP addresses
+        href: ./multi-rack/multi-rack-create-public-ip.md
     - name: Deploy Azure Local VM workloads
       items:
       - name: Complete Azure Local VM prerequisites
@@ -775,6 +789,10 @@ items:
     items:
       - name: Compute for multi-rack deployments
         href: ./multi-rack/multi-rack-concepts-compute.md
+      - name: Load balancer for multi-rack deployments
+        href: ./multi-rack/multi-rack-load-balancer-overview.md
+      - name: NAT gateway for multi-rack deployments
+        href: ./multi-rack/multi-rack-nat-gateway-overview.md
       - name: Azure Local VMs for multi-rack deployments
         href: ./multi-rack/multi-rack-azure-arc-vm-management-overview.md
   - name: Reference
