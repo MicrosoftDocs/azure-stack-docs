@@ -4,7 +4,7 @@ description: Learn about NAT gateway on multi-rack deployments of Azure Local (p
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 11/24/2025
+ms.date: 11/25/2025
 ms.topic: conceptual
 ---
 
@@ -18,9 +18,9 @@ This article provides an overview of Network Address Translation (NAT) gateway o
 
 ## What is NAT gateway on Azure Local?
 
-NAT gateway in mult-irack deployments of Azure Local is a fully managed service that provides outbound connectivity for resources within virtual networks. It's a critical component that enables resources in a virtual network to communicate with external networks, whether that's customer's enterprise network or the internet.
+NAT gateway in multi-rack deployments of Azure Local is a managed egress service that provides outbound connectivity for resources within virtual networks. It's a critical component that enables resources in a virtual network to communicate with external networks, whether that's customer's enterprise network or the internet.
 
-NAT gateway blocks unsolicited inbound connections from external networks, except for response packets to outbound requests or traffic that matches a configured inbound rule.
+When a subnet is associated with a NAT gateway, outbound traffic from resources in that subnet is SNATed to the NAT gateway’s public IP. NAT gateway blocks unsolicited inbound connections and only allows responses to established outbound flows.
 
 ## Key characteristics of NAT gateway
 
@@ -44,7 +44,7 @@ The following table summarizes how long NAT gateway keeps connections open based
 
 ## NAT gateway configurations
 
-- Multiple subnets within the same virtual network can share a single NAT gateway or use different NAT gateways.
+- Multiple subnets within the same virtual network can share a single NAT gateway
 - You can attach only one NAT gateway to a virtual network and its subnets, but any number of subnets within that virtual network can share the same NAT gateway.
 - A NAT gateway can’t span multiple virtual networks. In the preview version, a NAT gateway can use only one public IP address. Additionally, the virtual network's address space must not overlap with the logical network from which the public IP address is allocated.
 - The NAT gateway must have at least one virtual network subnet configured for the entire lifetime of the load balancer.
