@@ -304,7 +304,7 @@ Run the following command to create an outbound network security rule that denie
 az stack-hci-vm network nsg rule create -g $resource_group --nsg-name $nsgname --name $securityrulename_out --priority 500 --custom-location $customLocationId --access "Deny" --direction "Outbound" --location $location --protocol "*" --source-port-ranges $sportrange --source-address-prefixes $saddprefix --destination-port-ranges $dportrange --destination-address-prefixes $daddprefix --description $description
 ```
 
-Run the following command to block all outbounf traffic:
+Run the following command to block all outbound traffic:
 
 ```azurecli
 Set --source-address-prefixes "" --source-port-ranges "" --destination-address-prefixes "" --destination-port-ranges "" --protocol "*"
