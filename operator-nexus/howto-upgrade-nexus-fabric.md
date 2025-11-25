@@ -3,7 +3,7 @@ title: How to upgrade Network Fabric for Azure Operator Nexus
 description: Learn the process for upgrading Network Fabric for Azure Operator Nexus, including required and recommended pre-validations.
 author: RaghvendraMandawale 
 ms.author: rmandawale
-ms.date: 09/29/2025
+ms.date: 11/25/2025
 ms.topic: how-to
 ms.service: azure-operator-nexus
 ms.custom: template-how-to, devx-track-azurecli
@@ -29,7 +29,7 @@ By following this guide, users can ensure a consistent, scalable, and secure app
 
 ## Required Pre-Upgrade Validations
 
-Before initiating the **Network Fabric (NF) Runtime Upgrade** process, it is **required** that users validate these resource states prior to triggering the upgrade. These proactive validation steps help prevent upgrade failures and avoid service interruption challenges. If the required resource states are not met, NNF upgrade process should be stopped.
+Before initiating the **Network Fabric (NF) Runtime Upgrade** process, it is **required** that users validate these resource states prior to triggering the upgrade. These proactive validation steps help prevent upgrade failures and avoid service interruption challenges. If the required resource states are not met, NNF upgrade process should be stopped. Observations may be taken during the upgrade's major milestones to ensure resource states remain consistent. It is recommended to perform these checks after the TOR and Mgmt switch upgrades. Validation for the CE devices should be performed after each CE upgrade before proceeding to the next CE device upgrade.
 
 | **Check** | **Expectation** | **Post Upgrade Check Applicable?** | **RT Upgrade Failure Phase** |
 | --- | --- | --- | --- |
@@ -147,14 +147,14 @@ Customer performing action must validate the device's maintenance mode status af
 
 ## Post Upgrade validation steps
 
-| **Post NNF RT Upgrade action** | **Expectation** |
-| --- | --- |
-| Version compliance | All Network Fabric devices must be in either RT version 6.1.0 |
-| Maintenance status check | Ensure TOR and CE devices maintenance status is "NOT under Maintenance" (show maintenance runro command) |
-| Connectivity Validation | Verify CE ↔ PE connections are stable or similar to the pre-upgrade status (show ip interface brief runro command) |
-| Reachability Checks | Confirm all NF devices are reachable via jump server (ping &lt;MA1_IP&gt;, ping6 &lt;Loopback6_IP&gt;) |
-| BGP Summary Validation | Ensure BGP sessions are established across all VRFs (show ip bgp summary vrf all runro command on CEs) |
-| GNMI Metrics Emission | Confirm GNMI metrics are being emitted for subscribed paths (check via dashboards or CLI)
+| **Post NNF RT Upgrade action** | **Expectation**                                                                                                    |
+|--------------------------------|--------------------------------------------------------------------------------------------------------------------|
+| Version compliance             | All Network Fabric devices must be in either RT version 6.1.0                                                      |
+| Maintenance status check       | Ensure TOR and CE devices maintenance status is "NOT under Maintenance" (show maintenance runro command)           |
+| Connectivity Validation        | Verify CE ↔ PE connections are stable or similar to the pre-upgrade status (show ip interface brief runro command) |
+| Reachability Checks            | Confirm all NF devices are reachable via jump server (ping &lt;MA1_IP&gt;, ping6 &lt;Loopback6_IP&gt;)             |
+| BGP Summary Validation         | Ensure BGP sessions are established across all VRFs (show ip bgp summary vrf all runro command on CEs)             |
+| GNMI Metrics Emission          | Confirm GNMI metrics are being emitted for subscribed paths (check via dashboards or CLI)                          |
 
 ## Appendix 
 
@@ -169,3 +169,26 @@ Each entry in the table corresponds to a specific action, offering detailed inst
 | Connectivity Validation | Verify CE ↔ PE connections are stable. "Show ip interface brief" runro command. |
 | Reachability Checks | Confirm all NF devices are reachable via jump server: \* MA1 address ping &lt;MA1_IP&gt; \* Loopback6 address ping6 &lt;Loopback6_IP&gt; |
 | BGP Summary Validation | Ensure BGP sessions are established across all VRFs by executing "show ip bgp summary vrf all" "runro command" on CE devices.The above status must ensure that peers should be in Established state - consistent with pre upgrade state. |
+
+The following table outlines all Resource Types referenced in this document
+
+| **Resource Type**    | **Resource Provider Namespace**                                             |
+|----------------------|-----------------------------------------------------------------------------|
+| NFC                  | microsoft.managednetworkfabric/NetworkFabricControllers                     |
+| NF                   | microsoft.managednetworkfabric/networkfabrics                               |
+| NNI                  | microsoft.managednetworkfabric/networkfabrics/networktonetworkinterconnects |
+| BMP                  | microsoft.managednetworkfabric/networkmonitors                              |
+| ACL                  | microsoft.managednetworkfabric/accesscontrollists                           |
+| L2 ISD               | microsoft.managednetworkfabric/l2isolationdomains                           |
+| L3 ISD               | microsoft.managednetworkfabric/l3isolationdomains                           |
+| Route Policies       | microsoft.managedNetworkFabric/routePolicies                                |
+| IP Prefixes          | microsoft.managedNetworkFabric/IpPrefixes                                   |
+| IP Communities       | microsoft.managedNetworkFabric/IpCommunities                                |
+| IP Extd. Communities | microsoft.managedNetworkFabric/IpExtendedCommunities                        |
+| Internal Networks    | microsoft.managednetworkfabric/l3isolationdomains/internalnetworks          |
+| External Networks    | microsoft.managednetworkfabric/l3isolationdomains/externalnetworks          |
+| Network Taps         | microsoft.managednetworkfabric/networktaps                                  |
+| Network Tap Rules    | microsoft.managednetworkfabric/networktaprules                              |
+| NPB                  | microsoft.managednetworkfabric/networkpacketbrokers                         |
+| Network Devices      | microsoft.managednetworkfabric/NetworkDevices                               |
+| Network Interfaces   | microsoft.managednetworkfabric/networkDevices/networkInterfaces             |
