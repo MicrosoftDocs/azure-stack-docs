@@ -29,7 +29,7 @@ By following this guide, users can ensure a consistent, scalable, and secure app
 
 ## Required PreUpgrade Validations
 
-Before initiating the **Network Fabric (NF) Runtime Upgrade** process, it's **required** that users validate these resource states prior to triggering the upgrade. These proactive validation steps help prevent upgrade failures and avoid service interruption challenges. If the required resource states are not met, NNF upgrade process should be stopped. Observations may be taken during the upgrade's major milestones to ensure resource states remain consistent. It's recommended to perform these checks after the TOR and Mgmt switch upgrades. Validation for the CE devices should be performed after each CE upgrade before proceeding to the next CE device upgrade.
+Before initiating the **Network Fabric (NF) Runtime Upgrade** process, it's **required** that users validate these resource states prior to triggering the upgrade. These proactive validation steps help prevent upgrade failures and avoid service interruption challenges. If the required resource states aren't met, NNF upgrade process should be stopped. Observations may be taken during the upgrade's major milestones to ensure resource states remain consistent. It's recommended to perform these checks after the TOR and Mgmt switch upgrades. Validation for the CE devices should be performed after each CE upgrade before proceeding to the next CE device upgrade.
 
 | **Check** | **Expectation** | **Post Upgrade Check Applicable?** | **RT Upgrade Failure Phase** |
 | --- | --- | --- | --- |
@@ -44,12 +44,12 @@ Before initiating the **Network Fabric (NF) Runtime Upgrade** process, it's **re
 | NetworkToNetworkConnect (NNI)<br/>Network Interfaces referred in NNI<br/>Network Monitor (BMP)<br/>ACLs & Associated resources<br/>Ingress ACLs, CPU & CP TP ACLs<br/>L2ISD Resources<br/>L3ISD Resources<br/>Route Policies<br/>IPPrefixes & TrustedIpPrefixes<br/>IP Communities<br/>IP Extended Communities | When the Resource has an Administrative state is in "Enabled" status:<br/>• Provisioning state shall need to be in "Succeeded" state<br/>• Configuration state in "Succeeded" state<br/><br/>When the Resource has an Administrative state in "Disabled" status, the resource has no impact on the runtime upgrade | No | Fabric upgrade start command fails |
 | Internal and External Networks referred in L3 ISD | When L3 ISD Administrative state is in "Enabled" status:<br/>• Internal & External Networks Administrative state is in "Enabled" status<br/>• Provisioning state is in "Succeeded" status<br/>• Configuration State is in "Succeeded" status | No | Fabric upgrade start command fails |
 | Network Tap | When the Resource has an Administrative state is in "Enabled" status:<br/>• Provisioning state shall need to be in "Succeeded" state<br/>• Configuration state in "Succeeded" or "Accepted" state | No | Fabric upgrade start command fails |
-| Network Tap Rule, NNI and Internal network associated with Network Tap | Parent Network Tap has an Administrative state is in "Enabled" status:<br/>• Provisioning state shall need to be in "Succeeded" state<br/>• Configuration state in "Succeeded" or "Accepted" state | No | Fabric upgrade start command fails |
-| Neighbour Group associated to Network Tap | Parent Network Tap has an Administrative state is in "Enabled" status:<br/>• Provisioning state shall need to be in "Succeeded" state | No | Fabric upgrade start command fails |
+| Network Tap Rule, NNI, and Internal network associated with Network Tap | Parent Network Tap has an Administrative state is in "Enabled" status:<br/>• Provisioning state shall need to be in "Succeeded" state<br/>• Configuration state in "Succeeded" or "Accepted" state | No | Fabric upgrade start command fails |
+| Neighbor Group associated to Network Tap | Parent Network Tap has an Administrative state is in "Enabled" status:<br/>• Provisioning state shall need to be in "Succeeded" state | No | Fabric upgrade start command fails |
 
 ## Recommended PreUpgrade Validations
 
-Before initiating the Network Fabric (NF) Runtime Upgrade process, it is **recommended** that users validate these resource states prior to triggering the NF upgrade. These resources won't prevent the upgrade, but should be checked before and after to confirm state remains consistent.
+Before initiating the Network Fabric (NF) Runtime Upgrade process, it's **recommended** that users validate these resource states prior to triggering the NF upgrade. These resources won't prevent the upgrade, but should be checked before and after to confirm state remains consistent.
 
 | **NNF Resource** | **Expectation** |
 | --- | --- |
@@ -129,7 +129,7 @@ After all Network Fabric devices upgrades are completed, User must ensure that n
 
 ### Step 3: Complete Upgrade
 
-Once all the NNF devices are successfully upgraded to the latest version i.e 6.1.0, Nexus Network Fabric customer will run the following command to take the network fabric out of maintenance state and complete the upgrade procedure.
+Once all the NNF devices are successfully upgraded to the latest version i.e., 6.1.0, Nexus Network Fabric customer will run the following command to take the network fabric out of maintenance state and complete the upgrade procedure.
 
 #### Sample az CLI command
 
@@ -142,7 +142,7 @@ az networkfabric fabric list -g xxxxx --query "[].{name:name,fabricVersion:fabri
 
 ### Step 4: Credential rotation (optional step).
 
-Customer performing action must validate the device's maintenance mode status after each cycle of credential rotation is completed. The device should not remain in the under-maintenance state post credential rotation.
+Customer performing action must validate the device's maintenance mode status after each cycle of credential rotation is completed. The device shouldn't remain in the under-maintenance state post credential rotation.
 
 
 ## Post Upgrade validation steps
@@ -165,10 +165,10 @@ Each entry in the table corresponds to a specific action, offering detailed inst
 | **Action** | **Detailed steps** |
 | --- | --- |
 | Device image validation | Confirm latest image version is installed by executing "show version" runro command on each NF device. az networkfabric device run-ro -g xxxx -resource-name xxxx -ro-command "show version". The above output must reflect the latest image version as per the release documentation. |
-| Maintenance status check | Ensure TOR and CE device status is not under maintenance by executing "show maintenance" runro command. The above status must not be in "Maintenance mode is disabled". |
+| Maintenance status check | Ensure TOR and CE device status isn't under maintenance by executing "show maintenance" runro command. The above status must not be in "Maintenance mode is disabled". |
 | Connectivity Validation | Verify CE ↔ PE connections are stable. "Show ip interface brief" runro command. |
 | Reachability Checks | Confirm all NF devices are reachable via jump server: \* MA1 address ping &lt;MA1_IP&gt; \* Loopback6 address ping6 &lt;Loopback6_IP&gt; |
-| BGP Summary Validation | Ensure BGP sessions are established across all VRFs by executing "show ip bgp summary vrf all" "runro command" on CE devices.The above status must ensure that peers should be in Established state - consistent with pre upgrade state. |
+| BGP Summary Validation | Ensure BGP sessions are established across all VRFs by executing "show ip bgp summary vrf all" "runro command" on CE devices. The above status must ensure that peers should be in Established state - consistent with pre upgrade state. |
 
 The following table outlines all Resource Types referenced in this document
 
