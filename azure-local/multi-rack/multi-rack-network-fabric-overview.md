@@ -42,5 +42,5 @@ Key capabilities offered in the network fabric:
 
 * **Network Policy Automation** - Automating the management of consistent network policies across the fabric to ensure security, performance, and access controls are enforced uniformly.
 
-* **Networking features built for enterprise operators** - Support for unique features like multicast, SCTP, and jumbo frames.
+* **Networking features built for enterprise customers** - Support for unique features like multicast, SCTP, and jumbo frames.
 
