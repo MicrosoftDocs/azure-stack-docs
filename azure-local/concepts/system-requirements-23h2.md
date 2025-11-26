@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
 ms.custom: references_regions
-ms.date: 11/03/2025
+ms.date: 11/26/2025
 ---
 
 # System requirements for Azure Local
@@ -100,6 +100,12 @@ The machines should also meet these extra requirements for drives:
    - Hybrid two-tier is supported only when using HDD for capacity + flash (NVMe or SSD) for cache.
 
    - Cache devices must be ≥ 32 GB.
+
+   - Cache-to-capacity ratio must be ≥ 15%.
+
+   - Cache drives recommended to have high endurance: ≥ 3 DWPD or ≥ 4 TBW/day.
+
+   - Number of capacity drives recommended to be whole multiple of cache drives.
 
 - NVMe driver is the Microsoft-provided one included in Windows (driver filename is stornvme.sys).
 
