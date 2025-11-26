@@ -46,7 +46,7 @@ Use the `az stack-hci-vm network lb` cmdlet to create an internal load balancer 
 
 Key things to consider before you create an internal load balancer:
 
-- After creating the load baancer, you can't update the frontend IP or the virtual network subnet.
+- After creating the load balancer, you can't update the frontend IP or the virtual network subnet.
 
 - To update tags, you can only use `az stack-hci-vm network lb update`.
 
@@ -145,7 +145,7 @@ The example in this section shows how to create an internal load balancer on a v
 
 #### Create the internal load balancer
 
-1. Create a load balancer. Run the following cmdlet:  
+Create a load balancer. Run the following cmdlet:  
 
     ```azurecli
     az stack-hci-vm network lb create `
