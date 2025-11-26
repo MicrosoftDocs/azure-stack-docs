@@ -215,16 +215,59 @@ You can upgrade Load Balancer Multiplexers without any additional requirements. 
 
 1. Identify the Gateway VM to patch first, and remove its resource from the Network Controller using `SdnDiagnostics`:
 
+    > [!IMPORTANT]
+    > Gateway VMs should automatically reboot when removed from Network Controller. If the VM doesn't reboot within 10 minutes, investigate the Gateway VM status and ensure it has restarted before proceeding with the in-place upgrade.
+
     ```powershell
+
+    $cred = Get-Credential
+    # Record boot time before removing Gateway from Network Controller
+    $bootTimeBefore = Invoke-Command -ComputerName "<GW_VM>" -Credential $cred -ScriptBlock {
+    (Get-CimInstance -ClassName Win32_OperatingSystem).LastBootUpTime
+    }
+    Write-Host "Gateway boot time before removal: $bootTimeBefore"
+
     # Remove Gateway resource from Network Controller 
     $resourceRef = "/Gateways/<RESOURCE_ID>"
-    $gateway = Get-SdnGateway -NcUri $environmentInfo.NcUrl -ResourceRef $resourceRef 
+    $gateway = Get-SdnGateway -NcUri $environmentInfo.NcUrl -ResourceRef $resourceRef
+
+    # Wait for Gateway VM to automatically reboot after removal from Network Controller
+    Write-Host "Waiting for Gateway VM to reboot after removal from Network Controller..."
+    $rebootTimeout = 600  # 10 minutes timeout
+    $rebootCheck = 0
+    $hasRebooted = $false
+
+    do {
+        Start-Sleep -Seconds 30
+        $rebootCheck += 30
+        try {
+            $currentBootTime = Invoke-Command -ComputerName "<GW_VM>" -Credential $cred -ScriptBlock {
+            (Get-CimInstance -ClassName Win32_OperatingSystem).LastBootUpTime
+            }
+            $hasRebooted = $currentBootTime -gt $bootTimeBefore
+            if (!$hasRebooted) { 
+            Write-Host "Gateway has not rebooted yet, checking again... (waited $rebootCheck/$rebootTimeout seconds)" 
+            }
+        }
+        catch { 
+            Write-Host "Gateway not yet accessible, checking again... (waited $rebootCheck/$rebootTimeout seconds)"
+            $hasRebooted = $false 
+        }
+    } while (!$hasRebooted -and $rebootCheck -lt $rebootTimeout)
+
+    if ($hasRebooted) {
+        Write-Host "Gateway VM has rebooted successfully. New boot time: $currentBootTime" -ForegroundColor Green
+    } else {
+        Write-Error "Gateway VM did not reboot automatically within $rebootTimeout seconds. Manual intervention required."
+        throw "Gateway reboot timeout - check Gateway VM status before proceeding with in-place upgrade"
+    }
 
     # create backup of the gateway
     $gateway | ConvertTo-Json -Depth 10 | Out-File -FilePath "$(Get-SdnWorkingDirectory)\$($gateway.resourceId).json"
 
     # delete the gateway resource
     Set-SdnResource -NcUri $environmentInfo.NcUrl -ResourceRef $gateway.resourceRef -OperationType Delete
+
     ```
 
 1. [Perform the in-place upgrade](#perform-in-place-upgrade).
@@ -246,6 +289,31 @@ You can upgrade Load Balancer Multiplexers without any additional requirements. 
     $dataObject = Get-Content -Path $filePath | ConvertFrom-Json 
 
     Set-SdnResource -NcUri $environmentInfo.NcUrl -ResourceRef $dataObject.resourceRef -Object $dataObject -OperationType Add
+
+    # Wait for Gateway to become healthy after re-addition to Network Controller
+        $healthTimeout = 300 # 5 minutes
+        $healthCheck = 0
+        do {
+            Start-Sleep -Seconds 30
+            $healthCheck += 30
+            try {
+                $gateway = Get-SdnGateway -NcUri $environmentInfo.NcUrl -ResourceRef $resourceRef
+                $healthState = $gateway.properties.healthState
+                Write-Host "Gateway health state: $healthState (waited $healthCheck seconds)"
+                $isHealthy = $healthState -eq "Healthy"
+            }
+            catch {
+                Write-Host "Error checking gateway health, retrying..."
+                $isHealthy = $false
+            }
+        } while (!$isHealthy -and $healthCheck -lt $healthTimeout)
+
+        if ($isHealthy) {
+            Write-Host "Gateway is healthy and ready. Waiting 60 seconds for stabilization before next Gateway..."
+            Start-Sleep -Seconds 60
+        } else {
+            Write-Warning "Gateway did not become healthy within $healthTimeout seconds. Check manually before proceeding."
+        }
     ```
 
 1. Repeat these steps for all Gateways.
