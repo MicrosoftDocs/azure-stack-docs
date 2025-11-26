@@ -18,7 +18,7 @@ This article explains how to create and configure network security groups (NSGs)
 
 ## About NSGs on Azure Local VMs on multi-rack deployments
 
-Use a network security group to filter network traffic between logical networks, virtual network (VNet) subnets, or VMs on Azure Local. Configure a network security group with security rules that allow or deny either inbound or outbound network traffic. The network security rules control traffic based on:
+Use a network security group to filter network traffic between logical networks, virtual network (VNet) subnets, or virtual machines (VMs) on Azure Local. Configure a network security group with security rules that allow or deny either inbound or outbound network traffic. The network security rules control traffic based on:
 
 - Source and destination IP addresses.
 - Port numbers.
@@ -216,7 +216,7 @@ After you create a network security group, create network security rules. To app
     |------------|-------------|
     | **name**  | Name for the network security rule that you create for your Azure Local. Make sure to provide a name that follows the [Rules for Azure resources.](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming#example-names-networking)|
     | **nsg-name**  | Name for the network security group that contains this network security rule. Make sure to provide a name that follows the [Rules for Azure resources.](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming#example-names-networking)|
-    | **location** |Azure regions as specified by Azure regions as specified by `az account list-locations -o table`.For example, this could be `eastus`, `westeurope`. If you don't specify the location, the resource group location is used. |
+    | **location** |Azure regions as specified by Azure regions as specified by `az account list-locations -o table`. For example, this could be `eastus`, `westeurope`. If you don't specify the location, the resource group location is used. |
     | **resource-group** | Name of the resource group where you create the network security group. For ease of management, use the same resource group as your Azure Local. |
     | **subscription** | Name or ID of the subscription where your Azure Local is deployed. This subscription can be different from the one you use for your Azure Local VMs. |
     | **custom-location** |Use this parameter to provide the custom location associated with your Azure Local where you're creating this network security group. |
