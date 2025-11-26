@@ -240,7 +240,9 @@ As such, you may need to specifically set the proxy configuration for your appli
 
 > [!IMPORTANT]
 > Traffic intended for endpoints not managed by the Arc gateway is routed through the enterprise proxy or firewall.
-> For Windows VMs, allow the following endpoint: `https://agentserviceapi.guestconfiguration.azure.com` and  `https://<azurelocalregion>-gas.guestconfiguration.azure.com` .
+> 
+> For Windows VMs, allow the following endpoints: `https://agentserviceapi.guestconfiguration.azure.com` and `https://<azurelocalregion>-gas.guestconfiguration.azure.com`.
+> 
 > For Linux VMs, allow the following endpoints: `https://agentserviceapi.guestconfiguration.azure.com`, `https://<azurelocalregion>-gas.guestconfiguration.azure.com`, and `https://packages.microsoft.com`.
 
 #### To create a VM with Arc gateway enabled behind a proxy server, run the following command
