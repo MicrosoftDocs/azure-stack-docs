@@ -144,7 +144,7 @@ To prepare each machine for the disconnected operations appliance, follow these 
 1. Copy to the **APPData/Azure** Local folder and name it **azureLocalRootCert**. Use this information during the Arc appliance deployment.  
 
     ```powershell
-    Copy-Item $applianceRootCertFile $($env:APPDATA)\AzureLocal\AzureLocalRootCert.cer
+    Copy-Item $applianceRootCertFile "$($env:APPDATA)\AzureLocal\AzureLocalRootCert.cer"
     ```
 
 1. On each node, import the public key into the local store:
@@ -190,17 +190,19 @@ To prepare the first machine for the disconnected operations appliance, follow t
     $applianceConfigBasePath = 'C:\AzureLocalDisconnectedOperations'
     ```
 
-1. Copy the disconnected operations installation files (appliance and manifest) to the first machine. Save these files into the base folder you created earlier.  
+1. Copy the disconnected operations installation files (appliance zip, vhdx and manifest) to the first machine. Save these files into the base folder you created earlier.  
 
     ```powershell  
-    Copy-Item \\fileserver\share\azurelocalfiles\AzureLocal.DisconnectedOperations.zip $applianceConfigBasePath  
-    Copy-Item \\fileserver\share\azurelocalfiles\AzureLocal.DisconnectedOperations.manifest  $applianceConfigBasePath  
+    Copy-Item \\fileserver\share\azurelocalfiles\* $applianceConfigBasePath    
     ```  
 
-1. Verify that you have these two files in your base folder using the following command:
+1. Verify that you have these files in your base folder using the following command:
 
     - AzureLocal.DisconnectedOperations.zip
     - AzureLocal.DisconnectedOperations.manifest
+    - ArcA_LocalData_A.vhdx
+    - ArcA_SharedData_A.vhdx
+    - OSAndDocker_A.vhdx
 
       ```powershell  
       Get-ChildItem $applianceConfigBasePath  
@@ -212,11 +214,17 @@ To prepare the first machine for the disconnected operations appliance, follow t
     Expand-Archive "$($applianceConfigBasePath)\AzureLocal.DisconnectedOperations.zip" -DestinationPath $applianceConfigBasePath  
     ```  
 
-1. Verify that you have these three files using the following command:
+1. Verify that you have these files using the following command:
 
     - OperationsModule (PowerShell module for installation)
-    - IRVM01.zip
     - AzureLocal.DisconnectedOperations.manifest
+    - AzureLocal.DisconnectedOperations.zip 
+    - manifest.xml
+    - IRVM.zip
+    - ArcA_LocalData_A.vhdx
+    - ArcA_SharedData_A.vhdx
+    - OSAndDocker_A.vhdx
+    - Storage.json
 
       ```powershell  
       Get-ChildItem $applianceConfigBasePath   

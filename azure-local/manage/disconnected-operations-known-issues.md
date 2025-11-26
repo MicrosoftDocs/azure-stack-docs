@@ -15,6 +15,16 @@ ai-usage: ai-assisted
 
 This article highlights what's new (features and improvements) and critical known issues with workarounds for disconnected operations in Azure Local. These release notes update continuously. We add critical issues and workarounds as they're identified. Review this information before you deploy disconnected operations with Azure Local.
 
+## Features and improvements in 2511
+ - Add support for Azure Local 2511 ISO and it's capabilities
+ - Enabled baseline update
+ - Azure Policy improvements (for brownfield scenarios)
+ - Improved log collection experience
+ - Added deployment automation capability for operator account during bootstrap (enabling full e2e deployment automation)
+ - Fixed empty groups not being synchronized
+ - RBAC updates (AKS Arc)
+ - Added control plane awareness for Azure Local instance deployments
+
 ## Features and improvements in 2509
 
  - Adds support for Azure Local 2508 ISO and its capabilities.
@@ -102,6 +112,11 @@ $result = [PSCustomObject]@{
 }
 ```
 - Resume cloud deployment
+
+### Resources dissapear from portal
+ After coming back to browser after some time - you are still logged in, but resources appears missing. 
+
+ Mitigation: Close browser, clear all cookies. Navigate back to your local portal and login again. 
 
 ### Memory consumption when there's less than 128 GB of memory per node
 
