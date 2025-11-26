@@ -532,7 +532,7 @@ items:
       - name: Use ReFS deduplication and compression
         href: manage/refs-deduplication-and-compression.md
       - name: External storage support
-      href: concepts/external-storage-support.md  
+        href: concepts/external-storage-support.md  
 
     - name: Billing
       items:
