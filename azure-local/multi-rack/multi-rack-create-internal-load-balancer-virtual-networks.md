@@ -147,8 +147,8 @@ The example in this section shows how to create an internal load balancer on a v
 
 Create a load balancer. Run the following cmdlet:  
 
-    ```azurecli
-    az stack-hci-vm network lb create `
+```azurecli
+az stack-hci-vm network lb create `
     --subscription $subscriptionID `
     --resource-group $resource_group `
     --name $name `
@@ -177,4 +177,4 @@ Create a load balancer. Run the following cmdlet:
     --probe-intervals $probeIntervals `
     --probe-num-probes $probeNumProbes `
     --custom-location $customLocationID
-    ```
+```
