@@ -4,7 +4,7 @@ description: Learn how to upgrade infrastructure for SDN managed by on-premises 
 ms.topic: how-to
 ms.author: alkohli
 author: alkohli
-ms.date: 11/20/2025
+ms.date: 11/25/2025
 ---
 
 # Upgrade infrastructure for Software Defined Networking managed by on-premises tools
@@ -12,6 +12,9 @@ ms.date: 11/20/2025
 <!--add applies to-->
 
 This article provides guidance on safely and securely upgrading infrastructure for Software Defined Networking (SDN) managed by on-premises tools. It also provides troubleshooting guidance to help remediate issues that might occur during the upgrade process.
+
+> [!IMPORTANT]
+> Do not use this article for upgrading SDN enabled by Azure Arc on Azure Local. Instead, refer to [About Azure Local upgrades](../upgrade/about-upgrades-23h2.md).
 
 ## About upgrading SDN infrastructure
 
