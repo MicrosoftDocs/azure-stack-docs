@@ -531,6 +531,8 @@ items:
         href: manage/manage-thin-provisioning-23h2.md
       - name: Use ReFS deduplication and compression
         href: manage/refs-deduplication-and-compression.md
+      - name: External storage support
+      href: concepts/external-storage-support.md  
 
     - name: Billing
       items:
