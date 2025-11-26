@@ -4,12 +4,12 @@ description: Learn how to upgrade infrastructure for SDN managed by on-premises 
 ms.topic: how-to
 ms.author: alkohli
 author: alkohli
-ms.date: 11/25/2025
+ms.date: 11/26/2025
 ---
 
 # Upgrade infrastructure for Software Defined Networking managed by on-premises tools
 
-<!--add applies to-->
+> Applies to: Azure Local 2311.2 and later; Windows Server 2025, Windows Server 2022
 
 This article provides guidance on safely and securely upgrading infrastructure for Software Defined Networking (SDN) managed by on-premises tools. It also provides troubleshooting guidance to help remediate issues that might occur during the upgrade process.
 
@@ -19,16 +19,6 @@ This article provides guidance on safely and securely upgrading infrastructure f
 ## About upgrading SDN infrastructure
 
 Your SDN deployment consists of several roles and machines, each providing essential services for your environment. To keep your environment secure and up to date, it's required to upgrade the SDN infrastructure, one node at a time.
-
-We recommend upgrading roles in the following order:
-
-- Hyper-V Hosts
-- Network Controller nodes
-- Load Balancer Multiplexer nodes (optional)
-- Gateway nodes (optional)
-
-> [!IMPORTANT]
-> During the upgrade, workloads that use Load Balancer Multiplexers (Internal Load Balancers, Load Balancers, Public IPs) or Gateways (L3, GRE, S2S Connections) might experience disruption. Most disruption should be minimal while services fail over. Schedule the upgrade during a maintenance window and notify users about potential temporary disruption.
 
 ## Before you begin
 
@@ -66,6 +56,21 @@ We recommend upgrading roles in the following order:
     ```
 
 - Ensure sufficient space before proceeding. The in-place upgrade requires a minimum of 40 GB of available storage. For VMs, you can increase the VM's VHD size using Windows Admin Center. After resizing the VHD, adjust the partition within the VM using the [Resize-Partition](/powershell/module/storage/resize-partition) or [diskpart](/windows-server/administration/windows-commands/diskpart) commands.
+
+## Key considerations
+
+- Upgrade components in the following order:
+
+    - Hyper-V Hosts
+    - Network Controller nodes
+    - Load Balancer Multiplexer nodes (optional)
+    - Gateway nodes (optional)
+
+- Upgrade the Network Controller to the latest version before proceeding. Older versions may contain known issues that can affect stability during the upgrade process.
+
+- Do not upgrade the gateway until the Network Controller completes cleanup and reboots the gateway.
+
+- Workloads that use Load Balancer Multiplexers (Internal Load Balancers, Load Balancers, Public IPs) or Gateways (Layer 3, Generic Routing Encapsulation (GRE), Site-to-Site connections) might experience temporary disruption while services fail over. Schedule the upgrade during a maintenance window and notify users in advance.
 
 ## Perform in-place upgrade
 
