@@ -56,7 +56,6 @@ Before you begin, make sure that each virtual host system can dedicate the follo
 | Networking | At least two network adapters connected to internal network. MAC spoofing must be enabled. |
 | Boot disk | One disk to install the Azure Stack HCI operating system from ISO. At least 200 GB. |
 | Hard disks for Storage Spaces Direct | Four dynamic expanding disks. Maximum disk size is 1024 GB. |
-| Data disks | At least 127 GB each. The size must be the same for each disk. |
 | Time synchronization in integration  | Disabled. |
 
 > [!NOTE]
