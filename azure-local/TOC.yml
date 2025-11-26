@@ -739,20 +739,12 @@ items:
       href: ./multi-rack/multi-rack-prerequisites.md
     - name: Install Azure CLI extensions
       href: ./multi-rack/multi-rack-cli-extensions.md
-    - name: Deploy SDN infrastructure
-      items:
-      - name: Create NSGs
-        href: ./multi-rack/multi-rack-create-network-security-groups.md
-      - name: Create public load balancer for VNETs
-        href: ./multi-rack/multi-rack-create-public-load-balancer-virtual-networks.md
-      - name: Create internal load balancer for VNETs
-        href: ./multi-rack/multi-rack-overview.md
-      - name: Create public load balancer for LNETs
-        href: ./multi-rack/multi-rack-overview.md
-      - name: Create NAT gateway
-        href: ./multi-rack/multi-rack-overview.md
-      - name: Create public IP addresses
-        href: ./multi-rack/multi-rack-create-public-ip.md
+    - name: Complete networking prerequisites
+      items: 
+      - name: Create logical network
+        href: ./multi-rack/multi-rack-create-logical-networks.md
+      - name: Create virtual network
+        href: ./multi-rack/multi-rack-create-virtual-networks.md
     - name: Deploy Azure Local VM workloads
       items:
       - name: Complete Azure Local VM prerequisites
@@ -777,6 +769,19 @@ items:
         href: ./multi-rack/multi-rack-manage-arc-virtual-machine-resources.md
       - name: Manage Azure Local VM extensions
         href: ./multi-rack/multi-rack-virtual-machine-manage-extension.md
+    - name: Deploy SDN infrastructure
+      items:
+      - name: Create NSGs
+        href: ./multi-rack/multi-rack-create-network-security-groups.md
+      - name: Create public load balancer for VNETs
+        href: ./multi-rack/multi-rack-create-public-load-balancer-virtual-networks.md
+      - name: Create internal load balancer for VNETs
+        href: ./multi-rack/multi-rack-overview.md
+      - name: Create public load balancer for LNETs
+        href: ./multi-rack/multi-rack-create-load-balancer-logical-network.md
+      - name: Create public IP addresses
+        href: ./multi-rack/multi-rack-create-public-ip.md
+
 
   - name: Monitor
     items:
