@@ -776,7 +776,7 @@ items:
       - name: Create public load balancer for VNETs
         href: ./multi-rack/multi-rack-create-public-load-balancer-virtual-networks.md
       - name: Create internal load balancer for VNETs
-        href: ./multi-rack/multi-rack-overview.md
+        href: ./multi-rack/multi-rack-create-internal-load-balancer-virtual-networks.md
       - name: Create public load balancer for LNETs
         href: ./multi-rack/multi-rack-create-load-balancer-logical-network.md
       - name: Create public IP addresses
