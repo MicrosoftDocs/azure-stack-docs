@@ -272,7 +272,7 @@ To create a custom marketplace item, do the following:
 | PublisherLegalName |X |String |Maximum of 256 characters | |
 | Summary |X |String |60 to 100 characters | |
 | LongSummary |X |String |140 to 256 characters |Not yet applicable in Azure Stack Hub. |
-| Description |X |[HTML](https://github.com/Azure/portaldocs/blob/master/gallery-sdk/generated/index-gallery.md#gallery-item-metadata-html-sanitization) |500 to 5,000 characters | |
+| Description |X |[HTML](https://github.com/danyeh/portaldocs/blob/master/gallery-sdk/generated/index-gallery.md#gallery-item-metadata-html-sanitization) |500 to 5,000 characters | |
 
 ### Images
 
@@ -310,7 +310,7 @@ In addition to the preceding metadata, Marketplace authors can provide custom ke
 
 ### HTML sanitization
 
-For any field that allows HTML, the following [elements and attributes are allowed](https://github.com/Azure/portaldocs/blob/master/gallery-sdk/generated/index-gallery.md#gallery-item-metadata-html-sanitization):
+For any field that allows HTML, the following [elements and attributes are allowed](https://github.com/danyeh/portaldocs/blob/master/gallery-sdk/generated/index-gallery.md#gallery-item-metadata-html-sanitization):
 
 `h1, h2, h3, h4, h5, p, ol, ul, li, a[target|href], br, strong, em, b, i`
 
