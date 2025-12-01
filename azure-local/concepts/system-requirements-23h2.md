@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
 ms.custom: references_regions
-ms.date: 04/25/2025
+ms.date: 11/26/2025
 ---
 
 # System requirements for Azure Local
@@ -69,17 +69,50 @@ Before you begin, make sure that the physical machine and storage hardware used 
 |Host network adapters|At least two network adapters listed in the Windows Server Catalog. Or dedicated network adapters per intent, which does require two separate adapters for storage intent. For more information, see [Windows Server Catalog](https://www.windowsservercatalog.com/).|
 |BIOS|Intel VT or AMD-V must be turned on.|
 |Boot drive|A minimum size of 200 GB.<br>400 GB or more recommended for large memory Azure Local instances for [support and diagnosability](#support-and-diagnosability).|
-|Data drives|At least two disks with a minimum capacity of 500 GB (SSD or HDD).<br>Single machines must use only a single drive type: Nonvolatile Memory Express (NVMe) or Solid-State (SSD) drives.|
+|Data drives|At least two disks per server with a minimum capacity of 500 GB.<br>Same number, type, capacity, performance, and firmware of drives across all servers at time of deployment. Flexibility provided for [Add](../manage/add-server.md) and [Repair](../manage/repair-server.md) scenarios, when drives at time of deployment are no longer available. |
 |Trusted Platform Module (TPM)|TPM version 2.0 hardware must be present and turned on.|
 |Secure boot|Secure Boot must be present and turned on.|
 |GPU | Optional<br>Up to 192 GB GPU memory per machine. |
 
-The machines should also meet this extra requirement:
+
+### Extra requirements for drives
+
+> [!NOTE]
+> These drive requirements supercede those for Windows Server.
+
+The machines should also meet these extra requirements for drives:
 
 - Have direct-attached drives that are physically attached to one machine each. RAID controller cards or SAN (Fibre Channel, iSCSI, FCoE) storage, shared SAS enclosures connected to multiple machines, or any form of multi-path IO (MPIO) where drives are accessible by multiple paths, aren't supported.
 
     > [!NOTE]
     > Host-bus adapter (HBA) cards must implement simple pass-through mode for any storage devices used for Storage Spaces Direct.
+
+- **Drive Support**
+   - Supported drives: SATA, SAS, and NVMe (M.2, U.2, and add-in card).
+
+   - Supported formats: 512n, 512e, and 4K native.
+
+- **Deployment-specific requirements**
+
+   - **Single-node**: Use one drive type (NVMe or SSD) with uniform performance characteristics across drives.
+
+   - **Multi-node cluster**: Strongly recommend all-flash, single drive type (NVMe or SSD) with uniform performance.
+
+- **Hybrid two-tier requirements for HDD + flash**
+
+   - Hybrid two-tier is supported only when using HDD for capacity + flash (NVMe or SSD) for cache.
+
+   - Cache devices must be ≥ 32 GB.
+
+   - Cache-to-capacity ratio must be ≥ 15%.
+
+   - Cache drives recommended to have high endurance: ≥ 3 DWPD or ≥ 4 TBW/day.
+
+   - Number of capacity drives recommended to be whole multiple of cache drives.
+
+- NVMe driver is the Microsoft-provided one included in Windows (driver filename is stornvme.sys).
+
+- Flash (NVMe or SSD) must have power-loss protection.
 
 For more feature-specific requirements for Hyper-V, see [System requirements for Hyper-V on Windows Server](/windows-server/virtualization/hyper-v/system-requirements-for-hyper-v-on-windows).
 

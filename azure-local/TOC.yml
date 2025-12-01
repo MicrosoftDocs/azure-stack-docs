@@ -531,6 +531,8 @@ items:
         href: manage/manage-thin-provisioning-23h2.md
       - name: Use ReFS deduplication and compression
         href: manage/refs-deduplication-and-compression.md
+      - name: External storage support
+        href: concepts/external-storage-support.md  
 
     - name: Billing
       items:
@@ -751,10 +753,6 @@ items:
         href: ./multi-rack/multi-rack-vm-management-prerequisites.md 
       - name: Assign RBAC roles
         href: ./multi-rack/multi-rack-assign-vm-rbac-roles.md
-      - name: Create virtual networks
-        href: ./multi-rack/multi-rack-create-virtual-networks.md
-      - name: Create logical networks
-        href: ./multi-rack/multi-rack-create-logical-networks.md
       - name: Create Azure Local VM images
         href: ./multi-rack/multi-rack-virtual-machine-image-storage-account.md
       - name: Create network interfaces
