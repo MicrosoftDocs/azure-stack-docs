@@ -42,7 +42,7 @@ In multi-rack deployments of Azure Local, you can protect Secure Shell (SSH) acc
 
 ## Restrictions
 
-Be aware of these retrictions:
+Be aware of these restrictions:
 
 - Inline ports and inline VLANs are a static way of defining the ports or VLANs by using azcli.
 
@@ -253,7 +253,7 @@ az networkfabric acl list --resource-group "ResourceGroupName"
 
 ## Create ACLs on the ISD external network
 
-To create ingress and egress ACLs for the isolation domain (ISD) external network refer to the next sections. Then, update the Resource Manager resource reference for the external network.
+To create ingress and egress ACLs for the isolation domain (ISD) external network, refer to the next sections. Then, update the Resource Manager resource reference for the external network.
 
 ### Create an ingress ACL for the ISD external network
 
