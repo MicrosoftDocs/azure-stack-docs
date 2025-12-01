@@ -4,7 +4,7 @@ description: Learn how to create and manage ACLs on an NNI for multi-rack deploy
 author: ronmiab
 ms.author: robess
 ms.reviewer: alkohli
-ms.date: 11/24/2025
+ms.date: 12/01/2025
 ms.topic: concept-article
 ---
 
@@ -16,7 +16,7 @@ This article describes how to create and manage access control lists (ACLs) on n
 
 [!INCLUDE [hci-preview](../includes/hci-preview.md)]
 
-In multi-rack Azure Local deployments, you can protect Secure Shell (SSH) access on the management virtual private network (VPN) by using access control lists (ACLs) for Permit and Deny actions at a network-to-network interconnect (NNI) level. You create ingress and egress ACLs before you create NNI resources and then reference those ACLs in the NNI payload. You need to create referenced ingress and egress ACLs before you provision the network fabric.
+In multi-rack deployments of Azure Local, you can protect Secure Shell (SSH) access on the management virtual private network (VPN) by using access control lists (ACLs) for Permit and Deny actions at a network-to-network interconnect (NNI) level. You create ingress and egress ACLs before you create NNI resources and then reference those ACLs in the NNI payload. You need to create referenced ingress and egress ACLs before you provision the network fabric.
 
 ## Parameter usage guidance
 
@@ -58,7 +58,7 @@ Be aware of these retrictions:
 
 - Ingress ACLs don't support `EtherType` options.
 
-## Workflow to create an ACL on an NNI
+### High-level workflow to create an ACL on an NNI
 
 - Create NNI ingress and egress ACLs.
 
@@ -70,81 +70,80 @@ Be aware of these retrictions:
 
 To create an ingress ACL, use the following Azure CLI command. This command creates an ingress ACL with the specified configurations and provides the expected result as output. Adjust the parameters as needed for your scenario.
 
-```bash
+```azurecli
 az networkfabric acl create
 --resource-group "example-rg"
 --location "eastus2euap"
-
 --resource-name "example-Ipv4ingressACL"
 --configuration-type "Inline"
 --default-action "Permit"
---dynamic-match-configurations "\[{ipGroups:\[{name:'example-ipGroup',ipAddressType:IPv4,ipPrefixes:\['10.20.3.1/20'\]}\],vlanGroups:\[{name:'example-vlanGroup',vlans:\['20-30'\]}\],portGroups:\[{name:'example-portGroup',ports:\['100-200'\]}\]}\]"
---match-configurations "\[{matchConfigurationName:'example-match',sequenceNumber:123,ipAddressType:IPv4,matchConditions:\[{etherTypes:\['0x1'\],fragments:\['0xff00-0xffff'\],ipLengths:\['4094-9214'\],ttlValues:\[23\],dscpMarkings:\[32\],portCondition:{flags:\[established\],portType:SourcePort,layer4Protocol:TCP,ports:\['1-20'\]},protocolTypes:\[TCP\],vlanMatchCondition:{vlans:\['20-30'\],innerVlans:\[30\]},ipCondition:{type:SourceIP,prefixType:Prefix,ipPrefixValues:\['10.20.20.20/12'\]}}\],actions:\[{type:Count,counterName:'example-counter'}\]}\]"
+--dynamic-match-configurations "[{ipGroups:[{name:'example-ipGroup',ipAddressType:IPv4,ipPrefixes:['10.20.3.1/20']}],vlanGroups:[{name:'example-vlanGroup',vlans:['20-30']}],portGroups:[{name:'example-portGroup',ports:['100-200']}]}]"
+--match-configurations "[{matchConfigurationName:'example-match',sequenceNumber:123,ipAddressType:IPv4,matchConditions:[{etherTypes:['0x1'],fragments:['0xff00-0xffff'],ipLengths:['4094-9214'],ttlValues:[23],dscpMarkings:[32],portCondition:{flags:[established],portType:SourcePort,layer4Protocol:TCP,ports:['1-20']},protocolTypes:[TCP],vlanMatchCondition:{vlans:['20-30'],innerVlans:[30]},ipCondition:{type:SourceIP,prefixType:Prefix,ipPrefixValues:['10.20.20.20/12']}}],actions:[{type:Count,counterName:'example-counter'}]}]"
 ```
 
 Expected output
 
 ```json
 {
-"properties": {
-"lastSyncedTime": "2023-06-17T08:56:23.203Z",
-"configurationState": "Succeeded",
-"provisioningState": "Accepted",
-"administrativeState": "Enabled",
-"annotation": "annotation",
-"configurationType": "File",
-"aclsUrl": "https://ACL-Storage-URL",
-"matchConfigurations": \[{
-"matchConfigurationName": "example-match",
-"sequenceNumber": 123,
-"ipAddressType": "IPv4",
-"matchConditions": \[{
-"etherTypes": \["0x1"\],
-"fragments": \["0xff00-0xffff"\],
-"ipLengths": \["4094-9214"\],
-"ttlValues": \[23\],
-"dscpMarkings": \[32\],
-"portCondition": {
-"flags": \["established"\],
-"portType": "SourcePort",
-"l4Protocol": "TCP",
-"ports": \["1-20"\],
-"portGroupNames": \["example-portGroup"\]
-},
-"protocolTypes": \["TCP"\],
-"vlanMatchCondition": {
-"vlans": \["20-30"\],
-"innerVlans": \[30\],
-"vlanGroupNames": \["example-vlanGroup"\]
-},
-"ipCondition": {
-"type": "SourceIP",
-"prefixType": "Prefix",
-"ipPrefixValues": \["10.20.20.20/12"\],
-"ipGroupNames": \["example-ipGroup"\]
-}
-}\]
-}\],
-"actions": \[{
-"type": "Count",
-"counterName": "example-counter"
-}\]
-},
-"tags": {
-"keyID": "KeyValue"
-},
-"location": "eastUs",
-"id": "/subscriptions/xxxxxx/resourceGroups/resourcegroupname/providers/Microsoft.ManagedNetworkFabric/accessControlLists/acl",
-"name": "example-Ipv4ingressACL",
-"type": "microsoft.managednetworkfabric/accessControlLists",
-"systemData": {
-"createdBy": "email@address.com",
-"createdByType": "User",
-"createdAt": "2023-06-09T04:51:41.251Z",
-"lastModifiedBy": "UserId",
-"lastModifiedByType": "User",
-"lastModifiedAt": "2023-06-09T04:51:41.251Z"
-}
+    "properties": {
+        "lastSyncedTime": "2023-06-17T08:56:23.203Z",
+        "configurationState": "Succeeded",
+        "provisioningState": "Accepted",
+        "administrativeState": "Enabled",
+        "annotation": "annotation",
+        "configurationType": "File",
+        "aclsUrl": "https://ACL-Storage-URL",
+        "matchConfigurations": [{
+            "matchConfigurationName": "example-match",
+            "sequenceNumber": 123,
+            "ipAddressType": "IPv4",
+            "matchConditions": [{
+                "etherTypes": ["0x1"],
+                "fragments": ["0xff00-0xffff"],
+                "ipLengths": ["4094-9214"],
+                "ttlValues": [23],
+                "dscpMarkings": [32],
+                "portCondition": {
+                    "flags": ["established"],
+                    "portType": "SourcePort",
+                    "l4Protocol": "TCP",
+                    "ports": ["1-20"],
+                    "portGroupNames": ["example-portGroup"]
+                },
+                "protocolTypes": ["TCP"],
+                "vlanMatchCondition": {
+                    "vlans": ["20-30"],
+                    "innerVlans": [30],
+                    "vlanGroupNames": ["example-vlanGroup"]
+                },
+                "ipCondition": {
+                    "type": "SourceIP",
+                    "prefixType": "Prefix",
+                    "ipPrefixValues": ["10.20.20.20/12"],
+                    "ipGroupNames": ["example-ipGroup"]
+                }
+            }]
+        }],
+        "actions": [{
+            "type": "Count",
+            "counterName": "example-counter"
+        }]
+    },
+    "tags": {
+        "keyID": "KeyValue"
+    },
+    "location": "eastUs",
+    "id": "/subscriptions/xxxxxx/resourceGroups/resourcegroupname/providers/Microsoft.ManagedNetworkFabric/accessControlLists/acl",
+    "name": "example-Ipv4ingressACL",
+    "type": "microsoft.managednetworkfabric/accessControlLists",
+    "systemData": {
+        "createdBy": "email@address.com",
+        "createdByType": "User",
+        "createdAt": "2023-06-09T04:51:41.251Z",
+        "lastModifiedBy": "UserId",
+        "lastModifiedByType": "User",
+        "lastModifiedAt": "2023-06-09T04:51:41.251Z"
+    }
 }
 ```
 
@@ -152,7 +151,7 @@ Expected output
 
 To create an egress ACL, use the following Azure CLI command. This command creates an egress ACL with the specified configurations and provides the expected result as output. Adjust the parameters as needed for your scenario.
 
-```bash
+```azurecli
 az networkfabric acl create
 --resource-group "example-rg"
 --location "eastus2euap"
@@ -160,58 +159,58 @@ az networkfabric acl create
 --configuration-type "File"
 --acls-url "https://ACL-Storage-URL"
 --default-action "Permit"
---dynamic-match-configurations "\[{ipGroups:\[{name:'example-ipGroup',ipAddressType:IPv4,ipPrefixes:\['10.20.3.1/20'\]}\],vlanGroups:\[{name:'example-vlanGroup',vlans:\['20-30'\]}\],portGroups:\[{name:'example-portGroup',ports:\['100-200'\]}\]}\]"
+--dynamic-match-configurations "[{ipGroups:[{name:'example-ipGroup',ipAddressType:IPv4,ipPrefixes:['10.20.3.1/20']}],vlanGroups:[{name:'example-vlanGroup',vlans:['20-30']}],portGroups:[{name:'example-portGroup',ports:['100-200']}]}]"
 ```
 
 Expected output
 
 ```json
 {
-"properties": {
-"lastSyncedTime": "2023-06-17T08:56:23.203Z",
-"configurationState": "Succeeded",
-"provisioningState": "Accepted",
-"administrativeState": "Enabled",
-"annotation": "annotation",
-"configurationType": "File",
-"aclsUrl": "https://ACL-Storage-URL",
-"dynamicMatchConfigurations": \[{
-"ipGroups": \[{
-"name": "example-ipGroup",
-"ipAddressType": "IPv4",
-"ipPrefixes": \["10.20.3.1/20"\]
-}\],
-"vlanGroups": \[{
-"name": "example-vlanGroup",
-"vlans": \["20-30"\]
-}\],
-"portGroups": \[{
-"name": "example-portGroup",
-"ports": \["100-200"\]
-}\]
-}\]
-},
-"tags": {
-"keyID": "KeyValue"
-},
-"location": "eastUs",
-"id": "/subscriptions/xxxxxx/resourceGroups/resourcegroupname/providers/Microsoft.ManagedNetworkFabric/accessControlLists/acl",
-"name": "example-Ipv4egressACL",
-"type": "microsoft.managednetworkfabric/accessControlLists",
-"systemData": {
-"createdBy": "email@address.com",
-"createdByType": "User",
-"createdAt": "2023-06-09T04:51:41.251Z",
-"lastModifiedBy": "UserId",
-"lastModifiedByType": "User",
-"lastModifiedAt": "2023-06-09T04:51:41.251Z"
-}
+    "properties": {
+        "lastSyncedTime": "2023-06-17T08:56:23.203Z",
+        "configurationState": "Succeeded",
+        "provisioningState": "Accepted",
+        "administrativeState": "Enabled",
+        "annotation": "annotation",
+        "configurationType": "File",
+        "aclsUrl": "https://ACL-Storage-URL",
+        "dynamicMatchConfigurations": [{
+            "ipGroups": [{
+                "name": "example-ipGroup",
+                "ipAddressType": "IPv4",
+                "ipPrefixes": ["10.20.3.1/20"]
+            }],
+            "vlanGroups": [{
+                "name": "example-vlanGroup",
+                "vlans": ["20-30"]
+            }],
+            "portGroups": [{
+                "name": "example-portGroup",
+                "ports": ["100-200"]
+            }]
+        }]
+    },
+    "tags": {
+        "keyID": "KeyValue"
+    },
+    "location": "eastUs",
+    "id": "/subscriptions/xxxxxx/resourceGroups/resourcegroupname/providers/Microsoft.ManagedNetworkFabric/accessControlLists/acl",
+    "name": "example-Ipv4egressACL",
+    "type": "microsoft.managednetworkfabric/accessControlLists",
+    "systemData": {
+        "createdBy": "email@address.com",
+        "createdByType": "User",
+        "createdAt": "2023-06-09T04:51:41.251Z",
+        "lastModifiedBy": "UserId",
+        "lastModifiedByType": "User",
+        "lastModifiedAt": "2023-06-09T04:51:41.251Z"
+    }
 }
 ```
 
 ## Update the Resource Manager reference
 
-After you create the NNI and before you provision the network fabric, you can perform re-put on the NNI. This step lets you create ACLs (ingress and egress if a reference is provided) during the creation of the NNI resource.
+After you create the NNI and before you provision the network fabric, you can perform re-put on the NNI. This step lets you create ACLs (ingress and egress) if a reference is provided during the creation of the NNI resource.
 
 - **ingressAclId**: Reference ID for the ingress ACL.
 
@@ -220,19 +219,19 @@ After you create the NNI and before you provision the network fabric, you can pe
 > [!NOTE]
 > To get the Resource Manager resource ID, go to the resource group of the subscription that you're using.
 
-The following command updates the Resource Manager reference for the NNI resource. It links the resource to your ingress and egress ACLs. Update the parameters to match your scenario.
+To update the Resource Manager reference for the NNI resource, run the following command. This command links the resource to your ingress and egress ACLs. Update the parameters to match your scenario.
 
-```bash
-az networkfabric nni create \
---resource-group "example-rg" \
---fabric "example-fabric" \
---resource-name "example-nniwithACL" \
---nni-type "CE" \
---is-management-type "True" \
---use-option-b "True" \
---layer2-configuration "{interfaces:['/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxx/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/networkDevices/example-networkDevice/networkInterfaces/example-interface'],mtu:1500}" \
---option-b-layer3-configuration "{peerASN:28,vlanId:501,primaryIpv4Prefix:'10.18.0.124/30',secondaryIpv4Prefix:'10.18.0.128/30',primaryIpv6Prefix:'10:2:0:124::400/127',secondaryIpv6Prefix:'10:2:0:124::402/127'}" \
---ingress-acl-id "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxx/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/accesscontrollists/example-Ipv4ingressACL" \
+```azurecli
+az networkfabric nni create
+--resource-group "example-rg"
+--fabric "example-fabric"
+--resource-name "example-nniwithACL"
+--nni-type "CE"
+--is-management-type "True"
+--use-option-b "True"
+--layer2-configuration "{interfaces:['/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxx/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/networkDevices/example-networkDevice/networkInterfaces/example-interface'],mtu:1500}"
+--option-b-layer3-configuration "{peerASN:28,vlanId:501,primaryIpv4Prefix:'10.18.0.124/30',secondaryIpv4Prefix:'10.18.0.128/30',primaryIpv6Prefix:'10:2:0:124::400/127',secondaryIpv6Prefix:'10:2:0:124::402/127'}"
+--ingress-acl-id "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxx/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/accesscontrollists/example-Ipv4ingressACL"
 --egress-acl-id "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxx/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/accesscontrollists/example-Ipv4egressACL"
 ```
 
@@ -240,7 +239,7 @@ az networkfabric nni create \
 
 To display the details of a specified ACL, use the following command:
 
-```bash
+```azurecli
 az networkfabric acl show --resource-group "example-rg" --resource-name "example-acl"
 ```
 
@@ -248,7 +247,7 @@ az networkfabric acl show --resource-group "example-rg" --resource-name "example
 
 To list all ACLs within a specified resource group, use the following command:
 
-```bash
+```azurecli
 az networkfabric acl list --resource-group "ResourceGroupName"
 ```
 
@@ -256,19 +255,19 @@ az networkfabric acl list --resource-group "ResourceGroupName"
 
 To create ingress and egress ACLs for the isolation domain (ISD) external network refer to the next sections. Then, update the Resource Manager resource reference for the external network.
 
-## Create an egress ACL for the ISD external network
+### Create an ingress ACL for the ISD external network
 
-To create an egress ACL for the specified ISD external network with the provided configuration, use the following command. Adjust the parameters as needed for your use case.
+To create an ingress ACL for the specified ISD external network with the provided configuration, use the following command. Adjust the parameters as needed for your use case.
 
-```bash
-az networkfabric acl create \
---resource-group "example-rg" \
---location "eastus2euap" \
---resource-name "example-Ipv4egressACL" \
---annotation "annotation" \
---configuration-type "Inline" \
---default-action "Deny" \
---match-configurations "\[{matchConfigurationName:'L3ISD_EXT_OPTA_EGRESS_ACL_IPV4_CE_PE',sequenceNumber:1110,ipAddressType:IPv4,matchConditions:\[{ipCondition:{type:SourceIP,prefixType:Prefix,ipPrefixValues:\['10.18.0.124/30','10.18.0.128/30','10.18.30.16/30','10.18.30.20/30'\]}},{ipCondition:{type:DestinationIP,prefixType:Prefix,ipPrefixValues:\['10.18.0.124/30','10.18.0.128/30','10.18.30.16/30','10.18.30.20/30'\]}}\],actions:\[{type:Count}\]}\]"
+```azurecli
+az networkfabric acl create
+--resource-group "example-rg"
+--location "eastus2euap"
+--resource-name "example-Ipv4ingressACL"
+--annotation "annotation"
+--configuration-type "Inline"
+--default-action "Deny"
+--match-configurations "[{matchConfigurationName:'L3ISD_EXT_OPTA_INGRESS_ACL_IPV4_CE_PE',sequenceNumber:1110,ipAddressType:IPv4,matchConditions:[{ipCondition:{type:SourceIP,prefixType:Prefix,ipPrefixValues:['10.18.0.124/30','10.18.0.128/30','10.18.30.16/30','10.18.30.20/30']}},{ipCondition:{type:DestinationIP,prefixType:Prefix,ipPrefixValues:['10.18.0.124/30','10.18.0.128/30','10.18.30.16/30','10.18.30.20/30']}}],actions:[{type:Count}]}]"
 ```
 
 Expected output
@@ -277,143 +276,143 @@ When you run the command successfully, it returns information about the created 
 
 ```json
 {
-"administrativeState": "Disabled",
-"annotation": "annotation",
-"configurationState": "Succeeded",
-"configurationType": "Inline",
-"defaultAction": "Deny",
-"id": "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxx/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/accessControlLists/example-Ipv4egressACL",
-"location": "eastus2euap",
-"matchConfigurations": \[
-{
-"actions": \[
-{
-"type": "Count"
-}
-\],
-"ipAddressType": "IPv4",
-"matchConditions": \[
-{
-"ipCondition": {
-"ipPrefixValues": \[
-"10.18.0.124/30",
-"10.18.0.128/30",
-"10.18.30.16/30",
-"10.18.30.20/30"
-\],
-"prefixType": "Prefix",
-"type": "SourceIP"
-}
-},
-{
-"ipCondition": {
-"ipPrefixValues": \[
-"10.18.0.124/30",
-"10.18.0.128/30",
-"10.18.30.16/30",
-"10.18.30.20/30"
-\],
-"prefixType": "Prefix",
-"type": "DestinationIP"
-}
-}
-\],
-"matchConfigurationName": "L3ISD_EXT_OPTA_EGRESS_ACL_IPV4_CE_PE",
-"sequenceNumber": 1110
-}
-\],
-"name": "example-Ipv4egressACL",
-"provisioningState": "Succeeded",
-"resourceGroup": "example-rg",
-"systemData": {
-"createdAt": "2023-09-11T10:20:20.2617941Z",
-"createdBy": "email@address.com",
-"createdByType": "User",
-"lastModifiedAt": "2023-09-11T10:20:20.2617941Z",
-"lastModifiedBy": "email@address.com",
-"lastModifiedByType": "User"
-},
-"type": "microsoft.managednetworkfabric/accesscontrollists"
+    "administrativeState": "Disabled",
+    "annotation": "annotation",
+    "configurationState": "Succeeded",
+    "configurationType": "Inline",
+    "defaultAction": "Deny",
+    "id": "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxx/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/accessControlLists/example-Ipv4ingressACL",
+    "location": "eastus2euap",
+    "matchConfigurations": [
+        {
+            "actions": [
+                {
+                    "type": "Count"
+                }
+            ],
+            "ipAddressType": "IPv4",
+            "matchConditions": [
+                {
+                    "ipCondition": {
+                        "ipPrefixValues": [
+                            "10.18.0.124/30",
+                            "10.18.0.128/30",
+                            "10.18.30.16/30",
+                            "10.18.30.20/30"
+                        ],
+                        "prefixType": "Prefix",
+                        "type": "SourceIP"
+                    }
+                },
+                {
+                    "ipCondition": {
+                        "ipPrefixValues": [
+                            "10.18.0.124/30",
+                            "10.18.0.128/30",
+                            "10.18.30.16/30",
+                            "10.18.30.20/30"
+                        ],
+                        "prefixType": "Prefix",
+                        "type": "DestinationIP"
+                    }
+                }
+            ],
+            "matchConfigurationName": "L3ISD_EXT_OPTA_INGRESS_ACL_IPV4_CE_PE",
+            "sequenceNumber": 1110
+        }
+    ],
+    "name": "example-Ipv4ingressACL",
+    "provisioningState": "Succeeded",
+    "resourceGroup": "example-rg",
+    "systemData": {
+        "createdAt": "2023-09-11T10:20:20.2617941Z",
+        "createdBy": "email@address.com",
+        "createdByType": "User",
+        "lastModifiedAt": "2023-09-11T10:27:27.2317467Z",
+        "lastModifiedBy": "email@address.com",
+        "lastModifiedByType": "User"
+    },
+    "type": "microsoft.managednetworkfabric/accesscontrollists"
 }
 ```
 
-## Create an ingress ACL for the ISD external network
+### Create an egress ACL for the ISD external network
 
-To create an ingress ACL for the specified ISD external network with the provided configuration, use the following command. Adjust the parameters as needed for your use case.
+To create an egress ACL for the specified ISD external network with the provided configuration, use the following command. Adjust the parameters as needed for your use case.
 
-```bash
-az networkfabric acl create \
---resource-group "example-rg" \
---location "eastus2euap" \
---resource-name "example-Ipv4ingressACL" \
---annotation "annotation" \
---configuration-type "Inline" \
---default-action "Deny" \
---match-configurations "\[{matchConfigurationName:'L3ISD_EXT_OPTA_INGRESS_ACL_IPV4_CE_PE',sequenceNumber:1110,ipAddressType:IPv4,matchConditions:\[{ipCondition:{type:SourceIP,prefixType:Prefix,ipPrefixValues:\['10.18.0.124/30','10.18.0.128/30','10.18.30.16/30','10.18.30.20/30'\]}},{ipCondition:{type:DestinationIP,prefixType:Prefix,ipPrefixValues:\['10.18.0.124/30','10.18.0.128/30','10.18.30.16/30','10.18.30.20/30'\]}}\],actions:\[{type:Count}\]}\]"
+```azurecli
+az networkfabric acl create
+--resource-group "example-rg"
+--location "eastus2euap"
+--resource-name "example-Ipv4egressACL"
+--annotation "annotation"
+--configuration-type "Inline"
+--default-action "Deny"
+--match-configurations "[{matchConfigurationName:'L3ISD_EXT_OPTA_EGRESS_ACL_IPV4_CE_PE',sequenceNumber:1110,ipAddressType:IPv4,matchConditions:[{ipCondition:{type:SourceIP,prefixType:Prefix,ipPrefixValues:['10.18.0.124/30','10.18.0.128/30','10.18.30.16/30','10.18.30.20/30']}},{ipCondition:{type:DestinationIP,prefixType:Prefix,ipPrefixValues:['10.18.0.124/30','10.18.0.128/30','10.18.30.16/30','10.18.30.20/30']}}],actions:[{type:Count}]}]"
 ```
 
-## Expected output
+Expected output
 
 When you run the command successfully, it returns information about the created ACL in the following format. This output includes details about the configuration and state.
 
 ```json
 {
-"administrativeState": "Disabled",
-"annotation": "annotation",
-"configurationState": "Succeeded",
-"configurationType": "Inline",
-"defaultAction": "Deny",
-"id": "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxx/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/accessControlLists/example-Ipv4ingressACL",
-"location": "eastus2euap",
-"matchConfigurations": \[
-{
-"actions": \[
-{
-"type": "Count"
-}
-\],
-"ipAddressType": "IPv4",
-"matchConditions": \[
-{
-"ipCondition": {
-"ipPrefixValues": \[
-"10.18.0.124/30",
-"10.18.0.128/30",
-"10.18.30.16/30",
-"10.18.30.20/30"
-\],
-"prefixType": "Prefix",
-"type": "SourceIP"
-}
-},
-{
-"ipCondition": {
-"ipPrefixValues": \[
-"10.18.0.124/30",
-"10.18.0.128/30",
-"10.18.30.16/30",
-"10.18.30.20/30"
-\],
-"prefixType": "Prefix",
-"type": "DestinationIP"
-}
-}
-\],
-"matchConfigurationName": "L3ISD_EXT_OPTA_INGRESS_ACL_IPV4_CE_PE",
-"sequenceNumber": 1110
-}
-\],
-"name": "example-Ipv4ingressACL",
-"provisioningState": "Succeeded",
-"resourceGroup": "example-rg",
-"systemData": {
-"createdAt": "2023-09-11T10:20:20.2617941Z",
-"createdBy": "email@address.com",
-"createdByType": "User",
-"lastModifiedAt": "2023-09-11T10:27:27.2317467Z",
-"lastModifiedBy": "email@address.com",
-"lastModifiedByType": "User"
-},
-"type": "microsoft.managednetworkfabric/accesscontrollists"
+    "administrativeState": "Disabled",
+    "annotation": "annotation",
+    "configurationState": "Succeeded",
+    "configurationType": "Inline",
+    "defaultAction": "Deny",
+    "id": "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxx/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/accessControlLists/example-Ipv4egressACL",
+    "location": "eastus2euap",
+    "matchConfigurations": [
+        {
+            "actions": [
+                {
+                    "type": "Count"
+                }
+            ],
+            "ipAddressType": "IPv4",
+            "matchConditions": [
+                {
+                    "ipCondition": {
+                        "ipPrefixValues": [
+                            "10.18.0.124/30",
+                            "10.18.0.128/30",
+                            "10.18.30.16/30",
+                            "10.18.30.20/30"
+                        ],
+                        "prefixType": "Prefix",
+                        "type": "SourceIP"
+                    }
+                },
+                {
+                    "ipCondition": {
+                        "ipPrefixValues": [
+                            "10.18.0.124/30",
+                            "10.18.0.128/30",
+                            "10.18.30.16/30",
+                            "10.18.30.20/30"
+                        ],
+                        "prefixType": "Prefix",
+                        "type": "DestinationIP"
+                    }
+                }
+            ],
+            "matchConfigurationName": "L3ISD_EXT_OPTA_EGRESS_ACL_IPV4_CE_PE",
+            "sequenceNumber": 1110
+        }
+    ],
+    "name": "example-Ipv4egressACL",
+    "provisioningState": "Succeeded",
+    "resourceGroup": "example-rg",
+    "systemData": {
+        "createdAt": "2023-09-11T10:20:20.2617941Z",
+        "createdBy": "email@address.com",
+        "createdByType": "User",
+        "lastModifiedAt": "2023-09-11T10:20:20.2617941Z",
+        "lastModifiedBy": "email@address.com",
+        "lastModifiedByType": "User"
+    },
+    "type": "microsoft.managednetworkfabric/accesscontrollists"
 }
 ```
