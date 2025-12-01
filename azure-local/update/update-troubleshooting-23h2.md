@@ -189,7 +189,7 @@ To troubleshoot system health checks via PowerShell:
 
 When update readiness checks fail, this causes the update to fail on the system. To troubleshoot update readiness checks via PowerShell:
 
-1. To validate that the update readiness checks failed, run the following command on one of the machines in your system to identify the ResourceId of the update:
+1. To validate that the update readiness checks failed, run the following command on one of the machines in your system to identify the `ResourceId` of the update:
 
     ```powershell
    Get-SolutionUpdate | Format-Table ResourceId, State, Version
@@ -206,7 +206,7 @@ When update readiness checks fail, this causes the update to fail on the system.
 
     ```
 
-1. Using the `ResourceId` of the update you are attempting to install, run the following command replacing `Id` with the ResourceId of the update:
+1. Using the `ResourceId` of the update you are attempting to install, run the following command replacing the `Id` parameter with the ResourceId of your update, from the output of the previous command:
 
     ```powershell
     Get-SolutionUpdate -Id <Resource ID> | Format-Table Version, State, HealthCheckResult
