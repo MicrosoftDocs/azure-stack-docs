@@ -3,7 +3,7 @@ title:  Security updates for Azure Local
 description: Security updates for Azure Local.
 author: alkohli
 ms.topic: conceptual
-ms.date: 11/18/2025
+ms.date: 12/01/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
@@ -11,6 +11,58 @@ ms.reviewer: alkohli
 # Security updates for Azure Local
 
 This article lists the various security updates that are available for Azure Local.
+
+::: moniker range="=azloc-2512"
+
+## December OS security update (KB5072033) for Azure Local
+
+This section provides the 2512 security updates associated with OS build **26200.7442** and **26100.7442** released on December 9, 2025, and also includes key notifications, announcements, change logs, and end-of-support notices.
+
+## Windows Secure Boot certificate expiration
+
+Secure Boot certificates used by most Windows devices are set to expire starting in June 2026. This might affect the ability of certain personal and business devices to boot securely if not updated in time. To avoid disruption, we recommend reviewing the guidance and taking action to update certificates in advance. For details and preparation steps, see [Windows Secure Boot certificate expiration and CA updates](https://support.microsoft.com/en-us/topic/windows-secure-boot-certificate-expiration-and-ca-updates-7ff40d33-95dc-4c3c-8725-a9b95457578e?preview=true).
+
+To learn more about differences between security updates, optional non-security preview updates, out-of-band (OOB) updates, and continuous innovation, see [Windows monthly updates explained](https://techcommunity.microsoft.com/blog/windows-itpro-blog/windows-monthly-updates-explained/3773544). For information on Windows update terminology, see the different types of [Windows software updates](/troubleshoot/windows-client/installing-updates-features-roles/standard-terminology-software-updates). For an overview, see the update history page for Azure Stack HCI, version 24H2.  
+
+## Improvements
+
+This security update contains fixes and quality improvements from [KB5070311] (released November 25, 2025). The following summary outlines key issues addressed by this update. Also, included are available new features. The bold text within the brackets indicates the item or area of the change.
+
+- **[Copilot]** Fixed: This update addresses an issue where Ask Copilot didn’t activate the **Click to Do** window as expected. The window now appears in the foreground when you share data with Copilot.
+
+- **[File Explorer (known issue)]** Fixed: This update addresses an issue where File Explorer briefly flashes white when you navigate between pages. This issue might occur after you install [KB5070311]. 
+
+- **[Networking]** Fixed: This update fixes an issue where external virtual switches lose their physical network adapter (NIC) bindings after a host reboot. When this happens, the switches revert to internal mode, resulting in loss of network connectivity for virtual machines and blocking normal server operations.
+
+If you've already installed previous updates, your device will download and install only the new updates included in this package.
+
+For more information about security vulnerabilities, see the [Security Update Guide](https://portal.msrc.microsoft.com/security-guidance) and the [December 2025 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2025-Dec).
+
+## Known issues
+
+The following is a known issue with this update.
+
+**Issue**
+Password icon might be missing or invisible in the lock screen sign-in options.
+
+**Symptoms**
+After installing the August 2025 non-security preview update (KB5064081) or later updates, you might notice that the password icon is not visible in the sign-in options on the lock screen. If you hover over the space where the icon should appear, you’ll see that the password button is still available. Select this placeholder to open the password text box and enter your password. After entering your password, you can sign in normally.
+
+**Workaround**
+Microsoft is working to resolve this issue and will provide information when it’s available. 
+
+## To install
+
+Microsoft now combines the latest servicing stack update (SSU) for your operating system with the latest cumulative update (LCU). For general information about SSUs, see [Servicing stack updates](/windows/deployment/update/servicing-stack-updates) and [Servicing Stack Updates (SSU): Frequently Asked Questions](https://support.microsoft.com/topic/servicing-stack-updates-ssu-frequently-asked-questions-06b62771-1cb0-368c-09cf-87c4efc4f2fe).
+
+To install the LCU on your Azure Local instance, see [Update Azure Stack Local instances](../update/about-updates-23h2.md).
+
+## File list
+
+For a list of the files that are provided in this update, download the file information for [Cumulative update KB 5072033](https://go.microsoft.com/fwlink/?linkid=).
+
+::: moniker-end
+
 
 ::: moniker range="=azloc-2511"
 
