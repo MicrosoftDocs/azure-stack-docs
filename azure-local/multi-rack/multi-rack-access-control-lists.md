@@ -16,7 +16,7 @@ This article describes how to create and manage access control lists (ACLs) on n
 
 [!INCLUDE [hci-preview](../includes/hci-preview.md)]
 
-In multi-rack deployments of Azure Local, you can protect Secure Shell (SSH) access on the management virtual private network (VPN) with access control lists (ACLs) for **Permit** and **Deny** actions at a network-to-network interconnect (NNI) level. Create ingress and egress ACLs before you create NNI resources, then reference those ACLs in the NNI payload. Create the referenced ingress and egress ACLs before you provision the network fabric.
+In multi-rack deployments of Azure Local, you can protect Secure Shell (SSH) access on the management virtual private network (VPN) with access control lists (ACLs) for `Permit` and `Deny` actions at a network-to-network interconnect (NNI) level. Create ingress and egress ACLs before you create NNI resources, then reference those ACLs in the NNI payload. Create the referenced ingress and egress ACLs before you provision the network fabric.
 
 Here's a high-level workflow to create an ACL on an NNI:
 
@@ -212,9 +212,9 @@ Expected output
 
 After you create the NNI and before you provision the network fabric, you can perform re-put on the NNI. This step lets you create ACLs (ingress and egress) if a reference is provided during the creation of the NNI resource.
 
-- **ingressAclId**: Reference ID for the ingress ACL.
+- `ingressAclId`: Reference ID for the ingress ACL.
 
-- **egressAclId**: Reference ID for the egress ACL.
+- `egressAclId`: Reference ID for the egress ACL.
 
 > [!NOTE]
 > To get the Resource Manager resource ID, go to the resource group of the subscription that you're using.
