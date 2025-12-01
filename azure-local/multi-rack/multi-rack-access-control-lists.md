@@ -18,6 +18,14 @@ This article describes how to create and manage access control lists (ACLs) on n
 
 In multi-rack deployments of Azure Local, you can protect Secure Shell (SSH) access on the management virtual private network (VPN) by using access control lists (ACLs) for Permit and Deny actions at a network-to-network interconnect (NNI) level. You create ingress and egress ACLs before you create NNI resources and then reference those ACLs in the NNI payload. You need to create referenced ingress and egress ACLs before you provision the network fabric.
 
+Here's a high-level workflow to create an ACL on an NNI:
+
+- Create NNI ingress and egress ACLs.
+
+- Update the Azure Resource Manager resource reference in a management NNI.
+
+- Create an NNI and provision the network fabric.
+
 ## Parameter usage guidance
 
 | **Parameter** | **Description** | **Example or range** |
@@ -57,14 +65,6 @@ Be aware of these restrictions:
 - Egress ACLs don't support IP options, IP length, fragment, `EtherType`, DSCP marking, or TTL values.
 
 - Ingress ACLs don't support `EtherType` options.
-
-### High-level workflow to create an ACL on an NNI
-
-- Create NNI ingress and egress ACLs.
-
-- Update the Azure Resource Manager resource reference in a management NNI.
-
-- Create an NNI and provision the network fabric.
 
 ## Create an ingress ACL
 
