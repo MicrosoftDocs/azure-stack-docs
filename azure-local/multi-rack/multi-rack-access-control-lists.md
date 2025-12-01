@@ -16,7 +16,7 @@ This article describes how to create and manage access control lists (ACLs) on n
 
 [!INCLUDE [hci-preview](../includes/hci-preview.md)]
 
-In multi-rack deployments of Azure Local, you can protect Secure Shell (SSH) access on the management virtual private network (VPN) by using access control lists (ACLs) for Permit and Deny actions at a network-to-network interconnect (NNI) level. You create ingress and egress ACLs before you create NNI resources and then reference those ACLs in the NNI payload. You need to create referenced ingress and egress ACLs before you provision the network fabric.
+In multi-rack deployments of Azure Local, you can protect Secure Shell (SSH) access on the management virtual private network (VPN) with access control lists (ACLs) for **Permit** and **Deny** actions at a network-to-network interconnect (NNI) level. Create ingress and egress ACLs before you create NNI resources, then reference those ACLs in the NNI payload. Create the referenced ingress and egress ACLs before you provision the network fabric.
 
 Here's a high-level workflow to create an ACL on an NNI:
 
@@ -52,7 +52,7 @@ Here's a high-level workflow to create an ACL on an NNI:
 
 Be aware of these restrictions:
 
-- Inline ports and inline VLANs are a static way of defining the ports or VLANs by using azcli.
+- Inline ports and inline VLANs are static ways of defining the ports or VLANs by using Azure Command Line Interface (CLI).
 
 - `portGroupNames` and `vlanGroupNames` are dynamic ways of defining ports and VLANs.
 
@@ -253,7 +253,7 @@ az networkfabric acl list --resource-group "ResourceGroupName"
 
 ## Create ACLs on the ISD external network
 
-To create ingress and egress ACLs for the isolation domain (ISD) external network, refer to the next sections. Then, update the Resource Manager resource reference for the external network.
+To create ingress and egress ACLs for the isolation domain (ISD) external network, see the next sections. Then, update the Resource Manager resource reference for the external network.
 
 ### Create an ingress ACL for the ISD external network
 
