@@ -52,12 +52,15 @@ For disconnected operations:
 
 Python trust options (choose one):
 
-- Option 1: Use the OS trust store (recommended). Install a Python module that lets Python use the OS trust store.
+- Option 1: Use the OS trust store (recommended). Install a Python module that allows Python use the OS trust store.
 
-    Run this Windows example to install the pip-system-certs module in the Python environment bundled with Azure CLI. Replace the sample paths with paths for your system.
-& "C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\python.exe" -m pip install pip-system-certs
+    Run this Windows example in PowerShell to install the pip-system-certs module in the Python environment bundled with Azure CLI. Replace the sample paths with the actual path your system.
+
+    ```powershell
+    & "C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\python.exe" -m pip install pip-system-certs
+    ```
     
-    # If your client doesn't have the root cert imported, use this command to import it.
+    If your client doesn't have the root cert imported, use this command to import it.
     
     $applianceRootCertFile = "C:\AzureLocalDisconnectedOperations\applianceRoot.cer"
     Import-Certificate -FilePath $applianceRootCertFile -CertStoreLocation Cert:\LocalMachine\Root -Confirm:$false
