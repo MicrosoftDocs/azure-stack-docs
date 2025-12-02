@@ -3,7 +3,7 @@ title: Overview of Azure Arc gateway for Azure Local
 description: Learn what is Azure Arc gateway for Azure Local.
 author: alkohli
 ms.topic: how-to
-ms.date: 10/30/2025
+ms.date: 11/26/2025
 ms.author: alkohli
 ms.service: azure-local
 ---
@@ -66,10 +66,9 @@ The following sections explain how *http* and *https* traffic flow changes when 
 
 - The system forwards all Arc HTTPS traffic to the Arc gateway configured for the Azure Local VM.
 - If you want to forward all the HTTP and HTTPS traffic from the Azure Local VM to the Arc gateway, you must configure the OS WinInet and WinHTTP proxy settings to use the Arc proxy that's running on http://\<localhost\>:\<port40343\>.
-- If the Arc gateway doesn't allow endpoints from reaching inside the Azure Local VM, the system sends the traffic to the enterprise proxy or firewall.
+- Traffic intended for endpoints not managed by the Arc gateway is routed through the enterprise proxy or firewall.
 
 For more information about the traffic flows, see [Deep dive into Azure Arc gateway outbound traffic mode for Azure Local](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/Networking/Arc-Gateway-Outbound-Connectivity/DeepDive-ArcGateway-Outbound-Traffic.md).
-
 
 ## Supported and unsupported scenarios
 
