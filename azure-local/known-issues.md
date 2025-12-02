@@ -3,7 +3,7 @@ title: Release notes with fixed and known issues in Azure Local
 description: Read about the known issues and fixed issues in Azure Local.
 author: alkohli
 ms.topic: conceptual
-ms.date: 11/14/2025
+ms.date: 12/01/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
@@ -416,7 +416,7 @@ The following table lists the known and expected system behaviors that shouldn't
 
 ::: moniker-end
 
-::: moniker range="=azloc-2506"
+::: moniker range="=azloc-previous"
 
 ## Known issues for version 2506
 
@@ -435,7 +435,7 @@ Release notes for this version include the issues fixed in this release, known i
 > [!NOTE]
 > For detailed remediation for common known issues, see the [Azure Local Supportability](https://github.com/Azure/AzureStackHCI-Supportability) GitHub repository.
 
-## Fixed issues
+### Fixed issues
 
 The following table lists the fixed issues in this release:
 
@@ -453,7 +453,7 @@ The following table lists the fixed issues in this release:
 | Deployment <!--32078730--> | Improved behavior for loading PowerShell modules.  |  |
 | Deployment <!--32311676--> | Added flag to enable decryption of volumes when re-attaching them.  |  |
 
-## Known issues in this release
+### Known issues in this release
 
 The following table lists the known issues in this release:
 
@@ -466,7 +466,7 @@ The following table lists the known issues in this release:
 | Update <!--33448368--> |  Cluster-Aware Updating runs might fail with the error:<br>`Type 'SBEPartnerConfirmCauDone' of Role 'SBE' raised an exception:<br>SBE_MsftCIOnlyCommon_CommonForTesting_4.2.2504.16: ErrorID: SBE-CAU-RUNNING-AFTER-DONE -- CAU run is still in progress when it should be done. See https://aka.ms/AzureLocal/SBE/CauHelp for help. Review full Get-CauRun output it identify if it is progressing or stuck. Wait for it to complete if progressing.` | Wait for CAU run to complete (wait for `Get-CauRun` to report `RunNotInProgress`) and resume the update. |
 |Azure Local VMs <!--33811472-->| When no storage path is specified during deployment, resources (VMs, data disks, and images) are automatically placed on the first storage path of the cluster, even when other storage paths are also available. Over time, this might cause insufficient disk space on that path, potentially resulting in deployment failures. | Update to 2507 as this build contains a fix for the issue. Or, create resources with a specified storage path. For more information, see [Troubleshoot Azure Local Virtual Machines enabled by Azure Arc](../azure-local/manage/troubleshoot-arc-enabled-vms.md#resource-deployment-failure-due-to-insufficient-disk-space-on-the-first-storage-path). |
 
-## Known issues from previous releases
+### Known issues from previous releases
 
 The following table lists the known issues from previous releases:
 
@@ -484,7 +484,7 @@ The following table lists the known issues from previous releases:
 | Security <!-- 56969147 --> | When fixing the compliance for the minimum password length rule, even after you've changed the minimum password length on the Azure Local host to 14, you continue to see it as non-compliant in Azure policy.  | You can verify the length of the password using the `net accounts` cmdlet. In the output, find **Minimum password length** to see the value. |
 | Upgrade <!--33417006-->| The upgrade banner is currently available for users using the Azure Government cloud. However, the environment checker fails, suggesting that Azure Government clouds are not supported. | There's no workaround in this release. If you encounter this issue, contact Microsoft Support to determine next steps. |
 
-## Known and expected behaviors
+### Known and expected behaviors
 
 The following table lists the known and expected system behaviors that shouldn't be considered as bugs or limitations.
 
@@ -492,10 +492,6 @@ The following table lists the known and expected system behaviors that shouldn't
 |---------|---------|---------|
 | Operating system  | Restoring the registry using *RegBack* isn't supported on Azure Local. This operation can remove the Lifecycle Manager (LCM) and Microsoft On-premises Cloud (MOC) settings on your Azure Local instance, which can corrupt the solution.  | |
 | Azure Local VM management| Using an exported Azure VM OS disk as a VHD to create a gallery image for provisioning an Azure Local VM is unsupported. | Run the command `restart-service mochostagent` to restart the mochostagent service. |
-
-::: moniker-end
-
-::: moniker range="=azloc-previous"
 
 This article identifies critical known issues and their workarounds in Azure Local.
 

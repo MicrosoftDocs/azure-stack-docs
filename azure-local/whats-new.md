@@ -5,7 +5,7 @@ ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 11/18/2025
+ms.date: 12/01/2025
 ---
 
 # What's new in hyperconverged deployments of Azure Local?
@@ -240,7 +240,7 @@ This release has the following features and improvements:
  
 ::: moniker-end
 
-::: moniker range="=azloc-2506"
+::: moniker range="=azloc-previous"
 
 ## Features and improvements in 2506
 
@@ -286,10 +286,6 @@ This release has the following features and improvements:
 - **Archival of Azure Local, version 22H2 documentation**: [Azure Local, version 22H2 documentation](/previous-versions/azure/azure-local/release-information) is now archived and available in the [Azure previous versions documentation](/previous-versions/azure/) for reference. The archived documentation isn't updated and isn't supported.
 
 - **Azure Government cloud**: The solution update isn't supported for Azure Local instances deployment in Azure Government cloud.
-
-::: moniker-end
-
-::: moniker range="=azloc-previous"
 
 ## Features and improvements in 2505
 
