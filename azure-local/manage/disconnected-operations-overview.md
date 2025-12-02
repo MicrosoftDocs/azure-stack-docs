@@ -75,11 +75,11 @@ To participate in the preview, you must meet the following criteria:
     | Storage per node             | 2 TB SSD/NVME                    |
     | Boot disk drive storage      | 960 GB SSD/NVME **               |
 
-> [!NOTE]
->
-> - \* The Disconnected operations appliance running on the management cluster needs at least 64 GB of memory. We recommend that management cluster nodes have at least 96 GB of memory to provide enough capacity to run the appliance and other infrastructure components.
->
-> - \** For systems with boot disks smaller than 960 GB, you must use additional data disks from the nodes (capacity) to install the appliance. We recommend a 960 GB boot drive as the minimum to reduce deployment complexity if your OEM configuration allows for a larger boot drive.
+  > [!NOTE]
+  >
+  > - \* The Disconnected operations appliance running on the management cluster needs at least 64 GB of memory. We recommend that management cluster nodes have at least 96 GB of memory to provide enough capacity to run the appliance and other infrastructure components.
+  >
+  > - \** For systems with boot disks smaller than 960 GB, you must use additional data disks from the nodes (capacity) to install the appliance. We recommend a 960 GB boot drive as the minimum to reduce deployment complexity if your OEM configuration allows for a larger boot drive.
 
 ## Get started
 
