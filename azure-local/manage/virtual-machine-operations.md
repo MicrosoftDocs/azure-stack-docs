@@ -111,7 +111,7 @@ You perform these operations either on the VM itself or on the cluster/node. The
 - Checkpoint a VM (standard or production)
 
 > [!NOTE]
-> Taking a VM checkpoint locally is only supported for Azure Local 2504 and later. Use of checkpoint operations are restricted to users with Hyper-V administrative rights. Delegating permissions to non-admin users to perform checkpoint operations on Azure Local VMs aren't allowed due to security concerns.
+> Taking a VM checkpoint locally is only supported for Azure Local 2504 and later. Use of checkpoint operations are restricted to users with Hyper-V administrative rights. Delegating permissions to non-admin users to perform checkpoint operations on Azure Local VMs isn't allowed due to security concerns.
 
 #### Operations supported only via Network ATC PowerShell cmdlets
 
