@@ -46,7 +46,7 @@ The approximate time estimates for a typical single or multi-node system are sum
 
 |System/Time           |Time for health check<br>*hh:mm*  |Time to install update<br>*hh:mm*  |
 |------------------|-------------------------------------|---------|
-|Single node     | ~ 00:17        |~ 4:00         |
+|Single node     | ~ 00:17        |~ 04:00         |
 |4-nodes    | ~ 00:22       |~ 06:00         |
 
 > [!IMPORTANT]
