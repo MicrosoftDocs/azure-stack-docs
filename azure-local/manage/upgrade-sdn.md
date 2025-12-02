@@ -4,7 +4,7 @@ description: Learn how to upgrade infrastructure for SDN managed by on-premises 
 ms.topic: how-to
 ms.author: alkohli
 author: alkohli
-ms.date: 11/26/2025
+ms.date: 12/02/2025
 ---
 
 # Upgrade infrastructure for Software Defined Networking managed by on-premises tools
@@ -270,14 +270,6 @@ You can upgrade Load Balancer Multiplexers without any additional requirements. 
     ```
 
 1. [Perform the in-place upgrade](#perform-in-place-upgrade).
-
-1. After the in-place upgrade completes and the version is updated <!--removed mention of 2509-->, refresh the RSAT tools:
-
-    ```powershell
-    # refresh RSAT tools
-    Remove-WindowsFeature -Name RSAT-RemoteAccess
-    Add-WindowsFeature -Name RSAT-RemoteAccess
-    ```
 
 1. Add the Gateway VM resource back to Network Controller:
 
