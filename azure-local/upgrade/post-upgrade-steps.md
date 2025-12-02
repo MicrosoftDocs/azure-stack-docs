@@ -3,7 +3,7 @@ title: Post-upgrade steps on Azure Local via PowerShell
 description: Learn how to perform the post-upgrade tasks for Azure Local using PowerShell.
 author: alkohli
 ms.topic: how-to
-ms.date: 10/23/2025
+ms.date: 12/02/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -57,25 +57,13 @@ To make sure that the upgrade was complete and there's a new OS running on your 
 Get-CauRun -ClusterName <ClusterName>
 ```
 
-Here's a sample output: <!--ASK-->
+Here's a sample output: 
 
 ```output
-RunId                   : <Run ID> 
-RunStartTime            : 10/13/2019 1:35:39 PM 
-CurrentOrchestrator     : NODE1 
-NodeStatusNotifications : { 
-Node      : NODE1 
-Status    : Waiting 
-Timestamp : 10/13/2019 1:35:49 PM 
-} 
-NodeResults             : { 
-Node                     : NODE2 
-Status                   : Succeeded 
-ErrorRecordData          : 
-NumberOfSucceededUpdates : 0 
-NumberOfFailedUpdates    : 0 
-InstallResults           : Microsoft.ClusterAwareUpdating.UpdateInstallResult[] 
-}
+PS D:\> Get-CauRun -ClusterName ro0101-cl
+RunNotlnProgress
+WARNING: No Updating Run is currently in progress on cluster ro0101-cl.
+PS D:\> _
 ```
 
 ## Step 3: Perform the post-OS upgrade steps

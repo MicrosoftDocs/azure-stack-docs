@@ -4,7 +4,7 @@ description: Learn how to use PowerShell to apply operating system, service, and
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 08/13/2025
+ms.date: 12/02/2025
 ---
 
 # Update Azure Local via PowerShell
@@ -46,8 +46,8 @@ The approximate time estimates for a typical single or multi-node system are sum
 
 |System/Time           |Time for health check<br>*hh:mm*  |Time to install update<br>*hh:mm*  |
 |------------------|-------------------------------------|---------|
-|Single node     | ~ 03:00        |~ 01:30         |
-|4-nodes    | ~ 05:00       |~ 04:00         |
+|Single node     | ~ 00:17        |~ 04:00         |
+|4-nodes    | ~ 00:22       |~ 06:00         |
 
 > [!IMPORTANT]
 > Use of 3rd party tools to install updates is not supported.
