@@ -58,7 +58,7 @@ Each server must meet the following minimum specifications:
 | **CPU** | Dual socket, Intel Xeon Gold 5418Y 2G, 24 cores (or equivalent) |
 | **Memory** | 512 GB RAM |
 | **Boot Storage** | 2 × 960 GB NVMe drives configured in RAID-1 |
-| **Capacity Storage** | 24 × 4TB NVMe Read Intensive drives |
+| **Capacity Storage** | 16 or 24 × 4TB NVMe Read Intensive drives |
 | **Networking** | 2 × Nvidia ConnectX-6 10/25 GbE dual-port adapters |
 | **Power Supplies** | Dual, redundant, hot-swappable units |
 | **Platform Security** | TPM 2.0 |
