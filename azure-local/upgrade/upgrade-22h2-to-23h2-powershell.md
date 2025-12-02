@@ -3,7 +3,7 @@ title: Upgrade Azure Stack HCI OS, version 22H2 to version 23H2 via PowerShell
 description: Learn how to use PowerShell to upgrade Azure Stack HCI OS, version 22H2 to version 23H2.
 author: alkohli
 ms.topic: how-to
-ms.date: 11/25/2025
+ms.date: 12/02/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -298,7 +298,7 @@ To install the new OS using PowerShell, follow these steps:
    ```powershell
    # Define ISO and destination folder for extracted contents 
    $isoFilePath = "C:\SetupFiles\WindowsServer\ISOs\example.iso" 
-   $destinationPath = "C:\SetupFiles\WindowsServer\ExtractedFiles" 
+   $destinationPath = "C:\SetupFiles\WindowsServer\ExtractedFilesFolder" 
    # Mount the ISO file 
    $iso = Mount-DiskImage -ImagePath $isoFilePath 
    # Get the drive letter 
@@ -371,7 +371,7 @@ To install the new OS using PowerShell, follow these steps:
    ```powershell
    # Define ISO and destination folder for extracted contents 
    $isoFilePath = "C:\SetupFiles\WindowsServer\ISOs\example.iso" 
-   $destinationPath = "C:\SetupFiles\WindowsServer\ExtractedFiles" 
+   $destinationPath = "C:\SetupFiles\WindowsServer\ExtractedFilesFolder" 
    # Mount the ISO file 
    $iso = Mount-DiskImage -ImagePath $isoFilePath 
    # Get the drive letter 
