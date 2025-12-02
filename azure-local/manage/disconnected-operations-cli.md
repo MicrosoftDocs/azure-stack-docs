@@ -54,7 +54,7 @@ Python trust options (choose one):
 
 - Option 1: Use the OS trust store (recommended). Install a Python module that allows Python use the OS trust store.
 
-    Run this Windows example in PowerShell to install the pip-system-certs module in the Python environment bundled with Azure CLI. Replace the sample paths with the actual path your system.
+    Run this Windows example in PowerShell to install the pip-system-certs module in the Python environment bundled with Azure CLI. Replace the sample paths with the actual path on your system.
 
     ```powershell
     & "C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\python.exe" -m pip install pip-system-certs
