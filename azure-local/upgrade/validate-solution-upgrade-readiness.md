@@ -461,7 +461,7 @@ If the Azure Stack HCI subscription state test fails, follow these steps:
    ```
 
    > [!NOTE]
-   > If your Azure Stack HCI subscription isn't shown as Active, contact Microsoft support.
+   > If your Azure Stack HCI subscription doesn't show as Active, contact Microsoft support.
 
 <!--1. Sign in to the [Azure portal](https://portal.azure.com).
 1. Go to **Subscriptions** and select your Azure Stack HCI subscription.
