@@ -26,26 +26,32 @@ Your SDN deployment consists of several roles and machines, each providing essen
 
     - For Azure Local, see [Download operating system for Azure Local deployment](../deploy/download-23h2-software.md).
 
-    - For Windows Server, see [Install Windows Server from installation media](/windows-server/get-started/install-windows-server).<!--verify the link-->
+    - For Windows Server, see [Install Windows Server from installation media](/windows-server/get-started/install-windows-server).
 
 - Use [Unblock-File](/powershell/module/microsoft.powershell.utility/unblock-file) and copy the ISO to a file system that your Hyper-V hosts can access, or copy it manually to each Hyper-V host as needed.
 
 - Install the `SdnDiagnostics` module on the machine where you'll perform the upgrade tasks:
 
     ```powershell
-    # install or update SdnDiagnostics module
-    # once we have installed or updated, we will remove any modules currently
-    # from the runspace and import to ensure the latest module is imported
-    if ($null -eq (get-module -ListAvailable -Name SdnDiagnostics)) {
-    Install-Module -Name SdnDiagnostics
+    # Install or update SdnDiagnostics module
+    # After installation or update, reload the module to ensure the latest version is active
+
+    $moduleName = 'SdnDiagnostics'
+    if ($null -eq (get-module -ListAvailable -Name $moduleName)) {
+    Install-Module -Name $moduleName -Repository PSGallery -Scope CurrentUser -Force
     } else {
-    Update-Module -Name SdnDiagnostics
+    Update-Module -Name $moduleName -Scope CurrentUser -Force
     }
-    if (Get-Module -Name SdnDiagnostics){
-    Remove-Module -Name SdnDiagnostics
-    } else {
-    Import-Module -Name SdnDiagnostics
-    }
+
+    # Remove any currently loaded instance of the module
+    Remove-Module -Name $moduleName -ErrorAction SilentlyContinue
+
+    # Import the latest version into the current session
+    Import-Module -Name $moduleName -Force
+
+
+    # Optional: Confirm the loaded version
+    Get-Module -Name $moduleName
     ```
 
 - After installation, retrieve current SDN fabric environment details and copy the `SdnDiagnostics` module into the environment:
@@ -334,7 +340,7 @@ In some cases, the NetAdapter might get renamed during the upgrade. This causes 
     - If the adapter name is changed, check if the previous adapter is orphaned or ghosted.
     
         ```powershell
-        Get-PnpDevice -class net | ? Status -eq Unknown | Select FriendlyName,InstanceId
+        Get-PnpDevice -Class net | Where-Object Status -eq Unknown | Select-Object FriendlyName,InstanceId
         ```
 
     - If an orphaned adapter exists, remove it.
@@ -388,7 +394,6 @@ Move-SdnServiceFabricReplica -ServiceTypeName VSwitchService
 Move-SdnServiceFabricReplica -ServiceTypeName GatewayManager
 Move-SdnServiceFabricReplica -ServiceTypeName SlbManagerService
 ```
-
 
 ### Traffic is unable to traverse the Gateway connection
 
