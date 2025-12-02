@@ -478,30 +478,6 @@ If the Azure Stack HCI subscription state test fails, follow these steps:
    > [!NOTE]
    > If your Azure Stack HCI subscription doesn't show as **Active**, contact Microsoft support.
 
-<!--1. Sign in to the [Azure portal](https://portal.azure.com).
-1. Go to **Subscriptions** and select your Azure Stack HCI subscription.
-1. Check the subscription status. If it’s not **Active**, follow the prompts to reactivate or resolve any issues.
-1. Make sure the Azure Stack HCI resource provider is registered:
-   - In your subscription, select **Resource providers**.
-   - Find **Microsoft.AzureStackHCI** and select **Register** if it’s not already registered.
-1. Run the`Sync-AzureStackHCI` cmdlet on any node in the cluster.
-
-   ```PowerShell
-   Sync-AzureStackHCI
-   ```
-
-   Here's an example
-
-   ```console
-    [<IP address>]: PS C:\Users\Administrator.v\Documents> Sync-AzureStackHCI -verbose
-    VERBOSE: Attempting version check on localhost
-    VERBOSE: Checking version on localhost
-    VERBOSE: Negotiated version : Version4_0
-    VERBOSE: LocalHost, Negotiated version set to: Version3_0
-    VERBOSE: Successfully scheduled a sync with Azure.
-    [<IP address>]: PS C:\Users\Administrator.v\Documents> 
-    ```-->
-
 ## Next steps
 
 - [Learn how to apply the solution upgrade](./install-solution-upgrade.md)
