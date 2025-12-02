@@ -231,6 +231,12 @@ You can upgrade Load Balancer Multiplexers without any additional requirements. 
     $resourceRef = "/Gateways/<RESOURCE_ID>"
     $gateway = Get-SdnGateway -NcUri $environmentInfo.NcUrl -ResourceRef $resourceRef
 
+    # create backup of the gateway
+    $gateway | ConvertTo-Json -Depth 10 | Out-File -FilePath "$(Get-SdnWorkingDirectory)\$($gateway.resourceId).json"
+
+    # delete the gateway resource
+    Set-SdnResource -NcUri $environmentInfo.NcUrl -ResourceRef $gateway.resourceRef -OperationType Delete
+
     # Wait for Gateway VM to automatically reboot after removal from Network Controller
     Write-Host "Waiting for Gateway VM to reboot after removal from Network Controller..."
     $rebootTimeout = 600  # 10 minutes timeout
@@ -261,13 +267,6 @@ You can upgrade Load Balancer Multiplexers without any additional requirements. 
         Write-Error "Gateway VM did not reboot automatically within $rebootTimeout seconds. Manual intervention required."
         throw "Gateway reboot timeout - check Gateway VM status before proceeding with in-place upgrade"
     }
-
-    # create backup of the gateway
-    $gateway | ConvertTo-Json -Depth 10 | Out-File -FilePath "$(Get-SdnWorkingDirectory)\$($gateway.resourceId).json"
-
-    # delete the gateway resource
-    Set-SdnResource -NcUri $environmentInfo.NcUrl -ResourceRef $gateway.resourceRef -OperationType Delete
-
     ```
 
 1. [Perform the in-place upgrade](#perform-in-place-upgrade).
