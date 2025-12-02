@@ -25,7 +25,7 @@ When deploying Azure Local with disconnected operations, consider the following 
 - A minimum of three machines is required to support disconnected operations. Up to eight machines are supported.
 - The deployment of the Azure Local cluster can take several hours.
 - The local control plane can experience periods of downtime during node reboots and updates.
-- During the creation of     the cluster, a thinly provisioned 2-TB infrastructure volume is created for disconnected operations. Don't tamper with or delete the infrastructure volumes created during the deployment process.
+- During the creation of the cluster, a thinly provisioned 2-TB infrastructure volume is created for disconnected operations. Don't tamper with or delete the infrastructure volumes created during the deployment process.
 - When you create the Azure Local instance, the disconnected operations VM appliance is moved to cluster storage and converted to a clustered VM.
 
 ## Prerequisites
@@ -190,7 +190,7 @@ To prepare the first machine for the disconnected operations appliance, follow t
     $applianceConfigBasePath = 'C:\AzureLocalDisconnectedOperations'
     ```
 
-1. Copy the disconnected operations installation files (appliance zip, vhdx and manifest) to the first machine. Save these files into the base folder you created earlier.  
+1. Copy the disconnected operations installation files (appliance zip, vhdx, and manifest) to the first machine. Save these files into the base folder you created earlier. 
 
     ```powershell  
     Copy-Item \\fileserver\share\azurelocalfiles\* $applianceConfigBasePath    
