@@ -2,7 +2,7 @@
 title: Microsoft 365 Local Overview
 description: Learn about Microsoft 365 Local on Azure Local infrastructure.
 author: alkohli
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 11/18/2025
 ms.author: alkohli
 ms.reviewer: alkohli
