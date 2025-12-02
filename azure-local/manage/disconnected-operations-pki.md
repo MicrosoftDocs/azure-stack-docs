@@ -52,7 +52,7 @@ This table lists the mandatory certificates required for disconnected operations
 | Azure Blob storage | *.blob.fqdn |
 | Azure Service Bus | *.servicebus.fqdn |
 | Azure Data Policy | data.policy.fqdn |
-| Arc configuration data plane <br/br> Azure Arc-enabled Kubernetes | autonomous.dp.kubernetesconfiguration.fqdn |
+| Arc configuration data plane <br></br> Azure Arc-enabled Kubernetes | arckubernetesconfig.fqdn |
 | Arc for Server Agent data service | agentserviceapi.fqdn |
 | Arc for server | his.fqdn |
 | Arc guest notification service | guestnotificationservice.fqdn |
@@ -115,7 +115,7 @@ $AzLCerts = @(
     "*.blob.$fqdn" 
     "*.servicebus.$fqdn"   
     "data.policy.$fqdn"
-    "autonomous.dp.kubernetesconfiguration.$fqdn"
+    "arckubernetesconfig.$fqdn"
     "agentserviceapi.$fqdn"
     "his.$fqdn"
     "guestnotificationservice.$fqdn"

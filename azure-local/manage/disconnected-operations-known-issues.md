@@ -16,20 +16,19 @@ ai-usage: ai-assisted
 This article highlights what's new (features and improvements) and critical known issues with workarounds for disconnected operations in Azure Local. These release notes update continuously. We add critical issues and workarounds as they're identified. Review this information before you deploy disconnected operations with Azure Local.
 
 ## Features and improvements in 2511
- - Add support for Azure Local 2511 ISO and it's capabilities
- - Enabled baseline update
- - Azure Policy improvements (for brownfield scenarios)
+ - Added support for Azure Local 2511 ISO and it's capabilities
+ - Bundled update uploader in Operations Module
  - Improved log collection experience
  - Added deployment automation capability for operator account during bootstrap (enabling full e2e deployment automation)
- - Fixed empty groups not being synchronized
- - RBAC updates (AKS Arc)
+ - Fixed empty groups not being synchronized for identity integration
+ - RBAC update and refresh (AKS Arc)
  - Added control plane awareness for Azure Local instance deployments
 
 ## Features and improvements in 2509
 
  - Adds support for Azure Local 2508 ISO and its capabilities.
  - Adds support for System Center Operations Manager 2025 and fixes a management pack failure on newer System Center Operations Manager versions; continues support for System Center Operations Manager 2022.
- - This release enables the update scenario. When 2510 is released, you'll be able to test updating from this version to 2510 of Disconnected operations for Azure Local. This includes the ability to update Azure Local that is connected to disconnected operations.
+ - This release enables the update scenario. 
  - Improves security.
  - Improves observability.
  - Enables Ldaps and custom port for ldap binding.
@@ -114,9 +113,9 @@ $result = [PSCustomObject]@{
 - Resume cloud deployment
 
 ### Resources dissapear from portal
- After coming back to browser after some time - you are still logged in, but resources appears missing. 
+ When accessing the portal - with the same user that have been working before, resources appears missing and not showing in portal. 
 
- Mitigation: Close browser, clear all cookies. Navigate back to your local portal and login again. 
+ **Mitigation**: Start browser in in-cognito mode or close browser and clear all cookies. Navigate back to your local portal and login again. Altnernative - restart IRVM01 on seed-node and wait until services comes back online healthy.
 
 ### Memory consumption when there's less than 128 GB of memory per node
 

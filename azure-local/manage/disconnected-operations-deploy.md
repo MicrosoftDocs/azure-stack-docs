@@ -25,7 +25,7 @@ When deploying Azure Local with disconnected operations, consider the following 
 - A minimum of three machines is required to support disconnected operations. Up to eight machines are supported.
 - The deployment of the Azure Local cluster can take several hours.
 - The local control plane can experience periods of downtime during node reboots and updates.
-- During the creation of the cluster, a thinly provisioned 2-TB infrastructure volume is created for disconnected operations. Don't tamper with or delete the infrastructure volumes created during the deployment process.
+- During the creation of     the cluster, a thinly provisioned 2-TB infrastructure volume is created for disconnected operations. Don't tamper with or delete the infrastructure volumes created during the deployment process.
 - When you create the Azure Local instance, the disconnected operations VM appliance is moved to cluster storage and converted to a clustered VM.
 
 ## Prerequisites
@@ -247,12 +247,6 @@ To prepare the first machine for the disconnected operations appliance, follow t
     Get-ChildItem $certsPath -recurse -filter *.cer  
     ```  
 
-1. Install the BitLocker feature including the management tool.
-
-    ```powershell
-    Install-WindowsFeature BitLocker -IncludeAllSubFeature -IncludeManagementTools
-    ```
-
 1. Import the **Operations module**. Run the command as an administrator using PowerShell. Modify the path to match your folder structure.
 
     ```powershell  
@@ -362,6 +356,7 @@ Populate the required parameters based on your deployment planning. Modify the e
 To install and configure the appliance on the first machine, use the following command. Point the `AzureLocalInstallationFile` to a path that contains the **IRVM01.zip**.
 
 ```powershell
+$networkIntentName = 'ManagementComputeStorage' 
 $azureLocalInstallationFile = "$($applianceConfigBasePath)"  
 $applianceManifestJsonPath = Join-Path $applianceConfigBasePath AzureLocal.DisconnectedOperations.manifest.json
 
