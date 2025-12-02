@@ -434,9 +434,36 @@ Follow these steps to apply solution upgrade if you're running AKS workloads on 
 
 ## Remediation 12: Resolve subscription state validation failure
 
-If the Azure Stack HCI subscription state test fails, make sure your subscription is active and registered. Follow these steps:
+If the Azure Stack HCI subscription state test fails, follow these steps:
 
-1. Sign in to the [Azure portal](https://portal.azure.com).
+1. Run the`Sync-AzureStackHCI` cmdlet on any node in the cluster. Wait a few minutes for the command to process.
+
+   ```PowerShell
+   Sync-AzureStackHCI
+   ```
+
+   Here's an example
+
+   ```console
+    [<IP address>]: PS C:\Users\Administrator.v\Documents> Sync-AzureStackHCI -verbose
+    VERBOSE: Attempting version check on localhost
+    VERBOSE: Checking version on localhost
+    VERBOSE: Negotiated version : Version4_0
+    VERBOSE: LocalHost, Negotiated version set to: Version3_0
+    VERBOSE: Successfully scheduled a sync with Azure.
+    [<IP address>]: PS C:\Users\Administrator.v\Documents> 
+    ```
+
+1. Run the `get-clusternode` cmdlet to check the subscription on each node. The Azure Stack HCI subscription should be active on all nodes in the cluster.
+
+   ```powershell
+   get-clusternode | % {get-azurestackhcisubscriptionstatus -computername $_ }
+   ```
+
+   > [!NOTE]
+   > If your Azure Stack HCI subscription isn't shown as Active, contact Microsoft support.
+
+<!--1. Sign in to the [Azure portal](https://portal.azure.com).
 1. Go to **Subscriptions** and select your Azure Stack HCI subscription.
 1. Check the subscription status. If it’s not **Active**, follow the prompts to reactivate or resolve any issues.
 1. Make sure the Azure Stack HCI resource provider is registered:
@@ -458,7 +485,7 @@ If the Azure Stack HCI subscription state test fails, make sure your subscriptio
     VERBOSE: LocalHost, Negotiated version set to: Version3_0
     VERBOSE: Successfully scheduled a sync with Azure.
     [<IP address>]: PS C:\Users\Administrator.v\Documents> 
-    ```
+    ```-->
 
 ## Next steps
 
