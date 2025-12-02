@@ -16,26 +16,26 @@ ai-usage: ai-assisted
 This article highlights what's new (features and improvements) and critical known issues with workarounds for disconnected operations in Azure Local. These release notes update continuously. We add critical issues and workarounds as they're identified. Review this information before you deploy disconnected operations with Azure Local.
 
 ## Features and improvements in 2511
- - Added support for Azure Local 2511 ISO and it's capabilities
- - Bundled update uploader in Operations Module
- - Improved log collection experience
- - Added deployment automation capability for operator account during bootstrap (enabling full e2e deployment automation)
- - Fixed empty groups not being synchronized for identity integration
- - RBAC update and refresh (AKS Arc)
- - Added control plane awareness for Azure Local instance deployments
+ - Added support for the Azure Local 2511 ISO and its associated capabilities.
+ - Bundled update uploader in OperationsModule.
+ - Improved the log collection experience.
+ - Added deployment automation capability for operator account during bootstrap (enabled full e2e deployment automation).
+ - Fixed empty groups not synchronizing for identity integration.
+ - RBAC update and refresh (AKS Arc).
+ - Added control plane awareness for Azure Local instance deployments.
 
 ## Features and improvements in 2509
 
- - Adds support for Azure Local 2508 ISO and its capabilities.
- - Adds support for System Center Operations Manager 2025 and fixes a management pack failure on newer System Center Operations Manager versions; continues support for System Center Operations Manager 2022.
- - This release enables the update scenario. 
- - Improves security.
- - Improves observability.
- - Enables Ldaps and custom port for ldap binding.
- - Fixes Portal and UX issues.
- - Improves OperationsModule logging and error messages and adds certificate validation and CSR generation.
- - Adds external certificate rotation in OperationsModule. For example, `Set-ApplianceExternalEndpointCertificates`.
- - Enables use of a FQDN in the SAN of the management certificate.
+ - Added support for the Azure Local 2508 ISO and its associated capabilities.
+ - Added support for System Center Operations Manager 2025 and fixed a management pack failure on newer System Center Operations Manager versions; continuing support for System Center Operations Manager 2022.
+ - Enabled update scenario. 
+ - Improved security.
+ - Improved observability.
+ - Enabled LDAPS and custom port configuration for LDAP binding.
+ - Fixed Portal and UX issues.
+ - Improved OperationsModule logging and error messages and added certificate validation and CSR generation.
+ - Added external certificate rotation in OperationsModule. For example, `Set-ApplianceExternalEndpointCertificates`.
+ - Enabled the use of a FQDN in the SAN of the management certificate.
 
 ## Known issues for disconnected operations for Azure Local
 
