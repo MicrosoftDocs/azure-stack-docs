@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: concept-article
 ms.service: azure-local
-ms.date: 11/12/2025
+ms.date: 12/02/2025
 ---
 
 # Supported operations for Azure Local VMs enabled by Azure Arc
@@ -36,6 +36,8 @@ You can use multiple interfaces to perform supported operations for VMs.
 
 Perform the following VM operations only via the Azure portal or the Azure CLI. Don't use the local tools.
 
+- Create a VM
+- Start a VM
 - Restart a VM
 - Stop a VM
 - Delete a VM
@@ -109,7 +111,7 @@ You perform these operations either on the VM itself or on the cluster/node. The
 - Checkpoint a VM (standard or production)
 
 > [!NOTE]
-> Taking a VM checkpoint locally is only supported for Azure Local 2504 and later.
+> Taking a VM checkpoint locally is only supported for Azure Local 2504 and later. Use of checkpoint operations are restricted to users with Hyper-V administrative rights. Delegating permissions to non-admin users to perform checkpoint operations on Azure Local VMs aren't allowed due to security concerns.
 
 #### Operations supported only via Network ATC PowerShell cmdlets
 
@@ -132,6 +134,7 @@ The following VM operations aren't supported for Azure Local VMs. If your worklo
 - Storage live migration on a VM
 - Change the type of disk (static, dynamic, VHD, or VHDX)
 - Add shared storage (shared VHD or VHDX)
+- Cloning a VM. Cloning a VM might preserve the VM's unique identifiers (such VM ID and Azure Arc resource ID), and thus result in corruption, management errors, or failure to start. 
 
 If you need to change the IP address or the VLAN ID of a network interface, create a new network interface and delete the old one.
 
