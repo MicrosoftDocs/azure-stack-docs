@@ -3,7 +3,7 @@ title: Azure Arc registration workflow for systems with OEM images
 description: Learn about the Azure Arc registration workflow for systems with OEM images.
 author: alkohli
 ms.topic: overview
-ms.date: 10/14/2025
+ms.date: 11/17/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -11,7 +11,7 @@ ms.service: azure-local
 
 # Azure Arc registration workflow for systems with OEM images
 
-::: moniker range=">=azloc-2510"
+::: moniker range=">=azloc-2508"
 
 This article describes the Azure Arc registration workflow for systems using Original Equipment Manufacturer (OEM) images. It replaces [Step 3: Run registration script](./deployment-with-azure-arc-gateway.md#step-3-run-registration-script) in [Register Azure Local with Azure Arc using Arc gateway](./deployment-with-azure-arc-gateway.md) for both with proxy and without proxy scenarios. All other instructions remain the same.
 
@@ -19,13 +19,7 @@ This article describes the Azure Arc registration workflow for systems using Ori
 
 If you've purchased Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) through your preferred Microsoft hardware partner, the operating system (OS) is typically preinstalled. This preinstalled OS is referred to as an OEM image. These images may be outdated and might not always include the latest OS version or drivers.
 
-Starting with Azure Local 2510, during Azure Arc registration process, if the system detects an outdated OEM image, it triggers an update before proceeding with registration.
-
-<!--The following will go in what's new as "Key enhancements in the registration workflow"
-- OS image validation. If an outdated or unsupported image is detected, the system automatically starts an update process before proceeding with the Arc registration.
-- Reboot state notification. The system notifies you when a reboot is about to occur during the update phase. This notification helps inform users about the upcoming system changes.
-- Timed reboot delay. A short delay (about 30 seconds) is added before rebooting, giving users time to read the warning or message on the console output.
-- Enhanced status reporting: Registration cmdlet provides clearer status updates, showing sub-stages like Scan, Download, and Update to help track progress. The update stage occurs before Arc registration begins.-->
+If the system detects an outdated OEM image during the Azure Arc registration process, it updates the image before proceeding with registration.
 
 ## Run registration script for systems with OEM image
 
@@ -36,7 +30,7 @@ Follow these steps to register Azure Local systems with Azure Arc when using pre
     ```powershell
     Invoke-AzStackHciArcInitialization -TenantID $Tenant -SubscriptionID $Subscription -ResourceGroup $RG -Region $Region -Cloud "AzureCloud"
     ```
-    
+
     If an OS image update is initiated during registration, the status shows as **Update: InProgress**. This status indicates the system is currently performing an update before completing registration.
 
 1. Monitor registration progress. If registration times out or the machine reboots, reconnect and check the registration progress using the following commands:
@@ -65,8 +59,8 @@ Follow these steps to register Azure Local systems with Azure Arc when using pre
 
 ::: moniker-end
 
-::: moniker range="<=azloc-2509"
+::: moniker range="<=azloc-2507"
 
-This feature is available only in Azure Local 2510 or later.
+This feature is available only in Azure Local 2508 or later.
 
 ::: moniker-end
