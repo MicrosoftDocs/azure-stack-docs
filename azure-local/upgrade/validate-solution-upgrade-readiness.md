@@ -454,10 +454,10 @@ If the Azure Stack HCI subscription state test fails, follow these steps:
     [<IP address>]: PS C:\Users\Administrator.v\Documents> 
     ```
 
-1. Run the `get-clusternode` cmdlet to check the subscription on each node. The Azure Stack HCI subscription should be **Active** on all nodes in the cluster.
+1. Run the `Get-AzureStackHCISubscriptionStatus` cmdlet to check the subscription on each node. The Azure Stack HCI subscription should be **Active** on all nodes in the cluster.
 
    ```powershell
-   get-clusternode | % {get-azurestackhcisubscriptionstatus -computername $_ }
+   Get-ClusterNode | % { Get-AzureStackHCISubscriptionStatus -ComputerName $_ }
    ```
 
    Here's an example:
