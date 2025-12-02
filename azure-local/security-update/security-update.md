@@ -597,6 +597,8 @@ To install the LCU on your Azure Local instance, see [Update Azure Stack Local i
 
 For a list of the files that are provided in this update, download the file information for [Cumulative update KB5060842.](https://go.microsoft.com/fwlink/?linkid=2323769).
 
+---
+
 ## May OS security updates (KB5058384 and KB5058411) for Azure Local
 
 For the 2505 release of Azure Local, Microsoft released two security updates, each corresponding to a specific OS build. The following table provides the details of these security updates, including their associated OS builds and release dates.
