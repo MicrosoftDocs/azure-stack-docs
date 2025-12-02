@@ -61,7 +61,8 @@ Python trust options (choose one):
     ```
     
     If your client doesn't have the root cert imported, use this command to import it.
-    
+  
+    ```powershell
     $applianceRootCertFile = "C:\AzureLocalDisconnectedOperations\applianceRoot.cer"
     Import-Certificate -FilePath $applianceRootCertFile -CertStoreLocation Cert:\LocalMachine\Root -Confirm:$false
     ```
