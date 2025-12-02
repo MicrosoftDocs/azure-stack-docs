@@ -105,17 +105,17 @@ To avoid any PowerShell version-related issues in your AKS deployment, you can u
 - Shut down virtual machines (VMs). To prevent unexpected outages and potential damage to databases, we recommend that you shut down the VMs before you upgrade the OS.
 - You have access to the version 25398.xxxx (23H2) OS software update for Azure Local. This update is available via Windows Update or as a downloadable media. The media must be version **2503** ISO file that you can download from the [Azure portal](https://portal.azure.com/#view/Microsoft_Azure_HybridCompute/AzureArcCenterBlade/~/hciGetStarted).
 - You have access to a client that can connect to your Azure Local instance. This client should be running PowerShell 5.0 or later.
-- You run the `RepairRegistration` cmdlet only if both of the following conditions apply:
+- You run the `RepairRegistration` cmdlet if any of the following conditions apply:
 
    - The *identity* property is either missing or doesn't contain `type = "SystemAssigned"`.
-      - Check this in the Resource JSON in the Azure portal
-      - Or run the `Get-AzResource -Name <cluster_name>` PowerShell cmdlet
+      - Check this in the Resource JSON in the Azure portal.
+      - Or run the `Get-AzResource -Name <cluster_name>` PowerShell cmdlet.
    - The **Cloud Management** cluster group is not present. Check it by running the `Get-ClusterGroup` PowerShell cmdlet.
 
-   If both these conditions are met, run the `RepairRegistration` cmdlet:
+   If any of these conditions are met, run the `RepairRegistration` cmdlet:
 
    ```powershell
-   Register-AzStackHCI -TenantId "<tenant_ID>" -SubscriptionId "<subscription_ID>" -ComputerName "<computer_name>" -RepairRegistration
+   Register-AzStackHCI -TenantId "<tenant_ID>" -SubscriptionId "<subscription_ID>" -ComputerName "<computer_name>" -Region "<region_name>" -RepairRegistration
    ```
 
 - (Recommended) You enable [Secure Boot](/windows-hardware/design/device-experiences/oem-secure-boot) on Azure Local machines before you upgrade the OS.
@@ -159,7 +159,7 @@ To avoid any PowerShell version-related issues in your AKS deployment, you can u
 - Ensure the instance is properly registered. If the *identity* property is missing or doesn't contain `type = "SystemAssigned"`, run the following command to repair the registration:
 
    ```powershell
-   Register-AzStackHCI -TenantId "<tenant_ID>" -SubscriptionId "<subscription_ID>" -ComputerName "<computer_name>" -RepairRegistration
+   Register-AzStackHCI -TenantId "<tenant_ID>" -SubscriptionId "<subscription_ID>" -ComputerName "<computer_name>" -Region "<region_name>" -RepairRegistration
    ```
    You can verify the *identity* property in the Azure portal in resource's JSON or by running the following cmdlet:
    
