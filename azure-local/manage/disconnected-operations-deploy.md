@@ -305,8 +305,8 @@ Populate the required parameters based on your deployment planning. Modify the e
     $oidcCertChain = Get-CertificateChainFromEndpoint -requestUri 'https://adfs.azurestack.local/adfs'        
     # This can be ommitted if you don't have ldaps 
     $ldapsCertChain = Get-CertificateChainFromEndpoint -requestUri 'https://dc01.azurestack.local'
-    # Ldaps default port (Non secure default = 389)
-    $ldapPort = 636 
+    # Ldaps default port (Non secure default = 3268)
+    $ldapPort = 3269
 
     $ldapPassword = 'RETRACTED'|ConvertTo-SecureString -AsPlainText -Force
     # Populate params with ldaps enabled.
