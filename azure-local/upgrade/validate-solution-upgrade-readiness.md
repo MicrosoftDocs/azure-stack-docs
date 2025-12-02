@@ -442,7 +442,7 @@ If the Azure Stack HCI subscription state test fails, follow these steps:
    Sync-AzureStackHCI
    ```
 
-   Here's an example
+   Here's an example:
 
    ```console
     [<IP address>]: PS C:\Users\Administrator.v\Documents> Sync-AzureStackHCI -verbose
@@ -458,6 +458,21 @@ If the Azure Stack HCI subscription state test fails, follow these steps:
 
    ```powershell
    get-clusternode | % {get-azurestackhcisubscriptionstatus -computername $_ }
+   ```
+
+   Here's an example:
+
+   ```console
+   Get-ClusterNode | % { Get-AzureStackHCISubscriptionStatus -ComputerName $_ }
+ 
+   Computer Name Subscription Name           Status   Valid To
+   ------------- -----------------           ------   --------
+   v-Host1       Azure Stack HCI             Active   1/1/2026 6:52:55 PM
+   v-Host1       Windows Server Subscription Inactive
+   v-Host2       Azure Stack HCI             Active   1/1/2026 6:25:34 PM
+   v-Host2       Windows Server Subscription Inactive
+   v-Host3       Azure Stack HCI             Active   1/1/2026 6:28:47 PM
+   v-Host3       Windows Server Subscription Inactive
    ```
 
    > [!NOTE]
