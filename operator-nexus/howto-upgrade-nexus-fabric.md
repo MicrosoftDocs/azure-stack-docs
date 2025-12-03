@@ -11,7 +11,16 @@ ms.custom: template-how-to, devx-track-azurecli
 
 # Network Fabric Runtime Upgrade
 
-This guide outlines, which preupgrade validations are required for a successful Network Fabric runtime upgrade and which validations are recommended. Required prevalidation checks lead to an upgrade failure if conditions of the validations aren't met. Recommended prevalidation checks help ensure consistency of the release. 
+This how-to-guide defines the pre‑upgrade validations necessary to ensure a successful Network Fabric runtime upgrade. It distinguishes between required validations and recommended validations, clarifying their impact on the upgrade process.
+ 
+**Required Pre‑Upgrade Validations**
+- These checks are mandatory.
+- If any of the required validation conditions is not met, the upgrade will fail.
+- They serve as safeguards to prevent runtime instability or incomplete upgrade execution.
+ 
+**Recommended Pre‑Upgrade Validations**
+- These checks are advisory but strongly encouraged.
+- While failure to meet recommended validations does not block the upgrade, they help ensure release consistency and reduce the risk of configuration drift or operational anomalies.
 
 ## Overview
 
@@ -110,7 +119,7 @@ Each of the NNF devices enter maintenance mode post triggering the upgrade. Traf
 * Upgrade Network Packet Broker (NPB) devices in a serial manner.
 * Aggregate rack management switches are to be upgraded one after the other in a serial manner.
 
-Similar to the preupgrade validation steps, it's recommended to validate the NNF device resource states post triggering the upgrade at the following checkpoints:
+Similar to the preupgrade validation steps, it's recommended to execute the same validations post triggering the upgrade at the following checkpoints:
 * After odd numbered TORs complete, prior to even numbered TORs upgrade.
 * After CE1 upgrade, prior to CE2 upgrade.
 * After Agg switch1 upgrade, prior to Agg switch2 upgrade.
