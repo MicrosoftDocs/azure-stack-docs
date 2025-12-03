@@ -790,6 +790,8 @@ items:
 
   - name: Concepts
     items:
+      - name: Access and identity
+        href: ./multi-rack-concepts-security-access-identity.md
       - name: Compute for multi-rack deployments
         href: ./multi-rack/multi-rack-concepts-compute.md
       - name: Load balancer for multi-rack deployments
