@@ -30,6 +30,8 @@ This release has the following features and improvements:
 
     - If you purchased Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) through your preferred Microsoft hardware partner, the OS should be preinstalled. Work with your Original Equipment Manufacturer (OEM) to get the OS image that's compatible with **12.2511.1002.502** and a driver that's compatible with OS version **26100.7171** or Windows Server 2025.
 
+        - Build **12.2511.1002.502** improves the reliability of deploy and update admin actions. If you've already deployed or updated to **12.2511.1002.5**, no further action is needed. Both **12.2511.1002.5** and **12.2511.1002.502** are supported builds.
+
 - **.NET updates**: This build uses .NET version **8.0.22** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
 
 - This release includes various reliability improvements and other bug fixes.
