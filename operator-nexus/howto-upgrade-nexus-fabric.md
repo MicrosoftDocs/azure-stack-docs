@@ -105,7 +105,7 @@ The above command marks the Network Fabric in "Under Maintenance" mode and preve
 Nexus Network Fabric customer triggers upgrade POST actions per device. Each of the NNF device resource states must be validated either Azure portal or Azure CLI:
 
 * Provisioning state is in **Succeeded** state
-* Configuration state is in **Provisioned** state
+* Configuration state is in **Succeeded** or **DeferredControl** state
 * Administrative state is in **Enabled** state
 
 Each of the NNF devices enters maintenance mode post triggering the upgrade. Traffic is drained and route advertisements are stopped.
