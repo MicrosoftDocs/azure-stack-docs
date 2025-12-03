@@ -9,7 +9,7 @@ ms.service: azure-operator-nexus
 ms.custom: template-how-to, devx-track-azurecli
 ---
 
-# Network Fabric Runtime Upgrade:
+# Network Fabric Runtime Upgrade
 
 This how-to-guide defines the pre‑upgrade validations necessary to ensure a successful Network Fabric runtime upgrade. It distinguishes between required validations and recommended validations, clarifying their impact on the upgrade process.
  
@@ -112,17 +112,34 @@ Each of the NNF devices enter maintenance mode post triggering the upgrade. Traf
 
 #### NNF Upgrade sequence
 
-* Odd numbered TORs (parallel).
-* Even numbered TORs (parallel).
-* Compute rack management switches (parallel).
-* CEs are to be upgraded one after the other in a serial manner. Stop the upgrade procedure if there are any failures corresponding to CE upgrade operation. After each CE upgrade, wait for a duration of five minutes to ensure that the recovery process is complete before proceeding to the next CE device upgrade.
-* Upgrade Network Packet Broker (NPB) devices in a serial manner.
-* Aggregate rack management switches are to be upgraded one after the other in a serial manner.
+* Initiate Nexus Network Fabric Runtime Upgrade
+* Upgrade Odd TOR Switches
+* Perform Mid-Upgrade Checks - Validate system health, connectivity, and configuration consistency
+* Upgrade Even TOR Switches
+* Perform Mid-Upgrade Checks
+* Upgrade Management Switches
+* Perform Mid-Upgrade Checks
+* Upgrade CE1
+* Wait for 5 Minutes
+* Upgrade CE2
+* Perform Mid-Upgrade Checks
+* Upgrade NPB1
+* Perform Mid-Upgrade Checks
+* Upgrade NPB2
+* Perform Mid-Upgrade Checks
+* Upgrade Aggr Mgmt Switch 1
+* Perform Mid-Upgrade Checks
+* Upgrade Aggr Mgmt Switch 2
+* Perform final Mid-Upgrade Checks
+* Runtime Upgrade Completed
 
 Similar to the preupgrade validation steps, it's recommended to execute the same validations post triggering the upgrade at the following checkpoints:
 * After odd numbered TORs complete, prior to even numbered TORs upgrade.
 * After CE1 upgrade, prior to CE2 upgrade.
 * After Agg switch1 upgrade, prior to Agg switch2 upgrade.
+
+[!Note]
+> If the upgrade fails at any phase, or if any mid-upgrade checks do not pass, the Deployment Engineering (DE) team will immediately collaborate with the customer team to diagnose and resolve the issue. 
 
 
 #### Sample az CLI command
@@ -131,7 +148,7 @@ Similar to the preupgrade validation steps, it's recommended to execute the same
 
 #### Post validation for Step 2 
 
-After all Network Fabric devices upgrades are completed, User must ensure that none of the NNF devices are "Under Maintenance" and these devices runtime versions must be showing 6.1.0 by running the following commands.
+After all Network Fabric devices upgrades are completed, User must ensure that none of the NNF devices are "Under Maintenance" and these devices runtime versions must be showing the latest runtime version by running the following commands.
 
 #### Sample az CLI command:
 
