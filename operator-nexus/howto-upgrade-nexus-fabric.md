@@ -104,38 +104,32 @@ The above command marks the Network Fabric in "Under Maintenance" mode and preve
 
 Nexus Network Fabric customer triggers upgrade POST actions per device. Each of the NNF device resource states must be validated either Azure portal or Azure CLI:
 
-* Provisioning state is in **Succeeded** state,
-* Configuration state is in **Provisioned** state.
+* Provisioning state is in **Succeeded** state
+* Configuration state is in **Provisioned** state
 * Administrative state is in **Enabled** state
 
 Each of the NNF devices enters maintenance mode post triggering the upgrade. Traffic is drained and route advertisements are stopped.
 
 #### NNF Upgrade sequence
 
-* Initiate Nexus Network Fabric Runtime Upgrade
-* Upgrade Odd TOR Switches
-* Perform Mid-Upgrade Checks - Validate EOS Version, Device State shouldn't be in maintenance, status of BGP sessions, and telemetry accuracy for connectivity
-* Upgrade Even TOR Switches
-* Perform Mid-Upgrade Checks - Validate EOS Version, Device State shouldn't be in maintenance, status of BGP sessions, and telemetry accuracy for connectivity
-* Upgrade Management Switches
-* Perform Mid-Upgrade Checks - Validate EOS Version, Device State shouldn't be in maintenance, and telemetry accuracy for connectivity
-* Upgrade CE1
-* Wait for 5 Minutes to stabilize the network connectivity
-* Perform Mid-Upgrade Checks - Validate EOS Version, Device State shouldn't be in maintenance, status of BGP sessions, and telemetry accuracy for connectivity
-* Upgrade CE2
-* Perform Mid-Upgrade Checks - Validate EOS Version, Device State shouldn't be in maintenance, status of BGP sessions, and telemetry accuracy for connectivity
-* Upgrade NPB1 
-* Perform Mid-Upgrade Checks - Validate EOS Version, Device State shouldn't be in maintenance, and telemetry accuracy for connectivity
-* Upgrade NPB2
-* Perform Mid-Upgrade Checks - Validate EOS Version, Device State shouldn't be in maintenance, and telemetry accuracy for connectivity
-* Upgrade Agg Mgmt Switch1
-* Perform Mid-Upgrade Checks - Validate EOS Version, Device State shouldn't be in maintenance, and telemetry accuracy for connectivity
-* Upgrade Agg Mgmt Switch2
-* Perform final Mid-Upgrade Checks - Validate EOS Version, Device State shouldn't be in maintenance, and telemetry accuracy for connectivity
-* Runtime Upgrade Completed
+* Odd numbered TORs (parallel)
+* Even numbered TORs (parallel)
+* Compute rack management switches (parallel)
+* CE1
+* Wait for 5 Minutes
+* CE2
+* NPBs (serial)
+* Aggregate rack management switches (serial)
 
-[!Note]
-> If the upgrade fails at any phase, or if any mid-upgrade checks do not pass, Please engage with Microsoft support team to diagnose and resolve the upgrade failure issue. 
+#### Mid-Upgrade Validation Steps: 
+* Perform Mid-Upgrade Checks between each of the above upgrade steps -
+* Validate EOS Version</br>
+* Validate fabric device resource state</br>
+* Validate device state shouldn't be in maintenance</br>
+* Validate status of BGP sessions (if applicable)</br>
+* Telemetry accuracy for Azure connectivity.</br>
+
+If the upgrade fails at any phase, or if any mid-upgrade checks do not pass, Please engage with Microsoft support team to diagnose and resolve the upgrade failure issue.
 
 
 #### Sample az CLI command
@@ -172,10 +166,9 @@ Customer performing action must validate the device's maintenance mode status af
 
 | **Post NNF RT Upgrade action** | **Expectation**                                                                                                    |
 |--------------------------------|--------------------------------------------------------------------------------------------------------------------|
-| Version compliance             | All Network Fabric devices must be in either RT version 6.1.0                                                      |
+| Version compliance             | All Network Fabric devices must be in target RT version                                                     |
 | Maintenance status check       | Ensure TOR and CE devices maintenance status is "NOT under Maintenance" (show maintenance runro command)           |
 | Connectivity Validation        | Verify CE ↔ PE connections are stable or similar to the preupgrade status (show ip interface brief runro command) |
-| Reachability Checks            | Confirm all NF devices are reachable via jump server (ping &lt;MA1_IP&gt;, ping6 &lt;Loopback6_IP&gt;)             |
 | BGP Summary Validation         | Ensure BGP sessions are established across all VRFs (show ip bgp summary vrf all runro command on CEs)             |
 | GNMI Metrics Emission          | Confirm GNMI metrics are being emitted for subscribed paths (check via dashboards or CLI)                          |
 
@@ -190,7 +183,6 @@ Each entry in the table corresponds to a specific action, offering detailed inst
 | Device image validation | Confirm latest image version is installed by executing "show version" runro command on each NF device. az networkfabric device run-ro -g xxxx -resource-name xxxx -ro-command "show version." The above output must reflect the latest image version as per the release documentation. |
 | Maintenance status check | Ensure TOR and CE device status isn't under maintenance by executing "show maintenance" runro command. The above status must not be in "Maintenance mode is disabled." |
 | Connectivity Validation | Verify CE ↔ PE connections are stable. "Show ip interface brief" runro command. |
-| Reachability Checks | Confirm all NF devices are reachable via jump server: \* MA1 address ping &lt;MA1_IP&gt; \* Loopback6 address ping6 &lt;Loopback6_IP&gt; |
 | BGP Summary Validation | Ensure BGP sessions are established across all VRFs by executing "show ip bgp summary vrf all" "runro command" on CE devices. The above status must ensure that peers should be in Established state - consistent with preupgrade state. |
 
 The following table outlines all Resource Types referenced in this document
