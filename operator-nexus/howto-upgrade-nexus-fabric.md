@@ -114,32 +114,28 @@ Each of the NNF devices enter maintenance mode post triggering the upgrade. Traf
 
 * Initiate Nexus Network Fabric Runtime Upgrade
 * Upgrade Odd TOR Switches
-* Perform Mid-Upgrade Checks - Validate system health, connectivity, and configuration consistency
+* Perform Mid-Upgrade Checks - Validate EOS Version, Device State should not be in maintainance, status of BGP sessions, and telemetry accuracy for conectivity
 * Upgrade Even TOR Switches
-* Perform Mid-Upgrade Checks
+* Perform Mid-Upgrade Checks - Validate EOS Version, Device State should not be in maintainance, status of BGP sessions, and telemetry accuracy for conectivity
 * Upgrade Management Switches
-* Perform Mid-Upgrade Checks
+* Perform Mid-Upgrade Checks - Validate EOS Version, Device State should not be in maintainance, and telemetry accuracy for conectivity
 * Upgrade CE1
-* Wait for 5 Minutes
+* Wait for 5 Minutes to stabilize the network connectivity
+* Perform Mid-Upgrade Checks - Validate EOS Version, Device State should not be in maintainance, status of BGP sessions, and telemetry accuracy for conectivity
 * Upgrade CE2
-* Perform Mid-Upgrade Checks
-* Upgrade NPB1
-* Perform Mid-Upgrade Checks
+* Perform Mid-Upgrade Checks - Validate EOS Version, Device State should not be in maintainance, status of BGP sessions, and telemetry accuracy for conectivity
+* Upgrade NPB1 
+* Perform Mid-Upgrade Checks - Validate EOS Version, Device State should not be in maintainance, and telemetry accuracy for conectivity
 * Upgrade NPB2
-* Perform Mid-Upgrade Checks
-* Upgrade Aggr Mgmt Switch 1
-* Perform Mid-Upgrade Checks
-* Upgrade Aggr Mgmt Switch 2
-* Perform final Mid-Upgrade Checks
+* Perform Mid-Upgrade Checks - Validate EOS Version, Device State should not be in maintainance, and telemetry accuracy for conectivity
+* Upgrade Agg Mgmt Switch1
+* Perform Mid-Upgrade Checks - Validate EOS Version, Device State should not be in maintainance, and telemetry accuracy for conectivity
+* Upgrade Agg Mgmt Switch2
+* Perform final Mid-Upgrade Checks - Validate EOS Version, Device State should not be in maintainance, and telemetry accuracy for conectivity
 * Runtime Upgrade Completed
 
-Similar to the preupgrade validation steps, it's recommended to execute the same validations post triggering the upgrade at the following checkpoints:
-* After odd numbered TORs complete, prior to even numbered TORs upgrade.
-* After CE1 upgrade, prior to CE2 upgrade.
-* After Agg switch1 upgrade, prior to Agg switch2 upgrade.
-
 [!Note]
-> If the upgrade fails at any phase, or if any mid-upgrade checks do not pass, the Deployment Engineering (DE) team will immediately collaborate with the customer team to diagnose and resolve the issue. 
+> If the upgrade fails at any phase, or if any mid-upgrade checks do not pass, Please engage with Microsoft support team to diagnose and resolve the upgrade failure issue. 
 
 
 #### Sample az CLI command
