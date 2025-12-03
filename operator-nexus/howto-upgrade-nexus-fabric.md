@@ -11,16 +11,16 @@ ms.custom: template-how-to, devx-track-azurecli
 
 # Network Fabric Runtime Upgrade
 
-This how-to-guide defines the pre‑upgrade validations necessary to ensure a successful Network Fabric runtime upgrade. It distinguishes between required validations and recommended validations, clarifying their impact on the upgrade process.
+This how-to-guide defines the preupgrade validations necessary to ensure a successful Network Fabric runtime upgrade. It distinguishes between required validations and recommended validations, clarifying their impact on the upgrade process.
  
 **Required Pre‑Upgrade Validations**
 - These checks are mandatory.
-- If any of the required validation conditions is not met, the upgrade will fail.
+- If any of the required validation conditions isn't met, the upgrade fails.
 - They serve as safeguards to prevent runtime instability or incomplete upgrade execution.
  
 **Recommended Pre‑Upgrade Validations**
 - These checks are advisory but strongly encouraged.
-- While failure to meet recommended validations does not block the upgrade, they help ensure release consistency and reduce the risk of configuration drift or operational anomalies.
+- While failure to meet recommended validations doesn't block the upgrade, they help ensure release consistency and reduce the risk of configuration drift or operational anomalies.
 
 ## Overview
 
@@ -108,30 +108,30 @@ Nexus Network Fabric customer triggers upgrade POST actions per device. Each of 
 * Configuration state is in **Provisioned** state.
 * Administrative state is in **Enabled** state
 
-Each of the NNF devices enter maintenance mode post triggering the upgrade. Traffic is drained and route advertisements are stopped.
+Each of the NNF devices enters maintenance mode post triggering the upgrade. Traffic is drained and route advertisements are stopped.
 
 #### NNF Upgrade sequence
 
 * Initiate Nexus Network Fabric Runtime Upgrade
 * Upgrade Odd TOR Switches
-* Perform Mid-Upgrade Checks - Validate EOS Version, Device State should not be in maintainance, status of BGP sessions, and telemetry accuracy for conectivity
+* Perform Mid-Upgrade Checks - Validate EOS Version, Device State shouldn't be in maintenance, status of BGP sessions, and telemetry accuracy for connectivity
 * Upgrade Even TOR Switches
-* Perform Mid-Upgrade Checks - Validate EOS Version, Device State should not be in maintainance, status of BGP sessions, and telemetry accuracy for conectivity
+* Perform Mid-Upgrade Checks - Validate EOS Version, Device State shouldn't be in maintenance, status of BGP sessions, and telemetry accuracy for connectivity
 * Upgrade Management Switches
-* Perform Mid-Upgrade Checks - Validate EOS Version, Device State should not be in maintainance, and telemetry accuracy for conectivity
+* Perform Mid-Upgrade Checks - Validate EOS Version, Device State shouldn't be in maintenance, and telemetry accuracy for connectivity
 * Upgrade CE1
 * Wait for 5 Minutes to stabilize the network connectivity
-* Perform Mid-Upgrade Checks - Validate EOS Version, Device State should not be in maintainance, status of BGP sessions, and telemetry accuracy for conectivity
+* Perform Mid-Upgrade Checks - Validate EOS Version, Device State shouldn't be in maintenance, status of BGP sessions, and telemetry accuracy for connectivity
 * Upgrade CE2
-* Perform Mid-Upgrade Checks - Validate EOS Version, Device State should not be in maintainance, status of BGP sessions, and telemetry accuracy for conectivity
+* Perform Mid-Upgrade Checks - Validate EOS Version, Device State shouldn't be in maintenance, status of BGP sessions, and telemetry accuracy for connectivity
 * Upgrade NPB1 
-* Perform Mid-Upgrade Checks - Validate EOS Version, Device State should not be in maintainance, and telemetry accuracy for conectivity
+* Perform Mid-Upgrade Checks - Validate EOS Version, Device State shouldn't be in maintenance, and telemetry accuracy for connectivity
 * Upgrade NPB2
-* Perform Mid-Upgrade Checks - Validate EOS Version, Device State should not be in maintainance, and telemetry accuracy for conectivity
+* Perform Mid-Upgrade Checks - Validate EOS Version, Device State shouldn't be in maintenance, and telemetry accuracy for connectivity
 * Upgrade Agg Mgmt Switch1
-* Perform Mid-Upgrade Checks - Validate EOS Version, Device State should not be in maintainance, and telemetry accuracy for conectivity
+* Perform Mid-Upgrade Checks - Validate EOS Version, Device State shouldn't be in maintenance, and telemetry accuracy for connectivity
 * Upgrade Agg Mgmt Switch2
-* Perform final Mid-Upgrade Checks - Validate EOS Version, Device State should not be in maintainance, and telemetry accuracy for conectivity
+* Perform final Mid-Upgrade Checks - Validate EOS Version, Device State shouldn't be in maintenance, and telemetry accuracy for connectivity
 * Runtime Upgrade Completed
 
 [!Note]
@@ -188,7 +188,7 @@ Each entry in the table corresponds to a specific action, offering detailed inst
 | **Action** | **Detailed steps** |
 | --- | --- |
 | Device image validation | Confirm latest image version is installed by executing "show version" runro command on each NF device. az networkfabric device run-ro -g xxxx -resource-name xxxx -ro-command "show version." The above output must reflect the latest image version as per the release documentation. |
-| Maintenance status check | Ensure TOR and CE device status isn't under maintenance by executing "show maintenance" runro command. The above status must not be in "Maintenance mode is disabled". |
+| Maintenance status check | Ensure TOR and CE device status isn't under maintenance by executing "show maintenance" runro command. The above status must not be in "Maintenance mode is disabled." |
 | Connectivity Validation | Verify CE ↔ PE connections are stable. "Show ip interface brief" runro command. |
 | Reachability Checks | Confirm all NF devices are reachable via jump server: \* MA1 address ping &lt;MA1_IP&gt; \* Loopback6 address ping6 &lt;Loopback6_IP&gt; |
 | BGP Summary Validation | Ensure BGP sessions are established across all VRFs by executing "show ip bgp summary vrf all" "runro command" on CE devices. The above status must ensure that peers should be in Established state - consistent with preupgrade state. |
