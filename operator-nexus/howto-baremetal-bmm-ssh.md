@@ -215,10 +215,10 @@ Azure Operator Nexus supports adding the same user to multiple bare metal machin
 
 When multiple keysets contain the same user (identified by `azureUserName`), the system:
 
-1. **Consolidates SSH keys**: All unique SSH public keys from all keysets are collected and merged into a single list for that user
-2. **Merges group memberships**: The user is added to all groups associated with the keysets they belong to
-3. **Maintains single user account**: The user receives a single UID across all keysets, but can belong to multiple groups
-4. **Tracks keyset membership**: The system maintains a mapping of which keysets each user belongs to
+- **Consolidates SSH keys**: All unique SSH public keys from all keysets are collected and merged into a single list for that user
+- **Merges group memberships**: The user is added to all groups associated with the keysets they belong to
+- **Maintains single user account**: The user receives a single UID across all keysets, but can belong to multiple groups
+- **Tracks keyset membership**: The system maintains a mapping of which keysets each user belongs to
 
 ### Use cases
 
@@ -230,7 +230,7 @@ This feature is useful in scenarios such as:
 - **Temporary access**: Providing temporary access via a separate keyset with a different key, which can be easily revoked by deleting that keyset
 
 > [!NOTE]
-> A user can be in multiple keysets for bare metal machine access, however a user can not be in multiple "storage access enabled" keysets concurrently.
+> A user can be in multiple keysets for bare metal machine access, however a user can't be in multiple "storage access enabled" keysets concurrently.
 
 ### Example: Adding a user to two keysets with different SSH keys
 
@@ -240,7 +240,7 @@ This example creates two keysets for the same user with different SSH keys:
 
 ```azurecli
 az networkcloud cluster baremetalmachinekeyset create \
-  --name "production-keyset" \
+  --name "production-primary-keyset" \
   --extended-location name="/subscriptions/subscriptionId/resourceGroups/cluster_RG/providers/Microsoft.ExtendedLocation/customLocations/clusterExtendedLocationName" \
     type="CustomLocation" \
   --location "eastus" \
@@ -326,7 +326,7 @@ To add a new SSH key for a user already in another keyset, create a new keyset o
 
 ```azurecli
 az networkcloud cluster baremetalmachinekeyset update \
-  --name "production-keyset" \
+  --name "production-primary-keyset" \
   --user-list '[{
     "description": "Production access for user",
     "azureUserName": "john.doe",
@@ -398,15 +398,11 @@ You should see both SSH keys listed in the file.
 
 ### Best practices
 
-1. **Use descriptive keyset names**: Name keysets to reflect their purpose (e.g., "production-operations-primary", "production-operations-secondary")
-
-2. **Document key sources**: Use the `description` field in user entries to document which device or purpose each key serves
-
-3. **Manage expiration dates**: Set appropriate expiration dates for each keyset based on its purpose and security requirements
-
-4. **Monitor keyset status**: Regularly check keyset status to ensure users remain active and valid
-
-5. **Key rotation strategy**: When rotating keys, create a new keyset with the new key, verify access works, then remove the old keyset
+- **Use descriptive keyset names**: Name keysets to reflect their purpose (e.g., "production-operations-primary", "production-operations-secondary")
+- **Document key sources**: Use the `description` field in user entries to document which device or purpose each key serves
+- **Manage expiration dates**: Set appropriate expiration dates for each keyset based on its purpose and security requirements
+- **Monitor keyset status**: Regularly check keyset status to ensure users remain active and valid
+- **Key rotation strategy**: When rotating keys, create a new keyset with the new key, verify access works, then remove the old keyset
 
 ## Deleting a bare metal machine keyset
 
