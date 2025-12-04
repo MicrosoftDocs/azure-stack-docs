@@ -12,13 +12,13 @@ ai-usage: ai-assisted
 
 ::: moniker range=">=azloc-2506"
 
-This article explains disconnected operations and how it can be used in the deployment and management of your Azure Local instances. Learn how this capability supports compliance, security, and remote deployments.
+This article explains disconnected operations and how you can use it to deploy and manage your Azure Local instances. Learn how this capability supports compliance, security, and remote deployments.
 
 [!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
 
 ## Overview
 
-Disconnected operations for Azure Local enable the deployment and management of Azure Local instances without a connection to the Azure public cloud. This feature allows you to build, deploy, and manage virtual machines (VMs) and containerized applications using select Azure Arc-enabled services from a local control plane, providing a familiar Azure portal and Azure Command-Line Interface (CLI) experience.
+Disconnected operations for Azure Local enable you to deploy and manage Azure Local instances without a connection to the Azure public cloud. This feature allows you to build, deploy, and manage virtual machines (VMs) and containerized applications by using select Azure Arc-enabled services from a local control plane. You get a familiar Azure portal and Azure Command-Line Interface (CLI) experience.
 
 To run Azure Local with disconnected operations, it's essential to plan for extra capacity for the virtual appliance. The minimum hardware requirements to deploy and operate Azure Local in a disconnected environment are higher because you need to host a local control plane. Proper planning helps ensure smooth operations.
 
@@ -28,7 +28,7 @@ For more information, see technical prerequisites and hardware in the [Preview p
 
 Here are some scenarios for running Azure Local with disconnected operations:
 
-- **Data sovereignty and compliance**: In sectors like government, healthcare, and finance, there's a necessity to meet data residency or compliance requirements. When you run disconnected, data and control remain within your organization's boundaries.
+- **Data sovereignty and compliance**: In sectors like government, healthcare, and finance, you must meet data residency or compliance requirements. When you run disconnected, data and control remain within your organization's boundaries.
 
 - **Remote or isolated locations**: In areas with limited network infrastructure, like remote or protected regions, disconnected operations lets you use Azure Arc services and run workloads without relying on internet connectivity. For example, oil rigs and manufacturing sites.
 
@@ -45,7 +45,7 @@ Disconnected operations for Azure Local support the following services:
 | Role based access control (RBAC)  | Implement RBAC for subscriptions and resource groups. |
 | Managed identity                  | Use **system-assigned** managed identity for resource types that support managed identity. |
 | Arc-enabled servers               | Manage VM guests for Azure Local VMs. |
-| Azure Local VMs           | Set up and manage Windows or Linux virtual machines using the disconnected operations feature for Azure Local. |
+| Azure Local VMs           | Set up and manage Windows or Linux virtual machines by using the disconnected operations feature for Azure Local. |
 | Arc-enabled Kubernetes clusters   | Connect and manage Cloud Native Computing Foundation (CNCF) Kubernetes clusters deployed on Azure Local VMs, enabling unified configuration and management. |
 | Azure Kubernetes Service (AKS) enabled by Arc for Azure Local | Set up and manage AKS on Azure Local. |
 | Azure Local device management     | Create and manage Azure Local instances including the ability to add and remove nodes. |
