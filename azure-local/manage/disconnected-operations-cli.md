@@ -66,7 +66,7 @@ Python trust options (choose one):
     Import-Certificate -FilePath $applianceRootCertFile -CertStoreLocation Cert:\LocalMachine\Root -Confirm:$false
     ```
 
-- Option 2: Update the PEM file used by the Azure CLI installation.
+- Option 2: Update the *.pem* file used by the Azure CLI installation.
 
     Here's an example PowerShell script you can run:
 
@@ -207,7 +207,7 @@ To set up Azure CLI for disconnected operations on Azure Local, follow these ste
     }
     ```
 
-1. Register the cloud configuration with CLI using the cloudConfig.json file.
+1. Register the cloud configuration with CLI by using the *cloudConfig.json* file.
     ```azurecli
     az cloud register -n 'azure.local' --cloud-config '@cloudconfig.json'
     az cloud set -n azure.local
@@ -223,9 +223,9 @@ To get a list of available extensions, run this command:
 az extension list-available --output table  
 ```  
 
-Learn more in [How to install and manage Azure CLI extensions](/cli/azure/azure-cli-extensions-overview).
+For more information, see [How to install and manage Azure CLI extensions](/cli/azure/azure-cli-extensions-overview).
 
-To install a specific version of an extension, run this command:
+To install a specific version of an extension, run the following command:
 
 ```azurecli
 az extension add --name anextension --version 1.0.0
