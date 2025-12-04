@@ -4,7 +4,7 @@ description: Overview of Network Fabric Quality of Service (QoS) in Azure Operat
 author: RaghvendraMandawale
 ms.author: rmandawale
 ms.service: azure-operator-nexus
-ms.topic: conceptual
+ms.topic: article
 ms.date: 12/04/2025
 ms.custom: template-concept
 ---
