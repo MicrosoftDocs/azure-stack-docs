@@ -18,7 +18,7 @@ This article explains how to plan your network for disconnected operations on Az
 
 ## Understand network requirements
 
-Disconnected operations run on Azure Local, so it's important that you understand Azure Local's network requirements. Ensuring that your network meets these requirements is essential for seamless integration and optimal performance. For more detailed information, see [Physical network requirements for Azure Local](../concepts/physical-network-requirements.md).
+Disconnected operations run on Azure Local, so it's necessary that you understand Azure Local's network requirements. Ensuring that your network meets these requirements is essential for seamless integration and optimal performance. For more detailed information, see [Physical network requirements for Azure Local](../concepts/physical-network-requirements.md).
 
 Azure Local lets you set up the instance to fit your needs. Deploy the disconnected operations as a virtual machine (VM) appliance that integrates with the Azure Local network. This setup supports robust and reliable operations even when internet connectivity is intermittent or unavailable.
 
@@ -95,7 +95,7 @@ Use this checklist to plan your IP addresses for the disconnected operations app
 
 ### Plan DNS and public key infrastructure (PKI)  
 
-During deployment of disconnected operations, you need an FQDN for your appliance that resolves to the ingress IP. It's important to plan your DNS and PKI infrastructure before you deploy disconnected operations. Also, consider how you want to use them to serve clients in your environment.
+During deployment of disconnected operations, you need an FQDN for your appliance that resolves to the ingress IP. It's necessary to plan your DNS and PKI infrastructure before you deploy disconnected operations. Also, consider how you want to use them to serve clients in your environment.
 
 The ingress network has several endpoints based on the configured FQDN. These endpoints must be resolvable and secure in your network. For a list of endpoints, see [PKI for disconnected operations](../manage/disconnected-operations-pki.md#ingress-endpoints).
 
