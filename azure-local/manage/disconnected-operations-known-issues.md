@@ -228,6 +228,8 @@ az stack-hci-vm network nic delete
 ```
 
 ### Azure Kubernetes Service (AKS) on Azure Local
+#### AKS deployment fails in fully air-gapped scenarios
+There is a known issue in 2511 where AKS deployments fails in fully air-gapped scenarios. There is no mitigation for this in the 2511 release. 
 
 #### Use an existing public key when creating AKS cluster
 
