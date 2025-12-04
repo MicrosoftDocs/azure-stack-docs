@@ -22,7 +22,7 @@ This article explains how to install and configure the Azure Command-Line Interf
 
 ## Supported versions for CLI and extension
 
-In this preview, the supported version of Azure CLI for Azure Local disconnected operations is 2.71.0. For more information, see [Azure CLI release notes](/cli/azure/release-notes-azure-cli). To find your installed version and see if you need to update, run `az version`:  
+In this preview, the supported version of Azure CLI for Azure Local disconnected operations is *2.71.0*. For more information, see [Azure CLI release notes](/cli/azure/release-notes-azure-cli). To find your installed version and see if you need to update, run `az version`:  
 
 ```azurecli  
 az version  
@@ -35,11 +35,10 @@ For more information, see [Azure CLI commands](/cli/azure/reference-index?view=a
 To install the 32-bit version of CLI, follow these steps:
 
 1. [Download version 2.71.0](https://azcliprod.blob.core.windows.net/msi/azure-cli-2.71.0.msi).
-2. [Install the CLI](/cli/azure/install-azure-cli) locally on Linux, macOS, or Windows computers.
-
+1. [Install the CLI](/cli/azure/install-azure-cli) locally on Linux, macOS, or Windows computers.
 
 > [!NOTE]  
-> Use the 64-bit Azure CLI on client machines. For Azure Local nodes, install the 32-bit CLI to avoid deployment failures.
+> The supported version of Azure CLI for Azure Local disconnected operations is **2.71.0**. For Azure Local nodes, install the 32-bit CLI to avoid deployment failures. Use the 64-bit Azure CLI on client machines.
 
 ## Configure certificates for Azure CLI
 
@@ -52,13 +51,17 @@ For disconnected operations:
 
 Python trust options (choose one):
 
-- Option 1: Use the OS trust store (recommended). Install a Python module that lets Python use the OS trust store.
+- Option 1: Use the OS trust store (recommended). Install a Python module that allows Python use the OS trust store.
 
-    Run this Windows example to install the pip-system-certs module in the Python environment bundled with Azure CLI. Replace the sample paths with paths for your system.
-& "C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\python.exe" -m pip install pip-system-certs
+    Run this Windows example in PowerShell to install the pip-system-certs module in the Python environment bundled with Azure CLI. Replace the sample paths with the actual path on your system.
+
+    ```powershell
+    & "C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\python.exe" -m pip install pip-system-certs
+    ```
     
-    # If your client doesn't have the root cert imported, use this command to import it.
-    
+    If your client doesn't have the root cert imported, use this command to import it.
+  
+    ```powershell
     $applianceRootCertFile = "C:\AzureLocalDisconnectedOperations\applianceRoot.cer"
     Import-Certificate -FilePath $applianceRootCertFile -CertStoreLocation Cert:\LocalMachine\Root -Confirm:$false
     ```
@@ -204,7 +207,7 @@ To set up Azure CLI for disconnected operations on Azure Local, follow these ste
     }
     ```
 
-3. Register the cloud configuration with CLI using the cloudConfig.json file.
+1. Register the cloud configuration with CLI using the cloudConfig.json file.
     ```azurecli
     az cloud register -n 'azure.local' --cloud-config '@cloudconfig.json'
     az cloud set -n azure.local
