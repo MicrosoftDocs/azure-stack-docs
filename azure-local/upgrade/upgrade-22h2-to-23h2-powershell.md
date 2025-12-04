@@ -156,15 +156,17 @@ To avoid any PowerShell version-related issues in your AKS deployment, you can u
    | Intel | 1.15.121.0 | 1.17.73.0 |
    | NVIDIA | 24.4.26429.0 | 25.4.50020 |
 
-- Ensure the instance is properly registered. If the *identity* property is missing or doesn't contain `type = "SystemAssigned"`, run the following command to repair the registration:
+- You run the `RepairRegistration` cmdlet if either of the following conditions apply:
+
+   - The *identity* property is either missing or doesn't contain `type = "SystemAssigned"`.
+      - Check this in the Resource JSON in the Azure portal.
+      - Or run the `Get-AzResource -Name <cluster_name>` PowerShell cmdlet.
+   - The **Cloud Management** cluster group is not present. Check it by running the `Get-ClusterGroup` PowerShell cmdlet.
+
+   If either of these conditions are met, run the `RepairRegistration` cmdlet:
 
    ```powershell
    Register-AzStackHCI -TenantId "<tenant_ID>" -SubscriptionId "<subscription_ID>" -ComputerName "<computer_name>" -Region "<region_name>" -RepairRegistration
-   ```
-   You can verify the *identity* property in the Azure portal in resource's JSON or by running the following cmdlet:
-   
-   ```powershell
-   Get-AzResource -Name <cluster_name> -ResourceGroupName <name of the resource group> -ResourceType "Microsoft.AzureStackHCI/clusters" -ExpandProperties
    ```
 - (Recommended) Enable [Secure Boot](/windows-hardware/design/device-experiences/oem-secure-boot) on Azure Local machines before you upgrade the OS. To enable Secure Boot, follow these steps:
    1. Drain the cluster node.
