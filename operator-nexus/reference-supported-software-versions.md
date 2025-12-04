@@ -10,7 +10,7 @@ ms.service: azure-operator-nexus
 
 # Supported runtime versions in Azure Operator Nexus
 
-This document provides the list of software versioning supported as of Release 2511.2 of Azure Operator Nexus.
+This document provides the list of software versioning supported as of Release 2512.1 of Azure Operator Nexus.
 Please note that this list is subject to change as new software versions are released and validated. Nexus supports only the software versions listed in this document, which is up to N-2 versions from the latest validated version.
 
 ## Support matrix for Nexus components
