@@ -106,6 +106,9 @@ If you plan to connect the appliance to Azure, make sure your DNS infrastructure
 
 For more information, see [Firewall requirements for Azure Local](../concepts/firewall-requirements.md).
 
+### DNS Requirements
+You will need an explicit zone in your DNS for the FQDN dedicated for your disconnected operations environment. The FQDN cannot be on the same level as your domain controller.
+
 #### Configure your DNS server (if you're running Windows Server DNS role):
 
 Here's an example:
@@ -118,6 +121,8 @@ Add-DnsServerPrimaryZone -Name $ExternalFqdn -ReplicationScope Domain
 
 Add-DnsServerResourceRecordA -Name "*" -IPv4Address $IngressIpAddress -ZoneName $ExternalFqdn 
 ```
+> [!NOTE]
+> You will need an explicit zone in your DNS for your disconnected operations environment. This cannot be on the same level as your domain controller. 
 
 #### Verify your DNS setup
 

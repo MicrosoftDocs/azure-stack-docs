@@ -49,17 +49,17 @@ Follow these steps:
 ```powershell
     Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Environment\EdgeArcBootstrapSetup" -Name "MicrosoftOSImage" -Value 1
 ```
-- Upgrade to the Microsoft provided ISO (2508). Choose upgrade and keep settings when reimaging the nodes using this approach
-    - Alternatively, run the following command to get the 2508 update:
+- Upgrade to the Microsoft provided ISO for your disconnected operations version target. Choose upgrade and keep settings when reimaging the nodes using this approach
+    - Alternatively, run the following command to get the correct update:
 
 ```powershell
-
-# Define the solution version and local package path
-$DownloadUpdateZipUrl = 'https://azurestackreleases.download.prss.microsoft.com/dbazure/AzureLocal/WindowsPlatform/12.2508.0.3201/Platform.12.2508.0.3201.zip'
-$TargetSolutionVersion = "12.2508.1001.52"
-$LocalPlatformPackagePath = "C:\Platform.12.2508.0.3201.zip"
+# Define the solution version and local package path - please review the correct versions. Only to this if your OEM image is on a earlier version than the target version. 
+$TargetSolutionVersion = "12.2511.1002.5"
+$localPlatformVersion = "12.2511.0.3038"
+$DownloadUpdateZipUrl = "https://azurestackreleases.download.prss.microsoft.com/dbazure/AzureLocal/WindowsPlatform/$($localPlatformVersion)/Platform.$($localPlatformVersion).zip"
+$LocalPlatformPackagePath = "C:\Platform.$($localPlatformVersion).zip"
 # Download the DownloadUpdateZipUrl to LocalPlatformPackagePath (Alternative do this from browser and copy file over if you cannot run this on your nodes/disconnected scenarios)
-Invoke-WebRequest $DownloadZipUrl -Outfile LocalPlatformPackagePath
+Invoke-WebRequest $DownloadUpdateZipUrl -Outfile $LocalPlatformPackagePath
 
 $updateConfig = @{
   "TargetSolutionVersion" = $TargetSolutionVersion
@@ -76,7 +76,15 @@ $configHash | ConvertTo-Json -Depth 3 | Out-File $tempConfigPath -Force
 Start-ArcBootstrap -ConfigFilePath $tempConfigPath
 
 # Continue with Invoke-AzStackHCIArcInitialization.
+
 ```
+ - Review this table for version compatability
+
+
+  | ALDO Version | TargetSolutionVersion |LocalPlatformVersion |
+  |---------------------|-----|------|  
+  | 2509 | 12.2508.1001.52 | 12.2508.0.3201  |
+  | 2511 | 12.2511.1002.5 | 12.2511.0.3038  |
 
 ### Cloud deployment validation fails during portal experience
 

@@ -144,6 +144,8 @@ To prepare each machine for the disconnected operations appliance, follow these 
 1. Copy to the **APPData/Azure** Local folder and name it **azureLocalRootCert**. Use this information during the Arc appliance deployment.  
 
     ```powershell
+    New-Item -ItemType Directory "$($env:APPDATA)\AzureLocal" -force
+
     Copy-Item $applianceRootCertFile "$($env:APPDATA)\AzureLocal\AzureLocalRootCert.cer"
     ```
 
