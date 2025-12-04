@@ -112,6 +112,8 @@ When you deploy a new system, use an Azure Local build that's compatible with yo
 | M2 | 7.1064837202.19761 | AzureLocal24H2.26100.1742.LCM.12.2506.0.3136 |
 | 2508 | 8.1064855627.20050 | AzureLocal24H2.26100.1742.LCM.12.2506.0.3136 |
 | 2509 | 9.1064929344.21347 | AzureLocal24H2.26100.1742.LCM.12.2508.0.3201 |
+| 2511 | 10.1064997818.22636 | AzureLocal24H2.26100.1742.LCM.12.2511.0.3038 |
+
 ## Related content
 
 - [Deploy disconnected operations for Azure Local](disconnected-operations-deploy.md)
