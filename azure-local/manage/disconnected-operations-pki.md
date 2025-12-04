@@ -12,21 +12,21 @@ ai-usage: ai-assisted
 
 ::: moniker range=">=azloc-2506"
 
-This article explains the public key infrastructure (PKI) requirements for disconnected operations on Azure Local. You'll learn how to create certificates to secure appliance endpoints and ensure secure communication in your environment.
+This article explains the public key infrastructure (PKI) requirements for disconnected operations on Azure Local. You learn how to create certificates to secure appliance endpoints and ensure secure communication in your environment.
 
 [!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
 
 ## PKI overview for disconnected operations
 
-PKI for disconnected operations is essential for securing the endpoints provided by the disconnected operations appliance. Create and manage digital certificates to ensure secure communication and data transfer within your Azure Local environment.
+PKI for disconnected operations is essential for securing the endpoints that the disconnected operations appliance provides. Create and manage digital certificates to ensure secure communication and data transfer within your Azure Local environment.
 
 ## PKI requirements
 
-A public certificate authority (CA) or enterprise certificate authority must issue certificates. Make sure your certificates are part of the Microsoft Trusted Root Program. For more information, see [List of Participants - Microsoft Trusted Root Program](/security/trusted-root/participants-list).  
+Certificates must come from a public certificate authority (CA) or enterprise certificate authority. Make sure your certificates are part of the Microsoft Trusted Root Program. For more information, see [List of Participants - Microsoft Trusted Root Program](/security/trusted-root/participants-list).  
 
 Mandatory certificates are grouped by area with the appropriate subject alternate names (SAN). Before you create the certificates, review these requirements:
 
-- The use of self-signed certificates aren't supported. We recommend you use certificates issued by an enterprise CA.
+- The use of self-signed certificates isn't supported. We recommend you use certificates issued by an enterprise CA.
 - Disconnected operations require 24 external certificates for the endpoints it exposes.
 - Generate individual certificates for each endpoint and copy them into the corresponding directory or folder structure. These certificates are required for disconnected operations deployment.
 - All certificates must have the subject and SAN defined, as required by most browsers.
@@ -69,7 +69,7 @@ This table lists the mandatory certificates required for disconnected operations
 
 ### Management endpoints
 
-The management endpoint requires two certificates, and you must put them in the same folder, *ManagementEndpointCerts*. The certificates are:
+The management endpoint requires two certificates. You must put these certificates in the same folder, *ManagementEndpointCerts*. The certificates are:
 
 | Management endpoint certificate  | Required certificate subject  |
 |----------------------|------------------|
@@ -80,7 +80,7 @@ The management endpoint requires two certificates, and you must put them in the 
 
 ### Ingress endpoints
 
-On the host machine or Active Directory virtual machine (VM), follow the steps in this section to create certificates for the ingress traffic and external endpoints of the disconnected operations appliance. Make sure you modify for each of the 24 certificates.
+On the host machine or Active Directory virtual machine (VM), follow the steps in this section to create certificates for the ingress traffic and external endpoints of the disconnected operations appliance. Make sure you modify these steps for each of the 24 certificates.
 
 You need these certificates to deploy the disconnected operations appliance. You also need the public key for your local infrastructure to provide a secure trust chain.
 
@@ -89,7 +89,7 @@ You need these certificates to deploy the disconnected operations appliance. You
 
 1. Connect to the CA.
 1. Create a folder named **IngressEndpointsCerts**. Use this folder to store all certificates.
-1. Create the 24 certs in the table above and export them into the IngressEndpointsCerts folder. 
+1. Create the 24 certificates previously mentioned and export them into the **IngressEndpointsCerts** folder.
 
 Here's an example script you can modify and run. It creates ingress certificates and exports them to the configured folder by creating CSRs and issuing them to your CA.
 
@@ -206,7 +206,7 @@ $AzLCerts = @(
   }
   ```
 
-- Copy the original certificates (24 .pfx files / *.pfx) obtained from your CA to the directory structure represented in IngressEndpointsCerts.
+- Copy the original certificates (24 .pfx files / *.pfx) obtained from your CA to the directory structure represented in **IngressEndpointsCerts**.
 
 ### Management endpoint
 
@@ -291,9 +291,9 @@ Copy the management certificates (*.pfx) to the directory structure represented 
 
 ## Export Root CA certificate 
 
-You need the root certificate public key for deployment. The Root certificate needs to be exported with base64 encoding. 
+You need the root certificate public key for deployment. You must export the root certificate with base64 encoding. 
 
-The following example shows how to export your root certificate public key:
+Here's an example of how to export your root certificate public key:
 
 ```powershell
 $applianceRootcert = "C:\AzureLocalDisconnectedOperations\applianceRoot.cer"
@@ -327,9 +327,9 @@ To secure your identity integration, we recommend that you pass these two parame
 - LdapsCertChainInfo
 - OidcCertChainInfo
 
-These checks confirm that the certificates and chain for these endpoints haven’t been changed or tampered with.
+These checks confirm that the certificates and chain for these endpoints aren't changed or tampered with.
 
-You have a helper method in the **OperationsModule** that can help you populate these parameters.
+You have a helper method in the **OperationsModule** that helps you populate these parameters.
 
 Here's an example of how to populate the required parameters:
 
