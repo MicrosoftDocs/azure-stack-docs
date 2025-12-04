@@ -125,7 +125,7 @@ Some special characters in the management TLS cert password, external certs pass
  
  **Mitigation**: Do not use special characters like single or double quotes in the passwords.
 
-### Resources dissapear from portal
+### Resources disappear from portal
 
 When you sign in to the portal with the same user account that worked before, resources are missing and don't appear.
 
