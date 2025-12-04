@@ -3,7 +3,7 @@ title: Upgrade Azure Stack HCI OS, version 22H2 to version 23H2 via PowerShell
 description: Learn how to use PowerShell to upgrade Azure Stack HCI OS, version 22H2 to version 23H2.
 author: alkohli
 ms.topic: how-to
-ms.date: 12/01/2025
+ms.date: 12/02/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -295,6 +295,24 @@ To install the new OS using PowerShell, follow these steps:
    Test-Cluster
    ```
 
+1. Extract the contents of the ISO image and copy them to the local system drive on each machine. Ensure that the local path is the same on each machine. Then, update the `PathToSetupMedia` parameter with the local path to the extracted ISO contents, not the ISO file.
+
+   ```powershell
+   # Define ISO and destination folder for extracted contents 
+   $isoFilePath = "C:\SetupFiles\WindowsServer\ISOs\example.iso" 
+   $destinationPath = "C:\SetupFiles\WindowsServer\ExtractedFilesFolder" 
+   # Mount the ISO file 
+   $iso = Mount-DiskImage -ImagePath $isoFilePath 
+   # Get the drive letter 
+   $driveLetter = ($iso | Get-Volume).DriveLetter 
+   # Create the destination directory 
+   New-Item -ItemType Directory -Path $destinationPath 
+   # Copy contents to the local directory 
+   Copy-Item -Path "${driveLetter}:\*" -Destination $destinationPath -Recurse 
+   # Dismount the ISO file 
+   Dismount-DiskImage -ImagePath $isoFilePath
+   ```
+
 1. Check for the available updates:
 
    ```PowerShell
@@ -350,12 +368,12 @@ To install the new OS using PowerShell, follow these steps:
    Test-Cluster
    ```
 
-1. Extract the contents of the ISO image and copy them to the local system drive on each machine. Ensure that the local path is the same on each machine. Then, update the `PathToSetupMedia` parameter with the local path to the ISO image.
+1. Extract the contents of the ISO image and copy them to the local system drive on each machine. Ensure that the local path is the same on each machine. Then, update the `PathToSetupMedia` parameter with the local path to the extracted ISO contents, not the ISO file.
 
    ```powershell
-   # Define ISO and destination paths 
+   # Define ISO and destination folder for extracted contents 
    $isoFilePath = "C:\SetupFiles\WindowsServer\ISOs\example.iso" 
-   $destinationPath = "C:\SetupFiles\WindowsServer\Files" 
+   $destinationPath = "C:\SetupFiles\WindowsServer\ExtractedFilesFolder" 
    # Mount the ISO file 
    $iso = Mount-DiskImage -ImagePath $isoFilePath 
    # Get the drive letter 
@@ -363,7 +381,7 @@ To install the new OS using PowerShell, follow these steps:
    # Create the destination directory 
    New-Item -ItemType Directory -Path $destinationPath 
    # Copy contents to the local directory 
-   Copy-Item -Path "${driveLetter}:\*" -Destination $destinationPath –Recurse 
+   Copy-Item -Path "${driveLetter}:\*" -Destination $destinationPath -Recurse 
    # Dismount the ISO file 
    Dismount-DiskImage -ImagePath $isoFilePath
    ```
