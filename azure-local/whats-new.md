@@ -18,7 +18,7 @@ This article lists the various features and improvements that are available in h
 
 ## Features and improvements in 2511
 
-The November 2025 release of hyperconverged deployments of Azure Local is version **12.2511.1002.5**. For more information, see [Release information summary](./release-information-23h2.md).
+The November 2025 release of hyperconverged deployments of Azure Local is version **12.2511.1002.502**. For more information, see [Release information summary](./release-information-23h2.md).
 
 This release has the following features and improvements:
 
@@ -28,7 +28,9 @@ This release has the following features and improvements:
 
         - You also need a driver that's compatible with OS version **26100.7171** or Windows Server 2025. If a compatible driver isn't available, you can use the 2503 image.
 
-    - If you purchased Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) through your preferred Microsoft hardware partner, the OS should be preinstalled. Work with your Original Equipment Manufacturer (OEM) to get the OS image that's compatible with **12.2511.1002.5** and a driver that's compatible with OS version **26100.7171** or Windows Server 2025.
+    - If you purchased Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) through your preferred Microsoft hardware partner, the OS should be preinstalled. Work with your Original Equipment Manufacturer (OEM) to get the OS image that's compatible with **12.2511.1002.502** and a driver that's compatible with OS version **26100.7171** or Windows Server 2025.
+
+- Build **12.2511.1002.502** improves the reliability of deploy and update admin actions. If you've already deployed or updated to **12.2511.1002.5**, no further action is needed. Both **12.2511.1002.5** and **12.2511.1002.502** are supported builds.
 
 - **.NET updates**: This build uses .NET version **8.0.22** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
 

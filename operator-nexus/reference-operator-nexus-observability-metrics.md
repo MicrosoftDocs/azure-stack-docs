@@ -150,7 +150,8 @@ All of the state rate measurements are collected at 5-minute intervals.
 | Interface In Packets Rate | The rate of packets received on the interface, including all unicasts, multicasts, broadcasts, and bad packets. |
 | Interface Out Discards Rate | The rate of outbound packets that were discarded even though no errors were detected to prevent them being transmitted. |
 | Interface Out Packets Rate | The rate of packets transmitted out of the interface, including all unicasts, multicasts, broadcasts, and bad packets. |
-
+| Interface Utilization In (%) | Percentage of inbound bandwidth utilization on the interface compared to its maximum capacity. Helps identify congestion or over-utilization trends. |
+| Interface Utilization Out (%) | Percentage of outbound bandwidth utilization on the interface compared to its maximum capacity. Useful for monitoring egress traffic load and planning capacity. |
 
 ## LACP state rate
 

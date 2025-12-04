@@ -5,7 +5,7 @@ author: ronmiab
 ms.author: robess
 ms.topic: how-to
 ms.reviewer: alkohli
-ms.date: 06/05/2025
+ms.date: 12/02/2025
 ms.service: azure-local
 ---
 
@@ -15,7 +15,7 @@ This article describes how to configure Network ATC on an existing Azure Local c
 
 > [!IMPORTANT]
 > In Azure Local upgrade scenarios where Network ATC isn't already configured, we recommend upgrading the operating system first, then configuring Network ATC, and then proceeding with the solution upgrade.
-> If Network ATC is already configured on your cluster, skip this article.
+> If Network ATC is already configured on your cluster, verify the configuration. Skip this article if everything works as expected.
 > For more information on upgrades, see [About Azure Local upgrades](./about-upgrades-23h2.md).
 
 ## About Network ATC

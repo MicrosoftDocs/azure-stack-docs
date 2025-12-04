@@ -2,7 +2,7 @@
 title: Release notes with fixed and known issues in Azure Local
 description: Read about the known issues and fixed issues in Azure Local.
 author: alkohli
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 11/14/2025
 ms.author: alkohli
 ms.reviewer: alkohli
@@ -27,10 +27,10 @@ For the 2511 release of Azure Local, Microsoft released two security updates, ea
 
 | Solution version  | OS build  |
 |---------|---------|---------|
-| 12.2511.1002.5  | 26100.7171  |
+| 12.2511.1002.502  | 26100.7171  |
 
 > [!IMPORTANT]
-> The new deployments of this software use the **12.2511.1002.5** <!--update--> build.
+> The new deployments of this software use the **12.2511.1002.502** <!--update--> build.
 Release notes for this version include the issues fixed in this release, known issues in this release, and release note issues carried over from previous versions.
 
 > [!NOTE]
@@ -58,8 +58,6 @@ The following table lists the known issues in this release:
 |Feature  |Issue    |Workaround  |
 |---------|---------|------------|
 | Update <!--35747709--> | Update may fail when the cloud management group is running on a different node than the owner node with the error: `Type 'RegisterCloudManagementUpdatesExtension' of Role 'CloudManagementConfig' raised an exception: Exception occurred in Get-ClusterExtension'` | Move the management group to the owner node manually and proceed with the update: <br><br> `# Get the owner node of the group matching '*orch*'` <br> `$orchOwner = (Get-ClusterGroup -Name '*orch*').OwnerNode.Name`<br><br> `# Move the "Cloud Management" group to that node`<br> `Move-ClusterGroup -Name 'Cloud Management' -Node $orchOwner` |
-| Deployment <!--35929472--> | AD-less deployments fail with error: `Failed to execute Test-Cluster: An error occurred opening cluster`. | AD-less environments will need to be deployed on 2510 until this issue is fixed. |
-
 
 ## Known issues from previous releases
 

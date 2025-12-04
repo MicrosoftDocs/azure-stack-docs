@@ -13,7 +13,7 @@ ms.service: azure-local
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2-22h2.md)]
 
-This article describes how to assess the upgrade readiness of your Azure Local after the operating system (OS) was upgraded.
+This article describes how to assess the upgrade readiness of your Azure Local after the operating system (OS) upgrade.
 
 Throughout this article, we refer to OS version 24H2 or 23H2 as the *new* version, and version 22H2 as the *old* version.
 
@@ -21,7 +21,7 @@ Throughout this article, we refer to OS version 24H2 or 23H2 as the *new* versio
 
 This *recommended* step helps you assess the readiness of Azure Local for the upgrade. The following steps help you assess the upgrade readiness:
 
-- Install and use the Environment Checker to verify that Network ATC is installed and enabled on the machine. Verify that there are no Preview versions for Azure Arc Resource Bridge running on your system.
+- Install and use the Environment Checker to verify that Network ATC is installed and enabled on the machine. Verify that there are no preview versions for Azure Arc Resource Bridge running on your system.
 - Ensure that sufficient storage space is available for the infrastructure volume.
 - Perform other checks like installation of required Windows features, enablement of Application Control policies, BitLocker suspension, and OS language.
 - Review and remediate validation checks that block the upgrade.
@@ -34,7 +34,7 @@ Some of the actions require machine reboots. The information from the validation
 
 ### Table: Blocking validation tests for upgrade
 
-The following table contains the validation tests with severity *Critical* that block the upgrade. Any items that block the upgrade must be addressed before you apply the solution upgrade.
+The following table contains the validation tests with severity *Critical* that block the upgrade. You must address any items that block the upgrade before you apply the solution upgrade.
 
 | Name                              | Severity |
 |-----------------------------------|----------|
@@ -57,7 +57,7 @@ The following table contains the validation tests with severity *Critical* that 
 
 ### Table: Non-blocking validation tests for upgrade
 
-The following table contains the validation tests with severity *Warning* that should be addressed after the upgrade to take advantage of the new capabilities introduced with Azure Local 2311.2.
+The following table contains the validation tests with severity *Warning* that you should address after the upgrade to take advantage of the new capabilities introduced with Azure Local 2311.2.
 
 | Name                                           | Severity |
 |------------------------------------------------|----------|
@@ -77,7 +77,7 @@ Follow these steps to set up the Environment Checker on a machine of your Azure 
 
 1. Select one machine that's a member of the system.
 
-1. Sign in to the machine using local administrative credentials.
+1. Sign in to the machine by using local administrative credentials.
 
 1. Install the Environment Checker on the machine. Run the following PowerShell command from the PSGallery:
 
@@ -87,7 +87,7 @@ Follow these steps to set up the Environment Checker on a machine of your Azure 
 
 ### Run the validation
 
-1. Sign in to the machine where you installed the Environment Checker using local administrative credentials.
+1. Sign in to the machine where you installed the Environment Checker by using local administrative credentials.
 
 1. To run the validation locally on the machine, run the following PowerShell command:
 
@@ -141,7 +141,7 @@ Each validation check of Environment Checker includes remediation guidance with 
 
 ## Remediation 1: Install Windows features
 
-Azure Local requires you to install specific Windows roles and features, and enable a set of required features (that are optional for Windows Server). Some features would require a restart after the installation. Hence, it's important that you put the machine into maintenance mode before you install the roles and features. Verify that all the active virtual machines (VMs) have migrated to other machines.
+Azure Local requires you to install specific Windows roles and features, and enable a set of required features (that are optional for Windows Server). Some features require a restart after the installation. Hence, it's important that you put the machine into maintenance mode before you install the roles and features. Verify that all the active virtual machines (VMs) have migrated to other machines.
 
 Use the following commands for each machine to install the required Windows roles and features. If a feature is already present, the install automatically skips it.
 
@@ -239,7 +239,7 @@ Get-ClusterNode -Cluster "mysystem"
 
 ## Remediation 3: Suspend BitLocker
 
-If a reboot occurs when applying the solution upgrade, disable BitLocker. If there's a reboot, you would need to enter the BitLocker recovery, which interrupts the upgrade process.
+If a reboot occurs when applying the solution upgrade, disable BitLocker. If there's a reboot, you need to enter the BitLocker recovery, which interrupts the upgrade process.
 
 ### Suspend BitLocker
 
@@ -251,7 +251,7 @@ Suspend-Bitlocker -MountPoint "C:" -RebootCount 0
 
 ### Resume BitLocker
 
-After the upgrade is complete, to resume BitLocker, run the following PowerShell command:
+To resume BitLocker, after the upgrade completes, run the following PowerShell command:
 
 ```powershell
 Resume-Bitlocker -MountPoint "C:" 
@@ -259,7 +259,7 @@ Resume-Bitlocker -MountPoint "C:"
 
 ## Remediation 4: Enable Application Control (WDAC) policies
 
-If your system is running WDAC policies, it could result in a conflict with the Arc enablement of the solution. Before you Arc enable your system, disable the policies. After the system is Arc enabled, you can enable WDAC using the *new* version WDAC policies.
+If your system runs WDAC policies, it could conflict with the Arc enablement of the solution. Before you Arc enable your system, disable the policies. After the system is Arc enabled, you can enable WDAC by using the *new* version WDAC policies.
 
 To learn more about how to disable WDAC policies, see [Remove Windows Defender Application Control policies](/windows/security/application-security/application-control/windows-defender-application-control/deployment/disable-wdac-policies).
 
@@ -269,7 +269,7 @@ Only systems installed using an English language are eligible to apply the solut
 
 If you used the English ISO but configured a different language during setup, you must change the language settings for the LCM Upgrade user account as follows:
 
-1. Sign in to each machine using the domain account you plan to use for the upgrade.
+1. Sign in to each machine by using the domain account you plan to use for the upgrade.
 
 1. Run the following PowerShell commands:
 
@@ -282,13 +282,13 @@ If you used the English ISO but configured a different language during setup, yo
 
 Azure Local 2311.2 creates a dedicated volume. This volume is used solely for the new infrastructure capabilities - for example, to run the Azure Arc Resource Bridge.
 
-The required size for the infrastructure volume is 250 GB. Ensure that the storage pool has enough space to accommodate the new volume.
+The infrastructure volume requires 250 GB. Ensure that the storage pool has enough space to accommodate the new volume.
 
 ### Free up space in storage pool
 
-Shrinking existing volumes isn't supported with Storage Spaces Direct. There are three alternatives to freeing up space in the storage pool:
+Storage Spaces Direct doesn't support shrinking existing volumes. To free up space in the storage pool, consider these three alternatives:
 
-- **Option 1**: Convert volumes from fixed to thin provisioned. Using thin provisioned volumes is also the default configuration when deploying a new system with the default setting.
+- **Option 1**: Convert volumes from fixed to thin provisioned. When you deploy a new system with the default setting, it uses thin provisioned volumes by default.
 
 - **Option 2**: Back up all the data, re-create the volume with a smaller size, and restore the content.
 
@@ -360,7 +360,7 @@ Follow these steps to confirm the storage pool configuration:
    Get-ClusterSharedVolume -Name "System Disk 1" | Start-ClusterResource
    ```
 
-1. To confirm that the actual footprint on the storage pool has changed, run the following PowerShell command:
+1. To confirm that the actual footprint on the storage pool changed, run the following PowerShell command:
 
    ```powershell
    Get-StoragePool -IsPrimordial $false| Get-VirtualDisk
@@ -381,7 +381,7 @@ Follow these steps to confirm the storage pool configuration:
 
 Azure Local 2311.2 deployment creates a dedicated volume *Infrastructure_1* in the existing storage pool. This volume is dedicated for the new infrastructure capabilities.
 
-Make sure to verify that there are no volumes that exist with the name *Infrastructure_1*. If there's an existing volume with the same name, this test fails.<!--ASK which test fails-->
+Make sure that no volumes exist with the name *Infrastructure_1*. If a volume with the same name exists, this test fails.<!--ASK which test fails-->
 
 > [!NOTE]
 > Renaming the existing volume impacts the VMs as the mount point of the cluster shared volume changes. Additional configuration changes are required for all the VMs.
@@ -405,7 +405,7 @@ Follow these steps to apply solution upgrade if you're running Azure Kubernetes 
 
    For more information, see [Uninstall-Aks-Hci for AKS enabled by Azure Arc](/azure/aks/hybrid/reference/ps/uninstall-akshci).
 
-   Once you uninstall AKS Arc, you must uninstall the **AksHci** Powershell module using the followng command, as this module does not work on 23H2 and later:
+      Once you uninstall AKS Arc, you must uninstall the **AksHci** PowerShell module by running the following command, as this module doesn't work on 23H2 and later:
 
    ```powershell
    Uninstall-Module -Name AksHci -Force
@@ -413,7 +413,7 @@ Follow these steps to apply solution upgrade if you're running Azure Kubernetes 
 
    To avoid any PowerShell version-related issues in your AKS deployment, you can use this [helper script to delete old AKS-HCI PowerShell modules](https://github.com/Azure/aksArc/issues/130).
 
-1. If you used the preview version of AKS Arc on 22H2 or the preview version of Arc VM on 22H2, uninstall MOC by running the command `Uninstall-Moc` on a Azure Local node to remove the VM instances created using the preview version.
+1. If you used the preview version of AKS Arc on 22H2 or the preview version of Arc VM on 22H2, uninstall MOC by running the command `Uninstall-Moc` on an Azure Local node to remove the VM instances created by using the preview version.
 
 ## Remediation 10: Check the AKS install state
 
@@ -424,7 +424,7 @@ Follow these steps to apply solution upgrade if you're running AKS workloads on 
 
    For more information, see [Uninstall-Aks-Hci for AKS enabled by Azure Arc](/azure/aks/hybrid/reference/ps/uninstall-akshci).
 
-   Once you uninstall AKS Arc, you must uninstall the **AksHci** Powershell module using the followng command, as this module does not work on 23H2 and later:
+      Once you uninstall AKS Arc, you must uninstall the **AksHci** PowerShell module by running the following command, as this module doesn't work on 23H2 and later:
 
    ```powershell
    Uninstall-Module -Name AksHci -Force
@@ -434,21 +434,15 @@ Follow these steps to apply solution upgrade if you're running AKS workloads on 
 
 ## Remediation 12: Resolve subscription state validation failure
 
-If the Azure Stack HCI subscription state test fails, make sure your subscription is active and registered. Follow these steps:
+If the Azure Stack HCI subscription state test fails, follow these steps:
 
-1. Sign in to the [Azure portal](https://portal.azure.com).
-1. Go to **Subscriptions** and select your Azure Stack HCI subscription.
-1. Check the subscription status. If it’s not **Active**, follow the prompts to reactivate or resolve any issues.
-1. Make sure the Azure Stack HCI resource provider is registered:
-   - In your subscription, select **Resource providers**.
-   - Find **Microsoft.AzureStackHCI** and select **Register** if it’s not already registered.
-1. Run the`Sync-AzureStackHCI` cmdlet on any node in the cluster.
+1. Run the `Sync-AzureStackHCI` cmdlet on any node in the cluster. Wait a few minutes for the command to process.
 
    ```PowerShell
    Sync-AzureStackHCI
    ```
 
-   Here's an example
+   Here's an example:
 
    ```console
     [<IP address>]: PS C:\Users\Administrator.v\Documents> Sync-AzureStackHCI -verbose
@@ -460,6 +454,30 @@ If the Azure Stack HCI subscription state test fails, make sure your subscriptio
     [<IP address>]: PS C:\Users\Administrator.v\Documents> 
     ```
 
+1. Run the `Get-AzureStackHCISubscriptionStatus` cmdlet to check the subscription on each node. The Azure Stack HCI subscription should be **Active** on all nodes in the cluster.
+
+   ```powershell
+   Get-ClusterNode | % { Get-AzureStackHCISubscriptionStatus -ComputerName $_ }
+   ```
+
+   Here's an example:
+
+   ```console
+   Get-ClusterNode | % { Get-AzureStackHCISubscriptionStatus -ComputerName $_ }
+ 
+   Computer Name Subscription Name           Status   Valid To
+   ------------- -----------------           ------   --------
+   v-Host1       Azure Stack HCI             Active   1/1/2026 6:52:55 PM
+   v-Host1       Windows Server Subscription Inactive
+   v-Host2       Azure Stack HCI             Active   1/1/2026 6:25:34 PM
+   v-Host2       Windows Server Subscription Inactive
+   v-Host3       Azure Stack HCI             Active   1/1/2026 6:28:47 PM
+   v-Host3       Windows Server Subscription Inactive
+   ```
+
+   > [!NOTE]
+   > If your Azure Stack HCI subscription doesn't show as **Active**, contact Microsoft support.
+
 ## Next steps
 
-- [Learn how to apply the solution upgrade.](./install-solution-upgrade.md)
+- [Learn how to apply the solution upgrade](./install-solution-upgrade.md)
