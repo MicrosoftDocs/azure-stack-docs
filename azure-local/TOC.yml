@@ -111,6 +111,18 @@ items:
         href: concepts/security-features.md
       - name: Azure Local security book
         href: security-book/overview.md
+      - name: Assurance
+        items:
+        - name: Azure Local and security standards
+          href: assurance/azure-stack-security-standards.md
+        - name: ISO/IEC 27001 guidance
+          href: assurance/azure-stack-iso27001-guidance.md
+        - name: PCI DSS guidance
+          href: assurance/azure-stack-pci-dss-guidance.md
+        - name: HIPAA guidance
+          href: assurance/azure-stack-hipaa-guidance.md
+        - name: FedRAMP guidance
+          href: assurance/azure-stack-fedramp-guidance.md 
     - name: Assess environment readiness
       href: manage/use-environment-checker.md
     - name: Configure advanced Active Directory settings
@@ -711,18 +723,6 @@ items:
       href: /system-center/
   - name: Resources
     items:
-    - name: Assurance
-      items:
-      - name: Azure Local and security standards
-        href: assurance/azure-stack-security-standards.md
-      - name: ISO/IEC 27001 guidance
-        href: assurance/azure-stack-iso27001-guidance.md
-      - name: PCI DSS guidance
-        href: assurance/azure-stack-pci-dss-guidance.md
-      - name: HIPAA guidance
-        href: assurance/azure-stack-hipaa-guidance.md
-      - name: FedRAMP guidance
-        href: assurance/azure-stack-fedramp-guidance.md
     - name: Renaming to Azure Local
       href: rename-to-azure-local.md
     - name: Azure Local product page
