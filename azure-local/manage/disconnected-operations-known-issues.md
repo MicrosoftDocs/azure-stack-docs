@@ -1,5 +1,5 @@
 ---
-title: Release notes for disconnected operations for Azure Local
+title: Release Notes for Disconnected Operations for Azure Local
 description: Read about the known issues and fixed issues for disconnected operations for Azure Local.
 author: haraldfianbakken
 ms.topic: concept-article
@@ -44,118 +44,127 @@ If you are running an OEM image, make sure that you are on the correct OS baseli
 
 Follow these steps:
 
-- Make sure that you are on a same supported version or an earlier version (for example, 2508 or earlier).
-- Disable Zero Day Update (ZDU) on each node:
-```powershell
-    Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Environment\EdgeArcBootstrapSetup" -Name "MicrosoftOSImage" -Value 1
-```
-- Upgrade to the Microsoft provided ISO for your disconnected operations version target. Choose upgrade and keep settings when reimaging the nodes using this approach
+1. Make sure that you are on a same supported version or an earlier version (for example, 2508 or earlier).
+1. Disable Zero Day Update (ZDU) on each node:
+  
+  ```powershell
+      Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Environment\EdgeArcBootstrapSetup" -Name "MicrosoftOSImage" -Value 1
+  ```
+  
+1. Upgrade to the Microsoft provided ISO for your disconnected operations version target. Choose upgrade and keep settings when reimaging the nodes using this approach.
     - Alternatively, run the following command to get the correct update:
 
-```powershell
-# Define the solution version and local package path - please review the correct versions. Only to this if your OEM image is on a earlier version than the target version. 
-$TargetSolutionVersion = "12.2511.1002.5"
-$localPlatformVersion = "12.2511.0.3038"
-$DownloadUpdateZipUrl = "https://azurestackreleases.download.prss.microsoft.com/dbazure/AzureLocal/WindowsPlatform/$($localPlatformVersion)/Platform.$($localPlatformVersion).zip"
-$LocalPlatformPackagePath = "C:\Platform.$($localPlatformVersion).zip"
-# Download the DownloadUpdateZipUrl to LocalPlatformPackagePath (Alternative do this from browser and copy file over if you cannot run this on your nodes/disconnected scenarios)
-Invoke-WebRequest $DownloadUpdateZipUrl -Outfile $LocalPlatformPackagePath
+      ```powershell
+      # Define the solution version and local package path - review the correct versions.
+      # Only do this if your OEM image is on a earlier version than the target version. 
+      $TargetSolutionVersion = "12.2511.1002.5"
+      $localPlatformVersion = "12.2511.0.3038"
+      $DownloadUpdateZipUrl = "https://azurestackreleases.download.prss.microsoft.com/dbazure/AzureLocal/WindowsPlatform/$($localPlatformVersion)/Platform.$($localPlatformVersion).zip"
+      $LocalPlatformPackagePath = "C:\Platform.$($localPlatformVersion).zip"
+      # Download the DownloadUpdateZipUrl to LocalPlatformPackagePath (Alternative do this from browser and copy file over if you cannot run this on your nodes/disconnected scenarios)
+      Invoke-WebRequest $DownloadUpdateZipUrl -Outfile $LocalPlatformPackagePath
+      
+      $updateConfig = @{
+        "TargetSolutionVersion" = $TargetSolutionVersion
+        "LocalPlatformPackagePath" = $LocalPlatformPackagePath
+      }
+      
+      $configHash = @{
+        "UpdateConfiguration" = $updateConfig
+      }
+      
+      # Trigger zero day update
+      $tempConfigPath = "C:\temp.json"
+      $configHash | ConvertTo-Json -Depth 3 | Out-File $tempConfigPath -Force
+      Start-ArcBootstrap -ConfigFilePath $tempConfigPath
+      
+      # Continue with Invoke-AzStackHCIArcInitialization.
+      ```
+      
+ 1. Review the [version compatibility](disconnected-operations-set-up.md#review-disconnected-operations-for-azure-local-compatible-versions) table.
 
-$updateConfig = @{
-  "TargetSolutionVersion" = $TargetSolutionVersion
-  "LocalPlatformPackagePath" = $LocalPlatformPackagePath
-}
+### Cloud deployment validation fails during the portal experience
 
-$configHash = @{
-  "UpdateConfiguration" = $updateConfig
-}
-
-# Trigger zero day update
-$tempConfigPath = "C:\temp.json"
-$configHash | ConvertTo-Json -Depth 3 | Out-File $tempConfigPath -Force
-Start-ArcBootstrap -ConfigFilePath $tempConfigPath
-
-# Continue with Invoke-AzStackHCIArcInitialization.
-
-```
- - Review this table for version compatability
-
-
-  | ALDO Version | TargetSolutionVersion |LocalPlatformVersion |
-  |---------------------|-----|------|  
-  | 2509 | 12.2508.1001.52 | 12.2508.0.3201  |
-  | 2511 | 12.2511.1002.5 | 12.2511.0.3038  |
-
-### Cloud deployment validation fails during portal experience
-
-Solution Builder extension (SBE) validation fails with it trying to reach an aka.ms link to download. 
+Solution Builder extension (SBE) validation fails when trying to reach an *aka.ms* link to download. 
 
 Workaround:
 
-- Runs cloud deployment (portal) flow until validation fails in the UX 
-- On the seed node, modify the following file c:\CloudDeployment\Setup\Common\ExtractOEMContent.ps1 
- - Replace line 899 in this file with the code snippet 
-```powershell
-if (-not (Test-SBEXMLSignature -XmlPath $sbeDiscoveryManifestPath)) {
-    throw ($localizedStrings.OEMManifestSignature -f $sbeDiscoveryManifestPath)
-}
-$packageHash = (Get-FileHash -Path $zipFile.FullName -Algorithm SHA256).Hash
-$manifestXML = New-Object -TypeName System.Xml.XmlDocument
-$manifestXML.PreserveWhitespace = $false
-$xmlTextReader = New-Object -TypeName System.Xml.XmlTextReader -ArgumentList $sbeDiscoveryManifestPath
-$manifestXML.Load($xmlTextReader)
-$xmlTextReader.Dispose()
+- Run the cloud deployment (portal) flow until the validation fails in the UX.
+- On the first machine (seed node), modify the following file `c:\CloudDeployment\Setup\Common\ExtractOEMContent.ps1`.
+- Replace line 899 in this file with the code snippet:
 
-# Test that the zip file hash matches the package hash from the manifest
-$applicableUpdate = $manifestXML.SelectSingleNode("//ApplicableUpdate[UpdateInfo/PackageHash='$packageHash']")
-if ([System.String]::IsNullOrEmpty($applicableUpdate)) {
-    throw "$($zipFile.FullName) hash of $packageHash does not match value in manifest at $sbeDiscoveryManifestPath"
-}
-$result = [PSCustomObject]@{
-    Code = "Latest"
-    Message = "Override for ALDO"
-    Endpoint = "https://aka.ms/AzureStackSBEUpdate/Dell"
-    ApplicableUpdate = $applicableUpdate.OuterXml
-}
-```
-- Resume cloud deployment
+  ```powershell
+  if (-not (Test-SBEXMLSignature -XmlPath $sbeDiscoveryManifestPath)) {
+      throw ($localizedStrings.OEMManifestSignature -f $sbeDiscoveryManifestPath)
+  }
+  $packageHash = (Get-FileHash -Path $zipFile.FullName -Algorithm SHA256).Hash
+  $manifestXML = New-Object -TypeName System.Xml.XmlDocument
+  $manifestXML.PreserveWhitespace = $false
+  $xmlTextReader = New-Object -TypeName System.Xml.XmlTextReader -ArgumentList $sbeDiscoveryManifestPath
+  $manifestXML.Load($xmlTextReader)
+  $xmlTextReader.Dispose()
+  
+  # Test that the zip file hash matches the package hash from the manifest
+  $applicableUpdate = $manifestXML.SelectSingleNode("//ApplicableUpdate[UpdateInfo/PackageHash='$packageHash']")
+  if ([System.String]::IsNullOrEmpty($applicableUpdate)) {
+      throw "$($zipFile.FullName) hash of $packageHash does not match value in manifest at $sbeDiscoveryManifestPath"
+  }
+  $result = [PSCustomObject]@{
+      Code = "Latest"
+      Message = "Override for ALDO"
+      Endpoint = "https://aka.ms/AzureStackSBEUpdate/Dell"
+      ApplicableUpdate = $applicableUpdate.OuterXml
+  }
+  ```
+
+- Resume cloud deployment.
+
 ### Failed to deploy disconnected operations Appliance - Appliance.Operations failure
 
-Some special characters in the management TLS cert password, external certs password or observability configuration secrets from the OperationsModule will cause the deployment to fail with an an error output :
- **Appliance.Operations operation [options]** 
+Some special characters in the management TLS cert password, external certs password, or observability configuration secrets from the OperationsModule can cause the deployment to fail with an an error output: *Appliance.Operations operation [options]* 
  
- **Mitigation**: Do not use special characters like single or double quotes in the passwords
+ **Mitigation**: Do not use special characters like single or double quotes in the passwords.
 
 ### Resources dissapear from portal
- When accessing the portal - with the same user that have been working before, resources appears missing and not showing in portal. 
 
- **Mitigation**: Start browser in in-cognito mode or close browser and clear all cookies. Navigate back to your local portal and login again. Altnernative - restart IRVM01 on seed-node and wait until services comes back online healthy.
+When you sign in to the portal with the same user account that worked before, resources are missing and don't appear.
+
+**Mitigation**: Start your browser in incognito mode, or close your browser and clear all cookies. Then go back to your local portal and sign in again. Alternatively, restart IRVM01 on the seed node and wait until the services are back online and healthy.
 
 ### Memory consumption when there's less than 128 GB of memory per node
 
-The disconnected operations appliance uses 78 GB of memory. If a node has less than 128 GB of memory, complete these steps after the appliance deploys and before you deploy Azure Local instances.
+The disconnected operations appliance uses 78 GB of memory. If your node has less than 128 GB of memory, complete these steps after you deploy the appliance but before you deploy Azure Local instances.
 
-- Shut down the IRVM01VM on the seed node (first node).
-- Change the IRVM01 virtual machine memory setting to 64 GB.
-- Start the IRVM01 appliance.
-- Wait for convergence. Monitor `Get-ApplianceHealthState` until all services converge.
-- Deploy Azure Local instances.
+**Mitigation**: Follow these steps:
+
+1. Shut down the IRVM01VM on the seed node.
+1. Change the IRVM01 virtual machine memory setting to 64 GB.
+1. Start the IRVM01 appliance.
+1. Wait for convergence. Monitor `Get-ApplianceHealthState` until all services converge.
+1. Deploy Azure Local instances.
 
 [!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
 
 ### Deployment failure
 
-In virtual environments, a deployment can time out and services don't converge to 100% (even after 8 hours).
+In virtual environments, deployments can time out, and services might not reach 100% convergence, even after 8 hours.
 
-**Mitigation:** Attempt to redeploy the disconnected operations appliance a few times. If this environment is a physical environment and the problem persists, collect logs and open a support ticket.
+**Mitigation:** Redeploy the disconnected operations appliance a few times. If you're using a physical environment and the problem continues, collect logs and open a support ticket.
 
 ### Azure Local deployment with Azure Keyvault
 
-Role-Based Access Control (RBAC) permissions on a newly created Azure Key Vault can take up to 20 minutes to propagate. If you create the Azure Key Vault in the local portal and try to finish the cloud deployment, you might run into permission issues when validating the cluster before deployment.
+Role-Based Access Control (RBAC) permissions on a newly created Azure Key Vault can take up to 20 minutes to propagate. If you create the Key Vault in the local portal and quickly try to finish the cloud deployment, you might encounter permission issues when validating the cluster.
 
-**Mitigation**: Wait 20 minutes after you create the Azure Key Vault to finish deploying the cluster, or create the key vault ahead of time. Assign the managed identity for each node, the key vault admin, and the user deploying to the cloud explicit roles on the key vault: **Key Vault Secrets Officer** and **Key Vault Data Access Administrator**.
+**Mitigation**: Wait 20 minutes after you create the Azure Key Vault to finish deploying the cluster, or create the Key Vault ahead of time. 
 
-Here's an example script. Modify and use this script to create the key vault ahead of time:
+If you create the Key Vault ahead of time, make sure you assign:
+
+- Managed identity for each node
+- The Key Vault admin
+- The user deploying to the cloud explicit roles on the Key Vault:
+ - **Key Vault Secrets Officer** and **Key Vault Data Access Administrator**.
+
+Here's an example script. Modify and use this script to create the Key Vault ahead of time:
 
 ```powershell
 param($resourceGroupName = "aldo-disconnected", $keyVaultName = "aldo-kv", $subscriptionName = "Starter Subscription")
@@ -163,10 +172,11 @@ param($resourceGroupName = "aldo-disconnected", $keyVaultName = "aldo-kv", $subs
 $location = "autonomous"
 
 Write-Verbose "Sign in interactive with the user who does cloud deployment"
-# Sign in to Azure CLI (se the user you run the portal deployment flow with)"
+# Sign in to Azure CLI (use the user you run the portal deployment flow with)"
 az login 
 az account set --subscription $subscriptionName
 $accountInfo = (az account show)|convertfrom-json
+
 # Create the Resource Group
 $rg = (az group create --name $resourceGroupName --location $location)|Convertfrom-json
 
@@ -180,7 +190,7 @@ az role assignment create --assignee $accountInfo.user.name --role "Key Vault Da
 
 $machines = (az connectedmachine list -g $resourceGroupName)|ConvertFrom-Json
 
-# For now, only support a minimum of 3 machines for Azure Local disconnected operations
+# For now, a minimum of 3 machines for Azure Local disconnected operations are supported.
 if($machines.Count -lt 3){
     Write-Error "No machines found in the resource group $resourceGroupName. Please check the resource group and try again. Please use the same resource group as where your Azure Local nodes are"
     return 1
@@ -219,17 +229,19 @@ After you stop an Azure Local VM, the start, restart, and delete buttons in the 
 
 #### Delete a VM resource
 
-When you delete a VM from the portal, you might see the message ***Delete associated resource failed*** and ***Failed to delete the associated resource 'name' of type 'Network interface'***.
+When you delete a VM from the portal, you might see these messages ***Delete associated resource failed*** and ***Failed to delete the associated resource 'name' of type 'Network interface'***.
 
-**Mitigation**: After you delete the VM, use the CLI to delete the associated network interface. Run this command:
+**Mitigation**: After you delete the VM, use CLI to delete the associated network interface. Run this command:
 
 ```azurecli
 az stack-hci-vm network nic delete
 ```
 
 ### Azure Kubernetes Service (AKS) on Azure Local
+
 #### AKS deployment fails in fully air-gapped scenarios
-There is a known issue in 2511 where AKS deployments fails in fully air-gapped scenarios. There is no mitigation for this in the 2511 release. 
+
+In release 2511, AKS deployments fail in fully air-gapped scenarios. No mitigation is available for this issue in the 2511 release.
 
 #### Use an existing public key when creating AKS cluster
 
@@ -246,7 +258,7 @@ ssh-keygen -t rsa
 
 Updating or scaling a node pool from the portal is unsupported in this preview release.
 
-**Mitigation**: Use the CLI to update or scale a node pool.
+**Mitigation**: Use CLI to update or scale a node pool.
 
 ```azurecli
 az aksarc nodepool update
@@ -257,17 +269,17 @@ az aksarc nodepool scale
 
 When you navigate to Azure Local and click **Kubernetes clusters**, you might see an empty list of clusters.
 
-**Mitigation**: Navigate to **Kubernetes** > **Azure Arc** in the left menu or using the search bar. Your clusters should appear in the list.
+**Mitigation**: Navigate to **Kubernetes** > **Azure Arc** in the left menu or use the search bar. Your clusters should appear in the list.
 
 #### Save Kubernetes service notification stuck
 
-After updating to a newer version of Kubernetes, you might encounter a stuck notification, `Save Kubernetes service`.
+After you update to a newer version of Kubernetes, you might see a stuck notification that says, `Save Kubernetes service`.
 
-**Mitigation**: Navigate to the cluster view page and refresh it. Verify that the state is still upgrading or completed. If completed successfully, you can ignore the notification.
+**Mitigation**: Navigate to the **Cluster View** page and refresh it. Check whether the state shows upgrading or completed. If the update completed successfully, you can ignore the notification.
 
 #### Activity log shows authentication issue
 
-Ignore the portal warning in this release.
+**Mitigation**: Ignore the portal warning in this release.
 
 #### Microsoft Entra authentication with Kubernetes RBAC fails
 
@@ -285,7 +297,7 @@ Arc extensions are unsupported in this preview release.
 
 After successfully deleting an AKS cluster from portal, the resource continues to show.
 
-**Mitigation**: Use the CLI to delete and clean up the cluster. Run this command:
+**Mitigation**: Use CLI to delete and clean up the cluster. Run this command:
 
 ```azurecli
 az aksarc delete
