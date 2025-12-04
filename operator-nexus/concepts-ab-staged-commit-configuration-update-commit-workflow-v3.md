@@ -1,5 +1,5 @@
 ---
-title: A / B staged commit configuration update commit workflow v3 in Azure Operator Nexus
+title: A / B staged commit configuration update commit workflow in Azure Operator Nexus
 description: Learn about A / B staged commit configuration update commit workflow in Azure Operator Nexus
 author: RaghvendraMandawale
 ms.author: rmandawale
