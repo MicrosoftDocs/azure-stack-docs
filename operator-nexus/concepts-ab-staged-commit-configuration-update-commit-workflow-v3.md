@@ -1,6 +1,6 @@
 ---
 title: A / B staged commit configuration update commit workflow v3 in Azure Operator Nexus
-description: Learn about A / B staged commit configuration update commit workflow v3 in Azure Operator Nexus
+description: Learn about A / B staged commit configuration update commit workflow in Azure Operator Nexus
 author: RaghvendraMandawale
 ms.author: rmandawale
 ms.service: azure-operator-nexus
@@ -9,7 +9,7 @@ ms.date: 05/16/2025
 ms.custom: template-concept
 ---
 
-# A / B staged commit configuration update commit workflow v3 in Azure Operator Nexus - Network Fabric
+# A / B staged commit configuration update commit workflow in Azure Operator Nexus - Network Fabric
 
 **A/B Staged Config Update** introduces a safe rollout model for Network Fabric configuration. Operators stage configuration on one Customer Edge device(A or B), validate behavior, optionally cancel to revert, or complete rolling out to the remaining devices—leveraging **Commit Workflow** semantics (lock → validate → commit). Current scope targets **Customer Edge-only staging**; broader policies might be added later.
 
@@ -67,4 +67,4 @@ A/B Update extends Commit V2 with policy‑driven staged steps:<br>
 
 ## Next steps
 
-[How to use A / B staged commit configuration update commit workflow v3 in Azure Operator Nexus](./howto-use-ab-staged-commit-configuration-update-commit-workflow-v3.md)
+[How to use A / B staged commit configuration update commit workflow in Azure Operator Nexus](./howto-use-ab-staged-commit-configuration-update-commit-workflow-v3.md)
