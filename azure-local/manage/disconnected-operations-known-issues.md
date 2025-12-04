@@ -119,6 +119,12 @@ $result = [PSCustomObject]@{
 }
 ```
 - Resume cloud deployment
+### Failed to deploy disconnected operations Appliance - Appliance.Operations failure
+
+Some special characters in the management TLS cert password, external certs password or observability configuration secrets from the OperationsModule will cause the deployment to fail with an an error output :
+ **Appliance.Operations operation [options]** 
+ 
+ **Mitigation**: Do not use special characters like single or double quotes in the passwords
 
 ### Resources dissapear from portal
  When accessing the portal - with the same user that have been working before, resources appears missing and not showing in portal. 
