@@ -723,6 +723,8 @@ items:
         href: assurance/azure-stack-hipaa-guidance.md
       - name: FedRAMP guidance
         href: assurance/azure-stack-fedramp-guidance.md
+    - name: Renaming to Azure Local
+      href: rename-to-azure-local.md
     - name: Azure Local product page
       href: https://azure.com/hci
     - name: Pricing
