@@ -4,7 +4,7 @@ description: How to Configure Quality of Service (QoS) in Azure Operator Nexus
 author: RaghvendraMandawale
 ms.author: rmandawale
 ms.service: azure-operator-nexus
-ms.topic: conceptual
+ms.topic: article
 ms.date: 12/04/2025
 ms.custom: template-concept
 ---
