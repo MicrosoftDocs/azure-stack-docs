@@ -40,7 +40,7 @@ To create a virtual appliance and download the required files for your on-premis
     > [!NOTE]
     > If your subscription isn't approved for **Disconnected operations** any action (such as create) fails.
 
-1. From the **Disconnected operations** tab, select the **Create** button.
+1. From the **Disconnected operations** tab, select the **Create**.
 
     :::image type="content" source="media/disconnected-operations/set-up/azure-local-page.png" alt-text="Screenshot of Azure Local for Disconnected operations page." lightbox="media/disconnected-operations/set-up/azure-local-page.png":::
 
@@ -51,12 +51,16 @@ To create a virtual appliance and download the required files for your on-premis
     | **Subscription**    | The subscription where you want to place the resource.                   |  
     | **Resource group**  | The resource group where you want to place the resource.                 |  
     | **Virtual appliance name** | The name to identify your disconnected operations appliance. For example, *no-site-1*. |  
-    | **Region**          | The Azure region where you want to place the metadata. There's no metadata from the on-premises installation itself. This is used for billing and support purposes. |  
+    | **Region**          | The Azure region where you want to place the metadata. There's no metadata from the on-premises installation itself. This region is used for billing and support purposes. |  
     | **Outbound connectivity** | Select how you intend to deploy your disconnected operations appliance: <br></br> **Option 1: Limited connectivity** </br> Use this option if you want the appliance to be connected to Azure. This option: <br></br> - Simplifies management and supportability, should you require it. <br></br> - Only requires that the appliance is able to connect. <br></br> - Allows Azure Local instances to use the local control plane provided by the appliance. <br></br> **Option 2: Air-gapped** </br></br> Use this option if you have no way of connecting to Azure. This option: <br></br> - Works air-gapped. <br></br> - Allows you to transfer necessary files in and out of the environment so you can get updates and send logs, if necessary. |
 
     :::image type="content" source="media/disconnected-operations/set-up/basics-page.png" alt-text="Screenshot of the Basics page and required fields to create a virtual appliance." lightbox="media/disconnected-operations/set-up/basics-page.png":::
 
-1. Select **Review + create**, check that the validation succeeds, then select the **Create** button.  
+1. Select **Review + create**, check that the validation succeeds.
+
+1. Review the privacy statement for Azure Local-disconnected operations and check the box to agree.
+
+1. Then, select **Create**. 
 
     :::image type="content" source="media/disconnected-operations/set-up/create-validation.png" alt-text="Screenshot of the validation page to create your virtual appliance resource." lightbox="media/disconnected-operations/set-up/create-validation.png":::
 
@@ -76,7 +80,7 @@ To create a virtual appliance and download the required files for your on-premis
 
     :::image type="content" source="media/disconnected-operations/set-up/new-appliance.png" alt-text="Screenshot of the resource page for the virtual appliance you created." lightbox="media/disconnected-operations/set-up/new-appliance.png":::
 
-1. Select **get virtual appliance** and download each file in the list. This can take several hours. When completed, move these files to a single folder. Unzip the `AzureLocal.disconnectedoperations.zip` file in that folder. After you extract the zip file, delete it. You should have the following files required for installation in the folder after this step:
+1. Select **get virtual appliance** and download each file in the list. This process can take several hours. When completed, move these files to a single folder. Unzip the `AzureLocal.disconnectedoperations.zip` file in that folder. After you extract the zip file, delete it. You should have the following files required for installation in the folder after this step:
 
     - manifest.xml
     - OperationsModule
@@ -94,17 +98,17 @@ To create a virtual appliance and download the required files for your on-premis
 ### Download Azure Local ISO
 
 1. Sign in to [the Portal](https://portal.azure.com) and navigate to **Azure Local**. 
-1. Hit **download software**.
+1. Hit **Download software**.
 1. Download Local HCI OS.
 1. Select a subscription where you've registered the `Microsoft.AzureStackHCI` resource provider.
 1. Select the software version that's compatible with the preview version you're using.
-1. Read the privacy notice and click **download**.
+1. Read the privacy notice and click **Download**.
 
 Make sure you have the ISO available to install on your Azure Local nodes.
 
-### Review Azure local disconnected operations compatible versions
+### Review disconnected operations for Azure Local compatible versions
 
-When you deploy a new system, use an Azure Local build that's compatible with your Azure Local disconnected operations build.
+When you deploy a new system, use an Azure Local build that's compatible with your disconnected operations build for Azure Local.
 
 | Disconnected operations milestone | Disconnected operations build | Azure Local Build |  
 |------|-------------|----------------|  
