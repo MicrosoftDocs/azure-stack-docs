@@ -46,19 +46,21 @@ The following table summarizes each action to help you select the appropriate op
 
 Use the following guidance to determine which action best fits your situation:
 
-| Symptom                                              | Recommended Action        |
-|------------------------------------------------------|---------------------------|
-| Preparing node for maintenance                       | Cordon                    |
-| Resume scheduling after maintenance                  | Uncordon                  |
-| Machine needs to be offline for maintenance          | Power off                 |
-| Bring offline machine back online                    | Start                     |
-| Machine needs reboot                                 | Restart                   |
-| OS corrupted or software issues                      | Reimage                   |
-| Hardware failure detected and repaired               | Replace                   |
-| Need fresh OS installation                           | Reimage                   |
-| Replacing physical server                            | Replace                   |
-| System unresponsive due to temporary software issues | Restart                   |
-| Rolling maintenance across nodes                     | Cordon (then maintenance) |
+| Symptom                                              | Recommended Action |
+|------------------------------------------------------|--------------------|
+| Preparing node for maintenance                       | Cordon             |
+| Resume scheduling after maintenance                  | Uncordon           |
+| Machine needs to be offline for maintenance          | Power off          |
+| Bring offline machine back online                    | Start              |
+| Machine needs reboot                                 | Restart            |
+| OS corrupted or software issues                      | Reimage            |
+| Hardware failure detected and repaired               | Replace            |
+| Need fresh OS installation                           | Reimage            |
+| Replacing physical server                            | Replace            |
+| System unresponsive due to temporary software issues | Restart            |
+| Rolling maintenance across nodes                     | Cordon             |
+| BMC credentials need manual rotation                 | Replace            |
+| Firmware reconciliation needed                       | Replace            |
 
 ## Control plane node considerations
 
@@ -269,6 +271,7 @@ Use replace when:
 - Hardware has failed (disk, memory, CPU, NIC)
 - Physical maintenance requires swapping the chassis
 - BMC credentials need to be updated along with hardware
+- Hardware components replaced and need firmware reconciled with platform
 
 During a replace operation, the system progresses through the following phases:
 
