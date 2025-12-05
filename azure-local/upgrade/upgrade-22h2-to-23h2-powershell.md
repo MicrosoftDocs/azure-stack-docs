@@ -115,7 +115,7 @@ To avoid any PowerShell version-related issues in your AKS deployment, you can u
    If both these conditions are met, run the `RepairRegistration` cmdlet:
 
    ```powershell
-   Register-AzStackHCI -TenantId "<tenant_ID>" -SubscriptionId "<subscription_ID>" -ComputerName "<computer_name>" -RepairRegistration
+   Register-AzStackHCI -TenantId "<tenant_ID>" -SubscriptionId "<subscription_ID>" -ComputerName "<computer_name>" -Region "<Region_name>" -RepairRegistration
    ```
 
 - (Recommended) You enable [Secure Boot](/windows-hardware/design/device-experiences/oem-secure-boot) on Azure Local machines before you upgrade the OS.
