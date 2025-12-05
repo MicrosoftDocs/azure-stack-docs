@@ -55,9 +55,9 @@ landingContent:
           - text: Deploy Azure Local VMs on hyperconverged
             url: manage/create-arc-virtual-machines.md
           - text: Deploy Azure Local VMs on multi-rack (preview)
-            url: multi-rack/multi-rack-deploy-vm.md
+            url: multi-rack/multi-rack-create-arc-virtual-machines.md
           - text: Azure Local VMs on disconnected (preview)
-            url: manage/disconnected-operations-vm-overview.md
+            url: manage/disconnected-operations-arc-vm.md
 
 # Card
   - title: Monitor
@@ -100,7 +100,7 @@ landingContent:
             url: index.yml
           - text: Security for disconnected operations (preview)
             url: manage/disconnected-operations-security.md
-          - title: Defender for Cloud for multi-rack deployments (preview)
+          - text: Defender for Cloud for multi-rack deployments (preview)
             url: index.yml
 
   # Card
