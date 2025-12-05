@@ -448,7 +448,7 @@ To configure observability, follow these steps:
     ```
 ### Fully disconnected (air-gapped) deployments
 
-To enable Azure Local in a fully air-gapped (nodes without direct internet connection) deployment, perfrom these actions on each node:
+To enable Azure Local in a fully air-gapped (nodes without direct internet connection) deployment, perform these actions on each node:
 
 1. Configure the timeserver to use your domain controller. Modify the script and run it from PowerShell:
 
