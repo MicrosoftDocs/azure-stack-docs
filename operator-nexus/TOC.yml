@@ -181,8 +181,6 @@
               href: cluster-jsonc-example.md
             - name: Cluster Parameters JSON Example
               href: cluster-parameters-jsonc-example.md
-            - name: Instance Readiness Testing
-              href: howto-run-instance-readiness-testing.md
             - name: Cluster Upgrades
               href: howto-cluster-runtime-upgrade.md
             - name: Cluster Upgrades With PauseAfterRack Strategy
