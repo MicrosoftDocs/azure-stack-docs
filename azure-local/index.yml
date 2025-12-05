@@ -10,7 +10,7 @@ metadata:
   ms.topic: landing-page
   author: ronmiab
   ms.author: robess
-  ms.date: 11/18/2025
+  ms.date: 12/04/2025
 
 # linkListType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | sample | tutorial | video | whats-new
 
@@ -42,6 +42,22 @@ landingContent:
             url: multi-rack/multi-rack-prerequisites.md
           - text: Deploy disconnected operations (preview)
             url: manage/disconnected-operations-deploy.md
+
+# Card 
+  - title: Plan and deploy VM workloads
+    linkLists:
+      - linkListType: deploy
+        links:
+          - text: Complete prerequisites on hyperconverged
+            url: manage/azure-arc-vm-management-prerequisites.md
+          - text: Complete prerequisites on multi-rack (preview)
+            url: multi-rack/multi-rack-prerequisites.md
+          - text: Deploy Azure Local VMs on hyperconverged
+            url: manage/create-arc-virtual-machines.md
+          - text: Deploy Azure Local VMs on multi-rack (preview)
+            url: multi-rack/multi-rack-deploy-vm.md
+          - text: Azure Local VMs on disconnected (preview)
+            url: manage/disconnected-operations-vm-overview.md
 
 # Card
   - title: Monitor
@@ -80,11 +96,15 @@ landingContent:
         links:
           - text: Security for hyperconverged deployments
             url: concepts/security-features.md
+          - text: Security for multi-rack deployments (preview)
+            url: index.yml
           - text: Security for disconnected operations (preview)
             url: manage/disconnected-operations-security.md
+          - title: Defender for Cloud for multi-rack deployments (preview)
+            url: index.yml
 
   # Card
-  - title: Try it out
+  - title: Try it out!
     linkLists:
       - linkListType: overview
         links:
@@ -94,6 +114,28 @@ landingContent:
             url: deploy/rack-aware-cluster-deploy-portal.md
           - text: Place VMs in rack aware clusters (preview)
             url: concepts/rack-aware-cluster-provision-vm-local-availability-zone.md
+
+  # Card
+  - title: Concepts
+    linkLists:
+      - linkListType: concept
+        links:
+          - text: About Azure Local VMs on hyperconverged 
+            url: manage/azure-arc-vm-management-overview.md
+          - text: About Azure Local VMs on multi-rack (preview)
+            url: multi-rack/multi-rack-azure-arc-vm-management-overview.md
+
+  # Card
+  - title: Enable SDN
+    linkLists:
+      - linkListType: how-to-guide
+        links:
+          - text: Create NSGs on hyperconverged 
+            url: manage/create-network-security-groups.md
+          - text: Create NSGs on multi-rack (preview)
+            url: multi-rack/multi-rack-create-network-security-groups.md
+          - text: Manage NSGs on hyperconverged 
+            url: manage/manage-network-security-groups.md
 
   # Card
   - title: Architecture
