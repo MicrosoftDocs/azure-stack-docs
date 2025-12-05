@@ -4,17 +4,17 @@ description: Learn how to upgrade infrastructure for SDN managed by on-premises 
 ms.topic: how-to
 ms.author: alkohli
 author: alkohli
-ms.date: 12/02/2025
+ms.date: 12/04/2025
 ---
 
 # Upgrade infrastructure for Software Defined Networking managed by on-premises tools
 
-> Applies to: Azure Local 2311.2 and later; Windows Server 2025, Windows Server 2022
+> Applies to: Hyperconverged deployments of Azure Local running 2311.2 and later; Windows Server 2025, Windows Server 2022
 
 This article provides guidance on safely and securely upgrading infrastructure for Software Defined Networking (SDN) managed by on-premises tools. It also provides troubleshooting guidance to help remediate issues that might occur during the upgrade process.
 
 > [!IMPORTANT]
-> Do not use this article for upgrading SDN enabled by Azure Arc on Azure Local. Instead, refer to [About Azure Local upgrades](../upgrade/about-upgrades-23h2.md).
+> Do not use this article for upgrading SDN enabled by Azure Arc on Azure Local.
 
 ## About upgrading SDN infrastructure
 
@@ -67,12 +67,12 @@ Your SDN deployment consists of several roles and machines, each providing essen
 
 - Upgrade components in the following order:
 
-    - Hyper-V Hosts
+    - Hyper-V hosts
     - Network Controller nodes
     - Load Balancer Multiplexer nodes (optional)
     - Gateway nodes (optional)
 
-- Upgrade the Network Controller to the latest version before proceeding. Older versions may contain known issues that can affect stability during the upgrade process.
+- Upgrade the Network Controller to the latest version before you proceed. Older versions might contain known issues that can affect stability during the upgrade process.
 
 - Do not upgrade the gateway until the Network Controller completes cleanup and reboots the gateway.
 
@@ -80,7 +80,7 @@ Your SDN deployment consists of several roles and machines, each providing essen
 
 ## Perform in-place upgrade
 
-Use the steps in this section to perform an in-place upgrade of the existing OS. These steps apply to all SDN nodes.
+Use the steps in this section to perform an in-place upgrade of the existing operating system (OS). These steps apply to all SDN nodes.
 
 ### Mount the media
 
@@ -117,7 +117,7 @@ For an in-place upgrade on a VM, use Hyper-V to attach the ISO as a DVD drive to
     Get-ComputerInfo | Select-Object WindowsProductName, WindowsInstallationType, OSDisplayVersion, WindowsBuildLabEx | Format-Table -AutoSize
     ```
 
-1. Initiate the upgrade. The upgrade process will take a while, and the node may reboot several times. For more information regarding command line options, see [Windows Setup Command-Line Options](/windows-hardware/manufacture/desktop/windows-setup-command-line-options).
+1. Initiate the upgrade. The upgrade process will take a while, and the node may reboot several times. For more information regarding command-line options, see [Windows Setup Command-Line Options](/windows-hardware/manufacture/desktop/windows-setup-command-line-options).
 
     ```powershell
     $DVDDrive = "D:\" # update to the drive path the .ISO was mounted to
@@ -145,7 +145,7 @@ For an in-place upgrade on a VM, use Hyper-V to attach the ISO as a DVD drive to
 ## Upgrade Hyper-V hosts
 
 > [!IMPORTANT]
-> If you deployed SDN on Azure Local, upgrade your Hyper-V hosts by following instructions in [About Azure Local upgrades](../upgrade/about-upgrades-23h2.md). Do not use the steps in this article for upgrading Hyper-V hosts.
+> Use these instructions to upgrade Hyper-V hosts only if they are running Windows Server. If you deployed SDN on Azure Local, upgrade your Hyper-V hosts by following instructions in [About Azure Local upgrades](../upgrade/about-upgrades-23h2.md). Do not use the steps in this article to upgrade Azure Local hosts.
 
 The upgrade process varies depending on the roles and services in your environment. If you have Storage Spaces Direct, clustering, or similar features, complete the necessary maintenance tasks to take a node offline for the upgrade process.
 
