@@ -15,6 +15,8 @@ ai-usage: ai-assisted
 
 This article highlights what's new (features and improvements) and critical known issues with workarounds for disconnected operations in Azure Local. These release notes update continuously. We add critical issues and workarounds as they're identified. Review this information before you deploy disconnected operations with Azure Local.
 
+[!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
+
 ## Features and improvements in 2511
  - Added support for the Azure Local 2511 ISO and its associated capabilities.
  - Bundled update uploader in OperationsModule.
@@ -45,22 +47,24 @@ If you are running an OEM image, make sure that you are on the correct OS baseli
 Follow these steps:
 
 1. Make sure that you are on a same supported version or an earlier version (for example, 2508 or earlier).
-1. Disable Zero Day Update (ZDU) on each node:
+1. Disable zero-day update on each node:
   
-  ```powershell
-      Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Environment\EdgeArcBootstrapSetup" -Name "MicrosoftOSImage" -Value 1
-  ```
+   ```powershell
+   Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Environment\EdgeArcBootstrapSetup" -Name "MicrosoftOSImage" -Value 1
+   ```
   
 1. Upgrade to the Microsoft provided ISO for your disconnected operations version target. Choose upgrade and keep settings when reimaging the nodes using this approach.
     - Alternatively, run the following command to get the correct update:
 
       ```powershell
       # Define the solution version and local package path - review the correct versions.
-      # Only do this if your OEM image is on a earlier version than the target version. 
+      # Only do this if your OEM image is on a earlier version than the target version.
+      
       $TargetSolutionVersion = "12.2511.1002.5"
       $localPlatformVersion = "12.2511.0.3038"
       $DownloadUpdateZipUrl = "https://azurestackreleases.download.prss.microsoft.com/dbazure/AzureLocal/WindowsPlatform/$($localPlatformVersion)/Platform.$($localPlatformVersion).zip"
       $LocalPlatformPackagePath = "C:\Platform.$($localPlatformVersion).zip"
+
       # Download the DownloadUpdateZipUrl to LocalPlatformPackagePath (Alternative do this from browser and copy file over if you cannot run this on your nodes/disconnected scenarios)
       Invoke-WebRequest $DownloadUpdateZipUrl -Outfile $LocalPlatformPackagePath
       
@@ -73,7 +77,7 @@ Follow these steps:
         "UpdateConfiguration" = $updateConfig
       }
       
-      # Trigger zero day update
+      # Trigger zero-day update
       $tempConfigPath = "C:\temp.json"
       $configHash | ConvertTo-Json -Depth 3 | Out-File $tempConfigPath -Force
       Start-ArcBootstrap -ConfigFilePath $tempConfigPath
@@ -143,8 +147,6 @@ The disconnected operations appliance uses 78 GB of memory. If your node has les
 1. Wait for convergence. Monitor `Get-ApplianceHealthState` until all services converge.
 1. Deploy Azure Local instances.
 
-[!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
-
 ### Deployment failure
 
 In virtual environments, deployments can time out, and services might not reach 100% convergence, even after 8 hours.
@@ -209,7 +211,6 @@ $managedIds|foreach-object {
     az role assignment create --role "Key Vault Administrator" --assignee $_.Id --scope $kv.id
 }
 
-## 
 Write-Verbose "Wait 30 min before running cloud deployment from portal"
 ```
 
@@ -279,13 +280,13 @@ After you update to a newer version of Kubernetes, you might see a stuck notific
 
 #### Activity log shows authentication issue
 
-**Mitigation**: Ignore the portal warning in this release.
+Ignore the portal warning in this release.
 
 #### Microsoft Entra authentication with Kubernetes RBAC fails
 
 When attempting to create a Kubernetes cluster with Entra authentication, you encounter an error.
 
-**Mitigation**: Only local accounts with Kubernetes RBAC are supported in this preview release.
+Only local accounts with Kubernetes RBAC are supported in this preview release.
 
 #### Arc extensions
 
@@ -343,17 +344,11 @@ Azure CLI doesn't support providing `subscriptionOwnerId` for new subscriptions.
 
 ### Azure portal
 
-#### Signout fails
+#### Sign out fails
 
 When you select **Signout**, the request doesn't work.
 
-**Mitigation**: Close your browser, then go to the portal URL.
-
-<!--### Deployment
-
-### Azure Local VMs
-
-### AKS on Azure Local-->
+**Mitigation**: Close your browser, then go to the Portal URL.
 
 ### Azure Resource Manager
 
