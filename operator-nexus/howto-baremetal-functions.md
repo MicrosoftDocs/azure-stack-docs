@@ -46,34 +46,33 @@ The following table summarizes each action to help you select the appropriate op
 
 Use the following guidance to determine which action best fits your situation:
 
-| Symptom                                     | Recommended Action        |
-|---------------------------------------------|---------------------------|
-| Need to pause scheduling temporarily        | Cordon                    |
-| Resume scheduling after maintenance         | Uncordon                  |
-| Machine needs to be offline for maintenance | Power off                 |
-| Bring offline machine back online           | Start                     |
-| Machine hung or needs reboot                | Restart                   |
-| OS corrupted or software issues             | Reimage                   |
-| Hardware failure detected                   | Replace                   |
-| Need fresh OS installation                  | Reimage                   |
-| Replacing physical server                   | Replace                   |
-| Clearing temporary state                    | Restart                   |
-| Disk, memory, or network card failure       | Replace                   |
-| Rolling maintenance across nodes            | Cordon (then maintenance) |
+| Symptom                                              | Recommended Action        |
+|------------------------------------------------------|---------------------------|
+| Preparing node for maintenance                       | Cordon                    |
+| Resume scheduling after maintenance                  | Uncordon                  |
+| Machine needs to be offline for maintenance          | Power off                 |
+| Bring offline machine back online                    | Start                     |
+| Machine needs reboot                                 | Restart                   |
+| OS corrupted or software issues                      | Reimage                   |
+| Hardware failure detected and repaired               | Replace                   |
+| Need fresh OS installation                           | Reimage                   |
+| Replacing physical server                            | Replace                   |
+| System unresponsive due to temporary software issues | Restart                   |
+| Rolling maintenance across nodes                     | Cordon (then maintenance) |
 
 ## Control plane node considerations
 
 Control plane nodes require extra caution when performing lifecycle actions. The platform implements special handling for control plane nodes to maintain cluster quorum and availability:
 
-- **One at a time**: Only perform disruptive actions (restart, reimage, replace) on one control plane node at a time. Wait for the action to complete and the node to rejoin the cluster before proceeding to another control plane node.
+- **One at a time**: The platform prevents multiple concurrent disruptive actions (restart, reimage, replace) on control plane nodes. If another control plane node is already undergoing a disruptive action, new requests are blocked until that action completes and the node rejoins the cluster.
 - **Quorum safety**: The platform verifies that sufficient healthy control plane nodes remain before allowing disruptive operations. Actions may be rejected if proceeding would break cluster quorum.
 - **Extended coordination**: Restart, reimage, and replace actions on control plane nodes include extra steps to safely remove and rejoin the node to the control plane.
 
 ## Action locking
 
-Only one lifecycle action can run on a Bare Metal Machine at a time. If you attempt to start a new action while another is in progress, the request is rejected. Before starting a new action:
+Only one lifecycle action can run on a BMM at a time. If you attempt to start a new action while another is in progress, the request is rejected. Before starting a new action:
 
-- Verify any previous action has completed by checking the Bare Metal Machine's `actionStates` in the Azure portal or via the API
+- Verify any previous action has completed by checking the BMM's `actionStates` in the Azure portal or via the API
 - If an action appears stuck, investigate the root cause before attempting another action
 
 [!INCLUDE [caution-affect-cluster-integrity](./includes/baremetal-machines/caution-affect-cluster-integrity.md)]
@@ -161,7 +160,7 @@ Use cordon when:
 - Troubleshooting a node while keeping existing workloads running
 
 > [!NOTE]
-> The platform may automatically cordon nodes due to detected hardware issues such as port flapping, NIC failures, or LACP issues. The customer-initiated cordon is tracked separately from these automatic cordons.
+> The platform may automatically cordon nodes due to detected hardware issues such as port flapping, NIC failures, or LACP issues. When you execute an uncordon command, it clears both your cordon and any platform-applied cordons. However, if the node is still degraded due to an unresolved hardware issue, the uncordon is rejected.
 
 ### Drain Bare Metal Machine workloads
 
@@ -232,7 +231,6 @@ Use reimage when:
 - The OS has become corrupted or unstable
 - A clean slate is needed without changing hardware
 - Software configuration has drifted beyond recovery
-- Security concerns require a fresh OS installation
 
 During a reimage, the system progresses through the following phases:
 
@@ -269,7 +267,6 @@ A `replace` **must** be executed after each hardware maintenance operation, read
 Use replace when:
 
 - Hardware has failed (disk, memory, CPU, NIC)
-- Hardware refresh or upgrade is needed
 - Physical maintenance requires swapping the chassis
 - BMC credentials need to be updated along with hardware
 
