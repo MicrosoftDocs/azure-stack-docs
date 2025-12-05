@@ -11,7 +11,16 @@ ms.custom: template-how-to, devx-track-azurecli
 
 # Network Fabric Runtime Upgrade
 
-This guide outlines a streamlined upgrade process for network fabric infrastructure, designed to support users in modernizing and managing their network environments efficiently. It provides step-by-step instructions applying both the Azure portal and Azure CLI, enabling comprehensive lifecycle management of Nexus Fabric network devices. Regular updates are crucial for maintaining system integrity and accessing the latest product improvements
+This how-to-guide defines the preupgrade validations necessary to ensure a successful Network Fabric runtime upgrade. It distinguishes between required validations and recommended validations, clarifying their impact on the upgrade process.
+ 
+**Required Pre‑Upgrade Validations**
+- These checks are mandatory.
+- If any of the required validation conditions isn't met, the upgrade fails.
+- They serve as safeguards to prevent runtime instability or incomplete upgrade execution.
+ 
+**Recommended Pre‑Upgrade Validations**
+- These checks are advisory but strongly encouraged.
+- While failure to meet recommended validations doesn't block the upgrade, they help ensure release consistency and reduce the risk of configuration drift or operational anomalies.
 
 ## Overview
 
@@ -27,7 +36,7 @@ Runtime changes are categorized as follows:
 
 By following this guide, users can ensure a consistent, scalable, and secure approach to upgrading their network fabric components.
 
-## Required PreUpgrade Validations
+## Required Preupgrade Validations
 
 Before initiating the **Network Fabric (NF) Runtime Upgrade** process, it's **required** that users validate these resource states prior to triggering the upgrade. These proactive validation steps help prevent upgrade failures and avoid service interruption challenges. If the required resource states aren't met, NNF upgrade process should be stopped. Observations may be taken during the upgrade's major milestones to ensure resource states remain consistent. It's recommended to perform these checks after the TOR and Mgmt switch upgrades. Validation for the CE devices should be performed after each CE upgrade before proceeding to the next CE device upgrade.
 
@@ -35,19 +44,19 @@ Before initiating the **Network Fabric (NF) Runtime Upgrade** process, it's **re
 | --- | --- | --- | --- |
 | Check for NFC provisioning state | Provisioning state must be in "Succeeded" | No | Fabric upgrade start step fails |
 | Check for Administrative lock status of Network Fabric resource | Must be in unlocked state - [Azure Operator Nexus - How to Use Administrative Lock or Unlock Network fabric - Operator Nexus](./howto-set-administrative-lock-or-unlock-for-network-fabric.md) | No | Fabric upgrade start step fails |
-| Network Fabric resource state checks | Resource states must be validated:<br/>• Administrative state is in "Enabled" status<br/>• Provisioning state is in "Succeeded" state<br/>• Configuration state is in "Provisioned" state | Yes | Fabric upgrade start command fails |
-| Fabric Devices - NPB, TOR, CE, Mgmt switch | Resource states must be validated:<br/>• Administrative state is in "Enabled" status<br/>• Provisioning state is in "Succeeded" state<br/>• Configuration state is in "Succeeded" state | Yes | Device upgrade command fails for corresponding device |
-| NNF device disk space | Minimum 3.0 GB free space within /mnt directory of all the network devices that are getting upgraded | No | Device upgrade command fails for corresponding device |
+| Network Fabric resource state checks | Resource states must be validated:<br/>• Administrative state is "Enabled" <br/>• Provisioning state is "Succeeded" <br/>• Configuration state is "Provisioned" | Yes | Fabric upgrade start command fails |
+| Fabric Devices - NPB, TOR, CE, Mgmt switch | Resource states must be validated:<br/>• Administrative state is "Enabled" <br/>• Provisioning state is "Succeeded" <br/>• Configuration state is "Succeeded" | Yes | Device upgrade command fails for corresponding device |
+| NNF device disk space | Minimum 2.5 GB of free space within /mnt directory of all the network devices that are getting upgraded | No | Device upgrade command fails for corresponding device |
 | BGP Summary Validation | Ensure BGP sessions are established across all VRFs (show ip bgp summary vrf all runro command on CEs) | Yes | CE Device upgrade command fails (probable connectivity issue with PE) |
 | GNMI Metrics Emission | Confirm GNMI metrics are being emitted for subscribed paths | Yes | Device upgrade command fails for corresponding device (Probable connectivity issue) |
 | Terminal Server | The Terminal Server shall be confirmed to be accessible and running | No | Fabric upgrade start command fails |
-| NetworkToNetworkConnect (NNI)<br/>Network Interfaces referred in NNI<br/>Network Monitor (BMP)<br/>ACLs & Associated resources<br/>Ingress ACLs, CPU & CP TP ACLs<br/>L2ISD Resources<br/>L3ISD Resources<br/>Route Policies<br/>IPPrefixes & TrustedIpPrefixes<br/>IP Communities<br/>IP Extended Communities | When the Resource has an Administrative state is in "Enabled" status:<br/>• Provisioning state shall need to be in "Succeeded" state<br/>• Configuration state in "Succeeded" state<br/><br/>When the Resource has an Administrative state in "Disabled" status, the resource has no impact on the runtime upgrade | No | Fabric upgrade start command fails |
+| NetworkToNetworkConnect (NNI)<br/>Network Interfaces referred in NNI<br/>Network Monitor (BMP)<br/>ACLs & Associated resources<br/>Ingress ACLs, CPU & CP TP ACLs<br/>L2ISD Resources<br/>L3ISD Resources<br/>Route Policies<br/>IPPrefixes<br/>IP Communities<br/>IP Extended Communities | When the Resource has an Administrative state is in "Enabled" status:<br/>• Provisioning state is "Succeeded"<br/>• Configuration state is "Succeeded"<br/><br/>When the Resource has an Administrative state in "Disabled" status, the resource has no impact on the runtime upgrade | No | Fabric upgrade start command fails |
 | Internal and External Networks referred in L3 ISD | When L3 ISD Administrative state is in "Enabled" status:<br/>• Internal & External Networks Administrative state is in "Enabled" status<br/>• Provisioning state is in "Succeeded" status<br/>• Configuration State is in "Succeeded" status | No | Fabric upgrade start command fails |
-| Network Tap | When the Resource has an Administrative state is in "Enabled" status:<br/>• Provisioning state shall need to be in "Succeeded" state<br/>• Configuration state in "Succeeded" or "Accepted" state | No | Fabric upgrade start command fails |
+| Network Tap | When the Resource has an Administrative state is in "Enabled" status:<br/>• Provisioning state shall be "Succeeded" state<br/>• Configuration state is in "Succeeded" or "Accepted" state | No | Fabric upgrade start command fails |
 | Network Tap Rule, NNI, and Internal network associated with Network Tap | Parent Network Tap has an Administrative state is in "Enabled" status:<br/>• Provisioning state shall need to be in "Succeeded" state<br/>• Configuration state in "Succeeded" or "Accepted" state | No | Fabric upgrade start command fails |
 | Neighbor Group associated to Network Tap | Parent Network Tap has an Administrative state is in "Enabled" status:<br/>• Provisioning state shall need to be in "Succeeded" state | No | Fabric upgrade start command fails |
 
-## Recommended PreUpgrade Validations
+## Recommended Preupgrade Validations
 
 Before initiating the Network Fabric (NF) Runtime Upgrade process, it's **recommended** that users validate these resource states prior to triggering the NF upgrade. These resources won't prevent the upgrade, but should be checked before and after to confirm state remains consistent.
 
@@ -55,7 +64,8 @@ Before initiating the Network Fabric (NF) Runtime Upgrade process, it's **recomm
 | --- | --- |
 | Cable validation of Network Fabric | All link connections should be up and stable per BOM description - [Validate Cables for Nexus Network Fabric - Operator Nexus](./how-to-validate-cables.md) |
 
-## NNF Upgrade Procedure
+
+## Step by Step Nexus Fabric Upgrade Procedure
 
 ### Step 0: Network Fabric Status
 
@@ -94,25 +104,32 @@ The above command marks the Network Fabric in "Under Maintenance" mode and preve
 
 Nexus Network Fabric customer triggers upgrade POST actions per device. Each of the NNF device resource states must be validated either Azure portal or Azure CLI:
 
-* Provisioning state is in **Succeeded** state,
-* Configuration state is in **Provisioned** state.
+* Provisioning state is in **Succeeded** state
+* Configuration state is in **Succeeded** or **DeferredControl** state
 * Administrative state is in **Enabled** state
 
-Each of the NNF devices will enter maintenance mode post triggering the upgrade. Traffic is drained and route advertisements are stopped.
+Each of the NNF devices enters maintenance mode post triggering the upgrade. Traffic is drained and route advertisements are stopped.
 
 #### NNF Upgrade sequence
 
-* Odd numbered TORs (parallel).
-* Even numbered TORs (parallel).
-* Compute rack management switches (parallel).
-* CEs are to be upgraded one after the other in a serial manner. Stop the upgrade procedure if there are any failures corresponding to CE upgrade operation. After each CE upgrade, wait for a duration of five minutes to ensure that the recovery process is complete before proceeding to the next CE device upgrade.
-* Upgrade Network Packet Broker (NPB) devices in a serial manner.
-* Aggregate rack management switches are to be upgraded one after the other in a serial manner.
+* Odd numbered TORs (parallel)
+* Even numbered TORs (parallel)
+* Compute rack management switches (parallel)
+* CE1
+* Wait for 5 Minutes
+* CE2
+* NPBs (serial)
+* Aggregate rack management switches (serial)
 
-Similar to the preupgrade validation steps, it's recommended to validate the NNF device resource states post triggering the upgrade at the following checkpoints:
-* After odd numbered TORs complete, prior to even numbered TORs upgrade.
-* After CE1 upgrade, prior to CE2 upgrade.
-* After Agg switch1 upgrade, prior to Agg switch2 upgrade.
+#### Mid-Upgrade Validation Steps: 
+* Perform Mid-Upgrade Checks between each of the above upgrade steps -
+* Validate EOS Version</br>
+* Validate fabric device resource state</br>
+* Validate device state shouldn't be in maintenance</br>
+* Validate status of BGP sessions (if applicable)</br>
+* Telemetry accuracy for Azure connectivity.</br>
+
+If the upgrade fails at any phase, or if any mid-upgrade checks do not pass, Please engage with Microsoft support team to diagnose and resolve the upgrade failure issue.
 
 
 #### Sample az CLI command
@@ -121,7 +138,7 @@ Similar to the preupgrade validation steps, it's recommended to validate the NNF
 
 #### Post validation for Step 2 
 
-After all Network Fabric devices upgrades are completed, User must ensure that none of the NNF devices are "Under Maintenance" and these devices runtime versions must be showing 6.1.0 by running the following commands.
+After all Network Fabric devices upgrades are completed, User must ensure that none of the NNF devices are "Under Maintenance" and these devices runtime versions must be showing the latest runtime version by running the following commands.
 
 #### Sample az CLI command:
 
@@ -129,7 +146,7 @@ After all Network Fabric devices upgrades are completed, User must ensure that n
 
 ### Step 3: Complete Upgrade
 
-Once all the NNF devices are successfully upgraded to the latest version i.e., 6.1.0, Nexus Network Fabric customer will run the following command to take the network fabric out of maintenance state and complete the upgrade procedure.
+Once all the NNF devices are successfully upgraded to the latest version, i.e., 6.1.0, Nexus Network Fabric customer runs the following command to take the network fabric out of maintenance state and complete the upgrade procedure.
 
 #### Sample az CLI command
 
@@ -149,10 +166,9 @@ Customer performing action must validate the device's maintenance mode status af
 
 | **Post NNF RT Upgrade action** | **Expectation**                                                                                                    |
 |--------------------------------|--------------------------------------------------------------------------------------------------------------------|
-| Version compliance             | All Network Fabric devices must be in either RT version 6.1.0                                                      |
+| Version compliance             | All Network Fabric devices must be in target RT version                                                     |
 | Maintenance status check       | Ensure TOR and CE devices maintenance status is "NOT under Maintenance" (show maintenance runro command)           |
 | Connectivity Validation        | Verify CE ↔ PE connections are stable or similar to the preupgrade status (show ip interface brief runro command) |
-| Reachability Checks            | Confirm all NF devices are reachable via jump server (ping &lt;MA1_IP&gt;, ping6 &lt;Loopback6_IP&gt;)             |
 | BGP Summary Validation         | Ensure BGP sessions are established across all VRFs (show ip bgp summary vrf all runro command on CEs)             |
 | GNMI Metrics Emission          | Confirm GNMI metrics are being emitted for subscribed paths (check via dashboards or CLI)                          |
 
@@ -164,11 +180,10 @@ Each entry in the table corresponds to a specific action, offering detailed inst
 
 | **Action** | **Detailed steps** |
 | --- | --- |
-| Device image validation | Confirm latest image version is installed by executing "show version" runro command on each NF device. az networkfabric device run-ro -g xxxx -resource-name xxxx -ro-command "show version". The above output must reflect the latest image version as per the release documentation. |
-| Maintenance status check | Ensure TOR and CE device status isn't under maintenance by executing "show maintenance" runro command. The above status must not be in "Maintenance mode is disabled". |
+| Device image validation | Confirm latest image version is installed by executing "show version" runro command on each NF device. az networkfabric device run-ro -g xxxx -resource-name xxxx -ro-command "show version." The above output must reflect the latest image version as per the release documentation. |
+| Maintenance status check | Ensure TOR and CE device status isn't under maintenance by executing "show maintenance" runro command. The above status must not be in "Maintenance mode is disabled." |
 | Connectivity Validation | Verify CE ↔ PE connections are stable. "Show ip interface brief" runro command. |
-| Reachability Checks | Confirm all NF devices are reachable via jump server: \* MA1 address ping &lt;MA1_IP&gt; \* Loopback6 address ping6 &lt;Loopback6_IP&gt; |
-| BGP Summary Validation | Ensure BGP sessions are established across all VRFs by executing "show ip bgp summary vrf all" "runro command" on CE devices. The above status must ensure that peers should be in Established state - consistent with pre upgrade state. |
+| BGP Summary Validation | Ensure BGP sessions are established across all VRFs by executing "show ip bgp summary vrf all" "runro command" on CE devices. The above status must ensure that peers should be in Established state - consistent with preupgrade state. |
 
 The following table outlines all Resource Types referenced in this document
 
