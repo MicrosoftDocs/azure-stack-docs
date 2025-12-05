@@ -291,9 +291,7 @@ Review the Operator Nexus release notes for any version specific actions require
 
 ### Validate Nexus Instance
 
-Validate the health and status of all the Nexus Instance resources with the [Nexus Instance Readiness Test (IRT)](howto-run-instance-readiness-testing.md).
-
-If not using IRT, perform resource validation of all Nexus Instance components with Azure CLI:
+Perform resource validation of all Nexus Instance components with Azure CLI:
 ```
 # Check `ProvisioningState = Succeeded` in all resources
 
@@ -321,10 +319,6 @@ az networkcloud storageappliance list -g <CLUSTER_MRG> --subscription <CUSTOMER_
 az networkcloud virtualmachine list --sub <CUSTOMER_SUB_ID> --query "reverse(sort_by([?clusterId=='<CLUSTER_RID>'].{name:name, createdAt:systemData.createdAt, resourceGroup:resourceGroup, powerState:powerState, provisioningState:provisioningState, detailedStatus:detailedStatus,bareMetalMachineId:bareMetalMachineIdi,CPUCount:cpuCores, EmulatorStatus:isolateEmulatorThread}, &createdAt))" -o table
 az networkcloud kubernetescluster list --sub <CUSTOMER_SUB_ID> --query "[?clusterId=='<CLUSTER_RID>'].{name:name, resourceGroup:resourceGroup, provisioningState:provisioningState, detailedStatus:detailedStatus, detailedStatusMessage:detailedStatusMessage, createdAt:systemData.createdAt, kubernetesVersion:kubernetesVersion}" -o table
 ```
-
-> [!Note]
-> IRT validation provides a complete functional test of networking and workloads across all components of the Nexus Instance. Simple validation does not provide functional testing.
-
 </details>
 
 ## Links
@@ -342,6 +336,5 @@ Reference links for Cluster upgrade:
 - [Troubleshoot BMM provisioning](troubleshoot-bare-metal-machine-provisioning.md)
 - [Troubleshoot BMM degraded](troubleshoot-bare-metal-machine-degraded.md)
 - [Troubleshoot BMM warning](troubleshoot-bare-metal-machine-warning.md)
-- Reference the [Nexus Instance Readiness Test (IRT)](howto-run-instance-readiness-testing.md)
 
 </details>
