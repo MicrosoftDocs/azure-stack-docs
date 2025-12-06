@@ -158,8 +158,6 @@ To prepare each machine for the disconnected operations appliance, follow these 
     > [!NOTE]
     > If you use a different root for the management certificate, repeat the process and import the key on each node.
 
-1. [Install and configure the CLI](disconnected-operations-cli.md) with your local endpoint on each node.
-
 1. Set the environment variable to support disconnected operations
 
     ```powershell
@@ -479,7 +477,7 @@ To enable Azure Local in a fully air-gapped (nodes without direct internet conne
   Import-Certificate -FilePath C:\AzureLocalDisconnectedOperations\Certs\DigiCertGlobalRootG2.cer -CertStoreLocation Cert:\LocalMachine\Root -Confirm:$false
   ```
 
-## Create a subscription for Azure Local nodes (infrastructure)
+## Create a subscription and resource group for Azure Local nodes (infrastructure)
 
 Create a subscription for your Azure Local nodes and the Azure Local instance (cluster).
 
@@ -490,41 +488,16 @@ Create a subscription for your Azure Local nodes and the Azure Local instance (c
 5. Select the subscription owner you want to give the Owner (RBAC) role to on this subscription.  
 6. For Location, leave the value set to **Autonomous**.  
 7. Select **Create**, wait for the operation to finish, and then refresh the browser to confirm the new subscription appears.
+8. Go to **Resource groups**
+9. Select **+Add** 
+10. For resource group name, enter a name such as 'azure-local-disconnected-operations'
+11. For Location, leave the value set to **Autonomous**
+12. Select **Create**, wait for the operation to finish
+
 
 > [!NOTE]
-> Alternatively, use Azure CLI or PowerShell to automate this process.
+> Alternatively, use Azure CLI or PowerShell to automate this process. See appendix
 
-### Create resource group and service principal for the Azure Local instance
-
-Use the operator account to create an SPN for Arc initialization of each Azure Local node. For bootstrap, the Owner role is required at the subscription level.
-
-To create the SPN, follow these steps:
-
-1. Configure CLI on your client machine and run this command:
-
-    ```azurecli  
-    $subscriptionName = 'Starter subscription'
-    $resourcegroup = 'azurelocal-disconnected-operations'
-    $appname = 'azlocalclusapp'      
-    az cloud set -n 'azure.local'
-    az login      
-    az account set --subscription $subscriptionName
-    $subscriptionId = az account show --query id --output tsv
-    $g = (az group create -n $resourcegroup -l autonomous)|ConvertFrom-Json  
-    az ad sp create-for-rbac -n $appname --role Owner --scopes "/subscriptions/$($subscriptionId)"  
-    ```  
-
-    Here's an example output:
-
-    ```json  
-    {  
-      "appId": "<AppId>",  
-      "displayName": "azlocalclusapp",  
-      "password": "<RETRACTED>",  
-      "tenant": "<RETRACTED>"  
-    }  
-
-1. Copy out the AppID and password for use in the next step.
 
     > [!NOTE]
     > Plan the subscription and resource group where you want to place your nodes and cluster. The resource move action isn't supported.
@@ -584,87 +557,45 @@ To initialize each node, follow these steps. Modify these steps where necessary 
 
 1. Set the configuration variable. Define the resource group, cloud name, configuration path, application ID, client secret, and appliance FQDN.
 
-    ```azurecli
-    $resourcegroup = 'azurelocal-disconnected-operations' # Needs to match the cloud name your configured CLI with.
+    ```powershell
+    $resourcegroup = 'azurelocal-disconnected-operations' 
     $applianceCloudName = "azure.local"
     $applianceConfigBasePath = "C:\AzureLocalDisconnectedOperations\"
-    $appId = 'guid'
-    $clientSecret = 'retracted'
     $applianceFQDN = "autonomous.cloud.private"
+    $subscriptionName = "Starter subscription"
 
-1. Initialize each node.
+    Add-AzEnvironment -Name $applianceCloudName -ARMEndpoint "https://armmanagement.$($applianceFQDN)"
+    
+    # Connect to the ARM endpointusing device authentication
+    Connect-AzAccount -EnvironmentName $applianceCloudName -UseDeviceAuthentication
 
-    ```powershell
-    Write-Host "az login to Disconnected operations cloud"    
-    az cloud set -n $applianceCloudName --only-show-errors
-    Write-Host "Login using service principal"    
-    az login --service-principal --username $appId --password $clientSecret --tenant <TenantId>    
-    # If you prefer interactive login..
-    # Write-Host "Using device code login - complete the login from your browser"
-    # az login --use-device-code
+    <# If using an automated approach set the following
+    $clientSecret = 'retracted'
+    # Define service principal credentials
+    $appId = "your-application-id"
+    $TenantId = "your-tenant-id"
+    $SecurePassword = $clientSecret|ConvertTo-SecureString  -AsPlainText -Force
+    $Credential = New-Object System.Management.Automation.PSCredential($appId, $SecurePassword)
 
-    Write-Host "Connected to Disconnected operations Cloud through az cli"
-    ```
+    # Connect to Azure using the service principal
+    Connect-AzAccount -ServicePrincipal -Credential $Credential -TenantId $TenantId
+    #>
+    Write-Host "Selecting a different subscription than the operator subscription.."
 
-1. Get the access token, account ID, subscription ID, and tenant ID.
+    $subscription = Get-AzSubscription -SubscriptionName $subscriptionName
 
-    ```powershell
-    $applianceAccessToken = ((az account get-access-token) | ConvertFrom-Json).accessToken
-    $applianceAccountId = $(New-Guid).Guid
-    $applianceSubscriptionId = ((az account show) | ConvertFrom-Json).id
-    $applianceTenantId = ((az account show) | ConvertFrom-Json).tenantId
-    ```
+    # Set the context to that subscription
+    Set-AzContext -SubscriptionId $subscription.Id
 
-1. Get the cloud configuration details.
-
-    ```powershell
-    $cloudConfig = (az cloud show --n $applianceCloudName | ConvertFrom-Json)
-    ```
-
-1. Set the environment parameters. Define the environment parameters using the retrieved cloud configuration.
+1. Initialize each Azure Local node.
 
     ```powershell
-    $applianceEnvironmentParams = @{
-    Name                                      = $applianceCloudName
-    ActiveDirectoryAuthority                  = $cloudConfig.endpoints.activeDirectory
-    ActiveDirectoryServiceEndpointResourceId  = $cloudConfig.endpoints.activeDirectoryResourceId
-    GraphEndpoint                             = $cloudConfig.endpoints.activeDirectoryGraphResourceId
-    MicrosoftGraphEndpointResourceId          = $cloudConfig.endpoints.microsoftGraphResourceId
-    ResourceManagerEndpoint                   = $cloudConfig.endpoints.resourceManager
-    StorageEndpoint                           = $cloudConfig.suffixes.storageEndpoint
-    AzureKeyVaultDnsSuffix                    = $cloudConfig.suffixes.keyvaultDns
-    ContainerRegistryEndpointSuffix           = $cloudConfig.suffixes.acrLoginServerEndpoint
-    }
-    Add-AzEnvironment @applianceEnvironmentParams -ErrorAction Stop | Out-Null
-    Write-Host "Added azure.local Environment"
-    ```
+    $armTokenResponse = Get-AzAccessToken -ResourceUrl "https://armmanagement.$($applianceFQDN)"
 
-1. Set the configuration hash.
+    $ArmAccessToken   = $armTokenResponse.Token
 
-    ```powershell
-    Write-Host "Setting azure.local configurations"
-    $hash = @{
-    AccountID        = $applianceAccountId
-    ArmAccessToken   = $applianceAccessToken
-    Cloud            = $applianceCloudName
-    ErrorAction      = 'Stop'
-    Region           = 'Autonomous'
-    ResourceGroup    = $resourcegroup
-    SubscriptionID   = $applianceSubscriptionId
-    TenantID         = $applianceTenantId
-    CloudFqdn        = $applianceFQDN
-    }
-    ```
-
-1. Arc-enable each node and install extensions to prepare for cloud deployment and cluster creation. 
-
-    ```powershell
-    # Important: Run this command on the first machine (seed node) before running it on other nodes.
-    Invoke-AzStackHciArcInitialization @hash
-    Write-Host -Subject 'ARC node configuration completed'
-    ```
-  
-    > [!NOTE]  
+    Invoke-AzStackHciArcInitialization -SubscriptionID $subscription.Id -TenantID $subscription.TenantId -ResourceGroup $resourceGroup -Cloud $applianceCloudName -Region "Autonomous" -CloudFqdn $applianceFQDN -ArmAccessToken $ArmAccessToken
+> [!NOTE]  
     > Ensure that you run initialization on the first machine before moving on to other nodes.
     > 
     > Nodes appear in the local portal shortly after you run the steps, and the extensions appear on the nodes a few minutes after installation.  
@@ -703,8 +634,41 @@ Here are some tasks you should perform after deploying Azure Local with disconne
 1. **Assign extra operators.** You can assign one or more operators by navigating to **Operator subscriptions**. Assign the **contributor** role at the subscription level.
 
 1. [Export the host guardian service certificates](disconnected-operations-security.md) and backup the folder you export them to on an external share/drive.
+## Appendix
 
-## Troubleshoot and reconfigure using management endpoint
+### Create a service principal for automating Azure Local node registration
+
+Use the operator account to create an SPN for Arc initialization of each Azure Local node. For bootstrap, the Owner role is required at the subscription level.
+
+To create the SPN, follow these steps:
+
+1. Configure CLI on your client machine and run this command:
+
+    ```azurecli  
+    $subscriptionName = 'Starter subscription'
+    $resourcegroup = 'azurelocal-disconnected-operations'
+    $appname = 'azlocalclusapp'      
+    az cloud set -n 'azure.local'
+    az login      
+    az account set --subscription $subscriptionName
+    $subscriptionId = az account show --query id --output tsv
+    $g = (az group create -n $resourcegroup -l autonomous)|ConvertFrom-Json  
+    az ad sp create-for-rbac -n $appname --role Owner --scopes "/subscriptions/$($subscriptionId)"  
+    ```  
+
+    Here's an example output:
+
+    ```json  
+    {  
+      "appId": "<AppId>",  
+      "displayName": "azlocalclusapp",  
+      "password": "<RETRACTED>",  
+      "tenant": "<RETRACTED>"  
+    }  
+
+1. Copy out the AppID and password for use in command line automation. You will log in using this service principal instead of an interactive login or using a device-code.
+
+### Troubleshoot and reconfigure using management endpoint
 
 To use the management endpoint for troubleshooting and reconfiguration, you need the management IP address used during deployment, along with the client certificate and password used to secure the endpoint.
 
@@ -749,6 +713,7 @@ For example:
 - If the install-appliance fails during installation, set `$installAzureLocalParams` and rerun `Install-appliance` as described in [Install and configure the appliance](#install-and-configure-the-appliance).
   
 - If the appliance deployment succeeded and you're updating network configuration, see `Get-Help Set-Appliance` for the settings you can update post-deployment.
+
 
 ::: moniker-end
 

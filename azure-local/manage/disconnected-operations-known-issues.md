@@ -211,7 +211,7 @@ $managedIds|foreach-object {
     az role assignment create --role "Key Vault Administrator" --assignee $_.Id --scope $kv.id
 }
 
-Write-Verbose "Wait 30 min before running cloud deployment from portal"
+Write-Verbose "Wait 20 min before running cloud deployment from portal"
 ```
 
 ### Azure Local VMs
