@@ -14,6 +14,28 @@ ms.date: 12/01/2025
 
 This article lists the various features and improvements that are available in hyperconvered deployments of Azure Local. The latest version of Azure Local solution focuses on cloud-based deployment and updates, cloud-based monitoring, new and simplified experience for Azure Local virtual machine (VM) management, security, and more.
 
+::: moniker range="=azloc-2512"
+
+## Features and improvements in 2512
+
+The November 2025 release of hyperconverged deployments of Azure Local is version **12.2512.1002.xxxx**. For more information, see [Release information summary](./release-information-23h2.md).
+
+This release has the following features and improvements:
+
+- **OS changes**:
+
+    - The 2504 release introduced a new operating system for Azure Local deployments. From 2512 onwards, all the new and existing deployments of Azure Local will run the new OS version **26100.xxxx**. You can download the 2512 OS image from the Azure portal.
+
+        - You also need a driver that's compatible with OS version **26100.xxxx** or Windows Server 2025. If a compatible driver isn't available, you can use the 2503 image.
+
+    - If you purchased Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) through your preferred Microsoft hardware partner, the OS should be preinstalled. Work with your Original Equipment Manufacturer (OEM) to get the OS image that's compatible with **12.2512.1002.xxxx** and a driver that's compatible with OS version **26100.xxxx** or Windows Server 2025.
+
+- **.NET updates**: This build uses .NET version **8.0.22** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
+
+- This release includes various reliability improvements and other bug fixes.
+
+::: moniker-end
+
 ::: moniker range="=azloc-2511"
 
 ## Features and improvements in 2511
