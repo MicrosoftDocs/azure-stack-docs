@@ -4,14 +4,16 @@ description: Learn about system storage requirements for Azure Kubernetes Servic
 ms.topic: concept-article
 author: xelu86
 ms.author: alalve
-ms.date: 12/09/2025
+ms.date: 12/08/2025
 # Intent: As a system administrator, I want to understand the storage requirements needed to run my infrastructure.
 # Keyword: AKS Azure Local storage requirements
 ---
 
 # System requirements for AKS on Azure Local
 
-With Azure Kubernetes Service (AKS) Arc on Azure Local, you can deploy Kubernetes clusters to your local infrastructure using Azure Arc. You can initiate cluster creation and management from familiar tools such as the Azure portal, Azure CLI, and Resource Manager templates. The clusters are automatically onboarded to Azure Arc, allowing centralized management and secure access through Microsoft Entra ID.
+With Azure Kubernetes Service (AKS) Arc on Azure Local, you can deploy and manage Kubernetes clusters on your own infrastructure with integrated Azure Arc control. Cluster creation and
+lifecycle management are supported via familiar Azure tools such as the portal, Azure CLI, and Resource Manager templates. These clusters are automatically onboarded to Azure Arc, enabling
+centralized governance and secure access through Microsoft Entra ID.
 
 ## System requirements
 
@@ -23,23 +25,26 @@ Microsoft and trusted hardware partners preconfigure and validate certified Azur
 - **Operating systems:** Supported and secure OS images tailored for AKS Arc compatibility.
 - **Management tools:** Built-in monitoring, automation, and lifecycle management utilities for streamlined operations.
 
-The mentioned features provide a seamless Azure Arc integration out of the box, which allows administrators to concentrate on managing Kubernetes clusters and workloads, while the platform handles infrastructure maintenance and optimization. While the Azure Local platform provides integrated system requirements to reliably host AKS cluster nodes and control planes, certain configurations should be adjusted based on your environment and workload needs.
+The platform delivers out-of-the-box Azure Arc integration, allowing administrators to focus on workload operations while underlying maintenance and optimizations are handled automatically. While the hardware provides baseline requirements, the cluster and workload sizing should be tailored to your specific environment needs.
 
-### Storage requirements
+## Storage requirements
 
-Storage requirements for AKS Arc on Azure Local depend primarily on hardware configuration, expected AKS workloads, and overall cluster sizing. While certified Azure Local platforms provide built-in baseline hardware, it’s important to assess your storage needs according to the types and scale of applications you plan to run.
+Storage sizing requirements for AKS Arc on Azure Local depend primarily on hardware configuration, expected AKS workloads, and overall cluster sizing. While certified Azure Local platforms provide built-in baseline hardware, it’s important to assess your storage needs according to the types and scale of applications you plan to run.
 
 - **Single storage path:** Ensure at least one storage path is configured in your Azure Local environment. To learn more, see [Create storage path for Azure Local](/azure/azure-local/manage/create-storage-path).
 
 - **Storage per AKS Arc cluster:** For a standard AKS Arc cluster with a single control plane, such as a virtual machine (VM) with one node pool and one control plane running Azure on Linux:
 
-  - **Minimum required:** A total of 10 GB of storage per node
-  - **Maximum usage:** Up to 200 GB total, depending on the number of VMs and the workloads deployed
+  - **Minimum required:** A total of 10 GB of storage per node.
+
+  - **Maximum usage:** Up to 200 GB total, depending on the number of VMs and the workloads deployed.
 
 - **Workload usage recommendations:**
 
   - Use the designated storage volume exclusively for Kubernetes workloads.
+
   - Avoid storing unrelated files or data on these storage paths.
+
   - Store backup files and related data in a different location to prevent potential storage exhaustion issues.
 
 ## See also
