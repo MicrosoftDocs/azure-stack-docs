@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 05/27/2025
+ms.date: 12/08/2025
 ms.custom:
   - devx-track-azurecli
   - sfi-image-nochange
@@ -15,28 +15,25 @@ ms.custom:
 
 [!INCLUDE [hci-applies-to-22h2-21h2](../includes/hci-applies-to-23h2.md)]
 
-This article describes how to create Azure Local VMs enabled by Azure Arc using source images from the Azure Storage account. You can create VM images using the Azure portal or Azure CLI and then use these VM images to create Azure Local VMs.
-
+This article describes how to create Azure Local virtual machines (VMs) enabled by Azure Arc using source images from the Azure Storage account. You can create VM images by using the Azure portal or Azure CLI and then use these VM images to create Azure Local VMs.
 
 ## Prerequisites
 
-Before you begin, make sure that the following prerequisites are completed.
+Before you begin, make sure that you complete the following prerequisites.
 
 # [Azure CLI](#tab/azurecli)
 
 [!INCLUDE [hci-vm-image-prerequisites-storage-account](../includes/hci-vm-image-prerequisites-storage-account.md)]
 
-- If using a client to connect to your Azure Local instance, see [Connect to Azure Local via Azure CLI client](./azure-arc-vm-management-prerequisites.md#azure-command-line-interface-cli-requirements).
+- If you're using a client to connect to your Azure Local instance, see [Connect to Azure Local via Azure CLI client](./azure-arc-vm-management-prerequisites.md#azure-command-line-interface-cli-requirements).
 
-- Make sure that you have **Storage Blob Data Contributor** role on the Storage account that you use for the image. For more information, see [Assign an Azure role for access to blob data](/azure/role-based-access-control/role-assignments-portal?tabs=current).
-
+- Make sure that you have the **Storage Blob Data Contributor** role on the storage account that you use for the image. For more information, see [Assign an Azure role for access to blob data](/azure/role-based-access-control/role-assignments-portal?tabs=current).
 
 # [Azure portal](#tab/azureportal)
 
 [!INCLUDE [hci-vm-image-prerequisites-storage-account](../includes/hci-vm-image-prerequisites-storage-account.md)]
 
-
-- Make sure that you have **Storage Blob Data Contributor** role on the Storage account that you use for the image. For more information, see [Assign an Azure role for access to blob data](/azure/role-based-access-control/role-assignments-portal?tabs=current).
+- Make sure that you have the **Storage Blob Data Contributor** role on the storage account that you use for the image. For more information, see [Assign an Azure role for access to blob data](/azure/role-based-access-control/role-assignments-portal?tabs=current).
 
 ---
 
@@ -54,7 +51,7 @@ Follow these steps to create a VM image using the Azure CLI.
 
 ### Set some parameters
 
-1. Set your subscription, resource group, location, path to the image in local share, and OS type for the image. Replace the parameters in `< >` with the appropriate values.
+1. Set your subscription, resource group, location, image path, and OS type for the image. Replace the parameters in `< >` with your values.
 
 ```azurecli
 $subscription = "<Subscription ID>"
@@ -66,18 +63,18 @@ $imageSourcePath = '"<Blob SAS URL path to the source image in the storage accou
 ```
 
 > [!NOTE]
-> For `$imageSourcePath`, the string must be escaped by double quotes, then enclosed by single quotes as follows: `'""'`.
+> For `$imageSourcePath`, you must escape the string with double quotes, then enclose it with single quotes as follows: `'""'`.
 
 The parameters are described in the following table:
 
 | Parameter        | Description                                                                                |
 |------------------|--------------------------------------------------------------------------------------------|
-| `subscription`   | Subscription for Azure Local that you associate with this image.        |
-| `resource_group` | Resource group for Azure Local that you associate with this image.        |
-| `location`       | Location for your Azure Local instance. For example, this could be `eastus`. |
+| `subscription`   | Subscription for Azure Local that you associate with the storage account VM image.        |
+| `resource_group` | Resource group for Azure Local that you associate with the storage account VM image.        |
+| `location`       | Location for your Azure Local instance. For example, `eastus`. |
 | `imageName`      | Name of the VM image created starting with the image in your local share. <br> **Note**: Azure rejects all the names that contain the keyword Windows. |
-| `imageSourcePath`| Blob SAS URL path to the source image in the storage account. For instructions, see [Generating SAS tokens](/azure/applied-ai-services/form-recognizer/create-sas-tokens#generating-sas-tokens).<br>**Note**: The path string must be escaped by double quotes, then enclosed by single quotes as follows: `'""'`. |
-| `os-type`         | Operating system associated with the source image. This can be Windows or Linux.           |
+| `imageSourcePath`| Blob SAS URL path to the source image in the storage account. For instructions, see [Generating SAS tokens](/azure/applied-ai-services/form-recognizer/create-sas-tokens#generating-sas-tokens).<br>**Note**: Escape the path string with double quotes, then enclose it with single quotes as follows: `'""'`. |
+| `os-type`         | Operating system associated with the source image. For example, Windows or Linux.           |
 
 Here's a sample output:
 
@@ -97,16 +94,18 @@ PS C:\Users\azcli> $imageSourcePath = '"https://vmimagevhdsa1.blob.core.windows.
     ```azurecli
     $customLocationID=(az customlocation show --resource-group $resource_group --name "<custom location name for your Azure Local>" --query id -o tsv)
     ```
-1. Create the VM image starting with a specified marketplace image. Make sure to specify the offer, publisher, sku and version for the marketplace image.
+
+1. Create the VM image starting with a specified image from Azure Storage account. Make sure to specify the offer, publisher, SKU, and version for the image.
 
     ```azurecli
     az stack-hci-vm image create --subscription $subscription --resource-group $resource_Group --custom-location $customLocationID --location $location --name $imageName --os-type $osType --image-path $imageSourcePath --storage-path-id $storagepathid
     ```
-    A deployment job starts for the VM image. 
 
-    In this example, the storage path was specified using the `--storage-path-id` flag and that ensured that the workload data (including the VM, VM image, non-OS data disk) is placed in the specified storage path.
+    A deployment job starts for the VM image.
 
-    If the flag is not specified, the workload data is automatically placed in a high availability storage path.
+        In this example, the storage path was specified using the `--storage-path-id` flag. This flag ensures that the workload data (including the VM, VM image, and non-OS data disk) is placed in the specified storage path.
+
+    If the flag isn't specified, the workload data is automatically placed in a high availability storage path.
 
 The image deployment takes a few minutes to complete. The time taken to download the image depends on the size of the image in Azure Storage account and the network bandwidth available for the download.
 
@@ -163,41 +162,41 @@ Follow these steps to create a VM image using the Azure portal. In the Azure por
 
 1. Go to **Resources** > **VM images**.
 
-1. Select **+ Add VM Image** and from the dropdown list, select **Add VM image from Azure Storage Account**.
+1. Select **+ Add VM Image**, then from the dropdown list, select **Add VM image** from **Azure Storage Account**.
 
-   :::image type="content" source="./media/virtual-machine-image-storage-account/add-image-from-azure-storage-account.png" alt-text="Screenshot showing Add VM image from Azure Marketplace option." lightbox="./media/virtual-machine-image-storage-account/add-image-from-azure-storage-account.png":::
+   :::image type="content" source="./media/virtual-machine-image-storage-account/add-image-from-azure-storage-account.png" alt-text="Screenshot showing the Add VM image from Azure Storage account option." lightbox="./media/virtual-machine-image-storage-account/add-image-from-azure-storage-account.png":::
 
-1. In the **Create an image** page, on the **Basics** tab, input the following information:
+1. In the **Create an image** page, on the **Basics** tab, enter the following information:
 
     1. **Subscription** Select a subscription to associate with your VM image.
 
     1. **Resource group** Create new or select an existing resource group that you associate with the VM image.
-    
+
     1. **Save image as** Enter a name for your VM image.
 
     1. **Custom location** Select a custom location to deploy your VM image. The custom location should correspond to the custom location for your Azure Local.
 
-    1. **Image to download** Select a VM image from the list of images in Azure Marketplace. The dropdown list shows all the Azure Marketplace images that are compatible with your Azure Local.
+    1. **Image to download** Select a VM image from the list of images in Azure Storage account. The dropdown list shows all the images that are compatible with your Azure Local.
 
-    1. **OS type** Select the OS of the image as Windows or Linux. This is the OS associated with the image in your Storage account.
-    
-    1. **VM generation.** Select the Generation of the image.
+        1. **OS type**: Select the OS of the image - Windows or Linux. This OS is associated with the image in your storage account.
 
-    1. **Source.** The source of the image should be Storage blobs and is automatically populated.
+        1. **VM generation**: Select the generation of the image.
 
-    1. **Storage blob.** Specify the Azure Storage account path for the source image on your system.
+        1. **Source**: The source of the image should be storage blobs and is automatically populated.
 
-    1. **Storage path.** Select the storage path for your VM image. Select **Choose automatically** to have a storage path with high availability automatically selected. Select **Choose manually** to specify a storage path to store VM images and configuration files on the Azure Local instance. In this case, ensure that the specified storage path has sufficient storage space.
+        1. **Storage blob**: Specify the Azure Storage account path for the source image on your system.
+
+        1. **Storage path**: Select the storage path for your VM image. Select **Choose automatically** to have a storage path with high availability automatically selected. Select **Choose manually** to specify a storage path to store VM images and configuration files on the Azure Local instance. In this case, ensure that the specified storage path has sufficient storage space.
 
 1. Select **Review + Create** to create your VM image.
 
    :::image type="content" source="./media/virtual-machine-image-storage-account/create-an-image-storage-account-review-create.png" alt-text="Screenshot of the Create an Image page highlighting the Review + Create button." lightbox="./media/virtual-machine-image-storage-account/create-an-image-storage-account-review-create.png":::
 
 1. The input parameters are validated. If the validations succeed, you can review the VM image details and select **Create**.
-        
+
    :::image type="content" source="./media/virtual-machine-image-storage-account/create-an-image-create.png" alt-text="Screenshot of the Create an Image page highlighting the Create button." lightbox="./media/virtual-machine-image-storage-account/create-an-image-create.png":::
-    
-1. An Azure Resource Manager template deployment job starts for the VM image. The image deployment takes a few minutes to complete. The time taken to download the image depends on the size of the Marketplace image and the network bandwidth available for the download.
+
+1. An Azure Resource Manager template deployment job starts for the VM image. The image deployment takes a few minutes to complete. The time taken to download the image depends on the size of the image and the network bandwidth available for the download.
 
    :::image type="content" source="./media/virtual-machine-image-storage-account/deployment-in-progress.png" alt-text="Screenshot showing deployment is in progress." lightbox="./media/virtual-machine-image-storage-account/deployment-in-progress.png":::
 
@@ -209,7 +208,7 @@ Follow these steps to create a VM image using the Azure portal. In the Azure por
 
    :::image type="content" source="./media/virtual-machine-image-storage-account/added-vm-image.png" alt-text="Screenshot showing the newly added VM image in the list of images." lightbox="./media/virtual-machine-image-storage-account/added-vm-image.png":::
 
-   If the download of the VM image fails, the error details are shown in the portal blade.
+   If the download of the VM image fails, the error details are shown in the portal.
 
    :::image type="content" source="./media/virtual-machine-image-storage-account/failed-deployment.png" alt-text="Screenshot showing an error when the download of VM image fails." lightbox="./media/virtual-machine-image-storage-account/failed-deployment.png":::
 
@@ -244,10 +243,9 @@ You might want to view the properties of VM images before you use the image to c
 
 ---
 
-
 ## Delete VM image
 
-You might want to delete a VM image if the download fails for some reason or if the image is no longer needed. Follow these steps to delete the VM images.
+You might want to delete a VM image if the download fails for some reason or if you no longer need the image. Follow these steps to delete the VM images.
 
 # [Azure CLI](#tab/azurecli)
 
