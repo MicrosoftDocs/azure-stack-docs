@@ -1,5 +1,5 @@
 ---
-title: Use Azure Command-Line Interface (CLI) for disconnected operations on Azure Local (preview)
+title: Use Azure Command-Line Interface (CLI) for Disconnected Operations on Azure Local (preview)
 description:  Learn how to use the Azure Command-Line Interface (CLI) for disconnected operations on Azure Local (preview).
 ms.topic: how-to
 author: ronmiab
