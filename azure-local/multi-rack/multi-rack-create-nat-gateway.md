@@ -1,7 +1,7 @@
 ---
 title: Create NAT gateway in Multi-Rack Deployments of Azure Local (preview)
 description: Learn how to create NAT gateway in multi-rack deployments of Azure Local (preview).
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 12/08/2025
 author: alkohli
 ms.author: alkohli
