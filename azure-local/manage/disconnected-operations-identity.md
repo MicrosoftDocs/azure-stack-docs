@@ -30,9 +30,9 @@ Disconnected operations support these solutions:
 
 ## Understand how identity integration works
 
-During deployment, set up disconnected operations to integrate with your Identity Provider (IDP) and Identity and Access Management (IAM). Specify a **Root operator**. This user owns a special operator subscription and adds other operators after deployment. The **Operator subscription** defines the scope for operator actions, and individual actions depend on the **Operator role**.
+During deployment, set up disconnected operations to integrate with your identity provider (IDP) and identity and access management. Specify a **Root operator**. This user owns a special operator subscription and adds other operators after deployment. The **Operator subscription** defines the scope for operator actions, and individual actions depend on the **Operator role**.
 
-On a high level, the OpenID Connect (OIDC) endpoint authenticates users to disconnected operations, and the Lightweight Directory Access Protocol (LDAP) endpoint integrates groups and memberships from your organization. After integration, standard Azure role-based access control is assigned to the desired scopes.
+At a high level, the OpenID Connect (OIDC) endpoint authenticates users to disconnected operations, and the Lightweight Directory Access Protocol (LDAP) endpoint integrates groups and memberships from your organization. After integration, standard Azure role-based access control is assigned to the desired scopes.
 
 :::image type="content" source="./media/disconnected-operations/identity/identity-layout.png" alt-text="Screenshot of how the Appliance and users or workloads communicate with the service." lightbox=" ./media/disconnected-operations/identity/identity-layout.png":::
 
@@ -74,12 +74,12 @@ In this preview release, the following actions are available:
 
 #### Observability and diagnostics
 
-| Action                                          | Operator |
-|-------------------------------------------------|----------|  
-| Collect logs                                    | Yes      |  
-| Configure diagnostics and telemetry settings    | Yes      |
-| Configure syslog forwarding                     | Yes      |  
-| Download logs                                   | Yes      |  
+| Action                                                     | Operator |
+|------------------------------------------------------------|----------|  
+| Collect logs                                               | Yes      |  
+| Configure diagnostics and system-generated log settings    | Yes      |
+| Configure syslog forwarding                                | Yes      |  
+| Download logs                                              | Yes      |  
 
 There are a couple of exceptions to the actions available to operators:
 
@@ -87,14 +87,14 @@ There are a couple of exceptions to the actions available to operators:
 
 - Owners assigned to a service principal name (SPN) can also delete that SPN.
 
-In this preview release, only the following actions are available in the Azure portal.
+In this preview release, only the actions provided are available in the Azure portal.
 
 > [!NOTE]
 > Other built-in roles such as *Security operator*, *Subscription manager*, and *Support operator* might be considered and evaluated post preview if needed. To achieve more detailed operator roles, you can create custom role definitions based on the operator role and assign access to the operator subscription.
 
 ### Understand synchronization  
 
-After you finish the initial setup, groups with group memberships are synchronized making them accessible for disconnected operations. To see which groups and memberships are synchronized, use an Operator Application Programming Interface (API), like `Get-ApplianceExternalIdentityObservability` listed in the [Appendix](#appendix). Synchronization runs periodically, every 6 hours.
+After you finish the initial setup, the system synchronizes groups with group memberships, making them accessible for disconnected operations. To see which groups and memberships are synchronized, use an operator application programming interface (API), such as `Get-ApplianceExternalIdentityObservability` listed in the [Appendix](#appendix). Synchronization runs periodically, every six hours.
 
 ## Identity checklist  
 
@@ -106,12 +106,12 @@ Use this checklist to plan your identity integration with disconnected operation
 
 - If you use an FQDN for the LDAP endpoint:  
   - Make sure the disconnected operations appliance is set and uses a domain name system (DNS) that resolves the provided endpoint.
-    
+
 - Create an account with read-only access on the LDAP v3 server (Active Directory).  
 - Identify the root group for membership synchronization.  
-- Identify UPN. This should be a user that is assigned the role of **Initial operator**.
+- Identify UPN. This user should be assigned the role of **Initial operator**.
 
-The following parameters must be collected and available before deployment:  
+Collect and make available the following parameters before deployment: 
 
 | Parameter Name        | Description            | Example                 |  
 |-----------------------|------------------------|-------------------------|  
@@ -120,7 +120,8 @@ The following parameters must be collected and available before deployment:
 | LdapCredential (Username and Password) | Credentials (read-only) for LDAP integration.       | Username: `ldap` <br></br> Password: ******       |  
 | LdapsCertChainInfo    | Certificate chain information for your LDAP endpoint. You can omit the certificate chain information for demo purposes. | [How to get the certificate chain](disconnected-operations-pki.md)  |
 | OidcCertChainInfo     | Certificate chain information for your OIDC endpoint. You can omit the certificate chain information for demo purposes. | [How to get the certificate chain](disconnected-operations-pki.md)  |
-| LdapServer       | LDAP endpoint that can be reached from disconnected operations. This is used to synchronize groups and group memberships. | `Ldap.local.contoso.com`    |  
+| LdapServer       | LDAP endpoint that can be reached from disconnected operations. This endpoint synchronizes groups and group memberships. | `Ldap.local.contoso.com`    |  
+| LdapPort     | LDAP port that is used to connect to the global catalog. Default 3268 is non-secure channel, 3269 is ssl/secure channel for global catalog | 3269   | 
 | RootOperatorUserPrincipalName  |   UPN for the initial operator persona granted access to the Operator subscription | `Cloud-admin@local.contoso.com`   |
 | SyncGroupIdentifier    | GUID to Active Directory group to start syncing from. <br></br> `$group = Get-ADGroup -Identity “mygroup” \| Select-Object Name, ObjectGUID` | `81d71e5c5-abc4-11af-8132-afdf6bbe2ec1` |
 
@@ -142,11 +143,11 @@ $idpConfig = @{
 
 Consider these limitations when you plan your identity integration with disconnected operations:
 
-- **Users/Group removal after synchronization**: If you remove users and groups with memberships after the last sync, disconnected operations don't clean them up. This can cause errors when you query group memberships.
+- **Users and group removal after synchronization**: If you remove users and groups with memberships after the last sync, disconnected operations don't clean them up. This limitation can cause errors when you query group memberships.
   
-- **No force synchronization capability**: The initial sync can take up to 6 hours. After that, the sync runs every 15 min.
+- **No force synchronization capability**: The initial sync can take up to six hours. After that, the sync runs every 15 minutes.
   
-- **No management groups or aggregate root level**: Not available for multiple subscriptions.
+- **No management groups or aggregate root level**: This feature isn't available for multiple subscriptions.
   
 - **Supported validations**: Only Active Directory/AD FS are validated for support.
   - [Install Active Directory Domain Services (Level 100)](/windows-server/identity/ad-ds/deploy/install-active-directory-domain-services--level-100-)
@@ -156,7 +157,7 @@ Consider these limitations when you plan your identity integration with disconne
 
 As a host admin, use the disconnected operations PowerShell cmdlet to update settings and fix issues. Here are some scenarios where you might need to reconfigure your identity settings:
 
-- **Synchronization failed / Didn’t start**:  
+- **Synchronization failed or didn't start**:  
   - Check that LDAP credentials are valid.
   - Check that LDAP credentials have read access.
   - Check that disconnected operations can reach the LDAP server, resolve the FQDN (if not using an IP address), and that no firewalls block traffic.
@@ -193,7 +194,8 @@ Test-ApplianceExternalIDentityConfigurationDeep -config $idpConfig
 
 ### Set or reset identity
 
-Use this command to reset the operator subscription. Only use if you have issues with your identity integration.
+Use this command to reset the operator subscription. Only use this cmdlet if you have issues with your identity integration.
+
 
 ```powershell
 Set-ApplianceExternalIdentityConfiguration
@@ -313,7 +315,7 @@ $group
 
 ### Grant LDAP User read access on Users with inherit option
 
-The following example grants read access to the LDAP user on the Users container using the `ActiveDirectorySecurityInheritance "All"` setting. Assigning an access rule with "All" makes the rule apply to the entire subtree of the target object.
+The following example grants read access to the LDAP user on the Users container by using the `ActiveDirectorySecurityInheritance "All"` setting. Assigning an access rule with "All" makes the rule apply to the entire subtree of the target object.
 
 ```powershell
 $domain = Get-ADDomain
@@ -356,7 +358,7 @@ $GroupEntry.CommitChanges()
 
 ### Verify and test ADFS functionality
 
-To enable the IDPInitiated Signon test page follow these steps:
+To enable the IDPInitiated Signon test page, follow these steps:
 
 1. Enable the signon test page. Run this command:
 

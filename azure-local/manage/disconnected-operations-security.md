@@ -38,7 +38,7 @@ By default, data volumes in the Azure Local disconnected operations VM appliance
 
 ### BitLocker recovery key retrieval
 
-Azure Local with disconnected operations manages BitLocker recovery passwords for data at rest encryption. You don't need to provide them for regular operations or during system startup. However, support scenarios might require these passwords to bring the system online. Without these passwords, some support scenarios can cause data loss and require system redeployment.
+Azure Local with disconnected operations manages BitLocker recovery passwords for data at rest encryption. You don't need to provide these passwords for regular operations or during system startup. However, support scenarios might require these passwords to bring the system online. Without these passwords, some support scenarios can cause data loss and require system redeployment.
 
 Follow these steps to get your BitLocker recovery passwords:
 
@@ -56,7 +56,7 @@ Follow these steps to get your BitLocker recovery passwords:
     $context = Set-DisconnectedOperationsClientContext -ManagementEndpointClientCertificatePath "${env:localappdata}\AzureLocalOpModuleDev\certs\ManagementEndpoint\ManagementEndpointClientAuth.pfx" -ManagementEndpointClientCertificatePassword $password -ManagementEndpointIpAddress "169.254.53.25" 
     ```
 
-1. Run Get-ApplianceBitLockerRecoveryKeys against the management endpoint.
+1. Run `Get-ApplianceBitLockerRecoveryKeys` against the management endpoint.
 
     ```powershell
     $recoveryKeys = Get-ApplianceBitlockerRecoveryKeys $context 
@@ -78,13 +78,13 @@ Follow these steps to get your BitLocker recovery passwords:
 
 1. Get your BitLocker recovery passwords and store them in a secure location outside Azure Local or the Azure Local host.
 
-If your system is experiencing BitLocker issues, like Azure Local with disconnected operations failing to start, contact support and provide your BitLocker recovery passwords.
+If your system experiences BitLocker issues, like Azure Local with disconnected operations failing to start, contact support and provide your BitLocker recovery passwords.
 
-Manually unlock the virtual hard drive or virtual storage disk using BitLocker recovery passwords. If BitLocker recovery keys aren't available, you need to redeploy the disconnected operations VM appliance.
+Manually unlock the virtual hard drive or virtual storage disk by using BitLocker recovery passwords. If BitLocker recovery keys aren't available, you need to redeploy the disconnected operations VM appliance.
 
 ## Export Host Guardian Service certificates
 
-This procedure isn’t supported in the preview release.
+This procedure isn't supported in the preview release.
 
 To back up Host Guardian Service certificates from your cluster, run these commands from your seed node:
 
@@ -118,7 +118,7 @@ The following table provides the parameters for the REST endpoint:
 | Parameter                   | Description                                                                 | Type   | Required |  
 |-----------------------------|-----------------------------------------------------------------------------|--------|----------|  
 | **ClientCertificateThumbprint** | Thumbprint of the client certificate used to communicate with syslog server. | String | No       |  
-| **Enabled**                 | Lets you enable or disable the syslog agent in the Azure Local disconnected VM appliance. When disabled, the syslog forwarder configuration is removed and the syslog forwarder stops. | Flag   | Yes      |  
+| **Enabled**                 | Enables or disables the syslog agent in the Azure Local disconnected VM appliance. When disabled, the syslog forwarder configuration is removed and the syslog forwarder stops. | Flag   | Yes      |  
 | **NoEncryption**            | Sends syslog messages in clear text.                     | Flag   | No       |  
 | **OutputSeverity**          | Sets the output logging level. Use **Default** for warning, critical, or error messages. Use **Verbose** for all severity levels, including verbose, informational, warning, critical, or error. | String | No       |  
 | **ServerName**              | FQDN or IP address of the syslog server.                                    | String | No       |  
@@ -255,7 +255,7 @@ UDP with no encryption is the easiest to set up, but it doesn't protect against 
 
 ### Disable syslog forwarding
 
-To disable syslog forwarding, run this cmdlet:
+To disable syslog forwarding, run the following cmdlet:
 
 ```powershell
 $configRequestContent = @{
@@ -306,17 +306,17 @@ This section describes the syslog message schema and event definitions.
 
 ### Syslog message schema
 
-The syslog forwarder in Azure Local infrastructure sends messages formatted using the Berkeley Software Distribution (BSD) syslog protocol defined in RFC3164. The syslog message payload uses the Common Event Format (CEF).
+The syslog forwarder in Azure Local infrastructure sends messages formatted by using the Berkeley Software Distribution (BSD) syslog protocol defined in RFC3164. The syslog message payload uses the Common Event Format (CEF).
 
 Each syslog message uses this schema:
 
 `Priority (PRI) | Time | Host | CEF payload |`
 
-The PRI part has two values: *facility* and *severity*. Both values depend on the message type, like Windows Event.
+The PRI part has two values: *facility* and *severity*. Both values depend on the message type, such as Windows Event.
 
 ### Common event format payload schema/definitions
 
-The CEF payload uses the following structure. Field mapping varies depending on the message type, like Windows Event.
+The CEF payload uses the following structure. Field mapping varies depending on the message type, such as Windows Event.
 
 `CEF: |Version | Device Vendor | Device Product | Device Version | Signature ID | Name | Severity | Extensions |`
 
@@ -334,7 +334,7 @@ All Windows events use the PRI facility value of 10.
 - Severity: Level. For details, see the following severity table.
 - Extension: Custom Extension Name. For details, see the following table.
 
-#### Severity of windows events
+#### Severity of Windows events
 
 | PRI severity value | CEF severity value | Windows event level | MasLevel value (in extension) |
 |--------------------|--------------------|---------------------|-------------------------------|

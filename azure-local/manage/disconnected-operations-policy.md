@@ -20,7 +20,7 @@ This article explains how to use Azure Policy in a disconnected Azure Local envi
 
 Azure Policy helps you meet organizational standards by checking resource properties against business rules. These rules, described in JSON format, are called policy definitions. Assign these rules to scopes like subscriptions or individual resources in the Resource Manager scope. For more information, see [Overview of Azure Policy](/azure/governance/policy/overview).
 
-In Azure Local disconnected operations, policy enforcement supports Arc-enabled Kubernetes and Arc-enabled servers. Some built-in policy definitions are included in the Azure Local disconnected operations deployment. Operators turn on these policies by creating policy assignments on the target scope using the disconnected operations portal or CLI. Enforcement depends on the policy type.
+In Azure Local disconnected operations, policy enforcement supports Arc-enabled Kubernetes and Arc-enabled servers. The Azure Local disconnected operations deployment includes some built-in policy definitions. Operators turn on these policies by creating policy assignments on the target scope using the disconnected operations portal or CLI. Enforcement depends on the policy type.
 
 ## Benefits
 
@@ -29,12 +29,14 @@ Azure Policy for Azure Local disconnected operations lets you enforce policies a
 With Azure Policy in a disconnected Azure Local environment, you:
 
 - Ensure resource creation is consistent and compliant.
-- Focus on high-sensitivity tasks. Azure Local disconnected operations are ideal for industries with strict regulations, and Azure Policy is essential for the success of the disconnected operations feature.
+- Focus on high-sensitivity tasks. Disconnected operations are ideal for industries with strict regulations, and Azure Policy is essential for the success of the disconnected operations feature.
 - Enforce policies across all supported Arc services on disconnected operations.
 
 ## Prerequisites
 
-- You have access to an Azure Local instance with Azure Local disconnected operations deployed.
+You must:
+
+- Have access to an Azure Local instance with disconnected operations for Azure Local deployed.
 - Review built-in policies.
 - Identify the policy definition you want to assign.
 
@@ -42,7 +44,7 @@ For more information, see [Supported built-in policies](#supported-built-in-poli
 
 ## Enable Azure Policy
 
-You can use Azure Policy to enforce tags on various resources. In this example, we've used a built-in policy that enforces tags on resource groups. This prevents the creation of resource groups without the required tag. To enable an Azure Policy, follow these steps:
+You can use Azure Policy to enforce tags on various resources. In this example, you use a built-in policy that enforces tags on resource groups. This policy prevents the creation of resource groups without the required tag. To enable an Azure Policy, follow these steps:
 
 ### Set up the basics
 
@@ -50,27 +52,27 @@ You can use Azure Policy to enforce tags on various resources. In this example, 
 
     :::image type="content" source="media/disconnected-operations/azure-policy/policy-main.png" alt-text="Screenshot of the Assign policy page in Azure Local portal showing policy assignment options." lightbox="media/disconnected-operations/azure-policy/policy-main.png":::
 
-2. Under the **Authoring** section, choose **Assignments**, and then select **+ Assign policy**.
+1. Under the **Authoring** section, select **Assignments**, then select **+ Assign policy**.
 
     :::image type="content" source="media/disconnected-operations/azure-policy/assign-policy.png" alt-text="Screenshot of the authoring and assignments page." lightbox="media/disconnected-operations/azure-policy/assign-policy.png":::
 
-3. Identify the **Scope**, **Policy definition**, and **Assignment name**.
+1. Identify the **Scope**, **Policy definition**, and **Assignment name**.
 
-4. Toggle the **Policy enforcement** to **Enabled**.
+1. Toggle the **Policy enforcement** to **Enabled**.
 
-5. Select **Parameters** to proceed to the next step.
+1. Select **Parameters** to proceed to the next step.
 
     :::image type="content" source="media/disconnected-operations/azure-policy/policy-definitions.png" alt-text="Screenshot of the Assign policy basics and available policy definitions." lightbox="media/disconnected-operations/azure-policy/policy-definitions.png":::
 
 ### Set the parameters
 
-1. In the **Parameters** section, provide the required **Tag name**.
+1. In the **Parameters** section, enter the required **Tag name**.
 
-2. Name your tag and select the **Review + create button**.
+1. Enter a name for your tag and select **Review + create**.
 
     :::image type="content" source="media/disconnected-operations/azure-policy/tag-name.png" alt-text="Screenshot of the parameters page to set a tag name." lightbox="media/disconnected-operations/azure-policy/tag-name.png":::
 
-    After the policy is created, you can't create resource groups without the required tag.
+    After you create the policy, you can't create resource groups without the required tag.
 
     :::image type="content" source="media/disconnected-operations/azure-policy/created-tag.png" alt-text="Screenshot of the tag created and required for resource groups." lightbox="media/disconnected-operations/azure-policy/created-tag.png":::
 
@@ -89,10 +91,10 @@ The following table summarizes the built-in policies supported for Azure Local d
 | Add a tag to subscriptions. | - Adds the specified tag and value to subscriptions via a remediation task.<br>- If the tag exists with a different value, it isn't changed. For more information, see [Azure Policy remediation](https://aka.ms/azurepolicyremediation). | [Assign policy definitions for tag compliance](/azure/azure-resource-manager/management/tag-policies) |
 | Inherit a tag from the resource group. | - Adds or replaces the specified tag and value from the parent resource group when any resource is created or updated.<br>- Existing resources can be remediated by triggering a remediation task. | [Assign policy definitions for tag compliance](/azure/azure-resource-manager/management/tag-policies) |
 | Inherit a tag from the subscription if missing. | - Adds the specified tag with its value from the containing subscription when any resource missing this tag is created or updated.<br>- Existing resources can be remediated by triggering a remediation task.<br>- If the tag exists with a different value, it isn't changed. | [Assign policy definitions for tag compliance](/azure/azure-resource-manager/management/tag-policies) |
-| Inherit a tag from the resource group if missing. | - Adds the specified tag and value from the resource group when any resource which is missing this tag is created or updated.<br>- Existing resources can be remediated by triggering a remediation task.<br>- Existing resources can be remediated by triggering a remediation task.<br>- If the tag exists with a different value, it isn't changed. | [Assign policy definitions for tag compliance](/azure/azure-resource-manager/management/tag-policies) |
-| Append a tag and its value from the resource group. | - Appends the specified tag and value from the resource group when any resource which is missing this tag is created or updated.<br>- Doesn't modify the tags of resources created before this policy was applied until those resources are changed.<br>- Doesn't modify the tags of resources created before this policy was applied until those resources are changed.<br>- New 'modify' effect policies are available that support remediation of tags on existing resources. For more information, see [Modify effect policies](https://aka.ms/modifydoc). | [Assign policy definitions for tag compliance](/azure/azure-resource-manager/management/tag-policies) |
-| Append a tag and its value to resources. | - Appends the specified tag and value when any resource which is missing this tag is created or updated.<br>- Doesn't modify the tags of resources created before this policy was applied until those resources are changed.<br>- Doesn't apply to resource groups.<br>- New 'modify' effect policies are available that support remediation of tags on existing resources (see https://aka.ms/modifydoc).| [Assign policy definitions for tag compliance](/azure/azure-resource-manager/management/tag-policies) |
-| Append a tag and its value to resource groups. | - Appends the specified tag and value when any resource group which is missing this tag is created or updated.<br>- Doesn't modify the tags of resource groups created before this policy was applied until those resource groups are changed.<br>- New 'modify' effect policies are available that support remediation of tags on existing resources. For more information, see [Modify effect policies](https://aka.ms/modifydoc). | [Assign policy definitions for tag compliance](/azure/azure-resource-manager/management/tag-policies) |
+| Inherit a tag from the resource group if missing. | - Adds the specified tag and value from the resource group when any resource, which is missing this tag is created or updated.<br>- Existing resources can be remediated by triggering a remediation task.<br>- Existing resources can be remediated by triggering a remediation task.<br>- If the tag exists with a different value, it isn't changed. | [Assign policy definitions for tag compliance](/azure/azure-resource-manager/management/tag-policies) |
+| Append a tag and its value from the resource group. | - Appends the specified tag and value from the resource group when any resource, which is missing this tag is created or updated.<br>- Doesn't modify the tags of resources created before this policy was applied until those resources are changed.<br>- Doesn't modify the tags of resources created before this policy was applied until those resources are changed.<br>- New 'modify' effect policies are available that support remediation of tags on existing resources. For more information, see [Modify effect policies](https://aka.ms/modifydoc). | [Assign policy definitions for tag compliance](/azure/azure-resource-manager/management/tag-policies) |
+| Append a tag and its value to resources. | - Appends the specified tag and value when any resource, which is missing this tag is created or updated.<br>- Doesn't modify the tags of resources created before this policy was applied until those resources are changed.<br>- Doesn't apply to resource groups.<br>- New 'modify' effect policies are available that support remediation of tags on existing resources (see https://aka.ms/modifydoc).| [Assign policy definitions for tag compliance](/azure/azure-resource-manager/management/tag-policies) |
+| Append a tag and its value to resource groups. | - Appends the specified tag and value when any resource group, which is missing this tag is created or updated.<br>- Doesn't modify the tags of resource groups created before this policy was applied until those resource groups are changed.<br>- New 'modify' effect policies are available that support remediation of tags on existing resources. For more information, see [Modify effect policies](https://aka.ms/modifydoc). | [Assign policy definitions for tag compliance](/azure/azure-resource-manager/management/tag-policies) |
 | Require a tag and its value on resources. | Enforces a required tag and its value on resource groups. | [Assign policy definitions for tag compliance](/azure/azure-resource-manager/management/tag-policies) |
 | Require a tag on resources | Enforces existence of a tag. Doesn't apply to resource groups. | [Assign policy definitions for tag compliance](/azure/azure-resource-manager/management/tag-policies) |
 | Require a tag and its value on resource groups. | Enforces a required tag and its value on resource groups. | [Assign policy definitions for tag compliance](/azure/azure-resource-manager/management/tag-policies) |

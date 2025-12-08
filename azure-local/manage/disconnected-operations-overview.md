@@ -12,13 +12,13 @@ ai-usage: ai-assisted
 
 ::: moniker range=">=azloc-2506"
 
-This article explains disconnected operations and how it can be used in the deployment and management of your Azure Local instances. Learn how this capability supports compliance, security, and remote deployments.
+This article explains disconnected operations and how you can use it to deploy and manage your Azure Local instances. Learn how this capability supports compliance, security, and remote deployments.
 
 [!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
 
 ## Overview
 
-Disconnected operations for Azure Local enable the deployment and management of Azure Local instances without a connection to the Azure public cloud. This feature allows you to build, deploy, and manage virtual machines (VMs) and containerized applications using select Azure Arc-enabled services from a local control plane, providing a familiar Azure portal and Azure Command-Line Interface (CLI) experience.
+Disconnected operations for Azure Local enable you to deploy and manage Azure Local instances without a connection to the Azure public cloud. This feature allows you to build, deploy, and manage virtual machines (VMs) and containerized applications by using select Azure Arc-enabled services from a local control plane. You get a familiar Azure portal and Azure Command-Line Interface (CLI) experience.
 
 To run Azure Local with disconnected operations, it's essential to plan for extra capacity for the virtual appliance. The minimum hardware requirements to deploy and operate Azure Local in a disconnected environment are higher because you need to host a local control plane. Proper planning helps ensure smooth operations.
 
@@ -28,7 +28,7 @@ For more information, see technical prerequisites and hardware in the [Preview p
 
 Here are some scenarios for running Azure Local with disconnected operations:
 
-- **Data sovereignty and compliance**: In sectors like government, healthcare, and finance, there's a necessity to meet data residency or compliance requirements. When you run disconnected, data and control remain within your organization's boundaries.
+- **Data sovereignty and compliance**: In sectors like government, healthcare, and finance, you must meet data residency or compliance requirements. When you run disconnected, data and control remain within your organization's boundaries.
 
 - **Remote or isolated locations**: In areas with limited network infrastructure, like remote or protected regions, disconnected operations lets you use Azure Arc services and run workloads without relying on internet connectivity. For example, oil rigs and manufacturing sites.
 
@@ -45,7 +45,7 @@ Disconnected operations for Azure Local support the following services:
 | Role based access control (RBAC)  | Implement RBAC for subscriptions and resource groups. |
 | Managed identity                  | Use **system-assigned** managed identity for resource types that support managed identity. |
 | Arc-enabled servers               | Manage VM guests for Azure Local VMs. |
-| Azure Local VMs           | Set up and manage Windows or Linux virtual machines using the disconnected operations feature for Azure Local. |
+| Azure Local VMs           | Set up and manage Windows or Linux virtual machines by using the disconnected operations feature for Azure Local. |
 | Arc-enabled Kubernetes clusters   | Connect and manage Cloud Native Computing Foundation (CNCF) Kubernetes clusters deployed on Azure Local VMs, enabling unified configuration and management. |
 | Azure Kubernetes Service (AKS) enabled by Arc for Azure Local | Set up and manage AKS on Azure Local. |
 | Azure Local device management     | Create and manage Azure Local instances including the ability to add and remove nodes. |
@@ -70,15 +70,16 @@ To participate in the preview, you must meet the following criteria:
     | Specification                | Minimum configuration            |
     | -----------------------------| ---------------------------------|
     | Number of nodes              | 3 nodes                          |
-    | Memory per node              | 96 GB *                           |
+    | Memory per node              | 96 GB *                          |
     | Cores per node               | 24 physical cores                |
     | Storage per node             | 2 TB SSD/NVME                    |
-    | Boot disk drive storage      | 480 GB SSD/NVME **               |
+    | Boot disk drive storage      | 960 GB SSD/NVME **               |
 
-> [!NOTE]
-> * The Disconnected operations appliance (running on the management cluster) will consume a minimum of 64GB memory. We recommended a minimium configuration for 96GB for the nodes in the management cluster to allow sufficient capacity to run infrastructure components in addition to the appliance.  
-> ** For systems with boot disk smaller than 600 GB - you will be required to use additional data disks from the nodes (capacity) for installing the appliance. We recommend 960GB bootdrive to reduce deployment complexity if your OEM configuration allows for larger boot drive. 
-
+  > [!NOTE]
+  >
+  > - \* The Disconnected operations appliance running on the management cluster needs at least 64 GB of memory. We recommend that management cluster nodes have at least 96 GB of memory to provide enough capacity to run the appliance and other infrastructure components.
+  >
+  > - \** For systems with boot disks smaller than 960 GB, you must use additional data disks from the nodes (capacity) to install the appliance. We recommend a 960 GB boot drive as the minimum to reduce deployment complexity if your OEM configuration allows for a larger boot drive.
 
 ## Get started
 
