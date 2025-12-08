@@ -106,6 +106,12 @@ To prepare each machine for the disconnected operations appliance, follow these 
       # Example
       $networkIntentName = 'ManagementComputeStorage'
       New-VMSwitch -Name "ConvergedSwitch($networkIntentName)" -NetAdapterName "ethernet","ethernet 2"  
+
+      # Rename the VMNetworkAdapter for management. During creation, Hyper-V uses the vSwitch name for the virtual network adapter.
+      Rename-VmNetworkAdapter -ManagementOS -Name "ConvergedSwitch($networkIntentName)" -NewName "vManagement($networkIntentName)"
+
+      # Rename the NetAdapter. During creation, Hyper-V adds the string "vEthernet" to the beginning of the name.
+      Rename-NetAdapter -Name "vEthernet (ConvergedSwitch($networkIntentName))" -NewName "vManagement($networkIntentName)"
      ```
 
    - If you use VLANs, make sure you set the network adapter VLAN.
@@ -165,6 +171,17 @@ To prepare each machine for the disconnected operations appliance, follow these 
     ```powershell
     [Environment]::SetEnvironmentVariable("DISCONNECTED_OPS_SUPPORT", $true, [System.EnvironmentVariableTarget]::Machine)
     ```
+1. Domain join the machine prior to deployment (recommended)
+
+    We recommend that you domain join each Azure Local node before deployment. Here's an example using PowerShell:
+
+    ```powershell
+    $credential = Get-Credential
+    Add-Computer -DomainName dc.azure.local -Credential $credential -Restart
+    ```
+
+   > [!NOTE]
+   > you can also use SConfig to domain join your node.
 
 1. Find the first machine from the list of node names and specify it as the `seednode` you want to use in the cluster.
 
@@ -494,11 +511,11 @@ Create a subscription for your Azure Local nodes and the Azure Local instance (c
 > [!NOTE]
 > Alternatively, use Azure CLI or PowerShell to automate this process.
 
-### Create resource group and service principal for the Azure Local instance
+### Create resource group for the Azure Local instance
 
-Use the operator account to create an SPN for Arc initialization of each Azure Local node. For bootstrap, the Owner role is required at the subscription level.
+Create a resource group to use for your Azure Local deployment. For bootstrap, the **Owner** role is required at the subscription level.
 
-To create the SPN, follow these steps:
+To create the resource group, follow these steps:
 
 1. Configure CLI on your client machine and run this command:
 
@@ -511,20 +528,7 @@ To create the SPN, follow these steps:
     az account set --subscription $subscriptionName
     $subscriptionId = az account show --query id --output tsv
     $g = (az group create -n $resourcegroup -l autonomous)|ConvertFrom-Json  
-    az ad sp create-for-rbac -n $appname --role Owner --scopes "/subscriptions/$($subscriptionId)"  
     ```  
-
-    Here's an example output:
-
-    ```json  
-    {  
-      "appId": "<AppId>",  
-      "displayName": "azlocalclusapp",  
-      "password": "<RETRACTED>",  
-      "tenant": "<RETRACTED>"  
-    }  
-
-1. Copy out the AppID and password for use in the next step.
 
     > [!NOTE]
     > Plan the subscription and resource group where you want to place your nodes and cluster. The resource move action isn't supported.
@@ -550,7 +554,12 @@ Here's an example of how to automate the resource providers registration from Az
     az provider register --namespace Microsoft.ResourceConnector
     az provider register --namespace Microsoft.EdgeArtifact
     az provider register --namespace Microsoft.KubernetesConfiguration
+    az provider register --namespace Microsoft.Kubernetes
     az provider register --namespace Microsoft.HybridContainerService
+    az provider register --namespace Microsoft.HybridConnectivity
+    az provider register --namespace Microsoft.HybridCompute
+    az provider register --namespace Microsoft.GuestConfiguration
+
 ```
 Wait until all resource providers are in the state **Registered**. 
 
@@ -596,12 +605,10 @@ To initialize each node, follow these steps. Modify these steps where necessary 
 
     ```powershell
     Write-Host "az login to Disconnected operations cloud"    
-    az cloud set -n $applianceCloudName --only-show-errors
-    Write-Host "Login using service principal"    
-    az login --service-principal --username $appId --password $clientSecret --tenant <TenantId>    
-    # If you prefer interactive login..
-    # Write-Host "Using device code login - complete the login from your browser"
-    # az login --use-device-code
+    Write-Host "Using device code login - complete the login from your browser"
+    az login --use-device-code
+
+    # If you prefer automated login, see [Use Azure CLI for Disconnected Operations on Azure Local (preview)](disconnected-operations-cli.md) for how to login with the SPN.
 
     Write-Host "Connected to Disconnected operations Cloud through az cli"
     ```
