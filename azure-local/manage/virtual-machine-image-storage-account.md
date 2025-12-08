@@ -103,9 +103,9 @@ PS C:\Users\azcli> $imageSourcePath = '"https://vmimagevhdsa1.blob.core.windows.
 
     A deployment job starts for the VM image.
 
-        In this example, the storage path was specified using the `--storage-path-id` flag. This flag ensures that the workload data (including the VM, VM image, and non-OS data disk) is placed in the specified storage path.
+In this example, the storage path was specified using the `--storage-path-id` flag. This flag ensures that the workload data (including the VM, VM image, and non-OS data disk) is placed in the specified storage path.
 
-    If the flag isn't specified, the workload data is automatically placed in a high availability storage path.
+If the flag isn't specified, the workload data is automatically placed in a high availability storage path.
 
 The image deployment takes a few minutes to complete. The time taken to download the image depends on the size of the image in Azure Storage account and the network bandwidth available for the download.
 
