@@ -13,7 +13,7 @@ ms.custom: template-concept
 
 Quality of Service (QoS) on Managed Network Fabric ensures that higher‑priority traffic is protected under congestion. When enabled, the fabric classifies packets into Traffic Classes—each backed by distinct egress queues—so that critical flows aren't queued behind lower‑priority traffic. Classification uses DSCP (for IP) and EXP (for MPLS) markings; precedence is preserved or rewritten appropriately when encapsulation adds an outer header. 
  
-From the supported API version, the NetworkFabric resource includes a qosConfiguration properties with the single field:  
+From the supported API version, the NetworkFabric resource includes qosConfiguration properties with the single field:  
 ```Azure CLI
 { 
   "qosConfiguration": { 
