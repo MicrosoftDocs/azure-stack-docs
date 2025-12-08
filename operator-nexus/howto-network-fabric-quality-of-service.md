@@ -46,7 +46,7 @@ az networkfabric fabric commit \
   --resource-name XXX_FABRIC_NAME 
 ```
 
-## Feature Behavior & Traffic Classification 
+## Feature behavior & traffic classification 
 
 - Each packet is classified into a Traffic Class (TC); egress queues prevent low‑priority traffic from blocking high‑priority traffic. 
 - DSCP (IP) and EXP (MPLS) determine classification. 
