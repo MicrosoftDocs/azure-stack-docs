@@ -1,8 +1,8 @@
 ---
 title: "Azure Operator Nexus: Create Access Control Lists (ACLs) for network-to-network interconnects and layer 3 isolation domain external networks "
 description: Create ACLs for network-to-network interconnects and layer 3 isolation domain external networks.
-author: sushantjrao 
-ms.author: sushrao
+author: RaghvendraMandawale
+ms.author: rmandawale
 ms.service: azure-operator-nexus
 ms.topic: how-to
 ms.date: 04/18/2024
@@ -68,8 +68,60 @@ The table below provides guidance on the usage of parameters when creating ACLs:
 | vlanMatchCondition     | VLAN match condition that needs to be matched              |                                 |
 | layer4Protocol         | Layer 4 Protocol                                           | should be either TCP or UDP     |
 | ipCondition            | IP condition that needs to be matched                      |                                 |
-| actions                | Action to be taken based on match condition                | Example: permit                 |
+| actions                | Action to be taken based on match condition                | Default Action: Permit </br> Other Possible Actions: PoliceRate, Drop, Count </br> The following section explains the PoliceRate action in detail.                  |
 | configuration-type     | Configuration type (inline or file)                        | Example: inline                 |
+
+### bRate Limiting via Traffic Policy 
+From the supported NF version, ACLs support rate limiting through the Traffic Policy framework. The action is taken based on the matched condition, transitioning ACL behavior from a simple permit/deny model to a granular traffic policing mechanism. This enables bandwidth regulation for IPv4 and IPv6 flows. 
+
+### Key Features 
+- Optional Configuration: Rate limiting is not applied by default; it must be explicitly configured. 
+- Scope: Applies to -  
+  - Network-to-Network Interconnect (NNI) 
+  - External Network Option A and Option B sub-interfaces 
+- Supported ACL Types: ControlPlaneTrafficPolicy, Tenant, and Management
+
+### Parameters 
+Rate: Sustained traffic throughput</br>
+Units: bps, kbps, mbps, gbps, pps</br>
+Burst Size: Temporary allowance above defined rate</br>
+Units: bytes, kbytes, mbytes, packets</br>
+Important: Burst size is mandatory when a Police Rate is defined on NNI ACLs. 
+
+API example:  
+```Azure CLI
+"actions": [
+{ 
+"type": "PoliceRate", 
+"policeRateConfiguration":
+{ 
+"bitRate":
+{ 
+ "rate": 1000, 
+"unit": "Kbps" 
+}, 
+"burstSize":
+{ 
+"size": 10, 
+ "unit": "KBytes" 
+} } } ]
+```
+
+Configuration:  
+```Azure CLI
+traffic-policies 
+   cpu traffic-policy <NF-Name>-cptp-police-rate-acl vrf all 
+   traffic-policy <NF-Name>-cptp-police-rate-acl 
+      match <NF-Name>-cptp-police-rate-match ipv4 
+         protocol neighbors bgp 
+         ! 
+         actions 
+police rate 1000 kbps burst-size 10 kbytes 
+      ! 
+      match ipv4-all-default ipv4 
+      ! 
+      match ipv6-all-default ipv6
+```
 
 > [!NOTE]
 > - Inline ports and inline VLANs are statically defined using azcli.<br>
