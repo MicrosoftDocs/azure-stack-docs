@@ -75,10 +75,10 @@ The table below provides guidance on the usage of parameters when creating ACLs:
 From the supported NF version, ACLs support rate limiting through the Traffic Policy framework. The action is taken based on the matched condition, transitioning ACL behavior from a simple permit/deny model to a granular traffic policing mechanism. This enables bandwidth regulation for IPv4 and IPv6 flows. 
 
 ### Key Features 
-- Optional Configuration: Rate limiting is not applied by default; it must be explicitly configured. 
+- Optional Configuration: Rate limiting isn't applied by default; it must be explicitly configured. 
 - Scope: Applies to -  
   - Network-to-Network Interconnect (NNI) 
-  - External Network Option A and Option B sub-interfaces 
+  - External Network Option A and Option B subinterfaces 
 - Supported ACL Types: ControlPlaneTrafficPolicy, Tenant, and Management
 
 ### Parameters 
@@ -125,13 +125,13 @@ police rate 1000 kbps burst-size 10 kbytes
 > [!NOTE]
 > - Inline ports and inline VLANs are statically defined using azcli.<br>
 > - PortGroupNames and VlanGroupNames are dynamically defined.<br>
-> - Combining inline ports with portGroupNames is not allowed, similarly for inline VLANs and VLANGroupNames.<br>
-> - IPGroupNames and IpPrefixValues cannot be combined.<br>
-> - Egress ACLs do not support certain options like IP options, IP length, fragment, ether-type, DSCP marking, and TTL values.<br>
-> - Ingress ACLs do not support the following options: etherType.<br>
+> - Combining inline ports with portGroupNames isn't allowed, similarly for inline VLANs and VLANGroupNames.<br>
+> - IPGroupNames and IpPrefixValues can't be combined.<br>
+> - Egress ACLs don't support certain options like IP options, IP length, fragment, ether-type, DSCP marking, and TTL values.<br>
+> - Ingress ACLs don't support the following options: etherType.<br>
 > - Ports inputs can be `port-number` or `range-of-ports`.<br>
 > - Fragments inputs can be `port-number` or `range-of-ports`.<br>
-> - ACL with dynamic match configuration on eternal networks is not supported.<br>
+> - ACL with dynamic match configuration on eternal networks isn't supported.<br>
 > - Burst size is mandatory when a Police Rate is defined on NNI ACLs. 
 
 ### Example payload for ACL creation
