@@ -42,7 +42,7 @@ The following table summarizes each action to help you select the appropriate op
 | Reimage   | Reinstall the OS image on existing hardware     | Full      | Hours    | No              | 3 hours     |
 | Replace   | Swap physical hardware with new machine         | Full      | Hours    | Yes             | 4 hours     |
 
-## Choosing the right action
+## Choose the right action
 
 Use the following guidance to determine which action best fits your situation:
 
