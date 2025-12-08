@@ -458,9 +458,7 @@ Review the Operator Nexus release notes for any version specific actions require
 
 ### Validate Nexus Instance
 
-Validate the health and status of all the Nexus Instance resources created during deployment with the [Nexus Instance Readiness Test (IRT)](howto-run-instance-readiness-testing.md).
-
-To perform a resource validation of the Nexus Instance components post-deployment through Azure CLI:
+Perform a resource validation of the Nexus Instance components post-deployment through Azure CLI:
 ```
 # Check `ProvisioningState = Succeeded` in all resources
 
@@ -488,10 +486,6 @@ az networkcloud storageappliance list -g <CLUSTER_MRG> --subscription <CUSTOMER_
 az networkcloud virtualmachine list --sub <CUSTOMER_SUB_ID> --query "reverse(sort_by([?clusterId=='<CLUSTER_RID>'].{name:name, createdAt:systemData.createdAt, resourceGroup:resourceGroup, powerState:powerState, provisioningState:provisioningState, detailedStatus:detailedStatus,bareMetalMachineId:bareMetalMachineIdi,CPUCount:cpuCores, EmulatorStatus:isolateEmulatorThread}, &createdAt))" -o table
 az networkcloud kubernetescluster list --sub <CUSTOMER_SUB_ID> --query "[?clusterId=='<CLUSTER_RID>'].{name:name, resourceGroup:resourceGroup, provisioningState:provisioningState, detailedStatus:detailedStatus, detailedStatusMessage:detailedStatusMessage, createdAt:systemData.createdAt, kubernetesVersion:kubernetesVersion}" -o table
 ```
-
-> [!Note]
-> IRT validation provides a complete functional test of networking and workloads across all components of the Nexus Instance. Simple validation does not provide functional testing.
-
 </details>
 
 ## Links
@@ -511,6 +505,4 @@ Reference links for deploying a Nexus Instance:
 - Reference the [Nexus Telco Input Template](concepts-telco-input-template.md)
 - Reference the [Nexus Platform Prerequisites](howto-platform-prerequisites.md)
 - Create a [Network Fabric ACL](howto-create-access-control-list-for-network-to-network-interconnects.md)
-- Reference the [Nexus Instance Readiness Test (IRT)](howto-run-instance-readiness-testing.md)
-
 </details>

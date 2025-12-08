@@ -214,3 +214,52 @@ Resource utilization metrics provide critical insights into how efficiently netw
 | Power Supply Output Power       | The amount of electrical power, measured in watts, that the power supply unit (PSU) delivers to the device's components. It's a critical factor in ensuring the device has sufficient power for optimal performance.                                                                                                | 1 min               |                       |
 | Temperature Instantaneous       | The real-time temperature of the device's components.                                                                                                                                                                                                                                                                   | 1 min               |                       |
 | Temperature Max                 | The highest safe operating temperature for the device's components. Exceeding this limit can lead to overheating, which might cause performance issues, component damage, or even lead to device failure. It's crucial to monitor and manage the device's temperature to ensure its longevity and optimal performance. | 1 min               |                       |
+
+
+## Real-Time Layer 1 Interface Health Monitoring for Nexus Fabric Devices (Arista CE, TOR, and Management Switches) 
+
+Azure Operator Nexus now supports near realtime monitoring and alerting for Layer 1 (physical layer) metrics on Nexus Network Fabric devices, including: 
+- FEC Uncorrected Codewords (UCW) 
+- PreFEC Bit Error Rate (BER) 
+    
+Metrics are collected only at the physical interface level (not channel level) across Arista CE, TOR, and Management switches connected to CE devices via interfaces. This design ensures observability while respecting capacity constraints and eliminates manual diagnostics for link health. 
+
+### CustomerConfigurable Alerts via Azure Monitor 
+
+- Metrics exposed in Azure Monitor with clear signal names 
+- Alerts can be configured per interface dimension 
+- UCW values emitted as maximum across all channels for an interface 
+- Customers can configure alerts if UCW > 0 at interface level 
+    
+### Limitations 
+
+- No visibility into which channel(s) have UCW > 0 
+- Identifying offending channels requires devicelevel investigation 
+- BER values also emitted as maximum across channels for an interface per device 
+    
+### How It Works 
+- Metrics collected at device level, segmented by interface name
+- Operators can: 
+   - Select interfaces based on operational priorities 
+   - Configure thresholds and alert actions (email, webhook) 
+- Alerts can be applied across all network devices in a subscription 
+    
+
+### Supported Metrics 
+
+- FEC UCW 
+- FEC CCW 
+- PCS Errors 
+- PreFEC BER 
+- Tx Power / Rx Power 
+- PerLane Faults 
+- Bias Current 
+    
+### Appendix A: Platform Capability Matrix 
+    
+
+| <br><br>Platform <br><br><br><br><br> | <br><br>Role <br><br><br><br><br> | <br><br>FEC UCW <br><br><br><br><br> | <br><br>FEC CCW <br><br><br><br><br> | <br><br>PCS Errors <br><br><br><br><br> | <br><br>PreFEC BER <br><br><br><br><br> | <br><br>Tx Power <br><br><br><br><br> | <br><br>Rx Power <br><br><br><br><br> | <br><br>PerLane Faults <br><br><br><br><br> | <br><br>Bias Current <br><br><br><br><br> |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| <br><br>DCS7280DR3A36F <br><br><br><br><br> | <br><br>CE <br><br><br><br><br> | <br><br>✅ <br><br><br><br><br> | <br><br>✅ <br><br><br><br><br> | <br><br>✅ <br><br><br><br><br> | <br><br>✅ <br><br><br><br><br> | <br><br>✅ <br><br><br><br><br> | <br><br>✅ <br><br><br><br><br> | <br><br>✅ <br><br><br><br><br> | <br><br>✅ <br><br><br><br><br> |
+| <br><br>DCS7050CX332C <br><br><br><br><br> | <br><br>TOR <br><br><br><br><br> | <br><br>✅ <br><br><br><br><br> | <br><br>✅ <br><br><br><br><br> | <br><br>✅ <br><br><br><br><br> | <br><br>❌ <br><br><br><br><br> | <br><br>✅ <br><br><br><br><br> | <br><br>✅ <br><br><br><br><br> | <br><br>❌ <br><br><br><br><br> | <br><br>❌ <br><br><br><br><br> |
+| <br><br>Mgmt Switches <br><br><br><br><br> | <br><br>Mgmt <br><br><br><br><br> | <br><br>❌ <br><br><br><br><br> | <br><br>❌ <br><br><br><br><br> | <br><br>❌ <br><br><br><br><br> | <br><br>❌ <br><br><br><br><br> | <br><br>❌ <br><br><br><br><br> | <br><br>❌ <br><br><br><br><br> | <br><br>❌ <br><br><br><br><br> | <br><br>❌ <br><br><br><br><br> |
