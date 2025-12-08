@@ -17,13 +17,12 @@ This article describes how to use Azure Command-Line Interface (CLI) to create v
 
 ## Prerequisites
 
-Before you begin, make sure that:
+Before you begin, make sure that you:
 
-- You've reviewed and completed the [Azure Local VM management prerequisites](./azure-arc-vm-management-prerequisites.md).
-- You've connected to your Azure Local using the instructions in [Connect to Azure Local via Azure CLI client](./azure-arc-vm-management-prerequisites.md#azure-command-line-interface-cli-requirements).
-- The VHDX image must be prepared using `sysprep /generalize /shutdown /oobe`. For more information, see [Sysprep command-line options](/windows-hardware/manufacture/desktop/sysprep-command-line-options#oobe). This is true for both Windows and Linux VM images.
-- The source VM must be powered off before attempting to create the VM image.
-
+- Review and complete the [Azure Local VM management prerequisites](./azure-arc-vm-management-prerequisites.md).
+- Connect to your Azure Local using the instructions in [Connect to Azure Local via Azure CLI client](./azure-arc-vm-management-prerequisites.md#azure-command-line-interface-cli-requirements).
+- Prepare the VHDX image using `sysprep /generalize /shutdown /oobe`. For more information, see [Sysprep command-line options](/windows-hardware/manufacture/desktop/sysprep-command-line-options#oobe). This is true for both Windows and Linux VM images.
+- Power off the source VM before attempting to create the VM image.
 
 ## Create VM image from existing Azure Local VM
 
@@ -49,7 +48,7 @@ $location = "<Location for your Azure Local>"
 $custom_location = "<Custom location for your Azure Local>"
 $osType = "<OS of source VM>"
 $imageName = "<VM image name>"
-$sourceVmName = "<Name of source VM  in the Storage account>"
+$sourceVmName = "<Name of source VM in the storage account>"
 ```
 
 The parameters are described in the following table:
@@ -58,11 +57,11 @@ The parameters are described in the following table:
 |------------------|--------------------------------------------------------------------------------------------|
 | `subscription`   | Subscription for the Azure Local instance that you associate with this image.        |
 | `resource_group` | Resource group for the Azure Local instance that you associate with this image.        |
-| `location`       | Location for your Azure Local. For example, this could be `eastus`. |
+| `location`       | Location for your Azure Local. For example, `eastus`. |
 | `custom-location`| Custom location ID for your Azure Local.  |
 | `name`           | Name of the VM image created starting with the image in your local share. <br> **Note**: Azure rejects all the names that contain the keyword Windows. |
-| `source-vm`      | Name of an existing Azure Local VM that you'll use to create the VM image. |
-| `os-type`        | Operating system associated with the source image. This can be Windows or Linux.           |
+| `source-vm`      | Name of an existing Azure Local VM that you use to create the VM image. |
+| `os-type`        | Operating system associated with the source image. For example, Windows or Linux.           |
 
 Here's a sample output:
 
@@ -77,7 +76,6 @@ PS C:\Users\azcli> $sourceVmName = "mysourcevm"
 ```
 
 ### Create VM image from an Azure Local VM
-
 
 Create the VM image from an existing VM. Run the following command:
 
@@ -155,7 +153,6 @@ You need to view the list of VM images to choose an image to manage.
 You might want to view the properties of VM images before you use the image to create a VM. Follow these steps to view the image properties:
 
 [!INCLUDE [hci-view-vm-image-properties-azure-cli](../includes/hci-view-vm-image-properties-azure-cli.md)]
-
 
 ## Delete VM image
 

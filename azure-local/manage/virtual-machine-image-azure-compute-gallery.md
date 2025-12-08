@@ -14,17 +14,17 @@ ms.date: 10/06/2025
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
-This article describes how to create Azure Local VMs enabled by Azure Arc using source images from the Azure Compute Gallery. You can create VM images on Azure CLI using the instructions in this article and then use these VM images to create Azure Local VMs.
+This article describes how to create Azure Local virtual machines (VMs) enabled by Azure Arc using source images from the Azure Compute Gallery. You can create VM images on Azure CLI using the instructions in this article and then use these VM images to create Azure Local VMs.
 
 ## Prerequisites
 
-- Make sure to review and [complete the Azure Local VM prerequisites](./azure-arc-vm-management-prerequisites.md).
-- Make sure that your image is using a [supported operating system](/azure/azure-arc/servers/prerequisites#supported-operating-systems).
-- For custom images in Azure Compute Gallery, ensure you meet the following extra prerequisites:
-    - You should have a Virtual Hard Disk (VHD) loaded in your Azure Compute Gallery. See how to [Create an image definition and image version](/azure/virtual-machines/image-version).
-    - If using a VHDX:
-        - The VHDX image must be Gen 2 type and secure boot enabled.
-        - The VHDX image must be prepared using `sysprep /generalize /shutdown /oobe`. For more information, see [Sysprep command-line options](/windows-hardware/manufacture/desktop/sysprep-command-line-options).
+- Review and [complete the Azure Local VM prerequisites](./azure-arc-vm-management-prerequisites.md).
+- Make sure that your image uses a [supported operating system](/azure/azure-arc/servers/prerequisites#supported-operating-systems).
+- For custom images in Azure Compute Gallery, ensure you meet these extra prerequisites:
+  - You have a virtual hard disk (VHD) loaded in your Azure Compute Gallery. See how to [Create an image definition and image version](/azure/virtual-machines/image-version).
+  - If using a virtual hard disk v2 (VHDX):
+    - The VHDX image is Gen 2 type and secure boot enabled.
+    - The VHDX image is prepared using `sysprep /generalize /shutdown /oobe`. For more information, see [Sysprep command-line options](/windows-hardware/manufacture/desktop/sysprep-command-line-options).
 
 ## Create an Azure Local VM image from Azure Compute Gallery
 
@@ -40,7 +40,7 @@ To transfer your Azure Compute Gallery image to be an Azure Local compatible ima
 
 1. To download the Azure Compute Gallery image to your resource group, follow the steps in [Export an image version to a managed disk](/azure/virtual-machines/managed-disk-from-image-version). Note the name of the managed disk.  
 
-1. Obtain the SAS token of the managed disk by using the following command:
+1. Get the SAS token of the managed disk by using the following command:
 
     ```azurecli
     # Variables to get SAS URL for the managed disk
@@ -69,17 +69,17 @@ Before creating an Azure Local VM image, you need to set some parameters.
     $imageSourcePath = '"<SAS URL path to the source image>"'
     ```
 
-    The parameters are described in the following table:
+    The following table describes the parameters:
 
     | Parameter        | Description                                                                                |
     |------------------|--------------------------------------------------------------------------------------------|
-    | `subscription`   | Subscription for Azure Local that you associate with this image.        |
-    | `resource_group` | Resource group for Azure Local that you associate with this image.        |
-    | `location`       | Location for your Azure Local instance. For example, this could be `eastus`. |
+    | `subscription`   | Subscription for Azure Local that you associate with the gallery image.        |
+    | `resource_group` | Resource group for Azure Local that you associate with the gallery image.        |
+    | `location`       | Location for your Azure Local instance. For example, `eastus`. |
     | `imageName`      | Name of the VM image created starting with the image in your local share. <br> **Note**: Azure rejects all the names that contain the keyword Windows. |
-    | `os-type`         | Operating system associated with the source image. This can be Windows or Linux.           |
+    | `os-type`         | Operating system associated with the source image. For example, Windows or Linux.           |
     | `customLocationID` | Custom location ID for your Azure Local instance.      |
-    | `imageSourcePath`  | Path to the compute gallery image managed disk SAS URL.        |
+    | `imageSourcePath`  | Path to the gallery image managed disk SAS URL.        |
   
     Here's a sample output:
   
@@ -95,7 +95,7 @@ Before creating an Azure Local VM image, you need to set some parameters.
 
 ### Create an Azure Local VM image
 
-To create an Azure Local VM image:
+To create an Azure Local VM image, follow these steps:
 
 1. Select a custom location to deploy your VM image. The custom location should correspond to the custom location for your Azure Local. Get the custom location ID for your Azure Local. Run the following command:
 
@@ -103,7 +103,7 @@ To create an Azure Local VM image:
     $customLocationID=(az customlocation show --resource-group $resource_group --name "<custom location name for your Azure Local>" --query id -o tsv)
     ```
 
-1. Create the VM image starting with a specified marketplace image. Make sure to specify the offer, publisher, sku, and version for the marketplace image.
+1. Create the VM image starting with a specified gallery image. Make sure to specify the offer, publisher, SKU, and version for the image.
 
     ```azurecli
     az stack-hci-vm image create --subscription $subscription --resource-group $resource_Group --custom-location $customLocationID --location $location --name $imageName --os-type $osType --image-path $imageSourcePath
@@ -168,7 +168,7 @@ To create an Azure Local VM image:
       "type": "microsoft.azurestackhci/galleryimages" 
     } 
     ```
-    
+
 1. To avoid costs associated with a disk, make sure to delete the managed disk that was used to create this image using the following command:
 
     ```azurecli

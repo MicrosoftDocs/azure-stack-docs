@@ -168,15 +168,15 @@ Follow these steps to create a VM image using the Azure portal. In the Azure por
 
 1. In the **Create an image** page, on the **Basics** tab, enter the following information:
 
-    1. **Subscription** Select a subscription to associate with your VM image.
+    1. **Subscription**: Select a subscription to associate with your VM image.
 
-    1. **Resource group** Create new or select an existing resource group that you associate with the VM image.
+    1. **Resource group**: Create new or select an existing resource group that you associate with the VM image.
 
-    1. **Save image as** Enter a name for your VM image.
+    1. **Save image as**: Enter a name for your VM image.
 
-    1. **Custom location** Select a custom location to deploy your VM image. The custom location should correspond to the custom location for your Azure Local.
+    1. **Custom location**: Select a custom location to deploy your VM image. The custom location should correspond to the custom location for your Azure Local.
 
-    1. **Image to download** Select a VM image from the list of images in Azure Storage account. The dropdown list shows all the images that are compatible with your Azure Local.
+    1. **Image to download**: Select a VM image from the list of images in Azure Storage account. The dropdown list shows all the images that are compatible with your Azure Local.
 
         1. **OS type**: Select the OS of the image - Windows or Linux. This OS is associated with the image in your storage account.
 
