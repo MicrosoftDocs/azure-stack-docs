@@ -1,5 +1,5 @@
 ---
-title: Use Azure Command-Line Interface (CLI) for disconnected operations on Azure Local (preview)
+title: Use Azure Command-Line Interface (CLI) for Disconnected Operations on Azure Local (preview)
 description:  Learn how to use the Azure Command-Line Interface (CLI) for disconnected operations on Azure Local (preview).
 ms.topic: how-to
 author: ronmiab
@@ -46,25 +46,25 @@ To use CLI, you must trust the certificate authority (CA) root certificate on yo
 
 For disconnected operations:
 
-1. Learn about public key infrastructure (PKI) for Azure Local with disconnected operations (preview).
+1. Learn about [public key infrastructure (PKI) for Azure Local with disconnected operations (preview)](disconnected-operations-pki.md).
 1. Set up the certificate trust for Azure CLI via PowerShell.
 
 Python trust options (choose one):
 
-- Option 1: Use the OS trust store (recommended). Install a Python module that allows Python use the OS trust store.
+- Option 1: Use the OS trust store (recommended). Install a Python module that allows Python to use the OS trust store.
 
-    Run this Windows example in PowerShell to install the pip-system-certs module in the Python environment bundled with Azure CLI. Replace the sample paths with the actual path on your system.
+    - Run this Windows example in PowerShell to install the **pip-system-certs** module in the Python environment bundled with Azure CLI. Replace the sample paths with the actual path on your system.
 
-    ```powershell
-    & "C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\python.exe" -m pip install pip-system-certs
-    ```
+      ```powershell
+      & "C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\python.exe" -m pip install pip-system-certs
+      ```
     
-    If your client doesn't have the root cert imported, use this command to import it.
+    - If your client doesn't have the root cert imported, use this command to import it.
   
-    ```powershell
-    $applianceRootCertFile = "C:\AzureLocalDisconnectedOperations\applianceRoot.cer"
-    Import-Certificate -FilePath $applianceRootCertFile -CertStoreLocation Cert:\LocalMachine\Root -Confirm:$false
-    ```
+      ```powershell
+      $applianceRootCertFile = "C:\AzureLocalDisconnectedOperations\applianceRoot.cer"
+      Import-Certificate -FilePath $applianceRootCertFile -CertStoreLocation Cert:\LocalMachine\Root -Confirm:$false
+      ```
 
 - Option 2: Update the *.pem* file used by the Azure CLI installation.
 
@@ -135,7 +135,7 @@ To set up Azure CLI for disconnected operations on Azure Local, follow these ste
 
 1. Run the `Get-ApplianceAzCliCloudConfig` function to generate the JSON file that contains the required cloud endpoints.
 
-    Here's an example script:
+    Here's an example PowerShell script you can run:
 
     ```PowerShell
     function Get-ApplianceAzCliCloudConfig
@@ -188,7 +188,7 @@ To set up Azure CLI for disconnected operations on Azure Local, follow these ste
     $cloudConfigJson | Out-File -FilePath cloudConfig.json
     ```
 
-    Here's an example of content in the cloudconfig.json file:
+    Here's an example of content in the *cloudconfig.json* file:
 
     ```json
     { 
@@ -215,7 +215,7 @@ To set up Azure CLI for disconnected operations on Azure Local, follow these ste
 
 ## Extensions for Azure CLI
 
-CLI extensions are Python wheels that aren't shipped with CLI but run as CLI commands. Extensions let you access experimental and prerelease commands and create your own CLI interfaces. The first time you use an extension, you get a prompt to install it.
+CLI extensions are Python wheels that aren't shipped with CLI, but run as CLI commands. Extensions let you access experimental and pre-release commands, and create your own CLI interfaces. The first time you use an extension, you get a prompt to install it.
 
 To get a list of available extensions, run this command:
 
@@ -244,7 +244,53 @@ The following table lists the CLI extensions supported on Azure Local disconnect
 | Azure Policy | Built-in      |    | [Quickstart: Create a policy assignment to identify noncompliant resources using Azure CLI](/azure/governance/policy/assign-policy-azurecli) |
 | Azure Key Vault | Built-in      |    | [Quickstart: Create a key vault using Azure CLI](/azure/key-vault/general/quick-create-cli) |
 
-## Troubleshoot Azure CLI
+## Appendix
+
+### Create the Service Principal Name (SPN) to automate deployments
+
+To create an SPN to automate deployments, run the following command.
+
+```azurecli  
+$subscriptionName = 'Starter subscription'
+$resourcegroup = 'azurelocal-disconnected-operations'
+$appname = 'azlocalclusapp'      
+az cloud set -n 'azure.local'
+az login      
+az account set --subscription $subscriptionName
+$subscriptionId = az account show --query id --output tsv
+$rg = (az group create -n $resourcegroup -l autonomous)|ConvertFrom-Json  
+# Create the SPN with Owner role 
+az ad sp create-for-rbac -n $appname --role Owner --scopes "/subscriptions/$($subscriptionId)"  
+```  
+
+Here's an example output:
+
+```json  
+{  
+"appId": "<AppId>",  
+"displayName": "azlocalclusapp",  
+"password": "<RETRACTED>",  
+"tenant": "<RETRACTED>"  
+}  
+```
+
+1. To automate bootstrap, copy the AppID and password for the next section.
+
+### Login with the SPN
+
+To login with the SPN, run the following command.
+
+```azurecli
+# Replace these variables with your values
+$tenantId = ''
+$clientSecret = ''
+$appId = ''
+az cloud set -n 'azure.local' --only-show-errors
+Write-Host "Login using the service principal"    
+az login --service-principal --username $appId --password $clientSecret --tenant $tenantID    
+```
+
+### Troubleshoot Azure CLI
 
 To troubleshoot Azure CLI, run CLI commands with the --debug parameter to get detailed logs and a stack trace. If the client doesn't trust your root CA, requests to private cloud endpoints can fail with SSL or connection errors.
 
