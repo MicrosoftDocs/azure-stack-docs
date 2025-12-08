@@ -779,6 +779,8 @@ items:
         href: ./multi-rack/multi-rack-create-load-balancer-logical-network.md
       - name: Create public IP addresses
         href: ./multi-rack/multi-rack-create-public-ip.md
+      - name: Create NAT gateway
+        href: ./multi-rack/multi-rack-create-nat-gateway.md
 
 
   - name: Monitor
