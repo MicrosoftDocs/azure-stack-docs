@@ -3,7 +3,7 @@ title:  Security updates for Azure Local
 description: Security updates for Azure Local.
 author: alkohli
 ms.topic: article
-ms.date: 12/01/2025
+ms.date: 12/08/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
@@ -16,7 +16,7 @@ This article lists the various security updates that are available for Azure Loc
 
 ## December OS security update (KB5072033) for Azure Local
 
-This section provides the 2512 security updates associated with OS build **26200.7442** and **26100.7442** released on December 9, 2025, and also includes key notifications, announcements, change logs, and end-of-support notices.
+This section provides the 2512 security updates associated with OS build **26200.7462** and **26100.7462** released on December 9, 2025, and also includes key notifications, announcements, change logs, and end-of-support notices.
 
 ## Windows Secure Boot certificate expiration
 
@@ -26,11 +26,11 @@ To learn more about differences between security updates, optional non-securit
 
 ## Improvements
 
-This security update contains fixes and quality improvements from [KB5070311] (released November 25, 2025). The following summary outlines key issues addressed by this update. Also, included are available new features. The bold text within the brackets indicates the item or area of the change.
+This security update contains fixes and quality improvements from [KB5070311](https://support.microsoft.com/topic/december-1-2025-kb5070311-os-builds-26200-7309-and-26100-7309-preview-5cd455bf-3291-47fa-b0bf-e5f60d0ea7af?preview=true) (released November 25, 2025). The following summary outlines key issues addressed by this update. Also, included are available new features. The bold text within the brackets indicates the item or area of the change.
 
 - **[Copilot]** Fixed: This update addresses an issue where Ask Copilot didn’t activate the **Click to Do** window as expected. The window now appears in the foreground when you share data with Copilot.
 
-- **[File Explorer (known issue)]** Fixed: This update addresses an issue where File Explorer briefly flashes white when you navigate between pages. This issue might occur after you install [KB5070311]. 
+- **[File Explorer (known issue)]** Fixed: This update addresses an issue where File Explorer briefly flashes white when you navigate between pages. This issue might occur after you install [KB5070311](https://support.microsoft.com/topic/december-1-2025-kb5070311-os-builds-26200-7309-and-26100-7309-preview-5cd455bf-3291-47fa-b0bf-e5f60d0ea7af?preview=true). 
 
 - **[Networking]** Fixed: This update fixes an issue where external virtual switches lose their physical network adapter (NIC) bindings after a host reboot. When this happens, the switches revert to internal mode, resulting in loss of network connectivity for virtual machines and blocking normal server operations.
 
@@ -43,7 +43,7 @@ For more information about security vulnerabilities, see the [Security Update Gu
 The following is a known issue with this update.
 
 **Issue**
-Password icon might be missing or invisible in the lock screen sign-in options.
+The Password icon might be missing or invisible in the lock screen sign-in options.
 
 **Symptoms**
 After installing the August 2025 non-security preview update (KB5064081) or later updates, you might notice that the password icon is not visible in the sign-in options on the lock screen. If you hover over the space where the icon should appear, you’ll see that the password button is still available. Select this placeholder to open the password text box and enter your password. After entering your password, you can sign in normally.
@@ -59,7 +59,7 @@ To install the LCU on your Azure Local instance, see [Update Azure Stack Local i
 
 ## File list
 
-For a list of the files that are provided in this update, download the file information for [Cumulative update KB 5072033](https://go.microsoft.com/fwlink/?linkid=).
+For a list of the files that are provided in this update, download the file information for [Cumulative update KB 5072033](https://go.microsoft.com/fwlink/?linkid=2345024).
 
 ::: moniker-end
 
