@@ -61,7 +61,7 @@ When the command runs, it executes on each bare metal machine in the Cluster wit
 > Operator Nexus software upgrades. If an upgrade is known to be in progress, you can use the `--no-wait`
 > option with the command to prevent the command prompt from waiting for the process to complete.
 
-## Creating a bare metal machine keyset
+## Create a bare metal machine keyset
 
 The `baremetalmachinekeyset create` command creates SSH access to the bare metal machine in a Cluster for a group of users.
 
@@ -207,7 +207,7 @@ az networkcloud cluster baremetalmachinekeyset create \
 
 For assistance in creating the `--user-list` structure, see [Azure CLI Shorthand](https://github.com/Azure/azure-cli/blob/dev/doc/shorthand_syntax.md).
 
-## Adding the same user to multiple keysets with different SSH keys
+## Add the same user to multiple keysets with different SSH keys
 
 Azure Operator Nexus supports adding the same user to multiple bare metal machine keysets, each with a different SSH public key. When a user appears in multiple keysets, the system automatically consolidates all SSH keys from all keysets and adds them to the user's `authorized_keys` file on all bare metal machines in the cluster.
 
@@ -232,7 +232,7 @@ This feature is useful in scenarios such as:
 > [!NOTE]
 > A user can be in multiple keysets for bare metal machine access, however a user can't be in multiple "storage access enabled" keysets concurrently.
 
-### Example: Adding a user to two keysets with different SSH keys
+### Example: Add a user to two keysets with different SSH keys
 
 This example creates two keysets for the same user with different SSH keys:
 
@@ -320,7 +320,7 @@ When a user is in multiple keysets:
 - If a user is in multiple keysets, they retain access via keys from other active keysets
 - The user account itself is not deleted unless they are removed from all keysets
 
-### Adding a new SSH key for an existing user
+### Add a new SSH key for an existing user
 
 To add a new SSH key for a user already in another keyset, create a new keyset or update an existing one:
 
@@ -340,7 +340,7 @@ az networkcloud cluster baremetalmachinekeyset update \
 > [!NOTE]
 > When updating a keyset, you must provide the complete user list. The update replaces the existing user list for that keyset, not merges with it.
 
-### Removing a user from one keyset
+### Remove a user from one keyset
 
 To remove a user from a specific keyset while keeping them in others, update the keyset to remove that user from the `--user-list`:
 
@@ -359,7 +359,7 @@ az networkcloud cluster baremetalmachinekeyset update \
 
 This removes `john.doe` from the production-secondary-keyset keyset but keeps them in the production keyset.
 
-### Verifying user status across keysets
+### Verify user status across keysets
 
 Use the `show` command to verify a user's status in each keyset:
 
@@ -382,7 +382,7 @@ The status output will show:
 - `userListStatus`: Array showing each user's status (Active/Invalid)
 - `statusMessage`: Details about the user's status, including which nodes they're active on
 
-### Verifying SSH keys on bare metal machine
+### Verify SSH keys on bare metal machine
 
 After reconciliation completes, you can verify that both keys are present by checking the user's `authorized_keys` file on a bare metal machine:
 
@@ -404,7 +404,7 @@ You should see both SSH keys listed in the file.
 - **Monitor keyset status**: Regularly check keyset status to ensure users remain active and valid
 - **Key rotation strategy**: When rotating keys, create a new keyset with the new key, verify access works, then remove the old keyset
 
-## Deleting a bare metal machine keyset
+## Delete a bare metal machine keyset
 
 The `baremetalmachinekeyset delete` command removes SSH access to the bare metal machine for a group of users. All members of the group no longer have SSH access to any of the bare metal machines in the Cluster.
 
@@ -458,7 +458,7 @@ az networkcloud cluster baremetalmachinekeyset delete \
   --resource-group "cluster_RG"
 ```
 
-## Updating a Bare Metal Machine Keyset
+## Update a Bare Metal Machine Keyset
 
 The `baremetalmachinekeyset update` command allows users to make changes to an existing keyset group.
 
@@ -542,7 +542,7 @@ az networkcloud cluster baremetalmachinekeyset update \
 > [!NOTE]
 > When you remove a user from a Bare Metal Machine Keyset via an update command, the command response might still show the deleted user. This behavior occurs because the command runs asynchronously and the user delete on the backend might still be in progress. Subsequent gets, lists, or shows on the keyset should have the correct list of users.
 
-## Listing Bare Metal Machine Keysets
+## List Bare Metal Machine Keysets
 
 The `baremetalmachinekeyset list` command allows users to see the existing keyset groups in a Cluster.
 
