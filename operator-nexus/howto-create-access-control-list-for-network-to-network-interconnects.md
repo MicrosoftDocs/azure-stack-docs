@@ -71,7 +71,7 @@ The table below provides guidance on the usage of parameters when creating ACLs:
 | actions                | Action to be taken based on match condition                | Default Action: Permit </br> Other Possible Actions: PoliceRate, Drop, Count </br> The following section explains the PoliceRate action in detail.                  |
 | configuration-type     | Configuration type (inline or file)                        | Example: inline                 |
 
-### bRate Limiting via Traffic Policy 
+### Rate Limiting via Traffic Policy 
 From the supported NF version, ACLs support rate limiting through the Traffic Policy framework. The action is taken based on the matched condition, transitioning ACL behavior from a simple permit/deny model to a granular traffic policing mechanism. This enables bandwidth regulation for IPv4 and IPv6 flows. 
 
 ### Key Features 
@@ -86,7 +86,6 @@ Rate: Sustained traffic throughput</br>
 Units: bps, kbps, mbps, gbps, pps</br>
 Burst Size: Temporary allowance above defined rate</br>
 Units: bytes, kbytes, mbytes, packets</br>
-Important: Burst size is mandatory when a Police Rate is defined on NNI ACLs. 
 
 API example:  
 ```Azure CLI
@@ -133,6 +132,7 @@ police rate 1000 kbps burst-size 10 kbytes
 > - Ports inputs can be `port-number` or `range-of-ports`.<br>
 > - Fragments inputs can be `port-number` or `range-of-ports`.<br>
 > - ACL with dynamic match configuration on eternal networks is not supported.<br>
+> - Burst size is mandatory when a Police Rate is defined on NNI ACLs. 
 
 ### Example payload for ACL creation
 
