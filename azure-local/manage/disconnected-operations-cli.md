@@ -51,20 +51,20 @@ For disconnected operations:
 
 Python trust options (choose one):
 
-- Option 1: Use the OS trust store (recommended). Install a Python module that allows Python use the OS trust store.
+- Option 1: Use the OS trust store (recommended). Install a Python module that allows Python to use the OS trust store.
 
-    Run this Windows example in PowerShell to install the **pip-system-certs** module in the Python environment bundled with Azure CLI. Replace the sample paths with the actual path on your system.
+    - Run this Windows example in PowerShell to install the **pip-system-certs** module in the Python environment bundled with Azure CLI. Replace the sample paths with the actual path on your system.
 
-    ```powershell
-    & "C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\python.exe" -m pip install pip-system-certs
-    ```
+      ```powershell
+      & "C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\python.exe" -m pip install pip-system-certs
+      ```
     
-    If your client doesn't have the root cert imported, use this command to import it.
+    - If your client doesn't have the root cert imported, use this command to import it.
   
-    ```powershell
-    $applianceRootCertFile = "C:\AzureLocalDisconnectedOperations\applianceRoot.cer"
-    Import-Certificate -FilePath $applianceRootCertFile -CertStoreLocation Cert:\LocalMachine\Root -Confirm:$false
-    ```
+      ```powershell
+      $applianceRootCertFile = "C:\AzureLocalDisconnectedOperations\applianceRoot.cer"
+      Import-Certificate -FilePath $applianceRootCertFile -CertStoreLocation Cert:\LocalMachine\Root -Confirm:$false
+      ```
 
 - Option 2: Update the *.pem* file used by the Azure CLI installation.
 
@@ -135,7 +135,7 @@ To set up Azure CLI for disconnected operations on Azure Local, follow these ste
 
 1. Run the `Get-ApplianceAzCliCloudConfig` function to generate the JSON file that contains the required cloud endpoints.
 
-    Here's an example script:
+    Here's an example PowerShell script you can run:
 
     ```PowerShell
     function Get-ApplianceAzCliCloudConfig
@@ -188,7 +188,7 @@ To set up Azure CLI for disconnected operations on Azure Local, follow these ste
     $cloudConfigJson | Out-File -FilePath cloudConfig.json
     ```
 
-    Here's an example of content in the cloudconfig.json file:
+    Here's an example of content in the *cloudconfig.json* file:
 
     ```json
     { 
@@ -215,7 +215,7 @@ To set up Azure CLI for disconnected operations on Azure Local, follow these ste
 
 ## Extensions for Azure CLI
 
-CLI extensions are Python wheels that aren't shipped with CLI but run as CLI commands. Extensions let you access experimental and prerelease commands and create your own CLI interfaces. The first time you use an extension, you get a prompt to install it.
+CLI extensions are Python wheels that aren't shipped with CLI, but run as CLI commands. Extensions let you access experimental and pre-release commands, and create your own CLI interfaces. The first time you use an extension, you get a prompt to install it.
 
 To get a list of available extensions, run this command:
 
