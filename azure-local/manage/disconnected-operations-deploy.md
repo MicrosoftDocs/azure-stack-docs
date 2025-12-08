@@ -554,6 +554,10 @@ Here's an example of how to automate the resource providers registration from Az
     az provider register --namespace Microsoft.KubernetesConfiguration
     az provider register --namespace Microsoft.Kubernetes
     az provider register --namespace Microsoft.HybridContainerService
+    az provider register --namespace Microsoft.HybridConnectivity
+    az provider register --namespace Microsoft.HybridCompute
+    az provider register --namespace Microsoft.GuestConfiguration
+
 ```
 Wait until all resource providers are in the state **Registered**. 
 
