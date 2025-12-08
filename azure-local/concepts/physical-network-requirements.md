@@ -94,14 +94,14 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 
 |Model |Firmware|Management |Storage |Compute (Standard)|Compute (SDN)|
 |-----  |---| :-:  | :-:  | :-:   | :-:   |
-| [CX 8100 series](https://www.hpe.com/psnow/doc/PSN1014739213USEN.pdf?jumpid=in_pdp-psnow-dds) <br>(10 GbE)|AOS CX version 10.12.0006 or later |&check;| &check;| &check;| &check; |
-| [CX 8325 series](https://www.arubanetworks.com/resource/aruba-8325-switch-series-data-sheet/) <br>(10, 25, 100 GbE)|AOS CX version 10.11.1010 or later |&check;| &check;| &check;| &check; |
+| [CX 8100 series](https://www.hpe.com/psnow/doc/PSN1014739213USEN) <br>(10 GbE)|AOS CX version 10.12.0006 or later |&check;| &check;| &check;| &check; |
+| [CX 8325 series](https://www.hpe.com/psnow/doc/PSN1011156780USEN) <br>(10, 25, 100 GbE)|AOS CX version 10.11.1010 or later |&check;| &check;| &check;| &check; |
 | [CX 8325H series](https://www.hpe.com/psnow/doc/a00059009enw) <br>(10, 25, 40, 100 GbE)| AOS CX version 10.15.1005 or later |&check;| &check;| &check;| &check; |
 | [CX 8325P series](https://www.hpe.com/psnow/doc/a00059009enw) <br>(40, 100 GbE)| AOS CX version 10.15.0005 or later |&check;| &check;| &check;| &check; |
-| [CX 8360 series](https://www.arubanetworks.com/resource/aruba-cx-8360-switch-series-data-sheet/) <br>(10, 25 GbE) |AOS CX version 10.11.1010 or later |&check;| &check;| &check;| &check; |
-| [CX 10000 series](https://www.arubanetworks.com/resource/aruba-cx-10000-switch-series-data-sheet/) <br>(10, 25 GbE)|AOS CX version 10.11.1010 or later|&check;| &check;| &check;| &check; |
-| [CX 9300 series](https://www.arubanetworks.com/resource/aruba-cx-9300-switch-series-data-sheet/)<br>(100, 400 GbE) |AOS CX version 10.11.1010 or later|&check;| &check;| &check;| &check; |
-| [CX 9300S series](https://www.arubanetworks.com/resource/hpe-aruba-networking-cx-9300s-switch-series/)<br>(10, 25, 100, 400 GbE) |AOS CX version 10.14.1000 or later|&check;| &check;| &check;| &check; |
+| [CX 8360 series](https://www.hpe.com/psnow/doc/PSN1014578434UAEN) <br>(10, 25 GbE) |AOS CX version 10.11.1010 or later |&check;| &check;| &check;| &check; |
+| [CX 10000 series](https://www.hpe.com/psnow/doc/PSN1014368376PREN) <br>(10, 25 GbE)|AOS CX version 10.11.1010 or later|&check;| &check;| &check;| &check; |
+| [CX 9300 series](https://www.hpe.com/psnow/doc/a00125744enw)<br>(100, 400 GbE) |AOS CX version 10.11.1010 or later|&check;| &check;| &check;| &check; |
+| [CX 9300S series](https://www.hpe.com/psnow/doc/PSN1014825214USEN)<br>(10, 25, 100, 400 GbE) |AOS CX version 10.14.1000 or later|&check;| &check;| &check;| &check; |
 
 > [!NOTE]
 > Guest RDMA requires both Compute (Standard) and Storage.
@@ -109,14 +109,14 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 
 |Model |Firmware|Management |Storage |Compute (Standard)|Compute (SDN)|
 |-----  |---| :-:  | :-:  | :-:   | :-:   |
-| [CX 8100 series](https://www.hpe.com/psnow/doc/PSN1014739213USEN.pdf?jumpid=in_pdp-psnow-dds) <br>(10 GbE)|AOS CX version 10.12.0006 or later |&check;| &check;| &check;| &check; |
-| [CX 8325 series](https://www.arubanetworks.com/resource/aruba-8325-switch-series-data-sheet/) <br>(10, 25, 100 GbE)|AOS CX version 10.11.1010 or later |&check;| &check;| &check;| &check; |
+| [CX 8100 series](https://www.hpe.com/psnow/doc/PSN1014739213USEN) <br>(10 GbE)|AOS CX version 10.12.0006 or later |&check;| &check;| &check;| &check; |
+| [CX 8325 series](https://www.hpe.com/psnow/doc/PSN1011156780USEN) <br>(10, 25, 100 GbE)|AOS CX version 10.11.1010 or later |&check;| &check;| &check;| &check; |
 | [CX 8325H series](https://www.hpe.com/psnow/doc/a00059009enw) <br>(10, 25, 40, 100 GbE)| AOS CX version 10.15.1005 or later |&check;| &check;| &check;| &check; |
 | [CX 8325P series](https://www.hpe.com/psnow/doc/a00059009enw) <br>(40, 100 GbE)| AOS CX version 10.15.0005 or later |&check;| &check;| &check;| &check; |
-| [CX 8360 series](https://www.arubanetworks.com/resource/aruba-cx-8360-switch-series-data-sheet/) <br>(10, 25 GbE) |AOS CX version 10.11.1010 or later |&check;| &check;| &check;| &check; |
-| [CX 10000 series](https://www.arubanetworks.com/resource/aruba-cx-10000-switch-series-data-sheet/) <br>(10, 25 GbE)|AOS CX version 10.11.1010 or later|&check;| &check;| &check;| &check; |
-| [CX 9300 series](https://www.arubanetworks.com/resource/aruba-cx-9300-switch-series-data-sheet/)<br>(100, 400 GbE) |AOS CX version 10.11.1010 or later|&check;| &check;| &check;| &check; |
-| [CX 9300S series](https://www.arubanetworks.com/resource/hpe-aruba-networking-cx-9300s-switch-series/)<br>(10, 25, 100, 400 GbE) |AOS CX version 10.14.1000 or later|&check;| &check;| &check;| &check; |
+| [CX 8360 series](https://www.hpe.com/psnow/doc/PSN1014578434UAEN) <br>(10, 25 GbE) |AOS CX version 10.11.1010 or later |&check;| &check;| &check;| &check; |
+| [CX 10000 series](https://www.hpe.com/psnow/doc/PSN1014368376PREN) <br>(10, 25 GbE)|AOS CX version 10.11.1010 or later|&check;| &check;| &check;| &check; |
+| [CX 9300 series](https://www.hpe.com/psnow/doc/a00125744enw)<br>(100, 400 GbE) |AOS CX version 10.11.1010 or later|&check;| &check;| &check;| &check; |
+| [CX 9300S series](https://www.hpe.com/psnow/doc/PSN1014825214USEN)<br>(10, 25, 100, 400 GbE) |AOS CX version 10.14.1000 or later|&check;| &check;| &check;| &check; |
 > [!NOTE]
 > Guest RDMA requires both Compute (Standard) and Storage.
 # [Cisco](#tab/Cisco)
