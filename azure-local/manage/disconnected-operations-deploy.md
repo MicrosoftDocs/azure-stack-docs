@@ -107,10 +107,10 @@ To prepare each machine for the disconnected operations appliance, follow these 
       $networkIntentName = 'ManagementComputeStorage'
       New-VMSwitch -Name "ConvergedSwitch($networkIntentName)" -NetAdapterName "ethernet","ethernet 2"  
 
-      #Rename VMNetworkAdapter for management because during creation, Hyper-V uses the vSwitch name for the virtual network adapter.
+      # Rename the VMNetworkAdapter for management. During creation, Hyper-V uses the vSwitch name for the virtual network adapter.
       Rename-VmNetworkAdapter -ManagementOS -Name "ConvergedSwitch($networkIntentName)" -NewName "vManagement($networkIntentName)"
 
-      #Rename NetAdapter because during creation, Hyper-V adds the string "vEthernet" to the beginning of the name.
+      # Rename the NetAdapter. During creation, Hyper-V adds the string "vEthernet" to the beginning of the name.
       Rename-NetAdapter -Name "vEthernet (ConvergedSwitch($networkIntentName))" -NewName "vManagement($networkIntentName)"
      ```
 
@@ -173,13 +173,15 @@ To prepare each machine for the disconnected operations appliance, follow these 
     ```
 1. Domain join the machine prior to deployment (recommended)
 
-    We recommend you to domain join each Azure Local node prior to deployment. Here is an example using Powershell:
+    We recommend that you domain join each Azure Local node before deployment. Here's an example using PowerShell:
 
     ```powershell
     $credential = Get-Credential
     Add-Computer -DomainName dc.azure.local -Credential $credential -Restart
     ```
-    Please note you can also use SConfig to domain join your node.
+
+   > [!NOTE]
+   > you can also use SConfig to domain join your node.
 
 1. Find the first machine from the list of node names and specify it as the `seednode` you want to use in the cluster.
 
@@ -511,7 +513,7 @@ Create a subscription for your Azure Local nodes and the Azure Local instance (c
 
 ### Create resource group for the Azure Local instance
 
-Create a resource group to use for your Azure Local deployment. For bootstrap, the Owner role is required at the subscription level.
+Create a resource group to use for your Azure Local deployment. For bootstrap, the **Owner** role is required at the subscription level.
 
 To create the resource group, follow these steps:
 
@@ -606,7 +608,7 @@ To initialize each node, follow these steps. Modify these steps where necessary 
     Write-Host "Using device code login - complete the login from your browser"
     az login --use-device-code
 
-    # If you prefer automated login see CLI article for how to login with SPN.
+    # If you prefer automated login, see [Use Azure CLI for Disconnected Operations on Azure Local (preview)](disconnected-operations-cli.md) for how to login with the SPN.
 
     Write-Host "Connected to Disconnected operations Cloud through az cli"
     ```
