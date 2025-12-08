@@ -5,7 +5,7 @@ ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 11/18/2025
+ms.date: 12/01/2025
 ---
 
 # What's new in hyperconverged deployments of Azure Local?
@@ -18,7 +18,7 @@ This article lists the various features and improvements that are available in h
 
 ## Features and improvements in 2511
 
-The November 2025 release of hyperconverged deployments of Azure Local is version **12.2511.1002.5**. For more information, see [Release information summary](./release-information-23h2.md).
+The November 2025 release of hyperconverged deployments of Azure Local is version **12.2511.1002.502**. For more information, see [Release information summary](./release-information-23h2.md).
 
 This release has the following features and improvements:
 
@@ -28,7 +28,9 @@ This release has the following features and improvements:
 
         - You also need a driver that's compatible with OS version **26100.7171** or Windows Server 2025. If a compatible driver isn't available, you can use the 2503 image.
 
-    - If you purchased Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) through your preferred Microsoft hardware partner, the OS should be preinstalled. Work with your Original Equipment Manufacturer (OEM) to get the OS image that's compatible with **12.2511.1002.5** and a driver that's compatible with OS version **26100.7171** or Windows Server 2025.
+    - If you purchased Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) through your preferred Microsoft hardware partner, the OS should be preinstalled. Work with your Original Equipment Manufacturer (OEM) to get the OS image that's compatible with **12.2511.1002.502** and a driver that's compatible with OS version **26100.7171** or Windows Server 2025.
+
+- Build **12.2511.1002.502** improves the reliability of deploy and update admin actions. If you've already deployed or updated to **12.2511.1002.5**, no further action is needed. Both **12.2511.1002.5** and **12.2511.1002.502** are supported builds.
 
 - **.NET updates**: This build uses .NET version **8.0.22** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
 
@@ -205,7 +207,7 @@ This release has the following features and improvements:
 
     - **Azure Arc gateway documentation updates**: Improved guidance on registering with and without Azure Arc gateway and with and without proxy in an easy to use layout. For more information, see [Register with Azure Arc gateway](./deploy/deployment-with-azure-arc-gateway.md) and [Register with Azure Arc](./deploy/deployment-without-azure-arc-gateway.md).
     - **Upgrade documentation updates**: Clarified steps for upgrading from previous versions of Azure Local and an easy to use layout. For more information, see [Upgrade OS for Azure Local](./upgrade/upgrade-22h2-to-23h2-powershell.md).
-    - **Azure Local Security book**: This book was previously available as a *pdf* and is now available as web content on Learn. For more information, see [Azure Local Security book](./security-book/overview.md)
+    - **Azure Local security book**: This book was previously available as a *pdf* and is now available as web content on Learn. For more information, see [Azure Local security book](./security-book/overview.md).
 
 
 ::: moniker-end
@@ -240,7 +242,7 @@ This release has the following features and improvements:
  
 ::: moniker-end
 
-::: moniker range="=azloc-2506"
+::: moniker range="=azloc-previous"
 
 ## Features and improvements in 2506
 
@@ -286,10 +288,6 @@ This release has the following features and improvements:
 - **Archival of Azure Local, version 22H2 documentation**: [Azure Local, version 22H2 documentation](/previous-versions/azure/azure-local/release-information) is now archived and available in the [Azure previous versions documentation](/previous-versions/azure/) for reference. The archived documentation isn't updated and isn't supported.
 
 - **Azure Government cloud**: The solution update isn't supported for Azure Local instances deployment in Azure Government cloud.
-
-::: moniker-end
-
-::: moniker range="=azloc-previous"
 
 ## Features and improvements in 2505
 
@@ -750,7 +748,7 @@ This release includes the following updates to the security documentation:
 
 - Updated the documentation for [Manage system security with Microsoft Defender for Cloud (preview)](./manage/manage-security-with-defender-for-cloud.md).
 - Updated the Security Baselines settings to 320 settings, including one removal, three additions, and one change about disabling Dynamic Root of Measurement (DRTM) for new deployments. To view and download the complete list of security settings, see [Security Baseline](https://github.com/Azure-Samples/AzureStackHCI/blob/main/security/SecurityBaseline_2402.csv).
-- Published the [Azure Local security book](https://assetsprod.microsoft.com/mpn/azure-stack-hci-security-book.pdf).
+- Published the [Azure Local security book](./security-book/overview.md).
 
 
 ## Features and improvements in 2311.5
