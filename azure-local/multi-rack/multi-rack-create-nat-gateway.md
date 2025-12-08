@@ -13,7 +13,7 @@ ms.author: alkohli
 
 This article describes how to create a Network Address Translation (NAT) gateway in multi-rack deployments of Azure Local.
 
-For an overview of NAT gateway, see [About NAT gateway on multi-rack deployments of Azure Local](./multi-rack-create-nat-gateway.md).
+For an overview of NAT gateway, see [About NAT gateway on multi-rack deployments of Azure Local](./multi-rack-nat-gateway-overview.md).
 
 [!INCLUDE [hci-preview](../includes/hci-preview.md)]
 
@@ -26,16 +26,6 @@ For an overview of NAT gateway, see [About NAT gateway on multi-rack deployments
 - Ensure you have access to an Azure subscription with the appropriate role-based access control (RBAC) role and permissions assigned. For more information, see [Use Role-based Access Control to manage Azure Local VMs for multi-rack deployments](./multi-rack-assign-vm-rbac-roles.md).
 
 - Ensure you have access to a resource group where you want to provision the NAT gateway.
-
-## Create load balancers on logical networks using Azure CLI
-
-Use the `az stack-hci-vm network lb` command to create a load balancer on logical networks in your Azure Local instance.  
-
-Key things to consider before you create a load balancer on logical networks:
-
-- After creating the load balancer, you can't update the frontend IP configuration or change the logical network. The `az stack-hci-vm network lb update` command can only be used to update tags.
-
-- If you need to add more backend pools, rules, or probes, you must use the `az stack-hci-vm network lb create` command again, using the exact same variables you provided during the initial creation.
 
 ## Create a NAT gateway using Azure CLI
 
@@ -135,7 +125,6 @@ Follow these steps to configure a virtual network using Azure CLI:
 1. Set the parameters. Here's an example:
 
     ```azurecli
-    Azure CLICopy
     $resourceGroup = "mylocal-rg"
     $vnet = "mylocal-vnet"
     $subnet = "mylocal-subnet"
@@ -145,7 +134,7 @@ Follow these steps to configure a virtual network using Azure CLI:
     Required parameters:
 
     | Parameter | Description |
-    |-- | -- |
+    |--|--|
     |vnet-name | Name of the virtual network whose subnet you want to update. |
     | name | Name of the virtual network subnet you want to update. |
     | resource-group | Name of the resource group where the virtual network subnet exists. |
