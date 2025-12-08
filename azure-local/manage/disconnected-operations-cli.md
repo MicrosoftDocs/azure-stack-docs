@@ -276,9 +276,9 @@ Here's an example output:
 
 1. To automate bootstrap, copy the AppID and password for the next section.
 
-### Login with an SPN
+### Login with the SPN
 
-To login with an SPN, run the following command.
+To login with the SPN, run the following command.
 
 ```azurecli
 # Replace these variables with your values
