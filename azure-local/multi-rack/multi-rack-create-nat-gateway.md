@@ -19,7 +19,7 @@ For an overview of NAT gateway, see [About NAT gateway on multi-rack deployments
 
 ## Prerequisites
 
-- Review and complete all prerequisites.
+- Review and complete all [prerequisites](./multi-rack-prerequisites.md).
 - Ensure you have access to the Azure Resource Manager (ARM) ID of the custom location associated with your Azure Local instance where you want to provision the NAT gateway resource.
 - Ensure you have access to the ARM ID of the public IP resource that the NAT gateway will use for translation.
 - If you're using a client to connect to your Azure Local instance, see [Connect to the system remotely](./multi-rack-vm-management-prerequisites.md#connect-to-the-system-remotely).
@@ -50,11 +50,7 @@ Before you begin, review the required parameters:
 | public-ip-address-ids | ARM IDs of the public IP resources you want to associate with the NAT gateway. **Note:** Currently only one public IP is supported. |
 | inbound-nat-rules | Inbound NAT rules provided in a JSON format. Must include:<br>- Name of the rule<br>- Protocol<br>- Frontend port<br>- Backend port<br>- ARM ID of the IP config of the VM network interface (backend)<br>- ARM ID of the public IP of the NAT gateway |
 
-### Steps to create a NAT gateway resource using Azure CLI
-
-Complete the following steps to create a NAT gateway resource using Azure CLI.
-
-#### Sign in and set subscription
+### Sign in and set subscription
 
 1. Connect to your Azure Local instance.
 
@@ -70,7 +66,7 @@ Complete the following steps to create a NAT gateway resource using Azure CLI.
     az account set --subscription <Subscription ID>
     ```
   
-#### Set the parameters
+### Set the parameters
 
 Set the [parameters](#review-required-parameters). Here's an example:
 
@@ -100,11 +96,11 @@ $inboundRules = '[
 ]'
 ```
 
-#### Create the NAT gateway
+### Create the NAT gateway
 
 Run the following command to create the NAT gateway:  
 
-```PowerShell
+```azurecli
 az stack-hci-vm network nat create `
 --resource-group $resourceGroup `
 --name $name `
@@ -116,7 +112,7 @@ az stack-hci-vm network nat create `
 
 Once the NAT gateway is created, you can associate it with a virtual network subnet.
 
-### Associate a virtual network subnet with a NAT gateway
+## Associate a virtual network subnet with a NAT gateway
 
 Use the `az stack-hci-vm network vnet subnet update` command to associate a virtual network subnet with a NAT gateway.
 
@@ -150,7 +146,7 @@ Follow these steps to configure a virtual network using Azure CLI:
     --nat-gateway $natgatewayID
     ```
 
-### Update inbound rules on the NAT gateway
+## Update inbound rules on the NAT gateway
 
 To update NAT inbound rules after the NAT gateway is created, rerun the `az stack-hci-vm network nat create` command using the same configuration values that were specified when the NAT gateway was originally created, along with the updated inbound rule definitions.
 
