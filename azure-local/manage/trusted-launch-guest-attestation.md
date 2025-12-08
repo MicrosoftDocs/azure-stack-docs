@@ -5,7 +5,7 @@ ms.topic: how-to
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 18/08/2025
+ms.date: 12/08/2025
 ---
 
 # Guest attestation for Trusted launch for Azure Local VMs (preview)
