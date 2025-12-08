@@ -243,8 +243,45 @@ The following table lists the CLI extensions supported on Azure Local disconnect
 | Azure Container Registry | Built-in      |    |  |
 | Azure Policy | Built-in      |    | [Quickstart: Create a policy assignment to identify noncompliant resources using Azure CLI](/azure/governance/policy/assign-policy-azurecli) |
 | Azure Key Vault | Built-in      |    | [Quickstart: Create a key vault using Azure CLI](/azure/key-vault/general/quick-create-cli) |
+## Appendix
 
-## Troubleshoot Azure CLI
+### Create SPN to automate deployments
+    ```azurecli  
+    $subscriptionName = 'Starter subscription'
+    $resourcegroup = 'azurelocal-disconnected-operations'
+    $appname = 'azlocalclusapp'      
+    az cloud set -n 'azure.local'
+    az login      
+    az account set --subscription $subscriptionName
+    $subscriptionId = az account show --query id --output tsv
+    $g = (az group create -n $resourcegroup -l autonomous)|ConvertFrom-Json  
+    # Create the SPN with owner Role 
+    az ad sp create-for-rbac -n $appname --role Owner --scopes "/subscriptions/$($subscriptionId)"  
+    ```  
+
+Here's an example output:
+
+    ```json  
+    {  
+      "appId": "<AppId>",  
+      "displayName": "azlocalclusapp",  
+      "password": "<RETRACTED>",  
+      "tenant": "<RETRACTED>"  
+    }  
+
+1. Copy out the AppID and password if you want to automate bootstrap in the next step.
+### Login with SPN
+    ```azurecli
+    # Replace these variables with your values
+    $tenantId = ''
+    $clientSecret = ''
+    $appId = ''
+    az cloud set -n 'azure.local' --only-show-errors
+    Write-Host "Login using service principal"    
+    az login --service-principal --username $appId --password $clientSecret --tenant $tenantID    
+    
+    ```
+### Troubleshoot Azure CLI
 
 To troubleshoot Azure CLI, run CLI commands with the --debug parameter to get detailed logs and a stack trace. If the client doesn't trust your root CA, requests to private cloud endpoints can fail with SSL or connection errors.
 
