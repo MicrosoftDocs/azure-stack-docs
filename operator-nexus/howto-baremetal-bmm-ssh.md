@@ -61,7 +61,7 @@ When the command runs, it executes on each bare metal machine in the Cluster wit
 > Operator Nexus software upgrades. If an upgrade is known to be in progress, you can use the `--no-wait`
 > option with the command to prevent the command prompt from waiting for the process to complete.
 
-## Creating a bare metal machine keyset
+## Create a bare metal machine keyset
 
 The `baremetalmachinekeyset create` command creates SSH access to the bare metal machine in a Cluster for a group of users.
 
@@ -207,7 +207,204 @@ az networkcloud cluster baremetalmachinekeyset create \
 
 For assistance in creating the `--user-list` structure, see [Azure CLI Shorthand](https://github.com/Azure/azure-cli/blob/dev/doc/shorthand_syntax.md).
 
-## Deleting a bare metal machine keyset
+## Add the same user to multiple keysets with different SSH keys
+
+Azure Operator Nexus supports adding the same user to multiple bare metal machine keysets, each with a different SSH public key. When a user appears in multiple keysets, the system automatically consolidates all SSH keys from all keysets and adds them to the user's `authorized_keys` file on all bare metal machines in the cluster.
+
+### How it works
+
+When multiple keysets contain the same user (identified by `azureUserName`), the system:
+
+- **Consolidates SSH keys**: All unique SSH public keys from all keysets are collected and merged into a single list for that user
+- **Merges group memberships**: The user is added to all groups associated with the keysets they belong to
+- **Maintains single user account**: The user receives a single UID across all keysets, but can belong to multiple groups
+- **Tracks keyset membership**: The system maintains a mapping of which keysets each user belongs to
+
+### Use cases
+
+This feature is useful in scenarios such as:
+
+- **Multiple jump hosts**: A user needs to access bare metal machines from different jump hosts, each with its own SSH key
+- **Key rotation**: Gradually rotating SSH keys by adding a new key in a new keyset while keeping the old key active in another keyset
+- **Team access management**: Different teams can manage their own keysets, and a user can be included in multiple teams with different keys
+- **Temporary access**: Providing temporary access via a separate keyset with a different key, which can be easily revoked by deleting that keyset
+
+> [!NOTE]
+> A user can be in multiple keysets for bare metal machine access, however a user can't be in multiple "storage access enabled" keysets concurrently.
+
+### Example: Add a user to two keysets with different SSH keys
+
+This example creates two keysets for the same user with different SSH keys:
+
+**Keyset 1: Production Access**
+
+```azurecli
+az networkcloud cluster baremetalmachinekeyset create \
+  --name "production-primary-keyset" \
+  --extended-location name="/subscriptions/subscriptionId/resourceGroups/cluster_RG/providers/Microsoft.ExtendedLocation/customLocations/clusterExtendedLocationName" \
+    type="CustomLocation" \
+  --location "eastus" \
+  --azure-group-id "f110271b-XXXX-4163-9b99-214d91660f0e" \
+  --expiration "2025-12-31T23:59:59.008Z" \
+  --jump-hosts-allowed "192.0.2.1" \
+  --os-group-name "prod-group" \
+  --privilege-level "Standard" \
+  --user-list '[{
+    "description": "Production access for user",
+    "azureUserName": "john.doe",
+    "sshPublicKey": {"keyData": "from=\"192.0.2.1\" ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC... keyset1-key"},
+    "userPrincipalName": "john.doe@contoso.com"
+  }]' \
+  --cluster-name "clusterName" \
+  --resource-group "cluster_RG"
+```
+
+**Keyset 2: Production Secondary Access (Same User, Different Key)**
+
+```azurecli
+az networkcloud cluster baremetalmachinekeyset create \
+  --name "production-secondary-keyset" \
+  --extended-location name="/subscriptions/subscriptionId/resourceGroups/cluster_RG/providers/Microsoft.ExtendedLocation/customLocations/clusterExtendedLocationName" \
+    type="CustomLocation" \
+  --location "eastus" \
+  --azure-group-id "f110271b-XXXX-4163-9b99-214d91660f0e" \
+  --expiration "2025-12-31T23:59:59.008Z" \
+  --jump-hosts-allowed "192.0.2.5" \
+  --os-group-name "prod-secondary-group" \
+  --privilege-level "Standard" \
+  --user-list '[{
+    "description": "Production secondary access for user",
+    "azureUserName": "john.doe",
+    "sshPublicKey": {"keyData": "from=\"192.0.2.5\" ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQD... keyset2-key"},
+    "userPrincipalName": "john.doe@contoso.com"
+  }]' \
+  --cluster-name "clusterName" \
+  --resource-group "cluster_RG"
+```
+
+After both keysets are created and reconciled:
+
+- The user `john.doe` will have **both SSH keys** in their `authorized_keys` file
+- The user will belong to **both groups**: `prod-group` and `prod-secondary-group`
+- The user can authenticate using **either SSH key** from the related jump host defined in the keyset
+- Both keysets will show the user as "Active" in their status
+
+### Important considerations
+
+#### User Principal Name (UPN) consistency
+
+The same `userPrincipalName` must be used across all keysets for the same user. The system validates users against the Azure AD group specified in each keyset's `azureGroupId`. All keysets must reference Azure AD groups that contain the user's UPN.
+
+#### SSH key uniqueness
+
+- **Within a keyset**: Each user can only have one SSH key per keyset
+- **Across keysets**: The same user can have different SSH keys in different keysets
+
+#### Group membership
+
+When a user is in multiple keysets:
+
+- The user is added to all groups associated with those keysets
+- Each keyset can have a different `osGroupName` and `privilegeLevel`
+- The user's effective permissions are the union of all groups they belong to. For example, if the user is a member of a Superuser group in keyset A and a member of a Standard group in keyset B, the user will retain Superuser capabilities
+
+#### Keyset expiration
+
+- If one keyset expires, the user's SSH keys from that keyset are removed
+- Keys from other active keysets remain valid
+- The user remains active as long as at least one keyset containing them is active
+
+#### Keyset deletion
+
+- Deleting a keyset removes the SSH keys associated with that keyset for all users
+- If a user is in multiple keysets, they retain access via keys from other active keysets
+- The user account itself is not deleted unless they are removed from all keysets
+
+### Add a new SSH key for an existing user
+
+To add a new SSH key for a user already in another keyset, create a new keyset or update an existing one:
+
+```azurecli
+az networkcloud cluster baremetalmachinekeyset update \
+  --name "production-primary-keyset" \
+  --user-list '[{
+    "description": "Production access for user",
+    "azureUserName": "john.doe",
+    "sshPublicKey": {"keyData": "from=\"192.0.2.1\" ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQE... new-key"},
+    "userPrincipalName": "john.doe@contoso.com"
+  }]' \
+  --cluster-name "clusterName" \
+  --resource-group "cluster_RG"
+```
+
+> [!NOTE]
+> When updating a keyset, you must provide the complete user list. The update replaces the existing user list for that keyset, not merges with it.
+
+### Remove a user from one keyset
+
+To remove a user from a specific keyset while keeping them in others, update the keyset to remove that user from the `--user-list`:
+
+```azurecli
+az networkcloud cluster baremetalmachinekeyset update \
+  --name "production-secondary-keyset" \
+  --user-list '[{
+    "description": "Another user",
+    "azureUserName": "jane.smith",
+    "sshPublicKey": {"keyData": "from=\"192.0.2.5\" ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQF..."},
+    "userPrincipalName": "jane.smith@contoso.com"
+  }]' \
+  --cluster-name "clusterName" \
+  --resource-group "cluster_RG"
+```
+
+This removes `john.doe` from the production-secondary-keyset keyset but keeps them in the production keyset.
+
+### Verify user status across keysets
+
+Use the `show` command to verify a user's status in each keyset:
+
+```azurecli
+# Check production primary keyset
+az networkcloud cluster baremetalmachinekeyset show \
+  --name "production-primary-keyset" \
+  --cluster-name "clusterName" \
+  --resource-group "cluster_RG"
+
+# Check production secondary keyset
+az networkcloud cluster baremetalmachinekeyset show \
+  --name "production-secondary-keyset" \
+  --cluster-name "clusterName" \
+  --resource-group "cluster_RG"
+```
+
+The status output will show:
+
+- `userListStatus`: Array showing each user's status (Active/Invalid)
+- `statusMessage`: Details about the user's status, including which nodes they're active on
+
+### Verify SSH keys on bare metal machine
+
+After reconciliation completes, you can verify that both keys are present by checking the user's `authorized_keys` file on a bare metal machine:
+
+```bash
+# SSH into the bare metal machine (from an allowed jump host)
+ssh user@bare-metal-machine
+
+# Check authorized_keys (as the user)
+cat ~/.ssh/authorized_keys
+```
+
+You should see both SSH keys listed in the file.
+
+### Best practices
+
+- **Use descriptive keyset names**: Name keysets to reflect their purpose (e.g., "production-operations-primary", "production-operations-secondary")
+- **Document key sources**: Use the `description` field in user entries to document which device or purpose each key serves
+- **Manage expiration dates**: Set appropriate expiration dates for each keyset based on its purpose and security requirements
+- **Monitor keyset status**: Regularly check keyset status to ensure users remain active and valid
+- **Key rotation strategy**: When rotating keys, create a new keyset with the new key, verify access works, then remove the old keyset
+
+## Delete a bare metal machine keyset
 
 The `baremetalmachinekeyset delete` command removes SSH access to the bare metal machine for a group of users. All members of the group no longer have SSH access to any of the bare metal machines in the Cluster.
 
@@ -261,7 +458,7 @@ az networkcloud cluster baremetalmachinekeyset delete \
   --resource-group "cluster_RG"
 ```
 
-## Updating a Bare Metal Machine Keyset
+## Update a Bare Metal Machine Keyset
 
 The `baremetalmachinekeyset update` command allows users to make changes to an existing keyset group.
 
@@ -345,7 +542,7 @@ az networkcloud cluster baremetalmachinekeyset update \
 > [!NOTE]
 > When you remove a user from a Bare Metal Machine Keyset via an update command, the command response might still show the deleted user. This behavior occurs because the command runs asynchronously and the user delete on the backend might still be in progress. Subsequent gets, lists, or shows on the keyset should have the correct list of users.
 
-## Listing Bare Metal Machine Keysets
+## List Bare Metal Machine Keysets
 
 The `baremetalmachinekeyset list` command allows users to see the existing keyset groups in a Cluster.
 
@@ -388,3 +585,30 @@ az networkcloud cluster baremetalmachinekeyset show \
                                                            configure the default group using `az
                                                            configure --defaults group=<name>`.
 ```
+
+### Troubleshooting
+
+#### User shows as invalid in one keyset
+
+If a user shows as "Invalid" in one keyset but "Active" in another:
+
+- Verify the user's `userPrincipalName` is a member of the Azure AD group specified in that keyset's `azureGroupId`
+- Check that the keyset hasn't expired
+- Review the `statusMessage` in the keyset status for specific error details
+
+#### SSH key not working
+
+If an SSH key from one keyset doesn't work:
+
+- Verify the keyset status shows the user as "Active"
+- Check that the keyset hasn't expired
+- Ensure the key was correctly added to the keyset (check for typos in the key data)
+- Verify the user can authenticate with keys from other keysets (to confirm the user account itself is working)
+
+#### User removed from all keysets
+
+If a user is accidentally removed from all keysets:
+
+- The user account and their SSH keys will be removed from all bare metal machines
+- To restore access, add the user back to at least one active keyset
+- The user will receive a new UID when re-added (the system doesn't preserve UIDs for deleted users)
