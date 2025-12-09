@@ -12,8 +12,6 @@ ms.date: 12/09/2025
 
 This article provides an overview of security for multi-rack deployments of Azure Local. 
 
-[jfsjf](/sql/sql-server/azure-arc/manage-license-billing)
-
 Multi-rack deployments of Azure Local are designed and built to both detect and defend against the latest security threats and comply with the strict requirements of government industry security standards. Two cornerstones form the foundation of its security architecture:
 
 * **Security by default**: Security resiliency is an inherent part of the platform with little to no configuration changes needed to use it securely.
