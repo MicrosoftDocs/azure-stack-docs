@@ -324,6 +324,7 @@ You might want to delete a VM image if the download fails for some reason or if 
 ### [Azure portal](#tab/azureportal)
 
 [!INCLUDE [hci-delete-vm-image-portal](../includes/hci-delete-vm-image-portal.md)]
+
 ---
 
 ## Next steps
