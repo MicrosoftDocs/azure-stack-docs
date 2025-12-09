@@ -78,7 +78,7 @@ The parameters are described in the following table:
 
 Here's a sample output:
 
-```
+```azurecli
 PS C:\Users\azcli> $subscription = "<Subscription ID>"
 PS C:\Users\azcli> $resource_group = "mylocal-rg"
 PS C:\Users\azcli> $location = "eastus"
@@ -111,10 +111,9 @@ The image deployment takes a few minutes to complete. The time taken to download
 
 Here's a sample output:
 
-```
-PS > $customLocationID=(az customlocation show --resource-group $resource_group --name "mylocal-cl" --query id -o tsv)
+```azurecli
 PS C:\Users\azcli> az stack-hci-vm image create --subscription $subscription --resource-group $resource_Group --custom-location $customLocationID --location $location --name $imageName --os-type $osType --image-path $imageSourcePath --storage-path-id $storagepathid
-Command group 'stack-hci-vm' is experimental and under development. Reference and support levels: https://aka.ms/CLI_refstatus
+
 {
   "extendedLocation": {
     "name": "/subscriptions/<Subscription ID>/resourceGroups/mylocal-rg/providers/Microsoft.ExtendedLocation/customLocations/mylocal-cl",
@@ -153,7 +152,6 @@ Command group 'stack-hci-vm' is experimental and under development. Reference an
   "tags": null,
   "type": "microsoft.azurestackhci/galleryimages"
 }
-PS C:\Users\azcli>
 ```
 
 # [Azure portal](#tab/azureportal)
@@ -221,7 +219,6 @@ You need to view the list of VM images to choose an image to manage.
 # [Azure CLI](#tab/azurecli)
 
 [!INCLUDE [hci-list-vm-image-azure-cli](../includes/hci-list-vm-image-azure-cli.md)]
-
 
 # [Azure portal](#tab/azureportal)
 

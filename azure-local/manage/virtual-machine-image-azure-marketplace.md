@@ -147,13 +147,13 @@ Here's a sample output:
 
 ```azurecli
 PS C:\Users\azcli> az stack-hci-vm image create --custom-location $cl --name $mktplaceImage --os-type $ostype --resource-group $rg --publisher $publisher --offer $offer --sku $sku  --version $version
-{ 
+
+{
   "extendedLocation": { 
-    "name": “/subscriptions/<Subscription ID>/resourceGroups/mylocal-rg/providers/Microsoft.ExtendedLocation/customLocations/mylocal-cl", 
+    "name": "/subscriptions/<Subscription ID>/resourceGroups/mylocal-rg/providers/Microsoft.ExtendedLocation/customLocations/mylocal-cl", 
     "type": "CustomLocation" 
   }, 
   "id": "/subscriptions/<Subscription ID>/resourceGroups/mylocal-rg/providers/Microsoft.AzureStackHCI/marketplacegalleryimages/myhci-marketplaceimage", 
-\ 
   "location": "eastus", 
   "name": "myhci-marketplaceimage", 
   "properties": { 
@@ -180,16 +180,16 @@ PS C:\Users\azcli> az stack-hci-vm image create --custom-location $cl --name $mk
       } 
     },
     "version": {
-    "name": "17763.7922.251021",
-    "properties": {
-    "storageProfile": {
-    "osDiskImage": {
-    "sizeInMB": 130050
+      "name": "17763.7922.251021",
+      "properties": {
+        "storageProfile": {
+          "osDiskImage": {
+            "sizeInMB": 130050
+          }
+        }
+      }
     }
-    }
-    }
-    },
-
+  },
   "resourceGroup": "mylocal-rg", 
   "systemData": { 
     "createdAt": "2024-09-23T18:53:13.734389+00:00", 
@@ -199,11 +199,9 @@ PS C:\Users\azcli> az stack-hci-vm image create --custom-location $cl --name $mk
     "lastModifiedBy": "319f651f-7ddb-4fc6-9857-7aef9250bd05", 
     "lastModifiedByType": "Application" 
   },
-  
-
   "tags": null, 
   "type": "microsoft.azurestackhci/marketplacegalleryimages" 
-} 
+}
 ```
 
 For more information on this CLI command, see [az stack-hci-vm image](/cli/azure/stack-hci-vm/image).
