@@ -260,7 +260,7 @@ Restarting, reimaging, and replacing are effective troubleshooting methods for a
 | ----------- | ------------------------------------ | -------------------------------- | ---------------------------------------------------------- |
 | **Restart** | Temporary glitches, unresponsive VMs | Brief downtime                   | None, fastest option                                       |
 | **Reimage** | OS corruption, security concerns     | Longer downtime, preserves data  | Workload evacuation recommended                            |
-| **Replace** | Hardware component failures          | Longest downtime, preserves data | Hardware component replacement, specific parameters needed |
+| **Replace** | Hardware component failures          | Longest downtime, data in virtual disks is not preserved and VM may be unable to boot | Hardware component replacement, specific parameters needed |
 
 ### Best practices
 

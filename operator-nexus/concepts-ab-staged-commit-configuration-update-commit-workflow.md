@@ -67,4 +67,4 @@ A/B Update extends Commit V2 with policy‑driven staged steps:<br>
 
 ## Next steps
 
-[How to use A / B staged commit configuration update commit workflow in Azure Operator Nexus](./howto-use-ab-staged-commit-configuration-update-commit-workflow-v3.md)
+[How to use A / B staged commit configuration update commit workflow in Azure Operator Nexus](./howto-use-ab-staged-commit-configuration-update-commit-workflow.md)
