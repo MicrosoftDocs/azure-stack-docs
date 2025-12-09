@@ -5,14 +5,12 @@ ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 11/18/2025
+ms.date: 12/09/2025
 ---
 
 # What's new in hyperconverged deployments of Azure Local?
 
-[!INCLUDE [azure-local-banner-23h2](./includes/azure-local-banner-23h2.md)]
-
-This article lists the various features and improvements that are available in hyperconvered deployments of Azure Local. The latest version of Azure Local solution focuses on cloud-based deployment and updates, cloud-based monitoring, new and simplified experience for Azure Local virtual machine (VM) management, security, and more.
+This article lists the various features and improvements that are available in hyperconvered deployments of Azure Local (*formerly Azure Stack HCI*). The latest version of Azure Local solution focuses on cloud-based deployment and updates, cloud-based monitoring, new and simplified experience for Azure Local virtual machine (VM) management, security, and more.
 
 ::: moniker range="=azloc-2511"
 

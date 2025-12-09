@@ -6,16 +6,14 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
 ms.custom: references_regions
-ms.date: 11/26/2025
+ms.date: 12/09/2025
 ---
 
 # System requirements for Azure Local
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
-[!INCLUDE [azure-local-banner-23h2](../includes/azure-local-banner-23h2.md)]
-
-This article discusses Azure, machine and storage, networking, and other requirements for Azure Local. If you purchase Integrated System solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog), you can skip to the [Networking requirements](#networking-requirements) since the hardware already adheres to machine and storage requirements.
+This article discusses Azure, machine and storage, networking, and other requirements for hyperconvered deployments of Azure Local (*formerly Azure Stack HCI*). If you purchase Integrated System solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog), you can skip to the [Networking requirements](#networking-requirements) since the hardware already adheres to machine and storage requirements.
 
 ## Azure requirements
 
