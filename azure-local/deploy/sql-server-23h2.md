@@ -42,6 +42,8 @@ For instructions on installing SQL Server, see:
 - [SQL Server installation guide for Windows](/sql/database-engine/install-windows/install-sql-server).
 - [Installation guidance for SQL Server on Linux](/sql/linux/sql-server-linux-setup).
 
+For information on licensing and billing for SQL Server, see [Manage licensing and billing of SQL Server](/sql/sql-server/azure-arc/manage-license-billing).
+
 ### Step 3: Monitor and performance tune SQL Server
 
 Microsoft provides a comprehensive set of tools for monitoring events in SQL Server and for tuning the physical database design. Tool choice depends on the type of monitoring or tuning you want to perform.
