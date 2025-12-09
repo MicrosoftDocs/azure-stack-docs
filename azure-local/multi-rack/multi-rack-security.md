@@ -63,7 +63,7 @@ Environmental controls such as RBAC and Service Account tests aren't evaluated b
 
 *Cluster*
 
-:::image type="content" source="media/multi-rack-security-overview/multi-rack-cluster-openscap.png" alt-text="Screenshot of Cluster OpenSCAP exceptions." lightbox="media/multi-rack-security-overview/multi-rack-cluster-openscap.png":::
+:::image type="content" source="media/multi-rack-security-overview/multi-rack-cluster-exceptions.png" alt-text="Screenshot of Cluster OpenSCAP exceptions." lightbox="media/multi-rack-security-overview/multi-rack-cluster-exceptions.png":::
 
 |STIG ID|Recommendation description|Status|Issue|
 |---|---|---|---|
@@ -77,7 +77,7 @@ Environmental controls such as RBAC and Service Account tests aren't evaluated b
 
 *Multi-rack Kubernetes Cluster*
 
-:::image type="content" source="media/multi-rack-security-overview/multi-rack-kubernetes-cluster-openscap.png" alt-text="Screenshot of multi-rack Kubernetes Cluster OpenSCAP exceptions." lightbox="media/multi-rack-security-overview/multi-rack-kubernetes-cluster-openscap.png":::
+:::image type="content" source="media/multi-rack-security-overview/multi-rack-kubernetes-cluster-exceptions.png" alt-text="Screenshot of multi-rack Kubernetes Cluster OpenSCAP exceptions." lightbox="media/multi-rack-security-overview/multi-rack-kubernetes-cluster-exceptions.png":::
 
 |STIG ID|Recommendation description|Status|Issue|
 |---|---|---|---|
@@ -93,14 +93,14 @@ Environmental controls such as RBAC and Service Account tests aren't evaluated b
 
 As a secure service, Azure Kubernetes Service (AKS) complies with SOC, ISO, PCI DSS, and HIPAA standards. The following image shows the OpenSCAP file permission exceptions for the Cluster Manager using AKS.
 
-:::image type="content" source="media/multi-rack-security-overview/multi-rack-cluster-manager-openscap.png" alt-text="Screenshot of Cluster Manager OpenSCAP exceptions." lightbox="media/multi-rack-security-overview/multi-rack-cluster-manager-openscap.png":::
+:::image type="content" source="media/multi-rack-security-overview/multi-rack-cluster-manager-exceptions.png" alt-text="Screenshot of Cluster Manager OpenSCAP exceptions." lightbox="media/multi-rack-security-overview/multi-rack-cluster-manager-exceptions.png":::
 
 
 ### Aquasec Kube-Bench - CIS 1.9
 
 *Cluster*
 
-:::image type="content" source="media/multi-rack-security-overview/multi-rack-cluster-kubebench.png" alt-text="Screenshot of Cluster Kube-Bench exceptions." lightbox="media/multi-rack-security-overview/multi-rack-cluster-kubebench.png":::
+:::image type="content" source="media/multi-rack-security-overview/multi-rack-cluster-kube-bench.png" alt-text="Screenshot of Cluster Kube-Bench exceptions." lightbox="media/multi-rack-security-overview/multi-rack-cluster-kube-bench.png":::
 
 |CIS ID|Recommendation description|Status|Issue|
 |---|---|---|---|
@@ -113,7 +113,7 @@ As a secure service, Azure Kubernetes Service (AKS) complies with SOC, ISO, PCI 
 
 *Multi-rack Kubernetes Cluster*
 
-:::image type="content" source="media/multi-rack-security-overview/multi-rack-kubernetes-cluster-kubebench.png" alt-text="Screenshot of Multi-rack Kubernetes Cluster Kube-Bench exceptions." lightbox="media/multi-rack-security-overview/multi-rack-kubernetes-cluster-kubebench.png":::
+:::image type="content" source="media/multi-rack-security-overview/multi-rack-kubernetes-cluster-kube-bench.png" alt-text="Screenshot of Multi-rack Kubernetes Cluster Kube-Bench exceptions." lightbox="media/multi-rack-security-overview/multi-rack-kubernetes-cluster-kube-bench.png":::
 
 |CIS ID|Recommendation description|Status|Issue|
 |---|---|---|---|
@@ -127,7 +127,7 @@ As a secure service, Azure Kubernetes Service (AKS) complies with SOC, ISO, PCI 
 
 The Cluster Manager is an AKS implementation. The following image shows the Kube-Bench exceptions for the Cluster Manager. A full report of CIS Benchmark control evaluation for Azure Kubernetes Service (AKS) can be found [here](/azure/aks/cis-kubernetes)
 
-:::image type="content" source="media/multi-rack-security-overview/multi-rack-cluster-manager-kubebench.png" alt-text="Screenshot of Cluster Manager Kube-Bench exceptions." lightbox="media/multi-rack-security-overview/multi-rack-cluster-manager-kubebench.png":::
+:::image type="content" source="media/multi-rack-security-overview/multi-rack-cluster-manager-kube-bench.png" alt-text="Screenshot of Cluster Manager Kube-Bench exceptions." lightbox="media/multi-rack-security-overview/multi-rack-cluster-manager-kube-bench.png":::
 
 ## Encryption at rest
 
