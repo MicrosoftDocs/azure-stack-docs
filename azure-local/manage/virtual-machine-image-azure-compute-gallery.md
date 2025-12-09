@@ -114,7 +114,7 @@ To create an Azure Local VM image, follow these steps:
     Here's a sample output:
 
     ```azurecli
-      { 
+    { 
       "extendedLocation": { 
         "name": "/subscriptions/<Subscription ID>/resourceGroups/mylocal-rg/providers/Microsoft.ExtendedLocation/customLocations/mylocal-cl", 
         "type": "CustomLocation" 

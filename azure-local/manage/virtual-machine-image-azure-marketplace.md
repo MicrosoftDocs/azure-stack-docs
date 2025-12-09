@@ -1,5 +1,5 @@
 ---
-title: Create Azure Local VM from Azure Marketplace images via Azure CLI
+title: Create Azure Local VM from Azure Marketplace Images via Azure CLI
 description: Learn how to create Azure Local VM images using source images from Azure Marketplace.
 author: alkohli
 ms.author: alkohli
@@ -31,7 +31,7 @@ Before you begin, make sure that you complete the following prerequisites.
 
 - Review and [complete the prerequisites](./azure-arc-vm-management-prerequisites.md).
 
-- Have the **Azure Connected Machine Resource Manager** role. For more information, see [Assign Azure roles](/azure/role-based-access-control/role-assignments-portal).
+- Assign the **Azure Connected Machine Resource Manager** role to the `Microsoft.AzureStackHCI` resource provider app for the resource group where you want to download the image. Learn more in [Assign Azure roles](/azure/role-based-access-control/role-assignments-portal).
 
 - Register your subscription with the `Microsoft.EdgeMarketplace` resource provider. For more information, see [Register resource provider](/azure/azure-resource-manager/management/resource-providers-and-types#register-resource-provider).
 
@@ -41,9 +41,10 @@ Before you begin, make sure that you complete the following prerequisites.
 
 - Review and [complete the prerequisites](./azure-arc-vm-management-prerequisites.md).
 
-- Have the **Azure Connected Machine Resource Manager** role. For more information, see [Assign Azure roles](/azure/role-based-access-control/role-assignments-portal).
+- Assign the **Azure Connected Machine Resource Manager** role to the `Microsoft.AzureStackHCI` resource provider app for the resource group where you want to download the image. Learn more in [Assign Azure roles](/azure/role-based-access-control/role-assignments-portal).
 
 - Register your subscription with the `Microsoft.EdgeMarketplace` resource provider. For more information, see [Register resource provider](/azure/azure-resource-manager/management/resource-providers-and-types#register-resource-provider).
+
 ---
 
 ## Add VM image from Azure Marketplace
@@ -87,7 +88,7 @@ Follow these steps to create a VM image using the Azure CLI.
 
     Here's a sample output:
 
-    ```
+    ```azurecli
     PS C:\Users\azcli> $subscription = "<Subscription ID>"
     PS C:\Users\azcli> $resource_group = "mylocal-rg"
     PS C:\Users\azcli> $mktplaceImage= "mylocal-marketplaceimage"
@@ -103,7 +104,7 @@ Follow these steps to create a VM image using the Azure CLI.
 
 ### Create VM image from marketplace image
 
-1. Set additional parameters that specify the intended VM image you want to create. You need to include the offer, publisher, SKU, and version for the marketplace image. Replace the parameters in \< \> with the appropriate values:
+1. Set additional parameters that specify the intended VM image you want to create. You need to include the offer, publisher, SKU, and version for the marketplace image. Replace the parameters in `< >` with the appropriate values:
 
     ```azurecli
     $publisher = "<Publisher name>"
@@ -144,7 +145,7 @@ Follow these steps to create a VM image using the Azure CLI.
 
 Here's a sample output:
 
-```
+```azurecli
 PS C:\Users\azcli> az stack-hci-vm image create --custom-location $cl --name $mktplaceImage --os-type $ostype --resource-group $rg --publisher $publisher --offer $offer --sku $sku  --version $version
 { 
   "extendedLocation": { 
@@ -239,7 +240,7 @@ Follow these steps to create a VM image using Azure portal. In Azure portal for 
 
    :::image type="content" source="./media/virtual-machine-image-azure-marketplace/create-an-image-create.png" alt-text="Screenshot of the Create an Image page highlighting the Create button." lightbox="./media/virtual-machine-image-azure-marketplace/create-an-image-create.png":::
   
-1. An Azure Resource Manager template deployment job starts for the VM image. The image deployment takes a few minutes to complete. The time taken to download the image depends on the size of the Marketplace image and the network bandwidth available for the download. 
+1. An Azure Resource Manager template deployment job starts for the VM image. The image deployment takes a few minutes to complete. The time taken to download the image depends on the size of the Marketplace image and the network bandwidth available for the download.
 
    :::image type="content" source="./media/virtual-machine-image-azure-marketplace/deployment-in-progress.png" alt-text="Screenshot showing deployment is in progress." lightbox="./media/virtual-machine-image-azure-marketplace/deployment-in-progress.png":::
 

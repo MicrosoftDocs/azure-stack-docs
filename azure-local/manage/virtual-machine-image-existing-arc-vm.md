@@ -65,7 +65,7 @@ The parameters are described in the following table:
 
 Here's a sample output:
 
-```
+```azurecli
 PS C:\Users\azcli> $subscription = "mysub-id"
 PS C:\Users\azcli> $resource_group = "mylocal-rg"
 PS C:\Users\azcli> $location = "eastus"
@@ -87,7 +87,7 @@ A deployment job starts for the VM image. The image deployment takes a few minut
 
 Here's a sample output:
 
-```
+```azurecli
 {
   "extendedLocation": {
     "name": "/subscriptions/mysub-id/resourceGroups/mylocal-rg/providers/Microsoft.ExtendedLocation/customLocations/mylocal-cl",

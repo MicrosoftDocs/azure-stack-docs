@@ -69,7 +69,7 @@ Follow these steps to create a VM image using the Azure CLI.
 
     Here's a sample output:
 
-    ```
+    ```azurecli
     PS C:\Users\azcli> $subscription = "<Subscription ID>"
     PS C:\Users\azcli> $resource_group = "mylocalrg"
     PS C:\Users\azcli> $location = "eastus"
@@ -103,11 +103,7 @@ The image deployment takes a few minutes to complete. The time taken to download
 
 Here's a sample output:
 
-```
-  PS C:\Users\azcli> $customLocationID=(az customlocation show --resource-group $resource_group --name "myhci-cl" --query id -o tsv)
-PS C:\Users\azcli> az stack-hci-vm image create --subscription $subscription --resource-group $resource_group --custom-location $customLocationID --location $location --image-path $ImageSourcePath --name $ImageName --os-type $osType --storage-path-id $storagepathid
-type="CustomLocation" --location $Location --name $mktplaceImage --os-type $osType --image-path $mktImageSourcePath
-Command group 'azurestackhci' is experimental and under development. Reference and support levels: https://aka.ms/CLI_refstatus
+```azurecli
 {
   "extendedLocation": {
     "name": "/subscriptions/<Subscription ID>/resourceGroups/mylocal-rg/providers/Microsoft.ExtendedLocation/customLocations/mylocal-cl",
@@ -150,10 +146,7 @@ Command group 'azurestackhci' is experimental and under development. Reference a
   },
   "tags": null,
   "type": "microsoft.azurestackhci/galleryimages"
-}
-
-PS C:\Users\azcli>
-    
+}    
 ```
 
 # [Azure portal](#tab/azureportal)
