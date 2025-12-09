@@ -9,7 +9,6 @@ ms.topic: how-to
 ms.service: azure-local
 ---
 
-
 # Manage Azure Local VM images via CLI and the portal
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
