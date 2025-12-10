@@ -162,25 +162,22 @@ Follow these steps to view image properties using Azure CLI:
 
 1. View image properties using one of two methods:
 
-    **Method 1: Using image ID**
-
-    Set the image ID parameter:
-
-    ```azurecli
-    $mktplaceImageID = "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/galleryimages/mylocal-marketplaceimage"
-    ```
-
-    Run the command:
-
-    ```azurecli
-    az stack-hci-vm image show --ids $mktplaceImageID
-    ```
-
+    **Method 1: Using marketplace image ID**
     **Method 2: Using name and resource group**
 
-    ```azurecli
-    az stack-hci-vm image show --name $mktplaceImage --resource-group $resource_group
-    ```
+Here's an example using marketplace image ID:
+
+Set the image ID parameter:
+
+```azurecli
+$mktplaceImageID = "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/galleryimages/mylocal-marketplaceimage"
+```
+
+Run the command:
+
+```azurecli
+az stack-hci-vm image show --ids $mktplaceImageID
+```
 
 Here's a sample output:
 
@@ -218,6 +215,15 @@ Command group 'stack-hci-vm' is experimental and under development. Reference an
   "type": "microsoft.azurestackhci/galleryimages"
 }
 ```
+
+Here's an example using name and resource group**
+
+```azurecli
+az stack-hci-vm image show --name $mktplaceImage --resource-group $resource_group
+```
+
+Here's a sample output:
+<!--input needed-->
 
 ### [Azure portal](#tab/azureportal)
 
