@@ -272,6 +272,6 @@ In the Azure portal of your Azure Local resource, perform the following steps:
 
    :::image type="content" source="../manage/media/manage-vm-resources/prompt-to-confirm-deletion.png" alt-text="Screenshot of a prompt to confirm deletion." lightbox="../manage/media/manage-vm-resources/prompt-to-confirm-deletion.png":::
 
-After the VM image is deleted, the list of VM images refreshes to reflect the deleted image.
+  After the VM image is deleted, the list of VM images refreshes to reflect the deleted image.
 
 ---
