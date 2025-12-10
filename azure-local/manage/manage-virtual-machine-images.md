@@ -50,67 +50,67 @@ Follow these steps to list VM image using Azure CLI.
 
     - Custom images that reside in your Azure Storage account or are in a local share on your system or a client connected to your system.
 
-    Here's a sample output.
+Here's a sample output for this command:
 
-    ```azurecli
-    PS C:\Users\azcli> az stack-hci-vm image list --subscription "<Subscription ID>" --resource-group "myhci-rg"
-    Command group 'stack-hci-vm' is experimental and under development. Reference and support levels: https://aka.ms/CLI_refstatus
-    [
-      {
-        "extendedLocation": {
-          "name": "/subscriptions/<Subscription ID>/resourcegroups/myhci-rg/providers/microsoft.extendedlocation/customlocations/myhci-cl",
-          "type": "CustomLocation"
+```azurecli
+PS C:\Users\azcli> az stack-hci-vm image list --subscription "<Subscription ID>" --resource-group "myhci-rg"
+Command group 'stack-hci-vm' is experimental and under development. Reference and support levels: https://aka.ms/CLI_refstatus
+[
+  {
+    "extendedLocation": {
+      "name": "/subscriptions/<Subscription ID>/resourcegroups/myhci-rg/providers/microsoft.extendedlocation/customlocations/myhci-cl",
+      "type": "CustomLocation"
+    },
+    "id": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/microsoft.azurestackhci/marketplacegalleryimages/w
+inServer2022Az-01",
+    "location": "eastus",
+    "name": "winServer2022Az-01",
+    "properties": {
+      "hyperVGeneration": "V2",
+      "identifier": {
+        "offer": "windowsserver",
+        "publisher": "microsoftwindowsserver",
+        "sku": "2022-datacenter-azure-edition-core"
+      },
+      "imagePath": null,
+      "osType": "Windows",
+      "provisioningState": "Succeeded",
+      "status": {
+        "downloadStatus": {
+          "downloadSizeInMB": 6710
         },
-        "id": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/microsoft.azurestackhci/marketplacegalleryimages/w
-    inServer2022Az-01",
-        "location": "eastus",
-        "name": "winServer2022Az-01",
+        "progressPercentage": 100,
+        "provisioningStatus": {
+          "operationId": "19742d69-4a00-4086-8f17-4dc1f7ee6681*E1E9889F0D1840B93150BD74D428EAE483CB67B0904F9A198C161AD471F670ED",
+          "status": "Succeeded"
+        }
+      },
+      "storagepathId": null,
+      "version": {
+        "name": "20348.2031.231006",
         "properties": {
-          "hyperVGeneration": "V2",
-          "identifier": {
-            "offer": "windowsserver",
-            "publisher": "microsoftwindowsserver",
-            "sku": "2022-datacenter-azure-edition-core"
-          },
-          "imagePath": null,
-          "osType": "Windows",
-          "provisioningState": "Succeeded",
-          "status": {
-            "downloadStatus": {
-              "downloadSizeInMB": 6710
-            },
-            "progressPercentage": 100,
-            "provisioningStatus": {
-              "operationId": "19742d69-4a00-4086-8f17-4dc1f7ee6681*E1E9889F0D1840B93150BD74D428EAE483CB67B0904F9A198C161AD471F670ED",
-              "status": "Succeeded"
-            }
-          },
-          "storagepathId": null,
-          "version": {
-            "name": "20348.2031.231006",
-            "properties": {
-              "storageProfile": {
-                "osDiskImage": {
-                  "sizeInMB": 130050
-                }
-              }
+          "storageProfile": {
+            "osDiskImage": {
+              "sizeInMB": 130050
             }
           }
-        },
-        "resourceGroup": "mylocal-rg",
-        "systemData": {
-          "createdAt": "2023-10-30T21:44:53.020512+00:00",
-          "createdBy": "guspinto@contoso.com",
-          "createdByType": "User",
-          "lastModifiedAt": "2023-10-30T22:08:25.495995+00:00",
-          "lastModifiedBy": "319f651f-7ddb-4fc6-9857-7aef9250bd05",
-          "lastModifiedByType": "Application"
-        },
-        "tags": {},
-        "type": "microsoft.azurestackhci/marketplacegalleryimages"
+        }
       }
-    ]
-    ```
+    },
+    "resourceGroup": "mylocal-rg",
+    "systemData": {
+      "createdAt": "2023-10-30T21:44:53.020512+00:00",
+      "createdBy": "guspinto@contoso.com",
+      "createdByType": "User",
+      "lastModifiedAt": "2023-10-30T22:08:25.495995+00:00",
+      "lastModifiedBy": "319f651f-7ddb-4fc6-9857-7aef9250bd05",
+      "lastModifiedByType": "Application"
+    },
+    "tags": {},
+    "type": "microsoft.azurestackhci/marketplacegalleryimages"
+  }
+]
+```
 
 For more information on this CLI command, see [az stack-hci-vm image list](/cli/azure/stack-hci-vm/image#az-stack-hci-vm-image-list).
 
@@ -162,42 +162,42 @@ Follow these steps to use Azure CLI to view properties of an image:
         az stack-hci-vm image show --ids $mktplaceImageID
         ```
 
-        Here's a sample output for this command:
+Here's a sample output for this command:
 
-        ```azurecli
-        PS C:\Users\azcli> az stack-hci-vm image show --ids $mktplaceImageID
-        Command group 'stack-hci-vm' is experimental and under development. Reference and support levels: https://aka.ms/CLI_refstatus
-        {
-          "extendedLocation": {
-            "name": "/subscriptions/<Subscription ID>/resourcegroups/myhci-rg/providers/microsoft.extendedlocation/customlocations/mylocal-cl",
-            "type": "CustomLocation"
-          },
-          "id": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/galleryimages/mylocal-marketplaceimage",
-          "location": "eastus",
-          "name": "mylocal-marketplaceimage",
-          "properties": {
-            "containerName": null,
-            "hyperVGeneration": null,
-            "identifier": null,
-            "imagePath": null,
-            "osType": "Windows",
-            "provisioningState": "Succeeded",
-            "status": null,
-            "version": null
-          },
-          "resourceGroup": "mylocal-rg",
-          "systemData": {
-            "createdAt": "2022-08-05T20:52:38.579764+00:00",
-            "createdBy": "guspinto@microsoft.com",
-            "createdByType": "User",
-            "lastModifiedAt": "2022-08-05T20:52:38.579764+00:00",
-            "lastModifiedBy": "guspinto@microsoft.com",
-            "lastModifiedByType": "User"
-          },
-          "tags": null,
-          "type": "microsoft.azurestackhci/galleryimages"
-        }
-        ```
+```azurecli
+PS C:\Users\azcli> az stack-hci-vm image show --ids $mktplaceImageID
+Command group 'stack-hci-vm' is experimental and under development. Reference and support levels: https://aka.ms/CLI_refstatus
+{
+  "extendedLocation": {
+    "name": "/subscriptions/<Subscription ID>/resourcegroups/myhci-rg/providers/microsoft.extendedlocation/customlocations/mylocal-cl",
+    "type": "CustomLocation"
+  },
+  "id": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/galleryimages/mylocal-marketplaceimage",
+  "location": "eastus",
+  "name": "mylocal-marketplaceimage",
+  "properties": {
+    "containerName": null,
+    "hyperVGeneration": null,
+    "identifier": null,
+    "imagePath": null,
+    "osType": "Windows",
+    "provisioningState": "Succeeded",
+    "status": null,
+    "version": null
+  },
+  "resourceGroup": "mylocal-rg",
+  "systemData": {
+    "createdAt": "2022-08-05T20:52:38.579764+00:00",
+    "createdBy": "guspinto@microsoft.com",
+    "createdByType": "User",
+    "lastModifiedAt": "2022-08-05T20:52:38.579764+00:00",
+    "lastModifiedBy": "guspinto@microsoft.com",
+    "lastModifiedByType": "User"
+  },
+  "tags": null,
+  "type": "microsoft.azurestackhci/galleryimages"
+}
+```
 
 ### [Azure portal](#tab/azureportal)
 
@@ -215,7 +215,7 @@ In the Azure portal of your Azure Local resource, perform the following steps:
 
 ## Delete VM image
 
-You might want to delete a VM image if the download fails for some reason or if you no longer need the image. Follow these steps to delete the VM images.
+You might want to delete a VM image if the download fails for some reason or if you no longer need the image. Follow these steps to delete a VM image.
 
 ### [Azure CLI](#tab/azurecli)
 
@@ -241,22 +241,21 @@ You might want to delete a VM image if the download fails for some reason or if 
 
     - Specify ID.
 
-    After you've deleted an image, you can check that the image is removed. Here's a sample output when the image was deleted by specifying the name and the resource-group.
+    After you've deleted an image, you can check that the image is removed.
 
-    Here's a sample output for this command:
+Here's a sample output for this command specifying the name and resource-group:
 
-    ```azurecli
-    PS C:\Users\azcli> $subscription = "<Subscription ID>"
-    PS C:\Users\azcli> $resource_group = "mylocal-rg"
-    PS C:\Users\azcli> $mktplaceImage = "mymylocal-marketplaceimage"
-    PS C:\Users\azcli> az stack-hci-vm image delete --name $mktplaceImage --resource-group $resource_group
+```azurecli
+PS C:\Users\azcli> $subscription = "<Subscription ID>"
+PS C:\Users\azcli> $resource_group = "mylocal-rg"
+PS C:\Users\azcli> $mktplaceImage = "mymylocal-marketplaceimage"
+PS C:\Users\azcli> az stack-hci-vm image delete --name $mktplaceImage --resource-group $resource_group
     
-    Are you sure you want to perform this operation? (y/n): y
-    PS C:\Users\azcli> az stack-hci-vm image show --name $mktplaceImage --resource-group $resource_group
+Are you sure you want to perform this operation? (y/n): y
+PS C:\Users\azcli> az stack-hci-vm image show --name $mktplaceImage --resource-group $resource_group
     
-    ResourceNotFound: The Resource 'Microsoft.AzureStackHCI/marketplacegalleryimages/myhci-marketplaceimage' under resource group 'mylocal-rg' was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix
-    PS C:\Users\azcli>
-    ```
+ResourceNotFound: The Resource 'Microsoft.AzureStackHCI/marketplacegalleryimages/myhci-marketplaceimage' under resource group 'mylocal-rg' was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix
+```
 
 ### [Azure portal](#tab/azureportal)
 
