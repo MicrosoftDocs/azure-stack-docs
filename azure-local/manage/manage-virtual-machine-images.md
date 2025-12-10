@@ -13,7 +13,7 @@ ms.service: azure-local
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
-This article describes how to manage Azure Local virtual machine images. Images can be from different sources such as Azure Marketplace, Azure Compute Gallery, Azure Storage accounts, local shares, and existing Azure Local VMs. You can list, view properties, update, and delete VMs using Azure CLI or the Azure portal.
+This article describes how to manage Azure Local virtual machine images. Images can be from different sources such as Azure Marketplace, Azure Compute Gallery, Azure Storage accounts, local shares, and existing Azure Local VMs. You can list, view properties, and delete VMs using Azure CLI or the Azure portal.
 
 ## List VM images
 
