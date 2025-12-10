@@ -3,7 +3,7 @@ title: Prepare Active Directory for Azure Local, version 23H2 deployment
 description: Learn how to prepare Active Directory before you deploy Azure Local, version 23H2.
 author: alkohli
 ms.topic: how-to
-ms.date: 03/04/2025
+ms.date: 12/10/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -73,7 +73,7 @@ To create a dedicated OU, follow these steps:
 
 1. When prompted, provide the username and password for the deployment.
 
-    1. Make sure that only the username is provided. The name shouldn't include the domain name, for example, `contoso\username`. **Username must be between 1 to 64 characters and only contain letters, numbers, hyphens, and underscores and may not start with a hyphen or number.**
+    1. Make sure that only the username is provided. The name shouldn't include the domain name, for example, `contoso\username`. **The username must be 1–20 characters long, contain only letters, numbers, hyphens, and underscores, and can't start with a hyphen or number.**
     1. Make sure that the password meets complexity and length requirements. **Use a password that is at least 14 characters long and contains: a lowercase character, an uppercase character, a numeral, and  a special character.**
 
     Here's a sample output from a successful completion of the script:
