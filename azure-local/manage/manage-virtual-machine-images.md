@@ -160,13 +160,10 @@ Follow these steps to view image properties using Azure CLI:
     $mktplaceImage = "<Marketplace image name>"
     ```
 
-1. View image properties using one of two methods:
+1. View image properties using one of two methods: marketplace image ID or name and resource group
 
-    **Method 1: Using marketplace image ID**
-    **Method 2: Using name and resource group**
-
-Here's an example using marketplace image ID:
-
+- **Method 1: Using marketplace image ID**
+  
 Set the image ID parameter:
 
 ```azurecli
@@ -216,7 +213,9 @@ Command group 'stack-hci-vm' is experimental and under development. Reference an
 }
 ```
 
-Here's an example using name and resource group**
+- **Method 2: Using name and resource group**
+
+Here's an example using name and resource group
 
 ```azurecli
 az stack-hci-vm image show --name $mktplaceImage --resource-group $resource_group
