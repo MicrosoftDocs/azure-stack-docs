@@ -1,6 +1,6 @@
 ---
-title: Manage Azure Local VM Images via Azure CLI and Azure Portal
-description: Learn how to manage Azure Local VM images. List, view properties, update, and delete images using Azure CLI or the portal.
+title: Manage VM Images on Azure Local via Azure CLI and Azure Portal
+description: Learn how to list, view properties, and delete virtual machine images on Azure Local using Azure CLI or Azure portal.
 author: ronmiab
 ms.author: robess
 ms.reviewer: kimlam
@@ -13,11 +13,20 @@ ms.service: azure-local
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
-This article describes how to manage Azure Local virtual machine images. Images can be from different sources such as Azure Marketplace, Azure Compute Gallery, Azure Storage accounts, local shares, and existing Azure Local VMs. You can list, view properties, and delete VMs using Azure CLI or the Azure portal.
+This article describes how to manage virtual machine (VM) images on your Azure Local instance. After you create VM images from various sources such as Azure Marketplace, Azure Compute Gallery, Azure Storage accounts, or local shares, you can list, view properties, and delete these images using Azure CLI or the Azure portal.
+
+## Prerequisites
+
+Before you begin, make sure you have:
+
+- An Azure Local instance with Arc VM management enabled
+- Appropriate permissions to manage VM images
+- Azure CLI installed (if using CLI commands)
+- Access to the Azure portal (if using portal)
 
 ## List VM images
 
-You need to view the list of VM images to choose an image to manage.
+View the complete list of VM images on your Azure Local instance to identify which images are available for VM management.
 
 ### [Azure CLI](#tab/azurecli)
 
@@ -25,7 +34,7 @@ Follow these steps to list VM image using Azure CLI.
 
 1. Run PowerShell as an administrator.
 
-1. Set some parameters.
+1. Set some parameters. For example, subscription and resource group:
 
     ```azurecli
     $subscription = "<Subscription ID associated with your Azure Local>"
@@ -38,19 +47,27 @@ Follow these steps to list VM image using Azure CLI.
     az stack-hci-vm image list --subscription $subscription --resource-group $resource_group
     ```
 
-    Depending on the command used, a corresponding set of images associated with your Azure Local are listed.
+The command returns different sets of images depending on the parameters you specify:
 
-    - If you specify just the subscription, the command lists all the images in the subscription.
+- **Subscription only**: Lists all images in the subscription
 
-    - If you specify both the subscription and the resource group, the command lists all the images in the resource group.
+- **Subscription and resource group**: Lists all images in the specific resource group
 
-    These images include:
+The results include VM images from:
 
-    - VM images from marketplace images.
+- Azure Marketplace images
+- Azure Compute Gallery images
+- Custom images from Azure Storage accounts
+- Custom images from local shares
+- Images created from existing VMs
+  
+<!--These images include:
 
-    - Custom images that reside in your Azure Storage account or are in a local share on your system or a client connected to your system.
+- VM images from marketplace images.
 
-Here's a sample output for this command:
+- Custom images that reside in your Azure Storage account or are in a local share on your system or a client connected to your system.-->
+
+Here's a sample output:
 
 ```azurecli
 PS C:\Users\azcli> az stack-hci-vm image list --subscription "<Subscription ID>" --resource-group "myhci-rg"
@@ -116,27 +133,28 @@ For more information on this CLI command, see [az stack-hci-vm image list](/cli/
 
 ### [Azure portal](#tab/azureportal)
 
-In the Azure portal of your Azure Local resource, you can track the VM image deployment on the VM image grid. You can see the list of the VM images that are already downloaded and the ones that are being downloaded on your system.
-
 Follow these steps to view the list of VM images in Azure portal.
 
-1. In the Azure portal, go to your Azure Local resource.
+1. In the Azure portal, navigate to your Azure Local resource.
 
 1. Go to **Resources > VM images**.
 
-1. In the right-pane, you can view the list of the VM images.
+1. The right pane displays the list of VM images, including:
+   - Images currently downloaded
+   - Images being downloaded
+   - Download status and progress
 
-    :::image type="content" source="../manage/media/manage-vm-resources/list-virtual-machine-images.png" alt-text="Screenshot of the list of VM images on your Azure Local." lightbox="../manage/media/manage-vm-resources/list-virtual-machine-images.png":::
+:::image type="content" source="../manage/media/manage-vm-resources/list-virtual-machine-images.png" alt-text="Screenshot of the list of VM images on your Azure Local." lightbox="../manage/media/manage-vm-resources/list-virtual-machine-images.png":::
 
 ---
 
 ## View VM image properties
 
-You might want to view the properties of VM images before you use the image to create a VM. Follow these steps to view the image properties:
+Review detailed properties of a VM image before using it to create virtual machines.
 
 ### [Azure CLI](#tab/azurecli)
 
-Follow these steps to use Azure CLI to view properties of an image:
+Follow these steps to view image properties using Azure CLI:
 
 1. Run PowerShell as an administrator.
 
@@ -148,21 +166,29 @@ Follow these steps to use Azure CLI to view properties of an image:
     $mktplaceImage = "<Marketplace image name>"
     ```
 
-1. You can view image properties in two different ways: specify ID or specify name and resource group. Take the following steps when specifying Marketplace image ID:
+1. View image properties using one of two methods:
 
-    1. Set the following parameter.
+    **Method 1: Using image ID**
 
-        ```azurecli
-        $mktplaceImageID = "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/galleryimages/mylocal-marketplaceimage"
-        ```
+    Set the image ID parameter:
 
-    1. Run the following command to view the properties.
+    ```azurecli
+    $mktplaceImageID = "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/galleryimages/mylocal-marketplaceimage"
+    ```
 
-        ```azurecli
-        az stack-hci-vm image show --ids $mktplaceImageID
-        ```
+    Run the command:
 
-Here's a sample output for this command:
+    ```azurecli
+    az stack-hci-vm image show --ids $mktplaceImageID
+    ```
+
+    **Method 2: Using name and resource group**
+
+    ```azurecli
+    az stack-hci-vm image show --name $mktplaceImage --resource-group $resource_group
+    ```
+
+Here's a sample output:
 
 ```azurecli
 PS C:\Users\azcli> az stack-hci-vm image show --ids $mktplaceImageID
@@ -201,9 +227,11 @@ Command group 'stack-hci-vm' is experimental and under development. Reference an
 
 ### [Azure portal](#tab/azureportal)
 
-In the Azure portal of your Azure Local resource, perform the following steps:
+Follow these steps to view image properties in the Azure portal:
 
-1. Go to **Resources** > **VM images**. In the right-pane, a list of VM images is displayed.
+1. In the Azure portal, navigate to your Azure Local resource.
+
+1. Go to **Resources** > **VM images**. The right pane displays a list of VM images.
 
    :::image type="content" source="../manage/media/manage-vm-resources/vm-images-list.png" alt-text="Screenshot of list of images." lightbox="../manage/media/manage-vm-resources/vm-images-list.png":::
 
@@ -215,9 +243,11 @@ In the Azure portal of your Azure Local resource, perform the following steps:
 
 ## Delete VM image
 
-You might want to delete a VM image if the download fails for some reason or if you no longer need the image. Follow these steps to delete a VM image.
+Remove VM images that are no longer needed or if the download failed during creation.
 
 ### [Azure CLI](#tab/azurecli)
+
+Follow these steps to delete a VM image using Azure CLI:
 
 1. Run PowerShell as an administrator.
 
@@ -235,15 +265,14 @@ You might want to delete a VM image if the download fails for some reason or if 
     az stack-hci-vm image delete --subscription $subscription --resource-group $resource_group --name $mktplaceImage --yes
     ```
 
-    You can delete image two ways:
+You can delete images using either:
 
-    - Specify name and resource group.
+- Name and resource group
+- Image ID
 
-    - Specify ID.
+After you've deleted an image, you can check that the image is removed.
 
-    After you've deleted an image, you can check that the image is removed.
-
-Here's a sample output for this command specifying the name and resource-group:
+Here's a sample output showing deletion by name and resource group:
 
 ```azurecli
 PS C:\Users\azcli> $subscription = "<Subscription ID>"
@@ -259,11 +288,15 @@ ResourceNotFound: The Resource 'Microsoft.AzureStackHCI/marketplacegalleryimages
 
 ### [Azure portal](#tab/azureportal)
 
-In the Azure portal of your Azure Local resource, perform the following steps:
+Follow these steps to delete a VM image in the Azure portal:
+
+1. In the Azure portal, navigate to your Azure Local resource.
 
 1. Go to **Resources** > **VM images**.
 
-1. From the list of VM images displayed in the right-pane, select the trash can icon next to the VM image you want to delete.
+1. Locate the VM image you want to delete in the right pane.
+
+1. Select the trash can icon next to the VM image.
 
    :::image type="content" source="../manage/media/manage-vm-resources/delete-vm-image.png" alt-text="Screenshot of the trash can icon against the VM image you want to delete." lightbox="../manage/media/manage-vm-resources/delete-vm-image.png":::
 
