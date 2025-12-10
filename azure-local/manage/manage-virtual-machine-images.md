@@ -164,65 +164,65 @@ Follow these steps to view image properties using Azure CLI:
 
     - **Method 1: Using marketplace image ID**
 
-    Set the image ID parameter:
+        Set the image ID parameter:
 
-    ```azurecli
-    $mktplaceImageID = "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/galleryimages/mylocal-marketplaceimage"
-    ```
+        ```azurecli
+        $mktplaceImageID = "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/galleryimages/mylocal-marketplaceimage"
+        ```
 
-    Run the command:
+        Run the command:
 
-    ```azurecli
-    az stack-hci-vm image show --ids $mktplaceImageID
-    ```
+        ```azurecli
+        az stack-hci-vm image show --ids $mktplaceImageID
+        ```
 
-    Here's a sample output:
+        Here's a sample output:
 
-    ```azurecli
-    PS C:\Users\azcli> az stack-hci-vm image show --ids $mktplaceImageID
-    Command group 'stack-hci-vm' is experimental and under development. Reference and support levels: https://aka.ms/CLI_refstatus
-    {
-      "extendedLocation": {
-        "name": "/subscriptions/<Subscription ID>/resourcegroups/myhci-rg/providers/microsoft.extendedlocation/customlocations/mylocal-cl",
-        "type": "CustomLocation"
-      },
-      "id": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/galleryimages/mylocal-marketplaceimage",
-      "location": "eastus",
-      "name": "mylocal-marketplaceimage",
-      "properties": {
-        "containerName": null,
-        "hyperVGeneration": null,
-        "identifier": null,
-        "imagePath": null,
-        "osType": "Windows",
-        "provisioningState": "Succeeded",
-        "status": null,
-        "version": null
-      },
-      "resourceGroup": "mylocal-rg",
-      "systemData": {
-        "createdAt": "2022-08-05T20:52:38.579764+00:00",
-        "createdBy": "guspinto@microsoft.com",
-        "createdByType": "User",
-        "lastModifiedAt": "2022-08-05T20:52:38.579764+00:00",
-        "lastModifiedBy": "guspinto@microsoft.com",
-        "lastModifiedByType": "User"
-      },
-      "tags": null,
-      "type": "microsoft.azurestackhci/galleryimages"
-    }
-    ```
+        ```azurecli
+        PS C:\Users\azcli> az stack-hci-vm image show --ids $mktplaceImageID
+        Command group 'stack-hci-vm' is experimental and under development. Reference and support levels: https://aka.ms/CLI_refstatus
+        {
+          "extendedLocation": {
+            "name": "/subscriptions/<Subscription ID>/resourcegroups/myhci-rg/providers/microsoft.extendedlocation/customlocations/mylocal-cl",
+            "type": "CustomLocation"
+          },
+          "id": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/galleryimages/mylocal-marketplaceimage",
+          "location": "eastus",
+          "name": "mylocal-marketplaceimage",
+          "properties": {
+            "containerName": null,
+            "hyperVGeneration": null,
+            "identifier": null,
+            "imagePath": null,
+            "osType": "Windows",
+            "provisioningState": "Succeeded",
+            "status": null,
+            "version": null
+          },
+          "resourceGroup": "mylocal-rg",
+          "systemData": {
+            "createdAt": "2022-08-05T20:52:38.579764+00:00",
+            "createdBy": "guspinto@microsoft.com",
+            "createdByType": "User",
+            "lastModifiedAt": "2022-08-05T20:52:38.579764+00:00",
+            "lastModifiedBy": "guspinto@microsoft.com",
+            "lastModifiedByType": "User"
+          },
+          "tags": null,
+          "type": "microsoft.azurestackhci/galleryimages"
+        }
+        ```
 
     - **Method 2: Using name and resource group**
 
-    Here's an example using name and resource group
+        Here's an example using name and resource group
 
-    ```azurecli
-    az stack-hci-vm image show --name $mktplaceImage --resource-group $resource_group
-    ```
+        ```azurecli
+        az stack-hci-vm image show --name $mktplaceImage --resource-group $resource_group
+        ```
 
-    Here's a sample output:
-    <!--input needed-->
+        Here's a sample output:
+        <!--input needed-->
 
 ### [Azure portal](#tab/azureportal)
 
