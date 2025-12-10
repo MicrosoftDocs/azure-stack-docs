@@ -215,7 +215,7 @@ Follow these steps to view image properties using Azure CLI:
 
     - **Method 2: Using name and resource group**
 
-        Here's an example using name and resource group
+        Run the command:
 
         ```azurecli
         az stack-hci-vm image show --name $mktplaceImage --resource-group $resource_group
