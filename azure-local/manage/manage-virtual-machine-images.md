@@ -1,5 +1,5 @@
 ---
-title: Manage VM Images on Azure Local via Azure CLI and Azure Portal
+title: Manage VM Images on Azure Local via Azure CLI and Azure portal
 description: Learn how to list, view properties, and delete virtual machine images on Azure Local using Azure CLI or Azure portal.
 author: ronmiab
 ms.author: robess
@@ -13,7 +13,7 @@ ms.service: azure-local
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
-This article describes how to manage virtual machine (VM) images on your Azure Local instance. After you create VM images from various sources such as Azure Marketplace, Azure Compute Gallery, Azure Storage accounts, or local shares, you can list, view properties, and delete these images using Azure CLI or the Azure portal.
+This article describes how to manage virtual machine (VM) images on your Azure Local instance. You can create VM images from various sources like Azure Marketplace, Azure Compute Gallery, Azure Storage accounts, or local shares. After you create images, you can list, view properties, and delete them using Azure CLI or the Azure portal.
 
 ## Prerequisites
 
@@ -26,11 +26,11 @@ Before you begin, make sure you have:
 
 ## List VM images
 
-View the complete list of VM images on your Azure Local instance to identify which images are available for VM management.
+To identify which images on your Azure Local instance are available for VM management, you can view the complete list of VM images.
 
 ### [Azure CLI](#tab/azurecli)
 
-Follow these steps to list VM image using Azure CLI.
+To list VM image using Azure CLI, follow these steps:
 
 1. Run PowerShell as an administrator.
 
@@ -114,7 +114,7 @@ inServer2022Az-01",
       "createdBy": "guspinto@contoso.com",
       "createdByType": "User",
       "lastModifiedAt": "2023-10-30T22:08:25.495995+00:00",
-      "lastModifiedBy": "319f651f-7ddb-4fc6-9857-7aef9250bd05",
+      "lastModifiedBy": "bbbbbbbb-1111-2222-3333-cccccccccccc",
       "lastModifiedByType": "Application"
     },
     "tags": {},
@@ -127,7 +127,7 @@ For more information on this CLI command, see [az stack-hci-vm image list](/cli/
 
 ### [Azure portal](#tab/azureportal)
 
-Follow these steps to view the list of VM images in Azure portal.
+To view the list of VM images in Azure portal, follow these steps.
 
 1. In the Azure portal, navigate to your Azure Local resource.
 
@@ -148,7 +148,7 @@ Review detailed properties of a VM image before using it to create virtual machi
 
 ### [Azure CLI](#tab/azurecli)
 
-Follow these steps to view image properties using Azure CLI:
+To view image properties using Azure CLI, follow these steps:
 
 1. Run PowerShell as an administrator.
 
@@ -226,7 +226,7 @@ Follow these steps to view image properties using Azure CLI:
 
 ### [Azure portal](#tab/azureportal)
 
-Follow these steps to view image properties in the Azure portal:
+To view image properties in the Azure portal, follow these steps:
 
 1. In the Azure portal, navigate to your Azure Local resource.
 
@@ -246,7 +246,7 @@ Remove VM images that are no longer needed or if the download failed during crea
 
 ### [Azure CLI](#tab/azurecli)
 
-Follow these steps to delete a VM image using Azure CLI:
+To delete a VM image using Azure CLI, follow these steps:
 
 1. Run PowerShell as an administrator.
 
@@ -269,7 +269,7 @@ You can delete images using either:
 - Name and resource group
 - Image ID
 
-After you've deleted an image, you can check that the image is removed.
+After you delete an image, you can check that the image is removed.
 
 Here's a sample output showing deletion by name and resource group:
 
@@ -287,7 +287,7 @@ ResourceNotFound: The Resource 'Microsoft.AzureStackHCI/marketplacegalleryimages
 
 ### [Azure portal](#tab/azureportal)
 
-Follow these steps to delete a VM image in the Azure portal:
+To delete a VM image in the Azure portal, follow these steps:
 
 1. In the Azure portal, navigate to your Azure Local resource.
 
