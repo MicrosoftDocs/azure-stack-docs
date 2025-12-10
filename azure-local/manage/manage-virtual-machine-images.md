@@ -55,17 +55,11 @@ The command returns different sets of images depending on the parameters you spe
 
 The results include VM images from:
 
-- Azure Marketplace images
-- Azure Compute Gallery images
-- Custom images from Azure Storage accounts
-- Custom images from local shares
-- Images created from existing VMs
-  
-<!--These images include:
-
 - VM images from marketplace images.
-
-- Custom images that reside in your Azure Storage account or are in a local share on your system or a client connected to your system.-->
+- Custom images that reside in:
+  - Your Azure Storage account
+  - A local share on your system
+  - A client connected to your system
 
 Here's a sample output:
 
