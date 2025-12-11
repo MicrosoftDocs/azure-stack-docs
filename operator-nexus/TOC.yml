@@ -491,7 +491,7 @@
         - name: Troubleshoot issues with Azure Arc enrollment for virtual machines with managed identities
           href: troubleshoot-virtual-machines-arc-enroll-with-managed-identities.md
         - name: Assign network traffic to Private Relay and Arc enroll virtual machines using managed identities
-          href: howto-virtual-machines-arc-enroll-using-private-relay-and-managed-identities.md
+          href: howto-virtual-machines-arc-enroll-using-private-relay-with-managed-identities.md
 - name: FAQ
   href: azure-operator-nexus-faq.md
 - name: Reference
