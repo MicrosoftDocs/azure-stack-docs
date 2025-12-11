@@ -114,7 +114,7 @@ Each of the NNF device resource state must be validated before (via Azure portal
 
 | Check | Expectation | Outcome/Guidance |
 | --- | --- | --- |
-| Validate fabric device resource state | Resource states must be validated:</br> - Provisioning state is in *“Succeeded”*</br> - Configuration state is in *“Succeeded/DeferredControl”* state.</br> - Administrative state is in *“Enabled”* | Device Upgrade step considered failed. Engage MSFT support to diagnose & resolve |
+| Validate fabric device resource state | Resource states must be validated:</br> - Provisioning state is in “Succeeded”</br> - Configuration state is in “Succeeded" or "Deferred Control” state.</br> - Administrative state is in “Enabled” | Device Upgrade step considered failed. Engage MSFT support to diagnose & resolve |
 
 **Step 2.1** Trigger Upgrade of **Odd numbered TORs** (parallel) 
 
