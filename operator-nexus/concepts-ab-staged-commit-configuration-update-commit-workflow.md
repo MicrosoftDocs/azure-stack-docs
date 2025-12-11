@@ -4,7 +4,7 @@ description: Learn about A / B staged configuration update commit workflow in Az
 author: RaghvendraMandawale
 ms.author: rmandawale
 ms.service: azure-operator-nexus
-ms.topic: conceptual
+ms.topic: article
 ms.date: 05/16/2025
 ms.custom: template-concept
 ---
