@@ -109,6 +109,16 @@
       "source_path": "howto-service-principal.md",
       "redirect_url": "/azure/operator-nexus",
       "redirect_document_id": false
+    },
+    {
+      "source_path": "concepts-ab-staged-commit-configuration-update-commit-workflow-v3.md",
+      "redirect_url": "concepts-ab-staged-commit-configuration-update-commit-workflow",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "howto-use-ab-staged-commit-configuration-update-commit-workflow-v3.md",
+      "redirect_url": "howto-use-ab-staged-commit-configuration-update-commit-workflow.md",
+      "redirect_document_id": false
     }
   ]
 }
