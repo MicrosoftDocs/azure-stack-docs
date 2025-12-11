@@ -59,18 +59,18 @@ Follow these steps to create a VM image using the Azure CLI.
     ```
 
     The parameters are described in the following table:
-    
+
     | Parameter (CLI flag) | Variable name | Description |
     |--|--|--|
     | `subscription` | $subscription | Subscription group for Azure Local that you associate with this image. |
     | `resource-group` | $resourceGroup | Resource group for Azure Local that you associate with this image. |
     | `custom-location` | $customLocationID | ARM ID of the custom or extended location of your Azure Local instance. |
-    | `location` | $location | Location for your Azure Local instance. For example, this could be `eastus`. |
+    | `location` | $location | Location for your Azure Local instance. For example, `eastus`. |
     | `image-path` | $imageSourcePath | Path to the source gallery image (VHDX only) in local share. For example, `C:\OSImages\winos.vhdx`. See the prerequisites of the source image. |
     | `name` | $imageName | Name of the VM image created starting with the image in your local share. <br> **Note:** Azure rejects all the names that contain the keyword Windows.|
-    | `os-type` | $osType | Operating system associated with the source image. This can be Windows or Linux. |
+    | `os-type` | $osType | Operating system associated with the source image. For example, Windows or Linux. |
     | `storage-path-id` | $storagePathID | The associated storage path where the VM configuration and the data are saved. |
-    
+
     Here's a sample output:
 
     ```azurecli
@@ -106,7 +106,7 @@ The image deployment takes a few minutes to complete. The time taken to download
 
 Here's a sample output:
 
-```
+```azurecli
 PS C:\Users\azcli> $customLocationID=(az customlocation show --resource-group $resourceGroup --name "myhci-cl" --query id -o tsv)
 PS C:\Users\azcli> az stack-hci-vm image create --subscription $subscription --resource-group $resourceGroup --custom-location $customLocationID --location $location --image-path $imageSourcePath --name $imageName --os-type $osType --storage-path-id $storagePathID
 type="CustomLocation" --location $Location --name $mktplaceImage --os-type $osType --image-path $mktImageSourcePath
