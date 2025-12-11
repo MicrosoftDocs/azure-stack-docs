@@ -75,7 +75,7 @@ PS C:\Users\azcli> $imageName = "mylocal-image"
 PS C:\Users\azcli> $sourceVmName = "mysourcevm"
 ```
 
-### Create VM image from an Azure Local VM
+### Add VM image from an Azure Local VM
 
 Create the VM image from an existing VM. Run the following command:
 

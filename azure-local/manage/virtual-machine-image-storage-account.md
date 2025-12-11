@@ -87,7 +87,7 @@ PS C:\Users\azcli> $imageName = "mylocal-storacctimage"
 PS C:\Users\azcli> $imageSourcePath = '"https://vmimagevhdsa1.blob.core.windows.net/vhdcontainer/Windows_InsiderPreview_ServerStandard_en-us_VHDX_25131.vhdx?sp=r"&"st=2022-08-05T18:41:41Z"&"se=2022-08-06T02:41:41Z"&"spr=https"&"sv=2021-06-08"&"sr=b"&"sig=X7A98cQm%2FmNRaHmTbs9b4OWVv%2F9Q%2FJkWDBHVPyAc8jo%3D"'
 ```
 
-### Create VM image from image in Azure Storage account
+### Add VM image from image in Azure Storage account
 
 1. Select a custom location to deploy your VM image. The custom location should correspond to the custom location for your Azure Local. Get the custom location ID for your Azure Local. Run the following command:
 

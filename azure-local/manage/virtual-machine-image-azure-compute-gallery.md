@@ -26,7 +26,7 @@ This article describes how to create Azure Local virtual machines (VMs) enabled 
     - The VHDX image is Gen 2 type and secure boot enabled.
     - The VHDX image is prepared using `sysprep /generalize /shutdown /oobe`. For more information, see [Sysprep command-line options](/windows-hardware/manufacture/desktop/sysprep-command-line-options).
 
-## Create an Azure Local VM image from Azure Compute Gallery
+## Add VM image from Azure Compute Gallery
 
 Follow these steps to create an Azure Local VM image using Azure CLI.
 

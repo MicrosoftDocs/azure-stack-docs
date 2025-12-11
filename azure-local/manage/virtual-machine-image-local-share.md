@@ -78,7 +78,7 @@ Follow these steps to create a VM image using the Azure CLI.
     PS C:\ClusterStorage\Volume1> $imageSourcePath = "C:\ClusterStorage\Volume1\Windows_K8s_17763.2928.220505-1621_202205101158.vhdx"
     ```
 
-### Create VM image from image in local share
+### Add VM image from image in local share
 
 1. Select a custom location to deploy your VM image. The custom location should correspond to the custom location for your Azure Local. Get the custom location ID for your Azure Local. Run the following command:
 
