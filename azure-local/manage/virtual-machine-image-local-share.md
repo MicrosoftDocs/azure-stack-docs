@@ -197,7 +197,7 @@ In Azure portal for your Azure Local resource, perform the following steps:
 
 ---
 
-## List VM images
+<!--## List VM images
 
 You need to view the list of VM images to choose an image to manage.
 
@@ -237,8 +237,9 @@ You might want to delete a VM image if the download fails for some reason or if 
 
 [!INCLUDE [hci-delete-vm-image-portal](../includes/hci-delete-vm-image-portal.md)]
 
----
+--->
 
 ## Next steps
 
 - [Create logical networks](create-logical-networks.md).
+- [Manage VM Images on Azure Local via Azure CLI and Azure portal](./virtual-machine-manage-image.md)

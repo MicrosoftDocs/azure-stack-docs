@@ -256,7 +256,7 @@ Follow these steps to create a VM image using Azure portal. In Azure portal for 
 
 ---
 
-## List VM images
+<!--## List VM images
 
 You need to view the list of VM images to choose an image to manage.
 
@@ -282,7 +282,7 @@ You might want to view the properties of VM images before you use the image to c
 
 [!INCLUDE [hci-view-vm-image-properties-portal](../includes/hci-view-vm-image-properties-portal.md)]
 
----
+--->
 
 ## Update VM image
 
@@ -313,7 +313,7 @@ To update a VM image, use the following steps in Azure portal.
 
    After the new VM image is created, create a VM using the new image and verify that the VM works properly. After verification, you can delete the old VM image.
 
-## Delete VM image
+<!--## Delete VM image
 
 You might want to delete a VM image if the download fails for some reason or if you no longer need the image. Follow these steps to delete the VM images.
 
@@ -325,8 +325,9 @@ You might want to delete a VM image if the download fails for some reason or if 
 
 [!INCLUDE [hci-delete-vm-image-portal](../includes/hci-delete-vm-image-portal.md)]
 
----
+--->
 
 ## Next steps
 
 - [Create logical networks](./create-logical-networks.md)
+- [Manage VM Images on Azure Local via Azure CLI and Azure portal](./virtual-machine-manage-image.md)

@@ -178,3 +178,5 @@ To create an Azure Local VM image, follow these steps:
 ## Next steps
 
 - [Create logical networks](./create-logical-networks.md)
+- [Manage VM Images on Azure Local via Azure CLI and Azure portal](./virtual-machine-manage-image.md)
+
