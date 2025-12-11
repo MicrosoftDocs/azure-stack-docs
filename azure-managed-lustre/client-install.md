@@ -5,7 +5,7 @@ ms.topic: how-to
 author: pauljewellmsft
 ms.author: pauljewell
 ms.reviewer: dsundarraj
-ms.date: 08/27/2025
+ms.date: 12/11/2025
 zone_pivot_groups: select-os
 ---
 
@@ -16,6 +16,8 @@ In this article, you learn how to download and install a Lustre client package. 
 If you need to upgrade an existing Lustre client to the current version, see [Upgrade Lustre client software to the current version](client-upgrade.md).
 
 For more information on connecting clients to a cluster, see [Connect clients to an Azure Managed Lustre file system](connect-clients.md).
+
+For more information about the bevaiour of Azure Managed Lustre with Trusted Lunch Virtual Machines and Confidential Compute Virtual Machine, refer to [Use Secure Boot with Azure Managed Lustre file system](client-secure-boot.md)
 
 ::: zone pivot="alma-86"
 
