@@ -5,7 +5,7 @@ ms.topic: how-to
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 10/07/2025
+ms.date: 12/08/2025
 ---
 
 # Guest attestation for Trusted launch for Azure Local VMs (preview)
@@ -24,7 +24,9 @@ When you enable guest attestation, an Azure Arc extension called guest attestati
 
 - Register the `Microsoft.Attestation` resource provider with your subscription – see [Register your Azure Local machines with Azure Arc and assign permissions for deployment](../deploy/deployment-arc-register-server-permissions.md?abs=powershell#azure-prerequisites). This must be done before setting up a new Azure Local instance or updating an existing Azure Local instance. This only needs to be done once per subscription. 
 
-## Enable guest attestation using Azure portal
+## Enable guest attestation
+
+# [Azure portal](#tab/azureportal)
 
 You can enable guest attestation when you create a Trusted launch Azure Local VM via Azure portal.  
 
@@ -59,7 +61,9 @@ You can enable guest attestation when you create a Trusted launch Azure Local VM
 
     :::image type="content" source="./media/trusted-launch-guest-attestation/vm-error-details.png" alt-text="Screenshot showing the error details page." lightbox="./media/trusted-launch-guest-attestation/vm-error-details.png":::
 
-## Enable guest attestation using Azure CLI
+# [Azure CLI](#tab/azurecli)
+
+You can enable guest attestation when you create a Trusted launch Azure Local VM via Azure CLI.
 
 ### Create a Trusted launch VM
 
@@ -493,6 +497,7 @@ Command group 'stack-hci-vm' is experimental and under development. Reference an
 
 } 
 ```
+---
 
 ## Guidance
 
