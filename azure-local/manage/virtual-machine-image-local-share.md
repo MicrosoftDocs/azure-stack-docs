@@ -7,7 +7,7 @@ ms.topic: how-to
 ms.service: azure-local
 ms.custom:
   - devx-track-azurecli
-ms.date: 12/10/2025
+ms.date: 12/11/2025
 ---
 
 # Create Azure Local VM image using images in a local share
@@ -52,7 +52,7 @@ Follow these steps to create a VM image using the Azure CLI.
     $resourceGroup = "<Resource group>"
     $customLocationID = "<Custom or extended location of your Azure Local instance>"
     $location = "<Location for your Azure Local>"
-    $imageSourcePath = '"<Blob SAS URL path to the source image in the storage account>"'
+    $imageSourcePath = '"<Path to the source image in local share>"'
     $imageName = "<VM image name>"
     $osType = "<OS of source image>"
     $storagePathID = "/subscriptions/<Subscription ID>/resourceGroups/local-rg/providers/Microsoft.AzureStackHCI/storagecontainers/local-sp"
@@ -66,7 +66,7 @@ Follow these steps to create a VM image using the Azure CLI.
     | `resource-group` | $resourceGroup | Resource group for Azure Local that you associate with this image. |
     | `custom-location` | $customLocationID | ARM ID of the custom or extended location of your Azure Local instance. |
     | `location` | $location | Location for your Azure Local instance. For example, this could be `eastus`. |
-    | `image-path` | $imageSourcePath | Blob SAS URL path to the source image in the storage account. For instructions, see [Generating SAS tokens](/azure/applied-ai-services/form-recognizer/create-sas-tokens#generating-sas-tokens).<br> **Note:** Escape the path with double quotes, then enclose it with single quotes. For example, `'"<Blob SAS URL path to the source image in the storage account>"'`. |
+    | `image-path` | $imageSourcePath | Path to the source gallery image (VHDX only) in local share. For example, `C:\OSImages\winos.vhdx`. See the prerequisites of the source image. |
     | `name` | $imageName | Name of the VM image created starting with the image in your local share. <br> **Note:** Azure rejects all the names that contain the keyword Windows.|
     | `os-type` | $osType | Operating system associated with the source image. This can be Windows or Linux. |
     | `storage-path-id` | $storagePathID | The associated storage path where the VM configuration and the data are saved. |
