@@ -3,7 +3,7 @@ title: Deploy Azure Local, version 23H2 using local identity with Azure Key Vaul
 description: Learn how to use local identity with Azure Key Vault for Azure Local, version 23H2 deployment (Preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 10/16/2025
+ms.date: 12/11/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -60,7 +60,7 @@ Follow these steps to configure DNS for Azure Local:
 
 1. **Create and configure DNS server.**
 
-    Set up your DNS server if you don't already have one. This can be done using Windows Server DNS or another DNS solution.
+    Set up your DNS server if you don't already have one. You can use Windows Server DNS or another DNS solution.
 
 1. **Create DNS Host A records.**
 
@@ -70,10 +70,10 @@ Follow these steps to configure DNS for Azure Local:
 
 1. **Verify DNS records.**
 
-    To verify that the DNS records for a specific machine are correctly set up, run the following command:
+    To verify that the DNS records for a specific machine are correctly set up, use the fully qualified machine name (FQDN) that is configured as a zone in DNS:
 
-    ```cmd
-    nslookup "machine name"
+    ```powershell
+    Resolve-DnsName "<fully qualified machine name>"
     ```
 
 1. **Set up DNS forwarding.**
@@ -86,11 +86,11 @@ Follow these steps to configure DNS for Azure Local:
 
 1. **Verify DNS configuration.**
 
-    Test the DNS configuration to ensure that DNS queries are resolved correctly. You can use tools like `nslookup` or dig to verify DNS resolution.
+    Test the DNS configuration to ensure that DNS queries are resolved correctly. You can use tools like `Resolve-DnsName` in Windows PowerShell or `dig` to verify DNS resolution.
 
-1. Restart the operating system on local and remote machines using the following command:
+1. Restart the operating system on local and remote machines:
     
-    ```cmd
+    ```powershell
     Restart-Computer
     ```
 
