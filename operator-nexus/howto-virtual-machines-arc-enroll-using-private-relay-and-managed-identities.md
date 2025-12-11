@@ -1,10 +1,12 @@
 ---
 title: How to Azure Arc enroll Azure Operator Nexus virtual machines using managed identities and assign network traffic to Private Relay
-description: Learn how to Azure Arc enroll Azure Operator Nexus virtual machines using system-assigned and user-assigned managed identities, and how to assign network traffic to Private Relay for secure outbound connectivity.
+description: |
+  This article explains how to enroll Azure Operator Nexus virtual machines with Azure Arc using managed identities for authentication.
+  The article also shows how to route virtual machine network traffic through Private Relay to ensure secure outbound connectivity.
 ms.service: azure-operator-nexus
 ms.custom: azure-operator-nexus
 ms.topic: how-to
-ms.date: 10/23/2025
+ms.date: 12/11/2025
 ms.author: omarrivera
 author: g0r1v3r4
 ---
@@ -12,27 +14,28 @@ author: g0r1v3r4
 # How to Azure Arc enroll Azure Operator Nexus virtual machines using managed identities and assign network traffic to Private Relay
 
 This article shows how to enroll Azure Operator Nexus virtual machines (VM) with Azure Arc using managed identities (MI).
-Once enrolled, you can manage the VM as an Azure resource using Azure Arc capabilities and use extensions to enhance its functionality.
-Azure Arc enrollment allows you to manage your virtual machines as Azure resources, providing unified management and monitoring capabilities.
+Azure Arc enrollment enables you to manage virtual machines as Azure resources, providing unified management, monitoring, and extension capabilities.
 
-The guide covers each individual step required to complete the process, including prerequisites, environment setup, and the actual enrollment process.
-You're able to automate the entire process using a cloud-init user data script passed during VM creation or execute after the VM is created and boots.
-We leave this choice to you based on your requirements and preferences.
+This guide covers the steps required to complete the enrollment process using managed identities and making sure the VM's network traffic is assigned to Private Relay for secure outbound connectivity.
+The process can be automated through a cloud-init user data script passed during VM creation or execute after the VM is created and boots.
+However, we leave this choice to you based on your requirements and preferences.
 
 The overall process involves the following steps:
 
-1. **Create Nexus VM** - Create a Nexus VM with an associated managed identity
-2. **Assign roles to the managed identity** - Assign the necessary roles to the managed identity to allow Azure Arc enrollment
-3. **Install Azure CLI** - Install the latest Azure CLI
-4. **Configure proxy settings** - Configure the necessary proxy environment variables if necessary
-5. **Authenticate with managed identity** - Authenticate using either a system-assigned or user-assigned managed identity to sign in to Azure
-6. **Create Arc machine resource** - Create the Azure Arc machine resource in the specified resource group without connecting it to the VM
-7. **Assign VM traffic to Private Relay** - Assign the VM's traffic to use Private Relay for secure outbound connectivity
-8. **Install the `azcmagent` CLI tool** - Install the Azure Connected machine agent (`azcmagent`) CLI tool
-9. **Connect to existing Arc machine** - Connect the VM to the existing Azure Arc machine using the `azcmagent connect existing` command
+1. **Create a managed identity**: Create a user-assigned managed identity to be associated with the VM. Alternatively, you can use a system-assigned managed identity that is created along with the VM.
+2. **Assign roles and permissions to the managed identity**: Assign the necessary roles and permissions to the managed identity to allow Azure Arc enrollment and to assign VM traffic to Private Relay.
+3. **Create Nexus VM**: Create a Nexus VM with an associated managed identity. If using system-assigned managed identities, the identity is created along with the VM.
+4. **Install Azure CLI**: Install the latest Azure CLI.
+5. **Configure proxy settings**: Configure the necessary proxy environment variables.
+6. **Authenticate with managed identity**: Authenticate using either a system-assigned or user-assigned managed identity to sign in to Azure.
+7. **Create Arc machine resource**: Create the Azure Arc machine resource in the specified resource group without connecting it to the VM.
+8. **Assign VM traffic to Private Relay**: Assign the VM's traffic to use Private Relay for secure outbound connectivity.
+9. **Install the `azcmagent` CLI tool**: Install the Azure Connected machine agent (`azcmagent`) CLI tool.
+10. **Connect to existing Arc machine**: Connect the VM to the existing Azure Arc machine using the `azcmagent connect existing` command.
 
+All the listed steps are explained in detail in the following sections and can be automated using a cloud-init user data script or executed manually.
 The end result is a Nexus VM that is successfully enrolled with Azure Arc using managed identities for authentication.
-Its traffic is routed through Private Relay for secure outbound connectivity.
+The VM's network traffic is routed through Private Relay for secure outbound connectivity.
 And you can manage the VM as an Azure resource using Azure Arc capabilities.
 
 [!INCLUDE [virtual-machine-managed-identity-version-prereq](./includes/virtual-machine/howto-virtual-machines-managed-identities-version-prerequisites.md)]
@@ -42,18 +45,21 @@ And you can manage the VM as an Azure resource using Azure Arc capabilities.
 ### Required roles or permissions for managed identities when Azure Arc enrolling VMs and assigning traffic to Private Relay
 
 You can use either a system-assigned or a user-assigned managed identity to Azure Arc enroll the VM.
-However, you must assign the necessary roles to the managed identity to allow it to Azure Arc enroll the VM.
-Both the system-assigned and user-assigned managed identities require the same roles.
+In both options, you must assign the necessary roles to the managed identity to allow it to Azure Arc enroll the VM and the required permissions to assign the VM traffic to Private Relay.
 
-For system-assigned managed identities, if you're Azure Arc enrolling manually, you can assign the roles after the VM is created and booted.
+For _system-assigned managed identities_, if you're Azure Arc enrolling manually, you can assign the roles after the VM is created and booted.
 If you automate the Azure Arc enrollment using a cloud-init user data script, then you can use the Azure CLI within the VM to assign the required roles first.
+
+#### Assign roles to allow Azure Arc enrollment
 
 The required roles to allow the managed identity to Azure Arc enroll the VM are:
 
 - `HybridCompute Machine ListAccessDetails Action`
 - `Azure Connected Machine Resource Manager`
 
-You also need the `Microsoft.NetworkCloud/virtualMachines/assignRelay/action` permission assigned, in order to make the assign relay action succeed.
+#### Assign permission to assign VM traffic to Private Relay
+
+You need the `Microsoft.NetworkCloud/virtualMachines/assignRelay/action` permission assigned to the managed identity, in order to make the assign relay action succeed.
 The permission can be assigned through a custom role, or by assigning the `Contributor` built-in role to the managed identity.
 For steps on how to create a custom role, see [Create or update Azure custom roles using an ARM template].
 
@@ -64,32 +70,32 @@ For steps on how to create a custom role, see [Create or update Azure custom rol
 [!INCLUDE [virtual-machine-prereq](./includes/virtual-machine/quickstart-prereq.md)]
 
 - Ensure you have permissions to create managed identities and manage the role assignments in your Azure subscription.
-- Ensure to create the VM with either a system-assigned or user-assigned managed identity.
+- Ensure to create the VM with either an associated system-assigned or user-assigned managed identity.
 - Ensure to assign roles or permissions for the managed identities to enroll virtual machines with Azure Arc.
 - Ensure to assign roles or permissions to assign virtual machine traffic to the Private Relay.
 
 Complete the [Prerequisites for deploying tenant workloads](./quickstarts-tenant-workload-prerequisites.md) for deploying a Nexus virtual machine.
 
-  - Before creating the virtual machine, you need to create the required networking resources.
-    - **L3 isolation domain** - For network isolation and routing
-    - **L3 network** - For VM connectivity
-    - **Cloud Services Network (CSN)** - For external connectivity and proxy services
+- Before creating the virtual machine, you need to create the required networking resources.
+  - **L3 network andL3 isolation domain**: virtual machine's network connectivity, isolation, and routing
+  - **Cloud Services Network (CSN)**: virtual machine's outbound and inbound connectivity and proxy services
 
 Review how to create virtual machines using one of the following deployment methods:
 
-  - [Azure CLI](./quickstarts-virtual-machine-deployment-cli.md)
-  - [Azure PowerShell](./quickstarts-virtual-machine-deployment-ps.md)
-  - [ARM template](./quickstarts-virtual-machine-deployment-arm.md)
-  - [Bicep](./quickstarts-virtual-machine-deployment-bicep.md)
+- [Azure CLI](./quickstarts-virtual-machine-deployment-cli.md)
+- [Azure PowerShell](./quickstarts-virtual-machine-deployment-ps.md)
+- [ARM template](./quickstarts-virtual-machine-deployment-arm.md)
+- [Bicep](./quickstarts-virtual-machine-deployment-bicep.md)
 
 ### Associate managed identities at VM creation time
 
 When creating an Operator Nexus VM with managed identities, you must assign either a system-assigned or user-assigned managed identity during VM creation.
 Creating the VM with an associated managed identity enables the capabilities for the authentication method.
+
 Although the VM resource can be updated to add or change the managed identity after creation, the VM must be recreated to enable managed identity support.
 If you plan to use other authentication methods, such as using a service principal, you can create the VM without a managed identity.
 
-It is required to create an Operator Nexus VM with a managed identity, in order to use managed identity authentication for Azure Arc enrollment with the Private Relay feature.
+The Operator Nexus VM must be created with a managed identity in order to use managed identity authentication for Azure Arc enrollment with the Private Relay feature.
 
 > [!IMPORTANT]
 > If you don't specify a managed identity when creating the VM, you can't enable managed identity support by updating the VM after provisioning.
@@ -119,14 +125,14 @@ If you're encountering connectivity issues, ensure that the CSN has the necessar
 
 ## Use cloud-init user data script or manual execution for Azure Arc enrollment
 
-It's possible to pass in a cloud-init script to the VM during creation using the `--user-data-content` parameter (or the alias `--udc`).
+You can pass in a cloud-init script to the VM during creation using the `--user-data-content` parameter (or the alias `--udc`).
 The cloud-init script must be base64 encoded before passing it to the `--user-data-content "$ENCODED_USER_DATA"` parameter of the `az networkcloud virtualmachine create` command.
 The cloud-init script runs during the VM's first boot and can be used to perform various setup tasks.
 
 Steps for the cloud-init script can include:
 
 - Ensure to [Install Azure CLI](https://aka.ms/azcli) at the latest versions.
-  Including any required extensions such as the `networkcloud` extension.
+  Including any required extensions such as the [`networkcloud` extension](https://github.com/Azure/azure-cli-extensions/tree/main/src/networkcloud).
 - Complete the necessary setup for your chosen managed identity option before creating the VM.
   - If you're using a System-Assigned Managed Identity (SAMI), the cloud-init script must handle role assignments.
   - If you're using a User-Assigned Managed Identity (UAMI), the role assignments can be done ahead of time.
@@ -139,10 +145,11 @@ It's necessary to SSH into the VM to access the logs.
 
 > [!NOTE]
 > The previous `--user-data` parameter is deprecated and will be removed in a future release.
-> Verify in the [`networkcloud` extension release history] for the latest updates.
+> Verify in the [`networkcloud` extension release history](https://github.com/Azure/azure-cli-extensions/blob/main/src/networkcloud/HISTORY.rst) for the latest updates.
 
 > [!TIP]
 > The cloud-init script runs only during the first boot of the VM.
+> This means that if you need to make changes or rerun the cloud-init script, the VM must be recreated.
 > You can also authenticate with managed identities manually from inside the VM after creation and boot.
 
 [!INCLUDE [virtual-machine-howto-virtual-machines-proxy-settings](./includes/virtual-machine/howto-virtual-machines-proxy-settings.md)]
@@ -168,6 +175,11 @@ export UAMI_ID=$(az identity show --name "$UAMI_NAME" --resource-group "$RESOURC
 az login --identity --allow-no-subscriptions --msi-resource-id "${UAMI_ID}"
 ```
 
+> [!NOTE]
+> The `az login` command is the preferred method to authenticate using managed identities.
+> However, this method can be blocked due to the `azcmagent` binary installation affecting the routing for the authentication calls inside the VM.
+> To enable a workaround, you can use [Alternative access token retrieval methods](./troubleshoot-virtual-machines-arc-enroll-with-managed-identities.md#alternative-access-token-retrieval-methods).
+
 ## Create the Azure Arc machine resource
 
 In order to enroll the VM with Azure Arc without having the traffic go through the public relay, you must create the Azure Arc machine resource before connecting the Arc machine.
@@ -185,7 +197,7 @@ This key pair is required for secure authentication between your Nexus VM and Az
 The private key is needed later when you run the `azcmagent connect existing` command to complete the enrollment.
 
 The key pair is for one-time use only and should be kept secure until the VM is successfully connected to Azure Arc.
-Don't share the key pair publicly. Once the Azure Arc machine resource is created and the connection is established, the key pair is no longer required.
+_Don't share the key pair publicly._ Once the Azure Arc machine resource is created and the connection is established, the key pair is no longer required.
 
 The script generates the key pair and outputs the base64-encoded private and public keys as environment variable export commands.
 Depending on your OS and available tools, you might need to adjust the script accordingly.
@@ -277,8 +289,8 @@ EOF
 )
 ```
 
->[!IMPORTANT]
-> The `identity.type` property in the request body is set to `SystemAssigned` regardless of the managed identity type used for the VM.
+> [!IMPORTANT]
+> The `identity.type` property in the request body is always set to `SystemAssigned` regardless of the managed identity type used for the VM.
 > This property is for the Arc machine resource, which creates a system-assigned identity for itself.
 
 Submit the request to create the Arc machine resource using `az rest`.
@@ -359,6 +371,12 @@ For more information about the `azcmagent connect` command and access tokens, se
 
 - [Azure Connected Machine agent connect reference](/azure/azure-arc/servers/azcmagent-connect#access-token)
 - [How to use managed identities to get an access token](/entra/identity/managed-identities-azure-resources/how-to-use-vm-token#get-a-token-using-go)
+
+> [!IMPORTANT]
+> The `azcmagent` installation blocks the default access token retrieval method used by the Azure CLI.
+> As long as the `azcmagent` is installed, the `az login --identity` and `az account get-access-token` command fails to retrieve an access token using the managed identity.
+> To obtain access tokens, use [Alternative access token retrieval methods](./troubleshoot-virtual-machines-arc-enroll-with-managed-identities.md#alternative-access-token-retrieval-methods).
+> If your virtual machine image bundles the `azcmagent` by default, you need to use these alternative methods to retrieve access tokens.
 
 ### Configure the `azcmagent` proxy settings
 
