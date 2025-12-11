@@ -356,6 +356,8 @@ items:
                 href: manage/virtual-machine-azure-marketplace-red-hat.md
             - name: Using SUSE VM image
               href: manage/virtual-machine-image-suse.md
+          - name: Manage Azure Local VM Images
+            href: manage/virtual-machine-manage-image.md    
         - name: 3. Create logical networks
           href: manage/create-logical-networks.md
         - name: 4. Create network interfaces
