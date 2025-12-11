@@ -7,7 +7,7 @@ ms.topic: how-to
 ms.service: azure-local
 ms.custom:
   - devx-track-azurecli
-ms.date: 03/25/2025
+ms.date: 12/11/2025
 ---
 
 # Create Azure Local VM image using images in a local share
@@ -49,29 +49,33 @@ Follow these steps to create a VM image using the Azure CLI.
 
     ```azurecli
     $subscription = "<Subscription ID>"
-    $resource_group = "<Resource group>"
+    $resourceGroup = "<Resource group>"
+    $customLocationID = "<Custom or extended location of your Azure Local instance>"
     $location = "<Location for your Azure Local>"
-    $imageName = <VM image name>
-    $imageSourcePath = <path to the source image>
+    $imageSourcePath = '"<Path to the source image in local share>"'
+    $imageName = "<VM image name>"
     $osType = "<OS of source image>"
+    $storagePathID = "/subscriptions/<Subscription ID>/resourceGroups/local-rg/providers/Microsoft.AzureStackHCI/storagecontainers/local-sp"
     ```
 
     The parameters are described in the following table:
-
-    | Parameter      | Description                                                                                |
-    |----------------|--------------------------------------------------------------------------------------------|
-    | `subscription`   | Subscription group for Azure Local that you associate with this image.        |
-    | `resource_group` | Resource group for Azure Local that you associate with this image.        |
-    | `location`       | Location for your Azure Local. For example, `eastus`. |
-    | `image-path`      | Name of the VM image created starting with the image in your local share. <br> **Note**: Azure rejects all the names that contain the keyword Windows. |
-    | `name`| Path to the source gallery image (VHDX only) on your system. For example, *C:\OSImages\winos.vhdx*. See the prerequisites of the source image.|
-    | `os-type`         | Operating system associated with the source image. For example, Windows or Linux.           |
-
+    
+    | Parameter (CLI flag) | Variable name | Description |
+    |--|--|--|
+    | `subscription` | $subscription | Subscription group for Azure Local that you associate with this image. |
+    | `resource-group` | $resourceGroup | Resource group for Azure Local that you associate with this image. |
+    | `custom-location` | $customLocationID | ARM ID of the custom or extended location of your Azure Local instance. |
+    | `location` | $location | Location for your Azure Local instance. For example, this could be `eastus`. |
+    | `image-path` | $imageSourcePath | Path to the source gallery image (VHDX only) in local share. For example, `C:\OSImages\winos.vhdx`. See the prerequisites of the source image. |
+    | `name` | $imageName | Name of the VM image created starting with the image in your local share. <br> **Note:** Azure rejects all the names that contain the keyword Windows.|
+    | `os-type` | $osType | Operating system associated with the source image. This can be Windows or Linux. |
+    | `storage-path-id` | $storagePathID | The associated storage path where the VM configuration and the data are saved. |
+    
     Here's a sample output:
 
     ```azurecli
     PS C:\Users\azcli> $subscription = "<Subscription ID>"
-    PS C:\Users\azcli> $resource_group = "mylocalrg"
+    PS C:\Users\azcli> $resourceGroup = "mylocalrg"
     PS C:\Users\azcli> $location = "eastus"
     PS C:\Users\azcli> $osType = "Windows"
     PS C:\ClusterStorage\Volume1> $imageName = "mylocal-localimage"
@@ -83,14 +87,13 @@ Follow these steps to create a VM image using the Azure CLI.
 1. Select a custom location to deploy your VM image. The custom location should correspond to the custom location for your Azure Local. Get the custom location ID for your Azure Local. Run the following command:
 
     ```azurecli
-    $customLocationID=(az customlocation show --resource-group $resource_group --name "<custom location name for system>" --query id -o tsv)
+    $customLocationID=(az customlocation show --resource-group $resourceGroup --name "<custom location name for system>" --query id -o tsv)
     ```
 
 1. Create the VM image starting with a specified image in a local share on your Azure Local.
 
     ```azurecli
-    az stack-hci-vm image create --subscription $subscription --resource-group $resource_group --custom-location $customLocationID --location $location --image-path $ImageSourcePath --name $ImageName --os-type $osType --storage-path-id $storagepathid
-    
+    az stack-hci-vm image create --subscription $subscription --resource-group $resourceGroup --custom-location $customLocationID --location $location --image-path $imageSourcePath --name $imageName --os-type $osType --storage-path-id $storagePathID
     ```
 
     A deployment job starts for the VM image.
@@ -103,7 +106,11 @@ The image deployment takes a few minutes to complete. The time taken to download
 
 Here's a sample output:
 
-```azurecli
+```
+PS C:\Users\azcli> $customLocationID=(az customlocation show --resource-group $resourceGroup --name "myhci-cl" --query id -o tsv)
+PS C:\Users\azcli> az stack-hci-vm image create --subscription $subscription --resource-group $resourceGroup --custom-location $customLocationID --location $location --image-path $imageSourcePath --name $imageName --os-type $osType --storage-path-id $storagePathID
+type="CustomLocation" --location $Location --name $mktplaceImage --os-type $osType --image-path $mktImageSourcePath
+Command group 'azurestackhci' is experimental and under development. Reference and support levels: https://aka.ms/CLI_refstatus
 {
   "extendedLocation": {
     "name": "/subscriptions/<Subscription ID>/resourceGroups/mylocal-rg/providers/Microsoft.ExtendedLocation/customLocations/mylocal-cl",
