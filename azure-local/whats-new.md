@@ -24,11 +24,11 @@ This release has the following features and improvements:
 
 - **OS changes**:
 
-    - The 2504 release introduced a new operating system for Azure Local deployments. From 2512 onwards, all the new and existing deployments of Azure Local will run the new OS version **26100.xxxx**. You can download the 2512 OS image from the Azure portal.
+    - The 2504 release introduced a new operating system for Azure Local deployments. From 2512 onwards, all the new and existing deployments of Azure Local will run the new OS version **26100.7462**. You can download the 2512 OS image from the Azure portal.
 
-        - You also need a driver that's compatible with OS version **26100.xxxx** or Windows Server 2025. If a compatible driver isn't available, you can use the 2503 image.
+        - You also need a driver that's compatible with OS version **26100.7462** or Windows Server 2025. If a compatible driver isn't available, you can use the 2503 image.
 
-    - If you purchased Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) through your preferred Microsoft hardware partner, the OS should be preinstalled. Work with your Original Equipment Manufacturer (OEM) to get the OS image that's compatible with **12.2512.1002.xxxx** and a driver that's compatible with OS version **26100.xxxx** or Windows Server 2025.
+    - If you purchased Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) through your preferred Microsoft hardware partner, the OS should be preinstalled. Work with your Original Equipment Manufacturer (OEM) to get the OS image that's compatible with **12.2512.1002.xxxx** and a driver that's compatible with OS version **26100.7462** or Windows Server 2025.
 
 - **.NET updates**: This build uses .NET version **8.0.22** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
 
