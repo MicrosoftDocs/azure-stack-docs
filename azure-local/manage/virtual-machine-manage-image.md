@@ -1,5 +1,5 @@
 ---
-title: Manage VM Images on Azure Local via Azure CLI and Azure portal
+title: Manage Azure Local VM Images via CLI or Portal
 description: Learn how to list, view properties, and delete virtual machine images on Azure Local using Azure CLI or Azure portal.
 author: ronmiab
 ms.author: robess
@@ -9,7 +9,7 @@ ms.topic: how-to
 ms.service: azure-local
 ---
 
-# Manage Azure Local VM images via CLI and the portal
+# Manage Azure Local VM images via CLI or portal
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
