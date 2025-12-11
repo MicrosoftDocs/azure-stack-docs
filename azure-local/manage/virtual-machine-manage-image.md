@@ -138,7 +138,7 @@ To view the list of VM images in Azure portal, follow these steps.
    - Images being downloaded
    - Download status and progress
 
-:::image type="content" source="../manage/media/manage-vm-resources/list-virtual-machine-images.png" alt-text="Screenshot of the list of VM images on your Azure Local." lightbox="../manage/media/manage-vm-resources/list-virtual-machine-images.png":::
+:::image type="content" source="../manage/media/virtual-machine-manage-images/virtual-machine-image-list.png" alt-text="Screenshot of the list of VM images on your Azure Local." lightbox="../manage/media/virtual-machine-manage-images/virtual-machine-image-list.png":::
 
 ---
 
@@ -232,11 +232,9 @@ To view image properties in the Azure portal, follow these steps:
 
 1. Go to **Resources** > **VM images**. The right pane displays a list of VM images.
 
-   :::image type="content" source="../manage/media/manage-vm-resources/vm-images-list.png" alt-text="Screenshot of list of images." lightbox="../manage/media/manage-vm-resources/vm-images-list.png":::
-
 1. Select the VM **Image name** to view the properties.
 
-   :::image type="content" source="../manage/media/manage-vm-resources/vm-image-properties.png" alt-text="Screenshot of the properties of a selected VM image." lightbox="../manage/media/manage-vm-resources/vm-image-properties.png":::
+   :::image type="content" source="../manage/media/virtual-machine-manage-images/marketplace-image-overview.png" alt-text="Screenshot of gallery image properties." lightbox="../manage/media/virtual-machine-manage-images/marketplace-image-overview.png":::
 
 ---
 
@@ -297,11 +295,11 @@ To delete a VM image in the Azure portal, follow these steps:
 
 1. Select the trash can icon next to the VM image.
 
-   :::image type="content" source="../manage/media/manage-vm-resources/delete-vm-image.png" alt-text="Screenshot of the trash can icon against the VM image you want to delete." lightbox="../manage/media/manage-vm-resources/delete-vm-image.png":::
+   :::image type="content" source="../manage/media/virtual-machine-manage-images/delete-virtual-machine-image.png" alt-text="Screenshot of the trash can icon against the VM image you want to delete." lightbox="../manage/media/virtual-machine-manage-images/delete-virtual-machine-image.png":::
 
 1. When prompted to confirm deletion, select **Yes**.
 
-   :::image type="content" source="../manage/media/manage-vm-resources/prompt-to-confirm-deletion.png" alt-text="Screenshot of a prompt to confirm deletion." lightbox="../manage/media/manage-vm-resources/prompt-to-confirm-deletion.png":::
+   :::image type="content" source="../manage/media/virtual-machine-manage-images/prompt-to-confirm-deletion.png" alt-text="Screenshot of a prompt to confirm deletion." lightbox="../manage/media/virtual-machine-manage-images/prompt-to-confirm-deletion.png":::
 
   After the VM image is deleted, the list of VM images refreshes to reflect the deleted image.
 
