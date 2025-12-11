@@ -5,7 +5,7 @@ ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 11/18/2025
+ms.date: 12/11/2025
 ---
 
 # What's new in hyperconverged deployments of Azure Local?
