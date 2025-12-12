@@ -1,5 +1,5 @@
 ---
-title: How to perform A / B staged commit configuration update commit workflow in Azure Operator Nexus
+title: How to perform A / B staged configuration update - commit workflow in Azure Operator Nexus
 description: Learn about how to perform A / B staged commit configuration update commit workflow in Azure Operator Nexus
 author: RaghvendraMandawale
 ms.author: rmandawale
@@ -9,7 +9,7 @@ ms.service: azure-operator-nexus
 ms.custom: template-how-to, devx-track-azurecli
 ---
 
-# How to perform A / B staged commit configuration update commit workflow in Azure Operator Nexus
+# How to perform A / B staged configuration update - commit workflow in Azure Operator Nexus
 
 ## Prerequisites
 -------------
