@@ -15,8 +15,8 @@ Azure Operator Nexus deploys an in-cluster public key infrastructure (PKI) on ev
 
 ## PKI architecture overview
 
-- **Per-cluster trust boundary**: Each Azure Operator Nexus instance provisions an independent root CA. There is no shared CA across clusters, and certificates are never reused between sites.
-- **Self-contained issuance**: Certificate issuance and renewal are performed locally inside the Kubernetes control plane. Certificates are not requested from external or centralized PKI services.
+- **Per-cluster trust boundary**: Each Azure Operator Nexus instance provisions an independent root CA. There's no shared CA across clusters, and certificates are never reused between sites.
+- **Self-contained issuance**: Certificate issuance and renewal are performed locally inside the Kubernetes control plane. Certificates aren't requested from external or centralized PKI services.
 - **Purpose-specific issuers**: Dedicated intermediate issuers sign certificates for distinct workloads (human-operated consoles versus internal services) to minimize privilege scope.
 
 This architecture allows customers to operate in disconnected or semi-connected environments while retaining the benefits of TLS authentication, encryption in transit, and cryptographic auditability.
@@ -40,7 +40,7 @@ Azure Operator Nexus relies on [cert-manager](https://cert-manager.io/) to autom
 - **Renewal window**: Certificates are typically renewed about **23 days before** expiration.
 
 > [!IMPORTANT]
-> If a TLS certificate expires before it is renewed (for example, if cert-manager is not able to renew it), TLS clients reject the certificate and connections fail. This failure can prevent access to the affected endpoint or service until certificate renewal succeeds and workloads pick up the updated secret.
+> If a TLS certificate expires, TLS clients reject it and connections fail. This failure can prevent access to the affected endpoint or service until certificate renewal succeeds and workloads pick up the updated secret.
 
 Because all issuance is in-cluster, operators retain full control over the trust fabric without depending on external connectivity or services.
 
