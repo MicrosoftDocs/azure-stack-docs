@@ -76,6 +76,12 @@ Follow these steps to configure DNS for Azure Local:
     Resolve-DnsName "<fully qualified machine name>"
     ```
 
+    For example:
+
+    ```powershell
+    Resolve-DnsName "machinename.domain.com"
+    ```
+
 1. **Set up DNS forwarding.**
 
     Configure DNS forwarding on your DNS server to forward DNS queries to Azure DNS or another external DNS provider as needed.
