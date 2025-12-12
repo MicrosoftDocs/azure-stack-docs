@@ -19,7 +19,7 @@ This article describes how to manage virtual machine (VM) images on your Azure L
 
 Before you begin, make sure you have:
 
-- An Azure Local instance with Arc VM management enabled
+- Azure Local VM management enabled
 - Appropriate permissions to manage VM images
 - Azure CLI installed (if using CLI commands)
 - Access to the Azure portal (if using portal)
@@ -138,7 +138,7 @@ To view the list of VM images in Azure portal, follow these steps.
    - Images being downloaded
    - Download status and progress
 
-:::image type="content" source="../manage/media/virtual-machine-manage-images/virtual-machine-image-list.png" alt-text="Screenshot of the list of VM images on your Azure Local." lightbox="../manage/media/virtual-machine-manage-images/virtual-machine-image-list.png":::
+:::image type="content" source="../manage/media/virtual-machine-manage-images/list-virtual-machine-images.png" alt-text="Screenshot of the list of VM images on your Azure Local." lightbox="../manage/media/virtual-machine-manage-images/list-virtual-machine-images.png":::
 
 ---
 
