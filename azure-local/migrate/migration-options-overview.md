@@ -3,7 +3,7 @@ title: Options for migrating virtual machines to Azure Local
 description: Learn about the available migration options for migrating VM workloads to your Azure Local.
 author: alkohli
 ms.topic: overview
-ms.date: 10/15/2025
+ms.date: 12/09/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
@@ -12,9 +12,7 @@ ms.reviewer: alkohli
 
 [!INCLUDE [hci-applies-to-2503](../includes/hci-applies-to-2503.md)]
 
-[!INCLUDE [azure-local-banner-23h2](../includes/azure-local-banner-23h2.md)]
-
-This article provides an overview of the options available for migrating virtual machine (VM) workloads to your Azure Local instance.
+This article provides an overview of the options available for migrating virtual machine (VM) workloads to your Azure Local (*formerly Azure Stack HCI*) instance.
 
 ## Migration options
 

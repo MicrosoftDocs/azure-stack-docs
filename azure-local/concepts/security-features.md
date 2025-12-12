@@ -5,16 +5,14 @@ author: alkohli
 ms.author: alkohli
 ms.topic: article
 ms.service: azure-local
-ms.date: 03/24/2025
+ms.date: 12/09/2025
 ---
 
 # Security features for Azure Local
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
-[!INCLUDE [azure-local-banner-23h2](../includes/azure-local-banner-23h2.md)]
-
-Azure Local is a secure-by-default product that has more than 300 security settings enabled right from the start. Default security settings provide a consistent security baseline to ensure that devices start in a known good state.
+Azure Local (*formerly Azure Stack HCI*) is a secure-by-default product that has more than 300 security settings enabled right from the start. Default security settings provide a consistent security baseline to ensure that devices start in a known good state.
 
 This article provides a brief conceptual overview of the various security features associated with your Azure Local instance. Features include security defaults, Application Control, volume encryption via BitLocker, secret rotation, local built-in user accounts, Microsoft Defender for Cloud, and more.
 

@@ -4,16 +4,14 @@ description: This article provides an overview of the Azure Local monitoring sol
 ms.author: alkohli
 ms.topic: concept-article
 author: alkohli
-ms.date: 10/10/2025
+ms.date: 12/09/2025
 ---
 
 # What is Azure Local monitoring?
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
-[!INCLUDE [azure-local-banner-23h2](../includes/azure-local-banner-23h2.md)]
-
-This article provides an overview of Azure Local monitoring.
+This article provides an overview of monitoring in hyperconvered deployments of Azure Local (*formerly Azure Stack HCI*).
 
 Monitoring Azure Local involves the regular collection and analysis of data from all components of your system to promptly identify and address any potential issues. Routine monitoring is crucial for maintaining the health and functionality of your Azure Local system.
 

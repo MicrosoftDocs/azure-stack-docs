@@ -5,16 +5,14 @@ author: ronmiab
 ms.author: robess
 ms.topic: overview
 ms.reviewer: thoroet
-ms.date: 08/13/2025
+ms.date: 12/09/2025
 ---
 
 # About updates for Azure Local
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
-[!INCLUDE [azure-local-banner-23h2](../includes/azure-local-banner-23h2.md)]
-
-This article describes the new update feature for this release of Azure Local, the benefits of the feature, and how to keep various components of your solution up to date.
+This article describes the new update feature for this release of Azure Local (*formerly Azure Stack HCI*), the benefits of the feature, and how to keep various components of your solution up to date.
 
 ## About the updates
 
