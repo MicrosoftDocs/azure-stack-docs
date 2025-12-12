@@ -5,7 +5,7 @@ author: sethmanheim
 ms.author: sethm
 ms.topic: overview
 ms.reviewer: jlei
-ms.date: 12/05/2025
+ms.date: 12/12/2025
 ms.lastreviewed: 02/23/2024
 ms.service: azure-local
 ---
@@ -45,7 +45,7 @@ Yes. You can discover ESUs even if you don't have Azure VM verification. For the
 
 ### Can I get ESUs through Azure Virtual Desktops (AVD) on Azure Local?
 
-Yes. All Azure Virtual Desktop session hosts running Windows 10, version 22H2 are entitled to Windows 10 Extended Security Updates (ESU) at no additional cost. For more information, read about the [Extended Security Updates (ESU) program for Windows 10](/windows/whats-new/extended-security-updates). For creating new session hosts, there are two Windows 10, version 22H2 client multi-session images in Azure Marketplace: one with Microsoft 365 Apps and one without. The image with Microsoft 365 Apps will be retired and removed from Azure Marketplace on April 14, 2026, while the image without Microsoft 365 Apps will remain until 2028. The latter will receive the last service update in October 2025. Between October 2025 and April 2026, newly-deployed session hosts will need to install ESUs to be current. [More information on deployment](/azure/virtual-desktop/azure-stack-hci-faq#what-session-host-operating-system-images-does-this-feature-support-).
+Yes. All Azure Virtual Desktop session hosts running Windows 10, version 22H2 are entitled to Windows 10 Extended Security Updates (ESU) at no additional cost. For more information, read about the [Extended Security Updates (ESU) program for Windows 10](/windows/whats-new/extended-security-updates). For creating new session hosts, there are two Windows 10, version 22H2 client multi-session images in Azure Marketplace: one with Microsoft 365 Apps and one without. The image with Microsoft 365 Apps will be retired and removed from Azure Marketplace in the near future, while the image without Microsoft 365 Apps will remain until the end of ESU support. [More information on deployment](/azure/virtual-desktop/azure-stack-hci-faq#what-session-host-operating-system-images-does-this-feature-support-).
 
 ### Do I need to do anything to renew for Year 1, Year 2, Year 3...?
 
