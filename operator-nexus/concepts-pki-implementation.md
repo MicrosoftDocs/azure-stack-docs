@@ -41,6 +41,8 @@ Azure Operator Nexus relies on [cert-manager](https://cert-manager.io/) to autom
 
 > [!IMPORTANT]
 > If a TLS certificate expires, TLS clients reject it and connections fail. This failure can prevent access to the affected endpoint or service until certificate renewal succeeds and workloads pick up the updated secret.
+> [!WARNING]
+> iDRAC expects certificates to use a 60-day lifetime. This differs from the platform’s 70-day lifetime and is under review.
 
 Because all issuance is in-cluster, operators retain full control over the trust fabric without depending on external connectivity or services.
 
