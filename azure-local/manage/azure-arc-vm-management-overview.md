@@ -6,16 +6,14 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
 ms.custom: linux-related-content
-ms.date: 04/28/2025
+ms.date: 12/09/2025
 ---
 
 # What is Azure Local VM management?
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
-[!INCLUDE [azure-local-banner-23h2](../includes/azure-local-banner-23h2.md)]
-
-This article provides a brief overview of the Azure Local virtual machine (VM) management feature on Azure Local, including benefits, components, and a high-level workflow.
+This article provides an overview of the virtual machine (VM) management feature in hyperconverged deployments of Azure Local (*formerly Azure Stack HCI*), including its benefits, components, and a high-level workflow.
 
 Azure Local VM management enables IT admins to provision and manage Windows and Linux VMs hosted in an on-premises Azure Local environment. IT admins can use the feature to create, modify, delete, and assign permissions and roles to app owners, thereby enabling self-service VM management.
 

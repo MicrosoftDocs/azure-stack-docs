@@ -3,7 +3,7 @@ title: Install Azure Stack HCI operating system, version 23H2
 description: Learn how to install the Azure Stack HCI operating system, version 23H2 on each machine of your system.
 author: alkohli
 ms.topic: how-to
-ms.date: 11/13/2025
+ms.date: 12/11/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -109,7 +109,7 @@ Follow these steps to configure the operating system using SConfig:
    > It is not supported to change the DNS servers after deployment. Make sure you plan your DNS strategy before doing the deployment. For more information, see [DNS Servers Considerations](../plan/cloud-deployment-network-considerations.md#dns-server-considerations).
 
 
-2. Configure a valid time server on each machine. Validate that your machine is not using the local CMOS clock as a time source, using the following command:
+1. Configure a valid time server on each machine. Validate that your machine is not using the local CMOS clock as a time source, using the following command:
 
    ```cmd
    w32tm /query /status
@@ -129,22 +129,36 @@ Follow these steps to configure the operating system using SConfig:
 
    Once the machine is domain joined, it synchronizes its time from the PDC emulator.
 
-3. (Optional) At this point, you can enable Remote Desktop Protocol (RDP) and then RDP to each machine rather than use the virtual console. This action should simplify performing the remainder of the configuration.
+1. (Optional) At this point, you can enable Remote Desktop Protocol (RDP) and then RDP to each machine rather than use the virtual console. This action should simplify performing the remainder of the configuration.
 
-4. (Optional) Change the Computer Name as desired. This will be the name shown in the Azure portal as well as your Active Directory environment once joined.
+1. (Optional) Change the Computer Name as desired. This will be the name shown in the Azure portal as well as your Active Directory environment once joined.
 
-5. Clean all the non-OS drives for each machine that you intend to deploy. Remove any virtual media that have been used when installing the OS. Also validate that no other root drives exist.
+1. Clean all the non-OS drives for each machine that you intend to deploy. Remove any virtual media that have been used when installing the OS. Also validate that no other root drives exist.
 
     > [!NOTE]
     > This step doesn't apply to a machine repair operation.
 
-6. Restart the machines.
+1. Restart the machines.
 
-7. Set the local administrator credentials to be identical across all machines.
+1. Set the local administrator credentials to be identical across all machines.
 
     > [!NOTE]
     > - Make sure that the local administrator password follows Azure password length and complexity requirements. Use a password that is at least 14 characters long and contains a lowercase character, an uppercase character, a numeral, and a special character.
-    > - Do not join the machines with the Azure Stack HCI operating system installed, to the Active Directory domain prior to cloud deployment. The machines are automatically joined to a domain during the [Deployment via Azure portal](./deploy-via-portal.md).
+   
+<!-- Starting with version 2510, domain joining before deployment is supported. If you choose to domain join, you must add the deployment user to the local Administrators group. If you don't domain join beforehand, the machines are automatically joined to a domain during the [Deployment via Azure portal](./deploy-via-portal.md).
+
+### Domain join before deployment
+
+Starting with version 2510, you can domain join machines before deployment:
+
+1. Use `SConfig option 1 Domain/workgroup` to join the machine to your domain.
+1. Add the deployment user to the local Administrators group on each machine, using the following command:
+
+    ```powershell
+    Add-LocalGroupMember -Group "Administrators" -Member "DOMAIN\deploymentuser"
+    ```
+
+If you don't domain join beforehand, the machines are automatically joined to a domain during the [Deployment via Azure portal](./deploy-via-portal.md).-->
 
 ## Next steps
 

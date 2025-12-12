@@ -1,6 +1,6 @@
 ---
-title: How to perform A / B staged commit configuration update commit workflow v3 in Azure Operator Nexus
-description: Learn about how to perform A / B staged commit configuration update commit workflow v3 in Azure Operator Nexus
+title: How to perform A / B staged configuration update - commit workflow in Azure Operator Nexus
+description: Learn about how to perform A / B staged commit configuration update commit workflow in Azure Operator Nexus
 author: RaghvendraMandawale
 ms.author: rmandawale
 ms.date: 05/26/2025
@@ -9,7 +9,7 @@ ms.service: azure-operator-nexus
 ms.custom: template-how-to, devx-track-azurecli
 ---
 
-# How to perform A / B staged commit configuration update commit workflow v3 in Azure Operator Nexus
+# How to perform A / B staged configuration update - commit workflow in Azure Operator Nexus
 
 ## Prerequisites
 -------------
@@ -55,7 +55,7 @@ az managednetworkfabric fabric lock-configuration \
    --resource-group <rg> \ 
    --fabric-name <fabric-name> 
 ```
-- This locks the fabric for configuration changes and is required before any commit workflow.
+- It locks the fabric for configuration changes and is required before any commit workflow.
 
 ### Step 3: Validate Candidate Configuration
 ```Azure CLI
@@ -72,7 +72,7 @@ az managednetworkfabric fabric commit-configuration \
   --resource-group <rg> \ 
   --fabric-name <fabric-name> 
 ```
-- This applies the candidate configuration to the fabric according to the current commit policy (including staged/CE-first if set in the resource). 
+- It applies the candidate configuration to the fabric according to the current commit policy (including staged/CE-first if set in the resource). 
 
 ### Step 5: Monitor Commit Status
 ```Azure CLI
@@ -96,7 +96,7 @@ az managednetworkfabric fabric unlock-configuration \
 
 #### 7.1 Discard Commit Batch (Before Staging to Device)
 
-If you lock the fabric and create a commit batch but have **not yet staged the configuration to any device**, you can **discard the commit batch**. This abandons the candidate configuration and unlocks the fabric for new changes.
+If you lock the fabric and create a commit batch but have **not yet staged the configuration to any device**, you can **discard the commit batch**.  Abandons the candidate configuration and unlocks the fabric for new changes.
 ```Azure CLI
 az managednetworkfabric fabric discard-commit-configuration \ 
     --resource-group <rg> \ 
@@ -109,7 +109,7 @@ az managednetworkfabric fabric discard-commit-configuration \
 
 #### 7.2 Rollback (After Staging to Device, Before Final Commit)
 
-If you have already staged the configuration to a device (for example, CE1 or CE2) but **have not yet performed the final commit**, you can **rollback** the staged changes. This reverts the device(s) to the previous golden configuration and abandon the batch.
+If you have already staged the configuration to a device (for example, CE1 or CE2) but **have not yet performed the final commit**, you can **rollback** the staged changes. It reverts the device(s) to the previous golden configuration and abandon the batch.
 ```Azure CLI
 az managednetworkfabric fabric rollback-commit-configuration \ 
    --resource-group <rg> \ 
@@ -131,7 +131,7 @@ az managednetworkfabric fabric rollback-commit-configuration \
 | --- | --- | --- |
 | **Before device staging**<br> | Discard commit batch<br> | az managednetworkfabric fabric discard-commit-configuration<br> |
 | **After device staging**<br> | Rollback staged changes<br> | az managednetworkfabric fabric rollback-commit-configuration<br> |
-| **After final commit**<br> | No rollback/discard; new batch<br> | Update ARM, lock, commit, unlock<br> |
+| **After final commit**<br> | No rollback/discard; new batch<br> | Update ARM; lock; commit; unlock<br> |
 
 ## Troubleshooting
 

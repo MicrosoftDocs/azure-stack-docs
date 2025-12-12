@@ -5,16 +5,14 @@ author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.topic: how-to
-ms.date: 04/08/2025
+ms.date: 12/09/2025
 ---
 
 # Deploy a virtual Azure Local system
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
-[!INCLUDE [azure-local-banner-23h2](../includes/azure-local-banner-23h2.md)]
-
-This article describes how to deploy a virtualized Azure Local instance on a host system with Windows Server 2022, Windows 11, or later operating system (OS). The host should also have Hyper-V enabled for the deployment.
+This article describes how to deploy a virtualized Azure Local (*formerly Azure Stack HCI*) instance on a host system running Windows Server 2022, Windows 11, or later operating system (OS). The host must have Hyper-V enabled for the deployment.
 
 You need administrator privileges for the Azure Local virtual deployment and should be familiar with the existing Azure Local solution. The deployment can take around 2.5 hours to complete.
 
@@ -56,7 +54,6 @@ Before you begin, make sure that each virtual host system can dedicate the follo
 | Networking | At least two network adapters connected to internal network. MAC spoofing must be enabled. |
 | Boot disk | One disk to install the Azure Stack HCI operating system from ISO. At least 200 GB. |
 | Hard disks for Storage Spaces Direct | Four dynamic expanding disks. Maximum disk size is 1024 GB. |
-| Data disks | At least 127 GB each. The size must be the same for each disk. |
 | Time synchronization in integration  | Disabled. |
 
 > [!NOTE]
