@@ -31,7 +31,7 @@ After the extension installs successfully, follow the instructions in [Diagnos
 The example command is as follows:
 
 ```azurecli
-az monitor diagnostic-settings create –name <Diagnostics_Setting_Name> --resource <Cluster_Resource_ID> --logs "[{category:kube-audit,enabled:true},{category:kube-audit-admin,enabled:true},{category:kube-apiserver,enabled:true},{category:kube-controller-manager,enabled:true},{category:kube-scheduler,enabled:true},{category:cluster-autoscaler,enabled:true},{category:cloud-controller-manager,enabled:true},{category:guard,enabled:true},{category:csi-aksarcdisk-controller,enabled:true},{category:csi-aksarcsmb-controller,enabled:true},{category:csi-aksarcnfs-controller,enabled:true}]" --workspace <LA_Workspace_ID>
+az monitor diagnostic-settings create –-name <Diagnostics_Setting_Name> --resource <Cluster_Resource_ID> --logs "[{category:kube-audit,enabled:true},{category:kube-audit-admin,enabled:true},{category:kube-apiserver,enabled:true},{category:kube-controller-manager,enabled:true},{category:kube-scheduler,enabled:true},{category:cluster-autoscaler,enabled:true},{category:cloud-controller-manager,enabled:true},{category:guard,enabled:true},{category:csi-aksarcdisk-controller,enabled:true},{category:csi-aksarcsmb-controller,enabled:true},{category:csi-aksarcnfs-controller,enabled:true}]" --workspace <LA_Workspace_resource_ID>
 ```
 
 :::image type="content" source="media/kubernetes-monitor-audit-events/diagnostic-settings.png" alt-text="Screenshot of portal blade showing diagnostic settings." lightbox="media/kubernetes-monitor-audit-events/diagnostic-settings.png":::
