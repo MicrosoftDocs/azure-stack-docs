@@ -27,10 +27,10 @@ For the 2512 release of Azure Local, Microsoft released two security updates, ea
 
 | Solution version  | OS build  |
 |---------|---------|---------|
-| 12.2511.1002.502  | 26100.7171  |
+| 12.2512.1002.16  | 26100.7171  |
 
 > [!IMPORTANT]
-> The new deployments of this software use the **12.2511.1002.502** build.
+> The new deployments of this software use the **12.2512.1002.16** build.
 Release notes for this version include the issues fixed in this release, known issues in this release, and release note issues carried over from previous versions.
 
 > [!NOTE]
