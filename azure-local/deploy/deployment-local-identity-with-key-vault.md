@@ -70,10 +70,10 @@ Follow these steps to configure DNS for Azure Local:
 
 1. **Verify DNS records.**
 
-    To verify that the DNS records for a specific machine are correctly set up, use the fully qualified machine name (FQDN) that is configured as a zone in DNS:
+    To verify that the DNS records for a specific machine are correctly set up, use the fully qualified domain name (FQDN) that is configured as a zone in DNS:
 
     ```powershell
-    Resolve-DnsName "<fully qualified machine name>"
+    Resolve-DnsName "<fully qualified domain name>"
     ```
 
     For example:
