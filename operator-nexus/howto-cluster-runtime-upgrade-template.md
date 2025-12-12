@@ -318,10 +318,10 @@ az customlocation list -g <NFC_MRG> --subscription <CUSTOMER_SUB_ID> -o table
 # Fabric
 az networkfabric fabric list -g <NF_RG> --subscription <CUSTOMER_SUB_ID> -o table
 az networkfabric rack list -g <NF_RG> --subscription <CUSTOMER_SUB_ID> -o table
-az networkfabric fabric device list -g <NF_RG> --subscription <CUSTOMER_SUB_ID> -o table
+az networkfabric device list -g <NF_RG> --subscription <CUSTOMER_SUB_ID> -o table
 az networkfabric nni list -g <NF_RG> --fabric <NF_NAME> --subscription <CUSTOMER_SUB_ID> -o table
-az networkfabric acl list -g <NF_RG> --fabric <NF_NAME> --subscription <CUSTOMER_SUB_ID> -o table
-az networkfabric l2domain list -g <NF_RG> --fabric <NF_NAME> --subscription <CUSTOMER_SUB_ID> -o table
+az networkfabric acl list -g <NF_RG> --subscription <CUSTOMER_SUB_ID> -o table
+az networkfabric l2domain list -g <CLUSTER_MRG> --subscription <CUSTOMER_SUB_ID> -o table
 
 # CM
 az networkcloud clustermanager list -g <CM_RG> --subscription <CUSTOMER_SUB_ID> -o table
