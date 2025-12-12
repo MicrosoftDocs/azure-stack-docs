@@ -5,7 +5,7 @@ ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 12/01/2025
+ms.date: 12/12/2025
 ---
 
 # What's new in hyperconverged deployments of Azure Local?
@@ -18,9 +18,9 @@ This article lists the various features and improvements that are available in h
 
 ## Features and improvements in 2512
 
-The November 2025 release of hyperconverged deployments of Azure Local is version **12.2512.1002.xxxx**. For more information, see [Release information summary](./release-information-23h2.md).
+The November 2025 release of hyperconverged deployments of Azure Local is version **12.2512.1002.16**. For more information, see [Release information summary](./release-information-23h2.md).
 
-This release has the following features and improvements:
+This release includes various reliability improvements and other bug fixes.:
 
 - **OS changes**:
 
@@ -28,11 +28,15 @@ This release has the following features and improvements:
 
         - You also need a driver that's compatible with OS version **26100.7462** or Windows Server 2025. If a compatible driver isn't available, you can use the 2503 image.
 
-    - If you purchased Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) through your preferred Microsoft hardware partner, the OS should be preinstalled. Work with your Original Equipment Manufacturer (OEM) to get the OS image that's compatible with **12.2512.1002.xxxx** and a driver that's compatible with OS version **26100.7462** or Windows Server 2025.
+    - If you purchased Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) through your preferred Microsoft hardware partner, the OS should be preinstalled. Work with your Original Equipment Manufacturer (OEM) to get the OS image that's compatible with **12.2512.1002.16** and a driver that's compatible with OS version **26100.7462** or Windows Server 2025.
 
 - **.NET updates**: This build uses .NET version **8.0.22** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
 
-- This release includes various reliability improvements and other bug fixes.
+- **NVIDIA L-series GPU on AKS on Azure Local (preview)**: Starting with this release, NVIDIA L-series GPU is supported on Azure Kubernetes Service (AKS) enabled by Azure Arc on Azure Local. This preview feature allows you to run GPU-accelerated workloads on AKS clusters deployed on Azure Local using NVIDIA L-series GPUs.
+
+    For more information, see [Azure Kubernetes Service (AKS) enabled by Azure Arc](./concepts/aks-overview.md).
+
+**Documentation updates**: The noteworthy changes include the following new articles or articles with major updates:
 
 ::: moniker-end
 
