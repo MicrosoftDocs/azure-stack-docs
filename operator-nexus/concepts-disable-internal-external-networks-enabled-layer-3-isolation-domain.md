@@ -1,6 +1,6 @@
 ---
 title: Disable Internal/External Networks in an Enabled Layer 3 Isolation Domain in Azure Operator Nexus 
-description: Learn about Disable Internal/External Networks in an Enabled Layer 3 Isolation Domain in Azure Operator Nexus
+description: Learn about disabling internal/external networks in an enabled layer 3 isolation domain in Azure Operator Nexus.
 author: RaghvendraMandawale
 ms.author: rmandawale
 ms.service: azure-operator-nexus
@@ -9,35 +9,35 @@ ms.date: 05/16/2025
 ms.custom: template-concept
 ---
 
-# Disable Internal/External Networks in an Enabled Layer 3 Isolation Domain in Azure Operator Nexus 
+# Disable internal/external networks in an enabled layer 3 isolation domain in Azure Operator Nexus
 
-Disabling internal or external networks while an Isolation Domain (ISD) is enabled ensures controlled configuration changes without disrupting active traffic. This feature introduces administrative state updates for networks, integrated with Commit workflows for atomic operations.
+Disabling internal or external networks while an isolation domain (ISD) is enabled ensures controlled configuration changes without disrupting active traffic. This feature introduces administrative state updates for networks integrated with commit workflows for atomic operations.
 
-## Key Capabilities
+## Key capabilities
 
-- Support enabling/disbaling of Internal and External Networks on an enabled Layer 3 ISD via updateAdministrativeState POST action.
-- Integration with Commit workflow for consistent configuration changes.
-- Enables safe disablement of internal/external networks before deletion by enforcing Disable → Commit → Delete (outside commit) to prevent accidental removal.
+- Supports enabling and disabling of internal and external networks on an enabled layer 3 ISD via update using the `AdministrativeState` POST action.
+- Integrates with commit workflows for consistent configuration changes.
+- Enables safe disablement of internal/external networks before deletion by enforcing **Disable** > **Commit** > **Delete** (outside commit) to prevent accidental removal.
 
-## Behavior & Constraints
+## Behavior and constraints
 
-- Internal/External Networks resource can't be deleted directly when ISD is enabled; they must be disabled first.
-- **Mutually exclusive pipelines:** PATCH-based config updates (**Accepted**) and admin POST actions (**PendingAdministrativeUpdate**) can't be performed in a single commit session.
+- The internal/external networks resources can't be deleted directly when an ISD is enabled. They must be disabled first.
+- Pipelines are mutually exclusive. PATCH-based config updates (**Accepted**) and admin POST actions (`PendingAdministrativeUpdate`) can't be performed in a single commit session.
 - At least one internal network must remain enabled in ISD.
-- Disable operation is blocked if an ARM update and commit batch is in progress.
-- Disabling fails if associated resources are enabled
-  - Internal Networks: RoutePolicy, NetworkTap, NetworkMonitor.
-  - External Networks: RoutePolicy, NNIs, ACLs.
-- Disabling Internal /external network isn't supported via A/B update workflow.
-- Modification of any Internal/External Network configuration might lead to temporary or might be permanent disruption of network if the dependent service/workloads are still using the old configuration.
-- Unlocking during the batch won't restore the resource to enabled state, user must perform update Administrative State to enabled and commit if the user desires to change the state.
-- Post delete operation there are no mechanisms to restore the deleted internal/external network. Users must recreate the resource via ARM API via commit workflow if the Layer3 Isolation Domain is in enabled state
+- The disable operation is blocked if an Azure Resource Manager update and commit batch are in progress.
+- Disabling fails if associated resources are enabled:
+  - **Internal networks**: `RoutePolicy`, `NetworkTap`, `NetworkMonitor`.
+  - **External networks**: `RoutePolicy`, Network-to-Network Interconnect, and access control lists.
+- Disabling internal/external networks isn't supported via A/B update workflow.
+- Modification of any internal/external network configuration might lead to temporary or permanent disruption of the network if the dependent service or workloads are still using the old configuration.
+- Unlocking during the batch doesn't restore the resource to an enabled state. You must update the administrative state to enabled and commit if you want to change the state.
+- After the delete operation, there are no mechanisms to restore the deleted internal/external network. You must re-create the resource via a Resource Manager API using a commit workflow if the layer 3 ISD is in an enabled state.
 
-## State Transitions
+## State transitions
 
-- Network **Fabric:** Provisioned → PendingAdministrativeUpdate → Provisioned
-- Internal/External **Network:** Enabled → PendingAdministrativeUpdate → Disabled
+- **Network Fabric:** Use **Provisioned** > `PendingAdministrativeUpdate` > **Provisioned**.
+- **Internal/External network:** Use **Enabled** > `PendingAdministrativeUpdate` > **Disabled**.
 
-## Next steps
+## Related content
 
-[How to disable Internal/External networks in enabled layer 3 isolation domain](./howto-disable-internal-external-networks-enabled-layer-3-isolation-domain.md)
+- [Disable internal/external networks in an enabled layer 3 isolation domain](./howto-disable-internal-external-networks-enabled-layer-3-isolation-domain.md)
