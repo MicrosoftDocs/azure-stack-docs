@@ -5,18 +5,16 @@ author: ronmiab
 ms.author: robess
 ms.topic: how-to
 ms.reviewer: arduppal
-ms.date: 11/18/2025
+ms.date: 12/09/2025
 ---
 
 # Import and discover update packages with limited connectivity
 
 ::: moniker range=">=azloc-24113"
 
-[!INCLUDE [azure-local-banner-23h2](../includes/azure-local-banner-23h2.md)]
+This article explains how to discover and import solution update packages for Azure Local (*formerly Azure Stack HCI*) deployed in sites with limited bandwidth connections to Azure. You can download Azure Local solution update as a static payload, then copy or transfer it to multiple instances, and import it using PowerShell. Do these actions before you start an update to reduce the amount of data downloaded during the update.
 
-This article explains how to discover and import solution update packages for Azure Local deployed in sites with limited bandwidth connections to Azure. Starting with version 2503, you can download Azure Local solution updates as static payloads. Download the payload once, copy or transfer it to multiple instances, and import it using PowerShell. Do these actions before you start an update to reduce the amount of data downloaded during the update.
-
-The static payload for a solution update includes the OS security update, extensions, and core agents, which install during the update process. The update process automatically downloads updated container images required for the Azure Resource Bridge component and Azure Kubernetes Service on Azure Local. These images aren't included in the static payload.
+The static payload for a solution update includes the OS security update, extensions, and core agents, which install during the update process. The update process automatically downloads updated container images required for the Azure Arc resource bridge component and Azure Kubernetes Service on Azure Local. These images aren't included in the static payload.
 
 ## Prerequisites
 
@@ -41,7 +39,7 @@ For more information on the release cadence, see [Azure Local release informatio
 
 | OS Build | Download URI | SHA256 |
 |--|--|--|
-| 26100.7171 | [12.2511.1002.5](https://azurestackreleases.download.prss.microsoft.com/dbazure/AzureLocal/CombinedSolutionBundle/12.2511.1002.5/CombinedSolutionBundle.12.2511.1002.5.zip) <br><br> Availability date: <br><br> 2025-11-18  | 5E6EF65EFA1E50A6C076688F58A58C6497132163D27B4482ED64EE00861D3574 |
+| 26100.7171 | [12.2511.1002.502](https://azurestackreleases.download.prss.microsoft.com/dbazure/AzureLocal/CombinedSolutionBundle/12.2511.1002.502/CombinedSolutionBundle.12.2511.1002.502.zip) <br><br> Availability date: <br><br> 2025-12-03  | 497ABE8459F86415B91A7F75741B37975B15A19BFFFEDB1A45F171F49B9CB1F6 |
 | 26100.6899 | [12.2510.1002.94](https://azurestackreleases.download.prss.microsoft.com/dbazure/AzureLocal/CombinedSolutionBundle/12.2510.1002.94/CombinedSolutionBundle.12.2510.1002.94.zip) <br><br> Availability date: <br><br> 2025-11-05  | 4A82DB455A5487D183310ED8252D25EE6A1489FE992C47E6F49B8996A2E4FC15 |
 | 26100.6584 | [12.2509.1001.22](https://azurestackreleases.download.prss.microsoft.com/dbazure/AzureLocal/CombinedSolutionBundle/12.2509.1001.22/CombinedSolutionBundle.12.2509.1001.22.zip) <br><br> Availability date: <br><br> 2025-09-22  | 15771552A97785B7EE291587FE62EE678EDE850E2250A5407EE6738AFEF729B6 |
 | 26100.4946 | [12.2508.1001.52](https://azurestackreleases.download.prss.microsoft.com/dbazure/AzureLocal/CombinedSolutionBundle/12.2508.1001.52/CombinedSolutionBundle.12.2508.1001.52.zip) <br><br> Availability date: <br><br> 2025-08-29  | 410723EAD2177247932B10AD79978F2E4D8049FBFF70E8F9F94943384B59BB80 |

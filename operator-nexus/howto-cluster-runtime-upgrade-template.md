@@ -206,15 +206,18 @@ az networkcloud cluster show -n <CLUSTER_NAME> -g <CLUSTER_RG> --subscription <C
 ```
 
 ### How to run Cluster upgrade with `PauseAfterRack` Strategy
-`PauseAferRack` strategy allows the customer to control the upgrade by requiring an API call to continue to the next Rack after each Compute Rack completes to the configured threshold.
+
+`PauseAfterRack` strategy allows the customer to control the upgrade by requiring an API call to continue to the next Rack after each Compute Rack completes to the configured threshold.
 
 To configure strategy to use `PauseAfterRack`:
-```
+
+```azcli
 az networkcloud cluster update -n <CLUSTER_NAME> -g <CLUSTER_RG> --update-strategy strategy-type="PauseAfterRack" wait-time-minutes=0 threshold-type="PercentSuccess" threshold-value=<DEPLOYMENT_THRESHOLD> --subscription <CUSTOMER_SUB_ID>
 ```
 
 Verify update:
-```
+
+```azcli
 az networkcloud cluster show -g <CLUSTER_RG> -n <CLUSTER_NAME> --subscription <CUSTOMER_SUB_ID>| grep -A5 updateStrategy
   "updateStrategy": {
     "maxUnavailable": 32767,
@@ -225,41 +228,53 @@ az networkcloud cluster show -g <CLUSTER_RG> -n <CLUSTER_NAME> --subscription <C
 ```
 
 ### Run upgrade from either portal or cli
-* To start upgrade from Azure portal, go to Cluster resource, click `Update`, select <CLUSTER_VERSION>, then click `Update`
-* To run upgrade from Azure CLI, run the following command:
-  ```
+
+- To start upgrade from Azure portal, go to Cluster resource, click `Update`, select <CLUSTER_VERSION>, then click `Update`
+- To run upgrade from Azure CLI, run the following command:
+
+  ```azcli
   az networkcloud cluster update-version --subscription <CUSTOMER_SUB_ID> --cluster-name <CLUSTER_NAME> --target-cluster-version <CLUSTER_VERSION> --resource-group <CLUSTER_RG> --no-wait --debug
   ```
 
   Gather ASYNC URL and Correlation ID info for further troubleshooting if needed.
-  ```
+
+  ```bash
   cli.azure.cli.core.sdk.policies:     'mise-correlation-id': '<MISE_CID>'
   cli.azure.cli.core.sdk.policies:     'x-ms-correlation-request-id': '<CORRELATION_ID>'
   cli.azure.cli.core.sdk.policies:     'Azure-AsyncOperation': '<ASYNC_URL>'
   ```
+
   Provide this information to Microsoft Support when opening a support ticket for upgrade issues.
 
 ### How to continue upgrade during `PauseAfterRack` strategy
+
 Once a compute Rack meets the success threshold, the upgrade pauses until the user signals to the operator to continue the upgrade.
 
 Use the following command to continue upgrade once a Compute Rack is paused after meeting the deployment threshold for the Rack:
-```
+
+```azcli
 az networkcloud cluster continue-update-version -g <CLUSTER_RG> -n <CLUSTER_NAME> --subscription <CUSTOMER_SUB_ID>
 ```
 
-### Monitor status of Cluster
-```
+### Check status of Cluster for Rack Upgrade Progress
+
+```azcli
 az networkcloud cluster list -g <CLUSTER_RG> --subscription <CUSTOMER_SUB_ID> -o table
 ```
-The Cluster `Detailed status` shows `Running` and the `Detailed status message` shows 'Cluster is up and running.` when the upgrade is complete.
 
-### Monitor status of Bare Metal Machines
-```
+The Cluster `Detailed status` shows `Updating` and the `Detailed status message` shows `Platform upgrade is paused, and <rack> is the group of servers to most recently complete the upgrade` when the current Rack upgrade is complete.
+>[!Note]
+> The detailed status message contains a typo as shown above; this is the string returned by the service.
+
+### Check status of Bare Metal Machines
+
+```azcli
 az networkcloud baremetalmachine list -g <CLUSTER_MRG> --subscription <CUSTOMER_SUB_ID> -o table
 az networkcloud baremetalmachine list -g <CLUSTER_MRG> --subscription <CUSTOMER_SUB_ID> --query "sort_by([].{name:name,kubernetesNodeName:kubernetesNodeName,location:location,readyState:readyState,provisioningState:provisioningState,detailedStatus:detailedStatus,detailedStatusMessage:detailedStatusMessage,cordonStatus:cordonStatus,powerState:powerState,kubernetesVersion:kubernetesVersion,machineClusterVersion:machineClusterVersion,machineRoles:machineRoles| join(', ', @),createdAt:systemData.createdAt}, &name)" -o table
 ```
 
-Validate the following states for each BMM (except spare):
+Validate the servers in the upgraded rack have the following states for each BMM (except spare):
+
 - ReadyState: True
 - ProvisioningState: Succeeded
 - DetailedStatus: Provisioned
@@ -269,6 +284,7 @@ Validate the following states for each BMM (except spare):
 - MachineClusterVersion: <NEXUS_VERSION>
 
 ### How to troubleshoot Cluster and BMM upgrade failures
+
 The following troubleshooting documents can help recover BMM upgrade issues:
 - [Hardware validation failures](troubleshoot-hardware-validation-failure.md)
 - [BMM Provisioning issues](troubleshoot-bare-metal-machine-provisioning.md)
@@ -291,9 +307,7 @@ Review the Operator Nexus release notes for any version specific actions require
 
 ### Validate Nexus Instance
 
-Validate the health and status of all the Nexus Instance resources with the [Nexus Instance Readiness Test (IRT)](howto-run-instance-readiness-testing.md).
-
-If not using IRT, perform resource validation of all Nexus Instance components with Azure CLI:
+Perform resource validation of all Nexus Instance components with Azure CLI:
 ```
 # Check `ProvisioningState = Succeeded` in all resources
 
@@ -321,10 +335,6 @@ az networkcloud storageappliance list -g <CLUSTER_MRG> --subscription <CUSTOMER_
 az networkcloud virtualmachine list --sub <CUSTOMER_SUB_ID> --query "reverse(sort_by([?clusterId=='<CLUSTER_RID>'].{name:name, createdAt:systemData.createdAt, resourceGroup:resourceGroup, powerState:powerState, provisioningState:provisioningState, detailedStatus:detailedStatus,bareMetalMachineId:bareMetalMachineIdi,CPUCount:cpuCores, EmulatorStatus:isolateEmulatorThread}, &createdAt))" -o table
 az networkcloud kubernetescluster list --sub <CUSTOMER_SUB_ID> --query "[?clusterId=='<CLUSTER_RID>'].{name:name, resourceGroup:resourceGroup, provisioningState:provisioningState, detailedStatus:detailedStatus, detailedStatusMessage:detailedStatusMessage, createdAt:systemData.createdAt, kubernetesVersion:kubernetesVersion}" -o table
 ```
-
-> [!Note]
-> IRT validation provides a complete functional test of networking and workloads across all components of the Nexus Instance. Simple validation does not provide functional testing.
-
 </details>
 
 ## Links
@@ -342,6 +352,5 @@ Reference links for Cluster upgrade:
 - [Troubleshoot BMM provisioning](troubleshoot-bare-metal-machine-provisioning.md)
 - [Troubleshoot BMM degraded](troubleshoot-bare-metal-machine-degraded.md)
 - [Troubleshoot BMM warning](troubleshoot-bare-metal-machine-warning.md)
-- Reference the [Nexus Instance Readiness Test (IRT)](howto-run-instance-readiness-testing.md)
 
 </details>
