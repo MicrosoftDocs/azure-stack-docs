@@ -3,7 +3,7 @@ title: Deploy an Azure Local instance using the Azure portal
 description: Learn how to deploy an Azure Local instance from the Azure portal
 author: alkohli
 ms.topic: how-to
-ms.date: 10/07/2025
+ms.date: 12/12/2025
 ms.author: alkohli
 ms.service: azure-local
 ms.custom: sfi-image-nochange
@@ -267,9 +267,16 @@ On the **Configuration** tab, choose whether to create a new configuration for t
 
 The **Deployments** page then appears, which you can use to monitor the deployment progress.
 
-<!-- check with Cristian and Thomas -If the progress doesn't appear, wait for a few minutes and then select **Refresh**. This page may show up as blank for an extended period of time owing to an issue in this release, but the deployment is still running if no errors show up.-->
+During deployment, the system goes through several steps including cluster registration. In the earlier versions of software, during this process, Azure Local created and setup a Microsoft Entra ID application (service principal) along with a self-signed certificate to authenticate the cluster in Azure.
+
+From software version 12.2512 and later, the Entra ID application is no longer created during new deployments. Instead, the cluster uses Managed System Identity (MSI) to authenticate itself with Azure.
+
+For existing deployments also, the Entra ID application is no longer used for authentication. The cluster automatically switches to MSI for authentication without any manual intervention. As the app is no longer used, it can be deleted from the Entra ID portal. To delete the app, make sure that the registration context is updated to v4 and there is a corresponding event in the Azure Local event log.
+
 
 Once the deployment starts, the first step in the deployment: **Begin cloud deployment** can take 45-60 minutes to complete. The total deployment time for a single machine is around 1.5-2 hours while a two-node system takes about 2.5 hours to deploy.
+
+
 
 ## Verify a successful deployment
 

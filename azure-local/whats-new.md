@@ -32,7 +32,10 @@ This release includes various reliability improvements and other bug fixes.:
 
 - **.NET updates**: This build uses .NET version **8.0.22** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
 
-- **NVIDIA L-series GPU on AKS on Azure Local (preview)**: Starting with this release, NVIDIA L-series GPU is supported on Azure Kubernetes Service (AKS) enabled by Azure Arc on Azure Local. This preview feature allows you to run GPU-accelerated workloads on AKS clusters deployed on Azure Local using NVIDIA L-series GPUs.
+- **Simplified cluster registration during deployment**: Starting with this release, Azure Local cluster deployments don't use a Service Principal Name (Entra ID App) with a self signed certificate. Instead, the cluster uses Managed System Identity (MSI) to authenticate itself with Azure.
+    For more information, see [Validate and deploy the system via Azure portal](./deploy/deploy-via-portal.md#verify-a-successful-deployment).
+
+- **Support for NVIDIA L-series GPU on AKS on Azure Local (preview)**: Starting with this release, NVIDIA L-series GPU is supported on Azure Kubernetes Service (AKS) enabled by Azure Arc on Azure Local. This preview feature allows you to run GPU-accelerated workloads on AKS clusters deployed on Azure Local using NVIDIA L-series GPUs.
 
     For more information, see [Azure Kubernetes Service (AKS) enabled by Azure Arc](./concepts/aks-overview.md).
 
