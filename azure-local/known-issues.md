@@ -27,7 +27,7 @@ For the 2512 release of Azure Local, Microsoft released two security updates, ea
 
 | Solution version  | OS build  |
 |---------|---------|---------|
-| 12.2512.1002.16  | 26100.7171  |
+| 12.2512.1002.16  | 26100.7462  |
 
 > [!IMPORTANT]
 > The new deployments of this software use the **12.2512.1002.16** build.
@@ -50,7 +50,7 @@ The following table lists the known issues in this release:
 
 |Feature  |Issue    |Workaround  |
 |---------|---------|------------|
-| Deployment <!--36041656--> | Deployment using Local Identity doesn't support manual secret rotation. | This issue will be fixed in the next release. |
+| Deployment <!--36041656--> | Deployment using Local Identity doesn't support manual secret rotation. | There's no known workaround in this release. |
 
 ## Known issues from previous releases
 
