@@ -35,14 +35,14 @@ Importing data from a blob container into an Azure Managed Lustre file system be
 
 To configure the import options and start the job, follow these steps:
 
-1. In the Azure portal, open your Azure Managed Lustre file system and navigate to the **Blob integration** pane under **Settings**.
+1. In the Azure portal, open your Azure Managed Lustre file system and go to the **Blob integration** pane under **Settings**.
 1. Select **+ Create new job**.
 1. Select **Import** from the **Job type** dropdown.
 1. Enter a name for the import job in the **Job Name** field.
 1. Choose a value for the **Conflict resolution mode** field. This setting determines how the import job handles conflicts between existing files in the file system and files being imported. In this example, we select **Skip**. To learn more, see [Conflict resolution mode](blob-integration.md#conflict-resolution-mode).
 1. Select a value for **Error tolerance**. This setting determines how the import job handles errors that occur during the import process. In this example, we select **Allow errors**. To learn more, see [Error tolerance](blob-integration.md#error-tolerance).
 1. Enter import prefixes to filter the data imported from Blob Storage. Azure portal allows you to enter up to 10 prefixes. In this example, we specify the prefixes */data* and */logs*. To learn more, see [Import prefix](blob-integration.md#import-prefix).
-1. Once the job is configured, select **Start** to begin the import process.
+1. After the job is configured, select **Start** to begin the import process.
 
 The following screenshot shows the import job configuration settings in Azure portal:
 
@@ -54,7 +54,7 @@ After the import job is created, you can monitor its progress to make sure it co
 
 To view the job details, follow these steps:
 
-1. In the Azure portal, open your Azure Managed Lustre file system and navigate to the **Blob integration** pane under **Settings**.
+1. In the Azure portal, open your Azure Managed Lustre file system and go to the **Blob integration** pane under **Settings**.
 1. Select the import job you want to monitor from the list of recent jobs.
 1. The **Job details** pane displays information about the job, including the job status, start time, blobs imported, and any errors or conflicts that occurred during the import process.
 
@@ -62,8 +62,8 @@ The following screenshot shows the job details for an import job in the Azure po
 
 :::image type="content" source="./media/import-jobs/import-job-details.png" alt-text="Screenshot showing job details for an import job." lightbox="./media/import-jobs/import-job-details.png":::
 
-Once the job completes, you can view the logging container to see detailed information about the import process, including any errors or conflicts that occurred. This information is only available after the job completes.
+When the job completes, you can view the logging container to see detailed information about the import process, including any errors or conflicts that occurred. This information is only available after the job completes.
 
-## Next steps
+## Related content
 
 For more information about using Azure Blob Storage with Azure Managed Lustre, see [Use Azure Blob storage with an Azure Managed Lustre file system](blob-integration.md).

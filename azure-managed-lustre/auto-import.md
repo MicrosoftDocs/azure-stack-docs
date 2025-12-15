@@ -49,7 +49,7 @@ To create a new Auto-Import job, follow these steps:
 1. Choose a value for the **Conflict resolution mode** field. This setting determines how the import job handles conflicts between existing files in the file system and files being imported. In this example, we select **Skip**. To learn more, see [Conflict resolution mode](/azure/azure-managed-lustre/blob-integration#conflict-resolution-mode).
 1. Enter import prefixes to filter the data imported from Blob Storage. Azure portal allows you to enter up to 10 prefixes. In this example, we specify the prefixes */data* and */logs*. To learn more, see [Import prefix](/azure/azure-managed-lustre/blob-integration#import-prefix).
 1. Determine if you’d like to **Enable deletions** which enables propagation of deletions from Azure Blob Storage to Azure Managed Lustre.
-1. Once the job is configured, select **Start** to begin the import process.
+1. After the job is configured, select **Start** to begin the import process.
 
 ## Monitoring and managing auto-import
 
@@ -59,7 +59,7 @@ The **Blob Integration** pane displays details of import activities in the **Rec
 
 To cancel the job that's in progress, select the **Cancel** link for that job in the **Recent jobs** table. The **Cancel** link is only available for the current auto-import.
 
-To view the metrics of an Auto-Import job, click on the **Name** of the job and the Metrics blade appears on the right-hand side panel in the Portal.
+To view the metrics of an Auto-Import job, select the **Name** of the job and the Metrics blade appears on the right-hand side panel in the Portal.
 
 ## Metrics
 
@@ -78,7 +78,7 @@ Rate of Blob Import | Per-second count of Blobs imported from Blob to Lustre dur
 Total Blobs Walked | Count of Blobs scanned during the Full Sync phase
 Rate of Blob Walk | Per-second count of Blobs scanned during the Full Sync phase
 Total Conflicts | Count of encounters with Blobs that have the same path and name of an existing object in the Lustre namespace, but that differ in terms of one or more areas including type of object, data, and metadata.
-Total Errors | Total number of errors encountered, failing to import Blobs to Lustre, during the initial Full Sync phase. Click on this link to be taken to the Logging Container page to view the logs associated with this Auto-Import job.
+Total Errors | Total number of errors encountered, failing to import Blobs to Lustre, during the initial Full Sync phase. Select this link to go to the Logging Container page to view the logs associated with this Auto-Import job.
 
 **Blob Sync Statistics** | **Statistics about activity related to monitoring Change Feed**
 --- | ---
@@ -92,7 +92,7 @@ Total Blobs Imported | Count of Blobs imported into the Lustre namespace from th
 Rate of Blob Import | Per-second count of Blobs imported from Blob to Lustre after the initial Full Sync phase
 Deletions | Count of files deleted during the Blob Sync phase
 Total Conflicts | Count of encounters with Blobs that have the same path and name of an existing object in the Lustre namespace after the initial Full Sync phase, but that differ in terms of one or more areas including type of object, data, and metadata.
-Total Errors | Total number of errors encountered, failing to import Blobs to Lustre, after the initial Full Sync phase. Click on this link to be taken to the Logging Container page to view the logs associated with this Auto-Import job.
+Total Errors | Total number of errors encountered, failing to import Blobs to Lustre, after the initial Full Sync phase. Select this link to go to the Logging Container page to view the logs associated with this Auto-Import job.
 Last Change Feed Event Consumed Time | Timestamp of the last Change Feed event processed for this Auto-Import job
 Last Time Fully Synchronized | Most recent timestamp when all Change Feed events were processed for this Auto-Import job
 
@@ -104,14 +104,14 @@ While using Auto-Import, consider the following best practices to ensure smooth 
 - Change Feed retention period MUST be set to seven days or greater. When enabling the blob change feed, select to either: **Keep all logs** OR set **Delete change feed logs after (in days)** to seven or greater.
 - Auto-Import is dependent on the Change Feed and is, thus, limited to the timeliness of events published to the Change Feed. The Change Feed currently suggests that events are published "within minutes."
 - Auto-Import can typically import changes at a rate of 2000 per second.
-- No Blob Integration jobs can be run at the same time. Once Auto-Import is enabled, manual import and export jobs (both manual and auto) can't be used.
+- No Blob Integration jobs can be run at the same time. After Auto-Import is enabled, manual import and export jobs (both manual and auto) can't be used.
 - Lfs hsm_* commands aren't supported during the use of Auto-Import as it can cause consistency issues between Blob and the Lustre file system.
 
 Best practices for enabling Deletions:
 
 - Deletions are one way (Blob ➜ Lustre) and only apply going forward.
 - AutoImport always begins with a manual (full sync) scan. That scan doesn't compute a bidirectional map or attempt to detect "blob was deleted, file still exists in Lustre." **Deletes that occurred before enablement therefore won’t be removed during the scan.**
-- During the initial scan, changes (including deletes) are delayed. Any Change Feed events, including deletes, that occur while the initial scan runs are applied **after** the scan completes. Expect a temporary period where Lustre may still show files that were deleted in Blob during the scan.
+- During the initial scan, changes (including deletes) are delayed. Any Change Feed events, including deletes, that occur while the initial scan runs are applied **after** the scan completes. Expect a temporary period where Lustre might still show files that were deleted in Blob during the scan.
 - Deletion behavior is explicitly tied to the selected conflict mode. The following table demonstrates the behavior for each mode when "Enable deletions" is selected:
 
 **File previously modified in Lustre?** | **Conflict resolution mode** | **Perform Deletion?**
@@ -121,6 +121,6 @@ Yes | Skip | No - File remains in Lustre
 No | Overwrite – If Dirty | Yes
 No | Skip | Yes
 
-## Next steps
+## Related content
 
 - Learn more about [Azure Blob Storage integration with Azure Managed Lustre file systems](/azure/azure-managed-lustre/blob-integration).

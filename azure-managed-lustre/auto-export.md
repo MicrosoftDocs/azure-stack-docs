@@ -151,10 +151,10 @@ Metrics are grouped into two main categories, *Overall* and *Current Iteration*.
       Files Failed
    :::column-end:::
    :::column span="2":::
-      Total number of files that failed to copy during the current iteration. Click on this link to be taken to the Logging Container page to view the logs associated with this Auto-Export job.
+      Total number of files that failed to copy during the current iteration. Select this link to go to the Logging Container page to view the logs associated with this Auto-Export job.
    :::column-end:::
 :::row-end:::
-\* The metrics for the current ongoing iteration should be read as “so far.” For example, Files Discovered is the number of the files discovered for exporting at the moment of reporting. The next stats reporting cycle may show that more files are discovered.
+\* The metrics for the current ongoing iteration should be read as “so far.” For example, Files Discovered is the number of the files discovered for exporting at the moment of reporting. The next stats reporting cycle might show that more files are discovered.
 
 ## Considerations and Best Practices
 
@@ -163,6 +163,6 @@ While using Auto-Export, consider the following best practices to ensure smooth 
 - **Conflict Management**: If a file is modified in both the file system and Blob Storage, there is a risk of overwrite. Use application-level coordination to prevent conflicting edits.
 - **Disable Auto-Export Before Deletion**: Before deleting a file system or its Blob Integration, ensure that all queued updates are synchronized. Verify that the **Last Successful Iteration Time** is recent and the **Files Failed** metric is zero to avoid data loss. Then, disable Auto-Export.
 
-## Next step
+## Related content
 
 - Learn more about [Azure Blob Storage integration with Azure Managed Lustre file systems](blob-integration.md).

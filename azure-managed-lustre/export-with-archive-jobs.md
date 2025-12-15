@@ -45,6 +45,6 @@ If an export job doesn't complete successfully, you can retry the export by [cre
 
 Retries can be common when attempting to export data from active file systems where data is frequently changing. To learn more about these scenarios, see [Running export jobs in active file systems](blob-integration.md#running-export-jobs-in-active-file-systems).
 
-## Next step
+## Related content
 
 - Learn more about [Azure Blob Storage integration with Azure Managed Lustre file systems](blob-integration.md).

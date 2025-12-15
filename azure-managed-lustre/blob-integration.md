@@ -20,7 +20,7 @@ To understand the requirements and configuration needed for a compatible blob co
 
 ## Blob integration overview
 
-You can configure blob integration during [cluster creation](create-file-system-portal.md#blob-integration), and you can [create an import job](create-import-job.md) any time after the cluster is created. Once the data is imported, you can work with the data as you would with other file system data. As new files are created or existing files are modified in the file system, you can export these files back to the storage account by running Lustre CLI commands on the client, or by [exporting the data using export jobs](export-with-archive-jobs.md).
+You can configure blob integration during [cluster creation](create-file-system-portal.md#blob-integration), and you can [create an import job](create-import-job.md) any time after the cluster is created. After the data is imported, you can work with the data as you would with other file system data. As new files are created or existing files are modified in the file system, you can export these files back to the storage account by running Lustre CLI commands on the client, or by [exporting the data using export jobs](export-with-archive-jobs.md).
 
 When you import data from a blob container to an Azure Managed Lustre file system, only the file names (namespace) and metadata are imported into the Lustre namespace. The actual contents of a blob are imported when first accessed by a client. There's a slight delay when first accessing data while the Lustre Hierarchical Storage Management (HSM) feature pulls in the blob contents to the corresponding file in the file system.
 
@@ -91,7 +91,7 @@ The following items are important to consider when importing data from a blob co
 - Only one import or export action can run at a time. For example, if an import job is in progress, attempting to start another import job returns an error.
 - Import jobs can be canceled. You can cancel an import job started on an existing cluster, or an import job initiated during cluster creation.
 - Cluster deployment can return successfully before the corresponding import job is complete. The import job continues to run in the background. You can monitor the import job's progress in the following ways:
-  - **Azure portal**: The Azure portal displays the status of the import job. Navigate to the file system and select **Blob integration** to view the import job status.
+  - **Azure portal**: The Azure portal displays the status of the import job. Go to the file system and select **Blob integration** to view the import job status.
   - **Lustre file in root directory**: A file named similar to `/lustre/IMPORT_<state>.<timestamp_start>` is created in the Lustre root directory during import. The `<state>` placeholder changes as the import progresses. The file is deleted when the import job completes successfully.
 - To view details about a completed import job, you can check the logging container. The logging container contains logs for the import job, including any errors or conflicts that occurred during the import.
 - If the import job fails for any reason, you might not have complete statistics about the import job, such as the number of files imported or number of conflicts.
@@ -238,11 +238,11 @@ For AzCopy, you can include directory attributes by adding the following flag:
 
 Including this flag preserves directory POSIX attributes during a transfer, for example, `owner`, `group`, and `permissions`. If you use `azcopy` on the storage container without this flag, or with the flag set to `false`, then the data and directories are included in the transfer, but the directories don't retain their POSIX attributes.
 
-In Storage Explorer, you can enable this flag in **Settings** by selecting **Transfers** and checking the box for **Include Directory Stubs**.
+In Storage Explorer, you can enable this flag in **Settings** by selecting **Transfers** and selecting the box for **Include Directory Stubs**.
 
 :::image type="content" source="./media/blob-integration/blob-integration-storage-explorer.png" alt-text="Screenshot showing how to include directory stubs during a transfer in Storage Explorer." lightbox="media/blob-integration/blob-integration-storage-explorer.png":::
 
-## Next steps
+## Related content
 
 - [Prerequisites for blob storage integration](amlfs-prerequisites.md#blob-integration-prerequisites-optional)
 - [Create an import job from Blob Storage to Azure Managed Lustre](create-import-job.md)
