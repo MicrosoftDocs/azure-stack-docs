@@ -19,12 +19,12 @@ This article describes how to deploy a virtualized Azure Local instance on a hos
 You need administrator privileges for the Azure Local virtual deployment and should be familiar with the existing Azure Local solution. The deployment can take around 2.5 hours to complete.
 
 > [!IMPORTANT]
->
+
 > A virtual deployment of Azure Local is intended for educational and demonstration purposes only. 
 
 
 > [!NOTE]
->
+
 > Microsoft Support doesn't support virtual deployments.
 
 ## Prerequisites
@@ -63,9 +63,10 @@ Before you begin, make sure that each virtual host system can dedicate the follo
 | Boot disk | One disk to install the Azure Stack HCI operating system from ISO. At least 127 GB. |
 | Hard disks for Storage Spaces Direct | Two dynamic expanding disks. Maximum disk size is 1024 GB. |
 | Data disks | At least 127 GB each. The size must be the same for each disk. |
-| Time synchronization in integration | Disabled. |
+| Time synchronization in Hyper-V integration tools | Disabled. |
 
 > [!NOTE]
+
 > These are the minimum requirements to successfully deploy Azure Local. Increase the capacity like virtual cores and memory when running actual workloads like virtual machines or containers.
 
 ## Set up the virtual switch
@@ -162,7 +163,7 @@ Follow these steps to create an example VM named `Node1` using PowerShell cmdlet
 1. Enable MAC address spoofing and teaming on all network adapters on VM Node1 if you plan to use nested virtualization.
 
 * MAC address spoofing lets a network adapter appear as another by changing its Media Access Control (MAC) address.
-* NetworkATC teams vNICs for management and compute intent, and, depending on the configuration, for storage vNICs.
+* NetworkATC teams vNICs for management and compute intent and, depending on the configuration, for storage vNICs.
 
     ```PowerShell
     Get-VmNetworkAdapter -VmName "Node1" | Set-VmNetworkAdapter -MacAddressSpoofing On -Allow Teaming On
