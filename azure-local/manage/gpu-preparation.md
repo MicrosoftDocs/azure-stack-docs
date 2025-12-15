@@ -54,9 +54,9 @@ The following table shows which GPU model is supported by which GPU assignment t
 | NVIDIA A10 |&cross; No |&check; Yes |&cross; No |&check; Yes |
 | NVIDIA A16 |&check; Yes |&check; Yes |&check; Yes |&check; Yes |
 | NVIDIA A40 |&cross; No |&check; Yes |&cross; No |&check; Yes |
-| NVIDIA L4 |&cross; No |&check; Yes |&cross; No |&check; Yes |
-| NVIDIA L40 |&cross; No |&check; Yes |&cross; No |&check; Yes |
-| NVIDIA L40S |&cross; No |&check; Yes |&cross; No |&check; Yes |
+| NVIDIA L4 |&cross; No |&check; Yes |&cross; Yes |&check; Yes |
+| NVIDIA L40 |&cross; No |&check; Yes |&cross; Yes |&check; Yes |
+| NVIDIA L40S |&cross; No |&check; Yes |&cross; Yes |&check; Yes |
 
 *AKS Arc doesn't currently support GPU partitions.
 
