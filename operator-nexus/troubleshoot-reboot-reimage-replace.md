@@ -4,9 +4,9 @@ description: Troubleshoot cluster bare metal machines with Restart, Reimage, Rep
 ms.service: azure-operator-nexus
 ms.custom: troubleshooting
 ms.topic: troubleshooting
-ms.date: 08/12/2025
-author: eak13
-ms.author: ekarandjeff
+ms.date: 12/15/2025
+author: gregoberfield
+ms.author: goberfield
 ---
 
 # Troubleshoot Azure Operator Nexus Bare Metal Machine server problems
@@ -52,10 +52,10 @@ Follow this escalation path when troubleshooting BMM issues:
 
 | Problem                      | First action | If problem persists | If still unresolved |
 | ---------------------------- | ------------ | ------------------- | ------------------- |
-| Unresponsive VMs or services | Restart      | Reimage             | Replace             |
-| Software/OS corruption       | Reimage      | Replace             | Contact support     |
-| Known hardware failure       | Replace      | N/A                 | Contact support     |
-| Security compromise          | Reimage      | Replace             | Contact support     |
+| Unresponsive VMs or services | [Restart](#troubleshoot-with-a-restart-action)      | [Reimage](#troubleshoot-with-a-reimage-action)             | [Replace](#troubleshoot-with-a-replace-action)             |
+| Software/OS corruption       | [Reimage](#troubleshoot-with-a-reimage-action)      | [Replace](#troubleshoot-with-a-replace-action)             | Contact support     |
+| Known hardware failure       | [Replace](#troubleshoot-with-a-replace-action)      | N/A                 | Contact support     |
+| Security compromise          | [Reimage](#troubleshoot-with-a-reimage-action)      | [Replace](#troubleshoot-with-a-replace-action)             | Contact support     |
 
 The recommended approach is to start with the least invasive solution (restart) and escalate to more complex measures only if necessary. Always validate that the issue is resolved after each corrective action.
 
@@ -175,6 +175,18 @@ az networkcloud baremetalmachine uncordon \
   --subscription <subscriptionID>
 ```
 
+**To verify the BMM status after `reimage`:**
+
+```azurecli
+az networkcloud baremetalmachine show \
+  --name <bareMetalMachineName>  \
+  --resource-group "<resourceGroup>" \
+  --subscription <subscriptionID> \
+  --query "provisioningState"
+```
+
+A result of `Succeeded` will show the BMM has been provisioned and rejoined the cluster.
+
 ## Troubleshoot with a replace action
 
 Servers contain many physical components that can fail over time. It's important to understand which physical repairs require BMM replacement and when BMM replacement is recommended. The Tenant data isn't modified during replacement as long as `storage-policy="Preserve"` flag is used.
@@ -254,6 +266,18 @@ az networkcloud baremetalmachine uncordon \
   --subscription <subscriptionID>
 ```
 
+**To verify the BMM status after `reimage`:**
+
+```azurecli
+az networkcloud baremetalmachine show \
+  --name <bareMetalMachineName>  \
+  --resource-group "<resourceGroup>" \
+  --subscription <subscriptionID> \
+  --query "provisioningState"
+```
+
+A result of `Succeeded` will show the BMM has been provisioned and rejoined the cluster.
+
 ## Summary
 
 Restarting, reimaging, and replacing are effective troubleshooting methods for addressing Azure Operator Nexus server problems. Here's a quick reference guide:
@@ -270,15 +294,7 @@ Restarting, reimaging, and replacing are effective troubleshooting methods for a
 - **Verify workloads before action**: Use the provided commands to identify running workloads before any disruptive action.
 - **Cordon with evacuation**: When performing reimage or replace actions, always use `cordon` with `evacuate="True"` to safely move workloads.
 - **Never run multiple operations simultaneously**: Ensure one operation completes before starting another to prevent server issues.
-- **Verify resolution**: After performing any action, verify the BMM status and that the original issue is resolved.  BMM status can be viewed with:
-
-```azurecli
-az networkcloud baremetalmachine show \
-  --name <bareMetalMachineName>  \
-  --resource-group "<resourceGroup>" \
-  --subscription <subscriptionID> \
-  --query "provisioningState"
-```
+- **Verify resolution**: After performing any action, verify the BMM status and that the original issue is resolved.
 
 More details about the BMM actions can be found in the [BMM actions](howto-baremetal-functions.md) article.
 
