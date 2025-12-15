@@ -84,6 +84,10 @@ Before you create an Azure Local VM, make sure that the following prerequisites 
 
 Follow these steps to create a VM on your Azure Local.
 
+> [!NOTE]
+> - Two DVD drives are created and used in Azure Local VMs during VM provisioning. The ISO files used during provisioning are removed after successfully creating the VM. However, you might see the empty drives visible for the VM. 
+> - To delete these drives in a Windows VM, use Device Manager to uninstall the drives. Depending on the flavor of Linux you are using, you can also delete them for Linux VMs.
+
 # [Azure CLI](#tab/azurecli)
 
 Follow these steps on the client running az CLI that is connected to your Azure Local.
@@ -197,7 +201,8 @@ To create a Linux VM, use the same command that you used to create the Windows V
 > [!IMPORTANT]
 > Setting the proxy server during VM creation is supported for Ubuntu Server VMs.
 
-### Create a VM with proxy configured
+
+## Create a VM with proxy configured
 
 Use this optional parameter **proxy-configuration** to configure a proxy server for your VM.
 
@@ -230,7 +235,7 @@ az stack-hci-vm create --name $vmName --resource-group $resource_group --admin-u
 
 For proxy authentication, you can pass the username and password combined in a URL as follows:`"http://username:password@proxyserver.contoso.com:3128"`.
 
-### Create a VM with Arc gateway configured
+## Create a VM with Arc gateway configured
 
 To configure an Arc gateway for your Azure Local VM, create a VM with guest management enabled and pass the optional parameter `--gateway-id`. Arc gateway can be used with or without proxy configuration. By default, only the Arc traffic is redirected through the Arc proxy. 
 
@@ -742,10 +747,6 @@ You can use the Azure Verified Module (AVM) that contains the Terraform template
    :::image type="content" source="./media/create-arc-virtual-machines/terraform-virtual-machines.png" alt-text="Screenshot of select Virtual Machine after deployment." lightbox="./media/create-arc-virtual-machines/terraform-virtual-machines.png":::
 
 ---
-
-> [!NOTE]
-> - Two DVD drives are created and used in Azure Local VMs during VM provisioning. The ISO files used during provisioning are removed after successfully creating the VM. However, you might see the empty drives visible for the VM. 
-> - To delete these drives in a Windows VM, use Device Manager to uninstall the drives. Depending on the flavor of Linux you are using, you can also delete them for Linux VMs.
 
 ## Use managed identity to authenticate Azure Local VMs
 
