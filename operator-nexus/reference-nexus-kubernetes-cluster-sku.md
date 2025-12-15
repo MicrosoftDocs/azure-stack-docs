@@ -1,17 +1,17 @@
 ---
-title: Azure Operator Nexus Kubernetes cluster VM SKUs
+title: Azure Operator Nexus Kubernetes cluster Virtual Machine SKUs
 description: Learn about Azure Operator Nexus Kubernetes cluster SKUs
-author: dramasamy
-ms.author: dramasamy
+author: eak13
+ms.author: ekarandjeff
 ms.service: azure-operator-nexus
 ms.topic: reference
-ms.date: 08/07/2024
+ms.date: 12/15/2024
 ms.custom: template-reference
 ---
 
 # Azure Operator Nexus Kubernetes cluster VM SKUs
 
-The Azure Operator Nexus Kubernetes cluster VMs are grouped into node pools, which are collections of VMs that have the same configuration. The VMs in a node pool are used to run your Kubernetes workloads. The Azure Operator Nexus Kubernetes cluster supports the following VM SKUs. These SKUs are available in all Azure regions where the Azure Operator Nexus Kubernetes cluster is available.
+The Azure Operator Nexus Kubernetes cluster virtual machines (VM) are grouped into node pools, which are collections of VMs that have the same configuration. The VMs in a node pool are used to run your Kubernetes workloads. The Azure Operator Nexus Kubernetes cluster supports the following VM SKUs. These SKUs are available in all Azure regions where the Azure Operator Nexus Kubernetes cluster is available.
 
 There are four types of VM SKUs:
 
@@ -20,7 +20,7 @@ There are four types of VM SKUs:
 * Memory optimized
 * Storage optimized
 
-The primary difference between general-purpose and performance-optimized types of VMs is their approach to emulator thread isolation. VM SKUs optimized for performance have dedicated emulator threads, which allow each VM to operate at maximum efficiency. Conversely, general-purpose VM SKUs have emulator threads that run on the same processors as applications running inside the VM. For application workloads that cannot tolerate other workloads sharing their processors, we recommend using the performance-optimized SKUs. Memory-optimized SKUs allow application workloads with very large memory requirements to access resources from both NUMA cells within the physical machine. As these SKUs are highly resource intensive, it is recommended to use a smaller SKU if suitable for the application workload. Storage-optimized SKUs enable Kubernetes nodes to allocate up to 1.6 TiB of local disk space for workloads that need more storage than the standard 300 GiB allocated by other SKUs.
+The primary difference between general-purpose and performance-optimized types of VMs is their approach to emulator thread isolation. VM SKUs optimized for performance have dedicated emulator threads, which allow each VM to operate at maximum efficiency. Conversely, general-purpose VM SKUs have emulator threads that run on the same processors as applications running inside the VM. For application workloads that can't tolerate other workloads sharing their processors, we recommend using the performance-optimized SKUs. Memory-optimized SKUs allow application workloads with very large memory requirements to access resources from both NUMA cells within the physical machine. As these SKUs are highly resource intensive, the recommendation is to use a smaller SKU if suitable for the application workload. Storage-optimized SKUs enable Kubernetes nodes to allocate up to 1.6 TiB of local disk space for workloads that need more storage than the standard 300 GiB allocated by other SKUs.
 
 All these SKUs are having the following characteristics:
 
@@ -32,7 +32,7 @@ The general purpose and performance optimized VM SKUs can be used for both worke
 > [!NOTE]
 > To use these VM SKUs, hardware compatibility should be considered. Operator Nexus offers two hardware options: BOM 1.7.3 and BOM 2.0 (More details [here](./reference-operator-nexus-skus.md#compute-skus)). The larger VM SKUs, specifically `NC_G56_224_v1`, `NC_P54_224_v1`, and `NC_E110_448_v1`, can only be supported on hardware BOM 2.0.
 > 
-> Nexus Tenant Kubernetes cluster VM SKUs are compatible with BOM 2.0, enabling users to use them alongside the larger VM SKUs. However, if a user tries to use BOM 2.0-specific VM SKUs on BOM 1.7.3 compute hardware, they will encounter an "insufficient resources" error during resource creation.
+> Nexus Tenant Kubernetes cluster VM SKUs are compatible with BOM 2.0, enabling users to use them alongside the larger VM SKUs. However, if a user tries to use BOM 2.0-specific VM SKUs on BOM 1.7.3 compute hardware, an "insufficient resources" error triggers during resource creation.
 
 ## General purpose VM SKUs
 
@@ -40,8 +40,13 @@ The general purpose and performance optimized VM SKUs can be used for both worke
 |---------------|------|--------------|-----------------|---------------------|
 | NC_G56_224_v1 | 56   | 224          | 300             | 2.0             |
 | NC_G48_224_v1 | 48   | 224          | 300             | 1.7.3, 2.0  |
+| NC_G42_168_v1 | 42   | 168          | 300             | 1.7.3, 2.0  |
 | NC_G36_168_v1 | 36   | 168          | 300             | 1.7.3, 2.0  |
+| NC_G28_112_v1 | 28   | 112          | 300             | 1.7.3, 2.0  |
 | NC_G24_112_v1 | 24   | 112          | 300             | 1.7.3, 2.0  |
+| NC_G18_74_v1  | 18   | 74           | 300             | 1.7.3, 2.0  |
+| NC_G16_74_v1  | 16   | 74           | 300             | 1.7.3, 2.0  |
+| NC_G14_56_v1  | 14   | 56           | 300             | 1.7.3, 2.0  |
 | NC_G12_56_v1  | 12   | 56           | 300             | 1.7.3, 2.0  |
 | NC_G6_28_v1   | 6    | 28           | 300             | 1.7.3, 2.0  |
 | NC_G2_8_v1    | 2    | 8            | 300             | 1.7.3, 2.0  |
@@ -52,8 +57,13 @@ The general purpose and performance optimized VM SKUs can be used for both worke
 |---------------|------|--------------|-----------------|---------------------|
 | NC_P54_224_v1 | 54   | 224          | 300             | 2.0             |
 | NC_P46_224_v1 | 46   | 224          | 300             | 1.7.3, 2.0  |
+| NC_P40_168_v1 | 40   | 168          | 300             | 1.7.3, 2.0  |
 | NC_P34_168_v1 | 34   | 168          | 300             | 1.7.3, 2.0  |
+| NC_P26_112_v1 | 26   | 112          | 300             | 1.7.3, 2.0  |
 | NC_P22_112_v1 | 22   | 112          | 300             | 1.7.3, 2.0  |
+| NC_P16_74_v1  | 16   | 74           | 300             | 1.7.3, 2.0  |
+| NC_P14_74_v1  | 14   | 74           | 300             | 1.7.3, 2.0  |
+| NC_P12_56_v1  | 12   | 56           | 300             | 1.7.3, 2.0  |
 | NC_P10_56_v1  | 10   | 56           | 300             | 1.7.3, 2.0  |
 | NC_P4_28_v1   | 4    | 28           | 300             | 1.7.3, 2.0  |
 
