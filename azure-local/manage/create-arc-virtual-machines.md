@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.reviewer: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 11/26/2025
+ms.date: 12/15/2025
 ms.custom:
   - devx-track-azurecli
   - sfi-image-nochange
@@ -232,11 +232,9 @@ For proxy authentication, you can pass the username and password combined in a U
 
 ### Create a VM with Arc gateway configured
 
-Use this optional parameter **gateway-id** to configure a Arc gateway for your VM.
+To configure an Arc gateway for your Azure Local VM, create a VM with guest management enabled and pass the optional parameter `--gateway-id`. Arc gateway can be used with or without proxy configuration. By default, only the Arc traffic is redirected through the Arc proxy. 
 
-Arc gateway for VMs is configured during the onboarding of the Azure connected machine agent and be used with or without proxy configuration. When enabling the Arc gateway on Azure Local VMs, only the Arc traffic will be redirected through the Arc proxy by default. If you want all the OS applications or services to also use the Arc gateway inside the VM, you will need to configure the proxy inside the VM to use the Arc proxy. Only the allowed endpoints by Arc gateway will be sent over the Arc gateway tunnel. The rest of the traffic will be sent to the endpoint directly or over your enterprise proxy, depending on the VM configuration.
-
-As such, you may need to specifically set the proxy configuration for your applications if they don't reference the environment variables set within the VM.
+If you want the VM applications or services to use the Arc gateway, configure the proxy inside the VM to use the Arc proxy. For applications that don't reference the environment variables set within the VMs, specify a proxy as-needed.
 
 > [!IMPORTANT]
 > Traffic intended for endpoints not managed by the Arc gateway is routed through the enterprise proxy or firewall.
