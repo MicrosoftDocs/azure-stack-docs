@@ -271,7 +271,13 @@ During deployment, the system goes through several steps including cluster regis
 
 From software version 12.2512 and later, the Entra ID application is no longer created during new deployments. Instead, the cluster uses Managed System Identity (MSI) to authenticate itself with Azure.
 
-For existing deployments also, the Entra ID application is no longer used for authentication. The cluster automatically switches to MSI for authentication without any manual intervention. As the app is no longer used, it can be deleted from the Entra ID portal. To delete the app, make sure that the registration context is updated to v4 and there's a corresponding event in the Azure Local event log.
+For existing deployments also, the Entra ID application is no longer used for authentication. The cluster automatically switches to MSI for authentication without any manual intervention. As the app is no longer used, it can be deleted from the Entra ID portal. 
+
+To delete the app, make sure that the registration context is updated to v4 and there's a corresponding event in the Azure Local event log. To search for the event, connect to one of machines on the Azure Local instance. Run the following PowerShell command:
+
+```powershell
+Get-ClusterNode | % { Get-WinEvent -ComputerName $_ -LogName Microsoft-AzureStack-HCI/Admin | ? Id -eq 609 }
+```
 
 
 Once the deployment starts, the first step in the deployment: **Begin cloud deployment** can take 45-60 minutes to complete. The total deployment time for a single machine is around 1.5-2 hours while a two-node system takes about 2.5 hours to deploy.
