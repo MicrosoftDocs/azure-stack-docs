@@ -40,7 +40,9 @@ Azure Operator Nexus relies on [cert-manager](https://cert-manager.io/) to autom
 - **Renewal window**: Certificates are typically renewed about **23 days before** expiration.
 
 > [!IMPORTANT]
-> If a TLS certificate expires, TLS clients reject it and connections fail. This failure can prevent access to the affected endpoint or service until certificate renewal succeeds and workloads pick up the updated secret.
+> If a TLS certificate expires, clients that validate TLS refuse the connection. Some user-facing tools let you bypass validation (for example, a browser click-through), but platform services require validation to stay on. Renew the certificate so workloads pick up the updated secret.
+> [!WARNING]
+> iDRAC expects a 60-day certificate lifetime and raises alerts as expiration nears. This differs from the platform 70-day lifetime and is under review. Certificate renewal currently starts about 13 days before the iDRAC-expected expiration.
 
 Because all issuance is in-cluster, operators retain full control over the trust fabric without depending on external connectivity or services.
 

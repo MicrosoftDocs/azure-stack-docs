@@ -4,9 +4,9 @@ description: Troubleshoot cluster bare metal machines with Restart, Reimage, Rep
 ms.service: azure-operator-nexus
 ms.custom: troubleshooting
 ms.topic: troubleshooting
-ms.date: 08/12/2025
-author: eak13
-ms.author: ekarandjeff
+ms.date: 12/15/2025
+author: gregoberfield
+ms.author: goberfield
 ---
 
 # Troubleshoot Azure Operator Nexus Bare Metal Machine server problems
@@ -21,10 +21,12 @@ The time required to complete each of these actions is similar. Restarting is th
 ## Prerequisites
 
 - Familiarize yourself with the capabilities referenced in this article by reviewing the [BMM actions](howto-baremetal-functions.md).
-- Gather the following information:
+- Gather the following information (necessary for all actions):
   - Name of the managed resource group for the BMM
   - Name of the BMM that requires a lifecycle management operation
   - Subscription ID
+- Cluster Detailed status must be `Running`
+- Cluster to Cluster Manager connectivity must be `Connected`
 
 > [!IMPORTANT]
 > Disruptive commands to a Kubernetes Control Plane (KCP) node are rejected if another disruptive action is already in progress on any KCP node or if the full KCP is unavailable.
@@ -42,7 +44,7 @@ When troubleshooting a BMM for failures and determining the most appropriate cor
 
 - **Restart** - Least invasive method, best for temporary glitches, or unresponsive Virtual Machines (VM)s
 - **Reimage** - Intermediate solution, restores OS to known-good state without affecting data
-- **Replace** - Most significant action, required for hardware component failures
+- **Replace** - Most significant action, required for hardware component failures such as RAM, hard disk, etc.  Replace action should be used after the BMM components have been replaced.
 
 ### Troubleshooting decision tree
 
@@ -50,10 +52,10 @@ Follow this escalation path when troubleshooting BMM issues:
 
 | Problem                      | First action | If problem persists | If still unresolved |
 | ---------------------------- | ------------ | ------------------- | ------------------- |
-| Unresponsive VMs or services | Restart      | Reimage             | Replace             |
-| Software/OS corruption       | Reimage      | Replace             | Contact support     |
-| Known hardware failure       | Replace      | N/A                 | Contact support     |
-| Security compromise          | Reimage      | Replace             | Contact support     |
+| Unresponsive VMs or services | [Restart](#troubleshoot-with-a-restart-action)      | [Reimage](#troubleshoot-with-a-reimage-action)             | [Replace](#troubleshoot-with-a-replace-action)             |
+| Software/OS corruption       | [Reimage](#troubleshoot-with-a-reimage-action)      | [Replace](#troubleshoot-with-a-replace-action)             | Contact support     |
+| Known hardware failure       | [Replace](#troubleshoot-with-a-replace-action)      | N/A                 | Contact support     |
+| Security compromise          | [Reimage](#troubleshoot-with-a-reimage-action)      | [Replace](#troubleshoot-with-a-replace-action)             | Contact support     |
 
 The recommended approach is to start with the least invasive solution (restart) and escalate to more complex measures only if necessary. Always validate that the issue is resolved after each corrective action.
 
@@ -173,6 +175,18 @@ az networkcloud baremetalmachine uncordon \
   --subscription <subscriptionID>
 ```
 
+**To verify the BMM status after `reimage`:**
+
+```azurecli
+az networkcloud baremetalmachine show \
+  --name <bareMetalMachineName>  \
+  --resource-group "<resourceGroup>" \
+  --subscription <subscriptionID> \
+  --query "provisioningState"
+```
+
+A result of `Succeeded` will show the BMM has been provisioned and rejoined the cluster.
+
 ## Troubleshoot with a replace action
 
 Servers contain many physical components that can fail over time. It's important to understand which physical repairs require BMM replacement and when BMM replacement is recommended. The Tenant data isn't modified during replacement as long as `storage-policy="Preserve"` flag is used.
@@ -251,6 +265,18 @@ az networkcloud baremetalmachine uncordon \
   --resource-group "<resourceGroup>" \
   --subscription <subscriptionID>
 ```
+
+**To verify the BMM status after `reimage`:**
+
+```azurecli
+az networkcloud baremetalmachine show \
+  --name <bareMetalMachineName>  \
+  --resource-group "<resourceGroup>" \
+  --subscription <subscriptionID> \
+  --query "provisioningState"
+```
+
+A result of `Succeeded` will show the BMM has been provisioned and rejoined the cluster.
 
 ## Summary
 
