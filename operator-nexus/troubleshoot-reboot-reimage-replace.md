@@ -112,6 +112,8 @@ az networkcloud baremetalmachine show \
   --query "provisioningState"
 ```
 
+A result of `Succeeded` will show the command has completed.
+
 ## Troubleshoot with a reimage action
 
 Reimaging a BMM is a process that you use to redeploy the image on the OS disk, without affecting the tenant data. This action executes the steps to rejoin the cluster with the same identifiers.
@@ -266,7 +268,7 @@ az networkcloud baremetalmachine uncordon \
   --subscription <subscriptionID>
 ```
 
-**To verify the BMM status after `reimage`:**
+**To verify the BMM status after `replace`:**
 
 ```azurecli
 az networkcloud baremetalmachine show \
