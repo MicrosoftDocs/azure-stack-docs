@@ -54,25 +54,25 @@ The following VM sizes for each GPU model are supported by AKS on Azure Local.
 
 | VM size | GPUs | GPU Memory: GiB | vCPU | Memory: GiB |
 |--------------------|---|----|----|----|
-| Standard_NC16_L4_1   | 1 | 16 | 16  | 64  |
-| Standard_NC16_L4_2   | 2 | 16 | 16  | 64  |
-| Standard_NC32_L4_1   | 1 | 16 | 32  | 128  |
-| Standard_NC32_L4_2   | 2 | 16 | 32  | 128  |
+| Standard_NC16_L4_1   | 1 | 24 | 16  | 64  |
+| Standard_NC16_L4_2   | 2 | 48 | 16  | 64  |
+| Standard_NC32_L4_1   | 1 | 24 | 32  | 128  |
+| Standard_NC32_L4_2   | 2 | 48 | 32  | 128  |
 
 ### Nvidia L40 is supported by NC2 L40 SKUs
 
 | VM size | GPUs | GPU Memory: GiB | vCPU | Memory: GiB |
 |--------------------|---|----|----|----|
-| Standard_NC16_L40_1   | 1 | 16 | 16  | 64  |
-| Standard_NC16_L40_2   | 2 | 16 | 16  | 64  |
-| Standard_NC32_L40_1   | 1 | 16 | 32  | 128  |
-| Standard_NC32_L40_2   | 2 | 16 | 32  | 128  |
+| Standard_NC16_L40_1   | 1 | 48 | 16  | 64  |
+| Standard_NC16_L40_2   | 2 | 96 | 16  | 64  |
+| Standard_NC32_L40_1   | 1 | 48 | 32  | 128  |
+| Standard_NC32_L40_2   | 2 | 96 | 32  | 128  |
 
 ### Nvidia L40s is supported by NC2 L40s SKUs
 
 | VM size | GPUs | GPU Memory: GiB | vCPU | Memory: GiB |
 |--------------------|---|----|----|----|
-| Standard_NC16_L40s_1   | 1 | 16 | 16  | 64  |
-| Standard_NC16_L40s_2   | 2 | 16 | 16  | 64  |
-| Standard_NC32_L40s_1   | 1 | 16 | 32  | 128  |
-| Standard_NC32_L40s_2   | 2 | 16 | 32  | 128  |
+| Standard_NC16_L40s_1   | 1 | 48 | 16  | 64  |
+| Standard_NC16_L40s_2   | 2 | 96 | 16  | 64  |
+| Standard_NC32_L40s_1   | 1 | 48 | 32  | 128  |
+| Standard_NC32_L40s_2   | 2 | 96 | 32  | 128  |
