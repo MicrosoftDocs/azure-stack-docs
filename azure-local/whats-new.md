@@ -10,7 +10,7 @@ ms.date: 12/12/2025
 
 # What's new in hyperconverged deployments of Azure Local?
 
-This article lists the various features and improvements that are available in hyperconvered deployments of Azure Local (*formerly Azure Stack HCI*). The latest version of Azure Local solution focuses on cloud-based deployment and updates, cloud-based monitoring, new and simplified experience for Azure Local virtual machine (VM) management, security, and more.
+This article lists the various features and improvements that are available in hyperconverged deployments of Azure Local (*formerly Azure Stack HCI*). The latest version of Azure Local solution focuses on cloud-based deployment and updates, cloud-based monitoring, new and simplified experience for Azure Local virtual machine (VM) management, security, and more.
 
 ::: moniker range="=azloc-2512"
 
@@ -22,7 +22,7 @@ This release includes various reliability improvements and other bug fixes.:
 
 - **OS changes**:
 
-    - The 2504 release introduced a new operating system for Azure Local deployments. From 2512 onwards, all the new and existing deployments of Azure Local will run the new OS version **26100.7462**. You can download the 2512 OS image from the Azure portal.
+    - The 2504 release introduced a new operating system for Azure Local deployments. From 2512 onwards, all the new and existing deployments of Azure Local run the new OS version **26100.7462**. You can download the 2512 OS image from the Azure portal.
 
         - You also need a driver that's compatible with OS version **26100.7462** or Windows Server 2025. If a compatible driver isn't available, you can use the 2503 image.
 
@@ -30,14 +30,16 @@ This release includes various reliability improvements and other bug fixes.:
 
 - **.NET updates**: This build uses .NET version **8.0.22** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
 
-- **Simplified cluster registration during deployment**: Starting with this release, Azure Local cluster deployments don't use a Service Principal Name (Entra ID App) with a self signed certificate. Instead, the cluster uses Managed System Identity (MSI) to authenticate itself with Azure.
+- **Simplified cluster registration during deployment**: Starting with this release, Azure Local cluster deployments don't use a Service Principal Name (Microsoft Entra ID App) with a self signed certificate. Instead, the cluster uses Managed System Identity (MSI) to authenticate itself with Azure.
     For more information, see [Validate and deploy the system via Azure portal](./deploy/deploy-via-portal.md#verify-a-successful-deployment).
 
 - **Support for NVIDIA L-series GPU on AKS on Azure Local (preview)**: Starting with this release, NVIDIA L-series GPU is supported on Azure Kubernetes Service (AKS) enabled by Azure Arc on Azure Local. This preview feature allows you to run GPU-accelerated workloads on AKS clusters deployed on Azure Local using NVIDIA L-series GPUs.
 
-    For more information, see [Azure Kubernetes Service (AKS) enabled by Azure Arc](./concepts/aks-overview.md).
+    For more information, see [Azure Kubernetes Service (AKS) enabled by Azure Arc](/azure/aks/aksarc/aks-overview#about-aks-on-azure-local).
 
-**Documentation updates**: The noteworthy changes include the following new articles or articles with major updates:
+- **Documentation updates**: The noteworthy changes include the following new articles or articles with major updates:
+    - [SDN upgrade infrastructure](./manage/upgrade-sdn.md) guidance is released.
+    - Azure Stack HCI renaming banners added to the top of the feature overview articles were removed. This change was consistent with Azure portal updates that removed the renaming banners.
 
 ::: moniker-end
 
