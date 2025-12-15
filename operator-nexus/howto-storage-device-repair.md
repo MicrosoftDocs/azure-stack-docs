@@ -30,7 +30,7 @@ az networkcloud storageappliance update --name <storageAppliance> -g <HostedReso
 
 ```
  ### Post-Replacement
-After the component is replaced, confirm that the related Purity//FA alert has cleared in the Purity GUI or Azure portal, and verify that the new component replacement reports a healthy state in the Purity GUI or CLI. 
+After the component is replaced, confirm that the related Purity//FA alert cleared in the Purity GUI or Azure portal, and verify that the new component replacement reports a healthy state in the Purity GUI or CLI. 
 
 You can also validate the hardware status through Operator Nexus by running a [read-only diagnostic command](./howto-storage-run-read.md). This command surfaces the hardware state directly from the Pure FlashArray, allowing you to confirm that the replacement part is detected and reporting a healthy status.
 
