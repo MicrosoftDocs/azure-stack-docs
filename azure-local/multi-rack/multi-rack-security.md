@@ -12,7 +12,7 @@ ms.date: 12/09/2025
 
 This article provides an overview of security for multi-rack deployments of Azure Local. 
 
-Multi-rack deployments of Azure Local are designed and built to both detect and defend against the latest security threats and comply with the strict requirements of government industry security standards. Two cornerstones form the foundation of its security architecture:
+Multi-rack deployments of Azure Local are designed and built to both detect and defend against the latest security threats and comply with the strict requirements of government and industry security standards. Two cornerstones form the foundation of its security architecture:
 
 * **Security by default**: Security resiliency is an inherent part of the platform with little to no configuration changes needed to use it securely.
 * **Assume breach**: The underlying assumption is that any system can be compromised, and as such the goal is to minimize the impact of a security breach if one occurs.
@@ -29,11 +29,11 @@ Microsoft cloud-native security tools are leveraged to give you the ability to i
 * **Compliance assessment against a variety of security standards**: Defender for Cloud continuously assesses your hybrid cloud environment to analyze the risk factors according to the controls and best practices in Azure Security Benchmark. When you enable the advanced security features, you can apply a range of other industry standards, regulatory standards, and benchmarks according to your organization’s needs. Add standards and track your compliance with them from the regulatory compliance dashboard.
 * **Container security features**: Benefit from vulnerability management and real-time threat protection on your containerized environments.
 
-There are enhanced security options that let you protect your on-premises host servers as well as the Azure Local clusters that run your workloads. These options are described below.
+There are enhanced security options that let you protect your on-premises host servers (also referred to as bare-metal machines) as well as the Azure Local clusters that run your workloads. These options are described below.
 
 ## Bare metal machine host operating system protection via Microsoft Defender for Endpoint
 
-The on-premises compute servers, also called bare-metal machines (BMMs), are protected when you elect to enable the [Microsoft Defender for Endpoint](/microsoft-365/security/defender-endpoint/microsoft-defender-endpoint) solution. Microsoft Defender for Endpoint provides preventative antivirus (AV), endpoint detection and response (EDR), and vulnerability management capabilities.
+The on-premises servers, also called bare-metal machines (BMMs), are protected when you elect to enable the [Microsoft Defender for Endpoint](/microsoft-365/security/defender-endpoint/microsoft-defender-endpoint) solution. Microsoft Defender for Endpoint provides preventative antivirus (AV), endpoint detection and response (EDR), and vulnerability management capabilities.
 
 You have the option to enable Microsoft Defender for Endpoint protection once you have selected and activated a [Microsoft Defender for Servers](/azure/defender-for-cloud/tutorial-enable-servers-plan) plan, as Defender for Servers plan activation is a prerequisite for Microsoft Defender for Endpoint. Once enabled, the Microsoft Defender for Endpoint configuration is managed by the platform to ensure optimal security and performance, and to reduce the risk of misconfigurations.
 
@@ -74,24 +74,9 @@ Environmental controls such as RBAC and Service Account tests aren't evaluated b
 |V-242425|Kubernetes Kubelet must enable tlsCertFile for client authentication to secure service.|NTF|Kubelet SANs contains hostname only|
 |V-242434|Kubernetes Kubelet must enable kernel protection.|NTF|Enabling kernel protection isn't feasible for kubeadm in multi-rack deployments|
 
-
-*Multi-rack Kubernetes Cluster*
-
-:::image type="content" source="media/multi-rack-security-overview/multi-rack-kubernetes-cluster-exceptions.png" alt-text="Screenshot of multi-rack Kubernetes Cluster OpenSCAP exceptions." lightbox="media/multi-rack-security-overview/multi-rack-kubernetes-cluster-exceptions.png":::
-
-|STIG ID|Recommendation description|Status|Issue|
-|---|---|---|---|
-|V-242386|The Kubernetes API server must have the insecure port flag disabled|NTF|This check is deprecated in v1.24.0 and greater|
-|V-242397|The Kubernetes kubelet staticPodPath must not enable static pods|NTF|Only enabled for control nodes, required for kubeadm|
-|V-242403|Kubernetes API Server must generate audit records that identify what type of event has occurred, identify the source of the event, contain the event results, identify any users, and identify any containers associated with the event|NTF|Certain API requests and responses contain secrets and therefore aren't captured in the audit logs|
-|V-242424|Kubernetes Kubelet must enable tlsPrivateKeyFile for client authentication to secure service|NTF|Kubelet SANs contains hostname only|
-|V-242425|Kubernetes Kubelet must enable tlsCertFile for client authentication to secure service.|NTF|Kubelet SANs contains hostname only|
-|V-242434|Kubernetes Kubelet must enable kernel protection.|NTF|Enabling kernel protection isn't feasible for kubeadm in multi-rack deployments|
-
-
 *Cluster Manager*
 
-As a secure service, Azure Kubernetes Service (AKS) complies with SOC, ISO, PCI DSS, and HIPAA standards. The following image shows the OpenSCAP file permission exceptions for the Cluster Manager using AKS.
+The cluster manager leverages the Azure Kubernetes service (AKS). As a secure service, AKS complies with SOC, ISO, PCI DSS, and HIPAA standards. The following image shows the OpenSCAP file permission exceptions for the Cluster Manager using AKS.
 
 :::image type="content" source="media/multi-rack-security-overview/multi-rack-cluster-manager-exceptions.png" alt-text="Screenshot of Cluster Manager OpenSCAP exceptions." lightbox="media/multi-rack-security-overview/multi-rack-cluster-manager-exceptions.png":::
 
@@ -101,19 +86,6 @@ As a secure service, Azure Kubernetes Service (AKS) complies with SOC, ISO, PCI 
 *Cluster*
 
 :::image type="content" source="media/multi-rack-security-overview/multi-rack-cluster-kube-bench.png" alt-text="Screenshot of Cluster Kube-Bench exceptions." lightbox="media/multi-rack-security-overview/multi-rack-cluster-kube-bench.png":::
-
-|CIS ID|Recommendation description|Status|Issue|
-|---|---|---|---|
-|1|Control Plane Components|||
-|1.1|Control Plane Node Configuration Files|||
-|1.1.12|Ensure that the etcd data directory ownership is set to `etcd:etcd`|NTF|Multi-rack is `root:root`, etcd user isn't configured for kubeadm|
-|1.2|API Server|||
-|1.1.12|Ensure that the `--kubelet-certificate-authority` argument is set as appropriate|NTF|Kubelet SANs includes hostname only|
-
-
-*Multi-rack Kubernetes Cluster*
-
-:::image type="content" source="media/multi-rack-security-overview/multi-rack-kubernetes-cluster-kube-bench.png" alt-text="Screenshot of Multi-rack Kubernetes Cluster Kube-Bench exceptions." lightbox="media/multi-rack-security-overview/multi-rack-kubernetes-cluster-kube-bench.png":::
 
 |CIS ID|Recommendation description|Status|Issue|
 |---|---|---|---|
