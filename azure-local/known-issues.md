@@ -42,6 +42,7 @@ The following table lists the fixed issues in this release:
 
 |Feature  |Issue    |Comments |
 |---------|---------|---------|
+| Azure Local VMs <!--35657991--> | Azure Local VM create flow allows adding a data disk with a name that already exists in the same resource group, leading to provisioning errors. | Validation to ensure the data disk name is unique within the resource group before creating the Azure Local VM. |
 
 ## Known issues
 
@@ -49,7 +50,7 @@ The following table lists the known issues in this release:
 
 |Feature  |Issue    |Workaround  |
 |---------|---------|------------|
-| Deployment <!--36041656--> | Deployment using Local Identity doesn't support manual secret rotation. | |
+| Deployment <!--36041656--> | Deployment using Local Identity doesn't support manual secret rotation. | This issue will be fixed in the next release. |
 
 ## Known issues from previous releases
 
