@@ -21,10 +21,12 @@ The time required to complete each of these actions is similar. Restarting is th
 ## Prerequisites
 
 - Familiarize yourself with the capabilities referenced in this article by reviewing the [BMM actions](howto-baremetal-functions.md).
-- Gather the following information:
+- Gather the following information (necessary for all actions):
   - Name of the managed resource group for the BMM
   - Name of the BMM that requires a lifecycle management operation
   - Subscription ID
+- Cluster Detailed status must be `Running`
+- Cluster to Cluster Manager connectivity must be `Connected`
 
 > [!IMPORTANT]
 > Disruptive commands to a Kubernetes Control Plane (KCP) node are rejected if another disruptive action is already in progress on any KCP node or if the full KCP is unavailable.
@@ -42,7 +44,7 @@ When troubleshooting a BMM for failures and determining the most appropriate cor
 
 - **Restart** - Least invasive method, best for temporary glitches, or unresponsive Virtual Machines (VM)s
 - **Reimage** - Intermediate solution, restores OS to known-good state without affecting data
-- **Replace** - Most significant action, required for hardware component failures
+- **Replace** - Most significant action, required for hardware component failures such as RAM, hard disk, etc.  Replace action should be used after the BMM components have been replaced.
 
 ### Troubleshooting decision tree
 
@@ -268,7 +270,15 @@ Restarting, reimaging, and replacing are effective troubleshooting methods for a
 - **Verify workloads before action**: Use the provided commands to identify running workloads before any disruptive action.
 - **Cordon with evacuation**: When performing reimage or replace actions, always use `cordon` with `evacuate="True"` to safely move workloads.
 - **Never run multiple operations simultaneously**: Ensure one operation completes before starting another to prevent server issues.
-- **Verify resolution**: After performing any action, verify the BMM status and that the original issue is resolved.
+- **Verify resolution**: After performing any action, verify the BMM status and that the original issue is resolved.  BMM status can be viewed with:
+
+```azurecli
+az networkcloud baremetalmachine show \
+  --name <bareMetalMachineName>  \
+  --resource-group "<resourceGroup>" \
+  --subscription <subscriptionID> \
+  --query "provisioningState"
+```
 
 More details about the BMM actions can be found in the [BMM actions](howto-baremetal-functions.md) article.
 
