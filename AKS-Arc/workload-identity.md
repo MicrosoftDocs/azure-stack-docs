@@ -141,7 +141,7 @@ az connectedk8s show -n $aks_cluster_name -g $resource_group_name
 In the Azure portal, you can view the **wiextension** extension under the **Properties** section of your Kubernetes cluster.
 
 > [!IMPORTANT]
-> As part of the security enhancement for AKS Arc clusters, workload identity enablement triggers two changes. First, the Kubernetes service account signing key automatically rotates every 45 days and remains valid for 90 days. Second, the `--service-account-extend-token-expiration` flag is disabled, reducing token validity from one year to a maximum of 24 hours.
+> As part of the security enhancement for AKS Arc clusters, workload identity enablement triggers two changes. First, the Kubernetes service account signing key automatically rotates every 45 days. Second, the `--service-account-extend-token-expiration` flag is disabled, reducing token validity from one year to a maximum of 24 hours.
 
 ### Save the OIDC issuer URL to an environment variable
 

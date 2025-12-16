@@ -5,14 +5,12 @@ ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 11/18/2025
+ms.date: 12/11/2025
 ---
 
 # What's new in hyperconverged deployments of Azure Local?
 
-[!INCLUDE [azure-local-banner-23h2](./includes/azure-local-banner-23h2.md)]
-
-This article lists the various features and improvements that are available in hyperconvered deployments of Azure Local. The latest version of Azure Local solution focuses on cloud-based deployment and updates, cloud-based monitoring, new and simplified experience for Azure Local virtual machine (VM) management, security, and more.
+This article lists the various features and improvements that are available in hyperconvered deployments of Azure Local (*formerly Azure Stack HCI*). The latest version of Azure Local solution focuses on cloud-based deployment and updates, cloud-based monitoring, new and simplified experience for Azure Local virtual machine (VM) management, security, and more.
 
 ::: moniker range="=azloc-2511"
 
@@ -71,7 +69,7 @@ This release has the following features and improvements:
     - If you are already on 11.2510.1002.87, you can apply the OS upgrade to 12.2510.1002.94.
     - If you haven't updated to 11.2510.1002.87, you can update to 11.2510.1002.93 first before applying the upgrade to 12.2510.1002.94.
 
-- **Deployment**: Starting this release, you can domain join your machines before deployment. If you choose to domain join machines before deployment, you must add the deployment user to the local Administrators group on each machine. For more information, see [Domain join before deployment](./deploy/deployment-install-os.md#domain-join-before-deployment).
+<!--- **Deployment**: Starting this release, you can domain join your machines before deployment. If you choose to domain join machines before deployment, you must add the deployment user to the local Administrators group on each machine. For more information, see [Domain join before deployment](./deploy/deployment-install-os.md#domain-join-before-deployment).-->
 
 - **Azure Local VM updates**:
     - **Software Defined Networking (SDN)**: SDN enabled by Azure Arc on Azure Local is now generally available. This feature allows you to create and manage network security groups (NSGs) and network security rules for your Azure Local VMs, providing enhanced network security and segmentation capabilities.

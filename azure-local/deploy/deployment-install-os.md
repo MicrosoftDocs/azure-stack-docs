@@ -3,7 +3,7 @@ title: Install Azure Stack HCI operating system, version 23H2
 description: Learn how to install the Azure Stack HCI operating system, version 23H2 on each machine of your system.
 author: alkohli
 ms.topic: how-to
-ms.date: 11/13/2025
+ms.date: 12/11/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -144,7 +144,8 @@ Follow these steps to configure the operating system using SConfig:
 
     > [!NOTE]
     > - Make sure that the local administrator password follows Azure password length and complexity requirements. Use a password that is at least 14 characters long and contains a lowercase character, an uppercase character, a numeral, and a special character.
-    > - Starting with version 2510, domain joining before deployment is supported. If you choose to domain join, you must add the deployment user to the local Administrators group. If you don't domain join beforehand, the machines are automatically joined to a domain during the [Deployment via Azure portal](./deploy-via-portal.md).
+   
+<!-- Starting with version 2510, domain joining before deployment is supported. If you choose to domain join, you must add the deployment user to the local Administrators group. If you don't domain join beforehand, the machines are automatically joined to a domain during the [Deployment via Azure portal](./deploy-via-portal.md).
 
 ### Domain join before deployment
 
@@ -157,7 +158,7 @@ Starting with version 2510, you can domain join machines before deployment:
     Add-LocalGroupMember -Group "Administrators" -Member "DOMAIN\deploymentuser"
     ```
 
-If you don't domain join beforehand, the machines are automatically joined to a domain during the [Deployment via Azure portal](./deploy-via-portal.md).
+If you don't domain join beforehand, the machines are automatically joined to a domain during the [Deployment via Azure portal](./deploy-via-portal.md).-->
 
 ## Next steps
 
