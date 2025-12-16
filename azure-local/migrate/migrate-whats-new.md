@@ -29,7 +29,7 @@ This release includes these features and improvements:
 
 ## October 2025
 
-This release marks the **General Availability (GA) of Azure Migrate support for migrating VMware VMs to Azure Local**. No user chages are needed to get the GA capabilities.
+This release marks the **General Availability (GA) of Azure Migrate support for migrating VMware VMs to Azure Local**. No user changes are needed to get the GA capabilities.
 
 This milestone highlights several capabilities shaped by customer and partner feedback during the preview, including:
 
