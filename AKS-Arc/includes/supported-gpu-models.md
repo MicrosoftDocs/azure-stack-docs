@@ -2,9 +2,9 @@
 author: sethmanheim
 ms.author: sethm
 ms.topic: include
-ms.date: 06/02/2025
-ms.reviewer: abha
-ms.lastreviewed: 06/02/2025
+ms.date: 12/16/2025
+ms.reviewer: rmody
+ms.lastreviewed: 12/16/2025
 
 ---
 
