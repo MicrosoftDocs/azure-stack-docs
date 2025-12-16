@@ -3,7 +3,7 @@ title: Release notes with fixed and known issues in Azure Local
 description: Read about the known issues and fixed issues in Azure Local.
 author: alkohli
 ms.topic: article
-ms.date: 12/11/2025
+ms.date: 12/16/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
@@ -23,7 +23,7 @@ For more information about new features in this release, see [What's new for Azu
 
 ## Known issues for version 2512
 
-For the 2512 release of Azure Local, Microsoft released two security updates, each aligned with a specific OS build. The following table provides the specific versions and their OS builds:
+For the 2512 release of Azure Local, Microsoft released the following update:
 
 | Solution version  | OS build  |
 |---------|---------|---------|

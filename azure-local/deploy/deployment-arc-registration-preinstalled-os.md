@@ -33,7 +33,7 @@ Follow these steps to register Azure Local systems with Azure Arc when using pre
 
     If an OS image update is initiated during registration, the status shows as **Update: InProgress**. This status indicates the system is currently performing an update before completing registration.
 
-    :::image type="content" source="media/deployment-arc-registration-preinstalled-os/operating-system-image-update-registration.png" alt-text="Screenshot of the console window with the registration in progress" lightbox="media/deployment-arc-registration-preinstalled-os/operating-system-image-update-registration.png":::
+    :::image type="content" source="media/deployment-arc-registration-preinstalled-os/operating-system-image-update-registration.png" alt-text="Screenshot of the console window with the registration in progress." lightbox="media/deployment-arc-registration-preinstalled-os/operating-system-image-update-registration.png":::
 
 1. Monitor registration progress. If registration times out or the machine reboots, reconnect and check the registration progress using the following commands:
 
