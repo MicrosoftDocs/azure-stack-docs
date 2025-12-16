@@ -201,6 +201,8 @@
       items:
       - name: Known issues overview
         href: aks-arc-known-issues.md
+      - name: Can't create AKS cluster with GPU-enabled default node pool
+        href: gpu-enabled-cluster-issue.md
       - name: Storage provisioning issue in cluster and node pool creation
         href: storage-provision-issue.md
       - name: Deleted AKS Arc cluster still visible on Azure portal
