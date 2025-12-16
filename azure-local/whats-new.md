@@ -30,7 +30,7 @@ This release includes various reliability improvements and other bug fixes.
 
 - **.NET updates**: This build uses .NET version **8.0.22** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
 
-- **Simplified cluster registration during deployment**: Starting with this release, Azure Local cluster deployments don't use a Service Principal Name (Microsoft Entra ID App) with a self signed certificate. Instead, the cluster uses Managed System Identity (MSI) to authenticate itself with Azure.
+- **Simplified cluster registration during deployment**: Starting with this release, Azure Local cluster deployments don't use a Service Principal Name (Microsoft Entra ID App) with a self signed certificate. Instead, the cluster uses system-assigned managed identity (SMI) to authenticate itself with Azure.
     For more information, see [Validate and deploy the system via Azure portal](./deploy/deploy-via-portal.md#verify-a-successful-deployment).
 
 - **Upgrade behavior**: If you updated Azure Local from version 22H2 to version 24H2 and apply the solution upgrade, the solution upgrade version will be 12.2511.1002.502 instead of 12.2512.1002.16.
