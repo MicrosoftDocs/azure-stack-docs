@@ -63,8 +63,89 @@ If you're new to Azure Policy, here are some helpful resources that you can use 
 ## Use Azure Policy to secure your Nexus BMM resources
 
 The Operator Nexus service offers a built-in policy definition that is recommended to assign to your Nexus BMM resources. This policy definition is called **[Preview]: Nexus compute machines should meet security baseline**. This policy definition is used to ensure that your Nexus BMM resources are configured with industry best practice security settings.
+This policy uses the `NexusLinuxBaseline` [machine configuration](/azure/governance/machine-configuration/overview). By default it pins to a major version of `NexusLinuxBaseline` (e.g. `1.*`) to allow automatic minor version upgrades.
 
 - [[Preview]: Nexus compute machines should meet security baseline](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fec2c1bce-5ad3-4b07-bb4f-e041410cd8db)
+
+### Example Pinning NexusLinuxBaseline Version
+
+To avoid automatic minor version upgrades you can create a custom policy similar to the built-in policy with a specific version of the NexusLinuxBaseline machine configuration pinned.
+The simplest way is to copy the properties from the built-in definition and make the desired changes (such as the below example showing pinning of the `NexusLinuxBaseline` version).
+You will provide these properties to create the custom policy definition via portal, CLI, REST API, or ARM template.
+
+```json
+"properties": {
+  "mode": "Indexed",
+  "metadata": {
+    "category": "Guest Configuration",
+    "preview": true,
+    "requiredProviders": [
+      "Microsoft.GuestConfiguration"
+    ],
+    "guestConfiguration": {
+      "name": "NexusLinuxBaseline",
+      "version": "<version>"
+    }
+  },
+  "parameters": {
+      "effect": {
+      "type": "String",
+      "metadata": {
+        "displayName": "Effect",
+        "description": "Enable or disable the execution of this policy"
+      },
+      "allowedValues": [
+        "AuditIfNotExists",
+        "Disabled"
+      ],
+      "defaultValue": "AuditIfNotExists"
+    }
+  },
+  "policyRule": {
+    "if": {
+      "allOf": [
+        {
+          "field": "type",
+          "equals": "Microsoft.HybridCompute/machines"
+        },
+        {
+          "field": "Microsoft.HybridCompute/imageOffer",
+          "like": "linux*"
+        }
+      ]
+    },
+    "then": {
+      "effect": "[parameters('effect')]",
+      "details": {
+        "type": "Microsoft.GuestConfiguration/guestConfigurationAssignments",
+        "name": "NexusLinuxBaseline",
+        "existenceCondition": {
+          "field": "Microsoft.GuestConfiguration/guestConfigurationAssignments/complianceStatus",
+          "equals": "Compliant"
+        }
+      }
+    }
+  }
+}
+```
+
+> [!WARNING]
+> The Azure portal has a `duplicate` feature for policy definitions that can create an editable custom policy definition from a built-in policy.
+> This does not work in this case because it does not copy some important metadata fields from the original definition.
+
+Available `NexusLinuxBaseline` versions are:
+
+| Version |
+|---------|
+| 1.18.0.0 |
+| 1.17.0.0 |
+| 1.16.0.0 |
+| 1.15.0.0 |
+| 1.14.0.0 |
+| 1.13.0.0 |
+| 1.12.0.0 |
+| 1.11.0.0 |
+| 1.1.0.0 |
 
 ## Use Azure Policy to secure your Nexus Kubernetes Compute Cluster resources
 
