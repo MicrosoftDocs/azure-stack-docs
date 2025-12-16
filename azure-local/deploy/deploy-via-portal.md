@@ -130,7 +130,7 @@ On the **Configuration** tab, choose whether to create a new configuration for t
     - **Custom configuration** - Finally you can do a custom configuration that lets you group traffic differently, such as carrying each traffic type on its own set of adapters. You also create corresponding custom intents.
     <!--Check w/ Cristian This is commonly used for private multi-access edge compute (MEC) systems.-->
 
-    :::image type="content" source="./media/deploy-via-portal/networking-tab-2.png" alt-text="Screenshot of the networking patterns available for Network switch option select on the Configuration tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/networking-tab-2.png":::
+    :::image type="content" source="./media/deploy-via-portal/networking-tab-2.png" alt-text="Screenshot of the networking patterns available for Network switch option selected on the Configuration tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/networking-tab-2.png":::
 
    > [!TIP]
    > If you're deploying a single machine to which you plan to add machines later, select the network traffic groupings you want for the eventual cluster. Then when you add machines they automatically get the appropriate settings.
@@ -151,7 +151,7 @@ On the **Configuration** tab, choose whether to create a new configuration for t
 1. For the storage intent, enter the **VLAN ID** set on the network switches used for each storage network.
 
      > [!IMPORTANT]
-     > Portal deployment doesn't allow you to specify your own IPs for the storage intent. However, you can use ARM template deployment if you require to specify the IPs for storage and you can't use the default values from Network ATC. For more information, check this page: [Custom IPs for storage intent](../plan/cloud-deployment-network-considerations.md#custom-ips-for-storage)
+     > Portal deployment doesn't allow you to specify your own IPs for the storage intent. However, you can use ARM template deployment if you require to specify the IPs for storage and you can't use the default values from Network ATC. For more information, check this page: [Custom IPs for storage intent](../plan/cloud-deployment-network-considerations.md#custom-ips-for-storage).
 
     :::image type="content" source="./media/deploy-via-portal/networking-tab-3.png" alt-text="Screenshot of the Networking tab with network intents in deployment via Azure portal." lightbox="./media/deploy-via-portal/networking-tab-3.png":::
 
@@ -183,7 +183,7 @@ On the **Configuration** tab, choose whether to create a new configuration for t
 ## Specify management settings
 
 1. Optionally edit the suggested **Custom location name** that helps users identify this system when creating resources such as VMs on it.
-1. To store the cloud witness file, select an existing Storage account or create a new Storage account .
+1. To store the cloud witness file, select an existing Storage account or create a new Storage account.
 
     When selecting an existing account, the dropdown list filters to display only the storage accounts contained in the specified resource group for deployment. You can use the same storage account with multiple clusters; each witness uses less than a kilobyte of storage.
 

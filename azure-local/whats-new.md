@@ -5,7 +5,7 @@ ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 12/12/2025
+ms.date: 12/15/2025
 ---
 
 # What's new in hyperconverged deployments of Azure Local?
@@ -32,6 +32,8 @@ This release includes various reliability improvements and other bug fixes.
 
 - **Simplified cluster registration during deployment**: Starting with this release, Azure Local cluster deployments don't use a Service Principal Name (Microsoft Entra ID App) with a self signed certificate. Instead, the cluster uses Managed System Identity (MSI) to authenticate itself with Azure.
     For more information, see [Validate and deploy the system via Azure portal](./deploy/deploy-via-portal.md#verify-a-successful-deployment).
+
+- **Upgrade behavior**: If you updated Azure Local from version 22H2 to version 24H2 and apply the solution upgrade, the solution upgrade version will be 12.2511.1002.502 instead of 12.2512.1002.16.
 
 - **Support for NVIDIA L-series GPU on AKS on Azure Local (preview)**: Starting with this release, NVIDIA L-series GPU is supported on Azure Kubernetes Service (AKS) enabled by Azure Arc on Azure Local. This preview feature allows you to run GPU-accelerated workloads on AKS clusters deployed on Azure Local using NVIDIA L-series GPUs.
 
@@ -96,11 +98,11 @@ This release includes the following features and improvements:
     
 - **Azure Local rack aware clustering (Preview)**: Azure Local now supports rack aware clustering. This Preview feature allows you to define local availability zones based on physical racks in your datacenter, enhancing the resilience of your cluster against rack-level failures. For more information, see [Rack aware clustering](concepts/rack-aware-cluster-overview.md).
 
-- **Upgrade**: Starting this release, solution upgrade from 11.2510 to 12.2510 is available to everyone and no longer requires you to opt in.
+- **Upgrade**: Starting with this release, solution upgrade from 11.2510 to 12.2510 is available to everyone and no longer requires you to opt in.
     - If you're already on 11.2510.1002.87, you can apply the OS upgrade to 12.2510.1002.94.
     - If you aren't on 11.2510.1002.87, you can update to 11.2510.1002.93 first before applying the upgrade to 12.2510.1002.94.
 
-<!--- **Deployment**: Starting this release, you can domain join your machines before deployment. If you choose to domain join machines before deployment, you must add the deployment user to the local Administrators group on each machine. For more information, see [Domain join before deployment](./deploy/deployment-install-os.md#domain-join-before-deployment).-->
+<!--- **Deployment**: Starting with this release, you can domain join your machines before deployment. If you choose to domain join machines before deployment, you must add the deployment user to the local Administrators group on each machine. For more information, see [Domain join before deployment](./deploy/deployment-install-os.md#domain-join-before-deployment).-->
 
 - **Azure Local VM updates**:
     - **Software Defined Networking (SDN)**: SDN enabled by Azure Arc on Azure Local is now generally available. This feature allows you to create and manage network security groups (NSGs) and network security rules for your Azure Local VMs, providing enhanced network security and segmentation capabilities.
@@ -216,8 +218,8 @@ This release includes the following features and improvements:
 **Trusted Virtual Machine (Trusted VM) guest attestation**: Azure Local 2508 release introduces guest attestation (also known as boot integrity verification) for Azure Local virtual machines with Trusted launch. This feature lets you verify that the virtual machine starts in a well known good state by checking the integrity of the entire boot chain. This process helps detect any unexpected changes to the boot chain (firmware, OS boot loader, and drivers) and take action if it's compromised. For more information, see [Trusted VM guest attestation](manage/trusted-launch-guest-attestation.md).
 
 - **Deployment and upgrade changes**:
-    - Starting this release, Azure Resource Manager (ARM) deployment templates are available for previous releases.
-    - With this release, pre-existing cluster (Brownfield) upgrade scenarios no longer require Service Principal Name (SPN) creation and moved to managed-system identity (MSI).
+    - Starting with this release, Azure Resource Manager (ARM) deployment templates are available for previous releases.
+    - With this release, preexisting cluster (Brownfield) upgrade scenarios no longer require Service Principal Name (SPN) creation and moved to managed-system identity (MSI).
     - This release includes connectivity validators that ensure that external connectivity is available for Arc registration.
 
 - **Azure Local VM updates**:
@@ -496,12 +498,12 @@ This release includes the following features and improvements:
     This feature allows you to build, deploy, and manage virtual machines (VMs) and containerized applications using select Azure Arc-enabled services from a local control plane, providing a familiar Azure portal and CLI experience.
 
     For more information about this Preview feature, see [Azure Local for Disconnected Operations (Preview)](./manage/disconnected-operations-overview.md).
-- **Deploy Azure Local with Local Identity (Preview)** - Starting this release, you can deploy Azure Local using Local identity with Azure Key Vault. By integrating with Key Vault and using certificate-based authentication, security posture is enhanced and operations continuity is ensured. This approach offers minimal edge infrastructure, a secure secret store, and simplified management by consolidating secrets in a single vault. Additionally, it streamlines deployment by eliminating dependencies on Active Directory systems and simplifying firewall configurations.
+- **Deploy Azure Local with Local Identity (Preview)** - Starting with this release, you can deploy Azure Local using Local identity with Azure Key Vault. By integrating with Key Vault and using certificate-based authentication, security posture is enhanced and operations continuity is ensured. This approach offers minimal edge infrastructure, a secure secret store, and simplified management by consolidating secrets in a single vault. Additionally, it streamlines deployment by eliminating dependencies on Active Directory systems and simplifying firewall configurations.
 
     For more information about this Preview feature, see [Deploy Azure Local with Local Identity and Azure Key Vault (Preview)](./deploy/deployment-local-identity-with-key-vault.md).
 
 - **Azure Local VM changes**: The following changes were made to Azure Local VM management:
-    - **Terraform templates for Azure Local VM** - Starting this release, you can create logical networks and Azure Local VMs using Terraform templates.
+    - **Terraform templates for Azure Local VM** - Starting with this release, you can create logical networks and Azure Local VMs using Terraform templates.
     
         For more information, see [Template to create logical networks](https://registry.terraform.io/modules/Azure/avm-res-azurestackhci-logicalnetwork/azurerm/0.4.0) and [Template to create Azure Local VMs](https://registry.terraform.io/modules/Azure/avm-res-azurestackhci-virtualmachineinstance/azurerm/0.1.2).
     - **Add network interface on static logical network** - After the Azure Local VMs are provisioned, you can now add a network interface on a static logical network. To add this network interface, you're required to configure the desired static IP from within the VM.
@@ -512,13 +514,13 @@ This release includes the following features and improvements:
   
         For more information, see [Download data disks from Azure to Azure Local](./manage/manage-data-disks.md).
 
-- **Security improvements** - Starting this release, the security posture of Azure Local is enhanced with the following improvements:
+- **Security improvements** - Starting with this release, the security posture of Azure Local is enhanced with the following improvements:
 
   - **Security posture following Azure Stack HCI, version 22H2 to Azure Local upgrade** - Warnings and guardrails were added in the upgrade flow. Documentation was also updated to reflect the security posture of Azure Local after upgrading from version 22H2.
   
     For more information, see [Manage security after upgrading Azure Local from version 22H2](./manage/manage-security-post-upgrade.md).
 
-  - **Improved security baseline compliance** - Starting this release, the security settings on the Azure Local nodes are compared against the security baseline with full accuracy. On the right secured-core hardware, you achieve a 99% compliance score, which you can view in the Azure portal.
+  - **Improved security baseline compliance** - Starting with this release, the security settings on the Azure Local nodes are compared against the security baseline with full accuracy. On the right secured-core hardware, you achieve a 99% compliance score, which you can view in the Azure portal.
   
     For more information, see [View security baseline compliance in the Azure portal](./manage/manage-secure-baseline.md#view-security-baseline-compliance-in-the-azure-portal).
 
