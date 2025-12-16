@@ -5,7 +5,7 @@ ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 12/15/2025
+ms.date: 12/16/2025
 ---
 
 # What's new in hyperconverged deployments of Azure Local?
@@ -32,8 +32,6 @@ This release includes various reliability improvements and other bug fixes.
 
 - **Simplified cluster registration during deployment**: Starting with this release, Azure Local cluster deployments don't use a Service Principal Name (Microsoft Entra ID App) with a self signed certificate. Instead, the cluster uses system-assigned managed identity (SMI) to authenticate itself with Azure.
     For more information, see [Validate and deploy the system via Azure portal](./deploy/deploy-via-portal.md#verify-a-successful-deployment).
-
-- **Upgrade behavior**: If you updated Azure Local from version 22H2 to version 24H2 and apply the solution upgrade, the solution upgrade version will be 12.2511.1002.502 instead of 12.2512.1002.16.
 
 - **Support for NVIDIA L-series GPU on AKS on Azure Local (preview)**: Starting with this release, NVIDIA L-series GPU is supported on Azure Kubernetes Service (AKS) enabled by Azure Arc on Azure Local. This preview feature allows you to run GPU-accelerated workloads on AKS clusters deployed on Azure Local using NVIDIA L-series GPUs.
 
