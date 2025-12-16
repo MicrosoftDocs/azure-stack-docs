@@ -3,7 +3,7 @@ title: Deploy Azure Local, version 23H2 using local identity with Azure Key Vaul
 description: Learn how to use local identity with Azure Key Vault for Azure Local, version 23H2 deployment (Preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 12/11/2025
+ms.date: 12/16/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -15,8 +15,6 @@ ms.custom: sfi-image-nochange
 ::: moniker range=">=azloc-2411"
 
 This article describes how to use local identity with Azure Key Vault for Azure Local deployment.
-
-<!--If you have questions or need further information, contact the product team at [azurelocalidentity@microsoft.com](mailto:azurelocalidentity@microsoft.com). To learn how Microsoft collects, uses, and protects your personal data, see the [Microsoft Privacy Statement](https://privacy.microsoft.com/privacystatement).-->
 
 [!INCLUDE [important](../includes/hci-preview.md)]
 
@@ -44,9 +42,12 @@ Using local identity with Key Vault on Azure Local offers several benefits, part
 
 - Satisfy the [prerequisites and complete deployment checklist](./deployment-prerequisites.md). Skip the AD-specific prerequisites.
 
-- Create a local user account with the same credentials across all nodes and add it to the local administrators group, instead of using the built-in administrator account.
-
-- Create a local administrator account with identical credentials on every node in the cluster. This requirement ensures that add and repair node operations can successfully authenticate and execute across all nodes. For instructions, see [Add a node](../manage/add-server.md) and [Repair a node](../manage/repair-server.md).
+- Create a local administrator account:
+    - Create a local user account and add it to the local Administrators group.
+    - Do not use the built-in Administrator account.
+    - Use the same credentials for this account across all nodes in the cluster.
+    - This account is required for cluster management operations, such as adding or repairing a node, to enable authentication and changes across all nodes. For instructions, see [Add a node](../manage/add-server.md) and [Repair a node](../manage/repair-server.md).
+    - You are responsible for creating and maintaining this account after the base operating system (OS) setup. This includes credential expiration, rotation, and security.
 
 - Download the Azure Local software. See [Download operating system for Azure Local deployment](./download-23h2-software.md).
 
