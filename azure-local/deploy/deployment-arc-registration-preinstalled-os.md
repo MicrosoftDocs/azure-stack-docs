@@ -3,7 +3,7 @@ title: Azure Arc registration workflow for systems with OEM images
 description: Learn about the Azure Arc registration workflow for systems with OEM images.
 author: alkohli
 ms.topic: overview
-ms.date: 11/17/2025
+ms.date: 12/16/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -25,13 +25,15 @@ If the system detects an outdated OEM image during the Azure Arc registration pr
 
 Follow these steps to register Azure Local systems with Azure Arc when using preinstalled OEM images:
 
-1. Run the Arc registration script. The script takes a few minutes to run:
+1. Run the Arc registration script. The script takes 20-30 minutes to run:
 
     ```powershell
     Invoke-AzStackHciArcInitialization -TenantID $Tenant -SubscriptionID $Subscription -ResourceGroup $RG -Region $Region -Cloud "AzureCloud"
     ```
 
     If an OS image update is initiated during registration, the status shows as **Update: InProgress**. This status indicates the system is currently performing an update before completing registration.
+
+    :::image type="content" source="media/deployment-arc-registration-preinstalled-os/operating-system-image-update-registration.png" alt-text="Screenshot of the console window with the registration in progress." lightbox="media/deployment-arc-registration-preinstalled-os/operating-system-image-update-registration.png":::
 
 1. Monitor registration progress. If registration times out or the machine reboots, reconnect and check the registration progress using the following commands:
 
