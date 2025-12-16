@@ -4,7 +4,7 @@ description: Learn about new features in Azure Migrate for Azure Local.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 10/15/2025
+ms.date: 12/15/2025
 ms.service: azure-local
 ---
 
@@ -29,7 +29,7 @@ This release includes these features and improvements:
 
 ## October 2025
 
-This release marks the **General Availability (GA) of Azure Migrate support for migrating VMware VMs to Azure Local**.
+This release marks the **General Availability (GA) of Azure Migrate support for migrating VMware VMs to Azure Local**. No user chages are needed to get the GA capabilities.
 
 This milestone highlights several capabilities shaped by customer and partner feedback during the preview, including:
 
