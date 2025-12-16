@@ -30,7 +30,7 @@ This release includes various reliability improvements and other bug fixes.
 
 - **.NET updates**: This build uses .NET version **8.0.22** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
 
-- **Simplified cluster registration during deployment**: Starting with this release, Azure Local cluster deployments don't use a Service Principal Name (Microsoft Entra ID App) with a self signed certificate. Instead, the cluster uses Managed System Identity (MSI) to authenticate itself with Azure.
+- **Simplified cluster registration during deployment**: Starting with this release, Azure Local cluster deployments don't use a Service Principal Name (Microsoft Entra ID App) with a self signed certificate. Instead, the cluster uses system-assigned managed identity (SMI) to authenticate itself with Azure.
     For more information, see [Validate and deploy the system via Azure portal](./deploy/deploy-via-portal.md#verify-a-successful-deployment).
 
 - **Upgrade behavior**: If you updated Azure Local from version 22H2 to version 24H2 and apply the solution upgrade, the solution upgrade version will be 12.2511.1002.502 instead of 12.2512.1002.16.
@@ -401,7 +401,7 @@ This release includes the following features and improvements:
     - Improved reliability of copying solution extension content locally to each machine.
     - Added specification of plug-in name in the solution extension.
 
-- **Billing changes**: For deployments running solution version 12.2504.1001.20 and later, the usage record originates from the Azure Local resource in Azure directly. For more information, see [Billing and payment](./concepts/billing.md#billing-changes-for-122504100120-and-later).
+- **Billing changes**: For deployments running solution version 12.2504.1001.20 and later, the usage record originates from the Azure Local resource in Azure directly. For more information, see [Billing and payment](./concepts/billing.md#billing-changes-for-version-2504-and-later).
 
 - **Archival of Azure Local, version 22H2 documentation**: The documentation for version 22H2 is archived by May 31, 2025 and is available in the [Azure previous versions documentation](/previous-versions/azure/) for reference. The archived documentation isn't updated and isn't supported.
 
@@ -604,7 +604,7 @@ This release primarily includes bug fixes with a few improvements.
   - You can now view and delete VM network interfaces from the Azure portal.
   - You can view **Connected devices** for logical networks. In the Azure portal, you can go to the logical network and then go to **Settings > Connected devices** to view the connected devices.
   - Deletion of logical networks is blocked if connected devices are present. When you try to delete a logical network from the Azure portal that has connected devices, you see a warning message: *Can't delete logical network because it's currently in use*. Delete all the resources under **Connected Devices** setting before you delete the logical network.
-  - From this release onwards, a new URL needs to be added to the allowlist for `stack-hci-vm` Azure CLI installation. The URL changed from `https://hciarcvmsstorage.blob.core.windows.net/cli-extension/stack_hci_vm-{version}-py3-none-any.whl` to `https://hciarcvmsstorage.z13.web.core.windows.net/cli-extensions/stack_hci_vm-{version}-py3-none-any.whl`. For more information, see [Azure Local firewall requirements](./concepts/firewall-requirements.md).
+  - From this release onwards, a new URL needs to be added to the allow list for `stack-hci-vm` Azure CLI installation. The URL changed from `https://hciarcvmsstorage.blob.core.windows.net/cli-extension/stack_hci_vm-{version}-py3-none-any.whl` to `https://hciarcvmsstorage.z13.web.core.windows.net/cli-extensions/stack_hci_vm-{version}-py3-none-any.whl`. For more information, see [Azure Local firewall requirements](./concepts/firewall-requirements.md).
   
 - **Update health checks**: Starting with this release, a new health check was added and the update service was improved. Additionally, the update service now supports the ability to view or start new updates when the service crashes on machines. Also, multiple health check issues related to Azure Update Manager and Solution Builder Extension Update were fixed.
 
