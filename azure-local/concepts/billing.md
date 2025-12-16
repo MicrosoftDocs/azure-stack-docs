@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: article
 ms.service: azure-local
-ms.date: 04/29/2025
+ms.date: 12/16/2025
 ---
 
 # Azure Local billing and payment
@@ -37,9 +37,9 @@ To determine how many cores are present in a system, Azure Local periodically ch
 
 To manually upload core data to Azure, use the **`Sync-AzureStackHCI`** cmdlet.
 
-## Billing changes for 12.2504.1001.20 and later
+## Billing changes for version 2504 and later
 
-For deployments running solution version 12.2504.1001.20 and later, the usage record originates from the Azure Local resource in Azure directly.
+For deployments running solution version 12.2504.1001.20 and later, the usage record originates from the Azure Local resource in Azure directly. This version onwards billing is cloud-based and not using on-premises records.
 
 If you shut down or decommission your system without deleting the Azure Local resource in Azure, billing continues until the Azure Local resource in Azure is in a disconnected state for over 31 days.
 
