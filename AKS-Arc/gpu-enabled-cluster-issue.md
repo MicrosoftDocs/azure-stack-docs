@@ -21,7 +21,7 @@ The following command causes the AKS cluster creation to fail:
 az aksarc create --node-vm-size <Standard_NC16_L4_1>
 ```
 
-### Workaround
+## Workaround
 
 Create an AKS cluster with a non-GPU enabled default node pool, then add the needed GPU enabled node pool. 
 ```azurecli
