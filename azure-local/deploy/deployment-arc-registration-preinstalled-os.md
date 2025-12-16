@@ -3,7 +3,7 @@ title: Azure Arc registration workflow for systems with OEM images
 description: Learn about the Azure Arc registration workflow for systems with OEM images.
 author: alkohli
 ms.topic: overview
-ms.date: 11/17/2025
+ms.date: 12/16/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -25,7 +25,7 @@ If the system detects an outdated OEM image during the Azure Arc registration pr
 
 Follow these steps to register Azure Local systems with Azure Arc when using preinstalled OEM images:
 
-1. Run the Arc registration script. The script takes a few minutes to run:
+1. Run the Arc registration script. The script takes 20-30 minutes to run:
 
     ```powershell
     Invoke-AzStackHciArcInitialization -TenantID $Tenant -SubscriptionID $Subscription -ResourceGroup $RG -Region $Region -Cloud "AzureCloud"
