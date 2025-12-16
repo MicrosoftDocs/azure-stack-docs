@@ -81,6 +81,7 @@ Unsupported scenarios for Azure Local include:
 
 - You can't enable Arc gateway after deployment.
 
+
 ## Azure Local endpoints not redirected
 
 > [!NOTE]
