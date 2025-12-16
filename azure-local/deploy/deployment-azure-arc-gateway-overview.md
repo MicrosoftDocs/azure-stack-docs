@@ -3,7 +3,7 @@ title: Overview of Azure Arc gateway for Azure Local
 description: Learn what is Azure Arc gateway for Azure Local.
 author: alkohli
 ms.topic: how-to
-ms.date: 11/26/2025
+ms.date: 12/15/2025
 ms.author: alkohli
 ms.service: azure-local
 ---
@@ -75,7 +75,7 @@ For more information about the traffic flows, see [Deep dive into Azure Arc gate
 Use the Arc gateway in the following scenarios for Azure Local:
 
 - Enable Arc gateway during deployment of new Azure Local instances running versions 2506 or later.
-- The Arc gateway resource must be created on the same subscription where you're planning to deploy your Azure Local instance.
+- When a single Arc gateway is shared between an Azure Local instance and its workloads, the Arc gateway resource must reside in the same subscription as the Azure Local instance. If separate Arc gateways are used for the Azure Local instance and its workloads, the gateway associated with the workloads may be created in any subscription within the same tenant that hosts the virtual machines and the gateway.
 
 Unsupported scenarios for Azure Local include:
 
