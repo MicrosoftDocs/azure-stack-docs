@@ -17,14 +17,14 @@ This article describes an issue in which creating an AKS cluster with a GPU-enab
 
 The following command causes the AKS cluster creation to fail:
 
-```cli
+```azurecli
 az aksarc create --node-vm-size <Standard_NC16_L4_1>
 ```
 
 ### Workaround
 
 Create an AKS cluster with a non-GPU enabled default node pool, then add the needed GPU enabled node pool. 
-```cli
+```azurecli
 az aksarc create <default node pool size>
 az aksarc nodepool add --node-vm-size <Standard_NC16_L4_1>
 ```
