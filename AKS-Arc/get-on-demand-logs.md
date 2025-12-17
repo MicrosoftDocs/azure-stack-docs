@@ -1,10 +1,10 @@
 ---
 title: Get on-demand logs for troubleshooting
 description: Learn how to get full on-demand logs in AKS enabled by Arc and send them to Microsoft.
-author: sethmanheim
+author: davidsmatlak
 ms.topic: how-to
 ms.date: 04/08/2025
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 04/08/2025
 ms.reviewer: guanghu
 

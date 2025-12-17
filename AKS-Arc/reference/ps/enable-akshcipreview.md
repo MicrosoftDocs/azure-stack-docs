@@ -1,10 +1,10 @@
 ---
 title: Enable-AksHciPreview
-author: sethmanheim
+author: davidsmatlak
 description: The Enable-AksHciPreview PowerShell command enables the ability to update AKS hybrid to a preview channel.
 ms.topic: reference
 ms.date: 09/08/2021
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: mamezgeb
 

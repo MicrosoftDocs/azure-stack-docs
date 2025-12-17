@@ -3,8 +3,8 @@ title: AKS Arc and workload cluster architecture
 description: Learn about AKS Arc and workload cluster architecture.
 ms.topic: overview
 ms.date: 11/17/2025
-author: sethmanheim
-ms.author: sethm 
+author: davidsmatlak
+ms.author: davidsmatlak 
 ms.reviewer: rbaziwane
 ms.lastreviewed: 05/29/2024
 ms.custom: references_regions

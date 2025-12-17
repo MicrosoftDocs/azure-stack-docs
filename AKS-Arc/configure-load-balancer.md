@@ -1,10 +1,10 @@
 ---
 title: Create and use load balancer with Azure Kubernetes Service in AKS on Windows Server
 description: Learn how to create and use load balancer with Azure Kubernetes Service (AKS) in AKS Arc.
-author: sethmanheim
+author: davidsmatlak
 ms.topic: how-to
 ms.date: 06/24/2024
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 01/30/2024
 ms.reviewer: rbaziwane
 

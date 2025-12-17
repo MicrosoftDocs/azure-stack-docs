@@ -1,10 +1,10 @@
 ---
 title: Use persistent volumes with AKS on Windows Server
 description: Use a persistent volume in a Windows container and prepare Windows nodes for group Managed Service Accounts
-author: sethmanheim
+author: davidsmatlak
 ms.topic: how-to
 ms.date: 04/02/2025
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 07/03/2024
 ms.reviewer: abha
 

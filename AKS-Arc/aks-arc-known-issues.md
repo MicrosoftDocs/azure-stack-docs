@@ -2,9 +2,9 @@
 title: Troubleshoot known issues in AKS enabled by Azure Arc
 description: Learn about known issues and workarounds in AKS enabled by Arc.
 ms.topic: how-to
-author: sethmanheim
+author: davidsmatlak
 ms.date: 09/30/2025
-ms.author: sethm
+ms.author: davidsmatlak
 ms.lastreviewed: 07/29/2025
 ms.reviewer: rcheeran
 

@@ -2,9 +2,9 @@
 title: Troubleshoot issues in AKS enabled by Azure Arc on VMware (preview)
 description: Learn how to troubleshoot issues and request support in AKS enabled by Arc on VMware.
 ms.topic: how-to
-author: sethmanheim
+author: davidsmatlak
 ms.date: 09/15/2025
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 09/15/2025
 ms.reviewer: leslielin
 
