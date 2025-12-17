@@ -143,7 +143,7 @@ If you need to change the IP address or the VLAN ID of a network interface, crea
 See [Supported Operations for Azure Local Virtual Machines (VMs) Enabled by Azure Arc](virtual-machine-operations.md) for a list of supported and unsupported VM operations.
 
 > [!NOTE]
-> Cloning a VM cloning copying a VM isn't supported as it can result in corruption, management errors, or failure to start.
+> VM cloning or VM copying isn't supported as it can result in corruption, management errors, or failure to start.
 
 ## Related content
 
