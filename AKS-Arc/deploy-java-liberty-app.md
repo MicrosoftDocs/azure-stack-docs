@@ -1,8 +1,8 @@
 ---
 title: Deploy a Java app with Open Liberty or WebSphere Liberty on an Azure Kubernetes Service cluster in AKS on Windows Server
 description: Deploy a Java application with Open Liberty or WebSphere Liberty on an AKS cluster in AKS on Windows Server.
-author: sethmanheim
-ms.author: sethm 
+author: davidsmatlak
+ms.author: davidsmatlak 
 ms.topic: install-set-up-deploy
 ms.date: 06/27/2024
 ms.lastreviewed: 01/14/2022

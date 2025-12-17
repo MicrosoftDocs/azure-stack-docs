@@ -1,10 +1,10 @@
 ---
 title: Container networking concepts
 description: Learn about container networking in AKS on Windows Server.
-author: sethmanheim
+author: davidsmatlak
 ms.topic: concept-article
 ms.date: 04/07/2025
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 05/31/2022
 
 # Intent: As an IT Pro, I want to learn about the advantages of using conainer networking in AKS Arc.

@@ -1,10 +1,10 @@
 ---
 title: Remove-AksEdgeNode for AKS Edge
-author: sethmanheim
+author: davidsmatlak
 description: The Remove-AksEdgeNode PowerShell command removes a local node from an existing cluster.
 ms.topic: reference
 ms.date: 10/04/2022
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 10/04/2022
 #ms.reviewer: jeguan
 

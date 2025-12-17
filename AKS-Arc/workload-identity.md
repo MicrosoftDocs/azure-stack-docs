@@ -1,8 +1,8 @@
 ---
 title: Deploy and configure Workload Identity on an AKS enabled by Azure Arc cluster (preview)
 description: Learn how to deploy and configure an AKS Arc cluster with workload identity.
-author: sethmanheim
-ms.author: sethm
+author: davidsmatlak
+ms.author: davidsmatlak
 ms.topic: how-to
 ms.date: 11/13/2025
 ms.reviewer: leslielin

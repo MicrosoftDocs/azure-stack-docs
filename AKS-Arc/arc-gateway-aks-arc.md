@@ -3,8 +3,8 @@ title: Simplify network configuration requirements with Azure Arc gateway (previ
 description: Learn how to enable Arc gateway on AKS Arc clusters to simplify network configuration requirements
 ms.topic: how-to
 ms.date: 07/15/2025
-author: sethmanheim
-ms.author: sethm
+author: davidsmatlak
+ms.author: davidsmatlak
 ms.reviewer: srikantsarwa
 ms.lastreviewed: 07/15/2025
 ---
