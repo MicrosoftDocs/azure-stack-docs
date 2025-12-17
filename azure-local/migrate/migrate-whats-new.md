@@ -20,7 +20,7 @@ This release includes these features and improvements.
 
 - **Replication deployment bug fixed** – Resolved an issue where some older Azure Migrate projects were incorrectly blocked during replication deployment despite the project being in a healthy state.
 
-- **Unnecessary replication job failures resolved** – Fixed a bug that caused repeated Create Replication Policy errors and unnecessary job failures when initiating VM replication.
+- **Unnecessary replication job failures resolved** – Fixed a bug that caused repeated **Create Replication Policy** errors and unnecessary job failures when initiating VM replication.
  
 
 ## November 2025
