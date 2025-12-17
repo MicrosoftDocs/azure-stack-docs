@@ -26,7 +26,7 @@ To learn more about differences between security updates, optional non-securit
 
 ## Improvements
 
-This security update contains fixes and quality improvements from [KB5070311](https://support.microsoft.com/topic/december-1-2025-kb5070311-os-builds-26200-7309-and-26100-7309-preview-5cd455bf-3291-47fa-b0bf-e5f60d0ea7af?preview=true) (released November 25, 2025). The following summary outlines key issues addressed by this update. Also, included are available new features. The bold text within the brackets indicates the item or area of the change.
+This security update contains fixes and quality improvements from [KB5072033](https://support.microsoft.com/topic/december-9-2025-kb5072033-os-builds-26200-7462-and-26100-7462-0c1a4334-19ba-406d-bb1e-88fcffc87b79) (released December 9, 2025). The following summary outlines key issues addressed by this update. Also, included are available new features. The bold text within the brackets indicates the item or area of the change.
 
 - **[Copilot]** Fixed: This update addresses an issue where Ask Copilot didn’t activate the **Click to Do** window as expected. The window now appears in the foreground when you share data with Copilot.
 
@@ -78,7 +78,7 @@ A new, standardized title format makes Windows updates easier to read and unders
 
 Secure Boot certificates used by most Windows devices are set to expire starting in June 2026. This might affect the ability of certain personal and business devices to boot securely if not updated in time. To avoid disruption, we recommend reviewing the guidance and taking action to update certificates in advance. For details and preparation steps, see [Windows Secure Boot certificate expiration and CA updates](https://support.microsoft.com/en-us/topic/windows-secure-boot-certificate-expiration-and-ca-updates-7ff40d33-95dc-4c3c-8725-a9b95457578e?preview=true).
 
-To learn more about Windows update terminology, see [types of Windows updates](/troubleshoot/windows-client/installing-updates-features-roles/standard-terminology-software-updates) and [monthly quality update types](https://techcommunity.microsoft.com/blog/windows-itpro-blog/windows-monthly-updates-explained/3773544). 
+To learn more about Windows update terminology, see [types of Windows updates](/troubleshoot/windows-client/installing-updates-features-roles/standard-terminology-software-updates) and [monthly quality update types](https://techcommunity.microsoft.com/blog/windows-itpro-blog/windows-monthly-updates-explained/3773544).
  
 ## Improvements
 
@@ -149,7 +149,8 @@ This section provides the 2510 security updates associated with OS build **25398
 
 Secure Boot certificates used by most Windows devices are set to expire starting in June 2026. This might affect the ability of certain personal and business devices to boot securely if not updated in time. To avoid disruption, we recommend reviewing the guidance and taking action to update certificates in advance. For details and preparation steps, see [Windows Secure Boot certificate expiration and CA updates](https://support.microsoft.com/en-us/topic/windows-secure-boot-certificate-expiration-and-ca-updates-7ff40d33-95dc-4c3c-8725-a9b95457578e?preview=true).
 
-To learn more about Windows update terminology, see [types of Windows updates](/troubleshoot/windows-client/installing-updates-features-roles/standard-terminology-software-updates) and [monthly quality update types](https://techcommunity.microsoft.com/blog/windows-itpro-blog/windows-monthly-updates-explained/3773544).  
+To learn more about Windows update terminology, see [types of Windows updates](/troubleshoot/windows-client/installing-updates-features-roles/standard-terminology-software-updates) and [monthly quality update types](https://techcommunity.microsoft.com/blog/windows-itpro-blog/windows-monthly-updates-explained/3773544).
+
 ## Improvements
 
 This security update contains fixes and quality improvements from [KB5066780](https://support.microsoft.com/en-us/topic/october-14-2025-kb5066780-os-build-25398-1913-fcae5a50-170f-40dd-af68-ea2a267a74e6) (released October 14, 2025). The following summary outlines key issues addressed by this update. Also, included are available new features. The bold text within the brackets indicates the item or area of the change.
@@ -192,7 +193,8 @@ This section provides the 2510 security updates associated with OS build **26200
 
 Secure Boot certificates used by most Windows devices are set to expire starting in June 2026. This might affect the ability of certain personal and business devices to boot securely if not updated in time. To avoid disruption, we recommend reviewing the guidance and taking action to update certificates in advance. For details and preparation steps, see [Windows Secure Boot certificate expiration and CA updates](https://support.microsoft.com/en-us/topic/windows-secure-boot-certificate-expiration-and-ca-updates-7ff40d33-95dc-4c3c-8725-a9b95457578e?preview=true).
 
-To learn more about Windows update terminology, see [types of Windows updates](/troubleshoot/windows-client/installing-updates-features-roles/standard-terminology-software-updates) and [monthly quality update types](https://techcommunity.microsoft.com/blog/windows-itpro-blog/windows-monthly-updates-explained/3773544).  
+To learn more about Windows update terminology, see [types of Windows updates](/troubleshoot/windows-client/installing-updates-features-roles/standard-terminology-software-updates) and [monthly quality update types](https://techcommunity.microsoft.com/blog/windows-itpro-blog/windows-monthly-updates-explained/3773544).
+
 ## Improvements
 
 This security update contains fixes and quality improvements from [KB5066835](https://support.microsoft.com/en-us/topic/october-14-2025-kb5066835-os-builds-26200-6899-and-26100-6899-1db237d8-9f3b-4218-9515-3e0a32729685) (released October 14, 2025). The following summary outlines key issues addressed by this update. Also, included are available new features. The bold text within the brackets indicates the item or area of the change. 
@@ -268,9 +270,9 @@ This section provides the 2509 security updates associated with OS build **25398
 
 ## Windows Secure Boot certificate expiration
 
-Secure Boot certificates used by most Windows devices are set to expire starting in June 2026. This might affect the ability of certain personal and business devices to boot securely if not updated in time. To avoid disruption, we recommend reviewing the guidance and taking action to update certificates in advance. For details and preparation steps, see [Windows Secure Boot certificate expiration and CA updates](https://support.microsoft.com/topic/windows-secure-boot-certificate-expiration-and-ca-updates-7ff40d33-95dc-4c3c-8725-a9b95457578e?preview=true).
+Secure Boot certificates used by most Windows devices are set to expire starting in June 2026. This might affect the ability of certain personal and business devices to boot securely if not updated in time. To avoid disruption, we recommend reviewing the guidance and taking action to update certificates in advance. For details and preparation steps, see [Windows Secure Boot certificate expiration and CA updates](https://support.microsoft.com/en-us/topic/windows-secure-boot-certificate-expiration-and-ca-updates-7ff40d33-95dc-4c3c-8725-a9b95457578e?preview=true).
 
-To learn more about Windows update terminology, see [types of Windows updates](/troubleshoot/windows-client/installing-updates-features-roles/standard-terminology-software-updates) and [monthly quality update types](https://techcommunity.microsoft.com/blog/windows-itpro-blog/windows-monthly-updates-explained/3773544).  
+To learn more about Windows update terminology, see [types of Windows updates](/troubleshoot/windows-client/installing-updates-features-roles/standard-terminology-software-updates) and [monthly quality update types](https://techcommunity.microsoft.com/blog/windows-itpro-blog/windows-monthly-updates-explained/3773544).
 
 ## Improvements
 
@@ -337,9 +339,9 @@ This section provides the 2509 security updates associated with OS build **26100
 
 ## Windows Secure Boot certificate expiration
 
-Secure Boot certificates used by most Windows devices are set to expire starting in June 2026. This might affect the ability of certain personal and business devices to boot securely if not updated in time. To avoid disruption, we recommend reviewing the guidance and taking action to update certificates in advance. For details and preparation steps, see [Windows Secure Boot certificate expiration and CA updates](https://support.microsoft.com/topic/windows-secure-boot-certificate-expiration-and-ca-updates-7ff40d33-95dc-4c3c-8725-a9b95457578e?preview=true).
+Secure Boot certificates used by most Windows devices are set to expire starting in June 2026. This might affect the ability of certain personal and business devices to boot securely if not updated in time. To avoid disruption, we recommend reviewing the guidance and taking action to update certificates in advance. For details and preparation steps, see [Windows Secure Boot certificate expiration and CA updates](https://support.microsoft.com/en-us/topic/windows-secure-boot-certificate-expiration-and-ca-updates-7ff40d33-95dc-4c3c-8725-a9b95457578e?preview=true).
 
-To learn more about Windows update terminology, see [types of Windows updates](/troubleshoot/windows-client/installing-updates-features-roles/standard-terminology-software-updates) and [monthly quality update types](https://techcommunity.microsoft.com/blog/windows-itpro-blog/windows-monthly-updates-explained/3773544).  
+To learn more about Windows update terminology, see [types of Windows updates](/troubleshoot/windows-client/installing-updates-features-roles/standard-terminology-software-updates) and [monthly quality update types](https://techcommunity.microsoft.com/blog/windows-itpro-blog/windows-monthly-updates-explained/3773544).
 
 ## Improvements
 
