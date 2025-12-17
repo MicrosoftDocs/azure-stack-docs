@@ -83,7 +83,7 @@ Cluster Manager supports the following VM SKUs:
 
 Refer to [Azure Virtual Machine size overview](/azure/virtual-machines/sizes/overview) for SKU requirements.
  
-Cluster Manager requires three VMs and is created using all three availability zones. A customer can switch to two availability zones if the selected SKU isn't available in all zones. In that case, the three VMs are redistributed across the provided zones.
+Cluster Manager creates Azure Kubernetes Services (AKS) instance with three Virtual Machines (VM) distributed across three availability zones. A customer can switch to two availability zones if the selected SKU isn't available in all zones. In that case, the three VMs are redistributed across the provided zones.
  
 The compute needs increase during upgrades and may double depending on the type of the upgrade. For example, AKS upgrades require more capacity while regular Network Cloud maintenance requires one extra VM. This scaling is temporary and reverts to three VMs after the upgrade completes. When multiple Cluster Managers are deployed in the same subscription, customers don't need to reserve double capacity for all instances, as not all upgrades occur at the same time.
 
