@@ -1,10 +1,10 @@
 ---
 title: Invoke-AksEdgeNodeCommand for AKS Edge
-author: sethmanheim
+author: davidsmatlak
 description: The Invoke-AksEdgeNodeCommand PowerShell command executes an SSH command on the VM.
 ms.topic: reference
 ms.date: 10/04/2022
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 10/04/2022
 #ms.reviewer: jeguan
 

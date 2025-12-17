@@ -1,10 +1,10 @@
 ---
 title: Add-AksHciNode for AKS hybrid
-author: sethmanheim
+author: davidsmatlak
 description: The Add-AksHciNode PowerShell command adds a new physical node to a deployment.
 ms.topic: reference
 ms.date: 4/16/2021
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
 

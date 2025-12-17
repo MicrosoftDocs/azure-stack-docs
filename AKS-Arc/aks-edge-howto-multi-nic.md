@@ -1,8 +1,8 @@
 ---
 title: Configure multiple NICs for AKS Edge Essentials
 description: Learn how to attach multiple network interfaces to an AKS Edge Essentials Linux virtual machine.
-author: sethmanheim
-ms.author: sethm
+author: davidsmatlak
+ms.author: davidsmatlak
 ms.topic: how-to
 ms.date: 02/25/2025
 ms.custom: template-how-to, linux-related-content

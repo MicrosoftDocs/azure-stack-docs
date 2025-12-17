@@ -1,10 +1,10 @@
 ---
 title: Get-AksHciClusterNetwork for AKS hybrid
-author: sethmanheim
+author: davidsmatlak
 description: The Get-AksHciClusterNetwork PowerShell command retrieves virtual network settings.
 ms.topic: reference
 ms.date: 5/11/2021
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: mikek
 
