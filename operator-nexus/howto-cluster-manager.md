@@ -10,7 +10,7 @@ ms.service: azure-operator-nexus
 ms.custom: devx-track-azurecli
 ---
 
-# Cluster Manager: How to manage the Cluster Manager in Operator Nexus
+# How to manage the Cluster Manager in Operator Nexus
 
 The Cluster Manager is deployed in the operator's Azure subscription to manage the lifecycle of Operator Nexus Infrastructure Clusters. 
 
