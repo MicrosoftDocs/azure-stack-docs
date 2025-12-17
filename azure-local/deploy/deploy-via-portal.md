@@ -271,9 +271,9 @@ On the **Configuration** tab, choose whether to create a new configuration for t
 
 - **Authentication changes.** During deployment, the system performs several steps, including cluster registration. In earlier versions of software, during this process, Azure Local created and set up a Microsoft Entra ID application (service principal) along with a self-signed certificate to authenticate the cluster in Azure.
 
-    Starting with software version 12.2512 and later, new deployments no longer create an Entra ID application. Instead, the cluster uses Managed System Identity (MSI) for authentication with Azure.
+    Starting with software version 12.2512 and later, new deployments no longer create an Entra ID application. Instead, the cluster uses system-assigned managed identity (SMI) for authentication with Azure.
 
-    For existing deployments, the Entra ID application is also no longer used for authentication. The cluster automatically switches to MSI for authentication without requiring any manual intervention. Since the app is no longer used, you can delete it from the Entra ID portal.
+    For existing deployments, the Entra ID application is also no longer used for authentication. The cluster automatically switches to SMI for authentication without requiring any manual intervention. Since the app is no longer used, you can delete it from the Entra ID portal.
 
     To delete the app, make sure that the registration context is updated to v4 and there's a corresponding event in the Azure Local event log.
 
