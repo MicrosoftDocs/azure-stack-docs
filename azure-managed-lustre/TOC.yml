@@ -44,6 +44,8 @@
       href: root-squash-configure-settings.md
     - name: Set and configure Lustre quotas
       href: lustre-quotas.md
+    - name: Optimize file and directory layouts
+      href: optimize-file-dir-layouts.md
 - name: Security
   items:
     - name: Configure a network security group
