@@ -4,7 +4,7 @@ titleSuffix: Azure Stack Hub
 description: Learn about the Azure Stack Hub servicing policy and how to keep an integrated system in a supported state.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 07/18/2025
+ms.date: 09/22/2025
 ms.author: sethm
 
 # Intent: As an Azure Stack operator, I want to learn about servicing policy and how to keep an integrated system supported.
@@ -43,9 +43,9 @@ Find documentation on how to plan for and manage updates, and how to determine y
 
 For information about a specific update, including how to download it, see the release notes for that update:
 
+- [Azure Stack Hub 2506 update](./release-notes.md?view=azs-2506&preserve-view=true)
 - [Azure Stack Hub 2501 update](./release-notes.md?view=azs-2501&preserve-view=true)
 - [Azure Stack Hub 2408 update](./release-notes.md?view=azs-2408&preserve-view=true)
-- [Azure Stack Hub 2406 update](./release-notes.md?view=azs-2406&preserve-view=true)
 
 ## Hotfixes
 
@@ -75,11 +75,11 @@ You must also have an active support agreement with the hardware partner that ma
 
 Hotfixes aren't considered major update versions. If your Azure Stack Hub instance is behind by more than two updates, it's considered out of compliance. You must update to at least the minimum supported version (N-2) to receive support.
 
-For example, if the most recent update version available is 2501 (N), the two previous update versions were 2408 and 2406, which means both 2408 (N-1) and 2406 (N-2) remain in support. However, the 2311 (and earlier) version is out of support, as 2311 was N-3 when the 2501 update was released. For the current release of Azure Stack Hub, the following versions are considered in support:
+For example, if the most recent update version available is 2506 (N), the two previous update versions were 2501 and 2408, which means both 2501 (N-1) and 2408 (N-2) remain in support. However, the 2406 (and earlier) version is out of support, as 2406 was N-3 when the 2506 update was released. For the current release of Azure Stack Hub, the following versions are considered in support:
 
+- [Azure Stack Hub 2506](./release-notes.md?view=azs-2506&preserve-view=true)
 - [Azure Stack Hub 2501](./release-notes.md?view=azs-2501&preserve-view=true)
 - [Azure Stack Hub 2408](./release-notes.md?view=azs-2408&preserve-view=true)
-- [Azure Stack Hub 2406](./release-notes.md?view=azs-2406&preserve-view=true)
 
 Microsoft software update packages are non-cumulative and require the previous update package and latest hotfix to be installed as a prerequisite. If you decide to defer one or more updates, consider the overall runtime required to update to the latest version.
 

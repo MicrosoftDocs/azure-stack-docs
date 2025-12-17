@@ -4,7 +4,7 @@ description: Learn how to use ReFS deduplication and compression in Azure Local 
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 01/16/2025
+ms.date: 11/04/2025
 ---
 
 # Optimize storage with ReFS deduplication and compression in Azure Local
@@ -27,7 +27,7 @@ Here are the benefits of using ReFS deduplication and compression:
 
 - **Storage savings for active workloads.** Designed for active workloads, such as VDI, ensuring efficient performance in demanding environments.
 - **Multiple modes.** Operates in three modes: deduplication only (default mode), compression only, and deduplication and compression, allowing optimization based on your needs.
-- **Incremental deduplication.** Deduplicates only new or changed data as opposed to scanning the entire volume every time, optimizing job duration and reducing impact on system performance.
+- **Incremental deduplication.** Deduplicates only new or changed data as opposed to scanning the entire volume every time, optimizing job duration, and reducing impact on system performance.
 
 ## Prerequisites
 
@@ -313,7 +313,7 @@ Suspended                    : True
 Disabling ReFS deduplication and compression on a volume stops any runs that are in progress and cancels future scheduled jobs. In addition, related volume metadata isn't  retained, and file change tracking is stopped.
 
 > [!NOTE]
-> When you disable this feature, it doesn't undo deduplication or compression, as all the operations occur at the metadata layer. Over time, deduplicated data returns to its original state as the volume incurs reads and writes. To decompress the data, ensure there is enough capacity available and use [ReFSUtil](/windows-server/administration/windows-commands/refsutil) to perform the following operation.
+> When you disable this feature, it doesn't undo deduplication or compression, as all the operations occur at the metadata layer. Over time, deduplicated data returns to its original state as the volume incurs reads and writes. To decompress the data, ensure there's enough capacity available and use [ReFSUtil](/windows-server/administration/windows-commands/refsutil) to perform the following operation.
 >
 > ```powershell
 > refsutil compression /c /f NONE <vol>

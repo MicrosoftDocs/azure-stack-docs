@@ -1,10 +1,10 @@
 ---
 title: Set-AksEdgeUpgrade for AKS Edge
-author: rcheeran
+author: sethmanheim
 description: The Set-AksEdgeUpgrade PowerShell command set whether AksEdge is allowed to upgrade the Kubernetes version on update.
 ms.topic: reference
 ms.date: 02/02/2023
-ms.author: rcheeran 
+ms.author: sethm 
 ms.lastreviewed: 02/02/2023
 #ms.reviewer: jeguan
 

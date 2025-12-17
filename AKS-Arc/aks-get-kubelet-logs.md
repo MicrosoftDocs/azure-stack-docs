@@ -14,7 +14,7 @@ ms.reviewer: guanghu
 
 # Get kubelet logs from cluster nodes
 
-[!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)], AKS enabled by Azure Arc on VMware (preview)
+[!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
 As part of operating a Kubernetes cluster in AKS enabled by Azure Arc, you might need to review logs at some point to troubleshoot a problem. This article describes how to use `journalctl` to view the kubelet logs on a node.
 

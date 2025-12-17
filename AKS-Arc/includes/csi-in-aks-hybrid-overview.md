@@ -1,7 +1,7 @@
 ---
 author: sethmanheim
 ms.author: sethm
-ms.service: azure-stack
+ms.service: azure-kubernetes-service-hybrid
 ms.topic: include
 ms.date: 07/03/2025
 ms.reviewer: abha

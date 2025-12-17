@@ -30,6 +30,18 @@
       "template_folder": "_themes"
     },
     {
+      "docset_name": "azure-local-max",
+      "build_source_folder": "azure-local-max",
+      "build_output_subfolder": "azure-local-max",
+      "locale": "en-us",
+      "monikers": [],
+      "open_to_public_contributors": false,
+      "type_mapping": {
+        "Conceptual": "Content"
+      },
+      "build_entry_point": "docs"
+    },
+    {
       "docset_name": "azure-managed-lustre",
       "build_source_folder": "azure-managed-lustre",
       "build_output_subfolder": "azure-managed-lustre",
@@ -77,6 +89,18 @@
       },
       "build_entry_point": "docs",
       "template_folder": "_themes"
+    },
+    {
+      "docset_name": "operator-nexus",
+      "build_source_folder": "operator-nexus",
+      "build_output_subfolder": "operator-nexus",
+      "locale": "en-us",
+      "monikers": [],
+      "open_to_public_contributors": true,
+      "type_mapping": {
+        "Conceptual": "Content"
+      },
+      "build_entry_point": "docs"
     }
   ],
   "notification_subscribers": [],
@@ -117,7 +141,7 @@
       "branch_mapping": {}
     },
     {
-      "path_to_root": "azure-stack/reusable-content",
+      "path_to_root": "reusable-content",
       "url": "https://github.com/MicrosoftDocs/reusable-content",
       "branch": "main",
       "branch_mapping": {}

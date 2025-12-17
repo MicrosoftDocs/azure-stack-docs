@@ -5,7 +5,7 @@ ms.topic: overview
 ms.custom: linux-related-content
 author: sethmanheim
 ms.author: sethm 
-ms.date: 04/02/2025
+ms.date: 11/17/2025
 
 # Intent: As an IT Pro, I want to use AKS on Windows Server to deploy on-premises Kubernetes and orchestrate containerized workloads.
 # Keyword: on-premises Kubernetes
@@ -16,7 +16,7 @@ ms.date: 04/02/2025
 [!INCLUDE [aks-hybrid-applies-to-azure-stack-hci-windows-server-sku](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
 > [!IMPORTANT]
-> Microsoft is retiring the current architecture of AKS on Windows Server 2019 and AKS on Windows Server 2022 on March 27, 2028. We recommend that you deploy [AKS on Azure Local](aks-whats-new-23h2.md). For more information, see [Retirement of AKS architecture on Windows Server 2019 and Windows Server 2022](aks-windows-server-retirement.md).
+> Microsoft is retiring the current architecture of AKS on Windows Server 2019 in March 2026. We recommend that you deploy [AKS on Azure Local](aks-whats-new-23h2.md). For more information, see [Retirement of AKS architecture on Windows Server](aks-windows-server-retirement.md).
 
 Azure Kubernetes Service (AKS) on Windows Server is an on-premises Kubernetes implementation of AKS. AKS on Windows Server automates running containerized applications at scale. AKS on Windows Server makes it quicker to get started hosting Linux and Windows containers in your datacenter.
 
@@ -28,9 +28,9 @@ The following sections discuss some of the reasons to use AKS on Windows Server,
 
 ## Why use AKS on Windows Server for containerized applications?
 
-While you can manage a few containers manually using Docker and Windows, apps often make use of five, ten, or even hundreds of containers, which is where the Kubernetes orchestrator comes in.
+While you can manage a few containers manually by using Docker and Windows, apps often use five, 10, or even hundreds of containers. That's where the Kubernetes orchestrator comes in.
 
-Kubernetes is an open-source orchestrator for automating container management at scale. AKS simplifies on-premises Kubernetes deployment by providing wizards you can use to set up Kubernetes and add-ons, and also to create Kubernetes clusters to host your workloads.
+Kubernetes is an open-source orchestrator that automates container management at scale. AKS simplifies on-premises Kubernetes deployment by providing wizards you can use to set up Kubernetes and add-ons, and also to create Kubernetes clusters to host your workloads.
 
 Some of the functionality AKS provides on Windows Server includes:
 
@@ -48,21 +48,21 @@ AKS simplifies the process of setting up Kubernetes on Windows Server 2019/2022 
 
 - A Windows Admin Center wizard for setting up AKS and its dependencies.
 - A Windows Admin Center wizard for creating Kubernetes clusters to run your containerized applications.
-- PowerShell cmdlets for setting up Kubernetes and creating Kubernetes clusters, if you prefer to use a script to host setup and Kubernetes cluster creation.
+- PowerShell cmdlets for setting up Kubernetes and creating Kubernetes clusters, if you prefer to use a script for host setup and Kubernetes cluster creation.
 
 View the following image to familiarize yourself with the deployment process:
 
 :::image type="content" source="media/overview/aks-hci-deployment.gif" alt-text="GIF showing AKS deployment." lightbox="media/overview/aks-hci-deployment.gif":::
 
-## View and manage on-premises Kubernetes using tools or Azure Arc
+## View and manage on-premises Kubernetes by using tools or Azure Arc
 
-Once you set up on-premises Kubernetes using AKS and create a Kubernetes cluster, you can manage and monitor your Kubernetes infrastructure with:
+After you set up on-premises Kubernetes by using AKS and create a Kubernetes cluster, you can manage and monitor your Kubernetes infrastructure with the following options:
 
 - **The Azure portal using Azure Arc**: Use Azure Arc to manage applications deployed on top of Kubernetes clusters across your cloud and on-premises environments.  
   Azure Arc also enables you to manage your Kubernetes clusters with other Azure services including:
   - Azure Monitor
   - Azure Policy
-- **On-premises using popular tools such as Kubectl**: There are many open-source tools that allow you to deploy applications to a Kubernetes cluster, manage cluster resources, troubleshoot, and view running applications. All of these tools work with Kubernetes clusters deployed with AKS on Windows Server.
+- **On-premises by using popular tools such as Kubectl**: Many open-source tools allow you to deploy applications to a Kubernetes cluster, manage cluster resources, troubleshoot, and view running applications. All of these tools work with Kubernetes clusters deployed with AKS on Windows Server.
 
 ## Run Linux and Windows containers
 
@@ -72,7 +72,7 @@ AKS creates the Linux and Windows nodes so that you don't have to directly manag
 
 ## Secure your container infrastructure
 
-AKS includes features that can help to secure your container infrastructure:
+AKS includes features that help secure your container infrastructure:
 
 - **Hypervisor-based isolation for worker nodes**: Each Kubernetes cluster runs on its own dedicated and isolated set of virtual machines so that tenants can share the same physical infrastructure.
 - **Microsoft-maintained Linux and Windows images for worker nodes**: Worker nodes run Linux and Windows virtual machine images created by Microsoft to adhere to security best practices. Microsoft also refreshes these images monthly with the latest security updates.
@@ -111,7 +111,7 @@ Once you connect your cluster to Azure Arc, you can use Azure Monitor for monito
 
 ### Automatically resize your Kubernetes node pools
 
-To keep up with application demands, you might need to adjust the number and size of nodes that run your workloads. The cluster autoscaler component can watch for pods in your cluster that can't be scheduled because of resource constraints. When issues are detected, the number of nodes in a node pool is increased to meet the application demand. Nodes are also regularly checked for a lack of running pods, with the number of nodes then decreased as needed. This ability to automatically scale up or down the number of nodes in your Kubernetes cluster lets you run an efficient, cost-effective environment.
+To keep up with application demands, you might need to adjust the number and size of nodes that run your workloads. The cluster autoscaler component watches for pods in your cluster that can't be scheduled because of resource constraints. When it detects issues, it increases the number of nodes in a node pool to meet the application demand. It also regularly checks nodes for a lack of running pods and decreases the number of nodes as needed. This ability to automatically scale up or down the number of nodes in your Kubernetes cluster lets you run an efficient, cost-effective environment.
 
 ### Deploy and manage Windows-based containerized apps
 
@@ -119,7 +119,7 @@ AKS fully supports running both Linux-based and Windows-based containers. When y
 
 ### Deploy GPU-enabled nodes
 
-AKS supports deploying GPU-enabled node pools on top of NVIDIA Tesla T4 GPUs using Discrete Device Assignment (DDA) mode, also known as *GPU Passthrough*. In this mode, one or more physical GPUs are dedicated to a single worker node with a GPU-enabled VM size, which gets full access to the entire GPU. This mode offers high level application compatibility as well as better performance. For more information about GPU-enabled node pools, see the [GPU documentation](deploy-gpu-node-pool.md).
+AKS supports deploying GPU-enabled node pools on top of NVIDIA Tesla T4 GPUs by using Discrete Device Assignment (DDA) mode, also known as *GPU Passthrough*. In this mode, one or more physical GPUs are dedicated to a single worker node with a GPU-enabled VM size, which gets full access to the entire GPU. This mode offers high level application compatibility as well as better performance. For more information about GPU-enabled node pools, see the [GPU documentation](deploy-gpu-node-pool.md).
 
 ## Next steps
 

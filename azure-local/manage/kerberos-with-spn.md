@@ -6,7 +6,7 @@ ms.topic: how-to
 ms.assetid: bc625de9-ee31-40a4-9ad2-7448bfbfb6e6
 ms.author: anpaul
 author: AnirbanPaul
-ms.date: 01/16/2025
+ms.date: 11/04/2025
 ---
 
 # Kerberos with Service Principal Name (SPN)
@@ -17,7 +17,7 @@ This article describes how to use Kerberos authentication with Service Principal
 
 Network Controller supports multiple authentication methods for communication with management clients. You can use Kerberos based authentication, X509 certificate-based authentication. You also have the option to use no authentication for test deployments.
 
-System Center Virtual Machine Manager uses Kerberos-based authentication. If you're using Kerberos-based authentication, you must configure an SPN for Network Controller in Active Directory. The SPN is a unique identifier for the Network Controller service instance, which is used by Kerberos authentication to associate a service instance with a service login account. For more details, see [Service Principal Names](/windows/desktop/ad/service-principal-names).
+System Center Virtual Machine Manager uses Kerberos-based authentication. If you're using Kerberos-based authentication, you must configure an SPN for Network Controller in Active Directory. The SPN is a unique identifier for the Network Controller service instance, which is used by Kerberos authentication to associate a service instance with a service login account. For more information, see [Service Principal Names](/windows/desktop/ad/service-principal-names).
 
 ## Configure Service Principal Names (SPN)
 
@@ -29,13 +29,13 @@ The Network Controller automatically configures the SPN. All you need to do is t
 
 1. Under **Computers**, locate one of the Network Controller machine accounts, and then right-click and select **Properties**.
 
-1. Select the **Security** tab and click **Advanced**.
+1. Select the **Security** tab and select **Advanced**.
 
-1. In the list, if all the Network Controller machine accounts or a security group having all the Network Controller machine accounts isn't listed, click **Add** to add it.
+1. In the list, if all the Network Controller machine accounts or a security group having all the Network Controller machine accounts isn't listed, select **Add** to add it.
 
 1. For each Network Controller machine account or a single security group containing the Network Controller machine accounts:
 
-   1.  Select the account or group and click **Edit**.
+   1.  Select the account or group and select **Edit**.
 
    1.  Under Permissions select **Validate Write servicePrincipalName**.
 
@@ -45,7 +45,7 @@ The Network Controller automatically configures the SPN. All you need to do is t
 
        -  **Write servicePrincipalName**
 
-    1.  Click **OK** twice.
+    1.  Select **OK** twice.
 
 1.  Repeat steps 3 - 6 for each Network Controller machine.
 
@@ -60,7 +60,7 @@ For an upgrade from Windows Server 2016 to Windows Server 2019, and you chose Ke
 If SPN isn't registered, REST client authentication uses NTLM, which is less secure. You also get a critical event in the Admin channel of **NetworkController-Framework** event channel asking you to provide permissions to the Network Controller nodes to register SPN. Once you provide permission, Network Controller registers the SPN automatically, and all client operations use Kerberos.
 
 > [!TIP]
-> Typically, you can configure Network Controller to use an IP address or DNS name for REST-based operations. However, when you configure Kerberos, you cannot use an IP address for REST queries to Network Controller. For example, you can use \<https://networkcontroller.consotso.com\>, but you cannot use \<https://192.34.21.3\>. Service Principal Names cannot function if IP addresses are used.
+> Typically, you can configure Network Controller to use an IP address or DNS name for REST-based operations. However, when you configure Kerberos, you can't use an IP address for REST queries to Network Controller. For example, you can use \<https://networkcontroller.consotso.com\>, but you can't use \<https://192.34.21.3\>. Service Principal Names can't function if IP addresses are used.
 >
 > If you were using IP address for REST operations along with Kerberos authentication in Windows Server 2016, the actual communication would have been over NTLM authentication. In such a deployment, once you upgrade to Windows Server 2019, you continue to use NTLM-based authentication. To move to Kerberos-based authentication, you must use Network Controller DNS name for REST operations and provide permission for Network Controller nodes to register SPN.
 

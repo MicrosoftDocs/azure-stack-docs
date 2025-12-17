@@ -6,16 +6,14 @@ author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
-ms.date: 02/14/2025
+ms.date: 12/09/2025
 ---
 
 # Network reference patterns overview for Azure Local
 
 [!INCLUDE [includes](../includes/hci-applies-to-23h2-22h2.md)]
 
-[!INCLUDE [azure-local-banner-23h2](../includes/azure-local-banner-23h2.md)]
-
-In this article, gain an overview understanding for deploying network reference patterns on Azure Local.
+This article provides an overview of deploying network reference patterns in hyperconverged deployments of Azure Local (*formerly Azure Stack HCI*).
 
 A deployment consists of single-node or multiple node systems (up to 16 machines per system) that connect to one or two Top of Rack (TOR) switches. Those environments have the following characteristics:
 
@@ -27,7 +25,7 @@ A deployment consists of single-node or multiple node systems (up to 16 machines
 
 The following highlights some considerations of using switchless configurations:
 
-- Storage switchless deployments in Azure Local only support 1,2 or 3 nodes.
+- Storage switchless deployments in Azure Local only support 1,2,3 or 4 nodes.
 
 - Scale out operations on storage switchless deployments from Azure portal or ARM aren't supported in Azure Local systems.  
 
@@ -39,7 +37,7 @@ The following highlights some considerations of using switchless configurations:
 
 - As the number of nodes in the system grows beyond two nodes, the cost of network adapters could exceed the cost of using network switches.
 
-- Beyond a three-node system, cable management complexity grows.
+- Beyond a four-node system, cable management complexity grows.
 
 For more information, see [Physical network requirements for Azure Local](../concepts/physical-network-requirements.md).
 

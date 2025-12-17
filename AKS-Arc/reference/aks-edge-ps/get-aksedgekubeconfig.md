@@ -1,10 +1,10 @@
 ---
 title:  Get-AksEdgeKubeConfig for AKS Edge
-author: rcheeran
+author: sethmanheim
 description: The Get-AksEdgeKubeConfig  PowerShell command pulls the KubeConfig file from the node.
 ms.topic: reference
 ms.date: 10/04/2022
-ms.author: rcheeran 
+ms.author: sethm 
 ms.lastreviewed: 10/04/2022
 #ms.reviewer: jeguan
 

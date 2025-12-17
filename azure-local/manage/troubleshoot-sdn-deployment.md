@@ -1,10 +1,10 @@
 ---
-title: Troubleshoot Software Defined Networking deployment in Azure Local, version 23H2 via Windows Admin Center
-description: Learn how to troubleshoot the deployment of Software Defined Networking (SDN) in Azure Local, version 23H2 via Windows Admin Center.
+title: Troubleshoot deployment of Software Defined Networking managed by on-premises tools in Azure Local, version 23H2 via Windows Admin Center
+description: Learn how to troubleshoot the deployment of Software Defined Networking (SDN) managed by on-premises tools in Azure Local, version 23H2 via Windows Admin Center.
 ms.topic: how-to
 ms.author: alkohli
 author: alkohli
-ms.date: 04/11/2025
+ms.date: 09/17/2025
 ---
 
 # Troubleshoot Software Defined Networking deployment in Azure Local via Windows Admin Center

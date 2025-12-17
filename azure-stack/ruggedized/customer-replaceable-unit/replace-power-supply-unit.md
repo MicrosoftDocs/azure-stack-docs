@@ -44,7 +44,7 @@ Use the following procedure to replace a power supply unit (PSU).
 
 2.  Replace the PSU.
 
-Follow the [PSU replacement process](https://www.dell.com/support/manuals/us/en/04/poweredge-r640/per640_ism_pub/dell-emc-poweredge-r640-overview?guid=guid-f39be9ba-158c-45e3-b8b1-f07bb750d6d4)
+Follow the [PSU replacement process](https://www.dell.com/support/manuals/en-us/poweredge-r640/per640_ism_pub/installing-a-power-supply-unit?guid=guid-fb1f0dfa-6e9f-43cf-b5eb-77f8c52bf49a&lang=en-us)
 for scale unit nodes or Hardware Lifecycle Hosts.
 
 ## Next steps

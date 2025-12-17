@@ -272,7 +272,7 @@ To create a custom marketplace item, do the following:
 | PublisherLegalName |X |String |Maximum of 256 characters | |
 | Summary |X |String |60 to 100 characters | |
 | LongSummary |X |String |140 to 256 characters |Not yet applicable in Azure Stack Hub. |
-| Description |X |[HTML](https://github.com/Azure/portaldocs/blob/master/gallery-sdk/generated/index-gallery.md#gallery-item-metadata-html-sanitization) |500 to 5,000 characters | |
+| Description |X |HTML |500 to 5,000 characters | |
 
 ### Images
 

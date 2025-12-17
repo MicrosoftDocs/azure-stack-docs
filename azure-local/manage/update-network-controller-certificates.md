@@ -4,7 +4,7 @@ description: This article describes how to renew Network Controller certificates
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 01/16/2025
+ms.date: 09/17/2025
 ms.custom: sfi-image-nochange
 ---
 
@@ -14,7 +14,7 @@ ms.custom: sfi-image-nochange
 
 This article provides instructions on how to renew or change Network Controller certificates, both automatically and manually. If you face any issues in renewing your Network Controller certificates, contact Microsoft Support.
 
-In your Software Defined Networking (SDN) infrastructure, the Network Controller uses certificate-based authentication to secure Northbound communication channels with management clients and Southbound communications with network devices, such as the Software Load Balancer. The Network Controller certificates come with a validity period, after which they become invalid and can no longer be trusted for use. We highly recommend that you renew them before they expire.
+In your Software Defined Networking (SDN) managed by on-premises tools infrastructure, the Network Controller uses certificate-based authentication to secure Northbound communication channels with management clients and Southbound communications with network devices, such as the Software Load Balancer. The Network Controller certificates come with a validity period, after which they become invalid and can no longer be trusted for use. We highly recommend that you renew them before they expire.
 
 For an overview of Network Controller, see [What is Network Controller?](../concepts/network-controller-overview.md)
 

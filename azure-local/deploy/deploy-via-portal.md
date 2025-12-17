@@ -3,7 +3,7 @@ title: Deploy an Azure Local instance using the Azure portal
 description: Learn how to deploy an Azure Local instance from the Azure portal
 author: alkohli
 ms.topic: how-to
-ms.date: 06/24/2025
+ms.date: 12/12/2025
 ms.author: alkohli
 ms.service: azure-local
 ms.custom: sfi-image-nochange
@@ -21,7 +21,7 @@ This article helps you deploy an Azure Local instance using the Azure portal.
 
 ::: moniker range="<=azloc-24113"
 
-- To deply Azure Local 2411.3 and earlier, use the alternative version of the [Azure portal](https://aka.ms/dfc-2411deploycluster). Use this version only for deployment, don't use it for any other purpose.
+- To deploy Azure Local 2411.3 and earlier, use the alternative version of the [Azure portal](https://aka.ms/dfc-2411deploycluster). Use this version only for deployment. Don't use this version for any other purpose.
 
 ::: moniker-end
 
@@ -39,7 +39,7 @@ This article helps you deploy an Azure Local instance using the Azure portal.
 
 1. Select the **Region** to store this system's Azure resources. For a list of supported Azure regions, [Azure requirements](../concepts/system-requirements-23h2.md#azure-requirements).
 
-   We don't transfer a lot of data so it's OK if the region isn't close. Select  **+ Add machines**.
+   We don't transfer much data so it's OK if the region isn't close. Select  **+ Add machines**.
 
 1. Select the machine or machines that make up this Azure Local instance.
 
@@ -88,7 +88,7 @@ This article helps you deploy an Azure Local instance using the Azure portal.
 
 ## Specify the deployment settings
 
-On the **Configuration** tab, choose whether to create a new configuration for this system or to load deployment settings from a template–either way you are able to review the settings before you deploy:
+On the **Configuration** tab, choose whether to create a new configuration for this system or to load deployment settings from a template–either way you're able to review the settings before you deploy:
 
 1. Choose the source of the deployment settings:
    * **New configuration** - Specify all of the settings to deploy this system.
@@ -105,7 +105,7 @@ On the **Configuration** tab, choose whether to create a new configuration for t
     * **Network switch for storage traffic** - For systems with storage network adapters connected to a network switch. This also applies to systems that use converged network adapters that carry all traffic types including storage.
 2. Choose traffic types to group together on a set of network adapters–and which types to keep physically isolated on their own adapters.
 
-    There are three types of traffic we're configuring:
+    There are three types of traffic we configure:
     * **Management** traffic between this system, your management PC, and Azure; also Storage Replica traffic.
     * **Compute** traffic to or from VMs and containers on this system.
     * **Storage** (SMB) traffic between machines in a multi-node system.
@@ -130,10 +130,10 @@ On the **Configuration** tab, choose whether to create a new configuration for t
     - **Custom configuration** - Finally you can do a custom configuration that lets you group traffic differently, such as carrying each traffic type on its own set of adapters. You also create corresponding custom intents.
     <!--Check w/ Cristian This is commonly used for private multi-access edge compute (MEC) systems.-->
 
-    :::image type="content" source="./media/deploy-via-portal/networking-tab-2.png" alt-text="Screenshot of the networking patterns available for Network switch option select on the Configuration tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/networking-tab-2.png":::
+    :::image type="content" source="./media/deploy-via-portal/networking-tab-2.png" alt-text="Screenshot of the networking patterns available for Network switch option selected on the Configuration tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/networking-tab-2.png":::
 
    > [!TIP]
-   > If you're deploying a single machine that you plan to add machines to later, select the network traffic groupings you want for the eventual cluster. Then when you add machines they automatically get the appropriate settings.
+   > If you're deploying a single machine to which you plan to add machines later, select the network traffic groupings you want for the eventual cluster. Then when you add machines they automatically get the appropriate settings.
 
 1. For each network intent (group of traffic types), select at least one unused network adapter (but probably at least two matching adapters for redundancy).
 
@@ -151,7 +151,7 @@ On the **Configuration** tab, choose whether to create a new configuration for t
 1. For the storage intent, enter the **VLAN ID** set on the network switches used for each storage network.
 
      > [!IMPORTANT]
-     > Portal deployment doesn't allow you to specify your own IPs for the storage intent. However, you can use ARM template deployment if you require to specify the IPs for storage and you can't use the default values from Network ATC. For more information check this page: [Custom IPs for storage intent](../plan/cloud-deployment-network-considerations.md#custom-ips-for-storage)
+     > Portal deployment doesn't allow you to specify your own IPs for the storage intent. However, you can use ARM template deployment if you require to specify the IPs for storage and you can't use the default values from Network ATC. For more information, check this page: [Custom IPs for storage intent](../plan/cloud-deployment-network-considerations.md#custom-ips-for-storage).
 
     :::image type="content" source="./media/deploy-via-portal/networking-tab-3.png" alt-text="Screenshot of the Networking tab with network intents in deployment via Azure portal." lightbox="./media/deploy-via-portal/networking-tab-3.png":::
 
@@ -183,7 +183,7 @@ On the **Configuration** tab, choose whether to create a new configuration for t
 ## Specify management settings
 
 1. Optionally edit the suggested **Custom location name** that helps users identify this system when creating resources such as VMs on it.
-1. Select an existing Storage account or create a new Storage account to store the cloud witness file.
+1. To store the cloud witness file, select an existing Storage account or create a new Storage account.
 
     When selecting an existing account, the dropdown list filters to display only the storage accounts contained in the specified resource group for deployment. You can use the same storage account with multiple clusters; each witness uses less than a kilobyte of storage.
 
@@ -222,7 +222,7 @@ On the **Configuration** tab, choose whether to create a new configuration for t
     * **Create required infrastructure volumes only** - Creates only the required one infrastructure volume per cluster. You need to create workload volumes and storage paths later.
     * **Use existing data drives** (single machines only) - Preserves existing data drives that contain a Storage Spaces pool and volumes.
 
-        To use this option, you must be using a single machine and have already created a Storage Spaces pool on the data drives. You also might need to later create an infrastructure volume and a workload volume and storage path if you don't already have them.
+        To use this option, use a single machine and have a Storage Spaces pool on the data drives. You also might need to later create an infrastructure volume and a workload volume and storage path if you don't already have them.
 
     :::image type="content" source="./media/deploy-via-portal/advanced-tab-1.png" alt-text="Screenshot of the Advanced tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/advanced-tab-1.png":::
     
@@ -267,9 +267,22 @@ On the **Configuration** tab, choose whether to create a new configuration for t
 
 The **Deployments** page then appears, which you can use to monitor the deployment progress.
 
-<!-- check with Cristian and Thomas -If the progress doesn't appear, wait for a few minutes and then select **Refresh**. This page may show up as blank for an extended period of time owing to an issue in this release, but the deployment is still running if no errors show up.-->
+During deployment, the system goes through several steps including cluster registration. In the earlier versions of software, during this process, Azure Local created and set up a Microsoft Entra ID application (service principal) along with a self-signed certificate to authenticate the cluster in Azure.
+
+From software version 12.2512 and later, the Entra ID application is no longer created during new deployments. Instead, the cluster uses Managed System Identity (MSI) to authenticate itself with Azure.
+
+For existing deployments also, the Entra ID application is no longer used for authentication. The cluster automatically switches to MSI for authentication without any manual intervention. As the app is no longer used, it can be deleted from the Entra ID portal. 
+
+To delete the app, make sure that the registration context is updated to v4 and there's a corresponding event in the Azure Local event log. To search for the event, connect to one of machines on the Azure Local instance. Run the following PowerShell command:
+
+```powershell
+Get-ClusterNode | % { Get-WinEvent -ComputerName $_ -LogName Microsoft-AzureStack-HCI/Admin | ? Id -eq 609 }
+```
+
 
 Once the deployment starts, the first step in the deployment: **Begin cloud deployment** can take 45-60 minutes to complete. The total deployment time for a single machine is around 1.5-2 hours while a two-node system takes about 2.5 hours to deploy.
+
+
 
 ## Verify a successful deployment
 

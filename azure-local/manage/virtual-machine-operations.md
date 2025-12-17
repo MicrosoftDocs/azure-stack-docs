@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: concept-article
 ms.service: azure-local
-ms.date: 06/30/2025
+ms.date: 11/12/2025
 ---
 
 # Supported operations for Azure Local VMs enabled by Azure Arc
@@ -16,11 +16,11 @@ This article discusses the most common operations for Azure Local virtual machin
 
 ## Overview
 
-Azure Local can host various types of VMs, including unmanaged VMs, Azure Arc-enabled servers, and Azure Arc-enabled VMs. Azure Arc-enabled VMs provide the highest level of management capabilities in the Azure portal, second only to [native Azure VMs](/azure/azure-local/concepts/compare-vm-management-capabilities).
+Azure Local can host [various types of VMs](../concepts/compare-vm-management-capabilities.md), including Azure Local VMs enabled by Azure Arc, Azure Arc-enabled servers and Unmanaged VMs. Azure Local VMs provide the highest level of management capabilities in Azure portal, second only to native Azure VMs.
 
-Azure Local VMs are designed to be managed through the Azure control plane and have numerous management features within the portal. However, on-premises local tools offer a broader range of capabilities. These tools include System Center Virtual Machine Manager, Failover Cluster Manager, Hyper-V Manager, and Windows Admin Center. Many IT admins use these tools to manage their on-premises VMs.
+Azure Local VMs are designed to be managed through the Azure control plane and have numerous management features within the portal. However, on-premises tools offer a broader range of capabilities. These tools include System Center Virtual Machine Manager, Failover Cluster Manager, Hyper-V Manager, and Windows Admin Center. Many IT admins use these tools to manage their on-premises VMs.
 
-When IT admins manage Azure Local VMs by using the same tools and scripts as those for on-premises VMs, it can result in synchronization errors or more severe problems between the Azure Local VMs and the portal.
+When IT admins manage Azure Local VMs by using the same local tools and scripts as those for on-premises VMs, it can result in synchronization errors or more severe problems between the Azure Local VMs and the portal.
 
 > [!NOTE]
 >
@@ -68,9 +68,9 @@ Perform the following VM operations only via the Azure CLI. Don't use the local 
 
 ### Local tools
 
-The following VM operations are supported only when you use the local tools, such as Windows Admin Center, Hyper-V Manager, Failover Cluster Manager, and Virtual Machine Manager.
+The following VM operations are supported only when you use the local tools, such as PowerShell, Windows Admin Center, Hyper-V Manager, Failover Cluster Manager, and Virtual Machine Manager.
 
-You perform these operations either on the VM itself or on the cluster/node. The changes aren't reflected in the portal.
+You perform these operations either on the VM itself or on the cluster/node. The changes aren't reflected in Azure portal.
 
 #### VM-level operations
 
@@ -83,7 +83,7 @@ You perform these operations either on the VM itself or on the cluster/node. The
     > This manual change is allowed from within the guest operating system using local tools only when a static IP NIC was added post VM provisioning from Azure Local control plane. This ensures network configurations within the VM aligns with the configuration defined in the Azure control plane.
 - Configure processor Non-Uniform Memory Access (NUMA) topology
 - Configure processor VM reserve, limit, and weight
-- Enable Quality of Service (QoS) management per disk
+- [Enable Storage Quality of Service (QoS) for virtual hard disks](/windows-server/storage/storage-qos/storage-qos-overview?toc=/azure/azure-local/toc.json&bc=/azure/azure-local/breadcrumb/toc.json)
 - Add a Small Computer System Interface (SCSI) controller and move an existing data disk to another SCSI controller
 - Remove a SCSI controller
 - Add or remove a DVD drive
@@ -93,6 +93,9 @@ You perform these operations either on the VM itself or on the cluster/node. The
 - Change an automatic start action
 - Change an automatic stop action
 - Enable secure boot of a generation 2 VM
+- [Apply affinity / anti-affinity rules](vm-affinity.md)
+- [Enable nested virtualization](../manage/enable-nested-virtualization.md)
+- Expand an OS disk
 
 #### Cluster or node-level operations
 
@@ -119,7 +122,7 @@ The following VM operations are supported only when you use the Network ATC Powe
 
 ## Unsupported VM operations
 
-The following VM operations aren't supported.
+The following VM operations aren't supported for Azure Local VMs. If your workload or applications design requires one or more of these capabilities, consider using Unmanaged VMs for your use case.
 
 > [!IMPORTANT]
 > You can't perform these operations by using the Azure portal, the Azure CLI, or local tools. Performing these operations can lead to Azure Local VMs becoming unmanageable from the Azure portal.
@@ -128,6 +131,7 @@ The following VM operations aren't supported.
 - Live migrate a VM from one cluster to another
 - Storage live migration on a VM
 - Change the type of disk (static, dynamic, VHD, or VHDX)
+- Add shared storage (shared VHD or VHDX)
 
 If you need to change the IP address or the VLAN ID of a network interface, create a new network interface and delete the old one.
 

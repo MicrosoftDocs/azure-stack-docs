@@ -1,10 +1,10 @@
 ---
 title: Start-AksEdgeNode for AKS Edge
-author: rcheeran
+author: sethmanheim
 description: The Start-AksEdgeNode PowerShell command starts the node VM. 
 ms.topic: reference
 ms.date: 10/04/2022
-ms.author: rcheeran 
+ms.author: sethm 
 ms.lastreviewed: 10/04/2022
 #ms.reviewer: jeguan
 

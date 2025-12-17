@@ -1,10 +1,10 @@
 ---
 title: Get-AksEdgeNodeAddr for AKS Edge
-author: rcheeran
+author: sethmanheim
 description: The Get-AksEdgeNodeAddr PowerShell command gets the VM's IP and MAC addresses
 ms.topic: reference
 ms.date: 10/04/2022
-ms.author: rcheeran 
+ms.author: sethm 
 ms.lastreviewed: 10/04/2022
 #ms.reviewer: jeguan
 

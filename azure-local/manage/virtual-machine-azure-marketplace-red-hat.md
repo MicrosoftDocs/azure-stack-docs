@@ -27,6 +27,14 @@ Before you begin, you must have:
 
 - An Azure Local cluster set up with a logical network and storage path for workloads. For more information, see [Create logical networks](../manage/create-logical-networks.md) and [Create storage paths](../manage/create-storage-path.md).
 
+- Make sure to review and [complete the prerequisites](../manage/azure-arc-vm-management-prerequisites.md).
+
+- If using a client to connect to your Azure Local instance, see [Connect to Azure Local via Azure CLI client](../manage/azure-arc-vm-management-prerequisites.md#azure-command-line-interface-cli-requirements).
+
+## Sign in and set subscription
+
+[!INCLUDE [hci-vm-sign-in-set-subscription](../includes/hci-vm-sign-in-set-subscription.md)]
+
 ## Set up and prepare an Azure VM
 
 To set up and prepare an Azure VM, follow these steps:
@@ -40,6 +48,9 @@ To set up and prepare an Azure VM, follow these steps:
    :::image type="content" source="media/virtual-machine-azure-marketplace-red-hat-enterprise/vm-image-red-hat.png" alt-text="Screenshot of the Azure portal image selection page." lightbox="../manage/media/virtual-machine-azure-marketplace-red-hat-enterprise/vm-image-red-hat.png":::
 
 1. Enter the required details in the wizard and finish setting up the Azure VM.
+
+   > [!NOTE]
+   > Avoid username conflicts by creating the Azure VM with a username you don't use on Azure Local. If you use the same username (for example, "usernameA") on both the Azure VM and Azure Local, and then reuse the VHD, the VM keeps the original login information. For the best results, set up Azure Local VMs with different credentials (such as "usernameB").
 
 1. After the VM is deployed, go to the **VM overview** page, select the **Connect** option, and then select **Serial console**.
 
@@ -73,22 +84,6 @@ To set up and prepare an Azure VM, follow these steps:
 
        ```bash
        sudo rm -rf /var/lib/cloud/ /var/log/* /tmp/*
-       ```
-
-    1. Unregister `subscription-manager` and clean it up.
-
-       ```bash
-       sudo subscription-manager unregister
-       sudo subscription-manager clean
-       ```
-
-       Example output:
-
-       ```console
-       [contosotest@localhost ~]$ sudo subscription-manager unregister
-       Unregistering from: subscription.rhsm.redhat.com:443/subscription
-       System has been unregistered.
-       [contosotest@localhost ~]$ sudo subscription-manager
        ```
 
     1. Clean VM-specific details.
@@ -170,7 +165,7 @@ To change the data source of the VM image, follow these steps
 
 To export an Azure VM OS disk to a VHD on the Azure Local cluster, follow these steps:
 
-1. Navigate to the **VM overview** \>, under the **Settings** option select **Disks**, and select the **Disks name** link.
+1. In the Azure portal for your Azure Local resource, go to the **VM overview**. Under the **Settings** option, select **Disks**, and select the **Disks name** link.
 
    :::image type="content" source="media/virtual-machine-azure-marketplace-red-hat-enterprise/disks-name.png" alt-text="Screenshot of the OS disk details page." lightbox="../manage/media/virtual-machine-azure-marketplace-red-hat-enterprise/disks-name.png":::
 
@@ -187,7 +182,7 @@ To create an Azure Local image using the SAS token, run this command:
 ```azurecli
 $rg = "<resource-group>"
 $cl = "/subscriptions/<sub>/resourcegroups/$rg/providers/microsoft.extendedlocation/customlocations/<customlocation-name>"
-$sas = "https://EXAMPLE.blob.storage.azure.net/EXAMPLE/abcd<sas-token>"
+$sas = '"https://EXAMPLE.blob.storage.azure.net/EXAMPLE/abcd<sas-token>"'
 
 az stack-hci-vm image create -g $rg --custom-location $cl --name "<IMAGE-NAME>" --os-type "Linux" --image-path $sas
 ```

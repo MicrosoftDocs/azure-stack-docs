@@ -3,7 +3,7 @@ title: Manage VMs with Windows Admin Center on Azure Local
 description: Learn how to create and manage virtual machines on Azure Local using Windows Admin Center.
 author: alkohli
 ms.topic: how-to
-ms.date: 01/16/2025
+ms.date: 11/04/2025
 ms.author: alkohli
 ms.custom: sfi-image-nochange
 ---
@@ -28,12 +28,12 @@ You can easily create a new VM using Windows Admin Center.
 4. Under **New virtual machine**, enter a name for your VM.
 5. Select **Generation 2 (Recommended)**.
 6. Under **Host**, select the machine you want the VM to reside on.
-7. Under **Path**, select a preassigned file path from the dropdown list or click **Browse** to choose the folder to save the VM configuration and virtual hard disk (VHD) files to. You can browse to any available SMB share on the network by entering the path as *\\machine\share*.
+7. Under **Path**, select a preassigned file path from the dropdown list or select **Browse** to choose the folder to save the VM configuration and virtual hard disk (VHD) files to. You can browse to any available SMB share on the network by entering the path as *\\machine\share*.
 
     > [!NOTE]
     > We strongly recommend that you select a cluster shared volume to ensure high availability of your VM.
 
-8. Under **Virtual processors**, select the number of virtual processors and whether you want [nested virtualization](../concepts/nested-virtualization.md) enabled for the VM. If the system is running Azure Local, version 21H2, you'll also see a checkbox to enable [processor compatibility mode](processor-compatibility-mode.md) on the VM.
+8. Under **Virtual processors**, select the number of virtual processors and whether you want [nested virtualization](enable-nested-virtualization.md) enabled for the VM. If the system is running Azure Local, version 21H2, you'll also see a checkbox to enable [processor compatibility mode](processor-compatibility-mode.md) on the VM.
 9. Under **Memory**, select the amount of startup memory (4 GB is recommended as a minimum), and a min and max range of dynamic memory as applicable to be allocated to the VM.
 10. Under **Network**, select a virtual switch from the dropdown list.
 11. Under **Network**, select one of the following for the isolation mode from the dropdown list:
@@ -42,11 +42,11 @@ You can easily create a new VM using Windows Admin Center.
     - Set to **Virtual Network (SDN)** if the VM is part of an SDN virtual network. Select a virtual network name, subnet, and specify the IP Address. Optionally, select a network security group that can be applied to the VM.
     - Set to **Logical Network (SDN)** if the VM is part of an SDN logical network. Select the logical network name, subnet, and specify the IP Address. Optionally, select a network security group that can be applied to the VM.
 
-12. Under **Storage**, click **Add** and select whether to create a new empty virtual hard disk or to use an existing virtual hard disk. If you're using an existing virtual hard disk, click **Browse** and select the applicable file path.  
+12. Under **Storage**, select **Add** and select whether to create a new empty virtual hard disk or to use an existing virtual hard disk. If you're using an existing virtual hard disk, select **Browse** and select the applicable file path.  
 13. Under **Operating system**, do one of the following:
    - Select **Install an operating system later** if you want to install an operating system for the VM after the VM is created.
-   - Select **Install an operating system from an image file (*.iso)**, click **Browse**, then select the applicable .iso image file to use.
-14. When finished, click **Create** to create the VM.
+   - Select **Install an operating system from an image file (*.iso)**, select **Browse**, then select the applicable .iso image file to use.
+14. When finished, select **Create** to create the VM.
 15. To start the VM, in the **Virtual Machines** list, hover over the new VM, enable the checkbox for it on the left, and select **Start**.
 16. Under **State**, verify that the VM state is **Running**.
 
@@ -59,9 +59,9 @@ You can easily see all VMs on a machine or in your Azure Local system.
 1. In Windows Admin Center, under **Tools**, scroll down and select **Virtual Machines**.
 2. The  **Inventory** tab on the right lists all VMs available on the current machine or the system, and provides commands to manage individual VMs. You can:
     - View a list of the VMs running on the current machine or system.
-    - View the VM's state and host machine if you are viewing VMs for a system. Also view CPU and memory usage from the host perspective, including memory pressure, memory demand and assigned memory, and the VM's uptime, heartbeat status, and protection status (using Azure Site Recovery).
+    - View the VM's state and host machine if you're viewing VMs for a system. Also view CPU and memory usage from the host perspective, including memory pressure, memory demand and assigned memory, and the VM's uptime, heartbeat status, and protection status (using Azure Site Recovery).
     - Create a new VM.
-    - Delete, start, turn off, shut down, pause, resume, reset or rename a VM. Also save the VM, delete a saved state, or create a checkpoint.
+    - Delete, start, turn off, shut down, pause, resume, reset, or rename a VM. Also save the VM, delete a saved state, or create a checkpoint.
     - Change settings for a VM.
     - Connect to a VM console via the Hyper-V host.
     - Replicate a VM using Azure Site Recovery.
@@ -74,7 +74,7 @@ You can view detailed information and performance charts for a specific VM from 
 :::image type="content" source="media/vm/vm-details.png" alt-text="Virtual machines detailed info screen" lightbox="media/vm/vm-details.png":::
 
 1. Under **Tools**, scroll down and select **Virtual machines**.
-2. Click the **Inventory** tab on the right, then select the VM. On the subsequent page, you can do the following:
+2. Select the **Inventory** tab on the right, then select the VM. On the subsequent page, you can do the following:
 
    - View live and historical data line charts for CPU, memory, network, IOPS and IO throughput (historical data is only available for hyperconverged systems)
    - View, create, apply, rename, and delete checkpoints.
@@ -103,10 +103,10 @@ You can view resources usage and performance metrics for all VMs in your system.
 There are a variety of settings that you can change for a VM.
 
 > [!NOTE]
-> Some settings cannot be changed for a VM that is running and you will need to stop the VM first.
+> Some settings can't be changed for a VM that's running and you'll need to stop the VM first.
 
 1. Under **Tools**, scroll down and select **Virtual machines**.
-2. Click the **Inventory** tab on the right, select the VM, then click **Settings**.
+2. Select the **Inventory** tab on the right, select the VM, then select **Settings**.
 
 3. To change VM start/stop actions and general settings, select **General** and do the following:
     - To change the VM name, enter it in the **Name** field
@@ -123,7 +123,7 @@ There are a variety of settings that you can change for a VM.
 
     :::image type="content" source="media/vm/vm-settings-processor.png" alt-text="Change VM processor settings screen" lightbox="media/vm/vm-settings-processor.png":::
 
-6. To change the size of an existing disk, modify the value in **Size (GB)**. To add a new virtual disk, select **Disks** and then select whether to create an empty virtual disk or to use an existing virtual disk or ISO (.iso) image file. Click **Browse** and select the path to the virtual disk or image file.
+6. To change the size of an existing disk, modify the value in **Size (GB)**. To add a new virtual disk, select **Disks** and then select whether to create an empty virtual disk or to use an existing virtual disk or ISO (.iso) image file. Select **Browse** and select the path to the virtual disk or image file.
 
     :::image type="content" source="media/vm/vm-settings-disk.png" alt-text="Change VM disk settings screen" lightbox="media/vm/vm-settings-disk.png":::
 
@@ -135,7 +135,7 @@ There are a variety of settings that you can change for a VM.
         - Set to **Virtual Network (SDN)** if the VM is part of an SDN virtual network. Select a virtual network name, subnet, and specify the IP Address. Optionally, select a network security group that can be applied to the VM.
         - Set to **Logical Network (SDN)** if the VM is part of an SDN logical network. Select the logical network name, subnet, and specify the IP Address. Optionally, select a network security group that can be applied to the VM.
 
-    - To change additional settings for a network adapter, click **Advanced** to be able to:
+    - To change additional settings for a network adapter, select **Advanced** to be able to:
         - Select between dynamic or static MAC address type.
         - Enable MAC address spoofing.
         - Enable bandwidth management and specify the max/min range.
@@ -168,9 +168,7 @@ There are a variety of settings that you can change for a VM.
         - Enable encryption of state and virtual machine migration traffic
 
         > [!NOTE]
-        > Encryption support requires a key protector (KP) for the
-VM. If not already present, selecting one of these options will
-generate a KP that allows running the VM on this host.
+        > Encryption support requires a key protector (KP) for the VM. If not already present, selecting one of these options will generate a KP that allows running the VM on this host.
 
     - Under **Security Policy**, select **Enable Shielding** for additional protection options for the VM.
 
@@ -201,7 +199,7 @@ You can easily join a VM to a domain as follows:
 2. Under the **Inventory** tab, select a VM from the list and select **Manage > Domain join**.
 3. Enter the name of the domain to join to, along with the domain user name and password.
 4. Enter the VM user name and password.
-5. When finished, click **Join**.
+5. When finished, select **Join**.
 
 ## Clone a VM
 
@@ -222,7 +220,7 @@ You can easily import or export a VM. The following procedure describes the impo
 
 1. Under **Tools**, scroll down and select **Virtual machines**.
 2. On the **Inventory** tab, select **Add > Import**.
-3. Enter the folder name containing the VM or click **Browse** and select a folder.
+3. Enter the folder name containing the VM or select **Browse** and select a folder.
 4. Select the VM you want to import.
 5. Create a unique ID for the VM if needed.
 6. When finished, select **Import**.

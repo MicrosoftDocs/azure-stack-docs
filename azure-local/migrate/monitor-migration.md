@@ -3,11 +3,13 @@ title: Monitor Azure Local Migrations Using Diagnostic Settings in Azure Migrate
 description: Learn how to monitor Azure Local migrations using diagnostic settings in Azure Migrate.
 author: alkohli
 ms.topic: how-to
-ms.date: 08/05/2025
+ms.date: 10/15/2025
 ms.author: alkohli
 ---
 
 # Monitor Azure Local migrations using diagnostic settings in Azure Migrate
+
+[!INCLUDE [hci-applies-to-2503](../includes/hci-applies-to-2503.md)]
 
 This article describes how to enable diagnostic settings in Azure Migrate via the Azure portal to help monitor Azure Local migrations. Diagnostic logs provide detailed and frequent data about resource operations, helping in monitoring, troubleshooting, and auditing. For more information, see [Diagnostic settings in Azure Monitor](/azure/azure-monitor/platform/diagnostic-settings).
 

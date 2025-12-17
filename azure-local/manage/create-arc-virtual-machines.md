@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.reviewer: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 06/09/2025
+ms.date: 12/15/2025
 ms.custom:
   - devx-track-azurecli
   - sfi-image-nochange
@@ -83,6 +83,10 @@ Before you create an Azure Local VM, make sure that the following prerequisites 
 ## Create Azure Local VMs
 
 Follow these steps to create a VM on your Azure Local.
+
+> [!NOTE]
+> - Two DVD drives are created and used in Azure Local VMs during VM provisioning. The ISO files used during provisioning are removed after successfully creating the VM. However, you might see the empty drives visible for the VM. 
+> - To delete these drives in a Windows VM, use Device Manager to uninstall the drives. Depending on the flavor of Linux you are using, you can also delete them for Linux VMs.
 
 # [Azure CLI](#tab/azurecli)
 
@@ -197,7 +201,8 @@ To create a Linux VM, use the same command that you used to create the Windows V
 > [!IMPORTANT]
 > Setting the proxy server during VM creation is supported for Ubuntu Server VMs.
 
-### Create a VM with proxy configured
+
+## Create a VM with proxy configured
 
 Use this optional parameter **proxy-configuration** to configure a proxy server for your VM.
 
@@ -230,6 +235,57 @@ az stack-hci-vm create --name $vmName --resource-group $resource_group --admin-u
 
 For proxy authentication, you can pass the username and password combined in a URL as follows:`"http://username:password@proxyserver.contoso.com:3128"`.
 
+## Create a VM with Arc gateway configured
+
+To configure an Arc gateway for your Azure Local VM, create a VM with guest management enabled and pass the optional parameter `--gateway-id`. Arc gateway can be used with or without proxy configuration. By default, only the Arc traffic is redirected through the Arc proxy. 
+
+If you want the VM applications or services to use the Arc gateway, configure the proxy inside the VM to use the Arc proxy. For applications that don't reference the environment variables set within the VMs, specify a proxy as-needed.
+
+> [!IMPORTANT]
+> Traffic intended for endpoints not managed by the Arc gateway is routed through the enterprise proxy or firewall.
+> 
+> For Windows VMs, allow the following endpoints: `https://agentserviceapi.guestconfiguration.azure.com` and `https://<azurelocalregion>-gas.guestconfiguration.azure.com`.
+> 
+> For Linux VMs, allow the following endpoints: `https://agentserviceapi.guestconfiguration.azure.com`, `https://<azurelocalregion>-gas.guestconfiguration.azure.com`, and `https://packages.microsoft.com`.
+
+#### To create a VM with Arc gateway enabled behind a proxy server, run the following command
+
+```azurecli
+az stack-hci-vm create --name $vmName --resource-group $resource_group --admin-username $userName --admin-password $password --computer-name $computerName --image $imageName --location $location --authentication-type all --nics $nicName --custom-location $customLocationID --hardware-profile memory-mb="8192" processors="4" --storage-path-id $storagePathId --gateway-id $gw --proxy-configuration http_proxy="<Http URL of proxy server>" https_proxy="<Https URL of proxy server>" no_proxy="<URLs which bypass proxy>" cert_file_path="<Certificate file path for your machine>"
+```
+
+You can input the following parameters for `proxy-server-configuration` with `Arc gateway`:
+
+| Parameters | Description |
+|------------|-------------|
+| **gateway-id** | Resource Id of your Arc gateway. A Gateway resource Id example is: `/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.HybridCompute/gateways/$gwid` |
+| **http_proxy**  |HTTP URLs for proxy server. An example URL is:`http://proxy.example.com:3128`.  |
+| **https_proxy**  |HTTPS URLs for proxy server. The server may still use an HTTP address as shown in this example: `http://proxy.example.com:3128`. |
+| **no_proxy**  |URLs, which can bypass proxy. Typical examples would be `localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,100.0.0.0/8`.|
+
+Here's a sample command:
+
+```azurecli
+az stack-hci-vm create --name $vmName --resource-group $resource_group --admin-username $userName --admin-password $password --computer-name $computerName --image $imageName --location $location --authentication-type all --nics $nicName --custom-location $customLocationID --hardware-profile memory-mb="8192" processors="4" --storage-path-id $storagePathId --gateway-id $gw --proxy-configuration http_proxy="http://ubuntu:ubuntu@192.168.200.200:3128" https_proxy="http://ubuntu:ubuntu@192.168.200.200:3128" no_proxy="localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,100.0.0.0/8,s-cluster.test.contoso.com" 
+```
+
+#### To create a VM with Arc gateway enabled without proxy server, run the following command
+
+```azurecli
+az stack-hci-vm create --name $vmName --resource-group $resource_group --admin-username $userName --admin-password $password --computer-name $computerName --image $imageName --location $location --authentication-type all --nics $nicName --custom-location $customLocationID --hardware-profile memory-mb="8192" processors="4" --storage-path-id $storagePathId --gateway-id $gw
+```
+
+You can input the following parameters for `Arc gateway`:
+
+| Parameters | Description |
+|------------|-------------|
+| **gateway-id** | Resource Id of your Arc gateway. A Gateway resource Id example is: `/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.HybridCompute/gateways/$gwid` |
+
+Here's a sample command:
+
+```azurecli
+az stack-hci-vm create --name $vmName --resource-group $resource_group --admin-username $userName --admin-password $password --computer-name $computerName --image $imageName --location $location --authentication-type all --nics $nicName --custom-location $customLocationID --hardware-profile memory-mb="8192" processors="4" --storage-path-id $storagePathId --gateway-id $gw 
+```
 
 # [Azure portal](#tab/azureportal)
 
@@ -321,9 +377,9 @@ Follow these steps in Azure portal for your Azure Local.
     1. Provide the UPN of an Active Directory user who has privileges to join the virtual machine to your domain.
        
        > [!IMPORTANT]
-       > For your Active Directory, if your SAM Account Name and UPN are different, enter the SAM Account Name in the UPN field as: `SAMAccountName@domain`. 
+       > For your Active Directory, if your SAM Account Name and UPN are different, enter the SAM Account Name in the UPN field as: `SAMAccountName@domain`.
     
-    1. Provide the domain administrator password. If using SAM Account Name in the UPN field, enter the corresponding password.
+    1. Provide the password of the user account you entered in the previous step. If using SAM Account Name in the UPN field, enter the corresponding password.
 
     1. Specify domain or organizational unit. You can join virtual machines to a specific domain or to an organizational unit (OU) and then provide the domain to join and the OU path.
     
@@ -679,7 +735,7 @@ You can use the Azure Verified Module (AVM) that contains the Terraform template
 
 ### Steps to use the Terraform template
 
-1. Download the Terraform template from [Azure verified module](https://registry.terraform.io/modules/Azure/avm-res-azurestackhci-virtualmachineinstance/azurerm/0.1.2).
+1. Download the Terraform template from [Azure verified module](https://registry.terraform.io/modules/Azure/avm-res-azurestackhci-virtualmachineinstance/azurerm/).
 2. Navigate to the **examples** folder in the repository, and look for the following subfolders:
     - **default**: Creates one virtual machine instance.
     - **multi**: Creates multiple virtual machine instances.
@@ -691,10 +747,6 @@ You can use the Azure Verified Module (AVM) that contains the Terraform template
    :::image type="content" source="./media/create-arc-virtual-machines/terraform-virtual-machines.png" alt-text="Screenshot of select Virtual Machine after deployment." lightbox="./media/create-arc-virtual-machines/terraform-virtual-machines.png":::
 
 ---
-
-> [!NOTE]
-> - Two DVD drives are created and used in Azure Local VMs during VM provisioning. The ISO files used during provisioning are removed after successfully creating the VM. However, you might see the empty drives visible for the VM. 
-> - To delete these drives in a Windows VM, use Device Manager to uninstall the drives. Depending on the flavor of Linux you are using, you can also delete them for Linux VMs.
 
 ## Use managed identity to authenticate Azure Local VMs
 

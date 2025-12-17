@@ -2,7 +2,7 @@
 title: What is AKS enabled by Azure Arc?
 description: Learn about AKS enabled by Azure Arc and available deployment options.
 ms.topic: overview
-ms.date: 08/26/2025
+ms.date: 11/13/2025
 ai-usage: ai-assisted
 author: sethmanheim
 ms.author: sethm 
@@ -39,13 +39,13 @@ By integrating these components, Azure Arc gives you a unified and efficient way
 
 ## Overview of AKS enabled by Azure Arc
 
-AKS enabled by Azure Arc reduces the complexity and operational overhead of managing Kubernetes by shifting that responsibility to Azure. When you create an AKS enabled by Azure Arc cluster, it's automatically connected to Azure Arc for centralized management. By managing all your Kubernetes resources in a single control plane on Azure, you enable a more consistent development and operator experience to run cloud-native apps anywhere and on any infrastructure option.
+AKS enabled by Azure Arc reduces the complexity and operational overhead of managing Kubernetes by shifting that responsibility to Azure. When you create an AKS enabled by Azure Arc cluster, you automatically connect it to Azure Arc for centralized management. By managing all your Kubernetes resources in a single control plane on Azure, you enable a more consistent development and operator experience to run cloud-native apps anywhere and on any infrastructure option.
 
 AKS enabled by Azure Arc provides the following features:
 
 - Run Kubernetes clusters on-premises, at the edge, or in other cloud environments. This flexibility helps meet specific business or technical needs.
 - Get a consistent experience for managing Kubernetes clusters across different infrastructures, similar to AKS in Azure.
-- Manage Kubernetes clusters centrally through the Azure portal, no matter where they're hosted. This includes monitoring, updating, and scaling clusters.
+- Manage Kubernetes clusters centrally through the Azure portal, no matter where you host them. This management includes monitoring, updating, and scaling clusters.
 - Extend Azure security and governance capabilities to Kubernetes clusters running anywhere. Apply Azure Policy for governance and use Azure Security Center for security monitoring and threat detection.
 - Integrate with Azure services like Azure Monitor, Azure Policy, and Azure Security Center for a seamless operations and management experience.
 - Use GitOps for configuration management and continuous deployment. This approach enables automated and consistent deployment processes.
@@ -70,7 +70,7 @@ Here are the available deployment options:
 
 ## AKS enabled by Azure Arc and the adaptive cloud approach
 
-AKS enabled by Azure Arc is part of Microsoft’s [adaptive cloud](https://azure.microsoft.com/solutions/adaptive-cloud) approach. This approach helps organizations run and manage apps in many environments, including Azure, other cloud providers, on-premises systems, and edge locations. AKS supports this approach by making it easier to deploy and manage Kubernetes clusters wherever they are needed, like on Azure Local. With Azure Arc, you can use the same tools and policies to manage clusters across all these environments, which helps you keep operations consistent and secure.
+AKS enabled by Azure Arc is part of Microsoft's [adaptive cloud](https://azure.microsoft.com/solutions/adaptive-cloud) approach. This approach helps organizations run and manage apps in many environments, including Azure, other cloud providers, on-premises systems, and edge locations. AKS supports this approach by making it easier to deploy and manage Kubernetes clusters wherever they are needed, like on Azure Local. With Azure Arc, you can use the same tools and policies to manage clusters across all these environments, which helps you keep operations consistent and secure.
 
 ## Next steps
 

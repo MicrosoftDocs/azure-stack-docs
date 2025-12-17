@@ -3,7 +3,7 @@ title: Upgrade Azure Stack HCI OS, version 22H2 to version 23H2 via PowerShell
 description: Learn how to use PowerShell to upgrade Azure Stack HCI OS, version 22H2 to version 23H2.
 author: alkohli
 ms.topic: how-to
-ms.date: 08/13/2025
+ms.date: 12/02/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -15,11 +15,6 @@ zone_pivot_groups: upgrade-os
 ::: zone pivot="os-23h2"
 
 This article describes how to upgrade the Azure Stack HCI operating system (OS) from version 20349.xxxx (22H2) to version 25398.xxxx (23H2), via PowerShell. This is the first step in the upgrade process, which upgrades only the OS.
-
-Upgrade via PowerShell is the recommended method. There are other methods to upgrade the OS to version 25398.xxxx (23H2) that include using Windows Admin Center and the Server Configuration tool (SConfig). For more information about these methods, see [Upgrade the Azure Stack HCI OS, version 22H2 OS via Windows Admin Center](./upgrade-22h2-to-23h2-windows-admin-center.md) and [Upgrade Azure Local to new OS using other methods](./upgrade-22h2-to-23h2-other-methods.md).
-
-<!-- [!IMPORTANT]
-To keep your Azure Local service in a supported state, you have up to six months to install this new OS version. The update is applicable to all Azure Local instances running version 22H2. We strongly recommend that you install this version as soon as it becomes available.-->
 
 ::: zone-end
 
@@ -33,14 +28,13 @@ This article describes how to upgrade the Azure Stack HCI operating system (OS) 
 With the 2505 release, a direct upgrade path from version 20349.xxxx (22H2) to version 26100.xxxx (24H2) is available. Skipping the upgrade to the version 26100.xxxx is one less upgrade hop and helps reduce reboots and maintenance planning prior to the solution upgrade.
 
 - Make sure to consult with your hardware vendor to determine if version 26100.xxxx OS is supported before performing the upgrade.
-- After the OS upgrade, you can wait for the solution upgrade to become available.
+- After the OS upgrade, you can apply the solution upgrade.
 - There is an exception to the preceding recommendation if you are using stretch clusters. Stretch clusters should wait to directly move to version 26100.xxxx (24H2). <!--2508 - This version contains critical bug fixes.-->
 
 For more information about the various upgrade paths, see the blog post on [Upgrade Azure Local to new OS version](https://techcommunity.microsoft.com/blog/azurearcblog/upgrade-azure-local-operating-system-to-new-version/4423827).
 
 > [!IMPORTANT]
-> - This article covers OS upgrades only. Do not proceed if the solution upgrade is complete or Azure Local 2311.2 or later is deployed. To check if your system is already running the solution, run the `Get-StampInformation` cmdlet. If it returns output, your system is already running the solution, and you should skip these steps.
-> - The solution upgrade isn't yet supported on OS version 26100.xxxx.
+> This article covers OS upgrades only. Do not proceed if the solution upgrade is complete or Azure Local 2311.2 or later is deployed. To check if your system is already running the solution, run the `Get-StampInformation` cmdlet. If it returns output, your system is already running the solution, and you should skip these steps.
 
 ::: zone-end
 
@@ -98,22 +92,30 @@ To upgrade the OS on your system, follow these high-level steps:
 
 Before you begin, make sure that:
 
-- You have access to an Azure Local instance running version 22H2, and it's registered in Azure.
-- All the machines in your Azure Local, version 22H2 instance are healthy and show as **Online**.
-- You have shut down virtual machines (VMs). We recommend that you shut down VMs before performing the OS upgrade to prevent unexpected outages and damages to databases.
-- You have access to the Azure Stack HCI, version 23H2 OS software update for Azure Local. This update is available via Windows Update or as a downloadable media. The media must be version **2503** ISO file that you can download from the [Azure portal](https://portal.azure.com/#view/Microsoft_Azure_HybridCompute/AzureArcCenterBlade/~/hciGetStarted).
-- You have access to a client that can connect to your Azure Local instance. This client should be running PowerShell 5.0 or later.
-- You run the `RepairRegistration` cmdlet only if both of the following conditions apply:
+- You have access to an Azure Local instance running version 20349.xxxx (22H2), and it's registered in Azure.
+- Your system is registered in Azure and all the machines in the system are healthy and online.
+- If you have AKS enabled by Azure Arc clusters running on your version 22H2 instance, uninstall AKS Arc and all its settings using the [Uninstall-Aks-Hci](/azure/aks/hybrid/reference/ps/uninstall-akshci) command. Once you uninstall AKS Arc, you must uninstall the **AksHci** Powershell module using this command, as this module does not work on version 23H2 and later.
 
-   - The *identity* property is either missing or doesn’t contain `type = "SystemAssigned"`.
-      - Check this in the Resource JSON in the Azure portal
-      - Or run the `Get-AzResource -Name <cluster_name>` PowerShell cmdlet
+  ```powershell
+  Uninstall-Module -Name AksHci -Force
+  ```
+
+To avoid any PowerShell version-related issues in your AKS deployment, you can use this [helper script to delete old AKS-HCI PowerShell modules](https://github.com/Azure/aksArc/blob/main/scripts/samples/uninstall-akshci.ps1). If you used the preview version of AKS Arc on 22H2, run the command `Uninstall-Moc` on an Azure Local node, to remove the VM instances created using the preview version.
+
+- Shut down virtual machines (VMs). To prevent unexpected outages and potential damage to databases, we recommend that you shut down the VMs before you upgrade the OS.
+- You have access to the version 25398.xxxx (23H2) OS software update for Azure Local. This update is available via Windows Update or as a downloadable media. The media must be version **2503** ISO file that you can download from the [Azure portal](https://portal.azure.com/#view/Microsoft_Azure_HybridCompute/AzureArcCenterBlade/~/hciGetStarted).
+- You have access to a client that can connect to your Azure Local instance. This client should be running PowerShell 5.0 or later.
+- You run the `RepairRegistration` cmdlet if either of the following conditions apply:
+
+   - The *identity* property is either missing or doesn't contain `type = "SystemAssigned"`.
+      - Check this in the Resource JSON in the Azure portal.
+      - Or run the `Get-AzResource -Name <cluster_name>` PowerShell cmdlet.
    - The **Cloud Management** cluster group is not present. Check it by running the `Get-ClusterGroup` PowerShell cmdlet.
 
-   If both these conditions are met, run the `RepairRegistration` cmdlet:
+   If either of these conditions are met, run the `RepairRegistration` cmdlet:
 
    ```powershell
-   Register-AzStackHCI -TenantId "<tenant_ID>" -SubscriptionId "<subscription_ID>" -ComputerName "<computer_name>" -RepairRegistration
+   Register-AzStackHCI -TenantId "<tenant_ID>" -SubscriptionId "<subscription_ID>" -ComputerName "<computer_name>" -Region "<region_name>" -RepairRegistration
    ```
 
 - (Recommended) You enable [Secure Boot](/windows-hardware/design/device-experiences/oem-secure-boot) on Azure Local machines before you upgrade the OS.
@@ -138,7 +140,14 @@ Before you begin, make sure that:
 - Make sure your Azure Local system is running either OS version 20349.3692 or OS version greater than 25398.1611.
 - Make sure the system is registered in Azure and all the machines in the system are healthy and online.
 - Make sure to shut down virtual machines (VMs). We recommend shutting down VMs before performing the OS upgrade to prevent unexpected outages and damages to databases.
-- Confirm that you have access to the Azure Local **2505** ISO file, which you can download from the [Azure portal](https://portal.azure.com/#view/Microsoft_Azure_ArcCenterUX/ArcCenterMenuBlade/~/hciGetStarted).
+- If you have AKS enabled by Azure Arc clusters running on your version 22H2 instance, uninstall AKS Arc and all its settings using the [Uninstall-Aks-Hci](/azure/aks/hybrid/reference/ps/uninstall-akshci) command. Once you uninstall AKS Arc, you must uninstall the **AksHci** Powershell module using this command, as this module does not work on version 23H2 and later:
+
+  ```powershell
+  Uninstall-Module -Name AksHci -Force
+  ```
+
+  To avoid any PowerShell version-related issues in your AKS deployment, you can use this [helper script to delete old AKS-HCI PowerShell modules](https://github.com/Azure/aksArc/blob/main/scripts/samples/uninstall-akshci.ps1). If you used the preview version of AKS Arc on 22H2, run the command `Uninstall-Moc` on an Azure Local node to remove the VM instances created using the preview version.
+- Confirm that you have access to the latest Azure Local that you can [download from the Azure portal](../deploy/download-23h2-software.md#download-the-software-from-the-azure-portal).
 - Consult your hardware OEM to verify driver compatibility. Confirm that all drivers compatible with Windows Server 2025 or Azure Stack HCI OS, 26100.xxxx are installed before the upgrade.
 - Make sure the Network Interface Card (NIC) driver currently installed on your system is newer than the version included by default (inbox) with Azure Stack HCI OS, version 26100.xxxx. The following table compares the current and recommended versions of NIC drivers for two manufacturers:
 
@@ -147,15 +156,17 @@ Before you begin, make sure that:
    | Intel | 1.15.121.0 | 1.17.73.0 |
    | NVIDIA | 24.4.26429.0 | 25.4.50020 |
 
-- Ensure the instance is properly registered. If the *identity* property is missing or doesn’t contain `type = "SystemAssigned"`, run the following command to repair the registration:
+- You run the `RepairRegistration` cmdlet if either of the following conditions apply:
+
+   - The *identity* property is either missing or doesn't contain `type = "SystemAssigned"`.
+      - Check this in the Resource JSON in the Azure portal.
+      - Or run the `Get-AzResource -Name <cluster_name>` PowerShell cmdlet.
+   - The **Cloud Management** cluster group is not present. Check it by running the `Get-ClusterGroup` PowerShell cmdlet.
+
+   If either of these conditions are met, run the `RepairRegistration` cmdlet:
 
    ```powershell
-   Register-AzStackHCI -TenantId "<tenant_ID>" -SubscriptionId "<subscription_ID>" -ComputerName "<computer_name>" -RepairRegistration
-   ```
-   You can verify the *identity* property in the Azure portal in resource's JSON or by running the following cmdlet:
-   
-   ```powershell
-   Get-AzResource -Name <cluster_name> -ResourceGroupName <name of the resource group> -ResourceType "Microsoft.AzureStackHCI/clusters" -ExpandProperties
+   Register-AzStackHCI -TenantId "<tenant_ID>" -SubscriptionId "<subscription_ID>" -ComputerName "<computer_name>" -Region "<region_name>" -RepairRegistration
    ```
 - (Recommended) Enable [Secure Boot](/windows-hardware/design/device-experiences/oem-secure-boot) on Azure Local machines before you upgrade the OS. To enable Secure Boot, follow these steps:
    1. Drain the cluster node.
@@ -284,6 +295,24 @@ To install the new OS using PowerShell, follow these steps:
    Test-Cluster
    ```
 
+1. Extract the contents of the ISO image and copy them to the local system drive on each machine. Ensure that the local path is the same on each machine. Then, update the `PathToSetupMedia` parameter with the local path to the extracted ISO contents, not the ISO file.
+
+   ```powershell
+   # Define ISO and destination folder for extracted contents 
+   $isoFilePath = "C:\SetupFiles\WindowsServer\ISOs\example.iso" 
+   $destinationPath = "C:\SetupFiles\WindowsServer\ExtractedFilesFolder" 
+   # Mount the ISO file 
+   $iso = Mount-DiskImage -ImagePath $isoFilePath 
+   # Get the drive letter 
+   $driveLetter = ($iso | Get-Volume).DriveLetter 
+   # Create the destination directory 
+   New-Item -ItemType Directory -Path $destinationPath 
+   # Copy contents to the local directory 
+   Copy-Item -Path "${driveLetter}:\*" -Destination $destinationPath -Recurse 
+   # Dismount the ISO file 
+   Dismount-DiskImage -ImagePath $isoFilePath
+   ```
+
 1. Check for the available updates:
 
    ```PowerShell
@@ -339,12 +368,12 @@ To install the new OS using PowerShell, follow these steps:
    Test-Cluster
    ```
 
-1. Extract the contents of the ISO image and copy them to the local system drive on each machine. Ensure that the local path is the same on each machine. Then, update the `PathToSetupMedia` parameter with the local path to the ISO image.
+1. Extract the contents of the ISO image and copy them to the local system drive on each machine. Ensure that the local path is the same on each machine. Then, update the `PathToSetupMedia` parameter with the local path to the extracted ISO contents, not the ISO file.
 
    ```powershell
-   # Define ISO and destination paths 
+   # Define ISO and destination folder for extracted contents 
    $isoFilePath = "C:\SetupFiles\WindowsServer\ISOs\example.iso" 
-   $destinationPath = "C:\SetupFiles\WindowsServer\Files" 
+   $destinationPath = "C:\SetupFiles\WindowsServer\ExtractedFilesFolder" 
    # Mount the ISO file 
    $iso = Mount-DiskImage -ImagePath $isoFilePath 
    # Get the drive letter 
@@ -352,7 +381,7 @@ To install the new OS using PowerShell, follow these steps:
    # Create the destination directory 
    New-Item -ItemType Directory -Path $destinationPath 
    # Copy contents to the local directory 
-   Copy-Item -Path "${driveLetter}:\*" -Destination $destinationPath –Recurse 
+   Copy-Item -Path "${driveLetter}:\*" -Destination $destinationPath -Recurse 
    # Dismount the ISO file 
    Dismount-DiskImage -ImagePath $isoFilePath
    ```
@@ -375,4 +404,4 @@ To install the new OS using PowerShell, follow these steps:
 
 ## Next steps
 
-- [Learn how to perform the post-OS upgrade steps for your Azure Local.](./post-upgrade-steps.md)
+- Learn how to [Perform the post-OS upgrade steps for Azure Local](./post-upgrade-steps.md).

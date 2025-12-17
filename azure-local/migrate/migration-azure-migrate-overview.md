@@ -3,7 +3,7 @@ title: Use Azure Migrate to move Hyper-V VMs to Azure Local (preview)
 description: Learn about how to use Azure Migrate to migrate Windows and Linux VMs to your Azure Local instance (preview).
 author: alkohli
 ms.topic: overview
-ms.date: 05/09/2025
+ms.date: 09/03/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.custom: linux-related-content
@@ -11,11 +11,14 @@ ms.custom: linux-related-content
 
 # Overview of Azure Migrate based migration for Azure Local (preview)
 
-[!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [hci-applies-to-2503](../includes/hci-applies-to-2503.md)]
 
 This article provides an overview of how to migrate Hyper-V virtual machines (VMs) to your Azure Local instance using Azure Migrate.
 
 Azure Migrate is a central hub for tools to discover, assess, and migrate on-premises servers, apps, and data to the Microsoft Azure cloud. Azure Local is a hyperconverged infrastructure (HCI) system solution that hosts virtualized Windows and Linux workloads in a hybrid environment. You can use the Azure Migrate platform to move on-premises Hyper-V VMs to your Azure Local instance.
+
+> [!NOTE]
+> Azure Migrate doesn't support migrating VMs to External Storage Area Network (SAN)-backed storage.
 
 For more information on the Azure Migrate platform, see [About Azure Migrate](/azure/migrate/migrate-services-overview).
 
@@ -32,22 +35,7 @@ Here are the benefits of using Azure Migrate to migrate your on-premises VMs to 
 
 ## Migration components
 
-With Azure Migrate, you can choose to migrate your data from your on-premises Hyper-V environment to Azure or to your on-premises Azure Local instance.
-
-The following diagram shows the migration process to your on-premises Azure Local instance:
-
-:::image type="content" source="./media/migration-azure-migrate-azure-local-overview/azure-migrate-hyperv-components.png" alt-text="Diagram showing migration components for Hyper-V in Azure Local." lightbox="./media/migration-azure-migrate-azure-local-overview/azure-migrate-hyperv-components.png":::
-
-[!INCLUDE [important](../includes/azure-local-jumpstart-gems.md)]
-
-The migration process requires the following components:
-
-- An Azure Migrate project. Both the source and target appliances need to be registered with this project.
-- Azure Migrate appliance running on your on-premises source Hyper-V servers. The source machines host the VMs that you want to migrate.
-- Target appliance running on your on-premises Azure Local instance. The target system hosts the VMs that you migrated from your source Hyper-V environment.
-
-> [!NOTE]
-> The Azure Migrate project is used to discover the source VMs and replicate them to the target Azure Local instance. The associated Azure Storage account serves as a cache to store the metadata and the replication data.
+[!INCLUDE [migration-components](../includes/migration-components.md)]
 
 ## Migration phases
 

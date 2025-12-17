@@ -3,10 +3,9 @@ title: Use the autoscaler profile to configure cluster autoscaling in AKS on Win
 description: Learn how to use the autoscaler profile to configure Cluster autoscaler in Azure Kubernetes Service (AKS) on Windows Server.
 ms.topic: how-to
 author: sethmanheim
+ms.date: 11/13/2025
 ms.author: sethm 
 ms.lastreviewed: 06/27/2024
-ms.reviewer: mikek
-ms.date: 11/07/2022
 
 # Intent: As a Kubernetes user, I want to use cluster autoscaler to grow my nodes to keep up with application demand.
 # Keyword: configure cluster autoscaling
@@ -31,7 +30,7 @@ Cluster autoscaler profiles have the following attributes:
 
 ## Profile settings
 
-The default profile consists of the default values below. You can update the following settings.
+The default profile uses the following default values. You can update the following settings.
 
 | Setting | Description | Default value |
 | --- | --- | --- |
@@ -46,23 +45,23 @@ The default profile consists of the default values below. You can update the fol
 | `scale-down-utilization-threshold` | Node utilization level, defined as the sum of requested resources divided by capacity, below which a node can be considered for scale down. | 0.5 |
 | `max-graceful-termination-sec` | Maximum number of seconds the cluster autoscaler waits for pod termination when trying to scale down a node. | 600 seconds |
 | `balance-similar-node-groups` | Detects similar node pools and balances the number of nodes between them. | false |
-| `expander` | Type of node pool [expander](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-expanders) to be used in scale up. Possible values: `most-pods`, `random`, `least-waste`, `priority`. | `random` |
+| `expander` | Type of node pool [expander](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-expanders) to use in scale up. Possible values: `most-pods`, `random`, `least-waste`, `priority`. | `random` |
 | `skip-nodes-with-local-storage` | If **true**, cluster autoscaler never deletes nodes with pods with local storage, for example, **EmptyDir** or **HostPath**. | **true** |
 | `skip-nodes-with-system-pods` | If **true**, cluster autoscaler never deletes nodes with pods from `kube-system` (except for DaemonSet or mirror pods). | **true** |
 | `max-empty-bulk-delete` | Maximum number of empty nodes that can be deleted at the same time. | 10 |
-| `new-pod-scale-up-delay` | For scenarios such as burst/batch scale where you don't want the CA to act before the Kubernetes scheduler can schedule all the pods, you can tell the CA to ignore unscheduled pods before they're a certain age. | 0 seconds |
+| `new-pod-scale-up-delay` | For scenarios such as burst or batch scale where you don't want the CA to act before the Kubernetes scheduler can schedule all the pods, you can tell the CA to ignore unscheduled pods before they're a certain age. | 0 seconds |
 | `max-total-unready-percentage` | Maximum percentage of unready nodes in the cluster. After this percentage is exceeded, CA halts operations. | 45% |
 | `max-node-provision-time` | Maximum time the autoscaler waits for a node to be provisioned. | 15 minutes |
 
 ## Notes on autoscaler configuration
 
-You can change settings in the cluster autoscaler profile using the [Set-AksHciAutoScalerConfig](work-with-horizontal-autoscaler.md#change-an-existing-akshciautoscalerconfig-profile-object) PowerShell cmdlet.
+You can change settings in the cluster autoscaler profile by using the [Set-AksHciAutoScalerConfig](work-with-horizontal-autoscaler.md#change-an-existing-akshciautoscalerconfig-profile-object) PowerShell cmdlet.
 
-The cluster autoscaler makes scaling decisions based on the minimum and maximum counts set on each node pool, but it doesn't enforce them after updating the min or max counts. For example, setting a minimum count of 5 when the current node count is 3 won't immediately scale the pool up to 5.
+The cluster autoscaler makes scaling decisions based on the minimum and maximum counts set on each node pool, but it doesn't enforce them after updating the min or max counts. For example, setting a minimum count of 5 when the current node count is 3 doesn't immediately scale the pool up to 5.
 
-If the minimum count on the node pool has a value higher than the current number of nodes, the new minimum or maximum settings are respected when there are enough unschedulable pods present that require two new additional nodes and trigger an autoscaler event. After the scale event, the new count limits are respected.
+If the minimum count on the node pool is higher than the current number of nodes, the new minimum or maximum settings take effect when there are enough unschedulable pods that require two new additional nodes and trigger an autoscaler event. After the scale event, the new count limits are respected.
 
-You can also configure more granular details of the cluster autoscaler by changing the default values in the cluster-wide autoscaler profile. For example, a scale down event happens after nodes are under-utilized for 10 minutes. If you have workloads that run every 15 minutes, you may want to change the autoscaler profile to scale down under-utilized nodes after 15 or 20 minutes. When you enable the cluster autoscaler, a default profile is used unless you specify different settings.
+You can also configure more granular details of the cluster autoscaler by changing the default values in the cluster-wide autoscaler profile. For example, a scale down event happens after nodes are under-utilized for 10 minutes. If you have workloads that run every 15 minutes, you might want to change the autoscaler profile to scale down under-utilized nodes after 15 or 20 minutes. When you enable the cluster autoscaler, a default profile is used unless you specify different settings.
 
 ## Save and load the autoscaler profile
 
@@ -70,7 +69,7 @@ You can save and store your autoscaler profile in a profile definition as a YAML
 
 ### Save your profile definition
 
-You save a copy of the profile as a YAML file using `kvactl`. After you define your profile, run the following commands:
+You save a copy of the profile as a YAML file by using `kvactl`. After you define your profile, run the following commands:
 
 ```powershell
 kvactl.exe autoscalerprofile get --name default --kubeconfig (Get-AksHciConfig).Kva.kubeconfig --outputformat=yaml > def.yaml
@@ -78,11 +77,11 @@ kvactl.exe autoscalerprofile get --name default --kubeconfig (Get-AksHciConfig).
 
 ### Edit your profile definition
 
-You can edit the profile definition in the YAML file. For example, you can open **def.yaml** in notepad, Visual Studio Code, or other text editors.
+You can edit the profile definition in the YAML file. For example, you can open **def.yaml** in Notepad, Visual Studio Code, or other text editors.
 
 ### Load your profile definition
 
-You can load the profile definition using `kvactl` from the saved YAML file. Run the following command:
+You can load the profile definition by using `kvactl` from the saved YAML file. Run the following command:
 
 ```powershell
 kvactl.exe autoscalerprofile create --profileconfig .\def-new.yaml --kubeconfig (Get-AksHciConfig).Kva.kubeconfig

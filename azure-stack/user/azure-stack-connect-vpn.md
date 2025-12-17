@@ -24,7 +24,7 @@ This article describes how to create a site-to-site VPN to connect a virtual net
 To complete the connection configuration, make sure you have the following items before you begin:
 
 * An Azure Stack Hub integrated systems (multi-node) deployment that is directly connected to the internet. Your external public IP address range must be directly reachable from the public internet.
-* A valid Azure subscription. If you don't have an Azure subscription, you can create a [free Azure account here](https://azure.microsoft.com/free/?b=17.06).
+* A valid Azure subscription. If you don't have an Azure subscription, you can create a [free Azure account here](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 
 ### VPN connection diagram
 

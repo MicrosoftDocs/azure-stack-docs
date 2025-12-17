@@ -1,23 +1,21 @@
 ---
-title: Manage network security groups and network security rules on Azure Local VMs (preview)
-description: Learn how to manage network security groups and network security rules for Azure Local virtual machines (preview).
+title: Manage network security groups and network security rules on Azure Local VMs
+description: Learn how to manage network security groups and network security rules for Azure Local virtual machines.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 07/02/2025
+ms.date: 09/05/2025
 ms.service: azure-local
 ---
 
-# Manage network security groups on Azure Local (preview)
+# Manage network security groups on Azure Local
 
 ::: moniker range=">=azloc-2506"
 
 This article describes how to manage network security groups (NSGs) on your Azure Local virtual machines (VMs) enabled by Azure Arc. Once you create network security groups on your Azure Local VMs, you can then list, show details, associate, dissociate, update, and delete these resources.
 
-*The only VMs that are in scope for using NSGs with this feature are Azure Local VMs. These are VMs that were deployed from Azure client interfaces (Azure CLI, Azure portal, Azure Resource Manager). Do not use an Azure Local VM in conjunction with an NSG that is managed and applied from on-premises tools.*
-
-[!INCLUDE [important](../includes/hci-preview.md)]
-
+> [!NOTE]
+> The only VMs that are in scope for using NSGs with this feature are Azure Local VMs. These are VMs that were deployed from Azure client interfaces (Azure CLI, Azure portal, Azure Resource Manager). Do not use an Azure Local VM in conjunction with an NSG that is managed and applied from on-premises tools.*
 
 ## Prerequisites
 
@@ -1012,6 +1010,6 @@ To update a network security rule, follow these steps:
 
 ::: moniker range="<=azloc-2505"
 
-This feature is available only in Azure Local 2506 or later.
+This feature is available in Azure Local 2506 or later with OS build 26100.xxxx.
 
 ::: moniker-end

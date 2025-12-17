@@ -1,10 +1,10 @@
 ---
 title: Test-AksEdgeNetworkParameters for AKS Edge
-author: rcheeran
+author: sethmanheim
 description: The Test-AksEdgeNetworkParameters PowerShell command validates AKS Edge network parameters,
 ms.topic: reference
 ms.date: 10/04/2022
-ms.author: rcheeran 
+ms.author: sethm 
 ms.lastreviewed: 10/04/2022
 #ms.reviewer: jeguan
 

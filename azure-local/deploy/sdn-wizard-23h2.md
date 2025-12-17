@@ -1,18 +1,18 @@
 ---
-title: Deploy SDN using Windows Admin Center for Azure Local
-description: Learn how to deploy an SDN infrastructure using Windows Admin Center for Azure Local
+title: Deploy Software Defined Networking managed by on-premises tools with Windows Admin Center for Azure Local
+description: Learn how to deploy infrastructure for Software Defined Networking managed by on-premises tools with Windows Admin Center for Azure Local
 author: alkohli
 ms.topic: how-to
-ms.date: 05/29/2025
+ms.date: 10/16/2025
 ms.author: alkohli
 ms.reviewer: anirbanpaul
 ---
 
-# Deploy SDN using Windows Admin Center for Azure Local
+# Deploy SDN managed by on-premises tools with Windows Admin Center for Azure Local
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
-This article describes how to deploy Software Defined Networking (SDN) through Windows Admin Center after you deployed your Azure Local via the Azure portal.
+This article describes how to deploy Software Defined Networking (SDN) managed by on-premises tools through Windows Admin Center after you deployed your Azure Local via the Azure portal.
 
 Windows Admin Center enables you to deploy all the SDN infrastructure components on your existing Azure Local, in the following deployment order:
 

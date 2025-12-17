@@ -4,13 +4,13 @@ description: Requirements and supported versions for AKS Edge Essentials.
 author: sethmanheim
 ms.author: sethm
 ms.topic: article
-ms.date: 03/10/2025
+ms.date: 10/24/2025
 ms.custom: template-concept
 ---
 
 # AKS Edge Essentials requirements and support matrix
 
-This article describes the requirements for the host machine that runs AKS Edge Essentials:
+This article describes the requirements for the host machine that runs AKS Edge Essentials.
 
 ## Hardware requirements
 
@@ -54,6 +54,7 @@ Install Windows 10/11 IoT Enterprise/Enterprise/Pro on your machine and activate
 - **Deployment options**: single-machine clusters and full Kubernetes deployment on single machines only. Full deployment across multiple machines isn't supported in GA.
 - **Workloads**: only Linux worker nodes.
 - **Network plugins**: Calico on K8s, Flannel on K3s.
+- **Secret encryption**: [KMS provider for AKS Edge Essentials](aks-edge-howto-secret-encryption.md).
 
 ## Experimental or prerelease features
 

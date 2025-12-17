@@ -4,7 +4,7 @@ description: This article provides guidance on how to deploy SQL Server on Azure
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 10/17/2024
+ms.date: 10/10/2025
 ---
 
 # Deploy SQL Server on Azure Local, version 23H2
@@ -17,7 +17,7 @@ This article provides guidance on how to deploy SQL Server on Azure Local, versi
 
 Azure Local provides a highly available, cost efficient, flexible platform to run SQL Server and Storage Spaces Direct. Azure Local can run Online Transaction Processing (OLTP) workloads, data warehouse and BI, and AI and advanced analytics over big data.
 
-The platform's flexibility is especially important for mission critical databases. You can run SQL Server on virtual machines (VMs) that use either Windows Server or Linux, which allows you to consolidate multiple database workloads and add more VMs to your Azure Local environment as needed. Azure Local also enables you to integrate SQL Server with Azure Site Recovery to provide a cloud-based migration, restoration, and protection solution for your organization’s data that is reliable and secure.
+The platform's flexibility is especially important for mission critical databases. You can run SQL Server on virtual machines (VMs) that use either Windows Server or Linux, which allows you to consolidate multiple database workloads and add more VMs to your Azure Local environment as needed. Azure Local also enables you to integrate SQL Server with Azure Site Recovery to provide a cloud-based migration, restoration, and protection solution for your organization’s data that's reliable and secure.
 
 ## Deploy SQL Server
 
@@ -25,7 +25,7 @@ This section describes at a high level how to acquire hardware for SQL Server on
 
 ### Step 1: Acquire hardware from the Azure Local Catalog
 
-First, you need to procure hardware. The easiest way to do that is to locate your preferred Microsoft hardware partner in the [Azure Local Catalog](https://azurestackhcisolutions.azure.microsoft.com/) and purchase an integrated system or premium solution with the Azure Stack HCI operating system preinstalled. In the catalog, you can filter to see vendor hardware that is optimized for this type of workload.
+First, you need to procure hardware. The easiest way to do that is to locate your preferred Microsoft hardware partner in the [Azure Local Catalog](https://azurestackhcisolutions.azure.microsoft.com/) and purchase an integrated system or premium solution with the Azure Stack HCI operating system preinstalled. In the catalog, you can filter to see vendor hardware that's optimized for this type of workload.
 
 Otherwise, use a validated system from the catalog and deploy it on that hardware.
 
@@ -42,9 +42,11 @@ For instructions on installing SQL Server, see:
 - [SQL Server installation guide for Windows](/sql/database-engine/install-windows/install-sql-server).
 - [Installation guidance for SQL Server on Linux](/sql/linux/sql-server-linux-setup).
 
+For information on licensing and billing for SQL Server, see [Manage licensing and billing of SQL Server](/sql/sql-server/azure-arc/manage-license-billing).
+
 ### Step 3: Monitor and performance tune SQL Server
 
-Microsoft provides a comprehensive set of tools for monitoring events in SQL Server and for tuning the physical database design. Tool choice depends on the type of monitoring or tuning that you want to perform.
+Microsoft provides a comprehensive set of tools for monitoring events in SQL Server and for tuning the physical database design. Tool choice depends on the type of monitoring or tuning you want to perform.
 
 To ensure the performance and health of your SQL Server instances on Azure Local, see [Performance Monitoring and Tuning Tools](/sql/relational-databases/performance/performance-monitoring-and-tuning-tools).
 
@@ -52,7 +54,7 @@ For tuning SQL Server 2017 and SQL Server 2016, see [Recommended updates and con
 
 ### Step 4: Use SQL Server high availability features
 
-Azure Local leverages [Windows Server Failover Clustering with SQL Server](/sql/sql-server/failover-clusters/windows/windows-server-failover-clustering-wsfc-with-sql-server) (WSFC) to support SQL Server running in VMs in the event of a hardware failure. SQL Server also offers [Always On availability groups](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server) (AG) to provide database-level high availability that is designed to help with application and software faults. In addition to WSFC and AG, Azure Local can use [Always On Failover Cluster Instance](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server) (FCI), which is based on [Storage Spaces Direct](/windows-server/storage/storage-spaces/storage-spaces-direct-overview) technology for shared storage.
+Azure Local uses [Windows Server Failover Clustering with SQL Server](/sql/sql-server/failover-clusters/windows/windows-server-failover-clustering-wsfc-with-sql-server) (WSFC) to support SQL Server running in VMs in the event of a hardware failure. SQL Server also offers [Always On availability groups](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server) (AG) to provide database-level high availability that is designed to help with application and software faults. In addition to WSFC and AG, Azure Local can use [Always On Failover Cluster Instance](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server) (FCI), which is based on [Storage Spaces Direct](/windows-server/storage/storage-spaces/storage-spaces-direct-overview) technology for shared storage.
 
 These options all work with the Microsoft [Azure Cloud witness](/windows-server/failover-clustering/deploy-cloud-witness) for quorum control. We recommend using cluster [AntiAffinity](/windows-server/failover-clustering/cluster-affinity) rules in WSFC for VMs placed on different physical nodes to maintain uptime for SQL Server in the event of host failures when you configure Always On availability groups.
 
@@ -64,7 +66,7 @@ There are several Azure hybrid services that you can use to help keep your SQL S
 
 Alternatively, you can use the [SQL Server Managed Backup](/sql/relational-databases/backup-restore/sql-server-managed-backup-to-microsoft-azure) feature in SQL Server to manage Azure Blob Storage backups.
 
-For more information about using this option that is suitable for off-site archiving, see:
+For more information about using this option that's suitable for off-site archiving, see:
 
 - [Tutorial: Use Azure Blob Storage with SQL Server](/sql/relational-databases/tutorial-use-azure-blob-storage-service-with-sql-server-2016).
 - [Quickstart: SQL backup and restore to Azure Blob storage service](/sql/relational-databases/tutorial-sql-server-backup-and-restore-to-azure-blob-storage-service).

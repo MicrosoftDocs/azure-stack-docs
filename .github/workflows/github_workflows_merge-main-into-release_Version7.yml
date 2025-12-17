@@ -1,0 +1,95 @@
+name: Create PRs to merge main into release branches
+
+on:
+  workflow_dispatch: # Manual trigger only
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  create-merge-prs:
+    name: Create PRs main → release-*
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout main branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: main
+
+      - name: Get release branches
+        id: releases
+        run: |
+          git fetch --all
+          RELEASE_BRANCHES=$(git branch -r | grep -E 'origin/release-' | sed 's|origin/||' | tr '\n' ' ')
+          echo "release_branches=$RELEASE_BRANCHES" >> $GITHUB_OUTPUT
+
+      - name: Install GitHub CLI
+        run: |
+          if ! command -v gh &> /dev/null; then
+            sudo apt-get update && sudo apt-get install -y gh
+          fi
+
+      - name: Create PRs to merge main into each release branch
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+        shell: bash
+        run: |
+          SKIPPED_BRANCHES=""
+          CONFLICT_BRANCHES=""
+          for branch in ${{ steps.releases.outputs.release_branches }}; do
+            echo "Processing branch $branch"
+
+            # Check if there's an open PR from main to $branch
+            EXISTING=$(gh pr list --base "$branch" --head "main" --state open --json number --jq '.[].number')
+            if [ -n "$EXISTING" ]; then
+              echo "PR from main to $branch already exists (PR #$EXISTING), skipping."
+              SKIPPED_BRANCHES="$SKIPPED_BRANCHES\n- $branch (PR #$EXISTING already exists)"
+              continue
+            fi
+
+            # Create a new branch for the merge
+            MERGE_BRANCH="merge-main-into-${branch}-$(date +%Y%m%d%H%M%S)"
+            git checkout $branch
+            git checkout -b $MERGE_BRANCH
+            if ! git merge origin/main --no-edit; then
+              echo "Merge conflict in $branch, skipping PR creation."
+              git merge --abort
+              git checkout main
+              git branch -D $MERGE_BRANCH
+              CONFLICT_BRANCHES="$CONFLICT_BRANCHES\n- $branch"
+              continue
+            fi
+            git push origin $MERGE_BRANCH
+
+            # Create a pull request using GitHub CLI
+            gh pr create \
+              --title "Merge main into $branch" \
+              --body "Automated PR to merge latest main into $branch." \
+              --base "$branch" \
+              --head "$MERGE_BRANCH" \
+              --label "automated-merge"
+          done
+
+          # Notify about skipped/conflicted branches
+          MESSAGE=""
+          if [ -n "$SKIPPED_BRANCHES" ]; then
+            MESSAGE="$MESSAGE### Skipped branches (PR already exists):\n$SKIPPED_BRANCHES\n"
+          fi
+          if [ -n "$CONFLICT_BRANCHES" ]; then
+            MESSAGE="$MESSAGE### Merge conflicts (PR not created):\n$CONFLICT_BRANCHES\n"
+          fi
+          if [ -n "$MESSAGE" ]; then
+            # Create or update an issue
+            ISSUE_TITLE="Automated merge main into release-* notification $(date +%Y-%m-%d)"
+            EXISTING=$(gh issue list --search "$ISSUE_TITLE" --state open --json number --jq '.[].number')
+            if [ -z "$EXISTING" ]; then
+              gh issue create --title "$ISSUE_TITLE" --body "$MESSAGE" --label "automated-merge"
+            else
+              gh issue comment $EXISTING --body "$MESSAGE"
+            fi
