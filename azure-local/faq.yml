@@ -15,15 +15,20 @@ sections:
     questions:
       - question: What is Azure Local?
         answer: |
-          Azure Local is Microsoft's full-stack infrastructure software that runs on validated hardware in your own facilities. It brings Azure capabilities to distributed or sovereign locations, so you can run virtual machines, containers, and select Azure services locally while maintaining a consistent management experience through Azure Arc. For more information, see [What is Azure Local?](./overview.md)
+          Azure Local is Microsoft's full-stack infrastructure software that runs on validated hardware in your own facilities. It brings Azure capabilities to distributed or sovereign locations, so you can run virtual machines, containers, and select Azure services locally while maintaining an Azure-consistent management experience through Azure Arc. For more information, see [What is Azure Local?](./overview.md)
 
       - question: When should I use Azure Local?
         answer: |
-          Use Azure Local when you need modern cloud capabilities in locations where connectivity is limited, data sovereignty is critical, or latency-sensitive applications must run close to where data is generated. It's ideal for industries like manufacturing, retail, and government that require local control with Azure consistency.
+          Use Azure Local when you need modern cloud capabilities in locations where connectivity is limited, data sovereignty is critical, or latency-sensitive applications must run close to where data is generated. It’s ideal for industries like manufacturing, retail, and government that require local control with Azure consistency.
 
       - question: What are the different deployment types offered on Azure Local?
         answer: |
-          Azure Local is designed to offer customers a consistent on-premises experience and set of services across a variety of scale points, from a single-machine deployment to a multi-rack datacenter footprint. The deployment types include hyperconverged deployments, multi-rack deployments, Microsoft 365 on Local, and Disconnected operations. For more information, see [Azure Local deployment types](./scalability-deployments.md).
+          Azure Local is designed to offer customers an Azure-consistent on-premises experience and set of services across a variety of scale points, from a single-machine deployment to a datacenter footprint. The deployment types include hyperconverged deployments, multi-rack deployments, Microsoft 365 on Local, and disconnected operations. For more information, see [Azure Local deployment types](./scalability-deployments.md).
+
+      - question: How are Azure Local and Sovereign Private Cloud related?
+        answer: |
+          Azure Local is the foundation and core product fueling Microsoft's Sovereign Private Cloud offering. It enables customers to meet strict data residency and regulatory requirements by hosting workloads on-premises, disconnected or semi-connected, while still benefiting from Azure innovation and security. For more information, see [Sovereign Private Cloud](/industry/sovereign-cloud/sovereign-private-cloud/overview-sovereign-private-cloud).
+
 
       - question: What are the different hardware configurations supported on an Azure Local instance?
         answer: |
@@ -31,11 +36,11 @@ sections:
 
           - Hyperconverged deployments of Azure Local use the supported hardware offered in the [Azure Local catalog](https://aka.ms/AzureStackHCICatalog).
 
-          - Multi-rack deployments of Azure Local are in Preview. Reach out to the Azure Local Product team through your Account teams for more information and inclusion into the Preview. For more information, see [Get started with multi-rack deployments of Azure Local](https://learn.microsoft.com/en-us/azure/azure-local/multi-rack/multi-rack-overview?view=azloc-2511#get-started).
+          - Multi-rack deployments of Azure Local are in Preview. Reach out to the Azure Local Product team through your Account teams for more information and inclusion into the Preview. For more information, see [Get started with multi-rack deployments of Azure Local](./multi-rack/multi-rack-overview.md#get-started).
 
-          - Microsoft 365 Local runs Microsoft 365 applications on Azure Local infrastructure. For more information, see [What is Microsoft 365 Local](./concepts/microsoft-365-local-overview.md).
+          - Microsoft 365 Local runs Microsoft 365 applications on Azure Local infrastructure. For more information, see [What is Microsoft 365 Local](./concepts/microsoft-365-local-overview.md).
 
-          - Disconnected operations for Azure Local is also in Preview. For more information, see the [Preview participation criteria for Disconnected operations](./manage/disconnected-operations-overview.md#preview-participation-criteria).
+          - Disconnected operations for Azure Local is also in preview. For more information, see the [Preview participation criteria for Disconnected operations](./manage/disconnected-operations-overview.md#preview-participation-criteria).
 
       - question: Where is Azure Local available?
         answer: |
@@ -47,7 +52,7 @@ sections:
 
       - question: How is Azure Local billed?
         answer: |
-          Azure Local software is billed as a cloud service on your Azure subscription based on the number of physical cores deployed. For more information, see [Billing and payment](./concepts/billing.md) and [Azure Local Pricing](https://azure.microsoft.com/pricing/details/azure-local/).
+          Azure Local software is billed as a cloud service on your Azure subscription based on the number of physical cores deployed. For more information, see [Billing and payment](./concepts/billing.md) and [Azure Local Pricing](https://azure.microsoft.com/en-us/pricing/details/azure-local/).
 
       - question: Can I re-use my existing hardware?
         answer: |
@@ -63,25 +68,22 @@ sections:
 
       - question: Does my data stored on Azure Local get sent to the cloud?
         answer: |
-          No. Azure Local itself does not store customer data in cloud. Only management data for the resources managed by Azure is stored in cloud (for example, resource names, billing, usage and more). Azure Local customers can opt-in to additional capabilities and these capabilities can store data in cloud (such as Azure Backup).
+          No. Azure Local itself doesn't store customer data in the cloud. Only management data for the resources managed by Azure is stored in the cloud (for example, resource names, billing, usage, and more). Azure Local customers can opt in to additional capabilities and these capabilities can store data in the cloud (such as Azure Backup).
 
-          With disconnected operations operating with a disconnected connection intent - only registration data is sent during deployment/registration and license renewal processes and is controlled by the customer.
+          With disconnected operations operating with a disconnected connection intent – only registration data is sent during deployment/registration and license renewal processes and is controlled by the customer.
 
       - question: What happens if my network connection to the control plane temporarily goes down? How long can Azure Local run with the connection down? What happens if the 30-day limit is exceeded?
         answer: |
-          While your connection is down, all host infrastructure and VMs continue to run normally. However, you wouldn't be able to use features that directly rely on cloud services. Information in the Azure portal may also become out-of-date until Azure Local is able to sync again.
+          While your connection is down, all host infrastructure and VMs continue to run normally. However, you can't use features that directly rely on cloud services. Information in the Azure portal might also become out-of-date until Azure Local can sync again.
 
           For hyperconverged deployments, at a minimum, Azure Local must sync successfully with Azure once per 30 consecutive days.
 
-          If Azure Local doesn't sync with Azure in 30 consecutive days, the cluster's connection status shows **Out of policy** in the Azure portal and other tools, and the cluster enters a reduced functionality mode. In this mode, the host infrastructure stays up and all current VMs continue to run normally. However, new VMs can't be created until Azure Local is able to sync again. The internal technical reason is that the cluster's cloud-generated license has expired and must renew by syncing with Azure.
+          If Azure Local doesn't sync with Azure in 30 consecutive days, the cluster's connection status shows ***Out of policy*** in the Azure portal and other tools, and the cluster enters a reduced functionality mode. In this mode, the host infrastructure stays up and all current VMs continue to run normally. However, new VMs can't be created until Azure Local can sync again. 
 
-      - question: How are Azure Local and Sovereign Private Cloud related?
-        answer: |
-          Azure Local is the foundation and core product fueling Microsoft's Sovereign Private Cloud offering. It enables customers to meet strict data residency and regulatory requirements by hosting workloads on-premises, disconnected or semi-connected, while still benefiting from Azure innovation and security. For more information, see [Sovereign Private Cloud](/industry/sovereign-cloud/sovereign-private-cloud/overview-sovereign-private-cloud).
 
       - question: Can resources be moved across subscriptions or resource groups for Azure Local?
         answer: |
-          No. We do not support moving resources between subscriptions and/or resource groups for any Azure Local resources. To change the location of the resources, you must redeploy the Azure Local instance using the new subscription and/or resource group locations and appropriate parameters for the cloud deployment process.
+          No. Moving resources between subscriptions and resource groups isn't supported for any Azure Local resources. To change the location of the resources, redeploy the Azure Local instance by using the new subscription and resource group locations and appropriate parameters for the cloud deployment process.
 
       - question: What are the Azure services that I can run on Azure Local?
         answer: |
