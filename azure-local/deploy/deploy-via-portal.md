@@ -277,7 +277,7 @@ On the **Configuration** tab, choose whether to create a new configuration for t
 
     To delete the app, make sure that the registration context is updated to v4 and there's a corresponding event in the Azure Local event log.
 
-    To verify the event, connect to one of machines on the Azure Local instance and run the following PowerShell command:
+    To verify the event, connect to one of the machines on the Azure Local instance and run the following PowerShell command:
 
     ```powershell
     Get-ClusterNode | % { Get-WinEvent -ComputerName $_ -LogName Microsoft-AzureStack-HCI/Admin | ? Id -eq 609 }
