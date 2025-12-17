@@ -1,8 +1,8 @@
 ---
 title: Use multiple load balancers
 description: How to use multiple load balancer instances and scale the numbers of instances on your AKS deployment in AKS on Windows Server.
-author: sethmanheim
-ms.author: sethm
+author: davidsmatlak
+ms.author: davidsmatlak
 ms.date: 06/26/2024
 ms.reviewer: rbaziwane
 ms.lastreviewed: 07/29/2022

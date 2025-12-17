@@ -1,8 +1,8 @@
 ---
 title: Network validation error due to .local domain
 description: Learn how to troubleshoot network validation errors due to the .local domain.
-author: sethmanheim
-ms.author: sethm
+author: davidsmatlak
+ms.author: davidsmatlak
 ms.topic: troubleshooting
 ms.date: 04/30/2025
 ms.reviewer: pradwivedi
