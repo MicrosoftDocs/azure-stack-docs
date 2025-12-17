@@ -1,10 +1,10 @@
 ---
 title: Deploy Azure Arc-enabled data services in AKS on Windows Server
 description: Learn how to deploy Azure Arc-enabled data services in AKS on Windows Server.
-author: sethmanheim
+author: davidsmatlak
 ms.topic: how-to
 ms.date: 04/02/2025
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: rbaziwane
 

@@ -1,10 +1,10 @@
 ---
 title: New-AksHciProxySetting for AKS hybrid
-author: sethmanheim
+author: davidsmatlak
 description: The New-AksHciProxySetting PowerShell command creates an object for a new proxy configuration.
 ms.topic: reference
 ms.date: 02/11/2022
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 02/11/2022
 ms.reviewer: nwood
 

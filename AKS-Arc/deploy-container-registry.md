@@ -3,8 +3,8 @@ title: Deploy from private container registry to on-premises Kubernetes using Az
 description: Learn how to deploy container images from a private container registry using Azure Container Registry.
 ms.topic: how-to
 ms.date: 12/12/2023
-author: sethmanheim
-ms.author: sethm 
+author: davidsmatlak
+ms.author: davidsmatlak 
 ms.reviewer: rbaziwane
 ms.lastreviewed: 12/11/2023
 ms.custom: sfi-ropc-nochange

@@ -1,10 +1,10 @@
 ---
 title: Get-AksEdgeNodeName for AKS Edge
-author: sethmanheim
+author: davidsmatlak
 description: The Get-AksEdgeNodeName PowerShell command gets the  VM's hostname
 ms.topic: reference
 ms.date: 10/04/2022
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 10/04/2022
 #ms.reviewer: jeguan
 

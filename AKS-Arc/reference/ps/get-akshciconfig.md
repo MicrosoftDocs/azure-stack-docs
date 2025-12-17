@@ -1,10 +1,10 @@
 ---
 title: Get-AksHciConfig for AKS hybrid
-author: sethmanheim
+author: davidsmatlak
 description: The Get-AksHciConfig PowerShell command lists the current configuration settings for the Azure Kubernetes Service host.
 ms.topic: reference
 ms.date: 2/12/2021
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
 

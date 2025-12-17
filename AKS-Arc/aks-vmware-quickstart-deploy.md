@@ -1,8 +1,8 @@
 ---
 title: Quickstart - Deploy an AKS cluster using Azure CLI (preview)
 description: Learn how to deploy an AKS cluster in AKS on VMware. 
-author: sethmanheim
-ms.author: sethm
+author: davidsmatlak
+ms.author: davidsmatlak
 ms.topic: quickstart
 ms.custom: devx-track-azurecli
 ms.date: 09/15/2025

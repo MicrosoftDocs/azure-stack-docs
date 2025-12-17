@@ -1,8 +1,8 @@
 ---
 title: Deploy an AI model on AKS enabled by Azure Arc with the Kubernetes AI toolchain operator (preview)
 description: Learn how to deploy an AI model on AKS enabled by Azure Arc with the Kubernetes AI toolchain operator (KAITO).
-author: sethmanheim
-ms.author: sethm
+author: davidsmatlak
+ms.author: davidsmatlak
 ms.topic: how-to
 ms.date: 05/27/2025
 ms.reviewer: haojiehang

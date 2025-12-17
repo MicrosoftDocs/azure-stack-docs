@@ -1,8 +1,8 @@
 ---
 title: Entra authentication prompts when running kubectl with Kubernetes RBAC
 description: Learn how to troubleshoot Entra authentication issues when using kubectl with Kubernetes RBAC.
-author: sethmanheim
-ms.author: sethm
+author: davidsmatlak
+ms.author: davidsmatlak
 ms.topic: troubleshooting
 ms.date: 06/24/2025
 ms.reviewer: leslielin
