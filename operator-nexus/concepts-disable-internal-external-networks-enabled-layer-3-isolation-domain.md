@@ -15,9 +15,9 @@ Disabling internal or external networks while an isolation domain (ISD) is enabl
 
 ## Key capabilities
 
-- Supports enabling and disabling of internal and external networks on an enabled layer 3 ISD via update using the `AdministrativeState` POST action.
+- Supports enabling and disabling of internal/external networks on an enabled layer 3 ISD via update by using the `AdministrativeState` POST action.
 - Integrates with commit workflows for consistent configuration changes.
-- Enables safe disablement of internal/external networks before deletion by enforcing **Disable** > **Commit** > **Delete** (outside commit) to prevent accidental removal.
+- Enables safe disablement of internal/external networks before deletion by enforcing Disable → Commit → Delete (outside commit) to prevent accidental removal.
 
 ## Behavior and constraints
 
@@ -26,17 +26,18 @@ Disabling internal or external networks while an isolation domain (ISD) is enabl
 - At least one internal network must remain enabled in ISD.
 - The disable operation is blocked if an Azure Resource Manager update and commit batch are in progress.
 - Disabling fails if associated resources are enabled:
-  - **Internal networks**: `RoutePolicy`, `NetworkTap`, `NetworkMonitor`.
-  - **External networks**: `RoutePolicy`, Network-to-Network Interconnect, and access control lists.
+
+  - **Internal networks**: `RoutePolicy`, `NetworkTap`, and `NetworkMonitor`
+  - **External networks**: `RoutePolicy`, network-to-network interconnect, and access control lists
 - Disabling internal/external networks isn't supported via A/B update workflow.
 - Modification of any internal/external network configuration might lead to temporary or permanent disruption of the network if the dependent service or workloads are still using the old configuration.
 - Unlocking during the batch doesn't restore the resource to an enabled state. You must update the administrative state to enabled and commit if you want to change the state.
-- After the delete operation, there are no mechanisms to restore the deleted internal/external network. You must re-create the resource via a Resource Manager API using a commit workflow if the layer 3 ISD is in an enabled state.
+- After the delete operation, there are no mechanisms to restore the deleted internal/external network. You must re-create the resource via a Resource Manager API by using a commit workflow if the layer 3 ISD is in an enabled state.
 
 ## State transitions
 
-- **Network Fabric:** Use **Provisioned** > `PendingAdministrativeUpdate` > **Provisioned**.
-- **Internal/External network:** Use **Enabled** > `PendingAdministrativeUpdate` > **Disabled**.
+- **Network Fabric**: Provisioned → `PendingAdministrativeUpdate` → Provisioned
+- **Internal/external networks**: Enabled → `PendingAdministrativeUpdate` → Disabled
 
 ## Related content
 

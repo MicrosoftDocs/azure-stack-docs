@@ -1,6 +1,6 @@
 ---
 title: 'Azure Operator Nexus: Network Fabric Option A and Option B'
-description: Learn about Azure Operator Nexus - Network Fabric Option A and Option B.
+description: Learn about Azure Operator Nexus network fabric Option A and Option B.
 author: jmmason70
 ms.author: jeffreymason
 ms.service: azure-operator-nexus
@@ -21,9 +21,9 @@ Two peering standards are relevant to Azure Operator Nexus:
 
 For more information on multiautonomous systems, see section 10 of [Request for comment 4364](https://www.ietf.org/rfc/rfc4364.txt).
 
-For more information on the commands involved in creating and provisioning Network Fabric, see [Create and provision Network Fabric by using the Azure CLI](./howto-configure-network-fabric.md).
+For more information on the commands involved in creating and provisioning a network fabric, see [Create and provision a network fabric by using the Azure CLI](./howto-configure-network-fabric.md).
 
-Option A and Option B are specified in the following steps for fabric create and network-to-network interface (NNI) create.
+Option A and Option B are specified in the following steps for the `fabric create` operation and the network-to-network interface (NNI) `nni create` operation.
 
 ### Fabric create
 
@@ -33,7 +33,7 @@ Specified in the following property:
 
 #### Examples
 
-- Fabric create with Option A properties:
+- The `fabric create` operation with Option A properties:
    
    ```azurecli
    
@@ -53,7 +53,7 @@ Specified in the following property:
    
    ```
 
-- Fabric create with Option B properties:
+- The `fabric create` operation with Option B properties:
 
     ```azurecli
    
@@ -76,7 +76,7 @@ Specified in the following property:
 
 ### NNI create
 
-The NNI is created after fabric create but before network device update and fabric provision.
+The NNI is created after the `fabric create` operation but before network device update and fabric provision.
 
 Specified in the following properties:
 
@@ -89,7 +89,7 @@ Specified in the following properties:
 
 #### Examples
 
-- NNI create with Option A properties:
+- The `nni create` operation with Option A properties:
     
     ```azurecli
     
@@ -108,7 +108,7 @@ Specified in the following properties:
     
     ````
 
-- NNI create with Option B properties:
+- The `nni create` operation with Option B properties:
 
     ```azurecli
     
