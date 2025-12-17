@@ -160,8 +160,8 @@ Follow these steps to create an example VM named `Node1` using PowerShell cmdlet
 
 1. Enable MAC address spoofing and teaming on all network adapters on VM Node1 if you plan to use nested virtualization.
 
-* MAC address spoofing lets a network adapter appear as another by changing its Media Access Control (MAC) address.
-* NetworkATC teams vNICs for management and compute intent and, depending on the configuration, for storage vNICs.
+    - MAC address spoofing lets a network adapter appear as another by changing its Media Access Control (MAC) address.
+    - NetworkATC teams vNICs for management and compute intent and, depending on the configuration, for storage vNICs.
 
     ```PowerShell
     Get-VmNetworkAdapter -VmName "Node1" | Set-VmNetworkAdapter -MacAddressSpoofing On -Allow Teaming On
