@@ -3,7 +3,7 @@ title: Deploy Azure Local, version 23H2 using local identity with Azure Key Vaul
 description: Learn how to use local identity with Azure Key Vault for Azure Local, version 23H2 deployment (Preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 12/16/2025
+ms.date: 12/17/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -43,10 +43,11 @@ Using local identity with Key Vault on Azure Local offers several benefits, part
 - Satisfy the [prerequisites and complete deployment checklist](./deployment-prerequisites.md). Skip the AD-specific prerequisites.
 
 - Create a local administrator account:
-    - Create a local user account and add it to the local Administrators group.
-    - Do not use the built-in Administrator account.
+    - Create a local user account and add it to the local Administrators group. **Do not use the built-in Administrator account.**
+        - **Using SConfig.** Select option `3` for **Add local administrator**. Enter a username and a strong password. Ensure that the password follows Azure password length and complexity requirements. Use a password that is at least 14 characters long and contains a lowercase character, an uppercase character, a numeral, and a special character.
+        - **Using PowerShell.** Use [`New-LocalUser`](/powershell/module/microsoft.powershell.localaccounts/new-localuser) to create a local user account. Then use [`Add-LocalGroupMember`](/powershell/module/microsoft.powershell.localaccounts/add-localgroupmember) to add members to the local group.
     - Use the same credentials for this account across all nodes in the cluster.
-    - This account is required for cluster management operations, such as adding or repairing a node, to enable authentication and changes across all nodes. For instructions, see [Add a node](../manage/add-server.md) and [Repair a node](../manage/repair-server.md).
+    - This account is required for cluster management operations, such as adding or repairing a node, to authenticate and apply changes across all nodes. For instructions, see [Add a node](../manage/add-server.md) and [Repair a node](../manage/repair-server.md).
     - You are responsible for creating and maintaining this account after the base operating system (OS) setup. This includes credential expiration, rotation, and security.
 
 - Download the Azure Local software. See [Download operating system for Azure Local deployment](./download-23h2-software.md).
@@ -54,6 +55,8 @@ Using local identity with Key Vault on Azure Local offers several benefits, part
 - The nodes require static IP addresses and don't support DHCP. After the OS is installed, use SConfig to set the static IP address, subnet, gateway, and DNS.
 
 - Have a DNS server with a properly configured zone. This setup is crucial for the network to function correctly. See [Configure DNS server for Azure Local](#configure-dns-server-for-azure-local).
+
+- Enable SSH on each node for remote access from the Azure portal. For instructions, see [SSH access to Azure Arc-enabled servers](/azure/azure-arc/servers/ssh-arc-overview?tabs=azure-cli).
 
 ## Configure DNS server for Azure Local
 
@@ -125,11 +128,13 @@ The general deployment steps are the same as those outlined in [Deploy an Azure 
 
 ## Post-deployment steps
 
-After deploying the system, confirm the deployment was AD-less and verify that secrets are being backed up to Key Vault.
+After deploying the system, confirm the deployment was without AD (AD-less) and verify that secrets are backed up to Key Vault. You can connect to the cluster nodes in several ways:
+
+- Connect locally on the site.
+- Connect remotely through an existing Baseboard Management Controller (BMC) solution.
+- Connect remotely through the Azure portal using an Azure Arc connection with SSH enabled, as described in [Prerequisites](#prerequisites).
 
 ### Confirm the system was deployed without Active Directory
-
-After deploying the system, confirm the deployment was without AD (AD-less).
 
 1. Confirm the node isn't joined to an AD domain by running the following command. If the output shows `WORKGROUP`, the node isn't domain-joined.
 
