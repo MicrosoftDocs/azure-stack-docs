@@ -2,9 +2,9 @@
 title: Use the autoscaler profile to configure cluster autoscaling in AKS on Windows Server
 description: Learn how to use the autoscaler profile to configure Cluster autoscaler in Azure Kubernetes Service (AKS) on Windows Server.
 ms.topic: how-to
-author: sethmanheim
+author: davidsmatlak
 ms.date: 11/13/2025
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 06/27/2024
 
 # Intent: As a Kubernetes user, I want to use cluster autoscaler to grow my nodes to keep up with application demand.

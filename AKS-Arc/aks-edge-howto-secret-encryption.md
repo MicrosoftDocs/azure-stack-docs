@@ -1,8 +1,8 @@
 ---
 title: Enable secret encryption on an AKS Edge Essentials cluster
 description: Learn how to enable the KMS provider for AKS Edge Essentials clusters to encrypt secrets.
-author: sethmanheim
-ms.author: sethm
+author: davidsmatlak
+ms.author: davidsmatlak
 ms.topic: how-to
 ms.date: 10/22/2025
 ms.custom: template-how-to

@@ -2,8 +2,8 @@
 title: Use Key Manager for Kubernetes clusters on AKS Edge Essentials (preview)
 description: Learn how to use the Key Manager for Kubernetes extension to rotate service account keys in Azure Kubernetes Service (AKS) Edge Essentials clusters.
 ms.topic: how-to
-author: sethmanheim
-ms.author: sethm
+author: davidsmatlak
+ms.author: davidsmatlak
 ms.date: 03/10/2025
 ms.reviewer: leslielin
 ---

@@ -3,8 +3,8 @@ title: IP address planning for AKS enabled by Azure Arc
 description: Learn about how to plan for IP addresses and reservation, to deploy AKS Arc in production. 
 ms.topic: article
 ms.date: 08/13/2025
-author: sethmanheim
-ms.author: sethm
+author: davidsmatlak
+ms.author: davidsmatlak
 ms.reviewer: srikantsarwa
 ms.lastreviewed: 10/08/2024
 ---

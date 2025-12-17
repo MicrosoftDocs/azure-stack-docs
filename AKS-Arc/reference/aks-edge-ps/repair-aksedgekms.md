@@ -1,10 +1,10 @@
 ---
 title: Repair-AksEdgeKms for AKS Edge
 description: The Repair-AksEdgeKms command repairs the KMS plugin for an existing cluster
-author: sethmanheim
+author: davidsmatlak
 ms.topic: reference
 ms.date: 3/10/2025
-ms.author: sethm
+ms.author: davidsmatlak
 ms.lastreviewed: 3/10/2025
 ms.reviewer: khareanushka
 

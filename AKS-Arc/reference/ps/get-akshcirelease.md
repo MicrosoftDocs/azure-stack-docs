@@ -3,8 +3,8 @@ title: Get-AksHciRelease for AKS hybrid
 description: The Get-AksHciRelease PowerShell command Downloads the install and upgrade bits to a local share that was configured in Enable-AksHciOfflineDownload.
 ms.topic: reference
 ms.date: 04/11/2023
-author: sethmanheim
-ms.author: sethm 
+author: davidsmatlak
+ms.author: davidsmatlak 
 ms.lastreviewed: 04/11/2023
 ms.reviewer: jeguan
 ---

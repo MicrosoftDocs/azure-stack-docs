@@ -3,8 +3,8 @@ title: Disable-AksHciOfflinedownload for AKS hybrid
 description: The Disable-AksHciOfflinedownload PowerShell command disables offline downloading to get the AKS hybrid images.
 ms.topic: reference
 ms.date: 10/03/2022
-author: sethmanheim
-ms.author: sethm 
+author: davidsmatlak
+ms.author: davidsmatlak 
 ms.lastreviewed: 10/03/2022
 ms.reviewer: jeguan
 ---

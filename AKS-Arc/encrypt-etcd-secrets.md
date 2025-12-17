@@ -1,10 +1,10 @@
 ---
 title: Encrypt etcd secrets for Kubernetes clusters in AKS on Azure Local
 description: Learn how to encrypt etcd secrets in AKS on Azure Local.
-author: sethmanheim
+author: davidsmatlak
 ms.topic: how-to
 ms.date: 10/24/2025
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 10/06/2025
 ms.reviewer: khareanushka
 # Intent: As an IT Pro, I want to learn about encrypted etcd secrets and how they are used in my AKS deployment. 

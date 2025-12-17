@@ -1,10 +1,10 @@
 ---
 title: Get-AksHciCredential for AKS hybrid
-author: sethmanheim
+author: davidsmatlak
 description: The Get-AksHciCredential PowerShell command accesses your cluster using kubectl.
 ms.topic: reference
 ms.date: 03/21/2023
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
 

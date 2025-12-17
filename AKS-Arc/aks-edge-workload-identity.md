@@ -1,8 +1,8 @@
 ---
 title: Configure Workload Identity on an AKS Edge Essentials cluster (preview)
 description: Learn how to configure an AKS Edge Essentials cluster with workload identity.
-author: sethmanheim
-ms.author: sethm
+author: davidsmatlak
+ms.author: davidsmatlak
 ms.topic: how-to
 ms.date: 03/10/2025
 ms.reviewer: leslielin

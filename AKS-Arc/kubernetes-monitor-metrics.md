@@ -1,10 +1,10 @@
 ---
 title: Metrics and monitoring logs in AKS Arc
 description: Learn about metrics and logs used to monitor Kubernetes clusters in AKS Arc.
-author: sethmanheim
+author: davidsmatlak
 ms.topic: how-to
 ms.date: 12/18/2024
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 03/28/2024
 ms.reviewer: haojiehang
 

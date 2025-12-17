@@ -1,10 +1,10 @@
 ---
 title: Use OpenFaaS with AKS on Windows Server
 description: Learn how to deploy and use OpenFaaS on an Azure Kubernetes Service (AKS) cluster to build serverless functions with containers in AKS on Windows Server.
-author: sethmanheim
+author: davidsmatlak
 ms.topic: how-to
 ms.date: 06/27/2024
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 1/14/2022
 ms.custom:
   - linux-related-content

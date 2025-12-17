@@ -1,6 +1,6 @@
 ---
-author: sethmanheim
-ms.author: sethm
+author: davidsmatlak
+ms.author: davidsmatlak
 ms.topic: include
 ms.date: 12/16/2025
 ms.reviewer: rmody

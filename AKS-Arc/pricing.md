@@ -3,8 +3,8 @@
 title: Azure Kubernetes Service (AKS) on Windows Server pricing details
 description: Learn about detailed pricing information for AKS on Windows Server.
 ms.topic: concept-article
-author: sethmanheim
-ms.author: sethm 
+author: davidsmatlak
+ms.author: davidsmatlak 
 ms.date: 11/13/2025
 ms.lastreviewed: 05/31/2023
 

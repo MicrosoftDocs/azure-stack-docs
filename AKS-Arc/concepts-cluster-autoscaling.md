@@ -2,8 +2,8 @@
 title: Cluster autoscaling in AKS on Windows Server
 description: Learn about automatically scaling node pools in AKS on Windows Server.
 ms.topic: article
-author: sethmanheim
-ms.author: sethm 
+author: davidsmatlak
+ms.author: davidsmatlak 
 ms.date: 04/07/2025
 
 # Intent: As a Kubernetes user, I want to use cluster autoscaler to grow my nodes to keep up with application demand.

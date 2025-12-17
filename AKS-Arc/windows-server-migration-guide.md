@@ -1,8 +1,8 @@
 ---
 title: Migrate from Windows Server 2019 to Windows Server 2022
 description: Learn how to migrate AKS Arc from Windows Server 2019 to 2022.
-author: sethmanheim
-ms.author: sethm
+author: davidsmatlak
+ms.author: davidsmatlak
 ms.date: 11/19/2025
 ms.topic: how-to
 ms.reviewer: srikantsarwa

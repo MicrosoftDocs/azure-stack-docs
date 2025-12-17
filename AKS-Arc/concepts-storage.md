@@ -1,10 +1,10 @@
 ---
 title: Concepts - Storage options for applications in AKS enabled by Azure Arc
 description: Storage options for applications in AKS enabled by Azure Arc.
-author: sethmanheim
+author: davidsmatlak
 ms.topic: concept-article
 ms.date: 06/16/2025
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: abha
 

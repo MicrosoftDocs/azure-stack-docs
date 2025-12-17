@@ -4,8 +4,8 @@ description: Learn how to deploy a Kubernetes cluster in AKS enabled by Azure Ar
 ms.topic: quickstart-arm
 ms.custom: devx-track-arm-template, devx-track-azurecli
 ms.date: 02/26/2025
-author: sethmanheim
-ms.author: sethm 
+author: davidsmatlak
+ms.author: davidsmatlak 
 ms.lastreviewed: 01/31/2024
 ms.reviewer: rbaziwane
 ---

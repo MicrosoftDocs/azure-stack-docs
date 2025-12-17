@@ -2,8 +2,8 @@
 title: Troubleshoot issue in which storage provisioning fails
 description: Learn how to troubleshoot and mitigate an issue that occurs when storage provisioning fails.
 ms.topic: troubleshooting
-author: sethmanheim
-ms.author: sethm
+author: davidsmatlak
+ms.author: davidsmatlak
 ms.date: 07/23/2025
 ms.reviewer: rcheeran
 ms.lastreviewed: 07/23/2025

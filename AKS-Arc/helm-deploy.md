@@ -1,10 +1,10 @@
 ---
 title: Deploy applications with Helm
 description: Learn how to use Helm to deploy applications in AKS on Windows Server.
-author: sethmanheim
+author: davidsmatlak
 ms.topic: how-to
 ms.date: 07/03/2024
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: rbaziwane
 

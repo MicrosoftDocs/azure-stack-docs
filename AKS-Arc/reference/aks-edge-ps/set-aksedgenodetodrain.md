@@ -1,10 +1,10 @@
 ---
 title: Set-AksEdgeNodeToDrain for AKS Edge
-author: sethmanheim
+author: davidsmatlak
 description: The Set-AksEdgeNodeToDrain PowerShell command prepares to remove a node from an existing cluster.
 ms.topic: reference
 ms.date: 02/03/2023
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 11/17/2022
 #ms.reviewer: jeguan
 

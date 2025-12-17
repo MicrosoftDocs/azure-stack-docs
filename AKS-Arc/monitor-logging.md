@@ -1,10 +1,10 @@
 ---
 title: Monitoring and logging data
 description: Learn how to create and access monitor and logging data for AKS on Windows Server.
-author: sethmanheim
+author: davidsmatlak
 ms.topic: how-to
 ms.date: 06/26/2024
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: abha
 

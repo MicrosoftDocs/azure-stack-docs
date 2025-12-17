@@ -2,8 +2,8 @@
 title: Disk space exhaustion on the control plane VMs due to accumulation of kube-apiserver audit logs
 description: Learn about a known issue with disk space exhaustion on the control plane VMs due to accumulation of kube-apiserver audit logs.
 ms.topic: troubleshooting
-author: sethmanheim
-ms.author: sethm
+author: davidsmatlak
+ms.author: davidsmatlak
 ms.date: 07/17/2025
 ms.reviewer: abha
 

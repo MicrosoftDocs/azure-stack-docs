@@ -1,10 +1,10 @@
 ---
 title: Use Active Directory single sign-on for secure connection to Kubernetes API server in AKS on Windows Server
 description: Use Active Directory Authentication to securely connect to the API server with SSO credentials
-author: sethmanheim
+author: davidsmatlak
 ms.topic: how-to
 ms.date: 04/02/2025
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: leslielin
 

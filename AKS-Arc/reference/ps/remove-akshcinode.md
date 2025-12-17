@@ -1,10 +1,10 @@
 ---
 title: Remove-AksHciNode for AKS hybrid
-author: sethmanheim
+author: davidsmatlak
 description: The Remove-AksHciNode PowerShell command removes a physical node from your deployment.
 ms.topic: reference
 ms.date: 4/16/2021
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
 

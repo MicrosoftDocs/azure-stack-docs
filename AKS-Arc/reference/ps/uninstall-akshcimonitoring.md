@@ -1,10 +1,10 @@
 ---
 title: Uninstall-AksHciMonitoring for AKS hybrid
-author: sethmanheim
+author: davidsmatlak
 description: The Uninstall-AksHciMonitoring PowerShell command removes Prometheus-based monitoring solution.
 ms.topic: reference
 ms.date: 06/22/2021
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
 

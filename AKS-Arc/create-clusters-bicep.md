@@ -4,8 +4,8 @@ description: Learn how to create Kubernetes clusters in Azure Local using Bicep.
 ms.topic: how-to
 ms.custom: devx-track-azurecli
 ms.date: 02/26/2025
-author: sethmanheim
-ms.author: sethm 
+author: davidsmatlak
+ms.author: davidsmatlak 
 ms.reviewer: haojiehang
 ms.lastreviewed: 07/24/2024
 
