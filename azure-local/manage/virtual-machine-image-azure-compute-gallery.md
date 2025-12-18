@@ -1,5 +1,5 @@
 ---
-title: Create Azure Local VM from Azure Compute Gallery images via Azure CLI
+title: Create Azure Local VM from Azure Compute Gallery Images via Azure CLI
 description: Learn how to create Azure Local VM images using Azure Compute Gallery images.
 author: sipastak
 ms.author: sipastak
@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.service: azure-local
 ms.custom:
   - devx-track-azurecli
-ms.date: 10/06/2025
+ms.date: 12/18/2025
 ---
 
-# Create Azure Local VM image using Azure Compute Gallery images
+# Create Azure Local VM image via Azure Compute Gallery images
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
@@ -40,7 +40,7 @@ To transfer your Azure Compute Gallery image to be an Azure Local compatible ima
 
 1. To download the Azure Compute Gallery image to your resource group, follow the steps in [Export an image version to a managed disk](/azure/virtual-machines/managed-disk-from-image-version). Note the name of the managed disk.  
 
-1. Get the SAS token of the managed disk by using the following command:
+1. Get the shared access signature (SAS) token of the managed disk by using the following command:
 
     ```azurecli
     # Variables to get SAS URL for the managed disk
@@ -83,7 +83,7 @@ Before creating an Azure Local VM image, you need to set some parameters.
   
     Here's a sample output:
   
-    ```azurecli
+    ```console
     PS C:\Users\azcli> $subscription = "<Subscription ID>"
     PS C:\Users\azcli> $resource_group = "mylocal-rg"
     PS C:\Users\azcli> $location = "eastus"
@@ -103,7 +103,7 @@ To create an Azure Local VM image, follow these steps:
     $customLocationID=(az customlocation show --resource-group $resource_group --name "<custom location name for your Azure Local>" --query id -o tsv)
     ```
 
-1. Create the VM image starting with a specified gallery image. Make sure to specify the offer, publisher, SKU, and version for the image.
+1. Create the VM image starting with a specified gallery image. Make sure to specify the offer, publisher, Stock Keeping Unit (SKU), and version for the image.
 
     ```azurecli
     az stack-hci-vm image create --subscription $subscription --resource-group $resource_Group --custom-location $customLocationID --location $location --name $imageName --os-type $osType --image-path $imageSourcePath
@@ -113,7 +113,7 @@ To create an Azure Local VM image, follow these steps:
 
     Here's a sample output:
 
-    ```azurecli
+    ```console
     { 
       "extendedLocation": { 
         "name": "/subscriptions/<Subscription ID>/resourceGroups/mylocal-rg/providers/Microsoft.ExtendedLocation/customLocations/mylocal-cl", 

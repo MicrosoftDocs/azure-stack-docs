@@ -7,7 +7,7 @@ ms.topic: how-to
 ms.service: azure-local
 ms.custom:
   - devx-track-azurecli
-ms.date: 12/11/2025
+ms.date: 12/18/2025
 ---
 
 # Create Azure Local VM image using images in a local share
@@ -73,7 +73,7 @@ Follow these steps to create a VM image using the Azure CLI.
 
     Here's a sample output:
 
-    ```azurecli
+    ```console
     PS C:\Users\azcli> $subscription = "<Subscription ID>"
     PS C:\Users\azcli> $resourceGroup = "mylocalrg"
     PS C:\Users\azcli> $location = "eastus"
@@ -106,7 +106,7 @@ The image deployment takes a few minutes to complete. The time taken to download
 
 Here's a sample output:
 
-```azurecli
+```console
 PS C:\Users\azcli> $customLocationID=(az customlocation show --resource-group $resourceGroup --name "myhci-cl" --query id -o tsv)
 PS C:\Users\azcli> az stack-hci-vm image create --subscription $subscription --resource-group $resourceGroup --custom-location $customLocationID --location $location --image-path $imageSourcePath --name $imageName --os-type $osType --storage-path-id $storagePathID
 type="CustomLocation" --location $Location --name $mktplaceImage --os-type $osType --image-path $mktImageSourcePath

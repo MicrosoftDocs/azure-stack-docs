@@ -4,12 +4,12 @@ description: Learn how to list, view properties, and delete virtual machine imag
 author: ronmiab
 ms.author: robess
 ms.reviewer: kimlam
-ms.date: 12/09/2025
+ms.date: 12/18/2025
 ms.topic: how-to
 ms.service: azure-local
 ---
 
-# Manage Azure Local VM images via CLI or portal
+# Manage Azure Local VM Images via CLI or Portal
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
@@ -19,10 +19,7 @@ This article describes how to manage virtual machine (VM) images on your Azure L
 
 Before you begin, make sure you have:
 
-- Azure Local VM management enabled
-- Appropriate permissions to manage VM images
-- Azure CLI installed (if using CLI commands)
-- Access to the Azure portal (if using portal)
+- Make sure that you have access to an Azure Local VM image. For more information, see: [Create Azure Local VM image via Azure marketplace](./virtual-machine-image-azure-marketplace.md) OR via [Azure Compute Gallery](./virtual-machine-image-azure-compute-gallery.md) OR via [Azure Storage account](./virtual-machine-image-storage-account.md) OR via [local share](./virtual-machine-image-local-share.md).
 
 ## List VM images
 
@@ -63,7 +60,7 @@ The results include VM images from:
 
 Here's a sample output:
 
-```azurecli
+```console
 PS C:\Users\azcli> az stack-hci-vm image list --subscription "<Subscription ID>" --resource-group "myhci-rg"
 Command group 'stack-hci-vm' is experimental and under development. Reference and support levels: https://aka.ms/CLI_refstatus
 [
@@ -178,7 +175,7 @@ To view image properties using Azure CLI, follow these steps:
 
         Here's a sample output:
 
-        ```azurecli
+        ```console
         PS C:\Users\azcli> az stack-hci-vm image show --ids $mktplaceImageID
         Command group 'stack-hci-vm' is experimental and under development. Reference and support levels: https://aka.ms/CLI_refstatus
         {
@@ -271,7 +268,7 @@ After you delete an image, you can check that the image is removed.
 
 Here's a sample output showing deletion by name and resource group:
 
-```azurecli
+```console
 PS C:\Users\azcli> $subscription = "<Subscription ID>"
 PS C:\Users\azcli> $resource_group = "mylocal-rg"
 PS C:\Users\azcli> $mktplaceImage = "mymylocal-marketplaceimage"

@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 10/07/2025
+ms.date: 12/18/2025
 ms.custom:
   - devx-track-azurecli
   - sfi-image-nochange
@@ -29,21 +29,13 @@ Before you begin, make sure that you complete the following prerequisites.
 
 # [Azure CLI](#tab/azurecli)
 
-- Review and [complete the prerequisites](./azure-arc-vm-management-prerequisites.md).
-
-- Assign the **Azure Connected Machine Resource Manager** role to the `Microsoft.AzureStackHCI` resource provider app for the resource group where you want to download the image. For more information, see [Assign Azure roles](/azure/role-based-access-control/role-assignments-portal).
-
-- Register your subscription with the `Microsoft.EdgeMarketplace` resource provider. For more information, see [Register resource provider](/azure/azure-resource-manager/management/resource-providers-and-types#register-resource-provider).
+[!INCLUDE [azure-marketplace-image-prerequisites](../includes/azure-marketplace-image-prerequisites.md)]
 
 - If you're using a client to connect to your Azure Local instance, see [Connect to the system remotely](./azure-arc-vm-management-prerequisites.md#connect-to-the-system-remotely).
 
 # [Azure portal](#tab/azureportal)
 
-- Review and [complete the prerequisites](./azure-arc-vm-management-prerequisites.md).
-
-- Assign the **Azure Connected Machine Resource Manager** role to the `Microsoft.AzureStackHCI` resource provider app for the resource group where you want to download the image. For more information, see [Assign Azure roles](/azure/role-based-access-control/role-assignments-portal).
-
-- Register your subscription with the `Microsoft.EdgeMarketplace` resource provider. For more information, see [Register resource provider](/azure/azure-resource-manager/management/resource-providers-and-types#register-resource-provider).
+[!INCLUDE [azure-marketplace-image-prerequisites](../includes/azure-marketplace-image-prerequisites.md)]
 
 ---
 
@@ -71,7 +63,7 @@ Follow these steps to create a VM image using the Azure CLI.
     $customLocationID = (az customlocation show --resource-group $resource_group --name "<custom_location_name_for_Azure_Local>" --query id -o tsv)
     $location = "<Location for your Azure Local>"
     $osType = "<OS of source image>"
-    $version = "<OS version of marketplace image>"
+    $version = "<OS version of Marketplace image>"
     ```
 
     The parameters are described in the following table:
@@ -79,16 +71,16 @@ Follow these steps to create a VM image using the Azure CLI.
     | Parameter      | Description                                                                                |
     |----------------|--------------------------------------------------------------------------------------------|
     | `subscription`   | Subscription associated with your Azure Local.        |
-    | `resource-group` | Resource group for your Azure Local that you associate with the marketplace image.     |
-    | `name` | Name of the marketplace image for Azure Local.  |
+    | `resource-group` | Resource group for your Azure Local that you associate with the Marketplace image.     |
+    | `name` | Name of the Marketplace image for Azure Local.  |
     | `customLocation` | Resource ID of custom location for your Azure Local.   |
     | `location`       | Location for your Azure Local. For example, `eastus`. |
     | `os-type`         | Operating system associated with the source image. For example, Windows or Linux.           |
-    | `version` | (Optional) Specify the OS version for marketplace image. If left empty, it defaults to the latest version. |
+    | `version` | (Optional) Specify the OS version for Marketplace image. If left empty, it defaults to the latest version. |
 
     Here's a sample output:
 
-    ```azurecli
+    ```console
     PS C:\Users\azcli> $subscription = "<Subscription ID>"
     PS C:\Users\azcli> $resource_group = "mylocal-rg"
     PS C:\Users\azcli> $mktplaceImage= "mylocal-marketplaceimage"
@@ -102,7 +94,7 @@ Follow these steps to create a VM image using the Azure CLI.
 > [!NOTE]
 > If you encounter compatibility issues, check the VM image version. Azure CLI always defaults to the latest version.
 
-### Create VM image from marketplace image
+### Create VM image from Marketplace image
 
 1. Set additional parameters that specify the intended VM image you want to create. You need to include the offer, publisher, SKU, and version for the marketplace image. Replace the parameters in `< >` with the appropriate values:
 
@@ -145,7 +137,7 @@ Follow these steps to create a VM image using the Azure CLI.
 
 Here's a sample output:
 
-```azurecli
+```console
 PS C:\Users\azcli> az stack-hci-vm image create --custom-location $cl --name $mktplaceImage --os-type $ostype --resource-group $rg --publisher $publisher --offer $offer --sku $sku  --version $version
 
 {

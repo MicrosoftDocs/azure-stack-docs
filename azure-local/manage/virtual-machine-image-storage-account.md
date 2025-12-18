@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 12/08/2025
+ms.date: 12/18/2025
 ms.custom:
   - devx-track-azurecli
   - sfi-image-nochange
@@ -78,7 +78,7 @@ The parameters are described in the following table:
 
 Here's a sample output:
 
-```azurecli
+```console
 PS C:\Users\azcli> $subscription = "<Subscription ID>"
 PS C:\Users\azcli> $resource_group = "mylocal-rg"
 PS C:\Users\azcli> $location = "eastus"
@@ -111,7 +111,7 @@ The image deployment takes a few minutes to complete. The time taken to download
 
 Here's a sample output:
 
-```azurecli
+```console
 PS C:\Users\azcli> az stack-hci-vm image create --subscription $subscription --resource-group $resource_Group --custom-location $customLocationID --location $location --name $imageName --os-type $osType --image-path $imageSourcePath --storage-path-id $storagepathid
 
 {
