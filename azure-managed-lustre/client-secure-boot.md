@@ -3,7 +3,7 @@ title: Use Secure Boot with Azure Managed Lustre file system
 description: Learn to configure secure boot keys with Azure Managed Lustre file system.
 ms.topic: how-to
 author: wolfgang-desalvador
-ms.author: wolfgang.desalvador
+ms.author: wdesalvador
 ms.reviewer: rohogue
 ms.date: 12/11/2025
 ---
