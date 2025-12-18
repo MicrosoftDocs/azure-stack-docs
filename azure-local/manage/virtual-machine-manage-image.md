@@ -218,8 +218,7 @@ To view image properties using Azure CLI, follow these steps:
         az stack-hci-vm image show --name $mktplaceImage --resource-group $resource_group
         ```
 
-        Here's a sample output:
-        <!--input needed-->
+        <!--Here's a sample output: input needed-->
 
 ### [Azure portal](#tab/azureportal)
 
