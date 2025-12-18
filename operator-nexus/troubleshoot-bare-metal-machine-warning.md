@@ -18,12 +18,12 @@ This document provides basic troubleshooting information for Bare Metal Machine 
 
 The Detailed status message of the Bare Metal Machine (Operator Nexus) resource includes one or more of the following.
 
-| Detailed status message                                               | Details and mitigation                                                                                                        |
-|-----------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------|
-| `Warning: PXE port is unhealthy`                                      | [`Warning: PXE port is unhealthy`](#warning-pxe-port-is-unhealthy)                                                            |
-| `Warning: BMM Node is unhealthy and may require hardware replacement` | [`Warning: BMM Node is unhealthy and may require hardware replacement`](#warning-this-machine-has-failed-hardware-validation) |
-| `Warning: BMM power state doesn't match expected state`               | [`Warning: BMM power state doesn't match expected state`](#warning-bmm-power-state-doesnt-match-expected-state)               |
-| `Warning: This machine has failed hardware validation`                | [`Warning: This machine has failed hardware validation`](#warning-this-machine-has-failed-hardware-validation)                |
+| Detailed status message                                               | Details and mitigation                                                                                                                                                  |
+|-----------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `Warning: PXE port is unhealthy`                                      | [`Warning: PXE port is unhealthy`](#warning-pxe-port-is-unhealthy)                                                                                                      |
+| `Warning: BMM Node is unhealthy and may require hardware replacement` | [`Warning: BMM Node is unhealthy and may require hardware replacement`](#warning-bmm-node-is-unhealthy-and-may-require-hardware-replacement)                            |
+| `Warning: BMM power state doesn't match expected state`               | [`Warning: BMM power state doesn't match expected state`](#warning-bmm-power-state-doesnt-match-expected-state)                                                         |
+| `Warning: This machine has failed hardware validation`                | [`Warning: This machine has failed hardware validation`](#warning-this-machine-has-failed-hardware-validation)                                                          |
 
 
 ## Troubleshooting
@@ -175,8 +175,16 @@ For more information about logging into the BMC, see [Troubleshoot Hardware Vali
 ],
 ```
 
+## `Warning: BMM Node is unhealthy and may require hardware replacement`
+
+For more information about logging into the BMC, see [Troubleshoot Hardware Validation Failure](./troubleshoot-hardware-validation-failure.md).
+
+If hardware issues are confirmed, contact support to schedule hardware replacement.
+
 ## `Warning: This machine has failed hardware validation`
 
 This BMM _Detailed status message_ indicates that hardware validation for the BMM failed. Hardware validation typically occurs during initial cluster provisioning or during a BMM Replace action.
 
 For more information about troubleshooting hardware validation failures, see [Troubleshoot Hardware Validation Failure](./troubleshoot-hardware-validation-failure.md).
+
+
