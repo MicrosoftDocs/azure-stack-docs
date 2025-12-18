@@ -1,18 +1,18 @@
 ---
-title: Network fabric overview for Azure Local multi-rack deployments
-description: Learn about network fabric resources for Azure Local multi-rack deployments.
+title: Network Fabric Overview For Azure Local Multi-Rack Deployments (preview)
+description: Learn about network fabric resources for Azure Local multi-rack deployments (preview).
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.topic: article
+ms.topic: concept-article
 ms.date: 12/17/2025
 ---
 
-# Network fabric overview for Azure Local multi-rack deployments
+# Network fabric overview for Azure Local multi-rack deployments (preview)
 
 [!INCLUDE [multi-rack-applies-to-preview](../includes/multi-rack-applies-to-preview.md)]
 
-This article describes the capabilities of the network fabric used to manage the infrastructure and workload networking required to run Azure Local for multi-rack deployments.
+This article describes the capabilities of the network fabric used for infrastructure management for multi-rack deployments of Azure Local. The article also covers the workload networking required for these deployments.
 
 The network fabric *instance* is a single deployed physical network infrastructure - including racks, switches, terminal server connections, and cabling - that Azure represents and manages as a Network Fabric (NF) resource.
 
@@ -20,11 +20,11 @@ The network fabric enables you to:
 
 - Use a single pane of glass to manage your on-premises networking devices and their configuration.
 
-- Create infrastructure and workload networks that are isolated.
+- Create infrastructure networks and workload networks that are isolated.
 
 - Configure route policies to import and export specific routes to and from your existing infrastructure network.
 
-- Monitor and audit device performance, health, and configuration changes through metrics, logs, and alerts.
+- Monitor and audit network device performance, health, and configuration changes through metrics, logs, and alerts.
 
 - Set access policies to govern who can manage the network.
 
@@ -42,7 +42,7 @@ Key capabilities offered in the network fabric:
 
 * **Observability** - Monitor the health and performance of the network fabric in real time through metrics and logs.
 
-* **Network Policy Automation** - Automating the management of consistent network policies across the fabric to ensure security, performance, and access controls are enforced uniformly.
+* **Network policy automation** - Automating the management of consistent network policies across the fabric to ensure security, performance, and access controls are enforced uniformly.
 
 * **Networking features built for enterprise customers** - Support for unique features like multicast, Stream Control Transmission Protocol (SCTP), and jumbo frames.
 
