@@ -8,7 +8,7 @@ ms.topic: concept-article
 ms.date: 12/17/2025
 ---
 
-# Network fabric overview for Azure Local multi-rack deployments (preview)
+# Network fabric overview for multi-rack deployments of Azure Local (preview)
 
 [!INCLUDE [multi-rack-applies-to-preview](../includes/multi-rack-applies-to-preview.md)]
 
