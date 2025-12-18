@@ -1,7 +1,7 @@
 ---
 title: Azure Local and security standards
 description: Learn about Azure Local, security standards, and security assurance.
-ms.date: 12/19/2024
+ms.date: 12/19/2025
 ms.topic: article
 ms.service: azure-local
 ms.author: nguyenhung
