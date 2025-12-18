@@ -4,7 +4,7 @@ description: Get an overview of access control lists for Azure Operator Nexus.
 author: scottsteinbrueck
 ms.author: ssteinbrueck
 ms.service: azure-operator-nexus
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 02/09/2024
 ms.custom: template-concept
 ---

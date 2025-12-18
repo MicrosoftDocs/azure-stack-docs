@@ -4,7 +4,7 @@ description: Learn about disabling internal/external networks in an enabled laye
 author: RaghvendraMandawale
 ms.author: rmandawale
 ms.service: azure-operator-nexus
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 05/16/2025
 ms.custom: template-concept
 ---
