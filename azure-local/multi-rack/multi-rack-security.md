@@ -5,19 +5,19 @@ author: sipastak
 ms.author: sipastak
 ms.service: azure-local
 ms.topic: concept-article
-ms.date: 12/09/2025
+ms.date: 12/18/2025
 ---
 
 # Security concepts for multi-rack deployments of Azure Local
 
 This article provides an overview of security for multi-rack deployments of Azure Local. 
 
-Multi-rack deployments of Azure Local are designed and built to both detect and defend against the latest security threats and comply with the strict requirements of government and industry security standards. Two cornerstones form the foundation of its security architecture:
+Multi-rack deployments of Azure Local are designed and built to detect and defend against the latest security threats. These deployments also comply with the strict requirements of government and industry security standards. The security posture of Azure Local is based on the following two principles:
 
-* **Security by default**: Security resiliency is an inherent part of the platform with little to no configuration changes needed to use it securely.
-* **Assume breach**: The underlying assumption is that any system can be compromised, and as such the goal is to minimize the impact of a security breach if one occurs.
+* **Security by default**: Security resiliency is an inherent part of the platform with few or no configuration changes needed to use it securely.
+* **Assume breach**: The underlying assumption is that any system can be compromised. The goal is to minimize the impact if a security breach occurs.
 
-Microsoft cloud-native security tools are leveraged to give you the ability to improve your cloud security posture while allowing you to protect your workloads.
+Microsoft cloud-native security tools let you improve your cloud security posture and protect your workloads.
 
 ## Platform-wide protection via Microsoft Defender for Cloud
 
