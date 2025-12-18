@@ -3,9 +3,9 @@ title: Create Kubernetes clusters using Azure CLI
 description: Learn how to create Kubernetes clusters in Azure Local using Azure CLI.
 ms.topic: how-to
 ms.custom: devx-track-azurecli
-author: sethmanheim
+author: davidsmatlak
 ms.date: 10/09/2025
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 01/25/2024
 ms.reviewer: guanghu
 ---

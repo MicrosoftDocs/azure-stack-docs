@@ -1,10 +1,10 @@
 ---
 title: Restart-AksHci for AKS hybrid
-author: sethmanheim
+author: davidsmatlak
 description: The Restart-AksHci PowerShell command restarts AKS hybrid and removes all deployed Kubernetes clusters.
 ms.topic: reference
 ms.date: 2/12/2021
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
 

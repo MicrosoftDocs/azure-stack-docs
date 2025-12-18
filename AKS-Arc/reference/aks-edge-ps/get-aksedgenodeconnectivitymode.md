@@ -1,11 +1,11 @@
 ---
 title: Get-AksEdgeNodeConnectivityMode for AKS Edge
-author: sethmanheim
+author: davidsmatlak
 description: The Get-AksEdgeNodeConnectivityMode PowerShell command gets the connectivity mode of the AksEdge Linux node.
 ms.topic: reference
 ms.custom: linux-related-content
 ms.date: 02/02/2023
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 02/02/2023
 #ms.reviewer: jeguan
 ---

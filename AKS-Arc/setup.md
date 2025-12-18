@@ -1,10 +1,10 @@
 ---
 title: Quickstart to set up AKS on Windows Server using Windows Admin Center
 description: Learn how to set up AKS on Windows Server using Windows Admin Center
-author: sethmanheim
+author: davidsmatlak
 ms.topic: quickstart
 ms.date: 11/17/2025
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 03/16/2022
 ms.reviewer: dawhite
 ms.custom: mode-portal

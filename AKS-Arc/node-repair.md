@@ -1,11 +1,11 @@
 ---
 title: Node auto-repair
 description: Learn about automatic node repair of Windows and Linux nodes in AKS on Windows Server.
-author: sethmanheim
+author: davidsmatlak
 ms.topic: how-to
 ms.custom: linux-related-content
 ms.date: 07/03/2024
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 01/10/2023
 ms.reviewer: oadeniji
 # Keyword: unhealthy nodes service disruptions node repair auto-repair
