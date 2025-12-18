@@ -69,7 +69,7 @@ landingContent:
           - text: Set and configure Lustre quotas
             url: lustre-quotas.md
           - text: Optimize file and directory layouts
-            url: optimize-file-dir-layouts.md
+            url: optimize-file-layouts.md
   - title: Security
     linkLists:
       - linkListType: how-to-guide

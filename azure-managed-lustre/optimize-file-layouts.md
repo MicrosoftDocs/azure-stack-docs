@@ -1,5 +1,5 @@
 ---
-title: Optimize File Layouts Azure Managed Lustre
+title: Optimize file and directory Layouts in Azure Managed Lustre
 description: Start here to learn how to optimize file and directory layouts in Azure Managed Lustre.
 ms.date: 12/17/2025
 ms.custom: horz-monitor
@@ -9,7 +9,7 @@ ms.author: rohogue
 ms.service: azure-managed-lustre
 ---
 
-# Optimize File and Directory Layouts in Azure Managed Lustre
+# Optimize file and directory layouts in Azure Managed Lustre
 
 This article provides information on scaling file and directory layouts for maximum performance with AMLFS.
 
@@ -17,7 +17,7 @@ This article provides information on scaling file and directory layouts for maxi
 
 Azure Managed Lustre (AMLFS) uses the Lustre file system's advanced file and directory striping capabilities to deliver scalable, high-performance storage. Understanding how files and directories are distributed across storage nodes is essential to maximize performance and efficiently manage large datasets. This article outlines the default file and directory layouts for AMLFS and provides recommendations for advanced optimization.
 
-## File and Directory Striping in AMLFS
+## File and directory striping in AMLFS
 
 A key performance feature of Lustre—and by extension, AMLFS—is its ability to stripe (or shard) both files and directories across multiple storage resources to balance and optimize system capabilities. The number of Object Storage Targets (OSTs) and Metadata Target Servers (MDTs) deployed with your AMLFS instance determines how files and directories are distributed. Larger AMLFS deployments typically have more OSTs and MDTs, increasing both capacity and parallel performance.
 
@@ -27,7 +27,7 @@ To view the number of OSTs and MDTs in your deployment, run the following comman
 lfs df -h
 ```
 
-## Default File Layouts in AMLFS
+## Default file layouts in AMLFS
 
 By default, AMLFS uses a Progressive File Layout (PFL) for all files. PFL adapts striping based on file size to balance performance and resource usage. The layout is preset at the root of your file system with the following command:
 
@@ -56,7 +56,7 @@ It's not advisable for use on small files.
 > [!NOTE]
 > Modifying striping parameters is an advanced operation. Improper use may impact performance or storage efficiency. Consult the [Lustre Manual](https://doc.lustre.org/lustre_manual.pdf) and use `lfs setstripe -h` for detailed options. Benchmark new configurations before applying them in production environments.
 
-## Directory Size and Organization
+## Directory size and organization
 
 Lustre supports hierarchical namespaces, which differ from flat object storage systems such as Blob Storage. When planning directory structures, keep the following best practices in mind:
 
@@ -64,7 +64,7 @@ Lustre supports hierarchical namespaces, which differ from flat object storage s
 - While Lustre can technically manage hundreds of millions of entries per directory and greater, large directories can cause performance degradation or lock contention when high-concurrency metadata access or directory scan operations (such as with `ls -lR` or `rm -Rf`) are required.
 - Minimize repeated parallel scans of large directories, especially scans that include the Linux stat operation such as `ls -l`, to avoid metadata bottlenecks.
 
-## Optimizing Directory Layouts with Multiple MDTs
+## Optimizing directory layouts with multiple MDTs
 
 Large AMLFS deployments (over 1 PiB on many SKUs, or 2.5 PiB on others) are provisioned with multiple MDTs to scale metadata operations and file counts. Each MDT can linearly scale the maximum metadata operations per second and maximum file counts possible when properly configured and depending on your average file sizes.
 
@@ -85,7 +85,7 @@ lfs setdirstripe -D -i -1 -c 1 --max-inherit=-1 --max-inherit-rr=-1 [/lustrefs]
 
 This default scheme eliminates the need for manual directory placement and is suitable for most users. In addition, including a hierarchical directory scheme with multiple directories instead of single large directories help automatically balance your metadata workload across the MDTs of your AMLFS instance.
 
-## Advanced Directory Layout Options
+## Advanced directory layout options
 
 Advanced users can further customize directory placement using `lfs setdirstripe` from any Lustre client to:
 
