@@ -11,7 +11,7 @@ ms.custom: template-concept
 
 # A/B staged configuration update: Commit workflow in Azure Operator Nexus
 
-The A/B staged configuration update introduces a safe rollout model for network fabric configuration. Operators stage configuration on one customer edge device (A or B), validate behavior, optionally cancel to revert, or complete rolling out to the remaining devices by using commit workflow semantics (lock-validate-commit cycle). The current scope targets customer edge-only staging. Broader policies might be added later.
+The A/B staged configuration update introduces a safe rollout model for Network Fabric configuration. Operators stage configuration on one customer edge device (A or B), validate behavior, optionally cancel to revert, or complete rolling out to the remaining devices by using commit workflow semantics (lock-validate-commit cycle). The current scope targets customer edge-only staging. Broader policies might be added later.
 
 ## Key highlights
 
@@ -38,8 +38,8 @@ A/B update extends commit workflow v2 with policy‑driven staged steps:
 
 ## Prerequisites and versioning
 
-- **Runtime**: Network fabric runtime ≥7.0.0.
-- **Azure Operator Nexus network fabric release**: Feature ships with Azure Operator Nexus network fabric 10.0.
+- **Runtime**: Network Fabric runtime ≥7.0.0.
+- **Azure Operator Nexus - Network Fabric release**: Feature ships with Azure Operator Nexus - Network Fabric 10.0.
 - **API**: GA API dated 2025‑07‑15 (or later).
 - **Commit workflow v2 foundation**: Runtime ≥5.0.1 (for nonstaged operations and device previews/diffs).
 
@@ -57,7 +57,7 @@ A/B update extends commit workflow v2 with policy‑driven staged steps:
 
 ## State transitions (high level)
 
-- **Network fabric**: Provisioned → Locked (configuration) → Prepared (staged) → Committed/Completed → Provisioned
+- **Network Fabric**: Provisioned → Locked (configuration) → Prepared (staged) → Committed/Completed → Provisioned
 - **Customer edge device**: Configuration (previous) → Candidate (staged) → Applied → (if canceled) Reverted (previous)
 
 ## Failure handling and observability

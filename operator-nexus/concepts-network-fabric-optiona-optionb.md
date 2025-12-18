@@ -1,6 +1,6 @@
 ---
 title: 'Azure Operator Nexus: Network Fabric Option A and Option B'
-description: Learn about Azure Operator Nexus network fabric Option A and Option B.
+description: Learn about Azure Operator Nexus - Network Fabric Option A and Option B.
 author: jmmason70
 ms.author: jeffreymason
 ms.service: azure-operator-nexus
@@ -21,7 +21,7 @@ Two peering standards are relevant to Azure Operator Nexus:
 
 For more information on multiautonomous systems, see section 10 of [Request for comment 4364](https://www.ietf.org/rfc/rfc4364.txt).
 
-For more information on the commands involved in creating and provisioning a network fabric, see [Create and provision a network fabric by using the Azure CLI](./howto-configure-network-fabric.md).
+For more information on the commands involved in creating and provisioning Network Fabric, see [Create and provision Network Fabric by using the Azure CLI](./howto-configure-network-fabric.md).
 
 Option A and Option B are specified in the following steps for the `fabric create` operation and the network-to-network interface (NNI) `nni create` operation.
 

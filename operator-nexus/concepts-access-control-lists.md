@@ -9,13 +9,13 @@ ms.date: 02/09/2024
 ms.custom: template-concept
 ---
 
-# Access control lists in Azure Operator Nexus network fabric
+# Access control lists in Azure Operator Nexus - Network Fabric
 
-Access control lists (ACLs) are a set of rules that regulate inbound and outbound packet flow within a network. Azure Nexus Operator network fabric offers an API-based mechanism to configure ACLs for network-to-network interconnects (NNIs) and layer 3 isolation domain (ISD) external networks. These APIs enable the specification of traffic classes and performance actions based on defined rules and actions within the ACLs. ACL rules define the data against which packet contents are compared for filtering purposes.
+Access control lists (ACLs) are a set of rules that regulate inbound and outbound packet flow within a network. Azure Nexus Operator - Network Fabric offers an API-based mechanism to configure ACLs for network-to-network interconnects (NNIs) and layer 3 isolation domain (ISD) external networks. These APIs enable the specification of traffic classes and performance actions based on defined rules and actions within the ACLs. ACL rules define the data against which packet contents are compared for filtering purposes.
 
 ## Objective
 
-The primary objective of ACLs is to secure and regulate incoming and outgoing tenant traffic flowing through Azure Nexus Operator network fabric via NNIs or layer 3 ISD external networks. ACL APIs empower administrators to control data rates for specific traffic classes and take action when traffic exceeds configured thresholds. These capabilities safeguard tenants from network threats by applying ingress ACLs and protect the network from tenant activities through egress ACLs. ACL implementation simplifies network management by securing networks and facilitating the configuration of bulk rules and actions via APIs.
+The primary objective of ACLs is to secure and regulate incoming and outgoing tenant traffic flowing through Azure Nexus Operator - Network Fabric via NNIs or layer 3 ISD external networks. ACL APIs empower administrators to control data rates for specific traffic classes and take action when traffic exceeds configured thresholds. These capabilities safeguard tenants from network threats by applying ingress ACLs and protect the network from tenant activities through egress ACLs. ACL implementation simplifies network management by securing networks and facilitating the configuration of bulk rules and actions via APIs.
 
 ## Functionality
 
@@ -57,14 +57,14 @@ The action property of an ACL statement can have one of the following types:
 
 In addition to adding another layer of control plane protection for enhancing network security, you can also configure and modify control plane traffic policies (CP-TPs) on supported devices via APIs.
 
-• A traffic policy solution can secure the network fabric device control plane (packets destined to or originating from the network fabric device) of the supported devices in Azure Operator Nexus.
+• A traffic policy solution can secure the Network Fabric device control plane (packets destined to or originating from the Network Fabric device) of the supported devices in Azure Operator Nexus.
 • The device control plane (which includes policing/rate limiting) can be implemented as traffic policies based on source/destination IP, source/destination ports, and protocols.
 • APIs can support create, update, and delete for the traffic policy entries/rules/policing/rate limiting.
 
 To implement the functionality for CP-TP ACL:
 
-• For existing deployments, you must create a CP-TP ACL resource, associate it with the network fabric, and perform a patch operation.
-• For new deployments, create the CP-TP ACL resource either during fabric creation or after the fabric is provisioned. Then patch it to the network fabric resource. Because the CP-TP ACL resource isn't created by default, you must create it manually before you attach it to the network fabric resource.
+• For existing deployments, you must create a CP-TP ACL resource, associate it with Network Fabric, and perform a patch operation.
+• For new deployments, create the CP-TP ACL resource either during fabric creation or after the fabric is provisioned. Then patch it to the Network Fabric resource. Because the CP-TP ACL resource isn't created by default, you must create it manually before you attach it to the Network Fabric resource.
 
 ## Related content
 
