@@ -3,10 +3,10 @@ title: Release notes for Azure Kubernetes Service (AKS) engine on Azure Stack Hu
 description: Learn the steps you need to take with the update to AKS engine on Azure Stack Hub.
 author: sethmanheim
 ms.topic: release-notes
-ms.date: 11/06/2025
+ms.date: 12/18/2025
 ms.author: sethm
 ms.reviewer: sumsmith
-ms.lastreviewed: 11/06/2025
+ms.lastreviewed: 12/18/2025
 
 # Intent: As an Azure Stack Hub user, I want to update a Kubernetes cluster using AKS engine on a custom virtual network so that I can deliver my service in an environment that extends my data center or in a hybrid cloud solution with my cluster in Azure Stack Hub and Azure.
 # Keywords: update ASK engine Azure Stack Hub
