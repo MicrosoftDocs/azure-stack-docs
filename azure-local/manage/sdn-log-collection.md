@@ -2,8 +2,8 @@
 title: Collect logs for Software Defined Networking managed by on-premises tools on Azure Local
 description: Learn how to collect logs to troubleshoot Software Defined Networking (SDN) managed by on-premises tools in Azure Local.
 ms.topic: how-to
-ms.author: sethm
-author: sethmanheim
+ms.author: alkohli
+author: alkohli
 ms.date: 09/05/2025
 ---
 
