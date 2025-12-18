@@ -113,6 +113,8 @@
       href: concepts-pki-implementation.md
     - name: Control Plane Resiliency
       href: concepts-rack-resiliency.md
+    - name: Automated Remediation
+      href: automated-remediation.md
     - name: Access and Identity
       href: concepts-security-access-identity.md
     - name: Availability
