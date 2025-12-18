@@ -36,6 +36,8 @@
       href: connect-clients.md
     - name: Automount Lustre clients with fstab
       href: automount-clients-fstab.md
+    - name: Use Azure Managed Lustre with Secure Boot
+      href: client-secure-boot.md
     - name: Use Azure Lustre CSI driver for Kubernetes
       href: use-csi-driver-kubernetes.md
 - name: Manage a file system
