@@ -176,7 +176,8 @@ Here we create a VM that uses specific memory and processor counts on a specifie
 
     **To create VM with dynamic memory:**
 
-    You can change the dynamic memory of a VM using CLI to specify these parameters:
+    Specify additional flags to create a VM with static memory:
+
     `--hardware-profile vm-size="Custom" processors=1 memory-mb=1024 maximum-memory-mb=2048 minimum-memory-mb=1024 target-memory-buffer=20`
     
     Note that `minimum-memory-mb` is less than or equal to `memory-mb` and `maximum-memory-mb` is greater than or equal to `memory-mb`.
