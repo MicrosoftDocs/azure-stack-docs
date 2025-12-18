@@ -17,7 +17,7 @@ If you need to upgrade an existing Lustre client to the current version, see [Up
 
 For more information on connecting clients to a cluster, see [Connect clients to an Azure Managed Lustre file system](connect-clients.md).
 
-For more information about the bevaiour of Azure Managed Lustre with Trusted Lunch Virtual Machines and Confidential Compute Virtual Machine, refer to [Use Secure Boot with Azure Managed Lustre file system](client-secure-boot.md)
+For more information about the behavior of Azure Managed Lustre with Trusted Lunch Virtual Machines and Confidential Compute Virtual Machine, refer to [Use Secure Boot with Azure Managed Lustre file system](client-secure-boot.md)
 
 ::: zone pivot="alma-86"
 
