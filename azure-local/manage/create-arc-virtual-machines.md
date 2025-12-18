@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.reviewer: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 12/15/2025
+ms.date: 12/17/2025
 ms.custom:
   - devx-track-azurecli
   - sfi-image-nochange
@@ -174,8 +174,20 @@ Here we create a VM that uses specific memory and processor counts on a specifie
     az stack-hci-vm create --name $vmName --resource-group $resource_group --admin-username $userName --admin-password $password --computer-name $computerName --image $imageName --location $location --authentication-type all --nics $nicName --custom-location $customLocationID --hardware-profile memory-mb="8192" processors="4" --storage-path-id $storagePathId 
    ```
 
-The VM is successfully created when the `provisioningState` shows as `succeeded`in the output.
+    **To create VM with dynamic memory:**
 
+    You can change the dynamic memory of a VM using CLI to specify these parameters:
+    `--hardware-profile vm-size="Custom" processors=1 memory-mb=1024 maximum-memory-mb=2048 minimum-memory-mb=1024 target-memory-buffer=20`
+    
+    Note that `minimum-memory-mb` is less than or equal to `memory-mb` and `maximum-memory-mb` is greater than or equal to `memory-mb`.
+
+    Here is a sample script:
+
+    ```azurecli
+    az stack-hci-vm create --name "my_dynmemory" -g "my_registration" --admin-username "admin" --admin-password "" --custom-location "/subscriptions/my_subscription/resourceGroups/my_registration/providers/Microsoft.ExtendedLocation/customLocations/my_customlocation" --location "eastus2euap" --image "/subscriptions/my_subscription/resourceGroups/my_registration/microsoft.azurestackhci/marketplacegalleryimages/2022-datacenter-azure-edition-core-01" --hardware-profile vm-size="Custom" processors=1 memory-mb=1024 maximum-memory-mb=2048 minimum-memory-mb=1024 target-memory-buffer=20 --enable-agent true --nics "dynnic"
+    ```
+    
+The VM is successfully created when the `provisioningState` shows as `succeeded`in the output.
 > [!NOTE]
 > The VM created has guest management enabled by default. If for any reason guest management fails during VM creation, you can follow the steps in [Enable guest management on Azure Local VM](./manage-arc-virtual-machines.md#enable-guest-management) to enable it after the VM creation.
 
