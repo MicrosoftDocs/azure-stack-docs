@@ -21,8 +21,10 @@ The Detailed status message of the Bare Metal Machine (Operator Nexus) resource 
 | Detailed status message                                 | Details and mitigation                                                                                          |
 | ------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
 | `Warning: PXE port is unhealthy`                        | [`Warning: PXE port is unhealthy`](#warning-pxe-port-is-unhealthy)                                              |
+| `Warning: BMM Node is unhealthy and may require hardware replacement`  | [`Warning: BMM Node is unhealthy and may require hardware replacement`](#warning-this-machine-has-failed-hardware-validation)  |
 | `Warning: BMM power state doesn't match expected state` | [`Warning: BMM power state doesn't match expected state`](#warning-bmm-power-state-doesnt-match-expected-state) |
 | `Warning: This machine has failed hardware validation`  | [`Warning: This machine has failed hardware validation`](#warning-this-machine-has-failed-hardware-validation)  |
+
 
 ## Troubleshooting
 
