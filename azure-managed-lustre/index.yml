@@ -70,6 +70,8 @@ landingContent:
             url: root-squash-configure-settings.md
           - text: Set and configure Lustre quotas
             url: lustre-quotas.md
+          - text: Optimize file and directory layouts
+            url: optimize-file-layouts.md
   - title: Security
     linkLists:
       - linkListType: how-to-guide
