@@ -176,7 +176,7 @@ Here we create a VM that uses specific memory and processor counts on a specifie
 
     **To create VM with dynamic memory:**
 
-    Specify additional flags to create a VM with static memory:
+    Specify additional flags to create a VM with dynamic memory:
 
     `--hardware-profile vm-size="Custom" processors=1 memory-mb=1024 maximum-memory-mb=2048 minimum-memory-mb=1024 target-memory-buffer=20`
     
