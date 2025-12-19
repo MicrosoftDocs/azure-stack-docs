@@ -67,7 +67,7 @@ The following diagram illustrates the architecture of Azure Local for multi-rack
 The important points about this architecture are as follows:
 
 - Prescriptive hardware bill of materials (BOM) featuring preintegrated racks that contain SAN storage, servers, and network devices.
-- Azure Linux OS installed on the hardware and hypervisor for virtualization.
+- Azure Linux Operating System installed on the hardware and hypervisor for virtualization.
 - Azure Local services:
   - Software-defined networking (SDN) services including virtual networks, logical networks, software load balancers, Network Address Translation (NAT) gateways, and network security groups.
   - Deployment of Windows and Linux Azure Local virtual machines (VMs) and Azure Kubernetes services (AKS) enabled by Azure Arc.
