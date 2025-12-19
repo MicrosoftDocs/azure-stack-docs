@@ -796,7 +796,7 @@ items:
     items:
       - name: Compute for multi-rack deployments
         href: ./multi-rack/multi-rack-concepts-compute.md
-      - name: Network fabric overview
+      - name: Network fabric for multi-rack deployments
         href: ./multi-rack/multi-rack-network-fabric-overview.md
       - name: Load balancer for multi-rack deployments
         href: ./multi-rack/multi-rack-load-balancer-overview.md
