@@ -136,16 +136,10 @@ You will provide these properties to create the custom policy definition via por
 Available `NexusLinuxBaseline` versions are:
 
 | Version |
-|---------|
+| -------- |
 | 1.18.0.0 |
 | 1.17.0.0 |
 | 1.16.0.0 |
-| 1.15.0.0 |
-| 1.14.0.0 |
-| 1.13.0.0 |
-| 1.12.0.0 |
-| 1.11.0.0 |
-| 1.1.0.0 |
 
 ## Use Azure Policy to secure your Nexus Kubernetes Compute Cluster resources
 
