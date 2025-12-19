@@ -248,34 +248,6 @@ Follow these steps to create a VM image using Azure portal. In Azure portal for 
 
 ---
 
-<!--## List VM images
-
-You need to view the list of VM images to choose an image to manage.
-
-### [Azure CLI](#tab/azurecli)
-
-[!INCLUDE [hci-list-vm-image-azure-cli](../includes/hci-list-vm-image-azure-cli.md)]
-
-### [Azure portal](#tab/azureportal)
-
-[!INCLUDE [hci-list-vm-image-portal](../includes/hci-list-vm-image-portal.md)]
-
----
-
-## View VM image properties
-
-You might want to view the properties of VM images before you use the image to create a VM. Follow these steps to view the image properties:
-
-### [Azure CLI](#tab/azurecli)
-
-[!INCLUDE [hci-view-vm-image-properties-azure-cli](../includes/hci-view-vm-image-properties-azure-cli.md)]
-
-### [Azure portal](#tab/azureportal)
-
-[!INCLUDE [hci-view-vm-image-properties-portal](../includes/hci-view-vm-image-properties-portal.md)]
-
---->
-
 ## Update VM image
 
 > [!IMPORTANT]
@@ -304,20 +276,6 @@ To update a VM image, use the following steps in Azure portal.
    :::image type="content" source="./media/virtual-machine-image-azure-marketplace/create-image.png" alt-text="Screenshot showing the Create image dialog for a new VM image." lightbox="./media/virtual-machine-image-azure-marketplace/create-image.png":::
 
    After the new VM image is created, create a VM using the new image and verify that the VM works properly. After verification, you can delete the old VM image.
-
-<!--## Delete VM image
-
-You might want to delete a VM image if the download fails for some reason or if you no longer need the image. Follow these steps to delete the VM images.
-
-### [Azure CLI](#tab/azurecli)
-
-[!INCLUDE [hci-view-vm-image-properties-azure-cli](../includes/hci-delete-vm-image-azure-cli.md)]
-
-### [Azure portal](#tab/azureportal)
-
-[!INCLUDE [hci-delete-vm-image-portal](../includes/hci-delete-vm-image-portal.md)]
-
---->
 
 ## Next steps
 

@@ -61,15 +61,15 @@ The results include VM images from:
 Here's a sample output:
 
 ```console
-PS C:\Users\azcli> az stack-hci-vm image list --subscription "<Subscription ID>" --resource-group "myhci-rg"
+PS C:\Users\azcli> az stack-hci-vm image list --subscription "<Subscription ID>" --resource-group "<Resource group>"
 Command group 'stack-hci-vm' is experimental and under development. Reference and support levels: https://aka.ms/CLI_refstatus
 [
   {
     "extendedLocation": {
-      "name": "/subscriptions/<Subscription ID>/resourcegroups/myhci-rg/providers/microsoft.extendedlocation/customlocations/myhci-cl",
+      "name": "/subscriptions/<subscription ID>/resourcegroups/<resource group>/providers/microsoft.extendedlocation/customlocations/<custom location>",
       "type": "CustomLocation"
     },
-    "id": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/microsoft.azurestackhci/marketplacegalleryimages/w
+    "id": "/subscriptions/<subscription ID>/resourceGroups/<resource group>/providers/microsoft.azurestackhci/marketplacegalleryimages/w
 inServer2022Az-01",
     "location": "eastus",
     "name": "winServer2022Az-01",
@@ -164,7 +164,7 @@ To view image properties using Azure CLI, follow these steps:
         Set the image ID parameter:
 
         ```azurecli
-        $mktplaceImageID = "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/galleryimages/mylocal-marketplaceimage"
+        $mktplaceImageID = "/subscriptions/<subscription ID>/resourceGroups/<resource group>/providers/Microsoft.AzureStackHCI/galleryimages/mylocal-marketplaceimage"
         ```
 
         Run the command:
@@ -180,10 +180,10 @@ To view image properties using Azure CLI, follow these steps:
         Command group 'stack-hci-vm' is experimental and under development. Reference and support levels: https://aka.ms/CLI_refstatus
         {
           "extendedLocation": {
-            "name": "/subscriptions/<Subscription ID>/resourcegroups/myhci-rg/providers/microsoft.extendedlocation/customlocations/mylocal-cl",
+            "name": "/subscriptions/<subscription ID>/resourcegroups/<resource group>/providers/microsoft.extendedlocation/customlocations/<custom location>",
             "type": "CustomLocation"
           },
-          "id": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/galleryimages/mylocal-marketplaceimage",
+          "id": "/subscriptions/<subscription ID>/resourceGroups/<resource group>/providers/Microsoft.AzureStackHCI/galleryimages/mylocal-marketplaceimage",
           "location": "eastus",
           "name": "mylocal-marketplaceimage",
           "properties": {
@@ -221,18 +221,18 @@ To view image properties using Azure CLI, follow these steps:
         Here's a sample output:
 
         ```console
-        PS /home/user> az stack-hci-vm image show --name "2022-datacenter-azure-edition-hotpatch-01" --resource-group "California"  
+        PS /home/user> az stack-hci-vm image show --name "2022-datacenter-azure-edition-hotpatch-01" --resource-group ""  
         {
           "extendedLocation": {
-            "name": "/subscriptions/fbaf508b-cb61-4383-9cda-a42bfa0c7bc9/resourcegroups/california/providers/microsoft.extendedlocation/customlocations/california",
+            "name": "/subscriptions/<subscription>/resourcegroups/<resource group>/providers/microsoft.extendedlocation/customlocations/<custom location>",
             "type": "CustomLocation"
           },
-          "id": "/subscriptions/fbaf508b-cb61-4383-9cda-a42bfa0c7bc9/resourceGroups/California/providers/microsoft.azurestackhci/marketplacegalleryimages/2022-datacenter-azure-edition-hotpatch-01",
+          "id": "/subscriptions/<subscription>/resourceGroups/<resource group>/providers/microsoft.azurestackhci/marketplacegalleryimages/2022-datacenter-azure-edition-hotpatch-01",
           "location": "eastus",
           "name": "2022-datacenter-azure-edition-hotpatch-01",
           "properties": {
             "cloudInitDataSource": null,
-            "containerId": "/subscriptions/fbaf508b-cb61-4383-9cda-a42bfa0c7bc9/resourceGroups/California/providers/Microsoft.AzureStackHCI/storageContainers/UserStorage1-867e0649feec4786ad8f0966fecf9cc3",
+            "containerId": "/subscriptions/<subscription>/resourceGroups/<resource group>/providers/Microsoft.AzureStackHCI/storageContainers/<container name>",
             "hyperVGeneration": "V2",
             "identifier": {
               "offer": "windowsserver",
@@ -264,7 +264,7 @@ To view image properties using Azure CLI, follow these steps:
               }
             }
           },
-          "resourceGroup": "California",
+          "resourceGroup": "<Resource group>",
           "systemData": {
             "createdAt": "2025-04-28T19:04:53.484650+00:00",
             "createdBy": "Michael.Godfrey@adaptivecloudlab.com",
@@ -277,7 +277,7 @@ To view image properties using Azure CLI, follow these steps:
           "type": "microsoft.azurestackhci/marketplacegalleryimages"
         }
         ```
-        
+
 ### [Azure portal](#tab/azureportal)
 
 To view image properties in the Azure portal, follow these steps:
@@ -327,14 +327,14 @@ Here's a sample output showing deletion by name and resource group:
 
 ```console
 PS C:\Users\azcli> $subscription = "<Subscription ID>"
-PS C:\Users\azcli> $resource_group = "mylocal-rg"
+PS C:\Users\azcli> $resource_group = "<Resource group>"
 PS C:\Users\azcli> $mktplaceImage = "mymylocal-marketplaceimage"
 PS C:\Users\azcli> az stack-hci-vm image delete --name $mktplaceImage --resource-group $resource_group
     
 Are you sure you want to perform this operation? (y/n): y
 PS C:\Users\azcli> az stack-hci-vm image show --name $mktplaceImage --resource-group $resource_group
     
-ResourceNotFound: The Resource 'Microsoft.AzureStackHCI/marketplacegalleryimages/myhci-marketplaceimage' under resource group 'mylocal-rg' was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix
+ResourceNotFound: The Resource 'Microsoft.AzureStackHCI/marketplacegalleryimages/myhci-marketplaceimage' under resource group '<resource group>' was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix
 ```
 
 ### [Azure portal](#tab/azureportal)

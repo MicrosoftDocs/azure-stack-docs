@@ -142,24 +142,6 @@ Here's a sample output:
 }
 ```
 
-<!--## List VM images
-
-You need to view the list of VM images to choose an image to manage.
-
-[!INCLUDE [hci-list-vm-image-azure-cli](../includes/hci-list-vm-image-azure-cli.md)]
-
-## View VM image properties
-
-You might want to view the properties of VM images before you use the image to create a VM. Follow these steps to view the image properties:
-
-[!INCLUDE [hci-view-vm-image-properties-azure-cli](../includes/hci-view-vm-image-properties-azure-cli.md)]
-
-## Delete VM image
-
-You might want to delete a VM image if the download fails for some reason or if the image is no longer needed. Follow these steps to delete the VM images.
-
-[!INCLUDE [hci-view-vm-image-properties-azure-cli](../includes/hci-delete-vm-image-azure-cli.md)]-->
-
 ## Next steps
 
 - [Create logical networks](./create-logical-networks.md)
