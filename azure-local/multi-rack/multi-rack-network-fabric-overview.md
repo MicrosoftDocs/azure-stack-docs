@@ -54,4 +54,4 @@ Key capabilities offered in the network fabric are:
 
 ## Next steps
 
-See [Compelete deployment prerequisites](./multi-rack-prerequisites.md).
+See [Complete deployment prerequisites](./multi-rack-prerequisites.md).
