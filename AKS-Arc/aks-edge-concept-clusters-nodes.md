@@ -1,8 +1,8 @@
 ---
 title: AKS Edge Essentials clusters and nodes
 description: Learn about clusters and nodes running on AKS Edge Essentials.
-author: sethmanheim
-ms.author: sethm
+author: davidsmatlak
+ms.author: davidsmatlak
 ms.topic: concept-article
 ms.date: 07/03/2025
 ms.custom: template-concept

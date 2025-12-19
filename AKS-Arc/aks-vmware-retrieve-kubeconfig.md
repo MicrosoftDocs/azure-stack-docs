@@ -1,10 +1,10 @@
 ---
 title: Retrieve certificate-based admin kubeconfig in AKS enabled by Azure Arc on VMware
 description: Retrieve certificate-based admin kubeconfig in AKS enabled by Arc on VMware.
-author: sethmanheim
+author: davidsmatlak
 ms.topic: how-to
 ms.date: 01/22/2024
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 01/22/2024
 ms.reviewer: sulahiri
 

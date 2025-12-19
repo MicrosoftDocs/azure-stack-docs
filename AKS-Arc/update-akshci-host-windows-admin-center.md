@@ -4,10 +4,10 @@ description: Learn about using Windows Admin Center to update the Azure Kubernet
 ms.topic: how-to
 ms.date: 06/27/2024
 ms.custom: fasttrack-edit
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: mikek
-author: sethmanheim
+author: davidsmatlak
 
 # Intent: As an IT Pro, I need to understand how to use Windows Admin Center to update my AKS host.
 # Keyword: auto-update Windows Admin Center

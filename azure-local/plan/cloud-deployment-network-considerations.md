@@ -145,6 +145,48 @@ In this step, you define the infrastructure subnet address space, how these addr
 
 The following infrastructure subnet components must be planned and defined before you start deployment so you can anticipate any routing, firewall, or subnet requirements.
 
+### Arc Resource Bridge reserved IP ranges you most avoid for Azure Local infrastructure components
+
+When you deploy Azure Local, the system automatically sets aside certain IP address ranges for internal Kubernetes services that power Azure Resource Bridge (ARB) and AKS. If your Azure Local configuration uses IPs that overlap with these reserved ranges, your deployment might fail or experience connectivity issues that are difficult to troubleshoot.
+
+### Reserved ranges - Do not use
+
+The following IP ranges are reserved internally for Arc Resource Bridge must not be used for any Azure Local infrastructure component as listed below:
+
+| Reserved range | What it's used for |
+|----------------|-------------------|
+| `10.96.0.0/12` | Kubernetes internal services (cluster IPs) |
+| `10.244.0.0/16` | Kubernetes pod networking |
+
+### What to check before deployment
+
+Make sure none of the following Azure Local infrastructure IPs fall within the reserved ranges above:
+
+| Check this | Example of a problem |
+|------------|---------------------|
+| Your DNS server IPs | DNS at `10.96.1.10` would conflict |
+| Your Proxy server IP | Proxy server at `10.97.10.25` would conflict |
+| Your infrastructure IP pool | Pool starting at `10.100.0.1` falls within `10.96.0.0/12` |
+| Your node management IPs | Node at `10.244.1.50` conflicts with pod network |
+| Your default gateway | Gateway at `10.96.0.1` would conflict |
+| Any logical networks for VMs | VM subnet `10.244.100.0/24` overlaps pod network |
+
+### Safe IP ranges to use
+
+Here are examples of commonly used private IP ranges that won't conflict:
+
+| Safe range | Notes |
+|-----------|-------|
+| `192.168.x.x` | Most common for small deployments |
+| `172.16.x.x` to `172.31.x.x` | Good for medium-sized networks |
+| `10.0.x.x` to `10.95.x.x` | Safe — stays below the reserved `10.96.0.0` boundary |
+| `10.112.x.x` and higher | Safe — above the reserved `10.111.255.255` boundary |
+
+### Related content
+
+- [IP address planning requirements for AKS](/azure/aks/aksarc/aks-hci-ip-address-planning)
+- [Designated IP ranges for Arc resource bridge](/azure/azure-arc/resource-bridge/network-requirements#designated-ip-ranges-for-arc-resource-bridge)
+
 ### Network adapter drivers
 
 Once you install the operating system, and before configuring networking on your nodes, you must ensure that your network adapters have the latest driver provided by your OEM or network interface vendor. Important capabilities of the network adapters might not surface when using the default Microsoft drivers.
@@ -352,7 +394,8 @@ Here are the summarized considerations for DNS servers addresses:
 |4     | It is not supported to change the DNS servers after deployment. Make sure you plan your DNS strategy before doing the Azure Local deployment.       |
 |5     | When defining an array of multiple DNS servers on an ARM template for the Infrastructure network, make sure each value is within quotes "" and separated by commas, as in the following example.  |
 |6     | It is not supported to run the DNS servers used by Azure Local infrastructure in virtual machines running inside the Azure Local instance. |
-|7     | All DNS servers configured must resolve on-premises domains required for the infrastructure. Public DNS Servers such as 8.8.8.8 are not supported.
+|7     | All DNS servers configured must resolve on-premises domains required for the infrastructure. Public DNS Servers such as 8.8.8.8 are not supported.|
+|8     | All DNS servers configured must not overlap with the reserved ARB subnet ranges (10.96.0.0/12 and 10.244.0.0/16) |
 
 ```powershell
 "dnsServers": [
@@ -376,7 +419,8 @@ Here are the summarized considerations for proxy configuration:
 |2     | The same proxy configuration must be applied for WinINET, WinHTTP, and environment variables.        |
 |3     | The Environment Checker ensures that proxy configuration is consistent across all proxy components.       |
 |4     | Proxy configuration of Arc Resource Bridge VM and AKS is automatically done by the orchestrator during deployment.        |
-|5     | Only the non-authenticated proxies are supported.        |
+|5     | Only the non-authenticated proxies are supported. |
+|8     | The proxy server configured for Azure Local nodes must not overlap with the reserved ARB subnet ranges (10.96.0.0/12 and 10.244.0.0/16) |
  
 
 ### Firewall requirements

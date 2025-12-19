@@ -1,10 +1,10 @@
 ---
 title: Uninstall-AksHciGmsaWebhook for AKS hybrid
-author: sethmanheim
+author: davidsmatlak
 description: The Uninstall-AksHciGmsaWebhook PowerShell command uninstalls the gMSA webhook add-on to the cluster.
 ms.topic: reference
 ms.date: 2/12/2021
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
 

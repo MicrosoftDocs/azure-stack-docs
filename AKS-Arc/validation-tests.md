@@ -1,10 +1,10 @@
 ---
 title: Validation tests in AKS on Windows Server
 description: Learn how to validate your environment and configuration prior to installing AKS on Windows Server.
-author: sethmanheim
+author: davidsmatlak
 ms.topic: troubleshooting
 ms.date: 07/03/2024
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 04/19/2023
 ms.reviewer: waltero
 

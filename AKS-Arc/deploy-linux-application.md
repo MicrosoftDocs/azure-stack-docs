@@ -1,11 +1,11 @@
 ---
 title: Deploy a Linux app in AKS on Windows Server
 description: Learn how to deploy a multi-container Linux app to your Kubernetes cluster in AKS on Windows Server using a custom image stored in Azure Container Registry.
-author: sethmanheim
+author: davidsmatlak
 ms.topic: how-to
 ms.custom: linux-related-content
 ms.date: 09/24/2024
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 06/27/2022
 ms.reviewer: abha
 

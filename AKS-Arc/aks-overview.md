@@ -4,8 +4,8 @@ description: Learn about AKS enabled by Azure Arc and available deployment optio
 ms.topic: overview
 ms.date: 11/13/2025
 ai-usage: ai-assisted
-author: sethmanheim
-ms.author: sethm 
+author: davidsmatlak
+ms.author: davidsmatlak 
 ms.reviewer: rcheeran
 ms.lastreviewed: 07/16/2025
 

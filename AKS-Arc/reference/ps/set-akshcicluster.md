@@ -1,10 +1,10 @@
 ---
 title: Set-AksHciCluster for AKS hybrid
-author: sethmanheim
+author: davidsmatlak
 description: The Set-AksHciCluster PowerShell command scales the number of control plane nodes, enable or disable the autoscaler, set the autoscaler configuration profile.
 ms.topic: reference
 ms.date: 03/16/2022
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 
 ms.reviewer: jeguan
 

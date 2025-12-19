@@ -1,10 +1,10 @@
 ---
 title: Repair-AksHciCerts for AKS hybrid
 description: The Repair-AksHciCerts PowerShell troubleshoots and fixes errors related to expired certificates for the AKS hybrid host.
-author: sethmanheim
+author: davidsmatlak
 ms.topic: reference
 ms.date: 6/16/2022
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 6/16/2022
 ms.reviewer: jeguan
 

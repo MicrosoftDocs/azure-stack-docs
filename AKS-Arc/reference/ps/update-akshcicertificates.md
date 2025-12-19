@@ -1,10 +1,10 @@
 ---
 title: Update-AksHciCertificates for AKS hybrid
 description: The Update-AksHciCertificates PowerShell command rotates tokens and certificates of all clients in the management cluster.
-author: sethmanheim
+author: davidsmatlak
 ms.topic: reference
 ms.date: 6/16/2022
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 6/16/2022
 ms.reviewer: jeguan
 

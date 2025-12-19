@@ -3,8 +3,8 @@ title: Set-AksHciOffsiteConfig for AKS hybrid
 description: The Set-AksHciOffsiteConfig PowerShell command sets the offsite configuration to use offline download
 ms.topic: reference
 ms.date: 10/03/2022
-author: sethmanheim
-ms.author: sethm 
+author: davidsmatlak
+ms.author: davidsmatlak 
 ms.lastreviewed: 10/03/2022
 ms.reviewer: jeguan
 ---

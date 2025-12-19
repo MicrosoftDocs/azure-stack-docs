@@ -4,7 +4,7 @@ description: Learn how to manage Software Load Balancer for SDN managed by on-pr
 ms.topic: how-to
 author: alkohli
 ms.author: alkohli
-ms.reviewer: anpaul
+ms.reviewer: alkohli
 ms.date: 09/05/2025
 ---
 

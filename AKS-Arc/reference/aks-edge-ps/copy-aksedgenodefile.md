@@ -1,10 +1,10 @@
 ---
 title: Copy-AksEdgeNodeFile for AKS Edge
-author: sethmanheim
+author: davidsmatlak
 description: The Copy-AksEdgeNodeFile PowerShell command copies a file to or from a node.
 ms.topic: reference
 ms.date: 02/01/2023
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 02/01/2023
 #ms.reviewer: jeguan
 

@@ -1,10 +1,10 @@
 ---
 title: Set-AksHciNodePool for AKS hybrid
-author: sethmanheim
+author: davidsmatlak
 description: The Set-AksHciNodePool PowerShell command scales a node pool
 ms.topic: reference
 ms.date: 02/09/2023
-ms.author: sethm
+ms.author: davidsmatlak
 ---
 
 # Set-AksHciNodePool

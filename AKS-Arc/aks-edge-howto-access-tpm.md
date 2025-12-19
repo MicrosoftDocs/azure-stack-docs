@@ -1,8 +1,8 @@
 ---
 title: Access TPM from the AKS Edge Essentials virtual machine
 description: Learn how to access the TPM from a Linux virtual machine.
-author: sethmanheim
-ms.author: sethm
+author: davidsmatlak
+ms.author: davidsmatlak
 ms.topic: how-to
 ms.date: 07/12/2024
 ms.custom: template-how-to, linux-related-content

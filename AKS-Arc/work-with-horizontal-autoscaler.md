@@ -2,8 +2,8 @@
 title: Use PowerShell for cluster autoscaling in AKS on Windows Server
 description: Learn how to use PowerShell for cluster autoscaling in AKS on Windows Server.
 ms.topic: how-to
-author: sethmanheim
-ms.author: sethm
+author: davidsmatlak
+ms.author: davidsmatlak
 ms.lastreviewed: 06/27/2024
 ms.reviewer: mikek
 ms.date: 11/07/2022

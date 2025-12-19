@@ -3,8 +3,8 @@ title: What's new in AKS enabled by Azure Arc on Azure Local
 description: Learn about what's new in AKS enabled by Azure Arc on Azure Local.
 ms.topic: overview
 ms.date: 11/13/2025
-author: sethmanheim
-ms.author: sethm 
+author: davidsmatlak
+ms.author: davidsmatlak 
 ms.reviewer: rcheeran
 ms.lastreviewed: 10/24/2025
 

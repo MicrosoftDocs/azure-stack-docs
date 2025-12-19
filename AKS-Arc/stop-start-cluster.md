@@ -1,10 +1,10 @@
 ---
 title: Stop and restart a cluster
 description: Learn how to stop and restart a cluster in AKS on Windows Server.
-author: sethmanheim
+author: davidsmatlak
 ms.topic: how-to
 ms.date: 06/26/2024
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: EkeleAsonye
 

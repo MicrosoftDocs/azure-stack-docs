@@ -1,8 +1,8 @@
 ---
 title: Steps to prepare your machine for AKS Edge Essentials
 description: Learn how to prepare your machines for AKS Edge Essentials clusters. 
-author: sethmanheim
-ms.author: sethm
+author: davidsmatlak
+ms.author: davidsmatlak
 ms.topic: how-to
 ms.date: 09/24/2025
 ms.custom: template-how-to

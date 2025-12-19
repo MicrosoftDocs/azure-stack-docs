@@ -2,9 +2,9 @@
 title: Known issues in AKS enabled by Azure Arc on VMware (preview)
 description: Learn about known issues in AKS enabled by Arc on VMware.
 ms.topic: how-to
-author: sethmanheim
+author: davidsmatlak
 ms.date: 03/19/2024
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 03/19/2024
 ms.reviewer: leslielin
 

@@ -1,10 +1,10 @@
 ---
 title: Quickstart to create a local Kubernetes cluster using Windows Admin Center
 description: Learn how to create a local Kubernetes cluster using Windows Admin Center
-author: sethmanheim
+author: davidsmatlak
 ms.topic: quickstart
 ms.date: 07/03/2025
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: dawhite
 ms.custom: mode-portal

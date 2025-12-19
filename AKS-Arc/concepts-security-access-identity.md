@@ -1,10 +1,10 @@
 ---
 title: Access and identity options for Azure Kubernetes Service (AKS) Arc
 description: Learn about options in access and identity management on a Kubernetes cluster in AKS on Azure Local.
-author: sethmanheim
+author: davidsmatlak
 ms.topic: how-to
 ms.date: 07/03/2025
-ms.author: sethm
+ms.author: davidsmatlak
 ms.lastreviewed: 07/30/2024
 ms.reviewer: leslielin
 

@@ -1,8 +1,8 @@
 ---
 title: AKS Edge Essentials full Kubernetes
 description: Describes how to create a cluster with multiple machines in AKS Edge Essentials.
-author: sethmanheim
-ms.author: sethm
+author: davidsmatlak
+ms.author: davidsmatlak
 ms.topic: how-to
 ms.date: 03/10/2025
 ms.custom: template-how-to

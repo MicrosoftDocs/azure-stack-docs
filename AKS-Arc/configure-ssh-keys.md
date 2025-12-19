@@ -3,8 +3,8 @@ title: Configure SSH keys for a cluster in AKS enabled by Azure Arc
 description: Learn how to configure SSH keys for an AKS Arc cluster.
 ms.date: 02/26/2025
 ms.topic: how-to
-author: sethmanheim
-ms.author: sethm
+author: davidsmatlak
+ms.author: davidsmatlak
 ms.reviewer: leslielin
 ms.lastreviewed: 01/10/2025
 ---

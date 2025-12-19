@@ -1,8 +1,8 @@
 ---
 title: Control plane configuration validation errors
 description: Learn details about each control plane configuration validation error.
-author: sethmanheim
-ms.author: sethm
+author: davidsmatlak
+ms.author: davidsmatlak
 ms.topic: troubleshooting
 ms.date: 02/26/2025
 

@@ -1,8 +1,8 @@
 ---
 title: Nested virtualization environment for AKS Edge Essentials
 description: Learn how to prepare your nested virtualization environment for AKS Edge Essentials clusters. 
-author: sethmanheim
-ms.author: sethm
+author: davidsmatlak
+ms.author: davidsmatlak
 ms.topic: how-to
 ms.date: 09/11/2024
 ms.custom: template-how-to

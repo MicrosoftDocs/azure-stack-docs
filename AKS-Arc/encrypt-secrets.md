@@ -1,10 +1,10 @@
 ---
 title: Encrypt etcd secrets for Azure Kubernetes Service clusters
 description: Learn how to encrypt etcd secrets in AKS on Windows Server.
-author: sethmanheim
+author: davidsmatlak
 ms.topic: how-to
 ms.date: 06/27/2024
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: aathipsa
 # Intent: As an IT Pro, I want to learn about encrypted etcd secrets and how they are used in my AKS deployment. 

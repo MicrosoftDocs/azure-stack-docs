@@ -1,10 +1,10 @@
 ---
 title: Node virtual machine networking in AKS on Windows Server
 description: Learn about virtual machine networking in AKS Arc, including static IP and DHCP networking and load balancers.
-author: sethmanheim
+author: davidsmatlak
 ms.topic: article
 ms.date: 04/07/2025
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 1/14/2022
 
 # Intent: As an IT Pro, I want to learn about virtual machine networking in AKS Arc.

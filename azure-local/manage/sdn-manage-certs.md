@@ -2,8 +2,8 @@
 title: Manage certificates for Software Defined Networking (SDN) managed by on-premises tools
 description: Learn how to manage certificates for Network Controller Northbound and Southbound communications when you deploy Software Defined Networking (SDN) managed by on-premises tools.
 ms.topic: how-to
-ms.author: anpaul
-author: AnirbanPaul
+ms.author: alkohli
+author: alkohli
 ms.date: 09/05/2025
 ---
 

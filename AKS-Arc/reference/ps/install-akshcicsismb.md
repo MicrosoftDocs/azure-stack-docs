@@ -1,10 +1,10 @@
 ---
 title: Install-AksHciCsiSmb for AKS hybrid
-author: sethmanheim
+author: davidsmatlak
 description: The Install-AksHciCsiSmb PowerShell command installs CSI SMB plugin to a cluster
 ms.topic: reference
 ms.date: 4/13/2021
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
 

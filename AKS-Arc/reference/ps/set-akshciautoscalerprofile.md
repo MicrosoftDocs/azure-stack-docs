@@ -1,10 +1,10 @@
 ---
 title: Set-AksHciAutoScalerProfile for AKS hybrid
-author: sethmanheim
+author: davidsmatlak
 description: The Set-AksHciAutoScalerProfile PowerShell command allows reconfiguration of an autoscaler configuration profile
 ms.topic: reference
 ms.date: 04/15/2022
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 
 ms.reviewer: jeguan
 

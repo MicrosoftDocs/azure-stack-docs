@@ -4,8 +4,8 @@ description: Learn how to install and uninstall the Kubernetes Extension for AKS
 ms.topic: how-to
 ms.custom: devx-track-azurecli
 ms.date: 03/21/2024
-author: sethmanheim
-ms.author: sethm 
+author: davidsmatlak
+ms.author: davidsmatlak 
 ms.reviewer: leslielin
 ms.lastreviewed: 03/21/2024
 ---

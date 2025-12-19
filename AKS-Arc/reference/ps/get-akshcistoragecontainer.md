@@ -1,10 +1,10 @@
 ---
 title: Get-AksHciStorageContainer for AKS hybrid
-author: sethmanheim
+author: davidsmatlak
 description: The Get-AksHciStorageContainer PowerShell command returns the Storage container name and location for the specified Storage container.
 ms.topic: reference
 ms.date: 08/25/2023
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 1/14/2022
 
 ---

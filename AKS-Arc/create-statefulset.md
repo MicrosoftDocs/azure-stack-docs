@@ -1,10 +1,10 @@
 ---
 title: Create StatefulSets in AKS on Windows Server
 description: Learn how to create StatefulSets in Azure Kubernetes Service (AKS) on Windows Server.
-author: sethmanheim
+author: davidsmatlak
 ms.topic: how-to
 ms.date: 06/26/2024
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: EkeleAsonye
 

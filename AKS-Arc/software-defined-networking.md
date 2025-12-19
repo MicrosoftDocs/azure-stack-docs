@@ -1,10 +1,10 @@
 ---
 title: How to use AKS on Windows Server with SDN and virtual networking infrastructure
 description: Learn how to use AKS on Windows Server with software defined networking and virtual networking infrastructure.
-author: sethmanheim
+author: davidsmatlak
 ms.topic: how-to
 ms.date: 04/02/2025
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 10/07/2022
 ms.reviewer: anpaul
 

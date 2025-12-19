@@ -1,8 +1,8 @@
 ---
 title: Discover sample OPC UA servers with Akri
 description: Learn how to deploy an OPC PLC container and use Akri to discover servers and display anomaly values.
-author: sethmanheim
-ms.author: sethm
+author: davidsmatlak
+ms.author: davidsmatlak
 ms.topic: how-to
 ms.date: 10/17/2023
 ms.custom: template-how-to
@@ -184,7 +184,7 @@ You've now successfully created two OPC UA PLC servers, each with one fast PLC n
 
 ### Create X.509 v3 certificates
 
-Create three OPC UA compliant X.509v3 certificates (one for the broker and one for each server), ensuring that the certificate contains the [necessary components](http://opclabs.doc-that.com/files/onlinedocs/QuickOpc/Latest/User%27s%20Guide%20and%20Reference-QuickOPC/Providing%20Client%20Instance%20Certificate.html), such as an application URI.
+Create three OPC UA compliant X.509v3 certificates (one for the broker and one for each server), ensuring that the certificate contains the [necessary components](https://opclabs.doc-that.com/files/onlinedocs/OPCLabs-ConnectivityStudio/Latest/User%27s%20Guide%20and%20Reference-Connectivity%20Software/webframe.html#OPC%20UA%20Certificate%20Management%20Client.html), such as an application URI.
 
 Requirements for certificates:
 

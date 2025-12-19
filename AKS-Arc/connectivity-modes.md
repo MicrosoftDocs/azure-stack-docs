@@ -3,8 +3,8 @@ title: Connectivity modes in AKS Arc on Azure Local
 description: Learn about running AKS on Azure Local in disconnected and semi-connected mode.
 ms.topic: overview
 ms.date: 04/16/2025
-author: sethmanheim
-ms.author: sethm 
+author: davidsmatlak
+ms.author: davidsmatlak 
 ms.reviewer: abha
 ms.lastreviewed: 04/08/2025
 ms.custom: conceptual

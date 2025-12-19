@@ -1,10 +1,10 @@
 ---
 title: AksHci PowerShell module for AKS hybrid
 description: Learn how to use the AksHci module commands to manage AKS hybrid 
-author: sethmanheim
+author: davidsmatlak
 ms.topic: reference
 ms.date: 08/25/2023
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 01/26/2023
 
 ---

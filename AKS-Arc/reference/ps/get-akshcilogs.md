@@ -1,10 +1,10 @@
 ---
 title: Get-AksHciLogs for AKS hybrid
-author: sethmanheim
+author: davidsmatlak
 description: The Get-AksHciLogs PowerShell command creates a zipped folder with logs from all your pods.
 ms.topic: reference
 ms.date: 02/28/2023
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 02/28/2023
 ms.reviewer: jeguan
 

@@ -1,10 +1,10 @@
 ---
 title: Update a certificate bundle on container hosts
 description: Learn how to add a certificate chain of trust (root, intermediate and lead certificates) with public key in AKS on Windows Server.
-author: sethmanheim
+author: davidsmatlak
 ms.topic: how-to
 ms.date: 07/11/2024
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: sulahiri
 

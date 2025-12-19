@@ -1,10 +1,10 @@
 ---
 title: Configure group Managed Service Accounts (gMSA) for Windows containers with Azure Kubernetes Service on Windows Server
 description: Learn how to configure  Managed Service Accounts (gMSA) for containers on Windows nodes
-author: sethmanheim
+author: davidsmatlak
 ms.topic: how-to
 ms.date: 11/17/2025
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: abha
 

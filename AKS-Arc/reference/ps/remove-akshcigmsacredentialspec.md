@@ -1,10 +1,10 @@
 ---
 title: Remove-AksHciGmsaCredentialSpec for AKS hybrid
-author: sethmanheim
+author: davidsmatlak
 description: The Remove-AksHciGmsaCredentialSpec PowerShell command deletes a credentials spec for gMSA deployments on a cluster.
 ms.topic: reference
 ms.date: 2/12/2021
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
 

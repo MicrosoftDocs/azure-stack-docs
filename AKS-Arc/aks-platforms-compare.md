@@ -1,10 +1,10 @@
 ---
 title: Azure Kubernetes Service (AKS) Cloud, Edge, and On-Premises Comparison
 description: Learn about Azure Kubernetes Service (AKS) features, capabilities, and pricing across cloud, edge, and on-premises environments to choose the best deployment for your needs.
-author: sethmanheim
+author: davidsmatlak
 ms.topic: concept-article
 ms.date: 06/16/2025
-ms.author: sethm
+ms.author: davidsmatlak
 ms.reviewer: rmody
 ---
 

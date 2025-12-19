@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
 ms.custom: linux-related-content
-ms.date: 12/09/2025
+ms.date: 12/15/2025
 ---
 
 # What is Azure Local VM management?
@@ -47,12 +47,13 @@ Consider the following limitations when you're managing VMs on Azure Local:
 - Azure Local VMs only support IPv4 addresses. IPv6 addresses aren't supported.
 
 - Once a logical network is created, you can't update the following:
-   - Default gateway
+  - Default gateway
   - IP pools
   - IP address space
   - VLAN ID
   - Virtual switch name
 
+- Azure Local doesn't support provisioning an Azure Local VM using an IP address that is configured as the DNS server or a gateway on the same logical network.
 > [!NOTE]
 > Taking a VM checkpoint locally is only supported for Azure Local 2504 and later.
 

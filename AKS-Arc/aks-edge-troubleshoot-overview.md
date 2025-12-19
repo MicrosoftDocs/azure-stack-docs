@@ -1,8 +1,8 @@
 ---
 title: Troubleshoot common issues in AKS Edge Essentials 
 description: Learn about common issues and workarounds in AKS Edge Essentials. 
-author: sethmanheim
-ms.author: sethm
+author: davidsmatlak
+ms.author: davidsmatlak
 ms.topic: troubleshooting-general
 ms.date: 12/12/2024
 ms.custom: template-concept

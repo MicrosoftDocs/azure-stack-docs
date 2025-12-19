@@ -1,8 +1,8 @@
 ---
 title: Create Kubernetes clusters using Terraform (preview)
 description: Learn how to create Kubernetes clusters using Terraform.
-author: sethmanheim
-ms.author: sethm
+author: davidsmatlak
+ms.author: davidsmatlak
 ms.topic: how-to
 ms.date: 08/11/2025
 

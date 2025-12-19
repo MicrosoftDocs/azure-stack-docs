@@ -1,10 +1,10 @@
 ---
 title: Monitoring and logging object events in AKS enabled by Azure Arc on VMware
 description: Learn how to monitor real-time Kubernetes object events in AKS enabled by Arc on VMware.
-author: sethmanheim
+author: davidsmatlak
 ms.topic: how-to
 ms.date: 03/21/2024
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 03/21/2024
 ms.reviewer: leslielin
 

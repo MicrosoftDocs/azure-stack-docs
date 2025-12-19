@@ -3,10 +3,10 @@ title: Update noProxy settings, certificates in Azure Kubernetes Service
 description: Learn how to update proxy settings and certificates in AKS on Windows Server.
 ms.topic: how-to
 ms.date: 07/12/2024
-ms.author: sethm
+ms.author: davidsmatlak
 ms.lastreviewed: 05/31/2022
 ms.reviewer: abha
-author: sethmanheim
+author: davidsmatlak
 
 # Intent: As an IT Pro, I need to know how to update my proxy settings and upload new certificates for the proxy server.
 # Keyword: noProxy proxy settings certificate updates

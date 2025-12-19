@@ -4,8 +4,8 @@ description: Learn how to uninstall the AKS cluster provisioning from Azure prev
 ms.topic: overview
 ms.custom: devx-track-azurecli
 ms.date: 04/03/2025
-author: sethmanheim
-ms.author: sethm 
+author: davidsmatlak
+ms.author: davidsmatlak 
 ms.reviewer: guanghu
 ms.lastreviewed: 01/30/2024
 ---

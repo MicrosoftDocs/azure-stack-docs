@@ -1,10 +1,10 @@
 ---
 title: Back up, restore workload clusters using Velero
 description: Learn how to back up and restore workload clusters to Azure Blob Storage or MinIO using Velero in AKS Arc.
-author: sethmanheim
+author: davidsmatlak
 ms.topic: how-to
 ms.date: 11/17/2025
-ms.author: sethm 
+ms.author: davidsmatlak 
 
 # Intent: As an IT Pro, I want to learn how to perform a workload cluster backup or restore so I can recover from a failure or disaster.   
 # Keyword: workload cluster backup restore Velero Azure Blob MinIO

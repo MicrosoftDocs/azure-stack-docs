@@ -1,10 +1,10 @@
 ---
 title: Application availability in AKS on Windows Server
 description: Learn about application availability in on Windows Server.
-author: sethmanheim
+author: davidsmatlak
 ms.topic: concept-article
 ms.date: 04/07/2025
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: rbaziwane
 

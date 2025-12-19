@@ -1,10 +1,10 @@
 ---
 title: Get-AksHciAutoScalerProfile for AKS hybrid
-author: sethmanheim
+author: davidsmatlak
 description: The Get-AksHciAutoScalerProfile PowerShell command retrieves a list of autoscaler configuration profiles or a specific autoscaler profile and its settings.
 ms.topic: reference
 ms.date: 04/15/2022
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 04/15/2022
 ms.reviewer: mikek
 ---

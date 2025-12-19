@@ -1,10 +1,10 @@
 ---
 title: Container security in AKS on Windows Server
 description: Learn ways to implement security on containers used to package and deploy applications in AKS on Windows Server.
-author: sethmanheim
+author: davidsmatlak
 ms.topic: how-to
 ms.date: 01/10/2024
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: EkeleAsonye
 

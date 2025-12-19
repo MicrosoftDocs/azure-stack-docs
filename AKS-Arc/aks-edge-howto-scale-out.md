@@ -1,8 +1,8 @@
 ---
 title: AKS Edge Essentials scale (preview)
 description: Learn how to scale out your AKS Edge Essentials applications to multiple nodes.
-author: sethmanheim
-ms.author: sethm
+author: davidsmatlak
+ms.author: davidsmatlak
 ms.topic: how-to
 ms.date: 04/04/2025
 ms.custom: template-how-to, linux-related-content

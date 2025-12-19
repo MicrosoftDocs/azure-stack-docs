@@ -1,10 +1,10 @@
 ---
 title: Install-AksHciAdAuth for AKS hybrid
-author: sethmanheim
+author: davidsmatlak
 description: The Install-AksHciAdAuth PowerShell command installs Active Directory authentication.
 ms.topic: reference
 ms.date: 2/12/2021
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
 

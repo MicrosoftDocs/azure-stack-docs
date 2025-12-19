@@ -3,8 +3,8 @@ title: Enable-AksHciOfflineDownload for AKS hybrid
 description: The Enable-AksHciOfflineDownload PowerShell command enables offline downloading to get the AKS hybrid images.
 ms.topic: reference
 ms.date: 01/25/2023
-author: sethmanheim
-ms.author: sethm 
+author: davidsmatlak
+ms.author: davidsmatlak 
 ms.lastreviewed: 01/25/2023
 ms.reviewer: jeguan
 ---

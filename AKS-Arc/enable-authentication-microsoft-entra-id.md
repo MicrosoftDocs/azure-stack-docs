@@ -1,8 +1,8 @@
 ---
 title: Enable Microsoft Entra authentication for Kubernetes clusters
 description: Learn how to enable Microsoft Entra ID on Azure Kubernetes Service with kubelogin and authenticate Azure users with credentials or managed roles.
-author: sethmanheim
-ms.author: sethm 
+author: davidsmatlak
+ms.author: davidsmatlak 
 ms.lastreviewed: 07/26/2024
 ms.reviewer: abha
 ms.topic: how-to

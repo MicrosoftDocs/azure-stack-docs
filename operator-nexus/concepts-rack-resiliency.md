@@ -2,7 +2,7 @@
 title: Operator Nexus rack resiliency
 description: Document how rack resiliency works in Operator Nexus
 ms.topic: article
-ms.date: 10/08/2025
+ms.date: 12/18/2025
 author: eak13
 ms.author: matthewernst
 ms.service: azure-operator-nexus
@@ -14,7 +14,7 @@ The Nexus service is engineered to uphold control plane resiliency across variou
 
 ## Instances with three or more compute racks
 
-Operator Nexus ensures the availability of three active Kubernetes control plane (KCP) nodes in instances with three or more compute racks. For configurations exceeding two compute racks, an extra spare node is also maintained. These nodes are strategically distributed across different racks to guarantee control plane resiliency, when possible.
+Operator Nexus ensures the availability of three active Kubernetes control plane (KCP) nodes in instances with three or more compute racks. These nodes are strategically distributed across different racks to guarantee control plane resiliency, when possible.
 
 > [!TIP]
 > The Kubernetes control plane is a set of components that manage the state of a Kubernetes cluster, schedule workloads, and respond to cluster events. It includes the API server, etcd storage, scheduler, and controller managers.
@@ -42,16 +42,6 @@ Four or more compute racks:
 | KCP    | KCP    | KCP    | KCP-spare |
 | MGMT   | MGMT   | MGMT   | MGMT      |
 
-## Instances with less than three compute racks
-
-Operator Nexus maintains an active control plane node and, if available, a spare control plane instance. For instance, a two-rack configuration has one active Kubernetes Control Plane (KCP) node and one spare node.
-
-Two compute racks:
-
-| Rack 1 | Rack 2    |
-| ------ | --------- |
-| KCP    | KCP-spare |
-| MGMT   | MGMT      |
 
 ## Spare control plane node
 
