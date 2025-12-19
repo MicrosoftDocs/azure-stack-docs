@@ -31,7 +31,7 @@ Before you begin, make sure that you complete the following prerequisites.
 
 [!INCLUDE [azure-marketplace-image-prerequisites](../includes/azure-marketplace-image-prerequisites.md)]
 
-- If you're using a client to connect to your Azure Local instance, see [Connect to the system remotely](./azure-arc-vm-management-prerequisites.md#connect-to-the-system-remotely).
+- If you're using a client to connect to your Azure Local instance, see [Connect to the system remotely](../manage/azure-arc-vm-management-prerequisites.md#connect-to-the-system-remotely).
 
 # [Azure portal](#tab/azureportal)
 
