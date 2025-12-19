@@ -6,12 +6,12 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
 ms.custom: devx-track-azurecli
-ms.date: 07/08/2025
+ms.date: 12/11/2025
 ---
 
 # Create Azure Local VM image using existing Azure Local VMs enabled by Azure Arc
 
-[!INCLUDE [hci-applies-to-22h2-21h2](../includes/hci-applies-to-23h2.md)]
+> Applies to: Hyperconverged deployments of Azure Local 2408.2 and later
 
 This article describes how to use Azure Command-Line Interface (CLI) to create virtual machine (VM) images for your Azure Local using existing Azure Local VMs. You will use the operating system (OS) disk of the Azure Local VM to create a gallery image on your Azure Local.
 

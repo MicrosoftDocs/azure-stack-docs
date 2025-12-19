@@ -1,10 +1,10 @@
 ---
 title: Remove-AksHciAutoScalerProfile for AKS hybrid
-author: sethmanheim
+author: davidsmatlak
 description: The Remove-AksHciAutoScalerProfile PowerShell command removes an unused autoscaler configuration profile from the system.
 ms.topic: reference
 ms.date: 04/15/2022
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 
 ms.reviewer: jeguan
 

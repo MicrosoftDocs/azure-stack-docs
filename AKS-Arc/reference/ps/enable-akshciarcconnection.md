@@ -1,10 +1,10 @@
 ---
 title: Enable-AksHciArcConnection for AKS hybrid
-author: sethmanheim
+author: davidsmatlak
 description: The Enable-AksHciArcConnection PowerShell command enables the Arc connection on an AKS hybrid cluster.
 ms.topic: reference
 ms.date: 05/25/2021
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
 

@@ -3,8 +3,8 @@ title: AKS enabled by Azure Arc on VMware network requirements (preview)
 description: Learn about AKS enabled by Arc on VMware network prerequisites.
 ms.topic: overview
 ms.date: 09/15/2025
-author: sethmanheim
-ms.author: sethm
+author: davidsmatlak
+ms.author: davidsmatlak
 ms.reviewer: abha
 ms.lastreviewed: 03/25/2024
 ---

@@ -316,7 +316,7 @@ This step applies to using a .zip file.
     1. The **Storage account subscription** is automatically populated. If this isn't the subscription where you want to create the storage account, choose another subscription.
         
         > [!NOTE]
-        > Migration requires a storage account to be created. This account must reside in the same subscription as your Azure Migrate project.
+        > Migration requires a storage account to be created. This account must reside in the same subscription and region as your Azure Migrate project.
 
     1. Select the **Resource group** to associate with your storage account.
     
