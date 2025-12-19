@@ -5,7 +5,7 @@ author: sipastak
 ms.author: sipastak
 ms.service: azure-local
 ms.topic: concept-article
-ms.date: 12/18/2025
+ms.date: 12/19/2025
 ---
 
 # Security concepts for multi-rack deployments of Azure Local (preview)
@@ -60,8 +60,6 @@ Some controls aren't technically feasible to implement in multi-rack deployments
 
 These tools don't evaluate environmental controls such as RBAC and Service Account tests, as the outcomes might differ based on customer requirements.
 
-
-
 ### OpenSCAP STIG - V2R2
 
 The status of excepted controls is referred to as **Not Technically Feasible** or NTF.
@@ -72,12 +70,12 @@ The status of excepted controls is referred to as **Not Technically Feasible** o
 
 |STIG ID|Recommendation description|Status|Issue|
 |---|---|---|---|
-|V-242386|The Kubernetes API server must have the insecure port flag disabled.|NTF|This check is deprecated in v1.24.0 and greater|
-|V-242397|The Kubernetes kubelet staticPodPath must not enable static pods.|NTF|Only enabled for control nodes, required for kubeadm|
-|V-242403|Kubernetes API Server must generate audit records that identify what type of event occurred, identify the source of the event, contain the event results, identify any users, and identify any containers associated with the event.|NTF|Certain API requests and responses contain secrets and therefore aren't captured in the audit logs|
-|V-242424|Kubernetes Kubelet must enable tlsPrivateKeyFile for client authentication to secure service.|NTF|Kubelet SANs contains hostname only|
-|V-242425|Kubernetes Kubelet must enable tlsCertFile for client authentication to secure service.|NTF|Kubelet SANs contains hostname only|
-|V-242434|Kubernetes Kubelet must enable kernel protection.|NTF|Enabling kernel protection isn't feasible for kubeadm in multi-rack deployments|
+|V-242386|The Kubernetes API server must have the insecure port flag disabled.|NTF|This check is deprecated in v1.24.0 and greater.|
+|V-242397|The Kubernetes kubelet staticPodPath must not enable static pods.|NTF|Only enabled for control nodes, required for kubeadm.|
+|V-242403|Kubernetes API Server must generate audit records that identify what type of event occurred, identify the source of the event, contain the event results, identify any users, and identify any containers associated with the event.|NTF|Certain API requests and responses contain secrets and therefore aren't captured in the audit logs.|
+|V-242424|Kubernetes Kubelet must enable tlsPrivateKeyFile for client authentication to secure service.|NTF|Kubelet SANs contains hostname only.|
+|V-242425|Kubernetes Kubelet must enable tlsCertFile for client authentication to secure service.|NTF|Kubelet SANs contains hostname only.|
+|V-242434|Kubernetes Kubelet must enable kernel protection.|NTF|Enabling kernel protection isn't feasible for kubeadm in multi-rack deployments.|
 
 *Cluster Manager*
 
@@ -98,9 +96,9 @@ The status of excepted controls is referred to as **Not Technically Feasible** o
 |---|---|---|---|
 |1|Control Plane Components|||
 |1.1|Control Plane Node Configuration Files|||
-|1.1.12|Ensure that the etcd data directory ownership is set to `etcd:etcd`.|NTF|Multi-rack is `root:root`, etcd user isn't configured for kubeadm|
+|1.1.12|Ensure that the etcd data directory ownership is set to `etcd:etcd`.|NTF|Multi-rack is `root:root`, etcd user isn't configured for kubeadm.|
 |1.2|API Server|||
-|1.1.12|Ensure that the `--kubelet-certificate-authority` argument is set as appropriate.|NTF|Kubelet SANs includes hostname only|
+|1.1.12|Ensure that the `--kubelet-certificate-authority` argument is set as appropriate.|NTF|Kubelet SANs includes hostname only.|
 
 *Cluster Manager*
 
