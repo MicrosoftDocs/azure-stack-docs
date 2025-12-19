@@ -16,6 +16,10 @@ This article describes the capabilities of the network fabric used for infrastru
 
 The network fabric instance is a single deployed physical network infrastructure - including racks, switches, terminal server connections, and cabling - that Azure represents and manages as a Network Fabric (NF) resource.
 
+[!INCLUDE [hci-preview](../includes/hci-preview.md)]
+
+## Key Capabilities
+
 The network fabric enables you to:
 
 - Use a single pane of glass to manage your on-premises networking devices and their configuration.
@@ -46,3 +50,6 @@ Key capabilities offered in the network fabric:
 
 * **Networking features built for enterprise customers** - Support for unique features like multicast, Stream Control Transmission Protocol (SCTP), and jumbo frames.
 
+## Next steps
+
+See [Overview of NAT Gateway on Multi-Rack Deployments of Azure Local](multi-rack-nat-gateway-overview.md).
