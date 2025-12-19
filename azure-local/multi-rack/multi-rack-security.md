@@ -45,7 +45,7 @@ To enable Defender for Endpoint, first activate a [Microsoft Defender for Server
 
 ## Cloud security is a shared responsibility
 
-In a cloud environment, you and the cloud provider share responsibility for security. The responsibilities vary depending on the type of cloud service your workloads run on, whether it's Software as a Service (SaaS), Platform as a Service (PaaS), or Infrastructure as a Service (IaaS). Responsibilities also vary based on where you host the workloads – within the cloud provider’s or your own on-premises datacenters.
+In a cloud environment, you and the cloud provider share responsibility for security. The responsibilities vary depending on the type of cloud service your workloads run on, whether it's Software as a Service (SaaS), Platform as a Service (PaaS), or Infrastructure as a Service (IaaS). Responsibilities also vary based on where you host the workloads – within the cloud provider’s or your own on-premises locations.
 
 Multi-rack deployments run on your on-premises infrastructure, so you control changes to your on-premises environment. Microsoft periodically makes new platform releases available that contain security and other updates. You must decide when to apply these releases to your environment based on your organization’s business needs.
 
@@ -102,7 +102,7 @@ The status of excepted controls is referred to as **Not Technically Feasible** o
 
 *Cluster Manager*
 
-The Cluster Manager is an AKS implementation. The following image shows the Kube-Bench exceptions for the Cluster Manager. See a [Full report of CIS Benchmark control evaluation](/azure/aks/cis-kubernetes) for Azure Kubernetes Service (AKS).
+The following image shows the Kube-Bench exceptions for the Cluster Manager. See a [Full report of CIS Benchmark control evaluation](/azure/aks/cis-kubernetes) for Azure Kubernetes Service (AKS).
 
 :::image type="content" source="media/multi-rack-security-overview/multi-rack-cluster-manager-kube-bench.png" alt-text="Screenshot of Cluster Manager Kube-Bench exceptions." lightbox="media/multi-rack-security-overview/multi-rack-cluster-manager-kube-bench.png":::
 
@@ -111,3 +111,4 @@ The Cluster Manager is an AKS implementation. The following image shows the Kube
 Multi-rack deployments provide persistent storage for virtualized and containerized workloads. Data is stored and encrypted-at-rest on the SAN storage in the aggregation rack.
 
 Azure Local clusters and Azure Local VMs consume storage from a local disk. Data stored on local disks is encrypted by using LUKS2 with the AES256-bit algorithm in XTS mode. All encryption keys are platform managed.
+
