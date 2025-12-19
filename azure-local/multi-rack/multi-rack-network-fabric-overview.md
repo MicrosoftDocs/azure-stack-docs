@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.service: azure-local
 ms.topic: concept-article
-ms.date: 12/18/2025
+ms.date: 12/19/2025
 ---
 
 # Network fabric overview for multi-rack deployments of Azure Local (preview)
@@ -18,7 +18,7 @@ The network fabric instance is a single deployed physical network infrastructure
 
 [!INCLUDE [hci-preview](../includes/hci-preview.md)]
 
-## Key Capabilities
+## Benefits of network fabric
 
 The network fabric enables you to:
 
@@ -38,7 +38,9 @@ The network fabric enables you to:
 
 :::image type="content" source="./media/multi-rack-network-fabric-overview/network-fabric-diagram.png" alt-text="Diagram showing network fabric components." lightbox="./media/multi-rack-network-fabric-overview/network-fabric-diagram.png":::
 
-Key capabilities offered in the network fabric:
+## Key capabilities of network fabric
+
+Key capabilities offered in the network fabric are:
 
 * **Bootstrapping and lifecycle management** - Automated bootstrapping and provisioning of network fabric resources based on workload use cases. It provides various controls to manage network devices in enterprise environments through Azure APIs.
 
@@ -52,4 +54,4 @@ Key capabilities offered in the network fabric:
 
 ## Next steps
 
-See [Overview of NAT Gateway on Multi-Rack Deployments of Azure Local](multi-rack-nat-gateway-overview.md).
+See [Compelete deployment prerequisites](./multi-rack-prerequisites.md).
