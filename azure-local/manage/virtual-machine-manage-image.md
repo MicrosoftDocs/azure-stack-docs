@@ -218,8 +218,66 @@ To view image properties using Azure CLI, follow these steps:
         az stack-hci-vm image show --name $mktplaceImage --resource-group $resource_group
         ```
 
-        <!--Here's a sample output: input needed-->
+        Here's a sample output:
 
+        ```console
+        PS /home/user> az stack-hci-vm image show --name "2022-datacenter-azure-edition-hotpatch-01" --resource-group "California"  
+        {
+          "extendedLocation": {
+            "name": "/subscriptions/fbaf508b-cb61-4383-9cda-a42bfa0c7bc9/resourcegroups/california/providers/microsoft.extendedlocation/customlocations/california",
+            "type": "CustomLocation"
+          },
+          "id": "/subscriptions/fbaf508b-cb61-4383-9cda-a42bfa0c7bc9/resourceGroups/California/providers/microsoft.azurestackhci/marketplacegalleryimages/2022-datacenter-azure-edition-hotpatch-01",
+          "location": "eastus",
+          "name": "2022-datacenter-azure-edition-hotpatch-01",
+          "properties": {
+            "cloudInitDataSource": null,
+            "containerId": "/subscriptions/fbaf508b-cb61-4383-9cda-a42bfa0c7bc9/resourceGroups/California/providers/Microsoft.AzureStackHCI/storageContainers/UserStorage1-867e0649feec4786ad8f0966fecf9cc3",
+            "hyperVGeneration": "V2",
+            "identifier": {
+              "offer": "windowsserver",
+              "publisher": "microsoftwindowsserver",
+              "sku": "2022-datacenter-azure-edition-hotpatch"
+            },
+            "osType": "Windows",
+            "provisioningState": "Succeeded",
+            "status": {
+              "downloadStatus": {
+                "downloadSizeInMb": 11424
+              },
+              "errorCode": "",
+              "errorMessage": "",
+              "progressPercentage": 100,
+              "provisioningStatus": {
+                "operationId": "d0f78ecf-e141-4dbf-8e6a-fa475ce135d5*9A06B0D77AF66F52BDC26C63446AC63695D3CDCBBE2F5BB19B9B50DDD7B3077D",
+                "status": "Succeeded"
+              }
+            },
+            "version": {
+              "name": "20348.3561.250409",
+              "properties": {
+                "storageProfile": {
+                  "osDiskImage": {
+                    "sizeInMb": 130050
+                  }
+                }
+              }
+            }
+          },
+          "resourceGroup": "California",
+          "systemData": {
+            "createdAt": "2025-04-28T19:04:53.484650+00:00",
+            "createdBy": "Michael.Godfrey@adaptivecloudlab.com",
+            "createdByType": "User",
+            "lastModifiedAt": "2025-11-25T17:00:29.308006+00:00",
+            "lastModifiedBy": "319f651f-7ddb-4fc6-9857-7aef9250bd05",
+            "lastModifiedByType": "Application"
+          },
+          "tags": {},
+          "type": "microsoft.azurestackhci/marketplacegalleryimages"
+        }
+        ```
+        
 ### [Azure portal](#tab/azureportal)
 
 To view image properties in the Azure portal, follow these steps:
