@@ -1,10 +1,10 @@
 ---
 title: Create deployments in AKS on Windows Server
 description: Learn how to create deployments in Azure Kubernetes Service (AKS) on Windows Server.
-author: sethmanheim
+author: davidsmatlak
 ms.topic: how-to
 ms.date: 04/04/2025
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 03/04/2022
 ms.reviewer: EkeleAsonye
 # Intent: As an IT Pro, I want to learn what I need to do in order to create deployments in Azure Kubernetes Service (AKS).

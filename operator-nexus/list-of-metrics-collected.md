@@ -89,8 +89,6 @@ All these metrics for Nexus Cluster are collected and delivered to Azure Monitor
 |ContainerFsIoTimeSecondsTotal|Container|Container FS I/O Time Seconds Total (Preview)|Seconds|Time taken for container Input/Output (I/O) operations. In the absence of data, this metric retains the most recent value emitted|Device, Host|
 |ContainerMemoryFailcnt|Container|Container Memory Fail Count|Count|Number of times a container's memory usage limit is hit. In the absence of data, this metric defaults to 0|Container, Host, Namespace, Pod|
 |ContainerMemoryUsageBytes|Container|Container Memory Usage Bytes|Bytes|Current memory usage, including all memory regardless of when it was accessed. In the absence of data, this metric defaults to 0|Container, Host, Namespace, Pod|
-|ContainerNetworkReceiveErrorsTotal|Container|Container Net Rx Errors (Preview)|Count|Number of errors encountered while receiving bytes over the network. In the absence of data, this metric retains the most recent value emitted|Interface, Namespace, Pod|
-|ContainerNetworkTransmitErrorsTotal|Container|Container Net Tx Err Total (Preview)|Count|Number of errors encountered while transmitting bytes over the network. In the absence of data, this metric retains the most recent value emitted|Interface, Namespace, Pod|
 |ContainerScrapeError|Container|Container Scrape Error|Unspecified|Indicates whether there was an error while getting container metrics. In the absence of data, this metric retains the most recent value emitted|Host|
 |ContainerTasksState|Container|Container Tasks State|Count|Number of tasks or processes in a given state (sleeping, running, stopped, uninterruptible, or waiting) in a container. In the absence of data, this metric retains the most recent value emitted|Container, Host, Namespace, Pod, State|
 
@@ -293,7 +291,6 @@ Baremetal server metrics are collected and delivered to Azure Monitor per minute
 |HostMemSwapFreeBytes|Memory|Host Memory Swap Free Bytes|Bytes|Total swap memory that is free. In the absence of data, this metric retains the most recent value emitted|Host, Machine Role|
 |HostMemSwapTotalBytes|Memory|Host Memory Swap Total Bytes|Bytes|Total amount of swap memory. In the absence of data, this metric retains the most recent value emitted|Host, Machine Role|
 |HostMemSwapAvailableSpace|Memory|Host Memory Swap Available Percentage|Percent|Percentage of swap memory that is available. In the absence of data, this metric defaults to 0|Host, Machine Role|
-|HostSpecificCPUUtilization|CPU|Host Specific CPU Utilization (Preview)|Seconds|A counter metric quantifying the CPU time that each CPU has spent in different states (or 'modes'). In the absence of data, this metric retains the most recent value emitted|Cpu, Host, Mode, Machine Role|
 |IdracPowerCapacityWatts|HardwareMonitor|IDRAC Power Capacity Watts|Unspecified|IDRAC Power Capacity in Watts. In the absence of data, this metric defaults to 0|Host, PSU, Machine Role|
 |IdracPowerInputWatts|HardwareMonitor|IDRAC Power Input Watts|Unspecified|IDRAC Power Input in Watts. In the absence of data, this metric defaults to 0|Host, PSU, Machine Role|
 |IdracPowerOn|HardwareMonitor|IDRAC Power On|Unspecified|IDRAC Power On Status. Value is 1 if on, 0 otherwise. In the absence of data, this metric defaults to 0|Host, Machine Role|
