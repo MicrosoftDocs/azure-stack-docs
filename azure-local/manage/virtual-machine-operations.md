@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: concept-article
 ms.service: azure-local
-ms.date: 12/18/2025
+ms.date: 12/19/2025
 ---
 
 # Supported operations for Azure Local VMs enabled by Azure Arc
@@ -96,7 +96,7 @@ You perform these operations either on the VM itself or on the cluster/node. The
 - [Apply affinity / anti-affinity rules](vm-affinity.md)
 - [Enable nested virtualization](../manage/enable-nested-virtualization.md)
 - Expand an OS disk
-- Add shared storage (shared VHD or VHDX)
+- Add shared storage (shared VHDX or VHDS)
 
 #### Cluster or node-level operations
 
