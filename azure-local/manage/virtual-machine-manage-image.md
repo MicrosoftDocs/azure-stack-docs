@@ -89,7 +89,7 @@ inServer2022Az-01",
         },
         "progressPercentage": 100,
         "provisioningStatus": {
-          "operationId": "19742d69-4a00-4086-8f17-4dc1f7ee6681*E1E9889F0D1840B93150BD74D428EAE483CB67B0904F9A198C161AD471F670ED",
+          "operationId": "<operation ID>",
           "status": "Succeeded"
         }
       },
@@ -249,7 +249,7 @@ To view image properties using Azure CLI, follow these steps:
               "errorMessage": "",
               "progressPercentage": 100,
               "provisioningStatus": {
-                "operationId": "d0f78ecf-e141-4dbf-8e6a-fa475ce135d5*9A06B0D77AF66F52BDC26C63446AC63695D3CDCBBE2F5BB19B9B50DDD7B3077D",
+                "operationId": "<operation ID>",
                 "status": "Succeeded"
               }
             },
@@ -270,7 +270,7 @@ To view image properties using Azure CLI, follow these steps:
             "createdBy": "Michael.Godfrey@adaptivecloudlab.com",
             "createdByType": "User",
             "lastModifiedAt": "2025-11-25T17:00:29.308006+00:00",
-            "lastModifiedBy": "319f651f-7ddb-4fc6-9857-7aef9250bd05",
+            "lastModifiedBy": "dddddddd-3333-4444-5555-eeeeeeeeeeee",
             "lastModifiedByType": "Application"
           },
           "tags": {},
