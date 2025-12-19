@@ -47,7 +47,7 @@ This article provides an overview of the unique considerations for Azure Stack H
 | Virtual Network Gateways | Point-to-Site VPN Gateway | Supported. | Not yet supported. |
 |  | Vnet-to-Vnet Gateway | Supported | Not yet supported. |
 |  | Virtual Network Gateway Type | Azure Supports VPN<br> Express Route <br> Hyper Net. | Azure Stack Hub currently supports only VPN type. |
-|  | VPN Gateway SKUs | Support for Basic, GW1, GW2, GW3, Standard High Performance, Ultra-High Performance. | Supported. |
+|  | VPN Gateway SKUs | Support for Basic, Standard, High Performance, VPNGwy 1, VPNGwy 2, VPNGwy 3. | Ultra-High Performance is not supported. |
 |  | VPN Type | Azure supports both policy-based and route-based. | Azure Stack Hub supports route-based only. |
 |  | BGP settings | Azure supports configuration of BGP peering address and peer weight. | BGP peering address and peer weight are automatically configured in Azure Stack Hub.<br/> Support for up to 150 routes for BGP advertisement.<br/> There's no way for you to configure these settings with your own values. |
 |  | Default Gateway Site | Azure supports configuration of a default site for forced tunneling. | Not yet supported. |
