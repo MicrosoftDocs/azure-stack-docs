@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.service: azure-local
 ms.topic: concept-article
-ms.date: 12/17/2025
+ms.date: 12/18/2025
 ---
 
 # Network fabric overview for multi-rack deployments of Azure Local (preview)
@@ -14,7 +14,7 @@ ms.date: 12/17/2025
 
 This article describes the capabilities of the network fabric used for infrastructure management for multi-rack deployments of Azure Local. The article also covers the workload networking required for these deployments.
 
-The network fabric *instance* is a single deployed physical network infrastructure - including racks, switches, terminal server connections, and cabling - that Azure represents and manages as a Network Fabric (NF) resource.
+The network fabric instance is a single deployed physical network infrastructure - including racks, switches, terminal server connections, and cabling - that Azure represents and manages as a Network Fabric (NF) resource.
 
 The network fabric enables you to:
 
