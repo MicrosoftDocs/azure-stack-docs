@@ -58,7 +58,7 @@ sections:
         answer: |
           For hyperconverged deployments of Azure Local, there is a broad catalog of [validated OEM hardware](https://aka.ms/AzureStackHCICatalog). You can reuse the existing hardware if it matches a supported configuration in the catalog. Otherwise, hardware upgrades or new hardware would be required.
 
-          Multi-rack deployments is in preview for qualified opportunities and requires prescriptive hardware bill of materials (BOM) featuring pre-integrated racks that contain SAN storage, servers, and network devices.
+          Multi-rack deployments is in preview for qualified opportunities and requires prescriptive hardware bill of materials (BOM) featuring pre-integrated racks that contain SAN storage, servers, and network devices. At this time, re-use of existing hardware is not supported for multi-rack deployments.
 
       - question: Does Azure Local require connectivity to the cloud?
         answer: |
