@@ -7,6 +7,7 @@ ms.date: 12/16/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
+ms.subservice: hyperconverged
 ---
 
 # Azure Arc registration workflow for systems with OEM images

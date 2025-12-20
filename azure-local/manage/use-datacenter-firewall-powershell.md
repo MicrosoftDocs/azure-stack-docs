@@ -6,6 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
 ms.date: 10/24/2024
+ms.subservice: hyperconverged
 ---
 
 # Configure network security groups on your Azure Local with PowerShell

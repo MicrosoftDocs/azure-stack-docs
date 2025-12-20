@@ -6,6 +6,7 @@ author: alkohli
 ms.author: alkohli
 ms.service: azure-local
 ms.date: 09/03/2025
+ms.subservice: hyperconverged
 ---
 
 # Compare Azure Local to Windows Server

@@ -6,6 +6,7 @@ author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.date: 09/05/2025
+ms.subservice: hyperconverged
 ---
 
 # Update SDN infrastructure for Azure Local

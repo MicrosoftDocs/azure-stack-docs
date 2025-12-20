@@ -6,6 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.date: 09/05/2025
 ms.service: azure-local
+ms.subservice: hyperconverged
 ---
 
 # Manage network security groups on Azure Local

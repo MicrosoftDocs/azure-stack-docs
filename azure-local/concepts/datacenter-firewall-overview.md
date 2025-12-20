@@ -6,6 +6,7 @@ ms.author: alkohli
 ms.topic: overview
 ms.service: azure-local
 ms.date: 10/25/2024
+ms.subservice: hyperconverged
 ---
 
 # What is Datacenter Firewall?
