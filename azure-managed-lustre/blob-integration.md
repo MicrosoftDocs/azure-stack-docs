@@ -20,7 +20,7 @@ To understand the requirements and configuration for a compatible blob container
 
 ## Blob integration overview
 
-You can configure blob integration during [cluster creation](create-file-system-portal.md#blob-integration), and you can [create an import job](create-import-job.md) any time after the cluster is created. After the data is imported, you can work with the data as you would with other file system data. As new files are created or existing files are modified in the file system, you can export these files back to the storage account. Run Lustre CLI commands on the client, or by [exporting the data by using export jobs](export-with-archive-jobs.md).
+You can configure blob integration during [cluster creation](create-file-system-portal.md#blob-integration), and you can [create an import job](create-import-job.md) any time after the cluster is created. After the data is imported, you can work with the data as you would with other file system data. As new files are created or existing files are modified in the file system, you can export these files back to the storage account. You can run Lustre CLI commands on the client, or by [exporting the data by using export jobs](export-with-archive-jobs.md).
 
 When you import data from a blob container to an Azure Managed Lustre file system, only the file names (namespace) and metadata are imported into the Lustre namespace. The actual contents of a blob are only imported when a client accesses them for the first time. There's a slight delay when you first access data while the Lustre Hierarchical Storage Management (HSM) feature pulls in the blob contents to the corresponding file in the file system.
 
