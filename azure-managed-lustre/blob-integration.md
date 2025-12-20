@@ -1,6 +1,6 @@
 ---
-title: Use Azure Blob storage with an Azure Managed Lustre file system
-description: Understand storage concepts for using Azure Blob storage with an Azure Managed Lustre file system. 
+title: Use Azure Blob Storage with an Azure Managed Lustre File System
+description: Understand storage concepts for using Azure Blob Storage with an Azure Managed Lustre file system. 
 ms.topic: how-to
 author: pauljewellmsft
 ms.author: pauljewell
@@ -14,21 +14,21 @@ ms.reviewer: brianl
 
 # Use Azure Blob Storage with Azure Managed Lustre
 
-Azure Managed Lustre integrates with Azure Blob Storage to simplify the process of importing data from a blob container to a file system. You can also export data from the file system to a blob container for long-term storage. This article explains concepts for using blob integration with Azure Managed Lustre file systems.
+Azure Managed Lustre integrates with Azure Blob Storage to simplify the process of importing data from a blob container to a file system. You can also export data from the file system to a blob container for long-term storage. This article explains how to use blob integration with Azure Managed Lustre file systems.
 
-To understand the requirements and configuration needed for a compatible blob container, see [Blob integration prerequisites](amlfs-prerequisites.md#blob-integration-prerequisites-optional).
+To understand the requirements and configuration for a compatible blob container, see [Blob integration prerequisites](amlfs-prerequisites.md#blob-integration-prerequisites-optional).
 
 ## Blob integration overview
 
-You can configure blob integration during [cluster creation](create-file-system-portal.md#blob-integration), and you can [create an import job](create-import-job.md) any time after the cluster is created. After the data is imported, you can work with the data as you would with other file system data. As new files are created or existing files are modified in the file system, you can export these files back to the storage account by running Lustre CLI commands on the client, or by [exporting the data using export jobs](export-with-archive-jobs.md).
+You can configure blob integration during [cluster creation](create-file-system-portal.md#blob-integration), and you can [create an import job](create-import-job.md) any time after the cluster is created. After the data is imported, you can work with the data as you would with other file system data. As new files are created or existing files are modified in the file system, you can export these files back to the storage account. Run Lustre CLI commands on the client, or by [exporting the data by using export jobs](export-with-archive-jobs.md).
 
-When you import data from a blob container to an Azure Managed Lustre file system, only the file names (namespace) and metadata are imported into the Lustre namespace. The actual contents of a blob are imported when first accessed by a client. There's a slight delay when first accessing data while the Lustre Hierarchical Storage Management (HSM) feature pulls in the blob contents to the corresponding file in the file system.
+When you import data from a blob container to an Azure Managed Lustre file system, only the file names (namespace) and metadata are imported into the Lustre namespace. The actual contents of a blob are only imported when a client accesses them for the first time. There's a slight delay when you first access data while the Lustre Hierarchical Storage Management (HSM) feature pulls in the blob contents to the corresponding file in the file system.
 
-You can prefetch the contents of blobs using Lustre's `lfs hsm_restore` command from a mounted client with sudo capabilities. To learn more, see [Restore data from Blob Storage](#restore-data-from-blob-storage).
+You can prefetch the contents of blobs by using the Lustre `lfs hsm_restore` command from a mounted client with `sudo` capabilities. To learn more, see [Restore data from Blob Storage](#restore-data-from-blob-storage).
 
-Azure Managed Lustre works with storage accounts that have hierarchical namespace enabled and storage accounts with a nonhierarchical, or flat, namespace. The following minor differences apply:
+Azure Managed Lustre works with storage accounts with hierarchical namespace enabled and storage accounts with a nonhierarchical, or flat, namespace. The following minor differences apply:
 
-- For a storage account with hierarchical namespace enabled, Azure Managed Lustre reads POSIX attributes from the blob header.
+- For a storage account with hierarchical namespace enabled, Azure Managed Lustre reads Portable Operating System Interface (POSIX) attributes from the blob header.
 - For a storage account that *does not* have hierarchical namespace enabled, Azure Managed Lustre reads POSIX attributes from the blob metadata. A separate, empty file with the same name as your blob container contents is created to hold the metadata. This file is a sibling to the actual data directory in the Azure Managed Lustre file system.
 
 ## Import from Blob Storage
@@ -37,7 +37,7 @@ You can configure integration with Blob Storage during [cluster creation](create
 
 ### Blob container requirements
 
-When configuring blob integration during cluster creation, you must identify two separate blob containers: the container to import and the logging container. The container to import contains the data that you want to import into the Azure Managed Lustre file system. The logging container is used to store logs for the import job. These two containers must be in the same storage account. To learn more about the requirements for the blob container, see [Blob integration prerequisites](amlfs-prerequisites.md#blob-integration-prerequisites-optional).
+When you configure blob integration during cluster creation, you must identify two separate blob containers: the container to import and the logging container. The container to import contains the data that you want to import into the Azure Managed Lustre file system. The logging container is used to store logs for the import job. These two containers must be in the same storage account. To learn more about the requirements for the blob container, see [Blob integration prerequisites](amlfs-prerequisites.md#blob-integration-prerequisites-optional).
 
 ### Import prefix
 
@@ -47,37 +47,39 @@ In the Azure portal, use the **Import prefix** fields on the **Advanced** tab du
 
 For an import job, you can specify import prefixes when you create the job. From the Azure portal, you can specify import prefixes in the **Import prefix** fields. You can also specify the import prefix when you use the REST API to create an import job.
 
-Keep the following considerations in mind when specifying import prefixes:
+Keep the following considerations in mind when you specify import prefixes:
 
 - The default import prefix is `/`. This default behavior imports the contents of the entire blob container.
-- If you specify multiple prefixes, the prefixes must not overlap. For example, if you specify `/data` and `/data2`, the import job fails because the prefixes overlap.
+- If you specify multiple prefixes, the prefixes *must not* overlap. For example, if you specify `/data` and `/data2`, the import job fails because the prefixes overlap.
 - If the blob container is in a storage account with hierarchical namespace enabled, you can think of the prefix as a file path. Items under the path are included in the Azure Managed Lustre file system.
-- If the blob container is in a storage account with a nonhierarchical (or flat) namespace, you can think of the import prefix as a search string that is compared with the beginning of the blob name. If the name of a blob in the container starts with the string you specified as the import prefix, that file is made accessible in the file system. Lustre is a hierarchical file system, and `/` characters in blob names become directory delimiters when stored in Lustre.
+- If the blob container is in a storage account with a nonhierarchical (or flat) namespace, you can think of the import prefix as a search string that is compared with the beginning of the blob name. If the name of a blob in the container starts with the string you specified as the import prefix, that file is made accessible in the file system. Lustre is a hierarchical file system, and `/` characters in blob names become directory delimiters when they're stored in Lustre.
 
 ### Conflict resolution mode
 
-When importing data from a blob container, you can specify how to handle conflicts between the blob container and the file system. This option only applies to import jobs that are run for existing clusters. The following table shows the available conflict resolution modes and their descriptions:
+When you import data from a blob container, you can specify how to handle conflicts between the blob container and the file system. This option only applies to import jobs that run for existing clusters. The following table shows the available conflict resolution modes and their descriptions:
 
 | Mode | Description |
 |------|-------------|
-| `fail` | The import job fails immediately with an error if a conflict is detected. |
-| `skip` | The import job skips the file if a conflict is detected. |
-| `overwrite-dirty` | The import job evaluates a conflicting path to see if it should be deleted and reimported. To learn more, see [overwrite-dirty mode](#overwrite-dirty-mode). |
-| `overwrite-always` | The import job evaluates a conflicting path and always deletes/re-imports if it's dirty, or releases if it's clean. To learn more, see [overwrite-always mode](#overwrite-always-mode). |
+| `fail` | If a conflict is detected, the import job fails immediately with an error. |
+| `skip` | If a conflict is detected, the import job skips the file. |
+| `overwrite-dirty` | The import job evaluates a conflicting path to see if it should be deleted and reimported. To learn more, see [`overwrite-dirty` mode](#overwrite-dirty-mode). |
+| `overwrite-always` | The import job evaluates a conflicting path and always deletes or reimports if it's dirty, or releases if it's clean. To learn more, see [`overwrite-always` mode](#overwrite-always-mode). |
 
 #### Overwrite-dirty mode
 
-The `overwrite-dirty` mode evaluates a conflicting path to see if it should be deleted and reimported. At a high level, `overwrite-dirty` mode checks the HSM state. If the HSM state is **Clean** and **Archived**, meaning its data is in sync with the blob container as far as Lustre can tell, then only the attributes are updated, if needed. Otherwise, the file is deleted and reimported from the blob container.
+The `overwrite-dirty` mode evaluates a conflicting path to see if it should be deleted and reimported. At a high level, the `overwrite-dirty` mode checks the HSM state.
 
-Checking the HSM state doesn't guarantee that the file in Lustre matches the file in the blob container. If you must ensure that the file in Lustre matches the file in the blob container as closely as possible, use the `overwrite-always` mode.
+If the HSM state is **Clean** and **Archived** (Lustre detects that its data is in sync with the blob container), only the attributes are updated, if needed. Otherwise, the file is deleted and reimported from the blob container.
+
+When you check the HSM state, it's not a guarantee that the file in Lustre matches the file in the blob container. If you must ensure that the file in Lustre matches the file in the blob container as closely as possible, use the `overwrite-always` mode.
 
 #### Overwrite-always mode
 
-The `overwrite-always` mode evaluates a conflicting path and always deletes/re-imports if it's dirty, or releases if it's clean. This mode is useful when you want to ensure that the file system is always in sync with the blob container. It's also the most expensive option, as every previously restored file is either released or deleted/re-imported upon first access.
+The `overwrite-always` mode evaluates a conflicting path and always deletes or reimports if it's dirty, or releases if it's clean. This mode is useful when you want to ensure that the file system is always in sync with the blob container. It's also the most expensive option, because every previously restored file is either released or deleted, or reimported upon first access.
 
 ### Error tolerance
 
-When importing data from a blob container, you can specify the error tolerance. The error tolerance level determines how the import job handles transient errors that occur during the import process, for example, operating system errors or network interruptions. It's important to note that errors in this context don't refer to file conflicts, which are handled by the conflict resolution mode.
+When you import data from a blob container, you can specify the error tolerance. The error tolerance level determines how the import job handles transient errors that occur during the import process (for example, operating system errors or network interruptions). It's important to note that errors in this context don't refer to file conflicts, which the conflict resolution mode handles.
 
 The following error tolerance options are available for import jobs:
 
@@ -86,27 +88,31 @@ The following error tolerance options are available for import jobs:
 
 ### Considerations for blob import jobs
 
-The following items are important to consider when importing data from a blob container:
+The following items are important to consider when you import data from a blob container:
 
-- Only one import or export action can run at a time. For example, if an import job is in progress, attempting to start another import job returns an error.
+- Only one import or export action can run at a time. For example, if an import job is in progress, and you attempt to start another import job, you get an error.
 - Import jobs can be canceled. You can cancel an import job started on an existing cluster, or an import job initiated during cluster creation.
 - Cluster deployment can return successfully before the corresponding import job is complete. The import job continues to run in the background. You can monitor the import job's progress in the following ways:
   - **Azure portal**: The Azure portal displays the status of the import job. Go to the file system and select **Blob integration** to view the import job status.
-  - **Lustre file in root directory**: A file named similar to `/lustre/IMPORT_<state>.<timestamp_start>` is created in the Lustre root directory during import. The `<state>` placeholder changes as the import progresses. The file is deleted when the import job completes successfully.
+  - **Lustre file in root directory**: A file named similar to `/lustre/IMPORT_<state>.<timestamp_start>` is created in the Lustre root directory during import. The `<state>` placeholder changes as the import progresses. The file is deleted when the import job finishes successfully.
 - To view details about a completed import job, you can check the logging container. The logging container contains logs for the import job, including any errors or conflicts that occurred during the import.
 - If the import job fails for any reason, you might not have complete statistics about the import job, such as the number of files imported or number of conflicts.
 
 ## Restore data from Blob Storage
 
-By default, the contents of a blob are imported to a file system the first time the corresponding file is accessed by a client. For certain workloads and scenarios, you might prefer to restore the data from a blob container before it's first accessed. You can choose to prefetch the contents of blobs to avoid the initial delay when the blob is accessed for the first time after import. To prefetch the contents of blobs, you can use Lustre's `lfs hsm_restore` command from a mounted client with sudo capabilities. The following command will prefetch the contents of the blobs into the file system:
+By default, the contents of a blob are imported to a file system the first time a client accesses the corresponding file.
+
+For certain workloads and scenarios, you might prefer to restore the data from a blob container before it's first accessed. You can prefetch the contents of blobs to avoid the initial delay when the blob is accessed for the first time after import.
+
+To prefetch the contents of blobs, you can use the Lustre `lfs hsm_restore` command from a mounted client with `sudo` capabilities. The following command will prefetch the contents of the blobs into the file system:
 
 ```bash
 nohup find local/directory -type f -print0 | xargs -0 -n 1 sudo lfs hsm_restore &
 ```
 
-This command tells the metadata server to asynchronously process a restoration request. The command line doesn't wait for the restore to complete, which means that the command line has the potential to queue up a large number of entries for restore at the metadata server. This approach can overwhelm the metadata server and degrade performance for restores.
+This command tells the metadata server to asynchronously process a restoration request. The command line doesn't wait for the restore to complete. The command line has the potential to queue up a large number of entries for restore at the metadata server. This approach can overwhelm the metadata server and degrade performance for restores.
 
-To avoid this potential performance issue, you can create a basic script that attempts to walk the path and issues restore requests in batches of a specified size. To achieve reasonable performance and avoid overwhelming the metadata server, we recommend using batch sizes anywhere from 1,000 to 5,000 requests.
+To avoid this potential performance issue, you can create a basic script that attempts to walk the path and issues restore requests in batches of a specified size. To achieve reasonable performance and avoid overwhelming the metadata server, we recommend that you use batch sizes from 1,000 to 5,000 requests.
 
 ### Example: Create a batch restore script
 
@@ -185,7 +191,7 @@ sys	0m37.960s
 > [!NOTE]
 > At this time, Azure Managed Lustre restores data from Blob Storage at a maximum throughput rate of ~7.5GiB/second.
 
-## Export data to Blob Storage using an export job
+## Export data to Blob Storage by using an export job
 
 You can copy data from your Azure Managed Lustre file system to long-term storage in Azure Blob Storage by [creating an export job](export-with-archive-jobs.md).
 
@@ -195,16 +201,16 @@ When you export files from your Azure Managed Lustre system, not all files are c
 
 - Export jobs only copy files that are new or whose contents are modified. If the file that you imported from the blob container during file system creation is unchanged, the export job doesn't export the file.
 - Files with metadata changes only aren't exported. Metadata changes include: owner, permissions, extended attributes, and name changes (renamed).
-- Files deleted in the Azure Managed Lustre file system aren't deleted in the original blob container during the export job. The export job doesn't delete files in the blob container.
-- Blob names must conform to certain [naming rules](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#blob-names), meaning that acceptable blob names differ slightly from acceptable POSIX file names. The export process preserves special characters in file names by properly escaping them when exporting to blobs. However, a file name that violates a blob naming rule, such as a file name that exceeds the maximum blob name length, results in an error when attempting to export that file.
+- Files that are deleted in the Azure Managed Lustre file system aren't deleted in the original blob container during the export job. The export job doesn't delete files in the blob container.
+- Blob names must conform to certain [naming rules](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#blob-names). Acceptable blob names differ slightly from acceptable POSIX file names. The export process preserves special characters in file names by properly escaping them when exporting to blobs. However, a file name that violates a blob-naming rule (for example, exceeding the maximum blob name length) causes you to get an error when you attempt to export that file.
 
 ### Running export jobs in active file systems
 
 In active file systems, changes to files during the export job can result in failure status. This failure status lets you know that not all data in the file system could be exported to Blob Storage. In this situation, you can retry the export by [creating a new export job](export-with-archive-jobs.md#create-an-export-job). The new job copies only the files that weren't copied in the previous job.
 
-In file systems with a lot of activity, retries might fail multiple times because files are frequently changing. To verify that a file was successfully exported to Blob Storage, check the timestamp on the corresponding blob. After the job completes, you can also view the logging container configured at deployment time to see detailed information about the export job. The logging container provides diagnostic information about which files failed, and why they failed.
+In file systems with a lot of activity, retries might fail multiple times because files are frequently changing. To verify that a file was successfully exported to Blob Storage, check the timestamp on the corresponding blob. After the job finishes, you can also view the logging container that was configured at deployment time to see detailed information about the export job. The logging container provides diagnostic information about which files failed, and why they failed.
 
-If you're preparing to decommission a cluster and want to perform a final export to Blob Storage, you should make sure that all I/O activities are halted before initiating the export job. This approach helps to guarantee that all data is exported by avoiding errors due to file system activity.
+If you're preparing to decommission a cluster and want to perform a final export to Blob Storage, you should make sure that all I/O activities are halted before you initiate the export job. This approach helps to guarantee that all data is exported, because it avoids errors due to file system activity.
 
 ### Metadata for exported files
 
@@ -224,26 +230,26 @@ You can modify the POSIX attributes manually before using the container to hydra
 
 ### Considerations for export jobs
 
-The following items are important to consider when exporting data with an export job:
+The following items are important to consider when you export data with an export job:
 
-- Only one import or export action can run at a time. For example, if an export job is in progress, attempting to start another export job returns an error.
+- Only one import or export action can run at a time. For example, if an export job is in progress and you attempt to start another export job, you'll receive an error.
 
-## Copy a Lustre blob container with AzCopy or Storage Explorer
+## Copy a Lustre blob container with azcopy or Storage Explorer
 
-You can move or copy the blob container Lustre uses by using AzCopy or Storage Explorer.
+You can move or copy the blob container that Lustre uses by using `azcopy` or Storage Explorer.
 
-For AzCopy, you can include directory attributes by adding the following flag:
+For `azcopy`, you can include directory attributes by adding the following flag:
 
  `--include-directory-stub`
 
-Including this flag preserves directory POSIX attributes during a transfer, for example, `owner`, `group`, and `permissions`. If you use `azcopy` on the storage container without this flag, or with the flag set to `false`, then the data and directories are included in the transfer, but the directories don't retain their POSIX attributes.
+When you include this flag, directory POSIX attributes are preserved during a transfer (for example, `owner`, `group`, and `permissions`). If you use `azcopy` on the storage container without this flag, or with the flag set to `false`, then the data and directories are included in the transfer, but the directories don't retain their POSIX attributes.
 
 In Storage Explorer, you can enable this flag in **Settings** by selecting **Transfers** and selecting the box for **Include Directory Stubs**.
 
-:::image type="content" source="./media/blob-integration/blob-integration-storage-explorer.png" alt-text="Screenshot showing how to include directory stubs during a transfer in Storage Explorer." lightbox="media/blob-integration/blob-integration-storage-explorer.png":::
+:::image type="content" source="./media/blob-integration/blob-integration-storage-explorer.png" alt-text="Screenshot that shows how to include directory stubs during a transfer in Storage Explorer." lightbox="media/blob-integration/blob-integration-storage-explorer.png":::
 
 ## Related content
 
-- [Prerequisites for blob storage integration](amlfs-prerequisites.md#blob-integration-prerequisites-optional)
+- [Prerequisites for Blob Storage integration](amlfs-prerequisites.md#blob-integration-prerequisites-optional)
 - [Create an import job from Blob Storage to Azure Managed Lustre](create-import-job.md)
 - [Create an export job to export data from Azure Managed Lustre](export-with-archive-jobs.md)
