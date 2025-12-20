@@ -20,7 +20,7 @@ In this article, you learn how to use the Azure portal to create an import job t
 >
 > The actual contents of a blob are imported when a client first accesses the file. When you first access the data, there's a slight delay while the Lustre Hierarchical Storage Management (HSM) feature pulls in the blob contents to the corresponding file in the file system. This delay only occurs the first time a file is accessed.
 >
-> You can prefetch the contents of blobs by using the Lustre `lfs hsm_restore` command from a mounted client with `sudo` capabilities. To learn more, see [Restore data from Blob Storage](blob-integration.md#restore-data-from-blob-storage).
+> You can prefetch the contents of blobs by using the Lustre `lfs hsm_restore` command from a mounted client with `sudo` capabilities. To learn more, see [Restore data from Blob Storage](blob-integration.md#restore-data-from-blob-storage). 
 
 ## Prerequisites
 
