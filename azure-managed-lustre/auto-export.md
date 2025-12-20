@@ -12,9 +12,11 @@ ms.reviewer: brianl
 ---
 # Azure Managed Lustre Auto-Export (Preview)
 
-The Auto-Export feature for Azure Managed Lustre is a capability that automatically synchronizes changes in your Azure Managed Lustre file system with a linked Azure Blob Storage Container. Using this feature can help ensure that new and modified files in the file system are reflected in the associated Blob Storage Container without manual intervention. This streamlines data management and improves synchronization for long-term storage.
+The Auto-Export feature for Azure Managed Lustre is a capability that automatically synchronizes changes in your Azure Managed Lustre file system with a linked Azure Blob Storage Container. 
 
-## How Auto-Export works
+Using this feature can help ensure that new and modified files in the file system are reflected in the associated Blob Storage Container without manual intervention. This streamlines data management and improves synchronization for long-term storage.
+
+## Auto-Export functionality
 
 Auto-Export operates by continuously monitoring changes in the Azure Managed Lustre file system. Based on the configured export policy, it updates the contents of the associated Blob Storage Container to reflect these changes. This feature provides users with a seamless and automated process for replicating data.
 
@@ -37,25 +39,25 @@ All new or changed files in the file system under this path (prefix) are continu
 
 Here's how Auto-Export handles different types of changes:
 
-- New file creation, new directory, and file content changes: The blob integration process identifies new files and directories and data that changed. It starts an export job automatically. Auto-Export ensures that the latest version of the file is transferred to Blob Storage.
+- New file creation, new directory, and file content changes: The blob integration process identifies new files, as well as directories and data that changed. It starts an export job automatically. Auto-Export ensures that the latest version of the file is transferred to Blob Storage.
 - Metadata changes: Changes such as renames, ownership updates, or permission adjustments are currently *not synchronized*.
 - Deletion: When files, directories, or symbolic links are deleted in the file system, they are *not removed* from the Blob Storage container.
 
 No more than one blob integration job (like Manual Export, Auto Export, and Import) can run at a time.
 
-Auto-Export works via continuous export iterations. When an iteration finishes, the blob integration process scans the filesystem for any new files, directories, or content changes. It starts a new iteration of an export job.
+Auto-Export works via continuous export iterations. When an iteration finishes, the blob integration process scans the file system for any new files, directories, or content changes. It starts a new iteration of an export job.
 
 Logs that you create in your configured logging container can help identify synchronization issues and help you understand the reasons why operations fail.
 
 ## Monitoring and managing auto-export
 
-You can monitor Auto-Export activities and manage configurations by using the Azure portal:
+You can monitor Auto-Export activities and manage configurations by using the Azure portal.
 
 The **Blob Integration** pane displays details of export activities in the **Recent jobs** section, including the status of recent jobs and metrics related to automatic synchronization.
 
 To cancel an in-process job, select the **Cancel** link for that job in the **Recent jobs** table. The **Cancel** link is only available for the current job.
 
-To view the metrics of an Auto-Export job, select the **Name** of the job. The **Metrics blade** appears on the side panel in the portal.
+To view the metrics of an Auto-Export job, select the **Name** of the job. The **Metrics** pane appears on the side panel in the portal.
 
 :::image type="content" source="media/auto-export/auto-export-job-details.png" alt-text="Screenshot that shows the Blob integration page with job details." lightbox="media/auto-export/auto-export-job-details.png":::
 
@@ -63,7 +65,7 @@ To view the metrics of an Auto-Export job, select the **Name** of the job. The *
 
 The **Blob Integration** pane displays details of export activities in the **Recent jobs** section, including the status of recent jobs and metrics related to automatic synchronization.
 
-To cancel the job that's in progress, select the **Cancel** link for that job in the **Recent jobs** table. The **Cancel** link is only available for the current job.
+To cancel an in-progress job, select the **Cancel** link for that job in the **Recent jobs** table. The **Cancel** link is only available for the current job.
 
 To view the metrics of an Auto-Export job, select the **Name** of the job. The **Metrics** pane appears on the side panel in the portal.
 
@@ -89,7 +91,7 @@ In the portal, metrics are grouped into two main categories: **Overall** and **C
 :::row-end:::
 :::row:::
    :::column span="":::
-      Total MiB Exported
+      **Total MiB Exported**
    :::column-end:::
    :::column span="2":::
       Aggregate file size (in MiB) successfully copied to the associated blob container after enabling Auto-Export.
@@ -114,7 +116,7 @@ In the portal, metrics are grouped into two main categories: **Overall** and **C
 
 :::row:::
    :::column span="":::
-      **Current Iteration statistics**
+      **Current Iteration Statistics**
    :::column-end:::
    :::column span="2":::
       **Statistics about the current activity**

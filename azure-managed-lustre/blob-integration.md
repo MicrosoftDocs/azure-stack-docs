@@ -189,7 +189,7 @@ sys	0m37.960s
 ```
 
 > [!NOTE]
-> At this time, Azure Managed Lustre restores data from Blob Storage at a maximum throughput rate of ~7.5GiB/second.
+> At this time, Azure Managed Lustre restores data from Blob Storage at a maximum throughput rate of ~7.5GiB per second.
 
 ## Export data to Blob Storage by using an export job
 
@@ -206,7 +206,7 @@ When you export files from your Azure Managed Lustre system, not all files are c
 
 ### Running export jobs in active file systems
 
-In active file systems, changes to files during the export job can result in failure status. This failure status lets you know that not all data in the file system could be exported to Blob Storage. In this situation, you can retry the export by [creating a new export job](export-with-archive-jobs.md#create-an-export-job). The new job copies only the files that weren't copied in the previous job.
+In active file systems, when you make changes to files during the export job, it can trigger failure status. This failure status lets you know that not all data in the file system could be exported to Blob Storage. In this situation, you can retry the export by [creating a new export job](export-with-archive-jobs.md#create-an-export-job). The new job copies only the files that weren't copied in the previous job.
 
 In file systems with a lot of activity, retries might fail multiple times because files are frequently changing. To verify that a file was successfully exported to Blob Storage, check the timestamp on the corresponding blob. After the job finishes, you can also view the logging container that was configured at deployment time to see detailed information about the export job. The logging container provides diagnostic information about which files failed, and why they failed.
 

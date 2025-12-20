@@ -73,10 +73,10 @@ Full Sync statistics | Statistics for the initial Full Sync phase of auto-import
 **Preexisting Files** | The number of files with the same path and name that already exist in the Lustre namespace. Files already contain expected data and metadata as the corresponding blob.
 **Preexisting Directories** | The number of directories encountered in the Lustre namespace during the initial Full Sync phase that already contain expected metadata as the corresponding blob.
 **Preexisting Symlinks** | The number of symbolic links encountered in the Lustre namespace during the initial Full Sync phase that already contain expected metadata and target as the corresponding blob.
-**Total Blobs Imported** | The number of blobs imported into the Lustre namespace from the blob container during the initial Full Sync phase. A superset of imported files, directories, and symbolic links listed.
-**Rate of Blob Import** | The per-second count of blobs imported from blob to Lustre during the initial Full Sync phase
-**Total Blobs Walked** | The number of blobs scanned during the Full Sync phase
-**Rate of Blob Walk** | The per-second count of blobs scanned during the Full Sync phase
+**Total Blobs Imported** | The number of blobs imported into the Lustre namespace from the blob container during the initial Full Sync phase. Lists a superset of imported files, directories, and symbolic links.
+**Rate of Blob Import** | The per-second count of blobs imported from blob to Lustre during the initial Full Sync phase.
+**Total Blobs Walked** | The number of blobs scanned during the Full Sync phase.
+**Rate of Blob Walk** | The per-second count of blobs scanned during the Full Sync phase.
 **Total Conflicts** | The number of encounters with blobs that have the same path and name of an existing object in the Lustre namespace, but that differ in terms of one or more areas, including type of object, data, and metadata.
 **Total Errors** | The total number of errors that failed to import blobs to Lustre during the initial Full Sync phase. Select this link to go to the **Logging Container** page to view the logs associated with this Auto-Import job.
 

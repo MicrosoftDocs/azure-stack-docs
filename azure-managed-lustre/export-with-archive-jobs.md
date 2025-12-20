@@ -18,7 +18,7 @@ In this article, you learn how to copy data from your Azure Managed Lustre file 
 You can initiate an export job and monitor the job's progress and status in the Azure portal. Export jobs copy new or changed files from the file system to the blob container that you specified when you created the file system.
 
 > [!NOTE]
-> Export jobs are only available when you integrate Azure Blob Storage with your Azure Managed Lustre file system during file system creation. For more information, see [Azure Blob Storage integration](amlfs-overview.md#azure-blob-storage-integration). If you didn't integrate a blob container when you created the file system, you can use client filesystem commands to copy the data without creating an export job.
+> Export jobs are only available when you integrate Azure Blob Storage with your Azure Managed Lustre file system during file system creation. For more information, see [Azure Blob Storage integration](amlfs-overview.md#azure-blob-storage-integration). If you didn't integrate a blob container when you created the file system, you can use client file system commands to copy the data without creating an export job.
 
 ## Create an export job
 
@@ -31,9 +31,9 @@ Follow these steps to create an export job in the Azure portal:
 1. In the **Job Type** dropdown menu, select **Export**.
 1. In the **File system path** field, you can enter a string to specify what you want to export.
 
-All new or changed files in the file system whose filenames begin with this string are exported. Files are written to the blob container with the same file path (or prefix) that they have in the Lustre system. To avoid overwriting existing files in the blob container, make sure the path of the file in your Lustre system doesn't overlap the existing path of the file in the blob container.
+All new or changed files in the file system whose file names begin with this string are exported. Files are written to the blob container with the same file path (or prefix) that they have in the Lustre system. To avoid overwriting existing files in the blob container, make sure the path of the file in your Lustre system doesn't overlap the existing path of the file in the blob container.
 
-The following screenshot shows the configuration settings for exporting a job in the Azure portal:
+The following screenshot shows the configuration settings for exporting a job in the Azure portal.
 
 :::image type="content" source="./media/export-with-archive-jobs/create-archive-job-options.png" alt-text="Screenshot that shows portal setup for creating an export (archive) job." lightbox="./media/export-with-archive-jobs/create-archive-job-options.png":::
 

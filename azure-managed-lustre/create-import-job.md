@@ -16,7 +16,9 @@ Azure Managed Lustre integrates with Azure Blob Storage to simplify the process 
 In this article, you learn how to use the Azure portal to create an import job that imports data from a blob container into an existing Azure Managed Lustre file system.
 
 > [!NOTE]
-> When you import data from a blob container to an Azure Managed Lustre file system, only the file names (namespace) and metadata are imported into the Lustre namespace. The actual contents of a blob are imported when a client first accesses the file. When you first access the data, there's a slight delay while the Lustre Hierarchical Storage Management (HSM) feature pulls in the blob contents to the corresponding file in the file system. This delay only occurs the first time a file is accessed.
+> When you import data from a blob container to an Azure Managed Lustre file system, only the file names (namespace) and metadata are imported into the Lustre namespace.
+>
+> The actual contents of a blob are imported when a client first accesses the file. When you first access the data, there's a slight delay while the Lustre Hierarchical Storage Management (HSM) feature pulls in the blob contents to the corresponding file in the file system. This delay only occurs the first time a file is accessed.
 >
 > You can prefetch the contents of blobs by using the Lustre `lfs hsm_restore` command from a mounted client with `sudo` capabilities. To learn more, see [Restore data from Blob Storage](blob-integration.md#restore-data-from-blob-storage).
 
@@ -26,7 +28,7 @@ In this article, you learn how to use the Azure portal to create an import job t
 
 ## Create an import job
 
-To begin importing data from a blob container into an Azure Managed Lustre file system, you create an import job. In this section, you learn how to create, configure, and start an import job in the Azure portal.
+To begin importing data from a blob container into an Azure Managed Lustre file system, create an import job. In this section, you learn how to create, configure, and start an import job in the Azure portal.
 
 > [!NOTE]
 > Only one import or export job can run at a time. For example, if an import job is in progress, and you attempt to start another import or export job, you get an error.
@@ -44,7 +46,7 @@ To configure the import options and start the job, follow these steps:
 1. To filter the data that you're importing from Blob Storage, enter import prefixes. The Azure portal allows you to enter up to 10 prefixes. In this example, we specify the prefixes `/data` and `/logs`. To learn more, see [Import prefix](blob-integration.md#import-prefix).
 1. After the job is configured, select **Start** to begin the import process.
 
-The following screenshot shows the import job configuration settings in the Azure portal:
+The following screenshot shows the import job configuration settings in the Azure portal.
 
 :::image type="content" source="./media/import-jobs/create-import-job.png" alt-text="Screenshot that shows the portal settings to use to create an import job." lightbox="./media/import-jobs/create-import-job.png":::
 
@@ -58,7 +60,7 @@ To view the job details, follow these steps:
 1. Select the import job you want to monitor from the list of recent jobs.
 1. The **Job details** pane displays information about the job, including the job status, start time, blobs imported, and any errors or conflicts that occurred during the import process.
 
-The following screenshot shows the job details for an import job in the Azure portal:
+The following screenshot shows the job details for an import job in the Azure portal.
 
 :::image type="content" source="./media/import-jobs/import-job-details.png" alt-text="Screenshot that shows the job details for an import job." lightbox="./media/import-jobs/import-job-details.png":::
 
