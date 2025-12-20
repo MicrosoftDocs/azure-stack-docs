@@ -3,7 +3,7 @@ title: Register Azure Local with Azure Arc.
 description: Learn how to register Azure Local with Azure Arc with and without proxy setup. The proxy configuration can be done via an Arc script or via the Configurator app on Azure Local. 
 author: alkohli
 ms.topic: how-to
-ms.date: 10/14/2025
+ms.date: 11/04/2025
 ms.author: alkohli
 ms.service: azure-local
 zone_pivot_groups: register-arc-options
@@ -47,8 +47,6 @@ Review the parameters used in the script:
 |`ResourceGroup`     |The resource group precreated for Arc registration of the machines. A resource group is created if one doesn't exist.         |
 |`Region`            |The Azure region used for registration. See the [Supported regions](../concepts/system-requirements-23h2.md#azure-requirements) that can be used.          |
 |`ProxyServer`       |Optional parameter. Proxy Server address when required for outbound connectivity. |
-
-
 
 ## Step 2: Set parameters
 
@@ -103,8 +101,6 @@ PS C:\Users\SetupUser> $ProxyBypassList = "localhost,127.0.0.1,*.contoso.com,mac
 
 </details>
 
-
-
 ## Step 3: Run registration script
 
 > [!NOTE]
@@ -145,7 +141,6 @@ PS C:\Users\SetupUser> $ProxyBypassList = "localhost,127.0.0.1,*.contoso.com,mac
     PS C:\Users\Administrator>
     ```
     </details>
-
 
 1. During the Arc registration process, you must authenticate with your Azure account. The console window displays a code that you must enter in the URL, displayed in the app, in order to authenticate. Follow the instructions to complete the authentication process.
 
@@ -541,10 +536,12 @@ Before you begin, make sure that you complete the following prerequisites:
 - After your machines are registered with Azure Arc, proceed to deploy your Azure Local instance via one of the following options:
     - [Deploy via Azure portal](./deploy-via-portal.md)
     - [Deploy via Azure Resource Manager (ARM) template](./deployment-azure-resource-manager-template.md)
-    
+
 ::: moniker-end
 
-::: moniker range="azloc-2504||azloc-2503"
+::: moniker range="=azloc-previous"
+
+This feature is available only in Azure Local 2503 or later. The following content applies specifically to release 2503 or 2504.
 
 ::: zone pivot="register-proxy"
 
@@ -1090,7 +1087,6 @@ Before you begin, make sure that you complete the following prerequisites:
 
 ::: zone-end
 
-
 ## Related steps
 
 - [Troubleshoot registration issues with Configurator app](../manage/troubleshoot-deployment-configurator-app.md)
@@ -1098,11 +1094,5 @@ Before you begin, make sure that you complete the following prerequisites:
 - After your machines are registered with Azure Arc, proceed to deploy your Azure Local instance via one of the following options:
     - [Deploy via Azure portal](./deploy-via-portal.md)
     - [Deploy via Azure Resource Manager (ARM) template](./deployment-azure-resource-manager-template.md)
-
-::: moniker-end
-
-::: moniker range="<=azloc-24113"
-
-This feature is available only in Azure Local 2503 or later.
 
 ::: moniker-end

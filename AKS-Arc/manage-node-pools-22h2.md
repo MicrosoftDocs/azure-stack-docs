@@ -4,8 +4,8 @@ description: Learn how to manage multiple node pools in AKS on Windows Server.
 ms.topic: how-to
 ms.custom:
 ms.date: 04/02/2025
-author: sethmanheim
-ms.author: sethm 
+author: davidsmatlak
+ms.author: davidsmatlak 
 ms.reviewer: rbaziwane
 ms.lastreviewed: 01/30/2024
 ---

@@ -1,8 +1,8 @@
 ---
 title: Control access using Microsoft Entra ID and Kubernetes RBAC for Windows Server
 description: Learn how to use Microsoft Entra group membership to restrict access to cluster resources using Kubernetes role-based access control (Kubernetes RBAC) for Windows Server
-author: sethmanheim
-ms.author: sethm 
+author: davidsmatlak
+ms.author: davidsmatlak 
 ms.lastreviewed: 05/29/2024
 ms.reviewer: abha
 ms.topic: how-to

@@ -3,7 +3,7 @@ title: Prerequisites for VMware VM migration to Azure Local using Azure Migrate
 description: Learn prerequisites for VMware migration to Azure Local using Azure Migrate.
 author: alkohli
 ms.topic: how-to
-ms.date: 10/10/2025
+ms.date: 12/01/2025
 ms.author: alkohli
 ---
 
@@ -15,7 +15,7 @@ This article describes the prerequisite tasks you need to complete before you be
 
 ## Prerequisites
 
-The following list contains the prerequisites that must be met to migrate VMware VMs to Azure Local. Some prerequisites apply to the source VMware server, some to the target Azure Local instance, and others to both.
+The following list contains the prerequisites and considerations that must be met to migrate VMware VMs to Azure Local. Some prerequisites apply to the source VMware server, some to the target Azure Local instance, and others to both.
 
 |Prerequisite|Applies to|More information|
 |--|--|--|
@@ -24,6 +24,10 @@ The following list contains the prerequisites that must be met to migrate VMware
 |Allow required URLs |source, <br> target |[URL access](/azure/migrate/migrate-appliance#url-access) and <br> **\*.siterecovery.azure.com** |
 |Configure SAN/disks policy on VMs. |source|[Configure SAN/disks policy](migrate-troubleshoot.md#disks-on-migrated-vms-are-offline).|
 | Install Hyper-V Linux Integration Services on Linux VMs | source | Rebuild the Linux init image so it contains the necessary Hyper-V drivers.<br>Rebuilding the init image ensures that the VM will boot on Azure Local. Most new versions of Linux distributions have this included. |
+| Disable BitLocker on Windows VMs. | source | BitLocker must be disabled on VMs before migration.|
+| Encrypted disks/volumes are not supported. | source | Any encrypted disks/volumes must be decrypted on VMs before migration.|
+| Shared disks are not supported. | source | Ensure that VMs do not have any shared disks attached before migration. |
+| Uninstall Azure Connected Machine Agent on source VMs (if present) | source | If the source VM is Arc-enabled, ensure that the Azure Connected Machine Agent is uninstalled before initiating replication. See [Azure Migrate FAQ](migrate-faq.yml?&tabs=vmware-and-hyper-v-vms#i-have-the-azure-connected-machine-agent-deployed-on-my-source-vms-that-i-wish-to-migrate-do-i-need-to-uninstall-the-agent-on-my-vms-before-migration) for more information. |
 |Deploy, configure, and register an Azure Local instance.|target|[Create and register an Azure Local instance](../deploy/deployment-introduction.md).|
 | Verify a successful deployment. | target | [Verify a successful deployment](../deploy/deploy-via-portal.md#verify-a-successful-deployment). |
 |Verify and make a note of the custom location created during deployment on the Azure Local system.|target|[Verify a successful deployment](../deploy/deploy-via-portal.md#verify-a-successful-deployment).|

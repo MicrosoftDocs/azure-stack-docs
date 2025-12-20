@@ -6,16 +6,14 @@ author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
-ms.date: 02/14/2025
+ms.date: 12/09/2025
 ---
 
 # Network reference patterns overview for Azure Local
 
 [!INCLUDE [includes](../includes/hci-applies-to-23h2-22h2.md)]
 
-[!INCLUDE [azure-local-banner-23h2](../includes/azure-local-banner-23h2.md)]
-
-In this article, gain an overview understanding for deploying network reference patterns on Azure Local.
+This article provides an overview of deploying network reference patterns in hyperconverged deployments of Azure Local (*formerly Azure Stack HCI*).
 
 A deployment consists of single-node or multiple node systems (up to 16 machines per system) that connect to one or two Top of Rack (TOR) switches. Those environments have the following characteristics:
 

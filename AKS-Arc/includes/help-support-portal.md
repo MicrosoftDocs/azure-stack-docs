@@ -1,6 +1,6 @@
 ---
-author: sethmanheim
-ms.author: sethm
+author: davidsmatlak
+ms.author: davidsmatlak
 ms.topic: include
 ms.date: 07/21/2025
 ms.reviewer: sumsmith

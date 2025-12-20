@@ -1,11 +1,11 @@
 ---
 title: Support Policies for AKS on Azure Local
 description: Learn about technical support policies, limitations, shared responsibilities, and version support for Azure Kubernetes Service (AKS) on Azure Local clusters.
-author: sethmanheim
+author: davidsmatlak
 contributors: sethm
 ms.topic: concept-article
 ms.date: 06/30/2025
-ms.author: sethm
+ms.author: davidsmatlak
 ms.reviewer: sumsmith
 ms.lastreviewed: 06/30/2025
 

@@ -1,16 +1,16 @@
 ---
-title: Troubleshoot a Kubernetes Cluster Node in NotReady,Scheduling Disabled after Runtime Upgrade
-description: Learn what to do when your Kubernetes Cluster Node is in the state NotReady,Scheduling Disabled after a runtime upgrade.
+title: Troubleshoot a Kubernetes Cluster node in Ready, Scheduling Disabled after Runtime Upgrade
+description: Learn what to do when your Kubernetes Cluster node is in the Ready, Scheduling Disabled state after a runtime upgrade.
 ms.service: azure-operator-nexus
 ms.custom: troubleshooting
 ms.topic: troubleshooting
-ms.date: 06/25/2025
-ms.author: jeremyhouser
-author: jeremyhouser-ms
+ms.date: 11/18/2025
+ms.author: ekarandjeff
+author: eak13
 ---
-# Troubleshoot a Kubernetes Cluster Node in NotReady,Scheduling Disabled state
+# Troubleshoot a Kubernetes Cluster node in Ready, Scheduling Disabled state
 
-The purpose of this guide is to troubleshoot a Kubernetes Cluster when 1 or more of its nodes fail to uncordon after a runtime upgrade. This guide is only applicable if that Node remains in the state `Ready,SchedulingDisabled`.
+The purpose of this guide is to troubleshoot a Kubernetes Cluster when 1 or more of its nodes fail to uncordon after a runtime upgrade. This guide is only applicable if that node remains in the state `Ready,SchedulingDisabled`.
 
 ## Prerequisites
 
@@ -19,15 +19,16 @@ The purpose of this guide is to troubleshoot a Kubernetes Cluster when 1 or more
 
 ## Typical Cause
 
-During a Nexus Cluster runtime upgrade on a Baremetal Machine hosting Tenant workloads, the system will cordon and drain Virtual Machine resources scheduled to that Baremetal Machine. It will then shut down the Baremetal Machine to complete the reimaging process. Once the Baremetal Machine completes the runtime upgrade and reboots, the expectation is that the system reschedules Virtual Machines to that Baremetal Machine. It would then uncordon the Virtual Machine, with the Kubernetes Cluster Node that Virtual Machine supports reflecting the appropriate state `Ready`.
+During a Nexus Cluster runtime upgrade on a bare metal machine hosting Tenant workloads, the system cordons and drains the virtual machine resources scheduled to that bare metal machine. It then shuts down the bare metal machine to complete the reimaging process. Once the bare metal machine completes the runtime upgrade and reboots, the expectation is that the system reschedules virtual machines to that bare metal machine. It then uncordons the virtual machine, with the Kubernetes Cluster node that virtual machine supports reflecting the appropriate state `Ready`.
 
-However, a race condition may occur wherein the system fails to find Virtual Machines that should be scheduled to that Baremetal Machine. Each Virtual Machine is deployed using a virt-launcher pod. This race condition happens when the virt-launcher pod's image pull job isn't yet complete. Only after the image pull job is complete will the pod be schedulable to a Baremetal Machine. When the system examines these virt-launcher pods during the uncordon action execution, it can't find which Baremetal Machine the pod. Therefore the system skips uncordoning that Virtual Machine that that pod represents.
+However, a race condition might occur wherein the system fails to find virtual machines that should be scheduled to that bare metal machine. Each virtual machine is deployed using a virt-launcher pod. This race condition happens when the virt-launcher pod's image pull job isn't yet complete. Pod scheduling to a bare metal machine occurs only when the image pull job is complete. When the system examines these virt-launcher pods during the uncordon action execution, it can't find which bare metal machine the pod. Therefore the system skips uncordoning that virtual machine that that pod represents.
 
 ## Procedure
 
-After Kubernetes Cluster Nodes are discovered in the `Ready,SchedulingDisabled` state, the following remediation may be engaged.
+After Kubernetes Cluster Nodes are discovered in the `Ready,SchedulingDisabled` state, use the following remediation actions.
 
-1. Use kubectl to list the nodes using the wide flag. Observe the node in **Ready,SchedulingDisabled** status.
+1. List the nodes using `kubectl get` command with the `-o wide` flag. Observe the node in **Ready,SchedulingDisabled** status.
+
     ~~~bash
     $ kubectl get nodes -o wide
     NAME                                          STATUS                      ROLES           AGE    VERSION    INTERNAL-IP   EXTERNAL-IP   OS-IMAGE                    KERNEL-VERSION    CONTAINER-RUNTIME
@@ -35,14 +36,14 @@ After Kubernetes Cluster Nodes are discovered in the `Ready,SchedulingDisabled` 
     example-naks-agentpool1-md-s8vp4-xp98x        Ready,SchedulingDisabled    <none>          2d6h   v1.30.12   10.4.32.11    <none>        Microsoft Azure Linux 3.0   6.6.85.1-2.azl3   containerd://2.0.0
     ~~~
 
-1. Issue the kubectl command to uncordon the Node in the undesired state.
+1. Uncordon the node in the undesired state by issuing `kubectl uncordon`.
 
     ~~~bash
     $ kubectl uncordon example-naks-agentpool1-md-s8vp4-xp98x
     node/example-naks-agentpool1-md-s8vp4-xp98x uncordoned
     ~~~
 
-    Alternatively, as this issue is more common in larger scale deployments, it may be desirable to perform this action in bulk. In this case, issue the uncordon command as part of a loop to find and uncordon all affected Nodes.
+    Alternatively, the uncordon action can be performed in bulk. The bulk execution option is useful for large scale deployments where the issue occurs more frequently. Find and uncordon all affected Nodes using `kubectl uncordon` as part of a scripted loop.
 
     ~~~bash
     cordoned_nodes=$(kubectl get nodes -o wide --no-headers | awk '/SchedulingDisabled/ {print $1}')
@@ -51,8 +52,8 @@ After Kubernetes Cluster Nodes are discovered in the `Ready,SchedulingDisabled` 
     done
     ~~~
 
-
 1. Use kubectl to list the nodes using the wide flag. Observe the node in **Ready** status.
+
     ~~~bash
     $ kubectl get nodes -o wide
     NAME                                          STATUS  ROLES           AGE    VERSION    INTERNAL-IP   EXTERNAL-IP   OS-IMAGE                    KERNEL-VERSION    CONTAINER-RUNTIME

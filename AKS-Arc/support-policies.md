@@ -3,8 +3,8 @@ title: Support policies for AKS on Windows Server
 description: Learn about AKS on Windows Server support policies, shared responsibility, and features that are in preview.
 ms.topic: concept-article
 ms.date: 04/03/2025
-author: sethmanheim
-ms.author: sethm
+author: davidsmatlak
+ms.author: davidsmatlak
 ms.lastreviewed: 05/03/2023
 ms.reviewer: rbaziwane
 
