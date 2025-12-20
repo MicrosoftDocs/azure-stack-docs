@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.reviewer: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 10/31/2025
+ms.date: 12/17/2025
 ms.custom:
   - devx-track-azurecli
   - sfi-image-nochange
@@ -83,6 +83,10 @@ Before you create an Azure Local VM, make sure that the following prerequisites 
 ## Create Azure Local VMs
 
 Follow these steps to create a VM on your Azure Local.
+
+> [!NOTE]
+> - Two DVD drives are created and used in Azure Local VMs during VM provisioning. The ISO files used during provisioning are removed after successfully creating the VM. However, you might see the empty drives visible for the VM. 
+> - To delete these drives in a Windows VM, use Device Manager to uninstall the drives. Depending on the flavor of Linux you are using, you can also delete them for Linux VMs.
 
 # [Azure CLI](#tab/azurecli)
 
@@ -170,8 +174,21 @@ Here we create a VM that uses specific memory and processor counts on a specifie
     az stack-hci-vm create --name $vmName --resource-group $resource_group --admin-username $userName --admin-password $password --computer-name $computerName --image $imageName --location $location --authentication-type all --nics $nicName --custom-location $customLocationID --hardware-profile memory-mb="8192" processors="4" --storage-path-id $storagePathId 
    ```
 
-The VM is successfully created when the `provisioningState` shows as `succeeded`in the output.
+    **To create VM with dynamic memory:**
 
+    Specify additional flags to create a VM with dynamic memory:
+
+    `--hardware-profile vm-size="Custom" processors=1 memory-mb=1024 maximum-memory-mb=2048 minimum-memory-mb=1024 target-memory-buffer=20`
+    
+    Note that `minimum-memory-mb` is less than or equal to `memory-mb` and `maximum-memory-mb` is greater than or equal to `memory-mb`.
+
+    Here is a sample script:
+
+    ```azurecli
+    az stack-hci-vm create --name "my_dynmemory" -g "my_registration" --admin-username "admin" --admin-password "" --custom-location "/subscriptions/my_subscription/resourceGroups/my_registration/providers/Microsoft.ExtendedLocation/customLocations/my_customlocation" --location "eastus2euap" --image "/subscriptions/my_subscription/resourceGroups/my_registration/microsoft.azurestackhci/marketplacegalleryimages/2022-datacenter-azure-edition-core-01" --hardware-profile vm-size="Custom" processors=1 memory-mb=1024 maximum-memory-mb=2048 minimum-memory-mb=1024 target-memory-buffer=20 --enable-agent true --nics "dynnic"
+    ```
+    
+The VM is successfully created when the `provisioningState` shows as `succeeded`in the output.
 > [!NOTE]
 > The VM created has guest management enabled by default. If for any reason guest management fails during VM creation, you can follow the steps in [Enable guest management on Azure Local VM](./manage-arc-virtual-machines.md#enable-guest-management) to enable it after the VM creation.
 
@@ -197,7 +214,8 @@ To create a Linux VM, use the same command that you used to create the Windows V
 > [!IMPORTANT]
 > Setting the proxy server during VM creation is supported for Ubuntu Server VMs.
 
-### Create a VM with proxy configured
+
+## Create a VM with proxy configured
 
 Use this optional parameter **proxy-configuration** to configure a proxy server for your VM.
 
@@ -230,19 +248,18 @@ az stack-hci-vm create --name $vmName --resource-group $resource_group --admin-u
 
 For proxy authentication, you can pass the username and password combined in a URL as follows:`"http://username:password@proxyserver.contoso.com:3128"`.
 
-### Create a VM with Arc gateway configured
+## Create a VM with Arc gateway configured
 
-Use this optional parameter **gateway-id** to configure a Arc gateway for your VM.
+To configure an Arc gateway for your Azure Local VM, create a VM with guest management enabled and pass the optional parameter `--gateway-id`. Arc gateway can be used with or without proxy configuration. By default, only the Arc traffic is redirected through the Arc proxy. 
 
-Arc gateway for VMs is configured during the onboarding of the Azure connected machine agent and be used with or without proxy configuration. When enabling the Arc gateway on Azure connected machines, only the Arc traffic will be redirected through the Arc proxy by default. If you want all the OS applications or services to also use the Arc gateway inside the VM, you will need to configure the proxy inside the VM to use the Arc proxy. Only the allowed endpoints by Arc gateway will be sent over the Arc gateway tunnel. The rest of the traffic will be sent to the endpoint directly or over your enterprise proxy, depending on the VM configuration.
-
-As such, you may need to specifically set the proxy configuration for your applications if they don't reference the environment variables set within the VM.
+If you want the VM applications or services to use the Arc gateway, configure the proxy inside the VM to use the Arc proxy. For applications that don't reference the environment variables set within the VMs, specify a proxy as-needed.
 
 > [!IMPORTANT]
-> Deploying Azure connected machines in Azure Local with Arc gateway requires you to allow additional endpoints in your proxy and firewall devices.
-> For Windows VMs, you must allow the following endpoint: `https://agentserviceapi.guestconfiguration.azure.com`.
-> For Linux VMs, you must allow the following endpoints: `https://agentserviceapi.guestconfiguration.azure.com` and `https://packages.microsoft.com`.
-
+> Traffic intended for endpoints not managed by the Arc gateway is routed through the enterprise proxy or firewall.
+> 
+> For Windows VMs, allow the following endpoints: `https://agentserviceapi.guestconfiguration.azure.com` and `https://<azurelocalregion>-gas.guestconfiguration.azure.com`.
+> 
+> For Linux VMs, allow the following endpoints: `https://agentserviceapi.guestconfiguration.azure.com`, `https://<azurelocalregion>-gas.guestconfiguration.azure.com`, and `https://packages.microsoft.com`.
 
 #### To create a VM with Arc gateway enabled behind a proxy server, run the following command
 
@@ -731,7 +748,7 @@ You can use the Azure Verified Module (AVM) that contains the Terraform template
 
 ### Steps to use the Terraform template
 
-1. Download the Terraform template from [Azure verified module](https://registry.terraform.io/modules/Azure/avm-res-azurestackhci-virtualmachineinstance/azurerm/0.1.2).
+1. Download the Terraform template from [Azure verified module](https://registry.terraform.io/modules/Azure/avm-res-azurestackhci-virtualmachineinstance/azurerm/).
 2. Navigate to the **examples** folder in the repository, and look for the following subfolders:
     - **default**: Creates one virtual machine instance.
     - **multi**: Creates multiple virtual machine instances.
@@ -743,10 +760,6 @@ You can use the Azure Verified Module (AVM) that contains the Terraform template
    :::image type="content" source="./media/create-arc-virtual-machines/terraform-virtual-machines.png" alt-text="Screenshot of select Virtual Machine after deployment." lightbox="./media/create-arc-virtual-machines/terraform-virtual-machines.png":::
 
 ---
-
-> [!NOTE]
-> - Two DVD drives are created and used in Azure Local VMs during VM provisioning. The ISO files used during provisioning are removed after successfully creating the VM. However, you might see the empty drives visible for the VM. 
-> - To delete these drives in a Windows VM, use Device Manager to uninstall the drives. Depending on the flavor of Linux you are using, you can also delete them for Linux VMs.
 
 ## Use managed identity to authenticate Azure Local VMs
 

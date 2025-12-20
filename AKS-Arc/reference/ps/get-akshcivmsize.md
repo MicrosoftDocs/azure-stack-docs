@@ -1,10 +1,10 @@
 ---
 title: Get-AksHciVmSize for AKS hybrid
-author: sethmanheim
+author: davidsmatlak
 description: The Get-AksHciVmSize PowerShell command lists the supported VM sizes.
 ms.topic: reference
 ms.date: 03/22/2023
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
 

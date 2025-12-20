@@ -3,8 +3,8 @@ title: Connect to Windows or Linux worker nodes with SSH
 description: Learn how to use SSH to connect to Windows or Linux worker nodes in an AKS Arc cluster.
 ms.date: 07/10/2025
 ms.topic: how-to
-author: sethmanheim
-ms.author: sethm
+author: davidsmatlak
+ms.author: davidsmatlak
 ms.reviewer: leslielin
 ms.lastreviewed: 07/02/2025
 ---

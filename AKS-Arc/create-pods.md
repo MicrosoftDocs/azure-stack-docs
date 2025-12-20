@@ -1,10 +1,10 @@
 ---
 title: Create and delete pods in AKS on Windows Server
 description: Learn how to create and delete pods in Azure Kubernetes Service (AKS) on Windows Server.
-author: sethmanheim
+author: davidsmatlak
 ms.topic: how-to
 ms.date: 10/21/2024
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: abha
 
