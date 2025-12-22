@@ -1,8 +1,8 @@
 ---
 title: Availability scenarios for Azure Kubernetes Service (AKS) on Windows Server on two-node Azure Local
 description: Availability scenarios for Azure Kubernetes Service (AKS) on Windows Server on a two-node Azure Local deployment.
-author: sethmanheim
-ms.author: sethm
+author: davidsmatlak
+ms.author: davidsmatlak
 ms.topic: article
 ms.date: 01/09/2024
 ---

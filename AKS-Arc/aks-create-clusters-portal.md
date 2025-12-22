@@ -1,8 +1,8 @@
 ---
 title: Create Kubernetes clusters using the Azure portal
 description: Create Kubernetes clusters using the Azure portal.
-author: sethmanheim
-ms.author: sethm
+author: davidsmatlak
+ms.author: davidsmatlak
 ms.topic: how-to
 ms.date: 11/17/2025
 ms.lastreviewed: 01/30/2024

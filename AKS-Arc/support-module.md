@@ -2,8 +2,8 @@
 title: Support.AksArc diagnostic and remediation tool
 description: Learn how to run commands in the Support.AksArc PowerShell module to diagnose and remediate issues in AKS Arc environments.
 ms.topic: troubleshooting
-author: sethmanheim
-ms.author: sethm
+author: davidsmatlak
+ms.author: davidsmatlak
 ms.date: 09/24/2025
 ms.reviewer: sumsmith
 ms.lastreviewed: 07/22/2025
