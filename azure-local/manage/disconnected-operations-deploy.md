@@ -399,7 +399,7 @@ To configure observability, follow these steps:
 
 1. On a computer with Azure CLI (or using the Azure Cloud Shell in Azure portal) create the SPN. Run the following script:
 
-    ```powershell
+    ```azurecli
     $resourcegroup = 'azure-disconnectedoperations'
     $appname = 'azlocalobsapp'
     az login
