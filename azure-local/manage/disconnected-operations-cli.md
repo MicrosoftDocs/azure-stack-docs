@@ -244,7 +244,40 @@ The following table lists the CLI extensions supported on Azure Local disconnect
 | Azure Policy | Built-in      |    | [Quickstart: Create a policy assignment to identify noncompliant resources using Azure CLI](/azure/governance/policy/assign-policy-azurecli) |
 | Azure Key Vault | Built-in      |    | [Quickstart: Create a key vault using Azure CLI](/azure/key-vault/general/quick-create-cli) |
 
-## Troubleshoot Azure CLI
+## Appendix
+### How to create a service principal for automating Azure Local node registration
+
+Use the operator account to create an SPN for Arc initialization of each Azure Local node. For bootstrap, the Owner role is required at the subscription level.
+
+To create the SPN, follow these steps:
+
+1. Configure CLI on your client machine and run this command:
+
+    ```azurecli  
+    $subscriptionName = 'Starter subscription'
+    $resourcegroup = 'azurelocal-disconnected-operations'
+    $appname = 'azlocalclusapp'      
+    az cloud set -n 'azure.local'
+    az login      
+    az account set --subscription $subscriptionName
+    $subscriptionId = az account show --query id --output tsv
+    $g = (az group create -n $resourcegroup -l autonomous)|ConvertFrom-Json  
+    az ad sp create-for-rbac -n $appname --role Owner --scopes "/subscriptions/$($subscriptionId)"  
+    ```  
+
+    Here's an example output:
+
+    ```json  
+    {  
+      "appId": "<AppId>",  
+      "displayName": "azlocalclusapp",  
+      "password": "<RETRACTED>",  
+      "tenant": "<RETRACTED>"  
+    }  
+
+1. Copy out the AppID and password for use in command line automation. You will log in using this service principal instead of an interactive login or using a device-code.
+
+### Troubleshoot Azure CLI
 
 To troubleshoot Azure CLI, run CLI commands with the --debug parameter to get detailed logs and a stack trace. If the client doesn't trust your root CA, requests to private cloud endpoints can fail with SSL or connection errors.
 
