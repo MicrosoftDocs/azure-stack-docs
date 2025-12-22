@@ -35,7 +35,7 @@ You can apply both types of ACLs to NNIs or external network resources to filter
 
 ## Match configuration
 
-Match criteria are conditions used to match packets based on attributes such as IP address, protocol, port, virtual local area network (VLAN), DSCP, ethertype, fragment, and time to live (TTL). Each match criterion has a name, a sequence number, an IP address type, and a list of match conditions. Match conditions are evaluated by using the logical `AND` operator.
+Match criteria are conditions used to match packets based on attributes such as IP address, protocol, port, virtual local area network (VLAN), DSCP, EtherType, fragment, and time to live (TTL). Each match criterion has a name, a sequence number, an IP address type, and a list of match conditions. Match conditions are evaluated by using the logical `AND` operator.
 
 - **dot1q**: Matches packets based on the VLAN ID in the 802.1Q tag.
 - **Fragment**: Matches packets based on whether they're IP fragments or not.

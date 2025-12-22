@@ -29,7 +29,7 @@ Option A and Option B are specified in the following steps for the `fabric creat
 
 Specified in the following property:
 
-`--managed-network-config [Required]`: Configuration required to set up the management network.
+- `--managed-network-config [Required]`: Configuration required to set up the management network.
 
 #### Examples
 
