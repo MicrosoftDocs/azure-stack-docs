@@ -85,11 +85,11 @@ For more information, see [Cohesity](https://www.cohesity.com/platform/dataprote
 
 To access [support statements](https://docs.cohesity.com/ui/login?redirectPath=%2F7_3%2FWeb%2FUserGuide%2FContent%2FReleaseNotes%2FSupportedVersions.htm#MicrosoftHyperV) for Azure Local, sign in to your account.
 
-#### CommVault
+#### Commvault
 
-CommVault Cloud offers unified, enterprise-grade data protection for Azure Local environments, enabling secure backup, recovery, and ransomware protection across virtual machines, databases, and unstructured data. With intelligent automation and policy-driven workflows, CommVault simplifies compliance, improves resiliency, and delivers scalable protection from edge to cloud, all while maintaining full control of your data within your Azure Local region.
+Commvault Cloud offers unified, enterprise-grade data protection for Azure Local environments, enabling secure backup, recovery, and ransomware protection across virtual machines, databases, and unstructured data. With intelligent automation and policy-driven workflows, Commvault simplifies compliance, improves resiliency, and delivers scalable protection from edge to cloud, all while maintaining full control of your data within your Azure Local region.
 
-For more information, visit the official CommVault documentation site for guidance on CommVault for Azure Local.
+For more information, visit the official CommVault documentation site for guidance on Commvault for Azure Local.
 
 #### Rubrik
 
