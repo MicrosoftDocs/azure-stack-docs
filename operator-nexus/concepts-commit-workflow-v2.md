@@ -29,7 +29,7 @@ Commit workflow v2 is built around a structured change management flow. The foll
 
 Before you use commit workflow v2, ensure that the following environment requirements are met.
 
-## Commit workflow-compatible versions
+### Commit workflow-compatible versions
 
 The commit workflow version supported depends on the combination of Network Fabric runtime, portal release version, and API version in use. Use the following table to identify which commit workflow applies to your environment.
 
@@ -58,7 +58,7 @@ If you're unsure which commit workflow version applies to your setup, refer to t
 * **Sequential upgrade**: From 4.0.0 to 5.0.0 to 5.0.1
 
 > [!NOTE]
-> More actions might be required when you upgrade from version 4.0.0. For guidance on upgrade-specific steps, refer to the [Runtime release notes](#).
+> More actions might be required when you upgrade from version 4.0.0. For guidance on upgrade-specific steps, refer to the [Runtime release notes](https://docs.ipfabric.io/7.3/releases/release_notes_low-level/5.x/5.0.x/5.0.1/).
 
 ## Behavior and constraints
 
