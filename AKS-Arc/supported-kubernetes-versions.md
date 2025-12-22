@@ -4,8 +4,8 @@ description: Understand the Kubernetes version support policy and lifecycle of c
 services: container-service
 ms.topic: article
 ms.date: 10/24/2025
-author: sethmanheim
-ms.author: sethm 
+author: davidsmatlak
+ms.author: davidsmatlak 
 ms.lastreviewed: 10/24/2025
 ms.reviewer: rcheeran
 

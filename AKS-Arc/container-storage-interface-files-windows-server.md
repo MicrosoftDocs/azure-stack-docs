@@ -1,10 +1,10 @@
 ---
 title: Use Container Storage Interface (CSI) file drivers in AKS on Windows Server
 description: Learn how to use Container Storage Interface (CSI) drivers to manage files in AKS on Windows Server.
-author: sethmanheim
+author: davidsmatlak
 ms.topic: how-to
 ms.date: 10/02/2025
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.custom: sfi-ropc-nochange
 
 # Intent: As an IT Pro, I want to learn how to use Container Storage Interface (CSI) drivers in AKS on Windows Server.

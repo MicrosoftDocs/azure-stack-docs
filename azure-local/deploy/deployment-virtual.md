@@ -1,25 +1,29 @@
 ---
-title: Deploy a virtual Azure Local, version 23H2 system
+title: Deploy a virtual Azure Local, version 23H2 and 24H2 system
 description: Describes how to perform an Azure Local, version 23H2 virtualized deployment.
 author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.topic: how-to
-ms.date: 04/08/2025
+ms.date: 12/09/2025
 ---
 
 # Deploy a virtual Azure Local system
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
-[!INCLUDE [azure-local-banner-23h2](../includes/azure-local-banner-23h2.md)]
-
-This article describes how to deploy a virtualized Azure Local instance on a host system with Windows Server 2022, Windows 11, or later operating system (OS). The host should also have Hyper-V enabled for the deployment.
+This article describes how to deploy a virtualized Azure Local (*formerly Azure Stack HCI*) instance on a host system running Windows Server 2022, Windows 11, or later operating system (OS). The host must have Hyper-V enabled for the deployment.
 
 You need administrator privileges for the Azure Local virtual deployment and should be familiar with the existing Azure Local solution. The deployment can take around 2.5 hours to complete.
 
 > [!IMPORTANT]
-> A virtual deployment of Azure Local is intended for educational and demonstration purposes only. Microsoft Support doesn't support virtual deployments.
+
+> A virtual deployment of Azure Local is intended for educational and demonstration purposes only. 
+
+
+> [!NOTE]
+
+> Microsoft Support doesn't support virtual deployments.
 
 ## Prerequisites
 
@@ -40,9 +44,9 @@ Before you begin, make sure that:
     | Component | Minimum |
     | ------------- | -------- |
     | Processor| Intel VT-x or AMD-V, with support for nested virtualization. For more information, see [Does My Processor Support Intel&reg; virtualization technology?](https://www.intel.com/content/www/us/en/support/articles/000005486/processors.html)
-    | Memory| The physical host must have a minimum of 32 GB RAM for single virtual node deployments. The virtual host VM should have at least 24 GB RAM.<br><br>The physical host must have a minimum of 64 GB RAM for two virtual node deployments. Each virtual host VM should have at least 24 GB RAM for deployment and 32 GB for applying updates.|
-    | Host network adapters| A single network adapter.|
-    | Storage| 1 TB Solid state drive (SSD). |
+    | Memory| The physical host must have a minimum of 48 GB RAM for single virtual node deployments. The virtual host VM should have at least 32 GB RAM.<br><br>The physical host must have a minimum of 72 GB RAM for two virtual node deployments. Each virtual host VM should have at least 32 GB RAM for deployment and for applying updates.|
+    | Host network adapters | A single network adapter. |
+    | Storage | 1 TB Solid state drive (SSD). |
 
 ### Virtual host requirements
 
@@ -52,13 +56,15 @@ Before you begin, make sure that each virtual host system can dedicate the follo
 | ----------| ------- |
 | Virtual machine (VM) type | Secure Boot and Trusted Platform Module (TPM) enabled. |
 | vCPUs | Four cores. |
-| Memory | A minimum of 24 GB. |
+| Memory | A minimum of 32 GB. |
 | Networking | At least two network adapters connected to internal network. MAC spoofing must be enabled. |
-| Boot disk | One disk to install the Azure Stack HCI operating system from ISO. At least 200 GB. |
-| Hard disks for Storage Spaces Direct | Four dynamic expanding disks. Maximum disk size is 1024 GB. |
-| Time synchronization in integration  | Disabled. |
+| Boot disk | One disk to install the Azure Stack HCI operating system from ISO. At least 127 GB. |
+| Hard disks for Storage Spaces Direct | Two dynamic expanding disks. Maximum disk size is 1024 GB. |
+| Data disks | At least 127 GB each. The size must be the same for each disk. |
+| Time synchronization in Hyper-V integration tools | Disabled. |
 
 > [!NOTE]
+
 > These are the minimum requirements to successfully deploy Azure Local. Increase the capacity like virtual cores and memory when running actual workloads like virtual machines or containers.
 
 ## Set up the virtual switch
@@ -116,7 +122,7 @@ Follow these steps to create an example VM named `Node1` using PowerShell cmdlet
 
     ```PowerShell
     New-VHD -Path "your_VHDX_path" -SizeBytes 127GB
-    New-VM -Name Node1 -MemoryStartupBytes 20GB -VHDPath "your_VHDX_path" -Generation 2 -Path "VM_config_files_path"
+    New-VM -Name Node1 -MemoryStartupBytes 32GB -VHDPath "your_VHDX_path" -Generation 2 -Path "VM_config_files_path"
     ```
 
 1. Disable dynamic memory:
@@ -149,19 +155,22 @@ Follow these steps to create an example VM named `Node1` using PowerShell cmdlet
 1. Attach all network adapters to the virtual switch. Specify the name of the virtual switch you created, whether it was external without NAT, or internal with NAT:
 
     ```PowerShell
-    Get-VmNetworkAdapter -VmName "Node1" |Connect-VmNetworkAdapter -SwitchName "virtual_switch_name"
+    Get-VmNetworkAdapter -VmName "Node1" | Connect-VmNetworkAdapter -SwitchName "virtual_switch_name"
     ```
 
-1. Enable MAC spoofing on all network adapters on VM `Node1`. MAC address spoofing is a technique that allows a network adapter to masquerade as another by changing its Media Access Control (MAC) address. This is required in scenarios where you're planning to use nested virtualization:
+1. Enable MAC address spoofing and teaming on all network adapters on VM Node1 if you plan to use nested virtualization.
+
+    - MAC address spoofing lets a network adapter appear as another by changing its Media Access Control (MAC) address.
+    - NetworkATC teams vNICs for management and compute intent and, depending on the configuration, for storage vNICs.
 
     ```PowerShell
-    Get-VmNetworkAdapter -VmName "Node1" |Set-VmNetworkAdapter -MacAddressSpoofing On
+    Get-VmNetworkAdapter -VmName "Node1" | Set-VmNetworkAdapter -MacAddressSpoofing On -Allow Teaming On
     ```
 
 1. Enable trunk port (for multi-node deployments only) for all network adapters on VM `Node1`. This script configures the network adapter of a specific VM to operate in trunk mode. This is typically used in multi-node deployments where you want to allow multiple Virtual Local Area Networks (VLANs) to communicate through a single network adapter:
 
     ```PowerShell
-    Get-VmNetworkAdapter -VmName "Node1" |Set-VMNetworkAdapterVlan -Trunk -NativeVlanId 0 -AllowedVlanIdList 0-1000
+    Get-VmNetworkAdapter -VmName "Node1" | Set-VMNetworkAdapterVlan -Trunk -NativeVlanId 0 -AllowedVlanIdList 0-1000
     ```
 
 1. Create a new key protector and assign it to `Node1`. This is typically done in the context of setting up a guarded fabric in Hyper-V, a security feature that protects VMs from unauthorized access or tampering.
@@ -186,26 +195,22 @@ Follow these steps to create an example VM named `Node1` using PowerShell cmdlet
     Set-VmProcessor -VMName "Node1" -Count 8
     ```
 
-1. Create extra drives to be used as the boot disk and hard disks for Storage Spaces Direct. After these commands are executed, six new VHDXs will be created in the `C:\vms\Node1` directory as shown in this example:
+1. Create extra drives to be used as one for boot disk and two hard disks for Storage Spaces Direct. After these commands are executed, three new VHDXs will be created in the `C:\vms\Node1` directory as shown in this example:
 
    ```PowerShell
+    new-VHD -Path "C:\vms\Node1\OS.vhdx" -SizeBytes 127GB
     new-VHD -Path "C:\vms\Node1\s2d1.vhdx" -SizeBytes 1024GB
     new-VHD -Path "C:\vms\Node1\s2d2.vhdx" -SizeBytes 1024GB
-    new-VHD -Path "C:\vms\Node1\s2d3.vhdx" -SizeBytes 1024GB
-    new-VHD -Path "C:\vms\Node1\s2d4.vhdx" -SizeBytes 1024GB
-    new-VHD -Path "C:\vms\Node1\s2d5.vhdx" -SizeBytes 1024GB
-    new-VHD -Path "C:\vms\Node1\s2d6.vhdx" -SizeBytes 1024GB
-    ```
+   ```
 
-1. Attach drives to the newly created VHDXs for the VM. In these commands, six VHDs located in the `C:\vms\Node1` directory and named `s2d1.vhdx` through `s2d6.vhdx` are added to `Node1`. Each `Add-VMHardDiskDrive` command adds one VHD to the VM, so the command is repeated six times with different `-Path` parameter values.
+1. Attach drives to the newly created VHDXs for the VM. In these commands, two VHDs located in the `C:\vms\Node1` directory and named `s2d1.vhdx` through `s2d2.vhdx` are added to `Node1`. Each `Add-VMHardDiskDrive` command adds one VHD to the VM, so the command is repeated six times with different `-Path` parameter values.
 
-    Afterwards, the `Node1` VM has four VHDs attached to it. These VHDXs are used to enable Storage Spaces Direct on the VM, which are required for Azure Stack HCI deployments:
+    Afterwards, the `Node1` VM has two VHDs attached to it. These VHDXs are used to enable Storage Spaces Direct on the VM, which are required for Azure Local deployments:
 
    ```PowerShell
+    Add-VMHardDiskDrive -VMName "Node1" -Path "C:\vms\Node1\OS.vhdx"
     Add-VMHardDiskDrive -VMName "Node1" -Path "C:\vms\Node1\s2d1.vhdx"
     Add-VMHardDiskDrive -VMName "Node1" -Path "C:\vms\Node1\s2d2.vhdx"
-    Add-VMHardDiskDrive -VMName "Node1" -Path "C:\vms\Node1\s2d3.vhdx"
-    Add-VMHardDiskDrive -VMName "Node1" -Path "C:\vms\Node1\s2d4.vhdx"
     ```
 
 1. Disable time synchronization:

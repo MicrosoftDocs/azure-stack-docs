@@ -1,12 +1,12 @@
 ---
 title: "Azure Operator Nexus: Install CLI extensions"
 description: Learn to install the needed Azure CLI extensions for Operator Nexus
-author: Travisivart
-ms.author: travisneely
+author: eak13
+ms.author: ekarandjeff
 ms.service: azure-operator-nexus
 ms.custom: devx-track-azurecli
 ms.topic: include
-ms.date: 09/05/2024
+ms.date: 12/03/2025
 # ms.custom: template-include
 ---
 
@@ -20,8 +20,6 @@ Installations of the following CLI extensions are required:
 - `networkcloud` for Microsoft.NetworkCloud APIs
 - `managednetworkfabric` for Microsoft.ManagedNetworkFabric APIs
 
-
-
 >[!NOTE]
 > Any upgrade of the Azure CLI downloads the latest stable version of the installed extension.
 >The `--allow-preview=True` needs to be explicitly set to install the preview version of the extensions.
@@ -30,16 +28,10 @@ Installations of the following CLI extensions are required:
 
 - For list of available versions, see [the extension release history][az-cli-networkcloud-cli-versions].
 
-- Upgrade any previously installed version of the extension
+- Install and verify the latest version of `networkcloud` CLI extension. If the extension is already installed, the command upgrades it when a newer version exists.
 
     ```azurecli
     az extension add --yes --upgrade --name networkcloud
-    ```
-
-- Install and test the latest version of `networkcloud` CLI extension
-
-    ```azurecli
-    az extension add --name networkcloud
     az networkcloud --help
     ```
 
@@ -47,22 +39,16 @@ Installations of the following CLI extensions are required:
 
 - For list of available versions, see [the extension release history][az-cli-managednetworkfabric-cli-versions].
 
-- Upgrade any previously installed version of the extension
+- Install and verify the latest version of `networkcloud` CLI extension. If the extension is already installed, the command upgrades it when a newer version exists.
 
     ```azurecli
     az extension add --yes --upgrade --name managednetworkfabric
-    ```
-
-- Install and test the `managednetworkfabric` CLI extension
-
-    ```azurecli
-    az extension add --name managednetworkfabric
     az networkfabric --help
     ```
 
 ## Install other Azure extensions
 
-Install the other Azure CLI extensions that Nexus makes use of.
+Install the other Azure CLI extensions that Nexus uses. If these extensions are already installed, the commands upgrade them when a newer version exists.
 
 ```azurecli
 az extension add --yes --upgrade --name customlocation

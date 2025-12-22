@@ -1,10 +1,10 @@
 ---
 title: Install-AksHciCsiNfs for AKS hybrid
-author: sethmanheim
+author: davidsmatlak
 description: The Install-AksHciCsiNfs PowerShell command Installs CSI NFS Plugin to a cluster
 ms.topic: reference
 ms.date: 4/13/2021
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
 

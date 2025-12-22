@@ -4,8 +4,8 @@ description: Learn how to deploy extension for MetalLB for Azure Arc enabled Kub
 ms.topic: how-to
 ms.custom: devx-track-azurecli
 ms.date: 07/03/2025
-author: sethmanheim
-ms.author: sethm
+author: davidsmatlak
+ms.author: davidsmatlak
 ms.reviewer: xinyuhe
 ms.lastreviewed: 04/02/2024
 ---

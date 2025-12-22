@@ -1,8 +1,8 @@
 ---
 title: Arc-connected AKS Edge Essentials
 description: Connect your AKS Edge Essentials clusters to Arc
-author: sethmanheim
-ms.author: sethm
+author: davidsmatlak
+ms.author: davidsmatlak
 ms.topic: how-to
 ms.date: 03/10/2025
 ms.custom: template-how-to

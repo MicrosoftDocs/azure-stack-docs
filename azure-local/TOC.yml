@@ -8,6 +8,8 @@ items:
     href: ./overview.md
   - name: About Azure Local deployments
     href: ./scalability-deployments.md
+  - name: FAQ
+    href: faq.yml
 
 - name: Hyperconverged deployments
   items: 
@@ -33,8 +35,7 @@ items:
         href: license-billing.yml
     - name: Compare to Windows Server
       href: concepts/compare-windows-server.md 
-    - name: FAQ
-      href: faq.yml
+
 
   - name: Evaluate 
     items:
@@ -111,6 +112,18 @@ items:
         href: concepts/security-features.md
       - name: Azure Local security book
         href: security-book/overview.md
+      - name: Assurance
+        items:
+        - name: Azure Local and security standards
+          href: assurance/azure-stack-security-standards.md
+        - name: ISO/IEC 27001 guidance
+          href: assurance/azure-stack-iso27001-guidance.md
+        - name: PCI DSS guidance
+          href: assurance/azure-stack-pci-dss-guidance.md
+        - name: HIPAA guidance
+          href: assurance/azure-stack-hipaa-guidance.md
+        - name: FedRAMP guidance
+          href: assurance/azure-stack-fedramp-guidance.md 
     - name: Assess environment readiness
       href: manage/use-environment-checker.md
     - name: Configure advanced Active Directory settings
@@ -211,6 +224,8 @@ items:
         items:
         - name: Update SDN infrastructure
           href: manage/update-sdn.md
+        - name: Upgrade SDN infrastructure
+          href: manage/upgrade-sdn.md
         - name: Manage tenant logical networks
           href: manage/tenant-logical-networks.md
         - name: Manage tenant virtual networks
@@ -354,6 +369,8 @@ items:
                 href: manage/virtual-machine-azure-marketplace-red-hat.md
             - name: Using SUSE VM image
               href: manage/virtual-machine-image-suse.md
+          - name: Manage Azure Local VM Images
+            href: manage/virtual-machine-manage-image.md    
         - name: 3. Create logical networks
           href: manage/create-logical-networks.md
         - name: 4. Create network interfaces
@@ -711,18 +728,8 @@ items:
       href: /system-center/
   - name: Resources
     items:
-    - name: Assurance
-      items:
-      - name: Azure Local and security standards
-        href: assurance/azure-stack-security-standards.md
-      - name: ISO/IEC 27001 guidance
-        href: assurance/azure-stack-iso27001-guidance.md
-      - name: PCI DSS guidance
-        href: assurance/azure-stack-pci-dss-guidance.md
-      - name: HIPAA guidance
-        href: assurance/azure-stack-hipaa-guidance.md
-      - name: FedRAMP guidance
-        href: assurance/azure-stack-fedramp-guidance.md
+    - name: Renaming to Azure Local
+      href: rename-to-azure-local.md
     - name: Azure Local product page
       href: https://azure.com/hci
     - name: Pricing
@@ -792,12 +799,17 @@ items:
     items:
       - name: Compute for multi-rack deployments
         href: ./multi-rack/multi-rack-concepts-compute.md
+      - name: Network fabric for multi-rack deployments
+        href: ./multi-rack/multi-rack-network-fabric-overview.md
       - name: Load balancer for multi-rack deployments
         href: ./multi-rack/multi-rack-load-balancer-overview.md
       - name: NAT gateway for multi-rack deployments
         href: ./multi-rack/multi-rack-nat-gateway-overview.md
       - name: Azure Local VMs for multi-rack deployments
         href: ./multi-rack/multi-rack-azure-arc-vm-management-overview.md
+      - name: Security concepts
+        href: ./multi-rack/multi-rack-security.md
+        
   - name: Reference
     items:
       - name: Network cloud REST API reference

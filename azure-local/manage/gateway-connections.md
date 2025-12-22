@@ -4,7 +4,7 @@ description: Learn how to create, delete, and update gateway connections using W
 ms.topic: how-to
 author: alkohli
 ms.author: alkohli
-ms.reviewer: anpaul
+ms.reviewer: alkohli
 ms.date: 09/17/2025
 ms.custom: sfi-image-nochange
 ---

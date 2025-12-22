@@ -1,10 +1,10 @@
 ---
 title: Get-AksHciUpdates for AKS on Azure Local and Windows Server
-author: sethmanheim
+author: davidsmatlak
 description: The Get-AksHciUpdates PowerShell command lists the available updates for AKS on Azure Local and Windows Server.
 ms.topic: reference
 ms.date: 2/12/2021
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
 

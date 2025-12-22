@@ -3,9 +3,9 @@ title: Troubleshooting guide for issues in AKS enabled by Azure Arc on VMware (p
 description: Learn how to troubleshoot issues and errors in AKS enabled by Arc on VMware.
 ms.topic: how-to
 ms.custom: devx-track-azurecli
-author: sethmanheim
+author: davidsmatlak
 ms.date: 03/19/2025
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 03/19/2025
 ms.reviewer: leslielin
 ---

@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: concept-article
 ms.service: azure-local
-ms.date: 12/02/2025
+ms.date: 12/19/2025
 ---
 
 # Supported operations for Azure Local VMs enabled by Azure Arc
@@ -98,6 +98,7 @@ You perform these operations either on the VM itself or on the cluster/node. The
 - [Apply affinity / anti-affinity rules](vm-affinity.md)
 - [Enable nested virtualization](../manage/enable-nested-virtualization.md)
 - Expand an OS disk
+- Add shared storage (shared VHDX or VHDS)
 
 #### Cluster or node-level operations
 
@@ -133,8 +134,6 @@ The following VM operations aren't supported for Azure Local VMs. If your worklo
 - Live migrate a VM from one cluster to another
 - Storage live migration on a VM
 - Change the type of disk (static, dynamic, VHD, or VHDX)
-- Add shared storage (shared VHD or VHDX)
-- Cloning a VM. Cloning a VM might preserve the VM's unique identifiers (such VM ID and Azure Arc resource ID), and thus result in corruption, management errors, or failure to start. 
 
 If you need to change the IP address or the VLAN ID of a network interface, create a new network interface and delete the old one.
 

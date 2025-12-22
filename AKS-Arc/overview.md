@@ -3,8 +3,8 @@ title: Overview of AKS on Windows Server
 description: Learn about AKS on Windows Server.
 ms.topic: overview
 ms.custom: linux-related-content
-author: sethmanheim
-ms.author: sethm 
+author: davidsmatlak
+ms.author: davidsmatlak 
 ms.date: 11/17/2025
 
 # Intent: As an IT Pro, I want to use AKS on Windows Server to deploy on-premises Kubernetes and orchestrate containerized workloads.

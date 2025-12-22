@@ -2,8 +2,8 @@
 title: Troubleshoot the "Failed to either reach kube-apiserver or control plane IP of Kubernetes cluster from Arc Resource Bridge IP" error
 description: Learn how to troubleshoot the "failed to either reach kube-apiserver or control plane IP of Kubernetes cluster from Arc Resource Bridge IP error" when you try to create and deploy an AKS enabled by Arc cluster.
 ms.topic: troubleshooting
-author: sethmanheim
-ms.author: sethm
+author: davidsmatlak
+ms.author: davidsmatlak
 ms.date: 06/20/2024
 ms.reviewer: abha
 
