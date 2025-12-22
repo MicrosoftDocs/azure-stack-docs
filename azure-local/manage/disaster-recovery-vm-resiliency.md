@@ -67,6 +67,24 @@ Setting up MABS involves deploying the MABS server software on a dedicated VM on
 
 Beyond MABS, a mature market of partner backup and recovery vendors offers robust solutions for Azure Local environments. These solutions often provide a rich set of advanced features, broader platform support, and different licensing or cost models that might be attractive depending on specific organizational requirements.  
 
+#### CloudCasa by Catalogic
+
+CloudCasa delivers Kubernetes-native backup, disaster recovery, and migration for AKS on Azure Local and Arc-enabled clusters. It protects cluster resources and persistent volumes, with the ability to perform granular restores, including file-level recovery. Backups can be stored in Azure Blob Storage, other object storage, or network file system (NFS). CloudCasa supports restores to the same site, a secondary Azure Local cluster, or Azure AKS for disaster recovery.
+
+- [CloudCasa on Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?search=cloudcasa)
+- [CloudCasa solutions for Azure](https://cloudcasa.io/partners/microsoft-azure/)
+- [Simplify Upgrades and Backup for Azure Local](https://cloudcasa.io/blog/upgrade-backup-azure-local/)
+
+#### Cohesity
+
+Cohesity Data Project, part of the Data Cloud platform, protects VMs with a single data-security platform. It combines backup, replication, and disaster recovery with unlimited immutable snapshots, granular file/VM/database restores, instant mass restore at scale, and integrated anomaly detection and data classification to speed clean recovery after cyber events. For Azure Local, Cohesity offers deep integration with the platform. This includes automatic VM discovery, policy-based protection, a rich set of restores, and incremental-forever backups using Microsoft Resilient Change Tracking (RCT).
+
+Cohesity extends support by leveraging its mature Hyper-V connector and workflows, giving a consistent operating model as customers move Hyper-V workloads onto Azure Local.
+
+For more information, see [Cohesity](https://www.cohesity.com/platform/dataprotect/).
+
+To access [support statements](https://docs.cohesity.com/ui/login?redirectPath=%2F7_3%2FWeb%2FUserGuide%2FContent%2FReleaseNotes%2FSupportedVersions.htm#MicrosoftHyperV) for Azure Local, sign in to your account.
+
 #### CommVault
 
 CommVault Cloud offers unified, enterprise-grade data protection for Azure Local environments, enabling secure backup, recovery, and ransomware protection across virtual machines, databases, and unstructured data. With intelligent automation and policy-driven workflows, CommVault simplifies compliance, improves resiliency, and delivers scalable protection from edge to cloud, all while maintaining full control of your data within your Azure Local region.
@@ -89,14 +107,6 @@ Veeam backup and replication supports backup and replication of Azure Local VMs.
 - [Veeam Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/veeam.veeam-backup-replication?tab=overview )
 - [Veeam Azure Local support](https://www.veeam.com/kb4047)
 - [Veeem Supported Platforms](https://helpcenter.veeam.com/docs/backup/hyperv/platform_support.html)
-
-#### CloudCasa by Catalogic
-
-CloudCasa delivers Kubernetes-native backup, disaster recovery, and migration for AKS on Azure Local and Arc-enabled clusters. It protects cluster resources and persistent volumes, with the ability to perform granular restores, including file-level recovery. Backups can be stored in Azure Blob Storage, other object storage, or network file system (NFS). CloudCasa supports restores to the same site, a secondary Azure Local cluster, or Azure AKS for disaster recovery.
-
-- [CloudCasa on Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?search=cloudcasa)
-- [CloudCasa solutions for Azure](https://cloudcasa.io/partners/microsoft-azure/)
-- [Simplify Upgrades and Backup for Azure Local](https://cloudcasa.io/blog/upgrade-backup-azure-local/)
 
 ## Backup frequency, retention, and restoration testing
 
