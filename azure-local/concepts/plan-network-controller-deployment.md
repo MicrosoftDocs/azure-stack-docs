@@ -5,6 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: install-set-up-deploy
 ms.date: 01/29/2025
+ms.subservice: hyperconverged
 ---
 
 # Plan to deploy Network Controller on Azure Local

@@ -6,7 +6,7 @@ author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.date: 11/18/2025
-ms.topic: conceptual
+ms.topic: concept-article
 ms.service: azure-local
 ---
 

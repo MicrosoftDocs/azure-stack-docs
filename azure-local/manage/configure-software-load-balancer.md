@@ -6,6 +6,7 @@ ms.reviewer: alkohli
 ms.topic: how-to
 author: alkohli
 ms.date: 01/16/2025
+ms.subservice: hyperconverged
 ---
 
 # Configure Software Load Balancer for high availability ports

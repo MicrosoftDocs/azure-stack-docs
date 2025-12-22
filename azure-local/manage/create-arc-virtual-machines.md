@@ -10,6 +10,7 @@ ms.date: 12/17/2025
 ms.custom:
   - devx-track-azurecli
   - sfi-image-nochange
+ms.subservice: hyperconverged
 ---
 
 # Create Azure Local virtual machines enabled by Azure Arc

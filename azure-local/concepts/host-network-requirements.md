@@ -5,6 +5,7 @@ author: alkohli
 ms.topic: how-to
 ms.date: 08/25/2025
 ms.author: alkohli
+ms.subservice: hyperconverged
 ---
 
 # Host network requirements for Azure Local

@@ -7,6 +7,7 @@ author: alkohli
 zone_pivot_groups: windows-os
 ms.service: azure-local
 ms.date: 09/05/2025
+ms.subservice: hyperconverged
 ---
 
 # What is SDN Multisite?
