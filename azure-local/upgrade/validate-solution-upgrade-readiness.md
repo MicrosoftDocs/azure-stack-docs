@@ -7,6 +7,7 @@ ms.date: 10/22/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
+ms.subservice: hyperconverged
 ---
 
 # Validate solution upgrade readiness for Azure Local
