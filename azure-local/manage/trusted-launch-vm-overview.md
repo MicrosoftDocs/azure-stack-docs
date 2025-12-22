@@ -82,7 +82,7 @@ Azure Site recovery, which can replicate virtual machines on your Azure Local in
 See [Supported Operations for Azure Local Virtual Machines (VMs) Enabled by Azure Arc](virtual-machine-operations.md) for a list of supported and unsupported VM operations.
 
 > [!NOTE]
-> VM cloning or VM copying isn't supported as it can result in corruption, management errors, or failure to start.
+> VM cloning or VM copying isn't supported currently as it can result in corruption, management errors, or failure to start.
 
 ## Next steps
 

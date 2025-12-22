@@ -39,6 +39,8 @@ Perform the following VM operations only via the Azure portal or the Azure CLI. 
 - Create a VM
 - Start a VM
 - Restart a VM
+- Pause a VM
+- Save the VM state
 - Stop a VM
 - Delete a VM
 - Add a network interface
@@ -57,8 +59,6 @@ Perform the following VM operations only via the Azure portal or the Azure CLI. 
 
 Perform the following VM operations only via the Azure CLI. Don't use the local tools.
 
-- Pause a VM
-- Save the VM state
 - Rename the computer name of your Azure Local VM.
 
     > [!NOTE]
