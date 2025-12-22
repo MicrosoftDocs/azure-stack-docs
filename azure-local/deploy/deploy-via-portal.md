@@ -271,9 +271,9 @@ On the **Configuration** tab, choose whether to create a new configuration for t
 
 - **Authentication changes.** During deployment, the system performs several steps, including cluster registration. In earlier versions of software, during this process, Azure Local created and set up a Microsoft Entra ID application (service principal) along with a self-signed certificate to authenticate the cluster in Azure.
 
-    Starting with software version 12.2512 and later, new deployments no longer create an Entra ID application. Instead, the cluster uses system-assigned managed identity for authentication with Azure.
+    Starting with software version 12.2512, new deployments no longer create an Entra ID application. Instead, the cluster uses system-assigned managed identity for authentication with Azure.
 
-    For existing deployments, the Entra ID application is also no longer used for authentication. The cluster automatically switches to system-assigned managed identity for authentication without requiring any manual intervention. Since the app is no longer used, you can delete it from the Entra ID portal.
+    For existing deployments, the Entra ID application is also no longer used for authentication. The cluster automatically switches to system-assigned managed identity for authentication without requiring any manual intervention. Because the app is no longer used, you can delete it from the Entra ID portal.
 
     To delete the app, make sure that the registration context is updated to v4 and there's a corresponding event in the Azure Local event log.
 
@@ -283,7 +283,7 @@ On the **Configuration** tab, choose whether to create a new configuration for t
     Get-ClusterNode | % { Get-WinEvent -ComputerName $_ -LogName Microsoft-AzureStack-HCI/Admin | ? Id -eq 609 }
     ```
 
-- **Deployment timing.** Once the deployment starts, the first step in the deployment: **Begin cloud deployment** can take 45-60 minutes to complete. The total deployment time for a single machine is around 1.5-2 hours while a two-node system takes about 2.5 hours to deploy.
+- **Deployment timing.** When the deployment starts, the first step in the deployment, **Begin cloud deployment**, can take 45 to 60 minutes to complete. The total deployment time for a single machine is around 1.5 to 2 hours, whereas a two-node system takes about 2.5 hours to deploy.
 
 ## Verify a successful deployment
 
