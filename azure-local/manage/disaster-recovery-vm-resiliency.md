@@ -83,7 +83,7 @@ Cohesity extends support by leveraging its mature Hyper-V connector and workflow
 
 For more information, see [Cohesity](https://www.cohesity.com/platform/dataprotect/).
 
-To access [support statements](https://docs.cohesity.com/ui/login?redirectPath=%2F7_3%2FWeb%2FUserGuide%2FContent%2FReleaseNotes%2FSupportedVersions.htm#MicrosoftHyperV) for Azure Local, sign in to your account.
+To access [support statements](https://docs.cohesity.com/ui/login?redirectPath=%2F7_3%2FWeb%2FUserGuide%2FContent%2FReleaseNotes%2FSupportedVersions.htm#MicrosoftHyperV) for Azure Local, sign in to your account
 
 #### CommVault
 
