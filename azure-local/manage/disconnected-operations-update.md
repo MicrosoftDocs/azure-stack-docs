@@ -64,6 +64,10 @@ On the seed node, in the same session as above, run the following
 ```powershell
 Start-ApplianceUpdate -TargetVersion $updatePackageResult.UpdatePackageVersion -Wait
 ```
+
+> [!NOTE]  
+> Update can take several hours and might reboot the control plane appliance. If update fails , the system will attempt to rollback to the last known good state and boot back. 
+
 ## Get update history
 On the seed node, in the same session as above, run the following to view update history
 
