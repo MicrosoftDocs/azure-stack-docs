@@ -47,9 +47,9 @@ A/B update extends commit workflow v2 with policy‑driven staged steps:
 
 - Fabric administrative lock is *mandatory* before staged or full commits.
 - During customer edge staging, only the specified customer edge device is updated. All other devices remain unchanged until **Complete**.
-- Commit discard restores the last known good configuration across all Azure Resource Manager resources. You can use it before you stage the devices.
-- Commit cancel rollback restores the last known good configuration to all devices and Resource Manager resources. You can use this operation after you stage the configuration on one device.
-- Commit cancel operation isn't supported until after the final commit is executed.
+- The commit discard operation restores the last known good configuration across all Azure Resource Manager resources. You can use it before you stage the devices.
+- The commit cancel rollback operation restores the last known good configuration to all devices and Resource Manager resources. You can use this operation after you stage the configuration on one device.
+- The commit cancel operation isn't supported until after the final commit is executed.
 - You can retry to commit the changes across all devices via the commit operation if there are failures.
 - An A/B update currently doesn't support staging for top-of-rack devices, network packet brokers, or management switches. Some layer 3 isolation domain operations can't be fully validated during customer edge staging.
 - The A/B update and commit workflow v2 (patch and update) are mutually exclusive and can't be performed in parallel.
