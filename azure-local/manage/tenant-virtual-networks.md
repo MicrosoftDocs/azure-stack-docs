@@ -5,6 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.date: 09/17/2025
+ms.subservice: hyperconverged
 ---
 
 # Manage tenant virtual networks

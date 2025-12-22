@@ -5,6 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.date: 10/10/2025
+ms.subservice: hyperconverged
 ---
 
 # Deploy SQL Server on Azure Local, version 23H2

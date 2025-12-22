@@ -8,6 +8,7 @@ ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
 ms.custom: sfi-image-nochange
+ms.subservice: hyperconverged
 ---
 
 

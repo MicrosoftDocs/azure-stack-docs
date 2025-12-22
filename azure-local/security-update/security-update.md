@@ -6,6 +6,7 @@ ms.topic: article
 ms.date: 12/16/2025
 ms.author: alkohli
 ms.reviewer: alkohli
+ms.subservice: hyperconverged
 ---
 
 # Security updates for Azure Local
