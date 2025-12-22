@@ -2,8 +2,8 @@
 title: Troubleshoot Software Load Balancer (SLB) for SDN managed by on-premises tools in Azure Local and Windows Server
 description: Learn how to troubleshoot Software Load Balancer for SDN managed by on-premises tools in Azure Local and Windows Server.
 ms.topic: how-to
-ms.author: sethm
-author: sethmanheim
+ms.author: alkohli
+author: alkohli
 ms.date: 09/05/2025
 ---
 

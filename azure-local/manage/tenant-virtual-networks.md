@@ -1,8 +1,8 @@
 ---
 title: Manage tenant virtual networks
 description: This topic provides step-by-step instructions on how to use Windows Admin Center to create, update, and delete Hyper-V Network Virtualization (HNV) virtual networks after you have deployed Software Defined Networking (SDN) managed by on-premises tools.
-author: AnirbanPaul
-ms.author: anpaul
+author: alkohli
+ms.author: alkohli
 ms.topic: how-to
 ms.date: 09/17/2025
 ---

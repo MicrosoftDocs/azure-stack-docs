@@ -3,8 +3,8 @@ title: Use offline download in AKS on Windows Server
 description: Learn how to use offline download in AKS on Windows Server.
 ms.topic: reference
 ms.date: 04/02/2025
-author: sethmanheim
-ms.author: sethm 
+author: davidsmatlak
+ms.author: davidsmatlak 
 
 ---
 # Use offline download in AKS on Windows Server

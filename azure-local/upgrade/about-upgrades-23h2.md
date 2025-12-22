@@ -3,7 +3,7 @@ title: About Azure Local upgrades
 description: This article provides an overview of upgrading your cluster to Azure Local.
 author: alkohli
 ms.topic: upgrade-and-migration-article
-ms.date: 10/08/2025
+ms.date: 12/09/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -13,9 +13,7 @@ ms.service: azure-local
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2-22h2.md)]
 
-[!INCLUDE [azure-local-banner-23h2](../includes/azure-local-banner-23h2.md)]
-
-This article provides an overview of upgrading your version 22H2 cluster to Azure Local.
+This article provides an overview of upgrading your version 22H2 cluster to Azure Local (*formerly Azure Stack HCI*).
 
 [!INCLUDE [end-of-service-22H2](../includes/end-of-service-22h2.md)]
 

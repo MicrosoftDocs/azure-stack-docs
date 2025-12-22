@@ -31,6 +31,8 @@ This document describes the contents of Azure Modular Data Center v2 first party
 | 2112    | 02/02/2022 | 2.2.2112.4 OEM package updates |
 | 2206    | 06/21/2022 | 2.2.2206.10 OEM package updates|
 | 2309    | 09/28/2023 | 2.3.2309.15 OEM package updates|
+| 2406    | 08/29/2024 | 2.3.2406.7 OEM package updates |
+
 ## Azs Hub Node
 
 ### Boot Drive Controller - Azure Stack Hub

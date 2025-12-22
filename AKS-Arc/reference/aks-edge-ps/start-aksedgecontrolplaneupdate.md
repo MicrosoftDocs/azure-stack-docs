@@ -1,10 +1,10 @@
 ---
 title: Start-AksEdgeControlPlaneUpdate for AKS Edge
-author: sethmanheim
+author: davidsmatlak
 description: The Start-AksEdgeControlPlaneUpdate PowerShell command updates any control plane nodes on this machine as part of the update process.
 ms.topic: reference
 ms.date: 06/15/2023
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 02/03/2023
 #ms.reviewer: jeguan
 

@@ -1,10 +1,10 @@
 ---
 title: New-AksHciLoadBalancerSetting for AKS hybrid
-author: sethmanheim
+author: davidsmatlak
 description: Use the New-AksHciLoadBalancerSetting command to create a load balancer in AKS hybrid.
 ms.topic: reference
 ms.date: 11/18/2021
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
 

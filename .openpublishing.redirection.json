@@ -2395,6 +2395,11 @@
       "source_path": "azure-stack/user/azure-stack-network-howto-backup-commvault.md",
       "redirect_url": "/azure-stack/user",
       "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/azure-stack-marketplace-changes.md",
+      "redirect_url": "/azure-stack/operator/azure-stack-marketplace",
+      "redirect_document_id": false
     }
   ]
 }
