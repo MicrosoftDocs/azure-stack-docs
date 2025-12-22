@@ -89,7 +89,7 @@ To access [support statements](https://docs.cohesity.com/ui/login?redirectPath=%
 
 Commvault Cloud offers unified, enterprise-grade data protection for Azure Local environments, enabling secure backup, recovery, and ransomware protection across virtual machines, databases, and unstructured data. With intelligent automation and policy-driven workflows, Commvault simplifies compliance, improves resiliency, and delivers scalable protection from edge to cloud, all while maintaining full control of your data within your Azure Local region.
 
-For more information, visit the official CommVault documentation site for guidance on Commvault for Azure Local.
+For more information, visit the official Commvault documentation site for guidance on Commvault for Azure Local.
 
 #### Rubrik
 
