@@ -3,7 +3,7 @@ title: Prerequisites for VMware VM migration to Azure Local using Azure Migrate
 description: Learn prerequisites for VMware migration to Azure Local using Azure Migrate.
 author: alkohli
 ms.topic: how-to
-ms.date: 10/10/2025
+ms.date: 12/01/2025
 ms.author: alkohli
 ---
 
@@ -27,6 +27,7 @@ The following list contains the prerequisites and considerations that must be me
 | Disable BitLocker on Windows VMs. | source | BitLocker must be disabled on VMs before migration.|
 | Encrypted disks/volumes are not supported. | source | Any encrypted disks/volumes must be decrypted on VMs before migration.|
 | Shared disks are not supported. | source | Ensure that VMs do not have any shared disks attached before migration. |
+| Uninstall Azure Connected Machine Agent on source VMs (if present) | source | If the source VM is Arc-enabled, ensure that the Azure Connected Machine Agent is uninstalled before initiating replication. See [Azure Migrate FAQ](migrate-faq.yml?&tabs=vmware-and-hyper-v-vms#i-have-the-azure-connected-machine-agent-deployed-on-my-source-vms-that-i-wish-to-migrate-do-i-need-to-uninstall-the-agent-on-my-vms-before-migration) for more information. |
 |Deploy, configure, and register an Azure Local instance.|target|[Create and register an Azure Local instance](../deploy/deployment-introduction.md).|
 | Verify a successful deployment. | target | [Verify a successful deployment](../deploy/deploy-via-portal.md#verify-a-successful-deployment). |
 |Verify and make a note of the custom location created during deployment on the Azure Local system.|target|[Verify a successful deployment](../deploy/deploy-via-portal.md#verify-a-successful-deployment).|
