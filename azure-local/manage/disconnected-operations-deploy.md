@@ -388,7 +388,7 @@ $installAzureLocalParams = @{
     ApplianceManifestFile = $applianceManifestJsonPath  
     IdentityConfiguration = $identityConfiguration  
     CertificatesConfiguration = $CertificatesConfiguration      
-    DisableCheckSum = $true  
+    DisableCheckSum = $false  
     AutoScaleVMToHostHW = $false  
 }  
 
