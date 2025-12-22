@@ -5,6 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: article
 ms.date: 09/16/2025
+ms.subservice: hyperconverged
 ---
 
 # Opt-in update to Azure Local solution version 12.25xx

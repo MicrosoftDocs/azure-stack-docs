@@ -7,6 +7,7 @@ ms.date: 09/10/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
+ms.subservice: hyperconverged
 ---
 
 # Best practices for managing Azure Local environments
