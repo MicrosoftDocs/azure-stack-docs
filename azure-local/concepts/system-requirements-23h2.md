@@ -7,6 +7,7 @@ ms.topic: how-to
 ms.service: azure-local
 ms.custom: references_regions
 ms.date: 12/09/2025
+ms.subservice: hyperconverged
 ---
 
 # System requirements for Azure Local
