@@ -39,6 +39,8 @@ Before you begin, make sure to complete the following prerequisites:
 
 You can use the Azure CLI or Azure portal to create a storage path on your system.
 
+> [!WARNING]
+> Do not create storage paths on the Infrastructure_1 volume. This volume is reserved for Azure Local infrastructure components. Using it for customer workloads can degrade system performance and lead to service instability. Always use separate volumes for customer workloads.
 
 # [Azure CLI](#tab/azurecli)
 
