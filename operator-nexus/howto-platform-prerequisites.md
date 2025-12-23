@@ -682,6 +682,11 @@ An example design of three on-premises instances from the same NFC/CM pair, usin
 As a best practice, the following BIOS and firmware versions need to be installed on the servers prior to deployment, based on the selected runtime version and BOM.
 For reference, version N is the latest available runtime version. N-1 and N-2 are the previous supported runtime versions.
 
+>[!NOTE]
+> iDRAC versions earlier than 7.20.30.50 had known limitations with firmware downgrade support. As a result, if a target system was running newer firmware on any component (BIOS, PERC, Broadcom, Mellanox, CPLD), iDRAC would not flag the mismatch and would skip the downgrade. This behavior was corrected starting with iDRAC 7.20.30.50.
+>
+> Although the newer iDRAC versions make a best-effort attempt to align component firmware with the catalog for the given runtime, certain downgrade scenarios may trigger attribute rollbacks that can lead to BIOS corruption, as documented by Dell. For this reason, the recommended practice is to ensure that all component firmware versions are equal to or lower than the versions listed for the corresponding runtime release.
+
 #### Nexus Cluster runtime version N
 
 ##### BOM 1.7.3
