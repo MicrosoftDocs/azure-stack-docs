@@ -6,6 +6,7 @@ ms.topic: how-to
 ms.date: 06/27/2025
 ms.author: alkohli
 ms.service: azure-local
+ms.subservice: hyperconverged
 ---
 
 # Download managed data disks to Azure Local

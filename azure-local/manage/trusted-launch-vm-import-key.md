@@ -7,6 +7,7 @@ ms.topic: how-to
 ms.service: azure-local
 ms.reviewer: alkohli
 ms.date: 09/22/2025
+ms.subservice: hyperconverged
 ---
 
 # Manual backup and recovery of guest state protection keys for Trusted launch Azure Local VMs enabled by Azure Arc

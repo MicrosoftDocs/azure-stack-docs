@@ -6,6 +6,7 @@ author: ronmiab
 ms.author: robess
 ms.date: 08/06/2025
 ai-usage: ai-assisted
+ms.subservice: hyperconverged
 ---
 
 # Disconnected operations with Azure Local VMs enabled by Azure Arc (preview)

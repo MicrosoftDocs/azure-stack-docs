@@ -7,6 +7,7 @@ ms.date: 09/03/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.custom: linux-related-content
+ms.subservice: hyperconverged
 ---
 
 # Overview of Azure Migrate based migration for Azure Local (preview)

@@ -8,6 +8,7 @@ ms.service: azure-local
 ms.reviewer: kimlam
 ms.date: 10/10/2025
 ms.custom: sfi-image-nochange
+ms.subservice: hyperconverged
 ---
 
 # Set up log alerts for Azure Local

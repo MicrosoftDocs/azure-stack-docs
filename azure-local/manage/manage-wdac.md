@@ -6,6 +6,7 @@ ms.author:  alkohli
 ms.topic: how-to
 ms.date: 11/04/2025
 ms.service: azure-local
+ms.subservice: hyperconverged
 ---
 
 # Manage Application Control for Azure Local

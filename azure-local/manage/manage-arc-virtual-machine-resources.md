@@ -6,6 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
 ms.date: 11/11/2025
+ms.subservice: hyperconverged
 ---
 
 # Manage resources for Azure Local VMs enabled by Azure Arc

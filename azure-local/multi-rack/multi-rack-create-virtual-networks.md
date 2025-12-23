@@ -6,6 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
 ms.date: 11/17/2025
+ms.subservice: multi-rack
 ---
 
 # Create virtual networks for multi-rack deployments of Azure Local (preview)

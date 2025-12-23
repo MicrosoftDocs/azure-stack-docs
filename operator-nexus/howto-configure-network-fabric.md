@@ -86,14 +86,32 @@ az networkfabric fabric create \
 --location "<Location>" \
 --resource-name "<NFName>" \
 --nf-sku "<NFSKU>" \
---nfc-id "/subscriptions/<subscription_id>/resourceGroups/<NFResourceGroup>/providers/Microsoft.ManagedNetworkFabric/networkFabricControllers/<NFCName>" 
---fabric-asn 65048 
---ipv4-prefix 10.2.0.0/19 
---ipv6-prefix fda0:d59c:da02::/59 
---rack-count 4
---server-count-per-rack 8
---ts-config '{"primaryIpv4Prefix":"20.0.1.0/30", "secondaryIpv4Prefix":"20.0.0.0/30", "username":"****", "password": "****", "serialNumber":"TerminalServerSerialNumber"}' 
+--nfc-id "/subscriptions/<subscription_id>/resourceGroups/<NFResourceGroup>/providers/Microsoft.ManagedNetworkFabric/networkFabricControllers/<NFCName>" \
+--fabric-asn 65048 \
+--ipv4-prefix 10.2.0.0/19 \
+--ipv6-prefix fda0:d59c:da02::/59 \
+--rack-count 4 \
+--server-count-per-rack 8 \
+--ts-config '{"primaryIpv4Prefix":"20.0.1.0/30", "secondaryIpv4Prefix":"20.0.0.0/30", "username":"****", "password": "****", "serialNumber":"TerminalServerSerialNumber"}' \
 --managed-network-config '{"infrastructureVpnConfiguration":{"peeringOption":"OptionB","optionBProperties":{"routeTargets": {"importIpv4RouteTargets":["65048:10039"], "importIpv6RouteTargets":["65048:10039"], "exportIpv4RouteTargets":["65048:10039"], "exportIpv6RouteTargets":["65048:10039"]}}},"workloadVpnConfiguration":{"peeringOption":"OptionB","optionBProperties":{"routeTargets": {"importIpv4RouteTargets":["65048:10050"], "importIpv6RouteTargets":["65048:10039"], "exportIpv4RouteTargets":["65048:10039"], "exportIpv6RouteTargets":["65048:10039"]}}}}
+```
+Run the following command to create the Network Fabric with the system assigned managed identity:
+```azurecli
+
+az networkfabric fabric create \ 
+--resource-group "<NFResourceGroup>" 
+--location "<Location>" \
+--resource-name "<NFName>" \
+--nf-sku "<NFSKU>" \
+--nfc-id  "/subscriptions/<subscription_id>/resourceGroups/<NFResourceGroup>/providers/Microsoft.ManagedNetworkFabric/networkFabricControllers/<NFCName>" \
+--fabric-asn 65048 \
+--ipv4-prefix 10.2.0.0/19 \
+--ipv6-prefix fda0:d59c:da02::/59 \
+--rack-count 4 \
+--server-count-per-rack 8 \
+--ts-config '{"primaryIpv4Prefix":"20.0.1.0/30", "secondaryIpv4Prefix":"20.0.0.0/30", "username":"****", "password": "****", "serialNumber":"TerminalServerSerialNumber"}' \
+--managed-network-config '{"infrastructureVpnConfiguration":{"peeringOption":"OptionB","optionBProperties":{"routeTargets": {"importIpv4RouteTargets":["65048:10039"], "importIpv6RouteTargets":["65048:10039"], "exportIpv4RouteTargets":["65048:10039"], "exportIpv6RouteTargets":["65048:10039"]}}},"workloadVpnConfiguration":{"peeringOption":"OptionB","optionBProperties":{"routeTargets": {"importIpv4RouteTargets":["65048:10050"], "importIpv6RouteTargets":["65048:10039"], "exportIpv4RouteTargets":["65048:10039"], "exportIpv6RouteTargets":["65048:10039"]}}}} \
+--system-assigned
 ```
 > [!Note]
 > * if it's a four racks set up then the rack count would be 4 
