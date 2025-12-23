@@ -74,7 +74,7 @@ To create a virtual appliance and download the required files for your on-premis
     | Action | Description | Estimated download size |  
     |------|-------------|----------------|  
     | Manifest file | Identified as `AzureLocal.DisconnectedOperations.Appliance.manifest`. This file is needed for deployment and to activate the appliance. It contains the required licensing information and more. | < 1 KB |  
-    | Appliance | Shows a set of files you can download, identified as  `AzureLocal.disconnectedoperations.zip`, `ArcA_LocalData_A.vhdx`,`ArcA_SharedData_A.vhdx`, and`OSAndDocker_A.vhdx`. These files contain the virtual hard disks and virtual machine together with the operations module required to deploy and configure the virtual appliance as a whole. You can download each file individually or run the script provided on the page to automate the download. | 70 GB+ |  
+    | Appliance | Shows a set of files you can download, identified as  `AzureLocal.disconnectedoperations.zip`, `ArcA_LocalData_A.vhdx`,`ArcA_SharedData_A.vhdx`, and`OSAndDocker_A.vhdx`. These files contain the virtual hard disks and virtual machine together with the operations module required to deploy and configure the virtual appliance as a whole. You can download each file individually or run the script provided on the page to automate the download. | 250 GB+ |  
 
 1. Select **download manifest**.
 
@@ -117,6 +117,7 @@ When you deploy a new system, use an Azure Local build that's compatible with yo
 | 2508 | 8.1064855627.20050 | AzureLocal24H2.26100.1742.LCM.12.2506.0.3136 |
 | 2509 | 9.1064929344.21347 | AzureLocal24H2.26100.1742.LCM.12.2508.0.3201 |
 | 2511 | 10.1064997818.22636 | AzureLocal24H2.26100.1742.LCM.12.2511.0.3038 |
+| 2512 | 10.1065032053.23579 | AzureLocal24H2.26100.1742.LCM.12.2512.0.3021 |
 
 ## Related content
 
