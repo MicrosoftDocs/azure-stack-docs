@@ -36,7 +36,7 @@ The Azure Local cloud service extends the hybrid capabilities for Azure Local by
 
 - **Billing.** The Azure Local cloud service sends usage data to Azure Commerce to calculate the monthly bill for the registered subscription. You can pay for Azure Local through your Azure subscription. For more information, see [Azure Local billing and payment](concepts/billing.md).
 
-- **Licensing.** An Azure Local requires cloud connectivity to keep its license up to date. The Azure Local cloud service validates proper registrations and distributes new licenses. To learn more about how licensing impacts functionality, see [Azure Local FAQ - What happens if the 30-day limit is exceeded?](faq.yml#what-happens-if-the-30-day-limit-is-exceeded)
+- **Licensing.** An Azure Local requires cloud connectivity to keep its license up to date. The Azure Local cloud service validates proper registrations and distributes new licenses. To learn more about how licensing impacts functionality, see [Azure Local FAQ - What happens if the 30-day limit is exceeded?](./faq.yml)
 
    Azure verification for VMs makes it possible for supported Azure-exclusive workloads to work outside of the cloud. This feature is a built-in platform attestation service that is enabled by default on Azure Local. For more information, see [Azure verification for VMs](deploy/azure-verification.md?tabs=azureportal).
 

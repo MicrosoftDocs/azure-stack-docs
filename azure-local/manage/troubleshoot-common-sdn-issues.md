@@ -2,9 +2,10 @@
 title: Collect traces and logs to troubleshoot common issues in SDN managed by on-premises tools
 description: Learn how to collect network traces and logs to troubleshoot common issues in Software Defined Networking (SDN) managed by on-premises tools.
 ms.topic: how-to
-ms.author: arudell
-author: arudell
+ms.author: alkohli
+author: alkohli
 ms.date: 09/05/2025
+ms.subservice: hyperconverged
 ---
 
 # Collect traces and logs to troubleshoot common SDN issues

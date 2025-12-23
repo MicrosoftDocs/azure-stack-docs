@@ -5,6 +5,7 @@ ms.topic: how-to
 ms.author: alkohli
 author: alkohli
 ms.date: 09/17/2025
+ms.subservice: hyperconverged
 ---
 
 # Troubleshoot Software Defined Networking deployment in Azure Local via Windows Admin Center

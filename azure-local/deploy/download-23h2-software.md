@@ -6,6 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
 ms.date: 09/24/2025
+ms.subservice: hyperconverged
 ---
 
 # Download operating system for Azure Local deployment

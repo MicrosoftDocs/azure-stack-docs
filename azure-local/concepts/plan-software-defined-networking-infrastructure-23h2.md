@@ -2,10 +2,11 @@
 title: Plan infrastructure for Software Defined Networking managed by on-premises tools in Azure Local, version 23H2
 description: This topic provides information on how to plan a Software Defined Network (SDN) infrastructure deployment, managed by on-premises tools, for Azure Local, version 23H2.
 ms.topic: article
-ms.author: anpaul
-author: AnirbanPaul
+ms.author: alkohli
+author: alkohli
 ms.date: 10/16/2025
 ms.service: azure-local
+ms.subservice: hyperconverged
 ---
 # Plan a Software Defined Networking infrastructure for Azure Local
 
