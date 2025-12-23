@@ -6,6 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.date: 03/03/2025
 ms.service: azure-local
+ms.subservice: hyperconverged
 ---
 
 # Activate Windows Server VMs on Azure Local

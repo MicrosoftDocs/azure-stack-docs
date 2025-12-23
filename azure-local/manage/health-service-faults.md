@@ -5,6 +5,7 @@ ms.author: alkohli
 ms.topic: how-to
 author: alkohli
 ms.date: 07/16/2025
+ms.subservice: hyperconverged
 ---
 
 # View Health Service faults

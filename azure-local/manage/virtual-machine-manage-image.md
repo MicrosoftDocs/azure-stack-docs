@@ -7,6 +7,7 @@ ms.reviewer: kimlam
 ms.date: 12/18/2025
 ms.topic: how-to
 ms.service: azure-local
+ms.subservice: hyperconverged
 ---
 
 # Manage Azure Local VM Images via CLI or Portal

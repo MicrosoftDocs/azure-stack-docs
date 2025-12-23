@@ -8,6 +8,7 @@ ms.service: azure-local
 ms.custom:
   - devx-track-azurecli
 ms.date: 12/18/2025
+ms.subservice: hyperconverged
 ---
 
 # Create Azure Local VM image via Azure Compute Gallery images

@@ -6,6 +6,7 @@ author: ronmiab
 ms.author: robess
 ms.date: 11/13/2025
 ai-usage: ai-assisted
+ms.subservice: hyperconverged
 ---
 
 # Collect logs on-demand with the Azure Local disconnected operations PowerShell module

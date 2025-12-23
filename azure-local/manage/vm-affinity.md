@@ -7,6 +7,7 @@ ms.date: 10/10/2025
 ms.author: alkohli
 ms.reviewer: robhind
 ms.service: azure-local
+ms.subservice: hyperconverged
 ---
 
 # Create machine and site affinity rules for VMs

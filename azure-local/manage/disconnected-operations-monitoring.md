@@ -7,6 +7,7 @@ ms.date: 10/16/2025
 ms.author: robess
 ms.reviewer: robess
 ai-usage: ai-assisted
+ms.subservice: hyperconverged
 ---
 
 # Monitor disconnected operations for Azure Local (preview)
