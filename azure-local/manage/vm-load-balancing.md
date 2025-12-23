@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
 ms.date: 10/28/2025
-ms.subservice: hyperconvergeds
+ms.subservice: hyperconverged
 ---
 
 # Virtual machine load balancing
