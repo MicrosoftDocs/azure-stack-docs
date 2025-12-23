@@ -102,9 +102,17 @@ $plans | Sort-Object -Property LastModifiedDateTime -Descending | ft InstanceID,
     }
 #>
 
+<<<<<<< HEAD
 # Host the OEM SBE manifest and overwrite location
 $client = New-SolutionUpdateClient
 $client.SetDynamicConfigurationValue("AutomaticOemUpdateUri", "https://edgeartifacts.blob.$($applianceFQDN)/clouddeployment/SBE_Discovery_HPE.xml").Wait()
+=======
+# Host the OEM SBE manifest and overwrite location 
+$OEM = 'HPE'
+$SolutionVersion = '12.2512.1002.10'
+$client = New-SolutionUpdateClient
+$client.SetDynamicConfigurationValue("AutomaticOemUpdateUri", "https://edgeartifacts.blob.$($applianceFQDN)/clouddeployment/SBE_Discovery_$($OEM)$.xml").Wait()
+>>>>>>> 8be9199072 (Added PNU section in update)
 $client.SetDynamicConfigurationValue("AutomaticUpdateUri", "https://fakehost").Wait()
 $client.SetDynamicConfigurationValue("UpdateRingName", "Unknown").Wait()
 
@@ -118,7 +126,11 @@ Add-SolutionUpdate -SourceFolder C:\ClusterStorage\Infrastructure_1\Shares\SU1_I
 # Wait for this to return to make sure the update is ready
 Get-SolutionUpdate
 # Run the update
+<<<<<<< HEAD
 Get-SolutionUpdate -Id "redmond/Solution12.2512.1002.10" | Start-SolutionUpdate
+=======
+Get-SolutionUpdate -Id "redmond/Solution$($solutionVersion)" | Start-SolutionUpdate
+>>>>>>> 8be9199072 (Added PNU section in update)
 
 Start-MonitoringActionplanInstanceToComplete -EceClient $eceClient -actionPlanInstanceID $actionPlanInstanceID
 ```
