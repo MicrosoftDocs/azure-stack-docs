@@ -6,6 +6,7 @@ ms.author: sipastak
 ms.service: azure-local
 ms.topic: how-to
 ms.date: 11/14/2025
+ms.subservice: multi-rack
 ---
 
 # Install Azure CLI extensions for multi-rack deployments of Azure Local (preview)

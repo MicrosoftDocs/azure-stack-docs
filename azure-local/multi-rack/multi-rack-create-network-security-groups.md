@@ -6,6 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.date: 11/24/2025
 ms.service: azure-local
+ms.subservice: multi-rack
 ---
 
 # Create network security groups on Azure Local VMs on multi-rack deployments (preview)
