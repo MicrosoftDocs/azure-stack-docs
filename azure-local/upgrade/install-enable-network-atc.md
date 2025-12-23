@@ -7,6 +7,7 @@ ms.topic: how-to
 ms.reviewer: alkohli
 ms.date: 12/02/2025
 ms.service: azure-local
+ms.subservice: hyperconverged
 ---
 
 # Configure Network ATC on Azure Local

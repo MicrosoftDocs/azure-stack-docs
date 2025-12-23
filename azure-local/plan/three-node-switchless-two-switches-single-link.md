@@ -10,6 +10,7 @@ ms.date: 05/15/2025
 ms.custom:
   - devx-track-arm-template
   - sfi-image-nochange
+ms.subservice: hyperconverged
 ---
 
 # Review three-node storage switchless, dual TOR, single link deployment network reference pattern for Azure Local

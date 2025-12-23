@@ -7,6 +7,7 @@ ms.topic: overview
 ms.service: azure-local
 ms.date: 09/05/2025
 ms.custom: kr2b-contr-experiment
+ms.subservice: hyperconverged
 ---
 # What is Remote Access Service (RAS) Gateway for Software Defined Networking?
 

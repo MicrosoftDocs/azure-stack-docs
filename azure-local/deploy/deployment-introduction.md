@@ -7,6 +7,7 @@ ms.date: 11/19/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
+ms.subservice: hyperconverged
 ---
 
 # About Azure Local deployment

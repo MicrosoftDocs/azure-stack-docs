@@ -5,6 +5,7 @@ ms.topic: how-to
 ms.author: alkohli
 author: alkohli
 ms.date: 12/04/2025
+ms.subservice: hyperconverged
 ---
 
 # Upgrade infrastructure for Software Defined Networking managed by on-premises tools

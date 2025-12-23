@@ -6,6 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.date: 12/01/2025
 ms.custom: sfi-image-nochange
+ms.subservice: hyperconverged
 #customer intent: As a Principal Content Developer, I want provide customers with information and guidance on how to troubleshoot solution updats for their Azure Local intances.
 ---
 

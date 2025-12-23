@@ -8,6 +8,7 @@ author: alkohli
 ms.service: azure-local
 zone_pivot_groups: windows-os
 ms.date: 05/28/2025
+ms.subservice: hyperconverged
 ---
 
 # Use default network access policies on virtual machines on Azure Local

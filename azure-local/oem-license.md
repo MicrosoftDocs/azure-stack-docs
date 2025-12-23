@@ -7,6 +7,7 @@ ms.date: 04/29/2025
 ms.author: robess
 ms.reviewer: alkohli
 ms.custom: sfi-image-nochange
+ms.subservice: hyperconverged
 ---
 
 # OEM license for Azure Local overview

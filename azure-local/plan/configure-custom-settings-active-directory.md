@@ -7,6 +7,7 @@ ms.date: 03/04/2025
 ms.author: alkohli
 ms.service: azure-local
 ms.custom: devx-track-azurepowershell
+ms.subservice: hyperconverged
 ---
 
 # Custom Active Directory configuration for your Azure Local instance

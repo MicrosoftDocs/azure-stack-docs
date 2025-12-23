@@ -5,9 +5,9 @@ ms.author: alkohli
 ms.reviewer: alkohli
 ms.topic: how-to
 author: alkohli
-ms.subservice: 
 zone_pivot_groups: windows-os
 ms.date: 06/03/2025
+ms.subservice: hyperconverged
 ---
 
 # Configure network security groups with tags in Windows Admin Center
