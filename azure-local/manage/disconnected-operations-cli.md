@@ -245,50 +245,37 @@ The following table lists the CLI extensions supported on Azure Local disconnect
 | Azure Key Vault | Built-in      |    | [Quickstart: Create a key vault using Azure CLI](/azure/key-vault/general/quick-create-cli) |
 
 ## Appendix
+### How to create a service principal for automating Azure Local node registration
 
-### Create the Service Principal Name (SPN) to automate deployments
+Use the operator account to create an SPN for Arc initialization of each Azure Local node. For bootstrap, the Owner role is required at the subscription level.
 
-To create an SPN to automate deployments, run the following command.
+To create the SPN, follow these steps:
 
-```azurecli  
-$subscriptionName = 'Starter subscription'
-$resourcegroup = 'azurelocal-disconnected-operations'
-$appname = 'azlocalclusapp'      
-az cloud set -n 'azure.local'
-az login      
-az account set --subscription $subscriptionName
-$subscriptionId = az account show --query id --output tsv
-$rg = (az group create -n $resourcegroup -l autonomous)|ConvertFrom-Json  
-# Create the SPN with Owner role 
-az ad sp create-for-rbac -n $appname --role Owner --scopes "/subscriptions/$($subscriptionId)"  
-```  
+1. Configure CLI on your client machine and run this command:
 
-Here's an example output:
+    ```azurecli  
+    $subscriptionName = 'Starter subscription'
+    $resourcegroup = 'azurelocal-disconnected-operations'
+    $appname = 'azlocalclusapp'      
+    az cloud set -n 'azure.local'
+    az login      
+    az account set --subscription $subscriptionName
+    $subscriptionId = az account show --query id --output tsv
+    $g = (az group create -n $resourcegroup -l autonomous)|ConvertFrom-Json  
+    az ad sp create-for-rbac -n $appname --role Owner --scopes "/subscriptions/$($subscriptionId)"  
+    ```  
 
-```json  
-{  
-"appId": "<AppId>",  
-"displayName": "azlocalclusapp",  
-"password": "<RETRACTED>",  
-"tenant": "<RETRACTED>"  
-}  
-```
+    Here's an example output:
 
-1. To automate bootstrap, copy the AppID and password for the next section.
+    ```json  
+    {  
+      "appId": "<AppId>",  
+      "displayName": "azlocalclusapp",  
+      "password": "<RETRACTED>",  
+      "tenant": "<RETRACTED>"  
+    }  
 
-### Login with the SPN
-
-To login with the SPN, run the following command.
-
-```azurecli
-# Replace these variables with your values
-$tenantId = ''
-$clientSecret = ''
-$appId = ''
-az cloud set -n 'azure.local' --only-show-errors
-Write-Host "Login using the service principal"    
-az login --service-principal --username $appId --password $clientSecret --tenant $tenantID    
-```
+1. Copy out the AppID and password for use in command line automation. You will log in using this service principal instead of an interactive login or using a device-code.
 
 ### Troubleshoot Azure CLI
 
