@@ -146,6 +146,7 @@ To prepare each machine for the disconnected operations appliance, follow these 
     
     New-Item -ItemType Directory $applianceConfigBasePath
     Copy-Item \\fileserver\share\azurelocalcerts\publicroot.cer $applianceRootCertFile
+    ```
  
 1. Copy to the **APPData/Azure** Local folder and name it **azureLocalRootCert**. Use this information during the Arc appliance deployment.  
 
@@ -169,6 +170,7 @@ To prepare each machine for the disconnected operations appliance, follow these 
     ```powershell
     [Environment]::SetEnvironmentVariable("DISCONNECTED_OPS_SUPPORT", $true, [System.EnvironmentVariableTarget]::Machine)
     ```
+    
 1. Find the first machine from the list of node names and specify it as the `seednode` you want to use in the cluster.
 
     ```powershell
@@ -185,9 +187,7 @@ Disconnected operations must be deployed on the seed node. To make sure you do t
 
 To prepare the first machine for the disconnected operations appliance, follow these steps:
 
-1. Modify your path to correct location. 
-
-    If you initialized a data disk or are using a different path than C: modify the `$applianceConfigBasePath`.
+1. Modify your path to correct location. If you initialized a data disk or are using a different path than C: modify the `$applianceConfigBasePath`.
 
     Here's an example:
 
@@ -209,9 +209,9 @@ To prepare the first machine for the disconnected operations appliance, follow t
     - ArcA_SharedData_A.vhdx
     - OSAndDocker_A.vhdx
 
-      ```powershell  
-      Get-ChildItem $applianceConfigBasePath  
-      ```  
+   ```powershell  
+   Get-ChildItem $applianceConfigBasePath  
+   ```  
 
 1. Extract the zip file in the same folder:  
 
@@ -231,12 +231,12 @@ To prepare the first machine for the disconnected operations appliance, follow t
     - OSAndDocker_A.vhdx
     - Storage.json
 
-      ```powershell  
-      Get-ChildItem $applianceConfigBasePath   
-      ```  
+   ```powershell  
+   Get-ChildItem $applianceConfigBasePath   
+   ```  
 
-      > [!NOTE]  
-      > At this point, remove the `AzureLocal.DisconnectedOperations.zip` file to save some space.
+   > [!NOTE]  
+   > At this point, remove the `AzureLocal.DisconnectedOperations.zip` file to save some space.
 
 1. Copy the certificates root directory. Save these files into the base folder you created earlier.  
 
@@ -603,9 +603,9 @@ To initialize each node, run this PowerShell script. Modify the variables necess
 
 ## Pre-create Azure Key Vault
 
-Because of a known Azure Key Vault issue that can cause long deployment delays, create the Azure Key Vault before you deploy Azure Local.
+Create the Azure Key Vault before you deploy Azure Local to avoid long deployment delays caused by a known issue.
 
-For a code example to pre-create the Key Vault, see [Known issues](./disconnected-operations-known-issues.md).
+For a code example, see [Known issues](./disconnected-operations-known-issues.md).
 
 After you create the Key Vault, wait 20 minutes before you continue with the next portal deployment step.
 
@@ -619,10 +619,10 @@ Follow these steps to create an Azure Local instance (cluster):
 1. Navigate to `portal.FQDN`. For example, `https://portal.autonomous.cloud.private`.
 1. Select your nodes and complete the deployment steps outlined in [Deploy Azure Local using the Azure portal](../deploy/deploy-via-portal.md).  
 
-  > [!NOTE]
-  > If you create Azure Key Vault during deployment, wait about 20 minutes for RBAC permissions to take effect.
-  >
-  > If you see a validation error, it’s a known issue. Permissions might still be propagating. Wait a bit, refresh your browser, and redeploy the cluster.
+> [!NOTE]
+> If you create Azure Key Vault during deployment, wait about 20 minutes for RBAC permissions to take effect.
+>
+> If you see a validation error, it’s a known issue. Permissions might still be propagating. Wait a bit, refresh your browser, and redeploy the cluster.
 
 ## Tasks after deploying disconnected operations
 
@@ -655,7 +655,7 @@ To get a full list of cmdlets provided, use the PowerShell `Get-Command -Module 
 
 ### Troubleshoot: System not configured
 
-After you install the appliance, you might see this screen for a while. Let the configuration run for 2-3 hours. After you wait 2-3 hours, the screen goes away, and you see the regular Azure portal. If the screen doesn't go away and you can't access the local Azure portal, troubleshoot the issue.
+After you install the appliance, you might see this screen for a while. Let the configuration run for 2 to 3 hours. After you wait the 2 to 3 hours, the screen goes away, and you see the regular Azure portal. If the screen doesn't go away and you can't access the local Azure portal, troubleshoot the issue.
 
 :::image type="content" source="./media/disconnected-operations/deployment/system-not-configured.png" alt-text="Screenshot showing the system isn't configured page." lightbox=" ./media/disconnected-operations/deployment/system-not-configured.png":::
 
