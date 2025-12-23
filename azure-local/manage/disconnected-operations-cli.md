@@ -18,7 +18,7 @@ This article explains how to install and configure the Azure Command-Line Interf
 
 ## About Azure CLI
 
-**CLI** is a versatile, cross-platform command line interface that lets you create and manage Azure resources for Azure Local disconnected operations. For more information, see [What is Azure CLI](/cli/azure/what-is-azure-cli).
+**CLI** is a versatile, cross-platform command line interface that you can use to create and manage Azure resources for Azure Local disconnected operations. For more information, see [What is Azure CLI](/cli/azure/what-is-azure-cli).
 
 ## Supported versions for CLI and extension
 
@@ -215,7 +215,7 @@ To set up Azure CLI for disconnected operations on Azure Local, follow these ste
 
 ## Extensions for Azure CLI
 
-CLI extensions are Python wheels that aren't shipped with CLI, but run as CLI commands. Extensions let you access experimental and pre-release commands, and create your own CLI interfaces. The first time you use an extension, you get a prompt to install it.
+CLI extensions are Python wheels that aren't shipped with CLI but run as CLI commands. By using extensions, you can access experimental and prerelease commands and create your own CLI interfaces. When you use an extension for the first time, you receive a prompt to install it.
 
 To get a list of available extensions, run this command:
 
@@ -245,9 +245,10 @@ The following table lists the CLI extensions supported on Azure Local disconnect
 | Azure Key Vault | Built-in      |    | [Quickstart: Create a key vault using Azure CLI](/azure/key-vault/general/quick-create-cli) |
 
 ## Appendix
-### How to create a service principal for automating Azure Local node registration
 
-Use the operator account to create an SPN for Arc initialization of each Azure Local node. For bootstrap, the Owner role is required at the subscription level.
+### Create a service principal for Azure Local node registration
+
+Use the operator account to create a service principal for Arc initialization of each Azure Local node. For bootstrap, the **Owner** role is required at the subscription level.
 
 To create the SPN, follow these steps:
 
@@ -275,7 +276,7 @@ To create the SPN, follow these steps:
       "tenant": "<RETRACTED>"  
     }  
 
-1. Copy out the AppID and password for use in command line automation. You will log in using this service principal instead of an interactive login or using a device-code.
+1. Copy the *AppID* and *password* to use in command-line automation. You'll sign in using this service principal instead of an interactive sign-in or device code.
 
 ### Troubleshoot Azure CLI
 
