@@ -1,5 +1,5 @@
 ---
-title: Use Azure Powershell for disconnected operations on Azure Local (preview)
+title: Use Azure Powershell for Disconnected Operations on Azure Local (preview)
 description:  Learn how to use Azure Powershell for disconnected operations on Azure Local (preview).
 ms.topic: how-to
 author: hafianba
