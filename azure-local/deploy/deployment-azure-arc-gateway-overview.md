@@ -6,6 +6,7 @@ ms.topic: how-to
 ms.date: 12/15/2025
 ms.author: alkohli
 ms.service: azure-local
+ms.subservice: hyperconverged
 ---
 
 # About Azure Arc gateway for Azure Local

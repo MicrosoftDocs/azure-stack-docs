@@ -17,7 +17,7 @@ ms.reviewer: mayabishop
 This article explains prerequisites that you must configure before creating an Azure Managed Lustre file system.
 
 - [Network prerequisites](#network-prerequisites)
-- [Blob integration prerequisites](#blob-integration-prerequisites-optional) (optional)
+- [Blob integration prerequisites](#blob-integration-prerequisites)
 
 ## Network prerequisites
 
@@ -70,11 +70,9 @@ The following known limitations apply to virtual network settings for Azure Mana
 > [!NOTE]
 > After you create your Azure Managed Lustre file system, several new network interfaces appear in the file system's resource group. Their names start with **amlfs-** and end with **-snic**. Don't change any settings on these interfaces. Specifically, leave the default value, **enabled**, for the **Accelerated networking** setting. Disabling accelerated networking on these network interfaces degrades your file system's performance.
 
-## Blob integration prerequisites (optional)
+## Blob integration prerequisites
 
-If you plan to integrate your Azure Managed Lustre file system with Azure Blob Storage, complete the following prerequisites before you create your file system.
-
-To learn more about blob integration, see [Use Azure Blob storage with an Azure Managed Lustre file system](blob-integration.md).
+This section is required only if you plan to integrate your Azure Managed Lustre file system with Azure Blob Storage. To learn more about blob integration, see [Use Azure Blob storage with an Azure Managed Lustre file system](blob-integration.md).
 
 Azure Managed Lustre works with storage accounts that have hierarchical namespace enabled and storage accounts with a nonhierarchical, or flat, namespace. The following minor differences apply:
 

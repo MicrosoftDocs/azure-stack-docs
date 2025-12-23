@@ -77,7 +77,7 @@ sections:
     - question: | 
         How can I delete a VM image?  
       answer: |
-        You can remove VM images and all other entities by using the Azure CLI or the Azure portal. For more information, see [Delete a VM image](./virtual-machine-image-azure-marketplace.md#delete-vm-image).   
+        You can remove VM images and all other entities by using the Azure CLI or the Azure portal. For more information, see [Delete a VM image](./virtual-machine-manage-image.md#delete-vm-image).   
 
     - question: |
         If I delete a gallery image, are all the deployed VMs also deleted?

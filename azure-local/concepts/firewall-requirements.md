@@ -5,6 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.date: 11/19/2025
+ms.subservice: hyperconverged
 ---
 
 # Firewall requirements for Azure Local

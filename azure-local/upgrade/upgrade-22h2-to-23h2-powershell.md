@@ -8,6 +8,7 @@ ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
 zone_pivot_groups: upgrade-os
+ms.subservice: hyperconverged
 ---
 
 # Upgrade Azure Stack HCI OS via PowerShell

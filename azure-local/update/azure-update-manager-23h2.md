@@ -6,6 +6,7 @@ ms.author: robess
 ms.topic: how-to
 ms.reviewer: mindydiep
 ms.date: 08/13/2025
+ms.subservice: hyperconverged
 #customer intent: As a Senior Content Developer, I want provide customers with information and guidance on using Azure Update Manager to manage and keep their Azure Local instances up to date.
 ---
 

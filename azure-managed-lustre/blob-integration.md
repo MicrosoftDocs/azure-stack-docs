@@ -16,7 +16,7 @@ ms.reviewer: brianl
 
 Azure Managed Lustre integrates with Azure Blob Storage to simplify the process of importing data from a blob container to a file system. You can also export data from the file system to a blob container for long-term storage. This article explains concepts for using blob integration with Azure Managed Lustre file systems.
 
-To understand the requirements and configuration needed for a compatible blob container, see [Blob integration prerequisites](amlfs-prerequisites.md#blob-integration-prerequisites-optional).
+To understand the requirements and configuration needed for a compatible blob container, see [Blob integration prerequisites](amlfs-prerequisites.md#blob-integration-prerequisites).
 
 ## Blob integration overview
 
@@ -37,7 +37,7 @@ You can configure integration with Blob Storage during [cluster creation](create
 
 ### Blob container requirements
 
-When configuring blob integration during cluster creation, you must identify two separate blob containers: the container to import and the logging container. The container to import contains the data that you want to import into the Azure Managed Lustre file system. The logging container is used to store logs for the import job. These two containers must be in the same storage account. To learn more about the requirements for the blob container, see [Blob integration prerequisites](amlfs-prerequisites.md#blob-integration-prerequisites-optional).
+When configuring blob integration during cluster creation, you must identify two separate blob containers: the container to import and the logging container. The container to import contains the data that you want to import into the Azure Managed Lustre file system. The logging container is used to store logs for the import job. These two containers must be in the same storage account. To learn more about the requirements for the blob container, see [Blob integration prerequisites](amlfs-prerequisites.md#blob-integration-prerequisites).
 
 ### Import prefix
 
@@ -244,6 +244,6 @@ In Storage Explorer, you can enable this flag in **Settings** by selecting **Tra
 
 ## Next steps
 
-- [Prerequisites for blob storage integration](amlfs-prerequisites.md#blob-integration-prerequisites-optional)
+- [Prerequisites for blob storage integration](amlfs-prerequisites.md#blob-integration-prerequisites)
 - [Create an import job from Blob Storage to Azure Managed Lustre](create-import-job.md)
 - [Create an export job to export data from Azure Managed Lustre](export-with-archive-jobs.md)

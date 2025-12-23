@@ -4,9 +4,9 @@ description: Learn how to manage a multisite SDN solution for Azure Local and Wi
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.subservice: 
 zone_pivot_groups: windows-os
 ms.date: 06/03/2025
+ms.subservice: hyperconverged
 ---
 
 # Manage SDN Multisite for Azure Local and Windows Server

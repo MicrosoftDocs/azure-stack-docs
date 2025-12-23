@@ -6,6 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.date: 09/17/2025
 ms.custom: sfi-image-nochange
+ms.subservice: hyperconverged
 ---
 
 # Renew certificates for Network Controller

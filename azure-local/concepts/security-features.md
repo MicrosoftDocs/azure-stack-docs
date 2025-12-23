@@ -6,6 +6,7 @@ ms.author: alkohli
 ms.topic: article
 ms.service: azure-local
 ms.date: 12/09/2025
+ms.subservice: hyperconverged
 ---
 
 # Security features for Azure Local

@@ -6,6 +6,7 @@ author: alkohli
 ms.author: alkohli
 ms.service: azure-local
 ms.date: 02/14/2025
+ms.subservice: hyperconverged
 ---
 
 # Azure Local network deployment patterns

@@ -6,6 +6,7 @@ ms.author: alkohli
 ms.reviewer: alkohli
 ms.topic: how-to
 ms.date: 09/19/2025
+ms.subservice: hyperconverged
 ---
 
 # Enable SDN integration on Azure Local using PowerShell

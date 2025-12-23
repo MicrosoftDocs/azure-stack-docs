@@ -9,6 +9,7 @@ ms.service: azure-local
 ms.custom:
   - devx-track-azurepowershell
   - sfi-image-nochange
+ms.subservice: hyperconverged
 ---
 
 # Assign required permissions for Azure Local deployment

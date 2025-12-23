@@ -2,12 +2,13 @@
 title: Enable and assign default network access policies on Azure Local, version 23H2 VMs
 description: Learn how to enable and assign default network access policies on VMs running on Azure Local, version 23H2 via the Windows Admin Center.
 ms.author: alkohli
-ms.reviewer: anpaul
+ms.reviewer: alkohli
 ms.topic: how-to
 author: alkohli
 ms.service: azure-local
 zone_pivot_groups: windows-os
 ms.date: 05/28/2025
+ms.subservice: hyperconverged
 ---
 
 # Use default network access policies on virtual machines on Azure Local

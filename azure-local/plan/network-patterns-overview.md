@@ -7,6 +7,7 @@ ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
 ms.date: 12/09/2025
+ms.subservice: hyperconverged
 ---
 
 # Network reference patterns overview for Azure Local

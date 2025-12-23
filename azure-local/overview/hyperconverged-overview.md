@@ -9,6 +9,7 @@ ms.date: 11/17/2025
 ms.topic: overview
 ai-usage: ai-assisted
 ms.service: azure-local
+ms.subservice: hyperconverged
 ---
 
 # What are hyperconverged deployments of Azure Local?

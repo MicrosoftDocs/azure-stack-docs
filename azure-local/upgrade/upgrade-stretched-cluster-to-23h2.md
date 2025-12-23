@@ -11,6 +11,7 @@ ms.custom:
   - ai-gen-docs-bap
   - ai-gen-title
   - ai-seo-date:08/15/2025
+ms.subservice: hyperconverged
 ---
 
 # Upgrade stretched clusters from Azure Stack HCI OS, version 22H2 to 23H2

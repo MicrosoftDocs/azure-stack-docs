@@ -160,7 +160,7 @@ Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure CLI to config
 
 **Error**: One or more machines in the system doesn't have the latest changes to this setting. We apply the changes as soon as the machines sync again.
 
-**Remediation**: Your system doesn't have the latest status on Windows Server subscription - for example, you enrolled or canceled and therefore may not have retrieved the services to set up AVMA. In most cases, the next cloud sync will resolve this error. For faster resolution, you can sync manually. For more information, see [Syncing Azure Local](../faq.yml#how-often-does-azure-local-sync-with-the-cloud).
+**Remediation**: Your system doesn't have the latest status on Windows Server subscription - for example, you enrolled or canceled and therefore may not have retrieved the services to set up AVMA. In most cases, the next cloud sync will resolve this error. For faster resolution, you can sync manually. For more information, see [Syncing Azure Local](../faq.yml).
 
 
 ## Activate Azure Hybrid Benefit through AVMA

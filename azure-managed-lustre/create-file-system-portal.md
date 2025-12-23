@@ -99,7 +99,7 @@ Configuring blob integration during cluster creation is optional, but it's the o
 
 To configure blob integration, follow these steps:
 
-1. Create or configure a storage account and blob containers for integration with the file system. To learn more about the requirements for these resources, see [Blob integration prerequisites](amlfs-prerequisites.md#blob-integration-prerequisites-optional). The storage account doesn't need to be in the same subscription as the Azure Managed Lustre file system.
+1. Create or configure a storage account and blob containers for integration with the file system. To learn more about the requirements for these resources, see [Blob integration prerequisites](amlfs-prerequisites.md#blob-integration-prerequisites). The storage account doesn't need to be in the same subscription as the Azure Managed Lustre file system.
 1. Select the **Import/export data from blob** checkbox.
 1. Specify the **Subscription**, **Storage account**, and **Container** values to use with your Lustre file system.
 1. In the **Logging container** box, select the container where you want to store import/export logs. The logs must be stored in a separate container from the data container, but the containers must be in the same storage account.

@@ -3,7 +3,7 @@ title: Troubleshoot issues when migrating VMs to Azure Local using Azure Migrate
 description: Learn about how to troubleshoot issues when migrating Windows VMs to your Azure Local instance using Azure Migrate.
 author: alkohli
 ms.topic: how-to
-ms.date: 10/15/2025
+ms.date: 12/01/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.custom:
@@ -31,8 +31,10 @@ Get-Service -Name <name_of_service>
 **On the source appliance VM**:
   
 - Microsoft Azure Gateway Service (*asrgwy*)
-- Microsoft Azure Hyper-V Discovery Service (*amhvdiscoverysvc*)
 - Azure Site Recovery Management Service (*asrmgmtsvc*)
+- For Hyper-V - Microsoft Azure Hyper-V Discovery Service (*amhvdiscoverysvc*)
+- For VMware - Microsoft Azure VMware Discovery Service (*amvmwdiscoverysvc*)
+
 
 **On the target appliance VM**:
  

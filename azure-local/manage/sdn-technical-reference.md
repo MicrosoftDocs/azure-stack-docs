@@ -5,6 +5,7 @@ ms.topic: article
 author: alkohli
 ms.author: alkohli
 ms.date: 09/05/2025
+ms.subservice: hyperconverged
 ---
 
 # Technical reference for Software Defined Networking in Azure Local

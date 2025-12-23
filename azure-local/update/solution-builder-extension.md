@@ -6,6 +6,7 @@ ms.author: robess
 ms.topic: overview
 ms.reviewer: dandefolo
 ms.date: 02/25/2025
+ms.subservice: hyperconverged
 
 #customer intent: As a Senior Content Developer, I want provide customers with the highest level of content for the Solution Builder Extension so that customers gain knowledge and keep their Azure Local up to date in the most efficient way.
 

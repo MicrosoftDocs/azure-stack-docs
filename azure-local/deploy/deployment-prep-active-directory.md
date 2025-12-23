@@ -7,6 +7,7 @@ ms.date: 12/10/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
+ms.subservice: hyperconverged
 ---
 
 # Prepare Active Directory for Azure Local deployment

@@ -7,6 +7,7 @@ ms.date: 12/02/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
+ms.subservice: hyperconverged
 ---
 
 # Perform post operating system upgrade steps on Azure Local via PowerShell
