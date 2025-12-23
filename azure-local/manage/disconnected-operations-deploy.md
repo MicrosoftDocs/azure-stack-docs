@@ -44,7 +44,7 @@ For information on known issues identified with disconnected operations for Azur
 
 ## Checklist for deploying disconnected operations
 
-Here's a checklist of things you need before you deploy Azure Local with disconnected operations:
+Before you deploy Azure Local with disconnected operations, you need the following:
 
 - Network plan:
   - IP pool, ingress IP, fully qualified domain name (FQDN), domain name system (DNS), and gateway (GW).
@@ -70,12 +70,12 @@ You deploy and configure Azure Local with disconnected operations in multiple st
 
 :::image type="content" source="./media/disconnected-operations/deployment/deployment-journey.png" alt-text="Screenshot of the deployment flow for disconnected operations in Azure Local." lightbox=" ./media/disconnected-operations/deployment/deployment-journey.png":::
 
-Here's a brief overview of the tools and processes you use during the deployment. You will need access to Azure Local nodes (OS or host) for the first phases of the deployment.
+Here's a brief overview of the tools and processes you use during the deployment. You'll need access to Azure Local nodes (OS or host) for the first phases of the deployment.
 
 1. Use the existing tools and processes to install and configure the OS. You need local admin access on all Azure Local nodes.
 1. Run PowerShell and the Operations module on the first machine (sorted by node name like `seed node`). You must have local admin access.
-1. Use the local Azure portal, Azure PowerShell or Azure CLI. You don't need physical node access, but you do need Azure Role-Based Access Control (RBAC) with the **Owner role**.
-1. Use the local Azure portal, Azure PowerShell or Azure CLI. You don't need physical node access, but you do need Azure RBAC with the **Operator role**.
+1. Use the local Azure portal, Azure PowerShell, or Azure CLI. You don't need physical node access, but you do need Azure Role-Based Access Control (RBAC) with the **Owner role**.
+1. Use the local Azure portal, Azure PowerShell, or Azure CLI. You don't need physical node access, but you do need Azure RBAC with the **Operator role**.
 
 ## Prepare Azure Local machines  
 
@@ -412,8 +412,8 @@ To configure observability, follow these steps:
     $g = (az group create -n $resourcegroup -l eastus)|ConvertFrom-Json
     az ad sp create-for-rbac -n $appname --role Owner --scopes $g.id
     
-    # get the subscription id
-    $j = (az account list|ConvertFrom-Json)|Where-object { $_.IsDefault}
+    # Get the Subscription ID
+    $j = (az account list | ConvertFrom-Json) | Where-object {$_.IsDefault}
     
     # SubscriptionID:
     $j.id
@@ -439,7 +439,7 @@ To configure observability, follow these steps:
       -Location "<Location>" `
       -SubscriptionId "<SubscriptionId>" `
       -ServicePrincipalId "<AppId>" `
-      -ServicePrincipalSecret ("<Password>"|ConvertTo-SecureString -AsPlainText -Force)
+      -ServicePrincipalSecret ("<Password>" | ConvertTo-SecureString -AsPlainText -Force)
 
     Set-ApplianceObservabilityConfiguration -ObservabilityConfiguration $observabilityConfiguration
     ```
@@ -464,9 +464,9 @@ To enable Azure Local in a fully air-gapped (nodes without direct internet conne
   w32tm /query /peers
   ```
 
-## Configure Azure Powershell
+## Configure Azure PowerShell
 
-On each node - run the following to enable a custom cloud endpoint for Azure Powershell. This will be used later when bootstrapping the Azure Local node to the control plane. 
+On each node, run the following to enable a custom cloud endpoint for Azure PowerShell. You'll use this later when bootstrapping the Azure Local node to the control plane. 
 
 ```powershell
 $applianceCloudName = "azure.local"
@@ -483,17 +483,16 @@ Connect-AzAccount -EnvironmentName $applianceCloudName -UseDeviceAuthentication
 Create a subscription for your Azure Local nodes and the Azure Local instance (cluster).
 
 1. Sign in to the local Azure portal at https://portal.</FQDN>. Replace </FQDN> with your domain name.  
-2. Go to **Subscriptions**.  
-3. Select **+ Add**.  
-4. For Subscription name, enter a name such as *Starter subscription*.  
-5. Select the subscription owner you want to give the Owner (RBAC) role to on this subscription.  
-6. For Location, leave the value set to **Autonomous**.  
-7. Select **Create**, wait for the operation to finish, and then refresh the browser to confirm the new subscription appears.
-8. Go to **Resource groups**
-9. Select **+Add** 
-10. For resource group name, enter a name such as 'azure-local-disconnected-operations'
-11. For Location, leave the value set to **Autonomous**
-12. Select **Create**, wait for the operation to finish
+1. Go to **Subscriptions**.  
+1. Select **+ Add**.  
+1. For Subscription name, enter a name such as *Starter subscription*.  
+1. Select the subscription owner you want to give the Owner (RBAC) role to on this subscription.  
+1. For Location, leave the value set to **Autonomous**.  
+1. Select **Create**, wait for the operation to finish, and then refresh the browser to confirm the new subscription appears.
+1. Go to **Resource groups** and select **+ Add**.
+1. For the resource group name, enter a name such as *azure-local-disconnected-operations*.
+1. For the location, leave the value set to **Autonomous**.
+1. Select **Create** and wait for the operation to finish.
 
 
 > [!NOTE]
@@ -511,15 +510,17 @@ Create a subscription for your Azure Local nodes and the Azure Local instance (c
 
 Make sure you register the required resource providers before deployment. 
 
-Here's an example of how to automate the resource providers registration from Azure Powershell.
+Here's an example of how to automate the resource providers registration from Azure PowerShell.
 
 ```powershell
 $applianceCloudName = "azure.local"
 $subscriptionName = "Starter subscription"
+
 # Connect to the ARM endpointusing device authentication
 Connect-AzAccount -EnvironmentName $applianceCloudName -UseDeviceAuthentication
 Write-Host "Selecting a different subscription than the operator subscription.."
 $subscription = Get-AzSubscription -SubscriptionName $subscriptionName
+
 # Set the context to that subscription
 Set-AzContext -SubscriptionId $subscription.Id
 
@@ -541,10 +542,10 @@ Register-AzResourceProvider -ProviderNamespace "Microsoft.HybridContainerService
 
 Wait until all resource providers are in the state **Registered**. 
 
-Here's a sample Azure Powershell command to list all resource providers and their statuses.
+Here's a sample Azure PowerShell command to list all resource providers and their statuses.
 
 ```powershell  
-get-AzResourceProvider|Format-Table
+Get-AzResourceProvider | Format-Table
 ```
 
 > [!NOTE]
@@ -567,7 +568,7 @@ Verify the deployment before creating local Azure resources.
 
 ### Initialize each Azure Local node
 
-To initialize each node, run the Powershell script below. Modify the variables  necessary to match your environment details:
+To initialize each node, run this PowerShell script. Modify the variables necessary to match your environment details:
 
 1. Initialize each Azure Local node.
 
@@ -587,22 +588,24 @@ To initialize each node, run the Powershell script below. Modify the variables  
 
     $armTokenResponse = Get-AzAccessToken -ResourceUrl "https://armmanagement.$($applianceFQDN)"
 
-    $ArmAccessToken   = $armTokenResponse.Token
+    $ArmAccessToken = $armTokenResponse.Token
 
     # Bootstrap each node
     Invoke-AzStackHciArcInitialization -SubscriptionID $subscription.Id -TenantID $subscription.TenantId -ResourceGroup $resourceGroup -Cloud $applianceCloudName -Region "Autonomous" -CloudFqdn $applianceFQDN -ArmAccessToken $ArmAccessToken
+    ```
+    
 > [!NOTE]  
-    > Ensure that you run initialization on the first machine before moving on to other nodes.
-    > 
-    > Nodes appear in the local portal shortly after you run the steps, and the extensions appear on the nodes a few minutes after installation.  
-    >
-    > You can also use the [Configurator App](../deploy/deployment-arc-register-configurator-app.md?view=azloc-2506&preserve-view=true) to initialize each node.
+> Ensure that you run initialization on the first machine before moving on to other nodes.
+> 
+> Nodes appear in the local portal shortly after you run the steps, and the extensions appear on the nodes a few minutes after installation.  
+>
+> You can also use the [Configurator App](../deploy/deployment-arc-register-configurator-app.md?view=azloc-2506&preserve-view=true) to initialize each node.
 
-## Pre-create Azure Keyvault
+## Pre-create Azure Key Vault
 
 Because of a known Azure Key Vault issue that can cause long deployment delays, create the Azure Key Vault before you deploy Azure Local.
 
-For a code example to pre-create the Key Vault, see [Known issues](./disconnected-operations-known-issues.md)
+For a code example to pre-create the Key Vault, see [Known issues](./disconnected-operations-known-issues.md).
 
 After you create the Key Vault, wait 20 minutes before you continue with the next portal deployment step.
 
@@ -613,7 +616,7 @@ With the prerequisites completed, you can deploy Azure Local with a fully air-ga
 Follow these steps to create an Azure Local instance (cluster):
 
 1. Access the local portal from a browser of your choice.
-1. Navigate to `portal.FQDN`. For example, `https://portal.autonomous.cloud.private`
+1. Navigate to `portal.FQDN`. For example, `https://portal.autonomous.cloud.private`.
 1. Select your nodes and complete the deployment steps outlined in [Deploy Azure Local using the Azure portal](../deploy/deploy-via-portal.md).  
 
   > [!NOTE]
@@ -623,17 +626,17 @@ Follow these steps to create an Azure Local instance (cluster):
 
 ## Tasks after deploying disconnected operations
 
-Here are some tasks you should perform after deploying Azure Local with disconnected operations:
+Perform the following tasks after deploying Azure Local with disconnected operations:
 
-1. **Back up the BitLocker keys (do not skip this step).**  During deployment your appliance is encrypted. Without the recovery keys for the volumes, you can't recover and restore the appliance. For more information, see [Understand security controls with disconnected operations on Azure Local](disconnected-operations-security.md).
+1. **Back up the BitLocker keys (do not skip this step)**. During deployment, the appliance is encrypted. Without the recovery keys for the volumes, you can't recover and restore the appliance. For more information, see [Understand security controls with disconnected operations on Azure Local](disconnected-operations-security.md).
 
 1. **Assign extra operators.** You can assign one or more operators by navigating to **Operator subscriptions**. Assign the **contributor** role at the subscription level.
 
-1. [Export the host guardian service certificates](disconnected-operations-security.md) and backup the folder you export them to on an external share/drive.
+1. [Export the host guardian service certificates](disconnected-operations-security.md) and back up the folder you export them to on an external share or drive.
+
 ## Appendix
 
-
-### Troubleshoot and reconfigure using management endpoint
+### Troubleshoot and reconfigure by using management endpoint
 
 To use the management endpoint for troubleshooting and reconfiguration, you need the management IP address used during deployment, along with the client certificate and password used to secure the endpoint.
 
@@ -662,7 +665,7 @@ After you install the appliance, you might see this screen for a while. Let the 
 
 ### Update appliance configuration and rerun installation after failure
 
-If your install-appliance fails update the configuration and retry.
+If `install-appliance` fails, update the configuration and retry.
 
 For example:
 
@@ -675,7 +678,7 @@ For example:
   $ingressNetworkConfiguration.IngressIpAddress = '192.168.0.115'
   ```
 
-- If the install-appliance fails during installation, set `$installAzureLocalParams` and rerun `Install-appliance` as described in [Install and configure the appliance](#install-and-configure-the-appliance).
+- If `install-appliance` fails during installation, set `$installAzureLocalParams` and rerun `Install-appliance` as described in [Install and configure the appliance](#install-and-configure-the-appliance).
   
 - If the appliance deployment succeeded and you're updating network configuration, see `Get-Help Set-Appliance` for the settings you can update post-deployment.
 
