@@ -82,7 +82,7 @@ Cohesity Data Project, part of the Data Cloud platform, protects VMs with a sing
 Cohesity extends support by leveraging its mature Hyper-V connector and workflows, giving a consistent operating model as customers move Hyper-V workloads onto Azure Local.
 
 - [Cohesity Data Project](https://www.cohesity.com/platform/dataprotect/).
-- [Support statements for Azure Local](https://docs.cohesity.com/ui/login?redirectPath=%2F7_3%2FWeb%2FUserGuide%2FContent%2FReleaseNotes%2FSupportedVersions.htm#MicrosoftHyperV).
+- [Support statements for Azure Local](https://docs.cohesity.com/ui/login?redirectPath=%2F7_3%2FWeb%2FUserGuide%2FContent%2FReleaseNotes%2FSupportedVersions.htm#MicrosoftHyperV)
 
 #### Commvault
 
