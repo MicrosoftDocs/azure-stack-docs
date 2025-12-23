@@ -458,23 +458,6 @@ To enable Azure Local in a fully air-gapped (nodes without direct internet conne
   w32tm /query /peers
   ```
 
-1. Download (or copy) these certificates and import them into the local trust store:
-
-  - [MicCodSigPCA2011](https://www.microsoft.com/pkiops/certs/MicCodSigPCA2011_2011-07-08.crt)
-  
-  - [DigiCertGlobalRootCA](https://cacerts.digicert.com/DigiCertGlobalRootCA.crt?utm_medium=organic&utm_source=msazure-visualstudio&referrer=https://msazure.visualstudio.com/&_gl=1*1c6vxin*_gcl_au*MTE2OTcyNDYyMy4xNzUyMTg0NDU5)
-  
-  - [DigiCertGlobalRootG2](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt?utm_medium=organic&utm_source=msazure-visualstudio&referrer=https://msazure.visualstudio.com/&_gl=1*1c6vxin*_gcl_au*MTE2OTcyNDYyMy4xNzUyMTg0NDU5)
-
-1. Place them in a folder, for example, *C:\AzureLocalDisconnectedOperations\Certs\*
-
-1. Import the certs by running the following command:
-
-  ```powershell
-  Import-Certificate -FilePath C:\AzureLocalDisconnectedOperations\Certs\MicCodSigPCA2011_2011-07-08.crt -CertStoreLocation Cert:\LocalMachine\Root -Confirm:$false
-  Import-Certificate -FilePath C:\AzureLocalDisconnectedOperations\Certs\DigiCertGlobalRootCA.cer Cert:\LocalMachine\Root -Confirm:$false
-  Import-Certificate -FilePath C:\AzureLocalDisconnectedOperations\Certs\DigiCertGlobalRootG2.cer -CertStoreLocation Cert:\LocalMachine\Root -Confirm:$false
-  ```
 ## Configure Azure Powershell
 
 On each node - run the following to enable a custom cloud endpoint for Azure Powershell. This will be used later when bootstrapping the Azure Local node to the control plane. 
