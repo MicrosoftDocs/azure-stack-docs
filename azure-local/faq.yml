@@ -7,6 +7,7 @@ metadata:
   ms.author: alkohli
   ms.service: azure-local
   ms.date: 12/17/2025
+  ms.subservice: hyperconverged
 title: Azure Local FAQ
 summary: The Azure Local FAQ provides information about deployment types, Azure connectivity, data handling, and supported services.
 

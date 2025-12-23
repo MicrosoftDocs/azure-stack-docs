@@ -7,6 +7,7 @@ ms.date: 12/16/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: hyperconverged
+ms.subservice: hyperconverged
 ---
 
 # Known issues in Azure Local

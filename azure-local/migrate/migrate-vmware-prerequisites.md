@@ -5,6 +5,7 @@ author: alkohli
 ms.topic: how-to
 ms.date: 12/01/2025
 ms.author: alkohli
+ms.subservice: hyperconverged
 ---
 
 # Prerequisites for VMware migration to Azure Local using Azure Migrate
