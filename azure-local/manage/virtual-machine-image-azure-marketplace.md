@@ -9,6 +9,7 @@ ms.date: 12/18/2025
 ms.custom:
   - devx-track-azurecli
   - sfi-image-nochange
+ms.subservice: hyperconverged
 ---
 
 # Create Azure Local VM image using Azure Marketplace images

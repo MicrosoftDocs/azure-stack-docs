@@ -5,7 +5,9 @@ ms.author: alkohli
 ms.topic: article
 author: alkohli
 ms.date: 01/16/2025
+ms.subservice: hyperconverged
 ---
+
 # Track Health Service actions
 
 > Applies to: Azure Local 2311.2 and later; Windows Server 2022, Windows Server 2019, Windows Server 2016

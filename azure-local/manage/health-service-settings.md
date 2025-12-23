@@ -5,6 +5,7 @@ ms.author: alkohli
 ms.topic: how-to
 author: alkohli
 ms.date: 07/28/2025
+ms.subservice: hyperconverged
 ---
 
 # Modify Health Service settings

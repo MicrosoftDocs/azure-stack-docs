@@ -7,6 +7,7 @@ ms.topic: how-to
 ms.service: azure-local
 ms.custom: devx-track-azurecli, linux-related-content
 ms.date: 03/21/2025
+ms.subservice: hyperconverged
 ---
 
 # Prepare an Ubuntu image for Azure Local VMs enabled by Azure Arc

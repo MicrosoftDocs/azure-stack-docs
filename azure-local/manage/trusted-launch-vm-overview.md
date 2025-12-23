@@ -6,6 +6,7 @@ author: alkohli
 ms.author: alkohli
 ms.service: azure-local
 ms.date: 10/07/2025
+ms.subservice: hyperconverged
 ---
 
 # Introduction to Trusted launch for Azure Local VMs enabled by Azure Arc
