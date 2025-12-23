@@ -6,6 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
 ms.date: 11/12/2025
+ms.subservice: multi-rack
 ---
 
 # Connect to an Azure Local VM via SSH for multi-rack deployments (preview)
