@@ -6,6 +6,7 @@ author: ronmiab
 ms.author: robess
 ms.date: 08/06/2025
 ai-usage: ai-assisted
+ms.subservice: hyperconverged
 ---
 
 # Deploy Azure Container Registry with disconnected operations on Azure Local (preview)

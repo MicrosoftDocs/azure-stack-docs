@@ -6,6 +6,7 @@ ms.author: alkohli
 ms.topic: concept-article
 ms.service: azure-local
 ms.date: 12/19/2025
+ms.subservice: hyperconverged
 ---
 
 # Supported operations for Azure Local VMs enabled by Azure Arc

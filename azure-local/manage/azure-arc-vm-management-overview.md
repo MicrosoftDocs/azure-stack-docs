@@ -7,6 +7,7 @@ ms.topic: how-to
 ms.service: azure-local
 ms.custom: linux-related-content
 ms.date: 12/15/2025
+ms.subservice: hyperconverged
 ---
 
 # What is Azure Local VM management?

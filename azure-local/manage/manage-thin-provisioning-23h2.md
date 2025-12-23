@@ -6,6 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
 ms.date: 11/04/2025
+ms.subservice: hyperconverged
 ---
 
 # Storage thin provisioning in Azure Local

@@ -8,6 +8,7 @@ ms.author: alkohli
 ms.reviewer: vlakshmanan
 ms.service: azure-local
 ms.custom: sfi-image-nochange
+ms.subservice: hyperconverged
 ---
 
 # Troubleshoot Azure Local Virtual Machines enabled by Azure Arc

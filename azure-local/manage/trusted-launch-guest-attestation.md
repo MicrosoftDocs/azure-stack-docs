@@ -6,6 +6,7 @@ author: alkohli
 ms.author: alkohli
 ms.service: azure-local
 ms.date: 12/08/2025
+ms.subservice: hyperconverged
 ---
 
 # Guest attestation for Trusted launch for Azure Local VMs (preview)

@@ -11,6 +11,7 @@ ms.custom:
   - ai-gen-title
   - ai-seo-date:08/26/2025
   - ai-gen-description
+ms.subservice: hyperconverged
 ---
 
 # Prepare Red Hat Enterprise Azure Marketplace image for Azure Local VMs
