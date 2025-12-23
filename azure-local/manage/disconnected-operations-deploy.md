@@ -496,7 +496,7 @@ Create a subscription for your Azure Local nodes and the Azure Local instance (c
 
 
 > [!NOTE]
-> Alternatively, use Azure CLI or PowerShell to automate this process. 
+> Alternatively, use Azure CLI or PowerShell to automate this process. Please see appendix in Azure CLI docs for how to create a subscription using CLI.
 
     > [!NOTE]
     > Plan the subscription and resource group where you want to place your nodes and cluster. The resource move action isn't supported.

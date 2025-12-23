@@ -245,7 +245,10 @@ The following table lists the CLI extensions supported on Azure Local disconnect
 | Azure Key Vault | Built-in      |    | [Quickstart: Create a key vault using Azure CLI](/azure/key-vault/general/quick-create-cli) |
 
 ## Appendix
-
+### Create an Azure Subscription (on disconnected operations)
+```azurecli
+az account alias create --name 'aliasName’ --billing-scope '/providers/Microsoft.Billing/billingAccounts/defaultaccount' --display-name 'displayName' --workload 'Production' 
+```
 ### Create a service principal for Azure Local node registration
 
 Use the operator account to create a service principal for Arc initialization of each Azure Local node. For bootstrap, the **Owner** role is required at the subscription level.
