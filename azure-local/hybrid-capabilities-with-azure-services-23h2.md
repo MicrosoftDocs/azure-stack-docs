@@ -6,6 +6,7 @@ author: alkohli
 ms.author: alkohli
 ms.date: 04/16/2025
 ms.custom: e2e-hybrid
+ms.subservice: hyperconverged
 ---
 
 # Hybrid capabilities with Azure services in Azure Local
