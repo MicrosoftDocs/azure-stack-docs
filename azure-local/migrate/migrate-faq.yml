@@ -131,6 +131,10 @@ sections:
           
           Force deletion may not clean up all associated resources. Seed disks and migration logs may remain. Review and manually delete any leftover replication artifacts in your resource group and on-premises environment.
           
+          ### How can I migrate the same source VM again after initial migration?
+          
+          After you migrate a VM, the migration resource is marked as migrated and replication is disabled. To migrate the same source VM again, you need to "Complete Migration" on the migrated resource in the Azure portal. This action cleans up the migration state and allows you to enable replication again for the same source VM.
+
           ## [VMware VMs only](#tab/vmware-vms)
           
           ### How many VMs can I replicate in parallel from VMware?
