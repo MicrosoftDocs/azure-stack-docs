@@ -18,11 +18,11 @@ This article explains how to get updates for disconnected operations and how to 
 
 ## Get updates
 - From The Azure Portal, navigate to your disconnected operations appliance
-- Hit 'Updates'
+- Click 'Updates'
 - Click the latest version
 - Click download
-- Observe the update file downloading and complete
-
+- Wait for the download to complete
+ 
 Once update has been downloaded, copy the update file into the seed node in a staging folder e.g. C:\AzureLocalDisconnectedOperations 
 
 ## Load the Operationsmodule 
@@ -74,6 +74,55 @@ On the seed node, in the same session as above, run the following to view update
 ```powershell
 Get-ApplianceUpdateHistory 
 ```
+
+## Update Azure Local - disconnected 
+During this preview release, please take a look at the following Powershell script that can be run to patch and update each Azure Local node in a disconnected environment.
+
+```powershell
+$applianceFQDN = 'autonomous.cloud.private'
+# Reboot the node for this to take effect
+[System.Environment]::SetEnvironmentVariable("NUGET_CERT_REVOCATION_MODE", "offline", "Machine")
+
+
+# Check latest "Check System Update readiness" daily runs
+# Expect to see failed runs
+$eceClient = Create-ECEClientSimple
+$plans = $eceClient.GetActionPlanInstances().Result
+$plans | Sort-Object -Property LastModifiedDateTime -Descending | ft InstanceID, ActionPlanName, ActionTypeName, Status, LastModifiedDateTime
+
+# 
+<# Patch the file c:\NugetStore\Microsoft.AzureStack.Role.SBE.10.2510.1001.2024\content\Helpers\SBESolutionExtensionHelper.psm1
+ Insert the following lines on after line 349
+ $aldoSupport = [System.Environment]::GetEnvironmentVariable("DISCONNECTED_OPS_SUPPORT", "Machine")
+    # note: order matters here - $true -eq $aldoSupport won't work because $aldoSupport is a string
+    if ($null -ne $aldoSupport -and $aldoSupport -eq "True")
+    {
+        Trace-Execution "Disconnected Operations support is enabled. SBE download is not supported."
+        return $false
+    }
+#>
+
+# Host the OEM SBE manifest and overwrite location
+$client = New-SolutionUpdateClient
+$client.SetDynamicConfigurationValue("AutomaticOemUpdateUri", "https://edgeartifacts.blob.$($applianceFQDN)/clouddeployment/SBE_Discovery_HPE.xml").Wait()
+$client.SetDynamicConfigurationValue("AutomaticUpdateUri", "https://fakehost").Wait()
+$client.SetDynamicConfigurationValue("UpdateRingName", "Unknown").Wait()
+
+# Re run "Check System Update readiness"
+Invoke-SolutionUpdatePrecheck
+# Check "Check System Update readiness" health
+Get-SolutionUpdateEnvironment
+
+# Manually add solution update
+Add-SolutionUpdate -SourceFolder C:\ClusterStorage\Infrastructure_1\Shares\SU1_Infrastructure_1\import\Solution
+# Wait for this to return to make sure the update is ready
+Get-SolutionUpdate
+# Run the update
+Get-SolutionUpdate -Id "redmond/Solution12.2512.1002.10" | Start-SolutionUpdate
+
+Start-MonitoringActionplanInstanceToComplete -EceClient $eceClient -actionPlanInstanceID $actionPlanInstanceID
+```
+
 ::: moniker-end
 
 ::: moniker range="<=azloc-2510"
