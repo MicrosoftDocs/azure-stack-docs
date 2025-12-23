@@ -114,7 +114,7 @@ az networkfabric controller create \
 --debug --no-wait
 ```
 
-Here's an example of how you can create an NFC  with the system managed identity using the Azure CLI.
+Here's an example of how you can create an NFC  with the system assigned managed identity using the Azure CLI.
 ```azurecli
 az networkfabric controller create \
   --resource-group "NFCResourceGroupName" \
@@ -267,7 +267,7 @@ az networkfabric controller update \
 --workload-er-connections "[{expressRouteCircuitId:'/subscriptions/xxxxxx-xxxxxx-xxxx-xxxx-xxxxxx/resourceGroups/ER-Dedicated-WUS2-AFO-Circuits/providers/Microsoft.Network/expressRouteCircuits/MSFT-ER-Dedicated-PvtPeering-WestUS2-AFO-Ckt-03',expressRouteAuthorizationKey:'<auth-key>'},{expressRouteCircuitId:'/subscriptions/xxxxxx-xxxxxx-xxxx-xxxx-xxxxxx/resourceGroups/ER-Dedicated-WUS2-AFO-Circuits/providers/Microsoft.Network/expressRouteCircuits/MSFT-ER-Dedicated-PvtPeering-WestUS2-AFO-Ckt-04',expressRouteAuthorizationKey:'<auth-key>'}]"
 ```
 
-## Update Network Fabric Controller with the system managed identity
+## Update Network Fabric Controller with the system assigned managed identity
 
 ```Azure CLI
 az networkfabric controller update \ 
