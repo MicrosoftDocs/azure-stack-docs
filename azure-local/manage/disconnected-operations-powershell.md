@@ -117,6 +117,6 @@ $sp = New-AzADServicePrincipal -DisplayName "CertAuthSPN" -CertValue $cert
 
 ::: moniker range="<=azloc-2510"
 
-This feature is available only in Azure Local 2511 and newer
+This feature is available only in Azure Local 2511 and newer.
 ::: moniker-end
 
