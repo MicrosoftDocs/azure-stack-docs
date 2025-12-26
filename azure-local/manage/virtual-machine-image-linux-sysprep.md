@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
 ms.custom: devx-track-azurecli, linux-related-content
-ms.date: 03/21/2025
+ms.date: 12/26/2025
 ms.subservice: hyperconverged
 ---
 
@@ -19,7 +19,7 @@ This article describes how to use Azure CLI to prepare an Ubuntu image and creat
 ## Prerequisites
 
 - Have access to an Azure Local instance. This system is deployed, registered, and connected to Azure Arc. Go to the **Overview** page in the Azure Local resource. On the **Server** tab on the right pane, **Azure Arc** should appear as **Connected**.
-- [Download the latest supported Ubuntu server image](https://ubuntu.com/download/server) on your Azure Local system. The supported OS versions are *Ubuntu 20.04*, *22.04*, and *24.04 LTS*.
+- [Download the latest supported Ubuntu server image](https://ubuntu.com/download/server) on your Azure Local system. The supported OS versions are *Ubuntu *22.04*, and *24.04 LTS*.
 
 ## Workflow
 
