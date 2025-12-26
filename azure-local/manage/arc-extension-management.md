@@ -10,6 +10,7 @@ ms.custom:
   - devx-track-azurecli
   - devx-track-azurepowershell
   - sfi-image-nochange
+ms.subservice: hyperconverged
 ---
 
 # Azure Arc extension management on Azure Local

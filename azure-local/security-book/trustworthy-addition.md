@@ -2,10 +2,11 @@
 title:  Trustworthy addition for the Azure Local security book
 description: Learn about trustworthy addition for the Azure Local security book.
 author: alkohli
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 08/11/2025
 ms.author: alkohli
 ms.reviewer: alkohli
+ms.subservice: hyperconverged
 ---
 
 # Trustworthy addition for Azure Local

@@ -8,6 +8,7 @@ ms.reviewer: alkohli
 ms.service: azure-local
 ms.custom: devx-track-arm-template
 ms.date: 05/15/2025
+ms.subservice: hyperconverged
 ---
 
 # Review three-node storage switchless, dual TOR, dual link deployment network reference pattern for Azure Local

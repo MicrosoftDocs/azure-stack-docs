@@ -5,7 +5,8 @@ author: sipastak
 ms.author: sipastak
 ms.service: azure-local
 ms.date: 11/17/2025
-ms.topic: conceptual
+ms.topic: concept-article
+ms.subservice: multi-rack
 ---
 
 # Prerequisites for multi-rack deployments of Azure Local (preview)

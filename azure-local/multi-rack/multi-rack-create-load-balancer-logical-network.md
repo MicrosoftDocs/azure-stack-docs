@@ -1,10 +1,11 @@
 ---
 title: Create Load Balancers on Logical Networks using Azure CLI in Multi-Rack Deployments of Azure Local (preview)
 description: Learn how to create load balancers on logical networks using Azure CLI in multi-rack deployments of Azure Local (preview).
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 11/25/2025
 author: alkohli
 ms.author: alkohli
+ms.subservice: multi-rack
 ---
 
 # Create load balancers on logical networks using Azure CLI in multi-rack deployments of Azure Local (preview)

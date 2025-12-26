@@ -6,6 +6,7 @@ author: ronmiab
 ms.author: robess
 ms.date: 10/16/2025
 ai-usage: ai-assisted
+ms.subservice: hyperconverged
 ---
 
 # Plan your identity for disconnected operations on Azure Local (preview)

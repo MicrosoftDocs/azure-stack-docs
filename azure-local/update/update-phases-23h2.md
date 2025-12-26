@@ -5,6 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: article
 ms.date: 02/25/2025
+ms.subservice: hyperconverged
 ---
 
 # Review update phases of Azure Local

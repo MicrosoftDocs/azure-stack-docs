@@ -5,6 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.date: 11/04/2025
+ms.subservice: hyperconverged
 ---
 
 # Get support for Azure Local

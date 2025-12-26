@@ -7,6 +7,7 @@ ms.author: alkohli
 ms.reviewer: alkohli
 ms.date: 08/18/2025
 ms.custom: sfi-image-nochange
+ms.subservice: hyperconverged
 ---
 
 # Use the dashboard to manage Azure Local

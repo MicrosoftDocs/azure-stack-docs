@@ -7,6 +7,7 @@ ms.date: 10/11/2025
 ms.author: alkohli
 ms.service: azure-local
 zone_pivot_groups: register-arc-options
+ms.subservice: hyperconverged
 ---
 
 # Register Azure Local with Azure Arc using Arc gateway

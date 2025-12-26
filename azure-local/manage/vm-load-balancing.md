@@ -6,7 +6,9 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
 ms.date: 10/28/2025
+ms.subservice: hyperconverged
 ---
+
 # Virtual machine load balancing
 
 > Applies to: Azure Local 2311.2 and later; Windows Server 2025, Windows Server 2022, Windows Server 2019, Windows Server 2016

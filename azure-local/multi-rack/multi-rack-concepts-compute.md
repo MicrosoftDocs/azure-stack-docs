@@ -4,9 +4,10 @@ description: Get an overview of compute resources for multi-rack deployments of 
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 11/14/2025
 ms.custom: conceptual
+ms.subservice: multi-rack
 ---
 
 # Compute overview for multi-rack deployments of Azure Local (preview)

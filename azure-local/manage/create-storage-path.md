@@ -7,6 +7,7 @@ ms.topic: how-to
 ms.service: azure-local
 ms.date: 03/21/2025
 ms.custom: sfi-image-nochange
+ms.subservice: hyperconverged
 ---
 
 # Create storage path for Azure Local 
@@ -39,6 +40,8 @@ Before you begin, make sure to complete the following prerequisites:
 
 You can use the Azure CLI or Azure portal to create a storage path on your system.
 
+> [!WARNING]
+> Do not create storage paths on the Infrastructure_1 volume. This volume is reserved for Azure Local infrastructure components. Using it for workloads can degrade system performance and lead to service instability. Always use separate volumes for workloads.
 
 # [Azure CLI](#tab/azurecli)
 

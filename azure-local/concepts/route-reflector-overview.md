@@ -6,6 +6,7 @@ ms.author: alkohli
 ms.topic: overview
 ms.service: azure-local
 ms.date: 10/16/2025
+ms.subservice: hyperconverged
 ---
 
 # What is Route Reflector?

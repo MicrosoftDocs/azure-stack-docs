@@ -6,6 +6,7 @@ ms.author: alkohli
 ms.service: azure-local
 ms.topic: concept-article
 ms.date: 12/19/2025
+ms.subservice: multi-rack
 ---
 
 # Network fabric overview for multi-rack deployments of Azure Local (preview)
@@ -44,7 +45,7 @@ Key capabilities offered in the network fabric are:
 
 * **Bootstrapping and lifecycle management** - Automated bootstrapping and provisioning of network fabric resources based on workload use cases. It provides various controls to manage network devices in enterprise environments through Azure APIs.
 
-* **Workload network configuration** - Automated network configuration in Network Fabric for workloads that are deployed on the compute nodes. The network configuration enables east-west communication between workloads as well as north-south communication between external networks and workloads.
+* **Workload network configuration** - Automated network configuration in Network Fabric for workloads that are deployed on the compute servers. The network configuration enables east-west communication between workloads as well as north-south communication between external networks and workloads.
 
 * **Observability** - Monitor the health and performance of the network fabric in real time through metrics and logs.
 

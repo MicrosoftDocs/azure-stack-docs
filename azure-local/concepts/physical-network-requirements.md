@@ -6,6 +6,7 @@ ms.topic: article
 ms.date: 03/21/2025
 ms.author: alkohli 
 ms.reviewer: alkohli
+ms.subservice: hyperconverged
 ---
 
 # Physical network requirements for Azure Local

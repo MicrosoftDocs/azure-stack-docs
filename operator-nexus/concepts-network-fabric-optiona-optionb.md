@@ -1,6 +1,6 @@
 ---
-title: "Azure Operator Nexus: Network Fabric OptionA and OptionB"
-description: Learn about Network Fabric OptionA and OptionB.
+title: 'Azure Operator Nexus: Network Fabric Option A and Option B'
+description: Learn about Azure Operator Nexus - Network Fabric Option A and Option B.
 author: jmmason70
 ms.author: jeffreymason
 ms.service: azure-operator-nexus
@@ -8,31 +8,32 @@ ms.topic: concept-article
 ms.date: 02/12/2025
 ---
 
-# Network Fabric OptionA and OptionB 
+# Network Fabric Option A and Option B
 
-BGP (Border Gateway Protocol) is a protocol used on the internet between routers to allow traffic to be routed between Autonomous Systems (AS). Autonomous Systems use BGP to advertise to their peers which IPs they can route to and which ASs they go through to get there. For example, an ISP (Internet Service Provider) advertises traffic to enter their network via their ingress points. They'll advertise they know how to route to the public IPs on their network, without them having to share how they do that routing internally.
- 
-The edge routers in each Autonomous Systems are manually configured with a set of BGP peers they trust and only accept traffic routed from those peers.
+Border Gateway Protocol (BGP) is a protocol used on the internet between routers to allow traffic to be routed between autonomous systems. Autonomous systems use BGP to advertise to their peers, which IPs they can route to, and which autonomous systems they go through to get there. For example, an internet service provider advertises traffic to enter their network via their ingress points. They advertise that they know how to route to the public IPs on their network, without having to share how they do that routing internally.
 
-There are two peering standards relevant to Nexus:
+The edge routers in each autonomous system are manually configured with a set of BGP peers they trust. They accept traffic routed only from those peers.
 
-**Option A**: This option is simpler but less scalable than Option B, and only supports IPv4 in the standard. It can support IPv6 and multicast as well, but is implementation dependent and not guaranteed.
+Two peering standards are relevant to Azure Operator Nexus:
 
-**Option B**: This option is more complex but supports IPv4, IPv6, and multicast in the standard. It's also more scalable than Option A. Nexus supports IPv4, IPv6, and multicast.
+- **Option A**: This option is simpler but less scalable than Option B and supports only IPv4 in the standard. It can also support IPv6 and multicast, but implementation is dependent and isn't guaranteed.
+- **Option B**: This option is more complex than Option A but supports IPv4, IPv6, and multicast in the standard. It's also more scalable than Option A. Azure Operator Nexus supports IPv4, IPv6, and multicast.
 
-For more information on Multi-Autonomous Systems, see section 10 of [RFC 4364](https://www.ietf.org/rfc/rfc4364.txt).
+For more information on multiautonomous systems, see section 10 of [Request for comment 4364](https://www.ietf.org/rfc/rfc4364.txt).
 
-For more information on the commands involved in creating and provisioning Network Fabric, see [Create and Provision a Network Fabric using Azure CLI](./howto-configure-network-fabric.md).
+For more information on the commands involved in creating and provisioning Network Fabric, see [Create and provision Network Fabric by using the Azure CLI](./howto-configure-network-fabric.md).
 
-Option A and Option B are specified in the steps **fabric create** and **nni create**.
+Option A and Option B are specified in the following steps for the `fabric create` operation and the network-to-network interface (NNI) `nni create` operation.
 
-1. Fabric Create
+### Fabric create
 
-   Specified in the following property: \
-    --managed-network-config [Required]: Configuration to be used to set up the management network.
+Specified in the following property:
 
-   **Examples:** \
-   **Network Fabric create with option A Properties**
+- `--managed-network-config [Required]`: Configuration required to set up the management network.
+
+#### Examples
+
+- The `fabric create` operation with Option A properties:
    
    ```azurecli
    
@@ -52,7 +53,7 @@ Option A and Option B are specified in the steps **fabric create** and **nni cre
    
    ```
 
-   **Network Fabric create with option B Properties**
+- The `fabric create` operation with Option B properties:
 
     ```azurecli
    
@@ -73,19 +74,22 @@ Option A and Option B are specified in the steps **fabric create** and **nni cre
    
     ```
 
+### NNI create
 
-1.  NNI (Network-to-NetworkInterface) Create. The NNI is created after fabric create but before network device update and fabric provision.
+The NNI is created after the `fabric create` operation but before network device update and fabric provision.
 
-    Specified in the following properties: \
-    --use-option-b  [Required]: Selection of option B for NNI. Allowed values: [False, True].
+Specified in the following properties:
 
-    For option A, set to "False" \
-    For Option B, set to "True"
+- `--use-option-b  [Required]`: Selection of Option B for NNI. Allowed values: `False` and `True`.
 
-    --option-b-layer3-configuration: Common properties for Option B Layer3Configuration.
+   - For Option A, set to `False`.
+   - For Option B, set to `True`.
 
-    **Examples:** \
-    **NNI (Network-to-NetworkInterface) create with option A Properties**
+- `--option-b-layer3-configuration`: Common properties for Option B `Layer3Configuration`.
+
+#### Examples
+
+- The `nni create` operation with Option A properties:
     
     ```azurecli
     
@@ -104,7 +108,7 @@ Option A and Option B are specified in the steps **fabric create** and **nni cre
     
     ````
 
-    **NNI (Network-to-NetworkInterface) create with option B Properties**
+- The `nni create` operation with Option B properties:
 
     ```azurecli
     

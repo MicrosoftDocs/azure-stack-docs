@@ -11,6 +11,7 @@ ms.custom:
   - ai-gen-title
   - ai-seo-date:09/05/2025
   - ai-gen-description
+ms.subservice: hyperconverged
 ---
 
 # Prepare Ubuntu Azure Marketplace image for Azure Local VMs

@@ -3,10 +3,11 @@ title: Deploy an Azure Local instance using the Azure portal
 description: Learn how to deploy an Azure Local instance from the Azure portal
 author: alkohli
 ms.topic: how-to
-ms.date: 12/12/2025
+ms.date: 12/19/2025
 ms.author: alkohli
 ms.service: azure-local
 ms.custom: sfi-image-nochange
+ms.subservice: hyperconverged
 #CustomerIntent: As an IT Pro, I want to deploy an Azure Local instance of 1-16 machines via the Azure portal so that I can host VM and container-based workloads on it.
 ---
 
@@ -253,7 +254,7 @@ On the **Configuration** tab, choose whether to create a new configuration for t
 
 ## Validate and deploy the system
 
-1. After the validation is complete, review the validation results. 
+1. After the validation is complete, review the validation results.
 
     :::image type="content" source="./media/deploy-via-portal/validation-tab-3.png" alt-text="Screenshot of the successfully completed validation in Validation tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/validation-tab-3.png":::
 
@@ -265,24 +266,25 @@ On the **Configuration** tab, choose whether to create a new configuration for t
 
     <!--:::image type="content" source="./media/deploy-via-portal/review-create-tab-1.png" alt-text="Screenshot of the Review + Create tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/review-create-tab-1.png":::-->
 
-The **Deployments** page then appears, which you can use to monitor the deployment progress.
+    The **Deployments** page appears, where you can monitor the deployment progress.
 
-During deployment, the system goes through several steps including cluster registration. In the earlier versions of software, during this process, Azure Local created and set up a Microsoft Entra ID application (service principal) along with a self-signed certificate to authenticate the cluster in Azure.
+### Deployment notes
 
-From software version 12.2512 and later, the Entra ID application is no longer created during new deployments. Instead, the cluster uses Managed System Identity (MSI) to authenticate itself with Azure.
+- **Authentication changes.** During deployment, the system performs several steps, including cluster registration. In earlier versions of software, during this process, Azure Local created and set up a Microsoft Entra ID application (service principal) along with a self-signed certificate to authenticate the cluster in Azure.
 
-For existing deployments also, the Entra ID application is no longer used for authentication. The cluster automatically switches to MSI for authentication without any manual intervention. As the app is no longer used, it can be deleted from the Entra ID portal. 
+    Starting with software version 12.2512, new deployments no longer create an Entra ID application. Instead, the cluster uses system-assigned managed identity for authentication with Azure.
 
-To delete the app, make sure that the registration context is updated to v4 and there's a corresponding event in the Azure Local event log. To search for the event, connect to one of machines on the Azure Local instance. Run the following PowerShell command:
+    For existing deployments, the Entra ID application is also no longer used for authentication. The cluster automatically switches to system-assigned managed identity for authentication without requiring any manual intervention. Because the app is no longer used, you can delete it from the Entra ID portal.
 
-```powershell
-Get-ClusterNode | % { Get-WinEvent -ComputerName $_ -LogName Microsoft-AzureStack-HCI/Admin | ? Id -eq 609 }
-```
+    To delete the app, make sure that the registration context is updated to v4 and there's a corresponding event in the Azure Local event log.
 
+    To verify the event, connect to one of the machines on the Azure Local instance and run the following PowerShell command:
 
-Once the deployment starts, the first step in the deployment: **Begin cloud deployment** can take 45-60 minutes to complete. The total deployment time for a single machine is around 1.5-2 hours while a two-node system takes about 2.5 hours to deploy.
+    ```powershell
+    Get-ClusterNode | % { Get-WinEvent -ComputerName $_ -LogName Microsoft-AzureStack-HCI/Admin | ? Id -eq 609 }
+    ```
 
-
+- **Deployment timing.** When the deployment starts, the first step in the deployment, **Begin cloud deployment**, can take 45 to 60 minutes to complete. The total deployment time for a single machine is around 1.5 to 2 hours, whereas a two-node system takes about 2.5 hours to deploy.
 
 ## Verify a successful deployment
 
