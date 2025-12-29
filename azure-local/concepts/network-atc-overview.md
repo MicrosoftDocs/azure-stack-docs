@@ -3,7 +3,7 @@ title: Network ATC overview
 description: This article introduces Network ATC for Azure Local and Windows Server.
 author: parammahajan5
 ms.topic: overview
-ms.date: 10/10/2025
+ms.date: 12/29/2025
 ms.author: alkohli 
 ms.reviewer: alkohli
 zone_pivot_groups: windows-os
@@ -82,8 +82,6 @@ Network ATC provides the following features:
   - The maximum amount of SMBDirect (RDMA) bandwidth used for live migration
 
 - **Proxy configuration**: Network ATC can help you configure all cluster nodes with the same proxy configuration information if your environment requires it.
-
-- **Stretch S2D cluster support**: Network ATC deploys the configuration required for [the storage replica networks](host-network-requirements.md#stretched-clusters). Since these adapters need to route across subnets, Network ATC doesn't assign any IP addresses, so you need to assign the IP address.
 
 - **Scope detection**: Beginning with Azure Local, version 22H2, Network ATC automatically detects if you're running the command on a cluster node. Meaning, you don't need to use the `-ClusterName` parameter because it automatically detects the cluster that you're on.
 
