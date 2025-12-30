@@ -97,7 +97,7 @@ landingContent:
           - text: Security for hyperconverged deployments
             url: concepts/security-features.md
           - text: Security for multi-rack deployments (preview)
-            url: multi-rack-security.md
+            url: multi-rack/multi-rack-security.md
           - text: Security for disconnected operations (preview)
             url: manage/disconnected-operations-security.md
 
