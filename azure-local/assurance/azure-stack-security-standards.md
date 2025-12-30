@@ -1,7 +1,7 @@
 ---
 title: Azure Local and security standards
 description: Learn about Azure Local, security standards, and security assurance.
-ms.date: 12/19/2025
+ms.date: 12/30/2025
 ms.topic: article
 ms.service: azure-local
 ms.author: nguyenhung
@@ -26,7 +26,6 @@ The following table lists the current status of Azure Local FIPS 140 validations
 |Products |Evaluation status |Details |
 |---------|---------|---------|
 |Azure Local, version 22H2 |**In process** | listed on [NIST Modules in Process](https://csrc.nist.gov/Projects/cryptographic-module-validation-program/modules-in-process/Modules-In-Process-List)|
-|Azure Local, version 21H2 |**In process** | Cryptographic Primitives Library [#4825](https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/4825) <br> Kernel Mode Cryptographic Primitives Library [#4766](https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/4766) |
 
 ## Common Criteria for Information Technology Security Evaluation (CC)
 
