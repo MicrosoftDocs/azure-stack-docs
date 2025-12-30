@@ -10,7 +10,7 @@ metadata:
   ms.topic: landing-page
   author: ronmiab
   ms.author: robess
-  ms.date: 12/04/2025
+  ms.date: 12/30/2025
 
 # linkListType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | sample | tutorial | video | whats-new
 
@@ -51,7 +51,7 @@ landingContent:
           - text: Complete prerequisites on hyperconverged
             url: manage/azure-arc-vm-management-prerequisites.md
           - text: Complete prerequisites on multi-rack (preview)
-            url: multi-rack/multi-rack-prerequisites.md
+            url: multi-rack/multi-rack-vm-management-prerequisites.md
           - text: Deploy Azure Local VMs on hyperconverged
             url: manage/create-arc-virtual-machines.md
           - text: Deploy Azure Local VMs on multi-rack (preview)
