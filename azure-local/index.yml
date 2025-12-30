@@ -97,11 +97,9 @@ landingContent:
           - text: Security for hyperconverged deployments
             url: concepts/security-features.md
           - text: Security for multi-rack deployments (preview)
-            url: index.yml
+            url: multi-rack-security.md
           - text: Security for disconnected operations (preview)
             url: manage/disconnected-operations-security.md
-          - text: Defender for Cloud for multi-rack deployments (preview)
-            url: index.yml
 
   # Card
   - title: Try it out!
