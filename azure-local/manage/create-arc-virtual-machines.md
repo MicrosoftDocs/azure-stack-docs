@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.reviewer: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 12/29/2025
+ms.date: 12/30/2025
 ms.custom:
   - devx-track-azurecli
   - sfi-image-nochange
@@ -371,10 +371,11 @@ Follow these steps in Azure portal for your Azure Local.
 
     1. Under **Connectivity method**, select **Proxy server**.
     1. Enter proxy details:
-        - **Http proxy**: Provide an HTTP URL for the proxy server. An example URL is: `http://proxy.example.com:3128`
+        - **Http proxy**: Provide an HTTP URL for the proxy server. An example URL is: `http://proxy.example.com:3128`.
         - **Https proxy**: Provide an HTTPS URL for the proxy server. The server may still use an HTTP address as shown in this example: `http://proxy.example.com:3128`.
         - **No proxy**: Specify URLs to bypass the proxy. Typical examples would be: `localhost,127.0.0.1`,`.svc,10.0.0.0/8`,`172.16.0.0/12`,`192.168.0.0/16`,`100.0.0.0/8`.
-    1. Upload the **Certificate file**. Select **Browse** and choose the certificate file used to establish trust with your proxy server.
+        - **Certificate file**: Select **Browse** and choose the certificate file used to establish trust with your proxy server.
+
         > [!NOTE]
         > For proxy authentication, you can pass the username and password combined in a URL as follows: `http://username:password@proxyserver.contoso.com:3128`.
 
