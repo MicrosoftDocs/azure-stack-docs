@@ -2,7 +2,7 @@
 title: AKS enabled by Azure Arc data collection
 description: Learn about the data exchanged between Kubernetes clusters and Azure.
 author: davidsmatlak
-ms.topic: article
+ms.topic: concept-article
 ms.date: 05/29/2024
 ms.author: davidsmatlak 
 ms.reviewer: rbaziwane
