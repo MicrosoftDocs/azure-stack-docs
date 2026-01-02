@@ -220,7 +220,7 @@ To create a Linux VM, use the same command that you used to create the Windows V
 
 Use this optional parameter **proxy-configuration** to configure a proxy server for your VM.
 
-Proxy configuration for VMs is applied only to the onboarding of the Azure connected machine agent and set as environment variables within the guest VM operating system. Browsers and applications on the VM aren't necessarily all enabled with this proxy configuration.
+Proxy configuration for VMs is applied only to the onboarding of the Azure connected machine agent and set as environment variables within the guest VM operating system. Browsers and applications on the VM referencing `WinInet` and `netsh` aren't necessarily all enabled with this proxy configuration. `WinInet` and `netsh` should be configured with the proxy settings separately.
 
 As such, you may need to specifically set the proxy configuration for your applications if they don't reference the environment variables set within the VM.
 
@@ -251,9 +251,11 @@ For proxy authentication, you can pass the username and password combined in a U
 
 ## Create a VM with Arc gateway configured
 
-To configure an Arc gateway for your Azure Local VM, create a VM with guest management enabled and pass the optional parameter `--gateway-id`. Arc gateway can be used with or without proxy configuration. By default, only the Arc traffic is redirected through the Arc proxy. 
+Configure the Arc gateway to reduce the number of required endpoints needed to provision and manage Azure Local VMs with Connected machine agent. Certain VM extensions can use the Arc gateway to route all Azure Arc traffic from your VM through a single gateway. For the most up to date list of VM extensions enabled through Arc gateway, see [Simplify network configuration requirements with Azure Arc gateway](/azure/azure-arc/servers/arc-gateway?tabs=portal#more-scenarios).
 
-If you want the VM applications or services to use the Arc gateway, configure the proxy inside the VM to use the Arc proxy. For applications that don't reference the environment variables set within the VMs, specify a proxy as-needed.
+To configure an Arc gateway for your Azure Local VM, create a VM with guest management enabled and pass the optional parameter `--gateway-id`. Arc gateway can be used with or without proxy configuration. By default, only the Arc traffic is redirected through the Arc proxy.
+
+If your VM applications or services are reaching the Azure endpoint, configure the proxy inside the VM to use the Arc proxy. For applications that don't reference the environment variables set within the VMs, specify a proxy as-needed.
 
 > [!IMPORTANT]
 > Traffic intended for endpoints not managed by the Arc gateway is routed through the enterprise proxy or firewall.
@@ -362,12 +364,13 @@ Follow these steps in Azure portal for your Azure Local.
     > - Add at least one network interface through the **Networking** tab to complete guest management setup.
     > - The network interface that you enable, must have a valid IP address and internet access. For more information, see [Azure Local VM management networking](../manage/azure-arc-vm-management-networking.md#arc-vm-virtual-network).
 
-1. In the **VM proxy configuration** section, select a **Connectivity method**:
-    - **Public endpoint**: For direct connection without a proxy.
-    - **Proxy server**: To configure a proxy for your VM.
+1. In the **VM proxy configuration** section, select a **Connectivity method**. This method is used to onboard the Azure connected machine agent on your VM. You have two options:
+    - **Public endpoint**: For direct connection to internet without a proxy.
+    - **Proxy server**: To connect to the internet through a proxy for your VM. You can choose to have the same proxy server as your Azure Local instance or configure a different proxy server for your VM.
 
-        > [!NOTE]
-        > Proxy configuration for VMs is applied only to the onboarding of the Azure connected machine agent and set as environment variables within the guest VM operating system. Browsers and applications on the VM aren't necessarily all enabled with this proxy configuration. As such, you may need to specifically set the proxy configuration for your applications if they don't reference the environment variables set within the VM.
+        Proxy configuration for VMs is applied only to the onboarding of the Azure connected machine agent and set as environment variables within the guest VM operating system. Browsers and applications on the VM referencing `WinInet` and `netsh` aren't necessarily all enabled with this proxy configuration. `WinInet` and `netsh` should be configured with the proxy settings separately. 
+
+        As such, you may need to specifically set the proxy configuration for your applications if they don't reference the environment variables set within the VM.
 
         :::image type="content" source="./media/create-arc-virtual-machines/arc-vm-proxy-configuration.png" alt-text="Screenshot of local VM administrator on Basics tab." lightbox="./media/create-arc-virtual-machines/arc-vm-proxy-configuration.png":::
 
@@ -381,7 +384,8 @@ Follow these steps in Azure portal for your Azure Local.
         > [!NOTE]
         > For proxy authentication, you can pass the username and password combined in a URL as follows: `http://username:password@proxyserver.contoso.com:3128`.
 
-1. Configure the Arc gateway to simplify proxy URL management.
+1. Configure the Arc gateway to reduce the number of required endpoints needed to provision and manage Azure Local VMs with Connected machine agent. Certain VM extensions can use the Arc gateway to route all Azure Arc traffic from your VM through a single gateway. For the most up to date list of VM extensions enabled through Arc gateway, see [Simplify network configuration requirements with Azure Arc gateway](/azure/azure-arc/servers/arc-gateway?tabs=portal#more-scenarios).
+
     1. From the **Arc gateway** dropdown, select an existing gateway or select **Create new** to set up one.
     1. If creating a new gateway, complete the **Create an Arc gateway resource** form with subscription, resource group, name, location, and tags.
 
