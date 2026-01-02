@@ -31,45 +31,45 @@ All these SKUs are having the following characteristics:
 
 The general purpose and performance optimized VM SKUs can be used for both worker and control plane nodes within the Azure Operator Nexus Kubernetes cluster. Memory optimized VM SKUs can only be used for worker nodes.
 
+### Common characteristics for all SKU types
+
+* Hugepages enabled (1Gi).
+* Dedicated CPU placement.
+* Two threads per core (hyperthreading).
+* CPUs 0 and 1 reserved for kubelet.
+
 ### General Purpose (G-type) SKUs
 
-* **Purpose**: Standard production workloads
-* **Characteristics**:
-  * Hugepages enabled (1Gi)
-  * Dedicated CPU placement
-  * Emulator threads share CPU with applications
-  * Two threads per core (hyperthreading)
-  * CPUs 0 and 1 reserved for kubelet
-* **Use Cases**: Control plane and worker nodes
+* **Purpose**: Standard production workloads.
+* **Differentiating characteristics**:
+  * Emulator threads share CPU with applications.
+* **Use cases**: Control plane and worker nodes.
 
 ### Performance Optimized (P-type) SKUs
 
-* **Purpose**: High-performance workloads requiring maximum efficiency
-* **Key Difference**: `isolateEmulatorThread: true` - dedicated emulator threads for each VM
-* **Characteristics**:
-  * Hugepages enabled (1Gi)
-  * Dedicated CPU placement
-  * Isolated emulator threads for maximum performance
-  * Two threads per core
-  * CPUs 0 and 1 reserved for kubelet
-* **Use Cases**: Latency-sensitive applications. Used for control plane and worker nodes
+* **Purpose**: High-performance workloads requiring maximum efficiency.
+* **Differentiating characteristics**:
+  * Isolated emulator threads for maximum performance.
+* **Use cases**: Latency-sensitive applications. Used for control plane and worker nodes.
 
 ### Memory Optimized (E-type) SKUs - Cross-NUMA
 
 * **Purpose**: Large memory requirements
-* **Key Characteristics**:
-  * Access memory from both NUMA cells on physical machine
-  * Highly resource intensive (336-448 GiB memory)
-  * Same CPU optimization as P-type
-  * Only for worker nodes (not control plane)
-* **Note**: Use smaller SKUs if workload fits to avoid resource waste
+* **Differentiating characteristics**:
+  * Access memory from both NUMA cells on physical machine.
+  * Highly resource intensive (336-448 GiB memory).
+  * Isolated emulator threads for maximum performance.
+* **Use cases**: Recommended for worker nodes with intensive processing requirements. Not recommended for control plane nodes.
+* **Note**: Use smaller SKUs if workload fits to avoid resource waste.
 
 ### Storage Optimized (L-type) SKUs
 
-* **Purpose**: Workloads requiring large local disk space
-* **Key Characteristic**: Root disk of **1638Gi** (vs standard 300Gi)
-* **Memory**: 224 GiB (large SKU category)
-* **Use Cases**: Data-intensive applications, log aggregation, local caching
+* **Purpose**: Workloads requiring large local disk space.
+* **Differentiating characteristics**:
+  * Root disk of **1638Gi** (vs standard 300Gi).
+  * 224-GiB memory.
+  * Isolated emulator threads for maximum performance.
+* **Use Cases**: Data-intensive applications, log aggregation, local caching.
 
 ### Configuration Matrix by SKU Type
 
@@ -95,9 +95,9 @@ Where:
 
 **Examples**:
 
-* `NC_G14_56_v1`: General purpose, 14 vCPUs (7 cores × 2 threads), 56-GiB memory
-* `NC_P12_56_v1`: Performance optimized, 12 vCPUs (6 cores × 2 threads), 56-GiB memory
-* `NC_E70_336_v1`: Memory optimized, 70 vCPUs (35 cores × 2 threads), 336-GiB memory
+* `NC_G14_56_v1`: General purpose, 14 vCPUs (seven cores × two threads), 56-GiB memory.
+* `NC_P12_56_v1`: Performance optimized, 12 vCPUs (six cores × two threads), 56-GiB memory.
+* `NC_E70_336_v1`: Memory optimized, 70 vCPUs (35 cores × two threads), 336-GiB memory.
 
 > [!NOTE]
 > To use these VM SKUs, hardware compatibility should be considered. Operator Nexus offers two hardware options: Bill of Materials (BOM) 1.7.3 and BOM 2.0 (More details about compute SKUs can be found [here](./reference-operator-nexus-skus.md#compute-skus)). The larger VM SKUs, specifically `NC_G56_224_v1`, `NC_P54_224_v1`, and `NC_E110_448_v1`, can only be supported on hardware BOM 2.0.
