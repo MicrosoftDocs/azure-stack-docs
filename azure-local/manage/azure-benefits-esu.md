@@ -5,9 +5,10 @@ author: sethmanheim
 ms.author: sethm
 ms.topic: overview
 ms.reviewer: jlei
-ms.date: 10/22/2024
+ms.date: 12/12/2025
 ms.lastreviewed: 02/23/2024
 ms.service: azure-local
+ms.subservice: hyperconverged
 ---
 
 # Free Extended Security Updates (ESU) through Azure Local
@@ -19,7 +20,7 @@ The Extended Security Update (ESU) program enables you to get important security
 To get general information about the ESU program, products that are covered, and support dates, see the [Product Lifecycle FAQ](/lifecycle/faq/extended-security-updates#esu-availability-and-end-dates). For detailed steps to set up legacy OS support, see [Azure verification for VMs](../deploy/azure-verification.md#legacy-os-support).
 
 > [!NOTE]
-> Azure Local customers can obtain ESUs at no cost through Azure verification for VMs by following the instructions in this article. If you have an Arc-enabled server that is not on Azure Local, you should consider obtaining ESU licenses through Arc. For more information, see [Deliver Extended Security Updates](/azure/azure-arc/servers/deliver-extended-security-updates) (through Arc).
+> Azure Local customers can obtain ESUs at no cost through Azure verification for VMs by following the instructions in this article. If you have an Arc-enabled server that isn't on Azure Local, you should consider obtaining ESU licenses through Arc. For more information, see [Deliver Extended Security Updates](/azure/azure-arc/servers/deliver-extended-security-updates) (through Arc).
 
 ## FAQ
 
@@ -45,7 +46,7 @@ Yes. You can discover ESUs even if you don't have Azure VM verification. For the
 
 ### Can I get ESUs through Azure Virtual Desktops (AVD) on Azure Local?
 
-The operating systems currently supported for AVD on Azure Local aren't yet eligible for ESUs. [See the list here](/azure/virtual-desktop/azure-stack-hci-faq#what-session-host-operating-system-images-does-this-feature-support-).
+Yes. All Azure Virtual Desktop session hosts running Windows 10, version 22H2 are entitled to Windows 10 Extended Security Updates (ESU) at no additional cost. For more information, read about the [Extended Security Updates (ESU) program for Windows 10](/windows/whats-new/extended-security-updates). For creating new session hosts, there are two Windows 10, version 22H2 client multi-session images in Azure Marketplace: one with Microsoft 365 Apps and one without. The image with Microsoft 365 Apps will be retired and removed from Azure Marketplace in the near future, while the image without Microsoft 365 Apps will remain until the end of ESU support. [More information on deployment](/azure/virtual-desktop/azure-stack-hci-faq#what-session-host-operating-system-images-does-this-feature-support-).
 
 ### Do I need to do anything to renew for Year 1, Year 2, Year 3...?
 

@@ -60,7 +60,7 @@ Use the following procedure to replace a DIMM.
     
 3.  Replace the DIMM or DIMMs.
 
-    Follow the [memory module replacement process](https://www.dell.com/support/manuals/us/en/04/poweredge-r640/per640_ism_pub/dell-emc-poweredge-r640-overview?guid=guid-f39be9ba-158c-45e3-b8b1-f07bb750d6d4)
+    Follow the [memory module replacement process](https://www.dell.com/support/manuals/en-us/poweredge-r640/per640_ism_pub/installing-a-memory-module?guid=guid-39b861b5-0677-4414-83db-cdf6882b3f6d&lang=en-us)
     for scale unit nodes or Hardware Lifecycle Hosts.
     
 4.  Power on the node.

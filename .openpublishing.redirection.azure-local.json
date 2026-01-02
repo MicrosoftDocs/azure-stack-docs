@@ -1511,18 +1511,8 @@
       "redirect_document_id": false
     },
     {
-      "source_path": "azure-stack/hci/upgrade/upgrade-22h2-to-23h2-other-methods.md", 
-      "redirect_url": "/azure/azure-local/upgrade/upgrade-22h2-to-23h2-other-methods", 
-      "redirect_document_id": false
-    },
-    {
       "source_path": "azure-stack/hci/upgrade/upgrade-22h2-to-23h2-powershell.md", 
       "redirect_url": "/azure/azure-local/upgrade/upgrade-22h2-to-23h2-powershell", 
-      "redirect_document_id": false
-    },
-    {
-      "source_path": "azure-stack/hci/upgrade/upgrade-22h2-to-23h2-windows-admin-center.md", 
-      "redirect_url": "/azure/azure-local/upgrade/upgrade-22h2-to-23h2-windows-admin-center", 
       "redirect_document_id": false
     },
     {
@@ -1957,6 +1947,16 @@
     },
     {
       "source_path": "azure-local/upgrade/upgrade-to-24h2-powershell.md", 
+      "redirect_url": "/azure/azure-local/upgrade/upgrade-22h2-to-23h2-powershell", 
+      "redirect_document_id": false
+    },
+        {
+      "source_path": "azure-local/upgrade/upgrade-22h2-to-23h2-other-methods.md", 
+      "redirect_url": "/azure/azure-local/upgrade/upgrade-22h2-to-23h2-powershell", 
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-local/upgrade/upgrade-22h2-to-23h2-windows-admin-center.md", 
       "redirect_url": "/azure/azure-local/upgrade/upgrade-22h2-to-23h2-powershell", 
       "redirect_document_id": false
     }

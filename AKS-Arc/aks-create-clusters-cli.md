@@ -3,9 +3,9 @@ title: Create Kubernetes clusters using Azure CLI
 description: Learn how to create Kubernetes clusters in Azure Local using Azure CLI.
 ms.topic: how-to
 ms.custom: devx-track-azurecli
-author: sethmanheim
-ms.date: 03/31/2025
-ms.author: sethm 
+author: davidsmatlak
+ms.date: 10/09/2025
+ms.author: davidsmatlak 
 ms.lastreviewed: 01/25/2024
 ms.reviewer: guanghu
 ---
@@ -33,7 +33,10 @@ This article describes how to create Kubernetes clusters in Azure Local using Az
 
 ## Install the Azure CLI extension
 
-Run the following command to install the necessary Azure CLI extensions:
+Run the following commands to install the necessary Azure CLI extensions.
+
+> [!WARNING]
+> Do not install the following extensions directly on an Azure Local node. It's recommended that you install them on a client machine that you use to connect to your Azure Local instance.
 
 ```azurecli
 az extension add -n aksarc --upgrade

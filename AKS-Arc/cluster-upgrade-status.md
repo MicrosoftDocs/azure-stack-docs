@@ -2,8 +2,8 @@
 title: Troubleshoot issue in which the cluster is stuck in Upgrading state
 description: Learn how to troubleshoot and mitigate the issue when an AKS enabled by Arc cluster is stuck in 'Upgrading' state.
 ms.topic: troubleshooting
-author: rcheeran
-ms.author: rcheeran
+author: davidsmatlak
+ms.author: davidsmatlak
 ms.date: 06/27/2025
 ms.reviewer: abha
 

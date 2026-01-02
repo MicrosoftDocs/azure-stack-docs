@@ -2,9 +2,9 @@
 title: Create Kubernetes clusters using REST APIs
 description: Learn how to create Kubernetes clusters in Azure Local using REST API for the Hybrid Container Service.
 ms.topic: how-to
-author: rcheeran
+author: davidsmatlak
 ms.date: 06/19/2025
-ms.author: rcheeran 
+ms.author: davidsmatlak 
 ms.lastreviewed: 06/19/2025
 ms.reviewer: rjaini
 ---

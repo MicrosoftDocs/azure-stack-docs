@@ -1,10 +1,11 @@
 ---
 title: Firewall requirements for Azure Local
-description: This topic provides guidance on firewall requirements for the Azure Stack HCI operating system.
+description: This article provides guidance on firewall requirements for the Azure Stack HCI operating system.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 01/08/2025
+ms.date: 11/19/2025
+ms.subservice: hyperconverged
 ---
 
 # Firewall requirements for Azure Local
@@ -15,10 +16,10 @@ This article provides guidance on how to configure firewalls for the Azure Stack
 
 This article also describes how to optionally use a highly locked-down firewall configuration to block all traffic to all destinations except those included in your allowlist.
 
-If your network uses a proxy server for internet access, see [Configure proxy settings for Azure Local](../manage/configure-proxy-settings-23h2.md).
-
 > [!IMPORTANT]
-> Azure Express Route and Azure Private Link are not supported for Azure Local or any of its components as it is not possible to access the public endpoints required for Azure Local.
+> Azure Arc Private Link Scopes are not supported by Azure Local. Arc endpoints (*.his.arc.azure.com,*.guestconfiguration.azure.com and *.dp.kubernetesconfiguration.azure.com) must always resolve to public IPs from Azure Local nodes, ARB VM and the proxy server if in use.
+> Using other PaaS services private endpoints different from Arc Private Link Scopes is possible as long as routing is configured to send the traffic over Azure Express Route or Site-to-Site VPN to reach your Azure VNET private endpoints.
+> Additional Private Endpoints FQDNs might be required to be added to your proxy bypass list during Azure Local machines Arc registration. Make sure you plan your proxy bypass list string before registering your nodes in Arc.
 
 ## Firewall requirements for outbound endpoints
 
@@ -31,7 +32,7 @@ Azure Local needs to periodically connect to Azure for:
 - Ports 80 (HTTP) and 443 (HTTPS)
 
 > [!IMPORTANT]
-> Azure Local doesn't support HTTPS inspection. Make sure that HTTPS inspection is disabled along your networking path for Azure Local to prevent any connectivity errors. This includes use of [Entra ID **tenant restrictions v1**](/entra/identity/enterprise-apps/tenant-restrictions) which is not supported for Azure Local management network communication.
+> Azure Local doesn't support HTTPS inspection. Make sure that HTTPS inspection is disabled along your networking path for Azure Local to prevent any connectivity errors. This includes use of [Entra ID **tenant restrictions v1**](/entra/identity/enterprise-apps/tenant-restrictions) which isn't supported for Azure Local management network communication.
 
 As shown in the following diagram, Azure Local can access Azure using more than one firewall potentially.
 
@@ -39,7 +40,7 @@ As shown in the following diagram, Azure Local can access Azure using more than 
 
 ## Required firewall URLs for Azure Local deployments
 
-Azure Local instances automatically enables Azure Resource Bridge and AKS infrastructure and uses the Arc for Servers agent to connect to Azure control plane. Along with the list of HCI specific endpoints on the following table, the [Azure Resource Bridge on Azure Local](/azure/azure-arc/resource-bridge/network-requirements) endpoints, the [AKS on Azure Local](/azure/aks/hybrid/aks-hci-network-system-requirements#firewall-url-exceptions) endpoints and the [Azure Arc-enabled servers](/azure/azure-arc/servers/network-requirements) endpoints must be included in the allow list of your firewall.
+Azure Local instances automatically enable Azure Resource Bridge and AKS infrastructure and use the Arc for Servers agent to connect to Azure control plane. Along with the list of HCI specific endpoints on the following table, the [Azure Resource Bridge on Azure Local](/azure/azure-arc/resource-bridge/network-requirements) endpoints, the [AKS on Azure Local](/azure/aks/hybrid/aks-hci-network-system-requirements#firewall-url-exceptions) endpoints and the [Azure Arc-enabled servers](/azure/azure-arc/servers/network-requirements) endpoints must be included in the allowlist of your firewall.
 
 For a consolidated list of endpoints for East US that includes Azure Local, Arc-enabled servers, ARB, and AKS, use:
 - [Required endpoints in East US for Azure Local](https://github.com/Azure/AzureStack-Tools/blob/master/HCI/EastUSendpoints/eastus-hci-endpoints.md)
@@ -72,7 +73,7 @@ For a consolidated list of endpoints for US Gov Virginia that includes Azure Loc
 
 ## Firewall requirements for OEMs
 
-Depending on the OEM you are using for Azure Local you may need to open additional endpoints in your firewall.
+Depending on the OEM you're using for Azure Local you may need to open additional endpoints in your firewall.
 
 DataON required endpoints for Azure Local deployments
 - [DataOn required endpoints](https://github.com/Azure/AzureStack-Tools/blob/master/HCI/OEMEndpoints/DataOn/DataOnAzureLocalEndpoints.md)

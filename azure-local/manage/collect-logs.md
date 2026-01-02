@@ -1,15 +1,16 @@
 ---
-title: Collect diagnostic logs for Azure Local (preview)
-description: Learn how to collect diagnostic logs and share them with Microsoft (preview).
+title: Collect diagnostic logs for Azure Local
+description: Learn how to collect diagnostic logs and share them with Microsoft.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
 ms.date: 04/08/2025
 ms.custom: sfi-image-nochange
+ms.subservice: hyperconverged
 ---
 
-# Collect diagnostic logs for Azure Local (preview)
+# Collect diagnostic logs for Azure Local
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
@@ -38,7 +39,8 @@ To explore additional log collection methods in Azure Local and understand when 
 Before you collect on-demand logs, you must complete the following prerequisites:
 
 - You must have access to an Azure Local instance that is deployed and registered.
-- You must have installed the `AzureEdgeTelemetryAndDiagnostics` extension to collect telemetry and diagnostics information from your Azure Local instance. For information about the extension, see [Azure Local telemetry and diagnostics extension overview](../concepts/telemetry-and-diagnostics-overview.md).
+- You must have the necessary permissions to trigger logs. You need to be assigned the **Azure Stack HCI Administrator** role. For more information about assigning roles, see [Assign Azure roles using the Azure portal](/azure/role-based-access-control/role-assignments-portal) or [Assign Azure roles using PowerShell](/azure/role-based-access-control/role-assignments-powershell).
+- You must have the `AzureEdgeTelemetryAndDiagnostics` extension installed to collect system-generated logs and metrics information from your Azure Local instance. For information about the extension, see [Azure Local telemetry and diagnostics extension overview](../concepts/telemetry-and-diagnostics-overview.md).
 
 ## Collect logs for Azure Local
 
@@ -46,13 +48,16 @@ You can perform on-demand log collection using any of the following methods:
 
 - **(Recommended) The Azure portal**. Use this method when you want to collect and send logs at the system level.
 
-- **PowerShell**. Use this method if you want to collect logs based on specific parameters. You have the option to save logs to an SMB share, send supplementary logs, or send logs for specific roles only.
+- **PowerShell**. Use this method if you want to collect logs based on specific parameters. You can save logs to an SMB share, send supplementary logs, or send logs for specific roles only.
 
 Keep in mind the following information before you start log collection:
 
-- The time required for log collection depends on the time range you specify. The longer the time range, the more time it'll take for log collection. Therefore, we recommend limiting the time range to only the logs you need.
+- The time required for log collection depends on the time range you specify. The longer the time range, the more time it takes for log collection. Therefore, we recommend limiting the time range to only the logs you need.
 - Log collections longer than 24 hours aren't supported.
-- Attempting multiple log collections simultaneously will result in a failure.
+- Multiple log collections can't be initiated simultaneously. When a log collection is in progress, the **Send Logs** button is disabled (greyed out).
+- If your cluster runs a build earlier than 2510, the portal shows a banner that says *Device Management Extension is outdated and unsupported*. In this state, the **Send Logs** button is disabled. To collect logs, upgrade your cluster to build 2510 or later.
+
+   :::image type="content" source="./media/collect-logs/device-management-extension-disabled-logs.png" alt-text="Screenshot that shows the banner message and disabled send logs button." lightbox="./media/collect-logs/device-management-extension-disabled-logs.png" :::
 
 ### [Azure portal (recommended)](#tab/azureportal)
 
@@ -75,6 +80,9 @@ Follow these steps to collect diagnostic logs for your Azure Local instance via 
 1. The **Log activity** table shows the status of log collections. For more details on a specific log collection, select the link under **Time collected** and review the details in the **Log detail** pane. If you encounter an issue and need help from Microsoft Support, they might request the **Correlation ID** to locate the logs.
 
    :::image type="content" source="./media/collect-logs/log-details-pane.png" alt-text="Screenshot shows the Log details pane." lightbox="./media/collect-logs/log-details-pane.png" :::
+
+> [!NOTE]
+> In the Portal, after you start log collection, status updates can take up to five minutes to appear. This is expected behavior.
 
 ## [PowerShell](#tab/powershell)
 
@@ -159,7 +167,7 @@ PS C:\Users\docsuser>
 
 ### Get a history of log collection
 
-You can get a history of all the log collections that you've performed. This history helps you learn about the kinds of log collections, the sizes of log collections, the times when logs were collected, and the methods of log collection.
+You can get a history of all the log collections that you performed. This history helps you learn about the kinds of log collections, the sizes of log collections, the times when logs were collected, and the methods of log collection.
 
 To get a history of log collections for the last 90 days, enter:
 
@@ -205,13 +213,13 @@ You can store diagnostic logs on a local Server Message Block (SMB) share if you
 
 Follow these steps to save logs to a local share:
 
-1. Run the following command to create a share:
+1. To create a share, run the following command:
 
    ```powershell
    New-SMBShare -Name <share-name> -Path <path-to-share> -FullAccess Users -ChangeAccess 'Server Operators'
    ```
 
-1. Run the following commands to create PSCredentials to the share:
+1. To create PSCredential to the share, run the following commands:
 
    ```powershell
    $user = "<username>"
@@ -220,7 +228,7 @@ Follow these steps to save logs to a local share:
    $shareCredential = New-Object System.Management.Automation.PSCredential ($user, $sec)
    ```
 
-1. Run the following command on each node of the system to collect logs and save them locally:
+1. To collect logs and save them locally, run the following command on each node of the system:
 
    ```powershell
    Send-DiagnosticData -SaveToPath <path to share> -ShareCredential $shareCredential
@@ -300,7 +308,7 @@ All
 
 ### BypassObsAgent
 
-When bypassing the observability agent, logs are collected only on the node where the log collection was initiated. No record of the collection is kept in the history.
+When the observability agent is bypassed, logs are collected only on the node where the log collection was initiated. No record of the collection is kept in the history.
 
 **Syntax**
 ```powershell
@@ -494,7 +502,7 @@ Save logs to an output path or share path:
 Send-DiagnosticData –ToSMBShare –SharePath <output path or share path>
 ```
 
-Save logs to a share path that's not mapped:
+Save logs to a share path that isn't mapped:
 
 ```powershell
 Send-DiagnosticData –ToSMBShare –SharePath <share path> -ShareCredential <credential for the share path>
@@ -609,7 +617,7 @@ Follow these steps to provide the required information in the Azure portal:
 
 1. In the **Diagnostics** tab, under **Log activity**, select the link under **Time collected** for the relevant log collection.
 
-1. In the **Log detail** pane, note the value of **Correlation ID**, and share it with Microsoft Support for troubleshooting purposes.
+1. In the **Log detail** pane, you can share full log details with Microsoft Support for troubleshooting purposes.
 
    :::image type="content" source="./media/collect-logs/log-details-pane.png" alt-text="Screenshot shows the Log details pane." lightbox="./media/collect-logs/log-details-pane.png" :::
 
@@ -625,6 +633,7 @@ When requested, share the following information with Microsoft Support. Get this
 - `CorrelationId`: A unique identifier to locate the logs.
 
 ---
+
 
 ## Next steps
 

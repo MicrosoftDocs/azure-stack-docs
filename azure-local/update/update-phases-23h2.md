@@ -2,9 +2,10 @@
 title: Review update phases of Azure Local, version 23H2
 description: Understand the various phases of solution updates applied to Azure Local, version 23H2.
 author: alkohli
-ms.author: alkohl
+ms.author: alkohli
 ms.topic: article
 ms.date: 02/25/2025
+ms.subservice: hyperconverged
 ---
 
 # Review update phases of Azure Local
@@ -20,6 +21,8 @@ The procedure in this article applies to both single node and multi-node systems
 The Azure Local solution updates can consist of OS, agents and service, and solution extension updates. For more information on these solution updates, see [About updates for Azure Local](about-updates-23h2.md).
 
 The new update feature automates the update process for agents, services, operating system content, and Solution Extension content, with the goal of maintaining availability by shifting workloads around throughout the update process when needed.
+
+The AzureStack Update component retrieves the node sequence from `(Get-ClusterNode).Name` and passes it to Cluster-Aware Updating (CAU). For more information on updates through CAU, see [Cluster-Aware Updating overview](/windows-server/failover-clustering/cluster-aware-updating#BKMK_OVER).
 
 The updates can be of the following types:
 
@@ -56,13 +59,13 @@ Readiness checks can also result in blocking conditions or warnings.
 - If the readiness checks result in warnings the updates, it could introduce longer update times or affect the workloads. You might need to acknowledge the potential impact and bypass the warning before the update can proceed.
 
 > [!NOTE]
-> In this release, you can only initiate immediate install of the updates. Scheduling of updates is not supported.
+> In this release, you can only initiate immediate install of the updates. Scheduling of updates isn't supported.
 
 ## Phase 3: Installation progress and monitoring
 
 While the update installs, you can monitor the progress via your chosen interface. Steps within the update are shown within a hierarchy and correspond to the actions taken throughout the workflow. Steps might be dynamically generated throughout the workflow, so the list of steps could change. For more information, see examples of [Monitoring progress via PowerShell](../update/update-via-powershell-23h2.md).
 
- The new update solution includes retry and remediation logic. It attempts to fix update issues automatically and in a non-disruptive way, but sometimes manual intervention is required. For more information, see [Troubleshooting updates](update-troubleshooting-23h2.md).
+ The new update solution includes retry and remediation logic. It attempts to fix update issues automatically and in a nondisruptive way, but sometimes manual intervention is required. For more information, see [Troubleshooting updates](update-troubleshooting-23h2.md).
 
 > [!NOTE]
 > Once you remediate the issue, you need to rerun the checks to confirm the update readiness before proceeding.

@@ -59,7 +59,7 @@ cards.
     
 3.  Replace the network daughter card or cards.
 
-    Follow the [network daughter card replacement process](https://www.dell.com/support/manuals/us/en/04/poweredge-r640/per640_ism_pub/dell-emc-poweredge-r640-overview?guid=guid-f39be9ba-158c-45e3-b8b1-f07bb750d6d4)
+    Follow the [network daughter card replacement process](https://www.dell.com/support/manuals/en-us/poweredge-r640/per640_ism_pub/installing-the-network-daughter-card?guid=guid-2e0025ab-db21-4c74-9fea-e8a4b303608f&lang=en-us)
     for scale unit nodes or Hardware Lifecycle Hosts.
     
 4.  Power on the node.

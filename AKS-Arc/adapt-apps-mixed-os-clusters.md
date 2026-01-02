@@ -1,10 +1,10 @@
 ---
 title: Adapt applications for use in mixed-OS Kubernetes clusters
 description: Learn how to use node selectors or taints and tolerations on Azure Kubernetes Service to ensure applications in mixed OS Kubernetes clusters running on AKS on Windows Server are scheduled on the correct worker node operating system.
-author: sethmanheim
+author: davidsmatlak
 ms.topic: how-to
 ms.date: 06/27/2024
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: abha
 

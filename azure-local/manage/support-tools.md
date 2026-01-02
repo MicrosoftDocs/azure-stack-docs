@@ -5,6 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.date: 05/08/2025
+ms.subservice: hyperconverged
 ---
 
 # Use the Support Diagnostic Tool to troubleshoot Azure Local issues
@@ -44,7 +45,7 @@ Run PowerShell as an administrator and then run the following commands:
 To install the tool, run the following command:
 
 ```powershell
-Install-Module –Name Microsoft.AzureStack.HCI.CSSTools
+Install-Module -Name Microsoft.AzureStack.HCI.CSSTools
 ```
 
 If you already have the module installed, you can update using the following cmdlet:

@@ -1,11 +1,12 @@
 ---
 title: Overview of Network Controller in Azure Local and Windows Server
-description: Use this article to learn about Network Controller for Software Defined Networking in Azure Local and Windows Server.
-author: AnirbanPaul
-ms.author: anpaul
+description: Use this article to learn about Network Controller for Software Defined Networking managed by on-premises tools in Azure Local and Windows Server.
+author: alkohli
+ms.author: alkohli
 ms.topic: overview
 ms.service: azure-local
-ms.date: 10/21/2024
+ms.date: 10/16/2025
+ms.subservice: hyperconverged
 ---
 
 # What is Network Controller?
@@ -38,7 +39,7 @@ Network Controller supports Virtual Local Area Network (VLAN) based networks, Ne
 
 ## Firewall management
 
-This Network Controller feature allows you to configure and manage allow/deny firewall Access Control rules for your workload VMs for both internal (East/West) and external (North/South) network traffic in your datacenter. The firewall rules are plumbed in the vSwitch port of workload VMs, and so they're distributed across your workloads in the datacenter and move along with your workloads.
+This Network Controller feature allows you to configure and manage allow/deny firewall Access Control rules for your workload VMs for both internal (East/West) and external (North/South) network traffic in your datacenter. The firewall rules are plumbed in the vSwitch port of workload VMs, so they're distributed across your workloads in the datacenter and move along with your workloads.
 
 Using the Northbound API, you can define the firewall rules for both incoming and outgoing traffic from the workload VMs. You can also configure each firewall rule to log the traffic that was allowed or denied by the rule.
 
@@ -58,7 +59,7 @@ Gateway connections support Border Gateway Protocol (BGP) for dynamic route mana
 
 ## Virtual appliance chaining
 
-This Network Controller feature allows you to attach virtual network appliances to your virtual networks. These appliances can be used for advanced firewalling, load balancing, intrusion detection and prevention, and many other network services. You can add virtual appliances that perform user-defined routing and port mirroring functions. With user-defined routing, the virtual appliance gets used as a router between the virtual subnets on the virtual network. With port mirroring, all network traffic that is entering or leaving the monitored port is duplicated and sent to a virtual appliance for analysis.
+This Network Controller feature allows you to attach virtual network appliances to your virtual networks. These appliances can be used for advanced firewalling, load balancing, intrusion detection and prevention, and many other network services. You can add virtual appliances that perform user-defined routing and port mirroring functions. With user-defined routing, the virtual appliance gets used as a router between the virtual subnets on the virtual network. With port mirroring, all network traffic that's entering or leaving the monitored port is duplicated and sent to a virtual appliance for analysis.
 
 To learn more about user-defined routes, see [Use Network Virtual Appliances on a Virtual Network](/windows-server/networking/sdn/manage/use-network-virtual-appliances-on-a-vn).
 

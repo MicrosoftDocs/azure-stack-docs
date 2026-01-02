@@ -1,10 +1,11 @@
 ---
-title: Technical reference for Software Defined Networking (SDN) in Azure Local.
-description: This technical reference serves as a one-stop-shop to access learning resources available for SDN.
+title: Technical reference for Software Defined Networking (SDN) managed by on-premises tools in Azure Local.
+description: This technical reference serves as a one-stop-shop to access learning resources available for SDN managed by on-premises tools.
 ms.topic: article
 author: alkohli
 ms.author: alkohli
-ms.date: 05/29/2025
+ms.date: 09/05/2025
+ms.subservice: hyperconverged
 ---
 
 # Technical reference for Software Defined Networking in Azure Local

@@ -64,6 +64,11 @@
       "source_path": "adaptive-cloud/app-solutions/pattern-train-ml-model-at-edge.md",
       "redirect_url": "/azure-stack/user/pattern-train-machine-learning-model-at-edge",
       "redirect_document_id": false
+    },
+    {
+      "source_path": "adaptive-cloud/index.yml",
+      "redirect_url": "https://azure.microsoft.com/en-us/solutions/adaptive-cloud",
+      "redirect_document_id": false
     }
   ]
 }

@@ -1,10 +1,10 @@
 ---
 title: Monitor Kubernetes object events in AKS enabled by Azure Arc
 description: Learn how to monitor real-time Kubernetes object events.
-author: sethmanheim
+author: davidsmatlak
 ms.topic: how-to
 ms.date: 01/16/2024
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 01/16/2024
 ms.reviewer: guanghu
 
@@ -15,7 +15,7 @@ ms.reviewer: guanghu
 
 # Monitor Kubernetes object events
 
-[!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)], AKS enabled by Azure Arc on VMware (preview)
+[!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
 Kubernetes events are real-time notifications that provide insights into actions and changes occurring within a Kubernetes cluster, helping you monitor and troubleshoot the health and behavior of their applications. These events capture and record information about the lifecycle of various Kubernetes objects, such as pods, nodes, services, and deployments. Kubernetes events don't persist throughout your cluster lifecycle, as there's no mechanism for retention. They are short-lived, only available for one hour after the event is generated. To store events for a longer time period, enable [Container Insights](/azure/azure-monitor/containers/kubernetes-monitoring-enable).
 

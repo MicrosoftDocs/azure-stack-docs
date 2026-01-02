@@ -7,6 +7,7 @@ ms.topic: concept-article
 ms.date: 09/05/2025
 ms.author: alkohli
 ms.reviewer: alkohli
+ms.subservice: hyperconverged
 ---
 
 
@@ -56,7 +57,8 @@ Invoke-EceInterfaceInternal {CloudDeploymentModulePath=C:\NugetStore\Microsoft.A
 
 Follow these steps to resolve this issue:
 
-1. Create the A DNS Record for \$sdnPrefix-NC, pointing towards the fifth IP address in the IP address range when configuring the [Network settings during the deployment of your Azure Local instance](../deploy/deploy-via-portal.md#specify-network-settings).
+1. Create the A DNS Record for `<SDNPrefix>-NC` 
+, pointing towards the fifth IP address in the IP address range when configuring the [Network settings during the deployment of your Azure Local instance](../deploy/deploy-via-portal.md#specify-network-settings).
 
 2. Run the action plan again using the cmdlet `Add-ECEFeature`.
 
@@ -76,7 +78,7 @@ CloudEngine.Actions.InterfaceInvocationFailedException: Type 'ValidateSDNPrefixN
 
 **Remediation steps**
 
-1. Ensure the A DNS Record for `\$sdnPrefix-NC` points towards the fifth IP address in the IP address range when configuring the [Network settings during the deployment of your Azure Local instance](../deploy/deploy-via-portal.md).
+1. Ensure the A DNS Record for `<SDNPrefix>-NC` points towards the fifth IP address in the IP address range when configuring the [Network settings during the deployment of your Azure Local instance](../deploy/deploy-via-portal.md).
 
 ## Error while creating an NSG or default network access policy
 

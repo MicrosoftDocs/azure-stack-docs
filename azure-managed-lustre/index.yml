@@ -40,8 +40,10 @@ landingContent:
             url: blob-integration.md
       - linkListType: how-to-guide
         links:
-          - text: Import data using import jobs
+          - text: Import data using manual import jobs
             url: create-import-job.md
+          - text: Import data using auto-import jobs
+            url: auto-import.md
           - text: Export data using manual export jobs
             url: export-with-archive-jobs.md
           - text: Export data using auto-export jobs
@@ -56,6 +58,8 @@ landingContent:
             url: client-upgrade.md
           - text: Connect clients to an Azure Managed Lustre file system
             url: connect-clients.md
+          - text: Use Azure Managed Lustre with Secure Boot
+            url: client-secure-boot.md
           - text: Use Azure Lustre CSI driver for Kubernetes
             url: use-csi-driver-kubernetes.md
   - title: Manage a file system
@@ -66,6 +70,8 @@ landingContent:
             url: root-squash-configure-settings.md
           - text: Set and configure Lustre quotas
             url: lustre-quotas.md
+          - text: Optimize file and directory layouts
+            url: optimize-file-layouts.md
   - title: Security
     linkLists:
       - linkListType: how-to-guide
@@ -76,6 +82,8 @@ landingContent:
             url: customer-managed-encryption-keys.md
           - text: Enable VNet encryption
             url: vnet-encryption.md
+          - text: Use Azure Firewall with Azure Managed Lustre
+            url: configure-firewall.md
   - title: Self-paced learning
     linkLists:
       - linkListType: learn

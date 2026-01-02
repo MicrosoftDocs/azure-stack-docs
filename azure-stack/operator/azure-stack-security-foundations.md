@@ -3,7 +3,6 @@ title: Azure Stack Hub security controls
 titleSuffix: Azure Stack Hub
 description: Learn about the security posture and controls applied to Azure Stack Hub.
 author: sethmanheim
-
 ms.topic: how-to
 ms.date: 04/25/2024
 ms.author: sethm
@@ -99,7 +98,7 @@ The assessments include the following standards:
 
 - [PCI-DSS](https://www.pcisecuritystandards.org/pci_security/) addresses the payment card industry.
 - [CSA Cloud Control Matrix](https://cloudsecurityalliance.org/group/cloud-controls-matrix/#_overview) is a comprehensive mapping across multiple standards, including FedRAMP Moderate, ISO27001, HIPAA, HITRUST, ITAR, NIST SP800-53, and others.
-- [FedRAMP High](https://www.fedramp.gov/understanding-baselines-and-impact-levels/) for government customers.
+- [FedRAMP High](https://www.fedramp.gov/archive/2017-11-16-understanding-baselines-and-impact-levels) for government customers.
 
 The compliance documentation can be found on the [Microsoft Service Trust Portal](https://aka.ms/azurestackcompliance). The compliance guides are a protected resource and require you to sign in with your Azure cloud service credentials.
 

@@ -1,10 +1,10 @@
 ---
 title: Get on-demand logs for troubleshooting
 description: Learn how to get full on-demand logs in AKS enabled by Arc and send them to Microsoft.
-author: sethmanheim
+author: davidsmatlak
 ms.topic: how-to
 ms.date: 04/08/2025
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 04/08/2025
 ms.reviewer: guanghu
 
@@ -15,7 +15,7 @@ ms.reviewer: guanghu
 
 # Get on-demand logs for troubleshooting
 
-[!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)], AKS enabled by Azure Arc on VMware (preview)
+[!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
 This article describes how to collect full on-demand logs and send them to Microsoft support for troubleshooting issues with AKS enabled by Azure Arc.
 

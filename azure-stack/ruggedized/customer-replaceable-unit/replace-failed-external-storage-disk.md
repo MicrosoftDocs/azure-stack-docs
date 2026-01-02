@@ -66,7 +66,7 @@ Use the following procedure to replace a failed data drive.
     
 3.  Replace the failed data drive.
 
-    Follow the [disk drive carrier replacement process](https://www.dell.com/support/manuals/us/en/04/poweredge-r640/per640_ism_pub/dell-emc-poweredge-r640-overview?guid=guid-f39be9ba-158c-45e3-b8b1-f07bb750d6d4)
+    Follow the [disk drive carrier replacement process](https://www.dell.com/support/manuals/en-us/poweredge-r640/per640_ism_pub/removing-a-drive-carrier?guid=guid-13e7786f-4de5-4fb6-9117-210b3dcf023f&lang=en-us)
     for scale unit nodes or Hardware Lifecycle Hosts.
     
     You must also refer to the relevant sections on removing a disk drive

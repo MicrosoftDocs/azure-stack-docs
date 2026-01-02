@@ -5,7 +5,8 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 06/02/2025
+ms.date: 09/24/2025
+ms.subservice: hyperconverged
 ---
 
 # Download operating system for Azure Local deployment
@@ -20,22 +21,21 @@ The first step in deploying Azure Local is to download the OS from the Azure por
 
 Before you begin the download of the software from Azure portal, ensure that you have the following prerequisites:
 
-- An Azure account. If you don’t already have an Azure account, first [create an account](https://azure.microsoft.com/free/).
+- An Azure account. If you don’t already have an Azure account, first [create an account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 - An Azure subscription. You can use an existing subscription of any type:
 
-   - Free account with Azure credits [for students](https://azure.microsoft.com/free/students/) or [Visual Studio subscribers](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/).
+   - Free account with Azure credits [for students](https://azure.microsoft.com/free/students/?cid=msft_learn) or [Visual Studio subscribers](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/).
    - [Pay-as-you-go](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go/) subscription with credit card.
    - Subscription obtained through an Enterprise Agreement (EA).
    - Subscription obtained through the Cloud Solution Provider (CSP) program.
    - At a minimum, you'll need **Reader** access at the subscription level.
 
-- Register the Microsoft Azure Stack HCI resource provider. For more information, see [Register your machines and assign permissions for Azure Local deployment](deployment-arc-register-server-permissions.md).
+- Register the Microsoft Azure Stack HCI resource provider to access the Azure Local OS image download. For instructions on registering via PowerShell or the Azure portal, see [Register required resource providers](deployment-arc-register-server-permissions.md#azure-prerequisites) in the Azure prerequisites section, or refer to [Register resource provider](/azure/azure-resource-manager/management/resource-providers-and-types#register-resource-provider).
 
 ## Download the software from the Azure portal
 
 > [!IMPORTANT]
-> - English is the only supported language for the deployment.
-> - For deployments in Azure Government only, download the OS image from the following location: [OS image](https://aka.ms/hcireleaseimage).
+> English is the only supported language for the deployment.
 
 Follow these steps to download the software:
 

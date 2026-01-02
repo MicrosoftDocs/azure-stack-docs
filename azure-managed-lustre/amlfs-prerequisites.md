@@ -17,7 +17,7 @@ ms.reviewer: mayabishop
 This article explains prerequisites that you must configure before creating an Azure Managed Lustre file system.
 
 - [Network prerequisites](#network-prerequisites)
-- [Blob integration prerequisites](#blob-integration-prerequisites-optional) (optional)
+- [Blob integration prerequisites](#blob-integration-prerequisites)
 
 ## Network prerequisites
 
@@ -53,7 +53,7 @@ By default, no specific changes need to be made to enable Azure Managed Lustre. 
 
 | Access type | Required network settings |
 |-------------|---------------------------|
-| DNS access  | Use the default Azure-based DNS server. |
+| DNS access  | Default: Use the Azure-based DNS server. <br>Advanced: [Guidelines for configuration with a custom DNS server](/azure/firewall/dns-settings). |
 | Access between hosts on the Azure Managed Lustre subnet | Allow inbound and outbound access between hosts within the Azure Managed Lustre subnet. As an example, access to TCP port 22 (SSH) is necessary for cluster deployment. |
 | Azure cloud service access | Configure your network security group to permit the Azure Managed Lustre file system to access Azure cloud services from within the Azure Managed Lustre subnet.<br><br>Add an outbound security rule with the following properties:<br>- **Port**: Any<br>- **Protocol**: Any<br>- **Source**: Virtual Network<br>- **Destination**: "AzureCloud" service tag<br>- **Action**: Allow<br><br>Note: Configuring the Azure cloud service also enables the necessary configuration of the Azure Queue service.<br><br>For more information, see [Virtual network service tags](/azure/virtual-network/service-tags-overview). |
 | Lustre access<br>(TCP ports 988, 1019-1023) | Your network security group must allow inbound and outbound traffic for TCP port 988 and TCP port range 1019-1023. These rules need to be allowed between hosts on the Azure Managed Lustre subnet, and between any client subnets and the Azure Managed Lustre subnet. No other services can reserve or use these ports on your Lustre clients. The default rules `65000 AllowVnetInBound` and `65000 AllowVnetOutBound` meet this requirement. |
@@ -70,11 +70,9 @@ The following known limitations apply to virtual network settings for Azure Mana
 > [!NOTE]
 > After you create your Azure Managed Lustre file system, several new network interfaces appear in the file system's resource group. Their names start with **amlfs-** and end with **-snic**. Don't change any settings on these interfaces. Specifically, leave the default value, **enabled**, for the **Accelerated networking** setting. Disabling accelerated networking on these network interfaces degrades your file system's performance.
 
-## Blob integration prerequisites (optional)
+## Blob integration prerequisites
 
-If you plan to integrate your Azure Managed Lustre file system with Azure Blob Storage, complete the following prerequisites before you create your file system.
-
-To learn more about blob integration, see [Use Azure Blob storage with an Azure Managed Lustre file system](blob-integration.md).
+This section is required only if you plan to integrate your Azure Managed Lustre file system with Azure Blob Storage. To learn more about blob integration, see [Use Azure Blob storage with an Azure Managed Lustre file system](blob-integration.md).
 
 Azure Managed Lustre works with storage accounts that have hierarchical namespace enabled and storage accounts with a nonhierarchical, or flat, namespace. The following minor differences apply:
 

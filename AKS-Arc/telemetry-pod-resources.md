@@ -2,8 +2,8 @@
 title: AKS Arc telemetry pod consumes too much memory and CPU
 description: Learn how to troubleshoot when AKS Arc telemetry pod consumes too much memory and CPU.
 ms.topic: troubleshooting
-author: sethmanheim
-ms.author: sethm
+author: davidsmatlak
+ms.author: davidsmatlak
 ms.date: 07/21/2025
 ms.reviewer: abha
 

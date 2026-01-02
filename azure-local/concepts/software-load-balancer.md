@@ -1,12 +1,13 @@
 ---
-title: Software Load Balancer (SLB) for SDN in Azure Local and Windows Server
-description: Use this article to learn about Software Load Balancer for Software Defined Networking in Azure Local and Windows Server.
-author: AnirbanPaul
-ms.author: anpaul
+title: Software Load Balancer (SLB) for SDN managed by on-premises tools in Azure Local and Windows Server
+description: Use this article to learn about Software Load Balancer for Software Defined Networking managed by on-premises tools in Azure Local and Windows Server.
+author: alkohli
+ms.author: alkohli
 ms.topic: overview
 ms.service: azure-local
-ms.date: 10/25/2024
+ms.date: 10/10/2025
 ms.custom: sfi-image-nochange
+ms.subservice: hyperconverged
 ---
 
 # What is Software Load Balancer (SLB) for SDN?
@@ -100,7 +101,7 @@ With internal traffic load balancing, the first request is sent to and processed
 
 ### Health probes
 
-Software Load Balancer includes health probes to validate the health of the network infrastructure, including the following:
+Software Load Balancer includes the following health probes to validate the health of the network infrastructure:
 
 - TCP probe to port
 
@@ -134,7 +135,7 @@ You can use Windows Admin Center or Windows PowerShell to install and configure 
 
 ### SLB MUX
 
-The SLB MUX processes inbound network traffic and maps VIPs to DIPs, then forwards the traffic to the correct DIP. Each MUX also uses BGP to publish VIP routes to edge routers. BGP Keep Alive notifies MUXes when a MUX fails, which allows active MUXes to redistribute the load in case of a MUX failure. This essentially provides load balancing for the load balancers.
+The SLB MUX processes inbound network traffic and maps VIPs to DIPs, then forwards the traffic to the correct DIP. Each MUX also uses BGP to publish VIP routes to edge routers. BGP Keep Alive notifies MUXes when a MUX fails, which allows active MUXes to redistribute the load if there's a MUX failure. This essentially provides load balancing for the load balancers.
 
 ### SLB Host Agent
 

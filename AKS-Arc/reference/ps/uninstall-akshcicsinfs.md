@@ -1,10 +1,10 @@
 ---
 title: Uninstall-AksHciCsiNfs for AKS hybrid
-author: sethmanheim
+author: davidsmatlak
 description: The Uninstall-AksHciCsiNfs PowerShell command uninstalls CSI NFS plugin in a cluster
 ms.topic: reference
 ms.date: 4/13/2021
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
 

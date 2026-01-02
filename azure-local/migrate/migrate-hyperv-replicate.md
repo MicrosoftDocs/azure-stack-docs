@@ -3,14 +3,15 @@ title: Discover and replicate Hyper-V VMs for migration to Azure Local using Azu
 description: Learn the discovery and replication process for Hyper-V VMs to Azure Local using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 08/06/2025
+ms.date: 10/01/2025
 ms.author: alkohli
 ms.custom: sfi-image-nochange
+ms.subservice: hyperconverged
 ---
 
 # Discover and replicate Hyper-V VMs for migration to Azure Local using Azure Migrate (preview)
 
-[!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [hci-applies-to-2503](../includes/hci-applies-to-2503.md)]
 
 This article describes the discovery and replication phase for Hyper-V virtual machine (VM) migration to Azure Local using Azure Migrate.
 
@@ -28,7 +29,19 @@ Ensure all VMs that you wish to migrate are powered on and have [Hyper-V integra
 
 ### Generate the project key
 
-In this step, you generate the key for the source appliance - see [Generate the project key](/azure/migrate/how-to-set-up-appliance-hyper-v#generate-the-project-key) for specific steps.
+1. In the Azure portal, go to the **All projects** page and select your project from the list.
+
+1. On the **Overview** tab, under **Inventory**, select **Start discovery** > **Using appliance** > **For Azure Local**.
+
+    :::image type="content" source="./media/migrate-hyperv-replicate/generate-source-appliance-project-key-1.png" alt-text="Screenshot of going to Discover page from Migration tools tile for your source appliance." lightbox="./media/migrate-hyperv-replicate/generate-source-appliance-project-key-1.png":::
+
+1. On the **Discover** page, select **Azure Local** under **Where do you want to migrate to** and then select **Yes, with Hyper-V** under **Are your machines virtualized** in Azure Migrate.
+1. Enter a name for your source appliance and generate the key for the source Hyper-V appliance. For detailed steps, see [Generate the project key](/azure/migrate/how-to-set-up-appliance-vmware#generate-the-project-key).
+
+1. Copy the **Project key** (to a text editor such as Notepad) and save it for later use.
+1. You can now **Download the Azure Migrate source appliance** using either a .VHD or a *.zip* file. The detailed steps are provided in the subsequent sections.
+
+    :::image type="content" source="./media/migrate-hyperv-replicate/generate-source-appliance-project-key-2.png" alt-text="Screenshot of going to Discover page." lightbox="./media/migrate-hyperv-replicate/generate-source-appliance-project-key-2.png":::
 
 ### Create the source appliance
 
@@ -222,17 +235,18 @@ This step applies to using a .zip file.
     1. The **Storage account subscription** is automatically populated. If this is not the subscription where you want to create the storage account, choose another subscription.
         
         > [!NOTE]
-        > Migration requires a storage account to be created. This account must reside in the same subscription as your Azure project.
+        > Migration requires a storage account to be created. This account must reside in the same subscription as your Azure migrate project.
 
     1. Select the **Resource group** to associate with your storage account.
     
     1. The VM subscription is automatically populated.
     
-    1. For your **Cache storage account**, select an existing storage account. You can also select **(New) Storage account** to create a new storage account with a randomly generated name.
+    1. For your **storage account**, you can select an existing storage account from the dropdown list or create a new one by selecting **Create new**. The storage account is only used for storing metadata during replication and migration. All migrated VM data and disks remain completely on-premises. We recommend that you create a new storage account.
 
         > [!NOTE]
-        > We recommend that you create new a storage account to be used as your cache storage account. Once created, the storage account location can't be changed.
-
+        > If you are using an existing storage account, ensure the following:
+        > - The storage account is **Standard Performance** tier. Premium storage accounts aren't supported.
+        > - The storage account has **Public network access** enabled. If public network access is disabled, replication fails.
     1. Select a resource group to associate with your migrated VMs.
    
 	1. Select the logical network that you created as a [prerequisite](./migrate-hyperv-prerequisites.md#prerequisites-for-hyper-v-vm-migration-to-azure-local-using-azure-migrate-preview). The VMs will be connected to this network. If you don't see a logical network in the dropdown list, [create a logical network](../manage/create-logical-networks.md) and select **Reload logical network**.

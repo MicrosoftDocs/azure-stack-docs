@@ -10,6 +10,9 @@
   tocHref: /windows-server/
   topicHref: /azure/azure-local/index
 - name: Azure Local
+  tocHref: /windows-server/storage/
+  topicHref: /azure/azure-local/manage/add-server
+- name: Azure Local
   tocHref: /system-center/
   topicHref: /azure/azure-local/index
 - name: Azure Local

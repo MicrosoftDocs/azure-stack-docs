@@ -2,8 +2,8 @@
 title: Use Key Manager for Kubernetes clusters on AKS Edge Essentials (preview)
 description: Learn how to use the Key Manager for Kubernetes extension to rotate service account keys in Azure Kubernetes Service (AKS) Edge Essentials clusters.
 ms.topic: how-to
-author: sethmanheim
-ms.author: sethm
+author: davidsmatlak
+ms.author: davidsmatlak
 ms.date: 03/10/2025
 ms.reviewer: leslielin
 ---
@@ -19,7 +19,7 @@ The following table compares the default behavior with and without using the Key
 |   Behavior                              | By default, without the Key Manager extension                                                                                                | With the Key Manager extension                                                        |
 |----------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------|
 | Automated service account key rotation | By default, Kubernetes doesn't automatically rotate service account signing keys. Instead, it uses the same key indefinitely to sign tokens. | Once enabled, the service account signing key is rotated automatically every 45 days. |
-| Service account signing key validity   | Unlimited                                                                                                                                    | 90 days                                                                               |
+| Service account signing key validity   | Unlimited                                                                                                                                    | 45 days                                                                               |
 
 > [!IMPORTANT]
 > These preview features are available on a self-service, opt-in basis. Previews are provided "as is" and "as available," and they're excluded from the service-level agreements and limited warranty. Azure Kubernetes Service Edge Essentials previews are partially covered by customer support on a best-effort basis.

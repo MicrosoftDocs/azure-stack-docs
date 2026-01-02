@@ -1,10 +1,10 @@
 ---
 title: Troubleshooting overview for Azure Kubernetes Service on Windows Server 
 description: An overview for troubleshooting issues encountered when using Azure Kubernetes Service on Windows Server. 
-author: sethmanheim
+author: davidsmatlak
 ms.topic: troubleshooting
 ms.date: 04/03/2025
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 04/08/2022
 ms.reviewer: abha
 

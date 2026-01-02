@@ -1,5 +1,5 @@
 ---
-title: Create Azure Local VM from Azure Compute Gallery images via Azure CLI
+title: Create Azure Local VM from Azure Compute Gallery Images via Azure CLI
 description: Learn how to create Azure Local VM images using Azure Compute Gallery images.
 author: sipastak
 ms.author: sipastak
@@ -7,26 +7,27 @@ ms.topic: how-to
 ms.service: azure-local
 ms.custom:
   - devx-track-azurecli
-ms.date: 05/21/2025
+ms.date: 12/18/2025
+ms.subservice: hyperconverged
 ---
 
-# Create Azure Local VM image using Azure Compute Gallery images
+# Create Azure Local VM image via Azure Compute Gallery images
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
-This article describes how to create Azure Local VMs enabled by Azure Arc using source images from the Azure Compute Gallery. You can create VM images on Azure CLI using the instructions in this article and then use these VM images to create Azure Local VMs.
+This article describes how to create Azure Local virtual machines (VMs) enabled by Azure Arc using source images from the Azure Compute Gallery. You can create VM images on Azure CLI using the instructions in this article and then use these VM images to create Azure Local VMs.
 
 ## Prerequisites
 
-- Make sure to review and [complete the Azure Local VM prerequisites](./azure-arc-vm-management-prerequisites.md).
-- Make sure that your image is using a [supported operating system](/azure/azure-arc/servers/prerequisites#supported-operating-systems).
-- For custom images in Azure Compute Gallery, ensure you meet the following extra prerequisites:
-    - You should have a Virtual Hard Disk (VHD) loaded in your Azure Compute Gallery. See how to [Create an image definition and image version](/azure/virtual-machines/image-version).
-    - If using a VHDX:
-        - The VHDX image must be Gen 2 type and secure boot enabled.
-        - The VHDX image must be prepared using `sysprep /generalize /shutdown /oobe`. For more information, see [Sysprep command-line options](/windows-hardware/manufacture/desktop/sysprep-command-line-options).
+- Review and [complete the Azure Local VM prerequisites](./azure-arc-vm-management-prerequisites.md).
+- Make sure that your image uses a [supported operating system](/azure/azure-arc/servers/prerequisites#supported-operating-systems).
+- For custom images in Azure Compute Gallery, ensure you meet these extra prerequisites:
+  - You have a virtual hard disk (VHD) loaded in your Azure Compute Gallery. See how to [Create an image definition and image version](/azure/virtual-machines/image-version).
+  - If using a virtual hard disk v2 (VHDX):
+    - The VHDX image is Gen 2 type and secure boot enabled.
+    - The VHDX image is prepared using `sysprep /generalize /shutdown /oobe`. For more information, see [Sysprep command-line options](/windows-hardware/manufacture/desktop/sysprep-command-line-options).
 
-## Create an Azure Local VM image from Azure Compute Gallery
+## Add VM image from Azure Compute Gallery
 
 Follow these steps to create an Azure Local VM image using Azure CLI.
 
@@ -40,15 +41,22 @@ To transfer your Azure Compute Gallery image to be an Azure Local compatible ima
 
 1. To download the Azure Compute Gallery image to your resource group, follow the steps in [Export an image version to a managed disk](/azure/virtual-machines/managed-disk-from-image-version). Note the name of the managed disk.  
 
-1. Obtain the SAS token of the managed disk by using the following command:
+1. Get the shared access signature (SAS) token of the managed disk by using the following command:
 
     ```azurecli
-    az disk grant-access --resource-group $resourceGroupName --name $diskName --duration-in-seconds $sasExpiryDuration --query [accessSas] -o tsv
+    # Variables to get SAS URL for the managed disk
+    $resource_group = "<Resource Group Name>"
+    $diskName = "<myDiskName>" # Replace 'myDiskName' with your actual disk name
+    $sasExpiryDuration = 100000 # Duration in seconds for SAS URL validity
+    ```
+
+    ```azurecli
+    az disk grant-access --resource-group $resource_group --name $diskName --duration-in-seconds $sasExpiryDuration --query [accessSas] -o tsv
     ```
 
 ### Set parameters
 
-Before creating an Azure Local VM image, you'll need to set some parameters.
+Before creating an Azure Local VM image, you need to set some parameters.
 
 - Set your subscription, resource group, location, path to the image in local share, and OS type for the image. Replace the parameters in `< >` with the appropriate values.
 
@@ -58,31 +66,37 @@ Before creating an Azure Local VM image, you'll need to set some parameters.
     $location = "<Location for your Azure Local>"
     $osType = "<OS of source image>"
     $imageName = "<VM image name>"
+    $customLocationID = "<Custom Location ID>"
+    $imageSourcePath = '"<SAS URL path to the source image>"'
     ```
 
-    The parameters are described in the following table:
-    
+    The following table describes the parameters:
+
     | Parameter        | Description                                                                                |
     |------------------|--------------------------------------------------------------------------------------------|
-    | `subscription`   | Subscription for Azure Local that you associate with this image.        |
-    | `resource_group` | Resource group for Azure Local that you associate with this image.        |
-    | `location`       | Location for your Azure Local instance. For example, this could be `eastus`. |
+    | `subscription`   | Subscription for Azure Local that you associate with the gallery image.        |
+    | `resource_group` | Resource group for Azure Local that you associate with the gallery image.        |
+    | `location`       | Location for your Azure Local instance. For example, `eastus`. |
     | `imageName`      | Name of the VM image created starting with the image in your local share. <br> **Note**: Azure rejects all the names that contain the keyword Windows. |
-    | `os-type`         | Operating system associated with the source image. This can be Windows or Linux.           |
-    
+    | `os-type`         | Operating system associated with the source image. For example, Windows or Linux.           |
+    | `customLocationID` | Custom location ID for your Azure Local instance.      |
+    | `imageSourcePath`  | Path to the gallery image managed disk SAS URL.        |
+  
     Here's a sample output:
-    
-    ```azurecli
+  
+    ```console
     PS C:\Users\azcli> $subscription = "<Subscription ID>"
     PS C:\Users\azcli> $resource_group = "mylocal-rg"
     PS C:\Users\azcli> $location = "eastus"
     PS C:\Users\azcli> $osType = "Windows"
     PS C:\Users\azcli> $imageName = "mylocal-computegalleryimage"
+    PS C:\Users\azcli> $customLocationID = "/subscriptions/$subscription/resourcegroups/$resource_group/providers/microsoft.extendedlocation/customlocations/$customLocationName"
+    PS C:\Users\azcli> $imageSourcePath = '"https://EXAMPLE.blob.storage.azure.net/EXAMPLE/abcd<sas-token>"'
     ```
 
 ### Create an Azure Local VM image
 
-To create an Azure Local VM image:
+To create an Azure Local VM image, follow these steps:
 
 1. Select a custom location to deploy your VM image. The custom location should correspond to the custom location for your Azure Local. Get the custom location ID for your Azure Local. Run the following command:
 
@@ -90,24 +104,18 @@ To create an Azure Local VM image:
     $customLocationID=(az customlocation show --resource-group $resource_group --name "<custom location name for your Azure Local>" --query id -o tsv)
     ```
 
-1. Create the VM image starting with a specified marketplace image. Make sure to specify the offer, publisher, sku and version for the marketplace image.
+1. Create the VM image starting with a specified gallery image. Make sure to specify the offer, publisher, Stock Keeping Unit (SKU), and version for the image.
 
     ```azurecli
-    az stack-hci-vm image create --subscription $subscription --resource-group $resource_Group --custom-location $customLocationID --location $location --name $imageName --os-type $osType --image-path $imageSourcePath --storage-path-id $storagepathid
+    az stack-hci-vm image create --subscription $subscription --resource-group $resource_Group --custom-location $customLocationID --location $location --name $imageName --os-type $osType --image-path $imageSourcePath
     ```
 
-    A deployment job starts for the VM image.
-
-    In this example, the storage path was specified using the `--storage-path-id` flag and that ensured that the workload data (including the VM, VM image, non-OS data disk) is placed in the specified storage path.
-
-    If the flag is not specified, the workload data is automatically placed in a high availability storage path.
-
-    The image deployment takes a few minutes to complete. The time taken to download the image depends on the size of the image and the network bandwidth available for the download.
+    A deployment job starts for the VM image and takes a few minutes to complete. The image download time depends on the image size and the network bandwidth available for the download.
 
     Here's a sample output:
 
-    ```azurecli
-      { 
+    ```console
+    { 
       "extendedLocation": { 
         "name": "/subscriptions/<Subscription ID>/resourceGroups/mylocal-rg/providers/Microsoft.ExtendedLocation/customLocations/mylocal-cl", 
         "type": "CustomLocation" 
@@ -161,7 +169,7 @@ To create an Azure Local VM image:
       "type": "microsoft.azurestackhci/galleryimages" 
     } 
     ```
-    
+
 1. To avoid costs associated with a disk, make sure to delete the managed disk that was used to create this image using the following command:
 
     ```azurecli
@@ -170,4 +178,6 @@ To create an Azure Local VM image:
 
 ## Next steps
 
-- [Create logical networks](./create-virtual-networks.md)
+- [Create logical networks](./create-logical-networks.md)
+- [Manage VM Images on Azure Local via Azure CLI and Azure portal](./virtual-machine-manage-image.md)
+

@@ -1,10 +1,10 @@
 ---
 title: Add-ons and extensions available for AKS on Windows Server
 description: Learn about what add-ons and integrations are supported in AKS on Windows Server.
-author: sethmanheim
+author: davidsmatlak
 ms.topic: how-to
 ms.date: 02/15/2024
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 02/15/2023
 ms.reviewer: baziwane
 ---

@@ -3,11 +3,12 @@ title: Install Azure Stack HCI operating system, version 23H2
 description: Learn how to install the Azure Stack HCI operating system, version 23H2 on each machine of your system.
 author: alkohli
 ms.topic: how-to
-ms.date: 05/29/2025
+ms.date: 12/11/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
 ms.custom: sfi-image-nochange
+ms.subservice: hyperconverged
 ---
 
 # Install the Azure Stack HCI operating system
@@ -102,7 +103,6 @@ Follow these steps to configure the operating system using SConfig:
 
     - Configure VLAN IDs for the management network. For more information, see [Management VLAN ID](../plan/cloud-deployment-network-considerations.md#management-vlan-id) and [Management VLAN ID with a virtual switch](../plan/cloud-deployment-network-considerations.md#management-vlan-id-with-a-virtual-switch).
     - Configure DHCP for the management network. For more information, see [DHCP IP assignment](../plan/cloud-deployment-network-considerations.md#dhcp-ip-assignment).
-    - Configure a proxy server. For more information, see [Configure proxy settings for Azure Local](../manage/configure-proxy-settings-23h2.md).
 
 1. Use the **Network Settings** option in SConfig to configure a default valid gateway and a DNS server. Set **DNS** to the DNS of the domain you're joining.
 
@@ -110,7 +110,7 @@ Follow these steps to configure the operating system using SConfig:
    > It is not supported to change the DNS servers after deployment. Make sure you plan your DNS strategy before doing the deployment. For more information, see [DNS Servers Considerations](../plan/cloud-deployment-network-considerations.md#dns-server-considerations).
 
 
-2. Configure a valid time server on each machine. Validate that your machine is not using the local CMOS clock as a time source, using the following command:
+1. Configure a valid time server on each machine. Validate that your machine is not using the local CMOS clock as a time source, using the following command:
 
    ```cmd
    w32tm /query /status
@@ -130,38 +130,37 @@ Follow these steps to configure the operating system using SConfig:
 
    Once the machine is domain joined, it synchronizes its time from the PDC emulator.
 
-3. (Optional) At this point, you can enable Remote Desktop Protocol (RDP) and then RDP to each machine rather than use the virtual console. This action should simplify performing the remainder of the configuration.
+1. (Optional) At this point, you can enable Remote Desktop Protocol (RDP) and then RDP to each machine rather than use the virtual console. This action should simplify performing the remainder of the configuration.
 
-4. (Optional) Change the Computer Name as desired. This will be the name shown in the Azure portal as well as your Active Directory environment once joined.
+1. (Optional) Change the Computer Name as desired. This will be the name shown in the Azure portal as well as your Active Directory environment once joined.
 
-5. Clean all the non-OS drives for each machine that you intend to deploy. Remove any virtual media that have been used when installing the OS. Also validate that no other root drives exist.
+1. Clean all the non-OS drives for each machine that you intend to deploy. Remove any virtual media that have been used when installing the OS. Also validate that no other root drives exist.
 
     > [!NOTE]
     > This step doesn't apply to a machine repair operation.
 
-6. Restart the machines.
+1. Restart the machines.
 
-7. Set the local administrator credentials to be identical across all machines.
+1. Set the local administrator credentials to be identical across all machines.
 
     > [!NOTE]
     > - Make sure that the local administrator password follows Azure password length and complexity requirements. Use a password that is at least 14 characters long and contains a lowercase character, an uppercase character, a numeral, and a special character.
-    > - Do not join the machines with the Azure Stack HCI operating system installed, to the Active Directory domain prior to cloud deployment. The machines are automatically joined to a domain during the [Deployment via Azure portal](./deploy-via-portal.md).
+   
+<!-- Starting with version 2510, domain joining before deployment is supported. If you choose to domain join, you must add the deployment user to the local Administrators group. If you don't domain join beforehand, the machines are automatically joined to a domain during the [Deployment via Azure portal](./deploy-via-portal.md).
 
-## Install required Windows roles
+### Domain join before deployment
 
-**This step is only required if you're using an OS ISO that's older than 2408**. For more information, see [What's new in 2408](../whats-new.md#features-and-improvements-in-2408).
+Starting with version 2510, you can domain join machines before deployment:
 
-Install the Hyper-V role. Run the following command on each machine of the system:
+1. Use `SConfig option 1 Domain/workgroup` to join the machine to your domain.
+1. Add the deployment user to the local Administrators group on each machine, using the following command:
 
-```powershell
-Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
-```
+    ```powershell
+    Add-LocalGroupMember -Group "Administrators" -Member "DOMAIN\deploymentuser"
+    ```
 
-Your machines will restart; this takes a few minutes.
-
-You are now ready to register the Azure Local machine with Azure Arc and assign permissions for deployment.
+If you don't domain join beforehand, the machines are automatically joined to a domain during the [Deployment via Azure portal](./deploy-via-portal.md).-->
 
 ## Next steps
 
-- (Optional) [Configure proxy settings for Azure Local](../manage/configure-proxy-settings-23h2.md).
 - [Register Azure Local machines in your system with Azure Arc and assign permissions](./deployment-arc-register-server-permissions.md).

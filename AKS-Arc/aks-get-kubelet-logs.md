@@ -1,10 +1,10 @@
 ---
 title: Get kubelet logs from cluster nodes
 description: Learn how to get kubelet logs in an Azure Kubernetes Service (AKS) enabled by Arc deployment.
-author: sethmanheim
+author: davidsmatlak
 ms.topic: how-to
 ms.date: 01/17/2024
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 1/14/2024
 ms.reviewer: guanghu
 # Intent: As an IT Pro, I need to learn how to obtain kubelet logs in order to troubleshoot problems with my Azure Kubernetes Service in AKS enabled by Arc.  
@@ -14,7 +14,7 @@ ms.reviewer: guanghu
 
 # Get kubelet logs from cluster nodes
 
-[!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)], AKS enabled by Azure Arc on VMware (preview)
+[!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
 As part of operating a Kubernetes cluster in AKS enabled by Azure Arc, you might need to review logs at some point to troubleshoot a problem. This article describes how to use `journalctl` to view the kubelet logs on a node.
 

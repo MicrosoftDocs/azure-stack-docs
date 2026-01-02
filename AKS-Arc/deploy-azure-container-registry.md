@@ -1,10 +1,10 @@
 ---
 title: Deploy from a private container registry to on-premises Kubernetes using Azure Container Registry and AKS on Windows Server
 description: Learn how to deploy from a private container registry to on-premises Kubernetes using Azure Container Registry and AKS on Windows Server.
-author: sethmanheim
+author: davidsmatlak
 ms.topic: how-to
 ms.date: 04/04/2025
-ms.author: sethm
+ms.author: davidsmatlak
 ms.lastreviewed: 03/16/2022
 ms.reviewer: rbaziwane
 ms.custom: sfi-ropc-nochange

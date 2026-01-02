@@ -2,8 +2,8 @@
 title: Troubleshoot K8sVersionValidation error code
 description: Learn how to troubleshoot the K8sVersionValidation error code.
 ms.topic: troubleshooting
-author: sethmanheim
-ms.author: sethm
+author: davidsmatlak
+ms.author: davidsmatlak
 ms.date: 11/22/2024
 ms.reviewer: abha
 
