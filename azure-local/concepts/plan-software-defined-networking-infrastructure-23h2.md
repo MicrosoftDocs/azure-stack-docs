@@ -6,6 +6,7 @@ ms.author: alkohli
 author: alkohli
 ms.date: 10/16/2025
 ms.service: azure-local
+ms.subservice: hyperconverged
 ---
 # Plan a Software Defined Networking infrastructure for Azure Local
 

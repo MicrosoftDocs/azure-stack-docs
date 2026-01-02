@@ -6,6 +6,7 @@ author: alkohli
 ms.author: alkohli
 ms.service: azure-local
 ms.date: 10/15/2024
+ms.subservice: hyperconverged
 ---
 
 # Set up metric alerts for Azure Local

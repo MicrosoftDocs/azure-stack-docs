@@ -7,6 +7,7 @@ ms.topic: how-to
 ms.service: azure-local
 ms.date: 09/11/2025
 ms.custom: sfi-image-nochange
+ms.subservice: hyperconverged
 ---
 
 # Evaluate the deployment readiness of your environment for Azure Local

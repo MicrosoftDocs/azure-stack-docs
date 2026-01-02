@@ -7,6 +7,7 @@ ms.author: alkohli
 ms.reviewer: alkohli
 ms.date: 09/17/2025
 ms.custom: sfi-image-nochange
+ms.subservice: hyperconverged
 ---
 
 # Manage Azure Local gateway connections

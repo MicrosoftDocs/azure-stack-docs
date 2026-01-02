@@ -5,6 +5,7 @@ ms.author: alkohli
 ms.topic: overview
 author: alkohli
 ms.date: 11/14/2025
+ms.subservice: multi-rack
 ---
 
 # What is monitoring for multi-rack deployments of Azure Local? (preview)

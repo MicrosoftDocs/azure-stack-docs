@@ -6,6 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.date: 11/18/2025
 ms.service: azure-local
+ms.subservice: hyperconverged
 ---
 
 # Prepare GPUs for Azure Local

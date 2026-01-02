@@ -211,6 +211,21 @@ For assistance in creating the `--user-list` structure, see [Azure CLI Shorthand
 
 Azure Operator Nexus supports adding the same user to multiple bare metal machine keysets, each with a different SSH public key. When a user appears in multiple keysets, the system automatically consolidates all SSH keys from all keysets and adds them to the user's `authorized_keys` file on all bare metal machines in the cluster.
 
+If you instead want to supply two SSH keys for a single user entry, provide both keys in one `keyData` string separated by the newline escape (`\n`). This is valid and results in both keys being written to the user's `authorized_keys` file. Example:
+
+```json
+"keyData": [
+  {
+    "azureUserName": "<user_name>",
+    "description": "<user_description>",
+    "sshPublicKey": {
+      "keyData": "<ssh-name> <key 1 plaintext>\n<ssh-name> <key 2 plaintext>"
+    },
+    "userPrincipalName": "example@contoso.com"
+  }
+]
+```
+
 ### How it works
 
 When multiple keysets contain the same user (identified by `azureUserName`), the system:

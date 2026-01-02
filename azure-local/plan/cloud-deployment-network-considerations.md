@@ -6,6 +6,7 @@ ms.topic: how-to
 ms.date: 02/14/2025
 ms.author: alkohli 
 ms.reviewer: alkohli
+ms.subservice: hyperconverged
 ---
 
 # Network considerations for cloud deployments of Azure Local

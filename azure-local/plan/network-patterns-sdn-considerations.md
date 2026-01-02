@@ -7,6 +7,7 @@ ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
 ms.date: 02/14/2025
+ms.subservice: hyperconverged
 ---
 
 # Review SDN considerations for network reference patterns

@@ -6,6 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
 ms.date: 02/19/2025
+ms.subservice: hyperconverged
 ---
 
 # Manage BitLocker encryption on Azure Local

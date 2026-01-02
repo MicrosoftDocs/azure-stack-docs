@@ -6,6 +6,7 @@ ms.topic: how-to
 ms.date: 09/29/2025
 ms.author: alkohli
 ms.custom: sfi-image-nochange
+ms.subservice: hyperconverged
 ---
 
 # Discover and replicate VMware VMs for migration to Azure Local using Azure Migrate

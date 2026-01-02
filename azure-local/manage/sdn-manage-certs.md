@@ -5,6 +5,7 @@ ms.topic: how-to
 ms.author: alkohli
 author: alkohli
 ms.date: 09/05/2025
+ms.subservice: hyperconverged
 ---
 
 # Manage certificates for Software Defined Networking

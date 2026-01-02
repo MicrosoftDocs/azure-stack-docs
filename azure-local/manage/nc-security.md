@@ -7,6 +7,7 @@ ms.assetid: bc625de9-ee31-40a4-9ad2-7448bfbfb6e6
 ms.author: alkohli
 author: alkohli
 ms.date: 01/16/2025
+ms.subservice: hyperconverged
 ---
 
 # Secure the Network Controller

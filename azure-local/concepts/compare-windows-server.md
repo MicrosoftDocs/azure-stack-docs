@@ -5,7 +5,7 @@ ms.topic: product-comparison
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 09/03/2025
+ms.date: 12/19/2025
 ---
 
 # Compare Azure Local to Windows Server
@@ -88,7 +88,7 @@ The following table compares select technical features of Azure Local and Window
 | ------------- | ------------------- | ----------------------- |
 | Integrated driver and firmware updates | Yes (Integrated Systems and Premier solutions) | No |
 | Restart up to 10x faster with kernel-only restarts | Yes | No |
-| Host hotpatching | In preview | Yes (via Azure Arc) |
+| Host hotpatching | No | Yes (via Azure Arc) |
 | Hyper-V dynamic processor compatibility mode<sup>1</sup>| Yes | Yes |
 | Hyper-V high availability for GPU workloads w/GPU partitioning | Yes | Yes |
 | Storage Spaces Direct | Yes | Yes |

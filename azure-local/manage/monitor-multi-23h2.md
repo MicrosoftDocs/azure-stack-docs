@@ -7,6 +7,7 @@ ms.reviewer: saniyaislam
 ms.topic: how-to
 ms.service: azure-local
 ms.date: 10/10/2024
+ms.subservice: hyperconverged
 ---
 
 # Monitor multiple Azure Local systems with Insights

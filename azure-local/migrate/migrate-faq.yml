@@ -7,6 +7,7 @@ metadata:
   ms.author: alkohli
   ms.service: azure-local
   ms.date: 10/15/2025
+  ms.subservice: hyperconverged
 
 
 title: FAQ - Migration of Hyper-V and VMware VMs to Azure Local using Azure Migrate 

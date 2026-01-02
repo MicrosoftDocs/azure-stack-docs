@@ -7,6 +7,7 @@ ms.topic: how-to
 ms.service: azure-local
 ms.custom: references_regions
 ms.date: 05/07/2025
+ms.subservice: hyperconverged
 ---
 
 # System requirements for low capacity deployments of Azure Local (Preview)

@@ -7,7 +7,7 @@ ms.topic: how-to
 ms.custom:
   - devx-track-azurecli
 ms.date: 04/23/2025
-#Customer intent: As a Senior Content Developer, I want to provide customers with content and steps to help them successfully suspend and resume their machines for planned maintenance.
+ms.subservice: hyperconverged
 ---
 
 # Suspend and resume Azure Local machines for maintenance

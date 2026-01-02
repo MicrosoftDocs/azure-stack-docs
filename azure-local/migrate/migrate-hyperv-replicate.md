@@ -6,6 +6,7 @@ ms.topic: how-to
 ms.date: 10/01/2025
 ms.author: alkohli
 ms.custom: sfi-image-nochange
+ms.subservice: hyperconverged
 ---
 
 # Discover and replicate Hyper-V VMs for migration to Azure Local using Azure Migrate (preview)

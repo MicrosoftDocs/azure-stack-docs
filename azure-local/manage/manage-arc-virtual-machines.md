@@ -7,6 +7,7 @@ ms.topic: how-to
 ms.service: azure-local
 ms.date: 12/17/2025
 ms.custom: sfi-image-nochange
+ms.subservice: hyperconverged
 ---
 
 # Manage Azure Local VMs enabled by Azure Arc

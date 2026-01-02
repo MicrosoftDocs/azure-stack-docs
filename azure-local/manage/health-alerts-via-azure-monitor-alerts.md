@@ -7,6 +7,7 @@ ms.topic: how-to
 ms.service: azure-local
 ms.date: 11/04/2025
 ms.custom: sfi-image-nochange
+ms.subservice: hyperconverged
 ---
 
 # Respond to Azure Local health alerts using Azure Monitor alerts

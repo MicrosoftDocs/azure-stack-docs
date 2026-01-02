@@ -6,6 +6,7 @@ ms.author: alkohli
 ms.topic: concept-article
 ms.service: azure-local
 ms.date: 04/08/2025
+ms.subservice: hyperconverged
 ---
 
 # New name for Azure Stack HCI

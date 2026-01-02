@@ -7,6 +7,7 @@ ms.date: 10/16/2025
 ms.author: robess
 ms.reviewer: hafianba
 ai-usage: ai-assisted
+ms.subservice: hyperconverged
 ---
 
 # What's new in disconnected operations for Azure Local

@@ -8,6 +8,7 @@ ms.topic: how-to
 ms.service: azure-local
 ms.custom: devx-track-azurecli
 ms.date: 03/27/2025
+ms.subservice: hyperconverged
 ---
 
 # Create network interfaces for Azure Local VMs enabled by Azure Arc

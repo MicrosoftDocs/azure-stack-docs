@@ -5,6 +5,7 @@ ms.topic: article
 author: sipastak
 ms.author: sipastak
 ms.date: 10/23/2025
+ms.subservice: hyperconverged
 ---
 # Workloads resiliency for Azure Local
 

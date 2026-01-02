@@ -10,6 +10,7 @@ ms.custom:
   - linux-related-content
   - sfi-image-nochange
   - sfi-ropc-nochange
+ms.subservice: hyperconverged
 ---
 
 # Attaching a GPU to an Ubuntu Linux VM on Azure Local

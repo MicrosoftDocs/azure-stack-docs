@@ -6,6 +6,7 @@ ms.author: alkohli
 ms.topic: article
 ms.service: azure-local
 ms.date: 09/05/2025
+ms.subservice: hyperconverged
 ---
 
 # Software Defined Networking (SDN) managed by on-premises tools in Azure Local

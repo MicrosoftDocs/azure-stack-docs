@@ -7,6 +7,7 @@ ms.topic: overview
 ms.service: azure-local
 ms.date: 10/10/2025
 ms.custom: sfi-image-nochange
+ms.subservice: hyperconverged
 ---
 
 # What is Software Load Balancer (SLB) for SDN?

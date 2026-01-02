@@ -6,6 +6,7 @@ ms.author: alkohli
 ms.reviewer: alkohli
 ms.topic: how-to
 ms.date: 12/09/2025
+ms.subservice: hyperconverged
 ---
 
 # Deploy a virtual Azure Local system

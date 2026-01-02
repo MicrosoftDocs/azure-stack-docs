@@ -7,6 +7,7 @@ ms.date: 09/24/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
+ms.subservice: hyperconverged
 ---
 
 

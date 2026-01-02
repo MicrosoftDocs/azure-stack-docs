@@ -7,6 +7,7 @@ ms.service: azure-local
 ms.author: nguyenhung
 author: dv00000
 ms.reviewer: alkohli
+ms.subservice: hyperconverged
 ---
 
 # Azure Local and ISO/IEC 27001:2022

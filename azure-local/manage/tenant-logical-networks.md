@@ -5,6 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.date: 01/16/2025
+ms.subservice: hyperconverged
 ---
 
 # Manage tenant logical networks

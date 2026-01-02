@@ -7,6 +7,7 @@ ms.author: alkohli
 ms.service: azure-local
 ms.date: 10/15/2024
 ms.custom: sfi-image-nochange
+ms.subservice: hyperconverged
 ---
 
 # Enable recommended alert rules for Azure Local

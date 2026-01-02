@@ -5,6 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.date: 12/02/2025
+ms.subservice: hyperconverged
 ---
 
 # Update Azure Local via PowerShell

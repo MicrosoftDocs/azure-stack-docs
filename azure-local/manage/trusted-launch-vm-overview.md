@@ -5,7 +5,7 @@ ms.topic: concept-article
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 10/07/2025
+ms.date: 12/17/2025
 ---
 
 # Introduction to Trusted launch for Azure Local VMs enabled by Azure Arc
@@ -76,6 +76,13 @@ When working with Trusted launch Azure Local VMs, make sure to understand the fo
 ### VM replication
 
 Azure Site recovery, which can replicate virtual machines on your Azure Local instance to Azure, is not supported.
+
+## Supported operations
+
+See [Supported Operations for Azure Local Virtual Machines (VMs) Enabled by Azure Arc](virtual-machine-operations.md) for a list of supported and unsupported VM operations.
+
+> [!NOTE]
+> VM cloning or VM copying isn't supported currently as it can result in corruption, management errors, or failure to start.
 
 ## Next steps
 

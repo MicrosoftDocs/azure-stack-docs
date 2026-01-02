@@ -6,6 +6,7 @@ ms.author: robess
 ms.topic: how-to
 ms.reviewer: arduppal
 ms.date: 12/09/2025
+ms.subservice: hyperconverged
 ---
 
 # Import and discover update packages with limited connectivity

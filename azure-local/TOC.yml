@@ -8,6 +8,8 @@ items:
     href: ./overview.md
   - name: About Azure Local deployments
     href: ./scalability-deployments.md
+  - name: FAQ
+    href: faq.yml
 
 - name: Hyperconverged deployments
   items: 
@@ -33,8 +35,7 @@ items:
         href: license-billing.yml
     - name: Compare to Windows Server
       href: concepts/compare-windows-server.md 
-    - name: FAQ
-      href: faq.yml
+
 
   - name: Evaluate 
     items:
@@ -368,6 +369,8 @@ items:
                 href: manage/virtual-machine-azure-marketplace-red-hat.md
             - name: Using SUSE VM image
               href: manage/virtual-machine-image-suse.md
+          - name: Manage Azure Local VM Images
+            href: manage/virtual-machine-manage-image.md    
         - name: 3. Create logical networks
           href: manage/create-logical-networks.md
         - name: 4. Create network interfaces
@@ -796,12 +799,17 @@ items:
     items:
       - name: Compute for multi-rack deployments
         href: ./multi-rack/multi-rack-concepts-compute.md
+      - name: Network fabric for multi-rack deployments
+        href: ./multi-rack/multi-rack-network-fabric-overview.md
       - name: Load balancer for multi-rack deployments
         href: ./multi-rack/multi-rack-load-balancer-overview.md
       - name: NAT gateway for multi-rack deployments
         href: ./multi-rack/multi-rack-nat-gateway-overview.md
       - name: Azure Local VMs for multi-rack deployments
         href: ./multi-rack/multi-rack-azure-arc-vm-management-overview.md
+      - name: Security concepts
+        href: ./multi-rack/multi-rack-security.md
+        
   - name: Reference
     items:
       - name: Network cloud REST API reference

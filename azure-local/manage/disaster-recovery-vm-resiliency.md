@@ -5,17 +5,18 @@ ms.topic: article
 author: sipastak
 ms.author: sipastak
 ms.date: 10/23/2025
+ms.subservice: hyperconverged
 ---
 
 # Virtual machine resiliency for Azure Local
 
 After reviewing and implementing the design considerations for [infrastructure resiliency](disaster-recovery-infrastructure-resiliency.md) at the platform level, it's essential to understand how your virtual machines (VMs) and applications will be resilient to failures, to enable them to detect, withstand, and recover from failures within an acceptable time period, which is fundamental to maintaining continuous operations for business-critical applications.
 
-By default, all virtual machines (VMs) on Azure Local are designed for high availability. If a physical node in the cluster fails, any affected VMs automatically restart and continue to operate on the remaining nodes, provided there is enough compute capacity available for the VMs. Even with these strong platform-level fault tolerance and resiliency features in place, it’s essential that the applications deployed inside your VMs follow well-architected principles.
+By default, all virtual machines (VMs) on Azure Local are designed for high availability. If a physical node in the cluster fails, any affected VMs automatically restart and continue to operate on the remaining nodes, provided there's enough compute capacity available for the VMs. Even with these strong platform-level fault tolerance and resiliency features in place, it’s essential that the applications deployed inside your VMs follow well-architected principles.
 
-Well-architected applications integrate reliability into their code, infrastructure, and operations. For example, deploying multiple instances of application services inside two or more Azure Local VMs is essential for eliminating single points of failure within the application layer. Incorporating additional resiliency at this layer mitigates the risk of downtime should an individual VM or application instance fail. For more details, see [workload resiliency](disaster-recovery-workloads-resiliency.md). Additionally, robust application design should encompass comprehensive business continuity and disaster recovery (BCDR) strategies, including regular DR failover validation and data backup & recovery tests to ensure your disaster recovery procedures operate as intended.
+Well-architected applications integrate reliability into their code, infrastructure, and operations. For example, deploying multiple instances of application services inside two or more Azure Local VMs is essential for eliminating single points of failure within the application layer. Incorporating additional resiliency at this layer mitigates the risk of downtime should an individual VM or application instance fail. For more information, see [workload resiliency](disaster-recovery-workloads-resiliency.md). Additionally, robust application design should encompass comprehensive business continuity and disaster recovery (BCDR) strategies, including regular DR failover validation and data backup & recovery tests to ensure your disaster recovery procedures operate as intended.
 
-To mitigate the risk of service disruptions or data loss that can't be mitigated by the redundancy capabilities of a single Azure Local instance, it is essential to implement a combination of comprehensive [backup strategies](#backup-tools) alongside continuous [data replication technologies](#continuous-replication-of-business-critical-vms).
+To mitigate the risk of service disruptions or data loss that can't be mitigated by the redundancy capabilities of a single Azure Local instance, it's essential to implement a combination of comprehensive [backup strategies](#backup-tools) alongside continuous [data replication technologies](#continuous-replication-of-business-critical-vms).
 
 - Backup strategies protect against scenarios such as data corruption, accidental or malicious deletion, and catastrophic incidents, facilitating the restoration of data to a previous state when necessary.
 
@@ -25,11 +26,11 @@ Review [Azure Well-Architected Framework (WAF) - Reliability design principles](
 
 ## Storage path (volumes) considerations
 
-Azure Local instances deployed using the [*Create workload volumes and required infrastructure volumes (Recommended)*](/azure/azure-local/deploy/deploy-via-portal#optionally-change-advanced-settings-and-apply-tags) option enabled, will have a 'UserStorage_X' cluster shared volumes (CSVs) created, one per physical node in the cluster, and an associated Storage Path resource created in Azure for each volume. The storage path resource in Azure is used by workload resources, such as Azure Local VMs, Arc-enabled Azure Kubernetes Server (AKS) clusters and to store VM images. For example; a CSV with the local file system path of `C:\ClusterStorage\UserStorage_1\`, will have a storage path resource created in the Azure that represents the cluster shared volume (CSV) to enable Azure Local VMs virtual hard disks (VHDs) to be placed on a specific target volume. For more information see [about storage paths](/azure/azure-local/manage/create-storage-path#about-storage-path).
+Azure Local instances deployed using the [*Create workload volumes and required infrastructure volumes (Recommended)*](/azure/azure-local/deploy/deploy-via-portal#optionally-change-advanced-settings-and-apply-tags) option enabled, has a 'UserStorage_X' cluster shared volumes (CSVs) created, one per physical node in the cluster, and an associated Storage Path resource created in Azure for each volume. The storage path resource in Azure is used by workload resources, such as Azure Local VMs, Arc-enabled Azure Kubernetes Server (AKS) clusters and to store VM images. For example, a CSV with the local file system path of `C:\ClusterStorage\UserStorage_1\`, has a storage path resource created in the Azure that represents the cluster shared volume (CSV) to enable Azure Local VMs virtual hard disks (VHDs) to be placed on a specific target volume. For more information, see [about storage paths](/azure/azure-local/manage/create-storage-path#about-storage-path).
 
-When deploying well-architected applications that utilize multiple Azure Local VMs to enhance workload resiliency, where possible it is advisable to place each VM's virtual hard disks (VHDs) in separate storage paths to optimize redundancy. For example, when provisioning multiple Azure Local VMs that run instances of the same service, using different storage paths for each VMs VHDs helps mitigate the risk of all VMs using a single storage path (volume).
+When deploying well-architected applications that utilize multiple Azure Local VMs to enhance workload resiliency, where possible it's advisable to place each VM's virtual hard disks (VHDs) in separate storage paths to optimize redundancy. For example, when provisioning multiple Azure Local VMs that run instances of the same service, using different storage paths for each VMs VHDs helps mitigate the risk of all VMs using a single storage path (volume).
 
-The storage path used by Azure Local VMs is configured when its virtual hard disks are created. When using infrastructure as code (IaC) to provision workloads, the placement logic for VHDs employs a round-robin allocation logic for storage path selection. For multi-node Azure Local instances, by default each storage path will map to a different volume. Therefore each VMs VHDs will be distributed across different storage paths (volumes), which increases workload resiliency, specifically for scenarios where a single volume is temporarily offline or unavailable. For more granular provisioning control, the [--storage-path-id] parameter can be specified when using Azure CLI for workload deployment, allowing you to target specific storage paths when provisioning virtual hard disks for Azure Local VMs.
+The storage path used by Azure Local VMs is configured when its virtual hard disks are created. When using infrastructure as code (IaC) to provision workloads, the placement logic for VHDs employs a round-robin allocation logic for storage path selection. For multi-node Azure Local instances, by default each storage path maps to a different volume. Therefore, each VMs VHDs are distributed across different storage paths (volumes), which increases workload resiliency, specifically for scenarios where a single volume is temporarily offline or unavailable. For more granular provisioning control, the `--storage-path-id` parameter can be specified when using Azure CLI for workload deployment, allowing you to target specific storage paths when provisioning virtual hard disks for Azure Local VMs.
 
 ## Backup Tools
 
@@ -42,9 +43,9 @@ If you're using MABS, there are two approaches to protect VMs: **host-level VM b
 - **Host-level VM backup**: Install the backup agent on each Azure Local host (each cluster node) and back up entire VMs at the hypervisor level. This captures the whole VM (all virtual disks). It has the advantage of not requiring an agent inside each VM, and its agnostic to the guest OS. Host-level backups allow full VM restores, where you can recover an entire VM to the same or different cluster. However, host-level backups aren't application-aware. For example, they won't truncate SQL logs or guarantee application-consistent restores beyond what Volume Shadow Copy Service (VSS) provides.
 
     > [!NOTE]
-    >- Restoring an Azure Local VM on a different cluster restores the VM as an unmanaged VM. This means that all services inside the VM will start working, but the VM can’t be managed from Azure until it's registered on the new Azure Local cluster and reconnected to its resource that exists in Azure.
-    >- Reconnecting means the Azure resource will be updated with the new resource group (optional, you can also keep it in the same resource group), custom location, storage path, and logical network of the VM.
-    >- If the VM is restored in-place on the same cluster, registering and reconnecting aren't needed. The VM’s Azure connection will be restored, and it continues to be managed from Azure as long as it's within [Azure Arc’s 45-day reconnection window](/azure/azure-arc/servers/overview#agent-status).
+    >- Restoring an Azure Local VM on a different cluster restores the VM as an unmanaged VM. This means that all services inside the VM start working, but the VM can’t be managed from Azure until it's registered on the new Azure Local cluster and reconnected to its resource that exists in Azure.
+    >- Reconnecting means the Azure resource is updated with the new resource group (optional, you can also keep it in the same resource group), custom location, storage path, and logical network of the VM.
+    >- If the VM is restored in-place on the same cluster, registering and reconnecting aren't needed. The VM’s Azure connection is restored, and it continues to be managed from Azure as long as it's within [Azure Arc’s 45-day reconnection window](/azure/azure-arc/servers/overview#agent-status).
 
 - **Guest-level VM backup**: Install backup agents inside the guest OS of the VM. This allows application-consistent backups for VSS-aware applications running within the operating system, ensuring that application data is captured in a consistent state. For example, you can back up SQL databases with full fidelity and restore individual items like a single database or a specific file easily. The trade-off is manageability: you must manage agents on each VM, and the backup only covers what’s inside the VM, to restore the whole VM, you’d typically rebuild it and then restore data within.  
 
@@ -67,11 +68,30 @@ Setting up MABS involves deploying the MABS server software on a dedicated VM on
 
 Beyond MABS, a mature market of partner backup and recovery vendors offers robust solutions for Azure Local environments. These solutions often provide a rich set of advanced features, broader platform support, and different licensing or cost models that might be attractive depending on specific organizational requirements.  
 
-#### CommVault
+#### CloudCasa by Catalogic
 
-CommVault Cloud offers unified, enterprise-grade data protection for Azure Local environments, enabling secure backup, recovery, and ransomware protection across virtual machines, databases, and unstructured data. With intelligent automation and policy-driven workflows, CommVault simplifies compliance, improves resiliency, and delivers scalable protection from edge to cloud, all while maintaining full control of your data within your Azure Local region.
+CloudCasa delivers Kubernetes-native backup, disaster recovery, and migration for AKS on Azure Local and Arc-enabled clusters. It protects cluster resources and persistent volumes, with the ability to perform granular restores, including file-level recovery. Backups can be stored in Azure Blob Storage, other object storage, or network file system (NFS). CloudCasa supports restores to the same site, a secondary Azure Local cluster, or Azure AKS for disaster recovery.
 
-For more information, visit the official CommVault documentation site for guidance on CommVault for Azure Local.
+- [CloudCasa on Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?search=cloudcasa)
+- [CloudCasa solutions for Azure](https://cloudcasa.io/partners/microsoft-azure/)
+- [Simplify Upgrades and Backup for Azure Local](https://cloudcasa.io/blog/upgrade-backup-azure-local/)
+
+#### Cohesity DataProtect
+
+Cohesity DataProtect, part of the Data Cloud platform, protects VMs with a single data-security platform. It combines backup, replication, and disaster recovery with unlimited immutable snapshots, granular file/VM/database restores, instant mass restore at scale, and integrated anomaly detection and data classification to speed clean recovery after cyber events. For Azure Local, Cohesity offers deep integration with the platform. This includes automatic VM discovery, policy-based protection, many restore options, and incremental-forever backups using Microsoft Resilient Change Tracking (RCT).
+
+Cohesity extends support by leveraging its mature Hyper-V connector and workflows, giving a consistent operating model as customers move Hyper-V workloads onto Azure Local.
+
+- [Cohesity DataProtect](https://www.cohesity.com/platform/dataprotect/)
+- [Support statements for Azure Local](https://docs.cohesity.com/ui/login?redirectPath=%2F7_3%2FWeb%2FUserGuide%2FContent%2FReleaseNotes%2FSupportedVersions.htm#MicrosoftHyperV)
+
+#### Commvault
+
+Commvault Cloud offers unified, enterprise-grade data protection for Azure Local environments, enabling secure backup, recovery, and ransomware protection across virtual machines, databases, and unstructured data. With intelligent automation and policy-driven workflows, Commvault simplifies compliance, improves resiliency, and delivers scalable protection from edge to cloud, all while maintaining full control of your data within your Azure Local region.
+
+- [Commvault for Azure Local](https://documentation.commvault.com/11.42/software/azure_local.html)
+- [Solution briefs](https://www.commvault.com/resources/solution-brief/commvault-for-microsoft-azure-local)
+- [Commvault Marketplace SaaS](https://marketplace.microsoft.com/en-us/product/saas/commvault.commvault_complete_backup_recovery?tab=Overview)
 
 #### Rubrik
 
@@ -89,14 +109,6 @@ Veeam backup and replication supports backup and replication of Azure Local VMs.
 - [Veeam Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/veeam.veeam-backup-replication?tab=overview )
 - [Veeam Azure Local support](https://www.veeam.com/kb4047)
 - [Veeem Supported Platforms](https://helpcenter.veeam.com/docs/backup/hyperv/platform_support.html)
-
-#### CloudCasa by Catalogic
-
-CloudCasa delivers Kubernetes-native backup, disaster recovery, and migration for AKS on Azure Local and Arc-enabled clusters. It protects cluster resources and persistent volumes, with the ability to perform granular restores, including file-level recovery. Backups can be stored in Azure Blob Storage, other object storage, or network file system (NFS). CloudCasa supports restores to the same site, a secondary Azure Local cluster, or Azure AKS for disaster recovery.
-
-- [CloudCasa on Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?search=cloudcasa)
-- [CloudCasa solutions for Azure](https://cloudcasa.io/partners/microsoft-azure/)
-- [Simplify Upgrades and Backup for Azure Local](https://cloudcasa.io/blog/upgrade-backup-azure-local/)
 
 ## Backup frequency, retention, and restoration testing
 
@@ -133,9 +145,9 @@ Key points about Azure Site Recovery for Azure Local:
     - For successful failback, the on-premises environment must be healthy. If your cluster isn't available, you can register another Azure Local cluster to the Azure Site Recovery Hyper-V site and failback the VM to a node on an alternate cluster.
 
     > [!NOTE]
-    >- Failing back an Azure Local VM on an alternate cluster will fail back the VM as an unmanaged VM. This means that all services inside the VM will start working, but the VM can’t be managed from Azure until it's registered on the new Azure Local cluster and reconnected to its resource that exists in Azure.
-    >- Reconnecting means the Azure resource will be updated with the new resource group (optional, you can also keep it in the same resource group), custom location, storage path, and logical network of the VM.
-    >- If the VM is failed back on the same cluster, registering and reconnecting aren't needed. The VM’s Azure connection will be restored, and it continues to be managed from Azure as long as it's within [Azure Arc’s 45-day reconnection window](/azure/azure-arc/servers/overview#agent-status).
+    >- Failing back an Azure Local VM on an alternate cluster fails back the VM as an unmanaged VM. This means that all services inside the VM start working, but the VM can’t be managed from Azure until it's registered on the new Azure Local cluster and reconnected to its resource that exists in Azure.
+    >- Reconnecting means the Azure resource is updated with the new resource group (optional, you can also keep it in the same resource group), custom location, storage path, and logical network of the VM.
+    >- If the VM is failed back on the same cluster, registering and reconnecting aren't needed. The VM’s Azure connection is restored, and it continues to be managed from Azure as long as it's within [Azure Arc’s 45-day reconnection window](/azure/azure-arc/servers/overview#agent-status).
 
 For more information and to install Azure Site Recovery, see [Protect VM workloads with Azure Site Recovery on Azure Local (preview)](azure-site-recovery.md).
 
@@ -166,16 +178,16 @@ Key points about using Hyper-V replica with Azure Local:
     - After failover, your VM runs on the replica server.
 
     > [!NOTE]
-    >- Failing over an Azure Local VM to the replica cluster fails over the VM as an unmanaged VM. This means that all services inside the VM will start working, but the VM can’t be managed from Azure until it's registered on the new Azure Local cluster and reconnected to its resource that exists in Azure.
-    >- Reconnecting means the Azure resource will be updated with the new resource group (optional, you can also keep it in the same resource group), custom location, storage path, and logical network of the VM.
-    >- Registering and reconnecting may not be necessary if the failover is temporary and the VM is expected to be failed back to the original cluster once the disaster is mitigated. During this period, the VM won't be manageable from Azure, but its services will be operational.
+    >- Failing over an Azure Local VM to the replica cluster fails over the VM as an unmanaged VM. This means that all services inside the VM start working, but the VM can’t be managed from Azure until it's registered on the new Azure Local cluster and reconnected to its resource that exists in Azure.
+    >- Reconnecting means the Azure resource is updated with the new resource group (optional, you can also keep it in the same resource group), custom location, storage path, and logical network of the VM.
+    >- Registering and reconnecting may not be necessary if the failover is temporary and the VM is expected to be failed back to the original cluster once the disaster is mitigated. During this period, the VM won't be manageable from Azure, but its services are operational.
 
 - **Failback**:
     - Once the disaster is mitigated, and the cluster is operational, Hyper-V replica can reverse the replication direction and replicate any changes made while operating on replica server back to the original Azure Local cluster.
     - After the reverse replication, you can fail back the VM, allowing the VM to switch back to its originating cluster.
 
     > [!NOTE]
-    > After the VM is failed back to its originating cluster, registering and reconnecting aren't needed. The VM’s Azure connection will be restored, and it continues to be managed from Azure as long as it's within [Azure Arc’s 45-day reconnection window](/azure/azure-arc/servers/overview#agent-status).
+    > After the VM is failed back to its originating cluster, registering and reconnecting aren't needed. The VM’s Azure connection is restored, and it continues to be managed from Azure as long as it's within [Azure Arc’s 45-day reconnection window](/azure/azure-arc/servers/overview#agent-status).
 
 For more information, see the deployment steps in [Set up Hyper-V Replica](/windows-server/virtualization/hyper-v/get-started/Install-Hyper-V).
 

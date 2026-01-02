@@ -7,6 +7,7 @@ ms.date: 03/20/2025
 ms.author: alkohli
 ms.reviewer: vlakshmanan
 ms.service: azure-local
+ms.subservice: hyperconverged
 ---
 
 # Collect log files for Azure Local VMs enabled by Azure Arc

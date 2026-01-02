@@ -5,6 +5,7 @@ author: alkohli
 ms.topic: how-to
 ms.date: 10/15/2025
 ms.author: alkohli
+ms.subservice: hyperconverged
 ---
 
 # Migrate VMs to Azure Local with Azure Migrate using PowerShell

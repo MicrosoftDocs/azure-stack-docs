@@ -7,6 +7,7 @@ ms.reviewer: alkohli
 ms.topic: how-to
 ms.service: azure-local
 ms.date: 11/18/2025
+ms.subservice: multi-rack
 ---
 
 # Create Azure Local virtual machines enabled by Azure Arc for multi-rack deployments (preview)
