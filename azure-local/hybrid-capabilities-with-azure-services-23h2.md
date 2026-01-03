@@ -4,7 +4,7 @@ description: Learn about the hybrid capabilities in Azure Local and how Azure se
 ms.topic: overview
 author: alkohli
 ms.author: alkohli
-ms.date: 09/11/2025
+ms.date: 01/02/2026
 ms.custom: e2e-hybrid
 ms.subservice: hyperconverged
 ---
