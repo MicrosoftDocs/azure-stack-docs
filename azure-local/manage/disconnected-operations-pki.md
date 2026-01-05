@@ -81,7 +81,7 @@ The management endpoint requires two certificates. You must put these certificat
 
 ### Ingress endpoints
 
-On the host machine or Active Directory virtual machine (VM), follow the steps in this section to create certificates for the ingress traffic and external endpoints of the disconnected operations appliance. The operationsmodule provides helper methods to generate certificates signing requests or automating the full certificate creation.
+On the host machine or Active Directory virtual machine (VM), follow the steps in this section to create certificates for the ingress traffic and external endpoints of the disconnected operations appliance. The OperationsModule provides helper methods to generate certificates signing requests or automating the full certificate creation.
 
 You need these certificates to deploy the disconnected operations appliance. You also need the public key for your local infrastructure to provide a secure trust chain.
 
@@ -90,7 +90,7 @@ You need these certificates to deploy the disconnected operations appliance. You
 
 1. Connect to the CA.
 1. Create a folder named **IngressEndpointsCerts**. Use this folder to store all certificates.
-1. Create the certificates by using the provided helper method below with the target  **IngressEndpointsCerts** folder.
+1. Create the certificates by using the OperationsModule helper method with the target **IngressEndpointsCerts** folder.
 1. View and copy the certificates (24 .pfx files) exported to **IngressEndpointsCerts**.
 
 The following script shows you how to use the OperationsModule to generate certificates. The script creates certificate signing requests (CSRs), submits them to your certificate authority (CA), and then exports the generated certificates with password protection.
@@ -99,8 +99,8 @@ The following script shows you how to use the OperationsModule to generate certi
 > Run this script on a domain-joined machine using an account with Domain Administrator access to issue certificates.
 
   ```PowerShell    
-  # Make sure you have the operations module in this folder
-  # In the Appendix you can find an alternative the operations module if you prefer writing your own automation
+  # Make sure you have the OperationsModule in this folder
+  # In the Appendix you can find an alternative to the OperationModule if you prefer writing your own automation
 
   $applianceConfigBasePath = "C:\AzureLocalDisconnectedOperations\"
   $fqdn = "autonomous.cloud.private" 
