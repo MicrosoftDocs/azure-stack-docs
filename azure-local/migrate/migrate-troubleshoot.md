@@ -9,6 +9,7 @@ ms.reviewer: alkohli
 ms.custom:
   - linux-related-content
   - sfi-image-nochange
+ms.subservice: hyperconverged
 ---
 
 # Troubleshoot issues migrating VMs to Azure Local via Azure Migrate

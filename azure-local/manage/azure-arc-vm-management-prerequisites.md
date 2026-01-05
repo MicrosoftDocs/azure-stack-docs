@@ -7,7 +7,7 @@ ms.topic: how-to
 ms.service: azure-local
 ms.date: 07/08/2025
 ms.custom: sfi-image-nochange
-
+ms.subservice: hyperconverged
 ---
 
 # Review prerequisites for Azure Local VMs enabled by Azure Arc

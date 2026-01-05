@@ -8,6 +8,7 @@ ms.reviewer: alkohli
 ms.date: 11/24/2025
 ms.topic: concept-article
 ms.service: azure-local
+ms.subservice: multi-rack
 ---
 
 # Create and manage an internal load balancer in multi-rack deployments of Azure Local (preview)

@@ -6,6 +6,7 @@ ms.author: alkohli
 ms.service: azure-local
 ms.date: 11/25/2025
 ms.topic: concept-article
+ms.subservice: multi-rack
 ---
 
 # About NAT gateway on multi-rack deployments of Azure Local (preview)

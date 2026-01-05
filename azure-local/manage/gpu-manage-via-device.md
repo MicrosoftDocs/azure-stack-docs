@@ -6,6 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
 ms.date: 08/27/2025
+ms.subservice: hyperconverged
 ---
 
 # Manage GPUs via Discrete Device Assignment (preview)
