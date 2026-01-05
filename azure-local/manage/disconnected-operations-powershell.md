@@ -1,24 +1,24 @@
 ---
-title: Use Azure Powershell for Disconnected Operations on Azure Local (preview)
-description:  Learn how to use Azure Powershell for disconnected operations on Azure Local (preview).
+title: Use Azure PowerShell for Disconnected Operations on Azure Local (preview)
+description:  Learn how to use Azure PowerShell for disconnected operations on Azure Local (preview).
 ms.topic: how-to
-author: hafianba
-ms.author: hafianba
+author: ronmiab
+ms.author: robess
 ms.date: 12/22/2025
 ai-usage: ai-assisted
 ---
 
-# Use Azure Command-Line Interface for disconnected operations on Azure Local (preview)
+# Use Azure PowerShell for disconnected operations on Azure Local (preview)
 
 ::: moniker range=">=azloc-2511"
 
-This article explains how to configure Azure Powershell for disconnected operations on Azure Local. 
+This article explains how to configure Azure PowerShell for disconnected operations on Azure Local. 
 
 [!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
 
 ## About Azure PowerShell
 
-**Azure PowerShell** is a versatile, cross-platform set of Powershell modules that you can use to create and manage Azure resources for Azure Local disconnected operations. For more information, see [What is Azure PowerShell](/powershell/azure/what-is-azure-powershell).
+**Azure PowerShell** is a versatile, cross-platform set of PowerShell modules that you can use to create and manage Azure resources for Azure Local disconnected operations. For more information, see [What is Azure PowerShell](/powershell/azure/what-is-azure-powershell).
 
 ## Configure certificates for Azure PowerShell
 
@@ -42,7 +42,7 @@ To list cloud endpoints, run the following command:
 Get-AzEnvironment
 ```
 
-Here'ss a sample output:
+Here's a sample output:
 
 | Name| Resource Manager Url| ActiveDirectory Authority|
 |-------------------|--------------------------------------|---------------------------| 
