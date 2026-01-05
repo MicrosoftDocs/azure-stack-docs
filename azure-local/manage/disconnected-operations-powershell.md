@@ -94,9 +94,9 @@ Set-AzContext -SubscriptionId $subscription.Id
 
 ## Appendix
 
-### Create a SPN for automation (with password)
+### Create an SPN for automation (with password)
 
-To create a SPN for automation using a password, run the following command:
+To create an SPN for automation using a password, run the following command:
 
 ```powershell
 $sp = New-AzADServicePrincipal -DisplayName "MyAutomationSPN"
@@ -105,9 +105,9 @@ $sp.PasswordCredentials.SecretText
 (Get-AzContext).Tenant.Id
 ```
 
-### Create a SPN for automation (with certificate)
+### Create an SPN for automation (with certificate)
 
-To create a SPN for automation using a certificate, run the following command:
+To create an SPN for automation using a certificate, run the following command:
 
 ```powershell
 $cert = [System.Convert]::ToBase64String((Get-Content "C:\path\cert.cer" -Encoding byte))
