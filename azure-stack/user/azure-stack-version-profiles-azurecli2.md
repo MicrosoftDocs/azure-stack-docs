@@ -50,10 +50,7 @@ This section walks you through setting up CLI if you're using Microsoft Entra ID
 
 #### Connect to Azure Stack Hub
 
-1. Register your Azure Stack Hub environment by running the `az cloud register` command.
-
-   > [!NOTE]
-   > Before you can sign in with `az login`, the Azure CLI must be configured to target your Azure Stack Hub instance rather than the default Azure public cloud. Use the `az cloud register` command to register your Azure Stack Hub environment and define its endpoints so the CLI knows where to send requests. After that, you can set the environment and then use `az login` to authenticate.
+1. Register your Azure Stack Hub environment by running the `az cloud register` command. Before you can sign in with `az login`, the Azure CLI must be configured to target your Azure Stack Hub instance rather than the default Azure public cloud. First, use the `az cloud register` command to register your Azure Stack Hub environment and define its endpoints so the CLI knows where to send requests. After that, you can set the environment and then use `az login` to authenticate.
 
 1. Register your environment. Use the following parameters when running `az cloud register`:
 
