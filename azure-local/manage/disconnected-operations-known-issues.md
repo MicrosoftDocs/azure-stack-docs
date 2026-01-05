@@ -5,7 +5,7 @@ author: ronmiab
 ms.topic: concept-article
 ms.date: 01/05/2026
 ms.author: robess
-ms.reviewer: hafianba
+ms.reviewer: haraldfianbakken
 ai-usage: ai-assisted
 ---
 
