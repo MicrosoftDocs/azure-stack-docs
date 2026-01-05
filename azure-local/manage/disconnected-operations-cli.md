@@ -285,7 +285,7 @@ To create the service principal, follow these steps:
     }
     ```
 
-1. Copy the *AppID* and *password* to use in command-line automation. You'll sign in using this service principal instead of an interactive sign-in or device code.
+1. Copy the *AppID* and *password* to use in command-line automation. You sign in using this service principal instead of an interactive sign-in or device code.
 
 ### Troubleshoot Azure CLI
 
