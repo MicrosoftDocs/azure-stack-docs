@@ -2,8 +2,8 @@
 title: Update Disconnected Operations on Azure Local (preview)
 description:  Learn how to update disconnected operations on Azure Local (preview).
 ms.topic: how-to
-author: hafianba
-ms.author: hafianba
+author: ronmiab
+ms.author: robess
 ms.date: 12/22/2025
 ai-usage: ai-assisted
 ---
