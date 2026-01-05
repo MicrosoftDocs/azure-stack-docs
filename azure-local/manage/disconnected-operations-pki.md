@@ -86,13 +86,14 @@ On the host machine or Active Directory virtual machine (VM), follow the steps i
 You need these certificates to deploy the disconnected operations appliance. You also need the public key for your local infrastructure to provide a secure trust chain.
 
 > [!NOTE]
-> **IngressEndpointsCerts** is the folder where you store all  certificate files. **IngressEndpointPassword** is a secure string with the certificate password.
+> **IngressEndpointsCerts** is the folder where you store all certificate files. **IngressEndpointPassword** is a secure string with the certificate password.
 
 1. Connect to the CA.
 1. Create a folder named **IngressEndpointsCerts**. Use this folder to store all certificates.
 1. Create the certificates by using the provided helper method below with the target  **IngressEndpointsCerts** folder.
+1. View and copy the certificates (24 .pfx files) exported to **IngressEndpointsCerts**.
 
-Here's an example script on how to use the OperationsModule certificate generation. This method create certificate signing requests (CSRs) and issues them to your CA, then export the generated certificate and protect them with a password. 
+The following script shows you how to use the OperationsModule to generate certificates. The script creates certificate signing requests (CSRs), submits them to your certificate authority (CA), and then exports the generated certificates with password protection.
 
 > [!NOTE]
 > Run this script on a domain-joined machine using an account with Domain Administrator access to issue certificates.
@@ -112,14 +113,14 @@ Here's an example script on how to use the OperationsModule certificate generati
   New-AldoCertificatesFromCA -ExternalFQDN $fqdn -OutputFolder $IngressEndpointsCerts -CAConfig $caName -CertificatePassword $certPassword
   ```
 
-- View and copy the certificates (24 .pfx files) exported to  **IngressEndpointsCerts**.
-
 ### Management endpoint
 
-Here's an example of how to create certificates for securing the management endpoint:
+Here's an example of how to create certificates for securing the management endpoint. 
 
 > [!NOTE]
 > Run this script on a domain-joined machine using an account with Domain Administrator access to issue certificates.
+>
+> After you create the certificates, copy the management certificates (*.pfx) to the directory structure represented in ManagementEndpointCerts.
 
 ```powershell
 $caName = "mycaserver.contoso.com\Contoso-RootCA" # Replace with your CA server and CA name (Run certutil -config - -ping to find the names)
@@ -190,11 +191,7 @@ _continue_ = "DNS=$subject"
     $cert | Export-PfxCertificate -FilePath $pfxPath -Password $certPassword -Force
     Write-Verbose "Certificate for $subject and private key exported to $certPath" -Verbose
 }
-
-
 ```
-
-Copy the management certificates (*.pfx) to the directory structure represented in ManagementEndpointCerts.
 
 ## Export Root CA certificate 
 
@@ -236,19 +233,17 @@ To secure your identity integration, we recommend that you pass these two parame
 
 These checks confirm that the certificates and chain for these endpoints aren't changed or tampered with.
 
-You have a helper method in the **OperationsModule** that helps you populate these parameters.
+You have a helper method in the OperationsModule to populate these parameters.
 
 Here's an example of how to populate the required parameters:
 
 ```powershell
 Import-Module "$applianceConfigBasePath\OperationsModule\Azure.Local.DisconnectedOperations.psd1" -Force
-
-
 $oidcCertChain = Get-CertificateChainFromEndpoint -requestUri 'https://adfs.azurestack.local/adfs'
 $ldapsCertChain = Get-CertificateChainFromEndpoint -requestUri 'https://dc01.azurestack.local'
 ```
 
-Here's an example of the output from Get-CertificateChainFromEndpoint
+Here's an example of the output from `Get-CertificateChainFromEndpoint`
 
 ```powershell
 # Returns: System.Security.Cryptography.X509Certificates.X509Certificate2[]
@@ -260,9 +255,13 @@ TESTING580E20618EA15357FC1028622518DDC4D  CN=www.website.com, O=Contoso Corporat
 TESTINGDAA2345B48E507320B695D386080E5B25  CN=www.website.com, O=Contoso Corporation, L=Redmond, S=WA, C=US
 TESTING9BFD666761B268073FE06D1CC8D4F82A4  CN=www.website.com, O=Contoso Corporation, L=Redmond, S=WA, C=US
 ```
+
 ### Appendix
-#### Create certifcates script based
-If you prefer controlling certficate generation, here is an example you can modify that creates CSRs and issues certificates. 
+
+#### Create certificates script based
+
+If you prefer to control certificate generation, here's an example you can modify to create CSRs and issue certificates.
+
 ```powershell
 $fqdn = "autonomous.cloud.private" 
 $caName = "<CA Computer Name>\<CA Name>" # Replace with your CA server and CA name (Run certutil -config - -ping to find the names)
@@ -372,6 +371,7 @@ _continue_ = "DNS=$dns"
     Write-Verbose "Certificate for $certSubject and private key exported to $extCertFilePath" -Verbose
 }
 ```
+
 ## Related content
 
 - [Plan hardware for Azure local with disconnected operations](disconnected-operations-overview.md#preview-participation-criteria)
