@@ -5,7 +5,7 @@ author: ronmiab
 ms.topic: install-set-up-deploy
 ms.custom:
   - devx-track-azurecli
-ms.date: 02/27/2025
+ms.date: 12/30/2025
 ms.author: robess
 ms.reviewer: waltero
 ms.lastreviewed: 10/06/2022
@@ -40,7 +40,7 @@ After you install Azure CLI with AKS support, verify that the installation is co
     az --version
 ```
 
-Here is a sample output from a Linux machine:
+Here's a sample output from a Linux machine:
 
 ![output from a Linux machine](media/aks-how-to-use/output-from-a-linux-machine.png)
 
@@ -56,7 +56,7 @@ After you install Azure CLI with AKS support, verify that the installation is co
     az --version
 ```
 
-Here is a sample output from a Linux machine:
+Here's a sample output from a Linux machine:
 
 ![more output a Linux machine](media/aks-how-to-use/output-from-a-linux-machine.png)
 
