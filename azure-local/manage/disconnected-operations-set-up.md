@@ -4,7 +4,8 @@ description: Learn how to set up disconnected operations for Azure Local by crea
 ms.topic: how-to
 author: ronmiab
 ms.author: robess
-ms.date: 10/16/2025
+ms.date: 01/05/2026
+ms.reviewer: hafianba
 ai-usage: ai-assisted
 ---
 
