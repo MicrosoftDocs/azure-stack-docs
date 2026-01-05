@@ -4,7 +4,8 @@ description: Learn about public key infrastructure (PKI) requirements for discon
 ms.topic: concept-article
 author: ronmiab
 ms.author: robess
-ms.date: 10/16/2025
+ms.date: 01/05/2026
+ms.reviewer: hafianba
 ai-usage: ai-assisted
 ---
 
