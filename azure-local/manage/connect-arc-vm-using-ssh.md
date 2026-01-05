@@ -6,7 +6,8 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
 ms.date: 04/04/2025
-
+ms.subservice: hyperconverged
+#customer intent: As a Senior Content Developer, I want to provide customers with the highest level of content for using disconneced operations to deploy and manage their Azure Local instances.
 ---
 
 # Connect to an Azure Local VM using SSH / RDP over SSH or VM Connect

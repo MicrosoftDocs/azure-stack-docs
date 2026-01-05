@@ -11,7 +11,7 @@ ms.topic: how-to
 
 # Prepare for rack aware cluster deployment (Preview)
 
-> Applies to: Azure Local version 2510 and later
+::: moniker range=">=azloc-2510"
 
 This article describes the preparation steps to deploy Azure Local rack aware clusters. It includes network design recommendations, machine configuration guidelines, and best practices for deployment.
 
@@ -21,8 +21,8 @@ This article describes the preparation steps to deploy Azure Local rack aware cl
 
 - Make sure to review the [Network design requirements for Azure Local rack aware clusters](../concepts/rack-aware-cluster-reference-architecture.md) for detailed design and supported network configurations.
 
-    - We strongly recommend that you deploy two Top-of-Rack (ToR) switches in each rack or room to ensure high resiliency.
-    - For edge implementations where cost efficiency is a priority, a single ToR switch per room or rack might be sufficient, provided that adequate bandwidth is available. Both storage networks reside on the same device and are isolated through distinct VLANs.
+  - We strongly recommend that you deploy two Top-of-Rack (ToR) switches in each rack or room to ensure high resiliency.
+  - For edge implementations where cost efficiency is a priority, a single ToR switch per room or rack might be sufficient, provided that adequate bandwidth is available. Both storage networks reside on the same device and are isolated through distinct VLANs.
 
 - Make sure your network switches support Link Layer Discovery Protocol (LLDP) and that LLDP is enabled on all switch ports connected to the Azure Local machines. This is crucial for the LLDP Network Validator test, which verifies the network topology and connections for your rack aware cluster deployment.
 
@@ -97,3 +97,11 @@ Proceed to deploy your rack aware cluster by following the steps in:
 
 - [Deploy a rack aware cluster via the Azure portal](rack-aware-cluster-deploy-portal.md).
 - [Deploy a rack aware cluster via Azure Resource Manager templates](rack-aware-cluster-deployment-via-template.md).
+
+::: moniker-end
+
+::: moniker range="<=azloc-2509"
+
+This feature is available in Azure Local 2510 and later.
+
+::: moniker-end

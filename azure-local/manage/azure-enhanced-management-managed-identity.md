@@ -5,6 +5,7 @@ ms.topic: article
 author: alkohli
 ms.author: alkohli
 ms.date: 06/10/2025
+ms.subservice: hyperconverged
 ---
 
 # Enhanced management of Azure Local from Azure

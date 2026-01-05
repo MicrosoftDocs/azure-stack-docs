@@ -1,10 +1,10 @@
 ---
 title: Install-AksEdgeHostFeatures for AKS Edge
-author: rcheeran
+author: davidsmatlak
 description: The Install-AksEdgeHostFeatures PowerShell command Installs missing required OS features.
 ms.topic: reference
 ms.date: 02/02/2023
-ms.author: rcheeran 
+ms.author: davidsmatlak 
 ms.lastreviewed: 02/02/2023
 #ms.reviewer: jeguan
 

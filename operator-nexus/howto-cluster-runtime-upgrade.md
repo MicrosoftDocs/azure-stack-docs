@@ -6,7 +6,7 @@ ms.author: bpinto
 ms.service: azure-operator-nexus
 ms.custom: azure-operator-nexus, devx-track-azurecli
 ms.topic: how-to
-ms.date: 08/13/2025
+ms.date: 11/21/2025
 # ms.custom: template-include
 ---
 
@@ -23,7 +23,22 @@ This how-to guide explains the steps for installing the required Azure CLI and e
    - Subscription ID (`SUBSCRIPTION`)
    - Cluster name (`CLUSTER`)
    - Resource group (`CLUSTER_RG`)
-1. Target Cluster must be healthy in a running state, with all control plane nodes healthy.
+1. Cluster Detailed status must be ``Running``.
+1. Cluster to Cluster Manager connectivity must be ``Connected``.
+1. Under Cluster > Workload > Compute Servers
+    - Three of four control plane nodes must be Power state ``On``, Cordon status ``Uncordoned``, Ready state ``Yes``, and Degraded ``No``.
+        - The spare control plane node should be in Power state ``Off``, Ready state ``No``, and Degraded ``No``.
+    - The management plane servers are broken into two groups on odd and even numbered racks. For each group at least one half of the servers must be in Power State ``On``, Cordon status ``Uncordoned``, Ready state ``Yes``, and Degraded ``No``.
+        - It is recommended to have more than 50% of the management plane servers available to mitigate any risk.
+    - Compute plane server numbers vary based on individual cluster runtime threshold settings. Customers need to determine their minimum number based on their settings, looking for Power state ``On``, Cordon status ``Uncordoned``, Ready state ``Yes``, and Degraded ``No``.
+1. Under Cluster > Managed Resource Group select the group name to go to the resource group page.
+    - In the resource group, search for ``Kubernetes - Azure Arc`` to identify the Azure Arc information and select it. Status should be ``Connected``.
+        - Within Azure Arc page, select Settings > Extensions.
+            - ``nc-platform-extension`` should be in status ``Succeeded``.
+        - ``nc-platform-runtime-extension`` should be in status ``Succeeded``.
+
+> [!NOTE]
+> These same checks should also be performed following the upgrade to ensure the Cluster is healthy.
 
 ## Checking current runtime version
 

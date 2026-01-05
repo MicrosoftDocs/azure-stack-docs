@@ -3,8 +3,8 @@ title: Manage node taints for an AKS cluster
 description: Learn how to manage node taints in AKS on Azure Local
 ms.topic: how-to
 ms.date: 06/03/2024
-author: sethmanheim
-ms.author: sethm 
+author: davidsmatlak
+ms.author: davidsmatlak 
 ms.reviewer: abha
 ms.lastreviewed: 01/30/2024
 ---

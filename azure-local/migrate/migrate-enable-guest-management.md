@@ -7,6 +7,7 @@ ms.date: 10/15/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.custom: sfi-image-nochange
+ms.subservice: hyperconverged
 ---
 
 # Enable guest management for migrated VMs

@@ -5,8 +5,9 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 10/10/2025
+ms.date: 12/15/2025
 ms.custom: sfi-image-nochange
+ms.subservice: hyperconverged
 ---
 
 # Create logical networks for Azure Local VMs enabled by Azure Arc
@@ -17,6 +18,7 @@ This article describes how to create or add logical networks for your Azure Loca
 
 > [!NOTE]
 > Azure Local VMs only support IPv4 addresses. IPv6 addresses aren't supported.
+> Azure Local doesn't support provisioning an Azure Local VM using an IP address that is configured as the DNS server or a gateway on the same logical network.
 
 ## Prerequisites
 

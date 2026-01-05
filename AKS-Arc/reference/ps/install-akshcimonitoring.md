@@ -1,10 +1,10 @@
 ---
 title: Install-AksHciMonitoring for AKS hybrid
-author: sethmanheim
+author: davidsmatlak
 description: The Install-AksHciMonitoring PowerShell command deploys Prometheus-based monitoring solution.
 ms.topic: reference
 ms.date: 2/12/2021
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
 

@@ -1,6 +1,6 @@
 ---
-author: sethmanheim
-ms.author: sethm
+author: davidsmatlak
+ms.author: davidsmatlak
 ms.service: azure-stack
 ms.custom: linux-related-content
 ms.topic: include

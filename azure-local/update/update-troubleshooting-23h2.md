@@ -4,8 +4,9 @@ description: Learn how to troubleshoot solution updates applied to Azure Local, 
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 02/25/2025
+ms.date: 12/30/2025
 ms.custom: sfi-image-nochange
+ms.subservice: hyperconverged
 #customer intent: As a Principal Content Developer, I want provide customers with information and guidance on how to troubleshoot solution updats for their Azure Local intances.
 ---
 
@@ -19,7 +20,7 @@ This article describes how to troubleshoot solution updates that are applied to 
 
 If your system was created via a new deployment of Azure Local, then an orchestrator was installed during the deployment. The orchestrator manages all of the updates for the platform - OS, drivers and firmware, agents and services.
 
-The new update solution includes a retry and remediation logic. This logic attempts to fix update issues in a non-disruptive way, such as retrying a Cluster-Aware Update (CAU) run. If an update run can't be remediated automatically, it fails. When an update fails, Microsoft recommends inspecting the details for the failure message to determine the appropriate next action. You can attempt to resume the update, if appropriate, to determine if a retry will resolve the issue.
+The new update solution includes a retry and remediation logic. This logic attempts to fix update issues in a nondisruptive way, such as retrying a Cluster-Aware Update (CAU) run. If an update run can't be remediated automatically, it fails. When an update fails, Microsoft recommends inspecting the details for the failure message to determine the appropriate next action. You can attempt to resume the update, if appropriate, to determine if a retry will resolve the issue.
 
 ## Troubleshoot readiness checks
 
@@ -27,9 +28,9 @@ The new update solution includes a retry and remediation logic. This logic attem
 
 The troubleshooting steps differ depending on which scenario the readiness checks are from.
 
-### Using Azure portal
+## Using Azure portal
 
-**Scenario 1: System health checks**
+### Using Azure portal, scenario 1: System health checks
 
 This scenario occurs when preparing to install system updates in Azure Update Manager:
 
@@ -52,7 +53,7 @@ This scenario occurs when preparing to install system updates in Azure Update Ma
     > [!NOTE]
     > The system health checks run every 24 hours, so it may take up to 24 hours for the new results to sync to the Azure portal after remediating the failures. To initiate a new system health check immediately or further troubleshoot, see the [PowerShell](#using-powershell) section.
 
-**Scenario 2: Update readiness checks**
+### Using Azure portal, scenario 2: Update readiness checks
 
 This scenario occurs when installing and tracking system updates in Azure Update Manager:
 
@@ -70,9 +71,9 @@ This scenario occurs when installing and tracking system updates in Azure Update
 
     To further troubleshoot, see the [PowerShell](#powershell) section.
 
-### Using PowerShell
+## Using PowerShell
 
-**Scenario 1: System health checks**
+### Using PowerShell, scenario 1: System health checks
 
 To troubleshoot system health checks via PowerShell:
 
@@ -120,9 +121,9 @@ To troubleshoot system health checks via PowerShell:
 1. To filter the `HealthCheckResult` property to identify failing tests, run the following command:
 
     ```powershell
-    $result = Get-SolutionUpdateEnvironment 
+    $result = Get-SolutionUpdateEnvironment
  
-    $result.HealthCheckResult | Where-Object {$_.Status -ne "SUCCESS"} | FL Title,Status,Severity,Description,Remediation
+    $result.HealthCheckResult | Where-Object {$_.Status -ne "SUCCESS"} | Format-List Title, Status, Severity, Description, Remediation
     ```
 
     Here's a sample output:
@@ -143,7 +144,19 @@ To troubleshoot system health checks via PowerShell:
               tests-for-cluster-updating-readiness`
     ```
 
-1. Review the `Remediation` field for the failed tests and take action as appropriate to resolve the failures.
+1. Review the `Remediation` property for the failed tests and take action as appropriate to resolve the failures.
+
+1. If you require additional diagnostic information to determine the cause of the failed tests, examine the `AdditionalData` property by using the `-FullHealthCheckDetails` parameter:
+
+    ```powershell
+    $FullResults = Get-SolutionUpdateEnvironment -FullHealthCheckDetails
+
+    $Failures = $FullResults.HealthCheckResult | Where-Object { $_.Status -ne "SUCCESS" -and $_.Severity -ne "INFORMATIONAL" }
+
+    $Failures | Format-List *
+    ```
+
+1. If present, use the diagnostic information shown in `AdditionalData` property, such as 'FailedMachines', 'Source' and/or "ExceptionMessage" to determine which physical machines are causing the test failure, together with information provided in the link from the `Remediation` property to resolve the failures.
 
 1. After resolving the failures, invoke the system health checks again by running the following command:
 
@@ -151,18 +164,18 @@ To troubleshoot system health checks via PowerShell:
     Invoke-SolutionUpdatePrecheck -SystemHealth
     ```
 
-1. Use `Get-SolutionUpdateEnvironment` to confirm the failing health check failures have been resolved.  It may take a few minutes for the system health checks to run.
+1. Use `Get-SolutionUpdateEnvironment` to confirm the failing health check failures have been resolved. It may take a few minutes for the system health checks to run.
 
     Here's a sample output:
 
     ```output
-    PS C:\Users\lcmuser>  Get-SolutionUpdateEnvironment | FL HealthState, HealthCheckResult, HealthCheckDate 
+    PS C:\Users\lcmuser>  Get-SolutionUpdateEnvironment | Format-List HealthState, HealthCheckResult, HealthCheckDate 
 
     HealthState       : InProgress 
     HealthCheckResult : 
     HealthCheckDate   : 1/1/0001 12:00:00 AM 
 
-    PS C:\Users\lcmuser>  Get-SolutionUpdateEnvironment | FL HealthState, HealthCheckResult, HealthCheckDate
+    PS C:\Users\lcmuser>  Get-SolutionUpdateEnvironment | Format-List HealthState, HealthCheckResult, HealthCheckDate
 
     HealthState       : Success 
 
@@ -173,20 +186,37 @@ To troubleshoot system health checks via PowerShell:
     HealthCheckDate   : 10/18/2024 11:56:49 PM 
     ```
 
-**Scenario 2: Update readiness checks**
+### Using PowerShell, scenario 2: Update readiness checks
 
 When update readiness checks fail, this causes the update to fail on the system. To troubleshoot update readiness checks via PowerShell:
 
-1. To validate that the update readiness checks failed, run the following command on one of the machines in your system:
+1. To validate that the update readiness checks failed, run the following command on one of the machines in your system to identify the `ResourceId` of the update:
 
     ```powershell
-   Get-SolutionUpdate | FT Version,State,HealthCheckResult
+   Get-SolutionUpdate | Format-Table ResourceId, State, Version
     ```
 
     Here's a sample output:
 
     ```output
-    PS C:\Users\lcmuser> Get-SolutionUpdate | FT Version,State,HealthCheckResult 
+    PS C:\Users\lcmuser> Get-SolutionUpdate | Format-Table ResourceId, State, Version
+
+    ResourceId                     State                  Version 
+    ----------                     -----                  -------
+    redmond/Solution10.2405.2.7    HealthCheckFailed      10.2405.2.7
+
+    ```
+
+1. Using the `ResourceId` of the update you're attempting to install, run the following command replacing the `Id` parameter with the ResourceId of your update, from the output of the previous command:
+
+    ```powershell
+    Get-SolutionUpdate -Id <Resource ID> | Format-Table Version, State, HealthCheckResult
+    ```
+
+    Here's a sample output:
+
+    ```output
+    PS C:\Users\lcmuser> Get-SolutionUpdate -Id redmond/Solution10.2405.2.7 | Format-Table Version, State, HealthCheckResult 
 
     Version     State              HealthCheckResult 
     -------     -----              ----------------- 
@@ -195,13 +225,13 @@ When update readiness checks fail, this causes the update to fail on the system.
     PS C:\Users\lcmuser>
     ```
 
-1. Review the `State` for the update and view the `HealthCheckFailed` value.
+1. Review the `State` for the update and view the `HealthCheckResult` value.
 
-1. To filter the `HealthCheckResult` property to identify failing tests, run the following command:
+1. To filter the `HealthCheckResult` property to identify failing tests, run the following command, replace the `Id` value with the `ResourceId` of your update, identified from the earlier command:
 
     ```powershell
-    $result = Get-SolutionUpdate 
-    $result.HealthCheckResult | Where-Object {$_.Status -ne "SUCCESS"} | FL Title,Status,Severity,Description,Remediation
+    $result = Get-SolutionUpdate -Id <Resource ID>
+    $result.HealthCheckResult | Where-Object {$_.Status -ne "SUCCESS"} | Format-List Title, Status, Severity, Description, Remediation
     ```
 
     Here's a sample output:
@@ -222,17 +252,29 @@ When update readiness checks fail, this causes the update to fail on the system.
               tests-for-cluster-updating-readiness
      ```
 
-1. Review the `Remediation` field for the failed tests and take action as appropriate to resolve the failures.
+1. Use the link shown in the `Remediation` property of the failed test, review the article using a device with a web-browser to determine appropriate actions to resolve the failures.
 
-1. After resolving the failures, invoke the update readiness checks again by running the following command:
+1. If you require additional diagnostic information to determine the cause of the failed tests, examine the `AdditionalData` property by using the `-FullHealthCheckDetails` parameter:
 
     ```powershell
-    Get-SolutionUpdate -Id <some ID> | Start-SolutionUpdate -PrepareOnly
+    $FullResults = Get-SolutionUpdate -Id <Resource ID> -FullHealthCheckDetails
+
+    $Failures = $FullResults.HealthCheckResult | Where-Object { $_.Status -ne "SUCCESS" -and $_.Severity -ne "INFORMATIONAL" }
+
+    $Failures | Format-List *
+    ```
+
+1. If present, use the diagnostic information shown in `AdditionalData` property, such as 'FailedMachines', 'Source' and/or "ExceptionMessage" to determine which physical machines are causing the test failure, together with information provided in the link from the `Remediation` property to resolve the failures.
+
+1. After resolving the failures, invoke the update readiness checks again by running the following command
+
+    ```powershell
+    Get-SolutionUpdate -Id <Resource ID> | Start-SolutionUpdate -PrepareOnly
     ```
 
 ## Troubleshoot update failures
 
-If there is an issue that causes an update to fail, reviewing the detailed step progress to identify where it failed is often the best way to determine if the issue is something that can be remediated through a simple repair (and resume) or a support engagement is required to resolve the issue. Key items to note for the failing step include:
+If there's an issue that causes an update to fail, reviewing the detailed step progress to identify where it failed is often the best way to determine if the issue is something that can be remediated through a simple repair (and resume) or a support engagement is required to resolve the issue. Key items to note for the failing step include:
 
 - Failing step name and description.
 
@@ -240,14 +282,14 @@ If there is an issue that causes an update to fail, reviewing the detailed step 
 
 - Failure message string (may pinpoint the issue to a specific known issue with documented remediation).
 
-Microsoft recommends using the Azure portal to identify the failing step information as shown at [Resume an update](#the-azure-portal).  Alternatively, see the next section for how view similar details in PowerShell using `Start-MonitoringActionplanInstanceToComplete`.
+Microsoft recommends using the Azure portal to identify the failing step information as shown at [Resume an update](#the-azure-portal). Alternatively, see the next section for how view similar details in PowerShell using `Start-MonitoringActionplanInstanceToComplete`.
 
 See the table below for update failure scenarios and remediation guidelines.
 
 | Step names | Type of issue | Remediation |
 | --- | --- | --- |
 | Any | Power loss or other similar interruption to system during the update. | 1. Restore power.<br>2. Run a system health check.<br>3. Resume the update.  |
-| CAU updates | Cluster Aware Update (CAU) update run fails with a `max retries exceeded` failure. | If there is an indication that multiple CAU attempts have been made and that they have all failed, it is often best to investigate the first failure.<br><br>Use the start and end time of the first failure to match up with the correct `Get-CauReport` output to further investigate the failure.  |
+| CAU updates | Cluster Aware Update (CAU) update run fails with a `max retries exceeded` failure. | If there's an indication that multiple CAU attempts have been made and that they have all failed, it is often best to investigate the first failure.<br><br>Use the start and end time of the first failure to match up with the correct `Get-CauReport` output to further investigate the failure.  |
 | Any | Memory, power supply, boot driver, or similar critical failure on one or more nodes. | See [Repair a node on Azure Local](../manage/repair-server.md) for how to repair the failing node.<br>Once the node has been repaired the update can be resumed. |
 
 ## Collect update logs
@@ -289,8 +331,8 @@ To view a detailed update summary report using PowerShell, follow these steps on
     Here's a sample output:
 
     ```output
-    PS C:\Users\lcmuser> $Update = Get-SolutionUpdate| ? Version -eq "10.2303.1.7" -verbose
-    PS C:\Users\lcmuser> $Failure = $Update|Get-SolutionUpdateRun
+    PS C:\Users\lcmuser> $Update = Get-SolutionUpdate | ? Version -eq "10.2303.1.7" -verbose
+    PS C:\Users\lcmuser> $Failure = $Update | Get-SolutionUpdateRun
     PS C:\Users\lcmuser> $Failure
     
     ResourceId      : redmond/Solution10.2303.1.7/6bcc63af-b1df-4926-b2bc-26e06f460ab0
@@ -315,7 +357,7 @@ To view a detailed update summary report using PowerShell, follow these steps on
     PS C:\Users\lcmuser> Start-MonitoringActionplanInstanceToComplete -actionPlanInstanceID 6bcc63af-b1df-4926-b2bc-26e06f460ab0
     ```
 
-   :::image type="content" source="./media/troubleshoot-updates/collect-logs-powershell.png" alt-text="Screenshot of Powershell collect logs output." lightbox="./media/troubleshoot-updates/collect-logs-powershell.png":::
+   :::image type="content" source="./media/troubleshoot-updates/collect-logs-powershell.png" alt-text="Screenshot of PowerShell collect logs output." lightbox="./media/troubleshoot-updates/collect-logs-powershell.png":::
 
 ## Resume an update
 

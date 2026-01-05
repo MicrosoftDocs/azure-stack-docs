@@ -4,17 +4,25 @@ description: Learn about new features in Azure Migrate for Azure Local.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 10/15/2025
+ms.date: 12/17/2025
 ms.service: azure-local
+ms.subservice: hyperconverged
 ---
 
 # What's new in Azure Migrate for Azure Local
 
-This article lists the various features and improvements that are available in virtual machine (VM) migration to Azure Local. This article applies to both Hyper-V (Preview) and VMware VM migrations.
+This article lists the various features and improvements that are available in virtual machine (VM) migration to Azure Local (*formerly Azure Stack HCI*). This article applies to both Hyper-V (Preview) and VMware VM migrations.
 
 [!INCLUDE [hci-applies-to-2503](../includes/hci-applies-to-2503.md)]
 
-[!INCLUDE [azure-local-banner-23h2](../includes/azure-local-banner-23h2.md)]
+## December 2025
+
+This release includes these features and improvements.
+
+- **Replication deployment bug fixed** – Resolved an issue where some older Azure Migrate projects were incorrectly blocked during replication deployment despite the project being in a healthy state.
+
+- **Unnecessary replication job failures resolved** – Fixed a bug that caused repeated **Create Replication Policy** errors and unnecessary job failures when initiating VM replication.
+ 
 
 ## November 2025
 
@@ -31,7 +39,7 @@ This release includes these features and improvements:
 
 ## October 2025
 
-This release marks the **General Availability (GA) of Azure Migrate support for migrating VMware VMs to Azure Local**.
+This release marks the **General Availability (GA) of Azure Migrate support for migrating VMware VMs to Azure Local**. No user changes are needed to get the GA capabilities.
 
 This milestone highlights several capabilities shaped by customer and partner feedback during the preview, including:
 

@@ -4,8 +4,9 @@ description: Learn how to prepare GPUs for an Azure Local instance.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 10/20/2025
+ms.date: 11/18/2025
 ms.service: azure-local
+ms.subservice: hyperconverged
 ---
 
 # Prepare GPUs for Azure Local
@@ -35,7 +36,9 @@ GPU resource model | Entire device | Equally partitioned device |
 
 ## Supported GPU models
 
-To see the full list of supported solutions and GPUs available, see [Azure Local Solutions](https://azurestackhcisolutions.azure.microsoft.com/#/catalog?gpuSupport=GPU_P&gpuSupport=DDA) and select **GPU support** in the left menu for options.  
+To see the full list of supported solutions and GPUs available, see [Azure Local catalog](https://azurestackhcisolutions.azure.microsoft.com/#/catalog?gpuSupport=GPU_P&gpuSupport=DDA). The page opens with GPU support options already selected.
+
+For a list of Premier Solutions and Integrated Systems that support accelerated AI workloads with Azure Local supported GPU models, go to the Azure Local catalog and select **AI workload** under **Solution capability** in the left menu.
 
 NVIDIA supports their workloads separately with their virtual GPU software. For more information, see [Microsoft Azure Local - Supported NVIDIA GPUs and Validated Server Platforms](https://docs.nvidia.com/vgpu/17.0/grid-vgpu-release-notes-microsoft-azure-stack-hci/index.html#hardware-configuration).
 
@@ -52,9 +55,9 @@ The following table shows which GPU model is supported by which GPU assignment t
 | NVIDIA A10 |&cross; No |&check; Yes |&cross; No |&check; Yes |
 | NVIDIA A16 |&check; Yes |&check; Yes |&check; Yes |&check; Yes |
 | NVIDIA A40 |&cross; No |&check; Yes |&cross; No |&check; Yes |
-| NVIDIA L4 |&cross; No |&check; Yes |&cross; No |&check; Yes |
-| NVIDIA L40 |&cross; No |&check; Yes |&cross; No |&check; Yes |
-| NVIDIA L40S |&cross; No |&check; Yes |&cross; No |&check; Yes |
+| NVIDIA L4 |&cross; No |&check; Yes |&check; Yes |&check; Yes |
+| NVIDIA L40 |&cross; No |&check; Yes |&check; Yes |&check; Yes |
+| NVIDIA L40S |&cross; No |&check; Yes |&check; Yes |&check; Yes |
 
 *AKS Arc doesn't currently support GPU partitions.
 
@@ -81,7 +84,7 @@ First ensure there is no driver installed for each machine. If there is a host d
 After you uninstalled the host driver or if you didn't have any driver installed, run PowerShell as administrator with the following command:
 
 ```powershell
-Get-PnpDevice -Status Error | fl FriendlyName, ClusterId
+Get-PnpDevice -Status Error | fl FriendlyName, InstanceId
 ```
 You should see the GPU devices appear in an error state as `3D Video Controller` as shown in the example output that lists the friendly name and instance ID of the GPU:
 
@@ -112,18 +115,18 @@ Follow this process if using DDA:
 
 ### 1. Disable and dismount GPUs from the host
 
-For DDA, when you uninstall the host driver or have a new Azure Local setup, the physical GPU goes into an error state. You must dismount all the GPU devices to continue. You can use Device Manager or PowerShell to disable and dismount the GPU using the `ClusterID` obtained in the prior step.
+For DDA, when you uninstall the host driver or have a new Azure Local setup, the physical GPU goes into an error state. You must dismount all the GPU devices to continue. You can use Device Manager or PowerShell to disable and dismount the GPU using the `InstanceId` obtained in the prior step.
 
 ```powershell
 $id1 = "GPU_instance_ID"
-Disable-PnpDevice -ClusterId $id1 -Confirm:$false
-Dismount-VMHostAssignableDevice -ClusterPath $id1 -Force
+Disable-PnpDevice -InstanceId $id1 -Confirm:$false
+Dismount-VMHostAssignableDevice -InstancePath $id1 -Force
 ```
 
 Confirm the GPUs were correctly dismounted from the host machine. The GPUs is now in an `Unknown` state:
 
 ```powershell
-Get-PnpDevice -Status Unknown | fl FriendlyName, ClusterId
+Get-PnpDevice -Status Unknown | fl FriendlyName, InstanceId
 ```
 
 Repeat this process for each machine in your system to prepare the GPUs.
@@ -155,7 +158,7 @@ pnputil /enum-devices OR pnputil /scan-devices
 You should be able to see the correctly identified GPUs in `Get-PnpDevice`:
 
 ```powershell
-Get-PnpDevice -Class Display | fl FriendlyName, ClusterId
+Get-PnpDevice -Class Display | fl FriendlyName, InstanceId
 ```
 
 Repeat the above steps for each host in your Azure Local.
@@ -187,7 +190,7 @@ pnputil /enum-devices
 You should be able to see the correctly identified GPUs in `Get-PnpDevice`:
 
 ```powershell
-Get-PnpDevice -Class Display | fl FriendlyName, ClusterId
+Get-PnpDevice -Class Display | fl FriendlyName, InstanceId
 ```
 You can also run the NVIDIA System Management Interface `nvidia-smi` to list the GPUs on the host machine as follows:
 

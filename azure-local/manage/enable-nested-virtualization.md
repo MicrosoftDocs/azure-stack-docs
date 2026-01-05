@@ -6,6 +6,7 @@ author: alkohli
 ms.author: alkohli
 ms.service: azure-local
 ms.date: 10/17/2025
+ms.subservice: hyperconverged
 ---
 
 # Enable nested virtualization in Azure Local

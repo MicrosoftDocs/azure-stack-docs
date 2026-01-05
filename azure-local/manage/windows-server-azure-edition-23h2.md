@@ -9,6 +9,7 @@ ms.service: azure-local
 ms.custom:
   - devx-track-azurecli
 ms.date: 03/19/2025
+ms.subservice: hyperconverged
 ---
 
 # Deploy Windows Server Azure Edition VMs on Azure Local

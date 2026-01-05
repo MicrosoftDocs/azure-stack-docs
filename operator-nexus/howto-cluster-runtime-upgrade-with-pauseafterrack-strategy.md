@@ -5,7 +5,7 @@ author: bartpinto
 ms.author: bpinto
 ms.service: azure-operator-nexus
 ms.topic: how-to
-ms.date: 08/13/2025
+ms.date: 11/21/2025
 # ms.custom: template-include
 ---
 
@@ -25,7 +25,7 @@ Executing Cluster runtime upgrade with `PauseAfterRack` strategy will pause to w
    - Subscription ID (`SUBSCRIPTION`)
    - Cluster name (`CLUSTER`)
    - Resource group (`CLUSTER_RG`)
-1. Target Cluster must be healthy in a running state, with all control plane nodes healthy.
+1. Target Cluster must be healthy in a running state, with all control plane nodes healthy. Details on checking Cluster health can be found in [Cluster Runtime Upgrade](./howto-cluster-runtime-upgrade.md#prerequisites).
 
 ## Procedure
 

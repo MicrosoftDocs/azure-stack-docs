@@ -5,8 +5,8 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.date: 04/23/2025
-
 ms.service: azure-local
+ms.subservice: hyperconverged
 ---
 
 # Manage system security with Microsoft Defender for Cloud (preview)

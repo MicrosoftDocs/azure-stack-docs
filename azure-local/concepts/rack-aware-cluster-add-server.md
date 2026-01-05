@@ -9,7 +9,7 @@ ms.author: alkohli
 
 # Add or repair a node to a rack aware cluster (Preview)
 
-> Applies to: Azure Local version 2510 and later
+::: moniker range=">=azloc-2510"
 
 This article explains how to add or repair servers (nodes) for your Azure Local rack aware cluster.
 
@@ -67,3 +67,11 @@ You can also see the zone and node information in the Azure portal by going to y
 ## Repair a server
 
 You can repair nodes in your Azure Local rack aware cluster. You may need to repair a node in your system if there is a hardware failure. For more information, see [Repair a node on Azure Local](../manage/repair-server.md).
+
+::: moniker-end
+
+::: moniker range="<=azloc-2509"
+
+This feature is available in Azure Local 2510 and later.
+
+::: moniker-end

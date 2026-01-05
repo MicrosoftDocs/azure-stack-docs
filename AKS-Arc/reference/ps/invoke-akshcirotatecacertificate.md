@@ -1,10 +1,10 @@
 ---
 title: Invoke-AksHciRotateCACertificate for AKS hybrid
 description: The Invoke-AksHciRotateCACertificate PowerShell command rotates the cloud agent CA certificates.
-author: sethmanheim
+author: davidsmatlak
 ms.topic: reference
 ms.date: 6/16/2022
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 6/16/2022
 ms.reviewer: jeguan
 

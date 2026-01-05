@@ -5,8 +5,9 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 10/08/2025
+ms.date: 12/17/2025
 ms.custom: sfi-image-nochange
+ms.subservice: hyperconverged
 ---
 
 # Manage Azure Local VMs enabled by Azure Arc
@@ -968,19 +969,6 @@ To change cores and memory, follow these steps in the Azure portal for your Azur
 
    :::image type="content" source="./media/manage-arc-virtual-machines/change-cores-memory.png" alt-text="Screenshot of the pane for changing cores and memory size of a VM." lightbox="./media/manage-arc-virtual-machines/change-cores-memory.png":::
 
-## Change dynamic memory
-
-You can change the dynamic memory of a VM using CLI to specify these parameters:
-
-`--hardware-profile vm-size="Custom" processors=1 memory-mb=1024 maximum-memory-mb=2048 minimum-memory-mb=1024 target-memory-buffer=20`
-
-Note that `minimum-memory-mb` is less than or equal to `memory-mb` and `maximum-memory-mb` is greater than or equal to `memory-mb`.
-
-Here is a sample script:
-
-```azurecli
-az stack-hci-vm create --name "my_dynmemory" -g my_registration" --admin-username "admin" --admin-password "" --custom-location "/subscriptions/my_subscription/resourceGroups/my_registration/providers/Microsoft.ExtendedLocation/customLocations/my_customlocation" --location "eastus2euap" --image "/subscriptions/my_subscription/resourceGroups/my_registration/microsoft.azurestackhci/marketplacegalleryimages/2022-datacenter-azure-edition-core-01" --hardware-profile vm-size="Custom" processors=1 memory-mb=1024 maximum-memory-mb=2048 minimum-memory-mb=1024 target-memory-buffer=20 --enable-agent true --nics "dynnic"
-```
 
 ## Guest management enablement support
 

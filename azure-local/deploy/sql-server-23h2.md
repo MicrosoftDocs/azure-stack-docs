@@ -5,6 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.date: 10/10/2025
+ms.subservice: hyperconverged
 ---
 
 # Deploy SQL Server on Azure Local, version 23H2
@@ -41,6 +42,8 @@ For instructions on installing SQL Server, see:
 
 - [SQL Server installation guide for Windows](/sql/database-engine/install-windows/install-sql-server).
 - [Installation guidance for SQL Server on Linux](/sql/linux/sql-server-linux-setup).
+
+For information on licensing and billing for SQL Server, see [Manage licensing and billing of SQL Server](/sql/sql-server/azure-arc/manage-license-billing).
 
 ### Step 3: Monitor and performance tune SQL Server
 

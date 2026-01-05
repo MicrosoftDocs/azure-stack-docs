@@ -1,10 +1,10 @@
 ---
 title: Use GPUs for compute-intensive workloads in AKS on Windows Server
 description: Learn how to deploy GPU-enabled node pools in AKS on Windows Server.
-author: sethmanheim
+author: davidsmatlak
 ms.topic: how-to
 ms.date: 04/02/2025
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 03/21/2023
 
 # Intent: As an IT Pro, I want to learn how to deploy GPU-enabled node pools

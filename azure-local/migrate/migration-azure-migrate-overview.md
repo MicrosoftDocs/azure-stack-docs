@@ -7,6 +7,7 @@ ms.date: 09/03/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.custom: linux-related-content
+ms.subservice: hyperconverged
 ---
 
 # Overview of Azure Migrate based migration for Azure Local (preview)
@@ -16,6 +17,9 @@ ms.custom: linux-related-content
 This article provides an overview of how to migrate Hyper-V virtual machines (VMs) to your Azure Local instance using Azure Migrate.
 
 Azure Migrate is a central hub for tools to discover, assess, and migrate on-premises servers, apps, and data to the Microsoft Azure cloud. Azure Local is a hyperconverged infrastructure (HCI) system solution that hosts virtualized Windows and Linux workloads in a hybrid environment. You can use the Azure Migrate platform to move on-premises Hyper-V VMs to your Azure Local instance.
+
+> [!NOTE]
+> Azure Migrate doesn't support migrating VMs to External Storage Area Network (SAN)-backed storage.
 
 For more information on the Azure Migrate platform, see [About Azure Migrate](/azure/migrate/migrate-services-overview).
 

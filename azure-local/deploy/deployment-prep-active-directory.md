@@ -3,10 +3,11 @@ title: Prepare Active Directory for Azure Local, version 23H2 deployment
 description: Learn how to prepare Active Directory before you deploy Azure Local, version 23H2.
 author: alkohli
 ms.topic: how-to
-ms.date: 03/04/2025
+ms.date: 12/30/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
+ms.subservice: hyperconverged
 ---
 
 # Prepare Active Directory for Azure Local deployment
@@ -73,7 +74,7 @@ To create a dedicated OU, follow these steps:
 
 1. When prompted, provide the username and password for the deployment.
 
-    1. Make sure that only the username is provided. The name shouldn't include the domain name, for example, `contoso\username`. **Username must be between 1 to 64 characters and only contain letters, numbers, hyphens, and underscores and may not start with a hyphen or number.**
+    1. Make sure that only the username is provided. The name shouldn't include the domain name, for example, `contoso\username`. **The username must be 1–20 characters long, contain only letters, numbers, hyphens, and underscores, and can't start with a hyphen or number.**
     1. Make sure that the password meets complexity and length requirements. **Use a password that is at least 14 characters long and contains: a lowercase character, an uppercase character, a numeral, and  a special character.**
 
     Here's a sample output from a successful completion of the script:
@@ -109,7 +110,7 @@ We recommend that you follow these best practices for OU creation. These recomme
   - Enable the **Block Inheritance** option at both the parent OU and sub OU levels.
   - To apply a GPO to all Azure Local instances, such as for nesting a domain group in the local administrators group, link the GPO to the parent OU and enable the **Enforced** option. By doing this, you apply the configuration to all sub OUs, even with **Block Inheritance** enabled.
 
-If your organization's processes and procedures require deviations from these recommendations, they are allowed. However, it's important to consider the security and manageability implications of your design taking these factors into consideration.
+If your organization's processes and procedures require deviations from these recommendations, they're allowed. However, it's important to consider the security and manageability implications of your design taking these factors into consideration.
 
 ## Next steps
 
