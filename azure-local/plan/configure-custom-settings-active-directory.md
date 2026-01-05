@@ -3,7 +3,7 @@ title: Custom or advanced Active Directory configuration for Azure Local, versio
 description: Learn how to assign the required permissions and create the required DNS records for use by Active Directory for your Azure Local, version 23H2 system.
 author: alkohli
 ms.topic: how-to
-ms.date: 03/04/2025
+ms.date: 12/30/2025
 ms.author: alkohli
 ms.service: azure-local
 ms.custom: devx-track-azurepowershell
@@ -141,7 +141,7 @@ nslookup node1.na.corp.contoso.com
 ```
 
 > [!NOTE]
-> You cannot use group policies to configure the DNS suffix list with Azure Local instance.
+> You can't use group policies to configure the DNS suffix list with Azure Local instance.
 
 ## Cluster aware updating (CAU)
 
