@@ -4,7 +4,7 @@ description: Learn how to deploy disconnected operations for Azure Local in your
 ms.topic: how-to
 author: ronmiab
 ms.author: robess
-ms.date: 10/16/2025
+ms.date: 01/05/2026
 ai-usage: ai-assisted
 ---
 
