@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 02/19/2025
+ms.date: 12/30/2025
 ms.subservice: hyperconverged
 ---
 
@@ -122,6 +122,6 @@ Follow these steps to export the recovery keys for your cluster:
 
 ## Next steps
 
-For more information about Bitlocker integration with Cluster Shared Volumes, see:
+For more information about BitLocker integration with Cluster Shared Volumes, see:
 
 - [Use BitLocker with Cluster Shared Volumes](/windows-server/failover-clustering/bitlocker-on-csv-in-ws-2022).
