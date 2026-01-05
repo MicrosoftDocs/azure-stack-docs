@@ -4,7 +4,7 @@ description: This article explains the benefits of using Automatic Virtual Machi
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 03/03/2025
+ms.date: 12/30/2025
 ms.service: azure-local
 ms.subservice: hyperconverged
 ---
@@ -48,7 +48,7 @@ Choose the deployment option that best suits your needs:
 The following table shows the supported Windows Server VM versions per their activation method.
 
 | Windows Server VM Version | AHB Windows Server 2019 | AHB Windows Server 2022 | AHB Windows Server 2025 |Windows Server subscription |
-|--|--|--|--| -- |
+|--|--|--|--|--|
 | Windows Server 2016 | Y | Y | Y | Y |
 | Windows Server 2019 | Y | Y | Y | Y |
 | Windows Server 2022 |  | Y | Y | Y |
@@ -229,7 +229,7 @@ To change or add keys:
 2. In the **Manage activation keys** pane, enter the new keys for the selected host machines, and then select **Apply**.
 
    > [!NOTE]
-   > Overwriting keys does not reset the activation count for used keys. Ensure that you're using the right keys before applying them to the machines.
+   > Overwriting keys doesn't reset the activation count for used keys. Ensure that you're using the right keys before applying them to the machines.
 
 ### [PowerShell](#tab/powershell)
 
@@ -263,7 +263,7 @@ If you receive the following AVMA error messages, try using the verification ste
 
 This error might be due to one of the following issues:
 
-- A key submitted to activate a machine in the system was not accepted.
+- A key submitted to activate a machine in the system wasn't accepted.
 - A disruption of the activation process prevented a machine in the system from being activated.
 - A valid key hasn't been applied to a machine that was added to the system.
 

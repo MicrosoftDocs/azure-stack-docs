@@ -5,7 +5,7 @@ ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 02/14/2025
+ms.date: 12/30/2025
 ms.subservice: hyperconverged
 ---
 
@@ -13,7 +13,7 @@ ms.subservice: hyperconverged
 
 [!INCLUDE [includes](../includes/hci-applies-to-23h2-22h2.md)]
 
-This article describes a set of network patterns references to architect, deploy, and configure Azure Local using either one, two or three physical hosts. Depending on your needs or scenarios, you can go directly to your pattern of interest. Each pattern is described as a standalone entity and includes all the network components for specific scenarios.
+This article describes a set of network patterns references to architect, deploy, and configure Azure Local using either one, two, or three physical hosts. Depending on your needs or scenarios, you can go directly to your pattern of interest. Each pattern is described as a standalone entity and includes all the network components for specific scenarios.
 
 ## Choose a network reference pattern
 
