@@ -74,7 +74,7 @@ The management endpoint requires two certificates. You must put these certificat
 
 | Management endpoint certificate  | Required certificate subject  |
 |----------------------|------------------|
-| Server  | Management endpoint IP address: $ManagementIngressIpAddress. <br> If the management endpoint IP is **192.168.50.100**, then the server certificate's subject name must match exactly. For example, **Subject = 192.168.50.100**. You can also use an FQDN as an SN as long as it resolves to the management IP.| 
+| Server  | Management endpoint IP address: $ManagementIngressIpAddress. <br> If the management endpoint IP is **192.168.50.100**, then the server certificate's subject name must match exactly. For example, **Subject = 192.168.50.100**. You can also use a fully qualified domain name (FQDN) as a server name (SN) as long as it resolves to the management IP address. | 
 | Client  | Use a certificate subject that helps you distinguish it from others. Any string is acceptable. <br> For example, **Subject = ManagementEndpointClientAuth**.  |
 
 ## Create certificates to secure endpoints
