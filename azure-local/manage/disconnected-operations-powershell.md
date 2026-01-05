@@ -44,12 +44,14 @@ Get-AzEnvironment
 
 Here's a sample output:
 
-| Name| Resource Manager Url| ActiveDirectory Authority|
+```console
+| Name | Resource Manager Url | ActiveDirectory Authority |
 |-------------------|--------------------------------------|---------------------------| 
 | AzureChinaCloud   | https://management.chinacloudapi.cn/ | https://login.chinacloudapi.cn/ |
 | AzureCloud        | https://management.azure.com/        | https://login.microsoftonline.com |
 | AzureUSGovernment | https://management.usgovcloudapi.net/  | https://login.microsoftonline.us/ |
 | azure.local       | https://armmanagement.autonomous.cloud.private/ | https://login.autonomous.cloud.private/ |
+```
 
 ## Sign in to your private cloud (using device authentication)
 
