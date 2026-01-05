@@ -5,7 +5,7 @@ ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 12/16/2025
+ms.date: 01/05/2026
 ms.subservice: hyperconverged
 ---
 
@@ -242,7 +242,7 @@ This release includes the following features and improvements:
 
 ::: moniker-end
 
-::: moniker range="=azloc-2507"
+::: moniker range="=azloc-previous"
 
 ## Features and improvements in 2507
 
@@ -270,10 +270,6 @@ This release includes the following features and improvements:
 - **.NET updates**: This build uses .NET version **8.0.18** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
 
  
-::: moniker-end
-
-::: moniker range="=azloc-previous"
-
 ## Features and improvements in 2506
 
 There are two 2506 releases for June. Here are the details of each release:
