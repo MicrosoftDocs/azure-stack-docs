@@ -480,6 +480,12 @@ Connect-AzAccount -EnvironmentName $applianceCloudName -UseDeviceAuthentication
 
 ## Create a subscription and resource group for Azure Local nodes (infrastructure)
 
+> [!IMPORTANT]
+> - Plan the subscription and resource group where you want to place your nodes and cluster. The resource move action isn't supported.
+> - The cluster resource created during deployment is used for workloads like VMs and Azure Kubernetes Services, so plan your role-based access controls accordingly.
+> - Don't place the cluster resource in the operator subscription, unless you plan to restrict access to only operators with full access to other operations. You can create more subscriptions or place it in the starter subscription.
+> - You can use Azure CLI or PowerShell to automate this process. For more information, see the [appendix](#appendix) in the Azure CLI documentation.
+
 Create a subscription for your Azure Local nodes and the Azure Local instance (cluster).
 
 1. Sign in to the local Azure portal at https://portal.</FQDN>. Replace </FQDN> with your domain name.  
@@ -493,17 +499,6 @@ Create a subscription for your Azure Local nodes and the Azure Local instance (c
 1. For the resource group name, enter a name such as *azure-local-disconnected-operations*.
 1. For the location, leave the value set to **Autonomous**.
 1. Select **Create** and wait for the operation to finish.
-
-
-> [!NOTE]
-> Alternatively, use Azure CLI or PowerShell to automate this process. Please see appendix in Azure CLI docs for how to create a subscription using CLI.
-
-    > [!NOTE]
-    > Plan the subscription and resource group where you want to place your nodes and cluster. The resource move action isn't supported.
-    >
-    > The cluster resource created during deployment is used for workloads like VMs and Azure Kubernetes Services, so plan your role-based access controls accordingly.
-    > 
-    > Don't place the cluster resource in the operator subscription, unless you plan to restrict this to only operators with full access to other operations. You can create more subscriptions or place it in the starter subscription.
 
 
 ## Register required resource providers
