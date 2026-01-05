@@ -40,6 +40,12 @@ This article highlights what's new (features and improvements) and critical know
  - Enabled the use of a FQDN in the SAN of the management certificate.
 
 ## Known issues for disconnected operations for Azure Local
+### SSL/TLS error using management endpoint (OperationsModule)
+When using a cmdlet that uses the management endpoint (e.g. Get-ApplianceHealthState) you receive an error 'threw and exception : The request was aborted: Could not create SSL/TLS secure channel.. Retrying'
+
+This is a known issue in the 2511 preview. The issue is fixed in 2512. 
+
+**Mitigation:** For 2511 - do not use Set-DisconnectedOperationsClientContext - rather do $context = New-DisconnectedOperationsClientContext and pass the $context to the respective cmdlets.
 
 ### Arc bootstrap fails on node (Invoke-AzStackHCIArcInitialization) on Original Equipment Manufacturer (OEM) provided images 
 If you are running an OEM image, make sure that you are on the correct OS baseline.
