@@ -27,7 +27,7 @@ To get updates for disconnected operations, follow these steps:
  
 After you download the update, copy the update file into the seed node in a staging folder, such as `C:\AzureLocalDisconnectedOperations`.
 
-## Load the Operationsmodule
+## Load the OperationsModule
 
 On the seed node, load the OperationsModule.
 
@@ -79,7 +79,7 @@ Start-ApplianceUpdate -TargetVersion $updatePackageResult.UpdatePackageVersion -
 ```
 
 > [!NOTE]  
-> Update can take several hours and might reboot the control plane appliance. If update fails, the system attempts to rollback to the last known good state and boot back.
+> Update can take several hours and might reboot the control plane appliance. If update fails, the system attempts to roll back to the last known good state and boot back.
 
 ## Get update history
 
