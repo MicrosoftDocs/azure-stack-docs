@@ -9,6 +9,7 @@ ms.reviewer: alkohli
 ms.custom:
   - linux-related-content
   - sfi-image-nochange
+ms.subservice: hyperconverged
 ---
 
 # Migrate Hyper-V VMs to Azure Local using Azure Migrate (preview)

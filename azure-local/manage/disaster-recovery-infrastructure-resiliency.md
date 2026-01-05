@@ -5,6 +5,7 @@ ms.topic: article
 author: sipastak
 ms.author: sipastak
 ms.date: 09/12/2025
+ms.subservice: hyperconverged
 ---
 
 # Infrastructure resiliency for Azure Local

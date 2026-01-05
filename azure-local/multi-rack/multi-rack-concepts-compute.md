@@ -7,6 +7,7 @@ ms.service: azure-local
 ms.topic: concept-article
 ms.date: 11/14/2025
 ms.custom: conceptual
+ms.subservice: multi-rack
 ---
 
 # Compute overview for multi-rack deployments of Azure Local (preview)

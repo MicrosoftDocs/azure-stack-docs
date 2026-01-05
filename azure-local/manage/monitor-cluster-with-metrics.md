@@ -8,6 +8,7 @@ ms.topic: how-to
 ms.service: azure-local
 ms.date: 03/20/2025
 ms.custom: sfi-image-nochange
+ms.subservice: hyperconverged
 ---
 
 # Monitor Azure Local with Azure Monitor Metrics

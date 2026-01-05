@@ -6,6 +6,7 @@ author: ronmiab
 ms.author: robess
 ms.date: 11/13/2025
 ai-usage: ai-assisted
+ms.subservice: hyperconverged
 ---
 
 # Appliance fallback log collection for disconnected operations with Azure Local VMs enabled by Azure Arc (preview)

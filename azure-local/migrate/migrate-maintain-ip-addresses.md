@@ -6,6 +6,7 @@ ms.topic: how-to
 ms.date: 10/15/2025
 ms.author: alkohli
 ms.reviewer: alkohli
+ms.subservice: hyperconverged
 ---
 
 # Maintain static IP addresses during migration

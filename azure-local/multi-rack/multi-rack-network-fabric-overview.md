@@ -6,6 +6,7 @@ ms.author: alkohli
 ms.service: azure-local
 ms.topic: concept-article
 ms.date: 12/19/2025
+ms.subservice: multi-rack
 ---
 
 # Network fabric overview for multi-rack deployments of Azure Local (preview)

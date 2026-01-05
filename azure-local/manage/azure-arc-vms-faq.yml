@@ -7,6 +7,7 @@ metadata:
   ms.author: alkohli
   ms.service: azure-local
   ms.date: 09/25/2025
+  ms.subservice: hyperconverged
   sections: []
 title: FAQ for Azure Local VMs enabled by Azure Arc
 summary:

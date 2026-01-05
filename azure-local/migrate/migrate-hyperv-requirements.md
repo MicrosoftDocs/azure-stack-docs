@@ -5,6 +5,7 @@ author: alkohli
 ms.topic: how-to
 ms.date: 09/25/2025
 ms.author: alkohli
+ms.subservice: hyperconverged
 ---
 
 # Review requirements for Hyper-V VM migration to Azure Local using Azure Migrate (preview)

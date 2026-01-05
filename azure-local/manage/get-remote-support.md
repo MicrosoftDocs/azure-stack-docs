@@ -6,6 +6,7 @@ ms.author: sethm
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
 ms.date: 07/31/2025
+ms.subservice: hyperconverged
 ---
 
 # Get remote support for Azure Local

@@ -6,6 +6,7 @@ ms.topic: how-to
 ms.date: 10/08/2025
 ms.author: alkohli
 ms.custom: references_regions
+ms.subservice: hyperconverged
 ---
 
 # Review requirements for VMware VM migration to Azure Local using Azure Migrate

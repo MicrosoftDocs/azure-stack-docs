@@ -6,6 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.date: 12/17/2025
 ms.service: azure-local
+ms.subservice: hyperconverged
 ---
 
 # What's new in Azure Migrate for Azure Local

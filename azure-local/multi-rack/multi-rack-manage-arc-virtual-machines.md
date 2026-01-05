@@ -6,6 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
 ms.date: 11/18/2025
+ms.subservice: multi-rack
 ---
 
 # Manage Azure Local VMs for multi-rack deployments (preview)

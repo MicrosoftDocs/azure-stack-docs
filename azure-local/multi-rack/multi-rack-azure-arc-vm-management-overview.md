@@ -7,6 +7,7 @@ ms.topic: how-to
 ms.service: azure-local
 ms.custom: linux-related-content
 ms.date: 11/17/2025
+ms.subservice: multi-rack
 ---
 
 # What is Azure Local VM management for multi-rack deployments (preview)?

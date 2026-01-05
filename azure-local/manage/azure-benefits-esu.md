@@ -8,6 +8,7 @@ ms.reviewer: jlei
 ms.date: 12/12/2025
 ms.lastreviewed: 02/23/2024
 ms.service: azure-local
+ms.subservice: hyperconverged
 ---
 
 # Free Extended Security Updates (ESU) through Azure Local

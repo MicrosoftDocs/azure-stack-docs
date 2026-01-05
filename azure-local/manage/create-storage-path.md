@@ -7,6 +7,7 @@ ms.topic: how-to
 ms.service: azure-local
 ms.date: 03/21/2025
 ms.custom: sfi-image-nochange
+ms.subservice: hyperconverged
 ---
 
 # Create storage path for Azure Local 

@@ -6,6 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
 ms.date: 10/23/2025
+ms.subservice: hyperconverged
 ---
 
 # Manage security defaults for Azure Local

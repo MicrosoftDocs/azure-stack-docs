@@ -6,6 +6,7 @@ author: ronmiab
 ms.author: robess
 ms.date: 08/06/2025
 ai-usage: ai-assisted
+ms.subservice: hyperconverged
 ---
 
 # Plan your network for disconnected operations on Azure Local (preview) 

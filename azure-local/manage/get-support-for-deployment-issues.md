@@ -6,6 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
 ms.date: 10/10/2025
+ms.subservice: hyperconverged
 ---
 
 # Get support for Azure Local deployment issues

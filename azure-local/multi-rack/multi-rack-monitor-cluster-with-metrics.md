@@ -6,6 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
 ms.date: 11/14/2025
+ms.subservice: multi-rack
 ---
 
 # Monitor multi-rack deployments of Azure Local with Azure Monitor Metrics (preview)

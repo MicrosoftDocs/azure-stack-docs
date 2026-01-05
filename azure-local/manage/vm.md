@@ -6,6 +6,7 @@ ms.topic: how-to
 ms.date: 11/04/2025
 ms.author: alkohli
 ms.custom: sfi-image-nochange
+ms.subservice: hyperconverged
 ---
 
 # Manage VMs with Windows Admin Center on Azure Local

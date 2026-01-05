@@ -5,6 +5,7 @@ ms.topic: article
 author: sipastak
 ms.author: sipastak
 ms.date: 10/23/2025
+ms.subservice: hyperconverged
 ---
 
 # Virtual machine resiliency for Azure Local
@@ -75,13 +76,13 @@ CloudCasa delivers Kubernetes-native backup, disaster recovery, and migration fo
 - [CloudCasa solutions for Azure](https://cloudcasa.io/partners/microsoft-azure/)
 - [Simplify Upgrades and Backup for Azure Local](https://cloudcasa.io/blog/upgrade-backup-azure-local/)
 
-#### Cohesity Data Project
+#### Cohesity DataProtect
 
-Cohesity Data Project, part of the Data Cloud platform, protects VMs with a single data-security platform. It combines backup, replication, and disaster recovery with unlimited immutable snapshots, granular file/VM/database restores, instant mass restore at scale, and integrated anomaly detection and data classification to speed clean recovery after cyber events. For Azure Local, Cohesity offers deep integration with the platform. This includes automatic VM discovery, policy-based protection, many restore options, and incremental-forever backups using Microsoft Resilient Change Tracking (RCT).
+Cohesity DataProtect, part of the Data Cloud platform, protects VMs with a single data-security platform. It combines backup, replication, and disaster recovery with unlimited immutable snapshots, granular file/VM/database restores, instant mass restore at scale, and integrated anomaly detection and data classification to speed clean recovery after cyber events. For Azure Local, Cohesity offers deep integration with the platform. This includes automatic VM discovery, policy-based protection, many restore options, and incremental-forever backups using Microsoft Resilient Change Tracking (RCT).
 
 Cohesity extends support by leveraging its mature Hyper-V connector and workflows, giving a consistent operating model as customers move Hyper-V workloads onto Azure Local.
 
-- [Cohesity Data Project](https://www.cohesity.com/platform/dataprotect/)
+- [Cohesity DataProtect](https://www.cohesity.com/platform/dataprotect/)
 - [Support statements for Azure Local](https://docs.cohesity.com/ui/login?redirectPath=%2F7_3%2FWeb%2FUserGuide%2FContent%2FReleaseNotes%2FSupportedVersions.htm#MicrosoftHyperV)
 
 #### Commvault

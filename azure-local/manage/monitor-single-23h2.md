@@ -8,6 +8,7 @@ ms.topic: how-to
 ms.service: azure-local
 ms.date: 03/04/2025
 ms.custom: sfi-image-nochange
+ms.subservice: hyperconverged
 ---
 
 # Monitor a single Azure Local system with Insights

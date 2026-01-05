@@ -6,6 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
 ms.date: 02/03/2025
+ms.subservice: hyperconverged
 ---
 
 # Manage syslog forwarding for Azure Local

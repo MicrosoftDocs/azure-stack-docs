@@ -8,6 +8,7 @@ ms.reviewer: alkohli
 ms.date: 11/24/2025
 ms.topic: how-to
 ms.service: azure-local
+ms.subservice: multi-rack
 ---
 
 # Create public load balancer on virtual networks on multi-rack deployments of Azure Local

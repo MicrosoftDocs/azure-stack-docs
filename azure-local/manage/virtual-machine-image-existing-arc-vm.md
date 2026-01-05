@@ -7,6 +7,7 @@ ms.topic: how-to
 ms.service: azure-local
 ms.custom: devx-track-azurecli
 ms.date: 12/18/2025
+ms.subservice: hyperconverged
 ---
 
 # Create Azure Local VM image using existing Azure Local VMs enabled by Azure Arc

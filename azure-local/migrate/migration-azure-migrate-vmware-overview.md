@@ -6,6 +6,7 @@ ms.topic: overview
 ms.date: 09/03/2025
 ms.author: alkohli
 ms.reviewer: alkohli
+ms.subservice: hyperconverged
 ---
 
 # Overview of Azure Migrate based VMware migration for Azure Local
