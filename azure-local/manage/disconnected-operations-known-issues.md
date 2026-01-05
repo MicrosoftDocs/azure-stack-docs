@@ -100,7 +100,9 @@ Solution Builder extension (SBE) validation fails when trying to reach an *aka.m
 Workaround:
 
 - Run the cloud deployment (portal) flow until the validation fails in the UX.
-- On the first machine (seed node), modify the following file `c:\CloudDeployment\Setup\Common\ExtractOEMContent.ps1`.
+- Download a patched version of [ExtractOEMContent.ps1](https://aka.ms/aldo-fix1/1)
+- Download a patched version of [EN-US\ExtractOEMContent.Strings.psd1](https://aka.ms/aldo-fix1/2)
+- Modify the following file using your favorite editor `ExtractOEMContent.ps1`.
 - Replace line 899 in this file with the code snippet:
 
   ```powershell
@@ -126,6 +128,8 @@ Workaround:
       ApplicableUpdate = $applicableUpdate.OuterXml
   }
   ```
+- Copy the newly modified file to c:\CloudDeployment\Setup\Common\ExtractOEMContent.ps1 on the first machine (seed node).
+- Copy the downloaded, unmodified file to c:\CloudDeployment\Setup\Common\En-US\ExtractOEMContent.Strings.psd1 on the first machine (seed node).
 
 - Resume cloud deployment.
 
