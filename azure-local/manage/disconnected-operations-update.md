@@ -98,7 +98,6 @@ $applianceFQDN = 'autonomous.cloud.private'
 # Reboot the node for this to take effect
 [System.Environment]::SetEnvironmentVariable("NUGET_CERT_REVOCATION_MODE", "offline", "Machine")
 
-
 # Check latest "Check System Update readiness" daily runs
 # Expect to see failed runs
 $eceClient = Create-ECEClientSimple
