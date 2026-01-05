@@ -4,7 +4,8 @@ description:  Learn how to use Azure PowerShell for disconnected operations on A
 ms.topic: how-to
 author: ronmiab
 ms.author: robess
-ms.date: 12/22/2025
+ms.date: 01/05/2026
+ms.reviewer: hafianba
 ai-usage: ai-assisted
 ---
 
