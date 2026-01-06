@@ -23,7 +23,9 @@ This article describes how to connect to an Azure Local VM in two scenarios:
 
 ### About SSH Server Extension
 
-You can enable SSH-based connectivity to Azure Local VMs without requiring a public IP address, line-of-sight to the VM and Azure Local instance, or additional open ports. For more information, see [SSH access to Azure Arc-enabled servers](/azure/azure-arc/servers/ssh-arc-overview?tabs=azure-cli).
+Azure Arc uses the SSH service (sshd) running inside the VM, but connections are established through Azure Arc rather than directly over the network.
+No public IP address or inbound SSH ports need to be opened on the VM for connectivity.
+For more information, see [SSH access to Azure Arc-enabled servers](/azure/azure-arc/servers/ssh-arc-overview?tabs=azure-cli).
 
 SSH server extension provides access to both Windows and Linux Azure Local VMs.
 
@@ -119,7 +121,7 @@ Before you begin, ensure that you:
 ### Use SSH to connect to an Azure Local VM
 
 > [!NOTE]
-> You may be asked to allow Arc SSH to set up port 22 for SSH.
+> You may be prompted to allow Azure Arc to use port 22 as the local SSH endpoint inside the VM.
 
 Use the following steps to connect to an Azure Local VM.
 
@@ -135,7 +137,9 @@ Use the following steps to connect to an Azure Local VM.
 
 ### Use RDP over SSH to connect to an Azure Local VM
 
-1. For Windows VMs, you can use RDP over SSH to access the VM. Run the following command with the RDP parameter:
+For Windows VMs only, you can use RDP over SSH to connect to an Azure Local VM. Linux VMs do not support RDP over SSH.
+
+1. Run the following command with the RDP parameter:
 
    ```powershell
    az ssh arc --resource-group $resourceGroup --name $serverName --local-user $localUser --rdp
@@ -157,11 +161,9 @@ Use the following steps to connect to an Azure Local VM.
 
 ### About VM Connect
 
-VM Connect allows you to connect to both Windows and Linux Azure Local VMs that do not have network connectivity or have boot failures. VM Connect is in preview starting with Azure Local version 2601.
+VM Connect allows you to connect to both Windows and Linux Azure Local VMs that do not have network connectivity or have boot failures. It is meant to be used for troubleshooting and recovery scenarios. VM Connect is in preview starting with Azure Local version 2601. 
 
 VM Connect requires line-of-sight from the client machine running Azure CLI to the Azure Local instance hosting the VM. This means that the client machine must have a VPN connection to the Azure Local instance or be on the same network.
-
-VM Connect is meant to be used as a troubleshooting and recovery tool for VMs that are not accessible via standard connection methods such as SSH and RDP over SSH.
 
 See [Azure Local VM Connect Azure CLI reference](https://learn.microsoft.com/cli/azure/stack-hci-vm/vmconnect?view=azure-cli-latest) for more information about the VM Connect commands.
 
@@ -170,9 +172,10 @@ See [Azure Local VM Connect Azure CLI reference](https://learn.microsoft.com/cli
 Before you begin, ensure that you:
 
 1. Have access to Azure Local that is running version 2601 or later.
-2. Install the latest version of Azure CLI and [stack-hci-vm extension](https://learn.microsoft.com/cli/azure/stack-hci-vm?view=azure-cli-latest). For more information, see [Install Azure CLI](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli).
-3. Ensure the Azure CLI user has "Azure Stack HCI Administrator" role or higher in the Azure subscription containing the Azure Local VM and Azure Local instance.
-4. Ensure line-of-sight from the client machine running Azure CLI to the Azure Local instance hosting the VM.
+1. Install the latest version of Azure CLI and [stack-hci-vm extension](https://learn.microsoft.com/cli/azure/stack-hci-vm?view=azure-cli-latest). For more information, see [Install Azure CLI](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli).
+1. Ensure the Azure CLI user has "Azure Stack HCI Administrator" role or higher in the Azure subscription containing the Azure Local VM and Azure Local instance.
+1. Ensure line-of-sight from the client machine running Azure CLI to the Azure Local instance hosting the VM.
+1. Ensure you have local administrator credentials for both the Azure Local instance hosting the VM and the VM itself. These credentials are required to authenticate when connecting to the VM using VM Connect.
 
 ### Use VM Connect to connect to an Azure Local VM
 
@@ -194,7 +197,7 @@ Use the following steps to connect to an Azure Local VM using VM Connect.
     ```
 
     > [!NOTE]
-    > VM Connect currently only supports VMs that are located in the same resource group as the Azure Local instance. Ensure that the VM is in the same resource group as the Azure Local instance. 
+    > VM Connect currently only supports VMs that are located in the same resource group as the Azure Local instance. Ensure that the VM is in the same resource group as the Azure Local instance.
 
 1. Run the following command to enable VM Connect and connect to the VM. Optionally, you can specify the path to save the generated RDP file using the `--path` parameter.
 
