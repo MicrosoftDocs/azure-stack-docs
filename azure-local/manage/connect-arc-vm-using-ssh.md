@@ -180,48 +180,50 @@ Use the following steps to connect to an Azure Local VM using VM Connect.
 
 1. Sign into Azure CLI with the following command:
 
-```powershell
-az login --use-device-code
-```
+    ```powershell
+    az login --use-device-code
+    ```
 
-2. Set appropriate parameters:
+1. Set appropriate parameters:
 
-```powershell
-$VMName="<your VM name>"
-$ResourceGroup="<your resource group of the VM>"
-$ClusterName="<your Azure Local instance name>"
-$RDPFilePath="<path to save RDP file>" # Optional, will be saved in current directory if not specified
-```
+    ```powershell
+    $VMName="<your VM name>"
+    $ResourceGroup="<your resource group of the VM>"
+    $ClusterName="<your Azure Local instance name>"
+    $RDPFilePath="<path to save RDP file>" # Optional, will be saved in current directory if not specified
+    ```
 
-> [!NOTE]
-> VM Connect currently only supports VMs that are located in the same resource group as the Azure Local instance. Ensure that the VM is in the same resource group as the Azure Local instance. 
+    > [!NOTE]
+    > VM Connect currently only supports VMs that are located in the same resource group as the Azure Local instance. Ensure that the VM is in the same resource group as the Azure Local instance. 
 
-3.  Run the following command to enable VM Connect and connect to the VM. Optionally, you can specify the path to save the generated RDP file using the `--path` parameter.
+1. Run the following command to enable VM Connect and connect to the VM. Optionally, you can specify the path to save the generated RDP file using the `--path` parameter.
 
-```powershell
-az stack-hci-vm vmconnect enable --name $VMName --resource-group $ResourceGroup --cluster-name $clusterName
-```
+    ```powershell
+    az stack-hci-vm vmconnect enable --name $VMName --resource-group $ResourceGroup --cluster-name $clusterName
+    ```
 
-Running this command will take up to 10 minutes to complete. This command performs the following actions:
+    Running this command will take up to 10 minutes to complete. This command performs the following actions:
 
     - Locates the Azure Local machine hosting the desired VM.
     - Opens port 2179 on the VM host machine to allow VM Connect traffic for 8 hours by default.
     - Generates an RDP file with VM host machine IP and details configured to connect to the VM.
 
-4. After the command completes, navigate to the location of the generated RDP file and open it to connect to the VM. If you did not specify a path for the RDP file, it will be saved in the current directory. Ensure that you have line-of-sight from the client machine to the Azure Local instance hosting the VM when opening the RDP file, otherwise the connection will fail.
-5. You will be shown two login prompts with this RDP file:
+1. After the command completes, navigate to the location of the generated RDP file and open it to connect to the VM. If you did not specify a path for the RDP file, it will be saved in the current directory. Ensure that you have line-of-sight from the client machine to the Azure Local instance hosting the VM when opening the RDP file, otherwise the connection will fail.
+
+1. You will be shown two login prompts with this RDP file:
 
    - The first prompt is to authenticate to the VM host machine. Use the credentials of a local administrator account on the Azure Local instance hosting the VM.
    - The second prompt is to authenticate to the VM itself. Use the credentials of a local administrator account on the VM.
      - In case you need to "Press Ctrl+Alt+Delete to unlock", you can do so by pressing "Ctrl + Alt + End" on your keyboard, which sends the "Ctrl+Alt+Delete" command through the RDP session. You can also use the on-screen keyboard to send the "Ctrl+Alt+Delete" command.
 
-6. You are now connected to the Azure Local VM using VM Connect. You can use this connection to troubleshoot and recover the VM as needed.
-7. When you are done using VM Connect, it is recommended to disable VM Connect to close the opened port on the VM host machine. You can do this by running the following command:
+1. You are now connected to the Azure Local VM using VM Connect. You can use this connection to troubleshoot and recover the VM as needed.
 
- ```powershell
+1. When you are done using VM Connect, it is recommended to disable VM Connect to close the opened port on the VM host machine. You can do this by running the following command:
 
-  az stack-hci-vm vmconnect disable --name $VMName --resource-group $ResourceGroup --cluster-name $clusterName
-```
+     ```powershell
+    
+      az stack-hci-vm vmconnect disable --name $VMName --resource-group $ResourceGroup --cluster-name $clusterName
+    ```
 
 ### Known Limitations
 
