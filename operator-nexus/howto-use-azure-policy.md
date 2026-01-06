@@ -70,8 +70,10 @@ This policy uses the `NexusLinuxBaseline` [machine configuration](/azure/governa
 ### Example Pinning NexusLinuxBaseline Version
 
 To avoid automatic minor version upgrades you can create a custom policy similar to the built-in policy with a specific version of the NexusLinuxBaseline machine configuration pinned.
-The simplest way is to copy the properties from the built-in definition and make the desired changes (such as the below example showing pinning of the `NexusLinuxBaseline` version).
-You will provide these properties to create the custom policy definition via portal, CLI, REST API, or ARM template.
+For example, the json properties below can be used to create a custom policy with NexusLinuxBaseline pinned to version 1.18.0.0 instead of 1.*.
+You can provide these properties to create the custom policy definition via portal, CLI, REST API, or ARM template.
+The created policy will always use the version of NexusLinuxBaseline specified in the json definition.
+Any version from the table below can be used instead of 1.18.0.0.
 
 ```json
 "properties": {
@@ -84,7 +86,7 @@ You will provide these properties to create the custom policy definition via por
     ],
     "guestConfiguration": {
       "name": "NexusLinuxBaseline",
-      "version": "<version>"
+      "version": "1.18.0.0"
     }
   },
   "parameters": {
