@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 12/15/2025
+ms.date: 01/06/2026
 ms.custom: sfi-image-nochange
 ms.subservice: hyperconverged
 ---
@@ -232,7 +232,7 @@ Follow these steps to configure a DHCP logical network:
 
     ```azurecli
     $lnetName = "mylocal-lnet-dhcp"
-    $vSwitchName = "ConvergedSwitch(management_compute_storage)"
+    $vSwitchName = '"ConvergedSwitch'(management_compute_storage)"
     $subscription = "<subscription-id>"
     $resourceGroup = "mylocal-rg"
     $customLocationName = "mylocal-cl"
