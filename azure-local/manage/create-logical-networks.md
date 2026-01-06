@@ -232,7 +232,7 @@ Follow these steps to configure a DHCP logical network:
 
     ```azurecli
     $lnetName = "mylocal-lnet-dhcp"
-    $vSwitchName = '"ConvergedSwitch'(management_compute_storage)"
+    $vSwitchName = '"ConvergedSwitch(management_compute_storage)"'
     $subscription = "<subscription-id>"
     $resourceGroup = "mylocal-rg"
     $customLocationName = "mylocal-cl"
