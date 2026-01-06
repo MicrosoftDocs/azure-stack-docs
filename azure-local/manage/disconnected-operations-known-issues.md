@@ -135,7 +135,7 @@ Workaround:
 
 ### Failed to deploy disconnected operations Appliance - Appliance.Operations failure
 
-Some special characters in the management TLS cert password, external certs password, or observability configuration secrets from the OperationsModule can cause the deployment to fail with an an error output: *Appliance.Operations operation [options]* 
+Some special characters in the management TLS cert password, external certs password, or observability configuration secrets from the OperationsModule can cause the deployment to fail with an error output: *Appliance.Operations operation [options]* 
  
  **Mitigation**: Do not use special characters like single or double quotes in the passwords.
 
