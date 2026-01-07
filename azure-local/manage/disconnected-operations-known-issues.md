@@ -253,7 +253,7 @@ az stack-hci-vm network nic delete
 
 #### AKS deployment fails in fully air-gapped scenarios
 
-In release 2511, AKS deployments fail in fully air-gapped scenarios. No mitigation is available for this issue in the 2511 release.
+AKS deployments fails in fully air-gapped scenarios. No mitigation is available for this issue in the current releases.
 
 #### Use an existing public key when creating AKS cluster
 
