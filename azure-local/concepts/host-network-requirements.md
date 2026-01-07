@@ -278,7 +278,9 @@ Here is the example bandwidth allocation table:
 
 ## Rack aware clustering
 
-Rack aware clustering improves fault tolerance and data distribution in an Azure Local instance. This architecture allows you to cluster nodes that are strategically placed across two physical racks in separate rooms or buildings, connected by high bandwidth and low latency networking. For an overview of this feature, see [Azure Local rack aware clustering overview](./rack-aware-cluster-overview.md). For network requirements and architecture, see [Azure Local rack aware cluster reference architecture](./rack-aware-cluster-reference-architecture.md).
+Rack aware clustering improves fault tolerance and data distribution in an Azure Local instance. This architecture allows you to cluster nodes that are strategically placed across two physical racks in separate rooms or buildings, connected by high bandwidth and low latency networking. For an overview of this feature, see [Azure Local rack aware clustering overview](./rack-aware-cluster-overview.md).
+
+For network requirements and architecture, see [Azure Local rack aware cluster reference architecture](./rack-aware-cluster-reference-architecture.md).
 
 ## Next steps
 
