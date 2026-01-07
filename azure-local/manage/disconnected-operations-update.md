@@ -24,12 +24,11 @@ To get updates for disconnected operations, follow these steps:
 1. From The Azure portal, navigate to your disconnected operations appliance.
 1. Select **Updates** and then select the latest version.
 1. Select **Download** and wait for the download to complete.
- 
-After you download the update, copy the update file into the seed node in a staging folder, such as `C:\AzureLocalDisconnectedOperations`.
+1. Copy the update file to a staging folder on the seed node, such as `C:\AzureLocalDisconnectedOperations`.
 
 ## Load the OperationsModule
 
-On the seed node, load the OperationsModule.
+To load the OperationsModule on the seed node, run the following command.
 
 ```powershell 
 $applianceConfigBasePath = 'C:\AzureLocalDisconnectedOperations'
@@ -37,9 +36,9 @@ $applianceConfigBasePath = 'C:\AzureLocalDisconnectedOperations'
 Import-Module "$applianceConfigBasePath\OperationsModule\Azure.Local.DisconnectedOperations.psd1" -Force    
 ```
 
-## Upload update
+## Upload the update
 
-On the seed node, in the same session as the preceding section, run the following command.
+On the seed node, in the same session as the preceding section, run the following command to upload the update.
 
 ```powershell
 # Specify the update package
@@ -49,7 +48,7 @@ $updatePackageResult = Invoke-ApplianceUpdatePackageUpload -UpdatePackagePath $u
 
 ## Wait for update staging
 
-On the seed node, in the same session as the preceding section, run the following command.
+On the seed node, in the same session as the preceding section, run the following command to stage the update.
 
 ```powershell
 Wait-AppliancePreUpdate -TargetVersion $updatePackageResult.UpdatePackageVersion 
@@ -57,22 +56,25 @@ Wait-AppliancePreUpdate -TargetVersion $updatePackageResult.UpdatePackageVersion
 
 ## Store BitLocker keys
 
-If you didn't export your BitLocker keys, run the following command to export the keys and save them to a file. Move and keep this file safe.
+If you haven't exported your BitLocker keys, run the following command to export and save them to a file. Keep this file in a secure location.
 
 ```powershell
 Get-ApplianceBitlockerRecoveryKeys -DisconnectedOperationsClientContext $context|ConvertTo-Json|Set-Content RecoveryKeys.json
 ```
 
+> [!NOTE]
+> Keep your BitLocker keys in a secure location.
+
 ## Create appliance snapshot
 
-To roll back quickly for worst case scenarios, we recommend creating a VM Snapshot.
+To roll back quickly for worst case scenarios, we recommend creating a VM snapshot.
 
 ```powershell
 Checkpoint-VM -Name "IRVM01" -SnapshotName "BeforeUpdate"
 ```
-## Trigger update
+## Trigger an update
 
-On the seed node, in the same session as the preceding section, run the following command:
+On the seed node, in the same session as the preceding section, run the following command to trigger an update.
 
 ```powershell
 Start-ApplianceUpdate -TargetVersion $updatePackageResult.UpdatePackageVersion -Wait

@@ -30,9 +30,9 @@ Before you begin, make sure your client computer trusts the public key used to s
 To add your private cloud, run the following command:
 
 ```powershell
-    $applianceCloudName = "azure.local"
-    $applianceFQDN = "autonomous.cloud.private"
-    Add-AzEnvironment -Name $applianceCloudName -ARMEndpoint "https://armmanagement.$($applianceFQDN)"
+$applianceCloudName = "azure.local"
+$applianceFQDN = "autonomous.cloud.private"
+Add-AzEnvironment -Name $applianceCloudName -ARMEndpoint "https://armmanagement.$($applianceFQDN)"
 ```
 
 ## List cloud endpoints
@@ -46,11 +46,11 @@ Get-AzEnvironment
 Here's a sample output:
 
 ```console
-| Name | Resource Manager Url | ActiveDirectory Authority |
-|-------------------|--------------------------------------|---------------------------| 
-| AzureChinaCloud   | https://management.chinacloudapi.cn/ | https://login.chinacloudapi.cn/ |
-| AzureCloud        | https://management.azure.com/        | https://login.microsoftonline.com |
-| AzureUSGovernment | https://management.usgovcloudapi.net/  | https://login.microsoftonline.us/ |
+| Name              | Resource Manager Url                            | ActiveDirectory Authority               |
+|-------------------|-------------------------------------------------|-----------------------------------------| 
+| AzureChinaCloud   | https://management.chinacloudapi.cn/            | https://login.chinacloudapi.cn/         |
+| AzureCloud        | https://management.azure.com/                   | https://login.microsoftonline.com       |
+| AzureUSGovernment | https://management.usgovcloudapi.net/           | https://login.microsoftonline.us/       |
 | azure.local       | https://armmanagement.autonomous.cloud.private/ | https://login.autonomous.cloud.private/ |
 ```
 
@@ -69,7 +69,7 @@ To sign in to your private cloud using a service principal, run the following co
 
 ```powershell
 $applianceCloudName = "azure.local" 
-$clientSecret = 'retracted'
+$clientSecret = "retracted"
 
 # Define service principal credentials
 $appId = "your-application-id"
