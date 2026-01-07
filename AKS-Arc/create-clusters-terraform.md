@@ -89,7 +89,7 @@ az login
    }
    ```
 
-1. Create another file named **main.tf** that points to the latest AKS Arc AVM module, and insert the following code. You can read the comments in the the module and edit parameters as needed. Please make sure all the values are correctly entered to avoid failures during cluster creation. To find the admin group object ID, see [Enable Microsoft Entra authentication for Kubernetes clusters](enable-authentication-microsoft-entra-id.md). You can [follow this guidance](https://github.com/Azure/Edge-infrastructure-quickstart-template/blob/main/doc/AKS-Arc-Admin-Groups.md) to find it in your Azure environment. To enable Azure RBAC, update the corresponding parameter and see [Enable Azure RBAC for Kubernetes Authorization](azure-rbac-local.md) for prerequisites.
+1. Create another file named **main.tf** that points to the latest AKS Arc AVM module, and insert the following code. You can read the comments in the the module and edit parameters as needed. Please make sure all the values are correctly entered to avoid failures during cluster creation. To find the admin group object ID, see [Enable Microsoft Entra authentication for Kubernetes clusters](enable-authentication-microsoft-entra-id.md). To enable Azure RBAC, update the corresponding parameter and see [Enable Azure RBAC for Kubernetes Authorization](azure-rbac-local.md) for prerequisites.
 
    ```terraform
    module "aks_arc" { 

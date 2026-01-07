@@ -6,7 +6,7 @@ author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
-ms.date: 02/15/2025
+ms.date: 12/30/2025
 ms.subservice: hyperconverged
 ---
 
@@ -82,7 +82,7 @@ Follow these steps to create network intents for this reference pattern:
 
 ## Logical connectivity components
 
-As illustrated in the diagram below, this pattern has the following logical network components:
+As illustrated in the diagram, this pattern has the following logical network components:
 
 :::image type="content" source="media/two-node-switched-non-converged/logical-components-layout.png" alt-text="Diagram showing two-node physical connectivity layout." lightbox="media/two-node-switched-non-converged/logical-components-layout.png":::
 

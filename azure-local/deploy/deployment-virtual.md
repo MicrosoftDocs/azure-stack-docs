@@ -18,12 +18,8 @@ This article describes how to deploy a virtualized Azure Local (*formerly Azure 
 You need administrator privileges for the Azure Local virtual deployment and should be familiar with the existing Azure Local solution. The deployment can take around 2.5 hours to complete.
 
 > [!IMPORTANT]
-
 > A virtual deployment of Azure Local is intended for educational and demonstration purposes only. 
-
-
-> [!NOTE]
-
+>
 > Microsoft Support doesn't support virtual deployments.
 
 ## Prerequisites

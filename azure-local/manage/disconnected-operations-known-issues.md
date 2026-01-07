@@ -3,9 +3,9 @@ title: Release Notes for Disconnected Operations for Azure Local
 description: Read about the known issues and fixed issues for disconnected operations for Azure Local.
 author: ronmiab
 ms.topic: concept-article
-ms.date: 10/16/2025
+ms.date: 01/05/2026
 ms.author: robess
-ms.reviewer: hafianba
+ms.reviewer: haraldfianbakken
 ai-usage: ai-assisted
 ms.subservice: hyperconverged
 ---
@@ -41,6 +41,12 @@ This article highlights what's new (features and improvements) and critical know
  - Enabled the use of a FQDN in the SAN of the management certificate.
 
 ## Known issues for disconnected operations for Azure Local
+### SSL/TLS error using management endpoint (OperationsModule)
+When using a cmdlet that uses the management endpoint (e.g. Get-ApplianceHealthState) you receive an error 'threw and exception : The request was aborted: Could not create SSL/TLS secure channel.. Retrying'
+
+This is a known issue in the 2511 preview. The issue is fixed in 2512. 
+
+**Mitigation:** For 2511 - do not use Set-DisconnectedOperationsClientContext - rather do $context = New-DisconnectedOperationsClientContext and pass the $context to the respective cmdlets.
 
 ### Arc bootstrap fails on node (Invoke-AzStackHCIArcInitialization) on Original Equipment Manufacturer (OEM) provided images 
 If you are running an OEM image, make sure that you are on the correct OS baseline.
@@ -95,7 +101,9 @@ Solution Builder extension (SBE) validation fails when trying to reach an *aka.m
 Workaround:
 
 - Run the cloud deployment (portal) flow until the validation fails in the UX.
-- On the first machine (seed node), modify the following file `c:\CloudDeployment\Setup\Common\ExtractOEMContent.ps1`.
+- Download a patched version of [ExtractOEMContent.ps1](https://aka.ms/aldo-fix1/1)
+- Download a patched version of [EN-US\ExtractOEMContent.Strings.psd1](https://aka.ms/aldo-fix1/2)
+- Modify the following file using your favorite editor `ExtractOEMContent.ps1`.
 - Replace line 899 in this file with the code snippet:
 
   ```powershell
@@ -121,12 +129,14 @@ Workaround:
       ApplicableUpdate = $applicableUpdate.OuterXml
   }
   ```
+- Copy the newly modified file to c:\CloudDeployment\Setup\Common\ExtractOEMContent.ps1 on the first machine (seed node).
+- Copy the downloaded, unmodified file to c:\CloudDeployment\Setup\Common\En-US\ExtractOEMContent.Strings.psd1 on the first machine (seed node).
 
 - Resume cloud deployment.
 
 ### Failed to deploy disconnected operations Appliance - Appliance.Operations failure
 
-Some special characters in the management TLS cert password, external certs password, or observability configuration secrets from the OperationsModule can cause the deployment to fail with an an error output: *Appliance.Operations operation [options]* 
+Some special characters in the management TLS cert password, external certs password, or observability configuration secrets from the OperationsModule can cause the deployment to fail with an error output: *Appliance.Operations operation [options]* 
  
  **Mitigation**: Do not use special characters like single or double quotes in the passwords.
 
@@ -212,7 +222,7 @@ $managedIds|foreach-object {
     az role assignment create --role "Key Vault Administrator" --assignee $_.Id --scope $kv.id
 }
 
-Write-Verbose "Wait 30 min before running cloud deployment from portal"
+Write-Verbose "Wait 20 min before running cloud deployment from portal"
 ```
 
 ### Azure Local VMs

@@ -3,7 +3,7 @@ title: Network considerations for cloud deployment for Azure Local, version 23H2
 description: This article introduces network considerations for cloud deployments of Azure Local, version 23H2.
 author: alkohli
 ms.topic: how-to
-ms.date: 02/14/2025
+ms.date: 12/30/2025
 ms.author: alkohli 
 ms.reviewer: alkohli
 ms.subservice: hyperconverged
@@ -59,17 +59,17 @@ As stated previously, you can only decide between the two options when the size 
 
 If clusters have fewer than three nodes, the storage connectivity decision influences the number and type of network intents you can define in the next step.
 
-For example, for switchless configurations, you need to define two network traffic intents. Storage traffic for east-west communications using the crossover cables doesn't have north-south connectivity and it is completely isolated from the rest of your network infrastructure. That means you need to define a second network intent for management outbound connectivity and for your compute workloads.
+For example, for switchless configurations, you need to define two network traffic intents. Storage traffic for east-west communications using the crossover cables doesn't have north-south connectivity and it's completely isolated from the rest of your network infrastructure. That means you need to define a second network intent for management outbound connectivity and for your compute workloads.
 
-Although it is possible to define each network intent with only one physical network adapter port each, that doesn't provide any fault tolerance. As such, we always recommend using at least two physical network ports for each network intent. If you decide to use a network switch for storage, you can group all network traffic including storage in a single network intent, which is also known as a *hyperconverged* or *fully converged* host network configuration.
+Although it's possible to define each network intent with only one physical network adapter port each, that doesn't provide any fault tolerance. As such, we always recommend using at least two physical network ports for each network intent. If you decide to use a network switch for storage, you can group all network traffic including storage in a single network intent, which is also known as a *hyperconverged* or *fully converged* host network configuration.
 
 Here are the summarized considerations for the cluster storage connectivity decision:
 
 
 |Decision  |Consideration  |
 |---------|---------|
-|No switch for storage     |Switchless configuration via Azure portal or Resource Manager template deployment is only supported for 1, 2 or 3 node clusters. <br><br>1 or 2 node storage switchless clusters can be deployed using the Azure portal or Resource Manager templates.<br><br>3 node storage switchless clusters can be deployed only using Resource Manager templates.<br><br>Scale out operations are not supported with the switchless deployments. Any change to the number of nodes after the deployment requires a manual configuration. <br><br>At least 2 network intents are required when using storage switchless configuration.        |
-|Network switch for storage     |If you intend to scale out your cluster using the orchestrator, you need to use a physical switch for the storage network traffic. <br><br>You can use this architecture with any number of nodes between 1 to 16. <br><br>Although is not enforced, you can use a single intent for all your network traffic types (Management, Compute, and Storage)        |
+|No switch for storage     |Switchless configuration via Azure portal or Resource Manager template deployment is only supported for 1, 2 or 3 node clusters. <br><br>1 or 2 node storage switchless clusters can be deployed using the Azure portal or Resource Manager templates.<br><br>3 node storage switchless clusters can be deployed only using Resource Manager templates.<br><br>Scale out operations aren't supported with the switchless deployments. Any change to the number of nodes after the deployment requires a manual configuration. <br><br>At least 2 network intents are required when using storage switchless configuration.        |
+|Network switch for storage     |If you intend to scale out your cluster using the orchestrator, you need to use a physical switch for the storage network traffic. <br><br>You can use this architecture with any number of nodes between 1 to 16. <br><br>Although isn't enforced, you can use a single intent for all your network traffic types (Management, Compute, and Storage)        |
 
 The following diagram summarizes storage connectivity options available to you for various deployments:
 
@@ -142,7 +142,7 @@ The following diagram summarizes network intent options available to you for var
 
 :::image type="content" source="media/cloud-deployment-network-considerations/step-4.png" alt-text="Diagram showing step 4 of the network decision framework." lightbox="media/cloud-deployment-network-considerations/step-4.png":::
 
-In this step, you define the infrastructure subnet address space, how these addresses are assigned to your cluster, and if there is any proxy or VLAN ID requirement for the nodes for outbound connectivity to the internet and other intranet services such as Domain Name System (DNS) or Active Directory Services.
+In this step, you define the infrastructure subnet address space, how these addresses are assigned to your cluster, and if there's any proxy or VLAN ID requirement for the nodes for outbound connectivity to the internet and other intranet services such as Domain Name System (DNS) or Active Directory Services.
 
 The following infrastructure subnet components must be planned and defined before you start deployment so you can anticipate any routing, firewall, or subnet requirements.
 
@@ -198,7 +198,7 @@ When doing the initial deployment of your Azure Local instance, you must define 
 
 To ensure the range has enough IPs for current and future infrastructure services, you must use a range of at least six consecutive available IP addresses. These addresses are used for - the cluster IP, the Azure Resource Bridge VM and its components. 
 
-If you anticipate running other services in the infrastructure network, we recommend that you assign an extra buffer of infrastructure IPs to the pool. It is possible to add other IP pools after deployment for the infrastructure network using PowerShell if the size of the pool you planned originally gets exhausted.
+If you anticipate running other services in the infrastructure network, we recommend that you assign an extra buffer of infrastructure IPs to the pool. It's possible to add other IP pools after deployment for the infrastructure network using PowerShell if the size of the pool you planned originally gets exhausted.
 
 The following conditions must be met when defining your IP pool for the infrastructure subnet during deployment:
 
@@ -229,7 +229,7 @@ Once the VLAN ID is set and the IPs of your nodes are configured on the physical
 
 ### Management VLAN ID with a virtual switch
 
-In some scenarios, there is a requirement to create a virtual switch before deployment starts. 
+In some scenarios, there's a requirement to create a virtual switch before deployment starts. 
 
 > [!NOTE]
 > Before you create a virtual switch, make sure to enable the Hype-V role. For more information, see [Install required Windows role](../deploy/deployment-install-os.md).
@@ -298,10 +298,10 @@ Set-VMNetworkAdapterIsolation -ManagementOS -VMNetworkAdapterName "vManagement($
 
 #### 4. Reference physical network adapters for the management intent during deployment
 
-Although the newly created virtual network adapter shows as available when deploying via Azure portal, it is important to remember that the network configuration is based on Network ATC. This means that when configuring the management, or the management and compute intent, we still need to select the physical network adapters used for that intent.
+Although the newly created virtual network adapter shows as available when deploying via Azure portal, it's important to remember that the network configuration is based on Network ATC. This means that when configuring the management, or the management and compute intent, we still need to select the physical network adapters used for that intent.
 
 > [!NOTE]
-> Do not select the virtual network adapter for the network intent.
+> Don't select the virtual network adapter for the network intent.
 
 The same logic applies to the Azure Resource Manager templates. You must specify the physical network adapters that you want to use for the network intents and never the virtual network adapters.
 
@@ -312,7 +312,7 @@ Here are the summarized considerations for the VLAN ID:
 |1     | VLAN ID must be specified on the physical network adapter for management before registering the machines with Azure Arc.         |
 |2     | Use specific steps when a virtual switch is required before registering the machines to Azure Arc.         |
 |3     | The management VLAN ID is carried over from the host configuration to the infrastructure VMs during deployment.        |
-|4     | There is no VLAN ID input parameter for Azure portal deployment or for Resource Manager template deployment.        |
+|4     | There's no VLAN ID input parameter for Azure portal deployment or for Resource Manager template deployment.        |
 |5     | All the adapters that you intend to use for management must have the same VLAN ID configured.         |
 
 ### Custom IPs for storage
@@ -325,11 +325,11 @@ By default, network ATC will automatically assign the IPs and VLANs for storage 
 |pNIC2          |10.71.2.x            |712 |
 |pNIC3          |10.71.3.x            |713 |
 
-However, if your deployment requirements do not fit with those default IPs and VLANs, you can use your own IPs, subnet and VLANs for storage. This functionality is only available when deploying clusters using ARM templates and you will need to specify the following parameters in your template.
+However, if your deployment requirements don't fit with those default IPs and VLANs, you can use your own IPs, subnet, and VLANs for storage. This functionality is only available when deploying clusters using ARM templates and you'll need to specify the following parameters in your template.
 
-- **enableStorageAutoIP:** This parameter, when is not specified is set to true. To enable custom storage IPs during deployment this parameter must be set to false.
-- **storageAdapterIPInfo:** This parameter has a dependency with "enableStorageAutoIP" parameter and is always required when storage auto IP parameter is set to false. Within the "storageAdapterIPInfo" parameter in your ARM template you will also need to specify the **"ipv4Address"** and **"subnetMask"** parameters for each node and network adapter with your own IPs and subnet mask.
-- **vlanId:** As described above in the table, this parameter will use the Network ATC default VLANs if you don't need to change them. However, if those default VLANs does not work in your network you can specify your own VLAN IDs for each of your storage networks.
+- **enableStorageAutoIP:** This parameter, when isn't specified is set to true. To enable custom storage IPs during deployment this parameter must be set to false.
+- **storageAdapterIPInfo:** This parameter has a dependency with "enableStorageAutoIP" parameter and is always required when storage auto IP parameter is set to false. Within the "storageAdapterIPInfo" parameter in your ARM template, you'll also need to specify the **"ipv4Address"** and **"subnetMask"** parameters for each node and network adapter with your own IPs and subnet mask.
+- **vlanId:** As described above in the table, this parameter will use the Network ATC default VLANs if you don't need to change them. However, if those default VLANs doesn't work in your network you can specify your own VLAN IDs for each of your storage networks.
 
 The following ARM template includes an example of a two nodes Azure Local instance with network switch for storage, where storage IPs are customized [2 Nodes deployment with custom storage IPs](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.azurestackhci/create-cluster-2-node-switched-custom-storageip/azuredeploy.parameters.json)
 
@@ -349,11 +349,11 @@ The following sections discuss the implications of each option.
 
 If static IPs are used for the nodes, the management IP pool is used to obtain an available IP and assign it to the cluster IP automatically during deployment.
 
-It is important to use management IPs for the nodes that aren't part of the IP range defined for the management IP pool. Machine node IPs must be on the same subnet of the defined IP range.
+It's important to use management IPs for the nodes that aren't part of the IP range defined for the management IP pool. Machine node IPs must be on the same subnet of the defined IP range.
 
 We recommend that you assign only one management IP for the default gateway and for the configured DNS servers for all the physical network adapters of the node. This ensures that the IP doesn't change once the management network intent is created. This also ensures that the nodes keep their outbound connectivity during the deployment process, including during the Azure Arc registration.
 
-To avoid routing issues and to identify which IP will be used for outbound connectivity and Arc registration, Azure portal validates if there is more than one default gateway configured.
+To avoid routing issues and to identify which IP will be used for outbound connectivity and Arc registration, Azure portal validates if there's more than one default gateway configured.
 
 If a virtual switch and a management virtual network adapter were created during the OS configuration, the management IP for the node must be assigned to that virtual network adapter.
 
@@ -363,7 +363,7 @@ If IPs for the nodes are acquired from a DHCP server, a dynamic IP is also used 
 
 For example, if the management IP range is defined as 192.168.1.20/24 to 192.168.1.30/24 for the infrastructure static IPs, the DHCP scope defined for subnet 192.168.1.0/24 must have an exclusion equivalent to the management IP pool to avoid IP conflicts with the infrastructure services. We also recommend that you use DHCP reservations for node IPs.
 
-The process of defining the management IP after creating the management intent involves using the MAC address of the first physical network adapter that is selected for the network intent. This MAC address is then assigned to the virtual network adapter that is created for management purposes. This means that the IP address that the first physical network adapter obtains from the DHCP server is the same IP address that the virtual network adapter uses as the management IP. Therefore, it is important to create DHCP reservation for node IP.
+The process of defining the management IP after creating the management intent involves using the MAC address of the first physical network adapter that is selected for the network intent. This MAC address is then assigned to the virtual network adapter that is created for management purposes. This means that the IP address that the first physical network adapter obtains from the DHCP server is the same IP address that the virtual network adapter uses as the management IP. Therefore, it's important to create DHCP reservation for node IP.
 
 The network validation logic used during Cloud deployment will fail if it detects multiple physical network interfaces that have a default gateway in their configuration. If you need to use DHCP for your host IP assignments, you need to pre-create the SET _(switch embedded teaming)_ virtual switch and the management virtual network adapter as described above, so only the management virtual network adapter acquires an IP address from the DHCP server.
 
@@ -381,9 +381,9 @@ Here are the summarized considerations for the IP addresses:
 
 ### DNS server considerations
 
-Azure Local deployments based on Active Directory require a DNS server that can resolve the on-premises domain and the internet public endpoints. As part of the deployment it is required to define the same DNS servers for the infrastructure IP address range that is configured on the nodes. Azure Resource Bridge control plane VM and AKS control plane will use those same DNS servers for name resolution. Once deployment is completed, it is not supported to change the DNS servers IPs and it will not be possible to update the addresses across the Azure Local platform stack.
+Azure Local deployments based on Active Directory require a DNS server that can resolve the on-premises domain and the internet public endpoints. As part of the deployment it's required to define the same DNS servers for the infrastructure IP address range that is configured on the nodes. Azure Resource Bridge control plane VM and AKS control plane will use those same DNS servers for name resolution. Once deployment is completed, it isn't supported to change the DNS servers IPs and it will not be possible to update the addresses across the Azure Local platform stack.
 
-The DNS servers used for Azure Local must be external and operational before deployment. It is not supported to run them as Azure Local virtual machines.
+The DNS servers used for Azure Local must be external and operational before deployment. It isn't supported to run them as Azure Local virtual machines.
 
 Here are the summarized considerations for DNS servers addresses:
 
@@ -395,7 +395,7 @@ Here are the summarized considerations for DNS servers addresses:
 |4     | It is not supported to change the DNS servers after deployment. Make sure you plan your DNS strategy before doing the Azure Local deployment.       |
 |5     | When defining an array of multiple DNS servers on an ARM template for the Infrastructure network, make sure each value is within quotes "" and separated by commas, as in the following example.  |
 |6     | It is not supported to run the DNS servers used by Azure Local infrastructure in virtual machines running inside the Azure Local instance. |
-|7     | All DNS servers configured must resolve on-premises domains required for the infrastructure. Public DNS Servers such as 8.8.8.8 are not supported.|
+|7     | All DNS servers configured must resolve on-premises domains required for the infrastructure. Public DNS Servers such as 8.8.8.8 aren't supported.|
 |8     | All DNS servers configured must not overlap with the reserved ARB subnet ranges (10.96.0.0/12 and 10.244.0.0/16) |
 
 ```powershell
@@ -426,7 +426,7 @@ Here are the summarized considerations for proxy configuration:
 
 ### Firewall requirements
 
-You are currently required to open several internet endpoints in your firewalls to ensure that Azure Local and its components can successfully connect to them. For a detailed list of the required endpoints, see [Firewall requirements](../concepts/firewall-requirements.md).
+You're currently required to open several internet endpoints in your firewalls to ensure that Azure Local and its components can successfully connect to them. For a detailed list of the required endpoints, see [Firewall requirements](../concepts/firewall-requirements.md).
 
 Firewall configuration must be done prior to registering the nodes in Azure Arc. You can use the standalone version of the environment checker to validate that your firewalls aren't blocking traffic sent to these endpoints. For more information, see [Azure Local Environment Checker](../manage/use-environment-checker.md) to assess deployment readiness for Azure Local.
 
@@ -443,7 +443,7 @@ Here are the summarized considerations for firewall:
 
 Network adapters are qualified by network traffic type (management, compute, and storage) they're used with. As you review the [Windows Server Catalog](https://www.windowsservercatalog.com/), the Windows Server 2022 certification indicates for which network traffic the adapters are qualified. 
 
-Before purchasing a machine for Azure Local, you must have at least one adapter that is qualified for management, compute, and storage as all three traffic types are required on Azure Local. Cloud deployment relies on Network ATC to configure the network adapters for the appropriate traffic types, so it is important to use supported network adapters.
+Before purchasing a machine for Azure Local, you must have at least one adapter that is qualified for management, compute, and storage as all three traffic types are required on Azure Local. Cloud deployment relies on Network ATC to configure the network adapters for the appropriate traffic types, so it's important to use supported network adapters.
 
 The default values used by Network ATC are documented in [Cluster network settings](../deploy/network-atc.md?tabs=22H2#cluster-network-settings). We recommend that you use the default values. With that said, the following options can be overridden using Azure portal or Resource Manager templates if needed:
 

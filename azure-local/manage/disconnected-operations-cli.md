@@ -4,7 +4,8 @@ description:  Learn how to use the Azure Command-Line Interface (CLI) for discon
 ms.topic: how-to
 author: ronmiab
 ms.author: robess
-ms.date: 10/16/2025
+ms.date: 01/05/2026
+ms.reviewer: haraldfianbakken
 ai-usage: ai-assisted
 ms.subservice: hyperconverged
 ---
@@ -19,7 +20,7 @@ This article explains how to install and configure the Azure Command-Line Interf
 
 ## About Azure CLI
 
-**CLI** is a versatile, cross-platform command line interface that lets you create and manage Azure resources for Azure Local disconnected operations. For more information, see [What is Azure CLI](/cli/azure/what-is-azure-cli).
+**CLI** is a versatile, cross-platform command line interface that you can use to create and manage Azure resources for Azure Local disconnected operations. For more information, see [What is Azure CLI](/cli/azure/what-is-azure-cli).
 
 ## Supported versions for CLI and extension
 
@@ -216,9 +217,9 @@ To set up Azure CLI for disconnected operations on Azure Local, follow these ste
 
 ## Extensions for Azure CLI
 
-CLI extensions are Python wheels that aren't shipped with CLI, but run as CLI commands. Extensions let you access experimental and pre-release commands, and create your own CLI interfaces. The first time you use an extension, you get a prompt to install it.
+CLI extensions are Python wheels that aren't shipped with CLI but run as CLI commands. By using extensions, you can access experimental and prerelease commands and create your own CLI interfaces. When you use an extension for the first time, you receive a prompt to install it.
 
-To get a list of available extensions, run this command:
+To get a list of available extensions, run the following command:
 
 ```azurecli
 az extension list-available --output table  
@@ -239,7 +240,7 @@ The following table lists the CLI extensions supported on Azure Local disconnect
 | Arc-enabled servers              | az connectedmachine | 1.1.0 | [az connectedmachine](/cli/azure/connectedmachine?view=azure-cli-latest&preserve-view=true)  |
 | Azure Arc-enabled Kubernetes clusters  | az connectedk8s <br></br> az k8s-extension <br></br> az k8s-configuration <br></br> az customlocation | connectedk8s: 1.6.2 <br></br> k8s-extension: 1.4.5 <br></br> k8sconfiguration: 2.0.0 <br></br> customlocation: 0.1.4 | [az connectedk8s](/cli/azure/connectedk8s?view=azure-cli-latest&preserve-view=true) <br></br> [az k8s-extension](/cli/azure/k8s-extension?view=azure-cli-latest&preserve-view=true) <br></br> [az k8s-configuration flux](/cli/azure/k8s-configuration/flux?view=azure-cli-latest&preserve-view=true) <br></br> [az customlocation](/cli/azure/customlocation?view=azure-cli-latest&preserve-view=true)  |
 | Azure Local VMs enabled by Azure Arc    | az arcappliance <br></br> az k8s-extension <br></br> az customlocation <br></br> az stack-hci-vm | arcappliance: 1.5.0 <br></br> k8s-extension: 1.4.5 <br></br> customlocation: 0.1.4 <br></br> stack-hci-vm: 1.10.4 | [Enable Azure VM extensions using CLI](/azure/azure-arc/servers/manage-vm-extensions-cli) <br></br> [Troubleshoot Arc-enabled servers VM extension issues](/azure/azure-arc/servers/troubleshoot-vm-extensions)  |
-| AKS Arc on Azure Local | az arcappliance <br></br> az k8s-extension <br></br> az customlocation <br></br> az stack-hci-vm <br></br> az aksarc | arcappliance: 1.5.0 <br></br> k8s-extension: 1.4.5 <br></br> customlocation: 0.1.4 <br></br> stack-hci-vm: 1.10.4 <br></br> aksarc: 1.2.23 | [Create Kubernetes clusters using Azure CLI](/azure/aks/aksarc/aks-create-clusters-cli) |
+| Azure Kubernetes Service (AKS) Arc on Azure Local | az arcappliance <br></br> az k8s-extension <br></br> az customlocation <br></br> az stack-hci-vm <br></br> az aksarc | arcappliance: 1.5.0 <br></br> k8s-extension: 1.4.5 <br></br> customlocation: 0.1.4 <br></br> stack-hci-vm: 1.10.4 <br></br> aksarc: 1.2.23 | [Create Kubernetes clusters using Azure CLI](/azure/aks/aksarc/aks-create-clusters-cli) |
 | Azure Local Resource Provider          | Arcappliance <br></br> k8s-extension <br></br> customlocation <br></br> stack-hci-vm <br></br> connectedk8s <br></br> stack-hci | arcappliance: 1.5.0 <br></br> k8s-extension: 1.4.5 <br></br> customlocation: 0.1.4 <br></br> stack-hci-vm: 1.10.4 <br></br> connectedk8s: 1.6.2 <br></br> stack-hci: 1.1.0 | [How to install and manage Azure CLI extensions](/cli/azure/azure-cli-extensions-overview) |
 | Azure Container Registry | Built-in      |    |  |
 | Azure Policy | Built-in      |    | [Quickstart: Create a policy assignment to identify noncompliant resources using Azure CLI](/azure/governance/policy/assign-policy-azurecli) |
@@ -247,49 +248,46 @@ The following table lists the CLI extensions supported on Azure Local disconnect
 
 ## Appendix
 
-### Create the Service Principal Name (SPN) to automate deployments
+### Create an Azure subscription (on disconnected operations)
 
-To create an SPN to automate deployments, run the following command.
-
-```azurecli  
-$subscriptionName = 'Starter subscription'
-$resourcegroup = 'azurelocal-disconnected-operations'
-$appname = 'azlocalclusapp'      
-az cloud set -n 'azure.local'
-az login      
-az account set --subscription $subscriptionName
-$subscriptionId = az account show --query id --output tsv
-$rg = (az group create -n $resourcegroup -l autonomous)|ConvertFrom-Json  
-# Create the SPN with Owner role 
-az ad sp create-for-rbac -n $appname --role Owner --scopes "/subscriptions/$($subscriptionId)"  
-```  
-
-Here's an example output:
-
-```json  
-{  
-"appId": "<AppId>",  
-"displayName": "azlocalclusapp",  
-"password": "<RETRACTED>",  
-"tenant": "<RETRACTED>"  
-}  
-```
-
-1. To automate bootstrap, copy the AppID and password for the next section.
-
-### Login with the SPN
-
-To login with the SPN, run the following command.
+To create an Azure subscription on disconnected operations, run the following command.
 
 ```azurecli
-# Replace these variables with your values
-$tenantId = ''
-$clientSecret = ''
-$appId = ''
-az cloud set -n 'azure.local' --only-show-errors
-Write-Host "Login using the service principal"    
-az login --service-principal --username $appId --password $clientSecret --tenant $tenantID    
+az account alias create --name 'aliasName’ --billing-scope '/providers/Microsoft.Billing/billingAccounts/defaultaccount' --display-name 'displayName' --workload 'Production' 
 ```
+
+### Create a service principal for Azure Local node registration
+
+Use the operator account to create a service principal for Arc initialization of each Azure Local node. For bootstrap, the **Owner** role is required at the subscription level.
+
+To create the service principal, follow these steps:
+
+1. Configure CLI on your client machine and run this command:
+
+    ```azurecli  
+    $subscriptionName = 'Starter subscription'
+    $resourcegroup = 'azurelocal-disconnected-operations'
+    $appname = 'azlocalclusapp'      
+    az cloud set -n 'azure.local'
+    az login      
+    az account set --subscription $subscriptionName
+    $subscriptionId = az account show --query id --output tsv
+    $rg = (az group create -n $resourcegroup -l autonomous)| ConvertFrom-Json  
+    az ad sp create-for-rbac -n $appname --role Owner --scopes "/subscriptions/$($subscriptionId)"  
+    ```  
+
+    Here's an example output:
+
+    ```json  
+    {  
+      "appId": "<AppId>",  
+      "displayName": "azlocalclusapp",  
+      "password": "<RETRACTED>",  
+      "tenant": "<RETRACTED>"  
+    }
+    ```
+
+1. Copy the *AppID* and *password* to use in command-line automation. You sign in using this service principal instead of an interactive sign-in or device code.
 
 ### Troubleshoot Azure CLI
 

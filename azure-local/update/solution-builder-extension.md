@@ -5,7 +5,7 @@ author: ronmiab
 ms.author: robess
 ms.topic: overview
 ms.reviewer: dandefolo
-ms.date: 02/25/2025
+ms.date: 12/30/2025
 ms.subservice: hyperconverged
 
 #customer intent: As a Senior Content Developer, I want provide customers with the highest level of content for the Solution Builder Extension so that customers gain knowledge and keep their Azure Local up to date in the most efficient way.
@@ -99,7 +99,7 @@ Gen A                 Contoso680          4.0.0.0                  UpdateAvailab
 ```
 
 > [!NOTE]
-> If you don't have an SBE installed the CurrentSbeVersion default is shown as 2.1.0.0.
+> If you don't have an SBE installed, the CurrentSbeVersion default is shown as 2.1.0.0.
 
 The following table describes the possible states of the SBE on your Azure Local system. For states requiring action, follow the provided guidance.
 

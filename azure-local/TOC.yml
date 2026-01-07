@@ -853,6 +853,10 @@ items:
       href: manage/disconnected-operations-azure-container-registry.md
     - name: Azure Policy
       href: manage/disconnected-operations-policy.md
+    - name: Azure PowerShell
+      href: manage/disconnected-operations-powershell.md
+    - name: Update disconnected operations
+      href: manage/disconnected-operations-update.md
   - name: Monitor
     items:
     - name: Monitoring
