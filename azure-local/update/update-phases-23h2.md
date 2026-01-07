@@ -4,7 +4,7 @@ description: Understand the various phases of solution updates applied to Azure 
 author: alkohli
 ms.author: alkohli
 ms.topic: article
-ms.date: 02/25/2025
+ms.date: 12/30/2025
 ms.subservice: hyperconverged
 ---
 

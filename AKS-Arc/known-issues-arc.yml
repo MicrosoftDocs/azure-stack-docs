@@ -2,8 +2,8 @@
 metadata:
   title: Resolve errors when enabling and disabling Azure Arc on AKS workload clusters
   description: Find solutions to known issues and errors when enabling and disabling Azure Arc on AKS workload clusters in AKS on Windows Server.
-  author: sethmanheim
-  ms.author: sethm
+  author: davidsmatlak
+  ms.author: davidsmatlak
   ms.service: azure-kubernetes-service-hybrid
   ms.topic: faq
   ms.date: 6/13/2024
