@@ -45,7 +45,8 @@ Follow these steps on your client to connect to one of the machines in your Azur
 
    ```powershell
    $cred = Get-Credential
-   Enter-PSSession -ComputerName "<Azure Local node IP>" -Credential $cred 
+   $ip="<IP address of the Azure Local machine>"
+   Enter-PSSession -ComputerName $ip -Credential $cred 
    ```
 
    > [!NOTE]
@@ -60,11 +61,11 @@ Follow these steps on your client to connect to one of the machines in your Azur
 
    ```Console
    PS C:\Users\Administrator> $cred = Get-Credential
-     
+   PS C:\Users\Administrator> $ip = "100.100.100.10"
    cmdlet Get-Credential at command pipeline position 1
    Supply values for the following parameters:
    Credential
-   PS C:\Users\Administrator> Enter-PSSession -ComputerName "100.100.100.10" -Credential $cred 
+   PS C:\Users\Administrator> Enter-PSSession -ComputerName $ip -Credential $cred 
    [100.100.100.10]: PS C:\Users\Administrator\Documents>
    ```
 
