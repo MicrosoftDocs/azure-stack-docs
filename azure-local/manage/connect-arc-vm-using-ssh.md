@@ -160,7 +160,7 @@ VM Connect allows you to connect to both Windows and Linux Azure Local VMs that 
 
 VM Connect requires line-of-sight from the client machine running Azure CLI to the Azure Local instance hosting the VM. This requirement means that the client machine must have a VPN connection to the Azure Local instance or be on the same network.
 
-For more information about the VM Connect commands, see [Azure Local VM Connect Azure CLI reference](https://learn.microsoft.com/cli/azure/stack-hci-vm/vmconnect?view=azure-cli-latest).
+For more information about the VM Connect commands, see [Azure Local VM Connect Azure CLI reference](/cli/azure/stack-hci-vm/vmconnect).
 
 ### VM Connect prerequisites
 
