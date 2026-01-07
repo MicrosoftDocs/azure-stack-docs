@@ -15,7 +15,7 @@ ms.subservice: hyperconverged
 
 This article describes how to connect to an Azure Local VM in two scenarios:
 
-  1. **Use SSH and Remote Desktop ProtocolRDP over SSH** to connect to an Azure Local VM enabled by Azure Arc.
+  1. **Use SSH and Remote Desktop Protocol (RDP) over SSH** to connect to an Azure Local VM enabled by Azure Arc.
   1. **Use VM Connect (preview)** to connect to an Azure Local VM that doesn't have network connectivity or has boot failures.
 
 ## Connect to an Azure Local VM using SSH and RDP over SSH
@@ -185,10 +185,10 @@ Follow these steps to connect to an Azure Local VM by using VM Connect.
 1. Set appropriate parameters:
 
     ```powershell
-    $VMName="<your VM name>"
-    $ResourceGroup="<your resource group of the VM>"
-    $ClusterName="<your Azure Local instance name>"
-    $RDPFilePath="<path to save RDP file>" # Optional, will be saved in current directory if not specified
+    $vmName="<your VM name>"
+    $resourceGroup="<your resource group of the VM>"
+    $clusterName="<your Azure Local instance name>"
+    $rdpFilePath="<path to save RDP file>" # Optional, will be saved in current directory if not specified
     ```
 
     > [!NOTE]
@@ -197,7 +197,7 @@ Follow these steps to connect to an Azure Local VM by using VM Connect.
 1. Run the following command to enable VM Connect and connect to the VM. Optionally, you can specify the path to save the generated RDP file by using the `--path` parameter.
 
     ```powershell
-    az stack-hci-vm vmconnect enable --name $VMName --resource-group $ResourceGroup --cluster-name $clusterName
+    az stack-hci-vm vmconnect enable --name $vmName --resource-group $resourceGroup --cluster-name $clusterName
     ```
 
     Running this command can take up to 10 minutes to complete. This command performs the following actions:
@@ -212,7 +212,7 @@ Follow these steps to connect to an Azure Local VM by using VM Connect.
 
    - The first prompt authenticates to the VM host machine. Use the credentials of a local administrator account on the Azure Local instance hosting the VM.
    - The second prompt authenticates to the VM itself. Use the credentials of a local administrator account on the VM.
-     - If you need to "Press Ctrl+Alt+Delete to unlock", you can do so by pressing "Ctrl + Alt + End" on your keyboard, which sends the "Ctrl+Alt+Delete" command through the RDP session. You can also use the on-screen keyboard to send the "Ctrl+Alt+Delete" command.
+     - If you need to press *Ctrl + Alt + Delete* to unlock, you can do so by pressing *Ctrl + Alt + End* on your keyboard, which sends the *Ctrl + Alt + Delete* command through the RDP session. You can also use the on-screen keyboard to send the *Ctrl + Alt + Delete* command.
 
 1. You're now connected to the Azure Local VM by using VM Connect. You can use this connection to troubleshoot and recover the VM as needed.
 
@@ -220,22 +220,22 @@ Follow these steps to connect to an Azure Local VM by using VM Connect.
 
      ```powershell
     
-      az stack-hci-vm vmconnect disable --name $VMName --resource-group $ResourceGroup --cluster-name $clusterName
+      az stack-hci-vm vmconnect disable --name $vmName --resource-group $resourceGroup --cluster-name $clusterName
     ```
 
 ### Known limitations
 
-**VM Connect requires VMs to be in the same resource group as the Azure Local instance**.  
-VM Connect doesn't work in the current release if the VM is in a different resource group than the Azure Local instance.
+- **VM Connect requires VMs to be in the same resource group as the Azure Local instance**.  
+    VM Connect doesn't work in the current release if the VM is in a different resource group than the Azure Local instance.
 
-**VM Connect occasionally fails if the Azure Local host machine has multiple network interfaces.**  
-In some cases, VM Connect fails when executing the RDP file if the Azure Local host machine has multiple network interfaces. This problem happens because the RDP file contains an IP address that isn't reachable from the client machine. As a workaround, you can manually edit the RDP file to replace the IP address with one that's reachable from the client machine before opening it. To do this:
+- **VM Connect occasionally fails if the Azure Local host machine has multiple network interfaces.**  
+    In some cases, VM Connect fails when executing the RDP file if the Azure Local host machine has multiple network interfaces. This problem happens because the RDP file contains an IP address that isn't reachable from the client machine. As a workaround, you can manually edit the RDP file to replace the IP address with one that's reachable from the client machine before opening it. To do this:
 
-1. Find the correct IP address of the Azure Local host machine that's reachable from the client machine by navigating in the Azure portal to the Azure Local instance > Infrastructure > Machines > select the host machine > Properties > Networking.
-1. Open the generated RDP file in a text editor.
-1. Locate the line that starts with `full address:s:` and replace the IP address with the correct one.
-1. Save the changes to the RDP file and then open it to connect to the VM.
-
+    1. Find the correct IP address of the Azure Local host machine that's reachable from the client machine by navigating in the Azure portal to the Azure Local instance > Infrastructure > Machines > select the host machine > Properties > Networking.
+    1. Open the generated RDP file in a text editor.
+    1. Locate the line that starts with `full address:s:` and replace the IP address with the correct one.
+    1. Save the changes to the RDP file and then open it to connect to the VM.
+    
 ### VM Connect feedback
 
 The product team appreciates your feedback on VM Connect. If you encounter any problems or have suggestions for improvement, provide your feedback through the [Azure Local VM Connect Feedback Forum](https://aka.ms/AzureLocalVMConnectFeedback).
