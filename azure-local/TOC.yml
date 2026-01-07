@@ -377,7 +377,7 @@ items:
           href: manage/create-network-interfaces.md
         - name: 5. Create Azure Local VMs
           href: manage/create-arc-virtual-machines.md
-      - name: Connect to VM via SSH
+      - name: Connect to Azure Local VMs
         href: manage/connect-arc-vm-using-ssh.md
       - name: Manage Azure Local VMs
         href: manage/manage-arc-virtual-machines.md
