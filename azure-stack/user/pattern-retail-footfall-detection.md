@@ -2,7 +2,7 @@
 title: Footfall detection pattern using Azure and Azure Stack Hub
 description: Learn how to use Azure and Azure Stack Hub to implement an AI-based footfall detection solution for analyzing retail store traffic.
 author: ronmiab 
-ms.topic: article
+ms.topic: solution-overview
 ms.date: 05/09/2025
 ms.author: robess
 ms.reviewer: anajod
