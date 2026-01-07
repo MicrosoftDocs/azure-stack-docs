@@ -105,19 +105,19 @@ When considering which VM SKU to use, the primary difference between BOM 1.7.3 a
 For example, take the VM SKU `NC_G14_56_v1`, which is best used on BOM 2.0.0. Four instances of that SKU would use up all the resources on a given Bare Metal Machine, with no waste.
 
 |         | VM1 | VM2 | VM3 | VM4 | Used | Leftover |
-| ------- | --- | --- | --- | --- | ---- | -------- |
+|---------|-----|-----|-----|-----|------|----------|
 | CPU     | 14  | 14  | 14  | 14  | 56   | **0**    |
 | Memory  | 56  | 56  | 56  | 56  | 224  | **0**    |
 
 However, if you used that SKU on BOM 1.7.3, only three NC_G14_56_v1 SKUs are deployable and a sizable amount of RAM goes left unused, even after deploying a smaller fourth VM. For BOM 1.7.3, the NC_G12_56_v1 is the optimized choice.
 
 |         | VM1 | VM2 | VM3 | VM4 | Used | Leftover |
-| ------- | --- | --- | --- | --- | ---- | -------- |
+|---------|-----|-----|-----|-----|------|----------|
 | CPU     | 14  | 14  | 14  | 6   | 48   | **0**    |
 | Memory  | 56  | 56  | 56  | 28  | 196  | **28**   |
 
 |         | VM1 | VM2 | VM3 | VM4 | Used | Leftover |
-| ------- | --- | --- | --- | --- | ---- | -------- |
+|---------|-----|-----|-----|-----|------|----------|
 | CPU     | 12  | 12  | 12  | 12  | 48   | **0**    |
 | Memory  | 56  | 56  | 56  | 56  | 224  | **0**    |
 
