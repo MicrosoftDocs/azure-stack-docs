@@ -4,7 +4,7 @@ description: Virtual machine resiliency considerations for Azure Local.
 ms.topic: article
 author: sipastak
 ms.author: sipastak
-ms.date: 10/23/2025
+ms.date: 01/07/2026
 ms.subservice: hyperconverged
 ---
 
@@ -54,7 +54,7 @@ If you're using MABS, you can protect VMs by using two approaches: **host-level 
 Setting up MABS involves deploying the MABS server software on a dedicated VM on the cluster, configuring its local storage, installing protection agents on the Azure Local hosts and/or guests, and then creating protection groups with the VMs you want to protect. Protection groups define what is backed up (for example, specific VMs), the backup schedule, and short-term and long-term retention policies on local disk or Azure. For more information on installing MABS for Azure Local VMs, see [Back up Azure Local virtual machines with Azure Backup Server](/azure/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines).
 
 | Attribute | Host-level VM backup | Guest-level VM backup |
-|-----------|---------------------|----------------------|
+|-----------|----------------------|-----------------------|
 |Requires agent in the guest OS    |  No     |  Yes    |
 |Requires agent in all nodes of the cluster      | Yes   |    No     |
 |Agnostic to guest OS     |   Yes      |     No    |
@@ -223,17 +223,17 @@ During the replication process, the hardware and network you use affect the serv
 
 When choosing between Azure Site Recovery and Hyper-V Replica for Azure Local VMs, consider the differences between both solutions:
 
-| Attribute |Azure Site Recovery |Hyper-V Replica |
-|---------|---------|---------|
-|Replication destinations      |  Azure Local to Azure         |   Azure Local to Azure  Local    |
-|Failed over VMs run as      |  Azure VMs        |  Azure Local VMs        |
-|Deployment      |    Automated on all nodes, initiated from the Azure portal, and uses [Azure Site Recovery](azure-site-recovery.md) extension.     |  Manual, on each node, out-of-band, and through local tools ([Hyper-V Manager](/windows-server/virtualization/hyper-v/manage/set-up-hyper-v-replica#deployment-steps)).     |
-|Requires Azure control plane      |      Yes   |    No     |
-|Provides recovery plans for orchestration of failover sequences      |    Yes     |    No     |
-|Requires network evaluation for the failed over VM to continue servicing      |    Yes     |    Yes     |
-|Incurs Azure usage cost      |    Yes. See [Pricing - Site Recovery](https://azure.microsoft.com/pricing/details/site-recovery).     |     No    |
-|Requires registration if the VM is failed back to its original site after disaster is mitigated | No | No (the VM can be failed over to the disaster recovery site temporarily and failed back to its original site after disaster is mitigated) |
-|Requires registration if the failed over VM had to permanently reside in the disaster recovery site | No (Azure VMs don’t require registration) | Yes |
+| Attribute | Azure Site Recovery | Hyper-V Replica |
+|-----------|---------------------|-----------------|
+| Replication destinations      | Azure Local to Azure         | Azure Local to Azure  Local    |
+| Failed over VMs run as      | Azure VMs        | Azure Local VMs        |
+| Deployment      | Automated on all nodes, initiated from the Azure portal, and uses [Azure Site Recovery](azure-site-recovery.md) extension.  | Manual, on each node, out-of-band, and through local tools ([Hyper-V Manager](/windows-server/virtualization/hyper-v/manage/set-up-hyper-v-replica#deployment-steps)).  |
+| Requires Azure control plane      | Yes   | No     |
+| Provides recovery plans for orchestration of failover sequences  | Yes     | No     |
+| Requires network evaluation for the failed over VM to continue servicing   | Yes     | Yes     |
+| Incurs Azure usage cost      | Yes. See [Pricing - Site Recovery](https://azure.microsoft.com/pricing/details/site-recovery).     | No    |
+| Requires registration if the VM is failed back to its original site after disaster is mitigated | No | No (the VM can be failed over to the disaster recovery site temporarily and failed back to its original site after disaster is mitigated) |
+| Requires registration if the failed over VM had to permanently reside in the disaster recovery site | No (Azure VMs don’t require registration) | Yes |
 
 **Use Azure Site Recovery and Hyper-V Replica both**: Organizations with remote sites with single clusters and larger hubs with multiple clusters can extend Azure as a disaster recovery site. Use Azure Site Recovery for remote sites and Hyper-V Replica for larger locations. This architecture allows some VMs to replicate to Azure while others replicate to a secondary site, ensuring flexibility and tailored disaster recovery strategies for various operational needs.
 
