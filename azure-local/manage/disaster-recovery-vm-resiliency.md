@@ -26,7 +26,7 @@ For more information and recommendations to enhance the resiliency of your workl
 
 ## Storage path (volumes) considerations
 
-Azure Local instances deployed by using the [*Create workload volumes and required infrastructure volumes (Recommended)*](/azure/azure-local/deploy/deploy-via-portal#optionally-change-advanced-settings-and-apply-tags) option enabled, create a 'UserStorage_X' cluster shared volumes (CSVs), one per physical node in the cluster, and an associated Storage Path resource created in Azure for each volume. Workload resources, such as Azure Local VMs and Arc-enabled Azure Kubernetes Server (AKS) clusters, use the storage path resource in Azure to store VM images. For example, a CSV with the local file system path of `C:\ClusterStorage\UserStorage_1\` has a storage path resource created in Azure that represents the cluster shared volume (CSV) to enable Azure Local VMs virtual hard disks (VHDs) to be placed on a specific target volume. For more information, see [about storage paths](/azure/azure-local/manage/create-storage-path#about-storage-path).
+Azure Local instances deployed by using the [*Create workload volumes and required infrastructure volumes (Recommended)*](/azure/azure-local/deploy/deploy-via-portal#optionally-change-advanced-settings-and-apply-tags) option create a 'UserStorage_X' cluster shared volumes (CSVs), one per physical node in the cluster, and an associated Storage Path resource created in Azure for each volume. Workload resources, such as Azure Local VMs and Arc-enabled Azure Kubernetes Server (AKS) clusters, use the storage path resource in Azure to store VM images. For example, a CSV with the local file system path of `C:\ClusterStorage\UserStorage_1\` has a storage path resource created in Azure that represents the cluster shared volume (CSV) to enable Azure Local VMs virtual hard disks (VHDs) to be placed on a specific target volume. For more information, see [about storage paths](/azure/azure-local/manage/create-storage-path#about-storage-path).
 
 When deploying well-architected applications that utilize multiple Azure Local VMs to enhance workload resiliency, where possible, place each VM's virtual hard disks (VHDs) in separate storage paths to optimize redundancy. For example, when provisioning multiple Azure Local VMs that run instances of the same service, using different storage paths for each VMs VHDs helps mitigate the risk of all VMs using a single storage path (volume).
 
@@ -117,7 +117,7 @@ Veeam backup and replication supports backup and replication of Azure Local VMs.
 
 - [Veeam Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/veeam.veeam-backup-replication?tab=overview )
 - [Veeam Azure Local support](https://www.veeam.com/kb4047)
-- [Veeem Supported Platforms](https://helpcenter.veeam.com/docs/backup/hyperv/platform_support.html)
+- [Veeam Supported Platforms](https://helpcenter.veeam.com/docs/backup/hyperv/platform_support.html)
 
 ## Backup frequency, retention, and restoration testing
 
@@ -154,9 +154,9 @@ Key points about Azure Site Recovery for Azure Local:
   - For successful failback, the on-premises environment must be healthy. If your cluster isn't available, you can register another Azure Local cluster to the Azure Site Recovery Hyper-V site and failback the VM to a node on an alternate cluster.
 
     > [!NOTE]
-    >- Failing back an Azure Local VM on an alternate cluster fails back the VM as an unmanaged VM. This means that all services inside the VM start working, but the VM can’t be managed from Azure until it's registered on the new Azure Local cluster and reconnected to its resource that exists in Azure.
+    >- Failing back an Azure Local VM on an alternate cluster fails back the VM as an unmanaged VM. This means that all services inside the VM start working, but the VM can't be managed from Azure until it's registered on the new Azure Local cluster and reconnected to its resource that exists in Azure.
     >- Reconnecting means the Azure resource is updated with the new resource group (optional, you can also keep it in the same resource group), custom location, storage path, and logical network of the VM.
-    >- If the VM is failed back on the same cluster, registering and reconnecting aren't needed. The VM’s Azure connection is restored, and it continues to be managed from Azure as long as it's within [Azure Arc’s 45-day reconnection window](/azure/azure-arc/servers/overview#agent-status).
+    >- If the VM is failed back on the same cluster, registering and reconnecting aren't needed. The VM's Azure connection is restored, and it continues to be managed from Azure as long as it's within [Azure Arc's 45-day reconnection window](/azure/azure-arc/servers/overview#agent-status).
 
 For more information and to install Azure Site Recovery, see [Protect VM workloads with Azure Site Recovery on Azure Local (preview)](azure-site-recovery.md).
 
