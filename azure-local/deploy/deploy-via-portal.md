@@ -173,7 +173,7 @@ On the **Configuration** tab, choose whether to create a new configuration for t
 1. If you picked static IP, provide the following values:
     1. Using the **Starting IP** and **Ending IP** (and related) fields, allocate a contiguous block of at least six static IP addresses on your management network's subnet, omitting addresses already used by the machines.
 
-        These IPs are used by Azure Local and internal infrastructure (Arc Resource Bridge) that's required for Arc VM management and AKS Hybrid.
+        These IPs are used by Azure Local to create a logical network that's required for Azure Local VM management and AKS enabled by Azure Arc. Arc Resource Bridge, a component of Azure Local VM management, is associated with this infrastructure logical network.
     1. Provide the Subnet mask, Default gateway, and one or more DNS servers.
     1. Validate subnet.
 
@@ -297,6 +297,7 @@ To confirm that the system and all of its Azure resources were successfully depl
     | 1 per machine | Machine - Azure Arc |
     | 1            | Azure Local     |
     | 1            | Arc Resource Bridge |
+    | 1            | Infrastructure logical network |
     | 1            | Key vault           |
     | 1            | Custom location     |
     | 2*           | Storage account     |
