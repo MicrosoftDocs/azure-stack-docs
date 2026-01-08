@@ -45,7 +45,7 @@ Follow these steps on your client to connect to one of the machines in your Azur
 
    ```powershell
    $cred = Get-Credential
-   $ip="<IP address of the Azure Local machine>"
+   $ip = "<IP address of the Azure Local machine>"
    Enter-PSSession -ComputerName $ip -Credential $cred 
    ```
 
@@ -171,4 +171,4 @@ Invoke-SupportAksArcRemediation
 
 ## Related steps
 
-[Use the Diagnostic Support tool](./manage/support-tools.md)
+- [Use the Diagnostic Support tool](./manage/support-tools.md).
