@@ -171,4 +171,4 @@ Invoke-SupportAksArcRemediation
 
 ## Related steps
 
-- [Use the Diagnostic Support tool](./manage/support-tools.md).
+- [Use the Diagnostic Support tool](./support-tools.md).
