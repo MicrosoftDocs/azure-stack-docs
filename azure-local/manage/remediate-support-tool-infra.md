@@ -13,7 +13,7 @@ The [**Support tool**](https://www.powershellgallery.com/packages/Support.AksArc
 
 Before you open a support request, run the specified commands in this module to help diagnose and potentially resolve problems.
 
-## Benefits
+## Benefits of using the Support tool
 
 The Support tool uses simple commands to identify problems without expert product knowledge. The tool provides:
 
@@ -71,7 +71,7 @@ Follow these steps on your client to connect to one of the machines in your Azur
 
    </details>
 
-## Installation
+## Install the Support tool module
 
 To install the Support tool module, run the following commands:
 
