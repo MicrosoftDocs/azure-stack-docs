@@ -12,10 +12,10 @@ ms.subservice: hyperconverged
 # Azure Local release information
 
 > [!IMPORTANT]
-> Azure Local versions 11.2510.1002.93 and 12.2510.1002.94 are now available.
+> Azure Local versions 11.2510.1002.93 and 12.2510.1002.529 are now available.
 >
-> - If you are already on 11.2510.1002.87, you can apply the OS upgrade to 12.2510.1002.94.
-> - If you haven't updated to 11.2510.1002.87, you can update to 11.2510.1002.93 first before applying the upgrade to 12.2510.1002.94.
+> - If you are already on 11.2510.1002.87, you can apply the OS upgrade to 12.2510.1002.529.
+> - If you haven't updated to 11.2510.1002.87, you can update to 11.2510.1002.93 first before applying the upgrade to 12.2510.1002.529.
 
 To enhance your Azure Local (formerly known as Azure Stack HCI) experience, we periodically release feature updates that introduce new capabilities and improvements. Additionally, Azure Local provides cumulative updates that include monthly quality and security enhancements. These updates are listed for each instance, ensuring your devices remain protected and productive.
 

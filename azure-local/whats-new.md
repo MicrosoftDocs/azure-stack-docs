@@ -91,13 +91,13 @@ This release includes the following features and improvements:
 
         - Existing deployments of Azure Local continue to use OS version **25398.1913**. For more information, see [Release information summary](./release-information-23h2.md).
 
-    - If you purchased Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) through your preferred Microsoft hardware partner, the OS is preinstalled. Work with your Original Equipment Manufacturer (OEM) to get the OS image that's compatible with **12.2510.1002.94** and a driver that's compatible with OS version **26100.6899** or Windows Server 2025.
+    - If you purchased Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) through your preferred Microsoft hardware partner, the OS is preinstalled. Work with your Original Equipment Manufacturer (OEM) to get the OS image that's compatible with **12.2510.1002.529** and a driver that's compatible with OS version **26100.6899** or Windows Server 2025.
 
 - **.NET updates**: This build uses .NET version **8.0.21** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
     
 - **Azure Local rack aware clustering (Preview)**: Azure Local now supports rack aware clustering. This Preview feature allows you to define local availability zones based on physical racks in your datacenter, enhancing the resilience of your cluster against rack-level failures. For more information, see [Rack aware clustering](concepts/rack-aware-cluster-overview.md).
 
-- **Upgrade**: Starting with this release, solution upgrade from 11.2510 to 12.2510 is available to everyone and no longer requires you to opt in. The reliability of the upgrade process is also improved.
+- **Upgrade**: Starting with this release, solution upgrade from 11.2510 to 12.2510 is available to everyone and no longer requires you to opt in. The reliability of the upgrade orchestration is also improved.
     - If you're already on 11.2510.1002.87, you can apply the OS upgrade to 12.2510.1002.529.
     - If you aren't on 11.2510.1002.87, you can update to 11.2510.1002.93 first before applying the upgrade to 12.2510.1002.529.
 
