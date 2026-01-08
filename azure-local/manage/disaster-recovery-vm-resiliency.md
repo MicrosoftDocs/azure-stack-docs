@@ -87,12 +87,13 @@ Cohesity extends support by leveraging its mature Hyper-V connector and workflow
 
 #### Cohesity NetBackup
 
-Cohesity NetBackup delivers cyber-resilient data protection for Azure Local (formerly Azure Stack HCI), enabling organizations to protect Azure Local virtual machines and applications using the same enterprise‑grade platform they rely on across hybrid and multi‑cloud environments.
+Cohesity NetBackup delivers cyber-resilient data protection for Azure Local, enabling organizations to protect Azure Local virtual machines and applications using the same enterprise‑grade platform they rely on across hybrid and multi‑cloud environments.
 
 NetBackup uses its mature Hyper-V integration and Microsoft Resilient Change Tracking (RCT) to provide policy-based, incremental-forever backups for Azure Local workloads. Efficient block-level change capture minimizes backup windows and network usage. Azure Local support is documented in the NetBackup 11.x Software Compatibility List under Hyper-V and Azure Local.
 
 - [Cohesity NetBackup](https://www.cohesity.com/platform/netbackup/)
-- [NetBackup 11.x Software Compatibility List](https://download.veritas.com/resources/content/live/OSVC/100046000/100046445/en_US/nbu_110_scl.html#Hyper-V_and_Azure_Local)
+- [NetBackup 11.x Software Compatibility List - Hyper-V and Azure Local](https://download.veritas.com/resources/content/live/OSVC/100046000/100046445/en_US/nbu_110_scl.html?__gda__=1767992686_c71cac89f902a6922f833d1f35f710db#Hyper-V_and_Azure_Local)
+- [NetBackup Compatibility List for all Versions](https://www.veritas.com/support/en_US/article.100040093)
 
 #### Commvault
 
