@@ -1,3 +1,11 @@
+---
+title: Include for Operator Nexus
+description: An include file that provides a bash snippet.
+author: sethmanheim
+ms.topic: include
+ms.date: 12/29/2025
+ms.author: sethm
+---
 
 ```bash
 

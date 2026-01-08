@@ -3,7 +3,7 @@ title: Prepare Active Directory for Azure Local, version 23H2 deployment
 description: Learn how to prepare Active Directory before you deploy Azure Local, version 23H2.
 author: alkohli
 ms.topic: how-to
-ms.date: 12/30/2025
+ms.date: 01/07/2026
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -81,7 +81,7 @@ To create a dedicated OU, follow these steps:
 
     ```powershell
     PS C:\work> $password = ConvertTo-SecureString '<password>' -AsPlainText -Force
-    PS C:\work> $user = "ms309deployuser"
+    PS C:\work> $user = "lcmuser"
     PS C:\work> $credential = New-Object System.Management.Automation.PSCredential ($user, $password)
     PS C:\work> New-HciAdObjectsPreCreation -AzureStackLCMUserCredential $credential -AsHciOUName "OU=ms309,DC=PLab8,DC=nttest,DC=microsoft,DC=com"    
     PS C:\work>

@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: concept-article
 ms.service: azure-local
-ms.date: 04/08/2025
+ms.date: 01/06/2026
 ms.subservice: hyperconverged
 ---
 
@@ -41,7 +41,7 @@ Here are the naming changes:
 
 ### Logo and icons
 
-Azure Local product logo and icons are the same as those for Azure Stack HCI.
+Azure Local product logo and icons are the same as those for Azure Stack HCI. For the product logo to use in architectural diagrams, see [Download Azure icons to use in architecture diagrams and documentation](/azure/architecture/icons/).
 
 ### What names aren't changing?
 
@@ -56,6 +56,7 @@ The following table lists what isn't impacted by the rename:
 | Azure Stack HCI OS  | The Azure Stack HCI operating system (OS), which is a component of Azure Local, remains the same. |
 | Azure Stack HCI OEM license | The license name remains the same. |
 | Azure Stack HCI documentation | The text changes for Azure Stack HCI documentation (on Microsoft Learn) were made for the entire portfolio including screenshots and conceptual diagrams. <br><br> Documentation for older versions of Azure Stack HCI; for example, 22H2 only, continues to reference Azure Stack HCI, and don't reflect the name change. <br><br> Release notes and security updates that are more than 6 months old also do not reflect the name change.|
+| MicrosoftDocs/azure-stack-docs | GitHub public repository for Azure Local documentation and related links. |
 
 ## Frequently asked questions
 
