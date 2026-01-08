@@ -5,7 +5,7 @@ ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 12/16/2025
+ms.date: 01/08/2026
 ms.subservice: hyperconverged
 ---
 
@@ -76,7 +76,7 @@ There are two 2510 releases for October. Here are the details of each release:
 
 |Solution version  | OS version |
 |---------|---------|
-|12.2510.1002.94 |  26100.6899 |
+|12.2510.1002.529 |  26100.6899 |
 |11.2510.1002.93  | 25398.1913  |
 
 For more information, see [Release information summary](./release-information-23h2.md).
@@ -97,9 +97,9 @@ This release includes the following features and improvements:
     
 - **Azure Local rack aware clustering (Preview)**: Azure Local now supports rack aware clustering. This Preview feature allows you to define local availability zones based on physical racks in your datacenter, enhancing the resilience of your cluster against rack-level failures. For more information, see [Rack aware clustering](concepts/rack-aware-cluster-overview.md).
 
-- **Upgrade**: Starting with this release, solution upgrade from 11.2510 to 12.2510 is available to everyone and no longer requires you to opt in.
-    - If you're already on 11.2510.1002.87, you can apply the OS upgrade to 12.2510.1002.94.
-    - If you aren't on 11.2510.1002.87, you can update to 11.2510.1002.93 first before applying the upgrade to 12.2510.1002.94.
+- **Upgrade**: Starting with this release, solution upgrade from 11.2510 to 12.2510 is available to everyone and no longer requires you to opt in. The reliability of the upgrade process is also improved.
+    - If you're already on 11.2510.1002.87, you can apply the OS upgrade to 12.2510.1002.529.
+    - If you aren't on 11.2510.1002.87, you can update to 11.2510.1002.93 first before applying the upgrade to 12.2510.1002.529.
 
 <!--- **Deployment**: Starting with this release, you can domain join your machines before deployment. If you choose to domain join machines before deployment, you must add the deployment user to the local Administrators group on each machine. For more information, see [Domain join before deployment](./deploy/deployment-install-os.md#domain-join-before-deployment).-->
 
