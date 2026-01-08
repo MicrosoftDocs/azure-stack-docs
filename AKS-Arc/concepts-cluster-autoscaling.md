@@ -1,7 +1,7 @@
 ---
 title: Cluster autoscaling in AKS on Windows Server
 description: Learn about automatically scaling node pools in AKS on Windows Server.
-ms.topic: article
+ms.topic: concept-article
 author: davidsmatlak
 ms.author: davidsmatlak 
 ms.date: 04/07/2025

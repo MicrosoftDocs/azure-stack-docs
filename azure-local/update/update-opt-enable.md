@@ -3,7 +3,7 @@ title: Opt-in update from Azure Local solution version 11.25xx to 12.25xx
 description: Learn about the opt-in update workflow to update from Azure Local solution version 11.25xx to 12.25xx.
 author: alkohli
 ms.author: alkohli
-ms.topic: article
+ms.topic: upgrade-and-migration-article
 ms.date: 09/16/2025
 ms.subservice: hyperconverged
 ---
