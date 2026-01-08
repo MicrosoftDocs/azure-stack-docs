@@ -11,21 +11,25 @@ ms.date: 01/07/2026
 
 The [**Support tool**](https://www.powershellgallery.com/packages/Support.AksArc) (also known as AKS Arc Support Tool) is a PowerShell module that provides diagnostic and remediation capabilities for the infrastructure components used by Azure Local VMs and Azure Kubernetes Service (AKS) enabled by Azure Arc on Azure Local.
 
-Before you open a support request, run the specified commands in this module to help diagnose and potentially resolve problems.
+
 
 ## Benefits of using the Support tool
 
 The Support tool uses simple commands to identify problems without expert product knowledge. The tool provides:
 
+- **Remediation for issues pertaining to Azure Local VMs and AKS Arc**: Helps to identify and remediate common issues with Azure Local infrastructure components.
 - **Fixes for solution update problems**: Identifies and attempts to fix common problems that occur during the solution update.
-- **Diagnostic checks**: Provides diagnostic health checks based on common problems, incidents, and telemetry data.
+
+Before you open a support request, run the Support tool. This tool resolves a wide range of Azure Local VM issues automatically by updating the infrastructure components such as Microsoft On-Premises Cloud (MOC) to the latest patch release. Running this tool results in a faster resolution of the issue without having to file a Support ticket. If the issues persist, raise a Support ticket.
 
 ## Common problems where the Support tool might help
 
-Run the commands if you experience any of the following symptoms:
+Run the commands if you experience any of the following symptoms on your Azure Local instance:
 
-- Solution update fails in Microsoft On Cloud (MOC) binaries state.
-- Solution update fails in Arc resource bridge stage.
+- Azure Local VMs runs into issues.
+- Solution update fails:
+    - In MOC binaries state.
+    - In Arc resource bridge stage.
 - MOC service doesn't stay online.
 - Arc resource bridge is offline.
 
@@ -80,16 +84,16 @@ Install-Module -Name Support.AksArc
 Import-Module Support.AksArc -force
 ```
 
-If you already have the module installed, update it by using the following cmdlet:
+>[!NOTE]
+> When you import the module, it tries to automatically update from the PowerShell gallery.
+
+If you have the module installed, update it by using the following cmdlet:
 
 ```powershell
 Update-Module -Name Support.AksArc
 ```
 
->[!NOTE]
-> When you import the module, it tries to automatically update from the PowerShell gallery. You can also update manually by using the following methods.
-
-Make sure you have the latest module in the current instance by removing and importing the module:
+Alternatively, you could update manually by removing and import the module:
 
 ```powershell
 Remove-Module -Name Support.AksArc
@@ -172,3 +176,4 @@ Invoke-SupportAksArcRemediation
 ## Related steps
 
 - [Use the Diagnostic Support tool](./support-tools.md).
+- [Troubleshoot Azure Local VMs](./troubleshoot-arc-enabled-vms.md).

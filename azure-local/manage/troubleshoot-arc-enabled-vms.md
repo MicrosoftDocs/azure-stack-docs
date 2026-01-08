@@ -3,7 +3,7 @@ title: Troubleshoot Azure Local Virtual Machines enabled by Azure Arc
 description: Learn how to troubleshoot issues you experience with Azure Local Virtual Machines (VMs).
 author: alkohli
 ms.topic: how-to
-ms.date: 07/21/2025
+ms.date: 01/08/2026
 ms.author: alkohli
 ms.reviewer: vlakshmanan
 ms.service: azure-local
@@ -16,6 +16,9 @@ ms.subservice: hyperconverged
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
 This article describes how to collect logs and troubleshoot issues with Azure Local Virtual Machines (VMs) enabled by Azure Arc. It also lists the current limitations and known issues with Azure Local VM management, along with recommended resolutions.
+
+If your Azure Local VMs experience issues that you can't resolve, run the [Support Tool for Azure Local infrastructure component issues](./remediate-support-tool-infra.md) before filing a support request. If the issues persist, use the guidance provided in this article to further troubleshoot Azure Local VMs.
+
 
 ## Property isn't supported for this operation
 
@@ -245,6 +248,6 @@ If using an ARM template that creates multiple VMs in one deployment:
 
 ---
 
-## Next steps
+## Related steps
 
 - [Azure Local VM management FAQs](./azure-arc-vms-faq.yml)
