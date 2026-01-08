@@ -2,7 +2,7 @@
 title: Diagnostic log collection
 description: Learn about diagnostic log collection.
 author: sethmanheim
-ms.topic: article
+ms.topic: how-to
 ms.date: 10/01/2025
 ms.author: sethm
 ms.lastreviewed: 09/20/2021

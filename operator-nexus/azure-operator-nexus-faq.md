@@ -4,7 +4,7 @@ description: Answers to the most frequently asked questions about Azure Operator
 author: mukesh-dua
 ms.author: mukeshdua
 ms.service: azure-operator-nexus
-ms.topic: conceptual
+ms.topic: faq
 ms.date: 06/28/2023
 ms.custom:
   - template-reference
