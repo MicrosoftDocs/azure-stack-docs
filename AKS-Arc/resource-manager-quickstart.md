@@ -63,34 +63,18 @@ Create an SSH key pair in Azure and store the private key file for troubleshooti
 
 For more options, you can either follow [Configure SSH keys for an AKS cluster](/azure/aks/aksarc/configure-ssh-keys) to create SSH keys, or use [Restrict SSH access](/azure/aks/aksarc/restrict-ssh-access) during cluster creation. To access nodes afterward, see [Connect to Windows or Linux worker nodes with SSH](/azure/aks/aksarc/ssh-connect-to-windows-and-linux-worker-nodes).
 
+## Step 3: Deploy the cluster using ARM templates
 
-## Step 3: Review the template
+For detailed instructions on deploying an AKS Arc cluster using ARM templates, see the [AKSArc deployment templates repository](https://github.com/Azure/aksArc/tree/main/deploymentTemplates/aksarc-ARM-azlocal/Cluster). The repository includes:
 
-Download the template and parameter files from the [AKSArc repo](https://github.com/Azure/aksArc/tree/main/deploymentTemplates) to your local machine. Review all the default values and ensure they are correct.
+- **CreateWithExistingLnet/**: Deploy a cluster using an existing logical network
+- **CreateWithoutExistingLnet/**: Deploy a cluster and create a new logical network
+- Complete deployment instructions and examples
+- Parameter file templates
 
-## Step 4: Deploy the template
+Follow the instructions in the repository README to deploy your cluster.
 
-To deploy the Kubernetes cluster, run the following command:
-
-```azurecli
-az deployment group create \
---name "<deployment-name>" \
---resource-group "<resource-group-name>" \
---template-file "azuredeploy.json" \
---parameters "azuredeploy.parameters.json"
-```
-
-It takes a few minutes to create the cluster. Wait for the cluster to be successfully deployed before you move on to the next step.
-
-## Step 5: Verify the deployment
-
-Once the deployment is complete, use the following command to verify that your Kubernetes cluster is up and running:
-
-```azurecli
-az aksarc show --resource-group "<resource-group-name>" --name "<cluster-name>" --output table
-```
-
-## Step 6: Connect to the cluster
+## Step 4: Connect to the cluster
 
 1. To connect to the cluster, run the `az connectedk8s proxy` command. The command downloads and runs a proxy binary on the client machine, and fetches a **kubeconfig** file associated with the cluster:
 
@@ -121,57 +105,9 @@ az aksarc show --resource-group "<resource-group-name>" --name "<cluster-name>" 
    aks-agentpool-27442051-vmss000002   Ready    agent   11m   v1.27.7
    ```
 
-## Step 7: Deploy node pool using an Azure Resource Manager template (optional)
+## Deploy node pools (optional)
 
-Similiar to step 3, download the node pool template and parameters from the [AKSArc repo](https://github.com/Azure/aksArc/tree/main/deploymentTemplates) and review the default values.
-
-## Step 8: Deploy the template and validate the deployment (optional)
-
-Review and apply the template. This process takes a few minutes to complete. You can use the Azure CLI to validate that the node pool is created successfully:
-
-```azurecli
-az deployment group create \
---name "<deployment-name>" \
---resource-group "<resource-group-name>" \
---template-file "azuredeploy.json" \
---parameters "azuredeploy.parameters.json"
-```
-
-```azurecli
-az aksarc nodepool show --cluster-name "<cluster-name>" --resource-group "<resource-group-name>" --name "<nodepool-name>"
-```
-
-## Template resources
-
-### connectedClusters
-
-| Name             | Description                                         | Value                                                        |
-| :--------------- | :-------------------------------------------------- | :----------------------------------------------------------- |
-| `type`             | The resource type.                                   | **Microsoft.Kubernetes/ConnectedClusters**                 |
-| `apiVersion`       | The resource API version.                            | **2024-01-01**                                                 |
-| `name`             | The resource name.                                   | String (required)<br> Character limit: 1-63 <br> Valid characters: Alphanumerics, underscores, and hyphens. <br> Start and end with alphanumeric. |
-| `location`         | The geo-location in which the resource lives.           | String (required).                                            |
-| `tags`             | Resource tags.                                      | Dictionary of tag names and values. See [Tags in templates](/azure/azure-resource-manager/management/tag-resources-templates). |
-| `extendedLocation` | The extended location of the virtual machine.       | [ExtendedLocation](/azure/templates/microsoft.containerservice/managedclusters?pivots=deployment-language-arm-template#extendedlocation-1) |
-| `identity`         | The identity of the connected cluster, if configured. |  |
-| `properties`       | Properties of a connected cluster.                    |  |
-
-### ProvisionedClusterInstances
-
-| Name             | Description                                         | Value                                                        |
-| :--------------- | :-------------------------------------------------- | :----------------------------------------------------------- |
-| `type`             | The resource type                                   | **microsoft.hybridcontainerservice/provisionedclusterinstances**                 |
-| `apiVersion`       | The resource API version                            | **2024-01-01**                                                 |
-| `name`             | The resource name                                   | String (required). Don't change this from **default**. |
-| `properties`       | Properties of a connected cluster.                    |  |
-| `extendedLocation` | The extended location of the cluster.       | [ExtendedLocation](/azure/templates/microsoft.containerservice/managedclusters?pivots=deployment-language-arm-template#extendedlocation-1) |
-
-### ExtendedLocation
-
-| Name | Description                        | Value      |
-| :--- | :--------------------------------- | :--------- |
-| `name` | The ID of the extended location. | string     |
-| `type` | The type of the extended location. | **CustomLocation** |
+To add additional node pools to your cluster using ARM templates, see the [AKSArc nodepool deployment templates](https://github.com/Azure/aksArc/tree/main/deploymentTemplates/aksarc-ARM-azlocal/Nodepool). The repository includes complete instructions for deploying and managing node pools.
 
 ## Next steps
 

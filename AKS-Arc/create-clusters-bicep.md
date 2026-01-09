@@ -54,24 +54,26 @@ Create an SSH key pair in Azure and store the private key file for troubleshooti
 For more options, you can either follow [Configure SSH keys for an AKS cluster](/azure/aks/aksarc/configure-ssh-keys) to create SSH keys, or use [Restrict SSH access](/azure/aks/aksarc/restrict-ssh-access) during cluster creation. To access nodes afterward, see [Connect to Windows or Linux worker nodes with SSH](/azure/aks/aksarc/ssh-connect-to-windows-and-linux-worker-nodes).
 
 
-## Download and update the Bicep scripts
+## Deploy the cluster using Bicep templates
 
-Download these two files from the [AKSArc GitHub repo](https://github.com/Azure/aksArc/tree/main/deploymentTemplates) for your Bicep deployment: **main.bicep** and **aksarc.bicepparam**. Update the parameters from **aksarc.bicepparam** as needed, and make sure all the default values from **main.bicep** are correct.
+For detailed instructions on deploying an AKS Arc cluster using Bicep templates, see the [AKSArc Bicep deployment templates repository](https://github.com/Azure/aksArc/tree/main/deploymentTemplates/aksarc-bicep-azlocal/Cluster). The repository includes:
 
-The **Microsoft.HybridContainerService/provisionedClusterInstances** resource type is defined in **main.bicep**. If you want to customize more properties for cluster creation, see the [**provisionedClusterInstances** API Reference](/azure/templates/microsoft.hybridcontainerservice/provisionedclusterinstances?pivots=deployment-language-bicep).
+- **CreateWithExistingLnet/**: Deploy a cluster using an existing logical network
+- **CreateWithoutExistingLnet/**: Deploy a cluster and create a new logical network
+- Complete deployment instructions and examples
+- Parameter file templates
 
-## Deploy the Bicep templates
+Follow the instructions in the repository README to deploy your cluster.
 
-Create a Bicep deployment using Azure CLI:
+## Connect to the cluster
 
-   ```azurecli
-   az deployment group create --name BicepDeployment --resource-group <Resource_Group_Name> --parameters aksarc.bicepparam
-   ```
+After deployment, you can connect to your Kubernetes cluster by running the `az connectedk8s proxy` command from your development machine. You can also use **kubectl** to see the node and pod status. Follow the same steps as described in [Connect to the Kubernetes cluster](aks-create-clusters-cli.md#connect-to-the-kubernetes-cluster).
 
-## Validate the deployment and connect to the cluster
+## Deploy node pools (optional)
 
-You can now connect to your Kubernetes cluster by running `az connectedk8s proxy` command from your development machine. You can also use **kubectl** to see the node and pod status. Follow the same steps as described in [Connect to the Kubernetes cluster](aks-create-clusters-cli.md#connect-to-the-kubernetes-cluster).
+To add additional node pools to your cluster using Bicep templates, see the [AKSArc nodepool Bicep deployment templates](https://github.com/Azure/aksArc/tree/main/deploymentTemplates/aksarc-bicep-azlocal/Nodepool). The repository includes complete instructions for deploying and managing node pools.
 
 ## Next steps
 
 [Create Kubernetes clusters using Azure CLI](aks-create-clusters-cli.md)
+
