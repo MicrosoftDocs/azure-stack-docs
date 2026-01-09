@@ -31,15 +31,15 @@ Follow these steps to create an export job in the Azure portal:
 1. In the **Job Type** dropdown menu, select **Export**.
 1. In the **File system path** field, you can enter a string to specify what you want to export.
 
-All new or changed files in the file system whose file names begin with this string are exported. Files are written to the blob container with the same file path (or prefix) that they have in the Lustre system. To avoid overwriting existing files in the blob container, make sure the path of the file in your Lustre system doesn't overlap the existing path of the file in the blob container.
+All new or changed files in the file system whose file names begin with this string are exported. Files are written to the blob container with the same file path (or prefix) that they have in the Lustre file system. To avoid overwriting existing files in the blob container, make sure the path of the file in your Lustre file system doesn't overlap the existing path of the file in the blob container.
 
-The following screenshot shows the configuration settings for exporting a job in the Azure portal.
+The following screenshot shows the configuration settings for an export job in the Azure portal.
 
 :::image type="content" source="./media/export-with-archive-jobs/create-archive-job-options.png" alt-text="Screenshot that shows portal setup for creating an export (archive) job." lightbox="./media/export-with-archive-jobs/create-archive-job-options.png":::
 
 ## Monitor or cancel an export job
 
-You can monitor or cancel export jobs that you created via blob integration with your Azure Managed Lustre file system in the Azure portal. The **Recent jobs** section of the **Blob integration** page shows the status of each job.
+You can monitor or cancel export jobs in the **Recent jobs** section of the **Blob integration** page.
 
 Only one archive job runs at a time. To cancel the job that's in progress, select the **Cancel** link for that job in the **Recent jobs** table. The **Cancel** link isn't available for jobs that have finished.
 

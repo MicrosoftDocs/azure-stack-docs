@@ -1,20 +1,20 @@
 ---
 title: Use Azure Managed Lustre Auto-Import (Preview)
-description: How to use the Auto-Import feature to copy data from your Azure Blob Storage instance to an Azure Managed Lustre file system.
+description: How to use the Auto-Import feature to copy data from your Azure Blob Storage container to an Azure Managed Lustre file system.
 ms.topic: how-to
 ms.date: 10/24/2025
 author: pauljewellmsft
 ms.author: brlepore
 ms.reviewer: brianl
 
-# Intent: As an IT Pro, I need to be able to auto-import files from my Azure Blob Storage instance to an Azure Managed Lustre file system.
+# Intent: As an IT Pro, I need to be able to auto-import files from my Azure Blob Storage container to an Azure Managed Lustre file system.
 # Keyword: 
 ---
-# Azure Managed Lustre auto-import (preview)
+# Azure Managed Lustre Auto-Import (preview)
 
 The Auto-Import feature in Azure Managed Lustre enables seamless synchronization of data from an Azure Blob Storage Container into an Azure Managed Lustre cluster. This functionality allows customers to treat Blob Storage as a cold tier and Azure Managed Lustre as a high-performance hot tier, automatically reflecting changes made in Blob Storage within the Lustre namespace.
 
-## How auto-import works
+## How the Auto-Import feature works
 
 The Auto-Import feature in Azure Managed Lustre operates by continuously monitoring changes in the associated Azure Blob Storage Container via the [Azure Blob Storage Change Feed](/azure/storage/blobs/storage-blob-change-feed?tabs=azure-portal) feature.
 
@@ -34,7 +34,7 @@ See [Change Feed documentation](/azure/storage/blobs/storage-blob-change-feed?ta
   > [!NOTE]
   > Change Feed [doesn't support](/azure/storage/blobs/storage-blob-change-feed?tabs=azure-portal#enable-and-disable-the-change-feed) storage accounts with the Hierarchical Namespace feature enabled.
 - The Change Feed retention period *must* be set to seven days or greater. When you enable the blob change feed, either select **Keep all logs** *or* set **Delete change feed logs after (in days)** to seven or greater.
-- Concurrent blob integration jobs aren't permitted. You need to disable the Auto-Export feature and any manual import or export jobs before enabling the Auto-Import feature.
+- Concurrent blob integration jobs aren't permitted. You must disable the Auto-Export feature and any manual import or export jobs before enabling the Auto-Import feature.
 
 ## Configuration
 
@@ -51,7 +51,7 @@ To create a new Auto-Import job, follow these steps:
 1. Determine if you'd like to select **Enable deletions**, which enables propagation of deletions from Azure Blob Storage to Azure Managed Lustre.
 1. After you configure the job, begin the import process by selecting **Start**.
 
-## Monitoring and managing auto-import
+## Monitoring and managing the Auto-Import feature
 
 After the Auto-Import job is created, you can monitor its progress in the Azure portal.
 
@@ -59,7 +59,7 @@ The **Blob Integration** pane displays details of import activities in the **Rec
 
 To cancel the job that's in progress, select the **Cancel** link for that job in the **Recent jobs** table. The **Cancel** link is only available for the current Auto-Import job.
 
-To view the metrics of an Auto-Import job, select the name of the job. The **Metrics** pane appears on the right-hand side panel in the portal.
+To view the metrics of an Auto-Import job, select the name of the job. The **Metrics** pane appears on the right side of the portal.
 
 ## Metrics
 
@@ -73,7 +73,7 @@ Full Sync statistics | Statistics for the initial Full Sync phase of auto-import
 **Preexisting Files** | The number of files with the same path and name that already exist in the Lustre namespace. Files already contain expected data and metadata as the corresponding blob.
 **Preexisting Directories** | The number of directories encountered in the Lustre namespace during the initial Full Sync phase that already contain expected metadata as the corresponding blob.
 **Preexisting Symlinks** | The number of symbolic links encountered in the Lustre namespace during the initial Full Sync phase that already contain expected metadata and target as the corresponding blob.
-**Total Blobs Imported** | The number of blobs imported into the Lustre namespace from the blob container during the initial Full Sync phase. Lists a superset of imported files, directories, and symbolic links.
+**Total Blobs Imported** | The number of blobs imported into the Lustre namespace from the blob container during the initial Full Sync phase. The number is a superset of imported files, directories, and symbolic links.
 **Rate of Blob Import** | The per-second count of blobs imported from blob to Lustre during the initial Full Sync phase.
 **Total Blobs Walked** | The number of blobs scanned during the Full Sync phase.
 **Rate of Blob Walk** | The per-second count of blobs scanned during the Full Sync phase.
@@ -88,11 +88,11 @@ Blob sync statistics | Statistics about activity related to monitoring Change Fe
 **Preexisting Files** | The number of files with the same path and name that already exist in the Lustre namespace after the initial Full Sync phase that already contain expected data and metadata as the corresponding blob.
 **Preexisting Directories** | The number of directories encountered in the Lustre namespace after the initial Full Sync phase that already contain expected metadata as the corresponding blob.
 **Preexisting Symlinks** | The number of symbolic links encountered in the Lustre namespace after the initial Full Sync phase that already contain expected metadata and target as the corresponding blob.
-**Total Blobs Imported** | The number of blobs imported into the Lustre namespace from the blob container after the initial Full Sync phase. Lists a superset of imported files, directories, and symbolic links.
+**Total Blobs Imported** | The number of blobs imported into the Lustre namespace from the blob container after the initial Full Sync phase. The number is a superset of imported files, directories, and symbolic links.
 **Rate of Blob Import** | Per-second count of blobs imported from blob to Lustre after the initial Full Sync phase.
 **Deletions** | The number of files deleted during the blob Sync phase.
 **Total Conflicts** | The number of encounters with blobs that have the same path and name of an existing object in the Lustre namespace after the initial Full Sync phase, but that differ in terms of one or more areas. For example, the type of object, data, and metadata.
-**Total Errors** | The total number of errors that failed to import blobs to Lustre after the initial Full Sync phase. Select this link to go to the **Logging Container** page to view the logs associated with this Auto-Import job.
+**Total Errors** | The total number of import failures after the initial Full Sync phase. Select this link to go to the **Logging Container** page to view the logs associated with this Auto-Import job.
 **Last Change Feed Event Consumed Time** | Timestamp of the last Change Feed event processed for this Auto-Import job.
 **Last Time Fully Synchronized** | Most recent timestamp when all Change Feed events were processed for this Auto-Import job.
 
@@ -104,14 +104,14 @@ When you use Auto-Import, consider the following best practices to ensure it goe
 - You **must** set the Change Feed retention period to seven days or greater. When you enable the blob Change Feed, select either **Keep all logs** *or* set **Delete change feed logs after (in days)** to seven or greater.
 - Auto-Import is dependent on the Change Feed. It's limited to the timeliness of events published to the Change Feed. The Change Feed currently suggests that events are published "within minutes."
 - Auto-Import can typically import changes at a rate of 2,000 per second.
-- No blob integration jobs can be run at the same time. After Auto-Import is enabled, you can't use manual import and export jobs (both manual and auto).
-- `Lfs hsm_*` commands aren't supported during the use of Auto-Import as it can cause consistency issues between the blob and the Lustre file system.
+- You can't run multiple blob integration jobs at the same time. After Auto-Import is enabled, you can't create additional import or export jobs (either manual or auto).
+- `lfs hsm_*` commands aren't supported during the use of Auto-Import as it can cause consistency issues between the blob and the Lustre file system.
 
 Here are best practices when you enable deletions:
 
 - Deletions are one way (blob > Lustre) and only apply going forward.
-- The Auto-Import process always begins with a manual (full sync) scan. That scan doesn't compute a bidirectional map or attempt to detect if the "blob was deleted, file still exists in Lustre." *As a result, deletes that occurred before enablement aren't removed during the scan.*
-- During the initial scan, changes (including deletes) are delayed. Any Change Feed events, including deletes, that occur while the initial scan runs are applied **after** the scan completes. Expect a temporary period where Lustre might still show files that were deleted in the blob during the scan.
+- The Auto-Import process always begins with a manual (Full Sync) scan. That scan doesn't compute a bidirectional map or attempt to detect if the "blob was deleted, file still exists in Lustre." *As a result, deletes that occurred before enablement aren't removed during the scan.*
+- During the initial scan, changes (including deletes) are delayed. Any Change Feed events, including deletes, that occur while the initial scan runs are applied **after** the scan completes. Expect a temporary period where Lustre might still show files that were deleted in the blob container during the scan.
 - Deletion behavior is explicitly tied to the selected conflict mode. The following table demonstrates the behavior for each mode when **Enable deletions** is enabled:
 
 **File previously modified in Lustre?** | **Conflict resolution mode** | **Perform Deletion?**

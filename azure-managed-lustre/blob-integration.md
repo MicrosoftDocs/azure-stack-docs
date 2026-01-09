@@ -204,7 +204,7 @@ When you export files from your Azure Managed Lustre system, not all files are c
 - Files that are deleted in the Azure Managed Lustre file system aren't deleted in the original blob container during the export job. The export job doesn't delete files in the blob container.
 - Blob names must conform to certain [naming rules](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#blob-names). Acceptable blob names differ slightly from acceptable POSIX file names. The export process preserves special characters in file names by properly escaping them when exporting to blobs. However, a file name that violates a blob-naming rule (for example, exceeding the maximum blob name length) causes you to get an error when you attempt to export that file.
 
-### Running export jobs in active file systems
+### Run export jobs in active file systems
 
 In active file systems, when you make changes to files during the export job, it can trigger failure status. This failure status lets you know that not all data in the file system could be exported to Blob Storage. In this situation, you can retry the export by [creating a new export job](export-with-archive-jobs.md#create-an-export-job). The new job copies only the files that weren't copied in the previous job.
 

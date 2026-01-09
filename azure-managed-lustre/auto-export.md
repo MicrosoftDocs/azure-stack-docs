@@ -31,7 +31,7 @@ To create a new Auto-Export job, follow these steps:
 1. In the **Job Type** dropdown, select **Auto-Export**.
 1. In the **File system path** field, you can specify a directory path by entering a string.
 
-All new or changed files in the file system under this path (prefix) are continually exported. Files are written to the blob container with the same file path (or prefix) that they have in the Lustre system. To avoid overwriting existing files in the blob container, ensure that the path of the file in your Lustre system doesn't overlap with the existing path of the file in the blob container. (The only exception is if your Lustre file was imported from that path in the blob container.)
+All new or changed files in the file system under this path (prefix) are continually exported. Files are written to the blob container with the same file path (or prefix) that they have in the Lustre file system. To avoid overwriting existing files in the blob container, ensure that the path of the file in your Lustre file system doesn't overlap with the existing path of the file in the blob container. (The only exception is if your Lustre file was imported from that path in the blob container.)
 
  :::image type="content" source="media/auto-export/auto-export-create-job.png" alt-text="Screenshot of the blob integration page for Azure Managed Lustre that shows how to create an import/export job." lightbox="media/auto-export/auto-export-create-job.png":::
 
@@ -47,7 +47,7 @@ No more than one blob integration job (like Manual Export, Auto Export, and Impo
 
 Auto-Export works via continuous export iterations. When an iteration finishes, the blob integration process scans the file system for any new files, directories, or content changes. It starts a new iteration of an export job.
 
-Logs that you create in your configured logging container can help identify synchronization issues and help you understand the reasons why operations fail.
+Export job logs in your configured logging container can help identify synchronization issues and help you understand the reasons why operations fail.
 
 ## Monitoring and managing auto-export
 
@@ -143,7 +143,7 @@ In the portal, metrics are grouped into two main categories: **Overall** and **C
       **Files Exported**
    :::column-end:::
    :::column span="2":::
-      The number of files in the new and changed data successfully copied to the associated blob container.
+      The number of new and changed files successfully copied to the associated blob container.
    :::column-end:::
 :::row-end:::
 :::row:::
