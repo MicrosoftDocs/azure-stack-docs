@@ -5,7 +5,7 @@ author: matternst7258
 ms.author: matthewernst
 ms.service: azure-operator-nexus
 ms.topic: how-to
-ms.date: 12/12/2025
+ms.date: 1/09/2026
 ms.custom: template-how-to
 ---
 
@@ -32,11 +32,12 @@ az networkcloud storageappliance update --name <storageAppliance> -g <HostedReso
  ### Post-Replacement
 After the component is replaced, confirm that the related Purity//FA alert cleared in the Purity GUI or Azure portal, and verify that the new component replacement reports a healthy state in the Purity GUI or CLI. 
 
-You can also validate the hardware status through Operator Nexus by running a [read-only diagnostic command](./howto-storage-run-read.md). This command surfaces the hardware state directly from the Pure FlashArray, allowing you to confirm that the replacement part is detected and reporting a healthy status.
+You can also validate the hardware status through Operator Nexus by running a [read-only diagnostic command](./howto-storage-run-read.md). This example command surfaces the hardware state directly from the Pure FlashArray, allowing you to confirm that the replacement part is detected and reporting a healthy status.
 
 ```azurecli
-az networkcloud storageappliance run-read-command \
-  --resource-group <resourceGroup> \
-  --storage-appliance-name <storageApplianceName> \
-  --command "purehw list"
+az networkcloud storageappliance run-read-command --name "<storageApplianceName>" \
+  --limit-time-seconds "<timeout>" \
+  --commands "[{command:purehw,arguments:[list]}]" \
+  --resource-group "<cluster_MRG>" \
+  --subscription "<subscription>"
 ```
