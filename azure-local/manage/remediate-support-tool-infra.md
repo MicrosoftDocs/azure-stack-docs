@@ -4,7 +4,7 @@ description: Learn how to run commands in the Support.AksArc PowerShell module t
 ms.topic: troubleshooting
 author: alkohli 
 ms.author: alkohli 
-ms.date: 01/07/2026
+ms.date: 01/09/2026
 ---
 
 # Use the Support tool to troubleshoot and fix Azure Local infrastructure problems
@@ -20,13 +20,13 @@ The Support tool uses simple commands to identify problems without expert produc
 - **Remediation for issues pertaining to Azure Local VMs and AKS Arc**: Helps to identify and remediate common issues with Azure Local infrastructure components.
 - **Fixes for solution update problems**: Identifies and attempts to fix common problems that occur during the solution update.
 
-Before you open a support request, run the Support tool. This tool resolves a wide range of Azure Local VM issues automatically by updating the infrastructure components such as Microsoft On-Premises Cloud (MOC) to the latest patch release. Running this tool results in a faster resolution of the issue without having to file a Support ticket. If the issues persist, raise a Support ticket.
+Before you open a support request, run the Support tool. This tool resolves a wide range of Azure Local VM issues automatically by updating the infrastructure components such as Microsoft On-Premises Cloud (MOC) to the latest patch release. Running this tool results in a faster resolution of the issue without having to file a support ticket. If the problems persist, raise a support ticket.
 
 ## Common problems where the Support tool might help
 
 Run the commands if you experience any of the following symptoms on your Azure Local instance:
 
-- Azure Local VMs runs into issues.
+- Azure Local VMs runs into problems.
 - Solution update fails:
     - In MOC binaries state.
     - In Arc resource bridge stage.
@@ -35,10 +35,10 @@ Run the commands if you experience any of the following symptoms on your Azure L
 
 ## Prerequisites
 
-Before you begin, make sure that:
+Before you begin, make sure that you:
 
-- You have access to an Azure Local instance that runs 2311.2 or later.
-- You have access to a client that can connect to your Azure Local.
+- Have access to an Azure Local instance that runs version 2311.2 or later.
+- Have access to a client that can connect to your Azure Local.
 
 ## Connect to your Azure Local instance
 
@@ -87,13 +87,13 @@ Import-Module Support.AksArc -force
 >[!NOTE]
 > When you import the module, it tries to automatically update from the PowerShell gallery.
 
-If you have the module installed, update it by using the following cmdlet:
+If you already have the module installed, update it by using the following cmdlet:
 
 ```powershell
 Update-Module -Name Support.AksArc
 ```
 
-Alternatively, you could update manually by removing and import the module:
+Alternatively, you can update the module manually by removing and importing it:
 
 ```powershell
 Remove-Module -Name Support.AksArc
@@ -117,7 +117,7 @@ Get-Command -Module Support.AksArc
 
 ### Perform diagnostic checks
 
-You can run a diagnostic health check against the system to help detect common problems:
+Run a diagnostic health check against the system to help detect common problems:
 
 ```powershell
 Test-SupportAksArcKnownIssues
