@@ -297,7 +297,7 @@ To confirm that the system and all of its Azure resources were successfully depl
     | 1 per machine | Machine - Azure Arc |
     | 1            | Azure Local     |
     | 1            | Arc Resource Bridge |
-    | 1            | Infrastructure logical network |
+    | 1            | Infrastructure logical network named as *(clustername-InfraLNET)* |
     | 1            | Key vault           |
     | 1            | Custom location     |
     | 2*           | Storage account     |
