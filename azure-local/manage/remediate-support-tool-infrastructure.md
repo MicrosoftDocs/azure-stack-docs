@@ -1,0 +1,179 @@
+---
+title: Remediation Support Tool for Azure Local infrastructure component issues
+description: Learn how to run commands in the Support.AksArc PowerShell module to remediate issues in Azure Local infrastructure components.
+ms.topic: troubleshooting
+author: alkohli 
+ms.author: alkohli 
+ms.date: 01/09/2026
+---
+
+# Use the Support tool to troubleshoot and fix Azure Local infrastructure problems
+
+The [**Support tool**](https://www.powershellgallery.com/packages/Support.AksArc) (also known as AKS Arc Support Tool) is a PowerShell module that provides diagnostic and remediation capabilities for the infrastructure components used by Azure Local VMs and Azure Kubernetes Service (AKS) enabled by Azure Arc on Azure Local.
+
+
+
+## Benefits of using the Support tool
+
+The Support tool uses simple commands to identify problems without expert product knowledge. The tool provides:
+
+- **Remediation for issues pertaining to Azure Local VMs and AKS Arc**: Helps to identify and remediate common issues with Azure Local infrastructure components.
+- **Fixes for solution update problems**: Identifies and attempts to fix common problems that occur during the solution update.
+
+Before you open a support request, run the Support tool. This tool resolves a wide range of Azure Local VM issues automatically by updating the infrastructure components such as Microsoft On-Premises Cloud (MOC) to the latest patch release. Running this tool results in a faster resolution of the issue without having to file a support ticket. If the problems persist, raise a support ticket.
+
+## Common problems where the Support tool might help
+
+Run the commands if you experience any of the following symptoms on your Azure Local instance:
+
+- Azure Local VMs runs into problems.
+- Solution update fails:
+    - In MOC binaries state.
+    - In Arc resource bridge stage.
+- MOC service doesn't stay online.
+- Arc resource bridge is offline.
+
+## Prerequisites
+
+Before you begin, make sure that you:
+
+- Have access to an Azure Local instance that runs version 2311.2 or later.
+- Have access to a client that can connect to your Azure Local.
+
+## Connect to your Azure Local instance
+
+Follow these steps on your client to connect to one of the machines in your Azure Local instance.
+
+1. Run PowerShell as an administrator on the client that you use to connect to your system.
+1. Open a remote PowerShell session to a machine on your Azure Local instance. Run the following command and provide the credentials for your machine when prompted:
+
+   ```powershell
+   $cred = Get-Credential
+   $ip = "<IP address of the Azure Local machine>"
+   Enter-PSSession -ComputerName $ip -Credential $cred 
+   ```
+
+   > [!NOTE]
+   > Sign in by using your deployment account credentials. This account is created when you prepare [Active Directory](/azure/azure-local/deploy/deployment-prep-active-directory) and use it to deploy Azure Local.
+
+
+   <details>
+   <summary>Expand this section to see an example output.</summary>
+
+
+   Here's an example output:
+
+   ```Console
+   PS C:\Users\Administrator> $cred = Get-Credential
+   PS C:\Users\Administrator> $ip = "100.100.100.10"
+   cmdlet Get-Credential at command pipeline position 1
+   Supply values for the following parameters:
+   Credential
+   PS C:\Users\Administrator> Enter-PSSession -ComputerName $ip -Credential $cred 
+   [100.100.100.10]: PS C:\Users\Administrator\Documents>
+   ```
+
+   </details>
+
+## Install the Support tool module
+
+To install the Support tool module, run the following commands:
+
+```powershell
+Install-Module -Name Support.AksArc
+Import-Module Support.AksArc -force
+```
+
+>[!NOTE]
+> When you import the module, it tries to automatically update from the PowerShell gallery.
+
+If you already have the module installed, update it by using the following cmdlet:
+
+```powershell
+Update-Module -Name Support.AksArc
+```
+
+Alternatively, you can update the module manually by removing and importing it:
+
+```powershell
+Remove-Module -Name Support.AksArc
+Import-Module -Name Support.AksArc
+```
+
+## Use the Support tool
+
+This section provides examples of the different cmdlets available in the Support tool.
+
+> [!NOTE]
+> Run these PowerShell commands locally, not in a PowerShell remote session.
+
+### View available cmdlets
+
+To see a list of available cmdlets in the PowerShell module, run the following cmdlet:
+
+```powershell
+Get-Command -Module Support.AksArc
+```
+
+### Perform diagnostic checks
+
+Run a diagnostic health check against the system to help detect common problems:
+
+```powershell
+Test-SupportAksArcKnownIssues
+```
+
+The following example output from the `Test-SupportAksArcKnownIssues` command shows the results of a failed test:
+
+```output
+Test Name                                                  Status Message
+---------                                                  --------------
+Validate Failover Cluster Service Responsiveness           Passed Failover Cluster service is responsive.
+Validate Missing MOC Cloud Agents                          Passed No missing MOC cloud agents found.
+Validate MOC Cloud Agent Running                           Passed MOC Cloud Agent is running
+Validate Missing MOC Node Agents                           Passed All MOC nodes have the Node Agent service installed and healthy.
+Validate Missing MOC Host Agents                           Passed All nodes have MOC host agents installed and healthy
+Validate MOC is on Latest Patch Version                    Failed MOC is not on the latest patch version. Current: 1.15.5.10626, Latest: 1.15.7.10719
+Validate Expired Certificates                              Passed No expired certificates found
+Validate MOC Nodes Not Active                              Passed All MOC nodes are in the 'Active' state
+Validate Multiple MOC Cloud Agent Instances                Passed No multiple instances of MOC Cloud Agent found
+Validate Windows Event Log Running                         Passed Windows Event Log is running
+Validate Gallery Image Stuck In Deleting                   Passed No gallery images are stuck in deleting state
+Validate Virtual Machine Stuck In Pending                  Passed No virtual machines are stuck in pending state
+Validate Virtual Machine Management Service Responsiveness Passed Virtual Machine Management service is responsive
+```
+
+The following example output shows a successful result for all tests:
+
+```output
+Test Name                                                  Status Message
+---------                                                  --------------
+Validate Failover Cluster Service Responsiveness           Passed  Failover Cluster service is responsive.
+Validate Missing MOC Cloud Agents                          Passed  No missing MOC cloud agents found.
+Validate MOC Cloud Agent Running                           Passed  MOC Cloud Agent is running
+Validate Missing MOC Node Agents                           Passed  All MOC nodes have the Node Agent service installed and healthy.
+Validate Missing MOC Host Agents                           Passed  All nodes have MOC host agents installed and healthy.
+Validate MOC is on Latest Patch Version                    Passed  MOC is on the latest patch version.
+Validate Expired Certificates                              Passed  No expired certificates found.
+Validate MOC Nodes Not Active                              Passed  All NMC nodes are in the 'Active' state.
+Validate NMC Nodes Sync with Cluster Nodes                 Passed  All NMC nodes are in sync with cluster nodes.
+Validate Multiple NMC Cloud Agent Instances                Passed  No multiple instances of NMC Cloud Agent found.
+Validate NMC Powershell Not Stuck in Updating              Passed  NMC Powershell is not stuck in updating state.
+Validate Windows Event Log Running                         Passed  Windows Event Log is running
+Validate Gallery Image Stuck In Deleting                   Passed  No gallery images are stuck in deleting state.
+Validate Virtual Machine Stuck In Pending                  Passed  No virtual machines are stuck in pending state.
+Validate Virtual Machine Management Service Responsiveness Passed  Virtual Machine Management service is responsive.
+```
+
+### Fix common problems
+
+This command tests and fixes known problems with a given solution version:
+
+```powershell
+Invoke-SupportAksArcRemediation
+```
+
+## Related steps
+
+- [Use the Diagnostic Support tool](./support-tools.md).
+- [Troubleshoot Azure Local VMs](./troubleshoot-arc-enabled-vms.md).
