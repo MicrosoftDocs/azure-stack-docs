@@ -22,6 +22,7 @@ This article highlights what's new (features and improvements) and critical know
 ## Features and improvements in 2512
  - Added support for the Azure Local 2512 ISO and its associated capabilities.
  - Added update capability for 2512
+ - Registration UX added to Azure Portal
  - Security and bug fixes
 
 ## Features and improvements in 2511
