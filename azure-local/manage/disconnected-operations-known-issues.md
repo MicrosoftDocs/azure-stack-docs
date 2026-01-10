@@ -18,6 +18,12 @@ This article highlights what's new (features and improvements) and critical know
 
 [!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
 
+
+## Features and improvements in 2512
+ - Added support for the Azure Local 2512 ISO and its associated capabilities.
+ - Added update capability for 2512
+ - Security and bug fixes
+
 ## Features and improvements in 2511
  - Added support for the Azure Local 2511 ISO and its associated capabilities.
  - Bundled update uploader in OperationsModule.
@@ -133,7 +139,39 @@ Workaround:
 - Copy the downloaded, unmodified file to c:\CloudDeployment\Setup\Common\En-US\ExtractOEMContent.Strings.psd1 on the first machine (seed node).
 
 - Resume cloud deployment.
+### Cloud deployment (validation or deployment) gets stuck
 
+During Validate/Cloud Deployment flow, Seed node gets restarted, which the control plane appliance also gets restarted. Sometime this takes more time to come up causing HIMDS to go down as it cannot connect to HIS endpoint and deployment flow getting stuck. 
+
+Mitigation:
+- Get-Service HIMDS (If service is stopped)
+- Start-Service HIMDS
+- Check Logs in FirstNode in C:\CloudDeployment\Logs
+- If its Validate Stage check latest File with name starting: EnvironmentValidator*
+- If its Deploy stage check latest file wil name starting: CloudDeployment*
+- If the Status in the file is different then what we see on the Portal then follow next steps to resync the deployment status with the portal.
+
+### Deployment status out of sync from cluster to portal
+**Symptoms**: Portal shows that cloud deployment is in progress even though it is already completed or cloud deployment is taking much longer than what is expected.
+
+Cloud deployment status is not updated or synced from actual status.
+If portal and log file are out of sync, it would be required to restart the LCM Controller service first to reestablish the connection to relay (Restart-Service LCMController)
+
+**On the Firstnode:**
+1. Find below file
+a. For Validate Stage : c:\ECEStore\efb61d70-47ed-8f44-5d63-bed6adc0fb0f\559dd25c-9d86-dc72-4bea-b9f364d103f8.
+b. For Deploy Stage : c:\ECEStore\efb61d70-47ed-8f44-5d63-bed6adc0fb0f\086a22e3-ef1a-7b3a-dc9d-f407953b0f84.
+2. Update attribute EndTimeUtc located in the first line of the file (which looks like this: <Action Type="CloudDeployment" StartTimeUtc="2025-04-09T08:01:51.9513768Z" Status="Success" EndTimeUtc="2025-04-10T23:30:45.9821393Z">) to a future time based on the machine's current time.
+3. Save the file and close it.
+LCM will send the notification to HCI RP within the next 5-10 minutes.
+
+**Note**: This process will work if HCI RP has not failed the status of the overall deployment due to a timeout (not tested, but approximately 48 hours from the start of the cloud deployment).
+
+**Note:** Use this command to see LCM Controller logs.
+
+```powershell
+Get-WinEvent -LogName "Microsoft.AzureStack.LCMController.EventSource/Admin" -MaxEvents 100 | Where-Object {$_.Message -like "*from edge common logger*"} | Select-Object TimeCreated, Message
+```
 ### Failed to deploy disconnected operations Appliance - Appliance.Operations failure
 
 Some special characters in the management TLS cert password, external certs password, or observability configuration secrets from the OperationsModule can cause the deployment to fail with an error output: *Appliance.Operations operation [options]* 
