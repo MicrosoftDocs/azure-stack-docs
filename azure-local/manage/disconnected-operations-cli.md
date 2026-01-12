@@ -260,7 +260,7 @@ To specify a different owner than the current user, pass the 'subscriptionOwnerI
 Here's an example:
 
 ```azurecli
-$ownerId='ef8d48aa-05f9-876a-cd75-e74de1968bce'
+$ownerId='<Owner ID>'
 az rest --method put --uri "/providers/Microsoft.Subscription/aliases/aliastest?api-version=2021-10-01" --headers content-type="application/json" --body '{\"properties\": {\"displayName\": \"User Subscription 1\", \"workload\": \"Production\", \"billingScope\": \"/providers/Microsoft.Billing/billingAccounts/defaultaccount\", \"additionalProperties\":{\"subscriptionOwnerId\":\"'+$ownerId+'\"}}}' 
 ```
 
