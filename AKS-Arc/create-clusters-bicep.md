@@ -30,7 +30,7 @@ Before you begin, make sure you have the following prerequisites:
 
 ## Create an SSH key pair
 
-Create an SSH key pair in Azure and store the private key file for troubleshooting and log collection purposes. For detailed instructions, see [Create and store SSH keys with the Azure CLI](/azure/virtual-machines/ssh-keys-azure-cli) or in the [Azure portal](/azure/virtual-machines/ssh-keys-portal).
+Create an SSH key pair in Azure and store the private key file for troubleshooting and log collection purposes. For detailed instructions, see [Configure SSH keys for an AKS cluster](configure-ssh-keys.md) to create SSH keys, or use [Restrict SSH access](restrict-ssh-access.md) during cluster creation. To access nodes afterward, see [Connect to Windows or Linux worker nodes with SSH](ssh-connect-to-windows-and-linux-worker-nodes.md).
 
 1. [Open a Cloud Shell session](https://shell.azure.com/) in your web browser or launch a terminal on your local machine.
 1. Create an SSH key pair using the [az sshkey create](/cli/azure/sshkey#az-sshkey-create) command.  
@@ -46,8 +46,6 @@ Create an SSH key pair in Azure and store the private key file for troubleshooti
    ```
 
 1. Retrieve the value of your public key from Azure or from your local machine under _/.ssh/id_rsa.pub_.
-
-For more options, you can either follow [Configure SSH keys for an AKS cluster](configure-ssh-keys.md) to create SSH keys, or use [Restrict SSH access](restrict-ssh-access.md) during cluster creation. To access nodes afterward, see [Connect to Windows or Linux worker nodes with SSH](ssh-connect-to-windows-and-linux-worker-nodes.md).
 
 ## Deploy the cluster using Bicep templates
 
