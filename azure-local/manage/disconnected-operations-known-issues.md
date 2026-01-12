@@ -136,13 +136,13 @@ Workaround:
       ApplicableUpdate = $applicableUpdate.OuterXml
   }
   ```
-- Copy the newly modified file to c:\CloudDeployment\Setup\Common\ExtractOEMContent.ps1 on the first machine (seed node).
+- Copy the newly modified file to c:\CloudDeployment\Setup\Common\ExtractOEMContent.ps1 on the first machine.
 - Copy the downloaded, unmodified file to c:\CloudDeployment\Setup\Common\En-US\ExtractOEMContent.Strings.psd1 on the first machine.
 - Resume cloud deployment.
 
 ### Cloud deployment (validation or deployment) gets stuck
 
-During the validate or cloud deployment flow, the seed node restarts, which causes the control plane appliance to restart. Sometimes this process takes longer than expected, causing HIMDS to stop because it can't connect to the HIS endpoint. This issue can cause the deployment flow to stop responding.
+During the validate or cloud deployment flow, the first machine (seed node) restarts, which causes the control plane appliance to restart. Sometimes this process takes longer than expected, causing HIMDS to stop because it can't connect to the HIS endpoint. This issue can cause the deployment flow to stop responding.
 
 Mitigation:
 1. Check if the HIMDS service is stopped:
