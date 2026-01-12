@@ -37,16 +37,10 @@ See the following sections to install the required Azure CLI extensions:
 
 For the list of available versions, see [the extension release history](https://github.com/Azure/azure-cli-extensions/blob/main/src/networkcloud/HISTORY.rst).
 
-- Upgrade any previously installed version of the extension:
+- Install and verify the latest version of `networkcloud` CLI extension. If the extension is already installed, the command upgrades it when a newer version exists.
 
     ```azurecli
     az extension add --yes --upgrade --name networkcloud
-    ```
-
-- Install and test the latest version of the `networkcloud` CLI extension:
-
-    ```azurecli
-    az extension add --name networkcloud
     az networkcloud --help
     ```
 
@@ -54,16 +48,10 @@ For the list of available versions, see [the extension release history](https://
 
 For the list of available versions, see [the extension release history](https://github.com/Azure/azure-cli-extensions/blob/main/src/managednetworkfabric/HISTORY.rst).
 
-- Upgrade any previously installed version of the extension:
+- Install and verify the latest version of `networkcloud` CLI extension. If the extension is already installed, the command upgrades it when a newer version exists.
 
     ```azurecli
     az extension add --yes --upgrade --name managednetworkfabric
-    ```
-
-- Install and test the latest version of the `managednetworkfabric` CLI extension:
-
-    ```azurecli
-    az extension add --name managednetworkfabric
     az networkfabric --help
     ```
 
@@ -84,7 +72,7 @@ For the list of available versions, see [the extension release history](https://
 
 ### Install other Azure extensions
 
-Install other Azure CLI extensions that multi-rack deployment makes use of:
+Install the other Azure CLI extensions that multi-rack deployments use. If these extensions are already installed, the commands upgrade them when a newer version exists.
 
 ```azurecli
 az extension add --yes --upgrade --name customlocation
