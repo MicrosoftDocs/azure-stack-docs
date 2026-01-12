@@ -190,6 +190,11 @@ To export an Azure VM OS disk to a VHD on the Azure Local cluster, follow these 
 
 1. Copy the generated secure URL link for the next step.
 
+> [!NOTE]
+> The disk export URL is a time-limited SAS URL.  
+> If the URL expires, is copied incorrectly, or lacks read (`r`) permissions, the image creation step may fail with a **401 (Unauthorized)** error.  
+> If you encounter a 401 error, regenerate the disk export URL and ensure it is used before expiration and pasted without additional quotes or line breaks.
+
 ## Create an Azure Local image
 
 To create an Azure Local image using the SAS token, run this command:
