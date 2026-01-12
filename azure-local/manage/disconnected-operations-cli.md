@@ -7,7 +7,6 @@ ms.author: robess
 ms.date: 01/05/2026
 ms.reviewer: haraldfianbakken
 ai-usage: ai-assisted
-ms.subservice: hyperconverged
 ---
 
 # Use Azure Command-Line Interface for disconnected operations on Azure Local (preview)
@@ -254,6 +253,15 @@ To create an Azure subscription on disconnected operations, run the following co
 
 ```azurecli
 az account alias create --name 'aliasName’ --billing-scope '/providers/Microsoft.Billing/billingAccounts/defaultaccount' --display-name 'displayName' --workload 'Production' 
+```
+
+To specify a different owner than the current user, pass the 'subscriptionOwnerId' parameter and use `az rest`. 
+
+Here's an example:
+
+```azurecli
+$ownerId='<Owner ID>'
+az rest --method put --uri "/providers/Microsoft.Subscription/aliases/aliastest?api-version=2021-10-01" --headers content-type="application/json" --body '{\"properties\": {\"displayName\": \"User Subscription 1\", \"workload\": \"Production\", \"billingScope\": \"/providers/Microsoft.Billing/billingAccounts/defaultaccount\", \"additionalProperties\":{\"subscriptionOwnerId\":\"'+$ownerId+'\"}}}' 
 ```
 
 ### Create a service principal for Azure Local node registration
