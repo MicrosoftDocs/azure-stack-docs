@@ -2,8 +2,8 @@
 metadata:
   title: Troubleshoot issues when uninstalling AKS Arc
   description: Get help to troubleshoot issues and errors when uninstalling AKS on Windows Server.
-  author: sethmanheim
-  ms.author: sethm
+  author: davidsmatlak
+  ms.author: davidsmatlak
   ms.service: azure-kubernetes-service-hybrid
   ms.topic: faq
   ms.date: 07/11/2024

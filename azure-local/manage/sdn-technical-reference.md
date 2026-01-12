@@ -1,7 +1,7 @@
 ---
 title: Technical reference for Software Defined Networking (SDN) managed by on-premises tools in Azure Local.
 description: This technical reference serves as a one-stop-shop to access learning resources available for SDN managed by on-premises tools.
-ms.topic: article
+ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.date: 09/05/2025

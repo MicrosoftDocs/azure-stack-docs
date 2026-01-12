@@ -3,7 +3,7 @@ title: Network ATC overview
 description: This article introduces Network ATC for Azure Local and Windows Server.
 author: parammahajan5
 ms.topic: overview
-ms.date: 10/10/2025
+ms.date: 01/07/2026
 ms.author: alkohli 
 ms.reviewer: alkohli
 zone_pivot_groups: windows-os
@@ -15,7 +15,10 @@ zone_pivot_groups: windows-os
 
 [!INCLUDE [hci-applies-to-23h2-22h2](../includes/hci-applies-to-23h2-22h2.md)]
 
-Deployment and operation of Azure Local networking can be a complex and error-prone process. Due to the configuration flexibility provided with the host networking stack, there are many moving parts that can be easily misconfigured or overlooked. Staying up to date with the latest best practices is also a challenge as improvements are continuously made to the underlying technologies. Additionally, configuration consistency across Azure Local machines is important as it leads to a more reliable experience. Network ATC is the complete product name and not an acronym.
+Deployment and operation of Azure Local networking can be a complex and error-prone process. Due to the configuration flexibility provided with the host networking stack, there are many moving parts that can be easily misconfigured or overlooked. Staying up to date with the latest best practices is also a challenge as improvements are continuously made to the underlying technologies. Additionally, configuration consistency across Azure Local machines is important as it leads to a more reliable experience.
+
+> [!NOTE]
+> Network ATC is the full product name and is not an acronym or abbreviation.
 
 ::: zone-end
 
@@ -23,7 +26,10 @@ Deployment and operation of Azure Local networking can be a complex and error-pr
 
 >Applies to: Windows Server 2025
 
-Deployment and operation of Windows Server cluster networking can be a complex and error-prone process. Due to the configuration flexibility provided with the host networking stack, there are many moving parts that can be easily misconfigured or overlooked. Staying up to date with the latest best practices is also a challenge as improvements are continuously made to the underlying technologies. Network ATC applies a consistency configuration across Windows Server cluster nodes to create a more reliable experience. As Network ATC is designed for Windows Server clusters, it requires Windows Server Datacenter edition and the Failover Clustering feature. Network ATC is the complete product name and not an acronym.
+Deployment and operation of Windows Server cluster networking can be a complex and error-prone process. Due to the configuration flexibility provided with the host networking stack, there are many moving parts that can be easily misconfigured or overlooked. Staying up to date with the latest best practices is also a challenge as improvements are continuously made to the underlying technologies. Network ATC applies a consistency configuration across Windows Server cluster nodes to create a more reliable experience. As Network ATC is designed for Windows Server clusters, it requires Windows Server Datacenter edition and the Failover Clustering feature.
+
+> [!NOTE]
+> Network ATC is the full product name and is not an acronym or abbreviation.
 
 ::: zone-end
 

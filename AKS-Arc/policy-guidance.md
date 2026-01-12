@@ -1,7 +1,7 @@
 ---
 title: Azure policy guidance for AKS on Windows Server
 description: Learn about best practices and guidance in using Azure policy in AKS on Windows Server.
-ms.topic: article
+ms.topic: best-practice
 ms.date: 01/10/2024
 author: davidsmatlak
 ms.author: davidsmatlak

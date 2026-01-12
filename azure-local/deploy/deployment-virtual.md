@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.topic: how-to
-ms.date: 12/09/2025
+ms.date: 01/06/2026
 ms.subservice: hyperconverged
 ---
 
@@ -18,12 +18,8 @@ This article describes how to deploy a virtualized Azure Local (*formerly Azure 
 You need administrator privileges for the Azure Local virtual deployment and should be familiar with the existing Azure Local solution. The deployment can take around 2.5 hours to complete.
 
 > [!IMPORTANT]
-
 > A virtual deployment of Azure Local is intended for educational and demonstration purposes only. 
-
-
-> [!NOTE]
-
+>
 > Microsoft Support doesn't support virtual deployments.
 
 ## Prerequisites
@@ -61,7 +57,6 @@ Before you begin, make sure that each virtual host system can dedicate the follo
 | Networking | At least two network adapters connected to internal network. MAC spoofing must be enabled. |
 | Boot disk | One disk to install the Azure Stack HCI operating system from ISO. At least 127 GB. |
 | Hard disks for Storage Spaces Direct | Two dynamic expanding disks. Maximum disk size is 1024 GB. |
-| Data disks | At least 127 GB each. The size must be the same for each disk. |
 | Time synchronization in Hyper-V integration tools | Disabled. |
 
 > [!NOTE]

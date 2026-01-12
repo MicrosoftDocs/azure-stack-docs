@@ -4,7 +4,7 @@ description: Get an overview of Network Fabric management upgrade for Azure Oper
 author: bartpinto
 ms.author: bpinto
 ms.service: azure-operator-nexus
-ms.topic: conceptual
+ms.topic: feature-availability
 ms.date: 07/16/2025
 ms.custom: template-concept
 ---

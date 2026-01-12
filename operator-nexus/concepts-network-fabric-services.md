@@ -6,7 +6,7 @@ ms.author: lnyswonger
 ms.reviewer: jdasari
 ms.date: 12/21/2023
 ms.service: azure-operator-nexus
-ms.topic: conceptual
+ms.topic: overview
 ---
 
 # Network Fabric Services overview

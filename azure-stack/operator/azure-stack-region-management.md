@@ -4,7 +4,7 @@ titleSuffix: Azure Stack Hub
 description: Overview of region management in Azure Stack Hub.
 author: sethmanheim
 
-ms.topic: article
+ms.topic: overview
 ms.date: 06/04/2021
 ms.author: sethm
 ms.reviewer: unknown

@@ -1,7 +1,7 @@
 ---
 title: Operator Nexus Platform Cluster runtime upgrades
 description: Detail the cadence and process Nexus uses to release new runtime versions to customers.
-ms.topic: article
+ms.topic: overview
 ms.date: 07/24/2024
 author: matthewernst
 ms.author: matthewernst

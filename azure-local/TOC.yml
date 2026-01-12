@@ -607,6 +607,8 @@ items:
       href: manage/troubleshoot-deployment-configurator-app.md
     - name: Troubleshoot deployment validation issues
       href: manage/troubleshoot-deployment.md
+    - name: Use the Support tool for infrastructure issues
+      href: manage/remediate-support-tool-infrastructure.md
     - name: Use the Diagnostic Support tool
       href: manage/support-tools.md
     - name: Get support for deployment issues
@@ -853,6 +855,10 @@ items:
       href: manage/disconnected-operations-azure-container-registry.md
     - name: Azure Policy
       href: manage/disconnected-operations-policy.md
+    - name: Azure PowerShell
+      href: manage/disconnected-operations-powershell.md
+    - name: Update disconnected operations
+      href: manage/disconnected-operations-update.md
   - name: Monitor
     items:
     - name: Monitoring

@@ -2,7 +2,7 @@
 title: Tiered data for analytics pattern using Azure and Azure Stack Hub
 description: Learn how to use Azure and Azure Stack Hub to implement a tiered data solution across the hybrid cloud.
 author: ronmiab 
-ms.topic: article
+ms.topic: solution-overview
 ms.date: 04/25/2025
 ms.author: robess
 ms.reviewer: anajod

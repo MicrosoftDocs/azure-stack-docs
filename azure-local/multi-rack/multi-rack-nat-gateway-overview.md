@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.service: azure-local
 ms.date: 11/25/2025
-ms.topic: concept-article
+ms.topic: overview
 ms.subservice: multi-rack
 ---
 

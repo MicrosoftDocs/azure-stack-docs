@@ -3,7 +3,7 @@ title: Prepare Active Directory for Azure Local, version 23H2 deployment
 description: Learn how to prepare Active Directory before you deploy Azure Local, version 23H2.
 author: alkohli
 ms.topic: how-to
-ms.date: 12/10/2025
+ms.date: 01/07/2026
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -81,7 +81,7 @@ To create a dedicated OU, follow these steps:
 
     ```powershell
     PS C:\work> $password = ConvertTo-SecureString '<password>' -AsPlainText -Force
-    PS C:\work> $user = "ms309deployuser"
+    PS C:\work> $user = "lcmuser"
     PS C:\work> $credential = New-Object System.Management.Automation.PSCredential ($user, $password)
     PS C:\work> New-HciAdObjectsPreCreation -AzureStackLCMUserCredential $credential -AsHciOUName "OU=ms309,DC=PLab8,DC=nttest,DC=microsoft,DC=com"    
     PS C:\work>
@@ -110,7 +110,7 @@ We recommend that you follow these best practices for OU creation. These recomme
   - Enable the **Block Inheritance** option at both the parent OU and sub OU levels.
   - To apply a GPO to all Azure Local instances, such as for nesting a domain group in the local administrators group, link the GPO to the parent OU and enable the **Enforced** option. By doing this, you apply the configuration to all sub OUs, even with **Block Inheritance** enabled.
 
-If your organization's processes and procedures require deviations from these recommendations, they are allowed. However, it's important to consider the security and manageability implications of your design taking these factors into consideration.
+If your organization's processes and procedures require deviations from these recommendations, they're allowed. However, it's important to consider the security and manageability implications of your design taking these factors into consideration.
 
 ## Next steps
 

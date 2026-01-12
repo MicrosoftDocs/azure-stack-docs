@@ -4,7 +4,8 @@ description: Learn how to manage Azure Local VMs running disconnected (preview).
 ms.topic: concept-article
 author: ronmiab
 ms.author: robess
-ms.date: 08/06/2025
+ms.date: 01/06/2026
+ms.reviewer: haraldfianbakken
 ai-usage: ai-assisted
 ms.subservice: hyperconverged
 ---
@@ -29,7 +30,7 @@ Here's a list of supported OS versions for this preview:
 
 - Windows Server 2025 and 2022
 - Windows 10 Enterprise
-- Ubuntu 20.04, 22.04, and 24.04 LTS
+- Ubuntu 22.04 and 24.04 LTS
 
 ## Limitations
 

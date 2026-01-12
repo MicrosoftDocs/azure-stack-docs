@@ -3,7 +3,7 @@ title: Azure Stack Hub log and customer data handling
 description: Learn how Azure Stack Hub collects customer data and information. 
 author: sethmanheim
 
-ms.topic: article
+ms.topic: concept-article
 ms.date: 04/19/2023
 ms.author: sethm
 ms.reviewer: chengwei
