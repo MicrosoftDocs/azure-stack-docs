@@ -21,9 +21,9 @@ This article highlights what's new (features and improvements) and critical know
 
 ## Features and improvements in 2512
  - Added support for the Azure Local 2512 ISO and its associated capabilities.
- - Added update capability for 2512
- - Registration UX added to Azure Portal
- - Security and bug fixes
+ - Added update capability for 2512.
+ - Added registration UX to Azure Portal.
+ - Improved security and bug fixes.
 
 ## Features and improvements in 2511
  - Added support for the Azure Local 2511 ISO and its associated capabilities.
@@ -137,43 +137,51 @@ Workaround:
   }
   ```
 - Copy the newly modified file to c:\CloudDeployment\Setup\Common\ExtractOEMContent.ps1 on the first machine (seed node).
-- Copy the downloaded, unmodified file to c:\CloudDeployment\Setup\Common\En-US\ExtractOEMContent.Strings.psd1 on the first machine (seed node).
-
+- Copy the downloaded, unmodified file to c:\CloudDeployment\Setup\Common\En-US\ExtractOEMContent.Strings.psd1 on the first machine.
 - Resume cloud deployment.
+
 ### Cloud deployment (validation or deployment) gets stuck
 
-During Validate/Cloud Deployment flow, Seed node gets restarted, which the control plane appliance also gets restarted. Sometime this takes more time to come up causing HIMDS to go down as it cannot connect to HIS endpoint and deployment flow getting stuck. 
+During the validate or cloud deployment flow, the seed node restarts, which causes the control plane appliance to restart. Sometimes this process takes longer than expected, causing HIMDS to stop because it can't connect to the HIS endpoint. This issue can cause the deployment flow to stop responding.
 
 Mitigation:
-- Get-Service HIMDS (If service is stopped)
-- Start-Service HIMDS
-- Check Logs in FirstNode in C:\CloudDeployment\Logs
-- If its Validate Stage check latest File with name starting: EnvironmentValidator*
-- If its Deploy stage check latest file wil name starting: CloudDeployment*
-- If the Status in the file is different then what we see on the Portal then follow next steps to resync the deployment status with the portal.
+1. Check if the HIMDS service is stopped:
+  ```powershell
+  Get-Service HIMDS
+  ```
+1. If the service is stopped, start it:
+   ```powershell
+   Start-Service HIMDS
+   ```
+1. Check the logs in the first mode at *C:\CloudDeployment\Logs*.
+1. Review the appropriate log file:
+   - Validate stage: Check the latest file with a name starting with *EnvironmentValidator*.
+   - Deploy stage: Check the latest file with a name starting with *CloudDeployment*.
+   - If the status in the file is different from what appears in the portal, follow the next steps to resync the deployment status with the portal.
 
 ### Deployment status out of sync from cluster to portal
-**Symptoms**: Portal shows that cloud deployment is in progress even though it is already completed or cloud deployment is taking much longer than what is expected.
 
-Cloud deployment status is not updated or synced from actual status.
-If portal and log file are out of sync, it would be required to restart the LCM Controller service first to reestablish the connection to relay (Restart-Service LCMController)
+The portal shows that cloud deployment is in progress even though it's already completed, or the deployment is taking longer than expected. This happens because the cloud deployment status isn't synced with the actual status.
 
-**On the Firstnode:**
-1. Find below file
-a. For Validate Stage : c:\ECEStore\efb61d70-47ed-8f44-5d63-bed6adc0fb0f\559dd25c-9d86-dc72-4bea-b9f364d103f8.
-b. For Deploy Stage : c:\ECEStore\efb61d70-47ed-8f44-5d63-bed6adc0fb0f\086a22e3-ef1a-7b3a-dc9d-f407953b0f84.
-2. Update attribute EndTimeUtc located in the first line of the file (which looks like this: <Action Type="CloudDeployment" StartTimeUtc="2025-04-09T08:01:51.9513768Z" Status="Success" EndTimeUtc="2025-04-10T23:30:45.9821393Z">) to a future time based on the machine's current time.
-3. Save the file and close it.
-LCM will send the notification to HCI RP within the next 5-10 minutes.
+If the portal and log file are out of sync, restart the LCM Controller service to reestablish the connection to relay by running `Restart-Service LCMController`.
 
-**Note**: This process will work if HCI RP has not failed the status of the overall deployment due to a timeout (not tested, but approximately 48 hours from the start of the cloud deployment).
+**Mitigation on the first node:**
 
-**Note:** Use this command to see LCM Controller logs.
+1. Find the following file:
+   - For Validate stage: `c:\ECEStore\efb61d70-47ed-8f44-5d63-bed6adc0fb0f\559dd25c-9d86-dc72-4bea-b9f364d103f8`
+   - For Deploy stage: `c:\ECEStore\efb61d70-47ed-8f44-5d63-bed6adc0fb0f\086a22e3-ef1a-7b3a-dc9d-f407953b0f84`
+1. Update attribute EndTimeUtc located in the first line of the file (which looks like this: <Action Type="CloudDeployment" StartTimeUtc="2025-04-09T08:01:51.9513768Z" Status="Success" EndTimeUtc="2025-04-10T23:30:45.9821393Z">) to a future time based on the machine's current time.
+1. Save the file and close it.
+1. LCM sends the notification to HCI RP within 5-10 minutes.
+1. To view LCM Controller logs, use the following command:
+   ```powershell
+   Get-WinEvent -LogName "Microsoft.AzureStack.LCMController.EventSource/Admin" -MaxEvents 100 | Where-Object {$_.Message -like "*from edge common logger*"} | Select-Object TimeCreated, Message
+   ```
 
-```powershell
-Get-WinEvent -LogName "Microsoft.AzureStack.LCMController.EventSource/Admin" -MaxEvents 100 | Where-Object {$_.Message -like "*from edge common logger*"} | Select-Object TimeCreated, Message
-```
-### Failed to deploy disconnected operations Appliance - Appliance.Operations failure
+> [!NOTE]
+> This process works if HCI RP hasn't failed the deployment status due to a timeout (approximately 48 hours from the start of cloud deployment).
+
+### Failed to deploy disconnected operations Appliance (Appliance.Operations failure)
 
 Some special characters in the management TLS cert password, external certs password, or observability configuration secrets from the OperationsModule can cause the deployment to fail with an error output: *Appliance.Operations operation [options]* 
  
