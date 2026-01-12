@@ -166,30 +166,38 @@ If your environment fails to recognize Azure CLI after installing it, run the fo
         }
 ```
 
-## "Windows created a temporary paging file" message appears at startup
+## Live migrations on Azure Local 2311.2 and later could fail without error
 
-**Error:**
+After you upgrade to Azure Local 2311.2 or on a new deployment of 2311.2 or later, you could see issues where the Azure Local VMs fail to live migrate in an Azure Local instance.
 
-When you deploy an Azure Local VM using the SQL Server 2022 on Windows Server 2022 Azure marketplace images (Standard or Enterprise), you might see the following warning at startup:
+**Issue:** Live migration attempts may fail silently — no error messages are logged.
 
-*Windows created a temporary paging file...*
+Cause: This problem is caused by a known issue in Azure Local, version 2311.2 or later. This problem manifests under specific system configurations.
 
-**Resolution:**
+**Resolution:**  
 
-To resolve this issue, follow these steps:
+Run the following PowerShell script locally on one of the Azure Local machines. This script applies a registry fix on all the machines of your Azure Local instance.
 
-1. Select **OK** on the warning popup. Or, go to **System Properties** > **Advanced** > **Performance** > **Settings** to open the **Performance Options** window.
-1. In the **Performance Options** window, select **Change** under the **Virtual memory** section.
+After you have run the script, reboot each machine one at a time for the change to take effect.
 
-    :::image type="content" source="./media/troubleshoot-arc-enabled-vms/temporary-paging-file-1.png" alt-text="Screenshot of the Performance Options window highlighting the Change button." lightbox="./media/troubleshoot-arc-enabled-vms/temporary-paging-file-1.png":::
+```PowerShell
+Get-ClusterNode | ForEach-Object {
+    Invoke-Command -ComputerName $_.Name -ScriptBlock {
+        $RegPath = "HKLM:\System\CurrentControlSet\Services\Vid\Parameters"
+        $ValueName = "SkipSmallLocalAllocations"
+        $ValueData = 0
 
-1. In the **Virtual Memory** window, select **System managed size**.  Also ensure that the **Automatically manage paging file size for all drives** checkbox is cleared.
+        # Create the key if it doesn't exist
+        if (-Not (Test-Path $RegPath)) {
+            New-Item -Path $RegPath -Force | Out-Null
+        }
 
-    :::image type="content" source="./media/troubleshoot-arc-enabled-vms/temporary-paging-file-2.png" alt-text="Screenshot of the Virtual Memory window showing options to configure the paging file size for each drive." lightbox="./media/troubleshoot-arc-enabled-vms/temporary-paging-file-2.png":::
+        # Create or update the DWORD value
+        New-ItemProperty -Path $RegPath -Name $ValueName -Value $ValueData -PropertyType DWord -Force
+    }
+}
+```
 
-1. Select **Set**, then select **OK** to apply the changes.
-
-1. Restart the VM. After the restart, the warning message should no longer appear.
 
 ## Resource deployment failure due to insufficient disk space on the first storage path
 
