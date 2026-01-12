@@ -48,14 +48,15 @@ This article highlights what's new (features and improvements) and critical know
  - Enabled the use of a FQDN in the SAN of the management certificate.
 
 ## Known issues for disconnected operations for Azure Local
+
 ### SSL/TLS error using management endpoint (OperationsModule)
-When using a cmdlet that uses the management endpoint (e.g. Get-ApplianceHealthState) you receive an error 'threw and exception : The request was aborted: Could not create SSL/TLS secure channel.. Retrying'
 
-This is a known issue in the 2511 preview. The issue is fixed in 2512. 
+When you use a cmdlet that uses the management endpoint (for example, Get-ApplianceHealthState) you receive an error "threw and exception : The request was aborted: Could not create SSL/TLS secure channel.. Retrying"
 
-**Mitigation:** For 2511 - do not use Set-DisconnectedOperationsClientContext - rather do $context = New-DisconnectedOperationsClientContext and pass the $context to the respective cmdlets.
+**Mitigation:** For 2511, do not use `Set-DisconnectedOperationsClientContext`. Instead use `$context = New-DisconnectedOperationsClientContext` and pass the `$context` to the respective cmdlets.
 
 ### Arc bootstrap fails on node (Invoke-AzStackHCIArcInitialization) on Original Equipment Manufacturer (OEM) provided images 
+
 If you are running an OEM image, make sure that you are on the correct OS baseline.
 
 Follow these steps:
@@ -146,13 +147,17 @@ During the validate or cloud deployment flow, the first machine (seed node) rest
 
 Mitigation:
 1. Check if the HIMDS service is stopped:
+  
   ```powershell
   Get-Service HIMDS
   ```
+
 1. If the service is stopped, start it:
+
    ```powershell
    Start-Service HIMDS
    ```
+   
 1. Check the logs in the first mode at *C:\CloudDeployment\Logs*.
 1. Review the appropriate log file:
    - Validate stage: Check the latest file with a name starting with *EnvironmentValidator*.
@@ -165,7 +170,7 @@ The portal shows that cloud deployment is in progress even though it's already c
 
 If the portal and log file are out of sync, restart the LCM Controller service to reestablish the connection to relay by running `Restart-Service LCMController`.
 
-**Mitigation on the first node:**
+**Mitigation on the first machine:**
 
 1. Find the following files:
    - For the **Validate** stage: `c:\ECEStore\efb61d70-47ed-8f44-5d63-bed6adc0fb0f\559dd25c-9d86-dc72-4bea-b9f364d103f8`
@@ -174,6 +179,7 @@ If the portal and log file are out of sync, restart the LCM Controller service t
 1. Save the file and close it.
 1. LCM sends the notification to HCI RP within 5-10 minutes.
 1. To view LCM Controller logs, use the following command:
+
    ```powershell
    Get-WinEvent -LogName "Microsoft.AzureStack.LCMController.EventSource/Admin" -MaxEvents 100 | Where-Object {$_.Message -like "*from edge common logger*"} | Select-Object TimeCreated, Message
    ```
@@ -197,7 +203,7 @@ When you sign in to the portal with the same user account that worked before, re
 
 The disconnected operations appliance uses 78 GB of memory. If your node has less than 128 GB of memory, complete these steps after you deploy the appliance but before you deploy Azure Local instances.
 
-**Mitigation**: Follow these steps:
+**Mitigation**:
 
 1. Shut down the IRVM01VM on the seed node.
 1. Change the IRVM01 virtual machine memory setting to 64 GB.
