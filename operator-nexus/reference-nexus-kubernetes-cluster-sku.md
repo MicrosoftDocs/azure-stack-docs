@@ -100,7 +100,7 @@ To use these VM SKUs, hardware compatibility should be considered. Operator Nexu
 
 Nexus Tenant Kubernetes cluster VM SKUs are compatible with BOM 2.0, enabling users to use them alongside the larger VM SKUs. However, if a user tries to use BOM 2.0-specific VM SKUs on BOM 1.7.3 compute hardware, an "insufficient resources" error triggers during resource creation. For SKUs that are deployable on both BOMs, the bolded BOM version makes the best use of hardware resources for the SKU.
 
-When considering which VM SKU to use, the primary difference between BOM 1.7.3 and BOM 2.0.0 is the vCPUs available. BOM 2.0.0 has eight additional vCPUs available for use. When selecting VM SKUs, consider using SKUs with a larger CPU to RAM ratio for deployment on BOM 2.0.0. While most SKUs are deployable on either Nexus BOM, you experience better bin packing and space utilization by selecting SKU that reflect the best possible resource usage for each BOM.
+When considering which VM SKU to use, the primary difference between BOM 1.7.3 and BOM 2.0.0 is the vCPUs available. BOM 2.0.0 has eight more vCPUs available for use. When selecting VM SKUs, consider using SKUs with a larger CPU to RAM ratio for deployment on BOM 2.0.0. While most SKUs are deployable on either Nexus BOM, you experience better bin packing and space utilization by selecting SKU that reflect the best possible resource usage for each BOM.
 
 For example, take the VM SKU `NC_G14_56_v1`, which is best used on BOM 2.0.0. Four instances of that SKU would use up all the resources on a given Bare Metal Machine, with no waste.
 
@@ -121,7 +121,9 @@ However, if you used that SKU on BOM 1.7.3, only three NC_G14_56_v1 SKUs are dep
 | CPU      | 12  | 12  | 12  | 12  | 48   | **0**    |
 | Memory   | 56  | 56  | 56  | 56  | 224  | **0**    |
 
-While the placement of the VMs is determined systematically at deployment time, selecting VM SKUs with an awareness of resource utilization improves the overall functionality of the platform, especially after it reaches 50% or more capacity.  
+SKUs that feature isolated emulator threads (P, E and L-type SKUs) consume CPU resources totaling the defined vCPUs for workloads and two reserved for the emulator. For example, both NC_P46_224_v1 and NC_G48_224_v1 consume 48 vCPUs. NC_P46_224_v1 has 46 vCPUs defined plus 2 for the emulator threads while NC_G48_224_v1 has shared emulator threads and just consumes the 48 vCPU from the VM definition. The platform determines the placement of virtual machines based on the total resources required for the VM.
+
+While the placement of the VMs is determined systematically at deployment time, selecting VM SKUs with an awareness of resource utilization improves the overall functionality of the platform, especially after it reaches 50% or more capacity.
 
 ## General purpose VM SKUs
 
