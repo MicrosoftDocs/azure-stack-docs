@@ -167,10 +167,10 @@ If the portal and log file are out of sync, restart the LCM Controller service t
 
 **Mitigation on the first node:**
 
-1. Find the following file:
-   - For Validate stage: `c:\ECEStore\efb61d70-47ed-8f44-5d63-bed6adc0fb0f\559dd25c-9d86-dc72-4bea-b9f364d103f8`
-   - For Deploy stage: `c:\ECEStore\efb61d70-47ed-8f44-5d63-bed6adc0fb0f\086a22e3-ef1a-7b3a-dc9d-f407953b0f84`
-1. Update attribute EndTimeUtc located in the first line of the file (which looks like this: <Action Type="CloudDeployment" StartTimeUtc="2025-04-09T08:01:51.9513768Z" Status="Success" EndTimeUtc="2025-04-10T23:30:45.9821393Z">) to a future time based on the machine's current time.
+1. Find the following files:
+   - For the **Validate** stage: `c:\ECEStore\efb61d70-47ed-8f44-5d63-bed6adc0fb0f\559dd25c-9d86-dc72-4bea-b9f364d103f8`
+   - For the **Deploy** stage: `c:\ECEStore\efb61d70-47ed-8f44-5d63-bed6adc0fb0f\086a22e3-ef1a-7b3a-dc9d-f407953b0f84`
+1. Update the attribute **EndTimeUtc** located in the first line of the file to a future time based on the machine's current time. For example, \<Action Type="CloudDeployment" StartTimeUtc="2025-04-09T08:01:51.9513768Z" Status="Success" EndTimeUtc="2025-04-10T23:30:45.9821393Z">.
 1. Save the file and close it.
 1. LCM sends the notification to HCI RP within 5-10 minutes.
 1. To view LCM Controller logs, use the following command:
