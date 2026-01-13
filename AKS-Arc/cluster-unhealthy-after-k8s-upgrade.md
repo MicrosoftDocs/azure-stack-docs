@@ -2,8 +2,8 @@
 title: AKS Arc Cluster unhealthy after K8s Upgrade
 description: Learn how to troubleshoot and mitigate an issue that causes AKS cluster to become unhealthy after K8s upgrade
 ms.topic: troubleshooting
-author: rayoef
-ms.author: rayoflores
+author: davidsmatlak
+ms.author: davidsmatlak
 ms.date: 1/13/2026
 ms.lastreviewed: 1/13/2026
 ---
