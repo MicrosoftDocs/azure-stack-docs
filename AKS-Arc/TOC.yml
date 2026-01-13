@@ -201,6 +201,8 @@
       items:
       - name: Known issues overview
         href: aks-arc-known-issues.md
+      - name: Cluster becomes unhealthy after upgrading to Kubernetes v1.31 with Azure Policy or Gatekeeper enabled
+        href: cluster-unhealthy-after-k8s-upgrade.md
       - name: Can't create AKS cluster with GPU-enabled default node pool
         href: gpu-enabled-cluster-issue.md
       - name: Storage provisioning issue in cluster and node pool creation
