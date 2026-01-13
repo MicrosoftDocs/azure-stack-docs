@@ -18,13 +18,13 @@ In this article, you learn how to copy data from your Azure Managed Lustre file 
 You can initiate an export job and monitor the job's progress and status in the Azure portal. Export jobs copy new or changed files from the file system to the blob container that you specified when you created the file system.
 
 > [!NOTE]
-> Export jobs are only available when you integrate Azure Blob Storage with your Azure Managed Lustre file system during file system creation. For more information, see [Azure Blob Storage integration](amlfs-overview.md#azure-blob-storage-integration). If you didn't integrate a blob container when you created the file system, you can use client file system commands to copy the data without creating an export job.
+> Export jobs are available only when you integrate Azure Blob Storage with your Azure Managed Lustre file system during file system creation. For more information, see [Azure Blob Storage integration](amlfs-overview.md#azure-blob-storage-integration). If you didn't integrate a blob container when you created the file system, you can use client file system commands to copy the data without creating an export job.
 
 ## Create an export job
 
 Follow these steps to create an export job in the Azure portal:
 
-1. In the Azure portal, open your Azure Managed Lustre file system. Select the **Blob integration** option in **Settings**.
+1. In the Azure portal, open your Azure Managed Lustre file system. Under **Settings**, select **Blob integration**.
 
 1. Select **+ Create new job**.
 
@@ -40,7 +40,7 @@ The following screenshot shows the configuration settings for an export job in t
 
 ## Monitor or cancel an export job
 
-You can monitor or cancel export jobs in the **Recent jobs** section of the **Blob integration** page.
+You can monitor or cancel export jobs in the **Recent jobs** section of the **Blob integration** pane.
 
 Only one archive job runs at a time. To cancel the job that's in progress, select the **Cancel** link for that job in the **Recent jobs** table. The **Cancel** link isn't available for completed jobs.
 
