@@ -1,5 +1,5 @@
 ---
-title: Use Azure Managed Lustre Auto Import (Preview)
+title: Use Azure Managed Lustre Auto-Import (Preview)
 description: How to use the auto-import feature to copy data from your Azure Blob Storage container to an Azure Managed Lustre file system.
 ms.topic: how-to
 ms.date: 10/24/2025
@@ -7,7 +7,7 @@ author: pauljewellmsft
 ms.author: brlepore
 ms.reviewer: brianl
 
-# Intent: As an IT Pro, I need to be able to auto import files from my Azure Blob Storage container to an Azure Managed Lustre file system.
+# Intent: As an IT Pro, I need to be able to automatically import files from my Azure Blob Storage container to an Azure Managed Lustre file system.
 # Keyword: 
 ---
 # Use the auto-import feature in Azure Managed Lustre (preview)
@@ -20,30 +20,30 @@ The auto-import feature in Azure Managed Lustre operates by continuously monitor
 
 Based on the configured import policy, it updates the contents of the Azure Managed Lustre namespace to reflect these changes. The auto-import feature provides users with a seamless and automated data replication process.
 
-Following creation, the auto-import process consists of two phases, full sync and blob sync:
+Following creation, the auto-import process consists of two phases:
 
-1. The first phase is the full sync scan. The full sync scan compares the blob container namespace with the Azure Managed Lustre namespace and imports any new or modified files into the Azure Managed Lustre namespace.
+1. The first phase is the *full sync* scan. The full sync scan compares the blob container namespace with the Azure Managed Lustre namespace and imports any new or modified files into the Azure Managed Lustre namespace.
 
-1. The second phase is the blob sync scan. The blob sync scan begins after the full sync scan finishes. The blob sync scan continuously monitors change feed for updates, importing new or modified files and processing deletions into the Azure Managed Lustre namespace.
+1. The second phase is the *blob sync* scan. The blob sync scan begins after the full sync scan finishes. The blob sync scan continuously monitors change feed for updates, importing new or modified files and processing deletions into the Azure Managed Lustre namespace.
 
-See [change feed documentation](/azure/storage/blobs/storage-blob-change-feed?tabs=azure-portal#how-the-change-feed-works) for pricing details.
+For pricing details, see the [change feed documentation](/azure/storage/blobs/storage-blob-change-feed?tabs=azure-portal#how-the-change-feed-works).
 
 ## Prerequisites
 
-- An existing Azure Managed Lustre file system: You can create one by using the [Azure portal](/azure/azure-managed-lustre/create-file-system-portal), [Azure Resource Manager](/azure/azure-managed-lustre/create-file-system-resource-manager), or [Terraform](/azure/azure-managed-lustre/create-aml-file-system-terraform). To learn more about blob integration, see [Blob integration prerequisites](/azure/azure-managed-lustre/amlfs-prerequisites#blob-integration-prerequisites-optional).
-- [Azure Blob Storage change feed](/azure/storage/blobs/storage-blob-change-feed?tabs=azure-portal) **must be enabled** on the storage account associated with the Azure Managed Lustre file system.
+- You need an existing Azure Managed Lustre file system. You can create one by using the [Azure portal](/azure/azure-managed-lustre/create-file-system-portal), [Azure Resource Manager](/azure/azure-managed-lustre/create-file-system-resource-manager), or [Terraform](/azure/azure-managed-lustre/create-aml-file-system-terraform). To learn more about blob integration, see [Blob integration prerequisites](/azure/azure-managed-lustre/amlfs-prerequisites#blob-integration-prerequisites-optional).
+- [Azure Blob Storage change feed](/azure/storage/blobs/storage-blob-change-feed?tabs=azure-portal) must be enabled on the storage account associated with the Azure Managed Lustre file system.
   > [!NOTE]
   > Change feed [doesn't support](/azure/storage/blobs/storage-blob-change-feed?tabs=azure-portal#enable-and-disable-the-change-feed) storage accounts with the hierarchical namespace feature enabled.
-- The change feed retention period *must* be set to seven days or greater. When you enable the blob change feed, either select **Keep all logs** *or* set **Delete change feed logs after (in days)** to seven or greater.
+- The change feed retention period *must* be set to seven days or greater. When you enable the blob change feed, either select **Keep all logs** or set **Delete change feed logs after (in days)** to seven or greater.
 - Concurrent blob integration jobs aren't permitted. You must disable the auto-export feature and any manual import or export jobs before enabling the auto-import feature.
 
 ## Configuration
 
-The auto-import feature is enabled on an existing Azure Managed Lustre file system that has an associated Blob Storage container configured. Auto import is configured in the blob integration settings in the Azure portal.
+The auto-import feature is enabled on an existing Azure Managed Lustre file system that has an associated Blob Storage container configured. Auto-import is configured in the blob integration settings in the Azure portal.
 
 To create a new auto-import job, follow these steps:
 
-1. In the Azure portal, open your Azure Managed Lustre file system and select the **Blob integration** pane under **Settings**.
+1. In the Azure portal, open your Azure Managed Lustre file system. Under **Settings**, select **Blob integration**.
 
 1. Select **+ Create new job**.
 
@@ -73,7 +73,7 @@ To view the metrics of an auto-import job, select the name of the job. The **Met
 
 Metrics are grouped into two main categories, **Full sync** and **Blob sync**.
 
-Full sync statistics | Statistics for the initial full sync phase of auto import
+Full sync statistics | Statistics for the initial full sync phase of auto-import
 --- | ---
 **Imported Files** | Count of files successfully imported to the Lustre namespace from the associated blob container during the initial full sync phase.
 **Imported Directories** | Count of directories successfully imported to the Lustre namespace from the associated blob container during the initial full sync phase.
@@ -106,20 +106,20 @@ Blob sync statistics | Statistics about activity related to monitoring the chang
 
 ## Considerations and best practices
 
-When you use auto import, consider the following best practices to ensure smooth operation:
+When you use auto-import, consider the following best practices to ensure smooth operation:
 
 - It's important to review the behavior of the change feed feature, specifically the [specifications](/azure/storage/blobs/storage-blob-change-feed?tabs=azure-portal#specifications).
-- You **must** set the change feed retention period to seven days or greater. When you enable the blob change feed, select either **Keep all logs** *or* set **Delete change feed logs after (in days)** to seven or greater.
-- Auto import is dependent on the change feed. It's limited to the timeliness of events published to the change feed. The change feed currently suggests that events are published "within minutes."
-- Auto import can typically import changes at a rate of 2,000 per second.
-- You can't run multiple blob integration jobs at the same time. After auto import is enabled, you can't create more import or export jobs (either manual or automatic).
-- `lfs hsm_*` commands aren't supported during the use of auto import as it can cause consistency issues between the blob and the Lustre file system.
+- You *must* set the change feed retention period to seven days or greater. When you enable the blob change feed, either select **Keep all logs** or set **Delete change feed logs after (in days)** to seven or greater.
+- Auto-import is dependent on the change feed. It's limited to the timeliness of events published to the change feed. The change feed currently suggests that events are published "within minutes."
+- Auto-import can typically import changes at a rate of 2,000 per second.
+- You can't run multiple blob integration jobs at the same time. After auto-import is enabled, you can't create more import or export jobs (either manual or automatic).
+- `lfs hsm_*` commands aren't supported during the use of auto-import because it can cause consistency issues between the blob and the Lustre file system.
 
 Here are best practices for deletions:
 
 - Deletions are one way (blob > Lustre) and only apply going forward.
 - The auto-import process always begins with a manual (full sync) scan. That scan doesn't compute a bidirectional map or attempt to detect if the "blob was deleted, file still exists in Lustre." *As a result, deletions that occurred before enablement aren't removed during the scan.*
-- During the initial scan, changes (including deletions) are delayed. Any change feed events, including deletions, that occur while the initial scan runs are applied **after** the scan completes. Expect a temporary period where the Lustre file system might still show files that were deleted in the blob container during the scan.
+- During the initial scan, changes (including deletions) are delayed. Any change feed events, including deletions, that occur while the initial scan runs are applied *after* the scan finishes. Expect a temporary period where the Lustre file system might still show files that were deleted in the blob container during the scan.
 - Deletion behavior is explicitly tied to the selected conflict mode. The following table demonstrates the behavior for each mode when **Enable deletions** is enabled:
 
   **File previously modified in Lustre?** | **Conflict resolution mode** | **Perform Deletion?**
