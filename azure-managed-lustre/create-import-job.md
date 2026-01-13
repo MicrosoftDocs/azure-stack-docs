@@ -16,7 +16,7 @@ Azure Managed Lustre integrates with Azure Blob Storage to simplify the process 
 In this article, you learn how to use the Azure portal to create an import job that imports data from a blob container into an existing Azure Managed Lustre file system.
 
 > [!NOTE]
-> When you import data from a blob container to an Azure Managed Lustre file system, only the file names (namespace) and metadata are imported into the Lustre namespace.
+> When you import data from a blob container to an Azure Managed Lustre file system, only the file names (namespace) and metadata are imported into the Lustre file system namespace.
 >
 > The actual contents of a blob are imported when a client first accesses the file. When you first access the data, there's a slight delay while the Lustre Hierarchical Storage Management (HSM) feature pulls in the blob contents to the corresponding file in the file system. This delay only occurs the first time a file is accessed.
 >
@@ -38,12 +38,19 @@ To begin importing data from a blob container into an Azure Managed Lustre file 
 To configure the import options and start the job, follow these steps:
 
 1. In the Azure portal, open your Azure Managed Lustre file system and go to the **Blob integration** pane under **Settings**.
+
 1. Select **+ Create new job**.
+
 1. Select **Import** from the **Job type** dropdown menu.
+
 1. Enter a name for the import job in the **Job Name** field.
+
 1. Select a value for the **Conflict resolution mode** field. This setting determines how the import job handles conflicts between existing files in the file system and the new files that you import. In this example, we select **Skip**. To learn more, see [Conflict resolution mode](blob-integration.md#conflict-resolution-mode).
+
 1. Select a value for **Error tolerance**. This setting determines how the import job handles errors that occur during the import process. In this example, we select **Allow errors**. To learn more, see [Error tolerance](blob-integration.md#error-tolerance).
+
 1. To filter the data that you're importing from Blob Storage, enter import prefixes. The Azure portal allows you to enter up to 10 prefixes. In this example, we specify the prefixes `/data` and `/logs`. To learn more, see [Import prefix](blob-integration.md#import-prefix).
+
 1. After the job is configured, select **Start** to begin the import process.
 
 The following screenshot shows the import job configuration settings in the Azure portal.
@@ -64,8 +71,8 @@ The following screenshot shows the job details for an import job in the Azure po
 
 :::image type="content" source="./media/import-jobs/import-job-details.png" alt-text="Screenshot that shows the job details for an import job." lightbox="./media/import-jobs/import-job-details.png":::
 
-When the job completes, you can view the logging container to see detailed information about the import process, including any errors or conflicts that occurred. This information is only available after the job completes.
+When the job completes, you can view the logging container to see detailed information about the import process, including any errors or conflicts that occurred. This information is available only after the job finishes.
 
 ## Related content
 
-- [Use Azure Blob Storage with an Azure Managed Lustre file system](blob-integration.md).
+- [Use Azure Blob Storage with an Azure Managed Lustre file system](blob-integration.md)
