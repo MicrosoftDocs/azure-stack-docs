@@ -280,7 +280,7 @@ $users | % {New-ADUser `
 # Create a new Active Directory group
 New-ADGroup `
     -Name "AzureLocal Users" `
-    -GroupScope Global `
+    -GroupScope Universal `
     -Path "CN=Users,DC=local,DC=contoso,DC=com"
 
 # Add the user to the group
@@ -297,7 +297,7 @@ $users = @("operator")
 # Create the group
 New-ADGroup -Name $groupName `
             -SamAccountName $groupName `
-            -GroupScope Global `
+            -GroupScope Universal `
             -GroupCategory Security `
             -Path $ouPath `
             -Description "Sync group for ADFS purposes"

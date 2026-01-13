@@ -7,7 +7,6 @@ ms.author: robess
 ms.date: 01/05/2026
 ms.reviewer: haraldfianbakken
 ai-usage: ai-assisted
-ms.subservice: hyperconverged
 ---
 
 # Deploy disconnected operations for Azure Local (preview)
@@ -107,7 +106,7 @@ To prepare each machine for the disconnected operations appliance, follow these 
      ```powershell
       # Example
       $networkIntentName = 'ManagementComputeStorage'
-      New-VMSwitch -Name "ConvergedSwitch($networkIntentName)" -NetAdapterName "ethernet","ethernet 2"  
+      New-VMSwitch -Name "ConvergedSwitch($networkIntentName)" -NetAdapterName "ethernet","ethernet 2" -EnableEmbeddedTeaming $true -AllowManagementOS $true
 
       # Rename the VMNetworkAdapter for management. During creation, Hyper-V uses the vSwitch name for the virtual network adapter.
       Rename-VmNetworkAdapter -ManagementOS -Name "ConvergedSwitch($networkIntentName)" -NewName "vManagement($networkIntentName)"
