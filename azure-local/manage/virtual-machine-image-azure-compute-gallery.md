@@ -39,7 +39,16 @@ Follow these steps to create an Azure Local VM image using Azure CLI.
 
 To transfer your Azure Compute Gallery image to be an Azure Local compatible image, you need to export your Azure Compute Gallery image version to a managed disk.
 
-1. To download the Azure Compute Gallery image to your resource group, follow the steps in [Export an image version to a managed disk](/azure/virtual-machines/managed-disk-from-image-version). Note the name of the managed disk.  
+1. To download the Azure Compute Gallery image to your resource group, follow the steps in [Export an image version to a managed disk](/azure/virtual-machines/managed-disk-from-image-version). Note the name of the managed disk.
+
+> [!IMPORTANT]
+> The export action must be performed in the **source subscription** and **source resource group** that contain the Azure Compute Gallery image version.  
+> 
+> When creating the managed disk, ensure that:
+> - You select the **resource group where the gallery image exists** (source subscription), **not** the Azure Local target resource group.
+> - The resulting managed disk will remain in the source subscription. Azure Local will later access it via the SAS URL.
+> 
+> Attempting to create the managed disk in the target Azure Local resource group will fail because the image version doesn't exist there.
 
 1. Get the shared access signature (SAS) token of the managed disk by using the following command:
 

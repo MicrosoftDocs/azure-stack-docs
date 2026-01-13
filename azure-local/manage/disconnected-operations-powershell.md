@@ -13,13 +13,13 @@ ai-usage: ai-assisted
 
 ::: moniker range=">=azloc-2511"
 
-This article explains how to configure Azure PowerShell for disconnected operations on Azure Local. 
+This article explains how to configure Azure PowerShell for disconnected operations on Azure Local.
 
 [!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
 
 ## About Azure PowerShell
 
-**Azure PowerShell** is a versatile, cross-platform set of PowerShell modules that you can use to create and manage Azure resources for Azure Local disconnected operations. For more information, see [What is Azure PowerShell](/powershell/azure/what-is-azure-powershell).
+Azure PowerShell is a versatile, cross-platform set of PowerShell modules that you can use to create and manage Azure resources for Azure Local disconnected operations. For more information, see [What is Azure PowerShell](/powershell/azure/what-is-azure-powershell).
 
 ## Configure certificates for Azure PowerShell
 

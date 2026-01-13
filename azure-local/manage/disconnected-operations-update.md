@@ -1,6 +1,6 @@
 ---
 title: Update Disconnected Operations on Azure Local (preview)
-description:  Learn how to update disconnected operations on Azure Local (preview).
+description: Learn how to update disconnected operations on Azure Local (preview).
 ms.topic: how-to
 author: ronmiab
 ms.author: robess
@@ -9,7 +9,7 @@ ms.reviewer: haraldfianbakken
 ai-usage: ai-assisted
 ---
 
-# About updates for disconnected operations
+# About updates for disconnected operations (preview)
 
 ::: moniker range=">=azloc-2511"
 
@@ -24,13 +24,13 @@ To get updates for disconnected operations, follow these steps:
 1. From The Azure portal, navigate to your disconnected operations appliance.
 1. Select **Updates** and then select the latest version.
 1. Select **Download** and wait for the download to complete.
-1. Copy the update file to a staging folder on the seed node, such as `C:\AzureLocalDisconnectedOperations`.
+1. Copy the update file to a staging folder on the first machine (seed node), such as `C:\AzureLocalDisconnectedOperations`.
 
 ## Load the OperationsModule
 
 To load the OperationsModule on the seed node, run the following command.
 
-```powershell 
+```powershell
 $applianceConfigBasePath = 'C:\AzureLocalDisconnectedOperations'
 # Import the OperationsModule
 Import-Module "$applianceConfigBasePath\OperationsModule\Azure.Local.DisconnectedOperations.psd1" -Force    
@@ -56,7 +56,7 @@ Wait-AppliancePreUpdate -TargetVersion $updatePackageResult.UpdatePackageVersion
 
 ## Store BitLocker keys
 
-If you haven't exported your BitLocker keys, run the following command to export and save them to a file. Keep this file in a secure location.
+If you didn't export your BitLocker keys, run the following command to export and save them to a file. Keep this file in a secure location.
 
 ```powershell
 Get-ApplianceBitlockerRecoveryKeys -DisconnectedOperationsClientContext $context|ConvertTo-Json|Set-Content RecoveryKeys.json
@@ -67,11 +67,12 @@ Get-ApplianceBitlockerRecoveryKeys -DisconnectedOperationsClientContext $context
 
 ## Create appliance snapshot
 
-To roll back quickly for worst case scenarios, we recommend creating a VM snapshot.
+To roll back quickly in worst case scenarios, we recommend you create a virtual machine (VM) snapshot.
 
 ```powershell
 Checkpoint-VM -Name "IRVM01" -SnapshotName "BeforeUpdate"
 ```
+
 ## Trigger an update
 
 On the seed node, in the same session as the preceding section, run the following command to trigger an update.
@@ -93,7 +94,7 @@ Get-ApplianceUpdateHistory
 
 ## Update Azure Local (disconnected)
 
-During this preview release, you can use the following PowerShell script to patch and update each Azure Local node in a disconnected environment.
+During this preview release, use the following PowerShell script to patch and update each Azure Local node in a disconnected environment.
 
 ```powershell
 $applianceFQDN = 'autonomous.cloud.private'
