@@ -12,14 +12,14 @@ ms.lastreviewed: 1/13/2026
 
 ## Symptoms
 
-After upgrading an AKS Arc cluster to **Kubernetes v1.31 or later**, the cluster may enter a **degraded or unhealthy state**.
+After upgrading an AKS Arc cluster to **Kubernetes v1.31 or later**, the cluster might enter a **degraded or unhealthy state**.
 
 This issue is observed when:
 
 - The cluster is configured with a **single control plane**, and
 - **Azure Policy and/or Gatekeeper** is enabled.
 
-Cluster operations such as reconciliation, upgrades, or certificate rotation may fail or behave unexpectedly.
+Cluster operations such as reconciliation, upgrades, or certificate rotation might fail or behave unexpectedly.
 
 ---
 
@@ -27,7 +27,7 @@ Cluster operations such as reconciliation, upgrades, or certificate rotation may
 
 In **Kubernetes v1.31 and later**, certain update and reconciliation paths interact incorrectly with **Azure Policy and Gatekeeper** when running on a **single control plane configuration**.
 
-This issue can be triggered by:
+This issue occurs during:
 
 - Kubernetes version upgrades (for example, v1.30 → v1.31), or
 - Automated update mechanisms such as the **45-day Workload Identity Federation (WLIF) certificate rotation**
@@ -54,7 +54,7 @@ Until a permanent fix is available, use one of the following mitigations.
 Disable **Azure Policy** on the affected cluster before performing:
 
 - Kubernetes version upgrades, or
-- Any operation that may trigger control plane updates (for example, certificate rotation)
+- Any operation that might trigger control plane updates (for example, certificate rotation)
 
 Azure Policy can be re-enabled once the fix is available.
 
@@ -65,7 +65,7 @@ Azure Policy can be re-enabled once the fix is available.
 If **Gatekeeper** is enabled, update the Gatekeeper constraint templates and policies to ensure compatibility with Kubernetes v1.31 behavior.
 
 > [!NOTE]
-> This workaround may be customer-specific and may not apply in all environments.
+> This workaround might be customer-specific and might not apply in all environments.
 
 ---
 
@@ -73,11 +73,11 @@ If **Gatekeeper** is enabled, update the Gatekeeper constraint templates and pol
 
 This issue is currently under investigation, and a **permanent fix** is in progress.
 
-Until the fix is fully validated and released, customers are advised to follow the recommended workarounds described in this article. This page will be updated as additional guidance becomes available.
+Until the fix is fully validated and released, customers are advised to follow the recommended workarounds described in this article. This page is updated as more guidance becomes available.
 
 ---
 
 ## Next steps
 
-- If you are planning to upgrade to **Kubernetes v1.31 or later**, review your cluster configuration and apply the recommended mitigations before proceeding.
+- If you're planning to upgrade to **Kubernetes v1.31 or later**, review your cluster configuration and apply the recommended mitigations before proceeding.
 - If your cluster is already affected, apply one of the workarounds and contact Microsoft Support if assistance is required.
