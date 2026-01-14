@@ -16,7 +16,7 @@ ms.subservice: hyperconverged
 
 This article describes how to create or add logical networks for application workloads running on your Azure Local instance. Any Azure Local virtual machines (VMs) that you create use these logical networks.
 
-A default infrastructure logical network is created automatically when the Azure Local instance is first deployed. You can then create additional logical networks for your workloads. This article focuses on how to create these logical networks for your application workloads.
+A default infrastructure logical network *\<AzureLocalClusterName-InfraLNET\>* is created automatically when the Azure Local instance is first deployed. You can then create additional logical networks for your workloads. This article focuses on how to create these logical networks for your application workloads.
 
 > [!NOTE]
 > Azure Local VMs only support IPv4 addresses. IPv6 addresses aren't supported.
