@@ -42,8 +42,6 @@ This security update contains fixes and quality improvements from [KB5072033](
 
 - **[Windows Deployment Services (WDS)]** This update introduces a change in behavior in which WDS will stop supporting hands-free deployment functionality by default. Detailed guidance for IT administrators is available at [Windows Deployment Services (WDS) Hands‑Free Deployment Hardening Guidance](https://go.microsoft.com/fwlink/?linkid=2344403).
 
-To find more information on Azure local, see [Azure Stack HCI](overview.md).  
-
 For more information about security vulnerabilities, see the [Security Update Guide](https://portal.msrc.microsoft.com/security-guidance) and the [January 2026 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2026-Jan).
 
 ## Known issues
