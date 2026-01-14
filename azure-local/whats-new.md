@@ -5,13 +5,38 @@ ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 01/08/2026
+ms.date: 01/14/2026
 ms.subservice: hyperconverged
 ---
 
 # What's new in hyperconverged deployments of Azure Local?
 
 This article lists the features and improvements that are available in hyperconverged deployments of Azure Local (*formerly Azure Stack HCI*). The latest version of Azure Local solution focuses on cloud-based deployment and updates, cloud-based monitoring, a new and simplified experience for Azure Local virtual machine (VM) management, security, and more.
+
+::: moniker range="=azloc-2601"
+
+## Features and improvements in 2601
+
+The January 2026 release of hyperconverged deployments of Azure Local is version **12.2601.1002.XXXX**. For more information, see [Release information summary](./release-information-23h2.md).
+This release includes various reliability improvements and other bug fixes.
+
+- **OS changes**:
+
+    - The 2504 release introduced a new operating system for Azure Local deployments. From 2601 onwards, all the new and existing deployments of Azure Local run the new OS version **26100.XXXX**. You can download the 2601 OS image from the Azure portal.
+
+        - You also need a driver that's compatible with OS version **26100.XXXX** or Windows Server 2025. If a compatible driver isn't available, you can use the 2503 image.
+
+    - If you purchased Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) through your preferred Microsoft hardware partner, the OS is preinstalled. Work with your Original Equipment Manufacturer (OEM) to get the OS image that's compatible with **12.2601.1002.XXXX** and a driver that's compatible with OS version **26100.XXXX** or Windows Server 2025.
+    
+- **.NET updates**: This build uses .NET version **8.0.22** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
+
+
+
+- **Documentation updates**: The noteworthy changes include the following new articles or articles with major updates:
+    - [SDN upgrade infrastructure](./manage/upgrade-sdn.md) guidance is released.
+    - Azure Stack HCI renaming banners added to the top of the feature overview articles were removed. This change was consistent with Azure portal updates that removed the renaming banners.
+
+::: moniker-end
 
 ::: moniker range="=azloc-2512"
 
