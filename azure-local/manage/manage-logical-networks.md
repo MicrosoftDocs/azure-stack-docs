@@ -1,11 +1,11 @@
 ---
-title: Manage resources for Azure Local VMs enabled by Azure Arc
-description: Learn how to manage resources like data disks and network interfaces on an Azure Local VM enabled by Azure Arc.
+title: Manage logical networks for Azure Local VMs enabled by Azure Arc
+description: Learn how to manage logical networks for Azure Local VMs enabled by Azure Arc.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 01/08/2026
+ms.date: 01/14/2026
 ms.subservice: hyperconverged
 ---
 
@@ -20,9 +20,19 @@ To deploy Azure Local virtual machines (VMs) enabled by Azure Arc, you need to c
 
 A logical network is a software-defined representation of a physical network that enables you to segment and isolate network traffic for different workloads or applications running on Azure Local VMs. Logical networks can be related to Azure Local VM management or application workloads.
 
-When you deploy an Azure Local instance, an infrastructure logical network is created automatically. This logical network encompasses the management IP address range provided during deployment.
+### About infrastructure logical network
 
-Infrastructure logical networks can't be managed.
+When you deploy an Azure Local instance, an infrastructure logical network is created automatically.
+- This logical network encompasses the management IP address range provided during deployment. 
+- You can't manage infrastructure logical networks.
+    - If you try to create a network interface using Azure CLI on the infrastructure logical network, the operation will fail.
+    - You can't update the infrastructure logical network.
+    - Deletion of this logical network should be done in a prescribed order. First remove Arc VM network interfaces associated with the network, then remove all the associated application workload logical networks and finally remove all the Azure Local VMs. Once everything is removed, you can delete the infrastructure logical network. Deletion will only remove the cloud projection, the on-premises logical network remains.
+
+### About workload logical networks
+
+You can create additional logical networks for application workload on your Azure Local VMs and you can manage these logical networks as needed. For example, you can update the DNS server configuration for a workload logical network.
+
 
 ## Prerequisites
 
@@ -58,11 +68,12 @@ $resourceGroup = "your-resource-group"
 $dnsServers = "IP-address1", "IP-address2"
 ```
 
-#### Update DNS server configuration
+#### Update configuration
 
 ```azure cli
 az stack-hci-vm network lnet update --name $logicalNetwork --resource-group $resourceGroup --dns-servers $dnsServers
 ```
+
 ::: moniker-end
 
 ## Related content
