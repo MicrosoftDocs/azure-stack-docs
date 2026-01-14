@@ -30,6 +30,13 @@ This release includes various reliability improvements and other bug fixes.
     
 - **.NET updates**: This build uses .NET version **8.0.22** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
 
+- **Infrastructure logical network surfaced in Azure portal**: The infrastructure logical network created during deployment is now visible in the Azure portal. This visibility allows administrators to manage and monitor the infrastructure network alongside other logical networks, enhancing network management capabilities. This change also acts as a safeguard against accidental deletion of the infrastructure network or accidental workload provisioning on the network reserved for Azure Local infrastructure.
+
+    For more information, see [Manage logical networks for Azure Local VMs](./azure-arc-vm-management-overview.md#components-of-azure-local-vm-management).
+
+- **VM Connect for Azure Local VMs (Preview)**: Starting with this release, You can connect to Windows and Linux Azure Local VMs that do not have network connectivity or have boot failures. For more information, see [VM Connect for Azure Local VMs](./manage/vm-connect-azure-local-vms.md).
+
+- **Unique ID for data disks**: In this release, you can identify data disks on your Azure Local instance with a new property called Unique ID. The unique ID matches the "UniqueId" of the data disk (Get-Disk | Select-Object UniqueId).
 
 
 - **Documentation updates**: The noteworthy changes include the following new articles or articles with major updates:
