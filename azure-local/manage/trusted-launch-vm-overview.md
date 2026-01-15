@@ -5,7 +5,7 @@ ms.topic: concept-article
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 12/17/2025
+ms.date: 01/15/2026
 ---
 
 # Introduction to Trusted launch for Azure Local VMs enabled by Azure Arc
@@ -44,7 +44,7 @@ Trusted launch is a security type that can be specified when you create Azure Lo
 
 ## Guest operating system images
 
-All Windows images and Windows Server images from Azure Marketplace supported by Azure Local VMs are supported. See [Create Azure Local VM image using Azure Marketplace images](/azure-stack/hci/manage/virtual-machine-image-azure-marketplace?tabs=azurecli) for a list of all supported Windows 11 images.
+Only a select set of Windows images and Windows Server images from Azure Marketplace are supported. This set of images is supported by Azure Local VMs. See [Create Azure Local VM image using Azure Marketplace images](./virtual-machine-image-azure-marketplace.md#guest-operating-system-images) for a list of all supported Windows 11 images.
 
 > [!NOTE]
 > VM guest images obtained outside of Azure Marketplace aren't supported.
