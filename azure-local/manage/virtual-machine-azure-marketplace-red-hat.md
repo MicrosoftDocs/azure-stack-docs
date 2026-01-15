@@ -4,7 +4,7 @@ description: Learn how to prepare and export a Red Hat Enterprise Azure Marketpl
 ms.topic: how-to
 author: ronmiab
 ms.author: robess
-ms.date: 08/26/2025
+ms.date: 01/14/2026
 ai-usage: ai-assisted
 ms.custom:
   - ai-gen-docs-bap
@@ -20,7 +20,7 @@ This article explains how to prepare a Red Hat Enterprise Linux (RHEL) Azure Mar
 
 ## Prerequisites
 
-Before you begin, you must have:
+Before you begin, make sure you have:
 
 - An active Azure subscription with permissions to set up and license a RHEL VM using Logical Volume Management (LVM), such as RHEL 7.6 or later.
 
@@ -28,9 +28,9 @@ Before you begin, you must have:
 
 - An Azure Local cluster set up with a logical network and storage path for workloads. For more information, see [Create logical networks](../manage/create-logical-networks.md) and [Create storage paths](../manage/create-storage-path.md).
 
-- Make sure to review and [complete the prerequisites](../manage/azure-arc-vm-management-prerequisites.md).
+- Reviewed and [completed the prerequisites](../manage/azure-arc-vm-management-prerequisites.md).
 
-- If using a client to connect to your Azure Local instance, see [Connect to Azure Local via Azure CLI client](../manage/azure-arc-vm-management-prerequisites.md#azure-command-line-interface-cli-requirements).
+- If you're using a client to connect to your Azure Local instance, see [Connect to Azure Local via Azure CLI client](../manage/azure-arc-vm-management-prerequisites.md#azure-command-line-interface-cli-requirements).
 
 ## Sign in and set subscription
 
@@ -42,7 +42,7 @@ To set up and prepare an Azure VM, follow these steps:
 
 1. Sign in to the [Azure portal](https://portal.azure.com).
 
-1. In the left pane, select **Virtual Machines**, next select **Create**, and then select **Virtual Machine**.
+1. In the left pane, select **Virtual Machines**. Next, select **Create**, and then select **Virtual Machine**.
 
 1. Browse the available images and choose your preferred RHEL LVM Gen2 version.
 
@@ -51,15 +51,15 @@ To set up and prepare an Azure VM, follow these steps:
 1. Enter the required details in the wizard and finish setting up the Azure VM.
 
    > [!NOTE]
-   > Avoid username conflicts by creating the Azure VM with a username you don't use on Azure Local. If you use the same username (for example, "usernameA") on both the Azure VM and Azure Local, and then reuse the VHD, the VM keeps the original login information. For the best results, set up Azure Local VMs with different credentials (such as "usernameB").
+   > Avoid username conflicts by creating the Azure VM with a username you don't use on Azure Local. If you use the same username (for example, "usernameA") on both the Azure VM and Azure Local, and then reuse the VHD, the VM keeps the original sign-in information. For the best results, set up Azure Local VMs with different credentials (such as "usernameB").
 
 1. After the VM is deployed, go to the **VM overview** page, select the **Connect** option, and then select **Serial console**.
 
    :::image type="content" source="media/virtual-machine-azure-marketplace-red-hat-enterprise/connect-vm.png" alt-text="Screenshot of the Serial console sign in option in Azure portal." lightbox="../manage/media/virtual-machine-azure-marketplace-red-hat-enterprise/connect-vm.png":::
 
-1. Connect to the VM with your credentials and run these commands:
+1. Connect to the VM with your credentials and follow these steps:
 
-    1. Sign in to the VM as the root user:
+    1. Sign in to the VM as the root user.
 
        ```bash
        sudo su
@@ -81,7 +81,7 @@ To set up and prepare an Azure VM, follow these steps:
         [contosotest@localhost ~]$ sudo cloud-init clean
         ```
 
-    1. Clean the `cloud-init` default configuration because it isn't relevant for Azure Local VMs.
+    1. Remove the `cloud-init` logs and temporary files.
 
        ```bash
        sudo rm -rf /var/lib/cloud/ /var/log/* /tmp/*
@@ -90,14 +90,14 @@ To set up and prepare an Azure VM, follow these steps:
     1. Clean VM-specific details.
 
        ```bash
-       sudo rm -f /etc/sysconfig/network-scripts/*
+       sudo rm -f /etc/sysconfig/network-scripts/
        sudo rm -f /etc/ssh/ssh_host*
        sudo rm /etc/lvm/devices/system.devices
        ```
 
 ## Change the data source of the VM image
 
-To change the data source of the VM image, follow these steps
+To change the data source of the VM image, follow these steps:
 
 1. Change the directory to the following path and list the files to locate the data source file **91-azure_datasource.cfg**
 
@@ -113,7 +113,7 @@ To change the data source of the VM image, follow these steps
    05_logging.cfg  10-azure-kvp.cfg  91-azure_datasource.cfg  README
    ```
 
-1. Open the `91-azure_datasource.cfg` file. Run this command:
+1. Open the `91-azure_datasource.cfg` file.
 
    ```bash
    cat 91-azure_datasource.cfg
@@ -128,15 +128,15 @@ To change the data source of the VM image, follow these steps
        apply network config: False
    ```
 
-1. Open and update the *datasource_list* from **Azure** to **NoCloud**. Run this command:
+1. Open and update the *datasource_list* from **Azure** to **NoCloud**.
 
    ```bash
    vi 91-azure_datasource.cfg
    ```
 
    1. To edit the file, press `i`.
-   1. Remove the datasource and update the details from `datasource_list: [Azure]` to `datasource_list: [NoCloud]`
-   1. Save the file by pressing the **Esc** key followed by `:x` and hit **Enter**.
+   1. Remove the datasource and update the details from `datasource_list: [Azure]` to `datasource_list: [NoCloud]`.
+   1. Save the file by pressing the **Esc** key followed by `:x` and press **Enter**.
 
       Example output:
 
@@ -146,18 +146,18 @@ To change the data source of the VM image, follow these steps
       ~
       ```
 
-1. To check that the file was updated, run this command:
+1. Verify that the file was updated.
 
    ```bash
    cat 91-azure_datasource.cfg
    ```
 
-1. Remove the bash history. Run these commands:
+1. Remove the bash history.
 
    ```bash
-   sudo rm -f ~/.bash_history
-   export HISTSIZE=0
-   exit
+       sudo rm -f ~/.bash_history
+    export HISTSIZE=0
+    exit
    ```
 
 1. Stop the Azure VM as the configuration changes are now complete.
@@ -166,7 +166,7 @@ To change the data source of the VM image, follow these steps
 
 To export an Azure VM OS disk to a VHD on the Azure Local cluster, follow these steps:
 
-1. In the Azure portal for your Azure Local resource, go to the **VM overview**. Under the **Settings** option, select **Disks**, and select the **Disks name** link.
+1. In the Azure portal for your Azure Local resource, go to the **VM overview**. Under **Settings**, select **Disks**, and then select the **Disks name** link.
 
    :::image type="content" source="media/virtual-machine-azure-marketplace-red-hat-enterprise/disks-name.png" alt-text="Screenshot of the OS disk details page." lightbox="../manage/media/virtual-machine-azure-marketplace-red-hat-enterprise/disks-name.png":::
 
@@ -178,16 +178,21 @@ To export an Azure VM OS disk to a VHD on the Azure Local cluster, follow these 
 
 ## Create an Azure Local image
 
-To create an Azure Local image using the SAS token, run this command:
+Before creating an Azure Local image from a Red Hat Enterprise Linux (RHEL) Azure Marketplace VM, ensure that the Azure Marketplace image terms for the Red Hat offer are accepted in the Azure subscription connected to your Azure Local instance. Accepting image terms is a one-time, subscription-level Azure Marketplace action.
+
+> [!NOTE]
+> Run any Azure CLI commands used to accept image terms from an Azure-connected management environment (such as Azure Cloud Shell, Linux, or Windows Subsystem for Linux). Do not run these commands on Azure Local cluster hosts or inside the virtual machine.
+
+To create an Azure Local image, use the SAS token.
 
 ```azurecli
-$rg = "<resource-group>"
-$cl = "/subscriptions/<sub>/resourcegroups/$rg/providers/microsoft.extendedlocation/customlocations/<customlocation-name>"
-$sas = '"https://EXAMPLE.blob.storage.azure.net/EXAMPLE/abcd<sas-token>"'
+rg="<resource-group>"
+cl="/subscriptions/<sub>/resourcegroups/$rg/providers/microsoft.extendedlocation/customlocations/<customlocation-name>"
+sas='"https://EXAMPLE.blob.storage.azure.net/EXAMPLE/abcd<sas-token>"'
 
-az stack-hci-vm image create -g $rg --custom-location $cl --name "<IMAGE-NAME>" --os-type "Linux" --image-path $sas
+az stack-hci-vm image create -g "$rg" --custom-location "$cl" --name "<IMAGE-NAME>" --os-type "Linux" --image-path "$sas"
 ```
 
 ## Create an Azure Local VM
 
-To create an Azure Local VM using the Azure Local VM image you created, follow the steps in [Create Azure Local virtual machines enabled by Azure Arc](../manage/create-arc-virtual-machines.md).
+Create an Azure Local VM using the Azure Local VM image you created. For details, see [Create Azure Local virtual machines enabled by Azure Arc](../manage/create-arc-virtual-machines.md).
