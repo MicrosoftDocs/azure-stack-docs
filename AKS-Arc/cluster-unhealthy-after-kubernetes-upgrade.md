@@ -1,6 +1,6 @@
 ---
-title: AKS Arc Cluster unhealthy after kubernetes Upgrade
-description: Learn how to troubleshoot and mitigate an issue that causes AKS cluster to become unhealthy after kubernetes upgrade
+title: AKS Arc Cluster unhealthy after Kubernetes Upgrade
+description: Learn how to troubleshoot and mitigate an issue that causes AKS cluster to become unhealthy after Kubernetes upgrade
 ms.topic: troubleshooting
 author: davidsmatlak
 ms.author: davidsmatlak
@@ -10,9 +10,9 @@ ms.lastreviewed: 1/13/2026
 
 # AKS Arc cluster becomes unhealthy after upgrading to Kubernetes v1.31 with Azure Policy or Gatekeeper enabled
 
-## Symptoms
-
 After upgrading an AKS Arc cluster to Kubernetes v1.31 or later, the cluster might enter a degraded or unhealthy state.
+
+## Symptoms
 
 The degraded or unhealthy state is observed in the following scenarios:
 
@@ -20,8 +20,6 @@ The degraded or unhealthy state is observed in the following scenarios:
 - Azure Policy or Gatekeeper is enabled.
 
 Cluster operations like reconciliation, upgrades, or certificate rotation might fail or behave unexpectedly.
-
----
 
 ## Cause
 
@@ -34,16 +32,12 @@ This issue occurs during upgrades or certificate reconciliation:
 
 When Azure Policy or Gatekeeper is enabled, these updates can cause the control plane to enter a degraded state.
 
----
-
 ## Affected configurations
 
 - AKS Arc clusters.
 - Single control plane deployments.
 - Kubernetes version v1.31 and later.
 - Azure Policy and/or Gatekeeper enabled.
-
----
 
 ## Workaround
 
@@ -58,8 +52,6 @@ Disable Azure Policy on the affected cluster before you do the following tasks:
 
 Azure Policy can be re-enabled once the fix is available.
 
----
-
 ### Option 2: Update Gatekeeper policies
 
 If Gatekeeper is enabled, update the Gatekeeper constraint templates and policies to ensure compatibility with Kubernetes v1.31 behavior.
@@ -67,15 +59,11 @@ If Gatekeeper is enabled, update the Gatekeeper constraint templates and policie
 > [!NOTE]
 > This workaround might be customer-specific and might not apply in all environments.
 
----
-
 ## Resolution
 
 This issue is currently under investigation, and a permanent fix is in progress.
 
 Until the fix is fully validated and released, customers are advised to follow the recommended workarounds described in this article. This page is updated as more guidance becomes available.
-
----
 
 ## Next steps
 
