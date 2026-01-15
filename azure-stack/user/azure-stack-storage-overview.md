@@ -3,7 +3,7 @@ title: Introduction to Azure Stack Hub Storage
 description: Learn about Azure Stack Hub Storage services.
 author: sethmanheim
 
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 2/1/2021
 ms.author: sethm
 ms.lastreviewed: 01/14/2020

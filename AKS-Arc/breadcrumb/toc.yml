@@ -1,0 +1,12 @@
+- name: Azure
+  tocHref: /azure
+  topicHref: /azure/index
+  items: 
+  - name: AKS enabled by Azure Arc
+    tocHref: /azure/aks/aksarc/
+    topicHref: /azure/aks/aksarc/index
+  ###    items:
+  ### For contextual TOC
+  - name: AKS enabled by Azure Arc
+    tocHref: /azure/azure-arc/kubernetes/
+    topicHref: /azure/aks/aksarc/index

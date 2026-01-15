@@ -2,11 +2,9 @@
 title: Azure Stack Hub release notes
 description: Release notes for Azure Stack Hub integrated systems, including updates and bug fixes.
 author: sethmanheim
-ms.topic: article
-ms.date: 02/22/2024
+ms.topic: release-notes
+ms.date: 09/22/2025
 ms.author: sethm
-ms.reviewer: rtiberiu
-ms.lastreviewed: 12/27/2023
 
 # Intent: As an Azure Stack Hub operator, I want to know what's new in the latest release so that I can plan my update.
 # Keyword: release notes what's new
@@ -19,7 +17,7 @@ This article describes the contents of Azure Stack Hub update packages. The upda
 
 To access release notes for a different version, use the version selector dropdown above the table of contents on the left.
 
-::: moniker range=">=azs-2311"
+::: moniker range="azs-2311"
 > [!IMPORTANT]  
 > This update package requires an OEM package version of 2.3 or later. For more information, see the [OEM contact information](azure-stack-update-oem.md#oem-contact-information).
 
@@ -27,14 +25,13 @@ To access release notes for a different version, use the version selector dropdo
 > The 2311 update introduces a change in the base host OS, updated to Windows Server 2022. Disconnected customers must obtain and update a SQL Server 2019 product key (PID). You must get the key before starting the update. To obtain this key, contact Microsoft support.
 > If you start the update without this key, the update will fail shortly after starting, with a "Prepare of Role Cloud raised an exception" message, which advises you contact support. You can resume the update after applying the new key.
 ::: moniker-end
-::: moniker range=">=azs-2311"
-> [!IMPORTANT]  
-> This update package is only for Azure Stack Hub integrated systems. Do not apply this update package to the Azure Stack Development Kit (ASDK).
-::: moniker-end
-::: moniker range="<azs-2311"
+::: moniker range="<azs-2408"
 > [!IMPORTANT]  
 > If your Azure Stack Hub instance is behind by more than two updates, it's considered out of compliance. You must [update to at least the minimum supported version to receive support](azure-stack-servicing-policy.md#keep-your-system-under-support).
 ::: moniker-end
+
+> [!IMPORTANT]
+> The Microsoft Entra ID Graph API service is being retired. This retirement affects all Azure Stack Hub customers, and requires you to [run the script included in this article](graph-api-retirement.md) for all affected applications.
 
 > [!IMPORTANT]  
 > If your Azure Stack Hub instance does not have an active support contract with the hardware partner, it's considered out of compliance. You must [have an active support contract for the hardware to receive support](azure-stack-servicing-policy.md#keep-your-system-under-support).
@@ -57,48 +54,33 @@ You can download the Azure Stack Hub update package using [the Azure Stack Hub u
 <!---------------------------------------------------------->
 <!------------------- SUPPORTED VERSIONS ------------------->
 <!---------------------------------------------------------->
-::: moniker range="azs-2311"
-## 2311 build reference
+::: moniker range="azs-2506"
+## 2506 build reference
 
-The Azure Stack Hub 2311 update build number is **1.2311.1.22**.
+The Azure Stack Hub 2506 update build number is **1.2506.0.15**.
 
 ### Update type
 
-The Azure Stack Hub 2311 update build type is **Full**. This build contains only important security updates.
+The Azure Stack Hub 2506 update build type is **Full**. This build contains only important security updates.
 
-The 2311 update has the following expected runtimes based on our internal testing:
+The 2506 update has the following expected runtimes based on our internal testing:
 
 - 4 nodes: 8-28 hours
 - 8 nodes: 11-30 hours
 - 12 nodes: 14-34 hours
 - 16 nodes: 17-40 hours
 
-> [!IMPORTANT]
-> Disconnected environments have additional prerequisite steps, which might increase this duration. See the following section for required steps to obtain and update a SQL Server 2019 product key (PID).
-
-Exact update durations typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware specifications. Durations that are shorter or longer than the expected value are not uncommon and do not require action by Azure Stack Hub operators unless the update fails. This runtime approximation is specific to the 2311 update and should not be compared to other Azure Stack Hub updates.
+Exact update durations typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware specifications. Durations that are shorter or longer than the expected value are not uncommon and do not require action by Azure Stack Hub operators unless the update fails. This runtime approximation is specific to the 2506 update and should not be compared to other Azure Stack Hub updates.
 
 For more information about update build types, see [Manage updates in Azure Stack Hub](azure-stack-updates.md).
 
 ### What's new
 
-- The [VPN Fast Path for operators](azure-stack-vpn-fast-path-operators.md) feature, [and for users](../user/azure-stack-vpn-fast-path-user.md), is now generally available. The new VPN SKUs enable scenarios in which higher network throughput is necessary. See the documentation for more information about this feature.
-- With 2311 we are announcing the public preview of the [Azure Stack Hub Standard Load Balancer](../user/standard-load-balancer-considerations.md). This feature enables several scenarios: allowing standalone VMs to be in a backend pool, HTTPS probes, high-availability ports, and TCP reset on idle.
-- Azure Site Recovery is currently in [public preview](azure-site-recovery-overview.md), which features a simplified deployment process that only requires one dependency. We aim to further streamline this solution by the time of our general availability launch in early 2024, at which point we plan to eliminate all dependencies except for the Site Recovery resource provider itself. In the meantime, we encourage you to test and provide feedback on the public preview to help us enhance the GA version. Be aware that the transition from preview to GA will require a full reinstallation of the Azure Site Recovery solution (no update or upgrade path will be possible).
+- The Microsoft Entra ID [Graph API service is being retired](https://techcommunity.microsoft.com/blog/microsoft-entra-blog/important-update-azure-ad-graph-api-retirement/4090534). For more information, see [Microsoft Entra ID Graph API retirement](graph-api-retirement.md).
 
-<!-- ### Improvements -->
+<!-- ### Changes -->
 
-### Changes
-
-- 2311 introduces a change in the base host OS, updated to Windows Server 2022, in order to simplify future updates and security fixes. This change is part of the fabric. Azure Stack Hub environments that have outbound connectivity do not require any additional changes, and the update is installed directly.
-
-  > [!IMPORTANT]
-  > Disconnected customers must obtain and update a SQL Server 2019 product key (PID). You must get the key before starting the update. To obtain this key, contact Microsoft support.
-  > If you start the update without this key, the update will fail shortly after starting, with a "Preparation of Role Cloud raised an exception" message, which advises you contact support. You can resume the update after applying the new key.
-  
-- Starting with Azure Stack Hub 2311, we are not releasing new Azure Stack Development Kit (ASDK) versions. This decision is due to modifications to internal services that would lead to substantial complexity for the ASDK. The [currently released ASDK version](../asdk/asdk-release-notes.md) remains suitable for operational, testing, or training purposes, including for the [Azure Stack Hub Foundation Core scripts](https://aka.ms/azshasdk) used for [Azure-Stack-Hub-Foundation-Core](https://github.com/Azure-Samples/Azure-Stack-Hub-Foundation-Core/tree/master/ASF-Training).
-
-<!-- ### Fixes -->
+<!-- ### Fixes  -->
 
 ## Security updates
 
@@ -113,54 +95,50 @@ Azure Stack Hub releases hotfixes regularly. Starting with the 2005 release, whe
 
 For more information, see our [servicing policy](azure-stack-servicing-policy.md).
 
-Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated systems; do not attempt to install hotfixes on the ASDK.
+### Hotfix prerequisites: before applying the 2506 update
 
-### Hotfix prerequisites: before applying the 2311 update
+The 2506 release of Azure Stack Hub must be applied on the 2501 release with the following hotfix installed:
 
-The 2311 release of Azure Stack Hub must be applied on the 2306 release with the following hotfix installed:
+- [Azure Stack Hub hotfix 1.2501.1.47](hotfix-1-2501-1-47.md)
 
-- [Azure Stack Hub hotfix 1.2306.4.74](hotfix-1-2306-4-74.md)
-
-### After successfully applying the 2311 update
+### After successfully applying the 2506 update
 
 When you update to a new major version (for example, 1.2108.x to 1.2206.x), the latest hotfixes (if any) in the new major version are installed automatically. From that point forward, if a hotfix is released for your build, you should install it.
 
-After the installation of 2311, if any hotfixes for 2311 are subsequently released, you should install them:
+After the installation of 2506, if any hotfixes for 2506 are subsequently released, you should install them:
 
-- [Azure Stack Hub hotfix 1.2311.2.23](hotfix-1-2311-2-23.md)
+- [Azure Stack Hub hotfix 1.2506.2.24](hotfix-1-2506-2-24.md)
 ::: moniker-end
 
-::: moniker range="azs-2306"
-## 2306 build reference
+::: moniker range="azs-2501"
+## 2501 build reference
 
-The Azure Stack Hub 2306 update build number is **1.2306.2.47**.
+The Azure Stack Hub 2501 update build number is **1.2501.0.21**.
 
 ### Update type
 
-The Azure Stack Hub 2306 update build type is **Full**. This build contains only important security updates.
+The Azure Stack Hub 2501 update build type is **Full**. This build contains only important security updates.
 
-The 2306 update has the following expected runtimes based on our internal testing:
+The 2501 update has the following expected runtimes based on our internal testing:
 
 - 4 nodes: 8-28 hours
 - 8 nodes: 11-30 hours
 - 12 nodes: 14-34 hours
 - 16 nodes: 17-40 hours
 
-Exact update durations typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware specifications. Durations that are shorter or longer than the expected value are not uncommon and do not require action by Azure Stack Hub operators unless the update fails. This runtime approximation is specific to the 2306 update and should not be compared to other Azure Stack Hub updates.
+Exact update durations typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware specifications. Durations that are shorter or longer than the expected value are not uncommon and do not require action by Azure Stack Hub operators unless the update fails. This runtime approximation is specific to the 2501 update and should not be compared to other Azure Stack Hub updates.
 
 For more information about update build types, see [Manage updates in Azure Stack Hub](azure-stack-updates.md).
 
 ### What's new
 
-- This build contains only important [security updates](#security-updates). There are no other major feature additions.
+- The Microsoft Entra ID [Graph API service is being retired](https://techcommunity.microsoft.com/blog/microsoft-entra-blog/important-update-azure-ad-graph-api-retirement/4090534). For more information, see [Microsoft Entra ID Graph API retirement](graph-api-retirement.md).
 
-<!-- ### Improvements -->
+<!-- ### Changes -->
 
-### Changes
+### Fixes
 
-- This build contains only important [security updates](#security-updates). There are no other major changes from the previous build.
-
-<!-- ### Fixes -->
+- Fixed an issue in which the [**Deployments** blade under a subscription failed to load](known-issues.md?view=azs-2408&preserve-view=true#deployments-blade-under-subscription-fails-to-load).
 
 ## Security updates
 
@@ -175,59 +153,47 @@ Azure Stack Hub releases hotfixes regularly. Starting with the 2005 release, whe
 
 For more information, see our [servicing policy](azure-stack-servicing-policy.md).
 
-Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated systems; do not attempt to install hotfixes on the ASDK.
+### Hotfix prerequisites: before applying the 2501 update
 
-### Hotfix prerequisites: before applying the 2306 update
+The 2501 release of Azure Stack Hub must be applied on the 2408 release with the following hotfix installed:
 
-The 2306 release of Azure Stack Hub must be applied on the 2301 release with the following hotfix installed:
+- [Azure Stack Hub hotfix 1.2408.1.50](hotfix-1-2408-1-50.md)
 
-- [Azure Stack Hub hotfix 1.2301.3.72](hotfix-1-2301-3-72.md)
-
-### After successfully applying the 2306 update
+### After successfully applying the 2501 update
 
 When you update to a new major version (for example, 1.2108.x to 1.2206.x), the latest hotfixes (if any) in the new major version are installed automatically. From that point forward, if a hotfix is released for your build, you should install it.
 
-After the installation of 2306, if any hotfixes for 2306 are subsequently released, you should install them:
+After the installation of 2501, if any hotfixes for 2501 are subsequently released, you should install them:
 
-- [Azure Stack Hub hotfix 1.2306.4.74](hotfix-1-2306-4-74.md)
+- [Azure Stack Hub hotfix 1.2501.1.47](hotfix-1-2501-1-47.md)
 ::: moniker-end
 
-::: moniker range="azs-2301"
-## 2301 build reference
+::: moniker range="azs-2408"
+## 2408 build reference
 
-The Azure Stack Hub 2301 update build number is **1.2301.2.58**.
+The Azure Stack Hub 2408 update build number is **1.2408.0.19**.
 
 ### Update type
 
-The Azure Stack Hub 2301 update build type is **Full**.
+The Azure Stack Hub 2408 update build type is **Full**. This build contains only important security updates.
 
-The 2301 update has the following expected runtimes based on our internal testing:
+The 2408 update has the following expected runtimes based on our internal testing:
 
 - 4 nodes: 8-28 hours
 - 8 nodes: 11-30 hours
 - 12 nodes: 14-34 hours
 - 16 nodes: 17-40 hours
 
-Exact update durations typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware specifications. Durations that are shorter or longer than the expected value are not uncommon and do not require action by Azure Stack Hub operators unless the update fails. This runtime approximation is specific to the 2301 update and should not be compared to other Azure Stack Hub updates.
+Exact update durations typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware specifications. Durations that are shorter or longer than the expected value are not uncommon and do not require action by Azure Stack Hub operators unless the update fails. This runtime approximation is specific to the 2408 update and should not be compared to other Azure Stack Hub updates.
 
 For more information about update build types, see [Manage updates in Azure Stack Hub](azure-stack-updates.md).
 
 ### What's new
 
-- Public preview release of the [Azure Site Recovery resource provider](azure-site-recovery-overview.md) for Azure Stack Hub.
-- Public preview release of [VPN Fast Path](azure-stack-vpn-fast-path-operators.md) with new VPN Gateway SKUs.
-- New [VPN Fast Path documentation for Azure Stack Hub operators](azure-stack-vpn-fast-path-operators.md) and [Azure Stack Hub users](../user/azure-stack-vpn-fast-path-user.md).
-- Added new VM size **Standard_E20_v3** to support larger database workloads that require more than 112 GB of memory.
-- Added support for NVIDIA A100 Tensor GPU. Validate with your OEM if your hardware can support the GPU requirements.
-- Added new VM series for A100. For more details, see [GPUs on Azure Stack Hub](../user/gpu-vms-about.md#nc_a100-v4).
-- This update includes all the platform requirements to add [Azure Site Recovery](https://aka.ms/azshasr) on Azure Stack Hub. The first scenario we are enabling is focused on replicating VMs across two Azure Stack Hub regions. ASR on Azure Stack Hub is an Add-on RP which will have to be added through the Marketplace Management.
-- Added the ability for operators to see virtual machine status information across all user subscriptions in the Azure Stack Hub admin portal.
+- With the 2408 update, we are introducing the ESv3 and DSv3 VM SKUs. These new SKUs are designed to provide higher IOPS for both OS and data disks. For more information, see [Azure Stack Hub VM SKUs](../user/azure-stack-vm-sizes.md).
+- We are also introducing [two new VM SKUs to support the L40s GPUs](../user/gpu-vms-about.md#nc_l40s-v4).
 
-<!-- ### Improvements -->
-
-### Changes
-
-- SQL resource provider 2.0.13 and MySQL resource provider 2.0.13 are released to accommodate some UI breaking changes introduced in Azure Stack Hub 2301. Update the SQL resource provider and MySQL resource provider to the latest version before updating Azure Stack Hub. You may need to refresh the browser cache for the new UI changes to take effect.
+<!-- ### Changes -->
 
 <!-- ### Fixes -->
 
@@ -244,26 +210,36 @@ Azure Stack Hub releases hotfixes regularly. Starting with the 2005 release, whe
 
 For more information, see our [servicing policy](azure-stack-servicing-policy.md).
 
-Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated systems; do not attempt to install hotfixes on the ASDK.
+### Hotfix prerequisites: before applying the 2408 update
 
-### Hotfix prerequisites: before applying the 2301 update
+The 2408 release of Azure Stack Hub must be applied on the 2406 release with the following hotfix installed:
 
-The 2301 release of Azure Stack Hub must be applied on the 2206 release with the following hotfix installed:
+- [Azure Stack Hub hotfix 1.2406.1.23](hotfix-1-2406-1-23.md)
 
-- [Azure Stack Hub hotfix 1.2206.2.77](hotfix-1-2206-2-77.md)
-
-### After successfully applying the 2301 update
+### After successfully applying the 2408 update
 
 When you update to a new major version (for example, 1.2108.x to 1.2206.x), the latest hotfixes (if any) in the new major version are installed automatically. From that point forward, if a hotfix is released for your build, you should install it.
 
-After the installation of 2301, if any hotfixes for 2301 are subsequently released, you should install them:
+After the installation of 2408, if any hotfixes for 2408 are subsequently released, you should install them:
 
-- [Azure Stack Hub hotfix 1.2301.3.72](hotfix-1-2301-3-72.md)
+- [Azure Stack Hub hotfix 1.2408.1.50](hotfix-1-2408-1-50.md)
 ::: moniker-end
 
 <!------------------------------------------------------------>
 <!------------------- UNSUPPORTED VERSIONS ------------------->
 <!------------------------------------------------------------>
+::: moniker range="azs-2406"
+## 2406 archived release notes
+::: moniker-end
+::: moniker range="azs-2311"
+## 2311 archived release notes
+::: moniker-end
+::: moniker range="azs-2306"
+## 2306 archived release notes
+::: moniker-end
+::: moniker range="azs-2301"
+## 2301 archived release notes
+::: moniker-end
 ::: moniker range="azs-2206"
 ## 2206 archived release notes
 ::: moniker-end
@@ -334,6 +310,6 @@ After the installation of 2301, if any hotfixes for 2301 are subsequently releas
 ## 1802 archived release notes
 ::: moniker-end
 
-::: moniker range="<azs-2301"
+::: moniker range="<azs-2408"
 You can access older versions of Azure Stack Hub release notes in the table of contents on the left side, under [Resources > Release notes archive](./relnotearchive/release-notes.md). Select the desired archived version from the version selector dropdown in the upper left. These archived articles are provided for reference purposes only and do not imply support for these versions. For information about Azure Stack Hub support, see [Azure Stack Hub servicing policy](azure-stack-servicing-policy.md). For further assistance, contact Microsoft Customer Support Services.
 ::: moniker-end

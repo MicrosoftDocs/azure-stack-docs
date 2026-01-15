@@ -3,8 +3,7 @@ title: Tenant resource usage APIs reference
 titleSuffix: Azure Stack
 description: Reference for resource usage APIs, which retrieve Azure Stack Hub usage information.
 author: sethmanheim
-
-ms.topic: article
+ms.topic: reference
 ms.date: 07/21/2021
 ms.author: sethm
 ms.reviewer: alfredop
@@ -19,7 +18,7 @@ ms.lastreviewed: 01/14/2019
 
 A tenant can use the tenant APIs to view the tenant's own resource usage data. These APIs are consistent with the Azure usage APIs.
 
-You can use the Windows PowerShell cmdlet [Get-UsageAggregates](/powershell/module/azurerm.usageaggregates/get-usageaggregates) to get usage data, just like in Azure.
+You can use the Windows PowerShell cmdlet [Get-AzUsageAggregate](/powershell/module/az.billing/get-azusageaggregate) to get usage data, just like in Azure.
 
 ## API call
 

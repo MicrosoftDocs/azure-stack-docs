@@ -2,7 +2,7 @@
 title: Update Marketplace items in Azure Stack Hub
 description: Learn how to update Marketplace items in Azure Stack Hub. 
 author: sethmanheim
-ms.topic: article
+ms.topic: how-to
 ms.custom:
   - devx-track-azurepowershell
 ms.date: 10/1/2021

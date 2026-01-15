@@ -1,0 +1,101 @@
+{
+  "build": {
+    "content": [
+      {
+        "group": "version-azlocal",
+        "src" : "./",
+        "files": [
+          "**/*.md",
+          "**/*.yml"
+        ],
+        "exclude": [
+          "**/obj/**",
+          "**/includes/**",
+          "_themes/**",
+          "_themes.pdf/**",
+          "README.md",
+          "LICENSE",
+          "LICENSE-CODE",
+          "ThirdPartyNotices"
+        ]
+      },
+      {
+        "files": [
+          "**/*.md",
+          "**/*.yml"
+        ],
+        "exclude": [
+          "**/obj/**",
+          "**/includes/**",
+          "_themes/**",
+          "**/docfx.json",
+          "_repo.en-us/**",
+          "README.md",
+          "LICENSE",
+          "LICENSE-CODE",
+          "ThirdPartyNotices.md",
+          "SECURITY.md"
+        ]
+      }
+    ],
+    "resource": [
+      {
+        "files": [
+          "**/*.png",
+          "**/*.jpg",
+          "**/*.svg",
+          "**/*.gif"
+        ],
+        "exclude": [
+          "**/obj/**",
+          "_themes/**",
+          "**/docfx.json",
+          "_repo.en-us/**"
+        ]
+      },
+      {
+        "files": [
+          "**/*.png",
+          "**/*.svg",
+          "**/*.jpg",
+          "**/*.gif"
+        ],
+        "exclude": [
+          "**/obj/**",
+          "**/includes/**",
+          "_themes/**",
+          "_themes.pdf/**"
+        ],
+        "src": "./",
+        "group": "version-azlocal"
+      }
+    ],
+    "overwrite": [],
+    "externalReference": [],
+    "globalMetadata": {
+      "uhfHeaderId": "Azure",
+      "breadcrumb_path": "/azure/azure-local/breadcrumb/toc.json",
+      "feedback_system": "Standard",
+      "permissioned-type": "public",
+      "manager":"lizross",
+      "ms.service": "azure-local",
+      "titleSuffix": "Azure Local",
+      "feedback_product_url": "https://feedback.azure.com/d365community/forum/74a4b1b9-0725-ec11-b6e6-000d3a4f07b8",
+      "feedback_help_link_url": "https://learn.microsoft.com/answers/tags/6/azure-stack-hci",
+      "zone_pivot_group_filename": "../azure-stack/zone-pivot-groups.json"
+    },
+    "fileMetadata": {
+      "monikerRange": {
+      "./*.md": ">=azloc-2506 || =azloc-previous",
+      "./*.yml": ">=azloc-2506 || =azloc-previous"
+      }
+    },
+    "template": [],
+    "groups": {
+      "version-azlocal": {
+        "moniker_range": ">=azloc-2506 || =azloc-previous",
+        "dest": "azure-local"
+      }
+    }
+  }
+}

@@ -2,10 +2,9 @@
 title: Deployment worksheet for Azure Stack Hub
 description: Learn how to install and use the deployment worksheet tool to deploy Azure Stack Hub.
 author: sethmanheim
-ms.topic: article
-ms.date: 04/19/2019
+ms.topic: install-set-up-deploy
+ms.date: 01/15/2025
 ms.author: sethm
-ms.reviewer: wamota
 ms.lastreviewed: 04/19/2019
 
 # Intent: As an Azure Stack Hub operator, I want to install and use the deployment worksheet tool so I can have all necessary deployment information in one place.
@@ -17,16 +16,16 @@ ms.lastreviewed: 04/19/2019
 
 The Azure Stack Hub deployment worksheet is a Windows Forms app that aggregates all necessary deployment information and decisions in one place. You can complete the deployment worksheet during the planning process and review it before the deployment starts.
 
-The information required by the worksheet covers networking, security, and identity information. This information may require specific knowledge in certain areas so we recommend you consult with experts to complete the worksheet.
+The information required by the worksheet covers networking, security, and identity information. This information might require specific knowledge in certain areas, so we recommend you consult with experts to complete the worksheet.
 
-While filling out the worksheet, you might need to make some pre-deployment configuration changes to your network environment. These changes can include reserving IP address spaces for the Azure Stack Hub solution, and configuring routers, switches, and firewalls to prepare for connectivity to the new Azure Stack Hub solution.
+When you fill out the worksheet, you might need to make some pre-deployment configuration changes to your network environment. These changes can include reserving IP address spaces for the Azure Stack Hub solution, and configuring routers, switches, and firewalls to prepare for connectivity to the new Azure Stack Hub solution.
 
 > [!NOTE]
-> For more information on how to complete the deployment worksheet tool, see [Datacenter integration planning considerations for Azure Stack Hub integrated systems](azure-stack-datacenter-integration.md).
+> For more information about how to complete the deployment worksheet tool, see [Datacenter integration planning considerations for Azure Stack Hub integrated systems](azure-stack-datacenter-integration.md).
 
 [![Deployment Worksheet for Azure Stack Hub deployment](media/azure-stack-deployment-worksheet/depworksheet.png "Deployment Worksheet")](media/azure-stack-deployment-worksheet/depworksheet.png)
 
-## Installing the Windows PowerShell module
+## Install the Windows PowerShell module
 
 For each release of the deployment worksheet, you must do a one-time installation of a PowerShell module for each machine on which you want to use the deployment worksheet.
 
@@ -34,8 +33,7 @@ For each release of the deployment worksheet, you must do a one-time installatio
 > The computer must be connected to the internet for this method to work.
 
 1. Open an elevated PowerShell prompt.
-
-2. In the PowerShell window, install the module from the [PowerShell gallery](https://www.powershellgallery.com/packages/Azs.Deployment.Worksheet/):
+1. In the PowerShell window, install the module from the [PowerShell gallery](https://www.powershellgallery.com/packages/Azs.Deployment.Worksheet/):
 
    ```PowerShell
    Install-Module -Name Azs.Deployment.Worksheet -Repository PSGallery
@@ -45,23 +43,22 @@ If you receive a message about installing from an untrusted repository, press **
 
 ## Use the deployment worksheet tool
 
-To launch and use the deployment worksheet on a computer on which you've installed the deployment worksheet PowerShell module, do the following steps:
+To launch and use the deployment worksheet on a computer on which you installed the deployment worksheet PowerShell module, do the following steps:
 
 1. Start Windows PowerShell (don't use the PowerShell ISE, as unexpected results can occur). It's not necessary to run PowerShell as an administrator.
-
-2. Import the **AzS.Deployment.Worksheet** PowerShell module:
+1. Import the **AzS.Deployment.Worksheet** PowerShell module:
 
    ```PowerShell
    Import-Module AzS.Deployment.Worksheet
    ```
 
-3. Once the module is imported, launch the deployment worksheet:
+1. Once the module is imported, launch the deployment worksheet:
 
    ```PowerShell
    Start-DeploymentWorksheet
    ```
 
-The deployment worksheet consists of separate tabs for collecting environment settings, like **Customer Settings**, **Network Settings**, and **Scale Unit #**. You must supply all values (except for any marked **Optional**) on all tabs before any configuration data files can be generated. After all required values have been entered into the tool, you can use the **Action** menu to **Import**, **Export**, and **Generate**. The JSON files required for deployment are as follows:
+The deployment worksheet consists of separate tabs for collecting environment settings, like **Customer Settings**, **Network Settings**, and **Scale Unit #**. You must supply all values (except for any marked **Optional**) on all tabs before any configuration data files can be generated. After you enter all required values into the tool, you can use the **Action** menu to **Import**, **Export**, and **Generate**. The JSON files required for deployment are as follows:
 
 **Import**: Enables you to import an Azure Stack Hub configuration data file (ConfigurationData.json) that was generated by this tool or those files created by any previous release of the deployment worksheet. Doing an import resets the forms and deletes any previously entered setting or generated data.
 
@@ -75,14 +72,14 @@ The deployment worksheet consists of separate tabs for collecting environment se
 
 **Logging and Warning messages**: While the form is being used, you might see non-critical warning messages displayed in the PowerShell window. Critical errors are displayed as a pop-up message. Optional detailed logging, including a log written to disk, can be enabled to assist in troubleshooting problems.
 
-To start the tool with verbose logging:
+To start the tool with verbose logging, run the following command:
 
-   ```PowerShell
-   Start-DeploymentWorksheet -EnableLogging
-   ```
+```PowerShell
+Start-DeploymentWorksheet -EnableLogging
+```
 
 You can find the saved log in the current user's **Temp** directory; for example: **C:\Users\me\AppData\Local\Temp\Microsoft_AzureStack\DeploymentWorksheet_Log.txt**.
 
 ## Next steps
 
-* [Azure Stack Hub deployment connection models](azure-stack-connection-models.md)
+- [Azure Stack Hub deployment connection models](azure-stack-connection-models.md)

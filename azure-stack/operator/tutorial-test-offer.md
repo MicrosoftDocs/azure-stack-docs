@@ -4,8 +4,7 @@ description: Learn how to test a service offering, by creating a subscription an
 author: sethmanheim
 ms.author: sethm
 ms.topic: tutorial
-ms.date: 10/13/2019
-ms.reviewer: shriramnat
+ms.date: 01/16/2025
 ms.lastreviewed: 10/06/2019
 
 # Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
@@ -21,24 +20,19 @@ In the previous tutorial, you created an offer for users. This tutorial shows yo
 In this tutorial, you learn how to:
 
 > [!div class="checklist"]
-> * Create a subscription
-> * Create and deploy resources
+> - Create a subscription
+> - Create and deploy resources
 
 ## Prerequisites
 
-Before starting this tutorial, you must complete the following prerequisites:
+Before you start this tutorial, you must complete the following prerequisites:
 
 - Complete the [Offer a service to users](tutorial-offer-services.md) tutorial. In it, you learn how to create the offer used by this tutorial.
-
-- The offer you subscribe to in this tutorial enables deployment of a virtual machine (VM) resource. If you'd like to test VM deployment, you must first make a VM image available in Azure Stack Hub Marketplace, by downloading it from Azure Marketplace. See [Download marketplace items from Azure to Azure Stack Hub](azure-stack-download-azure-marketplace-item.md) for instructions. 
+- The offer you subscribe to in this tutorial enables deployment of a virtual machine (VM) resource. If you want to test VM deployment, you must first make a VM image available in the Azure Stack Hub Marketplace, by downloading it from the Azure Marketplace. See [Download marketplace items from Azure to Azure Stack Hub](azure-stack-download-azure-marketplace-item.md) for instructions.
 
 ## Subscribe to the offer
 
-1. Sign in to the user portal with a user account 
-
-   - For an integrated system, the URL varies based on your operator's region and external domain name, using the format https://portal.&lt;*region*&gt;.&lt;*FQDN*&gt;.
-   - If you're using the Azure Stack Development Kit, the portal address is `https://portal.local.azurestack.external`.
-
+1. Sign in to the user portal with a user account. For an integrated system deployment, the portal address varies based on your solution's region and external domain name. It's in the format of `https://portal.<region>.<FQDN>`.
 1. Select the **Get a Subscription** tile.
 
    ![Get a subscription](media/tutorial-test-offer/1-get-subscription.png)
@@ -58,14 +52,12 @@ Before starting this tutorial, you must complete the following prerequisites:
 From the user portal, you provision a storage account using the subscription you created in the previous section.
 
 1. Sign in to the user portal with a user account.
-
 1. Select **+Create a resource** > **Data + Storage** > **Storage account - blob, file, table, queue**.
-
 1. In **Create storage account**, provide the following information:
   
-   - Enter a **Name**
-   - Select your new **Subscription**
-   - Select a **Resource group** (or create a one.) 
+   - Enter a **Name**.
+   - Select your new **Subscription**.
+   - Select a **Resource group** (or create a new one).
    - Select **Create** to create the storage account.
 
 1. Once deployment starts, you return to the dashboard. To see the new storage account, select **All resources**. Search for the storage account and select its name from the search results. From here, you can manage the storage account and its contents.
@@ -93,6 +85,7 @@ From the user portal, you provision a virtual machine using the subscription you
    > Selecting "RDP(3389)", for example, allows you to connect to the VM remotely when it's running.
 1. In **Summary**, review your choices, then select **OK** to create the virtual machine.  
 1. Once deployment starts, you return to the dashboard. To see the new virtual machine, select **All resources**. Search for the virtual machine and select its name from the search results. From here, you can access and manage the virtual machine.
+
    > [!NOTE]
    > Full deployment and starting of the VM can take several minutes. Once the VM is ready for use, the [status](/azure/virtual-machines/states-billing) will change to "Running".
 
@@ -135,8 +128,8 @@ From the user portal, you provision a virtual machine using the new subscription
 In this tutorial you learned how to:
 
 > [!div class="checklist"]
-> * Create a subscription
-> * Create and deploy resources 
+> - Create a subscription
+> - Create and deploy resources 
 
 Next, learn about deploying resource providers for value-add services. They allow you to offer even more services to users in your plans:
 

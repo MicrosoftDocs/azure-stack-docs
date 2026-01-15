@@ -2,8 +2,7 @@
 title: Allow apps to access Azure Stack Hub Key Vault secrets 
 description: Learn how to run a sample app that retrieves keys and secrets from a key vault in Azure Stack Hub.
 author: sethmanheim
-
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - devx-track-azurepowershell
 ms.date: 11/20/2020
@@ -21,7 +20,7 @@ The steps in this article describe how to run the sample app **HelloKeyVault** t
 
 ## Prerequisites
 
-You can install the following prerequisites from the [Azure Stack Development Kit](../asdk/asdk-connect.md#connect-to-azure-stack-using-rdp), or from a Windows-based external client if you're [connected through VPN](../asdk/asdk-connect.md#connect-to-azure-stack-using-vpn):
+You can install the following prerequisites from a Windows-based external client if you're connected through VPN:
 
 * Install [Azure Stack Hub-compatible Azure PowerShell modules](../operator/powershell-install-az-module.md).
 * Download the [tools required to work with Azure Stack Hub](../operator/azure-stack-powershell-download.md).

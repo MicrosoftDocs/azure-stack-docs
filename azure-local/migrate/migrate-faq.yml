@@ -1,0 +1,149 @@
+### YamlMime:FAQ
+metadata:
+  title: Azure Migrate FAQ
+  description: This FAQ provides answers to common questions about the migration of a Hyper-V virtual machine (VM) to an Azure Local instance using Azure Migrate.
+  ms.topic: faq
+  author: alkohli
+  ms.author: alkohli
+  ms.service: azure-local
+  ms.date: 10/15/2025
+  ms.subservice: hyperconverged
+
+
+title: FAQ - Migration of Hyper-V and VMware VMs to Azure Local using Azure Migrate 
+
+summary:
+  The Azure Migrate based solution enables you to migrate VMs from Hyper-V (Preview) and VMware to an Azure Local instance.  This FAQ answers questions you might have about the migration of a VM from a Hyper-V or a VMware VM to an Azure Local instance using Azure Migrate.
+
+  Tabs have questions about **VMware and Hyper-V VMs**, **VMware VMs only**, and **Hyper-V VMs only**. The migration of Hyper-V VMs is in preview.
+
+sections:
+  - name: Ignored
+    questions:
+      - question: |
+          FAQs
+           
+        answer: |
+
+          ## [VMware and Hyper-V VMs](#tab/vmware-and-hyper-v-vms)
+          
+          ### I have a Windows Server 2008 R2 virtual machine (VM) running. How can I migrate this VM to my Azure Local instance?
+      
+          The Windows Server 2008 R2 VM requires to have the Service Pack 1 (SP1) running as a baseline requirement, along with the following update patch installed: KB3138612. This patch allows the appliance to successfully discover Windows Server 2008 R2 SP1 VMs. You can then update all the patches to get the latest Hyper-V integration services.
+          
+          Run `winrm quickconfig` to add `winrm` access through the firewall.
+
+          After you replicate and migrate the VM, set the VM version to the latest supported version on the target. For Azure Stack HCI, version 22H2, it's version 10.
+          
+          > [!NOTE]
+          > Migration is a one-way process and can't be reversed. The VM version can't be downgraded.
+
+          To make sure that all the VMs are version 10, run the following cmdlet:
+
+          ```PowerShell
+          Get-VM * | Format-Table Name, Version
+          ```
+          Here's a sample output:
+
+          ```output
+          Name           Version
+          -------------  ---------     
+          migtarg01        10.0
+          ws2019-01        10.0
+          Centos9-01       10.0
+          ws2008R2         10.0
+          ```
+          
+          ### My cluster shared volume (CSV) storage is full or almost full. What should I do?
+
+          Expand your cluster shared volume. Follow the instructions in [Expand volumes on Azure Local and Windows Server systems](https://www.thomasmaurer.ch/2013/01/how-to-make-an-existing-hyper-v-virtual-machine-highly-available/).
+
+          ### How do I remove appliances from the Azure Migrate project?
+
+          To remove the target appliance from the project and create a new appliance, run the following command:
+
+          ```PowerShell
+          .\AzureMigrateInstaller.ps1 -RemoveAzMigrate
+          ```
+
+          After removing the appliance, follow the instructions in the documentation to reinstall.
+
+          ### I have Linux VMs running on my source environment. Can I migrate these VMs to Azure Local?
+
+          Yes. There are many Linux distributions that can run on VMs that are migrated to Azure Local. For the full list, see [Supported configurations](migrate-hyperv-requirements.md#supported-configurations).
+
+          ### I'm located in a geography that isn't in the listed supported geographies. Does this mean I can't use this migration solution?
+
+          You can still use this solution. Just create the [Azure Migrate project](migrate-hyperv-prerequisites.md#create-an-azure-migrate-project) and the [storage account](migrate-hyperv-prerequisites.md) in one of the [supported geographies](migrate-hyperv-requirements.md), since your migrated VMs can be in any geography.
+
+          ### Will I be charged for this migration solution? 
+        
+          There are no tool usage charges for migration for 180 days. The time starts when you begin replicating the VMs in your project.
+
+          Migration requires some services like storage account and key vault that are created in your subscription. These services accrue some charges.
+
+          ### To install the source or target appliance with the downloaded .zip file, I need a Windows Server 2022 operating system (OS). How can I get the Windows Server 2022 OS?
+        
+          You can use your own licensed images to install these appliances. You can also use a Windows Server 2022 [Evaluation version](https://www.microsoft.com/evalcenter/evaluate-windows-server-2022), free for up to 180 days.
+
+          ### My source VMs use static IP addresses. Are these addresses preserved when I migrate my VMs to Azure Local?
+        
+          In this release, static IP addresses can be preserved during migration for Windows VMs on VMware and Hyper-V. Linux VMs are not supported. For more details, see [Maintain static IP addresses](migrate-maintain-ip-addresses.md).
+
+          ### I use DHCP reservation for IP addresses for my source VMs. Does migration ensure that the MAC address is preserved so that my migrated VM can get the same IP address? 
+        
+          This scenario is not supported in this release.
+
+          ### Are VMs that have secure boot enabled, supported for migration? 
+        
+          Both Linux and Windows VMs that have secure boot enabled aren't supported in this release.
+
+          ### Can I use private endpoints with Azure Migrate for Azure Local migrations?
+          
+          Private endpoint connectivity is not currently supported for Azure Migrate projects configured for migrations to Azure Local.
+
+          ### How do I enable guest management on my migrated VMs? 
+          
+          Guest management is not enabled by default on migrated VMs. To enable guest management on migrated VMs, see [Enable Guest Management on Azure Local VMs enabled by Azure Arc](migrate-enable-guest-management.md).
+          
+          ### Can I use the same Azure Migrate project for both Hyper-V and VMware migrations?
+          
+          No, this scenario isn't supported in this release. Create a separate project for each source from which you wish to migrate.
+
+          ### I have the Azure Connected Machine Agent deployed on my source VMs that I wish to migrate. Do I need to uninstall the agent on my VMs before migration?
+
+          Yes, you must uninstall the Azure Connected Machine Agent from your source VMs before replication. [Follow the steps to uninstall the agent](/azure/azure-arc/servers/manage-agent?tabs=windows#uninstall-the-agent). Not doing so results in unsupported behavior.
+
+          When the VM is migrated, it will be created as a native Azure Local VM in the Azure Local instance. Removing the Azure Connected Machine Agent from the source VMs before migration ensures that the migrated VM is the only valid projection of the virtual machine in Azure.
+
+          ### How can I throttle the bandwidth used for replicating and migrating VMs with Azure Migrate?
+
+          See the FAQ at [Common Questions About the Migration and Modernization Tool](/azure/migrate/common-questions-server-migration#how-do-i-throttle-replication-when-using-the-azure-migrate-appliance-for-agentless-vmware-replication) for details on throttling replication and migration bandwidth.
+        
+          ### Can I migrate DNS server VMs to Azure Local using Azure Migrate?
+
+          Migration is not supported if the VM IP address is configured as the DNS server for the logical network it will join. In this case, migration fails with an *address already in use* error. Additionally, Azure Local doesn't support running DNS server infrastructure as a VM on the system. For more information, see [DNS server considerations](../plan/cloud-deployment-network-considerations.md#dns-server-considerations). 
+
+          ### Can I forcefully stop replications or complete migrations?
+
+          Yes. You can forcefully stop replications and complete migrations if your target appliance becomes unresponsive or the migrate project is in a bad state. 
+          In the Azure portal, this option appears as “Forcefully stop replication” or “Forcefully complete migration”, and is only available after a normal stop or complete operation fails.
+          From PowerShell, you can use the [Remove-AzMigrateLocalServerReplication (Az.Migrate) cmdlet](/powershell/module/az.migrate/remove-azmigratelocalserverreplication) to forcefully stop replication or complete migration only when standard operations don’t succeed.
+          
+          Force deletion may not clean up all associated resources. Seed disks and migration logs may remain. Review and manually delete any leftover replication artifacts in your resource group and on-premises environment.
+          
+          ## [VMware VMs only](#tab/vmware-vms)
+          
+          ### How many VMs can I replicate in parallel from VMware?
+
+          Within the Azure Migrate portal, you can select up to 10 machines at once for replication. To replicate more machines, add in batches of 10 (agentless migration overview).
+
+          Each Azure Migrate appliance supports replication of 52 disks in parallel (scheduling logic).
+
+          For example, if you selected to replicate 100 VMs (in batches of 10), with each VM containing two disks each, resulting in 200 (100 x 2) disks in total. The Azure Migrate appliance starts replicating 52 disks in parallel. As soon as one disk finishes initial replication, the next disk immediately takes its spot in the queue, while still continuously replicating the remaining 52 disks. This continues with all the remaining disks until all 200 disks have been replicated.
+
+          ## [Hyper-V VMs only](#tab/hyper-v-vms)
+          
+          ### I have a VM running on an older Hyper-V server - for example, Windows Server 2012 or Windows Server 2008 R2. Can I migrate this VM to Azure Local?
+
+          Yes. The migration solution discovers VMs on all the Windows Server hosts starting from Windows Server 2012 R2 and up to Windows Server 2022.

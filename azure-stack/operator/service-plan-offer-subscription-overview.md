@@ -2,15 +2,10 @@
 title: Azure Stack Hub services, plans, offers, subscriptions overview 
 description: An overview of Azure Stack Hub services, plans, offers, and subscriptions.
 author: sethmanheim
-
-ms.topic: conceptual
-ms.date: 02/07/2022
+ms.topic: how-to
+ms.date: 01/30/2025
 ms.author: sethm
-ms.reviewer: unknown
 ms.lastreviewed: 10/01/2019
-
-# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
-# Keyword: Notdone: keyword noun phrase
 
 ---
 
@@ -33,10 +28,10 @@ To deliver a service, follow these high-level steps:
    - Foundational services, like compute, storage, networking, or Key Vault.
    - Value-add services, like Event Hubs, App Service, SQL Server, or MySQL Server.
 
-2. Create a plan that consists of one or more services. When creating a plan, select or create quotas that define the resource limits of each service in the plan.
-3. Create an offer that has one or more plans. The offer can include base plans and optional add-on plans.
+1. Create a plan that consists of one or more services. When creating a plan, select or create quotas that define the resource limits of each service in the plan.
+1. Create an offer that has one or more plans. The offer can include base plans and optional add-on plans.
 
-After you've created the offer, your users can subscribe to it to access the services and deploy resources. Users can subscribe to as many offers as they want. The following figure shows a simple example of a user who has subscribed to two offers. Each offer has a plan or two, and each plan gives them access to specific services.
+After you create the offer, your users can subscribe to it to access the services and deploy resources. Users can subscribe to as many offers as they want. The following figure shows a simple example of a user who has subscribed to two offers. Each offer has a plan or two, and each plan gives them access to specific services.
 
 ![Tenant subscription with offers and plans](media/azure-stack-key-features/image4.png)
 
@@ -60,16 +55,13 @@ To help manage your cloud capacity, you can use pre-configured *quotas*, or crea
 > [!IMPORTANT]
 > It can take up to two hours for new quotas to be available in the user portal or before a changed quota is enforced.
 
-You can set up quotas by region. For example, a plan that provides compute services for Region A could have a quota of two VMs.
-
->[!NOTE]
->In the Azure Stack Development Kit (ASDK), only one region (named *local*) is available.
+You can set up quotas by region. For example, a plan that provides compute services for Region A can have a quota of two VMs.
 
 Learn more about [quota types in Azure Stack Hub](azure-stack-quota-types.md).
 
 ## Plans
 
-Plans are groupings of one or more services. As an Azure Stack Hub operator, you [create plans](azure-stack-create-plan.md) to offer to your users. In turn, your users subscribe to your offers to use the plans and services they include. When creating plans, make sure to set your quotas, define your base plans, and consider including optional add-on plans.
+Plans are groupings of one or more services. As an Azure Stack Hub operator, you [create plans](azure-stack-create-plan.md) to offer to your users. In turn, your users subscribe to your offers to use the plans and services they include. When you create plans, make sure to set your quotas, define your base plans, and consider including optional add-on plans.
 
 ### Base plan
 
@@ -84,25 +76,25 @@ Add-on plans are optional plans you add to an offer. Add-on plans aren't include
 
 ## Offers
 
-Offers are groups of one or more plans that you create so that users can subscribe to them. For example: Offer Alpha can contain Plan A, which provides a set of compute services, and Plan B, which provides a set of storage and network services.
+Offers are groups of one or more plans that you create so that users can subscribe to them. For example, Offer Alpha can contain Plan A, which provides a set of compute services, and Plan B, which provides a set of storage and network services.
 
 When you [create an offer](azure-stack-create-offer.md), you must include at least one base plan, but you can also create add-on plans that users can add to their subscription.
 
-When you're planning your offers, keep the following points in mind:
+When you plan your offers, keep the following points in mind:
 
 **Trial offers**: You use trial offers to attract new users, who can then upgrade to additional services. To create a trial offer, create a small [base plan](service-plan-offer-subscription-overview.md#base-plan) with an optional larger add-on plan. Alternatively, you can create a trial offer consisting of a small base plan, and a separate offer with a larger "pay as you go" plan.
 
-**Capacity planning**: You might be concerned about users who grab large amounts of resources and clog the system for all users. To help performance, you can [configure your plans with quotas](service-plan-offer-subscription-overview.md#plans) to cap usage.
+**Capacity planning**: You might be concerned about users who use large amounts of resources and clog the system for all users. To help performance, you can [configure your plans with quotas](service-plan-offer-subscription-overview.md#plans) to cap usage.
 
 **Delegated providers**: You can grant others the ability to create offers in your environment. For example, if you're a service provider, you can [delegate](azure-stack-delegated-provider.md) this ability to your resellers. Or, if you're an organization, you can delegate to other divisions/subsidiaries.
 
 ## Subscriptions
 
-Subscriptions let users access your offers. If you're an Azure Stack Hub operator for a service provider, your users (tenants) buy your services by subscribing to your offers. If you're an Azure Stack Hub operator at an organization, your users (employees) can subscribe to the services you offer without paying.
+Subscriptions enable users to access your offers. If you're an Azure Stack Hub operator for a service provider, your users (tenants) buy your services by subscribing to your offers. If you're an Azure Stack Hub operator at an organization, your users (employees) can subscribe to the services you offer without paying.
 
 Users create new subscriptions and get access to existing subscriptions by signing in to Azure Stack Hub. Each subscription represents an association with a single offer. The offer (and its plans and quotas) assigned to one subscription can't be shared with other subscriptions. Each resource that a user creates is associated with one subscription.
 
-As an Azure Stack Hub operator, you can see information about tenant subscriptions, but you can't access the contents of those subscriptions unless you are explicitly added through RBAC by a tenant administrator of that subscription. This allows tenants to enforce separation of power and responsibilities between Azure Stack Hub operator and tenant spaces. 
+As an Azure Stack Hub operator, you can see information about tenant subscriptions, but you can't access the contents of those subscriptions unless you are explicitly added through RBAC by a tenant administrator of that subscription. This allows tenants to enforce separation of power and responsibilities between Azure Stack Hub operator and tenant spaces.
 
 The exception to this case is a situation in which the subscription owner is unable to provide the operator with access to the subscription, which requires the administrator to take ownership of the subscription as discussed in [Change the billing owner for an Azure Stack Hub user subscription](azure-stack-change-subscription-owner.md).
 

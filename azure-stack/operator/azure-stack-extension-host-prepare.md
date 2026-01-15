@@ -1,10 +1,10 @@
 ---
-title: Prepare for extension host in Azure Stack Hub 
-description: Learn how to prepare for extension host in Azure Stack Hub, which is automatically enabled through an Azure Stack Hub update package after version 1808.
+title: Prepare for an extension host in Azure Stack Hub 
+description: Learn how to prepare for an extension host in Azure Stack Hub, which is automatically enabled through an Azure Stack Hub update package after version 1808.
 author: sethmanheim
 ms.author: sethm
-ms.date: 1/22/2020
-ms.topic: article
+ms.date: 1/17/2025
+ms.topic: how-to
 ms.reviewer: thoroet
 ms.lastreviewed: 03/07/2019
 
@@ -13,10 +13,9 @@ ms.lastreviewed: 03/07/2019
 
 ---
 
-
 # Prepare for extension host in Azure Stack Hub
 
-The extension host secures Azure Stack Hub by reducing the number of required TCP/IP ports. This article looks at preparing Azure Stack Hub for the extension host that is automatically enabled through an Azure Stack Hub update package after the 1808 update. This article applies to Azure Stack Hub updates 1808, 1809, and 1811.
+The extension host secures Azure Stack Hub by reducing the number of required TCP/IP ports. This article describes how to prepare Azure Stack Hub for the extension host that's automatically enabled through an Azure Stack Hub update package after the 1808 update. This article applies to Azure Stack Hub updates 1808, 1809, and 1811.
 
 ## Certificate requirements
 
@@ -35,91 +34,94 @@ For detailed certificate requirements, see [Azure Stack Hub public key infrastru
 
 The Azure Stack Hub Readiness Checker tool lets you create a certificate signing request for the two new and required SSL certificates. Follow the steps in the article [Azure Stack Hub certificates signing request generation](azure-stack-get-pki-certs.md).
 
-> [!Note]  
-> You may skip this step depending on how you requested your SSL certificates.
+> [!NOTE]  
+> You can skip this step, depending on how you requested your SSL certificates.
 
 ## Validate new certificates
 
 1. Open PowerShell with elevated permission on the hardware lifecycle host or the Azure Stack Hub management workstation.
-2. Run the following cmdlet to install the Azure Stack Hub Readiness Checker tool:
+1. Run the following cmdlet to install the Azure Stack Hub Readiness Checker tool:
 
-    ```powershell  
-    Install-Module -Name Microsoft.AzureStack.ReadinessChecker
-    ```
+   ```powershell  
+   Install-Module -Name Microsoft.AzureStack.ReadinessChecker
+   ```
 
-3. Run the following script to create the required folder structure:
+1. Run the following script to create the required folder structure:
 
-    ```powershell  
-    New-Item C:\Certificates -ItemType Directory
+   ```powershell  
+   New-Item C:\Certificates -ItemType Directory
 
-    $directories = 'ACSBlob','ACSQueue','ACSTable','Admin Portal','ARM Admin','ARM Public','KeyVault','KeyVaultInternal','Public Portal', 'Admin extension host', 'Public extension host'
+   $directories = 'ACSBlob','ACSQueue','ACSTable','Admin Portal','ARM Admin','ARM Public','KeyVault','KeyVaultInternal','Public Portal', 'Admin extension host', 'Public extension host'
 
-    $destination = 'c:\certificates'
+   $destination = 'c:\certificates'
 
-    $directories | % { New-Item -Path (Join-Path $destination $PSITEM) -ItemType Directory -Force}
-    ```
+   $directories | % { New-Item -Path (Join-Path $destination $PSITEM) -ItemType Directory -Force}
+   ```
 
-    > [!Note]  
-    > If you deploy with Microsoft Entra ID Federated Services (AD FS) the following directories must be added to **$directories** in the script: `ADFS`, `Graph`.
+   > [!NOTE]  
+   > If you deploy with Microsoft Entra ID Federated Services (AD FS), the following directories must be added to **$directories** in the script: `ADFS`, `Graph`.
 
-4. Place the existing certificates, which you're currently using in Azure Stack Hub, in appropriate directories. For example, put the **Admin ARM** certificate in the `Arm Admin` folder. And then put the newly created hosting certificates in the `Admin extension host` and `Public extension host` directories.
-5. Run the following cmdlet to start the certificate check:
+1. Place the existing certificates, which you're currently using in Azure Stack Hub, in appropriate directories. For example, put the **Admin ARM** certificate in the `Arm Admin` folder. And then put the newly created hosting certificates in the `Admin extension host` and `Public extension host` directories.
+1. Run the following cmdlet to start the certificate check:
 
-    ```powershell  
-    $pfxPassword = Read-Host -Prompt "Enter PFX Password" -AsSecureString 
+   ```powershell  
+   $pfxPassword = Read-Host -Prompt "Enter PFX Password" -AsSecureString 
 
-    Start-AzsReadinessChecker -CertificatePath c:\certificates -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com -IdentitySystem AAD
-    ```
+   Start-AzsReadinessChecker -CertificatePath c:\certificates -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com -IdentitySystem AAD
+   ```
 
-6. Check the output and if all certificates pass all tests.
+1. Check the output to see if all certificates pass all tests.
 
 ## Import extension host certificates
 
 Use a computer that can connect to the Azure Stack Hub privileged endpoint for the next steps. Make sure you have access to the new certificate files from that computer.
 
 1. Use a computer that can connect to the Azure Stack Hub privileged endpoint for the next steps. Make sure you access to the new certificate files from that computer.
-2. Open PowerShell ISE to execute the next script blocks.
-3. Import the certificate for the admin hosting endpoint.
+1. Open PowerShell ISE to execute the next script blocks.
+1. Import the certificate for the admin hosting endpoint.
 
-    ```powershell  
+   ```powershell  
 
-    $CertPassword = read-host -AsSecureString -prompt "Certificate Password"
+   $CertPassword = read-host -AsSecureString -prompt "Certificate Password"
 
-    $CloudAdminCred = Get-Credential -UserName <Privileged endpoint credentials> -Message "Enter the cloud domain credentials to access the privileged endpoint."
+   $CloudAdminCred = Get-Credential -UserName <Privileged endpoint credentials> -Message "Enter the cloud domain credentials to access the privileged endpoint."
 
-    [Byte[]]$AdminHostingCertContent = [Byte[]](Get-Content c:\certificate\myadminhostingcertificate.pfx -Encoding Byte)
+   [Byte[]]$AdminHostingCertContent = [Byte[]](Get-Content c:\certificate\myadminhostingcertificate.pfx -Encoding Byte)
 
-    Invoke-Command -ComputerName <PrivilegedEndpoint computer name> `
-    -Credential $CloudAdminCred `
-    -ConfigurationName "PrivilegedEndpoint" `
-    -ArgumentList @($AdminHostingCertContent, $CertPassword) `
-    -ScriptBlock {
-            param($AdminHostingCertContent, $CertPassword)
-            Import-AdminHostingServiceCert $AdminHostingCertContent $certPassword
-    }
-    ```
-4. Import the certificate for the hosting endpoint.
-    ```powershell  
-    $CertPassword = read-host -AsSecureString -prompt "Certificate Password"
+   Invoke-Command -ComputerName <PrivilegedEndpoint computer name> `
+   -Credential $CloudAdminCred `
+   -ConfigurationName "PrivilegedEndpoint" `
+   -ArgumentList @($AdminHostingCertContent, $CertPassword) `
+   -ScriptBlock {
+           param($AdminHostingCertContent, $CertPassword)
+           Import-AdminHostingServiceCert $AdminHostingCertContent $certPassword
+   }
+   ```
 
-    $CloudAdminCred = Get-Credential -UserName <Privileged endpoint credentials> -Message "Enter the cloud domain credentials to access the privileged endpoint."
+1. Import the certificate for the hosting endpoint:
 
-    [Byte[]]$HostingCertContent = [Byte[]](Get-Content c:\certificate\myhostingcertificate.pfx  -Encoding Byte)
+   ```powershell  
+   $CertPassword = read-host -AsSecureString -prompt "Certificate Password"
 
-    Invoke-Command -ComputerName <PrivilegedEndpoint computer name> `
-    -Credential $CloudAdminCred `
-    -ConfigurationName "PrivilegedEndpoint" `
-    -ArgumentList @($HostingCertContent, $CertPassword) `
-    -ScriptBlock {
-            param($HostingCertContent, $CertPassword)
-            Import-UserHostingServiceCert $HostingCertContent $certPassword
-    }
-    ```
+   $CloudAdminCred = Get-Credential -UserName <Privileged endpoint credentials> -Message "Enter the cloud domain credentials to access the privileged endpoint."
+
+   [Byte[]]$HostingCertContent = [Byte[]](Get-Content c:\certificate\myhostingcertificate.pfx  -Encoding Byte)
+
+   Invoke-Command -ComputerName <PrivilegedEndpoint computer name> `
+   -Credential $CloudAdminCred `
+   -ConfigurationName "PrivilegedEndpoint" `
+   -ArgumentList @($HostingCertContent, $CertPassword) `
+   -ScriptBlock {
+           param($HostingCertContent, $CertPassword)
+           Import-UserHostingServiceCert $HostingCertContent $certPassword
+   }
+   ```
 
 ### Update DNS configuration
 
-> [!Note]  
+> [!NOTE]  
 > This step isn't required if you used DNS Zone delegation for DNS Integration.
+
 If individual host A records have been configured to publish Azure Stack Hub endpoints, you need to create two additional host A records:
 
 | IP | Hostname | Type |
@@ -166,9 +168,9 @@ Else {
 Remove-PSSession -Session $PEPSession
 ```
 
-#### Sample Output
+#### Sample output
 
-```powershell
+```output
 Can access AZS DNS
 The IP for the Admin Extension Host is: *.adminhosting.\<region>.\<fqdn> - is: xxx.xxx.xxx.xxx
 The Record to be added in the DNS zone: Type A, Name: *.adminhosting.\<region>.\<fqdn>, Value: xxx.xxx.xxx.xxx
@@ -176,8 +178,8 @@ The IP address for the Tenant Extension Host is *.hosting.\<region>.\<fqdn> - is
 The Record to be added in the DNS zone: Type A, Name: *.hosting.\<region>.\<fqdn>, Value: xxx.xxx.xxx.xxx
 ```
 
-> [!Note]  
-> Make this change before enabling the extension host. This allows the Azure Stack Hub portals to be continuously accessible.
+> [!NOTE]  
+> Make this change before you enable the extension host. This allows the Azure Stack Hub portals to be continuously accessible.
 
 | Endpoint (VIP) | Protocol | Ports |
 |----------------|----------|-------|
@@ -186,13 +188,13 @@ The Record to be added in the DNS zone: Type A, Name: *.hosting.\<region>.\<fqdn
 
 ### Update existing publishing Rules (Post enablement of extension host)
 
-> [!Note]  
-> The 1808 Azure Stack Hub Update Package does **not** enable extension host yet. It lets you prepare for extension host by importing the required certificates. Don't close any ports before extension host is automatically enabled through an Azure Stack Hub update package after the 1808 update.
+> [!NOTE]  
+> The 1808 Azure Stack Hub Update Package does not enable extension host yet. It lets you prepare for extension host by importing the required certificates. Don't close any ports before the extension host is automatically enabled through an Azure Stack Hub update package after the 1808 update.
 
 The following existing endpoint ports must be closed in your existing firewall rules.
 
-> [!Note]  
-> It's recommended to close those ports after successful validation.
+> [!NOTE]  
+> It's recommended that you close those ports after successful validation.
 
 | Endpoint (VIP) | Protocol | Ports |
 |----------------------------------------|----------|-------------------------------------------------------------------------------------------------------------------------------------|

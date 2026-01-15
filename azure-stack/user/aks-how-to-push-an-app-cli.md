@@ -2,11 +2,12 @@
 title: Deploy test applications to Azure Kubernetes Service on Azure Stack Hub
 description: Learn how to deploy test applications to Azure Kubernetes Service on Azure Stack Hub.
 author: sethmanheim
-ms.topic: article
+ms.topic: install-set-up-deploy
 ms.date: 10/26/2021
 ms.author: sethm
 ms.reviewer: waltero
 ms.lastreviewed: 10/26/2021
+ms.custom: sfi-ropc-nochange
 
 # Intent: As an Azure Stack operator, I want to install and offer Azure Kubernetes Service on Azure Stack Hub so my supported user can offer containerized solutions.
 # Keyword: Kubernetes AKS difference

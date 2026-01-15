@@ -1,56 +1,24 @@
 ### YamlMime:Hub
 title: Azure Stack documentation 
-summary: Azure Stack is a family of products including Azure Stack HCI, Azure Stack Hub, and Azure Stack Edge. These products, along with other services such as Azure Kubernetes Service (AKS), allow you to build better solutions and extend Azure to your datacenter or to the edge, processing data closer to the source.
+summary:  Azure Stack, including Azure Stack Hub and Azure Stack Edge, enables you to build better solutions by extending Azure to your datacenter or to the edge.
 brand: azure
 
 metadata:
   title: Azure Stack documentation 
-  description: Azure Stack is a family of products including Azure Stack HCI, Azure Stack Hub, and Azure Stack Edge. These products, along with other services such as Azure Kubernetes Service (AKS), allow you to build better solutions and extend Azure to your datacenter or to the edge, processing data closer to the source.
+  description:  Azure Stack, including Azure Stack Hub and Azure Stack Edge, enables you to build better solutions by extending Azure to your datacenter or to the edge.
   ms.service: azure-stack
   ms.topic: hub-page
   author: ronmiab
   ms.author: robess
-  ms.date: 11/13/2023
-  ms.custom: e2e-hybrid
+  ms.date: 11/06/2025
 
 # highlightedContent section (optional)
 # Maximum of 8 items
-highlightedContent:
 # itemType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | tutorial | video | whats-new
-  items:
-    # Card
-    - title: Azure Stack family announcement
-      itemType: overview
-      url: http://aka.ms/ashciignite2023
-    - title: Azure Stack training
-      itemType: learn
-      url: https://learn.microsoft.com/training/modules/intro-to-azure-stack/
-
 # productDirectory section (optional)
 productDirectory:
   items:
-  - title: Azure Stack HCI
-    imageSrc: media/index/azure-stack-hci-2022.svg
-    links:
-      - url: ./hci/overview.md
-        text: Azure Stack HCI overview
-      - url: ./hci/whats-new.md
-        text: Azure Stack HCI What's New
-      - url: ./hci/deploy/deployment-introduction.md
-        text: Try version 23H2
-      - url: https://azure.microsoft.com/en-us/pricing/details/azure-stack/hci/
-        text: Product information and pricing
-  - title: Azure Kubernetes Service (AKS) enabled by Azure Arc
-    imageSrc: media/index/kubernetes-services.svg
-    links:
-      - url: /azure/aks/hybrid/aks-overview
-        text: AKS Arc overview  
-      - url: /azure/aks/hybrid/aks-hci-network-system-requirements
-        text: AKS system requirements                
-      - url: /azure/aks/hybrid/aks-edge-overview
-        text: AKS Edge Essentials overview
-      - url: https://azure.microsoft.com/pricing/details/azure-stack/aks-hci/
-        text: Product information and pricing
+  
   - title: Azure Stack Hub 
     imageSrc: media/index/azure-stack-hub-2022.svg
     links:

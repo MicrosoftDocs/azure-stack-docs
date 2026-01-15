@@ -8,6 +8,7 @@ ms.topic: how-to
 ms.date: 12/09/2019
 ms.reviewer: jfggdl
 ms.lastreviewed: 12/09/2019
+ms.custom: sfi-image-nochange
 ---
 
 # How to manage Event Hubs on Azure Stack Hub

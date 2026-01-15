@@ -3,9 +3,9 @@ title: Azure Stack Hub datacenter integration overview
 description: Learn what to expect for a successful on-site deployment of Azure Stack Hub ruggedized from Microsoft, from planning to post-deployment.
 services: azure-stack
 author: sethmanheim
-manager: femila
+manager: lizross
 ms.service: azure-stack
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/18/2021
 ms.author: sethm
 ms.reviewer: ashika789

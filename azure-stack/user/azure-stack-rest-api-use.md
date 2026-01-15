@@ -2,12 +2,12 @@
 title: Make API requests to Azure Stack Hub
 description: Learn how to retrieve an authentication from Azure to make API requests to Azure Stack Hub.
 author: sethmanheim
-
 ms.topic: how-to
-ms.date: 09/30/2021
+ms.date: 01/22/2025
 ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 01/14/2020
+ms.custom: sfi-ropc-nochange
 
 # Intent: As an Azure Stack user, I want to make API requests to Azure Stack so I can automate operations.
 # Keyword: api requests azure stack
@@ -38,10 +38,10 @@ Create a request body formatted using the content type `x-www-form-urlencoded` t
 POST https://login.microsoftonline.com/{tenant id}/oauth2/token
 ```
 
-**Tenant ID** is either:
+`tenant id` is either:
 
 - Your tenant domain, such as `fabrikam.onmicrosoft.com`
-- Your tenant ID, such as `8eaed023-2b34-4da1-9baa-8bc8c9d6a491`
+- Your tenant ID, such as `aaaabbbb-0000-cccc-1111-dddd2222eeee`
 - Default value for tenant-independent keys: `common`
 
 ### Post body
@@ -57,40 +57,36 @@ grant_type=password
 
 For each value:
 
-- **grant_type**:  
-   The type of authentication scheme you'll use. In this example, the value is `password`.
-
-- **resource**:  
-   The resource the token accesses. You can find the resource by querying the Azure Stack Hub management metadata endpoint. Look at the **audiences** section.
-
+- **grant_type**: The type of authentication scheme you'll use. In this example, the value is `password`.
+- **resource**: The resource the token accesses. You can find the resource by querying the Azure Stack Hub management metadata endpoint. Look at the **audiences** section.
 - **Azure Stack Hub management endpoint**:
 
    ```bash
    https://management.{region}.{Azure Stack Hub domain}/metadata/endpoints?api-version=2015-01-01
    ```
 
-  > [!NOTE]  
-  > If you are an admin trying to access the tenant API, make sure to use the tenant endpoint; for example, `https://adminmanagement.{region}.{Azure Stack Hub domain}/metadata/endpoints?api-version=2015-01-011`.
+   > [!NOTE]  
+   > If you are an admin trying to access the tenant API, make sure to use the tenant endpoint; for example, `https://adminmanagement.{region}.{Azure Stack Hub domain}/metadata/endpoints?api-version=2015-01-011`.
 
-  For example, with the Azure Stack Development Kit (ASDK) as an endpoint:
+   For example, with the Azure Stack Development Kit (ASDK) as an endpoint:
 
    ```bash
    curl 'https://management.local.azurestack.external/metadata/endpoints?api-version=2015-01-01'
    ```
 
-  Response:
+   Response:
 
-  ```bash
-  {
-  "galleryEndpoint":"https://adminportal.local.azurestack.external:30015/",
-  "graphEndpoint":"https://graph.windows.net/",
-  "portalEndpoint":"https://adminportal.local.azurestack.external/",
-  "authentication":{
-     "loginEndpoint":"https://login.windows.net/",
-     "audiences":["https://contoso.onmicrosoft.com/4de154de-f8a8-4017-af41-df619da68155"]
-     }
-  }
-  ```
+   ```bash
+   {
+   "galleryEndpoint":"https://adminportal.local.azurestack.external:30015/",
+   "graphEndpoint":"https://graph.windows.net/",
+   "portalEndpoint":"https://adminportal.local.azurestack.external/",
+   "authentication":{
+      "loginEndpoint":"https://login.windows.net/",
+      "audiences":["https://contoso.onmicrosoft.com/4de154de-f8a8-4017-af41-df619da68155"]
+      }
+   }
+   ```
 
 ### Example 1
 
@@ -171,9 +167,9 @@ Response:
 
 ```bash  
 offerId : /delegatedProviders/default/offers/92F30E5D-F163-4C58-8F02-F31CFE66C21B
-id : /subscriptions/800c4168-3eb1-406b-a4ca-919fe7ee42e8
-subscriptionId : 800c4168-3eb1-406b-a4ca-919fe7ee42e8
-tenantId : 9fea4606-7c07-4518-9f3f-8de9c52ab628
+id : /subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e
+subscriptionId : aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e
+tenantId : bbbbcccc-1111-dddd-2222-eeee3333ffff
 displayName : Default Provider Subscription
 state : Enabled
 subscriptionPolicies : @{locationPlacementId=AzureStack}
@@ -207,7 +203,7 @@ https://adminmanagement.local.azurestack.external/{subscription id}/resourcegrou
 ### Query URI example
 
 ```bash
-https://adminmanagement.local.azurestack.external/subscriptions/800c4168-3eb1-406b-a4ca-919fe7ee42e8/resourcegroups/system.local/providers/microsoft.infrastructureinsights.admin/regionhealths/local/Alerts?$filter=(Properties/State eq 'Active') and (Properties/Severity eq 'Critical')&$orderby=Properties/CreatedTimestamp desc&api-version=2016-05-01"
+https://adminmanagement.local.azurestack.external/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourcegroups/system.local/providers/microsoft.infrastructureinsights.admin/regionhealths/local/Alerts?$filter=(Properties/State eq 'Active') and (Properties/Severity eq 'Critical')&$orderby=Properties/CreatedTimestamp desc&api-version=2016-05-01"
 ```
 
 ## Next steps

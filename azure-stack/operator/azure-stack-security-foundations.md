@@ -3,12 +3,12 @@ title: Azure Stack Hub security controls
 titleSuffix: Azure Stack Hub
 description: Learn about the security posture and controls applied to Azure Stack Hub.
 author: sethmanheim
-
-ms.topic: article
+ms.topic: how-to
 ms.date: 04/25/2024
 ms.author: sethm
 ms.reviewer: fiseraci
 ms.lastreviewed: 04/01/2021
+ms.custom: sfi-image-nochange
 
 # Intent: As an Azure Stack operator, I want to learn about the security controls applied in Azure Stack.
 # Keyword: security controls azure stack
@@ -59,7 +59,7 @@ Azure Stack Hub makes use of the latest Windows Server security features. One of
 Authorized code is signed by either Microsoft or the OEM partner. The signed authorized code is included in the list of allowed software specified in a policy defined by Microsoft. In other words, only software that has been approved to run in the Azure Stack Hub infrastructure can be executed. Any attempt to execute unauthorized code is blocked and an alert is generated. Azure Stack Hub enforces both User Mode Code Integrity (UMCI) and Hypervisor Code Integrity (HVCI).
 
 The WDAC policy also prevents third-party agents or software from running in the Azure Stack Hub infrastructure.
-For more information on WDAC, please refer to [Windows Defender Application Control and virtualization-based protection of code integrity](/windows/security/threat-protection/device-guard/introduction-to-device-guard-virtualization-based-security-and-windows-defender-application-control).
+For more information on WDAC, please refer to [Windows Defender Application Control and virtualization-based protection of code integrity](/windows/security/application-security/application-control/introduction-to-virtualization-based-security-and-appcontrol).
 
 ## Antimalware
 
@@ -98,7 +98,7 @@ The assessments include the following standards:
 
 - [PCI-DSS](https://www.pcisecuritystandards.org/pci_security/) addresses the payment card industry.
 - [CSA Cloud Control Matrix](https://cloudsecurityalliance.org/group/cloud-controls-matrix/#_overview) is a comprehensive mapping across multiple standards, including FedRAMP Moderate, ISO27001, HIPAA, HITRUST, ITAR, NIST SP800-53, and others.
-- [FedRAMP High](https://www.fedramp.gov/understanding-baselines-and-impact-levels/) for government customers.
+- [FedRAMP High](https://www.fedramp.gov/archive/2017-11-16-understanding-baselines-and-impact-levels) for government customers.
 
 The compliance documentation can be found on the [Microsoft Service Trust Portal](https://aka.ms/azurestackcompliance). The compliance guides are a protected resource and require you to sign in with your Azure cloud service credentials.
 

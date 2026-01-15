@@ -2,9 +2,8 @@
 title: VM sizes supported in Azure Stack Hub 
 description: Reference for the supported VM sizes in Azure Stack Hub.
 author: sethmanheim
-
 ms.topic: reference
-ms.date: 06/15/2023
+ms.date: 10/24/2024
 ms.author: sethm
 ms.reviewer: nebird
 ms.lastreviewed: 03/10/2022
@@ -138,13 +137,15 @@ General-purpose VM sizes provide a balanced CPU-to-memory ratio. They're used fo
 *Requires Azure Stack version 1804 or later* 
 
 |Size     |vCPU     |Memory (GiB) | Temp storage (GiB)  | Max OS disk throughput (IOPS) | Max temp storage throughput (IOPS) | Max data disks / throughput (IOPS) | Max NICs / expected network bandwidth (Mbps) |
-|---------------------|----|----|-----|-----|-------|--------------|---------|
-|**Standard_F2s_v2**  |2   |4   |16   |1000 |4000   |4 / 4x2300    |Moderate |
-|**Standard_F4s_v2**  |4   |8   |32   |1000 |8000   |8 / 8x2300    |Moderate |
-|**Standard_F8s_v2**  |8   |16  |64   |1000 |16000  |16 / 16x2300  |High     |
-|**Standard_F16s_v2** |16  |32  |128  |1000 |32000  |32 / 32x2300  |High     |
-|**Standard_F32s_v2** |32  |64  |256  |1000 |64000  |32 / 32x2300  |High  |
-|**Standard_F64s_v2** |64  |128 |512  |1000 |128000 |32 / 32x2300  |Extremely High  |
+|---------------------|----|----|-----|-----|-------|--------------|-----------|
+|**Standard_F2s_v2**  |2   |4   |16   |1000 |4000   |4 / 4x2300    |2 / 5000   |
+|**Standard_F4s_v2**  |4   |8   |32   |1000 |8000   |8 / 8x2300    |2 / 10000  |
+|**Standard_F8s_v2**  |8   |16  |64   |1000 |16000  |16 / 16x2300  |4 / 12500  |
+|**Standard_F16s_v2** |16  |32  |128  |1000 |32000  |32 / 32x2300  |4 / 12500  |
+|**Standard_F32s_v2** |32  |64  |256  |1000 |64000  |32 / 32x2300  |8 / 16000  |
+|**Standard_F48s_v2** |48  |96  |384  |1000 |96000  |32 / 32x2300  |8 / 16000  |
+|**Standard_F64s_v2** |64  |128 |512  |1000 |128000 |32 / 32x2300  |8 / 28000  |
+|**Standard_F64s_v2** |72  |144 |576  |1000 |144000 |32 / 32x2300  |8 / 30000  |
 
 ## Memory optimized
 
@@ -193,10 +194,20 @@ Memory optimized VM sizes provide a high memory-to-CPU ratio that is designed fo
 | Size | vCPU | Memory: GiB | Temp storage (SSD) GiB | Max data disks/throughput (IOPS) | Max NICs/Network bandwidth |
 |---|---|---|---|---|---|
 | **Standard_D2_v3**  | 2  | 8   | 50   | 4 / 4x500 | 2 |
-| **Standard_D4_v3**  | 4  | 16  | 100  | 8 /8x500  | 2  |
-| **Standard_D8_v3**  | 8  | 32  | 200  | 16 /16x500 | 4  |
-| **Standard_D16_v3** | 16 | 64  | 400  | 32 /32x500 | 8 |
-| **Standard_D32_v3** | 32 | 128 | 800  | 32 /32x500 | 8 |
+| **Standard_D4_v3**  | 4  | 16  | 100  | 8 / 8x500  | 2  |
+| **Standard_D8_v3**  | 8  | 32  | 200  | 16 / 16x500 | 4  |
+| **Standard_D16_v3** | 16 | 64  | 400  | 32 / 32x500 | 8 |
+| **Standard_D32_v3** | 32 | 128 | 800  | 32 / 32x500 | 8 |
+
+### DSv3-series
+
+| Size | vCPU | Memory: GiB | Temp storage (SSD) GiB | Max data disks/throughput (IOPS) | Max NICs/Network bandwidth |
+|---|---|---|---|---|---|
+| **Standard_D2s_v3**  | 2  | 8   | 50   | 4 / 4x2300 | 2 |
+| **Standard_D4s_v3**  | 4  | 16  | 100  | 8 / 8x2300  | 2  |
+| **Standard_D8s_v3**  | 8  | 32  | 200  | 16 / 16x2300 | 4  |
+| **Standard_D16s_v3** | 16 | 64  | 400  | 32 / 32x2300 | 8 |
+| **Standard_D32s_v3** | 32 | 128 | 800  | 32 / 32x2300 | 8 |
 
 ### DS-n_v2-series (premium storage)
 
@@ -207,8 +218,8 @@ Memory optimized VM sizes provide a high memory-to-CPU ratio that is designed fo
 | **Standard_DS12-2_v2**  | 2  | 28  | 56  | 16 / 16x2300 | 2 |
 | **Standard_DS13-2_v2**  | 2  | 56  | 112  | 32 / 32x2300 | 4|
 | **Standard_DS13-4_v2** | 4 | 56 | 112  | 32 / 32x2300 | 8  |
-| **Standard_DS14-4_v2** | 4 | 112 | 224  | 64 /64x2300 | 8 |
-| **Standard_DS14-8_v2** | 8 | 112 | 224  | 64 /64x2300 | 8|
+| **Standard_DS14-4_v2** | 4 | 112 | 224  | 64 / 64x2300 | 8 |
+| **Standard_DS14-8_v2** | 8 | 112 | 224  | 64 / 64x2300 | 8|
 
 The Standard_DSv2 series VM includes [constrained core sizes](/azure/virtual-machines/constrained-vcpu), and they have the same quota requirements as their equivalent specs. For example, the Standard_DS14-4_v2 VM size is listed with 4 vCPUs, but it consumes 16 vCPUs from your allocated quota in the subscription offer. Therefore, to create a Standard_DS14-4_v2 VM (4 vCPUs), you must ensure that your subscription has at least 16 vCPUs available in the quota. This is only for the quota and doesn't affect billing (a 4vCPU resource remains in the usage information).
 
@@ -218,11 +229,21 @@ For more information about VM sizes, see [Constrained vCPU capable VM sizes](/az
 
 | Size | vCPU | Memory: GiB | Temp storage (SSD) GiB | Max data disks /throughput (IOPS) | Max NICs  |
 |---|---|---|---|---|---|
-| **Standard_E2_v3**  | 2  | 16  | 50   | 4 /4x500 | 2 |
-| **Standard_E4_v3**  | 4  | 32  | 100  | 8 /8x500 | 2 |
-| **Standard_E8_v3**  | 8  | 64  | 200  | 16 /16x500| 4 |
-| **Standard_E16_v3** | 16 | 128 | 400  | 32 /32x500| 8 |
-| **Standard_E20_v3** | 20 | 160 | 500  | 32 /32x500| 8 |
+| **Standard_E2_v3**  | 2  | 16  | 50   | 4 / 4x500 | 2 |
+| **Standard_E4_v3**  | 4  | 32  | 100  | 8 / 8x500 | 2 |
+| **Standard_E8_v3**  | 8  | 64  | 200  | 16 / 16x500| 4 |
+| **Standard_E16_v3** | 16 | 128 | 400  | 32 / 32x500| 8 |
+| **Standard_E20_v3** | 20 | 160 | 500  | 32 / 32x500| 8 |
+
+### ESv3-series
+
+| Size | vCPU | Memory: GiB | Temp storage (SSD) GiB | Max data disks /throughput (IOPS) | Max NICs  |
+|---|---|---|---|---|---|
+| **Standard_E2s_v3**  | 2  | 16  | 50   | 4 / 4x2300 | 2 |
+| **Standard_E4s_v3**  | 4  | 32  | 100  | 8 / 8x2300 | 2 |
+| **Standard_E8s_v3**  | 8  | 64  | 200  | 16 / 16x2300| 4 |
+| **Standard_E16s_v3** | 16 | 128 | 400  | 32 / 32x2300| 8 |
+| **Standard_E20s_v3** | 20 | 160 | 500  | 32 / 32x2300| 8 |
 
 ::: moniker-end
 

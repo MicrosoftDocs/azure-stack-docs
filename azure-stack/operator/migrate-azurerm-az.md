@@ -3,7 +3,7 @@ title: Migrate Azure PowerShell scripts from AzureRM to Az in Azure Stack Hub
 description: Learn the steps and tools for migrating scripts from the AzureRM module to the new Az module in Azure Stack Hub.
 author: sethmanheim
 ms.author: sethm
-ms.topic: conceptual
+ms.topic: upgrade-and-migration-article
 ms.custom:
   - devx-track-azurepowershell
 ms.date: 12/2/2020
@@ -37,7 +37,7 @@ Get-InstalledModule -Name AzureRM -AllVersions
 
 This is the most important step! Run your existing scripts, and make sure that they work with the
 _latest_ release of AzureRM (__2.5.0__). If your scripts don't work, make sure to read
-the [AzureRM migration guide](/powershell/azure/azurerm/migration-guide.6.0.0).
+the [AzureRM migration guide](/powershell/azure/migrate-az-13.0.0).
 
 ## Install the Azure PowerShell Az module
 
@@ -317,13 +317,13 @@ Scripts should no longer make processing decisions based on the values fo these 
   Passwords are automatically generated, scripts that provided the password:
 
   ```powershell  
-  New-AzAdSpCredential -ObjectId 1f99cf81-0146-4f4e-beae-2007d0668476 -Password $secPassword
+  New-AzAdSpCredential -ObjectId aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb -Password $secPassword
   ```
 
   Should be changed to retrieve the password from the output:
 
   ```powershell  
-  $credential = New-AzAdSpCredential -ObjectId 1f99cf81-0146-4f4e-beae-2007d0668476
+  $credential = New-AzAdSpCredential -ObjectId aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb
   $secPassword = $credential.Secret
   ```
 

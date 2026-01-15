@@ -3,7 +3,7 @@ title: Develop templates for Azure Stack Hub
 description: Learn how to develop Azure Resource Manager templates for app portability between Azure and Azure Stack Hub.
 author: sethmanheim
 
-ms.topic: article
+ms.topic: how-to
 ms.custom:
   - devx-track-arm-template
 ms.date: 2/1/2021

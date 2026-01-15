@@ -2,11 +2,9 @@
 title: Enable backup for Azure Stack Hub with PowerShell 
 description: Learn how to enable the Infrastructure Backup Service with PowerShell so that Azure Stack Hub can be restored if there's a failure. 
 author: sethmanheim
-
-ms.topic: article
-ms.date: 04/25/2019
+ms.topic: how-to
+ms.date: 01/15/2025
 ms.author: sethm
-ms.reviewer: hectorl
 ms.lastreviewed: 03/14/2019
 
 # Intent: As an Azure Stack operator, I want to enable backups with Powershell so Azure Stack can generate infrastructure backups.
@@ -14,15 +12,16 @@ ms.lastreviewed: 03/14/2019
 
 ---
 
-# Enable Backup for Azure Stack Hub with PowerShell
+# Enable backup for Azure Stack Hub with PowerShell
 
-Enable the Infrastructure Backup Service with Windows PowerShell to take periodic backups of:
- - Internal identity service and root certificate.
- - User plans, offers, subscriptions.
- - Compute, storage, and network user quotas.
- - User Key Vault secrets.
- - User RBAC roles and policies.
- - User storage accounts.
+You can enable the Infrastructure Backup Service with Windows PowerShell to take periodic backups of:
+
+- Internal identity service and root certificate.
+- User plans, offers, subscriptions.
+- Compute, storage, and network user quotas.
+- User Key Vault secrets.
+- User RBAC roles and policies.
+- User storage accounts.
 
 You can access the PowerShell cmdlets to enable backup, start backup, and get backup information via the operator management endpoint.
 
@@ -44,80 +43,81 @@ In the same PowerShell session, edit the following PowerShell script by adding t
 | `$encryptioncertpath` | Applies to 1901 and later. Parameter is available in Azure Stack Hub Module version 1.7 and later. The encryption certificate path specifies the file path to the .CER file with public key used for data encryption. |
 
 ### Enable backup using certificate
+
+Run the following command to enable the backup using a certificate:
+
 ```powershell
-	# Example username:
- 	$username = "domain\backupadmin"
- 
- 	# Example share path:
- 	$sharepath = "\\serverIP\AzSBackupStore\contoso.com\seattle"
+# Example username:
+$username = "domain\backupadmin"
+# Example share path:
+$sharepath = "\\serverIP\AzSBackupStore\contoso.com\seattle"
 
- 	$password = Read-Host -Prompt ("Password for: " + $username) -AsSecureString
+$password = Read-Host -Prompt ("Password for: " + $username) -AsSecureString
 
- 	# Create a self-signed certificate using New-SelfSignedCertificate, export the public key portion and save it locally.
+# Create a self-signed certificate using New-SelfSignedCertificate, export the public key portion and save it locally.
 
-	$cert = New-SelfSignedCertificate `
-    	-DnsName "www.contoso.com" `
-    	-CertStoreLocation "cert:\LocalMachine\My" 
+$cert = New-SelfSignedCertificate `
+    -DnsName "www.contoso.com" `
+    -CertStoreLocation "cert:\LocalMachine\My" 
 
-	New-Item -Path "C:\" -Name "Certs" -ItemType "Directory" 
+New-Item -Path "C:\" -Name "Certs" -ItemType "Directory" 
 
-	#make sure to export the PFX format of the certificate with the public and private keys and then delete the certificate from the local certificate store of the machine where you created the certificate
-	
-	Export-Certificate `
-    	-Cert $cert `
-    	-FilePath c:\certs\AzSIBCCert.cer 
+# Make sure to export the PFX format of the certificate with the public and private keys and then delete the certificate from the local certificate store of the machine where you created the certificate
+    
+Export-Certificate `
+    -Cert $cert `
+    -FilePath c:\certs\AzSIBCCert.cer 
 
-	# Set the backup settings with the name, password, share, and CER certificate file.
- 	Set-AzsBackupConfiguration -Path $sharepath -Username $username -Password $password -EncryptionCertPath "c:\temp\cert.cer"
+# Set the backup settings with the name, password, share, and CER certificate file.
+Set-AzsBackupConfiguration -Path $sharepath -Username $username -Password $password -EncryptionCertPath "c:\temp\cert.cer"
 ```
-   
-##  Confirm backup settings
+
+## Confirm backup settings
 
 In the same PowerShell session, run the following commands:
 
-   ```powershell
-    Get-AzsBackupConfiguration | Select-Object -Property Path, UserName
-   ```
+```powershell
+Get-AzsBackupConfiguration | Select-Object -Property Path, UserName
+```
 
 The result should look like the following example output:
 
-   ```powershell
-    Path                        : \\serverIP\AzsBackupStore\contoso.com\seattle
-    UserName                    : domain\backupadmin
-   ```
+```output
+Path                        : \\serverIP\AzsBackupStore\contoso.com\seattle
+UserName                    : domain\backupadmin
+```
 
 ## Update backup settings
-In the same PowerShell session, you can update the default values for retention period and frequency for backups. 
 
-   ```powershell
-    #Set the backup frequency and retention period values.
-    $frequencyInHours = 10
-    $retentionPeriodInDays = 5
+In the same PowerShell session, you can update the default values for retention period and frequency for backups. Run the following commands:
 
-    Set-AzsBackupConfiguration -BackupFrequencyInHours $frequencyInHours -BackupRetentionPeriodInDays $retentionPeriodInDays
+```powershell
+# Set the backup frequency and retention period values.
+$frequencyInHours = 10
+$retentionPeriodInDays = 5
 
-    Get-AzsBackupConfiguration | Select-Object -Property Path, UserName, AvailableCapacity, BackupFrequencyInHours, BackupRetentionPeriodInDays
-   ```
+Set-AzsBackupConfiguration -BackupFrequencyInHours $frequencyInHours -BackupRetentionPeriodInDays $retentionPeriodInDays
+
+Get-AzsBackupConfiguration | Select-Object -Property Path, UserName, AvailableCapacity, BackupFrequencyInHours, BackupRetentionPeriodInDays
+```
 
 The result should look like the following example output:
 
-   ```powershell
-    Path                        : \\serverIP\AzsBackupStore\contoso.com\seattle
-    UserName                    : domain\backupadmin
-    AvailableCapacity           : 60 GB
-    BackupFrequencyInHours      : 10
-    BackupRetentionPeriodInDays	: 5
-   ```
+```powershell
+Path                        : \\serverIP\AzsBackupStore\contoso.com\seattle
+UserName                    : domain\backupadmin
+AvailableCapacity           : 60 GB
+BackupFrequencyInHours      : 10
+BackupRetentionPeriodInDays    : 5
+```
 
-### Azure Stack Hub PowerShell 
-The PowerShell cmdlet to configure infrastructure backup is Set-AzsBackupConfiguration. In previous releases, the cmdlet was Set-AzsBackupShare. This cmdlet requires providing a certificate. If infrastructure backup is configured with an encryption key, you can't update the encryption key or view the property. You need to use version 1.6 of the Admin PowerShell.
+### Azure Stack Hub PowerShell
 
-If infrastructure backup was configured before updating to 1901, you can use version 1.6 of the admin PowerShell to set and view the encryption key. Version 1.6 won't allow you to update from encryption key to a certificate file.
-Refer to [Install Azure Stack Hub PowerShell](powershell-install-az-module.md) for more info on installing the correct version of the module.
+The PowerShell cmdlet to configure infrastructure backup is `Set-AzsBackupConfiguration`. In previous releases, the cmdlet was `Set-AzsBackupShare`. This cmdlet requires providing a certificate. If infrastructure backup is configured with an encryption key, you can't update the encryption key or view the property. You must use version 1.6 of the Admin PowerShell.
 
+If infrastructure backup was configured before updating to 1901, you can use version 1.6 of the admin PowerShell to set and view the encryption key. Version 1.6 won't allow you to update from encryption key to a certificate file. See [Install Azure Stack Hub PowerShell](powershell-install-az-module.md) for more information about installing the correct version of the module.
 
 ## Next steps
 
-Learn to run a backup, see [Back up Azure Stack Hub](azure-stack-backup-back-up-azure-stack.md).
-
-Learn to verify that your backup ran, see [Confirm backup completed in administration portal](azure-stack-backup-back-up-azure-stack.md).
+- [Back up Azure Stack Hub](azure-stack-backup-back-up-azure-stack.md)
+- [Confirm backup completed in administration portal](azure-stack-backup-back-up-azure-stack.md)

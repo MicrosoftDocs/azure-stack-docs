@@ -2,10 +2,9 @@
 title: Azure Stack Hub SQL resource provider 1.1.47.0 release notes 
 description: See what's new in the latest Azure Stack Hub SQL resource provider update, including new features, fixes, and known issues.
 author: sethmanheim
-ms.topic: article
-ms.date: 11/26/2019
+ms.topic: release-notes
+ms.date: 01/17/2025
 ms.author: sethm
-ms.reviewer: xiaofmao
 ms.lastreviewed: 11/26/2019
 
 # Intent: As an Azure Stack Hub operator, I want the release notes for the SQL resource provider 1.1.47.0 update so I can see what's new.
@@ -39,7 +38,7 @@ Follow the resource provider update process to apply the SQL resource provider h
 
 ## Known issues
 
-When [rotating certificate](azure-stack-mysql-resource-provider-maintain.md#secrets-rotation) for Azure Stack Hub integrated systems, KeyVaultPfxPassword argument is mendatory, even if there's no intention to update the Key Vault certificate password.
+When you [rotate a certificate](azure-stack-mysql-resource-provider-maintain.md#secrets-rotation) for Azure Stack Hub integrated systems, the `KeyVaultPfxPassword` argument is mandatory, even if there's no intention to update the Key Vault certificate password.
 
 ## Next steps
 

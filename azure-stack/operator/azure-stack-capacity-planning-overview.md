@@ -3,10 +3,9 @@ title: Capacity planning overview
 titleSuffix: Azure Stack Hub
 description: Learn about capacity planning for Azure Stack Hub deployments.
 author: sethmanheim
-ms.topic: conceptual
-ms.date: 05/31/2019
+ms.topic: concept-article
+ms.date: 01/15/2025
 ms.author: sethm
-ms.reviewer: prchint
 ms.lastreviewed: 05/31/2019
 
 # Intent: As an Azure Stack Hub operator, I want to learn about capacity planning for Azure Stack Hub deployments.

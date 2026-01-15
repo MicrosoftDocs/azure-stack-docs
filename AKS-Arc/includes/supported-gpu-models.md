@@ -1,0 +1,78 @@
+---
+author: davidsmatlak
+ms.author: davidsmatlak
+ms.topic: include
+ms.date: 12/16/2025
+ms.reviewer: rmody
+ms.lastreviewed: 12/16/2025
+
+---
+
+## Supported GPU models
+
+The following GPU models are supported by AKS on Azure Local. Note that GPUs are only supported on Linux OS node pools. GPUs are not supported on Windows OS node pools.
+
+| Manufacturer | GPU model | Supported version |
+|--------------|-----------|-------------------|
+| NVidia       | A2        | 2311.2            |
+| NVidia       | A16       | 2402.0            |
+| NVidia       | T4        | 2408.0            |
+| NVidia       | L4        | 2512.0            |
+| NVidia       | L40       | 2512.0            |
+| NVidia       | L40S      | 2512.0            |
+
+## Supported GPU VM sizes
+
+The following VM sizes for each GPU model are supported by AKS on Azure Local.
+
+### Nvidia T4 is supported by NK T4 SKUs
+
+| VM size | GPUs | GPU Memory: GiB | vCPU | Memory: GiB |
+|-----------------|---|----|-----|----|
+| Standard_NK6    | 1 | 8  | 6   | 12 |
+| Standard_NK12   | 2 | 16 | 12  | 24 |
+
+### Nvidia A2 is supported by NC2 A2 SKUs
+
+| VM size | GPUs | GPU Memory: GiB | vCPU | Memory: GiB |
+|-------------------|---|----|----|----|
+| Standard_NC4_A2   | 1 | 16 | 4  | 8  |
+| Standard_NC8_A2   | 1 | 16 | 8  | 16 |
+| Standard_NC16_A2  | 2 | 32 | 16 | 64 |
+| Standard_NC32_A2  | 2 | 32 | 32 | 128 |
+
+### Nvidia A16 is supported by NC2 A16 SKUs
+
+| VM size | GPUs | GPU Memory: GiB | vCPU | Memory: GiB |
+|--------------------|---|----|----|----|
+| Standard_NC4_A16   | 1 | 16 | 4  | 8  |
+| Standard_NC8_A16   | 1 | 16 | 8  | 16 |
+| Standard_NC16_A16  | 2 | 32 | 16 | 64 |
+| Standard_NC32_A16  | 2 | 32 | 32 | 128 |
+
+### Nvidia L4 is supported by NC2 L4 SKUs (Preview)
+
+| VM size | GPUs | GPU Memory: GiB | vCPU | Memory: GiB |
+|--------------------|---|----|----|----|
+| Standard_NC16_L4_1   | 1 | 24 | 16  | 64  |
+| Standard_NC16_L4_2   | 2 | 48 | 16  | 64  |
+| Standard_NC32_L4_1   | 1 | 24 | 32  | 128  |
+| Standard_NC32_L4_2   | 2 | 48 | 32  | 128  |
+
+### Nvidia L40 is supported by NC2 L40 SKUs (Preview)
+
+| VM size | GPUs | GPU Memory: GiB | vCPU | Memory: GiB |
+|--------------------|---|----|----|----|
+| Standard_NC16_L40_1   | 1 | 48 | 16  | 64  |
+| Standard_NC16_L40_2   | 2 | 96 | 16  | 64  |
+| Standard_NC32_L40_1   | 1 | 48 | 32  | 128  |
+| Standard_NC32_L40_2   | 2 | 96 | 32  | 128  |
+
+### Nvidia L40S is supported by NC2 L40S SKUs (Preview)
+
+| VM size | GPUs | GPU Memory: GiB | vCPU | Memory: GiB |
+|--------------------|---|----|----|----|
+| Standard_NC16_L40S_1   | 1 | 48 | 16  | 64  |
+| Standard_NC16_L40S_2   | 2 | 96 | 16  | 64  |
+| Standard_NC32_L40S_1   | 1 | 48 | 32  | 128  |
+| Standard_NC32_L40S_2   | 2 | 96 | 32  | 128  |

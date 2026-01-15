@@ -2,8 +2,8 @@
 title: Differences between Azure Stack Hub and Azure when using services and building apps
 description: Understand the differences between Azure and Azure Stack Hub when using services and building apps.
 author: sethmanheim
-ms.topic: conceptual
-ms.date: 03/26/2021
+ms.topic: product-comparison
+ms.date: 01/21/2025
 ms.author: sethm
 ms.lastreviewed: 11/20/2020
 
@@ -36,14 +36,13 @@ The following table describes the high-level differences between Azure Stack Hub
 | Area | Azure (global) | Azure Stack Hub |
 | -------- | ------------- | ----------|
 | Who operates it? | Microsoft | Your organization or service provider.|
-| Who do you contact for support? | Microsoft | For an integrated system, contact your Azure Stack Hub operator (at your organization or service provider) for support.<br><br>For Azure Stack Development Kit (ASDK) support, visit the [Microsoft forums](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStack). Because the development kit is an evaluation environment, there's no official support offered through Microsoft Support.
-| Available services | See the list of [Azure services](https://azure.microsoft.com/services). Available services vary by Azure region. | Azure Stack Hub supports a subset of Azure services. Actual services will vary based on what your organization or service provider chooses to offer.
-| Azure Resource Manager endpoint* | `https://management.azure.com` | For an Azure Stack Hub integrated system, use the endpoint that your Azure Stack Hub operator provides.<br><br>For the ASDK, use: `https://management.local.azurestack.external`.
-| Portal URL* | [https://portal.azure.com](https://portal.azure.com) | For an Azure Stack Hub integrated system, use the URL that your Azure Stack Hub operator provides.<br><br>For the ASDK, use: `https://portal.local.azurestack.external`.
-| Region | You can select which region you want to deploy to. | For an  Azure Stack Hub integrated system, use the region that's available on your system.<br><br>For the Azure Stack Development Kit (ASDK), the region is always **local**.
+| Who do you contact for support? | Microsoft | For an integrated system, contact your Azure Stack Hub operator (at your organization or service provider) for support.<br><br>For Azure Stack Development Kit (ASDK) support, visit the [Microsoft forums](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStack). Because the development kit is an evaluation environment, there's no official support offered through Microsoft Support. |
+| Available services | See the list of [Azure services](https://azure.microsoft.com/services). Available services vary by Azure region. | Azure Stack Hub supports a subset of Azure services. Actual services will vary based on what your organization or service provider chooses to offer. |
+| Azure Resource Manager endpoint* | `https://management.azure.com` | For an Azure Stack Hub integrated system, use the endpoint that your Azure Stack Hub operator provides.<br><br>For the ASDK, use: `https://management.local.azurestack.external`. |
+| Portal URL* | [https://portal.azure.com](https://portal.azure.com) | For an Azure Stack Hub integrated system, use the URL that your Azure Stack Hub operator provides.<br><br>For the ASDK, use: `https://portal.local.azurestack.external`. |
+| Region | You can select which region you want to deploy to. | For an  Azure Stack Hub integrated system, use the region that's available on your system.<br><br>For the Azure Stack Development Kit (ASDK), the region is always **local**. |
 | Resource groups | A resource group can span regions. | For both integrated systems and the development kit, there's only one region.
-|Supported namespaces, resource types, and API versions | The latest (or earlier versions that aren't yet deprecated). | Azure Stack Hub supports specific versions. See the [Version requirements](#version-requirements) section of this article.
-| | |
+|Supported namespaces, resource types, and API versions | The latest (or earlier versions that aren't yet deprecated). | Azure Stack Hub supports specific versions. See the [Version requirements](#version-requirements) section of this article. |
 
 *If you're an Azure Stack Hub operator, for more information see [Using the administrator portal](../operator/azure-stack-manage-portals.md) and [Administration basics](../operator/azure-stack-manage-basics.md).
 
@@ -53,10 +52,9 @@ Microsoft provides tools and guidance that help you develop for Azure Stack Hub.
 
 | Recommendation | References |
 | -------- | ------------- |
-| Install the correct tools on your developer workstation. | - [Install PowerShell](../operator/powershell-install-az-module.md)<br>- [Download tools](../operator/azure-stack-powershell-download.md)<br>- [Configure PowerShell](azure-stack-powershell-configure-user.md)<br>- [Install Visual Studio](azure-stack-install-visual-studio.md)
+| Install the correct tools on your developer workstation. | - [Install PowerShell](../operator/powershell-install-az-module.md)<br>- [Download tools](../operator/azure-stack-powershell-download.md)<br>- [Configure PowerShell](azure-stack-powershell-configure-user.md)<br>- [Install Visual Studio](azure-stack-install-visual-studio.md) |
 | Review information about the following items:<br>- Azure Resource Manager template considerations.<br>- How to find quickstart templates.<br>- Use a policy module to help you use Azure to develop for Azure Stack Hub. | [Develop for Azure Stack Hub](azure-stack-developer.md) |
-| Review and follow the best practices for templates. | [Resource Manager Quickstart Templates](https://aka.ms/aa6yz42)
-| | |
+| Review and follow the best practices for templates. | [Resource Manager Quickstart Templates](https://aka.ms/aa6yz42) |
 
 ## Version requirements
 
@@ -75,6 +73,7 @@ For other APIs, run the following PowerShell command to output the namespaces, r
 Get-AzResourceProvider | Select ProviderNamespace -Expand ResourceTypes | Select * -Expand ApiVersions | `
 Select ProviderNamespace, ResourceTypeName, @{Name="ApiVersion"; Expression={$_}} 
 ```
+
 ### [AzureRM modules](#tab/azurerm)
 
 ```powershell
@@ -84,10 +83,8 @@ Select ProviderNamespace, ResourceTypeName, @{Name="ApiVersion"; Expression={$_}
 
 ---
 
-
-
-
 Example output (truncated):
+
 ![Example output of Get-AzResourceProvider command](media/azure-stack-considerations/image1.png)
 
 ## Next steps

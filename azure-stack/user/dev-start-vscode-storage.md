@@ -71,7 +71,7 @@ The Azure Stack Hub Resource Manager is a management framework that allows you t
    ```Output
    Account               SubscriptionName  TenantId                             Environment
    -------               ----------------  --------                             -----------
-   username@contoso.com   azure-stack-sub  6d5ff183-b37f-4a5b-9a2f-19959cb4224a username@contoso.com
+   username@contoso.com   azure-stack-sub  aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb username@contoso.com
    ```
 
 3. Make a note of the tenant ID. You will need it when adding the JSON section that configures the Azure Storage extension.

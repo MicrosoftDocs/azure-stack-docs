@@ -4,6 +4,7 @@ title: Set up a development environment in Azure Stack Hub
 description: Get started developing applications for Azure Stack Hub.  
 author: sethmanheim 
 ms.topic: overview 
+ms.custom: linux-related-content
 ms.date: 12/2/2020
 ms.author: sethm 
 ms.reviewer: thoroet 
@@ -11,7 +12,6 @@ ms.lastreviewed: 12/2/2020
 
 # Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
 # Keyword: Notdone: keyword noun phrase
-
 ---
  
 

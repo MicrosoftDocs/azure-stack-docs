@@ -6,6 +6,7 @@ ms.topic: article
 ms.date: 3/26/2021
 ms.author: sethm
 ms.lastreviewed: 3/26/2021
+ms.custom: sfi-image-nochange
 
 # Intent: As an Azure Stack user, I want to use DNS features so I can compare and manage DNS zones.
 # Keyword: azure stack dns zones

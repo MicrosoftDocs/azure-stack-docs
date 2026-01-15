@@ -2,11 +2,10 @@
 title: Manage API version profiles in Azure Stack Hub 
 description: Learn about API version profiles in Azure Stack Hub.
 author: sethmanheim
-
 ms.topic: article
 ms.custom:
   - devx-track-arm-template
-ms.date: 12/6/2021
+ms.date: 10/03/2024
 ms.author: sethm
 ms.reviewer: weshi1
 ms.lastreviewed: 12/6/2021
@@ -20,7 +19,7 @@ ms.lastreviewed: 12/6/2021
 
 API profiles specify the Azure resource provider and the API version for Azure REST endpoints. You can create custom clients in different languages using API profiles. Each client uses an API profile to contact the correct resource provider and API version for Azure Stack Hub.
 
-You can create an app to work with Azure resource providers without having to know exactly which version of each resource provider API is compatible with Azure Stack Hub. Just align your app to a profile and the SDK reverts to the correct API version.
+You can create an app to work with Azure resource providers without having to know exactly which version of each resource provider API is compatible with Azure Stack Hub. Just align your app to a profile and the SDK aligns to the correct API version.
 
 This topic helps you:
 
@@ -81,8 +80,6 @@ Use the  **AzureRM.Bootstrapper** module available through the PowerShell Galler
 Update your environment configuration to use the Azure Stack Hub specific API version profile. For information, see [Use API version profiles for Azure CLI](azure-stack-version-profiles-azurecli2.md).
 - **Go**  
 In the Go SDK, a profile is a combination of different resource types with different versions from different services. Profiles are available under the profiles/path with their version in the **YYYY-MM-DD** format. For information, see [Use API version profiles for Go](azure-stack-version-profiles-go.md).
-- **Ruby**  
-The Ruby SDK for the Azure Stack Hub Resource Manager provides tools to help you build and manage your infrastructure. Resource providers in the SDK include compute, virtual networks, and storage with the Ruby language. For information, see [Use API version profiles with Ruby](azure-stack-version-profiles-ruby.md).
 - **Python**  
 The Python SDK supports API version profiles to target different cloud platforms such as Azure Stack Hub and global Azure. Use API profiles to create solutions for a hybrid cloud. For information, see [Use API version profiles with Python](azure-stack-version-profiles-python.md).
 - **Node.js**  

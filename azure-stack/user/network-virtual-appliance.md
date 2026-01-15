@@ -5,7 +5,7 @@ description: Troubleshoot VM or VPN connectivity problems when using a network v
 author: sethmanheim
 ms.author: sethm
 ms.date: 07/27/2021
-ms.topic: article
+ms.topic: troubleshooting-general
 ms.reviewer: unknown
 ms.lastreviewed: 11/22/2020
 

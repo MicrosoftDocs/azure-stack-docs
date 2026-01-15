@@ -3,13 +3,13 @@ title: Register Azure Stack Hub with Azure
 titleSuffix: Azure Stack Hub
 description: Learn how to register Azure Stack Hub integrated systems with Azure so you can download Azure Marketplace items and set up data reporting.
 author: sethmanheim
-
 ms.topic: how-to
-ms.date: 03/12/2024
+ms.date: 06/06/2025
 ms.author: sethm
+zone_pivot_groups: state-connected-disconnected
 ms.custom:
   - devx-track-azurepowershell
-zone_pivot_groups: state-connected-disconnected
+  - sfi-image-nochange
 
 # Intent: As an Azure Stack operator, I want to register my Azure Stack with Azure so I can download marketplace items and set up data reporting.
 # Keyword: register azure stack (registration)
@@ -18,8 +18,6 @@ zone_pivot_groups: state-connected-disconnected
 # Register Azure Stack Hub with Azure
 
 Register Azure Stack Hub with Azure so you can download Azure Marketplace items from Azure and set up commerce data reporting back to Microsoft. After you register Azure Stack Hub, usage is reported to Azure commerce and you can see it under the Azure billing Subscription ID used for registration.
-
-The information in this article describes registering Azure Stack Hub integrated systems with Azure. For information about registering the ASDK with Azure, see [Azure Stack Hub registration](../asdk/asdk-register.md) in the ASDK documentation.
 
 > [!IMPORTANT]
 > Registration is required to support full Azure Stack Hub functionality, including offering items in the marketplace. You'll be in violation of Azure Stack Hub licensing terms if you don't register when using the pay-as-you-use billing model. To learn more about Azure Stack Hub licensing models, see the [How to buy page](https://azure.microsoft.com/overview/azure-stack/how-to-buy/).
@@ -67,11 +65,9 @@ Before registering Azure Stack Hub with Azure, you must have:
 
 - Registered the Azure Stack Hub resource provider (see the following Register Azure Stack Hub Resource Provider section for details).
 
-After registration, Microsoft Entra Global Administrator permission isn't required. However, some operations may require the global admin credential (for example, a resource provider installer script or a new feature requiring a permission to be granted). You can either temporarily reinstate the account's global admin permissions or use a separate global admin account that's an owner of the *default provider subscription*.
+The user that registers Azure Stack Hub is the owner of the service principal in Microsoft Entra ID. Only the user who registered Azure Stack Hub can modify the Azure Stack Hub registration. All other users must be added to 'Default Provider Subscription' through 'Access control (IAM)'. If a non-admin user that's not an owner of the registration service principal attempts to register or re-register Azure Stack Hub, they may come across a 403 response. A 403 response indicates the user has insufficient permissions to complete the operation.
 
-The user that registers Azure Stack Hub is the owner of the service principal in Microsoft Entra ID. Only the user who registered Azure Stack Hub can modify the Azure Stack Hub registration. All other users, even if they're a global admin, must be added to 'Default Provider Subscription' through 'Access control (IAM)'. If a non-admin user that's not an owner of the registration service principal attempts to register or re-register Azure Stack Hub, they may come across a 403 response. A 403 response indicates the user has insufficient permissions to complete the operation.
-
-If you don't have an Azure subscription that meets these requirements, you can [create a free Azure account here](https://azure.microsoft.com/free/?b=17.06). Registering Azure Stack Hub incurs no cost on your Azure subscription.
+If you don't have an Azure subscription that meets these requirements, you can [create a free Azure account here](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn). Registering Azure Stack Hub incurs no cost on your Azure subscription.
 
 > [!NOTE]
 > If you have more than one Azure Stack Hub, a best practice is to register each Azure Stack Hub to its own subscription. This makes it easier for you to track usage.
@@ -232,7 +228,8 @@ Connected environments can access the internet and Azure. For these environments
       -BillingModel PayAsYouUse `
       -RegistrationName $RegistrationName
    ```
-   For more information on the Set-AzsRegistration cmdlet, see [Registration reference](#registration-reference).
+
+   For more information about the `Set-AzsRegistration` cmdlet, see the [Registration reference](#registration-reference).
 
 ---
 
@@ -242,7 +239,7 @@ Connected environments can access the internet and Azure. For these environments
 
 Use these steps to register Azure Stack Hub with Azure using the capacity billing model.
 
-> [!Note]
+> [!NOTE]
 > All these steps must be run from a computer that has access to the privileged endpoint (PEP). For details about the PEP, see [Using the privileged endpoint in Azure Stack Hub](azure-stack-privileged-endpoint.md).
 
 Connected environments can access the internet and Azure. For these environments, you need to register the Azure Stack Hub resource provider with Azure and then configure your billing model.
@@ -537,7 +534,10 @@ Set-AzsRegistration -PrivilegedEndpointCredential $YourCloudAdminCredential -Pri
 
 ### Change billing model, how features are offered, or re-register your instance
 
-This section applies if you want to change the billing model, how features are offered, or you want to re-register your instance. For all of these cases, you call the registration function to set the new values. You don't need to first remove the current registration. Sign in to the subscription ID shown in the [administrator portal](#verify-azure-stack-hub-registration), and then rerun registration with a new `BillingModel` value while keeping the `RegistrationName` and `ResourceGroupName` parameters values same as shown in the [administrator portal](#verify-azure-stack-hub-registration):
+This section applies if you want to change the billing model, how features are offered, or you want to re-register your instance. For all of these cases, you call the registration function to set the new values. You don't need to first remove the current registration. Sign in to the subscription ID shown in the [administrator portal](#verify-azure-stack-hub-registration), and then rerun registration with a new `BillingModel` value while keeping the `RegistrationName` and `ResourceGroupName` parameters values same as shown in the [administrator portal](#verify-azure-stack-hub-registration).
+
+> [!NOTE]
+> When changing to a capacity model, you need additional parameters to run the `Set-AzsRegistration` command. For more information, see [Register with capacity billing](#register-with-capacity-billing).
 
 ### [Az modules](#tab/az4)
 
@@ -658,7 +658,7 @@ You can use **Set-AzsRegistration** to register Azure Stack Hub with Azure and e
 
 To run the cmdlet, you need:
 
-- A global Azure subscription of any type.
+- An Azure subscription of any type.
 - To be signed in to Azure PowerShell with an account that's an owner or contributor to that subscription.
 
 ```powershell

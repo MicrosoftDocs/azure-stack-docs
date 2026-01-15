@@ -3,7 +3,7 @@ title: Azure Stack Hub archived known issues
 description: Learn about archived known issues in Azure Stack Hub releases.
 author: sethmanheim
 ms.topic: article
-ms.date: 05/25/2023
+ms.date: 03/12/2025
 ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 09/09/2020
@@ -20,6 +20,242 @@ To access known issues for a different archived version, use the version selecto
 <!---------------------------------------------------------->
 <!------------------- SUPPORTED VERSIONS ------------------->
 <!---------------------------------------------------------->
+
+::: moniker range="azs-2406"
+
+<!-- ## Update -->
+
+## Compute
+
+### Azure Kubernetes Service on Azure Stack Hub
+
+- Applicable: This issue applies to release 2311 and later.
+- Cause: Azure Kubernetes Service on Azure Stack Hub, currently in preview, is being discontinued and won't be released to general availability. If you try to register a new subscription to the **Microsoft.Containerservice** resource provider, the registration stays in the **Registering** state. If you try to create a new managed Kubernetes cluster or access existing managed Kubernetes clusters, you might see the raining cloud error screen.
+- Remediation: Microsoft is aware of the problem and is working on a fix.
+- Occurrence: Common.
+
+### Standard Load Balancer portal error
+
+- Applicable: This issue applies to release 2406 and later.
+- Cause: The Standard Load Balancer portal blades for **Logs** and **Diagnostic settings** both show errors displaying the content.
+- Remediation: The Standard Load Balancer in Azure Stack Hub does not support any diagnostic features.
+- Occurrence: Common.
+
+### A-series VMs deprecated
+
+- Applicable: This issue applies to release 2406 and later.
+- Cause: The A-series VMs are deprecated in Azure, so they shouldn't be used in Azure Stack Hub.
+- Remediation: Although Azure Stack Hub isn't removing the A-series SKU, other undefined behavior might occur if you continue using it (such as with the load balancer, VMSS, etc.). Therefore, you should use a different VM SKU when you're ready. There is no cost difference in using different VM SKUs on Azure Stack Hub.
+- Occurrence: Common.
+
+## Portal
+
+### Deployments blade under subscription fails to load
+
+- Applicable: This issue applies to release 2406 and later.
+- Cause: Due to a change in how subscription-level deployments are stored, an internal server error occurs when deploying or viewing deployments at subscription scope.
+- Remediation: This issue is fixed in release 2501.
+- Occurrence: Common.
+
+### Nodes blade fails to load
+
+- Applicable: This issue applies to release 2311 and later.
+- Cause: The **Nodes** blade on the portal fails to load when a GPU property isn't configured.
+- Remediation: Microsoft is aware of the issue and is working on a fix.
+- Occurrence: Occasional.
+
+<!-- ## Alerts -->
+
+<!-- ## Datacenter integration -->
+
+<!-- ## Storage -->
+
+<!-- ## SQL and MySQL-->
+
+<!-- ## App Service -->
+
+<!-- ## Resource providers -->
+
+<!-- ## Usage -->
+
+<!-- ### Identity -->
+
+<!-- ### Marketplace -->
+
+<!-- ## Event Hubs -->
+
+::: moniker-end
+
+::: moniker range="azs-2311"
+
+<!-- ## Update -->
+
+<!-- ## Networking -->
+
+## Compute
+
+### Azure Kubernetes Service on Azure Stack Hub
+
+- Applicable: This issue applies to release 2311 and later.
+- Cause: Azure Kubernetes Service on Azure Stack Hub, currently in preview, is being discontinued and won't be released to general availability. If you try to register a new subscription to the **Microsoft.Containerservice** resource provider, the registration stays in the **Registering** state. If you try to create a new managed Kubernetes cluster or access existing managed Kubernetes clusters, you might see the raining cloud error screen.
+- Remediation: Microsoft is aware of the problem and is working on a fix.
+- Occurrence: Common.
+
+### Shutdown using Start-AzsCryptoWipe does not work
+
+- Applicable: This issue applies to release 2311.
+- Cause: In some cases when you run the `Start-AzsCryptoWipe` [command to shut down Azure Stack Hub](/azure-stack/operator/azure-stack-hub-decommission#shut-down-azure-stack-hub), one of the physical machines is not powered off.
+- Remediation: If you see that any physical machine is not powered down, you must turn off that machine through the Baseboard Management Controller (BMC).
+- Occurrence: Common.
+
+## Storage
+
+### False storage volume utilization alert in Test-AzureStack report
+
+- Applicable: This issue applies to release 2311 and later.
+- Cause: The new OS build with 2311 introduces a new system alert for thin provisioning: an alert is raised when the storage pool usage exceeds 70%. Fixed-size volumes are used in the Azure Stack Hub deployment, so the 70% threshold is always exceeded. You can find this warning in the Test-AzureStack reports.
+- Remediation: You can ignore the alert in the Test-AzureStack report. Microsoft is aware of the issue and is working on a fix.
+- Occurrence: Common.
+
+## Networking
+
+### Outbound ICMP to internet is blocked by default for tenant VM
+
+- Applicable: This issue applies to release 2311 and later.
+- Cause: The issue is caused by a change in the default ICMP behavior introduced with Windows Server 2022 that diverges from previous behavior, as well as Azure behavior.
+- Remediation: You can add an inbound NSG rule to allow outbound ICMP packets to the internet. Microsoft is aware of the issue.
+- Occurrence: Common.
+
+<!-- ## Alerts -->
+
+## Portal
+
+### Can't use Flow Timeout and BGP community string DNS options in the portal
+
+- Applicable: This issue applies to release 2311.
+- Cause: In the Azure Stack Hub user portal, under the **Virtual Networks** section, there are three new options for virtual networks: **DNS Servers**, **Flow Timeout**, and **BGP community string**. You can successfully modify the DNS configuration using the **DNS Servers** option. However, attempts to use the **Flow Timeout** and **BGP community string** options result in a failure within the portal notifications. No changes are made to the underlying services; the errors are only in the portal.
+- Remediation: Microsoft is aware of the problem and is working on a fix.
+- Occurrence: Common.
+
+### False deployment error in portal for API app deployment
+
+- Applicable: This issue applies to release 2311 and later.
+- Cause: Some users might see an error message with error code **templateLinkAndJson** when deploying an API application from the marketplace, even though the deployment was successful.
+- Remediation: Check your API app after deployment to ensure deployment was successful. Microsoft is aware of the problem and is working on a fix.
+- Occurrence: Common.
+
+### Nodes blade fails to load
+
+- Applicable: This issue applies to release 2311 and later.
+- Cause: The **Nodes** blade on the portal fails to load when a GPU property isn't configured.
+- Remediation: Microsoft is aware of the issue and is working on a fix.
+- Occurrence: Occasional.
+
+<!-- ## Datacenter integration -->
+
+<!-- ## Storage -->
+
+<!-- ## SQL and MySQL-->
+
+<!-- ## App Service -->
+
+## Resource providers
+
+### Incorrect rotation status after secret rotation of resource provider certificates
+
+- Applicable: This issue applies to all Azure Stack Hub add-on resource providers.
+- Cause: After secret rotation, the rotation state shows as "in progress" even though the rotation completed successfully, the provisioning state shows "successful," and the expiration date is updated.
+- Remediation: None. No impact to your system or workloads.
+- Occurrence: All supported versions of Azure Stack Hub.
+
+<!-- ## Usage -->
+
+<!-- ### Identity -->
+
+<!-- ### Marketplace -->
+
+<!-- ## Event Hubs -->
+
+::: moniker-end
+
+::: moniker range="azs-2306"
+<!-- ## Update -->
+
+<!-- ## Networking -->
+
+<!-- ## Compute -->
+
+<!-- ## Alerts -->
+
+<!-- ## Portal -->
+
+<!-- ## Datacenter integration -->
+
+<!-- ## Storage -->
+
+<!-- ## SQL and MySQL-->
+
+## App Service
+
+### Incorrect rotation status after secret rotation of resource provider certificates
+
+- Applicable: This issue applies to all Azure Stack Hub add-on resource providers.
+- Cause: After secret rotation, the rotation state shows as "in progress" even though the rotation completed successfully, the provisioning state shows "successful," and the expiration date is updated.
+- Remediation: None. No impact to your system or workloads.
+- Occurrence: All supported versions of Azure Stack Hub.
+
+<!-- ## Usage -->
+
+<!-- ### Identity -->
+
+<!-- ### Marketplace -->
+
+<!-- ## Event Hubs -->
+
+::: moniker-end
+
+::: moniker range="azs-2301"
+<!-- ## Update -->
+
+<!-- ## Networking -->
+
+<!-- ## Compute -->
+
+<!-- ## Alerts -->
+
+## Portal
+
+### Incorrect reporting of node CPU cores in the admin portal
+
+- Applicable: This issue applies to release 2301.
+- Cause: The number of cores reported in the Azure Stack Hub admin portal in the cluster **Nodes Capacity** window is incorrect. This is cosmetic and an issue with a change in 2301 with respect to how the Fabric Resource Provider gets this information. This impacts both new deployments and existing stamps updating to 2301, but doesn't affect operation of the stamp or any workload deployments.
+- Remediation: Microsoft is aware of the problem and is working on a fix.
+- Occurrence: Minor portal issue that occurs consistently.
+
+<!-- ## Datacenter integration -->
+
+<!-- ## Storage -->
+
+<!-- ## SQL and MySQL-->
+
+## App Service
+
+### Incorrect rotation status after secret rotation of resource provider certificates
+
+- Applicable: This issue applies to all Azure Stack Hub add-on resource providers.
+- Cause: After secret rotation, the rotation state shows as "in progress" even though the rotation completed successfully, the provisioning state shows "successful," and the expiration date is updated.
+- Remediation: None. No impact to your system or workloads.
+- Occurrence: All supported versions of Azure Stack Hub.
+
+<!-- ## Usage -->
+
+<!-- ### Identity -->
+
+<!-- ### Marketplace -->
+
+<!-- ## Event Hubs -->
+
+::: moniker-end
 
 ::: moniker range="azs-2206"
 <!-- ## Update -->
@@ -604,7 +840,7 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 
 - Applicable: This issue applies to all supported releases.
 - Cause: You cannot view permissions to your subscription using the Azure Stack Hub portals.
-- Remediation: Use [PowerShell to verify permissions](/powershell/module/azurerm.resources/get-azurermroleassignment).
+- Remediation: Use [PowerShell to verify permissions](/powershell/module/az.resources/get-azroleassignment).
 - Occurrence: Common
 
 ### Storage account options
@@ -812,7 +1048,7 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 
 - Applicable: This issue applies to all supported releases.
 - Cause: You cannot view permissions to your subscription using the Azure Stack Hub portals.
-- Remediation: Use [PowerShell to verify permissions](/powershell/module/azurerm.resources/get-azurermroleassignment).
+- Remediation: Use [PowerShell to verify permissions](/powershell/module/az.resources/get-azroleassignment).
 - Occurrence: Common
 
 ### Storage account settings
@@ -1064,7 +1300,7 @@ To access known issues for a different version, use the version selector dropdow
 
 - Applicable: This issue applies to all supported releases.
 - Cause: You cannot view permissions to your subscription using the Azure Stack portals.
-- Remediation: Use [PowerShell to verify permissions](/powershell/module/azurerm.resources/get-azurermroleassignment).
+- Remediation: Use [PowerShell to verify permissions](/powershell/module/az.resources/get-azroleassignment).
 - Occurrence: Common
 
 ### Storage account settings
@@ -1220,7 +1456,7 @@ To access known issues for a different version, use the version selector dropdow
 
 - Applicable: This issue applies to all supported releases.
 - Cause: You cannot view permissions to your subscription using the Azure Stack portals.
-- Remediation: Use [PowerShell to verify permissions](/powershell/module/azurerm.resources/get-azurermroleassignment).
+- Remediation: Use [PowerShell to verify permissions](/powershell/module/az.resources/get-azroleassignment).
 - Occurrence: Common
 
 ### Storage account settings
@@ -1375,7 +1611,7 @@ To access known issues for a different version, use the version selector dropdow
 
 - Applicable: This issue applies to all supported releases.
 - Cause: You cannot view permissions to your subscription using the Azure Stack portals.
-- Remediation: Use [PowerShell to verify permissions](/powershell/module/azurerm.resources/get-azurermroleassignment).
+- Remediation: Use [PowerShell to verify permissions](/powershell/module/az.resources/get-azroleassignment).
 - Occurrence: Common
 
 ### Subscriptions Properties blade
@@ -1551,7 +1787,7 @@ This article lists known issues in the 1905 release of Azure Stack. The list is 
 
 - Applicable: This issue applies to all supported releases.
 - Cause: You cannot view permissions to your subscription using the Azure Stack portals.
-- Remediation: Use [PowerShell to verify permissions](/powershell/module/azurerm.resources/get-azurermroleassignment).
+- Remediation: Use [PowerShell to verify permissions](/powershell/module/az.resources/get-azroleassignment).
 - Occurrence: Common
 
 ### Marketplace management
@@ -1635,13 +1871,6 @@ The error occurs if you enable boot diagnostics on a VM, but delete your boot di
 
 ### Virtual machine scale set
 
-#### CentOS
-
-- Applicable: This issue applies to all supported releases.
-- Cause: The virtual machine scale set creation experience provides CentOS-based 7.2 as an option for deployment. CentOS 7.2 is not available on Azure Stack Marketplace which will cause deployment failures calling out that the image is not found.
-- Remediation: Select another operating system for your deployment, or use an Azure Resource Manager template specifying another CentOS image that has been downloaded prior to deployment from the marketplace by the operator.
-- Occurrence: Common
-
 #### Remove scale set
 
 - Applicable: This issue applies to all supported releases.
@@ -1716,7 +1945,7 @@ This article lists known issues in the 1904 release of Azure Stack. The list is 
 
 - Applicable: This issue applies to all supported releases.
 - Cause: You cannot view permissions to your subscription using the Azure Stack portals.
-- Remediation: Use [PowerShell to verify permissions](/powershell/module/azurerm.resources/get-azurermroleassignment).
+- Remediation: Use [PowerShell to verify permissions](/powershell/module/az.resources/get-azroleassignment).
 - Occurrence: Common
 
 ### Docker extension
@@ -1813,13 +2042,6 @@ The error occurs if you enable boot diagnostics on a VM, but delete your boot di
 
 ### Virtual machine scale set
 
-#### CentOS
-
-- Applicable: This issue applies to all supported releases.
-- Cause: The virtual machine scale set creation experience provides CentOS-based 7.2 as an option for deployment. CentOS 7.2 is not available on Azure Stack Marketplace which will cause deployment failures calling out that the image is not found.
-- Remediation: Select another operating system for your deployment, or use an Azure Resource Manager template specifying another CentOS image that has been downloaded prior to deployment from the marketplace by the operator.
-- Occurrence: Common
-
 #### Remove scale set
 
 - Applicable: This issue applies to all supported releases.
@@ -1883,13 +2105,13 @@ The error occurs if you enable boot diagnostics on a VM, but delete your boot di
 ## Storage
 
 - Applicable: This issue applies to all supported releases.
-- Cause: [ConvertTo-AzureRmVMManagedDisk](/powershell/module/azurerm.compute/convertto-azurermvmmanageddisk) is not supported in Azure Stack and results in creating a disk with **$null** ID. This prevents you from performing operations on the VM, such as start and stop. The disk does not appear in the UI, nor does it appear via the API. The VM at that point cannot be repaired and must be deleted.
+- Cause: [ConvertTo-AzVMManagedDisk](/powershell/module/az.compute/convertto-azvmmanageddisk) is not supported in Azure Stack and results in creating a disk with **$null** ID. This prevents you from performing operations on the VM, such as start and stop. The disk does not appear in the UI, nor does it appear via the API. The VM at that point cannot be repaired and must be deleted.
 - Remediation: To convert your disks correctly, follow the [convert to managed disks guide](../../user/azure-stack-managed-disk-considerations.md#convert-to-managed-disks).
 
 ## App Service
 
 - Tenants must register the storage resource provider before creating their first Azure Function in the subscription.
-- Some tenant portal user experiences are broken due to an incompatibility with the portal framework in 1903; principally, the UX for deployment slots, testing in production and site extensions. To work around this issue, use the [Azure App Service PowerShell module](/azure/app-service/deploy-staging-slots#automate-with-powershell) or the [Azure CLI](/cli/azure/webapp/deployment/slot). The portal experience will be restored by upgrading your deployment of [Azure App Service on Azure Stack to 1.6 (Update 6)](../azure-stack-app-service-release-notes-update-six.md).
+- Some tenant portal user experiences are broken due to an incompatibility with the portal framework in 1903; principally, the UX for deployment slots, testing in production and site extensions. To work around this issue, use the [Azure App Service PowerShell module](/azure/app-service/deploy-staging-slots#automate-with-powershell) or the [Azure CLI](/cli/azure/webapp/deployment/slot). The portal experience will be restored by upgrading your deployment of Azure App Service on Azure Stack to 1.6 (Update 6).
 
 ## Next steps
 

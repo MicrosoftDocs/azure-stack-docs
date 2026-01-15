@@ -3,13 +3,14 @@ title: Back up Azure Stack | Microsoft Docs
 description: Learn how to do an on-demand backup on Azure Stack.
 services: azure-stack
 author: sethmanheim
-manager: femila
+manager: lizross
 ms.service: azure-stack
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/08/2021
 ms.author: sethm
 ms.reviewer: hectorl
 ms.lastreviewed: 12/16/2018
+ms.custom: sfi-image-nochange
 
 ---
 

@@ -1,14 +1,15 @@
 ---
 title: App Service on Azure Stack Hub update 8 release notes
 description: Update 8 release notes for App Service on Azure Stack Hub, including new features, fixes, and known issues.
-author: apwestgarth
+author: sethmanheim
 manager: stefsch
-ms.topic: article
+ms.topic: release-notes
 ms.date: 11/17/2020
-ms.author: anwestg
+ms.author: sethm
 ms.reviewer: anwestg
 ms.lastreviewed: 03/25/2019
 ROBOTS: NOINDEX
+ms.custom: sfi-ropc-nochange
 
 # Intent: As an Azure Stack Hub operator, I want the release notes for update 8 of App Service on Azure Stack Hub so I can know the new features, fixes, and known issues.
 # Keyword: app service azure stack hub update 8 release notes
@@ -313,7 +314,7 @@ In some cases, where a high number of sites are allocated to a worker or a site 
 
 To mitigate this issue remote to the individual worker and clear out the contents of the folder.
 
-This issue has been fixed in [App Service on Azure Stack Hub 2020 Q3](app-service-release-notes-2020-Q3.md), we encourage customers to upgrade to the 2020 Q3 release as soon as possible.
+This issue was fixed in a later release.
 
 > [!IMPORTANT]
 > In order to update to Azure App Service on Azure Stack Hub 2020 Q3 you **must** upgrade to Azure Stack Hub 2008

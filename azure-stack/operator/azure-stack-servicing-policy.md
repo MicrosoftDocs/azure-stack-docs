@@ -3,10 +3,9 @@ title: Azure Stack Hub servicing policy
 titleSuffix: Azure Stack Hub
 description: Learn about the Azure Stack Hub servicing policy and how to keep an integrated system in a supported state.
 author: sethmanheim
-ms.topic: article
-ms.date: 04/26/2024
+ms.topic: how-to
+ms.date: 09/22/2025
 ms.author: sethm
-ms.lastreviewed: 03/18/2020
 
 # Intent: As an Azure Stack operator, I want to learn about servicing policy and how to keep an integrated system supported.
 # Keyword: servicing policy azure stack
@@ -26,8 +25,6 @@ Full update packages are hosted in a secure Azure endpoint. You can download the
 
 Hotfix update packages are hosted in the same secure Azure endpoint. You can download them using the embedded links in each of the respective hotfix KB articles; for example, [Azure Stack Hub Hotfix 1.1809.12.114](https://support.microsoft.com/help/4481548/azure-stack-hotfix-1-1809-12-114). Similar to the full, monthly update packages, Azure Stack Hub operators can download the .xml and .zip files and import them using the procedure in [Apply updates in Azure Stack Hub](azure-stack-apply-updates.md). Azure Stack Hub operators with connected scale units will see the hotfixes automatically appear in the administrator portal with the message **Update available**.
 
-If your scale unit isn't connected and you want to be notified about each hotfix release, subscribe to the [RSS feed](https://azurestackhubdocs.azurewebsites.net/xml/hotfixes.rss) to be notified about each hotfix release.
-
 ## Update package types
 
 There are two types of update packages for integrated systems:
@@ -46,19 +43,19 @@ Find documentation on how to plan for and manage updates, and how to determine y
 
 For information about a specific update, including how to download it, see the release notes for that update:
 
-- [Azure Stack Hub 2311 update](./release-notes.md?preserve-view=true&view=azs-2311)
-- [Azure Stack Hub 2306 update](./release-notes.md?preserve-view=true&view=azs-2306)
-- [Azure Stack Hub 2301 update](./release-notes.md?preserve-view=true&view=azs-2301)
+- [Azure Stack Hub 2506 update](./release-notes.md?view=azs-2506&preserve-view=true)
+- [Azure Stack Hub 2501 update](./release-notes.md?view=azs-2501&preserve-view=true)
+- [Azure Stack Hub 2408 update](./release-notes.md?view=azs-2408&preserve-view=true)
 
 ## Hotfixes
 
 Occasionally, Microsoft provides hotfixes for Azure Stack Hub that address a specific issue that's often preventative or time-sensitive. Each hotfix is released with a corresponding Microsoft Knowledge Base (KB) article that details the issues addressed in that hotfix.
 
-Hotfixes are downloaded and installed just like the regular full update packages for Azure Stack Hub. However, unlike a full update, hotfixes can install in minutes. We recommend Azure Stack Hub operators set maintenance windows when installing hotfixes. Hotfixes update the version of your Azure Stack Hub cloud so you can easily determine if the hotfix has been applied. A separate hotfix is provided for each version of Azure Stack Hub that's still in support. **Each hotfix for a specific iteration is cumulative and includes the previous hotfixes for that same version.** You can read more about the applicability of a specific hotfix in the corresponding KB article. See the release notes links in the previous section.
+Hotfixes are downloaded and installed just like the regular full update packages for Azure Stack Hub. However, unlike a full update, hotfixes can install in minutes. We recommend Azure Stack Hub operators set maintenance windows when installing hotfixes. Hotfixes update the version of your Azure Stack Hub cloud so you can easily determine if the hotfix has been applied. A separate hotfix is provided for each version of Azure Stack Hub that's still in support. Each hotfix for a specific iteration is cumulative and includes the previous hotfixes for that same version. You can read more about the applicability of a specific hotfix in the corresponding KB article. See the release notes links in the previous section.
 
-Before you update to a new major version, apply the latest hotfix in the **current** major version. It is recommended that cloud operators keep their scale units updated with hotfixes as they are released; for example, installing hotfixes within 45 days of their release date, if possible.
+Before you update to a new major version, apply the latest hotfix in the current major version. It is recommended that cloud operators keep their scale units updated with hotfixes as they are released; for example, installing hotfixes within 45 days of their release date, if possible.
 
-Starting with build 2005, when you update to a **new** major version (for example, 1.2005.x to 1.2008.x), the latest hotfixes (if any are available at the time of package download) in the new major version are installed automatically. Your 2008 installation is then current with all hotfixes. From that point forward, if a hotfix is released for 2008, you should install it.
+Starting with build 2005, when you update to a new major version (for example, 1.2005.x to 1.2008.x), the latest hotfixes (if any are available at the time of package download) in the new major version are installed automatically. Your 2008 installation is then current with all hotfixes. From that point forward, if a hotfix is released for 2008, you should install it.
 
 For information about currently available hotfixes, [see the release notes](release-notes.md) "Hotfixes" section for that update.
 
@@ -78,13 +75,15 @@ You must also have an active support agreement with the hardware partner that ma
 
 Hotfixes aren't considered major update versions. If your Azure Stack Hub instance is behind by more than two updates, it's considered out of compliance. You must update to at least the minimum supported version (N-2) to receive support.
 
-For example, if the most recent update version available is 2311 (N), the two previous update versions were 2306 and 2301, which means both 2306 (N-1) and 2301 (N-2) remain in support. However, the 2206 (and earlier) version is out of support, as 2206 was N-3 when the 2311 update was released. For the current release of Azure Stack Hub, the following versions are considered in support:
+For example, if the most recent update version available is 2506 (N), the two previous update versions were 2501 and 2408, which means both 2501 (N-1) and 2408 (N-2) remain in support. However, the 2406 (and earlier) version is out of support, as 2406 was N-3 when the 2506 update was released. For the current release of Azure Stack Hub, the following versions are considered in support:
 
-- [Azure Stack Hub 2311](./release-notes.md?preserve-view=true&view=azs-2311)
-- [Azure Stack Hub 2306](./release-notes.md?preserve-view=true&view=azs-2306)
-- [Azure Stack Hub 2301](./release-notes.md?preserve-view=true&view=azs-2301)
+- [Azure Stack Hub 2506](./release-notes.md?view=azs-2506&preserve-view=true)
+- [Azure Stack Hub 2501](./release-notes.md?view=azs-2501&preserve-view=true)
+- [Azure Stack Hub 2408](./release-notes.md?view=azs-2408&preserve-view=true)
 
 Microsoft software update packages are non-cumulative and require the previous update package and latest hotfix to be installed as a prerequisite. If you decide to defer one or more updates, consider the overall runtime required to update to the latest version.
+
+:::image type="content" source="media/azure-stack-servicing-policy/servicing-policy-workflow.svg" alt-text="Diagram showing Azure Stack Hub servicing policy workflow." lightbox="media/azure-stack-servicing-policy/servicing-policy-workflow.svg":::
 
 ### Resource provider version support
 

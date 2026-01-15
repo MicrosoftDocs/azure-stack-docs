@@ -4,7 +4,7 @@ description: Appendices for Azure Stack Hub ruggedized networking.
 author: sethmanheim
 ms.author: sethm
 ms.service: azure-stack
-ms.topic: conceptual
+ms.topic: article
 ms.date: 10/14/2020
 ms.lastreviewed: 10/14/2020
 ---

@@ -2,8 +2,8 @@
 title: Azure Stack Hub Operator Access Workstation
 description: Learn how to download and configure an Azure Stack Hub Operator Access Workstation.
 author: sethmanheim
-ms.topic: article
-ms.date: 05/07/2021
+ms.topic: how-to
+ms.date: 01/29/2025
 ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 04/09/2021
@@ -15,32 +15,28 @@ ms.lastreviewed: 04/09/2021
 
 # Azure Stack Hub Operator Access Workstation
 
-The Operator Access Workstation (OAW) is used to deploy a virtual machine (VM)
-on an Azure Stack Hub's--Hardware Lifecycle Host (HLH) or any other machine that runs Microsoft Hyper-V. It does require network connectivity to the Azure
-Stack Hub endpoints to be used for operator or user scenarios.
+The Operator Access Workstation (OAW) is used to deploy a virtual machine (VM) on an Azure Stack Hub Hardware Lifecycle Host (HLH) or any other machine that runs Microsoft Hyper-V. It requires network connectivity to Azure Stack Hub endpoints, which can be used in operator or user scenarios.
 
-The OAW VM is an optional virtual machine that isn't required by Azure Stack
-Hub to function. Its purpose is to provide the latest tools to operators or user
-as they interact with Azure Stack Hub.
+The OAW VM is an optional virtual machine that isn't required by Azure Stack Hub to function. Its purpose is to provide the latest tools to operators or users as they interact with Azure Stack Hub.
 
 ## OAW scenarios
 
 The following tables list common scenarios for the OAW. Use Remote Desktop to connect to the OAW.
 
-| **Scenario**                                                                                                                                          | **Description**                                                                                                                                                                                                                                                                                                         |
+| Scenario                                                                                                                                          | Description                                                                                                                                                                                                                                                                                                         |
 |-------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [Access the Administration portal](./azure-stack-manage-portals.md)                    | Perform administrative operations.                                                                                                                                                                                                                                                                                       |
+| [Access the Administrator portal](./azure-stack-manage-portals.md)                    | Perform administrative operations.                                                                                                                                                                                                                                                                                       |
 | [Access PEP](./azure-stack-privileged-endpoint.md)                                     | Log collection and upload:<br>-[Create an SMB share](#transfer-files-between-the-hlh-and-oaw) on the HLH for file transfer from Azure Stack Hub.<br>-Use Azure Storage Explorer to upload logs saved to the SMB share. |
-| [Register Azure Stack Hub](./azure-stack-registration.md#renew-or-change-registration) | For re-registration, get previous Registration Name and Resource Group from the Administration portal.                                                                                                                                                                                                                   |
+| [Register Azure Stack Hub](./azure-stack-registration.md#renew-or-change-registration) | For re-registration, get previous registration name and resource group from the Administrator portal.                                                                                                                                                                                                                   |
 | [Marketplace syndication](./azure-stack-download-azure-marketplace-item.md)            | [Create an SMB share](#transfer-files-between-the-hlh-and-oaw) on the HLH to store the downloaded image or extension.                                                                                                     |
 | [Create Virtual Machines](../user/azure-stack-quick-create-vm-windows-cli.md)                    | Create virtual machines using Azure CLI.                                                                                                                                                                                                                                                                                       |
-| [Manage AKS](../user/azure-stack-kubernetes-aks-engine-scale.md)                                 | Manage AKS clusters, for example,  scale or upgrade.                                                                                                                                                                                                                                                                        |
+| [Manage AKS](../user/azure-stack-kubernetes-aks-engine-scale.md)                                 | Manage AKS clusters; for example, scale or upgrade.                                                                                                                                                                                                                                                                        |
 
 ## Pre-installed software
 
 The following table lists the pre-installed software on the OAW VM.
 
-| **Software Name**                                                                                              | **Location**                                                         |
+| Software Name                                                                                              | Location                                                         |
 |----------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------|
 | [Microsoft Edge for Business](https://www.microsoft.com/edge/business/)                                        | [SystemDrive]\\Program Files (x86)\\Microsoft\\Edge\\Application     |
 | [Az Modules](./powershell-install-az-module.md) | [SystemDrive]\\ProgramFiles\\WindowsPowerShell\\Modules              |
@@ -49,7 +45,9 @@ The following table lists the pre-installed software on the OAW VM.
 | [Microsoft Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)                     | [SystemDrive]\\Program Files (x86)\\Microsoft Azure Storage Explorer |
 | [AzCopy](/azure/storage/common/storage-use-azcopy-v10)                         | [SystemDrive]\\VMSoftware\\azcopy_windows_amd64_*               |
 | [AzureStack-Tools](https://github.com/Azure/AzureStack-Tools/tree/az)                                          | [SystemDrive]\\VMSoftware\\AzureStack-Tools                          |
+
 ## Download files
+
 To get the files to create the OAW VM, [download here](https://aka.ms/OAWDownload). Be sure to review the [Microsoft Privacy Statement](https://privacy.microsoft.com/privacystatement) and [Legal Terms](/legal/azure-stack-hub/azure-stack-operator-access-workstation-legal-terms) before you download.
 
 Because of the stateless nature of the solution, there are no updates for the OAW VM. For each milestone, a new version of the VM image file is released. Use the latest version to create a new OAW VM. The image file is based on the latest Windows Server 2019 version. After installation, you can apply updates, including any critical updates, using Windows Update.
@@ -68,7 +66,7 @@ param(
     [string]
     $DownloadedOAWZipFilePath
 )
-$expectedHash = '73BE1564EE7357691A44DB3BD01AD5BB931CD029DE613EC6F564E8CDEA59F09D'
+$expectedHash = 'F5172B3A97248826C73A3D7ABC0440CFA1EC3B31CAC6A1BC1100B9E241099780'
 $actualHash = (Get-FileHash -Path $DownloadedOAWZipFilePath).Hash
 Write-Host "Expected hash: $expectedHash"
 if ($expectedHash -eq $actualHash)
@@ -92,7 +90,7 @@ Another way to copy this script to your environment is to use the Test-FileHash 
 2. After you import the Test-FileHash module, verify the hash of the OAW.zip file:
 
    ```powershell
-   Test-FileHash -ExpectedHash "73BE1564EE7357691A44DB3BD01AD5BB931CD029DE613EC6F564E8CDEA59F09D" -FilePath "<path to the OAW.zip file>"
+   Test-FileHash -ExpectedHash "F5172B3A97248826C73A3D7ABC0440CFA1EC3B31CAC6A1BC1100B9E241099780" -FilePath "<path to the OAW.zip file>"
    ```
 
 ## Check HLH version

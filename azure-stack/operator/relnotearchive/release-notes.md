@@ -2,9 +2,8 @@
 title: Azure Stack Hub archived release notes 
 description: Archived release notes for Azure Stack Hub integrated systems, including updates and bug fixes.
 author: sethmanheim
-
 ms.topic: article
-ms.date: 11/08/2023
+ms.date: 03/12/2025
 ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 09/09/2020
@@ -20,6 +19,271 @@ To access release notes for a different archived version, use the version select
 <!---------------------------------------------------------->
 <!------------------- SUPPORTED VERSIONS ------------------->
 <!---------------------------------------------------------->
+
+::: moniker range="azs-2406"
+## 2406 build reference
+
+The Azure Stack Hub 2406 update build number is **1.2406.0.8**.
+
+### Update type
+
+The Azure Stack Hub 2406 update build type is **Full**. This build contains only important security updates.
+
+The 2406 update has the following expected runtimes based on our internal testing:
+
+- 4 nodes: 8-28 hours
+- 8 nodes: 11-30 hours
+- 12 nodes: 14-34 hours
+- 16 nodes: 17-40 hours
+
+Exact update durations typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware specifications. Durations that are shorter or longer than the expected value are not uncommon and do not require action by Azure Stack Hub operators unless the update fails. This runtime approximation is specific to the 2406 update and should not be compared to other Azure Stack Hub updates.
+
+For more information about update build types, see [Manage updates in Azure Stack Hub](../azure-stack-updates.md).
+
+### What's new
+
+- With 2406 we are announcing the general availability of the [Azure Stack Hub Standard Load Balancer](../../user/standard-load-balancer-considerations.md). The Standard Load Balancer enables several new load balancing scenarios such as: standalone VMs in backend pools, HTTPs probes, high-availability ports, and TCP Reset on idle.
+- With 2406 we are announcing the general availability of [Azure Container Registry](../container-registries-overview.md). Azure Container Registry is a private, secure, and close-to-compute registry for Windows container images, Linux container images, Helm charts, and other OCI artifacts. At no extra cost, it enables both connected and disconnected customers to quickly and reliably store, deploy, and manage container workloads through the user portal, PowerShell, Azure CLI, and/or Docker CLI. It also enables those customers to assign role-based access control (RBAC) and to create webhooks. Container Registry is now fully supported and fully integrated with other components of Azure Stack Hub, such as the Azure Kubernetes Service (AKS) engine. To install Container Registry, [follow the instructions here](../container-registries-install.md).
+- With 2406 we are announcing the general availability of [Azure Site Recovery](../azure-site-recovery-overview.md). Azure Site Recovery on Azure Stack Hub helps to ensure business continuity by replicating virtual machine (VM) workloads from a primary site to a secondary location. The GA version has a simplified deployment (no dependency services). Note that the transition from preview versions to GA requires a full reinstallation of the Azure Site Recovery solution (no upgrade path is be possible).
+
+<!-- ### Improvements -->
+
+<!-- ### Changes -->
+
+<!-- ### Fixes -->
+
+## Security updates
+
+For information about security updates in this update of Azure Stack Hub, see [Azure Stack Hub security updates](../release-notes-security-updates.md).
+
+## Hotfixes
+
+Azure Stack Hub releases hotfixes regularly. Starting with the 2005 release, when you update to a new major version (for example, 1.2008.x to 1.2102.x), the latest hotfixes (if any) in the new major version are installed automatically. From that point forward, if a hotfix is released for your build, you should install it.
+
+> [!NOTE]
+> Azure Stack Hub hotfix releases are cumulative; you only need to install the latest hotfix to get all fixes included in any previous hotfix releases for that version.
+
+For more information, see our [servicing policy](../azure-stack-servicing-policy.md).
+
+### Hotfix prerequisites: before applying the 2406 update
+
+The 2406 release of Azure Stack Hub must be applied on the 2311 release with the following hotfix installed:
+
+- [Azure Stack Hub hotfix 1.2311.3.62](../hotfix-1-2311-3-62.md)
+
+### After successfully applying the 2406 update
+
+When you update to a new major version (for example, 1.2108.x to 1.2206.x), the latest hotfixes (if any) in the new major version are installed automatically. From that point forward, if a hotfix is released for your build, you should install it.
+
+After the installation of 2406, if any hotfixes for 2406 are subsequently released, you should install them:
+
+- [Azure Stack Hub hotfix 1.2406.1.19](../hotfix-1-2406-1-19.md)
+::: moniker-end
+
+::: moniker range="azs-2311"
+## 2311 build reference
+
+The Azure Stack Hub 2311 update build number is **1.2311.1.22**.
+
+### Update type
+
+The Azure Stack Hub 2311 update build type is **Full**. This build contains only important security updates.
+
+The 2311 update has the following expected runtimes based on our internal testing:
+
+- 4 nodes: 36-50 hours
+- 8 nodes: 36-50 hours
+- 12 nodes: 50-80 hours
+- 16 nodes: 50-90 hours
+
+> [!IMPORTANT]
+> Disconnected environments have additional prerequisite steps, which might increase this duration. See the following section for required steps to obtain and update a SQL Server 2019 product key (PID).
+
+Exact update durations typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware specifications. Durations that are shorter or longer than the expected value are not uncommon and do not require action by Azure Stack Hub operators unless the update fails. This runtime approximation is specific to the 2311 update and should not be compared to other Azure Stack Hub updates.
+
+For more information about update build types, see [Manage updates in Azure Stack Hub](../azure-stack-updates.md).
+
+### What's new
+
+- The [VPN Fast Path for operators](../azure-stack-vpn-fast-path-operators.md) feature, [and for users](../../user/azure-stack-vpn-fast-path-user.md), is now generally available. The new VPN SKUs enable scenarios in which higher network throughput is necessary. See the documentation for more information about this feature.
+- With 2311 we are announcing the public preview of the [Azure Stack Hub Standard Load Balancer](../../user/standard-load-balancer-considerations.md). This feature enables several scenarios: allowing standalone VMs to be in a backend pool, HTTPS probes, high-availability ports, and TCP reset on idle.
+- Azure Site Recovery is currently in [public preview](../azure-site-recovery-overview.md), which features a simplified deployment process that only requires one dependency. We aim to further streamline this solution by the time of our general availability launch in early 2024, at which point we plan to eliminate all dependencies except for the Site Recovery resource provider itself. In the meantime, we encourage you to test and provide feedback on the public preview to help us enhance the GA version. Be aware that the transition from preview to GA will require a full reinstallation of the Azure Site Recovery solution (no update or upgrade path will be possible).
+
+<!-- ### Improvements -->
+
+### Changes
+
+- 2311 introduces a change in the base host OS, updated to Windows Server 2022, in order to simplify future updates and security fixes. This change is part of the fabric. Azure Stack Hub environments that have outbound connectivity do not require any additional changes, and the update is installed directly.
+
+  > [!IMPORTANT]
+  > Disconnected customers must obtain and update a SQL Server 2019 product key (PID). You must get the key before starting the update. To obtain this key, contact Microsoft support.
+  > If you start the update without this key, the update will fail shortly after starting, with a "Preparation of Role Cloud raised an exception" message, which advises you contact support. You can resume the update after applying the new key.
+  
+- Starting with Azure Stack Hub 2311, we are not releasing new Azure Stack Development Kit (ASDK) versions. This decision is due to modifications to internal services that would lead to substantial complexity for the ASDK. The [currently released ASDK version](../../asdk/asdk-release-notes.md) remains suitable for operational, testing, or training purposes, including for the [Azure Stack Hub Foundation Core scripts](https://aka.ms/azshasdk) used for [Azure-Stack-Hub-Foundation-Core](https://github.com/Azure-Samples/Azure-Stack-Hub-Foundation-Core/tree/master/ASF-Training).
+
+<!-- ### Fixes -->
+
+## Security updates
+
+For information about security updates in this update of Azure Stack Hub, see [Azure Stack Hub security updates](../release-notes-security-updates.md).
+
+## Hotfixes
+
+Azure Stack Hub releases hotfixes regularly. Starting with the 2005 release, when you update to a new major version (for example, 1.2008.x to 1.2102.x), the latest hotfixes (if any) in the new major version are installed automatically. From that point forward, if a hotfix is released for your build, you should install it.
+
+> [!NOTE]
+> Azure Stack Hub hotfix releases are cumulative; you only need to install the latest hotfix to get all fixes included in any previous hotfix releases for that version.
+
+For more information, see our [servicing policy](../azure-stack-servicing-policy.md).
+
+Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated systems; do not attempt to install hotfixes on the ASDK.
+
+### Hotfix prerequisites: before applying the 2311 update
+
+The 2311 release of Azure Stack Hub must be applied on the 2306 release with the following hotfix installed:
+
+- [Azure Stack Hub hotfix 1.2306.4.102](../hotfix-1-2306-4-102.md)
+
+### After successfully applying the 2311 update
+
+When you update to a new major version (for example, 1.2108.x to 1.2206.x), the latest hotfixes (if any) in the new major version are installed automatically. From that point forward, if a hotfix is released for your build, you should install it.
+
+After the installation of 2311, if any hotfixes for 2311 are subsequently released, you should install them:
+
+- [Azure Stack Hub hotfix 1.2311.3.62](../hotfix-1-2311-3-62.md)
+::: moniker-end
+
+::: moniker range="azs-2306"
+## 2306 build reference
+
+The Azure Stack Hub 2306 update build number is **1.2306.2.47**.
+
+### Update type
+
+The Azure Stack Hub 2306 update build type is **Full**. This build contains only important security updates.
+
+The 2306 update has the following expected runtimes based on our internal testing:
+
+- 4 nodes: 8-28 hours
+- 8 nodes: 11-30 hours
+- 12 nodes: 14-34 hours
+- 16 nodes: 17-40 hours
+
+Exact update durations typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware specifications. Durations that are shorter or longer than the expected value are not uncommon and do not require action by Azure Stack Hub operators unless the update fails. This runtime approximation is specific to the 2306 update and should not be compared to other Azure Stack Hub updates.
+
+For more information about update build types, see [Manage updates in Azure Stack Hub](../azure-stack-updates.md).
+
+### What's new
+
+- This build contains important [security updates](#security-updates). There are no other major feature additions.
+
+<!-- ### Improvements -->
+
+### Changes
+
+- The Azure Stack Hub 2306 release is the last major update that can be installed on integrated systems that are based on Intel's Broadwell CPU platform. The 2311 (and later) releases are based on a Windows Server 2022 code base which is [not supported on the Broadwell platform by Intel](https://www.intel.com/content/www/us/en/support/articles/000022396/processors.html). For any CPU processor family or hardware-related questions, contact your [hardware OEM partner](../azure-stack-update-oem.md#oem-contact-information).
+- This build contains these important [security updates](#security-updates).
+
+<!-- ### Fixes -->
+
+## Security updates
+
+For information about security updates in this update of Azure Stack Hub, see [Azure Stack Hub security updates](../release-notes-security-updates.md).
+
+## Hotfixes
+
+Azure Stack Hub releases hotfixes regularly. Starting with the 2005 release, when you update to a new major version (for example, 1.2008.x to 1.2102.x), the latest hotfixes (if any) in the new major version are installed automatically. From that point forward, if a hotfix is released for your build, you should install it.
+
+> [!NOTE]
+> Azure Stack Hub hotfix releases are cumulative; you only need to install the latest hotfix to get all fixes included in any previous hotfix releases for that version.
+
+For more information, see our [servicing policy](../azure-stack-servicing-policy.md).
+
+Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated systems; do not attempt to install hotfixes on the ASDK.
+
+### Hotfix prerequisites: before applying the 2306 update
+
+The 2306 release of Azure Stack Hub must be applied on the 2301 release with the following hotfix installed:
+
+- [Azure Stack Hub hotfix 1.2301.3.97](../hotfix-1-2301-3-97.md)
+
+### After successfully applying the 2306 update
+
+When you update to a new major version (for example, 1.2108.x to 1.2206.x), the latest hotfixes (if any) in the new major version are installed automatically. From that point forward, if a hotfix is released for your build, you should install it.
+
+After the installation of 2306, if any hotfixes for 2306 are subsequently released, you should install them:
+
+- [Azure Stack Hub hotfix 1.2306.4.98](../hotfix-1-2306-4-98.md)
+::: moniker-end
+
+::: moniker range="azs-2301"
+## 2301 build reference
+
+The Azure Stack Hub 2301 update build number is **1.2301.2.58**.
+
+### Update type
+
+The Azure Stack Hub 2301 update build type is **Full**.
+
+The 2301 update has the following expected runtimes based on our internal testing:
+
+- 4 nodes: 8-28 hours
+- 8 nodes: 11-30 hours
+- 12 nodes: 14-34 hours
+- 16 nodes: 17-40 hours
+
+Exact update durations typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware specifications. Durations that are shorter or longer than the expected value are not uncommon and do not require action by Azure Stack Hub operators unless the update fails. This runtime approximation is specific to the 2301 update and should not be compared to other Azure Stack Hub updates.
+
+For more information about update build types, see [Manage updates in Azure Stack Hub](../azure-stack-updates.md).
+
+### What's new
+
+- Public preview release of the [Azure Site Recovery resource provider](../azure-site-recovery-overview.md) for Azure Stack Hub.
+- Public preview release of [VPN Fast Path](../azure-stack-vpn-fast-path-operators.md) with new VPN Gateway SKUs.
+- New [VPN Fast Path documentation for Azure Stack Hub operators](../azure-stack-vpn-fast-path-operators.md) and [Azure Stack Hub users](../../user/azure-stack-vpn-fast-path-user.md).
+- Added new VM size **Standard_E20_v3** to support larger database workloads that require more than 112 GB of memory.
+- Added support for NVIDIA A100 Tensor GPU. Validate with your OEM if your hardware can support the GPU requirements.
+- Added new VM series for A100. For more details, see [GPUs on Azure Stack Hub](../../user/gpu-vms-about.md#nc_a100-v4).
+- This update includes all the platform requirements to add [Azure Site Recovery](https://aka.ms/azshasr) on Azure Stack Hub. The first scenario we are enabling is focused on replicating VMs across two Azure Stack Hub regions. ASR on Azure Stack Hub is an Add-on RP which will have to be added through the Marketplace Management.
+- Added the ability for operators to see virtual machine status information across all user subscriptions in the Azure Stack Hub admin portal.
+
+<!-- ### Improvements -->
+
+### Changes
+
+- SQL resource provider 2.0.13 and MySQL resource provider 2.0.13 are released to accommodate some UI breaking changes introduced in Azure Stack Hub 2301. Update the SQL resource provider and MySQL resource provider to the latest version before updating Azure Stack Hub. You may need to refresh the browser cache for the new UI changes to take effect.
+
+<!-- ### Fixes -->
+
+## Security updates
+
+For information about security updates in this update of Azure Stack Hub, see [Azure Stack Hub security updates](../release-notes-security-updates.md).
+
+## Hotfixes
+
+Azure Stack Hub releases hotfixes regularly. Starting with the 2005 release, when you update to a new major version (for example, 1.2008.x to 1.2102.x), the latest hotfixes (if any) in the new major version are installed automatically. From that point forward, if a hotfix is released for your build, you should install it.
+
+> [!NOTE]
+> Azure Stack Hub hotfix releases are cumulative; you only need to install the latest hotfix to get all fixes included in any previous hotfix releases for that version.
+
+For more information, see our [servicing policy](../azure-stack-servicing-policy.md).
+
+Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated systems; do not attempt to install hotfixes on the ASDK.
+
+### Hotfix prerequisites: before applying the 2301 update
+
+The 2301 release of Azure Stack Hub must be applied on the 2206 release with the following hotfix installed:
+
+- [Azure Stack Hub hotfix 1.2206.2.77](../hotfix-1-2206-2-77.md)
+
+### After successfully applying the 2301 update
+
+When you update to a new major version (for example, 1.2108.x to 1.2206.x), the latest hotfixes (if any) in the new major version are installed automatically. From that point forward, if a hotfix is released for your build, you should install it.
+
+After the installation of 2301, if any hotfixes for 2301 are subsequently released, you should install them:
+
+- [Azure Stack Hub hotfix 1.2301.3.72](../hotfix-1-2301-3-72.md)
+::: moniker-end
 
 ::: moniker range="azs-2206"
 ## 2206 build reference
@@ -363,9 +627,6 @@ For more information, see our [servicing policy](../azure-stack-servicing-policy
 
 Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated systems; do not attempt to install hotfixes on the ASDK.
 
-> [!TIP]
-> If you want to be notified about each hotfix release, subscribe to the [**RSS feed**](https://azurestackhubdocs.azurewebsites.net/xml/hotfixes.rss) to be notified about each hotfix release.
-
 ### After successfully applying the 2008 update
 
 Because Azure Stack Hub hotfixes are cumulative, as a best practice you should install all hotfixes released for your build, to ensure the best update experience between major releases. When you update to a new major version (for example, 1.2005.x to 1.2008.x), the latest hotfixes (if any are available at the time of package download) in the new major version are installed automatically.
@@ -417,7 +678,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 ### Changes
 
 - Removed the actions to stop, shut down, and restart an infrastructure role instance from the admin portal. The corresponding APIs have also been removed in the Fabric Resource Provider. The following PowerShell cmdlets in the admin RM module and AZ preview for Azure Stack Hub no longer work: **Stop-AzsInfrastructureRoleInstance**, **Disable-InfrastructureRoleInstance**, and **Restart-InfrastructureRoleInstance**. These cmdlets will be removed from the next admin AZ module release for Azure Stack Hub.
-- Azure Stack Hub 2005 now only supports [App Service on Azure Stack Hub 2020 (versions 87.x)](../app-service-release-notes-2020-Q2.md).
+- Azure Stack Hub 2005 now only supports App Service on Azure Stack Hub 2020 (versions 87.x).
 - The user encryption setting that is required for hardware monitoring was changed from DES to AES to increase security. Please reach out to your hardware partner to learn how to change the setting in the base board management controller (BMC). After the change is made in the BMC, it may require you to run the command **Set-BmcCredential** again using the privileged endpoint. For more information, see [Rotate secrets in Azure Stack Hub](../azure-stack-rotate-secrets.md)
 
 ### Fixes
@@ -1604,15 +1865,15 @@ The following are post-installation known issues for this build version.
 - Deleting user subscriptions results in orphaned resources. As a workaround, first delete user resources or the entire resource group, and then delete the user subscriptions.
 
 <!-- 1663805 - IS ASDK --> 
-- You cannot view permissions to your subscription using the Azure Stack portals. As a workaround, use [PowerShell to verify permissions](/powershell/module/azurerm.resources/get-azurermroleassignment).
+- You cannot view permissions to your subscription using the Azure Stack portals. As a workaround, use [PowerShell to verify permissions](/powershell/module/az.resources/get-azroleassignment).
 
 <!-- Daniel 3/28 -->
 - In the user portal, when you navigate to a blob within a storage account and try to open **Access Policy** from the navigation tree, the subsequent window fails to load. To work around this issue, the following PowerShell cmdlets enable creating, retrieving, setting and deleting access policies, respectively:
 
-  - [New-AzureStorageContainerStoredAccessPolicy](/powershell/module/azure.storage/new-azurestoragecontainerstoredaccesspolicy)
-  - [Get-AzureStorageContainerStoredAccessPolicy](/powershell/module/azure.storage/get-azurestoragecontainerstoredaccesspolicy)
-  - [Set-AzureStorageContainerStoredAccessPolicy](/powershell/module/azure.storage/set-azurestoragecontainerstoredaccesspolicy)
-  - [Remove-AzureStorageContainerStoredAccessPolicy](/powershell/module/azure.storage/remove-azurestoragecontainerstoredaccesspolicy)
+  - [New-AzStorageContainerStoredAccessPolicy](/powershell/module/az.storage/new-azstoragecontainerstoredaccesspolicy)
+  - [Get-AzStorageContainerStoredAccessPolicy](/powershell/module/az.storage/get-azstoragecontainerstoredaccesspolicy)
+  - [Set-AzStorageContainerStoredAccessPolicy](/powershell/module/az.storage/set-azstoragecontainerstoredaccesspolicy)
+  - [Remove-AzStorageContainerStoredAccessPolicy](/powershell/module/az.storage/remove-azstoragecontainerstoredaccesspolicy)
 
   
 <!-- Daniel 3/28 -->
@@ -1707,7 +1968,7 @@ The following are post-installation known issues for this build version.
 
 You can download the Azure Stack 1903 update package from [here](https://aka.ms/azurestackupdatedownload).
 
-In connected scenarios only, Azure Stack deployments periodically check a secured endpoint and automatically notify you if an update is available for your cloud. For more information, see [managing updates for Azure Stack](../azure-stack-updates.md#how-to-know-an-update-is-available).
+In connected scenarios only, Azure Stack deployments periodically check a secured endpoint and automatically notify you if an update is available for your cloud. For more information, see [managing updates for Azure Stack](../azure-stack-updates.md#how-to-know-when-an-update-is-available).
 
 ## Next steps
 
@@ -1897,10 +2158,10 @@ The following are post-installation known issues for this build version.
 <!-- Daniel 3/28 -->
 - In the user portal, when you navigate to a blob within a storage account and try to open **Access Policy** from the navigation tree, the subsequent window fails to load. To work around this issue, the following PowerShell cmdlets enable creating, retrieving, setting and deleting access policies, respectively:
 
-  - [New-AzureStorageContainerStoredAccessPolicy](/powershell/module/azure.storage/new-azurestoragecontainerstoredaccesspolicy)
-  - [Get-AzureStorageContainerStoredAccessPolicy](/powershell/module/azure.storage/get-azurestoragecontainerstoredaccesspolicy)
-  - [Set-AzureStorageContainerStoredAccessPolicy](/powershell/module/azure.storage/set-azurestoragecontainerstoredaccesspolicy)
-  - [Remove-AzureStorageContainerStoredAccessPolicy](/powershell/module/azure.storage/remove-azurestoragecontainerstoredaccesspolicy)
+  - [New-AzStorageContainerStoredAccessPolicy](/powershell/module/az.storage/new-azstoragecontainerstoredaccesspolicy)
+  - [Get-AzStorageContainerStoredAccessPolicy](/powershell/module/az.storage/get-azstoragecontainerstoredaccesspolicy)
+  - [Set-AzStorageContainerStoredAccessPolicy](/powershell/module/az.storage/set-azstoragecontainerstoredaccesspolicy)
+  - [Remove-AzStorageContainerStoredAccessPolicy](/powershell/module/az.storage/remove-azstoragecontainerstoredaccesspolicy)
 
 <!-- ### Health and monitoring -->
 
@@ -1980,7 +2241,7 @@ The following are post-installation known issues for this build version.
 
 You can download the Azure Stack 1902 update package from [here](https://aka.ms/azurestackupdatedownload). 
 
-In connected scenarios only, Azure Stack deployments periodically check a secured endpoint and automatically notify you if an update is available for your cloud. For more information, see [managing updates for Azure Stack](../azure-stack-updates.md#how-to-know-an-update-is-available).
+In connected scenarios only, Azure Stack deployments periodically check a secured endpoint and automatically notify you if an update is available for your cloud. For more information, see [managing updates for Azure Stack](../azure-stack-updates.md#how-to-know-when-an-update-is-available).
 
 ## Next steps
 
@@ -2290,7 +2551,7 @@ The following are post-installation known issues for this build version.
 
 You can download the Azure Stack 1901 update package from [here](https://aka.ms/azurestackupdatedownload). 
 
-In connected scenarios only, Azure Stack deployments periodically check a secured endpoint and automatically notify you if an update is available for your cloud. For more information, see [managing updates for Azure Stack](../azure-stack-updates.md#how-to-know-an-update-is-available).
+In connected scenarios only, Azure Stack deployments periodically check a secured endpoint and automatically notify you if an update is available for your cloud. For more information, see [managing updates for Azure Stack](../azure-stack-updates.md#how-to-know-when-an-update-is-available).
 
 ## Next steps
 
@@ -2663,7 +2924,7 @@ The following are post-installation known issues for this build version.
 
 You can download the Azure Stack 1811 update package from [here](https://aka.ms/azurestackupdatedownload). 
 
-In connected scenarios only, Azure Stack deployments periodically check a secured endpoint and automatically notify you if an update is available for your cloud. For more information, see [managing updates for Azure Stack](../azure-stack-updates.md#how-to-know-an-update-is-available).
+In connected scenarios only, Azure Stack deployments periodically check a secured endpoint and automatically notify you if an update is available for your cloud. For more information, see [managing updates for Azure Stack](../azure-stack-updates.md#how-to-know-when-an-update-is-available).
 
 ## Next steps
 
@@ -3412,7 +3673,7 @@ This update includes the following improvements for Azure Stack.
 - Update to this version no longer resets the default owner of the default provider subscription to the built-in **CloudAdmin** user when deployed with AD FS.
 
 <!-- 2360715 |  ASDK, IS -->  
-- When you set up datacenter integration, you no longer access the AD FS metadata file from an Azure file share. For more information, see [Setting up AD FS integration by providing federation metadata file](../azure-stack-integrate-identity.md#setting-up-ad-fs-integration-by-providing-federation-metadata-file). 
+- When you set up datacenter integration, you no longer access the AD FS metadata file from an Azure file share. For more information, see [Setting up AD FS integration by providing federation metadata file](../azure-stack-integrate-identity.md#set-up-ad-fs-integration-by-providing-federation-metadata-file). 
 
 <!-- 2388980 | ASDK, IS --> 
 - We fixed an issue that prevented users from assigned an existing Public IP Address that had been previously assigned to a Network Interface or Load Balancer to a new Network Interface or Load Balancer.  
@@ -3571,7 +3832,7 @@ The following are post-installation known issues for this build version.
     ```  
   - **Azure CLI:** You can use the [az vm create](/cli/azure/vm?preserve-view=true&view=azure-cli-latest#az-vm-create) command and specify the VM size as a parameter, similar to `--size "Standard_F32s_v2"`.
 
-  - **PowerShell:** With PowerShell you can use [New-AzureRMVMConfig](/powershell/module/azurerm.compute/new-azurermvmconfig?preserve-view=true&view=azurermps-6.0.0) with the parameter that specifies the VM size, similar to `-VMSize "Standard_F32s_v2"`.
+  - **PowerShell:** With PowerShell you can use [New-AzVMConfig](/powershell/module/az.compute/new-azvmconfig) with the parameter that specifies the VM size, similar to `-VMSize "Standard_F32s_v2"`.
 
 
 <!-- TBD - IS ASDK --> 
@@ -3746,12 +4007,12 @@ The following are post-installation known issues for this build version.
 <!-- 2551834 - IS, ASDK --> 
 - When you select **Overview** for a storage account in either the admin or user portals, the information from the *Essentials* pane does not display.  The Essentials pane displays information about the account like its *Resource group*, *Location*, and *Subscription ID*.  Other options for Overview  are accessible, like *Services* and *Monitoring*, as well as options to *Open in Explorer* or to *Delete storage account*. 
 
-  To view the unavailable information, use the [Get-azureRMstorageaccount](/powershell/module/azurerm.storage/get-azurermstorageaccount?preserve-view=true&view=azurermps-6.2.0) PowerShell cmdlet. 
+  To view the unavailable information, use the [Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount) PowerShell cmdlet. 
 
 <!-- 2551834 - IS, ASDK --> 
 - When you select **Tags** for a storage account in either the admin or user portals, the information fails to load and does not display.  
 
-  To view the unavailable information, use the [Get-AzureRmTag](/powershell/module/azurerm.tags/get-azurermtag?preserve-view=true&view=azurermps-6.2.0) PowerShell cmdlet.
+  To view the unavailable information, use the [Get-AzTag](/powershell/module/az.resources/get-aztag) PowerShell cmdlet.
 
 
 <!-- 2332636 - IS -->  
@@ -3826,7 +4087,7 @@ The following are post-installation known issues for this build version.
     ```  
   - **Azure CLI:** You can use the [az vm create](/cli/azure/vm?preserve-view=true&view=azure-cli-latest#az-vm-create) command and specify the VM size as a parameter, similar to `--size "Standard_F32s_v2"`.
 
-  - **PowerShell:** With PowerShell you can use [New-AzureRMVMConfig](/powershell/module/azurerm.compute/new-azurermvmconfig?preserve-view=true&view=azurermps-6.0.0) with the parameter that specifies the VM size, similar to `-VMSize "Standard_F32s_v2"`.
+  - **PowerShell:** With PowerShell you can use [New-AzVMConfig](/powershell/module/az.compute/new-azvmconfig) with the parameter that specifies the VM size, similar to `-VMSize "Standard_F32s_v2"`.
 
 
 <!-- TBD - IS ASDK --> 
@@ -4161,7 +4422,7 @@ The following are post-installation known issues for build  **20180513.1**.
     ```  
   - **Azure CLI:** You can use the [az vm create](/cli/azure/vm?preserve-view=true&view=azure-cli-latest#az-vm-create) command and specify the VM size as a parameter, similar to `--size "Standard_F32s_v2"`.
 
-  - **PowerShell:** With PowerShell you can use [New-AzureRMVMConfig](/powershell/module/azurerm.compute/new-azurermvmconfig?preserve-view=true&view=azurermps-6.0.0) with the parameter that specifies the VM size, similar to `-VMSize "Standard_F32s_v2"`.
+  - **PowerShell:** With PowerShell you can use [New-AzVMConfig](/powershell/module/az.compute/new-azvmconfig) with the parameter that specifies the VM size, similar to `-VMSize "Standard_F32s_v2"`.
 
 
 <!-- TBD - IS ASDK --> 
@@ -4402,7 +4663,7 @@ This update includes the following improvements and fixes for Azure Stack.
 - Usage data for virtual machines is now separated at hourly intervals. This is consistent with Azure. 
 
 <!--  2253274 --> 
-- The issue where in the admin and user portals, the Settings blade for vNet Subnets fails to load. As a workaround, use PowerShell and the [Get-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/get-azurermvirtualnetworksubnetconfig?preserve-view=true&view=azurermps-5.5.0) cmdlet to view and manage this information.
+- The issue where in the admin and user portals, the Settings blade for vNet Subnets fails to load. As a workaround, use PowerShell and the [Get-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/get-azvirtualnetworksubnetconfig) cmdlet to view and manage this information.
 
 - When you create a virtual machine, the message *Unable to display pricing* no longer appears when choosing a size for the VM size.
 
@@ -4735,7 +4996,7 @@ The following are post-installation known issues for build  **20180302.1**
     This alert can be safely ignored. 
 
 <!-- 2253274 --> 
-- In the admin and user portals, the Settings blade for vNet Subnets fails to load. As a workaround, use PowerShell and the [Get-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/get-azurermvirtualnetworksubnetconfig?preserve-view=true&view=azurermps-5.5.0) cmdlet to view and  manage this information.
+- In the admin and user portals, the Settings blade for vNet Subnets fails to load. As a workaround, use PowerShell and the [Get-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/get-azvirtualnetworksubnetconfig) cmdlet to view and  manage this information.
 
 - In both the admin portal and user portal, the Overview blade fails to load when you select the Overview blade for storage accounts that were created with an older API version (example: 2015-06-15). This includes system storage accounts like **updateadminaccount** that is used during patch and update. 
 

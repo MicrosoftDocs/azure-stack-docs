@@ -2,8 +2,8 @@
 title: Update the DNS forwarder in Azure Stack Hub 
 description: Learn how to update the DNS forwarder in Azure Stack Hub.
 author: sethmanheim
-ms.topic: conceptual
-ms.date: 11/21/2019
+ms.topic: how-to
+ms.date: 01/17/2025
 ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 11/21/2019
@@ -19,26 +19,27 @@ At least one reachable DNS forwarder is necessary for the Azure Stack Hub infras
 
 DNS is a critical datacenter infrastructure service that can change. If it does, Azure Stack Hub must be updated.
 
-This article describes using the privileged endpoint (PEP) to update the DNS forwarder in Azure Stack Hub. It's recommended that you use two reliable DNS
-forwarder IP addresses.
+This article describes using the privileged endpoint (PEP) to update the DNS forwarder in Azure Stack Hub. It's recommended that you use two reliable DNS forwarder IP addresses.
 
-## Steps to update the DNS forwarder
+## Update the DNS forwarder
+
+To update the DNS forwarder in Azure Stack Hub, follow these steps:
 
 1. Connect to the [privileged endpoint](azure-stack-privileged-endpoint.md). It's not necessary to unlock the privileged endpoint by opening a support ticket.
 
-2. Run the following command to review the current configured DNS forwarder. As an alternative, you can also use the administrator portal region properties:
+1. Run the following command to review the current configured DNS forwarder. As an alternative, you can also use the administrator portal region properties:
 
    ```powershell
    Get-AzsDnsForwarder
    ```
 
-3. Run the following command to update Azure Stack Hub to use the new DNS forwarder:
+1. Run the following command to update Azure Stack Hub to use the new DNS forwarder:
 
    ```powershell
     Set-AzsDnsForwarder -IPAddress "IPAddress 1","IPAddress 2"
    ```
 
-4. Review the output of the command for any errors.
+1. Review the output of the command for any errors.
 
 ## Next steps
 

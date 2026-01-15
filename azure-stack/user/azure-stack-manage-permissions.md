@@ -3,7 +3,7 @@ title: Manage resource access in Azure Stack Hub with role-based access control
 description: Learn how to manage role-based access control (RBAC) permissions as an admin or a tenant in Azure Stack Hub.
 author: sethmanheim
 
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/13/2019
 ms.author: sethm
 ms.reviewer: fiseraci

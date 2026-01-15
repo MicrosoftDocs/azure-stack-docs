@@ -3,8 +3,8 @@ title: Create add-on plans
 titleSuffix: Azure Stack Hub 
 description: Learn how to create add-on plans in Azure Stack Hub. 
 author: sethmanheim
-ms.topic: conceptual
-ms.date: 10/05/2019
+ms.topic: how-to
+ms.date: 01/16/2025
 ms.author: sethm
 ms.reviewer: efemmano
 ms.lastreviewed: 11/3/2020
@@ -32,20 +32,20 @@ Add-on plans are [created the same way](azure-stack-create-plan.md) as a base pl
 ## Create an add-on plan (1902 and later)
 
 1. Sign in to the Azure Stack Hub administrator portal as a cloud administrator.
-2. Follow the same steps used to [create a new base plan](azure-stack-create-plan.md) to create a new plan offering services that weren't previously offered.
-3. In the administrator portal, select **Offers** and then select the offer to be updated with an add-on plan.
+1. Follow the same steps used to [create a new base plan](azure-stack-create-plan.md) to create a new plan offering services that weren't previously offered.
+1. In the administrator portal, select **Offers** and then select the offer to be updated with an add-on plan.
 
    ![Screenshot that shows how to select an offer to update with add-on plan in Azure Stack administrator portal.](media/create-add-on-plan/add-on1.png)
 
-4. At the bottom of the offer properties, select **Add-on plans**. Select **Add**.
+1. At the bottom of the offer properties, select **Add-on plans**. Select **Add**.
 
     ![Screenshot that shows how to select add-on plans in Azure Stack administrator portal.](media/create-add-on-plan/add-on2.png)
 
-5. Select the plan to add. In this example, the plan is called **20-storageaccounts**. After selecting the plan, click **Select** to add the plan to the offer. You should receive a notification that the plan was added to the offer successfully.
+1. Select the plan to add. In this example, the plan is called **20-storageaccounts**. After selecting the plan, click **Select** to add the plan to the offer. You should receive a notification that the plan was added to the offer successfully.
 
     ![Screenshot that shows how to select the add-on plan to add in Azure Stack administrator portal.](media/create-add-on-plan/add-on3.png)
 
-6. Review the list of add-on plans included with the offer to verify that the new add-on plan is listed.
+1. Review the list of add-on plans included with the offer to verify that the new add-on plan is listed.
 
     [![Screenshot that shows a list of add-on plans to review in Azure Stack administrator portal.](media/create-add-on-plan/add-on4.png)](media/create-add-on-plan/add-on4lg.png#lightbox)
 ::: moniker-end
@@ -55,20 +55,20 @@ Add-on plans are [created the same way](azure-stack-create-plan.md) as a base pl
 ## Create an add-on plan (1901 and earlier)
 
 1. Sign in to the Azure Stack Hub administrator portal as a cloud administrator.
-2. Follow the same steps used to [create a new base plan](azure-stack-create-plan.md) to create a new plan offering services that weren't previously offered. In this example, Key Vault (**Microsoft.KeyVault**) services will be included in the new plan.
-3. In the administrator portal, select **Offers** and then select the offer to be updated with an add-on plan.
+1. Follow the same steps used to [create a new base plan](azure-stack-create-plan.md) to create a new plan offering services that weren't previously offered. In this example, Key Vault (**Microsoft.KeyVault**) services will be included in the new plan.
+1. In the administrator portal, select **Offers** and then select the offer to be updated with an add-on plan.
 
    ![Select offer to update with add-on plan in Azure Stack administrator portal](media/create-add-on-plan/1.PNG)
 
-4. Scroll to the bottom of the offer properties and select **Add-on plans**. Select **Add**.
+1. Scroll to the bottom of the offer properties and select **Add-on plans**. Select **Add**.
 
     ![Select add-on plans in Azure Stack administrator portal](media/create-add-on-plan/2.PNG)
 
-5. Select the plan to add. In this example, the plan is called **Key vault plan**. After selecting the plan, click **Select** to add the plan to the offer. You should receive a notification that the plan was added to the offer successfully.
+1. Select the plan to add. In this example, the plan is called **Key vault plan**. After selecting the plan, click **Select** to add the plan to the offer. You should receive a notification that the plan was added to the offer successfully.
 
     ![Select the add-on plan to add in Azure Stack administrator portal](media/create-add-on-plan/3.PNG)
 
-6. Review the list of add-on plans included with the offer to verify that the new add-on plan is listed.
+1. Review the list of add-on plans included with the offer to verify that the new add-on plan is listed.
 
     ![Review list of add-on plans in Azure Stack administrator portal](media/create-add-on-plan/4.PNG)
 
@@ -76,4 +76,4 @@ Add-on plans are [created the same way](azure-stack-create-plan.md) as a base pl
 
 ## Next steps
 
-* [Create an offer](azure-stack-create-offer.md)
+- [Create an offer](azure-stack-create-offer.md)

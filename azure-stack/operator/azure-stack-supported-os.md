@@ -3,22 +3,19 @@ title: Guest operating systems supported on Azure Stack Hub
 titleSuffix: Azure Stack
 description: Learn which guest operating systems can be used on Azure Stack Hub.
 author: sethmanheim
-ms.topic: article
-ms.date: 02/11/2022
+ms.topic: feature-availability
+ms.custom: linux-related-content
+ms.date: 06/03/2024
 ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 09/09/2021
 
 # Intent: As an Azure Stack operator, I want to learnm which guest operating systems can be used on Azure Stack.
 # Keyword: azure stack guest operating systems
-
 ---
 
 
 # Guest operating systems supported on Azure Stack Hub
-
-> [!CAUTION]
-> This article references CentOS, a Linux distribution that is nearing End Of Life (EOL) status. Please consider your use and plan accordingly. For more information, see the [CentOS End Of Life guidance](/azure/virtual-machines/workloads/centos/centos-end-of-life).
 
 ## Windows
 
@@ -71,17 +68,6 @@ Linux distributions listed as available in Azure Stack Hub Marketplace include t
 
 | Distribution | Description | Publisher | Azure Stack Hub Marketplace |
 | --- | --- | --- | --- |
-| CentOS-based 8.0 | 64-bit | Rogue Wave | Yes |
-| CentOS-based 7.8 | 64-bit | Rogue Wave | Yes |
-| CentOS-based 7.7 LVM | 64-bit | Rogue Wave | Yes |
-| CentOS-based 7.7 | 64-bit | Rogue Wave | Yes |
-| CentOS-based 7.6 | 64-bit | Rogue Wave | Yes |
-| CentOS-based 7.5 | 64-bit | Rogue Wave | Yes |
-| CentOS-based 7.5 LVM | 64-bit | Rogue Wave | Yes |
-| CentOS-based 7.4 | 64-bit | Rogue Wave | Yes |
-| CentOS-based 7.3 | 64-bit | Rogue Wave | Yes |
-| CentOS-based 6.9 | 64-bit | Rogue Wave | Yes |
-| CentOS-based 6.10 | 64-bit | Rogue Wave | Yes |
 | ClearLinux | 64-bit | ClearLinux.org | Yes |
 | Debian 8 "Jessie" | 64-bit | credativ |  Yes |
 | Debian 9 "Stretch" | 64-bit | credativ | Yes |

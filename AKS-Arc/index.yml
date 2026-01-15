@@ -1,0 +1,105 @@
+### YamlMime:Landing
+
+title: Azure Kubernetes Service (AKS) enabled by Azure Arc documentation
+summary: Azure Kubernetes Service (AKS), enabled by Arc, extends Azure Kubernetes Service to your on-premises environment. AKS is available on Azure Local, Windows Server, Windows IoT, and Windows 11 Enterprise/Pro.
+
+metadata:
+  title: Azure Kubernetes Service (AKS) enabled by Azure Arc documentation
+  description: Azure Kubernetes Service (AKS), enabled by Arc, extends Azure Kubernetes Service to your on-premises environment. AKS is available on Azure Local, Windows Server, Windows IoT, and Windows 11 Enterprise/Pro.
+  ms.service: azure-kubernetes-service-hybrid
+  ms.topic: landing-page
+  author: davidsmatlak
+  ms.author: davidsmatlak 
+  ms.date: 02/20/2025
+
+landingContent:
+  - title: About AKS enabled by Azure Arc
+    linkLists:
+      - linkListType: overview
+        links:
+          - text: What is AKS enabled by Azure Arc?
+            url: aks-overview.md
+      - linkListType: concept
+        links:
+          - text: Create clusters
+            url: aks-create-clusters-cli.md
+  - title: Get started with AKS on Azure Local (version 23H2)
+    linkLists:
+      - linkListType: overview
+        links:
+          - text: What's new
+            url: aks-whats-new-23h2.md
+      - linkListType: deploy
+        links:
+          - text: Check system requirements
+            url: aks-hci-network-system-requirements.md
+      - linkListType: concept
+        links:
+          - text: Cluster architecture
+            url: cluster-architecture.md
+      - linkListType: how-to-guide
+        links:
+          - text: Create Kubernetes clusters
+            url: aks-create-clusters-cli.md
+  - title: Deploy AKS on resource-limited hardware
+    linkLists:
+      - linkListType: overview
+        links:
+          - text: Overview
+            url: aks-edge-overview.md
+      - linkListType: quickstart
+        links:
+          - text: Quickstart
+            url: aks-edge-quickstart.md
+      - linkListType: concept
+        links:
+          - text: Clusters and nodes
+            url: aks-edge-concept-clusters-nodes.md
+      - linkListType: how-to-guide
+        links:
+          - text: Troubleshoot
+            url: aks-edge-troubleshoot-overview.md
+
+  - title: Integrate with Azure
+    linkLists:
+      - linkListType: how-to-guide
+        links:
+          - text: Monitor Arc-enabled Kubernetes clusters
+            url: aks-monitor-logging.md
+          - text: Enforce threat protection using Azure Defender
+            url: /azure/security-center/defender-for-kubernetes-azure-arc?tabs=k8s-deploy-asc%2ck8s-verify-asc%2ck8s-remove-arc&toc=%2fazure%2fazure-arc%2fkubernetes%2ftoc.json
+
+  - title: Get started with AKS enabled by Azure Arc on VMware
+    linkLists:
+      - linkListType: overview
+        links:
+          - text: What is AKS enabled by Azure Arc on VMware?
+            url: aks-vmware-overview.md
+      - linkListType: quickstart
+        links:
+          - text: Deploy an AKS cluster
+            url: aks-vmware-quickstart-deploy.md
+      - linkListType: concept
+        links:
+          - text: Cluster architecture
+            url: aks-vmware-cluster-architecture.md
+
+  - title: Develop and debug applications with Bridge to Kubernetes
+    linkLists:
+      - linkListType: how-to-guide
+        links:
+          - text: Use Bridge to Kubernetes with Visual Studio Code
+            url:  https://code.visualstudio.com/docs/containers/bridge-to-kubernetes
+          - text: Use Bridge to Kubernetes with Visual Studio
+            url:  /visualstudio/containers/bridge-to-kubernetes?view=vs-2019
+
+  - title: Troubleshoot
+    linkLists:
+      - linkListType: how-to-guide
+        links:
+          - text: Known issues in version 23H2
+            url: aks-known-issues.md
+          - text: Troubleshooting overview (22H2)
+            url: troubleshoot-overview.md
+          - text: Connect to nodes with SSH
+            url: ssh-connection.md

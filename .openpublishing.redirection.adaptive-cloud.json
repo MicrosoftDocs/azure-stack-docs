@@ -1,0 +1,74 @@
+{
+  "redirections": [
+    {
+      "source_path": "adaptive-cloud/app-solutions/index.yml",
+      "redirect_url": "/azure-stack/user/overview-patterns-solution-examples",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "adaptive-cloud/app-solutions/overview-app-design-considerations.md",
+      "redirect_url": "/azure/architecture/guide",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "adaptive-cloud/app-solutions/overview-patterns-solution-examples.md",
+      "redirect_url": "/azure-stack/user/overview-patterns-solution-examples",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "adaptive-cloud/app-solutions/pattern-cicd-pipeline.md",
+      "redirect_url": "/azure-stack/user/pattern-cicd-pipeline",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "adaptive-cloud/app-solutions/pattern-cross-cloud-scale-onprem-data.md",
+      "redirect_url": "/azure-stack/user/pattern-cross-cloud-scale-on-premises-data",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "adaptive-cloud/app-solutions/pattern-cross-cloud-scale.md",
+      "redirect_url": "/azure-stack/user/pattern-cross-cloud-scale",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "adaptive-cloud/app-solutions/pattern-geo-distributed.md",
+      "redirect_url": "/azure-stack/user/pattern-geo-distributed",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "adaptive-cloud/app-solutions/pattern-highly-available-kubernetes.md",
+      "redirect_url": "/azure-stack/user/pattern-highly-available-kubernetes",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "adaptive-cloud/app-solutions/pattern-hybrid-relay.md",
+      "redirect_url": "/azure-stack/user/pattern-hybrid-relay",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "adaptive-cloud/app-solutions/pattern-out-of-stock-at-edge.md",
+      "redirect_url": "/azure-stack/user/pattern-out-of-stock-at-edge",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "adaptive-cloud/app-solutions/pattern-retail-footfall-detection.md",
+      "redirect_url": "/azure-stack/user/pattern-retail-footfall-detection",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "adaptive-cloud/app-solutions/pattern-tiered-data-analytics.md",
+      "redirect_url": "/azure-stack/user/pattern-tiered-data-analytics",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "adaptive-cloud/app-solutions/pattern-train-ml-model-at-edge.md",
+      "redirect_url": "/azure-stack/user/pattern-train-machine-learning-model-at-edge",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "adaptive-cloud/index.yml",
+      "redirect_url": "https://azure.microsoft.com/en-us/solutions/adaptive-cloud",
+      "redirect_document_id": false
+    }
+  ]
+}

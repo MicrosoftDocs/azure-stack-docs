@@ -2,10 +2,9 @@
 title: Azure Stack Hub MySQL resource provider 1.1.47.0 release notes 
 description: View the release notes to see what's new in the Azure Stack Hub MySQL resource provider 1.1.47.0 update.
 author: sethmanheim
-ms.topic: article
-ms.date: 11/26/2019
+ms.topic: release-notes
+ms.date: 01/17/2025
 ms.author: sethm
-ms.reviewer: xiaofmao
 ms.lastreviewed: 11/26/2019
 
 # Intent: As an Azure Stack Hub operator, I want the release notes for the MySQL resource provider 1.1.47.0 update.
@@ -18,6 +17,7 @@ ms.lastreviewed: 11/26/2019
 These release notes describe the improvements and known issues in MySQL resource provider version 1.1.47.0.
 
 ## Build reference
+
 Download the MySQL resource provider binary and then run the self-extractor to extract the contents to a temporary directory. The resource provider has a minimum corresponding Azure Stack Hub build. The minimum Azure Stack Hub release version required to install this version of the MySQL resource provider is listed below:
 
 > |Minimum Azure Stack Hub version|MySQL resource provider version|
@@ -38,7 +38,7 @@ It's recommended that you apply the MySQL resource provider hotfix 1.1.47.0 afte
 
 ## Known issues
 
-When [rotating certificate](azure-stack-mysql-resource-provider-maintain.md#secrets-rotation) for Azure Stack Hub integrated systems, KeyVaultPfxPassword argument is mendatory, even if there's no intention to update the Key Vault certificate password.
+When you [rotate a certificate](azure-stack-mysql-resource-provider-maintain.md#secrets-rotation) for Azure Stack Hub integrated systems, the `KeyVaultPfxPassword` argument is mandatory, even if there's no intention to update the Key Vault certificate password.
 
 ## Next steps
 

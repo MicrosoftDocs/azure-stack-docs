@@ -4,7 +4,7 @@ titleSuffix: Azure Stack
 description: Learn how to manage storage infrastructure for Azure Stack Hub.
 author: sethmanheim
 
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/11/2020
 ms.author: sethm
 ms.lastreviewed: 5/5/2020
@@ -96,9 +96,6 @@ The number of VM Temp volumes and Object Store volumes is equal to the number of
 - If you add a new node to the cluster, there would be a new volume for both types created.
 
 - The number of volumes remains the same even if a node malfunctioning or is removed.
-
-> [!NOTE]
-> If you use the [Azure Stack Development Kit (ASDK)](../asdk/index.yml), there's a single volume with multiple [shares](azure-stack-manage-storage-shares.md).
 
 ### Fault tolerance and mirroring
 

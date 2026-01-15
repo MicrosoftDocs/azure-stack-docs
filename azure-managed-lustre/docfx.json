@@ -42,9 +42,6 @@
     "globalMetadata": {
       "uhfHeaderId": "Azure",
       "feedback_system": "Standard",
-      // "feedback_help_link_url": "https://feedback.azure.com/forums/344565-azure-stack",
-      // "feedback_help_link_type": "get-product-support",
-      // "feedback_product_url": "https://feedback.azure.com/forums/344565-azure-stack",
       "breadcrumb_path": "/azure/azure-managed-lustre/breadcrumb/toc.json",
       "extendBreadcrumb": false,
       "manager":"akashdubey",

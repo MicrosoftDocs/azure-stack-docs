@@ -4,7 +4,7 @@ description: Learn about the 1.2102.0.0 release for Event Hubs on Azure Stack Hu
 author: sethmanheim
 ms.author: sethm
 ms.service: azure-stack
-ms.topic: article
+ms.topic: release-notes
 ms.date: 07/23/2021
 ms.reviewer: kalkeea
 ms.lastreviewed: 07/23/2021

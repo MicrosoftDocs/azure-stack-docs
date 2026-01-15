@@ -2,11 +2,12 @@
 title: Use Azure Key Vault to store secrets with Azure Kubernetes Service on Azure Stack Hub
 description: Learn how to use Azure Key Vault to store secrets with Azure Kubernetes Service on Azure Stack Hub
 author: sethmanheim
-ms.topic: article
-ms.date: 11/21/2022
+ms.topic: install-set-up-deploy
+ms.date: 02/14/2025
 ms.author: sethm
 ms.reviewer: waltero
 ms.lastreviewed: 10/26/2021
+ms.custom: sfi-image-nochange
 
 # Intent: As an Azure Stack operator, I want to install and offer Azure Kubernetes Service on Azure Stack Hub so my supported user can offer containerized solutions.
 # Keyword: Kubernetes AKS difference
@@ -33,7 +34,6 @@ You can use the Secrets Store CSI driver to mount your secrets, keys, and certif
 3. Learn [how to use the Azure Key Vault Provider](https://azure.github.io/secrets-store-csi-driver-provider-azure/docs/getting-started/usage/) and supported [configurations](https://azure.github.io/secrets-store-csi-driver-provider-azure/docs/configurations/).
 4. Get up to speed with the application workflow with the [walkthrough](https://azure.github.io/secrets-store-csi-driver-provider-azure/docs/demos/standard-walkthrough/).
 
-![Secrets Store CSI Driver Azure Key Vault Provider Demo](media/aks-how-to-store-secrets/demo.gif)
 ## Support for the driver
 
 Azure Key Vault Provider for Secrets Store CSI Driver is an open source project that is [**not** covered by the Microsoft Azure support policy](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure). [Please search open issues here](https://github.com/Azure/secrets-store-csi-driver-provider-azure/issues), and if your issue isn't already represented [open a new one](https://github.com/Azure/secrets-store-csi-driver-provider-azure/issues/new/choose). The project maintainers will respond to the best of their abilities.

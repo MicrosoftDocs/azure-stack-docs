@@ -3,12 +3,13 @@ title: Manage Key Vault in Azure Stack Hub using PowerShell
 description: Learn how to manage Key Vault in Azure Stack Hub by using PowerShell.
 author: sethmanheim
 
-ms.topic: article
-ms.custom:
-  - devx-track-azurepowershell
+ms.topic: how-to
 ms.date: 11/20/2020
 ms.author: sethm
 ms.lastreviewed: 11/20/2020
+ms.custom:
+  - devx-track-azurepowershell
+  - sfi-image-nochange
 
 # Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
 # Keyword: Notdone: keyword noun phrase
@@ -203,19 +204,19 @@ After you create the keys and secrets, you can authorize external apps to use th
 
 Use the following cmdlet to authorize an app to access a key or secret in the key vault.
 
-In the following example, the vault name is **ContosoKeyVault**, and the app you want to authorize has a client ID of **8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed**. To authorize the app, run the following command. You can also specify the **PermissionsToKeys** parameter to set permissions for a user, an app, or a security group.
+In the following example, the vault name is **ContosoKeyVault**, and the app you want to authorize has a client ID of **00001111-aaaa-2222-bbbb-3333cccc4444**. To authorize the app, run the following command. You can also specify the **PermissionsToKeys** parameter to set permissions for a user, an app, or a security group.
 
 When using the cmdlet against an AD FS configured Azure Stack Hub environment,  the parameter BypassObjectIdValidation should be provided
 
 ### [Az modules](#tab/az6)
 
 ```powershell
-Set-AzKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -ServicePrincipalName 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed -PermissionsToKeys decrypt,sign -BypassObjectIdValidation
+Set-AzKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -ServicePrincipalName 00001111-aaaa-2222-bbbb-3333cccc4444 -PermissionsToKeys decrypt,sign -BypassObjectIdValidation
 ```
 ### [AzureRM modules](#tab/azurerm6)
 
 ```powershell
-Set-AzureRMKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -ServicePrincipalName 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed -PermissionsToKeys decrypt,sign -BypassObjectIdValidation
+Set-AzureRMKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -ServicePrincipalName 00001111-aaaa-2222-bbbb-3333cccc4444 -PermissionsToKeys decrypt,sign -BypassObjectIdValidation
 ```
 
 ---

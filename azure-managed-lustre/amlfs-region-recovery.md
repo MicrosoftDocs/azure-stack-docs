@@ -1,10 +1,10 @@
 ---
 title: Regional redundancy and failover recovery with Azure Managed Lustre
-description: Techniques to provide failover capabilities for disaster recovery with Azure Managed Lustre 
+description: Understand techniques to provide failover capabilities for disaster recovery with Azure Managed Lustre 
 author: pauljewellmsft
 ms.author: pauljewell
-ms.topic: conceptual
-ms.date: 05/08/2023
+ms.topic: how-to
+ms.date: 11/11/2024
 ---
 
 # Use multiple clusters for regional failover recovery
@@ -16,10 +16,9 @@ This article describes a strategy to reduce the risk of work disruption by using
 As your workflow proceeds in your primary region, you must manually save data in the blob storage outside of the region. If the cluster region becomes unavailable, you can create another Azure Managed Lustre instance in a secondary region, connect to the same storage, and resume work from the new cluster.
 
 > [!NOTE]
-> This failover plan does not cover a complete outage in a storage account's region. 
+> This failover plan doesn't cover a complete outage in a storage account's region.
 >
-> Managed Lustre does support locally redundant storage (LRS), zone-redundant storage (ZRS), geo-redundant storage (GRS), read-access-geo-redundant storage (RAGRS), geo-zone-redundant storage (GZRS), and read-access-geo-zone-redundant storage (RA-GZRS).
-
+> Azure Managed Lustre supports locally redundant storage (LRS), zone-redundant storage (ZRS), geo-redundant storage (GRS), read-access-geo-redundant storage (RAGRS), geo-zone-redundant storage (GZRS), and read-access-geo-zone-redundant storage (RA-GZRS).
 
 ## Planning for regional failover
 

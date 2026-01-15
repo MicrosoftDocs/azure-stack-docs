@@ -3,12 +3,11 @@ title: Manage network resources
 titleSuffix: Azure Stack Hub
 description: Learn how to manage network resources, including the MAC address pool and the consumption of public IP addresses in a region.
 author: sethmanheim
-
-ms.topic: conceptual
-ms.date: 1/22/2020
+ms.topic: how-to
+ms.date: 1/17/2025
 ms.author: sethm
-ms.reviewer: scottnap
 ms.lastreviewed: 09/17/2019
+ms.custom: sfi-image-nochange
 
 # Intent: As an Azure Stack Hub operator, I want to manage network resources.
 # Keyword: manage network resources azure stack hub
@@ -24,7 +23,7 @@ Azure Stack Hub uses a static MAC address pool to automatically generate and ass
 - StartMacAddress: 00-1D-D8-B7-00-00
 - EndMacAddress: 00-1D-D8-F4-FF-FF
 
-> [!Note]  
+> [!NOTE]  
 > This MAC address pool is the same across each Azure Stack Hub system and is not configurable.
 
 Depending on how the virtual networks connect with existing corporate networks, you may expect duplicated MAC addresses of VMs.
@@ -34,9 +33,10 @@ More information can be found about MAC address pool utilization using the cmdle
 ## View public IP address consumption in Azure Stack Hub
 
 As a cloud administrator, you can view:
- - The number of public IP addresses that have been allocated to tenants.
- - The number of public IP addresses that are still available for allocation.
- - The percentage of public IP addresses that have been allocated in that location.
+
+- The number of public IP addresses that have been allocated to tenants.
+- The number of public IP addresses that are still available for allocation.
+- The percentage of public IP addresses that have been allocated in that location.
 
 The **Public IP pools usage** tile shows the number of public IP addresses consumed across public IP address pools. For each IP address, the tile shows usage for tenant IaaS VM instances, fabric infrastructure services, and public IP address resources that were explicitly created by tenants.
 
@@ -53,7 +53,7 @@ in the region:
 1. In the Azure Stack Hub administrator portal, select **All services**. Then, under the **ADMINISTRATION** category, select **Network**.
 1. The **Network** pane displays the **Public IP pools usage** tile in the **Overview** section.
 
-    ![Network Resource Provider pane in Azure Stack Hub administrator portal](media/azure-stack-viewing-public-ip-address-consumption/ip-address-consumption-01.png)
+   ![Network Resource Provider pane in Azure Stack Hub administrator portal](media/azure-stack-viewing-public-ip-address-consumption/ip-address-consumption-01.png)
 
 The **Used** number represents the number of assigned public IP addresses from public IP address pools. The **Free** number represents the number of public IP addresses from public IP address pools that haven't been assigned and are still available. The **% Used** number represents the number of used or assigned addresses as a percentage of the total number of public IP addresses in public IP address pools in that location.
 
@@ -65,17 +65,12 @@ Select **Public IP addresses** under **Tenant Resources**. Review the list of pu
 
 You might notice that some public IP addresses that have been dynamically allocated appear in the list. However, an address hasn't been associated with them yet. The address resource has been created in the Network Resource Provider, but not yet in the Network Controller.
 
-The Network Controller doesn't assign an address to the resource until it
-binds to an interface, a network interface card
-(NIC), a load balancer, or a virtual network gateway. When the public IP
-address binds to an interface, the Network Controller allocates an IP
-address. The address appears in the **Address** field.
+The Network Controller doesn't assign an address to the resource until it binds to an interface, a network interface card (NIC), a load balancer, or a virtual network gateway. When the public IP
+address binds to an interface, the Network Controller allocates an IP address. The address appears in the **Address** field.
 
 ### View the public IP address information summary table
 
-In different cases, public IP addresses are
-assigned that determine whether the address appears in one
-list or another.
+In different cases, public IP addresses are assigned that determine whether the address appears in one list or another.
 
 | Public IP address assignment case | Appears in usage summary | Appears in tenant public IP addresses list |
 | --- | --- | --- |
@@ -84,6 +79,7 @@ list or another.
 | Static public IP address assigned to a tenant NIC or load balancer. |Yes |Yes |
 | Static public IP address assigned to a fabric infrastructure service endpoint. |Yes |No |
 | Public IP address implicitly created for the virtual network. This public IP is created only after the first standalone VM (VM without public IP or load balancer assigned) is connected to the virtual network. This NAT IP address ensures the outbound connectivity for any standalone VM connected to the virtual network. To release this public IP usage from the pool is necessary to disconnect all the VMs from the virtual network and remove the virtual network. | Yes | No |
+
 ## Next steps
 
 [Manage Storage Accounts in Azure Stack Hub](azure-stack-manage-storage-accounts.md)

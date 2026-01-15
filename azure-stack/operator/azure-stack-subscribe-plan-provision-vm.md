@@ -1,10 +1,10 @@
 ---
 title: Create subscriptions to offers in Azure Stack Hub.
 titleSuffix: Azure Stack
-description: Learn to create subscriptions for offers in Azure Stack Hub.
+description: Learn how to create subscriptions for offers in Azure Stack Hub.
 author: sethmanheim
-ms.topic: conceptual
-ms.date: 10/05/2019
+ms.topic: how-to
+ms.date: 01/16/2025
 ms.author: sethm
 ms.lastreviewed: 05/10/2019
 
@@ -31,7 +31,7 @@ After you create a subscription for a user, they can sign in to the user portal 
 ### To create a subscription for a user
 
 1. In the administrator portal, go to **User subscriptions.**
-2. Select **Add**. Under **New user subscription**, enter the following information:  
+1. Select **Add**. Under **New user subscription**, enter the following information:  
 
    - **Display name** - A friendly name for identifying the subscription that appears as the *User subscription name*.
    - **User** - Specify a user from an available directory tenant for this subscription. The user name appears as *Owner*.  The format of the user name depends on your identity solution. For example:
@@ -42,19 +42,16 @@ After you create a subscription for a user, they can sign in to the user portal 
 
    - **Directory tenant** -  Select the directory tenant where the user account belongs. If you haven't enabled multi-tenancy, only your local directory tenant is available.
 
-3. Select **Offer**. Under **Offers**, choose an **Offer** for this subscription. Because you're creating the subscription for a user, select **Private** as the accessibility state.
-
-4. Select **Create** to create the subscription. The new subscription appears under **User subscription**. When the user signs in to the user portal, they can see the subscription details.
+1. Select **Offer**. Under **Offers**, choose an **Offer** for this subscription. Because you're creating the subscription for a user, select **Private** as the accessibility state.
+1. Select **Create** to create the subscription. The new subscription appears under **User subscription**. When the user signs in to the user portal, they can see the subscription details.
 
 ### To make an add-on plan available
 
 A cloud operator can add a plan to a previously created subscription at any time:
 
 1. In the administrator portal, select **All Services** and then under the **ADMINISTRATIVE RESOURCES** category, select **User subscriptions**. Select the subscription you want to change.
-
-2. Select **Add-ons**  and then select **+Add**.  
-
-3. Under **Add plan**, select the plan you want as an add-on.
+1. Select **Add-ons**  and then select **+Add**.  
+1. Under **Add plan**, select the plan you want as an add-on.
 
 ## Create a subscription as a user
 
@@ -69,13 +66,12 @@ As a user, you can sign in to the user portal to locate and subscribe to public 
 
    ![Get a subscription in Azure Stack Hub user portal](media/azure-stack-subscribe-plan-provision-vm/image01.png)
   
-2. Under **Get a subscription**, enter the friendly name of the subscription in **Display Name**. Select **Offer** and under **Choose an offer**, pick an offer. Select **Create** to create the subscription.
+1. Under **Get a subscription**, enter the friendly name of the subscription in **Display Name**. Select **Offer** and under **Choose an offer**, pick an offer. Select **Create** to create the subscription.
 
    ![Choose an offer in Azure Stack Hub user portal](media/azure-stack-subscribe-plan-provision-vm/image02.png)
   
-3. After you subscribe to an offer, refresh the portal to see which services are part of the new subscription.
-
-4. To see the subscription you created, select **All services** and then under the **GENERAL** category select **Subscriptions**. Select the subscription to see the subscription details.  
+1. After you subscribe to an offer, refresh the portal to see which services are part of the new subscription.
+1. To see the subscription you created, select **All services** and then under the **GENERAL** category select **Subscriptions**. Select the subscription to see the subscription details.  
 
 ### To enable an add-on plan in your subscription
 

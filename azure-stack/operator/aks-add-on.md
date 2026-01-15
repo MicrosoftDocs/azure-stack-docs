@@ -3,7 +3,7 @@ title: Install and offer the Azure Kubernetes Service on Azure Stack Hub
 description: Learn how to install and offer the Azure Kubernetes Service on Azure Stack Hub.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 04/24/2023
+ms.date: 08/08/2024
 ms.author: sethm
 ms.reviewer: waltero
 ms.lastreviewed: 03/24/2022
@@ -20,11 +20,11 @@ Azure Kubernetes Service (AKS) enables your users to deploy Kubernetes clusters 
 To install, you must have the VM extensions, the AKS base image, a plan and offer to your users, and enable multi-tenancy for your Azure Stack Hub. AKS clusters can only be created in the user environment.
 
 > [!IMPORTANT]  
-> Azure Kubernetes Service on Azure Stack Hub, currently in preview, is being discontinued and will not become GA. See [AKS Engine](../user/azure-stack-kubernetes-aks-engine-overview.md) for a Kubernetes solution on Azure Stack Hub. 
+> Azure Kubernetes Service on Azure Stack Hub, currently in preview, is discontinued and won't be released to general availability (GA). See the [AKS Engine overview](../user/azure-stack-kubernetes-aks-engine-overview.md) for a Kubernetes solution on Azure Stack Hub.
 > See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
 
 > [!NOTE]  
-> Azure Kubernetes Service on Azure Stack Hub doesn't support the creation of a cluster in the administration environment. You can only create AKS clusters in the user environment.
+> Azure Kubernetes Service on Azure Stack Hub doesn't support the creation of a cluster in the administrator environment. You can only create AKS clusters in the user environment.
 
 ## Download required VM extensions
 
@@ -36,11 +36,11 @@ You can find the VM extensions in the Azure Stack Hub Marketplace. You can downl
 
 - Run command for Linux (latest version)
 
-    ![Get the run command for Linux](media/aks-add-on/get-run-command-for-linux.png)
+   ![Screenshot of portal showing the run command for Linux.](media/aks-add-on/get-run-command-for-linux.png)
 
 - Custom script for Linux (version 2.0.6)
 
-    ![Get custom script for Linux](media/aks-add-on/get-custom-script-for-linux.png)
+   ![Screenshot of portal showing custom script for Linux.](media/aks-add-on/get-custom-script-for-linux.png)
 
 ### View the extensions with PowerShell
 
@@ -56,20 +56,20 @@ For information about installing and using the AzureStack PowerShell module, see
 
 ## Download AKS base image
 
-The AKS Service needs a special VM image referred to as the *AKS base image*. The AKS service doesn't work without the correct image version available in the local Azure Stack Hub Marketplace. The image is meant to be used by the AKS service, not to be used by tenants to create individual VMs. The image is not visible to tenants in the Marketplace. This is a task that needs to be done along with every Azure Stack Hub update. Every time there is a new update, there is a new AKS base image associated with the AKS service. Here are the steps:
+The AKS service needs a special VM image referred to as the *AKS base image*. The AKS service doesn't work without the correct image version available in the local Azure Stack Hub Marketplace. The image is meant to be used by the AKS service, not to be used by tenants to create individual VMs. The image is not visible to tenants in the Marketplace. This is a task that needs to be done along with every Azure Stack Hub update. Every time there is a new update, there's a new AKS base image associated with the AKS service. Here are the steps:
 
 1. Using the administrator portal, go the **Marketplace management** blade and select **Add from Azure**.
 1. Type **AKS** in the search box. Locate and download both the Linux **AKS Base Ubuntu 18.04-LTS Image Distro, 2022 Q1** version **2022.01.21** and the **AKS Base Windows Image** version **17763.2300.220121**.
 
     - Linux base image:
 
-        [![Add the AKS Base Image - Linux](media/aks-add-on/aks-base-image-linux.png)](media/aks-add-on/aks-base-image-linux.png#lightbox)
+       [![Screenshot of portal showing adding the AKS Base Image - Linux.](media/aks-add-on/aks-base-image-linux.png)](media/aks-add-on/aks-base-image-linux.png#lightbox)
 
     - Windows base image:
 
-        [![Add the AKS Base Image - Windows](media/aks-add-on/aks-base-image-windows.png)](media/aks-add-on/aks-base-image-windows.png#lightbox)
+       [![Screenshot of portal showing adding the AKS Base Image - Windows.](media/aks-add-on/aks-base-image-windows.png)](media/aks-add-on/aks-base-image-windows.png#lightbox)
 
-1. If your instance is disconnected, follow the instructions in the article [Download Marketplace items to Azure Stack Hub](azure-stack-download-azure-marketplace-item.md) to download the two specified items from the marketplace in Azure, and upload them to your Azure Stack Hub instance.
+1. If your instance is disconnected, follow the instructions in [Download Marketplace items to Azure Stack Hub](azure-stack-download-azure-marketplace-item.md) to download the two specified items from the marketplace in Azure, and upload them to your Azure Stack Hub instance.
 
 ## Create plans and offers
 
@@ -77,29 +77,29 @@ To allow tenant users to use the AKS service, the operator must make it availabl
 
 1. Create a plan with the `Microsoft.Container` service. There are no specific quotas for this service; it uses the quotas available for the Compute, Network, and Storage services:
 
-    ![Create a plan](media/aks-add-on/aks-create-a-plan.png)
+   ![Screenshot of portal showing create a plan.](media/aks-add-on/aks-create-a-plan.png)
 
 1. Again, use the Azure Stack Hub administration portal to create an offer that contains the plan created in the prior step:
 
-    ![Create an offer](media/aks-add-on/aks-create-an-offer.png)
+   ![Screenshot of portal showing create an offer.](media/aks-add-on/aks-create-an-offer.png)
 
 ## Configure multi-tenancy
 
 You must configure Azure Stack Hub to support sign-ins from users that reside in other Microsoft Entra directories, allowing them to use services in Azure Stack Hub.
 
-For instructions, see [Configure multi-tenancy in Azure Stack Hub](enable-multitenancy.md?pivots=management-tool-powershell)
+For instructions, see [Configure multi-tenancy in Azure Stack Hub](enable-multitenancy.md?pivots=management-tool-powershell).
 
 ## Monitor and act on alerts
 
-1. Using the administrative portal, you can access the **Azure Kubernetes Service** under the **Administration** group.
+1. Use the administrator portal to access **Azure Kubernetes Service** under the **Administration** group.
 1. Select the **Alerts** blade. Review the alerts:
 
-    ![AKS - Admin](media/aks-add-on/aks-admin.png)
+   ![Screenshot of portal showing AKS - Admin.](media/aks-add-on/aks-admin.png)
 
 1. Alerts appear in the **Alerts** blade, and you can take action on them if necessary:
 
-![AKS - Alerts](media/aks-add-on/aks-alerts.png)
+   ![Screenshot of portal showing AKS - Alerts.](media/aks-add-on/aks-alerts.png)
 
 ## Next steps
 
-[Learn more about AKS on Azure Stack Hub](../user/aks-overview.md)
+[More information about AKS on Azure Stack Hub](../user/aks-overview.md)

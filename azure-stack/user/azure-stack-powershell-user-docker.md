@@ -4,6 +4,7 @@ description: Use Docker to run PowerShell in Azure Stack Hub
 author: sethmanheim
 
 ms.topic: how-to
+ms.custom: linux-related-content
 ms.date: 12/16/2020
 ms.author: sethm
 ms.reviewer: thoroet
@@ -11,13 +12,9 @@ ms.lastreviewed: 12/16/2020
 
 # Intent: As an Azure Stack Hub user, I want to run my Azure Stack Hub PowerShell modules in a Docker container to keep them isolated from other processes.
 # Keyword: Azure Stack Hub AzureRM Az PowerShell Docker
-
 ---
 
 # Use Docker to run PowerShell for Azure Stack Hub
-
-> [!CAUTION]
-> This article references CentOS, a Linux distribution that is nearing End Of Life (EOL) status. Please consider your use and plan accordingly. For more information, see the [CentOS End Of Life guidance](/azure/virtual-machines/workloads/centos/centos-end-of-life).
 
 In this article, you can use Docker to create a container on which to run the version of PowerShell that's required for working with the various interfaces. You can find instructions for using both AzureRM modules and the latest Az modules. AzureRM requires a Windows-based container. Az uses a Linux-based container.
 
@@ -49,8 +46,7 @@ In these instructions, you will run a Linux-based container image that contains 
 
 1. You need to run Docker by using Linux container. When you run Docker, switch to Linux containers.
 
-1. Run Docker from a machine that's joined to the same domain as Azure Stack Hub. If you are using the Azure Stack Development Kit (ASDK), you need to install [the VPN on your remote machine](azure-stack-connect-azure-stack.md#connect-to-azure-stack-hub-with-vpn).
-
+1. Run Docker from a machine that's joined to the same domain as Azure Stack Hub. If you are using the Azure Stack Development Kit (ASDK), install the VPN on your remote machine.
 
 ## Install Azure Stack Hub Az module on a Linux container
 
@@ -60,13 +56,12 @@ In these instructions, you will run a Linux-based container image that contains 
     docker run -it mcr.microsoft.com/azurestack/powershell
     ```
 
-    You can run Ubuntu, Debian, or Centos. You can find the following Docker files in the GitHub repository, [azurestack-powershell](https://github.com/Azure/azurestack-powershell). Refer to the GitHub repository for the latest changes to the Docker files. Each OS is tagged. Replace the tag, the section after the colon, with the tag for the desired OS.
+    You can run Ubuntu or Debian. You can find the following Docker files in the GitHub repository, [azurestack-powershell](https://github.com/Azure/azurestack-powershell). Refer to the GitHub repository for the latest changes to the Docker files. Each OS is tagged. Replace the tag, the section after the colon, with the tag for the desired OS.
 
     | Linux | Docker image |
     | --- | --- |
     | Ubuntu | `docker run -it mcr.microsoft.com/azurestack/powershell:ubuntu-18.04` |
     | Debian | `docker run -it mcr.microsoft.com/azurestack/powershell:debian-9` |
-    | Centos | `docker run -it mcr.microsoft.com/azurestack/powershell:centos-7` |
 
 2. The shell is ready for your cmdlets. Test your shell connectivity by signing in and then running `Test-AzureStack.ps1`.
 
@@ -106,7 +101,7 @@ In these instructions, you will run a Windows-based container image and install 
 
 1. You need to run Docker by using Windows containers that require Windows 10. When you run Docker, switch to Windows containers. The images supporting the Az module will require Docker 17.05 or newer.
 
-1. Run Docker from a machine that's joined to the same domain as Azure Stack Hub. If you are using the Azure Stack Development Kit (ASDK), you need to install [the VPN on your remote machine](azure-stack-connect-azure-stack.md#connect-to-azure-stack-hub-with-vpn).
+1. Run Docker from a machine that's joined to the same domain as Azure Stack Hub. If you are using the Azure Stack Development Kit (ASDK), install the VPN on your remote machine.
 
 ### Install Azure Stack Hub AzureRM module on a windows container
 

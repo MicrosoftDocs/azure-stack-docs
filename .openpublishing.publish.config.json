@@ -1,8 +1,22 @@
 {
   "docsets_to_publish": [
     {
+      "docset_name": "adaptive-cloud",
+      "build_source_folder": "adaptive-cloud",
+      "build_output_subfolder": "adaptive-cloud",
+      "locale": "en-us",
+      "monikers": [],
+      "moniker_ranges": [],
+      "open_to_public_contributors": false,
+      "type_mapping": {
+        "Conceptual": "Content"
+      },
+      "build_entry_point": "docs",
+      "template_folder": "_themes"
+    },
+    {
       "docset_name": "AKS-Hybrid",
-      "build_source_folder": "AKS-Hybrid",
+      "build_source_folder": "AKS-Arc",
       "build_output_subfolder": "AKS-Hybrid",
       "locale": "en-us",
       "monikers": [],
@@ -16,12 +30,40 @@
       "template_folder": "_themes"
     },
     {
+      "docset_name": "azure-local-max",
+      "build_source_folder": "azure-local-max",
+      "build_output_subfolder": "azure-local-max",
+      "locale": "en-us",
+      "monikers": [],
+      "open_to_public_contributors": false,
+      "type_mapping": {
+        "Conceptual": "Content"
+      },
+      "build_entry_point": "docs"
+    },
+    {
       "docset_name": "azure-managed-lustre",
       "build_source_folder": "azure-managed-lustre",
       "build_output_subfolder": "azure-managed-lustre",
       "locale": "en-us",
       "monikers": [],
       "moniker_ranges": [],
+      "open_to_public_contributors": true,
+      "type_mapping": {
+        "Conceptual": "Content"
+      },
+      "build_entry_point": "docs",
+      "template_folder": "_themes"
+    },
+    {
+      "docset_name": "AzureLocal",
+      "build_source_folder": "azure-local",
+      "build_output_subfolder": "AzureLocal",
+      "locale": "en-us",
+      "monikers": [],
+      "moniker_ranges": [
+        ">=azloc-2408"
+      ],
       "open_to_public_contributors": true,
       "type_mapping": {
         "Conceptual": "Content"
@@ -47,6 +89,18 @@
       },
       "build_entry_point": "docs",
       "template_folder": "_themes"
+    },
+    {
+      "docset_name": "operator-nexus",
+      "build_source_folder": "operator-nexus",
+      "build_output_subfolder": "operator-nexus",
+      "locale": "en-us",
+      "monikers": [],
+      "open_to_public_contributors": true,
+      "type_mapping": {
+        "Conceptual": "Content"
+      },
+      "build_entry_point": "docs"
     }
   ],
   "notification_subscribers": [],
@@ -87,7 +141,7 @@
       "branch_mapping": {}
     },
     {
-      "path_to_root": "azure-stack/reusable-content",
+      "path_to_root": "reusable-content",
       "url": "https://github.com/MicrosoftDocs/reusable-content",
       "branch": "main",
       "branch_mapping": {}
@@ -122,6 +176,8 @@
     ".openpublishing.redirection.json",
     ".openpublishing.redirection.pep.json",
     ".openpublishing.redirection.aks.json",
-    ".openpublishing.redirection.aks-edge.json"
+    ".openpublishing.redirection.aks-edge.json",
+    ".openpublishing.redirection.azure-local.json",
+    ".openpublishing.redirection.hub-hotfixes.json"
   ]
 }

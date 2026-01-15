@@ -3,15 +3,15 @@ title: Manage Azure Stack Hub with Azure CLI | Microsoft Docs
 description: Learn how to use the cross-platform command-line interface (CLI) to manage and deploy resources on Azure Stack Hub.
 services: azure-stack
 author: sethmanheim
-manager: femila
+manager: lizross
 ms.service: azure-stack
-ms.topic: article
-ms.date: 2/1/2021
+ms.topic: install-set-up-deploy
+ms.date: 08/19/2024
 ms.author: sethm
-ms.reviewer: raymondl
-ms.lastreviewed: 1/9/2020 
-ms.custom: devx-track-azurecli
-
+ms.custom:
+  - devx-track-azurecli
+  - linux-related-content
+  - sfi-image-nochange
 ---
 # Manage and deploy resources to Azure Stack Hub with Azure CLI
 
@@ -95,7 +95,7 @@ This section walks you through setting up CLI if you're using Microsoft Entra ID
      You can either specify the username and password directly within the `az login` command, or authenticate by using a browser. You must do the latter if your account has multi-factor authentication enabled:
 
      ```azurecli
-     az login -u <Active directory global administrator or user account. For example: username@<aadtenant>.onmicrosoft.com> --tenant <Azure Active Directory Tenant name. For example: myazurestack.onmicrosoft.com>
+     az login -u <Microsoft Entra administrator or user account. For example: username@<aadtenant>.onmicrosoft.com> --tenant <Azure Active Directory Tenant name. For example: myazurestack.onmicrosoft.com>
      ```
 
      > [!NOTE]

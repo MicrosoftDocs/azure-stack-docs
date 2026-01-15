@@ -9,6 +9,7 @@ ms.date: 12/2/2020
 ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 12/2/2020
+ms.custom: sfi-image-nochange
 
 # Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
 # Keyword: Notdone: keyword noun phrase
@@ -30,7 +31,7 @@ This article describes how to create a connection between two virtual networks i
 
     This procedure uses the [Single FortiGate-VM deployment](https://docs2.fortinet.com/document/fortigate-public-cloud/6.2.0/azure-administration-guide/632940/single-fortigate-vm-deployment). You can find steps on how to connect the FortiGate NVA to the Azure Stack Hub VNET to in your on-premises network.
 
-    For more information on how to deploy the FortiGate solution in an active-passive (HA) set up, see the details in the Fortinet Document Library article [HA for FortiGate-VM on Azure](https://docs2.fortinet.com/document/fortigate-public-cloud/6.2.0/azure-administration-guide/983245/ha-for-fortigate-vm-on-azure).
+    For more information on how to deploy the FortiGate solution in an active-passive (HA) set up, see the details in the Fortinet Document Library article [HA for FortiGate-VM on Azure](https://docs.fortinet.com/document/fortigate-public-cloud/7.6.0/azure-administration-guide/598754/deploying-the-fortigate-vm).
 
 ## Deployment parameters
 

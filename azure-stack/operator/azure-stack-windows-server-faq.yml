@@ -3,6 +3,7 @@ metadata:
   title: Azure Stack Hub Marketplace FAQ
   titleSuffix: Azure Stack Hub
   description: List of Azure Stack Hub Marketplace FAQs for Windows Server.
+  ms.service: azure-stack-hub
   author: sethmanheim
   ms.topic: faq
   ms.date: 11/19/2020

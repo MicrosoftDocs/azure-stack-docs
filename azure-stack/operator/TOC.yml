@@ -4,136 +4,62 @@
   items:
   - name: What is Azure Stack Hub?
     href: azure-stack-overview.md
-  - name: Comparing the Azure ecosystem
-    href: compare-azure-azure-stack.md
   - name: Release notes
     items:
     - name: Security updates
       href: release-notes-security-updates.md
+    - name: Microsoft Entra ID Graph API retirement
+      href: graph-api-retirement.md
     - name: Release notes
       href: release-notes.md
     - name: Hotfixes
       items:
-      - name: Hotfix 1.2311.2.23
-        href: hotfix-1-2311-2-23.md
-      - name: Hotfix 1.2306.4.74
-        href: hotfix-1-2306-4-74.md      
-      - name: Hotfix 1.2301.3.72
-        href: hotfix-1-2301-3-72.md
-      - name: Hotfix 1.2306.4.73
-        href: hotfix-1-2306-4-73.md      
-      - name: Hotfix 1.2206.2.77
-        href: hotfix-1-2206-2-77.md      
-      - name: Hotfix 1.2301.2.64
-        href: hotfix-1-2301-2-64.md
-      - name: Hotfix 1.2206.2.76
-        href: hotfix-1-2206-2-76.md      
-      - name: Hotfix 1.2301.2.63
-        href: hotfix-1-2301-2-63.md
-      - name: Hotfix 1.2301.2.60
-        href: hotfix-1-2301-2-60.md
-      - name: Hotfix 1.2206.2.66
-        href: hotfix-1-2206-2-66.md
-      - name: Hotfix 1.2108.2.130
-        href: hotfix-1-2108-2-130.md            
-      - name: Hotfix 1.2102.31.153
-        href: hotfix-1-2102-31-153.md      
-      - name: Hotfix 1.2206.2.52
-        href: hotfix-1-2206-2-52.md      
-      - name: Hotfix 1.2108.2.127
-        href: hotfix-1-2108-2-127.md            
-      - name: Hotfix 1.2102.31.152
-        href: hotfix-1-2102-31-152.md      
-      - name: Hotfix 1.2206.2.38
-        href: hotfix-1-2206-2-38.md   
-      - name: Hotfix 1.2108.2.113
-        href: hotfix-1-2108-2-113.md      
-      - name: Hotfix 1.2102.30.148
-        href: hotfix-1-2102-30-148.md      
-      - name: Hotfix 1.2206.1.25
-        href: hotfix-1-2206-1-25.md      
-      - name: Hotfix 1.2206.1.24
-        href: hotfix-1-2206-1-24.md
-      - name: Hotfix 1.2108.2.111
-        href: hotfix-1-2108-2-111.md      
-      - name: Hotfix 1.2102.30.146
-        href: hotfix-1-2102-30-146.md      
-      - name: Hotfix 1.2008.41.161
-        href: hotfix-1-2008-41-161.md
-      - name: Hotfix 1.2108.2.102
-        href: hotfix-1-2108-2-102.md
-      - name: Hotfix 1.2102.30.132
-        href: hotfix-1-2102-30-132.md
-      - name: Hotfix 1.2008.41.159
-        href: hotfix-1-2008-41-159.md
-      - name: Hotfix 1.2108.2.83
-        href: hotfix-1-2108-2-83.md
-      - name: Hotfix 1.2102.30.118
-        href: hotfix-1-2102-30-118.md              
-      - name: Hotfix 1.2008.40.156
-        href: hotfix-1-2008-40-156.md        
-      - name: Hotfix 1.2102.30.116
-        href: hotfix-1-2102-30-116.md
-      - name: Hotfix 1.2102.30.109
-        href: hotfix-1-2102-30-109.md      
-      - name: Hotfix 1.2102.30.106
-        href: hotfix-1-2102-30-106.md      
-      - name: Hotfix 1.2102.30.104
-        href: hotfix-1-2102-30-104.md
-      - name: Hotfix 1.2008.40.154
-        href: hotfix-1-2008-40-154.md
-      - name: Hotfix 1.2005.48.137
-        href: hotfix-1-2005-48-137.md      
-      - name: Hotfix 1.2102.30.102
-        href: hotfix-1-2102-30-102.md
-      - name: Hotfix 1.2008.40.151
-        href: hotfix-1-2008-40-151.md
-      - name: Hotfix 1.2005.47.135
-        href: hotfix-1-2005-47-135.md      
-      - name: Hotfix 1.2102.30.101
-        href: hotfix-1-2102-30-101.md
-      - name: Hotfix 1.2008.40.150
-        href: hotfix-1-2008-40-150.md      
-      - name: Hotfix 1.2005.46.133
-        href: hotfix-1-2005-46-133.md      
-      - name: Hotfix 1.2102.28.89
-        href: hotfix-1-2102-28-89.md              
-      - name: Hotfix 1.2008.40.148
-        href: hotfix-1-2008-40-148.md      
-      - name: Hotfix 1.2005.42.126
-        href: hotfix-1-2005-42-126.md
-      - name: Hotfix 1.2102.28.87
-        href: hotfix-1-2102-28-87.md
-      - name: Hotfix 1.2008.37.139
-        href: hotfix-1-2008-37-139.md
-      - name: Hotfix 1.2005.41.124
-        href: hotfix-1-2005-41-124.md     
-      - name: Hotfix 1.2002.69.179
-        href: hotfix-1-2002-69-179.md
-      - name: Hotfix 1.2008.33.131
-        href: hotfix-1-2008-33-131.md      
-      - name: Hotfix 1.2005.35.112
-        href: hotfix-1-2005-35-112.md
-      - name: Hotfix 1.2008.31.126
-        href: hotfix-1-2008-31-126.md      
-      - name: Hotfix 1.2005.33.108
-        href: hotfix-1-2005-33-108.md
-      - name: Hotfix 1.2008.27.118
-        href: hotfix-1-2008-27-118.md      
-      - name: Hotfix 1.2005.32.106
-        href: hotfix-1-2005-32-106.md      
-      - name: Hotfix 1.2002.67.175
-        href: hotfix-1-2002-67-175.md
-      - name: Hotfix 1.2008.26.116
-        href: hotfix-1-2008-26-116.md      
-      - name: Hotfix 1.2005.30.102
-        href: hotfix-1-2005-30-102.md
-      - name: Hotfix 1.2002.66.173
-        href: hotfix-1-2002-66-173.md      
-      - name: Hotfix 1.2008.25.114
-        href: hotfix-1-2008-25-114.md  
-      - name: Hotfix 1.2005.29.100
-        href: hotfix-1-2005-29-100.md
+      - name: Currently supported versions
+        items:
+        - name: 2506
+          items:
+          - name: Hotfix 1.2506.2.24
+            href: hotfix-1-2506-2-24.md
+        - name: 2501
+          items:
+          - name: Hotfix 1.2501.1.47
+            href: hotfix-1-2501-1-47.md
+          - name: Hotfix 1.2501.1.40
+            href: hotfix-1-2501-1-40.md
+        - name: 2408
+          items:
+          - name: Hotfix 1.2408.1.50
+            href: hotfix-1-2408-1-50.md
+          - name: Hotfix 1.2408.1.46
+            href: hotfix-1-2408-1-46.md
+          - name: Hotfix 1.2408.1.44
+            href: hotfix-1-2408-1-44.md            
+          - name: Hotfix 1.2408.1.39
+            href: hotfix-1-2408-1-39.md            
+          - name: Hotfix 1.2408.1.38
+            href: hotfix-1-2408-1-38.md            
+      - name: Archive
+        items:
+        - name: Hotfix 1.2406.1.23
+          href: hotfix-1-2406-1-23.md      
+        - name: Hotfix 1.2311.3.62
+          href: hotfix-1-2311-3-62.md
+        - name: Hotfix 1.2306.4.102
+          href: hotfix-1-2306-4-102.md      
+        - name: Hotfix 1.2301.3.97
+          href: hotfix-1-2301-3-97.md
+        - name: Hotfix 1.2206.2.77
+          href: hotfix-1-2206-2-77.md      
+        - name: Hotfix 1.2108.2.130
+          href: hotfix-1-2108-2-130.md            
+        - name: Hotfix 1.2102.31.153
+          href: hotfix-1-2102-31-153.md      
+        - name: Hotfix 1.2008.41.161
+          href: hotfix-1-2008-41-161.md
+        - name: Hotfix 1.2005.48.137
+          href: hotfix-1-2005-48-137.md      
+        - name: Hotfix 1.2002.69.179
+          href: hotfix-1-2002-69-179.md
     - name: Known issues
       href: known-issues.md
   - name: Manage updates
@@ -290,8 +216,6 @@
       items:
       - name: Install PowerShell Az
         href: powershell-install-az-module.md
-      - name: Install PowerShell AzureRM
-        href: azure-stack-powershell-install.md
       - name: Migrate PowerShell AzureRM to Az
         href: migrate-azurerm-az.md
       - name: Download tools
@@ -458,14 +382,10 @@
           href: app-service-migrate-sql-server.md
       - name: Release notes
         items:
-        - name: 2302 release notes [February 2023]
-          href: app-service-release-notes-2302.md
-        - name: 2022 H1 release notes [October 2022]
-          href: app-service-release-notes-2022-h1.md
-        - name: 2021 Q3 release notes [December 2021]
-          href: app-service-release-notes-2021-Q3.md
-        - name: 2021 Q1 release notes [June 2021]
-          href: app-service-release-notes-2021-Q1.md
+        - name: 25R1 release notes [June 2025]
+          href: app-service-release-notes-2025R1.md
+        - name: 24R1 release notes [December 2024]
+          href: app-service-release-notes-2024R1.md
     - name: Azure Container Registry
       items:
       - name: Overview
@@ -603,11 +523,13 @@
         - name: SQL resource provider 2.0.00.0 release notes
           href: azure-stack-sql-resource-provider-20000.md 
   - name: Usage and billing
-    href: azure-stack-billing-and-chargeback.md
     items:
+    - name: Overview of usage and billing
+      href: azure-stack-billing-and-chargeback.md
     - name: Manage usage and billing as a CSP
-      href: azure-stack-add-manage-billing-as-a-csp.md
       items:
+      - name: Overview of CSP billing
+        href: azure-stack-add-manage-billing-as-a-csp.md
       - name: Add tenants for usage and billing 
         href: azure-stack-csp-howto-register-tenants.md
       - name: Manage tenant registration
@@ -684,10 +606,6 @@
   items:
   - name: Azure Stack Hub user documentation
     href: ../user/index.yml
-  - name: ASDK Documentation
-    href: ../asdk/index.yml
-  - name: Azure hybrid cloud documentation
-    href: /hybrid    
 - name: Resources
   items:
     - name: Release notes archive
@@ -696,8 +614,6 @@
         href: ./relnotearchive/release-notes.md
       - name: Known issues
         href: ./relnotearchive/known-issues.md    
-    - name: Training and certification
-      href: azure-stack-train-and-cert.md
     - name: Azure Stack Hub road map
       href: https://azure.microsoft.com/updates/?query=azure%20stack%20hub
     - name: Azure Stack Hub Microsoft Q&A

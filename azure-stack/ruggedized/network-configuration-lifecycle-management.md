@@ -4,7 +4,7 @@ description: Learn about network configuration lifecycle management for the Azur
 author: sethmanheim
 ms.author: sethm
 ms.service: azure-stack
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/14/2020
 ms.lastreviewed: 10/14/2020
 ---

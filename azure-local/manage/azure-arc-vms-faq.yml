@@ -1,0 +1,104 @@
+### YamlMime:FAQ
+metadata:
+  title: Azure Local VMs Enabled by Azure Arc FAQ 
+  description: This article provides answers to questions related to Azure Local VM management.
+  ms.topic: faq
+  author: alkohli
+  ms.author: alkohli
+  ms.service: azure-local
+  ms.date: 09/25/2025
+  ms.subservice: hyperconverged
+  sections: []
+title: FAQ for Azure Local VMs enabled by Azure Arc
+summary:
+  Frequently asked questions about Azure Local VMs enabled by Azure Arc for version 2311.2 and later.
+
+sections:
+  - name: ignored
+    questions:
+    
+    - question: |
+        How do I update my infrastructure components for VM management?
+      answer: |
+        Updates for virtual machine (VM) management infrastructure components are handled automatically. These components include MOC, Azure Arc resource bridge, and Kubernetes extensions on Azure Local 2311.2 or later. For more information, see [Update overview for Azure Local](../update/about-updates-23h2.md).
+
+    - question: | 
+        Will I be charged when I update my VM by using the Azure Update Manager service?
+      answer: |
+        No. You can update VMs for free when you use Azure Update Manager. However, updating unmanaged VMs that you created by using Windows Admin Center or Hyper-V Manager, and that were Azure Arc-enabled independently (these are now Arc-enabled servers), does incur a charge. For more information, see the [Azure Update Manager pricing for Azure Arc-enabled servers](/azure/update-manager/update-manager-faq#pricing).
+        
+    - question: |
+        Why do I need to move to Azure Local?
+      answer: |
+        Moving to Azure Local is essential to continue using Azure Local VM management, because support for version 22H2 ended on February 15, 2024. Azure Local has several new and enhanced features that provide access to a stable, efficient, and feature-rich platform.
+
+    - question: |
+        How can I seek assistance during the transition to Azure Local?
+      answer: |
+        The Microsoft support team is available to help you through the transition and can answer any questions you might have. You can get assistance via the Azure portal.
+
+        You can also learn more about upgrading at [About Azure Local upgrades](../upgrade/about-upgrades-23h2.md).
+   
+    - question: |
+        I used to be able to create virtual networks for my VMs in past releases. Now, I can create only logical networks. What changed?
+      answer: |
+        Starting with the 2311.2 release of Azure Local, logical networks replace virtual networks. Logical networks are the Azure resources that represent your physical network.
+        
+        To connect virtual machines to your network, you need to create logical networks on which you can place your VM network adapters. You can't use virtual networks created on earlier versions with the Azure Local 2311.2 release and later. You need to manually delete those virtual networks.
+
+    - question: |
+        Can I use software-defined networking for Azure Local VMs created from the Azure portal?
+      answer: |
+        Software-defined networking (SDN) is currently not supported for VMs created from the Azure portal. For more information on using SDN in Azure Local, see the [technical reference for SDN in Azure Local](sdn-technical-reference.md).
+
+    - question: |
+        How can I perform live migration of Azure Local VMs?
+      answer: |
+        Live migration of Azure Local VMs is supported via on-premises tools like [Failover Cluster Manager](/windows-server/manage/windows-admin-center/use/manage-failover-clusters#adding-a-failover-cluster-to-windows-admin-center) or [Windows Admin Center](/windows-server/manage/windows-admin-center/use/manage-virtual-machines#live-migrate-a-virtual-machine-to-another-cluster-node). Live migration of VM storage is not supported.
+
+    - question: |
+        Is there a fee to manage Azure Local VMs?
+      answer: |
+        No. You can manage Azure Local VMs by using the Azure CLI or the Azure portal. In either case, no fee is charged. Some VM extensions might have a fee. 
+
+    - question: |
+        When I'm creating an Azure Local VM via the Azure portal and I choose trusted launch as the security type, why is the image dropdown list blank?
+      answer: | 
+        Trusted launch for Azure Local VMs currently supports only a select set of Azure Marketplace images. For a list of supported images, see [Guest operating system images](./trusted-launch-vm-overview.md#guest-operating-system-images).
+        
+        When you create a trusted launch VM in the Azure portal, the image dropdown list shows only the images that trusted launch supports. The image dropdown list appears blank if you select an unsupported image, including a custom image. The list also appears blank if trusted launch doesn't support any of the images available on your Azure Local system.
+
+    - question: |
+        Can I use the same name for gallery image projections, and do existing VMs use the new image?
+      answer: |
+        Trying to create two images with the same name results in an error. The same situation is true for other resources, like logical networks or virtual hard disks. You must use a unique name.
+        
+        An updated image doesn't change existing VMs that use it. A copy of the VM image is created at the time of VM creation.
+
+    - question: | 
+        How can I delete a VM image?  
+      answer: |
+        You can remove VM images and all other entities by using the Azure CLI or the Azure portal. For more information, see [Delete a VM image](./virtual-machine-manage-image.md#delete-vm-image).   
+
+    - question: |
+        If I delete a gallery image, are all the deployed VMs also deleted?
+      answer: |
+        Deleting a gallery image removes the image name from VM details. It doesn't affect the VMs that you created by using the image.
+
+    - question: | 
+          If I delete Azure Arc resource bridge, are the VMs also deleted?
+      answer: |
+        If you inadvertently remove Azure Arc resource bridge via the Azure portal, it results in the deletion of the Azure projection of the on-premises appliance VM. Importantly, this action doesn't affect your existing workloads.
+      
+        To restore the Azure projection of the Azure Arc resource bridge, run `az arcappliance create`. For more information, see [`az arcappliance create hci`](https://learn.microsoft.com/cli/azure/arcappliance/create?view=azure-cli-latest#az-arcappliance-create-hci).
+        
+        If the on-premises appliance VM is accidentally deleted, you lose the ability to manage your VMs through the Azure portal. However, your workloads remain accessible through local on-premises tools like Windows Admin Center, Hyper-V, and PowerShell. To reinstate Azure Arc resource bridge, you need to redeploy it. For assistance with this process, contact Microsoft support.
+
+    - question: | 
+        How can I delete the empty DVD drives created during VM provisioning?
+      answer: |
+        Two DVD drives are created and used in Azure Local VMs during VM provisioning. The ISO files used during provisioning are removed after successfully creating the VM. However, you might see the empty drives visible for the VM. 
+        
+        To  delete these drives in a Windows VM, use Device Manager to uninstall the drives. Depending on the flavor of Linux you are using, you can also delete them for Linux VMs.
+         
+

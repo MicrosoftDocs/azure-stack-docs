@@ -3,11 +3,11 @@ title: Use data transfer tools in Azure Stack Hub Storage
 description: Learn about Azure Stack Hub Storage data transfer tools.
 author: sethmanheim
 
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom:
   - devx-track-azurepowershell
   - devx-track-azurecli
-ms.date: 11/22/2020
+ms.date: 01/14/2025
 ms.author: sethm
 ms.reviewer: xiaofmao
 ms.lastreviewed: 11/22/2020
@@ -22,25 +22,11 @@ Azure Stack Hub provides a set of storage services for disks, blobs, tables, que
 
 Your requirements determine which of the following tools works best for you:
 
-* [AzCopy](#azcopy)
-
-    A storage-specific, command-line utility that you can download to copy data from one object to another object within or between your storage accounts.
-
-* [Azure PowerShell](#azure-powershell)
-
-    A task-based, command-line shell and scripting language designed especially for system administration.
-
-* [Azure CLI](#azure-cli)
-
-    An open-source, cross-platform tool that provides a set of commands for working with the Azure and Azure Stack Hub platforms.
-
-* [Microsoft Azure Storage Explorer](#microsoft-azure-storage-explorer)
-
-    An easy-to-use stand-alone app with a user interface.
-
-* [Blobfuse](#blobfuse)
-
-    A virtual file system driver for Azure Blob Storage, which allows you to access your existing block blob data in your storage account through the Linux file system.
+- **AzCopy**: A storage-specific, command-line utility that you can download to copy data from one object to another object within or between your storage accounts.
+- **Azure PowerShell**: A task-based, command-line shell and scripting language designed especially for system administration.
+- **Azure CLI**: An open-source, cross-platform tool that provides a set of commands for working with the Azure and Azure Stack Hub platforms.
+- **Microsoft Azure Storage Explorer**: An easy-to-use stand-alone app with a user interface.
+- **Blobfuse**: A virtual file system driver for Azure Blob Storage, which allows you to access your existing block blob data in your storage account through the Linux file system.
 
 Because of storage services differences between Azure and Azure Stack Hub, there might be some specific requirements for each tool described in the following sections. For a comparison between Azure Stack Hub Storage and Azure Storage, see [Azure Stack Hub Storage: Differences and considerations](azure-stack-acs-differences.md).
 
@@ -74,9 +60,9 @@ In AzCopy 10.1, the following features are supported for Azure Stack Hub:
 |Download file|Download a file<br>Download a directory<br>Download the contents of a directory
 |Synchronize file|Synchronize a container to a local file system<br>Synchronize a local file system to a container
 
-   > [!NOTE]
-   > * Azure Stack Hub doesn't support providing authorization credentials to AzCopy by using Microsoft Entra ID. You must access storage objects on Azure Stack Hub using a Shared Access Signature (SAS) token.
-   > * Azure Stack Hub doesn't support synchronous data transfer between two Azure Stack Hub blob locations, and between Azure Storage and Azure Stack Hub. You can't use "azcopy cp" to move data from Azure Stack Hub to Azure Storage (or the other way around) directly with AzCopy 10.1.
+> [!NOTE]
+> Azure Stack Hub doesn't support providing authorization credentials to AzCopy by using Microsoft Entra ID. You must access storage objects on Azure Stack Hub using a Shared Access Signature (SAS) token.
+> Azure Stack Hub doesn't support synchronous data transfer between two Azure Stack Hub blob locations, and between Azure Storage and Azure Stack Hub. You can't use `azcopy cp` to move data from Azure Stack Hub to Azure Storage (or the other way around) directly with AzCopy 10.1.
 
 ### AzCopy command examples for data transfer
 
@@ -84,23 +70,23 @@ The following examples follow typical scenarios for copying data to and from Azu
 
 ### Download all blobs to a local disk
 
-```
+```azurecli
 azcopy cp "https://[account].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" "/path/to/dir" --recursive=true
 ```
 
 ### Upload single file to virtual directory
 
-```
+```azurecli
 azcopy cp "/path/to/file.txt" "https://[account].blob.core.windows.net/[container]/[path/to/blob]?[SAS]"
 ```
 
 ### AzCopy known issues
 
- - Any AzCopy operation on a file storage isn't available because file storage isn't yet available in Azure Stack Hub.
- - If you want to transfer data between two Azure Stack Hub blob locations--or between Azure Stack Hub and Azure Storage by using AzCopy 10.1--you need to download the data to a local location first, and then reupload to the target directory on Azure Stack Hub or Azure Storage. Or you can use AzCopy 7.1, and specify the transfer with the **/SyncCopy** option to copy the data.  
- - The Linux version of AzCopy only supports the 1802 update or later versions and it doesn't support Table service.
- - If you want to copy data to and from your Azure Table storage service, then [install AzCopy version 7.3.0](https://aka.ms/azcopyforazurestack20171109)
- 
+- Any AzCopy operation on a file storage isn't available because file storage isn't yet available in Azure Stack Hub.
+- If you want to transfer data between two Azure Stack Hub blob locations, or between Azure Stack Hub and Azure Storage by using AzCopy 10.1, download the data to a local location first, and then upload again to the target directory on Azure Stack Hub or Azure Storage.
+- The Linux version of AzCopy only supports the 1802 update or later versions; it doesn't support Table service.
+- If you want to copy data to and from your Azure Table Storage service, you can use PowerShell, CLI, or the Azure client libraries.
+
 ## Azure PowerShell
 
 Azure PowerShell is a module that provides cmdlets for managing services on both Azure and Azure Stack Hub. It's a task-based, command-line shell and scripting language designed especially for system administration.
@@ -183,6 +169,7 @@ $blobs | Get-AzureStorageBlobContent -Destination $DestinationFolder
 
 # end
 ```
+
 ### [AzureRM modules](#tab/azurerm1)
 
 This sample assumes you have successfully [Installed PowerShell for Azure Stack Hub](../operator/azure-stack-powershell-install.md). This script will help you complete the configuration and ask your Azure Stack Hub tenant credentials to add your account to the local PowerShell environment. The script will then set the default Azure subscription, create a new storage account in Azure, create a new container in this new storage account, and upload an existing image file (blob) to that container. After the script lists all blobs in that container, it will create a new destination directory on your local computer and download the image file.
@@ -259,8 +246,6 @@ $blobs | Get-AzureStorageBlobContent -Destination $DestinationFolder
 
 ---
 
-
-
 ### PowerShell known issues
 
 #### Get-AzStorageAccountKey difference
@@ -299,10 +284,10 @@ Azure Stack Hub requires Azure CLI version 2.0 or later. For more information ab
 
 Once you complete the CLI installation and configuration, you can try the following steps to work with a small shell sample script to interact with Azure Stack Hub storage resources. The script completes the following actions:
 
-* Creates a new container in your storage account.
-* Uploads an existing file (as a blob) to the container.
-* Lists all blobs in the container.
-* Downloads the file to a destination on your local computer that you specify.
+- Creates a new container in your storage account.
+- Uploads an existing file (as a blob) to the container.
+- Lists all blobs in the container.
+- Downloads the file to a destination on your local computer that you specify.
 
 Before you run this script, make sure that you can successfully connect and sign in to the target Azure Stack Hub.
 
@@ -349,14 +334,14 @@ echo "Done"
 
 Azure Storage Explorer is a standalone app from Microsoft. It allows you to easily work with both Azure Storage and Azure Stack Hub Storage data on Windows, macOS, and Linux computers. If you want an easy way to manage your Azure Stack Hub Storage data, then consider using Microsoft Azure Storage Explorer.
 
-* To learn more about configuring Azure Storage Explorer to work with Azure Stack Hub, see [Connect Storage Explorer to an Azure Stack Hub subscription](azure-stack-storage-connect-se.md).
-* To learn more about Microsoft Azure Storage Explorer, see [Get started with storage explorer](/azure/vs-azure-tools-storage-manage-with-storage-explorer)
+- For more information about configuring Azure Storage Explorer to work with Azure Stack Hub, see [Connect Storage Explorer to an Azure Stack Hub subscription](azure-stack-storage-connect-se.md).
+- For more information about Microsoft Azure Storage Explorer, see [Get started with storage explorer](/azure/vs-azure-tools-storage-manage-with-storage-explorer).
 
 ## Blobfuse 
 
 [Blobfuse](https://github.com/Azure/azure-storage-fuse) is a virtual file system driver for Azure Blob Storage, which allows you to access your existing block blob data in your storage account through the Linux file system. Azure Blob Storage is an object storage service and therefore doesn't have a hierarchical namespace. Blobfuse provides this namespace using the virtual directory scheme with the use of forward-slash `/` as a delimiter. Blobfuse works on both Azure and Azure Stack Hub. 
 
-To learn more about mounting blob storage as a file system with Blobfuse on Linux, see [How to mount Blob storage as a file system with Blobfuse](/azure/storage/blobs/storage-how-to-mount-container-linux). 
+To learn more about mounting blob storage as a file system with Blobfuse on Linux, see [How to mount Blob storage as a file system with Blobfuse](/azure/storage/blobs/storage-how-to-mount-container-linux).
 
 For Azure Stack Hub, *blobEndpoint* needs to be specified while configuring your storage account credentials along with accountName, accountKey/sasToken, and containerName.
 
@@ -364,7 +349,7 @@ In the Azure Stack Development Kit (ASDK), the *blobEndpoint* should be `myaccou
 
 *accountKey* and *sasToken* can only be configured one at a time. When a storage account key is given, the credentials configuration file is in the following format:
 
-```
+```output
 accountName myaccount 
 accountKey myaccesskey== 
 containerName mycontainer 
@@ -373,7 +358,7 @@ blobEndpoint myaccount.blob.local.azurestack.external
 
 When a shared access token is given, the credentials configuration file is in the following format:
 
-```  
+``` output
 accountName myaccount 
 sasToken ?mysastoken 
 containerName mycontainer 

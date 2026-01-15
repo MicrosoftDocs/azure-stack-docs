@@ -7,6 +7,7 @@ ms.topic: how-to
 ms.date: 05/01/2024
 ms.reviewer: rtiberiu
 ms.lastreviewed: 05/01/2024
+ms.custom: sfi-image-nochange
 
 ---
 

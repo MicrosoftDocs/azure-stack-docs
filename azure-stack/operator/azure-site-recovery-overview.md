@@ -4,7 +4,7 @@ description: Azure Site Recovery on Azure Stack Hub helps ensure business contin
 author: ronmiab
 ms.author: robess
 ms.topic: overview
-ms.date: 05/07/2024
+ms.date: 12/30/2025
 ms.reviewer: rtiberiu
 ms.lastreviewed: 04/18/2024
 
@@ -30,14 +30,14 @@ Azure Site Recovery on Azure Stack Hub is available for both Microsoft Entra ID 
 
 ## What does Site Recovery provide?
 
-Azure Site Recovery provides many features, as described in the following table.
+Azure Site Recovery provides a set of features, as described in the following table:
 
 |Feature | Details  |
 |--------|----------|
 |BCDR solution | Using Site Recovery, you can set up and manage replication, failover, and failback from a single location in the Azure Stack Hub portal.|
 |BCDR integration | Site Recovery integrates with other BCDR technologies. For example, you can use Site Recovery to protect the SQL Server backend of corporate workloads, with native support for SQL Server Always On, to manage the failover of availability groups.|
 |Azure Automation integration| A rich Azure Automation library provides production-ready, application-specific scripts that can be downloaded and integrated with Site Recovery.|
-|RTO and PRO targets | Keep recovery time objectives (RTO) and recovery point objectives (RPO) within organizational limits. Site Recovery provides continuous replication for Azure Stack Hub VMs.|
+|RTO and RPO targets | Keep recovery time objectives (RTO) and recovery point objectives (RPO) within organizational limits. Site Recovery provides continuous replication for Azure Stack Hub VMs.|
 |Keep apps consistent over failover | You can replicate using recovery points with application-consistent snapshots. These snapshots capture disk data, all data in memory, and all transactions in process.|
 |Testing without disruption | You can easily run disaster recovery drills, without affecting ongoing replication.|
 |Flexible failovers | You can run planned failovers for expected outages with zero-data loss or unplanned failovers with minimal data loss, depending on replication frequency, for unexpected disasters. You can easily fail back to your primary site when it's available again.|
@@ -45,18 +45,18 @@ Azure Site Recovery provides many features, as described in the following table.
 
 ## How is Site Recovery billed?
 
-Azure Site Recovery on Azure Stack Hub is intended to protect a specified number of Virtual Machines. To provide this service at a competitive rate, the cost of Azure Site Recovery is determined based on the physical core count of the target environment, regardless of the number of VMs that are protected. For detailed pricing options, see the [Azure Stack Hub pricing details](https://azure.microsoft.com/pricing/details/azure-stack/hub/).
-
-> [!NOTE]
-> Until the 1st of June 2024, there is no cost for running the Azure Site Recovery service. The pay-as-you-go pricing options will apply starting on the 1st of June 2024.
+Azure Site Recovery on Azure Stack Hub is intended to protect a specified number of virtual machines (VMs). To provide this service at a competitive rate, the cost of Azure Site Recovery is determined based on the physical core count of the target environment, regardless of the number of VMs that are protected. For detailed pricing options, see the [Azure Stack Hub pricing details](https://azure.microsoft.com/pricing/details/azure-stack/hub/).
 
 When you first install Azure Site Recovery on Azure Stack Hub, a 30-day free trial period is provided. This trial period enables testing, automation setup, and VM replication for protection. Following the conclusion of the 30-day trial, charges begin, calculated on the total count of physical cores in the target environment in which your Azure Site Recovery Resource Provider is installed.
 
-[Cloud Solution Providers](azure-stack-add-manage-billing-as-a-csp.md) (CSPs) who offer multi-tenant environments should note that Azure Site Recovery usage is reported only on the primary Azure Stack Hub registration subscription. Any usage from failed-over virtual machines or storage associated with protected VMs is accurately allocated to the customer's respective Azure subscription. The Azure Site Recovery solution's cost (on the target side) is reported only in the subscription used for Azure Stack Hub registration. Typically, this subscription is owned by the CSP offering the [multitenant](site-recovery-enable-multi-tenant.md) environment. Consequently, the CSP is responsible for determining and appropriately billing each of their customers using Azure Site Recovery.
+[Cloud Solution Providers](azure-stack-add-manage-billing-as-a-csp.md) (CSPs) who offer multitenant environments should note that Azure Site Recovery usage is reported only on the primary Azure Stack Hub registration subscription. Any usage from failed-over virtual machines or storage associated with protected VMs is accurately allocated to the customer's respective Azure subscription. The Azure Site Recovery solution's cost (on the target side) is reported only in the subscription used for Azure Stack Hub registration. Typically, this subscription is owned by the CSP offering the [multitenant](site-recovery-enable-multi-tenant.md) environment. Consequently, the CSP is responsible for determining and appropriately billing each of their customers using Azure Site Recovery.
 
 ## What can I replicate?
 
 Azure Site Recovery on Azure Stack Hub, with a required agent installed on each of the protected VMs, enables the replication of VMs across two instances, or stamps, of Azure Stack Hub. Azure Stack Hub uses a VM extension, available through the Azure Stack Hub Marketplace, to install this agent.
+
+> [!NOTE]
+> Azure Site Recovery on Azure Stack Hub can only protect VMs that use managed disks. To convert a currently provisioned VM that uses unmanaged disks to managed disks, you can use the process described in [Convert to managed disks](../user/azure-stack-managed-disk-considerations.md#convert-to-managed-disks).
 
 The following VM OSs were tested and validated, and each has respective Azure Stack Hub Marketplace images available for download:
 
@@ -84,7 +84,7 @@ The following VM OSs were tested and validated, and each has respective Azure St
 |Ubuntu 16.04 LTS Server | Includes support for all 16.04.x versions. [Supported kernel version](/azure/site-recovery/azure-to-azure-support-matrix#supported-ubuntu-kernel-versions-for-azure-virtual-machines). Ubuntu servers using password-based authentication and sign-in, and the cloud-init package to configure cloud VMs, might have password-based sign-in disabled on failover, depending on the cloud-init configuration. Password-based sign-in, of the failover VM in Azure portal, can be re-enabled on the virtual machine by resetting the password from the **Support > Troubleshooting > Settings** menu.|
 |Ubuntu 18.04 LTS Server | Includes support for all 18.04.x versions. [Supported kernel version](/azure/site-recovery/azure-to-azure-support-matrix#supported-ubuntu-kernel-versions-for-azure-virtual-machines). Ubuntu servers using password-based authentication and sign-in, and the cloud-init package to configure cloud VMs, might have password-based sign-in disabled on failover, depending on the cloud-init configuration. Password-based sign-in, of the failover VM in Azure portal, can be re-enabled on the virtual machine by resetting the password from the **Support > Troubleshooting > Settings** menu.|
 |Ubuntu 20.04 LTS server | Includes support for all 20.04.x versions. [Supported kernel version](/azure/site-recovery/azure-to-azure-support-matrix#supported-ubuntu-kernel-versions-for-azure-virtual-machines).|
-|Debian 7 | Includes support for versions starting with 7.4 and later (7.2 and earlier are not supported due to a limitation in that version).|
+|Debian 7 | Includes support for versions starting with 7.4 and later (7.2 and earlier aren't supported due to a limitation in that version).|
 |Debian 8 | Includes support for all 8. x versions. [Supported kernel versions](/azure/site-recovery/azure-to-azure-support-matrix#supported-debian-kernel-versions-for-azure-virtual-machines).|
 |Debian 9 | Includes support for 9.1 to 9.13. Debian 9.0 isn't supported. [Supported kernel versions](/azure/site-recovery/azure-to-azure-support-matrix#supported-debian-kernel-versions-for-azure-virtual-machines).|
 |Debian 10 | [Supported kernel versions](/azure/site-recovery/azure-to-azure-support-matrix#supported-debian-kernel-versions-for-azure-virtual-machines).|

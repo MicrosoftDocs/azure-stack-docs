@@ -1,13 +1,12 @@
 ---
 title: Create a service offering for users
-titleSuffix: Azure Stack Hub
 description: Learn how to create a service offering in Azure Stack Hub using offers, plans, and services. 
 author: sethmanheim
 ms.author: sethm
 ms.topic: tutorial
-ms.date: 10/16/2019
-ms.reviewer: shriramnat
+ms.date: 01/16/2025
 ms.lastreviewed: 10/16/2019
+ms.custom: sfi-image-nochange
 
 # Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
 # Keyword: Notdone: keyword noun phrase
@@ -17,15 +16,15 @@ ms.lastreviewed: 10/16/2019
 
 # Create a service offering for users in Azure Stack Hub
 
-This tutorial shows an operator how to create an offer. An offer makes services available to users on a subscription basis. Once subscribed to an offer, a user is entitled to create and deploy resources within the services specified by the offer.
+This tutorial shows how an operator can create an offer. An offer makes services available to users on a subscription basis. Once subscribed to an offer, a user is entitled to create and deploy resources within the services specified by the offer.
 
 In this tutorial, you learn how to:
 
 > [!div class="checklist"]
-> * Create an offer.
-> * Create a plan.
-> * Assign services and quotas to a plan.
-> * Assign a plan to an offer.
+> - Create an offer.
+> - Create a plan.
+> - Assign services and quotas to a plan.
+> - Assign a plan to an offer.
 
 ## Overview
 
@@ -35,37 +34,37 @@ An offer consists of one or more plans. A plan entitles access to one or more se
 
 ### Resource providers
 
-A resource provider supports creation, deployment, and management of its resources as services. A common example is the Microsoft.Compute resource provider, which offers the ability to create and deploy virtual machines (VMs). See [Azure Resource Manager](/azure/azure-resource-manager/resource-group-overview) for an overview of the Azure resource management model.
+A resource provider supports creation, deployment, and management of its resources as services. A common example is the **Microsoft.Compute** resource provider, which offers the ability to create and deploy virtual machines (VMs). See [Azure Resource Manager](/azure/azure-resource-manager/resource-group-overview) for an overview of the Azure resource management model.
 
 In Azure Stack Hub, there are two general categories of resource providers: ones that deploy resources as foundational services, and ones that deploy as value-add services.
 
 ### Foundational services
 
->[!NOTE]
-> In this tutorial, you learn how to create an offer based on foundational services. 
+> [!NOTE]
+> In this tutorial, you learn how to create an offer based on foundational services.
 
-Foundational services are supported by the following resource providers, which are available natively with every installation of Azure Stack Hub:
+Foundational services are supported by the following resource providers, which are natively available with every installation of Azure Stack Hub:
 
-| Resource Provider | Example resources |
+| Resource provider | Example resources |
 | ----------------- | ------------------|
-| Microsoft.Compute | VMs, disks, virtual machine scale sets |
-| Microsoft.KeyVault | Key Vaults, secrets |
-| Microsoft.Network | Virtual networks, public IP addresses, load balancers |
-| Microsoft.Storage | Storage accounts, blobs, queues, tables |
+| **Microsoft.Compute** | VMs, disks, virtual machine scale sets |
+| **Microsoft.KeyVault** | Key Vaults, secrets |
+| **Microsoft.Network** | Virtual networks, public IP addresses, load balancers |
+| **Microsoft.Storage** | Storage accounts, blobs, queues, tables |
 
 ### Value-add services
 
->[!NOTE]
-> In order to offer a value-add service, the corresponding resource provider must first be installed in Azure Stack Hub Marketplace. Once installed, its resources are offered to users in the same way as foundational services. Please see the **How-to guides** section of the TOC for the current set of resource providers that support value-add service offerings.
+> [!NOTE]
+> In order to offer a value-add service, the corresponding resource provider must first be installed in Azure Stack Hub Marketplace. Once installed, its resources are offered to users in the same way as foundational services. For the current set of resource providers that support value-add service offerings, see the **How-to guides** section in the table of contents.
 
-Value-add services are supported by resource providers that are installed after Azure Stack Hub has been deployed. Examples include:
+Value-add services are supported by resource providers that are installed after Azure Stack Hub is deployed. Examples include:
 
-| Resource Provider | Example resources |
+| Resource provider | Example resources |
 | ----------------- | ------------------------- |
-| Microsoft.Web | App Service function apps, web apps, API apps | 
-| Microsoft.MySqlAdapter | MySQL hosting server, MySQL database | 
-| Microsoft.SqlAdapter | SQL Server hosting server, SQL Server database |
-| Microsoft.EventHub | Event Hubs |
+| **Microsoft.Web** | App Service function apps, web apps, API apps |
+| **Microsoft.MySqlAdapter** | MySQL hosting server, MySQL database |
+| **Microsoft.SqlAdapter** | SQL Server hosting server, SQL Server database |
+| **Microsoft.EventHub** | Event Hubs |
 
 ::: moniker range=">=azs-1902"
 
@@ -73,16 +72,11 @@ Value-add services are supported by resource providers that are installed after 
 
 During the offer creation process, you create both an offer and a plan. The plan is used as the offer's base plan. During plan creation, you specify the services made available in the plan and their respective quotas.
 
-1. Sign in to the administrator portal with a cloud admin account.
+1. Sign in to the administrator portal with a cloud admin account. For an integrated system, the URL varies based on your operator's region and external domain name. The URL uses the format `https://adminportal.<region>.<FQDN>`. Then select **+ Create a resource** > **Offers + Plans** > **Offer**.
 
-    - For an integrated system, the URL varies based on your operator's region and external domain name. The URL uses the format `https://adminportal.<region>.<FQDN>`.
-    - If you're using the Azure Stack Development Kit, the URL is `https://adminportal.local.azurestack.external`.
+   ![Screenshot that shows how to create a new offer in Azure Stack Hub administration portal.](media/tutorial-offer-services/1-create-resource-offer.png)
 
-    Then select **+ Create a resource** > **Offers + Plans** > **Offer**.
-
-    ![Screenshot that shows how to create a new offer in Azure Stack Hub administration portal.](media/tutorial-offer-services/1-create-resource-offer.png)
-
-1. In **Create a new offer** under the **Basics** tab, enter a **Display name**, **Resource name**, and select an existing or create a new **Resource group**. The Display name is the offer's friendly name. Only the cloud operator can see the Resource name, which is the name that admins use to work with the offer as an Azure Resource Manager resource.
+1. In **Create a new offer** under the **Basics** tab, enter a **Display name**, **Resource name**, and select an existing or create a new **Resource group**. The display name is the offer's friendly name. Only the cloud operator can see the resource name, which is the name that admins use to work with the offer as an Azure Resource Manager resource.
 
    ![Screenshot that shows where to add basic information in Azure Stack Hub administration portal.](media/tutorial-offer-services/2-create-new-offer.png)
 
@@ -90,7 +84,7 @@ During the offer creation process, you create both an offer and a plan. The plan
 
    ![Screenshot that shows how to add a plan in Azure Stack Hub administration portal.](media/tutorial-offer-services/3-create-new-offer-base-plans.png)
 
-1. In **New plan** under the **Basics** tab, enter a **Display name** and **Resource name**. The Display name is the plan's friendly name that users see. Only the cloud operator can see the Resource name, which is the name that cloud operators use to work with the plan as an Azure Resource Manager resource. **Resource group** will be set to the one specified for the Offer.
+1. In **New plan** under the **Basics** tab, enter a **Display name** and **Resource name**. The Display name is the plan's friendly name that users see. Only the cloud operator can see the resource name, which is the name that cloud operators use to work with the plan as an Azure Resource Manager resource. **Resource group** is set to the one specified for the offer.
 
    ![Screenshot that shows the plan display name in Azure Stack Hub administration portal.](media/tutorial-offer-services/4-create-new-plan-basics.png)
 
@@ -118,28 +112,22 @@ During the offer creation process, you create both an offer and a plan. The plan
 
    ![Offer deployment complete in Azure Stack Hub administration portal](media/tutorial-offer-services/10-offer-deployment-complete.png)
 
-1. Notice the banner, showing your offer is still private, which prevents users from subscribing to it. Change it to public by selecting **Change State**, and then chose **Public**.
+1. The banner shows that your offer is still private, which prevents users from subscribing to it. Change it to public by selecting **Change State**, and then chose **Public**.
 
-    ![Public state in Azure Stack Hub administration portal](media/tutorial-offer-services/11-offer-change-state.png)
+   ![Public state in Azure Stack Hub administration portal](media/tutorial-offer-services/11-offer-change-state.png)
 
 ::: moniker-end
 
 ::: moniker range="<=azs-1901"
-
 ## Create an offer (1901 and earlier)
 
 During the offer creation process, you create both an offer and a plan. The plan is used as the offer's base plan. During plan creation, you specify the services made available in the plan and their respective quotas.
 
-1. Sign in to the administrator portal with a cloud admin account.
+1. Sign in to the administrator portal with a cloud admin account. For an integrated system, the URL varies based on your operator's region and external domain name, using the format `https://adminportal.<region>.<FQDN>`. Then select **+ Create a resource** > **Offers + Plans** > **Offer**.
 
-    - For an integrated system, the URL varies based on your operator's region and external domain name, using the format `https://adminportal.<region>.<FQDN>`.
-    - If you're using the Azure Stack Development Kit, the URL is `https://adminportal.local.azurestack.external`.
+   ![New offer in Azure Stack Hub administration portal](media/tutorial-offer-services/image01.png)
 
-    Then select **+ Create a resource** > **Offers + Plans** > **Offer**.
-
-    ![New offer in Azure Stack Hub administration portal](media/tutorial-offer-services/image01.png)
-
-1. In **New offer**, enter a **Display name** and **Resource name**, and then select a new or existing **Resource group**. The Display name is the offer's friendly name. Only the cloud operator can see the Resource name, which is the name that admins use to work with the offer as an Azure Resource Manager resource.
+1. In **New offer**, enter a **Display name** and **Resource name**, and then select a new or existing **Resource group**. The display name is the offer's friendly name. Only the cloud operator can see the resource name, which is the name that admins use to work with the offer as an Azure Resource Manager resource.
 
    ![Display name in Azure Stack Hub administration portal](media/tutorial-offer-services/image02.png)
 
@@ -147,7 +135,7 @@ During the offer creation process, you create both an offer and a plan. The plan
 
    ![Add a plan in Azure Stack Hub administration portal](media/tutorial-offer-services/image03.png)
 
-1. In the **New plan** section, fill in **Display name** and **Resource name**. The Display name is the plan's friendly name that users see. Only the cloud operator can see the Resource name, which is the name that cloud operators use to work with the plan as an Azure Resource Manager resource.
+1. In the **New plan** section, fill in **Display name** and **Resource name**. The display name is the plan's friendly name that users see. Only the cloud operator can see the resource name, which is the name that cloud operators use to work with the plan as an Azure Resource Manager resource.
 
    ![Plan display name in Azure Stack Hub administration portal](media/tutorial-offer-services/image04.png)
 
@@ -157,43 +145,39 @@ During the offer creation process, you create both an offer and a plan. The plan
 
 1. Select **Quotas**, and then select the first service that you want to create a quota for. For an IaaS quota, use the following example as a guide for configuring quotas for the Compute, Network, and Storage services.
 
-    - First, create a quota for the Compute service. In the namespace list, select **Microsoft.Compute** and then select **Create new quota**.
-    
-      ![Create new quota](media/tutorial-offer-services/image06.png)
+   - First, create a quota for the Compute service. In the namespace list, select **Microsoft.Compute** and then select **Create new quota**.
+
+     ![Create new quota](media/tutorial-offer-services/image06.png)
 
    - In **Create quota**, enter a name for the quota. You can change or accept any of the quota values that are shown. In this example, we accept the default settings and select **OK**.
-   
-      ![Quota name](media/tutorial-offer-services/image07.png)
-       
-    - Pick **Microsoft.Compute** in the namespace list, and then select the quota that you created. This step links the quota to the Compute service.
-    
-      ![Select quota](media/tutorial-offer-services/image08.png)
-        
-        Repeat these steps for the Network and Storage services. When you're finished, select **OK** in **Quotas** to save all the quotas.
+
+     ![Quota name](media/tutorial-offer-services/image07.png)
+
+   - Pick **Microsoft.Compute** in the namespace list, and then select the quota that you created. This step links the quota to the Compute service.
+
+     ![Select quota](media/tutorial-offer-services/image08.png)
+
+Repeat these steps for the Network and Storage services. When you're finished, select **OK** in **Quotas** to save all the quotas.
 
 1. In **New plan**, select **OK**.
-
 1. Under **Plan**, select the new plan and then **Select**.
-
 1. In **New offer**, select **Create**. You'll see a notification when the offer is created.
-
 1. On the dashboard menu, select **Offers** and then pick the offer you created.
-
 1. Select **Change State**, and then chose **Public**.
 
     ![Public state](media/tutorial-offer-services/image09.png)
 
 ::: moniker-end
- 
+
 ## Next steps
 
 In this tutorial you learned how to:
 
 > [!div class="checklist"]
-> * Create an offer.
-> * Create a plan.
-> * Assign services and quotas to a plan.
-> * Assign a plan to an offer.
+> - Create an offer.
+> - Create a plan.
+> - Assign services and quotas to a plan.
+> - Assign a plan to an offer.
 
 Advance to the next tutorial to learn how to:
 > [!div class="nextstepaction"]

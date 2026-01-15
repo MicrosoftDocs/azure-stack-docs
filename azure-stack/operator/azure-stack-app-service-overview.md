@@ -2,12 +2,12 @@
 title: Azure App Service on Azure Stack overview 
 description: Overview of Azure App Service and Azure Functions on Azure Stack Hub.
 author: sethmanheim
-
-ms.topic: article
-ms.date: 05/05/2020
+ms.topic: concept-article
+ms.date: 08/13/2025
 ms.author: sethm
 ms.reviewer: anwestg
 ms.lastreviewed: 01/13/2019
+ms.custom: sfi-image-nochange
 
 # Intent: As an Azure Stack operator, I want an overview of App Service on Azure Stack.
 # Keyword: app service overview azure stack
@@ -25,7 +25,7 @@ Azure App Service enables you to automate business processes and host cloud APIs
 
 Here are some key features and capabilities of Azure App Service:
 
-- **Multiple languages and frameworks**: Azure App Service has first-class support for ASP.NET, Node.js, Java, PHP, and Python. You can also run Windows PowerShell and other scripts or executables on App Service VMs.
+- **Multiple languages and frameworks**: Azure App Service has first-class support for ASP.NET, Node.js, Java, PHP, and Python. You can also run Windows PowerShell and other scripts or executables on App Service virtual machines (VMs).
 - **DevOps optimization**: Set up continuous integration and deployment with GitHub, local Git, or BitBucket. Promote updates through test and staging environments, and manage your apps in App Service by using Azure PowerShell or the cross-platform command-line interface (Azure CLI).
 - **Visual Studio integration**: Dedicated tools in Visual Studio streamline the work of creating and deploying apps.
 
@@ -36,14 +36,14 @@ App Service offers several app types, each of which is intended to host a specif
 - [Web Apps](/azure/app-service/overview) for hosting websites, web apps and REST APIs.
 - [Azure Functions v1](/azure/azure-functions/functions-versions) for hosting event driven, serverless workloads.
 
-The word *app* refers to the hosting resources dedicated to running a workload. Taking *web app* as an example, you're probably accustomed to thinking of a web app as both the compute resources and app code that together deliver functionality to a browser. In Azure App Service, a web app is the compute resource that Azure Stack Hub provides for hosting your app code.
+The word *app* refers to the hosting resources dedicated to running a workload. Taking *web app* as an example, you're probably accustomed to thinking of a web app as both the compute resources and app code that together deliver functionality to a browser. In Azure App Service, a web app is the compute resource that Azure Stack Hub provides to host your app code.
 
 Your app can be composed of multiple App Service apps of different kinds. For example, if your app is composed of a web front end and a REST API back end, you can:
 
 - Deploy both (front end and API) to a single web app.
 - Deploy your front-end code to a web app and your back-end code to an API app.
 
-   [![App Service overview with monitoring data](media/azure-stack-app-service-overview/image01.png "App Service overview with monitoring data")](media/azure-stack-app-service-overview/image01.png#lightbox)
+  [![App Service overview with monitoring data](media/azure-stack-app-service-overview/image01.png "App Service overview with monitoring data")](media/azure-stack-app-service-overview/image01.png#lightbox)
 
 ## What is an App Service plan?
 
@@ -57,7 +57,7 @@ Azure App Service on Azure Stack Hub uses the same user interface that Azure App
 
 ## Next steps
 
+You can try out other [platform as a service (PaaS) services](service-plan-offer-subscription-overview.md), such as the [SQL Server resource provider](azure-stack-sql-resource-provider-deploy.md) and the [MySQL resource provider](azure-stack-mysql-resource-provider-deploy.md).
+
 - [Prerequisites for deploying App Service on Azure Stack Hub](azure-stack-app-service-before-you-get-started.md)
 - [Install the Azure App Service resource provider](azure-stack-app-service-deploy.md)
-
-You can also try out other [platform as a service (PaaS) services](service-plan-offer-subscription-overview.md), such as the [SQL Server resource provider](azure-stack-sql-resource-provider-deploy.md) and the [MySQL resource provider](azure-stack-mysql-resource-provider-deploy.md).

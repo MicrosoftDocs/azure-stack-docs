@@ -111,8 +111,6 @@
           href: azure-stack-version-profiles-java.md
         - name: Go
           href: azure-stack-version-profiles-go.md
-        - name: Ruby
-          href: azure-stack-version-profiles-ruby.md
         - name: Python
           href: azure-stack-version-profiles-python.md
         - name: NodeJS
@@ -151,8 +149,6 @@
           href: azure-stack-manage-vm-protect.md
         - name: VM known issues
           href: troubleshoot-vm-known-issues.md
-        - name: VM update and management
-          href: vm-update-management.md
         - name: Azure Instance Metadata Service - public preview
           href: instance-metadata-service.md
         - name: SQL Server VM considerations
@@ -332,6 +328,8 @@
         href: azure-stack-solution-template-service-fabric-cluster.md
   - name: Deploy apps
     items: 
+    - name: Common deployments
+      href: azure-stack-dev-start-deploy-app.md
     - name: Deploy a C# web app to a Windows VM
       href: azure-stack-dev-start-howto-vm-dotnet.yml
     - name: Deploy a web app to a Linux VM
@@ -398,6 +396,34 @@
         href: iaas-architecture-sql-n-tier-multi-region.md
       - name: Network virtual appliances
         href: iaas-architecture-nva-architecture.md
+  - name: Patterns
+    items:
+    - name: Solution patterns and examples
+      href: overview-patterns-solution-examples.md
+    - name: Single 
+      items:
+          - name: Cross-cloud scaling
+            href: pattern-cross-cloud-scale.md
+          - name: DevOps hybrid CI/CD
+            href: pattern-cicd-pipeline.md
+          - name: Geo-distributed app
+            href: pattern-geo-distributed.md
+          - name: Hybrid relay
+            href: pattern-hybrid-relay.md
+          - name: Tiered data
+            href: pattern-tiered-data-analytics.md
+          - name: Train ML model at the edge
+            href: pattern-train-machine-learning-model-at-edge.md
+    - name: Multi
+      items:
+      - name: Cross-cloud scaling (on-premises data)
+        href: pattern-cross-cloud-scale-on-premises-data.md
+      - name: Footfall detection (retail)
+        href: pattern-retail-footfall-detection.md
+      - name: High availability Kubernetes cluster
+        href: pattern-highly-available-kubernetes.md      
+      - name: Out-of-stock detection at the edge
+        href: pattern-out-of-stock-at-edge.md
 - name: Reference
   items:
   - name: Azure Stack Hub PowerShell
@@ -410,8 +436,6 @@
   items:
   - name: Azure Stack Hub operator documentation
     href: ../operator/index.yml
-  - name: ASDK Documentation
-    href: ../asdk/index.yml
   - name: Azure hybrid cloud documentation
     href: /hybrid    
 - name: Resources

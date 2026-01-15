@@ -2,12 +2,11 @@
 title: Create an offer in Azure Stack Hub 
 description: Learn how to create an offer for your users in Azure Stack Hub.
 author: sethmanheim
-
-ms.topic: conceptual
-ms.date: 06/11/2019
+ms.topic: how-to
+ms.date: 01/16/2025
 ms.author: sethm
-ms.reviewer: efemmano
 ms.lastreviewed: 06/11/2019
+ms.custom: sfi-image-nochange
 
 # Intent: As an Azure Stack operator, I want to create an offer that uses the plan I created so my users can buy it/subscribe to it.
 # Keyword: create offer azure stack
@@ -25,27 +24,27 @@ ms.lastreviewed: 06/11/2019
 
    ![Screenshot that shows how to create an offer in Azure Stack Hub.](media/azure-stack-create-offer/offers.png)
 
-2. A tabbed user interface appears that enables you to define the offer name. You can also add existing or create new base plans and add-on plans. Most importantly, you can review the details of the offer you create before you decide to create it.
+1. A tabbed user interface appears that enables you to define the offer name. You can also add existing plans, or create new base plans and add-on plans. Most importantly, you can review the details of the offer you create before you decide to create it.
 
    In the **Basics** tab, enter a **Display Name** and a **Resource Name**, and then under **Resource Group**, select **Create new** or **Use existing**. The display name is the friendly name for the offer. This friendly name is the only information about the offer that users see when they subscribe to an offer in the user portal. Use an intuitive name that helps users understand what comes with the offer. Only the admin can see the resource name. It's the name that admins use to work with the offer as an Azure Resource Manager resource. In this tab, you can also choose to make this offer public or keep it private. The default setting is private. You can [change the public or private state of the offer](#change-the-state-of-an-offer) at any time.
 
    ![Screenshot that shows where to add basic information about the new offer in Azure Stack Hub.](media/azure-stack-create-offer/new-offer.png)
   
-3. Select the **Base plans** tab or click the **Next : Base plans >** button. Select the plan(s) you want to include in the offer.
+1. Select the **Base plans** tab or click the **Next : Base plans >** button. Select the plan(s) you want to include in the offer.
 
    ![Screenshot that shows how to select a plan to include in your Azure Stack Hub offer.](media/azure-stack-create-offer/select-plan.png)
 
-4. At this point you can create an add-on plan to modify the base plan, but this is optional. You have the opportunity to create an add-on plan in the next article, [Azure Stack Hub add-on plans](create-add-on-plan.md).
+1. You can now optionally create an add-on plan to modify the base plan. You have the opportunity to create an add-on plan in the next article, [Azure Stack Hub add-on plans](create-add-on-plan.md).
 
-5. Select the **Review + create** tab. Review the offer summary to ensure that all values are correct. The interface enables you to expand the quotas in the chosen plans one at a time to view the details of each quota in a plan. You can also go back to make any necessary edits.
+1. Select the **Review + create** tab. Review the offer summary to ensure that all values are correct. The interface enables you to expand the quotas in the chosen plans one at a time to view the details of each quota in a plan. You can also go back to make any necessary edits.
 
-6. Select **Create** to create the offer.
+1. Select **Create** to create the offer.
 
    ![Review and create offer in Azure Stack Hub](media/azure-stack-create-offer/review-offer.png)
 
 ### Change the state of an offer
 
-After creating the offer, you can change its state. Offers must be made **Public** for users to get the full view when they subscribe. Offers can be:
+After you create the offer, you can change its state. Offers must be made **Public** for users to get the full view when they subscribe. Offers can be:
 
 - **Public**: Visible to users.
 - **Private**: Only visible to cloud administrators. This setting is useful while drafting the plan or offer, or if the cloud administrator wants to [create each subscription for users](azure-stack-subscribe-plan-provision-vm.md#create-a-subscription-as-a-cloud-operator).
@@ -56,11 +55,11 @@ After creating the offer, you can change its state. Offers must be made **Public
 
 There are two ways to change the state of an offer:
 
-1. In **All resources**, select the name of the offer. On the **Overview** screen for the offer, select **Change state**. Choose the state you want to use (for example, **Public**).
+- In **All resources**, select the name of the offer. On the **Overview** screen for the offer, select **Change state**. Choose the state you want to use (for example, **Public**).
 
    ![Screenshot that shows how to change the state for your Azure Stack Hub offer.](media/azure-stack-create-offer/change-state.png)
 
-2. Select **Offer settings**. Choose the state you want to use (for example, **Public**), then select **Save**.
+- Select **Offer settings**. Choose the state you want to use (for example, **Public**), then select **Save**.
 
    ![Azure Stack Hub offer settings](media/azure-stack-create-offer/offer-settings.png)
 ::: moniker-end
@@ -72,15 +71,15 @@ There are two ways to change the state of an offer:
 
    ![Screenshot that shows how to create an offer.](media/azure-stack-create-offer/image01.png)
   
-2. Under **New Offer**, enter a **Display Name** and a **Resource Name**, and then under **Resource Group**, select **Create new** or **Use existing**. The display name is the friendly name for the offer. This friendly name is the only information about the offer that users see when they subscribe to an offer. Use an intuitive name that helps users understand what comes with the offer. Only the admin can see the resource name. It's the name that admins use to work with the offer as an Azure Resource Manager resource.
+1. Under **New Offer**, enter a **Display Name** and a **Resource Name**, and then under **Resource Group**, select **Create new** or **Use existing**. The display name is the friendly name for the offer. This friendly name is the only information about the offer that users see when they subscribe to an offer. Use an intuitive name that helps users understand what comes with the offer. Only the admin can see the resource name. It's the name that admins use to work with the offer as an Azure Resource Manager resource.
 
    ![Screenshot that shows how to create a resource for new offer in Azure Stack Hub.](media/azure-stack-create-offer/image01a.png)
   
-3. Select **Base plans** to open the **Plan**. Select the plans you want to include in the offer, and then choose **Select**. To create the offer, select **Create**.
+1. Select **Base plans** to open the **Plan**. Select the plans you want to include in the offer, and then choose **Select**. To create the offer, select **Create**.
 
    ![Screenshot that shows how to select the plan to include in your Azure Stack Hub offer.](media/azure-stack-create-offer/image02.png)
   
-4. After creating the offer, you can change its state. Offers must be made **Public** for users to get the full view when they subscribe. Offers can be:
+1. After you create the offer, you can change its state. Offers must be made **Public** for users to get the full view when they subscribe. Offers can be:
 
    - **Public**: Visible to users.
    - **Private**: Only visible to cloud administrators. This setting is useful while drafting the plan or offer, or if the cloud administrator wants to [create each subscription for users](azure-stack-subscribe-plan-provision-vm.md#create-a-subscription-as-a-cloud-operator).

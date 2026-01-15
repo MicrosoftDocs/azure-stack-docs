@@ -3,13 +3,14 @@ title: Register Azure Stack Hub with Azure - Ruggedized
 description: Learn how to register Azure Stack Hub with Azure so you can download Azure Marketplace items and set up data reporting. 
 services: azure-stack
 author: sethmanheim
-manager: femila
+manager: lizross
 ms.service: azure-stack
-ms.topic: article
-ms.date: 07/21/2021
+ms.topic: how-to
+ms.date: 08/19/2024
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 12/20/2019
+ms.custom: sfi-image-nochange
 
 ---
 
@@ -52,8 +53,6 @@ Before registering Azure Stack Hub with Azure, you must have:
 - The username and password for an account that's an owner for the subscription.
 - The user account needs to have access to the Azure subscription and have permissions to create identity apps and service principals in the directory associated with that subscription. We recommend that you register Azure Stack Hub with Azure using least-privilege administration. For more information about how to create a custom role definition that limits access to your subscription for registration, see [Create a registration role for Azure Stack Hub](../../operator/azure-stack-registration-role.md).
 - Register the Azure Stack Hub resource provider (see the following sections for details).
-
-After registration, Microsoft Entra Global Administrator permission is not required. However, some operations might require the global admin credential (for example, a resource provider installer script or a new feature requiring a permission to be granted). You can either temporarily reinstate the account's global admin permissions, or use a separate global admin account that is an owner of the *default provider subscription*.
 
 The user who registers Azure Stack Hub is the owner of the service principal in Microsoft Entra ID. Only the user who registered Azure Stack Hub can modify the Azure Stack Hub registration. If a non-admin user that's not an owner of the registration service principal attempts to register or re-register Azure Stack Hub, they might see a 403 response. A 403 response indicates that the user has insufficient permissions to complete the operation.
 
