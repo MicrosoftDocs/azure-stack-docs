@@ -155,9 +155,9 @@ To change the data source of the VM image, follow these steps:
 1. Remove the bash history.
 
    ```bash
-       sudo rm -f ~/.bash_history
-    export HISTSIZE=0
-    exit
+   sudo rm -f ~/.bash_history
+   export HISTSIZE=0
+   exit
    ```
 
 1. Stop the Azure VM as the configuration changes are now complete.
