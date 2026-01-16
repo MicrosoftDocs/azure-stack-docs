@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 01/14/2026
+ms.date: 01/15/2026
 ms.custom:
   - devx-track-azurecli
   - sfi-image-nochange
@@ -110,8 +110,8 @@ Follow these steps to create a VM image using the Azure CLI.
     | Name | Publisher | Offer | SKU |
     |------|-----------|-------|------|
     | Windows 11 Enterprise multi-session + Microsoft 365 | microsoftwindowsdesktop | office-365 | win11-23h2-avd-m365 <br> win11-24h2-avd-m365 <br> win11-25h2-avd-m365 |
-    | Windows 11 Enterprise | microsoftwindowsdesktop | windows-11 | win11-22h2-ent<br>win11-23h2-ent<br>win11-24h2-ent<br>win11-25h2-ent |
-    | Windows 11 Enterprise multi-session | microsoftwindowsdesktop | windows-11 | win11-22h2-avd<br>win11-23h2-avd<br>win11-24h2-avd<br>win11-25h2-avd |
+    | Windows 11 Enterprise | microsoftwindowsdesktop | windows-11 | win11-23h2-ent<br>win11-24h2-ent<br>win11-25h2-ent |
+    | Windows 11 Enterprise multi-session | microsoftwindowsdesktop | windows-11 |   win11-23h2-avd<br>win11-24h2-avd<br>win11-25h2-avd |
     | Windows 10 Enterprise | microsoftwindowsdesktop | windows-10 | win10-22h2-ent-g2 |
     | Windows 10 Enterprise multi-session | microsoftwindowsdesktop | windows-10 | win10-22h2-avd |
     | Windows Server 2025 Datacenter: Azure Edition  | microsoftwindowsserver  | windowsserver  | 2025-datacenter-azure-edition-smalldisk<br>2025-datacenter-azure-edition-core<br>2025-datacenter-azure-edition |
