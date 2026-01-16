@@ -6,7 +6,7 @@ ms.author: sushrao
 ms.reviewer: sushrao
 ms.date: 04/27/2024
 ms.service: azure-operator-nexus
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Nexus Network Fabric configuration monitoring overview

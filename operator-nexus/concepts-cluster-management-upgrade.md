@@ -4,7 +4,7 @@ description: Get an overview of Cluster management upgrade for Azure Operator Ne
 author: bartpinto
 ms.author: bpinto
 ms.service: azure-operator-nexus
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 07/16/2025
 ms.custom: template-concept
 ---

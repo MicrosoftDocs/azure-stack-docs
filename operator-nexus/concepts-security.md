@@ -4,7 +4,7 @@ description: Security overview for Azure Operator Nexus
 author: scottsteinbrueck
 ms.author: ssteinbrueck
 ms.service: azure-operator-nexus
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 08/14/2023
 ms.custom:
   - template-concept
