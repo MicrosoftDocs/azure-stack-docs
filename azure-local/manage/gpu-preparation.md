@@ -4,7 +4,7 @@ description: Learn how to prepare GPUs for an Azure Local instance.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 11/18/2025
+ms.date: 01/14/2025
 ms.service: azure-local
 ms.subservice: hyperconverged
 ---
@@ -55,9 +55,9 @@ The following table shows which GPU model is supported by which GPU assignment t
 | NVIDIA A10 |&cross; No |&check; Yes |&cross; No |&check; Yes |
 | NVIDIA A16 |&check; Yes |&check; Yes |&check; Yes |&check; Yes |
 | NVIDIA A40 |&cross; No |&check; Yes |&cross; No |&check; Yes |
-| NVIDIA L4 |&cross; No |&check; Yes |&check; Yes |&check; Yes |
-| NVIDIA L40 |&cross; No |&check; Yes |&check; Yes |&check; Yes |
-| NVIDIA L40S |&cross; No |&check; Yes |&check; Yes |&check; Yes |
+| NVIDIA L4 |&check; Yes |&check; Yes |&check; Yes |&check; Yes |
+| NVIDIA L40 |&check; Yes |&check; Yes |&check; Yes |&check; Yes |
+| NVIDIA L40S |&check; Yes |&check; Yes |&check; Yes |&check; Yes |
 
 *AKS Arc doesn't currently support GPU partitions.
 
