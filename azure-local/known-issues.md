@@ -3,7 +3,7 @@ title: Release notes with fixed and known issues in Azure Local
 description: Read about the known issues and fixed issues in Azure Local.
 author: alkohli
 ms.topic: article
-ms.date: 01/14/2026
+ms.date: 01/16/2026
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: hyperconverged
@@ -75,7 +75,7 @@ The following table lists the known issues in this release:
 
 |Feature  |Issue    |Workaround  |
 |---------|---------|------------|
-
+| Deployment <!--36440701--> | When upgrading from 2510 to 2511, 2512, or 2601, cluster creation fails due to CSI provisioning. | There's known workaround in this release. |
 
 ## Known issues from previous releases
 
@@ -140,6 +140,7 @@ The following table lists the known issues in this release:
 |Feature  |Issue    |Workaround  |
 |---------|---------|------------|
 | Deployment <!--36041656--> | Deployment using Local Identity doesn't support manual secret rotation. | There's no known workaround in this release. |
+| Deployment <!--36440701--> | When upgrading from 2510 to 2511, 2512, or 2601, cluster creation fails due to CSI provisioning. | There's known workaround in this release. |
 
 ## Known issues from previous releases
 
@@ -214,6 +215,7 @@ The following table lists the known issues in this release:
 |Feature  |Issue    |Workaround  |
 |---------|---------|------------|
 | Update <!--35747709--> | Update may fail when the cloud management group is running on a different node than the owner node with the error: `Type 'RegisterCloudManagementUpdatesExtension' of Role 'CloudManagementConfig' raised an exception: Exception occurred in Get-ClusterExtension'` | Move the management group to the owner node manually and proceed with the update: <br><br> `# Get the owner node of the group matching '*orch*'` <br> `$orchOwner = (Get-ClusterGroup -Name '*orch*').OwnerNode.Name`<br><br> `# Move the "Cloud Management" group to that node`<br> `Move-ClusterGroup -Name 'Cloud Management' -Node $orchOwner` |
+| Deployment <!--36440701--> | When upgrading from 2510 to 2511, 2512, or 2601, cluster creation fails due to CSI provisioning. | There's known workaround in this release. |
 
 ## Known issues from previous releases
 
