@@ -21,7 +21,7 @@ The following table outlines potential issues you might encounter during deploym
 
 | Issues | Recommended troubleshooting actions |
 |--|--|
-| - Active directory preparation issues. <br> - Azure Stack HCI Operating System installation configuration issues. <br> - Deployment experience issues through the Azure portal and template. | [File a support ticket](/azure/azure-portal/supportability/how-to-create-azure-support-request). |
+| - Active Directory preparation issues. <br> - Azure Stack HCI Operating System installation configuration issues. <br> - Deployment experience issues through the Azure portal and template. | [File a support ticket](/azure/azure-portal/supportability/how-to-create-azure-support-request). |
 | - Environment validation issues. <br> - Initialization and registration issues. <br> - Deployment validation issues. <br> - Deployment failure issues. | 1. [File a support ticket](/azure/azure-portal/supportability/how-to-create-azure-support-request). <br> 2. [Perform standalone log collection](#perform-standalone-log-collection). |
 
 ## Perform standalone log collection
@@ -60,10 +60,9 @@ Send-AzStackHciDiagnosticData -ResourceGroupName <ResourceGroupName> -Subscripti
 You can use the following commands to get SPN credentials:
 
 ```powershell
-$SPNAppID = "<Your App ID>"  
-$SPNSecret= "<Your SPN Secret>"  
-$SPNsecStringPassword = ConvertTo-SecureString  
-$SPNSecret -AsPlainText -Force  
+$SPNAppID = "<SpnAppId>"  
+$SPNSecret= "<SpnSecret>"  
+$SPNsecStringPassword = ConvertTo-SecureString $SPNSecret -AsPlainText -Force  
 $SPNCred = New-Object System.Management.Automation.PSCredential ($SPNAppID, $SPNsecStringPassword)
 ```
 
@@ -95,7 +94,7 @@ To enable remote support, follow these steps:
 1. To enable remote support, run the following command. The sample Shared Access Signature (SAS) is provided by the Microsoft support team.
 
    ```powershell
-   Enable-AzStackHciRemoteSupport -AccessLevel <Diagnostics Or DiagnosticsRepair> -ExpireInMinutes <1440> -SasCredential <Sample SAS> -PassThru
+   Enable-AzStackHciRemoteSupport -AccessLevel <AccessLevel> -ExpireInMinutes <ExpirationTime> -SasCredential <SasCredential> -PassThru #Access level can be Diagnostics or DiagnosticsRepair
    ```
 
    > [!NOTE]
