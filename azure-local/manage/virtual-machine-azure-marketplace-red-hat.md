@@ -90,7 +90,7 @@ To set up and prepare an Azure VM, follow these steps:
     1. Clean VM-specific details.
 
        ```bash
-       sudo rm -f /etc/sysconfig/network-scripts/
+       sudo rm -f /etc/sysconfig/network-scripts/*
        sudo rm -f /etc/ssh/ssh_host*
        sudo rm /etc/lvm/devices/system.devices
        ```
@@ -186,11 +186,11 @@ Before creating an Azure Local image from a Red Hat Enterprise Linux (RHEL) Azur
 To create an Azure Local image, use the SAS token.
 
 ```azurecli
-rg="<resource-group>"
-cl="/subscriptions/<sub>/resourcegroups/$rg/providers/microsoft.extendedlocation/customlocations/<customlocation-name>"
-sas='"https://EXAMPLE.blob.storage.azure.net/EXAMPLE/abcd<sas-token>"'
+$rg="<resource-group>"
+$cl="/subscriptions/<sub>/resourcegroups/$rg/providers/microsoft.extendedlocation/customlocations/<customlocation-name>"
+$sas='"https://EXAMPLE.blob.storage.azure.net/EXAMPLE/abcd<sas-token>"'
 
-az stack-hci-vm image create -g "$rg" --custom-location "$cl" --name "<IMAGE-NAME>" --os-type "Linux" --image-path "$sas"
+az stack-hci-vm image create -g $rg --custom-location $cl --name "<IMAGE-NAME>" --os-type "Linux" --image-path $sas
 ```
 
 ## Create an Azure Local VM
