@@ -4,7 +4,7 @@ description: Learn how to create network security groups on Azure Local VMs on m
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 11/24/2025
+ms.date: 01/16/2026
 ms.service: azure-local
 ms.subservice: multi-rack
 ---
@@ -19,7 +19,7 @@ This article explains how to create and configure network security groups (NSGs)
 
 ## About NSGs on Azure Local VMs on multi-rack deployments
 
-Use a network security group to filter network traffic between logical networks, virtual network (VNet) subnets, or virtual machines (VMs) on Azure Local. Configure a network security group with security rules that allow or deny either inbound or outbound network traffic. The network security rules control traffic based on:
+Use a network security group to filter network traffic between logical networks, virtual network subnets, or virtual machines (VMs) on Azure Local. Configure a network security group with security rules that allow or deny either inbound or outbound network traffic. The network security rules control traffic based on:
 
 - Source and destination IP addresses.
 - Port numbers.
@@ -115,7 +115,7 @@ The following sections explain how to create network security groups (NSGs) and 
 Create a network security group (NSG) to manage data traffic flow on Azure Local. You can create an NSG and associate it with a network interface, a virtual network subnet, or a logical network.
 
 > [!WARNING]
-> NSGs must have at least one network security rule. An empty NSG denies all inbound traffic by default. A VM or logical network associated with this NSG isn't reachable.
+> An empty NSG allows only inbound traffic to a network interface from within the same logical network or virtual network. Any other inbound traffic is denied by default, unless explicitly allowed using network security rules in the NSG associated with the network interface, logical network, or virtual network subnet.
 
 <!-- open comment in word doc -->
 

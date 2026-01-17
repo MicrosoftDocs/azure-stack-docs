@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.reviewer: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 11/18/2025
+ms.date: 01/16/2026
 ms.subservice: multi-rack
 ---
 
@@ -195,29 +195,19 @@ Follow these steps to create a network interface on your static virtual network.
 
     ```output
     { 
-
       "extendedLocation": { 
-
         "name": "/subscriptions/<subscription ID>/resourceGroups/mylocal-rg/providers/Microsoft.ExtendedLocation/customLocations/mylocal-cl", 
-
         "type": "CustomLocation" 
-
       }, 
-
       "id": "/subscriptions/<subscription ID>/resourceGroups/mylocal-rg/providers/Microsoft.AzureStackHCI/networkinterfaces/mylocal-nic-static", 
-
       "location": "eastus", 
       "name": "mylocal-nic-static", 
       "properties": { 
         "dnsSettings": { 
           "dnsServers": null 
-
         }, 
-
         "ipConfigurations": [ 
-
           { 
-
             "name": null, 
             "properties": { 
               "gateway": "192.168.200.1", 
@@ -225,26 +215,17 @@ Follow these steps to create a network interface on your static virtual network.
               "privateIpAddress": "192.168.201.3", 
               "privateIpAllocationMethod": null, 
               "subnet": { 
-
                 "id": "/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.AzureStackHCI/virtualNetworks/$vnet_name/subnets/$subnet_name", 
-
                 "resourceGroup": "mylocal-rg" 
-
               } 
-
             } 
-
           } 
-
         ], 
-
         "macAddress": null, 
         "provisioningState": "Succeeded", 
         "resourceName": null, 
         "status": {} 
-
       }, 
-
       "resourceGroup": "mylocal-rg", 
       "systemData": { 
         "createdAt": "2023-11-02T23:00:47.714910+00:00", 
@@ -253,12 +234,9 @@ Follow these steps to create a network interface on your static virtual network.
         "lastModifiedAt": "2023-11-02T23:02:08.720545+00:00", 
         "lastModifiedBy": "<ID>", 
         "lastModifiedByType": "Application" 
-
       }, 
-
       "tags": null, 
       "type": "microsoft.azurestackhci/networkinterfaces" 
-
     }  
     ```
 

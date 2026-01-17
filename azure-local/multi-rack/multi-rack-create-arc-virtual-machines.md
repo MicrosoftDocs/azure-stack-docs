@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.reviewer: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 11/18/2025
+ms.date: 01/16/2026
 ms.subservice: multi-rack
 ---
 
@@ -29,7 +29,7 @@ Before you create an Azure Local VM, make sure that the following prerequisites 
 
 - Access to an Azure subscription with the appropriate RBAC role and permissions assigned. For more information, see [RBAC roles for Azure Local VM management](./multi-rack-assign-vm-rbac-roles.md#custom-roles).
 - Access to a resource group where you want to provision the VM.
-- Access to one or more VM images on your Azure Local. These VM images could be created using [VM image starting from an image in Azure Storage account](./multi-rack-virtual-machine-image-storage-account.md.
+- Access to one or more VM images on your Azure Local. These VM images could be created using [VM image starting from an image in Azure Storage account](./multi-rack-virtual-machine-image-storage-account.md).
     > [!NOTE]
     > If you’re deploying a Windows VM, make sure that the appropriate VirtIO drivers are present in the image.
 - A custom location for your Azure Local instance that you'll use to provision VMs. The custom location will also show up in the **Overview** page for Azure Local.
@@ -201,7 +201,7 @@ Follow these steps in Azure portal for Azure Local.
 1. Go to **Azure Arc cluster view** > **Virtual machines**.
 1. From the top command bar, select **+ Create VM**.
 
-   <!--:::image type="content" source="media/multi-rack-create-arc-virtual-machines/virtual-machine-create-button.png" alt-text="Screenshot of select + Add/Create VM." lightbox="media/multi-rack-create-arc-virtual-machines/virtual-machine-create-button.png":::-->
+   :::image type="content" source="media/multi-rack-create-arc-virtual-machines/virtual-machine-create-button.png" alt-text="Screenshot of select + Add/Create VM." lightbox="media/multi-rack-create-arc-virtual-machines/virtual-machine-create-button.png":::
 
 1. On the **Basics** tab, input the following parameters in the **Project details** section:
 
