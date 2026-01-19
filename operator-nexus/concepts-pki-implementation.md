@@ -117,3 +117,13 @@ Operators often need to verify that TLS endpoints present the expected CA certif
      --query "caCertificate" \
      --output tsv
    ```
+
+## Related content
+
+PKI is one component of Azure Operator Nexus security. The PKI system works with these credential rotation mechanisms to provide comprehensive authentication and encryption across the platform.
+
+- [Azure Operator Nexus security](concepts-security.md)
+- [Access and identity management](concepts-security-access-identity.md)
+- [Baseboard Management Controller credential rotation](concepts-baseboard-management-controller-credential-rotation.md)
+- [Network Fabric password rotation](concepts-password-rotation-v1.md)
+- [Credential rotation management](howto-credential-rotation.md)
