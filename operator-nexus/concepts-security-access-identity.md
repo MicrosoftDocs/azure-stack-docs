@@ -130,3 +130,13 @@ The user with this role has access to perform all actions on any Microsoft.Netwo
 | Actions                  | Description                                             |
 |--------------------------|---------------------------------------------------------|
 | Microsoft.NetworkCloud/* | Perform any action on a Microsoft.NetworkCloud resource |
+
+## Related content
+
+- [Azure Operator Nexus security](concepts-security.md)
+- [PKI implementation](concepts-pki-implementation.md)
+- [Baseboard Management Controller credential rotation](concepts-baseboard-management-controller-credential-rotation.md)
+- [Network Fabric password rotation](concepts-password-rotation-v1.md)
+- [Role-based access control in Kubernetes clusters](howto-kubernetes-cluster-aad-rbac.md)
+- [Credential rotation management](howto-credential-rotation.md)
+- [Set up Defender for Cloud security](howto-set-up-defender-for-cloud-security.md)
