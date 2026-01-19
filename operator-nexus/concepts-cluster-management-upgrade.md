@@ -32,10 +32,10 @@ Updates take up to one hour to complete per Cluster.
 
 Azure Operator Nexus includes multiple upgrade types that serve different purposes.
 
-### Network FabricManagement upgrades (non-disruptive)
-- [Network Fabric management upgrade overview](concepts-fabric-management-upgrade.md) - Non-disruptive updates to Fabric Azure resources and extensions
+### Network Fabric Management upgrades (non-disruptive)
+- [Network Fabric Management upgrade overview](concepts-fabric-management-upgrade.md) - Non-disruptive updates to Fabric Azure resources and extensions
 
 ### Runtime upgrades (customer-managed, disruptive)
 - [Cluster runtime upgrade overview](concepts-cluster-upgrade-overview.md) - Disruptive updates to underlying platform software
 - [Cluster runtime upgrade](howto-cluster-runtime-upgrade.md)
-- [Network Fabric upgrade](howto-upgrade-nexus-fabric.md)
+- [Network Fabric runtime upgrade](howto-upgrade-nexus-fabric.md)
