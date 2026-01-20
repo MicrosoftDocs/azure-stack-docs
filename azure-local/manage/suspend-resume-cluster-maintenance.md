@@ -1,12 +1,12 @@
 ---
-title: Suspend and resume Azure Local, version 23H2 machines for planned maintenance operations
-description: Learn how to suspend and resume machines for planned maintenance operations.
+title: Suspend and resume Azure Local machines for planned maintenance operations
+description: Learn how to suspend and resume Azure Local machines for planned maintenance operations.
 author: ronmiab
 ms.author: robess
 ms.topic: how-to
 ms.custom:
   - devx-track-azurecli
-ms.date: 04/23/2025
+ms.date: 01/20/2026
 ms.subservice: hyperconverged
 ---
 
@@ -14,7 +14,7 @@ ms.subservice: hyperconverged
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
-This article describes how to suspend an Azure Local machine for planned maintenance, such as powering off the machine to replace non-hot-pluggable components. It also provides instructions on how to resume the machine once maintenance is complete. 
+This article describes how to suspend an Azure Local machine for planned maintenance, such as powering off the machine to replace non-hot-pluggable components. It also provides instructions on how to resume the machine once maintenance is complete.
 
 ## Suspend a machine
 
@@ -26,13 +26,13 @@ To suspend a machine, follow these steps:
 1. To suspend the machine, run this command:
 
     ```powershell
-    Suspend-Clusternode -name “MachineName” -drain
+    Suspend-ClusterNode -name "MachineName" -drain
     ```
 
-    Here's example output:
+    Here's an example output:
 
     ```console
-    PS C:\programdata\wssdagent> Suspend-Clusternode -name ASRRlS3lRl5ull -drain
+    PS C:\programdata\wssdagent> Suspend-ClusterNode -name ASRRlS3lRl5ull -drain
 
     Name               State      Type
     ----               -----      ----
@@ -45,13 +45,13 @@ To suspend a machine, follow these steps:
 1. Confirm that the machine is successfully suspended.
 
     ```powershell
-    Get-Clusternode
+    Get-ClusterNode
     ```
 
     Here's example output:
 
     ```console
-    PS C:\programdata\wssdagent> Get-Clusternode
+    PS C:\programdata\wssdagent> Get-ClusterNode
 
     Name                State        Type
     ----                -----        ----
@@ -62,7 +62,7 @@ To suspend a machine, follow these steps:
 1. To ensure that no new VMs are placed on the node, remove the node from the active Azure Local VM Configuration. **This step can only be done using PowerShell**.
 
     ```powershell
-    Remove-MocPhysicalNode -nodeName “MachineName”
+    Remove-MocPhysicalNode -nodeName "MachineName"
     ```
 
     Here's example output:
@@ -81,13 +81,13 @@ To resume a machine, follow these steps:
 1. To resume the machine, run this command:
 
     ```powershell
-    Resume-Clusternode -name “MachineName” 
+    Resume-ClusterNode -name "MachineName"
     ```
 
     Here's example output:
 
     ```console
-    PS C:\programdata\wssdagent> Resume-Clusternode -name ASRRlS3lRl5ull
+    PS C:\programdata\wssdagent> Resume-ClusterNode -name ASRRlS3lRl5ull
 
     Name               State      Type
     ----               -----      ----
@@ -100,13 +100,13 @@ To resume a machine, follow these steps:
 1. Confirm that the machine is successfully resumed.
 
     ```powershell
-    Get-Clusternode
+    Get-ClusterNode
     ```
 
     Here's example output:
 
     ```console
-    PS C:\programdata\wssdagent> Get-Clusternode
+    PS C:\programdata\wssdagent> Get-ClusterNode
 
     Name                State        Type
     ----                -----        ----
@@ -117,7 +117,7 @@ To resume a machine, follow these steps:
 1. Add the machine to the active Azure Local VM Configuration. **This step can only be done using PowerShell**.
 
     ```powershell
-    New-MocPhysicalNode -nodeName “MachineName”
+    New-MocPhysicalNode -nodeName "MachineName"
     ```
 
     Here's example output:
@@ -141,13 +141,13 @@ To resume a machine, follow these steps:
 1. Verify that your storage pool is healthy.
 
     ```powershell
-    Get-Storagepool -friendlyname “SU_Pool1”
+    Get-StoragePool -friendlyname "SU_Pool1"
     ```
 
     Here's example output:
 
     ```console
-    PS C : \programdata\wssdagent> Get-Storagepool -friendlyname "SU1_Pool"
+    PS C : \programdata\wssdagent> Get-StoragePool -friendlyname "SU1_Pool"
 
     FriendlyName     Operationalstatus     HealthStatus     IsPrimordial     IsReadOnly     Size     AllocatedSize 
     ------------     -----------------     ------------     ------------     ----------     ----     -------------
@@ -155,4 +155,4 @@ To resume a machine, follow these steps:
     ```
 
     > [!NOTE]
-    > If the pool is not reported as healthy, check the status of the storage repair jobs using the `get-storagejob` command.
+    > If the pool is not reported as healthy, check the status of the storage repair jobs using the `Get-StorageJob` command.
