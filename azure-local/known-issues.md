@@ -3,7 +3,7 @@ title: Release notes with fixed and known issues in Azure Local
 description: Read about the known issues and fixed issues in Azure Local.
 author: alkohli
 ms.topic: article
-ms.date: 01/16/2026
+ms.date: 01/20/2026
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: hyperconverged
@@ -28,10 +28,10 @@ For the 2601 release of Azure Local, Microsoft released the following update:
 
 | Solution version  | OS build  |
 |---------|---------|---------|
-| 12.2601.1002.16 <!--update--> | 26100.7462 <!--update-->  |
+| 12.2601.1002.35 | 26100.32230 |
 
 > [!IMPORTANT]
-> The new deployments of this software use the **12.2601.1002.16** <!--update--> build.
+> The new deployments of this software use the **12.2601.1002.35** build.
 Release notes for this version include the issues fixed in this release, known issues in this release, and release note issues carried over from previous versions.
 
 > [!NOTE]
@@ -75,7 +75,7 @@ The following table lists the known issues in this release:
 
 |Feature  |Issue    |Workaround  |
 |---------|---------|------------|
-| Deployment <!--36440701--> | When upgrading from 2510 to 2511, 2512, or 2601, cluster creation fails due to CSI provisioning. | There's known workaround in this release. |
+| Deployment <!--36440701--> | When upgrading from 2510 to 2511, 2512, or 2601, cluster creation fails. | There's no known workaround in this release. |
 
 ## Known issues from previous releases
 
