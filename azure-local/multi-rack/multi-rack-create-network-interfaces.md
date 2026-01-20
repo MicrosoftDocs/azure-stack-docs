@@ -73,7 +73,6 @@ Follow these steps to create a network interface on your static logical network.
 
     ```azurecli
     $lnetName = "mylocal-lnet-static"
-    $gateway ="100.68.180.1" 
     $ipAddress ="100.68.180.6" 
     $nicName ="mylocal-nic-static"
     $subscription =  "<Subscription ID>"
@@ -159,16 +158,14 @@ Follow these steps to create a network interface on your static virtual network.
 1. Set the required parameters. Here's a sample output:
 
     ```output
-    $vnetName = "my-vnet-static" 
-    $vnetSubnet = “/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.AzureStackHCI/virtualNetworks/$vnet_name/subnets/$subnet_name" 
-    $gateway ="100.68.180.1"  
+    $vnetName = "my-vnet-static"
+    $subnetName = "my-subnet-static" 
+    $vnetSubnet = "/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.AzureStackHCI/virtualNetworks/$vnetName/subnets/$subnetName" 
     $ipAddress ="100.68.180.6"  
     $nicName ="mylocal-nic-static" 
     $subscription =  "<Subscription ID>" 
     $resource_group = "mylocal-rg" 
     $customLocationID = "/subscriptions/<Subscription ID>/resourceGroups/mylocal-rg/providers/Microsoft.ExtendedLocation/customLocations/mylocal-cl"
- 
-
     $location = "eastus" 
     ```
 

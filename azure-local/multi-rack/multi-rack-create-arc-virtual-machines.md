@@ -110,7 +110,7 @@ Here we create a VM that uses specific memory and processor counts.
     $computerName = "mycomputer"
     $userName = "local-user"
     $password = "<Password for the VM>"
-    $imageName ="ws22server"
+    $imageName = "/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.AzureStackHCI/galleryImages/ws22server"
     $nicName ="local-vnic" 
     $httpProxy = "<Proxy server address>"
     $httpsProxy = "<Proxy server address>"
@@ -123,7 +123,7 @@ Here we create a VM that uses specific memory and processor counts.
     | **name**  |Name for the VM that you create for Azure Local. Make sure to provide a name that follows the [Rules for Azure resources.](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming#example-names-networking)|
     | **admin-username** |Username for the user on the VM you're deploying on Azure Local. |
     | **admin-password** |Password for the user on the VM you're deploying on Azure Local. |
-    | **image-name** |Name of the VM image used to provision the VM. |
+    | **image-name** |ARM resource ID of the VM image used for provisioning. The VM image may reside in a different subscription and resource group than the target VM. |
     | **location** |Azure regions as specified by `az locations`. For example, this could be `eastus`, `westeurope`. |
     | **resource-group** |Name of the resource group where you create the VM. For ease of management, we recommend that you use the same resource group as Azure Local. |
     | **subscription** |Name or ID of the subscription where your Azure Local is deployed. This could be another subscription you use for VM on Azure Local. |
@@ -154,7 +154,7 @@ The VM is successfully created when the `provisioningState` shows as `succeeded`
 To create a Linux VM, use the same command that you used to create the Windows VM.
 
 - The gallery image specified should be a Linux image.
-- For Linux VMs, we recommend using SSH keys. For SSH keys, you need to pass the `ssh-key-values` parameters along with `authentication-type ssh`.
+- For Linux VMs, we recommend using SSH keys. For SSH keys, you need to pass the `ssh-key-values` parameters along with `authentication-type ssh`. If you are using an existing key, ensure that the public key is in OpenSSH format.
 - If you want to use username and password, use the `authentication-type password` parameter.
 
 > [!IMPORTANT]
