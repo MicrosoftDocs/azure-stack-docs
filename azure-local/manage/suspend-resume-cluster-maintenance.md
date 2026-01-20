@@ -16,23 +16,30 @@ ms.subservice: hyperconverged
 
 This article describes how to suspend an Azure Local machine for planned maintenance, such as powering off the machine to replace non-hot-pluggable components. It also provides instructions on how to resume the machine once maintenance is complete.
 
-## Suspend a machine
+## Prerequisites
 
-To suspend a machine, first suspend the machine in Windows Failover Clustering. You can use various tools for this step, such as Windows Admin Center, Failover Cluster Manager, or PowerShell. We recommend using PowerShell as some steps can only be performed using that tool.
+Before you begin, ensure that you have the following prerequisites in place for both suspending and resuming an Azure Local machine:
+
+1. You have access to Azure Local machines with local administrator privileges.
+1. Make sure that the machines are running Azure Local version 2311.2 or later.
+1. Make sure that the client used to connect to Azure Local has PowerShell installed on it. You can use various tools for this step, such as Windows Admin Center, Failover Cluster Manager, or PowerShell. We recommend using PowerShell as some steps can only be performed using that tool.
+1. Make sure to suspend or resume the Azure Local machine in Windows Failover Clustering.
+
+## Suspend a machine
 
 To suspend a machine, follow these steps:
 
-1. Sign in to one of the machines with a user that has local administrator permissions.
-1. To suspend the machine, run this command:
+1. Sign in to one of the Azure Local machines of your instance as a local administrator.
+1. Run PowerShell as an administrator. To suspend the machine, run this command:
 
     ```powershell
-    Suspend-ClusterNode -name "MachineName" -drain
+    Suspend-ClusterNode -Name "<MachineName>" -Drain
     ```
 
     Here's an example output:
 
     ```console
-    PS C:\programdata\wssdagent> Suspend-ClusterNode -name ASRRlS3lRl5ull -drain
+    PS C:\programdata\wssdagent> Suspend-ClusterNode -Name ASRRlS3lRl5ull -Drain
 
     Name               State      Type
     ----               -----      ----
@@ -48,7 +55,7 @@ To suspend a machine, follow these steps:
     Get-ClusterNode
     ```
 
-    Here's example output:
+    Here's an example output:
 
     ```console
     PS C:\programdata\wssdagent> Get-ClusterNode
@@ -62,32 +69,30 @@ To suspend a machine, follow these steps:
 1. To ensure that no new VMs are placed on the node, remove the node from the active Azure Local VM Configuration. **This step can only be done using PowerShell**.
 
     ```powershell
-    Remove-MocPhysicalNode -nodeName "MachineName"
+    Remove-MocPhysicalNode -NodeName "<MachineName>"
     ```
 
-    Here's example output:
+    Here's an example output:
 
     ```console
-    PS C:\programdata\wssdagent> Remove-MocPhysicalNode -nodename ASRRlS3lRl5Ull
+    PS C:\programdata\wssdagent> Remove-MocPhysicalNode -NodeName ASRRlS3lRl5Ull
     ```
 
 ## Resume a machine
 
-To resume a machine, first resume the machine in Windows Failover Clustering. You can use various tools for this step, such as Windows Admin Center, Failover Cluster Manager, or PowerShell. We recommend using PowerShell as some steps can only be performed using that tool.
-
 To resume a machine, follow these steps:
 
-1. Sign in to one of the machines with a user that has local administrator permissions.
-1. To resume the machine, run this command:
+1. Sign in to one of the Azure Local machines of your instance as a local administrator.
+1. Run PowerShell as an administrator. To resume the machine, run this command:
 
     ```powershell
-    Resume-ClusterNode -name "MachineName"
+    Resume-ClusterNode -Name "<MachineName>"
     ```
 
-    Here's example output:
+    Here's an example output:
 
     ```console
-    PS C:\programdata\wssdagent> Resume-ClusterNode -name ASRRlS3lRl5ull
+    PS C:\programdata\wssdagent> Resume-ClusterNode -Name ASRRlS3lRl5ull
 
     Name               State      Type
     ----               -----      ----
@@ -103,7 +108,7 @@ To resume a machine, follow these steps:
     Get-ClusterNode
     ```
 
-    Here's example output:
+    Here's an example output:
 
     ```console
     PS C:\programdata\wssdagent> Get-ClusterNode
@@ -117,13 +122,13 @@ To resume a machine, follow these steps:
 1. Add the machine to the active Azure Local VM Configuration. **This step can only be done using PowerShell**.
 
     ```powershell
-    New-MocPhysicalNode -nodeName "MachineName"
+    New-MocPhysicalNode -NodeName "<MachineName>"
     ```
 
-    Here's example output:
+    Here's an example output:
 
     ```console
-    PS C:\programdata\wssdagent> New-MocPhysicalNode -nodename ASRRlS3lRl5ull
+    PS C:\programdata\wssdagent> New-MocPhysicalNode -NodeName ASRRlS3lRl5ull
     
     ElementName     : HV Socket Agent Communication
     PSPath          : Microsoft.PowerShell.Core\Registry::HKEY_LOCAL MACHINE\SOFTWARE\Microsoft\WindowsNT\CurrentVersion\Virtualization\GuestCommunicationServices\00000001-facb-lle6-b
@@ -141,13 +146,13 @@ To resume a machine, follow these steps:
 1. Verify that your storage pool is healthy.
 
     ```powershell
-    Get-StoragePool -friendlyname "SU_Pool1"
+    Get-StoragePool -FriendlyName "<StoragePoolName>"
     ```
 
-    Here's example output:
+    Here's an example output:
 
     ```console
-    PS C : \programdata\wssdagent> Get-StoragePool -friendlyname "SU1_Pool"
+    PS C : \programdata\wssdagent> Get-StoragePool -FriendlyName "SU1_Pool"
 
     FriendlyName     Operationalstatus     HealthStatus     IsPrimordial     IsReadOnly     Size     AllocatedSize 
     ------------     -----------------     ------------     ------------     ----------     ----     -------------
