@@ -63,7 +63,8 @@ To browse for available system updates using Azure Update Manager, follow these 
 
 > [!IMPORTANT]
 > - Microsoft only supports updates applied from the **Azure Local** resource page or via the **Azure Update Manager > Resources > Azure Local**.
-> - Use of 3rd party tools to install updates isn't supported. 
+> - Use of 3rd party tools to install updates isn't supported.
+> - Updating to solution version 2601 or later surfaces the infrastructure logical network in Azure. For more information, see [Infrastructure logical network as a component of Azure Local VM management](../manage/azure-arc-vm-management-overview.md#components-of-azure-local-vm-management).
 
 You can install updates from the Azure Local resource page or via the **Azure Update Manager > Resources > Azure Local page**. Select the appropriate tab to view the detailed steps.
 
