@@ -30,7 +30,7 @@ This release includes various reliability improvements and other bug fixes.
     
 - **.NET updates**: This build uses .NET version **8.0.22** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
 
-- **Infrastructure logical network surfaced in Azure portal**: The infrastructure logical network created during deployment is now visible in the Azure portal. This visibility allows administrators to manage and monitor the infrastructure network alongside other logical networks, enhancing network management capabilities. This change also acts as a safeguard against accidental deletion of the infrastructure network or accidental workload provisioning on the network reserved for Azure Local infrastructure.
+- **Infrastructure logical network surfaced in Azure portal**: The infrastructure logical network created during Azure Local deployment is now visible in the Azure portal. This visibility allows administrators to review the infrastructure network configuration. This change also acts as a safeguard against accidental workload provisioning on the network reserved for Azure Local infrastructure.
 
     For more information, see [Manage logical networks for Azure Local VMs](./azure-arc-vm-management-overview.md#components-of-azure-local-vm-management).
 
