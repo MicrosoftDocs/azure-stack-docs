@@ -310,7 +310,7 @@ In addition to the preceding metadata, Marketplace authors can provide custom ke
 
 ### HTML sanitization
 
-For any field that allows HTML, the following [elements and attributes are allowed](https://github.com/Azure/portaldocs/blob/master/gallery-sdk/generated/index-gallery.md#gallery-item-metadata-html-sanitization):
+For any field that allows HTML, the following elements and attributes are allowed:
 
 `h1, h2, h3, h4, h5, p, ol, ul, li, a[target|href], br, strong, em, b, i`
 
