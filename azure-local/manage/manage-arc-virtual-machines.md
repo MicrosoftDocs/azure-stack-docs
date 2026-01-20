@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 12/17/2025
+ms.date: 01/20/2026
 ms.custom: sfi-image-nochange
 ms.subservice: hyperconverged
 ---
@@ -969,6 +969,8 @@ To change cores and memory, follow these steps in the Azure portal for your Azur
 
    :::image type="content" source="./media/manage-arc-virtual-machines/change-cores-memory.png" alt-text="Screenshot of the pane for changing cores and memory size of a VM." lightbox="./media/manage-arc-virtual-machines/change-cores-memory.png":::
 
+> [!NOTE]
+> When updating the memory of a VM, the VM remains running. A restart may be required only if the guest OS doesn't support live memory updates.
 
 ## Guest management enablement support
 
