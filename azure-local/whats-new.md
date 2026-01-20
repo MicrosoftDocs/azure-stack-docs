@@ -5,7 +5,7 @@ ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 01/08/2026
+ms.date: 01/14/2026
 ms.subservice: hyperconverged
 ---
 
@@ -31,7 +31,7 @@ This release includes various reliability improvements and other bug fixes.
 
 - **.NET updates**: This build uses .NET version **8.0.22** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
 
-- **Simplified cluster registration during deployment**: Starting with this release, Azure Local cluster deployments don't use a Service Principal Name (Microsoft Entra ID App) with a self signed certificate. Instead, the cluster uses system-assigned managed identity (SMI) to authenticate itself with Azure.
+- **Simplified cluster registration during deployment**: Starting with this release, Azure Local cluster deployments don't use a Service Principal Name (Microsoft Entra ID App) with a self-signed certificate. Instead, the cluster uses system-assigned managed identity (SMI) to authenticate itself with Azure.
     For more information, see [Validate and deploy the system via Azure portal](./deploy/deploy-via-portal.md#verify-a-successful-deployment).
 
 - **Support for NVIDIA L-series GPU on AKS on Azure Local (preview)**: Starting with this release, NVIDIA L-series GPU is supported on Azure Kubernetes Service (AKS) enabled by Azure Arc on Azure Local. This preview feature allows you to run GPU-accelerated workloads on AKS clusters deployed on Azure Local using NVIDIA L-series GPUs.
@@ -146,13 +146,13 @@ This release includes the following features and improvements:
 
 - **OS changes**:
 
-    - The 2504 release introduced a new operating system for Azure Local deployments. For 2509, all the new deployments of Azure Local run the new OS version **26100.5074**. You can download the 2509 OS image from the Azure portal.
+    - The 2504 release introduced a new operating system for Azure Local deployments. For 2509, all the new deployments of Azure Local run the new OS version **26100.6584**. You can download the 2509 OS image from the Azure portal.
 
-        - You also need a driver that's compatible with OS version **26100.5074** or Windows Server 2025. If a compatible driver isn't available, you can use the 2503 image.
+        - You also need a driver that's compatible with OS version **26100.6584** or Windows Server 2025. If a compatible driver isn't available, you can use the 2503 image.
 
-        - Existing deployments of Azure Local continue to use OS version **25398.1840**. For more information, see [Release information summary](./release-information-23h2.md).
+        - Existing deployments of Azure Local continue to use OS version **25398.1849**. For more information, see [Release information summary](./release-information-23h2.md).
 
-    - If you purchased Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) through your preferred Microsoft hardware partner, the OS is preinstalled. Work with your Original Equipment Manufacturer (OEM) to get the OS image that's compatible with **12.2509** and a driver that's compatible with OS version **26100.5074** or Windows Server 2025.
+    - If you purchased Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) through your preferred Microsoft hardware partner, the OS is preinstalled. Work with your Original Equipment Manufacturer (OEM) to get the OS image that's compatible with **12.2509** and a driver that's compatible with OS version **26100.6584** or Windows Server 2025.
     
 - **.NET updates**: This build uses .NET version **8.0.20** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
 
@@ -206,11 +206,11 @@ This release includes the following features and improvements:
 
     - In the 2504 release, Microsoft introduced a new operating system for Azure Local deployments. For 2508, all the new deployments of Azure Local run the new OS version **26100.4946**. You can download the 2508 OS image from the Azure portal.
 
-        - You also need to get the driver compatible with OS version **26100.XXXX** or Windows Server 2025. If a compatible driver isn't available, you can use the 2503 image.
+        - You also need to get the driver compatible with OS version **26100.4946** or Windows Server 2025. If a compatible driver isn't available, you can use the 2503 image.
 
         - Existing deployments of Azure Local continue to use OS version **25398.1791**. For more information, see [Release information summary](./release-information-23h2.md).
 
-    - If you purchased Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) through your preferred Microsoft hardware partner, the OS is preinstalled. Work with your Original Equipment Manufacturer (OEM) to get the OS image compatible with **12.2508** and driver compatible with OS version **26100.XXXX** or Windows Server 2025.
+    - If you purchased Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) through your preferred Microsoft hardware partner, the OS is preinstalled. Work with your Original Equipment Manufacturer (OEM) to get the OS image compatible with **12.2508** and driver compatible with OS version **26100.4946** or Windows Server 2025.
     
 - **.NET updates**: This build uses .NET version **8.0.18** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
 
@@ -313,7 +313,7 @@ This release includes the following features and improvements:
 
       This release also improves conflict resolution with existing security policies. Instead of disabling drift control system-wide, you can now fine-tune individual settings while maintaining drift control. For more information, see [View and download security settings in Azure Local](./manage/manage-secure-baseline.md#view-and-download-security-settings).
 
-    - To comply with National Institute of Standards and Technology(NIST) 2 guidelines, the minimum required password length when deploying Azure Local is changed to 14 characters.
+    - To comply with National Institute of Standards and Technology (NIST) 2 guidelines, the minimum required password length when deploying Azure Local is changed to 14 characters.
 
 - **Archival of Azure Local, version 22H2 documentation**: [Azure Local, version 22H2 documentation](/previous-versions/azure/azure-local/release-information) is now archived and available in the [Azure previous versions documentation](/previous-versions/azure/) for reference. The archived documentation isn't updated and isn't supported.
 

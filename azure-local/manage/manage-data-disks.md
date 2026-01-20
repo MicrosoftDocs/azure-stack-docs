@@ -27,25 +27,33 @@ Before you begin, make sure to complete the following prerequisites:
 
 Download an Azure managed disk as follows:
 
+## Sign in and set subscription
+
+[!INCLUDE [hci-vm-sign-in-set-subscription](../includes/hci-vm-sign-in-set-subscription.md)]
+
+## Set parameters
+
 1. Set parameters for `subscription`, `resource-group`, `name`, and `custom-location`. Replace the parameters in `< >` with the appropriate values:
 
     ```azurecli
     $subscription = "<Subscription ID>"
-    $resource-group = "<Resource group>"
+    $resourceGroup = "<Resource group>"
     $name = "<Data disk name>"
-    $custom-location = "<Custom location resource ID>"
+    $customLocation = "<Custom location resource ID>"
     ```
+
+## Download the managed disk
 
 1. Generate a SAS URL of the disk using Azure CLI:  
 
     ```azurecli
-    az disk grant-access --access-level Read --duration-in-seconds 3600 --name $name --resource-group $resource-group
+    $downloadUrl = (az disk grant-access --access-level Read --duration-in-seconds 3600 --name $name --resource-group $resourceGroup --query accessSas -o tsv)
     ```
 
 1. Once the SAS URL is generated, use the following command to download it to your Azure Local:  
 
     ```azurecli
-    az stack-hci-vm disk create -resource-group $resource-group --custom-location $custom-location --download-url $download-url --name $name
+    az stack-hci-vm disk create --resource-group $resourceGroup --custom-location $customLocation --download-url $downloadUrl --name $name
     ```
 
 The parameters are described in the following table:
@@ -75,7 +83,7 @@ Download Uri for VHD is: https://*****
     "containerId": "/subscriptions/resourceGroups/providers/Microsoft.AzureStackHCI/storageContainers/UserStorage", 
     "diskFileFormat": "vhd", 
     "diskSizeGb": null, 
-    "downloadUrl": null, 
+    "downloadUrl": "https://*****", 
     "dynamic": null, 
     "hyperVGeneration": null, 
     "logicalSectorBytes": null, 
@@ -99,7 +107,7 @@ Download Uri for VHD is: https://*****
     "lastModifiedByType": "Application" 
   }, 
   "tags": null, 
-  " 
+  "type": null
 ```
 
 ## Next steps

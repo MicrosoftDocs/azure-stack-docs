@@ -2,7 +2,7 @@
 title: Supported software versions in Azure Operator Nexus 
 description: Learn about supported software versions in Azure Operator Nexus. 
 ms.topic: feature-availability
-ms.date: 12/01/2025
+ms.date: 1/15/2026
 author: jac0bsmith    
 ms.author: jacobsmith
 ms.service: azure-operator-nexus
@@ -33,8 +33,11 @@ Please note that this list is subject to change as new software versions are rel
 | NC 4.1.6        | AKS: 1.30.8<br>Azure Linux: 3.0.20250102 |
 | NC 4.4.3        | AKS: 1.31.8<br>Azure Linux: 3.0.20250702 |
 | NC 4.4.4        | AKS: 1.31.11<br>Azure Linux: 3.0.20250729 |
+| NC 4.4.5        | AKS: 1.31.11<br>Azure Linux: 3.0.20250729 |
 | NC 4.7.5        | AKS: 1.32.7<br>Azure Linux: 3.0.20250910 |
 | NC 4.7.7        | AKS: 1.32.7<br>Azure Linux: 3.0.20250910 |
+| NC 4.7.8        | AKS: 1.32.7<br>Azure Linux: 3.0.20250910 |
+
 ### Instance Storage versions
 
 | Product | Supported versions |

@@ -4,7 +4,7 @@ description: Learn how to upgrade infrastructure for SDN managed by on-premises 
 ms.topic: how-to
 ms.author: alkohli
 author: alkohli
-ms.date: 12/04/2025
+ms.date: 01/14/2026
 ms.subservice: hyperconverged
 ---
 
