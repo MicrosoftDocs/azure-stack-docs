@@ -63,6 +63,10 @@ Before you begin, make sure that:
 
 ## Connect to your Azure Local
 
+
+> [!NOTE]
+> - Updating to solution version 2601 or later surfaces the infrastructure logical network in Azure. For more information, see [Infrastructure logical network as a component of Azure Local VM management](../manage/azure-arc-vm-management-overview.md#components-of-azure-local-vm-management).
+
 Follow these steps on your client to connect to one of the machines in your Azure Local.
 
 1. Run PowerShell as administrator on the client that you're using to connect to your system.

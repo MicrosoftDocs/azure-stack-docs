@@ -3,7 +3,7 @@ title: Troubleshoot Azure Local Virtual Machines enabled by Azure Arc
 description: Learn how to troubleshoot issues you experience with Azure Local Virtual Machines (VMs).
 author: alkohli
 ms.topic: how-to
-ms.date: 07/21/2025
+ms.date: 01/20/2026
 ms.author: alkohli
 ms.reviewer: vlakshmanan
 ms.service: azure-local
@@ -16,6 +16,14 @@ ms.subservice: hyperconverged
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
 This article describes how to collect logs and troubleshoot issues with Azure Local Virtual Machines (VMs) enabled by Azure Arc. It also lists the current limitations and known issues with Azure Local VM management, along with recommended resolutions.
+
+## Infrastructure logical network isn't visible in Azure portal
+
+**Issue:**
+For 2601 and later release, the infrastructure logical network created during the Azure Local deployment isn't visible in the Azure portal.
+
+**Resolution**
+If you don’t see the infrastructure logical network after deploying solution version 2601 or updating to it, this network will surface when attempting a subsequent solution update.
 
 ## Property isn't supported for this operation
 
