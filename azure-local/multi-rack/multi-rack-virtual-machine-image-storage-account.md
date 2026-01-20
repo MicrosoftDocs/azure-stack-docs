@@ -356,10 +356,10 @@ After you delete an image, check that it's removed. Here's sample output when th
 PS C:\Users\azcli> $subscription = "<Subscription ID>"
 PS C:\Users\azcli> $resourceGroup = "mylocal-rg"
 PS C:\Users\azcli> $imageName = "mymylocal-marketplaceimage"
-PS C:\Users\azcli> az stack-hci-vm image delete --name $mktplaceImage --resource-group $resourceGroup
+PS C:\Users\azcli> az stack-hci-vm image delete --name $imageName --resource-group $resourceGroup
 Command group 'stack-hci-vm' is experimental and under development. Reference and support levels: `https://aka.ms/CLI_refstatus`
 Are you sure you want to perform this operation? (y/n): y
-PS C:\Users\azcli> az stack-hci-vm image show --name $mktplaceImage --resource-group $resource_group
+PS C:\Users\azcli> az stack-hci-vm image show --name $imageName --resource-group $resourceGroup
 Command group 'stack-hci-vm' is experimental and under development. Reference and support levels: https://aka.ms/CLI_refstatus
 ResourceNotFound: The Resource 'Microsoft.AzureStackHCI/marketplacegalleryimages/myhci-marketplaceimage' under resource group 'mylocal-rg' was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix
 PS C:\Users\azcli>
