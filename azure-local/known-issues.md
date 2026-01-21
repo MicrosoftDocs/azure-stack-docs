@@ -28,10 +28,10 @@ For the 2601 release of Azure Local, Microsoft released the following update:
 
 | Solution version  | OS build  |
 |---------|---------|---------|
-| 12.2601.1002.37 | 26100.32230 |
+| 12.2601.1002.38 | 26100.32230 |
 
 > [!IMPORTANT]
-> The new deployments of this software use the **12.2601.1002.37** build.
+> The new deployments of this software use the **12.2601.1002.38** build.
 Release notes for this version include the issues fixed in this release, known issues in this release, and release note issues carried over from previous versions.
 
 > [!NOTE]
@@ -741,11 +741,11 @@ For the 2504 release of Azure Local, Microsoft released two security updates: on
 
 | Deployment type  | Solution version  | OS build  |
 |---------|---------|---------|
-| Existing deployments    | 11.2504.1001.19          | 25398.1551         |
+| Existing deployments    | 11.2504.1001.21          | 25398.1551         |
 | New deployments    | 12.2504.1001.20         | 26100.3775         |
 
 > [!IMPORTANT]
-> The new deployments of this software use the **12.2504.1001.20** build. You can also update an existing deployment from 2503 using **11.2504.1001.19**.
+> The new deployments of this software use the **12.2504.1001.20** build. You can also update an existing deployment from 2503 using **11.2504.1001.21**.
 
 Release notes for this version include the issues fixed in this release, known issues in this release, and release note issues carried over from previous versions.
 
