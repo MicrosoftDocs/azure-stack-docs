@@ -556,6 +556,7 @@ The following parameters are *required* for creating external networks:
 The following parameters are *optional* for creating external networks:
 
 | Parameter | Description | Example |
+| --- | --- | --- |
 | `optionBProperties` | OptionB properties configuration. To specify, use `exportIPv4/IPv6RouteTargets` or `importIpv4/Ipv6RouteTargets`. | `"exportIpv4/Ipv6RouteTargets": ["1234:1234"]` |
 | `optionAProperties` | Configuration of OptionA properties. Refer to OptionA example in section below. | |
 | `external` | This optional parameter inputs MPLS Option 10 (B) connectivity to external networks via provider edge (PE) devices. Using this option, you can input, import, and export route targets as shown in the example. | | 
@@ -707,7 +708,7 @@ For Option A, you need to create an external network before you enable the L3 is
     
     The supported primary and secondary IPv6 prefix size is /127. 
 
-  <details>
+    <details>
     <summary>Expand this section to see an example output.</summary>
 
     ```json
