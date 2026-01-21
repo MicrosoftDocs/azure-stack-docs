@@ -74,7 +74,7 @@ Use the following *required* parameters to provision and configure your L3 isola
 | `subscription` | Azure subscription ID for your instance. | `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` |
 | `location` | Azure region used during NFC creation. | `eastus` |
 | `nf-Id` | Network fabric ID. | "/subscriptions/xxxxxx-xxxxxx-xxxx-xxxx-xxxxxx/resourceGroups/NFresourcegroupname/providers/Microsoft.ManagedNetworkFabric/NetworkFabrics/NFname" |
-| `vlan-Id` | VLAN identifier value. The range is between 501-3000. <br><br> VLANs 1-500 are reserved for platform use and can't be used. The VLAN identifier value can't be changed once specified. <br><br> To modify the VLAN identifier value, you must delete and recreate the isolation domain.  | 501 |
+| `vlan-Id` | VLAN identifier value. The range is between 501-3000. <br><br> VLANs 1-500 are reserved for platform use and can't be used. <br><br> The VLAN identifier value can't be changed once specified. <br><br> To modify the VLAN identifier value, you must delete and recreate the isolation domain.  | 501 |
 
 The following parameters for isolation domains are *optional*:
 
