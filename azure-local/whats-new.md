@@ -5,7 +5,7 @@ ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 01/14/2026
+ms.date: 01/21/2026
 ms.subservice: hyperconverged
 ---
 
@@ -383,7 +383,7 @@ Starting with the 2504 release, Microsoft uses a new versioning schema. There ar
 |Solution version  |OS version |Deployment  |
 |---------|---------|---------|
 |12.2504.1001.20 | 26100.3775        | New deployments only.        |
-|11.2504.1001.19  | 25398.1551        | Existing deployments only.        |
+|11.2504.1001.21  | 25398.1551        | Existing deployments only.        |
 
 For more information, see [Release information summary](./release-information-23h2.md).
 
