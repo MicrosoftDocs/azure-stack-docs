@@ -127,6 +127,7 @@ Follow these steps on the node you're trying to repair.
     > - For versions 2503 and later, you'll need to use the OS image of the same solution as that running on the existing cluster. 
     > - Use the [Get solution version](../update/azure-update-manager-23h2.md#get-solution-version) to identify the solution version that you are running on the cluster.
     > - Use the [OS image](https://github.com/Azure-Samples/AzureLocal/blob/main/os-image/os-image-tracking-table.md) table to identify and download the appropriate OS image version.
+    > - Make sure to rename the Management NIC to "Management" (or whatever is used on the other nodes) by running Rename-NetAdapter -Name "Port5" -NewName "Management"
 
 1. Register the node with Arc. Follow the steps in [Register with Arc and set up permissions](../deploy/deployment-arc-register-server-permissions.md).
 
