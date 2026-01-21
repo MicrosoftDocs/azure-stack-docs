@@ -3,7 +3,7 @@ title:  Security updates for Azure Local
 description: Security updates for Azure Local.
 author: alkohli
 ms.topic: article
-ms.date: 01/13/2026
+ms.date: 01/20/2026
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: hyperconverged
@@ -38,7 +38,6 @@ This security update contains fixes and quality improvements from [KB5072033](
 
 - **[Servicing (known issue)]** This update addresses an issue where devices that installed the out-of-band update ([KB5070881](https://support.microsoft.com/topic/october-23-2025-kb5070881-os-build-26100-6905-out-of-band-8e7ac742-6785-4677-87e4-b73dd8ac0122)) stopped receiving Hotpatch updates. Affected machines will resume Hotpatch updates after installing the January 2026 baseline update.
 
-- **[Secure Boot]** Starting with this update, Windows quality updates include a subset of high confidence device targeting data that identifies devices eligible to automatically receive new Secure Boot certificates. Devices will receive the new certificates only after demonstrating sufficient successful update signals, ensuring a safe and phased deployment.
 
 - **[Windows Deployment Services (WDS)]** This update introduces a change in behavior in which WDS will stop supporting hands-free deployment functionality by default. Detailed guidance for IT administrators is available at [Windows Deployment Services (WDS) Hands‑Free Deployment Hardening Guidance](https://go.microsoft.com/fwlink/?linkid=2344403).
 
@@ -56,7 +55,7 @@ To install the LCU on your Azure Local instance, see [Update Azure Stack Local i
 
 ## File list
 
-For a list of the files that are provided in this update, download the file information for [Cumulative update KB5073379](https://go.microsoft.com/fwlink/?linkid=).
+For a list of the files that are provided in this update, download the file information for [Cumulative update KB5073379](https://go.microsoft.com/fwlink/?linkid=2346838).
 
 ::: moniker-end
 
