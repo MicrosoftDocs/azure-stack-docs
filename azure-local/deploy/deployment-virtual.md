@@ -60,7 +60,6 @@ Before you begin, make sure that each virtual host system can dedicate the follo
 | Time synchronization in Hyper-V integration tools | Disabled. |
 
 > [!NOTE]
-
 > These are the minimum requirements to successfully deploy Azure Local. Increase the capacity like virtual cores and memory when running actual workloads like virtual machines or containers.
 
 ## Set up the virtual switch

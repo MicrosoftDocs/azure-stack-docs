@@ -609,6 +609,8 @@ items:
       href: manage/troubleshoot-deployment-configurator-app.md
     - name: Troubleshoot deployment validation issues
       href: manage/troubleshoot-deployment.md
+    - name: Use the Support tool for infrastructure issues
+      href: manage/remediate-support-tool-infrastructure.md
     - name: Use the Diagnostic Support tool
       href: manage/support-tools.md
     - name: Get support for deployment issues

@@ -242,7 +242,7 @@ When you're performing the following physical repairs, a replace action **_is re
 - Mellanox Network Interface Card (NIC)
 - Broadcom embedded NIC
 
-After physical repairs are completed, verify that all firmware versions align with the versions supported for the corresponding runtime. Apply the same best-practice checks used during deployment to ensure the components meet the [minimum firmware requirements](/azure/operator-nexus/howto-platform-prerequisites.md#minimum-recommended-bios-and-firmware-versions-for-nexus-cluster-runtime).
+After physical repairs are completed, verify that all firmware versions align with the versions supported for the corresponding runtime. Apply the same best-practice checks used during deployment to ensure the components meet the [minimum firmware requirements](/azure/operator-nexus/howto-platform-prerequisites#minimum-recommended-bios-and-firmware-versions-for-nexus-cluster-runtime).
 
 Once the firmware checks are complete, proceed with the replace action.
 
