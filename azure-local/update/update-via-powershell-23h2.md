@@ -63,7 +63,6 @@ Before you begin, make sure that you meet the following prerequisites:
 
 ## Connect to your Azure Local
 
-
 > [!NOTE]
 > - When you update to solution version 2601 or later, the infrastructure logical network appears in Azure. For more information, see [Infrastructure logical network as a component of Azure Local VM management](../manage/azure-arc-vm-management-overview.md#components-of-azure-local-vm-management).
 
@@ -358,7 +357,7 @@ You can download the update and run checks to verify your cluster's update readi
     <summary>Expand this section to see an example output.</summary>
 
     
-            Here's an example output when the updates are being downloaded:
+    Here's an example output when the updates are being downloaded:
 
     ```console
     PS C:\Users\lcmuser> Get-SolutionUpdate -Id redmond/Solution10.2408.2.7 | ft Version,State,HealthState
@@ -446,7 +445,7 @@ Follow these steps to track update progress by using PowerShell.
         <summary>Expand this section to see an example output.</summary>
     
     
-                Here's an example output when the updates are being downloaded:
+        Here's an example output when the updates are being downloaded:
     
         ```console
         PS C:\Users\lcmuser> Get-SolutionUpdate -Id redmond/Solution10.2408.2.7 |ft Version,State,UpdateStateProperties,HealthState
@@ -466,7 +465,7 @@ Follow these steps to track update progress by using PowerShell.
         <summary>Expand this section to see an example output.</summary>
     
     
-                Here's an example output when the updates are being downloaded:
+        Here's an example output when the updates are being downloaded:
     
         ```console
         PS C:\Users\lcmuser> Get-SolutionUpdate -Id redmond/Solution10.2408.2.7 |ft Version,State,HealthState
