@@ -381,6 +381,8 @@ items:
         href: manage/connect-arc-vm-using-ssh.md
       - name: Manage Azure Local VMs
         href: manage/manage-arc-virtual-machines.md
+      - name: Manage logical networks
+        href: manage/manage-logical-networks.md
       - name: Manage Azure Local VM resources
         href: manage/manage-arc-virtual-machine-resources.md 
       - name: Manage VM extensions

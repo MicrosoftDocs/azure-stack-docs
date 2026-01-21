@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 01/14/2026
+ms.date: 01/20/2026
 ms.subservice: hyperconverged
 ---
 
@@ -13,25 +13,37 @@ ms.subservice: hyperconverged
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
-To deploy Azure Local virtual machines (VMs) enabled by Azure Arc, you need to create a logical network. Once the Azure Local VMs are deployed, you may need to manage these logical networks. This article describes how to manage these logical networks for an Azure Local VMs deployed on your Azure Local instance.
+To deploy Azure Local virtual machines (VMs) enabled by Azure Arc, you need to create logical networks. Once these networks are provisioned, you may need to manage them. This article describes how to manage these logical networks for Azure Local VMs deployed on your Local instance.
 
 
 ## About logical networks
 
-A logical network is a software-defined representation of a physical network that enables you to segment and isolate network traffic for different workloads or applications running on Azure Local VMs. Logical networks can be related to Azure Local VM management or application workloads.
+A logical network is a logical representation of a physical network where Azure Local VMs can be provisioned. It defines how VM network interfaces connect to the underlying network. Logical networks allows you to configure networking settings like address prefix, subnet, IP pools, gateways, DNS servers, and VLANs used for VM connectivity.
+
+- Once a logical network is created, you can't update the following:
+  - Default gateway
+  - IP pools
+  - IP address space
+  - VLAN ID
+  - Virtual switch name
+  - DNS server configuration of infrastructure logical networks
+
+Logical networks are of two types: infrastructure logical networks and workload logical networks.
 
 ### About infrastructure logical network
 
 When you deploy an Azure Local instance, an infrastructure logical network is created automatically.
 - This logical network encompasses the management IP address range provided during deployment. 
-- You can't manage infrastructure logical networks.
-    - If you try to create a network interface using Azure CLI on the infrastructure logical network, the operation will fail.
-    - You can't update the infrastructure logical network.
-    - Deletion of this logical network should be done in a prescribed order. First remove Arc VM network interfaces associated with the network, then remove all the associated application workload logical networks and finally remove all the Azure Local VMs. Once everything is removed, you can delete the infrastructure logical network. Deletion will only remove the cloud projection, the on-premises logical network remains.
+- You can't manage this infrastructure logical network.
+    - You can't create a network interface on the infrastructure logical network.
+    - You can't update the infrastructure logical network configuration including DNS server settings.
+    - Deletion of this logical network requires you to first delete all the Azure Local VMs, network interfaces, and workload logical networks on your Azure Local instance. Deletion will only remove the cloud projection, the on-premises logical network remains.
+
+        Typically you delete the infrastructure logical network only when you are decommissioning or redeploying the Azure Local instance.
 
 ### About workload logical networks
 
-You can create additional logical networks for application workload on your Azure Local VMs and you can manage these logical networks as needed. For example, you can update the DNS server configuration for a workload logical network.
+You can create additional logical networks for application workloads running on your Azure Local VMs and you can manage these logical networks as needed. For example, you can update the DNS server configuration for a workload logical network.
 
 
 ## Prerequisites

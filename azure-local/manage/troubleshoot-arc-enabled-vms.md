@@ -20,7 +20,7 @@ This article describes how to collect logs and troubleshoot problems with Azure 
 ## Infrastructure logical network isn't visible in Azure portal
 
 **Problem:**
-For version 2601 and later, the infrastructure logical network that you create during the Azure Local deployment isn't visible in the Azure portal.
+For version 2601 and later, the infrastructure logical network that was created during the Azure Local deployment isn't visible in the Azure portal.
 
 **Resolution:**
 If you don't see the infrastructure logical network after deploying solution version 2601 or updating to it, this network appears when you attempt a subsequent solution update.
