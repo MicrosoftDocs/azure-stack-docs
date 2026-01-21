@@ -17,16 +17,16 @@ This article lists the features and improvements that are available in hyperconv
 
 ## Features and improvements in 2601
 
-The January 2026 release of hyperconverged deployments of Azure Local is version **12.2601.1002.35**. For more information, see [Release information summary](./release-information-23h2.md).
+The January 2026 release of hyperconverged deployments of Azure Local is version **12.2601.1002.37**. For more information, see [Release information summary](./release-information-23h2.md).
 This release includes various reliability improvements and other bug fixes.
 
 - **OS changes**:
 
-    - The 2504 release introduced a new operating system for Azure Local deployments. From 2601 onwards, all the new and existing deployments of Azure Local run the new OS version **26100.32230**. You can download the 2601 OS image from the Azure portal.
+    - In 2601 release, all the new and existing deployments of Azure Local run the new OS version **26100.32230** (download from the Azure portal).
 
         - You also need a driver that's compatible with OS version **26100.32230** or Windows Server 2025. If a compatible driver isn't available, you can use the 2503 image.
 
-    - If you purchased Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) through your preferred Microsoft hardware partner, the OS is preinstalled. Work with your Original Equipment Manufacturer (OEM) to get the OS image that's compatible with **12.2601.1002.35** and a driver that's compatible with OS version **26100.32230** or Windows Server 2025.
+        - For Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog), the OS is preinstalled. Work with your Original Equipment Manufacturer (OEM) to get the OS image that's compatible with **12.2601.1002.37** and a driver that's compatible with OS version **26100.32230** or Windows Server 2025.
     
 - **.NET updates**: This build uses .NET version **8.0.22** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
 
@@ -37,6 +37,8 @@ This release includes various reliability improvements and other bug fixes.
 - **VM Connect for Azure Local VMs (Preview)**: Starting with 2601 release, you can connect to Windows and Linux Azure Local VMs that do not have network connectivity or have boot failures. For more information, see [VM Connect for Azure Local VMs](./manage/vm-connect-azure-local-vms.md).
 
 - **Unique ID for data disks**: In 2601 release, you can identify data disks on your Azure Local instance with a new property called Unique ID. The unique ID matches the `UniqueId` of the data disk (`Get-Disk | Select-Object UniqueId`).
+
+- **Rack Aware Clustering GA**: Rack Aware Clustering is now generally available. This feature allows you to define local availability zones based on physical racks in your datacenter, enhancing the resilience of your cluster against rack-level failures. For more information, see [Rack aware clustering](concepts/rack-aware-cluster-overview.md).
 
 
 ::: moniker-end
