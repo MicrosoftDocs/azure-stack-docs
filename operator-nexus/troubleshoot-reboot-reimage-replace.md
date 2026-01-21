@@ -220,6 +220,14 @@ az networkcloud baremetalmachine cordon \
   --subscription <subscriptionID>
 ```
 
+To check if any virtual machines or NAKS nodes are currently running on the node:
+
+```azurecli
+az networkcloud baremetalmachine show -n <nodeName> \
+--resource-group <resourceGroup> \
+--subscription <subscriptionID> | jq '.virtualMachinesAssociatedIds'
+```
+
 ### Hardware component replacement guide
 
 When you're performing a physical hot swappable power supply repair, a replace action isn't required because the BMM host will continue to function normally after the repair.
@@ -296,7 +304,7 @@ Restarting, reimaging, and replacing are effective troubleshooting methods for a
 
 - **Always follow the escalation path**: Start with restart, then reimage, then replace unless the issue clearly indicates otherwise.
 - **Verify workloads before action**: Use the provided commands to identify running workloads before any disruptive action.
-- **Cordon with evacuation**: When performing reimage or replace actions, always use `cordon` with `evacuate="True"` to safely move workloads.
+- **Cordon with evacuation**: When performing reimage or replace actions, always use `cordon` with `evacuate="True"`.
 - **Never run multiple operations simultaneously**: Ensure one operation completes before starting another to prevent server issues.
 - **Verify resolution**: After performing any action, verify the BMM status and that the original issue is resolved.
 
