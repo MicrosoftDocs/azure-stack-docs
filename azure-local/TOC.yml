@@ -746,6 +746,8 @@ items:
     items:
     - name: Complete deployment prerequisites
       href: ./multi-rack/multi-rack-prerequisites.md
+    - name: Create and manage L3 isolation domains
+      href: ./multi-rack/multi-rack-configure-isolation-domains.md
     - name: Install Azure CLI extensions
       href: ./multi-rack/multi-rack-cli-extensions.md
     - name: Complete networking prerequisites
