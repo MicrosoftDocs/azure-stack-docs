@@ -1,5 +1,5 @@
 ---
-title: Create Azure Local virtual machines enabled by Azure Arc 
+title: Create Azure Local Virtual Machines Enabled by Azure Arc 
 description: Learn how to view your Azure Local instance in the Azure portal and create Azure Local VMs enabled by Azure Arc.
 author: alkohli
 ms.author: alkohli
@@ -17,7 +17,7 @@ ms.subservice: hyperconverged
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
-This article describes how to create Azure Local virtual machines (VMs) enabled by Azure Arc, starting with the VM images that you created on your Azure Local instance. You can create Azure Local VMs using the Azure CLI, Azure portal, or Azure Resource Manager template.
+This article describes how to create Azure Local virtual machines (VMs) enabled by Azure Arc, starting with the VM images that you created on your Azure Local instance. You can create Azure Local VMs by by using the Azure CLI, the Azure portal, or an Azure Resource Manager template (ARM template).
 
 ## About Azure Local resource
 
@@ -37,9 +37,9 @@ Before you create an Azure Local VM, make sure that the following prerequisites 
 
 [!INCLUDE [hci-vm-prerequisites](../includes/hci-vm-prerequisites.md)]
 
-- If using a client to connect to your Azure Local, see [Connect to Azure Local via Azure CLI client](./azure-arc-vm-management-prerequisites.md#azure-command-line-interface-cli-requirements).
+- If you use a client to connect to your Azure Local instance, see [Connect to Azure Local via the Azure CLI client](./azure-arc-vm-management-prerequisites.md#azure-command-line-interface-cli-requirements).
 
-- Access to a network interface that you created on a logical network associated with your Azure Local. You can choose a network interface with static IP or one with a dynamic IP allocation. For more information, see how to [Create network interfaces](./create-network-interfaces.md).
+- Access to a network interface that you created on a logical network associated with your Azure Local instance. You can choose a network interface with static IP or one with a dynamic IP allocation. For more information, see how to [Create network interfaces](./create-network-interfaces.md).
 
 # [Azure portal](#tab/azureportal)
 
@@ -49,21 +49,21 @@ Before you create an Azure Local VM, make sure that the following prerequisites 
 
 [!INCLUDE [hci-vm-prerequisites](../includes/hci-vm-prerequisites.md)]
 
-- Access to a logical network that you associate with the VM on your Azure Local. For more information, see how to [Create logical network](./create-logical-networks.md).
-- [Download the sample Azure Resource Manager template](https://aka.ms/hci-vmarmtemp) in the GitHub Azure QuickStarts repo. You use this template to create a VM.
+- Access to a logical network that you associate with the VM on your Azure Local instance. For more information, see how to [Create logical network](./create-logical-networks.md).
+- [Download the sample ARM template](https://aka.ms/hci-vmarmtemp) in the GitHub Azure QuickStarts repo. You use this template to create a VM.
 
 # [Bicep template](#tab/biceptemplate)
 
 [!INCLUDE [hci-vm-prerequisites](../includes/hci-vm-prerequisites.md)]
 
-- Access to a logical network that you associate with the VM on your Azure Local. For more information, see how to [Create logical network](./create-logical-networks.md).
+- Access to a logical network that you associate with the VM on your Azure Local instance. For more information, see how to [Create logical network](./create-logical-networks.md).
 - [Download the sample Bicep template](https://aka.ms/hci-vmbiceptemplate)
 
 # [Terraform template](#tab/terraformtemplate)
 
 [!INCLUDE[hci-vm-prerequisites](../includes/hci-vm-prerequisites.md)]
 
-- Access to a logical network that you associate with the VM of your Azure Local. For more information, see [Create logical networks](../manage/create-logical-networks.md).
+- Access to a logical network that you associate with the VM of your Azure Local instance. For more information, see [Create logical networks](../manage/create-logical-networks.md).
 - Make sure Terraform is installed and up to date on your machine.
     - To verify your Terraform version, run the `terraform -v` command.
     
@@ -83,7 +83,7 @@ Before you create an Azure Local VM, make sure that the following prerequisites 
 
 ## Create Azure Local VMs
 
-Follow these steps to create a VM on your Azure Local.
+Follow these steps to create a VM on your Azure Local instance.
 
 > [!NOTE]
 > - Two DVD drives are created and used in Azure Local VMs during VM provisioning. The ISO files used during provisioning are removed after successfully creating the VM. However, you might see the empty drives visible for the VM. 
@@ -91,7 +91,7 @@ Follow these steps to create a VM on your Azure Local.
 
 # [Azure CLI](#tab/azurecli)
 
-Follow these steps on the client running az CLI that is connected to your Azure Local.
+Follow these steps on the client running az CLI that is connected to your Azure Local instance.
 
 ## Sign in and set subscription
 
@@ -128,20 +128,20 @@ Here we create a VM that uses specific memory and processor counts on a specifie
 
     | Parameters | Description |
     |------------|-------------|
-    | **name**  |Name for the VM that you create for your Azure Local. Make sure to provide a name that follows the [Rules for Azure resources.](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming#example-names-networking)|
-    | **admin-username** |Username for the user on the VM you're deploying on your Azure Local. |
-    | **admin-password** |Password for the user on the VM you're deploying on your Azure Local. |
-    | **image-name** |Name of the VM image used to provision the VM. |
-    | **location** |Azure regions as specified by `az locations`. For example, this could be `eastus`, `westeurope`. |
-    | **resource-group** |Name of the resource group where you create the VM. For ease of management, we recommend that you use the same resource group as your Azure Local. |
-    | **subscription** |Name or ID of the subscription where your Azure Local is deployed. This could be another subscription you use for VM on your Azure Local. |
-    | **custom-location** |Use this to provide the custom location associated with your Azure Local where you're creating this VM. |
-    | **authentication-type** |Type of authentication to use with the VM. The accepted values are `all`, `password`, and `ssh`. Default is password for Windows and SSH public key for Linux. Use `all` to enable both `ssh` and `password` authentication.     |
-    | **nics** |Names or the IDs of the network interfaces associated with your VM. You must have atleast one network interface when you create a VM, to enable guest management.|
-    | **memory-mb** |Memory in Megabytes allocated to your VM. If not specified, defaults are used.|
-    | **processors** |The number of processors allocated to your VM. If not specified, defaults are used.|
-    | **storage-path-id** |The associated storage path where the VM configuration and the data are saved.  |
-    | **proxy-configuration** |Use this optional parameter to configure a proxy server for your VM. For more information, see [Create a VM with proxy configured](#create-a-vm-with-proxy-configured).  |
+    | `name`  |Name for the VM that you create for your Azure Local instance. Make sure to provide a name that follows the [Rules for Azure resources.](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming#example-names-networking)|
+    | `admin-username` |Username for the user on the VM you're deploying on your Azure Local instance. |
+    | `admin-password` |Password for the user on the VM you're deploying on your Azure Local instance. |
+    | `image-name` |Name of the VM image used to provision the VM. |
+    | `location` |Azure regions as specified by `az locations`. For example, this could be `eastus`, `westeurope`. |
+    | `resource-group` |Name of the resource group where you create the VM. For ease of management, we recommend that you use the same resource group as your Azure Local instance. |
+    | `subscription` |Name or ID of the subscription where your Azure Local instance is deployed. This could be another subscription you use for VM on your Azure Local instance. |
+    | `custom-location` |Use this to provide the custom location associated with your Azure Local instance where you're creating this VM. |
+    | `authentication-type` |Type of authentication to use with the VM. The accepted values are `all`, `password`, and `ssh`. Default is password for Windows and SSH public key for Linux. Use `all` to enable both `ssh` and `password` authentication.     |
+    | `nics` |Names or the IDs of the network interfaces associated with your VM. You must have atleast one network interface when you create a VM, to enable guest management.|
+    | `memory-mb` |Memory in Megabytes allocated to your VM. If not specified, defaults are used.|
+    | `processors` |The number of processors allocated to your VM. If not specified, defaults are used.|
+    | `storage-path-id` |The associated storage path where the VM configuration and the data are saved.  |
+    | `proxy-configuration` |Use this optional parameter to configure a proxy server for your VM. For more information, see [Create a VM with proxy configured](#create-a-vm-with-proxy-configured).  |
 
 1. Run the following commands to create the applicable VM.
 
@@ -193,13 +193,13 @@ The VM is successfully created when the `provisioningState` shows as `succeeded`
 > [!NOTE]
 > The VM created has guest management enabled by default. If for any reason guest management fails during VM creation, you can follow the steps in [Enable guest management on Azure Local VM](./manage-arc-virtual-machines.md#enable-guest-management) to enable it after the VM creation.
 
-In this example, the storage path was specified using the `--storage-path-id` flag and that ensured that the workload data (including the VM, VM image, non-OS data disk) is placed in the specified storage path.
+In this example, the storage path was specified by using the `--storage-path-id` flag and that ensured that the workload data (including the VM, VM image, non-OS data disk) is placed in the specified storage path.
 
 If the flag isn't specified, the workload (VM, VM image, non-OS data disk) is automatically placed in a high availability storage path.
 
 ### Additional parameters for Windows Server 2012 and Windows Server 2012 R2 images
 
-When creating a VM using Windows Server 2012 and Windows Server 2012 R2 images, specify the following additional parameters to create the VM:
+When creating a VM by using Windows Server 2012 and Windows Server 2012 R2 images, specify the following additional parameters to create the VM:
 
 - `--enable-agent`: Set this parameter to `true` to onboard the Azure Connected Machine agent on VMs.
 - `--enable-vm-config-agent`: Set this parameter to `false` to prevent the onboarding of the VM agent on the VM from the host via Hyper-V sockets channel. Windows Server 2012 and Windows Server 2012 R2 don't support Hyper-V sockets. In the newer image versions that support Hyper-V sockets, the VM agent is used to onboard the Azure Connected Machine agent on VMs. For more information on Hyper-V sockets, see [Make your own integration services](/virtualization/hyper-v-on-windows/user-guide/make-integration-service).
@@ -218,7 +218,7 @@ To create a Linux VM, use the same command that you used to create the Windows V
 
 ## Create a VM with proxy configured
 
-Use this optional parameter **proxy-configuration** to configure a proxy server for your VM.
+Use this optional parameter `proxy-configuration` to configure a proxy server for your VM.
 
 Proxy configuration for VMs is applied only to the onboarding of the Azure connected machine agent and set as environment variables within the guest VM operating system. Browsers and applications on the VM referencing `WinInet` and `netsh` aren't necessarily all enabled with this proxy configuration. `WinInet` and `netsh` should be configured with the proxy settings separately.
 
@@ -234,10 +234,10 @@ You can input the following parameters for `proxy-server-configuration`:
 
 | Parameters | Description |
 |------------|-------------|
-| **http_proxy**  |HTTP URLs for proxy server. An example URL is:`http://proxy.example.com:3128`.  |
-| **https_proxy**  |HTTPS URLs for proxy server. The server may still use an HTTP address as shown in this example: `http://proxy.example.com:3128`. |
-| **no_proxy**  |URLs, which can bypass proxy. Typical examples would be `localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,100.0.0.0/8`.|
-| **cert_file_path**  |Select the certificate file used to establish trust with your proxy server. An example is: `C:\Users\Palomino\proxycert.crt`. |
+| `http_proxy`  |HTTP URLs for proxy server. An example URL is:`http://proxy.example.com:3128`.  |
+| `https_proxy`  |HTTPS URLs for proxy server. The server may still use an HTTP address as shown in this example: `http://proxy.example.com:3128`. |
+| `no_proxy`  |URLs, which can bypass proxy. Typical examples would be `localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,100.0.0.0/8`.|
+| `cert_file_path`  |Select the certificate file used to establish trust with your proxy server. An example is: `C:\Users\Palomino\proxycert.crt`. |
 <!--| **proxyServerUsername**  |Username for proxy authentication. The username and password are combined in this URL format: `http://username:password@proxyserver.contoso.com:3128`. An example is: `GusPinto`|
 | **proxyServerPassword**  |Password for proxy authentication. The username and password are combined in a URL format similar to the following: `http://username:password@proxyserver.contoso.com:3128`. An example is: `UseAStrongerPassword!` |-->
 
@@ -274,10 +274,10 @@ You can input the following parameters for `proxy-server-configuration` with `Ar
 
 | Parameters | Description |
 |------------|-------------|
-| **gateway-id** | Resource Id of your Arc gateway. A Gateway resource Id example is: `/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.HybridCompute/gateways/$gwid` |
-| **http_proxy**  |HTTP URLs for proxy server. An example URL is:`http://proxy.example.com:3128`.  |
-| **https_proxy**  |HTTPS URLs for proxy server. The server may still use an HTTP address as shown in this example: `http://proxy.example.com:3128`. |
-| **no_proxy**  |URLs, which can bypass proxy. Typical examples would be `localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,100.0.0.0/8`.|
+| `gateway-id` | Resource Id of your Arc gateway. A Gateway resource Id example is: `/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.HybridCompute/gateways/$gwid` |
+| `http_proxy`  |HTTP URLs for proxy server. An example URL is:`http://proxy.example.com:3128`.  |
+| `https_proxy`  |HTTPS URLs for proxy server. The server may still use an HTTP address as shown in this example: `http://proxy.example.com:3128`. |
+| `no_proxy`  |URLs, which can bypass proxy. Typical examples would be `localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,100.0.0.0/8`.|
 
 Here's a sample command:
 
@@ -295,7 +295,7 @@ You can input the following parameters for `Arc gateway`:
 
 | Parameters | Description |
 |------------|-------------|
-| **gateway-id** | Resource Id of your Arc gateway. A Gateway resource Id example is: `/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.HybridCompute/gateways/$gwid` |
+| `gateway-id` | Resource Id of your Arc gateway. A Gateway resource Id example is: `/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.HybridCompute/gateways/$gwid` |
 
 Here's a sample command:
 
@@ -305,7 +305,7 @@ az stack-hci-vm create --name $vmName --resource-group $resource_group --admin-u
 
 # [Azure portal](#tab/azureportal)
 
-Follow these steps in Azure portal for your Azure Local.
+Follow these steps in Azure portal for your Azure Local instance.
 
 > [!IMPORTANT]
 > Setting the proxy server during VM creation is supported for Ubuntu Server VMs.
@@ -332,13 +332,13 @@ Follow these steps in Azure portal for your Azure Local.
         > [!IMPORTANT]
         > VM names should be in lowercase letters and can include hyphens and numbers.
 
-    1. **custom-location** – Select the custom location for your VM. The custom locations are filtered to only show those locations that are enabled for your Azure Local.
+    1. **custom-location** – Select the custom location for your VM. The custom locations are filtered to only show those locations that are enabled for your Azure Local instance.
     
         **The Virtual machine kind** is automatically set to **Azure Local**.
 
     1. **Security type** - For the security of your VM, select **Standard** or **Trusted launch virtual machines**. For more information about Trusted launch Azure Local VMs, see [What is Trusted launch for Azure Local Virtual Machines?](./trusted-launch-vm-overview.md).
 
-   1. **Storage path** - Select the storage path for your VM image. Select **Choose automatically** to have a storage path with high availability automatically selected. Select **Choose manually** to specify a storage path to store VM images and configuration files on your Azure Local. In this case, ensure that the selected storage path has sufficient storage space.
+   1. **Storage path** - Select the storage path for your VM image. Select **Choose automatically** to have a storage path with high availability automatically selected. Select **Choose manually** to specify a storage path to store VM images and configuration files on your Azure Local instance. In this case, ensure that the selected storage path has sufficient storage space.
 
    1. **Image** – Select the Marketplace or customer managed image to create the VM image.
     
@@ -348,7 +348,7 @@ Follow these steps in Azure portal for your Azure Local.
 
         1. If you selected a Linux image, in addition to providing username and password, you'll also need SSH keys.
 
-           <!--:::image type="content" source="./media/create-arc-virtual-machines/create-arc-vm-linux-vm-image.png" alt-text="Screenshot showing how to Create a VM using a Linux VM image." lightbox="./media/create-arc-virtual-machines/create-arc-vm-linux-vm-image.png":::-->
+           <!--:::image type="content" source="./media/create-arc-virtual-machines/create-arc-vm-linux-vm-image.png" alt-text="Screenshot showing how to Create a VM by using a Linux VM image." lightbox="./media/create-arc-virtual-machines/create-arc-vm-linux-vm-image.png":::-->
 
     1. **Virtual processor count** – Specify the number of vCPUs you would like to use to create the VM.
 
@@ -451,7 +451,7 @@ Follow these steps in Azure portal for your Azure Local.
 
 # [Azure Resource Manager template](#tab/armtemplate)
 
-Follow these steps to deploy the Resource Manager template:
+Follow these steps to deploy the ARM template:
 
 1. In the Azure portal, from the top search bar, search for *deploy a custom template*. Select **Deploy a custom template** from the available options.
 
@@ -461,7 +461,7 @@ Follow these steps to deploy the Resource Manager template:
 
 1. You see a blank template.
 
-   :::image type="content" source="./media/create-arc-virtual-machines/blank-template.png" alt-text="Screenshot of blank Resource Manager template in Azure portal." lightbox="./media/create-arc-virtual-machines/blank-template.png":::
+   :::image type="content" source="./media/create-arc-virtual-machines/blank-template.png" alt-text="Screenshot of blank ARM template in the Azure portal." lightbox="./media/create-arc-virtual-machines/blank-template.png":::
 
 1. Replace the blank template with the template that you downloaded during the prerequisites step.
 
@@ -747,15 +747,15 @@ Follow these steps to deploy the Resource Manager template:
 
    :::image type="content" source="./media/create-arc-virtual-machines/filled-review-create.png" alt-text="Screenshot of Review + Create tab for template in Azure portal." lightbox="./media/create-arc-virtual-machines/filled-review-create.png":::
 
-1. When the deployment completes, you see the status of the deployment as complete. After the deployment has successfully completed, a VM is created on your Azure Local.
+1. When the deployment completes, you see the status of the deployment as complete. After the deployment has successfully completed, a VM is created on your Azure Local instance.
     
    <!--:::image type="content" source="./create-arc-virtual-machines/view-resource-group.png" alt-text="Screenshot of resource group with storage account and virtual network in Azure portal." lightbox="./media/create-arc-virtual-machines/review-virtual-machine.png":::-->
 
 # [Bicep template](#tab/biceptemplate)
 
 1. Download the sample Bicep template below from the [Azure QuickStarts Repo](https://aka.ms/hci-vmbiceptemplate).
-1. Specify parameter values to match your environment. The Custom Location name, Logical Network name parameter values should reference resources you have already created for your Azure Local.
-1. Deploy the Bicep template using [Azure CLI](/azure/azure-resource-manager/bicep/deploy-cli) or [Azure PowerShell](/azure/azure-resource-manager/bicep/deploy-powershell)
+1. Specify parameter values to match your environment. The Custom Location name, Logical Network name parameter values should reference resources you have already created for your Azure Local instance.
+1. Deploy the Bicep template by using the [Azure CLI](/azure/azure-resource-manager/bicep/deploy-cli) or [Azure PowerShell](/azure/azure-resource-manager/bicep/deploy-powershell)
 
    :::code language="bicep" source="~/../quickstart-templates/quickstarts/microsoft.azurestackhci/vm-windows-disks-and-adjoin/main.bicep":::
 
@@ -780,7 +780,7 @@ You can use the Azure Verified Module (AVM) that contains the Terraform template
 
 ## Use managed identity to authenticate Azure Local VMs
 
-When the VMs are created on your Azure Local via Azure CLI or Azure portal, a system-assigned managed identity is also created that lasts for the lifetime of the VMs.
+When the VMs are created on your Azure Local instance via the Azure CLI or the Azure portal, a system-assigned managed identity is also created that lasts for the lifetime of the VMs.
 
 The VMs on Azure Local are extended from Arc-enabled servers and can use system-assigned managed identity to access other Azure resources that support Microsoft Entra ID-based authentication. For example, the VMs can use a system-assigned managed identity to access the Azure Key Vault.
 
