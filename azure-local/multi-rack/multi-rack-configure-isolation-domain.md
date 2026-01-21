@@ -14,7 +14,7 @@ ms.date: 01/21/2026
 
 This article describes how to create, modify, or delete Layer 3 (L3) isolation domains for multi-rack deployments of Azure Local.
 
-Isolation domains enable network connectivity between workloads hosted in the same rack (intra-rack communication) or different racks (inter-rack communication) as well as with endpoints external to Azure Local. You can create, update, delete, and check the status of your L3 isolation domains by using the Azure Command-Line Interface (CLI).
+Isolation domains enable network connectivity between workloads hosted in the same rack (intra-rack communication) or different racks (inter-rack communication) and with endpoints external to Azure Local. You can create, update, delete, and check the status of your L3 isolation domains by using the Azure Command-Line Interface (CLI).
 
 [!INCLUDE [hci-preview](../includes/hci-preview.md)]
 
@@ -29,11 +29,12 @@ The workflow for a successful provisioning of an L3 isolation domain is as follo
 
 - Create an L3 isolation domain
 - Create one or more internal network
+- Create an external network (optional) <!-- check with Vatsal -->
 - Enable an L3 isolation domain
 
 ## Prerequisites
 
-- Create the Network Fabric Controller (NFC) and the network fabric.
+- Make sure that the Network Fabric Controller (NFC) and the Network Fabric are created. For more information, see [Create a network fabric controller for multi-rack deployments of Azure Local](/azure/operator-nexus/howto-configure-network-fabric-controller.md).
 
 - Install the latest version of the required [Azure CLI extensions](/azure/operator-nexus/howto-install-cli-extensions).
 
@@ -43,7 +44,7 @@ The workflow for a successful provisioning of an L3 isolation domain is as follo
 
   ```azurecli
   az login 
-  az account set --subscription "<subscription>"
+  az account set --subscription "<Subscription ID>"
   ```
 
 - Register resource providers for a managed network fabric:
@@ -73,7 +74,7 @@ Use the following *required* parameters to provision and configure your L3 isola
 | `subscription` | Azure subscription ID for your instance. | `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` |
 | `location` | Azure region used during NFC creation. | `eastus` |
 | `nf-Id` | Network fabric ID. | "/subscriptions/xxxxxx-xxxxxx-xxxx-xxxx-xxxxxx/resourceGroups/NFresourcegroupname/providers/Microsoft.ManagedNetworkFabric/NetworkFabrics/NFname" |
-| `vlan-Id` | VLAN identifier value. The range is between 501-3000. VLANs 1-500 are reserved for platform use and can't be used. The VLAN identifier value can't be changed once specified. To modify the VLAN identifier value, you must delete and recreate the isolation domain.  | 501 |
+| `vlan-Id` | VLAN identifier value. The range is between 501-3000. <br> VLANs 1-500 are reserved for platform use and can't be used. The VLAN identifier value can't be changed once specified. <br> To modify the VLAN identifier value, you must delete and recreate the isolation domain.  | 501 |
 
 The following parameters for isolation domains are *optional*:
 
@@ -107,6 +108,7 @@ The following parameters for isolation domains are *optional*:
 
     <details>
     <summary>Expand this section to see an example output.</summary>
+
     ```json
     {
       "administrativeState": "Disabled", 
@@ -131,6 +133,7 @@ The following parameters for isolation domains are *optional*:
       "type": "microsoft.managednetworkfabric/l3isolationdomains" 
     }
     ```
+
     </details>
 
 ## Show L3 isolation domain details
