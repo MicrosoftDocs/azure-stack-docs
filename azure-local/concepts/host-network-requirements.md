@@ -3,7 +3,7 @@ title: Host network requirements for Azure Local
 description: Learn the host network requirements for Azure Local
 author: alkohli
 ms.topic: how-to
-ms.date: 12/29/2025
+ms.date: 01/15/2026
 ms.author: alkohli
 ms.subservice: hyperconverged
 ---
@@ -50,6 +50,8 @@ Inbox drivers are not supported for use with Azure Local. To identify if your ad
 ```Powershell
 Get-NetAdapter -Name <AdapterName> | Select *Driver*
 ```
+
+If inbox driver is being used, download and install the latest driver from your OEM partner's website.
 
 ## Overview of key network adapter capabilities
 
