@@ -34,7 +34,7 @@ The workflow for a successful provisioning of an L3 isolation domain is as follo
 
 ## Prerequisites
 
-- Create the Network Fabric Controller (NFC) and the Network Fabric. For more information, see [Create a network fabric controller for multi-rack deployments of Azure Local](/azure/operator-nexus/howto-configure-network-fabric-controller.md).
+- Create the Network Fabric Controller (NFC) and the Network Fabric. For more information, see [Create a network fabric controller for multi-rack deployments of Azure Local](/azure/operator-nexus/howto-configure-network-fabric-controller).
 
 - Install the latest version of the required [Azure CLI extensions](/azure/operator-nexus/howto-install-cli-extensions).
 
