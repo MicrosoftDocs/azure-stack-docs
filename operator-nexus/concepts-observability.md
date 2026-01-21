@@ -34,7 +34,7 @@ This article helps you understand Operator Nexus observability framework that co
 
 ## Platform Monitoring
 
-Operator Nexus gives you visibility into the performance of your deployments that consist of [infrastructure resources](./concepts-resource-types.md#Network-Fabric-infrastructure). You need the logs and metrics to be collected and analyzed from these platform resources. You gain valuable insights from the centralized collection and aggregation of data from all sources, compared with from dis-aggregated data.
+Operator Nexus gives you visibility into the performance of your deployments that consist of [infrastructure resources](./concepts-resource-types.md#network-fabric-infrastructure). You need the logs and metrics to be collected and analyzed from these platform resources. You gain valuable insights from the centralized collection and aggregation of data from all sources, compared with from dis-aggregated data.
 
 These logs and metrics are used to observe the state of the platform. You can see the performance and analyze what's wrong. You can analyze what caused the situation. Visualization helps you configure the required alerts and under what conditions. For example, you can configure the alerts to be generated when resources are behaving abnormally, or when thresholds have been reached. You can use the collected logs and analytics to debug any problems in the environment.
 
