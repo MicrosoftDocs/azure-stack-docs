@@ -44,7 +44,7 @@ This release includes various reliability improvements and other bug fixes.
 
     For more information, see [Rack aware clustering](concepts/rack-aware-cluster-overview.md).
 
-- **Diagnostics log collection in Azure portal**: You can now collect diagnostics logs for Azure Local deployments directly from the Azure portal. This feature simplifies the process of monitoring and troubleshooting your Azure Local environment.
+- **Diagnostics log collection in Azure portal**: You can now collect diagnostics logs directly from the Azure portal to help with support investigations. This eliminates the need to manually gather logs from individual nodes.
 
 - **Drift detection for Azure PowerShell modules and Azure Command-line Interface (CLI)**: Drift detection is now available for Azure PowerShell modules and CLI for Azure Local, helping you identify configuration changes that deviate from the desired state.
 
