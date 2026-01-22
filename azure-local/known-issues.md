@@ -68,6 +68,7 @@ The following table lists the fixed issues in this release:
 | Update <!--35794341--> | Fixed issue where SBE files may be blocked after performing robocopy to each machine.  | |
 | Update <!--35855583--> | Fixed issue with solution update failing due to incorrectly detecting presence of SBE. | |
 | Upgrade <!--35640185--> | Improved logic to find storage cluster group.  | |
+| Update <!--36146024--> | Secret rotation changes WinRM certificate thumbprint for users who are not using a Microsoft issued certificate. | |
 
 ## Known issues
 
