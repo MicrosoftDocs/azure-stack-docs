@@ -54,6 +54,8 @@ This release includes various reliability improvements and other bug fixes.
 
 - **Enable 26100.XXXX (24H2) security baseline for existing Azure Local deployments**: Starting with 2601 release, customers who perform the solution upgrade on an existing deployment can now match the security posture of newly deployed systems (post-upgrade actions) with new cmdlets to apply 26100.XXXX security baseline.
 
+- **Pre-upgrade CredSSP validation**: To ensure successful upgrades, a new pre-upgrade check is added that validates that CredSSP isn't disabled on existing Azure Local instances.
+
 ::: moniker-end
 
 ::: moniker range="=azloc-2512"
