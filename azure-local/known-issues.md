@@ -32,7 +32,7 @@ For the 2601 release of Azure Local, Microsoft released the following update:
 
 > [!IMPORTANT]
 > The new deployments of this software use the **12.2601.1002.38** build.
-Release notes for this version include the issues fixed in this release, known issues in this release, and release note issues carried over from previous versions.
+Release notes for this version include the issues fixed in this release, known issues in this release, and known issues carried over from previous versions.
 
 > [!NOTE]
 > For detailed remediation for common known issues, see the [Azure Local Supportability](https://github.com/Azure/AzureStackHCI-Supportability) GitHub repository.
@@ -43,11 +43,11 @@ The following table lists the fixed issues in this release:
 
 |Feature  |Issue    |Comments |
 |---------|---------|---------|
-| Deployment <!--36041656--> | Deployment using Local Identity doesn't support manual secret rotation. | |
 | Update <!--35747709--> | Update may fail when the cloud management group is running on a different node than the owner node with the error: `Type 'RegisterCloudManagementUpdatesExtension' of Role 'CloudManagementConfig' raised an exception: Exception occurred in Get-ClusterExtension'` | |
 | Update <!--36146024--> | Secret rotation changes WinRM certificate thumbprint for users who aren't using a Microsoft issued certificate. | |
 | Azure Local VMs <!--35605807--> | When creating or deleting large numbers of network interfaces, the infrastructure can face out of memory issues causing failures. | Improved validation logic to handle large numbers of operations on network interfaces. |
 | Azure Local VMs <!--35725410--> | Added operation to set the cluster functional level for upgrade to 24H2.  | |
+| Deployment <!--36041656--> | Deployment using Local Identity doesn't support manual secret rotation. | |
 | Deployment <!--31849849--> | Enable SMB protocol for all cluster nodes during deployment. | |
 | Deployment <!--32847995--> | Added step to make sure auto-mount is enabled. | |
 | Deployment <!--34546307--> | Added check for null values before resuming failed deployment. | |
@@ -77,7 +77,7 @@ The following table lists the known issues in this release:
 |Feature  |Issue    |Workaround  |
 |---------|---------|------------|
 | Upgrade <!--36440701--> | When upgrading from 2510 to 2511, 2512, or 2601, AKS Arc cluster creation fails. | There's no known workaround in this release. |
-| Update <!--36458541--> | [Solution Builder Extension](update/solution-builder-extension.md) (SBE) download fails with the error: <br> `CloudEngine.Actions.InterfaceInvocationFailedException: Type 'SBEPartnerDownloadConnectorCheckHealth' of Role 'SBE' raised an exception:`<br><br>`[SBEPartnerDownloadConnectorCheckHealth]  SBE download connector failure getting version '0.0.0000.0000' files. The download connector health check failed. Exception Message : The term 'Assert-SBEResponseSchema' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.` | You can use any of the following workaround options: <br><ul><li>[Install SBE](update/solution-builder-extension.md) or any pending SBE updates before updating to 2601.</li><li> Wait to install SBE. If impacted, defer installing SBE until the next release, or when issue is fixed. </li><li> Use `Add-SolutionUpdate -SkipSbeVersionValidation -SourceFolder <CSV path to downloaded SBE files>` to manually import the SBE and avoid the download failure.  For more information, see [Update Azure Local, version 23H2 systems via PowerShell](update/update-via-powershell-23h2.md#step-3-import-and-rediscover-updates). Note that `-SkipSbeVersionValidation` will be required since the SBE does not have the 'AdditionalContentRequired' State. </li></ul> |
+| Update <!--36458541--> | [Solution Builder Extension](update/solution-builder-extension.md) (SBE) download fails with the error: <br> `CloudEngine.Actions.InterfaceInvocationFailedException: Type 'SBEPartnerDownloadConnectorCheckHealth' of Role 'SBE' raised an exception:`<br><br>`[SBEPartnerDownloadConnectorCheckHealth]  SBE download connector failure getting version '0.0.0000.0000' files. The download connector health check failed. Exception Message : The term 'Assert-SBEResponseSchema' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.` | You can use any of the following workaround options: <br><ul><li>[Install SBE](update/solution-builder-extension.md) or any pending SBE updates before updating to 2601.</li><li> Wait to install SBE. If impacted, defer installing SBE until the next release, or when issue is fixed. </li><li> Use `Add-SolutionUpdate -SkipSbeVersionValidation -SourceFolder <CSV path to downloaded SBE files>` to manually import the SBE and avoid the download failure.  For more information, see [Update Azure Local, version 23H2 systems via PowerShell](update/update-via-powershell-23h2.md#step-3-import-and-rediscover-updates). Note that `-SkipSbeVersionValidation` will be required since the SBE doesn't have the 'AdditionalContentRequired' state. </li></ul> |
 | Update <!--36429778--> | Update fails due to CLI extension `connectedmachine` exception causing deployment disruption. | Remove the `connectedmachine` CLI extension to continue the update. |
 | Update <!--36360771--> | Fetching the secret rotation action plan status fails. | The secret rotation completes successfully, so the failure message can be ignored. |
 
