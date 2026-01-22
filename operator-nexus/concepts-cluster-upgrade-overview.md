@@ -5,13 +5,16 @@ author: matternst7258
 ms.author: matthewernst
 ms.service: azure-operator-nexus
 ms.topic: conceptual
-ms.date: 05/21/2025
+ms.date: 01/16/2026
 ms.custom: template-concept
 ---
 
-# Azure Operator Nexus runtime upgrades
+# Azure Operator Nexus Cluster Runtime Upgrades
 
-The Nexus platform runtime upgrade is disruptive upgrade, managed by customers, to update the underlying software on the servers in an Operator Nexus instance. The disruption occurs to the compute servers within a rack being upgraded. Management server upgrades are considered nondisruptive.
+The Nexus platform runtime upgrade is a disruptive upgrade, managed by customers, to update the underlying software on the servers in an Operator Nexus instance. The disruption occurs to the compute servers within a rack being upgraded. Management server upgrades are considered non-disruptive.
+
+> [!IMPORTANT]
+> This article describes **Cluster Runtime Upgrades**, which are disruptive and customer-managed. Azure Operator Nexus also includes separate, non-disruptive upgrades for Cluster Management and Fabric Management that are automatically applied by Microsoft. For more information, see [Related content](#related-content).
 
 > [!Note]
 > Microsoft may communicate patch releases customers need to take to resolve critical security or functional issues. 
@@ -84,3 +87,20 @@ When a server is upgraded to utilize a new OS, the BMM keysets have to be re-est
 ## Servers not upgraded successfully
 
 A server remains unavailable if they fail upgrade or provisioning from possible hardware issue during reboot or issue with cloud-init (networking, chronyd, etc.). The underlying condition needs to be resolved and either baremetalmachine replace/reimage would need to be executed. Uncordoning the server manually won't resolve the issues.
+
+## Related content
+
+Azure Operator Nexus includes multiple upgrade types that serve different purposes.
+
+### Cluster runtime upgrades (this article)
+- [Cluster runtime upgrade](howto-cluster-runtime-upgrade.md)
+- [Cluster runtime upgrade with pause strategy](howto-cluster-runtime-upgrade-with-pauseafterrack-strategy.md)
+- [Check runtime version](howto-check-runtime-version.md)
+
+### Other upgrade types
+- [Cluster management bundle upgrade overview](concepts-cluster-management-upgrade.md) - Non-disruptive updates to Cluster Azure resources and extensions
+- [Network Fabric management bundle upgrade overview](concepts-fabric-management-upgrade.md) - Non-disruptive updates to Fabric Azure resources and extensions
+- [Network Fabric upgrade](howto-upgrade-nexus-fabric.md) - Fabric device software upgrades
+
+### Workload upgrades
+- [Kubernetes cluster upgrade](howto-kubernetes-cluster-upgrade.md)
