@@ -6,7 +6,7 @@ ms.author: robess
 ms.topic: how-to
 ms.custom:
   - devx-track-azurecli
-ms.date: 01/20/2026
+ms.date: 01/22/2026
 ms.subservice: hyperconverged
 ---
 
@@ -14,16 +14,16 @@ ms.subservice: hyperconverged
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
-This article describes how to suspend an Azure Local machine for planned maintenance, such as powering off the machine to replace non-hot-pluggable components. It also provides instructions on how to resume the machine once maintenance is complete.
+This article describes how to suspend an Azure Local machine (physical host) for planned maintenance, such as powering off the machine to replace non-hot-pluggable components. It also provides instructions on how to resume the machine once maintenance is complete.
 
 ## Prerequisites
 
 Before you begin, ensure that you have the following prerequisites in place for both suspending and resuming an Azure Local machine:
 
-1. You have access to Azure Local machines with local administrator privileges.
+1. You have access to Azure Local machines (clustered physical hosts) with local administrator privileges.
 1. Make sure that the machines are running Azure Local version 2311.2 or later.
 1. Make sure that the client used to connect to Azure Local has PowerShell installed on it. You can use various tools for this step, such as Windows Admin Center, Failover Cluster Manager, or PowerShell. We recommend using PowerShell as some steps can only be performed using that tool.
-1. Make sure to suspend or resume the Azure Local machine in Windows Failover Clustering.
+1. Make sure to suspend or resume the Azure Local machine (cluster node) in Windows Failover Clustering.
 
 ## Suspend a machine
 
@@ -39,11 +39,11 @@ To suspend a machine, follow these steps:
     Here's an example output:
 
     ```console
-    PS C:\programdata\wssdagent> Suspend-ClusterNode -Name ASRRlS3lRl5ull -Drain
+    PS C:\programdata\wssdagent> Suspend-ClusterNode -Name ASRRLS3LRL5U11 -Drain
 
     Name               State      Type
     ----               -----      ----
-    ASRRls3lRl5ull     Paused     Node
+    ASRRLS3LRL5U11     Paused     Node
     ```
 
     > [!NOTE]
@@ -62,11 +62,11 @@ To suspend a machine, follow these steps:
 
     Name                State        Type
     ----                -----        ----
-    ASRRlS3lRl5u09      Up           Node
-    ASRRlS3lRl5Ull      Paused       Node
+    ASRRLS3LRL5U09      Up           Node
+    ASRRLS3LRL5U11      Paused       Node
     ```
 
-1. To ensure that no new VMs are placed on the node, remove the node from the active Azure Local VM Configuration. **This step can only be done using PowerShell**.
+1. To ensure that no new VMs are placed on the node, remove the node (cluster member) from the active Azure Local VM Configuration using the Azure Local–specific `Remove-MocPhysicalNode` cmdlet. **This step can only be done using PowerShell**.
 
     ```powershell
     Remove-MocPhysicalNode -NodeName "<MachineName>"
@@ -75,7 +75,7 @@ To suspend a machine, follow these steps:
     Here's an example output:
 
     ```console
-    PS C:\programdata\wssdagent> Remove-MocPhysicalNode -NodeName ASRRlS3lRl5Ull
+    PS C:\programdata\wssdagent> Remove-MocPhysicalNode -NodeName ASRRLS3LRL5U11
     ```
 
 ## Resume a machine
@@ -92,11 +92,11 @@ To resume a machine, follow these steps:
     Here's an example output:
 
     ```console
-    PS C:\programdata\wssdagent> Resume-ClusterNode -Name ASRRlS3lRl5ull
+    PS C:\programdata\wssdagent> Resume-ClusterNode -Name ASRRLS3LRL5U11
 
     Name               State      Type
     ----               -----      ----
-    ASRRls3lRl5ull     Up         Node
+    ASRRLS3LRL5U11     Up         Node
     ```
 
     > [!NOTE]
@@ -115,11 +115,11 @@ To resume a machine, follow these steps:
 
     Name                State        Type
     ----                -----        ----
-    ASRRlS3lRl5u09      Up           Node
-    ASRRlS3lRl5Ull      Up           Node
+    ASRRLS3LRL5U09      Up           Node
+    ASRRLS3LRL5U11      Up           Node
     ```
 
-1. Add the machine to the active Azure Local VM Configuration. **This step can only be done using PowerShell**.
+1. Add the machine (cluster node) to the active Azure Local VM Configuration using the Azure Local–specific `New-MocPhysicalNode` cmdlet. **This step can only be done using PowerShell**.
 
     ```powershell
     New-MocPhysicalNode -NodeName "<MachineName>"
@@ -128,7 +128,7 @@ To resume a machine, follow these steps:
     Here's an example output:
 
     ```console
-    PS C:\programdata\wssdagent> New-MocPhysicalNode -NodeName ASRRlS3lRl5ull
+    PS C:\programdata\wssdagent> New-MocPhysicalNode -NodeName ASRRLS3LRL5U11
     
     ElementName     : HV Socket Agent Communication
     PSPath          : Microsoft.PowerShell.Core\Registry::HKEY_LOCAL MACHINE\SOFTWARE\Microsoft\WindowsNT\CurrentVersion\Virtualization\GuestCommunicationServices\00000001-facb-lle6-b
@@ -156,7 +156,7 @@ To resume a machine, follow these steps:
 
     FriendlyName     Operationalstatus     HealthStatus     IsPrimordial     IsReadOnly     Size     AllocatedSize 
     ------------     -----------------     ------------     ------------     ----------     ----     -------------
-    SUl_Pool         OK                    Healthy          False            False     131.28 TB           1.8S TB
+    SU1_Pool         OK                    Healthy          False            False     131.28 TB           1.85 TB
     ```
 
     > [!NOTE]
