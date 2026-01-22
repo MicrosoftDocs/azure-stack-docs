@@ -76,7 +76,7 @@ The following table lists the known issues in this release:
 |Feature  |Issue    |Workaround  |
 |---------|---------|------------|
 | Upgrade <!--36440701--> | When upgrading from 2510 to 2511, 2512, or 2601, AKS Arc cluster creation fails. | There's no known workaround in this release. |
-| Update <!--36458541--> | Solution Builder Extension (SBE) update fails on 2601 in the download stage with the error: <br> `The term 'Assert-SBEResponseSchema' is not recognized as the name of a cmdlet, function, script file, or operable program.` | You can sideload the SBE (`Add-Solutionupdate`) to avoid the download. |
+| Update <!--36458541--> | Solution Builder Extension (SBE) update fails in the download stage with the error: <br> `The term 'Assert-SBEResponseSchema' is not recognized as the name of a cmdlet, function, script file, or operable program.` | You can sideload the SBE (`Add-Solutionupdate`) to avoid the download. |
 | Update <!--36429778--> | Update fails due to module installation exception causing deployment disruption. | There's no known workaround in this release. |
 | Update <!--36360771--> | Fetching the secret rotation action plan status fails. | There's no known workaround in this release. |
 
