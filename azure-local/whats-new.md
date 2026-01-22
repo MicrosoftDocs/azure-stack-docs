@@ -48,7 +48,7 @@ This release includes various reliability improvements and other bug fixes.
 
 - **Drift detection for Azure PowerShell modules and Azure Command-line Interface (CLI)**: Drift detection is now available for Azure PowerShell modules and CLI for Azure Local, helping you identify configuration changes that deviate from the desired state.
 
-- **Dynamic Root of Trust for Measurement (DRTM) settings for 2504 deployments**: Starting with 2601 release, DRTM is enabled on Azure Local instances deployed prior to 2504, and those instances transition from Static root of trust for measurement (SRTM) to DRTM to defend against the firmware level attacks. New deployments since 2504 have DRTM enabled by default.
+- **Dynamic Root of Trust for Measurement (DRTM) settings for 2504 deployments**: Starting with 2601 release, DRTM is enabled on Azure Local instances deployed prior to 2504, and those instances transition from Static Root of Trust for Measurement (SRTM) to DRTM to defend against the firmware level attacks. New deployments since 2504 have DRTM enabled by default.
 
     For more information, see [Defend against firmware level attacks](/windows-server/security/secured-core-server#defend-against-firmware-level-attacks).
 
