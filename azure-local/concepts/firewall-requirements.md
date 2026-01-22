@@ -4,7 +4,7 @@ description: This article provides guidance on firewall requirements for the Azu
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 11/19/2025
+ms.date: 01/22/2026
 ms.subservice: hyperconverged
 ---
 
@@ -182,16 +182,6 @@ Ensure that the following firewall rules are configured in your on-premises fire
 
 >[!NOTE]
 > Open up a range of ports above port 5000 to allow RPC dynamic port allocation. Ports below 5000 may already be in use by other applications and could cause conflicts with DCOM applications. Previous experience shows that a minimum of 100 ports should be opened, because several system services rely on these RPC ports to communicate with each other. For more information, see [How to configure RPC dynamic port allocation to work with firewalls](/troubleshoot/windows-server/networking/configure-rpc-dynamic-port-allocation-with-firewalls).
-
-### Storage Replica (stretched cluster)
-
-Ensure that the following firewall rules are configured in your on-premises firewall for Storage Replica (stretched instance).
-
-| Rule | Action | Source | Destination | Service | Ports |
-|:--|:--|:--|:--|:--|:--|
-| Allow Server Message Block<br> (SMB) protocol | Allow | Stretched instance nodes | Stretched instance nodes | TCP | 445 |
-| Allow Web Services-Management<br> (WS-MAN) | Allow | Stretched instance nodes | Stretched instance nodes | TCP | 5985 |
-| Allow ICMPv4 and ICMPv6<br> (if using the `Test-SRTopology`<br> PowerShell cmdlet) | Allow | Stretched instance nodes | Stretched instance nodes | n/a | n/a |
 
 ## Update Microsoft Defender firewall
 
