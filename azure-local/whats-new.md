@@ -34,17 +34,23 @@ This release includes various reliability improvements and other bug fixes.
 
     For more information, see [About infrastructure logical network for Azure Local VMs](./manage/manage-logical-networks.md#about-infrastructure-logical-network).
 
-- **VM Connect for Azure Local VMs (Preview)**: Starting with 2601 release, you can connect to Windows and Linux Azure Local VMs that don't have network connectivity or have boot failures. For more information, see [VM Connect for Azure Local VMs](./manage/connect-arc-vm-using-ssh.md).
+- **VM Connect for Azure Local VMs (Preview)**: Starting with 2601 release, you can connect to Windows and Linux Azure Local VMs that don't have network connectivity or have boot failures. 
+
+    For more information, see [VM Connect for Azure Local VMs](./manage/connect-arc-vm-using-ssh.md).
 
 - **Unique ID for data disks**: In 2601 release, you can identify data disks on your Azure Local instance with a new property called **Unique ID**. The unique ID matches the `UniqueId` of the data disk (`Get-Disk | Select-Object UniqueId`).
 
-- **Rack aware clustering General Availability**: Rack Aware Clustering is now generally available. This feature allows you to define local availability zones based on physical racks in your datacenter, enhancing the resilience of your cluster against rack-level failures. For more information, see [Rack aware clustering](concepts/rack-aware-cluster-overview.md).
+- **Rack aware clustering General Availability (GA)**: Rack aware clustering is now generally available. This feature allows you to define local availability zones based on physical racks in your datacenter, enhancing the resilience of your cluster against rack-level failures.
+
+    For more information, see [Rack aware clustering](concepts/rack-aware-cluster-overview.md).
 
 - **Diagnostics log collection in Azure portal**: You can now collect diagnostics logs for Azure Local deployments directly from the Azure portal. This feature simplifies the process of monitoring and troubleshooting your Azure Local environment.
 
 - **Drift detection for Azure PowerShell modules and Azure Command-line Interface (CLI)**: Drift detection is now available for Azure PowerShell modules and CLI for Azure Local, helping you identify configuration changes that deviate from the desired state.
 
-- **Dynamic Root of Trust for Measurement (DRTM) settings for update and upgrade**: DRTM settings are now enabled during the update and upgrade of Azure Local from version 2601. DRTM enhances the security by establishing a root of trust during the boot process, ensuring that the system starts in a known good state.
+- **Dynamic Root of Trust for Measurement (DRTM) settings for 2504 deployments**: Starting with 2601 release, DRTM is enabled on Azure Local instances deployed prior to 2504, and those instances transition from Static root of trust for measurement (SRTM) to DRTM to defend against the firmware level attacks. New deployments since 2504 have DRTM enabled by default.
+
+    For more information, see [Defend against firmware level attacks](/windows-server/security/secured-core-server#defend-against-firmware-level-attacks).
 
 ::: moniker-end
 
