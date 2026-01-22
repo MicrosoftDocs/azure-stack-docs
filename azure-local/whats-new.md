@@ -24,22 +24,27 @@ This release includes various reliability improvements and other bug fixes.
 
     - In 2601 release, all the new and existing deployments of Azure Local run the new OS version **26100.32230** (download from the Azure portal).
 
-        - You also need a driver that's compatible with OS version **26100.32230** or Windows Server 2025 (or 2503 image if a compatible driver isn't available).
+        - You also need a driver that's compatible with OS version **26100.32230** or Windows Server 2025.
 
-        - For Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog), the OS is preinstalled. Work with your Original Equipment Manufacturer (OEM) to get the OS image that's compatible with **12.2601.1002.37** and a driver that's compatible with OS version **26100.32230** or Windows Server 2025.
-    
+        - For Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog), the OS is preinstalled. Work with your Original Equipment Manufacturer (OEM) to get a compatible OS image and a compatible driver.
+        
 - **.NET updates**: This build uses .NET version **8.0.22** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
 
 - **Infrastructure logical network surfaced in Azure portal**: The infrastructure logical network created during Azure Local deployment is now visible in the Azure portal. This visibility allows administrators to review the infrastructure network configuration. This change also acts as a safeguard against accidental workload provisioning on the network reserved for Azure Local infrastructure.
 
     For more information, see [About infrastructure logical network for Azure Local VMs](./manage/manage-logical-networks.md#about-infrastructure-logical-network).
 
-- **VM Connect for Azure Local VMs (Preview)**: Starting with 2601 release, you can connect to Windows and Linux Azure Locl VMs that do not have network connectivity or have boot failures. For more information, see [VM Connect for Azure Local VMs](./manage/connect-arc-vm-using-ssh.md).
+- **VM Connect for Azure Local VMs (Preview)**: Starting with 2601 release, you can connect to Windows and Linux Azure Local VMs that do not have network connectivity or have boot failures. For more information, see [VM Connect for Azure Local VMs](./manage/connect-arc-vm-using-ssh.md).
 
 - **Unique ID for data disks**: In 2601 release, you can identify data disks on your Azure Local instance with a new property called **Unique ID**. The unique ID matches the `UniqueId` of the data disk (`Get-Disk | Select-Object UniqueId`).
 
 - **Rack aware clustering General Availability**: Rack Aware Clustering is now generally available. This feature allows you to define local availability zones based on physical racks in your datacenter, enhancing the resilience of your cluster against rack-level failures. For more information, see [Rack aware clustering](concepts/rack-aware-cluster-overview.md).
 
+- **Diagnostics log collection in Azure portal**: You can now collect diagnostics logs for Azure Local deployments directly from the Azure portal. This feature simplifies the process of monitoring and troubleshooting your Azure Local environment.
+
+- **Drift detection for Azure PowerShell modules and Azure Command-line Interface (CLI)**: Drift detection is now available for Azure PowerShell modules and CLI for Azure Local, helping you identify configuration changes that deviate from the desired state.
+
+- **Dynamic Root of Trust for Measurement (DRTM) settings for update and upgrade**: DRTM settings are now enabled during the update and upgrade of Azure Local from version 2601. DRTM enhances the security by establishing a root of trust during the boot process, ensuring that the system starts in a known good state.
 
 ::: moniker-end
 
