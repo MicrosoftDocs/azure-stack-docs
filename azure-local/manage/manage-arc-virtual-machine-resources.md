@@ -111,6 +111,23 @@ Here's a sample output that indicates successful resizing of the data disk:
 }
 ```
 
+## Identify a data disk
+
+You can identify a data disk attached to your an Azure Local VM by checking its property called **Unique ID**.
+
+The **Unique Id** of a data disk is the SCSI disk identifier found inside the guest VM. It doesn't match the disk identifier if the disk is attached to an IDE controller, for example, Gen 1 VM OS disk.
+
+Follow these steps to identify a data disk inside the guest VM:
+
+1. [Connect to the VM](./connect-arc-vm-using-ssh.md).
+1. Run PowerShell as an administrator.
+1. To get the unique ID of the data disk, run the following command:
+
+    ```powershell
+    Get-Disk | Select-Object UniqueId
+    ```
+    Note the **UniqueId** value for the data disk you want to identify.
+
 ## Delete a data disk
 
 Follow these steps in the Azure portal for your Azure Local instance:
