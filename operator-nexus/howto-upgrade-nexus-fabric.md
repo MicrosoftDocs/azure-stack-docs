@@ -27,7 +27,7 @@ Runtime changes are categorized as follows:
 
 By following this guide, users can ensure a consistent, scalable, and secure approach to upgrading their network fabric components.
 
-## Prechecks Required
+## Required Preupgrade Validations
 
 Before initiating the **Network Fabric (NF) Runtime Upgrade** process, it's **required** that users validate these resource states prior to triggering the upgrade. These proactive validation steps help prevent upgrade failures and avoid service interruption challenges. If the required resource states aren't met, NNF upgrade process should be stopped.
 
