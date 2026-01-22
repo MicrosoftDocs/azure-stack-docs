@@ -5,13 +5,54 @@ ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 01/14/2026
+ms.date: 01/21/2026
 ms.subservice: hyperconverged
 ---
 
 # What's new in hyperconverged deployments of Azure Local?
 
 This article lists the features and improvements that are available in hyperconverged deployments of Azure Local (*formerly Azure Stack HCI*). The latest version of Azure Local solution focuses on cloud-based deployment and updates, cloud-based monitoring, a new and simplified experience for Azure Local virtual machine (VM) management, security, and more.
+
+::: moniker range="=azloc-2601"
+
+## Features and improvements in 2601
+
+The January 2026 release of hyperconverged deployments of Azure Local is version **12.2601.1002.37**. For more information, see [Release information summary](./release-information-23h2.md).
+This release includes various reliability improvements and other bug fixes.
+
+- **OS changes**:
+
+    - In 2601 release, all the new and existing deployments of Azure Local run the new OS version **26100.32230** (download from the Azure portal).
+
+        - You also need a driver that's compatible with OS version **26100.32230** or Windows Server 2025.
+
+        - For Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog), the OS is preinstalled. Work with your Original Equipment Manufacturer (OEM) to get a compatible OS image and a compatible driver.
+        
+- **.NET updates**: This build uses .NET version **8.0.22** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
+
+- **Infrastructure logical network surfaced in Azure portal**: The infrastructure logical network created during Azure Local deployment is now visible in the Azure portal. This visibility allows administrators to review the infrastructure network configuration. This change also acts as a safeguard against accidental workload provisioning on the network reserved for Azure Local infrastructure.
+
+    For more information, see [About infrastructure logical network for Azure Local VMs](./manage/manage-logical-networks.md#about-infrastructure-logical-network).
+
+- **VM Connect for Azure Local VMs (Preview)**: Starting with 2601 release, you can connect to Windows and Linux Azure Local VMs that don't have network connectivity or have boot failures. 
+
+    For more information, see [VM Connect for Azure Local VMs](./manage/connect-arc-vm-using-ssh.md).
+
+- **Unique ID for data disks**: In 2601 release, you can identify data disks on your Azure Local instance with a new property called **Unique ID**. The unique ID matches the `UniqueId` of the data disk (`Get-Disk | Select-Object UniqueId`).
+
+- **Rack aware clustering General Availability (GA)**: Rack aware clustering is now generally available. This feature allows you to define local availability zones based on physical racks in your datacenter, enhancing the resilience of your cluster against rack-level failures.
+
+    For more information, see [Rack aware clustering](concepts/rack-aware-cluster-overview.md).
+
+- **Diagnostics log collection in Azure portal**: You can now collect diagnostics logs directly from the Azure portal to help with support investigations. This eliminates the need to manually gather logs from individual nodes.
+
+- **Drift detection for Azure PowerShell modules and Azure Command-line Interface (CLI)**: Drift detection is now available for Azure PowerShell modules and CLI for Azure Local, helping you identify configuration changes that deviate from the desired state.
+
+- **Dynamic Root of Trust for Measurement (DRTM) settings for 2504 deployments**: Starting with 2601 release, DRTM is enabled on Azure Local instances deployed prior to 2504, and those instances transition from Static Root of Trust for Measurement (SRTM) to DRTM to defend against the firmware level attacks. New deployments since 2504 have DRTM enabled by default.
+
+    For more information, see [Defend against firmware level attacks](/windows-server/security/secured-core-server#defend-against-firmware-level-attacks).
+
+::: moniker-end
 
 ::: moniker range="=azloc-2512"
 
@@ -214,7 +255,7 @@ This release includes the following features and improvements:
     
 - **.NET updates**: This build uses .NET version **8.0.18** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
 
-**Trusted Virtual Machine (Trusted VM) guest attestation**: Azure Local 2508 release introduces guest attestation (also known as boot integrity verification) for Azure Local virtual machines with Trusted launch. This feature lets you verify that the virtual machine starts in a well known good state by checking the integrity of the entire boot chain. This process helps detect any unexpected changes to the boot chain (firmware, OS boot loader, and drivers) and take action if it's compromised. For more information, see [Trusted VM guest attestation](manage/trusted-launch-guest-attestation.md).
+**Trusted Virtual Machine (Trusted VM) guest attestation**: Azure Local 2508 release introduces guest attestation (also known as boot integrity verification) for Azure Local virtual machines with Trusted launch. This feature lets you verify that the virtual machine starts in a known good state by checking the integrity of the entire boot chain. This process helps detect any unexpected changes to the boot chain (firmware, OS boot loader, and drivers) and take action if it's compromised. For more information, see [Trusted VM guest attestation](manage/trusted-launch-guest-attestation.md).
 
 - **Deployment and upgrade changes**:
     - Starting with this release, Azure Resource Manager (ARM) deployment templates are available for previous releases.
@@ -246,7 +287,7 @@ This release includes the following features and improvements:
 
 ## Features and improvements in 2507
 
-There are two 2507 releases for July. Here are the details of each release:
+Two 2507 releases are available for July. Here are the details of each release:
 
 |Solution version  | OS version |
 |---------|---------|
@@ -353,7 +394,7 @@ Starting with the 2504 release, Microsoft uses a new versioning schema. There ar
 |Solution version  |OS version |Deployment  |
 |---------|---------|---------|
 |12.2504.1001.20 | 26100.3775        | New deployments only.        |
-|11.2504.1001.19  | 25398.1551        | Existing deployments only.        |
+|11.2504.1001.21  | 25398.1551        | Existing deployments only.        |
 
 For more information, see [Release information summary](./release-information-23h2.md).
 
@@ -474,7 +515,7 @@ This release includes the following features and improvements:
 
 - **Updates** - This release adds an update precheck to ensure that the solution extension content is copied correctly.
 
-- **4-node switchless support** - Starting with this release, 4-node switchless is supported for Azure Local.
+- **4-node switchless support** - Starting with this release, 4-node switchless support is available for Azure Local.
 
 For more information on improvements in this release, see the [Fixed issues in 2411.1](./known-issues.md?view=azloc-previous&preserve-view=true#fixed-issues-1).
 
@@ -529,7 +570,7 @@ This release includes the following features and improvements:
 
 This release includes the following features and improvements:
 
-- **Azure Local VM management improvements**: Starting with this release, the following improvements are available in the Azure Local VM management experience:
+- **Azure Local VM management improvements**: Starting with this release, the Azure Local VM management experience provides the following improvements:
 
   - You can set a proxy configuration for Azure VMs on the portal.
   - You can set a SQL Server configuration for Azure VMs on the portal.
@@ -588,7 +629,7 @@ This release includes the following changes for SBE:
 
 ## Features and improvements in 2405.3
 
-This release is primarily a bug fix release. See the [Fixed issues list](./known-issues.md?view=azloc-previous&preserve-view=true) to understand the bug fixes.
+This release primarily fixes bugs. See the [Fixed issues list](./known-issues.md?view=azloc-previous&preserve-view=true) to understand the bug fixes.
 
 ## Features and improvements in 2405.2
 
@@ -601,7 +642,7 @@ This release primarily includes bug fixes with a few improvements.
   - Deletion of logical networks is blocked if connected devices are present. When you try to delete a logical network from the Azure portal that has connected devices, you see a warning message: *Can't delete logical network because it's currently in use*. Delete all the resources under **Connected Devices** setting before you delete the logical network.
   - From this release onwards, a new URL needs to be added to the allow list for `stack-hci-vm` Azure CLI installation. The URL changed from `https://hciarcvmsstorage.blob.core.windows.net/cli-extension/stack_hci_vm-{version}-py3-none-any.whl` to `https://hciarcvmsstorage.z13.web.core.windows.net/cli-extensions/stack_hci_vm-{version}-py3-none-any.whl`. For more information, see [Azure Local firewall requirements](./concepts/firewall-requirements.md).
   
-- **Update health checks**: Starting with this release, a new health check was added and the update service was improved. Additionally, the update service now supports the ability to view or start new updates when the service crashes on machines. Also, multiple health check issues related to Azure Update Manager and Solution Builder Extension Update were fixed.
+- **Update health checks**: Starting with this release, a new health check was added and the update service was improved. Additionally, the update service now supports the ability to view or start new updates when the service crashes on machines. Also, multiple health check problems related to Azure Update Manager and Solution Builder Extension Update were fixed.
 
   For more information, see [Fixed issues in 2405.2](./known-issues.md?view=azloc-previous&preserve-view=true).
 
@@ -648,7 +689,7 @@ Here are the features and improvements in this release.
   - Changes for Network ATC when setting up the host networking configuration with certain network adapter types. <!--27285196-->
   - Changes when detecting the firmware versions for disk drives. <!--27395303-->
 
-- This release contains a fix for a deployment issue that is encountered when setting the diagnostic level in Azure and the device. <!--26737110-->
+- This release contains a fix for a deployment issue that's encountered when setting the diagnostic level in Azure and the device. <!--26737110-->
 
 For more information, see the [Fixed issues list in 2405](./known-issues.md?view=azloc-previous&preserve-view=true).
 
@@ -680,8 +721,8 @@ In this release, the environment checker includes several new checks:
 - It ensures RDMA is operational on the storage network adapters before deployment.
 - It validates the infrastructure IP addresses defined during deployment have outbound connectivity and can resolve the DNS.
 - It ensures the DNS server value isn't empty on the management IP address.
-- It makes sure that there's only one IP address on the management network adapter.
-- It ensures that the minimum bandwidth required for RDMA storage adapters is at least 10 Gb.
+- It makes sure there's only one IP address on the management network adapter.
+- It ensures the minimum bandwidth required for RDMA storage adapters is at least 10 Gb.
 - It checks that the uplink connectivity in any physical network adapters assigned to Network ATC intents is up.
 - It improves the ability to handle adapters that don't expose the VLAN ID field correctly.
 
@@ -701,7 +742,7 @@ This release contains the following improvements to observability:
 
 ### Azure portal, extensions, and resource provider changes
 
-Here are the changes related to the Azure portal, extensions, and resource providers:
+The following changes relate to the Azure portal, extensions, and resource providers:
 
 - In this release, an issue was fixed that prevented showing a failed deployment in the Cluster overview when the deployment is canceled.
 - The **Retry** button in Azure portal is renamed to **Resume** as the deployment continues from the step that it failed.
@@ -724,11 +765,11 @@ For a list of the changes and improvements in AKS on Azure Local, see [What's ne
 
 ## Features and improvements in 2402.4
 
-This release is primarily a bug fix release. See the [Fixed issues list](./known-issues.md?view=azloc-previous&preserve-view=true) to understand the bug fixes.
+This release primarily fixes bugs. See the [Fixed issues list](./known-issues.md?view=azloc-previous&preserve-view=true) to understand the bug fixes.
 
 ## Features and improvements in 2402.3
 
-This release is primarily a bug fix release. See the [Fixed issues list](./known-issues.md?view=azloc-previous&preserve-view=true) to understand the bug fixes.
+This release primarily fixes bugs. See the [Fixed issues list](./known-issues.md?view=azloc-previous&preserve-view=true) to understand the bug fixes.
 
 ## Features and improvements in 2402.2
 
@@ -740,7 +781,7 @@ This release is primarily a bug fix release with a few enhancements. See the [Fi
 
 ## Features and improvements in 2402.1
 
-This release is primarily a bug fix release. See the [Fixed issues list](./known-issues.md?view=azloc-previous&preserve-view=true) to understand the bug fixes.
+This release primarily fixes bugs. See the [Fixed issues list](./known-issues.md?view=azloc-previous&preserve-view=true) to understand the bug fixes.
 
 ## Features and improvements in 2402
 
@@ -779,11 +820,11 @@ This release includes the following updates to the security documentation:
 
 ## Features and improvements in 2311.5
 
-This release is primarily a bug fix release. See the [Fixed issues list](./known-issues.md?view=azloc-previous&preserve-view=true) to understand the bug fixes.
+This release primarily fixes bugs. See the [Fixed issues list](./known-issues.md?view=azloc-previous&preserve-view=true) to understand the bug fixes.
 
 ## Features and improvements in 2311.4
 
-This release is primarily a bug fix release. See the [Fixed issues list](./known-issues.md?view=azloc-previous&preserve-view=true) to understand the bug fixes.
+This release primarily fixes bugs. See the [Fixed issues list](./known-issues.md?view=azloc-previous&preserve-view=true) to understand the bug fixes.
 
 ## Features and improvements in 2311.3
 
