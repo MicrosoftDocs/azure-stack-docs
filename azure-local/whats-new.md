@@ -5,7 +5,7 @@ ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 01/21/2026
+ms.date: 01/22/2026
 ms.subservice: hyperconverged
 ---
 
@@ -17,7 +17,7 @@ This article lists the features and improvements that are available in hyperconv
 
 ## Features and improvements in 2601
 
-The January 2026 release of hyperconverged deployments of Azure Local is version **12.2601.1002.37**. For more information, see [Release information summary](./release-information-23h2.md).
+The January 2026 release of hyperconverged deployments of Azure Local is version **12.2601.1002.38**. For more information, see [Release information summary](./release-information-23h2.md).
 This release includes various reliability improvements and other bug fixes.
 
 - **OS changes**:
@@ -46,11 +46,13 @@ This release includes various reliability improvements and other bug fixes.
 
 - **Diagnostics log collection in Azure portal**: You can now collect diagnostics logs directly from the Azure portal to help with support investigations. This eliminates the need to manually gather logs from individual nodes.
 
-- **Drift detection for Azure PowerShell modules and Azure Command-line Interface (CLI)**: Drift detection is now available for Azure PowerShell modules and CLI for Azure Local, helping you identify configuration changes that deviate from the desired state.
+- **Drift detection for Azure PowerShell modules and Azure Command-line Interface (CLI)**: This release adds the Drift Detection framework, enabling Azure Local to continuously validate component level state against the baseline of approved component versions and configurations. The system detects version mismatches during both deployment and runtime by comparing installed component metadata to that of the baseline. Administrators can manually trigger validation using the `Invoke-AzStackHciVSRDriftDetectionValidation` cmdlet to generate detailed drift reports for build components.
 
 - **Dynamic Root of Trust for Measurement (DRTM) settings for 2504 deployments**: Starting with 2601 release, DRTM is enabled on Azure Local instances deployed prior to 2504, and those instances transition from Static Root of Trust for Measurement (SRTM) to DRTM to defend against the firmware level attacks. New deployments since 2504 have DRTM enabled by default.
 
     For more information, see [Defend against firmware level attacks](/windows-server/security/secured-core-server#defend-against-firmware-level-attacks).
+
+- **Enable 26100.XXXX (24H2) security baseline for existing Azure Local deployments**: Starting with 2601 release, customers who perform the solution upgrade on an existing deployment can now match the security posture of newly deployed systems (post-upgrade actions) with new cmdlets to apply 261000.XXXX security baseline.
 
 ::: moniker-end
 
