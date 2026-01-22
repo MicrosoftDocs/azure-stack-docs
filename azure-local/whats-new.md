@@ -34,9 +34,9 @@ This release includes various reliability improvements and other bug fixes.
 
     For more information, see [About infrastructure logical network for Azure Local VMs](./manage/manage-logical-networks.md#about-infrastructure-logical-network).
 
-- **VM Connect for Azure Local VMs (Preview)**: Starting with 2601 release, you can connect to Windows and Linux Azure Local VMs that don't have network connectivity or have boot failures. 
+- **VM Connect for Azure Local VMs (Preview)**: Starting with 2601 release, you can connect to Windows and Linux based Azure Local VMs that don't have network connectivity or have boot failures. 
 
-    For more information, see [VM Connect for Azure Local VMs](./manage/connect-arc-vm-using-ssh.md).
+    For more information, see [VM Connect for Azure Local VMs](./manage/connect-arc-vm-using-ssh.md#connect-to-an-azure-local-vm-using-ssh-and-rdp-over-ssh).
 
 - **Unique ID for data disks**: In 2601 release, you can identify data disks on your Azure Local instance with a new property called **Unique ID**. The unique ID matches the `UniqueId` of the data disk (`Get-Disk | Select-Object UniqueId`).
 
@@ -52,7 +52,7 @@ This release includes various reliability improvements and other bug fixes.
 
     For more information, see [Defend against firmware level attacks](/windows-server/security/secured-core-server#defend-against-firmware-level-attacks).
 
-- **Enable 26100.XXXX (24H2) security baseline for existing Azure Local deployments**: Starting with 2601 release, customers who perform the solution upgrade on an existing deployment can now match the security posture of newly deployed systems (post-upgrade actions) with new cmdlets to apply 261000.XXXX security baseline.
+- **Enable 26100.XXXX (24H2) security baseline for existing Azure Local deployments**: Starting with 2601 release, customers who perform the solution upgrade on an existing deployment can now match the security posture of newly deployed systems (post-upgrade actions) with new cmdlets to apply 26100.XXXX security baseline.
 
 ::: moniker-end
 
