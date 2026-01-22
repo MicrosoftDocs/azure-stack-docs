@@ -33,7 +33,7 @@ To suspend a machine, follow these steps:
 1. Run PowerShell as an administrator. To suspend the machine, run this command:
 
     ```powershell
-    Suspend-ClusterNode -Name "<MachineName>" -Drain
+    Suspend-ClusterNode -Name "<MachineName>" -Drain # Example: "ASRRLS3LRL5U11" 
     ```
 
     Here's an example output:
@@ -78,6 +78,23 @@ To suspend a machine, follow these steps:
     PS C:\programdata\wssdagent> Remove-MocPhysicalNode -NodeName ASRRLS3LRL5U11
     ```
 
+1. To confirm the node was removed, run the following command:
+
+    ```powershell
+    Get-MocPhysicalNode
+    ```
+
+    Here's an example output:
+
+    ```console
+    PS C:\programdata\wssdagent> Get-MocPhysicalNode
+
+    NodeName
+    --------
+    ASRRLS3LRL5U09
+    ```
+    The removed node (for example, ASRRLS3LRL5U11) should not appear in the output.
+
 ## Resume a machine
 
 To resume a machine, follow these steps:
@@ -86,7 +103,7 @@ To resume a machine, follow these steps:
 1. Run PowerShell as an administrator. To resume the machine, run this command:
 
     ```powershell
-    Resume-ClusterNode -Name "<MachineName>"
+    Resume-ClusterNode -Name "<MachineName>" # Example: "ASRRLS3LRL5U11" 
     ```
 
     Here's an example output:
@@ -119,10 +136,11 @@ To resume a machine, follow these steps:
     ASRRLS3LRL5U11      Up           Node
     ```
 
+
 1. Add the machine (cluster node) to the active Azure Local VM Configuration using the Azure Local–specific `New-MocPhysicalNode` cmdlet. **This step can only be done using PowerShell**.
 
     ```powershell
-    New-MocPhysicalNode -NodeName "<MachineName>"
+    New-MocPhysicalNode -NodeName "<MachineName>" # Example: "ASRRLS3LRL5U11" 
     ```
 
     Here's an example output:
@@ -131,30 +149,47 @@ To resume a machine, follow these steps:
     PS C:\programdata\wssdagent> New-MocPhysicalNode -NodeName ASRRLS3LRL5U11
     
     ElementName     : HV Socket Agent Communication
-    PSPath          : Microsoft.PowerShell.Core\Registry::HKEY_LOCAL MACHINE\SOFTWARE\Microsoft\WindowsNT\CurrentVersion\Virtualization\GuestCommunicationServices\00000001-facb-lle6-b
+    PSPath          : Microsoft.PowerShell.Core\Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsNT\CurrentVersion\Virtualization\GuestCommunicationServices\00000001-facb-lle6-b
     d58-64006a7986d3
-    PSParentPath    : Microsoft.PowerShell.Core\Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersions\Virtualization\GuestCommunicationServices
-    PSChildName     : 00000001-facb-lle6-bd58-64006a7986d3
+    PSParentPath    : Microsoft.PowerShell.Core\Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Virtualization\GuestCommunicationServices
+    PSChildName     : 00000001-facb-11e6-bd58-64006a7986d3
     PSDrive         : HKLM
     PSProvider      : Microsoft.PowerShell.Core\Registry
-    PSComputerName  : ASRRlS3lRl5ull
-    RunspaceId      : 05c0eaad-0747-4912-a6e9-el09d975c444
+    PSComputerName  : ASRRLS3LRL5U11
+    RunspaceId      : 05c0eaad-0747-4912-a6e9-e109d975c444
 
     True
     ```
 
+1. To confirm the node was added, run the following command:
+
+    ```powershell
+    Get-MocPhysicalNode
+    ```
+    Here's an example output:
+
+    ```console
+    PS C:\programdata\wssdagent> Get-MocPhysicalNode
+    NodeName
+    --------
+    ASRRLS3LRL5U09                
+    ASRRLS3LRL5U11
+    ```
+
+    The added node (for example, ASRRLS3LRL5U11) should now appear in the output
+
 1. Verify that your storage pool is healthy.
 
     ```powershell
-    Get-StoragePool -FriendlyName "<StoragePoolName>"
+    Get-StoragePool -FriendlyName "<StoragePoolName>" # Example: "SU1_Pool"
     ```
 
     Here's an example output:
 
     ```console
-    PS C : \programdata\wssdagent> Get-StoragePool -FriendlyName "SU1_Pool"
+    PS C:\programdata\wssdagent> Get-StoragePool -FriendlyName "SU1_Pool"
 
-    FriendlyName     Operationalstatus     HealthStatus     IsPrimordial     IsReadOnly     Size     AllocatedSize 
+    FriendlyName     OperationalStatus     HealthStatus     IsPrimordial     IsReadOnly     Size     AllocatedSize 
     ------------     -----------------     ------------     ------------     ----------     ----     -------------
     SU1_Pool         OK                    Healthy          False            False     131.28 TB           1.85 TB
     ```
