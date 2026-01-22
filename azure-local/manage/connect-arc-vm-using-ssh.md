@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 01/07/2026
+ms.date: 01/22/2026
 ms.subservice: hyperconverged
 ---
 
