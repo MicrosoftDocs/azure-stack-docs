@@ -118,6 +118,7 @@ Ensure that the following firewall rules are configured in your on-premises fire
 | Rule | Action | Source | Destination | Service | Ports |
 |:--|:--|:--|:--|:--|:--|
 | Allow inbound/outbound traffic to and from the Azure Local service on Azure Local machines | Allow | Instance nodes | Instance nodes | TCP | 30301 |
+| Allow ICMP traffic to default gateway | Allow | Azure Local infrastructure IP range | Infrastructure subnet default gateway | ICMP | N/A |
 
 ### Windows Admin Center
 
