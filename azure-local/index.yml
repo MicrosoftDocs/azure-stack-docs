@@ -108,9 +108,9 @@ landingContent:
         links:
           - text: Deploy using local identity with Key Vault (preview)
             url: deploy/deployment-local-identity-with-key-vault.md
-          - text: Deploy rack aware clusters (preview)
+          - text: Deploy rack aware clusters
             url: deploy/rack-aware-cluster-deploy-portal.md
-          - text: Place VMs in rack aware clusters (preview)
+          - text: Place VMs in rack aware clusters
             url: concepts/rack-aware-cluster-provision-vm-local-availability-zone.md
 
   # Card

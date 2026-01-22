@@ -1,6 +1,6 @@
 ---
-title: Perform post deployment tasks on rack aware clusters (Preview)
-description: Learn about the post deployment tasks that you need to perform on your newly deployed rack aware cluster (Preview).
+title: Perform post deployment tasks on rack aware clusters
+description: Learn about the post deployment tasks that you need to perform on your newly deployed rack aware cluster.
 author: alkohli
 ms.topic: how-to
 ms.date: 10/21/2025
@@ -9,13 +9,11 @@ ms.reviewer: alkohli
 ms.service: azure-local
 ---
 
-# Perform post deployment tasks on rack aware cluster (Preview)
+# Perform post deployment tasks on rack aware cluster
 
 ::: moniker range=">=azloc-2510"
 
 After deploying rack aware cluster, either through the [Azure portal](../deploy/rack-aware-cluster-deploy-portal.md) or using the [Azure Resource Manager deployment template](../deploy/rack-aware-cluster-deployment-via-template.md), you need to complete a set of post-deployments tasks. This article describes the typical tasks required once your rack aware cluster is successfully deployed and all machines are up and running.
-
-[!INCLUDE [important](../includes/hci-preview.md)]
 
 ## Verify cluster status
 
@@ -80,9 +78,9 @@ This command returns details about the volume, including the `NestedFdType` and 
 
 The following table shows the expected output for each configuration:
 
-|Configuration | Output|
-|--|--|
-| 4-way mirror with RLNM | `NestedFdType`: Node<br> `MaxFdType`: Rack|
+| Configuration | Output |
+| -- | -- |
+| 4-way mirror with RLNM | `NestedFdType`: Node<br> `MaxFdType`: Rack |
 | 2-way mirror with RLNM | `NestedFdType`: Unknown<br> `MaxFdType`: Rack |
 | No RLNM, Storage domain is set to RACK | `NestedFdType`: (null)<br> `MaxFdType`: Rack |
 

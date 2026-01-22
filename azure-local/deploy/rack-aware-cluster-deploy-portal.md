@@ -1,6 +1,6 @@
 ---
-title: Deploy rack aware cluster using the Azure portal (Preview)
-description: Learn how to deploy a rack aware cluster via the Azure portal with step-by-step guidance, including configuration, networking, and validation processes. (Preview)
+title: Deploy rack aware cluster using the Azure portal
+description: Learn how to deploy a rack aware cluster via the Azure portal with step-by-step guidance, including configuration, networking, and validation processes.
 author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
@@ -8,13 +8,11 @@ ms.date: 10/15/2025
 ms.topic: how-to
 ---
 
-# Deploy rack aware cluster via the Azure portal (Preview)
+# Deploy rack aware cluster via the Azure portal
 
 ::: moniker range=">=azloc-2510"
 
 This article describes the steps to deploy Azure Local rack aware clusters using the Azure portal.
-
-[!INCLUDE [important](../includes/hci-preview.md)]
 
 ## Prerequisites
 
@@ -163,11 +161,11 @@ On the **Configuration** tab, choose whether to create a new configuration for y
 
     Here's a summary of the volumes that are created based on the number of machines in your system. To change the resiliency setting of the workload volumes, delete them and re-create them. Be careful not to delete the infrastructure volumes.
 
-    |# machines  |Volume resiliency  |# Infrastructure volumes  |# Workload volumes  |
-    |---------|---------|---------|----------|
-    |Single machine    |Two-way mirror         | 1        |  1        |
-    |Two machines     | Two-way mirror       | 1        |  2        |
-    |Three machines +     | Three-way mirror        |1        |1 per machine         |
+    | # machines       | Volume resiliency | # Infrastructure volumes | # Workload volumes |
+    | ---------------- | ----------------- | ------------------------ | ------------------ |
+    | Single machine   | Two-way mirror    | 1                        | 1                  |
+    | Two machines     | Two-way mirror    | 1                        | 2                  |
+    | Three machines + | Three-way mirror  | 1                        | 1 per machine      |
 
 1. Specify the **Local availability zone** settings. Ensure servers in the same zone are physically in the same rack. This check isn't validated during the deployment process in this release so the correct configuration is critical. If misconfigured, a single rack failure could take down the entire cluster.
 
@@ -207,14 +205,14 @@ To verify that the system and all associated Azure resources were deployed succe
 1. In the [Azure portal](https://portal.azure.com), go to the resource group where you deployed the system.
 2. On the **Overview** page, under **Resources**, confirm that the following items are listed:
 
-    |Number of resources  | Resource type  |
-    |---------|---------|
+    | Number of resources | Resource type |
+    | --------- | --------- |
     | 1 per machine | Machine - Azure Arc |
-    | 1            | Azure Local     |
-    | 1            | Arc Resource Bridge |
-    | 1            | Key vault           |
-    | 1            | Custom location     |
-    | 2*           | Storage account     |
+    | 1 | Azure Local |
+    | 1 | Arc Resource Bridge |
+    | 1 | Key vault |
+    | 1 | Custom location |
+    | 2* | Storage account |
     | 1 per workload volume | Azure Local storage path - Azure Arc |
 
     \* Two storage accounts are created: one for the cloud witness and another for Key Vault audit logs. Both accounts use locally redundant storage (LRS) and have a lock applied.
