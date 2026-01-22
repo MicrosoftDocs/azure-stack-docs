@@ -43,7 +43,7 @@ The following table lists the fixed issues in this release:
 
 |Feature  |Issue    |Comments |
 |---------|---------|---------|
-| Deployment <!--36041656--> | Deployment using Local Identity doesn't support manual secret rotation. | There's no known workaround in this release. |
+| Deployment <!--36041656--> | Deployment using Local Identity doesn't support manual secret rotation. | |
 | Update <!--35747709--> | Update may fail when the cloud management group is running on a different node than the owner node with the error: `Type 'RegisterCloudManagementUpdatesExtension' of Role 'CloudManagementConfig' raised an exception: Exception occurred in Get-ClusterExtension'` | |
 | Azure Local VMs <!--35605807--> | When creating or deleting large numbers of network interfaces, the infrastructure can face out of memory issues causing failures. | Improved validation logic to handle large numbers of operations on network interfaces. |
 | Azure Local VMs <!--35725410--> | Added operation to set the cluster functional level for upgrade to 24H2.  | |
@@ -79,7 +79,6 @@ The following table lists the known issues in this release:
 | Update <!--36458541--> | Solution Builder Extension (SBE) update fails on 2601 in the download stage with the error: <br> `The term 'Assert-SBEResponseSchema' is not recognized as the name of a cmdlet, function, script file, or operable program.` | You can sideload the SBE (`Add-Solutionupdate`) to avoid the download. |
 | Update <!--36429778--> | Update fails due to module installation exception causing deployment disruption. | There's no known workaround in this release. |
 | Update <!--36360771--> | Fetching the secret rotation action plan status fails. | There's no known workaround in this release. |
-
 
 ## Known issues from previous releases
 
