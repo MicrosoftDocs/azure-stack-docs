@@ -45,6 +45,7 @@ The following table lists the fixed issues in this release:
 |---------|---------|---------|
 | Deployment <!--36041656--> | Deployment using Local Identity doesn't support manual secret rotation. | |
 | Update <!--35747709--> | Update may fail when the cloud management group is running on a different node than the owner node with the error: `Type 'RegisterCloudManagementUpdatesExtension' of Role 'CloudManagementConfig' raised an exception: Exception occurred in Get-ClusterExtension'` | |
+| Update <!--36146024--> | Secret rotation changes WinRM certificate thumbprint for users who aren't using a Microsoft issued certificate. | |
 | Azure Local VMs <!--35605807--> | When creating or deleting large numbers of network interfaces, the infrastructure can face out of memory issues causing failures. | Improved validation logic to handle large numbers of operations on network interfaces. |
 | Azure Local VMs <!--35725410--> | Added operation to set the cluster functional level for upgrade to 24H2.  | |
 | Deployment <!--31849849--> | Enable SMB protocol for all cluster nodes during deployment. | |
@@ -68,7 +69,6 @@ The following table lists the fixed issues in this release:
 | Update <!--35794341--> | Fixed issue where SBE files may be blocked after performing robocopy to each machine.  | |
 | Update <!--35855583--> | Fixed issue with solution update failing due to incorrectly detecting presence of SBE. | |
 | Upgrade <!--35640185--> | Improved logic to find storage cluster group.  | |
-| Update <!--36146024--> | Secret rotation changes WinRM certificate thumbprint for users who are not using a Microsoft issued certificate. | |
 
 ## Known issues
 
