@@ -1,6 +1,6 @@
 ---
-title: Azure Local rack aware cluster reference architecture (Preview)
-description: Learn about the network design and configuration of an Azure Local rack aware cluster (Preview)
+title: Azure Local rack aware cluster reference architecture
+description: Learn about the network design and configuration of an Azure Local rack aware cluster
 author: sipastak
 ms.author: sipastak
 ms.date: 10/03/2025
@@ -8,7 +8,7 @@ ms.service: azure-local
 ms.topic: concept-article
 ---
 
-# Azure Local rack aware cluster reference architecture (Preview)
+# Azure Local rack aware cluster reference architecture
 
 ::: moniker range=">=azloc-2510"
 
@@ -17,8 +17,6 @@ This article contains information about the network design and configuration of 
 The primary intent is to support factory environments where hardware must be isolated in different rooms due to regulatory requirements, safety protocols, or operational constraints. This isolation provides fault domain separation while maintaining cluster functionality for critical industrial workloads.
 
 The rack aware cluster configuration can also support disaster recovery scenarios by placing different workloads in one or both locations. This configuration supports environments with or without software defined networking (SDN) or Layer 2 virtual networks.
-
-[!INCLUDE [important](../includes/hci-preview.md)]
 
 ## Key network principles
 
@@ -238,7 +236,6 @@ interface ethernet 1/15
 | `priority-flow-control mode on send-tlv` | Enables Priority Flow Control (PFC) with LLDP TLV transmission. |
 | `spanning-tree port type edge trunk` | Optimizes STP for host-facing ports. |
 | `mtu 9216` | Enables jumbo frames. Required only for iWARP when host nodes support jumbo frames. |
-
 
 ### Option C
 

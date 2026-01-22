@@ -337,7 +337,7 @@ This step applies to using a .zip file.
 
         If you don't see a logical network in the dropdown list, [Create a logical network](../manage/create-logical-networks.md) and select **Reload logical network**.
 
-	5. Select the storage path that you created as a [prerequisite](./migrate-vmware-prerequisites.md#prerequisites-for-vmware-migration-to-azure-local-using-azure-migrate). The VMs are created at this storage path.
+	5. Select the storage path that you created as a [prerequisite](./migrate-vmware-prerequisites.md#prerequisites-for-vmware-migration-to-azure-local-using-azure-migrate). The VMs are created at this storage path. Ensure that the storage path has sufficient space to accommodate the VMs being migrated.
 
         If you don't see a storage path in the dropdown list, [Create a storage path](../manage/create-storage-path.md) and select **Reload storage path**.
 

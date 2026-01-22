@@ -200,6 +200,8 @@ To ensure the range has enough IPs for current and future infrastructure service
 
 If you anticipate running other services in the infrastructure network, we recommend that you assign an extra buffer of infrastructure IPs to the pool. It's possible to add other IP pools after deployment for the infrastructure network using PowerShell if the size of the pool you planned originally gets exhausted.
 
+During deployment, environment checker will test ICMP connectivity from the Management IP Pool addresses to the Management IP Pool default gateway. Make sure your default gateway allows ICMP traffic from Azure Local Management subnet.
+
 The following conditions must be met when defining your IP pool for the infrastructure subnet during deployment:
 
 |#  | Condition |
@@ -209,6 +211,7 @@ The following conditions must be met when defining your IP pool for the infrastr
 |3     | The default gateway defined for the management IP pool must provide outbound connectivity to the internet.        |
 |4     | The DNS servers must ensure name resolution with Active Directory and the internet.        |
 |5     | The management IPs require outbound internet access.        |
+|6     | Environment checker validates that ICMP traffic responds on the default gateway from the Azure Local management IP pool range. |
 
 ### Management VLAN ID
 

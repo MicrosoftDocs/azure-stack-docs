@@ -1,6 +1,6 @@
 ---
-title: Overview of Azure Local rack aware clustering (Preview)
-description: Use this article to learn about Azure Local rack aware clustering. (Preview)
+title: Overview of Azure Local rack aware clustering
+description: Use this article to learn about Azure Local rack aware clustering.
 author: alkohli
 ms.author: alkohli
 ms.topic: overview
@@ -8,13 +8,11 @@ ms.service: azure-local
 ms.date: 10/15/2025
 ---
 
-# Azure Local rack aware clustering overview (Preview)
+# Azure Local rack aware clustering overview
 
 ::: moniker range=">=azloc-2510"
 
 This article gives a high-level overview of the Azure Local rack aware clustering feature including its benefits and use cases. The article also details the supported configurations and deployment requirements for rack aware clusters. This article applies only to new deployments of Azure Local.
-
-[!INCLUDE [important](../includes/hci-preview.md)]
 
 ## About rack aware cluster
 

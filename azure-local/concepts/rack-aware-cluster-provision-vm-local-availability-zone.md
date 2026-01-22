@@ -1,13 +1,13 @@
 ---
-title: Provision VMs in local availability zone for Azure Local (Preview)
-description: Learn about how to provision VMs in local availability zone for Azure Local (Preview).
+title: Provision VMs in local availability zone for Azure Local
+description: Learn about how to provision VMs in local availability zone for Azure Local.
 author: alkohli
 ms.topic: concept-article
 ms.date: 10/20/2025
 ms.author: alkohli
 ---
 
-# Provision Azure Local VMs in a local availability zone (Preview)
+# Provision Azure Local VMs in a local availability zone
 
 ::: moniker range=">=azloc-2510"
 
@@ -15,8 +15,6 @@ This article explains how to create Azure Local virtual machines (VMs) in a loca
 
 > [!IMPORTANT]
 > Updating placement configuration of existing virtual machines (VMs) is not supported.
-
-[!INCLUDE [important](../includes/hci-preview.md)]
 
 ## Prerequisites
 
