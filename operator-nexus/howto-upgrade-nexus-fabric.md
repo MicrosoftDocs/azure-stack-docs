@@ -117,7 +117,7 @@ Each of the NNF device resource state must be validated before (via Azure portal
 
 **Step 2.5**: Trigger Upgrade of **Compute rack management switches** (parallel) 
 
-**Step 2.6**: Perform Mid Validations on the Compute Rack Management Swtiches to validate upgrade succeeded
+**Step 2.6**: Perform Mid Validations on the Compute Rack Management Switches to validate upgrade succeeded
 
 **Step 2.7**: Trigger Upgrade of **CE1** 
 
