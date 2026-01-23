@@ -228,7 +228,7 @@ To check if any virtual machines or NAKS nodes are currently running on the node
 ```azurecli
 az networkcloud baremetalmachine show -n <nodeName> \
 --resource-group <resourceGroup> \
---subscription <subscriptionID> | jq '.virtualMachinesAssociatedIds'
+--subscription <subscriptionID> | jq '.associatedResourceIds'
 ```
 
 ### Hardware component replacement guide
