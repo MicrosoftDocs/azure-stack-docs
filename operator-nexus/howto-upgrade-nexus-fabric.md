@@ -11,7 +11,7 @@ ms.custom: template-how-to, devx-track-azurecli
 
 # Network Fabric runtime upgrade
 
-This guide outlines, which preupgrade validations are required for a successful Network Fabric runtime upgrade and which validations are recommended. Required prevalidation checks lead to an upgrade failure if conditions of the validations aren't met. Recommended prevalidation checks help ensure consistency of the release. 
+This guide outlines which preupgrade validations are required for a successful Network Fabric runtime upgrade and which validations are recommended. Required prevalidation checks lead to an upgrade failure if conditions of the validations aren't met. Recommended prevalidation checks help ensure consistency of the release. 
 
 ## Overview
 
@@ -48,7 +48,7 @@ Before initiating the **Network Fabric (NF) Runtime Upgrade** process, it's **re
 | Neighbor Group associated to Network Tap | When the Parent Network Tap has an Administrative state is in "Enabled" status. </br>Provisioning state shall need to be in "Succeeded" state.</br> When the Network Tap has an Administrative state in "Disabled" status, this resource has no impact on the runtime upgrade  | No | Fabric upgrade start command fails |
 | CE-PE Link traffic Check | Validate CE to PEs uplink ports interface traffic  (Et1/1 to Et1/6).  | Yes | CE Device upgrade command fails (probable connectivity issue with PE) |
 
-## Recommended Preupgrade checks that does not lead to upgrade failure 
+## Recommended Preupgrade checks that do not lead to upgrade failure 
 
 Before initiating the Network Fabric (NF) Runtime Upgrade process, it's **recommended** that users validate these resource states prior to triggering the NF upgrade. These resources won't prevent the upgrade, but should be checked before and after to confirm state remains consistent.
 
