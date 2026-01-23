@@ -10,7 +10,7 @@ ms.reviewer: rohogue
 # Intent: As an IT Pro, I need to be able to automatically import files from my Azure Blob Storage container to an Azure Managed Lustre file system.
 # Keyword: 
 ---
-# Use the auto-import feature in Azure Managed Lustre (preview)
+# Use the auto-import feature in Azure Managed Lustre
 
 The auto-import feature in Azure Managed Lustre enables seamless synchronization of data from an Azure Blob Storage container into an Azure Managed Lustre cluster. This functionality allows customers to treat Blob Storage as a cold tier and Azure Managed Lustre as a high-performance hot tier. This method automatically reflects changes made in Blob Storage within the Lustre namespace.
 
