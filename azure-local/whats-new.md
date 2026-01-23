@@ -5,7 +5,7 @@ ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 01/22/2026
+ms.date: 01/23/2026
 ms.subservice: hyperconverged
 ---
 
@@ -36,7 +36,7 @@ This release includes various reliability improvements and other bug fixes.
 
 - **VM Connect for Azure Local VMs (Preview)**: Starting with 2601 release, you can connect to Windows and Linux based Azure Local VMs that don't have network connectivity or have boot failures. 
 
-    For more information, see [VM Connect for Azure Local VMs](./manage/connect-arc-vm-using-ssh.md#connect-to-an-azure-local-vm-using-ssh-and-rdp-over-ssh).
+    For more information, see [VM Connect for Azure Local VMs](./manage/connect-arc-vm-using-ssh.md#connect-to-an-azure-local-vm-using-vm-connect-preview).
 
 - **Unique ID for data disks**: In 2601 release, you can identify data disks on your Azure Local instance with a new property called **Unique ID**. The unique ID matches the `UniqueId` of the data disk (`Get-Disk | Select-Object UniqueId`).
 
