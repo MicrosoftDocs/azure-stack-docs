@@ -5,7 +5,7 @@ ms.topic: concept-article
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 01/15/2026
+ms.date: 01/23/2026
 ---
 
 # Introduction to Trusted launch for Azure Local VMs enabled by Azure Arc
@@ -29,12 +29,8 @@ Trusted launch is a security type that can be specified when you create Azure Lo
 | vTPM state transfer| Preserves vTPM when the VM migrates or fails over within a cluster. |
 | Virtualization-based security (VBS) | Guest in the VM can create isolated regions of memory using VBS support. |
 
-> [!NOTE]
-> VM guest boot integrity verification isn't available.
 
 ## Guidance
-
-- IgvmAgent is a component that is installed on all machines in the Azure Local system. It enables support for isolated VMs like Trusted launch for Azure Local VMs, for example.
 
 - Trusted launch for Azure Local VMs currently supports only a select set of Azure Marketplace images. For a list of supported images, see [Guest operating system images](#guest-operating-system-images). When you create a Trusted launch VM in the Azure portal, the Image dropdown list shows only the images supported by Trusted launch. The Image dropdown appears blank if you select an unsupported image, including a custom image. The list also appears blank if none of the images available on your Azure Local system are supported by Trusted launch.
 
