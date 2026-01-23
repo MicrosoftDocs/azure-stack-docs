@@ -101,6 +101,7 @@ az networkcloud baremetalmachine restart \
   --resource-group "<resourceGroup>" \
   --subscription <subscriptionID>
 ```
+#### Infrastructure Post Check
 
 **To verify the BMM status after restart:**
 
@@ -132,6 +133,7 @@ A reimage action is the best practice for lowest operational risk to ensure the 
 > [!WARNING]
 > Running more than one `baremetalmachine replace` or `reimage` command at the same time, or running a `replace`
 > at the same time as a `reimage` leaves servers in a nonworking state. Make sure one operation fully completes before starting another.
+#### Infrastructure Pre Check
 
 **To identify if any workloads are currently running on a BMM, run the following command:**
 
@@ -149,6 +151,7 @@ az networkcloud baremetalmachine show -n <nodeName> \
 kubectl get nodes <resourceName> -ojson |jq '.metadata.labels."topology.kubernetes.io/baremetalmachine"'
 ```
 
+#### Reimage
 **The following Azure CLI command will `cordon` the specified bareMetalMachineName.**
 
 ```azurecli
@@ -176,7 +179,7 @@ az networkcloud baremetalmachine uncordon \
   --resource-group "<resourceGroup>" \
   --subscription <subscriptionID>
 ```
-
+#### Infrastructure Post Check
 **To verify the BMM status after `reimage`:**
 
 ```azurecli
@@ -219,7 +222,7 @@ az networkcloud baremetalmachine cordon \
   --resource-group "<resourceGroup>" \
   --subscription <subscriptionID>
 ```
-
+#### Infrastructure Pre Check
 To check if any virtual machines or NAKS nodes are currently running on the node:
 
 ```azurecli
@@ -277,7 +280,7 @@ az networkcloud baremetalmachine uncordon \
   --resource-group "<resourceGroup>" \
   --subscription <subscriptionID>
 ```
-
+#### Infrastructure Post Check
 **To verify the BMM status after `replace`:**
 
 ```azurecli
