@@ -51,9 +51,9 @@ When working with Trusted launch Azure Local VMs, make sure to understand the fo
 
 ### VM backup
 
-- Backup all VM files. You can use any backup solution or tool to backup all VM files as long as they follow standard [Hyper-V Backup Approaches](/virtualization/hyper-v-on-windows/reference/hypervbackupapproaches).  
+- Back up all VM files. You can use any backup solution or tool to back up all VM files as long as they follow standard [Hyper-V Backup Approaches](/virtualization/hyper-v-on-windows/reference/hypervbackupapproaches).  
 
-- Backup VM guest state protection key. Unlike standard Azure Local VMs, Trusted launch Azure Local VMs use a VM guest state protection key to protect the VM guest state, including the virtual TPM (vTPM) state, while at rest. The VM guest state protection key is stored in a local key vault in the Azure Local instance where the VM resides. You must manually backup the VM guest state protection key as soon as you create a Trusted launch VM as described in [Manual backup and recovery of VM guest state protection key](trusted-launch-vm-import-key.md). Without the guest state protection key, you cannot start the VM.
+- Back up VM guest state protection key. Unlike standard Azure Local VMs, Trusted launch Azure Local VMs use a VM guest state protection key to protect the VM guest state, including the virtual TPM (vTPM) state, while at rest. The VM guest state protection key is stored in a local key vault in the Azure Local instance where the VM resides. You must manually back up the VM guest state protection key as soon as you create a Trusted launch VM as described in [Manual backup and recovery of VM guest state protection key](trusted-launch-vm-import-key.md). Without the guest state protection key, you cannot start the VM.
 
 ### VM recovery
 
@@ -71,7 +71,7 @@ When working with Trusted launch Azure Local VMs, make sure to understand the fo
 
 ### VM replication
 
-Azure Site recovery, which can replicate virtual machines on your Azure Local instance to Azure, is not supported.
+Azure Site Recovery, which can replicate virtual machines on your Azure Local instance to Azure, is not supported.
 
 ## Supported operations
 
