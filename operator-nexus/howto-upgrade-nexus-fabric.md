@@ -9,7 +9,7 @@ ms.service: azure-operator-nexus
 ms.custom: template-how-to, devx-track-azurecli
 ---
 
-# Network Fabric Runtime Upgrade
+# Network Fabric runtime upgrade
 
 This guide outlines which pre-upgrade validations are required for a successful Network Fabric runtime upgrade and which validations are recommended.   Required pre-validation checks will lead to an upgrade failure if conditions of the validations are not met.  Recommended pre-validation checks will help ensure consistency of the release. 
 
@@ -107,35 +107,35 @@ Each of the NNF device resource state must be validated before (via Azure portal
 | --- | --- | --- |
 | Validate fabric device resource state | Resource states must be validated:</br> - Provisioning state is in “Succeeded”</br> - Configuration state is in “Succeeded" or "Deferred Control” state.</br> - Administrative state is in “Enabled” | Device Upgrade step considered failed. Engage MSFT support to diagnose & resolve |
 
-**Step 2.1** Trigger Upgrade of **Odd numbered TORs** (parallel) – e.g., for 8-rack: TORs 1, 3, 5, 7, 9, 11, 13, and 15
+**Step 2.1**: Trigger Upgrade of **Odd numbered TORs** (parallel) – e.g., for 8-rack: TORs 1, 3, 5, 7, 9, 11, 13, and 15
 
-**Step 2.2** Perform Mid Validations on the Odd Numbered TORs to validate upgrade succeeded*
+**Step 2.2**: Perform Mid Validations on the Odd Numbered TORs to validate upgrade succeeded
 
-**Step 2.3** Trigger Upgrade of **Even numbered TORs** (parallel) – e.g., for 8-rack: TORs 2, 4, 6, 8, 10, 12, 14, 16 
+**Step 2.3**: Trigger Upgrade of **Even numbered TORs** (parallel) – e.g., for 8-rack: TORs 2, 4, 6, 8, 10, 12, 14, 16 
 
-**Step 2.4** Perform Mid Validations on the Even Numbered TORs to validate upgrade succeeded*
+**Step 2.4**: Perform Mid Validations on the Even Numbered TORs to validate upgrade succeeded
 
-**Step 2.5** Trigger Upgrade of **Compute rack management switches** (parallel) 
+**Step 2.5**: Trigger Upgrade of **Compute rack management switches** (parallel) 
 
-**Step 2.6** Perform Mid Validations on the Compute Rack Management Swtiches to validate upgrade succeeded*
+**Step 2.6**: Perform Mid Validations on the Compute Rack Management Swtiches to validate upgrade succeeded
 
-**Step 2.7** Trigger Upgrade of **CE1** 
+**Step 2.7**: Trigger Upgrade of **CE1** 
 
-**Step 2.8** Perform Mid Validations on the CE1 to validate upgrade succeeded* 
+**Step 2.8**: Perform Mid Validations on the CE1 to validate upgrade succeeded 
 
-**Step 2.9** Trigger Upgrade of **CE2** 
+**Step 2.9**: Trigger Upgrade of **CE2** 
 
-**Step 2.10** Perform Mid Validations on the CE2 to validate upgrade succeeded*
+**Step 2.10**: Perform Mid Validations on the CE2 to validate upgrade succeeded
 
-**Step 2.11** Trigger Upgrade of **NPBs** (serial) 
+**Step 2.11**: Trigger Upgrade of **NPBs** (serial) 
 
-**Step 2.12** Perform Mid Validations on the NPBs to validate upgrade succeeded*
+**Step 2.12**: Perform Mid Validations on the NPBs to validate upgrade succeeded
 
-**Step 2.13** Trigger Upgrade of **Aggregate rack management switches** (serial) 
+**Step 2.13**: Trigger Upgrade of **Aggregate rack management switches** (serial) 
 
-**Step 2.14** Perform Mid Validations on the Aggregate Rack Management Switches to validate upgrade succeeded*
+**Step 2.14**: Perform Mid Validations on the Aggregate Rack Management Switches to validate upgrade succeeded
 
-#### *Mid Validation 
+#### Mid Validation 
 
 | Check | Expectation | Outcome/Guidance |
 | --- | --- | --- |
