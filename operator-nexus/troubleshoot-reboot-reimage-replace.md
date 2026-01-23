@@ -4,7 +4,7 @@ description: Troubleshoot cluster bare metal machines with Restart, Reimage, Rep
 ms.service: azure-operator-nexus
 ms.custom: troubleshooting
 ms.topic: troubleshooting
-ms.date: 12/15/2025
+ms.date: 01/23/2026
 author: gregoberfield
 ms.author: goberfield
 ---
@@ -67,7 +67,7 @@ The restart typically is the starting point for mitigating a problem.
 
 ### Restart workflow
 
-1. **Assess impact** - Determine if restarting the BMM impacts critical workloads.
+1. **Assess impact** - Determine if restarting the BMM impacts critical virtual machines or NAKS nodes.
 2. **Power off** - If needed, power off the BMM (optional).
 3. **Start or restart** - Either start a powered-off BMM or restart a running BMM.
 4. **Verify status** - Check if the BMM is back online and functioning properly.
@@ -125,8 +125,8 @@ A reimage action is the best practice for lowest operational risk to ensure the 
 
 ### Reimage workflow
 
-1. **Verify running workloads** - Before reimaging, check what workloads are running on the BMM.
-2. **Cordon and evacuate workloads** - Drain the BMM of workloads.
+1. **Verify running virtual machiens and NAKS Nodes** - Before reimaging, check what VMs and NAKS nodes are running on the BMM.
+2. **Cordon and evacuate VMs and NAKS nodes** - Drain the BMM of virtual machines and NAKS nodes.
 3. **Perform reimage** - Execute the reimage operation.
 4. **Uncordon** - Make the BMM schedulable again after reimage completes.
 
@@ -135,7 +135,7 @@ A reimage action is the best practice for lowest operational risk to ensure the 
 > at the same time as a `reimage` leaves servers in a nonworking state. Make sure one operation fully completes before starting another.
 #### Infrastructure Pre Check
 
-**To identify if any workloads are currently running on a BMM, run the following command:**
+**To identify if any virtual machines or NAKS nodes are currently running on a BMM, run the following command:**
 
 **For Virtual Machines:**
 
@@ -207,7 +207,7 @@ This article provides instructions on how to check and troubleshoot hardware val
 
 ### Replace workflow
 
-1. **Cordon and evacuate** - Remove workloads from the BMM before physical repair.
+1. **Cordon and evacuate** - Remove virtual machines and NAKS nodes from the BMM before physical repair.
 2. **Perform physical repairs** - Replace hardware components as needed.
 3. **Execute replace command** - Run the replace command with required parameters.
 4. **Uncordon** - Make the BMM schedulable again after replacement completes.
