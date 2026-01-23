@@ -166,6 +166,9 @@ az networkcloud cluster baremetalmachinekeyset create \
                                                             for full debug logs.
 ```
 
+> [!IMPORTANT]
+> SSH public keys must not contain command, environment, or principals options. Only the `from=` option (source IP restriction) is permitted. Keys with unauthorized options will be rejected during keyset creation or update operations.
+
 This example creates a new keyset with two users that have standard access from two jump hosts.
 
 ```azurecli

@@ -58,16 +58,16 @@ To set up a Defender for Servers plan:
 
 ### Grant MDE Onboarding Permissions
 
-To enable the Microsoft Defender for Endpoint (MDE) agent on bare metal machines within your Nexus Cluster, you must grant the nc-platform-extension identity of the cluster permission to onboard the MDE agent on your behalf.
+To enable the Microsoft Defender for Endpoint (MDE) agent on bare metal machines within your Nexus Cluster, you must grant the platform extension identity of the cluster permission to onboard the MDE agent on your behalf. Depending on your cluster version, this identity is either `nc-platform-underlay-extension` (newer versions) or `nc-platform-extension` (older versions).
 
-The nc-platform-extension identity does not exist prior to deploying the Operator Nexus cluster. The following example must be performed after the Cluster is deployed.
+The platform extension identity does not exist prior to deploying the Operator Nexus cluster. The following example must be performed after the Cluster is deployed.
 
-The required permission is ```Microsoft.Security/mdeOnboardings/read```. Assign this permission to the nc-platform-extension identity using the built-in role ```Security Reader``` or a custom role with the same permission.
+The required permission is ```Microsoft.Security/mdeOnboardings/read```. Assign this permission to the platform extension identity using the built-in role ```Security Reader``` or a custom role with the same permission.
 
 > [!IMPORTANT]
 > The user or identity creating the role assignment must have the ```Microsoft.Authorization/roleAssignments/write``` permission at the subscription level.
 
-Below is an example bash script using the Azure CLI for granting the nc-platform-extension identity permission to onboard the MDE agent on your behalf.
+Below is an example bash script using the Azure CLI for granting the platform extension identity permission to onboard the MDE agent on your behalf. The script automatically detects which extension is present on your cluster.
 
 ```bash
 #!/usr/bin/env bash
@@ -96,9 +96,32 @@ MRG_NAME=$(az networkcloud cluster show \
   --output tsv)
 echo "Managed Resource Group name: $MRG_NAME"
 
-# 4. Retrieve the extension's principal ID
+# 4. Determine which extension to use
+# Try nc-platform-underlay-extension (newer versions) first
+# Use nc-platform-extension (older versions) as fallback
+echo "Checking for platform extension..."
+UNDERLAY_EXTENSION="nc-platform-underlay-extension"
+FALLBACK_EXTENSION="nc-platform-extension"
+EXTENSION_NAME=""
+
+# Check if underlay extension exists
+if az k8s-extension show \
+  --name "$UNDERLAY_EXTENSION" \
+  --cluster-name "$CLUSTER_NAME" \
+  --resource-group "$MRG_NAME" \
+  --cluster-type connectedClusters \
+  --query "name" \
+  --output tsv &>/dev/null; then
+  EXTENSION_NAME="$UNDERLAY_EXTENSION"
+  echo "Using extension: $UNDERLAY_EXTENSION "
+else
+  echo "Using fallback extension: $FALLBACK_EXTENSION"
+  EXTENSION_NAME="$FALLBACK_EXTENSION"
+fi
+
+# 5. Retrieve the extension's principal ID
 PRINCIPAL_ID=$(az k8s-extension show \
-  --name nc-platform-extension \
+  --name "$EXTENSION_NAME" \
   --cluster-name "$CLUSTER_NAME" \
   --resource-group "$MRG_NAME" \
   --cluster-type connectedClusters \
@@ -106,7 +129,7 @@ PRINCIPAL_ID=$(az k8s-extension show \
   --output tsv)
 echo "Extension Principal ID: $PRINCIPAL_ID"
 
-# 5. Create a Security Reader role assignment at subscription level
+# 6. Create a Security Reader role assignment at subscription level
 echo "Creating Security Reader role assignment at subscription level"
 az role assignment create \
   --role "Security Reader" \
