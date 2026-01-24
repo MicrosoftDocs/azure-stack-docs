@@ -17,6 +17,7 @@ This article describes how to create a Cluster by using the Azure Command Line I
 
 - Verify that Network Fabric Controller and Cluster Manager exist in your Azure region
 - Verify that Network Fabric is successfully provisioned
+- Configure managed identities and user-provided resources (Log Analytics Workspace, Storage Account, Key Vault) with correct role assignments. These resources are validated before deployment proceeds. See [Cluster Managed Identity and User Provided Resources](howto-cluster-managed-identity-user-provided-resources.md).
 
 ## API guide and metrics
 

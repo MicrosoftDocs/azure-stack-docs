@@ -35,6 +35,8 @@ Patch runtime release is produced monthly in between the minor releases. These r
 
 ### Workflow overview
 
+Before a runtime upgrade proceeds, the platform validates that user-provided Azure resources (Log Analytics Workspace, Storage Account, and Key Vault) are accessible using the cluster's managed identity. This validation ensures the cluster can continue to use these resources after the upgrade completes. If validation fails, the upgrade action reports the failure and doesn't proceed until the issue is resolved. For configuration details, see [Cluster Managed Identity and User Provided Resources](./howto-cluster-managed-identity-user-provided-resources.md).
+
 Starting a runtime upgrade is defined under [Upgrading cluster runtime via Azure CLI](./howto-cluster-runtime-upgrade.md).
 
 The runtime upgrade starts by upgrading the three management servers designated as the control plane nodes. The spare control plane server is the first server to upgrade. The last control plane server deprovisions and transitions to `Available` state. These servers are updated serially and proceed only when each completes. The remaining management servers are segregated into two groups. The runtime upgrade will now leverage two management groups, instead of a single group. Each group is upgraded in two stages and sequentially with 50% success threshold in each group. Introducing this capability allows for components running on the management servers to ensure resiliency during the runtime upgrade by applying affinity rules. For this release, each CSN will leverage this functionality by placing one instance in each management group. No customer interaction with this functionality. There may be additional labels seen on management nodes to identify the groups.

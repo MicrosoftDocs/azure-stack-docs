@@ -32,6 +32,85 @@ For information on using the API to update Cluster managed identities, see [Upda
 - Storage Account managed identity support requires the `2024-07-01` or later version of the NetworkCloud API.
 - Key Vault and Log Analytics Workspace managed identity support requires the `2025-02-01` or later version of the NetworkCloud API.
 
+## Resource validation
+
+Operator Nexus automatically validates that user-provided resources (Storage Account, Log Analytics Workspace, and Key Vault) are accessible using the configured managed identity. Validation runs at key lifecycle stages to ensure that cluster operations can succeed.
+
+### When validation occurs
+
+Validation is triggered during the following cluster lifecycle events:
+
+- **Cluster deployment** - Gates the "Validate Azure prerequisites" step before deployment proceeds
+- **Cluster updates** - When resource settings or managed identities change
+- **Cluster runtime upgrades** - Before upgrade proceeds to ensure resources remain accessible
+- **Runtime monitoring** - Periodic revalidation when issues are detected
+
+### What is validated
+
+Each user-provided resource undergoes a connectivity and permissions check using the configured managed identity:
+
+| Resource                | Validation test                                        | Success criteria                                                         |
+|-------------------------|--------------------------------------------------------|--------------------------------------------------------------------------|
+| Log Analytics Workspace | Calls the GetSharedKeys API using the managed identity | Identity has `Log Analytics Contributor` role on the workspace           |
+| Storage Account         | Uploads and commits a test blob to the container       | Identity has `Storage Blob Data Contributor` role on the container       |
+| Key Vault               | Writes, reads, and deletes a test secret               | Identity has `Operator Nexus Key Vault Writer Service Role` on the vault |
+
+### Viewing validation status
+
+Validation status is visible on the Cluster resource through the `AzurePrerequisitesReady` condition.
+
+#### Azure portal
+
+1. Navigate to your Cluster resource in the Azure portal.
+2. Select **JSON View** to see the resource properties.
+3. Look for the `conditions` array and find the `AzurePrerequisitesReady` condition.
+
+The condition shows:
+
+- **Status**: `True` (validation passed), `False` (validation failed), or `Unknown` (validation pending)
+- **Message**: Human-readable summary including timestamps or error details
+
+#### Azure CLI
+
+Use the following command to check validation status:
+
+```azurecli
+az networkcloud cluster show --name "<CLUSTER_NAME>" \
+  --resource-group "<CLUSTER_RG>" \
+  --subscription "<SUBSCRIPTION>" \
+  --query "conditions[?contains(type, 'AzurePrerequisitesReady')]"
+```
+
+Example output for successful validation:
+
+```json
+[
+  {
+    "type": "AzurePrerequisitesReady",
+    "status": "True",
+    "message": "Azure prerequisite validation succeeded at 2026-01-23T10:30:00Z"
+  }
+]
+```
+
+### Validation during deployment and upgrades
+
+During cluster deployment or runtime upgrade, validation runs as the "Validate Azure prerequisites" step. If validation fails:
+
+1. The action's step state shows `Failed` with an error message.
+2. The action's `ActionStatus.Error.Message` contains the validation failure details.
+3. The deployment or upgrade doesn't proceed until the issue is resolved.
+
+To view the action status, check the `actionStates` property on the cluster or use:
+
+```azurecli
+az networkcloud cluster show --name "<CLUSTER_NAME>" \
+  --resource-group "<CLUSTER_RG>" \
+  --query "actionStates"
+```
+
+For troubleshooting validation failures, see [Troubleshoot validation failures](#troubleshoot-validation-failures).
+
 ## Operator Nexus Clusters with User Assigned Managed Identities (UAMI)
 
 It's a best practice to first define all of the user provided resources (Storage Account, LAW, and Key Vault), the managed identities associated with those resources and then assign the managed identity the appropriate access to the resource. If these steps aren't done before Cluster creation, the steps need to be completed before Cluster deployment.
@@ -41,6 +120,9 @@ The impacts of not configuring these resources for a new Cluster are as follows:
 - _Storage Account:_ Cluster creation fails as there's a check to ensure that `commandOutputSettings` exists on the Cluster input.
 - _LAW:_ Cluster deployment fails as the LAW (Log Analytics Workspace) is required to install software extensions during deployment.
 - _Key Vault:_ Credential rotations fail as there's a check to ensure write access to the user provided Key Vault before performing credential rotation.
+
+> [!IMPORTANT]
+> Starting with API version `2025-02-01`, Operator Nexus validates resource accessibility during cluster deployment and upgrades. Even if resources are defined, deployment fails if the managed identity lacks proper permissions on any resource. Ensure role assignments are complete before initiating deployment. See [Resource validation](#resource-validation) for details.
 
 Updating the Cluster can be done at any time. Changing the LAW settings causes a brief disruption in sending metrics to the LAW as the extensions that use the LAW need to be reinstalled.
 
@@ -644,3 +726,80 @@ In the Azure portal, the Storage Account information can be viewed and modified 
 :::image type="content" source="media/bring-your-own-resource/storage-account-details-inline.png" alt-text="Screenshot of Azure portal Operator Nexus user provided Storage Account settings." lightbox="media/bring-your-own-resource/storage-account-details.png":::
 
 ---
+
+## Troubleshoot validation failures
+
+When resource validation fails, the cluster's `AzurePrerequisitesReady` condition and action status display error information. This section provides guidance for resolving common validation failures.
+
+### General troubleshooting steps
+
+1. **Check the validation status** on the cluster using the Azure portal or CLI (see [Viewing validation status](#viewing-validation-status)).
+2. **Identify the failing resource** from the error message (Log Analytics Workspace, Storage Account, or Key Vault).
+3. **Verify the managed identity** is correctly assigned to the cluster.
+4. **Confirm role assignments** on the target resource for the managed identity.
+5. **Check firewall rules** if the resource has network restrictions.
+
+### Log Analytics Workspace validation errors
+
+| Error code                             | Description                                               | Remediation                                                                                                             |
+|----------------------------------------|-----------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------|
+| `LogAnalyticsWorkspaceIdMissing`       | Workspace ID wasn't provided in `analyticsOutputSettings` | Set `analyticsOutputSettings.analyticsWorkspaceId` to the full ARM resource ID of your workspace                        |
+| `LogAnalyticsWorkspaceIdInvalid`       | Workspace ID isn't a valid ARM resource ID                | Verify the format: `/subscriptions/{sub}/resourceGroups/{rg}/providers/Microsoft.OperationalInsights/workspaces/{name}` |
+| `LogAnalyticsWorkspaceAccessDenied`    | Managed identity lacks permissions on the workspace       | Assign the `Log Analytics Contributor` role to the managed identity on the workspace                                    |
+| `LogAnalyticsWorkspaceNotFound`        | The specified workspace doesn't exist                     | Verify the workspace exists and the resource ID is correct                                                              |
+| `LogAnalyticsWorkspaceIdentityMissing` | No identity configured for workspace access               | Set `analyticsOutputSettings.identityType` and `identityResourceId` (for UAMI)                                          |
+
+### Storage Account validation errors
+
+| Error code | Description | Remediation |
+| ---------- | ----------- | ----------- |
+| `BlobContainerUrlMissing` | Container URL wasn't provided in `commandOutputSettings` | Set `commandOutputSettings.containerUrl` to your blob container URL |
+| `BlobContainerUrlInvalid` | Container URL format is incorrect | Use format: `https://{account}.blob.core.windows.net/{container}` |
+| `BlobContainerAccessDenied` | Managed identity lacks permissions on the container | Assign `Storage Blob Data Contributor` role to the managed identity on the storage account or container |
+| `BlobContainerNotFound` | The specified container doesn't exist | Create the blob container in your storage account |
+| `BlobContainerIdentityMissing` | No identity configured for storage access | Set `commandOutputSettings.identityType` and `identityResourceId` (for UAMI) |
+
+**Storage Account firewall configuration:**
+
+If your storage account has firewall rules enabled:
+
+1. Ensure `Allow Azure services on the trusted services list to access this storage account` is selected under **Exceptions**.
+2. Add the IP addresses of users who need to access run command output to the firewall allowlist.
+
+### Key Vault validation errors
+
+| Error code                   | Description                                          | Remediation                                                                              |
+|------------------------------|------------------------------------------------------|------------------------------------------------------------------------------------------|
+| `KeyVaultUriMissing`         | Vault URI wasn't provided in `secretArchiveSettings` | Set `secretArchiveSettings.vaultUri` to your Key Vault URI                               |
+| `KeyVaultUriInvalid`         | Vault URI format is incorrect                        | Use format: `https://{vault-name}.vault.azure.net/`                                      |
+| `KeyVaultAccessDenied`       | Managed identity lacks permissions on the vault      | Assign `Operator Nexus Key Vault Writer Service Role (Preview)` to the managed identity  |
+| `KeyVaultNotFound`           | The specified Key Vault doesn't exist                | Verify the Key Vault exists and the URI is correct                                       |
+| `KeyVaultIdentityMissing`    | No identity configured for Key Vault access          | Set `secretArchiveSettings.identityType` and `identityResourceId` (for UAMI)             |
+| `KeyVaultSecretCreateFailed` | Failed to write test secret                          | Check Key Vault access policies or RBAC permissions; ensure RBAC is enabled on the vault |
+| `KeyVaultSecretReadFailed`   | Failed to read test secret                           | Verify the identity has read permissions on secrets                                      |
+
+**Key Vault firewall configuration:**
+
+If your Key Vault has firewall rules enabled:
+
+1. Ensure `Allow trusted Microsoft services to bypass this firewall` is selected under **Exceptions**.
+2. Add the IP addresses of users who need direct Key Vault access to the firewall allowlist.
+
+### Retrying validation
+
+After correcting the resource configuration or role assignments, validation automatically retries on the next cluster reconciliation (typically within 2 minutes). For deployment or upgrade actions that failed due to validation:
+
+1. Fix the underlying resource or permission issue.
+2. The action automatically retries if it's still in progress, or
+3. Restart the deployment or upgrade action if it was marked as failed.
+
+### Getting additional help
+
+If validation continues to fail after following the remediation steps:
+
+1. Check the managed identity's principal ID matches what's assigned on the resources.
+2. Verify there are no Azure Policy restrictions blocking access.
+3. Review Azure Activity Logs on the target resource for denied requests.
+4. Contact Microsoft Support with the cluster resource ID and validation error details.
+
+For comprehensive troubleshooting guidance including additional error codes and common scenarios, see [Troubleshoot Azure prerequisites validation](troubleshoot-azure-prerequisites-validation.md).
