@@ -17,7 +17,7 @@ ms.subservice: hyperconverged
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
-This article describes how to create Azure Local virtual machines (VMs) enabled by Azure Arc, starting with the VM images that you created on your Azure Local instance. You can create Azure Local VMs by by using the Azure CLI, the Azure portal, or an Azure Resource Manager template (ARM template).
+This article describes how to create Azure Local virtual machines (VMs) enabled by Azure Arc, starting with the VM images that you created on your Azure Local instance. You can create Azure Local VMs by using the Azure CLI, the Azure portal, or an Azure Resource Manager template (ARM template).
 
 ## About Azure Local resources
 
@@ -63,8 +63,7 @@ Before you create an Azure Local VM, make sure that you meet the following prere
 [!INCLUDE[hci-vm-prerequisites](../includes/hci-vm-prerequisites.md)]
 
 - Have access to a logical network that you associate with the VM of your Azure Local instance. For more information, see [create a logical network](../manage/create-logical-networks.md).
-- Make sure that Terraform is installed and up to date on your machine.
-    - To verify your Terraform version, run the `terraform -v` command.
+- Make sure that Terraform is installed and up to date on your machine. To verify your Terraform version, run the `terraform -v` command.
 
         Sample output:
     
@@ -77,8 +76,8 @@ Before you create an Azure Local VM, make sure that you meet the following prere
         + provider registry.terraform.io/hashicorp/random V3.6.3
         ```
     
-- Make sure that Git is installed and up to date on your machine.
-    -  To verify your version of Git, run the `git --version` command.
+- Make sure that Git is installed and up to date on your machine. To verify your version of Git, run the `git --version` command.
+
 ---
 
 ## Create Azure Local VMs
@@ -101,10 +100,9 @@ Follow these steps on the client by running the `az cli` command that's connecte
 
 Depending on the type of network interface that you created, you can create a VM that has a network interface with a static IP or one with a dynamic IP allocation.
 
-> [!NOTE]
-> If you need more than one network interface with a static IP for your VM, create one or more interfaces now before you create the VM. Adding a network interface with a static IP after the VM is provisioned isn't supported.
+If you need more than one network interface with a static IP for your VM, create one or more interfaces now before you create the VM. Adding a network interface with a static IP after the VM is provisioned isn't supported.
 
-Create a VM that uses specific memory and processor counts on a specified storage path.
+Now create a VM that uses specific memory and processor counts on a specified storage path.
 
 1. Set some parameters:
 
@@ -334,8 +332,7 @@ Follow these steps in the Azure portal for your Azure Local instance.
 
     1. **Virtual machine name**: Enter a name for your VM. The name should follow all the naming conventions for Azure VMs.  
     
-        > [!IMPORTANT]
-        > VM names should be in lowercase letters and can include hyphens and numbers.
+        VM names should be in lowercase letters and can include hyphens and numbers.
 
     1. **Custom location**: Select the custom location for your VM. The custom locations are filtered to show only those locations that are enabled for your Azure Local instance. The VM kind is automatically set to **Azure Local**.
 
@@ -365,9 +362,9 @@ Follow these steps in the Azure portal for your Azure Local instance.
 
     :::image type="content" source="./media/create-arc-virtual-machines/arc-vm-guest-management.png" alt-text="Screenshot that shows the VM extensions section with the Enable guest management checkbox selected." lightbox="./media/create-arc-virtual-machines/arc-vm-guest-management.png":::
 
-    > [!NOTE]
-    > - Add at least one network interface by using the **Networking** tab to finish the guest management setup.
-    > - The network interface that you enable must have a valid IP address and internet access. For more information, see [Azure Local VM management networking](../manage/azure-arc-vm-management-networking.md#arc-vm-virtual-network).
+    Add at least one network interface by using the **Networking** tab to finish the guest management setup.
+    
+    The network interface that you enable must have a valid IP address and internet access. For more information, see [Azure Local VM management networking](../manage/azure-arc-vm-management-networking.md#arc-vm-virtual-network).
 
 1. In the **VM proxy configuration** section, select a connectivity method. This method is used to onboard the Azure Connected Machine Agent on your VM. You have two options:
     - **Public endpoint**: For direct connection to the internet without a proxy.
@@ -407,7 +404,7 @@ Follow these steps in the Azure portal for your Azure Local instance.
 
     1. Select **Enable domain join**.
 
-    1. Only the Microsoft Entra domain join is supported and selected by default.  
+    1. Only the Microsoft Entra domain join is supported and selected by default.
 
     1. Enter the user principal name (UPN) of a Microsoft Entra user who has privileges to join the VM to your domain.
 
@@ -434,15 +431,14 @@ Follow these steps in the Azure portal for your Azure Local instance.
 
 1. **(Optional)**: Create or add a network interface for the VM.
 
-    > [!NOTE]
-    > - If you enabled guest management, you must add at least one network interface.
-    > - If you need more than one network interface with static IPs for your VM, create one or more interfaces now before you create the VM. Adding a network interface with static IP after the VM is provisioned isn't supported.
+    - If you enabled guest management, you must add at least one network interface.
+    - If you need more than one network interface with static IPs for your VM, create one or more interfaces now before you create the VM. Adding a network interface with static IP after the VM is provisioned isn't supported.
 
     :::image type="content" source="./media/create-arc-virtual-machines/add-new-network-interface.png" alt-text="Screenshot that shows the network interface added during creation of a VM." lightbox="./media/create-arc-virtual-machines/add-new-network-interface.png":::
 
     1. Enter a name for the network interface.
     1. From the dropdown list, select the network. Based on the network that you select, you see the IPv4 type automatically populate as **Static** or **DHCP**.
-    1. For a **Static** IP, for **Allocation Method**, select **Automatic** or **Manual**. For **Manual** IP, provide an IP address.
+    1. For a static IP, for **Allocation Method**, select **Automatic** or **Manual**. For a manual IP, provide an IP address.
     1. Select **Add**.
 
 1. **(Optional)**: Add tags to the VM resource if necessary.
@@ -743,7 +739,7 @@ To deploy the ARM template, Follow these steps.
 
    :::image type="content" source="./media/create-arc-virtual-machines/edit-template.png" alt-text="Screenshot that shows the template being edited in the Azure portal." lightbox="./media/create-arc-virtual-machines/edit-template.png":::
 
-1. The pane where you enter deployment values opens. Again, select the resource group. You can use the other default values. When you're finished entering values, select **Review + create**
+1. The pane where you enter deployment values opens. Again, select the resource group. You can use the other default values. After you finish entering values, select **Review + create**
 
    :::image type="content" source="./media/create-arc-virtual-machines/filled-basics.png" alt-text="Screenshot that shows the filled Basics tab for a template in the Azure portal." lightbox="./media/create-arc-virtual-machines/filled-basics.png":::
 
@@ -751,7 +747,7 @@ To deploy the ARM template, Follow these steps.
 
    :::image type="content" source="./media/create-arc-virtual-machines/filled-review-create.png" alt-text="Screenshot that shows the Review + create tab for a template in the Azure portal." lightbox="./media/create-arc-virtual-machines/filled-review-create.png":::
 
-1. When the deployment finishes, you see the status of the deployment as complete. After the deployment has successfully finished, a VM is created on your Azure Local instance.
+1. After the deployment finishes, you see the status of the deployment as complete and a VM is created on your Azure Local instance.
     
    <!--:::image type="content" source="./create-arc-virtual-machines/view-resource-group.png" alt-text="Screenshot of resource group with storage account and virtual network in Azure portal." lightbox="./media/create-arc-virtual-machines/review-virtual-machine.png":::-->
 
@@ -765,11 +761,11 @@ To deploy the ARM template, Follow these steps.
 
 # [Terraform template](#tab/terraformtemplate)
 
-You can use the Azure Verified Module (AVM) that contains the Terraform template to create VMs. This module ensures that your Terraform templates meet the rigorous Microsoft standards for quality, security, and operational excellence, enabling you to seamlessly deploy and manage on Azure. With this template, you can create one or multiple VMs on your cluster.
+You can use the Azure Verified Module (AVM) that contains the Terraform template to create VMs. This module ensures that your Terraform templates meet Microsoft standards for quality, security, and operational excellence to help you seamlessly deploy and manage your VMs on Azure. With this template, you can create one or multiple VMs on your cluster.
 
 ### Steps to use the Terraform template
 
-1. Download the Terraform template from [Azure verified module](https://registry.terraform.io/modules/Azure/avm-res-azurestackhci-virtualmachineinstance/azurerm/).
+1. Download the Terraform template from the [Azure Verified Module](https://registry.terraform.io/modules/Azure/avm-res-azurestackhci-virtualmachineinstance/azurerm/).
 1. Go to the **examples** folder in the repository, and look for the following subfolders:
     - **default**: Creates one VM instance.
     - **multi**: Creates multiple VM instances.
