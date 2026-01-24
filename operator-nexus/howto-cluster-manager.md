@@ -52,6 +52,7 @@ The compute needs increase during upgrades and may double depending on the type 
 | provisioningState                 | The provisioning status of the latest operation on the Cluster Manager. One of: Succeeded, Failed, Provisioning, Accepted, Updating.                                                                                                                  |
 | detailedStatus                    | The detailed statuses that provide additional information about the status of the Cluster Manager.                                                                                                                                                    |
 | detailedStatusMessage             | The descriptive message about the current detailed status.                                                                                                                                                                                            |
+| relayConfiguration                | The relay configuration for the Cluster Manager, containing the Azure Relay namespace resource ID. Available in API version `2026-01-01-preview` and later. See [Manage private endpoints for Arc Relay connectivity](howto-cluster-manager-relay-private-endpoint.md). |
 
 ## Cluster Manager Identity
 
@@ -370,7 +371,8 @@ To delete the Cluster Manager, use Portal, CLI, or PowerShell.
 
 After you successfully created the Network Fabric Controller and the Cluster Manager, the next step is to create a [Network Fabric](./howto-configure-network-fabric.md).
 
-## Useful links
+## Related content
 
+- [Manage private endpoints for Arc Relay connectivity](howto-cluster-manager-relay-private-endpoint.md)
 - [NetworkCloud REST APIs Reference](/rest/api/networkcloud/)
 - [NetworkCloud PowerShell Reference](/powershell/module/az.networkcloud/)
