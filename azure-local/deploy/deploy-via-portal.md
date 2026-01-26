@@ -3,7 +3,7 @@ title: Deploy an Azure Local instance using the Azure portal
 description: Learn how to deploy an Azure Local instance from the Azure portal
 author: alkohli
 ms.topic: how-to
-ms.date: 12/19/2025
+ms.date: 01/22/2026
 ms.author: alkohli
 ms.service: azure-local
 ms.custom: sfi-image-nochange
@@ -107,7 +107,7 @@ On the **Configuration** tab, choose whether to create a new configuration for t
 2. Choose traffic types to group together on a set of network adapters–and which types to keep physically isolated on their own adapters.
 
     There are three types of traffic we configure:
-    * **Management** traffic between this system, your management PC, and Azure; also Storage Replica traffic.
+    * **Management** traffic between this system, your management PC, and Azure.
     * **Compute** traffic to or from VMs and containers on this system.
     * **Storage** (SMB) traffic between machines in a multi-node system.
 
