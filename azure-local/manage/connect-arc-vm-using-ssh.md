@@ -154,6 +154,8 @@ For Windows VMs only, you can use RDP over SSH to connect to an Azure Local VM. 
 
 ## Connect to an Azure Local VM using VM Connect (preview)
 
+[!INCLUDE [important](../includes/hci-preview.md)]
+
 ### About VM Connect
 
 VM Connect allows you to connect to both Windows and Linux Azure Local VMs that don't have network connectivity or have boot failures. Use it for troubleshooting and recovery scenarios. VM Connect is in preview starting with Azure Local version 2601. 
