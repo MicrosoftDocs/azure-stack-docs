@@ -94,7 +94,6 @@ The following table compares select technical features of Azure Local and Window
 | Storage Spaces Direct | Yes | Yes |
 | Storage Spaces Direct thin provisioning | Yes | Yes |
 | Resilient file system (ReFS) deduplication | Yes | Yes |
-| Stretch clustering for disaster recovery with Storage Spaces Direct | No | Yes |
 | Software-Defined Networking | Yes | Yes |
 | Secured-core Server| Yes | Yes |
 | Simplified host networking with Network ATC | Yes | Yes |
