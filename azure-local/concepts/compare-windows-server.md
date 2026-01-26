@@ -5,7 +5,7 @@ ms.topic: product-comparison
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 12/19/2025
+ms.date: 01/26/2026
 ---
 
 # Compare Azure Local to Windows Server
@@ -94,15 +94,13 @@ The following table compares select technical features of Azure Local and Window
 | Storage Spaces Direct | Yes | Yes |
 | Storage Spaces Direct thin provisioning | Yes | Yes |
 | Resilient file system (ReFS) deduplication | Yes | Yes |
-| Stretch clustering for disaster recovery with Storage Spaces Direct | Yes<sup>2</sup> | Yes |
+| Stretch clustering for disaster recovery with Storage Spaces Direct | No | Yes |
 | Software-Defined Networking | Yes | Yes |
 | Secured-core Server| Yes | Yes |
 | Simplified host networking with Network ATC | Yes | Yes |
 | Cluster-Aware OS feature updates | Yes | Yes |
 
 <sup>1</sup> [Dynamic processor compatibility mode](/windows-server/virtualization/hyper-v/manage/dynamic-processor-compatibility-mode) ensures compatibility for online (live) migrations between hosts with different processor generations.
-
-<sup>2</sup> Stretched clusters that use Storage Replication are available only in Azure Local, version 22H2. For info on newer versions, see [Evolving Stretch Clustering for Azure Local](https://techcommunity.microsoft.com/blog/azurearcblog/evolving-stretch-clustering-for-azure-local/4352751).
 
 For more information, see [What's New in Azure Local](../whats-new.md) and [Using Azure Local on a single machine](single-server-clusters.md).
 
