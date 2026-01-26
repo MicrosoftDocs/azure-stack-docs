@@ -137,9 +137,22 @@ Ensure that the following firewall rules are configured in your on-premises fire
 
 Ensure that the following firewall rules are configured in your on-premises firewall for Active Directory (local security authority).
 
-| Rule | Action | Source | Destination | Service | Ports |
-|:--|:--|:--|:--|:--|:--|
-| Allow inbound/outbound connectivity to the Active Directory Web services (ADWS) and Active Directory Management Gateway Service | Allow | Azure Local | Active Directory Services | TCP | 9389 |
+| Client Source Port | Destination Port | Action | AD service |
+|:--|:--|:--|:--|
+| 49152-65535/UDP	  | 123/UDP	     | Allow | W32Time                              |
+| 49152-65535/TCP	  | 135/TCP	     | Allow | RPC Endpoint Mapper                  |
+| 49152-65535/TCP	  | 464/TCP/UDP	     | Allow | Kerberos password change             |
+| 49152-65535/TCP	  | 49152-65535/TCP  | Allow | RPC for LSA, SAM, NetLogon (*)       |
+| 49152-65535/TCP/UDP	  | 389/TCP/UDP	     | Allow | LDAP				    |
+| 49152-65535/TCP	  | 636/TCP	     | Allow | LDAP SSL				    |
+| 49152-65535/TCP	  | 3268/TCP	     | Allow | LDAP GC				    |
+| 49152-65535/TCP	  | 3269/TCP	     | Allow | LDAP GC SSL			    |
+| 53, 49152-65535/TCP/UDP | 53/TCP/UDP	     | Allow | DNS				    |
+| 49152-65535/TCP	  | 49152-65535/TCP  | Allow | FRS RPC (*)			    |
+| 49152-65535/TCP/UDP	  | 88/TCP/UDP	     | Allow | Kerberos				    |
+| 49152-65535/TCP/UDP	  | 445/TCP	     | Allow | SMB (**)				    |
+| 49152-65535/TCP	  | 49152-65535/TCP  | Allow | DFSR RPC (*)			    |
+| 49152-65535/TCP	  | 9389/TCP	     | Allow | Active Directory Web Services (ADWS) |
 
 ### Network Time Protocol
 
