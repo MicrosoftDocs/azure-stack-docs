@@ -28,6 +28,7 @@ Trusted launch is a security type that can be specified when you create Azure Lo
 | vTPM | Virtualized version of a hardware TPM that serves as a dedicated vault for keys, certificates, and secrets.  |
 | vTPM state transfer| Preserves vTPM when the VM migrates or fails over within a cluster. |
 | Virtualization-based security (VBS) | Guest in the VM can create isolated regions of memory using VBS support. |
+| Boot integrity verification | Verifies whether the VM started in a known good state (preview). See [Guest attestation](./trusted-launch-guest-attestation.md). |
 
 
 ## Guidance
