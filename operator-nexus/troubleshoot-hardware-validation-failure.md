@@ -23,6 +23,9 @@ For background information about hardware validation, when it runs, and what it 
 1. Request access to the cluster's Log Analytics workspace (LAW).
 1. Access to the BMC web UI or a jumpbox that allows the `racadm` utility to run.
 
+> [!TIP]
+> If you arrived here from a failed Replace action, see [Replace a Bare Metal Machine](./howto-baremetal-functions.md#replace-a-bare-metal-machine) for context on the Replace workflow.
+
 ## Locate hardware validation results
 
 If hardware validation failed during a Bare Metal Machine (BMM) `Replace` action, detailed error results should be available in the `Replace` action result and BMM Activity Log. For more information, see [Replace a Bare Metal Machine](./howto-baremetal-functions.md#replace-a-bare-metal-machine).
