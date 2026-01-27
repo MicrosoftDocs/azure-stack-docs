@@ -542,10 +542,4 @@
       href: reference-operator-nexus-skus.md
     - name: Password By Key Vault Reference
       href: reference-key-vault-credential.md
-- name: Release Notes
-  items:
-    - name: 2024
-      expanded: false
-      items:
-        - name: 2404.2
-          href: release-notes-2404-2.md
+
