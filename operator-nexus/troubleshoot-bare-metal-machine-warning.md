@@ -14,6 +14,12 @@ ms.reviewer: ekarandjeff
 
 This document provides basic troubleshooting information for Bare Metal Machine (BMM) resources that are reporting a _Warning_ message in the BMM detailed status message.
 
+## Prerequisites
+
+- Access to the Azure portal or Azure CLI
+- Permissions to view and manage Bare Metal Machine resources
+- For diagnostic commands: SSH access via BareMetalMachineKeySet (see [Manage emergency access to a Bare Metal Machine](./howto-baremetal-bmm-ssh.md))
+
 ## Symptoms
 
 The Detailed status message of the Bare Metal Machine (Operator Nexus) resource includes one or more of the following.
@@ -55,7 +61,8 @@ az networkcloud baremetalmachine run-read-command \
 - Replace `<ResourceGroup_Name>` with the name of the resource group containing the BMM resources.
 - Replace `rack1control01` with the name of a BMM resource for a healthy Kubernetes control plane node, from which to execute the `kubectl get` command.
 - Replace `rack1compute01` with the name of the affected BMM.
-- For more information about the `run-read-command` feature, see [BareMetal Run-Read Execution](./howto-baremetal-run-read.md).
+
+For more information about the `run-read-command` feature and available diagnostic commands, see [Troubleshoot Bare-Metal Machines by Using the run-read Command](./howto-baremetal-run-read.md).
 
 Review the `lastTransitionTime` and `message` fields for more information about the corresponding error condition, as shown in the following example output.
 
