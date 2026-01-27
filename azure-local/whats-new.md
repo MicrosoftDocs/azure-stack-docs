@@ -5,7 +5,7 @@ ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 01/22/2026
+ms.date: 01/23/2026
 ms.subservice: hyperconverged
 ---
 
@@ -24,9 +24,9 @@ This release includes various reliability improvements and other bug fixes.
 
     - In 2601 release, all the new and existing deployments of Azure Local run the new OS version **26100.32230** (download from the Azure portal).
 
-        - You also need a driver that's compatible with OS version **26100.32230** or Windows Server 2025.
+    - You also need a driver that's compatible with OS version **26100.32230** or Windows Server 2025.
 
-        - For Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog), the OS is preinstalled. Work with your Original Equipment Manufacturer (OEM) to get a compatible OS image and a compatible driver.
+    - For Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog), the OS is preinstalled. Work with your Original Equipment Manufacturer (OEM) to get a compatible OS image and a compatible driver.
         
 - **.NET updates**: This build uses .NET version **8.0.22** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
 
@@ -36,7 +36,7 @@ This release includes various reliability improvements and other bug fixes.
 
 - **VM Connect for Azure Local VMs (Preview)**: Starting with 2601 release, you can connect to Windows and Linux based Azure Local VMs that don't have network connectivity or have boot failures. 
 
-    For more information, see [VM Connect for Azure Local VMs](./manage/connect-arc-vm-using-ssh.md#connect-to-an-azure-local-vm-using-ssh-and-rdp-over-ssh).
+    For more information, see [VM Connect for Azure Local VMs](./manage/connect-arc-vm-using-ssh.md#connect-to-an-azure-local-vm-using-vm-connect-preview).
 
 - **Unique ID for data disks**: In 2601 release, you can identify data disks on your Azure Local instance with a new property called **Unique ID**. The unique ID matches the `UniqueId` of the data disk (`Get-Disk | Select-Object UniqueId`).
 
@@ -53,6 +53,8 @@ This release includes various reliability improvements and other bug fixes.
     For more information, see [Defend against firmware level attacks](/windows-server/security/secured-core-server#defend-against-firmware-level-attacks).
 
 - **Enable 26100.XXXX (24H2) security baseline for existing Azure Local deployments**: Starting with 2601 release, customers who perform the solution upgrade on an existing deployment can now match the security posture of newly deployed systems (post-upgrade actions) with new cmdlets to apply 26100.XXXX security baseline.
+
+- **Pre-upgrade CredSSP validation**: To ensure successful upgrades, a new pre-upgrade check is added that validates that CredSSP isn't disabled on existing Azure Local instances.
 
 ::: moniker-end
 

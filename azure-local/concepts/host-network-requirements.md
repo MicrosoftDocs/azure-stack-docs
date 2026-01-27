@@ -20,13 +20,9 @@ For information on how to simplify host networking using Network ATC, see [Simpl
 
 Azure Local network traffic can be classified by its intended purpose:
 
-- **Management traffic:** Traffic to or from outside the local system. For example, storage replica traffic or traffic used by the administrator for management of the system like Remote Desktop, Windows Admin Center, Active Directory, etc.
+- **Management traffic:** Traffic to or from outside the local system. For example, traffic used by the administrator for management of the system like Remote Desktop, Windows Admin Center, Active Directory, etc.
 - **Compute traffic:** Traffic originating from or destined to a virtual machine (VM).
 - **Storage traffic:** Traffic using Server Message Block (SMB), for example Storage Spaces Direct or SMB-based live migration. This traffic is layer-2 traffic and is not routable.
-
-
-> [!IMPORTANT]
-> Storage replica uses non-RDMA based SMB traffic. This and the directional nature of the traffic (North-South) makes it closely aligned to that of "management" traffic listed above, similar to that of a traditional file share.
 
 ## Select a network adapter
 
@@ -282,38 +278,11 @@ Here is the example bandwidth allocation table:
 
 \** 50 percent is an example bandwidth reservation.
 
-## Stretched clusters
+## Rack aware clustering
 
-Stretched clusters provide disaster recovery that spans multiple datacenters. In its simplest form, a stretched cluster of Azure Local looks like this:
+Rack aware clustering improves fault tolerance and data distribution in an Azure Local instance. This architecture allows you to cluster nodes that are strategically placed across two physical racks in separate rooms or buildings, connected by high bandwidth and low latency networking. For an overview of this feature, see [Azure Local rack aware clustering overview](./rack-aware-cluster-overview.md).
 
-
-
-:::image type="content" source="media/host-network-requirements/stretched-cluster.png" alt-text="Diagram that shows a stretched cluster." lightbox="media/host-network-requirements/stretched-cluster.png":::
-
-### Stretched cluster requirements
-
-> [!IMPORTANT]
-> Stretched cluster functionality is only available in Azure Local, version 22H2.
-
-Stretched clusters have the following requirements and characteristics:
-
-- RDMA is limited to a single site, and isn't supported across different sites or subnets.
-
-- Machines in the same site must reside in the same rack and Layer-2 boundary.
-
-- Host communication between sites must cross a Layer-3 boundary; stretched Layer-2 topologies aren't supported.
-
-- Have enough bandwidth to run the workloads at the other site. In the event of a failover, the alternate site will need to run all traffic. We recommend that you provision sites at 50 percent of their available network capacity. This isn't a requirement, however, if you are able to tolerate lower performance during a failover.
-
-- Adapters used for communication between sites:
-
-  - Can be physical or virtual (host vNIC). If adapters are virtual, you must provision one vNIC in its own subnet and VLAN per physical NIC.
-
-  - Must be on their own subnet and VLAN that can route between sites.
-
-  - RDMA must be disabled by using the `Disable-NetAdapterRDMA` cmdlet. We recommend that you explicitly require Storage Replica to use specific interfaces by using the `Set-SRNetworkConstraint` cmdlet.
-
-  - Must meet any additional requirements for Storage Replica.
+For network requirements and architecture, see [Azure Local rack aware cluster reference architecture](./rack-aware-cluster-reference-architecture.md).
 
 ## Next steps
 
