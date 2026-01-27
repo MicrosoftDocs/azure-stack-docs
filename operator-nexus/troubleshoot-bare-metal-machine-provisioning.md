@@ -18,6 +18,9 @@ Provisioning uses the Preboot eXecution Environment (PXE) interface to load the 
 
 [!INCLUDE [prerequisites-azure-cli-bare-metal-machine-actions](./includes/baremetal-machines/prerequisites-azure-cli-bare-metal-machine-actions.md)]
 
+1. For BMC diagnostic access: See [Manage emergency access to a Bare Metal Machine using the `az networkcloud cluster bmckeyset`](./howto-baremetal-bmc-ssh.md)
+1. For running diagnostic commands on control plane nodes: See [Troubleshoot Bare-Metal Machines by Using the run-read Command](./howto-baremetal-run-read.md)
+
 ## Bare Metal Machine roles
 
 For a specific version, roles are required to manage and operate the underlying Kubernetes cluster.
@@ -169,6 +172,8 @@ Verify that the MAC address is using `racadm` from a jumpbox that has access to 
 racadm --nocertwarn -r $IP -u $BMC_USR -p $BMC_PWD getsysinfo | grep "MAC Address "        #BMC MAC
 racadm --nocertwarn -r $IP -u $BMC_USR -p $BMC_PWD getsysinfo | grep "NIC.Embedded.1-1-1"  #Boot MAC
 ```
+
+For detailed BMC access procedures and additional diagnostic commands, see [Manage emergency access to a Bare Metal Machine using the `az networkcloud cluster bmckeyset`](./howto-baremetal-bmc-ssh.md).
 
 If the MAC address supplied to the cluster is incorrect, use the Bare Metal Machine `replace` action at [Bare Metal Machine actions](howto-baremetal-functions.md) to correct the addresses.
 
