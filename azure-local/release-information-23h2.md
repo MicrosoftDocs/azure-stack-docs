@@ -3,7 +3,7 @@ title: Azure Local, version 23H2 and 24H2 release information
 description: This article provides the release information for Azure Local, version 23H2 and version 24H2.
 author: alkohli
 ms.author: alkohli
-ms.topic: article
+ms.topic: release-notes
 ms.service: azure-local
 ms.date: 01/08/2026
 ms.subservice: hyperconverged
