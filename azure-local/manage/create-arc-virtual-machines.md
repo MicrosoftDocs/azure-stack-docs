@@ -139,7 +139,7 @@ Now create a VM that uses specific memory and processor counts on a specified st
     | `memory-mb` |Memory in megabytes allocated to your VM. If not specified, defaults are used.|
     | `processors` |The number of processors allocated to your VM. If not specified, defaults are used.|
     | `storage-path-id` |The associated storage path where the VM configuration and the data are saved.  |
-    | `proxy-configuration` |Use this optional parameter to configure a proxy server for your VM. For more information, see [Create a VM with proxy configured](#create-a-vm-with-proxy-configured).  |
+    | `proxy-configuration` |Use this optional parameter to configure a proxy server for your VM. For more information, see [Create a VM with proxy configured](#create-vm-with-proxy-configured).  |
 
 1. Run the following commands to create the applicable VM:
     

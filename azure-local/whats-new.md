@@ -869,7 +869,7 @@ For more information, see [Deploy via Azure portal](./deploy/deploy-via-portal.m
 In this release:
 
 - You can manage guests through Azure CLI. For more information, see [Enable guest management](./manage/manage-arc-virtual-machines.md).
-- Proxy support is added for Azure Local VMs. For more information, see [Set up proxy for Azure Local VMs](./manage/create-arc-virtual-machines.md#create-a-vm-with-proxy-configured).
+- Proxy support is added for Azure Local VMs. For more information, see [Set up proxy for Azure Local VMs](./manage/create-arc-virtual-machines.md#create-vm-with-proxy-configured).
 - You can select the storage path during the Azure Local VM image creation via the Azure portal. For more information, see [Create an Azure Local VM image from Azure Marketplace via the Azure portal](./manage/virtual-machine-image-azure-marketplace.md).
 
 ### Migration of Hyper-V VMs to Azure Local (preview)
