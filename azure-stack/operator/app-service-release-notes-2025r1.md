@@ -2,7 +2,7 @@
 title: App Service on Azure Stack Hub 25R1 release notes 
 description: Learn about what's new and updated in the App Service on Azure Stack Hub 25R1 release.
 author: apwestgarth
-ms.topic: article
+ms.topic: release notes
 ms.date: 08/20/2025
 ms.author: anwestg
 ms.reviewer:
