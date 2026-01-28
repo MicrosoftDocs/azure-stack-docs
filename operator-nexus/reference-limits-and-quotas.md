@@ -35,7 +35,7 @@ The creation of the Network Fabric related resources is subject to the following
 | Resource Type               | Notes |
 | --------------------------- | -------------------------|
 | Network Fabric Controllers  | Today, its creation depends on underlying Azure components as mentioned in the supporting table under section "Other Azure Resources" |
-| Network Fabrics             | Up to 10 Network Fabric resources per Network Fabric Controller [To be updated] |
+| Network Fabrics             | Up to 10 Network Fabric resources per Network Fabric Controller |
 | Network Devices             | Up to BOM-specified Network devices per Network Fabric |
 | Network Racks               | Up to BOM-specified racks per Network Fabric |
 | Layer 2 Isolation domains   | 3500 isolation domains per Nexus instance |
