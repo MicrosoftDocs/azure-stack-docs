@@ -45,6 +45,9 @@ Validation is triggered during the following cluster lifecycle events:
 - **Cluster runtime upgrades** - Before upgrade proceeds to ensure resources remain accessible
 - **Runtime monitoring** - Periodic revalidation when issues are detected
 
+> [!NOTE]
+> If Azure prerequisites validation succeeded recently (within the last 12 hours), deployment/upgrade actions can proceed without forcing a re-validation. If the last successful validation is older than 12 hours, the platform triggers a fresh validation before proceeding.
+
 ### What is validated
 
 Each user-provided resource undergoes a connectivity and permissions check using the configured managed identity:
@@ -787,7 +790,7 @@ If your Key Vault has firewall rules enabled:
 
 ### Retrying validation
 
-After correcting the resource configuration or role assignments, validation automatically retries on the next cluster reconciliation (typically within 2 minutes). For deployment or upgrade actions that failed due to validation:
+After correcting the resource configuration or role assignments, Validation is retried during reconciliation (typically within 2 minutes) while the action is in progress; if it doesn't succeed within 10 minutes, the action fails and must be retried after fixing the issue. For deployment or upgrade actions that failed due to validation:
 
 1. Fix the underlying resource or permission issue.
 2. The action automatically retries if it's still in progress, or
