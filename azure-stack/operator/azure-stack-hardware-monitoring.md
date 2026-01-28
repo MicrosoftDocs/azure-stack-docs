@@ -2,7 +2,7 @@
 title: Monitor hardware health in Azure Stack Hub
 description: Learn how to monitor the health of Azure Stack Hub hardware components.
 author: sethmanheim
-ms.topic: article
+ms.topic: concept-article
 ms.date: 02/08/2021
 ms.author: sethm
 ms.reviewer: thoroet

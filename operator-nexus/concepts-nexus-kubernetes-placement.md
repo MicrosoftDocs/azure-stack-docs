@@ -4,7 +4,7 @@ description: An explanation of how Operator Nexus schedules Nexus Kubernetes res
 author: dramasamy
 ms.author: dramasamy
 ms.service: azure-operator-nexus
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 08/07/2024
 ms.custom: template-concept
 ---
