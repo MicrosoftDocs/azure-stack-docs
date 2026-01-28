@@ -99,7 +99,9 @@ az network private-endpoint create \
     --subscription "<SUBSCRIPTION_ID>"
 ```
 
-### [Azure portal](#tab/azure-portal)
+### [REST API](#tab/rest-api)
+
+You can also create a private endpoint using the Azure portal:
 
 1. In the Azure portal, navigate to **Private Link Center** > **Private endpoints**.
 1. Select **+ Create**.
