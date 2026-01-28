@@ -18,8 +18,6 @@ Azure Kubernetes Service enabled by Azure Arc (AKS Arc) is a managed Kubernetes 
 
 > [!IMPORTANT]
 > This retirement applies specifically to AKS Arc deployed directly on Windows Server as the deployment platform. After March 2026, you can't deploy AKS Arc clusters directly on standalone Windows Server 2019. After March 2027, you can't deploy AKS Arc clusters directly on standalone Windows Server 2022. However, Microsoft continues to fully support AKS Arc on Azure Local, which is a Windows Server-based hyperconverged infrastructure solution. Azure Local runs on Windows Server and provides a fully supported platform for deploying AKS Arc clusters.
->
-> Migration path: Plan your migration from AKS Arc on standalone Windows Server to AKS Arc on Azure Local to ensure continued support and updates. Azure Local provides an enhanced, fully supported platform for running AKS Arc workloads.
 
 ## If you're using Azure Kubernetes Service on Windows Server 2019 or Windows Server 2022
 
