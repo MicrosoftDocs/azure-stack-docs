@@ -5,7 +5,7 @@ author: vnikolin
 ms.author: vanjanikolin
 ms.date: 10/03/2025
 ms.service: azure-operator-nexus
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Azure Operator Nexus hardware validation overview

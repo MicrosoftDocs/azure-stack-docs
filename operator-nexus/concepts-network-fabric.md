@@ -4,7 +4,7 @@ description: Overview of Network Fabric resources for Azure Operator Nexus.
 author: surajmb
 ms.author: surmb
 ms.service: azure-operator-nexus
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 07/10/2023
 ms.custom: template-concept
 ---
