@@ -4,7 +4,7 @@ description: Introduction to Workload networks core concepts.
 author: leijgao
 ms.author: leijiagao
 ms.service: azure-operator-nexus
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 04/25/2024
 ms.custom: template-concept
 ---
