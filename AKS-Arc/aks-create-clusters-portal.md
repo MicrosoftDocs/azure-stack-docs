@@ -67,7 +67,7 @@ This article describes how to create Kubernetes clusters in Azure Local by using
 1. On the **Access** page, configure the following options:
 
     - Select **Local accounts with Kubernetes RBAC**, which is the default value for Kubernetes cluster authentication. This option requires that you have a direct line of sight to your on-premises infrastructure to access the cluster by using `kubectl`.
-    - Select Microsoft Entra authentication with Kubernetes role-based access control (RBAC). This option lets you choose one or more Microsoft Entra groups. By default, all members of the specified Microsoft Entra groups have cluster administrator access to the Kubernetes cluster.
+    - Select **Microsoft Entra authentication with Kubernetes role-based access control (RBAC)**. This option lets you choose one or more Microsoft Entra groups. By default, all members of the specified Microsoft Entra groups have cluster administrator access to the Kubernetes cluster.
     
        You can also use this option to connect to AKS enabled by Azure Arc from anywhere, without requiring a line of sight to the on-premises infrastructure. Make sure to add yourself to the Microsoft Entra group. If you don't add yourself, you can't access the AKS cluster enabled by Azure Arc by using `kubectl`.
     - Choose one or more Microsoft Entra groups. At the bottom of the screen, select **Next: Networking**.

@@ -65,16 +65,16 @@ Before you create an Azure Local VM, make sure that you meet the following prere
 - Have access to a logical network that you associate with the VM of your Azure Local instance. For more information, see [create a logical network](../manage/create-logical-networks.md).
 - Make sure that Terraform is installed and up to date on your machine. To verify your Terraform version, run the `terraform -v` command.
 
-        Sample output:
+    Sample output:
     
-        ```output
-        PS C:\Users\username\terraform-azurenn-avm-res-azurestackhci-virtualmachineinstance> terraform -v 
-        Terraform vi.9.8 on windows_amd64
-        + provider registry.terraform.io/azure/azapi vl.15.0 
-        + provider registry.terraform.io/azure/modtm V0.3.2 
-        + provider registry.terraform.io/hashicorp/azurerm v3.116.0 
-        + provider registry.terraform.io/hashicorp/random V3.6.3
-        ```
+    ```output
+    PS C:\Users\username\terraform-azurenn-avm-res-azurestackhci-virtualmachineinstance> terraform -v 
+    Terraform vi.9.8 on windows_amd64
+    + provider registry.terraform.io/azure/azapi vl.15.0 
+    + provider registry.terraform.io/azure/modtm V0.3.2 
+    + provider registry.terraform.io/hashicorp/azurerm v3.116.0 
+    + provider registry.terraform.io/hashicorp/random V3.6.3
+    ```
     
 - Make sure that Git is installed and up to date on your machine. To verify your version of Git, run the `git --version` command.
 
@@ -196,7 +196,7 @@ In this example, the storage path was specified by using the `--storage-path-id`
 
 If the flag isn't specified, the workload (VM, VM image, and non-OS data disk) is automatically placed in a high-availability storage path.
 
-### More parameters for Windows Server 2012 and Windows Server 2012 R2 images
+### Additional parameters for Windows Server 2012 and Windows Server 2012 R2 images
 
 When you create a VM by using Windows Server 2012 and Windows Server 2012 R2 images, specify the following parameters to create the VM:
 
@@ -214,7 +214,7 @@ To create a Linux VM, use the same command that you used to create the Windows V
 > [!IMPORTANT]
 > Setting the proxy server during VM creation is supported for Ubuntu Server VMs.
 
-## Create a VM with a proxy configured
+## Create VM with proxy configured
 
 Use the optional parameter `proxy-configuration` to configure a proxy server for your VM.
 
@@ -451,7 +451,7 @@ Follow these steps in the Azure portal for your Azure Local instance.
 
 # [Azure Resource Manager template](#tab/armtemplate)
 
-To deploy the ARM template, Follow these steps.
+To deploy the ARM template, follow these steps.
 
 1. In the Azure portal, from the top search bar, search for **deploy a custom template**. Select **Deploy a custom template** from the available options.
 
@@ -763,7 +763,7 @@ To deploy the ARM template, Follow these steps.
 
 You can use the Azure Verified Module (AVM) that contains the Terraform template to create VMs. This module ensures that your Terraform templates meet Microsoft standards for quality, security, and operational excellence to help you seamlessly deploy and manage your VMs on Azure. With this template, you can create one or multiple VMs on your cluster.
 
-### Steps to use the Terraform template
+### Use the Terraform template
 
 1. Download the Terraform template from the [Azure Verified Module](https://registry.terraform.io/modules/Azure/avm-res-azurestackhci-virtualmachineinstance/azurerm/).
 1. Go to the **examples** folder in the repository, and look for the following subfolders:
