@@ -4,7 +4,7 @@ description: Get an overview of storage appliance resources for Azure Operator N
 author: neilverse
 ms.author: soumyamaitra
 ms.service: azure-operator-nexus
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 06/29/2023
 ms.custom: template-concept
 ---
