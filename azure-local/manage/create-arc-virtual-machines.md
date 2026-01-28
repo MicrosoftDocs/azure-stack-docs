@@ -404,18 +404,18 @@ Follow these steps in the Azure portal for your Azure Local instance.
 
     1. Select **Enable domain join**.
 
-    1. Only the Microsoft Entra domain join is supported and selected by default.
+    1. Only the Active Directory domain join is supported and selected by default.
 
-    1. Enter the user principal name (UPN) of a Microsoft Entra user who has privileges to join the VM to your domain.
+    1. Enter the user principal name (UPN) of an Active Directory user who has privileges to join the VM to your domain.
 
        > [!IMPORTANT]
-       > For Microsoft Entra, if your security account manager (SAM) account name and UPN are different, enter the SAM account name in the UPN field as `SAMAccountName@domain`.
+       > For your Active Directory instance, if your security account manager (SAM) account name and UPN are different, enter the SAM account name in the UPN field as `SAMAccountName@domain`.
 
     1. Enter the password of the user account that you entered in the previous step. If you use the SAM account name in the UPN field, enter the corresponding password.
 
     1. Specify the domain or organizational unit (OU). You can join VMs to a specific domain or to an OU and then provide the domain to join and the OU path.
     
-        If the domain isn't specified, the suffix of the Microsoft Entra domain join UPN is used by default. For example, the user `guspinto@contoso.com` gets the default domain name `contoso.com`.
+        If the domain isn't specified, the suffix of the Active Directory domain join UPN is used by default. For example, the user `guspinto@contoso.com` gets the default domain name `contoso.com`.
 
 1. **(Optional)**: Create new disks or add more disks to the VM.
 
