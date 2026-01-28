@@ -16,10 +16,15 @@ HWV is run as part of a cluster deploy action and a bare metal `replace` action.
 HWV validates a Bare Metal Machine (BMM) by executing test cases against the baseboard management controller (BMC).
 The Azure Operator Nexus platform is deployed on Dell servers. Dell servers use the integrated Dell remote access controller (iDRAC), which is the equivalent of a BMC.
 
+For background information about hardware validation, when it runs, and what it checks, see [Azure Operator Nexus hardware validation overview](./concepts-hardware-validation-overview.md).
+
 [!INCLUDE [prerequisites-azure-cli-bare-metal-machine-actions](./includes/baremetal-machines/prerequisites-azure-cli-bare-metal-machine-actions.md)]
 
 1. Request access to the cluster's Log Analytics workspace (LAW).
 1. Access to the BMC web UI or a jumpbox that allows the `racadm` utility to run.
+
+> [!TIP]
+> If you arrived here from a failed Replace action, see [Replace a Bare Metal Machine](./howto-baremetal-functions.md#replace-a-bare-metal-machine) for context on the Replace workflow.
 
 ## Locate hardware validation results
 

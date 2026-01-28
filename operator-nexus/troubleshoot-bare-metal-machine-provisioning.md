@@ -18,6 +18,11 @@ Provisioning uses the Preboot eXecution Environment (PXE) interface to load the 
 
 [!INCLUDE [prerequisites-azure-cli-bare-metal-machine-actions](./includes/baremetal-machines/prerequisites-azure-cli-bare-metal-machine-actions.md)]
 
+1. For BMC diagnostic access: See [Manage emergency access to a Bare Metal Machine using the `az networkcloud cluster bmckeyset`](./howto-baremetal-bmc-ssh.md)
+1. For running diagnostic commands on control plane nodes: See [Troubleshoot Bare-Metal Machines by Using the run-read Command](./howto-baremetal-run-read.md)
+
+This article focuses on provisioning issues that occur during initial cluster deployment. For issues after deployment, see [Troubleshoot Warning status messages](./troubleshoot-bare-metal-machine-warning.md) or [Troubleshoot Degraded status](./troubleshoot-bare-metal-machine-degraded.md).
+
 ## Bare Metal Machine roles
 
 For a specific version, roles are required to manage and operate the underlying Kubernetes cluster.
@@ -120,15 +125,15 @@ The following conditions can cause provisioning failures.
 
 | Error type | Resolution |
 | ---------- | ---------- |
-| BMC shows `Backplane Comm` critical error. | 1. Run Bare Metal Machine remote flea drain.<br/> 2. Perform Bare Metal Machine physical flea drain.<br/> 3. Run Bare Metal Machine `replace` action. |
-| Boot (PXE) network data response empty from BMC. | 1. Reset port on fabric device.<br/> 2. Run Bare Metal Machine remote flea drain.<br/> 3. Perform Bare Metal Machine physical flea drain.<br/> 4. Run Bare Metal Machine `replace` action. |
-| Boot (PXE) MAC address mismatch. | 1. Validate Bare Metal Machine MAC address data against BMC data.<br/> 2. Run Bare Metal Machine remote flea drain.<br/> 3. Perform Bare Metal Machine physical flea drain.<br/> 4. Run Bare Metal Machine `replace` action. |
-| BMC MAC address mismatch. | 1. Validate Bare Metal Machine MAC address data against BMC data.<br/> 2. Run Bare Metal Machine remote flea drain.<br/> 3. Perform Bare Metal Machine physical flea drain.<br/> 4. Run Bare Metal Machine `replace` action. |
-| Disk data response empty from BMC. | 1. Remove or replace disk.<br/> 2. Remove or replace storage controller.<br/> 3. Run Bare Metal Machine remote flea drain.<br/> 4. Perform Bare Metal Machine physical flea drain.<br/> 5. Run Bare Metal Machine `replace` action. |
-| BMC unreachable. | 1. Reset port on fabric device.<br/> 2. Remove or replace cable.<br/> 3. Run Bare Metal Machine remote flea drain.<br/> 4. Perform Bare Metal Machine physical flea drain.<br/> 5. Run Bare Metal Machine `replace` action. |
-| BMC fails sign-in. | 1. Update credentials on BMC.<br/> 2. Run Bare Metal Machine `replace` action. |
-| Memory, CPU, OEM critical errors on BMC. | 1. Resolve hardware issue with remove or replace.<br/> 2. Run Bare Metal Machine remote flea drain.<br/> 3. Perform Bare Metal Machine physical flea drain.<br/> 4. Run Bare Metal Machine `replace` action. |
-| Console stuck at boot loader (GRUB) menu. | 1. Run NVRAM reset.<br/> 2. Run Bare Metal Machine `replace` action. |
+| BMC shows `Backplane Comm` critical error. | 1. Run Bare Metal Machine remote flea drain.<br/> 2. Perform Bare Metal Machine physical flea drain.<br/> 3. Run Bare Metal Machine [Replace action](./howto-baremetal-functions.md#replace-a-bare-metal-machine). |
+| Boot (PXE) network data response empty from BMC. | 1. Reset port on fabric device.<br/> 2. Run Bare Metal Machine remote flea drain.<br/> 3. Perform Bare Metal Machine physical flea drain.<br/> 4. Run Bare Metal Machine [Replace action](./howto-baremetal-functions.md#replace-a-bare-metal-machine). |
+| Boot (PXE) MAC address mismatch. | 1. Validate Bare Metal Machine MAC address data against BMC data.<br/> 2. Run Bare Metal Machine remote flea drain.<br/> 3. Perform Bare Metal Machine physical flea drain.<br/> 4. Run Bare Metal Machine [Replace action](./howto-baremetal-functions.md#replace-a-bare-metal-machine). |
+| BMC MAC address mismatch. | 1. Validate Bare Metal Machine MAC address data against BMC data.<br/> 2. Run Bare Metal Machine remote flea drain.<br/> 3. Perform Bare Metal Machine physical flea drain.<br/> 4. Run Bare Metal Machine [Replace action](./howto-baremetal-functions.md#replace-a-bare-metal-machine). |
+| Disk data response empty from BMC. | 1. Remove or replace disk.<br/> 2. Remove or replace storage controller.<br/> 3. Run Bare Metal Machine remote flea drain.<br/> 4. Perform Bare Metal Machine physical flea drain.<br/> 5. Run Bare Metal Machine [Replace action](./howto-baremetal-functions.md#replace-a-bare-metal-machine). |
+| BMC unreachable. | 1. Reset port on fabric device.<br/> 2. Remove or replace cable.<br/> 3. Run Bare Metal Machine remote flea drain.<br/> 4. Perform Bare Metal Machine physical flea drain.<br/> 5. Run Bare Metal Machine [Replace action](./howto-baremetal-functions.md#replace-a-bare-metal-machine). |
+| BMC fails sign-in. | 1. Update credentials on BMC.<br/> 2. Run Bare Metal Machine [Replace action](./howto-baremetal-functions.md#replace-a-bare-metal-machine). |
+| Memory, CPU, OEM critical errors on BMC. | 1. Resolve hardware issue with remove or replace.<br/> 2. Run Bare Metal Machine remote flea drain.<br/> 3. Perform Bare Metal Machine physical flea drain.<br/> 4. Run Bare Metal Machine [Replace action](./howto-baremetal-functions.md#replace-a-bare-metal-machine). |
+| Console stuck at boot loader (GRUB) menu. | 1. Run NVRAM reset.<br/> 2. Run Bare Metal Machine [Replace action](./howto-baremetal-functions.md#replace-a-bare-metal-machine). |
 
 ### Azure Bare Metal Machine activity log
 
@@ -169,6 +174,8 @@ Verify that the MAC address is using `racadm` from a jumpbox that has access to 
 racadm --nocertwarn -r $IP -u $BMC_USR -p $BMC_PWD getsysinfo | grep "MAC Address "        #BMC MAC
 racadm --nocertwarn -r $IP -u $BMC_USR -p $BMC_PWD getsysinfo | grep "NIC.Embedded.1-1-1"  #Boot MAC
 ```
+
+For detailed BMC access procedures and additional diagnostic commands, see [Manage emergency access to a Bare Metal Machine using the `az networkcloud cluster bmckeyset`](./howto-baremetal-bmc-ssh.md).
 
 If the MAC address supplied to the cluster is incorrect, use the Bare Metal Machine `replace` action at [Bare Metal Machine actions](howto-baremetal-functions.md) to correct the addresses.
 
