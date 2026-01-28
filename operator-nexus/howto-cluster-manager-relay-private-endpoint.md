@@ -125,13 +125,12 @@ After creating the private endpoint, you must approve the connection using the C
 ### [Azure CLI](#tab/azure-cli)
 
 ```azurecli-interactive
-az rest --method post \
-    --url "https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusterManagers/{clusterManagerName}/updateRelayPrivateEndpointConnection?api-version=2026-01-01-preview" \
-    --body '{
-        "connectionState": "Approved",
-        "privateEndpointResourceId": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateEndpoints/{privateEndpointName}",
-        "description": "Approving private endpoint connection for Arc Relay"
-    }'
+az networkcloud clustermanager update-relay-private-endpoint-connection \
+    --resource-group "<RESOURCE_GROUP>" \
+    --cluster-manager-name "<CLUSTER_MANAGER_NAME>" \
+    --private-endpoint-resource-id "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateEndpoints/{privateEndpointName}" \
+    --connection-state Approved \
+    --description "Approving private endpoint connection for Arc Relay"
 ```
 
 ### [REST API](#tab/rest-api)
@@ -155,13 +154,12 @@ If you need to reject a pending private endpoint connection or revoke an existin
 ### [Azure CLI](#tab/azure-cli)
 
 ```azurecli-interactive
-az rest --method post \
-    --url "https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusterManagers/{clusterManagerName}/updateRelayPrivateEndpointConnection?api-version=2026-01-01-preview" \
-    --body '{
-        "connectionState": "Rejected",
-        "privateEndpointResourceId": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateEndpoints/{privateEndpointName}",
-        "description": "Rejecting private endpoint connection"
-    }'
+az networkcloud clustermanager update-relay-private-endpoint-connection \
+    --resource-group "<RESOURCE_GROUP>" \
+    --cluster-manager-name "<CLUSTER_MANAGER_NAME>" \
+    --private-endpoint-resource-id "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateEndpoints/{privateEndpointName}" \
+    --connection-state Rejected \
+    --description "Rejecting private endpoint connection"
 ```
 
 ### [REST API](#tab/rest-api)
