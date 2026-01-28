@@ -90,7 +90,6 @@ You perform these operations either on the VM itself or on the cluster/node. The
 - Add a Small Computer System Interface (SCSI) controller and move an existing data disk to another SCSI controller
 - Remove a SCSI controller
 - Add or remove a DVD drive
-- Configure dynamic memory
 - Change VM boot order
 - Enable or disable integration services
 - Change an automatic start action
@@ -137,6 +136,7 @@ The following VM operations aren't supported for Azure Local VMs. If your worklo
 - Change the type of disk (static, dynamic, VHD, or VHDX)
 - Add shared storage (shared VHD or VHDX)
 - Cloning or copying a VM. This can result in corruption, management errors, or failure to start.
+- Configuring dynamic memory
 
 If you need to change the IP address or the VLAN ID of a network interface, create a new network interface and delete the old one.
 
