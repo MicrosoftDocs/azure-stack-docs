@@ -115,84 +115,194 @@ az networkcloud baremetalmachine show \
 
 A result of `Succeeded` will show the command has completed.
 
-## Troubleshoot with a reimage action
+## Troubleshoot with a reimage action 
 
-Reimaging a BMM is a process that you use to redeploy the image on the OS disk, without affecting the tenant data. This action executes the steps to rejoin the cluster with the same identifiers.
+Reimaging a BMM is a process that you use to redeploy the image on the OS disk, without affecting the tenant data. This action executes the steps to rejoin the cluster with the same identifiers. 
 
-The reimage action can be useful for troubleshooting problems by restoring the OS to a known-good working state. Common causes that can be resolved through reimaging include recovery due to doubt of host integrity, suspected or confirmed security compromise, or "break glass" write activity.
+The reimage action can be useful for troubleshooting problems by restoring the OS to a known-good working state. Common causes that can be resolved through reimaging include recovery due to doubt of host integrity, suspected or confirmed security compromise, or "break glass" write activity. 
 
-A reimage action is the best practice for lowest operational risk to ensure the integrity of the BMM.
+A reimage action is the best practice for lowest operational risk to ensure the integrity of the BMM. 
 
 ### Reimage workflow
 
-1. **Verify running virtual machiens and NAKS Nodes** - Before reimaging, check what VMs and NAKS nodes are running on the BMM.
-2. **Cordon and evacuate VMs and NAKS nodes** - Drain the BMM of virtual machines and NAKS nodes.
-3. **Perform reimage** - Execute the reimage operation.
-4. **Uncordon** - Make the BMM schedulable again after reimage completes.
+1. **Verify running virtual machines and NAKS Nodes** - Before reimaging, check what VMs and NAKS nodes are running on the BMM. 
+2. **Perform reimage** - Execute the reimage operation. 
+3. **Uncordon** - Make the BMM schedulable again after reimage completes. 
 
-> [!WARNING]
-> Running more than one `baremetalmachine replace` or `reimage` command at the same time, or running a `replace`
-> at the same time as a `reimage` leaves servers in a nonworking state. Make sure one operation fully completes before starting another.
 #### Infrastructure Pre Check
 
-**To identify if any virtual machines or NAKS nodes are currently running on a BMM, run the following command:**
-
-**For Virtual Machines:**
+##### Step 1: Identify VMs and NAKS clusters on the BMM
 
 ```azurecli
-az networkcloud baremetalmachine show -n <nodeName> \
---resource-group <resourceGroup> \
---subscription <subscriptionID> | jq '.virtualMachinesAssociatedIds'
+az networkcloud baremetalmachine show -n <nodeName> \ 
+  --resource-group <resourceGroup> \ 
+  --subscription <subscriptionId> \ 
+  --query "associatedResourceIds" -o json 
 ```
 
-**For Nexus Kubernetes cluster nodes: (requires logging into the Nexus Kubernetes cluster)**
-
-```
-kubectl get nodes <resourceName> -ojson |jq '.metadata.labels."topology.kubernetes.io/baremetalmachine"'
-```
-
-#### Reimage
-**The following Azure CLI command will `cordon` the specified bareMetalMachineName.**
-
+Example output:
+```json
+[ 
+  "/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.NetworkCloud/virtualMachines/firewallvnf", 
+  "/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.NetworkCloud/kubernetesClusters/naks-01" 
+] 
+``` 
+ 
+Understanding the output: 
+- An empty array `[]` means no VMs or NAKS clusters are running on this BMM. You can proceed to the cordon step. 
+- If the array contains VM ARM resource IDs (`.../virtualMachines/...`), check the status of each VM before proceeding. 
+- If the array contains NAKS ARM resource IDs (`.../kubernetesClusters/...`), check the status of each NAKS cluster before proceeding. 
+ 
+Record the ARM IDs returned here so you can use the same IDs during the post-check. 
+ 
+> [!NOTE] 
+> How the system handles VMs during cordon/evacuate: 
+> - Running VMs are gracefully shut down and will be automatically restarted after reimage 
+> - Stopped VMs remain stopped after reimage (no automatic restart) 
+> - Provisioning/Error VMs - if stuck due to BMM issues, reimage should resolve the underlying problem 
+ 
+##### Step 2a: Review VMs on the BMM 
+ 
+Use the ARM ID from the previous output (for resources containing `/virtualMachines/`): 
+ 
 ```azurecli
-az networkcloud baremetalmachine cordon \
-  --evacuate "True" \
-  --name <bareMetalMachineName> \
-  --resource-group "<resourceGroup>" \
-  --subscription <subscriptionID>
+az networkcloud virtualmachine show \ 
+  --ids "<VM_ARM_ID>" \ 
+  --query "{name:name, detailedStatus:detailedStatus, powerState:powerState}" -o table 
 ```
-
-**The following Azure CLI command will `reimage` the specified bareMetalMachineName.**
-
+ 
+Example output (your VM may show `Running`, `Stopped`, `Provisioning`, or `Error`): 
+```
+Name         DetailedStatus    PowerState 
+-----------  ----------------  ------------ 
+firewallvnf  Running           On 
+``` 
+ 
+| detailedStatus | What This Means | 
+|----------------|-----------------| 
+| `Running` | VM is active. Will be shut down and automatically restarted after reimage. | 
+| `Stopped` | VM is already stopped. Will remain stopped after reimage. | 
+| `Provisioning` | VM may be stuck due to BMM issues. Reimage should resolve this. | 
+| `Error` | VM is in a failed state. Reimage should resolve the underlying BMM issue. | 
+ 
+##### Step 2b: Review NAKS nodes on the BMM 
+ 
+Use the ARM ID from the previous output (for resources containing `/kubernetesClusters/`) to capture basic cluster context: 
+ 
 ```azurecli
-az networkcloud baremetalmachine reimage \
-  --name <bareMetalMachineName>  \
-  --resource-group "<resourceGroup>" \
-  --subscription <subscriptionID>
+az networkcloud kubernetescluster show \ 
+  --ids "<NAKS_ARM_ID>" \ 
+  --query "{name:name, detailedStatus:detailedStatus}" -o table 
+```
+ 
+To see which NAKS nodes are running on each BMM, run the following command against your NAKS cluster: 
+ 
+```bash 
+kubectl get nodes -o custom-columns="NODE:.metadata.name,BMM:.metadata.labels.topology\.kubernetes\.io/baremetalmachine" 
+```
+ 
+Example output:
+``` 
+NODE                                    BMM 
+naks-01-agentpool1-md-tjr8k-4qqx4        rack1-compute01 
+naks-01-agentpool2-md-zzrw8-gg8rx        rack1-compute01 
+naks-01-agentpool2-md-zzrw8-lqrmt        rack1-compute02 
+naks-01-control-plane-rmwqr              rack1-compute02 
+``` 
+ 
+Review the output and identify nodes where the `BMM` column matches the BMM you plan to reimage. In this example, if you're reimaging `rack1-compute01`, two nodes will be affected: `naks-01-agentpool1-md-tjr8k-4qqx4` and `naks-01-agentpool2-md-zzrw8-gg8rx`. 
+ 
+> [!NOTE]
+> The cordon/evacuate operation does not check the NAKS cluster health status before attempting to drain: 
+> - If NAKS nodes exist on the BMM, the system will attempt to drain them regardless of cluster status 
+> - If nodes are unreachable (e.g., due to BMM failure), the drain operation will timeout after 5 minutes and proceed 
+> - Use the `kubectl` output above to identify which specific NAKS nodes are on this BMM 
+
+> [!IMPORTANT] 
+> Running VMs will experience downtime during the reimage process. 
+
+#### Reimage 
+**The following Azure CLI command will `cordon` the specified bareMetalMachineName.** 
+ 
+```azurecli 
+az networkcloud baremetalmachine cordon \ 
+  --evacuate "True" \ 
+  --name <bareMetalMachineName> \ 
+  --resource-group "<resourceGroup>" \ 
+  --subscription <subscriptionID> 
+``` 
+ 
+> [!NOTE] 
+> When you run `cordon --evacuate "True"`, the system automatically: 
+> - Cordons NAKS nodes running on this BMM (marks them unschedulable) 
+> - Drains NAKS nodes (evicts pods to other nodes) 
+> - Gracefully shuts down VMs 
+> - Unenrolls the BMM from Azure Arc 
+> 
+> This process may take up to 30 minutes. 
+ 
+**The following Azure CLI command will `reimage` the specified bareMetalMachineName.** 
+ 
+```azurecli 
+az networkcloud baremetalmachine reimage \ 
+  --name <bareMetalMachineName>  \ 
+  --resource-group "<resourceGroup>" \ 
+  --subscription <subscriptionID> 
+``` 
+ 
+**The following Azure CLI command will `uncordon` the specified bareMetalMachineName.** 
+ 
+```azurecli 
+az networkcloud baremetalmachine uncordon \ 
+  --name <bareMetalMachineName> \ 
+  --resource-group "<resourceGroup>" \ 
+  --subscription <subscriptionID> 
 ```
 
-**The following Azure CLI command will `uncordon` the specified bareMetalMachineName.**
+#### Infrastructure Post Check 
 
-```azurecli
-az networkcloud baremetalmachine uncordon \
-  --name <bareMetalMachineName> \
-  --resource-group "<resourceGroup>" \
-  --subscription <subscriptionID>
-```
-#### Infrastructure Post Check
-**To verify the BMM status after `reimage`:**
+##### Step 1: Verify BMM status after `reimage`:
 
-```azurecli
-az networkcloud baremetalmachine show \
-  --name <bareMetalMachineName>  \
-  --resource-group "<resourceGroup>" \
-  --subscription <subscriptionID> \
-  --query "provisioningState"
+```azurecli 
+
+az networkcloud baremetalmachine show \ 
+  --name <bareMetalMachineName>  \ 
+  --resource-group "<resourceGroup>" \ 
+  --subscription <subscriptionID> \ 
+  --query "{name:name, provisioningState:provisioningState, powerState:powerState, readyState:readyState}" -o table 
 ```
 
-A result of `Succeeded` will show the BMM has been provisioned and rejoined the cluster.
+A `provisioningState` of `Succeeded` and `readyState` of `True` indicates the BMM has been provisioned and rejoined the cluster. 
 
-## Troubleshoot with a replace action
+##### Step 2: Verify VM status
+
+> [!NOTE]
+> Only VMs that were `Running` before the reimage will be automatically restarted. VMs that were `Stopped` will remain stopped - start them manually if needed using `az networkcloud virtualmachine start`. 
+
+Check that VMs previously running on this BMM have restarted successfully: 
+
+```azurecli 
+az networkcloud virtualmachine show \ 
+  --ids "<VM_ARM_ID>" \ 
+  --query "{name:name, detailedStatus:detailedStatus, powerState:powerState}" -o table 
+```
+
+| Expected Status | Description |
+|-----------------|-------------| 
+| `detailedStatus: Running`, `powerState: On` | VM has successfully restarted. | 
+| `detailedStatus: Stopped`, `powerState: Off` | VM was stopped before reimage and remains stopped. Start it manually if needed. | 
+| `detailedStatus: Provisioning` | VM is still starting up. Wait and check again. | 
+| `detailedStatus: Error` | VM failed to restart. Investigate the error. | 
+
+##### Step 3: Verify NAKS node status 
+
+Validate node-level recovery (for example, that nodes are `Ready` and running on the expected BMMs) by running the following command against your NAKS cluster: 
+
+```bash 
+kubectl get nodes -o custom-columns="NODE:.metadata.name,READY:.status.conditions[?(@.type=='Ready')].status,BMM:.metadata.labels.topology\.kubernetes\.io/baremetalmachine" 
+```
+
+## Troubleshoot with a Replace action
 
 Servers contain many physical components that can fail over time. It's important to understand which physical repairs require BMM replacement and when BMM replacement is recommended. The Tenant data isn't modified during replacement as long as `storage-policy="Preserve"` flag is used.
 
@@ -211,7 +321,7 @@ This article provides instructions on how to check and troubleshoot hardware val
 2. **Perform physical repairs** - Replace hardware components as needed.
 3. **Execute replace command** - Run the replace command with required parameters.
 4. **Uncordon** - Make the BMM schedulable again after replacement completes.
-5. **Verify status** - Check that the BMM is properly functioning.
+5. **Verify status** - Check that the BMM is properly functioning.[MM1.1][DR1.2]
 
 **The following Azure CLI command will `cordon` the specified bareMetalMachineName.**
 
@@ -222,14 +332,93 @@ az networkcloud baremetalmachine cordon \
   --resource-group "<resourceGroup>" \
   --subscription <subscriptionID>
 ```
+
+> [!NOTE]
+> If the BMM has already failed and is unresponsive, the `cordon --evacuate "True"` command may not complete successfully. In this case:
+> - VMs on the failed BMM are already impacted
+> - Stateless pods can typically reschedule to healthy nodes, but StatefulSet pods can remain stuck on `NotReady` nodes[NA2.1][DR2.2][DR2.3]
+> - Proceed directly to physical repair and the replace command
+
 #### Infrastructure Pre Check
-To check if any virtual machines or NAKS nodes are currently running on the node:
+
+> [!NOTE]
+> Replace is typically used when the BMM has failed or is unhealthy. If the machine is already dead, the pre-check commands may not return accurate information, and VMs/NAKS nodes on that machine may already be impacted.
+
+##### Step 1: Check BMM health status
 
 ```azurecli
 az networkcloud baremetalmachine show -n <nodeName> \
---resource-group <resourceGroup> \
---subscription <subscriptionID> | jq '.associatedResourceIds'
+  --resource-group <resourceGroup> \
+  --subscription <subscriptionId> \
+  --query "{name:name, powerState:powerState, readyState:readyState, detailedStatus:detailedStatus}" -o table
 ```
+
+| BMM State | Pre-Check Action |
+|-----------|------------------|
+| BMM is healthy/running | Follow the same VM/NAKS pre-check steps as Reimage to understand what is running on the BMM. Run the replace action with `--safeguard-mode None`. No manual `cordon --evacuate "True"` is required. |
+| BMM is unhealthy/dead | Pre-check may not be possible. Proceed to assess VM/NAKS impact below. |
+
+> [!NOTE]
+> For a healthy BMM, when you run the replace action with `--safeguard-mode None`, the system automatically:
+> - Cordons and drains NAKS nodes on the BMM
+> - Gracefully shuts down VMs
+> - Proceeds with the replace operation once evacuation completes
+
+> [!IMPORTANT]
+> If the BMM is dead or unhealthy, evacuation may not be possible. VMs and NAKS nodes on that BMM may already be impacted.
+
+
+##### Step 2: Identify VMs and NAKS clusters on the BMM
+
+```azurecli
+az networkcloud baremetalmachine show -n <nodeName> \
+  --resource-group <resourceGroup> \
+  --subscription <subscriptionId> \
+  --query "associatedResourceIds" -o json
+```
+
+##### Step 3: Assess VM and NAKS impact based on hardware replaced
+
+| Hardware Replaced | VM Impact | Recommendation |
+|-------------------|-----------|----------------|
+| SSD / PERC / System board / Backplane | VM data may be permanently lost. | Delete VMs and recreate them on a healthy BMM before running replace. |
+| NIC | VM data is not affected. | Verify network configuration after replace. |
+| CPU / DIMM / Fan | VM data is not affected. | No special action required. |
+
+> [!NOTE]
+> NAKS impact:
+> - If BMM was healthy: System will gracefully drain NAKS nodes before the replace operation proceeds.
+> - If BMM was dead/unhealthy: NAKS nodes on that BMM are already impacted. The NAKS cluster will automatically reprovision nodes on healthy BMMs.[DR3.1][AB3.2][DR3.3]
+
+> [!WARNING]
+> If SSD was replaced: All VM OS disks stored on that SSD are permanently lost. Delete the affected VM and recreate it on another healthy BMM (if you have capacity) before starting the replace action. Ensure you have VM configurations backed up or documented.
+
+##### Step 4: Optional verification (healthy BMM only)
+
+> [!NOTE]
+> Replace with `--safeguard-mode None` automatically evacuates workloads (VMs are shut down and NAKS nodes are drained) before deprovisioning. Expect downtime even when there is no permanent data loss.
+
+Use the checks below to record a baseline of what is running on the BMM so you can compare results after replace.
+
+If replacing storage components (SSD / PERC / System board / Backplane): VM data may be permanently lost. Delete affected VMs and recreate them on a healthy BMM before running replace. You can skip the VM status check for VMs you plan to recreate.
+
+For VMs:
+
+```azurecli
+az networkcloud virtualmachine show \
+  --ids "<VM_ARM_ID>" \
+  --query "{name:name, detailedStatus:detailedStatus, powerState:powerState}" -o table
+```
+
+For NAKS clusters:
+
+```azurecli
+az networkcloud kubernetescluster show \
+  --ids "<NAKS_ARM_ID>" \
+  --query "{name:name, detailedStatus:detailedStatus}" -o table
+```
+
+Refer to the [Reimage Pre Check](#infrastructure-pre-check) section for detailed guidance on interpreting VM and NAKS status values.
 
 ### Hardware component replacement guide
 
@@ -280,18 +469,48 @@ az networkcloud baremetalmachine uncordon \
   --resource-group "<resourceGroup>" \
   --subscription <subscriptionID>
 ```
+
 #### Infrastructure Post Check
-**To verify the BMM status after `replace`:**
+
+##### Step 1: Verify BMM status after `replace`:
 
 ```azurecli
 az networkcloud baremetalmachine show \
   --name <bareMetalMachineName>  \
   --resource-group "<resourceGroup>" \
   --subscription <subscriptionID> \
-  --query "provisioningState"
+  --query "{name:name, provisioningState:provisioningState, powerState:powerState, readyState:readyState}" -o table
 ```
 
-A result of `Succeeded` will show the BMM has been provisioned and rejoined the cluster.
+A `provisioningState` of `Succeeded` and `readyState` of `True` indicates the BMM has been provisioned and rejoined the cluster.
+
+##### Step 2: Verify VM status:
+
+> [!NOTE]
+> If SSD was replaced, the affected VM must be recreated on another healthy BMM before starting the replace action. Skip this step if you deleted the VM before BMM replace action and recreated it elsewhere.
+
+Check that VMs previously running on this BMM have restarted successfully:
+
+```azurecli
+az networkcloud virtualmachine show \
+  --ids "<VM_ARM_ID>" \
+  --query "{name:name, detailedStatus:detailedStatus, powerState:powerState}" -o table
+```
+
+| Expected Status | Description |
+|-----------------|-------------|
+| `detailedStatus: Running`, `powerState: On` | VM has successfully restarted. |
+| `detailedStatus: Provisioning` | VM is still starting up. Wait and check again. |
+| `detailedStatus: Error` | VM failed to restart. Investigate the error. |
+
+##### Step 3: Verify NAKS node status
+
+Validate node-level recovery (for example, that nodes are `Ready` and running on the expected BMMs) by running the following command against your NAKS cluster:
+
+```bash
+kubectl get nodes -o custom-columns="NODE:.metadata.name,READY:.status.conditions[?(@.type=='Ready')].status,BMM:.metadata.labels.topology\.kubernetes\.io/baremetalmachine"
+```
+
 
 ## Summary
 
