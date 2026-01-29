@@ -351,7 +351,7 @@ az networkcloud baremetalmachine cordon \
 #### Infrastructure Pre Check
 
 > [!NOTE]
-> Replace is typically used when the BMM has failed or is unhealthy. If the machine is already dead, the pre-check commands may not return accurate information, and VMs/NAKS nodes on that machine may already be impacted.
+> Replace is typically used when the BMM has failed or is unhealthy. If the machine is already unresponsive, the pre-check commands may not return accurate information, and VMs/NAKS nodes on that machine may already be impacted.
 
 ##### Step 1: Check BMM health status
 
