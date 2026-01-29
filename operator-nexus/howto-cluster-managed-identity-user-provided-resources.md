@@ -43,7 +43,7 @@ Validation is triggered during the following cluster lifecycle events:
 - **Cluster deployment** - Gates the "Validate Azure prerequisites" step before deployment proceeds
 - **Cluster updates** - When resource settings or managed identities change
 - **Cluster runtime upgrades** - Before upgrade proceeds to ensure resources remain accessible
-- **Runtime monitoring** - Periodic revalidation when issues are detected
+- **Runtime monitoring** - Periodic revalidation is performed against the LAW to ensure there are no external changes to keys or access. Bare metal machine run command and credential rotation failures will surface external access changes to storage account and key vault respectively.
 
 > [!NOTE]
 > If Azure prerequisites validation succeeded recently (within the last 12 hours), deployment/upgrade actions can proceed without forcing a re-validation. If the last successful validation is older than 12 hours, the platform triggers a fresh validation before proceeding.
