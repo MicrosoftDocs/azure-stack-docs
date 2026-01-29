@@ -365,7 +365,7 @@ az networkcloud baremetalmachine show -n <nodeName> \
 | BMM State | Pre-Check Action |
 |-----------|------------------|
 | BMM is healthy/running | Follow the same VM/NAKS pre-check steps as Reimage to understand what is running on the BMM. Run the replace action with `--safeguard-mode None`. No manual `cordon --evacuate "True"` is required. |
-| BMM is unhealthy/dead | Pre-check may not be possible. Proceed to assess VM/NAKS impact below. |
+| BMM is unhealthy/unresponsive | Pre-check may not be possible. Proceed to assess VM/NAKS impact below. |
 
 > [!NOTE]
 > For a healthy BMM, when you run the replace action with `--safeguard-mode None`, the system automatically:
@@ -375,7 +375,7 @@ az networkcloud baremetalmachine show -n <nodeName> \
 > - Proceeds with the replace operation once evacuation completes
 
 > [!IMPORTANT]
-> If the BMM is dead or unhealthy, evacuation may not be possible. VMs and NAKS nodes on that BMM may already be impacted.
+> If the BMM is unresponsive or unhealthy, evacuation may not be possible. VMs and NAKS nodes on that BMM may already be impacted.
 
 
 ##### Step 2: Identify VMs and NAKS clusters on the BMM
