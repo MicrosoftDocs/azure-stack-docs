@@ -50,7 +50,7 @@ Before you move to Azure Local, follow these steps to disconnect AKS Arc workloa
 #### Deploy an AKS cluster on Azure Local
 
 - [Review the networking prerequisites](aks-hci-network-system-requirements.md) for deploying AKS Arc on Azure Local.
-- [Deploy an AKS Arc cluster on Azure Local using Az CLI, Azure portal, and ARM templates, etc.](aks-create-clusters-cli.md).
+- [Deploy an AKS Arc cluster on Azure Local using Az CLI, Azure portal, and ARM templates, etc.](aks-create-clusters-cli.md)
 
 ## Next steps
 
