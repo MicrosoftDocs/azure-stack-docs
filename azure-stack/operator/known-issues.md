@@ -3,7 +3,7 @@ title: Azure Stack Hub known issues
 description: Learn about known issues in Azure Stack Hub releases.
 author: sethmanheim
 ms.topic: troubleshooting-known-issue
-ms.date: 10/28/2025
+ms.date: 01/29/2026
 ms.author: sethm
 
 # Intent: As an Azure Stack Hub user, I want to know about known issues in the latest release so that I can plan my update and be aware of any issues.
@@ -18,11 +18,11 @@ This article lists known issues in Azure Stack Hub releases. The list is updated
 
 To access known issues for a different version, use the version selector dropdown above the table of contents on the left.
 
-::: moniker range=">=azs-2510"
+::: moniker range=">=azs-2601"
 > [!IMPORTANT]  
 > Review this article before applying the update.
 ::: moniker-end
-::: moniker range="<azs-2510"
+::: moniker range="<azs-2601"
 > [!IMPORTANT]  
 > If your Azure Stack Hub instance is behind by more than two updates, it's considered out of compliance. You must [update to at least the minimum supported version to receive support](azure-stack-servicing-policy.md#keep-your-system-under-support).
 ::: moniker-end
@@ -34,7 +34,7 @@ To access known issues for a different version, use the version selector dropdow
 <!------------------- SUPPORTED VERSIONS ------------------->
 <!---------------------------------------------------------->
 
-::: moniker range="azs-2510"
+::: moniker range="azs-2601"
 <!-- ## Update -->
 
 <!-- ## Networking -->
@@ -169,7 +169,7 @@ To access known issues for a different version, use the version selector dropdow
 
 ::: moniker-end
 
-::: moniker range="azs-2510 || azs-2506 || azs-2501"
+::: moniker range="azs-2601 || azs-2506 || azs-2501"
 ## Update
 
 ### Update URL is changing

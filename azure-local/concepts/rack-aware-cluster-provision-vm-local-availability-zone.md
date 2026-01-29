@@ -2,7 +2,7 @@
 title: Provision VMs in local availability zone for Azure Local
 description: Learn about how to provision VMs in local availability zone for Azure Local.
 author: alkohli
-ms.topic: concept-article
+ms.topic: how-to
 ms.date: 10/20/2025
 ms.author: alkohli
 ---
