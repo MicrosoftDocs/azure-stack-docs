@@ -187,7 +187,7 @@ firewallvnf  Running           On
 | `Running` | VM is active. Will be shut down and automatically restarted after reimage. |
 | `Stopped` | VM is already stopped. Will remain stopped after reimage. |
 | `Provisioning` | VM may be stuck due to BMM issues. Reimage should resolve this. |
-| `Error` | VM is in a failed state. Reimage should resolve the underlying BMM issue. |
+| `Error` | VM is in a failed state. Reimage may resolve the underlying BMM issue. |
 
 ##### Step 2b: Review NAKS nodes on the BMM
 
