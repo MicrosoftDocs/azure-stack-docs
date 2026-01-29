@@ -1,7 +1,7 @@
 ---
 title: Azure Operator Nexus access and identity
 description: Learn about access and identity in Azure Operator Nexus.
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 03/25/2024
 author: graymark
 ms.author: graymark

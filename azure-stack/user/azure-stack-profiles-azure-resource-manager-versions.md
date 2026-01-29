@@ -4,7 +4,7 @@ description: Learn about the Azure Resource Manager API versions supported by pr
 author: sethmanheim
 ms.custom:
   - devx-track-arm-template
-ms.topic: article
+ms.topic: concept-article
 ms.date: 12/6/2021
 ms.author: sethm
 ms.reviewer: thoroet

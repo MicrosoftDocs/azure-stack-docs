@@ -1959,6 +1959,11 @@
       "source_path": "azure-local/upgrade/upgrade-22h2-to-23h2-windows-admin-center.md", 
       "redirect_url": "/azure/azure-local/upgrade/upgrade-22h2-to-23h2-powershell", 
       "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-local/manage/disconnected-operations-aks.md", 
+      "redirect_url": "/azure/aks/aksarc/disconnected-operations-aks", 
+      "redirect_document_id": false
     }
   ]
 }

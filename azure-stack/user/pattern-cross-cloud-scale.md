@@ -2,7 +2,7 @@
 title: Cross-cloud scaling pattern in Azure Stack Hub
 description: Learn how to build a scalable cross-cloud app on Azure and Azure Stack Hub.
 author: ronmiab 
-ms.topic: article
+ms.topic: concept-article
 ms.date: 04/25/2025
 ms.author: robess
 ms.reviewer: anajod

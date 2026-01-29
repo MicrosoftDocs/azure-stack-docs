@@ -852,7 +852,7 @@ items:
     - name: Azure Local VMs
       href: manage/disconnected-operations-arc-vm.md
     - name: Azure Kubernetes Service (AKS)
-      href: manage/disconnected-operations-aks.md
+      href: /azure/aks/aksarc/disconnected-operations-aks?toc=/azure/azure-local/toc.json&bc=/azure/azure-local/breadcrumb/toc.jsonazure-local/breadcrumb/toc.json
     - name: Azure Container Registry
       href: manage/disconnected-operations-azure-container-registry.md
     - name: Azure Policy
