@@ -4,7 +4,7 @@ titleSuffix: Azure Stack Hub
 description: Learn about the Azure Stack Hub servicing policy and how to keep an integrated system in a supported state.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 10/28/2025
+ms.date: 01/29/2026
 ms.author: sethm
 
 # Intent: As an Azure Stack operator, I want to learn about servicing policy and how to keep an integrated system supported.
@@ -43,7 +43,7 @@ Find documentation on how to plan for and manage updates, and how to determine y
 
 For information about a specific update, including how to download it, see the release notes for that update:
 
-- [Azure Stack Hub 2510 update](./release-notes.md?view=azs-2510&preserve-view=true)
+- [Azure Stack Hub 2601 update](./release-notes.md?view=azs-2601&preserve-view=true)
 - [Azure Stack Hub 2506 update](./release-notes.md?view=azs-2506&preserve-view=true)
 - [Azure Stack Hub 2501 update](./release-notes.md?view=azs-2501&preserve-view=true)
 
@@ -75,9 +75,9 @@ You must also have an active support agreement with the hardware partner that ma
 
 Hotfixes aren't considered major update versions. If your Azure Stack Hub instance is behind by more than two updates, it's considered out of compliance. You must update to at least the minimum supported version (N-2) to receive support.
 
-For example, if the most recent update version available is 2510 (N), the two previous update versions were 2506 and 2501, which means both 2506 (N-1) and 2501 (N-2) remain in support. However, the 2408 (and earlier) version is out of support, as 2408 was N-3 when the 2510 update was released. For the current release of Azure Stack Hub, the following versions are considered in support:
+For example, if the most recent update version available is 2601 (N), the two previous update versions were 2506 and 2501, which means both 2506 (N-1) and 2501 (N-2) remain in support. However, the 2408 (and earlier) version is out of support, as 2408 was N-3 when the 2601 update was released. For the current release of Azure Stack Hub, the following versions are considered in support:
 
-- [Azure Stack Hub 2510](./release-notes.md?view=azs-2510&preserve-view=true)
+- [Azure Stack Hub 2601](./release-notes.md?view=azs-2601&preserve-view=true)
 - [Azure Stack Hub 2506](./release-notes.md?view=azs-2506&preserve-view=true)
 - [Azure Stack Hub 2501](./release-notes.md?view=azs-2501&preserve-view=true)
 

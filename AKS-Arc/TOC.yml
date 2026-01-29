@@ -133,12 +133,6 @@
         href: cluster-labels.md
       - name: Taints
         href: aks-arc-use-node-taints.md
-    - name: Use autoscaler
-      href: auto-scale-aks-arc.md
-    - name: Upgrade Kubernetes clusters
-      href: cluster-upgrade.md
-    - name: Integrate Azure Container Registry
-      href: deploy-container-registry.md
     - name: Monitoring and logging
       items:
           - name: Monitor Kubernetes object events
@@ -157,6 +151,14 @@
             href: get-on-demand-logs.md
           - name: Monitoring data reference
             href: kubernetes-monitor-metrics.md
+    - name: AKS disconnected operations
+      href: disconnected-operations-aks.md       
+    - name: Use autoscaler
+      href: auto-scale-aks-arc.md
+    - name: Upgrade Kubernetes clusters
+      href: cluster-upgrade.md
+    - name: Integrate Azure Container Registry
+      href: deploy-container-registry.md
   - name: Troubleshooting and known issues
     items:
     - name: Get support
@@ -203,6 +205,8 @@
         href: aks-arc-known-issues.md
       - name: Cluster with Azure Policy or Gatekeeper unhealthy after upgrade
         href: cluster-unhealthy-after-kubernetes-upgrade.md
+      - name: Cluster create fails after Azure Local update from 2510
+        href: cluster-create-fails-after-azure-local-upgrade.md
       - name: Can't create AKS cluster with GPU-enabled default node pool
         href: gpu-enabled-cluster-issue.md
       - name: Storage provisioning issue in cluster and node pool creation

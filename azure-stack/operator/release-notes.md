@@ -3,7 +3,7 @@ title: Azure Stack Hub release notes
 description: Release notes for Azure Stack Hub integrated systems, including updates and bug fixes.
 author: sethmanheim
 ms.topic: release-notes
-ms.date: 10/28/2025
+ms.date: 01/29/2026
 ms.author: sethm
 
 # Intent: As an Azure Stack Hub operator, I want to know what's new in the latest release so that I can plan my update.
@@ -25,7 +25,7 @@ To access release notes for a different version, use the version selector dropdo
 > The 2311 update introduces a change in the base host OS, updated to Windows Server 2022. Disconnected customers must obtain and update a SQL Server 2019 product key (PID). You must get the key before starting the update. To obtain this key, contact Microsoft support.
 > If you start the update without this key, the update will fail shortly after starting, with a "Prepare of Role Cloud raised an exception" message, which advises you contact support. You can resume the update after applying the new key.
 ::: moniker-end
-::: moniker range="<azs-2510"
+::: moniker range="<azs-2601"
 > [!IMPORTANT]  
 > If your Azure Stack Hub instance is behind by more than two updates, it's considered out of compliance. You must [update to at least the minimum supported version to receive support](azure-stack-servicing-policy.md#keep-your-system-under-support).
 ::: moniker-end
@@ -54,24 +54,23 @@ You can download the Azure Stack Hub update package using [the Azure Stack Hub u
 <!---------------------------------------------------------->
 <!------------------- SUPPORTED VERSIONS ------------------->
 <!---------------------------------------------------------->
-::: moniker range="azs-2510"
-## 2510 build reference
+::: moniker range="azs-2601"
+## 2601 build reference
 
-The Azure Stack Hub 2510 update build number is **1.2510.x.xx**.
+The Azure Stack Hub 2601 update build number is **1.2601.0.4**.
 
 ### Update type
 
-The Azure Stack Hub 2510 update build type is **Full**. This build contains only important security updates.
+The Azure Stack Hub 2601 update build type is **Full**. This build contains only important security updates.
 
-The 2510 update has the following expected runtimes based on our internal testing:
+The 2601 update has the following expected runtimes based on our internal testing:
 
 - 4 nodes: 8-28 hours
 - 8 nodes: 11-30 hours
 - 12 nodes: 14-34 hours
 - 16 nodes: 17-40 hours
 
-Exact update durations typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware specifications. Durations that are shorter or longer than the expected value are not uncommon and do not require action by Azure Stack Hub operators unless the update fails. This runtime approximation is specific to the 2510 update and should not be compared to other Azure Stack Hub updates.
-
+Exact update durations typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware specifications. Durations that are shorter or longer than the expected value are not uncommon and do not require action by Azure Stack Hub operators unless the update fails. This runtime approximation is specific to the 2601 update and should not be compared to other Azure Stack Hub updates.
 For more information about update build types, see [Manage updates in Azure Stack Hub](azure-stack-updates.md).
 
 ### What's new
@@ -95,9 +94,9 @@ Azure Stack Hub releases hotfixes regularly. Starting with the 2005 release, whe
 
 For more information, see our [servicing policy](azure-stack-servicing-policy.md).
 
-### Hotfix prerequisites: before applying the 2510 update
+### Hotfix prerequisites: before applying the 2601 update
 
-The 2510 release of Azure Stack Hub must be applied on the 2506 release with the following hotfix installed:
+The 2601 release of Azure Stack Hub must be applied on the 2506 release with the following hotfix installed:
 
 - [Azure Stack Hub hotfix 1.2506.2.24](hotfix-1-2506-2-24.md)
 
@@ -105,9 +104,9 @@ The 2510 release of Azure Stack Hub must be applied on the 2506 release with the
 
 When you update to a new major version (for example, 1.2108.x to 1.2206.x), the latest hotfixes (if any) in the new major version are installed automatically. From that point forward, if a hotfix is released for your build, you should install it.
 
-After the installation of 2510, if any hotfixes for 2510 are subsequently released, you should install them:
+After the installation of 2601, if any hotfixes for 2601 are subsequently released, you should install them:
 
-- No hotfixes have been released for 2510 at this time.
+- No hotfixes have been released for 2601 at this time.
 ::: moniker-end
 
 ::: moniker range="azs-2506"

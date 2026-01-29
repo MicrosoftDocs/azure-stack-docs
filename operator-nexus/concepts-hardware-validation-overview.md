@@ -5,7 +5,7 @@ author: vnikolin
 ms.author: vanjanikolin
 ms.date: 10/03/2025
 ms.service: azure-operator-nexus
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Azure Operator Nexus hardware validation overview
@@ -56,3 +56,15 @@ Up to date Azure Operator Nexus firmware specs, and N-1 and N-2 versions can be 
 ## BIOS boot configuration update
 
 HWV verifies that the BIOS boot configuration meets the requirements for successful bootstrapping. If any settings are incorrect, HWV automatically updates them to match the required specifications.
+
+## Troubleshooting hardware validation failures
+
+If hardware validation fails during cluster deployment or a BMM Replace action, see [Troubleshoot hardware validation failure](./troubleshoot-hardware-validation-failure.md) for detailed troubleshooting procedures organized by validation category.
+
+## Related operations
+
+Hardware validation is automatically triggered during:
+- Initial cluster deployment
+- [BMM Replace actions](./howto-baremetal-functions.md#replace-a-bare-metal-machine)
+
+After hardware repairs are completed, you must run a Replace action to re-validate and provision the BMM.
