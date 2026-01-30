@@ -156,7 +156,7 @@ Once you have a certificate, use the PowerShell script below to register your ap
    ```shell
    ApplicationIdentifier : S-1-5-21-1512385356-3796245103-1243299919-1356
    ClientId              : 00001111-aaaa-2222-bbbb-3333cccc4444
-   Thumbprint            : 30202C11BE6864437B64CE36C8D988442082A0F1
+   Thumbprint            : AA11BB22CC33DD44EE55FF66AA77BB88CC99DD00
    ApplicationName       : Azurestack-MyApp-c30febe7-1311-4fd8-9077-3d869db28342
    ClientSecret          :
    PSComputerName        : azs-ercs01
@@ -215,7 +215,7 @@ Keep your PowerShell console session open, as you use it with the `ApplicationId
    ```output
    ApplicationIdentifier : S-1-5-21-1512385356-3796245103-1243299919-1356
    ClientId              : 00001111-aaaa-2222-bbbb-3333cccc4444
-   Thumbprint            : 30202C11BE6864437B64CE36C8D988442082A0F1
+   Thumbprint            : AA11BB22CC33DD44EE55FF66AA77BB88CC99DD00
    ApplicationName       : Azurestack-MyApp-c30febe7-1311-4fd8-9077-3d869db28342
    ClientSecret          :
    PSComputerName        : azs-ercs01
@@ -268,7 +268,7 @@ Update the certificate credential using PowerShell, substituting your own values
    ```output
    ApplicationIdentifier : S-1-5-21-1512385356-3796245103-1243299919-1356
    ClientId              : 
-   Thumbprint            : AF22EE716909041055A01FE6C6F5C5CDE78948E9
+   Thumbprint            : BB22CC33DD44EE55FF66AA77BB88CC99DD00EE11
    ApplicationName       : Azurestack-MyApp-c30febe7-1311-4fd8-9077-3d869db28342
    ClientSecret          : 
    PSComputerName        : azs-ercs01
