@@ -71,9 +71,6 @@ Azure CLI is available to install in Windows, macOS, and Linux environments. It 
 
 Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure CLI to check Azure VM verification following these steps:
 
-> [!IMPORTANT]
-> Azure Local doesn't support deploying a cluster using an existing Azure Key Vault that has Private Endpoints enabled.
-
 1. Set up parameters from your subscription, resource group, and cluster name.
 
    ```azurecli
