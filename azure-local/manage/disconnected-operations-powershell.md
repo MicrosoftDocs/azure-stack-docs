@@ -54,7 +54,6 @@ $azEnvironment = Add-AzEnvironment `
 -GraphEndpoint $endpoints.graphEndpoint `
 -GraphAudience $endpoints.graphEndpoint `
 -EnableAdfsAuthentication:($endpoints.authentication.loginEndpoint.TrimEnd("/").EndsWith("/adfs",[System.StringComparison]::OrdinalIgnoreCase)) 
-
 ```
 
 ## List cloud endpoints

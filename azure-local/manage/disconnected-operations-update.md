@@ -82,6 +82,10 @@ Start-ApplianceUpdate -TargetVersion $updatePackageResult.UpdatePackageVersion -
 ```
 
 > [!NOTE]  
+> Caution: Make sure your LDAP credentials are still valid and have not expired prior to triggering update. You can verify your LDAP settings with using the cmdlet Test-ApplianceExternalIdentityConfigurationDeep provided in the operations module. If the LDAP credentials have expired - update and rollback will fail and you will need to revert back to snapshot. 
+
+
+> [!NOTE]  
 > Update can take several hours and might reboot the control plane appliance. If update fails, the system attempts to roll back to the last known good state and boot back.
 
 ## Get update history
