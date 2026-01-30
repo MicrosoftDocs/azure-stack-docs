@@ -398,7 +398,7 @@ az networkcloud baremetalmachine show -n <nodeName> \
 > NAKS impact:
 
 > - If BMM was healthy: System will gracefully drain NAKS nodes before the replace operation proceeds.
-> - If BMM was dead/unhealthy: NAKS nodes on that BMM are already impacted. The NAKS cluster will automatically reprovision nodes on healthy BMMs.[DR3.1][AB3.2][DR3.3]
+> - If BMM was unresponsive/unhealthy: NAKS nodes on that BMM are already impacted. The NAKS cluster will automatically reprovision nodes on healthy BMMs.[DR3.1][AB3.2][DR3.3]
 
 > [!WARNING]
 > Replacing a single SSD is safe and does not impact VM OS disks because the RAID set tolerates single‑disk failures. However, if more than one SSD in the RAID group is replaced or fails before the array rebuilds, VM OS disks stored on those drives may be permanently lost.
