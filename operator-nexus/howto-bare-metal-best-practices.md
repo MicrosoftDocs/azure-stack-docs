@@ -145,7 +145,7 @@ Example `actionStates` output for a Bare Metal Machine Replace action:
     "actionStates": [
       {
         "actionType": "Microsoft.NetworkCloud/bareMetalMachines/replace",
-        "correlationId": "25d678cb-353c-41f4-8231-1135064ae582",
+        "correlationId": "aaaa0000-bb11-2222-33cc-444444dddddd",
         "endTime": "2025-08-12T17:00:58Z",
         "startTime": "2025-08-12T15:32:12Z",
         "status": "Completed",
