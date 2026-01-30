@@ -126,7 +126,7 @@ Follow these steps to identify a data disk inside the guest VM:
     ```powershell
     Get-Disk | Select-Object UniqueId
     ```
-    Note the **UniqueId** value for the data disk you want to identify.
+    Note the **UniqueId** value for the data disk you want to identify. Compare the `UniqueId` that you have noted to the `UniqueId` field of the disk resource to accurately map which disk is the Azure representation disk.
 
 ## Delete a data disk
 
