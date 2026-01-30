@@ -133,12 +133,6 @@
         href: cluster-labels.md
       - name: Taints
         href: aks-arc-use-node-taints.md
-    - name: Use autoscaler
-      href: auto-scale-aks-arc.md
-    - name: Upgrade Kubernetes clusters
-      href: cluster-upgrade.md
-    - name: Integrate Azure Container Registry
-      href: deploy-container-registry.md
     - name: Monitoring and logging
       items:
           - name: Monitor Kubernetes object events
@@ -157,6 +151,14 @@
             href: get-on-demand-logs.md
           - name: Monitoring data reference
             href: kubernetes-monitor-metrics.md
+    - name: AKS disconnected operations
+      href: disconnected-operations-aks.md       
+    - name: Use autoscaler
+      href: auto-scale-aks-arc.md
+    - name: Upgrade Kubernetes clusters
+      href: cluster-upgrade.md
+    - name: Integrate Azure Container Registry
+      href: deploy-container-registry.md
   - name: Troubleshooting and known issues
     items:
     - name: Get support
