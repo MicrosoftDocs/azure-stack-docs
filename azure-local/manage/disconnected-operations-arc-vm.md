@@ -38,22 +38,22 @@ Azure Local VMs running disconnected operations have the following limitations:
 
 | Resource | Description |
 | --------------- | ----------- |
-| VM images | Marketplace, Azure storage account, and images from an existing Azure Local VM aren't supported. <br><br> Create VM images only from a local share. |
-| Network interfaces | Create network interfaces only in CLI. This release doesn't support network interface creation in the Azure portal. |
+| VM images | Marketplace, Azure storage account, and images from an existing Azure Local VM aren't supported. <br><br> Create VM images from a local share. |
+| Network interfaces | Create network interfaces in CLI. This release doesn't support network interface creation in the Azure portal. |
 | Storage paths | To delete storage paths from CLI or Portal, first delete any resources (VMs, images, disks) that are on the storage path. |
 | Logical networks | You can see and use logical networks, but they might not fully load in the portal. |
 | Proxy servers | Proxy servers aren't supported for outbound internet connections. |
 | VM creation | Create a VM in the portal by selecting **Azure Arc** > **Machines** > **Add/Create** > **Create a machine in a connected host environment**. For more information, see [Create Azure Local VMs with disconnected operations](#create-azure-local-vms-with-disconnected-operations) (step 7) and [Create Azure Local VMs](../manage/create-arc-virtual-machines.md). |
-| Trusted launch | Create Azure Local VMs with Trusted launch only in CLI. Other VM creation options aren't supported. <br><br> Boot integrity verification isn't supported. <br><br> For more information about Trusted launch for Azure Local VMs, see [Overview for Trusted launch for Azure Local VMs enabled by Azure Arc](../manage/trusted-launch-vm-overview.md). |
+| Trusted launch | Create Azure Local VMs with Trusted launch in CLI. Other VM creation options aren't supported. <br><br> Boot integrity verification isn't supported. <br><br> For more information about Trusted launch for Azure Local VMs, see [Overview for Trusted launch for Azure Local VMs enabled by Azure Arc](../manage/trusted-launch-vm-overview.md). |
 
 <!--### VM images
 
 - Marketplace, Azure storage account, and images from an existing Azure Local VM aren't supported.
-- Create VM images only from a local share.
+- Create VM images from a local share.
 
 ### Network interfaces
 
-Create network interfaces only in CLI. This release doesn't support network interface creation in the Azure portal.
+Create network interfaces in CLI. This release doesn't support network interface creation in the Azure portal.
 
 ### Storage paths
 
@@ -69,7 +69,16 @@ Proxy servers don't support outbound internet connections.
 
 ### VM creation
 
-Create a VM in the portal by selecting **Azure Arc** > **Machines** > **Add/Create** > **Create a machine in a connected host environment**. For more information, see step 7 under the Create Azure Local VMs section. -->
+Create a VM in the portal by selecting **Azure Arc** > **Machines** > **Add/Create** > **Create a machine in a connected host environment**. For more information, see step 7 under the Create Azure Local VMs section.
+
+### Trusted Launch
+
+Create Azure Local VMs with Trusted launch in CLI. Other VM creation options aren't supported.
+
+For more information about Trusted launch for Azure Local VMs, see [Overview for Trusted launch for Azure Local VMs enabled by Azure Arc](../manage/trusted-launch-vm-overview.md).
+
+> [!NOTE]
+> Boot integrity verification isn't supported. -->
 
 ## Create Azure Local VMs with disconnected operations
 
