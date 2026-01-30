@@ -159,7 +159,7 @@ Follow these steps to create an example VM named `Node1` using PowerShell cmdlet
     - NetworkATC teams vNICs for management and compute intent and, depending on the configuration, for storage vNICs.
 
     ```PowerShell
-    Get-VmNetworkAdapter -VmName "Node1" | Set-VmNetworkAdapter -MacAddressSpoofing On -Allow Teaming On
+    Get-VmNetworkAdapter -VmName "Node1" | Set-VmNetworkAdapter -MacAddressSpoofing On -AllowTeaming On
     ```
 
 1. Enable trunk port (for multi-node deployments only) for all network adapters on VM `Node1`. This script configures the network adapter of a specific VM to operate in trunk mode. This is typically used in multi-node deployments where you want to allow multiple Virtual Local Area Networks (VLANs) to communicate through a single network adapter:
