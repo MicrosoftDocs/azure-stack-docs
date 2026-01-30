@@ -19,6 +19,11 @@ This article highlights what's new (features and improvements) and critical know
 [!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
 
 
+## Features and improvements in 2601
+ - Added support for the Azure Local 2601 ISO and its associated capabilities.
+ - Added ZDU capability for Azure Local.
+ - Improved security and bug fixes.
+
 ## Features and improvements in 2512
  - Added support for the Azure Local 2512 ISO and its associated capabilities.
  - Added update capability for 2512.
@@ -48,6 +53,11 @@ This article highlights what's new (features and improvements) and critical know
  - Enabled the use of a FQDN in the SAN of the management certificate.
 
 ## Known issues for disconnected operations for Azure Local
+### Control plane deployment stuck and times out without completing
+In rare cases deployments can time out - and services might not reach 100% convergence, even after 8 hours.
+
+**Mitigation:** Redeploy the disconnected operations appliance. If the problem continues after 2-3 clean redeployments - collect logs and open a support ticket.
+
 
 ### SSL/TLS error using management endpoint (OperationsModule)
 
