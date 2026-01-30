@@ -71,6 +71,7 @@ This article helps you deploy an Azure Local instance using the Azure portal.
     After the extensions are installed successfully, **Add machines** by selecting from the same list of machines and then **Validate selected machines**.
 
 1. **Select an existing Key Vault** or select **Create a new Key Vault**. Create an empty key vault to securely store secrets for this system, such as cryptographic keys, local admin credentials, and BitLocker recovery keys.
+[!IMPORTANT] Azure Local does not support deploying a cluster using an existing Azure Key Vault that has Private Endpoints enabled..
 
 1. On the **Create a new key vault** page, provide information for the specified parameters and select **Create**:
 
