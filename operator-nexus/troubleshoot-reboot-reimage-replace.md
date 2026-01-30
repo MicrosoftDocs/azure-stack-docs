@@ -245,7 +245,6 @@ az networkcloud baremetalmachine cordon \
 > - Cordons NAKS nodes running on this BMM (marks them unschedulable)
 > - Drains NAKS nodes (evicts pods to other nodes)
 > - Gracefully shuts down VMs
-> - Unenrolls the BMM from Azure Arc
 >
 > This process may take up to 30 minutes.
 
