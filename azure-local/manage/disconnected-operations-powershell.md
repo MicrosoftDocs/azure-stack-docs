@@ -32,7 +32,29 @@ To add your private cloud, run the following command:
 ```powershell
 $applianceCloudName = "azure.local"
 $applianceFQDN = "autonomous.cloud.private"
-Add-AzEnvironment -Name $applianceCloudName -ARMEndpoint "https://armmanagement.$($applianceFQDN)"
+
+$AdminManagementEndPointUri = "https://armmanagement.$($applianceFQDN)/"
+$DirectoryTenantId = "98b8267d-e97f-426e-8b3f-7956511fd63f"
+
+#retrieve ALDO endpoints
+
+$armMetadataEndpoint = $AdminManagementEndPointUri.ToString().TrimEnd('/') + "/metadata/endpoints?api-version=2015-01-01"
+
+$endpoints = Invoke-RestMethod -Method Get -Uri $armMetadataEndpoint -ErrorAction Stop
+
+$azEnvironment = Add-AzEnvironment `
+-Name $applianceCloudName `
+-ActiveDirectoryEndpoint ($endpoints.authentication.loginEndpoint.TrimEnd('/') + "/") `
+-ActiveDirectoryServiceEndpointResourceId $endpoints.authentication.audiences[0] `
+-ResourceManagerEndpoint $AdminManagementEndPointUri.ToString() `
+-GalleryEndpoint $endpoints.galleryEndpoint `
+-MicrosoftGraphEndpointResourceId $endpoints.graphEndpoint `
+-MicrosoftGraphUrl $endpoints.graphEndpoint `
+-AdTenant $DirectoryTenantId `
+-GraphEndpoint $endpoints.graphEndpoint `
+-GraphAudience $endpoints.graphEndpoint `
+-EnableAdfsAuthentication:($endpoints.authentication.loginEndpoint.TrimEnd("/").EndsWith("/adfs",[System.StringComparison]::OrdinalIgnoreCase)) 
+
 ```
 
 ## List cloud endpoints
