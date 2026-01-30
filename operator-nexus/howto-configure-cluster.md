@@ -310,7 +310,7 @@ Example `JSON View` output for the Cluster (Operator Nexus) resource:
     "actionStates": [
       {
         "actionType": "Microsoft.NetworkCloud/clusters/deploy",
-        "correlationId": "196157eb-0c9f-47df-8428-ac2f86cfc816",
+        "correlationId": "aaaa0000-bb11-2222-33cc-444444dddddd",
         "endTime": "2025-07-28T23:33:27Z",
         "message": "Deploy action completed successfully; cluster deployment initiated and proceeding automatically - monitor progress via cluster detailed status",
         "startTime": "2025-07-28T17:32:50Z",
