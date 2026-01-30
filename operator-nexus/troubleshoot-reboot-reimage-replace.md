@@ -401,7 +401,7 @@ az networkcloud baremetalmachine show -n <nodeName> \
 > - If BMM was dead/unhealthy: NAKS nodes on that BMM are already impacted. The NAKS cluster will automatically reprovision nodes on healthy BMMs.[DR3.1][AB3.2][DR3.3]
 
 > [!WARNING]
-> If SSD was replaced: All VM OS disks stored on that SSD are permanently lost. Delete the affected VM and recreate it on another healthy BMM (if you have capacity) before starting the replace action. Ensure you have VM configurations backed up or documented.
+> Replacing a single SSD is safe and does not impact VM OS disks because the RAID set tolerates single‑disk failures. However, if more than one SSD in the RAID group is replaced or fails before the array rebuilds, VM OS disks stored on those drives may be permanently lost.
 
 ##### Step 4: Optional verification (healthy BMM only)
 
