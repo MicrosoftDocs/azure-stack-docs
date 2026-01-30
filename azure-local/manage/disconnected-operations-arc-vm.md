@@ -44,7 +44,7 @@ Azure Local VMs running disconnected operations have the following limitations:
 | Logical networks | You can see and use logical networks, but they might not fully load in the portal. |
 | Proxy servers | Proxy servers aren't supported for outbound internet connections. |
 | VM creation | Create a VM in the portal by selecting **Azure Arc** > **Machines** > **Add/Create** > **Create a machine in a connected host environment**. For more information, see [Create Azure Local VMs with disconnected operations](#create-azure-local-vms-with-disconnected-operations) (step 7) and [Create Azure Local VMs](../manage/create-arc-virtual-machines.md). |
-| Trusted launch | Create Azure Local VMs with Trusted launch only in CLI. Other VM creation options aren't supported. <br><br> Boot integrity verification isn't supported. <br><br> For more information about Trusted launch, see [Overview for Trusted launch for Azure Local VMs enabled by Azure Arc](../manage/trusted-launch-vm-overview.md). |
+| Trusted launch | Create Azure Local VMs with Trusted launch only in CLI. Other VM creation options aren't supported. <br><br> Boot integrity verification isn't supported. <br><br> For more information about Trusted launch for Azure Local VMs, see [Overview for Trusted launch for Azure Local VMs enabled by Azure Arc](../manage/trusted-launch-vm-overview.md). |
 
 <!--### VM images
 
