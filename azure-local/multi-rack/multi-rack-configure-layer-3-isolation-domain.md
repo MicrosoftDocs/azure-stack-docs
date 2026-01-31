@@ -61,7 +61,7 @@ The workflow for a successful provisioning of an L3 isolation domain is as follo
       az provider show -n Microsoft.ManagedNetworkFabric -o table
       ```
 
-      Registration can take up to 10 minutes. When it's finished, the `RegistrationState` in the output changes to `Registered`.
+      Registration can take up to 10 minutes. When the registration finishes, the `RegistrationState` in the output changes to `Registered`.
 
 ### Review L3 isolation domain parameters
 
