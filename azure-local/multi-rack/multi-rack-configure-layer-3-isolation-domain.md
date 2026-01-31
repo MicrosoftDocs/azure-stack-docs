@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 01/21/2026
+ms.date: 01/30/2026
 ---
 
 # Manage Layer 3 isolation domains for multi-rack deployments of Azure Local (preview)
@@ -91,7 +91,7 @@ The following parameters for isolation domains are *optional*:
 
 ### Create an L3 isolation domain
 
-1. Set some parameters. Set parameters in angle brackets \< \> to your own values. Remove the angle brackets when you run the command.
+1. Set parameters as needed.
 
     ```azurecli
     $resourceGroupName = "example-resourcegroup"
@@ -140,7 +140,7 @@ The following parameters for isolation domains are *optional*:
 
 To get the L3 isolation domains details and administrative state:
 
-1. Set some parameters. Set parameters in angle brackets \< \> to your own values. Remove the angle brackets when you run the command.
+1. Set parameters as needed.
 
     ```azurecli
     $resourceGroupName = "example-resourcegroup"
@@ -184,7 +184,7 @@ To get the L3 isolation domains details and administrative state:
 
 ### List L3 isolation domains
 
-1. Set some parameters. Set parameters in angle brackets \< \> to your own values. Remove the angle brackets when you run the command.
+1. Set parameters as needed.
 
     ```azurecli
     $resourceGroupName = "example-resourcegroup"
@@ -227,7 +227,7 @@ To get the L3 isolation domains details and administrative state:
 
 ## Update administrative state of an L3 isolation domain
 
-1. Set some parameters. Set parameters in angle brackets \< \> to your own values. Remove the angle brackets when you run the command.
+1. Set parameters as needed.
 
     ```azurecli
     $resourceGroupName = "example-resourcegroup"
@@ -278,7 +278,7 @@ To get the L3 isolation domains details and administrative state:
 
 ## Delete an L3 isolation domain
 
-1. Set some parameters. Set parameters in angle brackets \< \> to your own values. Remove the angle brackets when you run the command.
+1. Set parameters as needed.
 
     ```azurecli
     $resourceGroupName = "example-resourcegroup"
@@ -309,18 +309,18 @@ The following parameters are *required* for creating internal networks.
 | `resource-group` | Use the corresponding NFC resource group name. | NFCresourcegroupname |
 | `l3-isolation-domain-name` | Resource name of the L3 isolation domain | example-l3domain |
 | `location` | The Azure region used during NFC creation | `eastus` |
-| `connectedIPv4Subnets` | IPv4 subnet used by the HAKS workloads. | 10.0.0.0/24 |
-| `bgpConfiguration` | IPv4 next hop address | 10.0.0.0/24 |
+| `connectedIPv4Subnets` | IPv4 subnet to be used for the internal network. | 10.0.0.0/24 |
 | `peerASN` | Peer ASN of network function. | 65047 |
 | `ipv4ListenRangePrefixes`  | BGP IPv4 listen range, maximum range allowed in /28  | 10.1.0.0/26  |
+| `mtu` | L3 MTU to be configured for the internal network, maximum supported value is 9000 | 1500|
 
 The following parameters are *optional* for creating internal networks:
 
 | Parameter | Description | Example |
 | --- | --- | --- |
-| `connectedIPv6Subnets` | IPv6 subnet used by the HAKS workloads. | 10:101:1::1/64 |
-| `staticRouteConfiguration` | IPv4/IPv6 prefix of the static route. | IPv4 10.0.0.0/24 and Ipv6 10:101:1::1/64 | 
-| `staticRouteConfiguration->extension` | extension flag for internal network static route. | NoExtension/NPB |
+| `bgpConfiguration` | Captures all BGP relevant options. |  |
+| `connected-ipv6-subnets` | IPv6 subnet to be used for the internal network. | 10:101:1::1/64 |
+| `staticRouteConfiguration` | IPv4/IPv6 prefix of the static route. | IPv4 10.0.0.0/24 and Ipv6 10:101:1::1/64 |
 | `defaultRouteOriginate` | True/False. Enables default route to be originated when advertising routes via BGP. | True |
 | `allowAS` | Allows for routes to be received and processed even if the router detects its own ASN in the AS-Path. TO disable, input 0. <br>Possible values are 1 to 10 and the default is 2. | 2 |
 | `allowASOverride` | Enable or disable allowAS | Enable |
@@ -329,14 +329,14 @@ The following parameters are *optional* for creating internal networks:
 | `ipv4ListenRangePrefixes`  |BGP IPv4 listen range, maximum range allowed in /28  |10.1.0.0/26  |
 | `ipv4NeighborAddress`  |IPv4 neighbor address  |10.0.0.11  |
 | `ipv6NeighborAddress`  |IPv6 neighbor address  |10:101:1::11  |
-| `isMonitoringEnabled`  |To enable or disable monitoring on internal network  |False  |
+| `isMonitoringEnabled`  |To enable or disable Two-Way Active Measurement Protocol (TWAMP) monitoring on internal network  |False  |
 
 
 ### Create an internal network with BGP configuration and specified peering address
 
 You must create an internal network before you enable an L3 isolation domain. This command creates an internal network with BGP configuration and a specified peering address:
 
-1. Set some parameters. Set parameters in angle brackets \< \> to your own values. Remove the angle brackets when you run the command.
+1. Set parameters as needed. Set parameters in angle brackets \< \> to your own values. Remove the angle brackets when you run the command.
 
     ```azurecli
     $subscription =  "<Subscription ID>"
@@ -351,7 +351,7 @@ You must create an internal network before you enable an L3 isolation domain. Th
     $bgpConfiguration =  '{"defaultRouteOriginate": "True", "allowAS": 2, "allowASOverride": "Enable", "PeerASN": 65535, "ipv4ListenRangePrefixes": ["10.1.2.0/28"]}'
     ```
 
-1. Create the internal network with BGP configuration and specified peering address:
+1. Create the internal network with BGP configuration:
 
     ```azurecli
     az networkfabric internalnetwork create --resource-group $resourceGroupName --l3-isolation-domain-name $isoDomainName --resource-name $resourceName --vlan-id $vLanId --connected-ipv4-subnets $ConnectedIPv4Subnets --mtu $mtu --bgp-configuration $bgpConfiguration
@@ -382,7 +382,6 @@ You must create an internal network before you enable an L3 isolation domain. Th
         } 
       ], 
     
-      "extension": "NoExtension", 
       "id": "/subscriptions/xxxxxx-xxxxxx-xxxx-xxxx-xxxxxx/resourceGroups/NFResourceGroupName/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/example-l3domain/internalNetworks/example-internalnetwork", 
       "isMonitoringEnabled": "True", 
       "mtu": 1500, 
@@ -404,9 +403,9 @@ You must create an internal network before you enable an L3 isolation domain. Th
     ```
     </details>
 
-### Create multiple static routes with a single next hop 
+### Create an internal network with static routes
 
-1. Set some parameters. Set parameters in angle brackets \< \> to your own values. Remove the angle brackets when you run the command.
+1. Set parameters as needed. Set parameters in angle brackets \< \> to your own values. Remove the angle brackets when you run the command.
 
     ```azurecli
     $subscription =  "<Subscription ID>"
@@ -570,7 +569,7 @@ For Option A, you need to create an external network before you enable the L3 is
 
 ### Create an external network using Option B
 
-1. Set some parameters. Set parameters in angle brackets \< \> to your own values. Remove the angle brackets when you run the command.
+1. Set parameters as needed. 
 
     ```azurecli
     $resourceGroupName = "example-resourcegroup"
@@ -634,7 +633,7 @@ For Option A, you need to create an external network before you enable the L3 is
 
 ### Create an external network using Option A
 
-1. Set some parameters. Set parameters in angle brackets \< \> to your own values. Remove the angle brackets when you run the command.
+1. Set parameters as needed. 
 
     ```azurecli
     $resourceGroupName = "example-resourcegroup"
@@ -690,7 +689,7 @@ For Option A, you need to create an external network before you enable the L3 is
 
 ### Create an external network using IPv6
 
-1. Set some parameters. Set parameters in angle brackets \< \> to your own values. Remove the angle brackets when you run the command.
+1. Set parameters as needed.
 
     ```azurecli
     $resourceGroupName = "example-resourcegroup"
@@ -747,14 +746,14 @@ For Option A, you need to create an external network before you enable the L3 is
 
 ### Enable an L3 isolation domain
 
-1. Set some parameters. Set parameters in angle brackets \< \> to your own values. Remove the angle brackets when you run the command.
+1. Set parameters as needed.
 
     ```azurecli
     $resourceGroupName = "example-resourcegroup"
     $resourceName = "example-l3domain"
     ```
 
-1. Enable an untrusted L3 isolation domain:
+1. Enable an L3 isolation domain.
 
     ```azurecli
     az networkfabric l3domain update-admin-state --resource-group $resourceGroupName --resource-name $resourceName --state Enable 
