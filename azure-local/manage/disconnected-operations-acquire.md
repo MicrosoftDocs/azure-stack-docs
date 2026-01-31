@@ -120,7 +120,7 @@ When you deploy a new system, use an Azure Local build that's compatible with yo
 | 2509 | 9.1064929344.21347 | AzureLocal24H2.26100.1742.LCM.12.2508.0.3201 |
 | 2511 | 10.1064997818.22636 | AzureLocal24H2.26100.1742.LCM.12.2511.0.3038 |
 | 2512 | 10.1065058340.24001 | AzureLocal24H2.26100.1742.LCM.12.2512.0.3021 |
-
+| 2601 | 2601.1.2500 | AzureLocal24H2.26100.1742.LCM.12.2601.0.3137 |
 ## Related content
 
 - [Deploy disconnected operations for Azure Local](disconnected-operations-deploy.md)
