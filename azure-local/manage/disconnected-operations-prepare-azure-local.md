@@ -107,6 +107,10 @@ To prepare each machine for the disconnected operations appliance, follow these 
     [Environment]::SetEnvironmentVariable("DISCONNECTED_OPS_SUPPORT", $true, [System.EnvironmentVariableTarget]::Machine)
     ```
     
+1. [Setup Azure CLI on each node](../manage/disconnected-operations-cli.md). Note that this must work on each node prior to Azure Local instance deployment - else deploying the instance will fail. 
+
+    
+    
 1. Find the first machine from the list of node names and specify it as the `seednode` you want to use in the cluster.
 
     ```powershell
