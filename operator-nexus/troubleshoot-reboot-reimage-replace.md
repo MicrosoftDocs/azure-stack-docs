@@ -159,7 +159,6 @@ Record the ARM IDs returned here so you can use the same IDs during the post-che
 
 > [!NOTE]
 > How the system handles VMs during cordon/evacuate:
-
 > - Running VMs are gracefully shut down and will be automatically restarted after reimage
 > - Stopped VMs remain stopped after reimage (no automatic restart)
 > - Provisioning/Error VMs - if stuck due to BMM issues, reimage should resolve the underlying problem
@@ -219,7 +218,6 @@ Review the output and identify nodes where the `BMM` column matches the BMM you 
 
 > [!NOTE]
 > The cordon/evacuate operation does not check the NAKS cluster health status before attempting to drain:
-
 > - If NAKS nodes exist on the BMM, the system will attempt to drain them regardless of cluster status
 > - If nodes are unreachable (e.g., due to BMM failure), the drain operation will timeout after 5 minutes and proceed
 > - Use the `kubectl` output above to identify which specific NAKS nodes are on this BMM
@@ -241,7 +239,6 @@ az networkcloud baremetalmachine cordon \
 
 > [!NOTE]
 > When you run `cordon --evacuate "True"`, the system automatically:
-
 > - Cordons NAKS nodes running on this BMM (marks them unschedulable)
 > - Drains NAKS nodes (evicts pods to other nodes)
 > - Gracefully shuts down VMs
@@ -342,7 +339,6 @@ az networkcloud baremetalmachine cordon \
 
 > [!NOTE]
 > If the BMM has already failed and is unresponsive, the `cordon --evacuate "True"` command may not complete successfully. In this case:
-
 > - VMs on the failed BMM are already impacted
 > - Stateless pods can typically reschedule to healthy nodes, but StatefulSet pods can remain stuck on `NotReady` nodes[NA2.1][DR2.2][DR2.3]
 > - Proceed directly to physical repair and the replace command
@@ -368,7 +364,6 @@ az networkcloud baremetalmachine show -n <nodeName> \
 
 > [!NOTE]
 > For a healthy BMM, when you run the replace action with `--safeguard-mode None`, the system automatically:
-
 > - Cordons and drains NAKS nodes on the BMM
 > - Gracefully shuts down VMs
 > - Proceeds with the replace operation once evacuation completes
@@ -396,7 +391,6 @@ az networkcloud baremetalmachine show -n <nodeName> \
 
 > [!NOTE]
 > NAKS impact:
-
 > - If BMM was healthy: System will gracefully drain NAKS nodes before the replace operation proceeds.
 > - If BMM was unresponsive/unhealthy: NAKS nodes on that BMM are already impacted. The NAKS cluster will automatically reprovision nodes on healthy BMMs.[DR3.1][AB3.2][DR3.3]
 
