@@ -22,6 +22,7 @@ This article highlights what's new (features and improvements) and critical know
 ## Features and improvements in 2601
  - Added support for the Azure Local 2601 ISO and its associated capabilities.
  - Added ZDU capability for Azure Local.
+ - Updated CLI versions and extensions
  - Improved security and bug fixes.
 
 ## Features and improvements in 2512
@@ -109,8 +110,8 @@ Follow these steps:
       
       # Continue with Invoke-AzStackHCIArcInitialization.
       ```
-      
- 1. Review the [version compatibility](disconnected-operations-set-up.md#review-disconnected-operations-for-azure-local-compatible-versions) table.
+      acquire
+ 1. Review the [version compatibility](disconnected-operations-acquire.md#review-disconnected-operations-for-azure-local-compatible-versions) table.
 
 ### Cloud deployment validation fails during the portal experience
 

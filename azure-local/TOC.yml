@@ -841,10 +841,14 @@ items:
       href: manage/disconnected-operations-pki.md
   - name: Deploy
     items:
-    - name: Set-up
-      href: manage/disconnected-operations-set-up.md
-    - name: Deployment
+    - name: Acquire disconnected operations
+      href: manage/disconnected-operations-acquire.md
+    - name: Prepare Azure Local nodes
+      href: manage/disconnected-operations-prepare-azure-local.md
+    - name: Deploy disconnected operations
       href: manage/disconnected-operations-deploy.md
+
+
   - name: Manage
     items:
     - name: Azure CLI

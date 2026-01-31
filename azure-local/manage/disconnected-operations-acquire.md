@@ -1,6 +1,6 @@
 ---
-title: Set Up Disconnected Operations for Azure Local (preview)
-description: Learn how to set up disconnected operations for Azure Local by creating a disconnected operations resource in the Azure portal (preview).
+title: Acquire Disconnected Operations for Azure Local (preview)
+description: Learn how to Acquire disconnected operations for Azure Local by creating a disconnected operations resource in the Azure portal (preview) and downloading the required resources.
 ms.topic: how-to
 author: ronmiab
 ms.author: robess
@@ -10,7 +10,7 @@ ai-usage: ai-assisted
 ms.subservice: hyperconverged
 ---
 
-# Set up disconnected operations for Azure Local (preview)
+# Acquire disconnected operations for Azure Local (preview)
 
 ::: moniker range=">=azloc-2506"
 
