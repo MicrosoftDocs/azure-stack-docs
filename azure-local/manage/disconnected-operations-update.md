@@ -124,8 +124,8 @@ $plans | Sort-Object -Property LastModifiedDateTime -Descending | ft InstanceID,
 #>
 
 # Host the OEM SBE manifest and overwrite location 
-$OEM = 'HPE'
-$SolutionVersion = '12.2512.1002.10'
+$OEM = 'Replaceme'
+
 $client = New-SolutionUpdateClient
 $client.SetDynamicConfigurationValue("AutomaticOemUpdateUri", "https://edgeartifacts.blob.$($applianceFQDN)/clouddeployment/SBE_Discovery_$($OEM)$.xml").Wait()
 $client.SetDynamicConfigurationValue("AutomaticUpdateUri", "https://fakehost").Wait()
@@ -140,9 +140,12 @@ Get-SolutionUpdateEnvironment
 Add-SolutionUpdate -SourceFolder C:\ClusterStorage\Infrastructure_1\Shares\SU1_Infrastructure_1\import\Solution
 # Wait for this to return to make sure the update is ready
 Get-SolutionUpdate
+$SolutionVersion = 'Replaceme' # Use output from previous to find the latest supported for ALDO
 # Run the update
 Get-SolutionUpdate -Id "redmond/Solution$($solutionVersion)" | Start-SolutionUpdate
 
+# Run these to monitor
+$actionPlanInstanecId = 'ReplaceMe' # Copy output from previous step
 Start-MonitoringActionplanInstanceToComplete -EceClient $eceClient -actionPlanInstanceID $actionPlanInstanceID
 ```
 
