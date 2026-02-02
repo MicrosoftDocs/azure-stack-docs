@@ -47,9 +47,9 @@ The 'nexus-volume' and 'nexus-shared' storage classes assign trace IDs to volume
       Type     Reason              Age               From                     Message
       ----     ------              ----              ----                     -------
       Normal   Scheduled           66s               default-scheduler        Successfully assigned scale-test/contoso-0-0 to contoso-37bb13b4-agentpool2-md-xltt4-cxjgz
-      Warning  FailedAttachVolume  8s (x6 over 26s)  attachdetach-controller  AttachVolume.Attach failed for volume "pvc-605d27e1-a360-4f04-a305-dc48bf2f9e8d" : rpc error: code = Internal desc = attachment (temporarily) failed; "traceid": "tr-aa0a7217-ac14-4237-845f-713966741c6e"
-      Warning  FailedAttachVolume  5s (x6 over 24s)  attachdetach-controller  AttachVolume.Attach failed for volume "pvc-225ebcc2-8a0f-4f17-afa1-b7a4f2c20b7e" : rpc error: code = Internal desc = attachment (temporarily) failed; "traceid": "tr-a57086a6-817c-4c16-b4cb-df5d1e12815f"
-      Warning  FailedAttachVolume  5s (x6 over 24s)  attachdetach-controller  AttachVolume.Attach failed for volume "pvc-c71f748c-d97e-4aac-a1fb-cd8d7b878c22" : rpc error: code = Internal desc = attachment (temporarily) failed; "traceid": "tr-82d2d5bf-cc99-4175-b293-1f67fc4ea7f3"
+      Warning  FailedAttachVolume  8s (x6 over 26s)  attachdetach-controller  AttachVolume.Attach failed for volume "pvc-605d27e1-a360-4f04-a305-dc48bf2f9e8d" : rpc error: code = Internal desc = attachment (temporarily) failed; "traceid": "tr-0000aaaa-11bb-cccc-dd22-eeeeee333333"
+      Warning  FailedAttachVolume  5s (x6 over 24s)  attachdetach-controller  AttachVolume.Attach failed for volume "pvc-225ebcc2-8a0f-4f17-afa1-b7a4f2c20b7e" : rpc error: code = Internal desc = attachment (temporarily) failed; "traceid": "tr-1111bbbb-22cc-dddd-ee33-ffffff444444"
+      Warning  FailedAttachVolume  5s (x6 over 24s)  attachdetach-controller  AttachVolume.Attach failed for volume "pvc-c71f748c-d97e-4aac-a1fb-cd8d7b878c22" : rpc error: code = Internal desc = attachment (temporarily) failed; "traceid": "tr-2222cccc-33dd-eeee-ff44-aaaaaa555555"
 
     ```
 
