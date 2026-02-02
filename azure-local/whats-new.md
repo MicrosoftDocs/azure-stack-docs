@@ -5,7 +5,7 @@ ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 01/23/2026
+ms.date: 01/29/2026
 ms.subservice: hyperconverged
 ---
 
@@ -232,7 +232,7 @@ This release includes the following features and improvements:
 ::: moniker-end
 
 
-::: moniker range="=azloc-2508"
+::: moniker range="=azloc-previous"
 
 ## Features and improvements in 2508
 
@@ -283,11 +283,6 @@ This release includes the following features and improvements:
     - **Azure Arc gateway documentation updates**: Improved guidance on registering with and without Azure Arc gateway and with and without proxy in an easy to use layout. For more information, see [Register with Azure Arc gateway](./deploy/deployment-with-azure-arc-gateway.md) and [Register with Azure Arc](./deploy/deployment-without-azure-arc-gateway.md).
     - **Upgrade documentation updates**: Clarified steps for upgrading from previous versions of Azure Local and an easy to use layout. For more information, see [Upgrade OS for Azure Local](./upgrade/upgrade-22h2-to-23h2-powershell.md).
     - **Azure Local security book**: This book was previously available as a *pdf* and is now available as web content on Learn. For more information, see [Azure Local security book](./security-book/overview.md).
-
-
-::: moniker-end
-
-::: moniker range="=azloc-previous"
 
 ## Features and improvements in 2507
 
