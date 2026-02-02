@@ -150,7 +150,7 @@ To rotate the certificate for the application in AD FS, you need to have access 
     ```shell
     ApplicationIdentifier : S-1-5-21-401916501-2345862468-1451220656-1451
     ClientId              : 
-    Thumbprint            : FDAA679BF9EDDD0CBB581F978457A37BFD73CA3B
+    Thumbprint            : AA11BB22CC33DD44EE55FF66AA77BB88CC99DD00
     ApplicationName       : Azurestack-AppService-d93601c2-1ec0-4cac-8d1c-8ccde63ef308
     ClientSecret          : 
     PSComputerName        : AzS-ERCS01
