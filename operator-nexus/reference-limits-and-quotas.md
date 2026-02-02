@@ -1,11 +1,11 @@
 ---
 title: Azure Operator Nexus - Limits and Quotas
 description: Limits and quotas that apply to Azure Operator Nexus.
-author: mukeshdua
-ms.author: mukeshdua
+author: jac0bsmith
+ms.author: jacobsmith
 ms.service: azure-operator-nexus
 ms.topic: reference
-ms.date: 06/28/2023
+ms.date: 01/28/2026
 ms.custom: template-reference
 ---
 
@@ -35,7 +35,7 @@ The creation of the Network Fabric related resources is subject to the following
 | Resource Type               | Notes |
 | --------------------------- | -------------------------|
 | Network Fabric Controllers  | Today, its creation depends on underlying Azure components as mentioned in the supporting table under section "Other Azure Resources" |
-| Network Fabrics             | Up to 20 Network Fabric resources per Network Fabric Controller [To be updated] |
+| Network Fabrics             | Up to 10 Network Fabric resources per Network Fabric Controller |
 | Network Devices             | Up to BOM-specified Network devices per Network Fabric |
 | Network Racks               | Up to BOM-specified racks per Network Fabric |
 | Layer 2 Isolation domains   | 3500 isolation domains per Nexus instance |
@@ -43,9 +43,6 @@ The creation of the Network Fabric related resources is subject to the following
 | Route policies              | 400 route policies per Nexus instance |
 | Isolation domain MTU | 1500 - 9200 |
 
-> [!NOTE]
-> * The number of Nexus instances a pair of NFC + CM can handle has been set to 20 based on some theoretical study for ExpressRoute. These numbers will be refined after more testing. 
-> * Some of these limits are yet to be introduced and are not applied by default today.
 
 ### Network Cloud
 The creation of the Network Cloud specific resources is subject to the following resource limits:
@@ -53,7 +50,7 @@ The creation of the Network Cloud specific resources is subject to the following
 | Resource Type               | Notes |
 | --------------------------- | -------------------------|
 | Cluster Manager             |	1:1 mapping with Network Fabric Controller |
-| Cluster                     |	Up to 20 Nexus Cluster instances per Cluster Manager (within same region) |
+| Cluster                     |	Up to 10 Nexus Cluster instances per Cluster Manager (within same region) |
 | Racks                       |	Up to BOM-specified Compute Racks per Nexus Cluster |
 | Bare Metal Machines         |	Up to BOM-specified BareMetal machines per Rack |
 | Storage Appliances          |	Up to BOM-specified Storage appliances per Nexus Cluster instance |
@@ -63,9 +60,6 @@ The creation of the Network Cloud specific resources is subject to the following
 | Trunked Networks            | 3500 per Nexus instance |
 | Cloud Service Networks      |	100 per Nexus instance |
 
-> [!NOTE]
-> * The number of Nexus instances a pair of NFC + CM can handle has been set to 20 based on some theoretical study for ExpressRoute. These numbers will be refined post GA after some further testing. 
-> * Some of these limits are yet to be introduced and are not applied by default today.
 
 ### Other Azure resources
 There are several Azure resources that are required to build up Network Fabric Controllers and Cluster Manager. The table here outlines the Azure services that Operators must ensure that they have adequate capacity available for creation for each Network Fabric Controller and Cluster Manager pair.

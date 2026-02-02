@@ -2,8 +2,8 @@
 title: Physical network requirements for Azure Local
 description: Physical network requirements and considerations for Azure Local, including network switches.
 author: alkohli
-ms.topic: article
-ms.date: 03/21/2025
+ms.topic: concept-article
+ms.date: 01/30/2026
 ms.author: alkohli 
 ms.reviewer: alkohli
 ms.subservice: hyperconverged
@@ -24,14 +24,14 @@ This article discusses physical (fabric) network considerations and requirements
 Microsoft tests Azure Local to the standards and protocols identified in the **Network switch requirements** section below. While Microsoft doesn't certify network switches, we do work with vendors to identify devices that support Azure Local requirements.
 
 > [!IMPORTANT]
-> While other network switches using technologies and protocols not listed here may work, Microsoft cannot guarantee they will work with Azure Local and may be unable to assist in troubleshooting issues that occur.
+> While other network switches using technologies and protocols not listed here may work, Microsoft can't guarantee they will work with Azure Local and may be unable to assist in troubleshooting issues that occur.
 
 When purchasing network switches, contact your switch vendor and ensure that the devices meet the Azure Local requirements for your specified role types. The following vendors (in alphabetical order) have confirmed that their switches support Azure Local requirements:
 
 
 # [Overview](#tab/overview)
 
-Click on a vendor tab to see validated switches for each of the Azure Local traffic types. These network classifications can be found [here](host-network-requirements.md#network-traffic-types).
+Select a vendor tab to see validated switches for each of the Azure Local traffic types. These network classifications can be found [here](host-network-requirements.md#network-traffic-types).
 
 > [!IMPORTANT]
 > We update these lists as we're informed of changes by network switch vendors.
@@ -339,7 +339,7 @@ Ethernet switches used for Azure Local storage traffic must comply with the IEEE
 
 Ethernet switches used for Azure Local storage traffic must comply with the IEEE 802.1Qaz specification that defines Enhanced Transmission Select (ETS). ETS is required where DCB is used. Since DCB can be used in both RoCE and iWARP RDMA scenarios, 802.1Qaz is required in all scenarios.
 
-A minimum of three CoS priorities are required without downgrading the switch capabilities or port speed. Additionally, if your device allows ingress QoS rates to be defined, we recommend that you do not configure ingress rates or configure them to the exact same value as the egress (ETS) rates.
+A minimum of three CoS priorities are required without downgrading the switch capabilities or port speed. Additionally, if your device allows ingress QoS rates to be defined, we recommend that you don't configure ingress rates or configure them to the exact same value as the egress (ETS) rates.
 
 > [!NOTE]
 > Hyper-converged infrastructure has a high reliance on East-West Layer-2 communication within the same rack and therefore requires ETS. Microsoft doesn't test Azure Local with Differentiated Services Code Point (DSCP).
@@ -371,7 +371,7 @@ Ethernet switches used for Azure Local SDN compute traffic must support Border G
 
 ### DHCP Relay Agent 
 
-Ethernet switches used for Azure Local management traffic must support DHCP relay agent. The DHCP relay agent is any TCP/IP host which is used to forward requests and replies between the DHCP server and client when the server is present on a different network. It is required for PXE boot services. [RFC 3046: DHCPv4](https://www.rfc-editor.org/rfc/rfc3046) or [RFC 6148: DHCPv4](https://www.rfc-editor.org/rfc/rfc6148.html#:~:text=RFC%204388%20defines%20a%20mechanism%20for%20relay%20agents,starts%20receiving%20data%20to%20and%20from%20the%20clients.)
+Ethernet switches used for Azure Local management traffic must support DHCP relay agent. The DHCP relay agent is any TCP/IP host which is used to forward requests and replies between the DHCP server and client when the server is present on a different network. It's required for PXE boot services. [RFC 3046: DHCPv4](https://www.rfc-editor.org/rfc/rfc3046) or [RFC 6148: DHCPv4](https://www.rfc-editor.org/rfc/rfc6148.html#:~:text=RFC%204388%20defines%20a%20mechanism%20for%20relay%20agents,starts%20receiving%20data%20to%20and%20from%20the%20clients.)
 
 # [23H2](#tab/23H2reqs)
 
@@ -406,7 +406,7 @@ Ethernet switches used for Azure Local storage traffic must comply with the IEEE
 
 Ethernet switches used for Azure Local storage traffic must comply with the IEEE 802.1Qaz specification that defines Enhanced Transmission Select (ETS). ETS is required where DCB is used. Since DCB can be used in both RoCE and iWARP RDMA scenarios, 802.1Qaz is required in all scenarios.
 
-A minimum of three CoS priorities are required without downgrading the switch capabilities or port speed. Additionally, if your device allows ingress QoS rates to be defined, we recommend that you do not configure ingress rates or configure them to the exact same value as the egress (ETS) rates.
+A minimum of three CoS priorities are required without downgrading the switch capabilities or port speed. Additionally, if your device allows ingress QoS rates to be defined, we recommend that you don't configure ingress rates or configure them to the exact same value as the egress (ETS) rates.
 
 > [!NOTE]
 > Hyper-converged infrastructure has a high reliance on East-West Layer-2 communication within the same rack and therefore requires ETS. Microsoft doesn't test Azure Local with Differentiated Services Code Point (DSCP).
@@ -440,7 +440,7 @@ Ethernet switches used for Azure Local SDN compute traffic must support Border G
 
 ### DHCP Relay Agent 
 
-Ethernet switches used for Azure Local management traffic must support DHCP relay agent. The DHCP relay agent is any TCP/IP host which is used to forward requests and replies between the DHCP server and client when the server is present on a different network. It is required for PXE boot services. [RFC 3046: DHCPv4](https://www.rfc-editor.org/rfc/rfc3046) or [RFC 6148: DHCPv4](https://www.rfc-editor.org/rfc/rfc6148.html#:~:text=RFC%204388%20defines%20a%20mechanism%20for%20relay%20agents,starts%20receiving%20data%20to%20and%20from%20the%20clients.)
+Ethernet switches used for Azure Local management traffic must support DHCP relay agent. The DHCP relay agent is any TCP/IP host which is used to forward requests and replies between the DHCP server and client when the server is present on a different network. It's required for PXE boot services. [RFC 3046: DHCPv4](https://www.rfc-editor.org/rfc/rfc3046) or [RFC 6148: DHCPv4](https://www.rfc-editor.org/rfc/rfc6148.html#:~:text=RFC%204388%20defines%20a%20mechanism%20for%20relay%20agents,starts%20receiving%20data%20to%20and%20from%20the%20clients.)
 
 
 ---
@@ -482,11 +482,11 @@ East-West traffic has the following characteristics:
 
 North-South traffic requires the use of switches. Besides using an Ethernet switch that supports the required protocols for Azure Local, the most important aspect is the proper sizing of the network fabric.
 
-It is imperative to understand the "non-blocking" fabric bandwidth that your Ethernet switches can support and that you minimize (or preferably eliminate) oversubscription of the network.
+It's imperative to understand the "non-blocking" fabric bandwidth that your Ethernet switches can support and that you minimize (or preferably eliminate) oversubscription of the network.
 
 Common congestion points and oversubscription, such as the [Multi-Chassis Link Aggregation Group](https://en.wikipedia.org/wiki/Multi-chassis_link_aggregation_group) used for path redundancy, can be eliminated through proper use of subnets and VLANs. Also see [Host network requirements](host-network-requirements.md).
 
-Work with your network vendor or network support team to ensure your network switches have been properly sized for the workload you are intending to run.
+Work with your network vendor or network support team to ensure your network switches have been properly sized for the workload you're intending to run.
 
 ## Using switchless
 
@@ -507,12 +507,12 @@ Azure Local supports switchless (direct) connections for East-West traffic for a
 ### Advantages of switchless connections
 
 - No switch purchase is necessary for East-West traffic. A switch is required for North-South traffic. This may result in lower capital expenditure (CAPEX) costs but is dependent on the number of nodes in the system.
-- Because there is no switch, configuration is limited to the host, which may reduce the potential number of configuration steps needed. This value diminishes as the system size increases.
+- Because there's no switch, configuration is limited to the host, which may reduce the potential number of configuration steps needed. This value diminishes as the system size increases.
 
 ### Disadvantages of switchless connections
 
 - More planning is required for IP and subnet addressing schemes.
-- Provides only local storage access. Management traffic, VM traffic, and other traffic requiring North-South access cannot use these adapters.
+- Provides only local storage access. Management traffic, VM traffic, and other traffic requiring North-South access can't use these adapters.
 - As the number of nodes in the system grows, the cost of network adapters could exceed the cost of using network switches.
 - Doesn't scale well beyond three-node systems. More nodes incur additional cabling and configuration that can surpass the complexity of using a switch.
 - System expansion is complex, requiring hardware and software configuration changes.

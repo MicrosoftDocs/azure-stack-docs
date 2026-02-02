@@ -1,7 +1,7 @@
 ---
 title: Workloads Resiliency for Azure Local
 description: Disaster recovery workloads for Azure Local.
-ms.topic: article
+ms.topic: concept-article
 author: sipastak
 ms.author: sipastak
 ms.date: 10/23/2025

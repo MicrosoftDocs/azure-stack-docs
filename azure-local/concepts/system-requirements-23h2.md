@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
 ms.custom: references_regions
-ms.date: 12/09/2025
+ms.date: 01/30/2026
 ms.subservice: hyperconverged
 ---
 
@@ -120,6 +120,10 @@ For more feature-specific requirements for Hyper-V, see [System requirements for
 Azure Local requires connectivity to public endpoints in Azure, see [Firewall requirements](firewall-requirements.md) for details. Multi-machine deployments of Azure Local require a reliable high-bandwidth, low-latency network connection between each machine in the instance.
 
 Verify that physical switches in your network are configured to allow traffic on any VLANs you use. For more information, see [Physical network requirements for Azure Local](../concepts/physical-network-requirements.md).
+
+## Bandwidth requirements
+
+For hyperconverged clusters, limited-bandwidth connections, like rural T1 lines or satellite/cellular connections, are adequate for Azure Local to sync. The minimum required connectivity is 10 Mbit. More services might require extra bandwidth, especially to replicate or back up whole VMs, download large software updates, or upload verbose logs for analysis and monitoring in the cloud.
 
 ## Maximum supported hardware specifications
 

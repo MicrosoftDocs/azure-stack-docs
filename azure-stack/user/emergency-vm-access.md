@@ -2,7 +2,7 @@
 title: Emergency VM access in Azure Stack Hub 
 description: Learn how to request help from the operator in scenarios in which a user is locked out from the virtual machine.
 author: sethmanheim
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/04/2024
 ms.author: sethm
 ms.reviewer: thoroet

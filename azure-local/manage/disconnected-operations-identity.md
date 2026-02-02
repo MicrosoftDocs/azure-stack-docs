@@ -117,7 +117,7 @@ Collect and make available the following parameters before deployment:
 | Parameter Name        | Description            | Example                 |  
 |-----------------------|------------------------|-------------------------|  
 | Authority    | An accessible authority URI that gives information about OIDC endpoints, metadata, and more. | `https://adfs.contoso-AzureLocal.com/adfs` |  
-| ClientID     | AppID created when setting up the adfsclient app.    | `1e7655c5-1bc4-52af-7145-afdf6bbe2ec1`     |  
+| ClientID     | AppID created when setting up the adfsclient app.    | `00001111-aaaa-2222-bbbb-3333cccc4444`     |  
 | LdapCredential (Username and Password) | Credentials (read-only) for LDAP integration.       | Username: `ldap` <br></br> Password: ******       |  
 | LdapsCertChainInfo    | Certificate chain information for your LDAP endpoint. You can omit the certificate chain information for demo purposes. | [How to get the certificate chain](disconnected-operations-pki.md)  |
 | OidcCertChainInfo     | Certificate chain information for your OIDC endpoint. You can omit the certificate chain information for demo purposes. | [How to get the certificate chain](disconnected-operations-pki.md)  |
@@ -256,7 +256,7 @@ Install-AdfsFarm `
 # ClientID can be any unique id in your organization - hardcoded GUID here just as example
 Add-AdfsClient `
     -Name "Azure Local Disconnected operations Sign In Service" `
-    -ClientId "7e7655c5-9bc4-45af-8345-afdf6bbe2ec1" `
+    -ClientId "11112222-bbbb-3333-cccc-4444dddd5555" `
     -RedirectUri "https://login.autonomous.cloud.private/signin-oidc"
 
 # Import the Active Directory module

@@ -4,7 +4,7 @@ description: Operator Nexus uses Azure Monitor and collects and aggregates data 
 author: jac0bsmith
 ms.author: jacobsmith
 ms.service: azure-operator-nexus
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 01/21/2026
 ms.custom: template-concept
 ---

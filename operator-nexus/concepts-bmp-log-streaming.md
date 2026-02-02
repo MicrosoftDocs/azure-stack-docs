@@ -4,7 +4,7 @@ description: An overview of BGP Monitoring Protocol (BMP), its importance, and k
 author: sushantjrao
 ms.author: sushrao
 ms.service: azure-operator-nexus
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 04/01/2025
 ms.custom: template-concept
 ---

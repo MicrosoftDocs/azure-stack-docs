@@ -2,7 +2,7 @@
 description: "Learn more about: Health Service actions"
 title: Track Health Service actions
 ms.author: alkohli
-ms.topic: article
+ms.topic: concept-article
 author: alkohli
 ms.date: 01/16/2025
 ms.subservice: hyperconverged

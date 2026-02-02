@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 03/21/2025
+ms.date: 01/30/2026
 ms.custom: sfi-image-nochange
 ms.subservice: hyperconverged
 ---
@@ -31,7 +31,7 @@ Before you begin, make sure to complete the following prerequisites:
 
 1. Make sure that complete the [Azure Local requirements](./azure-arc-vm-management-prerequisites.md).
 
-1. Make sure that a cluster shared volume exists on your Azure Local that is accessible from all the machines in the system. The storage path that you intend to provide on a cluster shared volume should have sufficient space for storing VM images. By default, cluster shared volumes are created during the deployment of Azure Local. 
+1. Make sure that a cluster shared volume exists on your Azure Local that's accessible from all the machines in the system. The storage path that you intend to provide on a cluster shared volume should have sufficient space for storing VM images. By default, cluster shared volumes are created during the deployment of Azure Local. 
 
     You can create storage paths only within cluster shared volumes that are available in the system. For more information, see [Create a cluster shared volume](/windows-server/failover-clustering/failover-cluster-csvs#add-a-disk-to-csv-on-a-failover-cluster).
 
@@ -41,7 +41,7 @@ Before you begin, make sure to complete the following prerequisites:
 You can use the Azure CLI or Azure portal to create a storage path on your system.
 
 > [!WARNING]
-> Do not create storage paths on the Infrastructure_1 volume. This volume is reserved for Azure Local infrastructure components. Using it for workloads can degrade system performance and lead to service instability. Always use separate volumes for workloads.
+> Don't create storage paths on the Infrastructure_1 volume. This volume is reserved for Azure Local infrastructure components. Using it for workloads can degrade system performance and lead to service instability. Always use separate volumes for workloads.
 
 # [Azure CLI](#tab/azurecli)
 
@@ -177,7 +177,7 @@ Follow these steps in Azure portal of your Azure Local.
    :::image type="content" source="./media/create-storage-path/create-storage-path-1.png" alt-text="Screenshot of select + Create storage path." lightbox="./media/create-storage-path/create-storage-path-1.png":::
 
 1. In the **Create storage path** pane, input the following parameters:
-    1. Specify a file system path on your disk where the VMs, VM images and other data reside. This path should be on a cluster shared volume (CSV) on your system.
+    1. Specify a file system path on your disk where the VMs, VM images, and other data reside. This path should be on a cluster shared volume (CSV) on your system.
     1. Provide a friendly name for your storage path. The name should be 3 to 64 characters long and should contain letters, numbers, and hyphens.
   
     :::image type="content" source="./media/create-storage-path/create-storage-path-2.png" alt-text="Screenshot of specifying file path and friendly name." lightbox="./media/create-storage-path/create-storage-path-2.png":::  

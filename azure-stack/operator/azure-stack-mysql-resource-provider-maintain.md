@@ -2,7 +2,7 @@
 title: MySQL resource provider maintenance operations - Azure Stack Hub 
 description: Learn how to maintain the MySQL resource provider service in Azure Stack Hub.
 author: sethmanheim
-ms.topic: article
+ms.topic: how-to
 ms.date: 9/26/2020
 ms.author: sethm
 ms.reviewer: jiadu

@@ -6,7 +6,7 @@ metadata:
   author: ronmiab
   ms.author: robess
   ms.service: azure-local
-  ms.date: 04/04/2025
+  ms.date: 01/30/2025
   ms.subservice: hyperconverged
 
 title: OEM license and billing FAQ for Azure Local
@@ -65,7 +65,7 @@ sections:
 
       - question: Are there Reassignment Rights associated with this license?
         answer: |
-          No. This license doesn't include reassignment rights. This means that the license is tied to the original hardware on which the Azure Stack HCI OS is pre-installed and can't be transferred to different hardware or systems. This approach ensures that the license and its benefits remain specific to the initial hardware setup.
+          No. This license doesn't include reassignment rights. The license is tied to the original hardware on which the Azure Stack HCI OS is pre-installed and can't be transferred to different hardware or systems. This approach ensures that the license and its benefits remain specific to the initial hardware setup.
 
       - question: Does this license include an End-User License Agreement (EULA)?
         answer: |

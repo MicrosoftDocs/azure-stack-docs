@@ -4,7 +4,7 @@ description: Learn how Azure Operator Nexus uses public key infrastructure to pr
 author: matternst7258
 ms.author: matthewernst
 ms.service: azure-operator-nexus
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 12/12/2025
 ms.custom: template-concept
 ---
