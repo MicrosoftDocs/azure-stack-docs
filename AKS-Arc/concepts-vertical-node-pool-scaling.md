@@ -1,7 +1,7 @@
 ---
 title: Vertical node scaling in AKS on Windows Server
 description: Learn about the vertical scaling of node pools in AKS on Windows Server.
-ms.topic: article
+ms.topic: concept-article
 author: davidsmatlak
 ms.author: davidsmatlak 
 ms.lastreviewed: 04/07/2025

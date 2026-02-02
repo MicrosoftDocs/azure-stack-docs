@@ -1,7 +1,7 @@
 ---
 title: Disaster Recovery for Azure Local Virtual Machines
 description: Disaster recovery considerations for Azure Local virtual machines.
-ms.topic: article
+ms.topic: concept-article
 author: sipastak
 ms.author: sipastak
 ms.date: 09/12/2025

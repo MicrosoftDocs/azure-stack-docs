@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.topic: how-to
-ms.date: 12/09/2025
+ms.date: 01/06/2026
 ms.subservice: hyperconverged
 ---
 
@@ -57,11 +57,9 @@ Before you begin, make sure that each virtual host system can dedicate the follo
 | Networking | At least two network adapters connected to internal network. MAC spoofing must be enabled. |
 | Boot disk | One disk to install the Azure Stack HCI operating system from ISO. At least 127 GB. |
 | Hard disks for Storage Spaces Direct | Two dynamic expanding disks. Maximum disk size is 1024 GB. |
-| Data disks | At least 127 GB each. The size must be the same for each disk. |
 | Time synchronization in Hyper-V integration tools | Disabled. |
 
 > [!NOTE]
-
 > These are the minimum requirements to successfully deploy Azure Local. Increase the capacity like virtual cores and memory when running actual workloads like virtual machines or containers.
 
 ## Set up the virtual switch

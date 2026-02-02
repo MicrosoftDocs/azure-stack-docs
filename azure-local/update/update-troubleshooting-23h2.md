@@ -335,7 +335,7 @@ To view a detailed update summary report using PowerShell, follow these steps on
     PS C:\Users\lcmuser> $Failure = $Update | Get-SolutionUpdateRun
     PS C:\Users\lcmuser> $Failure
     
-    ResourceId      : redmond/Solution10.2303.1.7/6bcc63af-b1df-4926-b2bc-26e06f460ab0
+    ResourceId      : redmond/Solution10.2303.1.7/a0a0a0a0-bbbb-cccc-dddd-e1e1e1e1e1e1
     Progress        : Microsoft.AzureStack.Services.Update.ResourceProvider.UpdateService.Models.Step
     TimeStarted     : 4/21/2023 10:02:54 PM
     LastUpdatedTime : 4/21/2023 3:19:05 PM
@@ -354,7 +354,7 @@ To view a detailed update summary report using PowerShell, follow these steps on
     Here's sample output:
 
     ```output
-    PS C:\Users\lcmuser> Start-MonitoringActionplanInstanceToComplete -actionPlanInstanceID 6bcc63af-b1df-4926-b2bc-26e06f460ab0
+    PS C:\Users\lcmuser> Start-MonitoringActionplanInstanceToComplete -actionPlanInstanceID a0a0a0a0-bbbb-cccc-dddd-e1e1e1e1e1e1
     ```
 
    :::image type="content" source="./media/troubleshoot-updates/collect-logs-powershell.png" alt-text="Screenshot of PowerShell collect logs output." lightbox="./media/troubleshoot-updates/collect-logs-powershell.png":::

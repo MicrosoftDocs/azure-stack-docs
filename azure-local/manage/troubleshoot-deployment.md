@@ -4,7 +4,7 @@ description: Learn how to troubleshoot the deployment validation failures for Az
 ms.topic: how-to
 ms.author: alkohli
 author: alkohli
-ms.date: 04/14/2025
+ms.date: 01/28/2026
 ms.subservice: hyperconverged
 ---
 
@@ -224,3 +224,9 @@ Follow these steps to recreate the lock:
     1. For **Lock name**, enter **DoNotDelete**.
     1. For **Lock type**, select **Delete** from the dropdown.
 1. Select **OK** to save the lock.
+
+## Next steps
+
+- For detailed remediation for common deployment issues, check out:
+    > [!div class="nextstepaction"]
+    > [Azure Local Supportability repository](https://github.com/Azure/AzureLocal-Supportability/tree/main/TSG/Deployment)

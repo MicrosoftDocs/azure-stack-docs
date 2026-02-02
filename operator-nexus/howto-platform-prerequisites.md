@@ -5,7 +5,7 @@ author: jac0bsmith
 ms.author: jacobsmith
 ms.service: azure-operator-nexus
 ms.topic: how-to
-ms.date: 07/13/2025
+ms.date: 01/15/2026
 ms.custom:
   - template-how-to
   - build-2025
@@ -697,7 +697,7 @@ For reference, version N is the latest available runtime version. N-1 and N-2 ar
 | iDRAC                                                                   | 7.20.30.55    |
 | Non-Expander Storage Backplane Passive SEP Firmware (15G Non-Expander)  | 7.10          |
 | CPLD                                                                    | 1.1.1         |
-| Mellanox ConnectX-6 DX Adapter                                          | 22.41.10.00   |
+| Mellanox ConnectX-6 DX Adapter                                          | 22.47.10.88   |
 | NVIDIA ConnectX-6 Lx 2x 25G SFP28                                       | 26.41.10.00   |
 | Broadcom 5720 Quad Port 1GbE BASE-T Adapter                             | 23.21.6       |
 
@@ -711,7 +711,7 @@ For reference, version N is the latest available runtime version. N-1 and N-2 ar
 | SAS Expander Backplane Firmware (R760)              | 1.61          |
 | Non-Expander Storage Backplane Firmware (R660)      | 7.10          |
 | CPLD                                                | 1.2.6         |
-| Mellanox ConnectX-6 DX Adapter                      | 22.41.10.00   |
+| Mellanox ConnectX-6 DX Adapter                      | 22.47.10.88   |
 | NVIDIA ConnectX-6 Lx 2x 25G SFP28                   | 26.41.10.00   |
 | Broadcom 5720 Quad Port 1GbE BASE-T Adapter         | 23.21.6       |
 
@@ -726,7 +726,7 @@ For reference, version N is the latest available runtime version. N-1 and N-2 ar
 | iDRAC                                                                   | 7.20.30.00    |
 | Non-Expander Storage Backplane Passive SEP Firmware (15G Non-Expander)  | 7.10          |
 | CPLD                                                                    | 1.1.1         |
-| Mellanox ConnectX-6 DX Adapter                                          | 22.41.10.00   |
+| Mellanox ConnectX-6 DX Adapter                                          | 22.47.10.88   |
 | NVIDIA ConnectX-6 Lx 2x 25G SFP28                                       | 26.41.10.00   |
 | Broadcom 5720 Quad Port 1GbE BASE-T Adapter                             | 23.21.6       |
 
@@ -740,7 +740,7 @@ For reference, version N is the latest available runtime version. N-1 and N-2 ar
 | SAS Expander Backplane Firmware (R760)              | 1.61          |
 | Non-Expander Storage Backplane Firmware (R660)      | 7.10          |
 | CPLD                                                | 1.2.6         |
-| Mellanox ConnectX-6 DX Adapter                      | 22.41.10.00   |
+| Mellanox ConnectX-6 DX Adapter                      | 22.47.10.88   |
 | NVIDIA ConnectX-6 Lx 2x 25G SFP28                   | 26.41.10.00   |
 | Broadcom 5720 Quad Port 1GbE BASE-T Adapter         | 23.21.6       |
 

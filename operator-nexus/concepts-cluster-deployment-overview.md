@@ -4,7 +4,7 @@ description: Get an overview of cluster deployment for Azure Operator Nexus.
 author: sbatchu
 ms.author: sbatchu
 ms.service: azure-operator-nexus
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 08/05/2024
 ms.custom: template-concept
 ---

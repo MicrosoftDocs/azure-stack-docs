@@ -14,6 +14,12 @@ ms.reviewer: ekarandjeff
 
 This document provides basic troubleshooting information for Bare Metal Machine (BMM) resources which are reporting a _Degraded_ status in the BMM detailed status message.
 
+## Prerequisites
+
+- Access to the Azure portal or Azure CLI
+- Permissions to view and manage Bare Metal Machine resources
+- For diagnostic commands: SSH access via BareMetalMachineKeySet (see [Manage emergency access to a Bare Metal Machine](./howto-baremetal-bmm-ssh.md))
+
 ## Symptoms
 
 Bare Metal Machines (BMM) which are in _Degraded_ state exhibit the following symptoms.
@@ -72,7 +78,7 @@ Additional information about recent degraded conditions and automatic cordoning 
   - `platform.afo-nc.microsoft.com/port-down-cordon`
   - `platform.afo-nc.microsoft.com/port-flap-cordon`
 - If the user manually cordoned the BMM, the following annotation is also present.
-  - `platform.afo-nc.microsoft.com/cutomer-cordon`
+  - `platform.afo-nc.microsoft.com/customer-cordon`
 - The Activity Logs for the BMM resource in the Azure portal can also provide more information about any recent user initiated cordon requests.
 
 - The `annotations` metadata on the `bmm` kubernetes resource shows which condition triggered the cordon.
@@ -93,7 +99,7 @@ az networkcloud baremetalmachine run-read-command \
 - Replace `rack2management2` with the name of a BMM resource for a healthy Kubernetes control plane node, from which to execute the `kubectl get` command.
 - Replace `rack2compute08` with the name of the degraded or cordoned BMM to inspect.
 
-For more information about the `run-read-command` feature, see [BareMetal Run-Read Execution](./howto-baremetal-run-read.md).
+For more information about the `run-read-command` feature and available diagnostic commands, see [Troubleshoot Bare-Metal Machines by Using the run-read Command](./howto-baremetal-run-read.md).
 
 **Example `run-read-command` output (`kubectl get bmm`):**
 
@@ -151,6 +157,8 @@ Note: only BMMs used for _Compute_ are automatically cordoned. Control and Manag
 
 For more information about investigating the root cause of an automatic cordon, see [Troubleshooting](#troubleshooting).
 
+For more information about manually cordoning and uncordoning BMMs, see [Make a Bare Metal Machine unschedulable (cordon)](./howto-baremetal-functions.md#make-a-bare-metal-machine-unschedulable-cordon) and [Make a Bare Metal Machine schedulable (uncordon)](./howto-baremetal-functions.md#make-a-bare-metal-machine-schedulable-uncordon).
+
 ## `Degraded: NIC Failed`
 
 This message indicates that one of the expected Mellanox Network Interface Cards (NICs) on the underlying compute host is failed or missing.
@@ -163,7 +171,7 @@ To troubleshoot this issue:
 - sign into the Baseboard Management Controller (BMC) to check the hardware status of the NIC
 - review detailed hardware logs by generating a Dell TSR (Technical Support Report) as described in the Dell Knowledge Base article [Export a SupportAssist Collection Using an iDRAC](https://www.dell.com/support/kbdoc/en-us/000126308/export-a-supportassist-collection-via-idrac9)
 - review the most recent time of failure reported by the Bare Metal Machine `conditions`, as described in the [Troubleshooting](#troubleshooting) section
-- power cycle the host by executing a "Restart" action on the Bare Metal Machine resource, and see if the condition clears.
+- power cycle the host by executing a [Restart action](./howto-baremetal-functions.md#restart-a-bare-metal-machine) on the Bare Metal Machine resource, and see if the condition clears.
 
 **Example `conditions` output for NIC failed**
 
@@ -266,3 +274,11 @@ To troubleshoot this issue:
   },
 ],
 ```
+
+## Related content
+
+- [Troubleshoot Warning status messages](./troubleshoot-bare-metal-machine-warning.md)
+- [BMM lifecycle management](./howto-baremetal-functions.md)
+- [Best practices for Bare Metal Machine operations](./howto-bare-metal-best-practices.md)
+- If you still have questions, contact [Azure support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)
+- For more information about support plans, see [Azure support plans](https://azure.microsoft.com/support/plans/response/)

@@ -1,7 +1,7 @@
 ---
 title: Operator Nexus rack resiliency
 description: Document how rack resiliency works in Operator Nexus
-ms.topic: article
+ms.topic: concept-article
 ms.date: 12/18/2025
 author: eak13
 ms.author: matthewernst
