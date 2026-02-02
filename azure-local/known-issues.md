@@ -28,10 +28,10 @@ For the 2601 release of Azure Local, Microsoft released the following update:
 
 | Solution version  | OS build  |
 |---------|---------|---------|
-| 12.2601.1002.38 | 26100.32230 |
+| 12.2601.1002.503 | 26100.32230 |
 
 > [!IMPORTANT]
-> The new deployments of this software use the **12.2601.1002.38** build.
+> The new deployments of this software use the **12.2601.1002.503** build.
 Release notes for this version include the issues fixed in this release, known issues in this release, and known issues carried over from previous versions.
 
 > [!NOTE]
