@@ -3,7 +3,7 @@ title: Release notes with fixed and known issues in Azure Local
 description: Read about the known issues and fixed issues in Azure Local.
 author: alkohli
 ms.topic: troubleshooting-general
-ms.date: 01/30/2026
+ms.date: 02/02/2026
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: hyperconverged
@@ -61,6 +61,7 @@ The following table lists the fixed issues in this release:
 | Deployment <!--35572203--> | Updated logic to fetch the cluster IP.  | |
 | Deployment <!--35627080--> | Fixed issue with stuck deployment after domain join step.  | |
 | Deployment <!--35640095--> | Added a wait step to ensure cluster DNS names are successfully resolved.  | |
+| Deployment <!--36579554--> | When using 3 or more intents in the system, PowerShell `Invoke-Command` call crashes with the error: `Type 'SetAzureStackHostsPreConfiguration' of Role 'HostNetwork' raised an exception: Cannot get intent status of Storage. Exception: No intent statuses found for intent Storage.`  | |
 | Update <!--34484857--> | Added fix for failed updates due to SBE helper module.  | |
 | Update <!--35448743--> | Fixed issue with downloading SBE during update.  | |
 | Update <!--35626423--> | Added cleanup for CAU reports during SBE update.  | |
@@ -68,7 +69,11 @@ The following table lists the fixed issues in this release:
 | Update <!--34882137--> | Improved health check results for SBE test. | |
 | Update <!--35794341--> | Fixed issue where SBE files may be blocked after performing robocopy to each machine.  | |
 | Update <!--35855583--> | Fixed issue with solution update failing due to incorrectly detecting presence of SBE. | |
+| Update <!--36580923--> | SBE update fails with the error: `Cannot validate argument on parameter 'DeployADLess'. The argument "[DEPLOYADLESS]" does not belong to the set "true,false," specified by the ValidateSet attribute.` | |
+| Update <!--36429778--> | Update fails due to CLI extension `connectedmachine` exception causing deployment disruption. | |
+| Update <!--36458541--> | [Solution Builder Extension](update/solution-builder-extension.md) (SBE) download fails with the error: <br> `CloudEngine.Actions.InterfaceInvocationFailedException: Type 'SBEPartnerDownloadConnectorCheckHealth' of Role 'SBE' raised an exception:`<br><br>`[SBEPartnerDownloadConnectorCheckHealth]  SBE download connector failure getting version '0.0.0000.0000' files. The download connector health check failed. Exception Message : The term 'Assert-SBEResponseSchema' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.`
 | Upgrade <!--35640185--> | Improved logic to find storage cluster group.  | |
+| Upgrade <!--36440701--> | When upgrading from 2510 to 2511, 2512, or 2601, AKS Arc cluster creation fails. | |
 
 ## Known issues
 
@@ -76,9 +81,6 @@ The following table lists the known issues in this release:
 
 |Feature  |Issue    |Workaround  |
 |---------|---------|------------|
-| Upgrade <!--36440701--> | When upgrading from 2510 to 2511, 2512, or 2601, AKS Arc cluster creation fails. | For detailed steps on how to resolve this issue, see [AKS Arc cluster creation fails on Azure Local 2511, 2512, or 2601 after upgrade from 2510](/azure/aks/aksarc/cluster-create-fails-after-azure-local-upgrade). |
-| Update <!--36458541--> | [Solution Builder Extension](update/solution-builder-extension.md) (SBE) download fails with the error: <br> `CloudEngine.Actions.InterfaceInvocationFailedException: Type 'SBEPartnerDownloadConnectorCheckHealth' of Role 'SBE' raised an exception:`<br><br>`[SBEPartnerDownloadConnectorCheckHealth]  SBE download connector failure getting version '0.0.0000.0000' files. The download connector health check failed. Exception Message : The term 'Assert-SBEResponseSchema' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.` | You can use any of the following workaround options: <br><ul><li>[Install SBE](update/solution-builder-extension.md) or any pending SBE updates before updating to 2601.</li><li> Wait to install SBE. If impacted, defer installing SBE until the next release, or when issue is fixed. </li><li> Use `Add-SolutionUpdate -SkipSbeVersionValidation -SourceFolder <CSV path to downloaded SBE files>` to manually import the SBE and avoid the download failure.  For more information, see [Update Azure Local, version 23H2 systems via PowerShell](update/update-via-powershell-23h2.md#step-3-import-and-rediscover-updates). Note that `-SkipSbeVersionValidation` will be required since the SBE doesn't have the 'AdditionalContentRequired' state. </li></ul> |
-| Update <!--36429778--> | Update fails due to CLI extension `connectedmachine` exception causing deployment disruption. | Check which nodes have the `connectedmachine` extension on them: <br><br> `(Get-ClusterNode | % Name) | % { write-host $_  ; az version}` <br><br> Remove the extension on those nodes to continue the update: <br><br> `az extension remove --name "connectedmachine"` |
 | Update <!--36360771--> | Fetching the secret rotation action plan status fails. | The secret rotation completes successfully, so the failure message can be ignored. |
 
 ## Known issues from previous releases
