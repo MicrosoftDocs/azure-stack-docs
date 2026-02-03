@@ -57,6 +57,9 @@ az networkfabric taprule delete --name <taprule-name> --resource-group <rg-name>
 # Show a TAP rule
 az networkfabric taprule show --name <taprule-name> --resource-group <rg-name> --fabric-name <fabric-name>
 ```
+### How to create a file‑based TAP rule with trusted mode enabled:
+Refer to [How to Configure Network TAP Rules with User Assigned Managed Identity (UAMI)](./howto-configure-network-tap-rules-with-user-assigned-managed-identity.md).
+
 
 ## Step 2: Create a Neighbor Group
 
