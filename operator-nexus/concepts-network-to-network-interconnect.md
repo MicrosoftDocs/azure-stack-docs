@@ -20,9 +20,9 @@ The Network-to-Network Interconnect (NNI) provides essential external connectivi
  Several key attributes govern NNI behavior. The default NNI type is CE (Customer Edge), although other types can be used for specific scenarios such as Network Packet Broker integration. A management flag determines whether the NNI carries management‑plane connectivity or tenant and infrastructure traffic. The Option A / Option B setting defines how CE–PE routing is formed: Option A represents CE‑facing configuration on a per‑VRF or per‑service basis, while Option B enables an inter‑AS routing model that provides a more consolidated external connectivity approach. Together, these attributes shape how an NNI participates in service connectivity, management flows, and CE–PE routing behavior. 
 
 
-## Examples
+## Azure CLI Examples for Network-to-Network Interconnect (NNI) Operations
 
-### Create a Network To Network Interconnect resource  
+### Example to Create a Network To Network Interconnect resource  
 
 Command: 
 ```AzCLI
@@ -51,7 +51,7 @@ az networkfabric nni create \
     ```
 
 Expected Output:
-```Output
+``` Output
 {
   "id": "/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.ManagedNetworkFabric/networkFabrics/<network-fabric-name>/networkToNetworkInterconnects/<nni-name>",
   "name": "<nni-name>",
@@ -89,7 +89,7 @@ Expected Output:
 }
 ```
 
-### Update the Network To Network Interconnect
+### Example to update the Network To Network Interconnect
 
 Command:
 ```AzCLI
@@ -189,7 +189,7 @@ Expected Output:
 }
 ```
 
-### Delete the Network To Network Interconnect resource
+### Example to delete the Network To Network Interconnect resource
 
 Command:
 ```AzCLI
