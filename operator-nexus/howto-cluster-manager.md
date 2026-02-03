@@ -85,7 +85,7 @@ Refer to [Azure Virtual Machine size overview](/azure/virtual-machines/sizes/ove
 
 Cluster Manager creates Azure Kubernetes Services (AKS) instance with three Virtual Machines (VM) distributed across three availability zones using the default SKU. A customer can switch to two availability zones if the selected SKU isn't available in all zones. In that case, the three VMs are redistributed across the provided zones.
 
-If the default SKU is not available, a customer can choose one of the alternative SKUs as they provide comparible performance. When in doubt, Azure recommends choosing the latest version available at the subscription.
+If the default SKU is not available, a customer can choose one of the alternative SKUs as they provide comparable performance. When in doubt, Azure recommends choosing the latest version available at the subscription.
 
 The supported SKU and availability zones for the subscription in the selected location can be verified by running the Azure CLI command:
 
