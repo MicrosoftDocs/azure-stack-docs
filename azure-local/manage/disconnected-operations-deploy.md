@@ -503,7 +503,10 @@ To initialize each node, run this PowerShell script. Modify the variables necess
 
     $armTokenResponse = Get-AzAccessToken -ResourceUrl "https://armmanagement.$($applianceFQDN)"
 
-    $ArmAccessToken = $armTokenResponse.Token
+    # $ArmAccessToken = $armTokenResponse.Token
+    # Convert token to string for use in initialization
+    # Workaround needed for Az.Accounts 5.0.4
+    $ArmAccessToken = [System.Net.NetworkCredential]::new("", $armTokenResponse.Token).Password
 
     # Bootstrap each node
     Invoke-AzStackHciArcInitialization -SubscriptionID $subscription.Id -TenantID $subscription.TenantId -ResourceGroup $resourceGroup -Cloud $applianceCloudName -Region "Autonomous" -CloudFqdn $applianceFQDN -ArmAccessToken $ArmAccessToken
@@ -548,7 +551,7 @@ Perform the following tasks after deploying Azure Local with disconnected operat
 1. **Assign extra operators.** You can assign one or more operators by navigating to **Operator subscriptions**. Assign the **contributor** role at the subscription level.
 
 1. [Export the host guardian service certificates](disconnected-operations-security.md) and back up the folder you export them to on an external share or drive.
-1. Register the management cluster
+1. [Register the management cluster](disconnected-operations-registration.md)
 
 ## Appendix
 
