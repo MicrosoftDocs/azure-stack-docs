@@ -11,8 +11,6 @@ ms.custom: template-how-to, devx-track-azurecli
 
 # How to Configure Network TAP Rules with User Assigned Managed Identity (UAMI) in Azure Operator Nexus
 
-## Overview 
-
 Network TAP Rules can be configured inline or file-based (using a rules file URL). When configured with UAMI, the TAP rule uses identity-based access to dependent Azure services (such as the storage account hosting the rules file). When a UAMI is associated with a Network TAP Rule, the rule uses Azure Managed Identity authentication to access required Azure services (for example, Storage Accounts), aligning TAP workflows with Trusted Microsoft Services. 
 
 Once a Network TAP Rule is configured with UAMI: 
@@ -32,7 +30,7 @@ Once a Network TAP Rule is configured with UAMI:
 
 ## Configure a Network TAP Rule with UAMI 
 
-### 1. Create or patch a file-based Network TAP Rule with UAMI  
+### Step 1: Create or patch a file-based Network TAP Rule with UAMI  
  
  ```AzCLI
 az networkfabric taprule create \ 
@@ -76,7 +74,7 @@ Output
 ```
 
 
-### 2. Apply the change (resync) 
+### Step 2: Apply the change (resync) 
 
 ```AzCLI
 az networkfabric taprule resync \ 
@@ -84,7 +82,7 @@ az networkfabric taprule resync \
   --resource-name "example-networktaprule" 
 ```
 
-### 3. Verify the configuration 
+### Step 3: Verify the configuration 
 
 ```AzCLI
 az networkfabric taprule show \ 
@@ -96,7 +94,7 @@ az networkfabric taprule show \
 
 If following issues occur, use provided mitigation steps: 
 
-### 1. Identity Doesn't Exist in ARM - Referencing a nonexistent User-Assigned Managed Identity 
+### Identity Doesn't Exist in ARM - Referencing a nonexistent User-Assigned Managed Identity 
 
 Command:
 ```AzCLI
@@ -127,7 +125,7 @@ Remedy:
 3. Check that you read access to the UAMI resource
 
 
-### 2. Identity Mismatch in Selector - UAMI in identitySelector differs from identity.userAssignedIdentities
+### Identity Mismatch in Selector - UAMI in identitySelector differs from identity.userAssignedIdentities
 
 Command:
 ```AzCLI
@@ -157,7 +155,7 @@ Remedy:
 2. Verify the resource ID format and casing are exactly correct
 
 
-### 3. Missing RBAC Permissions- UAMI lacks required permissions on storage account
+### Missing RBAC Permissions- UAMI lacks required permissions on storage account
 
 Error Output:
 ```
@@ -191,7 +189,7 @@ az role assignment create \
 ```
 
 
-### 4. Blob Not Found - Referenced blob doesn't exist or incorrect URL
+### Blob Not Found - Referenced blob doesn't exist or incorrect URL
 
 Error Output:
 ```
@@ -216,7 +214,7 @@ Remedy:
 4. Validate the complete URL format
 
 
-### 5. Storage Account Network Restrictions - Storage account has network restrictions but trusted services not enabled
+### Storage Account Network Restrictions - Storage account has network restrictions but trusted services not enabled
 
 Error Output:
 ```
@@ -240,7 +238,7 @@ az storage account update \
 ```
 
 
-### 6. Insufficient User Permissions on Managed Identity - User creating NetworkTapRule lacks "Managed Identity Operator" role on UAMI
+### Insufficient User Permissions on Managed Identity - User creating NetworkTapRule lacks "Managed Identity Operator" role on UAMI
 
 Error Output:
 ```
