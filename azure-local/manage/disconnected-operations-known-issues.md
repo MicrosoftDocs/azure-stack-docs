@@ -54,6 +54,23 @@ This article highlights what's new (features and improvements) and critical know
  - Enabled the use of a FQDN in the SAN of the management certificate.
 
 ## Known issues for disconnected operations for Azure Local
+### Cloud deployment fails - and transitions into a failed state
+In Azure Local 2601, there is a known issue in ALDO where HIMDS services may go down due to IRVM services taking longer than expected to start. This timing issue can cause the overall cloud deployment to transition into a failed state, often accompanied by non-descriptive or unclear error messages.
+
+**Resolution**:
+A fix for this issue is planned for inclusion in the ALDO 2602 release.
+
+**Workaround**: 
+Until the fix is available, the following steps should be applied on all nodes:
+
+[Download and copy the attached Zip](https://aka.ms/aldo-fix2/1) file in C:\AzureLocal folder.
+Extract the Zip to path: C:\AzureLocal\HimdsWatchDog
+Run Install-HIMDS-Watchdog.ps1
+Validate if Scheduled task is created: Get-ScheduledTask -TaskName HIMDS
+
+After the cloud deployment is completed, we can go to each node and delete the task by running this command: 
+Unregister-ScheduledTask -TaskName HIMDSWatchdog
+
 ### Control plane deployment stuck and times out without completing
 In rare cases deployments can time out - and services might not reach 100% convergence, even after 8 hours.
 
