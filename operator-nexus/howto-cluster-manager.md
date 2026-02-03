@@ -95,7 +95,7 @@ az vm list-skus --subscription <SUB_ID> --location <LOCATION> --size Standard_D 
 
 The compute needs increase during upgrades and may double depending on the type of the upgrade. For example, AKS upgrades require more capacity while regular Network Cloud maintenance requires one extra VM. This scaling is temporary and reverts to three VMs after the upgrade completes. When multiple Cluster Managers are deployed in the same subscription, customers don't need to reserve double capacity for all instances, as not all upgrades occur at the same time.
 
-### How to use non-default SKU and availability zones
+### How to use nondefault SKU and availability zones
 
 The `vmSize` and `availabilityZones` properties can be set during the Cluster Manager creation. They can be changed to different values on the existing Cluster Manager if needed. When switching the existing Cluster Manager to a different SKU, make sure there is enough capacity to accommodate a temporary growth for the three new VMs.
 If the properties are not provided, the mentioned defaults are used. See the examples on how to set it.
@@ -134,7 +134,7 @@ az networkcloud clustermanager create \
     --subscription "<SUB_ID>"
 ```
 
-Create Cluster Manager with non-default SKU and availability zones:
+Create Cluster Manager with nondefault SKU and availability zones:
 
 The example uses `Standard_D8s_v3` VM SKU and lowers availability zone requirements to `2,3`.
 
@@ -202,7 +202,7 @@ $TAGS_HASH = @{
 New-AzNetworkCloudClusterManager -Kind "<KIND>" -Name "<CLUSTER_MANAGER_NAME>" -Location "<LOCATION>" -ResourceGroupName "<CLUSTER_MANAGER_RG>" -SubscriptionId "<SUB_ID>" -ManagedResourceGroupConfigurationName "<MRG_NAME>" -ManagedResourceGroupConfigurationLocation "<MRG_LOCATION>" -FabricControllerId "<NFC_ID>" -IdentityType "UserAssigned" -IdentityUserAssignedIdentity <UAMI_RESOURCE_ID> -Tag $TAGS_HASH
 ```
 
-Create Cluster Manager with non-default SKU and availability zones:
+Create Cluster Manager with nondefault SKU and availability zones:
 
 The example uses `Standard_D8s_v3` VM SKU and lowers availability zone requirements to `2,3`.
 
