@@ -324,6 +324,10 @@ $Tenant = "YourTenantID"
 #Define the subscription where you want to register your Azure Local machine with Arc.
 $Subscription = "yoursubscriptionID" 
 
+#Define the region to use to register your server as Arc device
+#Do not use spaces or capital letters when defining region
+$Region = "eastus"
+
 #Define the resource group where you want to register your Azure Local machine with Arc.
 $RG = "yourresourcegroupname" 
 
