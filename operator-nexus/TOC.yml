@@ -281,7 +281,7 @@
         - name: How to Configure Quality of Service (QoS) in Azure Operator Nexus  
           href: howto-network-fabric-quality-of-service.md  
         - name: How to Configure Network TAP Rules with User Assigned Managed Identity (UAMI) in Azure Operator Nexus
-          href: howto-configure-network-tap-rules-with-user-assigned-managed-identity.md   
+          href: howto-configure-network-tap-rules-with-user-assigned-managed-identity.md
     - name: Cluster
       expanded: false
       items:
