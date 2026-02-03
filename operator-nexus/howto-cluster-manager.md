@@ -87,7 +87,7 @@ Cluster Manager creates Azure Kubernetes Services (AKS) instance with three Virt
 
 If the default SKU is not available, a customer can choose one of the alternative SKUs as they provide comparible performance. When in doubt, Azure recommends choosing the latest version available at the subscription.
 
-The supported SKU and availability zones for the subscription can be verified by running the Azure CLI command:
+The supported SKU and availability zones for the subscription in the selected location can be verified by running the Azure CLI command:
 
 ```
 az vm list-skus --subscription <SUB_ID> --location <LOCATION> --size Standard_D --output table
