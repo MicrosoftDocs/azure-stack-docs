@@ -90,7 +90,7 @@ If the default SKU is not available, a customer can choose one of the alternativ
 The supported SKU and availability zones for the subscription can be verified by running the Azure CLI command:
 
 ```
-az vm list-skus --subscription <CUSTOMER_SUB_ID> --location <AZURE_REGION> --size Standard_D --output table
+az vm list-skus --subscription <SUB_ID> --location <LOCATION> --size Standard_D --output table
 ```
 
 The compute needs increase during upgrades and may double depending on the type of the upgrade. For example, AKS upgrades require more capacity while regular Network Cloud maintenance requires one extra VM. This scaling is temporary and reverts to three VMs after the upgrade completes. When multiple Cluster Managers are deployed in the same subscription, customers don't need to reserve double capacity for all instances, as not all upgrades occur at the same time.
