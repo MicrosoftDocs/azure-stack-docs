@@ -5,7 +5,7 @@ ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 01/23/2026
+ms.date: 02/02/2026
 ms.subservice: hyperconverged
 ---
 
@@ -17,7 +17,7 @@ This article lists the features and improvements that are available in hyperconv
 
 ## Features and improvements in 2601
 
-The January 2026 release of hyperconverged deployments of Azure Local is version **12.2601.1002.38**. For more information, see [Release information summary](./release-information-23h2.md).
+The January 2026 release of hyperconverged deployments of Azure Local is version **12.2601.1002.503**. For more information, see [Release information summary](./release-information-23h2.md).
 This release includes various reliability improvements and other bug fixes.
 
 - **OS changes**:
@@ -27,6 +27,8 @@ This release includes various reliability improvements and other bug fixes.
     - You also need a driver that's compatible with OS version **26100.32230** or Windows Server 2025.
 
     - For Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog), the OS is preinstalled. Work with your Original Equipment Manufacturer (OEM) to get a compatible OS image and a compatible driver.
+
+- Build **12.2601.1002.503** improves system reliability by addressing several bugs across core workflows. If you already deployed or updated to **12.2601.1002.38**, no further action is needed. Both **12.2601.1002.38** and **12.2601.1002.503** are supported builds.
         
 - **.NET updates**: This build uses .NET version **8.0.22** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
 

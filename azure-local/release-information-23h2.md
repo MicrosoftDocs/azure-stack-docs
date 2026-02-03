@@ -77,13 +77,13 @@ If your cluster supports [Solution Builder Extension software updates](./update/
 The following tables summarize the release information for Azure Local across all supported versions. All dates are listed in ISO 8601 format: *YYYY-MM-DD*. After you upgrade your solution, you might see 10.x versions; these versions are supported.
 
 > [!IMPORTANT]
-> The new deployments of this software use the **12.2601.1002.38** build. You can also update an existing deployment from **12.2512.1002.16** to **12.2601.1002.38**.
+> The new deployments of this software use the **12.2601.1002.503** build. You can also update an existing deployment from **12.2512.1002.16** to **12.2601.1002.503**.
 
 #### [OS build 26100.xxxx](#tab/OS-build-26100-xxxx)
 
 | Solution version | OS build | Security update | What's new | Known issues |
 | ------ | ------- | --------------- | ---------- | ------------ |
-| 12.2601.1002.38 <br><br> Availability date: 2026-01-22 | 26100.32230 | [January OS security update](security-update/security-update.md?view=azloc-2601&preserve-view=true&tabs=new-deployments) | [Features and improvements](./whats-new.md?view=azloc-2601&preserve-view=true#features-and-improvements-in-2601) | [Known issues](./known-issues.md?view=azloc-2601&preserve-view=true) |
+| 12.2601.1002.503 <br><br> 12.2601.1002.38 (superseded by 503) <br><br> Availability date: 2026-02-02 | 26100.32230 | [January OS security update](security-update/security-update.md?view=azloc-2601&preserve-view=true&tabs=new-deployments) | [Features and improvements](./whats-new.md?view=azloc-2601&preserve-view=true#features-and-improvements-in-2601) | [Known issues](./known-issues.md?view=azloc-2601&preserve-view=true) |
 | 12.2512.1002.16 <br><br> Availability date: 2025-12-16 | 26100.7462 | [December OS security update](security-update/security-update.md?view=azloc-2512&preserve-view=true&tabs=new-deployments) | [Features and improvements](./whats-new.md?view=azloc-2512&preserve-view=true#features-and-improvements-in-2512) | [Known issues](./known-issues.md?view=azloc-2512&preserve-view=true) |
 | 12.2511.1002.502 <br><br> 12.2511.1002.5 (superseded by 502) <br><br> Availability date: 2025-12-03 | 26100.7171 | [November OS security update](security-update/security-update.md?view=azloc-2511&preserve-view=true&tabs=new-deployments) | [Features and improvements](./whats-new.md?view=azloc-2511&preserve-view=true#features-and-improvements-in-2511) | [Known issues](./known-issues.md?view=azloc-2511&preserve-view=true) |
 | 12.2510.1002.529 <br><br> 12.2510.1002.94 (superseded by 529) <br><br> Availability date: 2026-01-08 | 26100.6899 | [October OS security update](security-update/security-update.md?view=azloc-2510&preserve-view=true&tabs=new-deployments) | [Features and improvements](./whats-new.md?view=azloc-2510&preserve-view=true#features-and-improvements-in-2510) | [Known issues](./known-issues.md?view=azloc-2510&preserve-view=true) |

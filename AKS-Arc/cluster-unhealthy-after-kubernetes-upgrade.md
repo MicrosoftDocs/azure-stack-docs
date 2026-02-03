@@ -45,7 +45,7 @@ Disable Azure Policy on the affected cluster before you do the following tasks:
 - Kubernetes version upgrades.
 - Any operation that might trigger control plane updates, like certificate rotation.
 
-Azure Policy can be re-enabled once the fix is available.
+Azure Policy can be re-enabled after the Kubernetes version is updated and the cluster returns to a healthy state.
 
 ### Option 2: Update Gatekeeper policies
 

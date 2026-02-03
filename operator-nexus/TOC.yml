@@ -277,9 +277,11 @@
         - name: How to perform A / B staged configuration update - commit workflow in Azure Operator Nexus
           href: howto-use-ab-staged-commit-configuration-update-commit-workflow.md
         - name: How to disable internal/external networks in an enabled layer 3 isolation domain
-          href: howto-disable-internal-external-networks-enabled-layer-3-isolation-domain.md    
-        - name: How to Configure Quality of Service (QoS) in Azure Operator Nexus  
-          href: howto-network-fabric-quality-of-service.md    
+          href: howto-disable-internal-external-networks-enabled-layer-3-isolation-domain.md
+        - name: How to Configure Quality of Service (QoS) in Azure Operator Nexus
+          href: howto-network-fabric-quality-of-service.md
+        - name: How to Configure Network TAP Rules with User Assigned Managed Identity (UAMI) in Azure Operator Nexus
+          href: howto-configure-network-tap-rules-with-user-assigned-managed-identity.md
     - name: Cluster
       expanded: false
       items:
