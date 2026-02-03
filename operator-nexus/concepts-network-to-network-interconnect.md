@@ -48,7 +48,7 @@ az networkfabric nni create \
       vlanId:1234,
       peLoopbackIpAddress:['10.0.0.1']
     }"
-    ```
+```
 
 Expected Output:
 ``` Output
