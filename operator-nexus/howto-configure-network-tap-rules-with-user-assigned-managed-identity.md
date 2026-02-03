@@ -17,15 +17,15 @@ Network TAP Rules can be configured inline or file-based (using a rules file URL
 
 Once a Network TAP Rule is configured with UAMI: 
 - Authentication transitions permanently to identity based access. 
-- IP based allowlists and first party application identities are no longer used. 
-- Existing traffic behavior remains unchanged, provided the configuration content does not change. 
-- If a UAMI is not patched to the Network TAP rule resource, the rule continues to use first party app–based access.
-- Reverting a Network TAP Rule from UAMI back to firstp arty application access is not supported. 
+- IP based allow lists and first party application identities are no longer used. 
+- Existing traffic behavior remains unchanged, provided the configuration content doesn't change. 
+- If a UAMI isn't patched to the Network TAP rule resource, the rule continues to use first party app–based access.
+- Reverting a Network TAP Rule from UAMI back to first party application access isn't supported. 
 
 ## Prerequisites 
 
 - A Network Fabric is provisioned and unlocked. 
-- You are using the GA API version 2025-07-15 and Nexus Network Fabric (NNF) release 10.1 or later. 
+- You're using the GA API version 2025-07-15 and Nexus Network Fabric (NNF) release 10.1 or later. 
 - A User Assigned Managed Identity (UAMI) exists. 
 - The storage account that hosts the rules file has Trusted Microsoft Services enabled, and the UAMI has the required RBAC permissions (for example, Storage Blob Data Reader). 
 - Azure CLI has the managednetworkfabric extension V9.0.0  available. 
@@ -104,9 +104,9 @@ az networkfabric taprule show \
 
 ## Troubleshooting 
 
-If following issues occur please use below mitigation steps: 
+If following issues occur, use provided mitigation steps: 
 
-### 1. Identity Does Not Exist in ARM - Referencing a non-existent User-Assigned Managed Identity 
+### 1. Identity Doesn't Exist in ARM - Referencing a nonexistent User-Assigned Managed Identity 
 
 Command:
 ```AzCLI
@@ -134,7 +134,7 @@ Error Output:
 Remedy:
 1. Verify the UAMI resource ID is correct
 2. Ensure the UAMI exists in the specified subscription and resource group
-3. Check that you have read access to the UAMI resource
+3. Check that you read access to the UAMI resource
 
 
 ### 2. Identity Mismatch in Selector - UAMI in identitySelector differs from identity.userAssignedIdentities
@@ -201,7 +201,7 @@ az role assignment create \
 ```
 
 
-### 4. Blob Not Found - Referenced blob does not exist or incorrect URL
+### 4. Blob Not Found - Referenced blob doesn't exist or incorrect URL
 
 Error Output:
 ```AzCLI
@@ -217,7 +217,7 @@ Common Causes:
 - Typo in blob name or path
 - Case sensitivity issues
 - Blob was deleted after URL was configured
-- Container does not exist
+- Container doesn't exist
 
 Remedy:
 1. Verify blob exists using Azure Storage Explorer or CLI
