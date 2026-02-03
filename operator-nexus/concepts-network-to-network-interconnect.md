@@ -51,7 +51,7 @@ az networkfabric nni create \
     ```
 
 Expected Output:
-```
+```Output
 {
   "id": "/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.ManagedNetworkFabric/networkFabrics/<network-fabric-name>/networkToNetworkInterconnects/<nni-name>",
   "name": "<nni-name>",
@@ -125,10 +125,10 @@ az networkfabric nni update \
   --ingress-acl-id "/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.ManagedNetworkFabric/accessControlLists/<ingress-acl-name>" \
   --egress-acl-id "/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.ManagedNetworkFabric/accessControlLists/<egress-acl-name>" \
   --micro-bfd-state "Enabled"
-```
+  ```
 
 Expected Output:
-```
+```Output
 {
   "id": "/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.ManagedNetworkFabric/networkFabrics/<network-fabric-name>/networkToNetworkInterconnects/<nni-name>",
   "name": "<nni-name>",
