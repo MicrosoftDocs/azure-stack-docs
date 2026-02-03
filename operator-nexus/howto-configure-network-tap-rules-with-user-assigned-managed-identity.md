@@ -43,14 +43,13 @@ az networkfabric taprule create \
   --tap-rules-url "https://mystorage.blob.core.windows.net/config/taprule.json" \ 
   --location eastus \ 
   --user-assigned "/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/identityRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/tapRuleIdentity" \ 
-  --identity-selector '{"identityType":"UserAssignedIdentity","userAssignedIdentityResourceId":"/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/identityRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/tapRuleIdentity"}' 
-  ```
+  --identity-selector '{"identityType":"UserAssignedIdentity","userAssignedIdentityResourceId":"/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/identityRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/tapRuleIdentity"}'
+```
 
 Output  
 
-```AzCLI
+```
 { 
-
   "administrativeState": "Disabled", 
   "configurationState": "Succeeded", 
   "configurationType": "File", 
@@ -61,28 +60,19 @@ Output
       "/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/identityRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/tapRuleIdentity": { 
         "clientId": "e4382d3c-40c7-4836-9811-ad0f929a1c83", 
         "principalId": "92f5f45c-bf76-428d-a396-d74d01eab20d" 
-      } 
-
-    } 
-
-  }, 
+      } } }, 
 
   "identitySelector": { 
 
     "identityType": "UserAssignedIdentity", 
-    "userAssignedIdentityResourceId": "/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/identityRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/tapRuleIdentity" 
-
-  }, 
-
+    "userAssignedIdentityResourceId": "/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/identityRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/tapRuleIdentity" }, 
   "location": "eastus", 
   "name": "myTapRuleWithMSI", 
   "pollingIntervalInSeconds": 30, 
   "provisioningState": "Succeeded", 
   "resourceGroup": "myResourceGroup", 
   "tapRulesUrl": "https://mystorage.blob.core.windows.net/config/taprule.json", 
-  "type": "microsoft.managednetworkfabric/networktaprules" 
-
-} 
+  "type": "microsoft.managednetworkfabric/networktaprules"} 
 ```
 
 
@@ -122,7 +112,7 @@ az networkfabric taprule create \
 ```
 
 Error Output:
-```AzCLI
+```
 {
   "error": {
     "code": "FailedIdentityOperation",
@@ -153,7 +143,7 @@ az networkfabric taprule create \
   ```
 
 Error Output:
-```AzCLI
+```
 {
   "error": {
     "code": "ResourceCreationValidateFailed",
@@ -170,7 +160,7 @@ Remedy:
 ### 3. Missing RBAC Permissions- UAMI lacks required permissions on storage account
 
 Error Output:
-```AzCLI
+```
 {
   "error": {
     "code": "BadRequest",
@@ -179,7 +169,7 @@ Error Output:
 }
 ```
 Logs:
-```AzCLI
+```
 Headers:
 Transfer-Encoding: chunked
 Server: Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0
@@ -204,7 +194,7 @@ az role assignment create \
 ### 4. Blob Not Found - Referenced blob doesn't exist or incorrect URL
 
 Error Output:
-```AzCLI
+```
 {
   "error": {
     "code": "BadRequest",
@@ -229,7 +219,7 @@ Remedy:
 ### 5. Storage Account Network Restrictions - Storage account has network restrictions but trusted services not enabled
 
 Error Output:
-```AzCLI
+```
 {
   "error": {
     "code": "BadRequest",
@@ -253,7 +243,7 @@ az storage account update \
 ### 6. Insufficient User Permissions on Managed Identity - User creating NetworkTapRule lacks "Managed Identity Operator" role on UAMI
 
 Error Output:
-```AzCLI
+```
 {
   "error": {
     "code": "LinkedAuthorizationFailed",
