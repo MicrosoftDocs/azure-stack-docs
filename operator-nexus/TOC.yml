@@ -52,6 +52,8 @@
           href: concepts-disable-border-gateway-protocol-neighbors.md
         - name: Network Packet Broker
           href: concepts-nexus-network-packet-broker.md
+        - name: Network-to-Network Interconnect
+          href: concepts-network-to-network-interconnect.md
         - name: Password Rotation v1
           href: concepts-password-rotation-v1.md
         - name: Route Policy
