@@ -85,7 +85,7 @@ Refer to [Azure Virtual Machine size overview](/azure/virtual-machines/sizes/ove
 
 Cluster Manager creates Azure Kubernetes Services (AKS) instance with three Virtual Machines (VM) distributed across three availability zones using the default SKU. A customer can switch to two availability zones if the selected SKU isn't available in all zones. In that case, the three VMs are redistributed across the provided zones.
 
-If the default SKU is not available, a customer can choose one of the alternative SKUs as they provide comparable performance. When in doubt, Azure recommends choosing the latest version available at the subscription.
+If the default SKU isn't available, a customer can choose one of the alternative SKUs as they provide comparable performance. When in doubt, Azure recommends choosing the latest version available at the subscription.
 
 The supported SKU and availability zones for the subscription in the selected location can be verified by running the Azure CLI command:
 
@@ -97,8 +97,8 @@ The compute needs increase during upgrades and may double depending on the type 
 
 ### How to use nondefault SKU and availability zones
 
-The `vmSize` and `availabilityZones` properties can be set during the Cluster Manager creation. They can be changed to different values on the existing Cluster Manager if needed. When switching the existing Cluster Manager to a different SKU, make sure there is enough capacity to accommodate a temporary growth for the three new VMs.
-If the properties are not provided, the mentioned defaults are used. See the examples on how to set it.
+The `vmSize` and `availabilityZones` properties can be set during the Cluster Manager creation. They can be changed to different values on the existing Cluster Manager if needed. When switching the existing Cluster Manager to a different SKU, make sure there's enough capacity to accommodate a temporary growth for the three new VMs.
+If the properties aren't provided, the mentioned defaults are used. See the examples on how to set it.
 
 ## Create a Cluster Manager
 
