@@ -22,7 +22,7 @@ Azure Local provides a flexible platform to run SQL Server and Storage Spaces Di
 - Data warehouse and business intelligence.
 - AI and advanced analytics over big data.
 
-The platform's flexibility is especially important for mission-critical databases. You can run SQL Server on virtual machines (VMs) that use either Windows Server or Linux. You can consolidate multiple database workloads and add more VMs to your Azure Local environment as needed. You can also use Azure Local to integrate SQL Server with Azure Site Recovery. You gain a cloud-based solution that supports migration, restoration, and protection for your organization's data that's reliable and secure.
+The platform's flexibility is especially important for mission-critical databases. You can run SQL Server on virtual machines (VMs) that use either Windows Server or Linux. You can consolidate multiple database workloads and add more VMs to your Azure Local environment as needed. You can also use Azure Local to integrate SQL Server with Azure Site Recovery. You gain a cloud-based solution that supports migration, restoration, and protection for your organization's data.
 
 ## Deploy SQL Server
 
@@ -63,9 +63,9 @@ For tuning SQL Server 2017 and SQL Server 2016, see [Recommended updates and con
 
 ### Step 4: Use SQL Server high-availability features
 
-Azure Local uses [Windows Server failover clustering with SQL Server](/sql/sql-server/failover-clusters/windows/windows-server-failover-clustering-wsfc-with-sql-server) to support SQL Server running in VMs if hardware fails. SQL Server also offers [Always On availability groups](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server) (AGs) to provide database-level HA to help with application and software faults. In addition to Windows Server failover clustering and AGs, Azure Local can use [Always On failover cluster instance](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server). Failover cluster instance is based on [Storage Spaces Direct](/windows-server/storage/storage-spaces/storage-spaces-direct-overview) technology for shared storage.
+Azure Local uses [Windows Server failover clustering with SQL Server](/sql/sql-server/failover-clusters/windows/windows-server-failover-clustering-wsfc-with-sql-server) to support SQL Server running in VMs if hardware fails. SQL Server also offers [Always On availability groups](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server) to provide database-level HA to help with application and software faults. In addition to Windows Server failover clustering and availability groups, Azure Local can use [Always On failover cluster instance](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server). Failover cluster instance is based on [Storage Spaces Direct](/windows-server/storage/storage-spaces/storage-spaces-direct-overview) technology for shared storage.
 
-These options all work with the [Azure Cloud witness](/windows-server/failover-clustering/deploy-cloud-witness) for quorum control. We recommend that you use cluster [AntiAffinity](/windows-server/failover-clustering/cluster-affinity) rules in Windows Server failover clustering for VMs that are placed on different physical nodes. These rules help to maintain uptime for SQL Server if the host fails when you configure Always On AGs.
+These options all work with the [Azure Cloud witness](/windows-server/failover-clustering/deploy-cloud-witness) for quorum control. We recommend that you use cluster [AntiAffinity](/windows-server/failover-clustering/cluster-affinity) rules in Windows Server failover clustering for VMs that are placed on different physical nodes. These rules help to maintain uptime for SQL Server if the host fails when you configure Always On availability groups.
 
 ### Step 5: Set up Azure hybrid services
 
