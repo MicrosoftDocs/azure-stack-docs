@@ -9,7 +9,7 @@ ms.date: 02/04/2026
 ---
 
 # Network-to-Network Interconnect (NNI) in Azure Operator Nexus 
-A Network‑to‑Network Interconnect (NNI) is a child resource within the Network Fabric that manages PE–CE connectivity between the Customer Edge (CE) devices in the Nexus fabric and the Provider Edge (PE) routers managed by the telecom carrier. It defines the physical and logical connection between the operator’s on‑premises network fabric and external networks. In the Azure ARM model, an NNI represents a fabric network‑to‑network interface that specifies Layer 2 (L2) and Layer 3 (L3) network configuration for the Nexus Network Fabric. A single fabric can support multiple NNIs to model different interconnect scenarios. 
+A Network‑to‑Network Interconnect (NNI) is a child resource within the Network Fabric that manages PE–CE connectivity between the Customer Edge (CE) devices in the Nexus fabric and the Provider Edge (PE) routers. In the Azure ARM model, an NNI represents a fabric network‑to‑network interface that specifies Layer 2 (L2) and Layer 3 (L3) network configuration for the Nexus Network Fabric. A single fabric can support multiple NNIs to model different interconnect scenarios. 
 
 
 ## Purpose and Role of NNI 
