@@ -41,7 +41,7 @@ This article describes how to create Kubernetes clusters in Azure Local by using
    :::image type="content" source="media/aks-create-clusters-portal/cluster-create-portal.png" alt-text="Screenshot that shows the Basics tab for cluster creation in the portal." lightbox="media/aks-create-clusters-portal/cluster-create-portal.png":::
 
    - **Project details**:
-     - Select an Azure subscription. This Azure subscription is where your infrastructure administrator deployed the Azure Arc resource Bridge, the AKS extension enabled by Azure Arc, and the custom location.
+     - Select an Azure subscription. This Azure subscription is where your infrastructure administrator deployed the Azure Arc resource bridge, the AKS extension enabled by Azure Arc, and the custom location.
      - Select an Azure resource group, such as **myResourceGroup**.
    - **Cluster details**:
      - Enter a Kubernetes cluster name, such as **myk8scluster**. The name of a Kubernetes cluster name must consist of lowercase alphanumeric characters.
