@@ -4,7 +4,7 @@ description: Learn how to optimize Azure Managed Lustre (AMLFS) performance with
 ms.date: 02/04/2026
 ms.topic: reference
 author: wolfgang-desalvador
-ms.author: wolfgang-desalvador
+ms.author: akashdubey
 ms.service: azure-managed-lustre
 ---
 
