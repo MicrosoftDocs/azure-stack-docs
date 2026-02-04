@@ -27,7 +27,7 @@ Use the [Azure Local resource page](https://portal.azure.com/#blade/HubsExtensio
 - View and access the Azure Arc resource bridge and custom location associated with the Azure Local instance.
 - Provision and manage VMs.
 
-The procedure to create VMs is described in the next section.
+The procedure to create VMs is described later in this article.
 
 ## Prerequisites
 
@@ -228,7 +228,7 @@ If you create a VM behind a proxy server, run the following command:
 az stack-hci-vm create --name $vmName --resource-group $resource_group --admin-username $userName --admin-password $password --computer-name $computerName --image $imageName --location $location --authentication-type all --nics $nicName --custom-location $customLocationID --hardware-profile memory-mb="8192" processors="4" --storage-path-id $storagePathId --proxy-configuration http_proxy="<Http URL of proxy server>" https_proxy="<Https URL of proxy server>" no_proxy="<URLs which bypass proxy>" cert_file_path="<Certificate file path for your machine>"
 ```
 
-Input the following parameters for `proxy-server-configuration`.
+Use the following parameters for `proxy-server-configuration`.
 
 | Parameters | Description |
 |------------|-------------|
@@ -272,7 +272,7 @@ Run the following command:
 az stack-hci-vm create --name $vmName --resource-group $resource_group --admin-username $userName --admin-password $password --computer-name $computerName --image $imageName --location $location --authentication-type all --nics $nicName --custom-location $customLocationID --hardware-profile memory-mb="8192" processors="4" --storage-path-id $storagePathId --gateway-id $gw --proxy-configuration http_proxy="<Http URL of proxy server>" https_proxy="<Https URL of proxy server>" no_proxy="<URLs which bypass proxy>" cert_file_path="<Certificate file path for your machine>"
 ```
 
-You can input the following parameters for `proxy-server-configuration` with `Arc gateway`.
+You can use the following parameters for `proxy-server-configuration` with `Arc gateway`.
 
 | Parameters | Description |
 |------------|-------------|
@@ -295,7 +295,7 @@ Run the following command:
 az stack-hci-vm create --name $vmName --resource-group $resource_group --admin-username $userName --admin-password $password --computer-name $computerName --image $imageName --location $location --authentication-type all --nics $nicName --custom-location $customLocationID --hardware-profile memory-mb="8192" processors="4" --storage-path-id $storagePathId --gateway-id $gw
 ```
 
-You can input the following parameters for the Azure Arc gateway.
+You can use the following parameters for the Azure Arc gateway.
 
 | Parameters | Description |
 |------------|-------------|
@@ -319,14 +319,14 @@ Follow these steps in the Azure portal for your Azure Local instance.
 
    :::image type="content" source="./media/create-arc-virtual-machines/select-create-vm.png" alt-text="Screenshot that shows selecting + Create VM." lightbox="./media/create-arc-virtual-machines/select-create-vm.png":::
 
-1. On the **Basics** tab, input the following parameters in the **Project details** section:
+1. On the **Basics** tab, enter the following parameters in the **Project details** section.
 
    :::image type="content" source="./media/create-arc-virtual-machines/create-virtual-machines-project-details.png" alt-text="Screenshot that shows Project details on the Basics tab." lightbox="./media/create-arc-virtual-machines/create-virtual-machines-project-details.png":::
 
     - **Subscription**: The subscription is tied to the billing. Choose the subscription that you want to use to deploy this VM.
     - **Resource group**: Create a new resource group or choose an existing resource group where you deploy all the resources associated with your VM.
 
-1. In the **Instance details** section, input the following parameters:
+1. In the **Instance details** section, enter the following parameters.
 
     :::image type="content" source="./media/create-arc-virtual-machines/create-virtual-machines-instance-details.png" alt-text="Screenshot that shows Instance details on the Basics tab." lightbox="./media/create-arc-virtual-machines/create-virtual-machines-instance-details.png":::
 
@@ -393,14 +393,14 @@ Follow these steps in the Azure portal for your Azure Local instance.
 
     :::image type="content" source="./media/create-arc-virtual-machines/arc-vm-arc-gateway.png" alt-text="Screenshot that shows VM proxy configuration settings on the left and a pane to create an Azure Arc gateway resource on the right." lightbox="./media/create-arc-virtual-machines/arc-vm-arc-gateway.png":::
 
-1. Set the local VM administrator account credentials used when you connect to your VM via the Remote Desktop Protocol. In the **Administrator account** section, input the following parameters:
+1. Set the local VM administrator account credentials used when you connect to your VM via the Remote Desktop Protocol. In the **Administrator account** section, enter the following parameters.
 
     :::image type="content" source="./media/create-arc-virtual-machines/create-virtual-machines-administrator-account-domain-join.png" alt-text="Screenshot that shows guest management enabled in VM extensions on the Basics tab." lightbox="./media/create-arc-virtual-machines/create-virtual-machines-administrator-account-domain-join.png":::
 
     1. Specify the local VM administrator account username.
     1. Specify the password and then confirm the password.
 
-1. If you selected a Windows VM image, you can domain join your Windows VM. In the **Domain join** section, input the following parameters:
+1. If you selected a Windows VM image, you can domain join your Windows VM. In the **Domain join** section, enter the following parameters:
 
     1. Select **Enable domain join**.
 
@@ -761,7 +761,7 @@ To deploy the ARM template, follow these steps.
 
 # [Terraform template](#tab/terraformtemplate)
 
-You can use the Azure Verified Module (AVM) that contains the Terraform template to create VMs. This module ensures that your Terraform templates meet Microsoft standards for quality, security, and operational excellence to help you seamlessly deploy and manage your VMs on Azure. With this template, you can create one or multiple VMs on your cluster.
+You can use the Azure Verified Module that contains the Terraform template to create VMs. This module ensures that your Terraform templates meet Microsoft standards for quality, security, and operational excellence to help you seamlessly deploy and manage your VMs on Azure. With this template, you can create one or multiple VMs on your cluster.
 
 ### Use the Terraform template
 

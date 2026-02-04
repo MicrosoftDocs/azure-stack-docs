@@ -21,7 +21,7 @@ This article describes how to create Kubernetes clusters in Azure Local by using
 
 - Make sure that you have the following details from your on-premises infrastructure administrator:
 
-  - **Azure subscription ID**: The Azure subscription ID where Azure Resource Bridge, Azure Kubernetes Service (AKS) extensions enabled by Azure Arc, and custom location is created.
+  - **Azure subscription ID**: The Azure subscription ID where the Azure Arc resource bridge, the Azure Kubernetes Service (AKS) extension enabled by Azure Arc, and the custom location are created.
   - **Custom location ID**: The Azure Resource Manager ID of the custom location. Your infrastructure admin should give you Contributor access to the custom location. Custom location is a required parameter to create Kubernetes clusters.
   - **AKS logical network ID enabled by Azure Arc**: The Azure Resource Manager ID of the Azure Arc logical network. Your infrastructure admin should give you Contributor access to an AKS logical network enabled by Azure Arc. The logical network ID is a required parameter to create Kubernetes clusters.
 - Create a Microsoft Entra group and add members to it so that you can connect to the cluster from anywhere. All the members in the Microsoft Entra group have cluster administrator access to the AKS cluster enabled by Azure Arc.
@@ -36,12 +36,12 @@ This article describes how to create Kubernetes clusters in Azure Local by using
 
    :::image type="content" source="media/aks-create-clusters-portal/cluster-portal.png" alt-text="Screenshot that shows the cluster creation page in the portal." lightbox="media/aks-create-clusters-portal/cluster-portal.png":::
 
-1. On the **Basics** tab, configure the following options:
+1. On the **Basics** tab, configure the following options.
 
    :::image type="content" source="media/aks-create-clusters-portal/cluster-create-portal.png" alt-text="Screenshot that shows the Basics tab for cluster creation in the portal." lightbox="media/aks-create-clusters-portal/cluster-create-portal.png":::
 
    - **Project details**:
-     - Select an Azure subscription. This Azure subscription is where your infrastructure administrator deployed the Azure Arc Resource Bridge, the AKS extension enabled by Azure Arc, and the custom location.
+     - Select an Azure subscription. This Azure subscription is where your infrastructure administrator deployed the Azure Arc resource bridge, the AKS extension enabled by Azure Arc, and the custom location.
      - Select an Azure resource group, such as **myResourceGroup**.
    - **Cluster details**:
      - Enter a Kubernetes cluster name, such as **myk8scluster**. The name of a Kubernetes cluster name must consist of lowercase alphanumeric characters.
