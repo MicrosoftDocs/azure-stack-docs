@@ -48,6 +48,8 @@
       href: lustre-quotas.md
     - name: Optimize file and directory layouts
       href: optimize-file-layouts.md
+    - name: Optimize Azure Managed Lustre performance
+      href: optimize-amlfs-performance.md
 - name: Security
   items:
     - name: Configure a network security group
