@@ -76,7 +76,7 @@ Before you create an Azure Local VM, make sure that you meet the following prere
     + provider registry.terraform.io/hashicorp/random V3.6.3
     ```
     
-- Make sure that Git is installed and up to date on your machine. To verify your version of Git, run the `git --version` command.
+- You need to make sure that Git is installed and up to date on your machine. To verify your version of Git, run the `git --version` command.
 
 ---
 
