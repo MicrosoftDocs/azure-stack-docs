@@ -140,7 +140,7 @@ After deploying the system, confirm the deployment was without AD (AD-less) and 
 1. Confirm the node isn't joined to an AD domain by running the following command. If the output shows `WORKGROUP`, the node isn't domain-joined.
 
     ```powershell
-    Get-WmiObject (Win32_ComputerSystem).Domain
+    (Get-WmiObject Win32_ComputerSystem).Domain
     ```
     
     Here's a sample output:
