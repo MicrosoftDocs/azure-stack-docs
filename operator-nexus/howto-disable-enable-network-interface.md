@@ -1,7 +1,7 @@
 ---
 title: How to disable and enable a network interface within Nexus Network Fabric
 description: Process of disabling and enabling network interface admin state
-author: satya talluri
+author: Satya-talluri
 ms.author: stalluri
 ms.service: azure-operator-nexus
 ms.topic: how-to
