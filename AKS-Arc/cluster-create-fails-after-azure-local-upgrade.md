@@ -1,6 +1,6 @@
 ---
-title: AKS Arc cluster creation fails on Azure Local 2511, 2512, or 2601 after upgrade from 2510
-description: Learn how to troubleshoot and resolve an issue where new AKS Arc cluster creation fails after upgrading Azure Local from version 2510 to 2511, 2512, or 2601.
+title: AKS Arc cluster creation fails on Azure Local 2511 or 2512 after upgrade from 2510
+description: Learn how to troubleshoot and resolve an issue where new AKS Arc cluster creation fails after upgrading Azure Local from version 2510 to 2511 or 2512.
 ms.topic: troubleshooting
 author: davidsmatlak
 ms.author: davidsmatlak
@@ -8,17 +8,17 @@ ms.date: 1/26/2026
 ms.lastreviewed: 1/26/2026
 ---
 
-# AKS Arc cluster creation fails on Azure Local 2511, 2512, or 2601 after upgrade from 2510
+# AKS Arc cluster creation fails on Azure Local 2511 or 2512 after upgrade from 2510
 
-After you upgrade Azure Local from version 2510 to 2511, 2512, or 2601, new AKS Arc cluster creation fails while existing clusters and other operations continue to work normally.
+After you upgrade Azure Local from version 2510 to 2511 or 2512, new AKS Arc cluster creation fails while existing clusters and other operations continue to work normally.
 
 ## Overview
 
-AKS enabled by Azure Arc on Azure Local supports cluster lifecycle operations including creation, upgrade, and management. When Azure Local is upgraded from version 2510 to 2511, 2512, or 2601, a configuration issue with the `HybridAksExtension` prevents new AKS Arc cluster creation. This issue doesn't affect existing AKS clusters or fresh installations of Azure Local 2511, 2512, or 2601.
+AKS enabled by Azure Arc on Azure Local supports cluster lifecycle operations including creation, upgrade, and management. When Azure Local is upgraded from version 2510 to 2511 or 2512, a configuration issue with the `HybridAksExtension` prevents new AKS Arc cluster creation. This issue doesn't affect existing AKS clusters or fresh installations of Azure Local 2511 or 2512.
 
 ## Symptoms
 
-After upgrading Azure Local from version 2510 to 2511, 2512, or 2601, you might observe the following issue when attempting to create new AKS Arc clusters:
+After upgrading Azure Local from version 2510 to 2511 or 2512, you might observe the following issue when attempting to create new AKS Arc clusters:
 
 - Cluster creation fails with a timeout error:
 
@@ -31,7 +31,7 @@ After upgrading Azure Local from version 2510 to 2511, 2512, or 2601, you might 
 
 ## Cause
 
-This issue occurs due to a problem with the HybridAksExtension in Azure Local 2511, 2512, or 2601. When you upgrade from version 2510 to 2511, 2512, or 2601, the system enters a state that prevents new cluster creation. However, existing clusters and other operations continue to work normally.
+This issue occurs due to a problem with the HybridAksExtension in Azure Local 2511 or 2512. When you upgrade from version 2510 to 2511 or 2512, the system enters a state that prevents new cluster creation. However, existing clusters and other operations continue to work normally.
 
 ## Scope and impact
 
@@ -41,18 +41,16 @@ This section describes the upgrade scenarios affected by this issue and the impa
 
 - Azure Local upgraded from version 2510 to 2511.
 - Azure Local upgraded from version 2510 to 2512.
-- Azure Local upgraded from version 2510 to 2601.
 - Attempting new AKS Arc cluster creation after the upgrade.
 
 | Azure Local upgrade path | AKS Arc cluster creation result |
 | ------------------------ | ------------------------------- |
 | Upgrade 2510 → 2511      | ❌ Failure                      |
 | Upgrade 2510 → 2512      | ❌ Failure                      |
-| Upgrade 2510 → 2601      | ❌ Failure                      |
 
 ### Customer impact
 
-- Customers upgrading Azure Local from 2510 to 2511, 2512, or 2601 are blocked from creating new AKS Arc clusters.
+- Customers upgrading Azure Local from 2510 to 2511 or 2512 are blocked from creating new AKS Arc clusters.
 - Production risk for customers planning post-upgrade cluster expansion.
 - Upgrade path continues to work, masking the issue until cluster creation is attempted.
 
@@ -76,7 +74,7 @@ az k8s-extension show -g $res.HybridaksExtension.resourceGroup -c $res.ResourceB
 You're affected by this issue if the following items apply:
 
 - HybridAksExtension version is 4.0.X (versions prior to 4.0.92).
-- Azure Local was upgraded from version 2510 to 2511, 2512, or 2601.
+- Azure Local was upgraded from version 2510 to 2511 or 2512.
 - You're attempting to create a new AKS Arc cluster.
 
 ## Workaround
@@ -90,7 +88,7 @@ Run the following PowerShell commands to update the HybridAksExtension to the la
 ```powershell
 Install-Module -Name Support.AksArc
 Import-Module Support.AksArc
-Invoke-SupportAksArcRemediation_HotFix_2511_2512_2601CreateCluster
+Invoke-SupportAksArcRemediation_HotFix_2511_2512CreateCluster
 ```
 
 This command updates the extension to version 4.0.92 or later, which resolves the cluster creation issue.
@@ -116,7 +114,7 @@ Until the fix is fully validated and released, customers are advised to follow t
 
 ## Next steps
 
-- If you're planning to upgrade from Azure Local 2510 to 2511, 2512, or 2601, apply the mitigation steps before attempting to create new AKS Arc clusters.
+- If you're planning to upgrade from Azure Local 2510 to 2511 or 2512, apply the mitigation steps before attempting to create new AKS Arc clusters.
 - If your environment is already affected, run the remediation commands and verify the extension version before retrying cluster creation.
 - Review cluster creation logs for more error details if issues persist.
 - If issues persist or if you need assistance, contact Microsoft Support with details about the upgrade path and observed behavior.
