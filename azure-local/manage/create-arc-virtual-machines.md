@@ -37,8 +37,8 @@ Before you create an Azure Local VM, make sure that you meet the following prere
 
 [!INCLUDE [hci-vm-prerequisites](../includes/hci-vm-prerequisites.md)]
 
-- See [Connect to Azure Local via the Azure CLI client](./azure-arc-vm-management-prerequisites.md#azure-command-line-interface-cli-requirements) if you use a client to connect to your Azure Local instance.
-- Have access to a network interface that you created on a logical network associated with your Azure Local instance. You can choose a network interface with a static IP or one with a dynamic IP allocation. For more information, see how to [create network interfaces](./create-network-interfaces.md).
+- You need to review [Connect to Azure Local via the Azure CLI client](./azure-arc-vm-management-prerequisites.md#azure-command-line-interface-cli-requirements) if you use a client to connect to your Azure Local instance.
+- You need to have access to a network interface that you created on a logical network associated with your Azure Local instance. You can choose a network interface with a static IP or one with a dynamic IP allocation. For more information, see how to [create network interfaces](./create-network-interfaces.md).
 
 # [Azure portal](#tab/azureportal)
 
@@ -48,22 +48,22 @@ Before you create an Azure Local VM, make sure that you meet the following prere
 
 [!INCLUDE [hci-vm-prerequisites](../includes/hci-vm-prerequisites.md)]
 
-- Have access to a logical network that you associate with the VM on your Azure Local instance. For more information, see how to [create a logical network](./create-logical-networks.md).
+- You need to have access to a logical network that you associate with the VM on your Azure Local instance. For more information, see how to [create a logical network](./create-logical-networks.md).
 - [Download the sample ARM template](https://aka.ms/hci-vmarmtemp) in the GitHub Azure quickstarts repo. Use this template to create a VM.
 
 # [Bicep template](#tab/biceptemplate)
 
 [!INCLUDE [hci-vm-prerequisites](../includes/hci-vm-prerequisites.md)]
 
-- Have access to a logical network that you associate with the VM on your Azure Local instance. For more information, see how to [create a logical network](./create-logical-networks.md).
+- You need to have access to a logical network that you associate with the VM on your Azure Local instance. For more information, see how to [create a logical network](./create-logical-networks.md).
 - [Download the sample Bicep template](https://aka.ms/hci-vmbiceptemplate).
 
 # [Terraform template](#tab/terraformtemplate)
 
 [!INCLUDE[hci-vm-prerequisites](../includes/hci-vm-prerequisites.md)]
 
-- Have access to a logical network that you associate with the VM of your Azure Local instance. For more information, see [create a logical network](../manage/create-logical-networks.md).
-- Make sure that Terraform is installed and up to date on your machine. To verify your Terraform version, run the `terraform -v` command.
+- You need to have access to a logical network that you associate with the VM of your Azure Local instance. For more information, see [create a logical network](../manage/create-logical-networks.md).
+- You need to make sure that Terraform is installed and up to date on your machine. To verify your Terraform version, run the `terraform -v` command.
 
     Sample output:
     
