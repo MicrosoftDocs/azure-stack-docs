@@ -10,13 +10,13 @@ ms.service: azure-managed-lustre
 
 # Optimize Azure Managed Lustre performance
 
-This reference describes how network configuration for your client virtual machines (VMs) and file system affects Azure Managed Lustre (AMLFS) performance.
+This reference describes how network configuration for your client virtual machines (VMs) and Azure Managed Lustre (AMLFS) file systems affects overall performance.
 
-Network throughput and latency between AMLFS and your clients directly affects job completion times. To get predictable, high performance, use the following design principles:
+Network throughput and latency between AMLFS and your clients directly affects job completion times. To get predictable, high performance, follow these design principles:
 
-- Client VMs use accelerated networking.
-- AMLFS and client VMs are placed in the same availability zone in region supporting Availability Zones.
-- Network routing between clients and AMLFS is as direct as possible, with minimal or no extra hops in the data path.
+- Use accelerated networking on all client VMs.
+- Place AMLFS and client VMs in the same availability zone in regions that support availability zones.
+- Keep network routing between clients and AMLFS as direct as possible, with minimal or no extra hops in the data path.
 
 ## Environment assumptions
 
@@ -28,19 +28,19 @@ These recommendations assume the following environment:
 
 ## Accelerated networking requirements
 
-Accelerated networking uses single root I/O virtualization (SR-IOV) to deliver higher throughput, lower latency, and reduced jitter compared to basic network adapters. For I/O intensive AMLFS workloads, Microsoft strongly recommends enabling accelerated networking on all client VMs. For more background, see [Azure Accelerated Networking overview](/azure/virtual-network/accelerated-networking-overview).
+Accelerated networking uses single root I/O virtualization (SR-IOV) to deliver higher throughput, lower latency, and reduced jitter compared to basic network adapters. For I/O‑intensive AMLFS workloads, Microsoft strongly recommends enabling accelerated networking on all client VMs. For more background, see [Azure Accelerated Networking overview](/azure/virtual-network/accelerated-networking-overview).
 
 Plan client VMs for AMLFS as follows:
 
-- Priotize VM sizes that support accelerated networking. This is the case for all the HPC/AI VM sizes on Azure.
+- Prioritize VM sizes that support accelerated networking. This includes all Azure HPC and AI VM sizes.
 - Enable accelerated networking when you create the network interface, or update the interface with accelerated networking enabled if the VM size supports it. For step-by-step options in the portal, Azure CLI, and PowerShell, see [Manage accelerated networking for Azure Virtual Machines](/azure/virtual-network/manage-accelerated-networking).
 - When you deploy client VMs by using Azure CLI, Bicep, Terraform, or ARM templates, configure the network interfaces so that accelerated networking is enabled by default.
 - When you provision client pools through orchestrators such as [Azure CycleCloud](/azure/cyclecloud/overview), [Azure Batch](/azure/batch/batch-technical-overview), or [Azure Kubernetes Service (AKS)](/azure/aks/intro-kubernetes), ensure that node pool or VM definitions specify VM sizes and NIC settings that support and enable accelerated networking.
 
 You can validate that accelerated networking is enabled on a client VM by:
 
-- In the Azure portal, open the network interface resource and confirm that **Accelerated networking** is set to **Enabled**.
-- On the VM, verify that the network interface is using the accelerated network driver according to your distribution documentation.
+- In the Azure portal, opening the network interface resource and confirming that **Accelerated networking** is set to **Enabled**.
+- On the VM, verifying that the network interface is using the accelerated network driver according to your distribution documentation.
 
 For more options to confirm the setting from scripts or command-line tools, see [Confirm that Accelerated Networking is enabled](/azure/virtual-network/create-vm-accelerated-networking-cli?tabs=windows#confirm-that-accelerated-networking-is-enabled).
 
@@ -56,7 +56,7 @@ Follow these guidelines:
 - Avoid designs where clients in one zone primarily access AMLFS in another zone, because cross-zone traffic can add latency.
 - For large clusters, group clients by workload or job type and keep each group in the same zone as the AMLFS instance they use.
 
-If you must span multiple zones for resiliency or operational reasons and the cross-zone latency is degrading performance, consider:
+If you must span multiple zones for resiliency or operational reasons and cross-zone latency degrades performance, consider:
 
 - Keeping latency-sensitive or bandwidth-intensive jobs in the same zone as AMLFS.
 - Using additional AMLFS instances in other zones to localize data access for separate workloads.
@@ -69,7 +69,7 @@ Every extra network hop between your client VMs and AMLFS can add latency, reduc
 
 ## Next steps
 
-In this article, you learned how to optimize AMLFS performance by optimizing network configuration, availability zone placement, and routing.
+In this article, you learned how to optimize AMLFS performance by tuning network configuration, availability zone placement, and routing.
 
 To further optimize your deployment, see:
 
