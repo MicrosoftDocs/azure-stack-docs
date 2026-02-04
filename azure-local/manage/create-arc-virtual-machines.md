@@ -49,7 +49,7 @@ Before you create an Azure Local VM, make sure that you meet the following prere
 
 [!INCLUDE [hci-vm-prerequisites](../includes/hci-vm-prerequisites.md)]
 
-- Access to a logical network that you associate with the VM on your Azure Local instance. For more information, see how to [create a logical network](./create-logical-networks.md).
+- Access to a logical network that you associate with the VM on your Azure Local instance. For more information, see [Create a logical network](./create-logical-networks.md).
 
 - The sample ARM template, which you can download from the [GitHub Azure quickstarts repo](https://aka.ms/hci-vmarmtemp). Use this template to create a VM.
 
@@ -57,7 +57,7 @@ Before you create an Azure Local VM, make sure that you meet the following prere
 
 [!INCLUDE [hci-vm-prerequisites](../includes/hci-vm-prerequisites.md)]
 
-- Access to a logical network that you associate with the VM on your Azure Local instance. For more information, see how to [create a logical network](./create-logical-networks.md).
+- Access to a logical network that you associate with the VM on your Azure Local instance. For more information, see [Create a logical network](./create-logical-networks.md).
 
 - The [sample Bicep template](https://aka.ms/hci-vmbiceptemplate).
 
