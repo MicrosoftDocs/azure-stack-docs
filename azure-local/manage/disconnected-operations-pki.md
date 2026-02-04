@@ -208,7 +208,7 @@ $caName = "mycaserver.contoso.com\Contoso-RootCA" # Replace with your CA server 
 $RootCACert = Get-ChildItem -Path Cert:\LocalMachine\Root | Where-Object { $_.Subject -like "*$($caname)*" } | Select-Object -First 1
 
 # # Option 2) Get the Root CA certificate by its thumbprint:
-$RootCACert = Get-ChildItem -Path Cert:\LocalMachine\Root | Where-Object { $_.Thumbprint -eq "12345678ABCDEFGH607857694DF5E45B68851868" } | Select-Object -First 1
+$RootCACert = Get-ChildItem -Path Cert:\LocalMachine\Root | Where-Object { $_.Thumbprint -eq "AA11BB22CC33DD44EE55FF66AA77BB88CC99DD00" } | Select-Object -First 1
 
 # Check you have the correct Root CA certificate:
 $RootCACert

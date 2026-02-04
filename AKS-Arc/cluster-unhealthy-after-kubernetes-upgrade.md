@@ -14,16 +14,13 @@ After upgrading an AKS Arc cluster to Kubernetes v1.31 or later, the cluster mig
 
 ## Symptoms
 
-The degraded or unhealthy state is observed in the following scenarios:
-
-- The cluster is configured with a single control plane.
-- Azure Policy or Gatekeeper is enabled.
+The degraded or unhealthy state is observed when Azure Policy or Gatekeeper is enabled.
 
 Cluster operations like reconciliation, upgrades, or certificate rotation might fail or behave unexpectedly.
 
 ## Cause
 
-In Kubernetes v1.31 and later, certain update and reconciliation paths interact incorrectly with Azure Policy and Gatekeeper when running on a single control plane configuration.
+In Kubernetes v1.31 and later, certain update and reconciliation paths interact incorrectly with Azure Policy and Gatekeeper.
 
 This issue occurs during upgrades or certificate reconciliation:
 
@@ -34,9 +31,7 @@ When Azure Policy or Gatekeeper is enabled, these updates can cause the control 
 
 ## Affected configurations
 
-- AKS Arc clusters.
-- Single control plane deployments.
-- Kubernetes version v1.31 and later.
+- AKS Arc clusters with Kubernetes version v1.31 and later.
 - Azure Policy and/or Gatekeeper enabled.
 
 ## Workaround
@@ -50,7 +45,7 @@ Disable Azure Policy on the affected cluster before you do the following tasks:
 - Kubernetes version upgrades.
 - Any operation that might trigger control plane updates, like certificate rotation.
 
-Azure Policy can be re-enabled once the fix is available.
+Azure Policy can be re-enabled after the Kubernetes version is updated and the cluster returns to a healthy state.
 
 ### Option 2: Update Gatekeeper policies
 

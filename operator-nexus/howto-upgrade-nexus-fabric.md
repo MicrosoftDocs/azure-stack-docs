@@ -86,7 +86,7 @@ Nexus Network Fabric customer triggers the upgrade POST action on NetworkFabric 
 
 #### Sample az CLI command
 
-`az networkfabric fabric upgrade -g xxxx --resource-name xxxx --action start --version "6.1.0"`
+`az networkfabric fabric upgrade -g xxxx --resource-name xxxx --action start --version "7.1.0"`
 
 As part of the above POST action request, Managed Network Fabric Resource Provider (RP) performs a validation check to determine whether a version upgrade is permissible from the current fabric version.
 
@@ -98,7 +98,7 @@ Within this step, Nexus Network Fabric customer triggers upgrade POST actions on
 
 #### Sample az CLI command 
 
-`az networkfabric device upgrade --version 6.1.0 -g xxxx --resource-name xxx-CompRack1-TOR1 --debug` 
+`az networkfabric device upgrade --version 7.1.0 -g xxxx --resource-name xxx-CompRack1-TOR1 --debug` 
 
 #### Per Device Prevalidation 
 Each of the NNF device resource state must be validated before (via Azure portal or Azure CLI) to be in following state: 
@@ -139,7 +139,7 @@ Each of the NNF device resource state must be validated before (via Azure portal
 
 | Check | Expectation | Outcome/Guidance |
 | --- | --- | --- |
-| Check for Runtime and EOS Version | Resource Runtime version should match the target runtime version provided in the “networkfabric device upgrade” command (for example, 6.1.0).  EOS version on the device should match with target EOS version associated with the target EOS version in the release being upgraded to (for example, EOS64-4.34.1F.swi) | Device Upgrade step considered failed. Engage MSFT support to diagnose & resolve |
+| Check for Runtime and EOS Version | Resource Runtime version should match the target runtime version provided in the “networkfabric device upgrade” command (for example, 7.1.0).  EOS version on the device should match with target EOS version associated with the target EOS version in the release being upgraded to (for example, EOS64-4.34.1F.swi) | Device Upgrade step considered failed. Engage MSFT support to diagnose & resolve |
 | Validate fabric device resource state | Resource states must be validated:<br/>• Administrative state is "Enabled" <br/>• Provisioning state is "Succeeded" <br/>• Configuration state is in "Succeeded" or "Deferred Control" state. | Device Upgrade step considered failed. Engage MSFT support to diagnose & resolve |
 | Validate device state shouldn't be in maintenance | Device should be out of maintenance mode after the upgrade | Device Upgrade step considered failed. Engage MSFT support to diagnose & resolve |
 | Validate status of BGP sessions (applicable to CE & TOR) | All BGP sessions are expected to be in the Established state | Device Upgrade step considered failed. Engage MSFT support to diagnose & resolve |
@@ -148,11 +148,19 @@ Each of the NNF device resource state must be validated before (via Azure portal
 
 ### Step 3: Complete Upgrade
 
-Once all the NNF devices are successfully upgraded to the latest version, that is, 6.1.0, Nexus Network Fabric customer runs the following command to take the network fabric out of maintenance state and complete the upgrade procedure.
+Once all the NNF devices are successfully upgraded to the latest version, that is, 7.1.0, Nexus Network Fabric customer runs the following command to take the network fabric out of maintenance state and complete the upgrade procedure.
 
 #### Sample az CLI command
 
-`az networkfabric fabric upgrade --action complete --version "6.1.0" -g "<resource-group>" --resource-name "<fabric-name>" --debug`
+`az networkfabric fabric upgrade --action complete --version "7.1.0" -g "<resource-group>" --resource-name "<fabric-name>" --debug`
+
+Beginning with Network Fabric (NF) version 7.1.0, Network Device certificate (gNMI certificate) rotation is now an automated step integrated into the Network Fabric Runtime upgrade workflow. This enhancement ensures that all NF upgrades to version 7.1.0 and above include certificate lifecycle management step without requiring separate manual operations.
+
+With the introduction of the above automated step, the Network Fabric Upgrade Complete phase may increase the upgrade cycle by 45–60 minutes to finish. This extended duration is expected and reflects the time required to safely rotate certificates across all network devices.
+
+If any issue occurs during certificate rotation:
+- The error details will be surfaced in the operationStatus of the Network Fabric Upgrade Complete operation.
+- When performing the upgrade via CLI, error messages will also be displayed directly in the terminal. These messages appear only when errors occur.
 
 Once the Fabric upgrade is done, we can verify the status of the network fabric by executing the following az cli commands:
 

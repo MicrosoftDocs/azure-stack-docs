@@ -6,7 +6,7 @@ ms.author: sushrao
 ms.reviewer: sushrao
 ms.date: 04/29/2024
 ms.service: azure-operator-nexus
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Azure Operator Nexus Network Fabric internal network BGP metrics

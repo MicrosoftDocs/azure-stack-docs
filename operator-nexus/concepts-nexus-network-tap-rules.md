@@ -4,7 +4,7 @@ description: Conceptual overview of Network TAP Rules in Azure Operator Nexus Ne
 author: sushantjrao
 ms.author: sushrao
 ms.service: azure-operator-nexus
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 08/16/2025
 ms.custom: template-concept
 ---
