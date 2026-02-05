@@ -55,3 +55,10 @@ To finalize the registration process for disconnected operations, follow these s
 1. Confirm the registration details and select **Register**.
 1. After the operation completes, the **Registration status** changes to **Registered**.
 
+::: moniker-end
+
+::: moniker range="<=azloc-2512"
+
+This feature is available only in Azure Local 2601
+
+::: moniker-end
