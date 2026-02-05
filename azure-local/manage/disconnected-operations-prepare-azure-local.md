@@ -123,3 +123,11 @@ Prepare your Azure Local machines for disconnected operations by completing thes
     $seednode = @('azlocal-1', 'azlocal-2','azlocal-3')|Sort|select –first 1
     $seednode
     ```
+
+    ::: moniker-end
+
+::: moniker range="<=azloc-2505"
+
+This feature is available only in Azure Local 2506
+
+::: moniker-end
