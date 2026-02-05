@@ -1,6 +1,6 @@
 ---
 title: Prepare Azure Local for disconnected deployments (Preview)
-description: Learn how to prepare Azure Local instances for disconnected deployments (preview).
+description: Prepare your Azure Local environment for disconnected deployments (preview). Learn how to set up nodes, configure networking, and ensure deployment readiness.
 ms.topic: how-to
 author: haraldfianbakken
 ms.author: hafianba
@@ -11,15 +11,19 @@ ai-usage: ai-assisted
 
 # Prepare Azure Local for disconnected deployments (preview)
 
-This article explains how to deploy an Azure Local node for disconnected operations. This deployment is required before setting up your Azure Local instance.
+::: moniker range=">=azloc-2601"
+
+This article explains how to deploy an Azure Local node for disconnected operations. Prepare your environment to ensure a successful setup of your Azure Local instance. Complete this deployment before setting up your Azure Local instance.
+
+[!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
 
 ## Prepare Azure Local machines  
 
-To prepare each machine for the disconnected operations appliance, follow these steps:
+Prepare your Azure Local machines for disconnected operations by completing these steps to ensure proper setup and configuration. This process includes downloading the necessary ISO, configuring networking, and setting up certificates and environment variables.
 
 1. Download the Azure Local ISO that matches your disconnected control plane version (for example, 2601).  
 
-1. Install the OS and configure the node networking for each Azure Local machine you intend to use to form an instance. For more information, see [Install the Azure Stack HCI operating system](../deploy/deployment-install-os.md).  
+1. Install the OS and configure the node networking for each Azure Local machine you plan to use to form an instance. For more information, see [Install the Azure Stack HCI operating system](../deploy/deployment-install-os.md).
 
 1. On physical hardware, install firmware and drivers as instructed by your OEM.
 1. Rename network adapters.
@@ -40,17 +44,19 @@ To prepare each machine for the disconnected operations appliance, follow these 
 
    - If your network plan groups all traffic (management, compute, and storage), create a virtual switch called `ConvergedSwitch(ManagementComputeStorage)` on each node.  
 
-     ```powershell
-      # Example
-      $networkIntentName = 'ManagementComputeStorage'
-      New-VMSwitch -Name "ConvergedSwitch($networkIntentName)" -NetAdapterName "ethernet","ethernet 2" -EnableEmbeddedTeaming $true -AllowManagementOS $true
+    Here's an example:
 
-      # Rename the VMNetworkAdapter for management. During creation, Hyper-V uses the vSwitch name for the virtual network adapter.
-      Rename-VmNetworkAdapter -ManagementOS -Name "ConvergedSwitch($networkIntentName)" -NewName "vManagement($networkIntentName)"
+    ```powershell
+    # Example
+    $networkIntentName = 'ManagementComputeStorage'
+    New-VMSwitch -Name "ConvergedSwitch($networkIntentName)" -NetAdapterName "ethernet","ethernet 2" -EnableEmbeddedTeaming $true -AllowManagementOS $true
 
-      # Rename the NetAdapter. During creation, Hyper-V adds the string "vEthernet" to the beginning of the name.
-      Rename-NetAdapter -Name "vEthernet (ConvergedSwitch($networkIntentName))" -NewName "vManagement($networkIntentName)"
-     ```
+    # Rename the VMNetworkAdapter for management. During creation, Hyper-V uses the vSwitch name for the virtual network adapter.
+    Rename-VmNetworkAdapter -ManagementOS -Name "ConvergedSwitch($networkIntentName)" -NewName "vManagement($networkIntentName)"
+
+    # Rename the NetAdapter. During creation, Hyper-V adds the string "vEthernet" to the beginning of the name.
+    Rename-NetAdapter -Name "vEthernet (ConvergedSwitch($networkIntentName))" -NewName "vManagement($networkIntentName)"
+    ```
 
    - If you use VLANs, make sure you set the network adapter VLAN.
 
@@ -109,7 +115,7 @@ To prepare each machine for the disconnected operations appliance, follow these 
     [Environment]::SetEnvironmentVariable("DISCONNECTED_OPS_SUPPORT", $true, [System.EnvironmentVariableTarget]::Machine)
     ```
 
-1. [Setup Azure CLI on each node](../manage/disconnected-operations-cli.md). This must work on each node before you deploy an Azure Local instance. Otherwise, the deployment fails.
+1. [Setup Azure CLI on each node](../manage/disconnected-operations-cli.md). Ensure it works on each node before you deploy an Azure Local instance. Otherwise, the deployment fails.
 
 1. Find the first machine from the list of node names and specify it as the `seednode` you want to use in the cluster.
 
