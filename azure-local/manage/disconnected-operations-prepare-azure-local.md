@@ -126,8 +126,8 @@ Prepare your Azure Local machines for disconnected operations by completing thes
 
     ::: moniker-end
 
-::: moniker range="<=azloc-2505"
+::: moniker range="<=azloc-2512"
 
-This feature is available only in Azure Local 2506
+This feature is available only in Azure Local 2601
 
 ::: moniker-end
