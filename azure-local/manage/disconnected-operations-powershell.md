@@ -34,7 +34,7 @@ $applianceCloudName = "azure.local"
 $applianceFQDN = "autonomous.cloud.private"
 
 $AdminManagementEndPointUri = "https://armmanagement.$($applianceFQDN)/"
-$DirectoryTenantId = "98b8267d-e97f-426e-8b3f-7956511fd63f"
+$DirectoryTenantId = "<Tenant ID>"
 
 #retrieve ALDO endpoints
 
