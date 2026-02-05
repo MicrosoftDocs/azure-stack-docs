@@ -13,22 +13,22 @@ ai-usage: ai-assisted
 
 ::: moniker range=">=azloc-2511"
 
-This article explains how to get updates for disconnected operations and how to apply an update for the disconnected operations appliance.
+This article explains how to update disconnected operations on Azure Local (preview) and apply updates to the appliance to ensure optimal performance.
 
 [!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
 
 ## Get updates
 
-To get updates for disconnected operations, follow these steps:
+Keep your disconnected operations appliance up to date. Follow these steps to download and apply the latest updates.
 
-1. From The Azure portal, navigate to your disconnected operations appliance.
+1. From the Azure portal, navigate to your disconnected operations appliance.
 1. Select **Updates** and then select the latest version.
 1. Select **Download** and wait for the download to complete.
 1. Copy the update file to a staging folder on the first machine (seed node), such as `C:\AzureLocalDisconnectedOperations`.
 
 ## Load the OperationsModule
 
-To load the OperationsModule on the seed node, run the following command.
+To prepare the seed node for managing disconnected operations, load the OperationsModule by running the following command.
 
 ```powershell
 $applianceConfigBasePath = 'C:\AzureLocalDisconnectedOperations'
@@ -67,13 +67,16 @@ Get-ApplianceBitlockerRecoveryKeys -DisconnectedOperationsClientContext $context
 
 ## Create appliance snapshot
 
-To roll back quickly in worst case scenarios, we recommend you create a virtual machine (VM) snapshot.
+To roll back quickly in worst case scenarios, create a virtual machine (VM) snapshot.
 
 ```powershell
 Checkpoint-VM -Name "IRVM01" -SnapshotName "BeforeUpdate"
 ```
 
 ## Trigger an update
+
+> [!CAUTION]  
+> Make sure your LDAP credentials are still valid and didn't expire before you trigger the update. You can verify your LDAP settings by using the cmdlet `Test-ApplianceExternalIdentityConfigurationDeep` provided in the OperationsModule. If the LDAP credentials expired, update and rollback fail and you need to revert back to snapshot.
 
 On the seed node, in the same session as the preceding section, run the following command to trigger an update.
 
@@ -82,15 +85,11 @@ Start-ApplianceUpdate -TargetVersion $updatePackageResult.UpdatePackageVersion -
 ```
 
 > [!NOTE]  
-> Caution: Make sure your LDAP credentials are still valid and have not expired prior to triggering update. You can verify your LDAP settings with using the cmdlet Test-ApplianceExternalIdentityConfigurationDeep provided in the operations module. If the LDAP credentials have expired - update and rollback will fail and you will need to revert back to snapshot. 
-
-
-> [!NOTE]  
 > Update can take several hours and might reboot the control plane appliance. If update fails, the system attempts to roll back to the last known good state and boot back.
 
 ## Get update history
 
-On the seed node, in the same session as the preceding section, run the following command to view update history.
+On the seed node, in the same session as the preceding section, run the following command to view the update history.
 
 ```powershell
 Get-ApplianceUpdateHistory 
@@ -155,4 +154,3 @@ Start-MonitoringActionplanInstanceToComplete -EceClient $eceClient -actionPlanIn
 
 This feature is available only in Azure Local 2511 and newer.
 ::: moniker-end
-
