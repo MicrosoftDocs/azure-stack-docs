@@ -22,20 +22,21 @@ This article highlights what's new (features and improvements) and critical know
 ## Features and improvements in 2601
  - Added support for the Azure Local 2601 ISO and its associated capabilities.
  - Added ZDU capability for Azure Local.
- - Updated CLI versions and extensions
+ - Updated Azure CLI versions and extensions
  - Improved security and bug fixes.
 
 ## Features and improvements in 2512
  - Added support for the Azure Local 2512 ISO and its associated capabilities.
  - Added update capability for 2512.
- - Added registration UX to Azure Portal.
+ - Added registration UX to the Azure portal.
  - Improved security and bug fixes.
 
 ## Features and improvements in 2511
  - Added support for the Azure Local 2511 ISO and its associated capabilities.
  - Bundled update uploader in OperationsModule.
  - Improved the log collection experience.
- - Added deployment automation capability for operator account during bootstrap (enabled full e2e deployment automation).
+ - Added deployment automation capability for operator account during bootstrap.
+  - Enabled full end-to-end deployment automation.
  - Fixed empty groups not synchronizing for identity integration.
  - RBAC update and refresh (AKS Arc).
  - Added control plane awareness for Azure Local instance deployments.
@@ -54,34 +55,44 @@ This article highlights what's new (features and improvements) and critical know
  - Enabled the use of a FQDN in the SAN of the management certificate.
 
 ## Known issues for disconnected operations for Azure Local
-### Cloud deployment fails - and transitions into a failed state
-In Azure Local 2601, there is a known issue in ALDO where HIMDS services may go down due to IRVM services taking longer than expected to start. This timing issue can cause the overall cloud deployment to transition into a failed state, often accompanied by non-descriptive or unclear error messages.
 
-**Resolution**:
-A fix for this issue is planned for inclusion in the ALDO 2602 release.
+### Cloud deployment fails and transitions into a failed state
 
-**Workaround**: 
-Until the fix is available, the following steps should be applied on all nodes:
+In Azure Local 2601, a known issue in disconnected operations for Azure Local may cause HIMDS services to stop functioning due to IRVM services taking longer than expected to start. This timing issue can result in the cloud deployment transitioning to a failed state, often accompanied by unclear or non-descriptive error messages.
 
-[Download and copy the attached Zip](https://aka.ms/aldo-fix2/1) file in C:\AzureLocal folder.
-Extract the Zip to path: C:\AzureLocal\HimdsWatchDog
-Run Install-HIMDS-Watchdog.ps1
-Validate if Scheduled task is created: Get-ScheduledTask -TaskName HIMDS
+**Workaround**:
 
-After the cloud deployment is completed, we can go to each node and delete the task by running this command: 
-Unregister-ScheduledTask -TaskName HIMDSWatchdog
+Perform the following steps on all nodes:
+
+1. Download and copy the attached [Zip file](https://aka.ms/aldo-fix2/1) to the `C:\AzureLocal` folder.
+1. Extract the Zip file to the path: `C:\AzureLocal\HimdsWatchDog`.
+1. Run the `Install-HIMDS-Watchdog.ps1` command.
+1. Verify if the scheduled task is created by running:
+   
+   ```powershell
+   `Get-ScheduledTask -TaskName HIMDS`.
+   ```
+
+1. After the cloud deployment is complete, delete the task on each node by running:
+   ```powershell
+   Unregister-ScheduledTask -TaskName HIMDSWatchdog
+   ```
 
 ### Control plane deployment stuck and times out without completing
-In rare cases deployments can time out - and services might not reach 100% convergence, even after 8 hours.
 
-**Mitigation:** Redeploy the disconnected operations appliance. If the problem continues after 2-3 clean redeployments - collect logs and open a support ticket.
+In rare cases, deployments may time out, and services might not reach 100% convergence, even after 8 hours.
 
+**Mitigation:**
+
+Redeploy the disconnected operations appliance. If the issue persists after 2–3 clean redeployments, collect logs and open a support ticket.
 
 ### SSL/TLS error using management endpoint (OperationsModule)
 
 When you use a cmdlet that uses the management endpoint (for example, Get-ApplianceHealthState) you receive an error "threw and exception : The request was aborted: Could not create SSL/TLS secure channel.. Retrying"
 
-**Mitigation:** For 2511, do not use `Set-DisconnectedOperationsClientContext`. Instead use `$context = New-DisconnectedOperationsClientContext` and pass the `$context` to the respective cmdlets.
+**Mitigation:** 
+
+For 2511, do not use `Set-DisconnectedOperationsClientContext`. Instead use `$context = New-DisconnectedOperationsClientContext` and pass the `$context` to the respective cmdlets.
 
 ### Arc bootstrap fails on node (Invoke-AzStackHCIArcInitialization) on Original Equipment Manufacturer (OEM) provided images 
 
@@ -134,51 +145,52 @@ Follow these steps:
 
 Solution Builder extension (SBE) validation fails when trying to reach an *aka.ms* link to download. 
 
-Workaround:
+**Workaround**:
 
-- Run the cloud deployment (portal) flow until the validation fails in the UX.
-- Download a patched version of [ExtractOEMContent.ps1](https://aka.ms/aldo-fix1/1)
-- Download a patched version of [EN-US\ExtractOEMContent.Strings.psd1](https://aka.ms/aldo-fix1/2)
-- Modify the following file using your favorite editor `ExtractOEMContent.ps1`.
-- Replace line 899 in this file with the code snippet:
+1. Run the cloud deployment (portal) flow until the validation fails in the UX.
+1. Download a patched version of [ExtractOEMContent.ps1](https://aka.ms/aldo-fix1/1)
+1. Download a patched version of [EN-US\ExtractOEMContent.Strings.psd1](https://aka.ms/aldo-fix1/2)
+1. Modify the following file using your favorite editor `ExtractOEMContent.ps1`.
+1. Replace line 899 in this file with the code snippet:
 
-  ```powershell
-  if (-not (Test-SBEXMLSignature -XmlPath $sbeDiscoveryManifestPath)) {
-      throw ($localizedStrings.OEMManifestSignature -f $sbeDiscoveryManifestPath)
-  }
-  $packageHash = (Get-FileHash -Path $zipFile.FullName -Algorithm SHA256).Hash
-  $manifestXML = New-Object -TypeName System.Xml.XmlDocument
-  $manifestXML.PreserveWhitespace = $false
-  $xmlTextReader = New-Object -TypeName System.Xml.XmlTextReader -ArgumentList $sbeDiscoveryManifestPath
-  $manifestXML.Load($xmlTextReader)
-  $xmlTextReader.Dispose()
-  
-  # Test that the zip file hash matches the package hash from the manifest
-  $applicableUpdate = $manifestXML.SelectSingleNode("//ApplicableUpdate[UpdateInfo/PackageHash='$packageHash']")
-  if ([System.String]::IsNullOrEmpty($applicableUpdate)) {
-      throw "$($zipFile.FullName) hash of $packageHash does not match value in manifest at $sbeDiscoveryManifestPath"
-  }
-  $result = [PSCustomObject]@{
-      Code = "Latest"
-      Message = "Override for ALDO"
-      Endpoint = "https://aka.ms/AzureStackSBEUpdate/Dell"
-      ApplicableUpdate = $applicableUpdate.OuterXml
-  }
-  ```
-- Copy the newly modified file to c:\CloudDeployment\Setup\Common\ExtractOEMContent.ps1 on the first machine.
-- Copy the downloaded, unmodified file to c:\CloudDeployment\Setup\Common\En-US\ExtractOEMContent.Strings.psd1 on the first machine.
-- Resume cloud deployment.
+   ```powershell
+   if (-not (Test-SBEXMLSignature -XmlPath $sbeDiscoveryManifestPath)) {
+       throw ($localizedStrings.OEMManifestSignature -f $sbeDiscoveryManifestPath)
+   }
+   $packageHash = (Get-FileHash -Path $zipFile.FullName -Algorithm SHA256).Hash
+   $manifestXML = New-Object -TypeName System.Xml.XmlDocument
+   $manifestXML.PreserveWhitespace = $false
+   $xmlTextReader = New-Object -TypeName System.Xml.XmlTextReader -ArgumentList $sbeDiscoveryManifestPath
+   $manifestXML.Load($xmlTextReader)
+   $xmlTextReader.Dispose()
+   
+   # Test that the zip file hash matches the package hash from the manifest
+   $applicableUpdate = $manifestXML.SelectSingleNode("//ApplicableUpdate[UpdateInfo/PackageHash='$packageHash']")
+   if ([System.String]::IsNullOrEmpty($applicableUpdate)) {
+       throw "$($zipFile.FullName) hash of $packageHash does not match value in manifest at $sbeDiscoveryManifestPath"
+   }
+   $result = [PSCustomObject]@{
+       Code = "Latest"
+       Message = "Override for ALDO"
+       Endpoint = "https://aka.ms/AzureStackSBEUpdate/Dell"
+       ApplicableUpdate = $applicableUpdate.OuterXml
+   }
+   ```
+1. Copy the newly modified file to c:\CloudDeployment\Setup\Common\ExtractOEMContent.ps1 on the first machine.
+1. Copy the downloaded, unmodified file to c:\CloudDeployment\Setup\Common\En-US\ExtractOEMContent.Strings.psd1 on the first machine.
+1. Resume cloud deployment.
 
 ### Cloud deployment (validation or deployment) gets stuck
 
 During the validate or cloud deployment flow, the first machine (seed node) restarts, which causes the control plane appliance to restart. Sometimes this process takes longer than expected, causing HIMDS to stop because it can't connect to the HIS endpoint. This issue can cause the deployment flow to stop responding.
 
-Mitigation:
+**Mitigation**:
+
 1. Check if the HIMDS service is stopped:
   
-  ```powershell
-  Get-Service HIMDS
-  ```
+   ```powershell
+   Get-Service HIMDS
+   ```
 
 1. If the service is stopped, start it:
 
@@ -219,7 +231,9 @@ If the portal and log file are out of sync, restart the LCM Controller service t
 
 Some special characters in the management TLS cert password, external certs password, or observability configuration secrets from the OperationsModule can cause the deployment to fail with an error output: *Appliance.Operations operation [options]* 
  
- **Mitigation**: Do not use special characters like single or double quotes in the passwords.
+ **Mitigation**: 
+ 
+ Do not use special characters like single or double quotes in the passwords.
 
 ### Resources disappear from portal
 
@@ -243,13 +257,17 @@ The disconnected operations appliance uses 78 GB of memory. If your node has les
 
 In virtual environments, deployments can time out, and services might not reach 100% convergence, even after 8 hours.
 
-**Mitigation:** Redeploy the disconnected operations appliance a few times. If you're using a physical environment and the problem continues, collect logs and open a support ticket.
+**Mitigation:** 
+
+Redeploy the disconnected operations appliance a few times. If you're using a physical environment and the problem continues, collect logs and open a support ticket.
 
 ### Azure Local deployment with Azure Keyvault
 
 Role-Based Access Control (RBAC) permissions on a newly created Azure Key Vault can take up to 20 minutes to propagate. If you create the Key Vault in the local portal and quickly try to finish the cloud deployment, you might encounter permission issues when validating the cluster.
 
-**Mitigation**: Wait 20 minutes after you create the Azure Key Vault to finish deploying the cluster, or create the Key Vault ahead of time. 
+**Mitigation**: 
+
+Wait 20 minutes after you create the Azure Key Vault to finish deploying the cluster, or create the Key Vault ahead of time. 
 
 If you create the Key Vault ahead of time, make sure you assign:
 
@@ -312,19 +330,25 @@ Write-Verbose "Wait 20 min before running cloud deployment from portal"
 
 After you start, restart, or stop the Azure Local VM, the power action buttons are disabled and the status isn't reflected properly.
 
-**Mitigation**: Use Azure Command-Line Interface (CLI) to add or edit tags for the resource.
+**Mitigation**: 
+
+Use Azure Command-Line Interface (CLI) to add or edit tags for the resource.
 
 #### Start, restart, or delete buttons disabled after stopping VM
 
 After you stop an Azure Local VM, the start, restart, and delete buttons in the Azure portal are disabled.
 
-**Mitigation**: Refresh your browser and the page.
+**Mitigation**: 
+
+Refresh your browser and the page.
 
 #### Delete a VM resource
 
 When you delete a VM from the portal, you might see these messages ***Delete associated resource failed*** and ***Failed to delete the associated resource 'name' of type 'Network interface'***.
 
-**Mitigation**: After you delete the VM, use CLI to delete the associated network interface. Run this command:
+**Mitigation**: 
+
+After you delete the VM, use CLI to delete the associated network interface. Run this command:
 
 ```azurecli
 az stack-hci-vm network nic delete
@@ -340,7 +364,9 @@ AKS deployments fails in fully air-gapped scenarios. No mitigation is available 
 
 In this release, you can only use an existing public key when creating an AKS cluster.
 
-**Mitigation**: To create an SSH key, use the following command-line tool and paste the public key in the UI:
+**Mitigation**: 
+
+To create an SSH key, use the following command-line tool and paste the public key in the UI:
 
 ```powershell
 ssh-keygen -t rsa 
@@ -351,7 +377,9 @@ ssh-keygen -t rsa
 
 Updating or scaling a node pool from the portal is unsupported in this preview release.
 
-**Mitigation**: Use CLI to update or scale a node pool.
+**Mitigation**: 
+
+Use CLI to update or scale a node pool.
 
 ```azurecli
 az aksarc nodepool update
@@ -362,13 +390,17 @@ az aksarc nodepool scale
 
 When you navigate to Azure Local and click **Kubernetes clusters**, you might see an empty list of clusters.
 
-**Mitigation**: Navigate to **Kubernetes** > **Azure Arc** in the left menu or use the search bar. Your clusters should appear in the list.
+**Mitigation**: 
+
+Navigate to **Kubernetes** > **Azure Arc** in the left menu or use the search bar. Your clusters should appear in the list.
 
 #### Save Kubernetes service notification stuck
 
 After you update to a newer version of Kubernetes, you might see a stuck notification that says, `Save Kubernetes service`.
 
-**Mitigation**: Navigate to the **Cluster View** page and refresh it. Check whether the state shows upgrading or completed. If the update completed successfully, you can ignore the notification.
+**Mitigation**: 
+
+Navigate to the **Cluster View** page and refresh it. Check whether the state shows upgrading or completed. If the update completed successfully, you can ignore the notification.
 
 #### Activity log shows authentication issue
 
@@ -390,7 +422,9 @@ Arc extensions are unsupported in this preview release.
 
 After successfully deleting an AKS cluster from portal, the resource continues to show.
 
-**Mitigation**: Use CLI to delete and clean up the cluster. Run this command:
+**Mitigation**: 
+
+Use CLI to delete and clean up the cluster. Run this command:
 
 ```azurecli
 az aksarc delete
@@ -410,15 +444,21 @@ After you restart a node or the control plane VM, the system might take up to an
 
 After you create a new subscription as an operator, the subscription appears in the list as non-clickable and displays ***no access*** for the owner.
 
-**Mitigation**: Refresh your browser window.
+**Mitigation**: 
+
+Refresh your browser window.
 
 #### Operator subscriptions view (timeout)
 
 If you're signed in as an operator, you might see a timeout screen and be unable to view, list, or create subscriptions.
 
-**Cause**: This issue happens when a subscription owner is deleted or isn't synced from the source identity system to the local control plane. When you try to view subscriptions, the process fails because the owner's identity isn't available.
+**Cause**: 
 
-**Mitigation**: If the portal doesn't work, use Azure CLI or REST API to create and list subscriptions. To assign a different owner, use the REST API and enter the `subscriptionOwnerId` parameter when you create the subscription.
+This issue happens when a subscription owner is deleted or isn't synced from the source identity system to the local control plane. When you try to view subscriptions, the process fails because the owner's identity isn't available.
+
+**Mitigation**: 
+
+If the portal doesn't work, use Azure CLI or REST API to create and list subscriptions. To assign a different owner, use the REST API and enter the `subscriptionOwnerId` parameter when you create the subscription.
 
 ### Azure CLI
 
@@ -426,13 +466,17 @@ If you're signed in as an operator, you might see a timeout screen and be unable
 
 When you use the `az cloud` commands, such as `az cloud register`, `az cloud show`, or `az cloud set`, you might encounter issues if you use uppercase letters in the cloud name.
 
-**Mitigation**: Only use lowercase letters for cloud names in `az cloud` subcommands, such as `register`, `show`, or `set`.
+**Mitigation**: 
+
+Only use lowercase letters for cloud names in `az cloud` subcommands, such as `register`, `show`, or `set`.
 
 #### Create subscriptions
 
 Azure CLI doesn't support providing `subscriptionOwnerId` for new subscriptions. This makes the operator the default owner of newly created subscriptions without a way of changing the owner currently.
 
-**Mitigation**: Use `az rest` to create subscriptions with a different owner if required to automate directly with different owner
+**Mitigation**: 
+
+Use `az rest` to create subscriptions with a different owner if required to automate directly with different owner
 
 ### Azure portal
 
@@ -440,7 +484,9 @@ Azure CLI doesn't support providing `subscriptionOwnerId` for new subscriptions.
 
 When you select **Signout**, the request doesn't work.
 
-**Mitigation**: Close your browser, then go to the Portal URL.
+**Mitigation**: 
+
+Close your browser, then go to the Portal URL.
 
 ### Azure Resource Manager
 
