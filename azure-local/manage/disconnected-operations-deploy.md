@@ -80,9 +80,9 @@ Here's a brief overview of the tools and processes you use during the deployment
 1. Use the local Azure portal, Azure PowerShell, or Azure CLI. You don't need physical node access, but you do need Azure RBAC with the **Operator role**.
 
 
-## Deploy disconnected operations (Control plane)
+## Deploy disconnected operations (control plane)
 
-Disconnected operations must be deployed on the first machine (seed node). Make sure you do the following steps every node you will use in your management cluster. See [Prepare Azure Local machines](./disconnected-operations-prepare-azure-local.md#prepare-azure-local-machines).
+Disconnected operations must be deployed on the first machine (seed node). Make sure you complete the following steps on every node in your management cluster. For more information, see [Prepare Azure Local machines](./disconnected-operations-prepare-azure-local.md#prepare-azure-local-machines).
 
 To prepare the first machine for the disconnected operations appliance, follow these steps:
 
@@ -423,7 +423,7 @@ Create a subscription for your Azure Local nodes and the Azure Local instance (c
 
 ## Register required resource providers
 
-Make sure you register the required resource providers before deployment. For more information see [here](/azure-local/includes/hci-registration-azure-prerequisites.md). 
+Make sure you register the required resource providers before deployment. For more information see [Registration](/azure-local/includes/hci-registration-azure-prerequisites.md). 
 
 Here's an example of how to automate the resource providers registration from Azure PowerShell.
 
