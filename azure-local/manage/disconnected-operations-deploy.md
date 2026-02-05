@@ -37,8 +37,8 @@ When deploying Azure Local with disconnected operations, consider the following 
 | Identity                   | [Plan and understand the identity](disconnected-operations-identity.md) |
 | Networking                 | [Plan and understand the networking](disconnected-operations-network.md) |
 | Public key infrastructure  | [Plan and understand the public key infrastructure (PKI)](disconnected-operations-pki.md) |
-| Prepare Azure Local nodes                  | [Prepare Azure Local for disconnected operations](disconnected-operations-prepare-azure-local.md) |
-| Acquire disconnected operations                     | [Acquire disconnected operations for Azure Local](disconnected-operations-acquire.md) |
+| Prepare Azure Local nodes  | [Prepare Azure Local for disconnected operations](disconnected-operations-prepare-azure-local.md) |
+| Acquire disconnected operations | [Acquire disconnected operations for Azure Local](disconnected-operations-acquire.md) |
 
 For more information, see [Azure Local disconnected operations overview](disconnected-operations-overview.md).
 
