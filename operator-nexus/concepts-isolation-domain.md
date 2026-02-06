@@ -6,7 +6,7 @@ ms.author: ssteinbrueck
 ms.reviewer: jdasari
 ms.date: 01/29/2024
 ms.service: azure-operator-nexus
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Isolation Domain Overview

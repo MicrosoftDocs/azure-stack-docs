@@ -3,7 +3,7 @@ title: Azure Stack Hub archived known issues
 description: Learn about archived known issues in Azure Stack Hub releases.
 author: sethmanheim
 ms.topic: article
-ms.date: 03/12/2025
+ms.date: 10/28/2025
 ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 09/09/2020
@@ -20,6 +20,79 @@ To access known issues for a different archived version, use the version selecto
 <!---------------------------------------------------------->
 <!------------------- SUPPORTED VERSIONS ------------------->
 <!---------------------------------------------------------->
+
+::: moniker range="azs-2408"
+<!-- ## Update -->
+
+## Networking
+
+### Outbound ICMP to internet is blocked by default for tenant VM
+
+- Applicable: This issue applies to release 2311 and later.
+- Cause: The issue is caused by a change in the default ICMP behavior introduced with Windows Server 2022 that diverges from previous behavior, as well as Azure behavior.
+- Remediation: You can add an inbound NSG rule to allow outbound ICMP packets to the internet. Microsoft is aware of the issue. 
+- Occurrence: Common.
+
+## Compute
+
+### Azure Kubernetes Service on Azure Stack Hub
+
+- Applicable: This issue applies to release 2311 and later.
+- Cause: Azure Kubernetes Service on Azure Stack Hub, currently in preview, is being discontinued and won't be released to general availability. If you try to register a new subscription to the **Microsoft.Containerservice** resource provider, the registration stays in the **Registering** state. If you try to create a new managed Kubernetes cluster or access existing managed Kubernetes clusters, you might see the raining cloud error screen.
+- Remediation: Microsoft is aware of the issue and is working on a fix.
+- Occurrence: Common.
+
+### A-series VMs deprecated
+
+- Applicable: This issue applies to release 2406 and later.
+- Cause: The A-series VMs are deprecated in Azure, so they shouldn't be used in Azure Stack Hub.
+- Remediation: Although Azure Stack Hub isn't removing the A-series SKU, other undefined behavior might occur if you continue using it (such as with the load balancer, VMSS, etc.). Therefore, you should use a different VM SKU when you're ready. There is no cost difference in using different VM SKUs on Azure Stack Hub.
+- Occurrence: Common.
+
+### ESv3 and DSv3 series don't have nested virtualization enabled
+
+- Applicable: This issue applies to release 2408.
+- Cause: Neither of the [newly introduced ESv3 or DSv3 series](../../user/azure-stack-vm-sizes.md#esv3-series); for example, E20s_v3, has nested virtualization enabled.
+- Remediation: Microsoft is aware of the issue and is working on a fix.
+- Occurrence: Common.
+
+<!-- ## Alerts -->
+
+## Portal
+
+### Deployments blade under subscription fails to load
+
+- Applicable: This issue applies to release 2406 and later.
+- Cause: Due to a change in how subscription-level deployments are stored, an internal server error occurs when deploying or viewing deployments at subscription scope.
+- Remediation: This issue is fixed in release 2501.
+- Occurrence: Common.
+
+### Nodes blade fails to load
+
+- Applicable: This issue applies to release 2311 and later.
+- Cause: The **Nodes** blade on the portal fails to load when a GPU property isn't configured.
+- Remediation: Microsoft is aware of the issue and is working on a fix.
+- Occurrence: Occasional.
+
+<!-- ## Datacenter integration -->
+
+<!-- ## Storage -->
+
+<!-- ## SQL and MySQL-->
+
+<!-- ## App Service -->
+
+<!-- ## Resource providers -->
+
+<!-- ## Usage -->
+
+<!-- ### Identity -->
+
+<!-- ### Marketplace -->
+
+<!-- ## Event Hubs -->
+
+::: moniker-end
 
 ::: moniker range="azs-2406"
 

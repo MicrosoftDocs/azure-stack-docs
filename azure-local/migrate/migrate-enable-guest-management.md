@@ -14,9 +14,9 @@ ms.subservice: hyperconverged
 
 [!INCLUDE [hci-applies-to-2503](../includes/hci-applies-to-2503.md)]
 
-This article describes how to enable guest management after migration for Azure Local virtual machines (VMs) enabled by Arc.
+This article describes how to enable guest management for VMs that have been migrated to Azure Local using [Azure Migrate](../migrate/migration-azure-migrate-overview.md). Enabling guest management allows you to manage in guest OS settings and install and manage Azure extensions on these VMs.
 
-For more information on other scenarios, see [Manage Azure Local VMs](../manage/manage-arc-virtual-machines.md).
+This article is only for VMs that have been migrated using Azure Migrate. For more information on how to enable guest management in other scenarios, see [Manage Azure Local VMs](../manage/manage-arc-virtual-machines.md).
 
 The output properties may vary depending on whether VMs were migrated or not.
 

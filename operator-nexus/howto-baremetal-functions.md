@@ -62,6 +62,22 @@ Use the following guidance to determine which action best fits your situation:
 | BMC credentials need manual rotation                 | Replace            |
 | Firmware reconciliation needed                       | Replace            |
 
+### Quick decision guide
+
+**Start here if you're unsure which action to use:**
+
+1. **Did you physically replace or repair hardware?** → Use [Replace](#replace-a-bare-metal-machine)
+2. **Is the machine unresponsive but hardware is healthy?** → Use [Restart](#restart-a-bare-metal-machine)
+3. **Do you need a clean OS installation without hardware changes?** → Use [Reimage](#reimage-a-bare-metal-machine)
+4. **Do you need to prevent new workloads temporarily?** → Use [Cordon](#make-a-bare-metal-machine-unschedulable-cordon)
+5. **Is the machine powered off and needs to come online?** → Use [Start](#start-a-bare-metal-machine)
+
+**For troubleshooting specific status conditions, see:**
+- [Warning status messages](./troubleshoot-bare-metal-machine-warning.md)
+- [Degraded status](./troubleshoot-bare-metal-machine-degraded.md)
+- [Provisioning failures](./troubleshoot-bare-metal-machine-provisioning.md)
+- [Hardware validation failures](./troubleshoot-hardware-validation-failure.md)
+
 ## Control plane node considerations
 
 Control plane nodes require extra caution when performing lifecycle actions. The platform implements special handling for control plane nodes to maintain cluster quorum and availability:
@@ -343,4 +359,6 @@ Code: None
 Message: Networking test(s) failed: [NIC.Slot.6-1-1_LinkStatus] expected: up; observed: Down; [Additional logs: Link failure detected on NIC.Slot.6-1-1; Unable to perform cabling check on PCI Slot 6]
 ```
 
-For more information about troubleshooting hardware validation failures, see [Troubleshoot Hardware Validation Failure](./troubleshoot-hardware-validation-failure.md).
+For complete hardware validation troubleshooting procedures organized by failure category (System Info, Drive Info, Network Info, Health Info, Boot Info), see [Troubleshoot Hardware Validation Failure](./troubleshoot-hardware-validation-failure.md).
+
+To understand what hardware validation checks and when it runs, see [Hardware Validation Overview](./concepts-hardware-validation-overview.md).

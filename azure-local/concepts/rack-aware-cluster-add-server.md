@@ -1,19 +1,17 @@
 ---
-title: Add or repair a node to a rack aware cluster on Azure Local (Preview)
-description: Learn how to add or repair a node to a rack aware cluster on Azure Local (Preview).
+title: Add or repair a node to a rack aware cluster on Azure Local
+description: Learn how to add or repair a node to a rack aware cluster on Azure Local.
 author: alkohli
 ms.topic: how-to
 ms.date: 10/20/2025
 ms.author: alkohli
 ---
 
-# Add or repair a node to a rack aware cluster (Preview)
+# Add or repair a node to a rack aware cluster
 
 ::: moniker range=">=azloc-2510"
 
 This article explains how to add or repair servers (nodes) for your Azure Local rack aware cluster.
-
-[!INCLUDE [important](../includes/hci-preview.md)]
 
 ## Add a server
 
@@ -48,18 +46,19 @@ To validate that the nodes were added successfully, run the `Get-ClusterFaultDom
 
 Name                    Type      ParentName            ChildrenNames   Location
 ----                    ----      ----------            -------------   --------
-Site <IP address>/24	Site                            {Zone1, Zone2}
-Zone1	                Rack	  Site <IP address>/24	{ASRRR15, ASRRR16, ASRRR17, ASRRR18}	
-Zone2	                Rack	  Site <IP address>/24	{ASRRR25, ASRRR26, ASRRR27, ASRRR28}
-ASRRR15       	        Node	  Zone1
-ASRRR16	                Node	  Zone1
-ASRRR17	                Node	  Zone1
-ASRRR18	                Node	  Zone1
-ASRRR25	                Node	  Zone2
-ASRRR26	                Node	  Zone2
-ASRRR27	                Node	  Zone2
-ASRRR28	                Node	  Zone2
+Site <IP address>/24    Site                            {Zone1, Zone2}
+Zone1                   Rack      Site <IP address>/24  {ASRRR15, ASRRR16, ASRRR17, ASRRR18}
+Zone2                   Rack      Site <IP address>/24  {ASRRR25, ASRRR26, ASRRR27, ASRRR28}
+ASRRR15                 Node      Zone1
+ASRRR16                 Node      Zone1
+ASRRR17                 Node      Zone1
+ASRRR18                 Node      Zone1
+ASRRR25                 Node      Zone2
+ASRRR26                 Node      Zone2
+ASRRR27                 Node      Zone2
+ASRRR28                 Node      Zone2
 ```
+
 You can also see the zone and node information in the Azure portal by going to your Azure Local resource page and under **Infrastructure** selecting **Machines**:
 
 :::image type="content" source="media/rack-aware-cluster-add-server/add-server-portal.png" alt-text="Screenshot in Azure portal showing server added." lightbox="media/rack-aware-cluster-add-server/add-server-portal.png":::

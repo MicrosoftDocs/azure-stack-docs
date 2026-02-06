@@ -251,7 +251,10 @@ This step applies to using a .zip file.
    
 	1. Select the logical network that you created as a [prerequisite](./migrate-hyperv-prerequisites.md#prerequisites-for-hyper-v-vm-migration-to-azure-local-using-azure-migrate-preview). The VMs will be connected to this network. If you don't see a logical network in the dropdown list, [create a logical network](../manage/create-logical-networks.md) and select **Reload logical network**.
 
-	1. Select the storage path that you created as a [prerequisite](./migrate-hyperv-prerequisites.md#prerequisites-for-hyper-v-vm-migration-to-azure-local-using-azure-migrate-preview). The VMs will be created at this storage path. If you don't see a storage path in the dropdown list, [create a storage path](../manage/create-storage-path.md) and select **Reload storage path**.
+	1. Select the storage path that you created as a [prerequisite](./migrate-hyperv-prerequisites.md#prerequisites-for-hyper-v-vm-migration-to-azure-local-using-azure-migrate-preview). The VMs are created at this storage path. Ensure that the storage path has sufficient space to accommodate the VMs being migrated.
+
+        If you don't see a storage path in the dropdown list, [Create a storage path](../manage/create-storage-path.md) and select **Reload storage path**.
+
 
     1. When finished, select **Next**.
     

@@ -1,6 +1,6 @@
 ---
-title: Requirements and supported configurations for rack aware clusters (Preview)
-description: Learn about requirements and supported configurations for rack aware clusters (Preview).
+title: Requirements and supported configurations for rack aware clusters
+description: Learn about requirements and supported configurations for rack aware clusters.
 author: alkohli
 ms.topic: how-to
 ms.date: 10/21/2025
@@ -9,18 +9,16 @@ ms.reviewer: alkohli
 ms.service: azure-local
 ---
 
-# Requirements and supported configurations for rack aware clusters (Preview)
+# Requirements and supported configurations for rack aware clusters
 
 ::: moniker range=">=azloc-2510"
 
 This article provides the requirements and supported configurations for rack aware clusters.
 
-[!INCLUDE [important](../includes/hci-preview.md)]
-
 ## General requirements
 
 | Category | Details |
-|--|--|
+| -- | -- |
 | System requirements | All Azure Local system requirements apply to rack aware clusters. See [System requirements for Azure Local](../concepts/system-requirements-23h2.md). |
 | Drive requirements | Data drives must be all-flash. Either Nonvolatile Memory Express (NVMe) or solid-state drives (SSD) work. |
 | Availability zones | - Supports two local zones with maximum four machines per zone.<br>- The two zones must contain an equal number of machines.<br>- A machine can belong to only one zone. |
@@ -35,7 +33,7 @@ The necessary bandwidth can be calculated based on the cluster size and the netw
 <!--Add link--For detailed networking requirements, see the [network design requirements]().-->
 
 | Machines per zone | NIC speed (Gbps) | Storage ports | Required bandwidth (GbE) |
-|--|--|--|--|
+| -- | -- | -- | -- |
 | 1 | 10 | 2 | 20 GbE |
 | 2 | 10 | 2 | 40 GbE |
 | 3 | 10 | 2 | 60 GbE |
@@ -50,13 +48,14 @@ The necessary bandwidth can be calculated based on the cluster size and the netw
 The following table summarizes the supported configurations with volume resiliency settings:
 
 | Number of machines in two zones | Workload volumes | Volume resiliency | Storage efficiency | Fault tolerance |
-|--|--|--|--|--|
+| -- | -- | -- | -- | -- |
 | 1+1 (2-node cluster) | 2 | Two-way mirror | 50% | Single fault (drive, node, or rack) |
 | 2+2 (4-node) | 4 | Four-way mirror | 25% | Three faults (drive or node). <br> If one rack fails, the remaining can sustain one fault of drive or node. |
 | 3+3 (6-node) | 6 | Four-way mirror | 25% | Three faults (drive or node). <br> If one rack fails, the remaining can sustain one fault of drive or node. |
 | 4+4 (8-node) | 8 | Four-way mirror | 25% | Three faults (drive or node). <br> If one rack fails, the remaining can sustain one fault of drive or node. |
 
 > [!NOTE]
+>
 > - Rack Level Nested Mirror (RLNM) is required for all configurations.
 > - You can’t create 3-way mirror volumes. Only 2-way or 4-way mirror volumes are supported.
 

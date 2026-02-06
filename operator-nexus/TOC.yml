@@ -52,6 +52,8 @@
           href: concepts-disable-border-gateway-protocol-neighbors.md
         - name: Network Packet Broker
           href: concepts-nexus-network-packet-broker.md
+        - name: Network-to-Network Interconnect
+          href: concepts-network-to-network-interconnect.md
         - name: Password Rotation v1
           href: concepts-password-rotation-v1.md
         - name: Route Policy
@@ -277,9 +279,11 @@
         - name: How to perform A / B staged configuration update - commit workflow in Azure Operator Nexus
           href: howto-use-ab-staged-commit-configuration-update-commit-workflow.md
         - name: How to disable internal/external networks in an enabled layer 3 isolation domain
-          href: howto-disable-internal-external-networks-enabled-layer-3-isolation-domain.md    
-        - name: How to Configure Quality of Service (QoS) in Azure Operator Nexus  
-          href: howto-network-fabric-quality-of-service.md    
+          href: howto-disable-internal-external-networks-enabled-layer-3-isolation-domain.md
+        - name: How to Configure Quality of Service (QoS) in Azure Operator Nexus
+          href: howto-network-fabric-quality-of-service.md
+        - name: How to Configure Network TAP Rules with User Assigned Managed Identity (UAMI) in Azure Operator Nexus
+          href: howto-configure-network-tap-rules-with-user-assigned-managed-identity.md
     - name: Cluster
       expanded: false
       items:
@@ -542,10 +546,4 @@
       href: reference-operator-nexus-skus.md
     - name: Password By Key Vault Reference
       href: reference-key-vault-credential.md
-- name: Release Notes
-  items:
-    - name: 2024
-      expanded: false
-      items:
-        - name: 2404.2
-          href: release-notes-2404-2.md
+

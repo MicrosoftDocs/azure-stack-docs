@@ -1,6 +1,6 @@
 ---
-title: Azure Local rack aware cluster room-to-room connectivity (Preview)
-description: Learn about Azure Local rack aware cluster room-to-room connectivity (Preview).
+title: Azure Local rack aware cluster room-to-room connectivity
+description: Learn about Azure Local rack aware cluster room-to-room connectivity.
 author: sipastak
 ms.author: sipastak
 ms.date: 10/22/2025
@@ -8,13 +8,11 @@ ms.service: azure-local
 ms.topic: concept-article
 ---
 
-# Azure Local rack aware cluster room-to-room connectivity (Preview)
+# Azure Local rack aware cluster room-to-room connectivity
 
 ::: moniker range=">=azloc-2510"
 
 Azure Local rack aware clusters require specialized room-to-room connectivity to enable storage replication and failover across availability zones. This article outlines four distinct configuration options (A, B, C, and D) for implementing room-to-room links, each optimized for different resilience, cost, and complexity requirements.
-
-[!INCLUDE [important](../includes/hci-preview.md)]
 
 Review the following key concepts:
 
@@ -92,8 +90,8 @@ interface Ethernet1/52
   no shutdown
 ```
 
-|Parameter/setting |Description  |
-|---------|---------|
+| Parameter/setting | Description |
+| --------- | --------- |
 | `interface Ethernet1/51 and interface Ethernet1/52`| Defines physical Ethernet interfaces Ethernet1/51 and Ethernet1/52. |
 | `switchport mode trunk` | Configures the interfaces to operate in trunk mode. |
 | `switchport trunk native vlan 99` | Specifies VLAN 99 as the native VLAN to black hole traffic. |
@@ -254,8 +252,8 @@ vlan 712
   name Storage_712_TOR2
 ```
 
-|VLAN  |Description |
-|---------|---------|
+| VLAN | Description |
+| --------- | --------- |
 | VLAN 1 | Default VLAN (typically unused in production). |
 | VLAN 2 | Assigned to unused ports for traffic security. |
 | VLAN 7 (Management_7) | Azure Local cluster management traffic. |
@@ -307,19 +305,19 @@ interface port-channel101
 
 **Physical interface configuration (Ethernet1/49, Ethernet1/50):**
 
-|Parameter/setting  | Description  |
-|---------|---------|
+| Parameter/setting | Description |
+| --------- | --------- |
 | `no cdp enable`| Disables CDP to reduce unnecessary protocol overhead. |
-| `channel-group 101 mode active`| Uses LACP for active port-channel negotiation. |
-| `switchport trunk allowed vlan 7-8,711-712`| Carries all necessary VLANs for synchronization. |
+| `channel-group 101 mode active` | Uses LACP for active port-channel negotiation. |
+| `switchport trunk allowed vlan 7-8,711-712` | Carries all necessary VLANs for synchronization. |
 
 **Port-channel configuration:**
 
-|Parameter/setting | Description  |
-|---------|---------|
-| `vpc peer-link`| Designates this port-channel as the vPC peer-link. |
-| `spanning-tree port type network`| Optimizes STP for inter-switch links. |
-| `native VLAN 99`| Uses blackhole VLAN for security (drops untagged traffic). |
+| Parameter/setting | Description |
+| --------- | --------- |
+| `vpc peer-link` | Designates this port-channel as the vPC peer-link. |
+| `spanning-tree port type network` | Optimizes STP for inter-switch links. |
+| `native VLAN 99` | Uses blackhole VLAN for security (drops untagged traffic). |
 
 **Critical requirements:**
 
@@ -389,8 +387,8 @@ interface port-channel701
 
 **Physical interface settings:**
 
-|Parameter/setting |Description  |
-|---------|---------|
+| Parameter/setting | Description |
+| --------- | --------- |
 | `Ethernet1/53` | Connects TOR1 to TOR3 (room 1 to room 2). |
 | `Ethernet1/54` | Connects TOR1 to TOR4 (room 1 to room 2). |
 | `priority-flow-control mode on` | Enables PFC for lossless RDMA traffic. |
@@ -399,8 +397,8 @@ interface port-channel701
 
 **vPC port-channel configuration:**
 
-|Parameter/setting  |Description  |
-|---------|---------|
+| Parameter/setting | Description |
+| --------- | --------- |
 | `vpc 700/701` | Associates port-channels with specific vPC IDs. |
 | `service-policy type qos input AZS_SERVICES` | Applies RDMA QoS policy. |
 | `no-stats` | Reduces CPU overhead by disabling detailed statistics. |
@@ -493,8 +491,8 @@ interface Ethernet1/52
 
 **Physical interface configuration (Ethernet1/51, Ethernet1/52):**
 
-|Parameter/setting  |Description  |
-|---------|---------|
+| Parameter/setting | Description |
+| --------- | --------- |
 | `switchport trunk allowed vlan 711,712` | Both interfaces support both storage VLANs. |
 | `channel-group 700` | Both interfaces bundled into the same port-channel. |
 | `` | . |
@@ -504,8 +502,8 @@ interface Ethernet1/52
 
 **RDMA specific settings:**
 
-|Parameter/setting  |Description  |
-|---------|---------|
+| Parameter/setting | Description |
+| --------- | --------- |
 | `priority-flow-control mode on` | Enables PFC for lossless RDMA traffic on both VLANs. |
 | `service-policy type qos input AZS_SERVICES` | Applies consistent QoS treatment to both storage intents. |
 | `mtu 9216` | Jumbo frame support (required only for iWARP when host nodes support it). |

@@ -1,7 +1,7 @@
 ---
 title: Infrastructure Resiliency for Azure Local
 description: Infrastructure resiliency considerations for Azure Local.
-ms.topic: article
+ms.topic: concept-article
 author: sipastak
 ms.author: sipastak
 ms.date: 09/12/2025

@@ -4,7 +4,7 @@ description: Learn about how to disable Internal/External networks in an enabled
 author: RaghvendraMandawale
 ms.author: rmandawale
 ms.service: azure-operator-nexus
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/16/2025
 ms.custom: template-concept
 ---

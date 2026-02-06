@@ -4,7 +4,7 @@ description: Get an overview of networking in Azure Operator Nexus.
 author: dramasamy
 ms.author: dramasamy
 ms.service: azure-operator-nexus
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 09/17/2025
 ms.custom: template-concept
 ---

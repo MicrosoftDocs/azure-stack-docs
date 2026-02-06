@@ -1,12 +1,12 @@
 ---
-title: Suspend and resume Azure Local, version 23H2 machines for planned maintenance operations
-description: Learn how to suspend and resume machines for planned maintenance operations.
+title: Suspend and resume Azure Local machines for planned maintenance operations
+description: Learn how to suspend and resume Azure Local machines for planned maintenance operations.
 author: ronmiab
 ms.author: robess
 ms.topic: how-to
 ms.custom:
   - devx-track-azurecli
-ms.date: 04/23/2025
+ms.date: 01/22/2026
 ms.subservice: hyperconverged
 ---
 
@@ -14,29 +14,36 @@ ms.subservice: hyperconverged
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
-This article describes how to suspend an Azure Local machine for planned maintenance, such as powering off the machine to replace non-hot-pluggable components. It also provides instructions on how to resume the machine once maintenance is complete. 
+This article describes how to suspend an Azure Local machine (physical host) for planned maintenance, such as powering off the machine to replace non-hot-pluggable components. It also provides instructions on how to resume the machine once maintenance is complete.
+
+## Prerequisites
+
+Before you begin, ensure that you have the following prerequisites in place for both suspending and resuming an Azure Local machine:
+
+1. You have access to Azure Local machines (clustered physical hosts) with local administrator privileges.
+1. Make sure that the machines are running Azure Local version 2311.2 or later.
+1. Make sure that the client used to connect to Azure Local has PowerShell installed on it. You can use various tools for this step, such as Windows Admin Center, Failover Cluster Manager, or PowerShell. We recommend using PowerShell as some steps can only be performed using that tool.
+1. Make sure to suspend or resume the Azure Local machine (cluster node) in Windows Failover Clustering.
 
 ## Suspend a machine
 
-To suspend a machine, first suspend the machine in Windows Failover Clustering. You can use various tools for this step, such as Windows Admin Center, Failover Cluster Manager, or PowerShell. We recommend using PowerShell as some steps can only be performed using that tool.
-
 To suspend a machine, follow these steps:
 
-1. Sign in to one of the machines with a user that has local administrator permissions.
-1. To suspend the machine, run this command:
+1. Sign in to one of the Azure Local machines of your instance as a local administrator.
+1. Run PowerShell as an administrator. To suspend the machine, run this command:
 
     ```powershell
-    Suspend-Clusternode -name “MachineName” -drain
+    Suspend-ClusterNode -Name "<MachineName>" -Drain # Example: "ASRRLS3LRL5U11" 
     ```
 
-    Here's example output:
+    Here's an example output:
 
     ```console
-    PS C:\programdata\wssdagent> Suspend-Clusternode -name ASRRlS3lRl5ull -drain
+    PS C:\programdata\wssdagent> Suspend-ClusterNode -Name ASRRLS3LRL5U11 -Drain
 
     Name               State      Type
     ----               -----      ----
-    ASRRls3lRl5ull     Paused     Node
+    ASRRLS3LRL5U11     Paused     Node
     ```
 
     > [!NOTE]
@@ -45,53 +52,68 @@ To suspend a machine, follow these steps:
 1. Confirm that the machine is successfully suspended.
 
     ```powershell
-    Get-Clusternode
+    Get-ClusterNode
     ```
 
-    Here's example output:
+    Here's an example output:
 
     ```console
-    PS C:\programdata\wssdagent> Get-Clusternode
+    PS C:\programdata\wssdagent> Get-ClusterNode
 
     Name                State        Type
     ----                -----        ----
-    ASRRlS3lRl5u09      Up           Node
-    ASRRlS3lRl5Ull      Paused       Node
+    ASRRLS3LRL5U09      Up           Node
+    ASRRLS3LRL5U11      Paused       Node
     ```
 
-1. To ensure that no new VMs are placed on the node, remove the node from the active Azure Local VM Configuration. **This step can only be done using PowerShell**.
+1. To ensure that no new VMs are placed on the node, remove the node (cluster member) from the active Azure Local VM Configuration using the Azure Local–specific `Remove-MocPhysicalNode` cmdlet. **This step can only be done using PowerShell**.
 
     ```powershell
-    Remove-MocPhysicalNode -nodeName “MachineName”
+    Remove-MocPhysicalNode -NodeName "<MachineName>"
     ```
 
-    Here's example output:
+    Here's an example output:
 
     ```console
-    PS C:\programdata\wssdagent> Remove-MocPhysicalNode -nodename ASRRlS3lRl5Ull
+    PS C:\programdata\wssdagent> Remove-MocPhysicalNode -NodeName ASRRLS3LRL5U11
     ```
+
+1. To confirm the node was removed, run the following command:
+
+    ```powershell
+    Get-MocPhysicalNode
+    ```
+
+    Here's an example output:
+
+    ```console
+    PS C:\programdata\wssdagent> Get-MocPhysicalNode
+
+    NodeName
+    --------
+    ASRRLS3LRL5U09
+    ```
+    The removed node (for example, ASRRLS3LRL5U11) should not appear in the output.
 
 ## Resume a machine
 
-To resume a machine, first resume the machine in Windows Failover Clustering. You can use various tools for this step, such as Windows Admin Center, Failover Cluster Manager, or PowerShell. We recommend using PowerShell as some steps can only be performed using that tool.
-
 To resume a machine, follow these steps:
 
-1. Sign in to one of the machines with a user that has local administrator permissions.
-1. To resume the machine, run this command:
+1. Sign in to one of the Azure Local machines of your instance as a local administrator.
+1. Run PowerShell as an administrator. To resume the machine, run this command:
 
     ```powershell
-    Resume-Clusternode -name “MachineName” 
+    Resume-ClusterNode -Name "<MachineName>" # Example: "ASRRLS3LRL5U11" 
     ```
 
-    Here's example output:
+    Here's an example output:
 
     ```console
-    PS C:\programdata\wssdagent> Resume-Clusternode -name ASRRlS3lRl5ull
+    PS C:\programdata\wssdagent> Resume-ClusterNode -Name ASRRLS3LRL5U11
 
     Name               State      Type
     ----               -----      ----
-    ASRRls3lRl5ull     Up         Node
+    ASRRLS3LRL5U11     Up         Node
     ```
 
     > [!NOTE]
@@ -100,59 +122,77 @@ To resume a machine, follow these steps:
 1. Confirm that the machine is successfully resumed.
 
     ```powershell
-    Get-Clusternode
+    Get-ClusterNode
     ```
 
-    Here's example output:
+    Here's an example output:
 
     ```console
-    PS C:\programdata\wssdagent> Get-Clusternode
+    PS C:\programdata\wssdagent> Get-ClusterNode
 
     Name                State        Type
     ----                -----        ----
-    ASRRlS3lRl5u09      Up           Node
-    ASRRlS3lRl5Ull      Up           Node
+    ASRRLS3LRL5U09      Up           Node
+    ASRRLS3LRL5U11      Up           Node
     ```
 
-1. Add the machine to the active Azure Local VM Configuration. **This step can only be done using PowerShell**.
+
+1. Add the machine (cluster node) to the active Azure Local VM Configuration using the Azure Local–specific `New-MocPhysicalNode` cmdlet. **This step can only be done using PowerShell**.
 
     ```powershell
-    New-MocPhysicalNode -nodeName “MachineName”
+    New-MocPhysicalNode -NodeName "<MachineName>" # Example: "ASRRLS3LRL5U11" 
     ```
 
-    Here's example output:
+    Here's an example output:
 
     ```console
-    PS C:\programdata\wssdagent> New-MocPhysicalNode -nodename ASRRlS3lRl5ull
+    PS C:\programdata\wssdagent> New-MocPhysicalNode -NodeName ASRRLS3LRL5U11
     
     ElementName     : HV Socket Agent Communication
-    PSPath          : Microsoft.PowerShell.Core\Registry::HKEY_LOCAL MACHINE\SOFTWARE\Microsoft\WindowsNT\CurrentVersion\Virtualization\GuestCommunicationServices\00000001-facb-lle6-b
+    PSPath          : Microsoft.PowerShell.Core\Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsNT\CurrentVersion\Virtualization\GuestCommunicationServices\00000001-facb-lle6-b
     d58-64006a7986d3
-    PSParentPath    : Microsoft.PowerShell.Core\Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersions\Virtualization\GuestCommunicationServices
-    PSChildName     : 00000001-facb-lle6-bd58-64006a7986d3
+    PSParentPath    : Microsoft.PowerShell.Core\Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Virtualization\GuestCommunicationServices
+    PSChildName     : 00000001-facb-11e6-bd58-64006a7986d3
     PSDrive         : HKLM
     PSProvider      : Microsoft.PowerShell.Core\Registry
-    PSComputerName  : ASRRlS3lRl5ull
-    RunspaceId      : 05c0eaad-0747-4912-a6e9-el09d975c444
+    PSComputerName  : ASRRLS3LRL5U11
+    RunspaceId      : 05c0eaad-0747-4912-a6e9-e109d975c444
 
     True
     ```
 
+1. To confirm the node was added, run the following command:
+
+    ```powershell
+    Get-MocPhysicalNode
+    ```
+    Here's an example output:
+
+    ```console
+    PS C:\programdata\wssdagent> Get-MocPhysicalNode
+    NodeName
+    --------
+    ASRRLS3LRL5U09                
+    ASRRLS3LRL5U11
+    ```
+
+    The added node (for example, ASRRLS3LRL5U11) should now appear in the output
+
 1. Verify that your storage pool is healthy.
 
     ```powershell
-    Get-Storagepool -friendlyname “SU_Pool1”
+    Get-StoragePool -FriendlyName "<StoragePoolName>" # Example: "SU1_Pool"
     ```
 
-    Here's example output:
+    Here's an example output:
 
     ```console
-    PS C : \programdata\wssdagent> Get-Storagepool -friendlyname "SU1_Pool"
+    PS C:\programdata\wssdagent> Get-StoragePool -FriendlyName "SU1_Pool"
 
-    FriendlyName     Operationalstatus     HealthStatus     IsPrimordial     IsReadOnly     Size     AllocatedSize 
+    FriendlyName     OperationalStatus     HealthStatus     IsPrimordial     IsReadOnly     Size     AllocatedSize 
     ------------     -----------------     ------------     ------------     ----------     ----     -------------
-    SUl_Pool         OK                    Healthy          False            False     131.28 TB           1.8S TB
+    SU1_Pool         OK                    Healthy          False            False     131.28 TB           1.85 TB
     ```
 
     > [!NOTE]
-    > If the pool is not reported as healthy, check the status of the storage repair jobs using the `get-storagejob` command.
+    > If the pool is not reported as healthy, check the status of the storage repair jobs using the `Get-StorageJob` command.
