@@ -481,10 +481,6 @@ East-West traffic has the following characteristics:
 
 To ensure consistent traffic prioritization across Azure Local deployments, QoS policies must align with host configurations that manage storage traffic across the supported switch fabric. This policy applies to both ROCEv2 and iWARP environments and is required for switched Azure Local configurations. Switchless configurations, which don't route storage traffic through a switch, don't require this policy. For details, see [Azure Local - QoS Policy](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/Networking/Top-Of-Rack-Switch/Reference-TOR-QOS-Policy-Configuration.md).
 
-> [!NOTE]
-> This policy applies to both ROCEv2 and iWARP environments and is required for switched Azure Local configurations. Switchless configurations don't require this policy.
-
-
 ## Using switches
 
 North-South traffic requires the use of switches. Besides using an Ethernet switch that supports the required protocols for Azure Local, the most important aspect is the proper sizing of the network fabric.
