@@ -86,7 +86,7 @@ Follow these steps to create Azure Local VMs running disconnected operations.
 
 1. [Review prerequisites](../manage/azure-arc-vm-management-prerequisites.md).
 
-    - [Install the Azure CLI](disconnected-operations-cli.md#install-azure-cli).
+    - [Install the latest supported Azure CLI version](disconnected-operations-cli.md#install-azure-cli).
     - [Install the latest Azure Local extension **stack-hci-vm** version](disconnected-operations-cli.md#extensions-for-azure-cli).
     - [Sign into Azure interactively using the Azure CLI](/cli/azure/authenticate-azure-cli-interactively).
 
