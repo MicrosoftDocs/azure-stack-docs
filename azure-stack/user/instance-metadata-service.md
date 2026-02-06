@@ -85,7 +85,7 @@ Sample response:
                      ],
           "publisher":  "MicrosoftWindowsServer",
           "resourceGroupName":  "IMDS",
-          "resourceId":  "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/IMDS/providers/Microsoft.Compute/virtualMachines/IMDSVALI",
+          "resourceId":  "/subscriptions/a0a0a0a0-bbbb-cccc-dddd-e1e1e1e1e1e1/resourceGroups/IMDS/providers/Microsoft.Compute/virtualMachines/IMDSVALI",
           "securityProfile":  {
                                   "secureBootEnabled":  "",
                                   "virtualTpmEnabled":  ""

@@ -199,7 +199,7 @@ Example `JSON View` output for the Cluster (Operator Nexus) resource:
   "properties": {
     "actionStates": [
       {
-        "correlationId": "b66643b7-2e1d-4a5c-a954-ca0e38368984",
+        "correlationId": "aaaa0000-bb11-2222-33cc-444444dddddd",
         "status": "Completed",
         "actionType": "Microsoft.NetworkCloud/clusters/updateVersion",
         "endTime": "2025-08-01T03:46:13Z",
