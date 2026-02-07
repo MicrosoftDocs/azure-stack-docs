@@ -21,7 +21,7 @@ This article highlights what's new (features and improvements) and critical know
 
 ## Features and improvements in 2601
  - Added support for the Azure Local 2601 ISO and its associated capabilities.
- - Added ZDU capability for Azure Local.
+ - Added Zero Day Update (ZDU) capability for Azure Local.
  - Updated Azure CLI versions and extensions
  - Improved security and bug fixes.
 
