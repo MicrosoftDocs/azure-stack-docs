@@ -1,6 +1,6 @@
 ---
-title: Prepare Azure Local for disconnected deployments (Preview)
-description: Prepare your Azure Local environment for disconnected deployments (preview). Learn how to set up nodes, configure networking, and ensure deployment readiness.
+title: Prepare Azure Local for disconnected deployments 
+description: Prepare your Azure Local environment for disconnected deployments. Learn how to set up nodes, configure networking, and ensure deployment readiness.
 ms.topic: how-to
 author: haraldfianbakken
 ms.author: hafianba
@@ -9,11 +9,11 @@ ms.reviewer: robess
 ai-usage: ai-assisted
 ---
 
-# Prepare Azure Local for disconnected deployments (preview)
+# Prepare Azure Local for disconnected deployments
 
 ::: moniker range=">=azloc-2601"
 
-This article explains how to deploy an Azure Local node for disconnected operations. Prepare your environment to ensure a successful setup of your Azure Local instance. Complete this deployment before setting up your Azure Local instance.
+This article explains how to deploy an Azure Local node for deployment in disconnected environments. Prepare your environment to ensure a successful setup of your Azure Local instance using a local control plane. Complete these steps before setting up any Azure Local instance (s) in your disconnected environment.
 
 [!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
 
@@ -117,14 +117,30 @@ Prepare your Azure Local machines for disconnected operations by completing thes
 
 1. [Setup Azure CLI on each node](../manage/disconnected-operations-cli.md). Ensure it works on each node before you deploy an Azure Local instance. Otherwise, the deployment fails.
 
-1. Find the first machine from the list of node names and specify it as the `seednode` you want to use in the cluster.
+1. Find the first machine from the list of node names and specify it as the `seednode` you want to use in the cluster. If you are deploying the disconnected operations control plane - you will need to do this from the seednode.
 
     ```powershell
     $seednode = @('azlocal-1', 'azlocal-2','azlocal-3')|Sort|select –first 1
     $seednode
     ```
 
-    ::: moniker-end
+### Time synchronization in fully disconnected (air-gapped) environments 
+
+If your deployment does not allow any internet outbound traffic (fully air-gapped) -  follow these actions on each Azure Local node - as you will require to have a local timeserver for your nodes to synchronize time.
+
+On each node: 
+1. Configure the timeserver to use your domain controller. Modify the script and run it from PowerShell:
+
+  ```powershell
+  w32tm /config /manualpeerlist:"dc.contoso.com" /syncfromflags:manual /reliable:yes /update
+  net stop w32time
+  net start w32time
+  w32tm /resync /rediscover
+  # Check your NTP settings
+  w32tm /query /peers
+  ```
+
+::: moniker-end
 
 ::: moniker range="<=azloc-2512"
 

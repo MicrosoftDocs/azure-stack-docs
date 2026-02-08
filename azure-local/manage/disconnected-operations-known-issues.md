@@ -17,7 +17,11 @@ ms.subservice: hyperconverged
 This article highlights what's new (features and improvements) and critical known issues with workarounds for disconnected operations in Azure Local. These release notes update continuously. We add critical issues and workarounds as they're identified. Review this information before you deploy disconnected operations with Azure Local.
 
 [!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
-
+## Features and improvements in 2602
+ - This release marks the General Availability of disconnected operations for Azure Local 
+ - Added support for the Azure Local 2602 ISO and its associated capabilities.
+ - Several bug fixes for deployment stability and usability.
+ - Improved security and bug fixes.
 
 ## Features and improvements in 2601
  - Added support for the Azure Local 2601 ISO and its associated capabilities.

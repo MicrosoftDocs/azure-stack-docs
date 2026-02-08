@@ -14,7 +14,7 @@ ms.subservice: hyperconverged
 
 ::: moniker range=">=azloc-2506"
 
-This article explains how to set up disconnected operations for Azure Local. Learn how to create a virtual appliance resource in the Azure portal, download installation files, and get support from Microsoft for your deployment.
+This article explains how to acquire disconnected operations for Azure Local. Learn how to create a virtual appliance resource in the Azure portal, download installation files, and get support from Microsoft for your deployment.
 
 [!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
 
@@ -54,7 +54,11 @@ To create a virtual appliance and download the required files for your on-premis
     | **Resource group**  | The resource group where you want to place the resource.                 |  
     | **Virtual appliance name** | The name to identify your disconnected operations appliance. For example, *no-site-1*. |  
     | **Region**          | The Azure region where you want to place the metadata. There's no metadata from the on-premises installation itself. This region is used for billing and support purposes. |  
-    | **Outbound connectivity** | Select how you intend to deploy your disconnected operations appliance: <br></br> **Option 1: Limited connectivity** </br> Use this option if you want the appliance to be connected to Azure. This option: <br></br> - Simplifies management and supportability, should you require it. <br></br> - Only requires that the appliance is able to connect. <br></br> - Allows Azure Local instances to use the local control plane provided by the appliance. <br></br> **Option 2: Air-gapped** </br></br> Use this option if you have no way of connecting to Azure. This option: <br></br> - Works air-gapped. <br></br> - Allows you to transfer necessary files in and out of the environment so you can get updates and send logs, if necessary. |
+    | **Outbound connectivity** | Select how you intend to deploy your disconnected operations appliance: <br></br> **Option 1: Limited connectivity** </br> Use this option if you want the appliance to be connected to Azure. This option: <br></br> - Simplifies management and supportability, should you require it. <br></br> - In this mode - you optionally connect the control plane appliance for ease of management (to e.g. get support, simplify update of appliance). <br></br> - All Azure Local (node) traffic and Arc agentry stays local on your network <br></br>  **Option 2: Air-gapped** </br></br> Use this option if you have no way or desire of connecting the appliance to Azure. <br></br> - In this mode - you will always have to do 2-way approach to import/export data (such as logs for support and updates) in and out of your Datacenter when required. |
+    | **Pricing model**          |**2 month free trial** - Limited 2-month free trial. Please note that you will not be able to create additioal trials once you have created an instance of disconnected operations<br></br>**Capacity - Annual term** - Capacity based pricing is based on total Azure Local physical cores that you will manage with disconnected operations. You will be charged monthly during the annual term once you create this resource. |  
+    | **Cores**          | Number of Azure Local physical cores you plan on deploying and managing disconnected |  
+**Important:**
+    Both modes will enable you to operate the control plane and surrounding Azure Local nodes fully disconnected. 
 
     :::image type="content" source="media/disconnected-operations/set-up/basics-page.png" alt-text="Screenshot of the Basics page and required fields to create a virtual appliance." lightbox="media/disconnected-operations/set-up/basics-page.png":::
 

@@ -44,6 +44,9 @@ Follow these steps to create and export the registration file:
 
 1. Copy this file to a machine that you can use to connect to the internet.
 
+> [!NOTE]
+> Certain customers have compliance or regulations preventing them from copying out any  information from their air-gapped deployments. If you are prevented to copy out the registration file to complete the registration please work with your Microsoft representatives to get your appliance registered to ensure compliance. 
+
 ## Complete the registration
 
 To finalize the registration process for disconnected operations, follow these steps in the Azure portal.
@@ -54,6 +57,8 @@ To finalize the registration process for disconnected operations, follow these s
 1. Select the **Register** button, and then upload the registration file.
 1. Confirm the registration details and select **Register**.
 1. After the operation completes, the **Registration status** changes to **Registered**.
+
+
 
 ::: moniker-end
 

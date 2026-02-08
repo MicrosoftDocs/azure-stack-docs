@@ -97,7 +97,7 @@ Get-ApplianceUpdateHistory
 
 ## Update Azure Local (disconnected)
 
-During this preview release, use the following PowerShell script to patch and update each Azure Local node in a disconnected environment.
+Use the following PowerShell script to patch and update each Azure Local node in a disconnected environment.
 
 ```powershell
 $applianceFQDN = 'autonomous.cloud.private'

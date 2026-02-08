@@ -9,11 +9,11 @@ ai-usage: ai-assisted
 ms.subservice: hyperconverged
 ---
 
-# Disconnected operations for Azure Local (preview)
+# Disconnected operations for Azure Local 
 
 ::: moniker range=">=azloc-2506"
 
-This article explains disconnected operations and how you can use it to deploy and manage your Azure Local instances. Learn how this capability supports compliance, security, and remote deployments.
+This article explains disconnected operations and how you can use it to deploy and manage Azure Local instances to build your own sovereign private cloud. Learn how this capability supports compliance, security, and remote deployments.
 
 [!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
 
@@ -28,8 +28,7 @@ For more information, see technical prerequisites and hardware in the [Preview p
 ## Why use disconnected operations?
 
 Here are some scenarios for running Azure Local with disconnected operations:
-
-- **Data sovereignty and compliance**: In sectors like government, healthcare, and finance, you must meet data residency or compliance requirements. When you run disconnected, data and control remain within your organization's boundaries.
+- **Sovereign requirements and compliance**: In sectors like government, healthcare, and finance, you have data residency and sovereign requirements - that is hard to meet using public sovereign cloud controls. When you run disconnected, data, operations and control remain within your organization's boundaries. 
 
 - **Remote or isolated locations**: In areas with limited network infrastructure, like remote or protected regions, disconnected operations lets you use Azure Arc services and run workloads without relying on internet connectivity. For example, oil rigs and manufacturing sites.
 
@@ -47,24 +46,24 @@ Disconnected operations for Azure Local support the following services:
 | Managed identity                  | Use **system-assigned** managed identity for resource types that support managed identity. |
 | Arc-enabled servers               | Manage VM guests for Azure Local VMs. |
 | Azure Local VMs           | Set up and manage Windows or Linux virtual machines by using the disconnected operations feature for Azure Local. |
-| Arc-enabled Kubernetes clusters   | Connect and manage Cloud Native Computing Foundation (CNCF) Kubernetes clusters deployed on Azure Local VMs, enabling unified configuration and management. |
-| Azure Kubernetes Service (AKS) enabled by Arc for Azure Local | Set up and manage AKS on Azure Local. |
+| Arc-enabled Kubernetes clusters  (Preview) | Connect and manage Cloud Native Computing Foundation (CNCF) Kubernetes clusters deployed on Azure Local VMs, enabling unified configuration and management. |
+| Azure Kubernetes Service (AKS) enabled by Arc for Azure Local (Preview) | Set up and manage AKS on Azure Local. |
 | Azure Local device management     | Create and manage Azure Local instances including the ability to add and remove nodes. |
 | Azure Container Registry          | Create and manage container registries to store and retrieve container images and artifacts. |
 | Azure Key Vault                   | Create and manage key vaults to store and access secrets. |
-| Azure Policy                      | Enforce standards through policies when creating new resources. |
+| Azure Policy                      | Enforce standards and governance through policies when creating new resources. |
 
-## Preview participation criteria
+## Eligability criteria
 
-To participate in the preview, you must meet the following criteria:
+To be eligble to procure disconnected operations, you must meet the following criteria:
 
-- **Enterprise agreement**: A current enterprise agreement with Microsoft, typically covering a period of at least three years.
+- **Microsoft Customer Agreement for Enterprises (MCA-E)**: A Microsoft Customer agreement with Microsoft (for enterprises).
 
-- **Business needs to operate disconnected**: Disconnected operations are for organizations that can't connect to Azure because of connectivity issues or regulatory restrictions. To join the preview, show a valid business need for running disconnected. For more information, see [Why use disconnected operations?](./disconnected-operations-overview.md#why-use-disconnected-operations)
+- **Business needs to operate disconnected**: Disconnected operations are for organizations that can't connect to Azure because of connectivity issues or regulatory restrictions. To be able to procure disconnected operations - you need a valid business need for running and operating disconnected. For more information, see [Why use disconnected operations?](./disconnected-operations-overview.md#why-use-disconnected-operations)
 
-- **Technical prerequisites**: Your organization must meet the technical requirements to ensure secure and reliable operation when running disconnected for Azure Local. For more information, see [System requirements](../concepts/system-requirements-23h2.md).
+- **Operational and technical prerequisites**: Your organization must have staff that can deploy and operator disconnected operations or working with a preferred partner to deploy and operate disconnected operations on your behalf. You have identified workloads and application requirements for what will be deployed and operated disconnected.
 
-- **Hardware**: The disconnected operations feature is supported on validated Azure Local hardware during preview. You must bring your own validated Azure Local hardware. For a list of supported configurations, see the [Azure Local solutions catalog](https://azurestackhcisolutions.azure.microsoft.com/#/catalog).
+- **Hardware**: The disconnected operations feature is supported on premier Azure Local hardware. You must bring your own Azure Local hardware. For a list of supported configurations, see the [Azure Local solutions catalog](https://azurestackhcisolutions.azure.microsoft.com/#/catalog).
 
   Plan enough capacity for the management cluster to host the disconnected operations appliance VM. Make sure to include capacity for core Azure Local infrastructure components and any workloads you plan to run on the management cluster. Review the minimum specifications for setting up a management cluster with the disconnected operations appliance:
 
@@ -84,7 +83,7 @@ To participate in the preview, you must meet the following criteria:
 
 ## Get started
 
-To access the preview, complete this [form](https://aka.ms/az-local-disconnected-operations-prequalify) and wait for approval. You get notified of your status (approved, rejected, queued, or need more information) within 10 business days. If you're approved, you receive instructions on how to get, download, and operate disconnected for Azure Local.
+To get access, you are required to work with your account team to understand the terms and agreements of the product. The account team or you can then complete this [form](https://aka.ms/az-local-disconnected-operations-prequalify) and wait for approval. You will get notified of your status (approved, rejected, queued, or need more information) within 10 business days. If you're approved, you receive instructions for how you will get access.
 
 ## Deployment and management flow
 
@@ -100,7 +99,7 @@ Here's the flow to deploy and manage Azure Local with disconnected operations:
 | Review [Security controls for disconnected operations](disconnected-operations-security.md). | Understand and configure security controls. |
 | Review [Public key infrastructure (PKI) integration for disconnected operations](disconnected-operations-pki.md). | Configure PKI and secure the endpoints. |
 | **Deploy** |       |
-| Review [Set up disconnected operations](disconnected-operations-acquire.md). | Make sure you have the access and permissions you need to set up disconnected operations. |
+| Review [Acquire disconnected operations](disconnected-operations-acquire.md). | Make sure you have the access and permissions you need to set up disconnected operations. |
 | Review [Deploy Azure Local with disconnected operations](disconnected-operations-deploy.md). | Deploy Azure Local with disconnected operations. |
 | **Manage** |       |
 | Review [Azure CLI for disconnected operations](disconnected-operations-cli.md). | Use the CLI to manage Azure Local with disconnected operations. |

@@ -1,6 +1,6 @@
 ---
-title: Deploy Disconnected Operations for Azure Local (preview)
-description: Learn how to deploy disconnected operations for Azure Local in your datacenter (preview).
+title: Deploy Disconnected Operations for Azure Local 
+description: Learn how to deploy disconnected operations for Azure Local in your datacenter 
 ms.topic: how-to
 author: ronmiab
 ms.author: robess
@@ -9,21 +9,21 @@ ms.reviewer: haraldfianbakken
 ai-usage: ai-assisted
 ---
 
-# Deploy disconnected operations for Azure Local (preview)
+# Deploy disconnected operations for Azure Local and the management cluster
 
 ::: moniker range=">=azloc-2506"
 
-This article explains how to deploy disconnected operations for Azure Local in your datacenter. You learn how to determine the Azure Local topology, prepare the first machine, install the appliance, and create the Azure Local instance for improved resilience and control.
+This article explains how to deploy disconnected operations for Azure Local in your datacenter. This step is key to how you will deploy and operate Azure Local without any outbound connection from your network. Once you have deployed the control plane you will deploy your first Azure Local instance. This instance, where the control plane is deployed on, is referered to as the management cluster. 
 
 [!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
 
 ## Key considerations
 
-When deploying Azure Local with disconnected operations, consider the following key points:
+When deploying disconnected operations and creating your management instance, consider the following key points:
 
 - The network configuration and names you enter in the portal should be consistent with your setup and the previously created switches.
 - Virtual deployments aren't supported. You must have physical machines.
-- You need at least three machines to support disconnected operations. You can use up to eight machines.
+- You need at least three machines to support disconnected operations. You can use up to 16 machines for the management instance.
 - The deployment of the Azure Local cluster can take several hours.
 - The local control plane can experience periods of downtime during node reboots and updates.
 - During the creation of the cluster, the process creates a thinly provisioned 2-TB infrastructure volume for disconnected operations. Don't tamper with or delete the infrastructure volumes created during the deployment process.
