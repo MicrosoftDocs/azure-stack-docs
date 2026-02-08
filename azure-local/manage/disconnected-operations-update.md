@@ -13,22 +13,22 @@ ai-usage: ai-assisted
 
 ::: moniker range=">=azloc-2511"
 
-This article explains how to get updates for disconnected operations and how to apply an update for the disconnected operations appliance.
+This article explains how to update disconnected operations on Azure Local (preview) and apply updates to the appliance to ensure optimal performance.
 
 [!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
 
 ## Get updates
 
-To get updates for disconnected operations, follow these steps:
+Keep your disconnected operations appliance up to date. Follow these steps to download and apply the latest updates.
 
-1. From The Azure portal, navigate to your disconnected operations appliance.
+1. From the Azure portal, navigate to your disconnected operations appliance.
 1. Select **Updates** and then select the latest version.
 1. Select **Download** and wait for the download to complete.
 1. Copy the update file to a staging folder on the first machine (seed node), such as `C:\AzureLocalDisconnectedOperations`.
 
 ## Load the OperationsModule
 
-To load the OperationsModule on the seed node, run the following command.
+To prepare the seed node for managing disconnected operations, load the OperationsModule by running the following command.
 
 ```powershell
 $applianceConfigBasePath = 'C:\AzureLocalDisconnectedOperations'
@@ -67,13 +67,16 @@ Get-ApplianceBitlockerRecoveryKeys -DisconnectedOperationsClientContext $context
 
 ## Create appliance snapshot
 
-To roll back quickly in worst case scenarios, we recommend you create a virtual machine (VM) snapshot.
+To roll back quickly in worst case scenarios, create a virtual machine (VM) snapshot.
 
 ```powershell
 Checkpoint-VM -Name "IRVM01" -SnapshotName "BeforeUpdate"
 ```
 
 ## Trigger an update
+
+> [!CAUTION]  
+> Make sure your LDAP credentials are still valid and didn't expire before you trigger the update. You can verify your LDAP settings by using the cmdlet `Test-ApplianceExternalIdentityConfigurationDeep` provided in the OperationsModule. If the LDAP credentials expired, update and rollback fail and you need to revert back to snapshot.
 
 On the seed node, in the same session as the preceding section, run the following command to trigger an update.
 
@@ -86,7 +89,7 @@ Start-ApplianceUpdate -TargetVersion $updatePackageResult.UpdatePackageVersion -
 
 ## Get update history
 
-On the seed node, in the same session as the preceding section, run the following command to view update history.
+On the seed node, in the same session as the preceding section, run the following command to view the update history.
 
 ```powershell
 Get-ApplianceUpdateHistory 
@@ -120,8 +123,8 @@ $plans | Sort-Object -Property LastModifiedDateTime -Descending | ft InstanceID,
 #>
 
 # Host the OEM SBE manifest and overwrite location 
-$OEM = 'HPE'
-$SolutionVersion = '12.2512.1002.10'
+$OEM = 'Replaceme'
+
 $client = New-SolutionUpdateClient
 $client.SetDynamicConfigurationValue("AutomaticOemUpdateUri", "https://edgeartifacts.blob.$($applianceFQDN)/clouddeployment/SBE_Discovery_$($OEM)$.xml").Wait()
 $client.SetDynamicConfigurationValue("AutomaticUpdateUri", "https://fakehost").Wait()
@@ -136,9 +139,12 @@ Get-SolutionUpdateEnvironment
 Add-SolutionUpdate -SourceFolder C:\ClusterStorage\Infrastructure_1\Shares\SU1_Infrastructure_1\import\Solution
 # Wait for this to return to make sure the update is ready
 Get-SolutionUpdate
+$SolutionVersion = 'Replaceme' # Use output from previous to find the latest supported for ALDO
 # Run the update
 Get-SolutionUpdate -Id "redmond/Solution$($solutionVersion)" | Start-SolutionUpdate
 
+# Run these to monitor
+$actionPlanInstanecId = 'ReplaceMe' # Copy output from previous step
 Start-MonitoringActionplanInstanceToComplete -EceClient $eceClient -actionPlanInstanceID $actionPlanInstanceID
 ```
 
@@ -148,4 +154,3 @@ Start-MonitoringActionplanInstanceToComplete -EceClient $eceClient -actionPlanIn
 
 This feature is available only in Azure Local 2511 and newer.
 ::: moniker-end
-
