@@ -208,26 +208,25 @@ Depending on your OS and available tools, you might need to adjust the script ac
 ```bash
 #!/bin/bash
 # Generate RSA 2048-bit PKCS#1 keys for Azure Arc agent enrollment.
-# Output: base64(PKCS#1 DER) matching Go's x509.MarshalPKCS1{Private,Public}Key()
+# Output: base64(PKCS#1 DER)
 #
 # Target Platforms:
 #   - Azure Linux 3 (OpenSSL 3.x)
 #   - Ubuntu 24.04 LTS+ (OpenSSL 3.x)
 #
 # Why use the -traditional flag?
-#   OpenSSL 3.x defaults to PKCS#8 format for private key output. The Azure Arc
-#   agent's Go code uses x509.ParsePKCS1PrivateKey() which requires PKCS#1 DER
-#   format. Without -traditional, you get "asn1: structure error" when the agent
-#   attempts to parse the key.
+#   OpenSSL 3.x defaults to PKCS#8 format for private key output.
+#   The key pairs must be in PKCS#1 DER format to properly Arc enroll.
+#   Without -traditional, you get "asn1: structure error" when the agent attempts to parse the key.
 #
 # Why use openssl base64 instead of coreutils base64?
 #   GNU coreutils base64 requires -w0 to disable line wrapping, but this flag
-#   is not portable (e.g., BSD/macOS base64 lacks it). Using openssl base64 -A
-#   provides consistent single-line output across all platforms.
+#   is not portable.
+#   Using openssl base64 -A provides consistent single-line output across all platforms.
 #
 # Security Notes:
-#   * umask 077 ensures the private key PEM file is not group/world readable.
-#   * Keys exist only in a mktemp-created directory, removed on exit.
+#   - umask 077 ensures the private key PEM file is not group/world readable.
+#   - Keys exist only in a mktemp-created directory, removed on exit.
 set -euo pipefail
 umask 077
 
