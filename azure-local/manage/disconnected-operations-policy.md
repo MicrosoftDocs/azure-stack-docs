@@ -114,7 +114,7 @@ The following table summarizes the built-in policies supported for Azure Local d
 
 ## Unsupported features
 
-In this preview, the compliance dashboard, remediation actions, and policy exemptions aren't supported.
+Compliance dashboard, remediation actions, and policy exemptions aren't supported in this release.
 
 ::: moniker-end
 
