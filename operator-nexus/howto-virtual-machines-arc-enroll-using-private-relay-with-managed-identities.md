@@ -239,8 +239,7 @@ private_pem="${tmpdir}/private.pem"
 trap 'rm -rf "${tmpdir}"' EXIT
 
 # Generate RSA 2048-bit key (OpenSSL 3.x writes PKCS#8 PEM by default)
-openssl genpkey -algorithm RSA -pkeyopt rsa_keygen_bits:2048 \
-  -out "${private_pem}" 2>/dev/null
+openssl genpkey -algorithm RSA -pkeyopt rsa_keygen_bits:2048 -out "${private_pem}" 2>/dev/null
 
 # Private key: PKCS#1 DER → base64 (matches x509.ParsePKCS1PrivateKey)
 PRIVATE_B64="$(openssl pkey -in "${private_pem}" -traditional -outform DER | openssl base64 -A)"
