@@ -382,13 +382,13 @@ Send-DiagnosticData —SupplementaryLogs <string> —NoLogCollection [—ShareCr
 Use `—NoLogCollection` with the mandatory `SupplementaryLogs` parameter:
 
 ```powershell
-Send-DiagnosticData —NoLogCollection —SupplementaryPath <output path>
+Send-DiagnosticData —NoLogCollection —SupplementaryLogs <output path>
 ```
 
 Use `—NoLogCollection` with unmapped share path:
 
 ```powershell
-Send-DiagnosticData —NoLogCollection —SupplementaryPath <share path>
+Send-DiagnosticData —NoLogCollection —SupplementaryLogs <share path>
 —ShareCredential <credential to share path>
 ```
 
@@ -510,7 +510,7 @@ Send-DiagnosticData —ToSMBShare —SharePath <share path> —ShareCredential <
 
 **Extension version**
 
-Initially accessible across all versions, however, this parameter will eventually be limited to Versions 0.1.42 and earlier.
+Currently supported in versions up to 0.1.42; deprecated in later versions.
 
 ### (Plan to deprecate) FromSMBShare
 
@@ -534,7 +534,7 @@ Send-DiagnosticData —FromSMBShare —SharePath <share path>
 
 **Extension version**
 
-Initially accessible across all versions, however, this parameter will eventually be limited to Versions 0.1.42 and earlier.
+Currently supported in versions up to 0.1.42; deprecated in later versions
 
 ### (Plan to deprecate) SharePath
 
@@ -575,7 +575,7 @@ Send-DiagnosticData —FromSMBShare —SharePath <share path>
 
 **Extension version**
 
-Initially accessible across all versions, however, this parameter will eventually be limited to Versions 0.1.42 and earlier.
+Currently supported in versions up to 0.1.42; deprecated in later versions.
 
 ### Roles available for filtering logs
 
