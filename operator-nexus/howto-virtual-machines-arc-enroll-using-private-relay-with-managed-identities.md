@@ -207,63 +207,52 @@ Depending on your OS and available tools, you might need to adjust the script ac
 
 ```bash
 #!/bin/bash
-# Minimal keymaker script: generate RSA 2048-bit PKCS#1 keys, output export commands.
-# Matches Go implementation semantics (PKCS#1 DER -> base64) for both private and public.
+# Generate RSA 2048-bit PKCS#1 keys for Azure Arc agent enrollment.
+# Output: base64(PKCS#1 DER) matching Go's x509.MarshalPKCS1{Private,Public}Key()
 #
-# Compatibility / Support Matrix:
-#   Ubuntu 20.04 LTS  (bash 5.0.x, OpenSSL 1.1.1f, coreutils base64 -w supported)
-#   Ubuntu 22.04 LTS  (bash 5.1.x, OpenSSL 3.0.x)
-#   Ubuntu 24.04 LTS  (bash 5.2.x, OpenSSL 3.0.x / 3.2.x)
+# Target Platforms:
+#   - Azure Linux 3 (OpenSSL 3.x)
+#   - Ubuntu 24.04 LTS+ (OpenSSL 3.x)
 #
-# Runtime Requirements:
-#   - bash >= 4.0 (uses "set -euo pipefail"; associative arrays not used)
-#   - openssl providing: genrsa, rsa (PKCS#1 output + -RSAPublicKey_out)
-#   - GNU coreutils base64 supporting the -w (wrap) option
+# Why use the -traditional flag?
+#   OpenSSL 3.x defaults to PKCS#8 format for private key output. The Azure Arc
+#   agent's Go code uses x509.ParsePKCS1PrivateKey() which requires PKCS#1 DER
+#   format. Without -traditional, you get "asn1: structure error" when the agent
+#   attempts to parse the key.
 #
-# Portability Notes:
-#   * If base64 lacks -w / --wrap (e.g. macOS BSD base64), replace: base64 -w0
-#       with: base64 | tr -d '\n'
-#   * If OpenSSL deprecates genrsa in future, substitute:
-#       openssl genpkey -algorithm RSA -pkeyopt rsa_keygen_bits:2048
-#     (then adjust the "-in" file path accordingly).
-#   * Script streams DER directly; no intermediate .der files persisted unless the
-#     commented tee examples are enabled.
+# Why use openssl base64 instead of coreutils base64?
+#   GNU coreutils base64 requires -w0 to disable line wrapping, but this flag
+#   is not portable (e.g., BSD/macOS base64 lacks it). Using openssl base64 -A
+#   provides consistent single-line output across all platforms.
 #
 # Security Notes:
-#   * umask 077 ensures private key PEM is not group/world readable.
-#   * Keys exist only in a mktemp-created directory removed on normal exit.
-#   * Consider adding shredding if threat model includes forensic disk recovery.
+#   * umask 077 ensures the private key PEM file is not group/world readable.
+#   * Keys exist only in a mktemp-created directory, removed on exit.
 set -euo pipefail
 umask 077
 
-tmpdir=$(mktemp -d -t keymaker.XXXXXX)
-private_pem="$tmpdir/private-key.pem"
+tmpdir="$(mktemp -d -t azcmkeys.XXXXXX)"
+private_pem="${tmpdir}/private.pem"
 
-# Immediate cleanup on exit (normal or error)
-# You may comment out this line in order to keep the original files for debugging purposes.
-trap 'rm -rf "$tmpdir"' EXIT
+# Cleanup temp directory on exit (normal or error)
+# Comment out this line to keep files for debugging purposes.
+trap 'rm -rf "${tmpdir}"' EXIT
 
-# Generate private key (PEM PKCS#1)
-openssl genrsa -out "$private_pem" 2048 >/dev/null 2>&1
+# Generate RSA 2048-bit key (OpenSSL 3.x writes PKCS#8 PEM by default)
+openssl genpkey -algorithm RSA -pkeyopt rsa_keygen_bits:2048 \
+  -out "${private_pem}" 2>/dev/null
 
-# Private key DER (PKCS#1) streamed directly to base64 (no intermediate file)
-PRIVATE_B64=$(openssl rsa -in "$private_pem" -outform DER 2>/dev/null | base64 -w0)
+# Private key: PKCS#1 DER → base64 (matches x509.ParsePKCS1PrivateKey)
+PRIVATE_B64="$(openssl pkey -in "${private_pem}" -traditional -outform DER | openssl base64 -A)"
 
-# Public key DER (PKCS#1 RSAPublicKey, not SPKI) streamed directly to base64
-PUBLIC_B64=$(openssl rsa -in "$private_pem" -RSAPublicKey_out -outform DER 2>/dev/null | base64 -w0)
-
-# If you want to persist DER files for debugging, uncomment these:
-# PRIVATE_DER="$tmpdir/private-key.der"
-# PUBLIC_DER="$tmpdir/public-key.der"
-# If you prefer to also save the DER files, use this alternative instead:
-# openssl rsa -in "$private_pem" -outform DER 2>/dev/null | tee "$PRIVATE_DER" | base64 -w0
-# openssl rsa -in "$private_pem" -RSAPublicKey_out -outform DER 2>/dev/null | tee "$PUBLIC_DER" | base64 -w0
+# Public key: PKCS#1 RSAPublicKey DER → base64 (matches x509.MarshalPKCS1PublicKey)
+# Note: -RSAPublicKey_out outputs PKCS#1 format, not SubjectPublicKeyInfo (SPKI)
+PUBLIC_B64="$(openssl rsa -in "${private_pem}" -RSAPublicKey_out -outform DER 2>/dev/null | openssl base64 -A)"
 
 # Output export commands
-echo "export commands for environment variables, please add these environment variables to your session:"
+echo "Export these environment variables to your session:"
 printf 'export PRIVATE_B64="%s"\n' "$PRIVATE_B64"
 printf 'export PUBLIC_B64="%s"\n' "$PUBLIC_B64"
-exit 0
 ```
 
 Define the `ARC_MACHINE_ID` variable with the resource ID for the Azure Arc machine resource that you create in your `SUBSCRIPTION` and `RESOURCE_GROUP`.
