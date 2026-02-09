@@ -21,6 +21,9 @@ This article explains how to register disconnected operations for Azure Local af
 
 To register disconnected operations for Azure Local, you first need to generate a registration file from your management cluster. This file contains the necessary data to complete the registration process. 
 
+> [!NOTE]
+> Certain customers have compliance or regulations preventing them from copying out any  information from their air-gapped deployments. **If you are prevented to copy out the registration file to complete the registration** please work with your Microsoft representatives to get your appliance registered to ensure compliance. 
+
 Follow these steps to create and export the registration file:
 
 1. On your management cluster, sign in to the seed node with local administrator credentials.
@@ -44,8 +47,6 @@ Follow these steps to create and export the registration file:
 
 1. Copy this file to a machine that you can use to connect to the internet.
 
-> [!NOTE]
-> Certain customers have compliance or regulations preventing them from copying out any  information from their air-gapped deployments. If you are prevented to copy out the registration file to complete the registration please work with your Microsoft representatives to get your appliance registered to ensure compliance. 
 
 ## Complete the registration
 
