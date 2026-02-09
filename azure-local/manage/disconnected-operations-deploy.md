@@ -427,6 +427,8 @@ Before you register and manage Azure Local resources, ensure your environment is
 
 [!INCLUDE [Registration](../includes/hci-registration-azure-prerequisites.md)]. 
 
+### Automate registration
+
 Here's an example of how to automate the resource providers registration from Azure PowerShell.
 
 ```powershell
@@ -457,16 +459,19 @@ Register-AzResourceProvider -ProviderNamespace "Microsoft.HybridContainerService
 # Register-AzResourceProvider -ProviderNamespace "Microsoft.Insights"
 ```
 
-Wait until all resource providers are in the state **Registered**. 
+> [!NOTE]
+> Wait until all resource providers are in the state **Registered**. 
 
-Here's a sample Azure PowerShell command to list all resource providers and their statuses.
+### List resource providers and status via PowerShell
+
+To list all resource providers and their statuses, run the following command.
 
 ```powershell  
 Get-AzResourceProvider | Format-Table
 ```
 
 > [!NOTE]
-> You can also register or view resource provider statuses in the local portal. To do this, go to your **Subscription**, click the dropdown arrow for **Settings**, and select **Resource providers**.
+> To register or view resource provider statuses in the local portal, go to your Subscription, expand Settings, and select Resource providers.
 
 ## Deploy Azure Local to form the management cluster
 
