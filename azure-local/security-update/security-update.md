@@ -2,8 +2,8 @@
 title:  Security updates for Azure Local
 description: Security updates for Azure Local.
 author: alkohli
-ms.topic: article
-ms.date: 12/16/2025
+ms.topic: release-notes
+ms.date: 01/20/2026
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: hyperconverged
@@ -12,6 +12,52 @@ ms.subservice: hyperconverged
 # Security updates for Azure Local
 
 This article lists the various security updates that are available for Azure Local.
+
+::: moniker range="=azloc-2601"
+
+## January OS security update (KB5073379) for Azure Local
+
+This section provides the 2601 security updates associated with OS build **26100.32230** released on January 13, 2026 and also includes key notifications, announcements, change logs, and end-of-support notices.
+
+Starting with the January 2026 security update, Azure Stack HCI, version 24H2 will use different KB identifiers and a different build number. This change does not affect how you receive or manage updates for Azure Stack HCI, version 24H2.
+
+## Windows Secure Boot certificate expiration
+
+> [!IMPORTANT]
+> The Azure Local product team is aware of the upcoming expiration of the boot certificates of Windows devices and is actively working with solution OEM partners to deliver a managed update. Upcoming solution updates will initiate the mitigation process to address this scenario.
+
+To learn more about differences between security updates, optional non-security preview updates, out-of-band (OOB) updates, and continuous innovation, see [Windows monthly updates explained](https://techcommunity.microsoft.com/blog/windows-itpro-blog/windows-monthly-updates-explained/3773544). For information on Windows update terminology, see the different types of [Windows software updates](/troubleshoot/windows-client/installing-updates-features-roles/standard-terminology-software-updates). For an overview, see the update history page for Azure Stack HCI, version 24H2.
+
+## Improvements
+
+This security update contains fixes and quality improvements from [KB5072033](https://support.microsoft.com/topic/december-9-2025-kb5072033-os-builds-26200-7462-and-26100-7462-0c1a4334-19ba-406d-bb1e-88fcffc87b79) (released December 9, 2025). The following summary outlines key issues addressed by this update. Also, included are available new features. The bold text within the brackets indicates the item or area of the change.
+
+- **[Compatibility]** This update removes the following modem drivers: agrsm64.sys (x64), agrsm.sys (x86), smserl64.sys (x64), and smserial.sys (x86). Modem hardware is dependent on these specific drivers will no longer work in Windows.
+
+- **[Networking (known issue)]** Fixed: This update addresses an issue where you might experience [RemoteApp](/azure/virtual-desktop/publish-applications-stream-remoteapp?tabs=portal) connection failures in Azure Virtual Desktop (AVD) environments. This might occur after installing [KB5072033](https://support.microsoft.com/topic/december-9-2025-kb5072033-os-build-26100-7462-fca31d8d-5fe8-4b5e-9591-6641ef1d26a1).
+
+- **[Servicing (known issue)]** This update addresses an issue where devices that installed the out-of-band update ([KB5070881](https://support.microsoft.com/topic/october-23-2025-kb5070881-os-build-26100-6905-out-of-band-8e7ac742-6785-4677-87e4-b73dd8ac0122)) stopped receiving Hotpatch updates. Affected machines will resume Hotpatch updates after installing the January 2026 baseline update.
+
+
+- **[Windows Deployment Services (WDS)]** This update introduces a change in behavior in which WDS will stop supporting hands-free deployment functionality by default. Detailed guidance for IT administrators is available at [Windows Deployment Services (WDS) Hands‑Free Deployment Hardening Guidance](https://go.microsoft.com/fwlink/?linkid=2344403).
+
+For more information about security vulnerabilities, see the [Security Update Guide](https://portal.msrc.microsoft.com/security-guidance) and the [January 2026 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2026-Jan).
+
+## Known issues
+
+Microsoft is not currently aware of any issues with this update.
+
+## To install
+
+Microsoft now combines the latest servicing stack update (SSU) for your operating system with the latest cumulative update (LCU). For general information about SSUs, see [Servicing stack updates](/windows/deployment/update/servicing-stack-updates) and [Servicing Stack Updates (SSU): Frequently Asked Questions](https://support.microsoft.com/topic/servicing-stack-updates-ssu-frequently-asked-questions-06b62771-1cb0-368c-09cf-87c4efc4f2fe).
+
+To install the LCU on your Azure Local instance, see [Update Azure Stack Local instances](../update/about-updates-23h2.md).
+
+## File list
+
+For a list of the files that are provided in this update, download the file information for [Cumulative update KB5073379](https://go.microsoft.com/fwlink/?linkid=2346838).
+
+::: moniker-end
 
 ::: moniker range="=azloc-2512"
 
@@ -479,7 +525,7 @@ For a list of the files that are provided in this update, download the file info
 
 ::: moniker-end
 
-::: moniker range="=azloc-2507"
+::: moniker range="=azloc-previous"
 
 ## July OS security updates (KB5062570 and KB5062553) for Azure Local
 
@@ -494,7 +540,7 @@ For the 2507 release of Azure Local, Microsoft released two security updates, ea
 
 This section provides the 2507 security updates associated with OS build **25398.1732**.
 
-## Improvements
+### Improvements
 
 This security update includes quality improvements. Below is a summary of the key issues that this update addresses when you install this KB. If there are new features, it lists them as well. The bold text within the brackets indicates the item or area of the change.
 
@@ -510,17 +556,17 @@ This security update includes quality improvements. Below is a summary of the ke
 
 For more information about security vulnerabilities, see the [Security Update Guide](https://portal.msrc.microsoft.com/security-guidance) and the [July 2025 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2025-Jul).
 
-## Known issues
+### Known issues
 
 Microsoft is not currently aware of any issues with this update.​​​​​ 
 
-## To install
+### To install
 
 Microsoft now combines the latest servicing stack update (SSU) for your operating system with the latest cumulative update (LCU). For general information about SSUs, see [Servicing stack updates](/windows/deployment/update/servicing-stack-updates) and [Servicing Stack Updates (SSU): Frequently Asked Questions](https://support.microsoft.com/topic/servicing-stack-updates-ssu-frequently-asked-questions-06b62771-1cb0-368c-09cf-87c4efc4f2fe).
 
 To install the LCU on your Azure Local instance, see [Update Azure Stack Local instances](../update/about-updates-23h2.md).
 
-## File list
+### File list
 
 For a list of the files that are provided in this update, download the file information for [Cumulative update KB5062570.](https://go.microsoft.com/fwlink/?linkid=2326815).
 
@@ -529,7 +575,7 @@ For a list of the files that are provided in this update, download the file info
 
 This section provides the 2507 security updates associated with OS build **26100.4652**.
 
-## Improvements
+### Improvements
 
 This security update includes quality improvements. Here is a summary of the key issues that this update addresses when you install this KB. If there are new features, it lists them as well. The bold text within the brackets indicates the item or area of the change.
 
@@ -541,11 +587,11 @@ This security update includes quality improvements. Here is a summary of the key
 
 For more information about security vulnerabilities, see the [Security Update Guide](https://portal.msrc.microsoft.com/security-guidance) and the [July 2025 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2025-Jul).
 
-## Known issues
+### Known issues
 
 The following are known issues with this update:
 
-### Azure Local VM with Trusted Launch disabled
+#### Azure Local VM with Trusted Launch disabled
 
 **Symptom**
 
@@ -561,19 +607,17 @@ To check if your virtual machine might be impacted:
 
 The workaround is addressed in [KB5064489](https://support.microsoft.com/topic/july-13-2025-kb5064489-os-build-26100-4656-out-of-band-14a82ab2-100f-4dd4-8141-f490ec90c8f4).
 
-## To install
+### To install
 
 Microsoft now combines the latest servicing stack update (SSU) for your operating system with the latest cumulative update (LCU). For general information about SSUs, see [Servicing stack updates](/windows/deployment/update/servicing-stack-updates) and [Servicing Stack Updates (SSU): Frequently Asked Questions](https://support.microsoft.com/topic/servicing-stack-updates-ssu-frequently-asked-questions-06b62771-1cb0-368c-09cf-87c4efc4f2fe).
 
 To install the LCU on your Azure Local instance, see [Update Azure Stack Local instances](../update/about-updates-23h2.md).
 
-## File list
+### File list
 
 For a list of the files that are provided in this update, download the file information for [Cumulative update KB5062553.](https://go.microsoft.com/fwlink/?linkid=2326816).
 
-::: moniker-end
-
-::: moniker range="=azloc-previous"
+---
 
 ## June OS security updates (KB5060118 and KB5060842) for Azure Local
 

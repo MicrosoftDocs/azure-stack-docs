@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 11/11/2025
+ms.date: 01/14/2026
 ms.subservice: hyperconverged
 ---
 
@@ -111,6 +111,23 @@ Here's a sample output that indicates successful resizing of the data disk:
 }
 ```
 
+## Identify a data disk
+
+You can identify a data disk attached to your an Azure Local VM by checking its property called **Unique ID**.
+
+The **Unique Id** of a data disk is the SCSI disk identifier found inside the guest VM. It doesn't match the disk identifier if the disk is attached to an IDE controller, for example, Gen 1 VM OS disk.
+
+Follow these steps to identify a data disk inside the guest VM:
+
+1. [Connect to the VM](./connect-arc-vm-using-ssh.md).
+1. Run PowerShell as an administrator.
+1. To get the unique ID of the data disk, run the following command:
+
+    ```powershell
+    Get-Disk | Select-Object UniqueId
+    ```
+    Note the **UniqueId** value for the data disk you want to identify. Compare the `UniqueId` that you have noted to the `UniqueId` field of the disk resource to accurately map which disk is the Azure representation disk.
+
 ## Delete a data disk
 
 Follow these steps in the Azure portal for your Azure Local instance:
@@ -190,41 +207,6 @@ Follow these steps in the Azure portal for your Azure Local instance.
 
    :::image type="content" source="./media/manage-arc-virtual-machine-resources/delete-network-interface-4.png" alt-text="Screenshot of an updated network interface list on the Networking pane for a VM." lightbox="./media/manage-arc-virtual-machine-resources/delete-network-interface-4.png":::
 
-::: moniker range=">=azloc-2508"
-
-## Manage DNS server configuration for logical networks (preview)
-
-### Key considerations
-
-Before you update the DNS server configuration for a logical network, be aware of the following caveats:
-
-- This feature is in preview and shouldn't be used on production logical networks.
-- The updated DNS server configuration only applies to new Azure Local VMs created on the logical network after the update. For all the existing Azure Local VMs, manually update the DNS server entries within the VM.
-- You can't update the DNS server of a logical network that has an AKS cluster deployed.
-- You can't update the DNS server of a DHCP logical network. To update the DNS server for a DHCP logical network, manually update the DNS server configuration from within the DHCP server.
-- The infrastructure logical network (enveloping the 6 management IP address range provided during deployment) and Arc resource bridge DNS server updates are not supported.
-
-### Update DNS server configuration
-
-> [!IMPORTANT]
-> Make sure to enter all the relevant DNS server IP entries in your `update` command and not just the entry you want to change. Running a DNS server `update` command replaces the existing configuration.
-
-Follow these steps to manage DNS server configuration for logical networks.
-
-#### Set parameters
-
-```PowerShell
-$logicalNetwork = "your-logical-network"
-$resourceGroup = "your-resource-group"
-$dnsServers = "IP-address1", "IP-address2"
-```
-
-#### Update DNS server configuration
-
-```azure cli
-az stack-hci-vm network lnet update --name $logicalNetwork --resource-group $resourceGroup --dns-servers $dnsServers
-```
-::: moniker-end
 
 ## Related content
 

@@ -68,6 +68,10 @@ Azure Local VM management has several components, including:
 
     For more information, see [What is Azure Arc resource bridge?](/azure/azure-arc/resource-bridge/overview).
 
+- **Infrastructure logical network**: A logical network associated with the Azure Local VM management and is created automatically when you deploy Azure Local. The Azure Arc resource bridge, a crucial component of Azure Local VM management, uses this logical network.
+
+    For more information, see [Manage logical networks for Azure Local VMs enabled by Azure Arc](./manage-logical-networks.md).
+
 - **Custom location**: Just like the Azure Arc resource bridge, a custom location is created automatically when you deploy Azure Local. You can use this custom location to deploy Azure services. You can also deploy VMs in these user-defined custom locations, to integrate your on-premises setup more closely with Azure.
 
 - **Kubernetes extension for VM operators**: The VM operator is the on-premises counterpart of the Azure Resource Manager resource provider. It's a Kubernetes controller that uses custom resources to manage your VMs.

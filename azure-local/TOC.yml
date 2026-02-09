@@ -377,10 +377,12 @@ items:
           href: manage/create-network-interfaces.md
         - name: 5. Create Azure Local VMs
           href: manage/create-arc-virtual-machines.md
-      - name: Connect to VM via SSH
+      - name: Connect to Azure Local VMs
         href: manage/connect-arc-vm-using-ssh.md
       - name: Manage Azure Local VMs
         href: manage/manage-arc-virtual-machines.md
+      - name: Manage logical networks
+        href: manage/manage-logical-networks.md
       - name: Manage Azure Local VM resources
         href: manage/manage-arc-virtual-machine-resources.md 
       - name: Manage VM extensions
@@ -748,6 +750,8 @@ items:
     items:
     - name: Complete deployment prerequisites
       href: ./multi-rack/multi-rack-prerequisites.md
+    - name: Create and manage L3 isolation domains
+      href: ./multi-rack/multi-rack-configure-layer-3-isolation-domain.md
     - name: Install Azure CLI extensions
       href: ./multi-rack/multi-rack-cli-extensions.md
     - name: Complete networking prerequisites
@@ -850,7 +854,7 @@ items:
     - name: Azure Local VMs
       href: manage/disconnected-operations-arc-vm.md
     - name: Azure Kubernetes Service (AKS)
-      href: manage/disconnected-operations-aks.md
+      href: /azure/aks/aksarc/disconnected-operations-aks?toc=/azure/azure-local/toc.json&bc=/azure/azure-local/breadcrumb/toc.jsonazure-local/breadcrumb/toc.json
     - name: Azure Container Registry
       href: manage/disconnected-operations-azure-container-registry.md
     - name: Azure Policy

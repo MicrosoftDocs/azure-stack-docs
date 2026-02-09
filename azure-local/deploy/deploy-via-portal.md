@@ -3,7 +3,7 @@ title: Deploy an Azure Local instance using the Azure portal
 description: Learn how to deploy an Azure Local instance from the Azure portal
 author: alkohli
 ms.topic: how-to
-ms.date: 12/19/2025
+ms.date: 01/22/2026
 ms.author: alkohli
 ms.service: azure-local
 ms.custom: sfi-image-nochange
@@ -72,6 +72,9 @@ This article helps you deploy an Azure Local instance using the Azure portal.
 
 1. **Select an existing Key Vault** or select **Create a new Key Vault**. Create an empty key vault to securely store secrets for this system, such as cryptographic keys, local admin credentials, and BitLocker recovery keys.
 
+    > [!IMPORTANT]
+    > Azure Local doesn't support deploying a cluster using an existing Azure Key Vault that has Private Endpoints enabled.
+
 1. On the **Create a new key vault** page, provide information for the specified parameters and select **Create**:
 
    :::image type="content" source="./media/deploy-via-portal/basics-tab-6.png" alt-text="Screenshot of Create a new key vault on Basics tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/basics-tab-6.png":::
@@ -107,7 +110,7 @@ On the **Configuration** tab, choose whether to create a new configuration for t
 2. Choose traffic types to group together on a set of network adapters–and which types to keep physically isolated on their own adapters.
 
     There are three types of traffic we configure:
-    * **Management** traffic between this system, your management PC, and Azure; also Storage Replica traffic.
+    * **Management** traffic between this system, your management PC, and Azure.
     * **Compute** traffic to or from VMs and containers on this system.
     * **Storage** (SMB) traffic between machines in a multi-node system.
 
@@ -173,7 +176,7 @@ On the **Configuration** tab, choose whether to create a new configuration for t
 1. If you picked static IP, provide the following values:
     1. Using the **Starting IP** and **Ending IP** (and related) fields, allocate a contiguous block of at least six static IP addresses on your management network's subnet, omitting addresses already used by the machines.
 
-        These IPs are used by Azure Local and internal infrastructure (Arc Resource Bridge) that's required for Arc VM management and AKS Hybrid.
+        These IPs are used by Azure Local to create an infrastructure logical network. The Azure Arc resource bridge, a component of Azure Local VM management, uses this infrastructure logical network.
     1. Provide the Subnet mask, Default gateway, and one or more DNS servers.
     1. Validate subnet.
 
@@ -297,6 +300,7 @@ To confirm that the system and all of its Azure resources were successfully depl
     | 1 per machine | Machine - Azure Arc |
     | 1            | Azure Local     |
     | 1            | Arc Resource Bridge |
+    | 1            | Infrastructure logical network named as *(clustername-InfraLNET)* |
     | 1            | Key vault           |
     | 1            | Custom location     |
     | 2*           | Storage account     |

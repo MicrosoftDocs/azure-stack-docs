@@ -231,7 +231,7 @@ Follow these steps to save logs to a local share:
 1. To collect logs and save them locally, run the following command on each node of the system:
 
    ```powershell
-   Send-DiagnosticData —SaveToPath <path to share> —ShareCredential $shareCredential
+   Send-DiagnosticData -SaveToPath <path-to-share> -ShareCredential $shareCredential
    ```
 
    If you have outbound connectivity from the SMB share where you saved the logs, you can run the following command to send the logs to Microsoft:
@@ -398,7 +398,7 @@ Versions 1.0.2.0 and above
 
 ### SupplementaryLogs
 
-The SupplementaryLogs parameter allows you to send ad-hoc logs to Microsoft.
+The `SupplementaryLogs` parameter allows you to send ad-hoc logs to Microsoft.
 
 **Syntax**
 
