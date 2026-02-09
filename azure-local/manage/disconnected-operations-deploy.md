@@ -423,7 +423,9 @@ Create a subscription for your Azure Local nodes and the Azure Local instance (c
 
 ## Register required resource providers
 
-Make sure you register the required resource providers before deployment. For more information see [Registration](../includes/hci-registration-azure-prerequisites.md). 
+Before you register and manage Azure Local resources, ensure your environment is properly configured. This section describes the required setup, including registering resource providers, creating a resource group, obtaining the tenant ID, verifying permissions, and validating Azure policies.
+
+[!INCLUDE [Registration](../includes/hci-registration-azure-prerequisites.md)]. 
 
 Here's an example of how to automate the resource providers registration from Azure PowerShell.
 
