@@ -6,7 +6,7 @@ description: |
 ms.service: azure-operator-nexus
 ms.custom: azure-operator-nexus
 ms.topic: how-to
-ms.date: 12/11/2025
+ms.date: 02/09/2026
 ms.author: omarrivera
 author: g0r1v3r4
 ---
@@ -47,8 +47,9 @@ And you can manage the VM as an Azure resource using Azure Arc capabilities.
 You can use either a system-assigned or a user-assigned managed identity to Azure Arc enroll the VM.
 In both options, you must assign the necessary roles to the managed identity to allow it to Azure Arc enroll the VM and the required permissions to assign the VM traffic to Private Relay.
 
-For _system-assigned managed identities_, if you're Azure Arc enrolling manually, you can assign the roles after the VM is created and booted.
-If you automate the Azure Arc enrollment using a cloud-init user data script, then you can use the Azure CLI within the VM to assign the required roles first.
+For _system-assigned managed identities_, you must assign the roles to the identity created with the VM.
+It might not be possible to achieve role assignment from within the cloud-init script since the user likely doesn't yet have the permissions needed to grant itself further roles.
+An option to automate the Azure Arc enrollment using system-assigned identity is to use Az CLI, ARM, or bicep to assign the necessary roles independent of the VM provisioning.
 
 #### Assign roles to allow Azure Arc enrollment
 
@@ -134,8 +135,10 @@ Steps for the cloud-init script can include:
 - Ensure to [Install Azure CLI](https://aka.ms/azcli) at the latest versions.
   Including any required extensions such as the [`networkcloud` extension](https://github.com/Azure/azure-cli-extensions/tree/main/src/networkcloud).
 - Complete the necessary setup for your chosen managed identity option before creating the VM.
-  - If you're using a System-Assigned Managed Identity (SAMI), the cloud-init script must handle role assignments.
   - If you're using a User-Assigned Managed Identity (UAMI), the role assignments can be done ahead of time.
+  - If you're using a System-Assigned Managed Identity (SAMI), the cloud-init script might not be able to handle role assignments since the identity created during provisioning doesn't have the permissions to grant itself roles.
+    One option is to use the same user that's calling the Az CLI, ARM, or bicep deployment to assign the necessary roles to the SAMI.
+    Role assignment should be done after the VM is provisioned but before the cloud-init script attempts to authenticate using the SAMI.
 - Authenticate using the managed identity with the `az login --identity` command and obtain an access token as needed.
 - [Install the `azcmagent` package](https://aka.ms/azcmagent) and enroll the VM with Azure Arc.
 
@@ -268,6 +271,13 @@ Set the `ARC_MACHINE_NAME` variable to match the VM name for easy identification
 You specify these values manually, as the resource doesn't exist until you create it.
 
 ```bash
+# Varibles to set for your environment - update these values accordingly
+TENANT_ID="00000000-0000-0000-0000-000000000000"
+SUBSCRIPTION_ID="00000000-0000-0000-0000-000000000000"
+RESOURCE_GROUP="my-nexus-vm-rg"
+LOCATION="$(az group show --name $RESOURCE_GROUP --query location --subscription $SUBSCRIPTION_ID -o tsv)"
+VM_NAME="my-nexus-vm-name"
+
 ARC_MACHINE_NAME="${VM_NAME}"
 ARC_MACHINE_ID="/subscriptions/${SUBSCRIPTION_ID}/resourceGroups/${RESOURCE_GROUP}/providers/Microsoft.HybridCompute/machines/${VM_NAME}"
 ARC_MACHINE_VMID=$(uuidgen)
@@ -361,6 +371,9 @@ The `azcmagent connect` command requires the access token to authenticate and au
 Follow the steps to [install the `azcmagent` CLI tool](/azure/azure-arc/servers/azcmagent) within the VM.
 This step can be done as part of the cloud-init script or manually after the VM is created and boots.
 
+> [!IMPORTANT]
+>
+
 Validate the `azcmagent` installation was successful by checking the version.
 
 ```bash
@@ -374,6 +387,9 @@ For more information about the `azcmagent connect` command and access tokens, se
 
 > [!IMPORTANT]
 > The `azcmagent` installation blocks the default access token retrieval method used by the Azure CLI.
+> For this reason, `azcmagent` can't be installed any earlier that at this point.
+> For example, it can't be preinstalled on the VM disk image.
+> Once `azcmagent` is installed and the `himdsd` binary exists on the VM, any previously assigned Nexus VM identities can't be accessed via `az login`.
 > As long as the `azcmagent` is installed, the `az login --identity` and `az account get-access-token` command fails to retrieve an access token using the managed identity.
 > To obtain access tokens, use [Alternative access token retrieval methods](./troubleshoot-virtual-machines-arc-enroll-with-managed-identities.md#alternative-access-token-retrieval-methods).
 > If your virtual machine image bundles the `azcmagent` by default, you need to use these alternative methods to retrieve access tokens.
@@ -446,6 +462,12 @@ azcmagent show
 ### Verify Arc enabled VM using Azure CLI
 
 You can verify that your VM is enrolled with Azure Arc by checking its status in the Azure portal or by using the Azure CLI.
+
+> [!TIP]
+> You can't run the verification commands from within the VM (for example, via cloud-init).
+> The newly created system-assigned managed identity (SAMI) for the Arc-enabled machine requires role assignment to list Arc Connected Machine resources.
+> If you run the command as the same Azure user or service principal that performed the Az CLI/ARM/bicep template deployment, it should work as expected.
+
 First, confirm that the VM is provisioned by reviewing its detailed status.
 
 ```azurecli-interactive

@@ -42,7 +42,7 @@ RESOURCE_GROUP="my-resource-group"
 CLUSTER_NAME="my-cluster-name"
 TENANT_ID="00000000-0000-0000-0000-000000000000"
 SUBSCRIPTION_ID="00000000-0000-0000-0000-000000000000"
-LOCATION="$(az group show --name $RESOURCE_GROUP --query location --subscription $SUBSCRIPTION -o tsv)"
+LOCATION="$(az group show --name $RESOURCE_GROUP --query location --subscription $SUBSCRIPTION_ID -o tsv)"
 CLUSTER_CUSTOM_LOCATION=$(az networkcloud cluster show -g "$RESOURCE_GROUP" -n "$CLUSTER_NAME" --query "clusterExtendedLocation.name" -o tsv)
 
 # VM specific variables (replace with your preferred values)
