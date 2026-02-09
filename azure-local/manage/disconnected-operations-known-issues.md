@@ -18,7 +18,7 @@ This article highlights what's new (features and improvements) and critical know
 
 [!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
 ## Features and improvements in 2602
- - This release marks the General Availability of disconnected operations for Azure Local 
+ - This release marks the general availability of disconnected operations for Azure Local 
  - Added support for the Azure Local 2602 ISO and its associated capabilities.
  - Several bug fixes for deployment stability and usability.
  - Improved security and bug fixes.

@@ -348,20 +348,6 @@ To configure observability, follow these steps:
     ```powershell
     Get-ApplianceObservabilityConfiguration
     ```
-### Fully disconnected (air-gapped) deployments
-
-To enable Azure Local in a fully air-gapped (nodes without direct internet connection) deployment, follow these actions on each node:
-
-1. Configure the timeserver to use your domain controller. Modify the script and run it from PowerShell:
-
-  ```powershell
-  w32tm /config /manualpeerlist:"dc.contoso.com" /syncfromflags:manual /reliable:yes /update
-  net stop w32time
-  net start w32time
-  w32tm /resync /rediscover
-  # Check your NTP settings
-  w32tm /query /peers
-  ```
 
 ## Configure Azure PowerShell
 
@@ -525,11 +511,11 @@ Create the Azure Key Vault before you deploy Azure Local to avoid long deploymen
 
 For a code example, see [Known issues](./disconnected-operations-known-issues.md).
 
-After you create the Key Vault, wait 20 minutes before you continue with the next portal deployment step.
+After you create the Key Vault, wait 5 minutes before you continue with the next portal deployment step. 
 
-## Create the Azure Local instance (cluster)
+## Deploy the management cluster (first Azure Local instance)
 
-With the prerequisites completed, you can deploy Azure Local with a fully air-gapped local control plane.
+With the control plane deployed and configured - you can complete the management cluster by deploying Azure Local using your local control plane.
 
 Follow these steps to create an Azure Local instance (cluster):
 
@@ -538,7 +524,7 @@ Follow these steps to create an Azure Local instance (cluster):
 1. Select your nodes and complete the deployment steps outlined in [Deploy Azure Local using the Azure portal](../deploy/deploy-via-portal.md).  
 
 > [!NOTE]
-> If you create Azure Key Vault during deployment, wait about 20 minutes for RBAC permissions to take effect.
+> If you create Azure Key Vault during deployment, wait about 5 minutes for RBAC permissions to take effect.
 >
 > If you see a validation error, it’s a known issue. Permissions might still be propagating. Wait a bit, refresh your browser, and redeploy the cluster.
 
@@ -552,6 +538,9 @@ Perform the following tasks after deploying Azure Local with disconnected operat
 
 1. [Export the host guardian service certificates](disconnected-operations-security.md) and back up the folder you export them to on an external share or drive.
 1. [Register the management cluster](disconnected-operations-registration.md)
+
+> [!NOTE]
+> Do not skip these steps. Consider this as a deployment completion checklist. These steps are critical in order to be able to recover in case of disasters, receive support and to stay compliant.
 
 ## Appendix
 
@@ -572,7 +561,9 @@ After setting the context, you can use all the management cmdlets provided by th
 
 To get a full list of cmdlets provided, use the PowerShell `Get-Command -Module OperationsModule`. To get details around each cmdlet, use the `Get-Help <cmdletname>` command.
 
-### Troubleshoot: System not configured
+### Troubleshooting deployments
+
+#### System not configured
 
 After you install the appliance, you might see this screen for a while. Let the configuration run for 2 to 3 hours. After you wait the 2 to 3 hours, the screen goes away, and you see the regular Azure portal. If the screen doesn't go away and you can't access the local Azure portal, troubleshoot the issue.
 
@@ -582,9 +573,9 @@ After you install the appliance, you might see this screen for a while. Let the 
 
 - To view the health state of your appliance, use the management endpoint `Get-ApplianceHealthState` cmdlet. If you see this screen and the cmdlet reports no errors and all services report 100, open a support ticket from the Azure portal.
 
-### Update appliance configuration and rerun installation after failure
+#### Install-Appliance fails (due e.g. conflict)
 
-If `install-appliance` fails, update the configuration and retry.
+Update appliance configuration and rerun installation after failure
 
 For example:
 
@@ -597,7 +588,7 @@ For example:
   $ingressNetworkConfiguration.IngressIpAddress = '192.168.0.115'
   ```
 
-- If `install-appliance` fails during installation, set `$installAzureLocalParams` and rerun `Install-appliance` as described in [Install and configure the appliance](#install-and-configure-the-appliance).
+- If `install-appliance` fails during installation, update `$installAzureLocalParams` and rerun `Install-appliance` as described in [Install and configure the appliance](#install-and-configure-the-appliance).
   
 - If the appliance deployment succeeded and you're updating network configuration, see `Get-Help Set-Appliance` for the settings you can update post-deployment.
 
