@@ -17,7 +17,8 @@ This article shows how to enroll Azure Operator Nexus virtual machines (VM) with
 Azure Arc enrollment enables you to manage virtual machines as Azure resources, providing unified management, monitoring, and extension capabilities.
 
 This guide covers the steps required to complete the enrollment process using managed identities and making sure the VM's network traffic is assigned to Private Relay for secure outbound connectivity.
-The process can be automated through a cloud-init user data script passed during VM creation or executed after the VM is created and boots.
+The process can be automated through a cloud-init user data script executed during VM creation.
+Or the steps can be executed manually after the VM is created and boots.
 However, we leave this choice to you based on your requirements and preferences.
 
 The overall process involves the following steps:
