@@ -78,7 +78,7 @@ For steps on how to create a custom role, see [Create or update Azure custom rol
 Complete the [Prerequisites for deploying tenant workloads](./quickstarts-tenant-workload-prerequisites.md) for deploying a Nexus virtual machine.
 
 - Before creating the virtual machine, you need to create the required networking resources.
-  - **L3 network andL3 isolation domain**: virtual machine's network connectivity, isolation, and routing
+  - **L3 network and L3 isolation domain**: virtual machine's network connectivity, isolation, and routing
   - **Cloud Services Network (CSN)**: virtual machine's outbound and inbound connectivity and proxy services
 
 Review how to create virtual machines using one of the following deployment methods:
@@ -120,7 +120,7 @@ If you're encountering connectivity issues, ensure that the CSN has the necessar
 |----------------------------------|-----------------------------------------------------------------|
 | management.azure.com             | Required for `az login` and Azure Resource Manager API access   |
 | login.microsoftonline.com        | Required for authentication during `az login`                   |
-| his.arc.azure.com                | Required for Azure Arc enrollment via `azcmagent connect`       |
+| his.arc.azure.com                | Required for Azure Arc enrollment via `azcmagent connect existing`       |
 
 [!INCLUDE [virtual-machine-howto-virtual-machines-environment-variables](./includes/virtual-machine/howto-virtual-machines-environment-variables.md)]
 
@@ -253,12 +253,12 @@ printf 'export PRIVATE_B64="%s"\n' "$PRIVATE_B64"
 printf 'export PUBLIC_B64="%s"\n' "$PUBLIC_B64"
 ```
 
-Define the `ARC_MACHINE_ID` variable with the resource ID for the Azure Arc machine resource that you create in your `SUBSCRIPTION` and `RESOURCE_GROUP`.
+Define the `ARC_MACHINE_ID` variable with the resource ID for the Azure Arc machine resource that you create in your `SUBSCRIPTION_ID` and `RESOURCE_GROUP`.
 Set the `ARC_MACHINE_NAME` variable to match the VM name for easy identification.
 You specify these values manually, as the resource doesn't exist until you create it.
 
 ```bash
-# Varibles to set for your environment - update these values accordingly
+# Variables to set for your environment - update these values accordingly
 TENANT_ID="00000000-0000-0000-0000-000000000000"
 SUBSCRIPTION_ID="00000000-0000-0000-0000-000000000000"
 RESOURCE_GROUP="my-nexus-vm-rg"
@@ -315,7 +315,7 @@ az connectedmachine show \
 
 To ensure secure outbound connectivity for the VM, you must assign its traffic to use Private Relay.
 
-Get the VM details to retrieve the resource ID for the
+Run the following command to assign the VM to Private Relay:
 
 ```azurecli-interactive
 az networkcloud virtualmachine assign-relay -g "$RESOURCE_GROUP" -n "$VM_NAME" --machine-id "$ARC_MACHINE_ID"
@@ -348,8 +348,8 @@ Example output:
 
 ## Enroll the VM using managed identities
 
-Once you authenticate using the managed identity and retrieve the access token, you proceed to enroll the VM with Azure Arc using the `azcmagent connect` command.
-The `azcmagent connect` command requires the access token to authenticate and authorize the enrollment process.
+Once you authenticate using the managed identity and retrieve the access token, you proceed to enroll the VM with Azure Arc using the `azcmagent connect existing` command.
+The `azcmagent connect existing` command requires the access token to authenticate and authorize the enrollment process.
 
 [!INCLUDE [virtual-machine-howto-virtual-machines-important-blocked-access-token-retrieval](./includes/virtual-machine/howto-virtual-machines-important-blocked-access-token-retrieval.md)]
 
@@ -358,16 +358,13 @@ The `azcmagent connect` command requires the access token to authenticate and au
 Follow the steps to [install the `azcmagent` CLI tool](/azure/azure-arc/servers/azcmagent) within the VM.
 This step can be done as part of the cloud-init script or manually after the VM is created and boots.
 
-> [!IMPORTANT]
->
-
 Validate the `azcmagent` installation was successful by checking the version.
 
 ```bash
 azcmagent version
 ```
 
-For more information about the `azcmagent connect` command and access tokens, see:
+For more information about the `azcmagent connect existing` command and access tokens, see:
 
 - [Azure Connected Machine agent connect reference](/azure/azure-arc/servers/azcmagent-connect#access-token)
 - [How to use managed identities to get an access token](/entra/identity/managed-identities-azure-resources/how-to-use-vm-token#get-a-token-using-go)
@@ -424,7 +421,7 @@ Execute the `azcmagent connect existing` command to connect the Azure Arc machin
 To see detailed output, add the `--verbose` flag.
 
 The `--vmid` parameter should be set to the value of `ARC_MACHINE_VMID` defined in [Create the Azure Arc machine resource](#create-the-azure-arc-machine-resource) section.
-The `--private-key` parameter should use the base64-encoded private key (`PRIVATE_B64`) generated [Create the Azure Arc machine resource](#create-the-azure-arc-machine-resource) section.
+The `--private-key` parameter should use the base64-encoded private key (`PRIVATE_B64`) generated in the [Create the Azure Arc machine resource](#create-the-azure-arc-machine-resource) section.
 
 ```bash
 azcmagent connect existing \
