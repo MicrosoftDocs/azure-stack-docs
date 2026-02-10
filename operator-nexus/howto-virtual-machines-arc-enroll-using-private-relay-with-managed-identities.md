@@ -17,7 +17,7 @@ This article shows how to enroll Azure Operator Nexus virtual machines (VM) with
 Azure Arc enrollment enables you to manage virtual machines as Azure resources, providing unified management, monitoring, and extension capabilities.
 
 This guide covers the steps required to complete the enrollment process using managed identities and making sure the VM's network traffic is assigned to Private Relay for secure outbound connectivity.
-The process can be automated through a cloud-init user data script passed during VM creation or execute after the VM is created and boots.
+The process can be automated through a cloud-init user data script passed during VM creation or executed after the VM is created and boots.
 However, we leave this choice to you based on your requirements and preferences.
 
 The overall process involves the following steps:
@@ -374,7 +374,7 @@ For more information about the `azcmagent connect` command and access tokens, se
 
 > [!IMPORTANT]
 > The `azcmagent` installation blocks the default access token retrieval method used by the Azure CLI.
-> For this reason, `azcmagent` can't be installed any earlier that at this point.
+> For this reason, `azcmagent` can't be installed any earlier than at this point.
 > For example, it can't be preinstalled on the VM disk image.
 > Once `azcmagent` is installed and the `himdsd` binary exists on the VM, any previously assigned Nexus VM identities can't be accessed via `az login`.
 > As long as the `azcmagent` is installed, the `az login --identity` and `az account get-access-token` command fails to retrieve an access token using the managed identity.
