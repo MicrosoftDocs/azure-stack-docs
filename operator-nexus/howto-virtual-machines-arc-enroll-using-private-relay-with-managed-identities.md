@@ -59,7 +59,7 @@ The required roles to allow the managed identity to Azure Arc enroll the VM are:
 - `HybridCompute Machine ListAccessDetails Action`
 - `Azure Connected Machine Resource Manager`
 
-#### Assign permission to assign VM traffic to Private Relay
+#### Add permissions to assign VM traffic to Private Relay
 
 You need the `Microsoft.NetworkCloud/virtualMachines/assignRelay/action` permission assigned to the managed identity, in order to make the assign relay action succeed.
 The permission can be assigned through a custom role, or by assigning the `Contributor` built-in role to the managed identity.
@@ -71,16 +71,9 @@ For steps on how to create a custom role, see [Create or update Azure custom rol
 
 [!INCLUDE [virtual-machine-prereq](./includes/virtual-machine/quickstart-prereq.md)]
 
-- Ensure you have permissions to create managed identities and manage the role assignments in your Azure subscription.
-- Ensure to create the VM with either an associated system-assigned or user-assigned managed identity.
-- Ensure to assign roles or permissions for the managed identities to enroll virtual machines with Azure Arc.
-- Ensure to assign roles or permissions to assign virtual machine traffic to the Private Relay.
-
-Complete the [Prerequisites for deploying tenant workloads](./quickstarts-tenant-workload-prerequisites.md) for deploying a Nexus virtual machine.
-
-- Before creating the virtual machine, you need to create the required networking resources.
-  - **L3 network and L3 isolation domain**: virtual machine's network connectivity, isolation, and routing
-  - **Cloud Services Network (CSN)**: virtual machine's outbound and inbound connectivity and proxy services
+- Ensure you have the necessary privileges to create managed identities, to create custom roles, and to manage role assignments in your Azure subscription.
+  You need the privileges to create a user-assigned managed identity (not needed for system-assigned managed identity), to assign roles to the managed identities, and to create a custom role with the Private Relay assign permission.
+  Make sure to create the virtual machine with the desired associated user-assigned managed identity (not applicable if using a system-assigned managed identity).
 
 Review how to create virtual machines using one of the following deployment methods:
 
