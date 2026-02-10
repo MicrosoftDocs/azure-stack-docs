@@ -84,7 +84,7 @@ This article details how to register Azure Local using Azure Arc gateway and wit
     $ProxyBypassList = "localhost,127.0.0.1,*.contoso.com,machine1,machine2,machine3,machine4,machine5,192.168.*.*,AzureLocal-1" 
 
     #Define the Arc gateway resource ID from Azure 
-    $ArcgwId = "/subscriptions/yourarcgatewayid/resourceGroups/yourResourceGroupName/providers/Microsoft.HybridCompute/gateways/yourArcGatewayName" 
+    $ArcgwId = "/subscriptions/yoursubscriptionid/resourceGroups/yourResourceGroupName/providers/Microsoft.HybridCompute/gateways/yourArcGatewayName" 
     ```
 
 ## Step 3: Run registration script
@@ -324,11 +324,15 @@ $Tenant = "YourTenantID"
 #Define the subscription where you want to register your Azure Local machine with Arc.
 $Subscription = "yoursubscriptionID" 
 
+#Define the region to use to register your server as Arc device
+#Do not use spaces or capital letters when defining region
+$Region = "eastus"
+
 #Define the resource group where you want to register your Azure Local machine with Arc.
 $RG = "yourresourcegroupname" 
 
 #Define the Arc gateway resource ID from Azure 
-$ArcgwId = "/subscriptions/yourarcgatewayid/resourceGroups/yourresourcegroupname/providers/Microsoft.HybridCompute/gateways/yourarcgatewayname" 
+$ArcgwId = "/subscriptions/yoursubscriptionid/resourceGroups/yourresourcegroupname/providers/Microsoft.HybridCompute/gateways/yourarcgatewayname" 
 ```
 
 ## Step 3: Run the registration script
