@@ -429,7 +429,7 @@ When collecting both diagnostic and ad-hoc logs, you can use the `SupplementaryL
 Without `SaveToPath` or `NoLogCollection`:
 
 ```powershell
-Send–DiagnosticData -SupplementaryLogs <path to adhoc logs to collect>
+Send-DiagnosticData -SupplementaryLogs <path to adhoc logs to collect>
 ```
 
 With `SaveToPath`:
