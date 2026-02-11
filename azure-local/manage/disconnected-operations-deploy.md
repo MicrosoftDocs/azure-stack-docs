@@ -384,28 +384,14 @@ $azEnvironment = Add-AzEnvironment `
 Connect-AzAccount -EnvironmentName $applianceCloudName -UseDeviceAuthentication
 ```
 
-## Create a subscription and resource group for Azure Local nodes (infrastructure)
+## Subscription placement for a dedicated management cluster
 
-> [!IMPORTANT]
-> - Plan the subscription and resource group where you want to place your nodes and cluster. The resource move action isn't supported.
-> - The cluster resource created during deployment is used for workloads like VMs and Azure Kubernetes Services, so plan your role-based access controls accordingly.
-> - Don't place the cluster resource in the operator subscription, unless you plan to restrict access to only operators with full access to other operations. You can create more subscriptions or place it in the starter subscription.
-> - You can use Azure CLI or PowerShell to automate this process. For more information, see the [appendix](#appendix) in the Azure CLI documentation.
+We recommend deploying a fully dedicated management cluster. If you deploy a dedicated management cluster our recommended practice is to place your management cluster in the operator subscription. 
+This will help you restrict and isolate the control plane from workloads and you can limit workloads from being created on the same cluster as other tenants. 
 
-Create a subscription for your Azure Local nodes and the Azure Local instance (cluster).
+Keeping the control plaen seperated from the workloads provides a clear seperation of concerns. 
 
-1. Sign in to the local Azure portal at https://portal.</FQDN>. Replace </FQDN> with your domain name.  
-1. Go to **Subscriptions**.  
-1. Select **+ Add**.  
-1. For Subscription name, enter a name such as *Starter subscription*.  
-1. Select the subscription owner you want to give the Owner (RBAC) role to on this subscription.  
-1. For Location, leave the value set to **Autonomous**.  
-1. Select **Create**, wait for the operation to finish, and then refresh the browser to confirm the new subscription appears.
-1. Go to **Resource groups** and select **+ Add**.
-1. For the resource group name, enter a name such as *azure-local-disconnected-operations*.
-1. For the location, leave the value set to **Autonomous**.
-1. Select **Create** and wait for the operation to finish.
-
+Ensure you limit access to the operator subscription to only required personell. 
 
 ## Register required resource providers
 
@@ -415,7 +401,7 @@ Here's an example of how to automate the resource providers registration from Az
 
 ```powershell
 $applianceCloudName = "azure.local"
-$subscriptionName = "Starter subscription"
+$subscriptionName = "Operator subscription"
 
 # Connect to the ARM endpointusing device authentication
 Connect-AzAccount -EnvironmentName $applianceCloudName -UseDeviceAuthentication
