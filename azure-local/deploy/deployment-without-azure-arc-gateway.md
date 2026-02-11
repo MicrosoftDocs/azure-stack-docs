@@ -104,6 +104,7 @@ PS C:\Users\SetupUser> $Region = "eastus"
 PS C:\Users\SetupUser> $Tenant = "Tenant ID"
 PS C:\Users\SetupUser> $ProxyServer = "http://192.168.10.10:8080"
 PS C:\Users\SetupUser> $ProxyBypassList = "localhost,127.0.0.1,*.contoso.com,machine1,machine2,machine3,machine4,machine5,192.168.*.*,AzureLocal-1"
+PS C:\Users\SetupUser> $TargetSolutionVersion = "12.2602.1002.10"
 ```
 
 </details>
@@ -365,6 +366,7 @@ PS C:\Users\SetupUser> $Tenant = "Your tenant ID"
 PS C:\Users\SetupUser> $Subscription = "Subscription ID"
 PS C:\Users\SetupUser> $RG = "myashcirg"
 PS C:\Users\SetupUser> $Region = "eastus"
+PS C:\Users\SetupUser> $TargetSolutionVersion = "12.2602.1002.10"
 ```
 </details>
 
