@@ -16,6 +16,21 @@ Azure Local offers hyperconverged infrastructure that hosts container workloads 
 
 This article describes how to use simplified machine provisioning to bootstrap and register the machines that you intend to form as an Azure Local instance.
 
+At a high level, there are three key stages:
+
+:::image type="content" source="media/ztp-install/ztp-stages.png" alt-text="Diagram showing the three stages of simplified machine provisioning." border="false" lightbox="media/ztp-install/ztp-stages.png":::
+
+1. **Prepare the machines**: Preparation ends with two artefacts: simplified machine provisioning software components installed on the device and generating an ownership voucher. Both need to be sent to the end customer. Anyone can prepare the devices, whether you’re a device manufacturer, an integrator, or even an end customer, but the approach is most valuable when preparation is done by someone other than the end customer.
+
+2. **Provision the machines from the Azure portal**: 
+
+    1. Set up site-level configuration: This configuration applies to all new machines under a site. This includes configurations like time zone, time server, machine IP address, proxy server, Azure Arc-gateway, Key vault for administrator credentials etc. Site-level configuration eliminates the manual configuration for each machine.
+
+    1. Provision the machines: Once the site configurations are done, claim device ownership using the ownership voucher generated while preparing the device. Select the operating system profile for each machine.
+
+3. **On-site setup**: When the devices arrive, the on-site staff only needs to connect them to the network and power them on. The device then automatically connects securely to a call home URL and gets fully configured from Azure. This includes setting up the operating system and network settings, making the device ready for use. Optionally, on-site staff track the installation and configure the device using the Configurator app. 
+
+
 ## Prerequisites
 
 Hardware prerequisites:
@@ -31,8 +46,21 @@ On-site prerequisites:
 
 Azure prerequisites:
 
-- Ensure the following resource providers are registered with your subscription. <!--insert image-->
-- In this preview release, only the **East US** is supported for provisioning resource. Your resource group can be created under your preferred region. 
+- Ensure the following resource providers are registered with your subscription:
+  - *Microsoft.HybridCompute*
+  - *Microsoft.GuestConfiguration*
+  - *Microsoft.HybridConnectivity*
+  - *Microsoft.Kubernetes*
+  - *Microsoft.KubernetesConfiguration*
+  - *Microsoft.ExtendedLocation*
+  - *Microsoft.EdgeOrder*
+  - *Microsoft.Edge*
+  - *Microsoft.DeviceOnboarding*
+  - *Microsoft.AzureStackHCI*
+  - *Microsoft.HybridContainerService*
+  - *Microsoft.ContainerService*
+
+- In this preview release, only the **East US** is supported for provisioning resource. Your resource group can be created under your preferred region.
 
 ## Step 1: Create USB installation media
 
@@ -102,10 +130,9 @@ Follow the steps to prepare server machines for simplified provisioning. This st
 
 1. Go to **Azure Arc** > **Operations** > **Provisioning (preview)**. On the **Get started** page, select **Provision** > **Azure Local** to provision Azure Local machines.  <!--insert image-->
 
-1. Create site.<!--insert image-->
-    Make a note of the resource group name. Make sure that you're either the resource group owner or have the Contributor and Role Based Access Control Administrator permissions on the resource group where the servers were provisioned.
+1. Create site. Make a note of the resource group name. Make sure that you're either the resource group owner or have the [Contributor](/azure/role-based-access-control/built-in-roles#contributor) and [Role Based Access Control Administrator](/azure/role-based-access-control/built-in-roles#role-based-access-control-administrator) permissions on the resource group where the servers were provisioned.
 
-1. After creation of the site, you can set up the provisioning configuration for your site. This configuration applies to all new machines under the site. 
+1. After creation of the site, you can set up the provisioning configuration for your site. This configuration applies to all new machines under the site.
 
 
     |Parameter  |Description  |
@@ -120,9 +147,9 @@ Follow the steps to prepare server machines for simplified provisioning. This st
     > [!NOTE]
     >  Support for Azure Arc gateway, which enables minimal endpoints connections to Azure Arc isn't supported in this preview. 
 
-1. Select the Site, Software version, Azure Key Vault, Local administrator credentials and add vouchers from step 2. If you have an existing onboarding service, select it. <!--insert image-->
+1. Select the Site, Software version, Azure Key Vault, Local administrator credentials and add vouchers from step 2. If you have an existing onboarding service, select it. 
 
-1. Once machines are added, select the pencil button to Edit. Provide the machine name as the Arc resource name. <!--insert image-->
+1. Once machines are added, select the pencil button to edit. Provide the machine name as the Arc resource name.
 
 1. On the **Review + create** tab, review details and select **Create**. 
 
@@ -175,6 +202,49 @@ To monitor the provisioning machine status, follow the below steps:
 
 1. Wait for the machine status to show **Ready to cluster**.
 
+## Troubleshooting
+
+You might need to collect the logs or diagnose the problems if you encounter any issues while configuring the machine. You can use the following resources to troubleshoot:
+
+- Run diagnostic tests. 
+- Collect a support package. 
+- Collect logs from your Azure Subscription.
+
+### Run diagnostic tests from the Configurator app
+
+To diagnose and troubleshoot any device issues related to hardware, time server, and network, you can run the diagnostics tests. Follow these steps to run the diagnostic tests from the app:
+
+1. Select the help icon in the top-right corner of the app to open the **Support + troubleshooting** pane.
+
+2. Select **Run diagnostic tests**. The diagnostic tests check the health of the server hardware, time server, and the network connectivity. The tests also check the status of the Azure Arc agent and the extensions. 
+
+3. After the tests are completed, the results are displayed. Resolve the issues and retry the operation. 
+
+### Collect a support package from the app
+
+A log package is composed of all the relevant logs that can help Microsoft Support troubleshoot any device issues. You can generate a log package via the local web UI. Follow these steps to collect a support package from the app: 
+
+1. Select the help icon in the top-right corner of the app to open the **Support + troubleshooting** pane.
+
+1. Select **Create** to begin support package collection. The package collection could take several minutes. 
+
+1. After the support package is created, select **Download**. A zipped package is downloaded on your local system. You can unzip the package and view the system log files.
+
+### Collect logs from your Azure subscription
+
+If you can't access the machine using Configurator App, you can get the app logs from the server. The logs are stored in the following location: Access logs by connecting via SSH for Azure Linux or PowerShell for Azure Stack HCI. 
+
+
+|Target operating system  |Log files |
+|---------|---------|
+|Azure Stack HCI    |`C:\Windows\System32\Bootstrap\Logs`|
+|Maintenance environment    |`/var/log/bootstrap`<br>`/var/log/provisioningextension`<br>`/var/log/trident-full.log`<br>`/var/log/messages`<br>`/var/log/bootstraprestservice`   |
+
+If you can access the app, follow the instructions in [Run diagnostic tests](#run-diagnostic-tests-from-the-configurator-app) to troubleshoot the issue and then [Collect a support package](#collect-a-support-package-from-the-app) if needed.
+
 ## Next steps
 
-- <!--insert link-->
+After your machines are registered with Azure Arc, proceed to deploy your Azure Local instance via one of the following options: 
+
+- [Deploy via Azure portal](../deploy/deploy-via-portal.md)
+- [Deploy via Azure Resource Manager (ARM) template ](../deploy/deployment-azure-resource-manager-template.md)
