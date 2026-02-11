@@ -32,7 +32,7 @@ Make sure the following prerequisites are met before proceeding:
 
 - You have access to Azure Local machines running release 2505 or later.
 - You have assigned the appropriate permissions to the subscription used for registration. For more information, see [Assign required permissions for Azure Local deployment](deployment-arc-register-server-permissions.md).
-- Review guidance on how to [handle preinstalled or outdated OS images during Azure Arc registration](#handle-preinstalled-or-outdated-os-images-during-azure-arc-registration).
+- Review guidance on [handling preinstalled or outdated OS images during Azure Arc registration](#handle-preinstalled-or-outdated-os-images-during-azure-arc-registration).
 
 
 > [!IMPORTANT]
@@ -315,7 +315,7 @@ Make sure the following prerequisites are met before proceeding:
 
 - You have access to Azure Local machines running release 2505 or later. 
 - You have assigned the appropriate permissions to the subscription used for registration. For more information, see [Assign required permissions for Azure Local deployment](deployment-arc-register-server-permissions.md).
-- Review guidance on how to [handle preinstalled or outdated OS images during Azure Arc registration](#handle-preinstalled-or-outdated-os-images-during-azure-arc-registration).
+- Review guidance on [handling preinstalled or outdated OS images during Azure Arc registration](#handle-preinstalled-or-outdated-os-images-during-azure-arc-registration).
 
 > [!IMPORTANT]
 > Run these steps as a local administrator on every Azure Local machine that you intend to cluster.
