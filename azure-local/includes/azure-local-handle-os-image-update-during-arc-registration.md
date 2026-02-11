@@ -7,15 +7,13 @@ ms.date: 02/11/2026
 ms.reviewer: alkohli
 ---
 
-### Handle preinstalled or outdated OS images during Azure Arc registration
-
 During Azure Arc registration, Azure Local verifies whether the OS image is current for its release baseline. If the image is outdated or unsupported, the system automatically updates it during registration.
 
 - The update typically takes 40-45 minutes.
 - A system reboot is required.
 - During the update, the registration status appears as **Update: InProgress**.
 
-   :::image type="content" source="media/deployment-with-azure-arc-gateway/operating-system-image-update-registration.png" alt-text="Screenshot of the console window with the registration in progress." lightbox="media/deployment-with-azure-arc-gateway/operating-system-image-update-registration.png":::
+   :::image type="content" source="media/azure-local-handle-os-image-update-during-arc-registration/operating-system-image-update-registration.png" alt-text="Screenshot of the console window with the registration in progress." lightbox="media/azure-local-handle-os-image-update-during-arc-registration/operating-system-image-update-registration.png":::
 
 #### Monitor and complete registration
 
