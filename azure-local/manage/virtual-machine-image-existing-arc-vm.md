@@ -6,33 +6,43 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
 ms.custom: devx-track-azurecli
-ms.date: 12/18/2025
+ms.date: 02/11/2026
 ms.subservice: hyperconverged
 ---
 
-# Create Azure Local VM image using existing Azure Local VMs enabled by Azure Arc
+# Create Azure Local VM image by using existing Azure Local VMs enabled by Azure Arc
 
 > Applies to: Hyperconverged deployments of Azure Local 2408.2 and later
 
-This article describes how to use Azure Command-Line Interface (CLI) to create virtual machine (VM) images for your Azure Local using existing Azure Local VMs. You will use the operating system (OS) disk of the Azure Local VM to create a gallery image on your Azure Local.
+This article describes how to create Azure Local VM images using Azure Command-Line Interface (CLI) and existing Azure Local VMs. Learn to use the operating system (OS) disk of an Azure Local VM to create a gallery image on your Azure Local.
 
 ## Prerequisites
 
 Before you begin, make sure that you:
 
 - Review and complete the [Azure Local VM management prerequisites](./azure-arc-vm-management-prerequisites.md).
-- Connect to your Azure Local using the instructions in [Connect to Azure Local via Azure CLI client](./azure-arc-vm-management-prerequisites.md#azure-command-line-interface-cli-requirements).
-- Prepare the VHDX image using `sysprep /generalize /shutdown /oobe`. For more information, see [Sysprep command-line options](/windows-hardware/manufacture/desktop/sysprep-command-line-options#oobe). This is true for both Windows and Linux VM images.
-- Power off the source VM before attempting to create the VM image.
+- Connect to your Azure Local by using the instructions in [Connect to Azure Local via Azure CLI client](./azure-arc-vm-management-prerequisites.md#azure-command-line-interface-cli-requirements).
+- Connect to the source VM with your credentials and run this command:
+  
+  ```
+  azcmagent disconnect --force-local-only
+  ```
+
+  > [!CAUTION]
+  > Running the `azcmagent disconnect --force-local-only` command deletes the VM's corresponding Azure resource and resets the local agent's configuration. This action is irreversible.
+
+- Prepare the VHDX image by using `sysprep /generalize /shutdown /oobe`. For more information, see [Sysprep command-line options](/windows-hardware/manufacture/desktop/sysprep-command-line-options#oobe). This step applies to both Windows and Linux VM images.
+
+  > [!CAUTION]
+  > Running Sysprep on an Azure Local VM renders the VM unusable. Sysprep resets system identity, removes user profiles, may invalidate Windows product activation, and can cause instability for applications that rely on machine-specific configuration. This action is irreversible.
+
+- Power off the source VM before you attempt to create the VM image.
 
 ## Create VM image from existing Azure Local VM
 
-You create a VM image starting from the OS disk of the Azure Local VM and then use this image to deploy VMs on your Azure Local.
+Create a VM image starting from the OS disk of the Azure Local VM. Then use this image to deploy VMs on your Azure Local.
 
-> [!IMPORTANT]
-> Running Sysprep on an Azure Local VM will render the VM unusable. Sysprep resets system identity, removes user profiles, may invalidate Windows product activation, and can cause instability for applications that rely on machine-specific configuration. This action is irreversible.
-
-Follow these steps to create a VM image using the Azure CLI.
+Follow these steps to create a VM image by using the Azure CLI.
 
 ### Sign in and set subscription
 
