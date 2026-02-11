@@ -28,12 +28,12 @@ Before you begin, make sure that you:
   azcmagent disconnect --force-local-only
   ```
 
-  [!CAUTION]
+  > [!CAUTION]
   > Running the `azcmagent disconnect --force-local-only` command deletes the VM's corresponding Azure resource and resets the local agent's configuration. This action is irreversible.
 
 - Prepare the VHDX image by using `sysprep /generalize /shutdown /oobe`. For more information, see [Sysprep command-line options](/windows-hardware/manufacture/desktop/sysprep-command-line-options#oobe). This step applies to both Windows and Linux VM images.
 
-  [!CAUTION]
+  > [!CAUTION]
   > Running Sysprep on an Azure Local VM renders the VM unusable. Sysprep resets system identity, removes user profiles, may invalidate Windows product activation, and can cause instability for applications that rely on machine-specific configuration. This action is irreversible.
 
 - Power off the source VM before you attempt to create the VM image.
