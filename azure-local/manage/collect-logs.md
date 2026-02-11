@@ -369,7 +369,7 @@ The `NoLogCollection` switch parameter allows you to send an ad-hoc set of logs 
 
 - You can combine the `SupplementaryLogs`, `ShareCredential`, and `BypassObsAgent` parameters with the `NoLogCollection` parameter.
 - The `SupplementaryLogs` parameter is mandatory when using `NoLogCollection`. It specifies the path to the logs that need to be sent to Microsoft.
-- You have the flexibility to pass either a share path or an output path on the host to the `SupplementaryLogs` parameter. If you’re using an unmapped share path, you must also use the `—ShareCredential` parameter.
+- You have the flexibility to pass either a share path or an output path on the host to the `SupplementaryLogs` parameter. If you're using an unmapped share path, you must also use the `-ShareCredential` parameter.
 
 **Syntax**
 
@@ -429,7 +429,7 @@ When collecting both diagnostic and ad-hoc logs, you can use the `SupplementaryL
 Without `SaveToPath` or `NoLogCollection`:
 
 ```powershell
-Send–DiagnosticData -SupplementaryLogs <path to adhoc logs to collect>
+Send-DiagnosticData -SupplementaryLogs <path to adhoc logs to collect>
 ```
 
 With `SaveToPath`:
@@ -543,7 +543,7 @@ The SharePath parameter can be used for one of the following purposes:
 - Save diagnostic logs to a share path or output path.
 - Send logs to Microsoft from a share path or output path. If you're using a share path and the share path isn't mapped, then the `ShareCredential` parameter must also be used.
 
-Since this parameter will be removed in future versions of the extension, use the `—SaveToPath` to save logs to a path, or `—SupplementaryLogs` when sending ad-hoc logs to Microsoft instead.
+Since this parameter will be removed in future versions of the extension, use the `-SaveToPath` parameter instead.
 
 **Syntax**
 
