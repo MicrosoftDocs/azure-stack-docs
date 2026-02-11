@@ -18,7 +18,7 @@ This article describes how to use simplified machine provisioning to bootstrap a
 
 At a high level, there are three key stages:
 
-:::image type="content" source="media/ztp-install/ztp-stages.png" alt-text="Diagram showing the three stages of simplified machine provisioning." border="false" lightbox="media/ztp-install/ztp-stages.png":::
+:::image type="content" source="media/simplified-machine-provisioning/simplified-machine-provisioning-stages.png" alt-text="Diagram showing the three stages of simplified machine provisioning." border="false" lightbox="media/simplified-machine-provisioning/simplified-machine-provisioning-stages.png":::
 
 1. **Prepare the machines**: Preparation ends with two artefacts: simplified machine provisioning software components installed on the device and generating an ownership voucher. Both need to be sent to the end customer. Anyone can prepare the devices, whether you’re a device manufacturer, an integrator, or even an end customer, but the approach is most valuable when preparation is done by someone other than the end customer.
 
