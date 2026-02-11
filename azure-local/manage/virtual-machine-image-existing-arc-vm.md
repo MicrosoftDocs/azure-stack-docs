@@ -24,7 +24,7 @@ Before you begin, make sure that you:
 - Connect to your Azure Local by using the instructions in [Connect to Azure Local via Azure CLI client](./azure-arc-vm-management-prerequisites.md#azure-command-line-interface-cli-requirements).
 - Connect to the source VM with your credentials and run this command:
   
-  ```Azure CLI
+  ```azurecli
   azcmagent disconnect --force-local-only
   ```
 
