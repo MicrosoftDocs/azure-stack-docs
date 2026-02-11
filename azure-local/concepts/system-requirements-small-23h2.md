@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
 ms.custom: references_regions
-ms.date: 05/07/2025
+ms.date: 02/11/2026
 ms.subservice: hyperconverged
 ---
 
@@ -20,7 +20,7 @@ This article describes the requirements for machines, storage, and networking fo
 
 [!INCLUDE [important](../includes/hci-preview.md)]
 
-## About the low capacity class
+## Low capacity class
 
 Azure Local supports a new class of devices with reduced hardware requirements. This new, low-cost hardware class called *low capacity* is suited for various edge scenarios across industry. To ensure compatibility, interoperability, security, and reliability, this class of hardware must meet Azure Local solution requirements.
 
@@ -50,7 +50,7 @@ The storage subsystem for an Azure Local running the Azure Stack HCI OS is layer
 
 - A minimum of one data drive is required to create a storage pool.
 - All drives in the pool must be of the same type, either NVMe or SSD.
-- Mixing drive types used for caching (NVMe and SSD) isn't supported. It is supported for the boot drive however.  
+- Mixing drive types used for caching (NVMe and SSD) isn't supported. It is supported for the boot drive, however.
 
 The supported volume configuration for the system is:
 
@@ -82,7 +82,7 @@ Removal of RDMA allows the use of a layer 2 network switch with VLAN support. Th
 ### Minimum speed requirements
 
 | Single node | Two or three nodes,<br>Switched storage | Two or three nodes,<br>Switchless storage |
-| -- | -- | -- |
+| --- | --- | --- |
 | 1 GbE linked to switch* | Dedicated network port for storage - 10 Gbps minimum.<br><br>Switch capable of 10 Gbps minimum (RDMA optional).<br><br>Management and compute network -1 Gpbs minimum. | Dedicated network adapter ports for storage - 10 Gbps minimum.<br><br>RDMA automatically enabled if supported by adapter.<br><br>Management and compute network via switch - 1 Gpbs minimum. |
 
 > [!NOTE]
@@ -93,7 +93,7 @@ Removal of RDMA allows the use of a layer 2 network switch with VLAN support. Th
 ### Supported network traffic grouping by intent
 
 | Intent grouping | Single node | Two or three nodes |
-| -- | -- | -- |
+| --- | --- | --- |
 | Management and compute (no storage) | yes | n/a |
 | Management and compute (1 Gbps min),<br>And dedicated storage traffic (10 Gbps) | yes | yes|
 | All traffic | RDMA capable switch, 10 Gbps minimum | RDMA capable switch, 10 Gbps minimum |
