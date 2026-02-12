@@ -35,8 +35,8 @@ The following table lists the requirements for low capacity hardware:
 | Number of machines | One to three machines are supported. Each machine must be the same model, manufacturer, have the same network adapters, and have the same number and type of storage drives. |
 | CPU | An Intel Xeon or AMD EPYC or later compatible processor with second-level address translation (SLAT). <br> Up to 14 physical cores |
 | Memory | A minimum of 32 GB per machine and a maximum of 128 GB per machine with Error-Correcting Code (ECC). |
-| Host network adapters | One network adapter that meets the [Azure Local host network requirements](./host-network-requirements.md)<br> Enabling RDMA on storage intent isn't required.<br> Minimum link speed must be 1 Gbps for single node deployment.<br>In two or three node deployments, a dedicated network port for storage with minimum 10 Gbps is required.   |
-| BIOS | Intel VT or AMD-V must be turned on.|
+| Host network adapters | One network adapter that meets the [Azure Local host network requirements](./host-network-requirements.md)<br> Enabling Remote Direct Memory Access (RDMA) on storage intent isn't required.<br> Minimum link speed must be 1 Gbps for single node deployment.<br>In two or three node deployments, a dedicated network port for storage with minimum 10 Gbps is required.   |
+| BIOS | Intel Virtualization Technology (Intel VT) or AMD-V must be turned on. |
 | Boot drive | A minimum size of 200 GB.|
 | Data drives | A minimum single disk of capacity 1 TB. <br> The drives must be all flash single drive type, either Nonvolatile Memory Express (NVME) or Solid-State Drive (SSD). <br> All the drives must be of the same type. <br> No caching. |
 | Trusted Platform Module (TPM) | TPM version 2.0 hardware must be present and enabled. |
@@ -77,7 +77,7 @@ The minimum networking requirements are as follows:
 - A Layer 2 switch with VLAN support is required.
 - Storage intent doesn't require RDMA to be enabled.
 
-Removal of RDMA allows the use of a layer 2 network switch with VLAN support. This further simplifies the configuration management and reduces the overall solution cost.
+Removal of RDMA allows the use of a layer 2 network switch with VLAN support, which further simplifies the configuration management and reduces the overall solution cost.
 
 ### Minimum speed requirements
 

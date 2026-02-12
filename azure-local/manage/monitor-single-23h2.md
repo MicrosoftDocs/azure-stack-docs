@@ -64,7 +64,7 @@ Follow these steps to enable Insights from the Azure portal:
 1. (Optional) You can also create a new DCR by selecting **Create New** on the **Insights configuration** page.
 
    > [!IMPORTANT]
-   > We strongly recommend that you don't create your own DCR. The DCR created by Insights includes a special data stream required for its operation. You can edit this DCR to collect more data, such as Windows and Syslog events. The DCRs created through AMA installation has a prefix `AzureStackHCI-` attached with the DCR name.
+   > We strongly recommend that you don't create your own DCR. The DCR created by Insights includes a special data stream required for its operation. You can edit this DCR to collect more data, such as Windows and Syslog events. The DCRs created through AMA installation each have a prefix `AzureStackHCI-` attached with the DCR name.
 
    1. On the **New data collection rule** page, specify the subscription, DCR name, and data collection endpoint (DCE) name. DCEs are used to access the configuration service to fetch associated DCRs for Azure Monitor Agent. For more information about DCE, see [Data collection endpoints in Azure Monitor](/azure/azure-monitor/essentials/data-collection-endpoint-overview).
 

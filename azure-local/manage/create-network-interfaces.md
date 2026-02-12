@@ -15,8 +15,7 @@ ms.subservice: hyperconverged
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
-This article describes how to create network interfaces that you can associate with an Azure Local virtual machine (VM). You can create network interfaces using the Azure portal or Azure Command-Line Interface (CLI). 
-
+This article describes how to create network interfaces that you can associate with an Azure Local virtual machine (VM). You can create network interfaces using the Azure portal or Azure Command-Line Interface (CLI).
 
 ## About network interfaces
 

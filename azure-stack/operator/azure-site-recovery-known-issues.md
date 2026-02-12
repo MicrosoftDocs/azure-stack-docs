@@ -23,7 +23,7 @@ When you protect a virtual machine (VM), Azure Site Recovery needs to add an ext
 When you try to protect a VM with a disk of 1023Gb, the following behavior occurs:
 
 - Enable protection succeeds as a seed disk of only 1 GB is created and ready for use. There's no error at this step.
-- Replication is blocked at **<percent>% Synchronized** and after a while, the replication health becomes **Critical** with the error **AzStackToAzStackSourceAgentDiskSourceAgentSlowResyncProgressOnPremToAzure**. The error occurs because during replication, Site Recovery tries to resize the seed disk to 1,024 GB and write to it. This operation fails, as Azure Stack Hub doesn't support 1,024 GB disks.
+- Replication is blocked at **(percent)% Synchronized** and after a while, the replication health becomes **Critical** with the error **AzStackToAzStackSourceAgentDiskSourceAgentSlowResyncProgressOnPremToAzure**. The error occurs because during replication, Site Recovery tries to resize the seed disk to 1,024 GB and write to it. This operation fails, as Azure Stack Hub doesn't support 1,024 GB disks.
 
   :::image type="content" source="media/azure-site-recovery-known-issues/max-disk-number-1.png" alt-text="Screenshot of Azure portal showing maximum disk error." lightbox="media/azure-site-recovery-known-issues/max-disk-number-1.png":::
 
