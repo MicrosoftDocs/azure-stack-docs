@@ -14,7 +14,7 @@ ms.subservice: hyperconverged
 This article lists the various security updates that are available for Azure Local 2024 releases.
 
 > [!NOTE]
-Azure Local 2024 releases are not in a supported state. For more information, see [Azure Local release information](../release-information-23h2.md).
+> Azure Local 2024 releases are not in a supported state. For more information, see [Azure Local release information](../release-information-23h2.md).
 
 ## December OS security update (KB5048653) for Azure Local
 

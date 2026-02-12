@@ -14,7 +14,7 @@ ms.subservice: hyperconverged
 This article lists the various security updates that are available for Azure Local 2023 releases.
 
 > [!NOTE]
-Azure Local 2023 releases are not in a supported state. For more information, see [Azure Local release information](../release-information-23h2.md).
+> Azure Local 2023 releases are not in a supported state. For more information, see [Azure Local release information](../release-information-23h2.md).
 
 ## December 2023 OS security update (KB 5033383) for Azure Local
 

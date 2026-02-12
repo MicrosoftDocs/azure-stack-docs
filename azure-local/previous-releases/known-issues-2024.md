@@ -14,7 +14,7 @@ ms.subservice: hyperconverged
 This article identifies critical known issues and their workarounds in Azure Local 2024 releases.
 
 > [!NOTE]
-Azure Local 2024 releases are not in a supported state. For more information, see [Azure Local release information](../release-information-23h2.md).
+> Azure Local 2024 releases are not in a supported state. For more information, see [Azure Local release information](../release-information-23h2.md).
 
 ## Known issues for version 2411.3
 

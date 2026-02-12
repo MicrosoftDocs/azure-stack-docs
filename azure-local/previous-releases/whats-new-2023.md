@@ -14,7 +14,7 @@ ms.subservice: hyperconverged
 This article lists the features and improvements that are available in hyperconverged deployments of Azure Local (*formerly Azure Stack HCI*) 2023 releases.
 
 > [!NOTE]
-Azure Local 2023 releases are not in a supported state. For more information, see [Azure Local release information](../release-information-23h2.md).
+> Azure Local 2023 releases are not in a supported state. For more information, see [Azure Local release information](../release-information-23h2.md).
 
 ## Features and improvements in 2311.5
 
