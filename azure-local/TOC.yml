@@ -738,7 +738,22 @@ items:
       href: https://azure.com/hci
     - name: Pricing
       href: https://azure.microsoft.com/products/local/#Pricing
-  
+    - name: 2024 release notes
+      items:
+      - name: What's new in Azure Local?
+        href: previous-versions/whats-new-2024.md
+      - name: Known issues
+        href: previous-versions/known-issues-2024.md
+      - name: Security updates
+        href: previous-versions/security-updates-2024.md
+    - name: 2023 release notes
+      items:
+      - name: What's new in Azure Local?
+        href: previous-versions/whats-new-2023.md
+      - name: Known issues
+        href: previous-versions/known-issues-2023.md
+      - name: Security updates
+        href: previous-versions/security-updates-2023.md
 - name: Multi-rack deployments
   items:
   - name: Overview
