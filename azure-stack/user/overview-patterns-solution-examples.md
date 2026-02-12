@@ -28,7 +28,7 @@ Azure Stack brings the agility of cloud computing to your on-premises environmen
 
 Apps that span clouds are also referred to as *hybrid apps*. You can build hybrid cloud apps in Azure and deploy them to your connected or disconnected datacenter located anywhere.
 
-Hybrid app scenarios vary greatly with the resources that are available for development. They also span considerations such as geography, security, internet access, and others. Although the solution patterns and examples described here may not address all requirements, they provide guidelines and examples to explore and reuse while implementing hybrid solutions.
+Hybrid app scenarios vary greatly with the resources that are available for development. They also span considerations such as geography, security, internet access, and others. Although the solution patterns and examples described here might not address all requirements, they provide guidelines and examples to explore and reuse while implementing hybrid solutions.
 
 ## Solution patterns
 
@@ -41,7 +41,7 @@ There are two types of pattern articles:
 
 ## Solution deployment guides
 
-Step-by-step deployment guides help you deploy a solution example. The guide may also refer to a companion code sample, stored in the GitHub [solutions sample repo](https://github.com/Azure-Samples/azure-intelligent-edge-patterns).
+Step-by-step deployment guides help you deploy a solution example. The guide might also refer to a companion code sample, stored in the GitHub [solutions sample repo](https://github.com/Azure-Samples/azure-intelligent-edge-patterns).
 
 ## Next steps
 
