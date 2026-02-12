@@ -66,7 +66,7 @@ Your Azure Local host must meet the following requirements:
 
 - Your system must support an Azure Local solution with GPU support. To browse your options, see the [Azure Local Catalog](https://azurestackhcisolutions.azure.microsoft.com/#/catalog?gpuSupport=GPU_P&gpuSupport=DDA).
 
-- You have access to Azure Local.
+- You must have access to Azure Local.
 
 - You must create a homogeneous configuration for GPUs across all the machines in your system. A homogeneous configuration consists of installing the same make and model of GPU.
 
