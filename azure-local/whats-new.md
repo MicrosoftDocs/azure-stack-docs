@@ -13,6 +13,25 @@ ms.subservice: hyperconverged
 
 This article lists the features and improvements that are available in hyperconverged deployments of Azure Local (*formerly Azure Stack HCI*). The latest version of Azure Local solution focuses on cloud-based deployment and updates, cloud-based monitoring, a new and simplified experience for Azure Local virtual machine (VM) management, security, and more.
 
+::: moniker range="=azloc-2602"
+
+## Features and improvements in 2602
+
+The February 2026 release of hyperconverged deployments of Azure Local is version **12.2602.x.x**. For more information, see [Release information summary](./release-information-23h2.md).
+This release includes various reliability improvements and other bug fixes.
+
+- **OS changes**:
+
+    - In 2602 release, all the new and existing deployments of Azure Local run the new OS version **26100.xxxxx** (download from the Azure portal).
+
+    - You also need a driver that's compatible with OS version **26100.xxxxx** or Windows Server 2025.
+
+    - For Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog), the OS is preinstalled. Work with your Original Equipment Manufacturer (OEM) to get a compatible OS image and a compatible driver.
+
+- **.NET updates**: This build uses .NET version **8.0.x** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
+
+::: moniker-end
+
 ::: moniker range="=azloc-2601"
 
 ## Features and improvements in 2601
