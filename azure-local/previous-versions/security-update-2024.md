@@ -1,6 +1,6 @@
 ---
-title:  Security updates for Azure Local
-description: Security updates for Azure Local.
+title:  Security updates for Azure Local 2024 versions
+description: Security updates for Azure Local 2024 versions.
 author: alkohli
 ms.topic: release-notes
 ms.date: 02/11/2026
