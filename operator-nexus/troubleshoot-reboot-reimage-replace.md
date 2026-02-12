@@ -540,7 +540,7 @@ Restarting, reimaging, and replacing are effective troubleshooting methods for a
 | ----------- | ------------------------------------ | -------------------------------- | ---------------------------------------------------------- |
 | **Restart** | Temporary glitches, unresponsive VMs | Brief downtime                   | None, fastest option                                       |
 | **Reimage** | OS corruption, security concerns     | Longer downtime, preserves tenant data  | Workload evacuation recommended                            |
-| **Replace** | Hardware component failures          | Longest downtime, preserves tenant data with `--storage-policy="Preserve"` | Hardware component replacement, specific parameters needed |
+| **Replace** | Hardware component failures          | Longest downtime, removes tenant data unless option `--storage-policy="Preserve"` is used | Hardware component replacement, specific parameters needed |
 
 ### Best practices
 
