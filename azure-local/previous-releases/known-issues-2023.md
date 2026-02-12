@@ -1,6 +1,6 @@
 ---
-title: Release notes with fixed and known issues in Azure Local 2023 versions
-description: Read about the known issues and fixed issues in Azure Local 2023 versions.
+title: Release notes with fixed and known issues in Azure Local 2023 releases
+description: Read about the known issues and fixed issues in Azure Local 2023 releases.
 author: alkohli
 ms.topic: troubleshooting-general
 ms.date: 02/11/2026
@@ -9,9 +9,12 @@ ms.reviewer: alkohli
 ms.subservice: hyperconverged
 ---
 
-# Known issues in Azure Local 2023 versions
+# Known issues in Azure Local 2023 releases
 
-This article identifies critical known issues and their workarounds in Azure Local 2023 versions.
+This article identifies critical known issues and their workarounds in Azure Local 2023 releases.
+
+> [!NOTE]
+Azure Local 2023 releases are not in a supported state. For more information, see [Azure Local release information](../release-information-23h2.md).
 
 ## Issues for version 2311.5
 

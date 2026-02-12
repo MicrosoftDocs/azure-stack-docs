@@ -1,6 +1,6 @@
 ---
-title:  Security updates for Azure Local 2023 versions
-description: Security updates for Azure Local 2023 versions.
+title:  Security updates for Azure Local 2023 releases
+description: Security updates for Azure Local 2023 releases.
 author: alkohli
 ms.topic: release-notes
 ms.date: 02/11/2026
@@ -9,9 +9,12 @@ ms.reviewer: alkohli
 ms.subservice: hyperconverged
 ---
 
-# Security updates for Azure Local 2023 versions
+# Security updates for Azure Local 2023 releases
 
-This article lists the various security updates that are available for Azure Local 2023 versions.
+This article lists the various security updates that are available for Azure Local 2023 releases.
+
+> [!NOTE]
+Azure Local 2023 releases are not in a supported state. For more information, see [Azure Local release information](../release-information-23h2.md).
 
 ## December 2023 OS security update (KB 5033383) for Azure Local
 
