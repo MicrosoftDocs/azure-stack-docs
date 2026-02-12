@@ -8,7 +8,7 @@ ms.date: 02/03/2026
 ms.subservice: hyperconverged
 ---
 
-# Simplified machine provisioning for Azure Local (preview)
+# Simplified machine provisioning for hyperconverged deployments of Azure Local (preview)
 
 [!INCLUDE [hci-preview](../includes/hci-preview.md)]
 
@@ -98,7 +98,7 @@ Follow the steps to prepare server machines for simplified provisioning. Repeat 
 
     1. Additionally, ensure that Secure Boot and TPM are enabled.
 
-1. Wait for the operating system installation to be completed. Expect the device to reboot twice. This process usually takes up to 30 minutes.
+1. Wait for the operating system installation to complete. Expect the device to reboot twice. This process usually takes up to 30 minutes.
 
 1. Wait for the maintenance environment setup to be completed. The console shows **ROE setup completed successfully**.
 
@@ -139,23 +139,23 @@ Follow the steps to prepare server machines for simplified provisioning. Repeat 
 
     |Parameter  |Description  |
     |---------|---------|
-    |Onboarding service     |  If you select **(New)** in this section, the provisioning process creates a new Onboarding service in the chosen subscription, resource group, and region.<br><br>You can also select an existing Onboarding Service if you created one before. <br><br>**Important**: The Onboarding Service instance must be in the same region as the target Azure Arc machine.  |
+    |Onboarding service     |  The Onboarding Service (in preview) helps with zero-touch provisioning of the servers. Servers register into Azure automatically without human intervention. When powered on for the first time, servers contact the Onboarding Service endpoint for secure onboarding into Azure.<br><br> If you select **(New)** in this section, the provisioning process creates a new Onboarding service in the chosen subscription, resource group, and region.<br><br>You can also select an existing Onboarding Service if you created one before. <br><br>**Important**: The Onboarding Service instance must be in the same region as the target Azure Arc machine.  |
     |Time zone     | Select the common time zone for all the machines under the site. You can change it later. New machines use this time zone, but existing ones don't.       |
-    |Time server    |  Enter the common time server for synchronized system time for all the machines under the site. You can change it later. New machines will use this time server, but existing ones won't.        |
-    |IP assignment | Select the IP address assignment type for all machines at the site. Choose between DHCP or static IP addresses. If static, define the IP range, subnet mask, and default gateway IP address.<br><br>Define the IP assignment at the site level. This configures each machine with one IP address. After connecting to the local network using the IP address, each device connects to Azure and downloads the configuration. Configuring IP assignment at a site level simplifies connecting machines to the local network, avoiding manual IP address configuration for each machine.   |
-    |Azure Arc connectivity | Select whether to connect via a public endpoint or a proxy server. If you use a public endpoint, devices connect directly to Azure Arc endpoints. If you use a proxy server, configure the proxy server and the list of addresses to bypass the proxy.<br><br> This simplifies the configuration where all the machines associated with this site use the same Azure Arc connectivity settings ensuring consistency.  |
+    |Time server    |  Enter the common time server for synchronized system time for all the machines under the site. You can change it later. New machines use this time server, but existing ones don't. |
+    |IP assignment | Select the IP address assignment type for all machines at the site. Choose between DHCP or static IP addresses. If static, define the IP range, subnet mask, and default gateway IP address.<br><br>Define the IP assignment at the site level. This configures each machine with one IP address. After connecting to the local network using the IP address, each device connects to Azure and downloads the configuration. Configuring IP assignment at a site level simplifies connecting machines to the local network, avoiding manual IP address configuration for each machine. |
+    |Azure Arc connectivity | Select whether to connect via a public endpoint or a proxy server. If you use a public endpoint, devices connect directly to Azure Arc endpoints. If you use a proxy server, configure the proxy server and the list of addresses to bypass the proxy.<br><br> This simplifies the configuration where all the machines associated with this site use the same Azure Arc connectivity settings ensuring consistency. |
     |Local administrator credentials    | Provide a username (for example, Administrator) and a password. The password must have at least 12 characters, include lower and upper-case characters, and include a digit and a special character.  |
 
     > [!NOTE]
     >  Support for Azure Arc gateway, which enables minimal endpoints connections to Azure Arc isn't supported in this preview. 
 
-1. Select the Site, Software version, Azure Key Vault, Local administrator credentials and add vouchers from step 2. If you have an existing onboarding service, select it. 
+1. Select the Site, Software version, Azure Key Vault, Local administrator credentials, and add vouchers from step 2. If you have an existing onboarding service, select it. 
 
-1. Once machines are added, select the pencil button to edit. Provide the machine name as the Arc resource name.
+1. Once you add machines, select the pencil button to edit. Provide the machine name as the Arc resource name.
 
-1. On the **Review + create** tab, review details and select **Create**. 
+1. On **Review + create**, review details and select **Create**.
 
-1. Ensure that your on-site staff have racked, cabled, and booted the machines. Wait 15 minutes for Arc-enabled servers to be created and mandatory extensions to install. 
+1. Ensure that your on-site staff racked, cabled, and booted the machines. Wait 15 minutes for Arc-enabled servers to be created and mandatory extensions to install. 
 
 1. In the Azure portal, go to **Azure Arc** > **Operations** > **Provisioning (preview)**. 
 
@@ -163,14 +163,14 @@ Follow the steps to prepare server machines for simplified provisioning. Repeat 
 
 1. Select the machine and drill down into the server. Check status and other details.
 
-When devices arrive, connect them to the network and power on. The device will automatically connect securely to a call home URL. It will then get fully configured from Azure. This includes setting up the operating system and network settings. The device is ready for use.
+When devices arrive, connect them to the network and power on. The device automatically connects securely to a call home URL. It then gets fully configured from Azure. This configuration includes setting up the operating system and network settings. The device is ready for use.
 
 This process reduces setup time and expertise needed at remote sites. Configuration is all done from Azure. Use Azure ARM templates to provision servers at many remote sites. This makes the process quicker, repeatable, and scalable.
 
 ## Step 4: Monitor machine set up via app (optional)
 
 > [!IMPORTANT]
-> Skip this step if you're not using a static IP or you're not tracking server installation remotely. Start these steps a few minutes after powering on the server and connecting it to the local network.
+> Skip this step if you're not using a static IP or if you're not tracking server installation remotely. Start these steps a few minutes after powering on the server and connecting it to the local network.
 
 Follow these steps to track the installation progress from your Windows 11 PC.
 
@@ -178,7 +178,7 @@ Follow these steps to track the installation progress from your Windows 11 PC.
 
 1. Use the device serial number or IP address. Enter the local administrator’s credentials. The default username is *edgeuser*. The default password is *Password1*.
 
-1. Wait for the Azure Arc configuration to finish on maintenance environment. Post this, the target operating system from Step 2.16 will also install.
+1. Wait for the Azure Arc configuration to finish on maintenance environment. After this step, the target operating system from Step 2.16 installs.
 
 1. After installing the target operating system, use the IP address or hostname. Use the administrator credentials from Step 2.16. Wait for the configuration to finish.
 
@@ -186,21 +186,21 @@ Follow these steps to track the installation progress from your Windows 11 PC.
 
 ## Step 5: Verify Azure Arc connectivity
 
-Confirm your machines are successfully connected to Azure. During the provisioning, each machine performs these steps: 
+Confirm your machines connect to Azure. During provisioning, each machine performs these steps:
 
 1. **Connect maintenance environment to cloud**: Establish an initial Azure connection using the device identity created from the ownership voucher. The device must authenticate successfully before continuing.
 
 1. **Install extensions on maintenance environment**: Install mandatory Azure Arc extensions on the maintenance environment.
 
-1. **Download and install Azure Local operating system**: One of the mandatory Azure Arc extensions installed on the maintenance environment will download the Azure Local operating system image selected in Step 3.4 and install the operating system.
+1. **Download and install Azure Local operating system**: One of the mandatory Azure Arc extensions installed on the maintenance environment downloads the Azure Local operating system image selected in Step 3.4 and installs the operating system.
 
 1. **Azure Arc connect the Azure Local operating system**: After setup completes, the machine reboots into the Azure Local operation system and gets automatically connected to Azure Arc.
 
-To monitor the provisioning machine status, follow the below steps:
+To monitor the provisioning machine status, follow these steps:
 
-1. In the Azure portal, navigate to **Azure Arc** > **Operations** > **Provisioning (preview)** > select the **Provisioned machines** tab.
+1. In the Azure portal, go to **Azure Arc** > **Operations** > **Provisioning (preview)** > select the **Provisioned machines** tab.
 
-1. Verify your machine's status in the provisioned machines list. Select a machine’s status to view progress details.
+1. Check your machine's status in the provisioned machines list. Select a machine’s status to view progress details.
 
 1. Wait for the machine status to show **Ready to cluster**.
 
