@@ -745,7 +745,7 @@ items:
         - name: What's new in Azure Local?
           href: previous-releases/whats-new-2024.md
         - name: Known issues
-          href: previous-/known-issues-2024.md
+          href: previous-releases/known-issues-2024.md
         - name: Security updates
           href: previous-releases/security-update-2024.md
       - name: 2023
