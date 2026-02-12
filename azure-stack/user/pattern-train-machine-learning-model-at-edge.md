@@ -3,7 +3,7 @@ title: Train machine learning model at the edge pattern
 description: Learn how to do machine learning model training at the edge with Azure and Azure Stack Hub.
 author: ronmiab 
 ms.topic: how-to
-ms.date: 04/25/2025
+ms.date: 02/11/2026
 ms.author: robess
 ms.reviewer: anajod
 ms.lastreviewed: 11/05/2019

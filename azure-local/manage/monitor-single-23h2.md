@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.reviewer: saniyaislam
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 03/04/2025
+ms.date: 02/11/2026
 ms.custom: sfi-image-nochange
 ms.subservice: hyperconverged
 ---
@@ -64,7 +64,7 @@ Follow these steps to enable Insights from the Azure portal:
 1. (Optional) You can also create a new DCR by selecting **Create New** on the **Insights configuration** page.
 
    > [!IMPORTANT]
-   > We strongly recommend that you don't create your own DCR. The DCR created by Insights includes a special data stream required for its operation. You can edit this DCR to collect more data, such as Windows and Syslog events. The DCRs created through AMA installation will have a prefix `AzureStackHCI-` attached with the DCR name.
+   > We strongly recommend that you don't create your own DCR. The DCR created by Insights includes a special data stream required for its operation. You can edit this DCR to collect more data, such as Windows and Syslog events. The DCRs created through AMA installation has a prefix `AzureStackHCI-` attached with the DCR name.
 
    1. On the **New data collection rule** page, specify the subscription, DCR name, and data collection endpoint (DCE) name. DCEs are used to access the configuration service to fetch associated DCRs for Azure Monitor Agent. For more information about DCE, see [Data collection endpoints in Azure Monitor](/azure/azure-monitor/essentials/data-collection-endpoint-overview).
 
@@ -103,7 +103,7 @@ The `Microsoft-windows-sddc-management/operational` and `Microsoft-windows-healt
 
 :::image type="content" source="media/monitor-single-23h2/event-channel.png" alt-text="Screenshot showing Add data source window." lightbox="media/monitor-single-23h2/event-channel.png":::
 
-By collecting these logs, Insights shows the health status of the individual nodes, drives, volumes, and VMs. By default, five performance counters are added.
+Insights collects these logs and shows the health status of the individual nodes, drives, volumes, and virtual machines (VMs). By default, five performance counters are added.
 
 #### Performance counters
 
@@ -113,12 +113,12 @@ By default, five performance counters are added:
 
 The following table describes the performance counters that are monitored:
 
-| Performance counters | Description |
+| Performance counter | Description |
 |--|--|
-| Memory(*)\Available Bytes | Available Bytes is the amount of physical memory, in bytes, immediately available for allocation to a process or for system use. |
+| Memory(*)\Available Bytes | The amount of physical memory, in bytes, immediately available for allocation to a process or for system use. |
 | Network Interface(*)\Bytes Total/sec | The rate at which bytes are sent and received over each network adapter, including framing characters. Bytes Total/sec is a sum of Bytes Received/sec and Bytes Sent/sec. |
 | Processor(_Total)\% Processor Time | The percentage of elapsed time that all of process threads used the processor to execution instructions. |
-| RDMA Activity(*)\RDMA Inbound Bytes/sec | Rate of data received over RDMA by the network adapter per second. |
+| RDMA Activity(*)\RDMA Inbound Bytes/sec | Rate of data received over Remote Direct Memory Access (RDMA) by the network adapter per second. |
 | RDMA Activity(*)\RDMA Outbound Bytes/sec | Rate of data sent over RDMA by the network adapter per second. |
 
 After you enable Insights, it can take up to 15 minutes to collect the data. When the process is finished, you're able to see a rich visualization of the health of your cluster from the **Insights** menu on the left pane:
@@ -184,11 +184,11 @@ You can view health issues like unsupported hardware, unresponsive disk, bad blo
 
 | Metric | Description | Unit | Example |
 |--|--|--|--|
-| Fault | A short description of health faults. On clicking the link, a side panel opens with more information. | No unit | PoolCapacityThresholdExceeded |
-| Faulting resource type | The type of resource that encountered a fault. | No unit | StoragePool |
-| Faulting resource ID | Unique ID for the resource that encountered a health fault. | Unique ID | {a0a0a0a0-bbbb-cccc-dddd-e1e1e1e1e1e1}: SP:{b1b1b1b1-cccc-dddd-eeee-f2f2f2f2f2f2} |
-| Severity | Severity of fault could be warning or critical. | No unit | Warning |
-| Initial fault time | Timestamp of when the node was last updated. | Datetime | 4/9/2022, 12:15:42 PM |
+| Fault | A short description of health faults. On clicking the link, a side panel opens with more information. | No unit | `PoolCapacityThresholdExceeded` |
+| Faulting resource type | The type of resource that encountered a fault. | No unit | `StoragePool` |
+| Faulting resource ID | Unique ID for the resource that encountered a health fault. | Unique ID | `{a0a0a0a0-bbbb-cccc-dddd-e1e1e1e1e1e1}: SP:{b1b1b1b1-cccc-dddd-eeee-f2f2f2f2f2f2}` |
+| Severity | Severity of fault could be warning or critical. | No unit | `Warning` |
+| Initial fault time | Timestamp of when the node was last updated. | Datetime | `4/9/2022, 12:15:42 PM` |
 
 ### Nodes
 
@@ -196,16 +196,16 @@ Provides health and performance information for the servers.
 
 | Metric | Description | Unit | Example |
 |--|--|--|--|
-| Nodes | The names of the nodes in the cluster. | No unit | VM-1 |
-| Last updated | The date and time of when the node was last updated. | Datetime | 4/9/2022, 12:15:42 PM |
-| Status | The health status of the nodes in the cluster. | It can be healthy, warning, critical, and other | Healthy |
-| CPU usage | The % of time the process has used the CPU. | Percent | 56% |
-| Memory usage | Memory usage of the node process is equal to counter Process\Private Bytes plus the size of memory-mapped data. | Percent | 16% |
-| Logical processors | The number of logical processors. | Count | 2 |
-| CPUs | The number of CPUs. | Count | 2 |
-| Uptime | The time during which a machine, especially a computer, is in operation. | Timespan | 2.609 hr. |
-| Site | The name of the site to which the node belongs. | Site name | SiteA |
-| Domain name | The local domain to which the node belongs. | No unit | Contoso.local |
+| Nodes | The names of the nodes in the cluster. | No unit | `VM-1` |
+| Last updated | The date and time of when the node was last updated. | Datetime | `4/9/2022, 12:15:42 PM` |
+| Status | The health status of the nodes in the cluster. | It can be healthy, warning, critical, and other | `Healthy` |
+| CPU usage | The % of time the process has used the CPU. | Percent | `56%` |
+| Memory usage | Memory usage of the node process is equal to counter Process\Private Bytes plus the size of memory-mapped data. | Percent | `16%` |
+| Logical processors | The number of logical processors. | Count | `2` |
+| CPUs | The number of CPUs. | Count | `2` |
+| Uptime | The time during which a machine, especially a computer, is in operation. | Timespan | `2.609 hr.` |
+| Site | The name of the site to which the node belongs. | Site name | `SiteA` |
+| Domain name | The local domain to which the node belongs. | No unit | `Contoso.local` |
 
 ### Virtual machines
 
@@ -213,13 +213,13 @@ Provides the state of the virtual machines on each node in the cluster. A VM can
 
 | Metric | Description | Unit | Example |
 |--|--|--|--|
-| Nodes | The name of the node. | No unit | Sample-VM-1 |
-| Last Updated | This gives the date and time of when the node was last updated | Datetime | 4/9/2022, 12:24:02 PM |
-| Total VMs | The number of VMs in a node. | Count | 0 of 0 running |
-| Running | The number of VMs running in a node. | Count | 2 |
-| Stopped | The number of VMs stopped in a node. | Count | 3 |
-| Failed | The number of VMs failed in a node. | Count | 2 |
-| Other | If VM is in one of the following states (Unknown, Starting, Snapshotting, Saving, Stopping, Pausing, Resuming, Paused, Suspended), it's considered as "Other." | Count | 2 |
+| Nodes | The name of the node. | No unit | `Sample-VM-1` |
+| Last Updated | This gives the date and time of when the node was last updated | Datetime | `4/9/2022, 12:24:02 PM` |
+| Total VMs | The number of VMs in a node. | Count | `0 of 0 running` |
+| Running | The number of VMs running in a node. | Count | `2` |
+| Stopped | The number of VMs stopped in a node. | Count | `3` |
+| Failed | The number of VMs failed in a node. | Count | `2` |
+| Other | If VM is in one of the following states (Unknown, Starting, Snapshotting, Saving, Stopping, Pausing, Resuming, Paused, Suspended), it's considered as "Other." | Count | `2` |
 
 ### Storage
 
@@ -227,17 +227,17 @@ The following table provides the health of volumes and drives in the cluster:
 
 | Metric | Description | Unit | Example |
 |--|--|--|--|
-| Volumes | The name of the volume | No unit | ClusterPerformanceHistory |
-| Last updated | The date and time of when the storage was last updated. | Datetime | 4/14/2022, 2:58:55 PM |
-| Status | The status of the volume. | Healthy, warning, critical, and other. | Healthy |
-| Total capacity | The total capacity of the device in bytes during the reporting period. | Bytes | 2.5 GB |
-| Available capacity | The available capacity in bytes during the reporting period. | Bytes | 20B |
-| Iops | Input/output operations per second. | Per second | 45/s |
-| Throughput | Number of bytes per second the Application Gateway has served. | Bytes per second | 5B/s |
-| Latency | The time it takes for the I/O request to be completed. | Second | 0.0016 s |
-| Resiliency | The capacity to recover from failures. Maximizes data availability. | No unit | Three Way Mirror |
-| Deduplication | The process of reducing the physical number of bytes of data that needs to be stored on disk. | Available or not | Yes/No |
-| File system | The type of filesystem. | No unit | ReFS |
+| Volumes | The name of the volume | No unit | `ClusterPerformanceHistory` |
+| Last updated | The date and time of when the storage was last updated. | Datetime | `4/14/2022, 2:58:55 PM` |
+| Status | The status of the volume. | Healthy, warning, critical, and other. | `Healthy` |
+| Total capacity | The total capacity of the device in bytes during the reporting period. | Bytes | `2.5 GB` |
+| Available capacity | The available capacity in bytes during the reporting period. | Bytes | `20B` |
+| Iops | Input/output operations per second. | Per second | `45/s` |
+| Throughput | Number of bytes per second the Application Gateway has served. | Bytes per second | `5B/s` |
+| Latency | The time it takes for the I/O request to be completed. | Second | `0.0016 s` |
+| Resiliency | The capacity to recover from failures. Maximizes data availability. | No unit | `Three Way Mirror` |
+| Deduplication | The process of reducing the physical number of bytes of data that needs to be stored on disk. | Available or not | `Yes/No` |
+| File system | The type of filesystem. | No unit | `ReFS` |
 
 ## Azure Monitor pricing
 
