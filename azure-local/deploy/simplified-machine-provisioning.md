@@ -134,9 +134,6 @@ Follow the steps to prepare server machines for simplified provisioning. Repeat 
 
 1. After creating the site, set up the provisioning configuration for your site. This configuration applies to all new machines under the site.
 
-|Onboarding service     |  The Onboarding Service (in private preview) helps with zero-touch provisioning of the servers. Servers register into Azure automatically without human intervention. When powered on for the first time, servers contact the Onboarding Service endpoint for secure onboarding into Azure. 
-|Onboarding service     |  The Onboarding Service (in private preview) helps with zero-touch provisioning of the servers. Servers registers into Azure automatically without human intervention. When powered on for the first time, servers contact the Onboarding Service endpoint for secure onboarding into Azure. 
-
     |Parameter  |Description  |
     |---------|---------|
     |Onboarding service     |  The Onboarding Service (in preview) helps with zero-touch provisioning of the servers. Servers register into Azure automatically without human intervention. When powered on for the first time, servers contact the Onboarding Service endpoint for secure onboarding into Azure.<br><br> If you select **(New)** in this section, the provisioning process creates a new Onboarding service in the chosen subscription, resource group, and region.<br><br>You can also select an existing Onboarding Service if you created one before. <br><br>**Important**: The Onboarding Service instance must be in the same region as the target Azure Arc machine.  |
