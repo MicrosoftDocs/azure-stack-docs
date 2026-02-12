@@ -60,7 +60,7 @@ Azure prerequisites:
   - *Microsoft.HybridContainerService*
   - *Microsoft.ContainerService*
 
-- In this preview release, only the **East US** is supported for provisioning resource. Your resource group can be created under your preferred region.
+- In this preview release, only the **East US** region is supported for provisioning resource. Your resource group can be created under your preferred region.
 
 ## Step 1: Create USB installation media
 
