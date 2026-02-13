@@ -4,7 +4,7 @@ description: Learn how to prepare GPUs for an Azure Local instance.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 01/14/2025
+ms.date: 02/11/2026
 ms.service: azure-local
 ms.subservice: hyperconverged
 ---
@@ -13,8 +13,7 @@ ms.subservice: hyperconverged
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
-This article describes how to prepare graphical processing units (GPUs) on your Azure Local instance for computation-intensive workloads running on Azure Local VMs enabled by Azure Arc and Azure Kubernetes Service (AKS) enabled by Azure Arc. GPUs are used for computation-intensive workloads such as machine learning and deep learning.
-
+This article describes how to prepare graphical processing units (GPUs) on your Azure Local instance for workloads running on Azure Local virtual machines (VMs) enabled by Azure Arc and on Azure Kubernetes Service (AKS) enabled by Azure Arc. GPUs are used for computation-intensive workloads such as machine learning and deep learning.
 
 ## Attaching GPUs on Azure Local
 
@@ -45,10 +44,10 @@ NVIDIA supports their workloads separately with their virtual GPU software. For 
 For AKS workloads, see [GPUs for AKS for Arc](/azure/aks/hybrid/deploy-gpu-node-pool#supported-gpu-models).
 
 
-The following table shows which GPU model is supported by which GPU assignment type and by which VM workload type:
+The following table shows GPU model support by GPU assignment type and VM workload type:
 
 | GPU Model | DDA | DDA | DDA | GPU-P |
-| -- |  -- | -- | -- | -- |
+| --- | --- | --- | --- | --- |
 | | **VMs**<br>(Enabled by Azure Arc) | **VMs**<br> (Unmanaged) | **AKS** | **VMs only** * |
 | NVIDIA T4 | &check; Yes | &check; Yes | &check; Yes | &cross; No |
 | NVIDIA A2 |&check; Yes |&check; Yes |&check; Yes |&check; Yes |
@@ -67,7 +66,7 @@ Your Azure Local host must meet the following requirements:
 
 - Your system must support an Azure Local solution with GPU support. To browse your options, see the [Azure Local Catalog](https://azurestackhcisolutions.azure.microsoft.com/#/catalog?gpuSupport=GPU_P&gpuSupport=DDA).
 
-- You've access to Azure Local.
+- You must have access to Azure Local.
 
 - You must create a homogeneous configuration for GPUs across all the machines in your system. A homogeneous configuration consists of installing the same make and model of GPU.
 
@@ -79,9 +78,9 @@ The process for preparing and installing GPU drivers for each machine differs so
 
 ### Find GPUs on each host
 
-First ensure there is no driver installed for each machine. If there is a host driver installed, uninstall the host driver and restart the machine.  
+First ensure there's no host driver installed for each machine. If a host driver is installed, uninstall it and restart the machine.  
 
-After you uninstalled the host driver or if you didn't have any driver installed, run PowerShell as administrator with the following command:
+Next, run PowerShell as administrator and run the following command:
 
 ```powershell
 Get-PnpDevice -Status Error | fl FriendlyName, InstanceId
@@ -143,7 +142,7 @@ mkdir nvidia-mitigation-driver
 Expand-Archive .\nvidia_azure_stack_inf_v2022.10.13_public.zip .\nvidia-mitigation-driver
 ```
 
-Once the mitigation driver files are extracted, find the version for the correct model of your GPU and install it. For example, if you were installing an NVIDIA A2 mitigation driver, run the following:
+Once the mitigation driver files are extracted, find the version for the correct model of your GPU and install it. For example, if you were installing an NVIDIA A2 mitigation driver, run the following command:
 
 ```powershell
 pnputil /add-driver nvidia_azure_stack_A2_base.inf /install /force

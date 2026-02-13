@@ -314,13 +314,7 @@ Notice: journal has been rotated since unit was started, output may be incomplet
 If the service isn't active (running), start the service:
 
 ```bash
-sudo systemctl start lldpd
-```
-
-Enable the service to start on reboot:
-
-```bash
-sudo systemctl enable lldpd
+ogcli update services/lldp enabled=true
 ```
 
 >[!NOTE]

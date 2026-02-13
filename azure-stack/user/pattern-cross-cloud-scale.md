@@ -3,7 +3,7 @@ title: Cross-cloud scaling pattern in Azure Stack Hub
 description: Learn how to build a scalable cross-cloud app on Azure and Azure Stack Hub.
 author: ronmiab 
 ms.topic: concept-article
-ms.date: 04/25/2025
+ms.date: 02/11/2026
 ms.author: robess
 ms.reviewer: anajod
 ms.lastreviewed: 04/05/2019
@@ -22,11 +22,11 @@ Your app can't increase capacity to meet unexpected increases in demand. This la
 
 Global enterprises require secure, reliable, and available cloud-based apps. Meeting increases in demand and using the right infrastructure to support that demand is critical. Businesses struggle to balance costs and maintenance with business data security, storage, and real-time availability.
 
-You may not be able to run your app in the public cloud. However, it may not be economically feasible for the business to maintain the capacity required in their on-premises environment to handle spikes in demand for the app. With this pattern, you can use the elasticity of the public cloud with your on-premises solution.
+You might not be able to run your app in the public cloud. However, it might not be economically feasible for the business to maintain the capacity required in their on-premises environment to handle spikes in demand for the app. With this pattern, you can use the elasticity of the public cloud with your on-premises solution.
 
 ## Solution
 
-The cross-cloud scaling pattern extends an app located in a local cloud with public cloud resources. The pattern is triggered by an increase or decrease in demand, and respectively adds or removes resources in the cloud. These resources provide redundancy, rapid availability, and geo-compliant routing.
+The cross-cloud scaling pattern extends an app located in a local cloud with public cloud resources. The pattern triggers on an increase or decrease in demand, and respectively adds or removes resources in the cloud. These resources provide redundancy, rapid availability, and geo-compliant routing.
 
 ![Cross-cloud scaling pattern](media/pattern-cross-cloud-scale/cross-cloud-scaling.png)
 
@@ -41,7 +41,7 @@ The cross-cloud scaling pattern consists of the following components.
 
 #### Traffic Manager
 
-In the diagram, this is located outside of the public cloud group, but it would need to able to coordinate traffic in both the local datacenter and the public cloud. The balancer delivers high availability for app by monitoring endpoints and providing failover redistribution when required.
+In the diagram, the traffic manager is located outside of the public cloud group, but it must be able to coordinate traffic in both the local datacenter and the public cloud. The balancer delivers high availability for app by monitoring endpoints and providing failover redistribution when required.
 
 #### Domain Name System (DNS)
 
@@ -104,7 +104,7 @@ The cross-cloud pattern ensures seamless management and familiar interface betwe
 Use this pattern:
 
 - When you need to increase your app capacity with unexpected demands or periodic demands in demand.
-- When you don't want to invest in resources that will only be used during peaks. Pay for what you use.
+- When you don't want to invest in resources that are only used during peaks. Pay for what you use.
 
 This pattern isn't recommended when:
 
@@ -115,7 +115,7 @@ This pattern isn't recommended when:
 
 ## Next steps
 
-To learn more about topics introduced in this article:
+To learn more:
 
 - See the [Azure Traffic Manager overview](/azure/traffic-manager/traffic-manager-overview) to learn more about how this DNS-based traffic load balancer works.
 - See the [Azure Stack family of products and solutions](/azure-stack) to learn more about the entire portfolio of products and solutions.

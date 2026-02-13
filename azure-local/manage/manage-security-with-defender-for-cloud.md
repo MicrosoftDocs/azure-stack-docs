@@ -4,7 +4,7 @@ description: This article describes how to use Microsoft Defender for Cloud to s
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 04/23/2025
+ms.date: 02/11/2026
 ms.service: azure-local
 ms.subservice: hyperconverged
 ---
@@ -56,7 +56,7 @@ To do so, follow all the instructions in the [Enable the Defender for Servers pl
 
 After you turn on the Microsoft Defender for Cloud Foundational CSPM plan, you must apply the Microsoft Cloud Security Benchmark (MCSB) initiative. You can view the security settings via the Azure portal only when the MCSB is applied. Use one of the following methods to apply the MCSB initiative:
 
-- Apply the MCSB via the portal as described below.
+- Apply the MCSB via the portal.
 - Manually apply the Azure compute security baseline in Azure policy to all cluster servers. See [Windows security baseline](/azure/governance/policy/samples/guest-configuration-baseline-windows).
 
 Follow these steps to apply the MCSB initiative at the subscription level:
@@ -71,7 +71,7 @@ Follow these steps to apply the MCSB initiative at the subscription level:
 
    :::image type="content" source="./media/manage-security-with-defender-for-cloud/select-subscription.png" alt-text="Screenshot that shows how to select the Azure subscription." lightbox="./media/manage-security-with-defender-for-cloud/select-subscription.png" :::
 
-1. Select the **Security policies** blade.
+1. Select **Security policies**.
 
 1. For **Microsoft cloud security benchmark**, toggle the **Status** button to **On**.
 
@@ -83,7 +83,7 @@ Follow these steps to apply the MCSB initiative at the subscription level:
 
 Security recommendations are created when potential security vulnerabilities are identified. These recommendations guide you through the process of configuring the needed control.
 
-After you've [enabled Defender for Cloud for Azure Local](#enable-defender-for-cloud-for-azure-local), follow these steps to view security recommendations for Azure Local:
+After you [enable Defender for Cloud for Azure Local](#enable-defender-for-cloud-for-azure-local), follow these steps to view security recommendations for Azure Local:
 
 1. In the Azure portal, go to the Azure Local resource page and select your instance.
 
@@ -93,7 +93,7 @@ After you've [enabled Defender for Cloud for Azure Local](#enable-defender-for-c
 
    :::image type="content" source="./media/manage-security-with-defender-for-cloud/security-recommendations.png" alt-text="Screenshot of the Microsoft Defender for Cloud page showing the security recommendations on Azure Local." lightbox="./media/manage-security-with-defender-for-cloud/security-recommendations.png" :::
 
-1. (Optional) To view the security recommendations for multiple Azure Local instances, select the **View in Defender for Cloud** link. This opens the **Recommendations** page in the Microsoft Defender for Cloud portal. This page provides security recommendations across all your Azure resources, including Azure Local.
+1. (Optional) To view the security recommendations for multiple Azure Local instances, select the **View in Defender for Cloud** link. The **Recommendations** page opens in the Microsoft Defender for Cloud portal. This page provides security recommendations across all your Azure resources, including Azure Local.
 
    :::image type="content" source="./media/manage-security-with-defender-for-cloud/recommendations-defender-for-cloud.png" alt-text="Screenshot of the Recommendations page in the Defender for Cloud portal." lightbox="./media/manage-security-with-defender-for-cloud/recommendations-defender-for-cloud.png" :::
 
@@ -104,7 +104,7 @@ After you've [enabled Defender for Cloud for Azure Local](#enable-defender-for-c
 
 ### Security recommendation exclusions
 
-You can ignore the Windows Defender for Cloud recommendations below for storage accounts and Azure Key Vaults that are associated with Azure Local instances. However, don't ignore these recommendations for other storage accounts and Azure Key Vaults you may have.
+You can ignore the following Windows Defender for Cloud recommendations for storage accounts and Azure Key Vaults that are associated with Azure Local instances. However, don't ignore these recommendations for other storage accounts and Azure Key Vaults you might have.
 
 | Affected resource | Recommendation | Exclusion reason |
 | --- | --- | --- |

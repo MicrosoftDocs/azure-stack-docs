@@ -49,7 +49,7 @@ The cloud-init script runs during the VM's first boot and can be used to perform
 Steps for the cloud-init script can include:
 
 - Ensure to [Install Azure CLI](https://aka.ms/azcli) at the latest versions.
-  Including any required extensions such as the `networkcloud` extension.
+  Including any required extensions such as the [`networkcloud` extension](https://github.com/Azure/azure-cli-extensions/tree/main/src/networkcloud).
 - Complete the necessary setup for your chosen managed identity option before creating the VM.
   - If you're using a System-Assigned Managed Identity (SAMI), the cloud-init script must handle role assignments.
   - If you're using a User-Assigned Managed Identity (UAMI), the role assignments can be done ahead of time.
@@ -67,6 +67,7 @@ It's necessary to SSH into the VM to access the logs.
 
 > [!TIP]
 > The cloud-init script runs only during the first boot of the VM.
+> This means that if you need to make changes or re-run the cloud-init script, the VM must be recreated.
 > You can also authenticate with managed identities manually from inside the VM after creation and boot.
 
 [!INCLUDE [virtual-machine-howto-virtual-machines-proxy-settings](./includes/virtual-machine/howto-virtual-machines-proxy-settings.md)]

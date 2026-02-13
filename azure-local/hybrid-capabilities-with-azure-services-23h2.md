@@ -4,7 +4,7 @@ description: This article describes the cloud service components of Azure Local,
 ms.topic: overview
 author: alkohli
 ms.author: alkohli
-ms.date: 04/16/2025
+ms.date: 02/11/2026
 ms.custom: e2e-hybrid
 ms.subservice: hyperconverged
 ---
@@ -13,7 +13,7 @@ ms.subservice: hyperconverged
 
 [!INCLUDE [applies-to](./includes/hci-applies-to-23h2.md)]
 
-Your on-premises Azure Local solution integrates with Azure cloud via several cloud service components, such as Azure Local cloud service, Azure Arc, and other Azure hybrid services. This article describes the functionality provided by these cloud service components, and how they help provide hybrid capabilities to your Azure Local deployment.
+Your on-premises Azure Local solution integrates with Azure cloud using several cloud service components, such as Azure Local cloud service, Azure Arc, and other Azure hybrid services. This article describes the functionality provided by these cloud service components, and how they help provide hybrid capabilities to your Azure Local deployment.
 
 :::image type="content" source="media/hybrid-capabilities-with-azure-services-23h2/azure-stack-hci-solution.png" alt-text="The architecture diagram of the Azure Local solution, which shows the integration points between the on-premises Azure Local solution and Azure cloud." border="false" lightbox="media/hybrid-capabilities-with-azure-services-23h2/azure-stack-hci-solution.png":::
 
@@ -47,7 +47,7 @@ The Azure Local cloud service extends the hybrid capabilities for Azure Local by
 
 ## Azure Arc on Azure Local
 
-Azure Arc simplifies governance and management by delivering a consistent management plane from Azure. To learn more about Azure Arc, see [Azure Arc overview](/azure/azure-arc/overview). For additional guidance regarding the different services Azure Arc offers, see [Choosing the right Azure Arc service for machines](/azure/azure-arc/choose-service).
+Azure Arc simplifies governance and management by delivering a consistent management plane from Azure. To learn more about Azure Arc, see [Azure Arc overview](/azure/azure-arc/overview). For more information regarding the different services Azure Arc offers, see [Choosing the right Azure Arc service for machines](/azure/azure-arc/choose-service).
 
 Azure Local delivers hybrid value through the following Azure Arc technologies:
 
@@ -65,7 +65,7 @@ In addition to hybrid functionality provided through Azure Arc, you can enable t
 
 - **Azure Backup.** With Microsoft Azure Backup Server (MABS) v3 UR2, you can back up Azure Local host (System State/BMR) and virtual machines (VMs) running on your Azure Local. To learn more about Azure Backup, see [Back up Azure Local virtual machines with MABS](/azure/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines).
 
-- **Azure Site Recovery.** With Azure Site Recovery support, you can continuously replicate VMs from Azure Local to Azure, as well as fail over and fail back. To learn more about Azure Site Recovery, see [Protect your Hyper-V Virtual Machines with Azure Site Recovery and Windows Admin Center](manage/azure-site-recovery.md).
+- **Azure Site Recovery.** With Azure Site Recovery support, you can continuously replicate VMs from Azure Local to Azure, and fail over and fail back. To learn more about Azure Site Recovery, see [Protect your Hyper-V Virtual Machines with Azure Site Recovery and Windows Admin Center](manage/azure-site-recovery.md).
 
 - **Azure Update Manager.** Azure Update Manager is an Azure service that allows you to apply, view, and manage updates for each of your Azure Local instances. You can view each Azure Local across your entire infrastructure, or in remote or branch offices and update at scale. For more information, see [Use Azure Update Manager to update your Azure Local](update/azure-update-manager-23h2.md).
 
