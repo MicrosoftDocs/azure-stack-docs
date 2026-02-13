@@ -7,7 +7,7 @@ ms.topic: how-to
 ms.service: azure-local
 ms.custom:
   - devx-track-azurecli
-ms.date: 03/21/2025
+ms.date: 02/11/2026
 ms.subservice: hyperconverged
 ---
 
