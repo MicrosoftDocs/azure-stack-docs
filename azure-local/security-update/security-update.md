@@ -15,6 +15,69 @@ This article lists the various security updates that are available for Azure Loc
 
 ::: moniker range="=azloc-2601"
 
+## February OS security update (KB5075899) for Azure Local
+
+This section provides the 2602 security updates associated with OS build **26100.3237066** released on February 10, 2026 and also includes key notifications, announcements, change logs, and end-of-support notices.
+
+## Windows Secure Boot certificate expiration
+
+> [!IMPORTANT]
+> The Azure Local product team is aware of the upcoming expiration of the boot certificates of Windows devices and is actively working with solution OEM partners to deliver a managed update. Upcoming solution updates will initiate the mitigation process to address this scenario.
+
+To learn more about differences between security updates, optional non-security preview updates, out-of-band (OOB) updates, and continuous innovation, see [Windows monthly updates explained](https://techcommunity.microsoft.com/blog/windows-itpro-blog/windows-monthly-updates-explained/3773544). For information on Windows update terminology, see the different types of [Windows software updates](/troubleshoot/windows-client/installing-updates-features-roles/standard-terminology-software-updates). For an overview, see the update history page for Azure Stack HCI, version 24H2.
+
+## Improvements  
+
+This security update contains fixes and quality improvements from [KB5073379](https://support.microsoft.com/topic/january-13-2026-kb5073379-os-build-26100-32230-a6021fd2-b3b7-45a7-b68e-35c28a2a77da?preview=true) (released January 13, 2026), [KB5077793](https://support.microsoft.com/topic/january-17-2026-kb5077793-os-build-26100-32234-out-of-band-58c4a80a-0d1c-4684-b828-5f33ef3892e4?preview=true) (released January 17, 2026), and [KB5078135](https://support.microsoft.com/topic/january-24-2026-kb5078135-os-build-26100-32236-out-of-band-1dd50b78-08e5-4e13-ae0f-a0c4ff61a2e5?preview=true) (released January 24, 2026). The following summary outlines key issues addressed by this update. Also included are available new features. The bold text within the brackets indicates the item or area of the change.
+
+- **[File Explorer]** Fixed: This update addresses an issue where folder renaming with desktop.ini files in File Explorer isn't work correctly. The `LocalizedResourceName` setting is ignored, so custom folder names don't appear.
+
+- **[Fonts & Display]** Updates the Chinese fonts to support the GB180302022A standard for character coverage and display.
+
+- **[Graphics]** Fixed: This update addresses an issue where certain GPU configurations might recently have experienced a system error related to dxgmms2.sys, resulting in the `KERNEL_SECURITY_CHECK_FAILURE` error.
+
+- **[Performance & Reliability]** Fixed: This update disables the forwarded I/O feature in the NVMe stack by default.
+
+- **[Networking]**
+
+  - ​DNS over HTTPS (DoH) support for Windows DNS Server is now available in public preview. This preview enables evaluation of DoH for traffic between the server and its clients. This is intended for feedback only. It isn’t supported for production use, and it might contain issues. Functionality might also change, including potential breaking changes, before General Availability (GA).  You can read more about this preview in the [DoH on Windows DNS Server](https://aka.ms/dohserver) blog.
+
+  - Windows Server now supports random shuffling of resource records in DNS Server responses. This helps reduce scenarios where a single resource record becomes overloaded because it appears first in the returned list.
+
+  To enable, create a `DWORD` registry key named `RandomShuffle` at:
+
+  Registry Key:
+
+  ```
+  Computer\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\DNS\Parameters
+  ```
+
+  Data to be set: `1`
+
+  To disable or erase the key:
+
+  Date to be set to: `0`
+
+To find more information on Azure local, see (Azure Stack HCI)[https://docs.microsoft.com/azure-stack/hci/overview].
+
+## Known issues
+
+### Windows Server Update Services (WSUS) doesn't display error details
+
+After you install [KB5070881](https://support.microsoft.com/topic/october-23-2025-kb5070881-os-build-26100-6905-out-of-band-8e7ac742-6785-4677-87e4-b73dd8ac0122?preview=true) or later updates, Windows Server Update Services (WSUS) doesn't display synchronization error details within its error reporting. This functionality is temporarily removed to address the Remote Code Execution Vulnerability [CVE-2025-59287](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2025-59287).
+
+## To install
+
+### Before you install this update  
+
+Microsoft combines the latest servicing stack update (SSU) for your operating system with the latest cumulative update (LCU). For general information about SSUs, see [Servicing stack updates](https://docs.microsoft.com/windows/deployment/update/servicing-stack-updates) and [Servicing Stack Updates (SSU): Frequently Asked Questions](https://support.microsoft.com/topic/servicing-stack-updates-ssu-frequently-asked-questions-06b62771-1cb0-368c-09cf-87c4efc4f2fe).
+
+To install the LCU on your Azure Stack HCI cluster, see [Update Azure Stack HCI clusters](https://docs.microsoft.com/azure-stack/hci/manage/update-cluster).
+
+## File Information
+
+For a list of the files provided in this update, download the file information for [cumulative update 5075899](https://go.microsoft.com/fwlink/?linkid=2350429).
+
 ## January OS security update (KB5073379) for Azure Local
 
 This section provides the 2601 security updates associated with OS build **26100.32230** released on January 13, 2026 and also includes key notifications, announcements, change logs, and end-of-support notices.
