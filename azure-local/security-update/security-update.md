@@ -72,7 +72,7 @@ After you install [KB5070881](https://support.microsoft.com/topic/october-23-2
 
 Microsoft combines the latest servicing stack update (SSU) for your operating system with the latest cumulative update (LCU). For general information about SSUs, see [Servicing stack updates](/windows/deployment/update/servicing-stack-updates) and [Servicing Stack Updates (SSU): Frequently Asked Questions](https://support.microsoft.com/topic/servicing-stack-updates-ssu-frequently-asked-questions-06b62771-1cb0-368c-09cf-87c4efc4f2fe).
 
-To install the LCU on your Azure Stack HCI cluster, see [Update Azure Stack HCI clusters](https://docs.microsoft.com/azure-stack/hci/manage/update-cluster).
+To install the LCU on your Azure Stack HCI cluster, see [Update Azure Stack HCI clusters](/azure-stack/hci/manage/update-cluster).
 
 ## File Information
 
