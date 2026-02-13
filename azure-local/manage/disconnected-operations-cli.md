@@ -9,7 +9,7 @@ ms.reviewer: haraldfianbakken
 ai-usage: ai-assisted
 ---
 
-# Use Azure Command-Line Interface for disconnected operations on Azure Local
+# Use Azure CLI for disconnected operations on Azure Local
 
 ::: moniker range=">=azloc-2506"
 
