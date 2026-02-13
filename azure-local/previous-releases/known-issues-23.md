@@ -1,6 +1,6 @@
 ---
-title: Release notes with fixed and known issues in Azure Local previous releases - version 23xx
-description: Read about the known issues and fixed issues in Azure Local previous releases - version 23xx.
+title: Release notes with fixed and known issues in Azure Local 23xx releases
+description: Read about the known issues and fixed issues in Azure Local 23xx releases.
 author: alkohli
 ms.topic: troubleshooting-general
 ms.date: 02/11/2026
@@ -9,12 +9,12 @@ ms.reviewer: alkohli
 ms.subservice: hyperconverged
 ---
 
-# Known issues in Azure Local previous releases - version 23xx
+# Known issues in Azure Local 23xx releases
 
-This article identifies critical known issues and their workarounds in Azure Local previous releases - version 23xx.
+This article identifies critical known issues and their workarounds in Azure Local 23xx releases.
 
 > [!NOTE]
-> Azure Local previous releases - version 23xx are not in a supported state. For more information, see [Azure Local release information](../release-information-23h2.md).
+> Azure Local 23xx releases are not in a supported state. For more information, see [Azure Local release information](../release-information-23h2.md).
 
 ## Issues for version 2311.5
 
