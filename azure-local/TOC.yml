@@ -741,19 +741,19 @@ items:
     - name: Previous releases - version 24xx
       items:
       - name: What's new in Azure Local?
-        href: previous-releases/whats-new-24xx.md
+        href: previous-releases/whats-new-24.md
       - name: Known issues
-        href: previous-releases/known-issues-24xx.md
+        href: previous-releases/known-issues-24.md
       - name: Security updates
-        href: previous-releases/security-update-24xx.md
+        href: previous-releases/security-update-24.md
     - name: Previous releases - version 23xx
       items:
       - name: What's new in Azure Local?
-        href: previous-releases/whats-new-23xx.md
+        href: previous-releases/whats-new-23.md
       - name: Known issues
-        href: previous-releases/known-issues-23xx.md
+        href: previous-releases/known-issues-23.md
       - name: Security updates
-        href: previous-releases/security-update-23xx.md
+        href: previous-releases/security-update-23.md
 - name: Multi-rack deployments
   items:
   - name: Overview
