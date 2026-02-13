@@ -7,7 +7,7 @@ ms.date: 02/11/2026
 ms.reviewer: alkohli
 ---
 
-During Azure Arc registration, Azure Local verifies whether the OS image is current for its release baseline. If the image is outdated or unsupported, the system automatically updates it during registration.
+During Azure Arc registration, Azure Local verifies whether the OS image is current for its release baseline. If the image is outdated or unsupported, the system automatically updates it during registration. You can optionally specify a target solution version using the `TargetSolutionVersion` parameter.
 
 - The update typically takes 40-45 minutes.
 - A system reboot is required.

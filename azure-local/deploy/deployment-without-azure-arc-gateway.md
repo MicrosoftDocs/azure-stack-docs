@@ -49,7 +49,7 @@ Review the parameters used in the script:
 |`ResourceGroup`     |The resource group precreated for Arc registration of the machines. A resource group is created if one doesn't exist.         |
 |`Region`            |The Azure region used for registration. See the [Supported regions](../concepts/system-requirements-23h2.md#azure-requirements) that can be used.          |
 |`ProxyServer`       |Optional parameter. Proxy Server address when required for outbound connectivity. |
-| `TargetSolutionVersion` | The target Azure Local solution version that the node must match when registering with Azure Arc. For example: "12.2602.1002.10". |
+| `TargetSolutionVersion` | Optional parameter. The target Azure Local solution version that the node must update to after registering with Azure Arc. For example: "12.2602.1002.10". |
 
 ## Step 2: Set parameters
 
@@ -89,7 +89,7 @@ $ProxyServer = "http://proxyaddress:port"
 
 $ProxyBypassList = "localhost,127.0.0.1,*.contoso.com,machine1,machine2,machine3,machine4,machine5,192.168.*.*,AzureLocal-1"
 
-# Define the target Azure Local solution version that the node must match when registering with Azure Arc.
+# Define the target Azure Local solution version that the node must update to after registering with Azure Arc.
 # Example: "12.2602.1002.10"
 $TargetSolutionVersion = "<solution-version>"
 ```
@@ -332,7 +332,7 @@ Review the parameters used in the script:
 |`SubscriptionID`    |The ID of the subscription used to register your machines with Azure Arc.         |
 |`ResourceGroup`     |The resource group precreated for Arc registration of the machines. A resource group is created if one doesn't exist.         |
 |`Region`            |The Azure region used for registration. See the [Supported regions](../concepts/system-requirements-23h2.md#azure-requirements) that can be used.          |
-| `TargetSolutionVersion` | The target Azure Local solution version that the node must match when registering with Azure Arc. For example: "12.2602.1002.10". |
+| `TargetSolutionVersion` | Optional parameter. The target Azure Local solution version that the node must update to after registering with Azure Arc. For example: "12.2602.1002.10". |
 
 ## Step 2: Set parameters
 
@@ -353,7 +353,7 @@ $RG = "YourResourceGroupName"
 #Do not use spaces or capital letters when defining region
 $Region = "eastus"
 
-# Define the target Azure Local solution version that the node must match when registering with Azure Arc.
+# Define the target Azure Local solution version that the node must update to after registering with Azure Arc.
 # Example: "12.2602.1002.10"
 $TargetSolutionVersion = "<solution-version>"
 ```

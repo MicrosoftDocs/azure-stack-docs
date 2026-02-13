@@ -3,7 +3,7 @@ title: Register Azure Local using Arc gateway and with and without proxy setup.
 description: Learn how to register Azure Local using Azure Arc gateway Arc proxy. Both scenarios with and without proxy are configured. 
 author: alkohli
 ms.topic: how-to
-ms.date: 02/11/2026
+ms.date: 02/13/2026
 ms.author: alkohli
 ms.service: azure-local
 zone_pivot_groups: register-arc-options
@@ -89,7 +89,7 @@ This article details how to register Azure Local using Azure Arc gateway and wit
     #Define the Arc gateway resource ID from Azure 
     $ArcgwId = "/subscriptions/yourarcgatewayid/resourceGroups/yourResourceGroupName/providers/Microsoft.HybridCompute/gateways/yourArcGatewayName" 
 
-    # Define the target Azure Local solution version that the node must match when registering with Azure Arc.
+    # Define the target Azure Local solution version that the node must update to after registering with Azure Arc.
     # Example: "12.2602.1002.10"
     $TargetSolutionVersion = "<solution-version>" 
 
