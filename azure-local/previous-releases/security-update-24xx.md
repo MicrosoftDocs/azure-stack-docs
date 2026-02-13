@@ -1,6 +1,6 @@
 ---
-title:  Security updates for Azure Local 2024 releases
-description: Security updates for Azure Local 2024 releases.
+title:  Security updates for Azure Local previous releases - version 24xx
+description: Security updates for Azure Local previous releases - version 24xx.
 author: alkohli
 ms.topic: release-notes
 ms.date: 02/11/2026
@@ -9,12 +9,12 @@ ms.reviewer: alkohli
 ms.subservice: hyperconverged
 ---
 
-# Security updates for Azure Local 2024 releases
+# Security updates for Azure Local previous releases - version 24xx
 
-This article lists the various security updates that are available for Azure Local 2024 releases.
+This article lists the various security updates that are available for Azure Local previous releases - version 24xx.
 
 > [!NOTE]
-> Azure Local 2024 releases are not in a supported state. For more information, see [Azure Local release information](../release-information-23h2.md).
+> Azure Local previous releases - version 24xx are not in a supported state. For more information, see [Azure Local release information](../release-information-23h2.md).
 
 ## December OS security update (KB5048653) for Azure Local
 

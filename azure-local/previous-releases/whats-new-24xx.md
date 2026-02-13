@@ -1,6 +1,6 @@
 ---
-title: What's new in Hyperconverged Deployments of Azure Local 2024 releases
-description: Find out about the new features and enhancements in the Azure Local 2024 releases.
+title: What's new in Hyperconverged Deployments of Azure Local previous releases - version 24xx
+description: Find out about the new features and enhancements in the Azure Local previous releases - version 24xx.
 ms.topic: overview
 author: alkohli
 ms.author: alkohli
@@ -9,12 +9,12 @@ ms.date: 02/11/2026
 ms.subservice: hyperconverged
 ---
 
-# What's new in hyperconverged deployments of Azure Local 2024 releases?
+# What's new in hyperconverged deployments of Azure Local previous releases - version 24xx?
 
-This article lists the features and improvements that are available in hyperconverged deployments of Azure Local (*formerly Azure Stack HCI*) 2024 releases.
+This article lists the features and improvements that are available in hyperconverged deployments of Azure Local (*formerly Azure Stack HCI*) previous releases - version 24xx.
 
 > [!NOTE]
-> Azure Local 2024 releases are not in a supported state. For more information, see [Azure Local release information](../release-information-23h2.md).
+> Azure Local previous releases - version 24xx are not in a supported state. For more information, see [Azure Local release information](../release-information-23h2.md).
 
 ## Features and improvements in 2411.3
 
