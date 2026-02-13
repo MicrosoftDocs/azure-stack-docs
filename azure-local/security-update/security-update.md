@@ -13,7 +13,7 @@ ms.subservice: hyperconverged
 
 This article lists the various security updates that are available for Azure Local.
 
-::: moniker range="=azloc-2601"
+::: moniker range="=azloc-2602"
 
 ## February OS security update (KB5075899) for Azure Local
 
@@ -58,7 +58,7 @@ This security update contains fixes and quality improvements from [KB5073379](
 
   Date to be set to: `0`
 
-To find more information on Azure local, see (Azure Stack HCI)[https://docs.microsoft.com/azure-stack/hci/overview].
+To find more information on Azure local, see (Azure Stack HCI)[/azure-stack/hci/overview].
 
 ## Known issues
 
@@ -70,13 +70,17 @@ After you install [KB5070881](https://support.microsoft.com/topic/october-23-2
 
 ### Before you install this update  
 
-Microsoft combines the latest servicing stack update (SSU) for your operating system with the latest cumulative update (LCU). For general information about SSUs, see [Servicing stack updates](https://docs.microsoft.com/windows/deployment/update/servicing-stack-updates) and [Servicing Stack Updates (SSU): Frequently Asked Questions](https://support.microsoft.com/topic/servicing-stack-updates-ssu-frequently-asked-questions-06b62771-1cb0-368c-09cf-87c4efc4f2fe).
+Microsoft combines the latest servicing stack update (SSU) for your operating system with the latest cumulative update (LCU). For general information about SSUs, see [Servicing stack updates](/windows/deployment/update/servicing-stack-updates) and [Servicing Stack Updates (SSU): Frequently Asked Questions](https://support.microsoft.com/topic/servicing-stack-updates-ssu-frequently-asked-questions-06b62771-1cb0-368c-09cf-87c4efc4f2fe).
 
 To install the LCU on your Azure Stack HCI cluster, see [Update Azure Stack HCI clusters](https://docs.microsoft.com/azure-stack/hci/manage/update-cluster).
 
 ## File Information
 
 For a list of the files provided in this update, download the file information for [cumulative update 5075899](https://go.microsoft.com/fwlink/?linkid=2350429).
+
+::: moniker-end
+
+::: moniker range="=azloc-2601"
 
 ## January OS security update (KB5073379) for Azure Local
 
