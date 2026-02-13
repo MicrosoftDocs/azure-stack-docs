@@ -46,8 +46,6 @@ This security update contains fixes and quality improvements from [KB5073379](
 
   To enable, create a `DWORD` registry key named `RandomShuffle` at:
 
-  Registry Key:
-
   ```
   Computer\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\DNS\Parameters
   ```
@@ -56,7 +54,7 @@ This security update contains fixes and quality improvements from [KB5073379](
 
   To disable or erase the key:
 
-  Date to be set to: `0`
+  Data to be set: `0`
 
 To find more information on Azure local, see (Azure Stack HCI)[/azure-stack/hci/overview].
 
