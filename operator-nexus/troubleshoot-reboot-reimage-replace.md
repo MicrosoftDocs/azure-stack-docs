@@ -4,7 +4,7 @@ description: Troubleshoot cluster bare metal machines with Restart, Reimage, Rep
 ms.service: azure-operator-nexus
 ms.custom: troubleshooting
 ms.topic: troubleshooting
-ms.date: 01/23/2026
+ms.date: 02/11/2026
 author: gregoberfield
 ms.author: goberfield
 ---
@@ -15,12 +15,11 @@ This article describes how to troubleshoot server problems by using Restart, Rei
 
 The time required to complete each of these actions is similar. Restarting is the fastest, whereas replacing takes slightly longer. All three actions are simple and efficient methods for troubleshooting.
 
-> [!CAUTION]
-> Don't perform any action against management servers without first consulting with Microsoft support personnel. Doing so could affect the integrity of the Operator Nexus Cluster.
+[!INCLUDE [caution-affect-cluster-integrity](./includes/baremetal-machines/caution-affect-cluster-integrity.md)]
 
 ## Prerequisites
 
-- Familiarize yourself with the capabilities referenced in this article by reviewing the [BMM actions](howto-baremetal-functions.md).
+- **Familiarize yourself with BMM capabilities**: Review [Bare Metal Machine Platform Commands](howto-baremetal-functions.md) for comprehensive details on each action, command parameters, and platform behavior. This troubleshooting guide focuses on workflows and scenarios; refer to the platform commands article for complete command reference.
 - Gather the following information (necessary for all actions):
   - Name of the managed resource group for the BMM
   - Name of the BMM that requires a lifecycle management operation
@@ -28,12 +27,7 @@ The time required to complete each of these actions is similar. Restarting is th
 - Cluster Detailed status must be `Running`
 - Cluster to Cluster Manager connectivity must be `Connected`
 
-> [!IMPORTANT]
-> Disruptive commands to a Kubernetes Control Plane (KCP) node are rejected if another disruptive action is already in progress on any KCP node or if the full KCP is unavailable.
->
-> Restart, reimage and replace are all considered disruptive actions.
->
-> This check is done to maintain the integrity of the Nexus instance and ensure multiple KCP nodes don't go down at once due to simultaneous disruptive actions. If multiple nodes go down, it breaks the healthy quorum threshold of the Kubernetes Control Plane.
+[!INCLUDE [important-donot-disrupt-kcpnodes](./includes/baremetal-machines/important-donot-disrupt-kcpnodes.md)]
 
 > [!TIP]
 > In version 2509.1 and above, you can monitor recent or in-progress BMM actions in the Azure portal. For more information, see [Monitor status in Bare Metal Machine JSON properties](./howto-bare-metal-best-practices.md#monitor-status-in-bare-metal-machine-json-properties).
@@ -42,13 +36,16 @@ The time required to complete each of these actions is similar. Restarting is th
 
 When troubleshooting a BMM for failures and determining the most appropriate corrective action, it's essential to understand the available options. This article provides a systematic approach to troubleshoot Azure Operator Nexus server problems using these three methods:
 
-- **Restart** - Least invasive method, best for temporary glitches, or unresponsive Virtual Machines (VM)s
-- **Reimage** - Intermediate solution, restores OS to known-good state without affecting data
-- **Replace** - Most significant action, required for hardware component failures such as RAM, hard disk, etc.  Replace action should be used after the BMM components have been replaced.
+- **Restart** - Least invasive method, best for temporary glitches or unresponsive Virtual Machines (VMs). Preserves OS and data.
+- **Reimage** - Intermediate solution, restores OS to known-good state without hardware changes. Wipes OS disk but tenant data preserved.
+- **Replace** - Most comprehensive action, required after hardware component repairs (RAM, disk, NIC, etc.). Includes hardware validation before provisioning. Use `--storage-policy="Preserve"` to retain tenant data.
+
+> [!TIP]
+> **Quick guidance**: If you're unsure which action to use, start with the **Troubleshooting decision tree** below, then refer to the **Workflow sections** for detailed pre-checks and execution steps.
 
 ### Troubleshooting decision tree
 
-Follow this escalation path when troubleshooting BMM issues:
+Follow this escalation path when troubleshooting BMM issues. Always start with the least disruptive action and escalate only if the problem persists:
 
 | Problem                      | First action | If problem persists | If still unresolved |
 | ---------------------------- | ------------ | ------------------- | ------------------- |
@@ -56,8 +53,14 @@ Follow this escalation path when troubleshooting BMM issues:
 | Software/OS corruption       | [Reimage](#troubleshoot-with-a-reimage-action)      | [Replace](#troubleshoot-with-a-replace-action)             | Contact support     |
 | Known hardware failure       | [Replace](#troubleshoot-with-a-replace-action)      | N/A                 | Contact support     |
 | Security compromise          | [Reimage](#troubleshoot-with-a-reimage-action)      | [Replace](#troubleshoot-with-a-replace-action)             | Contact support     |
+| BMM stuck in provisioning    | [Restart](#troubleshoot-with-a-restart-action)      | [Reimage](#troubleshoot-with-a-reimage-action)             | Contact support     |
+| Physical hardware replaced   | [Replace](#troubleshoot-with-a-replace-action)      | N/A                 | Contact support     |
 
-The recommended approach is to start with the least invasive solution (restart) and escalate to more complex measures only if necessary. Always validate that the issue is resolved after each corrective action.
+**Key principles:**
+- Always validate that the issue is resolved after each corrective action
+- Use pre-checks to identify VMs and NAKS nodes on the BMM before starting
+- Use post-checks to verify BMM, VM, and NAKS node status after completion
+- Consult [Hardware Component Replacement Guide](#hardware-component-replacement-guide) to determine if replace is required
 
 ## Troubleshoot with a restart action
 
@@ -65,41 +68,35 @@ Restarting a BMM is a process of restarting the server through a simple API call
 
 The restart typically is the starting point for mitigating a problem.
 
+> [!TIP]
+> For complete details on restart behavior, timeout values, and system coordination steps, see [Restart a Bare Metal Machine](howto-baremetal-functions.md#restart-a-bare-metal-machine).
+
 ### Restart workflow
 
-1. **Assess impact** - Determine if restarting the BMM impacts critical virtual machines or NAKS nodes.
-2. **Power off** - If needed, power off the BMM (optional).
-3. **Start or restart** - Either start a powered-off BMM or restart a running BMM.
-4. **Verify status** - Check if the BMM is back online and functioning properly.
+Follow these steps to safely restart a BMM:
+
+1. **Assess impact** - Determine if restarting the BMM impacts critical virtual machines or NAKS nodes
+2. **Choose restart method**:
+   - If BMM is running: Use `restart` command (coordinates shutdown and startup as single operation)
+   - If BMM is powered off: Use `start` command
+   - If you need manual control: Use `power-off` followed by `start`
+3. **Execute restart** - Run the appropriate command
+4. **Verify status** - Check BMM is back online and functioning properly using post-check commands
 
 > [!NOTE]
-> The restart operation is the fastest recovery method but might not resolve issues related to OS corruption or hardware failures.
+> The restart operation is the fastest recovery method but might not resolve issues related to OS corruption or hardware failures. If the issue persists after restart, proceed to [Reimage](#troubleshoot-with-a-reimage-action).
 
-**The following Azure CLI command will `power-off` the specified bareMetalMachineName:**
-
-```azurecli
-az networkcloud baremetalmachine power-off \
-  --name <bareMetalMachineName>  \
-  --resource-group "<resourceGroup>" \
-  --subscription <subscriptionID>
-```
-
-**The following Azure CLI command will `start` the specified bareMetalMachineName:**
+**Example commands** (see [BMM Platform Commands](howto-baremetal-functions.md) for complete parameter details):
 
 ```azurecli
-az networkcloud baremetalmachine start \
-  --name <bareMetalMachineName>  \
-  --resource-group "<resourceGroup>" \
-  --subscription <subscriptionID>
-```
+# Power off (if needed)
+az networkcloud baremetalmachine power-off --name <bareMetalMachineName> --resource-group "<resourceGroup>" --subscription <subscriptionID>
 
-**The following Azure CLI command will `restart` the specified bareMetalMachineName:**
+# Start a powered-off BMM
+az networkcloud baremetalmachine start --name <bareMetalMachineName> --resource-group "<resourceGroup>" --subscription <subscriptionID>
 
-```azurecli
-az networkcloud baremetalmachine restart \
-  --name <bareMetalMachineName>  \
-  --resource-group "<resourceGroup>" \
-  --subscription <subscriptionID>
+# Restart a running BMM
+az networkcloud baremetalmachine restart --name <bareMetalMachineName> --resource-group "<resourceGroup>" --subscription <subscriptionID>
 ```
 #### Infrastructure Post Check
 
@@ -110,10 +107,15 @@ az networkcloud baremetalmachine show \
   --name <bareMetalMachineName>  \
   --resource-group "<resourceGroup>" \
   --subscription <subscriptionID> \
-  --query "provisioningState"
+  --query "{name:name, provisioningState:provisioningState, powerState:powerState, readyState:readyState}" -o table
 ```
 
-A result of `Succeeded` will show the command has completed.
+Expected result:
+- `provisioningState`: `Succeeded`
+- `powerState`: `On`
+- `readyState`: `True`
+
+If the BMM doesn't reach this state within the expected timeout (40 minutes), investigate using status and activity log information.
 
 ## Troubleshoot with a reimage action
 
@@ -123,11 +125,23 @@ The reimage action can be useful for troubleshooting problems by restoring the O
 
 A reimage action is the best practice for lowest operational risk to ensure the integrity of the BMM.
 
+> [!TIP]
+> For complete details on reimage phases (deprovisioning, provisioning, cloud init) and timeout values, see [Reimage a Bare Metal Machine](howto-baremetal-functions.md#reimage-a-bare-metal-machine).
+
 ### Reimage workflow
 
-1. **Verify running virtual machines and NAKS Nodes** - Before reimaging, check what VMs and NAKS nodes are running on the BMM.
-2. **Perform reimage** - Execute the reimage operation.
-3. **Uncordon** - Make the BMM schedulable again after reimage completes.
+Follow these steps to safely reimage a BMM:
+
+1. **Verify running virtual machines and NAKS Nodes** - Identify what workloads are on the BMM using [pre-check commands](#infrastructure-pre-check)
+2. **Assess impact** - Determine if VMs/NAKS nodes can tolerate downtime (running VMs will auto-restart after reimage)
+3. **Cordon and evacuate** - Run `cordon --evacuate "True"` to gracefully drain workloads
+4. **Perform reimage** - Execute the reimage operation (wipes OS disk, preserves tenant data)
+5. **Monitor progress** - Reimage includes deprovisioning, provisioning, and cloud init phases (up to 3 hours)
+6. **Uncordon** - Make the BMM schedulable again after reimage completes
+7. **Verify status** - Use [post-check commands](#infrastructure-post-check) to confirm BMM, VMs, and NAKS nodes are healthy
+
+> [!IMPORTANT]
+> Running VMs will experience downtime during reimage but will automatically restart after completion. Stopped VMs remain stopped.
 
 #### Infrastructure Pre Check
 
@@ -312,35 +326,43 @@ Servers contain many physical components that can fail over time. It's important
 
 A hardware validation process is invoked to ensure the integrity of the physical host in advance of deploying the OS image.
 
-This article provides an overview of the hardware validation process [Hardware Validation Overview](concepts-hardware-validation-overview.md)
+> [!TIP]
+> For complete details on replace phases (hardware validation, deprovisioning, provisioning, cloud init), safeguard-mode parameter, and hardware validation examples, see [Replace a Bare Metal Machine](howto-baremetal-functions.md#replace-a-bare-metal-machine).
 
-This article provides instructions on how to check and troubleshoot hardware validation results [Troubleshoot Hardware Validation](troubleshoot-hardware-validation-failure.md)
+**Related articles:**
+- [Hardware Validation Overview](concepts-hardware-validation-overview.md) - Overview of the hardware validation process
+- [Troubleshoot Hardware Validation](troubleshoot-hardware-validation-failure.md) - Check and troubleshoot hardware validation results
 
 > [!IMPORTANT]
 > When run with default options, the RAID controller is reset during BMM replace, wiping all data from the server's virtual disks. Baseboard Management Controller (BMC) virtual disk alerts triggered during BMM replace can be ignored unless there are other physical disk and/or RAID controllers alerts. Starting with the `2025-07-01-preview` version of the NetworkCloud API, and generally available with the `2025-09-01` GA version, use `replace` with `storage-policy="Preserve"` to retain virtual disk data.
 
 ### Replace workflow
 
-1. **Cordon and evacuate** - Remove virtual machines and NAKS nodes from the BMM before physical repair.
-2. **Perform physical repairs** - Replace hardware components as needed.
-3. **Execute replace command** - Run the replace command with required parameters.
-4. **Uncordon** - Make the BMM schedulable again after replacement completes.
-5. **Verify status** - Check that the BMM is properly functioning.[MM1.1][DR1.2]
+Follow these steps to safely replace a BMM after hardware repairs:
 
-**The following Azure CLI command will `cordon` the specified bareMetalMachineName.**
+1. **Identify hardware replaced** - Determine which components were repaired (see [Hardware Component Replacement Guide](#hardware-component-replacement-guide))
+2. **Assess data impact** - If storage components were replaced (SSD/PERC/System board/Backplane), VM data may be lost; migrate VMs before replace
+3. **Check BMM health** - Determine if BMM is healthy or unresponsive using [pre-check commands](#infrastructure-pre-check-1)
+4. **Cordon and evacuate** - If BMM is healthy, run `cordon --evacuate "True"`; if failed, skip to replace command
+5. **Verify firmware** - Ensure all replaced components meet minimum firmware requirements
+6. **Execute replace** - Run replace command with required parameters (includes hardware validation phase)
+7. **Monitor progress** - Replace includes hardware validation, deprovisioning, provisioning, and cloud init phases (up to 4 hours)
+8. **Uncordon** - Make the BMM schedulable again after replacement completes
+9. **Verify status** - Use [post-check commands](#infrastructure-post-check-1) to confirm BMM, VMs, and NAKS nodes are healthy
+
+> [!IMPORTANT]
+> Hardware validation runs before provisioning to verify BMC connectivity, credentials, network links, and component health. If validation fails, the replace action is rejected with detailed error messages. See [Troubleshoot Hardware Validation](troubleshoot-hardware-validation-failure.md).
+
+**Example cordon command** (see [Cordon](howto-baremetal-functions.md#make-a-bare-metal-machine-unschedulable-cordon) for complete details):
 
 ```azurecli
-az networkcloud baremetalmachine cordon \
-  --evacuate "True" \
-  --name <bareMetalMachineName> \
-  --resource-group "<resourceGroup>" \
-  --subscription <subscriptionID>
+az networkcloud baremetalmachine cordon --evacuate "True" --name <bareMetalMachineName> --resource-group "<resourceGroup>" --subscription <subscriptionID>
 ```
 
 > [!NOTE]
 > If the BMM has already failed and is unresponsive, the `cordon --evacuate "True"` command may not complete successfully. In this case:
 > - VMs on the failed BMM are already impacted
-> - Stateless pods can typically reschedule to healthy nodes, but StatefulSet pods can remain stuck on `NotReady` nodes[NA2.1][DR2.2][DR2.3]
+> - Stateless pods can typically reschedule to healthy nodes, but StatefulSet pods can remain stuck on `NotReady` nodes
 > - Proceed directly to physical repair and the replace command
 
 #### Infrastructure Pre Check
@@ -392,7 +414,7 @@ az networkcloud baremetalmachine show -n <nodeName> \
 > [!NOTE]
 > NAKS impact:
 > - If BMM was healthy: System will gracefully drain NAKS nodes before the replace operation proceeds.
-> - If BMM was unresponsive/unhealthy: NAKS nodes on that BMM are already impacted. The NAKS cluster will automatically reprovision nodes on healthy BMMs.[DR3.1][AB3.2][DR3.3]
+> - If BMM was unresponsive/unhealthy: NAKS nodes on that BMM are already impacted. The NAKS cluster will automatically reprovision nodes on healthy BMMs.
 
 > [!WARNING]
 > Replacing a single SSD is safe and does not impact VM OS disks because the RAID set tolerates single‑disk failures. However, if more than one SSD in the RAID group is replaced or fails before the array rebuilds, VM OS disks stored on those drives may be permanently lost.
@@ -450,11 +472,11 @@ After physical repairs are completed, verify that all firmware versions align wi
 
 Once the firmware checks are complete, proceed with the replace action.
 
-**The following Azure CLI command will `replace` the specified bareMetalMachineName.**
+**Example replace command** (see [Replace a Bare Metal Machine](howto-baremetal-functions.md#replace-a-bare-metal-machine) for all parameters and safeguard-mode details):
 
 ```azurecli
 az networkcloud baremetalmachine replace \
-  --name <bareMetalMachineName>  \
+  --name <bareMetalMachineName> \
   --resource-group "<resourceGroup>" \
   --bmc-credentials password=<IDRAC_PASSWORD> username=<IDRAC_USER> \
   --bmc-mac-address <IDRAC_MAC> \
@@ -463,15 +485,9 @@ az networkcloud baremetalmachine replace \
   --serial-number <SERIAL_NUM> \
   --subscription <subscriptionID> \
   --storage-policy <STORAGE_POLICY>
-```
 
-**The following Azure CLI command will uncordon the specified bareMetalMachineName.**
-
-```azurecli
-az networkcloud baremetalmachine uncordon \
-  --name <bareMetalMachineName> \
-  --resource-group "<resourceGroup>" \
-  --subscription <subscriptionID>
+# Uncordon to allow scheduling
+az networkcloud baremetalmachine uncordon --name <bareMetalMachineName> --resource-group "<resourceGroup>" --subscription <subscriptionID>
 ```
 
 #### Infrastructure Post Check
@@ -523,8 +539,8 @@ Restarting, reimaging, and replacing are effective troubleshooting methods for a
 | Action      | When to use                          | Impact                           | Requirements                                               |
 | ----------- | ------------------------------------ | -------------------------------- | ---------------------------------------------------------- |
 | **Restart** | Temporary glitches, unresponsive VMs | Brief downtime                   | None, fastest option                                       |
-| **Reimage** | OS corruption, security concerns     | Longer downtime, preserves data  | Workload evacuation recommended                            |
-| **Replace** | Hardware component failures          | Longest downtime, data in virtual disks is not preserved and VM may be unable to boot | Hardware component replacement, specific parameters needed |
+| **Reimage** | OS corruption, security concerns     | Longer downtime, preserves tenant data  | Workload evacuation recommended                            |
+| **Replace** | Hardware component failures          | Longest downtime, removes tenant data unless option `--storage-policy="Preserve"` is used | Hardware component replacement, specific parameters needed |
 
 ### Best practices
 
@@ -534,7 +550,7 @@ Restarting, reimaging, and replacing are effective troubleshooting methods for a
 - **Never run multiple operations simultaneously**: Ensure one operation completes before starting another to prevent server issues.
 - **Verify resolution**: After performing any action, verify the BMM status and that the original issue is resolved.
 
-More details about the BMM actions can be found in the [BMM actions](howto-baremetal-functions.md) article.
+For comprehensive details on all BMM actions, including command parameters, timeout values, and platform behavior, see [Bare Metal Machine Platform Commands](howto-baremetal-functions.md).
 
 If you still have questions, [contact support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 For more information about Support plans, see [Azure Support plans](https://azure.microsoft.com/support/plans/response/).
