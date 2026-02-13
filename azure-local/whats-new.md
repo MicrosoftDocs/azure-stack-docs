@@ -5,7 +5,7 @@ ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 02/02/2026
+ms.date: 02/13/2026
 ms.subservice: hyperconverged
 ---
 
@@ -17,18 +17,20 @@ This article lists the features and improvements that are available in hyperconv
 
 ## Features and improvements in 2602
 
-The February 2026 release of hyperconverged deployments of Azure Local is version **12.2602.x.x**. For more information, see [Release information summary](./release-information-23h2.md).
+The February 2026 release of hyperconverged deployments of Azure Local is version **12.2602.1007.7**. For more information, see [Release information summary](./release-information-23h2.md).
+
 This release includes various reliability improvements and other bug fixes.
 
 - **OS changes**:
 
-    - In 2602 release, all the new and existing deployments of Azure Local run the new OS version **26100.xxxxx** (download from the Azure portal).
+    - In 2602 release, all the new and existing deployments of Azure Local run the new OS version **26100.32370** (download from the Azure portal).
 
-    - You also need a driver that's compatible with OS version **26100.xxxxx** or Windows Server 2025.
+    - You also need a driver that's compatible with OS version **26100.32370** or Windows Server 2025.
 
     - For Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog), the OS is preinstalled. Work with your Original Equipment Manufacturer (OEM) to get a compatible OS image and a compatible driver.
 
-- **.NET updates**: This build uses .NET version **8.0.x** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
+- **.NET updates**: This build uses .NET version **8.0.24** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
+
 
 ::: moniker-end
 
