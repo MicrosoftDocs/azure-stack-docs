@@ -94,6 +94,16 @@ Use this checklist to plan your IP addresses for the disconnected operations app
   - Must be a valid, unused IP on the local network.
   - Must be reachable if you access lower management application programming interfaces (APIs) from outside the cluster.
 
+### VLAN for ingress or management network for control plane appliance
+If you require a VLAN for your ingress or management network - here is how you an set the VLAN:
+
+```powershell
+# List network adapters
+Get-VMNetworkAdapter
+# Set the network adapter default vlan and to allow untagged.
+Set-VMNetworkAdapterIsolation -ManagementOS -VMNetworkAdapterName "vManagement(ManagementCompute)" -DefaultIsolationID 2259 -IsolationMode Vlan -AllowUntaggedTraffic $true
+
+```
 ### Plan DNS and public key infrastructure (PKI)  
 
 During deployment of disconnected operations, you need an FQDN for your appliance that resolves to the ingress IP. It's necessary to plan your DNS and PKI infrastructure before you deploy disconnected operations. Also, consider how you want to use them to serve clients in your environment.
@@ -152,13 +162,6 @@ Here are the endpoints that the appliance needs to resolve:
 |-------------------------------|----------|
 |Geneva Observability Services | gcs.prod.monitoring.core.windows.net <br></br> *.prod.warm.ingest.monitor.core.windows.net  |
 | Azure Connected Machine Agent Managed Identity |  login.windows.net <br></br> login.microsoftonline.com <br></br> pas.windows.net <br></br> management.azure.com <br></br> *.his.arc.azure.com <br></br> *.guestconfiguration.azure.com |
-
-### Unsupported features  
-
-The following features aren't supported in this preview:
-
-- Configurable Virtual Local Area Network (VLAN) for disconnected operations ingress network that lets you add VLAN tags to ingress packets on a per-port basis.
-- Configurable VLAN for disconnected operations management network that lets you isolate management traffic from other network traffic, enhance security, and reduce interference.
 
 ::: moniker-end
 

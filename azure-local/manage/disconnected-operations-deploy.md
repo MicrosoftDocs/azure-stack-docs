@@ -23,6 +23,7 @@ When deploying disconnected operations and creating your management instance, co
 
 - The network configuration and names you enter in the portal should be consistent with your setup and the previously created switches.
 - Virtual deployments aren't supported. You must have physical machines.
+- If you require VLAN on the control plane appliance you need to make sure to set that up using Set-VMNetworkAdapterIsolation -ManagementOS .
 - You need at least three machines to support disconnected operations. You can use up to 16 machines for the management instance.
 - The deployment of the Azure Local cluster can take several hours.
 - The local control plane can experience periods of downtime during node reboots and updates.
