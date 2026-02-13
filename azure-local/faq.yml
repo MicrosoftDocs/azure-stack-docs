@@ -71,7 +71,7 @@ sections:
         answer: |
           No. Azure Local itself doesn't store customer data in the cloud. Only management data for the resources managed by Azure is stored in the cloud (for example, resource names, billing, usage, and more). Azure Local customers can opt in to additional capabilities and these capabilities can store data in the cloud (such as Azure Backup).
 
-          With disconnected operations operating with a disconnected connection intent – only registration data is sent during deployment/registration and license renewal processes and is controlled by the customer.
+          In disconnected operations, the system operates without continuous connectivity. Only registration data is sent during deployment, registration, and license renewal, and the customer controls this data exchange.
 
       - question: What happens if my network connection to the control plane temporarily goes down? How long can Azure Local run with the connection down? What happens if the 30-day limit is exceeded?
         answer: |
