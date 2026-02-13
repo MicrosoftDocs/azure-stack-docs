@@ -56,7 +56,7 @@ This security update contains fixes and quality improvements from [KB5073379](
 
   Data to be set: `0`
 
-To find more information on Azure local, see (Azure Stack HCI)[/azure-stack/hci/overview].
+To find more information on Azure local, see [Azure Stack HCI](/azure-stack/hci/overview).
 
 ## Known issues
 
