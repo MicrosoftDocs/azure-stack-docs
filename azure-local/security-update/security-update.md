@@ -56,7 +56,7 @@ This security update contains fixes and quality improvements from [KB5073379](
 
   Data to be set: `0`
 
-For an overview on Azure local, see [What is Azure Local?](../overview.md).
+For an overview on Azure local, see [What is Azure Local?](../overview.md)
 
 ## Known issues
 
