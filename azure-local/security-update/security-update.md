@@ -70,7 +70,7 @@ After you install [KB5070881](https://support.microsoft.com/topic/october-23-2
 
 Microsoft combines the latest servicing stack update (SSU) for your operating system with the latest cumulative update (LCU). For general information about SSUs, see [Servicing stack updates](/windows/deployment/update/servicing-stack-updates) and [Servicing Stack Updates (SSU): Frequently Asked Questions](https://support.microsoft.com/topic/servicing-stack-updates-ssu-frequently-asked-questions-06b62771-1cb0-368c-09cf-87c4efc4f2fe).
 
-To install the LCU on your Azure Local instance, see [Update Azure Local](/azure-local/update/azure-update-manager-23h2).
+To install the LCU on your Azure Local instance, see [Update Azure Local](../update/azure-update-manager-23h2).
 
 ## File Information
 
@@ -1483,7 +1483,7 @@ Microsoft isn't currently aware of any issues with this update.
 
 Microsoft now combines the latest servicing stack update (SSU) for your operating system with the latest cumulative update (LCU). For general information about SSUs, see [Servicing stack updates](/windows/deployment/update/servicing-stack-updates) and [Servicing Stack Updates (SSU): Frequently Asked Questions](https://support.microsoft.com/topic/servicing-stack-updates-ssu-frequently-asked-questions-06b62771-1cb0-368c-09cf-87c4efc4f2fe).
 
-To install the LCU on your Azure Local instance, see [Update Azure Local](/azure-local/update/azure-update-manager-23h2).
+To install the LCU on your Azure Local instance, see [Update Azure Local](../update/azure-update-manager-23h2).
 
 
 ### File list
@@ -1520,7 +1520,7 @@ Microsoft isn't currently aware of any issues with this update.
 
 Microsoft now combines the latest servicing stack update (SSU) for your operating system with the latest cumulative update (LCU). For general information about SSUs, see [Servicing stack updates](/windows/deployment/update/servicing-stack-updates) and [Servicing Stack Updates (SSU): Frequently Asked Questions](https://support.microsoft.com/topic/servicing-stack-updates-ssu-frequently-asked-questions-06b62771-1cb0-368c-09cf-87c4efc4f2fe).
 
-To install the LCU on your Azure Local instance, see [Update Azure Local](/azure-local/update/azure-update-manager-23h2).
+To install the LCU on your Azure Local instance, see [Update Azure Local](../update/azure-update-manager-23h2).
 
 <!--| Release Channel | Available | Next Step |
 |--| -- |--|
@@ -1587,7 +1587,7 @@ Microsoft isn't currently aware of any issues with this update.
 
 Microsoft now combines the latest servicing stack update (SSU) for your operating system with the latest cumulative update (LCU). For general information about SSUs, see [Servicing stack updates](/windows/deployment/update/servicing-stack-updates) and [Servicing Stack Updates (SSU): Frequently Asked Questions](https://support.microsoft.com/topic/servicing-stack-updates-ssu-frequently-asked-questions-06b62771-1cb0-368c-09cf-87c4efc4f2fe).
 
-To install the LCU on your Azure Local instance, see [Update Azure Local](/azure-local/update/azure-update-manager-23h2).
+To install the LCU on your Azure Local instance, see [Update Azure Local](../update/azure-update-manager-23h2).
 
 <!--| Release Channel | Available | Next Step |
 |----|----|----|
@@ -1645,7 +1645,7 @@ Microsoft isn't currently aware of any issues with this update.
 
 Microsoft now combines the latest servicing stack update (SSU) for your operating system with the latest cumulative update (LCU). For general information about SSUs, see [Servicing stack updates](/windows/deployment/update/servicing-stack-updates) and [Servicing Stack Updates (SSU): Frequently Asked Questions](https://support.microsoft.com/topic/servicing-stack-updates-ssu-frequently-asked-questions-06b62771-1cb0-368c-09cf-87c4efc4f2fe).
 
-To install the LCU on your Azure Local instance, see [Update Azure Local](/azure-local/update/azure-update-manager-23h2).
+To install the LCU on your Azure Local instance, see [Update Azure Local](../update/azure-update-manager-23h2).
 
 <!--| Release Channel | Available | Next Step |
 |--| -- |--|
@@ -1699,7 +1699,7 @@ Microsoft isn't currently aware of any issues with this update.
 
 Microsoft now combines the latest servicing stack update (SSU) for your operating system with the latest cumulative update (LCU). For general information about SSUs, see [Servicing stack updates](/windows/deployment/update/servicing-stack-updates) and [Servicing Stack Updates (SSU): Frequently Asked Questions](https://support.microsoft.com/topic/servicing-stack-updates-ssu-frequently-asked-questions-06b62771-1cb0-368c-09cf-87c4efc4f2fe).
 
-<!--To install the LCU on your Azure Local instance, see [Update Azure Local](/azure-local/update/azure-update-manager-23h2).
+<!--To install the LCU on your Azure Local instance, see [Update Azure Local](../update/azure-update-manager-23h2).
 
 | Release Channel | Available | Next Step |
 |----|----|----|
@@ -1760,7 +1760,7 @@ Microsoft isn't currently aware of any issues with this update.
 
 Microsoft now combines the latest servicing stack update (SSU) for your operating system with the latest cumulative update (LCU). For general information about SSUs, see [Servicing stack updates](/windows/deployment/update/servicing-stack-updates) and [Servicing Stack Updates (SSU): Frequently Asked Questions](https://support.microsoft.com/topic/servicing-stack-updates-ssu-frequently-asked-questions-06b62771-1cb0-368c-09cf-87c4efc4f2fe).
 
-To install the LCU on your Azure Local instance, see [Update Azure Local](/azure-local/update/azure-update-manager-23h2).
+To install the LCU on your Azure Local instance, see [Update Azure Local](../update/azure-update-manager-23h2).
 
 <!--| Release Channel | Available | Next Step |
 |--| -- | -- |
