@@ -1,6 +1,6 @@
 ---
-title: Troubleshoot Packet Drops, Discards and Errors for Azure Operator Nexus
-description: Troubleshoot Packet Drops, Discards and Errors for Azure Operator Nexus
+title: Troubleshoot Packet Drops, Discards, and Errors for Azure Operator Nexus
+description: Troubleshoot Packet Drops, Discards, and Errors for Azure Operator Nexus
 ms.service: azure-operator-nexus
 ms.custom: troubleshooting
 ms.topic: troubleshooting
@@ -9,7 +9,7 @@ author: RaghvendraMandawale
 ms.author: rmandawale
 ---
 
-# Troubleshoot Packet Drops, Discards and Errors for Azure Operator Nexus
+# Troubleshoot Packet Drops, Discards, and Errors for Azure Operator Nexus
 
 ## Dropped Packets 
 
@@ -41,7 +41,7 @@ ms.author: rmandawale
 
 - Adjust queue configuration or traffic patterns to reduce congestion. 
 - Review and correct QoS or policing policies if misconfigured. 
-- If discards cannot be explained or resolved, engage Arista TAC and provide interface counters, queue statistics, and relevant logs. 
+- If discards can't be explained or resolved, engage Arista TAC and provide interface counters, queue statistics, and relevant logs. 
     
 
 ## Interface In Errors 
@@ -73,7 +73,7 @@ ms.author: rmandawale
 
 - Adjust queue allocation or traffic shaping to reduce congestion. 
 - Review QoS policies applied to outbound traffic. 
-- Engage Arista TAC if drops persist or cannot be correlated to expected traffic behavior. 
+- Engage Arista TAC if drops persist or can't be correlated to expected traffic behavior. 
     
 
 ## Interface In or Out Errors 
@@ -81,7 +81,7 @@ ms.author: rmandawale
 ### What to Check 
 
 - Confirm Ethernet frame errors at the data‑link (L2) layer. 
-- Validate speed, duplex, and auto‑negotiation settings on both ends of the link. 
+- Validate speed, duplex, and autonegotiation settings on both ends of the link. 
 - Review optical power levels and physical media health. 
     
 
@@ -99,7 +99,7 @@ ms.author: rmandawale
 - Validate LACP configuration consistency (mode, timers, LAG identifiers). 
 - Confirm all LAG member ports have identical attributes (speed, MTU, VLAN configuration). 
 - Inspect physical link health for all LAG members. 
-- Verify LACP control traffic is not blocked by policies or control‑plane features. 
+- Verify LACP control traffic isn't blocked by policies or control‑plane features. 
 - Ensure no conflicting LACP controllers or bonding configurations exist. 
     
 
