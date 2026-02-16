@@ -5,9 +5,9 @@ description: Find troubleshooting guides for platform-emitted resource health al
 ms.service: azure-operator-nexus
 ms.custom: troubleshooting
 ms.topic: troubleshooting
-ms.date: 07/02/2025
-ms.author: omarrivera
-author: omarrivera
+ms.date: 02/16/2026
+author: RaghvendraMandawale
+ms.author: rmandawale
 ---
 
 # Troubleshoot resource health alerts
@@ -34,6 +34,16 @@ These alerts are generated based on the status of the resource and its dependenc
 [Troubleshoot NFS unhealthy]: ./troubleshoot-network-file-system-unhealthy.md
 [Troubleshoot unhealthy CSI (storage)]: ./troubleshoot-unhealthy-container-storage-interface.md
 [Troubleshoot storage control plane disconnected]: ./troubleshoot-storage-control-plane-disconnected.md
+
+
+## Network Device
+
+| **Signal Category** | **Metric / Event Name (as defined)** | **What It Represents** | **Reference / Sub Page** |
+| --- | --- | --- | --- |
+| **CPU or Memory** | HighCpuUtilizationAvg, UnhealthyCpuUtilizationAvg, LowCpuUtilizationAvg, HighMemoryUtilization, LowMemoryUtilization | Sustained high CPU utilization, CPU utilization beyond unhealthy threshold, CPU utilization at or near zero, High memory consumption, Memory utilization at or near zero | [Troubleshoot CPU and Memory Guide]: ./troubleshoot-cpu-and-memory-guide.md |
+| **Temperature** | HighDeviceTemperature, LowDeviceTemperature, UnhealthyDeviceHighTemperature | Device temperature above normal range, Device temperature below normal range, Critically high device temperature | [Troubleshoot Temperature Guide]: ./troubleshoot-temperature-guide.md |
+| **Power Supply – Input or Output Voltage** | AnyHighPowerSupplyInputVoltage, AnyLowPowerSupplyInputVoltage, AllHighPowerSupplyInputVoltage, AllLowPowerSupplyInputVoltage, AnyHighPowerSupplyOutputVoltage, AnyLowPowerSupplyOutputVoltage, AllHighPowerSupplyOutputVoltage, AllLowPowerSupplyOutputVoltage | At least one PSU input voltage too high, At least one PSU input voltage too low, All PSU input voltages too high, All PSU input voltages too low, At least one PSU output voltage too high, At least one PSU output voltage too low, All PSU output voltages too high, All PSU output voltages too low | [Troubleshoot Power Supply Voltage Guide]: ./troubleshoot-power-supply-voltage-guide.md |
+| **Packets (Drops), Interface Discards, Interface Errors, Ethernet / L2 Errors, LACP Errors** | PositiveDroppedPacketsRate, PositiveInterfaceInDiscardsRate, HighInterfaceInDiscardsRate, PositiveInterfaceOutDiscardsRate, HighInterfaceOutDiscardsRate, PositiveInterfaceInErrorsRate, PositiveInterfaceOutErrorsRate, PositiveEthInCrcErrorsRate, PositiveLacpErrorsRate | Packets dropped due to forwarding/buffer conditions, Ingress interface discards, High ingress discard rate, Egress interface discards, High egress discard rate, Errors on ingress interface, Errors on egress interface, CRC errors on received Ethernet frames, LACP protocol or aggregation errors | [Troubleshoot Packet Drops and Discards Guide]: ./troubleshoot-packet-drops-and-discards-guide.md |
 
 ## Please contact support
 
