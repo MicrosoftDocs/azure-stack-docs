@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
 ms.custom: references_regions
-ms.date: 05/07/2025
+ms.date: 02/11/2026
 ms.subservice: hyperconverged
 ---
 
@@ -20,7 +20,7 @@ This article describes the requirements for machines, storage, and networking fo
 
 [!INCLUDE [important](../includes/hci-preview.md)]
 
-## About the low capacity class
+## Low capacity class
 
 Azure Local supports a new class of devices with reduced hardware requirements. This new, low-cost hardware class called *low capacity* is suited for various edge scenarios across industry. To ensure compatibility, interoperability, security, and reliability, this class of hardware must meet Azure Local solution requirements.
 
@@ -35,8 +35,8 @@ The following table lists the requirements for low capacity hardware:
 | Number of machines | One to three machines are supported. Each machine must be the same model, manufacturer, have the same network adapters, and have the same number and type of storage drives. |
 | CPU | An Intel Xeon or AMD EPYC or later compatible processor with second-level address translation (SLAT). <br> Up to 14 physical cores |
 | Memory | A minimum of 32 GB per machine and a maximum of 128 GB per machine with Error-Correcting Code (ECC). |
-| Host network adapters | One network adapter that meets the [Azure Local host network requirements](./host-network-requirements.md)<br> Enabling RDMA on storage intent isn't required.<br> Minimum link speed must be 1 Gbps for single node deployment.<br>In two or three node deployments, a dedicated network port for storage with minimum 10 Gbps is required.   |
-| BIOS | Intel VT or AMD-V must be turned on.|
+| Host network adapters | One network adapter that meets the [Azure Local host network requirements](./host-network-requirements.md)<br> Enabling Remote Direct Memory Access (RDMA) on storage intent isn't required.<br> Minimum link speed must be 1 Gbps for single node deployment.<br>In two or three node deployments, a dedicated network port for storage with minimum 10 Gbps is required.   |
+| BIOS | Intel Virtualization Technology (Intel VT) or AMD-V must be turned on. |
 | Boot drive | A minimum size of 200 GB.|
 | Data drives | A minimum single disk of capacity 1 TB. <br> The drives must be all flash single drive type, either Nonvolatile Memory Express (NVME) or Solid-State Drive (SSD). <br> All the drives must be of the same type. <br> No caching. |
 | Trusted Platform Module (TPM) | TPM version 2.0 hardware must be present and enabled. |
@@ -50,7 +50,7 @@ The storage subsystem for an Azure Local running the Azure Stack HCI OS is layer
 
 - A minimum of one data drive is required to create a storage pool.
 - All drives in the pool must be of the same type, either NVMe or SSD.
-- Mixing drive types used for caching (NVMe and SSD) isn't supported. It is supported for the boot drive however.  
+- Mixing drive types used for caching (NVMe and SSD) isn't supported. It is supported for the boot drive, however.
 
 The supported volume configuration for the system is:
 
@@ -77,12 +77,12 @@ The minimum networking requirements are as follows:
 - A Layer 2 switch with VLAN support is required.
 - Storage intent doesn't require RDMA to be enabled.
 
-Removal of RDMA allows the use of a layer 2 network switch with VLAN support. This further simplifies the configuration management and reduces the overall solution cost.
+Removal of RDMA allows the use of a layer 2 network switch with VLAN support, which further simplifies the configuration management and reduces the overall solution cost.
 
 ### Minimum speed requirements
 
 | Single node | Two or three nodes,<br>Switched storage | Two or three nodes,<br>Switchless storage |
-| -- | -- | -- |
+| --- | --- | --- |
 | 1 GbE linked to switch* | Dedicated network port for storage - 10 Gbps minimum.<br><br>Switch capable of 10 Gbps minimum (RDMA optional).<br><br>Management and compute network -1 Gpbs minimum. | Dedicated network adapter ports for storage - 10 Gbps minimum.<br><br>RDMA automatically enabled if supported by adapter.<br><br>Management and compute network via switch - 1 Gpbs minimum. |
 
 > [!NOTE]
@@ -93,7 +93,7 @@ Removal of RDMA allows the use of a layer 2 network switch with VLAN support. Th
 ### Supported network traffic grouping by intent
 
 | Intent grouping | Single node | Two or three nodes |
-| -- | -- | -- |
+| --- | --- | --- |
 | Management and compute (no storage) | yes | n/a |
 | Management and compute (1 Gbps min),<br>And dedicated storage traffic (10 Gbps) | yes | yes|
 | All traffic | RDMA capable switch, 10 Gbps minimum | RDMA capable switch, 10 Gbps minimum |
