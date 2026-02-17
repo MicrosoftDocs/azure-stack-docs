@@ -9,9 +9,11 @@ author: RaghvendraMandawale
 ms.author: rmandawale
 ---
 
-# Troubleshoot Packet Drops, Discards, and Errors for Azure Operator Nexus
+# Troubleshoot packet drops, discards, and errors for Azure Operator Nexus
 
 ## Dropped Packets 
+
+This section provides guidance to identify, analyze, and remediate packet drops, discards, and interface‑level errors that may impact network reliability and performance.
 
 ### What to Check 
 
@@ -125,15 +127,4 @@ ms.author: rmandawale
 - Replace damaged cables or faulty transceivers. 
 - Clean fiber connectors and reseat optics. 
 - Correct speed, duplex, or negotiation mismatches. 
-- Escalate to Arista TAC if CRC errors continue after remediation. 
-    
-
-## References  
-
-- [Customer Support - Arista](https://www.arista.com/en/support/customer-support) 
-- [EOS 4.34.2F - Traffic Management - Arista](https://www.arista.com/en/um-eos/eos-traffic-management) 
-- [Platform Specific Discards](https://arista.my.site.com/AristaCommunity/s/article/platform-specific-discards) 
-- [Troubleshooting Congestion](https://arista.my.site.com/AristaCommunity/s/article/how-to-troubleshoot-congestion) - output discards 
-- [Interface Errors Explained](https://arista.my.site.com/AristaCommunity/s/article/interface-errors-explained) 
-- [Resolving CRC and Input Errors, A Beginner’s Guide](https://arista.my.site.com/AristaCommunity/s/article/resolving-crc-and-input-errors-a-beginners-guide) 
-- [EOS 4.34.2F - Command-Line Interface (CLI) - Arista](https://www.arista.com/en/um-eos/eos-command-line-interface-cli)
+- Escalate to Arista TAC if CRC errors continue after remediation.

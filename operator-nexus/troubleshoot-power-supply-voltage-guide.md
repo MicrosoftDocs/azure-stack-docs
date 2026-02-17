@@ -9,7 +9,9 @@ author: RaghvendraMandawale
 ms.author: rmandawale
 ---
 
-# Troubleshoot Power Supply Voltage for Azure Operator Nexus
+# Troubleshoot power supply voltage for Azure Operator Nexus
+
+This guide helps you identify, isolate, and resolve power supply voltage input and output issues that may affect device stability in Azure Operator Nexus.
 
 ## Power Supply Voltage – Input 
 
@@ -56,12 +58,4 @@ ms.author: rmandawale
 - Replace the faulty PSU with a compatible, genuine replacement if indicators show failure. 
 - If the issue persists or diagnosis is unclear, open a support case with Arista TAC and provide: 
   - power/environment diagnostics 
-  - relevant logs 
-    
-
-## References  
-
-- [Customer Support - Arista](https://www.arista.com/en/support/customer-support) 
-- [EOS 4.34.2F - Environment Commands - Arista](https://www.arista.com/en/um-eos/eos-environment-commands) 
-- [Troubleshooting PowerSupply Failure](https://arista.my.site.com/AristaCommunity/s/article/Troubleshooting-PowerSupply-Failure) 
-- [Troubleshooting PSU issues/failovers](https://arista.my.site.com/AristaCommunity/s/article/Troubleshooting-PSU-issues-failovers)
+  - relevant logs

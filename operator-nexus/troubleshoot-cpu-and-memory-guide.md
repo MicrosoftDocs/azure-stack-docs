@@ -9,7 +9,9 @@ author: RaghvendraMandawale
 ms.author: rmandawale
 ---
 
-# Troubleshoot High CPU and Memory Utilization for Azure Operator Nexus
+# Troubleshoot high CPU and memory utilization for Azure Operator Nexus
+
+This guide helps you identify, assess, and remediate CPU and memory utilization conditions that may affect device performance and health in Azure Operator Nexus.
 
 ## High CPU or Memory Utilization  
 
@@ -17,14 +19,14 @@ ms.author: rmandawale
 
 - Verify whether the device is handling unusually high traffic levels. This may be expected under certain workloads.
 - Check if the device is in maintenance mode, which can temporarily cause CPU or memory spikes.  
-- Look for signs of abnormal traffic patterns such as broadcast or controlplane storms.  
+- Look for signs of abnormal traffic patterns such as broadcast or control plane storms.  
     
 
 ### Recommended actions  
 
 - If high utilization is sustained, consider applying a CPU traffic policy to protect the control plane from excessive traffic.
 - If the issue persists and impacts device manageability, contact Microsoft Customer Support.  
-- For Arista devices with multiple hardware SKUs, if traffic levels or memory consumption remain consistently high, consider upgrading to a highercapacity SKU, where supported.  
+- For Arista devices with multiple hardware SKUs, if traffic levels or memory consumption remain consistently high, consider upgrading to a higher capacity SKU, where supported.  
     
 
 ## Unhealthy (Critically High) CPU or Memory Utilization  
@@ -47,11 +49,4 @@ ms.author: rmandawale
 ### Recommended actions  
 
 - If maintenance activities are complete, remove the device from maintenance mode, where applicable.  
-- If low utilization persists unexpectedly, contact Microsoft Customer Support for further investigation.  
-    
-
-## References
-
-- [Traffic Policies - Arista AVD collection](https://ansible-avd-juliopdx.readthedocs.io/en/doc-fixes/roles/eos_cli_config_gen/docs/data_model/Traffic%20Policies.html) 
-- [EOS 4.34.2F - Maintenance Mode - Arista](https://www.arista.com/en/um-eos/eos-maintenance-mode) 
-- [Troubleshooting Maintenance Mode](https://arista.my.site.com/AristaCommunity/s/article/Troubleshooting-Maintenance-Mode)
+- If low utilization persists unexpectedly, contact Microsoft Customer Support for further investigation.
