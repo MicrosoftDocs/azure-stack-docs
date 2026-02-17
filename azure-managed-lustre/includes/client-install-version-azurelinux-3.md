@@ -20,7 +20,7 @@ If you want to upgrade the kernel, you must first remove the existing Lustre pac
 ```bash
 # Remove existing Lustre packages
 sudo lustre_rmmod
-sudo tdnf remove *lustre* -y
+sudo tdnf remove '*lustre*' -y
 
 # Upgrade kernel
 sudo tdnf upgrade kernel -y

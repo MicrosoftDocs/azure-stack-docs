@@ -152,7 +152,7 @@ If your client machine uses an older version of Lustre, you can upgrade the Lust
 1. Uninstall the existing Lustre client version by using the following command:
 
     ```bash
-    sudo tdnf remove *lustre* -y
+    sudo tdnf remove '*lustre*' -y
     ```
 
 1. Install the current version of the Lustre client by using the following command:
