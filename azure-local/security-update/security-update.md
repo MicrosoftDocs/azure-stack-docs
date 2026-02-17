@@ -3,7 +3,7 @@ title:  Security updates for Azure Local
 description: Security updates for Azure Local.
 author: alkohli
 ms.topic: release-notes
-ms.date: 01/20/2026
+ms.date: 02/13/2026
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: hyperconverged
@@ -13,20 +13,85 @@ ms.subservice: hyperconverged
 
 This article lists the various security updates that are available for Azure Local.
 
-::: moniker range="=azloc-2601"
+::: moniker range="=azloc-2602"
 
-## January OS security update (KB5073379) for Azure Local
+## February OS security update (KB5075899) for Azure Local
 
-This section provides the 2601 security updates associated with OS build **26100.32230** released on January 13, 2026 and also includes key notifications, announcements, change logs, and end-of-support notices.
-
-Starting with the January 2026 security update, Azure Stack HCI, version 24H2 will use different KB identifiers and a different build number. This change does not affect how you receive or manage updates for Azure Stack HCI, version 24H2.
+This section provides the 2602 security updates associated with OS build **26100.32370** released on February 10, 2026 and also includes key notifications, announcements, change logs, and end-of-support notices.
 
 ## Windows Secure Boot certificate expiration
 
 > [!IMPORTANT]
 > The Azure Local product team is aware of the upcoming expiration of the boot certificates of Windows devices and is actively working with solution OEM partners to deliver a managed update. Upcoming solution updates will initiate the mitigation process to address this scenario.
 
-To learn more about differences between security updates, optional non-security preview updates, out-of-band (OOB) updates, and continuous innovation, see [Windows monthly updates explained](https://techcommunity.microsoft.com/blog/windows-itpro-blog/windows-monthly-updates-explained/3773544). For information on Windows update terminology, see the different types of [Windows software updates](/troubleshoot/windows-client/installing-updates-features-roles/standard-terminology-software-updates). For an overview, see the update history page for Azure Stack HCI, version 24H2.
+To learn more about differences between security updates, optional non-security preview updates, out-of-band (OOB) updates, and continuous innovation, see [Windows monthly updates explained](https://techcommunity.microsoft.com/blog/windows-itpro-blog/windows-monthly-updates-explained/3773544). For information on Windows update terminology, see the different types of [Windows software updates](/troubleshoot/windows-client/installing-updates-features-roles/standard-terminology-software-updates).
+
+## Improvements  
+
+This security update contains fixes and quality improvements from [KB5073379](https://support.microsoft.com/topic/january-13-2026-kb5073379-os-build-26100-32230-a6021fd2-b3b7-45a7-b68e-35c28a2a77da?preview=true) (released January 13, 2026), [KB5077793](https://support.microsoft.com/topic/january-17-2026-kb5077793-os-build-26100-32234-out-of-band-58c4a80a-0d1c-4684-b828-5f33ef3892e4?preview=true) (released January 17, 2026), and [KB5078135](https://support.microsoft.com/topic/january-24-2026-kb5078135-os-build-26100-32236-out-of-band-1dd50b78-08e5-4e13-ae0f-a0c4ff61a2e5?preview=true) (released January 24, 2026). The following summary outlines key issues addressed by this update. Also included are available new features. The bold text within the brackets indicates the item or area of the change.
+
+- **[File Explorer]** Fixed: This update addresses an issue where folder renaming with desktop.ini files in File Explorer isn't work correctly. The `LocalizedResourceName` setting is ignored, so custom folder names don't appear.
+
+- **[Fonts & Display]** Updates the Chinese fonts to support the GB180302022A standard for character coverage and display.
+
+- **[Graphics]** Fixed: This update addresses an issue where certain GPU configurations might recently have experienced a system error related to dxgmms2.sys, resulting in the `KERNEL_SECURITY_CHECK_FAILURE` error.
+
+- **[Performance & Reliability]** Fixed: This update disables the forwarded I/O feature in the NVMe stack by default.
+
+- **[Networking]**
+
+  - ​DNS over HTTPS (DoH) support for Windows DNS Server is now available in public preview. This preview enables evaluation of DoH for traffic between the server and its clients. This is intended for feedback only. It isn’t supported for production use, and it might contain issues. Functionality might also change, including potential breaking changes, before General Availability (GA).  You can read more about this preview in the [DoH on Windows DNS Server](https://aka.ms/dohserver) blog.
+
+  - Windows Server now supports random shuffling of resource records in DNS Server responses. This helps reduce scenarios where a single resource record becomes overloaded because it appears first in the returned list.
+
+  To enable, create a `DWORD` registry key named `RandomShuffle` at:
+
+  ```
+  Computer\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\DNS\Parameters
+  ```
+
+  Data to be set: `1`
+
+  To disable or erase the key:
+
+  Data to be set: `0`
+
+For an overview of Azure local, see [What is Azure Local?](../overview.md)
+
+## Known issues
+
+### Windows Server Update Services (WSUS) doesn't display error details
+
+After you install [KB5070881](https://support.microsoft.com/topic/october-23-2025-kb5070881-os-build-26100-6905-out-of-band-8e7ac742-6785-4677-87e4-b73dd8ac0122?preview=true) or later updates, Windows Server Update Services (WSUS) doesn't display synchronization error details within its error reporting. This functionality is temporarily removed to address the Remote Code Execution Vulnerability [CVE-2025-59287](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2025-59287).
+
+## To install
+
+### Before you install this update  
+
+Microsoft combines the latest servicing stack update (SSU) for your operating system with the latest cumulative update (LCU). For general information about SSUs, see [Servicing stack updates](/windows/deployment/update/servicing-stack-updates) and [Servicing Stack Updates (SSU): Frequently Asked Questions](https://support.microsoft.com/topic/servicing-stack-updates-ssu-frequently-asked-questions-06b62771-1cb0-368c-09cf-87c4efc4f2fe).
+
+To install the LCU on your Azure Local instance, see [Update Azure Local](../update/azure-update-manager-23h2.md).
+
+## File Information
+
+For a list of the files provided in this update, download the file information for [cumulative update 5075899](https://go.microsoft.com/fwlink/?linkid=2350429).
+
+::: moniker-end
+
+::: moniker range="=azloc-2601"
+
+## January OS security update (KB5073379) for Azure Local
+
+This section provides the 2601 security updates associated with OS build **26100.32230** released on January 13, 2026 and also includes key notifications, announcements, change logs, and end-of-support notices.
+
+Starting with the January 2026 security update, Azure Stack HCI OS, version 24H2 will use different KB identifiers and a different build number. This change does not affect how you receive or manage updates for Azure Local.
+
+## Windows Secure Boot certificate expiration
+
+> [!IMPORTANT]
+> The Azure Local product team is aware of the upcoming expiration of the boot certificates of Windows devices and is actively working with solution OEM partners to deliver a managed update. Upcoming solution updates will initiate the mitigation process to address this scenario.
+
+To learn more about differences between security updates, optional non-security preview updates, out-of-band (OOB) updates, and continuous innovation, see [Windows monthly updates explained](https://techcommunity.microsoft.com/blog/windows-itpro-blog/windows-monthly-updates-explained/3773544). For information on Windows update terminology, see the different types of [Windows software updates](/troubleshoot/windows-client/installing-updates-features-roles/standard-terminology-software-updates).
 
 ## Improvements
 
@@ -69,7 +134,7 @@ This section provides the 2512 security updates associated with OS build **26200
 
 The Azure Local product team is aware of the upcoming expiration of the boot certificates of Windows devices and is actively working with solution OEM partners to deliver a managed update. Upcoming solution updates will initiate the mitigation process to address this scenario.
 
-To learn more about differences between security updates, optional non-security preview updates, out-of-band (OOB) updates, and continuous innovation, see [Windows monthly updates explained](https://techcommunity.microsoft.com/blog/windows-itpro-blog/windows-monthly-updates-explained/3773544). For information on Windows update terminology, see the different types of [Windows software updates](/troubleshoot/windows-client/installing-updates-features-roles/standard-terminology-software-updates). For an overview, see the update history page for Azure Stack HCI, version 24H2.
+To learn more about differences between security updates, optional non-security preview updates, out-of-band (OOB) updates, and continuous innovation, see [Windows monthly updates explained](https://techcommunity.microsoft.com/blog/windows-itpro-blog/windows-monthly-updates-explained/3773544). For information on Windows update terminology, see the different types of [Windows software updates](/troubleshoot/windows-client/installing-updates-features-roles/standard-terminology-software-updates).
 
 ## Improvements
 
@@ -125,7 +190,7 @@ A new, standardized title format makes Windows updates easier to read and unders
 
 The Azure Local product team is aware of the upcoming expiration of the boot certificates of Windows devices and is actively working with solution OEM partners to deliver a managed update. Upcoming solution updates will initiate the mitigation process to address this scenario.
 
-To learn more about differences between security updates, optional non-security preview updates, out-of-band (OOB) updates, and continuous innovation, see [Windows monthly updates explained](https://techcommunity.microsoft.com/blog/windows-itpro-blog/windows-monthly-updates-explained/3773544). For information on Windows update terminology, see the different types of [Windows software updates](/troubleshoot/windows-client/installing-updates-features-roles/standard-terminology-software-updates). For an overview, see the update history page for Azure Stack HCI, version 24H2.
+To learn more about differences between security updates, optional non-security preview updates, out-of-band (OOB) updates, and continuous innovation, see [Windows monthly updates explained](https://techcommunity.microsoft.com/blog/windows-itpro-blog/windows-monthly-updates-explained/3773544). For information on Windows update terminology, see the different types of [Windows software updates](/troubleshoot/windows-client/installing-updates-features-roles/standard-terminology-software-updates).
  
 ## Improvements
 
@@ -196,7 +261,7 @@ This section provides the 2510 security updates associated with OS build **25398
 
 The Azure Local product team is aware of the upcoming expiration of the boot certificates of Windows devices and is actively working with solution OEM partners to deliver a managed update. Upcoming solution updates will initiate the mitigation process to address this scenario.
 
-To learn more about differences between security updates, optional non-security preview updates, out-of-band (OOB) updates, and continuous innovation, see [Windows monthly updates explained](https://techcommunity.microsoft.com/blog/windows-itpro-blog/windows-monthly-updates-explained/3773544). For information on Windows update terminology, see the different types of [Windows software updates](/troubleshoot/windows-client/installing-updates-features-roles/standard-terminology-software-updates). For an overview, see the update history page for Azure Stack HCI, version 24H2.
+To learn more about differences between security updates, optional non-security preview updates, out-of-band (OOB) updates, and continuous innovation, see [Windows monthly updates explained](https://techcommunity.microsoft.com/blog/windows-itpro-blog/windows-monthly-updates-explained/3773544). For information on Windows update terminology, see the different types of [Windows software updates](/troubleshoot/windows-client/installing-updates-features-roles/standard-terminology-software-updates).
 
 ## Improvements
 
@@ -240,7 +305,7 @@ This section provides the 2510 security updates associated with OS build **26200
 
 The Azure Local product team is aware of the upcoming expiration of the boot certificates of Windows devices and is actively working with solution OEM partners to deliver a managed update. Upcoming solution updates will initiate the mitigation process to address this scenario.
 
-To learn more about differences between security updates, optional non-security preview updates, out-of-band (OOB) updates, and continuous innovation, see [Windows monthly updates explained](https://techcommunity.microsoft.com/blog/windows-itpro-blog/windows-monthly-updates-explained/3773544). For information on Windows update terminology, see the different types of [Windows software updates](/troubleshoot/windows-client/installing-updates-features-roles/standard-terminology-software-updates). For an overview, see the update history page for Azure Stack HCI, version 24H2.
+To learn more about differences between security updates, optional non-security preview updates, out-of-band (OOB) updates, and continuous innovation, see [Windows monthly updates explained](https://techcommunity.microsoft.com/blog/windows-itpro-blog/windows-monthly-updates-explained/3773544). For information on Windows update terminology, see the different types of [Windows software updates](/troubleshoot/windows-client/installing-updates-features-roles/standard-terminology-software-updates).
 
 ## Improvements
 
@@ -319,7 +384,7 @@ This section provides the 2509 security updates associated with OS build **25398
 
 The Azure Local product team is aware of the upcoming expiration of the boot certificates of Windows devices and is actively working with solution OEM partners to deliver a managed update. Upcoming solution updates will initiate the mitigation process to address this scenario.
 
-To learn more about differences between security updates, optional non-security preview updates, out-of-band (OOB) updates, and continuous innovation, see [Windows monthly updates explained](https://techcommunity.microsoft.com/blog/windows-itpro-blog/windows-monthly-updates-explained/3773544). For information on Windows update terminology, see the different types of [Windows software updates](/troubleshoot/windows-client/installing-updates-features-roles/standard-terminology-software-updates). For an overview, see the update history page for Azure Stack HCI, version 24H2.
+To learn more about differences between security updates, optional non-security preview updates, out-of-band (OOB) updates, and continuous innovation, see [Windows monthly updates explained](https://techcommunity.microsoft.com/blog/windows-itpro-blog/windows-monthly-updates-explained/3773544). For information on Windows update terminology, see the different types of [Windows software updates](/troubleshoot/windows-client/installing-updates-features-roles/standard-terminology-software-updates).
 
 ## Improvements
 
@@ -388,7 +453,7 @@ This section provides the 2509 security updates associated with OS build **26100
 
 The Azure Local product team is aware of the upcoming expiration of the boot certificates of Windows devices and is actively working with solution OEM partners to deliver a managed update. Upcoming solution updates will initiate the mitigation process to address this scenario.
 
-To learn more about differences between security updates, optional non-security preview updates, out-of-band (OOB) updates, and continuous innovation, see [Windows monthly updates explained](https://techcommunity.microsoft.com/blog/windows-itpro-blog/windows-monthly-updates-explained/3773544). For information on Windows update terminology, see the different types of [Windows software updates](/troubleshoot/windows-client/installing-updates-features-roles/standard-terminology-software-updates). For an overview, see the update history page for Azure Stack HCI, version 24H2.
+To learn more about differences between security updates, optional non-security preview updates, out-of-band (OOB) updates, and continuous innovation, see [Windows monthly updates explained](https://techcommunity.microsoft.com/blog/windows-itpro-blog/windows-monthly-updates-explained/3773544). For information on Windows update terminology, see the different types of [Windows software updates](/troubleshoot/windows-client/installing-updates-features-roles/standard-terminology-software-updates).
 
 ## Improvements
 
@@ -459,7 +524,7 @@ For a list of the files that are provided in this update, download the file info
 
 ::: moniker-end
 
-::: moniker range="=azloc-2508"
+::: moniker range="=azloc-previous"
 
 ## August OS security updates (KB5063899 and KB5063878) for Azure Local
 
@@ -474,7 +539,7 @@ For the 2508 release of Azure Local, Microsoft released two security updates, ea
 
 This section provides the 2508 security updates associated with OS build **25398.1791**.
 
-## Improvements
+### Improvements
 
 This security update includes quality improvements. Below is a summary of the key issues that this update addresses when you install this KB. If there are new features, it lists them as well. The bold text within the brackets indicates the item or area of the change.
 
@@ -482,17 +547,17 @@ This security update includes quality improvements. Below is a summary of the ke
 
 For more information about security vulnerabilities, see the [Security Update Guide](https://portal.msrc.microsoft.com/security-guidance) and the [August 2025 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2025-Aug).
 
-## Known issues
+### Known issues
 
 Microsoft is not currently aware of any issues with this update.​​​​​ 
 
-## To install
+### To install
 
 Microsoft now combines the latest servicing stack update (SSU) for your operating system with the latest cumulative update (LCU). For general information about SSUs, see [Servicing stack updates](/windows/deployment/update/servicing-stack-updates) and [Servicing Stack Updates (SSU): Frequently Asked Questions](https://support.microsoft.com/topic/servicing-stack-updates-ssu-frequently-asked-questions-06b62771-1cb0-368c-09cf-87c4efc4f2fe).
 
 To install the LCU on your Azure Local instance, see [Update Azure Stack Local instances](../update/about-updates-23h2.md).
 
-## File list
+### File list
 
 For a list of the files that are provided in this update, download the file information for [Cumulative update KB5063899](https://go.microsoft.com/fwlink/?linkid=2331617).
 
@@ -501,7 +566,7 @@ For a list of the files that are provided in this update, download the file info
 
 This section provides the 2508 security updates associated with OS build **26100.4946**.
 
-## Improvements
+### Improvements
 
 This security update includes quality improvements. Below is a summary of the key issues that this update addresses when you install this KB. If there are new features, it lists them as well. The bold text within the brackets indicates the item or area of the change.
 
@@ -509,23 +574,21 @@ This security update includes quality improvements. Below is a summary of the ke
 
 For more information about security vulnerabilities, see the [Security Update Guide](https://portal.msrc.microsoft.com/security-guidance) and the [August 2025 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2025-Aug).
 
-## Known issues
+### Known issues
 
 Microsoft is not currently aware of any issues with this update.​​​​​ 
 
-## To install
+### To install
 
 Microsoft now combines the latest servicing stack update (SSU) for your operating system with the latest cumulative update (LCU). For general information about SSUs, see [Servicing stack updates](/windows/deployment/update/servicing-stack-updates) and [Servicing Stack Updates (SSU): Frequently Asked Questions](https://support.microsoft.com/topic/servicing-stack-updates-ssu-frequently-asked-questions-06b62771-1cb0-368c-09cf-87c4efc4f2fe).
 
 To install the LCU on your Azure Local instance, see [Update Azure Stack Local instances](../update/about-updates-23h2.md).
 
-## File list
+### File list
 
 For a list of the files that are provided in this update, download the file information for [Cumulative update KB5063878](https://go.microsoft.com/fwlink/?linkid=2331814).
 
-::: moniker-end
-
-::: moniker range="=azloc-previous"
+---
 
 ## July OS security updates (KB5062570 and KB5062553) for Azure Local
 
@@ -1420,7 +1483,7 @@ Microsoft isn't currently aware of any issues with this update.
 
 Microsoft now combines the latest servicing stack update (SSU) for your operating system with the latest cumulative update (LCU). For general information about SSUs, see [Servicing stack updates](/windows/deployment/update/servicing-stack-updates) and [Servicing Stack Updates (SSU): Frequently Asked Questions](https://support.microsoft.com/topic/servicing-stack-updates-ssu-frequently-asked-questions-06b62771-1cb0-368c-09cf-87c4efc4f2fe).
 
-To install the LCU on your Azure Stack HCI cluster, see [Update Azure Stack HCI clusters](../update/about-updates-23h2.md).
+To install the LCU on your Azure Local instance, see [Update Azure Local](../update/azure-update-manager-23h2.md).
 
 
 ### File list
@@ -1457,7 +1520,7 @@ Microsoft isn't currently aware of any issues with this update.
 
 Microsoft now combines the latest servicing stack update (SSU) for your operating system with the latest cumulative update (LCU). For general information about SSUs, see [Servicing stack updates](/windows/deployment/update/servicing-stack-updates) and [Servicing Stack Updates (SSU): Frequently Asked Questions](https://support.microsoft.com/topic/servicing-stack-updates-ssu-frequently-asked-questions-06b62771-1cb0-368c-09cf-87c4efc4f2fe).
 
-To install the LCU on your Azure Stack HCI cluster, see [Update Azure Stack HCI clusters](../update/about-updates-23h2.md).
+To install the LCU on your Azure Local instance, see [Update Azure Local](../update/azure-update-manager-23h2.md).
 
 <!--| Release Channel | Available | Next Step |
 |--| -- |--|
@@ -1512,8 +1575,6 @@ This security update includes quality improvements. When you install this KB:
 
 For more information about security vulnerabilities, see the [Security Update Guide](https://msrc.microsoft.com/update-guide/) and the [February 2024 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2024-Feb). 
 
-To return to the Azure Stack HCI documentation site.
-
 <!--## Servicing stack update - 25398.700
 
 This update makes quality improvements to the servicing stack, which is the component that installs Windows updates. Servicing stack updates (SSU) ensure that you have a robust and reliable servicing stack so that your devices can receive and install Microsoft updates.-->
@@ -1526,7 +1587,7 @@ Microsoft isn't currently aware of any issues with this update.
 
 Microsoft now combines the latest servicing stack update (SSU) for your operating system with the latest cumulative update (LCU). For general information about SSUs, see [Servicing stack updates](/windows/deployment/update/servicing-stack-updates) and [Servicing Stack Updates (SSU): Frequently Asked Questions](https://support.microsoft.com/topic/servicing-stack-updates-ssu-frequently-asked-questions-06b62771-1cb0-368c-09cf-87c4efc4f2fe).
 
-To install the LCU on your Azure Stack HCI cluster, see [Update Azure Stack HCI via PowerShell](../update/update-via-powershell-23h2.md).
+To install the LCU on your Azure Local instance, see [Update Azure Local](../update/azure-update-manager-23h2.md).
 
 <!--| Release Channel | Available | Next Step |
 |----|----|----|
@@ -1584,7 +1645,7 @@ Microsoft isn't currently aware of any issues with this update.
 
 Microsoft now combines the latest servicing stack update (SSU) for your operating system with the latest cumulative update (LCU). For general information about SSUs, see [Servicing stack updates](/windows/deployment/update/servicing-stack-updates) and [Servicing Stack Updates (SSU): Frequently Asked Questions](https://support.microsoft.com/topic/servicing-stack-updates-ssu-frequently-asked-questions-06b62771-1cb0-368c-09cf-87c4efc4f2fe).
 
-To install the LCU on your Azure Stack HCI cluster, see [Update Azure Stack HCI via PowerShell](../update/update-via-powershell-23h2.md).
+To install the LCU on your Azure Local instance, see [Update Azure Local](../update/azure-update-manager-23h2.md).
 
 <!--| Release Channel | Available | Next Step |
 |--| -- |--|
@@ -1638,7 +1699,7 @@ Microsoft isn't currently aware of any issues with this update.
 
 Microsoft now combines the latest servicing stack update (SSU) for your operating system with the latest cumulative update (LCU). For general information about SSUs, see [Servicing stack updates](/windows/deployment/update/servicing-stack-updates) and [Servicing Stack Updates (SSU): Frequently Asked Questions](https://support.microsoft.com/topic/servicing-stack-updates-ssu-frequently-asked-questions-06b62771-1cb0-368c-09cf-87c4efc4f2fe).
 
-<!--To install the LCU on your Azure Stack HCI cluster, see [Update Azure Stack HCI via PowerShell](../update/update-via-powershell-23h2.md).
+<!--To install the LCU on your Azure Local instance, see [Update Azure Local](../update/azure-update-manager-23h2.md).
 
 | Release Channel | Available | Next Step |
 |----|----|----|
@@ -1699,7 +1760,7 @@ Microsoft isn't currently aware of any issues with this update.
 
 Microsoft now combines the latest servicing stack update (SSU) for your operating system with the latest cumulative update (LCU). For general information about SSUs, see [Servicing stack updates](/windows/deployment/update/servicing-stack-updates) and [Servicing Stack Updates (SSU): Frequently Asked Questions](https://support.microsoft.com/topic/servicing-stack-updates-ssu-frequently-asked-questions-06b62771-1cb0-368c-09cf-87c4efc4f2fe).
 
-To install the LCU on your Azure Stack HCI cluster, see [Update Azure Stack HCI via PowerShell](../update/update-via-powershell-23h2.md).
+To install the LCU on your Azure Local instance, see [Update Azure Local](../update/azure-update-manager-23h2.md).
 
 <!--| Release Channel | Available | Next Step |
 |--| -- | -- |

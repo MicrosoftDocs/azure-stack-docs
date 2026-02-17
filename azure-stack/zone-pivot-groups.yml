@@ -68,6 +68,8 @@ groups:
     title: Ubuntu 22.04
   - id: ubuntu-24
     title: Ubuntu 24.04
+  - id: azurelinux-3
+    title: Azure Linux 3
 - id: version-select
   title: AKS enabled by Azure Arc Azure Local versions
   prompt: AKS on Azure Local version
