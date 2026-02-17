@@ -17,9 +17,7 @@ For more information, see [Disconnected operations for Azure Local](/azure/azure
 
 ## Overview
 
-The current implementation of backup supports the backup of the control plane VM data. The associated workload or configured clusters aren't part of the backup process currently.
-
-The backup process backs up all data necessary for the disconnected operations control plane VM. Backups aren't automated, so the operator should take periodic backups or backups before any changes to the environment.
+The backup feature currently backs up the control plane VM data only. Associated workloads or configured clusters aren't included in the backup. Backups capture all data needed for the disconnected operations control plane VM. Because backups aren't automated, take backups regularly and before making changes to the environment.
 
 ## Why backup operations?
 
@@ -39,7 +37,7 @@ Before you back up your system, complete these prerequisites:
 
 Before running the backup command, configure environment-specific settings and parameters, such as backup paths, encryption certificates, retention preferences, and target locations. These configurations ensure that the backup process runs correctly and aligns with your infrastructure layout and security requirements.
 
-Open an administrator PowerShell session and run these cmdlets.
+To configure settings and parameters, open an administrator PowerShell session and run these cmdlets.
 
 ```PowerShell
 # point az to arca
@@ -63,7 +61,7 @@ Here's an example output of the `Set-ApplianceBackupConfiguration` cmdlet:
 
 To trigger the backup, invoke the backup operation by using the configured settings and parameters. This operation captures a consistent snapshot of the disconnected operations control plane. After you start the operation, the system validates the configuration and begins creating the backup based on the defined backup policy. This process runs in the background and triggers a backup ID.
 
-Follow these steps:
+To trigger and monitor a backup, follow these steps:
 
 1. Trigger the backup operation.
 
