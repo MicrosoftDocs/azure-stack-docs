@@ -439,6 +439,15 @@
           href: troubleshoot-dns-issues.md
         - name: Troubleshoot TWAMP (UDP) not working
           href: troubleshoot-twamp-udp-not-working.md
+        - name: Troubleshoot CPU and Memory Guide
+          href: troubleshoot-cpu-and-memory-guide.md
+        - name: Troubleshoot Temperature Guide
+          href: troubleshoot-temperature-guide.md
+        - name: Troubleshoot Power Supply Voltage Guide
+          href: troubleshoot-power-supply-voltage-guide.md
+        - name: Troubleshoot Packet Drops and Discards Guide
+          href: troubleshoot-packet-drops-and-discards-guide.md
+
     - name: Resource Health
       expanded: false
       items:
