@@ -64,6 +64,10 @@ landingContent:
             url: use-csi-driver-kubernetes.md
   - title: Manage a file system
     linkLists:
+      - linkListType: reference
+        links:
+          - text: Optimize Azure Managed Lustre performance
+            url: optimize-performance.md
       - linkListType: how-to-guide
         links:
           - text: Configure root squash settings
