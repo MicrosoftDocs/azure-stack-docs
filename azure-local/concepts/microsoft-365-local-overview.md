@@ -11,7 +11,7 @@ ms.service: azure-local
 
 # What is Microsoft 365 Local?
 
-This article provides an overview of Microsoft 365 Local on Azure Local infrastructure, explaining what it is and how it helps organizations meet sovereignty requirements while maintaining productivity in a private cloud environment.
+This article provides an overview of Microsoft 365 Local on Azure Local infrastructure and how it helps organizations meet sovereignty requirements while maintaining productivity in a private cloud environment.
 
 ## Overview
 
@@ -19,7 +19,7 @@ Microsoft 365 Local enables organizations to run Exchange Server, SharePoint Ser
 
 Designed for organizations that need productivity tools in a private cloud environment, Microsoft 365 Local leverages Azure Arc to provide a unified control plane with simplified deployment and streamlined updates for easy infrastructure management.
 
-The solution includes a validated reference architecture with certified hardware, along with a hardened security baseline and robust controls to protect your infrastructure. <!--can we link out to the security baseline for Microsoft 365 Local?-->
+The solution includes a validated reference architecture with certified hardware, along with a hardened security baseline, and robust controls to protect your infrastructure. <!--can we link out to the security baseline for Microsoft 365 Local?-->
 
 ## Why use Microsoft 365 Local?
 
@@ -38,7 +38,7 @@ Organizations choose Microsoft 365 Local for several key reasons:
 
 - **Full-stack deployment based on validated reference architecture:** Offers validated architecture based on best practices to ensure optimal performance and resiliency. This architecture includes guidance for networking, storage, compute, and identity integration, ensuring consistency and best practices across the entire stack.
 
-- **Built on Azure Local providing Sovereign Private Cloud capabilities:** Delivers a private cloud environment designed for governments and regulated industries, with Arc-enabled management for hybrid control, enhanced security features such as encryption and access controls, and compliance mechanisms aligned with local regulatory frameworks.
+- **Built on Azure Local providing Sovereign Private Cloud capabilities:** Delivers a private cloud environment designed for governments and regulated industries. The environment includes Arc-enabled management for hybrid control and enhanced security features such as encryption and access controls. It also provides compliance mechanisms aligned with local regulatory frameworks.
 
 - **Supports hybrid connectivity and fully disconnected:** Enables centralized management through Azure services for monitoring, updates, and policy enforcement in connected mode. It also provides disconnected mode for complete isolation for environments requiring air-gapped operations, ensuring compliance with strict sovereignty or security mandates. For more information about disconnected operations, see [Disconnected operations for Azure Local overview](../manage/disconnected-operations-overview.md).
 
@@ -75,11 +75,11 @@ Here's an example of server role allocation within a large-scale reference archi
 
 - Two servers each configured as single-node Azure Local instances, assigned to Exchange Server edge transport roles.
 
-The reference architectures also include prescriptive guidance for networking and security, such as virtual networks, network security groups, and load balancers, to segment, isolate, and secure workload access. In connected mode, they use Azure as the cloud-connected control plane. In disconnected mode, they use a local control plane.
+The reference architectures also include prescriptive guidance for networking and security. This guidance covers virtual networks, network security groups, and load balancers to segment, isolate, and secure workload access. In connected mode, the architectures use Azure as the cloud-connected control plane. In disconnected mode, they use a local control plane.
 
 ## Microsoft 365 Local deployment
 
-A Microsoft 365 Local solution partner certified by Microsoft must deploy Microsoft 365 Local. To ensure correct configuration and support throughout the product lifecycle, it's highly recommended that customers work with a certified partner.
+A Microsoft 365 Local solution partner certified by Microsoft must deploy Microsoft 365 Local. To ensure correct configuration and support throughout the product lifecycle, we recommend that customers work with a certified partner.
 
 A typical engagement with a solution partner involves the following phases:
 
