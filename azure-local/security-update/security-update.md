@@ -84,7 +84,7 @@ For a list of the files provided in this update, download the file information f
 
 This section provides the 2601 security updates associated with OS build **26100.32230** released on January 13, 2026 and also includes key notifications, announcements, change logs, and end-of-support notices.
 
-Starting with the January 2026 security update, Azure Stack HCI, version 24H2 will use different KB identifiers and a different build number. This change does not affect how you receive or manage updates for Azure Stack HCI, version 24H2.
+Starting with the January 2026 security update, Azure Stack HCI OS, version 24H2 will use different KB identifiers and a different build number. This change does not affect how you receive or manage updates for Azure Local.
 
 ## Windows Secure Boot certificate expiration
 
