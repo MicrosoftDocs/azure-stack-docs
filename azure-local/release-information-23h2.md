@@ -12,7 +12,7 @@ ms.subservice: hyperconverged
 # Azure Local release information
 
 > [!IMPORTANT]
-> Azure Local versions 11.2510.1002.93 and 12.2510.1002.531 are now available.
+> Azure Local versions 11.2510.1002.93 and 12.2510.1002.531 (supersedes 12.2510.1002.529) are now available.
 >
 > - If you're on 11.2510.1002.87, you can upgrade directly to 12.2510.1002.531.
 > - If you're on an earlier version, first update to 11.2510.1002.93, then upgrade to 12.2510.1002.531.
