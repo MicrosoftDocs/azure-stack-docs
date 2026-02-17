@@ -40,7 +40,7 @@ The following diagram illustrates the feature builds, cumulative updates, and up
 
 - Before the 2504 release, the solution only released one version each month, and it aligned with OS build 25398.xxxx.
 
-- Starting with release 2504, Microsoft released two Azure Local solution versions each month, each aligned to a specific OS build. The two‑release model ended with version 2510. All future updates for a solution version continue to use its associated OS build. The following table lists each solution version and its corresponding OS build.
+- Starting with release 2504, Microsoft released two Azure Local solution versions each month, each aligned to a specific OS build. All future updates for a solution version continue to use its associated OS build. The following table lists each solution version and its corresponding OS build.
 
   | Solution version | OS build | Update path | Use case |
   | --------------------- | ------------ | ------------------------- | ---------------- |
