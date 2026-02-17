@@ -67,7 +67,7 @@ landingContent:
       - linkListType: reference
         links:
           - text: Optimize Azure Managed Lustre performance
-            url: optimize-amlfs-performance.md
+            url: optimize-performance.md
       - linkListType: how-to-guide
         links:
           - text: Configure root squash settings
