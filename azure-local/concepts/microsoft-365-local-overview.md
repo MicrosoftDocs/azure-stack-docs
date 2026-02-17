@@ -11,7 +11,7 @@ ms.service: azure-local
 
 # What is Microsoft 365 Local?
 
-This article provides an overview of Microsoft 365 Local on Azure Local infrastructure.
+This article provides an overview of Microsoft 365 Local on Azure Local infrastructure, explaining what it is and how it helps organizations meet sovereignty requirements while maintaining productivity in a private cloud environment.
 
 ## Overview
 
@@ -44,7 +44,7 @@ Organizations choose Microsoft 365 Local for several key reasons:
 
 ## Microsoft 365 Local hardware requirements
 
-This section outlines an example for a large-scale deployment of Microsoft 365 Local in connected mode. This deployment supports enterprise environments and is optimized for performance and resiliency. Alternative configurations and hardware specifications are available to support different scales and requirements, including small-scale and mid scale deployments. The overall architecture of Microsoft 365 Local is tailored to each customer’s needs. Customers should work with their authorized Microsoft partner to appropriately size and design their deployment.
+This section outlines an example for a large-scale deployment of Microsoft 365 Local in connected mode. This deployment supports enterprise environments and is optimized for performance and resiliency. Alternative configurations and hardware specifications are available to support different scales and requirements, including small-scale and mid-scale deployments. The overall architecture of Microsoft 365 Local is tailored to each customer’s needs. Customers should work with their authorized Microsoft partner to appropriately size and design their deployment.
 
 Microsoft 365 Local must be deployed on an Azure Local Premier Solution that meets the hardware requirements for Microsoft 365 Local. Supported solutions can be found in the [Azure Local Solutions catalog](https://aka.ms/azurelocalcatalog).
 
