@@ -29,8 +29,6 @@ Backup capability is critical because the Azure Local with disconnected operatio
 
 Before you back up your system, complete these prerequisites:
 
-### Before you back up
-
 - **Operator access:** Ensure your identity has the required **OperatorRP** RBAC role in the Operator subscription.
 
 - **Server Message Block (SMB) share:** Provision an accessible SMB share as backup target from the Azure Local disconnected operations VM where system state backups are written.
