@@ -12,10 +12,10 @@ ms.subservice: hyperconverged
 # Azure Local release information
 
 > [!IMPORTANT]
-> Azure Local versions 11.2510.1002.93 and 12.2510.1002.529 are now available.
+> Azure Local versions 11.2510.1002.93 and 12.2510.1002.531 (supersedes 12.2510.1002.529) are now available.
 >
-> - If you're on 11.2510.1002.87, you can upgrade directly to 12.2510.1002.529.
-> - If you're on an earlier version, first update to 11.2510.1002.93, then upgrade to 12.2510.1002.529.
+> - If you're on 11.2510.1002.87, you can upgrade directly to 12.2510.1002.531.
+> - If you're on an earlier version, first update to 11.2510.1002.93, then upgrade to 12.2510.1002.531.
 
 To enhance your Azure Local (formerly known as Azure Stack HCI) experience, Microsoft periodically releases feature updates that introduce new capabilities and improvements. Additionally, Azure Local provides cumulative updates that include monthly quality and security enhancements. These updates are listed for each instance, ensuring your devices remain protected and productive.
 
@@ -87,7 +87,7 @@ The following tables summarize the release information for Azure Local across al
 | 12.2601.1002.503 <br><br> Availability date: 2026-02-02 <br><br> Supersedes: 12.2601.1002.38 <br><br> Availability date: 2026-01-22 | 26100.32230 | [January OS security update](security-update/security-update.md?view=azloc-2601&preserve-view=true&tabs=new-deployments) | [Features and improvements](./whats-new.md?view=azloc-2601&preserve-view=true#features-and-improvements-in-2601) | [Known issues](./known-issues.md?view=azloc-2601&preserve-view=true) |
 | 12.2512.1002.16 <br><br> Availability date: 2025-12-16 | 26100.7462 | [December OS security update](security-update/security-update.md?view=azloc-2512&preserve-view=true&tabs=new-deployments) | [Features and improvements](./whats-new.md?view=azloc-2512&preserve-view=true#features-and-improvements-in-2512) | [Known issues](./known-issues.md?view=azloc-2512&preserve-view=true) |
 | 12.2511.1002.502 <br><br> Availability date: 2025-12-03 <br><br> Supersedes: 12.2511.1002.5 <br><br> Availability date: 2025-11-18 | 26100.7171 | [November OS security update](security-update/security-update.md?view=azloc-2511&preserve-view=true&tabs=new-deployments) | [Features and improvements](./whats-new.md?view=azloc-2511&preserve-view=true#features-and-improvements-in-2511) | [Known issues](./known-issues.md?view=azloc-2511&preserve-view=true) |
-| 12.2510.1002.529 <br><br> Availability date: 2026-01-08 <br><br> Supersedes: 12.2510.1002.94 <br><br> Availability date: 2025-11-05 | 26100.6899 | [October OS security update](security-update/security-update.md?view=azloc-2510&preserve-view=true&tabs=new-deployments) | [Features and improvements](./whats-new.md?view=azloc-2510&preserve-view=true#features-and-improvements-in-2510) | [Known issues](./known-issues.md?view=azloc-2510&preserve-view=true) |
+| 12.2510.1002.531 <br><br> Availability date: 2026-02-17 <br><br> Supersedes:12.2510.1002.529 <br><br> Availability date: 2026-01-08 <br><br> Supersedes: 12.2510.1002.94 <br><br> Availability date: 2025-11-05 | 26100.6899 | [October OS security update](security-update/security-update.md?view=azloc-2510&preserve-view=true&tabs=new-deployments) | [Features and improvements](./whats-new.md?view=azloc-2510&preserve-view=true#features-and-improvements-in-2510) | [Known issues](./known-issues.md?view=azloc-2510&preserve-view=true) |
 | 12.2509.1001.22 <br><br> Availability date: 2025-09-22 | 26100.6584 | [September OS security update](security-update/security-update.md?view=azloc-2509&preserve-view=true&tabs=new-deployments) | [Features and improvements](./whats-new.md?view=azloc-2509&preserve-view=true#features-and-improvements-in-2509) | [Known issues](./known-issues.md?view=azloc-2509&preserve-view=true) |
 
 #### [OS build 25398.xxxx](#tab/OS-build-25398-xxxx)
