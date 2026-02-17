@@ -284,6 +284,8 @@
           href: howto-network-fabric-quality-of-service.md
         - name: How to Configure Network TAP Rules with User Assigned Managed Identity (UAMI) in Azure Operator Nexus
           href: howto-configure-network-tap-rules-with-user-assigned-managed-identity.md
+        - name: How to disable or enable network interface
+          href: howto-disable-enable-network-interface.md
     - name: Cluster
       expanded: false
       items:
