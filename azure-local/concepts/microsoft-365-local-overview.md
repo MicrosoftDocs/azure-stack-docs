@@ -17,7 +17,7 @@ This article provides an overview of Microsoft 365 Local on Azure Local infrastr
 
 Microsoft 365 Local enables organizations to run Exchange Server, SharePoint Server, and Skype for Business Server on Azure Local infrastructure that is entirely customer-owned and managed. By using Microsoft 365 Local, organizations gain enhanced control over data residency, access, and compliance, helping them meet their sovereignty requirements.
 
-Designed for organizations that need productivity tools in a private cloud environment, Microsoft 365 Local leverages Azure Arc to provide a unified control plane with simplified deployment and streamlined updates for easy infrastructure management.
+Designed for organizations that need productivity tools in a private cloud environment, Microsoft 365 Local provides an Azure‑consistent management experience with a unified control plane. It simplifies deployment and streamlines updates for easy infrastructure management, supporting both hybrid and fully disconnected deployments.
 
 The solution includes a validated reference architecture with certified hardware, along with a hardened security baseline, and robust controls to protect your infrastructure. <!--can we link out to the security baseline for Microsoft 365 Local?-->
 
@@ -38,7 +38,7 @@ Organizations choose Microsoft 365 Local for several key reasons:
 
 - **Full-stack deployment based on validated reference architecture:** Offers validated architecture based on best practices to ensure optimal performance and resiliency. This architecture includes guidance for networking, storage, compute, and identity integration, ensuring consistency and best practices across the entire stack.
 
-- **Built on Azure Local providing Sovereign Private Cloud capabilities:** Delivers a private cloud environment designed for governments and regulated industries. The environment includes Arc-enabled management for hybrid control and enhanced security features such as encryption and access controls. It also provides compliance mechanisms aligned with local regulatory frameworks.
+- **Built on Azure Local providing Sovereign Private Cloud capabilities:** Delivers a private cloud environment designed for governments and regulated industries. The environment includes Arc-consistent management and enhanced security features such as encryption, access controls, and compliance mechanisms aligned with local regulatory frameworks.
 
 - **Supports hybrid connectivity and fully disconnected:** Enables centralized management through Azure services for monitoring, updates, and policy enforcement in connected mode. It also provides disconnected mode for complete isolation for environments requiring air-gapped operations, ensuring compliance with strict sovereignty or security mandates. For more information about disconnected operations, see [Disconnected operations for Azure Local overview](../manage/disconnected-operations-overview.md).
 
@@ -47,23 +47,6 @@ Organizations choose Microsoft 365 Local for several key reasons:
 This section outlines an example for a large-scale deployment of Microsoft 365 Local in connected mode. This deployment supports enterprise environments and is optimized for performance and resiliency. Alternative configurations and hardware specifications are available to support different scales and requirements, including small-scale and mid-scale deployments. The overall architecture of Microsoft 365 Local is tailored to each customer’s needs. Customers should work with their authorized Microsoft partner to appropriately size and design their deployment.
 
 Microsoft 365 Local must be deployed on an Azure Local Premier Solution that meets the hardware requirements for Microsoft 365 Local. Supported solutions can be found in the [Azure Local Solutions catalog](https://aka.ms/azurelocalcatalog).
-
-<!--The baseline architecture for a Microsoft 365 Local deployment consists of nine physical servers, all certified as Premier Solutions.
-
-### Minimum server specifications
-
-Each server must meet the following minimum specifications:
-
-| Component | Minimum specification |
-|--|--|
-| **Chassis** | 2U form factor, NVMe enabled (24 × 2.5" drive slots) |
-| **CPU** | Dual socket, Intel Xeon Gold 5418Y 2G, 24 cores (or equivalent) |
-| **Memory** | 512 GB RAM |
-| **Boot Storage** | 2 × 960 GB NVMe drives configured in RAID-1 |
-| **Capacity Storage** | 16 or 24 × 4TB NVMe Read Intensive drives |
-| **Networking** | 2 × Nvidia ConnectX-6 10/25 GbE dual-port adapters |
-| **Power Supplies** | Dual, redundant, hot-swappable units |
-| **Platform Security** | TPM 2.0 |-->
 
 ### Server role allocation
 
