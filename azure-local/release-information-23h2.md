@@ -40,14 +40,14 @@ The following diagram illustrates the feature builds, cumulative updates, and up
 
 - Before the 2504 release, the solution only released one version each month, and it aligned with OS build 25398.xxxx.
 
-- Starting with the 2504 release, Microsoft releases two solution versions each month, and each version aligns with a specific OS build. All future updates continue to use the OS build associated with their respective solution version. The following table lists the solution versions and their associated OS builds.
+- Starting with release 2504, Microsoft released two Azure Local solution versions each month, each aligned to a specific OS build. The two‑release model ended with version 2510. All future updates for a solution version continue to use its associated OS build. The following table lists each solution version and its corresponding OS build.
 
   | Solution version | OS build | Update path | Use case |
   | --------------------- | ------------ | ------------------------- | ---------------- |
   | 10.2xxx or 11.25xx | 25398.xxxx | 2411 --> 2411.2 --> 2411.3 --> 2503 --> 2504 --> 2505 --> so forth. | Use this version to update your system through each feature and cumulative build. |
   | 12.25xx | 26100.xxxx | 2504 --> 2505 or other. | After 2504, use this version to install any of the subsequent releases directly within a feature release train. |
 
-- To keep your Azure Local solution in a supported state, install updates within six months. However, before installing the feature update, make sure to install the last released cumulative update. For example, before installing the 2510 feature update, you must first install the last cumulative update, which is 2509 in this case.
+- To keep your Azure Local solution in a supported state, you have up to six months to install updates. However, before installing the feature update, make sure to install the last released cumulative update. For example, before installing the 2510 feature update, you must first install the last cumulative update, which is 2509 in this case.
 
 - Azure Arc resource bridge requires solution updates to be applied within one year. This requirement is critical to keep certificates valid and the Azure Local VM functionality working.
 
@@ -59,11 +59,11 @@ The following diagram illustrates the feature builds, cumulative updates, and up
   - If you're running the 23H2 OS without the Azure Local solution, support is available until April 2026. After April 2026, you won't receive monthly security and quality updates for 23H2. Support requests are only available for patching to a supported release.
   - Stretched clusters running the 23H2 OS are supported until April 2026. For more information, see [Upgrade stretched clusters to 23h2](./upgrade/upgrade-stretched-cluster-to-23h2.md).
 
-- Before you can update to the 2511 release, you must apply the 12.2510 update first. The 12.2510 (24H2) update becomes automatically available once you apply 11.2510. Apply the 12.2510 update to keep your Azure Local up-to-date.
+- Before you can update to the 2511 release, you must first apply the 12.2510 update. The 12.2510 (24H2) update becomes automatically available once you apply 11.2510. Apply the 12.2510 update to keep your Azure Local up-to-date.
 
 ## Feature release availability timing
 
-Feature release availability dates depend on the model and SKU of the servers in your cluster.
+Feature release availability dates depend on the model and stock-keeping unit (SKU) of the servers in your cluster.
 
 If your cluster supports [Solution Builder Extension software updates](./update/solution-builder-extension.md), you receive feature release updates (for example, 2504 or 2510) after your hardware vendor completes their validation and confirms the release is ready. This process typically takes a few weeks following the Microsoft release and varies by hardware vendor.
 
@@ -128,4 +128,4 @@ The following table summarizes the release information for Azure Local across ol
 
 ## Next steps
 
-- [What's new for Azure Local](./whats-new.md).
+- [What's new for Azure Local?](./whats-new.md)
