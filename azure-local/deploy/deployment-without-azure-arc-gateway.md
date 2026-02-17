@@ -3,7 +3,7 @@ title: Register Azure Local with Azure Arc.
 description: Learn how to register Azure Local with Azure Arc with and without proxy setup. The proxy configuration can be done via an Arc script or via the Configurator app on Azure Local. 
 author: alkohli
 ms.topic: how-to
-ms.date: 11/04/2025
+ms.date: 02/17/2026
 ms.author: alkohli
 ms.service: azure-local
 zone_pivot_groups: register-arc-options
