@@ -4,7 +4,7 @@ description: Learn how to troubleshoot known issues for Azure Site Recovery.
 author: ronmiab
 ms.author: robess
 ms.topic: troubleshooting
-ms.date: 04/25/2025
+ms.date: 02/11/2026
 ms.reviewer: rtiberiu
 ms.lastreviewed: 04/25/2024
 ms.custom:
@@ -18,12 +18,12 @@ This article describes known issues for Azure Site Recovery on Azure Stack Hub. 
 
 ## Maximum disk size supported is 1,022 GB
 
-When you protect a virtual machine (VM), Azure Site Recovery needs to add an additional 1 GB of data to an existing disk. Since Azure Stack Hub has a hard limitation for the maximum size of a disk at 1,023 GB, the maximum size of a disk protected by Site Recovery must be equal to or less than 1022.
+When you protect a virtual machine (VM), Azure Site Recovery needs to add an extra 1 GB of data to an existing disk. Since Azure Stack Hub has a hard limitation for the maximum size of a disk at 1,023 GB, the maximum size of a disk protected by Site Recovery must be equal to or less than 1022.
 
 When you try to protect a VM with a disk of 1023Gb, the following behavior occurs:
 
 - Enable protection succeeds as a seed disk of only 1 GB is created and ready for use. There's no error at this step.
-- Replication is blocked at **xx% Synchronized** and after a while, the replication health becomes **Critical** with the error **AzStackToAzStackSourceAgentDiskSourceAgentSlowResyncProgressOnPremToAzure**. The error occurs because during replication, Site Recovery tries to resize the seed disk to 1,024 GB and write to it. This operation fails, as Azure Stack Hub doesn't support 1,024 GB disks.
+- Replication is blocked at **(percent)% Synchronized** and after a while, the replication health becomes **Critical** with the error **AzStackToAzStackSourceAgentDiskSourceAgentSlowResyncProgressOnPremToAzure**. The error occurs because during replication, Site Recovery tries to resize the seed disk to 1,024 GB and write to it. This operation fails, as Azure Stack Hub doesn't support 1,024 GB disks.
 
   :::image type="content" source="media/azure-site-recovery-known-issues/max-disk-number-1.png" alt-text="Screenshot of Azure portal showing maximum disk error." lightbox="media/azure-site-recovery-known-issues/max-disk-number-1.png":::
 
@@ -62,12 +62,12 @@ The current workaround for this issue is to create a new disk (of 1,022 GB or le
 
     For more information about supported Linux kernel versions, see [Azure to Azure support matrix](/azure/site-recovery/azure-to-azure-support-matrix#linux).
 
-2. With a supported kernel version, the failover, which causes the VM to perform a restart, can cause the failed-over VM to be updated to a newer kernel version that may not be supported. To avoid an update due to a failover VM restart, run the command `sudo apt-mark hold linux-image-azure linux-headers-azure` so that the kernel version update can proceed.
+2. With a supported kernel version, the failover, which causes the VM to perform a restart, can cause the failed-over VM to be updated to a newer kernel version that might not be supported. To avoid an update due to a failover VM restart, run the command `sudo apt-mark hold linux-image-azure linux-headers-azure` so that the kernel version update can proceed.
 
 3. For an unsupported kernel version, check for an older kernel version to which you can roll back, by running the appropriate command for your VM:
     - Debian/Ubuntu: `dpkg --list | grep linux-image`
 
-    The following image shows an example in an Ubuntu VM on version 5.4.0-1103-azure, which is unsupported. After the command runs, you can see a supported version, 5.4.0-1077-azure, which is already installed on the VM. With this information, you can roll back to the supported version.
+    The following image shows an example in an Ubuntu VM on version `5.4.0-1103-azure`, which is unsupported. After the command runs, you can see a supported version, 5.4.0-1077-azure, which is already installed on the VM. With this information, you can roll back to the supported version.
 
     :::image type="content" source="../operator/media/azure-site-recovery/known-issues/kernel-version-rollback.png" alt-text="Sample screenshot of an Ubuntu VM kernel version check."lightbox="media/azure-site-recovery/known-issues/kernel-version-rollback.png":::
 
@@ -78,7 +78,7 @@ The current workaround for this issue is to create a new disk (of 1,022 GB or le
         :::image type="content" source="../operator/media/azure-site-recovery/known-issues/grub-default.png" alt-text="Sample screenshot of an Ubuntu VM kernel version rollback."lightbox="media/azure-site-recovery/known-issues/grub-default.png":::
 
     1. Select **Save** to save the file, then select **Exit**.
-    1. Run `sudo update-grub` to update the grub.
+    1. Run `sudo update-grub`.
     1. Finally, reboot the VM and continue with the rollback to a supported kernel version.
 
 5. If you don't have an old kernel version to which you can roll back, wait for the mobility agent update so that your kernel can be supported. The update is completed automatically, if it's ready, and you can check the version on the portal to confirm:
@@ -87,7 +87,7 @@ The current workaround for this issue is to create a new disk (of 1,022 GB or le
 
 ## Reprotect manual resync isn't supported yet
 
-After the reprotect job is complete, the replication is started in sequence. During replication, there may be cases that require a resync, which means a new initial replication is triggered to synchronize all the changes.
+After the reprotect job is complete, the replication is started in sequence. During replication, there might be cases that require a resync, which means a new initial replication is triggered to synchronize all the changes.
 
 There are two types of resync:
 
@@ -101,7 +101,7 @@ There are two types of resync:
   - The replication write exceeds the capacity of the replication disk on the appliance.
 
     >[!TIP]
-    > You can also find the manual resync reasons in the events blade to help you decide whether a manual resync is required.
+    > You can also find the manual resync reasons in **Events** to help you decide whether a manual resync is required.
 
 ## Known issues in PowerShell automation
 
@@ -134,7 +134,7 @@ There are two types of resync:
 
 When replicating multiple VMs, you might see the **Protected item health changed to Warning** error in the Site Recovery jobs.
 
-:::image type="content" source="../operator/media/azure-site-recovery/known-issues/mobility-service-agent-warning.png" alt-text="Sample screenshot of the Protected item health change warning."lightbox="media/azure-site-recovery/known-issues/mobility-service-agent-warning.png":::
+:::image type="content" source="../operator/media/azure-site-recovery/known-issues/mobility-service-agent-warning.png" alt-text="Sample screenshot of the Protected item health change warning." lightbox="media/azure-site-recovery/known-issues/mobility-service-agent-warning.png":::
 
 This error message should only be a warning and isn't a blocking issue for the actual replication or failover processes.
 
