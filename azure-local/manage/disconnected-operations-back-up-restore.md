@@ -59,7 +59,7 @@ Open an administrator PowerShell session and run these cmdlets.
 
 Here's an example output of the `Set-ApplianceBackupConfiguration` cmdlet:
 
-:::image type="content" source="media/disconnected-operations-back-up-restore/set-appliance-back-up-configuration.png" alt-text="Screenshot of the Set-ApplianceBackupConfiguration command output." lightbox=" ./media/disconnected-operations-back-up-restore/set-appliance-back-up-configuration.png":::
+:::image type="content" source="media/disconnected-operations/back-up-restore/set-appliance-back-up-configuration.png" alt-text="Screenshot of the Set-ApplianceBackupConfiguration command output." lightbox=" ./media/disconnected-operations/back-up-restore/set-appliance-back-up-configuration.png":::
 
 ## Trigger and monitor a backup
 
@@ -73,9 +73,9 @@ Follow these steps:
     Start-ApplianceBackup
     ```
 
-        Here's an example output:
+    Here's an example output:
 
-    :::image type="content" source="media/disconnected-operations-back-up-restore/trigger-monitor-back-up.png" alt-text="Screenshot of the Start-ApplianceBackup command output." lightbox=" ./media/disconnected-operations-back-up-restore/trigger-monitor-back-up.png":::
+    :::image type="content" source="media/disconnected-operations/back-up-restore/trigger-monitor-back-up.png" alt-text="Screenshot of the Start-ApplianceBackup command output." lightbox=" ./media/disconnected-operations/back-up-restore/trigger-monitor-back-up.png":::
 
 1. List the active backup operations.
 
@@ -83,9 +83,9 @@ Follow these steps:
     Get-ApplianceBackupOperationList
     ```
 
-        Here's an example output:
+    Here's an example output:
 
-    :::image type="content" source="media/disconnected-operations-back-up-restore/list-active-back-ups.png" alt-text="Screenshot of PowerShell terminal showing Get-ApplianceBackupOperationList output with backup ID and status details." lightbox=" ./media/disconnected-operations-back-up-restore/list-active-back-ups.png":::
+    :::image type="content" source="media/disconnected-operations/back-up-restore/list-active-back-ups.png" alt-text="Screenshot of PowerShell terminal showing Get-ApplianceBackupOperationList output with backup ID and status details." lightbox=" ./media/disconnected-operations/back-up-restore/list-active-back-ups.png":::
 
 1. Track the backup status. Provide the backup operation ID when prompted.
 
@@ -93,7 +93,7 @@ Follow these steps:
     Wait-ApplianceBackupOperationComplete
     ```
 
-        Here's an example output:
+    Here's an example output:
 
-    :::image type="content" source="media/disconnected-operations-back-up-restore/track-status-back-up-id.png" alt-text="Screenshot of the Wait-ApplianceBackupOperationComplete command output." lightbox=" ./media/disconnected-operations-back-up-restore/track-status-back-up-id.png":::
+    :::image type="content" source="media/disconnected-operations/back-up-restore/track-status-back-up-id.png" alt-text="Screenshot of the Wait-ApplianceBackupOperationComplete command output." lightbox=" ./media/disconnected-operations/back-up-restore/track-status-back-up-id.png":::
 
