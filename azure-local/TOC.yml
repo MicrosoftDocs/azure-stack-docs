@@ -863,6 +863,9 @@ items:
       href: manage/disconnected-operations-powershell.md
     - name: Update disconnected operations
       href: manage/disconnected-operations-update.md
+    - name: Backup disconnected operations
+      href: manage/disconnected-operations-back-up-restore.md
+
   - name: Monitor
     items:
     - name: Monitoring
