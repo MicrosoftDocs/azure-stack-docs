@@ -358,7 +358,7 @@ $applianceFQDN = "autonomous.cloud.private"
 $AdminManagementEndPointUri = "https://armmanagement.$($applianceFQDN)/"
 $DirectoryTenantId = "98b8267d-e97f-426e-8b3f-7956511fd63f"
 
-#retrieve disconnected operations endpoints
+#Retrieve disconnected operations endpoints
 
 $armMetadataEndpoint = $AdminManagementEndPointUri.ToString().TrimEnd('/') + "/metadata/endpoints?api-version=2015-01-01"
 
