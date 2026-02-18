@@ -38,9 +38,9 @@ Multiple volumes from the SAN array can be presented as Cluster Shared Volumes (
 
 ## Supported configurations
 
-- **Dell PowerFlex**: Generally available.
-
 - **Fibre Channel (FC) based SAN connectivity**: Currently in preview.
+
+- **Dell PowerFlex**: Generally available.
 
 ## Fibre Channel based SAN arrays
 
@@ -52,11 +52,6 @@ Once connected, SAN-backed volumes are discovered and integrated as Cluster Shar
 
 > [!NOTE]
 > Fibre Channel support is currently available for nonproduction workloads through **limited preview program**. Customers interested in evaluating this capability should contact their Microsoft representative or their Storage vendor for participation in the preview.
-
-## Unsupported configurations
-
-Rack aware clusters are not supported with External SAN storage for hyperconverged deployments.
-
 
 ## Dell PowerFlex solution integration
 
@@ -70,6 +65,9 @@ Each Azure Local node installs the PowerFlex SDC driver, which facilitates effic
 
 Together, Dell PowerFlex and Azure Local deliver an integrated, high-performance storage fabric that combines Azure operational simplicity with PowerFlex's software-defined resiliency and scale.
 
+## Unsupported configurations
+
+Rack aware clusters are not supported with External SAN storage for hyperconverged deployments.
 
 ## Related content
 
