@@ -12,8 +12,6 @@ ms.subservice: hyperconverged
 
 [!INCLUDE [hci-preview](../includes/hci-preview.md)]
 
-Azure Local provides hyperconverged infrastructure that hosts container workloads and storage. It's a hybrid product that connects the on-premises system to Azure for cloud services, monitoring, and management.  
-
 This article describes how to use simplified machine provisioning to bootstrap and register the machines that you intend to form as an Azure Local instance.
 
 At a high level, there are three key stages:
@@ -26,10 +24,9 @@ At a high level, there are three key stages:
 
     1. Set up site-level configuration: This configuration applies to all new machines under a site. This configuration includes settings like time zone, time server, machine IP address, proxy server, Azure Arc-gateway, Key vault for administrator credentials, and more. Site-level configuration eliminates the need for manual configuration for each machine.
 
-    1. Provision the machines: Once the site configurations are done, claim device ownership using the ownership voucher generated while preparing the device. Select the operating system profile for each machine.
+    1. Provision the machines: Once the site configurations are done, claim machine ownership using the ownership voucher generated while preparing the machine. Select the operating system profile for each machine.
 
-3. **On-site setup**: When the devices arrive, the on-site staff only needs to connect them to the network and power them on. The device then automatically connects securely to a call home URL and gets fully configured from Azure. This configuration includes setting up the operating system and network settings, making the device ready for use. Optionally, on-site staff track the installation and configure the device by using the Configurator app.
-
+3. **On-site setup**: When the machines arrive, the on-site staff only needs to connect them to the network and power them on. The machine then automatically connects securely to a call home URL and gets fully configured from Azure. This configuration includes setting up the operating system and network settings, making the machine ready for use. Optionally, on-site staff track the installation and configure the machine by using the Configurator app.
 
 ## Prerequisites
 
@@ -42,27 +39,30 @@ At a high level, there are three key stages:
 
 ### On-site prerequisites:
 
-- Go to **Azure Arc** > **Operations** > **Machine provisioning (preview)**. On the **Get started** page, select **View Downloads** to download the software to your Windows 11 PC. The software includes the maintenance environment ISO image, USB prep tool, and a configurator app. Use the app to download the ownership voucher and configure static IP address. On-site staff won't track the progress of machine setup.
+- Go to **Azure Arc** > **Operations** > **Machine provisioning (preview)**. On the **Get started** page, select **View Downloads** to download the software to your Windows 11 PC. The software includes the maintenance environment ISO image, USB prep tool, and a configurator app. Use the Configurator app to download the ownership voucher, configure static IP address, and track the progress of machine setup.
 
 ### Azure prerequisites:
 
-- Ensure the following resource providers are registered with your subscription:
+- Ensure the following [resource providers](/azure/azure-resource-manager/management/resource-providers-and-types#azure-portal) are registered with your subscription:
+
   - *Microsoft.HybridCompute*
-  - *Microsoft.GuestConfiguration*
-  - *Microsoft.HybridConnectivity*
-  - *Microsoft.Kubernetes*
-  - *Microsoft.KubernetesConfiguration*
-  - *Microsoft.ExtendedLocation*
-  - *Microsoft.EdgeOrder*
-  - *Microsoft.Edge*
-  - *Microsoft.DeviceOnboarding*
   - *Microsoft.AzureStackHCI*
-  - *Microsoft.HybridContainerService*
-  - *Microsoft.ContainerService*
+  - *Microsoft.DeviceOnboarding*
+  - *Microsoft.Edge*
+  - *Microsoft.GuestConfiguration*
+  - *Microsoft.HybridCompute*
+  - *Microsoft.HybridConnectivity*
+  - *Microsoft.KeyVault*
+  - *Microsoft.ManagedIdentity*
+  - *Microsoft.PolicyInsights*
+  - *Microsoft.Storage*
+  - *Microsoft.Insights*
 
 - In this preview release, only the **East US** region supports provisioning resource. You can create your resource group in your preferred region.
 
 ## Step 1: Create USB installation media
+
+The USB tool is used to create a bootable USB drive that contains the required installation and provisioning content needed to start the device. It provides a Microsoft-supported, repeatable way to generate install-ready media for a more secure and reliable USB creation experience.
 
 > [!NOTE]
 > The tool erases all the data on the USB. Make sure to either use an empty USB or back up USB data.
@@ -71,20 +71,27 @@ Follow these steps to create a USB installation media from your Windows 11 PC:
 
 1. Download and extract the software package for maintenance environment and USB prep tool.
 
-1. Attach the USB flash drive with at least 8 GB of space. The process deletes any content on the flash drive.
+1. Attach the USB flash drive to your laptop.
 
-1. Open the USB prep tool. This tool is included in the maintenance environment package that you download.  
+1. Open the terminal. You need to be an administrator to run this tool.
 
-1. Enter the full path that contains the ROE and press Enter.
+1. Pre-approve the 'usb_prep.exe' in Windows Security.
 
-1. When prompted, select which USB to use. Press 'Y' to erase and install ROE on the USB or press another key to abort the setup.
+    1. Open **Windows Security** > go to **Virus & threat protection** > select **Manage settings** > scroll to **Exclusions** > **Add an Exclusion** > **File** > select 'usb_prep.exe'.
 
-    > [!NOTE]
-    > If you see the **Access is denied** error after USB selection, open **Windows Security settings**, located the blocked operation, and unblock it.
+    1. Or you can run the command: `Add-MpPreference -ExclusionPath "{PATH_TO_EXTRACTED_FOLDER}\usb_prep.exe`
 
-1. Wait for the media creation. <!--insert image-->
+1. Run the USB Preparation Tool from the downloaded software package.
 
-1. Eject and detach the USB flash drive.
+1. When prompted, enter the full path to the folder that contains the maintenance environment image ISO, then press the Enter key.
+
+1. Select the USB drive to use from the list of available devices.
+
+1. Press 'Y' to confirm and begin creating a bootable USB drive. Any content on the flash drive will be deleted.
+
+1. Wait for the tool to complete the media creation process.
+
+1. When finished, safely eject and disconnect the USB flash drive.
 
 ## Step 2: Prepare server machines
 
@@ -100,7 +107,7 @@ Follow the steps to prepare server machines for simplified provisioning. Repeat 
 
 1. Wait for the operating system installation to complete. Expect the device to reboot twice. This process usually takes up to 30 minutes.
 
-1. Wait for the maintenance environment setup to be completed. The console shows **ROE setup completed successfully**.
+1. Wait for the maintenance environment setup to be completed. The console shows **Maintenance environment setup completed successfully**.
 
 1. Detach the USB flash drive.
 
@@ -110,25 +117,25 @@ Follow the steps to prepare server machines for simplified provisioning. Repeat 
 
     - **Download voucher via Configurator App**:  
 
-        1. Open the Start menu, type Configurator App, select Configurator App for Azure Local V2,  and then select Run as administrator. 
+        1. Open the Start menu, type Configurator App, select **Configurator App for Azure Local V2**, and then select **Run as administrator**. 
 
-        1. Connect to the device. Use the `ROE-<device serial number>.local` or IP address. Enter the local administrator’s credentials. The default username is *edgeuser*. The default password is *Password1*. 
+        1. Connect to the machine. Use the `ROE-<device serial number>.local` or IP address. Enter the local administrator’s credentials. The default username is *edgeuser*. The default password is *Password1*. 
 
         1. Download the ownership voucher. 
 
     - Or **copy voucher from USB flash drive**:
 
-        1. Attach the USB flash drive to the Windows 11 PC, open the USB drive folder, and check for the following files under the USB drive folder.
+        1. Attach the same USB flash drive from step 1 to the Windows 11 PC, open the USB drive folder, and check for the following files under the USB drive folder.
         
-        1. Open the folder `\vouchers\\`, find log files like bootstrap, messages, and response, check for any errors, and troubleshoot. If errors are found, contact Microsoft team.
+        1. Open the folder `\vouchers\<serial-number>\`, find log files, check for any errors, and troubleshoot. If errors are found, contact Microsoft Support.
 
-        1. Collect the ownership voucher, a small .pem file named after the device’s serial number from `\vouchers\<serial-number>\` folder. The .pem files are small enough (a few KBs) that you can email them or use any other trusted transfer mechanism. Consider zipping multiple files together for convenience.
+        1. Collect the ownership voucher, a small .pem file named after the device’s serial number from `\vouchers\<serial-number>\` folder. Share the ownership voucher with the Azure portal IT administrator.
 
-1. Recommendation: After setting up the machine, disable USB in BIOS. Enter BIOS/UEFI interface, locate USB Configuration, and set these options to disabled. Menu names might vary by device and BIOS/UEFI version.
+1. Recommendation: After setting up the machine, disable USB in BIOS. 
 
 ## Step 3: Provision machines from Azure
 
-1. Go to **Azure Arc** > **Operations** > **Provisioning (preview)**. On **Get started**, select **Provision** > **Azure Local** to provision Azure Local machines.
+1. Go to **Azure Arc** > **Operations** > **Provisioning (preview)**. On **Get started**, select **Provision** to provision Azure Local machines.
 
 1. Create site. Make a note of the resource group name. Make sure that you're either the resource group owner or have the [Contributor](/azure/role-based-access-control/built-in-roles#contributor) and [Role Based Access Control Administrator](/azure/role-based-access-control/built-in-roles#role-based-access-control-administrator) permissions on the resource group where you provision the servers.
 
@@ -136,17 +143,12 @@ Follow the steps to prepare server machines for simplified provisioning. Repeat 
 
     |Parameter  |Description  |
     |---------|---------|
-    |Onboarding service     |  The Onboarding Service (in preview) helps with zero-touch provisioning of the servers. Servers register into Azure automatically without human intervention. When powered on for the first time, servers contact the Onboarding Service endpoint for secure onboarding into Azure.<br><br> If you select **(New)** in this section, the provisioning process creates a new Onboarding service in the chosen subscription, resource group, and region.<br><br>You can also select an existing Onboarding Service if you created one before. <br><br>**Important**: The Onboarding Service instance must be in the same region as the target Azure Arc machine.  |
     |Time zone     | Select the common time zone for all the machines under the site. You can change it later. New machines use this time zone, but existing ones don't.       |
     |Time server    |  Enter the common time server for synchronized system time for all the machines under the site. You can change it later. New machines use this time server, but existing ones don't. |
-    |IP assignment | Select the IP address assignment type for all machines at the site. Choose between DHCP or static IP addresses. If static, define the IP range, subnet mask, and default gateway IP address.<br><br>Define the IP assignment at the site level. This configures each machine with one IP address. After connecting to the local network using the IP address, each device connects to Azure and downloads the configuration. Configuring IP assignment at a site level simplifies connecting machines to the local network, avoiding manual IP address configuration for each machine. |
     |Azure Arc connectivity | Select whether to connect via a public endpoint or a proxy server. If you use a public endpoint, devices connect directly to Azure Arc endpoints. If you use a proxy server, configure the proxy server and the list of addresses to bypass the proxy.<br><br> This simplifies the configuration where all the machines associated with this site use the same Azure Arc connectivity settings ensuring consistency. |
     |Local administrator credentials    | Provide a username (for example, Administrator) and a password. The password must have at least 12 characters, include lower and upper-case characters, and include a digit and a special character.  |
 
-    > [!NOTE]
-    >  Support for Azure Arc gateway, which enables minimal endpoints connections to Azure Arc isn't supported in this preview. 
-
-1. Select the Site, Software version, Azure Key Vault, Local administrator credentials, and add vouchers from step 2. If you have an existing onboarding service, select it. 
+1. Select the site, software version, Azure Key Vault, Local administrator credentials, and add vouchers from step 2.
 
 1. Once you add machines, select the pencil button to edit. Provide the machine name as the Arc resource name.
 
@@ -156,26 +158,23 @@ Follow the steps to prepare server machines for simplified provisioning. Repeat 
 
 1. In the Azure portal, go to **Azure Arc** > **Operations** > **Provisioning (preview)**. 
 
-1. On the **Devices** tab, you should see your machine provisioning status.
+1. On the **Provisioned machines** tab, you should see your machine provisioning status.
 
 1. Select the machine and drill down into the server. Check status and other details.
 
-When devices arrive, connect them to the network and power on. The device automatically connects securely to a call home URL. It then gets fully configured from Azure. This configuration includes setting up the operating system and network settings. The device is ready for use.
+Ensure your on-site staff keeps the machine connected to the network and powered on. The machine automatically connects securely to a call-home URL, then gets fully configured from Azure. This configuration includes download of the Azure Stack HCI operating system, setting up the operating system, connecting the machine to Azure Arc, and installing all the mandatory Azure Arc extensions. The machine is ready for clustering.
 
 This process reduces setup time and expertise needed at remote sites. Configuration is all done from Azure. Use Azure ARM templates to provision servers at many remote sites. This makes the process quicker, repeatable, and scalable.
 
 ## Step 4: Monitor machine set up via app (optional)
 
-> [!IMPORTANT]
-> Skip this step if you're not using a static IP or if you're not tracking server installation remotely. Start these steps a few minutes after powering on the server and connecting it to the local network.
-
 Follow these steps to track the installation progress from your Windows 11 PC.
 
 1. Open the **Start** menu, type **Configurator App**, and select **Configurator App for Azure Local V2**.
 
-1. Use the device serial number or IP address. Enter the local administrator’s credentials. The default username is *edgeuser*. The default password is *Password1*.
+1. Connect to the machine. Use the `ROE-<device serial number>.local` or IP address. Enter the local administrator’s credentials. The default username is *edgeuser*. The default password is *Password1*. 
 
-1. Wait for the Azure Arc configuration to finish on maintenance environment. After this step, the target operating system from Step 2.16 installs.
+1. Wait for the Azure Arc configuration to finish on maintenance environment. After this step, the Azure Stack HCI operating system from Step 2.16 installs.
 
 1. After installing the target operating system, use the IP address or hostname. Use the administrator credentials from Step 2.16. Wait for the configuration to finish.
 
