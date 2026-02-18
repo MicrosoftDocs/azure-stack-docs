@@ -42,18 +42,6 @@ Multiple volumes from the SAN array can be presented as Cluster Shared Volumes (
 
 - **Fibre Channel (FC) based SAN connectivity**: Currently in preview.
 
-## Dell PowerFlex solution integration
-
-**Dell PowerFlex** delivers a robust, software-defined storage solution built for hybrid environments like Azure Local. In this limited preview release, PowerFlex enables external block storage to be presented as **high-performance CSVs** accessible to Azure Local clusters over Fibre Channel.
-
-:::image type="content" source="media/external-storage-support-azure-local/integration-architecture-diagram.png" alt-text="Diagram that shows connections between Azure Local cluster hosts and PowerFlex storage nodes through dual fabric connectivity." lightbox="media/external-storage-support-azure-local/integration-architecture-diagram.png":::
-
-PowerFlex exposes **remote block volumes** to Azure Local nodes, which are mounted directly into the cluster and consumed by VMs, AKS pods, and AVD instances as if the storage is local. The solution uses PowerFlex's **distributed I/O architecture**, offering predictable throughput, low latency, and linear scalability across nodes.
-
-Each Azure Local node installs the PowerFlex SDC driver, which facilitates efficient multipath communication over dual fabrics. Supported configurations scale from **4 to 512 PowerFlex nodes** and **3 to 16 Azure Local hosts**, ensuring enterprise-grade availability. PowerFlex deployments also employ non-routable dedicated SDS networks, jumbo-frame (MTU 9014) configurations, and NIC bonding/teaming to optimize throughput and failover.
-
-Together, Dell PowerFlex and Azure Local deliver an integrated, high-performance storage fabric that combines Azure operational simplicity with PowerFlex's software-defined resiliency and scale.
-
 ## Fibre Channel based SAN arrays
 
 Bring your Fibre Channel based SAN arrays from leading vendors and directly integrate them into Azure Local clusters for consistent management, high throughput, and low-latency I/O. Each Azure Local node connects to the SAN through dual Fibre Channel fabrics (Fabric A and Fabric B) for redundancy and performance. Host Bus Adapters (HBAs) installed on each host enable resilient, high-throughput connectivity to the external SAN.
@@ -68,6 +56,20 @@ Once connected, SAN-backed volumes are discovered and integrated as Cluster Shar
 ## Unsupported configurations
 
 Rack aware clusters are not supported with External SAN storage for hyperconverged deployments.
+
+
+## Dell PowerFlex solution integration
+
+**Dell PowerFlex** delivers a robust, software-defined storage solution built for hybrid environments like Azure Local. In this limited preview release, PowerFlex enables external block storage to be presented as **high-performance CSVs** accessible to Azure Local clusters over Fibre Channel.
+
+:::image type="content" source="media/external-storage-support-azure-local/integration-architecture-diagram.png" alt-text="Diagram that shows connections between Azure Local cluster hosts and PowerFlex storage nodes through dual fabric connectivity." lightbox="media/external-storage-support-azure-local/integration-architecture-diagram.png":::
+
+PowerFlex exposes **remote block volumes** to Azure Local nodes, which are mounted directly into the cluster and consumed by VMs, AKS pods, and AVD instances as if the storage is local. The solution uses PowerFlex's **distributed I/O architecture**, offering predictable throughput, low latency, and linear scalability across nodes.
+
+Each Azure Local node installs the PowerFlex SDC driver, which facilitates efficient multipath communication over dual fabrics. Supported configurations scale from **4 to 512 PowerFlex nodes** and **3 to 16 Azure Local hosts**, ensuring enterprise-grade availability. PowerFlex deployments also employ non-routable dedicated SDS networks, jumbo-frame (MTU 9014) configurations, and NIC bonding/teaming to optimize throughput and failover.
+
+Together, Dell PowerFlex and Azure Local deliver an integrated, high-performance storage fabric that combines Azure operational simplicity with PowerFlex's software-defined resiliency and scale.
+
 
 ## Related content
 
