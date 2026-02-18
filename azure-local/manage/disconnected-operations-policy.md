@@ -1,21 +1,19 @@
 ---
-title: Use Azure Policy in a disconnected Azure Local environment (preview)
-description: Learn how to use Azure Policy to enforce compliance and manage resources in a disconnected Azure Local environment (preview).
+title: Use Azure Policy in a disconnected Azure Local environment
+description: Learn how to use Azure Policy to enforce compliance and manage resources in a disconnected Azure Local environment.
 ms.topic: concept-article
 author: ronmiab
 ms.author: robess
-ms.date: 08/06/2025
+ms.date: 02/23/2026
 ai-usage: ai-assisted
 ms.subservice: hyperconverged
 ---
 
 # Use Azure Policy in a disconnected Azure Local environment
 
-::: moniker range=">=azloc-2506"
+::: moniker range=">=azloc-2601"
 
 This article explains how to use Azure Policy in a disconnected Azure Local environment to enforce compliance and manage resources at scale. Azure Policy helps organizations meet standards by checking resource properties against business rules, even when disconnected from Azure cloud.
-
-[!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
 
 ## About using Azure Policy in Azure Local disconnected
 
@@ -27,7 +25,7 @@ In Azure Local disconnected operations, policy enforcement supports Arc-enabled 
 
 Azure Policy for Azure Local disconnected operations lets you enforce policies across all supported Azure services, so you manage and set up resources at scale.
 
-With Azure Policy in a disconnected Azure Local environment, you:
+By using Azure Policy in a disconnected Azure Local environment, you:
 
 - Ensure resource creation is consistent and compliant.
 - Focus on high-sensitivity tasks. Disconnected operations are ideal for industries with strict regulations, and Azure Policy is essential for the success of the disconnected operations feature.
@@ -35,7 +33,7 @@ With Azure Policy in a disconnected Azure Local environment, you:
 
 ## Prerequisites
 
-You must:
+You need to:
 
 - Have access to an Azure Local instance with disconnected operations for Azure Local deployed.
 - Review built-in policies.
@@ -53,13 +51,13 @@ You can use Azure Policy to enforce tags on various resources. In this example, 
 
     :::image type="content" source="media/disconnected-operations/azure-policy/policy-main.png" alt-text="Screenshot of the Assign policy page in Azure Local portal showing policy assignment options." lightbox="media/disconnected-operations/azure-policy/policy-main.png":::
 
-1. Under the **Authoring** section, select **Assignments**, then select **+ Assign policy**.
+1. Under the **Authoring** section, select **Assignments**, and then select **+ Assign policy**.
 
     :::image type="content" source="media/disconnected-operations/azure-policy/assign-policy.png" alt-text="Screenshot of the authoring and assignments page." lightbox="media/disconnected-operations/azure-policy/assign-policy.png":::
 
 1. Identify the **Scope**, **Policy definition**, and **Assignment name**.
 
-1. Toggle the **Policy enforcement** to **Enabled**.
+1. Set the **Policy enforcement** to **Enabled**.
 
 1. Select **Parameters** to proceed to the next step.
 
@@ -82,8 +80,8 @@ You can use Azure Policy to enforce tags on various resources. In this example, 
 The following table summarizes the built-in policies supported for Azure Local disconnected operations.
 
 | Policy name | Description | Azure documentation link |
-|--|--|--|
-|**Category: Tags** |  |  |
+| -- | -- | -- |
+| **Category: Tags** | | |
 | Add or replace a tag on resources. | - Adds or replaces the specified tag and value when any resource is created or updated.<br>- Existing resources can be remediated by triggering a remediation task.<br>- Doesn't modify tags on resource groups. | [Assign policy definitions for tag compliance](/azure/azure-resource-manager/management/tag-policies) |
 | Add or replace a tag on resource groups. | - Adds or replaces the specified tag and value when any resource group is created or updated.<br>- Existing resource groups can be remediated by triggering a remediation task. | [Assign policy definitions for tag compliance](/azure/azure-resource-manager/management/tag-policies) |
 | Add or replace a tag on subscriptions. | - Adds or replaces the specified tag and value on subscriptions via a remediation task.<br>- Existing resource groups can be remediated by triggering a remediation task. For more information, see [Azure Policy remediation](https://aka.ms/azurepolicyremediation). | [Assign policy definitions for tag compliance](/azure/azure-resource-manager/management/tag-policies) |
@@ -100,17 +98,17 @@ The following table summarizes the built-in policies supported for Azure Local d
 | Require a tag on resources | Enforces existence of a tag. Doesn't apply to resource groups. | [Assign policy definitions for tag compliance](/azure/azure-resource-manager/management/tag-policies) |
 | Require a tag and its value on resource groups. | Enforces a required tag and its value on resource groups. | [Assign policy definitions for tag compliance](/azure/azure-resource-manager/management/tag-policies) |
 | Require a tag on resource groups. | Enforces existence of a tag on resource groups. | [Assign policy definitions for tag compliance](/azure/azure-resource-manager/management/tag-policies) |
-| **Category: Azure Kubernetes Service** |  |  |
+| **Category: Azure Kubernetes Service** | | |
 | Kubernetes cluster containers CPU and memory resource limits shouldn't exceed the specified limits. | - Enforce container CPU and memory resource limits to prevent resource exhaustion attacks in a Kubernetes cluster.<br>- This policy is generally available for Kubernetes Service (AKS), and preview for Azure Arc enabled Kubernetes.<br>- For more information, see [Azure Kubernetes Service policy](https://aka.ms/kubepolicydoc). | [Azure Policy built-in definitions for Azure Kubernetes Service](/azure/aks/policy-reference) |
 | Kubernetes cluster containers should only use allowed images. | - Use images from trusted registries to reduce the Kubernetes cluster's exposure risk to unknown vulnerabilities, security issues, and malicious images.<br>- For more information, see [Azure Kubernetes Service policy](https://aka.ms/kubepolicydoc). | [Azure Policy built-in definitions for Azure Kubernetes Service](/azure/aks/policy-reference) |
 | Kubernetes cluster pod hostPath volumes should only use allowed host paths. | - Limit pod HostPath volume mounts to the allowed host paths in a Kubernetes Cluster.<br>- This policy is generally available for Azure Kubernetes Service (AKS), and Azure Arc enabled Kubernetes. For more information, see https://aka.ms/kubepolicydoc. | [Azure Policy built-in definitions for Azure Kubernetes Service](/azure/aks/policy-reference) |
-| **Category: Guest configuration** |  |  |
+| **Category: Guest configuration** | | |
 | Configure Linux Server to disable local users. | - Creates a Guest Configuration assignment to configure disabling local users on Linux Server.<br>- This policy ensures that only a Microsoft Entra account or a list of explicitly allowed users can access Linux servers, improving overall security posture. | [Azure Policy built-in definitions for Azure Virtual Machines](/azure/virtual-machines/policy-reference) |
 | Configure secure communication protocols, Transport Layer Security (TLS) 1.2, or TLS 1.3 on Windows servers. | - Creates a Guest Configuration assignment to configure specified secure protocol version (TLS 1.2 or TLS 1.3) on Windows machine.|  [Azure Policy built-in definitions for Azure Virtual Machines](/azure/virtual-machines/policy-reference) |
 | Configure time zone on Windows machines. | This policy creates a Guest Configuration assignment to set specified time zone on Windows virtual machines. | [Azure Policy built-in definitions for Azure Virtual Machines](/azure/virtual-machines/policy-reference) |
-| Requires resources to not have a specific tag. |     |    |
+| Requires resources to not have a specific tag. | | |
 | Inherit a tag from the subscription. | - Adds or replaces the specified tag and value from the subscription when you create or update any resource.<br>- Existing resources can be remediated by triggering a remediation task. | [Assign policy definitions for tag compliance](/azure/azure-resource-manager/management/tag-policies) |
-| Windows web servers should be configured to use secure communication protocols. |    |    |
+| Windows web servers should be configured to use secure communication protocols. | | |
 
 ## Unsupported features
 
@@ -118,8 +116,8 @@ Compliance dashboard, remediation actions, and policy exemptions aren't supporte
 
 ::: moniker-end
 
-::: moniker range="<=azloc-2505"
+::: moniker range="<=azloc-2601"
 
-This feature is available only in Azure Local 2506.
+This feature is available only in Azure Local 2602 or later.
 
 ::: moniker-end
