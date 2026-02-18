@@ -1,10 +1,10 @@
 ---
-title: Use Azure CLI for Disconnected Operations on Azure Local
+title: Use Azure CLI for Disconnected Operations for Azure Local
 description: Learn how to configure Azure CLI for disconnected operations on Azure Local, including cloud setup, certificate trust, and extension installation.
 ms.topic: how-to
 author: ronmiab
 ms.author: robess
-ms.date: 02/13/2026
+ms.date: 02/23/2026
 ms.reviewer: haraldfianbakken
 ai-usage: ai-assisted
 ---
@@ -13,7 +13,7 @@ ai-usage: ai-assisted
 
 ::: moniker range=">=azloc-2506"
 
-This article explains how to install and configure the Azure Command-Line Interface (CLI) and its extensions for disconnected operations on Azure Local. It provides an overview of CLI, supported versions, installation steps, and how to set up the CLI for disconnected operations.
+This article explains how to install and configure the Azure Command-Line Interface (CLI) and its extensions for disconnected operations for Azure Local. It provides an overview of CLI, supported versions, installation steps, and how to set up the CLI for disconnected operations.
 
 ## About Azure CLI
 
@@ -37,7 +37,7 @@ To install the 32-bit version of CLI:
 1. [Install the CLI](/cli/azure/install-azure-cli) locally on Linux, macOS, or Windows computers.
 
 > [!NOTE]  
-> The supported version of Azure CLI for Azure Local disconnected operations is **2.78.0**. For Azure Local nodes, install the 32-bit CLI to avoid deployment failures. Use the 64-bit Azure CLI on client machines.
+> The supported version of Azure CLI for Azure Local disconnected operations is **2.78.0**. For Azure Local nodes, install the 32-bit Azure CLI to avoid deployment failures. Use the 64-bit Azure CLI on client machines.
 
 ## Configure certificates for Azure CLI
 
@@ -215,7 +215,7 @@ To set up Azure CLI for disconnected operations on Azure Local, follow these ste
 
 ## Extensions for Azure CLI
 
-CLI extensions are Python wheels that aren't shipped with CLI but run as CLI commands. Extensions let you access experimental and prerelease commands and create your own CLI interfaces. When you use an extension for the first time, you receive a prompt to install it.
+Azure CLI extensions are Python wheels that run as CLI commands but aren't shipped with CLI. Extensions let you access experimental and prerelease commands and create your own CLI interfaces. When you use an extension for the first time, you receive a prompt to install it.
 
 To get a list of available extensions, run the following command:
 
@@ -248,7 +248,7 @@ The following table lists the CLI extensions supported on Azure Local disconnect
 
 ### Create an Azure subscription (on disconnected operations)
 
-To create an Azure subscription on disconnected operations, run the following command.
+To create an Azure subscription on disconnected operations, run this command:
 
 ```azurecli
 az account alias create --name 'aliasName’ --billing-scope '/providers/Microsoft.Billing/billingAccounts/defaultaccount' --display-name 'displayName' --workload 'Production' 
@@ -263,7 +263,7 @@ $ownerId='<Owner ID>'
 az rest --method put --uri "/providers/Microsoft.Subscription/aliases/aliastest?api-version=2021-10-01" --headers content-type="application/json" --body '{\"properties\": {\"displayName\": \"User Subscription 1\", \"workload\": \"Production\", \"billingScope\": \"/providers/Microsoft.Billing/billingAccounts/defaultaccount\", \"additionalProperties\":{\"subscriptionOwnerId\":\"'+$ownerId+'\"}}}' 
 ```
 
-### Create a service principal for Azure Local node registration
+### Create a service principal for node registration
 
 Use the operator account to create a service principal for Arc initialization of each Azure Local node. For bootstrap, the **Owner** role is required at the subscription level.
 
@@ -294,7 +294,7 @@ To create the service principal, follow these steps:
     }
     ```
 
-1. Copy the *AppID* and *password* to use in command-line automation. You sign in by using this service principal instead of an interactive sign-in or device code.
+1. Copy the *AppID* and *password* to use in command-line automation. Sign in by using this service principal instead of an interactive sign-in or device code.
 
 ### Troubleshoot Azure CLI
 
