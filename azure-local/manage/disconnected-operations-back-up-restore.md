@@ -11,9 +11,12 @@ ms.subservice: hyperconverged
 
 # Backup for disconnected operations for Azure Local
 
-This article explains the backup process for disconnected operations for Azure Local environments. It provides practical steps to trigger a backup and parameter configurations to customize it. Operators need access to the Operator subscription and role-based access control (RBAC) permissions.
+This article explains the backup process for disconnected operations for Azure Local environments. It provides practical steps to trigger a backup and parameter configurations to customize it. Operators need access to the [Operator subscription and role-based access control (RBAC) permissions](disconnected-operations-identity.md).
   
 For more information, see [Disconnected operations for Azure Local](/azure/azure-local/manage/disconnected-operations-overview?view=azloc-2602&preserve-view=true).
+
+> [!IMPORTANT]
+> The restore feature is currently in development. Documentation for the restore process will be available once the feature is stable.
 
 ## Overview
 
@@ -31,7 +34,7 @@ Before you back up your system, complete these prerequisites:
 
 - **Server Message Block (SMB) share:** Provision an accessible SMB share as backup target from the Azure Local disconnected operations VM where system state backups are written.
 
-- **Encryption key:** Store the encryption certificate externally (*.cer* for backup) and provide it during the backup process. We recommend an Azure Key Vault in public Azure in the same subscription where the Azure Local with disconnected operations instance registration entry exists.
+- **Encryption key:** Store the encryption certificate externally (*.cer* for backup) and provide it during the backup process. We recommend an Azure Key Vault in global Azure in the same subscription where the Azure Local with disconnected operations instance registration entry exists.
 
 ## Backup parameters and customization
 
