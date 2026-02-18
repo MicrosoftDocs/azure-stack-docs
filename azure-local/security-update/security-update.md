@@ -17,7 +17,7 @@ This article lists the various security updates that are available for Azure Loc
 
 ## February OS security update (KB5075899) for Azure Local
 
-This section provides the 2602 security updates associated with OS build **26100.32370** released on February 10, 2026 and also includes key notifications, announcements, change logs, and end-of-support notices.
+This section provides the 2602 security updates associated with OS build **26100.32370** released on February 10, 2026 ([KB5075899](https://support.microsoft.com/topic/february-10-2026-kb5075899-os-build-26100-32370-ffae9df3-05c5-439c-9087-e034985c1b2e?preview=true)). It also includes key notifications, announcements, change logs, and end-of-support notices.
 
 ## Windows Secure Boot certificate expiration
 
