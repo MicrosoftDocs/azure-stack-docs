@@ -863,6 +863,11 @@ items:
       href: manage/disconnected-operations-powershell.md
     - name: Update disconnected operations
       href: manage/disconnected-operations-update.md
+    - name: Billing
+      items:
+      - name: Billing overview
+        href: manage/disconnected-operations-billing-overview.md
+
   - name: Monitor
     items:
     - name: Monitoring
