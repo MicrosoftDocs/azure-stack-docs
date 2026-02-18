@@ -1,5 +1,5 @@
 ---
-title: Microsoft 365 Local on Azure Local Infrastructure
+title: Microsoft 365 Local on Azure Local infrastructure
 description: Learn how Microsoft 365 Local enables private cloud productivity with Exchange, SharePoint, and Skype for Business on customer-managed Azure Local infrastructure.
 author: alkohli
 ms.topic: concept-article
