@@ -134,6 +134,39 @@ If your client machine uses an older version of Lustre, you can upgrade the Lust
     ```
 
     If the output shows an old version of the Lustre kernel module, we recommend that you restart (`sudo reboot`) the system.
+
+### [Azure Linux 3](#tab/azurelinux3)
+
+1. Unmount any containers or mount points that are mounting the Lustre client by using the following command:
+
+    ```bash
+    sudo umount <all Lustre mounts>
+    ```
+
+1. Unload the Lustre and Lustre Networking (LNet) kernel modules by using the following command:
+
+    ```bash
+    sudo lustre_rmmod
+    ```
+
+1. Uninstall the existing Lustre client version by using the following command:
+
+    ```bash
+    sudo tdnf remove '*lustre*' -y
+    ```
+
+1. Install the current version of the Lustre client by using the following command:
+
+    [!INCLUDE [client-upgrade-version-azurelinux-3](./includes/client-upgrade-version-azurelinux-3.md)]
+
+1. Verify the installation by using the following command:
+
+    ```bash
+    sudo modprobe lustre
+    sleep 5; cat /sys/module/lustre/version; lsmod | grep -E 'lustre|lnet'
+    ```
+
+    The output should show the new Lustre version (for example, `2.16.1_16_g031ec3f`).
 ---
 
 After you perform this procedure, you can [mount the client](connect-clients.md#start-the-lustre-client-by-using-the-mount-command) to your Azure Managed Lustre file system.
