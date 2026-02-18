@@ -18,7 +18,7 @@ This article explains billing for disconnected operations for Azure Local, inclu
 
 Disconnected operations is one of the deployment options for Azure Local for customers with the strictest sovereignty requirements. The billing for this capability appears on your Azure subscription bill just like any other Azure service and is priced per physical core on your on-premises servers that disconnected operations manages. This includes the physical cores needed to run the disconnected control plane. Contact your account representative for current pricing. The Azure Commerce billing platform centrally handles currencies and discounts, and you get one unified, itemized bill at the end of the month.
 
-## What disconnected operations for Azure Local charge for
+## Disconnected operations for Azure Local charges
 
 Azure Local uses a cloud-style billing model that's consistent and familiar if you already use Azure or other cloud services. Billing is based on a flat monthly rate per physical processor core for Azure Local instances managed by disconnected operations. This includes the cores needed to run the local control plane.
 
@@ -36,7 +36,7 @@ To license Windows Server virtual machines running on Azure Local with disconnec
 
 To qualify for Azure Hybrid Benefit for Windows VMs on Azure Local with disconnected operations, meet the following licensing prerequisites.
 
-### Types of license
+Types of license:
 
 - Windows Server Standard with active Software Assurance or subscription.
 
