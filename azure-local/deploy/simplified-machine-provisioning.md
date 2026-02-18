@@ -151,7 +151,7 @@ Follow the steps to prepare server machines for simplified provisioning. Repeat 
 1. Create site. Make a note of the resource group name. Make sure that you're either the resource group owner or have the [Contributor](/azure/role-based-access-control/built-in-roles#contributor) and [Role Based Access Control Administrator](/azure/role-based-access-control/built-in-roles#role-based-access-control-administrator) permissions on the resource group where you provision the servers.
 
     > [!NOTE]
-    > The Azure portal creates the resource group under East US by default. If you want to create the resource group under a different region, see [Create resource groups](/azure/azure-resource-manager/management/manage-resource-groups-portal#create-resource-groups), and then select the created resource group here.
+    > The Azure portal creates the resource group under the **East US** region by default. If you want to create the resource group under a different region, see [Create resource groups](/azure/azure-resource-manager/management/manage-resource-groups-portal#create-resource-groups), and then select the created resource group here.
 
 1. After creating the site, set up the provisioning configuration for your site. This configuration applies to all new machines under the site.
 
