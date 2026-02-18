@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.reviewer: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 01/16/2026
+ms.date: 02/17/2026
 ms.subservice: multi-rack
 ---
 
@@ -141,7 +141,7 @@ Here we create a VM that uses specific memory and processor counts.
     **To create a standard Azure Local VM for multi-rack deployments:**
 
    ```azurecli
-    az stack-hci-vm create --name $vmName --resource-group $resource_group --admin-username $userName --admin-password $password --computer-name $computerName --image $imageName --location $location --authentication-type all --nics $nicName --custom-location $customLocationID --hardware-profile memory-mb="8192" processors="4" --zone $zone –strict-placement true --enable-agent true --enable-vm-config-agent true --proxy-configuration http_proxy=$httpProxy https_proxy=$httpsProxy no_proxy="" cert_file_path="" 
+    az stack-hci-vm create --name $vmName --resource-group $resource_group --admin-username $userName --admin-password $password --computer-name $computerName --image $imageName --location $location --authentication-type all --nics $nicName --custom-location $customLocationID --hardware-profile memory-mb="8192" processors="4" --zone $zone –-strict-placement true --enable-agent true --enable-vm-config-agent true --proxy-configuration http_proxy=$httpProxy https_proxy=$httpsProxy no_proxy="" cert_file_path="" 
    ```
 
 The VM is successfully created when the `provisioningState` shows as `succeeded`in the output.
@@ -171,7 +171,7 @@ As such, you may need to specifically set the proxy configuration for your appli
 If creating a VM behind a proxy server, run the following command:
 
 ```azurecli
-az stack-hci-vm create --name $vmName --resource-group $resource_group --admin-username $userName --admin-password $password --computer-name $computerName --image $imageName --location $location --authentication-type all --nics $nicName --custom-location $customLocationID --hardware-profile memory-mb="8192" processors="4" --zone $zone –strict-placement true --enable-agent true --enable-vm-config-agent true --proxy-configuration http_proxy="<Http URL of proxy server>" https_proxy="<Https URL of proxy server>" no_proxy="<URLs which bypass proxy>" cert_file_path="<Certificate file path for your machine>"
+az stack-hci-vm create --name $vmName --resource-group $resource_group --admin-username $userName --admin-password $password --computer-name $computerName --image $imageName --location $location --authentication-type all --nics $nicName --custom-location $customLocationID --hardware-profile memory-mb="8192" processors="4" --zone $zone –-strict-placement true --enable-agent true --enable-vm-config-agent true --proxy-configuration http_proxy="<Http URL of proxy server>" https_proxy="<Https URL of proxy server>" no_proxy="<URLs which bypass proxy>" cert_file_path="<Certificate file path for your machine>"
 ```
 
 You can input the following parameters for `proxy-server-configuration`:

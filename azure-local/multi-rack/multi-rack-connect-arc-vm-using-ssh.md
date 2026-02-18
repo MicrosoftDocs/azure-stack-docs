@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 11/12/2025
+ms.date: 02/18/2026
 ms.subservice: multi-rack
 ---
 
@@ -13,7 +13,9 @@ ms.subservice: multi-rack
 
 [!INCLUDE [multi-rack-applies-to-preview](../includes/multi-rack-applies-to-preview.md)]
 
-This article describes how to connect to an Azure Local virtual machine (VM) using Secure Shell (SSH) and Remote Desktop (RDP) over SSH for multi-rack deployments. The example shown demonstrates enabling the OpenSSH Server via the Azure Arc extension using Azure portal and Azure CLI.
+This article describes how to connect to a Windows-based Azure Local virtual machine (VM) using Secure Shell (SSH) and Remote Desktop (RDP) over SSH for multi-rack deployments. The example demonstrates how to enable the OpenSSH Server via the Azure Arc extension using the Azure portal and Azure CLI.
+
+This article applies only to Windows VMs.
 
 [!INCLUDE [hci-preview](../includes/hci-preview.md)]
 

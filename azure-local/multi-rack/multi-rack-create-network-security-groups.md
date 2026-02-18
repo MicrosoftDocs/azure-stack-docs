@@ -4,7 +4,7 @@ description: Learn how to create network security groups on Azure Local VMs on m
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 01/16/2026
+ms.date: 02/18/2026
 ms.service: azure-local
 ms.subservice: multi-rack
 ---
