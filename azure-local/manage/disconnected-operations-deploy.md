@@ -358,7 +358,7 @@ $applianceFQDN = "autonomous.cloud.private"
 $AdminManagementEndPointUri = "https://armmanagement.$($applianceFQDN)/"
 $DirectoryTenantId = "98b8267d-e97f-426e-8b3f-7956511fd63f"
 
-#retrieve ALDO endpoints
+#retrieve disconnected operations endpoints
 
 $armMetadataEndpoint = $AdminManagementEndPointUri.ToString().TrimEnd('/') + "/metadata/endpoints?api-version=2015-01-01"
 
@@ -384,16 +384,9 @@ Connect-AzAccount -EnvironmentName $applianceCloudName -UseDeviceAuthentication
 
 ## Subscription placement for the dedicated management cluster
 
-<<<<<<< HEAD
-We recommend deploying a fully dedicated management cluster. If you deploy a dedicated management cluster our recommended practice is to place your management cluster in the operator subscription.
-This will help you restrict and isolate the control plane from workloads and you can limit workloads from being created on the same cluster as other tenants.
-
-Keeping the control plaen seperated from the workloads provides a clear seperation of concerns.
-=======
 We require deploying a fully dedicated management cluster. The recommended practice is to place your management cluster in the operator subscription. This will help you restrict and isolate the control plane from workloads and you can restrict workloads from being created on the same cluster as other tenants. 
 
 Keeping the control plane seperated from the workloads provides a clear seperation of concerns. 
->>>>>>> b986aa7719 (Minor changes to wording in deployment and overview)
 
 Ensure you limit access to the operator subscription to only required personell.
 
@@ -766,7 +759,7 @@ Solution Builder extension (SBE) validation fails when trying to reach an *aka.m
    }
    $result = [PSCustomObject]@{
        Code = "Latest"
-       Message = "Override for ALDO"
+       Message = "Override for disconnected operations"
        Endpoint = "https://aka.ms/AzureStackSBEUpdate/Dell"
        ApplicableUpdate = $applicableUpdate.OuterXml
    }
