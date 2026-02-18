@@ -17,7 +17,7 @@ This article describes how to plan your network for disconnected operations on A
 
 ## Understand network requirements
 
-Disconnected operations run on Azure Local. Review Azure Local network requirements before you plan your deployment. Ensuring that your network meets these requirements is essential for seamless integration and optimal performance. For more detailed information, see [Physical network requirements for Azure Local](../concepts/physical-network-requirements.md).
+Disconnected operations run on Azure Local. Review Azure Local network requirements before you plan your deployment, ensuring that your network meets these requirements is essential for seamless integration and optimal performance. For more detailed information, see [Physical network requirements for Azure Local](../concepts/physical-network-requirements.md).
 
 Azure Local supports flexible network configurations. Deploy the disconnected operations as a virtual machine (VM) appliance that integrates with the Azure Local network. This setup supports robust and reliable operations even when internet connectivity is intermittent or unavailable.
 
