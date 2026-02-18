@@ -1,22 +1,20 @@
 ---
-title: Understand Public Key Infrastructure (PKI) requirements for disconnected operations on Azure Local (preview)
-description: Learn about public key infrastructure (PKI) requirements for disconnected operations on Azure Local. Discover how to create certificates to secure endpoints and ensure a trusted deployment (preview).
+title: Understand Public Key Infrastructure (PKI) requirements for disconnected operations on Azure Local
+description: Learn about public key infrastructure (PKI) requirements for disconnected operations on Azure Local. Discover how to create certificates to secure endpoints and ensure a trusted deployment.
 ms.topic: concept-article
 author: ronmiab
 ms.author: robess
-ms.date: 01/05/2026
+ms.date: 02/23/2026
 ms.reviewer: haraldfianbakken
 ai-usage: ai-assisted
 ms.subservice: hyperconverged
 ---
 
-# Public key infrastructure (PKI) for disconnected operations on Azure Local (preview)
+# Public key infrastructure (PKI) for disconnected operations on Azure Local
 
-::: moniker range=">=azloc-2506"
+::: moniker range=">=azloc-2602"
 
 This article explains the public key infrastructure (PKI) requirements for disconnected operations on Azure Local. You learn how to create certificates to secure appliance endpoints and ensure secure communication in your environment.
-
-[!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
 
 ## PKI overview for disconnected operations
 
@@ -26,63 +24,63 @@ PKI for disconnected operations is essential for securing the endpoints that the
 
 Certificates must come from a public certificate authority (CA) or enterprise certificate authority. Make sure your certificates are part of the Microsoft Trusted Root Program. For more information, see [List of Participants - Microsoft Trusted Root Program](/security/trusted-root/participants-list).  
 
-Mandatory certificates are grouped by area with the appropriate subject alternate names (SAN). Before you create the certificates, review these requirements:
+Group mandatory certificates by area with the appropriate Subject Alternative Name (SAN). Before you create the certificates, review these requirements:
 
 - The use of self-signed certificates isn't supported. We recommend you use certificates issued by an enterprise CA.
 - Disconnected operations require 24 external certificates for the endpoints it exposes.
 - Generate individual certificates for each endpoint and copy them into the corresponding directory or folder structure. These certificates are required for disconnected operations deployment.
-- All certificates must have the subject and SAN defined, as required by most browsers.
+- Define the subject and SAN for all certificates, as required by most browsers.
 - All certificates should share the same trust chain and have at least a two-year expiration from the day of deployment.
 - Export all root certificates in Base64 encoded format. The resulting file typically has a .cer, .crt, or .pem extension.
 - For fully disconnected deployments:
   - Use a private or internal certificate authority (CA).
   - Only internal network access to the certificate revocation list (CRL) endpoint is required.
   - Internet connectivity isn't required.
-  - Make sure your disconnected operations infrastructure can reach the CRL endpoint specified in the certificates' CRL distribution point (CDP) extension.
-  - Don't use a public or external CA. Deployments fail if certificates come from a public CA, because internet connectivity is required to access the CRL and online certificate status protocol (OCSP) services for HTTPS.  
+  - Make sure your disconnected operations infrastructure can reach the CRL endpoint specified in the certificates' CRL Distribution Point (CDP) extension.
+  - Don't use a public or external CA. Deployments fail if certificates come from a public CA, because internet connectivity is required to access the CRL and Online Certificate Status Protocol (OCSP) services for HTTPS.  
 
 ### Ingress endpoint certificate requirements
 
 This table lists the mandatory certificates required for disconnected operations on Azure Local.
 
-| Service | Required certificate subject and subject alternative names (SAN) |
-|-------------------|----------------------|  
-| Azure Container Registry | *.edgeacr.fqdn |
-| Azure Key Vault | *.vault.fqdn  |
-| Azure queue storage | *.queue.fqdn |
-| Azure Table storage | *.table.fqdn |
-| Azure Blob storage | *.blob.fqdn |
-| Azure Service Bus | *.servicebus.fqdn |
-| Azure Data Policy | data.policy.fqdn |
-| Arc configuration data plane <br></br> Azure Arc-enabled Kubernetes | arckubernetesconfig.fqdn |
-| Arc for Server Agent data service | agentserviceapi.fqdn |
-| Arc for server | his.fqdn |
-| Arc guest notification service | guestnotificationservice.fqdn |
-| Arc metrics | metricsingestiongateway.monitoring.fqdn |
-| Arc monitor agent | amcs.monitoring.fqdn |
-| Azure Arc resource bridge data plane | dp.appliances.fqdn |
-| Azure Resource Manager | armmanagement.fqdn |
-| Appliances | adminmanagement.fqdn |
-| Front end appliances | frontend.appliances.fqdn |
-| Graph | graph.fqdn |
-| Licensing | dp.aszrp.fqdn <br></br> ibc.fqdn |
-| Public portal     | portal.fqdn <br></br> hosting.fqdn <br></br> catalogapi.fqdn |
-| Secure token service | login.fqdn |
+| Service | Required certificate subject and Subject Alternative Name (SAN) |
+| ------------------- | ---------------------- |  
+| Azure Container Registry | `*.edgeacr.fqdn` |
+| Azure Key Vault | `*.vault.fqdn` |
+| Azure queue storage | `*.queue.fqdn` |
+| Azure Table storage | `*.table.fqdn` |
+| Azure Blob storage | `*.blob.fqdn` |
+| Azure Service Bus | `*.servicebus.fqdn` |
+| Azure Data Policy | `data.policy.fqdn` |
+| Arc configuration data plane <br></br> Azure Arc-enabled Kubernetes | `arckubernetesconfig.fqdn` |
+| Arc for Server Agent data service | `agentserviceapi.fqdn` |
+| Arc for server | `his.fqdn` |
+| Arc guest notification service | `guestnotificationservice.fqdn` |
+| Arc metrics | `metricsingestiongateway.monitoring.fqdn` |
+| Arc monitor agent | `amcs.monitoring.fqdn` |
+| Azure Arc resource bridge data plane | `dp.appliances.fqdn` |
+| Azure Resource Manager | `armmanagement.fqdn` |
+| Appliances | `adminmanagement.fqdn` |
+| Front end appliances | `frontend.appliances.fqdn` |
+| Graph | `graph.fqdn` |
+| Licensing | `dp.aszrp.fqdn` <br></br> `ibc.fqdn` |
+| Public portal | `portal.fqdn` <br></br> `hosting.fqdn` <br></br> `catalogapi.fqdn` |
+| Secure token service | `login.fqdn` |
 
 ### Management endpoints
 
-The management endpoint requires two certificates. You must put these certificates in the same folder, *ManagementEndpointCerts*. The certificates are:
+The management endpoint requires two certificates. Put these certificates in the same folder, *ManagementEndpointCerts*. The certificates are:
 
-| Management endpoint certificate  | Required certificate subject  |
-|----------------------|------------------|
-| Server  | Management endpoint IP address: $ManagementIngressIpAddress. <br> If the management endpoint IP is **192.168.50.100**, then the server certificate's subject name must match exactly. For example, **Subject = 192.168.50.100**. You can also use a fully qualified domain name (FQDN) as a server name (SN) as long as it resolves to the management IP address. | 
-| Client  | Use a certificate subject that helps you distinguish it from others. Any string is acceptable. <br> For example, **Subject = ManagementEndpointClientAuth**.  |
+| Management Endpoint Certificate | Required certificate subject |
+| ---------------------- | ------------------ |
+| Server | Management endpoint IP address: $ManagementIngressIpAddress. <br> If the management endpoint IP is `192.168.50.100`, the server certificate's subject name must match exactly. For example, **Subject = 192.168.50.100**. You can also use a fully qualified domain name (FQDN) as a server name (SN) as long as it resolves to the management IP address. |
+| Client | Use a certificate subject that helps you distinguish it from others. Any string is acceptable. <br> For example, **Subject = ManagementEndpointClientAuth**. |
 
 ## Create certificates to secure endpoints
 
 ### Ingress endpoints
 
-On the host machine or Active Directory virtual machine (VM), follow the steps in this section to create certificates for the ingress traffic and external endpoints of the disconnected operations appliance. The OperationsModule provides helper methods to generate certificates signing requests or automating the full certificate creation.
+On the host machine or Active Directory virtual machine (VM), follow the steps in this section to create certificates for the ingress traffic and external endpoints of the disconnected operations appliance. The OperationsModule provides helper methods to generate certificate signing requests or automate the full certificate creation.
 
 You need these certificates to deploy the disconnected operations appliance. You also need the public key for your local infrastructure to provide a secure trust chain.
 
@@ -94,12 +92,12 @@ You need these certificates to deploy the disconnected operations appliance. You
 1. Create the certificates by using the OperationsModule helper method with the target **IngressEndpointsCerts** folder.
 1. View and copy the certificates (24 .pfx files) exported to **IngressEndpointsCerts**.
 
-The following script shows you how to use the OperationsModule to generate certificates. The script creates certificate signing requests (CSRs), submits them to your certificate authority (CA), and then exports the generated certificates with password protection.
+The following script shows you how to use the OperationsModule to generate certificates. The script creates Certificate Signing Requests (CSRs), submits them to your Certificate Authority (CA), and then exports the generated certificates with password protection.
 
 > [!NOTE]
-> Run this script on a domain-joined machine using an account with Domain Administrator access to issue certificates.
+> Run this script on a domain-joined machine by using an account with Domain Administrator access to issue certificates.
 
-  ```PowerShell    
+  ```PowerShell
   # Make sure you have the OperationsModule in this folder
   # In the Appendix you can find an alternative to the OperationModule if you prefer writing your own automation
 
@@ -119,7 +117,7 @@ The following script shows you how to use the OperationsModule to generate certi
 Here's an example of how to create certificates for securing the management endpoint. 
 
 > [!NOTE]
-> Run this script on a domain-joined machine using an account with Domain Administrator access to issue certificates.
+> Run this script on a domain-joined machine by using an account with Domain Administrator access to issue certificates.
 >
 > After you create the certificates, copy the management certificates (*.pfx) to the directory structure represented in ManagementEndpointCerts.
 
@@ -136,9 +134,9 @@ Import-Module "$applianceConfigBasePath\OperationsModule\Azure.Local.Disconnecte
 New-AldoManagementCertificatesFromCA -ManagementEndpoint $managementEndpointIp -OutputFolder $managementEndpointCertsFolder -CAConfig $caConfig -CertificatePassword $certpassword
 ```
 
-## Export Root CA certificate 
+## Export root CA certificate
 
-You need the root certificate public key for deployment. You must export the root certificate with base64 encoding. 
+You need the root certificate public key for deployment. Export the root certificate with base64 encoding. 
 
 Here's an example of how to export your root certificate public key:
 
@@ -169,14 +167,14 @@ For more information, see [Active Directory Certificate Services](/troubleshoot/
 
 ## Obtain certificate information for identity integration
 
-To secure your identity integration, we recommend that you pass these two parameters:
+To secure your identity integration, pass these two parameters:
 
 - LdapsCertChainInfo
 - OidcCertChainInfo
 
 These checks confirm that the certificates and chain for these endpoints aren't changed or tampered with.
 
-You have a helper method in the OperationsModule to populate these parameters.
+Use a helper method in the OperationsModule to populate these parameters.
 
 Here's an example of how to populate the required parameters:
 
@@ -389,15 +387,15 @@ _continue_ = "DNS=$subject"
 
 ## Related content
 
-- [Plan hardware for Azure local with disconnected operations](disconnected-operations-overview.md#preview-participation-criteria)
+- [Plan hardware for Azure local with disconnected operations](disconnected-operations-overview.md#eligibility-criteria)
 - [Plan and understand identity](disconnected-operations-identity.md)
 - [Plan and understand networking](disconnected-operations-network.md)
 - [Set up disconnected operations](disconnected-operations-acquire.md)
 
 ::: moniker-end
 
-::: moniker range="<=azloc-2505"
+::: moniker range="<=azloc-2601"
 
-This feature is available only in Azure Local 2506
+This feature is available only in Azure Local 2602 or later.
 
 ::: moniker-end
