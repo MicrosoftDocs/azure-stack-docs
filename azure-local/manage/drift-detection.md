@@ -34,9 +34,9 @@ Azure Local performs drift detection at multiple points in its lifecycle to ensu
 
 ## What drift detection checks
 
-Drift detection validates a prioritized set of components that are critical to Azure Local operations.
+Drift detection validates a prioritized set of components that are critical to Azure Local operations. Currently, the system surfaces drift findings as **Informational alerts** and provides manual remediation recommendations for Azure Command-Line Interface (CLI) and PowerShell modules.
 
-Currently, the system surfaces drift findings as **Informational alerts**, with some guidance on manual remediation recommendations for Azure Command-Line Interface (CLI) and PowerShell modules.
+The following table lists the components that drift detection validates and the available remediation options:
 
 | **Supported Components** | **Type of Drifts** | **Remediation** |
 | ---- | ---- | ---- |
