@@ -3,7 +3,7 @@ title: Release notes with fixed and known issues in Azure Local
 description: Read about the known issues and fixed issues in Azure Local.
 author: alkohli
 ms.topic: troubleshooting-general
-ms.date: 02/11/2026
+ms.date: 02/17/2026
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: hyperconverged
@@ -19,6 +19,77 @@ These release notes are continuously updated, and as critical issues requiring a
 > For information about supported update paths for this release, see [Release information](./release-information-23h2.md#about-azure-local-releases).
 
 For more information about new features in this release, see [What's new for Azure Local](whats-new.md).
+
+::: moniker range="=azloc-2602"
+
+## Known issues for version 2602
+
+For the 2602 release of Azure Local, Microsoft released the following update:
+
+| Solution version  | OS build  |
+|---------|---------|---------|
+| 12.2602.1007.7 | 26100.32370 |
+
+> [!IMPORTANT]
+> The new deployments of this software use the **12.2602.1007.7** build.
+Release notes for this version include the issues fixed in this release, known issues in this release, and known issues carried over from previous versions.
+
+> [!NOTE]
+> For detailed remediation for common known issues, see the [Azure Local Supportability](https://github.com/Azure/AzureStackHCI-Supportability) GitHub repository.
+
+## Fixed issues
+
+The following table lists the fixed issues in this release:
+
+|Feature  |Issue    |Comments |
+|---------|---------|---------|
+| Deployment <!--36596732--> | Fixed issue in the Azure portal where the Azure Local deployment wizard wasn't loading. | |
+| Deployment <!--34665800--> |Fixed issue in Azure portal to block proceeding through Azure Local deployment wizard when inputs aren't specified. | |
+| Deployment <!--32149605--> | Added validation to instance and machine names in Azure Local deployment wizard in Azure portal. | |
+| Update <!--36581165--> | Fixed issue with SBE update failing due to invalid argument. | |
+| Azure Local VMs  | Fixed issue where VM start or stop operation was blocked with an error after attaching or detaching GPU to the VM. | |
+
+## Known issues
+
+There's no known issue in this release. Any previously known issues have been fixed in subsequent releases.
+
+<!--The following table lists the known issues in this release:
+
+|Feature  |Issue    |Workaround  |
+|---------|---------|------------|-->
+
+
+## Known issues from previous releases
+
+The following table lists the known issues from previous releases:
+
+|Feature  |Issue  |Workaround  |
+|---------|---------|---------|
+| Azure Verification <!--58937961-->  | VMs on Azure Local running Windows Server Azure Edition, Windows 10, or Windows 11 multi-session OS may not activate properly. A pop-up message or a watermark may display, indicating that Windows isn't activated. The VM will function, but the watermark will persist. | There's no known workaround in this release. |
+| Add server <br> Repair server <!--32447442--> | The `Add-server` and `Repair-server` cmdlets fail with the error: <br> `Cluster Build ID matches node to add's Build ID`. | Use the OS image of the same solution version as that running on the existing cluster. To get the OS image, identify and download the image version from this [Release table](https://github.com/Azure-Samples/AzureLocal/blob/main/os-image/os-image-tracking-table.md). |
+| Deployment <!--33008717--> | In this release and previous releases, registration fails with the following error when you try to register Azure Local machines with Azure Arc: <br>`AZCMAgent command failed with error: >> exitcode: 42. Additional Info: See https://aka.ms/arc/azcmerror`. | For detailed steps on how to resolve this issue, see the [Troubleshooting guide](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/ArcRegistration/TSG-Arc-registration-failing-with-error-42.md). |
+| Azure Local VM management | The Mochostagent service might appear to be running but can get stuck without updating logs for over a month. You can identify this issue by checking the service logs in `C:\programdata\mochostagent\logs` to see if logs are being updated. | Run the following command to restart the mochostagent service: `restart-service mochostagent`. |
+| Update | When viewing the readiness check results for an Azure Local instance via the Azure Update Manager, there might be multiple readiness checks with the same name.  |There's no known workaround in this release. Select **View details** to view specific information about the readiness check. |
+| Update | There's an intermittent issue in this release when the Azure portal incorrectly reports the update status as **Failed to update** or **In progress** though the update is complete.  |[Connect to your Azure Local instance](./update/update-via-powershell-23h2.md#connect-to-your-azure-local) via a remote PowerShell session. To confirm the update status, run the following PowerShell cmdlets: <br><br> `$Update = get-solutionupdate`\| `? version -eq "<version string>"`<br><br>Replace the version string with the version you're running. For example, "10.2405.0.23". <br><br>`$Update.state`<br><br>If the update status is **Installed**, no further action is required on your part. The Azure portal refreshes the status correctly within 24 hours. <br> To refresh the status sooner, follow these steps on one of the nodes. <br>Restart the Cloud Management cluster group.<br>`Stop-ClusterGroup "Cloud Management"`<br>`Start-ClusterGroup "Cloud Management"`|
+| Add server <!--26852600--> |In this release and previous releases, when adding a machine to the system, isn't possible to update the proxy bypass list string to include the new machine. Updating environment variables proxy bypass list on the hosts won't update the proxy bypass list on Azure resource bridge or AKS. |There's no workaround in this release. If you encounter this issue, contact Microsoft Support to determine next steps.|
+| Azure portal <!--25741164--> |In some instances, the Azure portal might take a while to update and the view might not be current.| You might need to wait for 30 minutes or more to see the updated view. |
+| Security <!--30348397--> |  Azure Local might face an issue during normal operations (for example, Update, Repair) while using Defender for Endpoint and when the **Restrict App Execution** setting is enabled for one or more servers in the deployment.  | Disable the **Restrict App Execution** setting in the Defender portal and reboot. If the issue persists, [open a support case](/azure/azure-portal/supportability/how-to-create-azure-support-request). |
+| Deployment <!--33390832--> | In rare instances, deployment fails with errors during validation that state that the mandatory Arc extensions are not yet installed. | If you face this issue, retry the deployment. |
+| Security | If the Windows Defender attack surface reduction rule Block Process Creations originating from PSExec & WMI commands is configured to Block, the Azure Local Solution Update will fail to run. | For detailed steps on how to resolve this issue, see the [Troubleshooting guide](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/Update/Solution-Update-CAU-Run-fails-due-to-Windows-Defender-blocking-WMI-commands.md). |
+| Add server, Repair server <!--35816797--> | Add node and repair node operations fail when running on 11.2510.1002.87 or 12.2510.1002.88, as these images were recalled and don't exist. | Upgrade your environment to 11.2510.1002.93 or 12.2510.1002.94. <br><br> If you need to run add node or repair node operations during the update from 1.2510.1002.87/12.2510.1002.88 to 11.2510.1002.93/12.2510.1002.94, [open a support case](/azure/azure-portal/supportability/how-to-create-azure-support-request) to overwrite the image validation.|
+| Azure Local VMs <!--35810643--> | VM start, stop, or delete operations may fail due to the wssdagent node agent crashing.| To check if wssdagent has crashed, run the following command: <br><br> `$ServerList = (Get-Clusternode).name` <br> `foreach ($Server in $ServerList) {` <br> `Write-Output "Cluster Node: $Server..."` <br> `Invoke-Command -ComputerName $Server -ScriptBlock {` <br> `get-service wssdagent` <br> `}` <br> `}` <br><br> If the wssdagent status shows "Stopped", run the following command to restart the agent from that node: <br><br> `start-service wssdagent` <br><br> This should get the node agent running again and unblock the VMs. If any VMs are deleted while the node agent is down, [open a support case](/azure/azure-portal/supportability/how-to-create-azure-support-request) to get the issue resolved. |
+| Update <!--36360771--> | Fetching the secret rotation action plan status fails. | The secret rotation completes successfully, so the failure message can be ignored. |
+
+## Known and expected behaviors
+
+The following table lists the known and expected system behaviors that shouldn't be considered as bugs or limitations.
+
+| Feature  | Behavior  |  Workaround |
+|---------|---------|---------|
+| Operating system  | Restoring the registry using *RegBack* isn't supported on Azure Local. This operation can remove the Lifecycle Manager (LCM) and Microsoft On-premises Cloud (MOC) settings on your Azure Local instance, which can corrupt the solution.  | |
+| Azure Local VM management| Using an exported Azure VM OS disk as a VHD to create a gallery image for provisioning an Azure Local VM is unsupported. | Run the command `restart-service mochostagent` to restart the mochostagent service. |
+
+::: moniker-end
 
 ::: moniker range="=azloc-2601"
 
@@ -90,7 +161,6 @@ The following table lists the known issues from previous releases:
 |Feature  |Issue  |Workaround  |
 |---------|---------|---------|
 | Azure Verification <!--58937961-->  | VMs on Azure Local running Windows Server Azure Edition, Windows 10, or Windows 11 multi-session OS may not activate properly. A pop-up message or a watermark may display, indicating that Windows isn't activated. The VM will function, but the watermark will persist. | There's no known workaround in this release. |
-| Add server <br> Repair server <!--32447442--> | The `Add-server` and `Repair-server` cmdlets fail with the error: <br> `Cluster Build ID matches node to add's Build ID`. | Use the OS image of the same solution version as that running on the existing cluster. To get the OS image, identify and download the image version from this [Release table](https://github.com/Azure-Samples/AzureLocal/blob/main/os-image/os-image-tracking-table.md). |
 | Deployment <!--33008717--> | In this release and previous releases, registration fails with the following error when you try to register Azure Local machines with Azure Arc: <br>`AZCMAgent command failed with error: >> exitcode: 42. Additional Info: See https://aka.ms/arc/azcmerror`. | For detailed steps on how to resolve this issue, see the [Troubleshooting guide](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/ArcRegistration/TSG-Arc-registration-failing-with-error-42.md). |
 | Azure Local VM management | The Mochostagent service might appear to be running but can get stuck without updating logs for over a month. You can identify this issue by checking the service logs in `C:\programdata\mochostagent\logs` to see if logs are being updated. | Run the following command to restart the mochostagent service: `restart-service mochostagent`. |
 | Update | When viewing the readiness check results for an Azure Local instance via the Azure Update Manager, there might be multiple readiness checks with the same name.  |There's no known workaround in this release. Select **View details** to view specific information about the readiness check. |
@@ -102,6 +172,7 @@ The following table lists the known issues from previous releases:
 | Security | If the Windows Defender attack surface reduction rule Block Process Creations originating from PSExec & WMI commands is configured to Block, the Azure Local Solution Update will fail to run. | For detailed steps on how to resolve this issue, see the [Troubleshooting guide](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/Update/Solution-Update-CAU-Run-fails-due-to-Windows-Defender-blocking-WMI-commands.md). |
 | Add server, Repair server <!--35816797--> | Add node and repair node operations fail when running on 11.2510.1002.87 or 12.2510.1002.88, as these images were recalled and don't exist. | Upgrade your environment to 11.2510.1002.93 or 12.2510.1002.94. <br><br> If you need to run add node or repair node operations during the update from 1.2510.1002.87/12.2510.1002.88 to 11.2510.1002.93/12.2510.1002.94, [open a support case](/azure/azure-portal/supportability/how-to-create-azure-support-request) to overwrite the image validation.|
 | Azure Local VMs <!--35810643--> | VM start, stop, or delete operations may fail due to the wssdagent node agent crashing.| To check if wssdagent has crashed, run the following command: <br><br> `$ServerList = (Get-Clusternode).name` <br> `foreach ($Server in $ServerList) {` <br> `Write-Output "Cluster Node: $Server..."` <br> `Invoke-Command -ComputerName $Server -ScriptBlock {` <br> `get-service wssdagent` <br> `}` <br> `}` <br><br> If the wssdagent status shows "Stopped", run the following command to restart the agent from that node: <br><br> `start-service wssdagent` <br><br> This should get the node agent running again and unblock the VMs. If any VMs are deleted while the node agent is down, [open a support case](/azure/azure-portal/supportability/how-to-create-azure-support-request) to get the issue resolved. |
+| Azure Local VMs  | VM start or stop operation is blocked with an error after attaching or detaching GPU to the VM. | Update the size of the VM (add/remove vCPU, memory) before attempting a start or stop operation. Once the size is updated, proceed with VM start or stop. |
 
 ## Known and expected behaviors
 
@@ -111,6 +182,7 @@ The following table lists the known and expected system behaviors that shouldn't
 |---------|---------|---------|
 | Operating system  | Restoring the registry using *RegBack* isn't supported on Azure Local. This operation can remove the Lifecycle Manager (LCM) and Microsoft On-premises Cloud (MOC) settings on your Azure Local instance, which can corrupt the solution.  | |
 | Azure Local VM management| Using an exported Azure VM OS disk as a VHD to create a gallery image for provisioning an Azure Local VM is unsupported. | Run the command `restart-service mochostagent` to restart the mochostagent service. |
+| Add server <br> Repair server <!--32447442--> | The `Add-server` and `Repair-server` cmdlets fail with the error: <br> `Cluster Build ID matches node to add's Build ID`. | Use the OS image of the same solution version as that running on the existing cluster. To get the OS image, identify and download the image version from this [Release table](https://github.com/Azure-Samples/AzureLocal/blob/main/os-image/os-image-tracking-table.md). |
 
 ::: moniker-end
 
@@ -164,11 +236,11 @@ The following table lists the known issues from previous releases:
 | Azure portal <!--25741164--> |In some instances, the Azure portal might take a while to update and the view might not be current.| You might need to wait for 30 minutes or more to see the updated view. |
 | Security <!--30348397--> |  Azure Local might face an issue during normal operations (for example, Update, Repair) while using Defender for Endpoint and when the **Restrict App Execution** setting is enabled for one or more servers in the deployment.  | Disable the **Restrict App Execution** setting in the Defender portal and reboot. If the issue persists, [open a support case](/azure/azure-portal/supportability/how-to-create-azure-support-request). |
 | Deployment <!--33471589--> |  After Azure portal deployment, SConfig network settings shows the error: `Set-SCfNetworksetting : Cannot bind argument to parameter 'Value' because it is null.` | There's no known workaround in this release. |
-| Deployment <!--33390832--> | In rare instances, deployment fails with errors during validation that state that the mandatory Arc extensions are not yet installed. | If you face this issue, retry the deployment. |
 | Security | If the Windows Defender attack surface reduction rule Block Process Creations originating from PSExec & WMI commands is configured to Block, the Azure Local Solution Update will fail to run. | For detailed steps on how to resolve this issue, see the [Troubleshooting guide](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/Update/Solution-Update-CAU-Run-fails-due-to-Windows-Defender-blocking-WMI-commands.md). |
-| Add server, Repair server <!--35816797--> | Add node and repair node operations fail when running on 11.2510.1002.87 or 12.2510.1002.88, as these images were recalled and don't exist. | Upgrade your environment to 11.2510.1002.93 or 12.2510.1002.529. <br><br> If you need to run add node or repair node operations during the update from 1.2510.1002.87/12.2510.1002.88 to 11.2510.1002.93/12.2510.1002.529, [open a support case](/azure/azure-portal/supportability/how-to-create-azure-support-request) to overwrite the image validation.|
+| Add server, Repair server <!--35816797--> | Add node and repair node operations fail when running on 11.2510.1002.87 or 12.2510.1002.88, as these images were recalled and don't exist. | Upgrade your environment to 11.2510.1002.93 or 12.2510.1002.531. <br><br> If you need to run add node or repair node operations during the update from 1.2510.1002.87/12.2510.1002.88 to 11.2510.1002.93/12.2510.1002.531, [open a support case](/azure/azure-portal/supportability/how-to-create-azure-support-request) to overwrite the image validation.|
 | Azure Local VMs <!--35810643--> | VM start, stop, or delete operations may fail due to the wssdagent node agent crashing.| To check if wssdagent has crashed, run the following command: <br><br> `$ServerList = (Get-Clusternode).name` <br> `foreach ($Server in $ServerList) {` <br> `Write-Output "Cluster Node: $Server..."` <br> `Invoke-Command -ComputerName $Server -ScriptBlock {` <br> `get-service wssdagent` <br> `}` <br> `}` <br><br> If the wssdagent status shows "Stopped", run the following command to restart the agent from that node: <br><br> `start-service wssdagent` <br><br> This should get the node agent running again and unblock the VMs. If any VMs are deleted while the node agent is down, [open a support case](/azure/azure-portal/supportability/how-to-create-azure-support-request) to get the issue resolved. |
 | Update <!--35747709--> | Update may fail when the cloud management group is running on a different node than the owner node with the error: `Type 'RegisterCloudManagementUpdatesExtension' of Role 'CloudManagementConfig' raised an exception: Exception occurred in Get-ClusterExtension'` | Move the management group to the owner node manually and proceed with the update: <br><br> `# Get the owner node of the group matching '*orch*'` <br> `$orchOwner = (Get-ClusterGroup -Name '*orch*').OwnerNode.Name`<br><br> `# Move the "Cloud Management" group to that node`<br> `Move-ClusterGroup -Name 'Cloud Management' -Node $orchOwner` |
+| Azure Local VMs  | VM start or stop operation is blocked with an error after attaching or detaching GPU to the VM. | Update the size of the VM (add/remove vCPU, memory) before attempting a start or stop operation. Once the size is updated, proceed with VM start or stop. |
 
 ## Known and expected behaviors
 
@@ -222,6 +294,7 @@ The following table lists the known issues in this release:
 |---------|---------|------------|
 | Update <!--35747709--> | Update may fail when the cloud management group is running on a different node than the owner node with the error: `Type 'RegisterCloudManagementUpdatesExtension' of Role 'CloudManagementConfig' raised an exception: Exception occurred in Get-ClusterExtension'` | Move the management group to the owner node manually and proceed with the update: <br><br> `# Get the owner node of the group matching '*orch*'` <br> `$orchOwner = (Get-ClusterGroup -Name '*orch*').OwnerNode.Name`<br><br> `# Move the "Cloud Management" group to that node`<br> `Move-ClusterGroup -Name 'Cloud Management' -Node $orchOwner` |
 | Deployment <!--36440701--> | When upgrading from 2510 to 2511, 2512, or 2601, cluster creation fails due to CSI provisioning. | For detailed steps on how to resolve this issue, see [AKS Arc cluster creation fails on Azure Local 2511, 2512, or 2601 after upgrade from 2510](/azure/aks/aksarc/cluster-create-fails-after-azure-local-upgrade). |
+| Azure Local VMs  | VM start or stop operation is blocked with an error after attaching or detaching GPU to the VM. | Update the size of the VM (add/remove vCPU, memory) before attempting a start or stop operation. Once the size is updated, proceed with VM start or stop. |
 
 ## Known issues from previous releases
 
@@ -241,8 +314,9 @@ The following table lists the known issues from previous releases:
 | Deployment <!--33471589--> |  After Azure portal deployment, SConfig network settings shows the error: `Set-SCfNetworksetting : Cannot bind argument to parameter 'Value' because it is null.` | There's no known workaround in this release. |
 | Deployment <!--33390832--> | In rare instances, deployment fails with errors during validation that state that the mandatory Arc extensions are not yet installed. | If you face this issue, retry the deployment. |
 | Security | If the Windows Defender attack surface reduction rule Block Process Creations originating from PSExec & WMI commands is configured to Block, the Azure Local Solution Update will fail to run. | For detailed steps on how to resolve this issue, see the [Troubleshooting guide](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/Update/Solution-Update-CAU-Run-fails-due-to-Windows-Defender-blocking-WMI-commands.md). |
-| Add server, Repair server <!--35816797--> | Add node and repair node operations fail when running on 11.2510.1002.87 or 12.2510.1002.88, as these images were recalled and don't exist. | Upgrade your environment to 11.2510.1002.93 or 12.2510.1002.529. <br><br> If you need to run add node or repair node operations during the update from 1.2510.1002.87/12.2510.1002.88 to 11.2510.1002.93/12.2510.1002.529, [open a support case](/azure/azure-portal/supportability/how-to-create-azure-support-request) to overwrite the image validation.|
+| Add server, Repair server <!--35816797--> | Add node and repair node operations fail when running on 11.2510.1002.87 or 12.2510.1002.88, as these images were recalled and don't exist. | Upgrade your environment to 11.2510.1002.93 or 12.2510.1002.531. <br><br> If you need to run add node or repair node operations during the update from 1.2510.1002.87/12.2510.1002.88 to 11.2510.1002.93/12.2510.1002.531, [open a support case](/azure/azure-portal/supportability/how-to-create-azure-support-request) to overwrite the image validation.|
 | Azure Local VMs <!--35810643--> | VM start, stop, or delete operations may fail due to the wssdagent node agent crashing.| To check if wssdagent has crashed, run the following command: <br><br> `$ServerList = (Get-Clusternode).name` <br> `foreach ($Server in $ServerList) {` <br> `Write-Output "Cluster Node: $Server..."` <br> `Invoke-Command -ComputerName $Server -ScriptBlock {` <br> `get-service wssdagent` <br> `}` <br> `}` <br><br> If the wssdagent status shows "Stopped", run the following command to restart the agent from that node: <br><br> `start-service wssdagent` <br><br> This should get the node agent running again and unblock the VMs. If any VMs are deleted while the node agent is down, [open a support case](/azure/azure-portal/supportability/how-to-create-azure-support-request) to get the issue resolved. |
+
 
 ## Known and expected behaviors
 
@@ -264,10 +338,10 @@ For the 2510 release of Azure Local, Microsoft released two security updates, ea
 | Solution version  | OS build  |
 |---------|---------|---------|
 | 11.2510.1002.93         | 25398.1913         |
-| 12.2510.1002.529         | 26100.6899         |
+| 12.2510.1002.531         | 26100.6899         |
 
 > [!IMPORTANT]
-> The new deployments of this software use the **12.2510.1002.529** build. You can also update an existing deployment from 2509 by using **11.2510.1002.93**.
+> The new deployments of this software use the **12.2510.1002.531** build. You can also update an existing deployment from 2509 by using **11.2510.1002.93**.
 
 Release notes for this version include the issues fixed in this release, known issues in this release, and release note issues carried over from previous versions.
 
@@ -308,7 +382,7 @@ The following table lists the known issues in this release:
 
 |Feature  |Issue  |Workaround  |
 |---------|---------|---------|
-| Add server, Repair server <!--35816797--> | Add node and repair node operations fail when running on 11.2510.1002.87 or 12.2510.1002.88, as these images were recalled and don't exist. | Upgrade your environment to 11.2510.1002.93 or 12.2510.1002.529. <br><br> If you need to run add node or repair node operations during the update from 1.2510.1002.87/12.2510.1002.88 to 11.2510.1002.93/12.2510.1002.529, [open a support case](/azure/azure-portal/supportability/how-to-create-azure-support-request) to overwrite the image validation.|
+| Add server, Repair server <!--35816797--> | Add node and repair node operations fail when running on 11.2510.1002.87 or 12.2510.1002.88, as these images were recalled and don't exist. | Upgrade your environment to 11.2510.1002.93 or 12.2510.1002.531. <br><br> If you need to run add node or repair node operations during the update from 1.2510.1002.87/12.2510.1002.88 to 11.2510.1002.93/12.2510.1002.531, [open a support case](/azure/azure-portal/supportability/how-to-create-azure-support-request) to overwrite the image validation.|
 | Azure Local VMs <!--35810643--> | VM start, stop, or delete operations may fail due to the wssdagent node agent crashing.| To check if wssdagent has crashed, run the following command: <br><br> `$ServerList = (Get-Clusternode).name` <br> `foreach ($Server in $ServerList) {` <br> `Write-Output "Cluster Node: $Server..."` <br> `Invoke-Command -ComputerName $Server -ScriptBlock {` <br> `get-service wssdagent` <br> `}` <br> `}` <br><br> If the wssdagent status shows "Stopped", run the following command to restart the agent from that node: <br><br> `start-service wssdagent` <br><br> This should get the node agent running again and unblock the VMs. If any VMs are deleted while the node agent is down, [open a support case](/azure/azure-portal/supportability/how-to-create-azure-support-request) to get the issue resolved. |
 
 
@@ -430,7 +504,7 @@ The following table lists the known and expected system behaviors that shouldn't
 
 ::: moniker-end
 
-::: moniker range="=azloc-2508"
+::: moniker range="=azloc-previous"
 
 ## Known issues for version 2508
 
@@ -449,7 +523,7 @@ Release notes for this version include the issues fixed in this release, known i
 > [!NOTE]
 > For detailed remediation for common known issues, see the [Azure Local Supportability](https://github.com/Azure/AzureStackHCI-Supportability) GitHub repository.
 
-## Fixed issues
+### Fixed issues
 
 The following table lists the fixed issues in this release:
 
@@ -461,7 +535,7 @@ The following table lists the fixed issues in this release:
 | Deployment <!--33731727--> | Disk types not being determined correctly, resulting in false negative results on storage pool size determination. |  |
 
 
-## Known issues
+### Known issues
 
 <!--Microsoft isn't aware of any known issues in this release.-->
 
@@ -474,7 +548,7 @@ The following table lists the known issues in this release:
 
 
 
-## Known issues from previous releases
+### Known issues from previous releases
 
 The following table lists the known issues from previous releases:
 
@@ -495,7 +569,7 @@ The following table lists the known issues from previous releases:
 | Deployment <!--33390832--> | In rare instances, deployment fails with errors during validation that state that the mandatory Arc extensions are not yet installed. | If you face this issue, retry the deployment. |
 | Update | When installing cumulative updates using Azure Update Manager, only the latest update for version 2507 is installed. If earlier update options (for versions 2505, 2506) are selected, they are not installed. | There's no workaround in this release. |
 
-## Known and expected behaviors
+### Known and expected behaviors
 
 The following table lists the known and expected system behaviors that shouldn't be considered as bugs or limitations.
 
@@ -503,10 +577,6 @@ The following table lists the known and expected system behaviors that shouldn't
 |---------|---------|---------|
 | Operating system  | Restoring the registry using *RegBack* isn't supported on Azure Local. This operation can remove the Lifecycle Manager (LCM) and Microsoft On-premises Cloud (MOC) settings on your Azure Local instance, which can corrupt the solution.  | |
 | Azure Local VM management| Using an exported Azure VM OS disk as a VHD to create a gallery image for provisioning an Azure Local VM is unsupported. | Run the command `restart-service mochostagent` to restart the mochostagent service. |
-
-::: moniker-end
-
-::: moniker range="=azloc-previous"
 
 ## Known issues for version 2507
 
