@@ -196,9 +196,9 @@ Here are the issues fixed in this release:
 | Deployment |Password for deployment user (also referred to as `AzureStackLCMUserCredential` during Active Directory prep) and local administrator can't include a `:`(colon).| 
 | Azure Local VM management <!--25778815-->| Detaching a disk via the Azure CLI results in an error in this release. |
 | Azure Local VM management <!--25628443/25635316-->| A resource group with multiple clusters only shows storage paths of one cluster.|
-| Azure Local VM management <!--25527606--> | When you create the Azure Marketplace image on Azure Local , sometimes the download provisioning state doesn't match the download percentage on Azure Local instance. The provisioning state is returned as succeeded while the download percentage is reported as less than 100.|
+| Azure Local VM management <!--25527606--> | When you create the Azure Marketplace image on Azure Local, sometimes the download provisioning state doesn't match the download percentage on Azure Local instance. The provisioning state is returned as succeeded while the download percentage is reported as less than 100.|
 | Azure Local VM management <!--25661776--> |In this release, depending on your environment, the VM deployments on Azure Local system can take 30 to 45 minutes. |
-| Azure Local VM management <!--25675277--> | While creating Azure Local VMs via the Azure CLI on Azure Local , if you provide the friendly name of marketplace image, an incorrect Azure Resource Manager ID is built and the VM creation errors out.|
+| Azure Local VM management <!--25675277--> | While creating Azure Local VMs via the Azure CLI on Azure Local, if you provide the friendly name of marketplace image, an incorrect Azure Resource Manager ID is built and the VM creation errors out.|
 
 
 ### Known issues in this release

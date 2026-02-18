@@ -958,3 +958,4 @@ The following table lists the known issues from previous releases:
 ## Next steps
 
 - Read the [Deployment overview](./deploy/deployment-introduction.md).
+- For more information about previous releases, see [Known issues in Azure Local 23xx releases](previous-releases/known-issues-23.md) and [Known issues in Azure Local 24xx releases](previous-releases/known-issues-24.md).

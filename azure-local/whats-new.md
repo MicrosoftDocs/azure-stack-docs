@@ -515,3 +515,4 @@ This release includes the following features and improvements:
 - Read the [blog announcing the general availability of Azure Local](https://techcommunity.microsoft.com/t5/azure-stack-blog/azure-stack-hci-version-23h2-is-generally-available/ba-p/4046110).
 - Read [About hyperconverged deployment methods](./deploy/deployment-introduction.md).
 - Learn how to [Deploy Azure Local via the Azure portal](./deploy/deploy-via-portal.md).
+- For more information about previous releases, see [What's new in Azure Local 23xx releases?](previous-releases/whats-new-23.md) and [What's new in Azure Local 24xx releases?](previous-releases/whats-new-24.md).

@@ -7,6 +7,7 @@ ms.author: alkohli
 ms.service: azure-local
 ms.date: 02/11/2026
 ms.subservice: hyperconverged
+ms.custom: references_regions
 ---
 
 # What's new in hyperconverged deployments of Azure Local 24xx releases?
