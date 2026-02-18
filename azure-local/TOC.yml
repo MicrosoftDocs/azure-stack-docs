@@ -866,7 +866,7 @@ items:
     - name: Billing
       items:
       - name: Billing overview
-        href: manage/disconnected-operations-billing-overview.md
+        href: manage/disconnected-operations-billing.md
 
   - name: Monitor
     items:
