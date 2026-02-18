@@ -20,19 +20,17 @@ Drift detection enables Azure Local to continuously validate component-level sta
 
 Drift detection helps you identify when components deviate from the expected, validated configuration. By continuously comparing your system's current state to a known-good baseline, it improves reliability, simplifies troubleshooting, and reduces configuration-related issues.
 
+Azure Local uses a validated baseline (derived from the approved software bill of materials) as the source of truth and compares it against the component versions you installed. Any deviation from this baseline is identified as a **drift**.
+
 Administrators can manually trigger validation by using the `Invoke-AzStackHciVSRDriftDetectionValidation` cmdlet to generate detailed drift reports for build components.
-
-Azure Local uses a validated baseline (derived from the approved software bill of materials) as the source of truth and compares it against the component versions you installed.
-
-Any deviation from this baseline is identified as a **drift**.
 
 ## When drift detection runs
 
 Azure Local performs drift detection at multiple points in its lifecycle to ensure that it detects issues as early as possible.
 
-**Before the cluster is created**: Drift detection runs as part of operating system (OS) image recipe validation.
+- **Before the cluster is created**: Drift detection runs as part of operating system (OS) image recipe validation.
 
-**After the cluster is running**: Drift detection runs continuously through the health checker framework, and validation runs at the start of an update.
+- **After the cluster is running**: Drift detection runs continuously through the health checker framework, and validation runs at the start of an update.
 
 ## What drift detection checks
 
