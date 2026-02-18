@@ -36,15 +36,17 @@ To license Windows Server virtual machines running on Azure Local with disconnec
 
 To qualify for Azure Hybrid Benefit for Windows VMs on Azure Local with disconnected operations, meet the following licensing prerequisites.
 
-Types of license:
+**Types of license**:
 
 - Windows Server Standard with active Software Assurance or subscription.
 
 - Windows Server Datacenter with active Software Assurance or subscription.
 
-### Number of licenses
+**Number of licenses**:
 
-You need at least 8-core licenses (Datacenter or Standard edition) per VM. For example, you need 8-core licenses if you run a 4-core instance. You can run instances larger than 8-cores by allocating licenses equal to the core size of the instance. For example, 12-core licenses are required for a 12-core instance. For customers with processor licenses, each processor license is equivalent to 16-core licenses.
+- You need at least 8-core licenses (Datacenter or Standard edition) per VM. For example, you need 8-core licenses if you run a 4-core instance.
+  - You can run instances larger than 8-cores by allocating licenses equal to the core size of the instance. For example, 12-core licenses are required for a 12-core instance.
+  - For customers with processor licenses, each processor license is equivalent to 16-core licenses.
 
 ### Azure Migration Allowance
 
