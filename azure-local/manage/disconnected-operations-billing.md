@@ -48,7 +48,7 @@ To qualify for Azure Hybrid Benefit for Windows VMs on Azure Local with disconne
   - You can run instances larger than 8-cores by allocating licenses equal to the core size of the instance. For example, 12-core licenses are required for a 12-core instance.
   - For customers with processor licenses, each processor license is equivalent to 16-core licenses.
 
-### Azure Migration Allowance
+### Azure Migration allowance
 
 - **Windows Server Standard edition:** Use licenses either on-premises or on Azure Local with disconnected operations, but not both at the same time. The only exception is a one-time 180-day period that lets you migrate the same workloads to Azure Local.
 
