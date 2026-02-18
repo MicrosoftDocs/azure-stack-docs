@@ -1,9 +1,10 @@
 ---
 title: Drift Detection Overview for Azure Local
-description: Learn how Azure Local's Drift Detection framework ensures system reliability by continuously validating component states against a baseline.
+description: Learn how Azure Locals Drift Detection framework ensures system reliability by continuously validating component states against a baseline.
 author: ronmiab
 ms.author: robess
 ms.reviewer: pradwivedi
+ms.subservice: hyperconverged
 ms.date: 02/18/2026
 ms.topic: overview
 ---
