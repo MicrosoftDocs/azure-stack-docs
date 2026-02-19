@@ -14,7 +14,7 @@ ai-usage: ai-assisted
 
 ::: moniker range=">=azloc-2602"
 
-This article explains how to register disconnected operations for Azure Local after deploying your management cluster with the control plane. Registration ensures compliance with Azure Local requirements.
+This article explains how to register disconnected operations for Azure Local after deploying your management cluster with the control plane. Learn how to ensure compliance with Azure Local requirements through proper registration.
 
 ## Get the registration file
 
