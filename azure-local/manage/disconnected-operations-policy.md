@@ -118,6 +118,6 @@ The compliance dashboard, remediation actions, and policy exemptions aren't supp
 
 ::: moniker range="<=azloc-2601"
 
-This feature is available only in Azure Local 2602.
+This feature is available only in Azure Local 2602 or later.
 
 ::: moniker-end
