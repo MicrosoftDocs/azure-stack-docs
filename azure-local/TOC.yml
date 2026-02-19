@@ -600,6 +600,8 @@ items:
           href: manage/health-service-actions.md
         - name: Modify Health Service settings
           href: manage/health-service-settings.md
+    - name: Drift detection
+      href: manage/drift-detection.md
 
   - name: Troubleshoot
     items:
@@ -738,7 +740,22 @@ items:
       href: https://azure.com/hci
     - name: Pricing
       href: https://azure.microsoft.com/products/local/#Pricing
-  
+    - name: Previous releases - version 24xx
+      items:
+      - name: What's new in Azure Local?
+        href: previous-releases/whats-new-24.md
+      - name: Known issues
+        href: previous-releases/known-issues-24.md
+      - name: Security updates
+        href: previous-releases/security-update-24.md
+    - name: Previous releases - version 23xx
+      items:
+      - name: What's new in Azure Local?
+        href: previous-releases/whats-new-23.md
+      - name: Known issues
+        href: previous-releases/known-issues-23.md
+      - name: Security updates
+        href: previous-releases/security-update-23.md
 - name: Multi-rack deployments
   items:
   - name: Overview
@@ -843,10 +860,14 @@ items:
       href: manage/disconnected-operations-pki.md
   - name: Deploy
     items:
-    - name: Set-up
-      href: manage/disconnected-operations-set-up.md
-    - name: Deployment
+    - name: Acquire disconnected operations
+      href: manage/disconnected-operations-acquire.md
+    - name: Prepare Azure Local nodes
+      href: manage/disconnected-operations-prepare-azure-local.md
+    - name: Deploy disconnected operations
       href: manage/disconnected-operations-deploy.md
+    - name: Register disconnected operations
+      href: manage/disconnected-operations-registration.md 
   - name: Manage
     items:
     - name: Azure CLI
