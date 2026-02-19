@@ -17,13 +17,17 @@ This article explains how the drift detection framework identifies configuration
 
 ## Overview
 
-Drift detection enables Azure Local to continuously validate component-level states against the baseline Validated Solution Recipe (VSR). It detects version mismatches during the 24-hour update check and before updates by comparing installed component metadata to the recommended baselines.
+Drift detection validates Azure Local component states against the Validated Solution Recipe (VSR) baseline by comparing installed component metadata with supported versions, identifying configuration or version mismatches during regular update checks.
 
-Drift detection helps you identify when components deviate from the expected, validated configuration. By continuously comparing your system's current state to a known-good baseline, it improves reliability, simplifies troubleshooting, and reduces configuration-related issues.
+Drift detection helps you identify when components move away from an expected, validated configuration. By continuously comparing your system's current state to a known-good configuration, it improves reliability, simplifies troubleshooting, and reduces configuration-related issues.
 
-Azure Local uses a validated baseline (derived from the approved software bill of materials) as the source of truth and compares it against the component versions you installed. Any deviation from this baseline is identified as a **drift**.
+Azure Local uses a validated baseline (derived from the approved software bill of materials) as the source of truth and compares it against the component versions you installed on the system. Any deviation from this baseline is identified as a **drift**, indicating that a component no longer aligns with the supported configuration.
 
-Administrators can manually trigger validation by using the `Invoke-AzStackHciVSRDriftDetectionValidation` cmdlet to generate detailed drift reports for build components.
+Drift detection in Azure Local runs automatically by default as part of ongoing system validation. However, administrators can manually trigger validation by using the `Invoke-AzStackHciVSRDriftDetectionValidation` cmdlet to generate detailed drift reports for build components.
+
+Here's an example output of the `Invoke-AzStackHciVSRDriftDetectionValidation` cmdlet:
+
+:::image type="content" source="media/drift-detection/manual-validation.png" alt-text="Screenshot of a manual validation trigger using the Invoke-AzStackHciVSRDriftDetectionValidation cmdlet." lightbox="media/drift-detection/manual-validation.png":::
 
 ## When drift detection runs
 
