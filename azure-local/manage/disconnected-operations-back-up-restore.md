@@ -12,6 +12,8 @@ ai-usage: ai-assisted
 
 # Backup for disconnected operations for Azure Local
 
+::: moniker range=">=azloc-2602"
+
 This article explains the backup process for disconnected operations for Azure Local environments. It provides practical steps to trigger a backup and parameter configurations to customize it. Operators need access to the [Operator subscription and role-based access control (RBAC) permissions](disconnected-operations-identity.md).
   
 For more information, see [Disconnected operations for Azure Local](/azure/azure-local/manage/disconnected-operations-overview?view=azloc-2602&preserve-view=true).
