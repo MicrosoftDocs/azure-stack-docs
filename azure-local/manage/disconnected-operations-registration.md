@@ -1,34 +1,38 @@
 ---
-title: Register disconnected operations for Azure Local (Preview)
-description: Learn how to register disconnected operations for Azure Local (preview) to ensure compliance with deployment requirements.
+title: Register disconnected operations for Azure Local
+description: Learn how to register disconnected operations for Azure Local to ensure compliance with deployment requirements.
 ms.topic: how-to
 author: haraldfianbakken
 ms.author: hafianba
-ms.date: 01/29/2026
+ms.date: 02/23/2026
 ms.reviewer: robess
+ms.subservice: hyperconverged
 ai-usage: ai-assisted
 ---
 
 # Register disconnected operations for Azure Local
 
-::: moniker range=">=azloc-2601"
+::: moniker range=">=azloc-2602"
 
 This article explains how to register disconnected operations for Azure Local after deploying your management cluster with the control plane. Registration ensures compliance with Azure Local requirements.
 
 ## Get the registration file
 
-To register disconnected operations for Azure Local, you first need to generate a registration file from your management cluster. This file contains the necessary data to complete the registration process. 
+The registration file contains data about your Azure Local deployment, which is required to complete the registration process in the Azure portal.
+
+To register disconnected operations for Azure Local, first generate a registration file from your management cluster.
 
 > [!NOTE]
-> Certain customers have compliance or regulations preventing them from copying out any  information from their air-gapped deployments. **If you are prevented to copy out the registration file to complete the registration** please work with your Microsoft representatives to get your appliance registered to ensure compliance. 
+> Certain compliance regulations prohibit copying any data from air-gapped environments. When these restrictions prevent copying the registration file, coordinate with your Microsoft representatives to complete appliance registration while maintaining compliance.
 
 Follow these steps to create and export the registration file:
 
-1. On your management cluster, sign in to the seed node with local administrator credentials.
+1. On your management cluster, sign in to the seed node by using local administrator credentials.
 
 1. Import the operations module and initialize the management context:
 
-    ```powershell  
+    ```powershell
+    # Replace with your actual values.
     $applianceConfigBasePath = 'C:\AzureLocalDisconnectedOperations'
     Import-Module "$applianceConfigBasePath\OperationsModule\Azure.Local.DisconnectedOperations.psd1" -Force
 
@@ -38,31 +42,28 @@ Follow these steps to create and export the registration file:
 
 1. Export the appliance registration data file by using the following command:
 
-    ```powershell 
+    ```powershell
      $file = 'AzureLocal-managementCluster.reg'
-     Export-ApplianceRegistrationData -file $file
+     Export-ApplianceRegistrationData -File $file
     ```
 
 1. Copy this file to a machine that you can use to connect to the internet.
-
 
 ## Complete the registration
 
 To finalize the registration process for disconnected operations, follow these steps in the Azure portal.
 
 1. On an internet connected machine, navigate to the [Azure portal](https://portal.azure.com).
-1. Go to your disconnected operations resource.
+1. Navigate to your disconnected operations resource.
 1. Check for a banner that indicates that your disconnected operations resource isn't registered.
 1. Select the **Register** button, and then upload the registration file.
 1. Confirm the registration details and select **Register**.
 1. After the operation completes, the **Registration status** changes to **Registered**.
 
-
-
 ::: moniker-end
 
-::: moniker range="<=azloc-2512"
+::: moniker range="<=azloc-2601"
 
-This feature is available only in Azure Local 2601
+This feature is available only in Azure Local 2602 or later.
 
 ::: moniker-end
