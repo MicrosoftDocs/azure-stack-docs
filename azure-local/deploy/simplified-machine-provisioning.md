@@ -18,13 +18,13 @@ At a high level, there are three key stages:
 
 :::image type="content" source="media/simplified-machine-provisioning/simplified-machine-provisioning-stages.png" alt-text="Diagram showing the three stages of simplified machine provisioning." border="false" lightbox="media/simplified-machine-provisioning/simplified-machine-provisioning-stages.png":::
 
-1. **Prepare the machines**: Preparation ends with two artifacts: simplified machine provisioning software components installed on the device and generating an ownership voucher. Both artifacts need to be sent to the end customer. Anyone can prepare the devices, whether you're a device manufacturer, an integrator, or even an end customer, but the approach is most valuable when someone other than the end customer prepares the devices.
+1. **Prepare the machines**: Preparation ends with two artifacts: simplified machine provisioning software components installed on the device and generating an ownership voucher. Both artifacts need to be sent to the end customer. Anyone can prepare the devices, whether you're a device manufacturer, an integrator, or even an end customer, but the approach is most valuable when someone other than the on-site staff prepares the devices.
 
-    Once the on-site staff connects the prepared machines to power and the network, turn the machines on. The machines securely connect to the call-home URL and are automatically configured after provisioning from Azure, including OS setup and network configuration, so they’re ready to use. Optionally, the staff can monitor installation and configure devices using the Configurator app.
+    Once the on-site staff has the prepared machines, the machines securely connect to the call-home URL and are automatically configured after provisioning from Azure, including OS setup and network configuration, so they’re ready to use. Optionally, the staff can monitor installation and configure devices using the Configurator app.
 
 2. **Provision the machines from the Azure portal**:
 
-    1. Set up site-level configuration: This configuration applies to all new machines under a site. This configuration includes settings like time zone, time server, machine IP address, proxy server, Azure Arc-gateway, Key vault for administrator credentials, and more. Site-level configuration eliminates the need for manual configuration for each machine.
+    1. Set up site-level configuration: This configuration applies to all new machines under a site. This configuration includes settings like time zone, time server, proxy server, Azure Arc-gateway, Key vault for administrator credentials, and more. Site-level configuration eliminates the need for manual configuration for each machine.
 
     1. Provision the machines: Once the site configurations are done, claim machine ownership using the ownership voucher generated while preparing the machine. Select the operating system profile for each machine.
 
@@ -44,11 +44,19 @@ At a high level, there are three key stages:
 
 ### On-site prerequisites
 
-- Go to **Azure Arc** > **Operations** > **Machine provisioning (preview)**. On the **Get started** page, select **View Downloads** to download the software to your Windows 11 PC. The software includes the maintenance environment ISO image, USB prep tool, and a configurator app. Use the Configurator app to download the ownership voucher, configure static IP address, and track the progress of machine setup.
+- Go to **Azure Arc** > **Operations** > **Machine provisioning (preview)**. On the **Get started** page, select **View Downloads** to download the software to your Windows 11 PC. The software includes the maintenance environment ISO image, USB prep tool, and a configurator app. A maintenance environment is a secure bootable OS that prepares a device for provisioning by generating the device ID and voucher for [FDO (Fido Device Onboard)](https://fidoalliance.org/device-onboarding-overview/).
+
+- Use the Configurator app to download the ownership voucher, configure static IP address, and track the progress of machine setup.
 
 ### Azure prerequisites
 
-- Ensure the following [resource providers](/azure/azure-resource-manager/management/resource-providers-and-types#azure-portal) are registered with your subscription:
+- Register the MachineProvision feature for your subscription using the following command:
+
+    ```azurecli
+    az feature register --subscription <subcriptionid> --namespace Microsoft.DeviceOnboarding --name AzureLocalZTP
+    ```
+
+- After you've registered the MachineProvision feature, ensure the following [resource providers](/azure/azure-resource-manager/management/resource-providers-and-types#azure-portal) are registered with your subscription:
 
   - *Microsoft.HybridCompute*
   - *Microsoft.AzureStackHCI*
@@ -63,12 +71,6 @@ At a high level, there are three key stages:
   - *Microsoft.Storage*
   - *Microsoft.Insights*
 
-- Register the MachineProvision feature for your subscription using the following command:
-
-    ```azurecli
-    az feature register --subscription <subscription name> --namespace Microsoft.DeviceOnboarding --name MachineProvision 
-    ```
-
 - In this preview release, only the **East US** region supports provisioning resource. You can create your resource group in your preferred region.
 
 ## Step 1: Create USB installation media
@@ -80,9 +82,7 @@ The USB tool is used to create a bootable USB drive that contains the required i
 
 Follow these steps to create a USB installation media from your Windows 11 PC:
 
-1. [Download and extract the software package](#on-site-prerequisites) for the maintenance environment and USB prep tool. A maintenance environment is a secure bootable OS that prepares a device for provisioning by generating the device ID and voucher for [FIDO/FDO onboarding](https://fidoalliance.org/device-onboarding-overview/).
-
-1. Attach the USB flash drive to your laptop.
+1. [Download and extract the software package](#on-site-prerequisites) for the maintenance environment and USB prep tool. Attach the USB flash drive to your laptop.
 
 1. Open the terminal. You need to be an administrator to run this tool.
 
@@ -94,13 +94,13 @@ Follow these steps to create a USB installation media from your Windows 11 PC:
 
 1. Run the USB Preparation Tool from the downloaded software package.
 
-1. When prompted, enter the full path to the folder that contains the maintenance environment image ISO, then press the Enter key.
+    1. When prompted, enter the full path to the folder that contains the maintenance environment image ISO, then press the Enter key.
 
-1. Select the USB drive to use from the list of available devices.
+    1. Select the USB drive to use from the list of available devices.
 
-1. Press 'Y' to confirm and begin creating a bootable USB drive. Any content on the flash drive will be deleted.
+    1. Press 'Y' to confirm and begin creating a bootable USB drive. Any content on the flash drive will be deleted.
 
-1. Wait for the tool to complete the media creation process.
+    1. Wait for the tool to complete the media creation process.
 
 1. When finished, safely eject and disconnect the USB flash drive.
 
@@ -120,7 +120,7 @@ Follow the steps to prepare server machines for simplified provisioning. Repeat 
 
 1. Wait for the maintenance environment setup to be completed. The console shows **Maintenance environment setup completed successfully**.
 
-1. Detach the USB flash drive.
+1. You can safely detach the USB flash drive after the maintenance environment setup is complete.
 
 1. Repeat the same steps 1 to 4 on other server machines. 
 
@@ -130,9 +130,9 @@ Follow the steps to prepare server machines for simplified provisioning. Repeat 
 
         1. Open the Start menu, type Configurator App, select **Configurator App for Azure Local V2**, and then select **Run as administrator**. 
 
-        1. Connect to the machine. Use the `ROE-<device serial number>.local` or IP address. Enter the local administrator’s credentials. The default username is *edgeuser*. The default password is *Password1*. 
+        1. Connect to the machine. Use the `ROE-<device serial number>.local` or IP address. Enter the local administrator’s credentials. The default username is *edgeuser*. The default password is *Password1*.
 
-        1. Download the ownership voucher. 
+        1. Download the ownership voucher and share it with your Azure IT administrator to continue machine setup.
 
     - Or **copy voucher from USB flash drive**:
 
@@ -146,9 +146,9 @@ Follow the steps to prepare server machines for simplified provisioning. Repeat 
 
 ## Step 3: Provision machines from Azure
 
-1. Go to **Azure Arc** > **Operations** > **Provisioning (preview)**. On **Get started**, select **Provision** to provision Azure Local machines.
+1. Go to **Azure Arc** > **Operations** > **Machine provisioning (preview)**. On **Get started**, select **Provision** to provision Azure Local machines.
 
-1. Create site. Make a note of the resource group name. Make sure that you're either the resource group owner or have the [Contributor](/azure/role-based-access-control/built-in-roles#contributor) and [Role Based Access Control Administrator](/azure/role-based-access-control/built-in-roles#role-based-access-control-administrator) permissions on the resource group where you provision the servers.
+1. Create site. Make a note of the resource group name. Make sure that you're either the [resource group owner](/azure/role-based-access-control/built-in-roles#owner) or have the [Contributor](/azure/role-based-access-control/built-in-roles#contributor) and [Role Based Access Control Administrator](/azure/role-based-access-control/built-in-roles#role-based-access-control-administrator) permissions on the resource group where you provision the servers.
 
     > [!NOTE]
     > The Azure portal creates the resource group under the **East US** region by default. If you want to create the resource group under a different region, see [Create resource groups](/azure/azure-resource-manager/management/manage-resource-groups-portal#create-resource-groups), and then select the created resource group here.
@@ -160,9 +160,9 @@ Follow the steps to prepare server machines for simplified provisioning. Repeat 
     |Time zone     | Select the common time zone for all the machines under the site. You can change it later. New machines use this time zone, but existing ones don't.       |
     |Time server    |  Enter the common time server for synchronized system time for all the machines under the site. You can change it later. New machines use this time server, but existing ones don't. |
     |Azure Arc connectivity | Select whether to connect via a public endpoint or a proxy server. If you use a public endpoint, devices connect directly to Azure Arc endpoints. If you use a proxy server, configure the proxy server and the list of addresses to bypass the proxy.<br><br> This simplifies the configuration where all the machines associated with this site use the same Azure Arc connectivity settings ensuring consistency. |
-    |Local administrator credentials    | Provide a username (for example, Administrator) and a password. The password must have at least 12 characters, include lower and upper-case characters, and include a digit and a special character.  |
+    |Local administrator credentials | Provide a username (for example, Administrator) and a password. The password must have at least 12 characters, include lower and upper-case characters, and include a digit and a special character.  |
 
-1. Select the site, software version, Azure Key Vault, Local administrator credentials, and add vouchers from step 2.
+1. Select the site, add vouchers from Step 2, software version, and local administrator credentials. The password must have at least 12 characters including lower and upper-case characters, a digit, and a special character.
 
 1. Once you add machines, select the pencil button to edit. Provide the machine name as the Arc resource name.
 
@@ -170,9 +170,7 @@ Follow the steps to prepare server machines for simplified provisioning. Repeat 
 
 1. Ensure that your on-site staff racked, cabled, and booted the machines. Wait 15 minutes for Arc-enabled servers to be created and mandatory extensions to install. 
 
-1. In the Azure portal, go to **Azure Arc** > **Operations** > **Provisioning (preview)**. 
-
-1. On the **Provisioned machines** tab, you should see your machine provisioning status.
+1. In the Azure portal, go to **Azure Arc** > **Operations** > **Provisioning (preview)**. On the **Provisioned machines** tab, you should see your machine provisioning status.
 
 1. Select the machine and drill down into the server. Check status and other details.
 
@@ -213,46 +211,6 @@ To monitor the provisioning machine status, follow these steps:
 1. Check your machine's status in the provisioned machines list. Select a machine’s status to view progress details.
 
 1. Wait for the machine status to show **Ready to cluster**.
-
-## Troubleshooting
-
-You might need to collect the logs or diagnose the problems if you encounter any issues while configuring the machine. You can use the following resources to troubleshoot:
-
-- Run diagnostic tests. 
-- Collect a support package. 
-- Collect logs from your Azure Subscription.
-
-### Run diagnostic tests from the Configurator app
-
-To diagnose and troubleshoot any device issues related to hardware, time server, and network, you can run the diagnostics tests. Follow these steps to run the diagnostic tests from the app:
-
-1. Select the help icon in the top-right corner of the app to open the **Support + troubleshooting** pane.
-
-2. Select **Run diagnostic tests**. The diagnostic tests check the health of the server hardware, time server, and the network connectivity. The tests also check the status of the Azure Arc agent and the extensions. 
-
-3. After the tests are completed, the results are displayed. Resolve the issues and retry the operation. 
-
-### Collect a support package from the app
-
-A log package is composed of all the relevant logs that can help Microsoft Support troubleshoot any device issues. You can generate a log package via the local web UI. Follow these steps to collect a support package from the app: 
-
-1. Select the help icon in the top-right corner of the app to open the **Support + troubleshooting** pane.
-
-1. Select **Create** to begin support package collection. The package collection could take several minutes. 
-
-1. After the support package is created, select **Download**. A zipped package is downloaded on your local system. You can unzip the package and view the system log files.
-
-### Collect logs from your Azure subscription
-
-If you can't access the machine using Configurator App, you can get the app logs from the server. The logs are stored in the following location: Access logs by connecting via SSH for Azure Linux or PowerShell for Azure Stack HCI. 
-
-
-|Target operating system  |Log files |
-|---------|---------|
-|Azure Stack HCI    |`C:\Windows\System32\Bootstrap\Logs`|
-|Maintenance environment    |`/var/log/bootstrap`<br>`/var/log/provisioningextension`<br>`/var/log/trident-full.log`<br>`/var/log/messages`<br>`/var/log/bootstraprestservice`   |
-
-If you can access the app, follow the instructions in [Run diagnostic tests](#run-diagnostic-tests-from-the-configurator-app) to troubleshoot the issue and then [Collect a support package](#collect-a-support-package-from-the-app) if needed.
 
 ## Next steps
 
