@@ -1964,6 +1964,11 @@
       "source_path": "azure-local/manage/disconnected-operations-aks.md", 
       "redirect_url": "/azure/aks/aksarc/disconnected-operations-aks", 
       "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-local/manage/disconnected-operations-set-up.md", 
+      "redirect_url": "/azure/azure-local/manage/disconnected-operations-acquire", 
+      "redirect_document_id": false
     }
   ]
 }
