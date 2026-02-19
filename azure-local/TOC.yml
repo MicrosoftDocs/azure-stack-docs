@@ -846,7 +846,7 @@ items:
     - name: Acquire disconnected operations
       href: manage/disconnected-operations-acquire.md
     - name: Prepare Azure Local nodes
-      href: manage/disconnected-operations-prepare-azure-local.md
+      href: manage/disconnected-operations-prepare.md
     - name: Deploy disconnected operations
       href: manage/disconnected-operations-deploy.md
 
