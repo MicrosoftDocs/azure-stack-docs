@@ -5,13 +5,34 @@ ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 02/02/2026
+ms.date: 02/17/2026
 ms.subservice: hyperconverged
 ---
 
 # What's new in hyperconverged deployments of Azure Local?
 
 This article lists the features and improvements that are available in hyperconverged deployments of Azure Local (*formerly Azure Stack HCI*). The latest version of Azure Local solution focuses on cloud-based deployment and updates, cloud-based monitoring, a new and simplified experience for Azure Local virtual machine (VM) management, security, and more.
+
+::: moniker range="=azloc-2602"
+
+## Features and improvements in 2602
+
+The February 2026 release of hyperconverged deployments of Azure Local is version **12.2602.1007.7**. For more information, see [Release information summary](./release-information-23h2.md).
+
+This release includes various reliability improvements and other bug fixes.
+
+- **OS changes**:
+
+    - In 2602 release, all the new and existing deployments of Azure Local run the new OS version **26100.32370** (download from the Azure portal).
+
+    - You also need a driver that's compatible with OS version **26100.32370** or Windows Server 2025.
+
+    - For Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog), the OS is preinstalled. Work with your Original Equipment Manufacturer (OEM) to get a compatible OS image and a compatible driver.
+
+- **.NET updates**: This build uses .NET version **8.0.24** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
+
+
+::: moniker-end
 
 ::: moniker range="=azloc-2601"
 
@@ -123,7 +144,7 @@ There are two 2510 releases for October. Here are the details of each release:
 
 |Solution version  | OS version |
 |---------|---------|
-|12.2510.1002.529 |  26100.6899 |
+|12.2510.1002.531 |  26100.6899 |
 |11.2510.1002.93  | 25398.1913  |
 
 For more information, see [Release information summary](./release-information-23h2.md).
@@ -138,15 +159,15 @@ This release includes the following features and improvements:
 
         - Existing deployments of Azure Local continue to use OS version **25398.1913**. For more information, see [Release information summary](./release-information-23h2.md).
 
-    - If you purchased Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) through your preferred Microsoft hardware partner, the OS is preinstalled. Work with your Original Equipment Manufacturer (OEM) to get the OS image that's compatible with **12.2510.1002.529** and a driver that's compatible with OS version **26100.6899** or Windows Server 2025.
+    - If you purchased Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) through your preferred Microsoft hardware partner, the OS is preinstalled. Work with your Original Equipment Manufacturer (OEM) to get the OS image that's compatible with **12.2510.1002.531** and a driver that's compatible with OS version **26100.6899** or Windows Server 2025.
 
 - **.NET updates**: This build uses .NET version **8.0.21** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
     
 - **Azure Local rack aware clustering (Preview)**: Azure Local now supports rack aware clustering. This Preview feature allows you to define local availability zones based on physical racks in your datacenter, enhancing the resilience of your cluster against rack-level failures. For more information, see [Rack aware clustering](concepts/rack-aware-cluster-overview.md).
 
 - **Upgrade**: Starting with this release, solution upgrade from 11.2510 to 12.2510 is available to everyone and no longer requires you to opt in. The reliability of the upgrade orchestration is also improved.
-    - If you're already on 11.2510.1002.87, you can apply the OS upgrade to 12.2510.1002.529.
-    - If you aren't on 11.2510.1002.87, you can update to 11.2510.1002.93 first before applying the upgrade to 12.2510.1002.529.
+    - If you're already on 11.2510.1002.87, you can apply the OS upgrade to 12.2510.1002.531.
+    - If you aren't on 11.2510.1002.87, you can update to 11.2510.1002.93 first before applying the upgrade to 12.2510.1002.531.
 
 <!--- **Deployment**: Starting with this release, you can domain join your machines before deployment. If you choose to domain join machines before deployment, you must add the deployment user to the local Administrators group on each machine. For more information, see [Domain join before deployment](./deploy/deployment-install-os.md#domain-join-before-deployment).-->
 
@@ -234,7 +255,7 @@ This release includes the following features and improvements:
 ::: moniker-end
 
 
-::: moniker range="=azloc-2508"
+::: moniker range="=azloc-previous"
 
 ## Features and improvements in 2508
 
@@ -285,11 +306,6 @@ This release includes the following features and improvements:
     - **Azure Arc gateway documentation updates**: Improved guidance on registering with and without Azure Arc gateway and with and without proxy in an easy to use layout. For more information, see [Register with Azure Arc gateway](./deploy/deployment-with-azure-arc-gateway.md) and [Register with Azure Arc](./deploy/deployment-without-azure-arc-gateway.md).
     - **Upgrade documentation updates**: Clarified steps for upgrading from previous versions of Azure Local and an easy to use layout. For more information, see [Upgrade OS for Azure Local](./upgrade/upgrade-22h2-to-23h2-powershell.md).
     - **Azure Local security book**: This book was previously available as a *pdf* and is now available as web content on Learn. For more information, see [Azure Local security book](./security-book/overview.md).
-
-
-::: moniker-end
-
-::: moniker range="=azloc-previous"
 
 ## Features and improvements in 2507
 
