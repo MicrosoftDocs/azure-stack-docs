@@ -16,8 +16,6 @@ ai-usage: ai-assisted
 
 This article explains how to deploy an Azure Local node for deployment in disconnected environments. Prepare your environment to ensure a successful setup of your Azure Local instance using a local control plane. Complete these steps before setting up any Azure Local instances in your disconnected environment.
 
-[!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
-
 ## Prepare Azure Local machines  
 
 Prepare your Azure Local machines for disconnected operations by completing these steps to ensure proper setup and configuration. This process includes downloading the necessary ISO, configuring networking, and setting up certificates and environment variables.
