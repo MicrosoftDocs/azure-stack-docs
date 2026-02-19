@@ -83,8 +83,6 @@ This security update includes quality improvements. When you install this KB:
 
 - This update supports daylight saving time (DST) changes in Syria. To learn more, see [Interim guidance for Syria DST changes 2022](https://techcommunity.microsoft.com/t5/daylight-saving-time-time-zone/interim-guidance-for-syria-dst-changes-2022/ba-p/3911223).
 
-- This update changes the spelling of Ukraine's capital from Kiev to Kyiv.
-
 - This update addresses an issue that affects an Application Virtualization (App-V) environment. Copy operations within it stop working. This occurs after you install the April 2023 update.
 
 - This update addresses an issue that blocks external connections. This occurs when you set up a Kubernetes load balanced service and turn on session affinity.
