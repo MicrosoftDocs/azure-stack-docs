@@ -1,27 +1,25 @@
 ---
-title: Plan your network for Disconnected Operations on Azure Local (preview)
-description: Plan and integrate your network for disconnected operations on Azure Local (preview).
+title: Plan your network for Disconnected Operations on Azure Local
+description: Plan and integrate your network for disconnected operations on Azure Local.
 ms.topic: concept-article
 author: ronmiab
 ms.author: robess
-ms.date: 08/06/2025
+ms.date: 02/23/2026
 ai-usage: ai-assisted
 ms.subservice: hyperconverged
 ---
 
-# Plan your network for disconnected operations on Azure Local (preview) 
+# Plan your network for disconnected operations on Azure Local
 
-::: moniker range=">=azloc-2506"
+::: moniker range=">=azloc-2602"
 
-This article explains how to plan your network for disconnected operations on Azure Local. Learn key design considerations and requirements to ensure reliable integration and performance in a disconnected environment.
-
-[!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
+This article describes how to plan your network for disconnected operations on Azure Local. It covers key design considerations and requirements to help ensure reliable integration and performance in a disconnected environment.
 
 ## Understand network requirements
 
-Disconnected operations run on Azure Local, so it's necessary that you understand Azure Local's network requirements. Ensuring that your network meets these requirements is essential for seamless integration and optimal performance. For more detailed information, see [Physical network requirements for Azure Local](../concepts/physical-network-requirements.md).
+Disconnected operations run on Azure Local. Review Azure Local network requirements before you plan your deployment, ensuring that your network meets these requirements is essential for seamless integration and optimal performance. For more detailed information, see [Physical network requirements for Azure Local](../concepts/physical-network-requirements.md).
 
-Azure Local lets you set up the instance to fit your needs. Deploy the disconnected operations as a virtual machine (VM) appliance that integrates with the Azure Local network. This setup supports robust and reliable operations even when internet connectivity is intermittent or unavailable.
+Azure Local supports flexible network configurations. Deploy the disconnected operations as a virtual machine (VM) appliance that integrates with the Azure Local network. This setup supports robust and reliable operations even when internet connectivity is intermittent or unavailable.
 
 ## Network checklist
 
@@ -31,7 +29,7 @@ Use this checklist to plan your network for disconnected operations on Azure Loc
 
 - Check [System requirements for Azure Local](../concepts/system-requirements.md).
 
-- Develop the Azure Local network plan (Disconnected operations and Azure Local):
+- Develop the Azure Local network plan for disconnected operations:
   
   - Create the [host network plan (intents and switches)](../plan/cloud-deployment-network-considerations.md).
   
@@ -39,11 +37,11 @@ Use this checklist to plan your network for disconnected operations on Azure Loc
 
 - Set up the network for disconnected operations (ingress and management network):
 
-  - Assign an ingress IP within the management IP address pool subnet. Make sure it doesn't overlap with the range provided during deployment.
+  - Assign an ingress IP within the management IP address pool subnet. Make sure it doesn't overlap with the range IP used during deployment.
 
   - Check that the container network range doesn't conflict with the external network.
 
-- Make sure the domain name system (DNS) server is accessible for disconnected operations. Set it up during deployment to flow through the ingress vNIC/IP.
+- Make sure the Domain Name System (DNS) server is accessible for disconnected operations. Set it up during deployment to flow through the ingress vNIC/IP.
 
 - Check that the DNS server can resolve the endpoints for the ingress IP.
 
@@ -55,7 +53,7 @@ Use this checklist to plan your network for disconnected operations on Azure Loc
 
 ## Virtual network interface cards and network integration
 
-The disconnected operations VM appliance uses two different virtual network interface cards (vNICs) that plug into the network intent.
+The disconnected operations VM appliance uses two virtual network interface cards (vNICs) that connect to the network intent.
 
 These vNICs are:
 
@@ -72,7 +70,7 @@ Here's a high-level workflow for vNIC management and deployment:
 
 ## Plan your ingress IP  
 
-When you plan your ingress IP, make sure it's in the same subnet range as the cluster you configure later, but outside the reserved IP range. For example, if your cluster's subnet range is 192.168.1.0/24 and the reserved IP range is 192.168.1.1 - 192.168.1.10, choose an ingress IP like 192.168.1.11 or higher, so it doesn't overlap with the reserved range.
+When planning the ingress IP, make sure it's in the same subnet as the Azure Local instance, but outside the reserved IP range. For example, if your cluster's subnet range is 192.168.1.0/24 and the reserved IP range is 192.168.1.1 - 192.168.1.10, choose an ingress IP like 192.168.1.11 or higher, so it doesn't overlap with the reserved range.
 
 > [!NOTE]
 > Disconnected operations has a built-in container network range that can interfere with your existing network range. If you already use the range 10.131.19.0/24, isolate this range from your disconnected operations environment.
@@ -90,27 +88,40 @@ Use this checklist to plan your IP addresses for the disconnected operations app
   - Must be in the same subnet as the Azure Local instance, but outside the reserved range used for the instance deployment.
 
 - **Management IP**:
-  - Connects to management intent.
+  - Connects to the management intent.
   - Must be a valid, unused IP on the local network.
   - Must be reachable if you access lower management application programming interfaces (APIs) from outside the cluster.
 
+### Configure Virtual Local Area Networks for ingress or management networks
+
+If your ingress or management network (control plane appliance) requires a virtual local area network (VLAN), configure it as shown in the following example:
+
+```powershell
+# List network adapters
+Get-VMNetworkAdapter
+# Set the network adapter default vlan and to allow untagged.
+Set-VMNetworkAdapterIsolation -ManagementOS -VMNetworkAdapterName "vManagement(ManagementCompute)" -DefaultIsolationID 2259 -IsolationMode Vlan -AllowUntaggedTraffic $true
+
+```
+
 ### Plan DNS and public key infrastructure (PKI)  
 
-During deployment of disconnected operations, you need an FQDN for your appliance that resolves to the ingress IP. It's necessary to plan your DNS and PKI infrastructure before you deploy disconnected operations. Also, consider how you want to use them to serve clients in your environment.
+During deployment of disconnected operations, you need an FQDN for your appliance that resolves to the ingress IP. Plan your DNS and public key infrastructure (PKI) before deploying disconnected operations. Also, consider how you want to use them to serve clients in your environment.
 
-The ingress network has several endpoints based on the configured FQDN. These endpoints must be resolvable and secure in your network. For a list of endpoints, see [PKI for disconnected operations](../manage/disconnected-operations-pki.md#ingress-endpoints).
+The ingress network has several endpoints based on the configured FQDN. You must be able to resolve these endpoints and keep them secure in your network. For a list of endpoints, see [PKI for disconnected operations](../manage/disconnected-operations-pki.md#ingress-endpoints).
 
 > [!NOTE]
-> The wildcard endpoints serve as backing services where your users dynamically create services such as Azure Key Vault or Azure Container Registry. Your infrastructure needs to resolve a wildcard for these specific endpoints.
+> Wildcard endpoints support backing services that users create dynamically, such as Azure Key Vault or Azure Container Registry. Your infrastructure needs to resolve a wildcard for these specific endpoints.
 
 If you plan to connect the appliance to Azure, make sure your DNS infrastructure resolves the required Microsoft endpoints. Allow DNS requests from the disconnected operations appliance and make sure there's a network path from disconnected operations to the ingress network to reach the external endpoints.
 
 For more information, see [Firewall requirements for Azure Local](../concepts/firewall-requirements.md).
 
-### DNS Requirements
-You will need an explicit zone in your DNS for the FQDN dedicated for your disconnected operations environment. The FQDN cannot be on the same level as your domain controller.
+### DNS requirements
 
-#### Configure your DNS server (if you're running Windows Server DNS role):
+You need an explicit zone in your DNS for the FQDN dedicated to your disconnected operations environment. The FQDN can't be on the same level as your domain controller.
+
+#### Configure your DNS server (running Windows Server DNS role)
 
 Here's an example:
 
@@ -118,12 +129,13 @@ Here's an example:
 $externalFqdn = 'autonomous.cloud.private'
 $IngressIPAddress = '192.168.200.115'
 
-Add-DnsServerPrimaryZone -Name $ExternalFqdn -ReplicationScope Domain
+Add-DnsServerPrimaryZone -Name $externalFqdn -ReplicationScope Domain
 
-Add-DnsServerResourceRecordA -Name "*" -IPv4Address $IngressIpAddress -ZoneName $ExternalFqdn 
+Add-DnsServerResourceRecordA -Name "*" -IPv4Address $IngressIPAddress -ZoneName $externalFqdn 
 ```
+
 > [!NOTE]
-> You will need an explicit zone in your DNS for your disconnected operations environment. This cannot be on the same level as your domain controller. 
+> You need an explicit zone in your DNS for your disconnected operations environment. This zone can't be on the same level as your domain controller.
 
 #### Verify your DNS setup
 
@@ -142,28 +154,21 @@ Address:  192.168.200.115
 
 ## Run appliance with limited connectivity  
 
-Run the appliance in limited connectivity mode to make support easier and let logs and telemetry go directly to Microsoft without an export or import job. The disconnected appliance only needs to resolve a subset of these endpoints for observability and diagnostics.
+Run the appliance in limited connectivity mode to simplify support and allow system-generated logs to flow directly to Microsoft without requiring export or import jobs. The disconnected appliance only needs to resolve a subset of these endpoints for observability and diagnostics.
 
 In limited connectivity mode, the appliance resolves certain Microsoft endpoints for observability and diagnostics.
 
 Here are the endpoints that the appliance needs to resolve:
 
 | Observability and diagnostics | Endpoint |
-|-------------------------------|----------|
-|Geneva Observability Services | gcs.prod.monitoring.core.windows.net <br></br> *.prod.warm.ingest.monitor.core.windows.net  |
-| Azure Connected Machine Agent Managed Identity |  login.windows.net <br></br> login.microsoftonline.com <br></br> pas.windows.net <br></br> management.azure.com <br></br> *.his.arc.azure.com <br></br> *.guestconfiguration.azure.com |
-
-### Unsupported features  
-
-The following features aren't supported in this preview:
-
-- Configurable Virtual Local Area Network (VLAN) for disconnected operations ingress network that lets you add VLAN tags to ingress packets on a per-port basis.
-- Configurable VLAN for disconnected operations management network that lets you isolate management traffic from other network traffic, enhance security, and reduce interference.
+| ------------------------------- | ---------- |
+| Geneva Observability Services | gcs.prod.monitoring.core.windows.net <br></br> *.prod.warm.ingest.monitor.core.windows.net |
+| Azure Connected Machine Agent Managed Identity | login.windows.net <br></br> login.microsoftonline.com <br></br> pas.windows.net <br></br> management.azure.com <br></br> *.his.arc.azure.com <br></br> *.guestconfiguration.azure.com |
 
 ::: moniker-end
 
-::: moniker range="<=azloc-2505"
+::: moniker range="<=azloc-2601"
 
-This feature is available only in Azure Local 2506.
+This feature is available only in Azure Local 2602 or later.
 
 ::: moniker-end
