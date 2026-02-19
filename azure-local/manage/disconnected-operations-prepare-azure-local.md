@@ -4,8 +4,9 @@ description: Prepare your Azure Local environment for disconnected deployments. 
 ms.topic: how-to
 author: haraldfianbakken
 ms.author: hafianba
-ms.date: 01/05/2026
+ms.date: 02/23/2026
 ms.reviewer: robess
+ms.subservice: hyperconverged
 ai-usage: ai-assisted
 ---
 
@@ -13,7 +14,7 @@ ai-usage: ai-assisted
 
 ::: moniker range=">=azloc-2601"
 
-This article explains how to deploy an Azure Local node for deployment in disconnected environments. Prepare your environment to ensure a successful setup of your Azure Local instance using a local control plane. Complete these steps before setting up any Azure Local instance (s) in your disconnected environment.
+This article explains how to deploy an Azure Local node for deployment in disconnected environments. Prepare your environment to ensure a successful setup of your Azure Local instance using a local control plane. Complete these steps before setting up any Azure Local instances in your disconnected environment.
 
 [!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
 
@@ -85,6 +86,7 @@ Prepare your Azure Local machines for disconnected operations by completing thes
 1. On each node, copy the root certificate public key. For more information, see [PKI for disconnected operations](disconnected-operations-pki.md). Modify the paths according to the location and method you use to export your public key for creating certificates.  
 
     ```powershell
+    # Replace paths with your actual values.
     $applianceConfigBasePath = "C:\AzureLocalDisconnectedOperations\"
     $applianceRootCertFile = "C:\AzureLocalDisconnectedOperations\applianceRoot.cer"
     
@@ -117,19 +119,20 @@ Prepare your Azure Local machines for disconnected operations by completing thes
 
 1. [Setup Azure CLI on each node](../manage/disconnected-operations-cli.md). Ensure it works on each node before you deploy an Azure Local instance. Otherwise, the deployment fails.
 
-1. Find the first machine from the list of node names and specify it as the `seednode` you want to use in the cluster. If you are deploying the disconnected operations control plane - you will need to do this from the seednode.
+1. From the list of node names, select the first machine and designate it as the (seed node). The seed node is the first node used to deploy the disconnected operations control plane. Use the following command to designate the seed node.
 
     ```powershell
     $seednode = @('azlocal-1', 'azlocal-2','azlocal-3')|Sort|select –first 1
     $seednode
     ```
 
-### Time synchronization in fully disconnected (air-gapped) environments 
+### Time synchronization in fully disconnected (air-gapped) environments
 
-If your deployment does not allow any internet outbound traffic (fully air-gapped) -  follow these actions on each Azure Local node - as you will require to have a local timeserver for your nodes to synchronize time.
+For fully air‑gapped deployments with no outbound internet access, complete these actions on each Azure Local node and configure a local time server for time synchronization.
 
-On each node: 
-1. Configure the timeserver to use your domain controller. Modify the script and run it from PowerShell:
+On each node:
+
+1. Configure the time server to use your domain controller. Modify the script and run it from PowerShell:
 
   ```powershell
   w32tm /config /manualpeerlist:"dc.contoso.com" /syncfromflags:manual /reliable:yes /update
@@ -142,8 +145,8 @@ On each node:
 
 ::: moniker-end
 
-::: moniker range="<=azloc-2512"
+::: moniker range="<=azloc-2601"
 
-This feature is available only in Azure Local 2601
+This feature is available only in Azure Local 2602 or later.
 
 ::: moniker-end
