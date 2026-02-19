@@ -31,6 +31,10 @@ This release includes various reliability improvements and other bug fixes.
 
 - **.NET updates**: This build uses .NET version **8.0.24** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
 
+- **Enhanced update workflow from Azure portal**: The update workflow from the Azure portal now provides richer, more detailed information.
+
+- **End of Windows Server Subscription and ESU purchases for OS version 20349.xxxx (22H2)**: Customers running OS version 20349.xxxx (22H2) can no longer purchase Windows Server Subscription or Extended Security Updates (ESU).
+
 
 ::: moniker-end
 
