@@ -38,9 +38,20 @@ Multiple volumes from the SAN array can be presented as Cluster Shared Volumes (
 
 ## Supported configurations
 
+- **Fibre Channel (FC) based SAN connectivity**: Currently in preview.
+
 - **Dell PowerFlex**: Generally available.
 
-- **Fibre Channel (FC) based SAN connectivity**: Currently in preview.
+## Fibre Channel based SAN arrays
+
+Bring your Fibre Channel based SAN arrays from leading vendors and directly integrate them into Azure Local clusters for consistent management, high throughput, and low-latency I/O. Each Azure Local node connects to the SAN through dual Fibre Channel fabrics (Fabric A and Fabric B) for redundancy and performance. Host Bus Adapters (HBAs) installed on each host enable resilient, high-throughput connectivity to the external SAN.
+
+:::image type="content" source="media/external-storage-support-azure-local/fibre-channel-architecture-diagram.png" alt-text="Diagram that shows Fibre Channel SAN architecture with Azure Local hosts connected to external storage arrays via dual fabric paths." lightbox="media/external-storage-support-azure-local/fibre-channel-architecture-diagram.png":::
+
+Once connected, SAN-backed volumes are discovered and integrated as Cluster Shared Volumes (CSVs) formatted with NTFS, allowing shared access across nodes and seamless visibility for workloads. This configuration enables independent scaling of compute and storage while maintaining unified Azure management for both local and Arc-enabled services.
+
+> [!NOTE]
+> Fibre Channel support is currently available for nonproduction workloads through **limited preview program**. Customers interested in evaluating this capability should contact their Microsoft representative or their Storage vendor for participation in the preview.
 
 ## Dell PowerFlex solution integration
 
@@ -53,17 +64,6 @@ PowerFlex exposes **remote block volumes** to Azure Local nodes, which are mount
 Each Azure Local node installs the PowerFlex SDC driver, which facilitates efficient multipath communication over dual fabrics. Supported configurations scale from **4 to 512 PowerFlex nodes** and **3 to 16 Azure Local hosts**, ensuring enterprise-grade availability. PowerFlex deployments also employ non-routable dedicated SDS networks, jumbo-frame (MTU 9014) configurations, and NIC bonding/teaming to optimize throughput and failover.
 
 Together, Dell PowerFlex and Azure Local deliver an integrated, high-performance storage fabric that combines Azure operational simplicity with PowerFlex's software-defined resiliency and scale.
-
-## Fibre Channel based SAN arrays
-
-Bring your Fibre Channel based SAN arrays from leading vendors and directly integrate them into Azure Local clusters for consistent management, high throughput, and low-latency I/O. Each Azure Local node connects to the SAN through dual Fibre Channel fabrics (Fabric A and Fabric B) for redundancy and performance. Host Bus Adapters (HBAs) installed on each host enable resilient, high-throughput connectivity to the external SAN.
-
-:::image type="content" source="media/external-storage-support-azure-local/fibre-channel-architecture-diagram.png" alt-text="Diagram that shows Fibre Channel SAN architecture with Azure Local hosts connected to external storage arrays via dual fabric paths." lightbox="media/external-storage-support-azure-local/fibre-channel-architecture-diagram.png":::
-
-Once connected, SAN-backed volumes are discovered and integrated as Cluster Shared Volumes (CSVs) formatted with NTFS, allowing shared access across nodes and seamless visibility for workloads. This configuration enables independent scaling of compute and storage while maintaining unified Azure management for both local and Arc-enabled services.
-
-> [!NOTE]
-> Fibre Channel support is currently available for nonproduction workloads through **limited preview program**. Customers interested in evaluating this capability should contact their Microsoft representative or their Storage vendor for participation in the preview.
 
 ## Unsupported configurations
 
