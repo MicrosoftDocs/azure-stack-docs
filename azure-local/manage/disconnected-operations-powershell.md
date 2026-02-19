@@ -38,9 +38,9 @@ $DirectoryTenantId = "<Tenant ID>"
 #retrieve ALDO endpoints
 
 $armMetadataEndpoint = $AdminManagementEndPointUri.ToString().TrimEnd('/') + "/metadata/endpoints?api-version=2015-01-01"
-
+ 
 $endpoints = Invoke-RestMethod -Method Get -Uri $armMetadataEndpoint -ErrorAction Stop
-
+$adfsEnabled = ($endpoints.authentication.loginEndpoint.TrimEnd("/").EndsWith("/adfs",[System.StringComparison]::OrdinalIgnoreCase))
 $azEnvironment = Add-AzEnvironment `
 -Name $applianceCloudName `
 -ActiveDirectoryEndpoint ($endpoints.authentication.loginEndpoint.TrimEnd('/') + "/") `
@@ -52,7 +52,7 @@ $azEnvironment = Add-AzEnvironment `
 -AdTenant $DirectoryTenantId `
 -GraphEndpoint $endpoints.graphEndpoint `
 -GraphAudience $endpoints.graphEndpoint `
--EnableAdfsAuthentication=($endpoints.authentication.loginEndpoint.TrimEnd("/").EndsWith("/adfs",[System.StringComparison]::OrdinalIgnoreCase))
+-EnableAdfsAuthentication:$adfsEnabled
 ```
 
 ## List cloud endpoints
