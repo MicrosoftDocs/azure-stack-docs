@@ -3,10 +3,11 @@ title: Backup for Disconnected Operations for Azure Local
 description: Learn how to back up Azure Local environments running disconnected. Configure parameters and trigger backups.
 author: ronmiab
 ms.author: robess
-ms.date: 01/27/2026
+ms.date: 02/23/2026
 ms.topic: concept-article
 ms.service: azure-local
 ms.subservice: hyperconverged
+ai-usage: ai-assisted
 ---
 
 # Backup for disconnected operations for Azure Local
@@ -96,3 +97,10 @@ To trigger and monitor a backup, follow these steps:
 
     :::image type="content" source="media/disconnected-operations/back-up-restore/track-status-back-up-id.png" alt-text="Screenshot of the Wait-ApplianceBackupOperationComplete command output." lightbox=" ./media/disconnected-operations/back-up-restore/track-status-back-up-id.png":::
 
+::: moniker-end
+
+::: moniker range="<=azloc-2601"
+
+This feature is available only in Azure Local 2602 or later.
+
+::: moniker-end
