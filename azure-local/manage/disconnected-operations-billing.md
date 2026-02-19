@@ -4,8 +4,10 @@ description: Learn how disconnected operation for Azure Local is billed.
 author: ronmiab
 ms.author: robess
 ms.reviewer: lihou
-ms.date: 02/18/2026
+ms.date: 02/23/2026
 ms.topic: concept-article
+ms.subservice: hyperconverged
+ai-usage: ai-assisted
 ---
 
 # Billing for disconnected operations for Azure Local
@@ -56,12 +58,14 @@ To qualify for Azure Hybrid Benefit for Windows VMs on Azure Local with disconne
 
 ## Related content
 
-- [Pricing Overview—How Azure Pricing Works](https://azure.microsoft.com/pricing/).
+- [Pricing Overview—How Azure Pricing Works](https://azure.microsoft.com/pricing/)
 
-- [Azure Cost and Billing](/azure/cost-management-billing/cost-management-billing-overview).
+- [Azure Cost and Billing](/azure/cost-management-billing/cost-management-billing-overview)
 
 ::: moniker-end
 
 ::: moniker range="<=azloc-2601"
+
+This feature is available only in Azure Local 2602 or later.
 
 ::: moniker-end
