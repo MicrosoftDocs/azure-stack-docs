@@ -600,6 +600,8 @@ items:
           href: manage/health-service-actions.md
         - name: Modify Health Service settings
           href: manage/health-service-settings.md
+    - name: Drift detection
+      href: manage/drift-detection.md
 
   - name: Troubleshoot
     items:
