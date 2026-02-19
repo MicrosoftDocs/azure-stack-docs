@@ -1,29 +1,27 @@
 ---
-title: Use Azure PowerShell for Disconnected Operations on Azure Local (preview)
-description:  Learn how to use Azure PowerShell for disconnected operations on Azure Local (preview).
+title: Use Azure PowerShell for Disconnected Operations on Azure Local
+description:  Learn how to use Azure PowerShell for disconnected operations on Azure Local.
 ms.topic: how-to
 author: ronmiab
 ms.author: robess
-ms.date: 01/05/2026
+ms.date: 02/23/2023
 ms.reviewer: haraldfianbakken
 ai-usage: ai-assisted
 ---
 
 # Use Azure PowerShell for disconnected operations on Azure Local (preview)
 
-::: moniker range=">=azloc-2511"
+::: moniker range=">=azloc-2602"
 
 This article explains how to configure Azure PowerShell for disconnected operations on Azure Local.
 
-[!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
-
 ## About Azure PowerShell
 
-Azure PowerShell is a versatile, cross-platform set of PowerShell modules that you can use to create and manage Azure resources for Azure Local disconnected operations. For more information, see [What is Azure PowerShell](/powershell/azure/what-is-azure-powershell).
+Azure PowerShell is a versatile, cross-platform set of PowerShell modules that you can use to create and manage Azure resources for disconnected operations on Azure Local. For more information, see [What is Azure PowerShell](/powershell/azure/what-is-azure-powershell).
 
 ## Configure certificates for Azure PowerShell
 
-Before you begin, make sure your client computer trusts the public key used to secure the endpoints for your disconnected operations appliance. If you get an SSL warning when using your private cloud endpoint, you didn't trust the public key on the client.
+Before you begin, make sure your client computer trusts the public key used to secure the endpoints for your disconnected operations appliance. If you get a Secure Socket Layer (SSL) warning when using your private cloud endpoint, you didn't trust the public key on the client.
 
 ## Add a local private cloud
 
@@ -53,7 +51,7 @@ $azEnvironment = Add-AzEnvironment `
 -AdTenant $DirectoryTenantId `
 -GraphEndpoint $endpoints.graphEndpoint `
 -GraphAudience $endpoints.graphEndpoint `
--EnableAdfsAuthentication:($endpoints.authentication.loginEndpoint.TrimEnd("/").EndsWith("/adfs",[System.StringComparison]::OrdinalIgnoreCase)) 
+-EnableAdfsAuthentication=($endpoints.authentication.loginEndpoint.TrimEnd("/").EndsWith("/adfs",[System.StringComparison]::OrdinalIgnoreCase))
 ```
 
 ## List cloud endpoints
@@ -89,10 +87,11 @@ Connect-AzAccount -EnvironmentName $applianceCloudName -UseDeviceAuthentication
 To sign in to your private cloud using a service principal, run the following command:
 
 ```powershell
+# Replace client secret with your actual values.
 $applianceCloudName = "azure.local" 
 $clientSecret = "retracted"
 
-# Define service principal credentials
+# Define service principal credentials. Replace appId and TenantId with your actual values.
 $appId = "your-application-id"
 $TenantId = "your-tenant-id"
 $SecurePassword = $clientSecret|ConvertTo-SecureString  -AsPlainText -Force
@@ -116,9 +115,11 @@ Set-AzContext -SubscriptionId $subscription.Id
 
 ## Appendix
 
+A service principal name (SPN) is used to authenticate applications or automation scripts with Azure. Use the following commands to create an SPN for your automation tasks.
+
 ### Create an SPN for automation (with password)
 
-To create an SPN for automation using a password, run the following command:
+To create an SPN for automation by using a password, run the following command:
 
 ```powershell
 $sp = New-AzADServicePrincipal -DisplayName "MyAutomationSPN"
@@ -129,7 +130,7 @@ $sp.PasswordCredentials.SecretText
 
 ### Create an SPN for automation (with certificate)
 
-To create an SPN for automation using a certificate, run the following command:
+To create an SPN for automation that uses a certificate, run the following command:
 
 ```powershell
 $cert = [System.Convert]::ToBase64String((Get-Content "C:\path\cert.cer" -Encoding byte))
@@ -139,8 +140,8 @@ $sp = New-AzADServicePrincipal -DisplayName "CertAuthSPN" -CertValue $cert
 
 ::: moniker-end
 
-::: moniker range="<=azloc-2510"
+::: moniker range="<=azloc-2601"
 
-This feature is available only in Azure Local 2511 and newer.
+This feature is available only in Azure Local 2602 or later.
+
 ::: moniker-end
-
