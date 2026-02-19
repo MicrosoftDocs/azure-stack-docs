@@ -108,6 +108,7 @@ Here's the flow to deploy and manage Azure Local with disconnected operations:
 | Make sure you have the access and permissions you need to set up disconnected operations. | [Acquire disconnected operations](disconnected-operations-acquire.md) |
 | Prepare an Azure Local instance to support disconnected deployments. | [Prepare Azure Local for disconnected deployments](disconnected-operations-prepare-azure-local.md) |
 | Deploy the management cluster with the disconnected appliance. | [Deploy Azure Local with disconnected operations](disconnected-operations-deploy.md) |
+| Register after management cluster deployment. | [Register disconnected operations](disconnected-operations-registration.md) |
 
 ### Manage
 
