@@ -1,26 +1,24 @@
 ---
-title: Monitor Disconnected Operations in Azure Local (preview)
-description: Learn how to monitor disconnected operations in Azure Local to ensure system reliability and performance (preview).
+title: Monitor Disconnected Operations in Azure Local
+description: Learn how to monitor disconnected operations in Azure Local to ensure system reliability and performance.
 author: ronmiab
 ms.topic: concept-article
-ms.date: 10/16/2025
+ms.date: 02/23/2026
 ms.author: robess
 ms.reviewer: robess
-ai-usage: ai-assisted
 ms.subservice: hyperconverged
+ai-usage: ai-assisted
 ---
 
-# Monitor disconnected operations for Azure Local (preview)
+# Monitor disconnected operations for Azure Local
 
-::: moniker range=">=azloc-2506"
+::: moniker range=">=azloc-2602"
 
 This article explains how to monitor disconnected operations in Azure Local by integrating with external monitoring solutions. Learn how to use Microsoft, non-Microsoft, and open-source monitoring systems to ensure the reliability and performance of your infrastructure and workloads.
 
-For more information on disconnected operations, see [Disconnected operations for Azure Local (preview)](./disconnected-operations-overview.md).
-
 ## Why monitor disconnected operations?
 
-Monitoring is essential to keep your IT systems reliable, fast, and secure. When you continuously collect and analyze system-generated logs and metrics data — such as CPU usage, disk usage and utilization, memory consumption, network traffic, and error rates — you gain real-time visibility into the health of your environments, whether it's on-premises, in the cloud, or in a hybrid setup.
+Monitoring is essential to keep your IT systems reliable, fast, and secure. By continuously collecting and analyzing logs and metrics like CPU usage, disk utilization, memory consumption, network traffic, and error rates, you gain real-time insights. These insights help you monitor the health of your on-premises, cloud, or hybrid environments.
 
 You can store monitored data on-premises or in the cloud, depending on your monitoring solution. This flexibility lets you choose the best approach for your organization's needs.
 
@@ -84,17 +82,16 @@ Capabilities of the disconnected operations management pack include:
 
 - Health and metrics dashboards.
 
-- Preconfigured alert rules based on metrics for issue detection and operator action, including certificate expiration 
-warnings.
+- Preconfigured alert rules based on metrics for issue detection and operator action, including certificate expiration warnings.
 
 - Notification and reporting support.
 
 The following table lists the download and user guide for the System Center Management Pack. Select the download that supports your System Center Operations Manager installation.
 
-| System Center Operations Manager Version   | Management pack (MSI)      | Management pack guide   |
-|----------------|----------------------------|-------------------------|
-| System Center Operations Manager 2022      | [Microsoft System Center Management Pack for Azure Local with disconnected operations](https://aka.ms/disconnected-operations-scom-mp)  | [Guide](https://aka.ms/disconnected-operations-scom-docs)|
-| System Center Operations Manager 2025      | [Microsoft System Center Management Pack for Azure Local with disconnected operations](https://aka.ms/disconnected-operations-scom-mp-2025) | [Guide](https://aka.ms/disconnected-operations-scom-2025-docs) |
+| System Center Operations Manager Version | Management pack (MSI) | Management pack guide |
+| ---------------- | ---------------------------- | -------------------------|
+| System Center Operations Manager 2022 | [Microsoft System Center Management Pack for Azure Local with disconnected operations](https://aka.ms/disconnected-operations-scom-mp) | [Guide](https://aka.ms/disconnected-operations-scom-docs)|
+| System Center Operations Manager 2025   [Microsoft System Center Management Pack for Azure Local with disconnected operations](https://aka.ms/disconnected-operations-scom-mp-2025) | [Guide](https://aka.ms/disconnected-operations-scom-2025-docs) |
 
 For monitoring failover clusters, see [Monitoring Failover Cluster with Operations Manager](/system-center/scom/manage-monitor-clusters-overview).
 
@@ -120,8 +117,8 @@ Download these solutions from their repositories and install them on an AKS clus
 
 ::: moniker-end
 
-::: moniker range="<=azloc-2505"
+::: moniker range="<=azloc-2601"
 
-This feature is available only in Azure Local 2506.
+This feature is available only in Azure Local 2602 or later.
 
 ::: moniker-end

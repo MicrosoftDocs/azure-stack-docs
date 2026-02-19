@@ -1,21 +1,19 @@
 ---
-title: Plan your Identity for Disconnected Operations on Azure Local (preview)
-description: Plan and integrate your identity for disconnected operations on Azure Local (preview).
+title: Plan your Identity for Disconnected Operations on Azure Local
+description: Plan and integrate your identity on disconnected operations for Azure Local.
 ms.topic: concept-article
 author: ronmiab
 ms.author: robess
-ms.date: 10/16/2025
-ai-usage: ai-assisted
+ms.date: 02/23/2026
 ms.subservice: hyperconverged
+ai-usage: ai-assisted
 ---
 
-# Plan your identity for disconnected operations on Azure Local (preview)
+# Plan your identity for disconnected operations on Azure Local
 
-::: moniker range=">=azloc-2506"
+::: moniker range=">=azloc-2602"
 
 This article explains how to plan and integrate your identity for disconnected operations on Azure Local. Learn how to set up your identity solution, and understand the actions and roles available to operators.
-
-[!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
 
 ## Understand and plan identity
 
@@ -42,9 +40,11 @@ At a high level, the OpenID Connect (OIDC) endpoint authenticates users to disco
 
 ### Understand the operator role and actions  
 
-You can assign more operators to the operator subscription to let them perform day-to-day actions. The built-in **Owner** role on the operator subscription lets operators perform these actions on the scope: `/Subscriptions/\<GUID>/Microsoft.AzureLocalOperator/*`.  
+You can assign more operators to the operator subscription so they can perform day-to-day actions. The built-in **Owner** role on the operator subscription grants operators the ability to perform these actions on the scope: `/Subscriptions/\<GUID>/Microsoft.AzureLocalOperator/*`.  
 
-In this preview release, the following actions are available:
+To help you understand the operator role and the actions they can perform, the following tables provide a detailed breakdown of the available actions across different categories. These categories include identity and access management, subscription management, and observability and diagnostics. 
+
+Use these tables to identify the specific tasks operators can execute within the operator subscription scope.
 
 #### Identity and access management
 
@@ -88,10 +88,10 @@ There are a couple of exceptions to the actions available to operators:
 
 - Owners assigned to a service principal name (SPN) can also delete that SPN.
 
-In this preview release, only the actions provided are available in the Azure portal.
-
 > [!NOTE]
-> Other built-in roles such as *Security operator*, *Subscription manager*, and *Support operator* might be considered and evaluated post preview if needed. To achieve more detailed operator roles, you can create custom role definitions based on the operator role and assign access to the operator subscription.
+> Only the actions provided are available in the Azure portal.
+>
+> Other built-in roles such as *Security operator*, *Subscription manager*, and *Support operator* might be considered and evaluated, if needed. To achieve more detailed operator roles, you can create custom role definitions based on the operator role and assign access to the operator subscription.
 
 ### Understand synchronization  
 
@@ -112,19 +112,19 @@ Use this checklist to plan your identity integration with disconnected operation
 - Identify the root group for membership synchronization.  
 - Identify UPN. This user should be assigned the role of **Initial operator**.
 
-Collect and make available the following parameters before deployment: 
+Collect and make available the following parameters before deployment:
 
-| Parameter Name        | Description            | Example                 |  
-|-----------------------|------------------------|-------------------------|  
-| Authority    | An accessible authority URI that gives information about OIDC endpoints, metadata, and more. | `https://adfs.contoso-AzureLocal.com/adfs` |  
-| ClientID     | AppID created when setting up the adfsclient app.    | `00001111-aaaa-2222-bbbb-3333cccc4444`     |  
-| LdapCredential (Username and Password) | Credentials (read-only) for LDAP integration.       | Username: `ldap` <br></br> Password: ******       |  
-| LdapsCertChainInfo    | Certificate chain information for your LDAP endpoint. You can omit the certificate chain information for demo purposes. | [How to get the certificate chain](disconnected-operations-pki.md)  |
-| OidcCertChainInfo     | Certificate chain information for your OIDC endpoint. You can omit the certificate chain information for demo purposes. | [How to get the certificate chain](disconnected-operations-pki.md)  |
-| LdapServer       | LDAP endpoint that can be reached from disconnected operations. This endpoint synchronizes groups and group memberships. | `Ldap.local.contoso.com`    |  
-| LdapPort     | LDAP port that is used to connect to the global catalog. Default 3268 is non-secure channel, 3269 is ssl/secure channel for global catalog | 3269   | 
-| RootOperatorUserPrincipalName  |   UPN for the initial operator persona granted access to the Operator subscription | `Cloud-admin@local.contoso.com`   |
-| SyncGroupIdentifier    | GUID to Active Directory group to start syncing from. <br></br> `$group = Get-ADGroup -Identity “mygroup” \| Select-Object Name, ObjectGUID` | `81d71e5c5-abc4-11af-8132-afdf6bbe2ec1` |
+| Parameter Name | Description | Example |  
+| ----------------------- | ------------------------ | ------------------------- |  
+| Authority | An accessible authority URI that gives information about OIDC endpoints, metadata, and more. | `https://adfs.contoso-AzureLocal.com/adfs` |
+| ClientID | AppID created when setting up the adfsclient app. | `00001111-aaaa-2222-bbbb-3333cccc4444` |  
+| LdapCredential (Username and Password) | Credentials (read-only) for LDAP integration. | Username: `ldap` <br></br> Password: ****** |  
+| LdapsCertChainInfo | Certificate chain information for your LDAP endpoint. You can omit the certificate chain information for demo purposes. | [How to get the certificate chain](disconnected-operations-pki.md) |
+| OidcCertChainInfo | Certificate chain information for your OIDC endpoint. You can omit the certificate chain information for demo purposes. | [How to get the certificate chain](disconnected-operations-pki.md) |
+| LdapServer | LDAP endpoint that can be reached from disconnected operations. This endpoint synchronizes groups and group memberships. | `Ldap.local.contoso.com` |  
+| LdapPort | LDAP port that is used to connect to the global catalog. Default 3268 is a non-secure channel and 3269 is a ssl/secure channel for global catalog | 3269 |
+| RootOperatorUserPrincipalName | UPN for the initial operator persona granted access to the Operator subscription | `Cloud-admin@local.contoso.com` |
+| SyncGroupIdentifier | GUID to Active Directory group to start syncing from. <br></br> `$group = Get-ADGroup -Identity “mygroup” \| Select-Object Name, ObjectGUID` | `81d71e5c5-abc4-11af-8132-afdf6bbe2ec1` |
 
 Example configuration parameter:
 
@@ -151,8 +151,8 @@ Consider these limitations when you plan your identity integration with disconne
 - **No management groups or aggregate root level**: This feature isn't available for multiple subscriptions.
   
 - **Supported validations**: Only Active Directory/AD FS are validated for support.
-  - [Install Active Directory Domain Services (Level 100)](/windows-server/identity/ad-ds/deploy/install-active-directory-domain-services--level-100-)
-  - [Active Directory Federation Services Overview](/windows-server/identity/ad-fs/ad-fs-overview)
+  - [Install Active Directory Domain Services (Level 100)](/windows-server/identity/ad-ds/deploy/install-active-directory-domain-services--level-100-).
+  - [Active Directory Federation Services Overview](/windows-server/identity/ad-fs/ad-fs-overview).
 
 ## Mitigate issues with identity integration  
 
@@ -160,7 +160,7 @@ As a host admin, use the disconnected operations PowerShell cmdlet to update set
 
 - **Synchronization failed or didn't start**:  
   - Check that LDAP credentials are valid.
-  - Check that LDAP credentials have read access.
+  - Check that LDAP credentials have **read** access.
   - Check that disconnected operations can reach the LDAP server, resolve the FQDN (if not using an IP address), and that no firewalls block traffic.
 
 - **Wrong set of groups synchronized**:  
@@ -175,28 +175,27 @@ As a host admin, use the disconnected operations module and installation certifi
 
 ### Test identity configuration
 
-Use this command to quickly validate your identity configuration on the client side.
+Use this cmdlet to quickly validate your identity configuration on the client side.
 
 ```powershell
 $idpConfig = new-applianceIdentityConfiguration @identityParams
 
-Test-ApplianceExternalIDentityConfiguration -config $idpConfig
+Test-ApplianceExternalIdentityConfiguration -config $idpConfig
 ```
 
 ### Test identity configuration (deep validation)
 
-Use this command to validate your parameters and setup before you apply your configuration.
+Use this cmdlet to validate your parameters and setup before you apply your configuration.
 
 ```powershell
 $idpConfig = new-applianceIdentityConfiguration @identityParams
 
-Test-ApplianceExternalIDentityConfigurationDeep -config $idpConfig
+Test-ApplianceExternalIdentityConfigurationDeep -config $idpConfig
 ```
 
 ### Set or reset identity
 
-Use this command to reset the operator subscription. Only use this cmdlet if you have issues with your identity integration.
-
+Use this cmdlet to reset the operator subscription. Only use this cmdlet if you have problems with your identity integration.
 
 ```powershell
 Set-ApplianceExternalIdentityConfiguration
@@ -204,7 +203,7 @@ Set-ApplianceExternalIdentityConfiguration
 
 ### Identity management
 
-Use this command to list all cmdlets that help you set up and troubleshoot identity configurations.
+Use this cmdlet to list all cmdlets that help you set up and troubleshoot identity configurations.
 
 ```powershell
 Get-Command *Appliance*ExternalIdentity*
@@ -325,7 +324,7 @@ $accessRule = New-Object System.DirectoryServices.ActiveDirectoryAccessRule($ide
 $acl = Get-Acl -Path "AD:\CN=Users,$($domain.DistinguishedName)"
 $acl.AddAccessRule($accessRule)
 Set-ACL -Path "AD:\CN=Users,$($domain.DistinguishedName)" -AclObject $acl
-Write-Verbose "Granted 'GenericRead' permissions to ldap account."
+Write-Verbose "Granted 'GenericRead' permissions to LDAP account."
 ```
 
 ### Grant the GSMA account permission to read user properties
@@ -333,7 +332,7 @@ Write-Verbose "Granted 'GenericRead' permissions to ldap account."
 The following example shows how to let the GSMA account read user properties in Active Directory from the sync group.
 
 ```powershell
-# GropuName and GSMAccount defined earlier
+# GroupName and GSMAccount defined earlier
 
 # Get group details
 $Group = Get-ADGroup -Identity $GroupName
@@ -361,7 +360,7 @@ $GroupEntry.CommitChanges()
 
 To enable the IDPInitiated Signon test page, follow these steps:
 
-1. Enable the signon test page. Run this command:
+1. Enable the sign-in test page. Run this command:
 
    ```powershell
     Set-AdfsProperties -EnableIdpInitiatedSignonPage $true
@@ -373,12 +372,12 @@ To enable the IDPInitiated Signon test page, follow these steps:
 
    `https://adfs.MYFQDN/adfs/ls/IdpInitiatedSignon.aspx`
 
-1. Sign in with your operator account to confirm that ADFS functionality.  
+1. Sign in by using your operator account to confirm that ADFS functionality.  
 
 ::: moniker-end
 
-::: moniker range="<=azloc-2505"
+::: moniker range="<=azloc-2601"
 
-This feature is available only in Azure Local 2506.
+This feature is available only in Azure Local 2602 or later.
 
 ::: moniker-end
