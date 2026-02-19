@@ -378,7 +378,7 @@ _continue_ = "DNS=$dns"
 - [Plan hardware for Azure local with disconnected operations](disconnected-operations-overview.md#preview-participation-criteria)
 - [Plan and understand identity](disconnected-operations-identity.md)
 - [Plan and understand networking](disconnected-operations-network.md)
-- [Set up disconnected operations](disconnected-operations-set-up.md)
+- [Set up disconnected operations](disconnected-operations-acquire.md)
 
 ::: moniker-end
 

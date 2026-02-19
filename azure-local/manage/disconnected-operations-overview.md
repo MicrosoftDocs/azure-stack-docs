@@ -100,7 +100,7 @@ Here's the flow to deploy and manage Azure Local with disconnected operations:
 | Review [Security controls for disconnected operations](disconnected-operations-security.md). | Understand and configure security controls. |
 | Review [Public key infrastructure (PKI) integration for disconnected operations](disconnected-operations-pki.md). | Configure PKI and secure the endpoints. |
 | **Deploy** |       |
-| Review [Set up disconnected operations](disconnected-operations-set-up.md). | Make sure you have the access and permissions you need to set up disconnected operations. |
+| Review [Set up disconnected operations](disconnected-operations-acquire.md). | Make sure you have the access and permissions you need to set up disconnected operations. |
 | Review [Deploy Azure Local with disconnected operations](disconnected-operations-deploy.md). | Deploy Azure Local with disconnected operations. |
 | **Manage** |       |
 | Review [Azure CLI for disconnected operations](disconnected-operations-cli.md). | Use the CLI to manage Azure Local with disconnected operations. |
