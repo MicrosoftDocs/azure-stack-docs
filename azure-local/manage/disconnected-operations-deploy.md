@@ -393,8 +393,7 @@ Ensure you limit access to the operator subscription to only required personell.
 
 ## Register required resource providers
 
-Make sure you register the required resource providers before deployment. For more information see [Registration](/azure-local/includes/hci-registration-azure-prerequisites.md).
-
+Make sure you register the required resource providers before deployment. 
 
 Here's an example of how to automate the resource providers registration from Azure PowerShell.
 
