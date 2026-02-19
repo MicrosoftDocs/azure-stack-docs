@@ -5,13 +5,13 @@ ms.topic: concept-article
 author: ronmiab
 ms.author: robess
 ms.date: 02/23/2026
-ai-usage: ai-assisted
 ms.subservice: hyperconverged
+ai-usage: ai-assisted
 ---
 
 # Use Azure Policy in a disconnected Azure Local environment
 
-::: moniker range=">=azloc-2601"
+::: moniker range=">=azloc-2602"
 
 This article explains how to use Azure Policy in a disconnected Azure Local environment to enforce compliance and manage resources at scale. Azure Policy helps organizations meet standards by checking resource properties against business rules, even when disconnected from Azure cloud.
 
@@ -33,7 +33,7 @@ By using Azure Policy in a disconnected Azure Local environment, you:
 
 ## Prerequisites
 
-You need to:
+You must:
 
 - Have access to an Azure Local instance with disconnected operations for Azure Local deployed.
 - Review built-in policies.
@@ -51,13 +51,13 @@ You can use Azure Policy to enforce tags on various resources. In this example, 
 
     :::image type="content" source="media/disconnected-operations/azure-policy/policy-main.png" alt-text="Screenshot of the Assign policy page in Azure Local portal showing policy assignment options." lightbox="media/disconnected-operations/azure-policy/policy-main.png":::
 
-1. Under the **Authoring** section, select **Assignments**, and then select **+ Assign policy**.
+1. Under the **Authoring** section, select **Assignments**, then select **+ Assign policy**.
 
     :::image type="content" source="media/disconnected-operations/azure-policy/assign-policy.png" alt-text="Screenshot of the authoring and assignments page." lightbox="media/disconnected-operations/azure-policy/assign-policy.png":::
 
 1. Identify the **Scope**, **Policy definition**, and **Assignment name**.
 
-1. Set the **Policy enforcement** to **Enabled**.
+1. Toggle the **Policy enforcement** to **Enabled**.
 
 1. Select **Parameters** to proceed to the next step.
 
@@ -80,7 +80,7 @@ You can use Azure Policy to enforce tags on various resources. In this example, 
 The following table summarizes the built-in policies supported for Azure Local disconnected operations.
 
 | Policy name | Description | Azure documentation link |
-| -- | -- | -- |
+| - | -- | -- |
 | **Category: Tags** | | |
 | Add or replace a tag on resources. | - Adds or replaces the specified tag and value when any resource is created or updated.<br>- Existing resources can be remediated by triggering a remediation task.<br>- Doesn't modify tags on resource groups. | [Assign policy definitions for tag compliance](/azure/azure-resource-manager/management/tag-policies) |
 | Add or replace a tag on resource groups. | - Adds or replaces the specified tag and value when any resource group is created or updated.<br>- Existing resource groups can be remediated by triggering a remediation task. | [Assign policy definitions for tag compliance](/azure/azure-resource-manager/management/tag-policies) |
@@ -90,8 +90,8 @@ The following table summarizes the built-in policies supported for Azure Local d
 | Add a tag to subscriptions. | - Adds the specified tag and value to subscriptions via a remediation task.<br>- If the tag exists with a different value, it isn't changed. For more information, see [Azure Policy remediation](https://aka.ms/azurepolicyremediation). | [Assign policy definitions for tag compliance](/azure/azure-resource-manager/management/tag-policies) |
 | Inherit a tag from the resource group. | - Adds or replaces the specified tag and value from the parent resource group when any resource is created or updated.<br>- Existing resources can be remediated by triggering a remediation task. | [Assign policy definitions for tag compliance](/azure/azure-resource-manager/management/tag-policies) |
 | Inherit a tag from the subscription if missing. | - Adds the specified tag with its value from the containing subscription when any resource missing this tag is created or updated.<br>- Existing resources can be remediated by triggering a remediation task.<br>- If the tag exists with a different value, it isn't changed. | [Assign policy definitions for tag compliance](/azure/azure-resource-manager/management/tag-policies) |
-| Inherit a tag from the resource group if missing. | - Adds the specified tag and value from the resource group when any resource, which is missing this tag is created or updated.<br>- Existing resources can be remediated by triggering a remediation task.<br>- Existing resources can be remediated by triggering a remediation task.<br>- If the tag exists with a different value, it isn't changed. | [Assign policy definitions for tag compliance](/azure/azure-resource-manager/management/tag-policies) |
-| Append a tag and its value from the resource group. | - Appends the specified tag and value from the resource group when any resource, which is missing this tag is created or updated.<br>- Doesn't modify the tags of resources created before this policy was applied until those resources are changed.<br>- Doesn't modify the tags of resources created before this policy was applied until those resources are changed.<br>- New 'modify' effect policies are available that support remediation of tags on existing resources. For more information, see [Modify effect policies](https://aka.ms/modifydoc). | [Assign policy definitions for tag compliance](/azure/azure-resource-manager/management/tag-policies) |
+| Inherit a tag from the resource group if missing. | - Adds the specified tag and value from the resource group when any resource, which is missing this tag is created or updated.<br>- Existing resources can be remediated by triggering a remediation task.<br>- If the tag exists with a different value, it isn't changed. | [Assign policy definitions for tag compliance](/azure/azure-resource-manager/management/tag-policies) |
+| Append a tag and its value from the resource group. | - Appends the specified tag and value from the resource group when any resource, which is missing this tag is created or updated.<br>- Doesn't modify the tags of resources created before this policy was applied until those resources are changed.<br>- New 'modify' effect policies are available that support remediation of tags on existing resources. For more information, see [Modify effect policies](https://aka.ms/modifydoc). | [Assign policy definitions for tag compliance](/azure/azure-resource-manager/management/tag-policies) |
 | Append a tag and its value to resources. | - Appends the specified tag and value when any resource, which is missing this tag is created or updated.<br>- Doesn't modify the tags of resources created before this policy was applied until those resources are changed.<br>- Doesn't apply to resource groups.<br>- New 'modify' effect policies are available that support remediation of tags on existing resources (see https://aka.ms/modifydoc).| [Assign policy definitions for tag compliance](/azure/azure-resource-manager/management/tag-policies) |
 | Append a tag and its value to resource groups. | - Appends the specified tag and value when any resource group, which is missing this tag is created or updated.<br>- Doesn't modify the tags of resource groups created before this policy was applied until those resource groups are changed.<br>- New 'modify' effect policies are available that support remediation of tags on existing resources. For more information, see [Modify effect policies](https://aka.ms/modifydoc). | [Assign policy definitions for tag compliance](/azure/azure-resource-manager/management/tag-policies) |
 | Require a tag and its value on resources. | Enforces a required tag and its value on resource groups. | [Assign policy definitions for tag compliance](/azure/azure-resource-manager/management/tag-policies) |
@@ -112,12 +112,12 @@ The following table summarizes the built-in policies supported for Azure Local d
 
 ## Unsupported features
 
-Compliance dashboard, remediation actions, and policy exemptions aren't supported in this release.
+The compliance dashboard, remediation actions, and policy exemptions aren't supported.
 
 ::: moniker-end
 
 ::: moniker range="<=azloc-2601"
 
-This feature is available only in Azure Local 2602 or later.
+This feature is available only in Azure Local 2602.
 
 ::: moniker-end
