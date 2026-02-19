@@ -1967,7 +1967,7 @@
     },
     {
       "source_path": "azure-local/manage/disconnected-operations-set-up.md", 
-      "redirect_url": "azure-local/manage/disconnected-operations-acquire", 
+      "redirect_url": "/azure/azure-local/manage/disconnected-operations-acquire", 
       "redirect_document_id": false
     }
   ]
