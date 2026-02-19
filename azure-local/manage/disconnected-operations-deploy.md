@@ -427,14 +427,14 @@ Register-AzResourceProvider -ProviderNamespace "Microsoft.HybridContainerService
 
 Wait until all resource providers are in the state **Registered**.
 
-Here's a sample Azure PowerShell command to list all resource providers and their statuses.
+To list all resource providers and their statuses, run the following command.
 
 ```powershell  
 Get-AzResourceProvider | Format-Table
 ```
 
 > [!NOTE]
-> You can also register or view resource provider statuses in the local portal. To do this, go to your **Subscription**, click the dropdown arrow for **Settings**, and select **Resource providers**.
+> To register or view resource provider statuses in the local portal, go to your Subscription, expand Settings, and select Resource providers.
 
 ## Deploy Azure Local to form the management cluster
 
