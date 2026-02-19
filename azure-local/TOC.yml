@@ -886,7 +886,7 @@ items:
       href: manage/disconnected-operations-update.md
     - name: Back up disconnected operations
       href: manage/disconnected-operations-back-up-restore.md
-    - name: Billing for disconnected operations
+    - name: Billing
       href: manage/disconnected-operations-billing.md
 
   - name: Monitor
