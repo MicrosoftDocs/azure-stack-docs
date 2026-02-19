@@ -12,7 +12,7 @@ ai-usage: ai-assisted
 
 # Prepare Azure Local for disconnected deployments
 
-::: moniker range=">=azloc-2601"
+::: moniker range=">=azloc-2602"
 
 This article explains how to deploy an Azure Local node for deployment in disconnected environments. Prepare your environment to ensure a successful setup of your Azure Local instance using a local control plane. Complete these steps before setting up any Azure Local instances in your disconnected environment.
 
