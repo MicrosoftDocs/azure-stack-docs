@@ -15,8 +15,6 @@ ai-usage: ai-assisted
 
 This article explains how to register disconnected operations for Azure Local after deploying your management cluster with the control plane. Registration ensures compliance with Azure Local requirements.
 
-[!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
-
 ## Get the registration file
 
 To register disconnected operations for Azure Local, you first need to generate a registration file from your management cluster. This file contains the necessary data to complete the registration process. 
