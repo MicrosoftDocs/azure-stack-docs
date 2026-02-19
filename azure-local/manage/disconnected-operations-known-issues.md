@@ -6,7 +6,6 @@ ms.topic: concept-article
 ms.date: 02/23/2026
 ms.author: robess
 ms.reviewer: haraldfianbakken
-ms.subservice: hyperconverged
 ai-usage: ai-assisted
 ---
 
@@ -85,21 +84,6 @@ Perform the following steps on all nodes:
     ```powershell
    Unregister-ScheduledTask -TaskName HIMDSWatchdog
    ```
-
-### Cloud deployment fails to trigger cloud deployment
-
-Cloud deployment fails if the HciDeploymentUser domain account isn't used to trigger the deployment.
-
-**Mitigation:**
-
-Option 1: Create a domain user named HciDeploymentUser in your Active Directory. Use this account to trigger the cloud deployment.
-
-Option 2: If you prefer not to create this user:
-
-1. Trigger the deployment and allow it to fail at step 53.1.1, **ExecuteCopyAzCliConfig**.
-2. On each HCI node, manually create a directory named **HciDeploymentUser** in the `C:\Users folder`.
-3. Copy the config and clouds.config files from `C:\Users\<CustomerDomainAccountName>\.azure` to `C:\Users\HciDeploymentUser\.azure`.
-4. Resume the deployment from the Azure portal.
 
 ### Control plane deployment stuck and times out without completing
 
