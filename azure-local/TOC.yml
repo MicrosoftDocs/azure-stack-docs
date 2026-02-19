@@ -865,7 +865,7 @@ items:
     - name: Deploy disconnected operations
       href: manage/disconnected-operations-deploy.md
     - name: Register disconnected operations
-      href: manage/disconnected-operations-registration.md  
+      href: manage/disconnected-operations-registration.md 
   - name: Manage
     items:
     - name: Azure CLI
