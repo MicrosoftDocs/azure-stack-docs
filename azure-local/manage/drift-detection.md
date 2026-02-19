@@ -5,7 +5,7 @@ author: ronmiab
 ms.author: robess
 ms.reviewer: pradwivedi
 ms.subservice: hyperconverged
-ms.date: 02/18/2026
+ms.date: 02/19/2026
 ms.topic: overview
 ---
 
@@ -23,11 +23,7 @@ Drift detection helps you identify when components move away from an expected, v
 
 Azure Local uses a validated baseline (derived from the approved software bill of materials) as the source of truth and compares it against the component versions you installed on the system. Any deviation from this baseline is identified as a **drift**, indicating that a component no longer aligns with the supported configuration.
 
-Drift detection in Azure Local runs automatically by default as part of ongoing system validation. However, administrators can manually trigger validation by using the `Invoke-AzStackHciVSRDriftDetectionValidation` cmdlet to generate detailed drift reports for build components.
-
-Here's an example output of the `Invoke-AzStackHciVSRDriftDetectionValidation` cmdlet:
-
-:::image type="content" source="media/drift-detection/manual-validation.png" alt-text="Screenshot of a manual validation trigger using the Invoke-AzStackHciVSRDriftDetectionValidation cmdlet." lightbox="media/drift-detection/manual-validation.png":::
+Drift detection in Azure Local runs automatically by default as part of ongoing system validation. However, administrators can [manually trigger validation](#manual-drift-validation) by using the `Invoke-AzStackHciVSRDriftDetectionValidation` cmdlet to generate detailed drift reports for build components.
 
 ## When drift detection runs
 
@@ -52,6 +48,14 @@ The following table lists the components that drift detection validates and the 
 
 > [!NOTE]
 > Review drift findings before updates or node operations, and follow the recommended remediation guidance.
+
+## Manual validation
+
+To manually validate drift and generate a detailed report of configuration deviations, use the `Invoke-AzStackHciVSRDriftDetectionValidation` cmdlet.
+
+Here's an example output:
+
+:::image type="content" source="media/drift-detection/manual-validation.png" alt-text="Screenshot of a manual validation trigger using the Invoke-AzStackHciVSRDriftDetectionValidation cmdlet." lightbox="media/drift-detection/manual-validation.png":::
 
 ::: moniker-end
 
