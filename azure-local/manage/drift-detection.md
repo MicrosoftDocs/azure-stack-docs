@@ -7,6 +7,7 @@ ms.reviewer: pradwivedi
 ms.subservice: hyperconverged
 ms.date: 02/19/2026
 ms.topic: overview
+ai usage: ai-assisted
 ---
 
 # Drift detection for Azure Local
