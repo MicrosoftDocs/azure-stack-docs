@@ -66,7 +66,7 @@ Here's a high-level workflow for vNIC management and deployment:
 - Set an IP address for the vNICs during deployment.
 - Use the vNIC interfaces for bootstrapping, troubleshooting, operations, and regular use through the portal or CLI.
   
-:::image type="content" source="./media/disconnected-operations/network/disconnected-ops-dissaggregated-air-gapped.svg" alt-text="Screenshot of how the management cluster is deployed with disconnected operations in an airgapped mode." lightbox=" ./media/disconnected-operations/network/disconnected-ops-dissaggregated-air-gapped.svg":::
+:::image type="content" source="./media/disconnected-operations/network/disconnected-operations-dissaggregated-air-gapped.svg" alt-text="Screenshot of how the management cluster is deployed with disconnected operations in an airgapped mode." lightbox=" ./media/disconnected-operations/network/disconnected-operations-dissaggregated-air-gapped.svg":::
 
 ## Plan your ingress IP  
 
@@ -165,7 +165,7 @@ Here are the endpoints that the appliance needs to resolve:
 | Geneva Observability Services | gcs.prod.monitoring.core.windows.net <br></br> *.prod.warm.ingest.monitor.core.windows.net |
 | Azure Connected Machine Agent Managed Identity | login.windows.net <br></br> login.microsoftonline.com <br></br> pas.windows.net <br></br> management.azure.com <br></br> *.his.arc.azure.com <br></br> *.guestconfiguration.azure.com |
 
-:::image type="content" source="./media/disconnected-operations/network/disconnected-ops-dissaggregated-limited-connectivity.svg" alt-text="Screenshot of how the management cluster is deployed with disconnected operations in a limited connected mode." lightbox=" ./media/disconnected-operations/network/disconnected-ops-dissaggregated-limited-connectivity.svg":::
+:::image type="content" source="./media/disconnected-operations/network/disconnected-operations-dissaggregated-limited-connectivity.svg" alt-text="Screenshot of how the management cluster is deployed with disconnected operations in a limited connected mode." lightbox=" ./media/disconnected-operations/network/disconnected-operations-dissaggregated-limited-connectivity.svg":::
 ::: moniker-end
 
 ::: moniker range="<=azloc-2601"
