@@ -1,14 +1,25 @@
+---
+title: Rotate NAKS certificates in Azure Operator Nexus
+description: Learn how to monitor and rotate NAKS cluster certificates to prevent expiration-related outages in Azure Operator Nexus
+author: rickbartra91
+ms.author: rickbartra
+ms.service: azure-operator-nexus
+ms.topic: how-to
+ms.date: 02/20/2026
+ms.custom: template-how-to-pattern
+---
+
 # NAKS Certificate Expiration and Upgrade Requirements
 
 ## Overview
 
-Nexus Azure Kubernetes Service (NAKS) clusters rely on Transport Layer Security (TLS) certificates to secure communication between control plane components. These certificates have a validity period of **one year** from the time of cluster creation or last upgrade. If a NAKS cluster is not upgraded within this timeframe, the certificates will expire, resulting in a complete cluster outage.
+Nexus Azure Kubernetes Service (NAKS) clusters rely on Transport Layer Security (TLS) certificates to secure communication between control plane components. These certificates have a validity period of **one year** from the time of cluster creation or last upgrade. If a NAKS cluster isn't upgraded within this timeframe, the certificates will expire, resulting in a complete cluster outage.
 
 This document explains:
 - The impact of certificate expiration on your NAKS cluster
 - Why regular upgrades are critical for maintaining cluster health
 - How to monitor certificate expiration dates
-- Recovery procedures if certificates have already expired
+- Recovery procedures if certificates expire
 
 **Critical Takeaway:** Regular NAKS cluster upgrades (at least once per year) automatically refresh all certificates and prevent expiration-related outages.
 
@@ -29,8 +40,8 @@ These certificates are generated during cluster creation and are managed by the 
 
 All NAKS control plane certificates are valid for **365 days** (one year). After this period:
 - Certificates become invalid and are rejected during TLS handshakes
-- Components cannot establish secure connections
-- The cluster becomes non-functional
+- Components can't establish secure connections
+- The cluster becomes nonfunctional
 
 ### How Upgrades Refresh Certificates
 
@@ -49,26 +60,26 @@ When NAKS certificates expire, the cluster experiences cascading failures that r
 ### Failure Sequence
 
 1. **etcd peer communication fails**
-   - etcd nodes cannot validate each other's certificates
+   - etcd nodes can't validate each other's certificates
    - TLS handshakes fail with errors like: `x509: certificate has expired or is not yet valid`
    - Raft consensus protocol breaks down
 
 2. **etcd cluster becomes unhealthy**
-   - Without peer communication, etcd cannot maintain quorum
+   - Without peer communication, etcd can't maintain quorum
    - etcd members enter an unhealthy state
    - Data replication stops
-   - Eventually, etcd becomes completely inoperable
+   - Eventually, etcd becomes inoperable
 
 3. **kube-apiserver loses connectivity to etcd**
-   - kube-apiserver cannot authenticate to etcd using expired certificates
-   - API server cannot read or write cluster state
+   - kube-apiserver can't authenticate to etcd using expired certificates
+   - API server can't read or write cluster state
    - All Kubernetes API operations fail
 
 4. **Complete cluster outage**
    - `kubectl` commands fail
-   - Workloads continue running but cannot be managed or updated
-   - New pods cannot be scheduled
-   - Services cannot be created or modified
+   - Workloads continue running but can't be managed or updated
+   - New pods can't be scheduled
+   - Services can't be created or modified
    - The cluster is effectively frozen
 
 ### Example Error Messages
@@ -113,7 +124,7 @@ Beyond certificate renewal, regular upgrades provide:
 
 ### Why Skipping Upgrades Is Risky
 
-Clusters that are not upgraded for over one year face multiple risks:
+Clusters that aren't upgraded for over one year face multiple risks:
 - **Certificate expiration** leading to complete outage
 - **Unpatched security vulnerabilities** exposing the cluster to threats
 - **Accumulation of bugs** that could have been fixed
@@ -124,7 +135,7 @@ Clusters that are not upgraded for over one year face multiple risks:
 
 ### Checking Certificate Expiration Status
 
-To check when your NAKS control plane certificates will expire, SSH to a control plane node and run:
+To check when your NAKS control plane certificates expire, SSH to a control plane node and run:
 
 ```bash
 sudo kubeadm certs check-expiration
@@ -255,11 +266,11 @@ sudo mv /root/kube-scheduler.yaml /etc/kubernetes/manifests/
 sudo mv /root/etcd.yaml /etc/kubernetes/manifests/
 ```
 
-The kubelet will automatically detect the manifests and start new containers with the renewed certificates.
+Kubelet automatically detects the manifests and start new containers with the renewed certificates.
 
 #### Step 7: Verify Control Plane Components
 
-Wait 2-3 minutes for components to fully start, then verify they are running:
+Wait 2-3 minutes for components to fully start, then verify they're running:
 
 ```bash
 sudo crictl ps | grep -E 'kube-apiserver|etcd|kube-controller-manager|kube-scheduler'
@@ -269,7 +280,7 @@ You should see all four components running.
 
 #### Step 8: Repeat on Remaining Control Plane Nodes
 
-**Important:** Complete steps 1-7 on the next control plane node. Do not proceed to multiple nodes simultaneously. Wait for each node to fully recover before moving to the next.
+**Important:** Complete steps 1-7 on the next control plane node. Don't proceed to multiple nodes simultaneously. Wait for each node to fully recover before moving to the next.
 
 For clusters with three control plane nodes:
 1. Complete renewal on node 1 (done above)
