@@ -135,7 +135,7 @@ The following table describes the parameters that you define in the ARM template
 | hciResourceProviderObjectID | Object ID of the Azure Local Resource Provider. <br/> For more information, see [Get the object ID for Azure Local Resource Provider](#get-the-object-id-for-azure-local-resource-provider).|
 | arcNodeResourceIds | Array of resource IDs of the Azure Arc-enabled servers that are part of this Azure Local cluster. |
 | namingPrefix | Prefix used for all objects created for the Azure Local deployment. |
-| identityProvider | <Add description> |
+| identityProvider | <!--Add description--> |
 | securityLevel | Security configuration profile to be applied to the Azure Local cluster during deployment. The default is **Recommended**. |
 | driftControlEnforced | Drift control setting to reapply the security defaults regularly. <br/>For more information, see [Security features for Azure Local](../concepts/security-features.md). |
 | credentialGuardEnforced | Credential Guard setting that uses virtualization-based security to isolate secrets from credential-theft attacks. <br/> For more information, see [Manage security defaults for Azure Local](../manage/manage-secure-baseline.md).|
@@ -154,8 +154,8 @@ The following table describes the parameters that you define in the ARM template
 | endingIPAddress | The last IP address in a contiguous block of at least six static IP addresses on your management network's subnet, omitting addresses already used by the machines.<br/>These IPs are used by Azure Local and internal infrastructure (Arc Resource Bridge) that's required for Arc VM management and AKS Hybrid. |
 | dnsServers | List of DNS server IPs. |
 | useDhcp | Indicates whether to use Dynamic Host Configuration Protocol (DHCP) for hosts and cluster IPs. <br/>If not declared, the deployment will default to static IPs. If TRUE, gateway and DNS servers are not required. |
-| dnsServerConfig | <Add description> |
-| dnsZones | <Add description> |
+| dnsServerConfig | <!--Add description--> |
+| dnsZones | <!--Add description--> |
 | physicalNodesSettings | Array of physical nodes with their IP addresses. |
 | networkingType | Type of networking. For example, switchedMultiServerDeployment.<br/>For more information, see [Specify network settings](../deploy/deploy-via-portal.md#specify-network-settings). |
 | networkingPattern | Pattern used for networking. For example, hyperConverged. |
