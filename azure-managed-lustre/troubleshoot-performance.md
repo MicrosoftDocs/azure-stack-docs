@@ -21,7 +21,7 @@ In this article, you learn how to troubleshoot common issues that you might enco
 
 ## Best Practices
 
-To maintain optimal performance and security, keep Lustre clients updated. To benefit from the latest bug fixes and optimizations, use the latest Lustre client software from packages.microsoft.com. Refer to the AMLFS documentation for update instructions. If using integrated images (for example, HPC Images), update your VMs to the latest image for the most recent Lustre client.
+To maintain optimal performance and security, keep Lustre clients updated. To benefit from the latest bug fixes and optimizations, use the latest Lustre client software from packages.microsoft.com. Refer to the AMLFS documentation for update instructions. If using integrated images (for example, [HPC Images](/azure/virtual-machines/azure-hpc-vm-images)), update your VMs to the latest image for the most recent Lustre client.
 
 ## Symptom 1: Lower throughput, bandwidth, or higher latency than expected
 
@@ -56,4 +56,4 @@ Important References:
     - [Best Practices for unmounting with Spot VMs, VMSS, and other orchestrators](https://techcommunity.microsoft.com/blog/azurehighperformancecomputingblog/how-to-unmount-azure-managed-lustre-filesystem-using-azure-scheduled-events/3917814)
 - [Network Security Group configuration](configure-network-security-group.md)
 - [Use Azure Firewall with Azure Managed Lustre](configure-firewall.md)
-- [Maintenance Window documentation](/create-file-system-portal.md#maintenance-window)
+- [Maintenance Window documentation](create-file-system-portal.md#maintenance-window)

@@ -84,28 +84,6 @@ landingContent:
             url: vnet-encryption.md
           - text: Use Azure Firewall with Azure Managed Lustre
             url: configure-firewall.md
-  - title: Monitoring metrics and logs
-    linkLists:
-      - linkListType: how-to-guide
-        links:
-          - text: Monitor a file system
-            url: monitor-file-system.md
-          - text: Monitoring reference for metrics and logs
-            url: monitor-file-system-reference.md
-  - title: Availability and disaster recovery
-    linkLists:
-      - linkListType: how-to-guide
-        links:
-          - text: Recover from a regional outage
-            url: amlfs-region-recovery.md
-  - title: Troubleshooting
-    linkLists:
-      - linkListType: how-to-guide
-        links:
-          - text: Troubleshoot cluster deployment failures
-            url: troubleshoot-deployment.md
-          - text: Troubleshoot file system performance issues
-            url: troubleshoot-performance.md
   - title: Self-paced learning
     linkLists:
       - linkListType: learn
