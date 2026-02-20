@@ -1,5 +1,5 @@
 ---
-title: Plan your identity for disconnected operations on Azure Local
+title: Plan your Identity for Disconnected Operations on Azure Local
 description: Plan and integrate your identity on disconnected operations for Azure Local.
 ms.topic: concept-article
 author: ronmiab

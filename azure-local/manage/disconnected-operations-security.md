@@ -1,5 +1,5 @@
 ---
-title: Security controls with disconnected operations for Azure Local
+title: Security Controls with Disconnected Operations for Azure Local
 description: Learn about the security considerations and compliance regulations for disconnected operations for Azure Local.
 ms.topic: concept-article
 author: ronmiab
