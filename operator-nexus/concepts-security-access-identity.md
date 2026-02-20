@@ -112,7 +112,7 @@ including creating, modifying, and deleting resources related to Nexus infrastru
 ### Operator Nexus Keyset Administrator Role (Preview)
 
 Manage interactive access to Azure Operator Nexus Compute resources by adding, removing,
-and updating baremetal machine (BMM) and baseboard management (BMC) keysets.        |
+and updating bare-metal machine (BMM) and baseboard management (BMC) keysets.        |
 
 | Actions                                                        | Description                                                                                        |
 |----------------------------------------------------------------|----------------------------------------------------------------------------------------------------|

@@ -32,7 +32,7 @@ Cluster Manager supports the following VM SKUs:
 - Standard_D4_v2 (default)
 - Standard_D8s_v3
 
-Refer to [Azure Virtual Machine size overview](/azure/virtual-machines/sizes/overview) for each SKU requirements.
+Refer to [Azure Virtual Machine size overview](/azure/virtual-machines/sizes/overview) for each SKU requirement.
  
 Cluster Manager requires 3 VMs and is created using all 3 availability zones. A customer can switch to 2 availability zones if the selected SKU is not available in all zones. In that case, the 3 VMs will be redistributed across the provided zones.
  
