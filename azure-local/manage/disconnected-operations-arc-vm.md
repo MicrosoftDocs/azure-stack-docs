@@ -200,8 +200,9 @@ To manage VM extensions, see [Manage VM extensions](../manage/virtual-machine-ma
 
 ::: moniker-end
 
-::: moniker range="<=azloc-2601"
+::: moniker range="<=azloc-260"
 
 This feature is available only in Azure Local 2602 or later.
 
 ::: moniker-end
+
