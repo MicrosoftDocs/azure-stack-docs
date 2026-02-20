@@ -106,7 +106,7 @@ Redeploy the disconnected operations appliance. If the issue persists after 2–
 
 ### SSL/TLS error using management endpoint (OperationsModule)
 
-When you use a cmdlet that uses the management endpoint (for example, Get-ApplianceHealthState) you receive an error "threw and exception : The request was aborted: Could not create SSL/TLS secure channel.. Retrying"
+When you use a cmdlet that uses the management endpoint (for example, Get-ApplianceHealthState) you receive an error "threw and exception: The request was aborted: Could not create SSL/TLS secure channel.. Retrying"
 
 **Mitigation:**
 

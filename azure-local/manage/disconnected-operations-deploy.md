@@ -387,9 +387,9 @@ Connect-AzAccount -EnvironmentName $applianceCloudName -UseDeviceAuthentication
 
 We require deploying a fully dedicated management cluster. The recommended practice is to place your management cluster in the operator subscription. This will help you restrict and isolate the control plane from workloads and you can restrict workloads from being created on the same cluster as other tenants. 
 
-Keeping the control plane seperated from the workloads provides a clear seperation of concerns. 
+Keeping the control plane separated from the workloads provides a clear separation of concerns. 
 
-Ensure you limit access to the operator subscription to only required personell.
+Ensure you limit access to the operator subscription to only required personnel.
 
 ## Register required resource providers
 
