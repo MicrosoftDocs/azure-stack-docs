@@ -9,13 +9,15 @@ ms.reviewer: haraldfianbakken
 ai-usage: ai-assisted
 ---
 
-## Known issues for disconnected operations for Azure Local
+# Known issues in disconnected operations for Azure Local
 
 ::: moniker range=">=azloc-2602"
 
 This article identifies critical known issues and their workarounds in disconnected operations for Azure Local.
 
 These release notes are updated continuously to include critical issues and required workarounds. Review this information carefully before you deploy disconnected operations for Azure Local.
+
+## Known issues for version 2602
 
 ### Cloud deployment fails and transitions into a failed state
 
@@ -56,7 +58,7 @@ When you use a cmdlet that uses the management endpoint (for example, Get-Applia
 
 For 2511, do not use `Set-DisconnectedOperationsClientContext`. Instead use `$context = New-DisconnectedOperationsClientContext` and pass the `$context` to the respective cmdlets.
 
-### Arc bootstrap fails on node (Invoke-AzStackHCIArcInitialization) on Original Equipment Manufacturer (OEM) provided images 
+### Arc bootstrap fails on node (Invoke-AzStackHCIArcInitialization) on Original Equipment Manufacturer (OEM) provided images
 
 If you are running an OEM image, make sure that you are on the correct OS baseline.
 
