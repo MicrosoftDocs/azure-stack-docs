@@ -64,7 +64,7 @@ This article highlights what's new (features and improvements) and critical know
 
 ### Cloud deployment fails and transitions into a failed state
 
-In Azure Local 2602, a known issue in disconnected operations for Azure Local may cause HIMDS services to stop functioning due to IRVM services taking longer than expected to start. This timing issue can result in the cloud deployment transitioning to a failed state, often accompanied by unclear or non-descriptive error messages.
+In version 2602, a known issue in disconnected operations for Azure Local causes the Hybrid Instance Metadata Service (HIMDS) to stop functioning because the control plane services take longer than expected to start. This timing issue can result in failed deployments accompanied by unclear or non-descriptive error messages.
 
 **Workaround**:
 
