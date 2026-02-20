@@ -1,5 +1,5 @@
 ---
-title: Collect logs on-demand with disconnect operations for Azure Local
+title: Collect logs on-demand with disconnected operations for Azure Local
 description: Learn how to use the PowerShell module to collect logs on-demand with disconnected operations for Azure Local.
 ms.topic: how-to
 author: ronmiab
