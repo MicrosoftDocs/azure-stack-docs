@@ -884,6 +884,8 @@ items:
       href: manage/disconnected-operations-powershell.md
     - name: Update disconnected operations
       href: manage/disconnected-operations-update.md
+    - name: Back up disconnected operations
+      href: manage/disconnected-operations-back-up-restore.md
     - name: Billing
       href: manage/disconnected-operations-billing.md
 
