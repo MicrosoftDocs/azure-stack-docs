@@ -64,7 +64,7 @@ This article highlights what's new (features and improvements) and critical know
 
 ### Cloud deployment fails and transitions into a failed state
 
-In Azure Local 2601, a known issue in disconnected operations for Azure Local may cause HIMDS services to stop functioning due to IRVM services taking longer than expected to start. This timing issue can result in the cloud deployment transitioning to a failed state, often accompanied by unclear or non-descriptive error messages.
+In version 2602, a known issue in disconnected operations for Azure Local causes the Hybrid Instance Metadata Service (HIMDS) to stop functioning because the control plane services take longer than expected to start. This timing issue can result in failed deployments accompanied by unclear or non-descriptive error messages.
 
 **Workaround**:
 
@@ -84,6 +84,17 @@ Perform the following steps on all nodes:
     ```powershell
    Unregister-ScheduledTask -TaskName HIMDSWatchdog
    ```
+### Additional cluster deployments fails due Host Guardian certificates are not available
+When deploying additional Azure Local cluster after successfully deploying the dedicated management cluster, they fail.
+
+**Mitigation**:
+Copy the following certs from the first node of the management cluster and paste it in all Azure local nodes (workload clusters) at path C:\Users\Administrator\AppData\Roaming\AzureLocal\ 
+
+Make sure that the following files are present on each Azure Local node before you deploy a new workload cluster: 
+
+- C:\Users\Administrator\AppData\Roaming\AzureLocal\AzsVmHostGuardian-IRVM01-encryption.pfx
+- C:\Users\Administrator\AppData\Roaming\AzureLocal\AzsVmHostGuardian-IRVM01-signing.pfx
+
 
 ### Control plane deployment stuck and times out without completing
 
@@ -95,7 +106,7 @@ Redeploy the disconnected operations appliance. If the issue persists after 2–
 
 ### SSL/TLS error using management endpoint (OperationsModule)
 
-When you use a cmdlet that uses the management endpoint (for example, Get-ApplianceHealthState) you receive an error "threw and exception : The request was aborted: Could not create SSL/TLS secure channel.. Retrying"
+When you use a cmdlet that uses the management endpoint (for example, Get-ApplianceHealthState) you receive an error "threw and exception: The request was aborted: Could not create SSL/TLS secure channel.. Retrying"
 
 **Mitigation:**
 
@@ -190,7 +201,7 @@ Solution Builder extension (SBE) validation fails when trying to reach an *aka.m
 
 ### Cloud deployment (validation or deployment) gets stuck
 
-During the validate or cloud deployment flow, the first machine (seed node) restarts, which causes the control plane appliance to restart. Sometimes this process takes longer than expected, causing HIMDS to stop because it can't connect to the HIS endpoint. This issue can cause the deployment flow to stop responding.
+During the validate or cloud deployment flow, the first machine (seed node) restarts, which causes the control plane appliance to restart. Sometimes this process takes longer than expected, causing Hybrid Instance Metadata Service (HIMDS) to stop because it can't connect to the HIS endpoint. This issue can cause the deployment flow to stop responding.
 
 **Mitigation**:
 
