@@ -84,7 +84,7 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 After retrieving the Relay namespace resource ID, create a private endpoint in your subscription.
 
-### [Azure CLI](#tab/azure-cli)
+### Azure CLI
 
 ```azurecli-interactive
 az network private-endpoint create \
@@ -111,9 +111,7 @@ az network private-endpoint create \
 | `--manual-request`                 | Set to `true` because the Relay namespace is in a different subscription managed by Azure. |
 | `--subscription`                   | The subscription ID where the private endpoint will be created.                            |
 
-### [Azure Portal](#tab/portal)
-
-To create a private endpoint using the Azure portal:
+### Azure portal
 
 1. Navigate to **Private Link Center** > **Private endpoints**.
 1. Select **+ Create**.
@@ -124,8 +122,6 @@ To create a private endpoint using the Azure portal:
    - For **Target sub-resource**, enter `namespace`.
 1. On the **Virtual Network** tab, select the virtual network and subnet for the private endpoint.
 1. Complete the wizard and select **Create**.
-
----
 
 > [!IMPORTANT]
 > When creating the private endpoint, use `--manual-request true` (CLI) or specify connection by resource ID (portal) since the Relay namespace is in a different subscription managed by Azure.
