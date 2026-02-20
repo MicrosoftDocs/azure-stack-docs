@@ -522,7 +522,7 @@ Perform the following tasks after deploying Azure Local with disconnected operat
 
 1. [Export the host guardian service certificates](disconnected-operations-security.md) and back up the folder you export them to on an external share or drive.
 1. [Register the management cluster](disconnected-operations-registration.md)
-
+1. **Lock down the management cluster** - Prevent operators from creating workloads on the management cluster. Limit operator access to a few and use Azure Policy to prevent workloads on the cluster resource.
 > [!NOTE]
 > Do not skip these steps. Consider this as a deployment completion checklist. These steps are critical in order to be able to recover in case of disasters, receive support and to stay compliant.
 
