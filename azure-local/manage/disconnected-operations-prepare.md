@@ -43,19 +43,19 @@ Prepare your Azure Local machines for disconnected operations by completing thes
 
    - If your network plan groups all traffic (management, compute, and storage), create a virtual switch called `ConvergedSwitch(ManagementComputeStorage)` on each node.  
 
-    Here's an example:
+     Here's an example:
 
-    ```powershell
-    # Example
-    $networkIntentName = 'ManagementComputeStorage'
-    New-VMSwitch -Name "ConvergedSwitch($networkIntentName)" -NetAdapterName "ethernet","ethernet 2" -EnableEmbeddedTeaming $true -AllowManagementOS $true
+     ```powershell
+     # Example
+     $networkIntentName = 'ManagementComputeStorage'
+     New-VMSwitch -Name "ConvergedSwitch($networkIntentName)" -NetAdapterName "ethernet","ethernet 2" -EnableEmbeddedTeaming $true -AllowManagementOS $true
 
-    # Rename the VMNetworkAdapter for management. During creation, Hyper-V uses the vSwitch name for the virtual network adapter.
-    Rename-VmNetworkAdapter -ManagementOS -Name "ConvergedSwitch($networkIntentName)" -NewName "vManagement($networkIntentName)"
+     # Rename the VMNetworkAdapter for management. During creation, Hyper-V uses the vSwitch name for the virtual network adapter.
+     Rename-VmNetworkAdapter -ManagementOS -Name "ConvergedSwitch($networkIntentName)" -NewName "vManagement($networkIntentName)"
 
-    # Rename the NetAdapter. During creation, Hyper-V adds the string "vEthernet" to the beginning of the name.
-    Rename-NetAdapter -Name "vEthernet (ConvergedSwitch($networkIntentName))" -NewName "vManagement($networkIntentName)"
-    ```
+     # Rename the NetAdapter. During creation, Hyper-V adds the string "vEthernet" to the beginning of the name.
+     Rename-NetAdapter -Name "vEthernet (ConvergedSwitch($networkIntentName))" -NewName "vManagement($networkIntentName)"
+     ```
 
    - If you use VLANs, make sure you set the network adapter VLAN.
 
@@ -128,18 +128,16 @@ Prepare your Azure Local machines for disconnected operations by completing thes
 
 For fully air‑gapped deployments with no outbound internet access, complete these actions on each Azure Local node and configure a local time server for time synchronization.
 
-On each node:
+On each node, configure the time server to use your domain controller. Modify the script and run it from PowerShell:
 
-1. Configure the time server to use your domain controller. Modify the script and run it from PowerShell:
-
-  ```powershell
-  w32tm /config /manualpeerlist:"dc.contoso.com" /syncfromflags:manual /reliable:yes /update
-  net stop w32time
-  net start w32time
-  w32tm /resync /rediscover
-  # Check your NTP settings
-  w32tm /query /peers
-  ```
+```powershell
+w32tm /config /manualpeerlist:"dc.contoso.com" /syncfromflags:manual /reliable:yes /update
+net stop w32time
+net start w32time
+w32tm /resync /rediscover
+# Check your NTP settings
+w32tm /query /peers
+```
 
 ::: moniker-end
 
