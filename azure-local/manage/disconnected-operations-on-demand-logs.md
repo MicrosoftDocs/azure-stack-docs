@@ -1,21 +1,19 @@
 ---
-title: Collect Logs On-Demand with Azure Local Disconnected Operations (preview)
-description: Learn how to use the PowerShell module to collect logs on-demand for Azure Local disconnected operations (preview).
+title: Collect Logs On-Demand with Azure Local Disconnected Operations
+description: Learn how to use the PowerShell module to collect logs on-demand for Azure Local disconnected operations.
 ms.topic: how-to
 author: ronmiab
 ms.author: robess
-ms.date: 11/13/2025
+ms.date: 02/23/2026
 ai-usage: ai-assisted
 ms.subservice: hyperconverged
 ---
 
 # Collect logs on-demand with the Azure Local disconnected operations PowerShell module
 
-::: moniker range=">=azloc-2506"
+::: moniker range=">=azloc-2602"
 
 This article explains how to collect logs on-demand for Azure Local disconnected operations by using the PowerShell module. You learn how to provide logs for troubleshooting and support when Azure Local operates in disconnected mode.
-
-[!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
 
 ## Overview
 
@@ -28,7 +26,7 @@ Log collection helps you diagnose and troubleshoot issues in Azure Local disconn
 
 Before you set up observability for your Azure Local appliance, make sure you:
 
-- [Deploy Disconnected Operations for Azure Local (preview)](disconnected-operations-deploy.md)
+- [Deploy Disconnected Operations for Azure Local](disconnected-operations-deploy.md)
 - [Set up observability for diagnostics and support](#set-up-observability-for-diagnostics-and-support)
 - Have sufficient disk space for logs:
   - For typical log collection: At least 25 GB of free space.
@@ -58,8 +56,8 @@ To collect logs on-demand, follow these steps:
 
 The following on-demand scenarios are supported for log collection:
 
-| Scenario for log collection             | How to collect logs                    |
-|------------------------------------------|----------------------------------------|
+| Scenario for log collection | How to collect logs |
+| ------------------------------------------ | ---------------------------------------- |
 | [Use on-demand direct log collection](#azure-local-disconnected-when-the-appliance-vm-is-connected-to-azure) when an on-premises device with Azure Local disconnected operations connects to Azure and the management endpoint for disconnected operations is accessible. | To collect logs, run the `Invoke-ApplianceLogCollection` cmdlet. |
 | [Use on-demand indirect log collection](#azure-local-disconnected-when-the-appliance-vm-isnt-connected-to-azure) when an on-premises device using Azure Local disconnected operations can't connect to Azure but can still reach the management endpoint for disconnected operations. | Trigger log collection with the `Invoke-ApplianceLogCollectionAndSaveToShareFolder` cmdlet.<br></br> After you run the `Invoke-ApplianceLogCollectionAndSaveToShareFolder` cmdlet, use the `Send-DiagnosticData` cmdlet to upload the copied logs from the file share to Microsoft. |
 | [Use on-demand fallback log collection](./disconnected-operations-fallback.md) when the management endpoint for disconnected operations isn't accessible or the integrated runtime disconnected operations with Azure Local virtual machine (VM) is down. | Collect logs after you shut down the disconnected operations appliance VM, mount and unlock virtual hard disks (VHDs), and copy logs by using the `Copy-DiagnosticData` cmdlet from mounted VHDs into a local, user-defined location.<br></br> Use the `Send-DiagnosticData` cmdlet to manually send diagnostic data to Microsoft. For more information, see [Appliance fallback log collection for disconnected operations](./disconnected-operations-fallback.md). |
@@ -75,7 +73,7 @@ When the appliance VM is connected to Azure, you can upload host node logs the s
 
 The following diagram shows the key components for log collection in Azure Local disconnected when the appliance VM is connected to Azure:
 
-:::image type="content" source="./media/disconnected-operations/on-demand-logs/on-demand-components-2.png" alt-text="Diagram that shows the key components for on-demand log collection in Azure Local disconnected operations." lightbox=" ./media/disconnected-operations/on-demand-logs/on-demand-components-2.png":::
+:::image type="content" source="./media/disconnected-operations/on-demand-logs/on-demand-components-2.png" alt-text="Diagram that shows the key components for a connected host scenario in Azure Local disconnected operations." lightbox=" ./media/disconnected-operations/on-demand-logs/on-demand-components-2.png":::
 
 > [!NOTE]
 > For each deployment, the management IP address, management endpoint client certificate, and certificate password are different. Make sure you use the correct values for your deployment.
@@ -110,13 +108,14 @@ Before you collect logs in a connected disconnected scenario, make sure you:
     VERBOSE: See Readme.md for directions on how to use this module.
     ```
 
-1. Use [Deploy disconnected operations for Azure Local (Preview)](disconnected-operations-deploy.md) for your management endpoint.
+1. Use [Deploy disconnected operations for Azure Local](disconnected-operations-deploy.md) for your management endpoint.
 
     - Identify your management endpoint IP address.
     - Identify the management client certificate used to authenticate with the Azure Local disconnected operations management endpoint.
     - Set up the management endpoint client context. Run this script:
 
     ```PowerShell
+    # Replace with your actual values
     $certPasswordPlainText = "***"
     $certPassword = ConvertTo-SecureString $certPasswordPlainText -AsPlainText -Force
     $context = Set-DisconnectedOperationsClientContext -ManagementEndpointClientCertificatePath "<Management Endpoint Client Cert Path>" -ManagementEndpointClientCertificatePassword $certPassword -ManagementEndpointIpAddress "<Management Endpoint IP address>"
@@ -161,13 +160,19 @@ Before you collect logs in a connected disconnected scenario, make sure you:
     VERBOSE: [2025-11-13 18:34:37Z][Invoke-ApplianceLogCollection] Log collections trigger result: "d5cb5a24-7f35-4fdb-a0a5-f6dbab77a68c"
     ```
 
-1. Collect host node logs. On each Azure Local host node, run this command:
+1. Collect host node logs.
 
     ```PowerShell
-    Send-DiagnosticData -SaveToPath <shared folder path>
+    Invoke-AzureLocalDisconnectedLogCollection -FromDate (Get-Date).AddHours(-2) `
+    -ToDate (Get-Date) `
+    -AzureLocalNodeNames @("ALNode01", "ALNode02", "ALNode03") `
+    -AzureLocalNodeCredential (Get-Credential -UserName "Admin" -Message "Enter Azure Local node admin credentials") `
+    -SaveToPath "\\fileserver\logshare\AzureLocalLogs" `
+    -ShareCredential (Get-Credential -UserName "fileuser" -Message "Enter SMB share credentials")
+    -SkipAldoLogCollection
     ```
 
-    This command collects logs specific to the node, including system level and cluster level diagnostics. For more information, see [Send-DiagnosticData -SaveToPath](#send-diagnosticdata--savetopath-disconnected-mode).
+    This command collects host node logs, including system level and cluster level diagnostics. For more information, see [Invoke-AzureLocalDisconnectedLogCollection](#invoke-azurelocaldisconnectedlogcollection).
 
 1. Upload host node logs by using the **standalone observability tool** and running the `Send-AzStackHciDiagnosticData` command. To learn more about the `Send-AzStackHciDiagnosticData` command, see [Get support for Azure Local deployment issues](../manage/get-support-for-deployment-issues.md).
 
@@ -177,13 +182,14 @@ In disconnected Azure Local environments, you can collect logs from the control 
 
 The following diagram shows key components for log collection in Azure Local disconnected environments when the appliance VM isn't connected to Azure.
 
-:::image type="content" source="./media/disconnected-operations/on-demand-logs/on-demand-components.png" alt-text="Diagram that shows key components for on-demand log collection in Azure Local disconnected operations." lightbox=" ./media/disconnected-operations/on-demand-logs/on-demand-components.png":::
+:::image type="content" source="./media/disconnected-operations/on-demand-logs/on-demand-components.png" alt-text="Diagram that shows key components for a disconnected host scenario in Azure Local disconnected operations." lightbox=" ./media/disconnected-operations/on-demand-logs/on-demand-components.png":::
 
 Before you collect logs in a disconnected scenario, make sure you:
 
 1. Install the operations module if it's not installed. Use the `Import-Module` cmdlet and change the path to match your folder structure.
 
     ```PowerShell
+    # Replace with your actual values
     Import-Module "<disconnected operations module folder path>\Azure.Local.DisconnectedOperations.psd1" -Force
     ```
 
@@ -207,13 +213,14 @@ Before you collect logs in a disconnected scenario, make sure you:
     VERBOSE: See Readme.md for directions on how to use this module.
     ```
 
-1. Use [Deploy disconnected operations for Azure Local (Preview)](disconnected-operations-deploy.md) for your management endpoint.
+1. Use [Deploy disconnected operations for Azure Local](disconnected-operations-deploy.md) for your management endpoint.
 
     - Identify your management endpoint IP address.
     - Identify the management client certificate used to authenticate with the Azure Local disconnected operations management endpoint.
     - Set up the management endpoint client context. Run this script:
 
     ```PowerShell
+    # Replace with your actual values
     $certPasswordPlainText = "***"
     $certPassword = ConvertTo-SecureString $certPasswordPlainText -AsPlainText -Force
     $context = Set-DisconnectedOperationsClientContext -ManagementEndpointClientCertificatePath "<Management Endpoint Client Cert Path>" -ManagementEndpointClientCertificatePassword $certPassword -ManagementEndpointIpAddress "<Management Endpoint IP address>"
@@ -228,6 +235,7 @@ Before you collect logs in a disconnected scenario, make sure you:
 1. Set up credentials for the share. Replace the placeholder text `<share-name>` and `<path-to-share>` with your own values, then run this command:
 
     ```PowerShell
+    # Replace with your actual values
     $user = "<username>"
     $pass = "<password>"
     $sec=ConvertTo-SecureString -String $pass -AsPlainText -Force
@@ -245,6 +253,7 @@ Before you collect logs in a disconnected scenario, make sure you:
     Example:
 
     ```PowerShell
+    # Replace with your actual values
     $fromDate = (Get-Date).AddMinutes(-30)
     $toDate = (Get-Date)
     $operationId = Invoke-ApplianceLogCollectionAndSaveToShareFolder -FromDate $fromDate -ToDate $toDate `
@@ -273,13 +282,18 @@ Before you collect logs in a disconnected scenario, make sure you:
     UserPassword <Password>
     ```
 
-1. Collect host node logs. On each Azure Local host node, run this command:
+1. Collect host node and VM appliance logs.
 
     ```PowerShell
-    Send-DiagnosticData -SaveToPath <shared folder path>
+    Invoke-AzureLocalDisconnectedLogCollection -FromDate (Get-Date).AddHours(-2) `
+    -ToDate (Get-Date) `
+    -AzureLocalNodeNames @("ALNode01", "ALNode02", "ALNode03") `
+    -AzureLocalNodeCredential (Get-Credential -UserName "Admin" -Message "Enter Azure Local node admin credentials") `
+    -SaveToPath "\\fileserver\logshare\AzureLocalLogs" `
+    -ShareCredential (Get-Credential -UserName "fileuser" -Message "Enter SMB share credentials")
     ```
 
-    This command collects logs specific to the node, including system level and cluster level diagnostics. For more information, see [Send-DiagnosticData -SaveToPath](#send-diagnosticdata--savetopath-disconnected-mode).
+    This command collects host node and the VM appliance logs, including system level and cluster level diagnostics. For more information, see [Invoke-AzureLocalDisconnectedLogCollection](#invoke-azurelocaldisconnectedlogcollection).
 
 1. Upload logs by using the **standalone observability tool**.
 
@@ -315,14 +329,14 @@ When the management endpoint is unavailable or the appliance VM is offline:
 
 For more information on fallback collection, see [Appliance fallback log collection for disconnected operations](disconnected-operations-fallback.md).
 
-### Send-DiagnosticData -SaveToPath (disconnected mode)
+### Invoke-AzureLocalDisconnectedLogCollection
 
-The `Send-DiagnosticData -SaveToPath` cmdlet works in disconnected mode, and is the only supported option to copy logs from Azure Local host nodes. This cmdlet provides detailed diagnostic data to help you troubleshoot issues and is available when the [telemetry and diagnostics extension](../concepts/telemetry-and-diagnostics-overview.md) is installed.
+When your VM appliance is connected, this command collects all logs from the host node. When disconnected, it collects logs from both the host node and VM appliance.
 
 This cmdlet:
 
 - Is available when the [telemetry and diagnostics extension](../concepts/telemetry-and-diagnostics-overview.md) is installed.
-- Provides detailed diagnostic data to help you troubleshoot issues.
+- Provides detailed diagnostics data to help you troubleshoot issues.
 
 Capabilities:
 
@@ -330,6 +344,7 @@ Capabilities:
 - Filters logs by role, date range, or log type.
 - Runs only on the node where you execute the command, and bypasses observability agents.
 - Saves logs locally only when you use the `-SaveToPath` parameter.
+- Uses the `SkipAldoLogCollection` parameter to collect logs only from Azure Local host nodes and skip the disconnected operations appliance (control plane).
 - Supports secure credentials to save logs to a network share.
 
 ### Send-DiagnosticData
@@ -530,8 +545,8 @@ These features are unsupported in disconnected mode.
 
 ::: moniker-end
 
-::: moniker range="<=azloc-2505"
+::: moniker range="<=azloc-2601"
 
-This feature is available only in Azure Local 2506.
+This feature is available only in Azure Local 2602 or later.
 
 ::: moniker-end

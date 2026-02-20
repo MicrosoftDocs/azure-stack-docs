@@ -1,21 +1,19 @@
 ---
-title: Security controls with disconnected operations on Azure Local (preview)
-description: Learn about the security considerations and compliance regulations for disconnected operations on Azure Local (preview).
+title: Security controls with disconnected operations on Azure Local
+description: Learn about the security considerations and compliance regulations for disconnected operations on Azure Local.
 ms.topic: concept-article
 author: ronmiab
 ms.author: robess
-ms.date: 08/06/2025
-ai-usage: ai-assisted
+ms.date: 02/23/2026
 ms.subservice: hyperconverged
+ai-usage: ai-assisted
 ---
 
-# Security considerations for Azure Local with disconnected operations (preview)
+# Security considerations for Azure Local with disconnected operations
 
-::: moniker range=">=azloc-2506"
+::: moniker range=">=azloc-2602"
 
 This article explains the security considerations and compliance regulations for disconnected operations with Azure Local VMs enabled by Azure Arc. Learn how to protect your environment and meet regulatory standards when running Azure Local VMs disconnected.
-
-[!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
 
 ## Security and compliance overview
 
@@ -35,7 +33,7 @@ For more information about the security features for Azure Local, see [Security 
 
 ## Data at rest encryption
 
-By default, data volumes in the Azure Local disconnected operations VM appliance are encrypted with BitLocker using AES-XTS256 bit encryption. BitLocker recovery passwords (key protectors) stay in an internal secure secret store.
+By default, the Azure Local disconnected operations VM appliance encrypts data volumes by using BitLocker with AES-XTS256 bit encryption. BitLocker recovery passwords (key protectors) stay in an internal secure secret store.
 
 ### BitLocker recovery key retrieval
 
@@ -85,8 +83,6 @@ Manually unlock the virtual hard drive or virtual storage disk by using BitLocke
 
 ## Export Host Guardian Service certificates
 
-This procedure isn't supported in the preview release.
-
 To back up Host Guardian Service certificates from your cluster, run these commands from your seed node:
 
 1. Set the context. The command requires a `DisconnectedOperationsClientContext` object as a parameter.
@@ -116,70 +112,17 @@ For details about setting up syslog forwarding for the Azure Local host, see [Ma
 
 The following table provides the parameters for the REST endpoint:
 
-| Parameter                   | Description                                                                 | Type   | Required |  
-|-----------------------------|-----------------------------------------------------------------------------|--------|----------|  
-| **ClientCertificateThumbprint** | Thumbprint of the client certificate used to communicate with syslog server. | String | No       |  
-| **Enabled**                 | Enables or disables the syslog agent in the Azure Local disconnected VM appliance. When disabled, the syslog forwarder configuration is removed and the syslog forwarder stops. | Flag   | Yes      |  
-| **NoEncryption**            | Sends syslog messages in clear text.                     | Flag   | No       |  
-| **OutputSeverity**          | Sets the output logging level. Use **Default** for warning, critical, or error messages. Use **Verbose** for all severity levels, including verbose, informational, warning, critical, or error. | String | No       |  
-| **ServerName**              | FQDN or IP address of the syslog server.                                    | String | No       |  
-| **ServerPort**              | Port number used by the syslog server.                              | UInt16 | No       |  
-| **SkipServerCertificateCheck** | Skips validation of the syslog server certificate during the initial TLS handshake. | Flag   | No       |  
-| **SkipServerCNCheck**       | Skips validation of the Common Name value in the syslog server certificate during the initial TLS handshake. | Flag   | No       |  
-| **UseUDP**                  | Uses UDP as the transport protocol for syslog.                                  | Flag   | No       |  
-<!--| **ClientCertPfxInBase64**   | Base64-encoded client certificate's public and private keys in `.pfx` format used to communicate with syslog server. | String | No       |  
-| **ClientCertPfxPassword**   | Password to use when installing the client certificate passed in `ClientCertPfxInBase64`. | String | No       |
-| **RootCertInBase64**        | Base64-encoded root certificate's public key for the Syslog server in `.cer` format. | String | No       |-->
-
-<!--### Syslog forwarding with TCP, mutual authentication, and TLS encryption
-
-In this configuration, the syslog client in Azure Local forwards messages to the syslog server over TCP with TLS encryption. During the initial handshake, the client verifies that the server provides a valid, trusted certificate. The client also provides a certificate to the server as proof of its identity.
-
-This configuration is the most secure because it fully validates the identities of both the client and the server, and it transmits messages over an encrypted channel.
-
-> [!IMPORTANT]
-> Microsoft recommends that you use this configuration for production environments.
-
-To configure syslog forwarder with TCP, mutual authentication, and TLS encryption, configure the server and provide a certificate to the client to authenticate against the server.
-
-Run the following cmdlet against a physical host:
-
-```powershell
-# Base64-encode the root certificate.
-$filename = "<full path to root certificate>"  
-$fileContentInBytes = [System.IO.File]::ReadAllBytes($filename)  
-$rootCertInBase64 = [System.Convert]::ToBase64String($fileContentInBytes)  
-   
-# Base64-encode the client certificate and provide its password.
-$filename = "<full path to client certificate>"  
-$fileContentInBytes = [System.IO.File]::ReadAllBytes($filename)  
-$clientCertPfxInBase64 = [System.Convert]::ToBase64String($fileContentInBytes)  
-$clientCertPfxPassword = "%Password%"  
-   
-# Configure syslog forwarder parameters.
-$configRequestContent = @{  
-    Enabled = $true  
-    ServerName = "<FQDN or IP address of syslog server>"  
-    ServerPort = "<port number of the syslog server, e.g., 514>"  
-    RootCertInBase64 = $rootCertInBase64 # Needed when using self-signed root cert  
-    ClientCertPfxInBase64 = $clientCertPfxInBase64  
-    ClientCertPfxPassword = $clientCertPfxPassword  
-}
-   
-# Update syslog forwarder configuration.
-$IRVMIP = "<Azure Local VM management endpoint IP address>"  
-$syslogConfigurationEndpoint = "http://$IRVMIP`:8320/SyslogConfiguration"  
-$requestContent = $configRequestContent | ConvertTo-Json  
-   
-try {
-  Invoke-RestMethod -Uri $syslogConfigurationEndpoint -Method Put -Body $requestContent -ContentType "application/json" -Verbose  
-}catch {
-  $_.Exception
-}
-```
-
-> [!IMPORTANT]
-> The client certificate must contain a private key. If the client certificate is signed using a self-signed root certificate, you must import the root certificate as well.-->
+| Parameter | Description | Type | Required |  
+| ----- | ---- | -------- | ---------- |  
+| **ClientCertificateThumbprint** | Thumbprint of the client certificate used to communicate with syslog server. | String | No |  
+| **Enabled** | Enables or disables the syslog agent in the Azure Local disconnected VM appliance. When disabled, the syslog forwarder configuration is removed and the syslog forwarder stops. | Flag | Yes |  
+| **NoEncryption** | Sends syslog messages in clear text. | Flag | No |  
+| **OutputSeverity** | Sets the output logging level. Use **Default** for warning, critical, or error messages. Use **Verbose** for all severity levels, including verbose, informational, warning, critical, or error. | String | No |  
+| **ServerName** | FQDN or IP address of the syslog server. | String | No |  
+| **ServerPort** | Port number used by the syslog server. | UInt16 | No |  
+| **SkipServerCertificateCheck** | Skips validation of the syslog server certificate during the initial TLS handshake. | Flag | No |  
+| **SkipServerCNCheck** | Skips validation of the Common Name value in the syslog server certificate during the initial TLS handshake. | Flag | No |
+| **UseUDP** | Uses UDP as the transport protocol for syslog. | Flag | No |  
 
 ### Configure syslog forwarding with TCP, server authentication, and TLS encryption
 
@@ -235,11 +178,11 @@ $configRequestContent = @{
 > [!IMPORTANT]
 > To protect against man-in-the-middle attacks and eavesdropping, use TCP with authentication and encryption in production environments. The handshake between endpoints determines the TLS version, and both TLS 1.2 and TLS 1.3 are supported by default.
 
-### Configure syslog forwarding with UDP and no encryption
+### Configure syslog forwarding by using UDP and no encryption
 
 In this configuration, the syslog client in Azure Local forwards messages to the syslog server over UDP with no encryption. The client doesn't verify the server's identity or provide its own identity for verification. Don't use this configuration in production environments.
 
-To enable syslog forwarding with UDP and no encryption, prepare a configuration request in PowerShell with the following values:
+To enable syslog forwarding by using UDP and no encryption, prepare a configuration request in PowerShell with the following values:
 
 ```powershell
 $configRequestContent = @{
@@ -307,7 +250,7 @@ This section describes the syslog message schema and event definitions.
 
 ### Syslog message schema
 
-The syslog forwarder in Azure Local infrastructure sends messages formatted by using the Berkeley Software Distribution (BSD) syslog protocol defined in RFC3164. The syslog message payload uses the Common Event Format (CEF).
+The syslog forwarder in Azure Local infrastructure sends messages formatted by using the Berkeley Software Distribution (BSD) syslog protocol defined in RFC 3164. The syslog message payload uses the Common Event Format (CEF).
 
 Each syslog message uses this schema:
 
@@ -315,7 +258,7 @@ Each syslog message uses this schema:
 
 The PRI part has two values: *facility* and *severity*. Both values depend on the message type, such as Windows Event.
 
-### Common event format payload schema/definitions
+### Common event format payload schema and definitions
 
 The CEF payload uses the following structure. Field mapping varies depending on the message type, such as Windows Event.
 
@@ -338,7 +281,7 @@ All Windows events use the PRI facility value of 10.
 #### Severity of Windows events
 
 | PRI severity value | CEF severity value | Windows event level | MasLevel value (in extension) |
-|--------------------|--------------------|---------------------|-------------------------------|
+| ------------------ | ------------------ | ------------------- | ----------------------------- |
 | 7                  | 0                  | Undefined           | Value: 0. Indicates logs at all levels. |
 | 2                  | 10                 | Critical            | Value: 1. Indicates logs for a critical alert. |
 | 3                  | 8                  | Error               | Value: 2. Indicates logs for an error. |
@@ -376,10 +319,10 @@ All Windows events use the PRI facility value of 10.
 
 ### Miscellaneous events
 
-This section lists miscellaneous events that are forwarded. You can't customize these events.
+This section lists miscellaneous events that the solution forwards. You can't customize these events.
 
 | Event type | Event query |
-|------------|-------------|
+| ------------ | ------------- |
 | Wireless Lan 802.1x authentication events with Peer MAC address | `query="Security!*[System[(EventID=5632)]]"` |
 | New service (4697) | `query="Security!*[System[(EventID=4697)]]"` |
 | TS session reconnect (4778), TS session disconnect (4779) | `query="Security!*[System[(EventID=4778 or EventID=4779)]]"` |
@@ -435,8 +378,8 @@ This section lists miscellaneous events that are forwarded. You can't customize 
 
 ::: moniker-end
 
-::: moniker range="<=azloc-2505"
+::: moniker range="<=azloc-2601"
 
-This feature is available only in Azure Local 2506.
+This feature is available only in Azure Local 2602 or later.
 
 ::: moniker-end
