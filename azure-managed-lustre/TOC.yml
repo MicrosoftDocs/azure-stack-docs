@@ -58,19 +58,3 @@
       href: vnet-encryption.md
     - name: Use Azure Firewall with Azure Managed Lustre
       href: configure-firewall.md
-- name: Monitoring metrics and logs
-  items:
-    - name: Monitor a file system
-      href: monitor-file-system.md
-    - name: Monitoring reference for metrics and logs
-      href: monitor-file-system-reference.md
-- name: Availability and disaster recovery
-  items:
-  - name: Recover from a regional outage
-    href: amlfs-region-recovery.md
-- name: Troubleshooting
-  items:
-    - name: Troubleshoot cluster deployment failures
-      href: troubleshoot-deployment.md
-    - name: Troubleshoot cluster performance failures
-      href: troubleshoot-performance.md
