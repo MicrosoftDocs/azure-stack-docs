@@ -1,5 +1,5 @@
 ---
-title: Microsoft 365 Local on Azure Local infrastructure
+title: Overview of Microsoft 365 Local on Azure Local Infrastructure
 description: Learn how Microsoft 365 Local enables private cloud productivity with Exchange, SharePoint, and Skype for Business on customer-managed Azure Local infrastructure.
 author: alkohli
 ms.topic: concept-article
@@ -17,16 +17,16 @@ This article provides an overview of Microsoft 365 Local on Azure Local infrastr
 
 Microsoft 365 Local enables organizations to run Exchange Server, SharePoint Server, and Skype for Business Server on Azure Local infrastructure that is entirely customer-owned and managed. By using Microsoft 365 Local, organizations gain enhanced control over data residency, access, and compliance, helping them meet their sovereignty requirements.
 
-Designed for organizations that need productivity tools in a private cloud environment, Microsoft 365 Local provides an Azure‑consistent management experience with a unified control plane. It simplifies deployment and streamlines updates for easy infrastructure management, supporting both hybrid and fully disconnected deployments.
+Designed for organizations that need productivity tools in a private cloud environment, Microsoft 365 Local provides an Azure-consistent management experience with a unified control plane. It simplifies deployment and streamlines updates for easy infrastructure management, supporting both hybrid and fully disconnected deployments.
 
-The solution includes a validated reference architecture with certified hardware, along with a hardened security baseline, and robust controls to protect your infrastructure. <!--can we link out to the security baseline for Microsoft 365 Local?-->
+The solution includes a validated reference architecture with certified hardware, along with a hardened security baseline, and robust controls to protect your infrastructure.
 
 ## Why use Microsoft 365 Local?
 
 Organizations choose Microsoft 365 Local for several key reasons:
 
 - Gain the agility and simplicity of cloud management within your own data center by implementing a sovereign private cloud with Azure-consistent management.
-- Plan and deploy with confidence through a Microsoft-authorized partner, reducing risk and accelerating time to value.
+- Plan and deploy with confidence through a Microsoft-authorized partner, reducing risk, and accelerating time to value.
 - Choose between seamless integration with cloud services or a fully disconnected environment based on your sovereignty requirements.
 - Keep sensitive workloads and data entirely on-premises to meet the strictest jurisdictional and sovereignty mandates.
 
@@ -46,7 +46,7 @@ Organizations choose Microsoft 365 Local for several key reasons:
 
 This section outlines an example for a large-scale deployment of Microsoft 365 Local in connected mode. This deployment supports enterprise environments and is optimized for performance and resiliency. Alternative configurations and hardware specifications are available to support different scales and requirements, including small-scale and mid-scale deployments. The overall architecture of Microsoft 365 Local is tailored to each customer’s needs. Customers should work with their authorized Microsoft partner to appropriately size and design their deployment.
 
-Microsoft 365 Local must be deployed on an Azure Local Premier Solution that meets the hardware requirements for Microsoft 365 Local. Supported solutions can be found in the [Azure Local Solutions catalog](https://aka.ms/azurelocalcatalog).
+You must deploy Microsoft 365 Local on an Azure Local Premier Solution that meets the hardware requirements for Microsoft 365 Local. You can find supported solutions in the [Azure Local Solutions catalog](https://aka.ms/azurelocalcatalog).
 
 ### Server role allocation
 
@@ -62,7 +62,7 @@ The reference architectures also include prescriptive guidance for networking an
 
 ## Microsoft 365 Local deployment
 
-A Microsoft 365 Local solution partner certified by Microsoft must deploy Microsoft 365 Local. To ensure correct configuration and support throughout the product lifecycle, we recommend that customers work with a certified partner.
+You must deploy Microsoft 365 Local through a Microsoft 365 Local solution partner certified by Microsoft. To ensure correct configuration and support throughout the product lifecycle, work with a certified partner.
 
 A typical engagement with a solution partner involves the following phases:
 
@@ -72,5 +72,8 @@ A typical engagement with a solution partner involves the following phases:
 | **Planning** | Define appropriate hardware configurations and specifications, as well as software solutions, including migration and integration strategies aligned with business needs. |
 | **Acquisition** | Procure necessary hardware, software, and licenses. |
 | **Deployment** | Execute the planned rollout in accordance with best practices. |
+
+
+## Get started with Microsoft 365 Local
 
 Microsoft 365 Local is now generally available. For information about authorized partners, contact your Microsoft account team or visit [Microsoft 365 Local General Availability Sign-Up](https://aka.ms/m365localsignup).
