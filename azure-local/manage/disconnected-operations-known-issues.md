@@ -64,7 +64,7 @@ This article highlights what's new (features and improvements) and critical know
 
 ### Cloud deployment fails and transitions into a failed state
 
-In Azure Local 2601 and 2602, a known issue in disconnected operations for Azure Local may cause HIMDS services to stop functioning due to IRVM services taking longer than expected to start. This timing issue can result in the cloud deployment transitioning to a failed state, often accompanied by unclear or non-descriptive error messages.
+In Azure Local 2602, a known issue in disconnected operations for Azure Local may cause HIMDS services to stop functioning due to IRVM services taking longer than expected to start. This timing issue can result in the cloud deployment transitioning to a failed state, often accompanied by unclear or non-descriptive error messages.
 
 **Workaround**:
 
@@ -84,16 +84,17 @@ Perform the following steps on all nodes:
     ```powershell
    Unregister-ScheduledTask -TaskName HIMDSWatchdog
    ```
-### Cluster 2 .. n deployments fails due HostGuardian certs not available
+### Additional cluster deployments fails due Host Guardian certificates are not available
 When deploying additional Azure Local cluster after successfully deploying the dedicated management cluster, they fail.
 
 **Mitigation**:
-Copy the below certs from Management cluster Seed node and paste it in all Azure local nodes (workload clusters) at path C:\Users\Administrator\AppData\Roaming\AzureLocal\ 
+Copy the following certs from the first node of the management cluster and paste it in all Azure local nodes (workload clusters) at path C:\Users\Administrator\AppData\Roaming\AzureLocal\ 
 
-You should have the following files present on each node before cloud deployment:
+Make sure that the following files are present on each Azure Local node before you deploy a new workload cluster: 
 
 - C:\Users\Administrator\AppData\Roaming\AzureLocal\AzsVmHostGuardian-IRVM01-encryption.pfx
 - C:\Users\Administrator\AppData\Roaming\AzureLocal\AzsVmHostGuardian-IRVM01-signing.pfx
+
 
 ### Control plane deployment stuck and times out without completing
 
@@ -200,7 +201,7 @@ Solution Builder extension (SBE) validation fails when trying to reach an *aka.m
 
 ### Cloud deployment (validation or deployment) gets stuck
 
-During the validate or cloud deployment flow, the first machine (seed node) restarts, which causes the control plane appliance to restart. Sometimes this process takes longer than expected, causing HIMDS to stop because it can't connect to the HIS endpoint. This issue can cause the deployment flow to stop responding.
+During the validate or cloud deployment flow, the first machine (seed node) restarts, which causes the control plane appliance to restart. Sometimes this process takes longer than expected, causing Hybrid Instance Metadata Service (HIMDS) to stop because it can't connect to the HIS endpoint. This issue can cause the deployment flow to stop responding.
 
 **Mitigation**:
 
