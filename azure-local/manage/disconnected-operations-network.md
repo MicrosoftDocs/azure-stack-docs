@@ -1,5 +1,5 @@
 ---
-title: Plan your network for Disconnected Operations on Azure Local
+title: Plan Your Network for Disconnected Operations on Azure Local
 description: Plan and integrate your network for disconnected operations on Azure Local.
 ms.topic: concept-article
 author: ronmiab
@@ -164,6 +164,12 @@ Here are the endpoints that the appliance needs to resolve:
 | ------------------------------- | ---------- |
 | Geneva Observability Services | gcs.prod.monitoring.core.windows.net <br></br> *.prod.warm.ingest.monitor.core.windows.net |
 | Azure Connected Machine Agent Managed Identity | login.windows.net <br></br> login.microsoftonline.com <br></br> pas.windows.net <br></br> management.azure.com <br></br> *.his.arc.azure.com <br></br> *.guestconfiguration.azure.com |
+
+## Related content
+
+- [Plan your identity for disconnected operations on Azure Local](./disconnected-operations-identity.md).
+- [Security considerations for Azure Local with disconnected operations](./disconnected-operations-security.md).
+- [Public key infrastructure (PKI) for disconnected operations on Azure Local](./disconnected-operations-pki.md).
 
 ::: moniker-end
 

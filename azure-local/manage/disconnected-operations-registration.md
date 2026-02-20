@@ -1,5 +1,5 @@
 ---
-title: Register disconnected operations for Azure Local
+title: Register Disconnected Operations for Azure Local
 description: Learn how to register disconnected operations for Azure Local to ensure compliance with deployment requirements.
 ms.topic: how-to
 author: haraldfianbakken
@@ -59,6 +59,11 @@ To finalize the registration process for disconnected operations, follow these s
 1. Select the **Register** button, and then upload the registration file.
 1. Confirm the registration details and select **Register**.
 1. After the operation completes, the **Registration status** changes to **Registered**.
+
+## Related content
+
+- [About updates for disconnected operations](./disconnected-operations-update.md).
+- [Backup for disconnected operations for Azure Local](./disconnected-operations-back-up-restore.md).
 
 ::: moniker-end
 

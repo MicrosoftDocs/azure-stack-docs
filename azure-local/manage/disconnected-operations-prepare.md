@@ -1,5 +1,5 @@
 ---
-title: Prepare Azure Local for disconnected deployments 
+title: Prepare Azure Local for Disconnected Deployments 
 description: Prepare your Azure Local environment for disconnected deployments. Learn how to set up nodes, configure networking, and ensure deployment readiness.
 ms.topic: how-to
 author: haraldfianbakken
@@ -124,7 +124,7 @@ Prepare your Azure Local machines for disconnected operations by completing thes
     $seednode
     ```
 
-### Time synchronization in fully disconnected (air-gapped) environments
+## Time synchronization in fully disconnected (air-gapped) environments
 
 For fully air‑gapped deployments with no outbound internet access, complete these actions on each Azure Local node and configure a local time server for time synchronization.
 
@@ -138,6 +138,10 @@ w32tm /resync /rediscover
 # Check your NTP settings
 w32tm /query /peers
 ```
+
+## Next steps
+
+- [Deploy disconnected operations for Azure Local and the management cluster](./disconnected-operations-deploy.md).
 
 ::: moniker-end
 

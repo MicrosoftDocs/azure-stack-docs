@@ -1,5 +1,5 @@
 ---
-title: Use Azure Policy in a disconnected Azure Local environment
+title: Use Azure Policy in a Disconnected Azure Local Environment
 description: Learn how to use Azure Policy to enforce compliance and manage resources in a disconnected Azure Local environment.
 ms.topic: concept-article
 author: ronmiab

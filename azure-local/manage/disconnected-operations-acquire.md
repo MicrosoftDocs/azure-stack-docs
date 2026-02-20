@@ -125,7 +125,7 @@ Make sure you have the ISO available to install on your Azure Local nodes.
 
 ## Related content
 
-- [Deploy disconnected operations for Azure Local](disconnected-operations-deploy.md)
+- [Deploy disconnected operations for Azure Local](disconnected-operations-deploy.md).
 
 ::: moniker-end
 
