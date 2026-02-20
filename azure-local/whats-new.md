@@ -17,7 +17,7 @@ This article lists the features and improvements that are available in hyperconv
 
 ## Features and improvements in 2602
 
-The February 2026 release of hyperconverged deployments of Azure Local is version **12.2602.1007.7**. For more information, see [Release information summary](./release-information-23h2.md).
+The February 2026 release of hyperconverged deployments of Azure Local is version **12.2602.1002.7**. For more information, see [Release information summary](./release-information-23h2.md).
 
 This release includes various reliability improvements and other bug fixes.
 
@@ -30,6 +30,10 @@ This release includes various reliability improvements and other bug fixes.
     - For Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog), the OS is preinstalled. Work with your Original Equipment Manufacturer (OEM) to get a compatible OS image and a compatible driver.
 
 - **.NET updates**: This build uses .NET version **8.0.24** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
+
+- **Enhanced update workflow from the Azure portal**: Starting with this release, the update workflow from the Azure portal now provides richer, more detailed information.
+
+- **End of Windows Server Subscription and Extended Security Updates (ESU) purchases for OS version 20349.xxxx (22H2)**: If running OS version 20349.xxxx (version 22H2), you can no longer purchase Windows Server Subscription or ESU.
 
 
 ::: moniker-end

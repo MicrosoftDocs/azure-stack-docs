@@ -166,7 +166,7 @@ If your client machine uses an older version of Lustre, you can upgrade the Lust
     sleep 5; cat /sys/module/lustre/version; lsmod | grep -E 'lustre|lnet'
     ```
 
-    The output should show the new Lustre version (for example, `2.16.1_16_g031ec3f`).
+    The output should show the new Lustre version (for example, `2.16.1_21_g153e389`).
 ---
 
 After you perform this procedure, you can [mount the client](connect-clients.md#start-the-lustre-client-by-using-the-mount-command) to your Azure Managed Lustre file system.
