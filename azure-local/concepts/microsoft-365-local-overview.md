@@ -34,7 +34,7 @@ Organizations choose Microsoft 365 Local for several key reasons:
 
 - **Exchange Server, SharePoint Server, and Skype for Business Server:** Deliver core productivity and collaboration services on-premises. These services address compliance and stringent data residency requirements while providing enterprise-grade capabilities for email, document management, and unified communications.
 
-- **Certified and validated solutions by Microsoft and hardware partners:** Microsoft 365 Local supports Azure Local Premier Solutions offered in collaboration with hardware partners to guarantee compatibility and support for sovereign deployments.
+- **Certified and validated solutions by Microsoft and hardware partners:** Microsoft 365 Local is supported on Azure Local Premier Solutions offered in collaboration with hardware partners to guarantee compatibility and support for sovereign deployments.
 
 - **Full-stack deployment based on validated reference architecture:** Offers validated architecture based on best practices to ensure optimal performance and resiliency. This architecture includes guidance for networking, storage, compute, and identity integration, ensuring consistency and best practices across the entire stack.
 
