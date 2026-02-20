@@ -1,15 +1,16 @@
 ---
-title: Deploy Azure Container Registry with disconnected operations on Azure Local
+title: Deploy Azure Container Registry with disconnected operations for Azure Local
 description: Learn how to deploy and manage Azure Container Registry with disconnected operations for Azure Local.
 ms.topic: how-to
 author: ronmiab
 ms.author: robess
 ms.date: 02/23/2026
+ms.service: azure-local
 ms.subservice: hyperconverged
 ai-usage: ai-assisted
 ---
 
-# Deploy Azure Container Registry with disconnected operations on Azure Local
+# Deploy Azure Container Registry with disconnected operations for Azure Local
 
 ::: moniker range=">=azloc-2602"
 

@@ -1,10 +1,11 @@
 ---
-title: Plan your Identity for Disconnected Operations on Azure Local
+title: Plan your identity for disconnected operations on Azure Local
 description: Plan and integrate your identity on disconnected operations for Azure Local.
 ms.topic: concept-article
 author: ronmiab
 ms.author: robess
 ms.date: 02/23/2026
+ms.service: azure-local
 ms.subservice: hyperconverged
 ai-usage: ai-assisted
 ---
@@ -122,7 +123,7 @@ Collect and make available the following parameters before deployment:
 | LdapsCertChainInfo | Certificate chain information for your LDAP endpoint. You can omit the certificate chain information for demo purposes. | [How to get the certificate chain](disconnected-operations-pki.md) |
 | OidcCertChainInfo | Certificate chain information for your OIDC endpoint. You can omit the certificate chain information for demo purposes. | [How to get the certificate chain](disconnected-operations-pki.md) |
 | LdapServer | LDAP endpoint that can be reached from disconnected operations. This endpoint synchronizes groups and group memberships. | `Ldap.local.contoso.com` |  
-| LdapPort | LDAP port that is used to connect to the global catalog. Default 3268 is a non-secure channel and 3269 is a ssl/secure channel for global catalog | 3269 |
+| LdapPort | LDAP port that is used to connect to the global catalog. Default 3268 is a nonsecure channel and 3269 is a ssl/secure channel for global catalog | 3269 |
 | RootOperatorUserPrincipalName | UPN for the initial operator persona granted access to the Operator subscription | `Cloud-admin@local.contoso.com` |
 | SyncGroupIdentifier | GUID to Active Directory group to start syncing from. <br></br> `$group = Get-ADGroup -Identity “mygroup” \| Select-Object Name, ObjectGUID` | `81d71e5c5-abc4-11af-8132-afdf6bbe2ec1` |
 

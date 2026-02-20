@@ -6,6 +6,7 @@ author: ronmiab
 ms.author: robess
 ms.date: 02/23/2026
 ai-usage: ai-assisted
+ms.service: azure-local
 ms.subservice: hyperconverged
 ---
 
@@ -25,7 +26,7 @@ Here's a diagram showing a high-level overview of the appliance fallback log col
 
 ## Prerequisites
 
-Import the appliance logging module to use the cmdlets in this article.
+To use the cmdlets in this article, import the appliance logging module.
 
 ## Import appliance logging
 

@@ -1,15 +1,16 @@
 ---
-title: Security controls with disconnected operations on Azure Local
-description: Learn about the security considerations and compliance regulations for disconnected operations on Azure Local.
+title: Security controls with disconnected operations for Azure Local
+description: Learn about the security considerations and compliance regulations for disconnected operations for Azure Local.
 ms.topic: concept-article
 author: ronmiab
 ms.author: robess
 ms.date: 02/23/2026
+ms.service: azure-local
 ms.subservice: hyperconverged
 ai-usage: ai-assisted
 ---
 
-# Security considerations for Azure Local with disconnected operations
+# Security considerations for disconnected operations for Azure Local
 
 ::: moniker range=">=azloc-2602"
 
@@ -17,7 +18,7 @@ This article explains the security considerations and compliance regulations for
 
 ## Security and compliance overview
 
-Azure Local with disconnected operations meets security and compliance needs by using a locked down virtual machine (VM) appliance that's accessible only through the following methods:
+Disconnected operations for Azure Local meets security and compliance needs by using a locked down virtual machine (VM) appliance that's accessible only through the following methods:
 
 - **Management Network Interface Card (NIC)**: Lets you run a limited set of commands for deployment and troubleshooting. It's secured with a customer-provided certificate during bootstrapping. For more information, see [Plan your network for disconnected operations](disconnected-operations-network.md).
 - **External (Ingress) NIC**: Exposed to users in your network. This network path is for tenants and services of the system. User authentication uses your identity provider and role-based access control. For more information, see [Plan your identity for disconnected operations](disconnected-operations-identity.md).
@@ -37,7 +38,7 @@ By default, the Azure Local disconnected operations VM appliance encrypts data v
 
 ### BitLocker recovery key retrieval
 
-Azure Local with disconnected operations manages BitLocker recovery passwords for data at rest encryption. You don't need to provide these passwords for regular operations or during system startup. However, support scenarios might require these passwords to bring the system online. Without these passwords, some support scenarios can cause data loss and require system redeployment.
+Disconnected operations for Azure Local manages BitLocker recovery passwords for data at rest encryption. You don't need to provide these passwords for regular operations or during system startup. However, support scenarios might require these passwords to bring the system online. Without these passwords, some support scenarios can cause data loss and require system redeployment.
 
 Follow these steps to get your BitLocker recovery passwords:
 
@@ -77,7 +78,7 @@ Follow these steps to get your BitLocker recovery passwords:
 
 1. Get your BitLocker recovery passwords and store them in a secure location outside Azure Local or the Azure Local host.
 
-If your system experiences BitLocker issues, like Azure Local with disconnected operations failing to start, contact support and provide your BitLocker recovery passwords.
+If your system experiences BitLocker issues, like disconnected operations for Azure Local failing to start, contact support and provide your BitLocker recovery passwords.
 
 Manually unlock the virtual hard drive or virtual storage disk by using BitLocker recovery passwords. If BitLocker recovery keys aren't available, you need to redeploy the disconnected operations VM appliance.
 
@@ -100,7 +101,7 @@ To back up Host Guardian Service certificates from your cluster, run these comma
 
 ## Configure syslog forwarding
 
-You can use the syslog protocol for Azure Local with disconnected operations VM appliance to forward security events to a customer-managed security information and event management (SIEM) system.
+You can use the syslog protocol for Azure Local disconnected operations VM appliance to forward security events to a customer-managed security information and event management (SIEM) system.
 
 The syslog agent of the disconnected operations VM appliance forwards security events in syslog format from the Azure Local VM to the customer-configured syslog server.
 
@@ -115,14 +116,14 @@ The following table provides the parameters for the REST endpoint:
 | Parameter | Description | Type | Required |  
 | ----- | ---- | -------- | ---------- |  
 | **ClientCertificateThumbprint** | Thumbprint of the client certificate used to communicate with syslog server. | String | No |  
-| **Enabled** | Enables or disables the syslog agent in the Azure Local disconnected VM appliance. When disabled, the syslog forwarder configuration is removed and the syslog forwarder stops. | Flag | Yes |  
+| **Enabled** | Enables or disables the syslog agent in the Azure Local disconnected operations VM appliance. When disabled, the syslog forwarder configuration is removed and the syslog forwarder stops. | Flag | Yes |  
 | **NoEncryption** | Sends syslog messages in clear text. | Flag | No |  
 | **OutputSeverity** | Sets the output logging level. Use **Default** for warning, critical, or error messages. Use **Verbose** for all severity levels, including verbose, informational, warning, critical, or error. | String | No |  
 | **ServerName** | FQDN or IP address of the syslog server. | String | No |  
 | **ServerPort** | Port number used by the syslog server. | UInt16 | No |  
 | **SkipServerCertificateCheck** | Skips validation of the syslog server certificate during the initial TLS handshake. | Flag | No |  
 | **SkipServerCNCheck** | Skips validation of the Common Name value in the syslog server certificate during the initial TLS handshake. | Flag | No |
-| **UseUDP** | Uses UDP as the transport protocol for syslog. | Flag | No |  
+| **UseUDP** | Uses User Datagram Protocol (UDP) as the transport protocol for syslog. | Flag | No |  
 
 ### Configure syslog forwarding with TCP, server authentication, and TLS encryption
 
@@ -350,7 +351,7 @@ This section lists miscellaneous events that the solution forwards. You can't cu
 | EMET/Exploit protection events | `query="Application!*[System[Provider[@Name='EMET']]]"` |
 | WER events for application crashes only | `query="Application!*[System[Provider[@Name='Windows Error Reporting']] and EventData[Data='APPCRASH']]"` |
 | User logging on with temporary profile (1511), cannot create profile, using temporary profile (1518) | `query="Application!*[System[Provider[@Name='Microsoft-Windows-User Profiles Service'] and (EventID=1511 or EventID=1518)]]"` |
-| Application crash/hang events, similar to WER/1001. These include full path to faulting EXE/Module. | `query="Application!*[System[Provider[@Name='Application Error'] and (EventID=1000)] or System[Provider[@Name='Application Hang'] and (EventID=1002)]]"` |
+| Application crash/hang events, similar to WER/1001. These events include full path to faulting EXE/Module. | `query="Application!*[System[Provider[@Name='Application Error'] and (EventID=1000)] or System[Provider[@Name='Application Hang'] and (EventID=1002)]]"` |
 | Task scheduler task registered (106), Task registration deleted (141), Task deleted (142) | `query="Microsoft-Windows-TaskScheduler/Operational!*[System[Provider[@Name='Microsoft-Windows-TaskScheduler'] and (EventID=106 or EventID=141 or EventID=142 )]]"` |
 | AppLocker packaged (Modern UI) app execution | `query="Microsoft-Windows-AppLocker/Packaged app-Execution!*"` |
 | AppLocker packaged (Modern UI) app installation | `query="Microsoft-Windows-AppLocker/Packaged app-Deployment!*"` |
