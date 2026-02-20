@@ -21,18 +21,18 @@ In this article, you learn how to troubleshoot common issues that you might enco
 
 ## Best Practices
 
-To maintain optimal performance and security, keep Lustre clients updated. Use the latest Lustre client software from packages.microsoft.com to benefit from the latest bug fixes and optimizations. Refer to the AMLFS documentation for update instructions. If using integrated images (e.g., HPC Images), update your VMs to the latest image to ensure the newest Lustre client is included.
+To maintain optimal performance and security, keep Lustre clients updated. To benefit from the latest bug fixes and optimizations, use the latest Lustre client software from packages.microsoft.com. Refer to the AMLFS documentation for update instructions. If using integrated images (for example, HPC Images), update your VMs to the latest image for the most recent Lustre client.
 
 ## Symptom 1: Lower throughput, bandwidth, or higher latency than expected
 
-If your AMLFS deployment is not achieving expected throughput or bandwidth, or you notice increased latency, review the configuration areas:
+If your AMLFS deployment isn't achieving expected throughput or bandwidth, or you notice increased latency, review the configuration areas:
 
 | Potential Issue | Recommended Action |
 |-----------------|--------------------|
-| Availability zone placement | Ensure Lustre clients (your compute nodes) and AMLFS are in the same Azure region and Availability Zone to minimize latency. |
-| Accelerated networking | Enable accelerated networking on all Lustre client VMs to maximize bandwidth. See AMLFS documentation for enabling instructions. |
+| Availability zone placement | To minimize latency, ensure Lustre clients (your compute nodes) and AMLFS are in the same Azure region and Availability Zone. |
+| Accelerated networking | Enable accelerated networking on all Lustre client VMs to maximize bandwidth. See [Client prerequisites](connect-clients.md#client-prerequisites) for instructions. |
 | File striping configuration | Optimize file striping for workloads that access large files. Wider striping improves throughput for single files, but could be detrimental for smaller files. Refer to AMLFS documentation for guidance. |
-| File system size | Compare the provisioned throughput (shown on the AMLFS Overview tab) with current usage (Monitoring tab). If you've reached the limit, consider a larger file system with greater provisioned throughput. |
+| File system size | Compare the provisioned throughput (shown on the AMLFS Overview tab) with current usage (Monitoring tab). If you reached the limit, consider a larger file system with greater provisioned throughput. |
 | Azure firewall configuration | Configure Azure Firewall to avoid routing Lustre client and AMLFS traffic through the firewall. Only filter traffic entering or leaving the subnet, not within the subnet. See AMLFS documentation for details. |
 
 Important references:
@@ -46,9 +46,9 @@ Workloads may pause or mounts may become stuck due to several orchestrator or ne
 
 | Potential Issue | Recommended Action |
 |-----------------|--------------------|
-| Client evictions | Always unmount the file system (without the use of -f or -l) before stopping, deallocating, or rebooting Lustre client VMs. Failure to do so can cause eviction events, resulting other mounted clients to experience pauses for up to 15 minutes due to its caching abilities combined with its strongly coherent protocol. You can monitor for Lustre client evictions on the Monitoring tab in the Azure portal. |
-| Spot VMs, VMSS, and orchestrator practices | Follow proper procedures for unmounting Lustre before deallocating instances. Use scheduled events to automate unmounting and prevent client evictions, see **Important references** after this table. |
-| Network Security Group (NSG) or Firewall misconfiguration | Review recent changes to NSGs or Firewall rules. Ensure all required ports and endpoints are open. Note that rule changes may only take effect after a VM reboot or other TCP reconnection event. |
+| Client evictions | Always unmount the file system (without the use of -f or -l) before stopping, deallocating, or rebooting Lustre client VMs. Failure to do so can cause eviction events, resulting other mounted clients to experience pauses for up to 15 minutes due to its caching abilities combined with its coherent protocol. You can monitor for Lustre client evictions on the Monitoring tab in the Azure portal. |
+| Spot VMs, VMSS, and orchestrator practices | Follow proper procedures for unmounting Lustre before deallocating instances. Use scheduled events to automate unmounting and prevent client evictions. See **Important references** after this table. |
+| Network Security Group (NSG) or Firewall misconfiguration | Review recent changes to NSGs or Firewall rules. Ensure all required ports and endpoints are open. Rule changes may only take effect after a VM reboot or other TCP reconnection event. |
 | Maintenance window | If experiencing temporary pauses, check the configured maintenance window in the Azure portal. AMLFS may be undergoing scheduled maintenance. Refer to AMLFS documentation for maintenance details, notification setup, and how to modify your maintenance window if needed. |
 
 Important References:
