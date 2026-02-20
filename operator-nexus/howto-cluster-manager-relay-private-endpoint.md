@@ -11,7 +11,7 @@ ms.custom: template-how-to
 
 # Manage private endpoints for Arc Relay connectivity
 
-Azure Operator Nexus uses Azure Relay namespaces to facilitate Arc connectivity between the operator's on-premises infrastructure and Azure. By default, network traffic to and from the Relays flows over the public internet. To improve end-to-end transport security and provide more control over network access, operators can configure private endpoint connectivity from their own networks (on-premises and Azure-based) to the Relay namespace managed by the Cluster Manager.
+Azure Operator Nexus uses Azure Relay to facilitate Arc connectivity between the operator's on-premises infrastructure and Azure. By default, network traffic to and from the Relays flows over the public internet. To improve end-to-end transport security and provide more control over network access, operators can configure private endpoint connectivity from their own networks (on-premises and Azure-based) to the Relay namespace managed by the Cluster Manager.
 
 This article explains how to:
 
@@ -99,11 +99,23 @@ az network private-endpoint create \
     --subscription "<SUBSCRIPTION_ID>"
 ```
 
-### [REST API](#tab/rest-api)
+| Parameter                          | Description                                                                                |
+|------------------------------------|--------------------------------------------------------------------------------------------|
+| `--name`                           | The name for the private endpoint resource.                                                |
+| `--resource-group`                 | The resource group where the private endpoint will be created.                             |
+| `--vnet-name`                      | The virtual network containing the subnet for the private endpoint.                        |
+| `--subnet`                         | The subnet within the virtual network where the private endpoint will be deployed.         |
+| `--private-connection-resource-id` | The Relay namespace resource ID retrieved from the Cluster Manager.                        |
+| `--group-id`                       | The target sub-resource type. Use `namespace` for Azure Relay.                             |
+| `--connection-name`                | A name for the private endpoint connection.                                                |
+| `--manual-request`                 | Set to `true` because the Relay namespace is in a different subscription managed by Azure. |
+| `--subscription`                   | The subscription ID where the private endpoint will be created.                            |
 
-You can also create a private endpoint using the Azure portal:
+### [Azure Portal](#tab/portal)
 
-1. In the Azure portal, navigate to **Private Link Center** > **Private endpoints**.
+To create a private endpoint using the Azure portal:
+
+1. Navigate to **Private Link Center** > **Private endpoints**.
 1. Select **+ Create**.
 1. On the **Basics** tab, provide the subscription, resource group, name, and region.
 1. On the **Resource** tab:
@@ -130,10 +142,18 @@ After creating the private endpoint, you must approve the connection using the C
 az networkcloud clustermanager update-relay-private-endpoint-connection \
     --resource-group "<RESOURCE_GROUP>" \
     --cluster-manager-name "<CLUSTER_MANAGER_NAME>" \
-    --private-endpoint-resource-id "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateEndpoints/{privateEndpointName}" \
+    --private-endpoint-resource-id "<PRIVATE_ENDPOINT_RESOURCE_ID>" \
     --connection-state Approved \
-    --description "Approving private endpoint connection for Arc Relay"
+    --description "<DESCRIPTION>"
 ```
+
+| Parameter | Description |
+|-----------|-------------|
+| `--resource-group` | The resource group containing the Cluster Manager. |
+| `--cluster-manager-name` | The name of the Cluster Manager. |
+| `--private-endpoint-resource-id` | The resource ID of the private endpoint you created (for example, `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateEndpoints/{privateEndpointName}`). |
+| `--connection-state` | The state to set for the connection. Use `Approved` to approve. |
+| `--description` | A description to associate with the connection action. |
 
 ### [REST API](#tab/rest-api)
 
@@ -147,6 +167,31 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 }
 ```
 
+**Request body parameters:**
+
+| Parameter                   | Type   | Required | Description                                                                                 |
+|-----------------------------|--------|----------|---------------------------------------------------------------------------------------------|
+| `connectionState`           | string | Yes      | The state to set for the private endpoint connection. Valid values: `Approved`, `Rejected`. |
+| `privateEndpointResourceId` | string | Yes      | The resource ID of the private endpoint to approve or reject.                               |
+| `description`               | string | No       | A description to associate with the private endpoint connection action.                     |
+
+**Response:**
+
+The API returns a `202 Accepted` response with a `Location` header that you can use to track the status of the asynchronous operation.
+
+```http
+HTTP/1.1 202 Accepted
+Location: https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.NetworkCloud/locations/{location}/operationStatuses/{operationId}?api-version=2026-01-01-preview
+```
+
+To check the final status of the operation, poll the URL in the `Location` header:
+
+```http
+GET https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.NetworkCloud/locations/{location}/operationStatuses/{operationId}?api-version=2026-01-01-preview
+```
+
+The response includes a `status` field that indicates the operation state. Wait until `status` is `Succeeded` or `Failed` before proceeding.
+
 ---
 
 ### Reject a private endpoint connection
@@ -159,10 +204,18 @@ If you need to reject a pending private endpoint connection or revoke an existin
 az networkcloud clustermanager update-relay-private-endpoint-connection \
     --resource-group "<RESOURCE_GROUP>" \
     --cluster-manager-name "<CLUSTER_MANAGER_NAME>" \
-    --private-endpoint-resource-id "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateEndpoints/{privateEndpointName}" \
+    --private-endpoint-resource-id "<PRIVATE_ENDPOINT_RESOURCE_ID>" \
     --connection-state Rejected \
-    --description "Rejecting private endpoint connection"
+    --description "<DESCRIPTION>"
 ```
+
+| Parameter                        | Description                                                                                                                                                                                                 |
+|----------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `--resource-group`               | The resource group containing the Cluster Manager.                                                                                                                                                          |
+| `--cluster-manager-name`         | The name of the Cluster Manager.                                                                                                                                                                            |
+| `--private-endpoint-resource-id` | The resource ID of the private endpoint you created (for example, `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateEndpoints/{privateEndpointName}`). |
+| `--connection-state`             | The state to set for the connection. Use `Rejected` to reject.                                                                                                                                              |
+| `--description`                  | A description to associate with the connection action.                                                                                                                                                      |
 
 ### [REST API](#tab/rest-api)
 
@@ -176,9 +229,7 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 }
 ```
 
----
-
-### API parameters
+**Request body parameters:**
 
 | Parameter                   | Type   | Required | Description                                                                                 |
 |-----------------------------|--------|----------|---------------------------------------------------------------------------------------------|
@@ -186,7 +237,7 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 | `privateEndpointResourceId` | string | Yes      | The resource ID of the private endpoint to approve or reject.                               |
 | `description`               | string | No       | A description to associate with the private endpoint connection action.                     |
 
-### Response
+**Response:**
 
 The API returns a `202 Accepted` response with a `Location` header that you can use to track the status of the asynchronous operation.
 
@@ -194,6 +245,16 @@ The API returns a `202 Accepted` response with a `Location` header that you can 
 HTTP/1.1 202 Accepted
 Location: https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.NetworkCloud/locations/{location}/operationStatuses/{operationId}?api-version=2026-01-01-preview
 ```
+
+To check the final status of the operation, poll the URL in the `Location` header:
+
+```http
+GET https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.NetworkCloud/locations/{location}/operationStatuses/{operationId}?api-version=2026-01-01-preview
+```
+
+The response includes a `status` field that indicates the operation state. Wait until `status` is `Succeeded` or `Failed` before proceeding.
+
+---
 
 ## Configure private DNS
 
@@ -243,7 +304,6 @@ After completing the configuration, verify that the private endpoint connection 
 
 - Ensure you're using the correct `privateEndpointResourceId` when calling the approve API.
 - Verify the Cluster Manager is in a `Succeeded` provisioning state.
-- Check that you're using API version `2026-01-01-preview` or later.
 
 ### DNS resolution issues
 
@@ -254,7 +314,7 @@ After completing the configuration, verify that the private endpoint connection 
 ### Connection approval fails
 
 - Confirm the private endpoint exists and is in your subscription.
-- Verify you have the necessary permissions on the Cluster Manager resource.
+- Verify you have the `Microsoft.NetworkCloud/clusterManagers/updateRelayPrivateEndpointConnection/action` permission on the Cluster Manager resource, or a role that includes `Microsoft.NetworkCloud/*` permissions.
 - Review the error message returned by the API for specific details.
 
 ## Related content
