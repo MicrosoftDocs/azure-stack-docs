@@ -9,7 +9,7 @@ ms.date: 02/20/2026
 
 ---
 
-# Troubleshoot Azure Managed Lustre deployment issues
+# Troubleshoot Azure Managed Lustre performance issues
 
 In this article, you learn how to troubleshoot common issues that you might encounter when deploying an Azure Managed Lustre file system.
 
@@ -36,9 +36,9 @@ If your AMLFS deployment isn't achieving expected throughput or bandwidth, or yo
 | Azure firewall configuration | Configure Azure Firewall to avoid routing Lustre client and AMLFS traffic through the firewall. Only filter traffic entering or leaving the subnet, not within the subnet. See AMLFS documentation for details. |
 
 Important references:
-- [Optimize Azure Managed Lustre Performance](optimize-performance)
-- [Optimize file and directory layouts](optimize-file-layouts)
-- [Use Azure Firewall with Azure Managed Lustre](configure-firewall)
+- [Optimize Azure Managed Lustre Performance](optimize-performance.md)
+- [Optimize file and directory layouts](optimize-file-layouts.md)
+- [Use Azure Firewall with Azure Managed Lustre](configure-firewall.md)
 
 ## Symptom 2: Workload pauses or stuck mounting the file system
 
@@ -52,8 +52,8 @@ Workloads may pause or mounts may become stuck due to several orchestrator or ne
 | Maintenance window | If experiencing temporary pauses, check the configured maintenance window in the Azure portal. AMLFS may be undergoing scheduled maintenance. Refer to AMLFS documentation for maintenance details, notification setup, and how to modify your maintenance window if needed. |
 
 Important References:
-- [Connecting Clients to the File System](connect-clients)
+- [Connecting Clients to the File System](connect-clients.md)
     - [Best Practices for unmounting with Spot VMs, VMSS, and other orchestrators](https://techcommunity.microsoft.com/blog/azurehighperformancecomputingblog/how-to-unmount-azure-managed-lustre-filesystem-using-azure-scheduled-events/3917814)
-- [Network Security Group configuration](configure-network-security-group)
-- [Use Azure Firewall with Azure Managed Lustre](configure-firewall)
+- [Network Security Group configuration](configure-network-security-group.md)
+- [Use Azure Firewall with Azure Managed Lustre](configure-firewall.md)
 - [Maintenance Window documentation](/create-file-system-portal.md#maintenance-window)
