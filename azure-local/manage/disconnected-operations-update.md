@@ -152,6 +152,10 @@ $actionPlanInstanceId = 'ReplaceMe' # Copy output from previous step
 Start-MonitoringActionplanInstanceToComplete -EceClient $eceClient -actionPlanInstanceID $actionPlanInstanceID
 ```
 
+## Related content
+
+- [Backup for disconnected operations for Azure Local](./disconnected-operations-back-up-restore.md).
+
 ::: moniker-end
 
 ::: moniker range="<=azloc-2601"

@@ -1,5 +1,5 @@
 ---
-title: Plan your network for Disconnected Operations on Azure Local
+title: Plan Your Network for Disconnected Operations on Azure Local
 description: Plan and integrate your network for disconnected operations on Azure Local.
 ms.topic: concept-article
 author: ronmiab
@@ -166,6 +166,13 @@ Here are the endpoints that the appliance needs to resolve:
 | Azure Connected Machine Agent Managed Identity | login.windows.net <br></br> login.microsoftonline.com <br></br> pas.windows.net <br></br> management.azure.com <br></br> *.his.arc.azure.com <br></br> *.guestconfiguration.azure.com |
 
 :::image type="content" source="./media/disconnected-operations/network/disconnected-operations-disaggregate-limited-connectivity.svg" alt-text="Screenshot of how the management cluster is deployed with disconnected operations in a limited connected mode." lightbox=" ./media/disconnected-operations/network/disconnected-operations-disaggregate-limited-connectivity.svg":::
+
+## Related content
+
+- [Plan your identity for disconnected operations on Azure Local](./disconnected-operations-identity.md).
+- [Security considerations for Azure Local with disconnected operations](./disconnected-operations-security.md).
+- [Public key infrastructure (PKI) for disconnected operations on Azure Local](./disconnected-operations-pki.md).
+
 ::: moniker-end
 
 ::: moniker range="<=azloc-2601"

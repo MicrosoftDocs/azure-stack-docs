@@ -125,7 +125,7 @@ Make sure you have the ISO available to install on your Azure Local nodes.
 | 2602 | 2602.1.25069 | AzureLocal24H2.26100.1742.LCM.12.2602.0.3018 |
 ## Related content
 
-- [Deploy disconnected operations for Azure Local](disconnected-operations-deploy.md)
+- [Deploy disconnected operations for Azure Local](disconnected-operations-deploy.md).
 
 ::: moniker-end
 

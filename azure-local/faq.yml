@@ -41,7 +41,7 @@ sections:
 
           - Microsoft 365 Local runs Microsoft 365 applications on Azure Local infrastructure. For more information, see [What is Microsoft 365 Local](./concepts/microsoft-365-local-overview.md).
 
-          - Disconnected operations allow you to deploy and manage Azure Local instances without a connection to the Azure public cloud. For more information, see the [Eligibility criteria for Disconnected operations](./manage/disconnected-operations-overview.md#eligibility-criteria).
+          - Disconnected operations allow you to deploy and manage Azure Local instances without a connection to the Azure public cloud. For more information, see the [Eligibility criteria for disconnected operations](./manage/disconnected-operations-overview.md#eligibility-criteria).
 
       - question: Where is Azure Local available?
         answer: |

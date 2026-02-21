@@ -576,6 +576,9 @@ For example:
   
 - If the appliance deployment succeeded and you're updating network configuration, see `Get-Help Set-Appliance` for the settings you can update post-deployment.
 
+## Next steps
+- [Register disconnected operations for Azure Local](./disconnected-operations-registration.md).
+
 ::: moniker-end
 
 ::: moniker range="<=azloc-2601"

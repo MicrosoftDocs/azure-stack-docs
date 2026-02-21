@@ -9,58 +9,15 @@ ms.reviewer: haraldfianbakken
 ai-usage: ai-assisted
 ---
 
-# What's new in disconnected operations for Azure Local
+# Known issues in disconnected operations for Azure Local
 
 ::: moniker range=">=azloc-2602"
 
-This article highlights what's new (features and improvements) and critical known issues with workarounds for disconnected operations in Azure Local. These release notes update continuously. We add critical issues and workarounds as they're identified. Review this information before you deploy disconnected operations with Azure Local.
+This article identifies critical known issues and their workarounds in disconnected operations for Azure Local.
 
-## Features and improvements in 2602
+These release notes are updated continuously to include critical issues and required workarounds. Review this information carefully before you deploy disconnected operations for Azure Local.
 
-- This release marks the general availability of disconnected operations for Azure Local 
-- Added support for the Azure Local 2602 ISO and its associated capabilities.
-- Several bug fixes for deployment stability and usability.
-- Improved security and bug fixes.
-
-## Features and improvements in 2601
-
- - Added support for the Azure Local 2601 ISO and its associated capabilities.
- - Added Zero Day Update (ZDU) capability for Azure Local.
- - Updated Azure CLI versions and extensions
- - Improved security and bug fixes.
-
-## Features and improvements in 2512
-
-- Added support for the Azure Local 2512 ISO and its associated capabilities.
-- Added update capability for 2512.
-- Added registration UX to the Azure portal.
-- Improved security and bug fixes.
-
-## Features and improvements in 2511
-
-- Added support for the Azure Local 2511 ISO and its associated capabilities.
-- Bundled update uploader in OperationsModule.
-- Improved the log collection experience.
-- Added deployment automation capability for operator account during bootstrap.
-- Enabled full end-to-end deployment automation.
-- Fixed empty groups not synchronizing for identity integration.
-- RBAC update and refresh (AKS Arc).
-- Added control plane awareness for Azure Local instance deployments.
-
-## Features and improvements in 2509
-
-- Added support for the Azure Local 2508 ISO and its associated capabilities.
-- Added support for System Center Operations Manager 2025 and fixed a management pack failure on newer System Center Operations Manager versions; continuing support for System Center Operations Manager 2022.
-- Enabled update scenario.
-- Improved security.
-- Improved observability.
-- Enabled LDAPS and custom port configuration for LDAP binding.
-- Fixed Portal and UX issues.
-- Improved OperationsModule logging and error messages and added certificate validation and CSR generation.
-- Added external certificate rotation in OperationsModule. For example, `Set-ApplianceExternalEndpointCertificates`.
-- Enabled the use of a FQDN in the SAN of the management certificate.
-
-## Known issues for disconnected operations for Azure Local
+## Known issues for version 2602
 
 ### Cloud deployment fails and transitions into a failed state
 
@@ -84,17 +41,18 @@ Perform the following steps on all nodes:
     ```powershell
    Unregister-ScheduledTask -TaskName HIMDSWatchdog
    ```
-### Additional cluster deployments fails due Host Guardian certificates are not available
+
+### Additional cluster deployments fail as Host Guardian certificates aren't available
+
 When deploying additional Azure Local cluster after successfully deploying the dedicated management cluster, they fail.
 
 **Mitigation**:
-Copy the following certs from the first node of the management cluster and paste it in all Azure local nodes (workload clusters) at path C:\Users\Administrator\AppData\Roaming\AzureLocal\ 
+Copy the following certs from the first node of the management cluster and paste it in all Azure local nodes (workload clusters) at path `C:\Users\Administrator\AppData\Roaming\AzureLocal\`.
 
-Make sure that the following files are present on each Azure Local node before you deploy a new workload cluster: 
+Make sure that the following files are present on each Azure Local node before you deploy a new workload cluster:
 
-- C:\Users\Administrator\AppData\Roaming\AzureLocal\AzsVmHostGuardian-IRVM01-encryption.pfx
-- C:\Users\Administrator\AppData\Roaming\AzureLocal\AzsVmHostGuardian-IRVM01-signing.pfx
-
+- `C:\Users\Administrator\AppData\Roaming\AzureLocal\AzsVmHostGuardian-IRVM01-encryption.pfx`
+- `C:\Users\Administrator\AppData\Roaming\AzureLocal\AzsVmHostGuardian-IRVM01-signing.pfx`
 
 ### Control plane deployment stuck and times out without completing
 
@@ -112,7 +70,7 @@ When you use a cmdlet that uses the management endpoint (for example, Get-Applia
 
 For 2511, do not use `Set-DisconnectedOperationsClientContext`. Instead use `$context = New-DisconnectedOperationsClientContext` and pass the `$context` to the respective cmdlets.
 
-### Arc bootstrap fails on node (Invoke-AzStackHCIArcInitialization) on Original Equipment Manufacturer (OEM) provided images 
+### Arc bootstrap fails on node (Invoke-AzStackHCIArcInitialization) on Original Equipment Manufacturer (OEM) provided images
 
 If you are running an OEM image, make sure that you are on the correct OS baseline.
 
@@ -195,8 +153,8 @@ Solution Builder extension (SBE) validation fails when trying to reach an *aka.m
    }
    ```
 
-1. Copy the newly modified file to C:\CloudDeployment\Setup\Common\ExtractOEMContent.ps1 on the first machine.
-1. Copy the downloaded, unmodified file to C:\CloudDeployment\Setup\Common\En-US\ExtractOEMContent.Strings.psd1 on the first machine.
+1. Copy the newly modified file to `C:\CloudDeployment\Setup\Common\ExtractOEMContent.ps1` on the first machine.
+1. Copy the downloaded, unmodified file to `C:\CloudDeployment\Setup\Common\En-US\ExtractOEMContent.Strings.psd1` on the first machine.
 1. Resume cloud deployment.
 
 ### Cloud deployment (validation or deployment) gets stuck
@@ -217,7 +175,7 @@ During the validate or cloud deployment flow, the first machine (seed node) rest
    Start-Service HIMDS
    ```
 
-1. Check the logs in the first mode at *C:\CloudDeployment\Logs*.
+1. Check the logs in the first mode at `C:\CloudDeployment\Logs`.
 1. Review the appropriate log file:
    - Validate stage: Check the latest file with a name starting with *EnvironmentValidator*.
    - Deploy stage: Check the latest file with a name starting with *CloudDeployment*.
@@ -529,6 +487,10 @@ The following scenarios are unsupported in the preview release.
 - Arc-Enabled Kubernetes clusters (remote or non AKS clusters)
 
 If you test these scenarios, these systems must trust your custom CA and you need to pass `-custom-ca-cert` when Arc-enabling them.
+
+## Related content
+
+- [Disconnected operations for Azure Local](./disconnected-operations-overview.md).
 
 ::: moniker-end
 
