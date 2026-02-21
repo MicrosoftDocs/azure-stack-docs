@@ -387,9 +387,9 @@ Connect-AzAccount -EnvironmentName $applianceCloudName -UseDeviceAuthentication
 
 We require deploying a fully dedicated management cluster. The recommended practice is to place your management cluster in the operator subscription. This will help you restrict and isolate the control plane from workloads and you can restrict workloads from being created on the same cluster as other tenants. 
 
-Keeping the control plane seperated from the workloads provides a clear seperation of concerns. 
+Keeping the control plane separated from the workloads provides a clear separation of concerns. 
 
-Ensure you limit access to the operator subscription to only required personell.
+Ensure you limit access to the operator subscription to only required personnel.
 
 ## Register required resource providers
 
@@ -522,7 +522,7 @@ Perform the following tasks after deploying Azure Local with disconnected operat
 
 1. [Export the host guardian service certificates](disconnected-operations-security.md) and back up the folder you export them to on an external share or drive.
 1. [Register the management cluster](disconnected-operations-registration.md)
-
+1. **Lock down the management cluster** - Prevent operators from creating workloads on the management cluster. Limit operator access to a few and use Azure Policy to prevent workloads on the cluster resource.
 > [!NOTE]
 > Do not skip these steps. Consider this as a deployment completion checklist. These steps are critical in order to be able to recover in case of disasters, receive support and to stay compliant.
 

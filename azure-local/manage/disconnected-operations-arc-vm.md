@@ -12,9 +12,9 @@ ai-usage: ai-assisted
 
 # Disconnected operations with Azure Local VMs enabled by Azure Arc
 
-::: moniker range=">=azloc-2601"
+::: moniker range=">=azloc-2602"
 
-This article provides a brief overview of Azure Local virtual machine (VM) management features for disconnected operations on Azure Local. It covers the benefits, components, and high-level workflow. This feature closely mirrors Azure Local VM capabilities and references many Azure Local VM articles. You learn about key differences and limitations of disconnected operations.
+This article provides a brief overview of management features for Azure Local virtual machine (VM) for disconnected operations. It covers the benefits, components, and high-level workflow. This feature closely mirrors Azure Local VM capabilities and references many Azure Local VM articles for connected operations. You learn about key differences and limitations of disconnected operations.
 
 ## Overview
 
@@ -26,7 +26,7 @@ For more information, see [What is Azure Local VM management?](../manage/azure-a
 
 Here's a list of supported OS versions:
 
-- Windows Server 2022 and 2025
+- Windows Server 2022 and Windows Server 2025
 - Windows 10 Enterprise
 - Ubuntu 22.04 and 24.04 LTS
 
@@ -36,8 +36,8 @@ Azure Local VMs running disconnected operations have the following limitations:
 
 | Resource | Description |
 | --------------- | ----------- |
-| VM images | Marketplace, Azure storage account, and images from an existing Azure Local VM aren't supported. <br><br> Create VM images from a local share. |
-| Network interfaces | Create network interfaces in Azure CLI. This release doesn't support network interface creation in the Azure portal. |
+| VM images | Create VM images from a local share. <br><br>Marketplace, Azure storage account, and images from an existing Azure Local VM aren't supported.  |
+| Network interfaces | Create network interfaces in Azure CLI. <br><br>This release doesn't support network interface creation in the Azure portal. |
 | Storage paths | To delete storage paths from Azure CLI or portal, first delete any resources (VMs, images, disks) that are on the storage path. |
 | Logical networks | You can see and use logical networks, but they might not fully load in the portal. |
 | Proxy servers | Proxy servers aren't supported for outbound internet connections. |
@@ -205,3 +205,4 @@ To manage VM extensions, see [Manage VM extensions](../manage/virtual-machine-ma
 This feature is available only in Azure Local 2602 or later.
 
 ::: moniker-end
+
