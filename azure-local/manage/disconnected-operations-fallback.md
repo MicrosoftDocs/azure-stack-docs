@@ -1,21 +1,20 @@
 ---
-title: Appliance fallback log collection for disconnected operations with Azure Local VMs enabled by Azure Arc (Preview)
-description: Export and send logs for disconnected operations with Azure Local VMs enabled by Azure Arc (preview).
+title: Appliance Fallback Log Collection for Disconnected Operations with Azure Local VMs Enabled by Azure Arc
+description: Export and send logs for disconnected operations with Azure Local VMs enabled by Azure Arc.
 ms.topic: how-to
 author: ronmiab
 ms.author: robess
-ms.date: 11/13/2025
+ms.date: 02/23/2026
 ai-usage: ai-assisted
+ms.service: azure-local
 ms.subservice: hyperconverged
 ---
 
-# Appliance fallback log collection for disconnected operations with Azure Local VMs enabled by Azure Arc (preview)
+# Appliance fallback log collection for disconnected operations with Azure Local VMs enabled by Azure Arc
 
-::: moniker range=">=azloc-2506"
+::: moniker range=">=azloc-2602"
 
 This article explains how to use appliance fallback logging to export and send logs to Microsoft when Azure Local VMs operates in disconnected mode. This process helps you troubleshoot issues when standard log collection isn't available.
-
-[!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
 
 ## About fallback logging
 
@@ -27,7 +26,7 @@ Here's a diagram showing a high-level overview of the appliance fallback log col
 
 ## Prerequisites
 
-Import the appliance logging module to use the cmdlets in this article.
+To use the cmdlets in this article, import the appliance logging module.
 
 ## Import appliance logging
 
@@ -53,7 +52,7 @@ Use these parameters with the `Copy-DiagnosticData` cmdlet.
 
 - **DiagnosticLogPath**: Required. The destination path contains copied logs and temporarily mounted VHDs.
 
-- **FilterRoles**: The roles required for log collection or diagnostics might vary depending on the scenario. Use the `get-help`cmdlet or work with your support contact to determine the appropriate roles to include.
+- **FilterRoles**: The roles required for log collection or diagnostics might vary depending on the scenario. Use the `Get-Help` cmdlet or work with your support contact to determine the appropriate roles to include.
 
 - **FromDate** and **ToDate**: Optional. Start and end times of logs included in the collection. Logs before the FromDate and after the ToDate are excluded. By default, logs from the **last four hours** of the current time are collected if you don't provide these parameters.
 
@@ -65,6 +64,8 @@ Use these parameters with the `Copy-DiagnosticData` cmdlet.
     Example:
 
     ```PowerShell
+    # Replace with your actual values
+
     $certPasswordPlainText = "***"
     $certPassword = ConvertTo-SecureString $certPasswordPlainText -AsPlainText -Force
     $context = Set-DisconnectedOperationsClientContext -ManagementEndpointClientCertificatePath "<Management Endpoint Client Cert Path>" -ManagementEndpointClientCertificatePassword $certPassword -ManagementEndpointIpAddress "<Management Endpoint IP address>"
@@ -118,6 +119,8 @@ Use these parameters with the `Copy-DiagnosticData` cmdlet.
     To manually create a RecoveryKeySet parameter, use this template:
 
     ```powershell
+    # Replace with your actual values
+
     $recoveryKeySet = @(
     [PSCustomObject]@{protectorid = "{<Protector Id>}"; recoverypassword = "<Recovery password>"})
     ```
@@ -131,6 +134,8 @@ Here are some examples of how to use the `Copy-DiagnosticData` cmdlet to get log
 To copy diagnostic data logs for specific roles, run these commands:
 
 ```powershell
+# Replace with your actual values
+
 Import-Module "<disconnected operations module folder path>" -Force
 ```
 
@@ -143,6 +148,8 @@ Copy-DiagnosticData -DiagnosticLogPath "C:/path/to/copied_logs_parent_directory"
 To copy diagnostic data logs for specific roles with time ranges and recovery keys, if provided, run these commands:
 
 ```powershell
+# Replace with your actual values
+
 Import-Module "<disconnected operations module folder path>" -Force
 ```
 
@@ -174,7 +181,7 @@ Example of the Copy-DiagnosticData output:
 
 ```output
 | DiagnosticLogPath                                       | StampId                                  |
-|---------------------------------------------------------|------------------------------------------|
+| --------------------------------------------------------| -----------------------------------------|
 | C:\CopyLogs_20240501T1525097418\LogsToExport            | <Stamp ID>                               |
 ```
 
@@ -186,6 +193,8 @@ Example of the Copy-DiagnosticData output:
 To copy diagnostic data logs to a specific directory path, run these commands:
 
 ```powershell
+# Replace with your actual values
+
 Import-Module "<disconnected operations module folder path>" -Force
 ```
 
@@ -195,15 +204,15 @@ Copy-DiagnosticData -DiagnosticLogPath "C:/path/to/copied_logs_parent_directory"
 
 ## Related content
 
-- [Collect logs on-demand with Azure Local disconnected operations (preview)](disconnected-operations-on-demand-logs.md)
+- [Collect logs on-demand with Azure Local disconnected operations](disconnected-operations-on-demand-logs.md)
 - [Disconnected operations with Azure Local overview](disconnected-operations-overview.md)
 
 </details>
 
 ::: moniker-end
 
-::: moniker range="<=azloc-2505"
+::: moniker range="<=azloc-2601"
 
-This feature is available only in Azure Local 2506.
+This feature is available only in Azure Local 2602 or later.
 
 ::: moniker-end

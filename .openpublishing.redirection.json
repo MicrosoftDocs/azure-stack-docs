@@ -2400,6 +2400,11 @@
       "source_path": "azure-stack/operator/azure-stack-marketplace-changes.md",
       "redirect_url": "/azure-stack/operator/azure-stack-marketplace",
       "redirect_document_id": false
-    }
+    },
+    {
+      "source_path": "azure-local/manage/disconnected-operations-prepare-azure-local.md",
+      "redirect_url": "/azure/azure-local/manage/disconnected-operations-prepare",
+      "redirect_document_id": false
+    } 
   ]
 }

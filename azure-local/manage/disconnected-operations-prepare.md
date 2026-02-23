@@ -1,21 +1,20 @@
 ---
-title: Prepare Azure Local for disconnected deployments (Preview)
-description: Prepare your Azure Local environment for disconnected deployments (preview). Learn how to set up nodes, configure networking, and ensure deployment readiness.
+title: Prepare Azure Local for Disconnected Deployments 
+description: Prepare your Azure Local environment for disconnected deployments. Learn how to set up nodes, configure networking, and ensure deployment readiness.
 ms.topic: how-to
 author: haraldfianbakken
 ms.author: hafianba
-ms.date: 01/05/2026
+ms.date: 02/23/2026
 ms.reviewer: robess
+ms.subservice: hyperconverged
 ai-usage: ai-assisted
 ---
 
-# Prepare Azure Local for disconnected deployments (preview)
+# Prepare Azure Local for disconnected deployments
 
-::: moniker range=">=azloc-2601"
+::: moniker range=">=azloc-2602"
 
-This article explains how to deploy an Azure Local node for disconnected operations. Prepare your environment to ensure a successful setup of your Azure Local instance. Complete this deployment before setting up your Azure Local instance.
-
-[!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
+This article explains how to deploy an Azure Local node for deployment in disconnected environments. Prepare your environment to ensure a successful setup of your Azure Local instance using a local control plane. Complete these steps before setting up any Azure Local instances in your disconnected environment.
 
 ## Prepare Azure Local machines  
 
@@ -44,19 +43,19 @@ Prepare your Azure Local machines for disconnected operations by completing thes
 
    - If your network plan groups all traffic (management, compute, and storage), create a virtual switch called `ConvergedSwitch(ManagementComputeStorage)` on each node.  
 
-    Here's an example:
+     Here's an example:
 
-    ```powershell
-    # Example
-    $networkIntentName = 'ManagementComputeStorage'
-    New-VMSwitch -Name "ConvergedSwitch($networkIntentName)" -NetAdapterName "ethernet","ethernet 2" -EnableEmbeddedTeaming $true -AllowManagementOS $true
+     ```powershell
+     # Example
+     $networkIntentName = 'ManagementComputeStorage'
+     New-VMSwitch -Name "ConvergedSwitch($networkIntentName)" -NetAdapterName "ethernet","ethernet 2" -EnableEmbeddedTeaming $true -AllowManagementOS $true
 
-    # Rename the VMNetworkAdapter for management. During creation, Hyper-V uses the vSwitch name for the virtual network adapter.
-    Rename-VmNetworkAdapter -ManagementOS -Name "ConvergedSwitch($networkIntentName)" -NewName "vManagement($networkIntentName)"
+     # Rename the VMNetworkAdapter for management. During creation, Hyper-V uses the vSwitch name for the virtual network adapter.
+     Rename-VmNetworkAdapter -ManagementOS -Name "ConvergedSwitch($networkIntentName)" -NewName "vManagement($networkIntentName)"
 
-    # Rename the NetAdapter. During creation, Hyper-V adds the string "vEthernet" to the beginning of the name.
-    Rename-NetAdapter -Name "vEthernet (ConvergedSwitch($networkIntentName))" -NewName "vManagement($networkIntentName)"
-    ```
+     # Rename the NetAdapter. During creation, Hyper-V adds the string "vEthernet" to the beginning of the name.
+     Rename-NetAdapter -Name "vEthernet (ConvergedSwitch($networkIntentName))" -NewName "vManagement($networkIntentName)"
+     ```
 
    - If you use VLANs, make sure you set the network adapter VLAN.
 
@@ -85,6 +84,7 @@ Prepare your Azure Local machines for disconnected operations by completing thes
 1. On each node, copy the root certificate public key. For more information, see [PKI for disconnected operations](disconnected-operations-pki.md). Modify the paths according to the location and method you use to export your public key for creating certificates.  
 
     ```powershell
+    # Replace paths with your actual values.
     $applianceConfigBasePath = "C:\AzureLocalDisconnectedOperations\"
     $applianceRootCertFile = "C:\AzureLocalDisconnectedOperations\applianceRoot.cer"
     
@@ -117,17 +117,36 @@ Prepare your Azure Local machines for disconnected operations by completing thes
 
 1. [Setup Azure CLI on each node](../manage/disconnected-operations-cli.md). Ensure it works on each node before you deploy an Azure Local instance. Otherwise, the deployment fails.
 
-1. Find the first machine from the list of node names and specify it as the `seednode` you want to use in the cluster.
+1. From the list of node names, select the first machine and designate it as the (seed node). The seed node is the first node used to deploy the disconnected operations control plane. Use the following command to designate the seed node.
 
     ```powershell
     $seednode = @('azlocal-1', 'azlocal-2','azlocal-3')|Sort|select –first 1
     $seednode
     ```
 
-    ::: moniker-end
+## Time synchronization in fully disconnected (air-gapped) environments
 
-::: moniker range="<=azloc-2512"
+For fully air‑gapped deployments with no outbound internet access, complete these actions on each Azure Local node and configure a local time server for time synchronization.
 
-This feature is available only in Azure Local 2601
+On each node, configure the time server to use your domain controller. Modify the script and run it from PowerShell:
+
+```powershell
+w32tm /config /manualpeerlist:"dc.contoso.com" /syncfromflags:manual /reliable:yes /update
+net stop w32time
+net start w32time
+w32tm /resync /rediscover
+# Check your NTP settings
+w32tm /query /peers
+```
+
+## Next steps
+
+- [Deploy disconnected operations for Azure Local and the management cluster](./disconnected-operations-deploy.md).
+
+::: moniker-end
+
+::: moniker range="<=azloc-2601"
+
+This feature is available only in Azure Local 2602 or later.
 
 ::: moniker-end
