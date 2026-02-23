@@ -26,6 +26,9 @@ Azure Stack Hub supports the use of managed disks and unmanaged disks in VMs, as
 
 Unmanaged disks require that you create a storage account to store the disks. The disks you create are referred to as *VM disks*, and are stored in containers in the storage account.
 
+> [!NOTE]
+> Unmanaged disks are retiring. Migrate to managed disks before the retirement date. For more information, see [Unmanaged disks deprecation](/azure/virtual-machines/unmanaged-disks-deprecation).
+
 ## Best practice guidelines
 
 It's recommended that you use managed disks for VMs for easier management and capacity balance. You don't have to prepare a storage account and containers before using managed disks. When you create multiple managed disks, the disks are distributed into multiple volumes, which helps to balance the capacity of volumes.  

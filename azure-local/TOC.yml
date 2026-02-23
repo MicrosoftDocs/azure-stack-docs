@@ -604,6 +604,8 @@ items:
           href: manage/health-service-actions.md
         - name: Modify Health Service settings
           href: manage/health-service-settings.md
+    - name: Drift detection
+      href: manage/drift-detection.md
 
   - name: Troubleshoot
     items:
@@ -848,8 +850,12 @@ items:
   items:
   - name: Overview
     href: manage/disconnected-operations-overview.md
-  - name: Known issues
-    href: manage/disconnected-operations-known-issues.md
+  - name: Release notes
+    items:
+    - name: What's new in disconnected operations?
+      href: manage/disconnected-operations-whats-new.md
+    - name: Known issues
+      href: manage/disconnected-operations-known-issues.md
   - name: Plan
     items:
     - name: Network
@@ -862,10 +868,14 @@ items:
       href: manage/disconnected-operations-pki.md
   - name: Deploy
     items:
-    - name: Set-up
-      href: manage/disconnected-operations-set-up.md
-    - name: Deployment
+    - name: Acquire disconnected operations
+      href: manage/disconnected-operations-acquire.md
+    - name: Prepare Azure Local nodes
+      href: manage/disconnected-operations-prepare.md
+    - name: Deploy disconnected operations
       href: manage/disconnected-operations-deploy.md
+    - name: Register disconnected operations
+      href: manage/disconnected-operations-registration.md 
   - name: Manage
     items:
     - name: Azure CLI
@@ -882,6 +892,11 @@ items:
       href: manage/disconnected-operations-powershell.md
     - name: Update disconnected operations
       href: manage/disconnected-operations-update.md
+    - name: Back up disconnected operations
+      href: manage/disconnected-operations-back-up-restore.md
+    - name: Billing
+      href: manage/disconnected-operations-billing.md
+
   - name: Monitor
     items:
     - name: Monitoring
