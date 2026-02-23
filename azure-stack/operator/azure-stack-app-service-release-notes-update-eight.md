@@ -84,9 +84,6 @@ Azure App Service on Azure Stack Hub update 8 includes the following improvement
 
 All new deployments of Azure App Service on Azure Stack Hub will make use of managed disks for all virtual machines and virtual machine scale sets. All existing deployments will continue to use unmanaged disks.
 
-> [!NOTE]
-> Unmanaged disks are retiring. Migrate to managed disks before the retirement date. For more information, see [Unmanaged disks deprecation](/azure/virtual-machines/unmanaged-disks-deprecation).
-
 - **TLS 1.2 enforced by front-end load balancers**
 
 **TLS 1.2** is now enforced for all apps.
