@@ -16,6 +16,9 @@ ms.custom:
 
 This article describes the differences between managed and unmanaged disks when using Azure Resource Manager templates to provision virtual machines in Azure Stack Hub. The examples help you to convert existing templates that use unmanaged disks to managed disks.
 
+> [!NOTE]
+> Unmanaged disks are retiring. Migrate to managed disks before the retirement date. For more information, see [Unmanaged disks deprecation](/azure/virtual-machines/unmanaged-disks-deprecation).
+
 ## Unmanaged disks template formatting
 
 To begin, let's take a look at how unmanaged disks are deployed. When creating unmanaged disks, you need a storage account to hold the VHD files. You can create a new storage account or use one that already exists. Create a new storage account resource in the resources block of the template, as follows:
