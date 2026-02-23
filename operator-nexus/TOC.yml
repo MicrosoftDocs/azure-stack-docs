@@ -166,6 +166,8 @@
               href: howto-configure-network-fabric-controller.md
             - name: Cluster Manager
               href: howto-cluster-manager.md
+            - name: Cluster Manager Relay Private Endpoint
+              href: howto-cluster-manager-relay-private-endpoint.md
             - name: Cluster Manager Template JSON Example
               href: clustermanager-jsonc-example.md
             - name: Cluster Manager Parameters JSON Example
