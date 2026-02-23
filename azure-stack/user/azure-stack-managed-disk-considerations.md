@@ -72,6 +72,9 @@ Azure Stack Hub managed disks support the following API versions:
 
 ## Convert to managed disks
 
+> [!NOTE]
+> Unmanaged disks are retiring. Migrate to managed disks before the retirement date. For more information, see [Unmanaged disks deprecation](/azure/virtual-machines/unmanaged-disks-deprecation).
+
 > [!NOTE]  
 > The Azure PowerShell cmdlet `ConvertTo-AzVMManagedDisk` cannot be used to convert an unmanaged disk to a managed disk in Azure Stack Hub. Azure Stack Hub does not currently support this cmdlet.
 

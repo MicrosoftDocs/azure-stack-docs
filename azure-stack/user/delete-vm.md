@@ -28,6 +28,9 @@ When you create a new VM, you typically create a new resource group and put all 
 
 ## Delete a VM with dependencies (unmanaged disks)
 
+> [!NOTE]
+> Unmanaged disks are retiring. Migrate to managed disks before the retirement date. For more information, see [Unmanaged disks deprecation](/azure/virtual-machines/unmanaged-disks-deprecation).
+
 You can use the Azure portal or PowerShell to remove your VM and its dependencies.
 
 ### [With the portal](#tab/portal)

@@ -58,6 +58,9 @@ Azure Site Recovery on Azure Stack Hub, with a required agent installed on each 
 > [!NOTE]
 > Azure Site Recovery on Azure Stack Hub can only protect VMs that use managed disks. To convert a currently provisioned VM that uses unmanaged disks to managed disks, you can use the process described in [Convert to managed disks](../user/azure-stack-managed-disk-considerations.md#convert-to-managed-disks).
 
+> [!NOTE]
+> Unmanaged disks are retiring. Migrate to managed disks before the retirement date. For more information, see [Unmanaged disks deprecation](/azure/virtual-machines/unmanaged-disks-deprecation).
+
 The following VM OSs were tested and validated, and each has respective Azure Stack Hub Marketplace images available for download:
 
 # [Windows](#tab/windows)

@@ -156,6 +156,9 @@ For more information, see [Design considerations for scale sets](/azure/virtual-
 
 -   We strongly recommend using Managed disks on Azure Stack Hub instead of unmanaged disks for virtual machine scale set
 
+> [!NOTE]
+> Unmanaged disks are retiring. Migrate to managed disks before the retirement date. For more information, see [Unmanaged disks deprecation](/azure/virtual-machines/unmanaged-disks-deprecation).
+
 -   Currently, there is a 700 VM limit on Azure Stack Hub, which accounts for all Azure Stack Hub infrastructure VMs, individual VMs, and scale set instances.
 
 ## Subscription limits

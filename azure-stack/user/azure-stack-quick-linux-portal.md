@@ -29,6 +29,9 @@ You can create an Ubuntu Server 16.04 LTS virtual machine (VM) by using the Azur
 > [!NOTE]  
 > The images in this article are updated to match changes that were introduced in Azure Stack Hub version 1808. Version 1808 adds support for using *managed disks* in addition to unmanaged disks. If you're using an earlier version, images for some tasks, such as disk selection, differ from what's displayed in your UI.  
 
+> [!NOTE]
+> Unmanaged disks are retiring. Migrate to managed disks before the retirement date. For more information, see [Unmanaged disks deprecation](/azure/virtual-machines/unmanaged-disks-deprecation).
+
 ## Prerequisites
 
 * A Linux image in the Azure Stack Hub Marketplace
