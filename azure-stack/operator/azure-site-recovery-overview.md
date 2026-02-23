@@ -56,10 +56,7 @@ When you first install Azure Site Recovery on Azure Stack Hub, a 30-day free tri
 Azure Site Recovery on Azure Stack Hub, with a required agent installed on each of the protected VMs, enables the replication of VMs across two instances, or stamps, of Azure Stack Hub. Azure Stack Hub uses a VM extension, available through the Azure Stack Hub Marketplace, to install this agent.
 
 > [!NOTE]
-> Azure Site Recovery on Azure Stack Hub can only protect VMs that use managed disks. To convert a currently provisioned VM that uses unmanaged disks to managed disks, you can use the process described in [Convert to managed disks](../user/azure-stack-managed-disk-considerations.md#convert-to-managed-disks).
-
-> [!NOTE]
-> Unmanaged disks are retiring. Migrate to managed disks before the retirement date. For more information, see [Unmanaged disks deprecation](/azure/virtual-machines/unmanaged-disks-deprecation).
+> Azure Site Recovery on Azure Stack Hub can only protect VMs that use managed disks. To convert a currently provisioned VM that uses unmanaged disks to managed disks, you can use the process described in [Convert to managed disks](../user/azure-stack-managed-disk-considerations.md#convert-to-managed-disks). Unmanaged disks are retiring. Migrate to managed disks before the retirement date. For more information, see [Unmanaged disks deprecation](/azure/virtual-machines/unmanaged-disks-deprecation).
 
 The following VM OSs were tested and validated, and each has respective Azure Stack Hub Marketplace images available for download:
 
