@@ -10,7 +10,7 @@ metadata:
   ms.topic: landing-page
   author: ronmiab
   ms.author: robess
-  ms.date: 12/30/2025
+  ms.date: 02/23/2026
 
 # linkListType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | sample | tutorial | video | whats-new
 
@@ -26,7 +26,7 @@ landingContent:
             url: overview/hyperconverged-overview.md
           - text: Multi-rack deployments (preview)
             url: multi-rack/multi-rack-overview.md
-          - text: Disconnected operations (preview)
+          - text: Disconnected operations
             url: manage/disconnected-operations-overview.md
           - text: Microsoft 365 on Local
             url: concepts/microsoft-365-local-overview.md
@@ -40,7 +40,7 @@ landingContent:
             url: deploy/deploy-via-portal.md
           - text: Plan multi-rack (preview)
             url: multi-rack/multi-rack-prerequisites.md
-          - text: Deploy disconnected operations (preview)
+          - text: Deploy disconnected operations
             url: manage/disconnected-operations-deploy.md
 
 # Card 
@@ -56,7 +56,7 @@ landingContent:
             url: manage/create-arc-virtual-machines.md
           - text: Deploy Azure Local VMs on multi-rack (preview)
             url: multi-rack/multi-rack-create-arc-virtual-machines.md
-          - text: Azure Local VMs on disconnected (preview)
+          - text: Azure Local VMs on disconnected
             url: manage/disconnected-operations-arc-vm.md
 
 # Card
@@ -68,7 +68,7 @@ landingContent:
             url: concepts/monitoring-overview.md
           - text: Monitor multi-rack deployments (preview)
             url: multi-rack/multi-rack-monitor-overview.md
-          - text: Monitor disconnected operations (preview)
+          - text: Monitor disconnected operations
             url: manage/disconnected-operations-monitoring.md       
           - text: Azure Monitor metrics for hyperconverged deployments
             url: manage/monitor-cluster-with-metrics.md
@@ -82,7 +82,7 @@ landingContent:
         links:
           - text: Collect logs for hyperconverged deployments
             url: manage/collect-logs.md
-          - text: Collect logs for disconnected operations (preview)
+          - text: Collect logs for disconnected operations
             url: manage/disconnected-operations-on-demand-logs.md
           - text: Troubleshoot deployment issues
             url: manage/troubleshoot-deployment.md
@@ -98,7 +98,7 @@ landingContent:
             url: concepts/security-features.md
           - text: Security for multi-rack deployments (preview)
             url: multi-rack/multi-rack-security.md
-          - text: Security for disconnected operations (preview)
+          - text: Security for disconnected operations
             url: manage/disconnected-operations-security.md
 
   # Card
