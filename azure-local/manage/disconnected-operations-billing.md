@@ -1,0 +1,73 @@
+---
+title: Billing for Disconnected Operations for Azure Local
+description: Learn how disconnected operation for Azure Local is billed.
+author: ronmiab
+ms.author: robess
+ms.reviewer: lihou
+ms.date: 02/23/2026
+ms.topic: concept-article
+ms.subservice: hyperconverged
+ai-usage: ai-assisted
+---
+
+# Billing for disconnected operations for Azure Local
+
+::: moniker range=">=azloc-2602"
+
+This article explains billing for disconnected operations for Azure Local. The article also covers the capacity-based pricing model that uses physical processor cores and the licensing requirements for Windows Server virtual machines (VMs).
+
+## Billing and payment
+
+Disconnected operations for Azure Local is a deployment option with the strictest sovereignty requirements. Your Azure subscription bill shows the billing for this capability just like any other Azure service. You pay per physical core on your on-premises machines that the disconnected operations manages. The billing also includes the physical cores needed to run the disconnected control plane.
+
+Contact your account representative for current pricing. The Azure Commerce billing platform centrally handles currencies and discounts, and you get one unified, itemized bill at the end of the month.
+
+## Charges for disconnected operations for Azure Local
+
+Azure Local uses a cloud-style billing model that's consistent and familiar if you already use Azure or other cloud services. Billing is based on a flat monthly rate per physical processor core for Azure Local instances managed by disconnected operations. The billing includes the cores needed to run the local control plane.
+
+Disconnected operations for Azure Local are licensed on a capacity-based model with an annual term, billed monthly through Azure. Unlike usage-based or consumption-based billing that charges by the number of virtual machines (VMs), Azure Local charges by physical cores. Although the number of virtual processor cores (vCPUs) can vary over the course of the month, it doesn't affect the Azure Local price you pay. You pay based on the number of physical cores you purchase with disconnected operations.
+
+## Processor cores used for disconnected operations for Azure Local
+
+When you create a disconnected operations resource, enter the number of processor cores that it manages, including the control plane itself. During the annual term, you can increase the number of physical cores if you need more managed cores. Billing adjusts based on the new total core count for the remainder of the license period.
+
+## Windows Server VMs licensed
+
+To license Windows Server VMs running on Azure Local with disconnected operations or to apply the Azure Hybrid Benefit, you need an eligible Windows Server license with Software Assurance, or an active Windows Server subscription.
+
+## Licensing prerequisites
+
+To qualify for Azure Hybrid Benefit for Windows VMs on Azure Local with disconnected operations, meet the following licensing prerequisites.
+
+**Types of license**:
+
+- Windows Server Standard with active Software Assurance or subscription.
+
+- Windows Server Datacenter with active Software Assurance or subscription.
+
+**Number of licenses**:
+
+- You need at least 8-core licenses (Datacenter or Standard edition) per VM. For example, you need 8-core licenses if you run a 4-core instance.
+  - You can run instances larger than 8-cores by allocating licenses equal to the core size of the instance. For example, 12-core licenses are required for a 12-core instance.
+  - For those with processor licenses, each processor license is equivalent to 16-core licenses.
+
+### Azure migration allowance
+
+- **Windows Server Standard edition:** Use licenses either on-premises or on Azure Local with disconnected operations, but not both at the same time. The only exception is a one-time 180-day period that lets you migrate the same workloads to Azure Local.
+
+- **Windows Server Datacenter edition:** For VM licensing, when you migrate workloads to Azure, licenses let you use them simultaneously on-premises and on Azure Local with disconnected operations indefinitely.
+
+## Related content
+
+- [Azure pricing](https://azure.microsoft.com/pricing/)
+
+- [What is Microsoft Billing?](/azure/cost-management-billing/cost-management-billing-overview)
+
+::: moniker-end
+
+::: moniker range="<=azloc-2601"
+
+This feature is available only in Azure Local 2602 or later.
+
+::: moniker-end

@@ -158,6 +158,9 @@ For more information, see [Design considerations for scale sets](/azure/virtual-
 
 -   Currently, there is a 700 VM limit on Azure Stack Hub, which accounts for all Azure Stack Hub infrastructure VMs, individual VMs, and scale set instances.
 
+> [!NOTE]
+> Unmanaged disks are retiring. Migrate to managed disks before the retirement date. For more information, see [Unmanaged disks deprecation](/azure/virtual-machines/unmanaged-disks-deprecation).
+
 ## Subscription limits
 
 Each Azure Stack Hub tenant subscription has default limits in place, including a maximum number of VMs per region configured by the Azure Stack Hub operator. For more information, see [Azure Stack Hub services, plans, offers, subscriptions overview](../operator/service-plan-offer-subscription-overview.md). Also refer to [Quota types in Azure Stack Hub](../operator/azure-stack-quota-types.md).
