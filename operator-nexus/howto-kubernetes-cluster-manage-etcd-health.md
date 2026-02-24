@@ -166,11 +166,10 @@ Failure to manage database size can result in:
 ### 5. ETCD Cluster Maintenance
 
 #### What It Is
-ETCD cluster maintenance encompasses regular operational activities to ensure the long-term health, security, and reliability of your ETCD infrastructure, including updates, security patches, and configuration reviews.
+ETCD cluster maintenance encompasses regular operational activities to ensure the long-term health, security, and reliability of your ETCD infrastructure.
 
 #### Why It Is Important
 Regular maintenance provides:
-- **Security**: Timely application of security patches and updates
 - **Stability**: Prevention of issues through proactive maintenance
 - **Performance**: Optimization of configuration and operations over time
 - **Compliance**: Meeting security and operational standards
@@ -185,15 +184,11 @@ Neglecting ETCD maintenance can lead to:
 - **Increased Technical Debt**: Deferred maintenance making future operations more complex and risky
 
 #### Recommendations
-- Keep ETCD versions up to date with security patches
-- Review and optimize ETCD configuration periodically
 - Perform regular health checks using automated tools
 - Test disaster recovery procedures regularly (backup and restore)
 - Document ETCD architecture, configuration, and operational procedures
 - Conduct capacity planning and performance reviews
-- Plan and execute ETCD version upgrades during maintenance windows
 - Validate TLS certificates and credentials before expiration
-- Review and audit ETCD access logs and security settings
 
 ## Monitoring Tools and Resources
 
