@@ -202,7 +202,7 @@ az aksarc delete --name $aksclustername --resource-group $resource_group
 
 ## Related content
 
-- [AKS on Azure Local architecture](cluster-architecture.md).
-- [AKS enabled by Azure Arc network requirements](network-system-requirements.md).
-- [Manage node pools for an AKS cluster](manage-node-pools.md).
-- [Use cluster autoscaler on an AKS arc cluster](auto-scale-aks-arc.md).
+- [AKS on Azure Local architecture](cluster-architecture.md)
+- [AKS enabled by Azure Arc network requirements](network-system-requirements.md)
+- [Manage node pools for an AKS cluster](manage-node-pools.md)
+- [Use cluster autoscaler on an AKS arc cluster](auto-scale-aks-arc.md)
