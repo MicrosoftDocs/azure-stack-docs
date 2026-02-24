@@ -4,13 +4,13 @@ description: Manage Azure Kubernetes Service (AKS) Arc for Azure Local with disc
 ms.topic: how-to
 author: davidsmatlak
 ms.author: davidsmatlak
-ms.date: 01/16/2026
+ms.date: 02/24/2026
 ai-usage: ai-assisted
 ---
 
 # Manage AKS Arc for Azure Local with disconnected operations (preview)
 
-This article gives you an overview of Azure Kubernetes Service (AKS) Arc for disconnected operations on Azure Local (preview). It closely mirrors AKS capabilities on Azure Local and includes many references to Azure Local AKS articles. You learn how to deploy and manage AKS clusters in disconnected environments, understand key differences, and review limitations to ensure successful implementation.
+This article gives you an overview of Azure Kubernetes Service (AKS) Arc for disconnected operations for Azure Local (preview). It closely mirrors AKS capabilities on Azure Local and includes many references to Azure Local AKS articles. You learn how to deploy and manage AKS clusters in disconnected environments, understand key differences, and review limitations to ensure successful implementation.
 
 [!INCLUDE [IMPORTANT](./includes/aks-disconnected-operations-preview.md)]
 
@@ -23,11 +23,11 @@ AKS Arc for disconnected operations allows you to manage Kubernetes clusters and
 - [Azure Command-Line Interface (CLI)](/azure/azure-local/manage/disconnected-operations-cli) installed on your local machine.
 - An Azure subscription associated with disconnected operations.
 - Understanding of AKS and Azure Arc concepts.
-- Complete [Identity for Azure Local with disconnected operations (preview)](/azure/azure-local/manage/disconnected-operations-identity).
-- Complete [Networking for Azure Local with disconnected operations (preview)](/azure/azure-local/manage/disconnected-operations-network).
-- Complete [Public key infrastructure (PKI) for Azure Local with disconnected operations (preview)](/azure/azure-local/manage/disconnected-operations-pki).
-- Complete [Hardware for Azure Local with disconnected operations (preview)](/azure/azure-local/manage/disconnected-operations-overview#preview-participation-criteria).
-- Complete [Set up for Azure Local with disconnected operations (preview)](/azure/azure-local/manage/disconnected-operations-set-up).
+- Complete [Identity for Azure Local with disconnected operations](/azure/azure-local/manage/disconnected-operations-identity).
+- Complete [Networking for Azure Local with disconnected operations](/azure/azure-local/manage/disconnected-operations-network).
+- Complete [Public key infrastructure (PKI) for Azure Local with disconnected operations](/azure/azure-local/manage/disconnected-operations-pki).
+- Complete [Hardware for Azure Local with disconnected operations](/azure/azure-local/manage/disconnected-operations-overview#eligibility-criteria).
+- Complete [Set up for Azure Local with disconnected operations](/azure/azure-local/manage/disconnected-operations-set-up).
 
 ## Limitations
 
@@ -47,19 +47,19 @@ To create an AKS cluster that supports disconnected operations, see [Create an A
 
 ### Install the Azure CLI extension
 
-Before you install the Azure CLI extension, make sure you have the following versions installed:
+Before you install the Azure CLI extension, make sure you have the following installed:
 
-- Azure CLI version 2.60.0
+- [Azure CLI](/azure/azure-local/manage/disconnected-operations-cli?view=azloc-2602&preserve-view=true)
 - Extension version:
-  - customlocation: 0.1.3
+  - customlocation: 0.1.4
   - aksarc: 1.2.23
-  - stack-hci-vm: 1.3.0
+  - stack-hci-vm: 1.11.1
 
 Install the CLI extension using the following commands:
 
 ```azurecli
 az extension add --name aksarc --version 1.2.23 
-az extension add --name stack-hci-vm --version 1.3.0 
+az extension add --name stack-hci-vm --version 1.11.1 
 az config set core.instance_discovery=false --only-show-errors
  ```
 
@@ -202,9 +202,7 @@ az aksarc delete --name $aksclustername --resource-group $resource_group
 
 ## Related content
 
-- [AKS on Azure Local architecture](cluster-architecture.md).
-- [AKS enabled by Azure Arc network requirements](network-system-requirements.md).
-- [Manage node pools for an AKS cluster](manage-node-pools.md).
-- [Use cluster autoscaler on an AKS arc cluster](auto-scale-aks-arc.md).
-
-
+- [AKS on Azure Local architecture](cluster-architecture.md)
+- [AKS enabled by Azure Arc network requirements](network-system-requirements.md)
+- [Manage node pools for an AKS cluster](manage-node-pools.md)
+- [Use cluster autoscaler on an AKS arc cluster](auto-scale-aks-arc.md)
