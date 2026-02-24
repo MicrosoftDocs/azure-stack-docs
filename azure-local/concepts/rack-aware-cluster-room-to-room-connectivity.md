@@ -3,7 +3,7 @@ title: Azure Local rack aware cluster room-to-room connectivity
 description: Learn about Azure Local rack aware cluster room-to-room connectivity.
 author: sipastak
 ms.author: sipastak
-ms.date: 10/22/2025
+ms.date: 02/24/2026
 ms.service: azure-local
 ms.topic: concept-article
 ---
@@ -584,7 +584,7 @@ The RDMA network VLANs (711 and 712) are connected by a set of bundled links to 
 The required bandwidth for room-to-room links can be calculated using the following formula:
 
 ```
-Bandwidth required = (NIC speed) × (storage ports per node) × (total ARC nodes per zone)
+Bandwidth required = (NIC speed) × (storage ports per machine) × (total machines per zone)
 ```
 
 ### Example configuration (2×2 environment)
@@ -592,8 +592,8 @@ Bandwidth required = (NIC speed) × (storage ports per node) × (total ARC nodes
 Using a 2×2 configuration with 25-GbE storage NICs:
 
 - **Storage interface speed**: 25 GbE per port
-- **Storage ports per node**: 2 ports (one for VLAN 711, one for VLAN 712)
-- **Total ARC nodes per zone**: 2 nodes
+- **Storage ports per machine**: 2 ports (one for VLAN 711, one for VLAN 712)
+- **Total machines per zone**: 2 nodes
 - **Calculation**: 25 GbE × 2 ports × 2 nodes = **100 GbE total bandwidth required**
 
 ### Network architecture details
@@ -609,17 +609,17 @@ Each server in the cluster has:
 
 The following table shows the bandwidth requirements.
 
-| ARC nodes per zone | NIC Speed | Storage ports per node | Total bandwidth required |
-| ------------------ | --------- | ---------------------- | ------------------------ |
-| 1️                  | 10 GbE    | 2                      | 20 GbE                   |
-| 2️                  | 10 GbE    | 2                      | 40 GbE                   |
-| 3️                  | 10 GbE    | 2                      | 60 GbE                   |
-| 4️                  | 10 GbE    | 2                      | 80 GbE                   |
-| ➖                | ➖        | ➖                    | ➖                       |
-| 1️                  | 25 GbE    | 2                      | 50 GbE                   |
-| 2️                  | 25 GbE    | 2                      | 100 GbE                  |
-| 3️                  | 25 GbE    | 2                      | 150 GbE                  |
-| 4️                  | 25 GbE    | 2                      | 200 GbE                  |
+| Machines per zone | NIC speed (GbE) | Storage ports per machine | Total bandwidth required (Gbps) |
+| -- | -- | -- | -- |
+| 1 | 10 GbE | 2 | 20 Gbps |
+| 2 | 10 GbE | 2 | 40 Gbps |
+| 3 | 10 GbE | 2 | 60 Gbps |
+| 4 | 10 GbE | 2 | 80 Gbps |
+| ➖ | ➖ | ➖ | ➖ |
+| 1 | 25 GbE | 2 | 50 Gbps |
+| 2 | 25 GbE | 2 | 100 Gbps |
+| 3 | 25 GbE | 2 | 150 Gbps |
+| 4 | 25 GbE | 2 | 200 Gbps |
 
 ### Implementation considerations
 
