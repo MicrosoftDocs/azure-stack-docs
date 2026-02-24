@@ -3,7 +3,7 @@ title: Requirements and supported configurations for rack aware clusters
 description: Learn about requirements and supported configurations for rack aware clusters.
 author: alkohli
 ms.topic: how-to
-ms.date: 10/21/2025
+ms.date: 02/24/2026
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -32,16 +32,17 @@ The necessary bandwidth can be calculated based on the cluster size and the netw
 
 <!--Add link--For detailed networking requirements, see the [network design requirements]().-->
 
-| Machines per zone | NIC speed (Gbps) | Storage ports | Required bandwidth (GbE) |
+| Machines per zone | NIC speed (Gbps) | Storage ports per machine | Required bandwidth (GbE) |
 | -- | -- | -- | -- |
-| 1 | 10 | 2 | 20 GbE |
-| 2 | 10 | 2 | 40 GbE |
-| 3 | 10 | 2 | 60 GbE |
-| 4 | 10 | 2 | 80 GbE |
-| 1 | 25 | 2 | 50 GbE |
-| 2 | 25 | 2 | 100 GbE |
-| 3 | 25 | 2 | 150 GbE |
-| 4 | 25 | 2 | 200 GbE |
+| 1 | 10 GbE | 2 | 20 GbE |
+| 2 | 10 GbE | 2 | 40 GbE |
+| 3 | 10 GbE | 2 | 60 GbE |
+| 4 | 10 GbE | 2 | 80 GbE |
+| ➖ | ➖ | ➖ | ➖ |
+| 1 | 25 GbE | 2 | 50 GbE |
+| 2 | 25 GbE | 2 | 100 GbE |
+| 3 | 25 GbE | 2 | 150 GbE |
+| 4 | 25 GbE | 2 | 200 GbE |
 
 ## Supported node configurations
 
