@@ -1,6 +1,6 @@
 ---
 title: Simplified Machine Provisioning for Azure Local (preview)
-description: Lean how to use simplified machine provisioning for Azure Local (preview).
+description: Learn how to use simplified machine provisioning for Azure Local (preview).
 author: sipastak
 ms.author: sipastak
 ms.topic: how-to
@@ -44,7 +44,9 @@ At a high level, there are three key stages:
 
 ### On-site prerequisites
 
-- Go to **Azure Arc** > **Operations** > **Machine provisioning (preview)**. On the **Get started** page, select **View Downloads** to download the software to your Windows 11 PC. The software includes the maintenance environment ISO image, USB prep tool, and a configurator app. A maintenance environment is a secure bootable OS that prepares a device for provisioning by generating the device ID and voucher for [FDO (Fido Device Onboard)](https://fidoalliance.org/device-onboarding-overview/).
+- Go to **Azure Arc** > **Operations** > **Machine provisioning (preview)**. On the **Get started** page, select **View Downloads** to download the software to your Windows 11 PC. The software includes the maintenance environment ISO image, USB Preparation Tool, and a configurator app. A maintenance environment is a secure bootable OS that prepares a device for provisioning by generating the device ID and voucher for [FDO (Fido Device Onboard)](https://fidoalliance.org/device-onboarding-overview/).
+
+    :::image type="content" source="media/simplified-machine-provisioning/view-downloads.png" alt-text="Screenshot of the Azure portal showing how to view downloads." border="false" lightbox="media/simplified-machine-provisioning/view-downloads.png":::
 
 - Use the Configurator app to download the ownership voucher, configure static IP address, and track the progress of machine setup.
 
@@ -82,7 +84,7 @@ The USB tool is used to create a bootable USB drive that contains the required i
 
 Follow these steps to create a USB installation media from your Windows 11 PC:
 
-1. [Download and extract the software package](#on-site-prerequisites) for the maintenance environment and USB prep tool. Attach the USB flash drive to your laptop.
+1. [Download and extract the software package](#on-site-prerequisites) for the maintenance environment and the USB Preparation Tool. Attach the USB flash drive to your laptop.
 
 1. Open the terminal. You need to be an administrator to run this tool.
 
@@ -116,9 +118,7 @@ Follow the steps to prepare server machines for simplified provisioning. Repeat 
 
     1. Additionally, ensure that Secure Boot and TPM are enabled.
 
-1. Wait for the operating system installation to complete. Expect the device to reboot twice. This process usually takes up to 30 minutes.
-
-1. Wait for the maintenance environment setup to be completed. The console shows **Maintenance environment setup completed successfully**.
+1. Wait for the maintenance environment setup to be completed. The console shows **Maintenance environment setup completed successfully**. Expect the device to reboot twice. This process usually takes up to 30 minutes.
 
 1. You can safely detach the USB flash drive after the maintenance environment setup is complete.
 
@@ -137,7 +137,7 @@ Follow the steps to prepare server machines for simplified provisioning. Repeat 
     - Or **copy voucher from USB flash drive**:
 
         1. Attach the same USB flash drive from step 1 to the Windows 11 PC, open the USB drive folder, and check for the following files under the USB drive folder.
-        
+
         1. Open the folder `\vouchers\<serial-number>\`, find log files, check for any errors, and troubleshoot. If errors are found, contact Microsoft Support.
 
         1. Collect the ownership voucher, a small .pem file named after the device’s serial number from `\vouchers\<serial-number>\` folder. Share the ownership voucher with the Azure portal IT administrator.
@@ -147,6 +147,8 @@ Follow the steps to prepare server machines for simplified provisioning. Repeat 
 ## Step 3: Provision machines from Azure
 
 1. Go to **Azure Arc** > **Operations** > **Machine provisioning (preview)**. On **Get started**, select **Provision** to provision Azure Local machines.
+
+    :::image type="content" source="media/simplified-machine-provisioning/provision-machines.png" alt-text="Screenshot of the Azure portal showing how to view downloads." border="false" lightbox="media/simplified-machine-provisioning/provision-machines.png":::
 
 1. Create site. Make a note of the resource group name. Make sure that you're either the [resource group owner](/azure/role-based-access-control/built-in-roles#owner) or have the [Contributor](/azure/role-based-access-control/built-in-roles#contributor) and [Role Based Access Control Administrator](/azure/role-based-access-control/built-in-roles#role-based-access-control-administrator) permissions on the resource group where you provision the servers.
 
