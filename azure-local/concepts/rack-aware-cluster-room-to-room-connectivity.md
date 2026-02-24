@@ -584,7 +584,7 @@ The RDMA network VLANs (711 and 712) are connected by a set of bundled links to 
 The required bandwidth for room-to-room links can be calculated using the following formula:
 
 ```
-Bandwidth required = (NIC speed) × (storage ports per node) × (total ARC nodes per zone)
+Bandwidth required = (NIC speed) × (storage ports per machine) × (total machines per zone)
 ```
 
 ### Example configuration (2×2 environment)
@@ -592,8 +592,8 @@ Bandwidth required = (NIC speed) × (storage ports per node) × (total ARC nodes
 Using a 2×2 configuration with 25-GbE storage NICs:
 
 - **Storage interface speed**: 25 GbE per port
-- **Storage ports per node**: 2 ports (one for VLAN 711, one for VLAN 712)
-- **Total ARC nodes per zone**: 2 nodes
+- **Storage ports per machine**: 2 ports (one for VLAN 711, one for VLAN 712)
+- **Total machines per zone**: 2 nodes
 - **Calculation**: 25 GbE × 2 ports × 2 nodes = **100 GbE total bandwidth required**
 
 ### Network architecture details
