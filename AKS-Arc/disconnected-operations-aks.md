@@ -49,7 +49,7 @@ To create an AKS cluster that supports disconnected operations, see [Create an A
 
 Before you install the Azure CLI extension, make sure you have the following installed:
 
-- [Azure CLI](../manage/disconnected-operations-cli.md)
+- [Azure CLI](AKS-Arc\disconnected-operations-aks.md)
 - Extension version:
   - customlocation: 0.1.4
   - aksarc: 1.2.23
