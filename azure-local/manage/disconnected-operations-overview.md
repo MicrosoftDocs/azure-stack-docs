@@ -55,7 +55,7 @@ Disconnected operations for Azure Local support the following services:
 
 To be eligible to procure disconnected operations, you must meet the following criteria:
 
-- **Microsoft Customer Agreement for Enterprises (MCA-E)**: A Microsoft Customer agreement for enterprises or other eligible agremeent types. You should discuss your agreement options with your account team before qualifying.
+- **Microsoft Customer Agreement for Enterprises (MCA-E)**: A Microsoft Customer agreement for enterprises or other eligible agremeent types. You should discuss your agreement options with your account team before you qualify.
 
 - **Business needs to operate disconnected**: Disconnected operations are for organizations that can't connect to Azure because of connectivity issues or regulatory restrictions. To be able to procure disconnected operations, you need a valid business need for running and operating in a disconnected environment. For more information, see [Why use disconnected operations?](./disconnected-operations-overview.md#why-use-disconnected-operations)
 
