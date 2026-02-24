@@ -55,7 +55,7 @@ Disconnected operations for Azure Local support the following services:
 
 To be eligible to procure disconnected operations, you must meet the following criteria:
 
-- **Microsoft Customer Agreement for Enterprises (MCA-E)**: A Microsoft Customer agreement with Microsoft for enterprises.
+- **Microsoft Customer Agreement for Enterprises (MCA-E)**: A Microsoft Customer agreement with Microsoft for enterprises or other eligble agremeent types. You should discuss your agreement type options with your account team prior to qualification.
 
 - **Business needs to operate disconnected**: Disconnected operations are for organizations that can't connect to Azure because of connectivity issues or regulatory restrictions. To be able to procure disconnected operations, you need a valid business need for running and operating in a disconnected environment. For more information, see [Why use disconnected operations?](./disconnected-operations-overview.md#why-use-disconnected-operations)
 
@@ -63,7 +63,7 @@ To be eligible to procure disconnected operations, you must meet the following c
 
 - **Hardware**: Disconnected operations support premier Azure Local hardware. You must bring your own Azure Local hardware. For a list of supported configurations, see the [Azure Local solutions catalog](https://azurestackhcisolutions.azure.microsoft.com/#/catalog).
 
-  - Plan enough capacity for the management cluster to host the disconnected operations appliance VM. Make sure to include capacity for core Azure Local infrastructure components and any workloads you plan to run on the management cluster. Review the minimum specifications for setting up a management cluster with the disconnected operations appliance:
+  - Plan enough capacity for the management cluster to host the disconnected operations appliance VM. Make sure to include capacity for core Azure Local infrastructure components to run on the management cluster. Please do note that a dedicated management cluster is required at this time. Review the minimum specifications for setting up a management cluster with the disconnected operations appliance:
 
     | Specification                | Minimum configuration            |
     | -----------------------------| ---------------------------------|

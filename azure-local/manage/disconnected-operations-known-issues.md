@@ -33,7 +33,7 @@ Perform the following steps on all nodes:
 1. Verify if the scheduled task is created by running:
 
    ```powershell
-   `Get-ScheduledTask -TaskName HIMDS`.
+   Get-ScheduledTask -TaskName HIMDS 
    ```
 
 1. After the cloud deployment is complete, delete the task on each node by running:
@@ -61,6 +61,11 @@ In rare cases, deployments may time out, and services might not reach 100% conve
 **Mitigation:**
 
 Redeploy the disconnected operations appliance. If the issue persists after 2–3 clean redeployments, collect logs and open a support ticket.
+
+### Generating certificates gets stuck using cmdlets or script based approach
+When running the Operations module to generate certificates or the script based approach - the session gets stuck when running through a Remote desktop session. 
+
+**Mitigation**: Make sure the remote desktop session is not mapping smart cards. If this option is enabled and you run the scripts to generate certificates - certreq gets stuck. 
 
 ### SSL/TLS error using management endpoint (OperationsModule)
 
