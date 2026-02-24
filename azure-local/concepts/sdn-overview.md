@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: concept-article
 ms.service: azure-local
-ms.date: 02/04/2026
+ms.date: 02/24/2026
 ms.subservice: hyperconverged
 ---
 
@@ -28,7 +28,7 @@ You can manage SDN on Azure Local in two ways: with Arc or with on-premises tool
     With SDN enabled by Azure Arc, you create and apply network security groups (NSGs) to logical networks and Azure Local VM network interfaces (NICs).
 
     > [!NOTE]
-    > AKS is supported on Azure Local instances when SDN is enabled by Arc. However, associating NSGs with the logical network used for AKS workload deployment or with AKS workload VM NICs isn't supported.
+    > AKS is supported on Azure Local instances configured with SDN enabled by Arc. However, associating NSGs with the logical network used for AKS workload deployment or with AKS workload VM NICs isn't supported.
 
 - **SDN managed by on-premises tools**: You can also manage SDN with on-premises tools like Windows Admin Center or SDN Express scripts. This approach is available for Windows Server and Azure Local 2311.2 or later. This method uses three main SDN components, and you choose which to deploy: Network Controller, Software Load Balancer (SLB), and Gateway. For more information, see [SDN managed by on-premises tools](../concepts/software-defined-networking-23h2.md).
 
