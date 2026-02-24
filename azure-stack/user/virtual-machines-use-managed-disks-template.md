@@ -36,7 +36,7 @@ To begin, let's take a look at how unmanaged disks are deployed. When creating u
 }
 ```
 
-Within the virtual machine object, add a dependency on the storage account to ensure that it's created before the virtual machine. Within the `storageProfile` section, specify the full URI of the VHD location, which references the storage account and is needed for the OS disk and any data disks. The following example creates one OS disk from an image, and one empty data disk with a 1023 GB size:
+Within the virtual machine object, add a dependency on the storage account so it's created before the virtual machine. Within the `storageProfile` section, specify the full URI of the VHD location, which references the storage account and is needed for the OS disk and any data disks. The following example creates one OS disk from an image, and one empty data disk with a 1023 GB size:
 
 ```json
 {
@@ -86,11 +86,11 @@ Within the virtual machine object, add a dependency on the storage account to en
 
 ## Managed disks template formatting
 
-With Azure managed disks, the disk becomes a top-level resource and no longer requires a storage account to be created by the user. Managed disks were first introduced in the `2017-03-30` API version. The following sections walk through the default settings and explain how to further customize your disks.
+With Azure managed disks, the disk becomes a top-level resource and doesn't require you to create and manage storage accounts. Managed disks also offer many features that unmanaged disks don't. Managed disks were introduced in the `2017-03-30` API version. The following sections walk through the default settings and explain how to further customize your disks.
 
 ### Default managed disk settings
 
-To create a VM with managed disks, you no longer need to create the storage account resource. In the template example below, there are some differences from the previous unmanaged disk examples:
+To create a VM with managed disks, you no longer need to create the storage account resource. In the following template example, there are some differences from the previous unmanaged disk examples:
 
 - The `apiVersion` is a version for a "virtualMachines" resource type which supports managed disks.
 - `osDisk` and `dataDisks` no longer refer to a specific URI for the VHD.
