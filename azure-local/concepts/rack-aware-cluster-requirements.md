@@ -32,17 +32,17 @@ The necessary bandwidth can be calculated based on the cluster size and the netw
 
 <!--Add link--For detailed networking requirements, see the [network design requirements]().-->
 
-| Machines per zone | NIC speed (Gbps) | Storage ports per machine | Required bandwidth (GbE) |
+| Machines per zone | NIC speed (GbE) | Storage ports per machine | Total bandwidth required (Gbps) |
 | -- | -- | -- | -- |
-| 1 | 10 GbE | 2 | 20 GbE |
-| 2 | 10 GbE | 2 | 40 GbE |
-| 3 | 10 GbE | 2 | 60 GbE |
-| 4 | 10 GbE | 2 | 80 GbE |
+| 1 | 10 GbE | 2 | 20 Gbps |
+| 2 | 10 GbE | 2 | 40 Gbps |
+| 3 | 10 GbE | 2 | 60 Gbps |
+| 4 | 10 GbE | 2 | 80 Gbps |
 | ➖ | ➖ | ➖ | ➖ |
-| 1 | 25 GbE | 2 | 50 GbE |
-| 2 | 25 GbE | 2 | 100 GbE |
-| 3 | 25 GbE | 2 | 150 GbE |
-| 4 | 25 GbE | 2 | 200 GbE |
+| 1 | 25 GbE | 2 | 50 Gbps |
+| 2 | 25 GbE | 2 | 100 Gbps |
+| 3 | 25 GbE | 2 | 150 Gbps |
+| 4 | 25 GbE | 2 | 200 Gbps |
 
 ## Supported node configurations
 
