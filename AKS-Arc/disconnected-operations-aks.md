@@ -59,7 +59,7 @@ Install the CLI extension using the following commands:
 
 ```azurecli
 az extension add --name aksarc --version 1.2.23 
-az extension add --name stack-hci-vm --version 1.3.0 
+az extension add --name stack-hci-vm --version 1.11.1 
 az config set core.instance_discovery=false --only-show-errors
  ```
 
