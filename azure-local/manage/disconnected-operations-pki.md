@@ -55,7 +55,7 @@ This table lists the mandatory certificates required for disconnected operations
 | Arc for Server Agent data service | `agentserviceapi.fqdn` |
 | Arc monitor agent | `amcs.monitoring.fqdn` |
 | Arc configuration data plane <br></br> Azure Arc-enabled Kubernetes | `arckubernetesconfig.fqdn` |
-| Azure Resource Manager | `armmanagement.fqdn` <br ></br>`management.fqdn` |
+| Azure Resource Manager | `armmanagement.fqdn` <br></br> `management.fqdn` |
 | Public portal catalog apis| `catalogapi.fqdn` |
 | Azure Data Policy | `data.policy.fqdn` |
 | Azure Arc resource bridge data plane | `dp.appliances.fqdn` |
@@ -67,7 +67,7 @@ This table lists the mandatory certificates required for disconnected operations
 | Public portal hosting | `hosting.fqdn` |
 | Secure token service | `login.fqdn` |
 | Arc metrics | `metricsingestiongateway.monitoring.fqdn` |
-| Public portal | `portal.fqdn`  |
+| Public portal | `portal.fqdn` |
 
 
 ### Management endpoints
@@ -217,7 +217,7 @@ $extCertFilePath = "C:\AzureLocalDisconnectedOperations\Certs\IngressEndpointsCe
 $certPassword = Read-Host -AsSecureString -Message 'CertPass' -Force  
 # Alternative
 # $certPassword = "REPLACEME"|ConvertTo-SecureString -AsPlainText -Force
-# Update to match certificate list in the table - if you are using this approach always review with the table above.
+# Update to match certificate list in the table. Check the "Ingress endpoint certificate requirements" section.
 $AzLCerts = @(    
   "*.edgeacr.$fqdn"      
   "*.vault.$fqdn"
