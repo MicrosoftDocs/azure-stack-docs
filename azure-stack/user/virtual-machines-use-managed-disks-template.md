@@ -14,7 +14,7 @@ ms.custom:
 
 # Use VM managed disks templates
 
-This article describes the differences between managed and unmanaged disks when using Azure Resource Manager templates to provision virtual machines in Azure Stack Hub. The examples help you to convert existing templates that use unmanaged disks to managed disks.
+This article describes the differences between managed and unmanaged disks when using Azure Resource Manager templates to provision virtual machines (VMs) in Azure Stack Hub. The examples help you to convert existing templates that use unmanaged disks to managed disks.
 
 > [!NOTE]
 > Unmanaged disks are retiring. Migrate to managed disks before the retirement date. For more information, see [Unmanaged disks deprecation](/azure/virtual-machines/unmanaged-disks-deprecation).
