@@ -217,7 +217,7 @@ $extCertFilePath = "C:\AzureLocalDisconnectedOperations\Certs\IngressEndpointsCe
 $certPassword = Read-Host -AsSecureString -Message 'CertPass' -Force  
 # Alternative
 # $certPassword = "REPLACEME"|ConvertTo-SecureString -AsPlainText -Force
-# Update to match certificate list in the table. Check the "Ingress endpoint certificate requirements" section.
+# Make sure the certificate list matches the table. Refer to the "Ingress endpoint certificate requirements" section for details.
 $AzLCerts = @(    
   "*.edgeacr.$fqdn"      
   "*.vault.$fqdn"
