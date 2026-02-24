@@ -62,10 +62,11 @@ In rare cases, deployments may time out, and services might not reach 100% conve
 
 Redeploy the disconnected operations appliance. If the issue persists after 2–3 clean redeployments, collect logs and open a support ticket.
 
-### Generating certificates gets stuck using cmdlets or script based approach
-When running the Operations module to generate certificates or the script based approach - the session gets stuck when running through a Remote desktop session. 
+### Generating certificates gets stuck
 
-**Mitigation**: Make sure the remote desktop session is not mapping smart cards. If this option is enabled and you run the scripts to generate certificates - certreq gets stuck. 
+When running the Operations module or using a script-based approach to generate certificates, the process may hang if executed through a Remote Desktop session.
+
+**Mitigation**:  Make sure that the Remote Desktop session isn't mapping smart cards. If smart card mapping is enabled, running the scripts to generate certificates can cause `certreq` to hang. 
 
 ### SSL/TLS error using management endpoint (OperationsModule)
 
