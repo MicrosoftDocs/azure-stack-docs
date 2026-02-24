@@ -148,7 +148,7 @@ Follow the steps to prepare server machines for simplified provisioning. Repeat 
 
 1. Go to **Azure Arc** > **Operations** > **Machine provisioning (preview)**. On **Get started**, select **Provision** to provision Azure Local machines.
 
-    :::image type="content" source="media/simplified-machine-provisioning/provision-machines.png" alt-text="Screenshot of the Azure portal showing how to view downloads." border="false" lightbox="media/simplified-machine-provisioning/provision-machines.png":::
+    :::image type="content" source="media/simplified-machine-provisioning/provision-machines.png" alt-text="Screenshot of the Azure portal showing where to select the Provision option." border="false" lightbox="media/simplified-machine-provisioning/provision-machines.png":::
 
 1. Create site. Make a note of the resource group name. Make sure that you're either the [resource group owner](/azure/role-based-access-control/built-in-roles#owner) or have the [Contributor](/azure/role-based-access-control/built-in-roles#contributor) and [Role Based Access Control Administrator](/azure/role-based-access-control/built-in-roles#role-based-access-control-administrator) permissions on the resource group where you provision the servers.
 
