@@ -33,7 +33,7 @@ Please note that this list is subject to change as new software versions are rel
 | NC 4.1.6        | AKS: 1.30.8<br>Azure Linux: 3.0.20250102 |
 | NC 4.4.3        | AKS: 1.31.8<br>Azure Linux: 3.0.20250702 |
 | NC 4.7.8        | AKS: 1.32.7<br>Azure Linux: 3.0.20250910 |
-| NC 4.9.1        | AKS: 1.33.7<br>Azure Linux: 3.0.20260204 |
+| NC 4.9.2        | AKS: 1.33.7<br>Azure Linux: 3.0.20260204 |
 
 ### Instance Storage versions
 
