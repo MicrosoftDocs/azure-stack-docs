@@ -308,6 +308,8 @@
               href: howto-baremetal-run-data-extract.md
             - name: Running BareMetal actions directly with nexusctl
               href: howto-baremetal-nexusctl.md
+        - name: Cluster Inspect Action
+          href: howto-cluster-inspect-action.md
     - name: Nexus Kubernetes cluster
       expanded: false
       items:
