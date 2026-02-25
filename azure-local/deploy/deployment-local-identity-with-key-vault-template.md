@@ -12,6 +12,8 @@ ms.subservice: hyperconverged
 
 # Deploy Azure Local using local identity with Azure Key Vault via Azure Resource Manager deployment template (preview)
 
+::: moniker range=">=azloc-2510"
+
 This article describes how to deploy Azure Local using local identity with Azure Key Vault by using an Azure Resource Manager (ARM) template configured for external DNS. The article also describes the prerequisites and the preparation steps required to begin the deployment.
 
 > [!IMPORTANT]
@@ -196,3 +198,11 @@ The following example shows how to configure the `dnsZones` parameter for deploy
 
 - [About Azure Local VM management](../manage/azure-arc-vm-management-overview.md).
 - [Create Azure Local VMs enabled by Azure Arc](../manage/create-arc-virtual-machines.md).
+
+::: moniker-end
+
+::: moniker range="<azloc-2510"
+
+This feature is available only in Azure Local 2510 or later.
+
+::: moniker-end
