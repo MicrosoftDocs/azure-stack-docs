@@ -110,9 +110,9 @@ The following tables summarize the release information for Azure Local across al
 
 ### Older versions of Azure Local
 
-#### [OS build 11.xxxx](#tab/OS-build-11-xxxx)
-
 The following table summarizes the release information for Azure Local across older versions.
+
+#### [OS build 11.xxxx](#tab/OS-build-11-xxxx)
 
 | Version | OS Build | Security update | What's new | Known issues |
 | ------ | ------- | --------------- | ---------- | ------------ |
