@@ -170,7 +170,7 @@ Premier Solutions and Integrated Systems: These are delivered preinstalled and p
 Validated Nodes: These may come preinstalled. The forementioned check or further sideloading update packages is required as per OEM recommendation
 
 ### Instance or node redeployment
-Premier Solutions and Integrated Systems: Some OEM provide ready to use ISO Images that matches the preinstalled and preconfigured version. 
+Premier Solutions and Integrated Systems: Some OEMs provide ready-to-use ISO images that match the preinstalled and preconfigured version.
 Validated Nodes: These may come preinstalled. The forementioned check or further sideloading update packages is required as per OEM recommendation
 
 ### Update existing Firmware and drivers
