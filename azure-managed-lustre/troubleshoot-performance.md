@@ -31,7 +31,7 @@ If your AMLFS deployment isn't achieving expected throughput or bandwidth, or yo
 |-----------------|--------------------|
 | Availability zone placement | To minimize latency, ensure Lustre clients (your compute nodes) and AMLFS are in the same Azure region and Availability Zone. |
 | Accelerated networking | Enable accelerated networking on all Lustre client VMs to maximize bandwidth. See [Client prerequisites](connect-clients.md) for instructions. |
-| File striping configuration | Optimize file striping for workloads that access large files. Wider striping improves throughput for single files, but could be detrimental for smaller files. Refer to [AMLFS documentation](optimize-file-layouts#file-and-directory-striping-in-amlfs) for guidance. |
+| File striping configuration | Optimize file striping for workloads that access large files. Wider striping improves throughput for single files, but could be detrimental for smaller files. Refer to [AMLFS documentation](optimize-file-layouts.md#file-and-directory-striping-in-amlfs) for guidance. |
 | File system size | Compare the provisioned throughput (shown on the AMLFS Overview tab) with current usage (Monitoring tab). If you reached the limit, consider a larger file system with greater provisioned throughput. |
 | Azure firewall configuration | Configure Azure Firewall to avoid routing Lustre client and AMLFS traffic through the firewall. Only filter traffic entering or leaving the subnet, not within the subnet. See AMLFS documentation for details. |
 
