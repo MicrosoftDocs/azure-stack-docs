@@ -26,7 +26,7 @@ Here are the Azure requirements for your Azure Local instance:
    - [Pay-as-you-go](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go/) subscription with credit card.
    - Subscription obtained through an Enterprise Agreement (EA).
    - Subscription obtained through the Cloud Solution Provider (CSP) program.
-   - For more information see [Microsoft Product Terms > Online Services > Azure](https://www.microsoft.com/licensing/terms/productoffering/MicrosoftAzure/] and select your respective licensing program.
+   - For more information see [Microsoft Product Terms > Online Services > Azure](https://www.microsoft.com/licensing/terms/productoffering/MicrosoftAzure/), then select your respective licensing program.
 
 - **Azure permissions**: Make sure that you're assigned the required roles and permissions for registration and deployment. For information on how to assign permissions, see [Assign Azure permissions for registration](../deploy/deployment-arc-register-server-permissions.md).
 - **Azure regions**: Azure Local is supported for the following regions:
@@ -282,8 +282,7 @@ You should always follow the OEM's recommended installation steps. If the OEM's 
     MinorDriverVersion		: 0
     ```
 
-# OEM information
-
+## OEM information
 > [!NOTE]
 > Original equipment manufacturers (OEMs) are able to provide technical training and certification, as well as technical guidance for deployments that complement the Microsoft Deployment documentation. These could be white papers or deployment guides.
 
