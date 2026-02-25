@@ -175,7 +175,7 @@ Validated Nodes: These may come preinstalled. The forementioned check or further
 
 ### Update existing Firmware and drivers
 Premier Solutions: will update their firmware and driver automatically via Azure Update Manager during the greatly automated update procedere.
-Integrated Systems and Validated Nodes: These require manual steps. It is recommended to update firmware and drivers before deployment. Please leverage OEM SBE packages depending for solutions, and consult your OEM and their additional deployment documentation.
+Integrated Systems and Validated Nodes: These require manual steps. It is recommended to update firmware and drivers before deployment. Please leverage OEM SBE packages appropriate for your solution type, and consult your OEM and their additional deployment documentation.
 
 ### Driver installation steps
 
