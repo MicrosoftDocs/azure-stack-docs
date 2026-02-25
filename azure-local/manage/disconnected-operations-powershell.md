@@ -10,7 +10,7 @@ ms.subservice: hyperconverged
 ai-usage: ai-assisted
 ---
 
-# Use Azure PowerShell for disconnected operations on Azure Local (preview)
+# Use Azure PowerShell for disconnected operations on Azure Local
 
 ::: moniker range=">=azloc-2602"
 
