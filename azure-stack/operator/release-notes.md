@@ -3,7 +3,7 @@ title: Azure Stack Hub release notes
 description: Release notes for Azure Stack Hub integrated systems, including updates and bug fixes.
 author: sethmanheim
 ms.topic: release-notes
-ms.date: 02/02/2026
+ms.date: 02/25/2026
 ms.author: sethm
 
 # Intent: As an Azure Stack Hub operator, I want to know what's new in the latest release so that I can plan my update.
@@ -25,7 +25,7 @@ To access release notes for a different version, use the version selector dropdo
 > The 2311 update introduces a change in the base host OS, updated to Windows Server 2022. Disconnected customers must obtain and update a SQL Server 2019 product key (PID). You must get the key before starting the update. To obtain this key, contact Microsoft support.
 > If you start the update without this key, the update will fail shortly after starting, with a "Prepare of Role Cloud raised an exception" message, which advises you contact support. You can resume the update after applying the new key.
 ::: moniker-end
-::: moniker range="<azs-2601"
+::: moniker range="<azs-2604"
 > [!IMPORTANT]  
 > If your Azure Stack Hub instance is behind by more than two updates, it's considered out of compliance. You must [update to at least the minimum supported version to receive support](azure-stack-servicing-policy.md#keep-your-system-under-support).
 ::: moniker-end
@@ -54,6 +54,61 @@ You can download the Azure Stack Hub update package using [the Azure Stack Hub u
 <!---------------------------------------------------------->
 <!------------------- SUPPORTED VERSIONS ------------------->
 <!---------------------------------------------------------->
+::: moniker range="azs-2604"
+## 2604 build reference
+
+The Azure Stack Hub 2604 update build number is **1.2604.x.xx**.
+
+### Update type
+
+The Azure Stack Hub 2604 update build type is **Full**. This build contains only important security updates.
+
+The 2604 update has the following expected runtimes based on our internal testing:
+
+- 4 nodes: 8-28 hours
+- 8 nodes: 11-30 hours
+- 12 nodes: 14-34 hours
+- 16 nodes: 17-40 hours
+
+Exact update durations typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware specifications. Durations that are shorter or longer than the expected value are not uncommon and do not require action by Azure Stack Hub operators unless the update fails. This runtime approximation is specific to the 2604 update and should not be compared to other Azure Stack Hub updates.
+For more information about update build types, see [Manage updates in Azure Stack Hub](azure-stack-updates.md).
+
+### What's new
+
+- The Microsoft Entra ID [Graph API service is being retired](https://techcommunity.microsoft.com/blog/microsoft-entra-blog/important-update-azure-ad-graph-api-retirement/4090534). For more information, see [Microsoft Entra ID Graph API retirement](graph-api-retirement.md).
+
+<!-- ### Changes -->
+
+<!-- ### Fixes  -->
+
+## Security updates
+
+For information about security updates in this update of Azure Stack Hub, see [Azure Stack Hub security updates](release-notes-security-updates.md).
+
+## Hotfixes
+
+Azure Stack Hub releases hotfixes regularly. Starting with the 2005 release, when you update to a new major version (for example, 1.2008.x to 1.2102.x), the latest hotfixes (if any) in the new major version are installed automatically. From that point forward, if a hotfix is released for your build, you should install it.
+
+> [!NOTE]
+> Azure Stack Hub hotfix releases are cumulative; you only need to install the latest hotfix to get all fixes included in any previous hotfix releases for that version.
+
+For more information, see our [servicing policy](azure-stack-servicing-policy.md).
+
+### Hotfix prerequisites: before applying the 2604 update
+
+The 2604 release of Azure Stack Hub must be applied on the 2601 release with the following hotfix installed:
+
+- No hotfixes have been released for 2601 at this time.
+
+### After successfully applying the 2506 update
+
+When you update to a new major version (for example, 1.2108.x to 1.2206.x), the latest hotfixes (if any) in the new major version are installed automatically. From that point forward, if a hotfix is released for your build, you should install it.
+
+After the installation of 2604, if any hotfixes for 2604 are subsequently released, you should install them:
+
+- No hotfixes have been released for 2604 at this time.
+::: moniker-end
+
 ::: moniker range="azs-2601"
 ## 2601 build reference
 
@@ -165,67 +220,12 @@ After the installation of 2506, if any hotfixes for 2506 are subsequently releas
 - [Azure Stack Hub hotfix 1.2506.2.24](hotfix-1-2506-2-24.md)
 ::: moniker-end
 
-::: moniker range="azs-2501"
-## 2501 build reference
-
-The Azure Stack Hub 2501 update build number is **1.2501.0.21**.
-
-### Update type
-
-The Azure Stack Hub 2501 update build type is **Full**. This build contains only important security updates.
-
-The 2501 update has the following expected runtimes based on our internal testing:
-
-- 4 nodes: 8-28 hours
-- 8 nodes: 11-30 hours
-- 12 nodes: 14-34 hours
-- 16 nodes: 17-40 hours
-
-Exact update durations typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware specifications. Durations that are shorter or longer than the expected value are not uncommon and do not require action by Azure Stack Hub operators unless the update fails. This runtime approximation is specific to the 2501 update and should not be compared to other Azure Stack Hub updates.
-
-For more information about update build types, see [Manage updates in Azure Stack Hub](azure-stack-updates.md).
-
-### What's new
-
-- The Microsoft Entra ID [Graph API service is being retired](https://techcommunity.microsoft.com/blog/microsoft-entra-blog/important-update-azure-ad-graph-api-retirement/4090534). For more information, see [Microsoft Entra ID Graph API retirement](graph-api-retirement.md).
-
-<!-- ### Changes -->
-
-### Fixes
-
-- Fixed an issue in which the **Deployments** blade under a subscription failed to load.
-
-## Security updates
-
-For information about security updates in this update of Azure Stack Hub, see [Azure Stack Hub security updates](release-notes-security-updates.md).
-
-## Hotfixes
-
-Azure Stack Hub releases hotfixes regularly. Starting with the 2005 release, when you update to a new major version (for example, 1.2008.x to 1.2102.x), the latest hotfixes (if any) in the new major version are installed automatically. From that point forward, if a hotfix is released for your build, you should install it.
-
-> [!NOTE]
-> Azure Stack Hub hotfix releases are cumulative; you only need to install the latest hotfix to get all fixes included in any previous hotfix releases for that version.
-
-For more information, see our [servicing policy](azure-stack-servicing-policy.md).
-
-### Hotfix prerequisites: before applying the 2501 update
-
-The 2501 release of Azure Stack Hub must be applied on the 2408 release with the following hotfix installed:
-
-- [Azure Stack Hub hotfix 1.2408.1.50](hotfix-1-2408-1-50.md)
-
-### After successfully applying the 2501 update
-
-When you update to a new major version (for example, 1.2108.x to 1.2206.x), the latest hotfixes (if any) in the new major version are installed automatically. From that point forward, if a hotfix is released for your build, you should install it.
-
-After the installation of 2501, if any hotfixes for 2501 are subsequently released, you should install them:
-
-- [Azure Stack Hub hotfix 1.2501.1.47](hotfix-1-2501-1-47.md)
-::: moniker-end
-
 <!------------------------------------------------------------>
 <!------------------- UNSUPPORTED VERSIONS ------------------->
 <!------------------------------------------------------------>
+::: moniker range="azs-2501"
+## 2501 archived release notes
+::: moniker-end
 ::: moniker range="azs-2408"
 ## 2408 archived release notes
 ::: moniker-end
@@ -311,6 +311,6 @@ After the installation of 2501, if any hotfixes for 2501 are subsequently releas
 ## 1802 archived release notes
 ::: moniker-end
 
-::: moniker range="<azs-2501"
+::: moniker range="<azs-2506"
 You can access older versions of Azure Stack Hub release notes in the table of contents on the left side, under [Resources > Release notes archive](./relnotearchive/release-notes.md). Select the desired archived version from the version selector dropdown in the upper left. These archived articles are provided for reference purposes only and do not imply support for these versions. For information about Azure Stack Hub support, see [Azure Stack Hub servicing policy](azure-stack-servicing-policy.md). For further assistance, contact Microsoft Customer Support Services.
 ::: moniker-end
