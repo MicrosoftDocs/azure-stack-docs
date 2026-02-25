@@ -1,12 +1,12 @@
 ---
 title: Cluster Inspect Action Hardware Validation
 description: Overview of Cluster Inspect Action Hardware Validation
+author: vanjams
+ms.author: vanjanikolin
 ms.service: azure-operator-nexus
-ms.custom: how-to
 ms.topic: how-to
 ms.date: 02/03/2026
-author: vanjanikolin
-ms.author: vanjanikolin
+ms.custom: template-how-to
 ---
 
 # Cluster Inspect Action Hardware Validation
@@ -31,7 +31,7 @@ The time required to complete cluster inspect depends on the number of nodes and
 
 ## Cluster Inspect Command Arguments
 
-The `az networkcloud cluster inspect` command triggers an inspection of the cluster to perform validation and optional corrective actions based on the supplied additional actions and filters.
+The `az networkcloud cluster inspect` command triggers an inspection of the cluster to perform validation and optional corrective actions based on the supplied extra actions and filters.
 
 | Parameter | Description |
 |---|---|
