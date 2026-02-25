@@ -158,7 +158,6 @@ Follow the steps to prepare server machines for simplified provisioning. Repeat 
     |---------|---------|
     |Time zone     | Select the common time zone for all the machines under the site. You can change it later. New machines use this time zone, but existing ones don't.       |
     |Time server    |  Enter the common time server for synchronized system time for all the machines under the site. You can change it later. New machines use this time server, but existing ones don't. |
-    |Azure Arc connectivity | Select whether to connect via a public endpoint or a proxy server. If you use a public endpoint, devices connect directly to Azure Arc endpoints. If you use a proxy server, configure the proxy server and the list of addresses to bypass the proxy.<br><br> This simplifies the configuration where all the machines associated with this site use the same Azure Arc connectivity settings ensuring consistency. |
     |Azure Arc gateway | Either create or select your Azure Arc gateway resource instance. Azure Arc gateway enables minimal endpoints connections to Azure Arc. For more information, see [How to simplify network configuration requirements through Azure Arc gateway](/azure/azure-arc/servers/arc-gateway). |
 
 1. Select the site, add vouchers from [Prepare machines](#step-2-prepare-machines), software version, and local administrator credentials. The password must have at least 12 characters including lower and upper-case characters, a digit, and a special character. Once you add machines, select the pencil button to edit. Provide the machine name as the Arc resource name.
@@ -178,11 +177,11 @@ Follow these steps to track the installation progress from your Windows 11 PC.
 
 1. Open the **Start** menu, type **Configurator App**, and select **Configurator App for Azure Local V2**.
 
-1. Connect to the machine. Use the `ROE-<device serial number>.local` or IP address. Enter the local administrator’s credentials. The default username is *edgeuser*. The default password is *Password1*. 
+1. Connect to the machine. Use the `<machine serial number>.local` or IP address. Enter the local administrator’s credentials. The default username is *edgeuser*. The default password is *Password1*. 
 
 1. Wait for the Azure Arc configuration to finish on maintenance environment. After this step, the Azure Stack HCI operating system from [Provision machines from Azure](#step-3-provision-machines-from-azure) installs.
 
-After installing the Azure Stack HCI operating system, use the `ROE-<device serial number>.local` or IP address. Use the administrator credentials you configured while provisioning the machine. Wait for the configuration to finish and repeat all the steps on the other servers until the Arc configuration succeeds.
+After installing the Azure Stack HCI operating system, use the `<machine serial number>.local` or IP address. Use the administrator credentials you configured while provisioning the machine. Wait for the configuration to finish and repeat all the steps on the other servers until the Arc configuration succeeds.
 
 ## Step 5: Verify Azure Arc connectivity
 
