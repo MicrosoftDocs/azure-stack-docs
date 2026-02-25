@@ -112,7 +112,7 @@ The following tables summarize the release information for Azure Local across al
 
 The following table summarizes the release information for Azure Local across older versions.
 
-#### [OS build 25398.xxx (11.xxx)](#tab/OS-build-25398-xxx)
+#### [OS build 25398.xxxx (11.xxxx)](#tab/OS-build-25398-xxx)
 
 | Version | OS Build | Security update | What's new | Known issues |
 | ------ | ------- | --------------- | ---------- | ------------ |
@@ -122,7 +122,7 @@ The following table summarizes the release information for Azure Local across ol
 | 11.2505.1001.22 <br><br> Availability date: 2025-05-28 | 25398.1611 | [May OS security update](security-update/security-update.md?view=azloc-2505&preserve-view=true) | [Features and improvements](./whats-new.md?view=azloc-2505&preserve-view=true#features-and-improvements-in-2505) | [Known issues](./known-issues.md?view=azloc-2505&preserve-view=true) |
 | 11.2504.1001.21 <br><br> Availability date: 2026-01-22 <br><br> Supersedes: 11.2504.1001.19 <br><br> Availability date: 2025-04-21 | 25398.1551 | [April OS security update](security-update/security-update.md?view=azloc-2504&preserve-view=true) | [Features and improvements](./whats-new.md?view=azloc-2504&preserve-view=true#features-and-improvements-in-2504) | [Known issues](./known-issues.md?view=azloc-2504&preserve-view=true) |
 
-#### [OS build 25398.xxx (10.xxx)](#tab/OS-build-25398-xxx)
+#### [OS build 25398.xxxx (10.xxxx)](#tab/OS-build-25398-xxx)
 
 | Version | OS Build | Security update | What's new | Known issues |
 | ------ | ------- | --------------- | ---------- | ------------ |
