@@ -39,7 +39,7 @@ To access known issues for a different archived version, use the version selecto
 
 - Applicable: This issue applies to all supported versions of Azure Stack Hub.
 - Cause: The Microsoft Entra ID [Graph API service is being retired](https://techcommunity.microsoft.com/blog/microsoft-entra-blog/important-update-azure-ad-graph-api-retirement/4090534).
-- Remediation: Run the [script included in this article](graph-api-retirement.md) for all impacted applications. The script sets a flag that configures these applications for an extension that allows these specific applications to continue calling the legacy Graph API until June 2025.
+- Remediation: Run the [script included in this article](../graph-api-retirement.md) for all impacted applications. The script sets a flag that configures these applications for an extension that allows these specific applications to continue calling the legacy Graph API until June 2025.
 - Occurrence: Occasional.
 
 <!-- ## Alerts -->

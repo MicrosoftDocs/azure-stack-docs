@@ -38,11 +38,11 @@ The 2501 update has the following expected runtimes based on our internal testin
 
 Exact update durations typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware specifications. Durations that are shorter or longer than the expected value are not uncommon and do not require action by Azure Stack Hub operators unless the update fails. This runtime approximation is specific to the 2501 update and should not be compared to other Azure Stack Hub updates.
 
-For more information about update build types, see [Manage updates in Azure Stack Hub](azure-stack-updates.md).
+For more information about update build types, see [Manage updates in Azure Stack Hub](../azure-stack-updates.md).
 
 ### What's new
 
-- The Microsoft Entra ID [Graph API service is being retired](https://techcommunity.microsoft.com/blog/microsoft-entra-blog/important-update-azure-ad-graph-api-retirement/4090534). For more information, see [Microsoft Entra ID Graph API retirement](graph-api-retirement.md).
+- The Microsoft Entra ID [Graph API service is being retired](https://techcommunity.microsoft.com/blog/microsoft-entra-blog/important-update-azure-ad-graph-api-retirement/4090534). For more information, see [Microsoft Entra ID Graph API retirement](../graph-api-retirement.md).
 
 <!-- ### Changes -->
 
@@ -52,7 +52,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 ## Security updates
 
-For information about security updates in this update of Azure Stack Hub, see [Azure Stack Hub security updates](release-notes-security-updates.md).
+For information about security updates in this update of Azure Stack Hub, see [Azure Stack Hub security updates](../release-notes-security-updates.md).
 
 ## Hotfixes
 
@@ -61,13 +61,13 @@ Azure Stack Hub releases hotfixes regularly. Starting with the 2005 release, whe
 > [!NOTE]
 > Azure Stack Hub hotfix releases are cumulative; you only need to install the latest hotfix to get all fixes included in any previous hotfix releases for that version.
 
-For more information, see our [servicing policy](azure-stack-servicing-policy.md).
+For more information, see our [servicing policy](../azure-stack-servicing-policy.md).
 
 ### Hotfix prerequisites: before applying the 2501 update
 
 The 2501 release of Azure Stack Hub must be applied on the 2408 release with the following hotfix installed:
 
-- [Azure Stack Hub hotfix 1.2408.1.50](hotfix-1-2408-1-50.md)
+- [Azure Stack Hub hotfix 1.2408.1.50](../hotfix-1-2408-1-50.md)
 
 ### After successfully applying the 2501 update
 
@@ -75,7 +75,7 @@ When you update to a new major version (for example, 1.2108.x to 1.2206.x), the 
 
 After the installation of 2501, if any hotfixes for 2501 are subsequently released, you should install them:
 
-- [Azure Stack Hub hotfix 1.2501.1.47](hotfix-1-2501-1-47.md)
+- [Azure Stack Hub hotfix 1.2501.1.47](../hotfix-1-2501-1-47.md)
 ::: moniker-end
 
 ::: moniker range="azs-2408"
