@@ -166,8 +166,6 @@ items:
 
     - name: Deploy using local identity with Key Vault
       href: deploy/deployment-local-identity-with-key-vault.md
-    - name: Deploy using simplified machine provisioning
-      href: deploy/simplified-machine-provisioning.md
     - name: Deploy workloads
       items:
       - name: Run AKS on Azure Local

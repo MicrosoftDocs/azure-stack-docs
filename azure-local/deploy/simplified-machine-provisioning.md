@@ -46,6 +46,8 @@ At a high level, there are three key stages:
 
 ### On-site prerequisites
 
+- [Prepare your Active Directory](deployment-prep-active-directory.md) environment.
+
 - Go to **Azure Arc** > **Operations** > **Machine provisioning (preview)**. On the **Get started** page, select **View Downloads** to download the software to your Windows 11 PC. The software includes the maintenance environment ISO image, USB preparation tool, and the Configurator app. A maintenance environment is a secure bootable OS that prepares a device for provisioning by generating the device ID and voucher.
 
     :::image type="content" source="media/simplified-machine-provisioning/view-downloads.png" alt-text="Screenshot of the Azure portal showing how to view downloads." border="false" lightbox="media/simplified-machine-provisioning/view-downloads.png":::
@@ -196,7 +198,8 @@ Confirm your machines connect to Azure. To monitor the provisioning machine stat
 
 ## Next steps
 
-After your machines are registered with Azure Arc, proceed to deploy your Azure Local instance via one of the following options: 
-
-- [Deploy via Azure portal](../deploy/deploy-via-portal.md)
-- [Deploy via Azure Resource Manager (ARM) template ](../deploy/deployment-azure-resource-manager-template.md)
+- Set up [subscription permissions](deployment-arc-register-server-permissions.md) prior to deployment.
+- Skip registration as this step already registered your Azure Local machines.
+- Once the permissions are set up, you can deploy your Azure Local instance via one of the following options:
+  - [Deploy via Azure portal](../deploy/deploy-via-portal.md)
+  - [Deploy via Azure Resource Manager (ARM) template ](../deploy/deployment-azure-resource-manager-template.md)
