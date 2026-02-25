@@ -293,8 +293,6 @@ However, if you prefer extra caution, you may choose to keep the backup until al
 > [!IMPORTANT]
 > Complete steps 1-7 on the next control plane node. Don't proceed to multiple nodes simultaneously. Wait for each node to fully recover before moving to the next.
 
-Repeat steps 1-7 on each remaining control plane node until all nodes have been renewed.
-
 #### Step 9: Verify Cluster Functionality
 
 After renewing certificates on all control plane nodes, verify the cluster is operational:
