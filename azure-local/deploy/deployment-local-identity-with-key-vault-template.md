@@ -3,7 +3,7 @@ title: Deploy Azure Local using local identity with Azure Key Vault via an Azure
 description: Learn how to prepare and then deploy Azure Local using local identity with Azure Key Vault using an Azure Resource Manager (ARM) template (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 02/23/2026
+ms.date: 02/25/2026
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -105,7 +105,7 @@ For an example of a parameters JSON file for deployments that use external DNS, 
 
     Once deployment initiates, the process runs a limited Environment Checker run, a full Environment Checker run, and starts cloud deployment. After a few minutes, you can monitor deployment in the portal.
 
-    <!--:::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-9.png" alt-text="Screenshot showing the status of environment checker validation." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-9.png":::-->
+    :::image type="content" source="./media/deployment-local-identity-with-key-vault-template/deployment-status.png" alt-text="Screenshot showing a successfully completed ARM template deployment." lightbox="./media/deployment-local-identity-with-key-vault-template/deployment-status.png":::
 
 1. In a new browser window, go to the resource group for your environment. Select the cluster resource.
 
