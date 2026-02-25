@@ -46,6 +46,9 @@ The following commands are currently supported:
   Command name: `mde-agent-information`\
   Arguments: None
 
+  > [!WARNING]
+  > As of NC4.10 and the `v20250701preview` API version, this command isn't supported by the nonrestricted `run-data-extract` command. To run `mde-support-diagnostics`, go to [Run a run-data-extracts-restricted command](#executing-a-run-data-extracts-restricted-command).
+
 - [Collect Microsoft Defender for Endpoint diagnostic support logs](#collect-mde-support-diagnostics)\
   Command name: `mde-support-diagnostics`\
   Arguments: None
@@ -805,6 +808,10 @@ The functionality of the `run-data-extracts-restricted` command mirrors the nonr
 You can run the `run-data-extracts-restricted` command as a new and separate API action. The action will be introduced in the `v20250701preview` and `v20250901` versions of the GA API, and will mirror the behavior of the original command but with restricted access to specific subcommands. The following list contains the allowed subcommands for `run-data-extracts-restricted`:
 
 - [Collect Microsoft Defender for Endpoint agent information](#collect-mde-agent-information)\
+  Command name: `mde-agent-information`\
+  Arguments: None
+
+- [Collect Microsoft Defender for Endpoint support diagnostics](#collect-mde-support-diagnostics)\
   Command name: `mde-agent-information`\
   Arguments: None
 
