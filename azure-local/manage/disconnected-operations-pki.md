@@ -45,27 +45,30 @@ This table lists the mandatory certificates required for disconnected operations
 
 | Service | Required certificate subject and Subject Alternative Name (SAN) |
 | ------------------- | ---------------------- |  
-| Azure Container Registry | `*.edgeacr.fqdn` |
-| Azure Key Vault | `*.vault.fqdn` |
-| Azure queue storage | `*.queue.fqdn` |
-| Azure Table storage | `*.table.fqdn` |
 | Azure Blob storage | `*.blob.fqdn` |
+| Azure Container Registry | `*.edgeacr.fqdn` |
+| Azure queue storage | `*.queue.fqdn` |
 | Azure Service Bus | `*.servicebus.fqdn` |
-| Azure Data Policy | `data.policy.fqdn` |
-| Arc configuration data plane <br></br> Azure Arc-enabled Kubernetes | `arckubernetesconfig.fqdn` |
+| Azure Table storage | `*.table.fqdn` |
+| Azure Key Vault | `*.vault.fqdn` |
+| Admin management | `adminmanagement.fqdn` |
 | Arc for Server Agent data service | `agentserviceapi.fqdn` |
-| Arc for server | `his.fqdn` |
-| Arc guest notification service | `guestnotificationservice.fqdn` |
-| Arc metrics | `metricsingestiongateway.monitoring.fqdn` |
 | Arc monitor agent | `amcs.monitoring.fqdn` |
+| Arc configuration data plane <br></br> Azure Arc-enabled Kubernetes | `arckubernetesconfig.fqdn` |
+| Azure Resource Manager | `armmanagement.fqdn` <br></br> `management.fqdn` |
+| Public portal catalog apis| `catalogapi.fqdn` |
+| Azure Data Policy | `data.policy.fqdn` |
 | Azure Arc resource bridge data plane | `dp.appliances.fqdn` |
-| Azure Resource Manager | `armmanagement.fqdn` |
-| Appliances | `adminmanagement.fqdn` |
+| Licensing | `dp.aszrp.fqdn` |
 | Front end appliances | `frontend.appliances.fqdn` |
 | Graph | `graph.fqdn` |
-| Licensing | `dp.aszrp.fqdn` <br></br> `ibc.fqdn` |
-| Public portal | `portal.fqdn` <br></br> `hosting.fqdn` <br></br> `catalogapi.fqdn` |
+| Arc guest notification service | `guestnotificationservice.fqdn` |
+| Arc for server | `his.fqdn` |
+| Public portal hosting | `hosting.fqdn` |
 | Secure token service | `login.fqdn` |
+| Arc metrics | `metricsingestiongateway.monitoring.fqdn` |
+| Public portal | `portal.fqdn` |
+
 
 ### Management endpoints
 
@@ -214,6 +217,7 @@ $extCertFilePath = "C:\AzureLocalDisconnectedOperations\Certs\IngressEndpointsCe
 $certPassword = Read-Host -AsSecureString -Message 'CertPass' -Force  
 # Alternative
 # $certPassword = "REPLACEME"|ConvertTo-SecureString -AsPlainText -Force
+# Make sure the certificate list matches the table. Refer to the "Ingress endpoint certificate requirements" section for details.
 $AzLCerts = @(    
   "*.edgeacr.$fqdn"      
   "*.vault.$fqdn"

@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: concept-article
 ms.service: azure-local
-ms.date: 12/19/2025
+ms.date: 02/24/2026
 ms.subservice: hyperconverged
 ---
 
@@ -90,7 +90,6 @@ You perform these operations either on the VM itself or on the cluster/node. The
 - Add a Small Computer System Interface (SCSI) controller and move an existing data disk to another SCSI controller
 - Remove a SCSI controller
 - Add or remove a DVD drive
-- Configure dynamic memory
 - Change VM boot order
 - Enable or disable integration services
 - Change an automatic start action
