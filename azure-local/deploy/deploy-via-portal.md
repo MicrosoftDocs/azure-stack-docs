@@ -238,9 +238,9 @@ On the **Configuration** tab, choose whether to create a new configuration for t
     
     |# machines  |Volume resiliency  |# Infrastructure volumes  |# Workload volumes  |
     |---------|---------|---------|----------|
-    |Single machine    |Two-way mirror         | 1        | Atleast 1 per machine        |
-    |Two machines     | Two-way mirror       | 1        |  Atleast 1 per machine       |
-    |Three machines +     | Three-way mirror        |1        | Atleast 1 per machine         |
+    |Single machine    |Two-way mirror         | 1        | At least 1 per machine        |
+    |Two machines     | Two-way mirror       | 1        |  At least 1 per machine       |
+    |Three machines +     | Three-way mirror        |1        | At least 1 per machine         |
 
 1. Select **Next: Tags**.
 1. Optionally add a tag to the Azure Local resource in Azure.
