@@ -11,6 +11,8 @@ ms.custom: template-how-to-pattern
 
 # NAKS certificate expiration and upgrade requirements
 
+This article provides guidance on managing certificate lifecycles in Nexus Azure Kubernetes Service (NAKS) clusters to prevent expiration-related outages.
+
 ## Overview
 
 Nexus Azure Kubernetes Service (NAKS) clusters rely on Transport Layer Security (TLS) certificates to secure communication between control plane components. These certificates have a validity period of **one year** from the time of cluster creation or last upgrade. If a NAKS cluster isn't upgraded within this timeframe, the certificates expire, resulting in a complete cluster outage.
@@ -28,11 +30,11 @@ This document explains:
 ### What certificates are used?
 
 NAKS control plane components use TLS certificates to secure communication between:
-- **etcd cluster members** (peer-to-peer communication)
-- **kube-apiserver and etcd** (client-server communication)
-- **kube-apiserver** (serving API requests)
-- **kubelet and kube-apiserver** (node-to-control-plane communication)
-- **Controller managers and schedulers** (control plane components)
+* **etcd cluster members** (peer-to-peer communication)
+* **kube-apiserver and etcd** (client-server communication)
+* **kube-apiserver** (serving API requests)
+* **kubelet and kube-apiserver** (node-to-control-plane communication)
+* **Controller managers and schedulers** (control plane components)
 
 These certificates are generated during cluster creation and are managed by NAKS.
 
@@ -46,10 +48,10 @@ All NAKS control plane certificates are valid for **365 days** (one year). After
 ### How upgrades refresh certificates
 
 When you perform a NAKS cluster upgrade:
-1. The upgrade process automatically renews all control plane certificates
-2. New certificates are generated with a fresh one-year validity period
-3. All control plane components are restarted to use the new certificates
-4. Certificate expiration risk is eliminated for another year
+* The upgrade process automatically renews all control plane certificates
+* New certificates are generated with a fresh one-year validity period
+* All control plane components are restarted to use the new certificates
+* Certificate expiration risk is eliminated for another year
 
 This automatic renewal happens transparently during every upgrade, whether it's a minor or patch version update.
 
@@ -163,9 +165,11 @@ Consider implementing automated monitoring that:
 
 ## Recovery procedure (when certificates have expired)
 
-**Warning:** This procedure should only be used if certificates have already expired and the cluster is experiencing an outage. If your certificates are still valid, perform a regular NAKS upgrade instead.
+> [!WARNING]
+> This procedure should only be used if certificates have already expired and the cluster is experiencing an outage. If your certificates are still valid, perform a regular NAKS upgrade instead.
 
-**Important Notes:**
+> [!NOTE]
+> Important Notes:
 - This is a manual, low-level procedure that requires direct access to control plane nodes
 - It should be performed during a maintenance window
 - Backup all critical data before proceeding
@@ -204,7 +208,8 @@ Create a backup of the existing certificates in case recovery is needed:
 sudo cp -r /etc/kubernetes/pki /etc/kubernetes/pki.backup.$(date +%Y%m%d-%H%M%S)
 ```
 
-**Note:** This backup protects the entire PKI directory, which includes not only the expired certificates but also the Certificate Authority (CA) certificates and private keys. While expired certificates themselves can't restore cluster functionality, this backup serves as a safety net if the certificate renewal process encounters errors or corrupts critical CA files. If the renewal fails or causes issues, you can restore from this backup and retry the procedure or contact support for assistance.
+> [!NOTE]
+> This backup protects the entire PKI directory, which includes not only the expired certificates but also the Certificate Authority (CA) certificates and private keys. While expired certificates themselves can't restore cluster functionality, this backup serves as a safety net if the certificate renewal process encounters errors or corrupts critical CA files. If the renewal fails or causes issues, you can restore from this backup and retry the procedure or contact support for assistance.
 
 Verify the backup was created:
 
@@ -273,9 +278,10 @@ sudo crictl ps | grep -E 'kube-apiserver|etcd|kube-controller-manager|kube-sched
 
 You should see all five components running.
 
-**Optional: Clean up the backup**
-
-Now that you've confirmed the control plane components are running successfully with the renewed certificates, you can optionally remove the PKI backup created in Step 3:
+> [!NOTE]
+> **Optional: Clean up the backup**
+>
+> Now that you've confirmed the control plane components are running successfully with the renewed certificates, you can optionally remove the PKI backup created in Step 3:
 
 ```bash
 sudo rm -rf /etc/kubernetes/pki.backup*
