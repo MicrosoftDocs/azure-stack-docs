@@ -157,7 +157,7 @@ The following table describes the parameters that you define in the ARM template
 | dnsServers | List of DNS server IPs. |
 | useDhcp | Indicates whether to use Dynamic Host Configuration Protocol (DHCP) for hosts and cluster IPs. <br/>If not declared, the deployment defaults to static IPs. If TRUE, gateway and DNS servers aren't required. |
 | dnsServerConfig | Specifies how DNS servers are configured for the infrastructure network. Allowed values are:<br>- **UseDnsServer**: Uses the provided DNS servers.<br>- **UseForwarder**: Uses DNS forwarders.<br> For deployments that use the external DNS template, specify **UseDnsServer**. |
-| dnsZones | Specifies the DNS zones used to deploy an Azure Local cluster. For deployments that use the external DNS template, this parameter defines the external DNS zone configuration. See [dnsZones example](#dnszones-example). |
+| dnsZones | Specifies the DNS zones used to deploy an Azure Local instance. For deployments that use the external DNS template, this parameter defines the external DNS zone configuration. See [dnsZones example](#dnszones-example). |
 | physicalNodesSettings | Array of physical nodes with their IP addresses. |
 | networkingType | Type of networking. For example, switchedMultiServerDeployment.<br/>For more information, see [Specify network settings](../deploy/deploy-via-portal.md#specify-network-settings). |
 | networkingPattern | Pattern used for networking. For example, hyperConverged. |
@@ -190,8 +190,9 @@ The following example shows how to configure the `dnsZones` parameter for deploy
     }
   ]
 }
+```
 
 ## Next steps
 
-- [About Azure Local VM management](../manage/azure-arc-vm-management-overview.md)
-- [Create Azure Local VMs enabled by Azure Arc](../manage/create-arc-virtual-machines.md)
+- [About Azure Local VM management](../manage/azure-arc-vm-management-overview.md).
+- [Create Azure Local VMs enabled by Azure Arc](../manage/create-arc-virtual-machines.md).
