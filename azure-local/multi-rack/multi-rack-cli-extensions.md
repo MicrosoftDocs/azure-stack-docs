@@ -5,7 +5,7 @@ author: sipastak
 ms.author: sipastak
 ms.service: azure-local
 ms.topic: how-to
-ms.date: 1/12/2026
+ms.date: 01/20/2026
 ms.subservice: multi-rack
 ---
 
@@ -104,7 +104,7 @@ k8s-extension            1.6.4
 networkcloud             2.0.0
 k8s-configuration        2.2.0
 managednetworkfabric     8.0.0
-stack-hci-vm             0.1.18
+stack-hci-vm             1.11.5
 customlocation           0.1.3
 ssh                      2.0.6
 ```
