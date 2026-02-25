@@ -55,13 +55,13 @@ The following diagram illustrates the feature builds, cumulative updates, and up
 
 - Before you can update to the 2511 release, you must first apply the 12.2510 update. The 12.2510 (24H2) update becomes automatically available once you apply 11.2510. Apply the 12.2510 update to keep your Azure Local up-to-date.
 
-## End of support
+## End of support for Azure Local versions
 
-### Version 22H2
+### OS version 22H2
 
 [!INCLUDE [end-of-service-22H2](./includes/end-of-service-22h2.md)]
 
-### Version 23H2
+### OS version 23H2
 
 [!INCLUDE [end-of-service-23H2](./includes/azure-local-end-of-support-banner-23h2.md)]
 
