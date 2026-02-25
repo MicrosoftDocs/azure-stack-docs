@@ -278,10 +278,9 @@ sudo crictl ps | grep -E 'kube-apiserver|etcd|kube-controller-manager|kube-sched
 
 You should see all five components running.
 
-> [!NOTE]
-> **Optional: Clean up the backup**
->
-> Now that you've confirmed the control plane components are running successfully with the renewed certificates, you can optionally remove the PKI backup created in Step 3:
+**Optional: Clean up the backup**
+
+Now that you've confirmed the control plane components are running successfully with the renewed certificates, you can optionally remove the PKI backup created in Step 3:
 
 ```bash
 sudo rm -rf /etc/kubernetes/pki.backup*
