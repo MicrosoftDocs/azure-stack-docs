@@ -1,6 +1,6 @@
 ---
-title: Simplified Machine Provisioning for Azure Local (preview)
-description: Learn how to use simplified machine provisioning for Azure Local (preview).
+title: Install and Register Azure Local Machines using Simplified Machine Provisioning (preview)
+description: Install and register Azure Local machines using simplified machine provisioning (preview).
 author: sipastak
 ms.author: sipastak
 ms.topic: how-to
@@ -8,9 +8,9 @@ ms.date: 02/24/2026
 ms.subservice: hyperconverged
 ---
 
-# Simplified machine provisioning for hyperconverged deployments of Azure Local (preview)
+# Install and register Azure Local machines using simplified machine provisioning (preview)
 
-[!INCLUDE [hci-preview](../includes/hci-preview.md)]
+[!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
 This article describes how to use simplified machine provisioning to set up machines for an Azure Local instance.
 
@@ -29,6 +29,8 @@ At a high level, there are three key stages:
     1. Provision the machines: Once the site configurations are done, claim machine ownership using the ownership voucher generated while preparing the machine. Select the operating system profile for each machine.
 
 3. **Deploy the cluster using the provisioned machines**: You can now create an Azure Local instance using the provisioned machines.
+
+[!INCLUDE [hci-preview](../includes/hci-preview.md)]
 
 ## Prerequisites
 
@@ -166,7 +168,6 @@ Follow the steps to prepare server machines for simplified provisioning. Repeat 
 
 In the Azure portal, go to **Azure Arc** > **Operations** > **Provisioning (preview)**. On the **Provisioned machines** tab, you should see your machine provisioning status.
 
-
 Ensure your on-site staff keeps the machine connected to the network and powered on. The machine automatically connects securely to a call-home URL, then gets fully configured from Azure. This configuration includes download of the Azure Stack HCI operating system, setting up the operating system, connecting the machine to Azure Arc, and installing all the mandatory Azure Arc extensions. The machine is ready for clustering.
 
 This process reduces setup time and expertise needed at remote sites. Configuration is all done from Azure. Use Azure ARM templates to provision servers at many remote sites. This makes the process quicker, repeatable, and scalable.
@@ -185,17 +186,7 @@ After installing the Azure Stack HCI operating system, use the `<machine serial 
 
 ## Step 5: Verify Azure Arc connectivity
 
-Confirm your machines connect to Azure. During provisioning, each machine performs these steps:
-
-1. **Connect maintenance environment to cloud**: Establish an initial Azure connection using the device identity created from the ownership voucher. The device must authenticate successfully before continuing.
-
-1. **Install extensions on maintenance environment**: Install mandatory Azure Arc extensions on the maintenance environment.
-
-1. **Download and install Azure Local operating system**: One of the mandatory Azure Arc extensions installed on the maintenance environment downloads the Azure Local operating system image selected in [Provision machines from Azure](#step-3-provision-machines-from-azure) and installs the operating system.
-
-1. **Azure Arc connect the Azure Local operating system**: After setup completes, the machine reboots into the Azure Local operation system and gets automatically connected to Azure Arc.
-
-To monitor the provisioning machine status, follow these steps:
+Confirm your machines connect to Azure. To monitor the provisioning machine status, follow these steps:
 
 1. In the Azure portal, go to **Azure Arc** > **Operations** > **Provisioning (preview)** > select the **Provisioned machines** tab.
 

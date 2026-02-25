@@ -11,11 +11,11 @@ ms.custom: sfi-image-nochange
 ms.subservice: hyperconverged
 ---
 
-# Install the Azure Stack HCI operating system
+# Install the Azure Stack HCI operating system manually using SConfig
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
-This article describes the steps needed to install the Azure Stack HCI operating system locally on your Azure Local machines.
+There are two distinct ways of installing the OS on your Azure Local machines. You can use the **Install Azure Stack HCI** wizard and SConfig or you can install and register the OS using simplified machine provisioning (preview). This article describes the OS install using the wizard only. To use simplified machine provisioning, see [Install and register the OS using simplified machine provisioning](simplified-machine-provisioning.md).
 
 ## Prerequisites
 
