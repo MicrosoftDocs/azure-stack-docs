@@ -22,7 +22,7 @@ Azure Local VM management lets you set up and manage VMs in your on-premises Azu
 
 For more information, see [What is Azure Local VM management?](../manage/azure-arc-vm-management-overview.md)
 
-## Supported operating system (OS) versions
+## Supported operating system versions
 
 Here's a list of supported OS versions:
 
