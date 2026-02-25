@@ -92,7 +92,7 @@ Before you begin, make sure that the physical machine and storage hardware used 
 | **Drive Support** | - SATA, SAS, NVMe (M.2, U.2, add‑in card)<br>- Supported formats: 512n, 512e, 4K native |
 | **Deployment Requirements** | **Single‑node:** One drive type (NVMe or SSD) with uniform performance.<br>**Multi‑node cluster:** Strongly recommended: all‑flash, single drive type (NVMe or SSD) with uniform performance. |
 | **Hybrid Two‑Tier (HDD + Flash)** | - Supported only with HDD for capacity + flash (NVMe or SSD) for cache.<br>- Cache devices ≥ 32 GB.<br>- Cache‑to‑capacity ratio ≥ 15%.<br>- Cache endurance recommended: ≥ 3 DWPD or ≥ 4 TBW/day.<br>- Number of capacity drives should be a whole multiple of cache drives. |
-| **NVMe Driver** | Uses Microsoft‑provided driver (`stornvme.sys`). The improved StorNVMe driver, avaiable for Windows Server is not supported at this time. |
+| **NVMe Driver** | Uses Microsoft‑provided driver (`stornvme.sys`). The improved StorNVMe driver, available for Windows Server is not supported at this time. |
 | **Flash Requirements** | Flash (NVMe or SSD) must include power‑loss protection. |
 
 For more feature-specific requirements for Hyper-V, see [System requirements for Hyper-V on Windows Server](/windows-server/virtualization/hyper-v/system-requirements-for-hyper-v-on-windows).
