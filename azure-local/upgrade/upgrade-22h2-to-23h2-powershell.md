@@ -43,7 +43,7 @@ For more information about the various upgrade paths, see the blog post on [Upgr
 
 ## About End of Support (EOS) for version 22H2
 
-For information on end of support for various Azure Local versions, see [Azure Local, release information](../release-information-23h2.md#end-of-support).
+For information on end of support for various Azure Local versions, see [Azure Local, release information](../release-information-23h2.md#end-of-support-for-azure-local-versions).
 
 ::: zone-end
 
@@ -51,7 +51,7 @@ For information on end of support for various Azure Local versions, see [Azure L
 
 ## About End of Support (EOS) for version 23H2
 
-For information on end of support for various Azure Local versions, see [Azure Local, release information](../release-information-23h2.md#end-of-support).
+For information on end of support for various Azure Local versions, see [Azure Local, release information](../release-information-23h2.md#end-of-support-for-azure-local-versions).
 
 ::: zone-end
 
