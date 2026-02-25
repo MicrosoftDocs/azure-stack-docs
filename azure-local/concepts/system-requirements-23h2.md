@@ -174,7 +174,7 @@ Premier Solutions and Integrated Systems: Some OEMs provide ready-to-use ISO ima
 Validated Nodes: These may come preinstalled. The forementioned check or further sideloading update packages is required as per OEM recommendation
 
 ### Update existing Firmware and drivers
-Premier Solutions: will update their firmware and driver automatically via Azure Update Manager during the greatly automated update procedere.
+Premier Solutions: will update their firmware and driver automatically via Azure Update Manager during the greatly automated update procedure.
 Integrated Systems and Validated Nodes: These require manual steps. It is recommended to update firmware and drivers before deployment. Please leverage OEM SBE packages appropriate for your solution type, and consult your OEM and their additional deployment documentation.
 
 ### Driver installation steps
