@@ -56,7 +56,7 @@ This article helps you deploy an Azure Local instance using the Azure portal.
 
    :::image type="content" source="./media/deploy-via-portal/basics-tab-2.png" alt-text="Screenshot of Add machines through the Basics tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/basics-tab-2.png":::
 
-1. Select **Install extensions**. This action installs Arc extensions on the selected machines. This operation takes several minutes. Refresh the page to view the status of the extension installation.
+1. **Install extensions**. Arc extensions are automatically installed on the selected machines after they are added. This process may take several minutes. To check the installation status, refresh the page.
 
    :::image type="content" source="./media/deploy-via-portal/basics-tab-3.png" alt-text="Screenshot of the Install extensions on the Basics tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/basics-tab-3.png":::
     
