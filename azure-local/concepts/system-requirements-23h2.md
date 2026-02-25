@@ -74,7 +74,7 @@ Before you begin, make sure that the physical machine and storage hardware used 
 |Secure boot|Secure Boot must be present and turned on.|
 |GPU | Optional<br>Up to 192 GB GPU memory per machine. |
 
-### Extra requirements for drives
+## Data Drive requirements
 
 > [!IMPORTANT]
 > These drive requirements supercede those for Windows Server.
@@ -87,32 +87,24 @@ Before you begin, make sure that the physical machine and storage hardware used 
 > RAID controller cards or SAN (Fibre Channel, iSCSI, FCoE) storage, shared SAS enclosures connected to multiple machines, or any form of multi-path IO (MPIO) where drives are accessible by multiple paths, aren't supported.
 > Exceptions for SAN via Fibre Channel exist, see note below.
 
-Here’s a clean, GitHub‑ready table that captures all your points in a structured, readable way.
-
----
-
-## Drive & Deployment Requirements (GitHub Table)
-
 | Category | Requirements |
 |---------|--------------|
 | **Drive Support** | - SATA, SAS, NVMe (M.2, U.2, add‑in card)<br>- Supported formats: 512n, 512e, 4K native |
 | **Deployment Requirements** | **Single‑node:** One drive type (NVMe or SSD) with uniform performance.<br>**Multi‑node cluster:** Strongly recommended: all‑flash, single drive type (NVMe or SSD) with uniform performance. |
 | **Hybrid Two‑Tier (HDD + Flash)** | - Supported only with HDD for capacity + flash (NVMe or SSD) for cache.<br>- Cache devices ≥ 32 GB.<br>- Cache‑to‑capacity ratio ≥ 15%.<br>- Cache endurance recommended: ≥ 3 DWPD or ≥ 4 TBW/day.<br>- Number of capacity drives should be a whole multiple of cache drives. |
-| **NVMe Driver** | Uses Microsoft‑provided driver (`stornvme.sys`). |
+| **NVMe Driver** | Uses Microsoft‑provided driver (`stornvme.sys`). The improved StorNVMe driver, avaiable for Windows Server is not supported at this time. |
 | **Flash Requirements** | Flash (NVMe or SSD) must include power‑loss protection. |
-
----
-
-If you want, I can also format this as a collapsible section, add icons, or adapt it for documentation standards like MkDocs or Azure DevOps.
 
 For more feature-specific requirements for Hyper-V, see [System requirements for Hyper-V on Windows Server](/windows-server/virtualization/hyper-v/system-requirements-for-hyper-v-on-windows).
 
+### Use of Azure Local with external SAN storage
 > [!NOTE]
 > Notwithstanding to the requirements stated above, Azure Local Supports the usage of *additional* SAN via Fibre Channel (FC), currently in preview. Please consult your OEM about certified solutions.
 > See [External Storage Support for Azure Local](../concepts/external-storage-support.md)
 >
-> Albeit Storage Spaces Direct *remains required*, at the minimum for the Azure Local Infrastructure volume and the [Cluster Performance history](./windows-server/storage/storage-spaces/performance-history.md).
+> Albeit Storage Spaces Direct *remains required*, at the minimum for the Azure Local Infrastructure volume and the [Cluster Performance history](/windows-server/storage/storage-spaces/performance-history.md).
 and in addition to a required minimum of available Storage Spaces Direct (S2D), with a minimum of 2 physical disks per nodes. All requirements as stated above remain valid for Storage Spaces Direct, with exception of the attached SAN Storage. Please refer to this additional documentation.
+
 
 ## Networking requirements
 
@@ -162,27 +154,28 @@ It has been demonstrated that sub-optimal configuration parameters can have a de
 Furthermore, wrong settings may result in the failure of instance deployment.
 
 ## Managing Drivers and Firmware
+> [!IMPORTANT]
+> Check with your OEM regarding the necessary drivers that need to be installed for Azure Local. Additionally, your OEM can provide you with their preferred installation steps.
 
-Check with your OEM regarding the necessary drivers that need to be installed for Azure Local. Additionally, your OEM can provide you with their preferred installation steps.
-
-You should always follow the OEM's recommended installation steps. 
-For Integrated and Validated Solutions, when available, please check the respective compatibility matrix of the SBE and the driver and firmware compatiblity matrix of it with the Azure Local solution version.
-OEMs provide technical guidance for deployments that are complementary to the Microsoft Deployment documentation. These could be whitepapers or deployment guides.
+It is imperative to adhere to the recommended installation steps stipulated by the Original Equipment Manufacturer (OEM).
+For Integrated and Validated Solutions, verify the respective compatibility matrix of the SBE package matching the node, and the deployed or to be updated Azure Local solution version.
+A driver and firmware compatibility matrix, when provided by the OEM, should be qualified for deployed or to be updated Azure Local solution version.
 
 ### Driver and Firmware updates using Windows Admin Center extensions
-Starting with Azure Local 23H2 or later, Windows Admin Center plugins may no longer be used to install drivers and firmware. It is safe using these on certified Azure Local Nodes running Windows Server S2D.
+> [!IMPORTANT]
+> Starting with Azure Local 23H2 or later, Windows Admin Center plugins may no longer be used to install drivers and firmware. It is safe using these on certified Azure Local Nodes running Windows Server S2D.
 
 ### Initial Deployment
-Premier and Integrated Solutions: These are delivered preinstalled and preconfigured will update their firmware and driver automatically.
-Validated Solutions: These may come preinstalled. The forementioned check or further sideloading update packages is required as per OEM recommendation
+Premier Solutions and Integrated Systems: These are delivered preinstalled and preconfigured will update their firmware and driver automatically.
+Validated Nodes: These may come preinstalled. The forementioned check or further sideloading update packages is required as per OEM recommendation
 
 ### Instance or node redeployment
-Premier and Integrated Solutions: Some OEM provide ready to use ISO Images that matches the preinstalled and preconfigured version. 
-Validated Solutions: These may come preinstalled. The forementioned check or further sideloading update packages is required as per OEM recommendation
+Premier Solutions and Integrated Systems: Some OEM provide ready to use ISO Images that matches the preinstalled and preconfigured version. 
+Validated Nodes: These may come preinstalled. The forementioned check or further sideloading update packages is required as per OEM recommendation
 
 ### Update existing Firmware and drivers
-Premier Solutions will update their firmware and driver automatically.
-Integrated and Validated Solutions: Please leverage OEM SBE packages depending for solutions.
+Premier Solutions: will update their firmware and driver automatically via Azure Update Manager during the greatly automated update procedere.
+Integrated Systems and Validated Nodes: These require manual steps. It is recommended to update firmware and drivers before deployment. Please leverage OEM SBE packages depending for solutions, and consult your OEM and their additional deployment documentation.
 
 ### Driver installation steps
 
@@ -290,6 +283,9 @@ You should always follow the OEM's recommended installation steps. If the OEM's 
     ```
 
 # OEM information
+
+> [!NOTE]
+> Original equipment manufacturers (OEMs) are able to provide technical training and certification, as well as technical guidance for deployments that complement the Microsoft Deployment documentation. These could be white papers or deployment guides.
 
 This section contains OEM contact information and links to OEM Azure Local reference material.
 
