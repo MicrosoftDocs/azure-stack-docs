@@ -57,13 +57,13 @@ The following diagram illustrates the feature builds, cumulative updates, and up
 
 ## End of support
 
-### 22H2
+### Version 22H2
 
-[!INCLUDE [end-of-service-22H2](../includes/end-of-service-22h2.md)]
+[!INCLUDE [end-of-service-22H2](./includes/end-of-service-22h2.md)]
 
-### 23H2
+### Version 23H2
 
-[!INCLUDE [end-of-service-23H2](../includes/azure-local-end-of-support-banner-23h2.md)]
+[!INCLUDE [end-of-service-23H2](./includes/azure-local-end-of-support-banner-23h2.md)]
 
 ## Feature release availability timing
 
@@ -110,7 +110,7 @@ The following tables summarize the release information for Azure Local across al
 
 ### Older versions of Azure Local
 
-#### [OS build 25398.xxxx](#tab/OS-build-11.xxxx)
+#### [OS build 25398.xxxx](#tab/OS-build-11-xxxx)
 
 The following table summarizes the release information for Azure Local across older versions.
 
@@ -122,7 +122,7 @@ The following table summarizes the release information for Azure Local across ol
 | 11.2505.1001.22 <br><br> 10.2505.0.16 <br></br> Availability date: 2025-05-28 | 25398.1611 | [May OS security update](security-update/security-update.md?view=azloc-2505&preserve-view=true) | [Features and improvements](./whats-new.md?view=azloc-2505&preserve-view=true#features-and-improvements-in-2505) | [Known issues](./known-issues.md?view=azloc-2505&preserve-view=true) |
 | 11.2504.1001.21 <br><br> Availability date: 2026-01-22 <br><br> Supersedes: 11.2504.1001.19 <br><br> Availability date: 2025-04-21 | 25398.1551 | [April OS security update](security-update/security-update.md?view=azloc-2504&preserve-view=true) | [Features and improvements](./whats-new.md?view=azloc-2504&preserve-view=true#features-and-improvements-in-2504) | [Known issues](./known-issues.md?view=azloc-2504&preserve-view=true) |
 
-#### [OS build 25398.xxxx](#tab/OS-build-10.xxxx)
+#### [OS build 25398.xxxx](#tab/OS-build-10-xxxx)
 
 | Version | OS Build | Security update | What's new | Known issues |
 | ------ | ------- | --------------- | ---------- | ------------ |
