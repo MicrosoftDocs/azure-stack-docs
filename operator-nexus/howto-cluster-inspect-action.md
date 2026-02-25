@@ -9,19 +9,20 @@ ms.date: 02/03/2026
 ms.custom: template-how-to
 ---
 
-# Cluster Inspect Action Hardware Validation
+# Cluster Inspect Action to run Hardware Validation
 
-This article describes how to run a cluster inspect action, which performs a Hardware Validation (HWV) on bare metal servers in a cluster.
+This article describes how to run a cluster inspect action, which performs a [Hardware Validation (HWV)](./concepts-hardware-validation-overview.md) on bare metal servers in a cluster.
 
 The time required to complete cluster inspect depends on the number of nodes and type of cluster and whether "ResetHardware" flag is used.
 
 ## Prerequisites
 
 - Gather the following information:
-  - Name of the managed resource group for the cluster
+  - Name of the resource group for the cluster
   - Name of the Bare Metal Machine (BMM) and/or rack to include in the cluster inspection
   - Subscription ID
 - Cluster Detailed status must be either `Pending Deployment` or `Running`
+- The cluster inspect action requires 2026-01-01-preview API
 
 > [!IMPORTANT]
 > Cluster inspect action is rejected if there's another running cluster inspection or HWV on the cluster.
@@ -36,7 +37,7 @@ The `az networkcloud cluster inspect` command triggers an inspection of the clus
 | Parameter | Description |
 |---|---|
 | `--cluster-name` | The name of the cluster. |
-| `--ids` | One or more resource IDs (space-delimited). It should be a complete resource ID containing all information of 'Resource Id' arguments. You should provide either `--ids` or other resource ID arguments. |
+| `--ids` | Cluster resource ID. |
 | `--resource-group`, `-g` | Name of the resource group. You can configure the default group using `az configure --defaults group=<name>`. |
 | `--subscription` | Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`. |
 | `--filter-devices` | Indicates which devices are included in the inspection. By default, all devices that can be targeted are included. Supports shorthand-syntax, json-file, and yaml-file. |
