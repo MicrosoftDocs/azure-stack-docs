@@ -77,7 +77,7 @@ Before you begin, make sure that the physical machine and storage hardware used 
 ## Data Drive requirements
 
 > [!IMPORTANT]
-> These drive requirements supercede those for Windows Server.
+> These drive requirements supersede those for Windows Server.
 >
 > The machines should also meet these extra requirements for drives:
 > For Storage Spaces Direct, have direct-attached drives that are physically attached to one machine each.
