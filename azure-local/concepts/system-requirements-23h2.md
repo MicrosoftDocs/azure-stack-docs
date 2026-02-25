@@ -100,7 +100,7 @@ For more feature-specific requirements for Hyper-V, see [System requirements for
 ### Use of Azure Local with external SAN storage
 > [!NOTE]
 > Notwithstanding to the requirements stated above, Azure Local Supports the usage of *additional* SAN via Fibre Channel (FC), currently in preview. Please consult your OEM about certified solutions.
-> See [External Storage Support for Azure Local](../concepts/external-storage-support.md)
+> See [External Storage Support for Azure Local](../concepts/external-storage-support.md).
 >
 > Albeit Storage Spaces Direct *remains required*, at the minimum for the Azure Local Infrastructure volume and the [Cluster Performance history](/windows-server/storage/storage-spaces/performance-history.md).
 and in addition to a required minimum of available Storage Spaces Direct (S2D), with a minimum of 2 physical disks per nodes. All requirements as stated above remain valid for Storage Spaces Direct, with exception of the attached SAN Storage. Please refer to this additional documentation.
