@@ -16,7 +16,7 @@ This article describes how to use simplified machine provisioning to set up mach
 
 At a high level, there are three key stages:
 
-:::image type="content" source="media/simplified-machine-provisioning/simplified-machine-provisioning-stages.png" alt-text="Diagram showing the three stages of simplified machine provisioning." border="false" lightbox="media/simplified-machine-provisioning/simplified-machine-provisioning-stages.png":::
+:::image type="content" source="media/simplified-machine-provisioning/simplified-machine-provisioning-stages.png" alt-text="Diagram showing the three stages of simplified machine provisioning." border="true" lightbox="media/simplified-machine-provisioning/simplified-machine-provisioning-stages.png":::
 
 1. **Prepare the machines**: Preparation ends with two artifacts: simplified machine provisioning software components installed on the device and generating an ownership voucher, which meets [FIDO Device Onboarding (FDO)](https://fidoalliance.org/device-onboarding-overview/) standards. Both artifacts need to be sent to the end customer. Anyone can prepare the devices, whether you're a device manufacturer, an integrator, or even an end customer, but the approach is most valuable when someone other than the on-site staff prepares the devices.
 
@@ -50,7 +50,7 @@ At a high level, there are three key stages:
 
 - Go to **Azure Arc** > **Operations** > **Machine provisioning (preview)**. On the **Get started** page, select **View Downloads** to download the software to your Windows 11 PC. The software includes the maintenance environment ISO image, USB preparation tool, and the Configurator app. A maintenance environment is a secure bootable OS that prepares a device for provisioning by generating the device ID and voucher.
 
-    :::image type="content" source="media/simplified-machine-provisioning/view-downloads.png" alt-text="Screenshot of the Azure portal showing how to view downloads." border="false" lightbox="media/simplified-machine-provisioning/view-downloads.png":::
+    :::image type="content" source="media/simplified-machine-provisioning/view-downloads.png" alt-text="Screenshot of the Azure portal showing how to view downloads." border="true" lightbox="media/simplified-machine-provisioning/view-downloads.png":::
 
 - Use the Configurator app to download the ownership voucher, configure static IP address, and track the progress of machine setup.
 
@@ -166,13 +166,13 @@ Follow the steps to prepare server machines for simplified provisioning. Repeat 
 
 1. Select the site, add vouchers from [Prepare machines](#step-2-prepare-machines), software version, and local administrator credentials. The password must have at least 12 characters including lower and upper-case characters, a digit, and a special character. Once you add machines, select the pencil button to edit. Provide the machine name as the Arc resource name.
 
-    :::image type="content" source="media/simplified-machine-provisioning/provision-machines-portal.png" alt-text="Screenshot of the Azure portal showing the Provision new machines pane." border="false" lightbox="media/simplified-machine-provisioning/provision-machines-portal.png":::
+    :::image type="content" source="media/simplified-machine-provisioning/provision-machines-portal.png" alt-text="Screenshot of the Azure portal showing the Provision new machines pane." border="true" lightbox="media/simplified-machine-provisioning/provision-machines-portal.png":::
 
 1. On **Review + create**, review details and select **Create**.
 
 In the Azure portal, go to **Azure Arc** > **Operations** > **Provisioning (preview)**. On the **Provisioned machines** tab, you should see your machine provisioning status.
 
-:::image type="content" source="media/simplified-machine-provisioning/machine-stages.png" alt-text="Screenshot of the Azure portal showing machine status." border="false" lightbox="media/simplified-machine-provisioning/machine-stages.png":::
+:::image type="content" source="media/simplified-machine-provisioning/machine-stages.png" alt-text="Screenshot of the Azure portal showing machine status." border="true" lightbox="media/simplified-machine-provisioning/machine-stages.png":::
 
 Ensure your on-site staff keeps the machine connected to the network and powered on. The machine automatically connects securely to a call-home URL, then gets fully configured from Azure. This configuration includes download of the Azure Stack HCI operating system, setting up the operating system, connecting the machine to Azure Arc, and installing all the mandatory Azure Arc extensions. The machine is ready for clustering.
 
@@ -200,7 +200,7 @@ Confirm your machines connect to Azure. To monitor the provisioning machine stat
 
 1. Wait for the machine status to show **Ready to cluster**.
 
-:::image type="content" source="media/simplified-machine-provisioning/machine-status-details.png" alt-text="Screenshot of the Azure portal showing machine status details." border="false" lightbox="media/simplified-machine-provisioning/machine-status-details.png":::
+:::image type="content" source="media/simplified-machine-provisioning/machine-status-details.png" alt-text="Screenshot of the Azure portal showing machine status details." border="true" lightbox="media/simplified-machine-provisioning/machine-status-details.png":::
 
 
 ## Next steps
