@@ -115,7 +115,7 @@ Use the following steps to install the OpenSSH Server Extension via PowerShell:
 
 Use the following steps to connect to Azure Local.
 
-1. To launch Arc SSH and sign in to the server, run the following command:
+To launch Arc SSH and sign in to the server, run the following command:
 
    ```powershell
    az ssh arc --resource-group $resourceGroup --name $serverName --local-user $localUser
