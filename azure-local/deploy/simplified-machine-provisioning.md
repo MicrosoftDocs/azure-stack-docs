@@ -166,9 +166,13 @@ Follow the steps to prepare server machines for simplified provisioning. Repeat 
 
 1. Select the site, add vouchers from [Prepare machines](#step-2-prepare-machines), software version, and local administrator credentials. The password must have at least 12 characters including lower and upper-case characters, a digit, and a special character. Once you add machines, select the pencil button to edit. Provide the machine name as the Arc resource name.
 
+    :::image type="content" source="media/simplified-machine-provisioning/provision-machines-portal.png" alt-text="Screenshot of the Azure portal showing the Provision new machines pane." border="false" lightbox="media/simplified-machine-provisioning/provision-machines-portal.png":::
+
 1. On **Review + create**, review details and select **Create**.
 
 In the Azure portal, go to **Azure Arc** > **Operations** > **Provisioning (preview)**. On the **Provisioned machines** tab, you should see your machine provisioning status.
+
+:::image type="content" source="media/simplified-machine-provisioning/machine-stages.png" alt-text="Screenshot of the Azure portal showing machine status." border="false" lightbox="media/simplified-machine-provisioning/machine-stages.png":::
 
 Ensure your on-site staff keeps the machine connected to the network and powered on. The machine automatically connects securely to a call-home URL, then gets fully configured from Azure. This configuration includes download of the Azure Stack HCI operating system, setting up the operating system, connecting the machine to Azure Arc, and installing all the mandatory Azure Arc extensions. The machine is ready for clustering.
 
@@ -195,6 +199,9 @@ Confirm your machines connect to Azure. To monitor the provisioning machine stat
 1. Check your machine's status in the provisioned machines list. Select a machine’s status to view progress details.
 
 1. Wait for the machine status to show **Ready to cluster**.
+
+:::image type="content" source="media/simplified-machine-provisioning/machine-status-details.png" alt-text="Screenshot of the Azure portal showing machine status details." border="false" lightbox="media/simplified-machine-provisioning/machine-status-details.png":::
+
 
 ## Next steps
 
