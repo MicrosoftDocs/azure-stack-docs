@@ -57,7 +57,11 @@ The following diagram illustrates the feature builds, cumulative updates, and up
 
 ## End of support
 
+### 22H2
+
 [!INCLUDE [end-of-service-22H2](../includes/end-of-service-22h2.md)]
+
+### 23H2
 
 [!INCLUDE [end-of-service-23H2](../includes/azure-local-end-of-support-banner-23h2.md)]
 
