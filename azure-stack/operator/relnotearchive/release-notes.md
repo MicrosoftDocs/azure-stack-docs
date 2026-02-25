@@ -3,7 +3,7 @@ title: Azure Stack Hub archived release notes
 description: Archived release notes for Azure Stack Hub integrated systems, including updates and bug fixes.
 author: sethmanheim
 ms.topic: article
-ms.date: 10/28/2025
+ms.date: 02/25/2026
 ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 09/09/2020
@@ -19,6 +19,64 @@ To access release notes for a different archived version, use the version select
 <!---------------------------------------------------------->
 <!------------------- SUPPORTED VERSIONS ------------------->
 <!---------------------------------------------------------->
+
+::: moniker range="azs-2501"
+## 2501 build reference
+
+The Azure Stack Hub 2501 update build number is **1.2501.0.21**.
+
+### Update type
+
+The Azure Stack Hub 2501 update build type is **Full**. This build contains only important security updates.
+
+The 2501 update has the following expected runtimes based on our internal testing:
+
+- 4 nodes: 8-28 hours
+- 8 nodes: 11-30 hours
+- 12 nodes: 14-34 hours
+- 16 nodes: 17-40 hours
+
+Exact update durations typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware specifications. Durations that are shorter or longer than the expected value are not uncommon and do not require action by Azure Stack Hub operators unless the update fails. This runtime approximation is specific to the 2501 update and should not be compared to other Azure Stack Hub updates.
+
+For more information about update build types, see [Manage updates in Azure Stack Hub](../azure-stack-updates.md).
+
+### What's new
+
+- The Microsoft Entra ID [Graph API service is being retired](https://techcommunity.microsoft.com/blog/microsoft-entra-blog/important-update-azure-ad-graph-api-retirement/4090534). For more information, see [Microsoft Entra ID Graph API retirement](../graph-api-retirement.md).
+
+<!-- ### Changes -->
+
+### Fixes
+
+- Fixed an issue in which the **Deployments** blade under a subscription failed to load.
+
+## Security updates
+
+For information about security updates in this update of Azure Stack Hub, see [Azure Stack Hub security updates](../release-notes-security-updates.md).
+
+## Hotfixes
+
+Azure Stack Hub releases hotfixes regularly. Starting with the 2005 release, when you update to a new major version (for example, 1.2008.x to 1.2102.x), the latest hotfixes (if any) in the new major version are installed automatically. From that point forward, if a hotfix is released for your build, you should install it.
+
+> [!NOTE]
+> Azure Stack Hub hotfix releases are cumulative; you only need to install the latest hotfix to get all fixes included in any previous hotfix releases for that version.
+
+For more information, see our [servicing policy](../azure-stack-servicing-policy.md).
+
+### Hotfix prerequisites: before applying the 2501 update
+
+The 2501 release of Azure Stack Hub must be applied on the 2408 release with the following hotfix installed:
+
+- [Azure Stack Hub hotfix 1.2408.1.50](../hotfix-1-2408-1-50.md)
+
+### After successfully applying the 2501 update
+
+When you update to a new major version (for example, 1.2108.x to 1.2206.x), the latest hotfixes (if any) in the new major version are installed automatically. From that point forward, if a hotfix is released for your build, you should install it.
+
+After the installation of 2501, if any hotfixes for 2501 are subsequently released, you should install them:
+
+- [Azure Stack Hub hotfix 1.2501.1.47](../hotfix-1-2501-1-47.md)
+::: moniker-end
 
 ::: moniker range="azs-2408"
 ## 2408 build reference
@@ -3328,34 +3386,6 @@ This update includes the following improvements for Azure Stack.
 
 <!--  TBD | IS, ASDK --> 
 - *Basic A* virtual machine sizes are retired for [creating virtual machine scale sets](../azure-stack-compute-add-scalesets.md) (VMSS) through the portal. To create a VMSS with this size, use PowerShell or a template.  
-
-### Common Vulnerabilities and Exposures
-
-This update installs the following updates:  
-
-- [CVE-2018-0952](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-0952)
-- [CVE-2018-8200](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8200)
-- [CVE-2018-8204](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8204)
-- [CVE-2018-8253](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8253)
-- [CVE-2018-8339](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8339)
-- [CVE-2018-8340](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8340)
-- [CVE-2018-8341](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8341)
-- [CVE-2018-8343](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8343)
-- [CVE-2018-8344](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8344)
-- [CVE-2018-8345](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8345)
-- [CVE-2018-8347](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8347)
-- [CVE-2018-8348](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8348)
-- [CVE-2018-8349](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8349)
-- [CVE-2018-8394](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8394)
-- [CVE-2018-8398](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8398)
-- [CVE-2018-8401](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8401)
-- [CVE-2018-8404](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8404)
-- [CVE-2018-8405](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8405)
-- [CVE-2018-8406](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8406)  
-
-For more information about these vulnerabilities, click on the preceding links, or see Microsoft Knowledge Base article [4343887](https://support.microsoft.com/help/4343887).
-
-This update also contains the mitigation for the speculative execution side channel vulnerability known as L1 Terminal Fault (L1TF), described in the [Microsoft Security Advisory ADV180018](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180018).  
 
 ### Prerequisites
 

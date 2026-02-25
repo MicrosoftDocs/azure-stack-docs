@@ -3,7 +3,7 @@ title: Azure Stack Hub archived known issues
 description: Learn about archived known issues in Azure Stack Hub releases.
 author: sethmanheim
 ms.topic: article
-ms.date: 10/28/2025
+ms.date: 02/25/2026
 ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 09/09/2020
@@ -20,6 +20,51 @@ To access known issues for a different archived version, use the version selecto
 <!---------------------------------------------------------->
 <!------------------- SUPPORTED VERSIONS ------------------->
 <!---------------------------------------------------------->
+
+::: moniker range="azs-2501"
+<!-- ## Update -->
+
+<!-- ## Networking -->
+
+## Compute
+
+### Azure Kubernetes Service on Azure Stack Hub
+
+- Applicable: This issue applies to release 2311 and later.
+- Cause: Azure Kubernetes Service on Azure Stack Hub, currently in preview, is being discontinued and won't be released to general availability. If you try to register a new subscription to the **Microsoft.Containerservice** resource provider, the registration stays in the **Registering** state. If you try to create a new managed Kubernetes cluster or access existing managed Kubernetes clusters, you might see the raining cloud error screen.
+- Remediation: Microsoft is aware of the problem and is working on a fix.
+- Occurrence: Common.
+
+### Graph API retirement
+
+- Applicable: This issue applies to all supported versions of Azure Stack Hub.
+- Cause: The Microsoft Entra ID [Graph API service is being retired](https://techcommunity.microsoft.com/blog/microsoft-entra-blog/important-update-azure-ad-graph-api-retirement/4090534).
+- Remediation: Run the [script included in this article](../graph-api-retirement.md) for all impacted applications. The script sets a flag that configures these applications for an extension that allows these specific applications to continue calling the legacy Graph API until June 2025.
+- Occurrence: Occasional.
+
+<!-- ## Alerts -->
+
+<!-- ## Portal -->
+
+<!-- ## Datacenter integration -->
+
+<!-- ## Storage -->
+
+<!-- ## SQL and MySQL-->
+
+<!-- ## App Service -->
+
+<!-- ## Resource providers -->
+
+<!-- ## Usage -->
+
+<!-- ### Identity -->
+
+<!-- ### Marketplace -->
+
+<!-- ## Event Hubs -->
+
+::: moniker-end
 
 ::: moniker range="azs-2408"
 <!-- ## Update -->
