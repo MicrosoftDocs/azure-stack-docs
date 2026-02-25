@@ -1,6 +1,6 @@
 ---
-title: Deploy Azure Local using local identity with Azure Key Vault via an Azure Resource Manager Template (Preview)
-description: Learn how to prepare and then deploy Azure Local using local identity with Azure Key Vault using an Azure Resource Manager (ARM) template.
+title: Deploy Azure Local using local identity with Azure Key Vault via an Azure Resource Manager Template (preview)
+description: Learn how to prepare and then deploy Azure Local using local identity with Azure Key Vault using an Azure Resource Manager (ARM) template (preview).
 author: alkohli
 ms.topic: how-to
 ms.date: 02/23/2026
@@ -10,12 +10,14 @@ ms.service: azure-local
 ms.subservice: hyperconverged
 ---
 
-# Deploy Azure Local using local identity with Azure Key Vault via Azure Resource Manager deployment template
+# Deploy Azure Local using local identity with Azure Key Vault via Azure Resource Manager deployment template (preview)
 
-This article explains how to use an Azure Resource Manager (ARM) template in the Azure portal to deploy Azure Local using local identity with Azure Key Vault. The article also contains the prerequisites and the preparation steps required to begin the deployment.
+This article describes how to deploy Azure Local using local identity with Azure Key Vault by using an Azure Resource Manager (ARM) template configured for external DNS. The article also describes the prerequisites and the preparation steps required to begin the deployment.
 
 > [!IMPORTANT]
-> Use ARM template deployment of Azure Local systems for deployments at scale. IT administrators with experience deploying Azure Local instances are the intended audience for this deployment. Deploy a [system via the Azure portal](./deployment-local-identity-with-key-vault.md) first, and then perform subsequent deployments via the ARM template.
+> Use ARM template deployment for Azure Local systems at scale. This approach is intended for experienced IT administrators. Deploy a [system via the Azure portal](./deployment-local-identity-with-key-vault.md) first, then use the ARM template for subsequent deployments.
+
+[!INCLUDE [important](../includes/hci-preview.md)]
 
 ## Prerequisites
 
@@ -37,7 +39,7 @@ An ARM template creates and assigns all the resource permissions required for de
 
 When you complete all the prerequisite and preparation steps, you're ready to deploy by using a known good and tested ARM deployment template and corresponding parameters JSON file. Use the parameters contained in the JSON file to fill out all values, including the values you generated previously.
 
-For an example of a parameter JSON file, see [azuredeploy.parameters.json](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.azurestackhci/create-adless-cluster-external-dns-public-preview/azuredeploy.parameters.json). For detailed descriptions of the parameters defined in this file, see [ARM template parameters reference](#arm-template-parameters-reference).
+For an example of a parameters JSON file for deployments that use external DNS, see [azuredeploy.parameters.json](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.azurestackhci/create-adless-cluster-external-dns-public-preview/azuredeploy.parameters.json). For detailed descriptions of the parameters defined in this file, see [ARM template parameters reference](#arm-template-parameters-reference).
 
 > [!IMPORTANT]
 > Ensure that you fill out all parameters in the JSON file, including placeholders that appear as `[“”]`. These placeholders indicate that the parameter expects an array structure. Replace these placeholders with actual values based on your deployment environment, or validation fails.
@@ -135,7 +137,7 @@ The following table describes the parameters that you define in the ARM template
 | hciResourceProviderObjectID | Object ID of the Azure Local Resource Provider. <br/> For more information, see [Get the object ID for Azure Local Resource Provider](#get-the-object-id-for-azure-local-resource-provider).|
 | arcNodeResourceIds | Array of resource IDs of the Azure Arc-enabled servers that are part of this Azure Local cluster. |
 | namingPrefix | Prefix used for all objects created for the Azure Local deployment. |
-| identityProvider | <!--Add description--> |
+| identityProvider | Specifies the identity provider used for the deployment. Set this value to `LocalIdentity` to indicate that the deployment uses local identity with Azure Key Vault. |
 | securityLevel | Security configuration profile to apply to the Azure Local cluster during deployment. The default is **Recommended**. |
 | driftControlEnforced | Drift control setting to reapply the security defaults regularly. <br/>For more information, see [Security features for Azure Local](../concepts/security-features.md). |
 | credentialGuardEnforced | Credential Guard setting that uses virtualization-based security to isolate secrets from credential-theft attacks. <br/> For more information, see [Manage security defaults for Azure Local](../manage/manage-secure-baseline.md).|
@@ -154,8 +156,8 @@ The following table describes the parameters that you define in the ARM template
 | endingIPAddress | The last IP address in a contiguous block of at least six static IP addresses on your management network's subnet, omitting addresses already used by the machines.<br/>These IPs are used by Azure Local and internal infrastructure (Arc Resource Bridge) that's required for Arc VM management and AKS Hybrid. |
 | dnsServers | List of DNS server IPs. |
 | useDhcp | Indicates whether to use Dynamic Host Configuration Protocol (DHCP) for hosts and cluster IPs. <br/>If not declared, the deployment defaults to static IPs. If TRUE, gateway and DNS servers aren't required. |
-| dnsServerConfig | <!--Add description--> |
-| dnsZones | <!--Add description--> |
+| dnsServerConfig | Specifies how DNS servers are configured for the infrastructure network. Allowed values are:<br>- **UseDnsServer**: Uses the provided DNS servers.<br>- **UseForwarder**: Uses DNS forwarders.<br> For deployments that use the external DNS template, specify **UseDnsServer**. |
+| dnsZones | Specifies the DNS zones used to deploy an Azure Local cluster. For deployments that use the external DNS template, this parameter defines the external DNS zone configuration. See [dnsZones example](#dnszones-example). |
 | physicalNodesSettings | Array of physical nodes with their IP addresses. |
 | networkingType | Type of networking. For example, switchedMultiServerDeployment.<br/>For more information, see [Specify network settings](../deploy/deploy-via-portal.md#specify-network-settings). |
 | networkingPattern | Pattern used for networking. For example, hyperConverged. |
@@ -171,6 +173,23 @@ The following table describes the parameters that you define in the ARM template
 | sbeManifestCreationDate | Creation date of the SBE manifest. |
 | partnerProperties | List of partner-specific properties. |
 | partnerCredentiallist | List of partner credentials. |
+
+### dnsZones example
+
+The following example shows how to configure the `dnsZones` parameter for deployments that use the external DNS template:
+
+```json
+### dnsZones example (external DNS)
+
+```json
+"dnsZones": {
+  "value": [
+    {
+      "dnsZoneName": "redmond.contoso.com",
+      "dnsForwarder": []
+    }
+  ]
+}
 
 ## Next steps
 
