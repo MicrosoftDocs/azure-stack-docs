@@ -286,7 +286,8 @@ Check with your OEM regarding the necessary firmware that needs to be installed 
 
 ## Drivers and firmware via the Windows Admin Center extension
 
-You should always follow the OEM's recommended installation steps. With Azure Local, Windows Admin Center plugins can be used to install drivers and firmware. For a comprehensive list of all OEM contact information, download the [Azure Local OEM Contact](https://github.com/Azure/AzureStack-Tools/raw/master/HCI/azure-stack-hci-oem-contact-and-material.xlsx) spreadsheet.
+You should always follow the OEM's recommended installation steps. With Azure Local 23H2 or later, Windows Admin Center plugins may no longer be used plugins to install drivers and firmware. Please leverage OEM SBE packages depending for Integrated and Validated solutions. Premier solutions will update their firmware and driver automatically.
+For a comprehensive list of all OEM contact information, download the [Azure Local OEM Contact](https://github.com/Azure/AzureStack-Tools/raw/master/HCI/azure-stack-hci-oem-contact-and-material.xlsx) spreadsheet.
 
 <!--|OEM    | Download link                                                    |
 |-------|------------------------------------------------------------------|
