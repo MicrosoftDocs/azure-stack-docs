@@ -58,7 +58,7 @@ To set up a Defender for Servers plan:
 
 ### Grant MDE Onboarding Permissions
 
-To enable the Microsoft Defender for Endpoint (MDE) agent on bare metal machines within your Nexus Cluster, you must grant the platform extension identity of the cluster permission to onboard the MDE agent on your behalf. Depending on your cluster version, this identity is either `nc-platform-underlay-extension` (newer versions) or `nc-platform-extension` (older versions).
+To enable the Microsoft Defender for Endpoint (MDE) agent on bare metal machines within your Nexus Cluster, you must grant the platform extension identity of the cluster permission to onboard the MDE agent on your behalf. Depending on your cluster version, this identity is either `nc-platform-underlay-extension` (Nexus release 2602.2 and later) or `nc-platform-extension` (prior releases).
 
 The platform extension identity does not exist prior to deploying the Operator Nexus cluster. The following example must be performed after the Cluster is deployed.
 
@@ -67,7 +67,7 @@ The required permission is ```Microsoft.Security/mdeOnboardings/read```. Assign 
 > [!IMPORTANT]
 > The user or identity creating the role assignment must have the ```Microsoft.Authorization/roleAssignments/write``` permission at the subscription level.
 
-Below is an example bash script using the Azure CLI for granting the platform extension identity permission to onboard the MDE agent on your behalf. The script automatically detects which extension is present on your cluster.
+Below is an example bash script using the Azure CLI for granting the platform extension identity permission to onboard the MDE agent on your behalf. The example script automatically detects which extension is present on your cluster.
 
 ```bash
 #!/usr/bin/env bash
