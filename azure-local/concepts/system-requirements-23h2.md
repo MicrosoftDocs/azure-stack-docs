@@ -103,7 +103,7 @@ For more feature-specific requirements for Hyper-V, see [System requirements for
 > See [External Storage Support for Azure Local](../concepts/external-storage-support.md).
 >
 > Albeit Storage Spaces Direct *remains required*, at the minimum for the Azure Local Infrastructure volume and the [Cluster Performance history](/windows-server/storage/storage-spaces/performance-history.md).
-and in addition to a required minimum of available Storage Spaces Direct (S2D), with a minimum of 2 physical disks per nodes. All requirements as stated above remain valid for Storage Spaces Direct, with exception of the attached SAN Storage. Please refer to this additional documentation.
+In addition, a minimum amount of available Storage Spaces Direct (S2D) is required, with at least two physical disks per node. All requirements as stated above remain valid for Storage Spaces Direct, with the exception of the attached SAN storage. Please refer to this additional documentation.
 
 
 ## Networking requirements
