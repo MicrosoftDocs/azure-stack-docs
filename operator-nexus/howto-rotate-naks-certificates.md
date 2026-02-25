@@ -170,10 +170,10 @@ Consider implementing automated monitoring that:
 
 > [!NOTE]
 > Important Notes:
-- This is a manual, low-level procedure that requires direct access to control plane nodes
-- It should be performed during a maintenance window
-- Backup all critical data before proceeding
-- This procedure must be performed on **each control plane node, one at a time**
+> - This is a manual, low-level procedure that requires direct access to control plane nodes
+> - It should be performed during a maintenance window
+> - Backup all critical data before proceeding
+> - This procedure must be performed on **each control plane node, one at a time**
 
 ### Prerequisites
 
@@ -291,7 +291,8 @@ However, if you prefer extra caution, you may choose to keep the backup until al
 
 #### Step 8: Repeat on Remaining Control Plane Nodes
 
-**Important:** Complete steps 1-7 on the next control plane node. Don't proceed to multiple nodes simultaneously. Wait for each node to fully recover before moving to the next.
+> [!IMPORTANT]
+> Complete steps 1-7 on the next control plane node. Don't proceed to multiple nodes simultaneously. Wait for each node to fully recover before moving to the next.
 
 Repeat steps 1-7 on each remaining control plane node until all nodes have been renewed.
 
