@@ -334,7 +334,7 @@
         - name: Kubernetes cluster features
           href: howto-kubernetes-cluster-features.md
         - name: Managing ETCD Health in Nexus Kubernetes Cluster
-          href: howto-kubernetes-cluster-manage-etcd-health.md
+          href: howto-kubernetes-cluster-manage-data-store-health.md
     - name: Nexus Virtual Machine
       expanded: false
       items:
