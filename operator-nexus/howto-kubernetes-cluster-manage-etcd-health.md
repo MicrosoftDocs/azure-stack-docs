@@ -9,7 +9,9 @@ ms.date: 02/26/2026
 ms.custom: template-how-to-pattern
 ---
 
-# ETCD Best Practices for Nexus AKS Clusters
+# ETCD best practices for Nexus AKS clusters
+
+This article describes best practices for maintaining the health and performance of ETCD in Nexus AKS clusters. It covers key maintenance tasks such as backups, compaction, defragmentation, and monitoring, and explains why each practice is important for ensuring the reliability and stability of your Kubernetes cluster.
 
 ## Overview
 
@@ -29,27 +31,15 @@ ETCD stores all cluster state, including:
 
 Any degradation or failure of ETCD can result in cluster instability or complete cluster failure, making proper ETCD maintenance critical for cluster health.
 
-## Best Practices
+## Best practices
 
-### 1. Regular ETCD Backups
+### 1. Regular ETCD backups
 
-#### What It Is
+#### What it is
 Regular backups involve taking periodic snapshots of the ETCD database to capture the complete state of your Kubernetes cluster at specific points in time.
 
-#### Why It Is Important
-ETCD backups are your last line of defense against data loss and cluster failure. They enable:
-- **Disaster Recovery**: Restore your cluster to a known good state after catastrophic failures
-- **Data Protection**: Protect against accidental deletions, misconfigurations, or corruption
-- **Cluster Migration**: Facilitate cluster migrations or recreations
-- **Compliance**: Meet organizational or regulatory requirements for data retention
-
-#### Problems Without Regular Backups
-If you don't maintain regular ETCD backups, you could face:
-- **Irrecoverable Cluster Loss**: Complete loss of cluster state with no way to recover
-- **Extended Downtime**: Inability to restore services quickly after failures
-- **Data Loss**: Loss of critical configuration, application state, and operational data
-- **Business Impact**: Significant business disruption requiring complete cluster rebuilding from scratch
-- **Compliance Violations**: Failure to meet backup and disaster recovery requirements
+#### Why it is important
+ETCD backups are your last line of defense against data loss and cluster failure. They enable disaster recovery, protect against accidental deletions or corruption, facilitate cluster migrations, and help meet regulatory data retention requirements. Without regular backups, you risk irrecoverable cluster loss, extended downtime, loss of critical configuration and application state, significant business disruption requiring a full cluster rebuild, and potential compliance violations.
 
 #### Recommendations
 In order to ensure effective ETCD backup practices, consider the following recommendations:
@@ -61,17 +51,17 @@ In order to ensure effective ETCD backup practices, consider the following recom
 
 ### 2. ETCD Defragmentation
 
-#### What It Is
+#### What it is
 ETCD defragmentation is the process of reclaiming storage space by removing gaps left by deleted or modified keys in the ETCD database. Over time, as keys are updated or deleted, the database accumulates fragmentation, where storage space is allocated but not actively used.
 
-#### Why It Is Important
+#### Why it is important
 Defragmentation is crucial for:
 - **Performance Optimization**: Reduces database size and improves query performance
 - **Storage Efficiency**: Reclaims disk space that would otherwise remain allocated but unused
 - **Cluster Stability**: Prevents storage-related issues that can affect cluster operations
 - **Resource Management**: Ensures efficient use of available storage resources
 
-#### Problems Without Regular Defragmentation
+#### Problems without regular defragmentation
 Failing to defragment ETCD regularly can lead to:
 - **Performance Degradation**: Slower API server responses and increased latency for cluster operations
 - **Storage Exhaustion**: Running out of disk space even when the actual data size is small
@@ -86,12 +76,12 @@ Failing to defragment ETCD regularly can lead to:
 - Defragment all ETCD cluster members sequentially, not simultaneously
 - Validate cluster health after defragmentation operations
 
-### 3. ETCD Health Monitoring
+### 3. ETCD health monitoring
 
-#### What It Is
+#### What it is
 ETCD health monitoring involves continuously tracking key metrics and health indicators of your ETCD cluster to detect and respond to issues proactively.
 
-#### Why It Is Important
+#### Why it is important
 Proactive monitoring enables:
 - **Early Issue Detection**: Identify problems before they affect cluster availability
 - **Trend Analysis**: Understand usage patterns and plan for capacity needs
@@ -99,7 +89,7 @@ Proactive monitoring enables:
 - **Informed Decision Making**: Make data-driven decisions about maintenance and scaling
 - **Reduced Downtime**: Minimize mean time to detection (MTTD) and mean time to resolution (MTTR)
 
-#### Problems Without Adequate Monitoring
+#### Problems without adequate monitoring
 Without proper ETCD monitoring, you risk:
 - **Undetected Failures**: Critical issues going unnoticed until they cause cluster outages
 - **Reactive Operations**: Discovering problems only after users report issues
@@ -107,7 +97,7 @@ Without proper ETCD monitoring, you risk:
 - **Poor Capacity Planning**: Running out of resources without advance warning
 - **Increased Recovery Time**: Longer troubleshooting and remediation due to lack of historical data
 
-#### Key Metrics to Monitor
+#### Key metrics to monitor
 
 **Database Size and Growth**
 - Current database size
@@ -144,12 +134,12 @@ Without proper ETCD monitoring, you risk:
 - Create runbooks for common ETCD issues and their remediation
 - Integrate ETCD metrics into your existing monitoring and observability platforms
 
-### 4. Database Size Management
+### 4. Database size management
 
-#### What It Is
+#### What it is
 Database size management involves controlling the growth of the ETCD database through proper configuration, regular maintenance, and operational practices that prevent unbounded growth.
 
-#### Why It Is Important
+#### Why it is important
 Proper size management ensures:
 - **Predictable Performance**: Smaller, well-maintained databases perform more consistently
 - **Resource Efficiency**: Optimal use of storage and memory resources
@@ -157,7 +147,7 @@ Proper size management ensures:
 - **Cost Management**: Reduced storage costs and resource requirements
 - **Cluster Stability**: Prevention of storage-related failures
 
-#### Problems Without Size Management
+#### Problems without size management
 Failure to manage database size can result in:
 - **Performance Degradation**: Slow cluster operations as database grows unbounded
 - **Storage Exhaustion**: Running out of disk space, potentially causing cluster failure
@@ -174,19 +164,19 @@ Failure to manage database size can result in:
 - Review and cleanup unused Kubernetes resources regularly (old secrets, configmaps, etc.)
 - Configure appropriate retention policies for Kubernetes audit logs if stored in ETCD
 
-### 5. ETCD Cluster Maintenance
+### 5. ETCD cluster maintenance
 
-#### What It Is
+#### What it is
 ETCD cluster maintenance encompasses regular operational activities to ensure the long-term health, security, and reliability of your ETCD infrastructure.
 
-#### Why It Is Important
+#### Why it is important
 Regular maintenance provides:
 - **Stability**: Prevention of issues through proactive maintenance
 - **Performance**: Optimization of configuration and operations over time
 - **Compliance**: Meeting security and operational standards
 - **Risk Reduction**: Minimizing the likelihood of unexpected failures
 
-#### Problems Without Regular Maintenance
+#### Problems without regular maintenance
 Neglecting ETCD maintenance can lead to:
 - **Security Vulnerabilities**: Exposure to known security issues and exploits
 - **Unexpected Failures**: Accumulation of small issues leading to major incidents
@@ -201,7 +191,7 @@ Neglecting ETCD maintenance can lead to:
 - Conduct capacity planning and performance reviews
 - Validate TLS certificates and credentials before expiration
 
-## Monitoring Tools and Resources
+## Monitoring tools and resources
 
 Several tools and approaches can help you implement these best practices:
 
