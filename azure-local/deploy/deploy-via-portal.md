@@ -48,7 +48,7 @@ This article helps you deploy an Azure Local instance using the Azure portal.
 
 1. Select the **Identity provider** for this Azure Local instance.
 
-    For more information about the Local identity with Key Vault option, see [Deploy Azure Local using local identity](../deploy/deployment-local-identity-with-key-vault.md).
+    For more information about the Local identity with Azure Key Vault option, see [Deploy Azure Local using local identity](../deploy/deployment-local-identity-with-key-vault.md).
 
 1. Select **+ Add machines** and choose the machine or machines that make up this Azure Local instance.
    
