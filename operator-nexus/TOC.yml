@@ -321,6 +321,8 @@
           href: howto-kubernetes-cluster-aad-rbac.md
         - name: Upgrade Nexus Kubernetes cluster
           href: howto-kubernetes-cluster-upgrade.md
+        - name: Rotate NAKS certificates
+          href: howto-rotate-naks-certificates.md
         - name: Configure huge-pages for cluster virtual machines
           href: howto-kubernetes-cluster-huge-pages.md
         - name: Configure service load balancer
