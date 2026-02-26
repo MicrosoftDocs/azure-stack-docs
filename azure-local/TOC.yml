@@ -162,7 +162,11 @@ items:
 
 
     - name: Deploy using local identity with Key Vault
-      href: deploy/deployment-local-identity-with-key-vault.md
+      items:
+      - name: Deploy via Azure portal
+        href: deploy/deployment-local-identity-with-key-vault.md
+      - name: Deploy via ARM template
+        href: deploy/deployment-local-identity-with-key-vault-template.md
     - name: Deploy workloads
       items:
       - name: Run AKS on Azure Local
