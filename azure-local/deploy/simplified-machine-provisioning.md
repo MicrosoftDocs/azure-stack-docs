@@ -23,7 +23,7 @@ At a high level, there are three key stages:
 
 :::image type="content" source="media/simplified-machine-provisioning/simplified-machine-provisioning-stages.png" alt-text="Diagram showing the three stages of simplified machine provisioning." border="true" lightbox="media/simplified-machine-provisioning/simplified-machine-provisioning-stages.png":::
 
-1. **Prepare the machines**: In this stage, maintenance environment is installed on the machine and an ownership voucher is generated. These artifacts meet the [FIDO Device Onboarding (FDO)](https://fidoalliance.org/machine-onboarding-overview/) standards and are sent to the customer.
+1. **Prepare the machines**: In this stage, maintenance environment is installed on the machine and an ownership voucher is generated. These artifacts meet the [FIDO Device Onboarding (FDO)](https://fidoalliance.org/device-onboarding-overview/) standards and are sent to the customer.
 
     Anyone can prepare the machines, a machine manufacturer, an integrator, or even a customer, but the approach is most valuable when someone other than the on-site staff prepares the machines.
 
