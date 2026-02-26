@@ -308,6 +308,8 @@
               href: howto-baremetal-run-data-extract.md
             - name: Running BareMetal actions directly with nexusctl
               href: howto-baremetal-nexusctl.md
+        - name: Cluster Inspect Action
+          href: howto-cluster-inspect-action.md
     - name: Nexus Kubernetes cluster
       expanded: false
       items:
@@ -321,6 +323,8 @@
           href: howto-kubernetes-cluster-aad-rbac.md
         - name: Upgrade Nexus Kubernetes cluster
           href: howto-kubernetes-cluster-upgrade.md
+        - name: Rotate NAKS certificates
+          href: howto-rotate-naks-certificates.md
         - name: Configure huge-pages for cluster virtual machines
           href: howto-kubernetes-cluster-huge-pages.md
         - name: Configure service load balancer
@@ -341,6 +345,8 @@
           href: howto-kubernetes-cluster-install-microsoft-defender.md
         - name: Kubernetes cluster features
           href: howto-kubernetes-cluster-features.md
+        - name: Managing ETCD Health in Nexus Kubernetes Cluster
+          href: howto-kubernetes-cluster-manage-data-store-health.md
     - name: Nexus Virtual Machine
       expanded: false
       items:
