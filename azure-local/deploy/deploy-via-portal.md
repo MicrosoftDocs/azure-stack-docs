@@ -51,7 +51,7 @@ This article helps you deploy an Azure Local instance using the Azure portal.
 
 1. On the **Add machines** page:
     1. The operating system for your Azure Local machines is automatically selected as Azure Stack HCI.
-    1. Select one or more machines that make up this Azure Local instance. These machines could show as **Ready** or as **Missing Arc extensions**.
+    1. Select one or more machines that make up this Azure Local instance. These machines could show as **Ready** or as **Not validated**.
     1. Select **Add**. The machines show up on the **Basics** tab.
 
    :::image type="content" source="./media/deploy-via-portal/basics-tab-2.png" alt-text="Screenshot of Add machines through the Basics tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/basics-tab-2.png":::
