@@ -40,18 +40,11 @@ This article helps you deploy an Azure Local instance using the Azure portal.
 
 1. Select the **Region** to store this system's Azure resources. For a list of supported Azure regions, [Azure requirements](../concepts/system-requirements-23h2.md#azure-requirements).
 
-   We don't transfer much data so it's OK if the region isn't close. Select  **Cluster options**.
+   We don't transfer much data so it's OK if the region isn't close.
 
-1. Select the **Standard** or **Rack aware** cluster option for this Azure Local instance.
+1. Select **Cluster options**. Choose the **Standard** or **Rack aware** cluster option for this Azure Local instance.
 
     For more information about the Rack aware option, see [Azure Local rack aware clustering overview](../concepts/rack-aware-cluster-overview.md).
-
-1. Select the machine or machines that make up this Azure Local instance.
-
-   > [!IMPORTANT]
-   > Machines must not be joined to Active Directory before deployment.
-
-   :::image type="content" source="./media/deploy-via-portal/basics-tab-1.png" alt-text="Screenshot of the Basics tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/basics-tab-1.png":::
 
 1. Select the **Identity provider** for this Azure Local instance.
 
@@ -59,7 +52,12 @@ This article helps you deploy an Azure Local instance using the Azure portal.
 
 1. Select **+ Add machines** and choose the machine or machines that make up this Azure Local instance.
    
-1. On the **Add machines** page:
+   > [!IMPORTANT]
+   > Machines must not be joined to Active Directory before deployment.
+
+   :::image type="content" source="./media/deploy-via-portal/basics-tab-1.png" alt-text="Screenshot of the Basics tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/basics-tab-1.png":::
+
+   On the **Add machines** page:
     1. The operating system for your Azure Local machines is automatically selected as Azure Stack HCI.
     1. Select one or more machines that make up this Azure Local instance. These machines could show as **Ready** or as **Not validated**.
     1. Select **Add**. The machines show up on the **Basics** tab.
