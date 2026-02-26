@@ -8,7 +8,7 @@ ms.date: 02/24/2026
 ms.subservice: hyperconverged
 ---
 
-# Install and register Azure Local machines by using simplified machine provisioning (preview)
+# Install the operating system and register Azure Local machines by using simplified machine provisioning (preview)
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
@@ -19,11 +19,11 @@ This article covers only the installation and registration process by using simp
 
 ## About simplified machine provisioning process
 
-At a high level, there are three key stages:
+At a high level, the process has three key stages:
 
 :::image type="content" source="media/simplified-machine-provisioning/simplified-machine-provisioning-stages.png" alt-text="Diagram showing the three stages of simplified machine provisioning." border="true" lightbox="media/simplified-machine-provisioning/simplified-machine-provisioning-stages.png":::
 
-1. **Prepare the machines**: In this stage, maintenance environment is installed on the machine and an ownership voucher is generated. These artifacts meet the [FIDO Device Onboarding (FDO)](https://fidoalliance.org/device-onboarding-overview/) standards and are sent to the customer.
+1. **Prepare the machines**: In this stage, you install the maintenance environment on the machine and generate an ownership voucher. These artifacts meet the [FIDO Device Onboarding (FDO)](https://fidoalliance.org/device-onboarding-overview/) standards and are sent to the customer.
 
     Anyone can prepare the machines, a machine manufacturer, an integrator, or even a customer, but the approach is most valuable when someone other than the on-site staff prepares the machines.
 
@@ -31,11 +31,15 @@ At a high level, there are three key stages:
 
 1. **Provision the machines from the Azure portal**:
 
-    1. Set up site-level configuration: This configuration applies to all new machines under a site. This configuration includes settings like time zone, time server, proxy server, Azure Arc-gateway, Key vault for administrator credentials, and more. Site-level configuration eliminates the need for manual configuration for each machine.
+    1. Set up site-level configuration: This configuration applies to all new machines under a site. This configuration includes settings like time zone, time server, proxy server, Key vault for administrator credentials, and more. Site-level configuration eliminates the need for manual configuration for each machine.
 
     1. Provision the machines: Once the site configurations are done, claim machine ownership by using the ownership voucher generated while preparing the machine. Select the operating system profile for each machine.
+    
+    > [!NOTE]
+    > Azure Arc gateway isn't supported with simplified machine provisioning in this preview release.
 
 1. **Deploy the cluster by using the provisioned machines**: You can now create an Azure Local instance using the provisioned machines.
+
 
 [!INCLUDE [hci-preview](../includes/hci-preview.md)]
 
@@ -59,7 +63,9 @@ At a high level, there are three key stages:
 
 - Download software to your Windows 11 computer. 
     - Go to **Azure Arc** > **Azure Local** > **Get started**. 
-    - On the **Get started** page, in the banner at the top of the page, select **Try provisioning (preview)**. 
+    - On the **Get started** page, in the banner at the top of the page, select **Try provisioning (preview)**.
+
+        :::image type="content" source="media/simplified-machine-provisioning/try-provisioning.png" alt-text="Screenshot of the Azure portal showing how to try simplified machine provisioning." border="true" lightbox="media/simplified-machine-provisioning/try-provisioning.png":::
     - On the **Machine provisioning (preview)** page, go to the **Download and install** tile and select **View Downloads** to download the software to your Windows 11 computer.
         
         The software includes the maintenance environment ISO image, USB preparation tool, and the Configurator app. A maintenance environment is a secure bootable OS that prepares a machine for provisioning by generating the device ID and voucher.
@@ -76,7 +82,7 @@ At a high level, there are three key stages:
     az feature register --subscription <subcriptionid> --namespace Microsoft.DeviceOnboarding --name AzureLocalZTP
     ```
 
-- After you register the machine provisioning feature, ensure the following [resource providers](/azure/azure-resource-manager/management/resource-providers-and-types#azure-portal) are registered with your subscription:
+- After you register the machine provisioning feature, ensure the following [resource providers](/azure/azure-resource-manager/management/resource-providers-and-types#azure-portal) are registered for your subscription:
 
   - *Microsoft.HybridCompute*
   - *Microsoft.AzureStackHCI*
@@ -176,8 +182,9 @@ Follow the steps to prepare machines for simplified provisioning. Repeat this st
     |---------|---------|
     |Time zone     | Select the common time zone for all the machines under the site. You can change it later. New machines use this time zone, but existing ones don't.       |
     |Time server    |  Enter the common time server for synchronized system time for all the machines under the site. You can change it later. New machines use this time server, but existing ones don't. |
-    |Azure Arc gateway | Either create or select your Azure Arc gateway resource instance. Azure Arc gateway enables minimal endpoints connections to Azure Arc. For more information, see [How to simplify network configuration requirements through Azure Arc gateway](/azure/azure-arc/servers/arc-gateway). |
 
+     Azure Arc gateway isn't supported with simplified machine provisioning in this preview release.
+    
 1. Select the site, add vouchers from [Prepare machines](#step-2-prepare-machines), software version, and local administrator credentials. The password must have at least 12 characters including lower and upper-case characters, a digit, and a special character. Once you add machines, select the pencil button to edit. Provide the machine name as the Arc resource name.
 
     :::image type="content" source="media/simplified-machine-provisioning/provision-machines-portal.png" alt-text="Screenshot of the Azure portal showing the Provision new machines pane." border="true" lightbox="media/simplified-machine-provisioning/provision-machines-portal.png":::
