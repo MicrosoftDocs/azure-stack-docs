@@ -68,3 +68,5 @@ Hardware validation is automatically triggered during:
 - [BMM Replace actions](./howto-baremetal-functions.md#replace-a-bare-metal-machine)
 
 After hardware repairs are completed, you must run a Replace action to re-validate and provision the BMM.
+
+Hardware validation can be triggered AD-HOC by invoking the [Cluster Inspect action](./howto-cluster-inspect-action.md)

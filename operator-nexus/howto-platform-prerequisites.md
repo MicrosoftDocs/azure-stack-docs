@@ -689,7 +689,7 @@ For reference, version N is the latest available runtime version. N-1 and N-2 ar
 | CPLD                                                                    | 1.1.1         |
 | Mellanox ConnectX-6 DX Adapter                                          | 22.47.10.88   |
 | NVIDIA ConnectX-6 Lx 2x 25G SFP28                                       | 26.41.10.00   |
-| Broadcom 5720 Quad Port 1GbE BASE-T Adapter                             | 23.21.6       |
+| Broadcom 5720 Quad Port 1GbE BASE-T Adapter                             | 23.31.1       |
 
 ##### BOM 2.0.0
 
@@ -703,7 +703,7 @@ For reference, version N is the latest available runtime version. N-1 and N-2 ar
 | CPLD                                                | 1.2.7         |
 | Mellanox ConnectX-6 DX Adapter                      | 22.47.10.88   |
 | NVIDIA ConnectX-6 Lx 2x 25G SFP28                   | 26.41.10.00   |
-| Broadcom 5720 Quad Port 1GbE BASE-T Adapter         | 23.21.6       |
+| Broadcom 5720 Quad Port 1GbE BASE-T Adapter         | 23.31.1       |
 
 #### Nexus Cluster runtime version N-1
 
