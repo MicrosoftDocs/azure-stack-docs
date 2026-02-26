@@ -14,7 +14,7 @@ ms.subservice: hyperconverged
 
 This article describes how to use simplified machine provisioning to set up machines for an Azure Local instance. You can install the OS on your Azure Local machines in two distinct ways: you can manually install the OS using ISO images, or you can use the simplified machine provisioning process. 
 
-This article covers only the installation and registration process by using simplified machine provisioning, which is currently in preview. To see the manual process, see [Install OS on your Azure Local machines using ISO images](./deployment-install-os.md).
+This article covers only the installation and registration process by using simplified machine provisioning, which is currently in preview. To install the OS manually, see [Install OS on your Azure Local machines using ISO images](./deployment-install-os.md).
 
 
 ## About simplified machine provisioning process
@@ -23,9 +23,11 @@ At a high level, there are three key stages:
 
 :::image type="content" source="media/simplified-machine-provisioning/simplified-machine-provisioning-stages.png" alt-text="Diagram showing the three stages of simplified machine provisioning." border="true" lightbox="media/simplified-machine-provisioning/simplified-machine-provisioning-stages.png":::
 
-1. **Prepare the machines**: Preparation ends with two artifacts: simplified machine provisioning software components installed on the machine and generating an ownership voucher, which meets [FIDO Device Onboarding (FDO)](https://fidoalliance.org/machine-onboarding-overview/) standards. Send both artifacts to the end customer. Anyone can prepare the machines, whether you're a machine manufacturer, an integrator, or even an end customer, but the approach is most valuable when someone other than the on-site staff prepares the machines.
+1. **Prepare the machines**: In this stage, maintenance environment is installed on the machine and an ownership voucher is generated. These artifacts meet the [FIDO Device Onboarding (FDO)](https://fidoalliance.org/machine-onboarding-overview/) standards and are sent to the customer.
 
-    Once the on-site staff has the prepared machines, the machines securely connect to the call-home URL and are automatically configured after provisioning from Azure, including OS setup and network configuration, so they’re ready to use. Optionally, the staff can monitor installation and configure machines by using the Configurator app.
+    Anyone can prepare the machines, a machine manufacturer, an integrator, or even a customer, but the approach is most valuable when someone other than the on-site staff prepares the machines.
+
+    Once the on-site staff has the prepared machines, the machines securely connect to the call-home URL. The machines are then provisioned. The OS is installed and the network is configured. While the installation and configuration are in progress, the staff can monitor the process via the Configurator app.
 
 1. **Provision the machines from the Azure portal**:
 
@@ -106,7 +108,7 @@ Follow these steps to create a USB installation media from your Windows 11 PC:
 
 1. Open the terminal. You need to be an administrator to run this tool.
 
-1. Pre-approve the `usb_prep.exe` in Windows Security.
+1. Preapprove the `usb_prep.exe` in Windows Security.
 
     1. Go to **Windows Security** > **Virus & threat protection** and select **Manage settings**. Scroll to **Exclusions** > **Add an Exclusion** > **File** and select `usb_prep.exe`.
 
@@ -180,7 +182,7 @@ Follow the steps to prepare machines for simplified provisioning. Repeat this st
 
     :::image type="content" source="media/simplified-machine-provisioning/provision-machines-portal.png" alt-text="Screenshot of the Azure portal showing the Provision new machines pane." border="true" lightbox="media/simplified-machine-provisioning/provision-machines-portal.png":::
 
-1. On **Review + create**, review details and select **Create**.
+1. On **Review + create**, review details, and select **Create**.
 
 In the Azure portal, go to **Azure Arc** > **Operations** > **Provisioning (preview)**. On the **Provisioned machines** tab, you see your machine provisioning status.
 
@@ -188,7 +190,7 @@ In the Azure portal, go to **Azure Arc** > **Operations** > **Provisioning (prev
 
 Ensure that your on-site staff keeps the machine connected to the network and powered on. The machine automatically connects securely to a call-home URL, then gets fully configured from Azure. This configuration includes download of the Azure Stack HCI operating system, setting up the operating system, connecting the machine to Azure Arc, and installing all the mandatory Azure Arc extensions. The machine is ready for clustering.
 
-This process reduces setup time and expertise needed at remote sites. All the configuration is done from Azure. Use Azure Resource Manager templates to provision servers at many remote sites. This makes the process quicker, repeatable, and scalable.
+This process reduces setup time and expertise needed at remote sites. The configuration is done from Azure. Use Azure Resource Manager templates to provision servers at many remote sites. This makes the process quicker, repeatable, and scalable.
 
 ## Step 4: Monitor machine set up via app (optional)
 
