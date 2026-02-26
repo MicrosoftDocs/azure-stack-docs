@@ -81,15 +81,16 @@ This article helps you deploy an Azure Local instance using the Azure portal.
     > [!IMPORTANT]
     > Azure Local doesn't support deploying a cluster using an existing Azure Key Vault that has Private Endpoints enabled.
 
-1. **Create a new key vault**:
+1. **Create a new key vault**. Provide information for the specified parameters.
 
    :::image type="content" source="./media/deploy-via-portal/basics-tab-6.png" alt-text="Screenshot of Create a new key vault on Basics tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/basics-tab-6.png":::
 
-	On the **Create a new key vault** page, provide information for the specified parameters and select Create:
-
+	On the **Create a new key vault** page:
     1. Accept the suggested name or provide a name for the key vault you create.
     1. Accept the default number of Days to retain deleted vaults or specify a value between 7 and 90 days. You can’t change the retention period later. The key vault creation takes several minutes.
-    1. If you don’t have permissions to the resource group, you see a message that you have insufficient permissions for the key vault. Select **Grant key vault permissions**.
+    1. If you don’t have permissions to the resource group, you see a message that you have insufficient permissions for the key vault. Select **Grant key vault permissions
+	1. Select **Create**.
+     
 
    :::image type="content" source="./media/deploy-via-portal/basics-tab-7.png" alt-text="Screenshot of key vault parameters specified on the Basics tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/basics-tab-7.png":::
 
