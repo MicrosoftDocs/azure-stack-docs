@@ -88,7 +88,7 @@ This article helps you deploy an Azure Local instance using the Azure portal.
 	On the **Create a new Key Vault** page, provide information for the specified parameters:
     1. Accept the suggested name or provide a name for the Key Vault you create.
     1. Accept the default number of Days to retain deleted vaults or specify a value between 7 and 90 days. You can’t change the retention period later. The Key Vault creation takes several minutes.
-    1. If you don’t have permissions to the resource group, you see a message that you have insufficient permissions for the Key Vault. Select **Grant Key Vault permissions**
+    1. If you don’t have permissions to the resource group, you see a message that you have insufficient permissions for the Key Vault. Select **Grant Key Vault permissions**.
 	1. Select **Create**.
      
 
