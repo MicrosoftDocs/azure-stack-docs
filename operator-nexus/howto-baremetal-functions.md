@@ -5,7 +5,7 @@ author: matternst7258
 ms.author: matthewernst
 ms.service: azure-operator-nexus
 ms.topic: how-to
-ms.date: 12/04/2025
+ms.date: 02/11/2026
 ms.custom: template-how-to, devx-track-azurecli
 ---
 
@@ -39,8 +39,11 @@ The following table summarizes each action to help you select the appropriate op
 | Power off | Gracefully power down the machine               | None      | Yes      | No              | 40 minutes  |
 | Start     | Power on a machine                              | None      | Recovery | No              | 30 minutes  |
 | Restart   | Reboot the machine while preserving OS and data | None      | Minutes  | No              | 40 minutes  |
-| Reimage   | Reinstall the OS image on existing hardware     | Full      | Hours    | No              | 3 hours     |
-| Replace   | Swap physical hardware with new machine         | Full      | Hours    | Yes             | 4 hours     |
+| Reimage   | Reinstall the OS image on existing hardware     | OS disk only | Hours    | No              | 3 hours     |
+| Replace   | Swap physical hardware with new machine         | Full*     | Hours    | Yes             | 4 hours     |
+
+> [!NOTE]
+> \* Replace: By default, the RAID controller is reset during replace, wiping all data. Use `--storage-policy Preserve` to retain tenant data (available in API version 2025-07-01-preview and later).
 
 ## Choose the right action
 
@@ -61,6 +64,25 @@ Use the following guidance to determine which action best fits your situation:
 | Rolling maintenance across nodes                     | Cordon             |
 | BMC credentials need manual rotation                 | Replace            |
 | Firmware reconciliation needed                       | Replace            |
+
+### Quick decision guide
+
+**Start here if you're unsure which action to use:**
+
+1. **Did you physically replace or repair hardware?** → Use [Replace](#replace-a-bare-metal-machine)
+2. **Is the machine unresponsive but hardware is healthy?** → Use [Restart](#restart-a-bare-metal-machine)
+3. **Do you need a clean OS installation without hardware changes?** → Use [Reimage](#reimage-a-bare-metal-machine)
+4. **Do you need to prevent new workloads temporarily?** → Use [Cordon](#make-a-bare-metal-machine-unschedulable-cordon)
+5. **Is the machine powered off and needs to come online?** → Use [Start](#start-a-bare-metal-machine)
+
+**For troubleshooting specific status conditions, see:**
+- [Warning status messages](./troubleshoot-bare-metal-machine-warning.md)
+- [Degraded status](./troubleshoot-bare-metal-machine-degraded.md)
+- [Provisioning failures](./troubleshoot-bare-metal-machine-provisioning.md)
+- [Hardware validation failures](./troubleshoot-hardware-validation-failure.md)
+
+**For detailed troubleshooting workflows with pre/post-checks and hardware replacement guidance, see:**
+- [Troubleshoot server problems with Restart, Reimage, and Replace](./troubleshoot-reboot-reimage-replace.md)
 
 ## Control plane node considerations
 
@@ -224,7 +246,10 @@ az networkcloud baremetalmachine uncordon \
 
 ## Reimage a Bare Metal Machine
 
-The reimage action completely reinstalls the operating system on the bare metal machine, returning it to a clean state. The existing machine is deprovisioned, the disk is wiped, and a fresh OS image is deployed. After reimaging, the machine rejoins the cluster with the same identity (hostname, IP addresses) but with a freshly installed operating system. Use this action when software issues can't be resolved through a restart.
+The reimage action completely reinstalls the operating system on the bare metal machine, returning it to a clean state. The existing machine is deprovisioned, the OS disk is wiped, and a fresh OS image is deployed. After reimaging, the machine rejoins the cluster with the same identity (hostname, IP addresses) but with a freshly installed operating system. Use this action when software issues can't be resolved through a restart.
+
+> [!NOTE]
+> Reimage wipes the OS disk but preserves tenant data on the BMM. The machine rejoins the cluster with a fresh OS installation while retaining data disks.
 
 This process **redeploys** the runtime image on the target Bare Metal Machine and executes the steps to rejoin the cluster with the same identifiers.
 
@@ -293,6 +318,7 @@ az networkcloud baremetalmachine replace \
   --boot-mac-address <PXE_MAC> \
   --machine-name <OS_HOSTNAME> \
   --serial-number <SERIAL_NUMBER> \
+  --storage-policy <"Preserve" or "Delete"> \
   --subscription <subscriptionID> \
   --safeguard-mode <"All" or "None">
 ```
@@ -343,4 +369,6 @@ Code: None
 Message: Networking test(s) failed: [NIC.Slot.6-1-1_LinkStatus] expected: up; observed: Down; [Additional logs: Link failure detected on NIC.Slot.6-1-1; Unable to perform cabling check on PCI Slot 6]
 ```
 
-For more information about troubleshooting hardware validation failures, see [Troubleshoot Hardware Validation Failure](./troubleshoot-hardware-validation-failure.md).
+For complete hardware validation troubleshooting procedures organized by failure category (System Info, Drive Info, Network Info, Health Info, Boot Info), see [Troubleshoot Hardware Validation Failure](./troubleshoot-hardware-validation-failure.md).
+
+To understand what hardware validation checks and when it runs, see [Hardware Validation Overview](./concepts-hardware-validation-overview.md).

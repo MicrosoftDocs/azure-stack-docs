@@ -4,7 +4,7 @@ description: This article provides an overview of the Azure Local monitoring sol
 ms.author: alkohli
 ms.topic: overview
 author: alkohli
-ms.date: 11/14/2025
+ms.date: 01/20/2026
 ms.subservice: multi-rack
 ---
 
@@ -55,53 +55,6 @@ Azure Local provides monitoring capabilities fully integrated with Azure Monitor
 
 Azure Local provides key infrastructure metrics out of the box, at no extra cost. These metrics include CPU and memory usage, storage performance metrics, such as IOPS, latency and throughput, and network throughput. You can view these metrics in Azure Monitor through predefined charts. You can also create custom charts to visualize these metrics based on your preferences.
 
-For additional monitoring, Cluster Metrics Configuration enables you to extend beyond the default metrics by selectively enabling optional ones. This gives you tailored visibility and greater control over monitoring to meet specific operational needs. To learn more about Cluster Metrics Configuration, see [Cluster metrics configuration](multi-rack-monitor-cluster-with-metrics.md).
-
-### Logs
-
-Azure Local emits logs from edge platform components. These metrics can be streamed to your storage account, event hub, or Log Analytics workspace for storing analyzing logs into customer specified targets. To learn more about logs available for streaming, see [Logs available for streaming](#logs-available-for-streaming).
-
-#### Logs available for streaming
-
-Logs emitted by system resources provide detailed insight into the operations of Azure Local components and are useful for monitoring their health and availability. Logs are categorized based on the type of resource emitting them.
-
-You can stream these logs to the following targets by configuring [Diagnostic Settings](/azure/azure-monitor/essentials/diagnostic-settings) in Azure Monitor:
-
-- Log Analytics Workspace
-- Storage Account
-- Event Hubs
-
-#### Cluster
-
-| Log categories | Description |
-|--|:-|
-| Kubernetes Logs | Logs emitted by the Kubernetes containers |
-| VM Orchestration Logs | Logs emitted by the hypervisor service |
-
-#### Bare metal servers
-
-| Log categories | Categories | Description |
-|--|:-|:-|
-| System | Debug, Info, Notice, Warning, Error, Critical | System logs from the Bare metal server |
-| Security | Debug, Info, Notice, Warning, Error, Critical, Defender, BreakGlass Audit | Security logs from the Bare metal server |
-
-#### Storage appliance
-
-| Log categories | Description |
-|--|:-|
-| Storage Appliance logs | System Logs from Storage Appliance |
-| Storage Appliance audits | Audit Logs from Storage Appliance |
-| Storage Appliance alerts | Alert logs from Storage Appliance |
-
-> [!NOTE]
-> Storage appliance audit and alert logs are specific to a single storage appliance. Instances with multiple storage appliances have different tables for each storage appliance. System logs have a single table for all storage appliances in the instance.
-
-#### Cluster Manager
-
-| Log categories | Description |
-|--|:-|
-| Cluster Manager Deploy or Upgrade Logs | Logs emitted during the deployment or upgrade of the Cluster from Cluster Manager |
-
 ### Alerts
 
 Azure Local provides alerting capabilities through Azure Monitor Alerts. Alerts proactively notify you when important conditions are found in your monitoring data. Alerts can be raised based on predefined health faults from the OS health service, or you can create custom alerts based on metrics or logs you collect. To simplify custom alert creation, a set of recommended alerts is available that you can use as templates.
@@ -119,7 +72,6 @@ The following table provides a brief description and setup instructions for each
 | Log based alerts | These alerts are customer-defined and are used to perform advanced logic operations on your log data. These alerts allow you to use Log Analytics query to evaluate resource logs at a predefined frequency. <br> Predefined templates are available to get you started with Log alerts.| See [Create a log search alert for an Azure resource](/azure/azure-monitor/alerts/tutorial-log-alert).  |
 | Metric based alerts | These are customer-defined alerts that are used to evaluate metrics of your system at regular intervals. Metric alerts are useful when you want to be alerted about data that requires little or no manipulation. | See [Create or edit a metric alert rule](/azure/azure-monitor/alerts/alerts-create-metric-alert-rule). |
 | Recommended alerts | These are predefined metric-based alerts for your system resource. These alerts provide you with initial monitoring for a common set of metrics using recommended alert templates. | |
-
 
 ## Next steps
 

@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 11/18/2025
+ms.date: 01/16/2026
 ms.subservice: multi-rack
 ---
 
@@ -100,7 +100,7 @@ You can expand an existing data disk to your desired size using Azure CLI.
 To expand the size of your data disk using Azure CLI, run the following command:
 
 ```azurecli
-az stack-hci-vm disk update --name $name --resource-group $resource_group --size-gb $size_in_gb
+az stack-hci-vm disk update --name $diskName --resource-group $resource_group --size-gb $size_in_gb
 ```
 
 Here's a sample output that indicates successful resizing of the data disk:
@@ -155,7 +155,7 @@ To delete a data disk from a VM, complete the following steps using Azure CLI fr
 1. Delete the disk (optional):
 
     ```azurecli
-    az stack-hci-vm disk delete --resource-group $resource_group --vm-name $vmName --name $diskName
+    az stack-hci-vm disk delete --resource-group $resource_group --name $diskName
     ```
 
 ### [Azure portal](#tab/azureportal)

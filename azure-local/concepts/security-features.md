@@ -3,7 +3,7 @@ title: Security features for Azure Local, version 23H2.
 description: Learn about security features available for new deployments of Azure Local, version 23H2.
 author: alkohli
 ms.author: alkohli
-ms.topic: article
+ms.topic: concept-article
 ms.service: azure-local
 ms.date: 12/09/2025
 ms.subservice: hyperconverged

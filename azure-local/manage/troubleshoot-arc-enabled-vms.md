@@ -15,7 +15,15 @@ ms.subservice: hyperconverged
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
-This article describes how to collect logs and troubleshoot issues with Azure Local Virtual Machines (VMs) enabled by Azure Arc. It also lists the current limitations and known issues with Azure Local VM management, along with recommended resolutions.
+This article describes how to collect logs and troubleshoot problems with Azure Local Virtual Machines enabled by Azure Arc. It also lists the current limitations and known problems with Azure Local VM management, along with recommended resolutions.
+
+## Infrastructure logical network isn't visible in Azure portal
+
+**Problem:**
+For version 2601 and later, the infrastructure logical network that was created during the Azure Local deployment isn't visible in the Azure portal.
+
+**Resolution:**
+If you don't see the infrastructure logical network after deploying solution version 2601 or updating to it, this network appears when you attempt a subsequent solution update.
 
 If your Azure Local VMs experience issues that you can't resolve, run the [Support Tool for Azure Local infrastructure component issues](./remediate-support-tool-infrastructure.md) before filing a support request. If the issues persist, use the guidance provided in this article to further troubleshoot Azure Local VMs.
 
@@ -28,11 +36,11 @@ If your Azure Local VMs experience issues that you can't resolve, run the [Suppo
 
 **Cause:**
 
-This error occurs when the feature you're trying to use isn't available for the software version running on your Azure Local instance. This can happen if the software version on your cluster is outdated or the feature was introduced in a later version.
+This error occurs when the feature you're trying to use isn't available for the software version running on your Azure Local instance. This problem can happen if the software version on your cluster is outdated or the feature was introduced in a later version.
 
 **Resolution:**
 
-To resolve this issue, update your Azure Local instance to the latest version. For more information, see [Update via PowerShell](../update/update-via-powershell-23h2.md) or [Update via Azure portal](../update/azure-update-manager-23h2.md).
+To resolve this problem, update your Azure Local instance to the latest version. For more information, see [Update via PowerShell](../update/update-via-powershell-23h2.md) or [Update via Azure portal](../update/azure-update-manager-23h2.md).
 
 
 ## Cluster extension doesn't support resource type
@@ -43,15 +51,15 @@ To resolve this issue, update your Azure Local instance to the latest version. F
 
 **Cause:**
 
-This error occurs when the feature you're trying to use isn't available for the software version running on your Azure Local instance. This can happen if the software version on your cluster is outdated or the feature was introduced in a later version.
+This error occurs when the feature you're trying to use isn't available for the software version running on your Azure Local instance. This problem can happen if the software version on your cluster is outdated or the feature was introduced in a later version.
 
 **Resolution:**
 
-To resolve this issue, update your Azure Local instance to the latest version. For more information, see [Update via PowerShell](../update/update-via-powershell-23h2.md) or [Update via Azure portal](../update/azure-update-manager-23h2.md).
+To resolve this problem, update your Azure Local instance to the latest version. For more information, see [Update via PowerShell](../update/update-via-powershell-23h2.md) or [Update via Azure portal](../update/azure-update-manager-23h2.md).
 
 ## Unable to select an image for Trusted launch VMs
 
-Trusted launch for Azure Local VMs currently supports only a select set of Azure Marketplace images. For a list of supported images, see [Guest operating system images](./trusted-launch-vm-overview.md#guest-operating-system-images). When you create a Trusted launch VM in the Azure portal, the Image dropdown list shows only the images supported by Trusted launch. The Image dropdown appears blank if you select an unsupported image, including a custom image. The list also appears blank if none of the images available on your Azure Local system are supported by Trusted launch.
+Trusted launch for Azure Local VMs currently supports only a select set of Azure Marketplace images. For a list of supported images, see [Guest operating system images](./trusted-launch-vm-overview.md#guest-operating-system-images). When you create a Trusted launch VM in the Azure portal, the **Image** dropdown list shows only the images supported by Trusted launch. The **Image** dropdown appears blank if you select an unsupported image, including a custom image. The list also appears blank if none of the images available on your Azure Local system are supported by Trusted launch.
 
 ## Failure when trying to enable guest management
 
@@ -59,21 +67,21 @@ When trying to run the command to enable guest management, you see the following
 
 **Error:** `Deployment failed. Correlation ID: aaaa0000-bb11-2222-33cc-444444dddddd. VM Spec validation failed for guest agent provisioning: Invalid managed identity. A system-assigned managed identity must be enabled in parent resource: Invalid Configuration`
 
-This failure is because the managed identity wasn't created for this VM. System-assigned Managed Identity is required to enable guest management.
+This failure happens because the managed identity doesn't exist for this VM. You need a system-assigned managed identity to enable guest management.
 
 **Resolution:**  
 
-Follow these steps to verify that the Managed Identity isn't created for this VM and then enable System-assigned Managed Identity.
+Follow these steps to verify that the managed identity doesn't exist for this VM and then enable system-assigned managed identity.
 
-1. In the Azure portal, go to the VM. Browse to the **Overview** page. On the **Properties** tab, under **Configuration**, the **Guest management** should show as **Disabled**. Select the **JSON View** from the top right corner.
+1. In the Azure portal, go to the VM. Browse to the **Overview** page. On the **Properties** tab, under **Configuration**, the **Guest management** shows as **Disabled**. Select the **JSON View** from the top right corner.
 
     :::image type="content" source="./media/troubleshoot-arc-enabled-vms/managed-identity-missing-1.png" alt-text="Screenshot of how to get to JSON view." lightbox="./media/troubleshoot-arc-enabled-vms/managed-identity-missing-1.png":::
 
-1. Under `Identity` parameter, the `type` should show as `None`.
+1. Under `Identity` parameter, the `type` shows as `None`.
 
     :::image type="content" source="./media/troubleshoot-arc-enabled-vms/managed-identity-missing-2.png" alt-text="Screenshot of JSON view indicating the Managed Identity is absent." lightbox="./media/troubleshoot-arc-enabled-vms/managed-identity-missing-2.png":::
 
-1. To create managed identity, connect to the Azure Local machine via Remote Desktop Protocol (RDP). Run the following command:
+1. To create managed identity, connect to the Azure local machine via Remote Desktop Protocol (RDP). Run the following command:
     
     ```azurecli
     az extension add --name connectedmachine
@@ -106,7 +114,7 @@ Follow these steps to verify that the Managed Identity isn't created for this VM
     az connectedmachine update --ids "<Resource Manager ID for the VM>" --set identity.type="SystemAssigned"
     ```
 
-1. Go to the Azure portal and browse to the **Overview** page. The **JSON View** should indicate that the system managed identity is now assigned to the VM.
+1. Go to the Azure portal and browse to the **Overview** page. The **JSON View** indicates that the system managed identity is now assigned to the VM.
 
     :::image type="content" source="./media/troubleshoot-arc-enabled-vms/managed-identity-missing-3.png" alt-text="Screenshot of JSON view when Managed Identity is enabled." lightbox="./media/troubleshoot-arc-enabled-vms/managed-identity-missing-3.png":::  
 
@@ -124,19 +132,19 @@ The failure occurs because the user creating the image doesn't have the right pe
 
 **Resolution:**
 
-Add the **Storage Blob Data Contributor** role to the user that needs to create an image from this storage account. Once role is added, retry deploying the image.
+Add the **Storage Blob Data Contributor** role to the user that needs to create an image from this storage account. After you add the role, retry deploying the image.
 
 You might also see the following error when trying to deploy a VM image from a storage account:
 
 **Error:** `{"code":"moc-operator galleryimage serviceClient returned an error while reconciling: rpc error: code = Unknown desc = ===== RESPONSE ERROR (ErrorCode=InvalidBlobType) =====\nDescription=The blob type is invalid for this operation.\nRequestId:5e74055f-e01e-0033-66eb-ff9734000000\nTime:2024-09-05T23:32:56.3001852Z, Details: (none)\n","message":"moc-operator galleryimage serviceClient returned an error while reconciling: rpc error: code = Unknown desc = ===== RESPONSE ERROR (ErrorCode=InvalidBlobType) =====\nDescription=The blob type is invalid for this operation.\nRequestId:5e74055f-e01e-0033-66eb-ff9734000000\nTime:2024-09-05T23:32:56.3001852Z, Details: (none)\n","additionalInfo":[{"type":"ErrorInfo","info":{"category":"Uncategorized","recommendedAction":"","troubleshootingURL":""}}]}`
 
-This failure is because the blob type isn't correct within the storage account. The image must be of `page blob` type.
+This failure happens because the blob type isn't correct within the storage account. The image must be of `page blob` type.
 
 **Resolution:**
 
 Upload the image into your storage account in `page blob format` and retry deploying the image.
 
-Ensure that the user has the right permissions, and the blob is in the correct format. For more information, see [Add VM image from Azure Storage account](virtual-machine-image-storage-account.md?tabs=azurecli#prerequisites).
+Ensure that you have the right permissions, and the blob is in the correct format. For more information, see [Add VM image from Azure Storage account](virtual-machine-image-storage-account.md?tabs=azurecli#prerequisites).
 
 
 ## Failure to deploy an Azure Local VM
@@ -145,19 +153,19 @@ You see the following error when trying to deploy an Azure Local VM:
 
 **Error:** `{"code":"ConflictingOperation","message":"Unable to process request 'Microsoft.AzureStackHCI/virtualMachineInstances'. There is already a previous running operation for resource '/subscriptions/<subscription ID>/resourceGroups/<Resource group name>/providers/Microsoft.HybridCompute/machines/<VM name>/providers/Microsoft.AzureStackHCI/virtualMachineInstances/default'. Please wait for the previous operation to complete."}`
 
-This failure is because the `SystemAssigned` managed identity object isn't under the `Microsoft.HybridCompute/machines` resource type.
+This failure happens because the `SystemAssigned` managed identity object isn't under the `Microsoft.HybridCompute/machines` resource type.
 
 **Resolution:**  
 
 Verify in your deployment template that:
 
-The `SystemAssigned` managed identity object is under `Microsoft.HybridCompute/machines` resource type and not under `Microsoft.AzureStackHCI/VirtualMachineInstances` resource type.
+- The `SystemAssigned` managed identity object is under `Microsoft.HybridCompute/machines` resource type and not under `Microsoft.AzureStackHCI/VirtualMachineInstances` resource type.
 
-The deployment template should match the provided sample template. For more information, see the sample template in [Create Azure Local virtual machines enabled by Azure Arc](./create-arc-virtual-machines.md).
+- The deployment template matches the provided sample template. For more information, see the sample template in [Create Azure Local virtual machines enabled by Azure Arc](./create-arc-virtual-machines.md).
 
 ## Azure CLI installation isn't recognized
 
-If your environment fails to recognize Azure CLI after installing it, run the following code block to add the Azure CLI installation path to the environment path.
+If your environment doesn't recognize Azure CLI after installing it, run the following code block to add the Azure CLI installation path to the environment path.
 
 ```PowerShell
         if ( -not( $env:PATH -like '*C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\wbin*') ) {
@@ -170,7 +178,7 @@ If your environment fails to recognize Azure CLI after installing it, run the fo
 
 **Error:**
 
-When you deploy an Azure Local VM using the SQL Server 2022 on Windows Server 2022 Azure marketplace images (Standard or Enterprise), you might see the following warning at startup:
+When you deploy an Azure Local VM by using the SQL Server 2022 on Windows Server 2022 Azure marketplace images (Standard or Enterprise), you might see the following warning at startup:
 
 *Windows created a temporary paging file...*
 
@@ -187,9 +195,9 @@ To resolve this issue, follow these steps:
 
     :::image type="content" source="./media/troubleshoot-arc-enabled-vms/temporary-paging-file-2.png" alt-text="Screenshot of the Virtual Memory window showing options to configure the paging file size for each drive." lightbox="./media/troubleshoot-arc-enabled-vms/temporary-paging-file-2.png":::
 
-1. Select **Set**, then select **OK** to apply the changes.
+1. Select **Set**, and then select **OK** to apply the changes.
 
-1. Restart the VM. After the restart, the warning message should no longer appear.
+1. Restart the VM. After the restart, the warning message shouldn't appear.
 
 ## Resource deployment failure due to insufficient disk space on the first storage path
 
@@ -199,15 +207,15 @@ To resolve this issue, follow these steps:
 
 **Cause:**
 
-If no storage path is specified during deployment, resources are automatically placed on the first storage path, even when additional storage paths are available on the cluster. This can lead to insufficient disk space on the first storage path, even when other storage paths still have available capacity.
+If you don't specify a storage path during deployment, the system automatically places resources on the first storage path, even if the cluster has additional storage paths. This behavior can cause insufficient disk space on the first storage path, even when other storage paths still have available capacity.
 
 **Resolution:**
 
-When creating a VM, data disk, or image, choose a storage path manually.
+When you create a VM, data disk, or image, choose a storage path manually.
 
 # [Azure portal](#tab/azure-portal)
 
-In the Azure portal, when creating a VM, attaching data disks, or creating an image, select the **Choose manually** option for the storage path. Then, select a storage path from the available list to avoid automatic placement on the first storage path.
+In the Azure portal, when you create a VM, attach data disks, or create an image, select the **Choose manually** option for the storage path. Then, select a storage path from the available list to avoid automatic placement on the first storage path.
 
 # [CLI](#tab/cli)
 
@@ -223,7 +231,7 @@ To define a storage path for a VM configuration, add `vmConfigStoragePathId` to 
 }
 ```
 
-If using an ARM template that creates multiple VMs in one deployment:
+If you use an ARM template that creates multiple VMs in one deployment:
 
 1. Define a parameter for the storage path IDs:
 

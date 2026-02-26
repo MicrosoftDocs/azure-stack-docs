@@ -5,7 +5,7 @@ author: ronmiab
 ms.author: robess
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 03/21/2025
+ms.date: 01/14/2026
 ms.custom:
   - devx-track-azurecli
   - linux-related-content
@@ -24,7 +24,7 @@ This article describes how to use Azure CLI to prepare a Red Hat Enterprise Linu
 - Have access to an Azure Local instance. This system is deployed, registered, and connected to Azure Arc. Go to the **Overview** page in the Azure Local resource. On the **Server** tab on the right pane, **Azure Arc** should appear as **Connected**.
 - [Download the latest supported Red Hat Enterprise server image](https://developers.redhat.com/products/rhel/download#rhel-new-product-download-list-61451) on your Azure Local instance. We support all Red Hat Enterprise Linux 7.x, 8.x, and 9.x versions. Here, we downloaded the *rhel-9.4-x86_64-boot.iso* file.
 
-## Workflow
+## High-level workflow
 
 To prepare a Red Hat Enterprise image and create an Azure Local VM image from it:
 
@@ -43,11 +43,15 @@ The following sections provide detailed instructions for each step in the workfl
 > - Do not use a virtual hard disk from an Azure VM to prepare the Azure Local VM image.
 > - We recommend that you prepare a Red Hat Enterprise image if you intend to enable guest management on the VMs.
 
-Follow these steps on your Azure Local system to create a VM image by using the Azure CLI.
+In the New Virtual Machine Wizard in Hyper-V, configure the settings to create your Red Hat Enterprise VM.
 
 ### Step 1: Create a Red Hat Enterprise VM
 
-Follow these steps to provision a VM using the downloaded Red Hat Enterprise image.
+When creating the source Red Hat Enterprise Linux (RHEL) virtual machine locally instead of using an Azure Marketplace VM, you can use the **New Virtual Machine Wizard** in Hyper‑V to configure the required settings.
+
+On the Hyper‑V host follow these steps:
+
+1. Open **Hyper‑V Manager**, then select **New** > **Virtual Machine**.
 
 1. Set up the VM with the following specifications:
     1. Provide a friendly name for your VM.

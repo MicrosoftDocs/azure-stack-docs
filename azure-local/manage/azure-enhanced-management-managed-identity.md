@@ -1,7 +1,7 @@
 ---
 title: Enhanced management of Azure Local from Azure
 description: Learn how to use enhanced Azure management for Azure Local. This enhanced management is enabled via Managed Identity created for your Azure Local.
-ms.topic: article
+ms.topic: concept-article
 author: alkohli
 ms.author: alkohli
 ms.date: 06/10/2025

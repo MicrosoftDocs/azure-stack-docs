@@ -4,7 +4,7 @@ description: Overview of the IP prefix resource in Azure Operator Nexus.
 author: scottsteinbrueck
 ms.author: ssteinbrueck
 ms.service: azure-operator-nexus
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 02/28/2024
 ms.custom: template-concept
 ---

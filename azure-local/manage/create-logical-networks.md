@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 01/06/2026
+ms.date: 01/14/2026
 ms.custom: sfi-image-nochange
 ms.subservice: hyperconverged
 ---
@@ -14,7 +14,11 @@ ms.subservice: hyperconverged
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
-This article describes how to create or add logical networks for your Azure Local instance. Any Azure Local virtual machines (VMs) that you create use these logical networks.
+This article describes how to create or add logical networks for application workloads running on your Azure Local instance. Any Azure Local virtual machines (VMs) that you create use these logical networks.
+
+A logical network is a logical representation of a physical network where Azure Local VMs can be provisioned. It defines how VM network interfaces connect to the underlying network. Logical networks allows you to configure networking settings like address prefix, subnet, IP pools, gateways, DNS servers, and VLANs used for VM connectivity.
+
+A default infrastructure logical network *\<AzureLocalClusterName-InfraLNET\>* is created automatically when the Azure Local instance is first deployed. You can then create additional logical networks for your workloads. This article focuses on how to create these logical networks for your application workloads.
 
 > [!NOTE]
 > Azure Local VMs only support IPv4 addresses. IPv6 addresses aren't supported.

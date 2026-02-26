@@ -4,7 +4,7 @@ description: Introduction to Nexus Kubernetes Cluster Service.
 author: scottsteinbrueck
 ms.author: ssteinbrueck
 ms.service: azure-operator-nexus
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 06/28/2023
 ms.custom: template-concept
 ---

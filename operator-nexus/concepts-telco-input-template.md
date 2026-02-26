@@ -4,7 +4,7 @@ description: Representing a Nexus instance in a Telco Input template.
 author: lb4368
 ms.author: lborgmeyer
 ms.service: azure-operator-nexus
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 07/21/2025
 ms.custom: template-concept
 ---

@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.reviewer: saniyaislam
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 03/20/2025
+ms.date: 01/30/2026
 ms.custom: sfi-image-nochange
 ms.subservice: hyperconverged
 ---
@@ -287,7 +287,7 @@ The following table lists the metrics that Azure Monitor collects to populate th
 
 | Metric | Description | Unit | Default Aggregation Type | Supported Aggregation Type | Dimensions |
 |--|--|--|--|--|--|
-| VM Percentage CPU | Percentage the virtual machine is using of its host node's processor(s). | Percent | Maximum | Minimum, Maximum, Sum, Count | Cluster, Node, VM |
+| VM Percentage CPU | Percentage the virtual machine is using of its host node's processors. | Percent | Maximum | Minimum, Maximum, Sum, Count | Cluster, Node, VM |
 | VM Memory Assigned | The quantity of memory assigned to the virtual machine. | Bytes | Sum | Minimum, Maximum | Cluster, Node, LUN, VM |
 | VM Memory Available | The quantity of memory that remains available, of the amount assigned. | Bytes | Maximum | Minimum, Maximum, Sum, Count | Cluster, Node, VM, LUN |
 | VM Memory Used | VM Memory Used | Bytes | Maximum | Minimum, Maximum | Cluster, Node, VM, LUN |

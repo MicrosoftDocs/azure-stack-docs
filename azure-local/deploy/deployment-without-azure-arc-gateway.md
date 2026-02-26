@@ -3,7 +3,7 @@ title: Register Azure Local with Azure Arc.
 description: Learn how to register Azure Local with Azure Arc with and without proxy setup. The proxy configuration can be done via an Arc script or via the Configurator app on Azure Local. 
 author: alkohli
 ms.topic: how-to
-ms.date: 11/04/2025
+ms.date: 02/17/2026
 ms.author: alkohli
 ms.service: azure-local
 zone_pivot_groups: register-arc-options
@@ -32,6 +32,7 @@ Make sure the following prerequisites are met before proceeding:
 
 - You have access to Azure Local machines running release 2505 or later.
 - You have assigned the appropriate permissions to the subscription used for registration. For more information, see [Assign required permissions for Azure Local deployment](deployment-arc-register-server-permissions.md).
+- Review guidance on [handling preinstalled or outdated OS images during Azure Arc registration](#handle-preinstalled-or-outdated-os-images-during-azure-arc-registration).
 
 
 > [!IMPORTANT]
@@ -48,6 +49,7 @@ Review the parameters used in the script:
 |`ResourceGroup`     |The resource group precreated for Arc registration of the machines. A resource group is created if one doesn't exist.         |
 |`Region`            |The Azure region used for registration. See the [Supported regions](../concepts/system-requirements-23h2.md#azure-requirements) that can be used.          |
 |`ProxyServer`       |Optional parameter. Proxy Server address when required for outbound connectivity. |
+| `TargetSolutionVersion` | Optional parameter. The target Azure Local solution version that the node must update to after registering with Azure Arc. For example: "12.2602.1002.10". |
 
 ## Step 2: Set parameters
 
@@ -86,6 +88,10 @@ $ProxyServer = "http://proxyaddress:port"
 # NetBIOS name of the Azure Local cluster.
 
 $ProxyBypassList = "localhost,127.0.0.1,*.contoso.com,machine1,machine2,machine3,machine4,machine5,192.168.*.*,AzureLocal-1"
+
+# Define the target Azure Local solution version that the node must update to after registering with Azure Arc.
+# Example: "12.2602.1002.10"
+$TargetSolutionVersion = "<solution-version>"
 ```
 
 <details>
@@ -98,6 +104,7 @@ PS C:\Users\SetupUser> $Region = "eastus"
 PS C:\Users\SetupUser> $Tenant = "Tenant ID"
 PS C:\Users\SetupUser> $ProxyServer = "http://192.168.10.10:8080"
 PS C:\Users\SetupUser> $ProxyBypassList = "localhost,127.0.0.1,*.contoso.com,machine1,machine2,machine3,machine4,machine5,192.168.*.*,AzureLocal-1"
+PS C:\Users\SetupUser> $TargetSolutionVersion = "12.2602.1002.10"
 ```
 
 </details>
@@ -105,13 +112,13 @@ PS C:\Users\SetupUser> $ProxyBypassList = "localhost,127.0.0.1,*.contoso.com,mac
 ## Step 3: Run registration script
 
 > [!NOTE]
-> If your Azure Local system is preinstalled with an Original Equipment Manufacturer (OEM) image that's outdated or unsupported, an update is triggered automatically. The update typically takes 40-45 minutes to complete and includes a system reboot. After the reboot, rerun the cmdlet to continue. For more instructions about the update flow, see [Azure Arc registration workflow for systems with OEM images](./deployment-arc-registration-preinstalled-os.md).
+> If your Azure Local system is preinstalled with an Original Equipment Manufacturer (OEM) image that's outdated or unsupported, or if it was installed with an older ISO, see [Handle preinstalled or outdated OS images during Azure Arc registration](#handle-preinstalled-or-outdated-os-images-during-azure-arc-registration).
 
 1. Run the Arc registration script. The script takes a few minutes to run.
 
     ```powershell
     #Invoke the registration script. Use a supported region.
-    Invoke-AzStackHciArcInitialization -TenantId $Tenant -SubscriptionID $Subscription -ResourceGroup $RG -Region $Region -Cloud "AzureCloud" -Proxy $ProxyServer -ProxyBypass $ProxyBypassList 
+    Invoke-AzStackHciArcInitialization -TenantId $Tenant -SubscriptionID $Subscription -ResourceGroup $RG -Region $Region -Cloud "AzureCloud" -Proxy $ProxyServer -ProxyBypass $ProxyBypassList -TargetSolutionVersion $TargetSolutionVersion
     ```
 
     For a list of supported Azure regions, see [Azure requirements](../concepts/system-requirements-23h2.md#azure-requirements).
@@ -148,6 +155,10 @@ PS C:\Users\SetupUser> $ProxyBypassList = "localhost,127.0.0.1,*.contoso.com,mac
     :::image type="content" source="media/deployment-without-azure-arc-gateway/authentication-device-code.png" alt-text="Screenshot of the console window with device code and URL for authentication." lightbox="media/deployment-without-azure-arc-gateway/authentication-device-code.png":::
 
 Once the registration is complete, the Azure Local machines are registered in Azure Arc.
+
+### Handle preinstalled or outdated OS images during Azure Arc registration
+
+[!INCLUDE [handle-os-image-updates](../includes/azure-local-handle-os-image-update-during-arc-registration.md)]
 
 ## Step 4: Verify the setup is successful
 
@@ -305,7 +316,7 @@ Make sure the following prerequisites are met before proceeding:
 
 - You have access to Azure Local machines running release 2505 or later. 
 - You have assigned the appropriate permissions to the subscription used for registration. For more information, see [Assign required permissions for Azure Local deployment](deployment-arc-register-server-permissions.md).
-
+- Review guidance on [handling preinstalled or outdated OS images during Azure Arc registration](#handle-preinstalled-or-outdated-os-images-during-azure-arc-registration).
 
 > [!IMPORTANT]
 > Run these steps as a local administrator on every Azure Local machine that you intend to cluster.
@@ -321,8 +332,7 @@ Review the parameters used in the script:
 |`SubscriptionID`    |The ID of the subscription used to register your machines with Azure Arc.         |
 |`ResourceGroup`     |The resource group precreated for Arc registration of the machines. A resource group is created if one doesn't exist.         |
 |`Region`            |The Azure region used for registration. See the [Supported regions](../concepts/system-requirements-23h2.md#azure-requirements) that can be used.          |
-
-
+| `TargetSolutionVersion` | Optional parameter. The target Azure Local solution version that the node must update to after registering with Azure Arc. For example: "12.2602.1002.10". |
 
 ## Step 2: Set parameters
 
@@ -343,6 +353,9 @@ $RG = "YourResourceGroupName"
 #Do not use spaces or capital letters when defining region
 $Region = "eastus"
 
+# Define the target Azure Local solution version that the node must update to after registering with Azure Arc.
+# Example: "12.2602.1002.10"
+$TargetSolutionVersion = "<solution-version>"
 ```
 
 <details>
@@ -353,6 +366,7 @@ PS C:\Users\SetupUser> $Tenant = "Your tenant ID"
 PS C:\Users\SetupUser> $Subscription = "Subscription ID"
 PS C:\Users\SetupUser> $RG = "myashcirg"
 PS C:\Users\SetupUser> $Region = "eastus"
+PS C:\Users\SetupUser> $TargetSolutionVersion = "12.2602.1002.10"
 ```
 </details>
 
@@ -361,13 +375,13 @@ PS C:\Users\SetupUser> $Region = "eastus"
 ## Step 3: Run registration script
 
 > [!NOTE]
-> If your Azure Local system is preinstalled with an Original Equipment Manufacturer (OEM) image that's outdated or unsupported, an update is triggered automatically. The update typically takes 40-45 minutes to complete and includes a system reboot. After the reboot, rerun the cmdlet to continue. For more instructions about the update flow, see [Azure Arc registration workflow for systems with OEM images](./deployment-arc-registration-preinstalled-os.md).
+> If your Azure Local system is preinstalled with an Original Equipment Manufacturer (OEM) image that's outdated or unsupported, or if it was installed with an older ISO, see [Handle preinstalled or outdated OS images during Azure Arc registration](#handle-preinstalled-or-outdated-os-images-during-azure-arc-registration).
 
 1. Run the Arc registration script. The script takes a few minutes to run.
 
     ```powershell
     #Invoke the registration script. Use a supported region.
-    Invoke-AzStackHciArcInitialization -TenantId $Tenant -SubscriptionID $Subscription -ResourceGroup $RG -Region $Region -Cloud "AzureCloud"
+    Invoke-AzStackHciArcInitialization -TenantId $Tenant -SubscriptionID $Subscription -ResourceGroup $RG -Region $Region -Cloud "AzureCloud" -TargetSolutionVersion $TargetSolutionVersion
     ```
 
     For a list of supported Azure regions, see [Azure requirements](../concepts/system-requirements-23h2.md#azure-requirements).
@@ -403,7 +417,9 @@ PS C:\Users\SetupUser> $Region = "eastus"
 
      :::image type="content" source="media/deployment-without-azure-arc-gateway/authentication-device-code.png" alt-text="Screenshot of the console window with device code and URL for authentication." lightbox="media/deployment-without-azure-arc-gateway/authentication-device-code.png":::
 
+### Handle preinstalled or outdated OS images during Azure Arc registration
 
+[!INCLUDE [handle-os-image-updates](../includes/azure-local-handle-os-image-update-during-arc-registration.md)]
 
 ## Step 4: Verify the setup is successful
 
@@ -603,6 +619,7 @@ Review the parameters used in the script:
     
     #Define the proxy address if your Azure Local deployment accesses the internet via proxy
     $ProxyServer = "http://proxyaddress:port"
+
     ```
 
     <details>

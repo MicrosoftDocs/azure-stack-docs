@@ -2,7 +2,7 @@
 title: HIPAA guidance for Azure Local
 description: Learn about HIPAA compliance using Azure Local.
 ms.date: 04/09/2025
-ms.topic: article
+ms.topic: concept-article
 ms.service: azure-local
 ms.author: nguyenhung
 author: dv00000
