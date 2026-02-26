@@ -41,17 +41,17 @@ These certificates are generated during cluster creation and are managed by NAKS
 ### Certificate lifecycle
 
 All NAKS control plane certificates are valid for **365 days** (one year). After this period:
-- Certificates become invalid and are rejected during TLS handshakes
-- Components can't establish secure connections
-- The cluster becomes nonfunctional
+- Certificates become invalid and are rejected during TLS handshakes.
+- Components can't establish secure connections.
+- The cluster becomes nonfunctional.
 
 ### How upgrades refresh certificates
 
 When you perform a NAKS cluster upgrade:
-* The upgrade process automatically renews all control plane certificates
-* New certificates are generated with a fresh one-year validity period
-* All control plane components are restarted to use the new certificates
-* Certificate expiration risk is eliminated for another year
+* The upgrade process automatically renews all control plane certificates.
+* New certificates are generated with a fresh one-year validity period.
+* All control plane components are restarted to use the new certificates.
+* Certificate expiration risk is eliminated for another year.
 
 This automatic renewal happens transparently during every upgrade, whether it's a minor or patch version update.
 
@@ -116,9 +116,9 @@ Regular upgrades provide multiple benefits:
 
 Clusters that skip upgrades for over one year risk complete outages, unpatched vulnerabilities, and difficult recovery requiring manual intervention.
 
-## Monitoring certificate expiration
+## Monitor certificate expiration
 
-### Checking certificate expiration status
+### Check certificate expiration status
 
 To check when your NAKS control plane certificates expire, SSH to a control plane node and run:
 
@@ -170,10 +170,10 @@ Consider implementing automated monitoring that:
 
 > [!NOTE]
 > Important Notes:
-> - This is a manual, low-level procedure that requires direct access to control plane nodes
-> - It should be performed during a maintenance window
-> - Backup all critical data before proceeding
-> - This procedure must be performed on **each control plane node, one at a time**
+> - This is a manual, low-level procedure that requires direct access to control plane nodes.
+> - It should be performed during a maintenance window.
+> - Back up all critical data before proceeding.
+> - This procedure must be performed on **each control plane node, one at a time**.
 
 ### Prerequisites
 
@@ -186,11 +186,11 @@ Consider implementing automated monitoring that:
 
 Perform these steps on **one control plane node at a time**, starting with any control plane node, then moving to the next.
 
-#### Step 1: SSH to the First Control plane Node
+#### Step 1: SSH to the first control plane node
 
 Connect to the first control plane node via SSH.
 
-#### Step 2: Check Certificate Expiration
+#### Step 2: Check certificate expiration
 
 Verify the current state of certificates:
 
@@ -200,7 +200,7 @@ sudo kubeadm certs check-expiration
 
 You should see expired certificates with negative residual time, or certificates that show as `invalid`.
 
-#### Step 3: Backup the PKI Directory
+#### Step 3: Back up the PKI directory
 
 Create a backup of the existing certificates in case recovery is needed:
 
@@ -217,7 +217,7 @@ Verify the backup was created:
 ls -la /etc/kubernetes/pki.backup*
 ```
 
-#### Step 4: Renew All Certificates
+#### Step 4: Renew all certificates
 
 Renew all control plane certificates:
 
@@ -243,7 +243,7 @@ Restart the kubelet service to pick up the new certificates:
 sudo systemctl restart kubelet
 ```
 
-#### Step 6: Force Static Pod Restart
+#### Step 6: Force static pod restart
 
 The control plane components run as static pods and need to be restarted to use the new certificates. This is done by temporarily moving their manifests:
 
@@ -268,7 +268,7 @@ sudo mv /root/kube-vip.yaml /etc/kubernetes/manifests/
 
 Kubelet automatically detects the manifests and start new containers with the renewed certificates.
 
-#### Step 7: Verify Control Plane Components
+#### Step 7: Verify control plane components
 
 Wait 2-3 minutes for components to fully start, then verify they're running:
 
@@ -288,12 +288,12 @@ sudo rm -rf /etc/kubernetes/pki.backup*
 
 However, if you prefer extra caution, you may choose to keep the backup until all control plane nodes have been successfully renewed and the cluster is fully operational (after Step 9).
 
-#### Step 8: Repeat on Remaining Control Plane Nodes
+#### Step 8: Repeat on remaining control plane nodes
 
 > [!IMPORTANT]
 > Complete steps 1-7 on the next control plane node. Don't proceed to multiple nodes simultaneously. Wait for each node to fully recover before moving to the next.
 
-#### Step 9: Verify Cluster Functionality
+#### Step 9: Verify cluster functionality
 
 After renewing certificates on all control plane nodes, verify the cluster is operational:
 
@@ -315,13 +315,13 @@ All control plane pods should be in `Running` state.
 
 After successfully recovering from certificate expiration:
 
-1. **Update monitoring:** If you don't have automated certificate monitoring, implement it now
+1. **Update monitoring:** If you don't have automated certificate monitoring, implement it now.
 
-2. **Plan regular upgrades:** Create a schedule to upgrade your NAKS cluster at least annually, preferably more frequently
+2. **Plan regular upgrades:** Create a schedule to upgrade your NAKS cluster at least annually, preferably more frequently.
 
-3. **Document the incident:** Record what happened and how you recovered for future reference
+3. **Document the incident:** Record what happened and how you recovered for future reference.
 
-4. **Review upgrade policies:** Ensure your organization has processes to prevent this situation from recurring
+4. **Review upgrade policies:** Ensure your organization has processes to prevent this situation from recurring.
 
 ## Summary
 
