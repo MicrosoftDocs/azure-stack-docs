@@ -40,7 +40,11 @@ This article helps you deploy an Azure Local instance using the Azure portal.
 
 1. Select the **Region** to store this system's Azure resources. For a list of supported Azure regions, [Azure requirements](../concepts/system-requirements-23h2.md#azure-requirements).
 
-   We don't transfer much data so it's OK if the region isn't close. Select  **+ Add machines**.
+   We don't transfer much data so it's OK if the region isn't close. Select  **Cluster options**.
+
+1. Select the **Standard** or **Rack aware** cluster option for this Azure Local instance.
+
+    For more information about the Rack aware option, see [Azure Local rack aware clustering overview](../concepts/rack-aware-cluster-overview.md).
 
 1. Select the machine or machines that make up this Azure Local instance.
 
@@ -49,6 +53,12 @@ This article helps you deploy an Azure Local instance using the Azure portal.
 
    :::image type="content" source="./media/deploy-via-portal/basics-tab-1.png" alt-text="Screenshot of the Basics tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/basics-tab-1.png":::
 
+1. Select the **Identity provider** for this Azure Local instance.
+
+    For more information about the Local identity with Key Vault option, see [Deploy Azure Local using local identity](../deploy/deployment-local-identity-with-key-vault.md).
+
+1. Select **+ Add machines** and choose the machine or machines that make up this Azure Local instance.
+   
 1. On the **Add machines** page:
     1. The operating system for your Azure Local machines is automatically selected as Azure Stack HCI.
     1. Select one or more machines that make up this Azure Local instance. These machines could show as **Ready** or as **Not validated**.
@@ -68,8 +78,6 @@ This article helps you deploy an Azure Local instance using the Azure portal.
 
     If the validation fails with wrong extension version, go to **Install extensions** to install the appropriate version of extension.
 
-    After the extensions are installed successfully, **Add machines** by selecting from the same list of machines and then **Validate selected machines**.
-
 1. **Select an existing Key Vault** or select **Create a new Key Vault**. Create an empty key vault to securely store secrets for this system, such as cryptographic keys, local admin credentials, and BitLocker recovery keys.
 
     > [!IMPORTANT]
@@ -88,7 +96,6 @@ This article helps you deploy an Azure Local instance using the Azure portal.
     The key vault adds cost in addition to the Azure Local subscription. For details, see [Key vault pricing](https://azure.microsoft.com/pricing/details/key-vault). View security implications when sharing an existing key vault.
 
 1. Select **Next: Configuration**.
-
 
 ## Specify the deployment settings
 
