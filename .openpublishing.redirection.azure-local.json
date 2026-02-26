@@ -1968,6 +1968,10 @@
     {
       "source_path": "azure-local/deploy/deployment-arc-registration-preinstalled-os.md", 
       "redirect_url": "/azure-local/deploy/deployment-with-azure-arc-gateway", 
+    },
+    {
+      "source_path": "azure-local/manage/disconnected-operations-set-up.md", 
+      "redirect_url": "/azure/azure-local/manage/disconnected-operations-acquire", 
       "redirect_document_id": false
     }
   ]

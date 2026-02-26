@@ -32,7 +32,7 @@ Cluster Manager supports the following VM SKUs:
 - Standard_D4_v2 (default)
 - Standard_D8s_v3
 
-Refer to [Azure Virtual Machine size overview](/azure/virtual-machines/sizes/overview) for each SKU requirements.
+Refer to [Azure Virtual Machine size overview](/azure/virtual-machines/sizes/overview) for each SKU requirement.
  
 Cluster Manager requires 3 VMs and is created using all 3 availability zones. A customer can switch to 2 availability zones if the selected SKU is not available in all zones. In that case, the 3 VMs will be redistributed across the provided zones.
  
@@ -52,6 +52,7 @@ The compute needs increase during upgrades and may double depending on the type 
 | provisioningState                 | The provisioning status of the latest operation on the Cluster Manager. One of: Succeeded, Failed, Provisioning, Accepted, Updating.                                                                                                                  |
 | detailedStatus                    | The detailed statuses that provide additional information about the status of the Cluster Manager.                                                                                                                                                    |
 | detailedStatusMessage             | The descriptive message about the current detailed status.                                                                                                                                                                                            |
+| relayConfiguration                | The relay configuration for the Cluster Manager, containing the Azure Relay namespace resource ID. Available in API version `2026-01-01-preview` and later. See [Manage private endpoints for Arc Relay connectivity](howto-cluster-manager-relay-private-endpoint.md). |
 
 ## Cluster Manager Identity
 
@@ -370,7 +371,8 @@ To delete the Cluster Manager, use Portal, CLI, or PowerShell.
 
 After you successfully created the Network Fabric Controller and the Cluster Manager, the next step is to create a [Network Fabric](./howto-configure-network-fabric.md).
 
-## Useful links
+## Related content
 
+- [Manage private endpoints for Arc Relay connectivity](howto-cluster-manager-relay-private-endpoint.md)
 - [NetworkCloud REST APIs Reference](/rest/api/networkcloud/)
 - [NetworkCloud PowerShell Reference](/powershell/module/az.networkcloud/)

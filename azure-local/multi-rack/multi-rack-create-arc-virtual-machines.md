@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.reviewer: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 11/18/2025
+ms.date: 02/17/2026
 ms.subservice: multi-rack
 ---
 
@@ -29,7 +29,7 @@ Before you create an Azure Local VM, make sure that the following prerequisites 
 
 - Access to an Azure subscription with the appropriate RBAC role and permissions assigned. For more information, see [RBAC roles for Azure Local VM management](./multi-rack-assign-vm-rbac-roles.md#custom-roles).
 - Access to a resource group where you want to provision the VM.
-- Access to one or more VM images on your Azure Local. These VM images could be created using [VM image starting from an image in Azure Storage account](./multi-rack-virtual-machine-image-storage-account.md.
+- Access to one or more VM images on your Azure Local. These VM images could be created using [VM image starting from an image in Azure Storage account](./multi-rack-virtual-machine-image-storage-account.md).
     > [!NOTE]
     > If you’re deploying a Windows VM, make sure that the appropriate VirtIO drivers are present in the image.
 - A custom location for your Azure Local instance that you'll use to provision VMs. The custom location will also show up in the **Overview** page for Azure Local.
@@ -110,7 +110,7 @@ Here we create a VM that uses specific memory and processor counts.
     $computerName = "mycomputer"
     $userName = "local-user"
     $password = "<Password for the VM>"
-    $imageName ="ws22server"
+    $imageName = "/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.AzureStackHCI/galleryImages/ws22server"
     $nicName ="local-vnic" 
     $httpProxy = "<Proxy server address>"
     $httpsProxy = "<Proxy server address>"
@@ -123,7 +123,7 @@ Here we create a VM that uses specific memory and processor counts.
     | **name**  |Name for the VM that you create for Azure Local. Make sure to provide a name that follows the [Rules for Azure resources.](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming#example-names-networking)|
     | **admin-username** |Username for the user on the VM you're deploying on Azure Local. |
     | **admin-password** |Password for the user on the VM you're deploying on Azure Local. |
-    | **image-name** |Name of the VM image used to provision the VM. |
+    | **image-name** |ARM resource ID of the VM image used for provisioning. The VM image may reside in a different subscription and resource group than the target VM. |
     | **location** |Azure regions as specified by `az locations`. For example, this could be `eastus`, `westeurope`. |
     | **resource-group** |Name of the resource group where you create the VM. For ease of management, we recommend that you use the same resource group as Azure Local. |
     | **subscription** |Name or ID of the subscription where your Azure Local is deployed. This could be another subscription you use for VM on Azure Local. |
@@ -141,7 +141,7 @@ Here we create a VM that uses specific memory and processor counts.
     **To create a standard Azure Local VM for multi-rack deployments:**
 
    ```azurecli
-    az stack-hci-vm create --name $vmName --resource-group $resource_group --admin-username $userName --admin-password $password --computer-name $computerName --image $imageName --location $location --authentication-type all --nics $nicName --custom-location $customLocationID --hardware-profile memory-mb="8192" processors="4" --zone $zone –strict-placement true --enable-agent true --enable-vm-config-agent true --proxy-configuration http_proxy=$httpProxy https_proxy=$httpsProxy no_proxy="" cert_file_path="" 
+    az stack-hci-vm create --name $vmName --resource-group $resource_group --admin-username $userName --admin-password $password --computer-name $computerName --image $imageName --location $location --authentication-type all --nics $nicName --custom-location $customLocationID --hardware-profile memory-mb="8192" processors="4" --zone $zone –-strict-placement true --enable-agent true --enable-vm-config-agent true --proxy-configuration http_proxy=$httpProxy https_proxy=$httpsProxy no_proxy="" cert_file_path="" 
    ```
 
 The VM is successfully created when the `provisioningState` shows as `succeeded`in the output.
@@ -154,7 +154,7 @@ The VM is successfully created when the `provisioningState` shows as `succeeded`
 To create a Linux VM, use the same command that you used to create the Windows VM.
 
 - The gallery image specified should be a Linux image.
-- For Linux VMs, we recommend using SSH keys. For SSH keys, you need to pass the `ssh-key-values` parameters along with `authentication-type ssh`.
+- For Linux VMs, we recommend using SSH keys. For SSH keys, you need to pass the `ssh-key-values` parameters along with `authentication-type ssh`. If you are using an existing key, ensure that the public key is in OpenSSH format.
 - If you want to use username and password, use the `authentication-type password` parameter.
 
 > [!IMPORTANT]
@@ -171,7 +171,7 @@ As such, you may need to specifically set the proxy configuration for your appli
 If creating a VM behind a proxy server, run the following command:
 
 ```azurecli
-az stack-hci-vm create --name $vmName --resource-group $resource_group --admin-username $userName --admin-password $password --computer-name $computerName --image $imageName --location $location --authentication-type all --nics $nicName --custom-location $customLocationID --hardware-profile memory-mb="8192" processors="4" --zone $zone –strict-placement true --enable-agent true --enable-vm-config-agent true --proxy-configuration http_proxy="<Http URL of proxy server>" https_proxy="<Https URL of proxy server>" no_proxy="<URLs which bypass proxy>" cert_file_path="<Certificate file path for your machine>"
+az stack-hci-vm create --name $vmName --resource-group $resource_group --admin-username $userName --admin-password $password --computer-name $computerName --image $imageName --location $location --authentication-type all --nics $nicName --custom-location $customLocationID --hardware-profile memory-mb="8192" processors="4" --zone $zone –-strict-placement true --enable-agent true --enable-vm-config-agent true --proxy-configuration http_proxy="<Http URL of proxy server>" https_proxy="<Https URL of proxy server>" no_proxy="<URLs which bypass proxy>" cert_file_path="<Certificate file path for your machine>"
 ```
 
 You can input the following parameters for `proxy-server-configuration`:
@@ -201,7 +201,7 @@ Follow these steps in Azure portal for Azure Local.
 1. Go to **Azure Arc cluster view** > **Virtual machines**.
 1. From the top command bar, select **+ Create VM**.
 
-   <!--:::image type="content" source="media/multi-rack-create-arc-virtual-machines/virtual-machine-create-button.png" alt-text="Screenshot of select + Add/Create VM." lightbox="media/multi-rack-create-arc-virtual-machines/virtual-machine-create-button.png":::-->
+   :::image type="content" source="media/multi-rack-create-arc-virtual-machines/virtual-machine-create-button.png" alt-text="Screenshot of select + Add/Create VM." lightbox="media/multi-rack-create-arc-virtual-machines/virtual-machine-create-button.png":::
 
 1. On the **Basics** tab, input the following parameters in the **Project details** section:
 
