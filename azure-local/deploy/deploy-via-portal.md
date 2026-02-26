@@ -81,7 +81,7 @@ This article helps you deploy an Azure Local instance using the Azure portal.
     > [!IMPORTANT]
     > Azure Local doesn't support deploying a cluster using an existing Azure Key Vault that has Private Endpoints enabled.
 
-1. **Create a new key vault**. Optional.
+1. Create a new key vault (optional). You can use an existing Key Vault and skip this step.
 
    :::image type="content" source="./media/deploy-via-portal/basics-tab-6.png" alt-text="Screenshot of Create a new key vault on Basics tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/basics-tab-6.png":::
 
