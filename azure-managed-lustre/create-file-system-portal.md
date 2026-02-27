@@ -83,11 +83,9 @@ Use the **Maintenance window** setting to control the day and time when system u
 
 System updates are typically applied to the service once every three months. The service might be temporarily unavailable during the maintenance window when system updates are being applied. System updates include, but aren't limited to, security updates, Lustre code fixes, and service enhancements.
 
-During the maintenance window, user workloads that access the file system will temporarily pause if a system update is being applied. User workloads resume when the system updates are complete. If you have multiple Azure Managed Lustre deployments, consider spacing out their maintenance windows for availability when updates are necessary.
+During the maintenance window, user workloads that access the file system will temporarily pause if a system update is being applied. User workloads resume when the system updates are complete. New mount attempts may timeout until maintenance completes. If you have multiple Azure Managed Lustre deployments, consider spacing out their maintenance windows for availability when updates are necessary.
 
-New mount attempts may timeout until maintenance completes.
-
-For containerized or orchestrated workloads (for example, Kubernetes/AKS), the impact may vary, depending on workload design, health checks, and restart policies. Some workloads may restart or be unable to start if they require storage access during this time.
+For containerized or orchestrated workloads (for example, Kubernetes/AKS), the impact may vary, depending on workload design, health checks, and restart policies. Some workloads may restart or be unable to start if they require storage access during this brief window.
 
 You can use service health alerts to receive notification of a pending system update, which includes a date range of when it will be applied. To configure service health alerts for Azure Managed Lustre Filesystem Service, see [Configure Health Alerts](/azure/service-health/service-health-overview#configure-service-health-alerts).
 
