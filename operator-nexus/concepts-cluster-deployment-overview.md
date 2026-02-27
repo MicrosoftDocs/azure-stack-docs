@@ -22,7 +22,7 @@ Hardware Validation (HWV) is initiated during the cluster deployment process. Du
 
 Based on the results of these HWV checks and any user skipped machines, a determination is done on whether sufficient nodes passed and/or are available to meet the thresholds necessary for deployment to continue. The results of HWV for each server are recorded in the Log Analytics Workspace (LAW), which is created as part of the cluster setup.
 
-> **Note:**  
+> [!NOTE]  
 > Hardware validation thresholds are enforced for various node types to ensure reliable cluster operation:
 > Management nodes are divided into two roles: Kubernetes Control Plane (KCP) nodes and Nexus Management Plane Nodes (NMP) nodes.
 > - **KCP nodes:** Must achieve a 100% hardware validation success rate since they make up the control plane.
