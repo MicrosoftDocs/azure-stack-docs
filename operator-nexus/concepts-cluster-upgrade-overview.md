@@ -35,6 +35,8 @@ Patch runtime release is produced monthly in between the minor releases. These r
 
 ### Workflow overview
 
+Before a runtime upgrade proceeds, the platform validates that user-provided Azure resources (Log Analytics Workspace, Storage Account, and Key Vault) are accessible using the cluster's managed identity. This validation ensures the cluster can continue to use these resources after the upgrade completes. If validation fails, the upgrade action reports the failure and doesn't proceed until the issue is resolved. For configuration details, see [Cluster Managed Identity and User Provided Resources](./howto-cluster-managed-identity-user-provided-resources.md).
+
 Starting a runtime upgrade is defined under [Upgrading cluster runtime via Azure CLI](./howto-cluster-runtime-upgrade.md).
 
 The runtime upgrade starts by upgrading the three management servers designated as the control plane nodes. The spare control plane server is the first server to upgrade. The last control plane server deprovisions and transitions to `Available` state. These servers are updated serially and proceed only when each completes. The remaining management servers are segregated into two groups. The runtime upgrade will now leverage two management groups, instead of a single group. Each group is upgraded in two stages and sequentially with 50% success threshold in each group. Introducing this capability allows for components running on the management servers to ensure resiliency during the runtime upgrade by applying affinity rules. For this release, each CSN will leverage this functionality by placing one instance in each management group. No customer interaction with this functionality. There may be additional labels seen on management nodes to identify the groups.
@@ -66,9 +68,9 @@ Details on how to run an upgrade with rack pause are located [here](./howto-clus
 
 During a runtime upgrade, Nexus Kubernetes Cluster nodes that run on servers scheduled for upgrade are cordoned, drained, and then gracefully shut down before the upgrade begins. Cordoning a node prevents new pods from being scheduled on it, while draining allows pods running tenant workloads to shift to other available nodes, minimizing service disruption. The effectiveness of draining depends on the available capacity within the cluster. If the cluster is near full capacity and lacks space for pod relocation, those pods enter a Pending state after draining.
 
-Once the cordon and drain steps are complete, the node is shut down as part of the upgrade process. After the baremetal server upgrade, the node is restarted, rejoins the cluster, and is uncordoned, allowing pods to be scheduled on it again.
+Once the cordon and drain steps are complete, the node is shut down as part of the upgrade process. After the bare-metal server upgrade, the node is restarted, rejoins the cluster, and is uncordoned, allowing pods to be scheduled on it again.
 
-For Nexus VMs, the process is similar. The VMs are shut down before the baremetal server upgrade and automatically restarted once the server is back online.
+For Nexus VMs, the process is similar. The VMs are shut down before the bare-metal server upgrade and automatically restarted once the server is back online.
 
 Each tenant cluster node is allowed up to 20 minutes for the draining process to complete. After this window, the server upgrade proceeds regardless of drain completion to ensure progress. Servers are upgraded one rack at a time, with upgrades performed in parallel within the same rack. The server upgrade does not wait for tenant resources to come online before continuing with the runtime upgrade of other servers in the rack. In addition to the drain timeout, there is a 10 minute timeout allocated for VM shutdowns. This approach ensures that the maximum wait time per rack remains 30 minutes, specific to the cordon, drain, and shutdown procedure, and not the overall upgrade.
 

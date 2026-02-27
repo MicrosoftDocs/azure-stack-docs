@@ -25,6 +25,7 @@ This how-to guide explains the steps for installing the required Azure CLI and e
    - Resource group (`CLUSTER_RG`)
 1. Cluster Detailed status must be ``Running``.
 1. Cluster to Cluster Manager connectivity must be ``Connected``.
+1. Azure prerequisites (Log Analytics Workspace, Storage Account, Key Vault) must be validated. These resources are checked before upgrade begins. See [Cluster Managed Identity and User Provided Resources](howto-cluster-managed-identity-user-provided-resources.md).
 1. Under Cluster > Workload > Compute Servers
     - Three of four control plane nodes must be Power state ``On``, Cordon status ``Uncordoned``, Ready state ``Yes``, and Degraded ``No``.
         - The spare control plane node should be in Power state ``Off``, Ready state ``No``, and Degraded ``No``.
