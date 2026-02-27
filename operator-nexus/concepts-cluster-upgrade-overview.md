@@ -68,9 +68,9 @@ Details on how to run an upgrade with rack pause are located [here](./howto-clus
 
 During a runtime upgrade, Nexus Kubernetes Cluster nodes that run on servers scheduled for upgrade are cordoned, drained, and then gracefully shut down before the upgrade begins. Cordoning a node prevents new pods from being scheduled on it, while draining allows pods running tenant workloads to shift to other available nodes, minimizing service disruption. The effectiveness of draining depends on the available capacity within the cluster. If the cluster is near full capacity and lacks space for pod relocation, those pods enter a Pending state after draining.
 
-Once the cordon and drain steps are complete, the node is shut down as part of the upgrade process. After the baremetal server upgrade, the node is restarted, rejoins the cluster, and is uncordoned, allowing pods to be scheduled on it again.
+Once the cordon and drain steps are complete, the node is shut down as part of the upgrade process. After the bare-metal server upgrade, the node is restarted, rejoins the cluster, and is uncordoned, allowing pods to be scheduled on it again.
 
-For Nexus VMs, the process is similar. The VMs are shut down before the baremetal server upgrade and automatically restarted once the server is back online.
+For Nexus VMs, the process is similar. The VMs are shut down before the bare-metal server upgrade and automatically restarted once the server is back online.
 
 Each tenant cluster node is allowed up to 20 minutes for the draining process to complete. After this window, the server upgrade proceeds regardless of drain completion to ensure progress. Servers are upgraded one rack at a time, with upgrades performed in parallel within the same rack. The server upgrade does not wait for tenant resources to come online before continuing with the runtime upgrade of other servers in the rack. In addition to the drain timeout, there is a 10 minute timeout allocated for VM shutdowns. This approach ensures that the maximum wait time per rack remains 30 minutes, specific to the cordon, drain, and shutdown procedure, and not the overall upgrade.
 
