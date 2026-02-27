@@ -11,7 +11,14 @@ ms.custom: template-how-to
 
 # Run the log collector script on the Azure Operator Nexus Kubernetes cluster node
 
-Microsoft support may need deeper visibility within the Nexus Kubernetes cluster in certain scenarios. To facilitate this, a log-collection script is available for you to use. This script retrieves all the necessary logs, enabling Microsoft support to gain a better understanding of the issue and troubleshoot it effectively.
+In certain scenarios, Microsoft support will require deeper visibility into a node that is part of the Nexus Kubernetes cluster.  Some examples are:
+- The node fails to arc enrolled or is in disconnected state
+- The node is stuck in Not Ready state
+- Suspected network connectivity issue on the node
+- Pod(s) running on the node are having issues
+- Other issues that require a deeper inpsection on the node
+
+To facilitate this, a log collector script is available for you to use. This script retrieves all the necessary logs, enabling Microsoft support to gain a better understanding of the issue and troubleshoot it effectively.
 
 ## What it collects
 
