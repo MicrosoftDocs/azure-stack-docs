@@ -1,6 +1,6 @@
 --- 
-title: Deploy Azure Local, version 23H2 using local identity with Azure Key Vault (Preview)
-description: Learn how to use local identity with Azure Key Vault for Azure Local, version 23H2 deployment (Preview).
+title: Deploy Azure Local, version 23H2 using local identity with Azure Key Vault (preview)
+description: Learn how to use local identity with Azure Key Vault for Azure Local, version 23H2 deployment (preview).
 author: alkohli
 ms.topic: how-to
 ms.date: 12/17/2025
@@ -11,9 +11,9 @@ ms.custom: sfi-image-nochange
 ms.subservice: hyperconverged
 ---
 
-# Deploy Azure Local using local identity with Azure Key Vault (Preview)
+# Deploy Azure Local using local identity with Azure Key Vault (preview)
 
-::: moniker range=">=azloc-2411"
+::: moniker range=">=azloc-2510"
 
 This article describes how to use local identity with Azure Key Vault for Azure Local deployment.
 
@@ -324,8 +324,8 @@ If the extension wasn't installed during deployment, you can manually install it
 
 ::: moniker-end
 
-::: moniker range="<=azloc-2411"
+::: moniker range="<azloc-2510"
 
-This feature is available only in Azure Local 2411 or later.
+This feature is available only in Azure Local 2510 or later.
 
 ::: moniker-end

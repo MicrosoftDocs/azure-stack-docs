@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 11/18/2025
+ms.date: 01/16/2026
 ms.subservice: multi-rack
 ---
 
@@ -25,7 +25,7 @@ For custom images in the Azure Storage account, make sure that the following pre
 
 - Make sure that you upload your VHD or VHDX as a page blob image into the Storage account. Only page blob images are supported to create VM images via the Storage account.
 
-- Prepare the VHDX image using `sysprep /generalize /shutdown /oobe`. For more information, see [Sysprep command-line options](/windows-hardware/manufacture/desktop/sysprep-command-line-options#oobe&preserve-view=true). This requirement applies to both Windows and Linux VM images.
+- Prepare your Windows and Linux VM images. For Windows VMs, prepare the image using `sysprep /generalize /shutdown /oobe`. For more information, see [Sysprep command-line options](/windows-hardware/manufacture/desktop/sysprep-command-line-options#oobe&preserve-view=true). For Linux VMs, install and enable `cloud-init`, then run `cloud-init clean` to remove instance-specific data. After cleaning, shut down the VM before capturing the image.
 
 - Use only English (en-us) language VHDs to create VM images.
 
@@ -63,18 +63,18 @@ To create a VM image using the Azure CLI, follow these steps:
     az account set --subscription <Subscription ID>
     ```
 
-### Set some parameters
+### Set deployment parameters
 
 Set your subscription, resource group, location, SAS URL for the image in the storage account, and OS type for the image. Replace the parameters in `< >` with the appropriate values.
 
 ```azurecli
 $subscription = "<Subscription ID>"
-$resource_group = "<Resource group>"
+$resourceGroup = "<Resource group>"
 $location = "<Location for your Azure Local>"
-$customLocation = "<Custom or extended location of your Azure Local instance>"
-$osType = "<OS of source image>"
+$customLocationID = "<ARM ID of the custom or extended location of your Azure Local instance>"
 $imageName = "<VM image name>"
 $imageSourcePath = '"<Blob SAS URL path to the source image in the storage account>"'
+$osType = "<OS of source image>"
 ```
 
 > [!NOTE]
@@ -82,21 +82,21 @@ $imageSourcePath = '"<Blob SAS URL path to the source image in the storage accou
 
 The parameters are described in the following table:
 
-| Parameter | Description |
-|--|--|
-| `subscription` | Subscription for Azure Local that you associate with this image. |
-| `resource-group` | Resource group for Azure Local that you associate with this image. |
-| `location` | Location for your Azure Local instance. For example, this could be `eastus`. |
-| `custom-location` | ARM ID of the custom or extended location of your Azure Local instance. |
-| `name` | Name of the VM image created starting with the image in your local share. <br> **Note**: Azure rejects all the names that contain the keyword Windows. |
-| `image-path` | Blob SAS URL path to the source image in the storage account. For instructions, see [Generating SAS tokens](/azure/applied-ai-services/form-recognizer/create-sas-tokens#generating-sas-tokens).<br>**Note**: Escape the path with double quotes, then enclose it with single quotes like: `'""'`. |
-| `os-type` | Operating system associated with the source image. This can be Windows or Linux. |
+| Parameter (CLI flag) | Variable name | Description |
+|--|--|--|
+| `subscription` | $subscription | Subscription for Azure Local that you associate with this image. |
+| `resource-group` | $resourceGroup | Resource group for Azure Local that you associate with this image. |
+| `location` | $location | Location for your Azure Local instance. For example, this could be `eastus`. |
+| `custom-location` | $customLocationID | ARM ID of the custom or extended location of your Azure Local instance. |
+| `name` | $imageName | Name of the VM image created starting with the image in your local share. <br> **Note**: Azure rejects all the names that contain the keyword Windows. |
+| `image-path` | $imageSourcePath | Blob SAS URL path to the source image in the storage account. For instructions, see [Generating SAS tokens](/azure/applied-ai-services/form-recognizer/create-sas-tokens#generating-sas-tokens).<br>**Note**: Escape the path with double quotes, then enclose it with single quotes like: `'""'`. |
+| `os-type` | $osType | Operating system associated with the source image. This can be Windows or Linux. |
 
 Here's a sample output:
 
 ```console
 PS C:\Users\azcli> $subscription = "<Subscription ID>"
-PS C:\Users\azcli> $resource_group = "mylocal-rg"
+PS C:\Users\azcli> $resourceGroup = "mylocal-rg"
 PS C:\Users\azcli> $location = "eastus"
 PS C:\Users\azcli> $osType = "Windows"
 PS C:\Users\azcli> $imageName = "mylocal-storacctimage"
@@ -108,13 +108,13 @@ PS C:\Users\azcli> $imageSourcePath = '"https://vmimagevhdsa1.blob.core.windows.
 1. Select a custom location to deploy your VM image. The custom location should correspond to the custom location for your Azure Local. Get the custom location ID for your Azure Local from the Azure Local **Overview** page on Azure portal or run the following command:
 
     ```azurecli
-    $customLocationID=(az customlocation show --resource-group $resource_group --name "<custom location name for your Azure Local>" --query id -o tsv)
+    $customLocationID=(az customlocation show --resource-group $resourceGroup --name "<custom location name for your Azure Local>" --query id -o tsv)
     ```
 
 1. Create the VM image from an image in the storage account:
 
     ```azurecli
-    az stack-hci-vm image create --subscription $subscription --resource-group $resource_group --custom-location $customLocationID --location $location --name $imageName --os-type $osType --image-path $imageSourcePath
+    az stack-hci-vm image create --subscription $subscription --resource-group $resourceGroup --custom-location $customLocationID --location $location --name $imageName --os-type $osType --image-path $imageSourcePath
     ```
 
     A deployment job starts for the VM image.
@@ -124,8 +124,8 @@ PS C:\Users\azcli> $imageSourcePath = '"https://vmimagevhdsa1.blob.core.windows.
     Here's a sample output:
 
     ```output
-    PS > $customLocationID=(az customlocation show --resource-group $resource_group --name "mylocal-cl" --query id -o tsv)
-    PS C:\Users\azcli> az stack-hci-vm image create --subscription $subscription --resource-group $resource_group --custom-location $customLocationID --location $location --name $imageName --os-type $osType --image-path $imageSourcePath
+    PS > $customLocationID=(az customlocation show --resource-group $resourceGroup --name "mylocal-cl" --query id -o tsv)
+    PS C:\Users\azcli> az stack-hci-vm image create --subscription $subscription --resource-group $resourceGroup --custom-location $customLocationID --location $location --name $imageName --os-type $osType --image-path $imageSourcePath
 
     Command group 'stack-hci-vm' is experimental and under development. Reference and support levels: https://aka.ms/CLI_refstatus
     {
@@ -180,13 +180,13 @@ To list VM images using Azure CLI:
 
     ```azurecli
     $subscription = "<Subscription ID associated with your Azure Local>"
-    $resource_group = "<Resource group name for your Azure Local>"
+    $resourceGroup = "<Resource group name for your Azure Local>"
     ```
 
 1. List all the VM images associated with your Azure Local:
 
     ```azurecli
-    az stack-hci-vm image list --subscription $subscription --resource-group $resource_group
+    az stack-hci-vm image list --subscription $subscription --resource-group $resourceGroup
     ```
 
     Depending on the command used, a corresponding set of images associated with your Azure Local are listed.
@@ -272,8 +272,8 @@ To use Azure CLI to view image properties:
 
     ```azurecli
     $subscription = "<Subscription ID>"
-    $resource_group = "<Azure Local resource group>"
-    $Image = "<Image name>"
+    $resourceGroup = "<Azure Local resource group>"
+    $imageName = "<Image name>"
     ```
 
 1. You can view image properties in two ways: specify ID or specify name and resource group. When specifying a Marketplace image ID:
@@ -281,12 +281,12 @@ To use Azure CLI to view image properties:
     1. Set the following parameter.
 
         ```azurecli
-        $ImageID = "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/galleryimages/mylocal-marketplaceimage"
+        $imageID = "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/galleryimages/mylocal-marketplaceimage"
         ```
 
     1. To view the properties, run this command:
 
-        ```az stack-hci-vm image show --ids $ImageID```
+        ```az stack-hci-vm image show --ids $imageID```
 
         Here's sample output for this command:
 
@@ -335,14 +335,14 @@ You might want to delete a VM image if the download fails for some reason or if 
 
     ```azurecli
     $subscription = "<Subscription ID>"
-    $resource_group = "<Azure Local resource group>"
-    $Image = "<Image name>"    
+    $resourceGroup = "<Azure Local resource group>"
+    $imageName = "<Image name>"    
     ```
 
 1. Remove an existing VM image. Run the following command:
 
     ```azurecli
-    az stack-hci-vm image delete --subscription $subscription --resource-group $resource_group --name $Image --yes
+    az stack-hci-vm image delete --subscription $subscription --resource-group $resourceGroup --name $imageName --yes
     ```
 
 You can delete an image in two ways:
@@ -354,12 +354,12 @@ After you delete an image, check that it's removed. Here's sample output when th
 
 ```console
 PS C:\Users\azcli> $subscription = "<Subscription ID>"
-PS C:\Users\azcli> $resource_group = "mylocal-rg"
-PS C:\Users\azcli> $Image = "mymylocal-marketplaceimage"
-PS C:\Users\azcli> az stack-hci-vm image delete --name $mktplaceImage --resource-group $resource_group
+PS C:\Users\azcli> $resourceGroup = "mylocal-rg"
+PS C:\Users\azcli> $imageName = "mymylocal-marketplaceimage"
+PS C:\Users\azcli> az stack-hci-vm image delete --name $imageName --resource-group $resourceGroup
 Command group 'stack-hci-vm' is experimental and under development. Reference and support levels: `https://aka.ms/CLI_refstatus`
 Are you sure you want to perform this operation? (y/n): y
-PS C:\Users\azcli> az stack-hci-vm image show --name $mktplaceImage --resource-group $resource_group
+PS C:\Users\azcli> az stack-hci-vm image show --name $imageName --resource-group $resourceGroup
 Command group 'stack-hci-vm' is experimental and under development. Reference and support levels: https://aka.ms/CLI_refstatus
 ResourceNotFound: The Resource 'Microsoft.AzureStackHCI/marketplacegalleryimages/myhci-marketplaceimage' under resource group 'mylocal-rg' was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix
 PS C:\Users\azcli>
