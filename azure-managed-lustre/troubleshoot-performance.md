@@ -21,7 +21,7 @@ In this article, you learn how to troubleshoot common issues that you might enco
 
 ## Best Practices
 
-To maintain optimal performance and security, keep Lustre clients updated. To benefit from the latest bug fixes and optimizations, use the latest Lustre client software from packages.microsoft.com. Refer to the AMLFS documentation for update instructions. If using integrated images (for example, [HPC Images](/azure/virtual-machines/azure-hpc-vm-images)), update your VMs to the latest image for the most recent Lustre client.
+To maintain optimal performance and security, keep Lustre clients updated. To benefit from the latest bug fixes and optimizations, use the latest Lustre client software from packages.microsoft.com. Refer to the AMLFS documentation for [update instructions](https://github.com/kubernetes-sigs/azurelustre-csi-driver/blob/main/docs/csi-debug.md#quickly-update-driver-deployment}). If using integrated images (for example, [HPC Images](/azure/virtual-machines/azure-hpc-vm-images)), update your VMs to the latest image for the most recent Lustre client.
 
 ## Symptom 1: Lower throughput, bandwidth, or higher latency than expected
 
