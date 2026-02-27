@@ -85,7 +85,7 @@ Before you begin, make sure that the physical machine and storage hardware used 
 > Host-bus adapter (HBA) cards must implement simple pass-through mode for any storage devices used for Storage Spaces Direct.
 >
 > RAID controller cards or SAN (Fibre Channel, iSCSI, FCoE) storage, shared SAS enclosures connected to multiple machines, or any form of multi-path IO (MPIO) where drives are accessible by multiple paths, aren't supported.
-> Exceptions for SAN via Fibre Channel exist, see note below.
+> Exceptions for SAN via Fibre Channel exist; see the **Use of Azure Local with external SAN storage** section below.
 
 | Category | Requirements |
 |---------|--------------|
@@ -99,10 +99,10 @@ For more feature-specific requirements for Hyper-V, see [System requirements for
 
 ### Use of Azure Local with external SAN storage
 > [!NOTE]
-> Notwithstanding to the requirements stated above, Azure Local Supports the usage of *additional* SAN via Fibre Channel (FC), currently in preview. Please consult your OEM about certified solutions.
+> Notwithstanding the requirements stated above, Azure Local Supports the usage of *additional* SAN via Fibre Channel (FC), currently in preview. Please consult your OEM about certified solutions.
 > See [External Storage Support for Azure Local](../concepts/external-storage-support.md).
 >
-> Albeit Storage Spaces Direct *remains required*, at the minimum for the Azure Local Infrastructure volume and the [Cluster Performance history](/windows-server/storage/storage-spaces/performance-history.md).
+> Storage Spaces Direct *remains required*, at a minimum, for the Azure Local Infrastructure volume and the [Cluster Performance history](/windows-server/storage/storage-spaces/performance-history.md).
 In addition, a minimum amount of available Storage Spaces Direct (S2D) is required, with at least two physical disks per node. All requirements as stated above remain valid for Storage Spaces Direct, with the exception of the attached SAN storage. Please refer to this additional documentation.
 
 
@@ -150,8 +150,8 @@ Check with your OEM regarding the necessary generic BIOS settings for Azure Loca
 
 ### BIOS resets
 In the event of a BIOS, Secure Boot or TPM reset, it is advisable to consult with the OEM to ensure that the required optimised settings have been applied. 
-It has been demonstrated that sub-optimal configuration parameters can have a detrimental effect on performance, with instances including Networking, SR-IOV and the Azure Local Security baseline, such as Secured Core and BitLocker Security.
-Furthermore, wrong settings may result in the failure of instance deployment.
+It has been demonstrated that sub-optimal configuration parameters can have a detrimental effect on performance. Examples include networking, SR-IOV, and the Azure Local security baseline, such as Secured-core and BitLocker.
+Furthermore, incorrect settings may result in failed instance deployments.
 
 ## Managing Drivers and Firmware
 > [!IMPORTANT]
@@ -166,8 +166,8 @@ A driver and firmware compatibility matrix, when provided by the OEM, should be 
 > Starting with Azure Local 23H2 or later, Windows Admin Center plugins may no longer be used to install drivers and firmware. It is safe using these on certified Azure Local Nodes running Windows Server S2D.
 
 ### Initial Deployment
-Premier Solutions and Integrated Systems: These are delivered preinstalled and preconfigured will update their firmware and driver automatically.
-Validated Nodes: These may come preinstalled. The forementioned check or further sideloading update packages is required as per OEM recommendation
+Premier Solutions and Integrated Systems: These are delivered preinstalled and preconfigured and will update their firmware and drivers automatically.
+Validated Nodes: These may come preinstalled. The aforementioned check or further sideloading of update packages is required, as per OEM recommendation.
 
 ### Instance or node redeployment
 Premier Solutions and Integrated Systems: Some OEMs provide ready-to-use ISO images that match the preinstalled and preconfigured version.
