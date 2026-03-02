@@ -3,7 +3,7 @@ title: Release notes with fixed and known issues in Azure Local
 description: Read about the known issues and fixed issues in Azure Local.
 author: alkohli
 ms.topic: troubleshooting-general
-ms.date: 02/17/2026
+ms.date: 03/02/2026
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: hyperconverged
@@ -28,10 +28,10 @@ For the 2602 release of Azure Local, Microsoft released the following update:
 
 | Solution version  | OS build  |
 |---------|---------|---------|
-| 12.2602.1002.7 | 26100.32370 |
+| 12.2602.1002.501 | 26100.32230 |
 
 > [!IMPORTANT]
-> The new deployments of this software use the **12.2602.1002.7** build.
+> The new deployments of this software use the **12.2602.1002.501** build.
 Release notes for this version include the issues fixed in this release, known issues in this release, and known issues carried over from previous versions.
 
 > [!NOTE]
