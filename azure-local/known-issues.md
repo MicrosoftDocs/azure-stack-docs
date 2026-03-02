@@ -28,7 +28,7 @@ For the 2602 release of Azure Local, Microsoft released the following update:
 
 | Solution version  | OS build  |
 |---------|---------|---------|
-| 12.2602.1002.501 | 26100.32230 |
+| 12.2602.1002.501 | 26100.32370 |
 
 > [!IMPORTANT]
 > The new deployments of this software use the **12.2602.1002.501** build.
