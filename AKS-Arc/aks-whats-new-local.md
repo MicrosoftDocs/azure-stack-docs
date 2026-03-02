@@ -28,6 +28,10 @@ This section lists the new features and improvements in AKS Arc in each release 
 
 The Kubernetes versions included in the 2602 release are: 1.31.12, 1.31.13, 1.32.8, 1.32.9, 1.33.4, 1.33.5.
 
+#### Announcements for 2602
+
+- Kubernetes version 1.30 is no longer supported.
+
 ### Release 2510
 
 #### Announcements for 2510

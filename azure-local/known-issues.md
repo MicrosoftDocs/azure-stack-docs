@@ -3,7 +3,7 @@ title: Release notes with fixed and known issues in Azure Local
 description: Read about the known issues and fixed issues in Azure Local.
 author: alkohli
 ms.topic: troubleshooting-general
-ms.date: 02/17/2026
+ms.date: 03/02/2026
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: hyperconverged
@@ -28,10 +28,10 @@ For the 2602 release of Azure Local, Microsoft released the following update:
 
 | Solution version  | OS build  |
 |---------|---------|---------|
-| 12.2602.1002.7 | 26100.32370 |
+| 12.2602.1002.501 | 26100.32370 |
 
 > [!IMPORTANT]
-> The new deployments of this software use the **12.2602.1002.7** build.
+> The new deployments of this software use the **12.2602.1002.501** build.
 Release notes for this version include the issues fixed in this release, known issues in this release, and known issues carried over from previous versions.
 
 > [!NOTE]
@@ -44,10 +44,10 @@ The following table lists the fixed issues in this release:
 |Feature  |Issue    |Comments |
 |---------|---------|---------|
 | Deployment <!--36596732--> | Fixed issue in the Azure portal where the Azure Local deployment wizard wasn't loading. | |
-| Deployment <!--34665800--> |Fixed issue in Azure portal to block proceeding through Azure Local deployment wizard when inputs aren't specified. | |
+| Deployment <!--34665800--> | Fixed issue in Azure portal to block proceeding through Azure Local deployment wizard when inputs aren't specified. | |
 | Deployment <!--32149605--> | Added validation to instance and machine names in Azure Local deployment wizard in Azure portal. | |
 | Update <!--36581165--> | Fixed issue with SBE update failing due to invalid argument. | |
-| Azure Local VMs  | Fixed issue where VM start or stop operation was blocked with an error after attaching or detaching GPU to the VM. | |
+| Azure Local VMs | Fixed issue where VM start or stop operation was blocked with an error after attaching or detaching GPU to the VM. | |
 
 ## Known issues
 
