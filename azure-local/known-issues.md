@@ -43,7 +43,6 @@ The following table lists the fixed issues in this release:
 
 |Feature  |Issue    |Comments |
 |---------|---------|---------|
-| Update <!--36891195--> | Fixed issue that removed the hardcoded username from MOC layer and AzureLocal role. This fix is intended only for Disconnected operations for Azure Local. | |
 | Deployment <!--36596732--> | Fixed issue in the Azure portal where the Azure Local deployment wizard wasn't loading. | |
 | Deployment <!--34665800--> | Fixed issue in Azure portal to block proceeding through Azure Local deployment wizard when inputs aren't specified. | |
 | Deployment <!--32149605--> | Added validation to instance and machine names in Azure Local deployment wizard in Azure portal. | |
