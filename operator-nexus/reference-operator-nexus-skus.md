@@ -1,7 +1,7 @@
 ---
 title: Azure Operator Nexus SKUs
 description: SKU options for Azure Operator Nexus
-ms.topic: article
+ms.topic: feature-availability
 ms.date: 9/18/2025
 author: matternst7258
 ms.author: matthewernst

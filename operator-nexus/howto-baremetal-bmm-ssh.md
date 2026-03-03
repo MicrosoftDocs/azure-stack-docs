@@ -166,6 +166,9 @@ az networkcloud cluster baremetalmachinekeyset create \
                                                             for full debug logs.
 ```
 
+> [!IMPORTANT]
+> SSH public keys must not contain command, environment, or principals options. Only the `from=` option (source IP restriction) is permitted. Keys with unauthorized options will be rejected during keyset creation or update operations.
+
 This example creates a new keyset with two users that have standard access from two jump hosts.
 
 ```azurecli
@@ -179,8 +182,8 @@ az networkcloud cluster baremetalmachinekeyset create \
   --jump-hosts-allowed "192.0.2.1" "192.0.2.5" \
   --os-group-name "standardAccessGroup" \
   --privilege-level "Standard" \
-  --user-list '[{"description":"Needs access for troubleshooting as a part of the support team","azureUserName":"userABC", "sshPublicKey":{"keyData":"ssh-rsa  AAtsE3njSONzDYRIZv/WLjVuMfrUSByHp+jfaaOLHTIIB4fJvo6dQUZxE20w2iDHV3tEkmnTo84eba97VMueQD6OzJPEyWZMRpz8UYWOd0IXeRqiFu1lawNblZhwNT/ojNZfpB3af/YDzwQCZgTcTRyNNhL4o/blKUmug0daSsSXISTRnIDpcf5qytjs1XoyYyJMvzLL59mhAyb3p/cD+Y3/s3WhAx+l0XOKpzXnblrv9d3q4c2tWmm/SyFqthaqd0= admin@vm"},"userPrincipalName":"example@contoso.com"},\
-  {"description":"Needs access for troubleshooting as a part of the support team","azureUserName":"userXYZ","sshPublicKey":{"keyData":"ssh-rsa  AAtsE3njSONzDYRIZv/WLjVuMfrUSByHp+jfaaOLHTIIB4fJvo6dQUZxE20w2iDHV3tEkmnTo84eba97VMueQD6OzJPEyWZMRpz8UYWOd0IXeRqiFu1lawNblZhwNT/ojNZfpB3af/YDzwQCZgTcTRyNNhL4o/blKUmug0daSsSXTSTRnIDpcf5qytjs1XoyYyJMvzLL59mhAyb3p/cD+Y3/s3WhAx+l0XOKpzXnblrv9d3q4c2tWmm/SyFqthaqd0= admin@vm"}, "userPrincipalName":"example@contoso.com"}]' \
+  --user-list '[{"description":"Needs access for troubleshooting as a part of the support team","azureUserName":"userABC", "sshPublicKey":{"keyData":"from=\"192.0.2.1,192.0.2.5\" ssh-rsa  AAtsE3njSONzDYRIZv/WLjVuMfrUSByHp+jfaaOLHTIIB4fJvo6dQUZxE20w2iDHV3tEkmnTo84eba97VMueQD6OzJPEyWZMRpz8UYWOd0IXeRqiFu1lawNblZhwNT/ojNZfpB3af/YDzwQCZgTcTRyNNhL4o/blKUmug0daSsSXISTRnIDpcf5qytjs1XoyYyJMvzLL59mhAyb3p/cD+Y3/s3WhAx+l0XOKpzXnblrv9d3q4c2tWmm/SyFqthaqd0= admin@vm"},"userPrincipalName":"example@contoso.com"},\
+  {"description":"Needs access for troubleshooting as a part of the support team","azureUserName":"userXYZ","sshPublicKey":{"keyData":"from=\"192.0.2.1,192.0.2.5\" ssh-rsa  AAtsE3njSONzDYRIZv/WLjVuMfrUSByHp+jfaaOLHTIIB4fJvo6dQUZxE20w2iDHV3tEkmnTo84eba97VMueQD6OzJPEyWZMRpz8UYWOd0IXeRqiFu1lawNblZhwNT/ojNZfpB3af/YDzwQCZgTcTRyNNhL4o/blKUmug0daSsSXTSTRnIDpcf5qytjs1XoyYyJMvzLL59mhAyb3p/cD+Y3/s3WhAx+l0XOKpzXnblrv9d3q4c2tWmm/SyFqthaqd0= admin@vm"}, "userPrincipalName":"example@contoso.com"}]' \
   --tags key1="myvalue1" key2="myvalue2" \
   --cluster-name "clusterName"
   --resource-group "cluster_RG"
@@ -198,8 +201,8 @@ az networkcloud cluster baremetalmachinekeyset create \
   --os-group-name "standardAccessGroup" \
   --privilege-level "Other" \
   --privilege-level-name "SecurityScanner" \
-  --user-list '[{"description":"Needs access for troubleshooting as a part of the support team","azureUserName":"userABC", "sshPublicKey":{"keyData":"ssh-rsa  AAtsE3njSONzDYRIZv/WLjVuMfrUSByHp+jfaaOLHTIIB4fJvo6dQUZxE20w2iDHV3tEkmnTo84eba97VMueQD6OzJPEyWZMRpz8UYWOd0IXeRqiFu1lawNblZhwNT/ojNZfpB3af/YDzwQCZgTcTRyNNhL4o/blKUmug0daSsSXISTRnIDpcf5qytjs1XoyYyJMvzLL59mhAyb3p/cD+Y3/s3WhAx+l0XOKpzXnblrv9d3q4c2tWmm/SyFqthaqd0= admin@vm"},"userPrincipalName":"example@contoso.com"},\
-  {"description":"Needs access for troubleshooting as a part of the support team","azureUserName":"userXYZ","sshPublicKey":{"keyData":"ssh-rsa  AAtsE3njSONzDYRIZv/WLjVuMfrUSByHp+jfaaOLHTIIB4fJvo6dQUZxE20w2iDHV3tEkmnTo84eba97VMueQD6OzJPEyWZMRpz8UYWOd0IXeRqiFu1lawNblZhwNT/ojNZfpB3af/YDzwQCZgTcTRyNNhL4o/blKUmug0daSsSXTSTRnIDpcf5qytjs1XoyYyJMvzLL59mhAyb3p/cD+Y3/s3WhAx+l0XOKpzXnblrv9d3q4c2tWmm/SyFqthaqd0= admin@vm"}, "userPrincipalName":"example@contoso.com"}]' \
+  --user-list '[{"description":"Needs access for troubleshooting as a part of the support team","azureUserName":"userABC", "sshPublicKey":{"keyData":"from=\"192.0.2.1,192.0.2.5\" ssh-rsa  AAtsE3njSONzDYRIZv/WLjVuMfrUSByHp+jfaaOLHTIIB4fJvo6dQUZxE20w2iDHV3tEkmnTo84eba97VMueQD6OzJPEyWZMRpz8UYWOd0IXeRqiFu1lawNblZhwNT/ojNZfpB3af/YDzwQCZgTcTRyNNhL4o/blKUmug0daSsSXISTRnIDpcf5qytjs1XoyYyJMvzLL59mhAyb3p/cD+Y3/s3WhAx+l0XOKpzXnblrv9d3q4c2tWmm/SyFqthaqd0= admin@vm"},"userPrincipalName":"example@contoso.com"},\
+  {"description":"Needs access for troubleshooting as a part of the support team","azureUserName":"userXYZ","sshPublicKey":{"keyData":"from=\"192.0.2.1,192.0.2.5\" ssh-rsa  AAtsE3njSONzDYRIZv/WLjVuMfrUSByHp+jfaaOLHTIIB4fJvo6dQUZxE20w2iDHV3tEkmnTo84eba97VMueQD6OzJPEyWZMRpz8UYWOd0IXeRqiFu1lawNblZhwNT/ojNZfpB3af/YDzwQCZgTcTRyNNhL4o/blKUmug0daSsSXTSTRnIDpcf5qytjs1XoyYyJMvzLL59mhAyb3p/cD+Y3/s3WhAx+l0XOKpzXnblrv9d3q4c2tWmm/SyFqthaqd0= admin@vm"}, "userPrincipalName":"example@contoso.com"}]' \
   --tags key1="myvalue1" key2="myvalue2" \
   --cluster-name "clusterName"
   --resource-group "cluster_RG"
@@ -210,6 +213,21 @@ For assistance in creating the `--user-list` structure, see [Azure CLI Shorthand
 ## Add the same user to multiple keysets with different SSH keys
 
 Azure Operator Nexus supports adding the same user to multiple bare metal machine keysets, each with a different SSH public key. When a user appears in multiple keysets, the system automatically consolidates all SSH keys from all keysets and adds them to the user's `authorized_keys` file on all bare metal machines in the cluster.
+
+If you instead want to supply two SSH keys for a single user entry, provide both keys in one `keyData` string separated by the newline escape (`\n`). This is valid and results in both keys being written to the user's `authorized_keys` file. Example:
+
+```json
+"keyData": [
+  {
+    "azureUserName": "<user_name>",
+    "description": "<user_description>",
+    "sshPublicKey": {
+      "keyData": "<ssh-name> <key 1 plaintext>\n<ssh-name> <key 2 plaintext>"
+    },
+    "userPrincipalName": "example@contoso.com"
+  }
+]
+```
 
 ### How it works
 
@@ -529,11 +547,11 @@ az networkcloud cluster baremetalmachinekeyset update \
   --jump-hosts-allowed "192.0.2.1" "192.0.2.5"
   --user-list '[{"description":"Needs access for troubleshooting as a part of the support team",\
   "azureUserName":"userABC", \
-  "sshPublicKey":{"keyData":"ssh-rsa  AAtsE3njSONzDYRIZv/WLjVuMfrUSByHp+jfaaOLHTIIB4fJvo6dQUZxE20w2iDHV3tEkmnTo84eba97VMueQD6OzJPEyWZMRpz8UYWOd0IXeRqiFu1lawNblZhwNT/ojNZfpB3af/YDzwQCZgTcTRyNNhL4o/blKUmug0daSsSXISTRnIDpcf5qytjs1XoyYyJMvzLL59mhAyb3p/cD+Y3/s3WhAx+l0XOKpzXnblrv9d3q4c2tWmm/SyFqthaqd0= admin@vm"}, \
+  "sshPublicKey":{"keyData":"from=\"192.0.2.1,192.0.2.5\" ssh-rsa  AAtsE3njSONzDYRIZv/WLjVuMfrUSByHp+jfaaOLHTIIB4fJvo6dQUZxE20w2iDHV3tEkmnTo84eba97VMueQD6OzJPEyWZMRpz8UYWOd0IXeRqiFu1lawNblZhwNT/ojNZfpB3af/YDzwQCZgTcTRyNNhL4o/blKUmug0daSsSXISTRnIDpcf5qytjs1XoyYyJMvzLL59mhAyb3p/cD+Y3/s3WhAx+l0XOKpzXnblrv9d3q4c2tWmm/SyFqthaqd0= admin@vm"}, \
   "userPrincipalName":"example@contoso.com"},\
   {"description":"Needs access for troubleshooting as a part of the support team",\
     "azureUserName":"userXYZ", \
-    "sshPublicKey":{"keyData":"ssh-rsa  AAtsE3njSONzDYRIZv/WLjVuMfrUSByHp+jfaaOLHTIIB4fJvo6dQUZxE20w2iDHV3tEkmnTo84eba97VMueQD6OzJPEyWZMRpz8UYWOd0IXeRqiFu1lawNblZhwNT/ojNZfpB3af/YDzwQCZgTcTRyNNhL4o/blKUmug0daSsSXTSTRnIDpcf5qytjs1XoyYyJMvzLL59mhAyb3p/cD+Y3/s3WhAx+l0XOKpzXnblrv9d3q4c2tWmm/SyFqthaqd0= admin@vm"}, \
+    "sshPublicKey":{"keyData":"from=\"192.0.2.1,192.0.2.5\" ssh-rsa  AAtsE3njSONzDYRIZv/WLjVuMfrUSByHp+jfaaOLHTIIB4fJvo6dQUZxE20w2iDHV3tEkmnTo84eba97VMueQD6OzJPEyWZMRpz8UYWOd0IXeRqiFu1lawNblZhwNT/ojNZfpB3af/YDzwQCZgTcTRyNNhL4o/blKUmug0daSsSXTSTRnIDpcf5qytjs1XoyYyJMvzLL59mhAyb3p/cD+Y3/s3WhAx+l0XOKpzXnblrv9d3q4c2tWmm/SyFqthaqd0= admin@vm"}, \
     "userPrincipalName":"example@contoso.com"}]' \
    --cluster-name "clusterName" \
   --resource-group "cluster_RG"

@@ -10,6 +10,7 @@ ms.custom:
   - devx-track-azurecli
   - linux-related-content
   - sfi-image-nochange
+ms.subservice: hyperconverged
 ---
 
 # Prepare a CentOS Linux image for Azure Local VMs enabled by Azure Arc (preview)

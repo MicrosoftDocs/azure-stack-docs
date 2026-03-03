@@ -4,7 +4,7 @@ titleSuffix: Azure Stack Hub
 description: Learn how to use the SQL Server resource provider to offer SQL databases as a service on Azure Stack Hub.
 author: sethmanheim
 
-ms.topic: article
+ms.topic: concept-article
 ms.date: 08/02/2022
 ms.author: sethm
 ms.reviewer: xiaofmao

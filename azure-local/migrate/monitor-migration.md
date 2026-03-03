@@ -5,6 +5,7 @@ author: alkohli
 ms.topic: how-to
 ms.date: 10/15/2025
 ms.author: alkohli
+ms.subservice: hyperconverged
 ---
 
 # Monitor Azure Local migrations using diagnostic settings in Azure Migrate

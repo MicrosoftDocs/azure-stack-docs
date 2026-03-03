@@ -4,9 +4,10 @@ description: Get an overview of compute resources for multi-rack deployments of 
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.topic: conceptual
-ms.date: 11/14/2025
+ms.topic: concept-article
+ms.date: 01/16/2026
 ms.custom: conceptual
+ms.subservice: multi-rack
 ---
 
 # Compute overview for multi-rack deployments of Azure Local (preview)
@@ -21,7 +22,7 @@ This article provides an overview of compute resources for multi-rack deployment
 
 Azure Local for multi-rack deployments is built on basic constructs like compute servers, storage appliances, and network devices. These compute servers, also called bare-metal machines (BMMs), represent the physical machines on the compute rack. They run the Azure Linux operating system and provide closed integration support for high-performance workloads.
 
-These BMMs are deployed as part of the Azure Local automation suite. They exist as nodes in the infrastructure Kubernetes cluster to serve various virtualized and containerized workloads in the multi-rack cluster.
+These BMMs are deployed as part of the Azure Local automation suite. They exist as nodes in the multi-rack cluster to serve various virtualized and containerized workloads.
 
 Each BMM in your cluster is represented as an Azure resource. Users can perform various operations to manage the BMM's lifecycle like any other Azure resource.
 

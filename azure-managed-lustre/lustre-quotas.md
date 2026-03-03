@@ -15,7 +15,7 @@ In this article, you learn how to set and configure quotas for Azure Managed Lus
 
 ## Prerequisites
 
-- Existing Azure Managed Lustre file system - create one using the [Azure portal](create-file-system-portal.md), [Azure Resource Manager](create-file-system-resource-manager.md), or [Terraform](create-aml-file-system-terraform.md). To learn more about blob integration, see [Blob integration prerequisites](amlfs-prerequisites.md#blob-integration-prerequisites-optional).
+- Existing Azure Managed Lustre file system - create one using the [Azure portal](create-file-system-portal.md), [Azure Resource Manager](create-file-system-resource-manager.md), or [Terraform](create-aml-file-system-terraform.md). To learn more about blob integration, see [Blob integration prerequisites](amlfs-prerequisites.md#blob-integration-prerequisites).
 
 ## Quota types
 

@@ -3,7 +3,7 @@ title: Quotas and quota types in Azure Stack Hub
 description: View and edit the different quotas and quota types available for services and resources in Azure Stack Hub.
 author: sethmanheim
 
-ms.topic: article
+ms.topic: limits-and-quotas
 ms.date: 05/26/2020
 ms.author: sethm
 ms.reviewer: xiaofmao
@@ -34,6 +34,8 @@ ms.lastreviewed: 12/07/2019
 
 > [!NOTE]
 > The maximum capacity of unmanaged disks (page blobs) is separate from the managed disk quota. You can set this value in **Maximum capacity (GB)** in **Storage quotas**.
+>
+> Unmanaged disks are retiring. Migrate to managed disks before the retirement date. For more information, see [Unmanaged disks deprecation](/azure/virtual-machines/unmanaged-disks-deprecation).
 
 ## Storage quota types
 

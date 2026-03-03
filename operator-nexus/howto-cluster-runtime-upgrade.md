@@ -25,6 +25,7 @@ This how-to guide explains the steps for installing the required Azure CLI and e
    - Resource group (`CLUSTER_RG`)
 1. Cluster Detailed status must be ``Running``.
 1. Cluster to Cluster Manager connectivity must be ``Connected``.
+1. Azure prerequisites (Log Analytics Workspace, Storage Account, Key Vault) must be validated. These resources are checked before upgrade begins. See [Cluster Managed Identity and User Provided Resources](howto-cluster-managed-identity-user-provided-resources.md).
 1. Under Cluster > Workload > Compute Servers
     - Three of four control plane nodes must be Power state ``On``, Cordon status ``Uncordoned``, Ready state ``Yes``, and Degraded ``No``.
         - The spare control plane node should be in Power state ``Off``, Ready state ``No``, and Degraded ``No``.
@@ -84,17 +85,18 @@ In the output, you can find the `availableUpgradeVersions` property and look at 
 
 If there are no available Cluster upgrades, the list is empty.
 
-## Configure compute threshold parameters for runtime upgrade using Cluster `updateStrategy`
+## Configure Compute threshold parameters for Runtime upgrade using Cluster `updateStrategy`
 
 The following Azure CLI command is used to configure the compute threshold parameters for a runtime upgrade:
 
 ```azurecli
-az networkcloud cluster update --name "<CLUSTER>" \
+az networkcloud cluster update \
+--name "<CLUSTER>" \
 --resource-group "<CLUSTER_RG>" \
+--subscription "<SUBSCRIPTION>" \
 --update-strategy strategy-type="<strategyType>" threshold-type="<thresholdType>" \
 threshold-value="<thresholdValue>" max-unavailable="<maxNodesOffline>" \
-wait-time-minutes="<waitTimeBetweenRacks>" \
---subscription "<SUBSCRIPTION>"
+wait-time-minutes="<waitTimeBetweenRacks>"
 ```
 
 Required parameters:
@@ -107,6 +109,8 @@ Optional parameters:
 
 - max-unavailable: The maximum number of worker nodes that can be offline, that is, upgraded rack at a time. The default value is `32767`.
 - wait-time-minutes: The delay or waiting period before updating a rack. The default value is `15`.
+
+### Upgrade Behavior based on PercentSuccess threshold type
 
 The following example is for a customer using Rack-by-Rack strategy with a Percent Success of 60% and a 1-minute pause.
 
@@ -133,7 +137,27 @@ az networkcloud cluster show --name "<CLUSTER>" \
       "waitTimeMinutes": 1
 ```
 
-In this example, if less than 60% of the compute nodes being provisioned in a rack fail to provision (on a Rack-by-Rack basis), the Cluster upgrade waits indefinitely until the condition is met. If 60% or more of the compute nodes are successfully provisioned, Cluster deployment moves on to the next rack of compute nodes. If there are too many failures in the rack, the hardware must be repaired before the upgrade can continue.
+In this example, once 60% of the machines in a rack are successfully upgraded, the system considers the threshold met and proceeds to upgrade the next rack, while continuing to provision any remaining machines in the current rack. If the threshold is not met - meaning fewer than 60% of the machines in the rack were able to upgrade and instead failed, then the cluster upgrade is paused. When an upgrade is paused, the system provides a detailed status message on the cluster explaining the reason. At that point, the problematic machines in the rack must be repaired, and a cluster continue-update-version operation must be triggered to resume and complete the upgrade. 
+
+To view the upgrade status through the Azure portal, navigate to the targeted Cluster resource. In the Cluster's *Overview* screen, the detailed status is provided along with a detailed status message.
+
+The Cluster upgrade is in-progress when detailedStatus is set to `Updating` and detailedStatusMessage shows the progress of upgrade. Some examples of upgrade progress shown in detailedStatusMessage are `Waiting for control plane upgrade to complete...`, `Waiting for nodepool "<rack-id>" to finish upgrading...`, etc.
+
+The Cluster upgrade is complete when detailedStatus is set to `Running` and detailedStatusMessage shows message `Cluster is up and running`
+
+If the Detailed Status Message shows upgrade has been paused, the message looks like below:
+`Cluster is deployed but the upgrade has been paused. Machines in rack "<rack-id>" are unhealthy. Fix the machines and perform cluster continue-update-version action to finish the upgrade`
+
+:::image type="content" source="./media/runtime-upgrade-cluster-detail-status-message-paused.png" lightbox="./media/runtime-upgrade-cluster-detail-status-message-paused.png" alt-text="Screenshot of Azure portal showing Cluster upgrade paused.":::
+
+To resume the runtime upgrade, execute the following az networkcloud cli command.
+```azurecli
+az networkcloud cluster continue-update-version --cluster-name "<CLUSTER>" \
+--resource-group="<CLUSTER_RG>" \
+--subscription="<SUBSCRIPTION>"
+```
+
+### Upgrade Behavior based on CountSuccess threshold Type
 
 The following example is for a customer using Rack-by-Rack strategy with a threshold type `CountSuccess` of 10 nodes per rack and a 1-minute pause.
 
@@ -160,11 +184,25 @@ az networkcloud cluster show --name "<CLUSTER>" \
       "waitTimeMinutes": 1
 ```
 
-In this example, if less than 10 compute nodes being provisioned in a rack fail to provision (on a Rack-by-Rack basis), the Cluster upgrade waits indefinitely until the condition is met. If 10 or more of the compute nodes are successfully provisioned, Cluster deployment moves on to the next rack of compute nodes. If there are too many failures in the rack, the hardware must be repaired before the upgrade can continue.
+In this example, if at least 10 nodes are successfully upgraded, the upgrade moves on to the next rack while continuing to provision any remaining machines in the current rack. If atleast 10 machines in the rack fail to upgrade, the cluster upgrade will pause. When this happens, the required hardware must be repaired before running the continue‑update‑version action to resume and complete the upgrade. 
 
 > [!NOTE]
 > **_`update-strategy` cannot be changed after the Cluster runtime upgrade has started._**
-> When a threshold value below 100% is set, it’s possible that any unhealthy nodes might not be upgraded, yet the "Cluster" status could still indicate that upgrade was successful. For troubleshooting issues with bare metal machines, refer to [Troubleshoot Azure Operator Nexus server problems](troubleshoot-reboot-reimage-replace.md)
+
+> For troubleshooting issues with bare metal machines, refer to [Troubleshoot Azure Operator Nexus server problems](troubleshoot-reboot-reimage-replace.md)
+
+
+## KCP Machine Upgrades
+
+Kubernetes Control Plane (KCP) machines have strict availability requirements during runtime upgrades. Unlike compute nodes where upgrades can proceed if threshold requirements are met, **the upgrade will fail if KCP machines cannot all be provisioned successfully**.
+
+During a Runtime Upgrade, if a KCP machine failure occurs:
+1. The upgrade will halt and the cluster will enter a failed state
+2. The detailed status message will indicate control plane upgrade failure
+3. The affected KCP machine(s) must be repaired or replaced
+4. Once hardware issues are resolved, the upgrade must be retriggered using the `update-version` command similar to how the upgrade is triggered earlier
+
+This strict requirement ensures cluster control plane stability and prevents potential cluster management issues that could arise from a partially upgraded or unhealthy control plane.
 
 ## Upgrade Cluster runtime using CLI
 
@@ -199,7 +237,7 @@ Example `JSON View` output for the Cluster (Operator Nexus) resource:
   "properties": {
     "actionStates": [
       {
-        "correlationId": "b66643b7-2e1d-4a5c-a954-ca0e38368984",
+        "correlationId": "aaaa0000-bb11-2222-33cc-444444dddddd",
         "status": "Completed",
         "actionType": "Microsoft.NetworkCloud/clusters/updateVersion",
         "endTime": "2025-08-01T03:46:13Z",
@@ -278,8 +316,8 @@ For more detailed insights on the upgrade progress, the individual node in each 
 
 ### Identifying Cluster Upgrade Stalled/Stuck
 
-During a runtime upgrade, it's possible that the upgrade fails to move forward but the detail status reflects that the upgrade is still ongoing. **Because the runtime upgrade can take a very long time to successfully finish, there's no set time-out length currently specified**.
-Hence, it's advisable to also check periodically on your Cluster's detail status and logs to determine if your upgrade is indefinitely attempting to upgrade.
+During a runtime upgrade, it's possible that the upgrade fails to move forward but the detailed status reflects that the upgrade is still ongoing. **Because the runtime upgrade can take a very long time to successfully finish, there's no set time-out length currently specified**.
+Hence, it's advisable to also check periodically on your Cluster's detailed status and logs to determine if your upgrade is indefinitely attempting to upgrade.
 
 We can identify an `indefinitely attempting to upgrade` situation by looking at the Cluster's logs, detailed message, and detailed status message. If a time-out occurs, we would observe that the Cluster is continuously reconciling over the same indefinitely and not moving forward. From here, we recommend checking Cluster logs or configured LAW, to see if there's a failure, or a specific upgrade that is causing the lack of progress.
 

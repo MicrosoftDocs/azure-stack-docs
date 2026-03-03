@@ -4,7 +4,7 @@ description: Learn about the password rotation v1 process in Azure Operator Nexu
 author: RaghvendraMandawale
 ms.author: rmandawale
 ms.service: azure-operator-nexus
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 09/26/2025
 ms.custom: template-concept
 ---
@@ -118,3 +118,8 @@ When rotation is triggered, the service securely generates and updates operator 
 ## Related content
 
 - [Use password rotation v1 in Azure Operator Nexus](./howto-use-password-rotation-v1.md)
+- [Azure Operator Nexus security](concepts-security.md)
+- [PKI implementation](concepts-pki-implementation.md)
+- [Access and identity management](concepts-security-access-identity.md)
+- [Baseboard Management Controller credential rotation](concepts-baseboard-management-controller-credential-rotation.md)
+- [Credential rotation management](howto-credential-rotation.md)

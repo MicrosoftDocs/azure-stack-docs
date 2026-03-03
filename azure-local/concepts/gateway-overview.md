@@ -1,12 +1,13 @@
 ---
 title: RAS Gateway for Software Defined Networking managed by on-premises tools
 description: Learn about Remote Access Service (RAS) Gateway for Software Defined Networking managed by on-premises tools in Azure Local and Windows Server.
-author: AnirbanPaul
-ms.author: anpaul
+author: alkohli
+ms.author: alkohli
 ms.topic: overview
 ms.service: azure-local
 ms.date: 09/05/2025
 ms.custom: kr2b-contr-experiment
+ms.subservice: hyperconverged
 ---
 # What is Remote Access Service (RAS) Gateway for Software Defined Networking?
 

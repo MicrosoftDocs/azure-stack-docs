@@ -1,6 +1,6 @@
 ---
-title: Azure Resource Manager template deployment for Azure Local rack aware cluster (Preview)
-description: Learn how to prepare and then deploy Azure Local rack aware cluster using the Azure Resource Manager template (Preview).
+title: Azure Resource Manager template deployment for Azure Local rack aware cluster
+description: Learn how to prepare and then deploy Azure Local rack aware cluster using the Azure Resource Manager template.
 author: alkohli
 ms.topic: how-to
 ms.date: 10/21/2025
@@ -9,13 +9,11 @@ ms.reviewer: alkohli
 ms.service: azure-local
 ---
 
-# Deploy Azure Local rack aware cluster using Azure Resource Manager deployment template (Preview)
+# Deploy Azure Local rack aware cluster using Azure Resource Manager deployment template
 
 ::: moniker range=">=azloc-2510"
 
 This article describes how to use an Azure Resource Manager (ARM) template in the Azure portal to deploy a rack aware cluster.
-
-[!INCLUDE [important](../includes/hci-preview.md)]
 
 > [!IMPORTANT]
 > ARM template deployment of rack aware cluster is targeted for deployments-at-scale. The intended audience for this deployment is IT administrators who have experience deploying rack aware clusters. We recommend that you deploy a system via the Azure portal first, and then perform subsequent deployments via the ARM template.
@@ -295,7 +293,7 @@ After successful validation, you're ready to proceed with the actual deployment 
 The following table describes parameters that are specific to a rack aware cluster:
 
 | Parameter | Description |
-|--|--|
+| -- | -- |
 | clusterPattern | Supported cluster type for the Azure Local cluster: <br/>- **Standard**<br/>- **RackAware** |
 | localAvailabilityZones | Local availability zone information for the Azure Local rack aware cluster. |
 

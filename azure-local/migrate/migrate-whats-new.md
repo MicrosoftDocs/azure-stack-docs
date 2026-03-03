@@ -4,8 +4,9 @@ description: Learn about new features in Azure Migrate for Azure Local.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 12/15/2025
+ms.date: 12/17/2025
 ms.service: azure-local
+ms.subservice: hyperconverged
 ---
 
 # What's new in Azure Migrate for Azure Local
@@ -13,6 +14,15 @@ ms.service: azure-local
 This article lists the various features and improvements that are available in virtual machine (VM) migration to Azure Local (*formerly Azure Stack HCI*). This article applies to both Hyper-V (Preview) and VMware VM migrations.
 
 [!INCLUDE [hci-applies-to-2503](../includes/hci-applies-to-2503.md)]
+
+## December 2025
+
+This release includes these features and improvements.
+
+- **Replication deployment bug fixed** – Resolved an issue where some older Azure Migrate projects were incorrectly blocked during replication deployment despite the project being in a healthy state.
+
+- **Unnecessary replication job failures resolved** – Fixed a bug that caused repeated **Create Replication Policy** errors and unnecessary job failures when initiating VM replication.
+ 
 
 ## November 2025
 
@@ -95,6 +105,9 @@ This release includes these features and improvements:
 This release includes these features and improvements:
 
 - **Linux VM static IP migration support** – Azure Migrate to Azure Local migrations now offers scripts that preserve static IP addresses during Linux virtual machine (VM) migrations. See [Maintain static IP addresses during migration](migrate-maintain-ip-addresses.md?&tabs=linux).
+
+> [!NOTE]
+> Although Linux VM static IP migration support was introduced in April 2025, migration package scripts are still required to preserve static IP settings.
 
 - **Customizable physical sector size on migrated disks** – You can now select either 512B or 4KB physical sector sizes for migrated disks, enabling better alignment with your workload and storage configuration.
 

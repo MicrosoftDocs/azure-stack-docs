@@ -27,6 +27,34 @@ This Azure region should be used in the `Location` field of the Cluster Manager 
 - **Naming** - Naming rules can be found [here](/azure/azure-resource-manager/management/resource-name-rules#microsoftnetworkcloud).
 - **Compute resources** - Can be found in [Capacity Requirements](#capacity-requirements). 
 
+## Capacity Requirements
+
+Cluster Manager supports the following VM SKUs: 
+- Standard_D4_v2 (default)
+- Standard_D8s_v3
+- Standard_D8s_v4
+- Standard_D8s_v5
+- Standard_D8s_v6
+
+Refer to [Azure Virtual Machine size overview](/azure/virtual-machines/sizes/overview) for SKU requirements.
+
+Cluster Manager creates Azure Kubernetes Services (AKS) instance with three Virtual Machines (VM) distributed across three availability zones using the default SKU. A customer can switch to two availability zones if the selected SKU isn't available in all zones. In that case, the three VMs are redistributed across the provided zones.
+
+If the default SKU isn't available, a customer can choose one of the alternative SKUs as they provide comparable performance. When in doubt, Azure recommends choosing the latest version available at the subscription.
+
+The supported SKU and availability zones for the subscription in the selected location can be verified by running the Azure CLI command:
+
+```
+az vm list-skus --subscription <SUB_ID> --location <LOCATION> --size Standard_D --output table
+```
+
+The compute needs increase during upgrades and may double depending on the type of the upgrade. For example, AKS upgrades require more capacity while regular Network Cloud maintenance requires one extra VM. This scaling is temporary and reverts to three VMs after the upgrade completes. When multiple Cluster Managers are deployed in the same subscription, customers don't need to reserve double capacity for all instances, as not all upgrades occur at the same time.
+
+### How to use nondefault SKU and availability zones
+
+The `vmSize` and `availabilityZones` properties can be set during the Cluster Manager creation. They can be changed to different values on the existing Cluster Manager if needed. When switching the existing Cluster Manager to a different SKU, make sure there's enough capacity to accommodate a temporary growth for the three new VMs.
+If the properties aren't provided, the mentioned defaults are used. See the examples on how to set it.
+
 ## Cluster Manager properties
 
 | Property Name                     | Description                                                                                                                                                                                                                              |
@@ -43,6 +71,7 @@ This Azure region should be used in the `Location` field of the Cluster Manager 
 | provisioningState                 | The provisioning status of the latest operation on the Cluster Manager. One of: Succeeded, Failed, Provisioning, Accepted, Updating.                                                                                                                  |
 | detailedStatus                    | The detailed statuses that provide additional information about the status of the Cluster Manager.                                                                                                                                                    |
 | detailedStatusMessage             | The descriptive message about the current detailed status.                                                                                                                                                                                            |
+| relayConfiguration                | The relay configuration for the Cluster Manager, containing the Azure Relay namespace resource ID. Available in API version `2026-01-01-preview` and later. See [Manage private endpoints for Arc Relay connectivity](howto-cluster-manager-relay-private-endpoint.md). |
 
 ## Cluster Manager Kind
 
@@ -71,34 +100,6 @@ The role assignment can be done via the Azure portal:
 - Assign access to: User, group, or service principal
 - Select Member: `AFOI-NC-MGMT-PME-PROD` application
 - Review and assign
-
-## Capacity Requirements
-
-Cluster Manager supports the following VM SKUs: 
-- Standard_D4_v2 (default)
-- Standard_D8s_v3
-- Standard_D8s_v4
-- Standard_D8s_v5
-- Standard_D8s_v6
-
-Refer to [Azure Virtual Machine size overview](/azure/virtual-machines/sizes/overview) for SKU requirements.
-
-Cluster Manager creates Azure Kubernetes Services (AKS) instance with three Virtual Machines (VM) distributed across three availability zones using the default SKU. A customer can switch to two availability zones if the selected SKU isn't available in all zones. In that case, the three VMs are redistributed across the provided zones.
-
-If the default SKU isn't available, a customer can choose one of the alternative SKUs as they provide comparable performance. When in doubt, Azure recommends choosing the latest version available at the subscription.
-
-The supported SKU and availability zones for the subscription in the selected location can be verified by running the Azure CLI command:
-
-```
-az vm list-skus --subscription <SUB_ID> --location <LOCATION> --size Standard_D --output table
-```
-
-The compute needs increase during upgrades and may double depending on the type of the upgrade. For example, AKS upgrades require more capacity while regular Network Cloud maintenance requires one extra VM. This scaling is temporary and reverts to three VMs after the upgrade completes. When multiple Cluster Managers are deployed in the same subscription, customers don't need to reserve double capacity for all instances, as not all upgrades occur at the same time.
-
-### How to use nondefault SKU and availability zones
-
-The `vmSize` and `availabilityZones` properties can be set during the Cluster Manager creation. They can be changed to different values on the existing Cluster Manager if needed. When switching the existing Cluster Manager to a different SKU, make sure there's enough capacity to accommodate a temporary growth for the three new VMs.
-If the properties aren't provided, the mentioned defaults are used. See the examples on how to set it.
 
 ## Create a Cluster Manager
 
@@ -440,7 +441,8 @@ To delete the Cluster Manager, use Portal, CLI, or PowerShell.
 
 After you successfully created the Network Fabric Controller and the Cluster Manager, the next step is to create a [Network Fabric](./howto-configure-network-fabric.md).
 
-## Useful links
+## Related content
 
+- [Manage private endpoints for Arc Relay connectivity](howto-cluster-manager-relay-private-endpoint.md)
 - [NetworkCloud REST APIs Reference](/rest/api/networkcloud/)
 - [NetworkCloud PowerShell Reference](/powershell/module/az.networkcloud/)

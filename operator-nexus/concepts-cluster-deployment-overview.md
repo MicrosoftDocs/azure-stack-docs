@@ -4,7 +4,7 @@ description: Get an overview of cluster deployment for Azure Operator Nexus.
 author: sbatchu
 ms.author: sbatchu
 ms.service: azure-operator-nexus
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 08/05/2024
 ms.custom: template-concept
 ---
@@ -22,7 +22,7 @@ Hardware Validation (HWV) is initiated during the cluster deployment process. Du
 
 Based on the results of these HWV checks and any user skipped machines, a determination is done on whether sufficient nodes passed and/or are available to meet the thresholds necessary for deployment to continue. The results of HWV for each server are recorded in the Log Analytics Workspace (LAW), which is created as part of the cluster setup.
 
-> **Note:**  
+> [!NOTE]  
 > Hardware validation thresholds are enforced for various node types to ensure reliable cluster operation:
 > Management nodes are divided into two roles: Kubernetes Control Plane (KCP) nodes and Nexus Management Plane Nodes (NMP) nodes.
 > - **KCP nodes:** Must achieve a 100% hardware validation success rate since they make up the control plane.
@@ -32,6 +32,32 @@ Based on the results of these HWV checks and any user skipped machines, a determ
 This article provides a detailed overview of the HWV process [Hardware Validation Overview](concepts-hardware-validation-overview.md)
 
 This article provides instructions on how to check and troubleshoot HWV results [Troubleshoot Hardware Validation](troubleshoot-hardware-validation-failure.md)
+
+### Azure Prerequisites Validation phase
+
+Before cluster deployment proceeds, Operator Nexus validates that user-provided Azure resources are accessible using the configured managed identity. This validation ensures that the cluster can successfully use the following resources during and after deployment:
+
+- **Log Analytics Workspace (LAW)**: Required for software extension installation and metrics collection
+- **Storage Account**: Used for storing run command output
+- **Key Vault**: Used for credential rotation and secret storage
+
+The validation phase runs as the "Validate Azure prerequisites" step in the deployment action. Each resource undergoes a connectivity and permissions check:
+
+| Resource                | Validation test                                                            |
+|-------------------------|----------------------------------------------------------------------------|
+| Log Analytics Workspace | Verifies the managed identity can call the GetSharedKeys API               |
+| Storage Account         | Verifies the managed identity can upload and commit blobs to the container |
+| Key Vault               | Verifies the managed identity can write, read, and delete secrets          |
+
+If any validation fails, the deployment action reports the failure with an error message indicating which resource failed and why. Common causes include:
+
+- Missing role assignments on the target resource
+- Incorrect resource identifiers (workspace ID, container URL, or vault URI)
+- Firewall rules blocking access from trusted Azure services
+
+The deployment doesn't proceed until all Azure prerequisites pass validation. After correcting any issues, validation automatically retries.
+
+For detailed configuration steps and troubleshooting guidance, see [Cluster Managed Identity and User Provided Resources](howto-cluster-managed-identity-user-provided-resources.md).
 
 ### Bootstrap phase:
 

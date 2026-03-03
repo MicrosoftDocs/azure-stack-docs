@@ -3,9 +3,10 @@ title: Software Defined Networking (SDN) enabled by Azure Arc on Azure Local
 description: Software Defined Networking enabled by Arc provides a way to centrally configure and manage logical networks, network security groups, network security rules via the Azure portal and Azure CLI in Azure Local.
 author: alkohli
 ms.author: alkohli
-ms.topic: conceptual
+ms.topic: concept-article
 ms.service: azure-local
-ms.date: 10/21/2025
+ms.date: 02/24/2026
+ms.subservice: hyperconverged
 ---
 
 # Software Defined Networking enabled by Azure Arc on Azure Local
@@ -27,7 +28,7 @@ You can manage SDN on Azure Local in two ways: with Arc or with on-premises tool
     With SDN enabled by Azure Arc, you create and apply network security groups (NSGs) to logical networks and Azure Local VM network interfaces (NICs).
 
     > [!NOTE]
-    > AKS workloads don't support SDN enabled by Azure Arc.
+    > AKS is supported on Azure Local instances configured with SDN enabled by Arc. However, associating NSGs with the logical network used for AKS workload deployment or with AKS workload VM NICs isn't supported.
 
 - **SDN managed by on-premises tools**: You can also manage SDN with on-premises tools like Windows Admin Center or SDN Express scripts. This approach is available for Windows Server and Azure Local 2311.2 or later. This method uses three main SDN components, and you choose which to deploy: Network Controller, Software Load Balancer (SLB), and Gateway. For more information, see [SDN managed by on-premises tools](../concepts/software-defined-networking-23h2.md).
 
@@ -53,12 +54,12 @@ Here's a comparative summary of the SDN managed by Arc and via on-premises tools
 
 Here's a summary of unsupported scenarios for SDN enabled by Arc on Azure Local:
 
-|Scenario  |Description  |
-|---------|---------|
-|SDN resources     | The following resources aren't supported:<br><br> - Virtual networks <br><br> - Software Load Balancers <br><br> - Gateways (VPN, L3, GRE)         |
-|Hybrid scenarios     | Deployment and management method must be consistent. <br><br> - If SDN is enabled by Arc, manage it only using Azure portal, Azure CLI, and Azure Resource Manager templates. <br><br> - Don't manage via on-premises tools such as Windows Admin Center and SDN Express scripts.         |
-|AKS workloads     | AKS workloads aren't supported.      |
-|Multi-cast workloads     | Multi-cast workloads aren’t supported as SDN exclusively facilitates unicast communication currently.   |
+| Scenario | Description |
+|--|--|
+| SDN resources | The following resources aren't supported:<br><br> - Virtual networks <br><br> - Software Load Balancers <br><br> - Gateways (VPN, L3, GRE) |
+| Hybrid scenarios | Deployment and management method must be consistent. <br><br> - If SDN is enabled by Arc, manage it only using Azure portal, Azure CLI, and Azure Resource Manager templates. <br><br> - Don't manage via on-premises tools such as Windows Admin Center and SDN Express scripts. |
+| AKS workloads | Associating NSGs with the logical network used for AKS workload deployment or with AKS workload VM NICs isn't supported. |
+| Multi-cast workloads | Multi-cast workloads aren’t supported as SDN exclusively facilitates unicast communication currently. |
 
 ## Supported networking patterns for SDN enabled by Arc
 

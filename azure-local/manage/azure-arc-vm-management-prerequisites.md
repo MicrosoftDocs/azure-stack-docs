@@ -5,16 +5,16 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 07/08/2025
+ms.date: 02/23/2026
 ms.custom: sfi-image-nochange
-
+ms.subservice: hyperconverged
 ---
 
 # Review prerequisites for Azure Local VMs enabled by Azure Arc
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
-This article lists the requirements and prerequisites for Azure Local VMs enabled by Azure Arc. We recommend that you review the requirements and complete the prerequisites before you manage your Azure Local VMs.
+This article lists the requirements and prerequisites for Azure Local virtual machines (VMs) enabled by Azure Arc. We recommend that you review the requirements and complete the prerequisites before you manage your Azure Local VMs.
 
 ## Azure requirements
 
@@ -26,13 +26,12 @@ The Azure requirements include:
 
   The entities include your Azure Local instance, Azure Arc resource bridge, Custom Location, VM operator, virtual machines created from Arc and Azure Arc for Servers guest management. These entities can be in different or same resource groups as long as all resource groups are in the same region.
 
-
 ## Azure Local requirements
 
 - You have access to an Azure Local instance that is deployed, has an Azure Arc resource bridge, and a custom location.
 
   - Go to the **Overview > Server** page in the Azure Local resource. Verify that **Azure Arc** shows as **Connected**. You should also see a custom location and an Azure Arc resource bridge for your system.
-    
+
       :::image type="content" source="./media/azure-arc-vm-management-prerequisites/azure-arc-connected.png" alt-text="Screenshot of the Overview page in the Azure Local resource showing Azure Arc as connected." lightbox="./media/azure-arc-vm-management-prerequisites/azure-arc-connected.png":::
 
 ## Azure Local VM image requirements
@@ -63,43 +62,36 @@ During the system deployment, an Azure Arc resource bridge is created and the Az
 ### Connect to the system remotely
 
 If you're accessing your Azure Local remotely, the following requirements must be met:
- 
+
 - The latest version of Azure Command-Line Interface (CLI). You must install this version on the client that you're using to connect to your Azure Local.
 
-  - For installation instructions, see [Install Azure CLI](/cli/azure/install-azure-cli-windows). Once you have installed `az` CLI, make sure to restart the system.
+  - For installation instructions, see [Install Azure CLI](/cli/azure/install-azure-cli-windows). After you install `az` CLI, make sure to restart the system.
   
     - If you're using a local installation, sign in to the Azure CLI by using the [az login](/cli/azure/reference-index#az-login) command. To finish the authentication process, follow the steps displayed in your terminal. For other sign-in options, see [Sign in with the Azure CLI](/cli/azure/authenticate-azure-cli).
 
     - Run [az version](/cli/azure/reference-index?#az-version) to find the version and dependent libraries that are installed. To upgrade to the latest version, run [az upgrade](/cli/azure/reference-index?#az-upgrade).
 
-- The Azure Local extension `stack-hci-vm`.
+- To install a specific version of the Azure Local extension `stack-hci-vm`:
 
-    1. In the Azure portal, go to your Azure Local resource and then go to **Operations > Updates**. In the right pane, note the **Current version** that your system is running.
-  
-        :::image type="content" source="./media/azure-arc-vm-management-prerequisites/identify-software-version-1.png" alt-text="Screenshot of the Updates page in the Azure Local resource showing current software version." lightbox="./media/azure-arc-vm-management-prerequisites/identify-software-version-1.png":::
+    1. Check if there's already a version of the extension installed on the client. Run the following command:
 
-    1. Match the **Current version** from the Azure portal to **Release build in** the [Arc VM release tracking table](https://aka.ms/arcvm-rel). Then identify the corresponding `stack-hci-vm extension` version from the table. You'll install this version on the client that you are using to connect to your Azure Local.
-    
-    1. Check if there is a version of the extension installed on the client. Run the following command:
-  
         ```azurecli
         az extension list --output table
         ```
 
-    1. If there is an older version installed, remove it and install the new version. Run the following command:
-  
+    1. If the installed extension version doesn't match the desired version, remove it before installing the correct version. Run the following command:
+
         ```azurecli
         az extension remove --name "stack-hci-vm"
         ```
 
-    1. To install the extension, run the following command:
-      
+    1. To install the desired extension version, run the following command:
+
         ```azurecli
         az extension add --name "stack-hci-vm" --version "<version>"
         ```
 
     1. To verify that the extension is installed, use the `list` command again.
-
 
 ## Next steps
 

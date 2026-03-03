@@ -348,7 +348,7 @@ If you upgraded a system that previously had [Azure Benefits on Azure Local](../
 ### I just set up Azure VM verification on my system. How do I ensure that Azure VM verification stays active?
 
 - In most cases, there's no user action required. Azure Local automatically renews Azure VM verification when it syncs with Azure.
-- However, if the system disconnects for more than 30 days and Azure VM verification shows as **Expired**, you can manually sync using PowerShell and Windows Admin Center. For more information, see [syncing Azure Local](../faq.yml#what-happens-if-the-30-day-limit-is-exceeded).
+- However, if the system disconnects for more than 30 days and Azure VM verification shows as **Expired**, you can manually sync using PowerShell and Windows Admin Center. For more information, see [syncing Azure Local](../faq.yml).
 
 ### What happens when I deploy new VMs, or delete VMs?
 

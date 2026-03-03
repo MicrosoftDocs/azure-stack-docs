@@ -3,10 +3,11 @@ title: Register Azure Local using Arc gateway and with and without proxy setup.
 description: Learn how to register Azure Local using Azure Arc gateway Arc proxy. Both scenarios with and without proxy are configured. 
 author: alkohli
 ms.topic: how-to
-ms.date: 10/11/2025
+ms.date: 02/17/2026
 ms.author: alkohli
 ms.service: azure-local
 zone_pivot_groups: register-arc-options
+ms.subservice: hyperconverged
 ---
 
 # Register Azure Local with Azure Arc using Arc gateway
@@ -34,6 +35,9 @@ This article details how to register Azure Local using Azure Arc gateway and wit
 - You have reviewed the supported and unsupported scenarios. For more information, see [Supported and unsupported scenarios](./deployment-azure-arc-gateway-overview.md#supported-and-unsupported-scenarios).
 
 - Required endpoints are open in your firewall. For more information, see [Azure Local endpoints not redirected](./deployment-azure-arc-gateway-overview.md#azure-local-endpoints-not-redirected).
+
+- Review guidance on [handling preinstalled or outdated OS images during Azure Arc registration](#handle-preinstalled-or-outdated-os-images-during-azure-arc-registration).
+
 
 ## Step 1: Get the Arc gateway ID  
 
@@ -84,23 +88,32 @@ This article details how to register Azure Local using Azure Arc gateway and wit
 
     #Define the Arc gateway resource ID from Azure 
     $ArcgwId = "/subscriptions/yourarcgatewayid/resourceGroups/yourResourceGroupName/providers/Microsoft.HybridCompute/gateways/yourArcGatewayName" 
+
+    # Define the target Azure Local solution version that the node must update to after registering with Azure Arc.
+    # Example: "12.2602.1002.10"
+    $TargetSolutionVersion = "<solution-version>" 
+
     ```
 
 ## Step 3: Run registration script
 
 > [!NOTE]
-> If your Azure Local system is preinstalled with an Original Equipment Manufacturer (OEM) image that's outdated or unsupported, an update is triggered automatically. The update typically takes 40-45 minutes to complete and includes a system reboot. After the reboot, rerun the cmdlet to continue. For more instructions about the update flow, see [Azure Arc registration workflow for systems with OEM images](./deployment-arc-registration-preinstalled-os.md).
+> If your Azure Local system is preinstalled with an Original Equipment Manufacturer (OEM) image that's outdated or unsupported, or if it was installed with an older ISO, see [Handle preinstalled or outdated OS images during Azure Arc registration](#handle-preinstalled-or-outdated-os-images-during-azure-arc-registration).
 
 1. Run the Arc registration script. The script takes a few minutes to run.
 
     ```Powershell
     #Invoke the registration script with Proxy and ArcgatewayID 
-    Invoke-AzStackHciArcInitialization -TenantID $Tenant -SubscriptionID $Subscription -ResourceGroup $RG -Region $Region -Cloud "AzureCloud" -Proxy $ProxyServer -ArcGatewayID $ArcgwId -ProxyBypass $ProxyBypassList 
+    Invoke-AzStackHciArcInitialization -TenantID $Tenant -SubscriptionID $Subscription -ResourceGroup $RG -Region $Region -Cloud "AzureCloud" -Proxy $ProxyServer -ArcGatewayID $ArcgwId -ProxyBypass $ProxyBypassList -TargetSolutionVersion $TargetSolutionVersion
     ```
 
 1. During the Arc registration process, you must authenticate with your Azure account. The console window displays a code that you must enter in the URL, displayed in the app, in order to authenticate. Follow the instructions to complete the authentication process.
 
     :::image type="content" source="media/deployment-with-azure-arc-gateway/authentication-device-code.png" alt-text="Screenshot of the console window with the device code and the URL to open." lightbox="media/deployment-with-azure-arc-gateway/authentication-device-code.png":::
+
+### Handle preinstalled or outdated OS images during Azure Arc registration
+
+[!INCLUDE [handle-os-image-updates](../includes/azure-local-handle-os-image-update-during-arc-registration.md)]
 
 ## Step 4: Verify the Azure Arc gateway setup is successful
 
@@ -304,6 +317,8 @@ This article details how to register using Azure Arc gateway on Azure Local with
 
 - Required endpoints are open in your firewall. For more information, see [Azure Local endpoints not redirected](./deployment-azure-arc-gateway-overview.md#azure-local-endpoints-not-redirected).
 
+- Review guidance on [handling preinstalled or outdated OS images during Azure Arc registration](#handle-preinstalled-or-outdated-os-images-during-azure-arc-registration).
+
 
 ## Step 1: Get the Arc gateway ID  
 
@@ -317,7 +332,7 @@ This article details how to register using Azure Arc gateway on Azure Local with
 ## Step 2: Set parameters
 
 ```PowerShell
-#Define the tenant you will use to register your machine as Arc device
+#Define the tenant you will use to register your machine as Arc device.
 $Tenant = "YourTenantID"
 
 #Define the subscription where you want to register your Azure Local machine with Arc.
@@ -326,28 +341,35 @@ $Subscription = "yoursubscriptionID"
 #Define the resource group where you want to register your Azure Local machine with Arc.
 $RG = "yourresourcegroupname" 
 
-#Define the Arc gateway resource ID from Azure 
-$ArcgwId = "/subscriptions/yourarcgatewayid/resourceGroups/yourresourcegroupname/providers/Microsoft.HybridCompute/gateways/yourarcgatewayname" 
+#Define the Arc gateway resource ID from Azure. 
+$ArcgwId = "/subscriptions/yourarcgatewayid/resourceGroups/yourresourcegroupname/providers/Microsoft.HybridCompute/gateways/yourarcgatewayname"
+
+# Define the target Azure Local solution version that the node must match when registering with Azure Arc.
+# Example: "12.2602.1002.10"
+$TargetSolutionVersion = "<solution-version>"
 ```
 
 ## Step 3: Run the registration script
 
 > [!NOTE]
-> If your Azure Local system is preinstalled with an Original Equipment Manufacturer (OEM) image that's outdated or unsupported, an update is triggered automatically. The update typically takes 40-45 minutes to complete and includes a system reboot. After the reboot, rerun the cmdlet to continue. For more instructions about the update flow, see [Azure Arc registration workflow for systems with OEM images](./deployment-arc-registration-preinstalled-os.md).
+> If your Azure Local system is preinstalled with an Original Equipment Manufacturer (OEM) image that's outdated or unsupported, or if it was installed with an older ISO, see [Handle preinstalled or outdated OS images during Azure Arc registration](#handle-preinstalled-or-outdated-os-images-during-azure-arc-registration).
 
 To use the Arc gateway feature for Azure Local systems without a proxy, only use the `ArcGatewayID` parameter.
 
 1. Run the initialization script as follows.
 
-    ```azurecli
-    
+    ```powershell
     #Invoke the registration script with ArcgatewayID 
-    Invoke-AzStackHciArcInitialization -TenantID $Tenant -SubscriptionID $Subscription -ResourceGroup $RG -Region $Region -Cloud "AzureCloud" -ArcGatewayID $ArcgwId
+    Invoke-AzStackHciArcInitialization -TenantID $Tenant -SubscriptionID $Subscription -ResourceGroup $RG -Region $Region -Cloud "AzureCloud" -ArcGatewayID $ArcgwId -TargetSolutionVersion $TargetSolutionVersion
     ```
 
 1. During the Arc registration process, you must authenticate with your Azure account. The console window displays a code that you must enter in the URL, in order to authenticate. Follow the instructions to complete the authentication process.
 
     :::image type="content" source="media/deployment-with-azure-arc-gateway/authentication-device-code.png" alt-text="Screenshot of the console window with the device code and the URL to open." lightbox="media/deployment-with-azure-arc-gateway/authentication-device-code.png":::
+
+### Handle preinstalled or outdated OS images during Azure Arc registration
+
+[!INCLUDE [handle-os-image-updates](../includes/azure-local-handle-os-image-update-during-arc-registration.md)]
 
 ## Step 4: Verify the setup is successful
 

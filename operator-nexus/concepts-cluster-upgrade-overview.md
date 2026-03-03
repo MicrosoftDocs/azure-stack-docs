@@ -4,14 +4,17 @@ description: Get an overview of cluster runtime upgrade for Azure Operator Nexus
 author: matternst7258
 ms.author: matthewernst
 ms.service: azure-operator-nexus
-ms.topic: conceptual
-ms.date: 05/21/2025
+ms.topic: concept-article
+ms.date: 01/16/2026
 ms.custom: template-concept
 ---
 
-# Azure Operator Nexus runtime upgrades
+# Azure Operator Nexus Cluster Runtime Upgrades
 
-The Nexus platform runtime upgrade is disruptive upgrade, managed by customers, to update the underlying software on the servers in an Operator Nexus instance. The disruption occurs to the compute servers within a rack being upgraded. Management server upgrades are considered nondisruptive.
+The Nexus platform runtime upgrade is a disruptive upgrade, managed by customers, to update the underlying software on the servers in an Operator Nexus instance. The disruption occurs to the compute servers within a rack being upgraded. Management server upgrades are considered non-disruptive.
+
+> [!IMPORTANT]
+> This article describes **Cluster Runtime Upgrades**, which are disruptive and customer-managed. Azure Operator Nexus also includes separate, non-disruptive upgrades for Cluster Management and Fabric Management that are automatically applied by Microsoft. For more information, see [Related content](#related-content).
 
 > [!Note]
 > Microsoft may communicate patch releases customers need to take to resolve critical security or functional issues. 
@@ -31,6 +34,8 @@ Minor runtime releases are produced for the compute infrastructure three times a
 Patch runtime release is produced monthly in between the minor releases. These releases are optional, unless directed by Microsoft for specific functionality or security concerns. 
 
 ### Workflow overview
+
+Before a runtime upgrade proceeds, the platform validates that user-provided Azure resources (Log Analytics Workspace, Storage Account, and Key Vault) are accessible using the cluster's managed identity. This validation ensures the cluster can continue to use these resources after the upgrade completes. If validation fails, the upgrade action reports the failure and doesn't proceed until the issue is resolved. For configuration details, see [Cluster Managed Identity and User Provided Resources](./howto-cluster-managed-identity-user-provided-resources.md).
 
 Starting a runtime upgrade is defined under [Upgrading cluster runtime via Azure CLI](./howto-cluster-runtime-upgrade.md).
 
@@ -63,9 +68,9 @@ Details on how to run an upgrade with rack pause are located [here](./howto-clus
 
 During a runtime upgrade, Nexus Kubernetes Cluster nodes that run on servers scheduled for upgrade are cordoned, drained, and then gracefully shut down before the upgrade begins. Cordoning a node prevents new pods from being scheduled on it, while draining allows pods running tenant workloads to shift to other available nodes, minimizing service disruption. The effectiveness of draining depends on the available capacity within the cluster. If the cluster is near full capacity and lacks space for pod relocation, those pods enter a Pending state after draining.
 
-Once the cordon and drain steps are complete, the node is shut down as part of the upgrade process. After the baremetal server upgrade, the node is restarted, rejoins the cluster, and is uncordoned, allowing pods to be scheduled on it again.
+Once the cordon and drain steps are complete, the node is shut down as part of the upgrade process. After the bare-metal server upgrade, the node is restarted, rejoins the cluster, and is uncordoned, allowing pods to be scheduled on it again.
 
-For Nexus VMs, the process is similar. The VMs are shut down before the baremetal server upgrade and automatically restarted once the server is back online.
+For Nexus VMs, the process is similar. The VMs are shut down before the bare-metal server upgrade and automatically restarted once the server is back online.
 
 Each tenant cluster node is allowed up to 20 minutes for the draining process to complete. After this window, the server upgrade proceeds regardless of drain completion to ensure progress. Servers are upgraded one rack at a time, with upgrades performed in parallel within the same rack. The server upgrade does not wait for tenant resources to come online before continuing with the runtime upgrade of other servers in the rack. In addition to the drain timeout, there is a 10 minute timeout allocated for VM shutdowns. This approach ensures that the maximum wait time per rack remains 30 minutes, specific to the cordon, drain, and shutdown procedure, and not the overall upgrade.
 
@@ -84,3 +89,20 @@ When a server is upgraded to utilize a new OS, the BMM keysets have to be re-est
 ## Servers not upgraded successfully
 
 A server remains unavailable if they fail upgrade or provisioning from possible hardware issue during reboot or issue with cloud-init (networking, chronyd, etc.). The underlying condition needs to be resolved and either baremetalmachine replace/reimage would need to be executed. Uncordoning the server manually won't resolve the issues.
+
+## Related content
+
+Azure Operator Nexus includes multiple upgrade types that serve different purposes.
+
+### Cluster runtime upgrades (this article)
+- [Cluster runtime upgrade](howto-cluster-runtime-upgrade.md)
+- [Cluster runtime upgrade with pause strategy](howto-cluster-runtime-upgrade-with-pauseafterrack-strategy.md)
+- [Check runtime version](howto-check-runtime-version.md)
+
+### Other upgrade types
+- [Cluster management bundle upgrade overview](concepts-cluster-management-upgrade.md) - Non-disruptive updates to Cluster Azure resources and extensions
+- [Network Fabric management bundle upgrade overview](concepts-fabric-management-upgrade.md) - Non-disruptive updates to Fabric Azure resources and extensions
+- [Network Fabric upgrade](howto-upgrade-nexus-fabric.md) - Fabric device software upgrades
+
+### Workload upgrades
+- [Kubernetes cluster upgrade](howto-kubernetes-cluster-upgrade.md)

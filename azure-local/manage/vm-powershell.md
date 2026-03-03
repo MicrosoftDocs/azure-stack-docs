@@ -7,6 +7,7 @@ ms.date: 03/26/2025
 ms.author: alkohli
 ms.reviewer: stevenek
 ms.service: azure-local
+ms.subservice: hyperconverged
 ---
 
 # Manage VMs on Azure Local using Windows PowerShell

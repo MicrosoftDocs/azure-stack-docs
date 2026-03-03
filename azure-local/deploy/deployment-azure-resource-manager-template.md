@@ -10,6 +10,7 @@ ms.service: azure-local
 ms.custom:
   - devx-track-arm-template
   - sfi-image-nochange
+ms.subservice: hyperconverged
 ---
 
 # Deploy Azure Local via Azure Resource Manager deployment template

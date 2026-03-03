@@ -8,6 +8,7 @@ ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
 zone_pivot_groups: upgrade-os
+ms.subservice: hyperconverged
 ---
 
 # Upgrade Azure Stack HCI OS via PowerShell
@@ -40,17 +41,17 @@ For more information about the various upgrade paths, see the blog post on [Upgr
 
 ::: zone pivot="os-23h2"
 
-## About End of Support (EOS) for version 22H2
+## About End of Support (EOS) for 22H2
 
-[!INCLUDE [end-of-service-22H2](../includes/end-of-service-22h2.md)]
+For information on end of support for various Azure Local versions, see [Azure Local, release information](../release-information-23h2.md#end-of-support-for-azure-local-versions).
 
 ::: zone-end
 
 ::: zone pivot="os-24h2"
 
-## About End of Support (EOS) for version 23H2
+## About End of Support (EOS) for previous versions
 
-[!INCLUDE [end-of-service-23H2](../includes/azure-local-end-of-support-banner-23h2.md)]
+For information on end of support for various Azure Local versions, see [Azure Local, release information](../release-information-23h2.md#end-of-support-for-azure-local-versions).
 
 ::: zone-end
 

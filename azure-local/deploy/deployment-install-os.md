@@ -1,6 +1,6 @@
 ---
-title: Install Azure Stack HCI operating system, version 23H2
-description: Learn how to install the Azure Stack HCI operating system, version 23H2 on each machine of your system.
+title: Install Azure Stack HCI operating system, version 23H2 using SConfig
+description: Learn how to install the Azure Stack HCI operating system, version 23H2 on each machine of your system using SConfig.
 author: alkohli
 ms.topic: how-to
 ms.date: 12/11/2025
@@ -8,13 +8,14 @@ ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
 ms.custom: sfi-image-nochange
+ms.subservice: hyperconverged
 ---
 
-# Install the Azure Stack HCI operating system
+# Install the Azure Stack HCI operating system manually using SConfig
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
-This article describes the steps needed to install the Azure Stack HCI operating system locally on your Azure Local machines.
+There are two distinct ways of installing the OS on your Azure Local machines. You can use the **Install Azure Stack HCI** wizard and SConfig or you can install and register the OS using simplified machine provisioning (preview). This article describes the OS install using the wizard only. To use simplified machine provisioning, see [Install and register the OS using simplified machine provisioning](simplified-machine-provisioning.md).
 
 ## Prerequisites
 

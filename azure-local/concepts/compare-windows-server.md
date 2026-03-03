@@ -5,7 +5,7 @@ ms.topic: product-comparison
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 09/03/2025
+ms.date: 01/26/2026
 ---
 
 # Compare Azure Local to Windows Server
@@ -88,21 +88,18 @@ The following table compares select technical features of Azure Local and Window
 | ------------- | ------------------- | ----------------------- |
 | Integrated driver and firmware updates | Yes (Integrated Systems and Premier solutions) | No |
 | Restart up to 10x faster with kernel-only restarts | Yes | No |
-| Host hotpatching | In preview | Yes (via Azure Arc) |
+| Host hotpatching | No | Yes (via Azure Arc) |
 | Hyper-V dynamic processor compatibility mode<sup>1</sup>| Yes | Yes |
 | Hyper-V high availability for GPU workloads w/GPU partitioning | Yes | Yes |
 | Storage Spaces Direct | Yes | Yes |
 | Storage Spaces Direct thin provisioning | Yes | Yes |
 | Resilient file system (ReFS) deduplication | Yes | Yes |
-| Stretch clustering for disaster recovery with Storage Spaces Direct | Yes<sup>2</sup> | Yes |
 | Software-Defined Networking | Yes | Yes |
 | Secured-core Server| Yes | Yes |
 | Simplified host networking with Network ATC | Yes | Yes |
 | Cluster-Aware OS feature updates | Yes | Yes |
 
 <sup>1</sup> [Dynamic processor compatibility mode](/windows-server/virtualization/hyper-v/manage/dynamic-processor-compatibility-mode) ensures compatibility for online (live) migrations between hosts with different processor generations.
-
-<sup>2</sup> Stretched clusters that use Storage Replication are available only in Azure Local, version 22H2. For info on newer versions, see [Evolving Stretch Clustering for Azure Local](https://techcommunity.microsoft.com/blog/azurearcblog/evolving-stretch-clustering-for-azure-local/4352751).
 
 For more information, see [What's New in Azure Local](../whats-new.md) and [Using Azure Local on a single machine](single-server-clusters.md).
 

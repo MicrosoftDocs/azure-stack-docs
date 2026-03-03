@@ -8,6 +8,8 @@ items:
     href: ./overview.md
   - name: About Azure Local deployments
     href: ./scalability-deployments.md
+  - name: FAQ
+    href: faq.yml
 
 - name: Hyperconverged deployments
   items: 
@@ -33,8 +35,7 @@ items:
         href: license-billing.yml
     - name: Compare to Windows Server
       href: concepts/compare-windows-server.md 
-    - name: FAQ
-      href: faq.yml
+
 
   - name: Evaluate 
     items:
@@ -139,7 +140,11 @@ items:
     - name: 2. Download the software
       href: deploy/download-23h2-software.md
     - name: 3. Install the OS
-      href: deploy/deployment-install-os.md
+      items:
+      - name: 3A. Install manually via ISO
+        href: deploy/deployment-install-os.md
+      - name: 3B. Install and register via simplified machine provisioning
+        href: deploy/simplified-machine-provisioning.md
     - name: 4. Set up subscription permissions
       href: deploy/deployment-arc-register-server-permissions.md
     - name: 5. Choose a registration method
@@ -148,9 +153,6 @@ items:
         href: deploy/deployment-without-azure-arc-gateway.md
       - name: With Arc gateway
         href: deploy/deployment-with-azure-arc-gateway.md
-      - name: Register systems with OEM image
-        href: deploy/deployment-arc-registration-preinstalled-os.md
-        hidden: true
     - name: 6. Choose a deployment method
       items:
       - name: 6A. Deploy via Azure portal
@@ -160,7 +162,11 @@ items:
 
 
     - name: Deploy using local identity with Key Vault
-      href: deploy/deployment-local-identity-with-key-vault.md
+      items:
+      - name: Deploy via Azure portal
+        href: deploy/deployment-local-identity-with-key-vault.md
+      - name: Deploy via ARM template
+        href: deploy/deployment-local-identity-with-key-vault-template.md
     - name: Deploy workloads
       items:
       - name: Run AKS on Azure Local
@@ -368,16 +374,20 @@ items:
                 href: manage/virtual-machine-azure-marketplace-red-hat.md
             - name: Using SUSE VM image
               href: manage/virtual-machine-image-suse.md
+          - name: Manage Azure Local VM Images
+            href: manage/virtual-machine-manage-image.md    
         - name: 3. Create logical networks
           href: manage/create-logical-networks.md
         - name: 4. Create network interfaces
           href: manage/create-network-interfaces.md
         - name: 5. Create Azure Local VMs
           href: manage/create-arc-virtual-machines.md
-      - name: Connect to VM via SSH
+      - name: Connect to Azure Local VMs
         href: manage/connect-arc-vm-using-ssh.md
       - name: Manage Azure Local VMs
         href: manage/manage-arc-virtual-machines.md
+      - name: Manage logical networks
+        href: manage/manage-logical-networks.md
       - name: Manage Azure Local VM resources
         href: manage/manage-arc-virtual-machine-resources.md 
       - name: Manage VM extensions
@@ -595,6 +605,8 @@ items:
           href: manage/health-service-actions.md
         - name: Modify Health Service settings
           href: manage/health-service-settings.md
+    - name: Drift detection
+      href: manage/drift-detection.md
 
   - name: Troubleshoot
     items:
@@ -604,6 +616,8 @@ items:
       href: manage/troubleshoot-deployment-configurator-app.md
     - name: Troubleshoot deployment validation issues
       href: manage/troubleshoot-deployment.md
+    - name: Use the Support tool for infrastructure issues
+      href: manage/remediate-support-tool-infrastructure.md
     - name: Use the Diagnostic Support tool
       href: manage/support-tools.md
     - name: Get support for deployment issues
@@ -731,7 +745,22 @@ items:
       href: https://azure.com/hci
     - name: Pricing
       href: https://azure.microsoft.com/products/local/#Pricing
-  
+    - name: Previous releases - version 24xx
+      items:
+      - name: What's new in Azure Local?
+        href: previous-releases/whats-new-24.md
+      - name: Known issues
+        href: previous-releases/known-issues-24.md
+      - name: Security updates
+        href: previous-releases/security-update-24.md
+    - name: Previous releases - version 23xx
+      items:
+      - name: What's new in Azure Local?
+        href: previous-releases/whats-new-23.md
+      - name: Known issues
+        href: previous-releases/known-issues-23.md
+      - name: Security updates
+        href: previous-releases/security-update-23.md
 - name: Multi-rack deployments
   items:
   - name: Overview
@@ -743,6 +772,8 @@ items:
     items:
     - name: Complete deployment prerequisites
       href: ./multi-rack/multi-rack-prerequisites.md
+    - name: Create and manage L3 isolation domains
+      href: ./multi-rack/multi-rack-configure-layer-3-isolation-domain.md
     - name: Install Azure CLI extensions
       href: ./multi-rack/multi-rack-cli-extensions.md
     - name: Complete networking prerequisites
@@ -796,12 +827,17 @@ items:
     items:
       - name: Compute for multi-rack deployments
         href: ./multi-rack/multi-rack-concepts-compute.md
+      - name: Network fabric for multi-rack deployments
+        href: ./multi-rack/multi-rack-network-fabric-overview.md
       - name: Load balancer for multi-rack deployments
         href: ./multi-rack/multi-rack-load-balancer-overview.md
       - name: NAT gateway for multi-rack deployments
         href: ./multi-rack/multi-rack-nat-gateway-overview.md
       - name: Azure Local VMs for multi-rack deployments
         href: ./multi-rack/multi-rack-azure-arc-vm-management-overview.md
+      - name: Security concepts
+        href: ./multi-rack/multi-rack-security.md
+        
   - name: Reference
     items:
       - name: Network cloud REST API reference
@@ -815,8 +851,12 @@ items:
   items:
   - name: Overview
     href: manage/disconnected-operations-overview.md
-  - name: Known issues
-    href: manage/disconnected-operations-known-issues.md
+  - name: Release notes
+    items:
+    - name: What's new in disconnected operations?
+      href: manage/disconnected-operations-whats-new.md
+    - name: Known issues
+      href: manage/disconnected-operations-known-issues.md
   - name: Plan
     items:
     - name: Network
@@ -829,25 +869,38 @@ items:
       href: manage/disconnected-operations-pki.md
   - name: Deploy
     items:
-    - name: Set-up
-      href: manage/disconnected-operations-set-up.md
-    - name: Deployment
+    - name: Acquire disconnected operations
+      href: manage/disconnected-operations-acquire.md
+    - name: Prepare Azure Local nodes
+      href: manage/disconnected-operations-prepare.md
+    - name: Deploy disconnected operations
       href: manage/disconnected-operations-deploy.md
+    - name: Register disconnected operations
+      href: manage/disconnected-operations-registration.md 
   - name: Manage
     items:
     - name: Azure CLI
       href: manage/disconnected-operations-cli.md
     - name: Azure Local VMs
       href: manage/disconnected-operations-arc-vm.md
-    - name: Azure Kubernetes Service (AKS)
-      href: manage/disconnected-operations-aks.md
+    - name: Azure Kubernetes Service
+      href: /azure/aks/aksarc/disconnected-operations-aks?toc=/azure/azure-local/toc.json&bc=/azure/azure-local/breadcrumb/toc.jsonazure-local/breadcrumb/toc.json
     - name: Azure Container Registry
       href: manage/disconnected-operations-azure-container-registry.md
     - name: Azure Policy
       href: manage/disconnected-operations-policy.md
+    - name: Azure PowerShell
+      href: manage/disconnected-operations-powershell.md
+    - name: Update disconnected operations
+      href: manage/disconnected-operations-update.md
+    - name: Back up disconnected operations
+      href: manage/disconnected-operations-back-up-restore.md
+    - name: Billing
+      href: manage/disconnected-operations-billing.md
+
   - name: Monitor
     items:
-    - name: Monitoring
+    - name: Overview
       href: manage/disconnected-operations-monitoring.md
   - name: Troubleshoot
     items:

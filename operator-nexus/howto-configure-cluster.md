@@ -17,6 +17,7 @@ This article describes how to create a Cluster by using the Azure Command Line I
 
 - Verify that Network Fabric Controller and Cluster Manager exist in your Azure region
 - Verify that Network Fabric is successfully provisioned
+- Configure managed identities and user-provided resources (Log Analytics Workspace, Storage Account, Key Vault) with correct role assignments. These resources are validated before deployment proceeds. See [Cluster Managed Identity and User Provided Resources](howto-cluster-managed-identity-user-provided-resources.md).
 
 ## API guide and metrics
 
@@ -310,7 +311,7 @@ Example `JSON View` output for the Cluster (Operator Nexus) resource:
     "actionStates": [
       {
         "actionType": "Microsoft.NetworkCloud/clusters/deploy",
-        "correlationId": "196157eb-0c9f-47df-8428-ac2f86cfc816",
+        "correlationId": "aaaa0000-bb11-2222-33cc-444444dddddd",
         "endTime": "2025-07-28T23:33:27Z",
         "message": "Deploy action completed successfully; cluster deployment initiated and proceeding automatically - monitor progress via cluster detailed status",
         "startTime": "2025-07-28T17:32:50Z",

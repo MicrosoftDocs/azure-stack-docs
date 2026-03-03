@@ -6,6 +6,7 @@ ms.author: sipastak
 ms.topic: how-to
 ms.service: azure-local
 ms.date: 11/18/2025
+ms.subservice: multi-rack
 ---
 
 # Create public IP addresses on multi-rack deployments of Azure Local (preview)

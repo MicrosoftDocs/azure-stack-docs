@@ -2,8 +2,8 @@
 metadata:
   title: Troubleshoot known issues and errors when installing AKS on Windows Server
   description: Find solutions to known issues and errors when installing AKS Arc
-  author: sethmanheim
-  ms.author: sethm
+  author: davidsmatlak
+  ms.author: davidsmatlak
   ms.service: azure-kubernetes-service-hybrid
   ms.custom: devx-track-azurepowershell
   ms.topic: faq

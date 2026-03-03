@@ -1,6 +1,6 @@
 ---
-title: Use LLDP validator to assess deployment readiness for Azure Local rack aware cluster (Preview).
-description: How to use the LLDP validator to assess if your environment is ready for deploying Azure Local rack aware cluster (Preview).
+title: Use LLDP validator to assess deployment readiness for Azure Local rack aware cluster
+description: How to use the LLDP validator to assess if your environment is ready for deploying Azure Local rack aware cluster.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
@@ -8,13 +8,11 @@ ms.service: azure-local
 ms.date: 10/21/2025
 ---
 
-# Evaluate the deployment readiness for Azure Local rack aware cluster (Preview)
+# Evaluate the deployment readiness for Azure Local rack aware cluster
 
 ::: moniker range=">=azloc-2510"
 
 This article describes how to use the Link Layer Discovery Protocol (LLDP) validator in a standalone mode to assess how ready your environment is for deploying rack aware cluster.
-
-[!INCLUDE [important](../includes/hci-preview.md)]
 
 ## About the LLDP validator
 
@@ -115,7 +113,7 @@ These files contain detailed LLDP discovery information. The default location fo
 These files contain structured data that documents your network topology. The following table lists the generated JSON files with their descriptions:
 
 | Files | Description |
-|--|--|
+| -- | -- |
 | **MergedLLDPData.json** | Shows complete LLDP information from all nodes. |
 | **Node2Switch.json** | Shows which switches each node connects to. |
 | **Switch2Node.json** | Shows which nodes connect to each switch. |
@@ -158,8 +156,8 @@ If the test result shows remediation steps, it indicates that the test failed. T
 ## Next steps
 
 - After validating your environment with the LLDP validator, proceed to deploy your Azure Local rack aware cluster by following the instructions in one of the following articles:
-  - [Deploy a rack aware cluster using Azure portal (Preview)](rack-aware-cluster-deploy-portal.md).
-  - [Deploy a rack aware cluster using Azure Resource Manager templates (Preview)](rack-aware-cluster-deployment-via-template.md).
+  - [Deploy a rack aware cluster using Azure portal](rack-aware-cluster-deploy-portal.md).
+  - [Deploy a rack aware cluster using Azure Resource Manager templates](rack-aware-cluster-deployment-via-template.md).
 
 ::: moniker-end
 

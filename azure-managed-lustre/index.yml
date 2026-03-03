@@ -7,9 +7,9 @@ metadata:
   title: Azure Managed Lustre File System documentation
   description: The Azure Managed Lustre File System enables you to quickly create an Azure-based Lustre file system to use in cloud-based high-performance computing jobs.
   ms.topic: landing-page
-  author: pauljewellmsft
-  ms.author: pauljewell 
-  ms.date: 05/14/2024
+  author: ronhogue
+  ms.author: akashdubey 
+  ms.date: 02/20/2026
 
 landingContent:
   - title: About Azure Managed Lustre
@@ -58,16 +58,24 @@ landingContent:
             url: client-upgrade.md
           - text: Connect clients to an Azure Managed Lustre file system
             url: connect-clients.md
+          - text: Use Azure Managed Lustre with Secure Boot
+            url: client-secure-boot.md
           - text: Use Azure Lustre CSI driver for Kubernetes
             url: use-csi-driver-kubernetes.md
   - title: Manage a file system
     linkLists:
+      - linkListType: reference
+        links:
+          - text: Optimize Azure Managed Lustre performance
+            url: optimize-performance.md
       - linkListType: how-to-guide
         links:
           - text: Configure root squash settings
             url: root-squash-configure-settings.md
           - text: Set and configure Lustre quotas
             url: lustre-quotas.md
+          - text: Optimize file and directory layouts
+            url: optimize-file-layouts.md
   - title: Security
     linkLists:
       - linkListType: how-to-guide
@@ -80,6 +88,28 @@ landingContent:
             url: vnet-encryption.md
           - text: Use Azure Firewall with Azure Managed Lustre
             url: configure-firewall.md
+  - title: Monitoring metrics and logs
+    linkLists:
+      - linkListType: how-to-guide
+        links:
+          - text: Monitor a file system
+            url: monitor-file-system.md
+          - text: Monitoring reference for metrics and logs
+            url: monitor-file-system-reference.md
+  - title: Availability and disaster recovery
+    linkLists:
+      - linkListType: how-to-guide
+        links:
+          - text: Recover from a regional outage
+            url: amlfs-region-recovery.md
+  - title: Troubleshooting
+    linkLists:
+      - linkListType: how-to-guide
+        links:
+          - text: Troubleshoot cluster deployment failures
+            url: troubleshoot-deployment.md
+          - text: Troubleshoot file system performance issues
+            url: troubleshoot-performance.md
   - title: Self-paced learning
     linkLists:
       - linkListType: learn

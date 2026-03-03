@@ -5,6 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.date: 05/08/2025
+ms.subservice: hyperconverged
 ---
 
 # Use the Support Diagnostic Tool to troubleshoot Azure Local issues

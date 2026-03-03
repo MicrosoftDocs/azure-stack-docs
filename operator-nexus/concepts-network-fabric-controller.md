@@ -6,7 +6,7 @@ ms.author: sushrao
 ms.reviewer: jdasari
 ms.date: 12/18/2023
 ms.service: azure-operator-nexus
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Network Fabric Controller overview

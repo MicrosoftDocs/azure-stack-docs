@@ -5,6 +5,7 @@ ms.topic: how-to
 author: alkohli
 ms.author: alkohli
 ms.date: 08/26/2025
+ms.subservice: hyperconverged
 ---
 
 # Add a node on Azure Local

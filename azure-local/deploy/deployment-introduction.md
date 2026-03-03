@@ -7,6 +7,7 @@ ms.date: 11/19/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
+ms.subservice: hyperconverged
 ---
 
 # About Azure Local deployment
@@ -37,7 +38,8 @@ Follow this sequence to deploy Azure Local in your environment:
 | [Read the requirements and complete the prerequisites](./deployment-prerequisites.md) | Review the requirements and complete all the prerequisites and a deployment checklist before you begin the deployment. |
 | Step 1: [Prepare Active Directory](./deployment-prep-active-directory.md) | Prepare your Active Directory (AD) environment for Azure Local deployment. |
 | Step 2: [Download the operating system](./download-23h2-software.md) | Download Azure Stack HCI Operating System from the Azure portal. |
-| Step 3: [Install OS](./deployment-install-os.md) | Install Azure Stack HCI OS locally on each machine in your system. |
+| Step 3A: [Install OS manually via ISO](./deployment-install-os.md) | Install the Azure Stack HCI OS locally on each Azure Local machine in your system.|
+| Step 3B: [Install OS and register via simplified machine provisioning](simplified-machine-provisioning.md) | Install the OS and register Azure Local machines using the [simplified maching provisioning (preview)](simplified-machine-provisioning.md). |
 | Step 4: [Set up subscription permissions](./deployment-arc-register-server-permissions.md) | Assign required permissions for the deployment. |
 | Step 5A: [Register Azure Local machines with Azure Arc, without using the Arc gateway](./deployment-without-azure-arc-gateway.md) | Depending on whether your deployment environment uses a proxy or not, register your Azure Local machines directly with Azure Arc, without using the Arc gateway. |
 | Step 5B: [Register Azure Local machines with Azure Arc using Arc gateway](./deployment-with-azure-arc-gateway.md) | Depending on whether your deployment environment uses a proxy or not, register your Azure Local machines with Azure Arc through the centralized Arc gateway. |

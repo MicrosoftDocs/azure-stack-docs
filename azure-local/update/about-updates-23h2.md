@@ -6,6 +6,7 @@ ms.author: robess
 ms.topic: overview
 ms.reviewer: thoroet
 ms.date: 12/09/2025
+ms.subservice: hyperconverged
 ---
 
 # About updates for Azure Local

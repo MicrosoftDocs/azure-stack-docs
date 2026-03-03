@@ -3,10 +3,11 @@ title: Deploy an Azure Local instance using the Azure portal
 description: Learn how to deploy an Azure Local instance from the Azure portal
 author: alkohli
 ms.topic: how-to
-ms.date: 12/12/2025
+ms.date: 02/24/2026
 ms.author: alkohli
 ms.service: azure-local
 ms.custom: sfi-image-nochange
+ms.subservice: hyperconverged
 #CustomerIntent: As an IT Pro, I want to deploy an Azure Local instance of 1-16 machines via the Azure portal so that I can host VM and container-based workloads on it.
 ---
 
@@ -27,7 +28,7 @@ This article helps you deploy an Azure Local instance using the Azure portal.
 
 ## Start the wizard and fill out the basics
 
-1. Go to the Azure portal. Search for and select **Azure Local**. On the **Azure Arc|Azure Local**, go to the **Get started** tab. On the **Deploy Azure Local** tile, select **Create instance**.
+1. Go to the Azure portal. Search for and select **Azure Local**. On the **Azure Arc | Azure Local** page, go to the **Get started** tab. On the **Deploy Azure Local** tile, select **Create instance**.
 
    :::image type="content" source="./media/deploy-via-portal/get-started-1.png" alt-text="Screenshot of the Get started tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/get-started-1.png":::
 
@@ -39,52 +40,63 @@ This article helps you deploy an Azure Local instance using the Azure portal.
 
 1. Select the **Region** to store this system's Azure resources. For a list of supported Azure regions, [Azure requirements](../concepts/system-requirements-23h2.md#azure-requirements).
 
-   We don't transfer much data so it's OK if the region isn't close. Select  **+ Add machines**.
+   We don't transfer much data so it's OK if the region isn't close.
 
-1. Select the machine or machines that make up this Azure Local instance.
+1. Select **Cluster options**. Choose the **Standard** or **Rack aware** cluster option for this Azure Local instance.
 
+    For more information about the Rack aware option, see [Azure Local rack aware clustering overview](../concepts/rack-aware-cluster-overview.md).
+
+1. Select the **Identity provider** for this Azure Local instance.
+
+    For more information about the Local identity with Azure Key Vault option, see [Deploy Azure Local using local identity](../deploy/deployment-local-identity-with-key-vault.md).
+
+1. Select **+ Add machines** and choose the machine or machines that make up this Azure Local instance.
+   
    > [!IMPORTANT]
    > Machines must not be joined to Active Directory before deployment.
 
    :::image type="content" source="./media/deploy-via-portal/basics-tab-1.png" alt-text="Screenshot of the Basics tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/basics-tab-1.png":::
 
-1. On the **Add machines** page:
+   On the **Add machines** page:
     1. The operating system for your Azure Local machines is automatically selected as Azure Stack HCI.
-    1. Select one or more machines that make up this Azure Local instance. These machines could show as **Ready** or as **Missing Arc extensions**.
+    1. Select one or more machines that make up this Azure Local instance. These machines could show as **Ready** or as **Not validated**.
     1. Select **Add**. The machines show up on the **Basics** tab.
 
    :::image type="content" source="./media/deploy-via-portal/basics-tab-2.png" alt-text="Screenshot of Add machines through the Basics tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/basics-tab-2.png":::
 
-1. Select **Install extensions**. This action installs Arc extensions on the selected machines. This operation takes several minutes. Refresh the page to view the status of the extension installation.
+1. **Install extensions**. Arc extensions are automatically installed on the selected machines after they're added. This process may take several minutes. To check the installation status, refresh the page.
 
    :::image type="content" source="./media/deploy-via-portal/basics-tab-3.png" alt-text="Screenshot of the Install extensions on the Basics tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/basics-tab-3.png":::
     
     After the extensions are installed successfully, the status of the machine updates to **Ready**.
 
-1. **Validate selected machines**. Wait for the green validation check to indicate the validation is successful. The validation process checks that each machine is running the same exact version of the OS, has the correct Azure extensions, and has matching (symmetrical) network adapters.
+1. Select **Validate selected machines**. Wait for the green validation check to indicate the validation is successful. The validation process checks that each machine is running the same exact version of the OS, has the correct Azure extensions, and has matching (symmetrical) network adapters.
 
    :::image type="content" source="./media/deploy-via-portal/basics-tab-5.png" alt-text="Screenshot of successful validation on the Basics tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/basics-tab-5.png":::
 
     If the validation fails with wrong extension version, go to **Install extensions** to install the appropriate version of extension.
 
-    After the extensions are installed successfully, **Add machines** by selecting from the same list of machines and then **Validate selected machines**.
+1. **Select an existing Key Vault** or select **Create a new Key Vault**. Create an empty Key Vault to securely store secrets for this system, such as cryptographic keys, local admin credentials, and BitLocker recovery keys.
 
-1. **Select an existing Key Vault** or select **Create a new Key Vault**. Create an empty key vault to securely store secrets for this system, such as cryptographic keys, local admin credentials, and BitLocker recovery keys.
+    > [!IMPORTANT]
+    > Azure Local doesn't support deploying a cluster using an existing Azure Key Vault that has Private Endpoints enabled.
 
-1. On the **Create a new key vault** page, provide information for the specified parameters and select **Create**:
+1. Create a new Key Vault (optional). You can use an existing Key Vault and skip this step.
 
-   :::image type="content" source="./media/deploy-via-portal/basics-tab-6.png" alt-text="Screenshot of Create a new key vault on Basics tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/basics-tab-6.png":::
+   :::image type="content" source="./media/deploy-via-portal/basics-tab-6.png" alt-text="Screenshot of Create a new Key Vault on Basics tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/basics-tab-6.png":::
 
-    1. Accept the suggested name or provide a name for the key vault you create.
-    1. Accept the default number of Days to retain deleted vaults or specify a value between 7 and 90 days. You can’t change the retention period later. The key vault creation takes several minutes.
-    1. If you don’t have permissions to the resource group, you see a message that you have insufficient permissions for the key vault. Select **Grant key vault permissions**.
+	On the **Create a new Key Vault** page, provide information for the specified parameters:
+    1. Accept the suggested name or provide a name for the Key Vault you create.
+    1. Accept the default number of Days to retain deleted vaults or specify a value between 7 and 90 days. You can’t change the retention period later. The Key Vault creation takes several minutes.
+    1. If you don’t have permissions to the resource group, you see a message that you have insufficient permissions for the Key Vault. Select **Grant Key Vault permissions**.
+	1. Select **Create**.
+     
 
-   :::image type="content" source="./media/deploy-via-portal/basics-tab-7.png" alt-text="Screenshot of key vault parameters specified on the Basics tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/basics-tab-7.png":::
+   :::image type="content" source="./media/deploy-via-portal/basics-tab-7.png" alt-text="Screenshot of Key Vault parameters specified on the Basics tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/basics-tab-7.png":::
 
-    The key vault adds cost in addition to the Azure Local subscription. For details, see [Key vault pricing](https://azure.microsoft.com/pricing/details/key-vault). View security implications when sharing an existing key vault.
+    The Key Vault adds cost in addition to the Azure Local subscription. For details, see [Key Vault pricing](https://azure.microsoft.com/pricing/details/key-vault). View security implications when sharing an existing Key Vault.
 
 1. Select **Next: Configuration**.
-
 
 ## Specify the deployment settings
 
@@ -106,7 +118,7 @@ On the **Configuration** tab, choose whether to create a new configuration for t
 2. Choose traffic types to group together on a set of network adapters–and which types to keep physically isolated on their own adapters.
 
     There are three types of traffic we configure:
-    * **Management** traffic between this system, your management PC, and Azure; also Storage Replica traffic.
+    * **Management** traffic between this system, your management PC, and Azure.
     * **Compute** traffic to or from VMs and containers on this system.
     * **Storage** (SMB) traffic between machines in a multi-node system.
 
@@ -172,7 +184,7 @@ On the **Configuration** tab, choose whether to create a new configuration for t
 1. If you picked static IP, provide the following values:
     1. Using the **Starting IP** and **Ending IP** (and related) fields, allocate a contiguous block of at least six static IP addresses on your management network's subnet, omitting addresses already used by the machines.
 
-        These IPs are used by Azure Local and internal infrastructure (Arc Resource Bridge) that's required for Arc VM management and AKS Hybrid.
+        These IPs are used by Azure Local to create an infrastructure logical network. The Azure Arc resource bridge, a component of Azure Local VM management, uses this infrastructure logical network.
     1. Provide the Subnet mask, Default gateway, and one or more DNS servers.
     1. Validate subnet.
 
@@ -227,16 +239,16 @@ On the **Configuration** tab, choose whether to create a new configuration for t
     :::image type="content" source="./media/deploy-via-portal/advanced-tab-1.png" alt-text="Screenshot of the Advanced tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/advanced-tab-1.png":::
     
     > [!IMPORTANT]
-    > Don't delete the infrastructure volumes created during deployment.
+    > - Don't delete the infrastructure volumes created during deployment.
+    > - The number of workload volumes created during deployment is determined by the size of the storage pool and the maximum supportable volume size, and is a minimum of 1 per machine. 
     
     Here's a summary of the volumes that are created based on the number of machines in your system. To change the resiliency setting of the workload volumes, delete them and recreate them, being careful not to delete the infrastructure volumes.
     
-    
     |# machines  |Volume resiliency  |# Infrastructure volumes  |# Workload volumes  |
     |---------|---------|---------|----------|
-    |Single machine    |Two-way mirror         | 1        |  1        |
-    |Two machines     | Two-way mirror       | 1        |  2        |
-    |Three machines +     | Three-way mirror        |1        |1 per machine         |
+    |Single machine    |Two-way mirror         | 1        | At least 1 per machine        |
+    |Two machines     | Two-way mirror       | 1        |  At least 1 per machine       |
+    |Three machines +     | Three-way mirror        |1        | At least 1 per machine         |
 
 1. Select **Next: Tags**.
 1. Optionally add a tag to the Azure Local resource in Azure.
@@ -253,7 +265,7 @@ On the **Configuration** tab, choose whether to create a new configuration for t
 
 ## Validate and deploy the system
 
-1. After the validation is complete, review the validation results. 
+1. After the validation is complete, review the validation results.
 
     :::image type="content" source="./media/deploy-via-portal/validation-tab-3.png" alt-text="Screenshot of the successfully completed validation in Validation tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/validation-tab-3.png":::
 
@@ -265,24 +277,25 @@ On the **Configuration** tab, choose whether to create a new configuration for t
 
     <!--:::image type="content" source="./media/deploy-via-portal/review-create-tab-1.png" alt-text="Screenshot of the Review + Create tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/review-create-tab-1.png":::-->
 
-The **Deployments** page then appears, which you can use to monitor the deployment progress.
+    The **Deployments** page appears, where you can monitor the deployment progress.
 
-During deployment, the system goes through several steps including cluster registration. In the earlier versions of software, during this process, Azure Local created and set up a Microsoft Entra ID application (service principal) along with a self-signed certificate to authenticate the cluster in Azure.
+### Deployment notes
 
-From software version 12.2512 and later, the Entra ID application is no longer created during new deployments. Instead, the cluster uses Managed System Identity (MSI) to authenticate itself with Azure.
+- **Authentication changes.** During deployment, the system performs several steps, including cluster registration. In earlier versions of software, during this process, Azure Local created and set up a Microsoft Entra ID application (service principal) along with a self-signed certificate to authenticate the cluster in Azure.
 
-For existing deployments also, the Entra ID application is no longer used for authentication. The cluster automatically switches to MSI for authentication without any manual intervention. As the app is no longer used, it can be deleted from the Entra ID portal. 
+    Starting with software version 12.2512, new deployments no longer create an Entra ID application. Instead, the cluster uses system-assigned managed identity for authentication with Azure.
 
-To delete the app, make sure that the registration context is updated to v4 and there's a corresponding event in the Azure Local event log. To search for the event, connect to one of machines on the Azure Local instance. Run the following PowerShell command:
+    For existing deployments, the Entra ID application is also no longer used for authentication. The cluster automatically switches to system-assigned managed identity for authentication without requiring any manual intervention. Because the app is no longer used, you can delete it from the Entra ID portal.
 
-```powershell
-Get-ClusterNode | % { Get-WinEvent -ComputerName $_ -LogName Microsoft-AzureStack-HCI/Admin | ? Id -eq 609 }
-```
+    To delete the app, make sure that the registration context is updated to v4 and there's a corresponding event in the Azure Local event log.
 
+    To verify the event, connect to one of the machines on the Azure Local instance and run the following PowerShell command:
 
-Once the deployment starts, the first step in the deployment: **Begin cloud deployment** can take 45-60 minutes to complete. The total deployment time for a single machine is around 1.5-2 hours while a two-node system takes about 2.5 hours to deploy.
+    ```powershell
+    Get-ClusterNode | % { Get-WinEvent -ComputerName $_ -LogName Microsoft-AzureStack-HCI/Admin | ? Id -eq 609 }
+    ```
 
-
+- **Deployment timing.** When the deployment starts, the first step in the deployment, **Begin cloud deployment**, can take 45 to 60 minutes to complete. The total deployment time for a single machine is around 1.5 to 2 hours, whereas a two-node system takes about 2.5 hours to deploy.
 
 ## Verify a successful deployment
 
@@ -295,12 +308,13 @@ To confirm that the system and all of its Azure resources were successfully depl
     | 1 per machine | Machine - Azure Arc |
     | 1            | Azure Local     |
     | 1            | Arc Resource Bridge |
-    | 1            | Key vault           |
+    | 1            | Infrastructure logical network named as *(clustername-InfraLNET)* |
+    | 1            | Key Vault           |
     | 1            | Custom location     |
     | 2*           | Storage account     |
     | 1 per workload volume | Azure Local storage path - Azure Arc |
     
-    \* One storage account is created for the cloud witness and one for key vault audit logs. These accounts are locally redundant storage (LRS) account with a lock placed on them.
+    \* One storage account is created for the cloud witness and one for Key Vault audit logs. These accounts are locally redundant storage (LRS) account with a lock placed on them.
 
 ## Resume deployment
 

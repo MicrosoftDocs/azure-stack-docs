@@ -5,7 +5,8 @@ author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.topic: how-to
-ms.date: 09/19/2025
+ms.date: 02/23/2026
+ms.subservice: hyperconverged
 ---
 
 # Enable SDN integration on Azure Local using PowerShell
@@ -22,10 +23,9 @@ Once the NC is integrated, SDN is enabled. You can use the Azure portal, Azure C
 
 - **Logical networks**: You can create SDN static logical networks that project your physical networks. For more information, see [Create logical networks](../manage/create-logical-networks.md).
 - **Network interfaces**: You can create and attach network interfaces to virtual machines and assign them IP addresses from the logical network. For more information, see [Create network interfaces](../manage/create-network-interfaces.md).
-- **Network Security Group (NSG)**: You can create and apply NSGs to network interfaces or logical networks to filter network traffic. You can also create default network access policies and network security rules to allow or deny traffic to and from network interfaces and logical networks.
+- **Network Security Group (NSG)**: You can create and apply network security groups (NSGs) to network interfaces or logical networks to filter network traffic. You can also create default network access policies and network security rules to allow or deny traffic to and from network interfaces and logical networks.
 
     For more information, see [Create network security groups](../manage/create-network-security-groups.md) and see [Create network security rules](../manage/create-network-security-groups.md#create-a-network-security-rule).
-
 
 ## About Network Controller architecture on Azure Local
 
@@ -36,18 +36,17 @@ Here's an architecture diagram of Network Controller in a 2-node Azure Local ins
 :::image type="content" source="./media/enable-sdn-integration/network-controller-architecture.png" alt-text="Screenshot of conceptual diagram for network security groups attached to logical networks." lightbox="./media/enable-sdn-integration/network-controller-architecture.png":::
 
  In this example, the network topology includes two Azure Local machines clustered together with two Top-of-Rack (ToR) switches. The Network Controller component and its services are set as a Failover Cluster group across all the Azure Local machines in your instance. Each Network Controller microservice is highly available as a Failover Cluster Resource Group.
- 
+
 1. MGMT VLAN on your Azure Local instance is responsible for configuring and deploying network policies from NC to NC host agent.
 1. NC host agent receives and plumbs policies to your virtual switch.
 1. Tenant VMs reside on logical networks managed by NC. All the traffic from these VMs is routed through the virtual switches that are Virtual Filtering Platform (VFP)-enabled.
-
 
 ## Considerations for SDN enabled by Arc
 
 > [!IMPORTANT]
 > - Once you enable SDN, you can't roll back or disable.
-> - If you are already running Network controller on your Azure Local cluster that was deployed using on-premises tools, you must not attempt to run this method.
-> - The only VMs that are in scope for using NSGs with this feature are Azure Local VMs. These are the VMs that were deployed from Azure client interfaces (Azure CLI, Azure portal, Azure Resource Manager). Do not use an Azure Local VM in conjunction with an NSG that is managed and applied from on-premises tools.
+> - If you're already running Network controller on your Azure Local cluster that was deployed using on-premises tools, you must not attempt to run this method.
+> - The only VMs that are in scope for using NSGs with this feature are Azure Local VMs. These VMs were deployed from Azure client interfaces (Azure CLI, Azure portal, Azure Resource Manager). Don't use an Azure Local VM with an NSG that is managed and applied from on-premises tools.
 
 
 For your existing Azure Local instances:
@@ -67,7 +66,7 @@ For your existing Azure Local instances:
         systeminfo.exe
         ```
         Here's an example output:
-    
+
         ```output
         [v-host1]: PS C:\DeploymentUser> systeminfo.exe
      
@@ -87,18 +86,14 @@ For your existing Azure Local instances:
 - You have access to a node of your Azure Local instance with the Azure Stack HCI administrator role. This role is required to run the cmdlet.
 
 - You have access to a client used to connect to Azure Local instance.
-    
-    <!--This client should have the latest version of [Azure CLI](/cli/azure/install-azure-cli) and the appropriate version of `stack-hci-vm` software installed from the [Azure Local VM release tracking table](https://aka.ms/arcvm-rel).-->
 
 - You have access to an Azure subscription with the Azure Stack HCI Administrator role-based access control (RBAC) role. This role grants full access to your Azure Local instance and its resources.
 
     An Azure Stack HCI administrator can register the Azure Local instance and assign Azure Stack HCI VM contributor and Azure Stack HCI VM reader roles to other users. For more information, see [Use Role-based Access Control to manage Azure Local VMs enabled by Azure Arc](../manage/assign-vm-rbac-roles.md#about-built-in-rbac-roles).
 
-
-
 ## Choose an SDN prefix
 
-When you enable SDN, you will be required to provide an SDN prefix. Make sure that the SDN prefix meets the following requirements:
+When you enable SDN, you're required to provide an SDN prefix. Make sure that the SDN prefix meets the following requirements:
 
 - Must not be null or empty.
 - Must be eight or fewer characters.
@@ -120,7 +115,7 @@ Prepare your DNS environment before you enable SDN. The SDN integration requires
 
 - **Dynamic DNS environment**: If you have an Active Directory integrated dynamic DNS environment, no action is required on your part. The action plan automatically creates A DNS record.
 
-    If updates are not enabled for your Dynamic DNS environment, you can choose to enable dynamic DNS updates for the DNS zone where the Network Controller REST URL is registered.
+    If updates aren't enabled for your Dynamic DNS environment, you can choose to enable dynamic DNS updates for the DNS zone where the Network Controller REST URL is registered.
 
     1. On the DNS server, open the **DNS Manager** console.
     1. In the left pane, select **Forward Lookup Zones**.
@@ -161,7 +156,7 @@ Follow these steps to enable SDN on your Azure Local instance:
     Proceed to provide confirmation when acknowledgments are requested.
 
     > [!TIP]
-    > To skip the confirmation prompt to acknowledge the maintenance window, use the `-AcknowledgeMaintenanceWindow` parameter, and then use the `-AcknowledgeDNSRecordCreation` parameter to acknowledge you have prepared your DNS environment if not using dynamic DNS.
+    > To skip the confirmation prompt to acknowledge the maintenance window, use the `-AcknowledgeMaintenanceWindow` parameter, and then use the `-AcknowledgeDNSRecordCreation` parameter to acknowledge you've prepared your DNS environment if not using dynamic DNS.
 
     This step can take up to 20 minutes.
 

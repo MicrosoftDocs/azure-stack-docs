@@ -5,7 +5,7 @@ ms.topic: how-to
 author: pauljewellmsft
 ms.author: pauljewell
 ms.reviewer: dsundarraj
-ms.date: 08/27/2025
+ms.date: 12/11/2025
 zone_pivot_groups: select-os
 ---
 
@@ -16,6 +16,8 @@ In this article, you learn how to download and install a Lustre client package. 
 If you need to upgrade an existing Lustre client to the current version, see [Upgrade Lustre client software to the current version](client-upgrade.md).
 
 For more information on connecting clients to a cluster, see [Connect clients to an Azure Managed Lustre file system](connect-clients.md).
+
+For more information about the behavior of Azure Managed Lustre with Trusted Lunch Virtual Machines and Confidential Compute Virtual Machine, refer to [Use Secure Boot with Azure Managed Lustre file system](client-secure-boot.md)
 
 ::: zone pivot="alma-86"
 
@@ -81,6 +83,14 @@ This article shows how to install the client package to set up client VMs runnin
 ## Install client software for Ubuntu 24.04
 
 This article shows how to install the client package to set up client VMs running Ubuntu 24.04.
+
+::: zone-end
+
+::: zone pivot="azurelinux-3"
+
+## Install client software for Azure Linux 3
+
+This article shows how to install the client package to set up client VMs running Azure Linux 3.
 
 ::: zone-end
 
@@ -437,6 +447,44 @@ This article shows how to install the client package to set up client VMs runnin
     The following command installs a metapackage that keeps the version of Lustre aligned with the installed kernel. For this alignment to work, you must use `apt full-upgrade` instead of `apt upgrade` when updating your system.
 
    [!INCLUDE [client-install-version-ubunt-24](./includes/client-install-version-ubuntu-24.md)]
+
+::: zone-end
+
+::: zone pivot="azurelinux-3"
+
+> [!IMPORTANT]
+> Azure Linux 3 requires kernel version 6.6.119.3 or newer. Check your kernel version with `uname -r`. If you need to upgrade your kernel, run `sudo tdnf upgrade kernel` and reboot before installing the Lustre client.
+
+1. Install and configure the Azure Managed Lustre repository for the TDNF package manager. Create the following script and name it `repo.bash`:
+
+   ```bash
+   #!/bin/bash
+   set -ex
+
+   rpm --import https://packages.microsoft.com/keys/microsoft.asc
+
+   DISTRIB_CODENAME=al3
+
+   REPO_PATH=/etc/yum.repos.d/amlfs.repo
+   echo -e "[amlfs]" > ${REPO_PATH}
+   echo -e "name=Azure Lustre Packages" >> ${REPO_PATH}
+   echo -e "baseurl=https://packages.microsoft.com/yumrepos/amlfs-${DISTRIB_CODENAME}" >> ${REPO_PATH}
+   echo -e "enabled=1" >> ${REPO_PATH}
+   echo -e "gpgcheck=1" >> ${REPO_PATH}
+   echo -e "gpgkey=https://packages.microsoft.com/keys/microsoft.asc" >> ${REPO_PATH}
+   ```
+
+1. Run the script as a superuser:
+
+   ```bash
+   sudo bash repo.bash
+   ```
+
+1. Install the metapackage that matches your running kernel.
+
+   The metapackage version doesn't always align with the kernel version. You can use the following command to install the proper metapackage:
+
+   [!INCLUDE [client-install-version-azurelinux-3](./includes/client-install-version-azurelinux-3.md)]
 
 ::: zone-end
 
