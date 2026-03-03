@@ -639,7 +639,7 @@ Reseating the power supply might fix the problem. If alarms persist, contact the
 
 ### Boot info category
 
-#### Boot device name check considerations
+#### Boot device check considerations
 
 - The `boot_device_name` check is currently informational.
 - A mismatched boot device name shouldn't trigger a device failure.
@@ -653,10 +653,33 @@ Reseating the power supply might fix the problem. If alarms persist, contact the
 }
 ```
 
+- The `boot_device_state` check validates boot device state.
+
+```json
+{
+  "field_name": "boot_device_state",
+  "comparison_result": "Fail",
+  "expected": "Enabled",
+  "fetched": "Disabled"
+}
+```
+
+To update the boot device state in the BMC web UI, set the checkmark on the first UEFI Boot Device and then select **Apply\*#### > **Apply and reboot\*\*:
+
+- `BMC` -> `Configuration` -> `BIOS Settings` -> `UEFI Boot Settings` -> `UEFI Boot Sequence` -> `Checked`
+
+To update the PXE device state with `racadm`, run the following commands:
+
+```shell
+racadm --nocertwarn -r $IP -u $BMC_USR -p $BMC_PWD racadm set BIOS.BiosBootSettings.SetBootOrderEn NIC.PxeDevice.1-1
+racadm --nocertwarn -r $IP -u $BMC_USR -p $BMC_PWD jobqueue create BIOS.Setup.1-1
+racadm --nocertwarn -r $IP -u $BMC_USR -p $BMC_PWD serveraction powercycle
+```
+
 #### PXE device checks considerations
 
 - This check validates the PXE device settings.
-- Since the `2024-07-01` GA API version, HWV attempts to automatically fix the BIOS boot configuration.
+- HWV attempts to automatically fix the PXE boot configuration.
 - Failed `pxe_device_1_name` or `pxe_device_1_state` checks indicate a problem with the PXE configuration.
 - Failed settings must be fixed to enable system boot during deployment.
 
