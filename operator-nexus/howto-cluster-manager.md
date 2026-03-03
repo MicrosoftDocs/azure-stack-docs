@@ -3,14 +3,14 @@ title: "Cluster Manager: How to manage the Cluster Manager in Operator Nexus"
 description: Learn to create, view, list, update, delete commands for Cluster Manager on Operator Nexus
 author: mbashtovaya
 ms.author: mbashtovaya
-ms.date: 01/23/2023
+ms.date: 12/17/2025
 ms.topic: how-to
 # ms.prod: used for on prem applications
 ms.service: azure-operator-nexus 
 ms.custom: devx-track-azurecli
 ---
 
-# Cluster Manager: How to manage the Cluster Manager in Operator Nexus
+# How to manage the Cluster Manager in Operator Nexus
 
 The Cluster Manager is deployed in the operator's Azure subscription to manage the lifecycle of Operator Nexus Infrastructure Clusters. 
 
@@ -25,34 +25,64 @@ This Azure region should be used in the `Location` field of the Cluster Manager 
 
 ## Limitations
 - **Naming** - Naming rules can be found [here](/azure/azure-resource-manager/management/resource-name-rules#microsoftnetworkcloud).
+- **Compute resources** - Can be found in [Capacity Requirements](#capacity-requirements). 
 
 ## Capacity Requirements
 
 Cluster Manager supports the following VM SKUs: 
 - Standard_D4_v2 (default)
 - Standard_D8s_v3
+- Standard_D8s_v4
+- Standard_D8s_v5
+- Standard_D8s_v6
 
-Refer to [Azure Virtual Machine size overview](/azure/virtual-machines/sizes/overview) for each SKU requirement.
- 
-Cluster Manager requires 3 VMs and is created using all 3 availability zones. A customer can switch to 2 availability zones if the selected SKU is not available in all zones. In that case, the 3 VMs will be redistributed across the provided zones.
- 
-The compute needs increase during upgrades and may double depending on the type of the upgrade. For example, AKS upgrades require more capacity while regular Network Cloud maintenance requires one extra VM. This scaling is temporary and reverts to three VMs after the upgrade completes. When multiple Cluster Managers are deployed in the same subscription, customers do not need to reserve double capacity for all instances, as not all upgrades occur at the same time. 
+Refer to [Azure Virtual Machine size overview](/azure/virtual-machines/sizes/overview) for SKU requirements.
+
+Cluster Manager creates Azure Kubernetes Services (AKS) instance with three Virtual Machines (VM) distributed across three availability zones using the default SKU. A customer can switch to two availability zones if the selected SKU isn't available in all zones. In that case, the three VMs are redistributed across the provided zones.
+
+If the default SKU isn't available, a customer can choose one of the alternative SKUs as they provide comparable performance. When in doubt, Azure recommends choosing the latest version available at the subscription.
+
+The supported SKU and availability zones for the subscription in the selected location can be verified by running the Azure CLI command:
+
+```
+az vm list-skus --subscription <SUB_ID> --location <LOCATION> --size Standard_D --output table
+```
+
+The compute needs increase during upgrades and may double depending on the type of the upgrade. For example, AKS upgrades require more capacity while regular Network Cloud maintenance requires one extra VM. This scaling is temporary and reverts to three VMs after the upgrade completes. When multiple Cluster Managers are deployed in the same subscription, customers don't need to reserve double capacity for all instances, as not all upgrades occur at the same time.
+
+### How to use nondefault SKU and availability zones
+
+The `vmSize` and `availabilityZones` properties can be set during the Cluster Manager creation. They can be changed to different values on the existing Cluster Manager if needed. When switching the existing Cluster Manager to a different SKU, make sure there's enough capacity to accommodate a temporary growth for the three new VMs.
+If the properties aren't provided, the mentioned defaults are used. See the examples on how to set it.
 
 ## Cluster Manager properties
 
 | Property Name                     | Description                                                                                                                                                                                                                              |
 | --------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Name, ID, location, tags, type    | The Name: User friendly name <br> ID: The Resource ID <br> Location: The Azure region where the Cluster Manager is created. Values from: `az account list -locations`.<br> Tags: The resource tags <br> Type: Microsoft.NetworkCloud/clusterManagers |
-| managerExtendedLocation           | The ExtendedLocation associated with the Cluster Manager                                                                                                                                                                                              |
+| Name, ID, location, tags, type    | The Name: User friendly name <br> ID: The Resource ID <br> Location: The Azure region where the Cluster Manager is created. Values from: `az account list -locations`.<br> Tags: The resource tags <br> Type: Microsoft.NetworkCloud/clusterManagers. |
+| managerExtendedLocation           | The ExtendedLocation associated with the Cluster Manager.                                                                                                                                                                                             |
 | managedResourceGroupConfiguration | The details of Managed Resource Group that is created for the Cluster Manager to host its internally used resources.                                                                                                                                  |
-| fabricControllerId                | The reference to the Network Fabric Controller that is 1:1 with this Cluster Manager                                                                                                                                                                  | 
+| fabricControllerId                | The reference to the Network Fabric Controller that is 1:1 with this Cluster Manager.                                                                                                                                                                 | 
+| vmSize                            | The VM SKU name used for Cluster Manager compute resources. If not provided, the default value is used. For more, see [Capacity Requirements](#capacity-requirements).                                                                                |
+| availabilityZones                 | The list of availability zones used for Cluster Manager compute resources. If not provided, the default value is used. For more, see [Capacity Requirements](#capacity-requirements).                                                                 |
 | clusterVersions[]                 | The list of Cluster versions that the Cluster Manager supports. It's used as an input in the Cluster clusterVersion property.                                                                                                                         |
-| userAssignedIdentity             | The details of the User Assigned Managed Identity, if assigned to the Cluster Manager.                                                                                                                                                                     |
-| identity                          | The details of the type of identity assigned to the Cluster Manager. One of: UserAssigned or SystemAssigned.                                                                                                                                                                                  |
+| userAssignedIdentity              | The details of the User Assigned Managed Identity, if assigned to the Cluster Manager.                                                                                                                                                                |
+| identity                          | The details of the type of identity assigned to the Cluster Manager. One of: UserAssigned or SystemAssigned.                                                                                                                                          |
 | provisioningState                 | The provisioning status of the latest operation on the Cluster Manager. One of: Succeeded, Failed, Provisioning, Accepted, Updating.                                                                                                                  |
 | detailedStatus                    | The detailed statuses that provide additional information about the status of the Cluster Manager.                                                                                                                                                    |
 | detailedStatusMessage             | The descriptive message about the current detailed status.                                                                                                                                                                                            |
 | relayConfiguration                | The relay configuration for the Cluster Manager, containing the Azure Relay namespace resource ID. Available in API version `2026-01-01-preview` and later. See [Manage private endpoints for Arc Relay connectivity](howto-cluster-manager-relay-private-endpoint.md). |
+
+## Cluster Manager Kind
+
+Cluster Manager `kind` must be defined starting with the `2026-01-01-preview` API version. The `kind` can't be updated once the Cluster Manager is created. 
+The existing Cluster Manager `kind` is automatically determined using pre-existing platform knowledge.
+
+Supported values:
+- `AzureLocal`
+- `Nexus`
+
+Each kind comes with a separate set of functionality. If you aren't sure what `kind` to select, create a support ticket for assistance.
 
 ## Cluster Manager Identity
 
@@ -80,6 +110,7 @@ Use the below commands to create a Cluster Manager.
 Create Cluster Manager with System Assigned Managed Identity:
 ```azurecli-interactive
 az networkcloud clustermanager create \
+    --kind "<KIND>"
     --name "<CLUSTER_MANAGER_NAME>" \
     --location "<LOCATION>" \
     --fabric-controller-id "<NFC_ID>" \
@@ -93,6 +124,7 @@ az networkcloud clustermanager create \
 Create Cluster Manager with User Assigned Managed Identity:
 ```azurecli-interactive
 az networkcloud clustermanager create \
+    --kind "<KIND>"
     --name "<CLUSTER_MANAGER_NAME>" \
     --location "<LOCATION>" \
     --fabric-controller-id "<NFC_ID>" \
@@ -103,10 +135,32 @@ az networkcloud clustermanager create \
     --subscription "<SUB_ID>"
 ```
 
+Create Cluster Manager with nondefault SKU and availability zones:
+
+The example uses `Standard_D8s_v3` VM SKU and lowers availability zone requirements to `2,3`.
+
+```azurecli-interactive
+az networkcloud clustermanager create \
+    --kind "<KIND>"
+    --name "<CLUSTER_MANAGER_NAME>" \
+    --location "<LOCATION>" \
+    --fabric-controller-id "<NFC_ID>" \
+    --managed-resource-group-configuration name="<MRG_NAME>" location="<MRG_LOCATION>" \
+    --tags <TAG_KEY1>="<TAG_VALUE1>" <TAG_KEY2>="<TAG_VALUE2>" \
+    --resource-group "<CLUSTER_MANAGER_RG>" \
+    --mi-system-assigned \
+    --subscription "<SUB_ID>" \
+    --vm-size Standard_D8s_v3 \
+    --availability-zones "[2,3]"
+```
+
 Arguments:
+- `--kind` - The kind of the Cluster Manager.
 - `--name` or `-n` [Required] - The name of the Cluster Manager.
 - `--resource-group` or `-g` [Required] - The name of resource group. You can configure the default resource group using `az configure --defaults group=<name>`.
 - `--fabric-controller-id` [Required] - The resource ID of the Network Fabric Controller that is associated with the Cluster Manager.
+- `--vm-size` - The VM SKU name used for Cluster Manager compute resources. For more, see [Capacity Requirements](#capacity-requirements).
+- `--availability-zones` - The array of availability zones used for Cluster Manager compute resources. For more, see [Capacity Requirements](#capacity-requirements).
 - `--location` or `-l` - The Azure region where the Cluster Manager is created. Values from: `az account list -locations`. You can configure the default location using `az configure --defaults location="<LOCATION>"`.
 - `--managed-resource-group-configuration` - The configuration of the managed resource group associated with the resource.
   - Usage: `--managed-resource-group-configuration location=XX name=XX`
@@ -136,7 +190,7 @@ $TAGS_HASH = @{
   tag2 = "false"
 }
 
-New-AzNetworkCloudClusterManager -Name "<CLUSTER_MANAGER_NAME>" -Location "<LOCATION>" -ResourceGroupName "<CLUSTER_MANAGER_RG>" -SubscriptionId "<SUB_ID>" -ManagedResourceGroupConfigurationName "<MRG_NAME>" -ManagedResourceGroupConfigurationLocation "<MRG_LOCATION>" -FabricControllerId "<NFC_ID>" -IdentityType "SystemAssigned" -Tag $TAGS_HASH
+New-AzNetworkCloudClusterManager -Kind "<KIND>" -Name "<CLUSTER_MANAGER_NAME>" -Location "<LOCATION>" -ResourceGroupName "<CLUSTER_MANAGER_RG>" -SubscriptionId "<SUB_ID>" -ManagedResourceGroupConfigurationName "<MRG_NAME>" -ManagedResourceGroupConfigurationLocation "<MRG_LOCATION>" -FabricControllerId "<NFC_ID>" -IdentityType "SystemAssigned" -Tag $TAGS_HASH
 ```
 
 Create Cluster Manager with User Assigned Managed Identity:
@@ -146,13 +200,29 @@ $TAGS_HASH = @{
   tag2 = "false"
 }
 
-New-AzNetworkCloudClusterManager -Name "<CLUSTER_MANAGER_NAME>" -Location "<LOCATION>" -ResourceGroupName "<CLUSTER_MANAGER_RG>" -SubscriptionId "<SUB_ID>" -ManagedResourceGroupConfigurationName "<MRG_NAME>" -ManagedResourceGroupConfigurationLocation "<MRG_LOCATION>" -FabricControllerId "<NFC_ID>" -IdentityType "UserAssigned" -IdentityUserAssignedIdentity <UAMI_RESOURCE_ID> -Tag $TAGS_HASH
+New-AzNetworkCloudClusterManager -Kind "<KIND>" -Name "<CLUSTER_MANAGER_NAME>" -Location "<LOCATION>" -ResourceGroupName "<CLUSTER_MANAGER_RG>" -SubscriptionId "<SUB_ID>" -ManagedResourceGroupConfigurationName "<MRG_NAME>" -ManagedResourceGroupConfigurationLocation "<MRG_LOCATION>" -FabricControllerId "<NFC_ID>" -IdentityType "UserAssigned" -IdentityUserAssignedIdentity <UAMI_RESOURCE_ID> -Tag $TAGS_HASH
+```
+
+Create Cluster Manager with nondefault SKU and availability zones:
+
+The example uses `Standard_D8s_v3` VM SKU and lowers availability zone requirements to `2,3`.
+
+```azurepowershell-interactive
+$TAGS_HASH = @{
+  tag1 = "true"
+  tag2 = "false"
+}
+
+New-AzNetworkCloudClusterManager -Kind "<KIND>" -Name "<CLUSTER_MANAGER_NAME>" -Location "<LOCATION>" -ResourceGroupName "<CLUSTER_MANAGER_RG>" -SubscriptionId "<SUB_ID>" -ManagedResourceGroupConfigurationName "<MRG_NAME>" -ManagedResourceGroupConfigurationLocation "<MRG_LOCATION>" -FabricControllerId "<NFC_ID>" -IdentityType "SystemAssigned" -Tag $TAGS_HASH -VMSize Standard_D8s_v3 -AvailabilityZones @("2","3")
 ```
 
 Parameters:
+- `-Kind` - The kind of the Cluster Manager. 
 - `-Name` - The name of the cluster manager.
 - `-ResourceGroupName` - The name of the resource group.
 - `-SubscriptionId` - The ID of the target subscription.
+- `-VMSize` - The VM SKU name used for Cluster Manager compute resources. For more, see [Capacity Requirements](#capacity-requirements).
+- `-AvailabilityZone` - The array of availability zones used for Cluster Manager compute resources. For more, see [Capacity Requirements](#capacity-requirements).
 - `-FabricControllerId` - The resource ID of the fabric controller that has one to one mapping with the cluster manager.
 - `-Location` - The geo-location where the resource lives.
 - `-ManagedResourceGroupConfigurationLocation` - The location of the managed resource group. If not specified, the location of the parent resource is chosen.
