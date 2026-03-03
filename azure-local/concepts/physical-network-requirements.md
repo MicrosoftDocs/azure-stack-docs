@@ -69,7 +69,7 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 | [7280R series](https://www.arista.com/assets/data/pdf/Datasheets/7280R-DataSheet.pdf)<br>(10, 25, 100 GbE) |EOS version 4.26.2F or later|&check;| &check;| &check;|  &check;|
 | [7280R3 series](https://www.arista.com/assets/data/pdf/Datasheets/7280R3-Data-Sheet.pdf)<br>(10, 25, 100, 400 GbE) |EOS version 4.26.2F or later|&check;| &check;| &check;| &check; |
 | [7060X4 series](https://www.arista.com/assets/data/pdf/Datasheets/7060X4-Datasheet.pdf) <br> (10, 25, 100, 400 GbE)|EOS version 4.26.2F or later|&check;| &check;| &check;|&check; |
-
+| [CX 10040 series](https://www.hpe.com/psnow/doc/PSN1014368376CHEN) <br> (10, 100, 400 GbE)|AOS CX version 10.16.1020 or later|&check;| &check;| &check;|&check; |
 > [!NOTE]
 > Guest RDMA requires both Compute (Standard) and Storage.
 
@@ -83,7 +83,7 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 | [7280R series](https://www.arista.com/assets/data/pdf/Datasheets/7280R-DataSheet.pdf)<br>(10, 25, 100 GbE) |EOS version 4.26.2F or later|&check;| &check;| &check;|  &check;|
 | [7280R3 series](https://www.arista.com/assets/data/pdf/Datasheets/7280R3-Data-Sheet.pdf)<br>(10, 25, 100, 400 GbE) |EOS version 4.26.2F or later|&check;| &check;| &check;| &check; |
 | [7060X4 series](https://www.arista.com/assets/data/pdf/Datasheets/7060X4-Datasheet.pdf) <br> (10, 25, 100, 400 GbE)|EOS version 4.26.2F or later|&check;| &check;| &check;|&check; |
-
+| [CX 10040 series](https://www.hpe.com/psnow/doc/PSN1014368376CHEN) <br> (10, 100, 400 GbE)|AOS CX version 10.16.1020 or later|&check;| &check;| &check;|&check; |
 > [!NOTE]
 > Guest RDMA requires both Compute (Standard) and Storage.
 
