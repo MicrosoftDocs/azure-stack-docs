@@ -18,6 +18,10 @@ This article identifies critical known issues and their workarounds in disconnec
 These release notes are updated continuously to include critical issues and required workarounds. Review this information carefully before you deploy disconnected operations for Azure Local.
 
 ## Known issues for version 2602
+### Bootstrap or deployment fails due certificates being invalid (exception)
+In cases where Certificate revocation list (CRL) is empty or misconfigured - bootstrap validation will fail. 
+
+**Mitigation** : Ensure that your Certificate Authority is setup correctly and your certificates include a certificate revocation list endpoint that is accessible from the nodes. 
 
 ### Cloud deployment fails and transitions into a failed state
 
@@ -41,6 +45,12 @@ Perform the following steps on all nodes:
     ```powershell
    Unregister-ScheduledTask -TaskName HIMDSWatchdog
    ```
+### Portal issues
+#### Policy
+There is a known issue with Azure Policy Portal interface in this release. Use CLI or Azure Powershell as a mitigation. 
+
+#### SSH keys
+There is a known issue in the Portal so you cannot create SSH keys on e.g. Linux VMs or Azure Kubernetes Clusters (AKS) creation. Mitigation - create an ssh key with commandline tools and copy ssh key as part of the VM or AKS creation. 
 
 ### Additional cluster deployments fail as Host Guardian certificates aren't available
 
