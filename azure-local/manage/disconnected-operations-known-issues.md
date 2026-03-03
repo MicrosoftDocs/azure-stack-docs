@@ -77,6 +77,274 @@ Redeploy the disconnected operations appliance. If the issue persists after 2–
 When running the Operations module or using a script-based approach to generate certificates, the process may hang if executed through a Remote Desktop session.
 
 **Mitigation**:  Make sure that the Remote Desktop session isn't mapping smart cards. If smart card mapping is enabled, running the scripts to generate certificates can cause `certreq` to hang. 
+### Set-MgmtClusterDenyPolicy.ps1 script is missing
+
+**Mitigation**: Generate the file using the below script:
+```powershell
+<#
+.SYNOPSIS
+    Denies resource creation on a management cluster Custom Location via Azure Policy.
+
+.DESCRIPTION
+    This script creates an Azure Policy definition with a deny effect targeting the management
+    cluster's Custom Location and assigns it at subscription scope. It uses Azure PowerShell cmdlets
+    to create both the policy definition and assignment.
+
+    The policy blocks any resource creation where the extendedLocation targets the specified
+    management cluster Custom Location. Due to the single-CL-per-subscription design constraint,
+    the policy definition and assignment use hardcoded names. Re-running the script with a
+    different Custom Location ID will overwrite the previous assignment.
+
+.PARAMETER SubscriptionId
+    The Azure subscription GUID where the policy definition and assignment will be created.
+    If omitted (and -AllSubscriptions is not set), the script runs against the current
+    Azure PowerShell subscription context.
+
+.PARAMETER MgmtClusterCustomLocationId
+    The fully-qualified ARM resource ID of the management cluster Custom Location to deny
+    resource creation against.
+
+.PARAMETER AllSubscriptions
+    When set, the script applies the deny policy to every enabled subscription the caller
+    has access to. If both -AllSubscriptions and -SubscriptionId are provided,
+    -AllSubscriptions takes precedence and -SubscriptionId is ignored.
+
+.EXAMPLE
+    .\Set-MgmtClusterDenyPolicy.ps1 `
+        -SubscriptionId "a1b2c3d4-e5f6-7890-abcd-ef1234567890" `
+        -MgmtClusterCustomLocationId "/subscriptions/a1b2c3d4-e5f6-7890-abcd-ef1234567890/resourceGroups/my-rg/providers/Microsoft.ExtendedLocation/customLocations/my-custom-location"
+
+.EXAMPLE
+    .\Set-MgmtClusterDenyPolicy.ps1 `
+        -AllSubscriptions `
+        -MgmtClusterCustomLocationId "/subscriptions/a1b2c3d4-e5f6-7890-abcd-ef1234567890/resourceGroups/my-rg/providers/Microsoft.ExtendedLocation/customLocations/my-custom-location"
+
+.NOTES
+    Rollback commands:
+        Remove-AzPolicyAssignment -Name 'deny-resource-creation-on-mgmt-cluster-assignment' -Scope '/subscriptions/{subId}'
+        Remove-AzPolicyDefinition -Name 'deny-resource-creation-on-mgmt-cluster' -SubscriptionId '{subId}' -Force
+
+    Requires active Azure PowerShell session (Connect-AzAccount) and Resource Policy Contributor role.
+#>
+[CmdletBinding()]
+param(
+    [Parameter(Mandatory = $false)]
+    [ValidatePattern('^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$')]
+    [string]$SubscriptionId,
+
+    [Parameter(Mandatory = $true)]
+    [ValidatePattern('^/subscriptions/[0-9a-fA-F-]+/resourceGroups/[^/]+/providers/Microsoft\.ExtendedLocation/customLocations/[^/]+$')]
+    [string]$MgmtClusterCustomLocationId,
+
+    [Parameter(Mandatory = $false)]
+    [switch]$AllSubscriptions
+)
+
+
+# Validate required Az modules
+$modAccounts = Get-Module -ListAvailable -Name Az.Accounts | Sort-Object Version -Descending | Select-Object -First 1
+if (-not $modAccounts -or $modAccounts.Version -lt [version]'2.13.0') {
+    throw "Az.Accounts module >= 2.13.0 is required. Install via: Install-Module -Name Az.Accounts -MinimumVersion 2.13.0"
+}
+
+$modResources = Get-Module -ListAvailable -Name Az.Resources | Sort-Object Version -Descending | Select-Object -First 1
+if (-not $modResources -or $modResources.Version -lt [version]'6.12.0') {
+    throw "Az.Resources module >= 6.12.0 is required. Install via: Install-Module -Name Az.Resources -MinimumVersion 6.12.0"
+}
+
+# Check authentication
+$azContext = Get-AzContext
+if (-not $azContext) {
+    throw "Not connected to Azure. Run 'Connect-AzAccount' first."
+}
+
+# ---------------------------------------------------------------------------
+# Determine subscription list
+# ---------------------------------------------------------------------------
+
+$subscriptions = @()
+
+if ($AllSubscriptions) {
+    if (-not [string]::IsNullOrEmpty($SubscriptionId)) {
+        Write-Warning "Both -AllSubscriptions and -SubscriptionId were provided. -AllSubscriptions takes precedence; -SubscriptionId will be ignored."
+    }
+    Write-Host "Retrieving all enabled subscriptions..."
+    try {
+        $subs = Get-AzSubscription -ErrorAction Stop | Where-Object { $_.State -eq 'Enabled' }
+    } catch {
+        throw "Failed to retrieve subscription list. $($_.Exception.Message)"
+    }
+    $subscriptions = @($subs)
+    if ($subscriptions.Count -eq 0) {
+        throw "No enabled subscriptions found for the current account."
+    }
+    Write-Host "Found $($subscriptions.Count) enabled subscription(s)." -ForegroundColor Cyan
+} elseif ([string]::IsNullOrEmpty($SubscriptionId)) {
+    # No SubscriptionId provided — resolve from current Azure PowerShell context
+    $currentCtx = Get-AzContext
+    if (-not $currentCtx -or [string]::IsNullOrEmpty($currentCtx.Subscription.Id)) {
+        throw "Failed to determine the current subscription context. Provide -SubscriptionId or run 'Set-AzContext' first."
+    }
+    Write-Host "No SubscriptionId provided. Using current subscription context: $($currentCtx.Subscription.Name) ($($currentCtx.Subscription.Id))"
+    $subscriptions = @([PSCustomObject]@{ Id = $currentCtx.Subscription.Id; Name = $currentCtx.Subscription.Name })
+} else {
+    $subscriptions = @([PSCustomObject]@{ Id = $SubscriptionId; Name = $SubscriptionId })
+}
+
+# ---------------------------------------------------------------------------
+# Prepare policy JSON definitions (inline)
+# ---------------------------------------------------------------------------
+
+$policyRuleJson = @'
+{
+  "if": {
+    "allOf": [
+      {
+        "field": "extendedLocation.name",
+        "equals": "[parameters('customLocationId')]"
+      },
+      {
+        "field": "extendedLocation.type",
+        "equals": "CustomLocation"
+      }
+    ]
+  },
+  "then": {
+    "effect": "deny"
+  }
+}
+'@
+
+$policyParamJson = @'
+{
+  "customLocationId": {
+    "type": "String",
+    "metadata": {
+      "displayName": "Custom Location Resource ID",
+      "description": "The full ARM resource ID of the Custom Location to deny resource creation against (e.g., /subscriptions/{subId}/resourceGroups/{rg}/providers/Microsoft.ExtendedLocation/customLocations/{name})"
+    }
+  }
+}
+'@
+
+# ---------------------------------------------------------------------------
+# Process each subscription
+# ---------------------------------------------------------------------------
+
+$results  = @()
+$failures = @()
+
+foreach ($sub in $subscriptions) {
+    $currentSubId   = $sub.Id
+    $currentSubName = $sub.Name
+
+    Write-Host "`n===== Processing subscription: $currentSubName ($currentSubId) =====" -ForegroundColor Cyan
+
+    # --- Set subscription context ---
+    try {
+        Set-AzContext -SubscriptionId $currentSubId -ErrorAction Stop | Out-Null
+    } catch {
+        $msg = "Failed to set subscription context to '$currentSubId'. $($_.Exception.Message)"
+        Write-Error $msg
+        $failures += [PSCustomObject]@{ SubscriptionId = $currentSubId; SubscriptionName = $currentSubName; Error = $msg }
+        if (-not $AllSubscriptions) { throw $msg }
+        continue
+    }
+
+    # --- Create policy definition ---
+    Write-Host "  Creating policy definition 'deny-resource-creation-on-mgmt-cluster'..."
+    try {
+        $definition = New-AzPolicyDefinition `
+            -Name 'deny-resource-creation-on-mgmt-cluster' `
+            -DisplayName 'Deny resource creation on management cluster Custom Location' `
+            -Description 'Blocks resource creation when extendedLocation targets the management cluster Custom Location' `
+            -Policy $policyRuleJson `
+            -Parameter $policyParamJson `
+            -Mode 'All' `
+            -Metadata '{"category":"Management Cluster"}' `
+            -SubscriptionId $currentSubId `
+            -ErrorAction Stop
+    } catch {
+        $msg = "Failed to create policy definition in subscription '$currentSubId'. $($_.Exception.Message)"
+        Write-Error $msg
+        $failures += [PSCustomObject]@{ SubscriptionId = $currentSubId; SubscriptionName = $currentSubName; Error = $msg }
+        if (-not $AllSubscriptions) { throw $msg }
+        continue
+    }
+
+    if ($null -eq $definition -or [string]::IsNullOrEmpty($definition.Id)) {
+        $msg = "Policy definition was created in subscription '$currentSubId' but returned unexpected output."
+        Write-Error $msg
+        $failures += [PSCustomObject]@{ SubscriptionId = $currentSubId; SubscriptionName = $currentSubName; Error = $msg }
+        if (-not $AllSubscriptions) { throw $msg }
+        continue
+    }
+
+    # --- Create policy assignment ---
+    $scope = "/subscriptions/$currentSubId"
+
+    Write-Host "  Creating policy assignment 'deny-resource-creation-on-mgmt-cluster-assignment'..."
+    try {
+        $assignment = New-AzPolicyAssignment `
+            -Name 'deny-resource-creation-on-mgmt-cluster-assignment' `
+            -DisplayName 'Deny resource creation on management cluster Custom Location' `
+            -PolicyDefinition $definition `
+            -Scope $scope `
+            -PolicyParameterObject @{ customLocationId = $MgmtClusterCustomLocationId } `
+            -EnforcementMode 'Default' `
+            -ErrorAction Stop
+    } catch {
+        $msg = "Failed to create policy assignment in subscription '$currentSubId'. $($_.Exception.Message)"
+        Write-Error $msg
+        $failures += [PSCustomObject]@{ SubscriptionId = $currentSubId; SubscriptionName = $currentSubName; Error = $msg }
+        if (-not $AllSubscriptions) { throw $msg }
+        continue
+    }
+
+    if ($null -eq $assignment) {
+        $msg = "Policy assignment was created in subscription '$currentSubId' but returned unexpected output."
+        Write-Error $msg
+        $failures += [PSCustomObject]@{ SubscriptionId = $currentSubId; SubscriptionName = $currentSubName; Error = $msg }
+        if (-not $AllSubscriptions) { throw $msg }
+        continue
+    }
+
+    Write-Host "  Policy successfully created and assigned." -ForegroundColor Green
+
+    $results += [PSCustomObject]@{
+        SubscriptionName            = $currentSubName
+        SubscriptionId              = $currentSubId
+        DefinitionName              = $definition.Name
+        DefinitionId                = $definition.PolicyDefinitionId
+        AssignmentName              = $assignment.Name
+        AssignmentId                = $assignment.PolicyAssignmentId
+        Scope                       = $scope
+        MgmtClusterCustomLocationId = $MgmtClusterCustomLocationId
+    }
+}
+
+# ---------------------------------------------------------------------------
+# Summary
+# ---------------------------------------------------------------------------
+
+Write-Host "`n===== Summary =====" -ForegroundColor Cyan
+Write-Host "  Succeeded: $($results.Count) subscription(s)" -ForegroundColor Green
+if ($failures.Count -gt 0) {
+    Write-Host "  Failed:    $($failures.Count) subscription(s)" -ForegroundColor Red
+    foreach ($f in $failures) {
+        Write-Host "    - $($f.SubscriptionName) ($($f.SubscriptionId))" -ForegroundColor Red
+    }
+}
+
+if ($results.Count -gt 0) {
+    Write-Output $results
+}
+
+if ($failures.Count -gt 0 -and $results.Count -eq 0) {
+    throw "All subscriptions failed. See errors above."
+}
+
+```
 
 ### SSL/TLS error using management endpoint (OperationsModule)
 
