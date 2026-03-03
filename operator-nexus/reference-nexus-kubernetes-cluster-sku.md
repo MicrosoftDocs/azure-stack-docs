@@ -5,7 +5,7 @@ author: eak13
 ms.author: ekarandjeff
 ms.service: azure-operator-nexus
 ms.topic: reference
-ms.date: 01/07/2026
+ms.date: 03/03/2026
 ms.custom: template-reference
 ---
 
@@ -125,7 +125,7 @@ While the placement of the VMs is determined systematically at deployment time, 
 
 ## Emulator threads and CPU consumption
 
-SKUs that feature isolated emulator threads (P, E and L-type SKUs) consume CPU resources totaling the defined vCPUs for workloads and two reserved for the emulator. These SKUs are identified by the `isolateEmulatorThread` value set to `true`. For example, both NC_P46_224_v1 and NC_G48_224_v1 consume 48 vCPUs. NC_P46_224_v1 has 46 vCPUs defined plus 2 for the emulator threads while NC_G48_224_v1 has shared emulator threads and just consumes the 48 vCPU from the VM definition. The platform determines the placement of virtual machines based on the total resources required for the VM. The `Total vCPU` columns in the SKU reference tables reflect the vCPU allocations plus the emulator thread allocations.
+SKUs that feature isolated emulator threads (P, E and L-type SKUs) consume CPU resources totaling the defined vCPUs for workloads and two reserved for the emulator. `isolateEmulatorThread` set to `true` identifies the SKUs with allocated emulator threads. For example, both NC_P46_224_v1 and NC_G48_224_v1 consume 48 vCPUs. NC_P46_224_v1 has 46 vCPUs defined plus 2 for the emulator threads while NC_G48_224_v1 has shared emulator threads and just consumes the 48 vCPU from the VM definition. The platform determines the placement of virtual machines based on the total resources required for the VM. The `Total vCPU` columns in the SKU reference tables reflect the vCPU allocations plus the emulator thread allocations.
 
 ## General purpose VM SKUs
 
