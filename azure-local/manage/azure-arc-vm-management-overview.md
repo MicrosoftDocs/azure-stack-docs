@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
 ms.custom: linux-related-content
-ms.date: 12/15/2025
+ms.date: 03/03/2026
 ms.subservice: hyperconverged
 ---
 
@@ -67,7 +67,7 @@ Azure Local VM management has several components, including:
 - **Azure Arc resource bridge**: A prepackaged virtual appliance that runs as a virtual machine (VM) on your Azure Local cluster. It hosts an Azure Arc-enabled Kubernetes cluster that acts as the management cluster and enables the projection of on-premises resources such as VMs, logical networks, network interfaces, disks, and other related resources into Azure for cloud-based management. The Azure Arc resource bridge is created automatically when you deploy Azure Local. The Arc resource bridge appears:
 
   - **In Azure**: as an Azure resource named *&lt;instance-name&gt;*-arcbridge
-  - **On the local cluster**: as a VM named *&lt;instance-name&gt;*-control-plane-*&lt;suffix&gt;*
+  - **On the local cluster**: as a VM named *&lt;GUID&gt;*-control-plane-*&lt;GUID&gt;*
 
     > [!IMPORTANT]
     > Azure Arc resource bridge is a critical component for Azure Local VM management and should not be deleted unless you plan to reimage or decommission your Azure Local instance. Deleting this resource results in loss of the Azure control plane used to manage Azure Local VMs.
