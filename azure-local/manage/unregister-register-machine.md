@@ -4,7 +4,7 @@ description: Learn how to unregister and re-register Azure Local machines withou
 ms.topic: how-to
 ms.author: alkohli
 author: alkohli
-ms.date: 01/27/2026
+ms.date: 03/03/2026
 ms.subservice: hyperconverged
 ---
 
@@ -16,7 +16,7 @@ ms.subservice: hyperconverged
 This article provides guidance on how to unregister and re-register Azure Local machines without having to install the operating system (OS) again. This method uses PowerShell cmdlets and applies to registration with and without Azure Arc gateway.
 
 > [!IMPORTANT]
-> This guidance applies only to devices that haven't been deployed yet.
+> This guidance applies only to Azure Local clusters that haven't been deployed yet.
 
 ## About reregistration Azure Local machines
 

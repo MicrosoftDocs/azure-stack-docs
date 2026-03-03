@@ -62,11 +62,12 @@ The creation of the Network Cloud specific resources is subject to the following
 
 
 ### Other Azure resources
+
 There are several Azure resources that are required to build up Network Fabric Controllers and Cluster Manager. The table here outlines the Azure services that Operators must ensure that they have adequate capacity available for creation for each Network Fabric Controller and Cluster Manager pair.
 
 | Resource Type	              | # of vCPUs |
 | --------------------------- | -------------------------|
-| Virtual Machine             |	32 (D4_v2), 120 (DS4_v2), 4 (D2s_v3) |
+| Virtual Machine             |	32 (one of D4_v2, D8s_v3, D8s_v4, D8s_v5, D8s_v6), 120 (DS4_v2), 4 (D2s_v3) |
 | Standard DSv2 Family vCPUs  | quota limit 200; distributed across zones 1, 2, and 3 |
 
 > [!NOTE]
