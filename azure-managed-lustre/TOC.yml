@@ -74,5 +74,5 @@
   items:
     - name: Troubleshoot cluster deployment failures
       href: troubleshoot-deployment.md
-    - name: Troubleshoot cluster performance failures
+    - name: Troubleshoot cluster performance issues
       href: troubleshoot-performance.md

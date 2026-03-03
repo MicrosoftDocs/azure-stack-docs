@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
 ms.custom: linux-related-content
-ms.date: 12/15/2025
+ms.date: 03/03/2026
 ms.subservice: hyperconverged
 ---
 
@@ -64,7 +64,26 @@ Consider the following limitations when you're managing VMs on Azure Local:
 
 Azure Local VM management has several components, including:
 
-- **Azure Arc resource bridge**: This lightweight Kubernetes VM connects your on-premises Azure Local instance to the Azure cloud. The Azure Arc resource bridge is created automatically when you deploy Azure Local.
+- **Azure Arc resource bridge**: A prepackaged virtual appliance that runs as a virtual machine (VM) on your Azure Local cluster. It hosts an Azure Arc-enabled Kubernetes cluster that acts as the management cluster and enables the projection of on-premises resources such as VMs, logical networks, network interfaces, disks, and other related resources into Azure for cloud-based management. The Azure Arc resource bridge is created automatically when you deploy Azure Local. The Arc resource bridge appears:
+
+  - **In Azure**: as an Azure resource named *&lt;instance-name&gt;*-arcbridge
+  - **On the local cluster**: as a VM named *&lt;GUID&gt;*-control-plane-*&lt;GUID&gt;*
+
+    > [!IMPORTANT]
+    > Azure Arc resource bridge is a critical component for Azure Local VM management and should not be deleted unless you plan to reimage or decommission your Azure Local instance. Deleting this resource results in loss of the Azure control plane used to manage Azure Local VMs.
+    >
+    > If you need to delete the Arc resource bridge, do so only after you've deleted all Azure resources associated with workload management, including:
+    >
+    > - Azure Local VMs
+    > - AKS Arc clusters
+    > - VM images
+    > - Storage paths
+    > - Logical networks
+    > - Network interfaces
+    > - Virtual hard disks
+    > - Network security groups
+    >
+    > To delete the Arc resource bridge, follow the guidance here: [Azure Arc resource bridge deployment command overview](/azure/azure-arc/resource-bridge/deploy-cli).
 
     For more information, see [What is Azure Arc resource bridge?](/azure/azure-arc/resource-bridge/overview).
 
@@ -72,9 +91,16 @@ Azure Local VM management has several components, including:
 
     For more information, see [Manage logical networks for Azure Local VMs enabled by Azure Arc](./manage-logical-networks.md).
 
-- **Custom location**: Just like the Azure Arc resource bridge, a custom location is created automatically when you deploy Azure Local. You can use this custom location to deploy Azure services. You can also deploy VMs in these user-defined custom locations, to integrate your on-premises setup more closely with Azure.
+- **Custom location**: An Azure resource that represents a target location for deploying Azure Local VMs and other associated resources. You can think of it as your organization's private Azure region. By selecting a custom location, Azure understands where and how to deploy resources within your Azure Local environment.
 
-- **Kubernetes extension for VM operators**: The VM operator is the on-premises counterpart of the Azure Resource Manager resource provider. It's a Kubernetes controller that uses custom resources to manage your VMs.
+    Just like the Azure Arc resource bridge, a custom location is created automatically when you deploy Azure Local. It represents your Azure Local instance as a target location for deploying Azure resources. Custom locations bring Azure's consistent deployment model to Azure Local by abstracting away the underlying infrastructure details. Virtual machine administrators can deploy Azure resources such as VMs, disks, and network interfaces directly from Azure by simply choosing the custom location, without needing to interact directly with the underlying infrastructure.
+
+    Each Azure Local instance has one custom location, and each custom location has a one-to-one mapping to the Azure Arc-enabled Kubernetes cluster namespace running inside the Azure Arc resource bridge.
+
+    > [!IMPORTANT]
+    > The custom location should only be deleted after the Arc resource bridge has been deleted.
+
+- **Kubernetes cluster extension for Azure Local VMs**: This extension is a Kubernetes controller installed into the Azure Arc-enabled Kubernetes management cluster hosted inside the Azure Arc resource bridge. This extension implements the core business logic for Azure Local VM lifecycle management. It orchestrates fabric operations such as power operations, attaching and detaching disks and network interfaces, and GPU assignment on Azure Local VMs. The cluster extension processes requests from Azure Resource Manager (ARM), triggered by customer-initiated actions from the Azure control plane, and executes them locally on the Azure Local cluster.
 
 By integrating these components, Azure Arc offers a unified and efficient VM management solution that bridges the gap between on-premises and cloud infrastructures.
 
