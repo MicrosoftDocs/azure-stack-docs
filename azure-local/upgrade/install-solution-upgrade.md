@@ -16,12 +16,9 @@ ms.service: azure-local
 
 [!INCLUDE [end-of-service-22H2](../includes/end-of-service-22h2.md)]
 
-This article describes how to install the solution upgrade on your Azure Local instance after the operating system (OS) was upgraded from version 22H2 to version 23H2.
+This article describes how to install the solution upgrade on your Azure Local instance after the operating system (OS) was upgraded from version 22H2 to version 24H2.
 
-Throughout this article, we refer to OS version 23H2 as the new version and version 22H2 as the old version.
-
-> [!IMPORTANT]
-> While the OS upgrade is generally available, the solution upgrade will have a phased rollout. Microsoft engineering will contact Azure Local customers proactively to schedule the solution upgrade of their clusters upgraded to OS 23H2. 
+Throughout this article, we refer to OS version 24H2 as the new version and version 22H2 as the old version. This article previously described the 22H2 to 23H2 upgrade. 23H2 was an interim release version. It supported direct in-place upgrades from 23H2 to 24H2, as all requirements were met. Please leverage the 22H2 to 24H2 upgrade path to avoid downtime and unneccesary steps to update to the latest release version 24H2.
 
 ## Prerequisites
 
