@@ -171,7 +171,7 @@ Validated Nodes: These may come preinstalled. The aforementioned check or furthe
 
 ### Instance or node redeployment
 Premier Solutions and Integrated Systems: Some OEMs provide ready-to-use ISO images that match the preinstalled and preconfigured version.
-Validated Nodes: These may come preinstalled. The forementioned check or further sideloading update packages is required as per OEM recommendation
+Validated Nodes: These may come preinstalled. The aforementioned driver check via PowerShell or further sideloading update packages is required as per OEM recommendation.
 
 ### Update existing Firmware and drivers
 Premier Solutions: will update their firmware and driver automatically via Azure Update Manager during the greatly automated update procedure.
