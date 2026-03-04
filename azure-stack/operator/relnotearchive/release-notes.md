@@ -3333,7 +3333,7 @@ This update includes the following improvements for Azure Stack.
 
 For more information about these vulnerabilities, click on the preceding links, or see Microsoft Knowledge Base article [4343887](https://support.microsoft.com/help/4343887).
 
-This update also contains the mitigation for the speculative execution side channel vulnerability known as L1 Terminal Fault (L1TF), described in the [Microsoft Security Advisory ADV180018](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180018).  
+This update also contains the mitigation for the speculative execution side channel vulnerability known as L1 Terminal Fault (L1TF).  
 
 ### Prerequisites
 
