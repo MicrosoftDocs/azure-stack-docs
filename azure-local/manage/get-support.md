@@ -12,7 +12,7 @@ ms.subservice: hyperconverged
 
 [!INCLUDE [hci-applies-to-23h2-22h2](../includes/hci-applies-to-23h2-22h2.md)]
 
-This article provides guidance on how to get support for Azure Local. Azure Local follows the same support process as Azure. Enterprise customers can follow the process described in [Create an Azure support request](/azure/azure-portal/supportability/how-to-create-azure-support-request). 
+This article provides guidance on how to get support for Azure Local. Azure Local follows the same support process as Azure. Enterprise customers can follow the process described in [Create an Azure support request](/azure/azure-portal/supportability/how-to-create-azure-support-request).
 
 >[!NOTE]
 > If you are a customer of a Cloud Solution Provider (CSP), contact your CSP for support. <br>
