@@ -126,6 +126,8 @@ To prepare the first machine for the disconnected operations appliance, follow t
     - IRVM.zip
     - ArcA_LocalData_A.vhdx
     - ArcA_SharedData_A.vhdx
+    - ArcA_SharedData_ACSBlob_A.vhdx
+    - ArcA_SharedData_ACSTable_A.vhdx
     - OSAndDocker_A.vhdx
     - Storage.json
 
@@ -447,7 +449,7 @@ Verify the deployment before creating local Azure resources.
     - You're redirected to your identity provider to sign in.
 1. Sign in to your identity provider with the credentials you configured during deployment.
     - You should see Azure portal running in your network.
-1. Check that a subscription exists for your Azure Local infrastructure (for example, Starter subscription).
+1. Check that a subscription exists for your Azure Local infrastructure (for example, Operator subscription).
 1. Check that required resource providers are registered in the subscription.
 1. Check that a resource group exists for your Azure Local infrastructure (for example, azurelocal-disconnected-operations).
 
@@ -462,10 +464,10 @@ To initialize each node, run this PowerShell script. Modify the variables necess
     $applianceCloudName = "azure.local"
     $applianceConfigBasePath = "C:\AzureLocalDisconnectedOperations\"
     $applianceFQDN = "autonomous.cloud.private"
-    $subscriptionName = "Starter subscription"
+    $subscriptionName = "Operator subscription"
     
     Connect-AzAccount -EnvironmentName $applianceCloudName -UseDeviceAuthentication
-    Write-Host "Selecting a different subscription than the operator subscription.."
+    Write-Host "Ensuring you are using operator subscription for the management cluster.."
     $subscription = Get-AzSubscription -SubscriptionName $subscriptionName
 
     # Set the context to that subscription
@@ -517,16 +519,61 @@ Follow these steps to create an Azure Local instance (cluster):
 Perform the following tasks after deploying Azure Local with disconnected operations:
 
 1. **Back up the BitLocker keys (do not skip this step)**. During deployment, the appliance is encrypted. Without the recovery keys for the volumes, you can't recover and restore the appliance. For more information, see [Understand security controls with disconnected operations on Azure Local](disconnected-operations-security.md).
-
-1. **Assign extra operators.** You can assign one or more operators by navigating to **Operator subscriptions**. Assign the **contributor** role at the subscription level.
-
+1. **Assign extra operators**. You can assign one or more operators by navigating to **Operator subscriptions**. Assign the **contributor** role at the subscription level.
 1. [Export the host guardian service certificates](disconnected-operations-security.md) and back up the folder you export them to on an external share or drive.
 1. [Register the management cluster](disconnected-operations-registration.md)
-1. **Lock down the management cluster** - Prevent operators from creating workloads on the management cluster. Limit operator access to a few and use Azure Policy to prevent workloads on the cluster resource.
+1. **Lock down the management cluster**. Restrict operators from deploying workloads on the management cluster. Limit operator access to a select few and enforce this restriction using Azure Policy to block workloads on the cluster resource. 
+1. Clean up disks. If data disks were used during the bootstrap process, ensure they are removed.
+
 > [!NOTE]
 > Do not skip these steps. Consider this as a deployment completion checklist. These steps are critical in order to be able to recover in case of disasters, receive support and to stay compliant.
 
 ## Appendix
+
+### Lock down management cluster (using Azure Policy)
+
+```powershell
+$operatorSubscriptionId = ''
+$resourceGroup = ''
+$customLocationId = 'my-cluster'
+cd "$applianceConfigBasePath\OperationsModule\AzureLocalOrchestration" 
+.\Set-MgmtClusterDenyPolicy.ps1 `
+        -SubscriptionId "$operatorSubscriptionId" `
+        -MgmtClusterCustomLocationId "/subscriptions/$($subscriptionId)/resourceGroups/$($resourceGroup)/providers/Microsoft.ExtendedLocation/customLocations/$($customLocationId)"
+```
+
+### Clean up data disks used for bootstrap
+
+```powershell
+# ===============================
+# Remove CSV and Return Space to Pool
+# ===============================
+
+$CsvName="Cluster Virtual Disk (InfraLocal_1)"
+$VirtualDiskName ="InfraLocal_1"
+
+Write-Host "Starting CSV removal process..." -ForegroundColor Cyan
+
+# --- Validate CSV exists ---
+$csv = Get-ClusterSharedVolume -Name $CsvName -ErrorAction Stop
+Write-Host "Found CSV: $($csv.Name)"
+
+# --- Remove CSV ---
+$csv = remove-ClusterSharedVolume -Name $CsvName -ErrorAction Stop
+Write-Host "Removed CSV: $($csv.Name)"
+
+# --- Take Cluster Resources offline ---
+Write-Host "Taking CSV resource offline..." -ForegroundColor Yellow
+Stop-ClusterResource -Name $csv.name -Wait 120
+
+# --- Remove Cluster Resources offline ---
+Write-Host "Taking CSV resource offline..." -ForegroundColor Yellow
+remove-ClusterResource -Name $csv.name
+
+# --- Remove virtual disk and return space to pool ---
+Write-Host "Remoing virtual disk..." -ForegroundColor Yellow
+remove-virtualdisk -FriendlyName $VirtualDiskName
+```
 
 ### Troubleshoot and reconfigure by using management endpoint
 
