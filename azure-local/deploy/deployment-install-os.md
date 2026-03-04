@@ -1,6 +1,6 @@
 ---
-title: Install Azure Stack HCI operating system, version 24H2
-description: Learn how to install the Azure Stack HCI operating system, version 24H2 on each machine of your system.
+title: Install Azure Stack HCI operating system, version 24H2 using sconfig
+description: Learn how to install the Azure Stack HCI operating system, version 24H2 on each machine of your system using sconfig.
 author: alkohli
 ms.topic: how-to
 ms.date: 12/11/2025
