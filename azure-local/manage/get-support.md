@@ -15,8 +15,8 @@ ms.subservice: hyperconverged
 This article provides guidance on how to get support for Azure Local. Azure Local follows the same support process as Azure. Enterprise customers can follow the process described in [Create an Azure support request](/azure/azure-portal/supportability/how-to-create-azure-support-request).
 
 >[!NOTE]
-> If you are a customer of a Cloud Solution Provider (CSP), contact your CSP for support. <br>
-> If you are a customer using an Azure Local Premier solution, contact your OEM for support, directly. You do not require a Microsoft Azure support plan for Azure Local Premier solutions. The OEM will triage the issue, hardware or software related and relay the request to Microsoft Support on their own terms, if needed.
+> - If you are a customer of a Cloud Solution Provider (CSP), contact your CSP for support.
+> - If you are a customer using an Azure Local Premier solution, contact your OEM for support, directly. You do not require a Microsoft Azure support plan for Azure Local Premier solutions. The OEM will triage the issue, hardware or software related and relay the request to Microsoft Support on their own terms, if needed.
 
 Updates for Azure Local are released monthly to enhance customer experience. To keep your Azure Local instance in a supported state, you have up to six months to install updates, but we recommend installing updates as they're released. Microsoft provides monthly quality and security updates for each supported version of Azure Local and quarterly feature releases.
 
