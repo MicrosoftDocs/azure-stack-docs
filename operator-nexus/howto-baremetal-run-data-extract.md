@@ -812,7 +812,7 @@ You can run the `run-data-extracts-restricted` command as a new and separate API
   Arguments: None
 
 - [Collect Microsoft Defender for Endpoint support diagnostics](#collect-mde-support-diagnostics)\
-  Command name: `mde-agent-information`\
+  Command name: `mde-support-diagnostics`\
   Arguments: None
 
 - [Generate a cluster Common Vulnerabilities and Exposures (CVE) report](#generate-cluster-cve-report)\

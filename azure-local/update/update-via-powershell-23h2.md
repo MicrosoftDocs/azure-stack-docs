@@ -4,7 +4,7 @@ description: Learn how to use PowerShell to apply operating system, service, and
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 01/20/2026
+ms.date: 03/04/2026
 ms.subservice: hyperconverged
 ---
 
@@ -386,6 +386,9 @@ You can download the update and run checks to verify your cluster's update readi
     </details>
 
 1. When the readiness checks finish, the system is ready to install updates. The `State` of the update shows as `ReadyToInstall`. If the `State` of the update shows as `HealthCheckFailed`, see [Troubleshoot readiness checks](update-troubleshooting-23h2.md) before you proceed.
+
+> [!NOTE]
+> If you performed the update readiness using the `-PrepareOnly` parameter, you must update using PowerShell. Moving to Azure portal to start the update isn't supported and might lead to unexpected issues.
 
 
 ## Step 5: Start the update

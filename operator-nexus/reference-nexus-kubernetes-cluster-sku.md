@@ -5,7 +5,7 @@ author: eak13
 ms.author: ekarandjeff
 ms.service: azure-operator-nexus
 ms.topic: reference
-ms.date: 01/07/2026
+ms.date: 03/03/2026
 ms.custom: template-reference
 ---
 
@@ -121,57 +121,59 @@ However, if you used that SKU on BOM 1.7.3, only three NC_G14_56_v1 SKUs are dep
 | CPU      | 12  | 12  | 12  | 12  | 48   | **0**    |
 | Memory   | 56  | 56  | 56  | 56  | 224  | **0**    |
 
-SKUs that feature isolated emulator threads (P, E and L-type SKUs) consume CPU resources totaling the defined vCPUs for workloads and two reserved for the emulator. For example, both NC_P46_224_v1 and NC_G48_224_v1 consume 48 vCPUs. NC_P46_224_v1 has 46 vCPUs defined plus 2 for the emulator threads while NC_G48_224_v1 has shared emulator threads and just consumes the 48 vCPU from the VM definition. The platform determines the placement of virtual machines based on the total resources required for the VM.
-
 While the placement of the VMs is determined systematically at deployment time, selecting VM SKUs with an awareness of resource utilization improves the overall functionality of the platform, especially after it reaches 50% or more capacity.
+
+## Emulator threads and CPU consumption
+
+SKUs that feature isolated emulator threads (P, E and L-type SKUs) consume CPU resources totaling the defined vCPUs for workloads and two reserved for the emulator. `isolateEmulatorThread` set to `true` identifies the SKUs with allocated emulator threads. For example, both NC_P46_224_v1 and NC_G48_224_v1 consume 48 vCPUs. NC_P46_224_v1 has 46 vCPUs defined plus 2 for the emulator threads while NC_G48_224_v1 has shared emulator threads and just consumes the 48 vCPU from the VM definition. The platform determines the placement of virtual machines based on the total resources required for the VM. The `Total vCPU` columns in the SKU reference tables reflect the vCPU allocations plus the emulator thread allocations.
 
 ## General purpose VM SKUs
 
-| VM SKU Name   | vCPU | Memory (GiB) | Root Disk (GiB) | Compatible Compute SKUs |
-|---------------|------|--------------|-----------------|-------------------------|
-| NC_G56_224_v1 | 56   | 224          | 300             | 2.0                     |
-| NC_G48_224_v1 | 48   | 224          | 300             | **1.7.3**, 2.0          |
-| NC_G42_168_v1 | 42   | 168          | 300             | 1.7.3, **2.0**          |
-| NC_G36_168_v1 | 36   | 168          | 300             | **1.7.3**, 2.0          |
-| NC_G28_112_v1 | 28   | 112          | 300             | 1.7.3, **2.0**          |
-| NC_G24_112_v1 | 24   | 112          | 300             | **1.7.3**, 2.0          |
-| NC_G18_74_v1  | 18   | 74           | 300             | 1.7.3, **2.0**          |
-| NC_G16_74_v1  | 16   | 74           | 300             | **1.7.3**, 2.0          |
-| NC_G14_56_v1  | 14   | 56           | 300             | 1.7.3, **2.0**          |
-| NC_G12_56_v1  | 12   | 56           | 300             | **1.7.3**, 2.0          |
-| NC_G6_28_v1   | 6    | 28           | 300             | **1.7.3**, 2.0          |
-| NC_G2_8_v1    | 2    | 8            | 300             | 1.7.3, 2.0              |
+| VM SKU Name   | vCPU | Em Threads | Total vCPU | Memory (GiB) | Root Disk (GiB) | Compatible Compute SKUs |
+|---------------|------|------------|------------|--------------|-----------------|-------------------------|
+| NC_G56_224_v1 | 56   | 0          | 56         | 224          | 300             | 2.0                     |
+| NC_G48_224_v1 | 48   | 0          | 48         | 224          | 300             | **1.7.3**, 2.0          |
+| NC_G42_168_v1 | 42   | 0          | 42         | 168          | 300             | 1.7.3, **2.0**          |
+| NC_G36_168_v1 | 36   | 0          | 36         | 168          | 300             | **1.7.3**, 2.0          |
+| NC_G28_112_v1 | 28   | 0          | 28         | 112          | 300             | 1.7.3, **2.0**          |
+| NC_G24_112_v1 | 24   | 0          | 24         | 112          | 300             | **1.7.3**, 2.0          |
+| NC_G18_74_v1  | 18   | 0          | 18         | 74           | 300             | 1.7.3, **2.0**          |
+| NC_G16_74_v1  | 16   | 0          | 16         | 74           | 300             | **1.7.3**, 2.0          |
+| NC_G14_56_v1  | 14   | 0          | 14         | 56           | 300             | 1.7.3, **2.0**          |
+| NC_G12_56_v1  | 12   | 0          | 12         | 56           | 300             | **1.7.3**, 2.0          |
+| NC_G6_28_v1   | 6    | 0          | 6          | 28           | 300             | **1.7.3**, 2.0          |
+| NC_G2_8_v1    | 2    | 0          | 2          | 8            | 300             | 1.7.3, 2.0              |
 
 ## Performance optimized VM SKUs
 
-| VM SKU Name   | vCPU | Memory (GiB) | Root Disk (GiB) | Compatible Compute SKUs |
-|---------------|------|--------------|-----------------|-------------------------|
-| NC_P54_224_v1 | 54   | 224          | 300             | 2.0                     |
-| NC_P46_224_v1 | 46   | 224          | 300             | **1.7.3**, 2.0          |
-| NC_P40_168_v1 | 40   | 168          | 300             | 1.7.3, **2.0**          |
-| NC_P34_168_v1 | 34   | 168          | 300             | **1.7.3**, 2.0          |
-| NC_P26_112_v1 | 26   | 112          | 300             | 1.7.3, **2.0**          |
-| NC_P22_112_v1 | 22   | 112          | 300             | **1.7.3**, 2.0          |
-| NC_P16_74_v1  | 16   | 74           | 300             | 1.7.3, **2.0**          |
-| NC_P14_74_v1  | 14   | 74           | 300             | **1.7.3**, 2.0          |
-| NC_P12_56_v1  | 12   | 56           | 300             | 1.7.3, **2.0**          |
-| NC_P10_56_v1  | 10   | 56           | 300             | **1.7.3**, 2.0          |
-| NC_P4_28_v1   | 4    | 28           | 300             | **1.7.3**, 2.0          |
+| VM SKU Name   | vCPU | Em Threads | Total vCPU | Memory (GiB) | Root Disk (GiB) | Compatible Compute SKUs |
+|---------------|------|------------|------------|--------------|-----------------|-------------------------|
+| NC_P54_224_v1 | 54   | 2          | 56         | 224          | 300             | 2.0                     |
+| NC_P46_224_v1 | 46   | 2          | 48         | 224          | 300             | **1.7.3**, 2.0          |
+| NC_P40_168_v1 | 40   | 2          | 42         | 168          | 300             | 1.7.3, **2.0**          |
+| NC_P34_168_v1 | 34   | 2          | 36         | 168          | 300             | **1.7.3**, 2.0          |
+| NC_P26_112_v1 | 26   | 2          | 28         | 112          | 300             | 1.7.3, **2.0**          |
+| NC_P22_112_v1 | 22   | 2          | 24         | 112          | 300             | **1.7.3**, 2.0          |
+| NC_P16_74_v1  | 16   | 2          | 18         | 74           | 300             | 1.7.3, **2.0**          |
+| NC_P14_74_v1  | 14   | 2          | 16         | 74           | 300             | **1.7.3**, 2.0          |
+| NC_P12_56_v1  | 12   | 2          | 14         | 56           | 300             | 1.7.3, **2.0**          |
+| NC_P10_56_v1  | 10   | 2          | 12         | 56           | 300             | **1.7.3**, 2.0          |
+| NC_P4_28_v1   | 4    | 2          | 6          | 28           | 300             | **1.7.3**, 2.0          |
 
 ## Memory optimized VM SKUs
 
-| VM SKU Name   | vCPU | Memory (GiB) | Root Disk (GiB) | Compatible Compute SKUs |
-|---------------|------|--------------|-----------------|-------------------------|
-| NC_E110_448_v1| 110  | 448          | 300             | 2.0                     |
-| NC_E94_448_v1 | 94   | 448          | 300             | 1.7.3, 2.0              |
-| NC_E70_336_v1 | 70   | 336          | 300             | 1.7.3, **2.0**          |
+| VM SKU Name    | vCPU | Em Threads | Total vCPU | Memory (GiB) | Root Disk (GiB) | Compatible Compute SKUs |
+|----------------|------|------------|------------|--------------|-----------------|-------------------------|
+| NC_E110_448_v1 | 110  | 2          | 112        | 448          | 300             | 2.0                     |
+| NC_E94_448_v1  | 94   | 2          | 96         | 448          | 300             | 1.7.3, 2.0              |
+| NC_E70_336_v1  | 70   | 2          | 72         | 336          | 300             | 1.7.3, **2.0**          |
 
 ## Storage optimized VM SKUs
 
-| VM SKU Name   | vCPU | Memory (GiB) | Root Disk (GiB) | Compatible Compute SKUs |
-|---------------|------|--------------|-----------------|-------------------------|
-| NC_L54_224_v1 | 54   | 224          | 1638            | 2.0                     |
-| NC_L46_224_v1 | 46   | 224          | 1638            | 2.0                     |
+| VM SKU Name   | vCPU | Em Threads | Total vCPU | Memory (GiB) | Root Disk (GiB) | Compatible Compute SKUs |
+|---------------|------|------------|------------|--------------|-----------------|-------------------------|
+| NC_L54_224_v1 | 54   | 2          | 56         | 224          | 1638            | 2.0                     |
+| NC_L46_224_v1 | 46   | 2          | 48         | 224          | 1638            | 2.0                     |
 
 ## Next steps
 
