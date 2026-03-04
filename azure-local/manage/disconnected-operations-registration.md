@@ -15,6 +15,7 @@ ai-usage: ai-assisted
 ::: moniker range=">=azloc-2602"
 
 This article explains how to register disconnected operations for Azure Local after deploying your management cluster with the control plane. Learn how to ensure compliance with Azure Local requirements through proper registration.
+
 ## Get the registration file
 
 The registration file contains data about your Azure Local deployment, which is required to complete the registration process in the Azure portal.
@@ -22,7 +23,7 @@ The registration file contains data about your Azure Local deployment, which is 
 To register disconnected operations for Azure Local, first generate a registration file from your management cluster.
 
 > [!NOTE]
-> Certain compliance regulations prohibit copying any data from air-gapped environments. When these restrictions prevent copying the registration file - use the self-attestation flow.
+> Certain compliance regulations prohibit copying data from air-gapped environments. If these restrictions prevent copying the registration file, use the self-attestation flow.
 
 Follow these steps to create and export the registration file:
 
@@ -60,14 +61,14 @@ To finalize the registration process for disconnected operations, follow these s
 1. After the operation completes, the **Registration status** changes to **Registered**.
 
 ## Registration using self-attestation flow
-If you are unable to register Azure Local disconnected operations using the registration file flow, you can use the self-attestation flow. 
 
-On a machine, that is allowed to connect to internet, ensure you have Azure CLI and Azure Powershell installed. 
+If you can't register Azure Local disconnected operations using the registration file flow, use the self-attestation flow instead.
 
-From Powershell, copy the function below.
+On a machine with internet access, ensure that Azure CLI and Azure PowerShell are installed. 
+
+Copy the provided function from PowerShell.
 
 ```powershell
-
 function New-AzureLocalDisconnectedOperationsSelfAttestation {
     <#
     .SYNOPSIS
@@ -160,10 +161,9 @@ function New-AzureLocalDisconnectedOperationsSelfAttestation {
 }
 ``` 
 
-Register your Azure Local disconnected operations 
+## Register your Azure Local disconnected operations 
 
 ```powershell
-
 # Modify these to fit your disconnected operations resource.
 $params = @{
     Cloud                      = 'AzureCloud'
@@ -183,7 +183,6 @@ $params = @{
 }
 
 New-AzureLocalDisconnectedOperationsSelfAttestation @params
-``` 
 ```
 
 ## Related content
