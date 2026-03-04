@@ -12,7 +12,11 @@ ms.subservice: hyperconverged
 
 [!INCLUDE [hci-applies-to-23h2-22h2](../includes/hci-applies-to-23h2-22h2.md)]
 
-This article provides guidance on how to get support for Azure Local. Azure Local follows the same support process as Azure. Enterprise customers can follow the process described in [Create an Azure support request](/azure/azure-portal/supportability/how-to-create-azure-support-request). If you're a customer of a Cloud Solution Provider (CSP), contact your CSP for support.
+This article provides guidance on how to get support for Azure Local. Azure Local follows the same support process as Azure. Enterprise customers can follow the process described in [Create an Azure support request](/azure/azure-portal/supportability/how-to-create-azure-support-request). 
+
+>[!NOTE]
+> If you are a customer of a Cloud Solution Provider (CSP), contact your CSP for support. <br>
+> If you are a customers using a Azure Local Premier solution, contact your OEM for support. You do not require an Microsoft Azure Support Plan for Premier solutions. The OEM will triage the issue and relay the request to Microsoft Support on his own terms, when necessary.
 
 Updates for Azure Local are released monthly to enhance customer experience. To keep your Azure Local instance in a supported state, you have up to six months to install updates, but we recommend installing updates as they're released. Microsoft provides monthly quality and security updates for each supported version of Azure Local and quarterly feature releases.
 
