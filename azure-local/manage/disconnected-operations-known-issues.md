@@ -18,10 +18,14 @@ This article identifies critical known issues and their workarounds in disconnec
 These release notes are updated continuously to include critical issues and required workarounds. Review this information carefully before you deploy disconnected operations for Azure Local.
 
 ## Known issues for version 2602
-### Bootstrap or deployment fails due certificates being invalid (exception)
-In cases where Certificate revocation list (CRL) is empty or misconfigured - bootstrap validation will fail. 
 
-**Mitigation** : Ensure that your Certificate Authority is setup correctly and your certificates include a certificate revocation list endpoint that is accessible from the nodes. 
+### Bootstrap or deployment fails due certificates being invalid (exception)
+
+In cases where the Certificate Revocation List (CRL) is empty or misconfigured, bootstrap validation will fail.
+
+**Mitigation**: 
+
+Verify that your Certificate Authority is configured correctly and ensure that your certificates include a CRL endpoint that is accessible from the nodes.
 
 ### Cloud deployment fails and transitions into a failed state
 
@@ -46,17 +50,25 @@ Perform the following steps on all nodes:
    Unregister-ScheduledTask -TaskName HIMDSWatchdog
    ```
 ### Portal issues
+
 #### Policy
-There is a known issue with Azure Policy Portal interface in this release. Use CLI or Azure Powershell as a mitigation. 
+
+There's a known issue with the Azure Policy portal interface in this release. As a workaround, use the Azure CLI or Azure PowerShell.
 
 #### SSH keys
-There is a known issue in the Portal so you cannot create SSH keys on e.g. Linux VMs or Azure Kubernetes Clusters (AKS) creation. Mitigation - create an ssh key with commandline tools and copy ssh key as part of the VM or AKS creation. 
 
+There's a known issue in the Azure Portal that prevents creating SSH keys during the creation of Linux VMs or Azure Kubernetes Service (AKS) clusters.
+
+**Mitigation**:
+
+Use command-line tools to generate an SSH key and include the key during the VM or AKS creation process.
+ 
 ### Additional cluster deployments fail as Host Guardian certificates aren't available
 
 When deploying additional Azure Local cluster after successfully deploying the dedicated management cluster, they fail.
 
 **Mitigation**:
+
 Copy the following certs from the first node of the management cluster and paste it in all Azure local nodes (workload clusters) at path `C:\Users\Administrator\AppData\Roaming\AzureLocal\`.
 
 Make sure that the following files are present on each Azure Local node before you deploy a new workload cluster:
@@ -76,10 +88,14 @@ Redeploy the disconnected operations appliance. If the issue persists after 2–
 
 When running the Operations module or using a script-based approach to generate certificates, the process may hang if executed through a Remote Desktop session.
 
-**Mitigation**:  Make sure that the Remote Desktop session isn't mapping smart cards. If smart card mapping is enabled, running the scripts to generate certificates can cause `certreq` to hang. 
+**Mitigation**:
+
+Make sure that the Remote Desktop session isn't mapping smart cards. If smart card mapping is enabled, running the scripts to generate certificates can cause `certreq` to hang.
+
 ### Set-MgmtClusterDenyPolicy.ps1 script is missing
 
 **Mitigation**: Generate the file using the below script:
+
 ```powershell
 <#
 .SYNOPSIS
@@ -139,7 +155,6 @@ param(
     [Parameter(Mandatory = $false)]
     [switch]$AllSubscriptions
 )
-
 
 # Validate required Az modules
 $modAccounts = Get-Module -ListAvailable -Name Az.Accounts | Sort-Object Version -Descending | Select-Object -First 1
