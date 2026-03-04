@@ -519,21 +519,20 @@ Follow these steps to create an Azure Local instance (cluster):
 Perform the following tasks after deploying Azure Local with disconnected operations:
 
 1. **Back up the BitLocker keys (do not skip this step)**. During deployment, the appliance is encrypted. Without the recovery keys for the volumes, you can't recover and restore the appliance. For more information, see [Understand security controls with disconnected operations on Azure Local](disconnected-operations-security.md).
-
-1. **Assign extra operators.** You can assign one or more operators by navigating to **Operator subscriptions**. Assign the **contributor** role at the subscription level.
-
+1. **Assign extra operators**. You can assign one or more operators by navigating to **Operator subscriptions**. Assign the **contributor** role at the subscription level.
 1. [Export the host guardian service certificates](disconnected-operations-security.md) and back up the folder you export them to on an external share or drive.
 1. [Register the management cluster](disconnected-operations-registration.md)
-1. **Lock down the management cluster** - Prevent operators from creating workloads on the management cluster. Limit operator access to a few and use Azure Policy to prevent workloads on the cluster resource. 
-1. Clean up disks (If data disks was used as part of bootstrap)
+1. **Lock down the management cluster**. Restrict operators from deploying workloads on the management cluster. Limit operator access to a select few and enforce this restriction using Azure Policy to block workloads on the cluster resource. 
+1. Clean up disks. If data disks were used during the bootstrap process, ensure they are removed.
 
 > [!NOTE]
 > Do not skip these steps. Consider this as a deployment completion checklist. These steps are critical in order to be able to recover in case of disasters, receive support and to stay compliant.
 
 ## Appendix
-### Lock down management cluster (using Policy)
-```powershell
 
+### Lock down management cluster (using Azure Policy)
+
+```powershell
 $operatorSubscriptionId = ''
 $resourceGroup = ''
 $customLocationId = 'my-cluster'
@@ -541,9 +540,10 @@ cd "$applianceConfigBasePath\OperationsModule\AzureLocalOrchestration"
 .\Set-MgmtClusterDenyPolicy.ps1 `
         -SubscriptionId "$operatorSubscriptionId" `
         -MgmtClusterCustomLocationId "/subscriptions/$($subscriptionId)/resourceGroups/$($resourceGroup)/providers/Microsoft.ExtendedLocation/customLocations/$($customLocationId)"
-
 ```
+
 ### Clean up data disks used for bootstrap
+
 ```powershell
 # ===============================
 # Remove CSV and Return Space to Pool
@@ -561,7 +561,6 @@ Write-Host "Found CSV: $($csv.Name)"
 # --- Remove CSV ---
 $csv = remove-ClusterSharedVolume -Name $CsvName -ErrorAction Stop
 Write-Host "Removed CSV: $($csv.Name)"
-
 
 # --- Take Cluster Resources offline ---
 Write-Host "Taking CSV resource offline..." -ForegroundColor Yellow
