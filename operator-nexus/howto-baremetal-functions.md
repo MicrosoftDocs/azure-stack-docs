@@ -309,6 +309,9 @@ As of the 2506.2 release, the password value for iDRAC can be provided as a Key 
 
 [!INCLUDE [warning-do-not-run-multiple-actions](./includes/baremetal-machines/warning-do-not-run-multiple-actions.md)]
 
+> [!IMPORTANT]
+> Avoid using the `replace` action with option `--storage-policy Preserve"` when the BMM Motherboard has been replaced, as it is known to cause issues that will lead to BMM replace failure.
+
 ```azurecli
 az networkcloud baremetalmachine replace \
   --name <BareMetalMachineName> \
