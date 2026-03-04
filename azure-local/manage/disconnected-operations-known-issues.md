@@ -57,7 +57,7 @@ There's a known issue with the Azure Policy portal interface in this release. As
 
 #### SSH keys
 
-There's a known issue in the Azure Portal that prevents creating SSH keys during the creation of Linux VMs or Azure Kubernetes Service (AKS) clusters.
+There's a known issue in the Azure portal that prevents creating SSH keys during the creation of Linux VMs or Azure Kubernetes Service (AKS) clusters.
 
 **Mitigation**:
 
