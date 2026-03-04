@@ -318,7 +318,7 @@ az networkcloud baremetalmachine replace \
   --boot-mac-address <PXE_MAC> \
   --machine-name <OS_HOSTNAME> \
   --serial-number <SERIAL_NUMBER> \
-  --storage-policy <"Preserve" or "Delete"> \
+  --storage-policy <"Preserve" or "DiscardAll"> \
   --subscription <subscriptionID> \
   --safeguard-mode <"All" or "None">
 ```
