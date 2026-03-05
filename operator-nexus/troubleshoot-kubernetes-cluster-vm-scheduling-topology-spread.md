@@ -40,9 +40,9 @@ This error occurs when:
 
 1. The latest `networkcloud` CLI extension is required. It can be installed following the steps listed [here](./howto-install-cli-extensions.md).
 1. Identify a control-plane bare metal machine in the cluster's managed resource group. Run commands that use `kubectl` must be executed from a control-plane bare metal machine.
-1. Identify the internal Nexus Kubernetes cluster name. The undercloud uses an internal name that includes a hash suffix appended to your Nexus Kubernetes cluster name (for example, `my-naks-cluster-0601b5b4`). You can find this name by listing the nodes in your Nexus Kubernetes cluster — the control plane node names are prefixed with the internal cluster name. For example, a node named `my-naks-cluster-0601b5b4-control-plane-8s4vh` indicates the internal cluster name is `my-naks-cluster-0601b5b4`.
+1. Identify the internal Nexus Kubernetes cluster name. The mitigation commands in this guide require the internal cluster name used in the undercloud, which includes a hash suffix appended to your Nexus Kubernetes cluster name (for example, `my-naks-cluster-0601b5b4`). You can find this name by listing the nodes in your Nexus Kubernetes cluster. The control plane node names are prefixed with the internal cluster name. For example, a node named `my-naks-cluster-0601b5b4-control-plane-8s4vh` indicates the internal cluster name is `my-naks-cluster-0601b5b4`.
 
-1. Identify the stuck VM(s). Use the internal cluster name to list VMs for your cluster. VMs with `ErrorUnschedulable` status are affected:
+1. Identify the unschedulable VMs. Use the internal cluster name to list VMs for your cluster. VMs with `ErrorUnschedulable` status are affected:
 
     ~~~azurecli
     az networkcloud baremetalmachine run-read-command \
@@ -65,7 +65,7 @@ This error occurs when:
 
 ## Mitigation options
 
-There are two approaches to resolve this scheduling failure. Review the pros and cons of each approach to determine which is best for your environment.
+The goal is to modify the topology spread constraint on the affected VMs so that the scheduler can place them on an available rack. There are two approaches to achieve this goal. Review the pros and cons of each approach to determine which is best for your environment.
 
 ### Option A: Relax to ScheduleAnyway
 
@@ -73,11 +73,11 @@ This option changes the topology spread constraint from a hard requirement (`DoN
 
 | Pros | Cons |
 |---|---|
-| VMs always get scheduled — no more stuck pods | Could concentrate all VMs on one rack — reduced high availability |
+| VMs always get scheduled. No more stuck pods | Could concentrate all VMs on one rack. Reduced high availability |
 | Scheduler still tries to spread (uses skew as a scoring factor) | Harder to detect placement drift since nothing fails visibly |
 | No risk of scheduling failure in degraded rack scenarios | If a rack goes down with a disproportionate number of VMs, bigger blast radius |
 
-Patch the VM to use `ScheduleAnyway` and delete the VMI so KubeVirt recreates it with the updated constraints. Replace `<vm-name>` with the name of the affected VM identified in the prerequisites:
+Patch the VM to use `ScheduleAnyway` and delete the VirtualMachineInstance (VMI) so KubeVirt recreates it with the updated constraints. Replace `<vm-name>` with the name of the affected VM identified in the prerequisites:
 
 ~~~azurecli
 az networkcloud baremetalmachine run-command \
@@ -94,7 +94,7 @@ This option keeps the hard scheduling constraint but increases the `maxSkew` val
 
 | Pros | Cons |
 |---|---|
-| Still enforces a bound on how uneven placement can get | Doesn't fully solve the problem — with enough racks down, you can still hit the limit |
+| Still enforces a bound on how uneven placement can get | Doesn't fully solve the problem. With enough racks down, you can still hit the limit |
 | Provides more headroom for rack failures and rolling upgrades | Choosing the right value is dependent on rack count and pool size |
 | Failures remain visible (pods go Pending) so you know something is wrong | |
 
@@ -111,13 +111,13 @@ az networkcloud baremetalmachine run-command \
 
 ## Important caveats
 
-- **Not persistent:** The Cluster API Provider KubeVirt (CAPK) owns the VM lifecycle and can recreate it from the original template at any time, wiping out the patch. New VMs created on scale-up or upgrade will also have `maxSkew: 1`. You must patch the VM and delete the VMI quickly before CAPK reconciles. If the patch command errors, the VM may have been recreated with a new name — re-run the VM listing command to get the current name.
-- **VMI delete required:** Patching the VM alone does not restart the virt-launcher pod. You must delete the VMI so KubeVirt recreates it with the updated constraints.
-- **Only apply to affected VMs:** These mitigation steps only need to be applied to VMs that are in `ErrorUnschedulable` status. VMs that are already running are not affected and do not need to be patched.
+- **Not persistent:** The Cluster API Provider KubeVirt (CAPK) owns the VM lifecycle and can recreate it from the original template at any time, wiping out the patch. New VMs created on scale-up or upgrade also have `maxSkew: 1`. You must patch the VM and delete the VMI quickly before CAPK reconciles. If the patch command errors, the VM might no longer exist. Re-run the VM listing command to get the current name.
+- **VMI delete required:** Patching the VM alone doesn't restart the virt-launcher pod. You must delete the VMI so KubeVirt recreates it with the updated constraints.
+- **Only apply to affected VMs:** These mitigation steps only need to be applied to VMs that are in `ErrorUnschedulable` status. VMs that are already running aren't affected and don't need to be patched.
 
 ## Verification
 
-After applying the mitigation, it may take a few minutes for the VM to be scheduled and running. Verify the cluster is healthy by confirming all nodes in your Nexus Kubernetes cluster are in `Ready` status.
+After you apply the mitigation, it may take a few minutes for the VM to be scheduled and running. Verify the cluster is healthy by confirming all nodes in your Nexus Kubernetes cluster are in `Ready` status.
 
 If you still have questions, [contact support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 For more information about Support plans, see [Azure Support plans](https://azure.microsoft.com/support/plans/response/).
