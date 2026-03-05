@@ -77,7 +77,7 @@ This option changes the topology spread constraint from a hard requirement (`DoN
 | Scheduler still tries to spread (uses skew as a scoring factor) | Harder to detect placement drift since nothing fails visibly |
 | No risk of scheduling failure in degraded rack scenarios | If a rack goes down with a disproportionate number of VMs, bigger blast radius |
 
-Patch the VM zone constraint to use `ScheduleAnyway` and delete the VirtualMachineInstance (VMI) so KubeVirt recreates it with the updated constraints. Replace `<vm-name>` with the name of the affected VM identified in the prerequisites. This only relaxes the zone (rack) constraint while keeping the host-level spread constraint intact:
+Patch the VM zone constraint to use `ScheduleAnyway` and delete the VirtualMachineInstance (VMI) so KubeVirt recreates it with the updated constraints. Replace `<vm-name>` with the name of the affected VM identified in the prerequisites (the VMI shares the same name as the VM). This only relaxes the zone (rack) constraint while keeping the host-level spread constraint intact:
 
 ~~~azurecli
 az networkcloud baremetalmachine run-command \
@@ -98,7 +98,7 @@ This option keeps the hard scheduling constraint but increases the `maxSkew` val
 | Provides more headroom for rack failures and rolling upgrades | Choosing the right value is dependent on rack count and pool size |
 | Failures remain visible (pods go Pending) so you know something is wrong | |
 
-Patch the VM zone constraint to increase `maxSkew` from `1` to `2` and delete the VMI so KubeVirt recreates it with the updated constraints. Replace `<vm-name>` with the name of the affected VM identified in the prerequisites. This only increases the zone (rack) skew while keeping the host-level spread constraint intact:
+Patch the VM zone constraint to increase `maxSkew` from `1` to `2` and delete the VMI so KubeVirt recreates it with the updated constraints. Replace `<vm-name>` with the name of the affected VM identified in the prerequisites (the VMI shares the same name as the VM). This only increases the zone (rack) skew while keeping the host-level spread constraint intact:
 
 ~~~azurecli
 az networkcloud baremetalmachine run-command \
