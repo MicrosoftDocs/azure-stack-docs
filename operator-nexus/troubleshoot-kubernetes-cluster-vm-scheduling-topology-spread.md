@@ -40,7 +40,9 @@ This error occurs when:
 
 1. The latest `networkcloud` CLI extension is required. It can be installed following the steps listed [here](./howto-install-cli-extensions.md).
 1. Identify a control-plane bare metal machine in the cluster's managed resource group. Run commands that use `kubectl` must be executed from a control-plane bare metal machine.
-1. Identify the stuck VM(s). Use the `run-read-command` to list VMs for your cluster. VMs with `ErrorUnschedulable` status are affected:
+1. Identify the internal Nexus Kubernetes cluster name. The undercloud uses an internal name that includes a hash suffix appended to your Nexus Kubernetes cluster name (for example, `my-naks-cluster-0601b5b4`). You can find this name by listing the nodes in your Nexus Kubernetes cluster — the control plane node names are prefixed with the internal cluster name. For example, a node named `my-naks-cluster-0601b5b4-control-plane-8s4vh` indicates the internal cluster name is `my-naks-cluster-0601b5b4`.
+
+1. Identify the stuck VM(s). Use the internal cluster name to list VMs for your cluster. VMs with `ErrorUnschedulable` status are affected:
 
     ~~~azurecli
     az networkcloud baremetalmachine run-read-command \
@@ -48,17 +50,17 @@ This error occurs when:
         --resource-group "<cluster_MRG>" \
         --subscription "<subscription>" \
         --limit-time-seconds 60 \
-        --commands "[{command:'kubectl get',arguments:[vm,-n,nc-system,-l,'cluster.x-k8s.io/cluster-name=<cluster-name>',-o,wide]}]"
+        --commands "[{command:'kubectl get',arguments:[vm,-n,nc-system,-l,'cluster.x-k8s.io/cluster-name=<internal-cluster-name>']}]"
     ~~~
 
     > [!NOTE]
-    > Replace `<cluster-name>` with the name of your Nexus Kubernetes cluster.
+    > Replace `<cluster_MRG>` with the managed resource group of the Nexus cluster (undercloud), which contains the bare metal machine resources.
 
     Example output showing a stuck VM:
 
     ```
     NAME                                                STATUS               READY
-    virtualmachine.kubevirt.io/my-naks-cluster-424beda2-md-46pdq-8m5mf   ErrorUnschedulable   False
+    virtualmachine.kubevirt.io/my-naks-cluster-0601b5b4-md-46pdq-8m5mf   ErrorUnschedulable   False
     ```
 
 ## Mitigation options
