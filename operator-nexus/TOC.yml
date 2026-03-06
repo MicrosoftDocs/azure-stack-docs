@@ -503,6 +503,8 @@
               href: troubleshoot-kubernetes-cluster-stuck-workloads-due-to-power-failure.md
         - name: Troubleshoot a Kubernetes Cluster Node in NotReady,Scheduling Disabled after Runtime Upgrade
           href: troubleshoot-kubernetes-cluster-node-cordoned.md
+        - name: Troubleshoot Nexus Kubernetes VM scheduling failures due to topology spread constraints
+          href: troubleshoot-kubernetes-cluster-vm-scheduling-topology-spread.md
         - name: Troubleshoot issues with Azure Arc enrollment for virtual machines with managed identities
           href: troubleshoot-virtual-machines-arc-enroll-with-managed-identities.md
 - name: FAQ
