@@ -102,7 +102,7 @@ On the new node that you plan to add, follow these steps.
     >[!NOTE]
     > - For versions 2503 and later, you'll need to use the OS image of the same solution as that running on the existing cluster.
     > - Use the [Get solution version](../update/azure-update-manager-23h2.md#get-solution-version) to identify the solution version that you are running on the cluster.
-    > - Use the [OS image](https://github.com/Azure-Samples/AzureLocal/blob/main/os-image/os-image-tracking-table.md) table to identify and download the appropriate OS image version.
+    > - Use the [OS image](https://github.com/Azure-Samples/AzureLocal/blob/main/os-image/os-image-tracking-table.md) table to identify and download the appropriate OS image version. Do not rely on the Azure portal, as it does not list all available OS image versions and may not include the required matching version.
 
 1. Register the node with Arc. Follow the steps in [Register with Arc and set up permissions](../deploy/deployment-arc-register-server-permissions.md).
 
