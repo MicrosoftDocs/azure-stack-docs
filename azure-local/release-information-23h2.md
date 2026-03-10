@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: release-notes
 ms.service: azure-local
-ms.date: 03/02/2026
+ms.date: 03/06/2026
 ms.subservice: hyperconverged
 ---
 
@@ -121,9 +121,9 @@ The following table summarizes the release information for Azure Local across ol
 | ------ | ------- | --------------- | ---------- | ------------ |
 | 11.2508.1001.51 <br><br> Availability date: 2025-08-29 | 25398.1791 | [August OS security update](security-update/security-update.md?view=azloc-previous&preserve-view=true) | [Features and improvements](./whats-new.md?view=azloc-previous&preserve-view=true#features-and-improvements-in-2508) | [Known issues](./known-issues.md?view=azloc-previous&preserve-view=true) |
 | 11.2507.1001.9 <br><br> Availability date: 2025-07-24 | 25398.1732 | [July OS security update](security-update/security-update.md?view=azloc-previous&preserve-view=true) | [Features and improvements](./whats-new.md?view=azloc-previous&preserve-view=true#features-and-improvements-in-2507) | [Known issues](./known-issues.md?view=azloc-previous&preserve-view=true) |
-| 11.2506.1001.28 <br><br> Availability date: 2025-07-02 | 25398.1665 | [June OS security update](security-update/security-update.md?view=azloc-2506&preserve-view=true) | [Features and improvements](./whats-new.md?view=azloc-2506&preserve-view=true#features-and-improvements-in-2506) | [Known issues](./known-issues.md?view=azloc-2506&preserve-view=true) |
-| 11.2505.1001.22 <br><br> Availability date: 2025-05-28 | 25398.1611 | [May OS security update](security-update/security-update.md?view=azloc-2505&preserve-view=true) | [Features and improvements](./whats-new.md?view=azloc-2505&preserve-view=true#features-and-improvements-in-2505) | [Known issues](./known-issues.md?view=azloc-2505&preserve-view=true) |
-| 11.2504.1001.21 <br><br> Availability date: 2026-01-22 <br><br> Supersedes: 11.2504.1001.19 <br><br> Availability date: 2025-04-21 | 25398.1551 | [April OS security update](security-update/security-update.md?view=azloc-2504&preserve-view=true) | [Features and improvements](./whats-new.md?view=azloc-2504&preserve-view=true#features-and-improvements-in-2504) | [Known issues](./known-issues.md?view=azloc-2504&preserve-view=true) |
+| 11.2506.1001.28 <br><br> Availability date: 2025-07-02 | 25398.1665 | [June OS security update](security-update/security-update.md?view=azloc-previous&preserve-view=true) | [Features and improvements](./whats-new.md?view=azloc-previous&preserve-view=true#features-and-improvements-in-2506) | [Known issues](./known-issues.md?view=azloc-previous&preserve-view=true) |
+| 11.2505.1001.22 <br><br> Availability date: 2025-05-28 | 25398.1611 | [May OS security update](security-update/security-update.md?view=azloc-previous&preserve-view=true) | [Features and improvements](./whats-new.md?view=azloc-previous&preserve-view=true#features-and-improvements-in-2505) | [Known issues](./known-issues.md?view=azloc-previous&preserve-view=true) |
+| 11.2504.1001.21 <br><br> Availability date: 2026-01-22 <br><br> Supersedes: 11.2504.1001.19 <br><br> Availability date: 2025-04-21 | 25398.1551 | [April OS security update](security-update/security-update.md?view=azloc-previous&preserve-view=true) | [Features and improvements](./whats-new.md?view=azloc-previous&preserve-view=true#features-and-improvements-in-2504) | [Known issues](./known-issues.md?view=azloc-previous&preserve-view=true) |
 
 #### [OS build 25398.xxx (10.xxxx)](#tab/OS-build-25398-xx)
 

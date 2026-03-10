@@ -47,6 +47,9 @@ az networkfabric fabric show \
 * `--query`: Filters the output to show only Administrative lock type and its current state.
 * `-o table`: Formats the output as a table for better readability.
 
+> [!NOTE]
+> An administrativeLock is allowed only when NetworkFabric.configurationState is one of the following - Provisioned, Accepted, PendingAdministrativeUpdate, Succeeded, Failed. In addition, NetworkFabric.provisioningState should be Succeed.
+
 ### Example
 
 ```Azure CLI
