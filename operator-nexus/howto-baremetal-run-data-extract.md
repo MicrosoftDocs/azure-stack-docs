@@ -5,7 +5,7 @@ author: eak13
 ms.author: ekarandjeff
 ms.service: azure-operator-nexus
 ms.topic: how-to
-ms.date: 2/13/2025
+ms.date: 03/12/2026
 ms.custom: template-how-to, devx-track-azurecli
 ---
 
@@ -88,20 +88,20 @@ az networkcloud baremetalmachine run-data-extract --name "<machine-name>"  \
 
 You can specify multiple commands by using JSON format in the `--commands` option. Each `command` value specifies the command and arguments. For a command with multiple arguments, provide the arguments as a list in the `arguments` parameter. For instructions on how to construct the `--commands` structure, see [Azure CLI shorthand](https://github.com/Azure/azure-cli/blob/dev/doc/shorthand_syntax.md).
 
-These commands can take a long time to run, so we recommend that you set the `--limit-time-seconds` value to at least 600 seconds (10 minutes). When you use the `Debug` option or run multiple extracts, it might take longer than 10 minutes.
+These commands can take a long time to run, so we recommend that you set the `--limit-time-seconds` value to at least 1000 seconds (15+ minutes).
 
 In the response, the operation performs asynchronously and returns an HTTP status code of `202`. To learn how to track command completion and view the output file, go to [How to view the full output of a command in the associated storage account](#how-to-view-the-full-output-of-a-command-in-the-associated-storage-account).
 
 ### <a name = "hardware-support-data-collection"></a> The hardware-support-data-collection command
 
-The following example runs the `hardware-support-data-collection` command and gets `SysInfo` and `TTYLog` logs from the Dell server. The script runs a `racadm supportassist collect` command on the designated bare-metal machine. The resulting tar.gz file contains the file outputs of the extract command in the ZIP file `hardware-support-data-<timestamp>.zip`.
+The following example runs the `hardware-support-data-collection` command and gets `SysInfo`, `TTYLog`, and `Debug` logs from the Dell server. The script runs a `racadm supportassist collect` command on the designated bare-metal machine. The resulting tar.gz file contains the file outputs of the extract command in the ZIP file `hardware-support-data-<timestamp>.zip`.
 
 ```azurecli
 az networkcloud baremetalmachine run-data-extract --name "bareMetalMachineName" \
   --resource-group "cluster_MRG" \
   --subscription "subscription" \
-  --commands '[{"arguments":["SysInfo", "TTYLog"],"command":"hardware-support-data-collection"}]' \
-  --limit-time-seconds 600
+  --commands '[{"arguments":["SysInfo", "TTYLog","Debug"],"command":"hardware-support-data-collection"}]' \
+  --limit-time-seconds 1000
 ```
 
 #### Output from the `hardware-support-data-collection` command
@@ -109,7 +109,7 @@ az networkcloud baremetalmachine run-data-extract --name "bareMetalMachineName" 
 ```azurecli
 ====Action Command Output====
 Executing hardware-support-data-collection command
-Getting following hardware support logs: SysInfo,TTYLog
+Getting following hardware support logs: SysInfo,TTYLog,Debug
 Job JID_814372800396 is running, waiting for it to complete ...
 Job JID_814372800396 Completed.
 ---------------------------- JOB -------------------------

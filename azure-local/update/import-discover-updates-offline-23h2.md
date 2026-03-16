@@ -5,7 +5,7 @@ author: ronmiab
 ms.author: robess
 ms.topic: how-to
 ms.reviewer: arduppal
-ms.date: 03/02/2026
+ms.date: 03/13/2026
 ms.subservice: hyperconverged
 ---
 
@@ -36,6 +36,11 @@ The following tables list the **CombinedSolutionBundle** versions and associated
 
 For more information on the release cadence, see [Azure Local release information](../release-information-23h2.md).
 
+> [!NOTE]
+>
+> - If your cluster is running version **12.2509.1001.22** on 24H2, download the **12.2510.1002.94** combined solution bundle.
+> - If your cluster is running version **11.2510** on 23H2, download the **12.2510.1002.531** combined solution bundle to upgrade to 24H2.
+
 ### [OS build 26100.xxxx](#tab/OS-build-26100-xxxx)
 
 | OS Build | Download URI | SHA256 |
@@ -45,6 +50,7 @@ For more information on the release cadence, see [Azure Local release informatio
 | 26100.7462 | [12.2512.1002.16](https://azurestackreleases.download.prss.microsoft.com/dbazure/AzureLocal/CombinedSolutionBundle/12.2512.1002.16/CombinedSolutionBundle.12.2512.1002.16.zip) <br><br> Availability date: <br><br> 2025-12-16 | EE8BC57EA3B59B1761B07F99B559F5E6280CDE21C0ECDC939EAC6BC7B8D2F4E6 |
 | 26100.7171 | [12.2511.1002.502](https://azurestackreleases.download.prss.microsoft.com/dbazure/AzureLocal/CombinedSolutionBundle/12.2511.1002.502/CombinedSolutionBundle.12.2511.1002.502.zip) <br><br> Availability date: <br><br> 2025-12-03 | 497ABE8459F86415B91A7F75741B37975B15A19BFFFEDB1A45F171F49B9CB1F6 |
 | 26100.6899 | [12.2510.1002.531](https://azurestackreleases.download.prss.microsoft.com/dbazure/AzureLocal/CombinedSolutionBundle/12.2510.1002.531/CombinedSolutionBundle.12.2510.1002.531.zip) <br><br> Availability date: <br><br> 2026-02-17 | 116AEFD4E0513C6CB78A8A67C45FB0F4639067D20801F319F5C1920A981DA0A9 |
+| 26100.6899 | [12.2510.1002.94](https://azurestackreleases.download.prss.microsoft.com/dbazure/AzureLocal/CombinedSolutionBundle/12.2510.1002.94/CombinedSolutionBundle.12.2510.1002.94.zip) <br><br> Availability date: <br><br> 2025-11-05 | 4A82DB455A5487D183310ED8252D25EE6A1489FE992C47E6F49B8996A2E4FC15 |
 | 26100.6584 | [12.2509.1001.22](https://azurestackreleases.download.prss.microsoft.com/dbazure/AzureLocal/CombinedSolutionBundle/12.2509.1001.22/CombinedSolutionBundle.12.2509.1001.22.zip) <br><br> Availability date: <br><br> 2025-09-22 | 15771552A97785B7EE291587FE62EE678EDE850E2250A5407EE6738AFEF729B6 |
 | 26100.4946 | [12.2508.1001.52](https://azurestackreleases.download.prss.microsoft.com/dbazure/AzureLocal/CombinedSolutionBundle/12.2508.1001.52/CombinedSolutionBundle.12.2508.1001.52.zip) <br><br> Availability date: <br><br> 2025-08-29 | 410723EAD2177247932B10AD79978F2E4D8049FBFF70E8F9F94943384B59BB80 |
 | 26100.4652 | [12.2507.1001.10](https://azurestackreleases.download.prss.microsoft.com/dbazure/AzureLocal/CombinedSolutionBundle/12.2507.1001.10/CombinedSolutionBundle.12.2507.1001.10.zip) <br><br> Availability date: <br><br> 2025-07-25 | 8FAC8A7F52C570682407573F7AAAB79BDBA62299C9F50C3497FD0A10FBF73105 |

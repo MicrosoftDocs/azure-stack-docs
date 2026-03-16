@@ -51,13 +51,11 @@ The following table lists the fixed issues in this release:
 
 ## Known issues
 
-There's no known issue in this release. Any previously known issues have been fixed in subsequent releases.
-
-<!--The following table lists the known issues in this release:
+The following table lists the known issues in this release:
 
 |Feature  |Issue    |Workaround  |
-|---------|---------|------------|-->
-
+|---------|---------|------------|
+| Deployment | If an IP address conflict is detected with the default AKS Arc IP ranges `10.244.0.0/16` or `10.96.0.0/12`, a new validator in version 2602 blocks the deployment or solution upgrade. | - Deployment: If the IP address conflict can't be resolved, you must deploy Azure Local using version 2601. Once deployed, you can update to version 2602 using the solution update process.<br>- Solution upgrade: There's no workaround available for solution upgrade. |
 
 ## Known issues from previous releases
 
