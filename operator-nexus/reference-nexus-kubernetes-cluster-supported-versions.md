@@ -99,6 +99,8 @@ Note the following important changes to make before you upgrade to any of the av
 
 - The azure-arc-k8sagents version refers to the version of this Feature shipped with the version bundle. The Arc-enabled Kubernetes agent is set to auto upgrade to the latest version of the agent whenever it's available.
 - Starting with 4.6.0, the ipam-cni-plugin version reflects the internal app version (4.6.0-32) versus the chart version (1.0.10). For 4.6.0, both are shown for transition's sake.
+- When a high-risk or known breaking change exists, certain upgrade paths are blocked automatically. Examples include double-jumps across CoreDNS versions, which only support n-1 to n upgrades, and the etcd upgrade issue described in the following caution. In such cases, users must first upgrade to an intermediate version bundle before they can upgrade to the latest version bundle. Ensure that your upgrade path decisions are valid and don't rely solely on the available upgrades presented in the CLI or API.
+- Higher jumps across version bundles introduce more risk to the upgrade process. We recommend upgrading your cluster frequently to stay up to date with the latest Kubernetes versions, OS images, and Feature versions for the best experience with Nexus Kubernetes.
 
 <!-- prettier-ignore-start -->
 > [!CAUTION]

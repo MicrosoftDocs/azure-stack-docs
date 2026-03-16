@@ -104,6 +104,18 @@ items:
         href: plan/network-patterns-sdn-considerations.md
     - name: Review Azure Arc gateway for Azure Local
       href: deploy/deployment-azure-arc-gateway-overview.md
+    - name: Review Azure Private Endpoints for Azure Local
+      items:
+      - name: About private endpoint scenarios
+        href: deploy/about-private-endpoints.md
+      - name: Private endpoints - no proxy, no gateway
+        href: deploy/deploy-private-endpoints-no-proxy-no-gateway.md
+      - name: Private endpoints - no proxy, with gateway
+        href: deploy/deploy-private-endpoints-no-proxy-with-gateway.md
+      - name: Private endpoints - with proxy, no gateway
+        href: deploy/deploy-private-endpoints-with-proxy-no-gateway.md
+      - name: Private endpoints - with proxy, with gateway
+        href: deploy/deploy-private-endpoints-with-proxy-with-gateway.md
     - name: Review cloud deployment network considerations
       href: plan/cloud-deployment-network-considerations.md
     - name: Review security
@@ -796,12 +808,16 @@ items:
         href: ./multi-rack/multi-rack-create-arc-virtual-machines.md
       - name: Connect to Azure Local VMs via SSH
         href: ./multi-rack/multi-rack-connect-arc-vm-using-ssh.md
+      - name: Connect to Azure Local VMs via serial console
+        href: ./multi-rack/multi-rack-serial-console.md
       - name: Manage Azure Local VMs
         href: ./multi-rack/multi-rack-manage-arc-virtual-machines.md
       - name: Manage Azure Local VM resources
         href: ./multi-rack/multi-rack-manage-arc-virtual-machine-resources.md
       - name: Manage Azure Local VM extensions
         href: ./multi-rack/multi-rack-virtual-machine-manage-extension.md
+      - name: Create and restore data disk snapshots
+        href: ./multi-rack/multi-rack-disk-snapshot.md
     - name: Deploy SDN infrastructure
       items:
       - name: Create NSGs

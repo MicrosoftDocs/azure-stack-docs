@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 02/19/2025
+ms.date: 03/12/2025
 ms.subservice: hyperconverged
 ---
 
@@ -44,6 +44,38 @@ A new deployment of Azure Local introduces two baselines documents injected by t
 > [!IMPORTANT]
 > After you apply the security baseline documents, a new mechanism is used to apply and maintain [Security baseline settings](https://aka.ms/hci-securitybase).
 
+# [OS build 25398.xxxx](#tab/23h2)
+
+1. If your Azure Local machines inherit baseline settings through mechanisms such as GPO, DSC, or scripts, we recommend that you:
+
+    - Remove these duplicate settings from such mechanisms.
+    - Alternatively, after you apply the security baseline, [Disable the drift control mechanism](./manage-secure-baseline.md).
+
+    The new security posture of your servers combines previous settings, new settings, and overlapping settings with updated values.
+
+    > [!NOTE]
+    > Microsoft tests and validates the Azure Local security settings. We strongly recommend that you keep these settings. Use of custom settings can potentially lead to system instability, incompatibility with new product scenarios, and could require extensive testing and troubleshooting on your part.
+
+1. When running the following commands, you'll find the documents aren't in place. These cmdlets don't return any output.
+
+    ```powershell
+    Get-ASOSConfigSecuredCoreDoc
+    Get-ASOSConfigSecuritySettingsDoc
+    ```
+
+    If the cmdlets do return output, the documents are already in place and you can stop here.
+
+1. To enable the baselines, go to each of the nodes you upgraded. Run the following commands locally or remotely using a privileged administrator account:
+
+    ```powershell
+    Start-AzSSecuritySettingsConfiguration
+    Start-AzSSecuredCoreConfiguration
+    ```
+
+1. Reboot the nodes in a proper sequence for the new settings to become effective. For more information, see [Suspend and resume Azure Local machines for maintenance](/azure/azure-local/manage/suspend-resume-cluster-maintenance).
+
+# [OS build 26100.xxxx](#tab/24h2)
+
 1. If your servers inherit baseline settings through mechanisms such as GPO, DSC, or scripts, we recommend that you:
 
     - Remove these duplicate settings from such mechanisms.
@@ -52,27 +84,35 @@ A new deployment of Azure Local introduces two baselines documents injected by t
     The new security posture of your servers combines previous settings, new settings, and overlapping settings with updated values.
 
     > [!NOTE]
-    > Microsoft tests and vaildates the Azure Local security settings. We strongly recommend that you keep these settings. Use of custom settings can potentially lead to system instability, incompatibility with new product scenarios, and could require extensive testing and troubleshooting on your part.
+    > Microsoft tests and validates the Azure Local security settings. We strongly recommend that you keep these settings. Use of custom settings can potentially lead to system instability, incompatibility with new product scenarios, and could require extensive testing and troubleshooting on your part.
 
-1. When running the following commands, you'll find the documents aren't in place. These cmdlets won't return any output.
+1. When running the following commands, you'll find the documents aren't in place. These cmdlets don't return any output.
 
-   ```powershell
-   Get-ASOSConfigSecuredCoreDoc
-   Get-ASOSConfigSecuritySettingsDoc
-   ```
+    ```powershell
+    Get-ASOSConfigSecuredCoreDoc
+    Get-ASOSConfigSecuritySettingsDoc
+    Get-AzSOSConfigDefenderAVDoc
+    ```
+
+    If the cmdlets do return output, the documents are already in place and you can stop here.
 
 1. To enable the baselines, go to each of the nodes you upgraded. Run the following commands locally or remotely using a privileged administrator account:
 
-   ```powershell
-   Start-AzSSecuritySettingsConfiguration
-   Start-AzSSecuredCoreConfiguration
-   ```
+    ```powershell
+    Start-AzSSecuritySettingsConfiguration
+    Start-AzSSecuredCoreConfiguration
+    Start-AzSDefenderAntivirusConfiguration
+    ```
 
-1. Reboot the nodes in a proper sequence for the new settings to become effective.
+1. Reboot the nodes in a proper sequence for the new settings to become effective. For more information, see [Suspend and resume Azure Local machines for maintenance](/azure/azure-local/manage/suspend-resume-cluster-maintenance).
+
+---
 
 ### Confirm the status of the security baselines
 
 After rebooting, rerun the following cmdlets to confirm the status of security baselines:
+
+# [OS build 25398.xxxx](#tab/23h2)
 
 ```powershell
 Get-ASOSConfigSecuredCoreDoc
@@ -91,6 +131,43 @@ OsConfiguration": {
 "context": "device",
 "scenario": "ApplianceSecurityBaselineConfig"
 ```
+
+# [OS build 26100.xxxx](#tab/24h2)
+
+```powershell
+Get-ASOSConfigSecuredCoreDoc
+Get-ASOSConfigSecuritySettingsDoc
+Get-AzSOSConfigDefenderAVDoc
+```
+
+You get an output for each cmdlet with baseline information.
+
+The following table shows a partial example output from `Get-AzSOSConfigSecuritySettingsDoc`:
+
+|Name|Value|
+|--|--|
+|AfdDisableAddressSharing|`1`|
+|AllowAnonymousSIDOrNameTranslation|`0`|
+|AllowCustomSSPAPIntoLSASS|`1`|
+|AllowedToFormatAndEjectRemovableMedia|`0`|
+
+The following table shows a partial example output from `Get-AzSOSConfigSecuredCoreDoc`:
+
+|Name|Value|
+|--|--|
+|ConfigureSystemGuardLaunch|`2`|
+|EnableVirtualizationBasedSecurity|`1`|
+|HypervisorEnforcedCodeIntegrity|`0`|
+
+The following table shows a partial example output from `Get-AzSOSConfigDefenderAVDoc`:
+
+|Name|Value|
+|--|--|
+|AllowDatagramProcessingOnWinServer|`0`|
+|AllowNetworkProtectionOnWinServer|`1`|
+|ASRBlockAbuseOfExploitedVulnerableSignedDrivers|`1`|
+
+---
 
 ### Enable encryption at-rest
 
@@ -121,7 +198,7 @@ For new deployments, Application Control is enabled in *Enforced* mode (blocking
     > [!WARNING]
     > Failure to create the necessary AppControl policies to enable non-Microsoft software may prevent that software from running.
 
-For instructions to enable in *Enforced* mode, see [Manage Windows Defender Application Control for Azure Local](./manage-wdac.md#switch-application-control-policy-modes).
+For instructions to enable in *Enforced* mode, see [Manage Application Control for Azure Local](./manage-wdac.md#switch-application-control-policy-modes).
 
 ## Next steps
 
