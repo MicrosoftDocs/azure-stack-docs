@@ -113,7 +113,9 @@ az networkcloud cluster create --name "<CLUSTER_NAME>" --location "<LOCATION>" \
 
 ### Automatic discovery with sentinel values
 
-You can pass sentinel values for `COMPX_SVRY_BMC_MAC`, `COMPX_SVRY_BOOT_MAC`, and `COMPX_SVRY_SN` to have the service discover these values automatically during provisioning.
+For `COMPX_SVRY_BMC_MAC`, `COMPX_SVRY_BOOT_MAC`, and `COMPX_SVRY_SN`, you can use sentinel values to indicate that the actual hardware value isn't being supplied in the request.
+
+A sentinel value is a special placeholder value that tells Operator Nexus to discover the real value automatically during provisioning instead of using a customer-provided value.
 
 Use the following sentinel values:
 
@@ -121,7 +123,7 @@ Use the following sentinel values:
 - `"bootMacAddress": "00:00:00:00:00:00"`
 - `"serialNumber": "000000"`
 
-If a parameter is set to its sentinel value, Operator Nexus discovers the value automatically. If you provide a value other than the sentinel value, the provided value is used as-is.
+If one of these parameters is set to its sentinel value, Operator Nexus treats it as a request to auto-discover the corresponding hardware value. If you provide a value other than the sentinel value, Operator Nexus uses the value you provided and doesn't perform discovery for that parameter.
 
 ### Parameters for Cluster operations
 
