@@ -3,7 +3,7 @@ title:  Security updates for Azure Local
 description: Security updates for Azure Local.
 author: alkohli
 ms.topic: release-notes
-ms.date: 02/13/2026
+ms.date: 03/16/2026
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: hyperconverged
@@ -12,6 +12,46 @@ ms.subservice: hyperconverged
 # Security updates for Azure Local
 
 This article lists the various security updates that are available for Azure Local.
+
+::: moniker range="=azloc-2603"
+
+## March OS security update (KB5078740) for Azure Local
+
+This section provides the 2603 security updates associated with OS build **26100.32522** released on March 10, 2026 ([KB5078740](https://support.microsoft.com/en-us/topic/march-10-2026-kb5078740-os-build-26100-32522-fea85758-f53d-4e3e-bbbf-62d9998f92bd)). It also includes key notifications, announcements, change logs, and end-of-support notices.
+
+To learn more about Windows update terminology, see [Types of Windows updates](/troubleshoot/windows-client/deployment/standard-terminology-software-updates) and the [monthly quality update types](https://techcommunity.microsoft.com/t5/windows-it-pro-blog/windows-monthly-updates-explained/ba-p/3773544). For an overview, see the update history page for Azure Stack HCI, version 24H2.  
+
+## Improvements
+
+This security update contains fixes and quality improvements from [KB5078740](https://support.microsoft.com/en-us/topic/march-10-2026-kb5078740-os-build-26100-32522-fea85758-f53d-4e3e-bbbf-62d9998f92bd) (released March 10, 2026). The following summary outlines key issues addressed by this update. Also, included are available new features. The bold text within the brackets indicates the item or area of the change. ​​​
+
+- This update makes miscellaneous security improvements to internal OS functionality.
+
+If you've already installed previous updates, your device will download and install only the new updates included in this package.
+
+For more information about security vulnerabilities, see the [Security Update Guide](https://portal.msrc.microsoft.com/security-guidance) and the [March 2026 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2026-Mar).
+
+For an overview of Azure local, see [What is Azure Local?](../overview.md)
+
+## Known issues
+
+### Windows Server Update Services (WSUS) doesn't display error details
+
+After you install [KB5070881](https://support.microsoft.com/topic/october-23-2025-kb5070881-os-build-26100-6905-out-of-band-8e7ac742-6785-4677-87e4-b73dd8ac0122?preview=true) or later updates, Windows Server Update Services (WSUS) doesn't display synchronization error details within its error reporting. This functionality is temporarily removed to address the Remote Code Execution Vulnerability [CVE-2025-59287](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2025-59287).
+
+## To install
+
+### Before you install this update  
+
+Microsoft combines the latest servicing stack update (SSU) for your operating system with the latest cumulative update (LCU). For general information about SSUs, see [Servicing stack updates](/windows/deployment/update/servicing-stack-updates) and [Servicing Stack Updates (SSU): Frequently Asked Questions](https://support.microsoft.com/topic/servicing-stack-updates-ssu-frequently-asked-questions-06b62771-1cb0-368c-09cf-87c4efc4f2fe).
+
+To install the LCU on your Azure Local instance, see [Update Azure Local](../update/azure-update-manager-23h2.md).
+
+## File Information
+
+For a list of the files provided in this update, download the file information for [cumulative update 5078740](https://go.microsoft.com/fwlink/?linkid=2355918).
+
+::: moniker-end
 
 ::: moniker range="=azloc-2602"
 
@@ -365,7 +405,7 @@ For a list of the files that are provided in this update, download the file info
 
 ::: moniker-end
 
-::: moniker range="=azloc-2509"
+::: moniker range="=azloc-previous"
 
 ## September OS security updates (KB5065425 and KB5065426) for Azure Local
 
@@ -380,13 +420,13 @@ For the 2509 release of Azure Local, Microsoft released two security updates, ea
 
 This section provides the 2509 security updates associated with OS build **25398.1849**.
 
-## Windows Secure Boot certificate expiration
+### Windows Secure Boot certificate expiration
 
 The Azure Local product team is aware of the upcoming expiration of the boot certificates of Windows devices and is actively working with solution OEM partners to deliver a managed update. Upcoming solution updates will initiate the mitigation process to address this scenario.
 
 To learn more about differences between security updates, optional non-security preview updates, out-of-band (OOB) updates, and continuous innovation, see [Windows monthly updates explained](https://techcommunity.microsoft.com/blog/windows-itpro-blog/windows-monthly-updates-explained/3773544). For information on Windows update terminology, see the different types of [Windows software updates](/troubleshoot/windows-client/installing-updates-features-roles/standard-terminology-software-updates).
 
-## Improvements
+### Improvements
 
 This security update includes quality improvements. Below is a summary of the key issues that this update addresses when you install this KB. If there are new features, it lists them as well. The bold text within the brackets indicates the item or area of the change.
 
@@ -414,11 +454,11 @@ This security update includes quality improvements. Below is a summary of the ke
 
 For more information about security vulnerabilities, see the [Security Update Guide](https://msrc.microsoft.com/security-guidance) and the [September 2025 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2025-Sep).
 
-## Known issues
+### Known issues
 
 Microsoft is not currently aware of any issues with this update.​​​​​
 
-## To install
+### To install
 
 **Before you install this update**
 
@@ -449,13 +489,13 @@ For a list of the files that are provided in this update, download the file info
 
 This section provides the 2509 security updates associated with OS build **26100.6584**.
 
-## Windows Secure Boot certificate expiration
+### Windows Secure Boot certificate expiration
 
 The Azure Local product team is aware of the upcoming expiration of the boot certificates of Windows devices and is actively working with solution OEM partners to deliver a managed update. Upcoming solution updates will initiate the mitigation process to address this scenario.
 
 To learn more about differences between security updates, optional non-security preview updates, out-of-band (OOB) updates, and continuous innovation, see [Windows monthly updates explained](https://techcommunity.microsoft.com/blog/windows-itpro-blog/windows-monthly-updates-explained/3773544). For information on Windows update terminology, see the different types of [Windows software updates](/troubleshoot/windows-client/installing-updates-features-roles/standard-terminology-software-updates).
 
-## Improvements
+### Improvements
 
 This security update includes quality improvements. Below is a summary of the key issues that this update addresses when you install this KB. If there are new features, it lists them as well. The bold text within the brackets indicates the item or area of the change.
 
@@ -479,7 +519,7 @@ For details about security vulnerabilities, see the [Security Update Guide](ht
 
 To find more information on Azure local, see [Azure Local solution overview](../overview.md).
 
-## Known issues
+### Known issues
 
 The following is a known issue with this update:
 
@@ -495,7 +535,7 @@ When a patched guest VM attempts to connect to an unpatched host (or vice versa)
 
 This issue is addressed in [KB5066360](https://support.microsoft.com/topic/kb5066360-security-update-for-windows-powershell-hotpatch-1168dc4c-fa82-439d-9fc8-7d4231de0d5c?preview=true). If your hotpatched device is experiencing issues with PSDirect connection, we recommend updating both the host and guest VM with these updates.
 
-## To install
+### To install
 
 **Before you install this update**
 
@@ -522,9 +562,7 @@ Running [Windows Update Standalone Installer](https://support.microsoft.com/topi
 
 For a list of the files that are provided in this update, download the file information for [Cumulative update KB5065426](https://go.microsoft.com/fwlink/?linkid=2334930).
 
-::: moniker-end
-
-::: moniker range="=azloc-previous"
+---
 
 ## August OS security updates (KB5063899 and KB5063878) for Azure Local
 

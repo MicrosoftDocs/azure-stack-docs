@@ -3,7 +3,7 @@ title: Release notes with fixed and known issues in Azure Local
 description: Read about the known issues and fixed issues in Azure Local.
 author: alkohli
 ms.topic: troubleshooting-general
-ms.date: 03/02/2026
+ms.date: 03/16/2026
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: hyperconverged
@@ -19,6 +19,77 @@ These release notes are continuously updated, and as critical issues requiring a
 > For information about supported update paths for this release, see [Release information](./release-information-23h2.md#about-azure-local-releases).
 
 For more information about new features in this release, see [What's new for Azure Local](whats-new.md).
+
+::: moniker range="=azloc-2603"
+
+## Known issues for version 2603
+
+For the 2603 release of Azure Local, Microsoft released the following update:
+
+| Solution version | OS build |
+|--|--|
+| 12.2603.1002.15 | 26100.32522 |
+
+> [!IMPORTANT]
+> The new deployments of this software use the **12.2603.1002.15** build.
+Release notes for this version include the issues fixed in this release, known issues in this release, and known issues carried over from previous versions.
+
+> [!NOTE]
+> For detailed remediation for common known issues, see the [Azure Local Supportability](https://github.com/Azure/AzureStackHCI-Supportability) GitHub repository.
+
+## Fixed issues
+
+The following table lists the fixed issues in this release:
+
+|Feature  |Issue    |Comments |
+|---------|---------|---------|
+| Azure Local VMs <!--36356595--> | Fixed issue where infrastructure logical network details didn't display DNS server and VM switch information.  | |
+| Azure Local VMs <!--36958790--> | Fixed issue where the L4* GPU wasn't functional.  | |
+| Deployment <!--35378770--> | Fixed issue in deployment wizard where key vault creation during extension installation was blocking forward navigation.  | |
+| Deployment <!--35380820--> | Fixed issue where retrying deployment via the Azure portal would fail.  | |
+| Deployment <!--36430065--> | Added end-of-support banner messages to the **Get started** tab for Azure Local instances on OS version 22H2.  | |
+
+## Known issues
+
+The following table lists the known issues in this release:
+
+|Feature  |Issue    |Workaround  |
+|---------|---------|------------|
+| Update <!--36808734--> | During the update, health checks might report the error: `SBE manifest endpoint not reported by Get-SolutionDiscoveryDiagnosticInfo`. | This is a warning-level error. You can ignore it while running the update. |
+
+
+## Known issues from previous releases
+
+The following table lists the known issues from previous releases:
+
+|Feature  |Issue  |Workaround  |
+|---------|---------|---------|
+| Azure Verification <!--58937961-->  | VMs on Azure Local running Windows Server Azure Edition, Windows 10, or Windows 11 multi-session OS may not activate properly. A pop-up message or a watermark may display, indicating that Windows isn't activated. The VM will function, but the watermark will persist. | There's no known workaround in this release. |
+| Add server <br> Repair server <!--32447442--> | The `Add-server` and `Repair-server` cmdlets fail with the error: <br> `Cluster Build ID matches node to add's Build ID`. | Use the OS image of the same solution version as that running on the existing cluster. To get the OS image, identify and download the image version from this [Release table](https://github.com/Azure-Samples/AzureLocal/blob/main/os-image/os-image-tracking-table.md). |
+| Deployment <!--33008717--> | In this release and previous releases, registration fails with the following error when you try to register Azure Local machines with Azure Arc: <br>`AZCMAgent command failed with error: >> exitcode: 42. Additional Info: See https://aka.ms/arc/azcmerror`. | For detailed steps on how to resolve this issue, see the [Troubleshooting guide](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/ArcRegistration/TSG-Arc-registration-failing-with-error-42.md). |
+| Azure Local VM management | The Mochostagent service might appear to be running but can get stuck without updating logs for over a month. You can identify this issue by checking the service logs in `C:\programdata\mochostagent\logs` to see if logs are being updated. | Run the following command to restart the mochostagent service: `restart-service mochostagent`. |
+| Update | When viewing the readiness check results for an Azure Local instance via the Azure Update Manager, there might be multiple readiness checks with the same name.  |There's no known workaround in this release. Select **View details** to view specific information about the readiness check. |
+| Update | There's an intermittent issue in this release when the Azure portal incorrectly reports the update status as **Failed to update** or **In progress** though the update is complete.  |[Connect to your Azure Local instance](./update/update-via-powershell-23h2.md#connect-to-your-azure-local) via a remote PowerShell session. To confirm the update status, run the following PowerShell cmdlets: <br><br> `$Update = get-solutionupdate`\| `? version -eq "<version string>"`<br><br>Replace the version string with the version you're running. For example, "10.2405.0.23". <br><br>`$Update.state`<br><br>If the update status is **Installed**, no further action is required on your part. The Azure portal refreshes the status correctly within 24 hours. <br> To refresh the status sooner, follow these steps on one of the nodes. <br>Restart the Cloud Management cluster group.<br>`Stop-ClusterGroup "Cloud Management"`<br>`Start-ClusterGroup "Cloud Management"`|
+| Add server <!--26852600--> |In this release and previous releases, when adding a machine to the system, isn't possible to update the proxy bypass list string to include the new machine. Updating environment variables proxy bypass list on the hosts won't update the proxy bypass list on Azure resource bridge or AKS. |There's no workaround in this release. If you encounter this issue, contact Microsoft Support to determine next steps.|
+| Azure portal <!--25741164--> |In some instances, the Azure portal might take a while to update and the view might not be current.| You might need to wait for 30 minutes or more to see the updated view. |
+| Security <!--30348397--> |  Azure Local might face an issue during normal operations (for example, Update, Repair) while using Defender for Endpoint and when the **Restrict App Execution** setting is enabled for one or more servers in the deployment.  | Disable the **Restrict App Execution** setting in the Defender portal and reboot. If the issue persists, [open a support case](/azure/azure-portal/supportability/how-to-create-azure-support-request). |
+| Deployment <!--33390832--> | In rare instances, deployment fails with errors during validation that state that the mandatory Arc extensions are not yet installed. | If you face this issue, retry the deployment. |
+| Deployment | If an IP address conflict is detected with the default AKS Arc IP ranges `10.244.0.0/16` or `10.96.0.0/12`, a new validator in version 2602 blocks the deployment or solution upgrade. | - Deployment: If the IP address conflict can't be resolved, you must deploy Azure Local using version 2601. Once deployed, you can update to version 2602 using the solution update process.<br>- Solution upgrade: There's no workaround available for solution upgrade. |
+| Security | If the Windows Defender attack surface reduction rule Block Process Creations originating from PSExec & WMI commands is configured to Block, the Azure Local Solution Update will fail to run. | For detailed steps on how to resolve this issue, see the [Troubleshooting guide](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/Update/Solution-Update-CAU-Run-fails-due-to-Windows-Defender-blocking-WMI-commands.md). |
+| Add server, Repair server <!--35816797--> | Add node and repair node operations fail when running on 11.2510.1002.87 or 12.2510.1002.88, as these images were recalled and don't exist. | Upgrade your environment to 11.2510.1002.93 or 12.2510.1002.94. <br><br> If you need to run add node or repair node operations during the update from 1.2510.1002.87/12.2510.1002.88 to 11.2510.1002.93/12.2510.1002.94, [open a support case](/azure/azure-portal/supportability/how-to-create-azure-support-request) to overwrite the image validation.|
+| Azure Local VMs <!--35810643--> | VM start, stop, or delete operations may fail due to the wssdagent node agent crashing.| To check if wssdagent has crashed, run the following command: <br><br> `$ServerList = (Get-Clusternode).name` <br> `foreach ($Server in $ServerList) {` <br> `Write-Output "Cluster Node: $Server..."` <br> `Invoke-Command -ComputerName $Server -ScriptBlock {` <br> `get-service wssdagent` <br> `}` <br> `}` <br><br> If the wssdagent status shows "Stopped", run the following command to restart the agent from that node: <br><br> `start-service wssdagent` <br><br> This should get the node agent running again and unblock the VMs. If any VMs are deleted while the node agent is down, [open a support case](/azure/azure-portal/supportability/how-to-create-azure-support-request) to get the issue resolved. |
+| Update <!--36360771--> | Fetching the secret rotation action plan status fails. | The secret rotation completes successfully, so the failure message can be ignored. |
+
+## Known and expected behaviors
+
+The following table lists the known and expected system behaviors that shouldn't be considered as bugs or limitations.
+
+| Feature  | Behavior  |  Workaround |
+|---------|---------|---------|
+| Operating system  | Restoring the registry using *RegBack* isn't supported on Azure Local. This operation can remove the Lifecycle Manager (LCM) and Microsoft On-premises Cloud (MOC) settings on your Azure Local instance, which can corrupt the solution.  | |
+| Azure Local VM management| Using an exported Azure VM OS disk as a VHD to create a gallery image for provisioning an Azure Local VM is unsupported. | Run the command `restart-service mochostagent` to restart the mochostagent service. |
+
+::: moniker-end
 
 ::: moniker range="=azloc-2602"
 
@@ -418,7 +489,7 @@ The following table lists the known and expected system behaviors that shouldn't
 
 ::: moniker-end
 
-::: moniker range="=azloc-2509"
+::: moniker range="=azloc-previous"
 
 ## Known issues for version 2509
 
@@ -437,7 +508,7 @@ Release notes for this version include the issues fixed in this release, known i
 > [!NOTE]
 > For detailed remediation for common known issues, see the [Azure Local Supportability](https://github.com/Azure/AzureStackHCI-Supportability) GitHub repository.
 
-## Fixed issues
+### Fixed issues
 
 The following table lists the fixed issues in this release:
 
@@ -457,7 +528,7 @@ The following table lists the fixed issues in this release:
 | Security <!--34860200--> | Mitigation for security vulnerability CVE-2025-55316 was implemented. |  |
 |Registration, deployment, Add-server, Upgrade, Update<!--34559459--> |In this release, connectivity tests can take longer than 20 minutes in some environments. | There's no known workaround for this issue in this release. |
 
-## Known issues
+### Known issues
 
 <!--Microsoft isn't aware of any known issues in this release.-->
 
@@ -469,7 +540,7 @@ The following table lists the known issues in this release:
 |Deployment <!--34752922--> |Deployment, add node, and repair node operations may fail with the error: <br> `Type 'EncryptClusterSharedVolumes' of Role 'AzureStackBitlocker' raised an exception: The job running on xxx failed due to: System.Management.Automation.RemoteException: -> Failed enabling bitlocker for C:\ClusterStorage\UserStorage_13 (F:)`  | For detailed steps on how to resolve this issue, see the [Troubleshooting guide](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/Deployment/Deployment-or-ScaleOut-failure-at-EncryptClusterSharedVolumes-of-AzureStackBitlocker.md).|
 
 
-## Known issues from previous releases
+### Known issues from previous releases
 
 The following table lists the known issues from previous releases:
 
@@ -491,7 +562,7 @@ The following table lists the known issues from previous releases:
 | Update | When installing cumulative updates using Azure Update Manager, only the latest update for version 2507 is installed. If earlier update options (for versions 2505, 2506) are selected, they are not installed. | There's no workaround in this release. |
 | Update <!--34867064--> | Update health check results not shown when it's been longer than 3 hours after health check completed |Rerun the update health checks to restart the 3 hour expiration clock. |
 
-## Known and expected behaviors
+### Known and expected behaviors
 
 The following table lists the known and expected system behaviors that shouldn't be considered as bugs or limitations.
 
@@ -499,10 +570,6 @@ The following table lists the known and expected system behaviors that shouldn't
 |---------|---------|---------|
 | Operating system  | Restoring the registry using *RegBack* isn't supported on Azure Local. This operation can remove the Lifecycle Manager (LCM) and Microsoft On-premises Cloud (MOC) settings on your Azure Local instance, which can corrupt the solution.  | |
 | Azure Local VM management| Using an exported Azure VM OS disk as a VHD to create a gallery image for provisioning an Azure Local VM is unsupported. | Run the command `restart-service mochostagent` to restart the mochostagent service. |
-
-::: moniker-end
-
-::: moniker range="=azloc-previous"
 
 ## Known issues for version 2508
 
