@@ -3,7 +3,7 @@ author: alkohli
 ms.author: alkohli
 ms.service: azure-local
 ms.topic: include
-ms.date: 02/25/2026
+ms.date: 03/17/2026
 ms.reviewer: alkohli
 ---
 
@@ -20,6 +20,6 @@ After April 2026:
 - You won't receive monthly security and quality updates for 23H2.
 - Support requests are only available for patching to a supported release.
 
-Stretched clusters running the 23H2 OS are supported until April 2026. For more information, see [Upgrade stretched clusters to 23h2](../upgrade/upgrade-stretched-cluster-to-23h2.md).
+Stretched clusters running the 23H2 OS are supported until April 2026. For more information, see [Upgrade stretched clusters to version 23H2](../upgrade/upgrade-stretched-cluster-to-23h2.md).
 
 Starting with 2602, the Azure portal displays an "End of Support at the end of April" banner for devices running OS version 25398.xxxx (23H2).

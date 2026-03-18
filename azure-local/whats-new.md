@@ -5,13 +5,47 @@ ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 03/02/2026
+ms.date: 03/16/2026
 ms.subservice: hyperconverged
 ---
 
 # What's new in hyperconverged deployments of Azure Local?
 
 This article lists the features and improvements that are available in hyperconverged deployments of Azure Local (*formerly Azure Stack HCI*). The latest version of Azure Local solution focuses on cloud-based deployment and updates, cloud-based monitoring, a new and simplified experience for Azure Local virtual machine (VM) management, security, and more.
+
+::: moniker range="=azloc-2603"
+
+## Features and improvements in 2603
+
+The March 2026 release of hyperconverged deployments of Azure Local is version **12.2603.1002.15**. For more information, see [Release information summary](./release-information-23h2.md).
+
+This release includes various reliability improvements and bug fixes.
+
+- **OS changes**:
+
+    - In 2603 release, all the new and existing deployments of Azure Local run the new OS version **26100.32522** (download from the Azure portal).
+
+    - You also need a driver that's compatible with OS version **26100.32522** or Windows Server 2025.
+
+    - For Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog), the OS is preinstalled. Work with your Original Equipment Manufacturer (OEM) to get a compatible OS image and a compatible driver.
+
+- **.NET updates**: This build uses .NET version **8.0.25** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
+
+- **AKS enabled by Azure Arc changes**:
+
+    - This release supports the following Kubernetes versions: 1.31.12, 1.31.13, 1.32.8, 1.32.9, 1.33.4, 1.33.5. Kubernetes version 1.30 is no longer supported.
+    - KMS v1 will be deprecated soon. KMS v2 is included in this Azure Local release. Plan on redeploying your clusters by using KMS v2.
+    - Support for [Windows Server 2019 SKU for node pools](https://techcommunity.microsoft.com/blog/containers/announcing-the-3-year-retirement-of-windows-server-2019-on-azure-kubernetes-serv/3777341) ends in March 2026.
+
+    Ensure your AKS clusters are on a supported Kubernetes version before upgrading Azure Local. For more information, see [What's new in AKS enabled by Azure Arc on Azure Local](/azure/aks/aksarc/aks-whats-new-local#release-2602).
+
+- **Support for NVIDIA RTX PRO 6000 Blackwell Server Edition GPU on Azure Local**: Starting with this release, NVIDIA RTX PRO 6000 GPU is supported on Azure Local VMs and Azure Kubernetes Service (AKS) enabled by Azure Arc. This feature allows you to run GPU-accelerated workloads on Azure Local using NVIDIA RTX PRO 6000 GPUs. For more information, see [Prepare GPUs for Azure Local instance](./manage/gpu-preparation.md).
+
+- **Improved Secure Boot Certificate readiness**: Starting with this release, built‑in orchestration deploys the new Secure Boot 2023 certificates, helping you prepare for upcoming Secure Boot changes while minimizing risk during updates.
+
+- **Simplified machine provisioning**: Starting with this release, use simplified machine provisioning to install the OS and register your Azure Local machines together in a single streamlined process. For more information, see [Simplified machine provisioning](./deploy/simplified-machine-provisioning.md).
+
+::: moniker-end
 
 ::: moniker range="=azloc-2602"
 
@@ -37,11 +71,13 @@ This release includes various reliability improvements and other bug fixes.
     - KMS v1 will be deprecated soon. KMS v2 is included in this Azure Local release. Plan on redeploying your clusters by using KMS v2.
     - Support for [Windows Server 2019 SKU for node pools](https://techcommunity.microsoft.com/blog/containers/announcing-the-3-year-retirement-of-windows-server-2019-on-azure-kubernetes-serv/3777341) ends in March 2026.
 
-    Ensure your AKS clusters are on a supported Kubernetes version before upgrading Azure Local. For more information, see [What's new in AKS enabled by Azure Arc on Azure Local](/azure/aks/aksarc/aks-whats-new-local#release-2510).
+    Ensure your AKS clusters are on a supported Kubernetes version before upgrading Azure Local. For more information, see [What's new in AKS enabled by Azure Arc on Azure Local](/azure/aks/aksarc/aks-whats-new-local#release-2602).
 
 - **Enhanced update workflow from the Azure portal**: Starting with this release, the update workflow from the Azure portal now provides richer, more detailed information.
 
 - **End of Windows Server Subscription and Extended Security Updates (ESU) purchases for OS version 20349.xxxx (22H2)**: If running OS version 20349.xxxx (version 22H2), you can no longer purchase Windows Server Subscription or ESU.
+
+- **Drift detection**: Starting with this release, the drift detection framework identifies configuration deviations, improves troubleshooting, and helps reduce configuration-related issues in your Azure Local environment. For more information, see [Drift detection](./manage/drift-detection.md).
 
 ::: moniker-end
 
@@ -240,7 +276,7 @@ This release includes the following features and improvements:
 ::: moniker-end
 
 
-::: moniker range="=azloc-2509"
+::: moniker range="=azloc-previous"
 
 ## Features and improvements in 2509
 
@@ -300,11 +336,6 @@ This release includes the following features and improvements:
         - **Disaster recovery for Azure Local VMs**: A new node in TOC **Implementing disaster recovery** is created consisting of four new articles and one updated article. These articles include [Disaster recovery overview](./manage/disaster-recovery-overview.md), [Infrastructure resiliency](./manage/disaster-recovery-infrastructure-resiliency.md), [Virtual machine resiliency overview](./manage/disaster-recovery-vm-resiliency.md), [Use Azure Site Recovery](./manage/azure-site-recovery.md), and [Workloads resiliency](./manage/disaster-recovery-workloads-resiliency.md).
         - **VM images**: For Azure Local VMs, two new articles are released including [Prepare Ubuntu Azure Marketplace image](manage/virtual-machine-azure-marketplace-ubuntu.md) and [Prepare RHEL Azure Marketplace image](manage/virtual-machine-azure-marketplace-red-hat.md).
     - A troubleshooting section is added for issues in [Add-server](./manage/add-server.md) and [Repair-server](./manage/repair-server.md) articles.
-
-::: moniker-end
-
-
-::: moniker range="=azloc-previous"
 
 ## Features and improvements in 2508
 
