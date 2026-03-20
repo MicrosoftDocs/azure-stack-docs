@@ -15,7 +15,7 @@ This article describes how Azure Local manages the transition from the 2011 Secu
 
 This article also covers how Azure Local orchestrates Secure Boot updates alongside OEM and hardware updates, including Solution Builder Extension (SBE) packages. It provides guidance for monitoring and validating each stage of deployment.
 
-This article is intended for Azure Local cluster operators, OEMs and solution integrators, and IT administrators who manage Secure Boot, firmware (BIOS or UEFI), and operating system updates and reboots.
+This article is intended for Azure Local cluster operators, original equipment manufacturers (OEMs), solution integrators, and IT administrators who manage Secure Boot, firmware (Basic Input/Output System (BIOS) or Unified Extensible Firmware Interface (UEFI)), and operating system updates and reboots.
 
 > [!IMPORTANT]
 > Secure Boot revocation actions can be irreversible while Secure Boot remains enabled. Always validate updates on representative hardware and follow Microsoft guidance before deploying changes broadly.
@@ -46,17 +46,17 @@ Microsoft provides enterprise guidance for deploying protections for CVE‑2023�
 
 - **Operational reality:** Secure Boot updates interact with platform firmware in different ways, and in rare cases firmware behavior might affect boot outcomes. We therefore recommend testing on representative hardware and coordinating with OEM firmware as part of a controlled deployment.
 
-For more information, see key Microsoft reference for [Enterprise deployment guidance for CVE-2023-24932 (Microsoft Support)](https://support.microsoft.com/topic/enterprise-deployment-guidance-for-cve-2023-24932-88b8f034-20b7-4a45-80cb-c6049b0f9967).
+For more information, see [Enterprise deployment guidance for CVE-2023-24932 (Microsoft Support)](https://support.microsoft.com/topic/enterprise-deployment-guidance-for-cve-2023-24932-88b8f034-20b7-4a45-80cb-c6049b0f9967).
 
 ## Terminology and components
 
-- **Secure Boot:** A security feature of Unified Extensible Firmware Interface​​​​​​​ (UEFI) based firmware that helps ensure only trusted software runs during the device boot (start) sequence.
+- **Secure Boot:** A security feature of UEFI based firmware that helps ensure only trusted software runs during the device boot (start) sequence.
 
 - **UEFI Secure Boot databases:**
     - **DB:** Contains allowed signatures.
     - **DBX:** Contains revoked signatures.
     
-    Updates are stored in UEFI firmware variables.
+    Updates are stored in the UEFI firmware variables.
 
 - **Key Exchange Key (KEK):** Authorizes updates to the Secure Boot DB and DBX.
 
@@ -64,7 +64,7 @@ For more information, see key Microsoft reference for [Enterprise deployment gui
 
 - **Windows Boot Manager revocations:** Policy and data (often in DBX) used to prevent older vulnerable or malicious boot managers from being accepted by Secure Boot.
 
-- **Solution Builder Extension (SBE):** A package that lets OEMs publish and apply updates to the hardware and firmware components. An SBE uniquely tracks which Azure Local Solution Versions it's compatible with and includes health checks to assure it's appropriate to install.
+- **Solution Builder Extension:** A package that lets OEMs publish and apply updates to the hardware and firmware components. An SBE uniquely tracks which Azure Local Solution Versions it's compatible with and includes health checks to assure it's appropriate to install.
 
 ## Azure Local host Secure Boot 2023 certificates playbook
 
@@ -129,12 +129,12 @@ Windows records Secure Boot DB and DBX update successes and failure reasons in t
 
 - Contact your OEM to understand when the platform firmware is ready for Secure Boot certificate and when they are making it available.
 
-- Most Azure Local solutions that use Solution Builder Extensions (SBEs) are expected to receive firmware support starting with the 2604 solution update. <!--confirm as this refers to a future 2604 update-->
+- Most Azure Local solutions that use SBEs are expected to receive firmware support starting with the 2604 solution update. <!--confirm as this refers to a future 2604 update-->
 
 - Validate the update process on representative hardware first (at least one system per platform type). Validate both normal boot scenarios and recovery or media‑based boot scenarios.
 
-> [!NOTE]
-> Azure Local solutions can be updated to version 2603 even if the required firmware updates aren’t available at the time of the update.
+    > [!NOTE]
+    > Azure Local solutions can be updated to version 2603 even if the required firmware updates aren’t available at the time of the update.
 
 ### During rollout (test and deploy)
 
@@ -149,16 +149,16 @@ Windows records Secure Boot DB and DBX update successes and failure reasons in t
     ```
     
     - If the returned value is `True`, the Secure Boot certificate update steps are complete.
-    - If the returned value is False, follow the documented troubleshooting steps.
+    - If the returned value is `False`, follow the documented troubleshooting steps.
 
-> [!NOTE]
-> Azure Local solution update retries to complete the Secure Boot 2023 certificate update steps on a best-effort basis. If the steps can’t be completed, the update proceeds regardless, including in cases where your hardware solution requires a firmware update.
+    > [!NOTE]
+    > Azure Local solution update retries to complete the Secure Boot 2023 certificate update steps on a best-effort basis. If the steps can’t be completed, the update proceeds regardless, including in cases where your hardware solution requires a firmware update.
 
 ### After rollout (verification and continued operations)
 
 - Confirm that all nodes are booting with the expected updated boot components and that the Secure Boot mitigation has reached a stable stage across the cluster.
 
-### What happens after 2603 solution update <!--confirm if needed as this refers to a future update-->
+## What happens after 2603 solution update <!--confirm if needed as this refers to a future update-->
 
 - Starting with release 2604, Azure Local performs prechecks to verify that the Secure Boot certificates and CVE mitigation are in place and the systems are booting using a Windows UEFI CA 2023-signed boot manager.
 
@@ -172,7 +172,7 @@ Windows records Secure Boot DB and DBX update successes and failure reasons in t
 
 - Follow the documented troubleshooting guidance to diagnose blocked or postponed Secure Boot updates.
 
-For more information, see key Microsoft reference for [Original Equipment Manufacturer (OEM) pages for Secure Boot - Microsoft Support](https://support.microsoft.com/topic/original-equipment-manufacturer-oem-pages-for-secure-boot-9ecc3ba4-fb50-4bd3-9e9b-f16b35b8fb68).
+For more information, see [Original Equipment Manufacturer (OEM) pages for Secure Boot](https://support.microsoft.com/topic/original-equipment-manufacturer-oem-pages-for-secure-boot-9ecc3ba4-fb50-4bd3-9e9b-f16b35b8fb68).
 
 <!-- Link to the Public TSG (for troubleshooting) is needed!-->
 
@@ -186,31 +186,29 @@ We strongly recommend completing this update as soon as possible. If you require
 
 Azure local clusters might host VMs that are affected by Secure Boot certificate expiration. The required actions depend on when the VMs were created.
 
-**VMs created before October 2024**
+- **VMs created before October 2024**
 
-If VMs (Arc-enabled VMs or VMs created using traditional deployment methods) were created before October 2024, the Secure Boot certificate exposed to the VM will be before 2023 CAs were broadly available. Manual action is required. Follow the guidance in the following playbook:
+    If VMs (Arc-enabled VMs or VMs created using traditional deployment methods) were created before October 2024, the Secure Boot certificate exposed to the VM will be before 2023 CAs were broadly available. Manual action is required. Follow the guidance in the [Windows Server Secure Boot playbook for certificates expiring in 2026](https://techcommunity.microsoft.com/blog/windowsservernewsandbestpractices/windows-server-secure-boot-playbook-for-certificates-expiring-in-2026/4495789) playbook.
 
-See [Windows Server Secure Boot playbook for certificates expiring in 2026](https://techcommunity.microsoft.com/blog/windowsservernewsandbestpractices/windows-server-secure-boot-playbook-for-certificates-expiring-in-2026/4495789)
+- **VMs created after October 2024**
 
-**VMs created after October 2024**
+    If VMs (Arc-enabled VMs or VMs created using traditional deployment methods) were created after October 2024, the VM should already have the new 2023 CA firmware in place.
 
-If VMs (Arc-enabled VMs or VMs created using traditional deployment methods) were created after October 2024, the VM should already have the new 2023 CA firmware in place.
+    Check for the 2023 CAs by running the following PowerShell commands. Each command should return `True`.
 
-Check for the 2023 CAs by running the following PowerShell commands. Each command should return `True`.
+    ```powershell
+    [System.Text.Encoding]::ASCII.GetString((Get-SecureBootUEFI db).bytes) -match 'Windows UEFI CA 2023'
+    ```
 
-```powershell
-[System.Text.Encoding]::ASCII.GetString((Get-SecureBootUEFI db).bytes) -match 'Windows UEFI CA 2023'
-```
-
-```powershell
-[System.Text.Encoding]::ASCII.GetString((Get-SecureBootUEFI kek).bytes) -match 'Microsoft Corporation KEK 2K CA 2023'
-```
+    ```powershell
+    [System.Text.Encoding]::ASCII.GetString((Get-SecureBootUEFI kek).bytes) -match 'Microsoft Corporation KEK 2K CA 2023'
+    ```
 
 ## Support and escalation guidance
 
 If you have issues while planning, deploying, or verifying Secure Boot updates, contact Microsoft Support before proceeding with other firmware (BIOS or UEFI) changes or enabling revocations in production environments.
 
-## Severity mapping for Azure Local Secure Boot scenarios
+### Severity mapping for Azure Local Secure Boot scenarios
 
 | Severity | When to use it | Examples | What to include |
 |---|---|---|---|
@@ -218,7 +216,7 @@ If you have issues while planning, deploying, or verifying Secure Boot updates, 
 | Severity B (High) | Production functionality is degraded or at-risk, but the cluster remains operational. Requires timely investigation. | - Secure Boot update stuck in a pending or scheduled state across reboots, <br>- Repeated Secure Boot DB or DBX update failure in event logs. <br>- Azure Local health shows persistent out-of-policy related to Secure Boot servicing. <br>- Planned firmware update must proceed but Secure Boot mitigation is mid-flight. | - Current mitigation stage (DB, Boot Manager, DBX). <br>- Relevant Secure Boot event IDs and messages. <br>- Evidence of pending reboot requirements. <br>-  Planned maintenance window details. |
 | Severity C (Normal) | Questions, guidance requests, or non-production and testing issues with no service impact. | - Pre-deployment planning and validation questions. <br>- Confirming firmware readiness for certificate updates. <br>-  Updating boot media or WinPE and validating compatibility. <br>- Interpreting Secure Boot events and expected timing. | - Environment inventory (OEM models, firmware versions). <br>- Pilot or test results. <br>- Relevant KB references and completed steps. |
 
-## When to contact support versus when to wait
+### When to contact support versus when to wait
 
 1. Is any Azure Local node unable to boot, or is the cluster down or unavailable?  
     - Yes: Open a **Severity A** support request immediately.  
