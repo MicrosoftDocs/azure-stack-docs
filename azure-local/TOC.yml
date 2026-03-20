@@ -525,7 +525,7 @@ items:
       - name: Manage security post upgrade
         href: manage/manage-security-post-upgrade.md
       - name: Manage Secure Boot updates
-        href: manage/secure-boot-updates.md
+        href: manage/manage-secure-boot-updates.md
     - name: Systems
       items:
       - name: Repair a node 
