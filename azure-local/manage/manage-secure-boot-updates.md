@@ -11,24 +11,24 @@ ms.subservice: hyperconverged
 
 # Manage Secure Boot updates
 
-This article describes how Azure Local manages the transition from the 2011 Secure Boot certificates, which expire in June 2026, to the 2023 Secure Boot certificates. It explains how Azure Local mitigates CVE-2023-24932 and why these changes are delivered through a phased rollout.
+This article describes how Azure Local manages the transition from the 2011 Secure Boot certificates, which expire in June 2026, to the 2023 Secure Boot certificates, including how it mitigates [CVE-2023-24932](https://github.com/advisories/GHSA-cgcm-2v5q-v3w9) and why the changes are delivered through a phased rollout.
 
-This article also covers how Azure Local orchestrates Secure Boot updates alongside OEM and hardware updates, including Solution Builder Extension (SBE) packages. It provides guidance for monitoring and validating each stage of deployment.
+It also covers how Azure Local orchestrates Secure Boot updates alongside OEM and hardware updates including Solution Builder Extension (SBE) packages and provides guidance for monitoring and validating each stage of deployment.
 
-This article is intended for Azure Local cluster operators, original equipment manufacturers (OEMs), solution integrators, and IT administrators who manage Secure Boot, firmware (Basic Input/Output System (BIOS) or Unified Extensible Firmware Interface (UEFI)), and operating system updates and reboots.
+This article is intended for Azure Local cluster operators, OEMs, solution integrators, and IT administrators who manage Secure Boot, firmware (Basic Input/Output System (BIOS) or Unified Extensible Firmware Interface (UEFI)), and operating system updates and reboots.
 
 > [!IMPORTANT]
 > Secure Boot revocation actions can be irreversible while Secure Boot remains enabled. Always validate updates on representative hardware and follow Microsoft guidance before deploying changes broadly.
 
 ## About Secure Boot certificates
 
-- Secure Boot certificates are issued with defined lifetimes. Periodically refreshing these certificates helps keep them aligned with current security requirements. Azure Local customers must install the 2023 Secure Boot certificate authorities (CAs) before the 2011 CAs begin to expire in June 2026.
+- Secure Boot certificates are issued with defined lifetimes. Periodically refreshing these certificates helps keep them aligned with current security requirements. For Azure Local, you must install the 2023 Secure Boot certificate authorities (CAs) before the 2011 CAs begin to expire in June 2026.
 
 - CVE-2023-24932 is a Secure Boot security feature bypass associated with the BlackLotus UEFI bootkit. Fully fixing it requires updating boot components and applying revocations, such as through DBX updates, so older vulnerable boot managers can't bypass Secure Boot.
 
 - Because Secure Boot updates interact with platform firmware (UEFI variables) and boot-time security technologies like BitLocker and Virtualization-based Security (VBS), we recommend a phased approach with thorough testing and controlled deployment in enterprise environments.
 
-- For Azure Local, a key consideration is maintaining clear sequencing between update types. Secure Boot updates should be applied separately from hardware or firmware (BIOS or UEFI) updates. Performing these updates in distinct maintenance steps helps ensure a stable and predictable boot‑time security state.
+- For Azure Local, a key consideration is maintaining clear sequencing between update types. Secure Boot updates should be applied separately from hardware or firmware (BIOS or UEFI) updates. Perform these updates in distinct maintenance steps to help ensure a stable and predictable boot‑time security state.
 
 - Azure Local’s mitigation implementation therefore focuses on orchestration and gating:
 
@@ -38,13 +38,13 @@ This article is intended for Azure Local cluster operators, original equipment m
 
 ## Background: CVE-2023-24932 and staged mitigations
 
-Microsoft provides enterprise guidance for deploying protections for CVE‑2023‑24932. These mitigations require coordinated changes across Windows and device firmware. To minimize risk and avoid operational disruption, we recommend planning and testing before deploying these changes broadly.
+Microsoft provides enterprise guidance for deploying protections for CVE‑2023‑24932. These mitigations require coordinated changes across Windows and device firmware. To minimize risk and avoid operational disruption, we recommend you plan and test before deploying these changes broadly.
 
 - **Threat model:** An attacker with physical access or administrator privileges can attempt to bypass Secure Boot by using older trusted boot components.
 
 - **Mitigation principle:** Update trust anchors and boot components and then apply revocations so older vulnerable boot managers become untrusted.
 
-- **Operational reality:** Secure Boot updates interact with platform firmware in different ways, and in rare cases firmware behavior might affect boot outcomes. We therefore recommend testing on representative hardware and coordinating with OEM firmware as part of a controlled deployment.
+- **Operational reality:** Secure Boot updates interact with platform firmware in different ways. In rare cases, firmware behavior might affect boot outcomes. We recommend you test on representative hardware and coordinate with OEM firmware as part of a controlled deployment.
 
 For more information, see [Enterprise deployment guidance for CVE-2023-24932 (Microsoft Support)](https://support.microsoft.com/topic/enterprise-deployment-guidance-for-cve-2023-24932-88b8f034-20b7-4a45-80cb-c6049b0f9967).
 
@@ -60,15 +60,15 @@ For more information, see [Enterprise deployment guidance for CVE-2023-24932 (Mi
 
 - **Key Exchange Key (KEK):** Authorizes updates to the Secure Boot DB and DBX.
 
-- **Certificates used:** The industry is transitioning from older 2011-era Microsoft Secure Boot CAs to newer 2023 CAs, for example, **Windows UEFI CA 2023**. The 2011 Secure Boot certificates expire in 2026.
+- **Certificates used:** The industry is transitioning from older 2011-era Microsoft Secure Boot CAs to newer 2023 CAs, such as **Windows UEFI CA 2023**. The 2011 Secure Boot certificates expire in 2026.
 
 - **Windows Boot Manager revocations:** Policy and data (often in DBX) used to prevent older vulnerable or malicious boot managers from being accepted by Secure Boot.
 
-- **Solution Builder Extension:** A package that lets OEMs publish and apply updates to the hardware and firmware components. An SBE uniquely tracks which Azure Local Solution Versions it's compatible with and includes health checks to assure it's appropriate to install.
+- **Solution Builder Extension:** A package that lets OEMs publish and apply updates to the hardware and firmware components. An SBE uniquely tracks which Azure Local Solution Versions it's compatible with and includes health checks to ensure it's appropriate to install.
 
 ## Azure Local host Secure Boot 2023 certificates playbook
 
-Secure Boot 2023 certificate updates and mitigations for CVE‑2023‑24932 aren’t a single “flip‑the‑switch” operation. Instead, they consist of a sequence of state transitions that must be validated against the specific platform firmware and boot configuration.
+Secure Boot 2023 certificate updates and mitigations for CVE‑2023‑24932 aren’t a single "flip‑the‑switch" operation. Instead, they consist of a sequence of state transitions that must be validated against the specific platform firmware and boot configuration.
 
 ### Azure Local staged update model
 
@@ -78,14 +78,14 @@ To safely roll out the Secure Boot certificate updates, Azure Local tracks nodes
 |----|----|----|----|
 | Stage 0 | The 2023 Secure Boot CA isn't present in the firmware databases. | The node can't rely on 2023-signed boot components. | Before 2603 |
 | Stage 1 | The 2023 Secure Boot CA is present in the firmware databases. | The node is closer to being ready, and subsequent steps can be scheduled. | 2603 |
-| Stage 2* | The node boots using the 2023 CA-signed boot manager. | The platform demonstrated compatibility, making later revocations safer to apply. | 2603 |
+| Stage 2* | The node boots by using the 2023 CA-signed boot manager. | The platform demonstrated compatibility, making later revocations safer to apply. | 2603 |
 | Stage 3 | The node has OEM-compatible firmware with the new Secure Boot 2023 certificates. | Both the hardware and OS layers are updated and ready for future fixes. | 2603-2604 |
 | Stage 4 (future) | Revocation data applied, for example, DBX update, to block older vulnerable boot managers. | This stage closes the bypass path but can be hard to revert and must be carefully planned and tested. | Post-2603 (to be determined) |
 
 <!--comment out Stage 4?-->
 
 > [!NOTE]
-> For some hardware platforms, customers might need to manually update firmware before advancing to stages 1 and 2 described in the preceding table.
+> For some hardware platforms, you might need to manually update firmware before advancing to stages 1 and 2 described in the preceding table.
 
 ### Why Azure Local adds extra orchestration
 
@@ -152,15 +152,15 @@ Windows records Secure Boot DB and DBX update successes and failure reasons in t
     - If the returned value is `False`, follow the documented troubleshooting steps.
 
     > [!NOTE]
-    > Azure Local solution update retries to complete the Secure Boot 2023 certificate update steps on a best-effort basis. If the steps can’t be completed, the update proceeds regardless, including in cases where your hardware solution requires a firmware update.
+    > Azure Local solution updates retry the Secure Boot 2023 certificate update on a best‑effort basis. If the update can't be completed, the solution update proceeds, even when a firmware update is required by the hardware solution.
 
 ### After rollout (verification and continued operations)
 
-- Confirm that all nodes are booting with the expected updated boot components and that the Secure Boot mitigation has reached a stable stage across the cluster.
+- Confirm that all nodes boot with the expected updated boot components and that the Secure Boot mitigation reaches a stable stage across the cluster.
 
 ## What happens after 2603 solution update <!--confirm if needed as this refers to a future update-->
 
-- Starting with release 2604, Azure Local performs prechecks to verify that the Secure Boot certificates and CVE mitigation are in place and the systems are booting using a Windows UEFI CA 2023-signed boot manager.
+- Starting with release 2604, Azure Local performs prechecks to verify that the Secure Boot certificates and CVE mitigation are in place and the systems boot by using a Windows UEFI CA 2023-signed boot manager.
 
 - OEM hardware updates delivered through firmware and SBE packages are scheduled beginning with solution update 2604 and later.
 
@@ -178,17 +178,17 @@ For more information, see [Original Equipment Manufacturer (OEM) pages for Secur
 
 ## What if I can't update before July 2026?
 
-After Secure Boot-related certificates expire, devices without the new certificates can continue to boot and run, and regular Windows updates will still be installed. However, these devices won't receive any new boot-level security updates or protections. This includes updates for Windows Boot Manager, Secure Boot databases, revocation lists, or fixes for new boot vulnerabilities.
+After Secure Boot-related certificates expire, devices without the new certificates can continue to boot and run, and regular Windows updates still install. However, these devices don't receive any new boot-level security updates or protections. This lack of updates includes Windows Boot Manager, Secure Boot databases, revocation lists, or fixes for new boot vulnerabilities.
 
 We strongly recommend completing this update as soon as possible. If you require firmware updates for supported hardware, contact your OEM to understand availability and timelines.
 
-## Azure Local customer VM Secure Boot 2023 certificates playbook
+## Azure Local VM Secure Boot 2023 certificates playbook
 
-Azure local clusters might host VMs that are affected by Secure Boot certificate expiration. The required actions depend on when the VMs were created.
+Azure Local clusters might host VMs that are affected by Secure Boot certificate expiration. The required actions depend on when the VMs were created.
 
 - **VMs created before October 2024**
 
-    If VMs (Arc-enabled VMs or VMs created using traditional deployment methods) were created before October 2024, the Secure Boot certificate exposed to the VM will be before 2023 CAs were broadly available. Manual action is required. Follow the guidance in the [Windows Server Secure Boot playbook for certificates expiring in 2026](https://techcommunity.microsoft.com/blog/windowsservernewsandbestpractices/windows-server-secure-boot-playbook-for-certificates-expiring-in-2026/4495789) playbook.
+    If VMs (Arc-enabled VMs or VMs created using traditional deployment methods) were created before October 2024, the Secure Boot certificate exposed to the VM will be before 2023 CAs were broadly available. Manual action is required. Follow the guidance in [Windows Server Secure Boot playbook for certificates expiring in 2026](https://techcommunity.microsoft.com/blog/windowsservernewsandbestpractices/windows-server-secure-boot-playbook-for-certificates-expiring-in-2026/4495789).
 
 - **VMs created after October 2024**
 
@@ -226,7 +226,7 @@ If you have issues while planning, deploying, or verifying Secure Boot updates, 
     - Yes: Allow the required reboots to complete, then re-check Secure Boot event logs.  
     - No or not sure: Continue.
 
-3. Do Secure Boot event logs show a blocking condition, for example, BitLocker recovery risk, customized keys, or firmware not supporting the update?  
+3. Do Secure Boot event logs show a blocking condition, such as BitLocker recovery risk, customized keys, or firmware not supporting the update?
     - Yes: Don't proceed with other steps or firmware updates. Open a **Severity B** request.  
     - No: Continue.
 
