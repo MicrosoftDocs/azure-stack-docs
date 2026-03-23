@@ -23,6 +23,8 @@ This article describes how to use Azure CLI to prepare a Red Hat Enterprise Linu
 
 - Have access to an Azure Local instance. This system is deployed, registered, and connected to Azure Arc. Go to the **Overview** page in the Azure Local resource. On the **Server** tab on the right pane, **Azure Arc** should appear as **Connected**.
 - [Download the latest supported Red Hat Enterprise server image](https://developers.redhat.com/products/rhel/download#rhel-new-product-download-list-61451) on your Azure Local instance. We support all Red Hat Enterprise Linux 7.x, 8.x, and 9.x versions. Here, we downloaded the *rhel-9.4-x86_64-boot.iso* file.
+- If cloud-init is required, it should be stated in the prerequisites, including the necessary configuration.
+- If specific kernel modules are required (or none are required), it should be stated in the prerequisites. <<This would help customers prepare enterprise pipelines as manually running ISO's with every installation is not scalable>>
 
 ## High-level workflow
 
