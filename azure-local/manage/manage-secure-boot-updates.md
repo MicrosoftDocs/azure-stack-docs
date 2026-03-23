@@ -78,7 +78,7 @@ To safely roll out the Secure Boot certificate updates, Azure Local tracks nodes
 |----|----|----|----|
 | Stage 0 | The 2023 Secure Boot CA isn't present in the firmware databases. | The node can't rely on 2023-signed boot components. | Before 2603 |
 | Stage 1 | The 2023 Secure Boot CA is present in the firmware databases. | The node is closer to being ready, and subsequent steps can be scheduled. | 2603 |
-| Stage 2* | The node boots by using the 2023 CA-signed boot manager. | The platform demonstrated compatibility, making later revocations safer to apply. | 2603 |
+| Stage 2 | The node boots by using the 2023 CA-signed boot manager. | The platform demonstrated compatibility, making later revocations safer to apply. | 2603 |
 | Stage 3 | The node has OEM-compatible firmware with the new Secure Boot 2023 certificates. | Both the hardware and OS layers are updated and ready for future fixes. | 2603-2604 |
 | Stage 4 (future) | Revocation data applied, for example, DBX update, to block older vulnerable boot managers. | This stage closes the bypass path but can be hard to revert and must be carefully planned and tested. | Post-2603 (to be determined) |
 
