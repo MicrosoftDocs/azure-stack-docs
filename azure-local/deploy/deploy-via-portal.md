@@ -3,7 +3,7 @@ title: Deploy an Azure Local instance using the Azure portal
 description: Learn how to deploy an Azure Local instance from the Azure portal
 author: alkohli
 ms.topic: how-to
-ms.date: 02/24/2026
+ms.date: 03/23/2026
 ms.author: alkohli
 ms.service: azure-local
 ms.custom: sfi-image-nochange
@@ -177,7 +177,7 @@ On the **Configuration** tab, choose whether to create a new configuration for t
     - **Adapter properties** such as **Jumbo frame size** (in bytes), you can select from 1514, 4088, or 9014. For RDMA protocol, choose from iWARP, RoCE, RoCEv2, or you can disable the RDMA protocol.
 
     > [!NOTE]
-    > These settings are only applicable when you create an Azure Local instance using the *medium* hardware class.
+    > These settings don’t apply to low capacity class devices. For more information, see [System requirements for low capacity deployments of Azure Local](../concepts/system-requirements-small-23h2.md).
 
 1. Choose the IP allocation as **Manual** or **Automatic**. Use **Automatic** if you use a DHCP server for IP assignments in your network.
 
