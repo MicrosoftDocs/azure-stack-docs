@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 01/26/2026
+ms.date: 03/24/2026
 ms.custom: sfi-image-nochange
 ms.subservice: hyperconverged
 ---
@@ -343,6 +343,31 @@ The following sample is the output from a failed run of the hardware validator:
 This sample output indicates seven critical issues that you must fix before proceeding with the deployment. One machine in the system doesn't have the same network adapters as others. Also, some of the network adapter properties in that machine don't meet the minimum requirements.
 
    :::image type="content" source="./media/use-environment-checker/hardware-validator-sample-failed.png" alt-text="Screenshot of a failed report after running the hardware validator." lightbox="./media/use-environment-checker/hardware-validator-sample-failed.png":::
+
+### [Software](#tab/software)
+
+Before deploying Azure Local, it’s critical to ensure that all nodes are consistently configured and able to synchronize time.
+
+Use the software validator to validate the following across all target nodes:
+
+- Consistent Network Time Protocol (NTP) server configuration. Confirms that all nodes are configured with the same, valid NTP server and that each node can successfully synchronize time with that server.
+
+- Operating system version consistency. Ensures all nodes are running the same supported OS version.
+
+- Local administrator group integrity. Validates that all security identifiers (SIDs) in the local Administrators group are resolvable.
+
+### Run the software validator
+
+You must run the software validator by using a PowerShell session connected to all target nodes. You can run the validation from any machine, as long as you can establish PowerShell sessions to all nodes.
+
+1. Open PowerShell as administrator locally on the Azure Local machine.
+
+1. Run the following cmdlet to invoke the software validator:
+
+   ```powershell
+   $session = New-PSSession -ComputerName remotesystem.contoso.com -Credential $credential
+   Invoke-AzStackHciSoftwareValidation -PsSession $Session -Exclude Test-IsNotPartofDomain
+   ```
 
 ### [Active Directory](#tab/active-directory)
 
