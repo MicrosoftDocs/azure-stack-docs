@@ -20,6 +20,8 @@ In certain scenarios, Microsoft support will require deeper visibility into a no
 
 To facilitate this, a log collector script is available for you to use. This script retrieves all the necessary logs, enabling Microsoft support to gain a better understanding of the issue and troubleshoot it effectively.
 
+**IMPORTANT:** Run the log collector script on the node that is observing issues, running it on any other node will not provide the proper visibility for triage.  It is especially important to run the log collector script first before the target node is deleted.
+
 ## What it collects
 
 The log collector script is designed to comprehensively gather data across various aspects of the system for troubleshooting and analysis purposes. Below is an overview of the types of diagnostic data it collects:
