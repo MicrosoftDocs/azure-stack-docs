@@ -24,7 +24,7 @@ This article is intended for Azure Local cluster operators, OEMs, solution integ
 
 - Secure Boot certificates are issued with defined lifetimes. Periodically refreshing these certificates helps keep them aligned with current security requirements. For Azure Local, you must install the 2023 Secure Boot certificate authorities (CAs) before the 2011 CAs begin to expire in June 2026.
 
-- 2023 Secure Boot certificates are delivered via OEM firmware updates. Starting with the Azure Local 2603 release, built‑in orchestration supports and gates the Secure Boot 2023 certificate update when applied through a platform update.
+- 2023 Secure Boot certificates are delivered via OEM firmware updates or Azure Local updates starting with the 2603 release. Azure Local built‑in orchestration provides Secure Boot 2023 certificate update when applied through a platform update.
 
 - CVE-2023-24932 is a Secure Boot security feature bypass associated with the BlackLotus UEFI bootkit. Fully fixing it requires updating boot components and applying revocations, such as through DBX updates, so older vulnerable boot managers can't bypass Secure Boot.
 
@@ -126,7 +126,7 @@ Windows records Secure Boot DB and DBX update successes and failure reasons in t
 
 - Take inventory of all Azure Local nodes, including hardware model, firmware version, Secure Boot configuration, and boot media usage.
 
-- Contact your OEM to understand whether a platform firmware is required for Secure Boot certificate and when they are making it available.
+- Contact your OEM to understand whether a platform firmware is required to install 2023 Secure Boot certificates and when they are making it available.
 
 - Validate the update process on representative hardware first (at least one system per platform type). Validate both normal boot scenarios and recovery or media‑based boot scenarios.
 
