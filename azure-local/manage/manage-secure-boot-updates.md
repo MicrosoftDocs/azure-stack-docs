@@ -257,6 +257,6 @@ For more information about how to get support, see [Get support for Azure Local]
 
 ::: moniker range="<azloc-2603"
 
-This feature is available only in Azure Local 2603.
+This feature applies only to Azure Local 2603.
 
 ::: moniker-end
