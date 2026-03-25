@@ -27,7 +27,7 @@ Before you begin, make sure that you complete the following prerequisites:
 
 [!INCLUDE [hci-registration-azure-local-machine-prerequisites](../includes/hci-registration-azure-local-machine-prerequisites.md)]
 
-- Download the [Configurator App for Azure Local](https://aka.ms/ConfiguratorAppForHCI).
+- Download the [Configurator App for Azure Local](https://azurestackreleases.download.prss.microsoft.com/dbazure/AzureLocal/ConfiguratorApp/10.2604.0.3052/V2/ConfiguratorAppV2-10.2604.0.3052.msix).
 
 - Note down:
 
