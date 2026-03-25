@@ -11,6 +11,8 @@ ms.subservice: hyperconverged
 
 # Manage Secure Boot updates
 
+::: moniker range="=azloc-2603"
+
 This article describes how Azure Local manages the transition from the 2011 Secure Boot certificates, which expire in June 2026, to the 2023 Secure Boot certificates, including how it mitigates [CVE-2023-24932](https://github.com/advisories/GHSA-cgcm-2v5q-v3w9) and why the changes are delivered through a phased rollout.
 
 It also covers how Azure Local orchestrates Secure Boot updates alongside OEM and hardware updates including Solution Builder Extension (SBE) packages and provides guidance for monitoring and validating each stage of the update process.
@@ -133,9 +135,9 @@ Windows records Secure Boot DB and DBX update successes and failure reasons in t
     > [!NOTE]
     > Azure Local solutions can be updated to version 2603 even if the required firmware updates aren’t available at the time of the update.
 
-### During rollout (test and deploy)
+### During rollout
 
-- Deploy solution update 2603 that includes the Secure Boot mitigation orchestration, using planned maintenance windows.
+- Update to 2603 that includes the Secure Boot mitigation orchestration, using planned maintenance windows.
 
 - Monitor Secure Boot update events during pilot phases. Don’t proceed to broad rollout if updates are blocked or postponed on pilot nodes.
 
@@ -250,3 +252,11 @@ For more information about how to get support, see [Get support for Azure Local]
 - [Frequently asked questions about the Secure Boot update process](https://support.microsoft.com/topic/frequently-asked-questions-about-the-secure-boot-update-process-b34bf675-b03a-4d34-b689-98ec117c7818)
 
 - [Secure Boot playbook for certificates expiring in 2026 (Windows IT Pro Blog)](https://techcommunity.microsoft.com/blog/windows-itpro-blog/secure-boot-playbook-for-certificates-expiring-in-2026/4469235)
+
+::: moniker-end
+
+::: moniker range="<azloc-2603"
+
+This feature is available only in Azure Local 2603.
+
+::: moniker-end
