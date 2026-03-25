@@ -13,12 +13,12 @@ ms.subservice: hyperconverged
 
 This article describes how Azure Local manages the transition from the 2011 Secure Boot certificates, which expire in June 2026, to the 2023 Secure Boot certificates, including how it mitigates [CVE-2023-24932](https://github.com/advisories/GHSA-cgcm-2v5q-v3w9) and why the changes are delivered through a phased rollout.
 
-It also covers how Azure Local orchestrates Secure Boot updates alongside OEM and hardware updates including Solution Builder Extension (SBE) packages and provides guidance for monitoring and validating each stage of deployment.
+It also covers how Azure Local orchestrates Secure Boot updates alongside OEM and hardware updates including Solution Builder Extension (SBE) packages and provides guidance for monitoring and validating each stage of the update process.
 
 This article is intended for Azure Local cluster operators, OEMs, solution integrators, and IT administrators who manage Secure Boot, firmware (Basic Input/Output System (BIOS) or Unified Extensible Firmware Interface (UEFI)), and operating system updates and reboots.
 
 > [!IMPORTANT]
-> Secure Boot revocation actions can be irreversible while Secure Boot remains enabled. Always validate updates on representative hardware and follow Microsoft guidance before deploying changes broadly.
+> Secure Boot revocation actions can be irreversible while Secure Boot remains enabled. Always validate updates on representative hardware and follow Microsoft guidance before adding changes broadly.
 
 ## About Secure Boot certificates
 
@@ -28,24 +28,24 @@ This article is intended for Azure Local cluster operators, OEMs, solution integ
 
 - CVE-2023-24932 is a Secure Boot security feature bypass associated with the BlackLotus UEFI bootkit. Fully fixing it requires updating boot components and applying revocations, such as through DBX updates, so older vulnerable boot managers can't bypass Secure Boot.
 
-- Because Secure Boot updates interact with platform firmware (UEFI variables) and boot-time security technologies like BitLocker and Virtualization-based Security (VBS), we recommend a phased approach with thorough testing and controlled deployment in enterprise environments.
+- Because Secure Boot updates interact with platform firmware (UEFI variables) and boot-time security technologies like BitLocker and Virtualization-based Security (VBS), we recommend a phased approach with thorough testing and controlled rollout in enterprise environments.
 
 - For Azure Local, a key consideration is maintaining clear sequencing between update types. Secure Boot updates should be applied separately from hardware or firmware (BIOS or UEFI) updates. Perform these updates in distinct maintenance steps to help ensure a stable and predictable boot‑time security state.
 
 - Azure Local’s mitigation implementation therefore focuses on orchestration and gating:
 
-    1. Orchestrate deployment of the 2023 Secure Boot certificates across cluster nodes, including required reboots, and installing boot manager signed by Windows UEFI CA 2023.
+    1. Orchestrate the installation of the 2023 Secure Boot certificates across cluster nodes, including required reboots, and installing boot manager signed by Windows UEFI CA 2023.
     1. Avoid applying Secure Boot updates on the same reboot as firmware updates.
 
 ## Background: CVE-2023-24932 and staged mitigations
 
-Microsoft provides enterprise guidance for deploying protections for CVE‑2023‑24932. These mitigations require coordinated changes across Windows and device firmware. To minimize risk and avoid operational disruption, we recommend you plan and test before deploying these changes broadly.
+Microsoft provides enterprise guidance for adding protections for CVE‑2023‑24932. These mitigations require coordinated changes across Windows and device firmware. To minimize risk and avoid operational disruption, we recommend you plan and test before adding these changes broadly.
 
 - **Threat model:** An attacker with physical access or administrator privileges can attempt to bypass Secure Boot by using older trusted boot components.
 
 - **Mitigation principle:** Update trust anchors and boot components and then apply revocations so older vulnerable boot managers become untrusted.
 
-- **Operational reality:** Secure Boot updates interact with platform firmware in different ways. In rare cases, firmware behavior might affect boot outcomes. We recommend you test on representative hardware and coordinate with OEM firmware as part of a controlled deployment.
+- **Operational reality:** Secure Boot updates interact with platform firmware in different ways. In rare cases, firmware behavior might affect boot outcomes. We recommend you test on representative hardware and coordinate with OEM firmware as part of a controlled update.
 
 For more information, see [Enterprise deployment guidance for CVE-2023-24932 (Microsoft Support)](https://support.microsoft.com/topic/enterprise-deployment-guidance-for-cve-2023-24932-88b8f034-20b7-4a45-80cb-c6049b0f9967).
 
@@ -137,7 +137,7 @@ Windows records Secure Boot DB and DBX update successes and failure reasons in t
 
 - Deploy solution update 2603 that includes the Secure Boot mitigation orchestration, using planned maintenance windows.
 
-- Monitor Secure Boot update events during pilot deployments. Don’t proceed to broad deployment if updates are blocked or postponed on pilot nodes.
+- Monitor Secure Boot update events during pilot phases. Don’t proceed to broad rollout if updates are blocked or postponed on pilot nodes.
 
 - Use the following command to confirm whether Secure Boot certificate updates have completed:
 
@@ -203,7 +203,7 @@ Azure Local clusters might host VMs that are affected by Secure Boot certificate
 
 ## Support and escalation guidance
 
-If you have issues while planning, deploying, or verifying Secure Boot updates, contact Microsoft Support before proceeding with other firmware (BIOS or UEFI) changes or enabling revocations in production environments.
+If you have issues while planning, orchestrating, or verifying Secure Boot updates, contact Microsoft Support before proceeding with other firmware (BIOS or UEFI) changes or enabling revocations in production environments.
 
 ### Severity mapping for Azure Local Secure Boot scenarios
 
@@ -211,7 +211,7 @@ If you have issues while planning, deploying, or verifying Secure Boot updates, 
 |---|---|---|---|
 | Severity A (Critical) | Production outage or imminent business-critical impact. One or more nodes can't boot, or the cluster is down or can't provide service. | - Host fails to boot after Secure Boot update or revocation. <br>- Repeated boot loops. <br>- Cluster unavailable because nodes are stuck during boot.<br>- Recovery, WinRE, or installation media can't boot and recovery is blocked. | - Exact failure point and recent changes. <br>- Firmware (BIOS or UEFI) version and OEM model. <br>- Secure Boot-related event logs and last reboot time. <br>- BitLocker state or recovery prompt details (if applicable). |
 | Severity B (High) | Production functionality is degraded or at-risk, but the cluster remains operational. Requires timely investigation. | - Secure Boot update stuck in a pending or scheduled state across reboots, <br>- Repeated Secure Boot DB or DBX update failure in event logs. <br>- Azure Local health shows persistent out-of-policy related to Secure Boot servicing. <br>- Planned firmware update must proceed but Secure Boot mitigation is mid-flight. | - Current mitigation stage (DB, Boot Manager, DBX). <br>- Relevant Secure Boot event IDs and messages. <br>- Evidence of pending reboot requirements. <br>-  Planned maintenance window details. |
-| Severity C (Normal) | Questions, guidance requests, or non-production and testing issues with no service impact. | - Pre-deployment planning and validation questions. <br>- Confirming firmware readiness for certificate updates. <br>-  Updating boot media or WinPE and validating compatibility. <br>- Interpreting Secure Boot events and expected timing. | - Environment inventory (OEM models, firmware versions). <br>- Pilot or test results. <br>- Relevant KB references and completed steps. |
+| Severity C (Normal) | Questions, guidance requests, or non-production and testing issues with no service impact. | - Planning and validation questions. <br>- Confirming firmware readiness for certificate updates. <br>-  Updating boot media or WinPE and validating compatibility. <br>- Interpreting Secure Boot events and expected timing. | - Environment inventory (OEM models, firmware versions). <br>- Pilot or test results. <br>- Relevant KB references and completed steps. |
 
 ### When to contact support versus when to wait
 
