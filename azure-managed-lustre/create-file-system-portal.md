@@ -87,7 +87,7 @@ During the maintenance window, user workloads that access the file system will t
 
 For containerized or orchestrated workloads (for example, Kubernetes/AKS), the impact may vary, depending on workload design, health checks, and restart policies. Some workloads may restart or be unable to start if they require storage access during this brief window.
 
-You can use service health alerts to receive notification of a pending system update, which includes a date range of when it will be applied. To configure service health alerts for Azure Managed Lustre Filesystem Service, see [Configure Health Alerts](/azure/service-health/service-health-overview#configure-service-health-alerts).
+You can use service health alerts to receive notification of a pending system update, which includes a date range of when it will be applied. To configure service health alerts for Azure Managed Lustre Filesystem Service, see [Configure Health Alerts](/azure/service-health/overview#using-azure-service-health).
 
 ## Advanced tab
 

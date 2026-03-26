@@ -3,7 +3,7 @@ title: Prerequisites for VMware VM migration to Azure Local using Azure Migrate
 description: Learn prerequisites for VMware migration to Azure Local using Azure Migrate.
 author: alkohli
 ms.topic: how-to
-ms.date: 03/06/2026
+ms.date: 03/26/2026
 ms.author: alkohli
 ms.subservice: hyperconverged
 ---
@@ -16,7 +16,7 @@ This article describes the prerequisite tasks you need to complete before you be
 
 ## Prerequisites
 
-The following list contains the prerequisites and considerations that must be met to migrate VMware VMs to Azure Local. Some prerequisites apply to the source VMware server, some to the target Azure Local instance, and others to both.
+The following list contains the prerequisites and considerations that you must meet to migrate VMware VMs to Azure Local. Some prerequisites apply to the source VMware server, some to the target Azure Local instance, and others to both.
 
 |Prerequisite|Applies to|More information|
 |--|--|--|
@@ -24,13 +24,14 @@ The following list contains the prerequisites and considerations that must be me
 |Open required Hyper-V firewall ports.|target|**3389** – Inbound connections on port 3389 to allow remote desktop connections to the appliance. <br> **44368** – Inbound connections on port 44368 to remotely access the appliance management app by using the URL: *https:\//\<appliance-ip-or-name\>:44368*. <br> **445** – Inbound and outbound connections on port 445 (SMB) to communicate between source and target appliance. <br> **5985, 5986** – Inbound and outbound connections on port 5985 (WinRM) to communicate from appliance to host.|
 |Allow required URLs |source, <br> target |[URL access](/azure/migrate/migrate-appliance#url-access) and <br> **\*.siterecovery.azure.com** |
 |Configure SAN/disks policy on VMs. |source|[Configure SAN/disks policy](migrate-troubleshoot.md#disks-on-migrated-vms-are-offline).|
-| Install Hyper-V Linux Integration Services on Linux VMs | source | Rebuild the Linux init image so it contains the necessary Hyper-V drivers.<br>Rebuilding the init image ensures that the VM can boot on Azure Local. Most new versions of Linux distributions have these drivers included. |
+| Install Hyper-V Linux Integration Services on Linux VMs | source | Rebuild the Linux init image so it contains the necessary Hyper-V drivers.<br>Rebuilding the init image ensures that the VM boots on Azure Local. Most new versions of Linux distributions include this service. |
+| Verify secure boot status of guest VMs | source | Secure Boot settings are preserved for UEFI (Generation 2) VMs during migration. Configure Secure Boot as intended on the source VM before migration. If you modify Secure Boot settings, allow up to 30 minutes for the Azure Migrate discovery service to detect the change before initiating migration. |
 | Disable BitLocker on Windows VMs. | source | BitLocker must be disabled on VMs before migration.|
-| Encrypted disks/volumes aren't supported. | source | Any encrypted disks/volumes must be decrypted on VMs before migration.|
+| Encrypted disks/volumes aren't supported. | source | Decrypt any encrypted disks or volumes on VMs before migration.|
 | Shared disks aren't supported. | source | Ensure that VMs don't have any shared disks attached before migration. |
-| Uninstall Azure Connected Machine Agent on source VMs (if present) | source | If the source VM is Arc-enabled, ensure that the Azure Connected Machine Agent is uninstalled before initiating replication. For more information, see [Azure Migrate FAQ](migrate-faq.yml?&tabs=vmware-and-hyper-v-vms#i-have-the-azure-connected-machine-agent-deployed-on-my-source-vms-that-i-wish-to-migrate-do-i-need-to-uninstall-the-agent-on-my-vms-before-migration). |
-| Review snapshot-based backup solutions | source | If you use snapshot-based backups on VMware VMs, make sure they don’t run at the same time as Azure Migrate replication cycles. Concurrent snapshot operations can interfere with replication cycles. For more information, see [Replication cycles](/azure/migrate/concepts-vmware-agentless-migration#replication-cycles). |
-| Deploy, configure, and register an Azure Local instance.|target|[Create and register an Azure Local instance](../deploy/deployment-introduction.md).|
+| Uninstall Azure Connected Machine Agent on source VMs (if present) | source | If the source VM is Arc-enabled, ensure that you uninstall the Azure Connected Machine Agent before initiating replication. See [Azure Migrate FAQ](migrate-faq.yml?&tabs=vmware-and-hyper-v-vms#i-have-the-azure-connected-machine-agent-deployed-on-my-source-vms-that-i-wish-to-migrate-do-i-need-to-uninstall-the-agent-on-my-vms-before-migration) for more information. |
+| Review snapshot-based backup solutions | source | If you use snapshot-based backups on VMware VMs, make sure they don't run at the same time as Azure Migrate replication cycles. Concurrent snapshot operations can interfere with replication cycles. See [Replication Cycles](/azure/migrate/concepts-vmware-agentless-migration#replication-cycles) for more information. |
+|Deploy, configure, and register an Azure Local instance.|target|[Create and register an Azure Local instance](../deploy/deployment-introduction.md).|
 | Verify a successful deployment. | target | [Verify a successful deployment](../deploy/deploy-via-portal.md#verify-a-successful-deployment). |
 |Verify and make a note of the custom location created during deployment on the Azure Local system.|target|[Verify a successful deployment](../deploy/deploy-via-portal.md#verify-a-successful-deployment).|
 |Create a custom storage path for the Azure Arc resource bridge for storing VM configuration and OS disks.|target| [Create storage path](../manage/create-storage-path.md).|
@@ -40,15 +41,15 @@ The following list contains the prerequisites and considerations that must be me
 
 ## Create an Azure Migrate project
 
-Before you can migrate, create an Azure Migrate project in Azure portal using the following procedure. For more information, see [Create and manage projects](/azure/migrate/create-manage-projects#create-a-project-for-the-first-time).
+Before you can migrate, create an Azure Migrate project in the Azure portal by using the following procedure. For more information, see [Create and manage projects](/azure/migrate/create-manage-projects#create-a-project-for-the-first-time).
 
 1. On the Azure portal home page, select **Azure Migrate**.
 
-1. On the **Get started** page, select **Create project**.
+1. On **Get started**, select **Create project**.
 
     :::image type="content" source="media/migrate-vmware-prerequisites/project-get-started.png" alt-text="Screenshot of Get started page in Azure portal." lightbox="media/migrate-vmware-prerequisites/project-get-started.png":::
 
-1. On the **Create project** page:
+1. On **Create project**:
     1. Enter your subscription. Make sure that the chosen subscription is associated with the same Azure tenant as the Azure Local instance.
     1. Enter the resource group, or select it if it already exists.
     1. Enter the new project name.

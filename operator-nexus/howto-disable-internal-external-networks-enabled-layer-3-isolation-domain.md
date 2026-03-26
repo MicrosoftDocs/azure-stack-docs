@@ -126,7 +126,7 @@ az managednetworkfabric internal-network delete \
 - **Always** perform a **Lock** followed by a **Commit** after administrative state changes.
 - Deletion is permitted **only after** disable + commit success.
 - Keep at least one Internal Network enabled per ISD to avoid service disruption.
-- Disable is not permitted if the parent L3 ISD is not enabled.
+- Disable/Enable is not permitted if the parent L3 ISD is not enabled.
 
 ### Important Notes
 
