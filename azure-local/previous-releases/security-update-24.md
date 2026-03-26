@@ -3,7 +3,7 @@ title:  Security updates for Azure Local 24xx releases
 description: Security updates for Azure Local 24xx releases.
 author: alkohli
 ms.topic: release-notes
-ms.date: 02/11/2026
+ms.date: 03/25/2026
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: hyperconverged
@@ -26,8 +26,6 @@ This security update includes quality improvements. Below is a summary of the ke
 
 - **[Motherboard replacement]** Fixed: Windows does not activate after you replace a motherboard.
 
-For more information about security vulnerabilities, see the [Security Update Guide](https://portal.msrc.microsoft.com/security-guidance) and the [December 2024 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2024-Dec).
-
 ### Known issues
 
 Microsoft is not currently aware of any issues with this update.
@@ -35,6 +33,8 @@ Microsoft is not currently aware of any issues with this update.
 ### To install this update
 
 Microsoft now combines the latest servicing stack update (SSU) for your operating system with the latest cumulative update (LCU). For general information about SSUs, see [Servicing stack updates](/windows/deployment/update/servicing-stack-updates) and [Servicing Stack Updates (SSU): Frequently Asked Questions](https://support.microsoft.com/topic/servicing-stack-updates-ssu-frequently-asked-questions-06b62771-1cb0-368c-09cf-87c4efc4f2fe).
+
+For more information about security vulnerabilities addressed by this update, see the [Security Update Guide](https://portal.msrc.microsoft.com/security-guidance) and the [December 2024 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2024-Dec).
 
 To install the LCU on your Azure Local instance, see [Update Azure Stack Local instances](../update/about-updates-23h2.md).
 
@@ -62,8 +62,6 @@ This security update includes quality improvements. Below is a summary of the ke
 
 - **[Windows Backup]** Fixed: Backup sometimes fails. This occurs when a device has an Extensible Firmware Interface (EFI) system partition (ESP).
 
-For more information about security vulnerabilities, see the [Security Update Guide](https://portal.msrc.microsoft.com/security-guidance) and the [November 2024 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2024-Nov).
-
 ### Known issues
 
 Microsoft is not currently aware of any issues with this update.
@@ -71,6 +69,8 @@ Microsoft is not currently aware of any issues with this update.
 ### To install this update
 
 Microsoft now combines the latest servicing stack update (SSU) for your operating system with the latest cumulative update (LCU). For general information about SSUs, see [Servicing stack updates](/windows/deployment/update/servicing-stack-updates) and [Servicing Stack Updates (SSU): Frequently Asked Questions](https://support.microsoft.com/topic/servicing-stack-updates-ssu-frequently-asked-questions-06b62771-1cb0-368c-09cf-87c4efc4f2fe).
+
+For more information about security vulnerabilities addressed by this update, see the [Security Update Guide](https://portal.msrc.microsoft.com/security-guidance) and the [November 2024 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2024-Nov).
 
 To install the LCU on your Azure Local instance, see [Update Azure Stack Local instances](../update/about-updates-23h2.md).
 
@@ -98,8 +98,6 @@ This security update includes quality improvements. The following key issues and
 
 - **Remote Desktop Gateway Service** The service stops responding. This occurs when a service uses remote procedure calls (RPC) over HTTP. Because of this, the clients that are using the service disconnect.
 
-For more information about security vulnerabilities, see the [Security Update Guide](https://portal.msrc.microsoft.com/security-guidance) and the [October 2024 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2024-Oct).
-
 ### Known issues
 
 Microsoft is not currently aware of any issues with this update.
@@ -107,6 +105,8 @@ Microsoft is not currently aware of any issues with this update.
 ### To install this update
 
 Microsoft now combines the latest servicing stack update (SSU) for your operating system with the latest cumulative update (LCU). For general information about SSUs, see [Servicing stack updates](/windows/deployment/update/servicing-stack-updates) and [Servicing Stack Updates (SSU): Frequently Asked Questions](https://support.microsoft.com/topic/servicing-stack-updates-ssu-frequently-asked-questions-06b62771-1cb0-368c-09cf-87c4efc4f2fe).
+
+For more information about security vulnerabilities addressed by this update, see the [Security Update Guide](https://portal.msrc.microsoft.com/security-guidance) and the [October 2024 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2024-Oct).
 
 To install the LCU on your Azure Local instance, see [Update Azure Local instances](../update/about-updates-23h2.md).
 
@@ -136,8 +136,6 @@ This security update includes quality improvements. The following key issues and
 
 - **Azure Virtual Desktop** A deadlock stops you from signing in to sessions.
 
-For more information about security vulnerabilities, see the [Security Update Guide](https://portal.msrc.microsoft.com/security-guidance) and the [September 2024 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2024-sep).
-
 ### Known issues
 
 Microsoft is not currently aware of any issues with this update.
@@ -145,6 +143,8 @@ Microsoft is not currently aware of any issues with this update.
 ### To install this update
 
 Microsoft now combines the latest servicing stack update (SSU) for your operating system with the latest cumulative update (LCU). For general information about SSUs, see [Servicing stack updates](/windows/deployment/update/servicing-stack-updates) and [Servicing Stack Updates (SSU): Frequently Asked Questions](https://support.microsoft.com/topic/servicing-stack-updates-ssu-frequently-asked-questions-06b62771-1cb0-368c-09cf-87c4efc4f2fe).
+
+For more information about security vulnerabilities addressed by this update, see the [Security Update Guide](https://portal.msrc.microsoft.com/security-guidance) and the [September 2024 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2024-sep).
 
 To install the LCU on your Azure Local instance, see [Update Azure Local instances](../update/about-updates-23h2.md).
 
@@ -186,8 +186,6 @@ This security update includes quality improvements. The following key issues and
 
 - **Domain Name System (DNS)**. This update hardens DNS server security to address CVE-2024-37968. If the configurations of your domains aren't up to date, you might get the SERVFAIL error or a time-out.
 
-For more information about security vulnerabilities, see the [Security Update Guide](https://msrc.microsoft.com/update-guide/) and the [August 2024 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2024-Aug).
-
 ### Known issues
 
 Microsoft isn't currently aware of any issues with this update.
@@ -195,6 +193,8 @@ Microsoft isn't currently aware of any issues with this update.
 ### To install this update
 
 Microsoft now combines the latest servicing stack update (SSU) for your operating system with the latest cumulative update (LCU). For general information about SSUs, see [Servicing stack updates](/windows/deployment/update/servicing-stack-updates) and [Servicing Stack Updates (SSU): Frequently Asked Questions](https://support.microsoft.com/topic/servicing-stack-updates-ssu-frequently-asked-questions-06b62771-1cb0-368c-09cf-87c4efc4f2fe).
+
+For more information about security vulnerabilities addressed by this update, see the [Security Update Guide](https://msrc.microsoft.com/update-guide/) and the [August 2024 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2024-Aug).
 
 To install the LCU on your Azure Local instance, see [Update Azure Local instances](../update/about-updates-23h2.md).
 
@@ -232,8 +232,6 @@ This security update includes quality improvements. The following key issues and
 
 - **Windows Local Administrator Password Solution (LAPS)**. Post Authentication Actions (PAA) don't occur at the end of the grace period. Instead, they occur at restart.
 
-For more information about security vulnerabilities, see the [Security Update Guide](https://portal.msrc.microsoft.com/security-guidance) and the [July 2024 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2024-Jul).
-
 ### Known issues
 
 #### BitLocker recovery key issue
@@ -243,6 +241,8 @@ After you apply the July security updates, devices enabled with Secure Boot and 
 ### To install this update
 
 Microsoft now combines the latest servicing stack update (SSU) for your operating system with the latest cumulative update (LCU). For general information about SSUs, see [Servicing stack updates](/windows/deployment/update/servicing-stack-updates) and [Servicing Stack Updates (SSU): Frequently Asked Questions](https://support.microsoft.com/topic/servicing-stack-updates-ssu-frequently-asked-questions-06b62771-1cb0-368c-09cf-87c4efc4f2fe).
+
+For more information about security vulnerabilities addressed by this update, see the [Security Update Guide](https://portal.msrc.microsoft.com/security-guidance) and the [July 2024 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2024-Jul).
 
 To install the LCU on your Azure Local instance, see [Update Azure Local instances](../update/about-updates-23h2.md).
 
@@ -278,8 +278,6 @@ This security update includes quality improvements. When you install this KB:
 
 - This update addresses an issue that affects **lsass.exe**. It leaks memory. This occurs during a Local Security Authority (Domain Policy) Remote Protocol (LSARPC) call.
 
-For more information about security vulnerabilities, see the [Security Update Guide](https://portal.msrc.microsoft.com/security-guidance) and the [June 2024 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2024-June).
-
 ### Known issues
 
 Microsoft isn't currently aware of any issues with this update.
@@ -287,6 +285,8 @@ Microsoft isn't currently aware of any issues with this update.
 ### To install this update
 
 Microsoft now combines the latest servicing stack update (SSU) for your operating system with the latest cumulative update (LCU). For general information about SSUs, see [Servicing stack updates](/windows/deployment/update/servicing-stack-updates) and [Servicing Stack Updates (SSU): Frequently Asked Questions](https://support.microsoft.com/topic/servicing-stack-updates-ssu-frequently-asked-questions-06b62771-1cb0-368c-09cf-87c4efc4f2fe).
+
+For more information about security vulnerabilities addressed by this update, see the [Security Update Guide](https://portal.msrc.microsoft.com/security-guidance) and the [June 2024 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2024-June).
 
 To install the LCU on your Azure Local instance, see [Update Azure Local instances](../update/about-updates-23h2.md).
 
@@ -342,9 +342,6 @@ This security update includes quality improvements. When you install this KB:
 
 - This update addresses a known issue that might cause your VPN connection to fail. This occurs after you install the update dated April 9, 2024 or later.
 
-For more information about security vulnerabilities, see the [Security Update Guide](https://portal.msrc.microsoft.com/security-guidance) and the [May 2024 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2024-May).
-
-
 ### Known issues
 
 Microsoft isn't currently aware of any issues with this update.
@@ -352,6 +349,8 @@ Microsoft isn't currently aware of any issues with this update.
 ### To install this update
 
 Microsoft now combines the latest servicing stack update (SSU) for your operating system with the latest cumulative update (LCU). For general information about SSUs, see [Servicing stack updates](/windows/deployment/update/servicing-stack-updates) and [Servicing Stack Updates (SSU): Frequently Asked Questions](https://support.microsoft.com/topic/servicing-stack-updates-ssu-frequently-asked-questions-06b62771-1cb0-368c-09cf-87c4efc4f2fe).
+
+For more information about security vulnerabilities addressed by this update, see the [Security Update Guide](https://portal.msrc.microsoft.com/security-guidance) and the [May 2024 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2024-May).
 
 To install the LCU on your Azure Local instance, see [Update Azure Local instances](../update/about-updates-23h2.md).
 
@@ -399,9 +398,6 @@ This security update includes quality improvements. When you install this KB:
 
 - This update addresses an issue that occurs when you run an application as an Administrator. When you use a PIN to sign in, the application won't run.
 
-For more information about security vulnerabilities, see the [Security Update Guide](https://msrc.microsoft.com/update-guide/) and the [April 2024 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2024-Apr).
-
-
 ### Known issues
 
 Microsoft isn't currently aware of any issues with this update.
@@ -409,6 +405,8 @@ Microsoft isn't currently aware of any issues with this update.
 ### To install this update
 
 Microsoft now combines the latest servicing stack update (SSU) for your operating system with the latest cumulative update (LCU). For general information about SSUs, see [Servicing stack updates](/windows/deployment/update/servicing-stack-updates) and [Servicing Stack Updates (SSU): Frequently Asked Questions](https://support.microsoft.com/topic/servicing-stack-updates-ssu-frequently-asked-questions-06b62771-1cb0-368c-09cf-87c4efc4f2fe).
+
+For more information about security vulnerabilities addressed by this update, see the [Security Update Guide](https://msrc.microsoft.com/update-guide/) and the [April 2024 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2024-Apr).
 
 To install the LCU on your Azure Local instance, see [Update Azure Local](../update/azure-update-manager-23h2.md).
 
@@ -432,8 +430,6 @@ This security update includes quality improvements. When you install this KB:
 
 - This update addresses an issue that makes the troubleshooting process fail. This occurs when you use the **Get Help** app.
 
-For more information about security vulnerabilities, see the [Security Update Guide](https://msrc.microsoft.com/update-guide/) and the [March 2024 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2024-Mar).
-
 <!--## Servicing stack update - 25398.760
 
 This update makes quality improvements to the servicing stack, which is the component that installs Windows updates. Servicing stack updates (SSU) ensure that you have a robust and reliable servicing stack so that your devices can receive and install Microsoft updates.-->
@@ -446,6 +442,8 @@ Microsoft isn't currently aware of any issues with this update.
 
 Microsoft now combines the latest servicing stack update (SSU) for your operating system with the latest cumulative update (LCU). For general information about SSUs, see [Servicing stack updates](/windows/deployment/update/servicing-stack-updates) and [Servicing Stack Updates (SSU): Frequently Asked Questions](https://support.microsoft.com/topic/servicing-stack-updates-ssu-frequently-asked-questions-06b62771-1cb0-368c-09cf-87c4efc4f2fe).
 
+For more information about security vulnerabilities addressed by this update, see the [Security Update Guide](https://msrc.microsoft.com/update-guide/) and the [March 2024 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2024-Mar).
+
 To install the LCU on your Azure Local instance, see [Update Azure Local](../update/azure-update-manager-23h2.md).
 
 <!--| Release Channel | Available | Next Step |
@@ -455,11 +453,9 @@ To install the LCU on your Azure Local instance, see [Update Azure Local](../upd
 | Microsoft Update Catalog | Yes | To get the standalone package for this update, go to the Microsoft Update Catalog website. |
 | Windows Server Update Services (WSUS) | Yes | This update automatically syncs with WSUS if you configure Products and Classifications as follows:<br>Product: Azure Stack HCI<br>Classification: Security Updates |-->
 
-
 ### File list
 
 For a list of the files that are provided in this update, download the file information for [cumulative update 5035856](https://go.microsoft.com/fwlink/?linkid=2263215).
-
 
 ## February 2024 OS security update (KB 5034769) for Azure Local
 
@@ -499,8 +495,6 @@ This security update includes quality improvements. When you install this KB:
 
 - This update addresses an issue that affects the Certificate Authority snap-in. You can't select the "Delta CRL" option. This stops you from using the GUI to publish Delta CRLs.
 
-For more information about security vulnerabilities, see the [Security Update Guide](https://msrc.microsoft.com/update-guide/) and the [February 2024 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2024-Feb). 
-
 <!--## Servicing stack update - 25398.700
 
 This update makes quality improvements to the servicing stack, which is the component that installs Windows updates. Servicing stack updates (SSU) ensure that you have a robust and reliable servicing stack so that your devices can receive and install Microsoft updates.-->
@@ -512,6 +506,8 @@ Microsoft isn't currently aware of any issues with this update.
 ### To install this update
 
 Microsoft now combines the latest servicing stack update (SSU) for your operating system with the latest cumulative update (LCU). For general information about SSUs, see [Servicing stack updates](/windows/deployment/update/servicing-stack-updates) and [Servicing Stack Updates (SSU): Frequently Asked Questions](https://support.microsoft.com/topic/servicing-stack-updates-ssu-frequently-asked-questions-06b62771-1cb0-368c-09cf-87c4efc4f2fe).
+
+For more information about security vulnerabilities addressed by this update, see the [Security Update Guide](https://msrc.microsoft.com/update-guide/) and the [February 2024 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2024-Feb).
 
 To install the LCU on your Azure Local instance, see [Update Azure Local](../update/azure-update-manager-23h2.md).
 
@@ -556,8 +552,6 @@ This security update includes quality improvements. When you install this KB:
 
 - This update addresses an issue that affects the Key Distribution Service (KDS). It doesn't start in the time required if LDAP referrals are needed.
 
-For more information about security vulnerabilities, see the [Security Update Guide](https://msrc.microsoft.com/update-guide/) and the [January 2024 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2024-Jan).
-
 <!--## Servicing stack update - 25398.640
 
 This update makes quality improvements to the servicing stack, which is the component that installs Windows updates. Servicing stack updates (SSU) ensure that you have a robust and reliable servicing stack so that your devices can receive and install Microsoft updates.-->
@@ -569,6 +563,8 @@ Microsoft isn't currently aware of any issues with this update.
 ### To install this update
 
 Microsoft now combines the latest servicing stack update (SSU) for your operating system with the latest cumulative update (LCU). For general information about SSUs, see [Servicing stack updates](/windows/deployment/update/servicing-stack-updates) and [Servicing Stack Updates (SSU): Frequently Asked Questions](https://support.microsoft.com/topic/servicing-stack-updates-ssu-frequently-asked-questions-06b62771-1cb0-368c-09cf-87c4efc4f2fe).
+
+For more information about security vulnerabilities addressed by this update, see the [Security Update Guide](https://msrc.microsoft.com/update-guide/) and the [January 2024 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2024-Jan).
 
 To install the LCU on your Azure Local instance, see [Update Azure Local](../update/azure-update-manager-23h2.md).
 
