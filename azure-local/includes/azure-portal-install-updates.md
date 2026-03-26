@@ -17,4 +17,4 @@ ms.lastreviewed: 12/04/2024
 
 7. Select **Next**.
 
-    [![Screenshot to specify system updates in Azure Update Manager.](./media/azure-portal-install-updates/select-updates.png)](./media/azure-portal-install-updates/select-updates.png#lightbox)
+    [:::image type="content" source="./media/azure-portal-install-updates/select-updates.png" alt-text="Screenshot to specify system updates in Azure Update Manager.":::](./media/azure-portal-install-updates/select-updates.png#lightbox)

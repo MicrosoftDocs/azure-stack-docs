@@ -3,7 +3,7 @@ title: Prepare Active Directory for Azure Local, version 23H2 deployment
 description: Learn how to prepare Active Directory before you deploy Azure Local, version 23H2.
 author: alkohli
 ms.topic: how-to
-ms.date: 01/07/2026
+ms.date: 03/25/2026
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -45,6 +45,13 @@ To manually assign the required permissions for Active Directory, create an OU, 
 - You require permissions to create an OU. If you don't have permissions, contact your Active Directory administrator.
 
 - If you have a firewall between your Azure Local system and Active Directory, ensure that the proper firewall rules are configured. For specific guidance, see [Firewall requirements for Active Directory Web Services and Active Directory Gateway Management Service](../concepts/firewall-requirements.md). See also [How to configure a firewall for Active Directory domains and trusts](/troubleshoot/windows-server/active-directory/config-firewall-for-ad-domains-and-trusts#windows-server-2008-and-later-versions).
+
+### Deployment user requirements
+
+The Lifecycle Manager (LCM) deployment user account must meet the following Active Directory requirements for Azure Local deployment and lifecycle management.
+
+- Interactive logon. The deployment user must be allowed to sign in interactively.
+- Log on as a batch job. The deployment user must have the [*Log on as a batch job*](/previous-versions/windows/it-pro/windows-10/security/threat-protection/security-policy-settings/log-on-as-a-batch-job) user rights. Ensure that the default domain policy doesn't deny this right, or explicitly grant it to the deployment user account.
 
 ## Active Directory preparation module
 
@@ -89,7 +96,7 @@ To create a dedicated OU, follow these steps:
 
 1. Verify that the OU is created. If using a Windows Server client, go to **Server Manager > Tools > Active Directory Users and Computers**.
 
-1. An OU with the specified name is created. This OU contains the new Lifecycle Manager (LCM) deployment user account.
+1. An OU with the specified name is created. This OU contains the new LCM deployment user account.
 
     :::image type="content" source="media/deployment-prep-active-directory/active-directory-11.png" alt-text="Screenshot of Active Directory Computers and Users window." lightbox="media/deployment-prep-active-directory/active-directory-11.png":::
 

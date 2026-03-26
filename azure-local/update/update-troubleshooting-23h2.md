@@ -4,7 +4,7 @@ description: Learn how to troubleshoot solution updates applied to Azure Local, 
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 12/30/2025
+ms.date: 03/25/2026
 ms.custom: sfi-image-nochange
 ms.subservice: hyperconverged
 #customer intent: As a Principal Content Developer, I want provide customers with information and guidance on how to troubleshoot solution updats for their Azure Local intances.
@@ -38,11 +38,11 @@ This scenario occurs when preparing to install system updates in Azure Update Ma
 
     :::image type="content" source="./media/troubleshoot-updates/update-manager.png" alt-text="Screenshot of Update Manager page." lightbox="./media/troubleshoot-updates/update-manager.png":::
 
-1. Select one or more systems from the list, then select **One-time Update**.  
+1. Select one or more systems from the list, then select **Install now**.  
 
-1. On the **Check readiness** page, review the list of readiness checks and their results.
+1. On the **Check readiness** tab, review the list of readiness checks and their results.
 
-    1. Select the **View details** links under **Affected systems**.
+    1. Select the links under **Details**.
 
     1. When the details box opens, you can view more details, individual system results, and the **Remediation** for failing health checks.
 
@@ -59,9 +59,9 @@ This scenario occurs when installing and tracking system updates in Azure Update
 
 1. In **History**, select the failed update run from the list.
 
-1. On the **Check readiness** page, review the list of readiness checks and their results.
+1. On the **Validate that the system is ready** tab, review the list of readiness checks and their results.
 
-    1. Select the **View details** links under **Affected systems**.
+    1. Select the **View details** links under **Details**.
 
     1. When the details box opens, you can view more details, individual system results, and the **Remediation** for failing health checks.
 
@@ -69,7 +69,7 @@ This scenario occurs when installing and tracking system updates in Azure Update
 
     Follow the remediation instructions to resolve the failures and then select the **Try again** button to retry the pre-update readiness checks and **Resume the update**.
 
-    To further troubleshoot, see the [PowerShell](#powershell) section.
+    To further troubleshoot, see the [PowerShell](#using-powershell) section.
 
 ## Using PowerShell
 
@@ -365,7 +365,7 @@ To resume a previously failed update run, you can retry the update run via the A
 
 ### The Azure portal
 
-We highly recommend using the Azure portal, to browse to your failed update and select the **Try again** button. This functionality is available at the Download updates, Check readiness, and Install stages of an update run.
+We highly recommend using the Azure portal, to browse to your failed update and select the **Try again** button. This functionality is available at the Download updates, Validate that the system is ready, and Install updates stages of an update run.
 
 :::image type="content" source="./media/troubleshoot-updates/try-again-update.png" alt-text="Screenshot of the retry failed update button." lightbox="./media/troubleshoot-updates/try-again-update.png":::
 
@@ -375,13 +375,15 @@ If you're unable to successfully rerun a failed update or need to troubleshoot a
 
 2. When the details box opens, you can review the error details. For more information on collecting diagnostic logs, you can click on the **How to collect logs** link near the Open a support ticket button.
 
-    [![Screenshot to download error logs.](./media/troubleshoot-updates/download-error-logs.png)](media/troubleshoot-updates/download-error-logs.png#lightbox)
+    [:::image type="content" source="./media/troubleshoot-updates/download-error-logs.png" alt-text="Screenshot to download error logs.":::](media/troubleshoot-updates/download-error-logs.png#lightbox)
+
 
     For more information on retrieving logs, see [Collect diagnostic logs for Azure Local](../manage/collect-logs.md).
 
 3. Additionally, you can select the **Open a support ticket** button, fill in the appropriate information, and attach your logs so that they're available to Microsoft Support.
 
-    [![Screenshot to open a support ticket.](./media/troubleshoot-updates/open-support-ticket.png)](media/troubleshoot-updates/open-support-ticket.png#lightbox)
+    [:::image type="content" source="./media/troubleshoot-updates/open-support-ticket.png" alt-text="Screenshot to open a support ticket.":::](media/troubleshoot-updates/open-support-ticket.png#lightbox)
+
 
 For more information on creating a support ticket, see [Create a support request](/azure/azure-portal/supportability/how-to-create-azure-support-request#create-a-support-request).
 
