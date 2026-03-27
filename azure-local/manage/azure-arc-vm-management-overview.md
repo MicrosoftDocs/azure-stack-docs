@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
 ms.custom: linux-related-content
-ms.date: 03/03/2026
+ms.date: 03/25/2026
 ms.subservice: hyperconverged
 ---
 
@@ -39,7 +39,7 @@ Although Hyper-V provides capabilities to manage your on-premises VMs, Azure Loc
 
 Consider the following limitations when you're managing VMs on Azure Local:
 
-- Updates to VM configurations, such as vCPU, memory, network interface, or data disk via on-premises tools, won't be reflected on the Azure management plane.
+- Changes to VM configurations, such as static network interface IP, or data disk configuration made either within the VM or through local management tools will not be reflected in Azure.
 
 - Moving a resource group isn't supported for VMs on Azure Local and its associated resources (such as network interfaces and disks).
 
