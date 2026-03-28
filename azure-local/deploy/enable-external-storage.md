@@ -167,7 +167,7 @@ The following prerequisites apply to use this document:
 
 6. Restart each node after completing MPIO configuration. Perform reboots in a rolling manner before proceeding with SAN configuration and WWN registration. 
 
-6. Sign in to the Purity WebUI: https://<FlashArrayManagementIPorFQDN> 
+6. Sign in to the Purity WebUI: https://{FlashArrayManagementIPorFQDN}
 
 7. Navigate to Storage → Hosts → select '+' to create a new host for each cluster node. Don't select a Personality. 
 
@@ -355,9 +355,9 @@ The following prerequisites apply to use this document:
 
 2. Under Resources, select Storage Paths, then Create Storage Path. 
 
-3. Enter a friendly Name and the actual File System Path (for example, C:\ClusterStorage\<VolumeName>), then select Create. 
+3. Enter a friendly Name and the actual File System Path (for example, C:\ClusterStorage\{VolumeName}), then select Create. 
 
-**Note:** Reference: https://learn.microsoft.com/en-us/azure/azure-local/manage/create-storage-path 
+**Note:** Reference: [Create Storage Path on Azure Local](../manage/create-storage-path.md)
 
 ## Troubleshooting 
 
@@ -412,6 +412,6 @@ If creating a Storage Path fails in the Azure portal, verify that the specified 
 
 ## Next Articles: 
 
-- [Create a VM on Azure Local](azure-stack-docs-pr\azure-local\manage\virtual-machine-image-azure-marketplace.md)
+- [Create a VM on Azure Local](../manage/create-arc-virtual-machines.md)
 - Using External Storage in AKS clusters on Azure Local 
 - Deploying AVD on Azure Local 
