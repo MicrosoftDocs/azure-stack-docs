@@ -2,8 +2,8 @@
 title: Enable External Storage (SAN) on Azure Local
 description: Describes how to enable integration of external Storage from various SAN vendors to Azure Local.
 author: shriramnat
-ms.author: shriramnat
-ms.reviewer: shriramnat
+ms.author: shnatara
+ms.reviewer: ronmiab
 ms.topic: how-to
 ms.date: 03/27/2026
 ms.subservice: hyperconverged
@@ -26,13 +26,15 @@ This guide covers eight preview test scenarios with steps that are common across
 > - Each SAN LUN must be dedicated to a single CSV (no sharing across clusters).
 > - Multipath I/O (MPIO) must be configured consistently across all nodes before volume use.
 
-### Dell
-The Dell PowerStore family (T and Q appliances) running OS 3.0 or later is supported as external storage for Azure Local. Detailed instructions are available [here](https://support.purestorage.com/auth/login?redirect=%2Fbundle%2Fm_getting_started_with_flasharray%2Fpage%2FSolutions%2FVMware_Platform_Guide%2FTroubleshooting_for_VMware_Solutions%2FVMware-Related_KB_Articles%2Flibrary%2Fcommon_content%2Fc_introduction_46.html).
+Select one of the partners below to view their support statements:
 
-### EverPure
-Supported versions of Purity on FlashArray models (FA//X, FA//XL, FA//C, FA//E).
+# [Dell](#tab/Dell-PowerStore-support)
+The Dell PowerStore family (T and Q appliances) running OS 3.0 or later is supported as external storage for Azure Local. .
 
-### Hitachi
+# [EverPure](#tab/EverPure-support)
+Supported versions of Purity on FlashArray models (FA//X, FA//XL, FA//C, FA//E). Detailed instructions are available [here](https://support.purestorage.com/auth/login?redirect=%2Fbundle%2Fm_getting_started_with_flasharray%2Fpage%2FSolutions%2FVMware_Platform_Guide%2FTroubleshooting_for_VMware_Solutions%2FVMware-Related_KB_Articles%2Flibrary%2Fcommon_content%2Fc_introduction_46.html)
+
+# [Hitachi](#tab/Hitachi-Vantara-support)
 Hitachi VSP One storage family is supported for use with Azure Local.
 Reference: https://compatibility.hitachivantara.com/products/interop-matrix
 The following Hitachi storage models are qualified to integrate with Azure Local (subject to program scope and the PCG for host/fabric specifics):
@@ -46,16 +48,16 @@ The following Hitachi storage models are qualified to integrate with Azure Local
 - Hitachi VSP G130, G350, G370, G700, G900
 
 
-### HPE
+# [HPE](#tab/HPE-Alletra-support)
 The HPE Alletra MP 10000 (Fibre Channel) storage is supported for use with Azure Local.
 
-### Lenovo
+# [Lenovo](#tab/Lenovo-support)
 The following Lenovo Storage systems are supported for use with Azure Local:
 - ThinkSystem DS Series
 - ThinkSystem DM Series
 - ThinkSystem DG Series
 
-### NetApp
+# [NetApp](#tab/Netapp-support)
 NetApp supports ONTAP-based external SAN arrays, including NetApp AFF, NetApp ASA, and other ONTAP platforms configured for SAN. These arrays are supported for use with Azure Local external storage when the solution is deployed as FC block storage presented to Azure Local nodes and consumed as CSVs.
 
 Supported ONTAP versions are governed by the [NetApp Interoperability Matrix Tool (IMT)](https://www.netapp.com/company/interoperability/), which lists the qualified configurations. Support is provided when the following end-to-end configuration components are validated and listed in the NetApp IMT:
@@ -96,7 +98,7 @@ The following prerequisites apply to use this document:
 > [!NOTE]
 > Run configurations on each Azure Local node. MPIO policy changes aren't in effect until after a reboot. 
 
-# [Dell (PowerStore)](#tab/Dell-PowerStore)
+# [Dell](#tab/Dell-PowerStore)
 
 > [!Note:] Required HBA: Emulex LPe36002-M64  |  Firmware: 03.09.19 (DUP: D815X A00-00)  |  Driver: 14.4.393.20 (DUP: VKNP1 A00-00). Install firmware via DUP through the iDRAC System Update menu; install driver via DUP in Windows OS. 
 
@@ -182,7 +184,7 @@ The following prerequisites apply to use this document:
     Update-HostStorageCache
     ``` 
 
-# [Hitachi (Vantara)](#tab/Hitachi-Vantara)
+# [Hitachi](#tab/Hitachi-Vantara)
 **Note:** Default MSDSM settings with RR policy are effective for Hitachi storage 
 
 1. Autoclaim Hitachi Open-V disks with MSDSM: 
@@ -211,7 +213,7 @@ The following prerequisites apply to use this document:
     ```powershell
     Update-HostStorageCache 
     ```
-# [HPE (Alletra)](#tab/HPE-Alletra) 
+# [HPE](#tab/HPE-Alletra) 
 
 1. Install the HPE PowerShell Toolkit (or use the array GUI) 
 
