@@ -310,6 +310,9 @@ The following prerequisites apply to use this document:
     ```powershell
     Update-HostStorageCache 
     ```
+
+---
+
 ## Step 3: Verify SAN Disks Before Initialization 
 1. On each Azure Local node, run: 
     ```powershell
