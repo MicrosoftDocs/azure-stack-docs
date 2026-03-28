@@ -11,20 +11,20 @@ ms.subservice: hyperconverged
 # Connecting an External Storage Array to Azure Local
 
 ## Overview
-Azure Local supports attaching external Fibre Channel (FC) SAN storage as an alternative to local storage (Storage Spaces Direct). This enables customers with existing SAN investments to reuse that infrastructure while running Azure Local workloads.
+Azure Local supports attaching external Fibre Channel (FC) storage area network (SAN) storage as an alternative to local storage (Storage Spaces Direct). This capability enables customers with existing SAN investments to reuse that infrastructure while running Azure Local workloads.
 
-This guide covers eight Private Preview test scenarios with steps that are common across all SAN solutions, and vendor-specific steps clearly called out per solution.
+This guide covers eight preview test scenarios with steps that are common across all SAN solutions, and vendor-specific steps clearly called out per solution.
 
 ## Supported SAN Solutions
 
 > [!NOTE]
 > - External SAN is supported for block storage over Fibre Channel only.
 > - All cluster nodes must have identical HBA configuration and zoning.
-> - LUNs must be presented to all cluster nodes (no partial presentation).
-> - Only NTFS formatted volumes are supported for SAN-backed CSVs.
-> - ReFS is not supported for SAN-backed volumes in this preview.
+> - Logical unit numbers (LUNs) must be presented to all cluster nodes (no partial presentation).
+> - Only NT file system (NTFS) formatted volumes are supported for SAN-backed Cluster Shared Volumes (CSVs).
+> - ReFS isn't supported for SAN-backed volumes in this preview.
 > - Each SAN LUN must be dedicated to a single CSV (no sharing across clusters).
-> - MPIO must be configured consistently across all nodes before volume use.
+> - Multipath I/O (MPIO) must be configured consistently across all nodes before volume use.
 
 ### Dell
 The Dell PowerStore family (T and Q appliances) running OS 3.0 or later is supported as external storage for Azure Local. Detailed instructions are available [here](https://support.purestorage.com/auth/login?redirect=%2Fbundle%2Fm_getting_started_with_flasharray%2Fpage%2FSolutions%2FVMware_Platform_Guide%2FTroubleshooting_for_VMware_Solutions%2FVMware-Related_KB_Articles%2Flibrary%2Fcommon_content%2Fc_introduction_46.html).
@@ -56,7 +56,16 @@ The following Lenovo Storage systems are supported for use with Azure Local:
 - ThinkSystem DG Series
 
 ### NetApp
-NetApp supports ONTAP-based external SAN arrays (including NetApp AFF and NetApp ASA, and other ONTAP platforms configured for SAN) for use with Azure Local external storage when the solution is deployed as Fibre Channel (FC) block storage presented to Azure Local nodes and consumed as Cluster Shared Volumes (CSVs). Please note that supported ONTAP versions are governed by the NetApp Interoperability Matrix Tool (IMT), which lists the qualified configurations. Support is provided when the end-to-end configuration (Azure Local release, Windows/driver stack, FC HBAs, ONTAP version, multipathing/host utilities, and switch/fabric components) is validated and listed in the NetApp IMT. Refer to IMT for the specific supported software versions. https://www.netapp.com/company/interoperability/ 
+NetApp supports ONTAP-based external SAN arrays, including NetApp AFF, NetApp ASA, and other ONTAP platforms configured for SAN. These arrays are supported for use with Azure Local external storage when the solution is deployed as FC block storage presented to Azure Local nodes and consumed as CSVs.
+
+Supported ONTAP versions are governed by the [NetApp Interoperability Matrix Tool (IMT)](https://www.netapp.com/company/interoperability/), which lists the qualified configurations. Support is provided when the following end-to-end configuration components are validated and listed in the NetApp IMT:
+
+- Azure Local release
+- Windows driver stack
+- FC HBAs
+- ONTAP version
+- Multipathing and host utilities
+- Switch and fabric components 
 
 ## Deployment Sequence
 1. Deploy Azure Local cluster without SAN zoning  
@@ -72,8 +81,8 @@ The following prerequisites apply to use this document:
 - Fibre Channel HBAs (Windows Server 2025 certified HBA and driver) installed in all cluster nodes and zoned on the FC fabric. 
 - The SAN array is accessible on the FC fabric with management access configured. 
 
-> [!Important:]
-> Do not zone in FC HBA WWNs until AFTER the Azure Local deployment, to avoid deployment confusion for FC LUNs. 
+> [!IMPORTANT]
+> Don't zone in FC HBA World Wide Names (WWNs) until AFTER the Azure Local deployment, to avoid deployment confusion for FC LUNs. 
 
 ## Step 1: Enable Multipath IO 
 
@@ -85,7 +94,7 @@ The following prerequisites apply to use this document:
 ## Step 2: Configure MPIO and Set MPIO policy  
 
 > [!NOTE]
-> Run configurations on each Azure Local node. MPIO policy changes are not in effect until after a reboot. 
+> Run configurations on each Azure Local node. MPIO policy changes aren't in effect until after a reboot. 
 
 # [Dell (PowerStore)](#tab/Dell-PowerStore)
 
@@ -114,17 +123,17 @@ The following prerequisites apply to use this document:
 
 6. Launch PowerStore WebUI: https://(PowerStoreClusterIP)
 
-7. Compute → Host Information → Hosts & Host Groups → '+Add Host'. 
+7. Compute → Host Information → Hosts & Host Groups → '+Add Host.'
 
-8. Enter host name; select Operating System = Windows; click Next. 
+8. Enter host name; select Operating System = Windows; select Next. 
 
-9. Select Fibre Channel as protocol; click Next. 
+9. Select Fibre Channel as protocol; select Next. 
 
-10. Run Get-InitiatorPort on the node for WWPNs; select the appropriate initiators; click Next. Leave default Local Connectivity; click Next. Verify summary and click Add Host. Repeat for all nodes. 
+10. Run Get-InitiatorPort on the node for World Wide Port Names (WWPNs); select the appropriate initiators; select Next. Leave default Local Connectivity; select Next. Verify summary and select Add Host. Repeat for all nodes. 
 
-11. Compute → Host Information → '+Add Host Group'; enter name; select all cluster hosts; click Create. 
+11. Compute → Host Information → '+Add Host Group'; enter name; select all cluster hosts; select Create. 
 
-12. Storage → Volume → '+CREATE'; enter name, size, and Volume Performance Policy; click Next. 
+12. Storage → Volume → '+CREATE'; enter name, size, and Volume Performance Policy; select Next. 
 
 13. Select SCSI protocol; map to the host group; select 'Generate Automatically' for LUN ID; complete the wizard. 
 
@@ -158,15 +167,15 @@ The following prerequisites apply to use this document:
 
 6. Restart each node after completing MPIO configuration. Perform reboots in a rolling manner before proceeding with SAN configuration and WWN registration. 
 
-6. Log in to the Purity WebUI: https://<FlashArrayManagementIPorFQDN> 
+6. Sign in to the Purity WebUI: https://<FlashArrayManagementIPorFQDN> 
 
-7. Navigate to Storage → Hosts → click '+' to create a new host for each cluster node. Do not select a Personality. 
+7. Navigate to Storage → Hosts → select '+' to create a new host for each cluster node. Don't select a Personality. 
 
-8. Select the host; click the three vertical ellipses under Host Ports → 'Configure WWN'. If nodes are zoned, WWNs appear under 'Existing WWNs'. Select the 2 WWNs for each host. Repeat for each node. 
+8. Select the host; select the three vertical ellipses under Host Ports → 'Configure WWN.' If nodes are zoned, WWNs appear under 'Existing WWNs.' Select the two WWNs for each host. Repeat for each node. 
 
-9. Navigate to Storage → Host Groups → click '+'; name the host group and add all cluster host objects. 
+9. Navigate to Storage → Host Groups → select '+'; name the host group and add all cluster host objects. 
 
-10. Navigate to Storage → Volumes → click '+'; enter name, size, and assign to the host group. 
+10. Navigate to Storage → Volumes → select '+'; enter name, size, and assign to the host group. 
 
 12. On each cluster node, rescan for the new volume: 
     ```powershell
@@ -176,7 +185,7 @@ The following prerequisites apply to use this document:
 # [Hitachi (Vantara)](#tab/Hitachi-Vantara)
 **Note:** Default MSDSM settings with RR policy are effective for Hitachi storage 
 
-1. Auto-claim Hitachi Open-V disks with MSDSM: 
+1. Autoclaim Hitachi Open-V disks with MSDSM: 
     ```powershell
     mpclaim -r -i -d "HITACHI OPEN-V" 
     ```
@@ -204,7 +213,7 @@ The following prerequisites apply to use this document:
     ```
 # [HPE (Alletra)](#tab/HPE-Alletra) 
 
-1. Install the HPE PowerShell Toolkit (Or use the Array Gui) 
+1. Install the HPE PowerShell Toolkit (or use the array GUI) 
 
 2. Register HPE array with MSDSM:  
     ```powershell
@@ -214,7 +223,7 @@ The following prerequisites apply to use this document:
     ```powershell
     Set-MSDSMGlobalDefaultLoadBalancePolicy -Policy RR 
     ```
-4. No additional MPIO tuning required when host persona is set to WINDOWS on the array. 
+4. No other MPIO tuning is required when host persona is set to WINDOWS on the array. 
 
 5. Verify that paths are using correct policy: 
     ```powershell
@@ -261,7 +270,7 @@ The following prerequisites apply to use this document:
 
 3. Copy the NetApp Windows Host Utilities installer to each Azure Local node. 
 
-4. Install Host Utilities with MPIO enabled (system auto-reboots on completion): 
+4. Install Host Utilities with MPIO enabled (system autoreboots on completion): 
     ```
     msiexec /i installer.msi /quiet MULTIPATHING=1 
     ```
@@ -308,7 +317,7 @@ The following prerequisites apply to use this document:
     ```
 2. Verify that new disks are visible on all nodes, disk sizes match expected LUN sizes and the number of disks is consistent across nodes. If disks are missing: 
 
-3. Re-run Update-HostStorageCache 
+3. Rerun Update-HostStorageCache 
 
 4. Verify zoning and LUN masking 
 
@@ -332,7 +341,7 @@ The following prerequisites apply to use this document:
     ```
 ## Step 5: Validate Cluster Configuration and Add CSV  
 
-1. Validate cluster storage configuration and inspect the report for issues: 
+1. Validate cluster storage configuration and inspect the report for issues. 
     ```powershell
     Test-Cluster 
     ```
@@ -341,12 +350,12 @@ The following prerequisites apply to use this document:
     Get-ClusterAvailableDisk | Add-ClusterDisk | Add-ClusterSharedVolume 
     ```
 
-## Step 6: Add Storage Path in Azure Portal 
-1. In the Azure Portal (portal.azure.com), select the Azure Local Cluster. 
+## Step 6: Add Storage Path in Azure portal 
+1. In the Azure portal (portal.azure.com), select the Azure Local Cluster. 
 
 2. Under Resources, select Storage Paths, then Create Storage Path. 
 
-3. Enter a friendly Name and the actual File System Path (e.g., C:\ClusterStorage\<VolumeName>), then click Create. 
+3. Enter a friendly Name and the actual File System Path (for example, C:\ClusterStorage\<VolumeName>), then select Create. 
 
 **Note:** Reference: https://learn.microsoft.com/en-us/azure/azure-local/manage/create-storage-path 
 
@@ -354,41 +363,41 @@ The following prerequisites apply to use this document:
 
 Use the following guidance to identify and resolve common issues when attaching SAN storage to Azure Local. 
 
-### Disks are not visible on cluster nodes 
+### Disks aren't visible on cluster nodes 
 
-If SAN disks do not appear on one or more cluster nodes, first verify that Fibre Channel zoning has been configured correctly between the host HBAs and the SAN array target ports. Ensure that all LUNs are masked and presented to every node in the cluster. On each node, run the following command to refresh the storage view: 
+If SAN disks don't appear on one or more cluster nodes, first verify that Fibre Channel zoning is configured correctly between the host HBAs and the SAN array target ports. Ensure that all LUNs are masked and presented to every node in the cluster. On each node, run the following command to refresh the storage view: 
 ```powershell
 Update-HostStorageCache 
 ```
 
 If the disks are still not visible, confirm that the HBA drivers and firmware are correctly installed and that all FC ports are online. 
 
-### MPIO is not claiming disks correctly 
+### MPIO isn't claiming disks correctly 
 
-If disks are visible but are not being managed by MPIO, verify that the correct storage vendor has been registered with MSDSM and that the MPIO feature is enabled on all nodes. 
+If disks are visible but MPIO isn't managing them, verify that the correct storage vendor is registered with MSDSM and that the MPIO feature is enabled on all nodes. 
 
 Run the following command to check disk claim status: 
 ```
 mpclaim -s -d 
 ```
-Ensure that disks are listed under MSDSM and that multiple active paths are present. If disks are not claimed, recheck vendor registration and reboot the node to apply MPIO settings. 
+Ensure that disks are listed under MSDSM and that multiple active paths are present. If disks aren't claimed, recheck vendor registration and reboot the node to apply MPIO settings. 
 
 ### Cluster validation fails during Test-Cluster 
 
-If the Test-Cluster command reports errors, review the generated validation report carefully and do not proceed with configuration until all critical issues are resolved. Common causes include inconsistent disk visibility across nodes, incorrect zoning, or LUNs that are not presented uniformly to all cluster members. Ensure that all nodes can see the same set of disks with identical characteristics. 
+If the Test-Cluster command reports errors, review the generated validation report carefully and don't proceed with configuration until all critical issues are resolved. Common causes include inconsistent disk visibility across nodes, incorrect zoning, or LUNs that aren't presented uniformly to all cluster members. Ensure that all nodes can see the same set of disks with identical characteristics. 
 
 ### Unable to add disks as Cluster Shared Volumes 
 
-If disks cannot be added as Cluster Shared Volumes, verify that the disks are visible to all nodes and are not already in use or reserved. Confirm that the disks have been initialized and formatted correctly using NTFS. You can also check disk state using: 
+If disks can't be added as Cluster Shared Volumes, verify that the disks are visible to all nodes and aren't already in use or reserved. Confirm that the disks are initialized and formatted correctly using NTFS. You can also check disk state using: 
 ```powershell
 Get-ClusterAvailableDisk 
 ```
 
 Only disks listed as available can be added to the cluster. 
 
-### Cluster Shared Volumes are not accessible 
+### Cluster Shared Volumes aren't accessible 
 
-If CSV paths are not accessible or do not appear under C:\ClusterStorage\, verify that the disks were successfully added to the cluster and promoted to CSVs. 
+If CSV paths aren't accessible or don't appear under C:\ClusterStorage\, verify that the disks were successfully added to the cluster and promoted to CSVs. 
 
 Use the following command to confirm CSV status: 
 ```powershell
@@ -397,9 +406,9 @@ Get-ClusterSharedVolume
 
 If volumes are missing or inaccessible, check Failover Cluster Manager for disk ownership and status, and ensure that there are no underlying storage connectivity issues. 
 
-### Storage Path creation fails in Azure Portal 
+### Storage Path creation fails in Azure portal 
 
-If creating a Storage Path fails in the Azure portal, verify that the specified file system path exists and is accessible on the cluster. The path must point to a valid CSV location under C:\ClusterStorage\. Also confirm that the Azure Arc connection for the cluster is healthy and that the cluster resource is in a ready state. If the issue persists, retry the operation after confirming that all previous steps have completed successfully. 
+If creating a Storage Path fails in the Azure portal, verify that the specified file system path exists and is accessible on the cluster. The path must point to a valid CSV location under C:\ClusterStorage\. Also confirm that the Azure Arc connection for the cluster is healthy and that the cluster resource is in a ready state. If the issue persists, retry the operation after confirming that all previous steps completed successfully. 
 
 ## Next Articles: 
 
