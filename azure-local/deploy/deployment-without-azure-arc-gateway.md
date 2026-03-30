@@ -1,16 +1,16 @@
 --- 
-title: Register Azure Local with Azure Arc.
+title: Register Azure Local with Azure Arc without using Arc Gateway
 description: Learn how to register Azure Local with Azure Arc with and without proxy setup. The proxy configuration can be done via an Arc script or via the Configurator app on Azure Local. 
 author: alkohli
 ms.topic: how-to
-ms.date: 02/17/2026
+ms.date: 03/26/2026
 ms.author: alkohli
 ms.service: azure-local
 zone_pivot_groups: register-arc-options
 ms.subservice: hyperconverged
 ---
 
-# Register Azure Local with Azure Arc
+# Register Azure Local with Azure Arc without using Arc gateway
 
 ::: moniker range=">=azloc-2505"
 
@@ -42,20 +42,22 @@ Make sure the following prerequisites are met before proceeding:
 
 Review the parameters used in the script:
 
-|Parameters  |Description  |
-|------------|-------------|
-|`TenantID`          |The tenant ID used to register your machines with Azure Arc. Go to your Microsoft Entra ID and copy the tenant ID property.         |
-|`SubscriptionID`    |The ID of the subscription used to register your machines with Azure Arc.         |
-|`ResourceGroup`     |The resource group precreated for Arc registration of the machines. A resource group is created if one doesn't exist.         |
-|`Region`            |The Azure region used for registration. See the [Supported regions](../concepts/system-requirements-23h2.md#azure-requirements) that can be used.          |
-|`ProxyServer`       |Optional parameter. Proxy Server address when required for outbound connectivity. |
-| `TargetSolutionVersion` | Optional parameter. The target Azure Local solution version that the node must update to after registering with Azure Arc. For example: "12.2602.1002.10". |
+| Parameters | Description |
+|--|--|
+| `TenantID` | The tenant ID used to register your machines with Azure Arc. Go to your Microsoft Entra ID and copy the tenant ID property. |
+| `SubscriptionID` | The ID of the subscription used to register your machines with Azure Arc. |
+| `ResourceGroup` | The resource group precreated for Arc registration of the machines. A resource group is created if one doesn't exist. |
+| `Region` | The Azure region used for registration. See the [Supported regions](../concepts/system-requirements-23h2.md#azure-requirements) that can be used. |
+| `ProxyServer` | Optional. Proxy Server address when required for outbound connectivity. |
+| `ProxyBypass` | Optional. Define the bypass list for the proxy. Use comma to separate each item from the list. |
+| `ArmAccessToken` | Optional. Required if you choose to authenticate using an Azure Resource Manager (ARM) access token. If omitted, the script prompts for device code authentication. |
+| `TargetSolutionVersion` | Optional. The target Azure Local solution version that the node must update to after registering with Azure Arc. For example: "12.2602.1002.10". |
 
 ## Step 2: Set parameters
 
 Set the parameters required for the registration script.
 
-Here's an example of how you should change these parameters for the `Invoke-AzStackHciArcInitialization` initialization script. Once the registration is complete, the Azure Local machines are registered in Azure Arc:
+The following example shows how to set the parameters for the `Invoke-AzStackHciArcInitialization` initialization script. Once the registration is complete, the Azure Local machines are registered in Azure Arc:
 
 ```powershell
 #Define the tenant you will use to register your machine as Arc device
@@ -89,6 +91,14 @@ $ProxyServer = "http://proxyaddress:port"
 
 $ProxyBypassList = "localhost,127.0.0.1,*.contoso.com,machine1,machine2,machine3,machine4,machine5,192.168.*.*,AzureLocal-1"
 
+#Optional: Define the Azure Resource Manager access token.
+# Required only if you want to use token-based authentication instead of device code authentication.
+$armTokenResponse = Get-AzAccessToken
+    
+# Convert token to string for use in initialization
+# Required because Get-AzAccessToken returns SecureString
+$ArmAccessToken = [System.Net.NetworkCredential]::new("", $armTokenResponse.Token).Password    
+
 # Define the target Azure Local solution version that the node must update to after registering with Azure Arc.
 # Example: "12.2602.1002.10"
 $TargetSolutionVersion = "<solution-version>"
@@ -116,43 +126,58 @@ PS C:\Users\SetupUser> $TargetSolutionVersion = "12.2602.1002.10"
 
 1. Run the Arc registration script. The script takes a few minutes to run.
 
-    ```powershell
-    #Invoke the registration script. Use a supported region.
-    Invoke-AzStackHciArcInitialization -TenantId $Tenant -SubscriptionID $Subscription -ResourceGroup $RG -Region $Region -Cloud "AzureCloud" -Proxy $ProxyServer -ProxyBypass $ProxyBypassList -TargetSolutionVersion $TargetSolutionVersion
-    ```
+   ```powershell
+   Invoke-AzStackHciArcInitialization
+   -TenantId $Tenant
+   -SubscriptionID $Subscription
+   -ResourceGroup $RG
+   -Region $Region
+   -Cloud "AzureCloud"
+   # Optional
+   -Proxy $ProxyServer
+   # Optional
+   -ProxyBypass $ProxyBypassList
+   # Optional: include only when using token-based authentication
+   -ArmAccessToken $ArmAccessToken
+   # Optional
+   -TargetSolutionVersion $TargetSolutionVersion
+   ```
 
-    For a list of supported Azure regions, see [Azure requirements](../concepts/system-requirements-23h2.md#azure-requirements).
+   > [!NOTE]
+   > If using `-ArmAccessToken`, convert the token to a plain text string using: `$ArmAccessToken = [System.Net.NetworkCredential]::new("", $armTokenResponse.Token).Password`.
 
-    <details>
-    <summary>Expand this section to see an example output.</summary>
+   For a list of supported Azure regions, see [Azure requirements](../concepts/system-requirements-23h2.md#azure-requirements).
 
-    Here's a sample output of a successful registration of your machines:
+   <details>
+   <summary>Expand this section to see an example output.</summary>
 
-    ```output
-    PS C:\Users\Administrator> Invoke-AzStackHciArcInitialization -TenantId $Tenant -SubscriptionID $Subscription -ResourceGroup $RG -Region $Region -Cloud "AzureCloud" -Proxy $ProxyServer
-    >>
-    Configuration saved to: C:\Users\ADMINI~1\AppData\Local\Temp\bootstrap.json
-    Triggering bootstrap on the device...
-    Waiting for bootstrap to complete... Current Status: InProgress
-    =========SNIPPED=========SNIPPED=============
-    Waiting for bootstrap to complete... Current Status: InProgress
-    Waiting for bootstrap to complete... Current Status: Succeeded
-    Bootstrap succeeded.
+   Here's a sample output of a successful registration of your machines:
+
+   ```output
+   PS C:\Users\Administrator> Invoke-AzStackHciArcInitialization -TenantId $Tenant -SubscriptionID $Subscription -ResourceGroup $RG -Region $Region -Cloud "AzureCloud" -Proxy $ProxyServer
+   >>
+   Configuration saved to: C:\Users\ADMINI~1\AppData\Local\Temp\bootstrap.json
+   Triggering bootstrap on the device...
+   Waiting for bootstrap to complete... Current Status: InProgress
+   =========SNIPPED=========SNIPPED=============
+   Waiting for bootstrap to complete... Current Status: InProgress
+   Waiting for bootstrap to complete... Current Status: Succeeded
+   Bootstrap succeeded.
     
-    Triggering bootstrap log collection as a best effort.
-    Version Response                                                    
-    ------- --------                                                    
-    V1      Microsoft.Azure.Edge.Bootstrap.ServiceContract.Data.Response
-    V1      Microsoft.Azure.Edge.Bootstrap.ServiceContract.Data.Response
+   Triggering bootstrap log collection as a best effort.
+   Version Response                                                    
+   ------- --------                                                    
+   V1      Microsoft.Azure.Edge.Bootstrap.ServiceContract.Data.Response
+   V1      Microsoft.Azure.Edge.Bootstrap.ServiceContract.Data.Response
 
 
-    PS C:\Users\Administrator>
-    ```
-    </details>
+   PS C:\Users\Administrator>
+   ```
+   </details>
 
 1. During the Arc registration process, you must authenticate with your Azure account. The console window displays a code that you must enter in the URL, displayed in the app, in order to authenticate. Follow the instructions to complete the authentication process.
 
-    :::image type="content" source="media/deployment-without-azure-arc-gateway/authentication-device-code.png" alt-text="Screenshot of the console window with device code and URL for authentication." lightbox="media/deployment-without-azure-arc-gateway/authentication-device-code.png":::
+   :::image type="content" source="media/deployment-without-azure-arc-gateway/authentication-device-code.png" alt-text="Screenshot of the console window with device code and URL for authentication." lightbox="media/deployment-without-azure-arc-gateway/authentication-device-code.png":::
 
 Once the registration is complete, the Azure Local machines are registered in Azure Arc.
 
@@ -326,16 +351,16 @@ Make sure the following prerequisites are met before proceeding:
 
 Review the parameters used in the script:
 
-|Parameters  |Description  |
-|------------|-------------|
-|`TenantID`          |The tenant ID used to register your machines with Azure Arc. Go to your Microsoft Entra ID and copy the tenant ID property.         |
-|`SubscriptionID`    |The ID of the subscription used to register your machines with Azure Arc.         |
-|`ResourceGroup`     |The resource group precreated for Arc registration of the machines. A resource group is created if one doesn't exist.         |
-|`Region`            |The Azure region used for registration. See the [Supported regions](../concepts/system-requirements-23h2.md#azure-requirements) that can be used.          |
-| `TargetSolutionVersion` | Optional parameter. The target Azure Local solution version that the node must update to after registering with Azure Arc. For example: "12.2602.1002.10". |
+| Parameters | Description |
+|--|--|
+| `TenantID` | The tenant ID used to register your machines with Azure Arc. Go to your Microsoft Entra ID and copy the tenant ID property. |
+| `SubscriptionID` | The ID of the subscription used to register your machines with Azure Arc. |
+| `ResourceGroup` | The resource group precreated for Arc registration of the machines. A resource group is created if one doesn't exist. |
+| `Region` | The Azure region used for registration. See the [Supported regions](../concepts/system-requirements-23h2.md#azure-requirements) that can be used. |
+| `ArmAccessToken` | Optional. Required if you choose to authenticate using an ARM access token. If omitted, the script prompts for device code authentication. |
+| `TargetSolutionVersion` | Optional. The target Azure Local solution version that the node must update to after registering with Azure Arc. For example: "12.2602.1002.10". |
 
 ## Step 2: Set parameters
-
 
 Set the parameters.
 
@@ -352,6 +377,14 @@ $RG = "YourResourceGroupName"
 #Define the region to use to register your server as Arc device
 #Do not use spaces or capital letters when defining region
 $Region = "eastus"
+
+#Optional: Define the Azure Resource Manager access token.
+# Required only if you want to use token-based authentication instead of device code authentication.
+$armTokenResponse = Get-AzAccessToken
+    
+# Convert token to string for use in initialization
+# Required because Get-AzAccessToken returns SecureString
+$ArmAccessToken = [System.Net.NetworkCredential]::new("", $armTokenResponse.Token).Password    
 
 # Define the target Azure Local solution version that the node must update to after registering with Azure Arc.
 # Example: "12.2602.1002.10"
@@ -379,43 +412,54 @@ PS C:\Users\SetupUser> $TargetSolutionVersion = "12.2602.1002.10"
 
 1. Run the Arc registration script. The script takes a few minutes to run.
 
-    ```powershell
-    #Invoke the registration script. Use a supported region.
-    Invoke-AzStackHciArcInitialization -TenantId $Tenant -SubscriptionID $Subscription -ResourceGroup $RG -Region $Region -Cloud "AzureCloud" -TargetSolutionVersion $TargetSolutionVersion
-    ```
+   ```powershell
+   Invoke-AzStackHciArcInitialization
+   -TenantId $Tenant
+   -SubscriptionID $Subscription
+   -ResourceGroup $RG
+   -Region $Region
+   -Cloud "AzureCloud"
+   # Optional: include only when using token-based authentication
+   -ArmAccessToken $ArmAccessToken
+   # Optional
+   -TargetSolutionVersion $TargetSolutionVersion
+   ```
 
-    For a list of supported Azure regions, see [Azure requirements](../concepts/system-requirements-23h2.md#azure-requirements).
-
-    <details>
-    <summary>Expand this section to see an example output.</summary>
-
-
-    ```output
-    PS C:\Users\Administrator> Invoke-AzStackHciArcInitialization -TenantId $Tenant -SubscriptionID $Subscription -ResourceGroup $RG -Region $Region -Cloud "AzureCloud"
-    >>
-    Configuration saved to: C:\Users\ADMINI~1\AppData\Local\Temp\bootstrap.json
-    Triggering bootstrap on the device...
-    Waiting for bootstrap to complete... Current Status: InProgress
-    =========SNIPPED=========SNIPPED=============
-    Waiting for bootstrap to complete... Current Status: InProgress
-    Waiting for bootstrap to complete... Current Status: Succeeded
-    Bootstrap succeeded.
+   > [!NOTE]
+   > If using `-ArmAccessToken`, convert the token to a plain text string using: `$ArmAccessToken = [System.Net.NetworkCredential]::new("", $armTokenResponse.Token).Password`.
     
-    Triggering bootstrap log collection as a best effort.
-    Version Response                                                    
-    ------- --------                                                    
-    V1      Microsoft.Azure.Edge.Bootstrap.ServiceContract.Data.Response
-    V1      Microsoft.Azure.Edge.Bootstrap.ServiceContract.Data.Response
+   For a list of supported Azure regions, see [Azure requirements](../concepts/system-requirements-23h2.md#azure-requirements).
+
+   <details>
+   <summary>Expand this section to see an example output.</summary>
 
 
-    PS C:\Users\Administrator>
-    ```
+   ```output
+   PS C:\Users\Administrator> Invoke-AzStackHciArcInitialization -TenantId $Tenant -SubscriptionID $Subscription -ResourceGroup $RG -Region $Region -Cloud "AzureCloud"
+   >>
+   Configuration saved to: C:\Users\ADMINI~1\AppData\Local\Temp\bootstrap.json
+   Triggering bootstrap on the device...
+   Waiting for bootstrap to complete... Current Status: InProgress
+   =========SNIPPED=========SNIPPED=============
+   Waiting for bootstrap to complete... Current Status: InProgress
+   Waiting for bootstrap to complete... Current Status: Succeeded
+   Bootstrap succeeded.
+   
+   Triggering bootstrap log collection as a best effort.
+   Version Response                                                    
+   ------- --------                                                    
+   V1      Microsoft.Azure.Edge.Bootstrap.ServiceContract.Data.Response
+   V1      Microsoft.Azure.Edge.Bootstrap.ServiceContract.Data.Response
 
-    </details>
+
+   PS C:\Users\Administrator>
+   ```
+
+   </details>
 
 1. During the Arc registration process, you must authenticate with your Azure account. The console window displays a code that you must enter in the URL, displayed in the app, in order to authenticate. Follow the instructions to complete the authentication process.
 
-     :::image type="content" source="media/deployment-without-azure-arc-gateway/authentication-device-code.png" alt-text="Screenshot of the console window with device code and URL for authentication." lightbox="media/deployment-without-azure-arc-gateway/authentication-device-code.png":::
+   :::image type="content" source="media/deployment-without-azure-arc-gateway/authentication-device-code.png" alt-text="Screenshot of the console window with device code and URL for authentication." lightbox="media/deployment-without-azure-arc-gateway/authentication-device-code.png":::
 
 ### Handle preinstalled or outdated OS images during Azure Arc registration
 
@@ -602,7 +646,7 @@ Review the parameters used in the script:
 
 1. Set the parameters required for the registration script.
 
-    Here's an example of how you should change these parameters for the `Invoke-AzStackHciArcInitialization` initialization script. Once the registration is complete, the Azure Local machines are registered in Azure Arc:
+    The following example shows how to set the parameters for the `Invoke-AzStackHciArcInitialization` initialization script. Once the registration is complete, the Azure Local machines are registered in Azure Arc:
 
     ```PowerShell
     #Define the tenant you will use to register your machine as Arc device
