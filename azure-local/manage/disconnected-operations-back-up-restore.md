@@ -39,6 +39,13 @@ Before you back up your system, complete these prerequisites:
 
 - **Encryption key:** Store the encryption certificate externally (*.cer* for backup) and provide it during the backup process. We recommend an Azure Key Vault in global Azure in the same subscription where the Azure Local with disconnected operations instance registration entry exists.
 
+- **Import backup module (required):** Before running any backup cmdlets, import the backup module from your Operations Module by using its full path:
+
+  ```powershell
+  # Import the backup cmdlets from the Operations Module (use the full path on your system)
+  Import-Module "<full path to Operations Module>\Azure.Local.Backup.psm1"
+  ```
+
 ## Backup parameters and customization
 
 Before running the backup command, configure environment-specific settings and parameters, such as backup paths, encryption certificates, retention preferences, and target locations. These configurations ensure that the backup process runs correctly and aligns with your infrastructure layout and security requirements.

@@ -1,9 +1,9 @@
 --- 
-title: Register Azure Local using Arc gateway and with and without proxy setup.
+title: Register Azure Local with Azure Arc using Arc Gateway
 description: Learn how to register Azure Local using Azure Arc gateway Arc proxy. Both scenarios with and without proxy are configured. 
 author: alkohli
 ms.topic: how-to
-ms.date: 02/17/2026
+ms.date: 03/26/2026
 ms.author: alkohli
 ms.service: azure-local
 zone_pivot_groups: register-arc-options
@@ -48,68 +48,110 @@ This article details how to register Azure Local using Azure Arc gateway and wit
    
    :::image type="content" source="media/deployment-with-azure-arc-gateway/arc-gateway-resource-id.png" alt-text="Screenshot of the Resource ID in the Overview page for Azure Arc gateway." lightbox="media/deployment-with-azure-arc-gateway/arc-gateway-resource-id.png":::
 
-## Step 2: Set parameters
+## Step 2: Review script parameters
 
-1. Set the parameters required for the registration script.
+Review the parameters used in the script:
 
-    Here's an example of how you should change these parameters for the `Invoke-AzStackHciArcInitialization` initialization script. 
+| Parameters | Description |
+|--|--|
+| `TenantID` | The tenant ID used to register your machines with Azure Arc. Go to your Microsoft Entra ID and copy the tenant ID property. |
+| `SubscriptionID` | The ID of the subscription used to register your machines with Azure Arc. |
+| `ResourceGroup` | The resource group precreated for Arc registration of the machines. A resource group is created if one doesn't exist. |
+| `Region` | The Azure region used for registration. See the [Supported regions](../concepts/system-requirements-23h2.md#azure-requirements) that can be used. |
+| `ArcGatewayID` | Define the Arc gateway resource ID from Azure. |
+| `ProxyServer` | Optional. Proxy Server address when required for outbound connectivity. |
+| `ProxyBypass` | Optional. Define the bypass list for the proxy. Use comma to separate each item from the list. |
+| `ArmAccessToken` | Optional. Required if you choose to authenticate using an Azure Resource Manager (ARM) access token. If omitted, the script prompts for device code authentication. |
+| `TargetSolutionVersion` | Optional. The target Azure Local solution version that the node must update to after registering with Azure Arc. For example: "12.2602.1002.10". |
+ 
+## Step 3: Set parameters
 
-    ```PowerShell
-    #Define the tenant you will use to register your machine as Arc device
-    $Tenant = "YourTenantID"
+Set the parameters required for the registration script.
 
-    #Define the subscription where you want to register your Azure Local machine with Arc.
-    $Subscription = "yourSubscriptionID" 
+Here's an example of how you should change these parameters for the `Invoke-AzStackHciArcInitialization` initialization script.
+
+```PowerShell
+#Define the tenant you will use to register your machine as Arc device
+$Tenant = "YourTenantID"
+
+#Define the subscription where you want to register your Azure Local machine with Arc.
+$Subscription = "yourSubscriptionID" 
     
-    #Define the resource group where you want to register your Azure Local machine with Arc.
-    $RG = "yourResourceGroupName" 
+#Define the resource group where you want to register your Azure Local machine with Arc.
+$RG = "yourResourceGroupName" 
 
-    #Define the region to use to register your server as Arc device
-    #Do not use spaces or capital letters when defining region
-    $Region = "eastus"
+#Define the region to use to register your server as Arc device
+#Do not use spaces or capital letters when defining region
+$Region = "eastus"
+
+#Define the Arc gateway resource ID from Azure 
+$ArcgwId = "/subscriptions/yourarcgatewayid/resourceGroups/yourResourceGroupName/providers/Microsoft.HybridCompute/gateways/yourArcGatewayName" 
     
-    #Define the proxy address for your Azure Local deployment to access the internet via proxy.
-    $ProxyServer = "http://proxyaddress:port"    
-   
-    #Define the bypass list for the proxy. Use comma to separate each item from the list.  
-    # Parameters must be separated with a comma `,`.
-    # Use "localhost" instead of <local> 
-    # Use specific IPs such as 127.0.0.1 without mask 
-    # Use * for subnets allowlisting. 192.168.1.* for /24 exclusions. Use 192.168.*.* for /16 exclusions. 
-    # Append * for domain names exclusions like *.contoso.com 
-    # DO NOT INCLUDE .svc on the list. The registration script takes care of Environment Variables configuration. 
-    # At least the IP address of each Azure Local machine.
-    # At least the IP address of the Azure Local cluster.
-    # At least the IPs you defined for your infrastructure network. Arc resource bridge, Azure Kubernetes Service (AKS), and future infrastructure services using these IPs require outbound connectivity.
-    # NetBIOS name of each machine.
-    # NetBIOS name of the Azure Local cluster.
+#Define the proxy address for your Azure Local deployment to access the internet via proxy.
+$ProxyServer = "http://proxyaddress:port"
+
+#Define the bypass list for the proxy. Use comma to separate each item from the list.  
+# Parameters must be separated with a comma `,`.
+# Use "localhost" instead of <local> 
+# Use specific IPs such as 127.0.0.1 without mask 
+# Use * for subnets allowlisting. 192.168.1.* for /24 exclusions. Use 192.168.*.* for /16 exclusions. 
+# Append * for domain names exclusions like *.contoso.com 
+# DO NOT INCLUDE .svc on the list. The registration script takes care of Environment Variables configuration. 
+# At least the IP address of each Azure Local machine.
+# At least the IP address of the Azure Local cluster.
+# At least the IPs you defined for your infrastructure network. Arc resource bridge, Azure Kubernetes Service (AKS), and future infrastructure services using these IPs require outbound connectivity.
+# NetBIOS name of each machine.
+# NetBIOS name of the Azure Local cluster.
     
-    $ProxyBypassList = "localhost,127.0.0.1,*.contoso.com,machine1,machine2,machine3,machine4,machine5,192.168.*.*,AzureLocal-1" 
+$ProxyBypassList = "localhost,127.0.0.1,*.contoso.com,machine1,machine2,machine3,machine4,machine5,192.168.*.*,AzureLocal-1" 
 
-    #Define the Arc gateway resource ID from Azure 
-    $ArcgwId = "/subscriptions/yourarcgatewayid/resourceGroups/yourResourceGroupName/providers/Microsoft.HybridCompute/gateways/yourArcGatewayName" 
+#Optional: Define the Azure Resource Manager access token.
+# Required only if you want to use token-based authentication instead of device code authentication.
+$armTokenResponse = Get-AzAccessToken
+    
+# Convert token to string for use in initialization
+# Required because Get-AzAccessToken returns SecureString
+$ArmAccessToken = [System.Net.NetworkCredential]::new("", $armTokenResponse.Token).Password
 
-    # Define the target Azure Local solution version that the node must update to after registering with Azure Arc.
-    # Example: "12.2602.1002.10"
-    $TargetSolutionVersion = "<solution-version>" 
+# Define the target Azure Local solution version that the node must update to after registering with Azure Arc.
+# Example: "12.2602.1002.10"
+$TargetSolutionVersion = "<solution-version>" 
 
-    ```
+```
 
-## Step 3: Run registration script
+## Step 4: Run registration script
 
 > [!NOTE]
 > If your Azure Local system is preinstalled with an Original Equipment Manufacturer (OEM) image that's outdated or unsupported, or if it was installed with an older ISO, see [Handle preinstalled or outdated OS images during Azure Arc registration](#handle-preinstalled-or-outdated-os-images-during-azure-arc-registration).
 
 1. Run the Arc registration script. The script takes a few minutes to run.
 
-    ```Powershell
-    #Invoke the registration script with Proxy and ArcgatewayID 
-    Invoke-AzStackHciArcInitialization -TenantID $Tenant -SubscriptionID $Subscription -ResourceGroup $RG -Region $Region -Cloud "AzureCloud" -Proxy $ProxyServer -ArcGatewayID $ArcgwId -ProxyBypass $ProxyBypassList -TargetSolutionVersion $TargetSolutionVersion
-    ```
+   ```powershell
+   Invoke-AzStackHciArcInitialization
+   -TenantId $Tenant
+   -SubscriptionID $Subscription
+   -ResourceGroup $RG
+   -Region $Region
+   -Cloud "AzureCloud"
+   -ArcGatewayID $ArcgwId
+   # Optional
+   -Proxy $ProxyServer
+   # Optional
+   -ProxyBypass $ProxyBypassList
+   # Optional: include only when using token-based authentication
+   -ArmAccessToken $ArmAccessToken
+   # Optional
+   -TargetSolutionVersion $TargetSolutionVersion
+   ```
+
+   > [!NOTE]
+   > If using `-ArmAccessToken`, convert the token to a plain text string using: `$ArmAccessToken = [System.Net.NetworkCredential]::new("", $armTokenResponse.Token).Password`.
+
+   For a list of supported Azure regions, see [Azure requirements](../concepts/system-requirements-23h2.md#azure-requirements).
 
 1. During the Arc registration process, you must authenticate with your Azure account. The console window displays a code that you must enter in the URL, displayed in the app, in order to authenticate. Follow the instructions to complete the authentication process.
 
-    :::image type="content" source="media/deployment-with-azure-arc-gateway/authentication-device-code.png" alt-text="Screenshot of the console window with the device code and the URL to open." lightbox="media/deployment-with-azure-arc-gateway/authentication-device-code.png":::
+   :::image type="content" source="media/deployment-with-azure-arc-gateway/authentication-device-code.png" alt-text="Screenshot of the console window with the device code and the URL to open." lightbox="media/deployment-with-azure-arc-gateway/authentication-device-code.png":::
 
 ### Handle preinstalled or outdated OS images during Azure Arc registration
 
@@ -329,27 +371,58 @@ This article details how to register using Azure Arc gateway on Azure Local with
    
    :::image type="content" source="media/deployment-with-azure-arc-gateway/arc-gateway-resource-id.png" alt-text="Screenshot of the Resource ID in the Overview page for Azure Arc gateway." lightbox="media/deployment-with-azure-arc-gateway/arc-gateway-resource-id.png":::
 
-## Step 2: Set parameters
+## Step 2: Review script parameters
+
+Review the parameters used in the script:
+
+| Parameters | Description |
+|--|--|
+| `TenantID` | The tenant ID used to register your machines with Azure Arc. Go to your Microsoft Entra ID and copy the tenant ID property. |
+| `SubscriptionID` | The ID of the subscription used to register your machines with Azure Arc. |
+| `ResourceGroup` | The resource group precreated for Arc registration of the machines. A resource group is created if one doesn't exist. |
+| `Region` | The Azure region used for registration. See the [Supported regions](../concepts/system-requirements-23h2.md#azure-requirements) that can be used. |
+| `ArcGatewayID` | Define the Arc gateway resource ID from Azure. |
+| `ArmAccessToken` | Optional. Required if you choose to authenticate using an ARM access token. If omitted, the script prompts for device code authentication. |
+| `TargetSolutionVersion` | Optional. The target Azure Local solution version that the node must update to after registering with Azure Arc. For example: "12.2602.1002.10". |
+
+## Step 3: Set parameters
+
+Set the parameters required for the registration script.
+
+Here's an example of how you should change these parameters for the `Invoke-AzStackHciArcInitialization` initialization script.
 
 ```PowerShell
-#Define the tenant you will use to register your machine as Arc device.
+#Define the tenant you will use to register your machine as Arc device
 $Tenant = "YourTenantID"
 
 #Define the subscription where you want to register your Azure Local machine with Arc.
-$Subscription = "yoursubscriptionID" 
-
+$Subscription = "yourSubscriptionID" 
+    
 #Define the resource group where you want to register your Azure Local machine with Arc.
-$RG = "yourresourcegroupname" 
+$RG = "yourResourceGroupName" 
 
-#Define the Arc gateway resource ID from Azure. 
-$ArcgwId = "/subscriptions/yourarcgatewayid/resourceGroups/yourresourcegroupname/providers/Microsoft.HybridCompute/gateways/yourarcgatewayname"
+#Define the region to use to register your server as Arc device
+#Do not use spaces or capital letters when defining region
+$Region = "eastus"
 
-# Define the target Azure Local solution version that the node must match when registering with Azure Arc.
+#Define the Arc gateway resource ID from Azure 
+$ArcgwId = "/subscriptions/yourarcgatewayid/resourceGroups/yourResourceGroupName/providers/Microsoft.HybridCompute/gateways/yourArcGatewayName" 
+    
+#Optional: Define the Azure Resource Manager access token.
+# Required only if you want to use token-based authentication instead of device code authentication.
+$armTokenResponse = Get-AzAccessToken
+    
+# Convert token to string for use in initialization
+# Required because Get-AzAccessToken returns SecureString
+$ArmAccessToken = [System.Net.NetworkCredential]::new("", $armTokenResponse.Token).Password
+
+# Define the target Azure Local solution version that the node must update to after registering with Azure Arc.
 # Example: "12.2602.1002.10"
-$TargetSolutionVersion = "<solution-version>"
+$TargetSolutionVersion = "<solution-version>" 
+
 ```
 
-## Step 3: Run the registration script
+## Step 4: Run the registration script
 
 > [!NOTE]
 > If your Azure Local system is preinstalled with an Original Equipment Manufacturer (OEM) image that's outdated or unsupported, or if it was installed with an older ISO, see [Handle preinstalled or outdated OS images during Azure Arc registration](#handle-preinstalled-or-outdated-os-images-during-azure-arc-registration).
@@ -358,10 +431,22 @@ To use the Arc gateway feature for Azure Local systems without a proxy, only use
 
 1. Run the initialization script as follows.
 
-    ```powershell
-    #Invoke the registration script with ArcgatewayID 
-    Invoke-AzStackHciArcInitialization -TenantID $Tenant -SubscriptionID $Subscription -ResourceGroup $RG -Region $Region -Cloud "AzureCloud" -ArcGatewayID $ArcgwId -TargetSolutionVersion $TargetSolutionVersion
-    ```
+   ```powershell
+   Invoke-AzStackHciArcInitialization
+   -TenantId $Tenant
+   -SubscriptionID $Subscription
+   -ResourceGroup $RG
+   -Region $Region
+   -Cloud "AzureCloud"
+   -ArcGatewayID $ArcgwId
+   # Optional: include only when using token-based authentication
+   -ArmAccessToken $ArmAccessToken
+   # Optional
+   -TargetSolutionVersion $TargetSolutionVersion
+   ```
+
+   > [!NOTE]
+   > If using `-ArmAccessToken`, convert the token to a plain text string using: `$ArmAccessToken = [System.Net.NetworkCredential]::new("", $armTokenResponse.Token).Password`.
 
 1. During the Arc registration process, you must authenticate with your Azure account. The console window displays a code that you must enter in the URL, in order to authenticate. Follow the instructions to complete the authentication process.
 
@@ -371,7 +456,7 @@ To use the Arc gateway feature for Azure Local systems without a proxy, only use
 
 [!INCLUDE [handle-os-image-updates](../includes/azure-local-handle-os-image-update-during-arc-registration.md)]
 
-## Step 4: Verify the setup is successful
+## Step 5: Verify the setup is successful
 
 Once the registration is complete, follow these steps to verify that Azure Arc gateway setup is successful.
 

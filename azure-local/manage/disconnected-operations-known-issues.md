@@ -27,6 +27,46 @@ In cases where the Certificate Revocation List (CRL) is empty or misconfigured, 
 
 Verify that your Certificate Authority is configured correctly and ensure that your certificates include a CRL endpoint that is accessible from the nodes.
 
+**Alternative mitigation**:
+
+If you can't reconfigure your Certificate Authority (Enterprise PKI), you can bypass CRL checks during bootstrap. Run the following steps on each Azure Local node:
+
+```powershell
+Write-Host "Updating Windows MAE Config for the Bootsrap service"
+$basePath = "C:\windows\system32\bootstrap"
+
+Write-Host "Looking for config file under $basePath"
+$contentDir = Get-ChildItem -Path $basePath -Filter "content_*" -Directory -ErrorAction SilentlyContinue | Sort-Object Name -Descending | Select-Object -First 1
+if (-not $contentDir) {
+    Write-Warning "Could not find content_* directory under $basePath"
+    return
+}
+Write-Host "Found content directory: $($contentDir.FullName)"
+
+$ConfigPath = Join-Path $contentDir.FullName "Microsoft.Azure.Edge.Bootstrap.ManagementService\windows.mae.config.json"
+if (-not (Test-Path $ConfigPath)) {
+    Write-Warning "Config file $ConfigPath not found"
+    return
+}
+Write-Host "Config file found at $ConfigPath"
+
+$configContent = Get-Content -Path $ConfigPath -Raw | ConvertFrom-Json
+$configContent.ManagementSettings.CheckCertificateRevocationList = $false
+Write-Host "Updated existing CheckCertificateRevocationList property to false"
+
+Stop-Service -Name "BootstrapManagementService" -Force -ErrorAction Stop
+Write-Host "BootstrapManagementService stopped successfully"
+
+$configContent | ConvertTo-Json -Depth 10 | Set-Content -Path $ConfigPath -Force
+Write-Host "Successfully saved modified config"
+
+Write-Host "Starting BootstrapManagementService..."
+Start-Service -Name "BootstrapManagementService"
+Write-Host "Waiting 60 seconds for service to fully initialize..."
+Start-Sleep -Seconds 60
+Write-Host "Successfully started BootstrapManagementService"  
+```
+
 ### Cloud deployment fails and transitions into a failed state
 
 In version 2602, a known issue in disconnected operations for Azure Local causes the Hybrid Instance Metadata Service (HIMDS) to stop functioning because the control plane services take longer than expected to start. This timing issue can result in failed deployments accompanied by unclear or non-descriptive error messages.

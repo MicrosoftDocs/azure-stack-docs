@@ -2,10 +2,10 @@
 title: Prerequisites for Azure Managed Lustre file systems
 description: Learn about network and storage prerequisites to complete before you create an Azure Managed Lustre file system.
 ms.topic: overview
-ms.date: 07/31/2025
-author: pauljewellmsft
-ms.author: pauljewell
-ms.reviewer: mayabishop
+ms.date: 03/27/2026
+author: wolfgang-desalvador
+ms.author: akashdubey
+ms.reviewer: rohogue
 
 # Intent: As an IT Pro, I need to understand network and storage requirements for using an Azure Managed Lustre file system, and I need to configure resource settings.
 # Keyword: 
@@ -49,7 +49,7 @@ If you plan to use another resource to host your compute VMs in the same virtual
 
 ### Subnet access and permissions
 
-By default, no specific changes need to be made to enable Azure Managed Lustre. If your environment includes restricted network or security policies, the following guidance should be considered:
+Please follow these guidelines when configuring your networking resources to work properly with the Azure Managed Lustre file system::
 
 | Access type | Required network settings |
 |-------------|---------------------------|
@@ -57,6 +57,7 @@ By default, no specific changes need to be made to enable Azure Managed Lustre. 
 | Access between hosts on the Azure Managed Lustre subnet | Allow inbound and outbound access between hosts within the Azure Managed Lustre subnet. As an example, access to TCP port 22 (SSH) is necessary for cluster deployment. |
 | Azure cloud service access | Configure your network security group to permit the Azure Managed Lustre file system to access Azure cloud services from within the Azure Managed Lustre subnet.<br><br>Add an outbound security rule with the following properties:<br>- **Port**: Any<br>- **Protocol**: Any<br>- **Source**: Virtual Network<br>- **Destination**: "AzureCloud" service tag<br>- **Action**: Allow<br><br>Note: Configuring the Azure cloud service also enables the necessary configuration of the Azure Queue service.<br><br>For more information, see [Virtual network service tags](/azure/virtual-network/service-tags-overview). |
 | Lustre access<br>(TCP ports 988, 1019-1023) | Your network security group must allow inbound and outbound traffic for TCP port 988 and TCP port range 1019-1023. These rules need to be allowed between hosts on the Azure Managed Lustre subnet, and between any client subnets and the Azure Managed Lustre subnet. No other services can reserve or use these ports on your Lustre clients. The default rules `65000 AllowVnetInBound` and `65000 AllowVnetOutBound` meet this requirement. |
+| Outbound networking access from the Azure Managed Lustre subnet | Starting March 31, 2026, new virtual networks will default to using private subnets, which disables default outbound access from the subnet unless explicitly enabled or used with a NAT gateway. Azure Managed Lustre requires outbound access from the subnet to specific domains and ports as detailed in its [outbound security rules](configure-network-security-group.md#create-outbound-security-rules) for deployment, security monitoring, and telemetry. Ensure your subnet is created with outbound access by either disabling the private subnet option or using one of the supported methods in the [default outbound networking guide](/azure/virtual-network/ip-services/default-outbound-access). |
 
 For detailed guidance about configuring a network security group for Azure Managed Lustre file systems, see [Create and configure a network security group](configure-network-security-group.md#create-and-configure-a-network-security-group).
 
