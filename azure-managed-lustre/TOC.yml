@@ -26,6 +26,10 @@
       href: export-with-archive-jobs.md
     - name: Export data using auto-export jobs
       href: auto-export.md
+- name: Data migration
+  items:
+    - name: Migrate data from on-premises POSIX file systems
+      href: migrate-data-from-linux.md
 - name: Access a file system
   items:
     - name: Install Lustre client
