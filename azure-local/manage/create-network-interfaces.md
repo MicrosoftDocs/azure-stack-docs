@@ -7,7 +7,7 @@ ms.reviewer: alkohli
 ms.topic: how-to
 ms.service: azure-local
 ms.custom: devx-track-azurecli
-ms.date: 02/11/2026
+ms.date: 03/20/2026
 ms.subservice: hyperconverged
 ---
 
@@ -85,6 +85,9 @@ Follow these steps to create a network interface on your static logical network.
     | **subnet-id** | Name of your logical network. For example: `test-lnet-dynamic`. |
     | **ip-allocation-method** | IP address allocation method. This parameter can be `dynamic` or `static`. If this parameter isn't specified, the network interface is created with a dynamic configuration. |
     | **ip-address** | The IPv4 address to assign to the network interface. For example, `192.168.0.10`. |
+
+    > [!NOTE]
+    > Changes to the VM IP address made from within the VM for NICs connected to static logical networks will not be reflected in Azure.
 
     Here's an example output:
     
@@ -167,7 +170,10 @@ Follow these steps to create a network interface on your DHCP logical network.
     | **custom-location** | Name or ID of the custom location to use for logical network on your Azure Local. |
     | **location** | Azure region as specified by `az locations`. For example, `eastus`. |
     | **subnet-id** | Name of your logical network. For example, `test-lnet-dynamic`. |
-   
+  
+      > [!NOTE]
+      > Changes to the VM IP address for NICs connected to DHCP logical networks will be reflected in Azure.
+
     Here's an example output:
     
     ```azurecli

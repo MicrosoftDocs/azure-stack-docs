@@ -149,7 +149,7 @@ To prepare the first machine for the disconnected operations appliance, follow t
 
     ```powershell  
     Get-ChildItem $certsPath 
-    Get-ChildItem $certsPath -recurse -filter *.cer  
+    Get-ChildItem $certsPath -recurse -filter *.pfx  
     ```  
 
 1. Import the **Operations module**. Run the command as an administrator using PowerShell. Modify the path to match your folder structure.

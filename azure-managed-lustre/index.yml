@@ -48,6 +48,12 @@ landingContent:
             url: export-with-archive-jobs.md
           - text: Export data using auto-export jobs
             url: auto-export.md
+  - title: Data migration
+    linkLists:
+      - linkListType: how-to-guide
+        links:
+          - text: Migrate data from on-premises POSIX file systems
+            url: migrate-data-from-linux.md
   - title: Access a file system
     linkLists:
       - linkListType: how-to-guide
