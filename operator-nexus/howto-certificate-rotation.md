@@ -5,7 +5,7 @@ author: rbhupatiraju
 ms.author: rbhupatiraju
 ms.service: azure-operator-nexus
 ms.topic: how-to
-ms.date: 31/03/2026
+ms.date: 3/31/2026
 ---
 
 # Use certificate rotation in Azure Operator Nexus
