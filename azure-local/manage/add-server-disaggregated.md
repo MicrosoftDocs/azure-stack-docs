@@ -4,7 +4,7 @@ description: Learn how to manage capacity on your Azure Local disaggregated depl
 ms.topic: how-to
 author: alkohli
 ms.author: alkohli
-ms.date: 08/26/2025
+ms.date: 03/31/2026
 ms.subservice: hyperconverged
 ---
 
