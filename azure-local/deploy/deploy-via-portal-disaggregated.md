@@ -3,7 +3,7 @@ title: Deploy Azure Local Using the Azure Portal for Disaggregated Deployments
 description: Learn how to deploy an Azure Local instance from the Azure portal for disaggregated deployments.
 author: alkohli
 ms.topic: how-to
-ms.date: 03/23/2026
+ms.date: 03/31/2026
 ms.author: alkohli
 ms.service: azure-local
 ms.custom: sfi-image-nochange

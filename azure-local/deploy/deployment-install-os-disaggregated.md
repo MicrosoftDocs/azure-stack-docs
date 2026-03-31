@@ -3,7 +3,7 @@ title: Install the Azure Local Operating System for Disaggregated Deployments
 description: Learn how to install the Azure Local operating system on each machine of your disaggregated deployment using SConfig.
 author: alkohli
 ms.topic: how-to
-ms.date: 12/11/2025
+ms.date: 03/31/2026
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -146,7 +146,7 @@ Follow these steps to configure the operating system using SConfig:
 1. Set the local administrator credentials to be identical across all machines.
 
     > [!NOTE]
-    > - Make sure that the local administrator password follows Azure password length and complexity requirements. Use a password that is at least 14 characters long and contains a lowercase character, an uppercase character, a numeral, and a special character.
+    > Make sure that the local administrator password follows Azure password length and complexity requirements. Use a password that is at least 14 characters long and contains a lowercase character, an uppercase character, a numeral, and a special character.
    
 Starting with version 2604, domain joining before deployment is supported. If you choose to domain join, you must add the deployment user to the local Administrators group. If you don't domain join beforehand, the machines are automatically joined to a domain during the [Deployment via Azure portal](./deploy-via-portal.md).
 
@@ -165,7 +165,7 @@ If you don't domain join beforehand, the machines are automatically joined to a 
 
 ## Connect to SAN
 
-Following steps connecting to the SAN must be done on every machines.
+Following steps connecting to the SAN must be done on every machine.
 
 1. Install the drivers for your fibre channel (FC) HBA vendor/model. Here is a generic example using pnputil to install the driver. Consult your hardware partner's documentation for details regarding driver installation.
 
@@ -187,8 +187,8 @@ Following steps connecting to the SAN must be done on every machines.
     mpclaim -s -d
     ```
 
- > [!NOTE]
-    > - Consult your SAN vendor for the best MPIO settings with Azure Local.
+   > [!NOTE]
+   > Consult your SAN vendor for the best MPIO settings with Azure Local.
 
 1. Confirm MPIO settings are set correct.
 
