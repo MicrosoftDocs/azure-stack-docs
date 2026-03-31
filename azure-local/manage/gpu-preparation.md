@@ -58,7 +58,6 @@ The following table shows GPU model support by GPU assignment type and VM worklo
 | NVIDIA L40 |&check; Yes |&check; Yes |&check; Yes |&check; Yes |
 | NVIDIA L40S |&check; Yes |&check; Yes |&check; Yes |&check; Yes |
 | NVIDIA RTX Pro 6000 |&check; Yes |&check; Yes |&check; Yes |&check; Yes |
-| NVIDIA H100 |&check; Yes |&check; Yes |&cross; No |&check; Yes |
 
 *AKS Arc doesn't currently support GPU partitions.
 

@@ -20,7 +20,9 @@ This article describes how to create Azure Local virtual machines (VMs) enabled 
 ## Prerequisites
 
 - Review and [complete the Azure Local VM prerequisites](./azure-arc-vm-management-prerequisites.md).
-- Make sure that your image uses a [supported operating system](/azure/azure-arc/servers/prerequisites#supported-operating-systems).
+- Make sure that your image uses an operating system that the [Azure Arc connected machine agent](/azure/azure-arc/servers/prerequisites#supported-operating-systems) supports.
+    > [!NOTE]
+    > Not all operating systems listed on the Azure Arc-enabled servers supported OS page are supported for Arc enablement (guest management) on Azure Local. Guest management requires Hyper-V socket (HV socket) support, which limits the supported OS set further.
 - For custom images in Azure Compute Gallery, ensure you meet these extra prerequisites:
   - You have a virtual hard disk (VHD) loaded in your Azure Compute Gallery. See how to [Create an image definition and image version](/azure/virtual-machines/image-version).
   - If using a virtual hard disk v2 (VHDX):
