@@ -1,6 +1,6 @@
 ---
-title: Deploy an Azure Local instance using the Azure portal
-description: Learn how to deploy an Azure Local instance from the Azure portal
+title: Deploy Azure Local Using the Azure Portal for Disaggregated Deployments
+description: Learn how to deploy an Azure Local instance from the Azure portal for disaggregated deployments.
 author: alkohli
 ms.topic: how-to
 ms.date: 03/23/2026
@@ -11,7 +11,7 @@ ms.subservice: hyperconverged
 #CustomerIntent: As an IT Pro, I want to deploy an Azure Local instance of 1-16 machines via the Azure portal so that I can host VM and container-based workloads on it.
 ---
 
-# Deploy Azure Local using the Azure portal
+# Deploy Azure Local using the Azure portal for disaggregated deployments
 
 This article helps you deploy an Azure Local instance using the Azure portal.
 
