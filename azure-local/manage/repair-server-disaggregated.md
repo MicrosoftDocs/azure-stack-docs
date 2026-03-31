@@ -1,6 +1,6 @@
 ---
-title: Repair a node on Azure Local, version 23H2
-description: Learn how to repair a node on your Azure Local, version 23H2 system.
+title: Repair a Node on Azure Local for Disaggregated Deployments
+description: Learn how to repair a node on your Azure Local disaggregated deployment.
 ms.topic: how-to
 author: alkohli
 ms.author: alkohli
@@ -8,7 +8,7 @@ ms.date: 08/26/2025
 ms.subservice: hyperconverged
 ---
 
-# Repair a node on Azure Local
+# Repair a node on Azure Local for disaggregated deployments
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
