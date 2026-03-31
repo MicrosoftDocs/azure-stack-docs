@@ -187,8 +187,8 @@ Following steps connecting to the SAN must be done on every machines.
     mpclaim -s -d
     ```
 
- > [!NOTE]
-    > - Consult your SAN vendor for the best MPIO settings with Azure Local.
+   > [!NOTE]
+   > - Consult your SAN vendor for the best MPIO settings with Azure Local.
 
 1. Confirm MPIO settings are set correct.
 
