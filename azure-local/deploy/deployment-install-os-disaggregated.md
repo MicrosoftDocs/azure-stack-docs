@@ -3,7 +3,7 @@ title: Install the Azure Local Operating System for Disaggregated Deployments
 description: Learn how to install the Azure Local operating system on each machine of your disaggregated deployment using SConfig.
 author: alkohli
 ms.topic: how-to
-ms.date: 12/11/2025
+ms.date: 03/31/2026
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
