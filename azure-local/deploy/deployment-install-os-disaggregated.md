@@ -146,7 +146,7 @@ Follow these steps to configure the operating system using SConfig:
 1. Set the local administrator credentials to be identical across all machines.
 
     > [!NOTE]
-    > - Make sure that the local administrator password follows Azure password length and complexity requirements. Use a password that is at least 14 characters long and contains a lowercase character, an uppercase character, a numeral, and a special character.
+    > Make sure that the local administrator password follows Azure password length and complexity requirements. Use a password that is at least 14 characters long and contains a lowercase character, an uppercase character, a numeral, and a special character.
    
 Starting with version 2604, domain joining before deployment is supported. If you choose to domain join, you must add the deployment user to the local Administrators group. If you don't domain join beforehand, the machines are automatically joined to a domain during the [Deployment via Azure portal](./deploy-via-portal.md).
 
@@ -188,7 +188,7 @@ Following steps connecting to the SAN must be done on every machines.
     ```
 
    > [!NOTE]
-   > - Consult your SAN vendor for the best MPIO settings with Azure Local.
+   > Consult your SAN vendor for the best MPIO settings with Azure Local.
 
 1. Confirm MPIO settings are set correct.
 
