@@ -1,6 +1,6 @@
 ---
 title: Repair a Node on Azure Local for Disaggregated Deployments
-description: Learn how to repair a node on your Azure Local disaggregated deployment.
+description: Learn how to repair a node on your Azure Local disaggregated deployments.
 ms.topic: how-to
 author: alkohli
 ms.author: alkohli
