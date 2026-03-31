@@ -165,7 +165,7 @@ If you don't domain join beforehand, the machines are automatically joined to a 
 
 ## Connect to SAN
 
-Following steps connecting to the SAN must be done on every machines.
+Following steps connecting to the SAN must be done on every machine.
 
 1. Install the drivers for your fibre channel (FC) HBA vendor/model. Here is a generic example using pnputil to install the driver. Consult your hardware partner's documentation for details regarding driver installation.
 
