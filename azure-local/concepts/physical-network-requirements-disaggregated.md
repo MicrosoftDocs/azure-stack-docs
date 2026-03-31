@@ -1,6 +1,6 @@
 ---
-title: Physical network requirements for Azure Local
-description: Learn about physical network requirements for Azure Local, including network switches, to ensure optimal performance.
+title: Physical Network Requirements for Azure Local Disaggregated Deployments
+description: Learn about physical network requirements for Azure Local disaggregated deployments, including network switches, to ensure optimal performance.
 author: alkohli
 ms.topic: concept-article
 ms.date: 03/27/2026
@@ -9,7 +9,7 @@ ms.reviewer: alkohli
 ms.subservice: hyperconverged
 ---
 
-# Physical network requirements for Azure Local
+# Physical network requirements for Azure Local disaggregated deployments
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2-22h2.md)]
 
