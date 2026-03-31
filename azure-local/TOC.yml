@@ -803,7 +803,7 @@ items:
     - name: Review requirements
       items:
       - name: System requirements
-        href: concepts/system-requirements-23h2-disaggregated.md
+        href: concepts/system-requirements-disaggregated.md
       - name: Physical network requirements
         href: concepts/physical-network-requirements-disaggregated.md
       - name: Host network requirements
