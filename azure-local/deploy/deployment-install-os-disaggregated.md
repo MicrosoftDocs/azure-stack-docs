@@ -1,6 +1,6 @@
 ---
-title: Install Azure Stack HCI operating system, version 23H2 using SConfig
-description: Learn how to install the Azure Stack HCI operating system, version 23H2 on each machine of your system using SConfig.
+title: Install the Azure Local Operating System for Disaggregated Deployments
+description: Learn how to install the Azure Local operating system on each machine of your disaggregated deployment using SConfig.
 author: alkohli
 ms.topic: how-to
 ms.date: 12/11/2025
@@ -11,7 +11,7 @@ ms.custom: sfi-image-nochange
 ms.subservice: hyperconverged
 ---
 
-# Install the Azure Stack HCI operating system manually using SConfig
+# Install the Azure Local operating system for disaggregated deployments
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
