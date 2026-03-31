@@ -5,7 +5,7 @@ description: Learn the benefits, features, and use cases of Azure Local disaggre
 author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
-ms.date: 11/17/2025
+ms.date: 03/31/2026
 ms.topic: overview
 ai-usage: ai-assisted
 ms.service: azure-local
