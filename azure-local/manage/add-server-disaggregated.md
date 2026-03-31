@@ -1,6 +1,6 @@
 ---
-title: Manage Capacity by Adding a Node on Azure Local, Version 23H2
-description: Learn how to manage capacity on your Azure Local, version 23H2 system by adding a node.
+title: Add a Node on Azure Local for Disaggregated Deployments
+description: Learn how to manage capacity on your Azure Local disaggregated deployment by adding a node.
 ms.topic: how-to
 author: alkohli
 ms.author: alkohli
@@ -8,7 +8,7 @@ ms.date: 08/26/2025
 ms.subservice: hyperconverged
 ---
 
-# Add a node on Azure Local
+# Add a node on Azure Local for disaggregated deployments
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
