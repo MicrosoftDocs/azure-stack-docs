@@ -1,6 +1,6 @@
 ---
-title: Host network requirements for Azure Local
-description: Learn the host network requirements for Azure Local
+title: Host Network Requirements for Azure Local Disaggregated Deployments
+description: Learn the host network requirements for Azure Local disaggregated deployments.
 author: alkohli
 ms.topic: how-to
 ms.date: 01/15/2026
@@ -8,7 +8,7 @@ ms.author: alkohli
 ms.subservice: hyperconverged
 ---
 
-# Host network requirements for Azure Local
+# Host network requirements for Azure Local disaggregated deployments
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2-22h2.md)]
 

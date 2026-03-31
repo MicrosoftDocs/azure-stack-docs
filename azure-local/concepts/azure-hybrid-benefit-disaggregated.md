@@ -1,6 +1,6 @@
 ---
-title: Azure Hybrid Benefit for Azure Local
-description: Learn about Azure Hybrid Benefit for Azure Local.
+title: Azure Hybrid Benefit for Azure Local Disaggregated Deployments
+description: Learn about Azure Hybrid Benefit for Azure Local disaggregated deployments.
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
@@ -11,7 +11,7 @@ ms.custom:
   - sfi-image-nochange
 ---
 
-# Azure Hybrid Benefit for Azure Local
+# Azure Hybrid Benefit for Azure Local disaggregated deployments
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2-22h2.md)]
 

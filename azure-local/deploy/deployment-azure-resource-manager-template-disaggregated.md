@@ -1,6 +1,6 @@
 ---
-title: Azure Resource Manager template deployment for Azure Local, version 23H2
-description: Learn how to prepare and then deploy Azure Local instance, version 23H2 using the Azure Resource Manager template.
+title: Deploy Azure Local Using an Azure Resource Manager Template for Disaggregated Deployments
+description: Learn how to prepare and deploy an Azure Local instance using an Azure Resource Manager template for disaggregated deployments.
 author: alkohli
 ms.topic: how-to
 ms.date: 10/16/2025
@@ -13,7 +13,7 @@ ms.custom:
 ms.subservice: hyperconverged
 ---
 
-# Deploy Azure Local via Azure Resource Manager deployment template
+# Deploy Azure Local via Azure Resource Manager deployment template for disaggregated deployments
 
 This article details how to use an Azure Resource Manager (ARM) template in the Azure portal to deploy an Azure Local in your environment. The article also contains the prerequisites and the preparation steps required to begin the deployment.
 
