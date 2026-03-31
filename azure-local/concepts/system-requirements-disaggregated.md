@@ -1,6 +1,6 @@
 ---
-title: System requirements for Azure Local, version 23H2
-description: How to choose machines, storage, and networking components for Azure Local, version 23H2.
+title: System Requirements for Azure Local Disaggregated Deployments
+description: Learn how to choose machines, storage, and networking components for Azure Local disaggregated deployments.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
@@ -10,7 +10,7 @@ ms.date: 01/30/2026
 ms.subservice: hyperconverged
 ---
 
-# System requirements for Azure Local
+# System requirements for Azure Local disaggregated deployments
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
