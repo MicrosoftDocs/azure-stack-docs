@@ -24,6 +24,8 @@ Before you begin, make sure you do the following steps:
 - Satisfy the [prerequisites](./deployment-prerequisites.md).
 - Prepare your [Active Directory](./deployment-prep-active-directory.md) environment.
 - Make sure to keep a password handy to use to sign in to the operating system. This password must conform to the length and complexity requirements. Use a password that is at least 14 characters long and contains a lowercase character, an uppercase character, a numeral, and a special character.
+- Create LUN with minimum size of 250 GB for infrastructure volume.
+- Create LUN with minimum size of 20 GB for performance history.
 
 ## Boot and install the operating system
 
@@ -146,11 +148,11 @@ Follow these steps to configure the operating system using SConfig:
     > [!NOTE]
     > - Make sure that the local administrator password follows Azure password length and complexity requirements. Use a password that is at least 14 characters long and contains a lowercase character, an uppercase character, a numeral, and a special character.
    
-<!-- Starting with version 2510, domain joining before deployment is supported. If you choose to domain join, you must add the deployment user to the local Administrators group. If you don't domain join beforehand, the machines are automatically joined to a domain during the [Deployment via Azure portal](./deploy-via-portal.md).
+Starting with version 2604, domain joining before deployment is supported. If you choose to domain join, you must add the deployment user to the local Administrators group. If you don't domain join beforehand, the machines are automatically joined to a domain during the [Deployment via Azure portal](./deploy-via-portal.md).
 
 ### Domain join before deployment
 
-Starting with version 2510, you can domain join machines before deployment:
+Starting with version 2604, you can domain join machines before deployment:
 
 1. Use `SConfig option 1 Domain/workgroup` to join the machine to your domain.
 1. Add the deployment user to the local Administrators group on each machine, using the following command:
@@ -160,6 +162,46 @@ Starting with version 2510, you can domain join machines before deployment:
     ```
 
 If you don't domain join beforehand, the machines are automatically joined to a domain during the [Deployment via Azure portal](./deploy-via-portal.md).-->
+
+## Connect to SAN
+
+Following steps connecting to the SAN must be done on every machines.
+
+1. Install the drivers for your fibre channel (FC) HBA vendor/model. Here is a generic example using pnputil to install the driver. Consult your hardware partner's documentation for details regarding driver installation.
+
+    ```cmd
+    PNPUTIL /add-driver c:\driver\myhbadriver.inf /install
+    ```
+
+1. Retrieve the HBA Address (WWPN)
+
+    ```powershell
+    Get-InitiatorPort
+    ```
+
+1. Connect with your SAN administrator and share the HBA addresses to get the LUNs unmasked to the HBAs.
+
+1. Configure MPIO using the following command.
+
+    ```cmd
+    mpclaim -s -d
+    ```
+
+ > [!NOTE]
+    > - Consult your SAN vendor for the best MPIO settings with Azure Local.
+
+1. Confirm MPIO settings are set correct.
+
+    ```powershell
+    Get-MPIOSetting
+    ```
+1. Confirm you can see the LUNs before you proceed with Arc Registration
+
+    ```powershell
+    Get-PhysicalDisk
+    ```
+   > [!IMPORTANT]
+   > Do not initialize the drives, as the deployment expects the drive type to be RAW!
 
 ## Next steps
 
