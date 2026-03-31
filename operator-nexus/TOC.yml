@@ -199,6 +199,8 @@
               href: howto-upgrade-nexus-fabric-template.md
             - name: Credential Rotation
               href: howto-credential-rotation.md
+            - name: Certificate Rotation
+              href: howto-certificate-rotation.md
             - name: Credential Manager Key Vault
               href: how-to-credential-manager-key-vault.md
             - name: Updating ExpressRoute Gateway Authorization Key in Azure Operator Nexus
