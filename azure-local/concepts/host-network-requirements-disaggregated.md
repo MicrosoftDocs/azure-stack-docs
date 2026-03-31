@@ -3,7 +3,7 @@ title: Host Network Requirements for Azure Local Disaggregated Deployments
 description: Learn the host network requirements for Azure Local disaggregated deployments.
 author: alkohli
 ms.topic: how-to
-ms.date: 01/15/2026
+ms.date: 03/31/2026
 ms.author: alkohli
 ms.subservice: hyperconverged
 ---
