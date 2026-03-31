@@ -8,7 +8,7 @@ ms.date: 03/31/2026
 ms.subservice: hyperconverged
 ---
 
-# Repair a node on Azure Local for disaggregated deployments
+# Repair a node on Azure Local
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
