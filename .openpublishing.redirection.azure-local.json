@@ -1967,11 +1967,17 @@
     },
     {
       "source_path": "azure-local/deploy/deployment-arc-registration-preinstalled-os.md", 
-      "redirect_url": "/azure-local/deploy/deployment-with-azure-arc-gateway", 
+      "redirect_url": "/azure-local/deploy/deployment-with-azure-arc-gateway",
+      "redirect_document_id": false
     },
     {
       "source_path": "azure-local/manage/disconnected-operations-set-up.md", 
       "redirect_url": "/azure/azure-local/manage/disconnected-operations-acquire", 
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-local/update/update-opt-enable.md",
+      "redirect_url": "/azure/azure-local/update/import-discover-updates-offline-23h2",
       "redirect_document_id": false
     }
   ]

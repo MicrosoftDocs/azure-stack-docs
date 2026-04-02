@@ -68,7 +68,7 @@ The table below provides guidance on the usage of parameters when creating ACLs:
 | vlanMatchCondition     | VLAN match condition that needs to be matched              |                                 |
 | layer4Protocol         | Layer 4 Protocol                                           | should be either TCP or UDP     |
 | ipCondition            | IP condition that needs to be matched                      |                                 |
-| actions                | Action to be taken based on match condition                | Default Action: Permit </br> Other Possible Actions: PoliceRate, Drop, Count </br> The PoliceRate action is explained in detail later on this page.                 |
+| actions                | Action to be taken based on match condition                | Possible Actions: PoliceRate, Drop, Count, Log, Remark </br> The PoliceRate action is explained in detail later on this page. |
 | configuration-type     | Configuration type (inline or file)                        | Example: inline                 |
 
 > [!NOTE]

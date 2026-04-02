@@ -288,6 +288,12 @@
           href: howto-configure-network-tap-rules-with-user-assigned-managed-identity.md
         - name: How to disable or enable network interface
           href: howto-disable-enable-network-interface.md
+        - name: How to enable System Assigned Managed Identity (SAMI) for the Network Fabric Controller
+          href: howto-enable-system-assigned-managed-identity-for-network-fabric-controller.md
+        - name: How to enable System Assigned Managed Identity (SAMI) for the Network Fabric resource
+          href: howto-enable-system-assigned-managed-identity-for-network-fabric-resource.md                   
+        - name: How-to usage guide for Customer Managed Key Vault
+          href: howto-usage-guide-for-customer-managed-key-vault.md
     - name: Cluster
       expanded: false
       items:
