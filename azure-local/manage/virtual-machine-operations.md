@@ -27,7 +27,7 @@ When IT admins manage Azure Local VMs by using the same local tools and scripts 
 >
 > - We recommend that you use the Azure portal or the Azure CLI to manage Azure Local VMs. Use the local tools only if these operations are included in the [list of supported operations for local tools](#local-tools) later in this article.
 > - Though the supported operations for local tools don't affect the management of Azure Local VMs, the changes aren't reflected in the Azure portal.
-> - Only the following operations update the state of an Azure Local VM in the portal, when you perform them by using local tools: change the size of VM memory, change the vCPU count, or change the power state (start or stop a VM) resulting from the power cycle operation.
+> - Only the following operations update the state of an Azure Local VM in the portal, when you perform them by using local tools: change the power state (start or stop a VM) resulting from the power cycle operation.
 
 ## Supported VM operations
 
@@ -134,7 +134,6 @@ The following VM operations aren't supported for Azure Local VMs. If your worklo
 - Live migrate a VM from one cluster to another
 - Storage live migration on a VM
 - Change the type of disk (static, dynamic, VHD, or VHDX)
-- Add shared storage (shared VHD or VHDX)
 - Cloning or copying a VM. This can result in corruption, management errors, or failure to start.
 
 If you need to change the IP address or the VLAN ID of a network interface, create a new network interface and delete the old one.

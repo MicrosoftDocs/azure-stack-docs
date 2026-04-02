@@ -32,7 +32,7 @@ Organizations choose Microsoft 365 Local for several key reasons:
 
 ## Microsoft 365 Local capabilities
 
-- **Exchange Server, SharePoint Server, and Skype for Business Server:** Deliver core productivity and collaboration services on-premises. These services address compliance and stringent data residency requirements while providing enterprise-grade capabilities for email, document management, and unified communications.
+- **Exchange Server, SharePoint Server, and Skype for Business Server:** Deliver core productivity and collaboration services on-premises. These services address compliance and stringent data residency requirements while providing enterprise-grade capabilities for email, document management, and unified communications. Microsoft announced a commitment to support the Subscription editions of Exchange Server, SharePoint Server, and Skype for Business through at least 2035. For more information, see [Additional support for select server products following Modern Lifecycle Policy](/lifecycle/additional-support-server-modern-lifecycle-policy).
 
 - **Certified and validated solutions by Microsoft and hardware partners:** Microsoft 365 Local is supported on Azure Local Premier Solutions offered in collaboration with hardware partners to guarantee compatibility and support for sovereign deployments.
 
