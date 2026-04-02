@@ -18,8 +18,6 @@ This article explains the backup process for disconnected operations for Azure L
   
 For more information, see [Disconnected operations for Azure Local](/azure/azure-local/manage/disconnected-operations-overview?view=azloc-2602&preserve-view=true).
 
-> [!IMPORTANT]
-> The restore feature is currently in development. Documentation for the restore process will be available once the feature is stable.
 
 ## Overview
 
