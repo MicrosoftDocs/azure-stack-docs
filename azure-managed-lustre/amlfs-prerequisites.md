@@ -2,7 +2,7 @@
 title: Prerequisites for Azure Managed Lustre file systems
 description: Learn about network and storage prerequisites to complete before you create an Azure Managed Lustre file system.
 ms.topic: overview
-ms.date: 03/27/2026
+ms.date: 04/01/2026
 author: wolfgang-desalvador
 ms.author: akashdubey
 ms.reviewer: rohogue
@@ -21,7 +21,7 @@ This article explains prerequisites that you must configure before creating an A
 
 ## Network prerequisites
 
-You supply the virtual network and subnet for Azure Managed Lustre networking. This gives you full control of which network security measures you wish to apply, including which compute and other services can access Azure Managed Lustre. Ensure you follow the networking and security guidelines provided for Azure Managed Lustre. Include allowing required connections for essential services such as the Lustre protocol, engineering and diagnostic support, Azure Blob storage, and security monitoring. If your network settings disable one of the essential services, it leads to a degraded product experience or it reduces Microsoft’s support abilities.
+You supply the virtual network and subnet for Azure Managed Lustre networking. You have full control of which network security measures you wish to apply, including which compute and other services can access Azure Managed Lustre. Ensure you follow the networking and security guidelines provided for Azure Managed Lustre. Include allowing required connections for essential services such as the Lustre protocol, engineering and diagnostic support, Azure Blob storage, and security monitoring. If your network settings disable one of the essential services, it leads to a degraded product experience or it reduces Microsoft’s support abilities.
 
 You can't move a file system from one network or subnet to another after you create the file system.
 
@@ -29,7 +29,18 @@ Azure Managed Lustre accepts only IPv4 addresses. IPv6 isn't supported.
 
 ### Network size requirements
 
-The size of subnet that you need depends on the size of the file system you create. The following table gives a rough estimate of the minimum subnet size for Azure Managed Lustre file systems of different sizes.
+The size of the subnet you need depends on the size of the Azure Managed Lustre file system you create. Leave additional IP addresses available for other purposes, such as future deployments or compute resources in the same subnet. Azure reserves five IP addresses per subnet for its own use such as DNS, gateway, and broadcast. Read [Private IP addresses](/azure/virtual-network/ip-services/private-ip-addresses) to learn more.
+
+The following table provides a rough estimate of the minimum subnet size required for Azure Managed Lustre file systems of different storage capacities.
+
+> [!IMPORTANT]
+> The subnet must be large enough to assign an IP address to all Azure Managed Lustre storage nodes, including:
+>
+> - All Object Storage Servers (OSSs)
+> - All Metadata Servers (MDSs)
+> - Any service or agent nodes required for data movement, such as services or agent nodes used for integration with Azure Blob Storage.
+>
+> The CIDR (Classless Inter-Domain Routing) values in the table represent minimum guidance only. The exact number of required IP addresses depends on the specific configuration of the file system and enabled features.
 
 | Storage capacity     | Recommended CIDR prefix value |
 |----------------------|-------------------------------|
@@ -39,17 +50,23 @@ The size of subnet that you need depends on the size of the file system you crea
 | 96 TiB to 196 TiB    | /24 or larger                 |
 | 200 TiB to 400 TiB   | /23 or larger                 |
 
+To determine the exact subnet size required for a specific Azure Managed Lustre configuration, you can query the service directly using standard Azure interfaces such as REST APIs or the Azure CLI. For example, you can calculate the required subnet size for your precise file system SKU and capacity by running the command:
+
+```bash
+az amlfs get-subnets-size --sku [SKU] --storage-capacity [capacity]
+```
+
 #### Other network size considerations
 
 When you plan your virtual network and subnet, take into account the requirements for any other services you want to locate within the Azure Managed Lustre subnet or virtual network.
 
 If you're using an Azure Kubernetes Service (AKS) cluster with your Azure Managed Lustre file system, you can locate the AKS cluster in the same subnet as the file system. In this case, you must provide enough IP addresses for the AKS nodes and pods in addition to the address space for the Lustre file system. If you use more than one AKS cluster within the virtual network, make sure the virtual network has enough capacity for all resources in all of the clusters. To learn more about network strategies for Azure Managed Lustre and AKS, see [AKS subnet access](use-csi-driver-kubernetes.md#determine-the-network-type-to-use-with-aks).
 
-If you plan to use another resource to host your compute VMs in the same virtual network, check the requirements for that process before creating the virtual network and subnet for your Azure Managed Lustre system. When planning multiple clusters within the same subnet, it's necessary to use an address space large enough to accommodate the total requirements for all clusters.
+If you plan to host compute VMs on a different resource in the same virtual network, review the requirements before you create the virtual network and subnet for your Azure Managed Lustre system. When planning multiple clusters within the same subnet, it's necessary to use an address space large enough to accommodate the total requirements for all clusters.
 
 ### Subnet access and permissions
 
-Please follow these guidelines when configuring your networking resources to work properly with the Azure Managed Lustre file system::
+Follow these guidelines when configuring your networking resources to work properly with the Azure Managed Lustre file system::
 
 | Access type | Required network settings |
 |-------------|---------------------------|
@@ -65,7 +82,7 @@ For detailed guidance about configuring a network security group for Azure Manag
 
 The following known limitations apply to virtual network settings for Azure Managed Lustre file systems:
 
-- Azure Managed Lustre and Azure NetApp Files resources can't share a subnet. If you use the Azure NetApp Files service, you must create your Azure Managed Lustre file system in a separate subnet. The deployment fails if you try to create an Azure Managed Lustre file system in a subnet that contains, or has contained, Azure NetApp Files resources.
+- Azure Managed Lustre and Azure NetApp Files resources can't share a subnet. If you use the Azure NetApp Files service, you must create your Azure Managed Lustre file system in a separate subnet. The deployment fails if you try to create an Azure Managed Lustre file system in a subnet that contains or contained Azure NetApp Files resources.
 - If you use the `ypbind` daemon on your clients to maintain Network Information Services (NIS) binding information, you must ensure that `ypbind` doesn't reserve port 988. You can either manually adjust the ports that `ypbind` reserves, or ensure that your system startup infrastructure starts your Lustre client mount before starting `ypbind`.
 
 > [!NOTE]
@@ -137,7 +154,7 @@ To enable storage account access from the Azure Managed Lustre subnet, follow th
 
 1. Navigate your storage account, and expand **Security + Networking** in the left navigation pane.
 1. Select **Networking**.
-1. Under Public network access, click the radio button for either **Enable public access from selected virtual networks and IP Addresses** (recommended) or **Enable public access from all networks**. If you choose **Enable public access from selected virtual networks and IP Addresses**, then continue with the steps below. If you choose **Enable public access from all networks**, then jump to the last step below to **Save**.
+1. Under Public network access, click the radio button for either **Enable public access from selected virtual networks and IP Addresses** (recommended) or **Enable public access from all networks**. If you choose **Enable public access from selected virtual networks and IP Addresses**, then continue with the following steps. If you choose **Enable public access from all networks**, then jump to the last step to **Save**.
 ![Screenshot showing Enable public access from selected virtual networks and IP Addresses in the Network access section.](./media/prerequisites/storage-account-subnet-access.png)
 1. Under Virtual networks, click **Add existing virtual network**.
 1. On the right, select the Virtual networks and Subnets used by Azure Managed Lustre.

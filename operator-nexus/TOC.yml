@@ -288,6 +288,8 @@
           href: howto-configure-network-tap-rules-with-user-assigned-managed-identity.md
         - name: How to disable or enable network interface
           href: howto-disable-enable-network-interface.md
+        - name: How-to usage guide for Customer Managed Key Vault
+          href: howto-usage-guide-for-customer-managed-key-vault.md
     - name: Cluster
       expanded: false
       items:
