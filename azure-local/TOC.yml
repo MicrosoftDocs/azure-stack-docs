@@ -173,8 +173,6 @@ items:
         href: deploy/deploy-via-portal.md
       - name: 6B. Deploy via ARM template
         href: deploy/deployment-azure-resource-manager-template.md
-
-
     - name: Deploy using local identity with Key Vault
       items:
       - name: Deploy via Azure portal
@@ -304,8 +302,6 @@ items:
       href: update/update-phases-23h2.md
     - name: Update via PowerShell
       href: update/update-via-powershell-23h2.md
-    - name: Opt in to update to 12.25xx from 11.xxxx
-      href: update/update-opt-enable.md
     - name: Update via PowerShell with limited connectivity
       href: update/import-discover-updates-offline-23h2.md
     - name: Update via Azure portal
@@ -628,6 +624,8 @@ items:
       href: manage/troubleshoot-deployment-configurator-app.md
     - name: Troubleshoot deployment validation issues
       href: manage/troubleshoot-deployment.md
+    - name: Troubleshoot simplified machine provisioning
+      href: deploy/troubleshoot-simplified-machine-provisioning.md
     - name: Use the Support tool for infrastructure issues
       href: manage/remediate-support-tool-infrastructure.md
     - name: Use the Diagnostic Support tool

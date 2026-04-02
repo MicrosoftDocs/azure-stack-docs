@@ -162,6 +162,8 @@ The following steps should be followed for using UAMIs with Nexus Clusters and a
 1. Enable the Key Vault for Role Based Access Control (RBAC). See [Enable Azure RBAC permissions on Key Vault](/azure/key-vault/general/rbac-guide?tabs=azure-cli#enable-azure-rbac-permissions-on-key-vault).
 1. Assign the `Operator Nexus Key Vault Writer Service Role (Preview)` role to the UAMI for the Key Vault. See [Assign role](/azure/key-vault/general/rbac-guide?tabs=azure-cli#assign-role).
    1. The role definition ID for the Operator Nexus Key Vault Writer Service Role is `44f0a1a8-6fea-4b35-980a-8ff50c487c97`. This format is required if using the Azure command line to do the role assignment.
+1. When providing initial BMC and Storage Appliance passwords via Key Vault URI references, use a separate Key Vault rather than the one defined in --secret-archive-settings. This separation helps ensure least-privileged access to the secrets in the `secret-archive-settings` Key Vault.
+1. Assign the `Key Vault Secrets User` role to the UAMI defined in `--secret-archive-settings` on the deployment password Key Vault. For more information, see [Password by Key Vault reference](./reference-key-vault-credential.md).
 1. To limit access to the Key Vault to a select set of IP or virtual networks, see [Configure Azure Key Vault firewalls and virtual networks](/azure/key-vault/general/network-security?WT.mc_id=Portal-Microsoft_Azure_KeyVault).
    1. The IPs for all users requiring access to the Key Vault need to be added to the Key Vault's `Virtual Networks` and/or `Firewall` lists.
    1. Ensure the `Allow trusted Microsoft services to bypass this firewall.` under `Exceptions` is selected.
@@ -482,6 +484,8 @@ These updates are applicable post Cluster creation or update to ensure that the 
 1. Enable the Key Vault for Role Based Access Control (RBAC). See [Enable Azure RBAC permissions on Key Vault](/azure/key-vault/general/rbac-guide?tabs=azure-cli#enable-azure-rbac-permissions-on-key-vault).
 1. Assign the `Operator Nexus Key Vault Writer Service Role (Preview)` role to the SAMI for the Key Vault. See [Assign role](/azure/key-vault/general/rbac-guide?tabs=azure-cli#assign-role).
    1. The role definition ID for the Operator Nexus Key Vault Writer Service Role is `44f0a1a8-6fea-4b35-980a-8ff50c487c97`. This format is required if using the Azure command line to do the role assignment.
+1. When providing initial BMC and Storage Appliance passwords via Key Vault URI references, use a separate Key Vault rather than the one defined in --secret-archive-settings. This separation helps ensure least-privileged access to the secrets in the `secret-archive-settings` Key Vault.
+1. Assign the `Key Vault Secrets User` role to the managed identity defined in `--secret-archive-settings` on the deployment password Key Vault. For more information, see [Password by Key Vault reference](./reference-key-vault-credential.md).
 1. To limit access to the Key Vault to a select set of IP or virtual networks, see [Configure Azure Key Vault firewalls and virtual networks](/azure/key-vault/general/network-security?WT.mc_id=Portal-Microsoft_Azure_KeyVault).
    1. The IPs for all users requiring access to the Key Vault need to be added to the Key Vault's `Virtual Networks` and/or `Firewall` lists.
    1. Ensure the `Allow trusted Microsoft services to bypass this firewall.` under `Exceptions` is selected.
